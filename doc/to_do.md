@@ -67,26 +67,28 @@ DONE: clean up use of "import *"
 		DONE: interpreter() & cmd_exe()
 		NOTE: to my surprise, class_def() is not needed in any module other than mk_default_pkl() - who knew!
 		DONE: clean up comments
-TBD: move & rename modules
+IN-PROC: move & rename modules
 	DONE: create \dark_castle3 directory at git root
 		DONE: create \doc sub-directory
 	DONE: populate \docs
 		DONE: dc3_done.md => done.md
 		DONE: dc3_doc.md => to_do.md
 		DONE: dc3_coding_decs.md => decisions.md
-	TBD:npopulate \dark_castle3
-		TBD: dc3_static_init.py => static_gbl.py
-		TBD: dc3_main.py => web_main.py
-		TBD: dc3_class_deff.py => class_def.py
-		TBD: dc3_ wrapper.py => app_main.py
-		TBD: dc3_start_me_up.py => start_up.py
-		TBD: dc3_interpreter.py => interp.py
-		TBD: dc3_cmd_execute.py => cmd_exe.py
-		TBD: dc3_score.py => score.py
-		TBD: dc3_end.py => ending.py
-		TBD: make_default_pickle.py => mk_def_pkl.py
-		TBD: rename all module imports within code
+	DONE:npopulate \dark_castle3
+		DONE: dc3_static_init.py => static_gbl.py
+		DONE: dc3_main.py => web_main.py
+		DONE: dc3_class_deff.py => class_def.py
+		DONE: dc3_ wrapper.py => app_main.py
+		DONE: dc3_start_me_up.py => start_up.py
+		DONE: dc3_interpreter.py => interp.py
+		DONE: dc3_cmd_execute.py => cmd_exe.py
+		DONE: dc3_score.py => score.py
+		DONE: dc3_end.py => ending.py
+		DONE: make_default_pickle.py => mk_def_pkl.py
 	TBD: create other std sub-dierectories (model off of dc2)
+	TBD: rename all module imports within code
+	TBD: make default pickle
+	TBD: test
 TBD: Normalize scope_check() for objects of class Writing????
 TBD: map ojbect attributes, methods, and inheritance visually
 TBD: re-map modules
