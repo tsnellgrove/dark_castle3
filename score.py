@@ -5,7 +5,6 @@
 
 
 ### import statements
-import sys
 
 ### score dictionaries and lists ###
 score_val_dict = {

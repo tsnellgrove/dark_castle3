@@ -5,7 +5,6 @@
 
 
 ### import statements ###
-import sys
 import random
 from static_gbl import descript_dict, static_dict
 

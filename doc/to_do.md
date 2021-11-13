@@ -89,7 +89,8 @@ DONE: move & rename modules
 	DONE: rename all module imports within code
 	DONE: make default pickle
 	DONE: test
-TBD: Determin need for 'import sys'
+DONE: Determine need for 'import sys'
+	NOTE: wasn't really neaded - I wasn't using any sys commands.. so removed all sys imports for now
 TBD: map object attributes, verb methods, and inheritance visually
 TBD: re-map modules
 TBD: map import dependencies

@@ -5,7 +5,6 @@
 
 
 ### import statements
-import sys
 import pickle
 from start_up import start_me_up
 from interp import interpreter

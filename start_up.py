@@ -6,7 +6,6 @@
 
 
 ### import statements
-import sys
 import pickle
 import random
 from static_gbl import descript_dict

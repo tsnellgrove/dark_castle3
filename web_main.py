@@ -6,7 +6,6 @@
 #								integrate triggers, replicate full original, add more puzzles!
 
 ### import statements
-import sys
 from app_main import wrapper
 
 ### main routine

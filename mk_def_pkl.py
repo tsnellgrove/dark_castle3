@@ -5,7 +5,6 @@
 
 
 # import statements
-import sys
 import pickle
 from class_def import Writing, ViewOnly, Item, Food, Beverage, Container, Jug, Door, Room, GameState
 

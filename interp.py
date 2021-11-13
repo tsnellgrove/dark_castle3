@@ -5,7 +5,6 @@
 
 
 ### import statements
-import sys
 from itertools import islice
 
 ### interpreter function language static dictionaries & lists ###
