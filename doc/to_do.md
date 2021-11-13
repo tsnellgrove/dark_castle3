@@ -1,5 +1,5 @@
 To Do List - Dark Castle v3
-Oct 22, 2021
+Nov 13, 2021
 
 
 *** How to Add Objects ***
@@ -9,91 +9,6 @@ Oct 22, 2021
 4) Add object to master_obj_lst in mk_default_pkl()
 5) Run mk_default_pkl()
 6) Add object description in dc3_static_init
-
-
-##########################
-### VERSION 3.49 START ###
-##########################
-
-Version 3.49 Goals
-- code improvement tweaks
-
-DONE: re-order and consolidate 3.50+ plans and ideas
-DONE: search "somedays" for others
-DONE: Is the Item class worth having? (decision = 'yes')
-DONE: obj-not-in-hand error in cmd_exe()
-	DONE: Strange "blank line" error on trying to put item in box if item is already in box
-	NOTE: Very conflicted re balance between less repitition vs. less readible & less customizable; Pondering
-	DECISION: Now that I've started to standardize hand_check() I've realized the code was more readable & customizable before
-		IDEA: maybe implement a simple boolean function instead
-	DONE: drop, unlock, lock reversed
-	DONE: reverse put
-	DONE: solve the 'blank response if try to put item in closed container when it's already in the container' (problem in scope_lst() I think)
-		NOTE: turns out blank happens any time you try to put a not-in-scope noun in box
-		NOTE: Appears the cmd_exe() put routine never runs if obj_noun is not in scope???
-		NOTE: works for put "full name" cases but NOT for put "root name" cases
-		DONE: check root_word_count() in interpreter()
-		NOTE: found it! problem is that noun_obj generates the error BUT, I am showing the dir_obj error_msg (doesn't exist because there is a box)
-		NOTE: need to generate a global "put" error_msg based on whichever clause triggers an error = True
-		DONE: fix it
-		DONE: clean up troubleshooting print statements
-	DONE: clean up old hand_check()
-	DONE: boolean version of hand_check()
-	DONE: clean up comments
-	DONE: maybe also a hand_empty() ?
-DONE: create 'coding decisions' file
-DONE: Better errors for "read note" and "get water" and "examine lettering"
-	IDEA: maybe a 'special errors' funciton in cmd_exe() ??
-	DONE: 'read' <non-writing>
-	DONE: 'examine' <writing>
-	DONE: 'take' <beverage>
-		DONE: create method is_beverage() in Writing
-		DONE: create 'take' <beverage> special error
-	DONE: function for special errors
-	DONE: clean up comments
-DONE: fix dup Room 'go' code for doorways and passages
-	DONE: clean up comments
-DONE: clean up use of "import *"
-	DONE: static_init
-		DONE: move score dicts / lists to score() module
-		DONE: clean up comments
-		DONE: move help() to interpreter()
-		DONE: clean up comments
-		DONE: move languate dict & lst to Interpeter
-		DONE: clean up comments
-		DONE: write up code decision
-	DONE: class_def
-		DONE: module other than intperter() and cmd_exe()
-		DONE: interpreter() & cmd_exe()
-		NOTE: to my surprise, class_def() is not needed in any module other than mk_default_pkl() - who knew!
-		DONE: clean up comments
-DONE: move & rename modules
-	DONE: create \dark_castle3 directory at git root
-		DONE: create \doc sub-directory
-	DONE: populate \docs
-		DONE: dc3_done.md => done.md
-		DONE: dc3_doc.md => to_do.md
-		DONE: dc3_coding_decs.md => decisions.md
-	DONE:npopulate \dark_castle3
-		DONE: dc3_static_init.py => static_gbl.py
-		DONE: dc3_main.py => web_main.py
-		DONE: dc3_class_deff.py => class_def.py
-		DONE: dc3_ wrapper.py => app_main.py
-		DONE: dc3_start_me_up.py => start_up.py
-		DONE: dc3_interpreter.py => interp.py
-		DONE: dc3_cmd_execute.py => cmd_exe.py
-		DONE: dc3_score.py => score.py
-		DONE: dc3_end.py => ending.py
-		DONE: make_default_pickle.py => mk_def_pkl.py
-	DONE: create other std sub-dierectories (model off of dc2)
-	DONE: rename all module imports within code
-	DONE: make default pickle
-	DONE: test
-DONE: Determine need for 'import sys'
-	NOTE: wasn't really neaded - I wasn't using any sys commands.. so removed all sys imports for now
-DONE: map object attributes, verb methods, and inheritance visually
-DONE: re-map modules
-TBD: map import dependencies
 
 	
 ##########################
@@ -113,6 +28,25 @@ Version 3.50 Goals
 
 
 CLASS IDEAS:
+
+- perhaps room_effects = invisible machines?
+
+Ideas:
+- 4 cases:
+	- pre-action trigger
+	- post-action trigger
+	- pre-action auto
+	- post-action auto
+
+- interactive object types (class == IntObj ???)
+	- travel_effects = pre-action trigger
+		- buffer only flavor
+		- buffer and action trigger
+	- machines = post-action trigger
+	- creatures = pre-action trigger, post-action trigger, pre-action auto, post-action auto
+
+- Perhaps rooms have an attribute of invis_obj_lst (list contains travel_effects) ?
+
 
 ### Cutscene ###
 -  events: conditional-command-list, conditions (list of lists; outer = AND; inner = OR), event-text, events (list); check for end of game in wrapper
