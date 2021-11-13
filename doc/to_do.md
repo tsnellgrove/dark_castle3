@@ -29,7 +29,20 @@ Version 3.50 Goals
 
 CLASS IDEAS:
 
+- simplest approach is long if-then-else list
+	- pros: very flexible
+	- cons: opaque, non-scalable
+- next idea might be trigger obj associated with rooms or obj that have eval-uable conditions an results
+	- pros: less opaque - you know something will happen
+	- cons: essentially a distributed if-then-else
+- alt approach: specific machines with specific conditions and actions
+	- pros: much less opaque and predictable, standard re-usable object types, provides some creative constraints
+	- cons: less flexible
+
+
+
 - perhaps room_effects = invisible machines?
+- 
 
 Ideas:
 - 4 cases:
@@ -40,8 +53,8 @@ Ideas:
 
 - interactive object types (class == IntObj ???)
 	- travel_effects = pre-action trigger
-		- buffer only flavor
-		- buffer and action trigger
+		- results = buffer, ending, take obj from hand_lst, give obj to hand_lst
+		- conditinos = hand_lst contains, event counter
 	- machines = post-action trigger
 	- creatures = pre-action trigger, post-action trigger, pre-action auto, post-action auto
 
