@@ -46,6 +46,7 @@ Ideas:
 	- creatures = pre-action trigger, post-action trigger, pre-action auto, post-action auto
 
 - Perhaps rooms have an attribute of invis_obj_lst (list contains travel_effects) ?
+- Perhaps invisible objects are of a class that wriiting inherits from??
 
 
 ### Cutscene ###
