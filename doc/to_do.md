@@ -91,8 +91,8 @@ DONE: move & rename modules
 	DONE: test
 DONE: Determine need for 'import sys'
 	NOTE: wasn't really neaded - I wasn't using any sys commands.. so removed all sys imports for now
-TBD: map object attributes, verb methods, and inheritance visually
-TBD: re-map modules
+DONE: map object attributes, verb methods, and inheritance visually
+DONE: re-map modules
 TBD: map import dependencies
 
 	
