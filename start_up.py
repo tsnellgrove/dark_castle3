@@ -9,7 +9,7 @@
 import sys
 import pickle
 import random
-from dc3_static_init import descript_dict
+from static_gbl import descript_dict
 
 ### start_me_up - gets obj from default_pkl, welcome text, sets starting values
 def start_me_up():

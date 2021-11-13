@@ -7,7 +7,7 @@
 
 ### import statements
 import sys
-from dc3_wrapper import wrapper
+from app_main import wrapper
 
 ### main routine
 end_of_game = False

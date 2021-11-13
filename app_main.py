@@ -7,11 +7,11 @@
 ### import statements
 import sys
 import pickle
-from dc3_start_me_up import start_me_up
-from dc3_interpreter import interpreter
-from dc3_cmd_execute import cmd_execute
-from  dc3_score import score
-from dc3_end import end
+from start_up import start_me_up
+from interp import interpreter
+from cmd_exe import cmd_execute
+from  score import score
+from ending import end
 
 
 ### wrapper code - loads game obj, calls other modules, and saves game obj

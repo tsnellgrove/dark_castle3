@@ -67,7 +67,7 @@ DONE: clean up use of "import *"
 		DONE: interpreter() & cmd_exe()
 		NOTE: to my surprise, class_def() is not needed in any module other than mk_default_pkl() - who knew!
 		DONE: clean up comments
-IN-PROC: move & rename modules
+DONE: move & rename modules
 	DONE: create \dark_castle3 directory at git root
 		DONE: create \doc sub-directory
 	DONE: populate \docs
@@ -85,12 +85,12 @@ IN-PROC: move & rename modules
 		DONE: dc3_score.py => score.py
 		DONE: dc3_end.py => ending.py
 		DONE: make_default_pickle.py => mk_def_pkl.py
-	TBD: create other std sub-dierectories (model off of dc2)
-	TBD: rename all module imports within code
-	TBD: make default pickle
-	TBD: test
-TBD: Normalize scope_check() for objects of class Writing????
-TBD: map ojbect attributes, methods, and inheritance visually
+	DONE: create other std sub-dierectories (model off of dc2)
+	DONE: rename all module imports within code
+	DONE: make default pickle
+	DONE: test
+TBD: Determin need for 'import sys'
+TBD: map object attributes, verb methods, and inheritance visually
 TBD: re-map modules
 TBD: map import dependencies
 

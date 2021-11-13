@@ -7,7 +7,7 @@
 ### import statements ###
 import sys
 import random
-from dc3_static_init import descript_dict, static_dict
+from static_gbl import descript_dict, static_dict
 
 def rand_error():
 		num = random.randint(0, 4)
