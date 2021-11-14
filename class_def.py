@@ -255,7 +255,6 @@ class ViewOnly(Writing):
 						active_gs.buffer(output)
 
 class Room(ViewOnly):
-#		def __init__(self, name, full_name, root_name, descript_key, writing, features, room_obj_lst, door_paths):
 		def __init__(self, name, full_name, root_name, descript_key, writing, features, room_obj_lst, door_paths, invis_obj_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._features = features # list of non-items in room (can be examined but not taken)
