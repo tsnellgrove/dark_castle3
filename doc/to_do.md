@@ -18,14 +18,14 @@ Nov 13, 2021
 Version 3.50 Goals
 - create travel effects interactive obj
 
-TBD: write up thinking and decisions on interactive obj
 TBD: add invis_obj_lst as Room attribute
 	TBD: update class definition
 	TBD: update mk_def_pkl Room instantiations
 	TBD: run mk_def_pkl
 TBD: add Invisible class as parent of Writing (attributes = name)
 TBD: add TravelEffect class as child of Invisible class
-	TBD: initial attributes = cmd_trigger_lst, effect_desc, cmd_override
+	TBD: initial attributes = cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type
+	TBD: create trigger_check() method for TravelEffect
 	TBD: create initial trigger() method for TravelEffect
 		TBD: buffer  effect_desc
 TBD: in mk_def_pkl instantiate TravelEffect obj
@@ -35,11 +35,12 @@ TBD: in mk_def_pkl instantiate TravelEffect obj
 	TBD: run mk_def_pkl 
 TBD: create pre-action_cmd() function
 		TBD: create method in active_gs to return list of in-scope pre-action
-		TBD: compare list to cmd from interp
-		TBD: if match, run TravelEffect trigger() method
-		TBD: return cmd_override == trigger() [will == True]
+		TBD: for inter_obj in pre_action_lst: trigger_state = trigger_check() method
+		TBD: if trigger_state, cmd_override = trigger() method
+		TBD: return cmd_override
 TBD: update app_main so that cmd_exe() only gets called if cmd_override == False
 TBD: test
+TBD: write up thinking and decisions on interactive obj
 
 
 TBD: update TravelEffect class with more complex attributes
@@ -51,24 +52,8 @@ TBD: in mk_def_pkl instantiate TravelEffect obj
 	TBD: entrance_ew_no_crown
 
 
-
-
 *** interactive object ideas ***
 
-- simplest approach is long if-then-else list
-	- pros: very flexible
-	- cons: opaque, non-scalable
-- next idea might be trigger obj associated with rooms or obj that have eval-uable conditions an results
-	- pros: less opaque - you know something will happen
-	- cons: essentially a distributed if-then-else
-- alt approach: specific machines with specific conditions and actions
-	- pros: much less opaque and predictable, standard re-usable object types, provides some creative constraints
-	- cons: less flexible
-
-
-
-- perhaps room_effects = invisible machines?
-- 
 
 Ideas:
 - 4 cases:
@@ -76,6 +61,16 @@ Ideas:
 	- post-action trigger
 	- pre-action auto
 	- post-action auto
+
+- simplest approach is long if-then-else list
+	- pros: very flexible
+	- cons: opaque, non-scalable
+- next idea might be trigger obj associated with rooms or obj that have eval-uable conditions an results
+	- pros: less opaque - you know something will happen
+	- cons: more coding, essentially a distributed if-then-else
+- alt approach: specific machines with specific conditions and actions
+	- pros: much less opaque and predictable, create interactive world, standard re-usable object types, provides some creative constraints
+	- cons: more coding, less flexible
 
 - interactive object types (class == IntObj ???)
 	- travel_effects = pre-action trigger
@@ -86,6 +81,7 @@ Ideas:
 
 - Perhaps rooms have an attribute of invis_obj_lst (list contains travel_effects) ?
 - Perhaps invisible objects are of a class that wriiting inherits from??
+- For inter_obj auto case, need scope_list in active_gs so that inter_obj always gets a turn - even when not in room
 
 
 ### Cutscene ###
