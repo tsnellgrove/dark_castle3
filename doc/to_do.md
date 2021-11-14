@@ -3,12 +3,12 @@ Nov 13, 2021
 
 
 *** How to Add Objects ***
-1) If needed, create Class and methods in dc3_classes
-2) Instantiate object in mk_default_pkl()
-3) Add object to room in mk_default_pkl()
-4) Add object to master_obj_lst in mk_default_pkl()
-5) Run mk_default_pkl()
-6) Add object description in dc3_static_init
+1) If needed, create Class and methods in class_def
+2) Instantiate object in mk_def_pkl()
+3) Add object to room in mk_def_pkl()
+4) Add object to master_obj_lst in mk_def_pkl()
+5) Run mk_def_pkl()
+6) Add object description in static_gbl
 
 	
 ##########################
@@ -16,18 +16,44 @@ Nov 13, 2021
 ##########################
 
 Version 3.50 Goals
-- Room Events (pre-action trigger) - maybe using exec()
-- implement scoring
+- create travel effects interactive obj
+
+TBD: write up thinking and decisions on interactive obj
+TBD: add invis_obj_lst as Room attribute
+	TBD: update class definition
+	TBD: update mk_def_pkl Room instantiations
+	TBD: run mk_def_pkl
+TBD: add Invisible class as parent of Writing (attributes = name)
+TBD: add TravelEffect class as child of Invisible class
+	TBD: initial attributes = cmd_trigger_lst, effect_desc, cmd_override
+	TBD: create initial trigger() method for TravelEffect
+		TBD: buffer  effect_desc
+TBD: in mk_def_pkl instantiate TravelEffect obj
+	TBD: declare entrance_south
+	TBD: in mk_def_pkl add TravelEffect obj to entrance Room obj
+	TBD: add entrance_south to default pkl dump 
+	TBD: run mk_def_pkl 
+TBD: create pre-action_cmd() function
+		TBD: create method in active_gs to return list of in-scope pre-action
+		TBD: compare list to cmd from interp
+		TBD: if match, run TravelEffect trigger() method
+		TBD: return cmd_override == trigger() [will == True]
+TBD: update app_main so that cmd_exe() only gets called if cmd_override == False
+TBD: test
 
 
-### Timer Events ###
-- have a lantern that dimms over time
-- references to Zork Brass Lantern
-- Provides a timer based trigger that can be inspected each turn (not directly based on Burt actions)
+TBD: update TravelEffect class with more complex attributes
+	TBD: additional attributes = hand_cond_lst, effect_count_cond, ending, hand_lst_add, hand_lst_remove ???
+TBD: in mk_def_pkl instantiate TravelEffect obj
+	TBD: update entrance_south
+	TBD: entrance_ew_death
+	TBD: entrance_ew_crown
+	TBD: entrance_ew_no_crown
 
 
 
-CLASS IDEAS:
+
+*** interactive object ideas ***
 
 - simplest approach is long if-then-else list
 	- pros: very flexible
@@ -63,6 +89,15 @@ Ideas:
 
 
 ### Cutscene ###
+
+- Room Events (pre-action trigger) - maybe using exec()
+
+### Timer Events ###
+- have a lantern that dimms over time
+- references to Zork Brass Lantern
+- Provides a timer based trigger that can be inspected each turn (not directly based on Burt actions)
+
+
 -  events: conditional-command-list, conditions (list of lists; outer = AND; inner = OR), event-text, events (list); check for end of game in wrapper
 IDEA: Conditional Cutscene Class
 IDEA: Conditional_events (a class similar to dcv2 triggers??) => implement for moat ????
