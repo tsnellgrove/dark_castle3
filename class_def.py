@@ -187,9 +187,22 @@ class GameState(object):
 		def __repr__(self):
 				return f'Object { self._name } is of class { type(self).__name__ } '
 
-class Writing(object):
-		def __init__(self, name, full_name, root_name, descript_key):
+class Invisible(object):
+		def __init__(self, name):
 				self._name = name
+
+		@property
+		def name(self):
+				return self._name
+
+		def __repr__(self):
+				return f'Object { self.name } is of class { type(self).__name__ } '
+
+#class Writing(object):
+class Writing(Invisible):
+		def __init__(self, name, full_name, root_name, descript_key):
+				super().__init__(name)
+#				self._name = name
 				self._full_name = full_name
 				self._root_name = root_name
 				self._descript_key = descript_key
@@ -232,8 +245,8 @@ class Writing(object):
 				descript_str = self.get_descript_str(active_gs)
 				active_gs.buffer(descript_str)
 
-		def __repr__(self):
-				return f'Object { self.name } is of class { type(self).__name__ } '
+#		def __repr__(self):
+#				return f'Object { self.name } is of class { type(self).__name__ } '
 
 class ViewOnly(Writing):
 		def __init__(self, name, full_name, root_name, descript_key, writing):

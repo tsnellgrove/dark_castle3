@@ -22,7 +22,9 @@ DONE: add invis_obj_lst as Room attribute
 	DONE: update class definition & create @property
 	DONE: update mk_def_pkl Room instantiations
 	DONE: run mk_def_pkl
-TBD: add Invisible class as parent of Writing (attributes = name)
+DONE: add Invisible class as parent of Writing (attributes = name)
+	DONE: run mk_def_pkl
+	TBD: clean up comments
 TBD: add TravelEffect class as child of Invisible class
 	TBD: initial attributes = cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type
 	TBD: create trigger_check() method for TravelEffect
