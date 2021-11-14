@@ -58,13 +58,13 @@ control_panel = ViewOnly('control_panel', 'Control Panel', 'panel', 'control_pan
 throne = ViewOnly('throne', 'Throne', 'throne', 'throne', None)
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-				[front_gate], {'north' : front_gate})
+				[front_gate], {'north' : front_gate}, [])
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
-				[shiny_sword, front_gate], {'south' : front_gate})
+				[shiny_sword, front_gate], {'south' : front_gate}, [])
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None, [alcove, control_panel],
-				[torn_note, grimy_axe, iron_portcullis], {'north' : iron_portcullis})
+				[torn_note, grimy_axe, iron_portcullis], {'north' : iron_portcullis}, [])
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
-				[throne, silver_key, crystal_box, iron_portcullis], {'south' : iron_portcullis})
+				[throne, silver_key, crystal_box, iron_portcullis], {'south' : iron_portcullis}, [])
 
 
 ### active_gs is the central store of game info ###
