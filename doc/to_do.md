@@ -44,6 +44,8 @@ TBD: create pre-action_cmd() function
 TBD: update app_main so that cmd_exe() only gets called if cmd_override == False
 TBD: test
 TBD: write up thinking and decisions on interactive obj
+TBD: update class diagram
+TBD: update module diagram
 
 
 TBD: update TravelEffect class with more complex attributes
