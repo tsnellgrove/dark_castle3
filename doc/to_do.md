@@ -24,17 +24,18 @@ DONE: add invis_obj_lst as Room attribute
 	DONE: run mk_def_pkl
 DONE: add Invisible class as parent of Writing (attributes = name)
 	DONE: run mk_def_pkl
-	TBD: clean up comments
-TBD: add TravelEffect class as child of Invisible class
-	TBD: initial attributes = cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type
-	TBD: create trigger_check() method for TravelEffect
-	TBD: create initial trigger() method for TravelEffect
-		TBD: buffer  effect_desc
+	DONE: clean up comments
+DOEN: add TravelEffect class as child of Invisible class
+	DONE: initial attributes = cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type
 TBD: in mk_def_pkl instantiate TravelEffect obj
 	TBD: declare entrance_south
 	TBD: in mk_def_pkl add TravelEffect obj to entrance Room obj
 	TBD: add entrance_south to default pkl dump 
 	TBD: run mk_def_pkl 
+TBD: create TravelEffect methods
+	TBD: create trigger_check() method for TravelEffect
+	TBD: create initial trigger() method for TravelEffect
+		TBD: buffer  effect_desc
 TBD: create pre-action_cmd() function
 		TBD: create method in active_gs to return list of in-scope pre-action
 		TBD: for inter_obj in pre_action_lst: trigger_state = trigger_check() method

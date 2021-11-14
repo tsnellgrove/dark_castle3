@@ -198,11 +198,17 @@ class Invisible(object):
 		def __repr__(self):
 				return f'Object { self.name } is of class { type(self).__name__ } '
 
-#class Writing(object):
+class TravelEffect(Invisible):
+		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type):
+				super().__init__(name)
+				self._cmd_trigger_lst
+				self._effect_desc
+				self._cmd_override
+				self._inter_obj_type
+
 class Writing(Invisible):
 		def __init__(self, name, full_name, root_name, descript_key):
 				super().__init__(name)
-#				self._name = name
 				self._full_name = full_name
 				self._root_name = root_name
 				self._descript_key = descript_key
@@ -244,9 +250,6 @@ class Writing(Invisible):
 		def read(self, active_gs):
 				descript_str = self.get_descript_str(active_gs)
 				active_gs.buffer(descript_str)
-
-#		def __repr__(self):
-#				return f'Object { self.name } is of class { type(self).__name__ } '
 
 class ViewOnly(Writing):
 		def __init__(self, name, full_name, root_name, descript_key, writing):
