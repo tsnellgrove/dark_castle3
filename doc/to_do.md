@@ -27,11 +27,12 @@ DONE: add Invisible class as parent of Writing (attributes = name)
 	DONE: clean up comments
 DOEN: add TravelEffect class as child of Invisible class
 	DONE: initial attributes = cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type
-TBD: in mk_def_pkl instantiate TravelEffect obj
-	TBD: declare entrance_south
-	TBD: in mk_def_pkl add TravelEffect obj to entrance Room obj
-	TBD: add entrance_south to default pkl dump 
-	TBD: run mk_def_pkl 
+DONE: in mk_def_pkl instantiate TravelEffect obj
+	DONE: declare entrance_south
+	DONE: in mk_def_pkl add TravelEffect obj to entrance Room obj
+	DONE: add entrance_south to def_pkl dump
+	DONE: effect_desc to descript_dict
+	DONE: run mk_def_pkl 
 TBD: create TravelEffect methods
 	TBD: create trigger_check() method for TravelEffect
 	TBD: create initial trigger() method for TravelEffect

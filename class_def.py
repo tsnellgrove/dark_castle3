@@ -201,10 +201,10 @@ class Invisible(object):
 class TravelEffect(Invisible):
 		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type):
 				super().__init__(name)
-				self._cmd_trigger_lst
-				self._effect_desc
-				self._cmd_override
-				self._inter_obj_type
+				self._cmd_trigger_lst = cmd_trigger_lst # format = ["case", "word1", "word2"]
+				self._effect_desc = effect_desc # what does is the player told when the pre-action trigger takes effect?
+				self._cmd_override = cmd_override # does the pre-action trigger override the player's command?
+				self._inter_obj_type = inter_obj_type # pre-action_trig, post-action_trig, pre-action_auto, or post-action_auto
 
 class Writing(Invisible):
 		def __init__(self, name, full_name, root_name, descript_key):
