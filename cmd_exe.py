@@ -1,7 +1,7 @@
 # program: dark castle v3.49
 # name: Tom Snellgrove
 # date: Nov 13, 2021
-# description: executes game commands
+# description: executes player commands
 
 
 ### import statements ###
