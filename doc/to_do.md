@@ -37,8 +37,8 @@ DONE: create TravelEffect methods
 	DONE: create trigger_check() method for TravelEffect
 	DONE: create initial trigger() method for TravelEffect
 		DONE: buffer  effect_desc
-TBD: create method in active_gs to return list of in-scope pre-action
-TBD: create pre-action_cmd() function
+DONE: create method in active_gs to return list of in-scope inter_obj
+TBD: create pre-action_cmd() module
 	TBD: for inter_obj in pre_action_lst: trigger_state = trigger_check() method
 	TBD: if trigger_state, cmd_override = trigger() method
 	TBD: return cmd_override
