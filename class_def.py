@@ -206,16 +206,37 @@ class TravelEffect(Invisible):
 				self._cmd_override = cmd_override # does the pre-action trigger override the player's command?
 				self._inter_obj_type = inter_obj_type # pre-action_trig, post-action_trig, pre-action_auto, or post-action_auto
 
+		@property
+		def cmd_trigger_lst(self):
+				return self._cmd_trigger_lst
+
+		@property
+		def effect_desc(self):
+				return self._effect_desc
+
+		@property
+		def cmd_override(self):
+				return self._cmd_override
+
+		@property
+		def inter_obj_type(self):
+				return self._inter_obj_type
+
+		def trig_check(self, active_gs, case, word_lst):
+				word1 = word_lst[1]
+				word2 = word_lst[2]
+				cmd_check = [case, word1, word2]
+				return cmd_check == self.cmd_trigger_lst
+
+		def trigger(self, active_gs):
+				active_gs.buffer(descript_dict[self.effect_desc])
+
 class Writing(Invisible):
 		def __init__(self, name, full_name, root_name, descript_key):
 				super().__init__(name)
 				self._full_name = full_name
 				self._root_name = root_name
 				self._descript_key = descript_key
-
-		@property
-		def name(self):
-				return self._name
 
 		@property
 		def full_name(self):
