@@ -38,10 +38,10 @@ DONE: create TravelEffect methods
 	DONE: create initial trigger() method for TravelEffect
 		DONE: buffer  effect_desc
 DONE: create method in active_gs to return list of in-scope inter_obj
-TBD: create pre-action_cmd() module
-	TBD: for inter_obj in pre_action_lst: trigger_state = trigger_check() method
-	TBD: if trigger_state, cmd_override = trigger() method
-	TBD: return cmd_override
+DONE: create pre-action_cmd() module
+	DONE: for inter_obj in pre_action_lst: trigger_state = trigger_check() method
+	DONE: if trigger_state, cmd_override = trigger() method
+	DONE: return cmd_override
 TBD: update app_main so that cmd_exe() only gets called if cmd_override == False
 TBD: test
 TBD: write up thinking and decisions on interactive obj
