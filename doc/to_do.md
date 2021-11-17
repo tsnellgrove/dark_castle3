@@ -18,36 +18,36 @@ Nov 13, 2021
 Version 3.50 Goals
 - create travel effects interactive obj
 
-DONE: add invis_obj_lst as Room attribute
-	DONE: update class definition & create @property
-	DONE: update mk_def_pkl Room instantiations
-	DONE: run mk_def_pkl
-DONE: add Invisible class as parent of Writing (attributes = name)
-	DONE: run mk_def_pkl
-	DONE: clean up comments
-DOEN: add TravelEffect class as child of Invisible class
-	DONE: initial attributes = cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type
-DONE: in mk_def_pkl instantiate TravelEffect obj
-	DONE: declare entrance_south
-	DONE: in mk_def_pkl add TravelEffect obj to entrance Room obj
-	DONE: add entrance_south to def_pkl dump
-	DONE: effect_desc to descript_dict
-	DONE: run mk_def_pkl 
-DONE: create TravelEffect methods
-	DONE: create trigger_check() method for TravelEffect
-	DONE: create initial trigger() method for TravelEffect
-		DONE: buffer  effect_desc
-DONE: create method in active_gs to return list of in-scope inter_obj
-DONE: create pre-action_cmd() module
-	DONE: for inter_obj in pre_action_lst: trigger_state = trigger_check() method
-	DONE: if trigger_state, cmd_override = trigger() method
-	DONE: return cmd_override
-TBD: update app_main so that cmd_exe() only gets called if cmd_override == False
-TBD: test
+DONE: implement RoomEffect for simplest case (go south from entrance)
+	DONE: add invis_obj_lst as Room attribute
+		DONE: update class definition & create @property
+		DONE: update mk_def_pkl Room instantiations
+		DONE: run mk_def_pkl
+	DONE: add Invisible class as parent of Writing (attributes = name)
+		DONE: run mk_def_pkl
+		DONE: clean up comments
+	DOEN: add TravelEffect class as child of Invisible class
+		DONE: initial attributes = cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type
+	DONE: in mk_def_pkl instantiate TravelEffect obj
+		DONE: declare entrance_south
+		DONE: in mk_def_pkl add TravelEffect obj to entrance Room obj
+		DONE: add entrance_south to def_pkl dump
+		DONE: effect_desc to descript_dict
+		DONE: run mk_def_pkl 
+	DONE: create TravelEffect methods
+		DONE: create trigger_check() method for TravelEffect
+		DONE: create initial trigger() method for TravelEffect
+			DONE: buffer  effect_desc
+	DONE: create method in active_gs to return list of in-scope inter_obj
+	DONE: create pre-action_cmd() module
+		DONE: for inter_obj in pre_action_lst: trigger_state = trigger_check() method
+		DONE: if trigger_state, cmd_override = trigger() method
+		DONE: return cmd_override
+	DONE: update app_main
+		DONE: add cmd_override = pre_action_cmd()
+		DONE: cmd_exe() only gets called if cmd_override == False
+	DONE: test
 TBD: write up thinking and decisions on interactive obj
-TBD: update class diagram
-TBD: update module diagram
-
 
 TBD: update TravelEffect class with more complex attributes
 	TBD: additional attributes = hand_cond_lst, effect_count_cond, ending, hand_lst_add, hand_lst_remove ???
@@ -57,6 +57,8 @@ TBD: in mk_def_pkl instantiate TravelEffect obj
 	TBD: entrance_ew_crown
 	TBD: entrance_ew_no_crown
 
+TBD: update class diagram
+TBD: update module diagram
 
 *** interactive object ideas ***
 

@@ -187,7 +187,7 @@ class GameState(object):
 		def inter_obj_lst(self):
 				inter_obj_lst = []
 				room_obj = self.get_room()
-				scope_lst = active_gs.scope_lst() + room_obj.invis_obj_lst
+				scope_lst = self.scope_lst() + room_obj.invis_obj_lst
 				for obj in scope_lst:
 						if hasattr(obj, 'inter_obj_type'):
 								inter_obj_lst.append(obj)
@@ -232,10 +232,14 @@ class TravelEffect(Invisible):
 				return self._inter_obj_type
 
 		def trig_check(self, active_gs, case, word_lst):
-				word1 = word_lst[1]
-				word2 = word_lst[2]
-				cmd_check = [case, word1, word2]
-				return cmd_check == self.cmd_trigger_lst
+				trig_case = self.cmd_trigger_lst[0]
+				if trig_case != case:
+						return False
+				else:
+						word1 = word_lst[1]
+						word2 = word_lst[2]
+						cmd_check = [case, word1, word2]
+						return cmd_check == self.cmd_trigger_lst
 
 		def trigger(self, active_gs):
 				active_gs.buffer(descript_dict[self.effect_desc])
