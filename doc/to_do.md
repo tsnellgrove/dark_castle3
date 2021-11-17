@@ -47,9 +47,20 @@ DONE: implement RoomEffect for simplest case (go south from entrance)
 		DONE: add cmd_override = pre_action_cmd()
 		DONE: cmd_exe() only gets called if cmd_override == False
 	DONE: test
-TBD: entrance_east (simple death case)
+
+TBD: entrance_east and eantrance_west (simple death cases)
 	TBD: add attributes to TravelEffect
-		
+		TBD: game_ending attribute
+		TBD: update entrance_south with game_ending = None
+		TBD: create entrance_east and entrance_west with game_ending = 'death'
+		TBD: add entrance_east and entrance_west to entrance.invis_obj_lst
+		TBD: add entrance_east and entrance_west to def_pkl dump
+		TBD: add entrance_east and entrance_west to descript_dict
+		TBD: run mk_def_pkl
+	TBD: update TravelEffect trigger()method
+		TBD: if game_ending not None: active_gs.set_game_ending(game_ending)
+	TBD: test
+
 
 
 TBD: update TravelEffect class with more complex attributes
