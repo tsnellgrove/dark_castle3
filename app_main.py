@@ -32,7 +32,6 @@ def wrapper(user_input):
 
 				case, word_lst = interpreter(user_input, master_obj_lst)
 				cmd_override = pre_action_cmd(active_gs, case, word_lst)
-#				# pre-action triggers will go here
 				if not cmd_override:
 						cmd_execute(active_gs, case, word_lst)
 				# post-action triggers will go here

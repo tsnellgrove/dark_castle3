@@ -47,7 +47,10 @@ DONE: implement RoomEffect for simplest case (go south from entrance)
 		DONE: add cmd_override = pre_action_cmd()
 		DONE: cmd_exe() only gets called if cmd_override == False
 	DONE: test
-TBD: write up thinking and decisions on interactive obj
+TBD: entrance_east (simple death case)
+	TBD: add attributes to TravelEffect
+		
+
 
 TBD: update TravelEffect class with more complex attributes
 	TBD: additional attributes = hand_cond_lst, effect_count_cond, ending, hand_lst_add, hand_lst_remove ???
@@ -57,11 +60,13 @@ TBD: in mk_def_pkl instantiate TravelEffect obj
 	TBD: entrance_ew_crown
 	TBD: entrance_ew_no_crown
 
+TBD: write up thinking and decisions on interactive obj
 TBD: update class diagram
 TBD: update module diagram
 
-*** interactive object ideas ***
 
+
+*** interactive object ideas ***
 
 Ideas:
 - 4 cases:
