@@ -48,31 +48,39 @@ DONE: implement RoomEffect for simplest case (go south from entrance)
 		DONE: cmd_exe() only gets called if cmd_override == False
 	DONE: test
 
-IN-PROC: entrance_east and eantrance_west (simple death cases)
+DONE: entrance_east and eantrance_west (simple death cases)
 	DONE: add attributes to TravelEffect
-		DONE: game_ending attribute
+		DONE: add game_ending attribute to TravelEffect class (including assignment and @property getter)
 		DONE: update entrance_south with game_ending = None
 		DONE: run mk_def_pkl
 		DONE: test
-	TBD: create new TravelEffect obj
-		TBD: create entrance_east and entrance_west with game_ending = 'death'
-		TBD: add entrance_east and entrance_west to entrance.invis_obj_lst
-		TBD: add entrance_east and entrance_west to def_pkl dump
-		TBD: add entrance_east and entrance_west to descript_dict
-		TBD: run mk_def_pkl
-	TBD: update TravelEffect trigger()method
-		TBD: if game_ending not None: active_gs.set_game_ending(game_ending)
-	TBD: test
+	DONE: create new TravelEffect obj
+		DONE: create entrance_east and entrance_west with game_ending = 'death'
+		DONE: add entrance_east and entrance_west to entrance.invis_obj_lst
+		DONE: add entrance_east and entrance_west to def_pkl dump
+		DONE: add entrance_east and entrance_west to descript_dict
+		DONE: run mk_def_pkl
+		DONE: test
+	DONE: update TravelEffect trigger()method
+		DONE: if game_ending not None: active_gs.set_game_ending(game_ending)
+		DONE: test
 
 
+TBD: create Hat class
+TBD: create crown obj
+TBD: create wear method
+TBD: create remove method
 
 TBD: update TravelEffect class with more complex attributes
-	TBD: additional attributes = hand_cond_lst, effect_count_cond, ending, hand_lst_add, hand_lst_remove ???
+	TBD: additional attributes = hand_cond_lst, effect_count_cond, hand_lst_add, hand_lst_remove ???
 TBD: in mk_def_pkl instantiate TravelEffect obj
 	TBD: update entrance_south
 	TBD: entrance_ew_death
 	TBD: entrance_ew_crown
 	TBD: entrance_ew_no_crown
+
+TBD: create add_to_hand active_gs method that swaps current hand contents to backpak (without "Taken" buffer)
+TBD: update score for crown in hand
 
 TBD: write up thinking and decisions on interactive obj
 TBD: update class diagram

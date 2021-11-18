@@ -214,6 +214,7 @@ class TravelEffect(Invisible):
 				self._effect_desc = effect_desc # what does is the player told when the pre-action trigger takes effect?
 				self._cmd_override = cmd_override # does the pre-action trigger override the player's command?
 				self._inter_obj_type = inter_obj_type # pre-action_trig, post-action_trig, pre-action_auto, or post-action_auto
+				self._game_ending = game_ending # usually 'death' from walking into a dangerous room
 
 		@property
 		def cmd_trigger_lst(self):
@@ -231,6 +232,10 @@ class TravelEffect(Invisible):
 		def inter_obj_type(self):
 				return self._inter_obj_type
 
+		@property
+		def game_ending(self):
+				return self._game_ending
+
 		def trig_check(self, active_gs, case, word_lst):
 				trig_case = self.cmd_trigger_lst[0]
 				if trig_case != case:
@@ -243,6 +248,8 @@ class TravelEffect(Invisible):
 
 		def trigger(self, active_gs):
 				active_gs.buffer(descript_dict[self.effect_desc])
+				if self.game_ending is not None:
+						active_gs.set_game_ending(self.game_ending)
 
 class Writing(Invisible):
 		def __init__(self, name, full_name, root_name, descript_key):

@@ -58,9 +58,12 @@ control_panel = ViewOnly('control_panel', 'Control Panel', 'panel', 'control_pan
 throne = ViewOnly('throne', 'Throne', 'throne', 'throne', None)
 
 entrance_south = TravelEffect('entrance_south', ["go", "go", "south"], 'entrance_south', True, 'pre-action_trig', None)
+entrance_east = TravelEffect('entrance_east', ["go", "go", "east"], 'entrance_east', True, 'pre-action_trig', 'death')
+entrance_west = TravelEffect('entrance_west', ["go", "go", "west"], 'entrance_west', True, 'pre-action_trig', 'death')
+
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-				[front_gate], {'north' : front_gate}, [entrance_south])
+				[front_gate], {'north' : front_gate}, [entrance_south, entrance_east, entrance_west])
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
 				[shiny_sword, front_gate], {'south' : front_gate}, [])
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None, [alcove, control_panel],
@@ -101,7 +104,7 @@ active_gs = GameState(
 )
 
 # instantiated objects added to list
-master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, cheese_wedge, stale_biscuits, fresh_water, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, entrance_south, entrance, main_hall, antechamber, throne_room]
+master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, cheese_wedge, stale_biscuits, fresh_water, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, entrance_south, entrance_east, entrance_west, entrance, main_hall, antechamber, throne_room]
 
 
 # list written to pickle
