@@ -66,26 +66,49 @@ DONE: entrance_east and eantrance_west (simple death cases)
 		DONE: test
 
 
-TBD: create Hat class
-TBD: create crown obj
-TBD: create wear method
-TBD: create remove method
+IDEA: Still thinking through - do I want one TravelEffect obj per possible outcome? Or one per direction??
+
+IDEA: east / west TravelEffect obj I will eventually want:
+- entrance_east_no_weap
+- entrance_east_weap_1st
+- entrance_east_weap_repeat
+
+IDEA: additional capabilities I ned to go from entrance_east to entrance_east_no_weap
+- additional attribute = not_in_hand_cond
+
+TBD: entrance_east_no_weap and eantrance_west_no_weap (full death cases)
+	TBD: add attributes to TravelEffect
+		TBD: add not_in_hand_cond attribute to TravelEffect class (including assignment and @property getter)
+		TBD: update entrance_south with not_in_hand_cond = None
+				TBD: update entrance_east with not_in_hand_cond = [shiny_sword, grimy_axe]
+				TBD: update entrance_west with not_in_hand_cond = [shiny_sword, grimy_axe]
+		TBD: run mk_def_pkl
+		TBD: test
+	TBD: update TravelEffect trig_check() method
+		TBD: update to check if not_in_hand_cond not None: and, if not, for loop to confirm not_in_hand_cond obj not in hand_lst
+		TBD: test
+
+
+IDEA: to start with, test entrance_east_weap_1st with random mcguffin
+
+TBD: create add_to_hand active_gs method that swaps current hand contents to backpak (without "Taken" buffer)
 
 TBD: update TravelEffect class with more complex attributes
 	TBD: additional attributes = hand_cond_lst, effect_count_cond, hand_lst_add, hand_lst_remove ???
 TBD: in mk_def_pkl instantiate TravelEffect obj
-	TBD: update entrance_south
-	TBD: entrance_ew_death
-	TBD: entrance_ew_crown
-	TBD: entrance_ew_no_crown
 
-TBD: create add_to_hand active_gs method that swaps current hand contents to backpak (without "Taken" buffer)
+
+TBD: create Hat class
+TBD: create crown obj
+TBD: create wear method
+TBD: create remove method
 TBD: update score for crown in hand
+TBD: Update active_gs to include 'worn' attribute
+TBD: Update inventory() function in cmd_exe() module to show 'worn' in inventory
 
 TBD: write up thinking and decisions on interactive obj
 TBD: update class diagram
 TBD: update module diagram
-
 
 
 *** interactive object ideas ***
@@ -106,6 +129,8 @@ Ideas:
 - alt approach: specific machines with specific conditions and actions
 	- pros: much less opaque and predictable, create interactive world, standard re-usable object types, provides some creative constraints
 	- cons: more coding, less flexible
+
+
 
 - interactive object types (class == IntObj ???)
 	- travel_effects = pre-action trigger
