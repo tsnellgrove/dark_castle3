@@ -208,7 +208,7 @@ class Invisible(object):
 				return f'Object { self.name } is of class { type(self).__name__ } '
 
 class TravelEffect(Invisible):
-		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type):
+		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type, game_ending):
 				super().__init__(name)
 				self._cmd_trigger_lst = cmd_trigger_lst # format = ["case", "word1", "word2"]
 				self._effect_desc = effect_desc # what does is the player told when the pre-action trigger takes effect?

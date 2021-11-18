@@ -48,10 +48,13 @@ DONE: implement RoomEffect for simplest case (go south from entrance)
 		DONE: cmd_exe() only gets called if cmd_override == False
 	DONE: test
 
-TBD: entrance_east and eantrance_west (simple death cases)
-	TBD: add attributes to TravelEffect
-		TBD: game_ending attribute
-		TBD: update entrance_south with game_ending = None
+IN-PROC: entrance_east and eantrance_west (simple death cases)
+	DONE: add attributes to TravelEffect
+		DONE: game_ending attribute
+		DONE: update entrance_south with game_ending = None
+		DONE: run mk_def_pkl
+		DONE: test
+	TBD: create new TravelEffect obj
 		TBD: create entrance_east and entrance_west with game_ending = 'death'
 		TBD: add entrance_east and entrance_west to entrance.invis_obj_lst
 		TBD: add entrance_east and entrance_west to def_pkl dump

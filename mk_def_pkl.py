@@ -57,7 +57,7 @@ iron_portcullis = Door('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron
 control_panel = ViewOnly('control_panel', 'Control Panel', 'panel', 'control_panel', None)
 throne = ViewOnly('throne', 'Throne', 'throne', 'throne', None)
 
-entrance_south = TravelEffect('entrance_south', ["go", "go", "south"], 'entrance_south', True, 'pre-action_trig')
+entrance_south = TravelEffect('entrance_south', ["go", "go", "south"], 'entrance_south', True, 'pre-action_trig', None)
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
 				[front_gate], {'north' : front_gate}, [entrance_south])
