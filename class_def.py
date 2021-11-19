@@ -208,7 +208,10 @@ class Invisible(object):
 				return f'Object { self.name } is of class { type(self).__name__ } '
 
 class TravelEffect(Invisible):
-		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type, game_ending, in_hand_cond, in_hand_lst):
+#		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type, game_ending, in_hand_cond, in_hand_lst):
+		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override,
+						inter_obj_type, game_ending, in_hand_cond, in_hand_lst, give_or_take,
+						give_item, put_place):
 				super().__init__(name)
 				self._cmd_trigger_lst = cmd_trigger_lst # format = ["case", "word1", "word2"]
 				self._effect_desc = effect_desc # what does is the player told when the pre-action trigger takes effect?
@@ -217,6 +220,9 @@ class TravelEffect(Invisible):
 				self._game_ending = game_ending # usually None but could be 'death' from walking into a dangerous room
 				self._in_hand_cond = in_hand_cond # None for no condition; True for check items in hand; False for check items NOT in hand
 				self._in_hand_lst = in_hand_lst # list of items either in or NOT in hand_lst (depending on the value of in_hand_cond)
+				self._give_or_take = give_or_take # switch to choose whether an item is given or taken from hand_lst; None = no give or take
+				self._give_item = give_item # item to be given to player if conditions met
+				self._put_place = put_place # where players item will be placed if conditions are met
 
 		@property
 		def cmd_trigger_lst(self):
@@ -246,6 +252,18 @@ class TravelEffect(Invisible):
 		def in_hand_lst(self):
 				return self._in_hand_lst
 
+		@property
+		def give_or_take(self):
+				return self._give_or_take
+
+		@property
+		def give_item(self):
+				return self._give_item
+
+		@property
+		def put_place(self):
+				return self._put_place
+
 		def trig_check(self, active_gs, case, word_lst):
 				hand_lst = active_gs.get_hand_lst()
 				trig_case = self.cmd_trigger_lst[0]
@@ -263,7 +281,8 @@ class TravelEffect(Invisible):
 								else:
 										cond_match = False
 										for obj in self.in_hand_lst:
-												if obj in hand_lst:
+#												if obj in hand_lst:
+												if active_gs.hand_check(obj):
 														cond_match = True
 										return cond_match == self.in_hand_cond
 

@@ -85,26 +85,22 @@ DONE: entrance_east_no_weap and eantrance_west_no_weap (full death cases)
 		DONE: update to check if in_hand_cond not None: and, if not, for loop to confirm in_hand_lst obj in active_gs.hand_lst matches in_hand_cond
 		DONE: test
 
-
-
-
-
-TBD: can I used active_gs.hand_check() in TravelEffect method trig_check() ?
+DONE: can I used active_gs.hand_check() in TravelEffect method trig_check() ?
 
 IDEA: additional capabilities I need to go from entrance_east to entrance_east_weap?
 - give_or_take, give_item, put_place
 IDEA: to start with, test entrance_east_weap_1st with random mcguffin
 
-TBD: entrance_east_weap and eantrance_west_weap (get item case but no counter yet)
-	TBD: create random_mcguffin obj for testing
-		TBD: run mk_def_pkl
-	TBD: add attributes to TravelEffect
-		TBD: give_or_take, give_item, and put_place attribute to TravelEffect class (including assignment and @property getter)
-		TBD: update entrance_south with new attributes = all None
-				TBD: update entrance_east with new attributes = 'give', random_mcguffin, and None
-				TBD: update entrance_west with new attributes = 'give', random_mcguffin, and None
-		TBD: run mk_def_pkl
-		TBD: test
+IN-PROC: entrance_east_weap and eantrance_west_weap (get item case but no counter yet)
+	DONE: create random_mcguffin obj for testing
+		DONE: run mk_def_pkl
+	IN-PROCE: add attributes to TravelEffect
+		DONE: give_or_take, give_item, and put_place attribute to TravelEffect class (including assignment and @property getter)
+		DONE: update entrance_south, entrance_east_no_weap, and entrance_west_no_weap with new attributes = all None
+				DONE: update entrance_east_weap with new attributes = 'give', random_mcguffin, and None
+				DONE: update entrance_west_weap with new attributes = 'give', random_mcguffin, and None
+		DONE: run mk_def_pkl
+		DONE: test
 	TBD: create active_gs.put_in_hand(item) method
 		TBD: if not hand_empty(), swap current hand_lst to backpack
 		TBD: active_gs.hand_lst_append_item(item) 
