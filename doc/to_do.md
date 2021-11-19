@@ -78,14 +78,14 @@ IDEA: additional capabilities I ned to go from entrance_east to entrance_east_no
 
 TBD: entrance_east_no_weap and eantrance_west_no_weap (full death cases)
 	TBD: add attributes to TravelEffect
-		TBD: add in_hand_items and in_hand_cond attribute to TravelEffect class (including assignment and @property getter)
+		TBD: add in_hand_lst and in_hand_cond attribute to TravelEffect class (including assignment and @property getter)
 		TBD: update entrance_south with not_in_hand_cond = None
-				TBD: update entrance_east with not_in_hand_cond = [shiny_sword, grimy_axe]
-				TBD: update entrance_west with not_in_hand_cond = [shiny_sword, grimy_axe]
+				TBD: update entrance_east with in_hand_lst = [shiny_sword, grimy_axe] and in_hand_cond = False
+				TBD: update entrance_west with in_hand_lst = [shiny_sword, grimy_axe] and in_hand_cond = False
 		TBD: run mk_def_pkl
 		TBD: test
 	TBD: update TravelEffect trig_check() method
-		TBD: update to check if not_in_hand_cond not None: and, if not, for loop to confirm not_in_hand_cond obj not in hand_lst
+		TBD: update to check if in_hand_cond not None: and, if not, for loop to confirm in_hand_lst obj in active_gs.hand_lst matches in_hand_cond
 		TBD: test
 
 
