@@ -65,9 +65,6 @@ DONE: entrance_east and eantrance_west (simple death cases)
 		DONE: if game_ending not None: active_gs.set_game_ending(game_ending)
 		DONE: test
 
-
-IDEA: Still thinking through - do I want one TravelEffect obj per possible outcome? Or one per direction??
-
 IDEA: east / west TravelEffect obj I will eventually want:
 - entrance_east_no_weap
 - entrance_east_weap_1st
@@ -76,7 +73,7 @@ IDEA: east / west TravelEffect obj I will eventually want:
 IDEA: additional capabilities I need to go from entrance_east to entrance_east_no_weap
 - additional attribute = not_in_hand_cond
 
-IN-PROC: entrance_east_no_weap and eantrance_west_no_weap (full death cases)
+DONE: entrance_east_no_weap and eantrance_west_no_weap (full death cases)
 	DONE: add attributes to TravelEffect
 		DONE: add in_hand_lst and in_hand_cond attribute to TravelEffect class (including assignment and @property getter)
 		DONE: update entrance_south with in_hand_cond = None and in_hand_lst = []
@@ -88,33 +85,52 @@ IN-PROC: entrance_east_no_weap and eantrance_west_no_weap (full death cases)
 		DONE: update to check if in_hand_cond not None: and, if not, for loop to confirm in_hand_lst obj in active_gs.hand_lst matches in_hand_cond
 		DONE: test
 
+
+
+
+
+TBD: can I used active_gs.hand_check() in TravelEffect method trig_check() ?
+
 IDEA: additional capabilities I need to go from entrance_east to entrance_east_weap?
-
-
-
-
-
-
+- give_or_take, give_item, put_place
 IDEA: to start with, test entrance_east_weap_1st with random mcguffin
 
-TBD: create add_to_hand active_gs method that swaps current hand contents to backpak (without "Taken" buffer)
+TBD: entrance_east_weap and eantrance_west_weap (get item case but no counter yet)
+	TBD: create random_mcguffin obj for testing
+		TBD: run mk_def_pkl
+	TBD: add attributes to TravelEffect
+		TBD: give_or_take, give_item, and put_place attribute to TravelEffect class (including assignment and @property getter)
+		TBD: update entrance_south with new attributes = all None
+				TBD: update entrance_east with new attributes = 'give', random_mcguffin, and None
+				TBD: update entrance_west with new attributes = 'give', random_mcguffin, and None
+		TBD: run mk_def_pkl
+		TBD: test
+	TBD: create active_gs.put_in_hand(item) method
+		TBD: if not hand_empty(), swap current hand_lst to backpack
+		TBD: active_gs.hand_lst_append_item(item) 
+	TBD: update TravelEffect trigger() method
+		TBD: define room_obj
+		TBD: check for take_or_give and either active_gs.put_in_hand(give_item) 
+				or, if not hand_empty(), put_place.append(hand_lst[0]) and hand_lst[0].remove
+		TBD: test
 
-TBD: update TravelEffect class with more complex attributes
-	TBD: additional attributes = hand_cond_lst, effect_count_cond, hand_lst_add, hand_lst_remove ???
-TBD: in mk_def_pkl instantiate TravelEffect obj
+TBD: entrance_east_weap_1st (full get item case with counter on first count)
 
+TBD: entrance_east_weap_repeat (full get item case with counter after first count)
 
-TBD: create Hat class
-TBD: create crown obj
-TBD: create wear method
-TBD: create remove method
-TBD: update score for crown in hand
-TBD: Update active_gs to include 'worn' attribute
-TBD: Update inventory() function in cmd_exe() module to show 'worn' in inventory
+TBD: create crown object
+	TBD: create Hat class
+	TBD: create crown obj
+	TBD: create wear method
+	TBD: create remove method
+	TBD: update score for crown in hand
+	TBD: Update active_gs to include 'worn' attribute
+	TBD: Update inventory() function in cmd_exe() module to show 'worn' in inventory
 
-TBD: write up thinking and decisions on interactive obj
-TBD: update class diagram
-TBD: update module diagram
+TBD: documentation:
+	TBD: write up thinking and decisions on interactive obj
+	TBD: update class diagram
+	TBD: update module diagram
 
 
 *** interactive object ideas ***
@@ -136,7 +152,8 @@ Ideas:
 	- pros: much less opaque and predictable, create interactive world, standard re-usable object types, provides some creative constraints
 	- cons: more coding, less flexible
 
-
+IDEA: Still thinking through - do I want one TravelEffect obj per possible outcome? Or one per direction??
+	- DEC: multiple conditions per TravelEffect but as few outcomes as possible
 
 - interactive object types (class == IntObj ???)
 	- travel_effects = pre-action trigger
@@ -235,6 +252,9 @@ TBD: Try tupples for descript_dict
 NEW PUZZLE IDEAS:
 
 ### New Puzzle Ideas ###
+
+IDEA: create a fun scenario where TravelEffect take item gets used... maybe a giant brid comes along and takes whatever's in Burts hand and scares him off until he carries a lead weight (or a heavy rock?) - which tires the bird out so much Burt can go in the room and get back his stuff and enter the room? Maybe this could be a room between main hall and antechamber that the maze / mouse hole is off of? Maybe nest is in corder of room of class Box (not open / close or lock / unlock).
+
 - Can sharpen and clean sword in mouse hole - maybe only way to get past goblin
 - need a non-shrunken ruby to pay for sword sharpening (turns up nose at cheese - says he never touches it because it gives him indigestion)
 - mini Zork maze to get to blacksmith mouse
