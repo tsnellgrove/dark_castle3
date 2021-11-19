@@ -73,20 +73,26 @@ IDEA: east / west TravelEffect obj I will eventually want:
 - entrance_east_weap_1st
 - entrance_east_weap_repeat
 
-IDEA: additional capabilities I ned to go from entrance_east to entrance_east_no_weap
+IDEA: additional capabilities I need to go from entrance_east to entrance_east_no_weap
 - additional attribute = not_in_hand_cond
 
-TBD: entrance_east_no_weap and eantrance_west_no_weap (full death cases)
-	TBD: add attributes to TravelEffect
-		TBD: add in_hand_lst and in_hand_cond attribute to TravelEffect class (including assignment and @property getter)
-		TBD: update entrance_south with not_in_hand_cond = None
-				TBD: update entrance_east with in_hand_lst = [shiny_sword, grimy_axe] and in_hand_cond = False
-				TBD: update entrance_west with in_hand_lst = [shiny_sword, grimy_axe] and in_hand_cond = False
-		TBD: run mk_def_pkl
-		TBD: test
-	TBD: update TravelEffect trig_check() method
-		TBD: update to check if in_hand_cond not None: and, if not, for loop to confirm in_hand_lst obj in active_gs.hand_lst matches in_hand_cond
-		TBD: test
+IN-PROC: entrance_east_no_weap and eantrance_west_no_weap (full death cases)
+	DONE: add attributes to TravelEffect
+		DONE: add in_hand_lst and in_hand_cond attribute to TravelEffect class (including assignment and @property getter)
+		DONE: update entrance_south with in_hand_cond = None and in_hand_lst = []
+				DONE: update entrance_east with in_hand_lst = [shiny_sword, grimy_axe] and in_hand_cond = False
+				DONE: update entrance_west with in_hand_lst = [shiny_sword, grimy_axe] and in_hand_cond = False
+		DONE: run mk_def_pkl
+		DONE: test
+	DONE: update TravelEffect trig_check() method
+		DONE: update to check if in_hand_cond not None: and, if not, for loop to confirm in_hand_lst obj in active_gs.hand_lst matches in_hand_cond
+		DONE: test
+
+IDEA: additional capabilities I need to go from entrance_east to entrance_east_weap?
+
+
+
+
 
 
 IDEA: to start with, test entrance_east_weap_1st with random mcguffin

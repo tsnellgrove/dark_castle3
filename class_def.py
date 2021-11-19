@@ -208,13 +208,15 @@ class Invisible(object):
 				return f'Object { self.name } is of class { type(self).__name__ } '
 
 class TravelEffect(Invisible):
-		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type, game_ending):
+		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type, game_ending, in_hand_cond, in_hand_lst):
 				super().__init__(name)
 				self._cmd_trigger_lst = cmd_trigger_lst # format = ["case", "word1", "word2"]
 				self._effect_desc = effect_desc # what does is the player told when the pre-action trigger takes effect?
 				self._cmd_override = cmd_override # does the pre-action trigger override the player's command?
 				self._inter_obj_type = inter_obj_type # pre-action_trig, post-action_trig, pre-action_auto, or post-action_auto
-				self._game_ending = game_ending # usually 'death' from walking into a dangerous room
+				self._game_ending = game_ending # usually None but could be 'death' from walking into a dangerous room
+				self._in_hand_cond = in_hand_cond # None for no condition; True for check items in hand; False for check items NOT in hand
+				self._in_hand_lst = in_hand_lst # list of items either in or NOT in hand_lst (depending on the value of in_hand_cond)
 
 		@property
 		def cmd_trigger_lst(self):
@@ -236,7 +238,16 @@ class TravelEffect(Invisible):
 		def game_ending(self):
 				return self._game_ending
 
+		@property
+		def in_hand_cond(self):
+				return self._in_hand_cond
+
+		@property
+		def in_hand_lst(self):
+				return self._in_hand_lst
+
 		def trig_check(self, active_gs, case, word_lst):
+				hand_lst = active_gs.get_hand_lst()
 				trig_case = self.cmd_trigger_lst[0]
 				if trig_case != case:
 						return False
@@ -244,7 +255,17 @@ class TravelEffect(Invisible):
 						word1 = word_lst[1]
 						word2 = word_lst[2]
 						cmd_check = [case, word1, word2]
-						return cmd_check == self.cmd_trigger_lst
+						if cmd_check == self.cmd_trigger_lst:
+								if self.in_hand_cond is None:
+										return True
+								elif (active_gs.hand_empty()) and (self.in_hand_cond == False):
+										return True
+								else:
+										cond_match = False
+										for obj in self.in_hand_lst:
+												if obj in hand_lst:
+														cond_match = True
+										return cond_match == self.in_hand_cond
 
 		def trigger(self, active_gs):
 				active_gs.buffer(descript_dict[self.effect_desc])
