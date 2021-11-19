@@ -78,7 +78,7 @@ IDEA: additional capabilities I ned to go from entrance_east to entrance_east_no
 
 TBD: entrance_east_no_weap and eantrance_west_no_weap (full death cases)
 	TBD: add attributes to TravelEffect
-		TBD: add not_in_hand_cond attribute to TravelEffect class (including assignment and @property getter)
+		TBD: add in_hand_items and in_hand_cond attribute to TravelEffect class (including assignment and @property getter)
 		TBD: update entrance_south with not_in_hand_cond = None
 				TBD: update entrance_east with not_in_hand_cond = [shiny_sword, grimy_axe]
 				TBD: update entrance_west with not_in_hand_cond = [shiny_sword, grimy_axe]
