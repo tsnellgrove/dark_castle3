@@ -1,5 +1,5 @@
 To Do List - Dark Castle v3
-Nov 13, 2021
+Nov 20, 2021
 
 
 *** How to Add Objects ***
@@ -9,113 +9,6 @@ Nov 13, 2021
 4) Add object to master_obj_lst in mk_def_pkl()
 5) Run mk_def_pkl()
 6) Add object description in static_gbl
-
-	
-##########################
-### VERSION 3.50 START ###
-##########################
-
-Version 3.50 Goals
-- create travel effects interactive obj
-
-DONE: implement RoomEffect for simplest case (go south from entrance)
-	DONE: add invis_obj_lst as Room attribute
-		DONE: update class definition & create @property
-		DONE: update mk_def_pkl Room instantiations
-		DONE: run mk_def_pkl
-	DONE: add Invisible class as parent of Writing (attributes = name)
-		DONE: run mk_def_pkl
-		DONE: clean up comments
-	DOEN: add TravelEffect class as child of Invisible class
-		DONE: initial attributes = cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type
-	DONE: in mk_def_pkl instantiate TravelEffect obj
-		DONE: declare entrance_south
-		DONE: in mk_def_pkl add TravelEffect obj to entrance Room obj
-		DONE: add entrance_south to def_pkl dump
-		DONE: effect_desc to descript_dict
-		DONE: run mk_def_pkl 
-	DONE: create TravelEffect methods
-		DONE: create trigger_check() method for TravelEffect
-		DONE: create initial trigger() method for TravelEffect
-			DONE: buffer  effect_desc
-	DONE: create method in active_gs to return list of in-scope inter_obj
-	DONE: create pre-action_cmd() module
-		DONE: for inter_obj in pre_action_lst: trigger_state = trigger_check() method
-		DONE: if trigger_state, cmd_override = trigger() method
-		DONE: return cmd_override
-	DONE: update app_main
-		DONE: add cmd_override = pre_action_cmd()
-		DONE: cmd_exe() only gets called if cmd_override == False
-	DONE: test
-
-DONE: entrance_east and eantrance_west (simple death cases)
-	DONE: add attributes to TravelEffect
-		DONE: add game_ending attribute to TravelEffect class (including assignment and @property getter)
-		DONE: update entrance_south with game_ending = None
-		DONE: run mk_def_pkl
-		DONE: test
-	DONE: create new TravelEffect obj
-		DONE: create entrance_east and entrance_west with game_ending = 'death'
-		DONE: add entrance_east and entrance_west to entrance.invis_obj_lst
-		DONE: add entrance_east and entrance_west to def_pkl dump
-		DONE: add entrance_east and entrance_west to descript_dict
-		DONE: run mk_def_pkl
-		DONE: test
-	DONE: update TravelEffect trigger()method
-		DONE: if game_ending not None: active_gs.set_game_ending(game_ending)
-		DONE: test
-
-IDEA: east / west TravelEffect obj I will eventually want:
-- entrance_east_no_weap
-- entrance_east_weap_1st
-- entrance_east_weap_repeat
-
-IDEA: additional capabilities I need to go from entrance_east to entrance_east_no_weap
-- additional attribute = not_in_hand_cond
-
-DONE: entrance_east_no_weap and eantrance_west_no_weap (full death cases)
-	DONE: add attributes to TravelEffect
-		DONE: add in_hand_lst and in_hand_cond attribute to TravelEffect class (including assignment and @property getter)
-		DONE: update entrance_south with in_hand_cond = None and in_hand_lst = []
-				DONE: update entrance_east with in_hand_lst = [shiny_sword, grimy_axe] and in_hand_cond = False
-				DONE: update entrance_west with in_hand_lst = [shiny_sword, grimy_axe] and in_hand_cond = False
-		DONE: run mk_def_pkl
-		DONE: test
-	DONE: update TravelEffect trig_check() method
-		DONE: update to check if in_hand_cond not None: and, if not, for loop to confirm in_hand_lst obj in active_gs.hand_lst matches in_hand_cond
-		DONE: test
-
-DONE: can I used active_gs.hand_check() in TravelEffect method trig_check() ?
-
-IDEA: additional capabilities I need to go from entrance_east to entrance_east_weap?
-- give_or_take, give_item, put_place
-IDEA: to start with, test entrance_east_weap_1st with random mcguffin
-
-DONE: entrance_east_weap and eantrance_west_weap (get item case but no counter yet)
-	DONE: create random_mcguffin obj for testing
-		DONE: run mk_def_pkl
-	DONE: add attributes to TravelEffect
-		DONE: give_or_take, give_item, and put_place attribute to TravelEffect class (including assignment and @property getter)
-		DONE: update entrance_south, entrance_east_no_weap, and entrance_west_no_weap with new attributes = all None
-				DONE: update entrance_east_weap with new attributes = 'give', random_mcguffin, and None
-				DONE: update entrance_west_weap with new attributes = 'give', random_mcguffin, and None
-		DONE: run mk_def_pkl
-		DONE: test
-	DONE: create active_gs.put_in_hand(item) method
-		DONE: if not hand_empty(), swap current hand_lst to backpack
-		DONE: active_gs.hand_lst_append_item(item) 
-	DONE: update TravelEffect trigger() method
-		DONE: define room_obj
-		DONE: check for take_or_give and either active_gs.put_in_hand(give_item) 
-				or, if not hand_empty(), put_place.append(hand_lst[0]) and hand_lst[0].remove
-		DONE: test
-
-CANCEL: entrance_east_weap_1st (full get item case with counter on first count)
-	IDEA: instead of counter, implement as got_crown = False => True
-
-CANCEL: entrance_east_weap_repeat (full get item case with counter after first count)
-
-NOTE: ending v 3.50 early... I have a new modular idea for how to implement machines (with TravelEffect as an invisible machine)
 
 
 ##########################
@@ -144,6 +37,8 @@ IDEA: machines should be modular... a bit like rooms
 	cmd_cond_lst => None
 	result_lst => [cant_leave] => buffer message, return override == True
 
+
+IDEA: instead of counter, implement as got_crown = False => True
 
 NEXT:
 1) Think through pre_action_cmd function
