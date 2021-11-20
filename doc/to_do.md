@@ -75,14 +75,15 @@ Class Considerations:
 - So MachCond and MachRslt should be children of class Invisible
 - Then machines can inherit from the correct class: InvisMach, ViewOnlyMach, ItemMach
 
-pre_action_cmd Function Pseudo-Code:
+pre_action_cmd() Function Pseudo-Code:
 - get inter_obj_lst and for each pre_action_trig: trig_check = trig_check() <return = T/F>
 - if trig_check: cmd_override = trigger() <return = T/F>
 
 
 TBD: non-destructively disable existing TravelEffect coding
-
-
+	TBD: comment out app_main() call for pre_action_cmd() module
+	TBD: comment out object defs, entrance Room invisble items, and obj adds to def_pickle (and re-run mk_def_pkl)
+	TBD: comment out TravelEffect class in class_def() module
 
 
 

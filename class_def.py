@@ -216,7 +216,6 @@ class Invisible(object):
 				return f'Object { self.name } is of class { type(self).__name__ } '
 
 class TravelEffect(Invisible):
-#		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override, inter_obj_type, game_ending, in_hand_cond, in_hand_lst):
 		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override,
 						inter_obj_type, game_ending, in_hand_cond, in_hand_lst, give_or_take,
 						give_item, put_place):
