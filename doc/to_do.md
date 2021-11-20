@@ -91,28 +91,66 @@ IDEA: additional capabilities I need to go from entrance_east to entrance_east_w
 - give_or_take, give_item, put_place
 IDEA: to start with, test entrance_east_weap_1st with random mcguffin
 
-IN-PROC: entrance_east_weap and eantrance_west_weap (get item case but no counter yet)
+DONE: entrance_east_weap and eantrance_west_weap (get item case but no counter yet)
 	DONE: create random_mcguffin obj for testing
 		DONE: run mk_def_pkl
-	IN-PROCE: add attributes to TravelEffect
+	DONE: add attributes to TravelEffect
 		DONE: give_or_take, give_item, and put_place attribute to TravelEffect class (including assignment and @property getter)
 		DONE: update entrance_south, entrance_east_no_weap, and entrance_west_no_weap with new attributes = all None
 				DONE: update entrance_east_weap with new attributes = 'give', random_mcguffin, and None
 				DONE: update entrance_west_weap with new attributes = 'give', random_mcguffin, and None
 		DONE: run mk_def_pkl
 		DONE: test
-	TBD: create active_gs.put_in_hand(item) method
-		TBD: if not hand_empty(), swap current hand_lst to backpack
-		TBD: active_gs.hand_lst_append_item(item) 
-	TBD: update TravelEffect trigger() method
-		TBD: define room_obj
-		TBD: check for take_or_give and either active_gs.put_in_hand(give_item) 
+	DONE: create active_gs.put_in_hand(item) method
+		DONE: if not hand_empty(), swap current hand_lst to backpack
+		DONE: active_gs.hand_lst_append_item(item) 
+	DONE: update TravelEffect trigger() method
+		DONE: define room_obj
+		DONE: check for take_or_give and either active_gs.put_in_hand(give_item) 
 				or, if not hand_empty(), put_place.append(hand_lst[0]) and hand_lst[0].remove
-		TBD: test
+		DONE: test
 
-TBD: entrance_east_weap_1st (full get item case with counter on first count)
+CANCEL: entrance_east_weap_1st (full get item case with counter on first count)
+	IDEA: instead of counter, implement as got_crown = False => True
 
-TBD: entrance_east_weap_repeat (full get item case with counter after first count)
+CANCEL: entrance_east_weap_repeat (full get item case with counter after first count)
+
+NOTE: ending v 3.50 early... I have a new modular idea for how to implement machines (with TravelEffect as an invisible machine)
+
+
+##########################
+### VERSION 3.51 START ###
+##########################
+
+IDEA: machines should be modular... a bit like rooms
+
+- Machine attributes [entrance east / west example]
+		machine_type => pre_action_trigger
+		machine_vars => [got_crown = False] *** or should this be a GameState attribute?? ***
+		cmd_triggers_lst => [['go', 'go', 'east'], ['go', 'go', 'west']] => return True or False
+		cmd_cond_lst =>
+				[hand_no_weap, => return result 'die_in_moat'
+				hand_weap_1st, => return result 'moat_get_crown'
+				hand_weap_repeat] => return result 'moat_crocs_scared'
+		resutl_lst =>
+			[die_in_moat, => buffer message, active_gs.game_ending = 'death', return override == True
+			moat_get_crown, => buffer message, active_gs.hand_lst_append(crown), got_crown = True, return override == True
+			moat_crocs_scared] => buffer message, return override == True
+
+- Machine attributes [entrance south example]
+	machine_type => pre_action_trigger
+	machine_vars => None
+	cmd_triggers => [['go', 'go', 'south']]
+	cmd_cond_lst => None
+	result_lst => [cant_leave] => buffer message, return override == True
+
+
+NEXT:
+1) Think through pre_action_cmd function
+2) What do the generic condition and result objects / methods look like?
+
+
+
 
 TBD: create crown object
 	TBD: create Hat class

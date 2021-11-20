@@ -119,6 +119,14 @@ class GameState(object):
 		def hand_empty(self):
 				return len(self.get_hand_lst()) == 0
 
+		def put_in_hand(self, new_item):
+				if not self.hand_empty():
+						hand_lst = self.get_hand_lst()
+						hand_item = hand_lst[0]
+						self.backpack_lst_append_item(hand_item)
+						self.hand_lst_remove_item(hand_item)
+				self.hand_lst_append_item(new_item)
+
 		def get_static_obj(self, static_key):
 				if static_key not in self._static_obj_dict:
 						raise KeyError("key does not exist in dict")
@@ -281,7 +289,6 @@ class TravelEffect(Invisible):
 								else:
 										cond_match = False
 										for obj in self.in_hand_lst:
-#												if obj in hand_lst:
 												if active_gs.hand_check(obj):
 														cond_match = True
 										return cond_match == self.in_hand_cond
@@ -290,6 +297,15 @@ class TravelEffect(Invisible):
 				active_gs.buffer(descript_dict[self.effect_desc])
 				if self.game_ending is not None:
 						active_gs.set_game_ending(self.game_ending)
+				if self.give_or_take is not None:
+						if self.give_or_take == 'give':
+								active_gs.put_in_hand(self.give_item)
+						else: # take option
+								hand_lst = active_gs.get_hand_lst()
+								hand_item = hand_lst[0]
+								if not active_gs.hand_empty():
+										self.put_place.append(hand_item)
+										active_gs.hand_lst_remove_item(hand_item)
 
 class Writing(Invisible):
 		def __init__(self, name, full_name, root_name, descript_key):
