@@ -80,11 +80,11 @@ pre_action_cmd() Function Pseudo-Code:
 - if trig_check: cmd_override = trigger() <return = T/F>
 
 
-TBD: non-destructively disable existing TravelEffect coding
-	TBD: comment out app_main() call for pre_action_cmd() module
-	TBD: comment out object defs, entrance Room invisble items, and obj adds to def_pickle (and re-run mk_def_pkl)
-	TBD: comment out TravelEffect class in class_def() module
-
+DONE: non-destructively disable v3.50 TravelEffect coding
+	DONE: comment out app_main() call for pre_action_cmd() module
+	DONE: comment out object defs, entrance Room invisble items, and obj adds to def_pickle (and re-run mk_def_pkl)
+	DONE: comment out TravelEffect class in class_def() module
+	DONE: test
 
 
 ##########################

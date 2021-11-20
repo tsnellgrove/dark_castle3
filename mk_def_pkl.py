@@ -6,7 +6,8 @@
 
 # import statements
 import pickle
-from class_def import Invisible, TravelEffect, Writing, ViewOnly, Item, Food, Beverage, Container, Jug, Door, Room, GameState
+from class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Container, Jug, Door, Room, GameState
+#from class_def import Invisible, TravelEffect, Writing, ViewOnly, Item, Food, Beverage, Container, Jug, Door, Room, GameState
 
 # object instantiation - starting state
 rusty_lettering = Writing('rusty_lettering', 'Rusty Lettering', "lettering", 'rusty_lettering')
@@ -58,20 +59,22 @@ iron_portcullis = Door('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron
 control_panel = ViewOnly('control_panel', 'Control Panel', 'panel', 'control_panel', None)
 throne = ViewOnly('throne', 'Throne', 'throne', 'throne', None)
 
-entrance_south = TravelEffect('entrance_south', ["go", "go", "south"], 'entrance_south',
-				True, 'pre-action_trig', None, None, [], None, None, None)
-entrance_east_no_weap = TravelEffect('entrance_east_no_weap', ["go", "go", "east"], 'entrance_east_no_weap',
-				True, 'pre-action_trig', 'death', False, [shiny_sword, grimy_axe], None, None, None)
-entrance_west_no_weap = TravelEffect('entrance_west_no_weap', ["go", "go", "west"], 'entrance_west_no_weap',
-				True, 'pre-action_trig', 'death', False, [shiny_sword, grimy_axe], None, None, None)
-entrance_east_weap = TravelEffect('entrance_east_weap', ["go", "go", "east"], 'entrance_east_weap',
-				True, 'pre-action_trig', None, True, [shiny_sword, grimy_axe], 'give', random_mcguffin, None)
-entrance_west_weap = TravelEffect('entrance_west_weap', ["go", "go", "west"], 'entrance_west_weap',
-				True, 'pre-action_trig', None, True, [shiny_sword, grimy_axe], 'give', random_mcguffin, None)
+#entrance_south = TravelEffect('entrance_south', ["go", "go", "south"], 'entrance_south',
+#				True, 'pre-action_trig', None, None, [], None, None, None)
+#entrance_east_no_weap = TravelEffect('entrance_east_no_weap', ["go", "go", "east"], 'entrance_east_no_weap',
+#				True, 'pre-action_trig', 'death', False, [shiny_sword, grimy_axe], None, None, None)
+#entrance_west_no_weap = TravelEffect('entrance_west_no_weap', ["go", "go", "west"], 'entrance_west_no_weap',
+#				True, 'pre-action_trig', 'death', False, [shiny_sword, grimy_axe], None, None, None)
+#entrance_east_weap = TravelEffect('entrance_east_weap', ["go", "go", "east"], 'entrance_east_weap',
+#				True, 'pre-action_trig', None, True, [shiny_sword, grimy_axe], 'give', random_mcguffin, None)
+#entrance_west_weap = TravelEffect('entrance_west_weap', ["go", "go", "west"], 'entrance_west_weap',
+#				True, 'pre-action_trig', None, True, [shiny_sword, grimy_axe], 'give', random_mcguffin, None)
 
+#entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
+#				[front_gate], {'north' : front_gate}, [entrance_south, entrance_east_no_weap,
+#				entrance_west_no_weap, entrance_east_weap, entrance_west_weap])
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-				[front_gate], {'north' : front_gate}, [entrance_south, entrance_east_no_weap,
-				entrance_west_no_weap, entrance_east_weap, entrance_west_weap])
+				[front_gate], {'north' : front_gate}, [])
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
 				[shiny_sword, front_gate], {'south' : front_gate}, [])
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None, [alcove, control_panel],
@@ -111,9 +114,10 @@ active_gs = GameState(
 		}
 )
 
-# instantiated objects added to list
-master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, entrance_south, entrance_east_no_weap, entrance_west_no_weap, entrance, main_hall, antechamber, throne_room]
+### instantiated objects added to list ###
+#master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, #dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, rusty_key, shiny_sword, brass_key, #bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, wooden_chest, #crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, entrance_south, entrance_east_no_weap, entrance_west_no_weap, #entrance, main_hall, antechamber, throne_room]
 
+master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, entrance, main_hall, antechamber, throne_room]
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:
