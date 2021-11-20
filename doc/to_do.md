@@ -15,8 +15,24 @@ Nov 20, 2021
 ### VERSION 3.51 START ###
 ##########################
 
+IDEA: taking another run at how machines should work
 IDEA: machines should be modular... a bit like rooms
 IDEA: instead of counter, implement as got_crown = False => True
+
+Principles:
+- if the cmd_triggers_lst matches the player command, a result should always be triggered (i.e. a condition should be true)
+- conditions should be mutually exclusive => one and only one condition should be true at any one time
+- machines should be attomic - they should keep track of their own state (e.g. got_crown)
+- each machine will have trig_check() and trigger() methods called byt the pre_action_cmd method
+- a triggered machine should always have a True condition that leads to a defined result
+	- so the link between conditions & results should live attomicaly within the machine
+- so pre_action_cmd will initially be very simple... but it may eventually become the home for pre_action_auto too
+- a Creature is a collection of VewOnlyMach objs that enable it to respond to show, give, attack, and other stimuli
+- Creatures should be no more complex than necessary
+	- so when a specific creature need is met but a new creature behanvior will arrise =>
+		- it may make sense to 'swap' in a 'new' creature of the same name
+		- (e.g. hedgehog1 == hungry_guard, hedgehog2 == trader
+		- presumably creature swap also happens via machine?
 
 - Machine attributes [entrance east / west example]
 		machine_type => pre_action_trigger
@@ -26,7 +42,7 @@ IDEA: instead of counter, implement as got_crown = False => True
 				[hand_no_weap, => return result 'die_in_moat'
 				hand_weap_1st, => return result 'moat_get_crown'
 				hand_weap_repeat] => return result 'moat_crocs_scared'
-		resutl_lst =>
+		result_lst =>
 			[die_in_moat, => buffer message, active_gs.game_ending = 'death', return override == True
 			moat_get_crown, => buffer message, active_gs.hand_lst_append(crown), got_crown = True, return override == True
 			moat_crocs_scared] => buffer message, return override == True
@@ -36,21 +52,35 @@ IDEA: instead of counter, implement as got_crown = False => True
 	machine_vars => None
 	cmd_triggers => [['go', 'go', 'south']]
 	cmd_cond_lst => None
-	result_lst => [cant_leave] => buffer message, return override == True
+	result_lst => [cant_turn_back] => buffer message, return override == True
 
-
-NEXT:
+Conditions and Results thinking:
 - What do the generic condition and result objects / methods look like?
-	- create condition objects
-		- not_in_hand_cond attributes = not_in_hand_lst 
-		- in_hand_and_true
+	- condition objects
+		- not_in_hand_cond attributes = not_in_hand_lst; Returns True or False => hand_no_weap
+		- in_hand_and_bool attributes = in_hand_lst, bool; Returns True or False => hand_weap_1st, hand_weap_repeat
+- cond_return_lst = [] , for cond in cmd_cond_lst: cond_return_lst.append(cond_check(cond))
+- result_num = return_list.index(True)
+- trigger(result_lst[result_num])
+	- result obj
+		- buffer_and_ending attributes = result_descript, ending < can be None>, cmd_override <T/F> => die_in_moat, moat_crocs_scared
+		- buffer_and_give = result_descript, give_item, cmd_override <T/F> => moat_get_crown
+- machine variable updates => if result_num == 2: got_crown = True
 
-*** Need to work through return cases ***
-			
-- Think through pre_action_cmd function
-	- use result_num = return_list.index(True)
+Class Considerations:
+- What class should machines inherit from?
+- Some machines will be invisible, some will be features, and some will be items... so where to inherit from?
+- Maybe a more important question is what class will MachCond and MachRslt inherit from?
+- These should be usable by all Machine varieties... and should never be seen by the player...
+- So MachCond and MachRslt should be children of class Invisible
+- Then machines can inherit from the correct class: InvisMach, ViewOnlyMach, ItemMach
+
+pre_action_cmd Function Pseudo-Code:
+- get inter_obj_lst and for each pre_action_trig: trig_check = trig_check() <return = T/F>
+- if trig_check: cmd_override = trigger() <return = T/F>
 
 
+TBD: non-destructively disable existing TravelEffect coding
 
 
 
