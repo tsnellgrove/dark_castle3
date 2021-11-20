@@ -16,6 +16,7 @@ Nov 20, 2021
 ##########################
 
 IDEA: machines should be modular... a bit like rooms
+IDEA: instead of counter, implement as got_crown = False => True
 
 - Machine attributes [entrance east / west example]
 		machine_type => pre_action_trigger
@@ -38,14 +39,26 @@ IDEA: machines should be modular... a bit like rooms
 	result_lst => [cant_leave] => buffer message, return override == True
 
 
-IDEA: instead of counter, implement as got_crown = False => True
-
 NEXT:
-1) Think through pre_action_cmd function
-2) What do the generic condition and result objects / methods look like?
+- What do the generic condition and result objects / methods look like?
+	- create condition objects
+		- not_in_hand_cond attributes = not_in_hand_lst 
+		- in_hand_and_true
+
+*** Need to work through return cases ***
+			
+- Think through pre_action_cmd function
+	- use result_num = return_list.index(True)
 
 
 
+
+
+
+
+##########################
+### VERSION 3.52 START ###
+##########################
 
 TBD: create crown object
 	TBD: create Hat class
