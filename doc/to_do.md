@@ -85,18 +85,20 @@ DONE: non-destructively disable v3.50 TravelEffect coding
 	DONE: comment out object defs, entrance Room invisble items, and obj adds to def_pickle (and re-run mk_def_pkl)
 	DONE: comment out TravelEffect class in class_def() module
 	DONE: test
-TBD: create machine condition classes & obj
-	TBD: NotInHand class
-		TBD: NotInHand is child of Invisible; add attributes & property
-		TBD: attributes = not_in_hand_lst
-		TBD: in mk_def_pkl(), instantiate hand_no_weap and add to def_pkl
-		TBD: run mk_def_pkl()
-	TBD: InHandAndBool class
-		TBD: InHandAndBool is child of Invisible; add attributes & property
+IN-PROC: create machine condition classes, obj, & methods
+	IN-PROC: NotInHandCond class
+		DONE: NotInHandCond is child of Invisible; add attributes & property
+		DONE: attributes = not_in_hand_lst
+		DONE: in mk_def_pkl(), instantiate hand_no_weap_cond and add to def_pkl
+		DONE: run mk_def_pkl()
+		DONE: create cond_check() method
+	TBD: InHandAndBoolCond class
+		TBD: InHandAndBoolCond is child of Invisible; add attributes & property
 		TBD: attributes = in_hand_lst, bool
-		TBD: in mk_def_pkl(), instantiate hand_weap_1st & hand_weap_repeat and add to def_pkl
+		TBD: in mk_def_pkl(), instantiate hand_weap_1st_cond & hand_weap_repeat_cond and add to def_pkl
 		TBD: run mk_def_pkl()
-TBD: create machine results classes & obj
+		TBD: create cond_check() method
+TBD: create machine results classes, obj, & methods
 TBD: create InvisMach class & obj
 TBD: create InvisMach trig_check() and trigger() methods
 TBD: create pre_action_cmd() module & function
