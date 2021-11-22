@@ -86,15 +86,15 @@ DONE: non-destructively disable v3.50 TravelEffect coding
 	DONE: comment out TravelEffect class in class_def() module
 	DONE: test
 IN-PROC: create machine condition classes, obj, & methods
-	IN-PROC: NotInHandCond class
+	DONE: NotInHandCond class
 		DONE: NotInHandCond is child of Invisible; add attributes & property
 		DONE: attributes = not_in_hand_lst
 		DONE: in mk_def_pkl(), instantiate hand_no_weap_cond and add to def_pkl
 		DONE: run mk_def_pkl()
 		DONE: create cond_check() method
-	TBD: InHandAndBoolCond class
-		TBD: InHandAndBoolCond is child of Invisible; add attributes & property
-		TBD: attributes = in_hand_lst, bool
+	IN-PROC: InHandAndBoolCond class
+		DONE: InHandAndBoolCond is child of Invisible; add attributes & property
+		DONE: attributes = in_hand_lst, bool_case, bool_test
 		TBD: in mk_def_pkl(), instantiate hand_weap_1st_cond & hand_weap_repeat_cond and add to def_pkl
 		TBD: run mk_def_pkl()
 		TBD: create cond_check() method

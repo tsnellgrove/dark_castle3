@@ -234,6 +234,24 @@ class NotInHandCond(Invisible):
 								cond_state = False
 				return cond_state
 				
+class InHandAndBoolCond(Invisible):
+		def __init__(self, name, in_hand_lst, bool_case, bool_value):
+				super().__init__(name)
+				self._in_hand_lst = in_hand_lst # list of items that will meet condition
+				self._bool_case = bool_case # boolean condition to be tested
+				self._bool_value = bool_value # boolean test for bool_case
+
+		@property
+		def in_hand_lst(self):
+				return self._in_hand_lst
+
+		@property
+		def bool_case(self):
+				return self._bool_case
+
+		@property
+		def bool_test(self):
+				return self._bool_test
 
 #class TravelEffect(Invisible):
 #		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override,
