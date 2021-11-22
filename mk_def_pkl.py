@@ -6,7 +6,7 @@
 
 # import statements
 import pickle
-from class_def import Invisible, NotInHandCond, Writing, ViewOnly, Item, Food, Beverage, Container, Jug, Door, Room, GameState
+from class_def import Invisible, NotInHandCond, InHandAndBoolCond, Writing, ViewOnly, Item, Food, Beverage, Container, Jug, Door, Room, GameState
 #from class_def import Invisible, TravelEffect, Writing, ViewOnly, Item, Food, Beverage, Container, Jug, Door, Room, GameState
 
 # object instantiation - starting state
@@ -60,6 +60,10 @@ control_panel = ViewOnly('control_panel', 'Control Panel', 'panel', 'control_pan
 throne = ViewOnly('throne', 'Throne', 'throne', 'throne', None)
 
 hand_no_weap_cond = NotInHandCond('hand_no_weap_cond', [shiny_sword, grimy_axe])
+
+hand_weap_1st_cond = InHandAndBoolCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], False)
+
+hand_weap_repeat_cond = InHandAndBoolCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], True)
 
 #entrance_south = TravelEffect('entrance_south', ["go", "go", "south"], 'entrance_south',
 #				True, 'pre-action_trig', None, None, [], None, None, None)
@@ -119,7 +123,7 @@ active_gs = GameState(
 ### instantiated objects added to list ###
 #master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, #dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, rusty_key, shiny_sword, brass_key, #bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, wooden_chest, #crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, entrance_south, entrance_east_no_weap, entrance_west_no_weap, #entrance, main_hall, antechamber, throne_room]
 
-master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, hand_no_weap_cond, entrance, main_hall, antechamber, throne_room]
+master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond, entrance, main_hall, antechamber, throne_room]
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:

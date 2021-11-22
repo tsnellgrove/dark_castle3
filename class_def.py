@@ -229,29 +229,33 @@ class NotInHandCond(Invisible):
 #				if active_gs.hand_empty():
 #						return cond_state
 				hand_lst = active_gs.get_hand_lst()
-				for item in not_in_hand_lst:
+				for item in self.not_in_hand_lst:
 						if item in hand_lst:
 								cond_state = False
 				return cond_state
 				
 class InHandAndBoolCond(Invisible):
-		def __init__(self, name, in_hand_lst, bool_case, bool_value):
+		def __init__(self, name, in_hand_lst, bool_test):
 				super().__init__(name)
 				self._in_hand_lst = in_hand_lst # list of items that will meet condition
-				self._bool_case = bool_case # boolean condition to be tested
-				self._bool_value = bool_value # boolean test for bool_case
+				self._bool_test = bool_test # boolean test for passed in boolean value
 
 		@property
 		def in_hand_lst(self):
 				return self._in_hand_lst
 
 		@property
-		def bool_case(self):
-				return self._bool_case
-
-		@property
 		def bool_test(self):
 				return self._bool_test
+
+		def cond_check(self, active_gs, bool_value):
+				cond_state = False
+				if bool_value == self.bool_test:
+						hand_lst = active_gs.get_hand_lst()
+						for item in self.in_hand_lst:
+								if item in hand_lst:
+										cond_state = True
+				return cond_state
 
 #class TravelEffect(Invisible):
 #		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override,

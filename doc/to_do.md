@@ -15,6 +15,9 @@ Nov 20, 2021
 ### VERSION 3.51 START ###
 ##########################
 
+Version 3.51 Goals
+- implement new, modular appraoch to machines in place of RoomEffect
+
 IDEA: taking another run at how machines should work
 IDEA: machines should be modular... a bit like rooms
 IDEA: instead of counter, implement as got_crown = False => True
@@ -92,12 +95,12 @@ IN-PROC: create machine condition classes, obj, & methods
 		DONE: in mk_def_pkl(), instantiate hand_no_weap_cond and add to def_pkl
 		DONE: run mk_def_pkl()
 		DONE: create cond_check() method
-	IN-PROC: InHandAndBoolCond class
+	DONE: InHandAndBoolCond class
 		DONE: InHandAndBoolCond is child of Invisible; add attributes & property
-		DONE: attributes = in_hand_lst, bool_case, bool_test
-		TBD: in mk_def_pkl(), instantiate hand_weap_1st_cond & hand_weap_repeat_cond and add to def_pkl
-		TBD: run mk_def_pkl()
-		TBD: create cond_check() method
+		DONE: attributes = in_hand_lst, bool_test
+		DONE: in mk_def_pkl(), instantiate hand_weap_1st_cond & hand_weap_repeat_cond and add to def_pkl
+		DONE: run mk_def_pkl()
+		DONE: create cond_check() method
 TBD: create machine results classes, obj, & methods
 TBD: create InvisMach class & obj
 TBD: create InvisMach trig_check() and trigger() methods
