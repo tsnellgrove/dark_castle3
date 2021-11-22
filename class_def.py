@@ -224,7 +224,7 @@ class NotInHandCond(Invisible):
 		def not_in_hand_lst(self):
 				return self._not_in_hand_lst
 
-		def cond_check(self, active_gs):
+		def cond_check(self, active_gs, machine_state):
 				cond_state = True
 #				if active_gs.hand_empty():
 #						return cond_state
@@ -234,28 +234,54 @@ class NotInHandCond(Invisible):
 								cond_state = False
 				return cond_state
 				
-class InHandAndBoolCond(Invisible):
-		def __init__(self, name, in_hand_lst, bool_test):
+class InHandAndStateCond(Invisible):
+		def __init__(self, name, in_hand_lst, mach_state_test):
 				super().__init__(name)
 				self._in_hand_lst = in_hand_lst # list of items that will meet condition
-				self._bool_test = bool_test # boolean test for passed in boolean value
+				self._mach_state_test = mach_state_test # boolean test for passed in boolean value
 
 		@property
 		def in_hand_lst(self):
 				return self._in_hand_lst
 
 		@property
-		def bool_test(self):
-				return self._bool_test
+		def mach_state_test(self):
+				return self._mach_state_test
 
-		def cond_check(self, active_gs, bool_value):
+		def cond_check(self, active_gs, machine_state):
 				cond_state = False
-				if bool_value == self.bool_test:
+				if machine_state == self.mach_state_test:
 						hand_lst = active_gs.get_hand_lst()
 						for item in self.in_hand_lst:
 								if item in hand_lst:
 										cond_state = True
 				return cond_state
+
+class BufferAndEndResult(Invisible):
+		def __init__(self, name, result_descript, ending, cmd_override):
+				super().__init__(name)
+				self._result_descript = result_descript # description of result
+				self._ending = ending # game ending - typicall 'death' due to hazzard or None (meaning no ending)
+				self._cmd_override = cmd_override # does the triggered pre-action over-ride the 'standard' response to player command?
+
+		@property
+		def result_descript(self):
+				return self._result_descript
+
+		@property
+		def ending(self):
+				return self._ending
+
+		@property
+		def cmd_override(self):
+				return self._cmd_override
+
+		def results_exe(self, active_gs):
+				active_gs.buffer(self.result_descript)
+				if self.ending is not None:
+						active_gs.set_game_ending(self.ending)
+				return self.cmd_override
+				
 
 #class TravelEffect(Invisible):
 #		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override,

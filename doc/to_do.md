@@ -39,7 +39,7 @@ Principles:
 
 - Machine attributes [entrance east / west example]
 		machine_type => pre_action_trigger
-		machine_vars => [got_crown = False] *** or should this be a GameState attribute?? ***
+		machine_state => got_crown = False (Only 1 state per machine? Ppass to every condition?)
 		cmd_triggers_lst => [['go', 'go', 'east'], ['go', 'go', 'west']] => return True or False
 		cmd_cond_lst =>
 				[hand_no_weap, => return result 'die_in_moat'
@@ -101,17 +101,17 @@ DONE: create machine condition classes, obj, & methods for entrance_east & entra
 		DONE: in mk_def_pkl(), instantiate hand_weap_1st_cond & hand_weap_repeat_cond and add to def_pkl
 		DONE: run mk_def_pkl()
 		DONE: create cond_check() method
-TBD: create machine results classes, obj, & methods
-	TBD: BufferAndEndResult class
-		TBD: BufferAndEndResult is child of Invisible; add attributes & property
-		TBD: attributes = result_descript, ending, cmd_override
-		TBD: in mk_def_pkl(), instantiate die_in_moat and moat_crocs_scared
-		TBD: run mk_def_pkl()
-		TBD: create results_exe() method
+IN-PROC: create machine results classes, obj, & methods
+	DONE: BufferAndEndResult class
+		DONE: BufferAndEndResult is child of Invisible; add attributes & property
+		DONE: attributes = result_descript, ending, cmd_override
+		DONE: in mk_def_pkl(), instantiate die_in_moat and moat_crocs_scared
+		DONE: run mk_def_pkl()
+		DONE: create results_exe() method
 	TBD: BufferAndGiveResult class
 		TBD: BufferAndGiveResult is child of Invisible; add attributes & property
 		TBD: attributes = result_descript, give_item, cmd_override
-		TBD: in mk_def_pkl(), instantiate moat_get_crown
+		TBD: in mk_def_pkl(), instantiate moat_get_crown_result
 		TBD: run mk_def_pkl()
 		TBD: create results_exe() method
 TBD: create InvisMach class & obj and add condition and tirgger obj to it

@@ -6,7 +6,7 @@
 
 # import statements
 import pickle
-from class_def import Invisible, NotInHandCond, InHandAndBoolCond, Writing, ViewOnly, Item, Food, Beverage, Container, Jug, Door, Room, GameState
+from class_def import Invisible, NotInHandCond, InHandAndStateCond, BufferAndEndResult, Writing, ViewOnly, Item, Food, Beverage, Container, Jug, Door, Room, GameState
 #from class_def import Invisible, TravelEffect, Writing, ViewOnly, Item, Food, Beverage, Container, Jug, Door, Room, GameState
 
 # object instantiation - starting state
@@ -61,9 +61,13 @@ throne = ViewOnly('throne', 'Throne', 'throne', 'throne', None)
 
 hand_no_weap_cond = NotInHandCond('hand_no_weap_cond', [shiny_sword, grimy_axe])
 
-hand_weap_1st_cond = InHandAndBoolCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], False)
+hand_weap_1st_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], False)
 
-hand_weap_repeat_cond = InHandAndBoolCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], True)
+hand_weap_repeat_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], True)
+
+die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'die_in_moat_result', 'death', True)
+
+moat_croc_scared_result = BufferAndEndResult('moat_croc_scared_result', 'moat_croc_scared_result', None, True)
 
 #entrance_south = TravelEffect('entrance_south', ["go", "go", "south"], 'entrance_south',
 #				True, 'pre-action_trig', None, None, [], None, None, None)
