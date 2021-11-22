@@ -88,7 +88,7 @@ DONE: non-destructively disable v3.50 TravelEffect coding
 	DONE: comment out object defs, entrance Room invisble items, and obj adds to def_pickle (and re-run mk_def_pkl)
 	DONE: comment out TravelEffect class in class_def() module
 	DONE: test
-IN-PROC: create machine condition classes, obj, & methods
+DONE: create machine condition classes, obj, & methods for entrance_east & entrance_west TravelEffect cases
 	DONE: NotInHandCond class
 		DONE: NotInHandCond is child of Invisible; add attributes & property
 		DONE: attributes = not_in_hand_lst
@@ -102,16 +102,31 @@ IN-PROC: create machine condition classes, obj, & methods
 		DONE: run mk_def_pkl()
 		DONE: create cond_check() method
 TBD: create machine results classes, obj, & methods
-TBD: create InvisMach class & obj
+	TBD: BufferAndEndResult class
+		TBD: BufferAndEndResult is child of Invisible; add attributes & property
+		TBD: attributes = result_descript, ending, cmd_override
+		TBD: in mk_def_pkl(), instantiate die_in_moat and moat_crocs_scared
+		TBD: run mk_def_pkl()
+		TBD: create results_exe() method
+	TBD: BufferAndGiveResult class
+		TBD: BufferAndGiveResult is child of Invisible; add attributes & property
+		TBD: attributes = result_descript, give_item, cmd_override
+		TBD: in mk_def_pkl(), instantiate moat_get_crown
+		TBD: run mk_def_pkl()
+		TBD: create results_exe() method
+TBD: create InvisMach class & obj and add condition and tirgger obj to it
 TBD: create InvisMach trig_check() and trigger() methods
 TBD: create pre_action_cmd() module & function
 TBD: testing!
+TBD: create machine condition classes, obj, & methods for entrance_south TravelEffect case
 TBD: delete commented out v3.50 code
 
 
 ##########################
 ### VERSION 3.52 START ###
 ##########################
+Version 3.52 Goals
+- Create class, methods, obj, and inventory updates for 'crown' object
 
 TBD: create crown object
 	TBD: create Hat class
@@ -126,6 +141,48 @@ TBD: documentation:
 	TBD: write up thinking and decisions on interactive obj
 	TBD: update class diagram
 	TBD: update module diagram
+
+
+##########################
+### VERSION 3.53 START ###
+##########################
+Version 3.53 Goals
+- Create class, methods, and obj antechamber control_panel machine
+
+
+##########################
+### VERSION 3.54 START ###
+##########################
+Version 3.54 Goals
+- Create class, methods, and obj for throne room throne machine
+
+
+##########################
+### VERSION 3.55 START ###
+##########################
+Version 3.55 Goals
+- Create class, methods, and obj for goblin creature
+
+
+##########################
+### VERSION 3.56 START ###
+##########################
+Version 3.56 Goals
+- Create class, methods, and obj for hedgehog1 (hungry_guard) creature
+
+
+##########################
+### VERSION 3.57 START ###
+##########################
+Version 3.57 Goals
+- Create class, methods, and obj for hedgehog2 (key_trader) creature
+
+
+##########################
+### VERSION 3.58 START ###
+##########################
+Version 3.58 Goals
+- Create class, methods, and obj for read_scroll machine
 
 
 *** interactive object ideas ***
