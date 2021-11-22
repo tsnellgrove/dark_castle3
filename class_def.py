@@ -276,11 +276,11 @@ class BufferAndEndResult(Invisible):
 		def cmd_override(self):
 				return self._cmd_override
 
-		def results_exe(self, active_gs):
+		def results_exe(self, active_gs, machine_state):
 				active_gs.buffer(self.result_descript)
 				if self.ending is not None:
 						active_gs.set_game_ending(self.ending)
-				return self.cmd_override
+				return machine_state, self.cmd_override
 				
 
 #class TravelEffect(Invisible):
