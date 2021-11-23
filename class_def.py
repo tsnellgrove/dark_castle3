@@ -281,7 +281,9 @@ class BufferAndEndResult(Invisible):
 				if self.ending is not None:
 						active_gs.set_game_ending(self.ending)
 				return machine_state, self.cmd_override
-				
+
+
+
 
 #class TravelEffect(Invisible):
 #		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override,
