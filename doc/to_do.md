@@ -131,7 +131,8 @@ DONE: create InvisMach class & obj
 	DONE: create InvisMach trig_check() and trigger() methods
 		DONE: create trig_check() method
 		DONE: create trigger() method
-TBD: create pre_action_cmd() module & function
+DONE: create pre_action_cmd() module & function
+TBD: enable pre_action_cmd() in app_main module
 TBD: testing!
 TBD: test to see if condition and result objects don't need to be in def_pkl independent of the machine obj they're assigned to
 TBD: create machine condition classes, obj, & methods for entrance_south TravelEffect case

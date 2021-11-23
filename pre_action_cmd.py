@@ -8,12 +8,11 @@
 
 def pre_action_cmd(active_gs, case, word_lst):
 		cmd_override = False
-		inter_obj_lst = active_gs.inter_obj_lst()
-		for obj in inter_obj_lst:
-				if obj.inter_obj_type == 'pre-action_trig':
-						if obj.trig_check(active_gs, case, word_lst):
-								obj.trigger(active_gs)
-								if obj.cmd_override:
-										cmd_override = True
+		mach_obj_lst = active_gs.mach_obj_lst()
+		for obj in mach_obj_lst:
+				if obj.machine_type == 'pre-action_trig' and obj.trig_check(active_gs, case, word_lst):
+						local_override = triger(active_gs)
+						if local_override:
+								cmd_override = True
 		return cmd_override
-	
+

@@ -192,14 +192,14 @@ class GameState(object):
 				scope_lst = self.scope_lst()
 				return obj in scope_lst
 
-		def inter_obj_lst(self):
-				inter_obj_lst = []
+		def mach_obj_lst(self):
+				mach_obj_lst = []
 				room_obj = self.get_room()
 				scope_lst = self.scope_lst() + room_obj.invis_obj_lst
 				for obj in scope_lst:
-						if hasattr(obj, 'inter_obj_type'):
-								inter_obj_lst.append(obj)
-				return inter_obj_lst
+						if hasattr(obj, 'machine_type'):
+								mach_obj_lst.append(obj)
+				return mach_obj_lst
 
 		def __repr__(self):
 				return f'Object { self._name } is of class { type(self).__name__ } '
