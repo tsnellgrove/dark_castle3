@@ -114,8 +114,21 @@ DONE: create machine results classes, obj, & methods
 		DONE: in mk_def_pkl(), instantiate moat_get_crown_result
 		DONE: run mk_def_pkl()
 		DONE: create results_exe() method
-TBD: create InvisMach class & obj and add condition and tirgger obj to it
-TBD: create InvisMach trig_check() and trigger() methods
+IN-PROC: create InvisMach class & obj
+	DONE: Create class
+		DONE: class = InvisMach(Invisible)
+		DONE: attributes = machine_type, machine_state, cmd_triggers_lst, cmd_cond_lst, result_lst
+		DONE: create @properties definitions
+	TBD: create obj and add condition and tirgger obj to it
+		TBD: create entrance_moat_mach
+		TBD: machine_type => pre_action_trigger
+		TBD: machine_state => False (got_crown)
+		TBD: cmd_triggers_lst => [['go', 'go', 'east'], ['go', 'go', 'west']]
+		TBD: cmd_cond_lst => [hand_no_weap, hand_weap_1st, hand_weap_repeat]
+		TBD: result_lst => [die_in_moat, moat_get_crown, moat_crocs_scared]
+		TBD: create InvisMach trig_check() and trigger() methods
+	TBD: add entrance_moat_mach to Room entrance
+	TBD: add entrance_moat_mach to def_pkl
 TBD: create pre_action_cmd() module & function
 TBD: testing!
 TBD: test to see if condition and result objects don't need to be in def_pkl independent of the machine obj they're assigned to

@@ -307,6 +307,35 @@ class BufferAndGiveResult(Invisible):
 				machine_state = True
 				return machine_state, self.cmd_override
 
+class = InvisMach(Invisible):
+		def __init__(self, name, machine_type, machine_state, cmd_triggers_lst, cmd_cond_lst, result_lst):
+				super().__init__(name)
+				self._machine_type = machine_type # pre_action_trig, pre_action_auto, post_action_trig, or post_action_auto
+				self._machine_state = machine_state # machine state variable; boolean for simple machiens; Int for complex
+				self._cmd_triggers_lst = cmd_triggers_lst # player commands that will trigger the machine (None for auto?)
+				self._cmd_cond_lst = cmd_cond_lst # conditions to test for; should cover all trigger cases
+				self._result_lst = result_lst # possible results based on conditions
+
+		@property
+		def machine_type(self):
+				return self._machine_type
+
+		@property
+		def machine_state(self):
+				return self._machine_state
+
+		@property
+		def cmd_triggers_lst(self):
+				return self._cmd_triggers_lst
+
+		@property
+		def cmd_cond_lst(self):
+				return self._cmd_cond_lst
+
+		@property
+		def result_lst(self):
+				return self._result_lst
+
 
 #class TravelEffect(Invisible):
 #		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override,
