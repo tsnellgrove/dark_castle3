@@ -101,23 +101,24 @@ DONE: create machine condition classes, obj, & methods for entrance_east & entra
 		DONE: in mk_def_pkl(), instantiate hand_weap_1st_cond & hand_weap_repeat_cond and add to def_pkl
 		DONE: run mk_def_pkl()
 		DONE: create cond_check() method
-IN-PROC: create machine results classes, obj, & methods
+DONE: create machine results classes, obj, & methods
 	DONE: BufferAndEndResult class
 		DONE: BufferAndEndResult is child of Invisible; add attributes & property
 		DONE: attributes = result_descript, ending, cmd_override
 		DONE: in mk_def_pkl(), instantiate die_in_moat and moat_crocs_scared
 		DONE: run mk_def_pkl()
 		DONE: create results_exe() method
-	TBD: BufferAndGiveResult class
-		TBD: BufferAndGiveResult is child of Invisible; add attributes & property
-		TBD: attributes = result_descript, give_item, cmd_override
-		TBD: in mk_def_pkl(), instantiate moat_get_crown_result
-		TBD: run mk_def_pkl()
-		TBD: create results_exe() method
+	DONE: BufferAndGiveResult class
+		DONE: BufferAndGiveResult is child of Invisible; add attributes & property
+		DONE: attributes = result_descript, give_item, cmd_override
+		DONE: in mk_def_pkl(), instantiate moat_get_crown_result
+		DONE: run mk_def_pkl()
+		DONE: create results_exe() method
 TBD: create InvisMach class & obj and add condition and tirgger obj to it
 TBD: create InvisMach trig_check() and trigger() methods
 TBD: create pre_action_cmd() module & function
 TBD: testing!
+TBD: test to see if condition and result objects don't need to be in def_pkl independent of the machine obj they're assigned to
 TBD: create machine condition classes, obj, & methods for entrance_south TravelEffect case
 TBD: delete commented out v3.50 code
 
