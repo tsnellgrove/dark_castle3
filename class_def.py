@@ -307,7 +307,7 @@ class BufferAndGiveResult(Invisible):
 				machine_state = True
 				return machine_state, self.cmd_override
 
-class = InvisMach(Invisible):
+class InvisMach(Invisible):
 		def __init__(self, name, machine_type, machine_state, cmd_triggers_lst, cmd_cond_lst, result_lst):
 				super().__init__(name)
 				self._machine_type = machine_type # pre_action_trig, pre_action_auto, post_action_trig, or post_action_auto

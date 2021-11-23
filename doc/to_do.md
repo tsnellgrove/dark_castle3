@@ -119,16 +119,18 @@ IN-PROC: create InvisMach class & obj
 		DONE: class = InvisMach(Invisible)
 		DONE: attributes = machine_type, machine_state, cmd_triggers_lst, cmd_cond_lst, result_lst
 		DONE: create @properties definitions
-	TBD: create obj and add condition and tirgger obj to it
-		TBD: create entrance_moat_mach
-		TBD: machine_type => pre_action_trigger
-		TBD: machine_state => False (got_crown)
-		TBD: cmd_triggers_lst => [['go', 'go', 'east'], ['go', 'go', 'west']]
-		TBD: cmd_cond_lst => [hand_no_weap, hand_weap_1st, hand_weap_repeat]
-		TBD: result_lst => [die_in_moat, moat_get_crown, moat_crocs_scared]
-		TBD: create InvisMach trig_check() and trigger() methods
-	TBD: add entrance_moat_mach to Room entrance
-	TBD: add entrance_moat_mach to def_pkl
+	DONE: create obj and add condition and tirgger obj to it
+		DONE: create entrance_moat_mach
+		DONE: machine_type => pre_action_trigger
+		DONE: machine_state => False (got_crown)
+		DONE: cmd_triggers_lst => [['go', 'go', 'east'], ['go', 'go', 'west']]
+		DONE: cmd_cond_lst => [hand_no_weap, hand_weap_1st, hand_weap_repeat]
+		DONE: result_lst => [die_in_moat, moat_get_crown, moat_crocs_scared]
+		DONE: add entrance_moat_mach to Room entrance
+		DONE: add entrance_moat_mach to def_pkl
+	TBD: create InvisMach trig_check() and trigger() methods
+		TBD: create trig_check() method
+		TBD: create trigger() method
 TBD: create pre_action_cmd() module & function
 TBD: testing!
 TBD: test to see if condition and result objects don't need to be in def_pkl independent of the machine obj they're assigned to
@@ -312,6 +314,7 @@ TBD: Try tupples for descript_dict
 - landscape / path changes
 - create 'win' test routine with checksum
 - create a hint sub-system
+TBD: for doors and containers, use None option for no lock or no lid?
 
 
 
