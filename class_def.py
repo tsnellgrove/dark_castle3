@@ -336,6 +336,11 @@ class InvisMach(Invisible):
 		def result_lst(self):
 				return self._result_lst
 
+		def trig_check(self, active_gs, case, word_lst):
+				if case == 'go':
+						player_cmd_key = [word_lst[1], word_lst[2]]
+				return player_cmd_key in self.cmd_triggers_lst
+
 
 #class TravelEffect(Invisible):
 #		def __init__(self, name, cmd_trigger_lst, effect_desc, cmd_override,

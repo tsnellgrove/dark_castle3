@@ -128,8 +128,8 @@ IN-PROC: create InvisMach class & obj
 		DONE: result_lst => [die_in_moat, moat_get_crown, moat_crocs_scared]
 		DONE: add entrance_moat_mach to Room entrance
 		DONE: add entrance_moat_mach to def_pkl
-	TBD: create InvisMach trig_check() and trigger() methods
-		TBD: create trig_check() method
+	IN-PROC: create InvisMach trig_check() and trigger() methods
+		DONE: create trig_check() method
 		TBD: create trigger() method
 TBD: create pre_action_cmd() module & function
 TBD: testing!
