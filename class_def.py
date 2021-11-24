@@ -324,6 +324,10 @@ class InvisMach(Invisible):
 		def machine_state(self):
 				return self._machine_state
 
+		@machine_state.setter
+		def machine_state(self, new_state):
+				self._machine_state = new_state
+
 		@property
 		def cmd_triggers_lst(self):
 				return self._cmd_triggers_lst
@@ -349,7 +353,8 @@ class InvisMach(Invisible):
 						cond_return_lst.append(cond_return)
 				result_num = cond_return_lst.index(True)
 				result = self.result_lst[result_num]
-				self.machine_state, cmd_override = result.results_exe(active_gs, self.machine_state)
+				temp_machine_state, cmd_override = result.results_exe(active_gs, self.machine_state)
+				self.machine_state = temp_machine_state
 				return cmd_override
 
 #class TravelEffect(Invisible):
