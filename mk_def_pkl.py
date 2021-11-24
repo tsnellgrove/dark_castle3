@@ -70,7 +70,7 @@ cant_turn_back_result = BufferAndEndResult('cant_turn_back_result', 'cant_turn_b
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_action_trig', False, [['go', 'east'], ['go', 'west']],
 				[hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
-				[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result])
+				[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) #machine_state = got_crown
 entrance_south_mach = InvisMach('entrance_south_mach', 'pre_action_trig', None, [['go', 'south']],
 				[pass_thru_cond], [cant_turn_back_result])
 
