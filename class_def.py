@@ -262,6 +262,14 @@ class InHandAndStateCond(Invisible):
 				print("cond_state: " + str(cond_state))
 				return cond_state
 
+class PassThruCond(Invisible):
+		def __init__(self, name):
+				super().__init__(name)
+
+		def cond_check(self, active_gs, machine_state):
+				cond_state = True
+				return cond_state
+
 class BufferAndEndResult(Invisible):
 		def __init__(self, name, result_descript, ending, cmd_override):
 				super().__init__(name)
