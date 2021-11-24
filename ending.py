@@ -13,13 +13,13 @@ def end(active_gs):
 		moves = active_gs._state_dict['move_counter']
 		game_ending = active_gs.get_game_ending()
 
-#		if score < 0:
-#				title_score = -10
-#		elif score == 0:
-#				title_score = 0
-#		else:
-#				title_score = math.ceil(score / 10) * 10
-#		title = static_dict['titles_dict'][title_score]
+##		if score < 0:
+##				title_score = -10
+##		elif score == 0:
+##				title_score = 0
+##		else:
+##				title_score = math.ceil(score / 10) * 10
+##		title = static_dict['titles_dict'][title_score]
 
 		if game_ending == 'death':
 				active_gs.buffer("You have died.")

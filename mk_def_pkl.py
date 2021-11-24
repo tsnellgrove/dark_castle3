@@ -7,7 +7,6 @@
 # import statements
 import pickle
 from class_def import Invisible, NotInHandCond, InHandAndStateCond, PassThruCond, BufferAndEndResult, BufferAndGiveResult, InvisMach, Writing, ViewOnly, Item, Food, Beverage, Container, Jug, Door, Room, GameState
-#from class_def import Invisible, TravelEffect, Writing, ViewOnly, Item, Food, Beverage, Container, Jug, Door, Room, GameState
 
 # object instantiation - starting state
 rusty_lettering = Writing('rusty_lettering', 'Rusty Lettering', "lettering", 'rusty_lettering')
@@ -72,24 +71,9 @@ cant_turn_back_result = BufferAndEndResult('cant_turn_back_result', 'cant_turn_b
 entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_action_trig', False, [['go', 'east'], ['go', 'west']],
 				[hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
 				[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result])
-
 entrance_south_mach = InvisMach('entrance_south_mach', 'pre_action_trig', None, [['go', 'south']],
 				[pass_thru_cond], [cant_turn_back_result])
 
-#entrance_south = TravelEffect('entrance_south', ["go", "go", "south"], 'entrance_south',
-#				True, 'pre-action_trig', None, None, [], None, None, None)
-#entrance_east_no_weap = TravelEffect('entrance_east_no_weap', ["go", "go", "east"], 'entrance_east_no_weap',
-#				True, 'pre-action_trig', 'death', False, [shiny_sword, grimy_axe], None, None, None)
-#entrance_west_no_weap = TravelEffect('entrance_west_no_weap', ["go", "go", "west"], 'entrance_west_no_weap',
-#				True, 'pre-action_trig', 'death', False, [shiny_sword, grimy_axe], None, None, None)
-#entrance_east_weap = TravelEffect('entrance_east_weap', ["go", "go", "east"], 'entrance_east_weap',
-#				True, 'pre-action_trig', None, True, [shiny_sword, grimy_axe], 'give', random_mcguffin, None)
-#entrance_west_weap = TravelEffect('entrance_west_weap', ["go", "go", "west"], 'entrance_west_weap',
-#				True, 'pre-action_trig', None, True, [shiny_sword, grimy_axe], 'give', random_mcguffin, None)
-
-#entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-#				[front_gate], {'north' : front_gate}, [entrance_south, entrance_east_no_weap,
-#				entrance_west_no_weap, entrance_east_weap, entrance_west_weap])
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
 				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_mach])
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
