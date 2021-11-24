@@ -225,6 +225,7 @@ class NotInHandCond(Invisible):
 				return self._not_in_hand_lst
 
 		def cond_check(self, active_gs, machine_state):
+				print("checking for not_in_hand_cond")
 				cond_state = True
 #				if active_gs.hand_empty():
 #						return cond_state
@@ -232,6 +233,7 @@ class NotInHandCond(Invisible):
 				for item in self.not_in_hand_lst:
 						if item in hand_lst:
 								cond_state = False
+				print("condition state: " + str(cond_state))
 				return cond_state
 				
 class InHandAndStateCond(Invisible):
@@ -249,12 +251,15 @@ class InHandAndStateCond(Invisible):
 				return self._mach_state_test
 
 		def cond_check(self, active_gs, machine_state):
+				print("checking for in_hand_cond_and_state")
 				cond_state = False
 				if machine_state == self.mach_state_test:
+						print("machine_state matches mach_state_test")
 						hand_lst = active_gs.get_hand_lst()
 						for item in self.in_hand_lst:
 								if item in hand_lst:
 										cond_state = True
+				print("cond_state: " + str(cond_state))
 				return cond_state
 
 class BufferAndEndResult(Invisible):
@@ -277,9 +282,12 @@ class BufferAndEndResult(Invisible):
 				return self._cmd_override
 
 		def results_exe(self, active_gs, machine_state):
-				active_gs.buffer(self.result_descript)
+				print("got to buffer_and_end_results")
+				active_gs.buffer(descript_dict[self.result_descript])
 				if self.ending is not None:
 						active_gs.set_game_ending(self.ending)
+				print("machine_state: " + str(machine_state))
+				print("cmd_override: " + str(self.cmd_override))
 				return machine_state, self.cmd_override
 
 class BufferAndGiveResult(Invisible):
@@ -302,8 +310,8 @@ class BufferAndGiveResult(Invisible):
 				return self._cmd_override
 
 		def results_exe(self, active_gs, machine_state):
-				active_gs.buffer(self.result_descript)
-				active_gs.put_in_hand(self.hand_item)
+				active_gs.buffer(descript_dict[self.result_descript])
+				active_gs.put_in_hand(self.give_item)
 				machine_state = True
 				return machine_state, self.cmd_override
 

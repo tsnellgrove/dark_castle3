@@ -18,7 +18,10 @@ def pre_action_cmd(active_gs, case, word_lst):
 						if obj.trig_check(active_gs, case, word_lst):
 								print("trig_check passed")
 								local_override = obj.trigger(active_gs)
+								print(str(obj))
+								print("local_override: " + str(local_override))
 								if local_override:
 										cmd_override = True
+		print("cmd_override: " + str(cmd_override))
 		return cmd_override
 

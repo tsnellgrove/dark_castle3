@@ -73,7 +73,7 @@ moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', 'moat_get_c
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_action_trig', False, [['go', 'east'], ['go', 'west']],
 				[hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
-				[die_in_moat_result, moat_croc_scared_result, moat_get_crown_result])
+				[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result])
 
 
 #entrance_south = TravelEffect('entrance_south', ["go", "go", "south"], 'entrance_south',
