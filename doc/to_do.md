@@ -139,6 +139,21 @@ DONE: testing!
 	DONE: troubleshoot get_crown case
 	DONE: troubleshoot crocs_scared case
 TBD: create machine condition classes, obj, & methods for entrance_south TravelEffect case
+	TBD: PassThruCond class
+		TBD: PassThruCond is child of Invisible; add attributes & property
+		TBD: attributes = name
+		TBD: in mk_def_pkl(), instantiate pass_thru_cond and add to def_pkl
+		TBD: run mk_def_pkl()
+		TBD: create cond_check() method
+	TBD: instantiate object based on BufferAndEndResult class with ending = None
+	TBD: name = cant_turn_back, 
+	TBD: create machine obj and add condition and result obj to it
+		TBD: machine_type => pre_action_trigger
+		TBD: machine_vars => None
+		TBD: cmd_triggers => [['go', 'south']]
+		TBD: cmd_cond_lst => None
+		TBD: result_lst => [cant_turn_back] => buffer message, return override == True
+	TBD: testing
 TBD: clean up all troubleshooting comments & prints
 TBD: test to see if condition and result objects don't need to be in def_pkl independent of the machine obj they're assigned to
 TBD: extend player_cmd_key cases in trig_check() method of InvisMach
