@@ -160,11 +160,6 @@ TBD: create crown object
 	TBD: Update active_gs to include 'worn' attribute
 	TBD: Update inventory() function in cmd_exe() module to show 'worn' in inventory
 
-TBD: documentation:
-	TBD: write up thinking and decisions on interactive obj
-	TBD: update class diagram
-	TBD: update module diagram
-
 
 ##########################
 ### VERSION 3.53 START ###
@@ -207,6 +202,20 @@ Version 3.57 Goals
 Version 3.58 Goals
 - Create class, methods, and obj for read_scroll machine
 
+
+##########################
+### VERSION 3.59 START ###
+##########################
+
+Version 3.59 Goals
+- Create / update program documentation
+
+TBD: documentation:
+	TBD: write up thinking and decisions on machines
+	TBD: update class diagram
+	TBD: update module diagram
+	TBD: Create machine diagram
+	
 
 *** interactive object ideas ***
 

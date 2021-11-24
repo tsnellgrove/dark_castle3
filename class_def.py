@@ -322,7 +322,7 @@ class InvisMach(Invisible):
 				self._machine_state = machine_state # machine state variable; boolean for simple machiens; Int for complex
 				self._cmd_triggers_lst = cmd_triggers_lst # player commands that will trigger the machine (None for auto?)
 				self._cmd_cond_lst = cmd_cond_lst # conditions to test for; should cover all trigger cases
-				self._result_lst = result_lst # possible results based on conditions
+				self._result_lst = result_lst # possible results based on conditions; result order must match condition order
 
 		@property
 		def machine_type(self):
