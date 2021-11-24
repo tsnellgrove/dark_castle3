@@ -329,7 +329,13 @@ NEW PUZZLE IDEAS:
 
 ### New Puzzle Ideas ###
 
-IDEA: create a fun scenario where TravelEffect take item gets used... maybe a giant brid comes along and takes whatever's in Burts hand and scares him off until he carries a lead weight (or a heavy rock?) - which tires the bird out so much Burt can go in the room and get back his stuff and enter the room? Maybe this could be a room between main hall and antechamber that the maze / mouse hole is off of? Maybe nest is in corder of room of class Box (not open / close or lock / unlock).
+IDEA: create a fun scenario where TravelEffect take item gets used... maybe a giant brid comes along and takes whatever's in Burts hand and scares him off until he carries a lead weight (or a heavy rock?) - which tires the bird out so much Burt can go in the room and get back his stuff and enter the room? Maybe this could be a room between main hall and antechamber that the maze / mouse hole is off of? Maybe nest is in corner of room of class Box (not open / close or lock / unlock).
+- Make it a Wumpus Bat - a reference to Hunth the Wumpus and Adventure!!
+- Takes an item from Burt's hand and sends him back the way he came to take cover; item is randomly placed in another (reachable) room
+- Solution is to enter room carrying a heavy rock - Bat will take but leaves rock by its nest with a note "Tired out from lugging big rocks - leaving Dark Castle for a while to visit the Wumpus"
+- Heavy Rock allows introduction of carrying capacity... playing can't carry *anything* else while carrying Heavy Rock
+- some useful treasure found in the nest 
+- Nest could be a container with open_state = None and lock_state = None
 
 - Can sharpen and clean sword in mouse hole - maybe only way to get past goblin
 - need a non-shrunken ruby to pay for sword sharpening (turns up nose at cheese - says he never touches it because it gives him indigestion)
