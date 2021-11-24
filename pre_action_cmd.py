@@ -7,12 +7,18 @@
 ### import statements ###
 
 def pre_action_cmd(active_gs, case, word_lst):
+		print("got to pre_action_cmd")
 		cmd_override = False
 		mach_obj_lst = active_gs.mach_obj_lst()
 		for obj in mach_obj_lst:
-				if obj.machine_type == 'pre-action_trig' and obj.trig_check(active_gs, case, word_lst):
-						local_override = triger(active_gs)
-						if local_override:
-								cmd_override = True
+				print(obj.name)
+				print(obj.machine_type)
+				if obj.machine_type == 'pre_action_trig':
+						print("machine_type match")
+						if obj.trig_check(active_gs, case, word_lst):
+								print("trig_check passed")
+								local_override = obj.trigger(active_gs)
+								if local_override:
+										cmd_override = True
 		return cmd_override
 

@@ -133,8 +133,9 @@ DONE: create InvisMach class & obj
 		DONE: create trigger() method
 DONE: create pre_action_cmd() module & function
 DONE: enable pre_action_cmd() in app_main module
-IN-PROC: testing!
+IN-PROC: testing!  *** Create Setter for machine_state ***
 TBD: test to see if condition and result objects don't need to be in def_pkl independent of the machine obj they're assigned to
+TBD: extend player_cmd_key cases in trig_check() method of InvisMach
 TBD: create machine condition classes, obj, & methods for entrance_south TravelEffect case
 TBD: delete commented out v3.50 code
 

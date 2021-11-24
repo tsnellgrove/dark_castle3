@@ -337,6 +337,7 @@ class InvisMach(Invisible):
 				return self._result_lst
 
 		def trig_check(self, active_gs, case, word_lst):
+				player_cmd_key = 'not_valid'
 				if case == 'go':
 						player_cmd_key = [word_lst[1], word_lst[2]]
 				return player_cmd_key in self.cmd_triggers_lst
@@ -344,9 +345,9 @@ class InvisMach(Invisible):
 		def trigger(self, active_gs):
 				cond_return_lst = []
 				for cond in self.cmd_cond_lst:
-						cond_return = cond_check(active_gs, self.machine_state)
+						cond_return = cond.cond_check(active_gs, self.machine_state)
 						cond_return_lst.append(cond_return)
-				result_num = cond_return_list.index(True)
+				result_num = cond_return_lst.index(True)
 				result = self.result_lst[result_num]
 				self.machine_state, cmd_override = result.results_exe(active_gs, self.machine_state)
 				return cmd_override
