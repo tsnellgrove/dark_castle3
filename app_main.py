@@ -34,7 +34,6 @@ def wrapper(user_input):
 				cmd_override = pre_action_cmd(active_gs, case, word_lst)
 				if not cmd_override:
 						cmd_execute(active_gs, case, word_lst)
-#				cmd_execute(active_gs, case, word_lst)
 				# post-action triggers will go here
 				score(active_gs)
 				if active_gs.get_game_ending() != "tbd":

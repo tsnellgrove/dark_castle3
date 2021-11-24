@@ -154,7 +154,7 @@ DONE: create machine condition classes, obj, & methods for entrance_south Travel
 		DONE: cmd_cond_lst => None
 		DONE: result_lst => [cant_turn_back] => buffer message, return override == True
 	DONE: testing
-TBD: clean up all troubleshooting comments & prints
+DONE: clean up all troubleshooting comments & prints
 TBD: test to see if condition and result objects don't need to be in def_pkl independent of the machine obj they're assigned to
 TBD: extend player_cmd_key cases in trig_check() method of InvisMach
 TBD: delete commented out v3.50 code
