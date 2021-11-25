@@ -96,7 +96,7 @@ DONE: create machine condition classes, obj, & methods for entrance_south Travel
 DONE: clean up all troubleshooting comments & prints
 DONE: delete commented out v3.50 code
 DONE: test to see if condition and result objects don't need to be in def_pkl independent of the machine obj they're assigned to
-TBD: extend player_cmd_key cases in trig_check() method of InvisMach
+DONE: extend player_cmd_key cases in trig_check() method of InvisMach
 
 
 ##########################

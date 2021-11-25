@@ -350,6 +350,12 @@ class InvisMach(Invisible):
 				player_cmd_key = 'not_valid'
 				if case == 'go':
 						player_cmd_key = [word_lst[1], word_lst[2]]
+				elif case == '2word':
+						player_cmd_key = [word_lst[1], word_lst[0].name]
+				elif  case == 'tru_1word':
+						player_cmd_key = word_lst
+				elif  case == 'put':
+						player_cmd_key = [word_lst[1], word_lst[2].name, word_lst[0].name]
 				return player_cmd_key in self.cmd_triggers_lst
 
 		def trigger(self, active_gs):
