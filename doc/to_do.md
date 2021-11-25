@@ -95,7 +95,7 @@ DONE: create machine condition classes, obj, & methods for entrance_south Travel
 	DONE: testing
 DONE: clean up all troubleshooting comments & prints
 DONE: delete commented out v3.50 code
-TBD: test to see if condition and result objects don't need to be in def_pkl independent of the machine obj they're assigned to
+DONE: test to see if condition and result objects don't need to be in def_pkl independent of the machine obj they're assigned to
 TBD: extend player_cmd_key cases in trig_check() method of InvisMach
 
 
@@ -106,12 +106,12 @@ Version 3.52 Goals
 - Create class, methods, obj, and inventory updates for 'crown' object
 
 TBD: create crown object
-	TBD: create Hat class
-	TBD: create crown obj
-	TBD: create wear method
+	TBD: create Clothes class
+	TBD: create crown obj; attributes = wear_descript, remove_descript, clothing_type
+	TBD: create wear method (should check if other items of same clothing_type are already worn)
 	TBD: create remove method
-	TBD: update score for crown in hand
 	TBD: Update active_gs to include 'worn' attribute
+	TBD: update score for crown in hand
 	TBD: Update inventory() function in cmd_exe() module to show 'worn' in inventory
 
 
