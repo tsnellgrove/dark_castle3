@@ -17,15 +17,15 @@ Nov 25, 2021
 Version 3.52 Goals
 - Create class, methods, obj, and inventory updates for 'crown' object
 
-TBD: create crown object
-	TBD: review crown functionality in dark_castle2
+IN-PROC: create crown object
+	DONE: review crown functionality in dark_castle2
 	TBD: create Clothes class as child of Item
 	TBD: attributes = wear_descript, remove_descript, clothing_type
 	TBD: create crown obj = royal_crown
+	TBD: Update inventory() function in cmd_exe() module to show 'worn' in inventory
+	TBD: Update active_gs to include 'worn' attribute
 	TBD: create wear method (should check if other items of same clothing_type are already worn)
 	TBD: create remove method
-	TBD: Update active_gs to include 'worn' attribute
-	TBD: Update inventory() function in cmd_exe() module to show 'worn' in inventory
 	TBD: update score for crown in hand
 
 
