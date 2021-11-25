@@ -1,5 +1,5 @@
 To Do List - Dark Castle v3
-Nov 20, 2021
+Nov 25, 2021
 
 
 *** How to Add Objects ***
@@ -12,107 +12,21 @@ Nov 20, 2021
 
 
 ##########################
-### VERSION 3.51 START ###
-##########################
-
-Version 3.51 Goals
-- implement new, modular appraoch to machines in place of RoomEffect
-
-IDEA: taking another run at how machines should work
-IDEA: machines should be modular... a bit like rooms
-IDEA: instead of counter, implement as got_crown = False => True
-
-DONE: non-destructively disable v3.50 TravelEffect coding
-	DONE: comment out app_main() call for pre_action_cmd() module
-	DONE: comment out object defs, entrance Room invisble items, and obj adds to def_pickle (and re-run mk_def_pkl)
-	DONE: comment out TravelEffect class in class_def() module
-	DONE: test
-DONE: create machine condition classes, obj, & methods for entrance_east & entrance_west TravelEffect cases
-	DONE: NotInHandCond class
-		DONE: NotInHandCond is child of Invisible; add attributes & property
-		DONE: attributes = not_in_hand_lst
-		DONE: in mk_def_pkl(), instantiate hand_no_weap_cond and add to def_pkl
-		DONE: run mk_def_pkl()
-		DONE: create cond_check() method
-	DONE: InHandAndBoolCond class
-		DONE: InHandAndBoolCond is child of Invisible; add attributes & property
-		DONE: attributes = in_hand_lst, bool_test
-		DONE: in mk_def_pkl(), instantiate hand_weap_1st_cond & hand_weap_repeat_cond and add to def_pkl
-		DONE: run mk_def_pkl()
-		DONE: create cond_check() method
-DONE: create machine results classes, obj, & methods
-	DONE: BufferAndEndResult class
-		DONE: BufferAndEndResult is child of Invisible; add attributes & property
-		DONE: attributes = result_descript, ending, cmd_override
-		DONE: in mk_def_pkl(), instantiate die_in_moat and moat_crocs_scared
-		DONE: run mk_def_pkl()
-		DONE: create results_exe() method
-	DONE: BufferAndGiveResult class
-		DONE: BufferAndGiveResult is child of Invisible; add attributes & property
-		DONE: attributes = result_descript, give_item, cmd_override
-		DONE: in mk_def_pkl(), instantiate moat_get_crown_result
-		DONE: run mk_def_pkl()
-		DONE: create results_exe() method
-DONE: create InvisMach class & obj
-	DONE: Create class
-		DONE: class = InvisMach(Invisible)
-		DONE: attributes = machine_type, machine_state, cmd_triggers_lst, cmd_cond_lst, result_lst
-		DONE: create @properties definitions
-	DONE: create obj and add condition and tirgger obj to it
-		DONE: create entrance_moat_mach
-		DONE: machine_type => pre_action_trigger
-		DONE: machine_state => False (got_crown)
-		DONE: cmd_triggers_lst => [['go', 'go', 'east'], ['go', 'go', 'west']]
-		DONE: cmd_cond_lst => [hand_no_weap, hand_weap_1st, hand_weap_repeat]
-		DONE: result_lst => [die_in_moat, moat_get_crown, moat_crocs_scared]
-		DONE: add entrance_moat_mach to Room entrance
-		DONE: add entrance_moat_mach to def_pkl
-	DONE: create InvisMach trig_check() and trigger() methods
-		DONE: create trig_check() method
-		DONE: create trigger() method
-DONE: create pre_action_cmd() module & function
-DONE: enable pre_action_cmd() in app_main module
-DONE: testing!
-	DONE: code runs!
-	DONE: die_in_moat cases works!
-	DONE: troubleshoot get_crown case
-	DONE: troubleshoot crocs_scared case
-DONE: create machine condition classes, obj, & methods for entrance_south TravelEffect case
-	DONE: PassThruCond class
-		DONE: PassThruCond is child of Invisible; add attributes & property
-		DONE: attributes = name
-		DONE: in mk_def_pkl(), instantiate pass_thru_cond and add to def_pkl
-		DONE: run mk_def_pkl()
-		DONE: create cond_check() method
-	DONE: instantiate object based on BufferAndEndResult class with ending = None
-		DONE: name = cant_turn_back, 
-	DONE: create machine obj and add condition and result obj to it
-		DONE: machine_type => pre_action_trigger
-		DONE: machine_vars => None
-		DONE: cmd_triggers => [['go', 'south']]
-		DONE: cmd_cond_lst => None
-		DONE: result_lst => [cant_turn_back] => buffer message, return override == True
-	DONE: testing
-DONE: clean up all troubleshooting comments & prints
-DONE: delete commented out v3.50 code
-DONE: test to see if condition and result objects don't need to be in def_pkl independent of the machine obj they're assigned to
-DONE: extend player_cmd_key cases in trig_check() method of InvisMach
-
-
-##########################
 ### VERSION 3.52 START ###
 ##########################
 Version 3.52 Goals
 - Create class, methods, obj, and inventory updates for 'crown' object
 
 TBD: create crown object
-	TBD: create Clothes class
-	TBD: create crown obj; attributes = wear_descript, remove_descript, clothing_type
+	TBD: review crown functionality in dark_castle2
+	TBD: create Clothes class as child of Item
+	TBD: attributes = wear_descript, remove_descript, clothing_type
+	TBD: create crown obj = royal_crown
 	TBD: create wear method (should check if other items of same clothing_type are already worn)
 	TBD: create remove method
 	TBD: Update active_gs to include 'worn' attribute
-	TBD: update score for crown in hand
 	TBD: Update inventory() function in cmd_exe() module to show 'worn' in inventory
+	TBD: update score for crown in hand
 
 
 ##########################

@@ -12,7 +12,7 @@
 
 ### static dictionary ###
 static_dict = {
-		'version' : '3.50',
+		'version' : '3.51',
 		'max_score' : 75,
 }
 
