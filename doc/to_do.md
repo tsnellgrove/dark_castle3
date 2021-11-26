@@ -33,7 +33,7 @@ IN-PROC: create crown object
 	DONE: create remove method
 	DONE: test
 	DONE: clean up test hats
-	TBD: switch score for royal_crown to 'wear' (10 pts) ???
+	DONE: switch score for royal_crown to 'wear' (10 pts)
 TBD: create and implement BufferOnlyResult (make BufferAndEndResult a child ?)
 TBD: Organize GameState class into sections
 IDEA: Should GameState be in a separate module?

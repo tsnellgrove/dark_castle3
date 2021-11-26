@@ -21,7 +21,10 @@ item_score_lst = [
 		'rusty_key',
 		'shiny_sword',
 		'silver_key',
-		'kinging_scroll',
+		'kinging_scroll'
+]
+
+worn_score_lst = [
 		'royal_crown'
 ]
 
@@ -42,6 +45,18 @@ def score(active_gs):
 						active_gs.update_score(points)
 						active_gs.set_points_earned_state(score_key, True)
 						active_gs.print_score()
+
+		# increment worn scores
+		for score_key in worn_score_lst:
+				worn_lst = active_gs.get_worn_lst()
+				if len(worn_lst) > 0:
+						for garment in worn_lst:
+								if (garment.name == score_key
+												and active_gs.get_points_earned_state(score_key) == False):
+										points = score_val_dict[score_key]
+										active_gs.update_score(points)
+										active_gs.set_points_earned_state(score_key, True)
+										active_gs.print_score()
 
 		# increment room scores
 		for score_key in room_score_lst:
