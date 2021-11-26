@@ -44,6 +44,7 @@ stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_bis
 fresh_water = Beverage('fresh_water', 'Fresh Water', 'water', 'fresh_water', None, 'water_drink')
 
 royal_crown = Clothes('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 'wear_royal_crown', 'remove_royal_crown', 'hat')
+baseball_cap = Clothes('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, None, None, 'hat')
 
 wooden_chest = Container('wooden_chest', 'wooden chest', "chest", 'wooden_chest', None,
 				False, False, brass_key, [bubbly_potion]) # test object
@@ -111,8 +112,9 @@ active_gs = GameState(
 				'move_counter' : 0,
 				'end_of_game' : False,
 				'game_ending' : "tbd",
-				'backpack' : [rusty_key, cheese_wedge, stale_biscuits, glass_bottle],
+				'backpack' : [rusty_key, cheese_wedge, stale_biscuits, glass_bottle, baseball_cap, royal_crown],
 				'hand' : [],
+				'worn' : [],
 				'room' : entrance,
 				'out_buff' : ""
 		}
@@ -121,7 +123,7 @@ active_gs = GameState(
 ### instantiated objects added to list ###
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible obj referenced in room.invis_obj_lst need not be listed ###
-master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, entrance, main_hall, antechamber, throne_room]
+master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, entrance, main_hall, antechamber, throne_room]
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:

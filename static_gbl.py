@@ -85,6 +85,7 @@ descript_dict = {
 
 		### clothes objects ###
 		'royal_crown' : "Giant rubies: check. Dozens of glittering jewels: check. Gleaming gold and precious metals: check. Yep, this is a *seriously royal* crown you've got here Burt!",
+		'baseball_cap' : "Burt, it's a code-testing Baseball Cap! Your favorite kind!!",
 
 		### wear descriptions ###
 		'wear_royal_crown' : "You now feel more regal.",

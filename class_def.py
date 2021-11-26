@@ -127,6 +127,23 @@ class GameState(object):
 						self.hand_lst_remove_item(hand_item)
 				self.hand_lst_append_item(new_item)
 
+		def get_worn_lst(self):
+				return self._state_dict['worn']
+
+		def worn_lst_append_item(self, item):
+				self._state_dict['worn'].append(item)
+
+		def worn_lst_remove_item(self, item):
+				self._state_dict['worn'].remove(item)
+
+		def clothing_type_worn(self, item):
+				type_match = False
+				worn_lst = self.get_worn_lst()
+				for garment in worn_lst:
+						if item.clothing_type == garment.clothing_type:
+								type_match = True
+				return type_match
+
 		def get_static_obj(self, static_key):
 				if static_key not in self._static_obj_dict:
 						raise KeyError("key does not exist in dict")
@@ -158,6 +175,11 @@ class GameState(object):
 				backpack_obj_lst = self.get_backpack_lst()
 				backpack_str = obj_lst_to_str(backpack_obj_lst)
 				self.buffer("In your backpack you have: " + backpack_str)
+
+				worn_obj_lst = self.get_worn_lst()
+				worn_str = obj_lst_to_str(worn_obj_lst)
+				self.buffer("Special garments you are wearing: " + worn_str)
+
 
 		def scope_lst(self):
 				room_obj = self.get_room()
@@ -715,5 +737,17 @@ class Clothes(Item):
 		def clothing_type(self):
 				return self._clothing_type
 
-
+		def wear(self, active_gs):
+				if not active_gs.hand_check(self):
+						output = "You're not holding the " + self.full_name + " in your hand."
+						active_gs.buffer(output)
+				elif active_gs.clothing_type_worn(self):
+						output = "You are already wearing a " + self.clothing_type + ". You can't wear two garments of the same type at the same time."
+						active_gs.buffer(output)
+				else:
+						active_gs.worn_lst_append_item(self)
+						active_gs.hand_lst_remove_item(self)
+						active_gs.buffer("Worn.")
+						if self.wear_descript is not None:
+								active_gs.buffer(descript_dict[self.wear_descript])
 
