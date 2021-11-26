@@ -281,6 +281,8 @@ NEW PUZZLE IDEAS:
 
 ### New Puzzle Ideas ###
 
+IDEA: create a jaunty_cap that makes Burt move twice as fast as everything else in the world - maybe essential for escaping the time travel ball?
+
 IDEA: create a fun scenario where TravelEffect take item gets used... maybe a giant brid comes along and takes whatever's in Burts hand and scares him off until he carries a lead weight (or a heavy rock?) - which tires the bird out so much Burt can go in the room and get back his stuff and enter the room? Maybe this could be a room between main hall and antechamber that the maze / mouse hole is off of? Maybe nest is in corner of room of class Box (not open / close or lock / unlock).
 - Make it a Wumpus Bat - a reference to Hunth the Wumpus and Adventure!!
 - Takes an item from Burt's hand and sends him back the way he came to take cover; item is randomly placed in another (reachable) room
