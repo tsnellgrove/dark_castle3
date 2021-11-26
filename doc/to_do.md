@@ -29,8 +29,10 @@ IN-PROC: create crown object
 	DONE: test inventory
 	DONE: create wear method (should check if other items of same clothing_type are already worn)
 	DONE: test
-	TBD: clean up test hat
-	TBD: create remove method
+	DONE: clean up test hat
+	DONE: create remove method
+	DONE: test
+	TBD: clean up test hats
 	TBD: switch score for royal_crown to 'wear' (10 pts) ???
 TBD: create and implement BufferOnlyResult (make BufferAndEndResult a child ?)
 TBD: Organize GameState class into sections

@@ -185,11 +185,12 @@ class GameState(object):
 				room_obj = self.get_room()
 				hand_lst = self.get_hand_lst()
 				backpack_lst = self.get_backpack_lst()
+				worn_lst = self.get_worn_lst()
 				universal_lst = self.get_static_obj('universal')
 				room_obj_lst = room_obj.room_obj_lst
 				features_lst = room_obj.features
 				scope_lst = (room_obj_lst + hand_lst + backpack_lst 
-								+ universal_lst + features_lst)
+								+ worn_lst + universal_lst + features_lst)
 				scope_lst.append(room_obj)
 				room_containers = []
 				for obj in scope_lst:
@@ -750,4 +751,14 @@ class Clothes(Item):
 						active_gs.buffer("Worn.")
 						if self.wear_descript is not None:
 								active_gs.buffer(descript_dict[self.wear_descript])
+		def remove(self, active_gs):
+				if self not in active_gs.get_worn_lst():
+						output = "You're not wearing the " + self.full_name + "."
+						active_gs.buffer(output)
+				else:
+						active_gs.put_in_hand(self)
+						active_gs.worn_lst_remove_item(self)
+						active_gs.buffer("Removed.")
+						if self.remove_descript is not None:
+								active_gs.buffer(descript_dict[self.remove_descript])
 

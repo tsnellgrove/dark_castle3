@@ -112,7 +112,7 @@ active_gs = GameState(
 				'move_counter' : 0,
 				'end_of_game' : False,
 				'game_ending' : "tbd",
-				'backpack' : [rusty_key, cheese_wedge, stale_biscuits, glass_bottle, baseball_cap, royal_crown],
+				'backpack' : [rusty_key, cheese_wedge, stale_biscuits, glass_bottle, royal_crown, baseball_cap],
 				'hand' : [],
 				'worn' : [],
 				'room' : entrance,
