@@ -659,12 +659,16 @@ class Food(Item):
 class Jug(Item):
 		def __init__(self, name, full_name, root_name, descript_key, writing, open_state, contains):
 				super().__init__(name, full_name, root_name, descript_key, writing)
-				self.open_state = open_state # is the jug uncapped?
+				self._open_state = open_state # is the jug uncapped?
 				self._contains = contains # obj in the jug
 
 		@property
 		def contains(self):
 				return self._contains
+
+		@property
+		def open_state(self):
+				return self._open_state
 
 		def examine(self, active_gs):
 				super(Jug, self).examine(active_gs)
@@ -691,3 +695,25 @@ class Beverage(ViewOnly):
 						hand_lst[0].contains.remove(self)
 						output = "Drunk. The " + self.full_name + " " + descript_dict[self.drink_desc_key]
 						active_gs.buffer(output)
+
+class Clothes(Item):
+		def __init__(self, name, full_name, root_name, descript_key, writing, wear_descript, remove_descript, clothing_type):
+				super().__init__(name, full_name, root_name, descript_key, writing)
+				self._wear_descript = wear_descript # description when wearing garment (can be None)
+				self._remove_descript = remove_descript # description when removing garment (can be None)
+				self._clothing_type = clothing_type # e.g. 'hat'; Burt can only wear one garment of a given type at a time
+
+		@property
+		def wear_descript(self):
+				return self._wear_descript
+
+		@property
+		def remove_descript(self):
+				return self._remove_descript
+
+		@property
+		def clothing_type(self):
+				return self._clothing_type
+
+
+

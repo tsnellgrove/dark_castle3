@@ -83,6 +83,15 @@ descript_dict = {
 		### beverage objects ###
 		'fresh_water' : "After your trudge up the hill to Dark Castle the Fresh Water looks invitingly refreshing.",
 
+		### clothes objects ###
+		'royal_crown' : "Giant rubies: check. Dozens of glittering jewels: check. Gleaming gold and precious metals: check. Yep, this is a *seriously royal* crown you've got here Burt!",
+
+		### wear descriptions ###
+		'wear_royal_crown' : "You now feel more regal.",
+		
+		### remove descriptions ###
+		'remove_royal_crown' : "You feel a bit less kingly.",
+
 		### eat descriptions ###
 		'cheese_eat' : "tastes delicious!",
 		'biscuit_eat' : "taste like damp cardboard that's been run over by a cart. You rather regret eating them... especially as to some poor creature out there they might be a rare and wonderous delicacy.",

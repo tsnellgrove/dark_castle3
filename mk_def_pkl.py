@@ -6,7 +6,7 @@
 
 # import statements
 import pickle
-from class_def import Invisible, NotInHandCond, InHandAndStateCond, PassThruCond, BufferAndEndResult, BufferAndGiveResult, InvisMach, Writing, ViewOnly, Item, Food, Beverage, Container, Jug, Door, Room, GameState
+from class_def import Invisible, NotInHandCond, InHandAndStateCond, PassThruCond, BufferAndEndResult, BufferAndGiveResult, InvisMach, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room, GameState
 
 # object instantiation - starting state
 rusty_lettering = Writing('rusty_lettering', 'Rusty Lettering', "lettering", 'rusty_lettering')
@@ -43,6 +43,8 @@ stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_bis
 
 fresh_water = Beverage('fresh_water', 'Fresh Water', 'water', 'fresh_water', None, 'water_drink')
 
+royal_crown = Clothes('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 'wear_royal_crown', 'remove_royal_crown', 'hat')
+
 wooden_chest = Container('wooden_chest', 'wooden chest', "chest", 'wooden_chest', None,
 				False, False, brass_key, [bubbly_potion]) # test object
 crystal_box = Container('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy,
@@ -65,7 +67,7 @@ pass_thru_cond = PassThruCond('pass_thru_cond')
 
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'die_in_moat_result', 'death', True)
 moat_croc_scared_result = BufferAndEndResult('moat_croc_scared_result', 'moat_croc_scared_result', None, True)
-moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', 'moat_get_crown_result', random_mcguffin, True)
+moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', 'moat_get_crown_result', royal_crown, True)
 cant_turn_back_result = BufferAndEndResult('cant_turn_back_result', 'cant_turn_back_result', None, True)
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_action_trig', False, [['go', 'east'], ['go', 'west']],
@@ -118,7 +120,7 @@ active_gs = GameState(
 ### instantiated objects added to list ###
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible obj referenced in room.invis_obj_lst need not be listed ###
-master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, entrance, main_hall, antechamber, throne_room]
+master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, entrance, main_hall, antechamber, throne_room]
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:

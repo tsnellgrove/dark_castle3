@@ -19,11 +19,12 @@ Version 3.52 Goals
 
 IN-PROC: create crown object
 	DONE: review crown functionality in dark_castle2
-	TBD: create Clothes class as child of Item
-	TBD: attributes = wear_descript, remove_descript, clothing_type
-	TBD: create crown obj = royal_crown
-	TBD: Update inventory() function in cmd_exe() module to show 'worn' in inventory
+	DONE: create Clothes class as child of Item
+	DONE: attributes = wear_descript, remove_descript, clothing_type
+	DONE: create crown obj = royal_crown
+	DONE: Add royal_crown to game world
 	TBD: Update active_gs to include 'worn' attribute
+	TBD: Update inventory() function in cmd_exe() module to show 'worn' in inventory
 	TBD: create wear method (should check if other items of same clothing_type are already worn)
 	TBD: create remove method
 	TBD: update score for crown in hand
