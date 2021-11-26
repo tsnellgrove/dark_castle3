@@ -17,7 +17,7 @@ Nov 25, 2021
 Version 3.52 Goals
 - Create class, methods, obj, and inventory updates for 'crown' object
 
-IN-PROC: create crown object
+DONE: create crown object
 	DONE: review crown functionality in dark_castle2
 	DONE: create Clothes class as child of Item
 	DONE: attributes = wear_descript, remove_descript, clothing_type
@@ -34,16 +34,11 @@ IN-PROC: create crown object
 	DONE: test
 	DONE: clean up test hats
 	DONE: switch score for royal_crown to 'wear' (10 pts)
-TBD: create and implement BufferOnlyResult (make BufferAndEndResult a child ?)
-TBD: Organize GameState class into sections
-IDEA: Should GameState be in a separate module?
-
-
-##########################
-### VERSION 3.53 START ###
-##########################
-Version 3.53 Goals
-- Create class, methods, and obj antechamber control_panel machine
+TBD: code clean-up
+	TBD: create and implement BufferOnlyResult (make BufferAndEndResult a child ?)
+	TBD: Put active_gs.put_in_hand() in Item class take() method
+	TBD: Organize GameState class into sections
+	IDEA: Should GameState be in a separate module?
 
 
 ##########################
@@ -54,24 +49,10 @@ Version 3.54 Goals
 
 
 ##########################
-### VERSION 3.55 START ###
-##########################
-Version 3.55 Goals
-- Create class, methods, and obj for goblin creature
-
-
-##########################
 ### VERSION 3.56 START ###
 ##########################
 Version 3.56 Goals
-- Create class, methods, and obj for hedgehog1 (hungry_guard) creature
-
-
-##########################
-### VERSION 3.57 START ###
-##########################
-Version 3.57 Goals
-- Create class, methods, and obj for hedgehog2 (key_trader) creature
+- Create class, methods, and obj antechamber control_panel machine
 
 
 ##########################
@@ -93,7 +74,44 @@ TBD: documentation:
 	TBD: update class diagram
 	TBD: update module diagram
 	TBD: Create machine diagram
-	
+
+
+##########################
+### VERSION 3.60 START ###
+##########################
+Version 3.60 Goals
+- Create class, methods, and obj for goblin creature
+
+
+##########################
+### VERSION 3.62 START ###
+##########################
+Version 3.62 Goals
+- Create class, methods, and obj for hedgehog1 (hungry_guard) creature
+
+
+##########################
+### VERSION 3.64 START ###
+##########################
+Version 3.64 Goals
+- Create class, methods, and obj for hedgehog2 (key_trader) creature
+
+
+##########################
+### VERSION 3.66 START ###
+##########################
+
+Version 3.66 Goals
+- Create / update program documentation
+
+TBD: documentation:
+	TBD: write up thinking and decisions on creatures
+	TBD: update class diagram
+	TBD: update module diagram
+	TBD: update machine diagram
+	TBD: create creature diagram
+
+
 
 *** interactive object ideas ***
 
@@ -280,6 +298,10 @@ TBD: for doors and containers, use None option for no lock or no lid?
 NEW PUZZLE IDEAS:
 
 ### New Puzzle Ideas ###
+
+IDEA: Junk mail puzzle (multi-element solution); all for "chariot warranties"
+
+IDEA: Thief puzzle (can take from backpack)
 
 IDEA: create a jaunty_cap that makes Burt move twice as fast as everything else in the world - maybe essential for escaping the time travel ball?
 
