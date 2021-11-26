@@ -32,7 +32,7 @@ IN-PROC: create crown object
 	DONE: clean up test hat
 	DONE: create remove method
 	DONE: test
-	TBD: clean up test hats
+	DONE: clean up test hats
 	TBD: switch score for royal_crown to 'wear' (10 pts) ???
 TBD: create and implement BufferOnlyResult (make BufferAndEndResult a child ?)
 TBD: Organize GameState class into sections
