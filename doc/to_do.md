@@ -23,11 +23,12 @@ IN-PROC: create crown object
 	DONE: attributes = wear_descript, remove_descript, clothing_type
 	DONE: create crown obj = royal_crown
 	DONE: Add royal_crown to game world
+	DONE: update score for crown in hand  (10 pts) [note: in dc2, 5 pts for getting crown & 5 for wearing crown]
 	TBD: Update active_gs to include 'worn' attribute
 	TBD: Update inventory() function in cmd_exe() module to show 'worn' in inventory
 	TBD: create wear method (should check if other items of same clothing_type are already worn)
 	TBD: create remove method
-	TBD: update score for crown in hand
+	TBD: switch score for royal_crown to 'wear' (10 pts) ???
 
 
 ##########################

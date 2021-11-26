@@ -13,14 +13,16 @@ score_val_dict = {
 		'shiny_sword' : 10,
 		'throne_room' : 10,
 		'silver_key' : 5,
-		'kinging_scroll' : 5
+		'kinging_scroll' : 5,
+		'royal_crown' : 10
 }
 
 item_score_lst = [
 		'rusty_key',
 		'shiny_sword',
 		'silver_key',
-		'kinging_scroll'
+		'kinging_scroll',
+		'royal_crown'
 ]
 
 room_score_lst = [
