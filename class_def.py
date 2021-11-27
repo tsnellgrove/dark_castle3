@@ -32,6 +32,7 @@ class GameState(object):
 				self._static_obj_dict = static_obj_dict
 				self._state_dict = state_dict
 
+		### descriptions ###
 		def get_dynamic_desc_dict(self, dynamic_desc_key):
 				if dynamic_desc_key not in self._dynamic_desc_dict:
 						raise KeyError("key does not exist in dict")
@@ -44,6 +45,7 @@ class GameState(object):
 				else:
 						self._dynamic_desc_dict[dynamic_desc_key] = dynamic_desc_str
 
+		### movement ###
 		def is_valid_map_direction(self, room_obj, direction):
 				return direction in self._map_dict[room_obj.name]
 
@@ -51,6 +53,7 @@ class GameState(object):
 				next_room = self._map_dict[room_obj.name][direction]
 				return next_room
 
+		### score ###
 		def get_points_earned_state(self, score_key):
 				if score_key not in self._points_earned_dict:
 						raise KeyError("key does not exist in dict")
@@ -74,6 +77,7 @@ class GameState(object):
 				output2 = (" out of " + str(static_dict['max_score']))
 				self.buffer(output1 + output2)
 
+		### game moves counter ###
 		def move_inc(self):
 				self._state_dict['move_counter'] += 1
 
@@ -83,6 +87,7 @@ class GameState(object):
 		def get_moves(self):
 				return self._state_dict['move_counter']
 
+		### game ending ###
 		def get_end_of_game(self):
 				return self._state_dict['end_of_game']
 
@@ -95,6 +100,7 @@ class GameState(object):
 		def set_game_ending(self, value):
 				self._state_dict['game_ending'] = value
 
+		### backpack ###
 		def get_backpack_lst(self):
 				return self._state_dict['backpack']
 
@@ -107,6 +113,7 @@ class GameState(object):
 		def get_hand_lst(self):
 				return self._state_dict['hand']
 
+		### hand ###
 		def hand_lst_append_item(self, item):
 				self._state_dict['hand'].append(item)
 
@@ -127,6 +134,7 @@ class GameState(object):
 						self.hand_lst_remove_item(hand_item)
 				self.hand_lst_append_item(new_item)
 
+		### worn ###
 		def get_worn_lst(self):
 				return self._state_dict['worn']
 
@@ -144,18 +152,21 @@ class GameState(object):
 								type_match = True
 				return type_match
 
+		### static obj ###
 		def get_static_obj(self, static_key):
 				if static_key not in self._static_obj_dict:
 						raise KeyError("key does not exist in dict")
 				else:
 						return self._static_obj_dict[static_key]
 
+		### room ###
 		def get_room(self):
 				return self._state_dict['room']
 
 		def set_room(self, value):
 				self._state_dict['room'] = value
 
+		### buffer ###
 		def get_buff(self):
 				return self._state_dict['out_buff']
 
@@ -167,6 +178,7 @@ class GameState(object):
 		def reset_buff(self):
 				self._state_dict['out_buff'] = ""
 
+		### inventory ###
 		def inventory(self):
 				hand_obj_lst = self.get_hand_lst()
 				hand_str = obj_lst_to_str(hand_obj_lst)
@@ -180,7 +192,7 @@ class GameState(object):
 				worn_str = obj_lst_to_str(worn_obj_lst)
 				self.buffer("Special garments you are wearing: " + worn_str)
 
-
+		### scope lists ###
 		def scope_lst(self):
 				room_obj = self.get_room()
 				hand_lst = self.get_hand_lst()
@@ -224,6 +236,7 @@ class GameState(object):
 								mach_obj_lst.append(obj)
 				return mach_obj_lst
 
+		### obj representation (for printing) ###
 		def __repr__(self):
 				return f'Object { self._name } is of class { type(self).__name__ } '
 
@@ -523,10 +536,11 @@ class Item(ViewOnly):
 				if active_gs.hand_check(self):
 						active_gs.buffer("You're already holding the " + self.full_name)
 				else:
-						if not active_gs.hand_empty(): # if hand not empty move item to backpack
-								active_gs.backpack_lst_append_item(hand_lst[0])
-								active_gs.hand_lst_remove_item(hand_lst[0])
-						active_gs.hand_lst_append_item(self) # put taken item in hand
+						active_gs.put_in_hand(self)
+#						if not active_gs.hand_empty(): # if hand not empty move item to backpack
+#								active_gs.backpack_lst_append_item(hand_lst[0])
+#								active_gs.hand_lst_remove_item(hand_lst[0])
+#						active_gs.hand_lst_append_item(self) # put taken item in hand
 						active_gs.buffer("Taken")
 						if self in backpack_lst: # if taken from backpack, remove from backpack
 								active_gs.backpack_lst_remove_item(self)					

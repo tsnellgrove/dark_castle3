@@ -34,10 +34,12 @@ DONE: create crown object
 	DONE: test
 	DONE: clean up test hats
 	DONE: switch score for royal_crown to 'wear' (10 pts)
-TBD: code clean-up
+IN-PROCE: code clean-up
+	DONE: Organize GameState class into sections
+	DONE: Put active_gs.put_in_hand() in Item class take() method
+	DONE: Test
+	TBD: Update take() method to include clothes (with remove text)
 	TBD: create and implement BufferOnlyResult (make BufferAndEndResult a child ?)
-	TBD: Put active_gs.put_in_hand() in Item class take() method
-	TBD: Organize GameState class into sections
 	IDEA: Should GameState be in a separate module?
 
 

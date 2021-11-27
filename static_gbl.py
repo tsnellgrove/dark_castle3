@@ -91,7 +91,7 @@ descript_dict = {
 		'wear_royal_crown' : "You now feel more regal.",
 		
 		### remove descriptions ###
-		'remove_royal_crown' : "You feel a bit less kingly.",
+		'remove_royal_crown' : "You suddenly feel a bit less kingly.",
 
 		### eat descriptions ###
 		'cheese_eat' : "tastes delicious!",
