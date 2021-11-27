@@ -54,7 +54,10 @@ IN-PROC: code clean-up
 Version 3.54 Goals
 - Create class, methods, and obj for throne room throne machine
 
-IDEA: throne obj is ove class SpringLoadedSlider (child of ViewOnly); has mehods push() and pull() and state of last_action (?)
+IDEA: throne obj is ove class SpringLoadedSlider (child of ViewOnly)
+	IDEA: has mehods push() and pull() and last_action_state (?)
+	IDEA: last_action_state can == 'pushed', 'pulled', 'neutral'
+	IDEA: auto_pre_action re-sets last_action_state to 'neutral'
 
 ##########################
 ### VERSION 3.56 START ###
