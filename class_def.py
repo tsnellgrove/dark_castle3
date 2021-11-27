@@ -532,6 +532,7 @@ class Item(ViewOnly):
 				room_obj = active_gs.get_room()
 				hand_lst = active_gs.get_hand_lst()
 				backpack_lst = active_gs.get_backpack_lst()
+				worn_lst = active_gs.get_worn_lst()
 				room_obj_lst = room_obj.room_obj_lst
 				if active_gs.hand_check(self):
 						active_gs.buffer("You're already holding the " + self.full_name)
@@ -539,7 +540,11 @@ class Item(ViewOnly):
 						active_gs.put_in_hand(self)
 						active_gs.buffer("Taken")
 						if self in backpack_lst: # if taken from backpack, remove from backpack
-								active_gs.backpack_lst_remove_item(self)					
+								active_gs.backpack_lst_remove_item(self)
+						elif self in worn_lst: # if taken from worn_lst, remove from worn_lst
+								if self.remove_descript is not None:
+										active_gs.buffer(descript_dict[self.remove_descript])
+								active_gs.worn_lst_remove_item(self)
 						elif self in room_obj_lst: # if taken from room, remove from room
 								room_obj.room_obj_lst_remove(self)
 						else:

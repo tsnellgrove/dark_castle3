@@ -39,7 +39,7 @@ IN-PROCE: code clean-up
 	DONE: Put active_gs.put_in_hand() in Item class take() method
 	DONE: Test
 	DONE: Clean up comments
-	TBD: Update take() method to include clothes (with remove text)
+	DONE: Update take() method to include clothes (with remove text)
 	TBD: create and implement BufferOnlyResult (make BufferAndEndResult a child ?)
 	IDEA: Should GameState be in a separate module?
 
