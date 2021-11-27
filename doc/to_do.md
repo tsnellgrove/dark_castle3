@@ -16,6 +16,7 @@ Nov 25, 2021
 ##########################
 Version 3.52 Goals
 - Create class, methods, obj, and inventory updates for 'crown' object
+- Mini code clean-up
 
 DONE: create crown object
 	DONE: review crown functionality in dark_castle2
@@ -34,14 +35,17 @@ DONE: create crown object
 	DONE: test
 	DONE: clean up test hats
 	DONE: switch score for royal_crown to 'wear' (10 pts)
-IN-PROCE: code clean-up
+IN-PROC: code clean-up
 	DONE: Organize GameState class into sections
 	DONE: Put active_gs.put_in_hand() in Item class take() method
 	DONE: Test
 	DONE: Clean up comments
 	DONE: Update take() method to include clothes (with remove text)
 	TBD: create and implement BufferOnlyResult (make BufferAndEndResult a child ?)
-	IDEA: Should GameState be in a separate module?
+	IDEA: kill 'remove' method and update 'help basics' to explain that take will get clothes? (otherwise, why not 'remove' from backpack?)
+	IDEA: Should GameState be in a separate module? 
+		IDEA: gs_def.py ? class_def.py would import gs_def (?) - then mk_def_pkl.py would import from both?
+	
 
 
 ##########################
@@ -50,6 +54,7 @@ IN-PROCE: code clean-up
 Version 3.54 Goals
 - Create class, methods, and obj for throne room throne machine
 
+IDEA: throne obj is ove class SpringLoadedSlider (child of ViewOnly); has mehods push() and pull() and state of last_action (?)
 
 ##########################
 ### VERSION 3.56 START ###
