@@ -537,10 +537,6 @@ class Item(ViewOnly):
 						active_gs.buffer("You're already holding the " + self.full_name)
 				else:
 						active_gs.put_in_hand(self)
-#						if not active_gs.hand_empty(): # if hand not empty move item to backpack
-#								active_gs.backpack_lst_append_item(hand_lst[0])
-#								active_gs.hand_lst_remove_item(hand_lst[0])
-#						active_gs.hand_lst_append_item(self) # put taken item in hand
 						active_gs.buffer("Taken")
 						if self in backpack_lst: # if taken from backpack, remove from backpack
 								active_gs.backpack_lst_remove_item(self)					
