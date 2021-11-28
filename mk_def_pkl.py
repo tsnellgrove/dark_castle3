@@ -6,7 +6,7 @@
 
 # import statements
 import pickle
-from class_def import Invisible, NotInHandCond, InHandAndStateCond, PassThruCond, BufferAndEndResult, BufferAndGiveResult, InvisMach
+from class_def import Invisible, NotInHandCond, InHandAndStateCond, PassThruCond, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, InvisMach
 from class_def import Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room, GameState
 
 # object instantiation - starting state
@@ -68,9 +68,11 @@ hand_weap_repeat_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, g
 pass_thru_cond = PassThruCond('pass_thru_cond')
 
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'die_in_moat_result', 'death', True)
-moat_croc_scared_result = BufferAndEndResult('moat_croc_scared_result', 'moat_croc_scared_result', None, True)
+#moat_croc_scared_result = BufferAndEndResult('moat_croc_scared_result', 'moat_croc_scared_result', None, True)
+moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', 'moat_croc_scared_result', True)
 moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', 'moat_get_crown_result', royal_crown, True)
-cant_turn_back_result = BufferAndEndResult('cant_turn_back_result', 'cant_turn_back_result', None, True)
+#cant_turn_back_result = BufferAndEndResult('cant_turn_back_result', 'cant_turn_back_result', None, True)
+cant_turn_back_result = BufferOnlyResult('cant_turn_back_result', 'cant_turn_back_result', True)
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_action_trig', False, [['go', 'east'], ['go', 'west']],
 				[hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
