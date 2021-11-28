@@ -337,24 +337,31 @@ class BufferAndEndResult(BufferOnlyResult):
 						active_gs.set_game_ending(self.ending)
 				return machine_state, self.cmd_override
 
-class BufferAndGiveResult(Invisible):
-		def __init__(self, name, result_descript, give_item, cmd_override):
-				super().__init__(name)
-				self._result_descript = result_descript # description of result
-				self._give_item = give_item # item to be given to Burt
-				self._cmd_override = cmd_override # does the triggered pre-action over-ride the 'standard' response to player command?
+#class BufferAndGiveResult(Invisible):
+#		def __init__(self, name, result_descript, give_item, cmd_override):
+#				super().__init__(name)
+#				self._result_descript = result_descript # description of result
+#				self._give_item = give_item # item to be given to Burt
+#				self._cmd_override = cmd_override # does the triggered pre-action over-ride the 'standard' response to player command?
 
-		@property
-		def result_descript(self):
-				return self._result_descript
+class BufferAndGiveResult(BufferOnlyResult):
+		def __init__(self, name, result_descript, give_item, cmd_override):
+				super().__init__(name, result_descript, cmd_override)
+#				self._result_descript = result_descript # description of result
+				self._give_item = give_item # item to be given to Burt
+#				self._cmd_override = cmd_override # does the triggered pre-action over-ride the 'standard' response to player command?
+
+#		@property
+#		def result_descript(self):
+#				return self._result_descript
 
 		@property
 		def give_item(self):
 				return self._give_item
 
-		@property
-		def cmd_override(self):
-				return self._cmd_override
+#		@property
+#		def cmd_override(self):
+#				return self._cmd_override
 
 		def results_exe(self, active_gs, machine_state):
 				active_gs.buffer(descript_dict[self.result_descript])
