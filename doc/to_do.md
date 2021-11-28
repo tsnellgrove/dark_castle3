@@ -43,8 +43,7 @@ IN-PROC: code clean-up
 	DONE: Update take() method to include clothes (with remove text)
 	TBD: create and implement BufferOnlyResult (make BufferAndEndResult a child ?)
 	IDEA: kill 'remove' method and update 'help basics' to explain that take will get clothes? (otherwise, why not 'remove' from backpack?)
-	IDEA: Should GameState be in a separate module? 
-		IDEA: gs_def.py ? class_def.py would import gs_def (?) - then mk_def_pkl.py would import from both?
+
 	
 
 
@@ -58,6 +57,10 @@ IDEA: throne obj is ove class SpringLoadedSlider (child of ViewOnly)
 	IDEA: has mehods push() and pull() and last_action_state (?)
 	IDEA: last_action_state can == 'pushed', 'pulled', 'neutral'
 	IDEA: auto_pre_action re-sets last_action_state to 'neutral'
+IDEA: we could have more types of pre and post actions...
+	- pre_action_trig => pre_action_cmd_trig
+	- this allows for pre_action_state_trig
+	- could also have a simple pre_action_state_reset which just resets a button or spring_loaded_slider to given default value (None)
 
 ##########################
 ### VERSION 3.56 START ###
@@ -71,6 +74,9 @@ Version 3.56 Goals
 ##########################
 Version 3.58 Goals
 - Create class, methods, and obj for read_scroll machine
+
+IDEA: Should GameState be in a separate module? 
+	IDEA: gs_def.py ? class_def.py would import gs_def (?) - then mk_def_pkl.py would import from both?
 
 
 ##########################
@@ -309,6 +315,20 @@ TBD: for doors and containers, use None option for no lock or no lid?
 NEW PUZZLE IDEAS:
 
 ### New Puzzle Ideas ###
+
+IDEA: have a 'jaunty hat' that enables you to move 'twice per time click' (i.e. no pre or post actions or move increments for one turn)
+	- would necesitate default responses to attacks and things like that
+	- could solve nearly any puzzle so need to deliver late in the game
+	- maybe especially useful for solving a '2 button' puzzle
+
+- Back to the Future - time machine chariot idea
+	- chariot is in stable hooked up to old_mare
+	- feed old_mare 1.7 boxes of jigga-whats special speed feed and chariot charges forward... at 8.9 mph blue light and time change
+	- dial in chariot picks year
+	- chariot is shiny metal and has a label on is saying "from the grande dutchy of Lorean" (remember, only chariots from the Grande Dutchy can truly call themselves 'De Lorean' - all others are merely fast, shiny chariots)
+	- Special easter eggs... there are 2 full boxes of jigga-what's special feed and 2 70% full boxes on an old dusty shelf (current time). They appear ancient and you've heard that for some reason or other this brand was outlawed 100 years ago - you didn't think any was left in the world... if Burt goes back in time he can feed the 1.7 jw to the old mare to get back in time - at this point, all 4 boxes are consumed (Burt will, in fact remember there as only having been 2 in current time)... but, if Burt attempts to bring a box with him back to the future he will fragment the space-time-continum and find himself sitting at a computer, playing a text adventure... with all of his memories fading and end with the statement "it must have been just a game all along..." with no score = "N/A" and title = time traveller
+
+- Peter Pan puzzle where you catch and make use of your shadow / mirror image?
 
 IDEA: Junk mail puzzle (multi-element solution); all for "chariot warranties"
 
