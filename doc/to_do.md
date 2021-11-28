@@ -51,6 +51,7 @@ IN-PROC: code clean-up
 	DONE: make BufferAndGiveResult a child of BufferOnlyResult
 		DONE: clean up comments
 	TBD: extend result_exe method in BufferAndEndResult and BufferAndGiveResult
+		IDEA: consider using text 'none' instead of true None 'no state' condition?
 TBD: Clothing tweak
 	TBD: kill 'remove' method and update 'help basics' to explain that take will get clothes? (otherwise, why not 'remove' from backpack?)
 	
