@@ -47,7 +47,10 @@ IN-PROC: code clean-up
 		DONE: change class of entrance_south result to BufferOnlyResult
 			DONE: update obj
 			DONE: add class to import list
+		DONE: clean up comments
 		TBD: extend result_exe method in BufferAndEndResult
+	TBD: Repeat for BufferAndGiveResult
+TBD: Clothing tweak
 	TBD: kill 'remove' method and update 'help basics' to explain that take will get clothes? (otherwise, why not 'remove' from backpack?)
 	
 

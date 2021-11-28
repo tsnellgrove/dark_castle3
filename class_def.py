@@ -317,31 +317,14 @@ class BufferOnlyResult(Invisible):
 				active_gs.buffer(descript_dict[self.result_descript])
 				return machine_state, self.cmd_override
 
-#class BufferAndEndResult(Invisible):
-#		def __init__(self, name, result_descript, ending, cmd_override):
-#				super().__init__(name)
-#				self._result_descript = result_descript # description of result
-#				self._ending = ending # game ending - typicall 'death' due to hazzard or None (meaning no ending)
-#				self._cmd_override = cmd_override # does the triggered pre-action over-ride the 'standard' response to player command?
-
 class BufferAndEndResult(BufferOnlyResult):
 		def __init__(self, name, result_descript, ending, cmd_override):
 				super().__init__(name, result_descript, cmd_override)
-#				self._result_descript = result_descript # description of result
 				self._ending = ending # game ending - typicall 'death' due to hazzard or None (meaning no ending)
-#				self._cmd_override = cmd_override # does the triggered pre-action over-ride the 'standard' response to player command?
-
-#		@property
-#		def result_descript(self):
-#				return self._result_descript
 
 		@property
 		def ending(self):
 				return self._ending
-
-#		@property
-#		def cmd_override(self):
-#				return self._cmd_override
 
 ##		def results_exe(self, active_gs, machine_state):
 ##				super(BufferAndEndResult, self).results_exe(active_gs, machine_state)
