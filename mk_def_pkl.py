@@ -6,7 +6,8 @@
 
 # import statements
 import pickle
-from class_def import Invisible, NotInHandCond, InHandAndStateCond, PassThruCond, BufferAndEndResult, BufferAndGiveResult, InvisMach, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room, GameState
+from class_def import Invisible, NotInHandCond, InHandAndStateCond, PassThruCond, BufferAndEndResult, BufferAndGiveResult, InvisMach
+from class_def import Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room, GameState
 
 # object instantiation - starting state
 rusty_lettering = Writing('rusty_lettering', 'Rusty Lettering', "lettering", 'rusty_lettering')

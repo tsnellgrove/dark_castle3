@@ -42,7 +42,7 @@ IN-PROC: code clean-up
 	DONE: Clean up comments
 	DONE: Update take() method to include clothes (with remove text)
 	DONE: create and implement BufferOnlyResult (make BufferAndEndResult a child)
-		TBD: test multi-line imports
+		DONE: test multi-line imports
 		TBD: BufferOnlyResult created; BufferAndEndResult is a child
 		TBD: change class of entrance_south result to BufferOnlyResult
 			TBD: update obj
