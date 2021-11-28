@@ -41,8 +41,14 @@ IN-PROC: code clean-up
 	DONE: Test
 	DONE: Clean up comments
 	DONE: Update take() method to include clothes (with remove text)
-	TBD: create and implement BufferOnlyResult (make BufferAndEndResult a child ?)
-	IDEA: kill 'remove' method and update 'help basics' to explain that take will get clothes? (otherwise, why not 'remove' from backpack?)
+	DONE: create and implement BufferOnlyResult (make BufferAndEndResult a child)
+		TBD: test multi-line imports
+		TBD: BufferOnlyResult created; BufferAndEndResult is a child
+		TBD: change class of entrance_south result to BufferOnlyResult
+			TBD: update obj
+			TBD: add class to import list
+		TBD: extend result_exe method in BufferAndEndResult
+	TBD: kill 'remove' method and update 'help basics' to explain that take will get clothes? (otherwise, why not 'remove' from backpack?)
 
 	
 
