@@ -328,13 +328,13 @@ class BufferAndEndResult(BufferOnlyResult):
 
 ##		def results_exe(self, active_gs, machine_state):
 ##				super(BufferAndEndResult, self).results_exe(active_gs, machine_state)
-##				if self.ending is not None:
-##						active_gs.set_game_ending(self.ending)
+###				if self.ending is not None:
+##				active_gs.set_game_ending(self.ending)
 
 		def results_exe(self, active_gs, machine_state):
 				active_gs.buffer(descript_dict[self.result_descript])
-				if self.ending is not None:
-						active_gs.set_game_ending(self.ending)
+##				if self.ending is not None:
+				active_gs.set_game_ending(self.ending)
 				return machine_state, self.cmd_override
 
 class BufferAndGiveResult(BufferOnlyResult):

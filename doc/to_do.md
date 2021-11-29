@@ -50,8 +50,12 @@ IN-PROC: code clean-up
 		DONE: clean up comments
 	DONE: make BufferAndGiveResult a child of BufferOnlyResult
 		DONE: clean up comments
-	TBD: extend result_exe method in BufferAndEndResult and BufferAndGiveResult
+	IN-PROC: extend result_exe method in BufferAndEndResult and BufferAndGiveResult
 		IDEA: consider using text 'none' instead of true None 'no state' condition?
+			IDEA: didn't seem to be the issue
+			IDEA: I think the problem is the return?
+		DONE: commented out the 'if not None' clause - no longer need None cases since I have BufferOnlyResult
+		TBD: try swapping the position of super() to the end
 TBD: Clothing tweak
 	TBD: kill 'remove' method and update 'help basics' to explain that take will get clothes? (otherwise, why not 'remove' from backpack?)
 	
