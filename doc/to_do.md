@@ -35,7 +35,7 @@ DONE: create crown object
 	DONE: test
 	DONE: clean up test hats
 	DONE: switch score for royal_crown to 'wear' (10 pts)
-IN-PROC: code clean-up
+DONE: code clean-up
 	DONE: Organize GameState class into sections
 	DONE: Put active_gs.put_in_hand() in Item class take() method
 	DONE: Test
@@ -50,15 +50,16 @@ IN-PROC: code clean-up
 		DONE: clean up comments
 	DONE: make BufferAndGiveResult a child of BufferOnlyResult
 		DONE: clean up comments
-	IN-PROC: extend result_exe method in BufferAndEndResult and BufferAndGiveResult
+	DONE: extend BufferOnlyResult result_exe method in BufferAndEndResult and BufferAndGiveResult
 		IDEA: consider using text 'none' instead of true None 'no state' condition?
 			IDEA: didn't seem to be the issue
 			IDEA: I think the problem is the return?
 		DONE: commented out the 'if not None' clause - no longer need None cases since I have BufferOnlyResult
-		TBD: try swapping the position of super() to the end
-TBD: Clothing tweak
-	TBD: kill 'remove' method and update 'help basics' to explain that take will get clothes? (otherwise, why not 'remove' from backpack?)
-	
+		DONE: try swapping the position of super() to the end - didn't work - and woouldn't be desired result anyhow...
+		DECISION: going to move this one to "Someday Maybe" and call it done for now
+DONE: Clothing tweak
+	DONE: kill 'remove' method and update 'help basics' to explain that take will get clothes? (otherwise, why not 'remove' from backpack?)
+
 
 
 ##########################
@@ -279,7 +280,6 @@ Key Creature Verbs (methods):
 - show, give, attack
 
 
-
 HOW MACHINES SHOULD WORK:
 
 levers, and button => and machines!
@@ -310,7 +310,8 @@ TBD: implement scoring
 
 
 
-SOMEDAY MAYBE IDEAS:
+*** SOMEDAY MAYBE IDEAS ***
+
 TBD: Figure out a way in web browser to show all adventure text in scrolling window
 TBD: Consider having size values for items and capaicty limits on containers & backpack (should the crystal box really hold an axe?)
 	- This becomes important for 'take' capacity as well in shrinking puzzle (??)
@@ -323,12 +324,11 @@ TBD: Try tupples for descript_dict
 - create 'win' test routine with checksum
 - create a hint sub-system
 TBD: for doors and containers, use None option for no lock or no lid?
+- extend BufferOnlyResult result_exe method in BufferAndEndResult and BufferAndGiveResult
 
 
 
-NEW PUZZLE IDEAS:
-
-### New Puzzle Ideas ###
+*** NEW PUZZLE IDEAS ***
 
 IDEA: have a 'jaunty hat' that enables you to move 'twice per time click' (i.e. no pre or post actions or move increments for one turn)
 	- would necesitate default responses to attacks and things like that

@@ -6,13 +6,14 @@
 
 ### import statements
 from itertools import islice
+from static_gbl import descript_dict
 
 ### interpreter function language static dictionaries & lists ###
 articles_lst = ['a', 'an', 'the']
 
 one_word_only_lst = ['help', 'credits', 'score', 'version', 'inventory', 'look', 'quit', 'xyzzy42']
 
-verbs_lst = ['help', 'examine', 'read', 'go', 'take', 'drop', 'unlock', 'open', 'close', 'lock', 'put', 'eat', 'drink', 'wear', 'remove']
+verbs_lst = ['help', 'examine', 'read', 'go', 'take', 'drop', 'unlock', 'open', 'close', 'lock', 'put', 'eat', 'drink', 'wear'] # remove removed
 
 abbreviations_dict = {
 		'n' : 'north',

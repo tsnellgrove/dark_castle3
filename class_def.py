@@ -327,13 +327,11 @@ class BufferAndEndResult(BufferOnlyResult):
 				return self._ending
 
 ##		def results_exe(self, active_gs, machine_state):
-##				super(BufferAndEndResult, self).results_exe(active_gs, machine_state)
-###				if self.ending is not None:
 ##				active_gs.set_game_ending(self.ending)
+##				super(BufferAndEndResult, self).results_exe(active_gs, machine_state)
 
 		def results_exe(self, active_gs, machine_state):
 				active_gs.buffer(descript_dict[self.result_descript])
-##				if self.ending is not None:
 				active_gs.set_game_ending(self.ending)
 				return machine_state, self.cmd_override
 
@@ -769,14 +767,15 @@ class Clothes(Item):
 						active_gs.buffer("Worn.")
 						if self.wear_descript is not None:
 								active_gs.buffer(descript_dict[self.wear_descript])
-		def remove(self, active_gs):
-				if self not in active_gs.get_worn_lst():
-						output = "You're not wearing the " + self.full_name + "."
-						active_gs.buffer(output)
-				else:
-						active_gs.put_in_hand(self)
-						active_gs.worn_lst_remove_item(self)
-						active_gs.buffer("Removed.")
-						if self.remove_descript is not None:
-								active_gs.buffer(descript_dict[self.remove_descript])
+
+##		def remove(self, active_gs):
+##				if self not in active_gs.get_worn_lst():
+##						output = "You're not wearing the " + self.full_name + "."
+##						active_gs.buffer(output)
+##				else:
+##						active_gs.put_in_hand(self)
+##						active_gs.worn_lst_remove_item(self)
+##						active_gs.buffer("Removed.")
+##						if self.remove_descript is not None:
+##								active_gs.buffer(descript_dict[self.remove_descript])
 
