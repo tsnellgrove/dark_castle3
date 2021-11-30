@@ -1,5 +1,5 @@
 To Do List - Dark Castle v3
-Nov 25, 2021
+Nov 30, 2021
 
 
 *** How to Add Objects ***
@@ -12,70 +12,21 @@ Nov 25, 2021
 
 
 ##########################
-### VERSION 3.52 START ###
-##########################
-Version 3.52 Goals
-- Create class, methods, obj, and inventory updates for 'crown' object
-- Mini code clean-up
-
-DONE: create crown object
-	DONE: review crown functionality in dark_castle2
-	DONE: create Clothes class as child of Item
-	DONE: attributes = wear_descript, remove_descript, clothing_type
-	DONE: create crown obj = royal_crown
-	DONE: Add royal_crown to game world
-	DONE: update score for crown in hand  (10 pts) [note: in dc2, 5 pts for getting crown & 5 for wearing crown]
-	DONE: Update active_gs to include 'worn' attribute
-	DONE: Update inventory() function in cmd_exe() module to show 'worn' in inventory
-	DONE: test inventory
-	DONE: create wear method (should check if other items of same clothing_type are already worn)
-	DONE: test
-	DONE: clean up test hat
-	DONE: create remove method
-	DONE: test
-	DONE: clean up test hats
-	DONE: switch score for royal_crown to 'wear' (10 pts)
-DONE: code clean-up
-	DONE: Organize GameState class into sections
-	DONE: Put active_gs.put_in_hand() in Item class take() method
-	DONE: Test
-	DONE: Clean up comments
-	DONE: Update take() method to include clothes (with remove text)
-	DONE: create and implement BufferOnlyResult (make BufferAndEndResult a child)
-		DONE: test multi-line imports
-		DONE: BufferOnlyResult obj created; BufferAndEndResult is a child
-		DONE: change class of entrance_south result to BufferOnlyResult
-			DONE: update obj
-			DONE: add class to import list
-		DONE: clean up comments
-	DONE: make BufferAndGiveResult a child of BufferOnlyResult
-		DONE: clean up comments
-	DONE: extend BufferOnlyResult result_exe method in BufferAndEndResult and BufferAndGiveResult
-		IDEA: consider using text 'none' instead of true None 'no state' condition?
-			IDEA: didn't seem to be the issue
-			IDEA: I think the problem is the return?
-		DONE: commented out the 'if not None' clause - no longer need None cases since I have BufferOnlyResult
-		DONE: try swapping the position of super() to the end - didn't work - and woouldn't be desired result anyhow...
-		DECISION: going to move this one to "Someday Maybe" and call it done for now
-DONE: Clothing tweak
-	DONE: kill 'remove' method and update 'help basics' to explain that take will get clothes? (otherwise, why not 'remove' from backpack?)
-
-
-
-##########################
 ### VERSION 3.54 START ###
 ##########################
 Version 3.54 Goals
 - Create class, methods, and obj for throne room throne machine
 
-IDEA: throne obj is ove class SpringLoadedSlider (child of ViewOnly)
-	IDEA: has mehods push() and pull() and last_action_state (?)
-	IDEA: last_action_state can == 'pushed', 'pulled', 'neutral'
-	IDEA: auto_pre_action re-sets last_action_state to 'neutral'
 IDEA: we could have more types of pre and post actions...
 	- pre_action_trig => pre_action_cmd_trig
 	- this allows for pre_action_state_trig
 	- could also have a simple pre_action_state_reset which just resets a button or spring_loaded_slider to given default value (None)
+IDEA: throne is the trigger. Is the machine invisible?
+IDEA: throne obj is of class SpringLoadedSlider (child of ViewOnly)
+	IDEA: has mehods push() and pull() and last_action_state (?)
+	IDEA: last_action_state can == 'pushed', 'pulled', 'neutral'
+	IDEA: auto_pre_action re-sets last_action_state to 'neutral'
+
 
 ##########################
 ### VERSION 3.56 START ###

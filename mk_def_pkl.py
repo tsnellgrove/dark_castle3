@@ -1,6 +1,6 @@
-# program: dark castle v3.51
+# program: dark castle v3.52
 # name: Tom Snellgrove
-# date: Nov 25, 2021
+# date: Nov 30, 2021
 # description: default object instantiation module (used as a tool)
 
 
