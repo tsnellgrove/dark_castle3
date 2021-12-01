@@ -19,18 +19,24 @@ Version 3.54 Goals
 
 TBD: update classes and types of pre and post actions
 	TBD: pre_action_trig => pre_action_cmd_trig
-TBD: create class SpringLoadedSlider (child of ViewOnly)
+	TBD: cmd_cond_lst => cond_lst
+	TBD: pre_action_com.py module => pre_action.py
+TBD create class ButtonSwitch  (child of ViewOnly)
 	TBD: attributes = switch_state (values = 'pushed', 'pulled', 'neutral') and machine_type (values = 'pre_action_auto_reset')
-	TBD: create throne obj of SpringLoadedSlider class with dark_castle2 description
-	TBD: create SpringLoadedSlider method push (updates switch_state to 'pushed')
+	TBD: create method push (updates switch_state to 'pushed')
+TBD: create class SliderSwitch (child of ButtonSwitch)
+	TBD: create throne obj of SliderSwitch class with dark_castle2 description
 	TBD: create SpringLoadedSlider method pull (updates switch_state to 'pulled')
 TBD: update pre_action() to check for machine_type 'pre_action_auto_reset' and reset value
 TBD: test throne slider
 TBD: broach_dispensesr
 	TBD: create broach_dispenser obj of class InvisMach
 	TBD: machine_type = post_action_switch_trig
-	TBD: machine
-
+	TBD: machine_state = False (# broach_dispensed)
+	TBD: cmd_triggers_lst = None
+	TBD: cond_lst = <machine_state = True, switch_state = pushed, switch_state = pulled>
+	TBD: result_lst = <BufferOnly, BufferOnly, ObjDispensedToRoom>
+TBD: create post_action()
 
 
 IDEA: we could have more types of pre and post actions...
