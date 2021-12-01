@@ -17,15 +17,31 @@ Nov 30, 2021
 Version 3.54 Goals
 - Create class, methods, and obj for throne room throne machine
 
+TBD: update classes and types of pre and post actions
+	TBD: pre_action_trig => pre_action_cmd_trig
+TBD: create class SpringLoadedSlider (child of ViewOnly)
+	TBD: attributes = switch_state (values = 'pushed', 'pulled', 'neutral') and machine_type (values = 'pre_action_auto_reset')
+	TBD: create throne obj of SpringLoadedSlider class with dark_castle2 description
+	TBD: create SpringLoadedSlider method push (updates switch_state to 'pushed')
+	TBD: create SpringLoadedSlider method pull (updates switch_state to 'pulled')
+TBD: update pre_action() to check for machine_type 'pre_action_auto_reset' and reset value
+TBD: test throne slider
+TBD: broach_dispensesr
+	TBD: create broach_dispenser obj of class InvisMach
+	TBD: machine_type = post_action_switch_trig
+	TBD: machine
+
+
+
 IDEA: we could have more types of pre and post actions...
 	- pre_action_trig => pre_action_cmd_trig
 	- this allows for pre_action_state_trig
 	- could also have a simple pre_action_state_reset which just resets a button or spring_loaded_slider to given default value (None)
 IDEA: throne is the trigger. Is the machine invisible?
 IDEA: throne obj is of class SpringLoadedSlider (child of ViewOnly)
-	IDEA: has mehods push() and pull() and last_action_state (?)
+	IDEA: has mehods push() and pull() and state
 	IDEA: last_action_state can == 'pushed', 'pulled', 'neutral'
-	IDEA: auto_pre_action re-sets last_action_state to 'neutral'
+	IDEA: auto_pre_action resets state to 'neutral'
 
 
 ##########################
