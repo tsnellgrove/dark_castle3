@@ -36,7 +36,11 @@ TBD: broach_dispensesr
 	TBD: cmd_triggers_lst = None
 	TBD: cond_lst = <machine_state = True, switch_state = pushed, switch_state = pulled>
 	TBD: result_lst = <BufferOnly, BufferOnly, ObjDispensedToRoom>
-TBD: create post_action()
+TBD: create post_action() module [very similar to pre_action()]
+TBD: create broach obj of class Clothes and clothing type 'pin'
+	TBD: Allow broach to be worn but hint in wear_descript and remove_descript that it's only of sentimental value
+	TBD: update score dicts to grant 5 pts on broach in hand
+	
 
 
 IDEA: we could have more types of pre and post actions...
