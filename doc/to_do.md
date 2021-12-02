@@ -17,16 +17,16 @@ Nov 30, 2021
 Version 3.54 Goals
 - Create class, methods, and obj for throne room throne machine
 
-TBD: update classes and types of pre and post actions
-	TBD: pre_action_com.py module => pre_action.py
+IN-PROC: update classes and types of pre and post actions
+	DONE: pre_action_com.py module => pre_action.py
 	TBD: pre_action_trig => pre_action_cmd_trig
 	TBD: cmd_cond_lst => cond_lst
 TBD create class ButtonSwitch  (child of ViewOnly)
 	TBD: attributes = switch_state (values = 'pushed', 'pulled', 'neutral') and machine_type (values = 'pre_action_auto_reset')
 	TBD: create method push (updates switch_state to 'pushed')
 TBD: create class SliderSwitch (child of ButtonSwitch)
-	TBD: create throne obj of SliderSwitch class with dark_castle2 description
 	TBD: create SpringLoadedSlider method pull (updates switch_state to 'pulled')
+	TBD: update throne obj => SliderSwitch class with dark_castle2 description
 TBD: update pre_action() to check for machine_type 'pre_action_auto_reset' and reset value
 TBD: test throne slider
 TBD: broach_dispensesr
@@ -34,13 +34,18 @@ TBD: broach_dispensesr
 	TBD: machine_type = post_action_switch_trig
 	TBD: machine_state = False (# broach_dispensed)
 	TBD: cmd_triggers_lst = None
-	TBD: cond_lst = <machine_state = True, switch_state = pushed, switch_state = pulled>
+	TBD: cond_lst:
+		machine_state = True => create MachStateCond class => create obj broach_dispensed
+		switch_state = pushed => ???
+		switch_state = pulled => ???
 	TBD: result_lst = <BufferOnly, BufferOnly, ObjDispensedToRoom>
 TBD: create post_action() module [very similar to pre_action()]
 TBD: create broach obj of class Clothes and clothing type 'pin'
 	TBD: Allow broach to be worn but hint in wear_descript and remove_descript that it's only of sentimental value
 	TBD: update score dicts to grant 5 pts on broach in hand
-	
+
+
+***** HOW DO I PASS SWITCH STATE TO CONDITIONS? *****
 
 
 IDEA: we could have more types of pre and post actions...

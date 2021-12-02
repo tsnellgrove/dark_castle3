@@ -8,7 +8,7 @@
 import pickle
 from start_up import start_me_up
 from interp import interpreter
-from pre_action_cmd import pre_action_cmd
+from pre_action import pre_action
 from cmd_exe import cmd_execute
 from  score import score
 from ending import end
@@ -31,7 +31,7 @@ def wrapper(user_input):
 				active_gs.reset_buff() # resets buffer
 
 				case, word_lst = interpreter(user_input, master_obj_lst)
-				cmd_override = pre_action_cmd(active_gs, case, word_lst)
+				cmd_override = pre_action(active_gs, case, word_lst)
 				if not cmd_override:
 						cmd_execute(active_gs, case, word_lst)
 				# post-action triggers will go here

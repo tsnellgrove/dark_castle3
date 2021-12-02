@@ -6,7 +6,7 @@
 
 ### import statements ###
 
-def pre_action_cmd(active_gs, case, word_lst):
+def pre_action(active_gs, case, word_lst):
 		cmd_override = False
 		mach_obj_lst = active_gs.mach_obj_lst()
 		for obj in mach_obj_lst:
