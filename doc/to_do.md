@@ -18,9 +18,9 @@ Version 3.54 Goals
 - Create class, methods, and obj for throne room throne machine
 
 TBD: update classes and types of pre and post actions
+	TBD: pre_action_com.py module => pre_action.py
 	TBD: pre_action_trig => pre_action_cmd_trig
 	TBD: cmd_cond_lst => cond_lst
-	TBD: pre_action_com.py module => pre_action.py
 TBD create class ButtonSwitch  (child of ViewOnly)
 	TBD: attributes = switch_state (values = 'pushed', 'pulled', 'neutral') and machine_type (values = 'pre_action_auto_reset')
 	TBD: create method push (updates switch_state to 'pushed')
