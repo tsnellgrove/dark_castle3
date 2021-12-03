@@ -35,18 +35,29 @@ TBD: create class SliderSwitch (child of ButtonSwitch)
 	TBD: update throne obj => SliderSwitch class with dark_castle2 description
 TBD: update pre_action() to check for machine_type 'pre_action_auto_reset' and reset value
 TBD: test throne slider
+TBD: create class InvisSwitchMach
+	TBD: InvisSwitchMach is child of InvisMach
+	TBD: standard attributes
+	TBD: additional attributes = trig_switch, cond_switch_lst
+	TBD: update trigger_check() method to check for trig_switch.switch_state != 'neutral'
+	TBD: update trigger() method to pass cond_switch_lst
+TBD: create condition classes & obj:
+	broach_already_dispensed: machine_state = True => create MachStateCond class => create obj broach_dispensed
+	throne_push_pre_dispense: switch_state = pushed => cond_switch_lst[0] == 'pushed'
+	throne_pull_pre_dispense: switch_state = pulled => cond_switch_lst[0] == 'pulled'
+TBD: create results classes & obj
+	throne_push and nothing_happens => BufferOnly
+	dispense_broach => new class => AddObjToRoom
 TBD: broach_dispensesr
-	TBD: create broach_dispenser obj of class InvisMach
+	TBD: create broach_dispenser obj of class InvisSwitchMach
+	TBD: trig_switch = throne
+	TBD: cond_switch_lst = [throne]
 	TBD: machine_type = post_action_switch_trig
 	TBD: machine_state = False (# broach_dispensed)
 	TBD: cmd_triggers_lst = ['pushed', 'pulled']
-	TBD: cond_lst:
-		machine_state = True => create MachStateCond class => create obj broach_dispensed
-		switch_state = pushed => ???
-		switch_state = pulled => ???
-	TBD: result_lst = <BufferOnly, BufferOnly, ObjDispensedToRoom>
-TBD: update trigger_check method to check for switch state != 'neutral'
-TBD: create post_action() module [very similar to pre_action()]
+	TBD: cond_lst: broach_already_dispensed, throne_push_pre_dispense, throne_pull_pre_dispense
+	TBD: result_lst: throne_push, nothing_happens, dispense_broach
+TBD: create post_action() module and function [very similar to pre_action()]
 	TBD: for case = 'switch', pass list of trigger values => ['pushed', 'pulled']
 TBD: create broach obj of class Clothes and clothing type 'pin'
 	TBD: Allow broach to be worn but hint in wear_descript and remove_descript that it's only of sentimental value
