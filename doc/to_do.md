@@ -18,8 +18,8 @@ Version 3.54 Goals
 - Create class, methods, and obj for throne room throne machine
 
 ***** NEEDED UPDATES TO PLAN *****
-= need to link switch to machine
-- incorporate switch_state into trigger
+- need to link switch to machine
+- need to embed the switch in the machine?
 - HOW DO I PASS SWITCH STATE TO CONDITIONS?
 
 
@@ -39,13 +39,15 @@ TBD: broach_dispensesr
 	TBD: create broach_dispenser obj of class InvisMach
 	TBD: machine_type = post_action_switch_trig
 	TBD: machine_state = False (# broach_dispensed)
-	TBD: cmd_triggers_lst = None
+	TBD: cmd_triggers_lst = ['pushed', 'pulled']
 	TBD: cond_lst:
 		machine_state = True => create MachStateCond class => create obj broach_dispensed
 		switch_state = pushed => ???
 		switch_state = pulled => ???
 	TBD: result_lst = <BufferOnly, BufferOnly, ObjDispensedToRoom>
+TBD: update trigger_check method to check for switch state != 'neutral'
 TBD: create post_action() module [very similar to pre_action()]
+	TBD: for case = 'switch', pass list of trigger values => ['pushed', 'pulled']
 TBD: create broach obj of class Clothes and clothing type 'pin'
 	TBD: Allow broach to be worn but hint in wear_descript and remove_descript that it's only of sentimental value
 	TBD: update score dicts to grant 5 pts on broach in hand
