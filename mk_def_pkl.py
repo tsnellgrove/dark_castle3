@@ -72,11 +72,20 @@ moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', 'moat_croc
 moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', 'moat_get_crown_result', royal_crown, True)
 cant_turn_back_result = BufferOnlyResult('cant_turn_back_result', 'cant_turn_back_result', True)
 
-entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_action_trig', False, [['go', 'east'], ['go', 'west']],
+# entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_action_trig', False, [['go', 'east'], ['go', 'west']],
+#				[hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
+#				[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) #machine_state = got_crown
+
+entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_action_cmd_trig', False, [['go', 'east'], ['go', 'west']],
 				[hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
 				[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) #machine_state = got_crown
-entrance_south_mach = InvisMach('entrance_south_mach', 'pre_action_trig', None, [['go', 'south']],
+
+# entrance_south_mach = InvisMach('entrance_south_mach', 'pre_action_trig', None, [['go', 'south']],
+#				[pass_thru_cond], [cant_turn_back_result])
+
+entrance_south_mach = InvisMach('entrance_south_mach', 'pre_action_cmd_trig', None, [['go', 'south']],
 				[pass_thru_cond], [cant_turn_back_result])
+
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
 				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_mach])

@@ -17,15 +17,9 @@ Nov 30, 2021
 Version 3.54 Goals
 - Create class, methods, and obj for throne room throne machine
 
-***** NEEDED UPDATES TO PLAN *****
-- need to link switch to machine
-- need to embed the switch in the machine?
-- HOW DO I PASS SWITCH STATE TO CONDITIONS?
-
-
 IN-PROC: update classes and types of pre and post actions
 	DONE: pre_action_com.py module => pre_action.py
-	TBD: pre_action_trig => pre_action_cmd_trig
+	DONE: pre_action_trig => pre_action_cmd_trig
 	TBD: cmd_cond_lst => cond_lst
 TBD create class ButtonSwitch  (child of ViewOnly)
 	TBD: attributes = switch_state (values = 'pushed', 'pulled', 'neutral') and machine_type (values = 'pre_action_auto_reset')
@@ -62,6 +56,12 @@ TBD: create post_action() module and function [very similar to pre_action()]
 TBD: create broach obj of class Clothes and clothing type 'pin'
 	TBD: Allow broach to be worn but hint in wear_descript and remove_descript that it's only of sentimental value
 	TBD: update score dicts to grant 5 pts on broach in hand
+
+
+***** NEEDED UPDATES TO PLAN *****
+- need to link switch to machine
+- need to embed the switch in the machine?
+- HOW DO I PASS SWITCH STATE TO CONDITIONS?
 
 
 IDEA: we could have more types of pre and post actions...
