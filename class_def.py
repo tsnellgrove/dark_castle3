@@ -351,12 +351,14 @@ class BufferAndGiveResult(BufferOnlyResult):
 				return machine_state, self.cmd_override
 
 class InvisMach(Invisible):
-		def __init__(self, name, machine_type, machine_state, cmd_triggers_lst, cmd_cond_lst, result_lst):
+#		def __init__(self, name, machine_type, machine_state, cmd_triggers_lst, cmd_cond_lst, result_lst):
+		def __init__(self, name, machine_type, machine_state, cmd_triggers_lst, cond_lst, result_lst):
 				super().__init__(name)
 				self._machine_type = machine_type # pre_action_trig, pre_action_auto, post_action_trig, or post_action_auto
 				self._machine_state = machine_state # machine state variable; boolean for simple machiens; Int for complex
 				self._cmd_triggers_lst = cmd_triggers_lst # player commands that will trigger the machine (None for auto?)
-				self._cmd_cond_lst = cmd_cond_lst # conditions to test for; should cover all trigger cases
+#				self._cmd_cond_lst = cmd_cond_lst # conditions to test for; should cover all trigger cases
+				self._cond_lst = cond_lst # conditions to test for; should cover all trigger cases
 				self._result_lst = result_lst # possible results based on conditions; result order must match condition order
 
 		@property
@@ -376,8 +378,10 @@ class InvisMach(Invisible):
 				return self._cmd_triggers_lst
 
 		@property
-		def cmd_cond_lst(self):
-				return self._cmd_cond_lst
+#		def cmd_cond_lst(self):
+#				return self._cmd_cond_lst
+		def cond_lst(self):
+				return self._cond_lst
 
 		@property
 		def result_lst(self):
@@ -397,7 +401,8 @@ class InvisMach(Invisible):
 
 		def trigger(self, active_gs):
 				cond_return_lst = []
-				for cond in self.cmd_cond_lst:
+#				for cond in self.cmd_cond_lst:
+				for cond in self.cond_lst:
 						cond_return = cond.cond_check(active_gs, self.machine_state)
 						cond_return_lst.append(cond_return)
 				result_num = cond_return_lst.index(True)
