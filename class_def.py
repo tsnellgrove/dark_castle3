@@ -351,13 +351,11 @@ class BufferAndGiveResult(BufferOnlyResult):
 				return machine_state, self.cmd_override
 
 class InvisMach(Invisible):
-#		def __init__(self, name, machine_type, machine_state, cmd_triggers_lst, cmd_cond_lst, result_lst):
 		def __init__(self, name, machine_type, machine_state, cmd_triggers_lst, cond_lst, result_lst):
 				super().__init__(name)
 				self._machine_type = machine_type # pre_action_trig, pre_action_auto, post_action_trig, or post_action_auto
-				self._machine_state = machine_state # machine state variable; boolean for simple machiens; Int for complex
+				self._machine_state = machine_state # machine state variable; boolean for simple machines; Int for complex
 				self._cmd_triggers_lst = cmd_triggers_lst # player commands that will trigger the machine (None for auto?)
-#				self._cmd_cond_lst = cmd_cond_lst # conditions to test for; should cover all trigger cases
 				self._cond_lst = cond_lst # conditions to test for; should cover all trigger cases
 				self._result_lst = result_lst # possible results based on conditions; result order must match condition order
 
@@ -378,8 +376,6 @@ class InvisMach(Invisible):
 				return self._cmd_triggers_lst
 
 		@property
-#		def cmd_cond_lst(self):
-#				return self._cmd_cond_lst
 		def cond_lst(self):
 				return self._cond_lst
 
@@ -401,7 +397,6 @@ class InvisMach(Invisible):
 
 		def trigger(self, active_gs):
 				cond_return_lst = []
-#				for cond in self.cmd_cond_lst:
 				for cond in self.cond_lst:
 						cond_return = cond.cond_check(active_gs, self.machine_state)
 						cond_return_lst.append(cond_return)
@@ -470,6 +465,20 @@ class ViewOnly(Writing):
 				if self.has_writing():
 						output = "On the " + self.full_name + " you see: " + self.writing.full_name
 						active_gs.buffer(output)
+
+class ButtonSwitch(ViewOnly):
+		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, machine_type):
+				super().__init__(name, full_name, root_name, descript_key, writing)
+				self._switch_state = switch_state # values = 'pushed' or 'neutral'
+				self._machine_type = machine_type # machine state variable; for switches typically 'pre_action_auto_reset'
+
+		@property
+		def switch_state(self):
+				return self._switch_state
+
+		@property
+		def machine_state(self):
+				return self._machine_state
 
 class Room(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, features, room_obj_lst, door_paths, invis_obj_lst):

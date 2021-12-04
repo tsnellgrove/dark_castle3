@@ -6,7 +6,7 @@ Nov 30, 2021
 1) If needed, create Class and methods in class_def
 2) Instantiate object in mk_def_pkl()
 3) Add object to room in mk_def_pkl()
-4) Add object to master_obj_lst in mk_def_pkl()
+4) Add object to master_obj_lst in mk_def_pkl() [exception: invisible obj like conditions & results that player will never ref]
 5) Run mk_def_pkl()
 6) Add object description in static_gbl
 
@@ -17,17 +17,21 @@ Nov 30, 2021
 Version 3.54 Goals
 - Create class, methods, and obj for throne room throne machine
 
-IN-PROC: update classes and types of pre and post actions
+DONE: update classes and types of pre and post actions
 	DONE: pre_action_com.py module => pre_action.py
 	DONE: pre_action_trig => pre_action_cmd_trig
 	DONE: comment clean-up
 	DONE: cmd_cond_lst => cond_lst
-	TBD: comment clean-up
-TBD create class ButtonSwitch  (child of ViewOnly)
-	TBD: attributes = switch_state (values = 'pushed', 'pulled', 'neutral') and machine_type (values = 'pre_action_auto_reset')
-	TBD: create method push (updates switch_state to 'pushed')
+	DONE: comment clean-up
+IN-PROC create class ButtonSwitch  (child of ViewOnly)
+	DONE: attributes = switch_state (values = 'pushed', 'pulled', 'neutral') and machine_type (values = 'pre_action_auto_reset')
+	TBD: create method push
+		TBD: add 'push' to interp() verb list
+		TBD: create method def
+		TBD: updates switch_state to 'pushed'
+		TBD: buffer "Pushed."
 TBD: create class SliderSwitch (child of ButtonSwitch)
-	TBD: create SpringLoadedSlider method pull (updates switch_state to 'pulled')
+	TBD: create SpringSlider method pull (updates switch_state to 'pulled')
 	TBD: update throne obj => SliderSwitch class with dark_castle2 description
 TBD: update pre_action() to check for machine_type 'pre_action_auto_reset' and reset value
 TBD: test throne slider
@@ -58,6 +62,8 @@ TBD: create post_action() module and function [very similar to pre_action()]
 TBD: create broach obj of class Clothes and clothing type 'pin'
 	TBD: Allow broach to be worn but hint in wear_descript and remove_descript that it's only of sentimental value
 	TBD: update score dicts to grant 5 pts on broach in hand
+TBD: code clean-up and consistency
+	TBD: update class name from InvisMach => InvisCmdMach (???)
 
 
 ***** NEEDED UPDATES TO PLAN *****
@@ -70,7 +76,7 @@ IDEA: we could have more types of pre and post actions...
 	- pre_action_trig => pre_action_cmd_trig
 	- this allows for pre_action_state_trig
 	- could also have a simple pre_action_state_reset which just resets a button or spring_loaded_slider to given default value (None)
-IDEA: throne is the trigger. Is the machine invisible?
+IDEA: throne is the trigger and state switch. Is the machine invisible?
 IDEA: throne obj is of class SpringLoadedSlider (child of ViewOnly)
 	IDEA: has mehods push() and pull() and state
 	IDEA: last_action_state can == 'pushed', 'pulled', 'neutral'
@@ -87,19 +93,12 @@ Version 3.56 Goals
 ##########################
 ### VERSION 3.58 START ###
 ##########################
+
 Version 3.58 Goals
-- Create class, methods, and obj for read_scroll machine
+- Create / update program documentation
 
 IDEA: Should GameState be in a separate module? 
 	IDEA: gs_def.py ? class_def.py would import gs_def (?) - then mk_def_pkl.py would import from both?
-
-
-##########################
-### VERSION 3.59 START ###
-##########################
-
-Version 3.59 Goals
-- Create / update program documentation
 
 TBD: documentation:
 	TBD: write up thinking and decisions on machines
@@ -132,8 +131,15 @@ Version 3.64 Goals
 ##########################
 ### VERSION 3.66 START ###
 ##########################
-
 Version 3.66 Goals
+- Create class, methods, and obj for read_scroll machine
+
+
+##########################
+### VERSION 3.68 START ###
+##########################
+
+Version 3.68 Goals
 - Create / update program documentation
 
 TBD: documentation:
