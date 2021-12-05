@@ -13,7 +13,8 @@ articles_lst = ['a', 'an', 'the']
 
 one_word_only_lst = ['help', 'credits', 'score', 'version', 'inventory', 'look', 'quit', 'xyzzy42']
 
-verbs_lst = ['help', 'examine', 'read', 'go', 'take', 'drop', 'unlock', 'open', 'close', 'lock', 'put', 'eat', 'drink', 'wear'] # remove removed
+verbs_lst = ['help', 'examine', 'read', 'go', 'take', 'drop', 'unlock',
+				'open', 'close', 'lock', 'put', 'eat', 'drink', 'wear', 'push'] # remove removed
 
 abbreviations_dict = {
 		'n' : 'north',

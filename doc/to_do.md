@@ -23,15 +23,15 @@ DONE: update classes and types of pre and post actions
 	DONE: comment clean-up
 	DONE: cmd_cond_lst => cond_lst
 	DONE: comment clean-up
-IN-PROC create class ButtonSwitch  (child of ViewOnly)
+DONE: create class ButtonSwitch  (child of ViewOnly)
 	DONE: attributes = switch_state (values = 'pushed', 'pulled', 'neutral') and machine_type (values = 'pre_action_auto_reset')
-	TBD: create method push
-		TBD: add 'push' to interp() verb list
-		TBD: create method def
-		TBD: updates switch_state to 'pushed'
-		TBD: buffer "Pushed."
-TBD: create class SliderSwitch (child of ButtonSwitch)
-	TBD: create SpringSlider method pull (updates switch_state to 'pulled')
+	DONE: create method push
+		DONE: add 'push' to interp() verb list
+		DONE: create method def
+		DONE: updates switch_state to 'pushed'
+		DONE: buffer "Pushed."
+TBD: create class SpringSliderSwitch (child of ButtonSwitch)
+	TBD: create SpringSliderSwitch method pull (updates switch_state to 'pulled')
 	TBD: update throne obj => SliderSwitch class with dark_castle2 description
 TBD: update pre_action() to check for machine_type 'pre_action_auto_reset' and reset value
 TBD: test throne slider

@@ -480,6 +480,10 @@ class ButtonSwitch(ViewOnly):
 		def machine_state(self):
 				return self._machine_state
 
+		def push(self, active_gs):
+				self.switch_state = 'pushed'
+				active_gs.buffer("Pushed.")
+
 class Room(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, features, room_obj_lst, door_paths, invis_obj_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
