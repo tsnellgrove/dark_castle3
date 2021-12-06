@@ -30,11 +30,12 @@ DONE: create class ButtonSwitch  (child of ViewOnly)
 		DONE: create method def
 		DONE: updates switch_state to 'pushed'
 		DONE: buffer "Pushed."
-TBD: create class SpringSliderSwitch (child of ButtonSwitch)
-	TBD: create SpringSliderSwitch method pull (updates switch_state to 'pulled')
-	TBD: update throne obj => SliderSwitch class with dark_castle2 description
-TBD: update pre_action() to check for machine_type 'pre_action_auto_reset' and reset value
-TBD: test throne slider
+DONE: create class SpringSliderSwitch (child of ButtonSwitch)
+	DONE: create SpringSliderSwitch method pull (updates switch_state to 'pulled')
+	DONE: update throne obj => SliderSwitch class with dark_castle2 description
+	DONE: test throne slider
+DONE: update pre_action() to check for machine_type 'pre_action_auto_reset' and reset value
+	IN-PROC: test throne slider
 TBD: create class InvisSwitchMach
 	TBD: InvisSwitchMach is child of InvisMach
 	TBD: standard attributes

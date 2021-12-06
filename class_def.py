@@ -476,13 +476,28 @@ class ButtonSwitch(ViewOnly):
 		def switch_state(self):
 				return self._switch_state
 
+		@switch_state.setter
+		def switch_state(self, new_state):
+				self._switch_state = new_state
+
 		@property
 		def machine_state(self):
 				return self._machine_state
 
 		def push(self, active_gs):
 				self.switch_state = 'pushed'
+				print(self.name + " has value " + self.switch_state)
 				active_gs.buffer("Pushed.")
+
+class SpringSliderSwitch(ButtonSwitch):
+		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, machine_type):
+				super().__init__(name, full_name, root_name, descript_key, writing, switch_state, machine_type)
+
+		def pull(self, active_gs):
+				self.switch_state = 'pulled'
+				print(self.name + " has value " + self.switch_state)
+				active_gs.buffer("Pulled.")
+
 
 class Room(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, features, room_obj_lst, door_paths, invis_obj_lst):

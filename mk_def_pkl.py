@@ -6,7 +6,9 @@
 
 # import statements
 import pickle
-from class_def import Invisible, NotInHandCond, InHandAndStateCond, PassThruCond, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, InvisMach
+from class_def import Invisible, NotInHandCond, InHandAndStateCond, PassThruCond
+from class_def import BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, InvisMach
+from class_def import ButtonSwitch, SpringSliderSwitch
 from class_def import Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room, GameState
 
 # object instantiation - starting state
@@ -60,7 +62,7 @@ front_gate = Door('front_gate', 'Front Gate', "gate", 'front_gate', rusty_letter
 iron_portcullis = Door('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, True, False, None)
 
 control_panel = ViewOnly('control_panel', 'Control Panel', 'panel', 'control_panel', None)
-throne = ViewOnly('throne', 'Throne', 'throne', 'throne', None)
+throne = SpringSliderSwitch('throne', 'Throne', 'throne', 'throne', None, 'neutral', 'pre_action_auto_reset')
 
 hand_no_weap_cond = NotInHandCond('hand_no_weap_cond', [shiny_sword, grimy_axe])
 hand_weap_1st_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], False)
