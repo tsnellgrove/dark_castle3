@@ -37,7 +37,7 @@ DONE: create class SpringSliderSwitch (child of ButtonSwitch)
 DONE: update pre_action() to check for machine_type 'pre_action_auto_reset' and reset value
 	DONE: test throne slider
 	DONE: comment out prints
-	TBD: Clean up comments
+	DONE: Clean up comments
 TBD: create class InvisSwitchMach
 	TBD: InvisSwitchMach is child of InvisMach
 	TBD: standard attributes
