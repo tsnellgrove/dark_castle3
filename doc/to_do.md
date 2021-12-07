@@ -35,7 +35,8 @@ DONE: create class SpringSliderSwitch (child of ButtonSwitch)
 	DONE: update throne obj => SliderSwitch class with dark_castle2 description
 	DONE: test throne slider
 DONE: update pre_action() to check for machine_type 'pre_action_auto_reset' and reset value
-	IN-PROC: test throne slider
+	DONE: test throne slider
+	TBD: Clean up comments
 TBD: create class InvisSwitchMach
 	TBD: InvisSwitchMach is child of InvisMach
 	TBD: standard attributes

@@ -231,8 +231,10 @@ class GameState(object):
 				mach_obj_lst = []
 				room_obj = self.get_room()
 				scope_lst = self.scope_lst() + room_obj.invis_obj_lst
+				print(scope_lst)
 				for obj in scope_lst:
 						if hasattr(obj, 'machine_type'):
+								print(obj.machine_type)
 								mach_obj_lst.append(obj)
 				return mach_obj_lst
 
@@ -481,8 +483,8 @@ class ButtonSwitch(ViewOnly):
 				self._switch_state = new_state
 
 		@property
-		def machine_state(self):
-				return self._machine_state
+		def machine_type(self):
+				return self._machine_type
 
 		def push(self, active_gs):
 				self.switch_state = 'pushed'
