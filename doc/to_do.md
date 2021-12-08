@@ -38,11 +38,13 @@ DONE: update pre_action() to check for machine_type 'pre_action_auto_reset' and 
 	DONE: test throne slider
 	DONE: comment out prints
 	DONE: Clean up comments
-TBD: create class InvisSwitchMach
-	TBD: InvisSwitchMach is child of InvisMach
-	TBD: standard attributes
-	TBD: additional attributes = trig_switch, cond_switch_lst
-	TBD: update trigger_check() method to check for trig_switch.switch_state != 'neutral'
+DONE: create class InvisSwitchMach
+	DONE: InvisSwitchMach is child of InvisMach
+	DONE: standard attributes
+	DONE: additional attributes = trig_switch, cond_switch_lst
+	DONE: getter properties
+IN-PROC: create methods
+	DONE: update trigger_check() method to check for trig_switch.switch_state != 'neutral'
 	TBD: update trigger() method to pass cond_switch_lst
 TBD: create condition classes & obj:
 	broach_already_dispensed: machine_state = True => create MachStateCond class => create obj broach_dispensed
