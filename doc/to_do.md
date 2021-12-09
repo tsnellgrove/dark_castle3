@@ -43,9 +43,12 @@ DONE: create class InvisSwitchMach
 	DONE: standard attributes
 	DONE: additional attributes = trig_switch, cond_switch_lst
 	DONE: getter properties
-IN-PROC: create methods
-	DONE: update trigger_check() method to check for trig_switch.switch_state != 'neutral'
-	TBD: update trigger() method to pass cond_switch_lst
+DONE: create methods
+	CHANGED: update trigger_check() method to check for trig_switch.switch_state != 'neutral'
+	CHANGED: update trigger() method to pass cond_switch_lst
+	UPDATE: will try to re-use existing InvisMach trig_check() and trigger() as much as possible
+	UPDATE: don't think I'll actually need attribute trig_switch_lst
+	UPDATE: probably do still need cond_switch_lst and to pass this to conditions in trigger()?
 TBD: create condition classes & obj:
 	broach_already_dispensed: machine_state = True => create MachStateCond class => create obj broach_dispensed
 	throne_push_pre_dispense: switch_state = pushed => cond_switch_lst[0] == 'pushed'
@@ -86,6 +89,7 @@ IDEA: throne obj is of class SpringLoadedSlider (child of ViewOnly)
 	IDEA: has mehods push() and pull() and state
 	IDEA: last_action_state can == 'pushed', 'pulled', 'neutral'
 	IDEA: auto_pre_action resets state to 'neutral'
+IDEA: I want the trigger and condition switches to be clearly embeded in the machine
 
 
 ##########################

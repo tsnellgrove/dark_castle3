@@ -393,6 +393,8 @@ class InvisMach(Invisible):
 						player_cmd_key = word_lst
 				elif  case == 'put':
 						player_cmd_key = [word_lst[1], word_lst[2].name, word_lst[0].name]
+				elif case == 'switch':
+						player_cmd_key = word_lst
 				return player_cmd_key in self.cmd_triggers_lst
 
 		def trigger(self, active_gs):
@@ -407,24 +409,27 @@ class InvisMach(Invisible):
 				return cmd_override
 
 class InvisSwitchMach(InvisMach):
-		def __init__(self, name, machine_type, machine_state, cmd_triggers_lst, cond_lst, result_lst, trig_switch_lst, cond_switch_lst):
+#		def __init__(self, name, machine_type, machine_state, cmd_triggers_lst, cond_lst, result_lst, trig_switch_lst, cond_switch_lst):
+		def __init__(self, name, machine_type, machine_state, cmd_triggers_lst, cond_lst, result_lst, cond_switch_lst):
 				super().__init__(name, machine_type, machine_state, cmd_triggers_lst, cond_lst, result_lst)
 				self._trig_switch = trig_switch
 				self._cond_switch_lst = cond_switch_lst
 
-		@property
-		def trig_switch_lst(self):
-				return self._trig_switch_lst
+#		@property
+#		def trig_switch_lst(self):
+#				return self._trig_switch_lst
 
 		@property
 		def cond_switch_lst(self):
 				return self._cond_switch_lst
 
-		def trig_check(self, active_gs, case, word_lst):
-				trig_state_lst = []
-				for trig in self.trig_switch_lst:
-						trig_state_lst.append(trig.switch_state)
-				return trig_state_lst == self.cmd_triggers_lst
+#		def trig_check(self, active_gs, case, word_lst):
+#				trig_state_lst = []
+#				for trig in self.trig_switch_lst:
+#						trig_state_lst.append(trig.switch_state)
+#				return trig_state_lst == self.cmd_triggers_lst
+
+
 
 class Writing(Invisible):
 		def __init__(self, name, full_name, root_name, descript_key):
