@@ -50,9 +50,20 @@ DONE: create methods
 	UPDATE: don't think I'll actually need attribute trig_switch_lst
 	UPDATE: probably do still need cond_switch_lst and to pass this to conditions in trigger()?
 TBD: create condition classes & obj:
-	broach_already_dispensed: machine_state = True => create MachStateCond class => create obj broach_dispensed
-	throne_push_pre_dispense: switch_state = pushed => cond_switch_lst[0] == 'pushed'
-	throne_pull_pre_dispense: switch_state = pulled => cond_switch_lst[0] == 'pulled'
+	DONE: case = broach_already_dispensed => machine_state == True
+		DONE: create StateCond class
+		DONE: create obj broach_dispensed
+	TBD: re-map machines => unify cmd_machine and switch_machine models (if reasonable)
+		IDEA: machine types = pre_action_cmd, pre_action_auto, pre_action_swtich, post_action_cmd, post_action_switch, post_action_auto
+		IDEA: trigger inputs == case, trig_lst [means that a machine can be triggered by a command or a switch but not BOTH]
+		IDEA: cond inputs == game state, condition switch, play commands
+		TBD: create updated diagram
+	TBD: throne_push_pre_dispense => switch_state = pushed => cond_switch_lst[0] == 'pushed'
+		TBD: create SwitchStateClass
+		TBD: create throne_push obj
+	TBD: throne_pull_pre_dispense: switch_state = pulled => cond_switch_lst[0] == 'pulled'
+		TBD: use SwitchStateClass
+		TBD: create throne_pull obj
 TBD: create results classes & obj
 	throne_push and nothing_happens => BufferOnly
 	dispense_broach => new class => AddObjToRoom
@@ -72,6 +83,7 @@ TBD: create broach obj of class Clothes and clothing type 'pin'
 	TBD: update score dicts to grant 5 pts on broach in hand
 TBD: code clean-up and consistency
 	TBD: update class name from InvisMach => InvisCmdMach (???)
+	TBD: make InHandAndStateCond a child of StateCond
 
 
 ***** NEEDED UPDATES TO PLAN *****

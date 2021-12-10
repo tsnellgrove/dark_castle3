@@ -267,7 +267,19 @@ class NotInHandCond(Invisible):
 						if item in hand_lst:
 								cond_state = False
 				return cond_state
-				
+
+class StateCond(Invisible):
+		def __init__(self, name, mach_state_test):
+				super().__init__(name)
+				self._mach_state_test = mach_state_test # boolean test for passed in boolean value
+
+		@property
+		def mach_state_test(self):
+				return self._mach_state_test
+
+		def cond_check(self, active_gs, machine_state):
+				return machine_state == self.mach_state_test
+
 class InHandAndStateCond(Invisible):
 		def __init__(self, name, in_hand_lst, mach_state_test):
 				super().__init__(name)
