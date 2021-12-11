@@ -49,15 +49,16 @@ DONE: create methods
 	UPDATE: will try to re-use existing InvisMach trig_check() and trigger() as much as possible
 	UPDATE: don't think I'll actually need attribute trig_switch_lst
 	UPDATE: probably do still need cond_switch_lst and to pass this to conditions in trigger()?
-TBD: create condition classes & obj:
+IN-PROC: create condition classes & obj:
 	DONE: case = broach_already_dispensed => machine_state == True
 		DONE: create StateCond class
 		DONE: create obj broach_dispensed
-	TBD: re-map machines => unify cmd_machine and switch_machine models (if reasonable)
+	DONE: re-map machines => unify cmd_machine and switch_machine models (if reasonable)
 		IDEA: machine types = pre_action_cmd, pre_action_auto, pre_action_swtich, post_action_cmd, post_action_switch, post_action_auto
 		IDEA: trigger inputs == case, trig_lst [means that a machine can be triggered by a command or a switch but not BOTH]
 		IDEA: cond inputs == game state, condition switch, play commands
-		TBD: create updated diagram
+		DONE: create updated diagram
+	TBD: update machine variable names and attributes to match new mapping 
 	TBD: throne_push_pre_dispense => switch_state = pushed => cond_switch_lst[0] == 'pushed'
 		TBD: create SwitchStateClass
 		TBD: create throne_push obj
@@ -102,6 +103,10 @@ IDEA: throne obj is of class SpringLoadedSlider (child of ViewOnly)
 	IDEA: last_action_state can == 'pushed', 'pulled', 'neutral'
 	IDEA: auto_pre_action resets state to 'neutral'
 IDEA: I want the trigger and condition switches to be clearly embeded in the machine
+IDEA:
+	- triggers = player commands or switch values
+	- conditions = switch values or active_gs values
+	- results = active_gs values, machine_state, and cmd_override value
 
 
 ##########################
