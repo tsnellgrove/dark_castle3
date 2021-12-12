@@ -62,7 +62,7 @@ front_gate = Door('front_gate', 'Front Gate', "gate", 'front_gate', rusty_letter
 iron_portcullis = Door('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, True, False, None)
 
 control_panel = ViewOnly('control_panel', 'Control Panel', 'panel', 'control_panel', None)
-throne = SpringSliderSwitch('throne', 'Throne', 'throne', 'throne', None, 'neutral', 'pre_action_auto_reset')
+throne = SpringSliderSwitch('throne', 'Throne', 'throne', 'throne', None, 'neutral', 'pre_act_switch_reset')
 
 hand_no_weap_cond = NotInHandCond('hand_no_weap_cond', [shiny_sword, grimy_axe])
 hand_weap_1st_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], False)
@@ -75,11 +75,11 @@ moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', 'moat_croc
 moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', 'moat_get_crown_result', royal_crown, True)
 cant_turn_back_result = BufferOnlyResult('cant_turn_back_result', 'cant_turn_back_result', True)
 
-entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_action_cmd_trig', False, [['go', 'east'], ['go', 'west']],
+entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_act_cmd', False, [['go', 'east'], ['go', 'west']],
 				[hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
 				[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) #machine_state = got_crown
 
-entrance_south_mach = InvisMach('entrance_south_mach', 'pre_action_cmd_trig', None, [['go', 'south']],
+entrance_south_mach = InvisMach('entrance_south_mach', 'pre_act_cmd', None, [['go', 'south']],
 				[pass_thru_cond], [cant_turn_back_result])
 
 

@@ -58,7 +58,22 @@ IN-PROC: create condition classes & obj:
 		IDEA: trigger inputs == case, trig_lst [means that a machine can be triggered by a command or a switch but not BOTH]
 		IDEA: cond inputs == game state, condition switch, play commands
 		DONE: create updated diagram
-	TBD: update machine variable names and attributes to match new mapping 
+	IN-PROC: update & define machine variable names and attributes
+		DONE: pre_action() local variables:
+			DONE: mach_obj_lst == list of in scope machine objects
+			DONE: cmd_override == boolean returned from pre_action() function that determines whether or not player command is over-ridden
+			DONE: local_override == boolean that ensure if *any* in-scope machine overrides the player command then player command is over-ridden
+		IN-PROC: InvisMach attributes:
+			DONE: name == name of the machine
+			DONE: machine_type => trigger_type == defines machine trigger type and timing. Options include:
+				pre_act_cmd, pre_act_switch, pre_act_auto, pre_act_switch_reset
+				post_act_cmd, post_act_switch, post_act_auto 
+			DONE: machine_state == internal state of machine; can be boolean or integer
+			DONE: cmd_triggers_lst => trig_vals_lst == list of trigger values that will start the machine; can be player commands or switch values
+			DONE: cond_lst == list of condition obj to test for; should cover all trigger cases
+			DONE: result_lst == list of possible result obj ordered by assciated condition
+			TBD-NEW: trig_switch_lst == list of switches associated with the machine that can be used to trigger it
+			TBD-NEW: cond_swicth_lst == list of switches associated with the machine with states that contribute to conditions
 	TBD: throne_push_pre_dispense => switch_state = pushed => cond_switch_lst[0] == 'pushed'
 		TBD: create SwitchStateClass
 		TBD: create throne_push obj
@@ -85,6 +100,7 @@ TBD: create broach obj of class Clothes and clothing type 'pin'
 TBD: code clean-up and consistency
 	TBD: update class name from InvisMach => InvisCmdMach (???)
 	TBD: make InHandAndStateCond a child of StateCond
+	TBD: dual inheritance for ViewOnly or Item machines (???)
 
 
 ***** NEEDED UPDATES TO PLAN *****

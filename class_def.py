@@ -232,7 +232,7 @@ class GameState(object):
 				room_obj = self.get_room()
 				scope_lst = self.scope_lst() + room_obj.invis_obj_lst
 				for obj in scope_lst:
-						if hasattr(obj, 'machine_type'):
+						if hasattr(obj, 'trigger_type'):
 								mach_obj_lst.append(obj)
 				return mach_obj_lst
 
@@ -363,17 +363,19 @@ class BufferAndGiveResult(BufferOnlyResult):
 				return machine_state, self.cmd_override
 
 class InvisMach(Invisible):
-		def __init__(self, name, machine_type, machine_state, cmd_triggers_lst, cond_lst, result_lst):
+#		def __init__(self, name, trigger_type, machine_state, cmd_triggers_lst, cond_lst, result_lst):
+		def __init__(self, name, trigger_type, machine_state, trig_vals_lst, cond_lst, result_lst):
 				super().__init__(name)
-				self._machine_type = machine_type # pre_action_trig, pre_action_auto, post_action_trig, or post_action_auto
+				self._trigger_type = trigger_type # pre_act_cmd, pre_act_switch, pre_act_auto, post_act_cmd, post_act_switch, or post_act_auto
 				self._machine_state = machine_state # machine state variable; boolean for simple machines; Int for complex
-				self._cmd_triggers_lst = cmd_triggers_lst # player commands that will trigger the machine (None for auto?)
-				self._cond_lst = cond_lst # conditions to test for; should cover all trigger cases
-				self._result_lst = result_lst # possible results based on conditions; result order must match condition order
+#				self._cmd_triggers_lst = cmd_triggers_lst # player commands that will trigger the machine (None for auto?)
+				self._trig_vals_lst = trig_vals_lst # tirgger values that will start the machine (commands or switch states; None for auto?)
+				self._cond_lst = cond_lst # list of condition obj to test for; should cover all trigger cases
+				self._result_lst = result_lst # list of possible result obj ordered by assciated condition
 
 		@property
-		def machine_type(self):
-				return self._machine_type
+		def trigger_type(self):
+				return self._trigger_type
 
 		@property
 		def machine_state(self):
@@ -383,9 +385,13 @@ class InvisMach(Invisible):
 		def machine_state(self, new_state):
 				self._machine_state = new_state
 
+#		@property
+#		def cmd_triggers_lst(self):
+#				return self._cmd_triggers_lst
+
 		@property
-		def cmd_triggers_lst(self):
-				return self._cmd_triggers_lst
+		def trig_vals_lst(self):
+				return self._trig_vals_lst
 
 		@property
 		def cond_lst(self):
@@ -407,7 +413,8 @@ class InvisMach(Invisible):
 						player_cmd_key = [word_lst[1], word_lst[2].name, word_lst[0].name]
 				elif case == 'switch':
 						player_cmd_key = word_lst
-				return player_cmd_key in self.cmd_triggers_lst
+#				return player_cmd_key in self.cmd_triggers_lst
+				return player_cmd_key in self.trig_vals_lst
 
 		def trigger(self, active_gs):
 				cond_return_lst = []
@@ -421,9 +428,9 @@ class InvisMach(Invisible):
 				return cmd_override
 
 class InvisSwitchMach(InvisMach):
-#		def __init__(self, name, machine_type, machine_state, cmd_triggers_lst, cond_lst, result_lst, trig_switch_lst, cond_switch_lst):
-		def __init__(self, name, machine_type, machine_state, cmd_triggers_lst, cond_lst, result_lst, cond_switch_lst):
-				super().__init__(name, machine_type, machine_state, cmd_triggers_lst, cond_lst, result_lst)
+#		def __init__(self, name, trigger_type, machine_state, trig_vals_lst, cond_lst, result_lst, trig_switch_lst, cond_switch_lst):
+		def __init__(self, name, trigger_type, machine_state, trig_vals_lst, cond_lst, result_lst, cond_switch_lst):
+				super().__init__(name, trigger_type, machine_state, trig_vals_lst, cond_lst, result_lst)
 				self._trig_switch = trig_switch
 				self._cond_switch_lst = cond_switch_lst
 
@@ -439,7 +446,7 @@ class InvisSwitchMach(InvisMach):
 #				trig_state_lst = []
 #				for trig in self.trig_switch_lst:
 #						trig_state_lst.append(trig.switch_state)
-#				return trig_state_lst == self.cmd_triggers_lst
+#				return trig_state_lst == self.trig_vals_lst
 
 
 
@@ -504,10 +511,10 @@ class ViewOnly(Writing):
 						active_gs.buffer(output)
 
 class ButtonSwitch(ViewOnly):
-		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, machine_type):
+		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, trigger_type):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._switch_state = switch_state # values = 'pushed' or 'neutral'
-				self._machine_type = machine_type # machine state variable; for switches typically 'pre_action_auto_reset'
+				self._trigger_type = trigger_type # machine state variable; for switches typically 'pre_action_auto_reset'
 
 		@property
 		def switch_state(self):
@@ -518,16 +525,16 @@ class ButtonSwitch(ViewOnly):
 				self._switch_state = new_state
 
 		@property
-		def machine_type(self):
-				return self._machine_type
+		def trigger_type(self):
+				return self._trigger_type
 
 		def push(self, active_gs):
 				self.switch_state = 'pushed'
 				active_gs.buffer("Pushed.")
 
 class SpringSliderSwitch(ButtonSwitch):
-		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, machine_type):
-				super().__init__(name, full_name, root_name, descript_key, writing, switch_state, machine_type)
+		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, trigger_type):
+				super().__init__(name, full_name, root_name, descript_key, writing, switch_state, trigger_type)
 
 		def pull(self, active_gs):
 				self.switch_state = 'pulled'
