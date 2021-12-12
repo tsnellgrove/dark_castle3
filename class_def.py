@@ -363,12 +363,10 @@ class BufferAndGiveResult(BufferOnlyResult):
 				return machine_state, self.cmd_override
 
 class InvisMach(Invisible):
-#		def __init__(self, name, trigger_type, machine_state, cmd_triggers_lst, cond_lst, result_lst):
 		def __init__(self, name, trigger_type, machine_state, trig_vals_lst, cond_lst, result_lst):
 				super().__init__(name)
 				self._trigger_type = trigger_type # pre_act_cmd, pre_act_switch, pre_act_auto, post_act_cmd, post_act_switch, or post_act_auto
 				self._machine_state = machine_state # machine state variable; boolean for simple machines; Int for complex
-#				self._cmd_triggers_lst = cmd_triggers_lst # player commands that will trigger the machine (None for auto?)
 				self._trig_vals_lst = trig_vals_lst # tirgger values that will start the machine (commands or switch states; None for auto?)
 				self._cond_lst = cond_lst # list of condition obj to test for; should cover all trigger cases
 				self._result_lst = result_lst # list of possible result obj ordered by assciated condition
@@ -384,10 +382,6 @@ class InvisMach(Invisible):
 		@machine_state.setter
 		def machine_state(self, new_state):
 				self._machine_state = new_state
-
-#		@property
-#		def cmd_triggers_lst(self):
-#				return self._cmd_triggers_lst
 
 		@property
 		def trig_vals_lst(self):
@@ -413,7 +407,6 @@ class InvisMach(Invisible):
 						player_cmd_key = [word_lst[1], word_lst[2].name, word_lst[0].name]
 				elif case == 'switch':
 						player_cmd_key = word_lst
-#				return player_cmd_key in self.cmd_triggers_lst
 				return player_cmd_key in self.trig_vals_lst
 
 		def trigger(self, active_gs):
