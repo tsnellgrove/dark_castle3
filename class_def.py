@@ -395,19 +395,20 @@ class InvisMach(Invisible):
 		def result_lst(self):
 				return self._result_lst
 
+		# formats trigger state into trig_key_lst based on case and returns true if trig_key_lst is in trig_vals_lst
 		def trig_check(self, active_gs, case, word_lst):
-				player_cmd_key = 'not_valid'
+				trig_key_lst = 'not_valid'
 				if case == 'go':
-						player_cmd_key = [word_lst[1], word_lst[2]]
+						trig_key_lst = [word_lst[1], word_lst[2]]
 				elif case == '2word':
-						player_cmd_key = [word_lst[1], word_lst[0].name]
+						trig_key_lst = [word_lst[1], word_lst[0].name]
 				elif  case == 'tru_1word':
-						player_cmd_key = word_lst
+						trig_key_lst = word_lst
 				elif  case == 'put':
-						player_cmd_key = [word_lst[1], word_lst[2].name, word_lst[0].name]
+						trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
 				elif case == 'switch':
-						player_cmd_key = word_lst
-				return player_cmd_key in self.trig_vals_lst
+						trig_key_lst = word_lst
+				return trig_key_lst in self.trig_vals_lst
 
 		def trigger(self, active_gs):
 				cond_return_lst = []
