@@ -68,7 +68,7 @@ IN-PROC: update & define machine variable names and attributes
 		DONE: cmd_triggers_lst => trig_vals_lst == list of trigger values that will start the machine; can be player commands or switch values
 		DONE: cond_lst == list of condition obj to test for; should cover all trigger cases
 		DONE: result_lst == list of possible result obj ordered by assciated condition
-		TBD-NEW: trig_switch_lst == list of switches associated with the machine that can be used to trigger it
+		DONE: trig_switch_lst == list of switches associated with the machine that can be used to trigger it
 		TBD-NEW: cond_swicth_lst == list of switches associated with the machine with states that contribute to conditions
 	DONE: trig_check()
 		DONE: player_cmd_key => trig_key_lst == trigger state to be compared with trig_vals_lst
