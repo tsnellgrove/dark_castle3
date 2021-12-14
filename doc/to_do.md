@@ -54,16 +54,16 @@ DONE: re-map machines => unify cmd_machine and switch_machine models (if reasona
 	IDEA: trigger inputs == case, trig_lst [means that a machine can be triggered by a command or a switch but not BOTH]
 	IDEA: cond inputs == game state, condition switch, play commands
 	DONE: create updated diagram
-IN-PROC: update & define machine variable names and attributes
+DONE: update & define machine variable names and attributes
 	DONE: pre_action() local variables:
 		DONE: mach_obj_lst == list of in scope machine objects
 		DONE: cmd_override == boolean returned from pre_action() function that determines whether or not player command is over-ridden
 		DONE: local_override == boolean that ensure if *any* in-scope machine overrides the player command then player command is over-ridden
-	IN-PROC: InvisMach attributes:
+	DONE: InvisMach attributes:
 		DONE: name == name of the machine
 		DONE: machine_type => trigger_type == defines machine trigger type and timing. Options include:
-			pre_act_cmd, pre_act_switch, pre_act_auto, pre_act_switch_reset
-			post_act_cmd, post_act_switch, post_act_auto 
+			VALS: pre_act_cmd, pre_act_switch, pre_act_auto, pre_act_switch_reset
+			VALS: post_act_cmd, post_act_switch, post_act_auto 
 		DONE: machine_state == internal state of machine; can be boolean or integer
 		DONE: cmd_triggers_lst => trig_vals_lst == list of trigger values that will start the machine; can be player commands or switch values
 		DONE: cond_lst == list of condition obj to test for; should cover all trigger cases
@@ -72,7 +72,7 @@ IN-PROC: update & define machine variable names and attributes
 		DONE: cond_swicth_lst == list of switches associated with the machine with states that contribute to conditions
 	DONE: trig_check()
 		DONE: player_cmd_key => trig_key_lst == trigger state to be compared with trig_vals_lst
-IN-PROC: create condition classes & obj:
+DONE: create condition classes & obj:
 	DONE: case = broach_already_dispensed => machine_state == True
 		DONE: create StateCond class
 		DONE: create obj broach_dispensed_cond
@@ -82,9 +82,9 @@ IN-PROC: create condition classes & obj:
 	DONE: throne_pull_pre_dispense: switch_state = pulled => cond_switch_lst[0] == 'pulled'
 		DONE: use SwitchStateCond
 		DONE: create throne_pull_cond obj
-TBD: create results classes & obj
-	throne_push and nothing_happens => BufferOnly
-	dispense_broach => new class => AddObjToRoom
+IN-PROC: create results classes & obj
+	DONE: throne_push and nothing_happens => BufferOnly
+	TBD: dispense_broach => new class => AddObjToRoom
 TBD: broach_dispensesr
 	TBD: create broach_dispenser obj of class InvisSwitchMach
 	TBD: trig_switch = throne

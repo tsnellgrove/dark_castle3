@@ -76,6 +76,8 @@ die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'die_in_moat_resul
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', 'moat_croc_scared_result', True)
 moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', 'moat_get_crown_result', royal_crown, True)
 cant_turn_back_result = BufferOnlyResult('cant_turn_back_result', 'cant_turn_back_result', True)
+throne_push_result = BufferOnlyResult('throne_push_result', 'throne_push_result', False)
+nothing_happens_result = BufferOnlyResult('nothing_happens_result', 'nothing_happens_result', False)
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_act_cmd', False, None, [['go', 'east'], ['go', 'west']],
 				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
@@ -83,7 +85,6 @@ entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_act_cmd', False, None,
 
 entrance_south_mach = InvisMach('entrance_south_mach', 'pre_act_cmd', None, None, [['go', 'south']],
 				None, [pass_thru_cond], [cant_turn_back_result])
-
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
 				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_mach])
