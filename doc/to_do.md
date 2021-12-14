@@ -69,19 +69,19 @@ IN-PROC: update & define machine variable names and attributes
 		DONE: cond_lst == list of condition obj to test for; should cover all trigger cases
 		DONE: result_lst == list of possible result obj ordered by assciated condition
 		DONE: trig_switch_lst == list of switches associated with the machine that can be used to trigger it
-		TBD-NEW: cond_swicth_lst == list of switches associated with the machine with states that contribute to conditions
+		DONE: cond_swicth_lst == list of switches associated with the machine with states that contribute to conditions
 	DONE: trig_check()
 		DONE: player_cmd_key => trig_key_lst == trigger state to be compared with trig_vals_lst
 IN-PROC: create condition classes & obj:
 	DONE: case = broach_already_dispensed => machine_state == True
 		DONE: create StateCond class
-		DONE: create obj broach_dispensed
-	TBD: throne_push_pre_dispense => switch_state = pushed => cond_switch_lst[0] == 'pushed'
-		TBD: create SwitchStateCond
-		TBD: create throne_push obj
-	TBD: throne_pull_pre_dispense: switch_state = pulled => cond_switch_lst[0] == 'pulled'
-		TBD: use SwitchStateCond
-		TBD: create throne_pull obj
+		DONE: create obj broach_dispensed_cond
+	DONE: throne_push_pre_dispensed => switch_state = pushed => cond_switch_lst[0] == 'pushed'
+		DONE: create SwitchStateCond
+		DONE: create throne_push_cond obj
+	DONE: throne_pull_pre_dispense: switch_state = pulled => cond_switch_lst[0] == 'pulled'
+		DONE: use SwitchStateCond
+		DONE: create throne_pull_cond obj
 TBD: create results classes & obj
 	throne_push and nothing_happens => BufferOnly
 	dispense_broach => new class => AddObjToRoom

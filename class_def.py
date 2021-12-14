@@ -260,7 +260,7 @@ class NotInHandCond(Invisible):
 		def not_in_hand_lst(self):
 				return self._not_in_hand_lst
 
-		def cond_check(self, active_gs, machine_state):
+		def cond_check(self, active_gs, machine_state, cond_swicth_lst):
 				cond_state = True
 				hand_lst = active_gs.get_hand_lst()
 				for item in self.not_in_hand_lst:
@@ -269,34 +269,34 @@ class NotInHandCond(Invisible):
 				return cond_state
 
 class StateCond(Invisible):
-		def __init__(self, name, mach_state_test):
+		def __init__(self, name, mach_state_cond):
 				super().__init__(name)
-				self._mach_state_test = mach_state_test # boolean test for passed in boolean value
+				self._mach_state_cond = mach_state_cond # boolean test for passed in boolean value
 
 		@property
-		def mach_state_test(self):
-				return self._mach_state_test
+		def mach_state_cond(self):
+				return self._mach_state_cond
 
-		def cond_check(self, active_gs, machine_state):
-				return machine_state == self.mach_state_test
+		def cond_check(self, active_gs, machine_state, cond_swicth_lst):
+				return machine_state == self.mach_state_cond
 
 class InHandAndStateCond(Invisible):
-		def __init__(self, name, in_hand_lst, mach_state_test):
+		def __init__(self, name, in_hand_lst, mach_state_cond):
 				super().__init__(name)
 				self._in_hand_lst = in_hand_lst # list of items that will meet condition
-				self._mach_state_test = mach_state_test # boolean test for passed in boolean value
+				self._mach_state_cond = mach_state_cond # boolean test for passed in boolean value
 
 		@property
 		def in_hand_lst(self):
 				return self._in_hand_lst
 
 		@property
-		def mach_state_test(self):
-				return self._mach_state_test
+		def mach_state_cond(self):
+				return self._mach_state_cond
 
-		def cond_check(self, active_gs, machine_state):
+		def cond_check(self, active_gs, machine_state, cond_swicth_lst):
 				cond_state = False
-				if machine_state == self.mach_state_test:
+				if machine_state == self.mach_state_cond:
 						hand_lst = active_gs.get_hand_lst()
 						for item in self.in_hand_lst:
 								if item in hand_lst:
@@ -307,9 +307,25 @@ class PassThruCond(Invisible):
 		def __init__(self, name):
 				super().__init__(name)
 
-		def cond_check(self, active_gs, machine_state):
+		def cond_check(self, active_gs, machine_state, cond_swicth_lst):
 				cond_state = True
 				return cond_state
+
+class SwitchStateCond(Invisible):
+		def __init__(self, name, switch_state_val_lst):
+				super().__init__(name)
+				self._switch_state_val_lst = switch_state_val_lst # list of switch state values to meet condition
+
+		@property
+		def switch_state_val_lst(self):
+				return self._switch_state_val_lst
+
+		def cond_check(self, active_gs, machine_state, cond_swicth_lst):
+				switch_state_lst = []
+				for switch in cond_swicth_lst:
+						switch_state_lst.append(switch.switch_state)
+				return switch_state_lst == self.switch_state_val_lst
+
 
 class BufferOnlyResult(Invisible):
 		def __init__(self, name, result_descript, cmd_override):
@@ -363,12 +379,13 @@ class BufferAndGiveResult(BufferOnlyResult):
 				return machine_state, self.cmd_override
 
 class InvisMach(Invisible):
-		def __init__(self, name, trigger_type, machine_state, trig_switch_lst, trig_vals_lst, cond_lst, result_lst):
+		def __init__(self, name, trigger_type, machine_state, trig_switch_lst, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				super().__init__(name)
 				self._trigger_type = trigger_type # pre_act_cmd, pre_act_switch, pre_act_auto, post_act_cmd, post_act_switch, or post_act_auto
 				self._machine_state = machine_state # machine state variable; boolean for simple machines; Int for complex
 				self._trig_switch_lst = trig_switch_lst # list of switches whose state change can trigger the machine
 				self._trig_vals_lst = trig_vals_lst # tirgger values that will start the machine (commands or switch states; None for auto?)
+				self._cond_swicth_lst = cond_swicth_lst # list of switches associated with the machine with states that contribute to conditions
 				self._cond_lst = cond_lst # list of condition obj to test for; should cover all trigger cases
 				self._result_lst = result_lst # list of possible result obj ordered by assciated condition
 
@@ -391,6 +408,10 @@ class InvisMach(Invisible):
 		@property
 		def trig_vals_lst(self):
 				return self._trig_vals_lst
+
+		@property
+		def cond_swicth_lst(self):
+				return self._cond_swicth_lst
 
 		@property
 		def cond_lst(self):
@@ -418,7 +439,7 @@ class InvisMach(Invisible):
 		def trigger(self, active_gs):
 				cond_return_lst = []
 				for cond in self.cond_lst:
-						cond_return = cond.cond_check(active_gs, self.machine_state)
+						cond_return = cond.cond_check(active_gs, self.machine_state, self.cond_swicth_lst)
 						cond_return_lst.append(cond_return)
 				result_num = cond_return_lst.index(True)
 				result = self.result_lst[result_num]

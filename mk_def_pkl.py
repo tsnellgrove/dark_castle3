@@ -6,7 +6,7 @@
 
 # import statements
 import pickle
-from class_def import Invisible, NotInHandCond, InHandAndStateCond, PassThruCond, StateCond
+from class_def import Invisible, NotInHandCond, InHandAndStateCond, PassThruCond, StateCond, SwitchStateCond
 from class_def import BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, InvisMach
 from class_def import ButtonSwitch, SpringSliderSwitch
 from class_def import Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room, GameState
@@ -69,6 +69,8 @@ hand_weap_1st_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grim
 hand_weap_repeat_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], True)
 pass_thru_cond = PassThruCond('pass_thru_cond')
 broach_dispensed_cond = StateCond('broach_dispensed_cond', True)
+throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
+throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
 
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'die_in_moat_result', 'death', True)
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', 'moat_croc_scared_result', True)
@@ -76,11 +78,11 @@ moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', 'moat_get_c
 cant_turn_back_result = BufferOnlyResult('cant_turn_back_result', 'cant_turn_back_result', True)
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_act_cmd', False, None, [['go', 'east'], ['go', 'west']],
-				[hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
+				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
 				[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) #machine_state = got_crown
 
 entrance_south_mach = InvisMach('entrance_south_mach', 'pre_act_cmd', None, None, [['go', 'south']],
-				[pass_thru_cond], [cant_turn_back_result])
+				None, [pass_thru_cond], [cant_turn_back_result])
 
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
