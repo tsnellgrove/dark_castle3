@@ -378,6 +378,22 @@ class BufferAndGiveResult(BufferOnlyResult):
 				machine_state = True
 				return machine_state, self.cmd_override
 
+class AddObjToRoomResult(BufferOnlyResult):
+		def __init__(self, name, result_descript, room_item, cmd_override):
+				super().__init__(name, result_descript, cmd_override)
+				self._room_item = room_item # item to be given to Burt
+
+		@property
+		def room_item(self):
+				return self._room_item
+
+		def results_exe(self, active_gs, machine_state):
+				active_gs.buffer(descript_dict[self.result_descript])
+				room_obj = active_gs.get_room()
+				room_obj.room_obj_lst_append(self.room_item)
+				machine_state = True
+				return machine_state, self.cmd_override
+
 class InvisMach(Invisible):
 		def __init__(self, name, trigger_type, machine_state, trig_switch_lst, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				super().__init__(name)

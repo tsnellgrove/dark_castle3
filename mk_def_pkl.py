@@ -7,7 +7,7 @@
 # import statements
 import pickle
 from class_def import Invisible, NotInHandCond, InHandAndStateCond, PassThruCond, StateCond, SwitchStateCond
-from class_def import BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, InvisMach
+from class_def import BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, InvisMach
 from class_def import ButtonSwitch, SpringSliderSwitch
 from class_def import Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room, GameState
 
@@ -78,6 +78,7 @@ moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', 'moat_get_c
 cant_turn_back_result = BufferOnlyResult('cant_turn_back_result', 'cant_turn_back_result', True)
 throne_push_result = BufferOnlyResult('throne_push_result', 'throne_push_result', False)
 nothing_happens_result = BufferOnlyResult('nothing_happens_result', 'nothing_happens_result', False)
+throne_pull_result = AddObjToRoomResult('throne_pull_result', 'throne_pull_result', random_mcguffin, False)
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_act_cmd', False, None, [['go', 'east'], ['go', 'west']],
 				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],

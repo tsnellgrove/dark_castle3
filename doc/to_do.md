@@ -82,9 +82,9 @@ DONE: create condition classes & obj:
 	DONE: throne_pull_pre_dispense: switch_state = pulled => cond_switch_lst[0] == 'pulled'
 		DONE: use SwitchStateCond
 		DONE: create throne_pull_cond obj
-IN-PROC: create results classes & obj
+DONE: create results classes & obj
 	DONE: throne_push and nothing_happens => BufferOnly
-	TBD: dispense_broach => new class => AddObjToRoom
+	DONE: throne_pull_result => new class => AddObjToRoomResult
 TBD: broach_dispensesr
 	TBD: create broach_dispenser obj of class InvisSwitchMach
 	TBD: trig_switch = throne
@@ -103,6 +103,7 @@ TBD: code clean-up and consistency
 	TBD: update class name from InvisMach => InvisCmdMach (???)
 	TBD: make InHandAndStateCond a child of StateCond
 	TBD: dual inheritance for ViewOnly or Item machines (???)
+	TBD: do we really need to pass machine_state to result_exe() method??
 
 
 ***** NEEDED UPDATES TO PLAN *****
