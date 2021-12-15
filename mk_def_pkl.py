@@ -87,6 +87,10 @@ entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_act_cmd', False, None,
 entrance_south_mach = InvisMach('entrance_south_mach', 'pre_act_cmd', None, None, [['go', 'south']],
 				None, [pass_thru_cond], [cant_turn_back_result])
 
+broach_dispenser_mach = InvisMach('broach_dispenser_mach', 'post_act_switch', False, [throne], [['pushed', 'pulled']],
+				[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
+				[nothing_happens_result, throne_push_result, throne_pull_result])
+
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
 				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_mach])
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
@@ -94,7 +98,7 @@ main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tap
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None, [alcove, control_panel],
 				[torn_note, grimy_axe, iron_portcullis], {'north' : iron_portcullis}, [])
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
-				[throne, silver_key, crystal_box, iron_portcullis], {'south' : iron_portcullis}, [])
+				[throne, silver_key, crystal_box, iron_portcullis], {'south' : iron_portcullis}, [broach_dispenser_mach])
 
 
 ### active_gs is the central store of game info ###

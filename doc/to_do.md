@@ -85,17 +85,19 @@ DONE: create condition classes & obj:
 DONE: create results classes & obj
 	DONE: throne_push and nothing_happens => BufferOnly
 	DONE: throne_pull_result => new class => AddObjToRoomResult
-TBD: broach_dispensesr_mach
-	TBD: create broach_dispenser obj of class InvisMach
-	TBD: trig_switch = throne
-	TBD: cond_switch_lst = [throne]
-	TBD: machine_type = post_action_switch_trig
-	TBD: machine_state = False (# broach_dispensed)
-	TBD: cmd_triggers_lst = ['pushed', 'pulled']
-	TBD: cond_lst: broach_already_dispensed, throne_push_pre_dispense, throne_pull_pre_dispense
-	TBD: result_lst: throne_push, nothing_happens, dispense_broach
+DONE: broach_dispenser_mach
+	DONE: create broach_dispenser obj of class InvisMach
+	DONE: trig_switch = throne
+	DONE: cond_switch_lst = [throne]
+	DONE: machine_type = post_action_switch_trig
+	DONE: machine_state = False (# broach_dispensed)
+	DONE: cmd_triggers_lst = ['pushed', 'pulled']
+	DONE: cond_lst: broach_already_dispensed, throne_push_pre_dispense, throne_pull_pre_dispense
+	DONE: result_lst: throne_push, nothing_happens, dispense_broach
 TBD: create post_action() module and function [very similar to pre_action()]
 	TBD: for case = 'switch', pass list of trigger values => ['pushed', 'pulled']
+TBD: Lots of testing!!!
+	TBD: Clean up InvisSwitchMach & comments
 TBD: create broach obj of class Clothes and clothing type 'pin'
 	TBD: Allow broach to be worn but hint in wear_descript and remove_descript that it's only of sentimental value
 	TBD: update score dicts to grant 5 pts on broach in hand
