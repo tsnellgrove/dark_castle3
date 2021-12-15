@@ -94,8 +94,8 @@ DONE: broach_dispenser_mach
 	DONE: cmd_triggers_lst = ['pushed', 'pulled']
 	DONE: cond_lst: broach_already_dispensed, throne_push_pre_dispense, throne_pull_pre_dispense
 	DONE: result_lst: throne_push, nothing_happens, dispense_broach
-TBD: create post_action() module and function [very similar to pre_action()]
-	TBD: for case = 'switch', pass list of trigger values => ['pushed', 'pulled']
+DONE: create post_action() module and function [very similar to pre_action()]
+	DONE: for case = 'switch', pass list of trigger values => ['pushed', 'pulled']
 TBD: Lots of testing!!!
 	TBD: Clean up InvisSwitchMach & comments
 TBD: create broach obj of class Clothes and clothing type 'pin'
