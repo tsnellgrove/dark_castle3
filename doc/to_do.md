@@ -85,8 +85,8 @@ DONE: create condition classes & obj:
 DONE: create results classes & obj
 	DONE: throne_push and nothing_happens => BufferOnly
 	DONE: throne_pull_result => new class => AddObjToRoomResult
-TBD: broach_dispensesr
-	TBD: create broach_dispenser obj of class InvisSwitchMach
+TBD: broach_dispensesr_mach
+	TBD: create broach_dispenser obj of class InvisMach
 	TBD: trig_switch = throne
 	TBD: cond_switch_lst = [throne]
 	TBD: machine_type = post_action_switch_trig
@@ -380,6 +380,13 @@ TBD: for doors and containers, use None option for no lock or no lid?
 
 
 *** NEW PUZZLE IDEAS ***
+
+Princess Time-Travel Quest:
+- Princess asks Burt if he's an assassin, spy, or suitor => answer = 'baker'
+- Back in time, need to hide key behind brick (otherwise princess arrives but time travels back behind locked door)
+- Get key from chief guard via cheesecake?
+- Both Burt and the Princess need to eat food before time travel (nod to hitchhikers guide)
+- Juanty hat to escape guards at just the right time
 
 IDEA: have a 'jaunty hat' that enables you to move 'twice per time click' (i.e. no pre or post actions or move increments for one turn)
 	- would necesitate default responses to attacks and things like that
