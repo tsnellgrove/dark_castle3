@@ -87,7 +87,7 @@ entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_act_cmd', False, None,
 entrance_south_mach = InvisMach('entrance_south_mach', 'pre_act_cmd', None, None, [['go', 'south']],
 				None, [pass_thru_cond], [cant_turn_back_result])
 
-broach_dispenser_mach = InvisMach('broach_dispenser_mach', 'post_act_switch', False, [throne], [['pushed', 'pulled']],
+broach_dispenser_mach = InvisMach('broach_dispenser_mach', 'post_act_switch', False, throne, ['pushed', 'pulled'],
 				[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
 				[nothing_happens_result, throne_push_result, throne_pull_result])
 
