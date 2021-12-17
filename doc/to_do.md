@@ -98,7 +98,7 @@ DONE: create post_action() module and function [very similar to pre_action()]
 	DONE: for case = 'switch', pass list of trigger values => ['pushed', 'pulled']
 IN-PROC: Lots of testing!!!
 	DONE: troubleshoot post_action 
-	DONE: troubleshoot class_deff => throne works now but Room Events in Entrance don't
+	DONE: troubleshoot class_deff => throne works now but Room Events in Entrance don't??
 	TBD: Clean up InvisSwitchMach & comments
 TBD: create broach obj of class Clothes and clothing type 'pin'
 	TBD: Allow broach to be worn but hint in wear_descript and remove_descript that it's only of sentimental value
