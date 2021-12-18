@@ -395,12 +395,10 @@ class AddObjToRoomResult(BufferOnlyResult):
 				return machine_state, self.cmd_override
 
 class InvisMach(Invisible):
-#		def __init__(self, name, trigger_type, machine_state, trig_switch_lst, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 		def __init__(self, name, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				super().__init__(name)
 				self._trigger_type = trigger_type # pre_act_cmd, pre_act_switch, pre_act_auto, post_act_cmd, post_act_switch, or post_act_auto
 				self._machine_state = machine_state # machine state variable; boolean for simple machines; Int for complex
-#				self._trig_switch_lst = trig_switch_lst # list of switches whose state change can trigger the machine
 				self._trig_switch = trig_switch # the switch whose state change can trigger the machine (only one switch per machine)
 				self._trig_vals_lst = trig_vals_lst # tirgger values that will start the machine (commands or switch states; None for auto?)
 				self._cond_swicth_lst = cond_swicth_lst # list of switches associated with the machine with states that contribute to conditions
@@ -418,10 +416,6 @@ class InvisMach(Invisible):
 		@machine_state.setter
 		def machine_state(self, new_state):
 				self._machine_state = new_state
-
-#		@property
-#		def trig_switch_lst(self):
-#				return self._trig_switch_lst
 
 		@property
 		def trig_switch(self):
@@ -456,8 +450,6 @@ class InvisMach(Invisible):
 						trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
 				elif case == 'switch':
 						trig_key_lst = word_lst[0]
-						print(trig_key_lst)
-						print(self.trig_vals_lst)
 				return trig_key_lst in self.trig_vals_lst
 
 		def trigger(self, active_gs):
