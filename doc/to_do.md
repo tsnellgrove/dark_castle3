@@ -96,42 +96,15 @@ DONE: broach_dispenser_mach
 	DONE: result_lst: throne_push, nothing_happens, dispense_broach
 DONE: create post_action() module and function [very similar to pre_action()]
 	DONE: for case = 'switch', pass list of trigger values => ['pushed', 'pulled']
-IN-PROC: Lots of testing!!!
+DONE: Lots of testing!!!
 	DONE: troubleshoot post_action 
 	DONE: troubleshoot class_deff => throne works now but Room Events in Entrance don't??
 	DONE: sorted out Entrance Room Events
 	DONE: Clean up prints & comments
-	TBD: clean up InvisSwitchMach 
+	DONE: clean up InvisSwitchMach 
 TBD: create broach obj of class Clothes and clothing type 'pin'
 	TBD: Allow broach to be worn but hint in wear_descript and remove_descript that it's only of sentimental value
 	TBD: update score dicts to grant 5 pts on broach in hand
-TBD: code clean-up and consistency
-	TBD: update class name from InvisMach => InvisCmdMach (???)
-	TBD: make InHandAndStateCond a child of StateCond
-	TBD: dual inheritance for ViewOnly or Item machines (???)
-	TBD: do we really need to pass machine_state to result_exe() method??
-
-
-***** NEEDED UPDATES TO PLAN *****
-- need to link switch to machine
-- need to embed the switch in the machine?
-- HOW DO I PASS SWITCH STATE TO CONDITIONS?
-
-
-IDEA: we could have more types of pre and post actions...
-	- pre_action_trig => pre_action_cmd_trig
-	- this allows for pre_action_state_trig
-	- could also have a simple pre_action_state_reset which just resets a button or spring_loaded_slider to given default value (None)
-IDEA: throne is the trigger and state switch. Is the machine invisible?
-IDEA: throne obj is of class SpringLoadedSlider (child of ViewOnly)
-	IDEA: has mehods push() and pull() and state
-	IDEA: last_action_state can == 'pushed', 'pulled', 'neutral'
-	IDEA: auto_pre_action resets state to 'neutral'
-IDEA: I want the trigger and condition switches to be clearly embeded in the machine
-IDEA:
-	- triggers = player commands or switch values
-	- conditions = switch values or active_gs values
-	- results = active_gs values, machine_state, and cmd_override value
 
 
 ##########################
@@ -146,10 +119,25 @@ Version 3.56 Goals
 ##########################
 
 Version 3.58 Goals
-- Create / update program documentation
+- Clean up machine coding
+
 
 IDEA: Should GameState be in a separate module? 
 	IDEA: gs_def.py ? class_def.py would import gs_def (?) - then mk_def_pkl.py would import from both?
+IDEA: do conditions and results really need to be of a class related to / inheritance chain of verbs??
+	TBD: separate class definintions for results and conditions?
+TBD: code clean-up and consistency
+	TBD: make InHandAndStateCond a child of StateCond
+	TBD: dual inheritance for ViewOnly or Item machines (???)
+	TBD: do we really need to pass machine_state to result_exe() method??
+
+
+##########################
+### VERSION 3.59 START ###
+##########################
+
+Version 3.59 Goals
+- Create / update program documentation
 
 TBD: documentation:
 	TBD: write up thinking and decisions on machines
@@ -203,6 +191,30 @@ TBD: documentation:
 
 
 *** interactive object ideas ***
+
+***** NEEDED UPDATES TO PLAN *****
+- need to link switch to machine
+- need to embed the switch in the machine?
+- HOW DO I PASS SWITCH STATE TO CONDITIONS?
+
+
+IDEA: we could have more types of pre and post actions...
+	- pre_action_trig => pre_action_cmd_trig
+	- this allows for pre_action_state_trig
+	- could also have a simple pre_action_state_reset which just resets a button or spring_loaded_slider to given default value (None)
+IDEA: throne is the trigger and state switch. Is the machine invisible?
+IDEA: throne obj is of class SpringLoadedSlider (child of ViewOnly)
+	IDEA: has mehods push() and pull() and state
+	IDEA: last_action_state can == 'pushed', 'pulled', 'neutral'
+	IDEA: auto_pre_action resets state to 'neutral'
+IDEA: I want the trigger and condition switches to be clearly embeded in the machine
+IDEA:
+	- triggers = player commands or switch values
+	- conditions = switch values or active_gs values
+	- results = active_gs values, machine_state, and cmd_override value
+	
+DECISION: for now, only one trigger switch per machine... might want to add a 2nd at some point for a special puzzle
+
 
 Ideas:
 - 4 cases:

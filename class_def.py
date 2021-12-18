@@ -463,29 +463,6 @@ class InvisMach(Invisible):
 				self.machine_state = temp_machine_state
 				return cmd_override
 
-class InvisSwitchMach(InvisMach):
-#		def __init__(self, name, trigger_type, machine_state, trig_vals_lst, cond_lst, result_lst, trig_switch_lst, cond_switch_lst):
-		def __init__(self, name, trigger_type, machine_state, trig_vals_lst, cond_lst, result_lst, cond_switch_lst):
-				super().__init__(name, trigger_type, machine_state, trig_vals_lst, cond_lst, result_lst)
-				self._trig_switch = trig_switch
-				self._cond_switch_lst = cond_switch_lst
-
-#		@property
-#		def trig_switch_lst(self):
-#				return self._trig_switch_lst
-
-		@property
-		def cond_switch_lst(self):
-				return self._cond_switch_lst
-
-#		def trig_check(self, active_gs, case, word_lst):
-#				trig_state_lst = []
-#				for trig in self.trig_switch_lst:
-#						trig_state_lst.append(trig.switch_state)
-#				return trig_state_lst == self.trig_vals_lst
-
-
-
 class Writing(Invisible):
 		def __init__(self, name, full_name, root_name, descript_key):
 				super().__init__(name)
