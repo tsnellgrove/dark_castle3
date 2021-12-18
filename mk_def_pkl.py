@@ -49,6 +49,8 @@ fresh_water = Beverage('fresh_water', 'Fresh Water', 'water', 'fresh_water', Non
 
 royal_crown = Clothes('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 'wear_royal_crown', 'remove_royal_crown', 'hat')
 baseball_cap = Clothes('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, None, None, 'hat')
+hedgehog_broach = Clothes('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedgehog_broach', None,
+				'wear_hedgehog_broach', 'remove_hedgehog_broach', 'pin')
 
 wooden_chest = Container('wooden_chest', 'wooden chest', "chest", 'wooden_chest', None,
 				False, False, brass_key, [bubbly_potion]) # test object
@@ -79,7 +81,7 @@ moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', 'moat_get_c
 cant_turn_back_result = BufferOnlyResult('cant_turn_back_result', 'cant_turn_back_result', True)
 throne_push_result = BufferOnlyResult('throne_push_result', 'throne_push_result', False)
 nothing_happens_result = BufferOnlyResult('nothing_happens_result', 'nothing_happens_result', False)
-throne_pull_result = AddObjToRoomResult('throne_pull_result', 'throne_pull_result', random_mcguffin, False)
+throne_pull_result = AddObjToRoomResult('throne_pull_result', 'throne_pull_result', hedgehog_broach, False)
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_act_cmd', False, None, [['go', 'east'], ['go', 'west']],
 				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
