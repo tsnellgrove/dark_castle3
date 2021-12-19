@@ -121,7 +121,8 @@ active_gs = GameState(
 				'throne_room' : False,
 				'silver_key' : False,
 				'kinging_scroll' : False,
-				'royal_crown' : False
+				'royal_crown' : False,
+				'hedgehog_broach' : False
 		},
 		{'universal' : [backpack, burt, fist, conscience]},
 		{

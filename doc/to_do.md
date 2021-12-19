@@ -102,12 +102,12 @@ DONE: Lots of testing!!!
 	DONE: sorted out Entrance Room Events
 	DONE: Clean up prints & comments
 	DONE: clean up InvisSwitchMach 
-IN-PROC: create broach obj of class Clothes and clothing type 'pin'
+DONE: create broach obj of class Clothes and clothing type 'pin'
 	DONE: create borach object (class = Clothes)
 	DONE: add broach description and wear and remove description
 	DONE: Allow broach to be worn but hint in wear_descript and remove_descript that it's only of sentimental value
 	DONE: troubleshoot broach being examined (currently throwing error) [try royal_crown instead to localize issue]
-	TBD: update score dicts to grant 5 pts on broach in hand
+	DONE: update score dicts to grant 5 pts on broach in hand
 
 
 ##########################

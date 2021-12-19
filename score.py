@@ -14,14 +14,16 @@ score_val_dict = {
 		'throne_room' : 10,
 		'silver_key' : 5,
 		'kinging_scroll' : 5,
-		'royal_crown' : 10
+		'royal_crown' : 10,
+		'hedgehog_broach' : 5
 }
 
 item_score_lst = [
 		'rusty_key',
 		'shiny_sword',
 		'silver_key',
-		'kinging_scroll'
+		'kinging_scroll',
+		'hedgehog_broach'
 ]
 
 worn_score_lst = [
