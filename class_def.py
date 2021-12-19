@@ -592,6 +592,8 @@ class Room(ViewOnly):
 
 		def examine(self, active_gs):
 				super(Room, self).examine(active_gs)
+				for obj in self.room_obj_lst:
+						print(obj)
 				room_str = obj_lst_to_str(self.room_obj_lst)
 				active_gs.buffer("The room contains: " + room_str)
 				for obj in self.room_obj_lst:
