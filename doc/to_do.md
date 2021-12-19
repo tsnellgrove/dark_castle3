@@ -1,5 +1,5 @@
 To Do List - Dark Castle v3
-Nov 30, 2021
+Dec 19, 2021
 
 
 *** How to Add Objects ***
@@ -9,105 +9,6 @@ Nov 30, 2021
 4) Add object to master_obj_lst in mk_def_pkl() [exception: invisible obj like conditions & results that player will never ref]
 5) Run mk_def_pkl()
 6) Add object description in static_gbl
-
-
-##########################
-### VERSION 3.54 START ###
-##########################
-Version 3.54 Goals
-- Create class, methods, and obj for throne room throne machine
-
-DONE: update classes and types of pre and post actions
-	DONE: pre_action_com.py module => pre_action.py
-	DONE: pre_action_trig => pre_action_cmd_trig
-	DONE: comment clean-up
-	DONE: cmd_cond_lst => cond_lst
-	DONE: comment clean-up
-DONE: create class ButtonSwitch  (child of ViewOnly)
-	DONE: attributes = switch_state (values = 'pushed', 'pulled', 'neutral') and machine_type (values = 'pre_action_auto_reset')
-	DONE: create method push
-		DONE: add 'push' to interp() verb list
-		DONE: create method def
-		DONE: updates switch_state to 'pushed'
-		DONE: buffer "Pushed."
-DONE: create class SpringSliderSwitch (child of ButtonSwitch)
-	DONE: create SpringSliderSwitch method pull (updates switch_state to 'pulled')
-	DONE: update throne obj => SliderSwitch class with dark_castle2 description
-	DONE: test throne slider
-DONE: update pre_action() to check for machine_type 'pre_action_auto_reset' and reset value
-	DONE: test throne slider
-	DONE: comment out prints
-	DONE: Clean up comments
-DONE: create class InvisSwitchMach
-	DONE: InvisSwitchMach is child of InvisMach
-	DONE: standard attributes
-	DONE: additional attributes = trig_switch, cond_switch_lst
-	DONE: getter properties
-DONE: create methods
-	CHANGED: update trigger_check() method to check for trig_switch.switch_state != 'neutral'
-	CHANGED: update trigger() method to pass cond_switch_lst
-	UPDATE: will try to re-use existing InvisMach trig_check() and trigger() as much as possible
-	UPDATE: don't think I'll actually need attribute trig_switch_lst
-	UPDATE: probably do still need cond_switch_lst and to pass this to conditions in trigger()?
-DONE: re-map machines => unify cmd_machine and switch_machine models (if reasonable)
-	IDEA: machine types = pre_action_cmd, pre_action_auto, pre_action_swtich, post_action_cmd, post_action_switch, post_action_auto
-	IDEA: trigger inputs == case, trig_lst [means that a machine can be triggered by a command or a switch but not BOTH]
-	IDEA: cond inputs == game state, condition switch, play commands
-	DONE: create updated diagram
-DONE: update & define machine variable names and attributes
-	DONE: pre_action() local variables:
-		DONE: mach_obj_lst == list of in scope machine objects
-		DONE: cmd_override == boolean returned from pre_action() function that determines whether or not player command is over-ridden
-		DONE: local_override == boolean that ensure if *any* in-scope machine overrides the player command then player command is over-ridden
-	DONE: InvisMach attributes:
-		DONE: name == name of the machine
-		DONE: machine_type => trigger_type == defines machine trigger type and timing. Options include:
-			VALS: pre_act_cmd, pre_act_switch, pre_act_auto, pre_act_switch_reset
-			VALS: post_act_cmd, post_act_switch, post_act_auto 
-		DONE: machine_state == internal state of machine; can be boolean or integer
-		DONE: cmd_triggers_lst => trig_vals_lst == list of trigger values that will start the machine; can be player commands or switch values
-		DONE: cond_lst == list of condition obj to test for; should cover all trigger cases
-		DONE: result_lst == list of possible result obj ordered by assciated condition
-		DONE: trig_switch_lst == list of switches associated with the machine that can be used to trigger it
-		DONE: cond_swicth_lst == list of switches associated with the machine with states that contribute to conditions
-	DONE: trig_check()
-		DONE: player_cmd_key => trig_key_lst == trigger state to be compared with trig_vals_lst
-DONE: create condition classes & obj:
-	DONE: case = broach_already_dispensed => machine_state == True
-		DONE: create StateCond class
-		DONE: create obj broach_dispensed_cond
-	DONE: throne_push_pre_dispensed => switch_state = pushed => cond_switch_lst[0] == 'pushed'
-		DONE: create SwitchStateCond
-		DONE: create throne_push_cond obj
-	DONE: throne_pull_pre_dispense: switch_state = pulled => cond_switch_lst[0] == 'pulled'
-		DONE: use SwitchStateCond
-		DONE: create throne_pull_cond obj
-DONE: create results classes & obj
-	DONE: throne_push and nothing_happens => BufferOnly
-	DONE: throne_pull_result => new class => AddObjToRoomResult
-DONE: broach_dispenser_mach
-	DONE: create broach_dispenser obj of class InvisMach
-	DONE: trig_switch = throne
-	DONE: cond_switch_lst = [throne]
-	DONE: machine_type = post_action_switch_trig
-	DONE: machine_state = False (# broach_dispensed)
-	DONE: cmd_triggers_lst = ['pushed', 'pulled']
-	DONE: cond_lst: broach_already_dispensed, throne_push_pre_dispense, throne_pull_pre_dispense
-	DONE: result_lst: throne_push, nothing_happens, dispense_broach
-DONE: create post_action() module and function [very similar to pre_action()]
-	DONE: for case = 'switch', pass list of trigger values => ['pushed', 'pulled']
-DONE: Lots of testing!!!
-	DONE: troubleshoot post_action 
-	DONE: troubleshoot class_deff => throne works now but Room Events in Entrance don't??
-	DONE: sorted out Entrance Room Events
-	DONE: Clean up prints & comments
-	DONE: clean up InvisSwitchMach 
-DONE: create broach obj of class Clothes and clothing type 'pin'
-	DONE: create borach object (class = Clothes)
-	DONE: add broach description and wear and remove description
-	DONE: Allow broach to be worn but hint in wear_descript and remove_descript that it's only of sentimental value
-	DONE: troubleshoot broach being examined (currently throwing error) [try royal_crown instead to localize issue]
-	DONE: update score dicts to grant 5 pts on broach in hand
 
 
 ##########################
