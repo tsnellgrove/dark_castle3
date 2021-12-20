@@ -24,26 +24,22 @@ DONE: move GameState class definition to a separate module
 	DONE: initial testing
 	DONE: delete GameState class def from class_def
 	DONE: more testing
-IN-PROC: move Conditions class definitions to a separate module (cond_class_def.py)
+DONE: move Conditions class definitions to a separate module (cond_class_def.py)
 	DONE: move Condition class def to cond_class_deff
 	DONE: make PassThruCond the base Condition
 		NOTE: Now, all other Condition classes inherit from PassThruCond except InHandAndStateCond which is a child of StateCond 
 	DONE: initial testing
 	DONE: delete comments
-	TBD: delete Condition classes from class_def
-	TBD: more testing
+	DONE: delete Condition classes from class_def
+	DONE: more testing
 TBD: move Results class definitions to a separate module
 TBD: decision regarding class def location of Machine
 TBD: code clean-up and consistency
-	TBD: make InHandAndStateCond a child of StateCond
+	DONE: make InHandAndStateCond a child of StateCond
 	TBD: dual inheritance for ViewOnly or Item machines (???)
 	TBD: do we really need to pass machine_state to result_exe() method??
 	TBD: dedup obj_lst_to_str() across class modules
 
-IDEA: Should GameState be in a separate module? 
-	IDEA: gs_def.py ? class_def.py would import gs_def (?) - then mk_def_pkl.py would import from both?
-IDEA: do conditions and results really need to be of a class related to / inheritance chain of verbs??
-	TBD: separate class definintions for results and conditions?
 
 ##########################
 ### VERSION 3.58 START ###
