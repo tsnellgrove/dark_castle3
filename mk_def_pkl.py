@@ -6,7 +6,6 @@
 
 # import statements
 import pickle
-# from class_def import Invisible, NotInHandCond, InHandAndStateCond, PassThruCond, StateCond, SwitchStateCond
 from class_def import Invisible
 from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond
 from class_def import BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, InvisMach
