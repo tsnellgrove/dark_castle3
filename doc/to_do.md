@@ -24,7 +24,13 @@ DONE: move GameState class definition to a separate module
 	DONE: initial testing
 	DONE: delete GameState class def from class_def
 	DONE: more testing
-TBD: move Conditions class definitions to a separate module (cond_class_def.py)
+IN-PROC: move Conditions class definitions to a separate module (cond_class_def.py)
+	DONE: move Condition class def to cond_class_deff
+	DONE: make PassThruCond the base Condition
+		NOTE: Now, all other Condition classes inherit from PassThruCond except InHandAndStateCond which is a child of StateCond 
+	DONE: initial testing
+	TBD: delete Condition classes from class_def
+	TBD: more testing
 TBD: move Results class definitions to a separate module
 TBD: decision regarding class def location of Machine
 TBD: code clean-up and consistency
