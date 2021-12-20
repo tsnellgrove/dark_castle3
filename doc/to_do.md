@@ -108,6 +108,10 @@ TBD: documentation:
 
 *** interactive object ideas ***
 
+- Burt as an object??
+- How to enable switches and machines to self register for universal scope
+	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
+
 ***** NEEDED UPDATES TO PLAN *****
 - need to link switch to machine
 - need to embed the switch in the machine?
