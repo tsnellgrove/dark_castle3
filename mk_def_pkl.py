@@ -10,7 +10,7 @@ from class_def import Invisible, NotInHandCond, InHandAndStateCond, PassThruCond
 from class_def import BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, InvisMach
 from class_def import ButtonSwitch, SpringSliderSwitch
 from class_def import Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
-from class_def import GameState
+from gs_class_def import GameState
 
 # object instantiation - starting state
 rusty_lettering = Writing('rusty_lettering', 'Rusty Lettering', "lettering", 'rusty_lettering')
