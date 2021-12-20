@@ -14,26 +14,29 @@ Dec 19, 2021
 ##########################
 ### VERSION 3.56 START ###
 ##########################
+
 Version 3.56 Goals
-- Create class, methods, and obj antechamber control_panel machine
-
-
-##########################
-### VERSION 3.58 START ###
-##########################
-
-Version 3.58 Goals
 - Clean up machine coding
 
+TBD: move GameState class definition to a separate module
+TBD: move Conditions class definitions to a separate module
+TBD: move Results class definitions to a separate module
+TBD: decision regarding class def location of Machine
+TBD: code clean-up and consistency
+	TBD: make InHandAndStateCond a child of StateCond
+	TBD: dual inheritance for ViewOnly or Item machines (???)
+	TBD: do we really need to pass machine_state to result_exe() method??
 
 IDEA: Should GameState be in a separate module? 
 	IDEA: gs_def.py ? class_def.py would import gs_def (?) - then mk_def_pkl.py would import from both?
 IDEA: do conditions and results really need to be of a class related to / inheritance chain of verbs??
 	TBD: separate class definintions for results and conditions?
-TBD: code clean-up and consistency
-	TBD: make InHandAndStateCond a child of StateCond
-	TBD: dual inheritance for ViewOnly or Item machines (???)
-	TBD: do we really need to pass machine_state to result_exe() method??
+
+##########################
+### VERSION 3.58 START ###
+##########################
+Version 3.58 Goals
+- Create class, methods, and obj antechamber control_panel machine
 
 
 ##########################
