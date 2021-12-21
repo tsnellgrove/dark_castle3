@@ -32,7 +32,7 @@ DONE: move Conditions class definitions to a separate module (cond_class_def.py)
 	DONE: delete comments
 	DONE: delete Condition classes from class_def
 	DONE: more testing
-IN-PROC: move Results class definitions to a separate module
+DONE: move Results class definitions to a separate module
 	DONE: create results_class_def.py
 	DONE: copy Results class definitions to results_class_def
 	DONE: create initial PassThruResult class
@@ -42,15 +42,27 @@ IN-PROC: move Results class definitions to a separate module
 	DONE: run mk_def_pkl
 	DONE: initial testing
 	DONE: delete comments
+	DONE: delete Result classes from class_def
+	DONE: final testing
+TBD: move InvisMach class def & methods to a separate module
+	TBD: create mach_class_def.py
+	TBD: copy Results class definitions to mach_class_def
+	TBD: create initial InvisMach class
+	TBD: update mk_def_pkl to import from mach_class_def
+	TBD: run mk_def_pkl
+	TBD: initial testing
+	TBD: delete comments
 	TBD: delete Result classes from class_def
 	TBD: final testing
-TBD: decision regarding class def location of Machine
+TBD: rename class_def.py => noun_class_def.py
+	TBD: eliminate Invisible class
 TBD: code clean-up and consistency
 	DONE: make InHandAndStateCond a child of StateCond
 	DONE: do we really need to pass machine_state to result_exe() method?? 
 		=> Yes; need to update sometimes so need to pass in for no change
 	TBD: dual inheritance for ViewOnly or Item machines (???)
 	TBD: dedup obj_lst_to_str() across class modules
+	TBD: extend child methods in cond_class_def and results_class_def?
 
 
 ##########################

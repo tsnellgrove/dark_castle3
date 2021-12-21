@@ -10,8 +10,8 @@ from class_def import Invisible
 from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond
 from results_class_def import PassThruResult, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult
 from class_def import InvisMach
-from class_def import ButtonSwitch, SpringSliderSwitch
 from class_def import Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
+from class_def import ButtonSwitch, SpringSliderSwitch
 from gs_class_def import GameState
 
 # object instantiation - starting state
