@@ -56,14 +56,17 @@ TBD: move InvisMach class def & methods to a separate module
 	TBD: final testing
 TBD: rename class_def.py => noun_class_def.py
 	TBD: eliminate Invisible class
+TBD: create a module just for switches? switch_class_def ?
 TBD: code clean-up and consistency
 	DONE: make InHandAndStateCond a child of StateCond
 	DONE: do we really need to pass machine_state to result_exe() method?? 
 		=> Yes; need to update sometimes so need to pass in for no change
+		=> Alternatively, could just pass new state or None for no change... but really simpler to just pass machine_state in
 	TBD: dual inheritance for ViewOnly or Item machines (???)
 	TBD: dedup obj_lst_to_str() across class modules
 	TBD: extend child methods in cond_class_def and results_class_def?
-
+	TBD: can ViewOnlyMach be in mach_class_def ??
+	
 
 ##########################
 ### VERSION 3.58 START ###
