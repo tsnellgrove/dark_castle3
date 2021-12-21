@@ -33,6 +33,17 @@ DONE: move Conditions class definitions to a separate module (cond_class_def.py)
 	DONE: delete Condition classes from class_def
 	DONE: more testing
 TBD: move Results class definitions to a separate module
+	TBD: create results_class_def.py
+	TBD: copy Results class definitions to results_class_def
+	TBD: create initial PassThruResult class
+	TBD: update BufferOnlyResult classes to inherit from PassThruResult
+	TBD: update remaing Result classes to inherit from BufferOnlyResult
+	TBD: update mk_def_pkl to import from results_class_def
+	TBD: run mk_def_pkl
+	TBD: initial testing
+	TBD: delete comments
+	TBD: delete Result classes from class_def
+	TBD: final testing
 TBD: decision regarding class def location of Machine
 TBD: code clean-up and consistency
 	DONE: make InHandAndStateCond a child of StateCond
