@@ -41,7 +41,7 @@ IN-PROC: move Results class definitions to a separate module
 	DONE: update mk_def_pkl to import from results_class_def
 	DONE: run mk_def_pkl
 	DONE: initial testing
-	TBD: delete comments
+	DONE: delete comments
 	TBD: delete Result classes from class_def
 	TBD: final testing
 TBD: decision regarding class def location of Machine

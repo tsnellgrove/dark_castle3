@@ -6,22 +6,10 @@
 ### import
 from static_gbl import descript_dict, static_dict
 
-### classes
-# class Invisible(object):
-#		def __init__(self, name):
-#				self._name = name
-
-#		@property
-#		def name(self):
-#				return self._name
-
-#		def __repr__(self):
-#				return f'Object { self.name } is of class { type(self).__name__ } '
 
 class PassThruResult(object):
 		def __init__(self, name, cmd_override):
 				self._name = name
-#				self._result_descript = result_descript # description of result
 				self._cmd_override = cmd_override # does the triggered pre-action over-ride the 'standard' response to player command?
 
 		@property
@@ -42,15 +30,10 @@ class BufferOnlyResult(PassThruResult):
 		def __init__(self, name, result_descript, cmd_override):
 				super().__init__(name, cmd_override)
 				self._result_descript = result_descript # description of result
-#				self._cmd_override = cmd_override # does the triggered pre-action over-ride the 'standard' response to player command?
 
 		@property
 		def result_descript(self):
 				return self._result_descript
-
-#		@property
-#		def cmd_override(self):
-#				return self._cmd_override
 
 		def results_exe(self, active_gs, machine_state):
 				active_gs.buffer(descript_dict[self.result_descript])
