@@ -44,13 +44,13 @@ DONE: move Results class definitions to a separate module
 	DONE: delete comments
 	DONE: delete Result classes from class_def
 	DONE: final testing
-TBD: move InvisMach class def & methods to a separate module
-	TBD: create mach_class_def.py
-	TBD: copy Results class definitions to mach_class_def
-	TBD: create initial InvisMach class
-	TBD: update mk_def_pkl to import from mach_class_def
-	TBD: run mk_def_pkl
-	TBD: initial testing
+IN-PROC: move InvisMach class def & methods to a separate module
+	DONE: create mach_class_def.py
+	DONE: copy Results class definitions to mach_class_def
+	DONE: create initial InvisMach class
+	DONE: update mk_def_pkl to import from mach_class_def
+	DONE: run mk_def_pkl
+	DONE: initial testing
 	TBD: delete comments
 	TBD: delete Result classes from class_def
 	TBD: final testing
