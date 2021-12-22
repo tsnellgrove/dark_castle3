@@ -54,18 +54,20 @@ DONE: move InvisMach class def & methods to a separate module
 	DONE: delete comments
 	DONE: delete Result classes from class_def
 	DONE: final testing
+TBD: can we use the MixIn approach for machines? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
 TBD: updated class_def.py
 	TBD: rename class_def.py => noun_class_def.py
 	TBD: eliminate Invisible class
+TBD: can we use the MixIn approach for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
 TBD: create a module just for switch class def
-	DONE: create switch_class_def
-	DONE: copy Switch class definitions to switch_class_def (ViewOnly remains parent)
-	DONE: update mk_def_pkl to import from switch_class_def
-	DONE: run mk_def_pkl
-	DONE: initial testing
-	DONE: delete comments
-	DONE: delete Switch classes from noun_class_def
-	DONE: final testing
+	TBD: create switch_class_def
+	TBD: copy Switch class definitions to switch_class_def (ViewOnly remains parent)
+	TBD: update mk_def_pkl to import from switch_class_def
+	TBD: run mk_def_pkl
+	TBD: initial testing
+	TBD: delete comments
+	TBD: delete Switch classes from noun_class_def
+	TBD: final testing
 TBD: code clean-up and consistency
 	DONE: make InHandAndStateCond a child of StateCond
 	DONE: do we really need to pass machine_state to result_exe() method?? 
