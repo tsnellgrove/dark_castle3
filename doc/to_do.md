@@ -44,7 +44,7 @@ DONE: move Results class definitions to a separate module
 	DONE: delete comments
 	DONE: delete Result classes from class_def
 	DONE: final testing
-IN-PROC: move InvisMach class def & methods to a separate module
+DONE: move InvisMach class def & methods to a separate module
 	DONE: create mach_class_def.py
 	DONE: copy Results class definitions to mach_class_def
 	DONE: create initial InvisMach class
@@ -52,20 +52,30 @@ IN-PROC: move InvisMach class def & methods to a separate module
 	DONE: run mk_def_pkl
 	DONE: initial testing
 	DONE: delete comments
-	TBD: delete Result classes from class_def
-	TBD: final testing
-TBD: rename class_def.py => noun_class_def.py
+	DONE: delete Result classes from class_def
+	DONE: final testing
+TBD: updated class_def.py
+	TBD: rename class_def.py => noun_class_def.py
 	TBD: eliminate Invisible class
-TBD: create a module just for switches? switch_class_def ?
+TBD: create a module just for switch class def
+	DONE: create switch_class_def
+	DONE: copy Switch class definitions to switch_class_def (ViewOnly remains parent)
+	DONE: update mk_def_pkl to import from switch_class_def
+	DONE: run mk_def_pkl
+	DONE: initial testing
+	DONE: delete comments
+	DONE: delete Switch classes from noun_class_def
+	DONE: final testing
 TBD: code clean-up and consistency
 	DONE: make InHandAndStateCond a child of StateCond
 	DONE: do we really need to pass machine_state to result_exe() method?? 
 		=> Yes; need to update sometimes so need to pass in for no change
 		=> Alternatively, could just pass new state or None for no change... but really simpler to just pass machine_state in
 	TBD: dual inheritance for ViewOnly or Item machines (???)
+	TBD: can ViewOnlyMach be in mach_class_def ??
 	TBD: dedup obj_lst_to_str() across class modules
 	TBD: extend child methods in cond_class_def and results_class_def?
-	TBD: can ViewOnlyMach be in mach_class_def ??
+	TBD: decision on which is better... more independent classes (my current position) or more inheritance (i.e. Invisible case)
 	
 
 ##########################
