@@ -9,7 +9,6 @@ import pickle
 from class_def import Invisible
 from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond
 from results_class_def import PassThruResult, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult
-# from class_def import InvisMach
 from mach_class_def import InvisMach
 from class_def import Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
 from class_def import ButtonSwitch, SpringSliderSwitch

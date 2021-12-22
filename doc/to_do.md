@@ -51,7 +51,7 @@ IN-PROC: move InvisMach class def & methods to a separate module
 	DONE: update mk_def_pkl to import from mach_class_def
 	DONE: run mk_def_pkl
 	DONE: initial testing
-	TBD: delete comments
+	DONE: delete comments
 	TBD: delete Result classes from class_def
 	TBD: final testing
 TBD: rename class_def.py => noun_class_def.py

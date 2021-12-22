@@ -6,20 +6,8 @@
 ### import
 
 ### classes
-# class Invisible(object):
-#		def __init__(self, name):
-#				self._name = name
-
-#		@property
-#		def name(self):
-#				return self._name
-
-#		def __repr__(self):
-#				return f'Object { self.name } is of class { type(self).__name__ } '
-
 class InvisMach(object):
 		def __init__(self, name, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
-#				super().__init__(name)
 				self._name = name
 				self._trigger_type = trigger_type # pre_act_cmd, pre_act_switch, pre_act_auto, post_act_cmd, post_act_switch, or post_act_auto
 				self._machine_state = machine_state # machine state variable; boolean for simple machines; Int for complex
