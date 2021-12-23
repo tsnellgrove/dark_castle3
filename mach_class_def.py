@@ -6,9 +6,11 @@
 ### import
 
 ### classes
-class InvisMach(object):
-		def __init__(self, name, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
-				self._name = name
+# class InvisMach(object):
+class MachineMixIn(object):
+#		def __init__(self, name, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
+		def __init__(self, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
+#				self._name = name
 				self._trigger_type = trigger_type # pre_act_cmd, pre_act_switch, pre_act_auto, post_act_cmd, post_act_switch, or post_act_auto
 				self._machine_state = machine_state # machine state variable; boolean for simple machines; Int for complex
 				self._trig_switch = trig_switch # the switch whose state change can trigger the machine (only one switch per machine)
@@ -17,9 +19,9 @@ class InvisMach(object):
 				self._cond_lst = cond_lst # list of condition obj to test for; should cover all trigger cases
 				self._result_lst = result_lst # list of possible result obj ordered by assciated condition
 
-		@property
-		def name(self):
-				return self._name
+#		@property
+#		def name(self):
+#				return self._name
 
 		@property
 		def trigger_type(self):
@@ -53,8 +55,8 @@ class InvisMach(object):
 		def result_lst(self):
 				return self._result_lst
 
-		def __repr__(self):
-				return f'Object { self.name } is of class { type(self).__name__ } '
+#		def __repr__(self):
+#				return f'Object { self.name } is of class { type(self).__name__ } '
 
 		# formats trigger state into trig_key_lst based on case and returns true if trig_key_lst is in trig_vals_lst
 		def trig_check(self, active_gs, case, word_lst):
@@ -82,3 +84,7 @@ class InvisMach(object):
 				self.machine_state = temp_machine_state
 				return cmd_override
 
+class InvisMach(ViewOnly, MachineMixIn):
+		def __init__(self, name, full_name, root_name, descript_key, writing,
+						trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
+				super().__init__(name, full_name, root_name, descript_key, writing)
