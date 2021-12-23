@@ -57,6 +57,7 @@ DONE: move InvisMach class def & methods to a separate module
 IDEA: can we use the MixIn approach for machines? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
 IN-PROC: update mach_class_def to use MixIn conept
 	DONE: Redo InvisMach => MachineMixin with no name
+	TBD: learn about Super()
 	IN-PROC: Create InvisMach as child of Invisible and MachineMixIn
 	TBD: test!
 TBD: updated class_def.py
