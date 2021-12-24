@@ -58,6 +58,7 @@ IDEA: can we use the MixIn approach for machines? ( https://python-textbok.readt
 IN-PROC: update mach_class_def to use MixIn conept
 	DONE: Redo InvisMach => MachineMixin with no name
 	TBD: learn about Super()
+		IN-PROC: reading this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
 	IN-PROC: Create InvisMach as child of Invisible and MachineMixIn
 	TBD: test!
 TBD: updated class_def.py
