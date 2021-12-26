@@ -54,11 +54,11 @@ DONE: move InvisMach class def & methods to a separate module
 	DONE: delete comments
 	DONE: delete Result classes from class_def
 	DONE: final testing
-DONE: update mach_class_def to use MixIn conept
+DONE: update mach_class_def to use MixIn concept
 	DONE: Redo InvisMach => MachineMixin with no name
 	DONE: Create InvisMach as child of Invisible and MachineMixIn
-	IN-PROC: test!
-	TBD: clean up comments
+	DONE: test!
+	DONE: clean up comments
 TBD: updated class_def.py
 	TBD: rename class_def.py => noun_class_def.py
 TBD: can we use the MixIn approach for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
