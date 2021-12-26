@@ -86,7 +86,8 @@ class MachineMixIn(object):
 				return cmd_override
 
 class InvisMach(Invisible, MachineMixIn):
-		def __init__(self, name, full_name, root_name, descript_key, writing, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
-				super().__init__(name, full_name, root_name, descript_key, writing)
-				super().__init__(trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
-				
+		def __init__(self, name, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
+				Invisible.__init__(self, name)
+				MachineMixIn.__init__(self, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
+
+
