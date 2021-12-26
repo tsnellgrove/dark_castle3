@@ -4,6 +4,7 @@
 # description: class deffinition module for Machines
 
 ### import
+from class_def import Invisible
 
 ### classes
 # class InvisMach(object):
@@ -84,7 +85,8 @@ class MachineMixIn(object):
 				self.machine_state = temp_machine_state
 				return cmd_override
 
-class InvisMach(ViewOnly, MachineMixIn):
-		def __init__(self, name, full_name, root_name, descript_key, writing,
-						trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
+class InvisMach(Invisible, MachineMixIn):
+		def __init__(self, name, full_name, root_name, descript_key, writing, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
+				super().__init__(trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
+				

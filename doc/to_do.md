@@ -54,13 +54,11 @@ DONE: move InvisMach class def & methods to a separate module
 	DONE: delete comments
 	DONE: delete Result classes from class_def
 	DONE: final testing
-IDEA: can we use the MixIn approach for machines? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
-IN-PROC: update mach_class_def to use MixIn conept
+DONE: update mach_class_def to use MixIn conept
 	DONE: Redo InvisMach => MachineMixin with no name
-	TBD: learn about Super()
-		IN-PROC: reading this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
-	IN-PROC: Create InvisMach as child of Invisible and MachineMixIn
-	TBD: test!
+	DONE: Create InvisMach as child of Invisible and MachineMixIn
+	IN-PROC: test!
+	TBD: clean up comments
 TBD: updated class_def.py
 	TBD: rename class_def.py => noun_class_def.py
 TBD: can we use the MixIn approach for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
@@ -83,7 +81,9 @@ TBD: code clean-up and consistency
 	TBD: dedup obj_lst_to_str() across class modules
 	TBD: extend child methods in cond_class_def and results_class_def?
 	TBD: decision on which is better... more independent classes (my current position) or more inheritance (i.e. Invisible case)
-	
+	TBD: learn about Super()
+	TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
+
 
 ##########################
 ### VERSION 3.58 START ###
