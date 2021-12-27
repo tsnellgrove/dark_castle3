@@ -59,8 +59,10 @@ DONE: update mach_class_def to use MixIn concept
 	DONE: Create InvisMach as child of Invisible and MachineMixIn
 	DONE: test!
 	DONE: clean up comments
-TBD: updated class_def.py
-	TBD: rename class_def.py => noun_class_def.py
+DONE: updated class_def.py
+	DONE: rename class_def.py => noun_class_def.py
+	DONE: update imports
+	DONE: test
 TBD: create a module just for switch class def
 	TBD: create switch_class_def with import of ViewOnly
 	TBD: copy Switch class definitions to switch_class_def (ViewOnly remains parent)
@@ -75,13 +77,11 @@ TBD: code clean-up and consistency
 	DONE: do we really need to pass machine_state to result_exe() method?? 
 		=> Yes; need to update sometimes so need to pass in for no change
 		=> Alternatively, could just pass new state or None for no change... but really simpler to just pass machine_state in
-	TBD: dual inheritance for ViewOnly or Item machines (???)
-	TBD: can ViewOnlyMach be in mach_class_def ??
+	DONE: mix-in inheritance for ViewOnly or Item Machines
+	DONE: can ViewOnlyMach be in mach_class_def ?? => YES
+	DONE: decision on which is better... shallower or deeper class inheritance? => SHALLOW
 	TBD: dedup obj_lst_to_str() across class modules
 	TBD: extend child methods in cond_class_def and results_class_def?
-	TBD: decision on which is better... more independent classes (my current position) or more inheritance (i.e. Invisible case)
-	TBD: learn about Super()
-	TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
 
 
 ##########################
@@ -152,6 +152,8 @@ TBD: documentation:
 
 
 *** interactive object ideas ***
+
+DECISION: prefer shallow inheritance tree over deep
 
 - Burt as an object??
 - How to enable switches and machines to self register for universal scope
@@ -359,7 +361,8 @@ TBD: Try tupples for descript_dict
 - create a hint sub-system
 TBD: for doors and containers, use None option for no lock or no lid?
 - extend BufferOnlyResult result_exe method in BufferAndEndResult and BufferAndGiveResult
-
+TBD: learn about Super()
+TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
 
 
 *** NEW PUZZLE IDEAS ***
