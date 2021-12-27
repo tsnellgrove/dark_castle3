@@ -4,7 +4,7 @@
 # description: class deffinition module for Machines
 
 ### import
-from class_def import Invisible
+from noun_class_def import Invisible
 
 ### classes
 class MachineMixIn(object):
