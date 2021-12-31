@@ -63,15 +63,6 @@ DONE: updated class_def.py
 	DONE: rename class_def.py => noun_class_def.py
 	DONE: update imports
 	DONE: test
-TBD: create a module just for switch class def
-	TBD: create switch_class_def with import of ViewOnly
-	TBD: copy Switch class definitions to switch_class_def (ViewOnly remains parent)
-	TBD: update mk_def_pkl to import from switch_class_def
-	TBD: run mk_def_pkl
-	TBD: initial testing
-	TBD: delete comments
-	TBD: delete Switch classes from noun_class_def
-	TBD: final testing
 TBD: code clean-up and consistency
 	DONE: make InHandAndStateCond a child of StateCond
 	DONE: do we really need to pass machine_state to result_exe() method?? 
@@ -92,6 +83,17 @@ Version 3.58 Goals
 
 IDEA: keep all the smarts in machine; lever only knows if it's up or down
 TBD: can we use the MixIn approach for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
+
+TBD: create a module just for switch class def
+	TBD: create switch_class_def with import of ViewOnly
+	TBD: copy Switch class definitions to switch_class_def (ViewOnly remains parent)
+	TBD: update mk_def_pkl to import from switch_class_def
+	TBD: run mk_def_pkl
+	TBD: initial testing
+	TBD: delete comments
+	TBD: delete Switch classes from noun_class_def
+	TBD: final testing
+
 
 ##########################
 ### VERSION 3.59 START ###
