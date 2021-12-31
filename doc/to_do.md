@@ -1,5 +1,5 @@
 To Do List - Dark Castle v3
-Dec 19, 2021
+Dec 31, 2021
 
 
 *** How to Add Objects ***
@@ -9,77 +9,6 @@ Dec 19, 2021
 4) Add object to master_obj_lst in mk_def_pkl() [exception: invisible obj like conditions & results that player will never ref]
 5) Run mk_def_pkl()
 6) Add object description in static_gbl
-
-
-##########################
-### VERSION 3.56 START ###
-##########################
-
-Version 3.56 Goals
-- Clean up machine coding
-
-DONE: move GameState class definition to a separate module
-	DONE: move GameState class def to gs_class_def
-	DONE: change mk_def_pkl import to gs_class_def
-	DONE: initial testing
-	DONE: delete GameState class def from class_def
-	DONE: more testing
-DONE: move Conditions class definitions to a separate module (cond_class_def.py)
-	DONE: move Condition class def to cond_class_deff
-	DONE: make PassThruCond the base Condition
-		NOTE: Now, all other Condition classes inherit from PassThruCond except InHandAndStateCond which is a child of StateCond 
-	DONE: initial testing
-	DONE: delete comments
-	DONE: delete Condition classes from class_def
-	DONE: more testing
-DONE: move Results class definitions to a separate module
-	DONE: create results_class_def.py
-	DONE: copy Results class definitions to results_class_def
-	DONE: create initial PassThruResult class
-	DONE: update BufferOnlyResult classes to inherit from PassThruResult
-	DONE: update remaing Result classes to inherit from BufferOnlyResult (was already the case)
-	DONE: update mk_def_pkl to import from results_class_def
-	DONE: run mk_def_pkl
-	DONE: initial testing
-	DONE: delete comments
-	DONE: delete Result classes from class_def
-	DONE: final testing
-DONE: move InvisMach class def & methods to a separate module
-	DONE: create mach_class_def.py
-	DONE: copy Results class definitions to mach_class_def
-	DONE: create initial InvisMach class
-	DONE: update mk_def_pkl to import from mach_class_def
-	DONE: run mk_def_pkl
-	DONE: initial testing
-	DONE: delete comments
-	DONE: delete Result classes from class_def
-	DONE: final testing
-DONE: update mach_class_def to use MixIn concept
-	DONE: Redo InvisMach => MachineMixin with no name
-	DONE: Create InvisMach as child of Invisible and MachineMixIn
-	DONE: test!
-	DONE: clean up comments
-DONE: updated class_def.py
-	DONE: rename class_def.py => noun_class_def.py
-	DONE: update imports
-	DONE: test
-TBD: code clean-up and consistency
-	DONE: make InHandAndStateCond a child of StateCond
-	DONE: do we really need to pass machine_state to result_exe() method?? 
-		=> Yes; need to update sometimes so need to pass in for no change
-		=> Alternatively, could just pass new state or None for no change... but really simpler to just pass machine_state in
-	DONE: mix-in inheritance for ViewOnly or Item Machines
-	DONE: can ViewOnlyMach be in mach_class_def ?? => YES
-	DONE: decision on which is better... shallower or deeper class inheritance? => SHALLOW
-	DONE: dedup obj_lst_to_str() across class modules
-		DONE: reviewed all class modules => only noun_class_def and gs_class_def use obj_lst_to_str()
-		DONE: created shared_class_func.py
-		DONE: copied obj_lst_to_str() to shared_class_func.py
-		DONE: import shared func and comment out local func
-		DONE: run mk_def_pkl
-		DONE: test
-		DONE: clean up comments
-		DONE: re-test
 
 
 ##########################
@@ -111,7 +40,7 @@ Version 3.59 Goals
 - Create / update program documentation
 
 TBD: documentation:
-	TBD: write up thinking and decisions on machines
+	TBD: write up thinking and decisions on machines and switches
 	TBD: update class diagram
 	TBD: update module diagram
 	TBD: Create machine diagram
@@ -162,6 +91,8 @@ TBD: documentation:
 
 
 *** interactive object ideas ***
+
+IDEA: keep all the smarts in machine; lever only knows if it's up or down
 
 DECISION: prefer shallow inheritance tree over deep
 
