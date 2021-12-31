@@ -3,10 +3,12 @@
 # date: Dec 20, 2021
 # description: class deffinition module for Conditions
 
+
 ### import
 from static_gbl import descript_dict, static_dict
 
 
+### classes
 class PassThruResult(object):
 		def __init__(self, name, cmd_override):
 				self._name = name

@@ -72,7 +72,7 @@ TBD: code clean-up and consistency
 	DONE: can ViewOnlyMach be in mach_class_def ?? => YES
 	DONE: decision on which is better... shallower or deeper class inheritance? => SHALLOW
 	TBD: dedup obj_lst_to_str() across class modules
-	TBD: extend child methods in cond_class_def and results_class_def?
+	TBD: extend child methods in cond_class_def and results_class_def ?
 
 
 ##########################
