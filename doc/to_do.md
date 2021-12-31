@@ -71,7 +71,14 @@ TBD: code clean-up and consistency
 	DONE: mix-in inheritance for ViewOnly or Item Machines
 	DONE: can ViewOnlyMach be in mach_class_def ?? => YES
 	DONE: decision on which is better... shallower or deeper class inheritance? => SHALLOW
-	TBD: dedup obj_lst_to_str() across class modules
+	IN-PROC: dedup obj_lst_to_str() across class modules
+		DONE: reviewed all class modules => only noun_class_def and gs_class_def use obj_lst_to_str()
+		DONE: created shared_class_func.py
+		DONE: copied obj_lst_to_str() to shared_class_func.py
+		DONE: import shared func and comment out local func
+		DONE: run mk_def_pkl
+		DONE: test
+		TBD: clean up comments
 	TBD: extend child methods in cond_class_def and results_class_def ?
 
 
