@@ -6,13 +6,13 @@
 
 # import statements
 import pickle
-# from noun_class_def import Invisible
+from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
+from noun_class_def import ButtonSwitch, SpringSliderSwitch
 from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond
 from results_class_def import PassThruResult, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult
-from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
 from mach_class_def import InvisMach
-from noun_class_def import ButtonSwitch, SpringSliderSwitch
 from gs_class_def import GameState
+
 
 # object instantiation - starting state
 rusty_lettering = Writing('rusty_lettering', 'Rusty Lettering', "lettering", 'rusty_lettering')
