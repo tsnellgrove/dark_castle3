@@ -118,6 +118,11 @@ descript_dict = {
 		'front_gate' : "The Front Gate is just north of the Dark Castle's drawbridge. It is 10 feet tall and reenforced with steel bands. Imposing indeed! There is Rusty Lettering across the top of the gate and a rusty keyhole next to a handle.",
 		'iron_portcullis' : "Beyond the iron portcullis you can dimly make out the next room.",
 
+		### switch objects ###
+		'left_lever' : "The Left Lever is old and rusty.",
+		'middle_lever' : "The Middle Lever is old and rusty.",
+		'right_lever' : "The Right Lever is old and rusty.",
+
 		### machine objects ###
 		'control_panel' : "The Control Panel contains three levers: a Left Lever, a Middle Lever, and a Right Lever. The control panel also contains a Big-Red-Button. There are no directions posted as to what the controls are for or how to use them (a clear ISO lapse if ever you've seen one Burt).",
 

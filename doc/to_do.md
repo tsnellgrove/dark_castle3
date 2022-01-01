@@ -17,9 +17,20 @@ Dec 31, 2021
 Version 3.58 Goals
 - Create class, methods, and obj antechamber control_panel machine
 
-IDEA: keep all the smarts in machine; lever only knows if it's up or down
-TBD: can we use the MixIn approach for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
+DONE: create Lever class and objects
+	IDEA: keep all the smarts in machine; lever only knows if it's up or down
+	DONE: create LeverSwitch class
+	DONE: create left_lever, middle_lever, right_lever and add to antechamber room_obj_lst
+	DONE: test
+TBD: create red_button of class ButtonSwitch
+TBD: create Condition classes & objects
+TBD: create Results classes & objects
+TBD: create ViewOnlyMach class
+TBD: create control_panel obj
+	TBD: perhaps move levers and button to features once control_panel exists?
+	IDEA: perhaps part of control_panel purpose is to isolate description of switch elements from main room inventory?
 
+TBD: can we harmonize or use MixIn for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
 TBD: create a module just for switch class def
 	TBD: create switch_class_def with import of ViewOnly
 	TBD: copy Switch class definitions to switch_class_def (ViewOnly remains parent)
@@ -29,7 +40,6 @@ TBD: create a module just for switch class def
 	TBD: delete comments
 	TBD: delete Switch classes from noun_class_def
 	TBD: final testing
-
 TBD: extend child methods in results_class_def ?
 
 ##########################
@@ -91,6 +101,8 @@ TBD: documentation:
 
 
 *** interactive object ideas ***
+
+IDEA: perhaps part of control_panel purpose is to isolate description of switch elements from main room inventory?
 
 IDEA: keep all the smarts in machine; lever only knows if it's up or down
 
