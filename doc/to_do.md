@@ -22,7 +22,10 @@ DONE: create Lever class and objects
 	DONE: create LeverSwitch class
 	DONE: create left_lever, middle_lever, right_lever and add to antechamber room_obj_lst
 	DONE: test
-TBD: create red_button of class ButtonSwitch
+DONE: create red_button of class ButtonSwitch
+	DONE: create obj
+	DONE: add obj to room and pickle
+	DONE: test
 TBD: create Condition classes & objects
 TBD: create Results classes & objects
 TBD: create ViewOnlyMach class
