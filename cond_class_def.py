@@ -85,5 +85,20 @@ class SwitchStateCond(PassThruCond):
 						switch_state_lst.append(switch.switch_state)
 				return switch_state_lst == self.switch_state_val_lst
 
+class LeverArrayCond(SwitchStateCond):
+		def __init__(self, name, switch_state_val_lst):
+				super().__init__(name, switch_state_val_lst)
 
+		def cond_check(self, active_gs, machine_state, cond_swicth_lst):
+				target_val = machine_state
+				 = 0
+				for lever in cond_swicth_lst:
+						if lever.switch_state == 'up':
+								temp_val = 1
+						else:
+								temp_val = 0
+						index_num = cond_swicth_lst.index(lever)
+						temp_val = temp_val * switch_state_val_lst(index_num)
+						current_val += temp_val
+				return current_val == target_val
 

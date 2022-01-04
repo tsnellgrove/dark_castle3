@@ -26,13 +26,13 @@ DONE: create red_button of class ButtonSwitch
 	DONE: create obj
 	DONE: add obj to room and pickle
 	DONE: test
-TBD: create Condition classes & objects
-	TBD: create LeverArrayCond class based on SwtichStateCond
-		TBD: attributes are same as parent but cond_check method is over-ridden
+IN-PROC: create Condition classes & objects
+	IN-PROC: create LeverArrayCond class based on SwtichStateCond
+		DONE: attributes are same as parent but cond_check method is over-ridden
+		DONE: cond_check converts switch state to current_val and returns current_val == target_val
+		TBD: create correct_lever_array_cond obj based on LeverArrayCond class
 		TBD: switch_state_val_lst == [4,2,1]
 		TBD: machine_state == target_val
-		TBD: cond_check converts switch state to current_val and returns current_val == target_val
-		TBD: create correct_lever_array_cond obj based on LeverArrayCond class
 	TBD: create wrong_lever_array_cond obj based on PassThruCond
 TBD: create Results classes & objects
 TBD: create ViewOnlyMach class
