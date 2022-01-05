@@ -89,3 +89,21 @@ class AddObjToRoomResult(BufferOnlyResult):
 				room_obj.room_obj_lst_append(self.room_item)
 				machine_state = True
 				return machine_state, self.cmd_override
+
+class DoorToggleResult(BufferOnlyResult):
+		def __init__(self, name, result_descript, door_obj, cmd_override):
+				super().__init__(name, result_descript, cmd_override)
+				self._door_obj = door_obj # door to be openned or closed
+
+		@property
+		def door_obj(self):
+				return self._door_obj
+
+		def results_exe(self, active_gs, machine_state):
+				active_gs.buffer(descript_dict[self.result_descript])
+				if self.door_obj.open_state == True:
+						self.door_obj.open_state = False
+				else:
+						self.door_obj.open_state = True
+				return machine_state, self.cmd_override
+

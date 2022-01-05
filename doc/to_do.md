@@ -34,7 +34,12 @@ DONE: create Condition classes & objects
 		DONE: switch_state_val_lst == [4,2,1]
 		DONE: machine_state == target_val
 	DONE: create wrong_lever_array_cond obj based on PassThruCond
-TBD: create Results classes & objects
+IN-PROC: create Results classes & objects
+	DONE: create DoorToggleResult class
+	DONE: run mk_def_pkl
+	TBD: create toggle_portcullis_result obj based on ToggleDoorResult class
+	TBD: create portcullis_doesnt_open_result obj based on BufferOnlyResult class
+	DONE: run mk_def_pkl
 TBD: create ViewOnlyMach class
 TBD: create control_panel obj
 	TBD: perhaps move levers and button to features once control_panel exists?
