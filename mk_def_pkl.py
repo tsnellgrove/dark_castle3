@@ -8,7 +8,7 @@
 import pickle
 from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
 from noun_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
-from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond
+from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond
 from results_class_def import PassThruResult, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult
 from mach_class_def import InvisMach
 from gs_class_def import GameState
@@ -80,6 +80,8 @@ pass_thru_cond = PassThruCond('pass_thru_cond')
 broach_dispensed_cond = StateCond('broach_dispensed_cond', True)
 throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
+correct_lever_array_cond = LeverArrayCond('correct_lever_array_cond', [4,2,1])
+wrong_lever_array_cond = PassThruCond('pass_thru_cond')
 
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'die_in_moat_result', 'death', True)
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', 'moat_croc_scared_result', True)

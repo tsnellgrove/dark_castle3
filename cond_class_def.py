@@ -91,7 +91,7 @@ class LeverArrayCond(SwitchStateCond):
 
 		def cond_check(self, active_gs, machine_state, cond_swicth_lst):
 				target_val = machine_state
-				 = 0
+				current_val = 0
 				for lever in cond_swicth_lst:
 						if lever.switch_state == 'up':
 								temp_val = 1
