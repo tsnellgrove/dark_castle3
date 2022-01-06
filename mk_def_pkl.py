@@ -9,7 +9,7 @@ import pickle
 from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
 from noun_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond
-from results_class_def import PassThruResult, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult
+from results_class_def import PassThruResult, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult
 from mach_class_def import InvisMach
 from gs_class_def import GameState
 
@@ -90,6 +90,8 @@ cant_turn_back_result = BufferOnlyResult('cant_turn_back_result', 'cant_turn_bac
 throne_push_result = BufferOnlyResult('throne_push_result', 'throne_push_result', False)
 nothing_happens_result = BufferOnlyResult('nothing_happens_result', 'nothing_happens_result', False)
 throne_pull_result = AddObjToRoomResult('throne_pull_result', 'throne_pull_result', hedgehog_broach, False)
+toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', 'toggle_portcullis_result', iron_portcullis, False)
+portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', 'portcullis_doesnt_open_result', False)
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_act_cmd', False, None, [['go', 'east'], ['go', 'west']],
 				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
