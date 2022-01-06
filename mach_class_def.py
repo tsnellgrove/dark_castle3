@@ -4,7 +4,7 @@
 # description: class deffinition module for Machines
 
 ### import
-from noun_class_def import Invisible
+from noun_class_def import Invisible, ViewOnly
 
 ### classes
 class MachineMixIn(object):
@@ -80,4 +80,8 @@ class InvisMach(Invisible, MachineMixIn):
 				Invisible.__init__(self, name)
 				MachineMixIn.__init__(self, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
+class ViewOnlyMach(ViewOnly, MachineMixIn):
+		def __init__(self, name, full_name, root_name, descript_key, writing, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
+				Invisible.__init__(self, name, full_name, root_name, descript_key, writing)
+				MachineMixIn.__init__(self, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
