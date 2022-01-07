@@ -10,7 +10,7 @@ from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, C
 from noun_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond
 from results_class_def import PassThruResult, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult
-from mach_class_def import InvisMach
+from mach_class_def import InvisMach, ViewOnlyMach
 from gs_class_def import GameState
 
 
@@ -66,7 +66,9 @@ front_gate = Door('front_gate', 'Front Gate', "gate", 'front_gate', rusty_letter
 ## screen_door = Door('screen_door', "You should never be able to examine the screen_door", None, False, False, chrome_key)
 iron_portcullis = Door('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, True, False, None)
 
-control_panel = ViewOnly('control_panel', 'Control Panel', 'panel', 'control_panel', None)
+# control_panel = ViewOnly('control_panel', 'Control Panel', 'panel', 'control_panel', None)
+
+
 throne = SpringSliderSwitch('throne', 'Throne', 'throne', 'throne', None, 'neutral', 'pre_act_switch_reset')
 left_lever = LeverSwitch('left_lever', 'Left Lever', 'lever', 'left_lever', None, 'down', None)
 middle_lever = LeverSwitch('middle_lever', 'Middle Lever', 'lever', 'middle_lever', None, 'down', None)
@@ -104,12 +106,17 @@ broach_dispenser_mach = InvisMach('broach_dispenser_mach', 'post_act_switch', Fa
 				[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
 				[nothing_happens_result, throne_push_result, throne_pull_result])
 
+control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control_panel', None,
+				'post_act_switch', 0, red_button, ['pushed'], [left_lever, middle_lever, right_lever],
+				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result])
+
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
 				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_mach])
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
 				[shiny_sword, front_gate], {'south' : front_gate}, [])
-antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None, [alcove, control_panel],
-				[torn_note, grimy_axe, iron_portcullis, left_lever, middle_lever, right_lever, red_button], {'north' : iron_portcullis}, [])
+antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
+				[alcove, left_lever, middle_lever, right_lever, red_button], [torn_note, grimy_axe, iron_portcullis, control_panel],
+				{'north' : iron_portcullis}, [])
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
 				[throne, silver_key, crystal_box, iron_portcullis], {'south' : iron_portcullis}, [broach_dispenser_mach])
 

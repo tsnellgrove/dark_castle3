@@ -82,6 +82,6 @@ class InvisMach(Invisible, MachineMixIn):
 
 class ViewOnlyMach(ViewOnly, MachineMixIn):
 		def __init__(self, name, full_name, root_name, descript_key, writing, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
-				Invisible.__init__(self, name, full_name, root_name, descript_key, writing)
+				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
 				MachineMixIn.__init__(self, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 

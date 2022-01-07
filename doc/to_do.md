@@ -41,11 +41,13 @@ DONE: create Results classes & objects
 	DONE: create portcullis_doesnt_open_result obj based on BufferOnlyResult class
 	DONE: run mk_def_pkl
 DONE: create ViewOnlyMach class
-TBD: create portcullis_mach based on ViewOnlyMach class
-	TBD: machine_state == target_val
-TBD: create control_panel obj
-	TBD: perhaps move levers and button to features once control_panel exists?
-	IDEA: perhaps part of control_panel purpose is to isolate description of switch elements from main room inventory?
+IN-PROC: create machine obj
+	DONE: create control_panel obj
+	DONE: update machine_state = target_val in start_me_up
+	DONE: perhaps move levers and button to features once control_panel exists?
+		IDEA: perhaps part of control_panel purpose is to isolate description of switch elements from main room inventory?
+	IN-PROCES: test
+	TBD: clean up comments
 
 TBD: can we harmonize or use MixIn for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
 TBD: create a module just for switch class def
