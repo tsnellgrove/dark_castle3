@@ -48,13 +48,13 @@ DONE: create machine obj
 		IDEA: perhaps part of control_panel purpose is to isolate description of switch elements from main room inventory?
 	DONE: test
 	DONE: clean up comments
-TBD: create a module just for switch class def
-	TBD: create switch_class_def with import of ViewOnly
-	TBD: copy Switch class definitions to switch_class_def (ViewOnly remains parent)
-	TBD: update mk_def_pkl to import from switch_class_def
-	TBD: run mk_def_pkl
-	TBD: initial testing
-	TBD: delete comments
+IN-PROC: create a module just for switch class def
+	DONE: create switch_class_def with import of ViewOnly
+	DONE: copy Switch class definitions to switch_class_def (ViewOnly remains parent)
+	DONE: update mk_def_pkl to import from switch_class_def
+	DONE: run mk_def_pkl
+	DONE: initial testing
+	N/A: delete comments
 	TBD: delete Switch classes from noun_class_def
 	TBD: final testing
 TBD: can we harmonize or use MixIn for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
