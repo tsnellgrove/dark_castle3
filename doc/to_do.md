@@ -55,8 +55,8 @@ IN-PROC: create a module just for switch class def
 	DONE: run mk_def_pkl
 	DONE: initial testing
 	N/A: delete comments
-	TBD: delete Switch classes from noun_class_def
-	TBD: final testing
+	DONE: delete Switch classes from noun_class_def
+	DONE: final testing
 TBD: can we harmonize or use MixIn for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
 
 
