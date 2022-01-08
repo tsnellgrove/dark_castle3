@@ -48,9 +48,6 @@ DONE: create machine obj
 		IDEA: perhaps part of control_panel purpose is to isolate description of switch elements from main room inventory?
 	DONE: test
 	DONE: clean up comments
-
-TBD: extend child methods in results_class_def ?
-TBD: can we harmonize or use MixIn for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
 TBD: create a module just for switch class def
 	TBD: create switch_class_def with import of ViewOnly
 	TBD: copy Switch class definitions to switch_class_def (ViewOnly remains parent)
@@ -60,6 +57,7 @@ TBD: create a module just for switch class def
 	TBD: delete comments
 	TBD: delete Switch classes from noun_class_def
 	TBD: final testing
+TBD: can we harmonize or use MixIn for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
 
 
 ##########################
@@ -336,6 +334,7 @@ TBD: for doors and containers, use None option for no lock or no lid?
 - extend BufferOnlyResult result_exe method in BufferAndEndResult and BufferAndGiveResult
 TBD: learn about Super()
 TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
+TBD: extend child methods in results_class_def ?
 
 
 *** NEW PUZZLE IDEAS ***
