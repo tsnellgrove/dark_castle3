@@ -98,7 +98,7 @@ class LeverArrayCond(SwitchStateCond):
 						else:
 								temp_val = 0
 						index_num = cond_swicth_lst.index(lever)
-						temp_val = temp_val * switch_state_val_lst(index_num)
+						temp_val = temp_val * self.switch_state_val_lst[index_num]
 						current_val += temp_val
 				return current_val == target_val
 

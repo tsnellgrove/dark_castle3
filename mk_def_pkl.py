@@ -64,10 +64,7 @@ glass_bottle = Jug('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', Non
 
 front_gate = Door('front_gate', 'Front Gate', "gate", 'front_gate', rusty_lettering, False, False, rusty_key)
 ## screen_door = Door('screen_door', "You should never be able to examine the screen_door", None, False, False, chrome_key)
-iron_portcullis = Door('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, True, False, None)
-
-# control_panel = ViewOnly('control_panel', 'Control Panel', 'panel', 'control_panel', None)
-
+iron_portcullis = Door('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, False, False, None)
 
 throne = SpringSliderSwitch('throne', 'Throne', 'throne', 'throne', None, 'neutral', 'pre_act_switch_reset')
 left_lever = LeverSwitch('left_lever', 'Left Lever', 'lever', 'left_lever', None, 'down', None)

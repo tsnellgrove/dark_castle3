@@ -142,7 +142,7 @@ descript_dict = {
 		
 		'nothing_happens_result' : "Nothing happens.",
 
-		'toggle_portcullis_result' : "You hear a loud clank, a whirring of gears, and the iron_portcullis suddenly opens.",
+		'toggle_portcullis_result' : "You hear a loud clank, a whirring of gears, and the Iron Portcullis suddenly ",
 		
 		'portcullis_doesnt_open_result' : "You press the button and hear a whirring of gears but nothing happens.",
 

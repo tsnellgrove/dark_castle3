@@ -100,10 +100,12 @@ class DoorToggleResult(BufferOnlyResult):
 				return self._door_obj
 
 		def results_exe(self, active_gs, machine_state):
-				active_gs.buffer(descript_dict[self.result_descript])
 				if self.door_obj.open_state == True:
 						self.door_obj.open_state = False
+						descript_ending = "closes."
 				else:
 						self.door_obj.open_state = True
+						descript_ending = "opens."
+				active_gs.buffer(descript_dict[self.result_descript] + descript_ending)
 				return machine_state, self.cmd_override
 
