@@ -33,28 +33,6 @@ class ButtonSwitch(ViewOnly, SwitchMixIn):
 				self.switch_state = 'pushed'
 				active_gs.buffer("Pushed.")
 
-# class ButtonSwitch(ViewOnly):
-#		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, trigger_type):
-#				super().__init__(name, full_name, root_name, descript_key, writing)
-#				self._switch_state = switch_state # values = 'pushed' or 'neutral'
-#				self._trigger_type = trigger_type # typically 'pre_action_auto_reset'
-
-#		@property
-#		def switch_state(self):
-#				return self._switch_state
-
-#		@switch_state.setter
-#		def switch_state(self, new_state):
-#				self._switch_state = new_state
-
-#		@property
-#		def trigger_type(self):
-#				return self._trigger_type
-
-#		def push(self, active_gs):
-#				self.switch_state = 'pushed'
-#				active_gs.buffer("Pushed.")
-
 class SpringSliderSwitch(ButtonSwitch):
 		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, trigger_type):
 				super().__init__(name, full_name, root_name, descript_key, writing, switch_state, trigger_type)
@@ -63,23 +41,10 @@ class SpringSliderSwitch(ButtonSwitch):
 				self.switch_state = 'pulled'
 				active_gs.buffer("Pulled.")
 
-class LeverSwitch(ViewOnly):
+class LeverSwitch(ViewOnly, SwitchMixIn):
 		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, trigger_type):
-				super().__init__(name, full_name, root_name, descript_key, writing)
-				self._switch_state = switch_state # values = 'pushed' or 'neutral'
-				self._trigger_type = trigger_type # machine state variable; for switches typically 'pre_action_auto_reset'
-
-		@property
-		def switch_state(self):
-				return self._switch_state
-
-		@switch_state.setter
-		def switch_state(self, new_state):
-				self._switch_state = new_state
-
-		@property
-		def trigger_type(self):
-				return self._trigger_type
+				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
+				SwitchMixIn.__init__(self, switch_state, trigger_type)
 
 		def pull(self, active_gs):
 				if self.switch_state == 'down':

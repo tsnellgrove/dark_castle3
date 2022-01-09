@@ -57,14 +57,20 @@ DONE: create a module just for switch class def
 	N/A: delete comments
 	DONE: delete Switch classes from noun_class_def
 	DONE: final testing
-IN-PROC: can we harmonize or use MixIn for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
+DONE: can we harmonize or use MixIn for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
 	DONE: create SwitchMixIn class
 	DONE: ButtonSwitch class
 		DONE: create new ButtonSwitch based on ViewOnly & SwitchMixIn
 		DONE: comment out old ButtonSwitch
 		DONE: run mk_def_pkl
 		DONE: Test
-	TBD: LeverSwitch
+	DONE: LeverSwitch
+		DONE: create new ButtonSwitch based on ViewOnly & SwitchMixIn
+		DONE: comment out old ButtonSwitch
+		DONE: run mk_def_pkl
+		DONE: Test
+	DONE: delete comments
+
 
 ##########################
 ### VERSION 3.59 START ###
