@@ -1,5 +1,5 @@
 Done List - Dark Castle v3
-Dec 31, 2021
+Jan 9, 2022
 
 
 ##########################
@@ -1599,3 +1599,62 @@ TBD: code clean-up and consistency
 		DONE: re-test
 
 
+##########################
+### VERSION 3.58 START ###
+##########################
+Version 3.58 Goals
+- Create class, methods, and obj antechamber control_panel machine
+
+DONE: create Lever class and objects
+	IDEA: keep all the smarts in machine; lever only knows if it's up or down
+	DONE: create LeverSwitch class
+	DONE: create left_lever, middle_lever, right_lever and add to antechamber room_obj_lst
+	DONE: test
+DONE: create red_button of class ButtonSwitch
+	DONE: create obj
+	DONE: add obj to room and pickle
+	DONE: test
+DONE: create Condition classes & objects
+	DONE: create LeverArrayCond class based on SwtichStateCond
+		DONE: attributes are same as parent but cond_check method is over-ridden
+		DONE: cond_check converts switch state to current_val and returns current_val == target_val
+		DONE: create correct_lever_array_cond obj based on LeverArrayCond class
+		DONE: switch_state_val_lst == [4,2,1]
+		DONE: machine_state == target_val
+	DONE: create wrong_lever_array_cond obj based on PassThruCond
+DONE: create Results classes & objects
+	DONE: create DoorToggleResult class
+	DONE: run mk_def_pkl
+	DONE: create toggle_portcullis_result obj based on ToggleDoorResult class
+	DONE: create portcullis_doesnt_open_result obj based on BufferOnlyResult class
+	DONE: run mk_def_pkl
+DONE: create ViewOnlyMach class
+DONE: create machine obj
+	DONE: create control_panel obj
+	DONE: update machine_state = target_val in start_me_up
+	DONE: perhaps move levers and button to features once control_panel exists?
+		IDEA: perhaps part of control_panel purpose is to isolate description of switch elements from main room inventory?
+	DONE: test
+	DONE: clean up comments
+DONE: create a module just for switch class def
+	DONE: create switch_class_def with import of ViewOnly
+	DONE: copy Switch class definitions to switch_class_def (ViewOnly remains parent)
+	DONE: update mk_def_pkl to import from switch_class_def
+	DONE: run mk_def_pkl
+	DONE: initial testing
+	N/A: delete comments
+	DONE: delete Switch classes from noun_class_def
+	DONE: final testing
+DONE: can we harmonize or use MixIn for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
+	DONE: create SwitchMixIn class
+	DONE: ButtonSwitch class
+		DONE: create new ButtonSwitch based on ViewOnly & SwitchMixIn
+		DONE: comment out old ButtonSwitch
+		DONE: run mk_def_pkl
+		DONE: Test
+	DONE: LeverSwitch
+		DONE: create new ButtonSwitch based on ViewOnly & SwitchMixIn
+		DONE: comment out old ButtonSwitch
+		DONE: run mk_def_pkl
+		DONE: Test
+	DONE: delete comments
