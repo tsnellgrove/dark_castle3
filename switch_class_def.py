@@ -7,11 +7,10 @@
 from noun_class_def import ViewOnly
 
 ### class definitions
-class ButtonSwitch(ViewOnly):
-		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, trigger_type):
-				super().__init__(name, full_name, root_name, descript_key, writing)
+class SwitchMixIn(object):
+		def __init__(self, switch_state, trigger_type):
 				self._switch_state = switch_state # values = 'pushed' or 'neutral'
-				self._trigger_type = trigger_type # machine state variable; for switches typically 'pre_action_auto_reset'
+				self._trigger_type = trigger_type # typically 'pre_action_auto_reset' or None
 
 		@property
 		def switch_state(self):
@@ -25,9 +24,36 @@ class ButtonSwitch(ViewOnly):
 		def trigger_type(self):
 				return self._trigger_type
 
+class ButtonSwitch(ViewOnly, SwitchMixIn):
+		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, trigger_type):
+				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
+				SwitchMixIn.__init__(self, switch_state, trigger_type)
+
 		def push(self, active_gs):
 				self.switch_state = 'pushed'
 				active_gs.buffer("Pushed.")
+
+# class ButtonSwitch(ViewOnly):
+#		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, trigger_type):
+#				super().__init__(name, full_name, root_name, descript_key, writing)
+#				self._switch_state = switch_state # values = 'pushed' or 'neutral'
+#				self._trigger_type = trigger_type # typically 'pre_action_auto_reset'
+
+#		@property
+#		def switch_state(self):
+#				return self._switch_state
+
+#		@switch_state.setter
+#		def switch_state(self, new_state):
+#				self._switch_state = new_state
+
+#		@property
+#		def trigger_type(self):
+#				return self._trigger_type
+
+#		def push(self, active_gs):
+#				self.switch_state = 'pushed'
+#				active_gs.buffer("Pushed.")
 
 class SpringSliderSwitch(ButtonSwitch):
 		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, trigger_type):

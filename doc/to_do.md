@@ -48,7 +48,7 @@ DONE: create machine obj
 		IDEA: perhaps part of control_panel purpose is to isolate description of switch elements from main room inventory?
 	DONE: test
 	DONE: clean up comments
-IN-PROC: create a module just for switch class def
+DONE: create a module just for switch class def
 	DONE: create switch_class_def with import of ViewOnly
 	DONE: copy Switch class definitions to switch_class_def (ViewOnly remains parent)
 	DONE: update mk_def_pkl to import from switch_class_def
@@ -57,8 +57,14 @@ IN-PROC: create a module just for switch class def
 	N/A: delete comments
 	DONE: delete Switch classes from noun_class_def
 	DONE: final testing
-TBD: can we harmonize or use MixIn for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
-
+IN-PROC: can we harmonize or use MixIn for switches? ( https://python-textbok.readthedocs.io/en/1.0/Object_Oriented_Programming.html )
+	DONE: create SwitchMixIn class
+	DONE: ButtonSwitch class
+		DONE: create new ButtonSwitch based on ViewOnly & SwitchMixIn
+		DONE: comment out old ButtonSwitch
+		DONE: run mk_def_pkl
+		DONE: Test
+	TBD: LeverSwitch
 
 ##########################
 ### VERSION 3.59 START ###
