@@ -18,6 +18,28 @@ Jan 9, 2022
 Version 3.59 Goals
 - Create / update program documentation
 
+*** Machine Decisions ***
+The journey to establishing a structure for machines was a long and winding one that's hopefully arrived at a reasonable solution. Here were the major milestones:
+
+1) In both v1 and v2 I realized the need to interject pre and post actions into the game based on player behavior. A pre-action is one that occurred before the player's intended result (e.g. the Hedgehog blocking Burt from getting the shiny Sword). A post-action is one that occurs after Burt's action (e.g. after Burt pushes the Red Button the Control Panel machine should whirr and possibly open the Iron Portcullis). In the early versions of the game the player's commands were sent to an enormoush If-Then-Else construct that checked to see if the conditions were right to invoke a pre or post action. This always disturbed me for several reasons:
+	A) It was extremely opaque to anyone reading the code. You could easily read through the coding for the Entrance and have no idea that going East or West off the Drawbridge was deadly.
+	B) It took you out of the game... it was like a whole second set of game logic independent from the main program.
+	C) The If-Then-Else routine was neither scalable nor reusable
+For all these reasons I wanted a better solution in v3.
+
+2) My first idea...
+
+
+- simplest approach is long if-then-else list
+	- pros: very flexible
+	- cons: opaque, non-scalable
+- next idea might be trigger obj associated with rooms or obj that have eval-uable conditions an results
+	- pros: less opaque - you know something will happen
+	- cons: more coding, essentially a distributed if-then-else
+- alt approach: specific machines with specific conditions and actions
+	- pros: much less opaque and predictable, create interactive world, standard re-usable object types, provides some creative constraints
+	- cons: more coding, less flexible
+
 TBD: documentation:
 	TBD: write up thinking and decisions on machines and switches
 	TBD: update class diagram
