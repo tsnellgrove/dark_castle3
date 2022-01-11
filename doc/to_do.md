@@ -19,15 +19,21 @@ Version 3.59 Goals
 - Create / update program documentation
 
 *** Machine Decisions ***
+
+* The purpose of machines... custom and complex vs. simple and standard...
+
+
 The journey to establishing a structure for machines was a long and winding one that's hopefully arrived at a reasonable solution. Here were the major milestones:
 
-1) In both v1 and v2 I realized the need to interject pre and post actions into the game based on player behavior. A pre-action is one that occurred before the player's intended result (e.g. the Hedgehog blocking Burt from getting the shiny Sword). A post-action is one that occurs after Burt's action (e.g. after Burt pushes the Red Button the Control Panel machine should whirr and possibly open the Iron Portcullis). In the early versions of the game the player's commands were sent to an enormoush If-Then-Else construct that checked to see if the conditions were right to invoke a pre or post action. This always disturbed me for several reasons:
+1) In both v1 and v2 I realized the need to interject pre and post actions into the game based on player behavior. A pre-action is one that occurred before the player's intended result (e.g. the Hedgehog blocking Burt from getting the shiny Sword). A post-action is one that occurs after Burt's action (e.g. after Burt pushes the Red Button the Control Panel machine should whirr and possibly open the Iron Portcullis). In the early versions of the game the player's commands were sent to an enormous If-Then-Else construct that checked to see if the conditions were right to invoke a pre or post action. This always disturbed me for several reasons:
 	A) It was extremely opaque to anyone reading the code. You could easily read through the coding for the Entrance and have no idea that going East or West off the Drawbridge was deadly.
 	B) It took you out of the game... it was like a whole second set of game logic independent from the main program.
 	C) The If-Then-Else routine was neither scalable nor reusable
 For all these reasons I wanted a better solution in v3.
 
-2) My first idea...
+2) My first idea was to populate rooms with 'conditional-command-lists'. These would be objects with lists-of-lists attributes that acted as AND and OR grouping of conditions and results. This approach had the natural advantage of signalling that something was going on in the room... but it was basically a large, distributed If-Then-Else list so it still had problems B) and C) from above. After tinkering with some psedo code I abandoned this idea.
+
+* 3) Next I considered specific machines with specific conditions and actions. For example, a 'travel_effect' machine that would reside in each room and produce effects...
 
 
 - simplest approach is long if-then-else list
