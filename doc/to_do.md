@@ -20,8 +20,11 @@ Version 3.59 Goals
 
 *** Machine Decisions ***
 
-* The purpose of machines... custom and complex vs. simple and standard...
+The Purpose of Machines:
 
+One could argue that the world of Dark Castle is already filled with machines. After all, doors are machines. Containers are machines. On some level, even rooms and items are machines. Each responds in a standard, simple, and reactive fashion to player actions.
+
+But many of the puzzles in Dark Castle - or any other text adventure - hinge on exception cases to these norms. The Player tries to walk south from the entrnace but they're turned back with a clue. The Player wants to take the Shiny Sword but the Hedgehog intercedes. The Player tries to examine the control panel but the Goblin attacks before they can. The Iron Portcullis can only be opened by matching the Lever Array to the Messy Handwriting on the Note and then pushing the Red Button. These custom, copmlex, and pro-active Player interactions require a more intricate coding solution than a simple door - and the general name I give for many of these is "Machines". What follows is a history of my thinking about how to implement "Machines" in Dark Castle.
 
 The journey to establishing a structure for machines was a long and winding one that's hopefully arrived at a reasonable solution. Here were the major milestones:
 
