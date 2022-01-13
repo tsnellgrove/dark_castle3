@@ -26,7 +26,9 @@ One could argue that the world of Dark Castle is already filled with machines. A
 
 But many of the puzzles in Dark Castle - or any other text adventure - hinge on exception cases to these norms. The Player tries to walk south from the entrnace but they're turned back with a clue. The Player wants to take the Shiny Sword but the Hedgehog intercedes. The Player tries to examine the control panel but the Goblin attacks before they can. The Iron Portcullis can only be opened by matching the Lever Array to the Messy Handwriting on the Note and then pushing the Red Button. These custom, copmlex, and pro-active Player interactions require a more intricate coding solution than a simple door - and the general name I give for many of these is "Machines". What follows is a history of my thinking about how to implement "Machines" in Dark Castle.
 
-The journey to establishing a structure for machines was a long and winding one that's hopefully arrived at a reasonable solution. Here were the major milestones:
+The Journey to Modular Machines:
+
+The journey to establishing the current structure for machines was a long and winding one that's hopefully arrived at a reasonable solution. Here were the major milestones:
 
 1) In both v1 and v2 I realized the need to interject pre and post actions into the game based on player behavior. A pre-action is one that occurred before the player's intended result (e.g. the Hedgehog blocking Burt from getting the shiny Sword). A post-action is one that occurs after Burt's action (e.g. after Burt pushes the Red Button the Control Panel machine should whirr and possibly open the Iron Portcullis). In the early versions of the game the player's commands were sent to an enormous If-Then-Else construct that checked to see if the conditions were right to invoke a pre or post action. This always disturbed me for several reasons:
 	A) It was extremely opaque to anyone reading the code. You could easily read through the coding for the Entrance and have no idea that going East or West off the Drawbridge was deadly.
@@ -36,7 +38,29 @@ For all these reasons I wanted a better solution in v3.
 
 2) My first idea was to populate rooms with 'conditional-command-lists'. These would be objects with lists-of-lists attributes that acted as AND and OR grouping of conditions and results. This approach had the natural advantage of signalling that something was going on in the room... but it was basically a large, distributed If-Then-Else list so it still had problems B) and C) from above. After tinkering with some psedo code I abandoned this idea.
 
-* 3) Next I considered specific machines with specific conditions and actions. For example, a 'travel_effect' machine that would reside in each room and produce effects...
+3) Next I considered specific machines with specific conditions and actions. For example, a 'travel_effect' machine that would reside in each room and produce effects like the "You can't turn back now..." message when going South from the Entrance as well as the hazzards and benefits of going East or West off of the Entrance drawbridge. I prototype this solution and made several discoveries:
+- Machines an be invisible
+- Monolithic machines have way too many attributes to keep track of
+- The Entrance 'Go South' vs. 'Go East / West' use cases are very different ('Go East / West' is much more complex)... attempting to use the same Monolithic Machine for both leads to *many* attributes with Null value in the 'Go South' case.
+
+4) The failed 'travel_effect' implementation led me to the implemented solution of Modular Machines. The fundamental idea is that the Machine class definition is the same for all Machines but that the Conditions and Results are separate objects that are attributes of each Machine. This approach allows for much greater re-use. We'll take a look at how the Modular Machine and it's components in detail in the next section.
+
+The Modular Machine Components:
+
+Switches:
+
+Triggers:
+
+Conditions:
+
+Results:
+
+The Modular Machine itself:
+
+MixIn Implementation:
+
+Closing Thoughts:
+
 
 
 - simplest approach is long if-then-else list
