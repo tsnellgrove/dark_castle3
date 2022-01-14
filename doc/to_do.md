@@ -43,21 +43,37 @@ For all these reasons I wanted a better solution in v3.
 - Monolithic machines have way too many attributes to keep track of
 - The Entrance 'Go South' vs. 'Go East / West' use cases are very different ('Go East / West' is much more complex)... attempting to use the same Monolithic Machine for both leads to *many* attributes with Null value in the 'Go South' case.
 
-4) The failed 'travel_effect' implementation led me to the implemented solution of Modular Machines. The fundamental idea is that the Machine class definition is the same for all Machines but that the Conditions and Results are separate objects that are attributes of each Machine. This approach allows for much greater re-use. We'll take a look at how the Modular Machine and it's components in detail in the next section.
+4) The problematic 'travel_effect' implementation led me to the solution of Modular Machines. The fundamental idea is that the Machine class definition is the same for all Machines but that the Conditions and Results are separate objects that are attributes of each Machine. This approach allows for much greater re-use. We'll take a look at how the Modular Machine and it's components in detail in the next section.
+
 
 The Modular Machine Components:
 
 Switches:
+- One could bake intelligence into switches but I chose to make them simple and dumb. Their only unique attributes are swtich_state and trigger_type. 
+
+- switch_state: The possible values of swtich_state depend on the switch in question. For ButtonSwitch it's 'pushed' or 'neutral'. For SpringSliderSwitch, 'pulled' is added as a possible value. For LeverSwitch, 'up' or 'down' are possible. 
+
+- trigger_type: Some switches, like levers, are innately 'stateful' - their switch_state remains constant until they are acted on again. by contrast, stateless switches like buttons and spring-slider-switches must be reset to neutral each turn. Switch resets are the purpose of trigger_type. When trigger_type = 'pre_act_switch_reset' switch_state is reset to 'neutral' at the start of each turn.
+
 
 Triggers:
 
+
+
 Conditions:
+
 
 Results:
 
+
 The Modular Machine itself:
 
+
 MixIn Implementation:
+
+
+app_main module calls
+
 
 Closing Thoughts:
 
