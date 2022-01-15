@@ -46,7 +46,28 @@ For all these reasons I wanted a better solution in v3.
 4) The problematic 'travel_effect' implementation led me to the solution of Modular Machines. The fundamental idea is that the Machine class definition is the same for all Machines but that the Conditions and Results are separate objects that are attributes of each Machine. This approach allows for much greater re-use. We'll take a look at how the Modular Machine and it's components in detail in the next section.
 
 
+High Level Appliction Flow:
+- To understand Machines it helps to first understand the high-level module call flow of the Dark Castle app. web_main is a very simple web-tier function who's only job is to get user input and present the app's response text to that input. 
+
+- To get the response text, web_main calls app_main. app_main is the heart of the app. It recieves user_input from web_app and converts it into output (the app's response text). In the special case of the game's first turn, app_main calls start_me_up which prints a welcome and sets some one-time game variables. But for all subsequent calls to app_main the following flow occurs:
+
+	1) load the object variables from the game's save pickle and increment the move count
+	2) calls the interpreter function to convert the user's input into a game command. interpreter returns a 'case' and a 'word_lst'
+	3) before executing the game command, app_main now calls the pre_action function. pre_action scans the available machine scope (simplisticaly, the room Burt is in) for machines that have pre_act triggers. If any exist, checks to see if any pre_action Machines are triggered and, if so,  runs those Machines. The pre_action function returns the boolean variable cmd_override to app_main. cmd_override == True is for cases where the pre_action negates the player's command.
+	4) If cmd_override is False, app_main now calls cmd_exe to execute the player's command (e.g. "take key" => "Taken")
+	5) app_main now calls the post_action function which determines if the player's command (for example, pulling a lever) triggers a post_action Machine. If so, the Machine is run.
+	6) app_main calls score to check if any gamestate changes (e.g. Burt entering a new room or Burt holding an object in his hand for the first time) merrit a score increase. If so, score is increased and an update to the player is buffered.
+	7) if game_ending != 'tbd' then app_main calls the 'end' function to buffer the end of game text
+	8) app_main saves the updated objects to the save pickle and resturns 'output' and 'end_of_game' to web_main
+
+- The key take-away from the app_main flow is that, both before and afater the player's command execution call, the game "gets a turn". These ad-hoc pro-active or responsive game actions are what the Machine construct enables.
+
+
 The Modular Machine Components:
+
+Triggers:
+*- Triggers come in several di
+
 
 Switches:
 - One could bake intelligence into switches but I chose to make them simple and dumb. Their only unique attributes are swtich_state and trigger_type. 
@@ -55,8 +76,6 @@ Switches:
 
 - trigger_type: Some switches, like levers, are innately 'stateful' - their switch_state remains constant until they are acted on again. by contrast, stateless switches like buttons and spring-slider-switches must be reset to neutral each turn. Switch resets are the purpose of trigger_type. When trigger_type = 'pre_act_switch_reset' switch_state is reset to 'neutral' at the start of each turn.
 
-
-Triggers:
 
 
 
@@ -72,7 +91,7 @@ The Modular Machine itself:
 MixIn Implementation:
 
 
-app_main module calls
+
 
 
 Closing Thoughts:
@@ -357,6 +376,9 @@ TBD: for doors and containers, use None option for no lock or no lid?
 TBD: learn about Super()
 TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
 TBD: extend child methods in results_class_def ?
+TBD: re-name 'wrapper' to 'app_main'
+TBD: update pickle names
+TBD: out_buff => output
 
 
 *** NEW PUZZLE IDEAS ***
