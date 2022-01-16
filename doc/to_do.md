@@ -18,19 +18,29 @@ Jan 9, 2022
 Version 3.59 Goals
 - Create / update program documentation
 
+IN-PROC: documentation:
+	IN-PROC: write up thinking and decisions on machines and switches
+	TBD: update class diagram
+	TBD: update module diagram
+	TBD: Create machine diagram
+
 *** Machine Decisions ***
 
 The Purpose of Machines:
 
-One could argue that the world of Dark Castle is already filled with machines. After all, doors are machines. Containers are machines. On some level, even rooms and items are machines. Each responds in a standard, simple, and reactive fashion to player actions.
+If Machines are simply objects taht respond to user commands then one could argue that the world of Dark Castle is already filled with machines. After all, doors are machines. Containers are machines. On some level, even rooms and items are machines. Each responds in a standard, simple, and reactive fashion to player actions.
 
-But many of the puzzles in Dark Castle - or any other text adventure - hinge on exception cases to these norms. The Player tries to walk south from the entrnace but they're turned back with a clue. The Player wants to take the Shiny Sword but the Hedgehog intercedes. The Player tries to examine the control panel but the Goblin attacks before they can. The Iron Portcullis can only be opened by matching the Lever Array to the Messy Handwriting on the Note and then pushing the Red Button. These custom, copmlex, and pro-active Player interactions require a more intricate coding solution than a simple door - and the general name I give for many of these is "Machines". What follows is a history of my thinking about how to implement "Machines" in Dark Castle.
+But many of the puzzles in Dark Castle - or any other text adventure - hinge on exception cases to these norms: the Player tries to walk south from the entrnace but they're turned back with a clue, the Player wants to take the Shiny Sword but the Hedgehog intercedes, the Player tries to examine the control panel but the Goblin attacks before they can. 
+
+Likewise, many puzzles depend on more complex machines: the Iron Portcullis can only be opened by matching the Lever Array to the Messy Handwriting on the Note and then pushing the Red Button, the Hedgehog Broach will only be dispensed once after the first time Burt pulls the Throne. 
+
+These custom, copmlex, and pro-active Player interactions require a more intricate coding solution than a simple door - and the general name I give for many of them is "Machines". What follows is an explanation of my approach to implementing "Machines" in Dark Castle.
 
 The Journey to Modular Machines:
 
-The journey to establishing the current structure for machines was a long and winding one that's hopefully arrived at a reasonable solution. Here were the major milestones:
+The journey to establishing the current structure for Machines was a long and winding one that's hopefully arrived at a reasonable solution. Here were the major milestones:
 
-1) In both v1 and v2 I realized the need to interject pre and post actions into the game based on player behavior. A pre-action is one that occurred before the player's intended result (e.g. the Hedgehog blocking Burt from getting the shiny Sword). A post-action is one that occurs after Burt's action (e.g. after Burt pushes the Red Button the Control Panel machine should whirr and possibly open the Iron Portcullis). In the early versions of the game the player's commands were sent to an enormous If-Then-Else construct that checked to see if the conditions were right to invoke a pre or post action. This always disturbed me for several reasons:
+1) In both Dark Castl ev1 and v2 I realized the need to interject pre and post actions into the game based on player behavior. A pre-action is one that occurred before the player's intended result (e.g. the Hedgehog blocking Burt from getting the shiny Sword). A post-action is one that occurs after Burt's action (e.g. after Burt pushes the Red Button the Control Panel machine should whirr and possibly open the Iron Portcullis). In the early versions of the game the player's commands were sent to an enormous If-Then-Else construct that checked to see if the conditions were right to invoke a pre or post action. This always disturbed me for several reasons:
 	A) It was extremely opaque to anyone reading the code. You could easily read through the coding for the Entrance and have no idea that going East or West off the Drawbridge was deadly.
 	B) It took you out of the game... it was like a whole second set of game logic independent from the main program.
 	C) The If-Then-Else routine was neither scalable nor reusable
@@ -47,10 +57,11 @@ For all these reasons I wanted a better solution in v3.
 
 
 High Level Appliction Flow:
-- To understand Machines it helps to first understand the high-level module call flow of the Dark Castle app. web_main is a very simple web-tier function who's only job is to get user input and present the app's response text to that input. 
+To understand Machines it helps to first understand the high-level module call flow of the Dark Castle app.
 
-- To get the response text, web_main calls app_main. app_main is the heart of the app. It recieves user_input from web_app and converts it into output (the app's response text). In the special case of the game's first turn, app_main calls start_me_up which prints a welcome and sets some one-time game variables. But for all subsequent calls to app_main the following flow occurs:
+It all starts with web_main, a very simple web-tier function who's only job is to get user input and present the app's response text to that input. 
 
+To get the response text, web_main calls app_main. app_main is the heart of the app. It recieves user_input from web_app and converts it into output (the app's response text). In the special case of the game's first turn, app_main calls start_me_up which prints a welcome and sets some one-time game variables. But for all subsequent calls to app_main the following flow occurs:
 	1) load the object variables from the game's save pickle and increment the move count
 	2) calls the interpreter function to convert the user's input into a game command. interpreter returns a 'case' and a 'word_lst'
 	3) before executing the game command, app_main now calls the pre_action function. pre_action scans the available machine scope (simplisticaly, the room Burt is in) for machines that have pre_act triggers. If any exist, checks to see if any pre_action Machines are triggered and, if so,  runs those Machines. The pre_action function returns the boolean variable cmd_override to app_main. cmd_override == True is for cases where the pre_action negates the player's command.
@@ -60,42 +71,49 @@ High Level Appliction Flow:
 	7) if game_ending != 'tbd' then app_main calls the 'end' function to buffer the end of game text
 	8) app_main saves the updated objects to the save pickle and resturns 'output' and 'end_of_game' to web_main
 
-- The key take-away from the app_main flow is that, both before and afater the player's command execution call, the game "gets a turn". These ad-hoc pro-active or responsive game actions are what the Machine construct enables.
+The key take-away from the app_main flow is that, both before and afater the player's command execution call, the game "gets a turn". These ad-hoc pro-active or responsive game actions are what the Machine construct enables.
 
 
 The Modular Machine Components:
 
 Triggers:
-*- Triggers come in several di
+Triggers are the Player Commands or Switches that can start Machines. The information about a Trigger lives in the Machine class itself - a given Switch has know "knowledge" that it's the trigger for a machine and multiple Machines could have the exact same Trigger (this makes sense when you think about Player Commands being triggers).
+
+The Machine class has the following Trigger attributes: trigger_type, trig_switch, trig_vals_lst
+
+trigger_type: a string that identifies when the Trigger takes effect and what type of Trigger it is. Examples: 'pre_act_cmd', 'post_act_switch', 'pre_act_auto'
+
+trig_switch: for Switch-based Triggers this is the Switch object that Triggers the Machine. For Player Command-based Triggers the value is None. At present, all Machines have at most one Switch Trigger. I may make trig_switch a list in the future if I end up making Machines with multiple triggers.
+
+trig_vals_lst: The Switch States or Player Commands (case & word_lst) that will activate the Trigger.
 
 
 Switches:
-- One could bake intelligence into switches but I chose to make them simple and dumb. Their only unique attributes are swtich_state and trigger_type. 
+Switches are buttons, levers, sliders, and the like. They can be operated on ("pushed", "pulled", etc) to change their state. In theory, one could bake intelligence into switches but I have chosen to make my Switches simple and dumb. They know their own state and that's it. Their only unique attributes are swtich_state and trigger_type:
 
-- switch_state: The possible values of swtich_state depend on the switch in question. For ButtonSwitch it's 'pushed' or 'neutral'. For SpringSliderSwitch, 'pulled' is added as a possible value. For LeverSwitch, 'up' or 'down' are possible. 
+switch_state: The possible values of switch_state depend on the switch in question. For ButtonSwitch it's 'pushed' or 'neutral'. For SpringSliderSwitch, 'pulled' is added as a possible value. For LeverSwitch, 'up' or 'down' are possible. 
 
-- trigger_type: Some switches, like levers, are innately 'stateful' - their switch_state remains constant until they are acted on again. by contrast, stateless switches like buttons and spring-slider-switches must be reset to neutral each turn. Switch resets are the purpose of trigger_type. When trigger_type = 'pre_act_switch_reset' switch_state is reset to 'neutral' at the start of each turn.
+trigger_type: This attribute enables switch_state resets. Some switches, like levers, are innately 'stateful' - their switch_state remains constant until they are acted on again. By contrast, stateless switches like buttons and spring-slider-switches must be reset to neutral each turn. When trigger_type = 'pre_act_switch_reset' switch_state is reset to 'neutral' at the start of each turn. I should probably rename this attribute to switch_reset to avoid confusion.
 
-
+The Switch class is implemented as a MixIn that is combined with ViewOnly to include Switch-specific attributes. Each specific type of switch (ButtonSwitch, SpringSliderSwitch, LeverSwitch) contains the methods needed to act on it (e.g. push or pull).
 
 
 Conditions:
+Triggers are what start Machines but Conditions determine what happens when they run. The Machine class has two Switch-related attributes: cond_switch_lst and cond_lst. cond_switch_lst is a list of switches whose state impacts condidtions. cond_lst is an ordered list of conditions that are possible when the machine is triggered. The conditions within cond_lst should cover all possible cases... e.g. if cond_1 is the case where item_x in hand_lst then cond_2 woudld typically be the case where item_x not in hand_lst.
+
+Each Condition class includes a name attribute and whatever other attributes are needed to check the condition and a method, named cond_check(), that returns True or False. cond_check is called from the Machine class trigger() method so cond_check() is limited to evaluating conditions beased on the values of active_gs, cond_switch_lst, and machine_state. 
 
 
 Results:
 
 
-The Modular Machine itself:
-
-
-MixIn Implementation:
-
-
+The Machine class itself:
+(includes MixIn implementation)
 
 
 
 Closing Thoughts:
-
+(includes creatures)
 
 
 - simplest approach is long if-then-else list
@@ -108,11 +126,7 @@ Closing Thoughts:
 	- pros: much less opaque and predictable, create interactive world, standard re-usable object types, provides some creative constraints
 	- cons: more coding, less flexible
 
-TBD: documentation:
-	TBD: write up thinking and decisions on machines and switches
-	TBD: update class diagram
-	TBD: update module diagram
-	TBD: Create machine diagram
+
 
 
 ##########################
@@ -379,6 +393,7 @@ TBD: extend child methods in results_class_def ?
 TBD: re-name 'wrapper' to 'app_main'
 TBD: update pickle names
 TBD: out_buff => output
+TBD: re-name Switch trigger_type to switch_reset
 
 
 *** NEW PUZZLE IDEAS ***
