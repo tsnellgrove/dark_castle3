@@ -20,9 +20,11 @@ Version 3.59 Goals
 
 IN-PROC: documentation:
 	IN-PROC: write up thinking and decisions on machines and switches
+	TBD: Update machine coding including move machine_state to first Machine attribute, standardize 'result' vs. 'results' and others in Someday Maybe
 	TBD: update class diagram
 	TBD: update module diagram
 	TBD: Create machine diagram
+
 
 *** Machine Decisions ***
 
@@ -41,15 +43,15 @@ The Journey to Modular Machines:
 The journey to establishing the current structure for Machines was a long and winding one that's hopefully arrived at a reasonable solution. Here were the major milestones:
 
 1) In both Dark Castl ev1 and v2 I realized the need to interject pre and post actions into the game based on player behavior. A pre-action is one that occurred before the player's intended result (e.g. the Hedgehog blocking Burt from getting the shiny Sword). A post-action is one that occurs after Burt's action (e.g. after Burt pushes the Red Button the Control Panel machine should whirr and possibly open the Iron Portcullis). In the early versions of the game the player's commands were sent to an enormous If-Then-Else construct that checked to see if the conditions were right to invoke a pre or post action. This always disturbed me for several reasons:
-	A) It was extremely opaque to anyone reading the code. You could easily read through the coding for the Entrance and have no idea that going East or West off the Drawbridge was deadly.
+	A) It was extremely opaque to anyone reading the code. You could easily read through the coding for the Entrance and have no idea that going East or West off the drawbridge was deadly.
 	B) It took you out of the game... it was like a whole second set of game logic independent from the main program.
 	C) The If-Then-Else routine was neither scalable nor reusable
-For all these reasons I wanted a better solution in v3.
+For all these reasons I wanted a different solution in v3.
 
 2) My first idea was to populate rooms with 'conditional-command-lists'. These would be objects with lists-of-lists attributes that acted as AND and OR grouping of conditions and results. This approach had the natural advantage of signalling that something was going on in the room... but it was basically a large, distributed If-Then-Else list so it still had problems B) and C) from above. After tinkering with some psedo code I abandoned this idea.
 
 3) Next I considered specific machines with specific conditions and actions. For example, a 'travel_effect' machine that would reside in each room and produce effects like the "You can't turn back now..." message when going South from the Entrance as well as the hazzards and benefits of going East or West off of the Entrance drawbridge. I prototype this solution and made several discoveries:
-- Machines an be invisible
+- Machines can be invisible
 - Monolithic machines have way too many attributes to keep track of
 - The Entrance 'Go South' vs. 'Go East / West' use cases are very different ('Go East / West' is much more complex)... attempting to use the same Monolithic Machine for both leads to *many* attributes with Null value in the 'Go South' case.
 
@@ -71,10 +73,11 @@ To get the response text, web_main calls app_main. app_main is the heart of the 
 	7) if game_ending != 'tbd' then app_main calls the 'end' function to buffer the end of game text
 	8) app_main saves the updated objects to the save pickle and resturns 'output' and 'end_of_game' to web_main
 
-The key take-away from the app_main flow is that, both before and afater the player's command execution call, the game "gets a turn". These ad-hoc pro-active or responsive game actions are what the Machine construct enables.
+The key take-away from the app_main flow is that, both before and after the player's command execution call, the game "gets a turn". These ad-hoc pro-active or responsive game actions are what the Machine construct enables.
 
 
 The Modular Machine Components:
+Michines are composed of Triggers, Switches, Conditions, Results, and the framework of the Machine itself which orchestrates all of these. I'll detail each of these below.
 
 Triggers:
 Triggers are the Player Commands or Switches that can start Machines. The information about a Trigger lives in the Machine class itself - a given Switch has know "knowledge" that it's the trigger for a machine and multiple Machines could have the exact same Trigger (this makes sense when you think about Player Commands being triggers).
@@ -99,17 +102,31 @@ The Switch class is implemented as a MixIn that is combined with ViewOnly to inc
 
 
 Conditions:
-Triggers are what start Machines but Conditions determine what happens when they run. The Machine class has two Switch-related attributes: cond_switch_lst and cond_lst. cond_switch_lst is a list of switches whose state impacts condidtions. cond_lst is an ordered list of conditions that are possible when the machine is triggered. The conditions within cond_lst should cover all possible cases... e.g. if cond_1 is the case where item_x in hand_lst then cond_2 woudld typically be the case where item_x not in hand_lst.
+Triggers are what start Machines but Conditions determine what happens when they run. For example, if in the Entrance, Burt goes East off of the drawbridge, then there are three possible conditions: 1) Burt doesn't have a weapon in his hand, 2) Burt does have a weapon and not gotten the Royal Crown yet, 3) Burt has a weapon and has already gotten the Royal Crown. Each of these conditions will then be associated with a different Result. A Machine's Conditions are limited to examination of Game State, Switches that are associated with the Machine, and the Machine's State.
+
+The Machine class has two Switch-related attributes: cond_switch_lst and cond_lst. cond_switch_lst is a list of switches whose state impacts condidtions. cond_lst is an ordered list of conditions that are possible when the machine is triggered. The conditions within cond_lst should cover all possible cases... e.g. if cond_1 is the case where item_x in hand_lst then cond_2 woudld typically be the case where item_x not in hand_lst.
 
 Each Condition class includes a name attribute and whatever other attributes are needed to check the condition and a method, named cond_check(), that returns True or False. cond_check is called from the Machine class trigger() method so cond_check() is limited to evaluating conditions beased on the values of active_gs, cond_switch_lst, and machine_state. 
 
 
 Results:
+There is a Result associated with each Condition. The Result updates the game environment with the outcome of running the Machine under these specific conditions and also buffers the outcome description to the Player.
 
+Each Result class includes the attributes it needs to function. For example, the BufferAndGiveResult class includes the give_item attribute which specifies the Item to be placed into Burt's hand when the Result executes.
+
+Each Result class also has a results_exe() method associated with it. results_exe() is passed active_gs and machine_state and returns machine_state (the Machine's own state variable) and cmd_override (which determines whether the Result overrides the Player's own command).
+
+Results are associated with a given machine via the result_lst Machine attribute.
 
 The Machine class itself:
-(includes MixIn implementation)
+This then brings us to the Machine class itself, which orchestrates all of these components. There is only one Machine class - most of the variability between Machines is introduced via different Switches, Conditions, and Results. From a class definition perspective, Machines are actually implemented as dual-inheritance mix-ins: MachMixIn. This allows for Machine traits to be associated with Invisible, ViewOnly, or Item class traits => InvisMach, ViewOnlyMach, and ItemMach.
 
+The one Machine attribute that we haven't already covered in detail is machine_state. Machines can be stateless (e.g. entrance_south_mach which simply tells Burt that he can't turn back now) but most have some kind of persistent state condition (e.g. has the Crocodile dispensed the Royal Crown?, has the Throne dispensed the Hedgehog Broach?, what is the number that the Iron Portcullis lever array must match?). machine_state holds this state value. It is most often boolean but can be an integer, string, or whatever is needed. 
+
+Machine state is typically inspected by Conditions and updated by Results.
+
+[methods]
+[ cond_lst and result_lst relationship]
 
 
 Closing Thoughts:
