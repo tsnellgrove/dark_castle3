@@ -20,7 +20,7 @@ Version 3.59 Goals
 
 IN-PROC: documentation:
 	IN-PROC: write up thinking and decisions on machines and switches
-	TBD: Update machine coding including move machine_state to first Machine attribute, standardize 'result' vs. 'results' and others in Someday Maybe
+	TBD: Update machine coding including move machine_state to first Machine attribute, standardize 'result' vs. 'results' and others in Someday Maybe, trigger() => run_mach(), result_num => result_index
 	TBD: update class diagram
 	TBD: update module diagram
 	TBD: Create machine diagram
@@ -42,7 +42,7 @@ The Journey to Modular Machines:
 
 The journey to establishing the current structure for Machines was a long and winding one that's hopefully arrived at a reasonable solution. Here were the major milestones:
 
-1) In both Dark Castl ev1 and v2 I realized the need to interject pre and post actions into the game based on player behavior. A pre-action is one that occurred before the player's intended result (e.g. the Hedgehog blocking Burt from getting the shiny Sword). A post-action is one that occurs after Burt's action (e.g. after Burt pushes the Red Button the Control Panel machine should whirr and possibly open the Iron Portcullis). In the early versions of the game the player's commands were sent to an enormous If-Then-Else construct that checked to see if the conditions were right to invoke a pre or post action. This always disturbed me for several reasons:
+1) In both Dark Castl ev1 and v2 I realized the need to interject pre and post actions into the game based on player behavior. A pre-action is one that occurred before the player's intended result (e.g. the Hedgehog blocking Burt from getting the shiny Sword). A post-action is one that occurs after Burt's action (e.g. after Burt pushes the Red Button the Control Panel machine should whirr and possibly open the Iron Portcullis). In the early versions of the game the player's commands were sent to an enormous If-Then-Else construct that checked to see if the conditions were right to invoke a pre or post action. This approach had the advantages of being simple and extremly flexible - but it always disturbed me for several reasons:
 	A) It was extremely opaque to anyone reading the code. You could easily read through the coding for the Entrance and have no idea that going East or West off the drawbridge was deadly.
 	B) It took you out of the game... it was like a whole second set of game logic independent from the main program.
 	C) The If-Then-Else routine was neither scalable nor reusable
@@ -118,15 +118,22 @@ Each Result class also has a results_exe() method associated with it. results_ex
 
 Results are associated with a given machine via the result_lst Machine attribute.
 
+
 The Machine class itself:
 This then brings us to the Machine class itself, which orchestrates all of these components. There is only one Machine class - most of the variability between Machines is introduced via different Switches, Conditions, and Results. From a class definition perspective, Machines are actually implemented as dual-inheritance mix-ins: MachMixIn. This allows for Machine traits to be associated with Invisible, ViewOnly, or Item class traits => InvisMach, ViewOnlyMach, and ItemMach.
 
-The one Machine attribute that we haven't already covered in detail is machine_state. Machines can be stateless (e.g. entrance_south_mach which simply tells Burt that he can't turn back now) but most have some kind of persistent state condition (e.g. has the Crocodile dispensed the Royal Crown?, has the Throne dispensed the Hedgehog Broach?, what is the number that the Iron Portcullis lever array must match?). machine_state holds this state value. It is most often boolean but can be an integer, string, or whatever is needed. 
+The one Machine attribute that we haven't already covered in detail is machine_state. Machines can be stateless (e.g. entrance_south_mach which simply tells Burt that he can't turn back now) but most have some kind of persistent state condition (e.g. has the Crocodile dispensed the Royal Crown?, has the Throne dispensed the Hedgehog Broach?, what is the number that the Iron Portcullis lever array must match?). machine_state holds this state value. It is most often boolean but can be an integer, string, or whatever is needed. A Machine's state is typically inspected by Conditions and updated by Results.
 
-Machine state is typically inspected by Conditions and updated by Results.
+The MahineMixIn class has two methods: trig_check() and trigger()
 
-[methods]
-[ cond_lst and result_lst relationship]
+Based on the trigger type, trig_check() composes trig_key_lst and compares it to the Machine's trig_val_lst and returns True or False.
+
+trigger() loops through cond_lst, checks whether each Condition is met (using the condition's check_cond() method), identifies the first True Condition in the ordered cond_lst and its index, and then runs results_exe for the Result in result_lst with the same index. The trigger() method then updates the Machine's machine_state and returns cmd_override. A structural requirement for trigger() to run successfully is that there must be one Result for every Condidtion and the associated Conditions and Results must be listed in the same order in cond_lst and result_lst.
+
+
+An Example: 
+
+
 
 
 Closing Thoughts:
