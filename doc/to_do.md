@@ -20,7 +20,7 @@ Version 3.59 Goals
 
 IN-PROC: documentation:
 	IN-PROC: write up thinking and decisions on machines and switches
-	TBD: Update machine coding including move machine_state to first Machine attribute, standardize 'result' vs. 'results' and others in Someday Maybe, trigger() => run_mach(), result_num => result_index
+	TBD: Update machine coding including move machine_state to first Machine attribute, standardize 'result' vs. 'results' and others in Someday Maybe, trigger() => run_mach(), result_num => result_index; should machines list their switches like containers list their contents? Further, should machines *contain* the switches associated with them? (seems too inflexible - but maybe as an option?)
 	TBD: update class diagram
 	TBD: update module diagram
 	TBD: Create machine diagram
@@ -132,6 +132,29 @@ trigger() loops through cond_lst, checks whether each Condition is met (using th
 
 
 An Example: 
+Let's take a look at the control_panel Machine located in the antechamber:
+
+control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control_panel', None,
+				'post_act_switch', 0, red_button, ['pushed'], [left_lever, middle_lever, right_lever],
+				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result]) # machine_state == lever_array_value
+
+And before we dive into the machine itself, let's take a glance at the room it's in:
+
+antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
+				[alcove, left_lever, middle_lever, right_lever, red_button], [torn_note, grimy_axe, iron_portcullis, control_panel],
+				{'north' : iron_portcullis}, [])
+
+Here we see that the control_panel is in room_obj_lst (so it is listed in the room description) and the machine's switches (left_lever, middle_lever, right_lever, red_button) are in features (where they can be examined but are not automaticaly listed in the room description). 
+
+Suppose Burt is in the Antechamber and types "push button".
+
+web_main passes this user_input to app_main which opens the save pickle of objects, increments movement, resets the buffer, and calls interp().
+
+Since red_button is in scope for Player interaction, the command is valid and interp() converts this too a two-word command (case = '2word', word_lst = ['button', 'push']).
+
+app_main() calls pre_action() next. It sees that control_panel is a machine but, as it's trigger_type is NOT pre_act_cmd, takes no action. red_button does have trigger_type == pre_act_switch_reset and is reset to 'neutral'. The control_panel trigger() method has not been run so cmd_override remains False and is returned.
+
+
 
 
 
