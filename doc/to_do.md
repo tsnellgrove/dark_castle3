@@ -20,7 +20,7 @@ Version 3.59 Goals
 
 IN-PROC: documentation:
 	IN-PROC: write up thinking and decisions on machines and switches
-	TBD: Update machine coding including move machine_state to first Machine attribute, standardize 'result' vs. 'results' and others in Someday Maybe, trigger() => run_mach(), result_num => result_index; should machines list their switches like containers list their contents? Further, should machines *contain* the switches associated with them? (seems too inflexible - but maybe as an option?)
+	TBD: Update machine coding including move machine_state to first Machine attribute, standardize 'result' vs. 'results' and others in Someday Maybe, trigger() => run_mach(), result_num => result_index; should machines list their switches like containers list their contents? Further, should machines *contain* the switches associated with them? (seems too inflexible - but maybe as an option?), clean up post_action trig_switch_state_lst assignment
 	TBD: update class diagram
 	TBD: update module diagram
 	TBD: Create machine diagram
@@ -152,7 +152,15 @@ web_main passes this user_input to app_main which opens the save pickle of objec
 
 Since red_button is in scope for Player interaction, the command is valid and interp() converts this too a two-word command (case = '2word', word_lst = ['button', 'push']).
 
-app_main() calls pre_action() next. It sees that control_panel is a machine but, as it's trigger_type is NOT pre_act_cmd, takes no action. red_button does have trigger_type == pre_act_switch_reset and is reset to 'neutral'. The control_panel trigger() method has not been run so cmd_override remains False and is returned.
+app_main() calls pre_action() next. It sees that control_panel is a machine but, as its trigger_type is NOT pre_act_cmd, takes no action. red_button does have trigger_type == pre_act_switch_reset so it is reset to 'neutral'. The control_panel trigger() method has not been run so cmd_override remains False and is returned.
+
+Since cmd_override == False, cmd_exe executes the Player's command. The ButtonSwitch push() method is called and red_button.switch_state = 'pushed' and the response "Pushed." is buffered to the user output.
+
+Control is passed back to app_main() which now calls post_action(). post_action() gets mach_obj_lst (the list of Machine objects in scope) from active_gs and itterates through it searching for any Machines that have trigger_type == 'post_act_switch'. control_panel meets these conditions so trig_case = 'switch' and trig_switch_state_lst = the state of the Machine's trigger switch = the state of control_panel's trigger switch = the state of red_button = 'pushed'. 
+
+Under the same if clause, the value of control_panel.trig_check() is checked and, since 'pushed' is in 'trig_val_lst' (trig_val_lst == ['pushed']), trig_check returns True and control_panel.trigger() is run.
+
+Let's say for the sake of arguement that the lever array is NOT set correctly. ******
 
 
 
@@ -160,6 +168,7 @@ app_main() calls pre_action() next. It sees that control_panel is a machine but,
 
 
 Closing Thoughts:
+(conflicted - if-the-else *so* much simpler!)
 (includes creatures)
 
 
@@ -439,7 +448,7 @@ TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inherit
 TBD: extend child methods in results_class_def ?
 TBD: re-name 'wrapper' to 'app_main'
 TBD: update pickle names
-TBD: out_buff => output
+TBD: out_buff => output (or possibly user_output)
 TBD: re-name Switch trigger_type to switch_reset
 
 
