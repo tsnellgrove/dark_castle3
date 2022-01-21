@@ -20,7 +20,7 @@ Version 3.59 Goals
 
 IN-PROC: documentation:
 	IN-PROC: write up thinking and decisions on machines and switches
-	TBD: Update machine coding including move machine_state to first Machine attribute, standardize 'result' vs. 'results' and others in Someday Maybe, trigger() => run_mach(), result_num => result_index; should machines list their switches like containers list their contents? Further, should machines *contain* the switches associated with them? (seems too inflexible - but maybe as an option?), clean up post_action trig_switch_state_lst assignment
+	TBD: Update machine coding including move machine_state to first Machine attribute, standardize 'result' vs. 'results' and others in Someday Maybe, trigger() => run_mach(), result_num => result_index; should machines list their switches like containers list their contents? Further, should machines *contain* the switches associated with them? (seems too inflexible - but maybe as an option?), clean up post_action trig_switch_state_lst assignment; Machine naming convention... no '_mach' after control_panel ??
 	TBD: update class diagram
 	TBD: update module diagram
 	TBD: Create machine diagram
@@ -160,11 +160,17 @@ Control is passed back to app_main() which now calls post_action(). post_action(
 
 Under the same if clause, the value of control_panel.trig_check() is checked and, since 'pushed' is in 'trig_val_lst' (trig_val_lst == ['pushed']), trig_check returns True and control_panel.trigger() is run.
 
-Let's say for the sake of arguement that the lever array is NOT set correctly. ******
+Let's say for the sake of arguement that the lever array is NOT set correctly.
 
+First control_panel.trigger() loops through cond_lst and runs cond_check() for each listed Condition. for control_panel, cond_lst == [correct_lever_array_cond, wrong_lever_array_cond]. correct_lever_array_cond is of class LeverArrayCond which is fairly complex. It has a cond_check() method that calculates the binary value of the of the lever array and then returns the compare of this sum to machine_state. Since the lever array is not set correctly, correct_lever_array_cond.cond_check() returns False.
 
+wrong_lever_array_cond does none of the calculations descirbed above. It is of class PassThruCond which has a cond_check() method that checks nothing and simply returns a value of True. This works because wrong_lever_array_cond is the *last* condition in cond_lst and we execute the Result for the first Condition to be True.
 
+So we end up with cond_return_lst == [False, True] => result_num == 1 (the index of the first True Condition) => we rune results_exe on result_lst[result_num]. result_lst == [toggle_portcullis_result, portcullis_doesnt_open_result] so we run portcullis_doesnt_open_result.result_exe(). This is of class BufferOnlyResult so, sure enough, all it does is buffer some text (a mild clue to the Player) and return the existing cmd_override (False) and machine_state.
 
+control_panel.trigger() is nearly done. It updates it's machine_state based on the return from portcullis_doesnt_open_result.result_exe() (which is the same as the existing machine_state) and then returns cmd_override (which by definition will always be False for tirgger_type == 'post_act_switch').
+
+The Machine has done its job! sore() and end() will be called next by app_main() as needed but the machine coding itself is fini!
 
 
 Closing Thoughts:
