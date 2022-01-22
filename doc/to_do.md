@@ -19,7 +19,7 @@ Version 3.59 Goals
 - Create / update program documentation
 
 IN-PROC: documentation:
-	IN-PROC: write up thinking and decisions on machines and switches
+	DONE: write up thinking and decisions on machines and switches
 	TBD: Update machine coding including move machine_state to first Machine attribute, standardize 'result' vs. 'results' and others in Someday Maybe, trigger() => run_mach(), result_num => result_index; should machines list their switches like containers list their contents? Further, should machines *contain* the switches associated with them? (seems too inflexible - but maybe as an option?), clean up post_action trig_switch_state_lst assignment; Machine naming convention... no '_mach' after control_panel ??
 	TBD: update class diagram
 	TBD: update module diagram
@@ -55,8 +55,7 @@ For all these reasons I wanted a different solution in v3.
 - Monolithic machines have way too many attributes to keep track of
 - The Entrance 'Go South' vs. 'Go East / West' use cases are very different ('Go East / West' is much more complex)... attempting to use the same Monolithic Machine for both leads to *many* attributes with Null value in the 'Go South' case.
 
-4) The problematic 'travel_effect' implementation led me to the solution of Modular Machines. The fundamental idea is that the Machine class definition is the same for all Machines but that the Conditions and Results are separate objects that are attributes of each Machine. This approach allows for much greater re-use. We'll take a look at how the Modular Machine and it's components in detail in the next section.
-
+4) The problematic 'travel_effect' implementation led me to the solution of Modular Machines. The fundamental idea is that the Machine class definition is the same for all Machines but that the Conditions and Results are separate objects that are attributes of each Machine. This modular approach allows for much greater re-use. Having a single Machine class definition does impose some constraints - but that's not an all bad thing - constraints create structure. We'll take a look at how the Modular Machine and it's components in detail in the next section.
 
 High Level Appliction Flow:
 To understand Machines it helps to first understand the high-level module call flow of the Dark Castle app.
@@ -174,21 +173,9 @@ The Machine has done its job! sore() and end() will be called next by app_main()
 
 
 Closing Thoughts:
-(conflicted - if-the-else *so* much simpler!)
-(includes creatures)
+I'm conflicted about Machines. On the plus side, they work and they meet all my goals - they are in-game, transparent, scalable, and reusable. But they are also *vastly* more work and code and, in many ways, complexity than a simple series if-then-elses. Is this good coding or am I making mountains out of molehills by clinging over-tightly to idealogical purity? I'm really not sure... but I've learned a lot and that's the ultimate goal - so I'm going to keep using them. I also suspect that the "goodness" of the Machine structure has everything to do with the scale of Dark Castle. For a four-room dungeon Machines are vastly over-engineered. But for a larger dungeon - or a construction set - perhaps Machines (as I've dsigned them) make sense. Time will tell.
 
-
-- simplest approach is long if-then-else list
-	- pros: very flexible
-	- cons: opaque, non-scalable
-- next idea might be trigger obj associated with rooms or obj that have eval-uable conditions an results
-	- pros: less opaque - you know something will happen
-	- cons: more coding, essentially a distributed if-then-else
-- alt approach: specific machines with specific conditions and actions
-	- pros: much less opaque and predictable, create interactive world, standard re-usable object types, provides some creative constraints
-	- cons: more coding, less flexible
-
-
+The other reason to stay the course on Machines is that I intend for them to be the basis for Creatures. Creatures were arguably the least fleshed out aspect of Dark Castle v1 & v2. They worked mostly because I allowed very few ways of interacting with them. Hopefully, with the use of Machines, I can imporove on this in v3.
 
 
 ##########################
