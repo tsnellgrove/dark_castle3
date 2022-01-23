@@ -455,6 +455,7 @@ TBD: for doors and containers, use None option for no lock or no lid?
 TBD: learn about Super()
 TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
 TBD: extend child methods in results_class_def ?
+TBD: Jenkins integration to automatically update "v3 alpha" tab with latest commits?
 
 
 *** NEW PUZZLE IDEAS ***
