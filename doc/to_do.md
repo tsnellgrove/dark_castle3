@@ -20,7 +20,23 @@ Version 3.59 Goals
 
 IN-PROC: documentation:
 	DONE: write up thinking and decisions on machines and switches
-	TBD: Update machine coding including move machine_state to first Machine attribute, standardize 'result' vs. 'results' and others in Someday Maybe, trigger() => run_mach(), result_num => result_index; should machines list their switches like containers list their contents? Further, should machines *contain* the switches associated with them? (seems too inflexible - but maybe as an option?), clean up post_action trig_switch_state_lst assignment; Machine naming convention... no '_mach' after control_panel ??
+	TBD: Machine Code Updates
+		TBD: move machine_state to first Machine attribute
+		TBD: standardize 'result' vs. 'results'
+		TBD: trigger() => run_mach()
+		TBD: result_num => result_index
+		TBD: list of 'contained' internal_switches in MachMixIn attributes? (i.e. add to scope and remove levers & button from featues?)
+		TBD: clean up post_action trig_switch_state_lst assignment
+		TBD: re-name Switch trigger_type to switch_reset
+		TBD: Machine naming convention... no '_mach' after control_panel ??
+	TBD: General code updates
+		TBD: re-name 'wrapper' to 'app_main'
+		TBD: update pickle names
+		TBD: out_buff => output (or possibly user_output)
+	TBD: Update Machine Notes based on Code Updates
+	TBD: Separate document for Machine Notes
+	TBD: Sort out rough Machine ideas
+	TBD: consolidate rough Creature ideas
 	TBD: update class diagram
 	TBD: update module diagram
 	TBD: Create machine diagram
@@ -439,10 +455,6 @@ TBD: for doors and containers, use None option for no lock or no lid?
 TBD: learn about Super()
 TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
 TBD: extend child methods in results_class_def ?
-TBD: re-name 'wrapper' to 'app_main'
-TBD: update pickle names
-TBD: out_buff => output (or possibly user_output)
-TBD: re-name Switch trigger_type to switch_reset
 
 
 *** NEW PUZZLE IDEAS ***
