@@ -20,8 +20,12 @@ Version 3.59 Goals
 
 IN-PROC: documentation:
 	DONE: write up thinking and decisions on machines and switches
-	TBD: Machine Code Updates
-		TBD: move machine_state to first Machine attribute
+	IN-PROC: Machine Code Updates
+		IN-PROC: move machine_state to first Machine attribute
+			DONE: comment old code
+			DONE: write new code
+			TBD: full test
+			TBD: delete old code
 		TBD: standardize 'result' vs. 'results'
 		TBD: trigger() => run_mach()
 		TBD: result_num => result_index
