@@ -92,21 +92,6 @@ throne_pull_result = AddObjToRoomResult('throne_pull_result', 'throne_pull_resul
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', 'toggle_portcullis_result', iron_portcullis, False)
 portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', 'portcullis_doesnt_open_result', False)
 
-# entrance_moat_mach = InvisMach('entrance_moat_mach', 'pre_act_cmd', False, None, [['go', 'east'], ['go', 'west']],
-#				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
-#				[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) # machine_state == got_crown
-
-# entrance_south_mach = InvisMach('entrance_south_mach', 'pre_act_cmd', None, None, [['go', 'south']],
-#				None, [pass_thru_cond], [cant_turn_back_result])
-
-# broach_dispenser_mach = InvisMach('broach_dispenser_mach', 'post_act_switch', False, throne, ['pushed', 'pulled'],
-#				[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
-#				[nothing_happens_result, throne_push_result, throne_pull_result]) # machine_state == broach_dispensed
-
-# control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control_panel', None,
-#				'post_act_switch', 0, red_button, ['pushed'], [left_lever, middle_lever, right_lever],
-#				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result]) # machine_state == lever_array_value
-
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
 				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
 				[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) # machine_state == got_crown

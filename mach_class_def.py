@@ -9,7 +9,6 @@ from noun_class_def import Invisible, ViewOnly
 ### classes
 class MachineMixIn(object):
 		def __init__(self, machine_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
-#		def __init__(self, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				self._trigger_type = trigger_type # pre_act_cmd, pre_act_switch, pre_act_auto, post_act_cmd, post_act_switch, or post_act_auto
 				self._machine_state = machine_state # machine state variable; boolean for simple machines; Int for complex
 				self._trig_switch = trig_switch # the switch whose state change can trigger the machine (only one switch per machine)
@@ -78,15 +77,11 @@ class MachineMixIn(object):
 
 class InvisMach(Invisible, MachineMixIn):
 		def __init__(self, name, machine_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
-#		def __init__(self, name, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				Invisible.__init__(self, name)
 				MachineMixIn.__init__(self, machine_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
-#				MachineMixIn.__init__(self, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
 class ViewOnlyMach(ViewOnly, MachineMixIn):
 		def __init__(self, name, full_name, root_name, descript_key, writing, machine_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
-#		def __init__(self, name, full_name, root_name, descript_key, writing, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
-#				MachineMixIn.__init__(self, trigger_type, machine_state, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 				MachineMixIn.__init__(self, machine_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
