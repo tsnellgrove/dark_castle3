@@ -25,8 +25,13 @@ IN-PROC: documentation:
 			DONE: comment old code
 			DONE: write new code
 			DONE: full test
-			DONE: delete old code
-		TBD: standardize 'result' vs. 'results'
+			DONE: delete comments
+		DONE: standardize 'result' vs. 'results'
+			DONE: results_exe => resulte_exe
+			DONE: full test
+			DONE: delete comments
+		TBD: change results_class_def => result_class_deff
+		TBD: machine_state => mach_state ???
 		TBD: trigger() => run_mach()
 		TBD: result_num => result_index
 		TBD: list of 'contained' internal_switches in MachMixIn attributes? (i.e. add to scope and remove levers & button from featues?)

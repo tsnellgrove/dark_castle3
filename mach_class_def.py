@@ -71,7 +71,7 @@ class MachineMixIn(object):
 						cond_return_lst.append(cond_return)
 				result_num = cond_return_lst.index(True)
 				result = self.result_lst[result_num]
-				temp_machine_state, cmd_override = result.results_exe(active_gs, self.machine_state)
+				temp_machine_state, cmd_override = result.result_exe(active_gs, self.machine_state)
 				self.machine_state = temp_machine_state
 				return cmd_override
 

@@ -22,7 +22,7 @@ class PassThruResult(object):
 		def cmd_override(self):
 				return self._cmd_override
 
-		def results_exe(self, active_gs, machine_state):
+		def result_exe(self, active_gs, machine_state):
 				return machine_state, self.cmd_override
 
 		def __repr__(self):
@@ -37,7 +37,7 @@ class BufferOnlyResult(PassThruResult):
 		def result_descript(self):
 				return self._result_descript
 
-		def results_exe(self, active_gs, machine_state):
+		def result_exe(self, active_gs, machine_state):
 				active_gs.buffer(descript_dict[self.result_descript])
 				return machine_state, self.cmd_override
 
@@ -54,7 +54,7 @@ class BufferAndEndResult(BufferOnlyResult):
 ##				active_gs.set_game_ending(self.ending)
 ##				super(BufferAndEndResult, self).results_exe(active_gs, machine_state)
 
-		def results_exe(self, active_gs, machine_state):
+		def result_exe(self, active_gs, machine_state):
 				active_gs.buffer(descript_dict[self.result_descript])
 				active_gs.set_game_ending(self.ending)
 				return machine_state, self.cmd_override
@@ -68,7 +68,7 @@ class BufferAndGiveResult(BufferOnlyResult):
 		def give_item(self):
 				return self._give_item
 
-		def results_exe(self, active_gs, machine_state):
+		def result_exe(self, active_gs, machine_state):
 				active_gs.buffer(descript_dict[self.result_descript])
 				active_gs.put_in_hand(self.give_item)
 				machine_state = True
@@ -83,7 +83,7 @@ class AddObjToRoomResult(BufferOnlyResult):
 		def room_item(self):
 				return self._room_item
 
-		def results_exe(self, active_gs, machine_state):
+		def result_exe(self, active_gs, machine_state):
 				active_gs.buffer(descript_dict[self.result_descript])
 				room_obj = active_gs.get_room()
 				room_obj.room_obj_lst_append(self.room_item)
@@ -99,7 +99,7 @@ class DoorToggleResult(BufferOnlyResult):
 		def door_obj(self):
 				return self._door_obj
 
-		def results_exe(self, active_gs, machine_state):
+		def result_exe(self, active_gs, machine_state):
 				if self.door_obj.open_state == True:
 						self.door_obj.open_state = False
 						descript_ending = "closes."
