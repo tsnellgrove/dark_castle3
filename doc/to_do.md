@@ -30,7 +30,11 @@ IN-PROC: documentation:
 			DONE: results_exe => resulte_exe
 			DONE: full test
 			DONE: delete comments
-		TBD: change results_class_def => result_class_deff
+		DONE: change results_class_def => result_class_deff
+			DONE: change file name
+			DONE: change import from mk_def_pkl()
+			DONE: run mk_def_pkl()
+			DONE: full test
 		TBD: trigger() => run_mach()
 		TBD: result_num => result_index
 		TBD: clean up post_action trig_switch_state_lst assignment

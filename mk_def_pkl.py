@@ -9,7 +9,7 @@ import pickle
 from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond
-from results_class_def import PassThruResult, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult
+from result_class_def import PassThruResult, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult
 from mach_class_def import InvisMach, ViewOnlyMach
 from gs_class_def import GameState
 
