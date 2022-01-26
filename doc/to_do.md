@@ -31,13 +31,13 @@ IN-PROC: documentation:
 			DONE: full test
 			DONE: delete comments
 		TBD: change results_class_def => result_class_deff
-		TBD: machine_state => mach_state ???
 		TBD: trigger() => run_mach()
 		TBD: result_num => result_index
-		TBD: list of 'contained' internal_switches in MachMixIn attributes? (i.e. add to scope and remove levers & button from featues?)
 		TBD: clean up post_action trig_switch_state_lst assignment
 		TBD: re-name Switch trigger_type to switch_reset
+		TBD: machine_state => mach_state ???
 		TBD: Machine naming convention... no '_mach' after control_panel ??
+		TBD: list of 'contained' internal_switches in MachMixIn attributes? (i.e. add to scope and remove levers & button from featues?)
 	TBD: General code updates
 		TBD: re-name 'wrapper' to 'app_main'
 		TBD: update pickle names
