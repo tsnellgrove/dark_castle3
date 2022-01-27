@@ -35,7 +35,11 @@ IN-PROC: documentation:
 			DONE: change import from mk_def_pkl()
 			DONE: run mk_def_pkl()
 			DONE: full test
-		TBD: trigger() => run_mach()
+		IN-PROC: trigger() => run_mach()
+			TBD: rename trigger() in mach_class_def
+			TBD: rename trigger() call in pre_action() and post_action()
+			TBD: full test
+			TBD: delete comments
 		TBD: result_num => result_index
 		TBD: clean up post_action trig_switch_state_lst assignment
 		TBD: re-name Switch trigger_type to switch_reset
