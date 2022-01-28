@@ -36,9 +36,9 @@ IN-PROC: documentation:
 			DONE: run mk_def_pkl()
 			DONE: full test
 		IN-PROC: trigger() => run_mach()
-			TBD: rename trigger() in mach_class_def
-			TBD: rename trigger() call in pre_action() and post_action()
-			TBD: full test
+			DONE: rename trigger() in mach_class_def
+			DONE: rename trigger() call in pre_action() and post_action()
+			DONE: full test
 			TBD: delete comments
 		TBD: result_num => result_index
 		TBD: clean up post_action trig_switch_state_lst assignment

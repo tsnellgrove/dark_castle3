@@ -64,7 +64,8 @@ class MachineMixIn(object):
 						trig_key_lst = word_lst[0]
 				return trig_key_lst in self.trig_vals_lst
 
-		def trigger(self, active_gs):
+#		def trigger(self, active_gs):
+		def run_mach(self, active_gs):
 				cond_return_lst = []
 				for cond in self.cond_lst:
 						cond_return = cond.cond_check(active_gs, self.machine_state, self.cond_swicth_lst)
