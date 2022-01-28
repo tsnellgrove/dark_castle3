@@ -40,10 +40,11 @@ IN-PROC: documentation:
 			DONE: rename trigger() call in pre_action() and post_action()
 			DONE: full test
 			DONE: delete comments
-		IN-PROC: result_num => result_index
+		DONE: result_num => result_index
 			DONE: in the mach_class_def module, run_mach() function, change result_num => result_index
+			DONE: run mk_def_pkl()
 			DONE: test
-			TBD: clean up comments
+			DONE: clean up comments
 		TBD: clean up post_action trig_switch_state_lst assignment
 		TBD: re-name Switch trigger_type to switch_reset
 		TBD: machine_state => mach_state ???

@@ -69,9 +69,7 @@ class MachineMixIn(object):
 				for cond in self.cond_lst:
 						cond_return = cond.cond_check(active_gs, self.machine_state, self.cond_swicth_lst)
 						cond_return_lst.append(cond_return)
-#				result_num = cond_return_lst.index(True)
 				result_index = cond_return_lst.index(True)
-#				result = self.result_lst[result_num]
 				result = self.result_lst[result_index]
 				temp_machine_state, cmd_override = result.result_exe(active_gs, self.machine_state)
 				self.machine_state = temp_machine_state
