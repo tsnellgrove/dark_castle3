@@ -15,6 +15,5 @@ def post_action(active_gs, case, word_lst):
 						trig_switch_state_lst = []
 						trig_switch_state_lst.append(obj.trig_switch.switch_state)
 						if obj.trig_check(active_gs, trig_case, trig_switch_state_lst):
-#								local_override = obj.trigger(active_gs)
 								local_override = obj.run_mach(active_gs)
 
