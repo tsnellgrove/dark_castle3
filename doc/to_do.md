@@ -45,7 +45,8 @@ IN-PROC: documentation:
 			DONE: run mk_def_pkl()
 			DONE: test
 			DONE: clean up comments
-		TBD: clean up post_action trig_switch_state_lst assignment
+		DONE: clean up post_action trig_switch_state_lst assignment
+			DONE: multi-value code retained in case of future changes
 		TBD: re-name Switch trigger_type to switch_reset
 		TBD: machine_state => mach_state ???
 		TBD: Machine naming convention... no '_mach' after control_panel ??
