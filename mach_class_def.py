@@ -8,9 +8,9 @@ from noun_class_def import Invisible, ViewOnly
 
 ### classes
 class MachineMixIn(object):
-		def __init__(self, machine_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
+		def __init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
+				self._mach_state = mach_state # machine state variable; boolean for simple machines; Int for complex
 				self._trigger_type = trigger_type # pre_act_cmd, pre_act_switch, pre_act_auto, post_act_cmd, post_act_switch, or post_act_auto
-				self._machine_state = machine_state # machine state variable; boolean for simple machines; Int for complex
 				self._trig_switch = trig_switch # the switch whose state change can trigger the machine (only one switch per machine)
 				self._trig_vals_lst = trig_vals_lst # tirgger values that will start the machine (commands or switch states; None for auto?)
 				self._cond_swicth_lst = cond_swicth_lst # list of switches associated with the machine with states that contribute to conditions
@@ -18,16 +18,16 @@ class MachineMixIn(object):
 				self._result_lst = result_lst # list of possible result obj ordered by assciated condition
 
 		@property
-		def machine_state(self):
-				return self._machine_state
+		def mach_state(self):
+				return self._mach_state
 
 		@property
 		def trigger_type(self):
 				return self._trigger_type
 
-		@machine_state.setter
-		def machine_state(self, new_state):
-				self._machine_state = new_state
+		@mach_state.setter
+		def mach_state(self, new_state):
+				self._mach_state = new_state
 
 		@property
 		def trig_switch(self):
@@ -67,21 +67,21 @@ class MachineMixIn(object):
 		def run_mach(self, active_gs):
 				cond_return_lst = []
 				for cond in self.cond_lst:
-						cond_return = cond.cond_check(active_gs, self.machine_state, self.cond_swicth_lst)
+						cond_return = cond.cond_check(active_gs, self.mach_state, self.cond_swicth_lst)
 						cond_return_lst.append(cond_return)
 				result_index = cond_return_lst.index(True)
 				result = self.result_lst[result_index]
-				temp_machine_state, cmd_override = result.result_exe(active_gs, self.machine_state)
-				self.machine_state = temp_machine_state
+				temp_mach_state, cmd_override = result.result_exe(active_gs, self.mach_state)
+				self.mach_state = temp_mach_state
 				return cmd_override
 
 class InvisMach(Invisible, MachineMixIn):
-		def __init__(self, name, machine_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
+		def __init__(self, name, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				Invisible.__init__(self, name)
-				MachineMixIn.__init__(self, machine_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
+				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
 class ViewOnlyMach(ViewOnly, MachineMixIn):
-		def __init__(self, name, full_name, root_name, descript_key, writing, machine_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
+		def __init__(self, name, full_name, root_name, descript_key, writing, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
-				MachineMixIn.__init__(self, machine_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
+				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 

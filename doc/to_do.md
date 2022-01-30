@@ -47,8 +47,21 @@ IN-PROC: documentation:
 			DONE: clean up comments
 		DONE: clean up post_action trig_switch_state_lst assignment
 			DONE: multi-value code retained in case of future changes
+		DONE: machine_state => mach_state
+			DONE: in the mach_class_def module, update machine_state => mach_state
+			DONE: run mk_def_pkl()
+			DONE: full test
+			DONE: clean up comments
 		TBD: re-name Switch trigger_type to switch_reset
-		TBD: machine_state => mach_state ???
+			TBD: update mach_obj_lst() in gs_class_def() to include switch_reset attribute
+			TBD: update pre_action module
+				TBD: add switch_reset check
+			TBD: updates SwitchMixIn in switch_class_def() to replace trigger_type with switch_reset
+				TBD: attribute
+				TBD: declaration
+				TBD: @properties
+			TBD: full test
+			TBD: delete comments
 		TBD: Machine naming convention... no '_mach' after control_panel ??
 		TBD: list of 'contained' internal_switches in MachMixIn attributes? (i.e. add to scope and remove levers & button from featues?)
 	TBD: General code updates
