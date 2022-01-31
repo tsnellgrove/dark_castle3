@@ -53,6 +53,7 @@ IN-PROC: documentation:
 			DONE: full test
 			DONE: clean up comments
 		TBD: re-name Switch trigger_type to switch_reset
+			IDEA: using trigger_type is *very* efficient... maybe just change attribute value to 'pre_act_auto_switch_reset' ???
 			TBD: update mach_obj_lst() in gs_class_def() to include switch_reset attribute
 			TBD: update pre_action module
 				TBD: add switch_reset check
