@@ -10,7 +10,7 @@ from noun_class_def import ViewOnly
 class SwitchMixIn(object):
 		def __init__(self, switch_state, trigger_type):
 				self._switch_state = switch_state # values = 'pushed' or 'neutral'
-				self._trigger_type = trigger_type # typically 'pre_action_auto_reset' or None
+				self._trigger_type = trigger_type # typically 'pre_act_auto_switch_reset' or None
 
 		@property
 		def switch_state(self):

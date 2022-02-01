@@ -52,17 +52,20 @@ IN-PROC: documentation:
 			DONE: run mk_def_pkl()
 			DONE: full test
 			DONE: clean up comments
-		TBD: re-name Switch trigger_type to switch_reset
+		IN-PROC: re-name Switch trigger_type to switch_reset
 			IDEA: using trigger_type is *very* efficient... maybe just change attribute value to 'pre_act_auto_switch_reset' ???
-			TBD: update mach_obj_lst() in gs_class_def() to include switch_reset attribute
-			TBD: update pre_action module
-				TBD: add switch_reset check
-			TBD: updates SwitchMixIn in switch_class_def() to replace trigger_type with switch_reset
-				TBD: attribute
-				TBD: declaration
-				TBD: @properties
-			TBD: full test
-			TBD: delete comments
+				DONE: change value in pre_action()
+				DONE: change value in mk_def_pkl()
+				IN-PROC: full test (portcullis button failing)
+			CANCEL: update mach_obj_lst() in gs_class_def() to include switch_reset attribute
+			CANCEL: update pre_action module
+				CANCEL: add switch_reset check
+			CANCEL: updates SwitchMixIn in switch_class_def() to replace trigger_type with switch_reset
+				CANCEL: attribute
+				CANCEL: declaration
+				CANCEL: @properties
+			CANCEL: full test
+			CANCEL: delete comments
 		TBD: Machine naming convention... no '_mach' after control_panel ??
 		TBD: list of 'contained' internal_switches in MachMixIn attributes? (i.e. add to scope and remove levers & button from featues?)
 	TBD: General code updates
