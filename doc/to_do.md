@@ -57,6 +57,8 @@ IN-PROC: documentation:
 				DONE: change value in pre_action()
 				DONE: change value in mk_def_pkl()
 				IN-PROC: full test (portcullis button failing)
+					DONE: backed out trigger_type value changes... button still misbehaving... need to examine "mach_state" change
+					TBD: Review mach_state
 			CANCEL: update mach_obj_lst() in gs_class_def() to include switch_reset attribute
 			CANCEL: update pre_action module
 				CANCEL: add switch_reset check
