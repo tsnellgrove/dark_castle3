@@ -60,6 +60,7 @@ IN-PROC: documentation:
 			INFO: now door only works on zero value lever array... ???
 			INFO: throne switch appears to work correctly
 			TBD: deep dive on LeverArrayCond
+				TBD: Don't forget to run mk_def_pkl after updates!!!
 		TBD: using trigger_type is *very* efficient... maybe just change attribute value to 'pre_act_auto_switch_reset' ???
 			TBD: change value in pre_action()
 			TBD: change value in mk_def_pkl()
