@@ -16,7 +16,7 @@ class PassThruCond(object):
 		def name(self):
 				return self._name
 
-		def cond_check(self, active_gs, machine_state, cond_swicth_lst):
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				cond_state = True
 				return cond_state
 
@@ -32,7 +32,7 @@ class NotInHandCond(PassThruCond):
 		def not_in_hand_lst(self):
 				return self._not_in_hand_lst
 
-		def cond_check(self, active_gs, machine_state, cond_swicth_lst):
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				cond_state = True
 				hand_lst = active_gs.get_hand_lst()
 				for item in self.not_in_hand_lst:
@@ -49,8 +49,8 @@ class StateCond(PassThruCond):
 		def mach_state_cond(self):
 				return self._mach_state_cond
 
-		def cond_check(self, active_gs, machine_state, cond_swicth_lst):
-				return machine_state == self.mach_state_cond
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+				return mach_state == self.mach_state_cond
 
 class InHandAndStateCond(StateCond):
 		def __init__(self, name, in_hand_lst, mach_state_cond):
@@ -61,9 +61,9 @@ class InHandAndStateCond(StateCond):
 		def in_hand_lst(self):
 				return self._in_hand_lst
 
-		def cond_check(self, active_gs, machine_state, cond_swicth_lst):
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				cond_state = False
-				if machine_state == self.mach_state_cond:
+				if mach_state == self.mach_state_cond:
 						hand_lst = active_gs.get_hand_lst()
 						for item in self.in_hand_lst:
 								if item in hand_lst:
@@ -79,7 +79,7 @@ class SwitchStateCond(PassThruCond):
 		def switch_state_val_lst(self):
 				return self._switch_state_val_lst
 
-		def cond_check(self, active_gs, machine_state, cond_swicth_lst):
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				switch_state_lst = []
 				for switch in cond_swicth_lst:
 						switch_state_lst.append(switch.switch_state)
@@ -89,8 +89,8 @@ class LeverArrayCond(SwitchStateCond):
 		def __init__(self, name, switch_state_val_lst):
 				super().__init__(name, switch_state_val_lst)
 
-		def cond_check(self, active_gs, machine_state, cond_swicth_lst):
-				target_val = machine_state
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+				target_val = mach_state
 				current_val = 0
 				for lever in cond_swicth_lst:
 						if lever.switch_state == 'up':

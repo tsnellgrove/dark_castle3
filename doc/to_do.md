@@ -52,13 +52,18 @@ IN-PROC: documentation:
 			DONE: run mk_def_pkl()
 			DONE: full test
 			DONE: clean up comments
-		IN-PROC: re-name Switch trigger_type to switch_reset
-			IDEA: using trigger_type is *very* efficient... maybe just change attribute value to 'pre_act_auto_switch_reset' ???
-				DONE: change value in pre_action()
-				DONE: change value in mk_def_pkl()
-				IN-PROC: full test (portcullis button failing)
-					DONE: backed out trigger_type value changes... button still misbehaving... need to examine "mach_state" change
-					TBD: Review mach_state
+			DONE: in cond_class_def and result_class_def modules, update machine_state => mach_state
+			DONE: test
+		IN-PROC: full test (portcullis button failing)
+			DONE: backed out trigger_type value changes... button still misbehaving... need to examine "mach_state" change
+			DONE: Review mach_state => updated in cond_class_def and result_class_def but still doesn't work right
+			INFO: now door only works on zero value lever array... ???
+			INFO: throne switch appears to work correctly
+			TBD: deep dive on LeverArrayCond
+		TBD: using trigger_type is *very* efficient... maybe just change attribute value to 'pre_act_auto_switch_reset' ???
+			TBD: change value in pre_action()
+			TBD: change value in mk_def_pkl()
+		CANCEL: re-name Switch trigger_type to switch_reset
 			CANCEL: update mach_obj_lst() in gs_class_def() to include switch_reset attribute
 			CANCEL: update pre_action module
 				CANCEL: add switch_reset check
