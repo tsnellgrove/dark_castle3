@@ -80,7 +80,7 @@ IN-PROC: documentation:
 			CANCEL: delete comments
 		DONE: Machine naming convention... no '_mach' after control_panel ??
 			DONE: documented in Machine Decisions
-		TBD: list of 'contained' internal_switches in MachMixIn attributes? (i.e. add to scope and remove levers & button from featues?)
+		TBD: list of 'contained' internal_switches in MachMixIn attributes? (i.e. add to scope and remove levers & button from features?)
 	TBD: General code updates
 		TBD: re-name 'wrapper' to 'app_main'
 		TBD: update pickle names
