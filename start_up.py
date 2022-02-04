@@ -26,7 +26,7 @@ def start_me_up():
 		
 		for obj in master_obj_lst[1:]:
 				if obj.name == 'control_panel':
-						obj.machine_state = portcullis_code
+						obj.mach_state = portcullis_code
 
 		### introductory text ###
 		active_gs.buffer(descript_dict["introduction"])
