@@ -63,9 +63,11 @@ IN-PROC: documentation:
 				DONE: Don't forget to run mk_def_pkl after updates!!!
 			NOTE: solved it! had forgotten to updat machine_state => mach_state assignment in start_up()
 			DONE: full test
-		TBD: using trigger_type is *very* efficient... maybe just change attribute value to 'pre_act_auto_switch_reset' ???
-			TBD: change value in pre_action()
-			TBD: change value in mk_def_pkl()
+		DONE: using trigger_type is *very* efficient... maybe just change attribute value to 'pre_act_auto_switch_reset' ???
+			DONE: change value in pre_action()
+			DONE: change value in mk_def_pkl()
+			DONE: run mk_def_pkl()
+			DONE: full test
 		CANCEL: re-name Switch trigger_type to switch_reset
 			CANCEL: update mach_obj_lst() in gs_class_def() to include switch_reset attribute
 			CANCEL: update pre_action module
@@ -76,7 +78,8 @@ IN-PROC: documentation:
 				CANCEL: @properties
 			CANCEL: full test
 			CANCEL: delete comments
-		TBD: Machine naming convention... no '_mach' after control_panel ??
+		DONE: Machine naming convention... no '_mach' after control_panel ??
+			DONE: documented in Machine Decisions
 		TBD: list of 'contained' internal_switches in MachMixIn attributes? (i.e. add to scope and remove levers & button from featues?)
 	TBD: General code updates
 		TBD: re-name 'wrapper' to 'app_main'
@@ -85,10 +88,6 @@ IN-PROC: documentation:
 	TBD: Update Machine Notes based on Code Updates
 	TBD: Separate document for Machine Notes
 	TBD: Sort out rough Machine ideas
-	TBD: consolidate rough Creature ideas
-	TBD: update class diagram
-	TBD: update module diagram
-	TBD: Create machine diagram
 
 
 *** Machine Decisions ***
@@ -101,13 +100,13 @@ But many of the puzzles in Dark Castle - or any other text adventure - hinge on 
 
 Likewise, many puzzles depend on more complex machines: the Iron Portcullis can only be opened by matching the Lever Array to the Messy Handwriting on the Note and then pushing the Red Button, the Hedgehog Broach will only be dispensed once after the first time Burt pulls the Throne. 
 
-These custom, copmlex, and pro-active Player interactions require a more intricate coding solution than a simple door - and the general name I give for many of them is "Machines". What follows is an explanation of my approach to implementing "Machines" in Dark Castle.
+These custom, complex, and pro-active Player interactions require a more intricate coding solution than a simple door - and the general name I give for many of them is "Machines". What follows is an explanation of my approach to implementing "Machines" in Dark Castle.
 
 The Journey to Modular Machines:
 
 The journey to establishing the current structure for Machines was a long and winding one that's hopefully arrived at a reasonable solution. Here were the major milestones:
 
-1) In both Dark Castl ev1 and v2 I realized the need to interject pre and post actions into the game based on player behavior. A pre-action is one that occurred before the player's intended result (e.g. the Hedgehog blocking Burt from getting the shiny Sword). A post-action is one that occurs after Burt's action (e.g. after Burt pushes the Red Button the Control Panel machine should whirr and possibly open the Iron Portcullis). In the early versions of the game the player's commands were sent to an enormous If-Then-Else construct that checked to see if the conditions were right to invoke a pre or post action. This approach had the advantages of being simple and extremly flexible - but it always disturbed me for several reasons:
+1) In both Dark Castle ev1 and v2 I realized the need to interject pre and post actions into the game based on player behavior. A pre-action is one that occurred before the player's intended result (e.g. the Hedgehog blocking Burt from getting the shiny Sword). A post-action is one that occurs after Burt's action (e.g. after Burt pushes the Red Button the Control Panel machine should whirr and possibly open the Iron Portcullis). In the early versions of the game the player's commands were sent to an enormous If-Then-Else construct that checked to see if the conditions were right to invoke a pre or post action. This approach had the advantages of being simple and extremly flexible - but it always disturbed me for several reasons:
 	A) It was extremely opaque to anyone reading the code. You could easily read through the coding for the Entrance and have no idea that going East or West off the drawbridge was deadly.
 	B) It took you out of the game... it was like a whole second set of game logic independent from the main program.
 	C) The If-Then-Else routine was neither scalable nor reusable
@@ -236,6 +235,8 @@ control_panel.trigger() is nearly done. It updates it's machine_state based on t
 
 The Machine has done its job! sore() and end() will be called next by app_main() as needed but the machine coding itself is fini!
 
+Naming Convention:
+All machines of class InvisMach have names ending in "_mach". For machines of class ViewOnlyMach or ItemMach this convention colides with the interpreter-based convention of object name = 'noun_verb'. The interpreter-based convention wins here and the '_mach' postfix is dropped for these machines (e.g. control_panel).
 
 Closing Thoughts:
 I'm conflicted about Machines. On the plus side, they work and they meet all my goals - they are in-game, transparent, scalable, and reusable. But they are also *vastly* more work and code and, in many ways, complexity than a simple series if-then-elses. Is this good coding or am I making mountains out of molehills by clinging over-tightly to idealogical purity? I'm really not sure... but I've learned a lot and that's the ultimate goal - so I'm going to keep using them. I also suspect that the "goodness" of the Machine structure has everything to do with the scale of Dark Castle. For a four-room dungeon Machines are vastly over-engineered. But for a larger dungeon - or a construction set - perhaps Machines (as I've dsigned them) make sense. Time will tell.
@@ -248,6 +249,8 @@ The other reason to stay the course on Machines is that I intend for them to be 
 ##########################
 Version 3.60 Goals
 - Create class, methods, and obj for goblin creature
+
+TBD: consolidate rough Creature ideas
 
 
 ##########################
@@ -282,9 +285,8 @@ TBD: documentation:
 	TBD: write up thinking and decisions on creatures
 	TBD: update class diagram
 	TBD: update module diagram
-	TBD: update machine diagram
+	TBD: create machine diagram
 	TBD: create creature diagram
-
 
 
 *** interactive object ideas ***
