@@ -80,12 +80,19 @@ IN-PROC: documentation:
 			CANCEL: delete comments
 		DONE: Machine naming convention... no '_mach' after control_panel ??
 			DONE: documented in Machine Decisions
-		TBD: Run switch re-sets w/ regular pass-thru machines (?)
-		TBD: list of 'contained' internal_switches in MachMixIn attributes? (i.e. add to scope and remove levers & button from features?)
-	TBD: General code updates
-		TBD: re-name 'wrapper' to 'app_main'
-		TBD: update pickle names
-		TBD: out_buff => output (or possibly user_output)
+		IN-PROCES: Run switch re-sets w/ regular pass-thru machines (?)
+			CANCEL: add pre_act_auto code to pre-action
+			CANCEL: create SwitchResetResult
+			CANCEL: create switch_neutral_reset_result obj
+			IDEA: thinking through this further... I don't want to have to create a separate reset trigger for every "standard" switch
+			IDEA: standard switches should be pretty painless... I can make a complex switch later if I need special behaviors
+			IDEA: as a compromise, how about if I add a def_switch_state attribute to SwitchMixIn (standard value == 'neutral')
+			IDEA: then, in the pre_action() test, if obj.switch_state != obj.def_swicth_state: obj.switch_state = obj.def_switch_state
+			IDEA: this allows for non-'neutral' default switch states
+			TBD: add def_switch_state attribute to SwitchMixIn and ViewOnlySwitch
+			TBD: update switch obj values in mk_def_pkl
+			TBD: run mk_def_pkl
+			TBD: update reset code in pre_action 
 	TBD: Update Machine Notes based on Code Updates
 	TBD: Separate document for Machine Notes
 	TBD: Sort out rough Machine ideas
@@ -508,7 +515,12 @@ TBD: learn about Super()
 TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
 TBD: extend child methods in results_class_def ?
 TBD: Jenkins integration to automatically update "v3 alpha" tab with latest commits?
-
+TBD: list of 'contained' internal_switches in MachMixIn attributes?
+	NOTE: (i.e. add to scope and remove levers & button from features?)
+	NOTE: [this is a good idea but hold off until at least one more control_panel type machine gets created]
+TBD: re-name 'wrapper' to 'app_main'
+TBD: update pickle names
+TBD: out_buff => output (or possibly user_output)
 
 *** NEW PUZZLE IDEAS ***
 

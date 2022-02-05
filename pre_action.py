@@ -15,6 +15,12 @@ def pre_action(active_gs, case, word_lst):
 								local_override = obj.run_mach(active_gs)
 								if local_override:
 										cmd_override = True
+										
+##				if obj.trigger_type == 'pre_act_auto':
+##								local_override = obj.run_mach(active_gs)
+##								if local_override:
+##										cmd_override = True
+										
 				if obj.trigger_type == 'pre_act_auto_switch_reset':
 						obj.switch_state = 'neutral'
 		return cmd_override
