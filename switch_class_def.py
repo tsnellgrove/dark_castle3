@@ -8,7 +8,6 @@ from noun_class_def import ViewOnly
 
 ### class definitions
 class SwitchMixIn(object):
-#		def __init__(self, switch_state, trigger_type):
 		def __init__(self, switch_state, def_switch_state, trigger_type):
 				self._switch_state = switch_state # values = 'pushed' or 'neutral'
 				self._def_switch_state = switch_state # default switch state, typically 'neutral'
@@ -31,10 +30,8 @@ class SwitchMixIn(object):
 				return self._trigger_type
 
 class ButtonSwitch(ViewOnly, SwitchMixIn):
-#		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, trigger_type):
 		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, def_switch_state, trigger_type):
 				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
-#				SwitchMixIn.__init__(self, switch_state, trigger_type)
 				SwitchMixIn.__init__(self, switch_state, def_switch_state, trigger_type)
 
 		def push(self, active_gs):
@@ -42,9 +39,7 @@ class ButtonSwitch(ViewOnly, SwitchMixIn):
 				active_gs.buffer("Pushed.")
 
 class SpringSliderSwitch(ButtonSwitch):
-#		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, trigger_type):
 		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, def_switch_state, trigger_type):
-#				super().__init__(name, full_name, root_name, descript_key, writing, switch_state, trigger_type)
 				super().__init__(name, full_name, root_name, descript_key, writing, switch_state, def_switch_state, trigger_type)
 
 		def pull(self, active_gs):
@@ -52,10 +47,8 @@ class SpringSliderSwitch(ButtonSwitch):
 				active_gs.buffer("Pulled.")
 
 class LeverSwitch(ViewOnly, SwitchMixIn):
-#		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, trigger_type):
 		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, def_switch_state, trigger_type):
 				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
-#				SwitchMixIn.__init__(self, switch_state, trigger_type)
 				SwitchMixIn.__init__(self, switch_state, def_switch_state, trigger_type)
 
 		def pull(self, active_gs):

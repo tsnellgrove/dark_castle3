@@ -20,7 +20,7 @@ Version 3.59 Goals
 
 IN-PROC: documentation:
 	DONE: write up thinking and decisions on machines and switches
-	IN-PROC: Machine Code Updates
+	DONE: Machine Code Updates
 		DONE: move machine_state to first Machine attribute
 			DONE: comment old code
 			DONE: write new code
@@ -80,7 +80,7 @@ IN-PROC: documentation:
 			CANCEL: delete comments
 		DONE: Machine naming convention... no '_mach' after control_panel ??
 			DONE: documented in Machine Decisions
-		IN-PROCES: Run switch re-sets w/ regular pass-thru machines (?)
+		DONE: Run switch re-sets w/ regular pass-thru machines (?)
 			CANCEL: add pre_act_auto code to pre-action
 			CANCEL: create SwitchResetResult
 			CANCEL: create switch_neutral_reset_result obj
@@ -94,10 +94,11 @@ IN-PROC: documentation:
 			DONE: run mk_def_pkl
 			DONE: update reset code in pre_action 
 			DONE: Test
-			TBD: clean up comments
-	TBD: Update Machine Notes based on Code Updates
-	TBD: Separate document for Machine Notes
-	TBD: Sort out rough Machine ideas
+			DONE: clean up comments
+	TBD: Finalize documentation
+		TBD: Update Machine Notes based on Code Updates
+		TBD: Separate document for Machine Notes
+		TBD: Sort out rough Machine ideas
 
 
 *** Machine Decisions ***

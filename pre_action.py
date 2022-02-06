@@ -24,7 +24,6 @@ def pre_action(active_gs, case, word_lst):
 				if obj.trigger_type == 'pre_act_auto_switch_reset':
 						if obj.switch_state != obj.def_switch_state:
 								obj.switch_state = obj.def_switch_state
-#						obj.switch_state = 'neutral'
 		return cmd_override
 
 
