@@ -66,11 +66,11 @@ front_gate = Door('front_gate', 'Front Gate', "gate", 'front_gate', rusty_letter
 ## screen_door = Door('screen_door', "You should never be able to examine the screen_door", None, False, False, chrome_key)
 iron_portcullis = Door('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, False, False, None)
 
-throne = SpringSliderSwitch('throne', 'Throne', 'throne', 'throne', None, 'neutral', 'pre_act_auto_switch_reset')
-left_lever = LeverSwitch('left_lever', 'Left Lever', 'lever', 'left_lever', None, 'down', None)
-middle_lever = LeverSwitch('middle_lever', 'Middle Lever', 'lever', 'middle_lever', None, 'down', None)
-right_lever = LeverSwitch('right_lever', 'Right Lever', 'lever', 'right_lever', None, 'down', None)
-red_button = ButtonSwitch('red_button', 'Red Button', 'button', 'red_button', None, 'neutral', 'pre_act_auto_switch_reset')
+throne = SpringSliderSwitch('throne', 'Throne', 'throne', 'throne', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset')
+left_lever = LeverSwitch('left_lever', 'Left Lever', 'lever', 'left_lever', None, 'down', None, None)
+middle_lever = LeverSwitch('middle_lever', 'Middle Lever', 'lever', 'middle_lever', None, 'down', None, None)
+right_lever = LeverSwitch('right_lever', 'Right Lever', 'lever', 'right_lever', None, 'down', None, None)
+red_button = ButtonSwitch('red_button', 'Red Button', 'button', 'red_button', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset')
 
 hand_no_weap_cond = NotInHandCond('hand_no_weap_cond', [shiny_sword, grimy_axe])
 hand_weap_1st_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], False)

@@ -89,10 +89,12 @@ IN-PROC: documentation:
 			IDEA: as a compromise, how about if I add a def_switch_state attribute to SwitchMixIn (standard value == 'neutral')
 			IDEA: then, in the pre_action() test, if obj.switch_state != obj.def_swicth_state: obj.switch_state = obj.def_switch_state
 			IDEA: this allows for non-'neutral' default switch states
-			TBD: add def_switch_state attribute to SwitchMixIn and ViewOnlySwitch
-			TBD: update switch obj values in mk_def_pkl
-			TBD: run mk_def_pkl
-			TBD: update reset code in pre_action 
+			DONE: add def_switch_state attribute to SwitchMixIn and ViewOnlySwitch
+			DONE: update switch obj values in mk_def_pkl
+			DONE: run mk_def_pkl
+			DONE: update reset code in pre_action 
+			DONE: Test
+			TBD: clean up comments
 	TBD: Update Machine Notes based on Code Updates
 	TBD: Separate document for Machine Notes
 	TBD: Sort out rough Machine ideas
