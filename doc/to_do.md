@@ -95,8 +95,8 @@ IN-PROC: documentation:
 			DONE: update reset code in pre_action 
 			DONE: Test
 			DONE: clean up comments
-	TBD: Finalize documentation
-		TBD: Update Machine Notes based on Code Updates
+	IN-PROC: Finalize documentation
+		DONE: Update Machine Notes based on Code Updates
 		TBD: Separate document for Machine Notes
 		TBD: Sort out rough Machine ideas
 
@@ -170,7 +170,9 @@ Switches are buttons, levers, sliders, and the like. They can be operated on ("p
 
 switch_state: The possible values of switch_state depend on the switch in question. For ButtonSwitch it's 'pushed' or 'neutral'. For SpringSliderSwitch, 'pulled' is added as a possible value. For LeverSwitch, 'up' or 'down' are possible. 
 
-trigger_type: This attribute enables switch_state resets. Some switches, like levers, are innately 'stateful' - their switch_state remains constant until they are acted on again. By contrast, stateless switches like buttons and spring-slider-switches must be reset to neutral each turn. When trigger_type = 'pre_act_switch_reset' switch_state is reset to 'neutral' at the start of each turn. I should probably rename this attribute to switch_reset to avoid confusion.
+def_switch_state: the default state of the switch. For stateful switches like levers, def_switch_state == None. For non-stateful switches like buttons, def_switch_state typically == 'neutral'.
+
+trigger_type: This attribute enables switch_state resets. Some switches, like levers, are innately 'stateful' - their switch_state remains constant until they are acted on again. By contrast, stateless switches like buttons and spring-slider-switches must be reset to neutral each turn. When trigger_type = 'pre_act_auto_switch_reset' switch_state is reset to def_switch_state at the start of each turn.
 
 The Switch class is implemented as a MixIn that is combined with ViewOnly to include Switch-specific attributes. Each specific type of switch (ButtonSwitch, SpringSliderSwitch, LeverSwitch) contains the methods needed to act on it (e.g. push or pull).
 
@@ -180,7 +182,7 @@ Triggers are what start Machines but Conditions determine what happens when they
 
 The Machine class has two Switch-related attributes: cond_switch_lst and cond_lst. cond_switch_lst is a list of switches whose state impacts condidtions. cond_lst is an ordered list of conditions that are possible when the machine is triggered. The conditions within cond_lst should cover all possible cases... e.g. if cond_1 is the case where item_x in hand_lst then cond_2 woudld typically be the case where item_x not in hand_lst.
 
-Each Condition class includes a name attribute and whatever other attributes are needed to check the condition and a method, named cond_check(), that returns True or False. cond_check is called from the Machine class trigger() method so cond_check() is limited to evaluating conditions beased on the values of active_gs, cond_switch_lst, and machine_state. 
+Each Condition class includes a name attribute and whatever other attributes are needed to check the condition and a method, named cond_check(), that returns True or False. cond_check is called from the Machine class run_mach() method so cond_check() is limited to evaluating conditions beased on the values of active_gs, cond_switch_lst, and mach_state. 
 
 
 Results:
@@ -188,7 +190,7 @@ There is a Result associated with each Condition. The Result updates the game en
 
 Each Result class includes the attributes it needs to function. For example, the BufferAndGiveResult class includes the give_item attribute which specifies the Item to be placed into Burt's hand when the Result executes.
 
-Each Result class also has a results_exe() method associated with it. results_exe() is passed active_gs and machine_state and returns machine_state (the Machine's own state variable) and cmd_override (which determines whether the Result overrides the Player's own command).
+Each Result class also has a result_exe() method associated with it. result_exe() is passed active_gs and mach_state and returns mach_state (the Machine's own state variable) and cmd_override (which determines whether the Result overrides the Player's own command).
 
 Results are associated with a given machine via the result_lst Machine attribute.
 
@@ -196,13 +198,13 @@ Results are associated with a given machine via the result_lst Machine attribute
 The Machine class itself:
 This then brings us to the Machine class itself, which orchestrates all of these components. There is only one Machine class - most of the variability between Machines is introduced via different Switches, Conditions, and Results. From a class definition perspective, Machines are actually implemented as dual-inheritance mix-ins: MachMixIn. This allows for Machine traits to be associated with Invisible, ViewOnly, or Item class traits => InvisMach, ViewOnlyMach, and ItemMach.
 
-The one Machine attribute that we haven't already covered in detail is machine_state. Machines can be stateless (e.g. entrance_south_mach which simply tells Burt that he can't turn back now) but most have some kind of persistent state condition (e.g. has the Crocodile dispensed the Royal Crown?, has the Throne dispensed the Hedgehog Broach?, what is the number that the Iron Portcullis lever array must match?). machine_state holds this state value. It is most often boolean but can be an integer, string, or whatever is needed. A Machine's state is typically inspected by Conditions and updated by Results.
+The one Machine attribute that we haven't already covered in detail is mach_state. Machines can be stateless (e.g. entrance_south_mach which simply tells Burt that he can't turn back now) but most have some kind of persistent state condition (e.g. has the Crocodile dispensed the Royal Crown?, has the Throne dispensed the Hedgehog Broach?, what is the number that the Iron Portcullis lever array must match?). mach_state holds this state value. It is most often boolean but can be an integer, string, or whatever is needed. A Machine's state is typically inspected by Conditions and updated by Results.
 
-The MahineMixIn class has two methods: trig_check() and trigger()
+The MahineMixIn class has two methods: trig_check() and run_mach()
 
 Based on the trigger type, trig_check() composes trig_key_lst and compares it to the Machine's trig_val_lst and returns True or False.
 
-trigger() loops through cond_lst, checks whether each Condition is met (using the condition's check_cond() method), identifies the first True Condition in the ordered cond_lst and its index, and then runs results_exe for the Result in result_lst with the same index. The trigger() method then updates the Machine's machine_state and returns cmd_override. A structural requirement for trigger() to run successfully is that there must be one Result for every Condidtion and the associated Conditions and Results must be listed in the same order in cond_lst and result_lst.
+run_mach() loops through cond_lst, checks whether each Condition is met (using the condition's check_cond() method), identifies the first True Condition in the ordered cond_lst and its index, and then runs result_exe for the Result in result_lst with the same index. The run_mach() method then updates the Machine's mach_state and returns cmd_override. A structural requirement for run_mach() to run successfully is that there must be one Result for every Condidtion and the associated Conditions and Results must be listed in the same order in cond_lst and result_lst.
 
 
 An Example: 
@@ -210,7 +212,7 @@ Let's take a look at the control_panel Machine located in the antechamber:
 
 control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control_panel', None,
 				'post_act_switch', 0, red_button, ['pushed'], [left_lever, middle_lever, right_lever],
-				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result]) # machine_state == lever_array_value
+				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result]) # mach_state == lever_array_value
 
 And before we dive into the machine itself, let's take a glance at the room it's in:
 
@@ -226,23 +228,23 @@ web_main passes this user_input to app_main which opens the save pickle of objec
 
 Since red_button is in scope for Player interaction, the command is valid and interp() converts this too a two-word command (case = '2word', word_lst = ['button', 'push']).
 
-app_main() calls pre_action() next. It sees that control_panel is a machine but, as its trigger_type is NOT pre_act_cmd, takes no action. red_button does have trigger_type == pre_act_switch_reset so it is reset to 'neutral'. The control_panel trigger() method has not been run so cmd_override remains False and is returned.
+app_main() calls pre_action() next. It sees that control_panel is a machine but, as its trigger_type is NOT pre_act_cmd, takes no action. red_button does have trigger_type == pre_act_auto_switch_reset so it is reset to 'neutral'. The control_panel run_mach() method has not been run so cmd_override remains False and is returned.
 
 Since cmd_override == False, cmd_exe executes the Player's command. The ButtonSwitch push() method is called and red_button.switch_state = 'pushed' and the response "Pushed." is buffered to the user output.
 
 Control is passed back to app_main() which now calls post_action(). post_action() gets mach_obj_lst (the list of Machine objects in scope) from active_gs and itterates through it searching for any Machines that have trigger_type == 'post_act_switch'. control_panel meets these conditions so trig_case = 'switch' and trig_switch_state_lst = the state of the Machine's trigger switch = the state of control_panel's trigger switch = the state of red_button = 'pushed'. 
 
-Under the same if clause, the value of control_panel.trig_check() is checked and, since 'pushed' is in 'trig_val_lst' (trig_val_lst == ['pushed']), trig_check returns True and control_panel.trigger() is run.
+Under the same if clause, the value of control_panel.trig_check() is checked and, since 'pushed' is in 'trig_val_lst' (trig_val_lst == ['pushed']), trig_check returns True and control_panel.run_mach() is run.
 
 Let's say for the sake of arguement that the lever array is NOT set correctly.
 
-First control_panel.trigger() loops through cond_lst and runs cond_check() for each listed Condition. for control_panel, cond_lst == [correct_lever_array_cond, wrong_lever_array_cond]. correct_lever_array_cond is of class LeverArrayCond which is fairly complex. It has a cond_check() method that calculates the binary value of the of the lever array and then returns the compare of this sum to machine_state. Since the lever array is not set correctly, correct_lever_array_cond.cond_check() returns False.
+First control_panel.run_mach() loops through cond_lst and runs cond_check() for each listed Condition. for control_panel, cond_lst == [correct_lever_array_cond, wrong_lever_array_cond]. correct_lever_array_cond is of class LeverArrayCond which is fairly complex. It has a cond_check() method that calculates the binary value of the of the lever array and then returns the compare of this sum to mach_state. Since the lever array is not set correctly, correct_lever_array_cond.cond_check() returns False.
 
 wrong_lever_array_cond does none of the calculations descirbed above. It is of class PassThruCond which has a cond_check() method that checks nothing and simply returns a value of True. This works because wrong_lever_array_cond is the *last* condition in cond_lst and we execute the Result for the first Condition to be True.
 
-So we end up with cond_return_lst == [False, True] => result_num == 1 (the index of the first True Condition) => we rune results_exe on result_lst[result_num]. result_lst == [toggle_portcullis_result, portcullis_doesnt_open_result] so we run portcullis_doesnt_open_result.result_exe(). This is of class BufferOnlyResult so, sure enough, all it does is buffer some text (a mild clue to the Player) and return the existing cmd_override (False) and machine_state.
+So we end up with cond_return_lst == [False, True] => result_index == 1 (the index of the first True Condition) => we rune results_exe on result_lst[result_index]. result_lst == [toggle_portcullis_result, portcullis_doesnt_open_result] so we run portcullis_doesnt_open_result.result_exe(). This is of class BufferOnlyResult so, sure enough, all it does is buffer some text (a mild clue to the Player) and return the existing cmd_override (False) and mach_state.
 
-control_panel.trigger() is nearly done. It updates it's machine_state based on the return from portcullis_doesnt_open_result.result_exe() (which is the same as the existing machine_state) and then returns cmd_override (which by definition will always be False for tirgger_type == 'post_act_switch').
+control_panel.run_mach() is nearly done. It updates it's mach_state based on the return from portcullis_doesnt_open_result.result_exe() (which is the same as the existing mach_state) and then returns cmd_override (which by definition will always be False for tirgger_type == 'post_act_switch').
 
 The Machine has done its job! sore() and end() will be called next by app_main() as needed but the machine coding itself is fini!
 
