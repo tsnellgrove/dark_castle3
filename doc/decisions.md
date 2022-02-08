@@ -58,3 +58,9 @@ MODULE FLOW:
 - if no relevant event then output gets standard_output (generated from interpreter command)
 - How should modules be inter-related
 	 - minimally - there should be a clear flow with each sizable atomic bit of work having its own module
+
+
+DECISION: keep all the smarts in machine; lever only knows if it's up or down
+DECISION: prefer shallow class inheritance tree over deep
+DECISION: for now, only one trigger switch per machine... might want to add a 2nd at some point for a special puzzle
+
