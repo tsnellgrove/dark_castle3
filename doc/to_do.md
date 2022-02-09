@@ -1,5 +1,5 @@
 To Do List - Dark Castle v3
-Jan 9, 2022
+Feb 9, 2022
 
 
 *** How to Add Objects ***
@@ -10,96 +10,6 @@ Jan 9, 2022
 5) Run mk_def_pkl()
 6) Add object description in static_gbl
 
-
-##########################
-### VERSION 3.59 START ###
-##########################
-
-Version 3.59 Goals
-- Create / update machine documentation
-- fine tune machine code
-
-DONE: documentation:
-	DONE: write up thinking and decisions on machines and switches
-	DONE: Machine Code Updates
-		DONE: move machine_state to first Machine attribute
-			DONE: comment old code
-			DONE: write new code
-			DONE: full test
-			DONE: delete comments
-		DONE: standardize 'result' vs. 'results'
-			DONE: results_exe => resulte_exe
-			DONE: full test
-			DONE: delete comments
-		DONE: change results_class_def => result_class_deff
-			DONE: change file name
-			DONE: change import from mk_def_pkl()
-			DONE: run mk_def_pkl()
-			DONE: full test
-		DONE: trigger() => run_mach()
-			DONE: rename trigger() in mach_class_def
-			DONE: rename trigger() call in pre_action() and post_action()
-			DONE: full test
-			DONE: delete comments
-		DONE: result_num => result_index
-			DONE: in the mach_class_def module, run_mach() function, change result_num => result_index
-			DONE: run mk_def_pkl()
-			DONE: test
-			DONE: clean up comments
-		DONE: clean up post_action trig_switch_state_lst assignment
-			DONE: multi-value code retained in case of future changes
-		DONE: machine_state => mach_state
-			DONE: in the mach_class_def module, update machine_state => mach_state
-			DONE: run mk_def_pkl()
-			DONE: full test
-			DONE: clean up comments
-			DONE: in cond_class_def and result_class_def modules, update machine_state => mach_state
-			DONE: test
-		DONE: full test (portcullis button failing)
-			DONE: backed out trigger_type value changes... button still misbehaving... need to examine "mach_state" change
-			DONE: Review mach_state => updated in cond_class_def and result_class_def but still doesn't work right
-			INFO: now door only works on zero value lever array... ???
-			INFO: throne switch appears to work correctly
-			DONE: deep dive on LeverArrayCond
-				DONE: Don't forget to run mk_def_pkl after updates!!!
-			NOTE: solved it! had forgotten to updat machine_state => mach_state assignment in start_up()
-			DONE: full test
-		DONE: using trigger_type is *very* efficient... maybe just change attribute value to 'pre_act_auto_switch_reset' ???
-			DONE: change value in pre_action()
-			DONE: change value in mk_def_pkl()
-			DONE: run mk_def_pkl()
-			DONE: full test
-		CANCEL: re-name Switch trigger_type to switch_reset
-			CANCEL: update mach_obj_lst() in gs_class_def() to include switch_reset attribute
-			CANCEL: update pre_action module
-				CANCEL: add switch_reset check
-			CANCEL: updates SwitchMixIn in switch_class_def() to replace trigger_type with switch_reset
-				CANCEL: attribute
-				CANCEL: declaration
-				CANCEL: @properties
-			CANCEL: full test
-			CANCEL: delete comments
-		DONE: Machine naming convention... no '_mach' after control_panel ??
-			DONE: documented in Machine Decisions
-		DONE: Run switch re-sets w/ regular pass-thru machines (?)
-			CANCEL: add pre_act_auto code to pre-action
-			CANCEL: create SwitchResetResult
-			CANCEL: create switch_neutral_reset_result obj
-			IDEA: thinking through this further... I don't want to have to create a separate reset trigger for every "standard" switch
-			IDEA: standard switches should be pretty painless... I can make a complex switch later if I need special behaviors
-			IDEA: as a compromise, how about if I add a def_switch_state attribute to SwitchMixIn (standard value == 'neutral')
-			IDEA: then, in the pre_action() test, if obj.switch_state != obj.def_swicth_state: obj.switch_state = obj.def_switch_state
-			IDEA: this allows for non-'neutral' default switch states
-			DONE: add def_switch_state attribute to SwitchMixIn and ViewOnlySwitch
-			DONE: update switch obj values in mk_def_pkl
-			DONE: run mk_def_pkl
-			DONE: update reset code in pre_action 
-			DONE: Test
-			DONE: clean up comments
-	DONE: Finalize documentation
-		DONE: Update Machine Notes based on Code Updates
-		DONE: Separate document for Machine Notes
-		DONE: Sort out rough Machine ideas
 
 
 
