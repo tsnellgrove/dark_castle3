@@ -19,8 +19,8 @@ Feb 9, 2022
 Version 3.60 Goals
 - Create class, methods, and obj for goblin creature
 
-TBD: share updates with Franco
-TBD: consolidate rough Creature ideas
+DONE: share updates with Franco
+IN-PROC: consolidate rough Creature ideas
 
 
 ##########################
@@ -59,11 +59,21 @@ TBD: documentation:
 	TBD: create creature diagram
 
 
-*** creature ideas ***
 
-- Burt as an object??
-- How to enable switches and machines to self register for universal scope
-	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
+*** CREATURE IDEAS ***
+
+Creature Class Ideas:
+
+- Attributes:
+	- name
+	- descript
+	- mach_obj_lst
+	
+- Methods:
+	- Show
+	- Give
+	- Attack
+
 
 - creatures = pre-action trigger, post-action trigger, pre-action auto, post-action auto
 
@@ -77,16 +87,21 @@ TBD: documentation:
 ### Creature Class ###
 ### Switch Classes (button & lever) ###
 
-More obj Ideas:
-- timers as obj
-- 'warnings' as obj
-
 More ideas on Creatures:
 - Treat creatures like roving conditional events
 - Wrapper checks for presence of creature in room and checks for conditionals against creature too
 
 Key Creature Verbs (methods):
 - show, give, attack
+
+
+More obj Ideas:
+- timers as obj
+- 'warnings' as obj
+
+- Burt as an object??
+- How to enable switches and machines to self register for universal scope
+	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
 
 
 
