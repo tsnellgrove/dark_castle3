@@ -64,16 +64,32 @@ TBD: documentation:
 
 Creature Class Ideas:
 
-- Attributes:
-	- name
-	- descript
+- Class:
+	- inherits from ViewOnly
+	- inherited attributes: name, full_name, root_name, descript_key, writing
+
+- Unique Attributes:
+	- creature_state
 	- mach_obj_lst
+	- special_item_lst
+	- show_response_lst
+	- attack_warning (boolean)
+	- attack_warning_index
+	- attack_warning_lst
+	- attack_response (e.g. 'fight', 'flee', 'negotiate')
+	- defeatable_by_lst (e.g. for Goblin = Sword)
+	- item_lst (e.g. Note for Goblin)
 	
 - Methods:
-	- Show
+	- Show (default response = "the <creature> is not interested in the <item>")
 	- Give
 	- Attack
 
+- flow chart Goblin interaction
+
+- introduce pre-built "warning" machine?
+	- use for 'go south', 'attack hedgehog', 'lift heavy rock', etc
+	- or maybe bake warning into 'attack method'
 
 - creatures = pre-action trigger, post-action trigger, pre-action auto, post-action auto
 
