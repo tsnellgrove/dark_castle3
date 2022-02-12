@@ -69,27 +69,39 @@ Creature Class Ideas:
 	- inherited attributes: name, full_name, root_name, descript_key, writing
 
 - Unique Attributes:
-	- creature_state
-	- mach_obj_lst
-	- special_item_lst
-	- show_response_lst
-	- attack_warning (boolean)
-	- attack_warning_index
-	- attack_warning_lst
-	- attack_response (e.g. 'fight', 'flee', 'negotiate')
-	- defeatable_by_lst (e.g. for Goblin = Sword)
-	- item_lst (e.g. Note for Goblin)
+	- creature_state (Goblin = None)
+	- mach_obj_lst (for Goblin: attack if player interacts with room obj, watch player with malicious glare each turn in room; For Hedgehog: attack_warning)
+	- show_item_lst
+	- show_response_lst (Goblin is scared of sword; critical of all else)
+	- give_items_lst
+	- give_response_lst (Goblin "confiscates" all given items in a suspicious fashion)
+	- attack_win_lst (weapon_lst, result code, resutl text)
+	- attack_tie_lst (weapon_lst, result code, result text)
+	- attack_lose_lst (weapon_lst, result code, result text)
+		- weapon_lst : Fist, Sword, Axe, Other_Item
+		- result_code : 'tie', 'flee', 'creature_death', 'burt_death', 'negotiate'
+		- result_text : description of result
+	- creature_items_lst (e.g. Note and Axe for Goblin, Key for Hedgehog)
 	
 - Methods:
 	- Show (default response = "the <creature> is not interested in the <item>")
-	- Give
-	- Attack
+	- Give (default response = "the <creature> is not interested in the <item>")
+	- Attack (default response = 'flee')
+
+- On examine of Goblin - maybe some mention of Nana talking about Goblin Guard
+
+- Detail methods
 
 - flow chart Goblin interaction
 
 - introduce pre-built "warning" machine?
 	- use for 'go south', 'attack hedgehog', 'lift heavy rock', etc
 	- or maybe bake warning into 'attack method'
+
+- for attack warning
+	- attack_warning (boolean)
+	- attack_warning_index
+	- attack_warning_lst
 
 - creatures = pre-action trigger, post-action trigger, pre-action auto, post-action auto
 
