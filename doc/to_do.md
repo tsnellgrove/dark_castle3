@@ -20,7 +20,7 @@ Version 3.60 Goals
 - Create class, methods, and obj for goblin creature
 
 DONE: share updates with Franco
-IN-PROC: consolidate rough Creature ideas
+IN-PROC: consolidate / formalize rough Creature ideas => pseudo-code
 
 
 ##########################
@@ -68,18 +68,19 @@ Creature Class Ideas:
 	- inherits from ViewOnly
 	- inherited attributes: name, full_name, root_name, descript_key, writing
 
+
 - Unique Attributes:
 	- creature_state (Goblin = None)
 	- mach_obj_lst (for Goblin: attack if player interacts with room obj, watch player with malicious glare each turn in room; For Hedgehog: attack_warning)
 	- show_item_lst
 	- show_response_lst (Goblin is scared of sword; critical of all else)
 	- give_items_lst
-	- give_response_lst (Goblin "confiscates" all given items in a suspicious fashion)
+	- give_response_lst (Goblin "confiscates" all given items in a suspicious fashion) [should be list of lists of text response and barter item]
 	- attack_win_lst (weapon_lst, result code, resutl text)
 	- attack_tie_lst (weapon_lst, result code, result text)
 	- attack_lose_lst (weapon_lst, result code, result text)
 		- weapon_lst : Fist, Sword, Axe, Other_Item
-		- result_code : 'tie', 'flee', 'creature_death', 'burt_death', 'negotiate'
+		- result_code : 'flee', 'creature_death', 'burt_death', 'negotiate' (???)
 		- result_text : description of result
 	- creature_items_lst (e.g. Note and Axe for Goblin, Key for Hedgehog)
 	
@@ -88,9 +89,29 @@ Creature Class Ideas:
 	- Give (default response = "the <creature> is not interested in the <item>")
 	- Attack (default response = 'flee')
 
-- On examine of Goblin - maybe some mention of Nana talking about Goblin Guard
 
-- Detail methods
+*** Creature Method Philosopy ***
+
+- Show is meant to be informational in nature. The Player will learn something about the Creature - what it desires and fears - based on its response to the item shown. Therefore the show() method provides only a text response. It is possible that showing an item to a Creature could provoke an action response (e.g. running away) but this is outside the standard use case and should be implemented via Modular Machine.
+
+- Give it meant to enable barter and trade. If the Player gives an item to a Creature - particularly if that creature has shown interest in the item via show() - then the player can reasonably hope for some other useful item in return. Therefore the give() method provides a text response, removes an itme from Burt's hand, and places a new item in Burt's hand - but that's it. Again, it's possible that give() could trigger a more advanced sequence of actions from a Creature but this is outside the scope of the method and should be implemented via Modular Machine.
+
+- The Attack method is a bit more complex and is intended to enable decisive combat between Burt and creatures. Burt can attack a creature and a creature can pro-actively attack Burt. The intent in Dark Castle is for combat to be a purely logical exercise... so if you attack a Creature with the correct weapon you will always win. Burt's "weapon" is whatever he is holding in his hand. If Burt's hand is empty he attacks with his Fist. attack() must first determine (based on Burt's weapon) whether Burt wins, ties, or loses in combat. Based on this outcome there are several possible outcomes: 'flee', 'creature_death', 'burt_death', or None and text descriptions to go with them. As, with the other Creature methods, it's easy to imagine attack() provoking a more complex response than these outcomes - but those are outside the scope of the method and should be implemented via modular machine.
+
+
+
+*** Methods Psuedo Code ***
+
+- Show: 
+	if obj in creature.show_item_list: 
+		buffer creature.show_response_lst[item_index]
+	else:
+		buffer("the <creature> is not interested in the <item>")
+
+
+
+- Goblin Pseudo Code:
+	- On examine of Goblin - maybe some mention of Nana talking about Goblin Guard
 
 - flow chart Goblin interaction
 
