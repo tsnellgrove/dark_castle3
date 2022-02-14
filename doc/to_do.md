@@ -91,7 +91,7 @@ Creature Class Ideas:
 
 
 *** Open Thoughts ***
-should item lists be changed once an item is given? Maybe doesn't matter since there are no duplicates... and even if there were 2x Biscuits... the point would be for the hedgehog to want to eat them again?
+should item lists be changed once an item is given? Maybe doesn't matter since there are no duplicates... and even if there were 2x Biscuits... the point would be for the hedgehog to want to eat them again? So maybe creature_state doesn't really matter for show()? And maybe give() only needs to update creature_descript?
 
 
 *** Creature Method Philosopy ***
