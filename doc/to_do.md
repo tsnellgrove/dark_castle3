@@ -68,21 +68,30 @@ Creature Class Ideas:
 	- inherits from ViewOnly
 	- inherited attributes: name, full_name, root_name, descript_key, writing
 
-
-- Unique Attributes:
+- Unique Attributes v2:
 	- creature_state (Goblin = None)
 	- mach_obj_lst (for Goblin: attack if player interacts with room obj, watch player with malicious glare each turn in room; For Hedgehog: attack_warning)
+	- show_item_dict # {{item : 'response_key'}}
+	- give_item_dict # {{item : ['response_key, exchange_item, 'new_descript_key']}}
+	- attack_trgt_dict # {burt_weapon, result_code, result_text_key} (will need to implement default weapon code)
+	- attack_src_dict # {burt_weapon, result_code, result_text_key} (will need to implement default weapon code)
+	- creature_items_lst (e.g. Note and Axe for Goblin, Key for Hedgehog)
+	
+- Unique Attributes v1:
 	- show_item_lst
-	- show_response_lst (Goblin is scared of sword; critical of all else)
+	- show_response_lst
+		(Goblin is scared of sword; critical of all else)
 	- give_items_lst
-	- give_response_lst (Goblin "confiscates" all given items in a suspicious fashion) [should be list of lists of text response and barter item]
+	- give_response_lst 
+		[should be list of lists of text response and barter item]
+		(CANCEL: Goblin "confiscates" all given items in a suspicious fashion)
 	- attack_win_lst (weapon_lst, result code, resutl text)
 	- attack_tie_lst (weapon_lst, result code, result text)
 	- attack_lose_lst (weapon_lst, result code, result text)
 		- weapon_lst : Fist, Sword, Axe, Other_Item
 		- result_code : 'flee', 'creature_death', 'burt_death', 'negotiate' (???)
 		- result_text : description of result
-	- creature_items_lst (e.g. Note and Axe for Goblin, Key for Hedgehog)
+
 	
 - Methods:
 	- Show (default response = "the <creature> is not interested in the <item>")
@@ -105,7 +114,7 @@ So, based on the mechanical approach:
 
 - Show is meant to be informational in nature. The Player will learn something about the Creature - what it desires and fears - based on its response to the item shown. Therefore the show() method provides only a text response. It is possible that showing an item to a Creature could provoke an action response (e.g. running away) but this is outside the standard use case and should be implemented via Modular Machine. Ideally, show() would take creature_state into account.
 
-- Give it meant to enable barter and trade. If the Player gives an item to a Creature - particularly if that creature has shown interest in the item via show() - then the player can reasonably hope for some other useful item in return. Therefore the give() method provides a text response, removes an itme from Burt's hand, and places a new item in Burt's hand - but that's it. Again, it's possible that give() could trigger a more advanced sequence of actions from a Creature but this is outside the scope of the method and should be implemented via Modular Machine. Ideally, give() would take creature_state into account and be able to update it as well. 
+- Give it meant to enable barter and trade. If the Player gives an item to a Creature - particularly if that creature has shown interest in the item via show() - then the player can reasonably hope for some other useful item in return. Therefore the give() method provides a text response, removes an itme from Burt's hand, and places a new item in Burt's hand - but that's it. Again, it's possible that give() could trigger a more advanced sequence of actions from a Creature but this is outside the scope of the method and should be implemented via Modular Machine. Because give() can provide a creature with a vital need it also has the power to change the creature's mood and therefore update their description. 
 
 - The Attack method is a bit more complex and is intended to enable decisive combat between Burt and creatures. Burt can attack a creature and a creature can pro-actively attack Burt. The intent in Dark Castle is for combat to be a purely logical exercise... so if you attack a Creature with the correct weapon you will always win. Burt's "weapon" is whatever he is holding in his hand. If Burt's hand is empty he attacks with his Fist. attack() must first determine (based on Burt's weapon) whether Burt wins, ties, or loses in combat. Based on this outcome there are several possible outcomes: 'flee', 'creature_death', 'burt_death', or None and text descriptions to go with them. As, with the other Creature methods, it's easy to imagine attack() provoking a more complex response than these outcomes - but those are outside the scope of the method and should be implemented via modular machine.
 
