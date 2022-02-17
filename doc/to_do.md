@@ -11,8 +11,6 @@ Feb 9, 2022
 6) Add object description in static_gbl
 
 
-
-
 ##########################
 ### VERSION 3.60 START ###
 ##########################
@@ -20,8 +18,23 @@ Version 3.60 Goals
 - Create class, methods, and obj for goblin creature
 
 DONE: share updates with Franco
-IN-PROC: consolidate / formalize rough Creature ideas => pseudo-code
-
+DONE: consolidate / formalize rough Creature ideas => beginning pseudo-code
+TBD: create creature_class_def.py
+TBD: define base Creature class (no methods yet)
+TBD: add Creature to mk_def_pkl() imports
+TBD: instantiate goblin in mk_def_pkl() 
+TBD: add goblin to antechamber room
+TBD: add goblin obj to master_obj_lst in mk_def_pkl
+TBD: run mk_def_pkl()
+TBD: add base goblin description to static_gbl
+TBD: test
+TBD: evaluate updates needed in interpreter to support "show x to y"
+TBD: interpreter updates (expand this to-do as needed)
+TBD: create show method
+TBD: run mk_def_pkl()
+TBD: test show method
+TBD: update help function for prepositions and creat help function for creatures
+TBD: TBD
 
 ##########################
 ### VERSION 3.62 START ###
@@ -59,7 +72,6 @@ TBD: documentation:
 	TBD: create creature diagram
 
 
-
 *** CREATURE IDEAS ***
 
 Creature Class Ideas:
@@ -69,15 +81,34 @@ Creature Class Ideas:
 	- inherited attributes: name, full_name, root_name, descript_key, writing
 
 - Unique Attributes v2:
-	- creature_state (Goblin = None)
-	- mach_obj_lst (for Goblin: attack if player interacts with room obj, watch player with malicious glare each turn in room; For Hedgehog: attack_warning)
+	- creature_state
+		for Goblin = None
+	- mach_obj_lst
+		for Goblin: 
+			1) attack if player interacts with room obj
+			2) watch player with malicious glare each turn in room
+		For Hedgehog: 
+			1) attack_warning?
 	- show_item_dict # {{item : 'response_key'}}
-	- give_item_dict # {{item : ['response_key, exchange_item, 'new_descript_key']}}
-	- attack_trgt_dict # {burt_weapon, result_code, result_text_key} (will need to implement default weapon code)
-	- attack_src_dict # {burt_weapon, result_code, result_text_key} (will need to implement default weapon code)
-	- creature_items_lst (e.g. Note and Axe for Goblin, Key for Hedgehog)
+		- for Goblin: scared of sword
+	- give_item_dict
+		{{item : ['response_key, exchange_item, 'new_descript_key']}}
+		- for Goblin: scared of sword
+	- attack_trgt_dict
+		{burt_weapon, result_code, result_text_key}
+		(will need to implement default weapon code)
+	- attack_src_dict
+		{burt_weapon, result_code, result_text_key}
+		(will need to implement default weapon code)
+	- creature_items_lst
+		for Goblin: Note and Axe for Goblin
+		Key for Hedgehog
 	
-- Unique Attributes v1:
+- Unique Attributes v1 (Legacy):
+	- creature_state
+		(Goblin = None)
+	- mach_obj_lst
+		(for Goblin: attack if player interacts with room obj, watch player with malicious glare each turn in room; For Hedgehog: attack_warning)
 	- show_item_lst
 	- show_response_lst
 		(Goblin is scared of sword; critical of all else)
@@ -91,6 +122,7 @@ Creature Class Ideas:
 		- weapon_lst : Fist, Sword, Axe, Other_Item
 		- result_code : 'flee', 'creature_death', 'burt_death', 'negotiate' (???)
 		- result_text : description of result
+	- creature_items_lst (e.g. Note and Axe for Goblin, Key for Hedgehog)
 
 	
 - Methods:
@@ -127,7 +159,6 @@ So, based on the mechanical approach:
 		buffer creature.show_response_lst[item_index]
 	else:
 		buffer("the <creature> is not interested in the <item>")
-
 
 
 - Goblin Pseudo Code:
@@ -168,11 +199,6 @@ More obj Ideas:
 - timers as obj
 - 'warnings' as obj
 
-- Burt as an object??
-- How to enable switches and machines to self register for universal scope
-	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
-
-
 
 *** SOMEDAY MAYBE IDEAS ***
 
@@ -199,6 +225,11 @@ TBD: list of 'contained' internal_switches in MachMixIn attributes?
 TBD: re-name 'wrapper' to 'app_main'
 TBD: update pickle names
 TBD: out_buff => output (or possibly user_output)
+- Burt as an object??
+- How to enable switches and machines to self register for universal scope
+	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
+
+
 
 *** NEW PUZZLE IDEAS ***
 
