@@ -17,24 +17,32 @@ Feb 9, 2022
 Version 3.60 Goals
 - Create class, methods, and obj for goblin creature
 
-DONE: share updates with Franco
-DONE: consolidate / formalize rough Creature ideas => beginning pseudo-code
-TBD: create creature_class_def.py
-TBD: define base Creature class (no methods yet)
-TBD: add Creature to mk_def_pkl() imports
-TBD: instantiate goblin in mk_def_pkl() 
-TBD: add goblin to antechamber room
-TBD: add goblin obj to master_obj_lst in mk_def_pkl
-TBD: run mk_def_pkl()
-TBD: add base goblin description to static_gbl
-TBD: test
-TBD: evaluate updates needed in interpreter to support "show x to y"
-TBD: interpreter updates (expand this to-do as needed)
-TBD: create show method
-TBD: run mk_def_pkl()
-TBD: test show method
-TBD: update help function for prepositions and creat help function for creatures
-TBD: TBD
+DONE: Ideate
+	DONE: share updates with Franco
+	DONE: consolidate / formalize rough Creature ideas => beginning pseudo-code
+DONE: create base class
+	DONE: create creature_class_def.py
+	DONE: define base Creature class (no methods yet)
+	DONE: add Creature to mk_def_pkl() imports
+	DONE: run mk_def_pkl()
+	DONE: troubleshoot
+TBD: create base object
+	TBD: instantiate goblin in mk_def_pkl() 
+	TBD: add goblin to antechamber room
+	TBD: add goblin obj to master_obj_lst in mk_def_pkl
+	TBD: run mk_def_pkl()
+	TBD: add base goblin description to static_gbl
+	TBD: test
+TBD: create show() method
+	TBD: evaluate updates needed in interpreter to support "show x to y"
+	TBD: interpreter updates (expand this to-do as needed)
+	TBD: create show method
+	TBD: run mk_def_pkl()
+	TBD: test show method
+	TBD: update help function for prepositions and creat help function for creatures
+TBD: create give() method
+TBD: create attack() method
+TBD: create goblin machines
 
 ##########################
 ### VERSION 3.62 START ###
@@ -228,7 +236,9 @@ TBD: out_buff => output (or possibly user_output)
 - Burt as an object??
 - How to enable switches and machines to self register for universal scope
 	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
-
+- possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
+- in machines, should conditions and results just be key-value pairs in a dictionary?
+	- As opposed to needing 2 separate lists with identical indexes?
 
 
 *** NEW PUZZLE IDEAS ***
