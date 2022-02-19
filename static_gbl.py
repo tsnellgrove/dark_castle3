@@ -146,6 +146,9 @@ descript_dict = {
 		
 		'portcullis_doesnt_open_result' : "You press the button and hear a whirring of gears but nothing happens.",
 
+		### creatures ###
+		'goblin' : "The Goblin stands in the Alcove guarding the Control Panel and is armed and dangerous. It wields a Grimy Axe and looks at you with watchful malice. This goblin clearly takes its guard duties very seriously. It would not be wise to approach the Iron Portcullis or the Control Panel (or the Goblin!) un-armed.",
+
 		### room objects ###
 		'entrance' : "*** Entrance ***\n\nYou are standing atop the drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south the way back home. To the east and west and below you is the Moat.",
 		'main_hall' : "*** Main Hall ***\n\nYou are standing in what was once the sumptuous main hall of the castle. Faded Tapestries hang on the east and west walls. The Front Gate is to the south. And a foreboding archway leads to the north.",

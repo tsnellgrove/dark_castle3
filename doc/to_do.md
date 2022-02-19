@@ -26,13 +26,13 @@ DONE: create base class
 	DONE: add Creature to mk_def_pkl() imports
 	DONE: run mk_def_pkl()
 	DONE: troubleshoot
-TBD: create base object
-	TBD: instantiate goblin in mk_def_pkl() 
-	TBD: add goblin to antechamber room
-	TBD: add goblin obj to master_obj_lst in mk_def_pkl
-	TBD: run mk_def_pkl()
-	TBD: add base goblin description to static_gbl
-	TBD: test
+DONE: create base object
+	DONE: instantiate goblin in mk_def_pkl() 
+	DONE: add goblin to antechamber room
+	DONE: add goblin obj to master_obj_lst in mk_def_pkl
+	DONE: run mk_def_pkl()
+	DONE: add base goblin description to static_gbl
+	DONE: test
 TBD: create show() method
 	TBD: evaluate updates needed in interpreter to support "show x to y"
 	TBD: interpreter updates (expand this to-do as needed)
