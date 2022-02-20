@@ -54,6 +54,7 @@ DONE: redo default option code to avoid duplication (prep for give method)
 	DONE: update the show() method
 	DONE: run mk_def_pkl()
 	DONE: test
+DONE: add a biscuit-specific show() response (in support of future give() behavior) to avoid a quest-breaking scenario.
 TBD: create give() method
 	TBD: create give() method
 		TBD: confirm that item is in hand

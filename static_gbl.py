@@ -152,7 +152,8 @@ descript_dict = {
 		### creature responses ###
 		
 		'show_goblin_shiny_sword' : "The Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
-		'show_goblin_default' : "The Goblin glares at you with an expression of suspicion that verges on hostility and then motions for you to hand the item over for further inspection.",
+		'show_goblin_default' : "The Goblin glares at you with a hauty expression of suspicion and then motions for you to hand the item over for further inspection.",
+		'show_goblin_stale_bisuits' : "The Goblin scowels at the Stale Biscuits, wrinkles its nose, and then mutters something about 'gauche and impertinent' under its breath. You get the distinct impression that the Goblin doesn't think much of biscuits - or biscuit bakers for that matter.",
 
 		### room objects ###
 		'entrance' : "*** Entrance ***\n\nYou are standing atop the drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south the way back home. To the east and west and below you is the Moat.",

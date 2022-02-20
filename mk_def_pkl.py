@@ -108,7 +108,9 @@ control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control
 				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever],
 				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result]) # machine_state == lever_array_value
 
-goblin = Creature('goblin', 'Goblin', 'goblin', 'goblin', None, None, None, {shiny_sword : 'show_goblin_shiny_sword', 'def_show' : 'show_goblin_default'}, None, None, None, None)
+goblin = Creature('goblin', 'Goblin', 'goblin', 'goblin', None, None, None,
+				{shiny_sword : 'show_goblin_shiny_sword', stale_biscuits : 'show_goblin_stale_bisuits',
+				'def_show' : 'show_goblin_default'}, None, None, None, None)
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
 				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_mach])
