@@ -62,11 +62,11 @@ class Creature(ViewOnly):
 				creature_response = False
 				if obj in self.show_item_dict:
 						dict_key = obj
-						creature_response = True
+						creature_has_response = True
 				elif 'def_show' in self.show_item_dict:
 						dict_key = 'def_show'
-						creature_response = True
-				if creature_response:
+						creature_has_response = True
+				if creature_has_response:
 						descript_key = self.show_item_dict[dict_key]
 						descript_str = descript_dict[descript_key]
 						active_gs.buffer(descript_str)

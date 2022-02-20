@@ -63,6 +63,14 @@ TBD: create give() method
 		TBD: buffer descript_dict[response_key]
 		TBD: implement Creature def_give behavior
 		TBD: method default response = "the <creature> is not interested in the <item>"
+	TBD: add give() attributes (including creature_item_lst) to goblin
+	TBD: add give_response text to static_gbl
+	TBD: add 'give' to verb_lst in interp()
+	TBD: update interp() => elif word1 in ['show', 'give']
+	TBD: update cmd_exe() => elif word1 in ['show', 'give']
+	TBD: run mk_def_pkl()
+	TBD: test give() method
+	TBD: update help function for prepositions
 TBD: create attack() method
 TBD: create goblin machines
 TBD: create help function for creatures
