@@ -44,6 +44,12 @@ DONE: create show() method
 	DONE: run mk_def_pkl()
 	DONE: test show method
 	DONE: update help function for prepositions
+IN-PROC: add a default option to show() method
+	DONE: add 'def_show' entry to the show_item_dict attribute
+	DONE: update the show() method
+	DONE: update static_gbl
+	DONE: run mk_def_pkl()
+	DONE: test
 TBD: create give() method
 TBD: create attack() method
 TBD: create goblin machines
@@ -105,7 +111,7 @@ Creature Class Ideas:
 	- show_item_dict # {{item : 'response_key'}}
 		- for Goblin: scared of sword
 	- give_item_dict
-		{{item : ['response_key, exchange_item, 'new_descript_key']}}
+		{{item : {'response_key' : response_key, 'accept_item' : accept_item, 'exchange_item' : exchange_item, 'new_descript_key' : new_descript_key}}
 		- for Goblin: scared of sword
 	- attack_trgt_dict
 		{burt_weapon, result_code, result_text_key}

@@ -62,5 +62,10 @@ class Creature(ViewOnly):
 						descript_key = self.show_item_dict[obj]
 						descript_str = descript_dict[descript_key]
 						active_gs.buffer(descript_str)
+				elif 'def_show' in self.show_item_dict:
+						descript_key = self.show_item_dict['def_show']
+						descript_str = descript_dict[descript_key]
+						active_gs.buffer(descript_str)
 				else:
 						active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
+
