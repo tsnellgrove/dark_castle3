@@ -13,8 +13,8 @@ articles_lst = ['a', 'an', 'the']
 
 one_word_only_lst = ['help', 'credits', 'score', 'version', 'inventory', 'look', 'quit', 'xyzzy42']
 
-verbs_lst = ['help', 'examine', 'read', 'go', 'take', 'drop', 'unlock',
-				'open', 'close', 'lock', 'put', 'eat', 'drink', 'wear', 'push', 'pull'] # remove removed
+verbs_lst = ['help', 'examine', 'read', 'go', 'take', 'drop', 'unlock', 'open',
+				'close', 'lock', 'put', 'eat', 'drink', 'wear', 'push', 'pull','show'] # remove removed
 
 abbreviations_dict = {
 		'n' : 'north',
@@ -202,6 +202,21 @@ def interpreter(user_input, master_obj_lst):
 								return 'error', [dir_obj_error_msg]
 						else:
 								return 'put', [dirobj_obj, word1, noun_obj]
+		elif word1 == 'show':
+				if 'to' not in user_input_lst:
+						return 'error', ["I don't see the word 'to' in that sentence"]
+				else:
+						in_position = user_input_lst.index('to')
+						v_n_lst = list(islice(user_input_lst, in_position))
+						p_p_lst = list(islice(user_input_lst, in_position, None))
+						noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst)
+						dir_obj_error_state, dir_obj_error_msg, dirobj_obj = noun_handling(master_obj_lst, p_p_lst)
+						if noun_error_state:
+								return 'error', [noun_error_msg]
+						elif dir_obj_error_state:
+								return 'error', [dir_obj_error_msg]
+						else:
+								return 'show', [dirobj_obj, word1, noun_obj]
 		else: # '2word' case
 				error_state, error_msg, word2_obj = noun_handling(master_obj_lst, user_input_lst)
 				if error_state:

@@ -5,6 +5,7 @@
 
 ### import
 from noun_class_def import ViewOnly
+from static_gbl import descript_dict
 
 ### classes
 class Creature(ViewOnly):
@@ -54,3 +55,12 @@ class Creature(ViewOnly):
 		def creature_items_lst(self, new_state):
 				self._creature_items_lst = new_state
 
+		def show(self, obj, active_gs):
+				if not active_gs.hand_check(obj):
+						active_gs.buffer("You aren't holding the " + obj.full_name)
+				elif obj in self.show_item_dict:
+						descript_key = self.show_item_dict[obj]
+						descript_str = descript_dict[descript_key]
+						active_gs.buffer(descript_str)
+				else:
+						active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")

@@ -33,16 +33,21 @@ DONE: create base object
 	DONE: run mk_def_pkl()
 	DONE: add base goblin description to static_gbl
 	DONE: test
-TBD: create show() method
-	TBD: evaluate updates needed in interpreter to support "show x to y"
-	TBD: interpreter updates (expand this to-do as needed)
-	TBD: create show method
-	TBD: run mk_def_pkl()
-	TBD: test show method
-	TBD: update help function for prepositions and creat help function for creatures
+DONE: create show() method
+	DONE: evaluate updates needed in interpreter to support "show x to y"
+	DONE: create show method
+	DONE: add show attributes to goblin
+	DONE: add show_response text to static_gbl
+	DONE: add 'show' to verb_lst in interp()
+	DONE: interp() updates
+	DONE: cmd_exe() updates
+	DONE: run mk_def_pkl()
+	DONE: test show method
+	DONE: update help function for prepositions
 TBD: create give() method
 TBD: create attack() method
 TBD: create goblin machines
+TBD: create help function for creatures
 
 ##########################
 ### VERSION 3.62 START ###

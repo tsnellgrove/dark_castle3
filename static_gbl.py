@@ -26,7 +26,7 @@ descript_dict = {
 		### help subsystem - non-objects ###
 		'help_basics' : "Objects you can examine and interact with are capitalized. Use 'read' (not 'examine') to read text you find written on objects. You can 'take' one object that you can see into your hand at a time from the room, a container, your backpack, or from being worn. Your other hand is holding your light source. In many cases you must be holding an object in your hand in order to act uppon it (e.g. 'unlock', drop', 'eat', 'put', 'wear'). If you are already holding an item when you take something else, the original item you were holding is automatically transferred into your backpack. You can view what you're carying using 'inventory'. Use 'look' to get a description of the room you're in. Type 'quit' to quit.  Start all multi-word commands with a verb.",
 		'help_adjectives' : "Most nouns have an adjective (e.g. 'rusty key'). The interpreter recognizes adjectives but only requires them if other similar nouns are in the room. So 'take rusty key' and 'take key' are equivalent unless there is another key in the room.",
-		'help_prepositions' : "The only available preposition is 'in' and it is only used with the verb 'put'. This allows you to put items in containers. Example: 'put the rusty key in the wooden chest'",
+		'help_prepositions' : "There are two available prepositions: 'in' and 'to'. 'in' is used with the verb 'put'. This allows you to put items in containers. Example: 'put the rusty key in the wooden chest'. 'to' is used with the verb 'show'. This allows you to show items to creatures. Example: 'show the rusty key to the goblin'.",
 		'help_read' :  "If you can't 'read' something (e.g. a note or a scroll) try 'examine' instead. The item may have some readable text written on it that you'll learn more about via 'examine'.",
 		
 		### universal objects ###
@@ -148,6 +148,10 @@ descript_dict = {
 
 		### creatures ###
 		'goblin' : "The Goblin stands in the Alcove guarding the Control Panel and is armed and dangerous. It wields a Grimy Axe and looks at you with watchful malice. This goblin clearly takes its guard duties very seriously. It would not be wise to approach the Iron Portcullis or the Control Panel (or the Goblin!) un-armed.",
+
+		### creature responses ###
+		
+		'show_goblin_shiny_sword' : "The Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
 
 		### room objects ###
 		'entrance' : "*** Entrance ***\n\nYou are standing atop the drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south the way back home. To the east and west and below you is the Moat.",
