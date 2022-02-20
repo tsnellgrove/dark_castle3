@@ -58,14 +58,30 @@ class Creature(ViewOnly):
 		def show(self, obj, active_gs):
 				if not active_gs.hand_check(obj):
 						active_gs.buffer("You aren't holding the " + obj.full_name)
-				elif obj in self.show_item_dict:
-						descript_key = self.show_item_dict[obj]
-						descript_str = descript_dict[descript_key]
-						active_gs.buffer(descript_str)
+
+				creature_response = False
+				if obj in self.show_item_dict:
+						dict_key = obj
+						creature_response = True
 				elif 'def_show' in self.show_item_dict:
-						descript_key = self.show_item_dict['def_show']
+						dict_key = 'def_show'
+						creature_response = True
+				if creature_response:
+						descript_key = self.show_item_dict[dict_key]
 						descript_str = descript_dict[descript_key]
 						active_gs.buffer(descript_str)
 				else:
 						active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
+
+
+#				elif obj in self.show_item_dict:
+#						descript_key = self.show_item_dict[obj]
+#						descript_str = descript_dict[descript_key]
+#						active_gs.buffer(descript_str)
+#				elif 'def_show' in self.show_item_dict:
+#						descript_key = self.show_item_dict['def_show']
+#						descript_str = descript_dict[descript_key]
+#						active_gs.buffer(descript_str)
+#				else:
+#						active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
 

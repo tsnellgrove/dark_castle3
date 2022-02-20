@@ -44,13 +44,25 @@ DONE: create show() method
 	DONE: run mk_def_pkl()
 	DONE: test show method
 	DONE: update help function for prepositions
-IN-PROC: add a default option to show() method
+DONE: add a default option to show() method
 	DONE: add 'def_show' entry to the show_item_dict attribute
 	DONE: update the show() method
 	DONE: update static_gbl
 	DONE: run mk_def_pkl()
 	DONE: test
+DONE: redo default option code to avoid duplication (prep for give method)
+	DONE: update the show() method
+	DONE: run mk_def_pkl()
+	DONE: test
 TBD: create give() method
+	TBD: create give() method
+		TBD: confirm that item is in hand
+		TBD: if accept_item: remove item from hand and add to creature_item_lst
+		TBD: if exchange_item != None: removie item from creature_item_lst and add to hand
+		TBD: if new_descript_key != None: update self.descript_key
+		TBD: buffer descript_dict[response_key]
+		TBD: implement Creature def_give behavior
+		TBD: method default response = "the <creature> is not interested in the <item>"
 TBD: create attack() method
 TBD: create goblin machines
 TBD: create help function for creatures
