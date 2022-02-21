@@ -51,6 +51,9 @@ class Creature(ViewOnly):
 		def creature_items_lst(self):
 				return self._creature_items_lst
 
+		def creature_lst_append_item(self, item):
+				self._creature_items_lst.append(item)
+
 		@creature_items_lst.setter
 		def creature_items_lst(self, new_state):
 				self._creature_items_lst = new_state
@@ -67,9 +70,36 @@ class Creature(ViewOnly):
 						else:
 								creature_has_response = False
 						if creature_has_response:
-								descript_key = self.show_item_dict[dict_key]
-								descript_str = descript_dict[descript_key]
-								active_gs.buffer(descript_str)
+								response_key = self.show_item_dict[dict_key]
+								response_str = descript_dict[response_key]
+								active_gs.buffer(response_str)
 						else:
 								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
 
+		def give(self, obj, active_gs):
+				if not active_gs.hand_check(obj):
+						active_gs.buffer("You aren't holding the " + obj.full_name)
+				else:
+						creature_has_response = True
+						if obj in self.give_item_dict:
+								dict_key = obj
+						elif 'def_give' in self.show_item_dict:
+								dict_key = 'def_give'
+						else:
+								creature_has_response = False
+						if creature_has_response:
+								response_key = self.show_item_dict[dict_key]['response_key']
+								response_str = descript_dict[response_key]
+								active_gs.buffer(response_str)
+								accept_item = self.show_item_dict[dict_key]['accept_item']
+								if accept_item != None:
+										active_gs.hand_lst_remove_item(obj)
+										self.creature_lst_append_item(obj)
+						else:
+								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
+
+
+#		TBD: if exchange_item != None: removie item from creature_item_lst and add to hand
+#		TBD: if new_descript_key != None: update self.descript_key
+
+#		{{item : {'response_key' : response_key, 'accept_item' : accept_item, 'exchange_item' : exchange_item, 'new_descript_key' : new_descript_key}}

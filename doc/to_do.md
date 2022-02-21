@@ -55,14 +55,14 @@ DONE: redo default option code to avoid duplication (prep for give method)
 	DONE: run mk_def_pkl()
 	DONE: test
 DONE: add a biscuit-specific show() response (in support of future give() behavior) to avoid a quest-breaking scenario.
-TBD: create give() method
-	TBD: create give() method
-		TBD: confirm that item is in hand
-		TBD: if accept_item: remove item from hand and add to creature_item_lst
+IN-PROC: implement give() method
+	IN-PROC: create give() method
+		DONE: confirm that item is in hand
+		DONE: implement Creature def_give behavior
+		DONE: if accept_item: remove item from hand and add to creature_item_lst
+		DONE: buffer descript_dict[response_key]
 		TBD: if exchange_item != None: removie item from creature_item_lst and add to hand
 		TBD: if new_descript_key != None: update self.descript_key
-		TBD: buffer descript_dict[response_key]
-		TBD: implement Creature def_give behavior
 		TBD: method default response = "the <creature> is not interested in the <item>"
 	TBD: add give() attributes (including creature_item_lst) to goblin
 	TBD: add give_response text to static_gbl
