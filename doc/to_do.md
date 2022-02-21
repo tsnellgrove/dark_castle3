@@ -64,9 +64,9 @@ IN-PROC: implement give() method
 		DONE: if exchange_item != None: removie item from creature_item_lst and add to hand
 		DONE: if new_descript_key != None: update self.descript_key
 		DONE: method default response = "the <creature> is not interested in the <item>"
-	TBD: add give() attributes (including creature_item_lst) to goblin
+	DONE: add 'give' to verb_lst in interp()
+	DONE: add give() attributes (including creature_item_lst) to goblin
 	TBD: add give_response text to static_gbl
-	TBD: add 'give' to verb_lst in interp()
 	TBD: update interp() => elif word1 in ['show', 'give']
 	TBD: update cmd_exe() => elif word1 in ['show', 'give']
 	TBD: run mk_def_pkl()
@@ -132,7 +132,7 @@ Creature Class Ideas:
 	- show_item_dict # {{item : 'response_key'}}
 		- for Goblin: scared of sword
 	- give_item_dict
-		{{item : {'response_key' : response_key, 'accept_item' : accept_item, 'exchange_item' : give_item, 'new_descript_key' : new_descript_key}}
+		{{item : {'response_key' : response_key, 'accept_item' : accept_item, 'give_item' : give_item, 'new_descript_key' : new_descript_key}}
 		- for Goblin: scared of sword
 	- attack_trgt_dict
 		{burt_weapon, result_code, result_text_key}

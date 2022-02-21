@@ -109,8 +109,13 @@ control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control
 				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result]) # machine_state == lever_array_value
 
 goblin = Creature('goblin', 'Goblin', 'goblin', 'goblin', None, None, None,
-				{shiny_sword : 'show_goblin_shiny_sword', stale_biscuits : 'show_goblin_stale_bisuits',
-				'def_show' : 'show_goblin_default'}, None, None, None, None)
+				{shiny_sword : 'show_goblin_shiny_sword',
+					stale_biscuits : 'show_goblin_stale_bisuits',
+					'def_show' : 'show_goblin_default'}, 
+				{shiny_sword : {'response_key' : 'give_goblin_shiny_sword', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
+					stale_biscuits : {'response_key' : 'give_goblin_stale_biscuits', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
+					'def_give' : {'response_key' : 'give_goblin_default', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : None}},
+				None, None, [grimy_axe, torn_note])
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
 				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_mach])
