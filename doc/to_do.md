@@ -56,14 +56,14 @@ DONE: redo default option code to avoid duplication (prep for give method)
 	DONE: test
 DONE: add a biscuit-specific show() response (in support of future give() behavior) to avoid a quest-breaking scenario.
 IN-PROC: implement give() method
-	IN-PROC: create give() method
+	DONE: create give() method
 		DONE: confirm that item is in hand
 		DONE: implement Creature def_give behavior
 		DONE: if accept_item: remove item from hand and add to creature_item_lst
 		DONE: buffer descript_dict[response_key]
-		TBD: if exchange_item != None: removie item from creature_item_lst and add to hand
-		TBD: if new_descript_key != None: update self.descript_key
-		TBD: method default response = "the <creature> is not interested in the <item>"
+		DONE: if exchange_item != None: removie item from creature_item_lst and add to hand
+		DONE: if new_descript_key != None: update self.descript_key
+		DONE: method default response = "the <creature> is not interested in the <item>"
 	TBD: add give() attributes (including creature_item_lst) to goblin
 	TBD: add give_response text to static_gbl
 	TBD: add 'give' to verb_lst in interp()
@@ -132,7 +132,7 @@ Creature Class Ideas:
 	- show_item_dict # {{item : 'response_key'}}
 		- for Goblin: scared of sword
 	- give_item_dict
-		{{item : {'response_key' : response_key, 'accept_item' : accept_item, 'exchange_item' : exchange_item, 'new_descript_key' : new_descript_key}}
+		{{item : {'response_key' : response_key, 'accept_item' : accept_item, 'exchange_item' : give_item, 'new_descript_key' : new_descript_key}}
 		- for Goblin: scared of sword
 	- attack_trgt_dict
 		{burt_weapon, result_code, result_text_key}
@@ -271,6 +271,7 @@ TBD: out_buff => output (or possibly user_output)
 - possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
 - in machines, should conditions and results just be key-value pairs in a dictionary?
 	- As opposed to needing 2 separate lists with identical indexes?
+- Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
 
 
 *** NEW PUZZLE IDEAS ***

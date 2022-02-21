@@ -54,6 +54,9 @@ class Creature(ViewOnly):
 		def creature_lst_append_item(self, item):
 				self._creature_items_lst.append(item)
 
+		def creature_lst_remove_item(self, item):
+				self._creature_items_lst.remove(item)
+
 		@creature_items_lst.setter
 		def creature_items_lst(self, new_state):
 				self._creature_items_lst = new_state
@@ -89,17 +92,19 @@ class Creature(ViewOnly):
 								creature_has_response = False
 						if creature_has_response:
 								response_key = self.show_item_dict[dict_key]['response_key']
-								response_str = descript_dict[response_key]
-								active_gs.buffer(response_str)
 								accept_item = self.show_item_dict[dict_key]['accept_item']
+								accept_item = self.show_item_dict[dict_key]['give_item']
+								new_descript_key = self.show_item_dict[dict_key]['new_descript_key']
 								if accept_item != None:
 										active_gs.hand_lst_remove_item(obj)
 										self.creature_lst_append_item(obj)
+								if give_item != None:
+										self.creature_lst_remove_item(obj)
+										active_gs.hand_lst_append_item(obj)
+								if new_descript_key != None:
+										self.descript_key = new_descript_key
+								response_str = descript_dict[response_key]
+								active_gs.buffer(response_str)
 						else:
 								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
 
-
-#		TBD: if exchange_item != None: removie item from creature_item_lst and add to hand
-#		TBD: if new_descript_key != None: update self.descript_key
-
-#		{{item : {'response_key' : response_key, 'accept_item' : accept_item, 'exchange_item' : exchange_item, 'new_descript_key' : new_descript_key}}

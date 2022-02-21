@@ -44,6 +44,10 @@ class Writing(Invisible):
 		def descript_key(self):
 				return self._descript_key
 
+		@descript_key.setter
+		def descript_key(self, new_descript):
+				self._descript_key = new_descript
+
 		def get_descript_str(self, active_gs):
 				try:
 						descript_str = active_gs.get_dynamic_desc_dict(self.descript_key)
