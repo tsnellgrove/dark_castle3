@@ -66,11 +66,11 @@ IN-PROC: implement give() method
 		DONE: method default response = "the <creature> is not interested in the <item>"
 	DONE: add 'give' to verb_lst in interp()
 	DONE: add give() attributes (including creature_item_lst) to goblin
-	TBD: add give_response text to static_gbl
-	TBD: update interp() => elif word1 in ['show', 'give']
-	TBD: update cmd_exe() => elif word1 in ['show', 'give']
-	TBD: run mk_def_pkl()
-	TBD: test give() method
+	DONE: add give_response text to static_gbl
+	DONE: update interp() => elif word1 in ['show', 'give']
+	DONE: update cmd_exe() => elif word1 in ['show', 'give']
+	DONE: run mk_def_pkl()
+	TBD: test give() method (uses method default for un-named obj; errors out on biscuits and sword)
 	TBD: update help function for prepositions
 TBD: create attack() method
 TBD: create goblin machines

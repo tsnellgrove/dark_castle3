@@ -202,7 +202,8 @@ def interpreter(user_input, master_obj_lst):
 								return 'error', [dir_obj_error_msg]
 						else:
 								return 'put', [dirobj_obj, word1, noun_obj]
-		elif word1 == 'show':
+#		elif word1 == 'show':
+		elif word1 in ['show', 'give']:
 				if 'to' not in user_input_lst:
 						return 'error', ["I don't see the word 'to' in that sentence"]
 				else:

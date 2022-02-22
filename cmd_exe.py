@@ -99,7 +99,8 @@ def cmd_execute(active_gs, case, word_lst):
 								error_msg = rand_error()
 								active_gs.buffer(error_msg)
 								active_gs.move_dec()
-		elif case == 'show':
+#		elif case == 'show':
+		elif case in ['show', 'give']:
 				dirobj_obj, word1, noun_obj = word_lst
 				if active_gs.scope_check(noun_obj) == False:
 						active_gs.buffer("You can't see a " + noun_obj.full_name + " here.")
