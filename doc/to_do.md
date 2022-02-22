@@ -143,6 +143,7 @@ Creature Class Ideas:
 	- attack_src_dict
 		{burt_weapon, result_code, result_text_key}
 		(will need to implement default weapon code)
+	- NEW IDEA: maybe an attack_burt method???
 	- creature_items_lst
 		for Goblin: Note and Axe for Goblin
 		Key for Hedgehog
