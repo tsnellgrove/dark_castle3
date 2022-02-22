@@ -86,16 +86,16 @@ class Creature(ViewOnly):
 						creature_has_response = True
 						if obj in self.give_item_dict:
 								dict_key = obj
-						elif 'def_give' in self.show_item_dict:
+						elif 'def_give' in self.give_item_dict:
 								dict_key = 'def_give'
 						else:
 								creature_has_response = False
 						if creature_has_response:
-								response_key = self.show_item_dict[dict_key]['response_key']
+								response_key = self.give_item_dict[dict_key]['response_key']
 								response_str = descript_dict[response_key]
-								accept_item = self.show_item_dict[dict_key]['accept_item']
-								give_item = self.show_item_dict[dict_key]['give_item']
-								new_descript_key = self.show_item_dict[dict_key]['new_descript_key']
+								accept_item = self.give_item_dict[dict_key]['accept_item']
+								give_item = self.give_item_dict[dict_key]['give_item']
+								new_descript_key = self.give_item_dict[dict_key]['new_descript_key']
 								if accept_item:
 										active_gs.hand_lst_remove_item(obj)
 										self.creature_lst_append_item(obj)

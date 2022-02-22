@@ -15,7 +15,7 @@ Feb 9, 2022
 ### VERSION 3.60 START ###
 ##########################
 Version 3.60 Goals
-- Create class, methods, and obj for goblin creature
+- Create class, methods, obj, and machines for goblin creature
 
 DONE: Ideate
 	DONE: share updates with Franco
@@ -70,8 +70,11 @@ IN-PROC: implement give() method
 	DONE: update interp() => elif word1 in ['show', 'give']
 	DONE: update cmd_exe() => elif word1 in ['show', 'give']
 	DONE: run mk_def_pkl()
-	TBD: test give() method (uses method default for un-named obj; errors out on biscuits and sword)
-	TBD: update help function for prepositions
+	DONE: test give() method (uses method default for un-named obj; errors out on biscuits and sword)
+		DONE: method default for un-named obj solved
+		DONE: solved it!
+	DONE: update help function for prepositions
+	DONE: full final test
 TBD: create attack() method
 TBD: create goblin machines
 TBD: create help function for creatures

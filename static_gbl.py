@@ -26,7 +26,7 @@ descript_dict = {
 		### help subsystem - non-objects ###
 		'help_basics' : "Objects you can examine and interact with are capitalized. Use 'read' (not 'examine') to read text you find written on objects. You can 'take' one object that you can see into your hand at a time from the room, a container, your backpack, or from being worn. Your other hand is holding your light source. In many cases you must be holding an object in your hand in order to act uppon it (e.g. 'unlock', drop', 'eat', 'put', 'wear'). If you are already holding an item when you take something else, the original item you were holding is automatically transferred into your backpack. You can view what you're carying using 'inventory'. Use 'look' to get a description of the room you're in. Type 'quit' to quit.  Start all multi-word commands with a verb.",
 		'help_adjectives' : "Most nouns have an adjective (e.g. 'rusty key'). The interpreter recognizes adjectives but only requires them if other similar nouns are in the room. So 'take rusty key' and 'take key' are equivalent unless there is another key in the room.",
-		'help_prepositions' : "There are two available prepositions: 'in' and 'to'. 'in' is used with the verb 'put'. This allows you to put items in containers. Example: 'put the rusty key in the wooden chest'. 'to' is used with the verb 'show'. This allows you to show items to creatures. Example: 'show the rusty key to the goblin'.",
+		'help_prepositions' : "There are two available prepositions: 'in' and 'to'. 'in' is used with the verb 'put'. This allows you to put items in containers. Example: 'put the rusty key in the wooden chest'. 'to' is used with the verbs 'show' and 'give'. This allows you to show or give items to creatures. Examples: 'show the rusty key to the goblin' or 'give the rusty key to the hedgehog'.",
 		'help_read' :  "If you can't 'read' something (e.g. a note or a scroll) try 'examine' instead. The item may have some readable text written on it that you'll learn more about via 'examine'.",
 		
 		### universal objects ###
@@ -155,8 +155,8 @@ descript_dict = {
 		'show_goblin_default' : "The Goblin glares at you with a hauty expression of disdain and then imperiously motions for you to hand the item over for further inspection.",
 		'show_goblin_stale_bisuits' : "The Goblin scowels at the Stale Biscuits, wrinkles its nose, and then mutters something about 'gauche and impertinent' under its breath. You get the distinct impression that the Goblin doesn't think much of biscuits - or biscuit bakers for that matter.",
 		'give_goblin_default' : "The Goblin pockets the item and mutters something about the need to confiscate articles of dubious provenance from ill-favored vagrants.",
-		'give_goblin_stale_biscuits' : "The Goblin waves its hand dismissively at the suggestion that it take reciept of the Stale Biscuits and gives you an expression that clearly indicates that it would be best if we all just pretended that this had never happened.",
-		'give_goblin_shiny_sword' : "The Goblin blanches and backs away, horrified at the thought of touching the Shiny Sword.",
+		'give_goblin_stale_biscuits' : "The Goblin waves its hand dismissively at the suggestion that it take reciept of the Stale Biscuits and makes an expression indicating that it would be best if we all just pretended that this had never happened.",
+		'give_goblin_shiny_sword' : "The Goblin blanches and backs away, terrified at the very thought of even touching the Shiny Sword.",
 
 		### room objects ###
 		'entrance' : "*** Entrance ***\n\nYou are standing atop the drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south the way back home. To the east and west and below you is the Moat.",
