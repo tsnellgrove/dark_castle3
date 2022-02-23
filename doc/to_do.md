@@ -76,8 +76,32 @@ IN-PROC: implement give() method
 	DONE: update help function for prepositions
 	DONE: full final test
 TBD: create attack() method
+	TBD: remove attack_src_dict attribute
+	TBD: create attack() method
+		TBD: burt_weapon = hand_item ('Fist' if hand is empty)
+		TBD: attack_dict = {burt_weapon : result_code, response_key}
+			TBD: result_code options = 'creature_flee', 'creature_death', 'burt_death', None
+		TBD: implement 'def_attack' behavior
+		TBD: buffer descript_dict[response_key]
+		TBD: if result_code == 'creature_flee': remove creature from room_obj_lst
+		TBD: if result_code == 'creature_death': 
+			TBD: creature_items_lst => room_obj_lst
+			TBD: remove creature from room_obj_lst
+			TBD: add dead_creature obj to room_obj_lst
+		TBD: if result_code == 'burt_death': active_gs.set_game_ending('death')
+		TBD: method default response = "At the last minute the <creature> dodges your vicious attack with the <burt_weapon>"
+	TBD: add 'attack' to verb_lst in interp()
+	TBD: add attack() attributes (including creature_item_lst) to goblin
+	TBD: add attack_response text to static_gbl
+	TBD: run mk_def_pkl()
+	TBD: test attack() method
+	TBD: create help function for 'combat'
+	TBD: full final test
 TBD: create goblin machines
+	TBD: attack burt machine
+	TBD: update on behavior (e.g. "the goblin is eyeing you coldly") each turn - maybe shoudl be a standard function??
 TBD: create help function for creatures
+TBD: update creature doc
 
 ##########################
 ### VERSION 3.62 START ###
@@ -108,7 +132,7 @@ Version 3.68 Goals
 - Create / update program documentation
 
 TBD: documentation:
-	TBD: write up thinking and decisions on creatures
+	TBD: updeate creature doc
 	TBD: update class diagram
 	TBD: update module diagram
 	TBD: create machine diagram
@@ -137,13 +161,9 @@ Creature Class Ideas:
 	- give_item_dict
 		{{item : {'response_key' : response_key, 'accept_item' : accept_item, 'give_item' : give_item, 'new_descript_key' : new_descript_key}}
 		- for Goblin: scared of sword
-	- attack_trgt_dict
-		{burt_weapon, result_code, result_text_key}
+	- attack_dict
+		{burt_weapon : result_code, result_text_key}
 		(will need to implement default weapon code)
-	- attack_src_dict
-		{burt_weapon, result_code, result_text_key}
-		(will need to implement default weapon code)
-	- NEW IDEA: maybe an attack_burt method???
 	- creature_items_lst
 		for Goblin: Note and Axe for Goblin
 		Key for Hedgehog
@@ -164,7 +184,7 @@ Creature Class Ideas:
 	- attack_tie_lst (weapon_lst, result code, result text)
 	- attack_lose_lst (weapon_lst, result code, result text)
 		- weapon_lst : Fist, Sword, Axe, Other_Item
-		- result_code : 'flee', 'creature_death', 'burt_death', 'negotiate' (???)
+		- result_code : 'creature_flee', 'creature_death', 'burt_death', None
 		- result_text : description of result
 	- creature_items_lst (e.g. Note and Axe for Goblin, Key for Hedgehog)
 
@@ -173,6 +193,14 @@ Creature Class Ideas:
 	- Show (default response = "the <creature> is not interested in the <item>")
 	- Give (default response = "the <creature> is not interested in the <item>")
 	- Attack (default response = 'flee')
+
+- Creature Machines
+	- how does goblin attack Burt??
+		- attack_src_dict
+			{burt_weapon, result_code, result_text_key}
+			(will need to implement default weapon code)
+		- NEW IDEA: maybe an attack_burt method???
+
 
 
 *** Open Thoughts ***
