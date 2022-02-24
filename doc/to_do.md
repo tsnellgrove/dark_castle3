@@ -55,7 +55,7 @@ DONE: redo default option code to avoid duplication (prep for give method)
 	DONE: run mk_def_pkl()
 	DONE: test
 DONE: add a biscuit-specific show() response (in support of future give() behavior) to avoid a quest-breaking scenario.
-IN-PROC: implement give() method
+DONE: implement give() method
 	DONE: create give() method
 		DONE: confirm that item is in hand
 		DONE: implement Creature def_give behavior
@@ -75,13 +75,13 @@ IN-PROC: implement give() method
 		DONE: solved it!
 	DONE: update help function for prepositions
 	DONE: full final test
-TBD: create attack() method
-	TBD: remove attack_src_dict attribute
-	TBD: create attack() method
-		TBD: burt_weapon = hand_item ('Fist' if hand is empty)
-		TBD: attack_dict = {burt_weapon : result_code, response_key}
-			TBD: result_code options = 'creature_flee', 'creature_death', 'burt_death', None
-		TBD: implement 'def_attack' behavior
+IN-PROC: create attack() method
+	IDEA: attack_creature_dict = {burt_weapon : result_code, response_key}
+	IDEA: result_code options = 'creature_flee', 'creature_death', 'burt_death', None
+	DONE: remove attack_src_dict attribute
+	IN-PROC: create attack() method
+		DONE: burt_weapon = hand_item ('Fist' if hand is empty)
+		DONE: implement 'def_attack' behavior
 		TBD: buffer descript_dict[response_key]
 		TBD: if result_code == 'creature_flee': remove creature from room_obj_lst
 		TBD: if result_code == 'creature_death': 
@@ -161,7 +161,7 @@ Creature Class Ideas:
 	- give_item_dict
 		{{item : {'response_key' : response_key, 'accept_item' : accept_item, 'give_item' : give_item, 'new_descript_key' : new_descript_key}}
 		- for Goblin: scared of sword
-	- attack_dict
+	- attack_creature_dict
 		{burt_weapon : result_code, result_text_key}
 		(will need to implement default weapon code)
 	- creature_items_lst

@@ -9,14 +9,14 @@ from static_gbl import descript_dict
 
 ### classes
 class Creature(ViewOnly):
-		def __init__(self, name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict, attack_trgt_dict, attack_src_dict, creature_items_lst):
+		def __init__(self, name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict, 
+		attack_creature_dict, creature_items_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._creature_state = creature_state
 				self._mach_obj_lst = mach_obj_lst
 				self._show_item_dict = show_item_dict
 				self._give_item_dict = give_item_dict
-				self._attack_trgt_dict = attack_trgt_dict
-				self._attack_src_dict = attack_src_dict
+				self._attack_creature_dict = attack_creature_dict
 				self._creature_items_lst = creature_items_lst
 
 		@property
@@ -107,4 +107,18 @@ class Creature(ViewOnly):
 								active_gs.buffer(response_str)
 						else:
 								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
+
+		def attack(self, active_gs):
+				if active_gs.hand_empty:
+						burt_weapon = 'fist'
+				else:
+						hand_lst = active_gs.get_hand_lst()
+						burt_weapon = hand_lst[0]
+				creature_has_response = True
+				if burt_weapon in self.attack_creature_dict:
+						dict_key = burt_weapon
+				elif 'def_attack' in self.attack_creature_dict:
+						dict_key = 'def_attack'
+				else:
+						creature_has_response = False
 
