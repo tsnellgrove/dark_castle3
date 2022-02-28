@@ -121,4 +121,10 @@ class Creature(ViewOnly):
 						dict_key = 'def_attack'
 				else:
 						creature_has_response = False
+				if creature_has_response:
+						response_key = self.attack_creature_dict[dict_key]['response_key']
+						response_str = descript_dict[response_key]
+						active_gs.buffer(response_str)
 
+				else:
+						active_gs.buffer("At the last minute the " + self.full_name + " dodges your fearsome attack with the " + burt_weapon + ".")

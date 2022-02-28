@@ -82,14 +82,15 @@ IN-PROC: create attack() method
 	IN-PROC: create attack() method
 		DONE: burt_weapon = hand_item ('Fist' if hand is empty)
 		DONE: implement 'def_attack' behavior
-		TBD: buffer descript_dict[response_key]
+		DONE: buffer descript_dict[response_key]
 		TBD: if result_code == 'creature_flee': remove creature from room_obj_lst
 		TBD: if result_code == 'creature_death': 
 			TBD: creature_items_lst => room_obj_lst
 			TBD: remove creature from room_obj_lst
 			TBD: add dead_creature obj to room_obj_lst
 		TBD: if result_code == 'burt_death': active_gs.set_game_ending('death')
-		TBD: method default response = "At the last minute the <creature> dodges your vicious attack with the <burt_weapon>"
+		DONE: method default response = "At the last minute the <creature> dodges your vicious attack with the <burt_weapon>"
+		TBD: fix 'fist' gramar (i.e. "the <weapon>" vs. "your fist")
 	TBD: add 'attack' to verb_lst in interp()
 	TBD: add attack() attributes (including creature_item_lst) to goblin
 	TBD: add attack_response text to static_gbl
