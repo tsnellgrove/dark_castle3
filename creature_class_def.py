@@ -10,7 +10,7 @@ from static_gbl import descript_dict
 ### classes
 class Creature(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict, 
-		attack_creature_dict, creature_items_lst):
+		attack_creature_dict, creature_items_lst, dead_creature_obj):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._creature_state = creature_state
 				self._mach_obj_lst = mach_obj_lst
@@ -18,6 +18,7 @@ class Creature(ViewOnly):
 				self._give_item_dict = give_item_dict
 				self._attack_creature_dict = attack_creature_dict
 				self._creature_items_lst = creature_items_lst
+				self._dead_creature_obj = dead_creature_obj
 
 		@property
 		def creature_state(self):
@@ -60,6 +61,11 @@ class Creature(ViewOnly):
 		@creature_items_lst.setter
 		def creature_items_lst(self, new_state):
 				self._creature_items_lst = new_state
+
+		@property
+		def dead_creature_obj(self):
+				return self._dead_creature_obj
+
 
 		def show(self, obj, active_gs):
 				if not active_gs.hand_check(obj):
@@ -125,6 +131,15 @@ class Creature(ViewOnly):
 						response_key = self.attack_creature_dict[dict_key]['response_key']
 						response_str = descript_dict[response_key]
 						active_gs.buffer(response_str)
-
+						if self.attack_creature_dict['result_code'] == 'creature_flee':
+								room_obj = active_gs.get_room()
+								room_obj.room_obj_lst_remove(self)
+						elif self.attack_creature_dict['result_code'] == 'burt_death':
+								active_gs.set_game_ending('death')
+						elif self.attack_creature_dict['result_code'] == 'creature_death':
+								room_obj = active_gs.get_room()
+								room_obj.room_obj_lst_remove(self)
+								room_obj.room_obj_lst_extend(self.creature_items_lst)
+								room_obj.room_obj_lst_append(self.dead_creature_obj)
 				else:
 						active_gs.buffer("At the last minute the " + self.full_name + " dodges your fearsome attack with the " + burt_weapon + ".")

@@ -34,6 +34,7 @@ faded_tapestries = ViewOnly('faded_tapestries', 'Faded Tapestries', 'tapestries'
 alcove = ViewOnly('alcove', 'Alcove', 'alcove', 'alcove', None)
 stone_coffer = ViewOnly('stone_coffer', 'Stone Coffer', 'coffer', 'stone_coffer', None)
 family_tree = ViewOnly('family_tree', 'Family Tree', 'tree', 'family_tree', None)
+dead_goblin = ViewOnly('dead_goblin', 'Dead Goblin', 'goblin', 'dead_goblin', None)
 
 rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None)
 shiny_sword = Item('shiny_sword', 'Shiny Sword', "sword", 'shiny_sword', dwarven_runes)
@@ -115,7 +116,7 @@ goblin = Creature('goblin', 'Goblin', 'goblin', 'goblin', None, None, None,
 				{shiny_sword : {'response_key' : 'give_goblin_shiny_sword', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
 					stale_biscuits : {'response_key' : 'give_goblin_stale_biscuits', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
 					'def_give' : {'response_key' : 'give_goblin_default', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : None}},
-				None, [grimy_axe, torn_note])
+				None, [grimy_axe, torn_note], dead_goblin)
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
 				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_mach])

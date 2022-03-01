@@ -108,6 +108,9 @@ class Room(ViewOnly):
 		def room_obj_lst_append(self, item):
 				self._room_obj_lst.append(item)
 
+		def room_obj_lst_extend(self, lst):
+				self._room_obj_lst.append(lst)
+
 		def room_obj_lst_remove(self, item):
 				self._room_obj_lst.remove(item)
 

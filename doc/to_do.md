@@ -79,24 +79,29 @@ IN-PROC: create attack() method
 	IDEA: attack_creature_dict = {burt_weapon : result_code, response_key}
 	IDEA: result_code options = 'creature_flee', 'creature_death', 'burt_death', None
 	DONE: remove attack_src_dict attribute
-	IN-PROC: create attack() method
+	DONE: create attack() method
 		DONE: burt_weapon = hand_item ('Fist' if hand is empty)
 		DONE: implement 'def_attack' behavior
 		DONE: buffer descript_dict[response_key]
-		TBD: if result_code == 'creature_flee': remove creature from room_obj_lst
-		TBD: if result_code == 'creature_death': 
-			TBD: creature_items_lst => room_obj_lst
-			TBD: remove creature from room_obj_lst
-			TBD: add dead_creature obj to room_obj_lst
-		TBD: if result_code == 'burt_death': active_gs.set_game_ending('death')
+		DONE: if result_code == 'creature_flee': remove creature from room_obj_lst
+		DONE: if result_code == 'creature_death': 
+			DONE: creature_items_lst => room_obj_lst
+			DONE: remove creature from room_obj_lst
+			DONE: add dead_creature obj to room_obj_lst
+			DONE: add dead_creature_obj to Creature class attributes
+			DONE: update goblin obj
+			DONE: create dead_goblin ViewOnly obj
+		DONE: if result_code == 'burt_death': active_gs.set_game_ending('death')
 		DONE: method default response = "At the last minute the <creature> dodges your vicious attack with the <burt_weapon>"
-		TBD: fix 'fist' gramar (i.e. "the <weapon>" vs. "your fist")
 	TBD: add 'attack' to verb_lst in interp()
 	TBD: add attack() attributes (including creature_item_lst) to goblin
 	TBD: add attack_response text to static_gbl
+	TBD: add descript_dict entry for dead_goblin
 	TBD: run mk_def_pkl()
 	TBD: test attack() method
+	TBD: fix 'fist' gramar (i.e. "the <weapon>" vs. "your fist")
 	TBD: create help function for 'combat'
+	TBD: what should happen if Burt tries to take the axe from a living goblin? (general case)
 	TBD: full final test
 TBD: create goblin machines
 	TBD: attack burt machine
