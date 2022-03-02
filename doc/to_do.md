@@ -93,12 +93,13 @@ IN-PROC: create attack() method
 			DONE: create dead_goblin ViewOnly obj
 		DONE: if result_code == 'burt_death': active_gs.set_game_ending('death')
 		DONE: method default response = "At the last minute the <creature> dodges your vicious attack with the <burt_weapon>"
-	TBD: add 'attack' to verb_lst in interp()
-	TBD: add attack() attributes (including creature_item_lst) to goblin
-	TBD: add attack_response text to static_gbl
-	TBD: add descript_dict entry for dead_goblin
-	TBD: run mk_def_pkl()
+	DONE: add 'attack' to verb_lst in interp()
+	DONE: add attack() attributes (including creature_item_lst) to goblin
+	DONE: add attack_response text to static_gbl
+	DONE: add descript_dict entry for dead_goblin
+	DONE: run mk_def_pkl()
 	TBD: test attack() method
+	TBD: add buffer of weapon used in attack() method
 	TBD: fix 'fist' gramar (i.e. "the <weapon>" vs. "your fist")
 	TBD: create help function for 'combat'
 	TBD: what should happen if Burt tries to take the axe from a living goblin? (general case)
@@ -173,6 +174,7 @@ Creature Class Ideas:
 	- creature_items_lst
 		for Goblin: Note and Axe for Goblin
 		Key for Hedgehog
+	- dead_creature_obj
 	
 - Unique Attributes v1 (Legacy):
 	- creature_state
