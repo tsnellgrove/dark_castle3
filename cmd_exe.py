@@ -108,7 +108,6 @@ def cmd_execute(active_gs, case, word_lst):
 						active_gs.buffer("You can't see a " + dirobj_obj.full_name + " here.")
 						return 
 				else:
-						getattr(dirobj_obj, word1)(noun_obj, active_gs)
 						try:
 								getattr(dirobj_obj, word1)(noun_obj, active_gs)
 						except:
