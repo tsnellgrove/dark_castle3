@@ -9,7 +9,7 @@ from static_gbl import descript_dict
 
 ### classes
 class Creature(ViewOnly):
-		def __init__(self, name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict, 
+		def __init__(self, name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict,
 		attack_creature_dict, creature_items_lst, dead_creature_obj):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._creature_state = creature_state

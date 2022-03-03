@@ -99,9 +99,12 @@ IN-PROC: create attack() method
 	DONE: add descript_dict entry for dead_goblin
 	DONE: run mk_def_pkl()
 	TBD: test attack() method
+		TBD: troubleshoot double show and give
+		TBD: troubleshoot attack command
 	TBD: add buffer of weapon used in attack() method
 	TBD: fix 'fist' gramar (i.e. "the <weapon>" vs. "your fist")
 	TBD: create help function for 'combat'
+	TBD: reduce duplication in cmd_exe() put, give, take, 2word cases
 	TBD: what should happen if Burt tries to take the axe from a living goblin? (general case)
 	TBD: full final test
 TBD: create goblin machines
