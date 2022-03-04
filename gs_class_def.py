@@ -100,10 +100,11 @@ class GameState(object):
 		def backpack_lst_remove_item(self, item):
 				self._state_dict['backpack'].remove(item)
 
+		### hand ###
+
 		def get_hand_lst(self):
 				return self._state_dict['hand']
 
-		### hand ###
 		def hand_lst_append_item(self, item):
 				self._state_dict['hand'].append(item)
 

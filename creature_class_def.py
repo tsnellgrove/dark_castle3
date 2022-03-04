@@ -41,12 +41,8 @@ class Creature(ViewOnly):
 				return self._give_item_dict
 
 		@property
-		def attack_trgt_dict(self):
-				return self._attack_trgt_dict
-
-		@property
-		def attack_src_dict(self):
-				return self._attack_src_dict
+		def attack_creature_dict(self):
+				return self._attack_creature_dict
 
 		@property
 		def creature_items_lst(self):
@@ -115,14 +111,22 @@ class Creature(ViewOnly):
 								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
 
 		def attack(self, active_gs):
-				if active_gs.hand_empty:
-						burt_weapon = 'fist'
+				if active_gs.hand_empty():
+						burt_weapon_name = 'fist'
+						burt_weapon_obj = None
 				else:
 						hand_lst = active_gs.get_hand_lst()
-						burt_weapon = hand_lst[0]
+						burt_weapon_obj = hand_lst[0]
+						burt_weapon_name = burt_weapon_obj.full_name
 				creature_has_response = True
-				if burt_weapon in self.attack_creature_dict:
-						dict_key = burt_weapon
+
+				print(hand_lst)
+				print(active_gs.hand_empty())
+				print(burt_weapon_obj)
+				print(burt_weapon_name)
+
+				if burt_weapon_obj in self.attack_creature_dict:
+						dict_key = burt_weapon_obj
 				elif 'def_attack' in self.attack_creature_dict:
 						dict_key = 'def_attack'
 				else:
@@ -142,4 +146,4 @@ class Creature(ViewOnly):
 								room_obj.room_obj_lst_extend(self.creature_items_lst)
 								room_obj.room_obj_lst_append(self.dead_creature_obj)
 				else:
-						active_gs.buffer("At the last minute the " + self.full_name + " dodges your fearsome attack with the " + burt_weapon + ".")
+						active_gs.buffer("At the last minute the " + self.full_name + " dodges your fearsome attack with the " + burt_weapon_name + ".")
