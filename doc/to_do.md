@@ -103,7 +103,8 @@ IN-PROC: create attack() method
 		IN-PROC: troubleshoot attack command
 		DONE: able to ref shiny_sword
 		DONE: attack works but list add of goblin_items_lst is now an issue
-		TBD: fix extend function
+		DONE: fix extend function
+		DONE: fix dead_goblin 'goblin' short name
 		TBD: fix 'def_attack'
 	TBD: add buffer of weapon used in attack() method
 	TBD: fix 'fist' gramar (i.e. "the <weapon>" vs. "your fist")

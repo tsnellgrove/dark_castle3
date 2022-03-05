@@ -66,7 +66,7 @@ descript_dict = {
 		'faded_tapestries' : "The Main Hall Faded Tapestries are vast and elaborate, covering both the east and the west walls. They appear to depict an unkempt figure breaking into a solitary white house and from there pillaging a Great Underground Empire. Strangely, there is a looming figure near the top of the west tapestry who appears to be tapping with his fingers on a many-buttoned plank and staring intently into a window filled with text. For some reason the figure disconcerts you.. his presence in the Faded Tapestries fills you with existential dread and forces you to question your agency and the very nature of your being... BURT!! Get hold of yourself man! You're a mangey, pub-crawling adventurer who lives in his mom's basement. You don't even know what half those words mean. Stop staring at tapestries and get out there and find the treasure you fool!!",
 		'stone_coffer' : "This is the sort of coffer that, in better days, was no doubt filled to the brim will brightly shining gold pieces. Unfortunately, as you'd begun to fear, those days are long past and now the coffer is filled only with a deep layer of dust.",
 		'family_tree' : "It appears to show the family tree of the Flathead dynasty. Though generally agreed to have peaked (nadired?) during the reign of Dimwit Flathead and petered out shortly there-after during the inglorious rulership of Wurb Flathead, this Family Tree tells a different story. It claims that a remote uncle of Wurb continued the line for seven more generations and eventually ended with William 'The Wanderer' Flathead only a little over 100 years ago. The area below William is indistinct and feels incomplete.. as if there are details still waiting to be filled in.\n\nAt the very top of the family_tree you see a royal crest. Oddly enough, it appears to be a Hedgehog bearing a Shiny Sword and a Silver Key.",
-		'dead_goblin' : "Even in death the Goblin looks fierce and resolute. Whoever dispatched this enemy must be an adventurer of some renown!",
+		'dead_goblin' : "Even in its demise, the Dead Goblin looks fierce and resolute. Whoever dispatched this enemy must be an adventurer of some renown!",
 		
 		### item objects ###
 		'rusty_key' : "An old Rusty Key... the one they gave you at the pub when you swore to pillage the Dark Castle. What could you possibly do with it?",
@@ -148,17 +148,17 @@ descript_dict = {
 		'portcullis_doesnt_open_result' : "You press the button and hear a whirring of gears but nothing happens.",
 
 		### creatures ###
-		'goblin' : "The Goblin stands in the Alcove guarding the Control Panel and is armed and dangerous. It wields a Grimy Axe and looks at you with watchful malice. This goblin clearly takes its guard duties very seriously. It would not be wise to approach the Iron Portcullis or the Control Panel (or the Goblin!) un-armed.",
+		'guard_goblin' : "The Guard Goblin stands in the Alcove guarding the Control Panel and is armed and dangerous. It wields a Grimy Axe and looks at you with watchful malice. This goblin clearly takes its guard duties very seriously. It would not be wise to approach the Iron Portcullis or the Control Panel (or the Guard Goblin!) un-armed.",
 
 		### creature responses ###
 		
-		'show_goblin_shiny_sword' : "The Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
-		'show_goblin_default' : "The Goblin glares at you with a hauty expression of disdain and then imperiously motions for you to hand the item over for further inspection.",
-		'show_goblin_stale_bisuits' : "The Goblin scowels at the Stale Biscuits, wrinkles its nose, and then mutters something about 'gauche and impertinent' under its breath. You get the distinct impression that the Goblin doesn't think much of biscuits - or biscuit bakers for that matter.",
-		'give_goblin_default' : "The Goblin pockets the item and mutters something about the need to confiscate articles of dubious provenance from ill-favored vagrants.",
-		'give_goblin_stale_biscuits' : "The Goblin waves its hand dismissively at the suggestion that it take reciept of the Stale Biscuits and makes an expression indicating that it would be best if we all just pretended that this had never happened.",
-		'give_goblin_shiny_sword' : "The Goblin blanches and backs away, terrified at the very thought of even touching the Shiny Sword.",
-		'burt_slain_by_goblin' : "With an echoing war cry you charge the Goblin, flailing your fists wildly in all directions as you come. This technique has served you well during drunken altercations at the pub but it proves less effective against a trained goblin guard. The last thing you ever see is the goblin's Grimy Axe swinging towards your head.",
+		'show_goblin_shiny_sword' : "The Guard Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
+		'show_goblin_default' : "The Guard Goblin glares at you with a hauty expression of disdain and then imperiously motions for you to hand the item over for further inspection.",
+		'show_goblin_stale_bisuits' : "The Guard Goblin scowels at the Stale Biscuits, wrinkles its nose, and then mutters something about 'gauche and impertinent' under its breath. You get the distinct impression that the Guard Goblin doesn't think much of biscuits - or biscuit bakers for that matter.",
+		'give_goblin_default' : "The Guard Goblin pockets the item and mutters something about the need to confiscate articles of dubious provenance from ill-favored vagrants.",
+		'give_goblin_stale_biscuits' : "The Guard Goblin waves its hand dismissively at the suggestion that it take reciept of the Stale Biscuits and makes an expression indicating that it would be best if we all just pretended that this had never happened.",
+		'give_goblin_shiny_sword' : "The Guard Goblin blanches and backs away, terrified at the very thought of even touching the Shiny Sword.",
+		'burt_slain_by_goblin' : "With an echoing war cry you charge the Gurad Goblin, flailing your fists wildly in all directions as you come. This technique has served you well during drunken altercations at the pub but it proves less effective against a trained goblin guard. The last thing you ever see is the Guard Goblin's Grimy Axe swinging towards your head.",
 		'goblin_slain' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. you know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride to meet your foe in battle and dispatch him with one blazing fast strike of your sword.",
 
 		### room objects ###

@@ -109,7 +109,8 @@ control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control
 				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever],
 				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result]) # machine_state == lever_array_value
 
-goblin = Creature('goblin', 'Goblin', 'goblin', 'goblin', None, None, None,
+#goblin = Creature('goblin', 'Goblin', 'goblin', 'goblin', None, None, None,
+goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, None,
 				{shiny_sword : 'show_goblin_shiny_sword',
 				stale_biscuits : 'show_goblin_stale_bisuits',
 				'def_show' : 'show_goblin_default'}, 
@@ -125,7 +126,7 @@ entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_cast
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
 				[shiny_sword, front_gate], {'south' : front_gate}, [])
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
-				[alcove, left_lever, middle_lever, right_lever, red_button], [torn_note, grimy_axe, iron_portcullis, control_panel, goblin],
+				[alcove, left_lever, middle_lever, right_lever, red_button], [iron_portcullis, control_panel, goblin],
 				{'north' : iron_portcullis}, [])
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
 				[throne, silver_key, crystal_box, iron_portcullis], {'south' : iron_portcullis}, [broach_dispenser_mach])
