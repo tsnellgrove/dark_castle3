@@ -100,14 +100,14 @@ IN-PROC: create attack() method
 	DONE: run mk_def_pkl()
 	IN-PROC: test attack() method
 		DONE: troubleshoot double show and give
-		IN-PROC: troubleshoot attack command
-		DONE: able to ref shiny_sword
-		DONE: attack works but list add of goblin_items_lst is now an issue
-		DONE: fix extend function
-		DONE: fix dead_goblin 'goblin' short name
-		TBD: fix 'def_attack'
-	TBD: add buffer of weapon used in attack() method
-	TBD: fix 'fist' gramar (i.e. "the <weapon>" vs. "your fist")
+		DONE: troubleshoot attack command
+			DONE: able to ref shiny_sword
+			DONE: attack works but list add of goblin_items_lst is now an issue
+			DONE: fix extend function
+			DONE: fix dead_goblin 'goblin' short name
+			DONE: fix 'def_attack'
+		TBD: add buffer of weapon used in attack() method
+		TBD: fix 'fist' gramar (i.e. "the <weapon>" vs. "your fist")
 	TBD: create help function for 'combat'
 	TBD: reduce duplication in cmd_exe() put, give, take, 2word cases
 	TBD: examine 'show' case return in interp() - what to do about 'give'? change case name? 
@@ -115,7 +115,7 @@ IN-PROC: create attack() method
 	TBD: full final test
 TBD: create goblin machines
 	TBD: attack burt machine
-	TBD: update on behavior (e.g. "the goblin is eyeing you coldly") each turn - maybe shoudl be a standard function??
+	TBD: update on behavior (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
 TBD: create help function for creatures
 TBD: update creature doc
 

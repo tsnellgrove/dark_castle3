@@ -119,12 +119,6 @@ class Creature(ViewOnly):
 						burt_weapon_obj = hand_lst[0]
 						burt_weapon_name = burt_weapon_obj.full_name
 				creature_has_response = True
-#
-#				print(hand_lst)
-#				print(active_gs.hand_empty())
-#				print(burt_weapon_obj)
-#				print(burt_weapon_name)
-#
 				if burt_weapon_obj in self.attack_creature_dict:
 						dict_key = burt_weapon_obj
 				elif 'def_attack' in self.attack_creature_dict:
@@ -135,18 +129,15 @@ class Creature(ViewOnly):
 						response_key = self.attack_creature_dict[dict_key]['response_key']
 						response_str = descript_dict[response_key]
 						active_gs.buffer(response_str)
-						if self.attack_creature_dict[burt_weapon_obj]['result_code'] == 'creature_flee':
+						if self.attack_creature_dict[dict_key]['result_code'] == 'creature_flee':
 								room_obj = active_gs.get_room()
 								room_obj.room_obj_lst_remove(self)
-						elif self.attack_creature_dict[burt_weapon_obj]['result_code'] == 'burt_death':
+						elif self.attack_creature_dict[dict_key]['result_code'] == 'burt_death':
 								active_gs.set_game_ending('death')
-						elif self.attack_creature_dict[burt_weapon_obj]['result_code'] == 'creature_death':
+						elif self.attack_creature_dict[dict_key]['result_code'] == 'creature_death':
 								room_obj = active_gs.get_room()
 								room_obj.room_obj_lst_remove(self)
 								room_obj.room_obj_lst_extend(self.creature_items_lst)
 								room_obj.room_obj_lst_append(self.dead_creature_obj)
-								print(room_obj.room_obj_lst)
-								print(self.dead_creature_obj.full_name)
-								print(self.dead_creature_obj.root_name)
 				else:
 						active_gs.buffer("At the last minute the " + self.full_name + " dodges your fearsome attack with the " + burt_weapon_name + ".")
