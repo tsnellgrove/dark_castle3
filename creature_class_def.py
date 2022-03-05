@@ -112,12 +112,13 @@ class Creature(ViewOnly):
 
 		def attack(self, active_gs):
 				if active_gs.hand_empty():
-						burt_weapon_name = 'fist'
+						burt_weapon_name = 'your fist'
 						burt_weapon_obj = None
 				else:
 						hand_lst = active_gs.get_hand_lst()
 						burt_weapon_obj = hand_lst[0]
-						burt_weapon_name = burt_weapon_obj.full_name
+						burt_weapon_name = 'the ' + burt_weapon_obj.full_name
+
 				creature_has_response = True
 				if burt_weapon_obj in self.attack_creature_dict:
 						dict_key = burt_weapon_obj
@@ -125,6 +126,8 @@ class Creature(ViewOnly):
 						dict_key = 'def_attack'
 				else:
 						creature_has_response = False
+
+				active_gs.buffer("Fearlessly, you charge forward weilding " +  burt_weapon_name + "!")
 				if creature_has_response:
 						response_key = self.attack_creature_dict[dict_key]['response_key']
 						response_str = descript_dict[response_key]
@@ -140,4 +143,4 @@ class Creature(ViewOnly):
 								room_obj.room_obj_lst_extend(self.creature_items_lst)
 								room_obj.room_obj_lst_append(self.dead_creature_obj)
 				else:
-						active_gs.buffer("At the last minute the " + self.full_name + " dodges your fearsome attack with the " + burt_weapon_name + ".")
+						active_gs.buffer("At the last minute the " + self.full_name + " dodges your fearsome attack with " + burt_weapon_name + ".")

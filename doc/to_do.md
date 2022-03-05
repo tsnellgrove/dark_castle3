@@ -98,7 +98,7 @@ IN-PROC: create attack() method
 	DONE: add attack_response text to static_gbl
 	DONE: add descript_dict entry for dead_goblin
 	DONE: run mk_def_pkl()
-	IN-PROC: test attack() method
+	DONE: test attack() method
 		DONE: troubleshoot double show and give
 		DONE: troubleshoot attack command
 			DONE: able to ref shiny_sword
@@ -106,8 +106,8 @@ IN-PROC: create attack() method
 			DONE: fix extend function
 			DONE: fix dead_goblin 'goblin' short name
 			DONE: fix 'def_attack'
-		TBD: add buffer of weapon used in attack() method
-		TBD: fix 'fist' gramar (i.e. "the <weapon>" vs. "your fist")
+		DONE: add buffer of weapon used in attack() method
+		DONE: fix 'fist' gramar (i.e. "the <weapon>" vs. "your fist")
 	TBD: create help function for 'combat'
 	TBD: reduce duplication in cmd_exe() put, give, take, 2word cases
 	TBD: examine 'show' case return in interp() - what to do about 'give'? change case name? 
