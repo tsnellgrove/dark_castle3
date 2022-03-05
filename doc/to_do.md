@@ -100,7 +100,11 @@ IN-PROC: create attack() method
 	DONE: run mk_def_pkl()
 	IN-PROC: test attack() method
 		DONE: troubleshoot double show and give
-		TBD: troubleshoot attack command
+		IN-PROC: troubleshoot attack command
+		DONE: able to ref shiny_sword
+		DONE: attack works but list add of goblin_items_lst is now an issue
+		TBD: fix extend function
+		TBD: fix 'def_attack'
 	TBD: add buffer of weapon used in attack() method
 	TBD: fix 'fist' gramar (i.e. "the <weapon>" vs. "your fist")
 	TBD: create help function for 'combat'

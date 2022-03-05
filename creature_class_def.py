@@ -135,15 +135,17 @@ class Creature(ViewOnly):
 						response_key = self.attack_creature_dict[dict_key]['response_key']
 						response_str = descript_dict[response_key]
 						active_gs.buffer(response_str)
-						if self.attack_creature_dict['result_code'] == 'creature_flee':
+						if self.attack_creature_dict[burt_weapon_obj]['result_code'] == 'creature_flee':
 								room_obj = active_gs.get_room()
 								room_obj.room_obj_lst_remove(self)
-						elif self.attack_creature_dict['result_code'] == 'burt_death':
+						elif self.attack_creature_dict[burt_weapon_obj]['result_code'] == 'burt_death':
 								active_gs.set_game_ending('death')
-						elif self.attack_creature_dict['result_code'] == 'creature_death':
+						elif self.attack_creature_dict[burt_weapon_obj]['result_code'] == 'creature_death':
 								room_obj = active_gs.get_room()
 								room_obj.room_obj_lst_remove(self)
-								room_obj.room_obj_lst_extend(self.creature_items_lst)
+#								room_obj.room_obj_lst_extend(self.creature_items_lst)
 								room_obj.room_obj_lst_append(self.dead_creature_obj)
+								print(room_obj.room_obj_lst)
+								print(self.dead_creature_obj.full_name)
 				else:
 						active_gs.buffer("At the last minute the " + self.full_name + " dodges your fearsome attack with the " + burt_weapon_name + ".")
