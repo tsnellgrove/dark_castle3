@@ -108,14 +108,12 @@ IN-PROC: create attack() method
 			DONE: fix 'def_attack'
 		DONE: add buffer of weapon used in attack() method
 		DONE: fix 'fist' gramar (i.e. "the <weapon>" vs. "your fist")
-	TBD: create help function for 'combat'
+	DONE: create help function for 'attack'
 	TBD: reduce duplication in cmd_exe() put, give, take, 2word cases
-	TBD: examine 'show' case return in interp() - what to do about 'give'? change case name? 
-	TBD: what should happen if Burt tries to take the axe from a living goblin? (general case)
+	TBD: examine 'show' case return in interp() - what to do about 'give'? change case name?
 	TBD: full final test
 TBD: create goblin machines
 	TBD: attack burt machine
-	TBD: update on behavior (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
 TBD: create help function for creatures
 TBD: update creature doc
 
@@ -321,6 +319,8 @@ TBD: out_buff => output (or possibly user_output)
 - in machines, should conditions and results just be key-value pairs in a dictionary?
 	- As opposed to needing 2 separate lists with identical indexes?
 - Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
+TBD: what should happen if Burt tries to take the axe from a living goblin? (general case)
+TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
 
 
 *** NEW PUZZLE IDEAS ***

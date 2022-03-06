@@ -20,7 +20,7 @@ static_dict = {
 descript_dict = {
 		### one-word commands - non-objeects ###
 		'introduction' : "Greetings brave adventurer!\n\nYou are Burt-the-Boneheaded, the only adventurer brave - or foolish - enough to enter the Dark Castle in search of treasure.\n\nType 'help' for help.\n\n",
-		'help' : "Help syntax = 'help <option>'. Help options = 'basics', 'one-word-commands', 'verbs', 'abbreviations', 'adjectives', prepositions', 'articles', 'read'.",
+		'help' : "Help syntax = 'help <option>'. Help options = 'basics', 'one-word-commands', 'verbs', 'abbreviations', 'adjectives', prepositions', 'articles', 'read', or 'attack'.",
 		'credits' : "Written and programmed by Tom. Thanks to Toby, Joshua, JoyEllen, Milo, Gideon, Franco, Karl, Andy, Ken and Alec for advice and playtesting!!",
 		
 		### help subsystem - non-objects ###
@@ -28,6 +28,7 @@ descript_dict = {
 		'help_adjectives' : "Most nouns have an adjective (e.g. 'rusty key'). The interpreter recognizes adjectives but only requires them if other similar nouns are in the room. So 'take rusty key' and 'take key' are equivalent unless there is another key in the room.",
 		'help_prepositions' : "There are two available prepositions: 'in' and 'to'. 'in' is used with the verb 'put'. This allows you to put items in containers. Example: 'put the rusty key in the wooden chest'. 'to' is used with the verbs 'show' and 'give'. This allows you to show or give items to creatures. Examples: 'show the rusty key to the goblin' or 'give the rusty key to the hedgehog'.",
 		'help_read' :  "If you can't 'read' something (e.g. a note or a scroll) try 'examine' instead. The item may have some readable text written on it that you'll learn more about via 'examine'.",
+		'help_attack' : "There are various creatures that reside in Dark Castle. Some are friendly but some may not be. Burt can 'attack' a creature using whatever weapon he is holding in his hand. If the creature is hostile and Burt is wielding the correct weapon he may be able to slay it. However there are risks to attacking as well. If the creature is friendly, an 'attack' may scare it away and Burt may lose a valuble ally. And if the creature is hostile but Burt is wielding the wrong weapon, Burt himself may perish. As in real life, attacking in Dark Castle is frought!",
 		
 		### universal objects ###
 		'backpack' : "Your trusty, well-worn leather backpack",

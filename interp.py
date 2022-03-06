@@ -59,9 +59,11 @@ def help(active_gs, option):
 						pre_out = pre_out + key + " = " + abbreviations_dict[key] + ", "
 				output = pre_out[:-2]
 		elif option == 'prepositions':
-					output = descript_dict['help_prepositions']
+				output = descript_dict['help_prepositions']
 		elif option == 'read':
-					output = descript_dict['help_read']
+				output = descript_dict['help_read']
+		elif option == 'attack':
+				output = descript_dict['help_attack']
 		else:
 				output = descript_dict['help']
 		active_gs.buffer(output)
