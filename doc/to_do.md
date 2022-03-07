@@ -112,6 +112,7 @@ IN-PROC: create attack() method
 	DONE: reduce duplication in cmd_exe() put, give, take, 2word cases
 	DONE: de-dup 'prep' code
 	DONE: examine 'show' case return in interp() - what to do about 'give'? change case name? => 'prep' case
+	DONE: comment clean-up
 	TBD: full final test
 TBD: create goblin machines
 	TBD: attack burt machine
