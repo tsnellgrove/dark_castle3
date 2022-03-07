@@ -109,7 +109,7 @@ IN-PROC: create attack() method
 		DONE: add buffer of weapon used in attack() method
 		DONE: fix 'fist' gramar (i.e. "the <weapon>" vs. "your fist")
 	DONE: create help function for 'attack'
-	TBD: reduce duplication in cmd_exe() put, give, take, 2word cases
+	DONE: reduce duplication in cmd_exe() put, give, take, 2word cases
 	TBD: examine 'show' case return in interp() - what to do about 'give'? change case name?
 	TBD: full final test
 TBD: create goblin machines
