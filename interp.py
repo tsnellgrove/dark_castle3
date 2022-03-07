@@ -190,11 +190,47 @@ def interpreter(user_input, master_obj_lst):
 				word2 = user_input_lst[1]
 				help(active_gs, word2)
 				return 'help', [word2]
-		elif word1 == 'put':
-				if 'in' not in user_input_lst:
-						return 'error', ["I don't see the word 'in' in that sentence"]
+#		elif word1 == 'put':
+#				if 'in' not in user_input_lst:
+#						return 'error', ["I don't see the word 'in' in that sentence"]
+#				else:
+#						in_position = user_input_lst.index('in')
+#						v_n_lst = list(islice(user_input_lst, in_position))
+#						p_p_lst = list(islice(user_input_lst, in_position, None))
+#						noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst)
+#						dir_obj_error_state, dir_obj_error_msg, dirobj_obj = noun_handling(master_obj_lst, p_p_lst)
+#						if noun_error_state:
+#								return 'error', [noun_error_msg]
+#						elif dir_obj_error_state:
+#								return 'error', [dir_obj_error_msg]
+#						else:
+#								return 'put', [dirobj_obj, word1, noun_obj]
+#		elif word1 in ['show', 'give']:
+#				if 'to' not in user_input_lst:
+#						return 'error', ["I don't see the word 'to' in that sentence"]
+#				else:
+#						in_position = user_input_lst.index('to')
+#						v_n_lst = list(islice(user_input_lst, in_position))
+#						p_p_lst = list(islice(user_input_lst, in_position, None))
+#						noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst)
+#						dir_obj_error_state, dir_obj_error_msg, dirobj_obj = noun_handling(master_obj_lst, p_p_lst)
+#						if noun_error_state:
+#								return 'error', [noun_error_msg]
+#						elif dir_obj_error_state:
+#								return 'error', [dir_obj_error_msg]
+#						else:
+#								return 'show', [dirobj_obj, word1, noun_obj]
+
+		elif word1 in ['put', 'show', 'give']:
+				if word1 == 'put':
+						prep = 'in'
+				elif word1 in ['show', 'give']:
+						prep = 'to'
+				if prep not in user_input_lst:
+						error_msg = "I don't see the word '" + prep + "' in that sentence."
+						return 'error', [error_msg]
 				else:
-						in_position = user_input_lst.index('in')
+						in_position = user_input_lst.index(prep)
 						v_n_lst = list(islice(user_input_lst, in_position))
 						p_p_lst = list(islice(user_input_lst, in_position, None))
 						noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst)
@@ -204,22 +240,9 @@ def interpreter(user_input, master_obj_lst):
 						elif dir_obj_error_state:
 								return 'error', [dir_obj_error_msg]
 						else:
-								return 'put', [dirobj_obj, word1, noun_obj]
-		elif word1 in ['show', 'give']:
-				if 'to' not in user_input_lst:
-						return 'error', ["I don't see the word 'to' in that sentence"]
-				else:
-						in_position = user_input_lst.index('to')
-						v_n_lst = list(islice(user_input_lst, in_position))
-						p_p_lst = list(islice(user_input_lst, in_position, None))
-						noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst)
-						dir_obj_error_state, dir_obj_error_msg, dirobj_obj = noun_handling(master_obj_lst, p_p_lst)
-						if noun_error_state:
-								return 'error', [noun_error_msg]
-						elif dir_obj_error_state:
-								return 'error', [dir_obj_error_msg]
-						else:
-								return 'show', [dirobj_obj, word1, noun_obj]
+#								return 'show', [dirobj_obj, word1, noun_obj]
+								return 'prep', [dirobj_obj, word1, noun_obj]
+
 		else: # '2word' case
 				error_state, error_msg, word2_obj = noun_handling(master_obj_lst, user_input_lst)
 				if error_state:

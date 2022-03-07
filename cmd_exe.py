@@ -84,7 +84,8 @@ def cmd_execute(active_gs, case, word_lst):
 								active_gs.buffer(error_msg)
 								active_gs.move_dec()
 ###							active_gs.buffer("You can't " + word1 + " with the " + word2_obj.full_name + ".") # old error
-		elif case in ['show', 'give', 'put']:
+#		elif case in ['show', 'give', 'put']:
+		elif case == 'prep':
 				dirobj_obj, word1, noun_obj = word_lst
 				if active_gs.scope_check(noun_obj) == False:
 						active_gs.buffer("You can't see a " + noun_obj.full_name + " here.")
