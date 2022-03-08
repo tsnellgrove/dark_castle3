@@ -113,10 +113,15 @@ IN-PROC: create attack() method
 	DONE: de-dup 'prep' code
 	DONE: examine 'show' case return in interp() - what to do about 'give'? change case name? => 'prep' case
 	DONE: comment clean-up
-	TBD: full final test
 TBD: create goblin machines
-	TBD: attack burt machine
-TBD: create help function for creatures
+	TBD: attack burt method
+		IDEA: can pass creature into result_exe()
+		IDEA: replace "Fearless you charge.." text with "You attempt to parry the creature's attack with "
+	TBD: create pre_act_mach
+		IDEA: text will be situation-specific (e.g. "The goblin does not take kindly to your presence in the north side of the room.")
+		IDEA: rest of the result is just calling self.creature.attack_burt()
+TBD: create help function for creatures (include fact that creatures can attack)
+TBD: full final test
 TBD: update creature doc
 
 ##########################
