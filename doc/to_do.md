@@ -120,6 +120,8 @@ TBD: create goblin machines
 	TBD: create pre_act_mach
 		IDEA: text will be situation-specific (e.g. "The goblin does not take kindly to your presence in the north side of the room.")
 		IDEA: rest of the result is just calling self.creature.attack_burt()
+		IDEA: room condition
+		IDEA: creatures are weapon-locked (always assumed to use the same weapon)
 TBD: create help function for creatures (include fact that creatures can attack)
 TBD: full final test
 TBD: update creature doc
