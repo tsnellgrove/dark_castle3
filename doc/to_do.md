@@ -114,14 +114,19 @@ IN-PROC: create attack() method
 	DONE: examine 'show' case return in interp() - what to do about 'give'? change case name? => 'prep' case
 	DONE: comment clean-up
 TBD: create goblin machines
-	TBD: attack burt method
-		IDEA: can pass creature into result_exe()
-		IDEA: replace "Fearless you charge.." text with "You attempt to parry the creature's attack with "
+	TBD: attack burt method => attack_burt_dict
+		IDEA: Instead of a separate method for burt_attacks, just have a separate dict??
+			IDEA: but how could I pass in who the attacker was?? (without needing a new interp() case)
+		IDEA: Ultimately, a separat attack_burt() method is simplest... but this is another arguement for 'burt' as an obj
+			IDEA: will still need a spearate attack_burt_dict
+			IDEA: replace "Fearlessly you charge.." text with "You attempt to parry the creature's attack with "
+			IDEA: 'pary' is really just text and and result_key == None
 	TBD: create pre_act_mach
-		IDEA: text will be situation-specific (e.g. "The goblin does not take kindly to your presence in the north side of the room.")
-		IDEA: rest of the result is just calling self.creature.attack_burt()
-		IDEA: room condition
-		IDEA: creatures are weapon-locked (always assumed to use the same weapon)
+		IDEA: room will be a condition component
+		IDEA: can pass creature into result_exe()
+			IDEA: text will be situation-specific (e.g. "The goblin does not take kindly to your presence in the north side of the room.")
+			IDEA: rest of the result is just calling self.creature.attack_burt()
+			IDEA: creatures are weapon-locked (always assumed to use the same weapon)
 TBD: create help function for creatures (include fact that creatures can attack)
 TBD: full final test
 TBD: update creature doc
@@ -321,7 +326,7 @@ TBD: list of 'contained' internal_switches in MachMixIn attributes?
 TBD: re-name 'wrapper' to 'app_main'
 TBD: update pickle names
 TBD: out_buff => output (or possibly user_output)
-- Burt as an object??
+- Burt as an object?? (allows elimination of attack_burt() method of Creature class)
 - How to enable switches and machines to self register for universal scope
 	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
 - possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
