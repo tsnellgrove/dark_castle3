@@ -75,7 +75,7 @@ DONE: implement give() method
 		DONE: solved it!
 	DONE: update help function for prepositions
 	DONE: full final test
-IN-PROC: create attack() method
+DONE: create attack() method
 	IDEA: attack_creature_dict = {burt_weapon : result_code, response_key}
 	IDEA: result_code options = 'creature_flee', 'creature_death', 'burt_death', None
 	DONE: remove attack_src_dict attribute
@@ -113,20 +113,27 @@ IN-PROC: create attack() method
 	DONE: de-dup 'prep' code
 	DONE: examine 'show' case return in interp() - what to do about 'give'? change case name? => 'prep' case
 	DONE: comment clean-up
-TBD: create goblin machines
-	TBD: attack burt method => attack_burt_dict
+IN-PROC: create goblin machines
+	DONE: Plan out attack_burt method & attack_burt_dict
 		IDEA: Instead of a separate method for burt_attacks, just have a separate dict??
 			IDEA: but how could I pass in who the attacker was?? (without needing a new interp() case)
 		IDEA: Ultimately, a separat attack_burt() method is simplest... but this is another arguement for 'burt' as an obj
 			IDEA: will still need a spearate attack_burt_dict
 			IDEA: replace "Fearlessly you charge.." text with "You attempt to parry the creature's attack with "
 			IDEA: 'pary' is really just text and and result_key == None
-	TBD: create pre_act_mach
+	IN-PROC: implement attack_burt() method and attack_burt_dict
+		DONE: create attack_burt() method
+		TBD: attack attack_burt_dict to Creature class
+		TBD: update guard_goblin obj to include attack_burt_dict
+		TBD: all entries for attack_burt_dict
+		TBD: manually test attack_burt() => 'attack_burt goblin'
+	DONE: plan pre_act_mach
 		IDEA: room will be a condition component
 		IDEA: can pass creature into result_exe()
 			IDEA: text will be situation-specific (e.g. "The goblin does not take kindly to your presence in the north side of the room.")
 			IDEA: rest of the result is just calling self.creature.attack_burt()
 			IDEA: creatures are weapon-locked (always assumed to use the same weapon)
+	TBD: implement goblin pre_act_mach
 TBD: create help function for creatures (include fact that creatures can attack)
 TBD: full final test
 TBD: update creature doc

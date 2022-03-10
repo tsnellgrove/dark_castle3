@@ -144,3 +144,38 @@ class Creature(ViewOnly):
 								room_obj.room_obj_lst_append(self.dead_creature_obj)
 				else:
 						active_gs.buffer("At the last minute the " + self.full_name + " dodges your fearsome attack with " + burt_weapon_name + ".")
+
+		def attack_burt(self, active_gs):
+				if active_gs.hand_empty():
+						burt_weapon_name = 'your fist'
+						burt_weapon_obj = None
+				else:
+						hand_lst = active_gs.get_hand_lst()
+						burt_weapon_obj = hand_lst[0]
+						burt_weapon_name = 'the ' + burt_weapon_obj.full_name
+
+				creature_has_response = True
+				if burt_weapon_obj in self.attack_burt_dict:
+						dict_key = burt_weapon_obj
+				elif 'def_attack' in self.attack_burt_dict:
+						dict_key = 'def_attack'
+				else:
+						creature_has_response = False
+
+				active_gs.buffer("You attempt to parry the creature's attack with " +  burt_weapon_name + "!")
+				if creature_has_response:
+						response_key = self.attack_burt_dict[dict_key]['response_key']
+						response_str = descript_dict[response_key]
+						active_gs.buffer(response_str)
+						if self.attack_burt_dict[dict_key]['result_code'] == 'creature_flee':
+								room_obj = active_gs.get_room()
+								room_obj.room_obj_lst_remove(self)
+						elif self.attack_burt_dict[dict_key]['result_code'] == 'burt_death':
+								active_gs.set_game_ending('death')
+						elif self.attack_burt_dict[dict_key]['result_code'] == 'creature_death':
+								room_obj = active_gs.get_room()
+								room_obj.room_obj_lst_remove(self)
+								room_obj.room_obj_lst_extend(self.creature_items_lst)
+								room_obj.room_obj_lst_append(self.dead_creature_obj)
+				else:
+						active_gs.buffer("At the last minute you parry the attack from the " + self.full_name + " with " + burt_weapon_name + ".")
