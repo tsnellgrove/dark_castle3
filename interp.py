@@ -13,9 +13,13 @@ articles_lst = ['a', 'an', 'the']
 
 one_word_only_lst = ['help', 'credits', 'score', 'version', 'inventory', 'look', 'quit', 'xyzzy42']
 
-verbs_lst = ['help', 'examine', 'read', 'go', 'take', 'drop', 'unlock', 'open',
+known_verbs_lst = ['help', 'examine', 'read', 'go', 'take', 'drop', 'unlock', 'open',
 				'close', 'lock', 'put', 'eat', 'drink', 'wear', 'push', 'pull','show',
 				'give', 'attack'] # remove removed
+
+secret_verbs_lst = ['attack_burt']
+
+full_verbs_lst = known_verbs_lst + secret_verbs_lst
 
 abbreviations_dict = {
 		'n' : 'north',
@@ -42,7 +46,7 @@ def help(active_gs, option):
 		if option == 'basics':
 				output = descript_dict['help_basics']
 		elif option == 'verbs':
-				output = "Available verbs include: " + ', '.join(verbs_lst)
+				output = "Available verbs include: " + ', '.join(known_verbs_lst)
 		elif option == 'one-word-commands':
 				user_one_word_lst = one_word_only_lst
 				user_one_word_lst.pop()
@@ -172,14 +176,14 @@ def interpreter(user_input, master_obj_lst):
 
 		# if not a known true or convertable one-word command, must be an error
 		elif len(user_input_lst) == 1:
-				if word1 in verbs_lst:
+				if word1 in full_verbs_lst:
 						error_msg = word1 + " what?"
 				else:
 						error_msg = "random error"
 				return 'error', [error_msg]
 
 		# all commands longer than one word should start with a verb
-		if word1 not in verbs_lst:
+		if word1 not in full_verbs_lst:
 				return 'error', ["Please start your sentence with a known verb!"]
 
 		# handle 2-word commands (special cases first else general case)

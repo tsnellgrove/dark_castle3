@@ -127,8 +127,12 @@ IN-PROC: create goblin machines
 		DONE: update guard_goblin obj to include attack_burt_dict
 		DONE: all entries for attack_burt_dict
 		DONE: add response_key text for goblin attack_burt_dict
-		TBD: solve how to add 'attack_burt' to verb_list in interp() => create a secret_verb_list ?
-		TBD: manually test attack_burt() => 'attack_burt goblin'
+		DONE: solve how to add 'attack_burt' to verb_list in interp() => create a secret_verb_list ?
+			DONE: verbs_lst => known_verbs_lst
+			DONE: create secret_verbs_lst = ['attack_burt']
+			DONE: full_verbs_lst = known_verbs_lst + secret_verbs_lst
+			DONE: update checks to full_verbs_lst
+		DONE: manually test attack_burt() => 'attack_burt goblin'
 	DONE: plan pre_act_mach
 		IDEA: room will be a condition component
 		IDEA: can pass creature into result_exe()
