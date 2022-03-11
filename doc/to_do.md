@@ -348,6 +348,7 @@ TBD: out_buff => output (or possibly user_output)
 - Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
 TBD: what should happen if Burt tries to take the axe from a living goblin? (general case)
 TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
+TBD: no swearing in Dark Castle (with warning or else end of game)
 
 
 *** NEW PUZZLE IDEAS ***
