@@ -123,9 +123,11 @@ IN-PROC: create goblin machines
 			IDEA: 'pary' is really just text and and result_key == None
 	IN-PROC: implement attack_burt() method and attack_burt_dict
 		DONE: create attack_burt() method
-		TBD: attack attack_burt_dict to Creature class
-		TBD: update guard_goblin obj to include attack_burt_dict
-		TBD: all entries for attack_burt_dict
+		DONE: attack attack_burt_dict to Creature class
+		DONE: update guard_goblin obj to include attack_burt_dict
+		DONE: all entries for attack_burt_dict
+		DONE: add response_key text for goblin attack_burt_dict
+		TBD: solve how to add 'attack_burt' to verb_list in interp() => create a secret_verb_list ?
 		TBD: manually test attack_burt() => 'attack_burt goblin'
 	DONE: plan pre_act_mach
 		IDEA: room will be a condition component

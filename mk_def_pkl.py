@@ -119,6 +119,8 @@ goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None
 				'def_give' : {'response_key' : 'give_goblin_default', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : None}},
 				{shiny_sword : {'result_code' : 'creature_death', 'response_key' : 'goblin_slain'},
 				'def_attack' : {'result_code' : 'burt_death', 'response_key' : 'burt_slain_by_goblin'}},
+				{shiny_sword : {'result_code' : None, 'response_key' : 'parry_goblin'},
+				'def_attack' : {'result_code' : 'burt_death', 'response_key' : 'goblin_slays_burt'}},
 				[grimy_axe, torn_note], dead_goblin)
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],

@@ -161,6 +161,8 @@ descript_dict = {
 		'give_goblin_shiny_sword' : "The Guard Goblin blanches and backs away, terrified at the very thought of even touching the Shiny Sword.",
 		'burt_slain_by_goblin' : "With an echoing war cry you charge the Gurad Goblin, flailing your arms wildly in all directions as you come. This technique has served you well during drunken altercations at the pub but it proves less effective against a trained goblin guard. The last thing you ever see is the Guard Goblin's Grimy Axe swinging towards your head.",
 		'goblin_slain' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. you know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride to meet your foe in battle and dispatch him with one blazing fast strike of your sword.",
+		'goblin_slays_burt' : "The Guard Goblin attacks with a lightening-fast swing of the Grimy Axe and you are helpless against the onslaught. You will need a better weapon if you are to survive this foe.",
+		'parry_goblin' : "The Guard Goblin attacks with a lightening-fast swing of the Grimy Axe and you only barely manage to parry with your own weapon.",
 
 		### room objects ###
 		'entrance' : "*** Entrance ***\n\nYou are standing atop the drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south the way back home. To the east and west and below you is the Moat.",
