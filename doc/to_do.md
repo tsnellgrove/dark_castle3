@@ -121,7 +121,7 @@ IN-PROC: create goblin machines
 			IDEA: will still need a spearate attack_burt_dict
 			IDEA: replace "Fearlessly you charge.." text with "You attempt to parry the creature's attack with "
 			IDEA: 'pary' is really just text and and result_key == None
-	IN-PROC: implement attack_burt() method and attack_burt_dict
+	DONE: implement attack_burt() method and attack_burt_dict
 		DONE: create attack_burt() method
 		DONE: attack attack_burt_dict to Creature class
 		DONE: update guard_goblin obj to include attack_burt_dict
@@ -136,10 +136,23 @@ IN-PROC: create goblin machines
 	DONE: plan pre_act_mach
 		IDEA: room will be a condition component
 		IDEA: can pass creature into result_exe()
-			IDEA: text will be situation-specific (e.g. "The goblin does not take kindly to your presence in the north side of the room.")
+			IDEA: text will be situation-specific (e.g. "The goblin does not take kindly to your presence in the north side of the Antechamber.")
 			IDEA: rest of the result is just calling self.creature.attack_burt()
 			IDEA: creatures are weapon-locked (always assumed to use the same weapon)
-	TBD: implement goblin pre_act_mach
+	IN-PROC: implement goblin pre_act_mach
+		DONE: create machine obj
+		DONE: create cond class
+		DONE: add cond class to mk_def_pkl() imports
+		DONE: create cond objs
+		IN-PROC: test & troubleshoot
+			IDEA: room obj are not yet defined - maybe just put this one cond after rooms? and then this one creature after cond
+			IDEA: except this doesn't work - because then goblin has to be after room... but the goblin is IN a room - argh!!
+			IDEA: consider room_name conversion ???
+		TBD: create result class
+		TBD: add result class to mk_def_pkl() imports
+		TBD: create result objs
+		TBD: create trigger cmd attributes
+		TBD: test!!
 TBD: create help function for creatures (include fact that creatures can attack)
 TBD: full final test
 TBD: update creature doc

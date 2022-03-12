@@ -8,7 +8,7 @@
 import pickle
 from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
-from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond
+from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond, RoomCond
 from result_class_def import PassThruResult, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult
 from mach_class_def import InvisMach, ViewOnlyMach
 from creature_class_def import Creature
@@ -83,6 +83,7 @@ throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
 correct_lever_array_cond = LeverArrayCond('correct_lever_array_cond', [4,2,1])
 wrong_lever_array_cond = PassThruCond('pass_thru_cond')
+goblin_in_antechamber = RoomCond('goblin_in_antechamber', antechamber)
 
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'die_in_moat_result', 'death', True)
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', 'moat_croc_scared_result', True)
@@ -109,7 +110,13 @@ control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control
 				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever],
 				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result]) # machine_state == lever_array_value
 
+goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None, [[]], None,
+				[goblin_in_antechamber, pass_thru_cond], [])
+
+# name, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst
+
 #goblin = Creature('goblin', 'Goblin', 'goblin', 'goblin', None, None, None,
+
 goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, None,
 				{shiny_sword : 'show_goblin_shiny_sword',
 				stale_biscuits : 'show_goblin_stale_bisuits',

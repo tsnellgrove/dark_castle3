@@ -102,3 +102,16 @@ class LeverArrayCond(SwitchStateCond):
 						current_val += temp_val
 				return current_val == target_val
 
+class RoomCond(PassThruCond):
+		def __init__(self, name, match_room):
+				super().__init__(name)
+				self._match_room = match_room # room being checked for
+
+		@property
+		def match_room(self):
+				return self._match_room
+
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+				room_obj = active_gs.get_room()
+				return room_obj == self.match_room
+	
