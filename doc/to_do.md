@@ -144,15 +144,24 @@ IN-PROC: create goblin machines
 		DONE: create cond class
 		DONE: add cond class to mk_def_pkl() imports
 		DONE: create cond objs
-		IN-PROC: test & troubleshoot
+		DONE: test & troubleshoot
 			IDEA: room obj are not yet defined - maybe just put this one cond after rooms? and then this one creature after cond
 			IDEA: except this doesn't work - because then goblin has to be after room... but the goblin is IN a room - argh!!
 			IDEA: consider room_name conversion ???
-		TBD: create result class
-		TBD: add result class to mk_def_pkl() imports
-		TBD: create result objs
-		TBD: create trigger cmd attributes
-		TBD: test!!
+			DONE: attribute = room_name rather than room_obj
+		DONE: create result class
+		DONE: add result class to mk_def_pkl() imports
+		DONE: create result objs
+		DONE: create buffer text for result
+		DONE: test!
+		DONE: create base trigger cmd attributes
+		TBD: test & tune
+			IN-PROC: test & troubleshoot!
+			TBD: expand on trigger options
+			TBD: re-test
+			TBD: change goblin => guard_goblin
+			TBD: re-re-test!
+		TBD: clean up comments!
 TBD: create help function for creatures (include fact that creatures can attack)
 TBD: full final test
 TBD: update creature doc
@@ -362,6 +371,7 @@ TBD: out_buff => output (or possibly user_output)
 TBD: what should happen if Burt tries to take the axe from a living goblin? (general case)
 TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
 TBD: no swearing in Dark Castle (with warning or else end of game)
+TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
 
 
 *** NEW PUZZLE IDEAS ***

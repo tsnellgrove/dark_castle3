@@ -109,3 +109,21 @@ class DoorToggleResult(BufferOnlyResult):
 				active_gs.buffer(descript_dict[self.result_descript] + descript_ending)
 				return mach_state, self.cmd_override
 
+class AttackBurtResult(BufferOnlyResult):
+		def __init__(self, name, result_descript, creature_obj, cmd_override):
+				super().__init__(name, result_descript, cmd_override)
+				self._creature_obj = creature_obj # creature to attack burt
+
+		@property
+		def creature_obj(self):
+				return self._creature_obj
+
+		@creature_obj.setter
+		def creature_obj(self, new_val):
+				self._creature_obj = new_val
+
+		def result_exe(self, active_gs, mach_state):
+				active_gs.buffer(descript_dict[self.result_descript] + descript_ending)
+				cmd_execute(active_gs, '2word', [self.creature_obj, 'attack_burt'])
+				return mach_state, self.cmd_override
+
