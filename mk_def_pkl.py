@@ -123,7 +123,7 @@ goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None, 
 
 #goblin = Creature('goblin', 'Goblin', 'goblin', 'goblin', None, None, None,
 
-goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, None,
+goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, [goblin_attack_mach],
 				{shiny_sword : 'show_goblin_shiny_sword',
 				stale_biscuits : 'show_goblin_stale_bisuits',
 				'def_show' : 'show_goblin_default'}, 

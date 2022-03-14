@@ -225,6 +225,9 @@ class GameState(object):
 				for obj in scope_lst:
 						if hasattr(obj, 'trigger_type'):
 								mach_obj_lst.append(obj)
+						if hasattr(obj, 'creature_state'):
+								if obj.mach_obj_lst != None:
+										mach_obj_lst.extend(obj.mach_obj_lst)
 				return mach_obj_lst
 
 		### obj representation (for printing) ###

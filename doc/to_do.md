@@ -157,9 +157,12 @@ IN-PROC: create goblin machines
 		DONE: create base trigger cmd attributes
 		TBD: test & tune
 			IN-PROC: test & troubleshoot!
+				DONE: added machine to goblin
+				TBD: extended mach scope search to creatures but not sure this is working
 			TBD: expand on trigger options
 			TBD: re-test
 			TBD: change goblin => guard_goblin
+			TBD: elim hasattrib() in active_gs scope checks ?
 			TBD: re-re-test!
 		TBD: clean up comments!
 TBD: create help function for creatures (include fact that creatures can attack)
