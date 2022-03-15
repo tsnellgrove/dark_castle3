@@ -114,5 +114,8 @@ class RoomCond(PassThruCond):
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				room_obj = active_gs.get_room()
 				room_name = room_obj.name
+				print("match room name: " + self.match_room_name)
+				print("current room: " + room_name)
+				print("match = " + room_name == self.match_room_name)
 				return room_name == self.match_room_name
 	

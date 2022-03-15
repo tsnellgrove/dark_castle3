@@ -158,7 +158,10 @@ IN-PROC: create goblin machines
 		TBD: test & tune
 			IN-PROC: test & troubleshoot!
 				DONE: added machine to goblin
-				TBD: extended mach scope search to creatures but not sure this is working
+				DONE: extended mach scope search to creatures but not sure this is working (scope is working now)
+				DONE: test print() statements in RoomCond but they never run
+				IDEA: problem appears to be in trigger - this is the first time triggering on 2word case - it has not worked before
+				TBD: sort out trigger for condition
 			TBD: expand on trigger options
 			TBD: re-test
 			TBD: change goblin => guard_goblin
