@@ -6,6 +6,7 @@
 
 ### import
 from static_gbl import descript_dict, static_dict
+from cmd_exe import cmd_execute
 
 
 ### classes
@@ -123,7 +124,7 @@ class AttackBurtResult(BufferOnlyResult):
 				self._creature_obj = new_val
 
 		def result_exe(self, active_gs, mach_state):
-				active_gs.buffer(descript_dict[self.result_descript] + descript_ending)
+				active_gs.buffer(descript_dict[self.result_descript])
 				cmd_execute(active_gs, '2word', [self.creature_obj, 'attack_burt'])
 				return mach_state, self.cmd_override
 

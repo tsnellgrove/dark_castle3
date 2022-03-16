@@ -156,18 +156,18 @@ IN-PROC: create goblin machines
 		DONE: test!
 		DONE: create base trigger cmd attributes
 		TBD: test & tune
-			IN-PROC: test & troubleshoot!
+			DONE: test & troubleshoot!
 				DONE: added machine to goblin
 				DONE: extended mach scope search to creatures but not sure this is working (scope is working now)
 				DONE: test print() statements in RoomCond but they never run
 				IDEA: problem appears to be in trigger - this is the first time triggering on 2word case - it has not worked before
-				TBD: sort out trigger for condition
+				DONE: sort out trigger for condition
 			TBD: expand on trigger options
 			TBD: re-test
 			TBD: change goblin => guard_goblin
 			TBD: elim hasattrib() in active_gs scope checks ?
 			TBD: re-re-test!
-		TBD: clean up comments!
+		TBD: clean up comments & troubleshooting prints!
 TBD: create help function for creatures (include fact that creatures can attack)
 TBD: full final test
 TBD: update creature doc
