@@ -162,9 +162,14 @@ IN-PROC: create goblin machines
 				DONE: test print() statements in RoomCond but they never run
 				IDEA: problem appears to be in trigger - this is the first time triggering on 2word case - it has not worked before
 				DONE: sort out trigger for condition
-			TBD: expand on trigger options
-			TBD: re-test
+			DONE: expand on trigger options
+			DONE: re-test
 			TBD: change goblin => guard_goblin
+				TBD: update instantiation obj name
+				TBD: update obj name in antechamber
+				TBD: update obj name in pkl save
+				TBD: search for any other solo usage of 'goblin'
+				TBD: re-test
 			TBD: elim hasattrib() in active_gs scope checks ?
 			TBD: re-re-test!
 		TBD: clean up comments & troubleshooting prints!
@@ -375,6 +380,7 @@ TBD: out_buff => output (or possibly user_output)
 	- As opposed to needing 2 separate lists with identical indexes?
 - Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
 TBD: what should happen if Burt tries to take the axe from a living goblin? (general case)
+	i.e. should creatures have a visible_inventory_lst that is part of examine scope?
 TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
 TBD: no swearing in Dark Castle (with warning or else end of game)
 TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)

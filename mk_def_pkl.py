@@ -114,8 +114,9 @@ control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control
 				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever],
 				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result]) # machine_state == lever_array_value
 
-goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None, [['examine', 'iron_portcullis']], None,
-				[goblin_in_antechamber_cond, pass_thru_cond], [antechamber_goblin_attacks_result, nothing_happens_result])
+goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,
+				[['examine', 'iron_portcullis'], ['examine', 'control_panel'], ['examine', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north']],
+				None, [goblin_in_antechamber_cond, pass_thru_cond], [antechamber_goblin_attacks_result, nothing_happens_result])
 
 #	'2word', [word2_obj, word1]
 
