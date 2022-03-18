@@ -124,7 +124,8 @@ goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,
 
 #goblin = Creature('goblin', 'Goblin', 'goblin', 'goblin', None, None, None,
 
-goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, [goblin_attack_mach],
+#goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, [goblin_attack_mach],
+goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, [goblin_attack_mach],
 				{shiny_sword : 'show_goblin_shiny_sword',
 				stale_biscuits : 'show_goblin_stale_bisuits',
 				'def_show' : 'show_goblin_default'}, 
@@ -142,12 +143,12 @@ entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_cast
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
 				[shiny_sword, front_gate], {'south' : front_gate}, [])
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
-				[alcove, left_lever, middle_lever, right_lever, red_button], [iron_portcullis, control_panel, goblin],
+				[alcove, left_lever, middle_lever, right_lever, red_button], [iron_portcullis, control_panel, goblin_guard],
 				{'north' : iron_portcullis}, [])
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
 				[throne, silver_key, crystal_box, iron_portcullis], {'south' : iron_portcullis}, [broach_dispenser_mach])
 
-antechamber_goblin_attacks_result.creature_obj = goblin
+antechamber_goblin_attacks_result.creature_obj = goblin_guard
 
 ### active_gs is the central store of game info ###
 active_gs = GameState(
@@ -186,7 +187,7 @@ active_gs = GameState(
 ### instantiated objects added to list ###
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible obj referenced in room.invis_obj_lst need not be listed ###
-master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, goblin, entrance, main_hall, antechamber, throne_room]
+master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, goblin_guard, entrance, main_hall, antechamber, throne_room]
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:

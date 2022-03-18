@@ -164,12 +164,12 @@ IN-PROC: create goblin machines
 				DONE: sort out trigger for condition
 			DONE: expand on trigger options
 			DONE: re-test
-			TBD: change goblin => guard_goblin
-				TBD: update instantiation obj name
-				TBD: update obj name in antechamber
-				TBD: update obj name in pkl save
-				TBD: search for any other solo usage of 'goblin'
-				TBD: re-test
+			DONE: change goblin => guard_goblin
+				DONE: update instantiation obj name
+				DONE: update obj name in antechamber
+				DONE: update obj name in pkl save
+				DONE: search for any other solo usage of 'goblin'
+				DONE: re-test
 			TBD: elim hasattrib() in active_gs scope checks ?
 			TBD: re-re-test!
 		TBD: clean up comments & troubleshooting prints!
