@@ -219,5 +219,4 @@ def interpreter(user_input, master_obj_lst):
 				if error_state:
 						return 'error', [error_msg]
 				else:
-#						print('2word', [word2_obj, word1])
 						return '2word', [word2_obj, word1]

@@ -155,7 +155,7 @@ IN-PROC: create goblin machines
 		DONE: create buffer text for result
 		DONE: test!
 		DONE: create base trigger cmd attributes
-		IN-PROC: test & tune
+		DONE: test & tune
 			DONE: test & troubleshoot!
 				DONE: added machine to goblin
 				DONE: extended mach scope search to creatures but not sure this is working (scope is working now)
@@ -170,7 +170,7 @@ IN-PROC: create goblin machines
 				DONE: update obj name in pkl save
 				DONE: search for any other solo usage of 'goblin'
 				DONE: re-test
-		TBD: clean up comments & troubleshooting prints!
+		DONE: clean up comments & troubleshooting prints!
 TBD: create help function for creatures (include fact that creatures can attack)
 TBD: full final test
 TBD: update creature doc
