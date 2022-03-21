@@ -112,19 +112,13 @@ broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 'post_act_swit
 
 control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control_panel', None,
 				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever],
-				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result]) # machine_state == lever_array_value
+				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result])
+				# machine_state == lever_array_value
 
 goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,
 				[['examine', 'iron_portcullis'], ['examine', 'control_panel'], ['examine', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north']],
 				None, [goblin_in_antechamber_cond, pass_thru_cond], [antechamber_goblin_attacks_result, nothing_happens_result])
 
-#	'2word', [word2_obj, word1]
-
-# name, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst
-
-#goblin = Creature('goblin', 'Goblin', 'goblin', 'goblin', None, None, None,
-
-#goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, [goblin_attack_mach],
 goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, [goblin_attack_mach],
 				{shiny_sword : 'show_goblin_shiny_sword',
 				stale_biscuits : 'show_goblin_stale_bisuits',

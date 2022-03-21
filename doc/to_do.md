@@ -155,7 +155,7 @@ IN-PROC: create goblin machines
 		DONE: create buffer text for result
 		DONE: test!
 		DONE: create base trigger cmd attributes
-		TBD: test & tune
+		IN-PROC: test & tune
 			DONE: test & troubleshoot!
 				DONE: added machine to goblin
 				DONE: extended mach scope search to creatures but not sure this is working (scope is working now)
@@ -170,8 +170,6 @@ IN-PROC: create goblin machines
 				DONE: update obj name in pkl save
 				DONE: search for any other solo usage of 'goblin'
 				DONE: re-test
-			TBD: elim hasattrib() in active_gs scope checks ?
-			TBD: re-re-test!
 		TBD: clean up comments & troubleshooting prints!
 TBD: create help function for creatures (include fact that creatures can attack)
 TBD: full final test
@@ -384,6 +382,7 @@ TBD: what should happen if Burt tries to take the axe from a living goblin? (gen
 TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
 TBD: no swearing in Dark Castle (with warning or else end of game)
 TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
+TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
 
 
 *** NEW PUZZLE IDEAS ***

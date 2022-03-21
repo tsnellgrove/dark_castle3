@@ -62,9 +62,9 @@ class MachineMixIn(object):
 						trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
 				elif case == 'switch':
 						trig_key_lst = word_lst[0]
-				print(case)
-				print(trig_key_lst)
-				print(self.trig_vals_lst)
+#				print(case)
+#				print(trig_key_lst)
+#				print(self.trig_vals_lst)
 				return trig_key_lst in self.trig_vals_lst
 
 		def run_mach(self, active_gs):
