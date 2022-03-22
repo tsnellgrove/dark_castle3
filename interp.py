@@ -68,6 +68,8 @@ def help(active_gs, option):
 				output = descript_dict['help_read']
 		elif option == 'attack':
 				output = descript_dict['help_attack']
+		elif option == 'creatures':
+				output = descript_dict['help_creatures']
 		else:
 				output = descript_dict['help']
 		active_gs.buffer(output)

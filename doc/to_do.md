@@ -113,7 +113,7 @@ DONE: create attack() method
 	DONE: de-dup 'prep' code
 	DONE: examine 'show' case return in interp() - what to do about 'give'? change case name? => 'prep' case
 	DONE: comment clean-up
-IN-PROC: create goblin machines
+DONE: create goblin machines
 	DONE: Plan out attack_burt method & attack_burt_dict
 		IDEA: Instead of a separate method for burt_attacks, just have a separate dict??
 			IDEA: but how could I pass in who the attacker was?? (without needing a new interp() case)
@@ -139,7 +139,7 @@ IN-PROC: create goblin machines
 			IDEA: text will be situation-specific (e.g. "The goblin does not take kindly to your presence in the north side of the Antechamber.")
 			IDEA: rest of the result is just calling self.creature.attack_burt()
 			IDEA: creatures are weapon-locked (always assumed to use the same weapon)
-	IN-PROC: implement goblin pre_act_mach
+	DONE: implement goblin pre_act_mach
 		DONE: create machine obj
 		DONE: create cond class
 		DONE: add cond class to mk_def_pkl() imports
@@ -171,7 +171,7 @@ IN-PROC: create goblin machines
 				DONE: search for any other solo usage of 'goblin'
 				DONE: re-test
 		DONE: clean up comments & troubleshooting prints!
-TBD: create help function for creatures (include fact that creatures can attack)
+DONE: create help function for creatures (include fact that creatures can attack)
 TBD: full final test
 TBD: update creature doc
 
