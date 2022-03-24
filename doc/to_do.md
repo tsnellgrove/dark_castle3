@@ -12,6 +12,16 @@ Feb 9, 2022
 
 
 ##########################
+### VERSION 3.61 START ###
+##########################
+
+Version 3.61 Goals
+- TBD: warnings
+	- IDEA: counter can be 1, 2, or infinite
+	- IDEA: if not infinite, then after last warning gives an "I told you so"
+- TBD: timers
+
+##########################
 ### VERSION 3.62 START ###
 ##########################
 Version 3.62 Goals
@@ -93,6 +103,12 @@ TBD: sort out more elegant assignment process for self referenced obj (e.g. re-a
 TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
 - introduce pre-built "warning" machine? use for 'go south', 'attack hedgehog', 'lift heavy rock', etc
 - does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
+- change hand from list to string
+- cursing => end of game (requires warning_mach and usniversal scope)
+- lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
+- game saves (requires file clean up?)
+- encumberance (post Burt as object?)
+
 
 
 *** NEW PUZZLE IDEAS ***
