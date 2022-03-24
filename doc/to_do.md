@@ -298,7 +298,7 @@ So, based on the mechanical approach, creatures have three standard interaction 
 
 - The 'Attack' method is a bit more complex and is intended to enable combat between Burt and creatures. The intent in Dark Castle is for combat to be a purely logical exercise... so if you attack a Creature with the correct weapon you will always win. Burt's "weapon" is whatever he is holding in his hand. If Burt's hand is empty he attacks with his Fist. For a given Creature and burt_weapon, attack() generates a result_code - which has options like 'creature_flee', 'creature_death', and 'burt_death' - and a response_key - which is the descript_dict[] key to the attack's description. As, with the other Creature methods, it's easy to imagine attack() provoking a more complex response than these outcomes - but those are outside the scope of the method and should be implemented via a Modular Machine.
 
-- 'attack_burt' is an awkward 'hidden' verb that enables a creature to proactively attack Burt. Among other things, this work-around highlights that Burt should really be an object himself - rather than an amorphous set of attributes distributed across game state. But this will not be a minor undertaking - so for now, we have the attack_burt() method - which enables 'attack' to remain a 2word command without requiring a 'burt' object to exist. Code-wise, 'attack_burt' is identical to 'attack' with some minor text differences ("You charge..." vs. "You attempt to parry...").
+- 'attack_burt' is an awkward 'hidden' verb that enables a creature to proactively attack Burt. Among other things, this work-around highlights that Burt should really be an object himself - rather than an amorphous set of attributes distributed across game state. But this will not be a minor undertaking - so for now, we have the attack_burt() method - which enables 'attack' to remain a 2word command without requiring a 'burt' object to exist. Code-wise, 'attack_burt' is identical to 'attack' with some minor text differences ("You charge..." vs. "You attempt to parry..."). In general, the idea is that when Burt is being attacked he is on the defensive and likely needs the right weapon just to parry.
 
 *** Methods Psuedo Code ***
 
@@ -314,8 +314,7 @@ So, based on the mechanical approach, creatures have three standard interaction 
 
 - flow chart Goblin interaction
 
-- introduce pre-built "warning" machine?
-	- use for 'go south', 'attack hedgehog', 'lift heavy rock', etc
+- introduce pre-built "warning" machine? use for 'go south', 'attack hedgehog', 'lift heavy rock', etc
 	- or maybe bake warning into 'attack method'
 
 - for attack warning
@@ -386,6 +385,7 @@ TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") e
 TBD: no swearing in Dark Castle (with warning or else end of game)
 TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
 TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
+- introduce pre-built "warning" machine? use for 'go south', 'attack hedgehog', 'lift heavy rock', etc
 
 
 *** NEW PUZZLE IDEAS ***
