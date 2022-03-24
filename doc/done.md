@@ -1750,3 +1750,175 @@ DONE: documentation:
 		DONE: Separate document for Machine Notes
 		DONE: Sort out rough Machine ideas
 
+
+##########################
+### VERSION 3.60 START ###
+##########################
+
+Version 3.60 Goals
+- Create class, methods, obj, and machines for goblin creature
+
+DONE: Ideate
+	DONE: share updates with Franco
+	DONE: consolidate / formalize rough Creature ideas => beginning pseudo-code
+DONE: create base class
+	DONE: create creature_class_def.py
+	DONE: define base Creature class (no methods yet)
+	DONE: add Creature to mk_def_pkl() imports
+	DONE: run mk_def_pkl()
+	DONE: troubleshoot
+DONE: create base object
+	DONE: instantiate goblin in mk_def_pkl() 
+	DONE: add goblin to antechamber room
+	DONE: add goblin obj to master_obj_lst in mk_def_pkl
+	DONE: run mk_def_pkl()
+	DONE: add base goblin description to static_gbl
+	DONE: test
+DONE: create show() method
+	DONE: evaluate updates needed in interpreter to support "show x to y"
+	DONE: create show method
+	DONE: add show attributes to goblin
+	DONE: add show_response text to static_gbl
+	DONE: add 'show' to verb_lst in interp()
+	DONE: interp() updates
+	DONE: cmd_exe() updates
+	DONE: run mk_def_pkl()
+	DONE: test show method
+	DONE: update help function for prepositions
+DONE: add a default option to show() method
+	DONE: add 'def_show' entry to the show_item_dict attribute
+	DONE: update the show() method
+	DONE: update static_gbl
+	DONE: run mk_def_pkl()
+	DONE: test
+DONE: redo default option code to avoid duplication (prep for give method)
+	DONE: update the show() method
+	DONE: run mk_def_pkl()
+	DONE: test
+DONE: add a biscuit-specific show() response (in support of future give() behavior) to avoid a quest-breaking scenario.
+DONE: implement give() method
+	DONE: create give() method
+		DONE: confirm that item is in hand
+		DONE: implement Creature def_give behavior
+		DONE: if accept_item: remove item from hand and add to creature_item_lst
+		DONE: buffer descript_dict[response_key]
+		DONE: if exchange_item != None: removie item from creature_item_lst and add to hand
+		DONE: if new_descript_key != None: update self.descript_key
+		DONE: method default response = "the <creature> is not interested in the <item>"
+	DONE: add 'give' to verb_lst in interp()
+	DONE: add give() attributes (including creature_item_lst) to goblin
+	DONE: add give_response text to static_gbl
+	DONE: update interp() => elif word1 in ['show', 'give']
+	DONE: update cmd_exe() => elif word1 in ['show', 'give']
+	DONE: run mk_def_pkl()
+	DONE: test give() method (uses method default for un-named obj; errors out on biscuits and sword)
+		DONE: method default for un-named obj solved
+		DONE: solved it!
+	DONE: update help function for prepositions
+	DONE: full final test
+DONE: create attack() method
+	IDEA: attack_creature_dict = {burt_weapon : result_code, response_key}
+	IDEA: result_code options = 'creature_flee', 'creature_death', 'burt_death', None
+	DONE: remove attack_src_dict attribute
+	DONE: create attack() method
+		DONE: burt_weapon = hand_item ('Fist' if hand is empty)
+		DONE: implement 'def_attack' behavior
+		DONE: buffer descript_dict[response_key]
+		DONE: if result_code == 'creature_flee': remove creature from room_obj_lst
+		DONE: if result_code == 'creature_death': 
+			DONE: creature_items_lst => room_obj_lst
+			DONE: remove creature from room_obj_lst
+			DONE: add dead_creature obj to room_obj_lst
+			DONE: add dead_creature_obj to Creature class attributes
+			DONE: update goblin obj
+			DONE: create dead_goblin ViewOnly obj
+		DONE: if result_code == 'burt_death': active_gs.set_game_ending('death')
+		DONE: method default response = "At the last minute the <creature> dodges your vicious attack with the <burt_weapon>"
+	DONE: add 'attack' to verb_lst in interp()
+	DONE: add attack() attributes (including creature_item_lst) to goblin
+	DONE: add attack_response text to static_gbl
+	DONE: add descript_dict entry for dead_goblin
+	DONE: run mk_def_pkl()
+	DONE: test attack() method
+		DONE: troubleshoot double show and give
+		DONE: troubleshoot attack command
+			DONE: able to ref shiny_sword
+			DONE: attack works but list add of goblin_items_lst is now an issue
+			DONE: fix extend function
+			DONE: fix dead_goblin 'goblin' short name
+			DONE: fix 'def_attack'
+		DONE: add buffer of weapon used in attack() method
+		DONE: fix 'fist' gramar (i.e. "the <weapon>" vs. "your fist")
+	DONE: create help function for 'attack'
+	DONE: reduce duplication in cmd_exe() put, give, take, 2word cases
+	DONE: de-dup 'prep' code
+	DONE: examine 'show' case return in interp() - what to do about 'give'? change case name? => 'prep' case
+	DONE: comment clean-up
+DONE: create goblin machines
+	DONE: Plan out attack_burt method & attack_burt_dict
+		IDEA: Instead of a separate method for burt_attacks, just have a separate dict??
+			IDEA: but how could I pass in who the attacker was?? (without needing a new interp() case)
+		IDEA: Ultimately, a separat attack_burt() method is simplest... but this is another arguement for 'burt' as an obj
+			IDEA: will still need a spearate attack_burt_dict
+			IDEA: replace "Fearlessly you charge.." text with "You attempt to parry the creature's attack with "
+			IDEA: 'pary' is really just text and and result_key == None
+	DONE: implement attack_burt() method and attack_burt_dict
+		DONE: create attack_burt() method
+		DONE: attack attack_burt_dict to Creature class
+		DONE: update guard_goblin obj to include attack_burt_dict
+		DONE: all entries for attack_burt_dict
+		DONE: add response_key text for goblin attack_burt_dict
+		DONE: solve how to add 'attack_burt' to verb_list in interp() => create a secret_verb_list ?
+			DONE: verbs_lst => known_verbs_lst
+			DONE: create secret_verbs_lst = ['attack_burt']
+			DONE: full_verbs_lst = known_verbs_lst + secret_verbs_lst
+			DONE: update checks to full_verbs_lst
+		DONE: manually test attack_burt() => 'attack_burt goblin'
+	DONE: plan pre_act_mach
+		IDEA: room will be a condition component
+		IDEA: can pass creature into result_exe()
+			IDEA: text will be situation-specific (e.g. "The goblin does not take kindly to your presence in the north side of the Antechamber.")
+			IDEA: rest of the result is just calling self.creature.attack_burt()
+			IDEA: creatures are weapon-locked (always assumed to use the same weapon)
+	DONE: implement goblin pre_act_mach
+		DONE: create machine obj
+		DONE: create cond class
+		DONE: add cond class to mk_def_pkl() imports
+		DONE: create cond objs
+		DONE: test & troubleshoot
+			IDEA: room obj are not yet defined - maybe just put this one cond after rooms? and then this one creature after cond
+			IDEA: except this doesn't work - because then goblin has to be after room... but the goblin is IN a room - argh!!
+			IDEA: consider room_name conversion ???
+			DONE: attribute = room_name rather than room_obj
+		DONE: create result class
+		DONE: add result class to mk_def_pkl() imports
+		DONE: create result objs
+		DONE: create buffer text for result
+		DONE: test!
+		DONE: create base trigger cmd attributes
+		DONE: test & tune
+			DONE: test & troubleshoot!
+				DONE: added machine to goblin
+				DONE: extended mach scope search to creatures but not sure this is working (scope is working now)
+				DONE: test print() statements in RoomCond but they never run
+				IDEA: problem appears to be in trigger - this is the first time triggering on 2word case - it has not worked before
+				DONE: sort out trigger for condition
+			DONE: expand on trigger options
+			DONE: re-test
+			DONE: change goblin => guard_goblin
+				DONE: update instantiation obj name
+				DONE: update obj name in antechamber
+				DONE: update obj name in pkl save
+				DONE: search for any other solo usage of 'goblin'
+				DONE: re-test
+		DONE: clean up comments & troubleshooting prints!
+DONE: create help function for creatures (include fact that creatures can attack)
+DONE: full final test
+DONE: update creature doc
+	DONE: Creature Method Philosopy updated
+	DONE: created dump_doc.md and moved the legacy creature ideas there
+	DONE: organized the active creature doc a bit better
+	DONE: move creature doc to a dedicated file
+
+
+
