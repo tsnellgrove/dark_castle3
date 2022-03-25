@@ -16,9 +16,15 @@ Feb 9, 2022
 ##########################
 
 Version 3.61 Goals
+- IDEA: Theme of 3.61 is some simple coding that will prep for the hdegehog in 3.62
 - TBD: warnings
-	- IDEA: counter can be 1, 2, or infinite
+	- IDEA: counter can be 1, 2, or infinite (warning_count = None => infinite)
 	- IDEA: if not infinite, then after last warning gives an "I told you so"
+	- IDEA: during infinite or count return cmd_override == True; else cmd_override == False
+	- TBD: create warning class
+		- TBD: Attributes include: name, trigger_type, warning_count, warning_key_1, warning_key_2
+	- TBD: update pre_action() code to handle warning case (maybe warnings before machs?)
+	- TBD: create warning object for going south from entrance
 - TBD: timers
 
 ##########################
