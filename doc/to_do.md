@@ -18,13 +18,29 @@ Feb 9, 2022
 Version 3.61 Goals
 - IDEA: Theme of 3.61 is some simple coding that will prep for the hdegehog in 3.62
 - TBD: warnings
-	- IDEA: counter can be 1, 2, or infinite (warning_count = None => infinite)
-	- IDEA: if not infinite, then after last warning gives an "I told you so"
-	- IDEA: during infinite or count return cmd_override == True; else cmd_override == False
+	- IDEA: what are we trying to do here and how will we do it?
+		- IDEA: goal of warnings is to produce a streamlined, simpler machine type just for warnings
+		- IDEA: counter can be 1, 2, or infinite (warning_count = None => infinite)
+		- IDEA: if not infinite, then after last warning gives an "I told you so"
+		- IDEA: during infinite or count return cmd_override == True; else cmd_override == False
 	- TBD: create warning class
-		- TBD: Attributes include: name, trigger_type, warning_count, warning_key_1, warning_key_2
-	- TBD: update pre_action() code to handle warning case (maybe warnings before machs?)
-	- TBD: create warning object for going south from entrance
+		- TBD: in mach_class.py create WarnClass (inherits attribute sub-set from InvisClass)
+		- TBD: create WarnClass attributes
+			- TBD: Total Attributes include: name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2
+			- TBD: name, trigger_type, trig_vals_lst from InvisClass
+			- TBD: warn_max, warn_count, warn_key_1, warn_key_2 = local attributes
+			- TBD: create setters for local (and getter for warn_count)
+		- TBD: override run_mach with warn-specific code (buffer descript_dict[warn_key], return override value)
+	- TBD: update pre_action() code to handle warning case (maybe warnings before machs???)
+	- TBD: instantiate warn obj: eterance_south_warn
+		- TBD: comment out entrance_south_mach
+		- TBD: in mk_def_pkl create warning object for going south from entrance
+		- TBD: add warn obj to Entrance invisible
+		- TBD: add WarnClass to mk_def_pkl imports
+	- TBD: Testing
+	- TBD: clean-up
+		- TBD: comment out entrance_south_mach result and conditions obj
+		- TBD: comment out entrance_south_mach result & condition classes
 - TBD: timers
 
 ##########################
