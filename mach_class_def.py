@@ -5,6 +5,7 @@
 
 ### import
 from noun_class_def import Invisible, ViewOnly
+from static_gbl import descript_dict
 
 ### classes
 class MachineMixIn(object):
@@ -84,4 +85,44 @@ class ViewOnlyMach(ViewOnly, MachineMixIn):
 		def __init__(self, name, full_name, root_name, descript_key, writing, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
+
+class WarnClass(Invisible):
+		def __init__(name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2)
+				super().__init__(name, trigger_type, trig_vals_lst)
+				self._warn_max = warn_count # max number of warnings - usually 0 or 2
+				self._warn_count = warn_count # number of warnings given so far
+				self._warn_key_1 = warn_key_1 # first warning key
+				self._warn_key_2 = warn_key_2 # second warning key
+
+		@property
+		def warn_max(self):
+				return self._warn_max
+
+		@property
+		def warn_count(self):
+				return self._warn_count
+
+		@warn_count.setter
+		def warn_count(self, new_count):
+				self._warn_count = new_count
+
+		@property
+		def warn_key_1(self):
+				return self._warn_key_1
+
+		@property
+		def warn_key_2(self):
+				return self._warn_key_2
+
+		def run_mach(self, active_gs):
+				cmd_override = False
+				if self.warn_max == 0:
+						active_gs.buffer(descript_dict[self.warn_key_1])
+				elif self.warn_count < self.warn_max + 1:
+						local_key = 'warn_key_' + warn_count
+						active_gs.buffer(descript_dict[local_key])
+				elif self.warn_count == self.warn_max + 1:
+						active_gs.buffer("Don't say I didn't warn you Burt...")
+						cmd_override = True
+				return cmd_override
 
