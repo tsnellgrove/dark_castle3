@@ -32,12 +32,14 @@ Version 3.61 Goals
 			- DONE: create setters for local (and getter for warn_count)
 		- DONE: override run_mach with warn-specific code (buffer descript_dict[warn_key], return override value)
 	- N/A: update pre_action() code to handle warning case (maybe warnings before machs???)
-	- TBD: instantiate warn obj: eterance_south_warn
-		- TBD: comment out entrance_south_mach
-		- TBD: in mk_def_pkl create warning object for going south from entrance
-		- TBD: add warn obj to Entrance invisible
-		- TBD: add WarnClass to mk_def_pkl imports
-	- TBD: Testing
+	- DONE: instantiate warn obj: eterance_south_warn
+		- DONE: add WarnClass to mk_def_pkl imports
+		- DONE: in mk_def_pkl create warning object for going south from entrance
+		- DONE: in static_gbl add text for entrance_south_warn
+		- DONE: comment out entrance_south_mach
+		- DONE: remove entrance_south_mach from entrance room
+		- DONE: add warn obj to Entrance invisible
+	- IN-PROC: Testing
 	- TBD: clean-up
 		- TBD: comment out entrance_south_mach result and conditions obj
 		- TBD: comment out entrance_south_mach result & condition classes

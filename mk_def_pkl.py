@@ -10,7 +10,7 @@ from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, C
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond, RoomCond
 from result_class_def import PassThruResult, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult, AttackBurtResult
-from mach_class_def import InvisMach, ViewOnlyMach
+from mach_class_def import InvisMach, ViewOnlyMach, WarnClass
 from creature_class_def import Creature
 from gs_class_def import GameState
 
@@ -88,7 +88,7 @@ goblin_in_antechamber_cond = RoomCond('goblin_in_antechamber', 'antechamber')
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'die_in_moat_result', 'death', True)
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', 'moat_croc_scared_result', True)
 moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', 'moat_get_crown_result', royal_crown, True)
-cant_turn_back_result = BufferOnlyResult('cant_turn_back_result', 'cant_turn_back_result', True)
+# cant_turn_back_result = BufferOnlyResult('cant_turn_back_result', 'cant_turn_back_result', True)
 throne_push_result = BufferOnlyResult('throne_push_result', 'throne_push_result', False)
 nothing_happens_result = BufferOnlyResult('nothing_happens_result', 'nothing_happens_result', False)
 throne_pull_result = AddObjToRoomResult('throne_pull_result', 'throne_pull_result', hedgehog_broach, False)
@@ -97,14 +97,17 @@ portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result'
 antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks_result', 'antechamber_goblin_attacks', 
 				'goblin_placeholder', True)
 
-#	name, result_descript, creature_obj, cmd_override
+
+entrance_south_warn = WarnClass('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, None, 'entrance_south_warn', None)
+
+# (name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2)
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
 				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
 				[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) # machine_state == got_crown
 
-entrance_south_mach = InvisMach('entrance_south_mach', None, 'pre_act_cmd', None, [['go', 'south']],
-				None, [pass_thru_cond], [cant_turn_back_result])
+#entrance_south_mach = InvisMach('entrance_south_mach', None, 'pre_act_cmd', None, [['go', 'south']],
+#				None, [pass_thru_cond], [cant_turn_back_result])
 
 broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 'post_act_switch', throne, ['pushed', 'pulled'],
 				[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
@@ -133,7 +136,7 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 				[grimy_axe, torn_note], dead_goblin)
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_mach])
+				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn])
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
 				[shiny_sword, front_gate], {'south' : front_gate}, [])
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
