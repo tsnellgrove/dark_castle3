@@ -40,6 +40,10 @@ Version 3.61 Goals
 		- DONE: remove entrance_south_mach from entrance room
 		- DONE: add warn obj to Entrance invisible
 	- IN-PROC: Testing
+		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing
+		- IDEA: this makes sense... in all other cases I inherit from simple parents to more complex children
+		- IDEA: WarnClass is simpler... so it should be the parent
+		- IDEA: Actually - how about a TrigDetectMixIn that is inherited by both WarnClass and MachineMixIn and only has trig_check method?
 	- TBD: clean-up
 		- TBD: comment out entrance_south_mach result and conditions obj
 		- TBD: comment out entrance_south_mach result & condition classes

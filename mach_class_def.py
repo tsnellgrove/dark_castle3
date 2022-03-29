@@ -88,7 +88,7 @@ class ViewOnlyMach(ViewOnly, MachineMixIn):
 
 class WarnClass(Invisible):
 		def __init__(self, name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2):
-				super().__init__(self, name, trigger_type, trig_vals_lst)
+				super().__init__(name, trigger_type, trig_vals_lst)
 				self._warn_max = warn_count # max number of warnings - usually 0 or 2
 				self._warn_count = warn_count # number of warnings given so far
 				self._warn_key_1 = warn_key_1 # first warning key
