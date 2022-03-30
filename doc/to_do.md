@@ -39,11 +39,22 @@ Version 3.61 Goals
 		- DONE: comment out entrance_south_mach
 		- DONE: remove entrance_south_mach from entrance room
 		- DONE: add warn obj to Entrance invisible
-	- IN-PROC: Testing
-		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing
+	- DONE: Initial Testing
+		- DONE: class based errors not resolved when trying to run mk_def_pkl()
+	- DONE: New warning class ideas
+		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?
 		- IDEA: this makes sense... in all other cases I inherit from simple parents to more complex children
 		- IDEA: WarnClass is simpler... so it should be the parent
 		- IDEA: Actually - how about a TrigDetectMixIn that is inherited by both WarnClass and MachineMixIn and only has trig_check method?
+		- IDEA: A MixIn of a MixIn seems over-complicated... 
+		- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
+		- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
+	- DONE: Class re-do
+		- DONE: rename class to Warning
+		- DONE: update class name in mk_def_pkl() import and obj instantiation
+		- DONE: implement with code dup of MachineMixIn
+		- DONE: run mk_def_pkl()
+	- TBD: testing
 	- TBD: clean-up
 		- TBD: comment out entrance_south_mach result and conditions obj
 		- TBD: comment out entrance_south_mach result & condition classes
@@ -136,6 +147,14 @@ TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_crea
 - lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
 - game saves (requires file clean up?)
 - encumberance (post Burt as object?)
+	- DONE: New warning class ideas
+		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?
+		- IDEA: this makes sense... in all other cases I inherit from simple parents to more complex children
+		- IDEA: WarnClass is simpler... so it should be the parent
+		- IDEA: Actually - how about a TrigDetectMixIn that is inherited by both WarnClass and MachineMixIn and only has trig_check method?
+		- IDEA: A MixIn of a MixIn seems over-complicated... 
+		- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
+		- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
 
 
 

@@ -10,7 +10,7 @@ from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, C
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond, RoomCond
 from result_class_def import PassThruResult, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult, AttackBurtResult
-from mach_class_def import InvisMach, ViewOnlyMach, WarnClass
+from mach_class_def import InvisMach, ViewOnlyMach, Warning
 from creature_class_def import Creature
 from gs_class_def import GameState
 
@@ -98,7 +98,7 @@ antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks
 				'goblin_placeholder', True)
 
 
-entrance_south_warn = WarnClass('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, None, 'entrance_south_warn', None)
+entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, None, 'entrance_south_warn', None)
 
 # (name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2)
 

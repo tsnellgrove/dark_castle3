@@ -86,13 +86,32 @@ class ViewOnlyMach(ViewOnly, MachineMixIn):
 				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
-class WarnClass(Invisible):
+# class WarnClass(InvisMach):
+class Warning(Invisible):
 		def __init__(self, name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2):
-				super().__init__(name, trigger_type, trig_vals_lst)
+#				super().__init__(name, trigger_type, trig_vals_lst)
+				super().__init__(name)
+
+## DUP CODE TO MachineMixIn ###
+				self._trigger_type = trigger_type # pre_act_cmd, pre_act_switch, pre_act_auto, post_act_cmd, post_act_switch, or post_act_auto
+				self._trig_vals_lst = trig_vals_lst # tirgger values that will start the machine (commands or switch states; None for auto?)
+## DUP CODE TO MachineMixIn ###
+
 				self._warn_max = warn_count # max number of warnings - usually 0 or 2
 				self._warn_count = warn_count # number of warnings given so far
 				self._warn_key_1 = warn_key_1 # first warning key
 				self._warn_key_2 = warn_key_2 # second warning key
+
+
+## DUP CODE TO MachineMixIn ###
+		@property
+		def trigger_type(self):
+				return self._trigger_type
+
+		@property
+		def trig_vals_lst(self):
+				return self._trig_vals_lst
+## DUP CODE TO MachineMixIn ###
 
 		@property
 		def warn_max(self):
@@ -113,6 +132,25 @@ class WarnClass(Invisible):
 		@property
 		def warn_key_2(self):
 				return self._warn_key_2
+
+
+## DUP CODE TO MachineMixIn ###
+		# formats trigger state into trig_key_lst based on case and returns true if trig_key_lst is in trig_vals_lst
+		def trig_check(self, active_gs, case, word_lst):
+				trig_key_lst = 'not_valid'
+				if case == 'go':
+						trig_key_lst = [word_lst[1], word_lst[2]]
+				elif case == '2word':
+						trig_key_lst = [word_lst[1], word_lst[0].name]
+				elif  case == 'tru_1word':
+						trig_key_lst = word_lst
+				elif  case == 'put':
+						trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
+				elif case == 'switch':
+						trig_key_lst = word_lst[0]
+				return trig_key_lst in self.trig_vals_lst
+## DUP CODE TO MachineMixIn ###
+
 
 		def run_mach(self, active_gs):
 				cmd_override = False
