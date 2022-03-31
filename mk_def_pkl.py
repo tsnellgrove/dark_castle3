@@ -100,14 +100,9 @@ antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks
 
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0, 'entrance_south_warn', None)
 
-# (name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2)
-
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
 				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
 				[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) # machine_state == got_crown
-
-#entrance_south_mach = InvisMach('entrance_south_mach', None, 'pre_act_cmd', None, [['go', 'south']],
-#				None, [pass_thru_cond], [cant_turn_back_result])
 
 broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 'post_act_switch', throne, ['pushed', 'pulled'],
 				[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],

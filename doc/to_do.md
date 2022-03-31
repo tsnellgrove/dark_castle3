@@ -55,9 +55,12 @@ Version 3.61 Goals
 		- DONE: implement with code dup of MachineMixIn
 		- DONE: run mk_def_pkl()
 	- DONE: testing
-	- TBD: clean-up
-		- TBD: comment out entrance_south_mach result and conditions obj
+	- DONE: clean-up
+		- DONE: comment out entrance_south_mach result and conditions obj
 - TBD: timers
+- TBD: consider more scalable approach to multiple warnings and timer_events:
+	- IDEA: obj_name+str(count); if exist descript_dict[key]: active_gs.buffer(descript_dict[key]); else: buffer default
+	- IDEA: or maybe the pythonic approach here is "try" ?
 
 ##########################
 ### VERSION 3.62 START ###

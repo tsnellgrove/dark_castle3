@@ -86,10 +86,8 @@ class ViewOnlyMach(ViewOnly, MachineMixIn):
 				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
-# class WarnClass(InvisMach):
 class Warning(Invisible):
 		def __init__(self, name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2):
-#				super().__init__(name, trigger_type, trig_vals_lst)
 				super().__init__(name)
 
 ## DUP CODE TO MachineMixIn ###
