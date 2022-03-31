@@ -153,7 +153,7 @@ class Warning(Invisible):
 
 
 		def run_mach(self, active_gs):
-				cmd_override = False
+				cmd_override = True
 				if self.warn_max == 0:
 						active_gs.buffer(descript_dict[self.warn_key_1])
 				elif self.warn_count < self.warn_max + 1:
@@ -161,6 +161,6 @@ class Warning(Invisible):
 						active_gs.buffer(descript_dict[local_key])
 				elif self.warn_count == self.warn_max + 1:
 						active_gs.buffer("Don't say I didn't warn you Burt...")
-						cmd_override = True
+						cmd_override = False
 				return cmd_override
 

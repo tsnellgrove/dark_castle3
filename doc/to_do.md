@@ -54,10 +54,9 @@ Version 3.61 Goals
 		- DONE: update class name in mk_def_pkl() import and obj instantiation
 		- DONE: implement with code dup of MachineMixIn
 		- DONE: run mk_def_pkl()
-	- TBD: testing
+	- DONE: testing
 	- TBD: clean-up
 		- TBD: comment out entrance_south_mach result and conditions obj
-		- TBD: comment out entrance_south_mach result & condition classes
 - TBD: timers
 
 ##########################

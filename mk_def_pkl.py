@@ -98,7 +98,7 @@ antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks
 				'goblin_placeholder', True)
 
 
-entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, None, 'entrance_south_warn', None)
+entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0, 'entrance_south_warn', None)
 
 # (name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2)
 
