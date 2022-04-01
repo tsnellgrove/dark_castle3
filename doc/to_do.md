@@ -65,7 +65,12 @@ Version 3.61 Goals
 		- IDEA: should be able to eliminate warn_key_1, warn_key_2
 		- IDEA: if warn_max = 0: key = name_1 ; else try key = name + "_" + warn_count except name_1 (i.e. name_1 is the default)
 	- TBD: code
+		- TBD: add increment for warn_count (how did I forget this??)
+		- TBD: eliminate warn_key_1 and warn_key_2 attributes
+		- TBD: add try and except coding
 	- TBD: test
+		- TBD: go south test
+		- TBD: go south with warn_max = 2 test
 - TBD: timers
 	- DONE: timer design goals
 		- IDEA: can be triggered by function call timer_obj.start()
