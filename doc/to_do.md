@@ -57,10 +57,27 @@ Version 3.61 Goals
 	- DONE: testing
 	- DONE: clean-up
 		- DONE: comment out entrance_south_mach result and conditions obj
-- TBD: timers
 - TBD: consider more scalable approach to multiple warnings and timer_events:
 	- IDEA: obj_name+str(count); if exist descript_dict[key]: active_gs.buffer(descript_dict[key]); else: buffer default
 	- IDEA: or maybe the pythonic approach here is "try" ?
+- TBD: timers
+	- DONE: timer design goals
+		- IDEA: can be triggered by function call timer_obj.start()
+		- IDEA: run for a set amount of time timer_max
+		- IDEA: increment timer_count each time a turn successfully passes (watch out for errors that don't count!)
+		- IDEA: if silent_timer == False: active_gs.buffer(timer_descript_key) where timer_descript_key = name + str(timer_count)
+- TBD: alert_scope
+	- DONE: alert_scope design goals
+		- IDEA:	most machines only react to Burt's actions - and their reaction is immediate - so Burt will always see the results
+		- IDEA: but timers (and someday autos) mean that visible alerts could be generated in a room that Burt is no longer in
+		- IDEA: in this case, Burt should not actually be notified
+		- IDEA: e.g. the Hedgehog will eat the biscuits for 3 turns but Burt shouldn't hear about it if he's left the room
+		- IDEA: So, to start with at least we will set the "alert scope" to the room the event is happening in
+		- IDEA: if Burt is in a room he sees and hears the events in the room. If he's outside the room he sees and hears nothing.
+		- IDEA: So we need an active_gs method that can determine if a given timer / auto is in the same room as Burt
+		- IDEA: since we can get mach scope for the room Burt is in, it shouldn't be too hard to check if a given timer / auto is in the mach_lst
+- TBD: implement alert_scope for test timer
+
 
 ##########################
 ### VERSION 3.62 START ###
