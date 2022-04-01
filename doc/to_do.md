@@ -57,9 +57,15 @@ Version 3.61 Goals
 	- DONE: testing
 	- DONE: clean-up
 		- DONE: comment out entrance_south_mach result and conditions obj
-- TBD: consider more scalable approach to multiple warnings and timer_events:
-	- IDEA: obj_name+str(count); if exist descript_dict[key]: active_gs.buffer(descript_dict[key]); else: buffer default
-	- IDEA: or maybe the pythonic approach here is "try" ?
+- IN-PROC: consider more scalable approach to multiple warnings and timer_events:
+	- DONE: Thinking
+		- IDEA: obj_name+str(count); if exist descript_dict[key]: active_gs.buffer(descript_dict[key]); else: buffer default
+		- IDEA: or maybe the pythonic approach here is "try" ?
+		- IDEA: initial Warning attributes = name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2
+		- IDEA: should be able to eliminate warn_key_1, warn_key_2
+		- IDEA: if warn_max = 0: key = name_1 ; else try key = name + "_" + warn_count except name_1 (i.e. name_1 is the default)
+	- TBD: code
+	- TBD: test
 - TBD: timers
 	- DONE: timer design goals
 		- IDEA: can be triggered by function call timer_obj.start()
@@ -174,7 +180,7 @@ TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_crea
 		- IDEA: A MixIn of a MixIn seems over-complicated... 
 		- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
 		- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
-
+- implement carying capacity / container cappacity; Also carry restriction passages, etc..
 
 
 *** NEW PUZZLE IDEAS ***
