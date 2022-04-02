@@ -87,7 +87,8 @@ class ViewOnlyMach(ViewOnly, MachineMixIn):
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
 class Warning(Invisible):
-		def __init__(self, name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2):
+#		def __init__(self, name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2):
+		def __init__(self, name, trigger_type, trig_vals_lst, warn_max, warn_count):
 				super().__init__(name)
 
 ## DUP CODE TO MachineMixIn ###
@@ -95,10 +96,10 @@ class Warning(Invisible):
 				self._trig_vals_lst = trig_vals_lst # tirgger values that will start the machine (commands or switch states; None for auto?)
 ## DUP CODE TO MachineMixIn ###
 
-				self._warn_max = warn_count # max number of warnings - usually 0 or 2
+				self._warn_max = warn_max # max number of warnings - usually 0 or 2
 				self._warn_count = warn_count # number of warnings given so far
-				self._warn_key_1 = warn_key_1 # first warning key
-				self._warn_key_2 = warn_key_2 # second warning key
+#				self._warn_key_1 = warn_key_1 # first warning key
+#				self._warn_key_2 = warn_key_2 # second warning key
 
 
 ## DUP CODE TO MachineMixIn ###
@@ -123,13 +124,13 @@ class Warning(Invisible):
 		def warn_count(self, new_count):
 				self._warn_count = new_count
 
-		@property
-		def warn_key_1(self):
-				return self._warn_key_1
+#		@property
+#		def warn_key_1(self):
+#				return self._warn_key_1
 
-		@property
-		def warn_key_2(self):
-				return self._warn_key_2
+#		@property
+#		def warn_key_2(self):
+#				return self._warn_key_2
 
 
 ## DUP CODE TO MachineMixIn ###
@@ -151,14 +152,24 @@ class Warning(Invisible):
 
 
 		def run_mach(self, active_gs):
-				cmd_override = True
+				cmd_override = False
+				self.warn_count += 1
+				warn_key = self.name + "_" + str(self.warn_count)
+				warn_default = self.name + "_1"
+				print(warn_key)
+				print(self.warn_max)
 				if self.warn_max == 0:
-						active_gs.buffer(descript_dict[self.warn_key_1])
-				elif self.warn_count < self.warn_max + 1:
-						local_key = 'warn_key_' + warn_count
-						active_gs.buffer(descript_dict[local_key])
-				elif self.warn_count == self.warn_max + 1:
+						active_gs.buffer(descript_dict[warn_default])
+						cmd_override = True
+						print("infinite state")
+				elif self.warn_count < self.warn_max:
+#						local_key = 'warn_key_' + warn_count
+#						active_gs.buffer(descript_dict[local_key])
+						active_gs.buffer(descript_dict[warn_key])
+						cmd_override = True
+						print("limited state")
+				elif self.warn_count == self.warn_max:
 						active_gs.buffer("Don't say I didn't warn you Burt...")
-						cmd_override = False
+#						cmd_override = False
 				return cmd_override
 
