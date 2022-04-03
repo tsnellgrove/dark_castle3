@@ -16,7 +16,7 @@ Feb 9, 2022
 ##########################
 
 Version 3.61 Goals
-- IDEA: Theme of 3.61 is some simple coding that will prep for the hdegehog in 3.62
+- IDEA: Theme of 3.61 is some supporting coding that will prep for the hdegehog in 3.62
 - DONE: warning class
 	- IDEA: what are we trying to do here and how will we do it?
 		- IDEA: goal of warnings is to produce a streamlined, simpler machine type just for warnings
@@ -57,14 +57,14 @@ Version 3.61 Goals
 	- DONE: testing
 	- DONE: clean-up
 		- DONE: comment out entrance_south_mach result and conditions obj
-- IN-PROC: more scalable approach to warnings:
+- DONE: more scalable approach to warnings:
 	- DONE: warning improvement ideation
 		- IDEA: obj_name+str(count); if exist descript_dict[key]: active_gs.buffer(descript_dict[key]); else: buffer default
 		- IDEA: or maybe the pythonic approach here is "try" ?
 		- IDEA: initial Warning attributes = name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2
 		- IDEA: should be able to eliminate warn_key_1, warn_key_2
 		- IDEA: if warn_max = 0: key = name_1 ; else try key = name + "_" + warn_count except name_1 (i.e. name_1 is the default)
-	- IN-PROC: code warning improvements
+	- DONE: code warning improvements
 		- DONE: add increment for warn_count (how did I forget this??)
 		- DONE: eliminate warn_key_1 and warn_key_2 attributes
 		- DONE: update obj instantiation
@@ -76,7 +76,7 @@ Version 3.61 Goals
 		- DONE: test infinite case
 		- DONE: test limited case
 		- DONE: clean up test prints
-		- TBD: clean up comments
+		- DONE: clean up comments
 - TBD: timers
 	- DONE: timer design goals
 		- IDEA: can be triggered by function call timer_obj.start()

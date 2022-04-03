@@ -97,9 +97,6 @@ portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result'
 antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks_result', 'antechamber_goblin_attacks', 
 				'goblin_placeholder', True)
 
-
-# entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0, 'entrance_south_warn', None)
-
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
