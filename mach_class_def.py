@@ -155,21 +155,26 @@ class Warning(Invisible):
 				cmd_override = False
 				self.warn_count += 1
 				warn_key = self.name + "_" + str(self.warn_count)
-				warn_default = self.name + "_1"
-				print(warn_key)
-				print(self.warn_max)
+				warn_key_recur = self.name + "_1"
+				warn_default = "I'm not sure that's a good idea Burt..."
+				warn_close = "Don't say I didn't warn you Burt..."
+#				print(warn_key)
+#				print(self.warn_max)
 				if self.warn_max == 0:
-						active_gs.buffer(descript_dict[warn_default])
 						cmd_override = True
-						print("infinite state")
+						try:
+								active_gs.buffer(descript_dict[warn_key_recur])
+						except:
+								active_gs.buffer(warn_default)
+#						print("infinite state")
 				elif self.warn_count < self.warn_max:
-#						local_key = 'warn_key_' + warn_count
-#						active_gs.buffer(descript_dict[local_key])
-						active_gs.buffer(descript_dict[warn_key])
 						cmd_override = True
-						print("limited state")
+						try:
+								active_gs.buffer(descript_dict[warn_key])
+						except:
+								active_gs.buffer(warn_default)
+#						print("limited state")
 				elif self.warn_count == self.warn_max:
-						active_gs.buffer("Don't say I didn't warn you Burt...")
-#						cmd_override = False
+						active_gs.buffer(warn_close)
 				return cmd_override
 

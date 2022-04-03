@@ -71,11 +71,11 @@ Version 3.61 Goals
 		- DONE: update descript_dict key
 		- DONE: test infinite case
 		- DONE: test limited case
-		- TBD: create static warn_default = "I'm not sure that's a good idea Burt..."
-		- TBD: add try and except coding
-		- TBD: test infinite case
-		- TBD: test limited case
-		- TBD: clean up test prints
+		- DONE: create static warn_default = "I'm not sure that's a good idea Burt..."
+		- DONE: add try and except coding
+		- DONE: test infinite case
+		- DONE: test limited case
+		- DONE: clean up test prints
 		- TBD: clean up comments
 - TBD: timers
 	- DONE: timer design goals

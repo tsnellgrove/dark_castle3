@@ -100,7 +100,7 @@ antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks
 
 # entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0, 'entrance_south_warn', None)
 
-entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 3, 0)
+entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
 				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
