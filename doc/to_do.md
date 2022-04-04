@@ -83,6 +83,12 @@ Version 3.61 Goals
 		- IDEA: run for a set amount of time timer_max
 		- IDEA: increment timer_count each time a turn successfully passes (watch out for errors that don't count!)
 		- IDEA: if silent_timer == False: active_gs.buffer(timer_descript_key) where timer_descript_key = name + str(timer_count)
+		- IDEA: timer attributes: name, active (T or F), timer_count, timer_max, message_type ('silent', 'variable', 'constant'), trigger_type = 'auto_pre_act'
+	- TBD: create timer class
+	- TBD: create timer methods (start)
+	- TBD: update pre_act() to check for active timers
+	- TBD: instantiate timer obj
+	- TBD: test timer
 - TBD: alert_scope
 	- DONE: alert_scope design goals
 		- IDEA:	most machines only react to Burt's actions - and their reaction is immediate - so Burt will always see the results
