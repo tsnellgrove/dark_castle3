@@ -84,8 +84,11 @@ Version 3.61 Goals
 		- IDEA: increment timer_count each time a turn successfully passes (watch out for errors that don't count!)
 		- IDEA: if silent_timer == False: active_gs.buffer(timer_descript_key) where timer_descript_key = name + str(timer_count)
 		- IDEA: timer attributes: name, active (T or F), timer_count, timer_max, message_type ('silent', 'variable', 'constant'), trigger_type = 'auto_pre_act'
-	- TBD: create timer class
-	- TBD: create timer methods (start)
+	- DONE: create Timer class
+		- DONE: create header and attribute setters & getters
+		- DONE: import Timer class into mk_def_pkl()
+	- IN-PROC: create timer methods (start, run_mach, etc)
+		-IN-PROC: create run_mach()
 	- TBD: update pre_act() to check for active timers
 	- TBD: instantiate timer obj
 	- TBD: test timer
@@ -138,6 +141,9 @@ TBD: documentation:
 	TBD: create creature diagram
 
 
+*** Timer Decisions ***
+- timers must be set by machines rather than triggered by player commands
+
 
 *** Future obj Ideas ***
 - timers as obj
@@ -189,7 +195,7 @@ TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_crea
 - lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
 - game saves (requires file clean up?)
 - encumberance (post Burt as object?)
-	- DONE: New warning class ideas
+	- DONE: de-dup warning and timer classes
 		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?
 		- IDEA: this makes sense... in all other cases I inherit from simple parents to more complex children
 		- IDEA: WarnClass is simpler... so it should be the parent
