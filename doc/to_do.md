@@ -77,7 +77,7 @@ Version 3.61 Goals
 		- DONE: test limited case
 		- DONE: clean up test prints
 		- DONE: clean up comments
-- TBD: timers
+- IN-PROC: timers
 	- DONE: timer design goals
 		- IDEA: can be triggered by function call timer_obj.start()
 		- IDEA: run for a set amount of time timer_max
@@ -87,9 +87,11 @@ Version 3.61 Goals
 	- DONE: create Timer class
 		- DONE: create header and attribute setters & getters
 		- DONE: import Timer class into mk_def_pkl()
-	- IN-PROC: create timer methods (start, run_mach, etc)
-		-IN-PROC: create run_mach()
-	- TBD: update pre_act() to check for active timers
+	- DONE: create timer methods (start, run_mach, etc)
+		- DONE: create run_mach()
+		- DONE: create start()
+		- DONE: create reset()
+	- DONE: update pre_act() to check for active timers
 	- TBD: instantiate timer obj
 	- TBD: test timer
 - TBD: alert_scope
@@ -142,8 +144,8 @@ TBD: documentation:
 
 
 *** Timer Decisions ***
-- timers must be set by machines rather than triggered by player commands
-
+- timers are set by machines rather than triggered by player commands
+- other than providing description text, timers are dumb - they just count -  a machine takes all actions
 
 *** Future obj Ideas ***
 - timers as obj
