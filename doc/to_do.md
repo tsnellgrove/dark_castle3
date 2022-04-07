@@ -92,8 +92,13 @@ Version 3.61 Goals
 		- DONE: create start()
 		- DONE: create reset()
 	- DONE: update pre_act() to check for active timers
-	- TBD: instantiate timer obj
+	- DONE: instantiate timer obj
+		- DONE: create test_timer
+		- DONE: create test_timer_# dict entries
 	- TBD: test timer
+		- TBD: add test_timer to invisible attribute of Antechamber room
+		- TBD: call test_timer.start() from portcullis_doesn't_open_result
+		- TBD: test all three message modes
 - TBD: alert_scope
 	- DONE: alert_scope design goals
 		- IDEA:	most machines only react to Burt's actions - and their reaction is immediate - so Burt will always see the results

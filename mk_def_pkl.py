@@ -99,6 +99,10 @@ antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks
 
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
 
+test_timer = Timer('test_timer', 'pre_act_auto', False, 0, 3, 'variable')
+
+# name, trigger_type, timer_active, timer_count, timer_max, message_type
+
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
 				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
 				[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) # machine_state == got_crown

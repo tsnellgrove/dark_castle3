@@ -163,7 +163,7 @@ class Warning(Invisible):
 
 
 class Timer(Invisible):
-		def __init__(self, name, trigger_type, timer_active, timer_count, timer_max, message_type):
+		def __init__(self, name, trigger_type, active, timer_count, timer_max, message_type):
 				super().__init__(name)
 
 ## DUP CODE TO MachineMixIn ###
