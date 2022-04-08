@@ -95,9 +95,15 @@ Version 3.61 Goals
 	- DONE: instantiate timer obj
 		- DONE: create test_timer
 		- DONE: create test_timer_# dict entries
+	- TBD: create test rig
+		- TBD: create ViewOnlyMach obj big_bomb
+			- TBD: create blue_button and place in entrance
+			- TBD: create big_bomb ViewOnlyMach and place in entrance
+			- TBD: trigger = pushing blue button; condition = pass_thru
+			- TBD: result = start and check timer
 	- TBD: test timer
-		- TBD: add test_timer to invisible attribute of Antechamber room
-		- TBD: call test_timer.start() from portcullis_doesn't_open_result
+		- CANCEL: add test_timer to invisible attribute of Antechamber room
+		- CANCEL: call test_timer.start() from DoorToggleResult class
 		- TBD: test all three message modes
 - TBD: alert_scope
 	- DONE: alert_scope design goals
