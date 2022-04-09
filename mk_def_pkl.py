@@ -9,7 +9,7 @@ import pickle
 from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond, RoomCond
-from result_class_def import PassThruResult, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult, AttackBurtResult
+from result_class_def import PassThruResult, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult
 from mach_class_def import InvisMach, ViewOnlyMach, Warning, Timer
 from creature_class_def import Creature
 from gs_class_def import GameState
@@ -74,6 +74,11 @@ middle_lever = LeverSwitch('middle_lever', 'Middle Lever', 'lever', 'middle_leve
 right_lever = LeverSwitch('right_lever', 'Right Lever', 'lever', 'right_lever', None, 'down', None, None)
 red_button = ButtonSwitch('red_button', 'Red Button', 'button', 'red_button', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset')
 
+blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset')
+
+test_timer = Timer('test_timer', 'pre_act_auto', False, 0, 3, 'variable')
+# name, trigger_type, timer_active, timer_count, timer_max, message_type
+
 hand_no_weap_cond = NotInHandCond('hand_no_weap_cond', [shiny_sword, grimy_axe])
 hand_weap_1st_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], False)
 hand_weap_repeat_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], True)
@@ -96,11 +101,12 @@ portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result'
 antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks_result', 'antechamber_goblin_attacks', 
 				'goblin_placeholder', True)
 
+blue_button_result = StartTimerResult('blue_button_result', 'push_blue_button', test_timer, False)
+# name, result_descript, timer_obj, cmd_override
+
+
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
 
-test_timer = Timer('test_timer', 'pre_act_auto', False, 0, 3, 'variable')
-
-# name, trigger_type, timer_active, timer_count, timer_max, message_type
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
 				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
@@ -114,6 +120,12 @@ control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control
 				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever],
 				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result])
 				# machine_state == lever_array_value
+
+
+big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None,
+				0, 'post_act_switch', blue_button, ['pushed'], [],
+				[pass_thru_cond], [blue_button_result])
+
 
 goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,
 				[['examine', 'iron_portcullis'], ['examine', 'control_panel'], ['examine', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north']],
@@ -132,8 +144,8 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 				'def_attack' : {'result_code' : 'burt_death', 'response_key' : 'goblin_slays_burt'}},
 				[grimy_axe, torn_note], dead_goblin)
 
-entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn])
+entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat, blue_button],
+				[front_gate, big_bomb], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn])
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
 				[shiny_sword, front_gate], {'south' : front_gate}, [])
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
@@ -181,7 +193,7 @@ active_gs = GameState(
 ### instantiated objects added to list ###
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible obj referenced in room.invis_obj_lst need not be listed ###
-master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, goblin_guard, entrance, main_hall, antechamber, throne_room]
+master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, blue_button, big_bomb, goblin_guard, entrance, main_hall, antechamber, throne_room]
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:

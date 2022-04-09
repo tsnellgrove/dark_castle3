@@ -132,7 +132,10 @@ descript_dict = {
 		### timers ###
 		'test_timer_1' : "Tick 1",
 		'test_timer_2' : "Tick 2",
-		'test_timer_3' : "Tick 3",
+		'test_timer_3' : "Boom!",
+		'big_bomb' : "The Big Bomb has a Blue Button on it.",
+		'blue_button' : "The Blue Button seems to dare you to push it.",
+		'push_blue_button' : "Uh-oh Burt... not sure you should have pushed that...",
 
 		### machine objects ###
 		'control_panel' : "The Control Panel contains three levers: a Left Lever, a Middle Lever, and a Right Lever. The control panel also contains a Red Button. There are no directions posted as to what the controls are for or how to use them (a clear ISO lapse if ever you've seen one Burt).",

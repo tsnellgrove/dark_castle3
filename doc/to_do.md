@@ -97,13 +97,15 @@ Version 3.61 Goals
 		- DONE: create test_timer_# dict entries
 	- TBD: create test rig
 		- TBD: create ViewOnlyMach obj big_bomb
-			- TBD: create blue_button and place in entrance
-			- TBD: create big_bomb ViewOnlyMach and place in entrance
-			- TBD: trigger = pushing blue button; condition = pass_thru
-			- TBD: result = start and check timer
+			- DONE: create blue_button, add to noun list, and place in entrance
+			- DONE: create big_bomb ViewOnlyMach and place in entrance
+			- DONE: trigger = pushing blue button
+			- DONE: condition = pass_thru
+			- DONE: result = start and check timer
 	- TBD: test timer
 		- CANCEL: add test_timer to invisible attribute of Antechamber room
 		- CANCEL: call test_timer.start() from DoorToggleResult class
+		- IDEA: test timer with pass_thru condition; then test with timer_ware condition
 		- TBD: test all three message modes
 - TBD: alert_scope
 	- DONE: alert_scope design goals
