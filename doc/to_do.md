@@ -112,6 +112,7 @@ Version 3.61 Goals
 		- IDEA: where should I place test_timer? Since ViewOnly obj can't move maybe place in Room? Yes, this works!!
 		- DONE: achieve base timer functionality
 	- TBD: detailed timer testing
+		- TBD: test timer on no-turn-error
 		- IDEA: test timer with pass_thru condition; then test with timer_ware condition
 		- TBD: test all three message modes
 - TBD: alert_scope
@@ -226,6 +227,9 @@ TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_crea
 		- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
 		- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
 - implement carying capacity / container cappacity; Also carry restriction passages, etc..
+- move doc to modules?
+- org modules in directories?
+- create vehical puzzle?
 
 
 *** NEW PUZZLE IDEAS ***
