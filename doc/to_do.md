@@ -102,9 +102,16 @@ Version 3.61 Goals
 			- DONE: trigger = pushing blue button
 			- DONE: condition = pass_thru
 			- DONE: result = start and check timer
-	- TBD: test timer
+	- DONE: base timer functionality test
 		- CANCEL: add test_timer to invisible attribute of Antechamber room
 		- CANCEL: call test_timer.start() from DoorToggleResult class
+		- DONE: can push blue_button and get result
+		- ISSUE: pre_action() only runs machine code that is in mach_obj_lst
+		- ISSUE: but test_timer is an attribute of a Result, which is an attribute of a ViewOnlyMach obj...
+		- ISSUE: so mach_obj_lst never knows about test_timer
+		- IDEA: where should I place test_timer? Since ViewOnly obj can't move maybe place in Room? Yes, this works!!
+		- DONE: achieve base timer functionality
+	- TBD: detailed timer testing
 		- IDEA: test timer with pass_thru condition; then test with timer_ware condition
 		- TBD: test all three message modes
 - TBD: alert_scope

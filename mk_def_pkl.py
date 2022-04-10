@@ -145,7 +145,7 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 				[grimy_axe, torn_note], dead_goblin)
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat, blue_button],
-				[front_gate, big_bomb], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn])
+				[front_gate, big_bomb], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn, test_timer])
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
 				[shiny_sword, front_gate], {'south' : front_gate}, [])
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,

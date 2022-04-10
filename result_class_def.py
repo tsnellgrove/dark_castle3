@@ -141,7 +141,7 @@ class StartTimerResult(BufferOnlyResult):
 
 		def result_exe(self, active_gs, mach_state):
 				active_gs.buffer(descript_dict[self.result_descript])
-				timer_obj.start()
+				self.timer_obj.start()
 				return mach_state, self.cmd_override
 
 
