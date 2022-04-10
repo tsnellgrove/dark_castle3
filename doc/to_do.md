@@ -84,6 +84,7 @@ Version 3.61 Goals
 		- IDEA: increment timer_count each time a turn successfully passes (watch out for errors that don't count!)
 		- IDEA: if silent_timer == False: active_gs.buffer(timer_descript_key) where timer_descript_key = name + str(timer_count)
 		- IDEA: timer attributes: name, active (T or F), timer_count, timer_max, message_type ('silent', 'variable', 'constant'), trigger_type = 'auto_pre_act'
+		- IDEA: like buttons, timers should be 'dumb' - the smarts live in a machine
 	- DONE: create Timer class
 		- DONE: create header and attribute setters & getters
 		- DONE: import Timer class into mk_def_pkl()
@@ -111,12 +112,15 @@ Version 3.61 Goals
 		- ISSUE: so mach_obj_lst never knows about test_timer
 		- IDEA: where should I place test_timer? Since ViewOnly obj can't move maybe place in Room? Yes, this works!!
 		- DONE: achieve base timer functionality
-	- TBD: detailed timer testing
-		- TBD: test timer on no-turn-error
+	- IN-PROC: detailed timer testing
+		- IN-PROC: test timer on no-turn-error
+			- FINDING: this fails... which makes sense... pre_action() is called before cmd_exe()... and cmd_exe() is where moves are decremented
+			- IDEA: I can check for case == error and case == 1word && word = 'quit' in pre_act() and, if so, return override = False
+			- IDEA: but there's no graceful way to check for errors and 2word or prep... so I think I need to cancel the move_dec() on those
 		- IDEA: test timer with pass_thru condition; then test with timer_ware condition
 		- TBD: test all three message modes
 - TBD: alert_scope
-	- DONE: alert_scope design goals
+	- DONE: out_scope design goals
 		- IDEA:	most machines only react to Burt's actions - and their reaction is immediate - so Burt will always see the results
 		- IDEA: but timers (and someday autos) mean that visible alerts could be generated in a room that Burt is no longer in
 		- IDEA: in this case, Burt should not actually be notified
@@ -126,7 +130,7 @@ Version 3.61 Goals
 		- IDEA: So we need an active_gs method that can determine if a given timer / auto is in the same room as Burt
 		- IDEA: since we can get mach scope for the room Burt is in, it shouldn't be too hard to check if a given timer / auto is in the mach_lst
 - TBD: implement alert_scope for test timer
-
+- TBD: write up notes for warnings, timers, and auto_scope
 
 ##########################
 ### VERSION 3.62 START ###
