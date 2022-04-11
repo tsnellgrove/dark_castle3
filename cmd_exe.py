@@ -28,7 +28,7 @@ def true_one_word(active_gs, word1, room_obj):
 				room_obj.examine(active_gs)
 		elif word1 == 'quit':
 				active_gs.set_game_ending('quit') # triggers call end() from wrapper()
-				active_gs.move_dec() # quitting is not deemed to be an actual move
+#				active_gs.move_dec() # quitting is not deemed to be an actual move
 		return
 
 def special_error(active_gs, word2_obj, word1):
@@ -69,7 +69,7 @@ def cmd_execute(active_gs, case, word_lst):
 				else:
 						output = word_lst[0]
 				active_gs.buffer(output)
-				active_gs.move_dec()
+#				active_gs.move_dec()
 		elif case == 'go':
 				room_obj, word1, word2 = word_lst
 				getattr(room_obj, word1)(word2, active_gs)
@@ -82,7 +82,7 @@ def cmd_execute(active_gs, case, word_lst):
 						except:
 								error_msg = rand_error()
 								active_gs.buffer(error_msg)
-								active_gs.move_dec()
+#								active_gs.move_dec()
 ###							active_gs.buffer("You can't " + word1 + " with the " + word2_obj.full_name + ".") # old error
 		elif case == 'prep':
 				dirobj_obj, word1, noun_obj = word_lst
@@ -98,4 +98,4 @@ def cmd_execute(active_gs, case, word_lst):
 						except:
 								error_msg = rand_error()
 								active_gs.buffer(error_msg)
-								active_gs.move_dec()
+#								active_gs.move_dec()

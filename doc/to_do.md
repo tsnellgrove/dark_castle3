@@ -117,6 +117,7 @@ Version 3.61 Goals
 			- FINDING: this fails... which makes sense... pre_action() is called before cmd_exe()... and cmd_exe() is where moves are decremented
 			- IDEA: I can check for case == error and case == 1word && word = 'quit' in pre_act() and, if so, return override = False
 			- IDEA: but there's no graceful way to check for errors and 2word or prep... so I think I need to cancel the move_dec() on those
+			- DONE: solved pre_action() and post_action() skip and also need for move_dec in app_main()
 		- IDEA: test timer with pass_thru condition; then test with timer_ware condition
 		- TBD: test all three message modes
 - TBD: alert_scope

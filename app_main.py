@@ -28,14 +28,28 @@ def wrapper(user_input):
 				# Gamestate vatiable instantiated from un-pickled list
 				active_gs = master_obj_lst[0]
 
-				active_gs.move_inc()
+#				active_gs.move_inc()
 				active_gs.reset_buff() # resets buffer
+				
+				cmd_override = False
 
 				case, word_lst = interpreter(user_input, master_obj_lst)
-				cmd_override = pre_action(active_gs, case, word_lst)
+				
+				if case == 'error':
+						turn_counts = False
+				elif case == 'tru_1word' and word_lst[0] == 'quit':
+						turn_counts = False
+				else:
+						turn_counts = True
+						active_gs.move_inc()		
+				
+				if turn_counts:
+						cmd_override = pre_action(active_gs, case, word_lst)
 				if not cmd_override:
 						cmd_execute(active_gs, case, word_lst)
-				post_action(active_gs, case, word_lst)
+				
+				if turn_counts:
+						post_action(active_gs, case, word_lst)
 				score(active_gs)
 				if active_gs.get_game_ending() != "tbd":
 						end(active_gs)
