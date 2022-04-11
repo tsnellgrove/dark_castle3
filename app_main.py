@@ -33,18 +33,18 @@ def wrapper(user_input):
 				case, word_lst = interpreter(user_input, master_obj_lst)
 				
 				if case == 'error':
-						turn_counts = False
+						move_valid = False
 				elif case == 'tru_1word' and word_lst[0] == 'quit':
-						turn_counts = False
+						move_valid = False
 				else:
-						turn_counts = True
+						move_valid = True
 						active_gs.move_inc()		
 				
-				if turn_counts:
+				if move_valid:
 						cmd_override = pre_action(active_gs, case, word_lst)
 				if not cmd_override:
 						cmd_execute(active_gs, case, word_lst)				
-				if turn_counts:
+				if move_valid:
 						post_action(active_gs, case, word_lst)
 				score(active_gs)
 				if active_gs.get_game_ending() != "tbd":
