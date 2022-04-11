@@ -27,10 +27,7 @@ def wrapper(user_input):
 
 				# Gamestate vatiable instantiated from un-pickled list
 				active_gs = master_obj_lst[0]
-
-#				active_gs.move_inc()
 				active_gs.reset_buff() # resets buffer
-				
 				cmd_override = False
 
 				case, word_lst = interpreter(user_input, master_obj_lst)
@@ -46,8 +43,7 @@ def wrapper(user_input):
 				if turn_counts:
 						cmd_override = pre_action(active_gs, case, word_lst)
 				if not cmd_override:
-						cmd_execute(active_gs, case, word_lst)
-				
+						cmd_execute(active_gs, case, word_lst)				
 				if turn_counts:
 						post_action(active_gs, case, word_lst)
 				score(active_gs)
