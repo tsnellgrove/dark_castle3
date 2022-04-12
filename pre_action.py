@@ -18,7 +18,7 @@ def pre_action(active_gs, case, word_lst):
 										cmd_override = True
 
 				elif obj.trigger_type == 'pre_act_auto':
-						print(obj)
+#						print(obj)
 						if obj.active:
 								local_override = obj.run_mach(active_gs)
 								if local_override:

@@ -96,7 +96,7 @@ Version 3.61 Goals
 	- DONE: instantiate timer obj
 		- DONE: create test_timer
 		- DONE: create test_timer_# dict entries
-	- TBD: create test rig
+	- DONE: create test rig
 		- TBD: create ViewOnlyMach obj big_bomb
 			- DONE: create blue_button, add to noun list, and place in entrance
 			- DONE: create big_bomb ViewOnlyMach and place in entrance
@@ -112,7 +112,7 @@ Version 3.61 Goals
 		- ISSUE: so mach_obj_lst never knows about test_timer
 		- IDEA: where should I place test_timer? Since ViewOnly obj can't move maybe place in Room? Yes, this works!!
 		- DONE: achieve base timer functionality
-	- IN-PROC: detailed timer testing
+	- DONE: detailed timer testing
 		- DONE: test timer on no-turn-error
 			- FINDING: this fails... which makes sense... pre_action() is called before cmd_exe()... and cmd_exe() is where moves are decremented
 			- IDEA: I can check for case == error and case == 1word && word = 'quit' in pre_act() and, if so, return override = False
@@ -120,8 +120,8 @@ Version 3.61 Goals
 			- DONE: solved pre_action() and post_action() skip and also need for move_dec in app_main()
 			- DONE: comments cleaned up
 		- IDEA: test timer with pass_thru condition; then test with timer_ware condition
-		- TBD: test all three message modes
-		- TBD: clean up testing print statements
+		- DONE: test all three message modes
+		- DONE: clean up testing print statements
 - TBD: alert_scope
 	- DONE: out_scope design goals
 		- IDEA:	most machines only react to Burt's actions - and their reaction is immediate - so Burt will always see the results
@@ -133,6 +133,7 @@ Version 3.61 Goals
 		- IDEA: So we need an active_gs method that can determine if a given timer / auto is in the same room as Burt
 		- IDEA: since we can get mach scope for the room Burt is in, it shouldn't be too hard to check if a given timer / auto is in the mach_lst
 - TBD: implement alert_scope for test timer
+	- TBD: clean up comments
 - TBD: write up notes for warnings, timers, and auto_scope
 
 ##########################
