@@ -208,11 +208,13 @@ class Timer(Invisible):
 		def run_mach(self, active_gs):
 				cmd_override = False
 				self.timer_count += 1
-				if self.timer_count == self.timer_max:
-						self.active = False
+				
+				print(str(self.timer_count))
+				
 				timer_key = self.name + "_" + str(self.timer_count)
 				timer_key_constant = self.name + "_1"
 				timer_default = "Tick."
+
 				if self.message_type == 'variable':
 						try:
 								active_gs.buffer(descript_dict[timer_key])
@@ -223,6 +225,11 @@ class Timer(Invisible):
 								active_gs.buffer(descript_dict[timer_key_constant])
 						except:
 								active_gs.buffer(timer_default)
+
+				if self.timer_count == self.timer_max:
+						self.active = False
+						self.timer_count = 0
+				
 				return cmd_override
 
 		def start(self):

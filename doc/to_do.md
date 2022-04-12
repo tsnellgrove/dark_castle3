@@ -121,6 +121,7 @@ Version 3.61 Goals
 			- DONE: comments cleaned up
 		- IDEA: test timer with pass_thru condition; then test with timer_ware condition
 		- TBD: test all three message modes
+		- TBD: clean up testing print statements
 - TBD: alert_scope
 	- DONE: out_scope design goals
 		- IDEA:	most machines only react to Burt's actions - and their reaction is immediate - so Burt will always see the results
