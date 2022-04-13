@@ -163,7 +163,7 @@ class Warning(Invisible):
 
 
 class Timer(Invisible):
-		def __init__(self, name, trigger_type, active, timer_count, timer_max, message_type):
+		def __init__(self, name, trigger_type, active, timer_count, timer_max, message_type, timer_done):
 				super().__init__(name)
 
 ## DUP CODE TO MachineMixIn ###
@@ -174,6 +174,7 @@ class Timer(Invisible):
 				self._timer_count = timer_count
 				self._timer_max = timer_max
 				self._message_type = message_type
+				self._timer_done = timer_done
 
 ## DUP CODE TO MachineMixIn ###
 		@property
@@ -205,13 +206,22 @@ class Timer(Invisible):
 		def message_type(self):
 				return self._message_type
 
+		@property
+		def timer_done(self):
+				return self._timer_done
+
+		@timer_done.setter
+		def timer_done(self, new_val):
+				self._timer_done = new_val
+
 		def run_mach(self, active_gs):
 				cmd_override = False
 				self.timer_count += 1				
 #				print(str(self.timer_count))
+#				print(str(self.timer_done))
 				timer_key = self.name + "_" + str(self.timer_count)
 				timer_key_constant = self.name + "_1"
-				timer_default = "Tick."
+				timer_default = "Beep!"
 
 				if self.message_type == 'variable':
 						try:
@@ -227,6 +237,7 @@ class Timer(Invisible):
 				if self.timer_count == self.timer_max:
 						self.active = False
 						self.timer_count = 0
+						self.timer_done = True
 				return cmd_override
 
 		def start(self):

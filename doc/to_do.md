@@ -77,7 +77,7 @@ Version 3.61 Goals
 		- DONE: test limited case
 		- DONE: clean up test prints
 		- DONE: clean up comments
-- IN-PROC: timers
+- DONE: timers
 	- DONE: timer design goals
 		- IDEA: can be triggered by function call timer_obj.start()
 		- IDEA: run for a set amount of time timer_max
@@ -119,20 +119,25 @@ Version 3.61 Goals
 			- IDEA: but there's no graceful way to check for errors and 2word or prep... so I think I need to cancel the move_dec() on those
 			- DONE: solved pre_action() and post_action() skip and also need for move_dec in app_main()
 			- DONE: comments cleaned up
-		- IDEA: test timer with pass_thru condition; then test with timer_ware condition
+		- CANCEL: test timer with pass_thru condition; then test with timer_aware condition
 		- DONE: test all three message modes
 		- DONE: clean up testing print statements
+		- DONE: added timer_done attribute
 - TBD: alert_scope
-	- DONE: out_scope design goals
+	- DONE: alert_scope design goals
 		- IDEA:	most machines only react to Burt's actions - and their reaction is immediate - so Burt will always see the results
-		- IDEA: but timers (and someday autos) mean that visible alerts could be generated in a room that Burt is no longer in
+		- IDEA: but timers (and, perhaps in the future, 'auto's) mean that visible alerts could be generated in a room that Burt is no longer in
 		- IDEA: in this case, Burt should not actually be notified
 		- IDEA: e.g. the Hedgehog will eat the biscuits for 3 turns but Burt shouldn't hear about it if he's left the room
-		- IDEA: So, to start with at least we will set the "alert scope" to the room the event is happening in
+		- IDEA: So, to start with at least we will set the "alert scope" to the room the timer / auto event is happening in
 		- IDEA: if Burt is in a room he sees and hears the events in the room. If he's outside the room he sees and hears nothing.
 		- IDEA: So we need an active_gs method that can determine if a given timer / auto is in the same room as Burt
 		- IDEA: since we can get mach scope for the room Burt is in, it shouldn't be too hard to check if a given timer / auto is in the mach_lst
+		- IDEA: this addresses alerts but maybe not results... 
+		- IDEA: for example if Burt lights a fuse and walks away - Burt may not be harmed but the room should be changed...
+		- IDEA: but that can be dealt with in the future...
 - TBD: implement alert_scope for test timer
+	- TBD: in active_gs, create method auto_in_alert_scope(self): which checks to see if self is in mach_lst and returns True or False
 	- TBD: clean up comments
 - TBD: write up notes for warnings, timers, and auto_scope
 
