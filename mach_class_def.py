@@ -217,22 +217,24 @@ class Timer(Invisible):
 		def run_mach(self, active_gs):
 				cmd_override = False
 				self.timer_count += 1				
-#				print(str(self.timer_count))
-#				print(str(self.timer_done))
+				print(str(self.timer_count))
+				print(str(self.timer_done))
 				timer_key = self.name + "_" + str(self.timer_count)
 				timer_key_constant = self.name + "_1"
 				timer_default = "Beep!"
 
-				if self.message_type == 'variable':
-						try:
-								active_gs.buffer(descript_dict[timer_key])
-						except:
-								active_gs.buffer(timer_default)
-				elif self.message_type == 'constant':
-						try:
-								active_gs.buffer(descript_dict[timer_key_constant])
-						except:
-								active_gs.buffer(timer_default)
+				if active_gs.auto_in_alert_scope(self): #checks to see if Burt is still in the same room as the timer
+
+						if self.message_type == 'variable':
+								try:
+										active_gs.buffer(descript_dict[timer_key])
+								except:
+										active_gs.buffer(timer_default)
+						elif self.message_type == 'constant':
+								try:
+										active_gs.buffer(descript_dict[timer_key_constant])
+								except:
+										active_gs.buffer(timer_default)
 
 				if self.timer_count == self.timer_max:
 						self.active = False

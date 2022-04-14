@@ -230,6 +230,9 @@ class GameState(object):
 										mach_obj_lst.extend(obj.mach_obj_lst)
 				return mach_obj_lst
 
+		def auto_in_alert_scope(self, obj):
+				return obj in self.mach_obj_lst()
+
 		### obj representation (for printing) ###
 		def __repr__(self):
 				return f'Object { self._name } is of class { type(self).__name__ } '

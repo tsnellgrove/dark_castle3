@@ -136,8 +136,10 @@ Version 3.61 Goals
 		- IDEA: this addresses alerts but maybe not results... 
 		- IDEA: for example if Burt lights a fuse and walks away - Burt may not be harmed but the room should be changed...
 		- IDEA: but that can be dealt with in the future...
-- TBD: implement alert_scope for test timer
-	- TBD: in active_gs, create method auto_in_alert_scope(self): which checks to see if self is in mach_lst and returns True or False
+- IN-PROC: implement alert_scope for test timer
+	- DONE: in active_gs, create method auto_in_alert_scope(self): which checks to see if self is in mach_lst and returns True or False
+	- TBD: universal scope to solve timer not running when Burt out of room
+	- TBD: should timer be pre or post
 	- TBD: clean up comments
 - TBD: write up notes for warnings, timers, and auto_scope
 
