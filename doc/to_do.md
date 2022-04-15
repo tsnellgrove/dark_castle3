@@ -138,8 +138,20 @@ Version 3.61 Goals
 		- IDEA: but that can be dealt with in the future...
 - IN-PROC: implement alert_scope for test timer
 	- DONE: in active_gs, create method auto_in_alert_scope(self): which checks to see if self is in mach_lst and returns True or False
-	- TBD: universal scope to solve timer not running when Burt out of room
-	- TBD: should timer be pre or post
+	- PROB: test_timer stops ticking when Burt leaves the room...
+		- IDEA: universal scope to solve timer not running when Burt out of room
+		- IDEA: today, the timer only ticks if it is in mach_lst... which is based on machines, warnings, & auto in the same room as Burt
+		- IDEA: so the moment Burt leaves the room that big_bomb is in, the timer stops ticking...
+		- IDEA: to solve this I need a universal_mach_lst that is available in all places
+		- IDEA: I add test_timer to universal_mach_lst, and in turn universal_mach_lst gets added to mach_lst
+		- IDEA: under this scenario, Burt can only trigger big_bomb with the blue_button in the entrance... but the timer ticks even if he leaves
+	- SOLN: universal_mach_lst
+		- TBD: add universal_mach_lst attribute to GameState class
+		- TBD: create getter
+		- TBD: update mach_lst method to extend mach_lst with contents of universal_mach_lst
+		- TBD: remove test_timer from entrance room and add it to universal_mach_lst
+		- TBD: test timer behavior when Burt leaves room
+- TBD: should timer be pre or post?
 	- TBD: clean up comments
 - TBD: write up notes for warnings, timers, and auto_scope
 
@@ -246,6 +258,7 @@ TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_crea
 - org modules in directories?
 - create vehical puzzle?
 - eliminate active_gs.move_dec() ?
+- why do I need active_gs.dynamic_descript_dict again?
 
 
 *** NEW PUZZLE IDEAS ***
