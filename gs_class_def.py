@@ -14,13 +14,20 @@ from shared_class_func import obj_lst_to_str
 
 ### classes
 class GameState(object):
-		def __init__(self, name, dynamic_desc_dict, map_dict, points_earned_dict, static_obj_dict, state_dict):
+		def __init__(self, name, dynamic_desc_dict, map_dict, points_earned_dict, static_obj_dict, state_dict, universal_mach_lst):
 				self._name = name
 				self._dynamic_desc_dict = dynamic_desc_dict
 				self._map_dict = map_dict
 				self._points_earned_dict = points_earned_dict
 				self._static_obj_dict = static_obj_dict
 				self._state_dict = state_dict
+				self._universal_mach_lst = universal_mach_lst
+
+		### setters & getters ###
+
+		@property
+		def universal_mach_lst(self):
+				return self._universal_mach_lst
 
 		### descriptions ###
 		def get_dynamic_desc_dict(self, dynamic_desc_key):
@@ -218,20 +225,32 @@ class GameState(object):
 				scope_lst = self.scope_lst()
 				return obj in scope_lst
 
-		def mach_obj_lst(self):
-				mach_obj_lst = []
+#		def mach_obj_lst(self):
+		def room_mach_lst(self):
+#				mach_obj_lst = []
+				room_mach_lst = []
 				room_obj = self.get_room()
 				scope_lst = self.scope_lst() + room_obj.invis_obj_lst
 				for obj in scope_lst:
 						if hasattr(obj, 'trigger_type'):
-								mach_obj_lst.append(obj)
+#								mach_obj_lst.append(obj)
+								room_mach_lst.append(obj)
 						if hasattr(obj, 'creature_state'):
 								if obj.mach_obj_lst != None:
-										mach_obj_lst.extend(obj.mach_obj_lst)
+#										mach_obj_lst.extend(obj.mach_obj_lst)
+										room_mach_lst.extend(obj.mach_obj_lst)
+#				mach_obj_lst.extend(self.universal_mach_lst)
+#				return mach_obj_lst
+				return room_mach_lst
+
+		def mach_obj_lst(self):
+				mach_obj_lst = self.room_mach_lst()
+				mach_obj_lst.extend(self.universal_mach_lst)
 				return mach_obj_lst
 
 		def auto_in_alert_scope(self, obj):
-				return obj in self.mach_obj_lst()
+#				return obj in self.mach_obj_lst()
+				return obj in self.room_mach_lst()
 
 		### obj representation (for printing) ###
 		def __repr__(self):

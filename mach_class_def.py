@@ -163,7 +163,7 @@ class Warning(Invisible):
 
 
 class Timer(Invisible):
-		def __init__(self, name, trigger_type, active, timer_count, timer_max, message_type, timer_done):
+		def __init__(self, name, trigger_type, active, timer_count, timer_max, message_type, timer_done, alert_anchor):
 				super().__init__(name)
 
 ## DUP CODE TO MachineMixIn ###
@@ -175,6 +175,7 @@ class Timer(Invisible):
 				self._timer_max = timer_max
 				self._message_type = message_type
 				self._timer_done = timer_done
+				self._alert_anchor = alert_anchor
 
 ## DUP CODE TO MachineMixIn ###
 		@property
@@ -214,6 +215,10 @@ class Timer(Invisible):
 		def timer_done(self, new_val):
 				self._timer_done = new_val
 
+		@property
+		def alert_anchor(self):
+				return self._alert_anchor
+
 		def run_mach(self, active_gs):
 				cmd_override = False
 				self.timer_count += 1				
@@ -223,7 +228,8 @@ class Timer(Invisible):
 				timer_key_constant = self.name + "_1"
 				timer_default = "Beep!"
 
-				if active_gs.auto_in_alert_scope(self): #checks to see if Burt is still in the same room as the timer
+#				if active_gs.auto_in_alert_scope(self): #checks to see if Burt is still in the same room as the timer
+				if active_gs.scope_check(self.alert_anchor):
 
 						if self.message_type == 'variable':
 								try:

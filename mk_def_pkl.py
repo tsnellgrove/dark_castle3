@@ -76,7 +76,7 @@ red_button = ButtonSwitch('red_button', 'Red Button', 'button', 'red_button', No
 
 blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset')
 
-test_timer = Timer('test_timer', 'pre_act_auto', False, 0, 3, 'variable', False)
+test_timer = Timer('test_timer', 'pre_act_auto', False, 0, 3, 'variable', False, blue_button)
 # name, trigger_type, timer_active, timer_count, timer_max, message_type
 
 hand_no_weap_cond = NotInHandCond('hand_no_weap_cond', [shiny_sword, grimy_axe])
@@ -145,7 +145,7 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 				[grimy_axe, torn_note], dead_goblin)
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat, blue_button],
-				[front_gate, big_bomb], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn, test_timer])
+				[front_gate, big_bomb], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn])
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
 				[shiny_sword, front_gate], {'south' : front_gate}, [])
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
@@ -187,7 +187,8 @@ active_gs = GameState(
 				'worn' : [],
 				'room' : entrance,
 				'out_buff' : ""
-		}
+		},
+		[test_timer]
 )
 
 ### instantiated objects added to list ###

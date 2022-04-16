@@ -136,7 +136,7 @@ Version 3.61 Goals
 		- IDEA: this addresses alerts but maybe not results... 
 		- IDEA: for example if Burt lights a fuse and walks away - Burt may not be harmed but the room should be changed...
 		- IDEA: but that can be dealt with in the future...
-- IN-PROC: implement alert_scope for test timer
+- DONE: implement alert_scope for test timer
 	- DONE: in active_gs, create method auto_in_alert_scope(self): which checks to see if self is in mach_lst and returns True or False
 	- PROB: test_timer stops ticking when Burt leaves the room...
 		- IDEA: universal scope to solve timer not running when Burt out of room
@@ -146,11 +146,19 @@ Version 3.61 Goals
 		- IDEA: I add test_timer to universal_mach_lst, and in turn universal_mach_lst gets added to mach_lst
 		- IDEA: under this scenario, Burt can only trigger big_bomb with the blue_button in the entrance... but the timer ticks even if he leaves
 	- SOLN: universal_mach_lst
-		- TBD: add universal_mach_lst attribute to GameState class
-		- TBD: create getter
-		- TBD: update mach_lst method to extend mach_lst with contents of universal_mach_lst
-		- TBD: remove test_timer from entrance room and add it to universal_mach_lst
-		- TBD: test timer behavior when Burt leaves room
+		- DONE: add universal_mach_lst attribute to GameState class
+		- DONE: create getter
+		- DONE: update mach_lst method to extend mach_lst with contents of universal_mach_lst
+		- DONE: instantiate universal_mach_lst
+		- DONE: remove test_timer from entrance room and add it to universal_mach_lst
+		- DONE: run mk_def_pkl()
+		- DONE: test timer behavior when Burt leaves room
+			- PROB: Test runs but still see 'ticks' in Main Hall because auto_in_alert_scope uses mach_obj_lst !
+			- DONE: created room_mach_lst to be checked bay auto
+			- PROB: So now test does not show 'tick' because test_timer is NOT in the room... it is in mach_obj list...
+			- IDEA: I need to think through this more... what do I want to check for in the room?
+			- IDEA: maybe I need to create an attribute alert_anchor that is the obj auto_in_alert_scope needs to check for?
+			- DONE: created alert_anchor and got it working!
 - TBD: should timer be pre or post?
 	- TBD: clean up comments
 - TBD: write up notes for warnings, timers, and auto_scope
@@ -259,6 +267,7 @@ TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_crea
 - create vehical puzzle?
 - eliminate active_gs.move_dec() ?
 - why do I need active_gs.dynamic_descript_dict again?
+- investigate setters & getters for GameState class
 
 
 *** NEW PUZZLE IDEAS ***
