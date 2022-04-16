@@ -222,8 +222,8 @@ class Timer(Invisible):
 		def run_mach(self, active_gs):
 				cmd_override = False
 				self.timer_count += 1				
-				print(str(self.timer_count))
-				print(str(self.timer_done))
+#				print(str(self.timer_count))
+#				print(str(self.timer_done))
 				timer_key = self.name + "_" + str(self.timer_count)
 				timer_key_constant = self.name + "_1"
 				timer_default = "Beep!"

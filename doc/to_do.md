@@ -159,7 +159,7 @@ Version 3.61 Goals
 			- IDEA: I need to think through this more... what do I want to check for in the room?
 			- IDEA: maybe I need to create an attribute alert_anchor that is the obj auto_in_alert_scope needs to check for?
 			- DONE: created alert_anchor and got it working!
-- IN-PROCE: should timer be pre or post?
+- DONE: should timer be pre or post?
 	- IDEA: it makes sense that autos go before Burt...
 	- IDEA: but it feels wrong that the user enters text and then the auto happens and then the user command happens...
 	- IDEA: this feels non-causal... and the user doesn't get to know what the auto did as an input to their command choice
@@ -169,6 +169,8 @@ Version 3.61 Goals
 	- IDEA: so how about going *after* post_action()?
 	- DONE: create auto_action() => works!!
 - TBD: clean up prints & comments
+	- TBD: comment out prints
+	- TBD: delete comments
 - TBD: write up notes for warnings, timers, and auto_scope
 
 ##########################
