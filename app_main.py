@@ -11,8 +11,9 @@ from interp import interpreter
 from pre_action import pre_action
 from cmd_exe import cmd_execute
 from post_action import post_action
-from  score import score
+from score import score
 from ending import end
+from auto_action import auto_action
 
 
 ### wrapper code - loads game obj, calls other modules, and saves game obj
@@ -49,6 +50,8 @@ def wrapper(user_input):
 				score(active_gs)
 				if active_gs.get_game_ending() != "tbd":
 						end(active_gs)
+
+				auto_action(active_gs)
 
 				### dump updated objects to save_obj_pickle2 ###
 				with open('save_obj_pickle2', 'wb') as f:
