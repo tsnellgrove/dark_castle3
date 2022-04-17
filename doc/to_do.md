@@ -168,8 +168,8 @@ Version 3.61 Goals
 	- IDEA: however app_web() calls app_main() *after* getting input... so I can't actually 'auto move' before getting input...
 	- IDEA: so how about going *after* post_action()?
 	- DONE: create auto_action() => works!!
-- TBD: clean up prints & comments
-	- TBD: comment out prints
+- IN-PROC: clean up prints & comments
+	- DONE: comment out prints
 	- TBD: delete comments
 - TBD: write up notes for warnings, timers, and auto_scope
 
