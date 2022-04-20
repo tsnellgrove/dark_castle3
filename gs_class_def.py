@@ -227,20 +227,15 @@ class GameState(object):
 
 #		def mach_obj_lst(self):
 		def room_mach_lst(self):
-#				mach_obj_lst = []
 				room_mach_lst = []
 				room_obj = self.get_room()
 				scope_lst = self.scope_lst() + room_obj.invis_obj_lst
 				for obj in scope_lst:
 						if hasattr(obj, 'trigger_type'):
-#								mach_obj_lst.append(obj)
 								room_mach_lst.append(obj)
 						if hasattr(obj, 'creature_state'):
 								if obj.mach_obj_lst != None:
-#										mach_obj_lst.extend(obj.mach_obj_lst)
 										room_mach_lst.extend(obj.mach_obj_lst)
-#				mach_obj_lst.extend(self.universal_mach_lst)
-#				return mach_obj_lst
 				return room_mach_lst
 
 		def mach_obj_lst(self):
@@ -249,7 +244,6 @@ class GameState(object):
 				return mach_obj_lst
 
 		def auto_in_alert_scope(self, obj):
-#				return obj in self.mach_obj_lst()
 				return obj in self.room_mach_lst()
 
 		### obj representation (for printing) ###

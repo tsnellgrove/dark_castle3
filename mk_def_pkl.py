@@ -74,10 +74,9 @@ middle_lever = LeverSwitch('middle_lever', 'Middle Lever', 'lever', 'middle_leve
 right_lever = LeverSwitch('right_lever', 'Right Lever', 'lever', 'right_lever', None, 'down', None, None)
 red_button = ButtonSwitch('red_button', 'Red Button', 'button', 'red_button', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset')
 
-blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset')
+blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset') # test obj
 
-test_timer = Timer('test_timer', 'pre_act_auto', False, 0, 3, 'variable', False, blue_button)
-# name, trigger_type, timer_active, timer_count, timer_max, message_type
+test_timer = Timer('test_timer', 'pre_act_auto', False, 0, 3, 'variable', False, blue_button) # test obj
 
 hand_no_weap_cond = NotInHandCond('hand_no_weap_cond', [shiny_sword, grimy_axe])
 hand_weap_1st_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], False)
@@ -101,8 +100,8 @@ portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result'
 antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks_result', 'antechamber_goblin_attacks', 
 				'goblin_placeholder', True)
 
-blue_button_result = StartTimerResult('blue_button_result', 'push_blue_button', test_timer, False)
-# name, result_descript, timer_obj, cmd_override
+blue_button_result = StartTimerResult('blue_button_result', 'push_blue_button', test_timer, False) # test obj
+
 
 
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
@@ -122,7 +121,7 @@ control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control
 				# machine_state == lever_array_value
 
 
-big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None,
+big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None, # test obj
 				0, 'post_act_switch', blue_button, ['pushed'], [],
 				[pass_thru_cond], [blue_button_result])
 
