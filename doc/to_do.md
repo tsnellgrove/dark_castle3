@@ -123,7 +123,7 @@ Version 3.61 Goals
 		- DONE: test all three message modes
 		- DONE: clean up testing print statements
 		- DONE: added timer_done attribute
-- TBD: alert_scope
+- DONE: alert_scope
 	- DONE: alert_scope design goals
 		- IDEA:	most machines only react to Burt's actions - and their reaction is immediate - so Burt will always see the results
 		- IDEA: but timers (and, perhaps in the future, 'auto's) mean that visible alerts could be generated in a room that Burt is no longer in
@@ -171,7 +171,32 @@ Version 3.61 Goals
 - DONE: clean up prints & comments
 	- DONE: comment out prints
 	- DONE: delete comments
-- TBD: write up notes for warnings, timers, and auto_scope
+- INPROC: write up notes for warnings, timers, and auto_scope
+	- DONE: warnings
+	- TBD: timers
+	- TBD: auto_in_alert_scope()
+	
+*** NOTES ***
+
+* GENERAL *
+
+In the wise (paraphrased) words of PERL's creator, "Good tools make easy things easy and hard things possible." The MachineMixIn class is extremenly flexible - but frankly, it's a convoluted PitA. It's great a enabling the unexpected and expanding the complexity of the Dark Castle world - but whenever possible, it's preferable to create and use simpler, fixed purpose machines. Warnings and Timers are both opportunities for this approach. While solving one problem, timers introduce a few new ones... the need to be more rigorous about game time, tracking which events in the game world Burt is able to witness, and ensuring that 'auto' game turns happen at the right time relative to other game responses.
+
+* WARNINGS *
+
+Warnings have a rich history in Interactive Fiction. If you cursed in Zork you'd be warned that cursing wasn't allowed. If you issued the same curse again the game would quit. Warnings are also a good way to redirect the player from a non-useful pursuit and possibly give them a nudge in the right direction. So when Burt attempts to go south from the Entrance and leave Dark Castle we tell him that he can't turn back and give the player a hint about the Rusty Key. And similar to the Zork cursing use case, if Burt attempts to attack the Hedgehog we warn him not to once or twice but if he keeps at it we let him... with game-impacting results.
+
+The Warning class inherits from Invisible (including the attribute 'name') and, in common with MachMixIn has attributes 'trigger_type' and 'trig_vals_lst'. Warnings need to happen before player command execution and are always triggered by player commands - so 'trigger_type' is always 'pre_act_cmd'. 'trig_vals_lst' uses the same [case, word_lst] format as MachMixIn and the trig_check() method code is the same as well.
+
+After these similarities, Warnings are much simpler than the MachMixIn class with only two more attributes: 'warn_max' and 'warn_count'. warn_count gets incremented each time pre_action() calls the Warning mach_run() methoed. If 'warn_max' == 0 then the use case is 'always give the same warning' and always return cmd_override = True. If 0 < 'warn_count' < 'warn_max'then give a specific error and cmd_override still = True. If  'warn_count' == 'warn_max' give a final "Don't say I didn't warn you Burt..." and cmd_override = False. Once warn_count > warn_max there are no future warnings and cmd_override always = False.
+
+The actual warning description key is based on "name" + "_" + str(warn_count). This is implemented with 'try: ... except:' with "I'm not sure that's a good idea Burt..." as the 'except' default.
+
+Fundamentally, Warnings are simple - they inhibit a player command either always or for a finite number of tries and return a variable text message. Warnings do not actually generate any actions - but a MachMixIn condition could take the difference between warn_count and warn_max into account.
+
+* TIMERS *
+
+* ALERT SCOPE *
 
 ##########################
 ### VERSION 3.62 START ###
@@ -279,6 +304,8 @@ TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_crea
 - why do I need active_gs.dynamic_descript_dict again?
 - investigate setters & getters for GameState class
 - move switch_reset to auto_action() ???
+- is there really any need for GameState room_mach_lst() ??
+- 'trigger_type' => 'trig_type' ??
 
 
 *** NEW PUZZLE IDEAS ***
