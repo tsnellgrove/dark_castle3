@@ -51,7 +51,8 @@ def wrapper(user_input):
 				if active_gs.get_game_ending() != "tbd":
 						end(active_gs)
 
-				auto_action(active_gs)
+				if move_valid:
+						auto_action(active_gs)
 
 				### dump updated objects to save_obj_pickle2 ###
 				with open('save_obj_pickle2', 'wb') as f:

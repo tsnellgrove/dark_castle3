@@ -174,13 +174,13 @@ Version 3.61 Goals
 - INPROC: write up notes for warnings, timers, and auto_scope
 	- DONE: warnings
 	- TBD: timers
-	- TBD: auto_in_alert_scope()
+
 	
 *** NOTES ***
 
 * GENERAL *
 
-In the wise (paraphrased) words of PERL's creator, "Good tools make easy things easy and hard things possible." The MachineMixIn class is extremenly flexible - but frankly, it's a convoluted PitA. It's great a enabling the unexpected and expanding the complexity of the Dark Castle world - but whenever possible, it's preferable to create and use simpler, fixed purpose machines. Warnings and Timers are both opportunities for this approach. While solving one problem, timers introduce a few new ones... the need to be more rigorous about game time, tracking which events in the game world Burt is able to witness, and ensuring that 'auto' game turns happen at the right time relative to other game responses.
+In the wise (paraphrased) words of PERL's creator, "Good tools make easy things easy and hard things possible." The MachineMixIn class addresses the 'hard things' case... it's extremenly flexible - but frankly, it's a convoluted PitA. It's great a enabling the unexpected and expanding the complexity of the Dark Castle world - but whenever possible, it's preferable to create and use simpler, fixed purpose machines (i.e. to make "easy things easy". Warnings and Timers are both opportunities for this approach and both are necessary infrastructure for the Hedgehog creature. Warnings are innately self-contained. Timers are a bit more involved. While solving one problem, timers introduce a few new ones... the need to be more rigorous about game time, tracking which events in the game world Burt is able to witness, and ensuring that 'auto' game turns happen at the right time relative to other game responses.
 
 * WARNINGS *
 
@@ -196,7 +196,14 @@ Fundamentally, Warnings are simple - they inhibit a player command either always
 
 * TIMERS *
 
-* ALERT SCOPE *
+Like Warnings, Timers inherit from Invisible and have a trigger_type attribute. But in this case trigger_type is set to 'auto_act' and is not triggered by either pre_action() or post_action() (more on this soon).
+
+The intent is that timers are "dumb". They are not triggered by player commands or switches - instead they are started or reset by more complex machines via timer.start() and timer.reset() methods. Once started the counter's only job is to count up until it reaches it's maximum. To enable this the counter has attributes of 'active' (boolean), 'timer_count', 'timer_max', and 'timer_done' (also boolean). The mach_run() method is called when the timer is active. Its primary job is to increment timer_count and set timer_done = True once timer_count = timer_max.
+
+Although Timers never directly trigger actions (this is left to machines which can use Timer attributes in their Conditions, one typically does want to let the player know that a timer is running. To this end, Timers have the innate ability to send messages to the player on each Timer interval. To support this, Timer has the attribute 'message_type' which can be 'constant' (same message each turn), 'variable' (different message each turn), or 'silent' (no message). Description key creation is managed in the same way as Warnings with a built-in default alert of "Beep."
+
+
+
 
 ##########################
 ### VERSION 3.62 START ###

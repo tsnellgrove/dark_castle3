@@ -76,7 +76,7 @@ red_button = ButtonSwitch('red_button', 'Red Button', 'button', 'red_button', No
 
 blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset') # test obj
 
-test_timer = Timer('test_timer', 'pre_act_auto', False, 0, 3, 'variable', False, blue_button) # test obj
+test_timer = Timer('test_timer', 'auto_act', False, 0, 3, 'variable', False, blue_button) # test obj
 
 hand_no_weap_cond = NotInHandCond('hand_no_weap_cond', [shiny_sword, grimy_axe])
 hand_weap_1st_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], False)

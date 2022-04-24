@@ -9,6 +9,6 @@
 def auto_action(active_gs):
 		mach_obj_lst = active_gs.mach_obj_lst()
 		for obj in mach_obj_lst:
-				if obj.trigger_type == 'pre_act_auto' and obj.active:
+				if obj.trigger_type == 'auto_act' and obj.active:
 						obj.run_mach(active_gs)
 
