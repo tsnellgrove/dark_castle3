@@ -323,6 +323,7 @@ TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_crea
 - move switch_reset to auto_action() ???
 - is there really any need for GameState room_mach_lst() ??
 - 'trigger_type' => 'trig_type' ??
+- 'try... except' standard descriptions for examine() method (similar to Warnings)
 
 
 *** NEW PUZZLE IDEAS ***
