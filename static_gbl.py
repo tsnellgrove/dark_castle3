@@ -1,6 +1,6 @@
-# program: dark castle v3.60
+# program: dark castle v3.61
 # name: Tom Snellgrove
-# date: Mar 24, 2022
+# date: Apr 28, 2022
 # description: static dictionary initialization function module
 
 
@@ -12,7 +12,7 @@
 
 ### static dictionary ###
 static_dict = {
-		'version' : '3.60',
+		'version' : '3.61',
 		'max_score' : 75,
 }
 

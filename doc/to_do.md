@@ -1,5 +1,5 @@
 To Do List - Dark Castle v3
-Feb 9, 2022
+Apr 28, 2022
 
 
 *** How to Add Objects ***
@@ -11,243 +11,23 @@ Feb 9, 2022
 6) Add object description in static_gbl
 
 
-##########################
-### VERSION 3.61 START ###
-##########################
-
-Version 3.61 Goals
-- IDEA: Theme of 3.61 is some supporting coding that will prep for the hdegehog in 3.62
-- DONE: warning class
-	- IDEA: what are we trying to do here and how will we do it?
-		- IDEA: goal of warnings is to produce a streamlined, simpler machine type just for warnings
-		- IDEA: counter can be 1, 2, or infinite (warning_count = None => infinite)
-		- IDEA: if not infinite, then after last warning gives an "I told you so"
-		- IDEA: during infinite or count return cmd_override == True; else cmd_override == False
-	- DONE: create warning class
-		- DONE: in mach_class.py create WarnClass (inherits attribute sub-set from InvisClass)
-		- DONE: create WarnClass attributes
-			- DONE: Total Attributes include: name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2
-			- DONE: name, trigger_type, trig_vals_lst from InvisClass
-			- DONE: warn_max, warn_count, warn_key_1, warn_key_2 = local attributes
-			- DONE: create setters for local (and getter for warn_count)
-		- DONE: override run_mach with warn-specific code (buffer descript_dict[warn_key], return override value)
-	- N/A: update pre_action() code to handle warning case (maybe warnings before machs???)
-	- DONE: instantiate warn obj: eterance_south_warn
-		- DONE: add WarnClass to mk_def_pkl imports
-		- DONE: in mk_def_pkl create warning object for going south from entrance
-		- DONE: in static_gbl add text for entrance_south_warn
-		- DONE: comment out entrance_south_mach
-		- DONE: remove entrance_south_mach from entrance room
-		- DONE: add warn obj to Entrance invisible
-	- DONE: Initial Testing
-		- DONE: class based errors not resolved when trying to run mk_def_pkl()
-	- DONE: New warning class ideas
-		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?
-		- IDEA: this makes sense... in all other cases I inherit from simple parents to more complex children
-		- IDEA: WarnClass is simpler... so it should be the parent
-		- IDEA: Actually - how about a TrigDetectMixIn that is inherited by both WarnClass and MachineMixIn and only has trig_check method?
-		- IDEA: A MixIn of a MixIn seems over-complicated... 
-		- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
-		- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
-	- DONE: Class re-do
-		- DONE: rename class to Warning
-		- DONE: update class name in mk_def_pkl() import and obj instantiation
-		- DONE: implement with code dup of MachineMixIn
-		- DONE: run mk_def_pkl()
-	- DONE: testing
-	- DONE: clean-up
-		- DONE: comment out entrance_south_mach result and conditions obj
-- DONE: more scalable approach to warnings:
-	- DONE: warning improvement ideation
-		- IDEA: obj_name+str(count); if exist descript_dict[key]: active_gs.buffer(descript_dict[key]); else: buffer default
-		- IDEA: or maybe the pythonic approach here is "try" ?
-		- IDEA: initial Warning attributes = name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2
-		- IDEA: should be able to eliminate warn_key_1, warn_key_2
-		- IDEA: if warn_max = 0: key = name_1 ; else try key = name + "_" + warn_count except name_1 (i.e. name_1 is the default)
-	- DONE: code warning improvements
-		- DONE: add increment for warn_count (how did I forget this??)
-		- DONE: eliminate warn_key_1 and warn_key_2 attributes
-		- DONE: update obj instantiation
-		- DONE: update descript_dict key
-		- DONE: test infinite case
-		- DONE: test limited case
-		- DONE: create static warn_default = "I'm not sure that's a good idea Burt..."
-		- DONE: add try and except coding
-		- DONE: test infinite case
-		- DONE: test limited case
-		- DONE: clean up test prints
-		- DONE: clean up comments
-- DONE: timers
-	- DONE: timer design goals
-		- IDEA: can be triggered by function call timer_obj.start()
-		- IDEA: run for a set amount of time timer_max
-		- IDEA: increment timer_count each time a turn successfully passes (watch out for errors that don't count!)
-		- IDEA: if silent_timer == False: active_gs.buffer(timer_descript_key) where timer_descript_key = name + str(timer_count)
-		- IDEA: timer attributes: name, active (T or F), timer_count, timer_max, message_type ('silent', 'variable', 'constant'), trigger_type = 'auto_pre_act'
-		- IDEA: like buttons, timers should be 'dumb' - the smarts live in a machine
-	- DONE: create Timer class
-		- DONE: create header and attribute setters & getters
-		- DONE: import Timer class into mk_def_pkl()
-	- DONE: create timer methods (start, run_mach, etc)
-		- DONE: create run_mach()
-		- DONE: create start()
-		- DONE: create reset()
-	- DONE: update pre_act() to check for active timers
-	- DONE: instantiate timer obj
-		- DONE: create test_timer
-		- DONE: create test_timer_# dict entries
-	- DONE: create test rig
-		- TBD: create ViewOnlyMach obj big_bomb
-			- DONE: create blue_button, add to noun list, and place in entrance
-			- DONE: create big_bomb ViewOnlyMach and place in entrance
-			- DONE: trigger = pushing blue button
-			- DONE: condition = pass_thru
-			- DONE: result = start and check timer
-	- DONE: base timer functionality test
-		- CANCEL: add test_timer to invisible attribute of Antechamber room
-		- CANCEL: call test_timer.start() from DoorToggleResult class
-		- DONE: can push blue_button and get result
-		- ISSUE: pre_action() only runs machine code that is in mach_obj_lst
-		- ISSUE: but test_timer is an attribute of a Result, which is an attribute of a ViewOnlyMach obj...
-		- ISSUE: so mach_obj_lst never knows about test_timer
-		- IDEA: where should I place test_timer? Since ViewOnly obj can't move maybe place in Room? Yes, this works!!
-		- DONE: achieve base timer functionality
-	- DONE: detailed timer testing
-		- DONE: test timer on no-turn-error
-			- FINDING: this fails... which makes sense... pre_action() is called before cmd_exe()... and cmd_exe() is where moves are decremented
-			- IDEA: I can check for case == error and case == 1word && word = 'quit' in pre_act() and, if so, return override = False
-			- IDEA: but there's no graceful way to check for errors and 2word or prep... so I think I need to cancel the move_dec() on those
-			- DONE: solved pre_action() and post_action() skip and also need for move_dec in app_main()
-			- DONE: comments cleaned up
-		- CANCEL: test timer with pass_thru condition; then test with timer_aware condition
-		- DONE: test all three message modes
-		- DONE: clean up testing print statements
-		- DONE: added timer_done attribute
-- DONE: alert_scope
-	- DONE: alert_scope design goals
-		- IDEA:	most machines only react to Burt's actions - and their reaction is immediate - so Burt will always see the results
-		- IDEA: but timers (and, perhaps in the future, 'auto's) mean that visible alerts could be generated in a room that Burt is no longer in
-		- IDEA: in this case, Burt should not actually be notified
-		- IDEA: e.g. the Hedgehog will eat the biscuits for 3 turns but Burt shouldn't hear about it if he's left the room
-		- IDEA: So, to start with at least we will set the "alert scope" to the room the timer / auto event is happening in
-		- IDEA: if Burt is in a room he sees and hears the events in the room. If he's outside the room he sees and hears nothing.
-		- IDEA: So we need an active_gs method that can determine if a given timer / auto is in the same room as Burt
-		- IDEA: since we can get mach scope for the room Burt is in, it shouldn't be too hard to check if a given timer / auto is in the mach_lst
-		- IDEA: this addresses alerts but maybe not results... 
-		- IDEA: for example if Burt lights a fuse and walks away - Burt may not be harmed but the room should be changed...
-		- IDEA: but that can be dealt with in the future...
-- DONE: implement alert_scope for test timer
-	- DONE: in active_gs, create method auto_in_alert_scope(self): which checks to see if self is in mach_lst and returns True or False
-	- PROB: test_timer stops ticking when Burt leaves the room...
-		- IDEA: universal scope to solve timer not running when Burt out of room
-		- IDEA: today, the timer only ticks if it is in mach_lst... which is based on machines, warnings, & auto in the same room as Burt
-		- IDEA: so the moment Burt leaves the room that big_bomb is in, the timer stops ticking...
-		- IDEA: to solve this I need a universal_mach_lst that is available in all places
-		- IDEA: I add test_timer to universal_mach_lst, and in turn universal_mach_lst gets added to mach_lst
-		- IDEA: under this scenario, Burt can only trigger big_bomb with the blue_button in the entrance... but the timer ticks even if he leaves
-	- SOLN: universal_mach_lst
-		- DONE: add universal_mach_lst attribute to GameState class
-		- DONE: create getter
-		- DONE: update mach_lst method to extend mach_lst with contents of universal_mach_lst
-		- DONE: instantiate universal_mach_lst
-		- DONE: remove test_timer from entrance room and add it to universal_mach_lst
-		- DONE: run mk_def_pkl()
-		- DONE: test timer behavior when Burt leaves room
-			- PROB: Test runs but still see 'ticks' in Main Hall because auto_in_alert_scope uses mach_obj_lst !
-			- DONE: created room_mach_lst to be checked bay auto
-			- PROB: So now test does not show 'tick' because test_timer is NOT in the room... it is in mach_obj list...
-			- IDEA: I need to think through this more... what do I want to check for in the room?
-			- IDEA: maybe I need to create an attribute alert_anchor that is the obj auto_in_alert_scope needs to check for?
-			- DONE: created alert_anchor and got it working!
-- DONE: should timer be pre or post?
-	- IDEA: it makes sense that autos go before Burt...
-	- IDEA: but it feels wrong that the user enters text and then the auto happens and then the user command happens...
-	- IDEA: this feels non-causal... and the user doesn't get to know what the auto did as an input to their command choice
-	- IDEA: instead... I think I need a new auto_action() module that runs *before* user input
-	- IDEA: this allows the player to see the auto action before choosing their action... and their action response feels more causal
-	- IDEA: however app_web() calls app_main() *after* getting input... so I can't actually 'auto move' before getting input...
-	- IDEA: so how about going *after* post_action()?
-	- DONE: create auto_action() => works!!
-- DONE: clean up prints & comments
-	- DONE: comment out prints
-	- DONE: delete comments
-- INPROC: write up notes for warnings, timers, and auto_scope
-	- DONE: warnings
-	- DONE: timers
-	- DONE: final doc review
-	- TBD; move to machines doc file
 
 	
 *** NOTES ***
-
-* GENERAL *
-
-In the wise (roughly paraphrased) words of PERL's creator, "Good tools make easy things easy and hard things possible." The MachineMixIn class addresses the 'hard things' case... it's extremenly flexible - but frankly, it's a convoluted PitA. It's great at enabling the unexpected and expanding the complexity of the Dark Castle world - but whenever possible, it's preferable to create and use simpler, fixed purpose machines (i.e. to make "easy things easy"). Warnings and Timers are both examples of this approach and are also necessary infrastructure for the Hedgehog creature. Warnings are innately self-contained. Timers are a bit more involved. While solving one problem, timers introduce a few new ones... the need to be more rigorous about game time, ensuring that 'auto' game messages are delivered at the right time relative to other game responses, and tracking which events in the game world Burt is able to witness.
-
-* WARNINGS *
-
-Warnings have a rich history in Interactive Fiction. If you cursed in Zork you'd be warned that cursing wasn't allowed. If you issued the same curse again the game would quit on you! Warnings are also a good way to redirect the player from a non-useful pursuit and possibly give them a nudge in the right direction. For example, when Burt attempts to go south from the Entrance and leave Dark Castle we tell him that he can't turn back and then give the player a hint about the Rusty Key. And similar to the Zork cursing use case, if Burt attempts to attack the Hedgehog we warn him not to once or twice but if he keeps at it we let him... with game-impacting results.
-
-The Warning class inherits from Invisible (including the attribute 'name') and, in common with MachMixIn has attributes 'trigger_type' and 'trig_vals_lst'. Warnings need to happen before player command execution and are always triggered by player commands - so 'trigger_type' is always 'pre_act_cmd'. 'trig_vals_lst' uses the same [case, word_lst] format as MachMixIn, and the trig_check() method code is the same as well.
-
-After these similarities, Warnings are much simpler than the MachMixIn class with only two more attributes: 'warn_max' and 'warn_count'. warn_count gets incremented each time pre_action() calls the Warning mach_run() method. If 'warn_max' == 0 then the use case is 'always give the same warning' and always return cmd_override = True. If 0 < 'warn_count' < 'warn_max'then give a specific error and cmd_override still = True. If  'warn_count' == 'warn_max' give a final "Don't say I didn't warn you Burt..." and cmd_override = False. Once warn_count > warn_max there are no future warnings and cmd_override always = False.
-
-The actual warning description key is based on "name" + "_" + str(warn_count). This is implemented with 'try: ... except:' with "I'm not sure that's a good idea Burt..." as the 'except' default.
-
-Fundamentally, Warnings are simple - they inhibit a player command either always or for a finite number of tries and return a variable text message. Warnings do not actually generate any actions - but a MachMixIn condition could take the difference between warn_count and warn_max into account.
-
-
-* TIMERS *
-
-Like Warnings, Timers inherit from Invisible and have a trigger_type attribute. But in this case trigger_type is set to 'auto_act' and is not triggered by either pre_action() or post_action() (more on this later).
-
-The intent is that timers are "dumb". They are not triggered by player commands or switches - instead they are started or reset via the timer.start() and timer.reset() methods - typically by complex machines. Once started the counter's only job is to count up until it reaches it's maximum. To enable this the counter has attributes of 'active' (boolean), 'timer_count', 'timer_max', and 'timer_done' (also boolean). The mach_run() method is called when the timer is active. Its primary job is to increment timer_count and set timer_done = True once timer_count = timer_max.
-
-Although Timers never directly trigger actions (this is left to machines which can use Timer attributes in their Conditions), one typically does want to let the player know that a timer is running. To this end, Timers have the innate ability to send messages to the player on each Timer interval. To support this, Timer has the attribute 'message_type' which can be 'constant' (same message each turn), 'variable' (different message each turn), or 'silent' (no message). Description key creation is managed in the same way as Warnings with a built-in default alert of "Beep."
-
-Beyond their core functionality, Timers are interesting because they are our first 'auto' machines - that is, they take an action regardless of Burt's choices. This has several implications.
-
-*Valid Turns*
-
-The first is that we need to get more rigorous about what does and does not constitute a valid turn. In the past I called active_gs.move_inc() at the start of app_main() and then selectively called active_gs.move_dec() from within interp() when any error seemed more like the interpreter's fault than the player's. But now, with auto commands in play, we need a clear and consistent measure of which turns are valid so that the timer doesn't tick on a non-valid turn. To enable this I eliminated the move_dec() calls in interp() and set a move_valid variable (boolean) within app_main(). For all 'case' == 'error' and also the 'quit' command, move_valid = False. In this case, no pre, post, or auto actions are called. Whereas, for move_valid == True, move_inc() gets called and pre, post, and auto actions are executed.
-
-*Auto Message Timing*
-
-The next problem to solve is *when* should auto commands be displayed? Let's build up turn order logic from first principles:
-	1) We get the player's input via web_main() and call app_main. Within app_main() we first call interp() to understand the player's command.
-	2) The player's command is then executed in cmd_exe() (unless overridden)
-	3) In some cases, the player's command is inhibited or overriden by the game's response. For example, the case of Burt walking east or west from the Entrance off of the drawbridge. This is carried out by pre_action(), which should clearly run before cmd_exe()
-	4) In other cases, the player's command causes a game response. For example, Burt pushing a button. This is performed by post_action(), which clearly needs to run after cmd_exe().
-
-So when should auto commands happen? If they execute in post_action() then they feel like a response to the player's command... which they're not. If it happens in pre_action() then it also comes across as a response to a player's choices (because other pre_actions reference Burt's attempted action). Instead, auto would ideally run *before* getting user input, so that the player can make choices based on it... but if you look at the events in 1) above, you'll see that web_main() has already gotten user input before app_main is ever called... so it appears to be impossible to call auto first without messing around with web_main() (which we want to keep simple). However, if we consider that the first move of the game will never have an auto command... then there's really no difference between going "first" and going "last". So we create an auto_action() routine and have it called at the very end of app_main() so that the auto results appeare *before* the player's next input option.
-
-*Timer Scope*
-
-Finally, we get to the topic of Timer Scope. As our first auto machine, Timers present a unique problem. Before now, all machines operated based on immediate command or switch stimulous from the player. If Burt was in the same room as the machine then he could trigger it. And if he had just triggered then he could surely experience its effects. But auto machines operate independently of player stimulous. This makes scope more complicated.
-
-Let's take our test_timer example - which placed a bomb with a button on it in the Entrance room. The bomb was a fairly simple machine. If Burt pushed the button the timer was started and counted up, turn by turn, to a timer_max of 3. On turn 1 it messaged "Tick 1". On turn 2: "Tick 2". And on turn 3: "Boom!". If Burt pushes the button and spends the next 3 turns in the Entrance than he sees all 3 messages and everything works as expected. 
-
-But what if, instead, Burt pushes the button and then walks north into the Main Hall? Our first question here should always be: "What *should* happen?". This in turn raises the question of how separate are Dark Castle rooms? Should Burt hear what is happening in the next room? My design choice here is that standard rooms are hermetically sealed. There can be custom exceptions of course - but as a standard response, Burt knows nothing about the events of a room he is not in. This standard behavior clarifies what *should* happen in the above example: Burt should hear "Tick 1", then, after going north, he should see the description of the Main Hall. In the mean time the bomb should "Tick 2" and "Boom!" in the Entrance without Burt getting any notification of it (unless he immediately turns around and runs back to the Entrance).
-
-Now that we know our goal, what *does* happen if Burt pushes the bomb button and then walks north? The default coding only runs a machine that is in the scope of the room Burt is in. So if test_timer is in entrance.invis_obj_lst then Burt hears "Tick 1" and then heads north to the Main Hall. He can now spend an infinite number of turns in the rest of Dark Castle and the timer will wait until he returns to the Entrance to perform "Tick 2". This is not what we want - we want test_timer to operate independently of Burt's proximity to the bomb. So we create a new attribute in the GameState class: universal_mach_lst. We remove test_timer from entrance.invis_obj_lst add it to universal_mach_lst and, in GameState methods, extend mach_obj_lst with universal_mach_lst. Now auto_in_alert_scope will find test_timer to be in scope no matter where Burt happens to be (though Burt still needs to push the button on the bomb to *start* the timer).
-
-However, now we have the problem that no matter where Burt goes, since test_timer is still in scope, Burt still gets notified of "Tick 2" and "Boom!" - even though he's not in the same room as the bomb! We solve this by giving the Timer class one more attribute: alert_anchor. Now, in the run_mach() method of Timer, we can check for scope_check(alert_anchor) as a requirement for buffering the test_timer messages. If this condition fails, the timer still runs, but Burt never sees the "Tick 2" or "Boom!" messages.
-
-At long last, test_timer is working as we would expect! This was a lot of work just to enable the Hedgehog to eat some stale_biscuits - but hopefully we have also laid some good groundwork for future timers and other auto machines ;-D
 
 
 ##########################
 ### VERSION 3.62 START ###
 ##########################
 Version 3.62 Goals
-- Create class, methods, and obj for hedgehog1 (hungry_guard) creature
+- Create class, methods, and obj for base hedgehog creature (including key trading and attack warning)
 
 
 ##########################
 ### VERSION 3.64 START ###
 ##########################
 Version 3.64 Goals
-- Create class, methods, and obj for hedgehog2 (key_trader) creature
+- Create complex machine for hedgehog creature (including bisuit eating and timer)
 
 
 ##########################

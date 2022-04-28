@@ -1,6 +1,6 @@
-# program: dark castle v3.60
+# program: dark castle v3.61
 # name: Tom Snellgrove
-# date: Mar 24, 2022
+# date: Apr 28, 2022
 # description: class deffinition module
 
 

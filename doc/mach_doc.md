@@ -1,5 +1,5 @@
 Machine Documentation - Dark Castle v3
-Feb 9, 2022
+Apr 28, 2022
 
 ****************************
 *** Formal Documentation ***
@@ -157,6 +157,63 @@ Closing Thoughts:
 I'm conflicted about Machines. On the plus side, they work and they meet all my goals - they are in-game, transparent, scalable, and reusable. But they are also *vastly* more work and code and, in many ways, complexity than a simple series if-then-elses. Is this good coding or am I making mountains out of molehills by clinging over-tightly to idealogical purity? I'm really not sure... but I've learned a lot and that's the ultimate goal - so I'm going to keep using them. I also suspect that the "goodness" of the Machine structure has everything to do with the scale of Dark Castle. For a four-room dungeon Machines are vastly over-engineered. But for a larger dungeon - or a construction set - perhaps Machines (as I've dsigned them) make sense. Time will tell.
 
 The other reason to stay the course on Machines is that I intend for them to be the basis for Creatures. Creatures were arguably the least fleshed out aspect of Dark Castle v1 & v2. They worked mostly because I allowed very few ways of interacting with them. Hopefully, with the use of Machines, I can imporove on this in v3.
+
+
+
+* WARNINGS & TIMERS - GENERAL *
+
+In the wise (roughly paraphrased) words of PERL's creator, "Good tools make easy things easy and hard things possible." The MachineMixIn class addresses the 'hard things' case... it's extremenly flexible - but frankly, it's a convoluted PitA. It's great at enabling the unexpected and expanding the complexity of the Dark Castle world - but whenever possible, it's preferable to create and use simpler, fixed purpose machines (i.e. to make "easy things easy"). Warnings and Timers are both examples of this approach and are also necessary infrastructure for the Hedgehog creature. Warnings are innately self-contained. Timers are a bit more involved. While solving one problem, timers introduce a few new ones... the need to be more rigorous about game time, ensuring that 'auto' game messages are delivered at the right time relative to other game responses, and tracking which events in the game world Burt is able to witness.
+
+* WARNINGS *
+
+Warnings have a rich history in Interactive Fiction. If you cursed in Zork you'd be warned that cursing wasn't allowed. If you issued the same curse again the game would quit on you! Warnings are also a good way to redirect the player from a non-useful pursuit and possibly give them a nudge in the right direction. For example, when Burt attempts to go south from the Entrance and leave Dark Castle we tell him that he can't turn back and then give the player a hint about the Rusty Key. And similar to the Zork cursing use case, if Burt attempts to attack the Hedgehog we warn him not to once or twice but if he keeps at it we let him... with game-impacting results.
+
+The Warning class inherits from Invisible (including the attribute 'name') and, in common with MachMixIn has attributes 'trigger_type' and 'trig_vals_lst'. Warnings need to happen before player command execution and are always triggered by player commands - so 'trigger_type' is always 'pre_act_cmd'. 'trig_vals_lst' uses the same [case, word_lst] format as MachMixIn, and the trig_check() method code is the same as well.
+
+After these similarities, Warnings are much simpler than the MachMixIn class with only two more attributes: 'warn_max' and 'warn_count'. warn_count gets incremented each time pre_action() calls the Warning mach_run() method. If 'warn_max' == 0 then the use case is 'always give the same warning' and always return cmd_override = True. If 0 < 'warn_count' < 'warn_max'then give a specific error and cmd_override still = True. If  'warn_count' == 'warn_max' give a final "Don't say I didn't warn you Burt..." and cmd_override = False. Once warn_count > warn_max there are no future warnings and cmd_override always = False.
+
+The actual warning description key is based on "name" + "_" + str(warn_count). This is implemented with 'try: ... except:' with "I'm not sure that's a good idea Burt..." as the 'except' default.
+
+Fundamentally, Warnings are simple - they inhibit a player command either always or for a finite number of tries and return a variable text message. Warnings do not actually generate any actions - but a MachMixIn condition could take the difference between warn_count and warn_max into account.
+
+
+* TIMERS *
+
+Like Warnings, Timers inherit from Invisible and have a trigger_type attribute. But in this case trigger_type is set to 'auto_act' and is not triggered by either pre_action() or post_action() (more on this later).
+
+The intent is that timers are "dumb". They are not triggered by player commands or switches - instead they are started or reset via the timer.start() and timer.reset() methods - typically by complex machines. Once started the counter's only job is to count up until it reaches it's maximum. To enable this the counter has attributes of 'active' (boolean), 'timer_count', 'timer_max', and 'timer_done' (also boolean). The mach_run() method is called when the timer is active. Its primary job is to increment timer_count and set timer_done = True once timer_count = timer_max.
+
+Although Timers never directly trigger actions (this is left to machines which can use Timer attributes in their Conditions), one typically does want to let the player know that a timer is running. To this end, Timers have the innate ability to send messages to the player on each Timer interval. To support this, Timer has the attribute 'message_type' which can be 'constant' (same message each turn), 'variable' (different message each turn), or 'silent' (no message). Description key creation is managed in the same way as Warnings with a built-in default alert of "Beep."
+
+Beyond their core functionality, Timers are interesting because they are our first 'auto' machines - that is, they take an action regardless of Burt's choices. This has several implications.
+
+*Valid Turns*
+
+The first is that we need to get more rigorous about what does and does not constitute a valid turn. In the past I called active_gs.move_inc() at the start of app_main() and then selectively called active_gs.move_dec() from within interp() when any error seemed more like the interpreter's fault than the player's. But now, with auto commands in play, we need a clear and consistent measure of which turns are valid so that the timer doesn't tick on a non-valid turn. To enable this I eliminated the move_dec() calls in interp() and set a move_valid variable (boolean) within app_main(). For all 'case' == 'error' and also the 'quit' command, move_valid = False. In this case, no pre, post, or auto actions are called. Whereas, for move_valid == True, move_inc() gets called and pre, post, and auto actions are executed.
+
+*Auto Message Timing*
+
+The next problem to solve is *when* should auto commands be displayed? Let's build up turn order logic from first principles:
+	1) We get the player's input via web_main() and call app_main. Within app_main() we first call interp() to understand the player's command.
+	2) The player's command is then executed in cmd_exe() (unless overridden)
+	3) In some cases, the player's command is inhibited or overriden by the game's response. For example, the case of Burt walking east or west from the Entrance off of the drawbridge. This is carried out by pre_action(), which should clearly run before cmd_exe()
+	4) In other cases, the player's command causes a game response. For example, Burt pushing a button. This is performed by post_action(), which clearly needs to run after cmd_exe().
+
+So when should auto commands happen? If they execute in post_action() then they feel like a response to the player's command... which they're not. If it happens in pre_action() then it also comes across as a response to a player's choices (because other pre_actions reference Burt's attempted action). Instead, auto would ideally run *before* getting user input, so that the player can make choices based on it... but if you look at the events in 1) above, you'll see that web_main() has already gotten user input before app_main is ever called... so it appears to be impossible to call auto first without messing around with web_main() (which we want to keep simple). However, if we consider that the first move of the game will never have an auto command... then there's really no difference between going "first" and going "last". So we create an auto_action() routine and have it called at the very end of app_main() so that the auto results appeare *before* the player's next input option.
+
+*Timer Scope*
+
+Finally, we get to the topic of Timer Scope. As our first auto machine, Timers present a unique problem. Before now, all machines operated based on immediate command or switch stimulous from the player. If Burt was in the same room as the machine then he could trigger it. And if he had just triggered then he could surely experience its effects. But auto machines operate independently of player stimulous. This makes scope more complicated.
+
+Let's take our test_timer example - which placed a bomb with a button on it in the Entrance room. The bomb was a fairly simple machine. If Burt pushed the button the timer was started and counted up, turn by turn, to a timer_max of 3. On turn 1 it messaged "Tick 1". On turn 2: "Tick 2". And on turn 3: "Boom!". If Burt pushes the button and spends the next 3 turns in the Entrance than he sees all 3 messages and everything works as expected. 
+
+But what if, instead, Burt pushes the button and then walks north into the Main Hall? Our first question here should always be: "What *should* happen?". This in turn raises the question of how separate are Dark Castle rooms? Should Burt hear what is happening in the next room? My design choice here is that standard rooms are hermetically sealed. There can be custom exceptions of course - but as a standard response, Burt knows nothing about the events of a room he is not in. This standard behavior clarifies what *should* happen in the above example: Burt should hear "Tick 1", then, after going north, he should see the description of the Main Hall. In the mean time the bomb should "Tick 2" and "Boom!" in the Entrance without Burt getting any notification of it (unless he immediately turns around and runs back to the Entrance).
+
+Now that we know our goal, what *does* happen if Burt pushes the bomb button and then walks north? The default coding only runs a machine that is in the scope of the room Burt is in. So if test_timer is in entrance.invis_obj_lst then Burt hears "Tick 1" and then heads north to the Main Hall. He can now spend an infinite number of turns in the rest of Dark Castle and the timer will wait until he returns to the Entrance to perform "Tick 2". This is not what we want - we want test_timer to operate independently of Burt's proximity to the bomb. So we create a new attribute in the GameState class: universal_mach_lst. We remove test_timer from entrance.invis_obj_lst add it to universal_mach_lst and, in GameState methods, extend mach_obj_lst with universal_mach_lst. Now auto_in_alert_scope will find test_timer to be in scope no matter where Burt happens to be (though Burt still needs to push the button on the bomb to *start* the timer).
+
+However, now we have the problem that no matter where Burt goes, since test_timer is still in scope, Burt still gets notified of "Tick 2" and "Boom!" - even though he's not in the same room as the bomb! We solve this by giving the Timer class one more attribute: alert_anchor. Now, in the run_mach() method of Timer, we can check for scope_check(alert_anchor) as a requirement for buffering the test_timer messages. If this condition fails, the timer still runs, but Burt never sees the "Tick 2" or "Boom!" messages.
+
+At long last, test_timer is working as we would expect! This was a lot of work just to enable the Hedgehog to eat some stale_biscuits - but hopefully we have also laid some good groundwork for future timers and other auto machines ;-D
 
 
 
