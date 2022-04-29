@@ -20,7 +20,16 @@ Apr 28, 2022
 ### VERSION 3.62 START ###
 ##########################
 Version 3.62 Goals
-- Create class, methods, and obj for base hedgehog creature (including key trading and attack warning)
+- Instantiatie base royal_hedgehog creature (including key trading and attack warning)
+
+- TBD: instantiate royal_hedgehog
+	- TBD: base description for hungry_hedgehog
+	- TBD: special show for stale_biscuits, shiny_sword
+	- TBD: give for shiny_sword (changes description), stale_biscuits (changes description)
+		- IDEA: How to deal with hedgehog description while eating?
+	- TBD: attack response = flee
+	- TBD: royal_hedgehog posesses silve_key
+	- TBD: attack warning
 
 
 ##########################
