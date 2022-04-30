@@ -177,6 +177,8 @@ descript_dict = {
 		'parry_goblin' : "The Guard Goblin attacks with a lightening-fast swing of the Grimy Axe and you only barely manage to parry with your own weapon.",
 		'antechamber_goblin_attacks' : "The goblin does not take kindly to your presence in the north side of the room.",
 
+		'hungry_hedgehog' : "This poor little Royal Hedgehog has seen better days. It looks gaunt and like it skipped breakfast - and maybe lunch and dinner too. But despite looking in need of a good meal the Royal Hedgehog's eyes have a bright, territorial gleam in them and it appears to have quite a preference for shiny things. You don't know why but you feel an innate fondness for this small but valiant creature.",
+
 		### room objects ###
 		'entrance' : "*** Entrance ***\n\nYou are standing atop the drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south the way back home. To the east and west and below you is the Moat.",
 		'main_hall' : "*** Main Hall ***\n\nYou are standing in what was once the sumptuous main hall of the castle. Faded Tapestries hang on the east and west walls. The Front Gate is to the south. And a foreboding archway leads to the north.",

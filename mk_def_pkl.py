@@ -143,10 +143,25 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 				'def_attack' : {'result_code' : 'burt_death', 'response_key' : 'goblin_slays_burt'}},
 				[grimy_axe, torn_note], dead_goblin)
 
+# name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict,
+#		attack_creature_dict, attack_burt_dict, creature_items_lst, dead_creature_obj
+
+royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None, None, [],
+				{shiny_sword : 'show_hedgehog_shiny_sword',
+				stale_biscuits : 'show_hedgehog_stale_bisuits',
+				'def_show' : 'show_hedgehog_default'}, 
+				{shiny_sword : {'response_key' : 'give_hedgehog_shiny_sword', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
+				stale_biscuits : {'response_key' : 'give_hedgehog_stale_biscuits', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
+				'def_give' : {'response_key' : 'give_hedgehog_default', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : None}},
+				{shiny_sword : {'result_code' : 'creature_death', 'response_key' : 'hedgehog_flees'},
+				'def_attack' : {'result_code' : 'burt_death', 'response_key' : 'hedgehog_???'}},
+				{},
+				[silver_key], None)
+
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat, blue_button],
 				[front_gate, big_bomb], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn])
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
-				[shiny_sword, front_gate], {'south' : front_gate}, [])
+				[shiny_sword, front_gate, royal_hedgehog], {'south' : front_gate}, [])
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
 				[alcove, left_lever, middle_lever, right_lever, red_button], [iron_portcullis, control_panel, goblin_guard],
 				{'north' : iron_portcullis}, [])
@@ -193,7 +208,7 @@ active_gs = GameState(
 ### instantiated objects added to list ###
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible obj referenced in room.invis_obj_lst need not be listed ###
-master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, blue_button, big_bomb, goblin_guard, entrance, main_hall, antechamber, throne_room]
+master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, blue_button, big_bomb, royal_hedgehog, goblin_guard, entrance, main_hall, antechamber, throne_room]
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:

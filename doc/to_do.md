@@ -22,13 +22,21 @@ Apr 28, 2022
 Version 3.62 Goals
 - Instantiatie base royal_hedgehog creature (including key trading and attack warning)
 
-- TBD: instantiate royal_hedgehog
-	- TBD: base description for hungry_hedgehog
+- INPROC: instantiate royal_hedgehog
+	- DONE: base instantiation based on guard_goblin
+		- DONE: royal_hedgehog posesses silve_key
+		- DONE: add hedgehog to noun pkl
+		- DONE: add hedgehog to Main Hall
+		- DONE: run mk_def_pkl()
+		- DONE: base description for hungry_hedgehog
 	- TBD: special show for stale_biscuits, shiny_sword
+		- TBD: stale_biscuits
+		- TBD: shiny_sword
+		- TBD: default
 	- TBD: give for shiny_sword (changes description), stale_biscuits (changes description)
 		- IDEA: How to deal with hedgehog description while eating?
 	- TBD: attack response = flee
-	- TBD: royal_hedgehog posesses silve_key
+
 	- TBD: attack warning
 
 
