@@ -148,8 +148,7 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None, None, [],
 				{shiny_sword : 'show_hedgehog_shiny_sword',
-				stale_biscuits : 'show_hedgehog_stale_bisuits',
-				'def_show' : 'show_hedgehog_default'}, 
+				stale_biscuits : 'show_hedgehog_stale_biscuits'},
 				{shiny_sword : {'response_key' : 'give_hedgehog_shiny_sword', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
 				stale_biscuits : {'response_key' : 'give_hedgehog_stale_biscuits', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
 				'def_give' : {'response_key' : 'give_hedgehog_default', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : None}},

@@ -29,10 +29,9 @@ Version 3.62 Goals
 		- DONE: add hedgehog to Main Hall
 		- DONE: run mk_def_pkl()
 		- DONE: base description for hungry_hedgehog
-	- TBD: special show for stale_biscuits, shiny_sword
-		- TBD: stale_biscuits
-		- TBD: shiny_sword
-		- TBD: default
+	- DONE: special show for stale_biscuits, shiny_sword
+		- DONE: stale_biscuits
+		- DONE: shiny_sword
 	- TBD: give for shiny_sword (changes description), stale_biscuits (changes description)
 		- IDEA: How to deal with hedgehog description while eating?
 	- TBD: attack response = flee

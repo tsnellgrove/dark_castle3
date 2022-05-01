@@ -177,7 +177,12 @@ descript_dict = {
 		'parry_goblin' : "The Guard Goblin attacks with a lightening-fast swing of the Grimy Axe and you only barely manage to parry with your own weapon.",
 		'antechamber_goblin_attacks' : "The goblin does not take kindly to your presence in the north side of the room.",
 
+
+
 		'hungry_hedgehog' : "This poor little Royal Hedgehog has seen better days. It looks gaunt and like it skipped breakfast - and maybe lunch and dinner too. But despite looking in need of a good meal the Royal Hedgehog's eyes have a bright, territorial gleam in them and it appears to have quite a preference for shiny things. You don't know why but you feel an innate fondness for this small but valiant creature.",
+		'show_hedgehog_stale_biscuits' : "The Royal Hedgehog's eyes light up with excitement! Apparently, Stale Biscuits are a favorite hedgehog delacacy. The Royal Hedgehog gives you a look half way between hopeful and pleading.",
+		'show_hedgehog_shiny_sword' : "The Royal Hedgehog gives a small squeek of excitement. It gives you a yearning look, clearly hoping that you will return its long-time favorite object.",
+
 
 		### room objects ###
 		'entrance' : "*** Entrance ***\n\nYou are standing atop the drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south the way back home. To the east and west and below you is the Moat.",
