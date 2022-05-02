@@ -147,13 +147,18 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 #		attack_creature_dict, attack_burt_dict, creature_items_lst, dead_creature_obj
 
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None, None, [],
-				{shiny_sword : 'show_hedgehog_shiny_sword',
-				stale_biscuits : 'show_hedgehog_stale_biscuits'},
-				{shiny_sword : {'response_key' : 'give_hedgehog_shiny_sword', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
-				stale_biscuits : {'response_key' : 'give_hedgehog_stale_biscuits', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
-				'def_give' : {'response_key' : 'give_hedgehog_default', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : None}},
-				{shiny_sword : {'result_code' : 'creature_death', 'response_key' : 'hedgehog_flees'},
-				'def_attack' : {'result_code' : 'burt_death', 'response_key' : 'hedgehog_???'}},
+				{
+						shiny_sword : 'show_hedgehog_shiny_sword',
+						stale_biscuits : 'show_hedgehog_stale_biscuits'
+				},
+				{
+						shiny_sword : {'response_key' : 'give_hedgehog_sword', 'accept_item' : False, 'give_item' : silver_key, 'new_descript_key' : 'hedgehog_sword_returned'},
+						stale_biscuits : {'response_key' : 'give_hedgehog_biscuits', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : 'hedgehog_eating'}
+				},
+				{
+						shiny_sword : {'result_code' : 'creature_death', 'response_key' : 'hedgehog_flees'},
+						'def_attack' : {'result_code' : 'burt_death', 'response_key' : 'hedgehog_???'}
+				},
 				{},
 				[silver_key], None)
 

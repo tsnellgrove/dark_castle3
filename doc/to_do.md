@@ -32,8 +32,9 @@ Version 3.62 Goals
 	- DONE: special show for stale_biscuits, shiny_sword
 		- DONE: stale_biscuits
 		- DONE: shiny_sword
-	- TBD: give for shiny_sword (changes description), stale_biscuits (changes description)
-		- IDEA: How to deal with hedgehog description while eating?
+	- TBD: special give:
+		- TBD: biscuits: accept biscuits, description key, andupdate creature descirption to *eating*
+		- TBD: shiny_sword: accept sword, give key, description key, and update creature description
 	- TBD: attack response = flee
 
 	- TBD: attack warning
