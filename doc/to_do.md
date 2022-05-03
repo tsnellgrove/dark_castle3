@@ -32,11 +32,11 @@ Version 3.62 Goals
 	- DONE: special show for stale_biscuits, shiny_sword
 		- DONE: stale_biscuits
 		- DONE: shiny_sword
-	- TBD: special give:
-		- TBD: biscuits: accept biscuits, description key, andupdate creature descirption to *eating*
-		- TBD: shiny_sword: accept sword, give key, description key, and update creature description
+	- DONE: special give:
+		- DONE: biscuits: accept biscuits, description key, andupdate creature descirption to *eating*
+		- DONE: shiny_sword: accept sword, give key, description key, and update creature description
+		- DONE: removed silver_key from Throne Room
 	- TBD: attack response = flee
-
 	- TBD: attack warning
 
 
@@ -44,7 +44,7 @@ Version 3.62 Goals
 ### VERSION 3.64 START ###
 ##########################
 Version 3.64 Goals
-- Create complex machine for hedgehog creature (including bisuit eating and timer)
+- Create complex machine for hedgehog creature (including bisuit eating and timer; note that eating must override show & give)
 
 
 ##########################

@@ -131,16 +131,24 @@ goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,
 				None, [goblin_in_antechamber_cond, pass_thru_cond], [antechamber_goblin_attacks_result, nothing_happens_result])
 
 goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, [goblin_attack_mach],
-				{shiny_sword : 'show_goblin_shiny_sword',
-				stale_biscuits : 'show_goblin_stale_bisuits',
-				'def_show' : 'show_goblin_default'}, 
-				{shiny_sword : {'response_key' : 'give_goblin_shiny_sword', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
-				stale_biscuits : {'response_key' : 'give_goblin_stale_biscuits', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
-				'def_give' : {'response_key' : 'give_goblin_default', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : None}},
-				{shiny_sword : {'result_code' : 'creature_death', 'response_key' : 'goblin_slain'},
-				'def_attack' : {'result_code' : 'burt_death', 'response_key' : 'burt_slain_by_goblin'}},
-				{shiny_sword : {'result_code' : None, 'response_key' : 'parry_goblin'},
-				'def_attack' : {'result_code' : 'burt_death', 'response_key' : 'goblin_slays_burt'}},
+				{
+						shiny_sword : 'show_goblin_shiny_sword',
+						stale_biscuits : 'show_goblin_stale_bisuits',
+						'def_show' : 'show_goblin_default'
+				}, 
+				{
+						shiny_sword : {'response_key' : 'give_goblin_shiny_sword', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
+						stale_biscuits : {'response_key' : 'give_goblin_stale_biscuits', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
+						'def_give' : {'response_key' : 'give_goblin_default', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : None}
+				},
+				{
+						shiny_sword : {'result_code' : 'creature_death', 'response_key' : 'goblin_slain'},
+						'def_attack' : {'result_code' : 'burt_death', 'response_key' : 'burt_slain_by_goblin'}
+				},
+				{
+						shiny_sword : {'result_code' : None, 'response_key' : 'parry_goblin'},
+						'def_attack' : {'result_code' : 'burt_death', 'response_key' : 'goblin_slays_burt'}
+				},
 				[grimy_axe, torn_note], dead_goblin)
 
 # name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict,
@@ -152,8 +160,8 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 						stale_biscuits : 'show_hedgehog_stale_biscuits'
 				},
 				{
-						shiny_sword : {'response_key' : 'give_hedgehog_sword', 'accept_item' : False, 'give_item' : silver_key, 'new_descript_key' : 'hedgehog_sword_returned'},
-						stale_biscuits : {'response_key' : 'give_hedgehog_biscuits', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : 'hedgehog_eating'}
+						shiny_sword : {'response_key' : 'give_hedgehog_sword', 'accept_item' : True, 'give_item' : silver_key, 'new_descript_key' : 'hedgehog_sword_returned'},
+						stale_biscuits : {'response_key' : 'give_hedgehog_biscuits', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : 'hedgehog_eating'}
 				},
 				{
 						shiny_sword : {'result_code' : 'creature_death', 'response_key' : 'hedgehog_flees'},
@@ -170,7 +178,7 @@ antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', N
 				[alcove, left_lever, middle_lever, right_lever, red_button], [iron_portcullis, control_panel, goblin_guard],
 				{'north' : iron_portcullis}, [])
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
-				[throne, silver_key, crystal_box, iron_portcullis], {'south' : iron_portcullis}, [broach_dispenser_mach])
+				[throne, crystal_box, iron_portcullis], {'south' : iron_portcullis}, [broach_dispenser_mach])
 
 antechamber_goblin_attacks_result.creature_obj = goblin_guard
 

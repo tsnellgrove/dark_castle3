@@ -182,6 +182,10 @@ descript_dict = {
 		'hungry_hedgehog' : "This poor little Royal Hedgehog has seen better days. It looks gaunt and like it skipped breakfast - and maybe lunch and dinner too. But despite looking in need of a good meal the Royal Hedgehog's eyes have a bright, territorial gleam in them and it appears to have quite a preference for shiny things. You don't know why but you feel an innate fondness for this small but valiant creature.",
 		'show_hedgehog_stale_biscuits' : "The Royal Hedgehog's eyes light up with excitement! Apparently, Stale Biscuits are a favorite hedgehog delacacy. The Royal Hedgehog gives you a look half way between hopeful and pleading.",
 		'show_hedgehog_shiny_sword' : "The Royal Hedgehog gives a small squeek of excitement. It gives you a yearning look, clearly hoping that you will return its long-time favorite object.",
+		'give_hedgehog_biscuits' : "With a yelp of grateful delight the starving hedgehog leaps upon the Stale Biscuits and begins to devour them.",
+		'hedgehog_eating' : "The hedgehog is eating ravenously.",
+		'give_hedgehog_sword' : "The hedgehog beams at you with gratitude for returning the Shiny Sword. From a hidden fold of its fur it takes out a Silver Key and places it at your feet with a bow.",
+		'hedgehog_sword_returned' : "This hedgehog is on top of the world! It has recently devoured a meal of Stale Biscuits (a rare delicacy among hedgehogs) and now has it's favorite shiny object back. It looks upon you with gratitude and devotion. It sees within you a nobility, compassion, and destiny beyond anything you've hitherto imagined possessing.",
 
 
 		### room objects ###
