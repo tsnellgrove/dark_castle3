@@ -36,8 +36,11 @@ Version 3.62 Goals
 		- DONE: biscuits: accept biscuits, description key, andupdate creature descirption to *eating*
 		- DONE: shiny_sword: accept sword, give key, description key, and update creature description
 		- DONE: removed silver_key from Throne Room
-	- TBD: attack response = flee
-	- TBD: attack warning
+	- DONE: attack response
+		- DONE: default = no response / text adomonition
+		- DONE: shiny sword = flee
+	- TBD: point reduction for attacking hedgehog? (create custom_score_lst and custom score routine?)
+	- TBD: sword attack warning
 
 
 ##########################

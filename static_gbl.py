@@ -186,6 +186,8 @@ descript_dict = {
 		'hedgehog_eating' : "The hedgehog is eating ravenously.",
 		'give_hedgehog_sword' : "The hedgehog beams at you with gratitude for returning the Shiny Sword. From a hidden fold of its fur it takes out a Silver Key and places it at your feet with a bow.",
 		'hedgehog_sword_returned' : "This hedgehog is on top of the world! It has recently devoured a meal of Stale Biscuits (a rare delicacy among hedgehogs) and now has it's favorite shiny object back. It looks upon you with gratitude and devotion. It sees within you a nobility, compassion, and destiny beyond anything you've hitherto imagined possessing.",
+		'hedgehog_dodges' : "You take a wild swipe at the Royal Hedgehog with your fist but it nimbly leaps aside. BURT! What has gotten into you?? We have an evil castle to conquer. Stop trying to slay defenseless woodland creatures!",
+		'hedgehog_flees' : "You strike at the Royal Hdgehog with the Shiny Sword and it flees, terrified, from your unprovoked attack. You know in your heart that you will come to regret this unkingly deed.",
 
 
 		### room objects ###

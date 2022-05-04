@@ -164,8 +164,8 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 						stale_biscuits : {'response_key' : 'give_hedgehog_biscuits', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : 'hedgehog_eating'}
 				},
 				{
-						shiny_sword : {'result_code' : 'creature_death', 'response_key' : 'hedgehog_flees'},
-						'def_attack' : {'result_code' : 'burt_death', 'response_key' : 'hedgehog_???'}
+						shiny_sword : {'result_code' : 'creature_flee', 'response_key' : 'hedgehog_flees'},
+						'def_attack' : {'result_code' : None, 'response_key' : 'hedgehog_dodges'}
 				},
 				{},
 				[silver_key], None)
