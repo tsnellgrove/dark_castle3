@@ -15,7 +15,8 @@ score_val_dict = {
 		'silver_key' : 5,
 		'kinging_scroll' : 5,
 		'royal_crown' : 10,
-		'hedgehog_broach' : 5
+		'hedgehog_broach' : 5,
+		'hedgehog_attack' : -20
 }
 
 item_score_lst = [
@@ -68,5 +69,14 @@ def score(active_gs):
 						active_gs.update_score(points)
 						active_gs.set_points_earned_state(score_key, True)
 						active_gs.print_score()
+
+		# custom scoring
+		score_key = 'hedgehog_attack'
+		if (royal_hedgehog not in main_hall.room_obj_lst 
+						and active_gs.get_points_earned_state(score_key) == False):
+				points = score_val_dict[score_key]
+				active_gs.update_score(points)
+				active_gs.set_points_earned_state(score_key, True)
+				active_gs.print_score()
 
 		return
