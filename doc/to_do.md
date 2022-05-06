@@ -44,9 +44,11 @@ Version 3.62 Goals
 		- DONE: added 'hedgehog_attack' to active_gs dict in mk_def_pkl()
 		- DONE: created "custom scoring" section in score()
 		- ISSUE: only active_gs is passed into score() so royal_hedgehog and main_hall are undefined
-			- TBD: create room_lst in active_gs
-			- TBD: create an active_gs method obj_exist() that can evaluate whether an obj is in the game (in any room's room_obj_lst)
-			- TBD: call active_gs.obj_exist(royal_hedgehog) from the "custom scoring" section of score()
+			- DONE: create room_lst in active_gs
+			- DONE: create an active_gs method obj_exist() that can evaluate whether an obj is in the game (in any room's room_obj_lst)
+			- DONE: call active_gs.obj_exist(royal_hedgehog) from the "custom scoring" section of score()
+			- ISSUE: I have a room search... but royal_hedgehog is *still* undefined... so I guess I need a room search based on obj name
+			- IDEA: is this getting silly? Should I just pass master_objlst to score()?
 	- TBD: sword attack warning
 
 

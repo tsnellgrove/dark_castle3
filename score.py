@@ -72,7 +72,8 @@ def score(active_gs):
 
 		# custom scoring
 		score_key = 'hedgehog_attack'
-		if (royal_hedgehog not in main_hall.room_obj_lst 
+#		if (royal_hedgehog not in main_hall.room_obj_lst 
+		if (not active_gs.obj_exist(royal_hedgehog) 
 						and active_gs.get_points_earned_state(score_key) == False):
 				points = score_val_dict[score_key]
 				active_gs.update_score(points)

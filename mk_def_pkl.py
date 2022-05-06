@@ -215,7 +215,8 @@ active_gs = GameState(
 				'room' : entrance,
 				'out_buff' : ""
 		},
-		[test_timer]
+		[test_timer],
+		[entrance, main_hall, antechamber, throne_room]
 )
 
 ### instantiated objects added to list ###

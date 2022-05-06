@@ -14,7 +14,7 @@ from shared_class_func import obj_lst_to_str
 
 ### classes
 class GameState(object):
-		def __init__(self, name, dynamic_desc_dict, map_dict, points_earned_dict, static_obj_dict, state_dict, universal_mach_lst):
+		def __init__(self, name, dynamic_desc_dict, map_dict, points_earned_dict, static_obj_dict, state_dict, universal_mach_lst, room_lst):
 				self._name = name
 				self._dynamic_desc_dict = dynamic_desc_dict
 				self._map_dict = map_dict
@@ -22,12 +22,17 @@ class GameState(object):
 				self._static_obj_dict = static_obj_dict
 				self._state_dict = state_dict
 				self._universal_mach_lst = universal_mach_lst
+				self._room_lst = room_lst
 
 		### setters & getters ###
 
 		@property
 		def universal_mach_lst(self):
 				return self._universal_mach_lst
+
+		@property
+		def room_lst(self):
+				return self._room_lst
 
 		### descriptions ###
 		def get_dynamic_desc_dict(self, dynamic_desc_key):
@@ -225,7 +230,6 @@ class GameState(object):
 				scope_lst = self.scope_lst()
 				return obj in scope_lst
 
-#		def mach_obj_lst(self):
 		def room_mach_lst(self):
 				room_mach_lst = []
 				room_obj = self.get_room()
@@ -245,6 +249,13 @@ class GameState(object):
 
 		def auto_in_alert_scope(self, obj):
 				return obj in self.room_mach_lst()
+
+		def obj_exist(self, obj):
+				obj_in_world = False
+				for room in self.room_lst:
+						if obj in room.room_obj_lst:
+								obj_in_world = True
+				return obj_in_world
 
 		### obj representation (for printing) ###
 		def __repr__(self):
