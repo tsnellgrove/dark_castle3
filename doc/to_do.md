@@ -39,17 +39,29 @@ Version 3.62 Goals
 	- DONE: attack response
 		- DONE: default = no response / text adomonition
 		- DONE: shiny sword = flee
-	- IN-PROC: point reduction (-20) for attacking hedgehog?
+	- DONE: point reduction (-20) for attacking hedgehog?
 		- DONE: added 'hedgehog_attack' to score_val_dict in score()
 		- DONE: added 'hedgehog_attack' to active_gs dict in mk_def_pkl()
 		- DONE: created "custom scoring" section in score()
-		- ISSUE: only active_gs is passed into score() so royal_hedgehog and main_hall are undefined
+		- DONE: only active_gs is passed into score() so royal_hedgehog and main_hall are undefined
 			- DONE: create room_lst in active_gs
 			- DONE: create an active_gs method obj_exist() that can evaluate whether an obj is in the game (in any room's room_obj_lst)
 			- DONE: call active_gs.obj_exist(royal_hedgehog) from the "custom scoring" section of score()
 			- ISSUE: I have a room search... but royal_hedgehog is *still* undefined... so I guess I need a room search based on obj name
-			- IDEA: is this getting silly? Should I just pass master_objlst to score()?
+				- IDEA: is this getting silly? Should I just pass master_obj_lst to score()?
+				- IDEA: no... there's a value to being able to search rooms by name - and it's ultimately shorter than searching all obj
+				- DONE: create obj_name_exist() methd in active_gs()
+				- DONE: update score()
 	- TBD: sword attack warning
+		- DONE: sort out warning scheme
+			- IDEA: if I want attack_hedgehog_warning to be a simple warning then I can't test for what Burt is holding...
+			- IDEA: so, let's have the hedgehog fee on *any* attack (not just the shiny_sword)
+			- IDEA: (which makes sense given that the royal_hedgehog is not a dangerous fighter who can only be defeated by a mighty weapon)
+			- IDEA: and let's make the current text for a non-shiny_sword attack apply the first warning of 2
+		- TBD: update current hedgehog attack based on warning decisions
+		- TBD: create attack_hedgehog_warning - which gives 2 warnings
+		- TBD: create warning text for warnings 1 & 2
+		- TBD: test!
 
 
 ##########################
@@ -63,7 +75,7 @@ Version 3.64 Goals
 ### VERSION 3.66 START ###
 ##########################
 Version 3.66 Goals
-- Create class, methods, and obj for read_scroll machine
+- Create conditions, results, and read_scroll machine
 
 
 ##########################
