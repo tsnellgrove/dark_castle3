@@ -1,5 +1,5 @@
 To Do List - Dark Castle v3
-Apr 28, 2022
+May 8, 2022
 
 
 *** How to Add Objects ***
@@ -10,60 +10,8 @@ Apr 28, 2022
 5) Run mk_def_pkl()
 6) Add object description in static_gbl
 
-
-
 	
 *** NOTES ***
-
-
-##########################
-### VERSION 3.62 START ###
-##########################
-Version 3.62 Goals
-- Instantiatie base royal_hedgehog creature (including key trading and attack warning)
-
-- DONE: instantiate royal_hedgehog
-	- DONE: base instantiation based on guard_goblin
-		- DONE: royal_hedgehog posesses silve_key
-		- DONE: add hedgehog to noun pkl
-		- DONE: add hedgehog to Main Hall
-		- DONE: run mk_def_pkl()
-		- DONE: base description for hungry_hedgehog
-	- DONE: special show for stale_biscuits, shiny_sword
-		- DONE: stale_biscuits
-		- DONE: shiny_sword
-	- DONE: special give:
-		- DONE: biscuits: accept biscuits, description key, andupdate creature descirption to *eating*
-		- DONE: shiny_sword: accept sword, give key, description key, and update creature description
-		- DONE: removed silver_key from Throne Room
-	- DONE: attack response
-		- DONE: default = no response / text adomonition
-		- DONE: shiny sword = flee
-	- DONE: point reduction (-20) for attacking hedgehog?
-		- DONE: added 'hedgehog_attack' to score_val_dict in score()
-		- DONE: added 'hedgehog_attack' to active_gs dict in mk_def_pkl()
-		- DONE: created "custom scoring" section in score()
-		- DONE: only active_gs is passed into score() so royal_hedgehog and main_hall are undefined
-			- DONE: create room_lst in active_gs
-			- DONE: create an active_gs method obj_exist() that can evaluate whether an obj is in the game (in any room's room_obj_lst)
-			- DONE: call active_gs.obj_exist(royal_hedgehog) from the "custom scoring" section of score()
-			- ISSUE: I have a room search... but royal_hedgehog is *still* undefined... so I guess I need a room search based on obj name
-				- IDEA: is this getting silly? Should I just pass master_obj_lst to score()?
-				- IDEA: no... there's a value to being able to search rooms by name - and it's ultimately shorter than searching all obj
-				- DONE: create obj_name_exist() methd in active_gs()
-				- DONE: update score()
-	- DONE: sword attack warning
-		- DONE: sort out warning scheme
-			- IDEA: if I want attack_hedgehog_warning to be a simple warning then I can't test for what Burt is holding...
-			- IDEA: so, let's have the hedgehog fee on *any* attack (not just the shiny_sword)
-			- IDEA: (which makes sense given that the royal_hedgehog is not a dangerous fighter who can only be defeated by a mighty weapon)
-			- IDEA: and let's make the current text for a non-shiny_sword attack apply the first warning of 2
-		- DONE: update current hedgehog attack based on warning decisions
-		- DONE: create attack_hedgehog_warning - which gives 2 warnings
-		- DONE: create warning text for warnings 1 & 2
-		- DONE: add attack_hedgehog_warning to royal_hedgehog.mach_obj_lst
-		- DONE: test!
-
 
 ##########################
 ### VERSION 3.64 START ###
@@ -85,13 +33,16 @@ Version 3.66 Goals
 
 Version 3.68 Goals
 - Create / update program documentation
+- Clean up creature and warning and timer coding
 
-TBD: documentation:
-	TBD: updeate creature doc
-	TBD: update class diagram
-	TBD: update module diagram
-	TBD: create machine diagram
-	TBD: create creature diagram
+- TBD: coding clean-up
+	- TBD: TBD
+- TBD: documentation:
+	- TBD: updeate creature doc
+	- TBD: update class diagram
+	- TBD: update module diagram
+	- TBD: create machine diagram
+	- TBD: create creature diagram
 
 
 *** Timer Decisions ***
@@ -167,6 +118,8 @@ TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_crea
 - is there really any need for GameState room_mach_lst() ??
 - 'trigger_type' => 'trig_type' ??
 - 'try... except' standard descriptions for examine() method (similar to Warnings)
+- review how creatures vs. items appear in DCv2 - mimic?
+- 'g' as abbreviation for 'again' ?
 
 
 *** NEW PUZZLE IDEAS ***

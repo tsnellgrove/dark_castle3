@@ -1,6 +1,6 @@
-# program: dark castle v3.60
+# program: dark castle v3.62
 # name: Tom Snellgrove
-# date: Mar 24, 2022
+# date: May 8, 2022
 # description: class deffinition module for Creatures
 
 ### import
