@@ -22,7 +22,7 @@ Apr 28, 2022
 Version 3.62 Goals
 - Instantiatie base royal_hedgehog creature (including key trading and attack warning)
 
-- INPROC: instantiate royal_hedgehog
+- DONE: instantiate royal_hedgehog
 	- DONE: base instantiation based on guard_goblin
 		- DONE: royal_hedgehog posesses silve_key
 		- DONE: add hedgehog to noun pkl
@@ -52,16 +52,17 @@ Version 3.62 Goals
 				- IDEA: no... there's a value to being able to search rooms by name - and it's ultimately shorter than searching all obj
 				- DONE: create obj_name_exist() methd in active_gs()
 				- DONE: update score()
-	- TBD: sword attack warning
+	- DONE: sword attack warning
 		- DONE: sort out warning scheme
 			- IDEA: if I want attack_hedgehog_warning to be a simple warning then I can't test for what Burt is holding...
 			- IDEA: so, let's have the hedgehog fee on *any* attack (not just the shiny_sword)
 			- IDEA: (which makes sense given that the royal_hedgehog is not a dangerous fighter who can only be defeated by a mighty weapon)
 			- IDEA: and let's make the current text for a non-shiny_sword attack apply the first warning of 2
-		- TBD: update current hedgehog attack based on warning decisions
-		- TBD: create attack_hedgehog_warning - which gives 2 warnings
-		- TBD: create warning text for warnings 1 & 2
-		- TBD: test!
+		- DONE: update current hedgehog attack based on warning decisions
+		- DONE: create attack_hedgehog_warning - which gives 2 warnings
+		- DONE: create warning text for warnings 1 & 2
+		- DONE: add attack_hedgehog_warning to royal_hedgehog.mach_obj_lst
+		- DONE: test!
 
 
 ##########################

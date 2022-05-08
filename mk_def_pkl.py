@@ -106,6 +106,8 @@ blue_button_result = StartTimerResult('blue_button_result', 'push_blue_button', 
 
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
 
+attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd', [['attack', 'royal_hedgehog']], 3, 0)
+
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
 				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
@@ -154,7 +156,7 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 # name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict,
 #		attack_creature_dict, attack_burt_dict, creature_items_lst, dead_creature_obj
 
-royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None, None, [],
+royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None, None, [attack_hedgehog_warning],
 				{
 						shiny_sword : 'show_hedgehog_shiny_sword',
 						stale_biscuits : 'show_hedgehog_stale_biscuits'
@@ -164,8 +166,9 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 						stale_biscuits : {'response_key' : 'give_hedgehog_biscuits', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : 'hedgehog_eating'}
 				},
 				{
-						shiny_sword : {'result_code' : 'creature_flee', 'response_key' : 'hedgehog_flees'},
-						'def_attack' : {'result_code' : None, 'response_key' : 'hedgehog_dodges'}
+#						shiny_sword : {'result_code' : 'creature_flee', 'response_key' : 'hedgehog_flees'},
+#						'def_attack' : {'result_code' : None, 'response_key' : 'hedgehog_dodges'}
+						'def_attack' : {'result_code' : 'creature_flee', 'response_key' : 'hedgehog_flees'}
 				},
 				{},
 				[silver_key], None)
