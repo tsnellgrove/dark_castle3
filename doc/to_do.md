@@ -19,6 +19,20 @@ May 8, 2022
 Version 3.64 Goals
 - Create complex machine for hedgehog creature (including bisuit eating and timer; note that eating must override show & give)
 
+- DONE: map out desired conditions & results
+	- Case 1: hedgehog_eats_timer is active, Burt tries to take sword:
+		- Result = Burt gets sword (standard case)
+	- Case 2: Burt gives (or drops) biscuits:
+		- Result = hedgehog_eats_timer started
+	- Case 3: hedgehog_eats_timer not active, Burt tries to take sword:
+		- Result = hedgehog guards sword (Warning ?)
+	- Case 4: hedgehog_eats_timer is active, Burt tries to give or show to hedgehog:
+		- Result = hedgehog is eating; response is inhibited
+- TBD: create hedgehog_eats_timer (4 turns long, presents text if in scope)
+- TBD: create hedgehog_eats_mach (starts timer if give or drop)
+- TBD: create hedgehog_guards_mach (if timer not active, guards sword)
+- TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
+
 
 ##########################
 ### VERSION 3.66 START ###
