@@ -137,6 +137,11 @@ descript_dict = {
 		'blue_button' : "The Blue Button seems to dare you to push it.",
 		'push_blue_button' : "Uh-oh Burt... not sure you should have pushed that...",
 
+		'hedgehog_eats_timer_1' : "The Royal Hedgehog is ravenously devouring the stale_biscuits and is taking no notice of you at all.",
+		'hedgehog_eats_timer_2' : "The Royal Hedgehog has eaten through half the stale_biscuits but is still giving them all of its attention.",
+		'hedgehog_eats_timer_3' : "The Royal Hedgehog is nearly done eating all of the stale_biscuits and is beginning to look around a bit.",
+		'hedgehog_eats_timer_4' : "The Royal Hedgehog has finished the stale_biscuits and is vigilantly looking around.",
+
 		### machine objects ###
 		'control_panel' : "The Control Panel contains three levers: a Left Lever, a Middle Lever, and a Right Lever. The control panel also contains a Red Button. There are no directions posted as to what the controls are for or how to use them (a clear ISO lapse if ever you've seen one Burt).",
 

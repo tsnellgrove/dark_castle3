@@ -78,6 +78,8 @@ blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button'
 
 test_timer = Timer('test_timer', 'auto_act', False, 0, 3, 'variable', False, blue_button) # test obj
 
+
+
 hand_no_weap_cond = NotInHandCond('hand_no_weap_cond', [shiny_sword, grimy_axe])
 hand_weap_1st_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], False)
 hand_weap_repeat_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], True)
@@ -173,6 +175,7 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 				{},
 				[silver_key], None)
 
+
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat, blue_button],
 				[front_gate, big_bomb], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn])
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
@@ -182,6 +185,10 @@ antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', N
 				{'north' : iron_portcullis}, [])
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
 				[throne, crystal_box, iron_portcullis], {'south' : iron_portcullis}, [broach_dispenser_mach])
+
+
+hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, royal_hedgehog)
+
 
 antechamber_goblin_attacks_result.creature_obj = goblin_guard
 
@@ -218,7 +225,7 @@ active_gs = GameState(
 				'room' : entrance,
 				'out_buff' : ""
 		},
-		[test_timer],
+		[test_timer, hedgehog_eats_timer],
 		[entrance, main_hall, antechamber, throne_room]
 )
 

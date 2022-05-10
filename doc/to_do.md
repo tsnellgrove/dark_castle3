@@ -28,10 +28,18 @@ Version 3.64 Goals
 		- Result = hedgehog guards sword (Warning ?)
 	- Case 4: hedgehog_eats_timer is active, Burt tries to give or show to hedgehog:
 		- Result = hedgehog is eating; response is inhibited
-- TBD: create hedgehog_eats_timer (4 turns long, presents text if in scope)
+	- Case 5: special machine to update hedgehog description at end of timer
+		- description depends on whether the hedgehog has kept the sword???
+- DONE: create hedgehog_eats_timer (4 turns long, presents text if in scope)
+	- DONE: create hedgehog_eats_timer in mk_def_pkl(); set alert_anchor to royal_hedgehog
+	- DONE: add hedgehog_eats_timer to mk_def_timer() universal_mach_lst
+	- DONE: add timer text descriptions to static_gbl()
+	- DONE: run mk_def_pkl()
 - TBD: create hedgehog_eats_mach (starts timer if give or drop)
+	- TBD: decide whether I will support 'drop biscuits' (leaning towards 'no')
 - TBD: create hedgehog_guards_mach (if timer not active, guards sword)
 - TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
+- TBD: create hedgehog_done_eating_mach (update hedgehog description after eating based on presence of shiny_sword)
 
 
 ##########################
