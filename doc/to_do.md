@@ -61,9 +61,11 @@ Version 3.68 Goals
 	- TBD: TBD
 - TBD: documentation:
 	- TBD: updeate creature doc
+		- discuss creature state
 	- TBD: update class diagram
 	- TBD: update module diagram
 	- TBD: create machine diagram
+		- hedgehog => state machine idea
 	- TBD: create creature diagram
 
 
