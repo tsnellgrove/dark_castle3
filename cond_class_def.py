@@ -40,6 +40,29 @@ class NotInHandCond(PassThruCond):
 								cond_state = False
 				return cond_state
 
+class CreatureItemCond(PassThruCond):
+		def __init__(self, name, creature_obj, item_obj):
+				super().__init__(name)
+				self._creature_obj = creature_obj # creature to check for item ownership
+				self._item_obj = item_obj # item creature must possess for condition to be true
+
+		@property
+		def creature_obj(self):
+				return self._creature_obj
+
+		@creature_obj.setter
+		def creature_obj(self, new_obj):
+				self._creature_obj = new_obj
+
+		@property
+		def item_obj(self):
+				return self._item_obj
+
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+				cond_state = self.item_obj in self.creature_obj.creature_items_lst
+				return cond_state
+
+
 class StateCond(PassThruCond):
 		def __init__(self, name, mach_state_cond):
 				super().__init__(name)

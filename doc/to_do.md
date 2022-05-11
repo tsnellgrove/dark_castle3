@@ -35,8 +35,18 @@ Version 3.64 Goals
 	- DONE: add hedgehog_eats_timer to mk_def_timer() universal_mach_lst
 	- DONE: add timer text descriptions to static_gbl()
 	- DONE: run mk_def_pkl()
-- TBD: create hedgehog_eats_mach (starts timer if give or drop)
-	- TBD: decide whether I will support 'drop biscuits' (leaning towards 'no')
+- INPROC: create hedgehog_eats_mach (starts timer if give or drop)
+	- DONE: decide whether I will support 'drop biscuits' (leaning towards 'no')
+		- DECISION: 'drop biscuits' will NOT trigger hedgehog_eats_mach
+	- DONE: create Condition for hedgehog_eats_mach 
+		- DONE: create class CreatureItemCond (parent = PassThruCond)
+		- DONE: test for hedgehog has biscuits in cond_check() 
+		- DONE: instantiate hedgehog_has_biscuit_cond in mk_def_pkl()
+		- DONE: add CreatureItemCond to mk_def_pkl() imports and use creature object re-assignment work-around
+		- DONE: run mk_def_pkl()
+	- TBD: create Results for hedgehog_eats_mach (start timer; remove biscuits from hedgehog)
+	- TBD: crete machine for hedgehog_eats_mach (will be a post_action() mach)
+	- TBD: test!
 - TBD: create hedgehog_guards_mach (if timer not active, guards sword)
 - TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
 - TBD: create hedgehog_done_eating_mach (update hedgehog description after eating based on presence of shiny_sword)
