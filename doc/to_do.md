@@ -44,7 +44,13 @@ Version 3.64 Goals
 		- DONE: instantiate hedgehog_has_biscuit_cond in mk_def_pkl()
 		- DONE: add CreatureItemCond to mk_def_pkl() imports and use creature object re-assignment work-around
 		- DONE: run mk_def_pkl()
-	- TBD: create Results for hedgehog_eats_mach (start timer; remove biscuits from hedgehog)
+	- INPROC: create Results for hedgehog_eats_mach (start timer; remove biscuits from hedgehog)
+		- DONE: create class TimerAndCreatureItemResult (parent = StartTimerResult)
+		- DONE: start time and remove creature_item
+		- TBD: fix descript & buffer for StartTimerResult()
+		- TBD: instantiate start_hedgehog_timer_results in mk_def_pkl()
+		- TBD: add TimerAndCreatureItemResult to mk_def_pkl() imports and use creature object re-assignment work-around
+		- TBD: run mk_def_pkl()
 	- TBD: crete machine for hedgehog_eats_mach (will be a post_action() mach)
 	- TBD: test!
 - TBD: create hedgehog_guards_mach (if timer not active, guards sword)

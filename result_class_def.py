@@ -128,12 +128,10 @@ class AttackBurtResult(BufferOnlyResult):
 				cmd_execute(active_gs, '2word', [self.creature_obj, 'attack_burt'])
 				return mach_state, self.cmd_override
 
-
-
 class StartTimerResult(BufferOnlyResult):
 		def __init__(self, name, result_descript, timer_obj, cmd_override):
 				super().__init__(name, result_descript, cmd_override)
-				self._timer_obj = timer_obj # creature to attack burt
+				self._timer_obj = timer_obj
 
 		@property
 		def timer_obj(self):
@@ -144,4 +142,21 @@ class StartTimerResult(BufferOnlyResult):
 				self.timer_obj.start()
 				return mach_state, self.cmd_override
 
+class TimerAndCreatureItemResult(StartTimerResult):
+		def __init__(self, name, result_descript, timer_obj, cmd_override, creature_obj, ceature_item_obj):		
+				super().__init__(name, result_descript, timer_obj, cmd_override)
+				self._ceature_item_obj = ceature_item_obj
 
+		@property
+		def ceature_obj(self):
+				return self._ceature_obj
+
+		@property
+		def ceature_item_obj(self):
+				return self._ceature_item_obj
+
+		def result_exe(self, active_gs, mach_state):
+				active_gs.buffer(descript_dict[self.result_descript])
+				self.timer_obj.start()
+				self.ceature_obj.creature_item_list.remove(creature_item_obj)
+				return mach_state, self.cmd_override
