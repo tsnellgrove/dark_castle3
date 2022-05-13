@@ -180,7 +180,7 @@ descript_dict = {
 		'goblin_slain' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. you know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride to meet your foe in battle and dispatch him with one blazing fast strike of your sword.",
 		'goblin_slays_burt' : "The Guard Goblin attacks with a lightening-fast swing of the Grimy Axe and you are helpless against the onslaught. You will need a better weapon if you are to survive this foe.",
 		'parry_goblin' : "The Guard Goblin attacks with a lightening-fast swing of the Grimy Axe and you only barely manage to parry with your own weapon.",
-		'antechamber_goblin_attacks' : "The goblin does not take kindly to your presence in the north side of the room.",
+		'antechamber_goblin_attacks_result' : "The goblin does not take kindly to your presence in the north side of the room.",
 
 
 

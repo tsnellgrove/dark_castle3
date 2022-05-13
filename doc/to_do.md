@@ -47,11 +47,15 @@ Version 3.64 Goals
 	- INPROC: create Results for hedgehog_eats_mach (start timer; remove biscuits from hedgehog)
 		- DONE: create class TimerAndCreatureItemResult (parent = StartTimerResult)
 		- DONE: start time and remove creature_item
-		- TBD: fix descript & buffer for StartTimerResult()
+		- INPROC: fix descript & buffer for StartTimerResult()
+			- DONE: Check existing Results classes
+			- FINDINGS: no Result obj use PassThru, all Result classes inherit from BufferOnlyResult, all Result obj use name as descript_key
+			- TBD: eliminate PassThruResult / update BufferOnlyResult to inherit from 'object' or Invisible
+			- TBD: update BufferOnlyResult to use 'try... except...' buffer approach used in Timer & Warning
 		- TBD: instantiate start_hedgehog_timer_results in mk_def_pkl()
 		- TBD: add TimerAndCreatureItemResult to mk_def_pkl() imports and use creature object re-assignment work-around
 		- TBD: run mk_def_pkl()
-	- TBD: crete machine for hedgehog_eats_mach (will be a post_action() mach)
+	- TBD: create machine for hedgehog_eats_mach (will be a post_action() mach)
 	- TBD: test!
 - TBD: create hedgehog_guards_mach (if timer not active, guards sword)
 - TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)

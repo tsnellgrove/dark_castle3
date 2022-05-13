@@ -100,7 +100,7 @@ nothing_happens_result = BufferOnlyResult('nothing_happens_result', 'nothing_hap
 throne_pull_result = AddObjToRoomResult('throne_pull_result', 'throne_pull_result', hedgehog_broach, False)
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', 'toggle_portcullis_result', iron_portcullis, False)
 portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', 'portcullis_doesnt_open_result', False)
-antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks_result', 'antechamber_goblin_attacks', 
+antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks_result', 'antechamber_goblin_attacks_result', 
 				'goblin_placeholder', True)
 
 blue_button_result = StartTimerResult('blue_button_result', 'push_blue_button', test_timer, False) # test obj
