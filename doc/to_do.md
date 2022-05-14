@@ -50,8 +50,9 @@ Version 3.64 Goals
 		- INPROC: fix descript & buffer for StartTimerResult()
 			- DONE: Check existing Results classes
 			- FINDINGS: no Result obj use PassThru, all Result classes inherit from BufferOnlyResult, all Result obj use name as descript_key
-			- TBD: eliminate PassThruResult / update BufferOnlyResult to inherit from 'object' or Invisible
-			- TBD: update BufferOnlyResult to use 'try... except...' buffer approach used in Timer & Warning
+			- DONE: eliminate PassThruResult / update BufferOnlyResult to inherit from 'object' or Invisible
+			- DONE: update BufferOnlyResult to use 'try... except...' buffer approach used in Timer & Warning
+			- TBD: clean up commented code (lots of it!)
 		- TBD: instantiate start_hedgehog_timer_results in mk_def_pkl()
 		- TBD: add TimerAndCreatureItemResult to mk_def_pkl() imports and use creature object re-assignment work-around
 		- TBD: run mk_def_pkl()

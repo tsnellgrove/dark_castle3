@@ -9,7 +9,7 @@ import pickle
 from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond, RoomCond, CreatureItemCond
-from result_class_def import PassThruResult, BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult
+from result_class_def import BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult
 from mach_class_def import InvisMach, ViewOnlyMach, Warning, Timer
 from creature_class_def import Creature
 from gs_class_def import GameState
@@ -92,18 +92,30 @@ wrong_lever_array_cond = PassThruCond('pass_thru_cond')
 goblin_in_antechamber_cond = RoomCond('goblin_in_antechamber', 'antechamber')
 hedgehog_has_biscuit_cond = CreatureItemCond('hedgehog_has_biscuit_cond', 'royal_hedgehog', stale_biscuits)
 
-die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'die_in_moat_result', 'death', True)
-moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', 'moat_croc_scared_result', True)
-moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', 'moat_get_crown_result', royal_crown, True)
-throne_push_result = BufferOnlyResult('throne_push_result', 'throne_push_result', False)
-nothing_happens_result = BufferOnlyResult('nothing_happens_result', 'nothing_happens_result', False)
-throne_pull_result = AddObjToRoomResult('throne_pull_result', 'throne_pull_result', hedgehog_broach, False)
-toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', 'toggle_portcullis_result', iron_portcullis, False)
-portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', 'portcullis_doesnt_open_result', False)
-antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks_result', 'antechamber_goblin_attacks_result', 
-				'goblin_placeholder', True)
+# die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'die_in_moat_result', 'death', True)
+# moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', 'moat_croc_scared_result', True)
+# moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', 'moat_get_crown_result', royal_crown, True)
+# throne_push_result = BufferOnlyResult('throne_push_result', 'throne_push_result', False)
+# nothing_happens_result = BufferOnlyResult('nothing_happens_result', 'nothing_happens_result', False)
+# throne_pull_result = AddObjToRoomResult('throne_pull_result', 'throne_pull_result', hedgehog_broach, False)
+# toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', 'toggle_portcullis_result', iron_portcullis, False)
+# portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', 'portcullis_doesnt_open_result', False)
+# antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks_result', 'antechamber_goblin_attacks_result', 
+#				'goblin_placeholder', True)
+# blue_button_result = StartTimerResult('blue_button_result', 'push_blue_button', test_timer, False) # test obj
 
-blue_button_result = StartTimerResult('blue_button_result', 'push_blue_button', test_timer, False) # test obj
+
+
+die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'death', True)
+moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
+moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', royal_crown, True)
+throne_push_result = BufferOnlyResult('throne_push_result', False)
+nothing_happens_result = BufferOnlyResult('nothing_happens_result', False)
+throne_pull_result = AddObjToRoomResult('throne_pull_result', hedgehog_broach, False)
+toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
+portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', False)
+antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks_result', 'goblin_placeholder', True)
+blue_button_result = StartTimerResult('blue_button_result', test_timer, False) # test obj
 
 
 
