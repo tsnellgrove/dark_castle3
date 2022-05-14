@@ -79,7 +79,6 @@ blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button'
 test_timer = Timer('test_timer', 'auto_act', False, 0, 3, 'variable', False, blue_button) # test obj
 
 
-
 hand_no_weap_cond = NotInHandCond('hand_no_weap_cond', [shiny_sword, grimy_axe])
 hand_weap_1st_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], False)
 hand_weap_repeat_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], True)
@@ -92,20 +91,6 @@ wrong_lever_array_cond = PassThruCond('pass_thru_cond')
 goblin_in_antechamber_cond = RoomCond('goblin_in_antechamber', 'antechamber')
 hedgehog_has_biscuit_cond = CreatureItemCond('hedgehog_has_biscuit_cond', 'royal_hedgehog', stale_biscuits)
 
-# die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'die_in_moat_result', 'death', True)
-# moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', 'moat_croc_scared_result', True)
-# moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', 'moat_get_crown_result', royal_crown, True)
-# throne_push_result = BufferOnlyResult('throne_push_result', 'throne_push_result', False)
-# nothing_happens_result = BufferOnlyResult('nothing_happens_result', 'nothing_happens_result', False)
-# throne_pull_result = AddObjToRoomResult('throne_pull_result', 'throne_pull_result', hedgehog_broach, False)
-# toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', 'toggle_portcullis_result', iron_portcullis, False)
-# portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', 'portcullis_doesnt_open_result', False)
-# antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks_result', 'antechamber_goblin_attacks_result', 
-#				'goblin_placeholder', True)
-# blue_button_result = StartTimerResult('blue_button_result', 'push_blue_button', test_timer, False) # test obj
-
-
-
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'death', True)
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
 moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', royal_crown, True)
@@ -116,7 +101,6 @@ toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_por
 portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', False)
 antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks_result', 'goblin_placeholder', True)
 blue_button_result = StartTimerResult('blue_button_result', test_timer, False) # test obj
-
 
 
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)

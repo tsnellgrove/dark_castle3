@@ -44,15 +44,15 @@ Version 3.64 Goals
 		- DONE: instantiate hedgehog_has_biscuit_cond in mk_def_pkl()
 		- DONE: add CreatureItemCond to mk_def_pkl() imports and use creature object re-assignment work-around
 		- DONE: run mk_def_pkl()
-	- INPROC: create Results for hedgehog_eats_mach (start timer; remove biscuits from hedgehog)
+	- DONE: create Results for hedgehog_eats_mach (start timer; remove biscuits from hedgehog)
 		- DONE: create class TimerAndCreatureItemResult (parent = StartTimerResult)
 		- DONE: start time and remove creature_item
-		- INPROC: fix descript & buffer for StartTimerResult()
+		- DONE: fix descript & buffer for StartTimerResult()
 			- DONE: Check existing Results classes
 			- FINDINGS: no Result obj use PassThru, all Result classes inherit from BufferOnlyResult, all Result obj use name as descript_key
 			- DONE: eliminate PassThruResult / update BufferOnlyResult to inherit from 'object' or Invisible
 			- DONE: update BufferOnlyResult to use 'try... except...' buffer approach used in Timer & Warning
-			- TBD: clean up commented code (lots of it!)
+			- DONE: clean up commented code (lots of it!)
 		- TBD: instantiate start_hedgehog_timer_results in mk_def_pkl()
 		- TBD: add TimerAndCreatureItemResult to mk_def_pkl() imports and use creature object re-assignment work-around
 		- TBD: run mk_def_pkl()

@@ -135,7 +135,6 @@ descript_dict = {
 		'test_timer_3' : "Boom!",
 		'big_bomb' : "The Big Bomb has a Blue Button on it.",
 		'blue_button' : "The Blue Button seems to dare you to push it.",
-#		'push_blue_button' : "Uh-oh Burt... not sure you should have pushed that...",
 		'blue_button_result' : "Uh-oh Burt... not sure you should have pushed that...",
 
 		'hedgehog_eats_timer_1' : "The Royal Hedgehog is ravenously devouring the stale_biscuits and is taking no notice of you at all.",
