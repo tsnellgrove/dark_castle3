@@ -125,7 +125,7 @@ control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control
 				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result])
 				# machine_state == lever_array_value
 
-hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None, [['give', 'stale_biscuits']],
+hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None, [['give', 'stale_biscuits', 'royal_hedgehog']],
 				None, [hedgehog_has_biscuit_cond, pass_thru_cond], [start_hedgehog_timer_results, pass_result])
 
 # name, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst
@@ -163,7 +163,8 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 # name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict,
 #		attack_creature_dict, attack_burt_dict, creature_items_lst, dead_creature_obj
 
-royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None, None, [attack_hedgehog_warning],
+royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None, None,
+				[attack_hedgehog_warning, hedgehog_eats_mach],
 				{
 						shiny_sword : 'show_hedgehog_shiny_sword',
 						stale_biscuits : 'show_hedgehog_stale_biscuits'

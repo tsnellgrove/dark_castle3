@@ -56,8 +56,9 @@ Version 3.64 Goals
 		- DONE: instantiate start_hedgehog_timer_results in mk_def_pkl()
 		- DONE: add TimerAndCreatureItemResult to mk_def_pkl() imports and use creature object re-assignment work-around
 		- DONE: run mk_def_pkl()
-	- DONE: create machine for hedgehog_eats_mach (will be a post_action() mach; class = InvisMach)
-	- TBD: test!
+	- INPROC: create machine for hedgehog_eats_mach (will be a post_action() mach; class = InvisMach)
+		- DONE: add hedgehog_eats_mach to hedgehog
+		- INPROC: test!
 - TBD: create hedgehog_guards_mach (if timer not active, guards sword)
 - TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
 - TBD: create hedgehog_done_eating_mach (update hedgehog description after eating based on presence of shiny_sword)
