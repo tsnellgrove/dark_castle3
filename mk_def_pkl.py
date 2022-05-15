@@ -9,7 +9,7 @@ import pickle
 from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond, RoomCond, CreatureItemCond
-from result_class_def import BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult
+from result_class_def import BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, TimerAndCreatureItemResult
 from mach_class_def import InvisMach, ViewOnlyMach, Warning, Timer
 from creature_class_def import Creature
 from gs_class_def import GameState
@@ -77,6 +77,7 @@ red_button = ButtonSwitch('red_button', 'Red Button', 'button', 'red_button', No
 blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset') # test obj
 
 test_timer = Timer('test_timer', 'auto_act', False, 0, 3, 'variable', False, blue_button) # test obj
+hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, 'royal_hedgehog')
 
 
 hand_no_weap_cond = NotInHandCond('hand_no_weap_cond', [shiny_sword, grimy_axe])
@@ -101,7 +102,10 @@ toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_por
 portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', False)
 antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks_result', 'goblin_placeholder', True)
 blue_button_result = StartTimerResult('blue_button_result', test_timer, False) # test obj
+start_hedgehog_timer_results = TimerAndCreatureItemResult('start_hedgehog_timer_results', hedgehog_eats_timer, False, 'royal_hedgehog', stale_biscuits)
+pass_result = BufferOnlyResult('pass_result', False)
 
+# name, timer_obj, cmd_override, creature_obj, ceature_item_obj
 
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
 
@@ -121,6 +125,10 @@ control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control
 				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result])
 				# machine_state == lever_array_value
 
+hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None, [['give', 'stale_biscuits']],
+				None, [hedgehog_has_biscuit_cond, pass_thru_cond], [start_hedgehog_timer_results, pass_result])
+
+# name, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst
 
 big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None, # test obj
 				0, 'post_act_switch', blue_button, ['pushed'], [],
@@ -183,12 +191,14 @@ antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', N
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
 				[throne, crystal_box, iron_portcullis], {'south' : iron_portcullis}, [broach_dispenser_mach])
 
-hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, royal_hedgehog)
+# hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, royal_hedgehog)
 
 
 # *** 'object not defined' re-assignment ***
 antechamber_goblin_attacks_result.creature_obj = goblin_guard
 hedgehog_has_biscuit_cond.creature_obj = royal_hedgehog
+hedgehog_eats_timer.alert_anchor = royal_hedgehog
+start_hedgehog_timer_results.creature_obj = royal_hedgehog
 
 
 ### active_gs is the central store of game info ###

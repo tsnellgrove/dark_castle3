@@ -53,10 +53,10 @@ Version 3.64 Goals
 			- DONE: eliminate PassThruResult / update BufferOnlyResult to inherit from 'object' or Invisible
 			- DONE: update BufferOnlyResult to use 'try... except...' buffer approach used in Timer & Warning
 			- DONE: clean up commented code (lots of it!)
-		- TBD: instantiate start_hedgehog_timer_results in mk_def_pkl()
-		- TBD: add TimerAndCreatureItemResult to mk_def_pkl() imports and use creature object re-assignment work-around
-		- TBD: run mk_def_pkl()
-	- TBD: create machine for hedgehog_eats_mach (will be a post_action() mach)
+		- DONE: instantiate start_hedgehog_timer_results in mk_def_pkl()
+		- DONE: add TimerAndCreatureItemResult to mk_def_pkl() imports and use creature object re-assignment work-around
+		- DONE: run mk_def_pkl()
+	- DONE: create machine for hedgehog_eats_mach (will be a post_action() mach; class = InvisMach)
 	- TBD: test!
 - TBD: create hedgehog_guards_mach (if timer not active, guards sword)
 - TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)

@@ -156,7 +156,7 @@ class StartTimerResult(BufferOnlyResult):
 				return mach_state, self.cmd_override
 
 class TimerAndCreatureItemResult(StartTimerResult):
-		def __init__(self, name, timer_obj, cmd_override, creature_obj, ceature_item_obj):		
+		def __init__(self, name, timer_obj, cmd_override, creature_obj, ceature_item_obj):
 				super().__init__(name, timer_obj, cmd_override)
 				self._ceature_item_obj = ceature_item_obj
 
