@@ -158,11 +158,16 @@ class StartTimerResult(BufferOnlyResult):
 class TimerAndCreatureItemResult(StartTimerResult):
 		def __init__(self, name, timer_obj, cmd_override, creature_obj, ceature_item_obj):
 				super().__init__(name, timer_obj, cmd_override)
+				self._creature_obj = creature_obj
 				self._ceature_item_obj = ceature_item_obj
 
 		@property
-		def ceature_obj(self):
-				return self._ceature_obj
+		def creature_obj(self):
+				return self._creature_obj
+
+		@creature_obj.setter
+		def creature_obj(self, new_val):
+				self._creature_obj = new_val
 
 		@property
 		def ceature_item_obj(self):
@@ -174,5 +179,5 @@ class TimerAndCreatureItemResult(StartTimerResult):
 				except:
 						pass
 				self.timer_obj.start()
-				self.ceature_obj.creature_item_list.remove(creature_item_obj)
+				self.creature_obj.creature_item_list.remove(creature_item_obj)
 				return mach_state, self.cmd_override

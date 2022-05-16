@@ -166,6 +166,7 @@ TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_crea
 - 'try... except' standard descriptions for examine() method (similar to Warnings)
 - review how creatures vs. items appear in DCv2 - mimic?
 - 'g' as abbreviation for 'again' ?
+- for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
 
 
 *** NEW PUZZLE IDEAS ***

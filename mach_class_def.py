@@ -59,7 +59,7 @@ class MachineMixIn(object):
 						trig_key_lst = [word_lst[1], word_lst[0].name]
 				elif  case == 'tru_1word':
 						trig_key_lst = word_lst
-				elif  case == 'put':
+				elif  case == 'prep':
 						trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
 				elif case == 'switch':
 						trig_key_lst = word_lst[0]
