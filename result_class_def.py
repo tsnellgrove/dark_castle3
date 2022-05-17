@@ -179,5 +179,5 @@ class TimerAndCreatureItemResult(StartTimerResult):
 				except:
 						pass
 				self.timer_obj.start()
-				self.creature_obj.creature_item_list.remove(creature_item_obj)
+				self.creature_obj.creature_items_lst.remove(self.ceature_item_obj)
 				return mach_state, self.cmd_override
