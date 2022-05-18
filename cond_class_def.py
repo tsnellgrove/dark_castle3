@@ -138,4 +138,16 @@ class RoomCond(PassThruCond):
 				room_obj = active_gs.get_room()
 				room_name = room_obj.name
 				return room_name == self.match_room_name
-	
+
+class TimerActiveCondition(PassThruCond):
+		def __init__(self, name, timer_obj):
+				super().__init__(name)
+				self._timer_obj = timer_obj
+
+		@property
+		def timer_obj(self):
+				return self._timer_obj
+
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+				return self.timer_obj.active
+
