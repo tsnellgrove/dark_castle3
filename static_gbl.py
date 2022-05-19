@@ -165,6 +165,8 @@ descript_dict = {
 		
 		'portcullis_doesnt_open_result' : "You press the button and hear a whirring of gears but nothing happens.",
 
+
+
 		### creatures ###
 		'guard_goblin' : "The Guard Goblin stands in the Alcove guarding the Control Panel and is armed and dangerous. It wields a Grimy Axe and looks at you with watchful malice. This goblin clearly takes its guard duties very seriously. It would not be wise to approach the Iron Portcullis or the Control Panel (or the Guard Goblin!) un-armed.",
 
@@ -194,6 +196,7 @@ descript_dict = {
 		'hedgehog_flees' : "You strike at the Royal Hedgehog and, with a terrified squeek, it flees from your unprovoked attack. You know in your heart that you will come to regret this unkingly deed.",
 		'attack_hedgehog_warning_1' : "You take a wild swipe at the Royal Hedgehog but it nimbly leaps aside. BURT! What has gotten into you?? We have an evil castle to conquer. Stop trying to slay defenseless woodland creatures!",
 		'attack_hedgehog_warning_2' : "Burt, I mean it - leave the poor little Hedgehog alone!",
+		'hedgehog_guard_result' : "The moment you approach the sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's teeth.",
 
 		### room objects ###
 		'entrance' : "*** Entrance ***\n\nYou are standing atop the drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south the way back home. To the east and west and below you is the Moat.",

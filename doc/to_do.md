@@ -59,16 +59,19 @@ Version 3.64 Goals
 	- DONE: create machine for hedgehog_eats_mach (will be a post_action() mach; class = InvisMach)
 		- DONE: add hedgehog_eats_mach to hedgehog
 		- DONE: test!
-- INPROC: create hedgehog_guards_mach (if timer not active, hedgehog guards sword)
-	- INPROC: Create Condition
-		- DONE: Create Condition class for hedgehog_eats_timer.active (TimerActiveCondition)
-		- TBD: instantiate hedgehog_eating_cond
-		- TBD: import TimerActiveCondition
-	- TBD: create Result
-		- TBD: instantiate hedgehog_eating_result (class = BufferOnlyResult)
+- DONE: create hedgehog_guard_mach (if timer not active, hedgehog guards sword)
+	- DONE: Create Condition
+		- DONE: Create Condition class for hedgehog_eats_timer.active (TimerNotActiveCond)
+		- DONE: instantiate hedgehog_guard_cond
+		- DONE: import TimerActiveCond, run mk_def_pkl()
+	- DONE: create Result
+		- DONE: instantiate hedgehog_guard_result (class = BufferOnlyResult)
 	- TBD: create Mach
+		- TBD: instantiate hedgehog_guard_mach (class = InvisMach)
+		- TBD: type = pre_act_cmd
+		- TBD: add hedgehog_guard_mach to royal_hedgehog
 	- TBD: testing
-		- TBD: print hedgehog_eats_timer.active state
+		- TBD: print hedgehog_eats_timer.active state (???)
 		- TBD: address case of "get sword" producing 'guard' Condition when Burt has already gotten the sword
 - TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
 - TBD: create hedgehog_done_eating_mach (update hedgehog description after eating based on presence of shiny_sword)
