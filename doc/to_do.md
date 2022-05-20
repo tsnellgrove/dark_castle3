@@ -66,15 +66,18 @@ Version 3.64 Goals
 		- DONE: import TimerActiveCond, run mk_def_pkl()
 	- DONE: create Result
 		- DONE: instantiate hedgehog_guard_result (class = BufferOnlyResult)
-	- TBD: create Mach
-		- TBD: instantiate hedgehog_guard_mach (class = InvisMach)
-		- TBD: type = pre_act_cmd
-		- TBD: add hedgehog_guard_mach to royal_hedgehog
-	- TBD: testing
-		- TBD: print hedgehog_eats_timer.active state (???)
-		- TBD: address case of "get sword" producing 'guard' Condition when Burt has already gotten the sword
+	- DONE: create Mach
+		- DONE: instantiate hedgehog_guard_mach (class = InvisMach)
+		- DONE: type = pre_act_cmd
+		- DONE: add hedgehog_guard_mach to royal_hedgehog
+	- INPROC: testing
+		- DONE: std condition testing
+		- INPROC: address case of "get sword" producing 'guard' Condition when Burt has already gotten the sword
+			- FINDING: this happens if Burt has the sword in the main_hall after the timer has expired
+			- TBD: update Condition to solve this 
 - TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
 - TBD: create hedgehog_done_eating_mach (update hedgehog description after eating based on presence of shiny_sword)
+- TBD: should the shiny_sword vanish after being given to the royal_hedgehog?
 
 
 ##########################

@@ -91,7 +91,7 @@ correct_lever_array_cond = LeverArrayCond('correct_lever_array_cond', [4,2,1])
 wrong_lever_array_cond = PassThruCond('pass_thru_cond')
 goblin_in_antechamber_cond = RoomCond('goblin_in_antechamber', 'antechamber')
 hedgehog_has_biscuit_cond = CreatureItemCond('hedgehog_has_biscuit_cond', 'royal_hedgehog', stale_biscuits)
-hedgehog_guard_cond = TimerNotActiveCond('hedgehog_eating_cond', hedgehog_eats_timer)
+hedgehog_guard_cond = TimerNotActiveCond('hedgehog_guard_cond', hedgehog_eats_timer)
 
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'death', True)
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
@@ -130,6 +130,9 @@ control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control
 hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None, [['give', 'stale_biscuits', 'royal_hedgehog']],
 				None, [hedgehog_has_biscuit_cond, pass_thru_cond], [start_hedgehog_timer_results, pass_result])
 
+hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None, [['take', 'shiny_sword']],
+				None, [hedgehog_guard_cond, pass_thru_cond], [hedgehog_guard_result, pass_result])
+
 # name, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst
 
 big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None, # test obj
@@ -166,7 +169,7 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 #		attack_creature_dict, attack_burt_dict, creature_items_lst, dead_creature_obj
 
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None, None,
-				[attack_hedgehog_warning, hedgehog_eats_mach],
+				[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach],
 				{
 						shiny_sword : 'show_hedgehog_shiny_sword',
 						stale_biscuits : 'show_hedgehog_stale_biscuits'

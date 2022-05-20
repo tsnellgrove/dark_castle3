@@ -194,9 +194,9 @@ descript_dict = {
 		'give_hedgehog_sword' : "The hedgehog beams at you with gratitude for returning the Shiny Sword. From a hidden fold of its fur it takes out a Silver Key and places it at your feet with a bow.",
 		'hedgehog_sword_returned' : "This hedgehog is on top of the world! It has recently devoured a meal of Stale Biscuits (a rare delicacy among hedgehogs) and now has it's favorite shiny object back. It looks upon you with gratitude and devotion. It sees within you a nobility, compassion, and destiny beyond anything you've hitherto imagined possessing.",
 		'hedgehog_flees' : "You strike at the Royal Hedgehog and, with a terrified squeek, it flees from your unprovoked attack. You know in your heart that you will come to regret this unkingly deed.",
-		'attack_hedgehog_warning_1' : "You take a wild swipe at the Royal Hedgehog but it nimbly leaps aside. BURT! What has gotten into you?? We have an evil castle to conquer. Stop trying to slay defenseless woodland creatures!",
+		'attack_hedgehog_warning_1' : "BURT! What has gotten into you?? We have an evil castle to conquer. Stop trying to slay defenseless woodland creatures!", # old text: "You take a wild swipe at the Royal Hedgehog but it nimbly leaps aside."
 		'attack_hedgehog_warning_2' : "Burt, I mean it - leave the poor little Hedgehog alone!",
-		'hedgehog_guard_result' : "The moment you approach the sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's teeth.",
+		'hedgehog_guard_result' : "The moment you approach the Shiny Sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's teeth.",
 
 		### room objects ###
 		'entrance' : "*** Entrance ***\n\nYou are standing atop the drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south the way back home. To the east and west and below you is the Moat.",
