@@ -151,3 +151,23 @@ class TimerNotActiveCond(PassThruCond):
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				return not self.timer_obj.active
 
+class NotTimerAndItemCond(PassThruCond):
+		def __init__(self, name, timer_obj, item_obj):
+				super().__init__(name)
+				self._timer_obj = timer_obj
+				self._item_obj = item_obj
+
+		@property
+		def timer_obj(self):
+				return self._timer_obj
+
+		@property
+		def item_obj(self):
+				return self._item_obj
+
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+				cond_state = False
+				if self.item_obj in active_gs.get_room().room_obj_lst:
+						cond_state = not self.timer_obj.active
+				return cond_state
+

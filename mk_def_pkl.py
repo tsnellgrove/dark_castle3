@@ -8,7 +8,7 @@
 import pickle
 from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
-from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond, RoomCond, CreatureItemCond, TimerNotActiveCond
+from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond, RoomCond, CreatureItemCond, TimerNotActiveCond, NotTimerAndItemCond
 from result_class_def import BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, TimerAndCreatureItemResult
 from mach_class_def import InvisMach, ViewOnlyMach, Warning, Timer
 from creature_class_def import Creature
@@ -91,7 +91,8 @@ correct_lever_array_cond = LeverArrayCond('correct_lever_array_cond', [4,2,1])
 wrong_lever_array_cond = PassThruCond('pass_thru_cond')
 goblin_in_antechamber_cond = RoomCond('goblin_in_antechamber', 'antechamber')
 hedgehog_has_biscuit_cond = CreatureItemCond('hedgehog_has_biscuit_cond', 'royal_hedgehog', stale_biscuits)
-hedgehog_guard_cond = TimerNotActiveCond('hedgehog_guard_cond', hedgehog_eats_timer)
+#hedgehog_guard_cond = TimerNotActiveCond('hedgehog_guard_cond', hedgehog_eats_timer)
+hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_timer, shiny_sword)
 
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'death', True)
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)

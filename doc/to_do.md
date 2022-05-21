@@ -74,7 +74,8 @@ Version 3.64 Goals
 		- DONE: std condition testing
 		- INPROC: address case of "get sword" producing 'guard' Condition when Burt has already gotten the sword
 			- FINDING: this happens if Burt has the sword in the main_hall after the timer has expired
-			- TBD: update Condition to solve this 
+			- DONE: update Condition to solve this
+			- TBD: remove TimerNotActiveCond
 - TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
 - TBD: create hedgehog_done_eating_mach (update hedgehog description after eating based on presence of shiny_sword)
 - TBD: should the shiny_sword vanish after being given to the royal_hedgehog?
