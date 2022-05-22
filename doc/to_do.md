@@ -35,7 +35,7 @@ Version 3.64 Goals
 	- DONE: add hedgehog_eats_timer to mk_def_timer() universal_mach_lst
 	- DONE: add timer text descriptions to static_gbl()
 	- DONE: run mk_def_pkl()
-- INPROC: create hedgehog_eats_mach (starts timer if give or drop)
+- DONE: create hedgehog_eats_mach (starts timer if give or drop)
 	- DONE: decide whether I will support 'drop biscuits' (leaning towards 'no')
 		- DECISION: 'drop biscuits' will NOT trigger hedgehog_eats_mach
 	- DONE: create Condition for hedgehog_eats_mach 
@@ -70,15 +70,18 @@ Version 3.64 Goals
 		- DONE: instantiate hedgehog_guard_mach (class = InvisMach)
 		- DONE: type = pre_act_cmd
 		- DONE: add hedgehog_guard_mach to royal_hedgehog
-	- INPROC: testing
+	- DONE: testing
 		- DONE: std condition testing
-		- INPROC: address case of "get sword" producing 'guard' Condition when Burt has already gotten the sword
+		- DONE: address case of "get sword" producing 'guard' Condition when Burt has already gotten the sword
 			- FINDING: this happens if Burt has the sword in the main_hall after the timer has expired
 			- DONE: update Condition to solve this
-			- TBD: remove TimerNotActiveCond
-- TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
+			- DONE: remove TimerNotActiveCond
 - TBD: create hedgehog_done_eating_mach (update hedgehog description after eating based on presence of shiny_sword)
+	- IDEA: need to enable Timer ending to trigger a Machine
+- TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
+	- IDEA: to enable match on 'show' or 'give' <any>, creatre wildcard ('*') functionality within trig_check() method
 - TBD: should the shiny_sword vanish after being given to the royal_hedgehog?
+	- IDEA: sure - but maybe in the end scene, the hedgehog places it before Burt's feet and kneels?
 
 
 ##########################

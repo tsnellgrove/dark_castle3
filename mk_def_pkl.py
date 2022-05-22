@@ -9,7 +9,6 @@ import pickle
 from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond, RoomCond, CreatureItemCond, NotTimerAndItemCond
-# CreatureItemCond, TimerNotActiveCond, NotTimerAndItemCond
 from result_class_def import BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, TimerAndCreatureItemResult
 from mach_class_def import InvisMach, ViewOnlyMach, Warning, Timer
 from creature_class_def import Creature

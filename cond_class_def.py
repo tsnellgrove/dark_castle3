@@ -139,18 +139,6 @@ class RoomCond(PassThruCond):
 				room_name = room_obj.name
 				return room_name == self.match_room_name
 
-#class TimerNotActiveCond(PassThruCond):
-#		def __init__(self, name, timer_obj):
-#				super().__init__(name)
-#				self._timer_obj = timer_obj
-
-#		@property
-#		def timer_obj(self):
-#				return self._timer_obj
-
-#		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-#				return not self.timer_obj.active
-
 class NotTimerAndItemCond(PassThruCond):
 		def __init__(self, name, timer_obj, item_obj):
 				super().__init__(name)
