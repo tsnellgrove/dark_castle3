@@ -78,6 +78,8 @@ Version 3.64 Goals
 			- DONE: remove TimerNotActiveCond
 - TBD: create hedgehog_done_eating_mach (update hedgehog description after eating based on presence of shiny_sword)
 	- IDEA: need to enable Timer ending to trigger a Machine
+	- IDEA: in post_action() create timer case
+	- IDEA: trig_check() method (which is in mach_class_def() module), check for 'timer' case
 - TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
 	- IDEA: to enable match on 'show' or 'give' <any>, creatre wildcard ('*') functionality within trig_check() method
 - TBD: should the shiny_sword vanish after being given to the royal_hedgehog?
