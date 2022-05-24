@@ -26,6 +26,15 @@ def pre_action(active_gs, case, word_lst):
 				elif obj.trigger_type == 'pre_act_auto_switch_reset':
 						if obj.switch_state != obj.def_switch_state:
 								obj.switch_state = obj.def_switch_state
+
+				elif obj.trigger_type == 'pre_act_timer':
+						trig_case = 'timer'
+						trig_switch_state_lst = [obj.trig_switch.timer_done]
+##						trig_switch_state_lst = []    # retain in case switch_state becomes multi-value in the future
+##						trig_switch_state_lst.append(obj.trig_switch.switch_state)
+						if obj.trig_check(active_gs, trig_case, trig_switch_state_lst):
+								local_override = obj.run_mach(active_gs)
+
 		return cmd_override
 
 

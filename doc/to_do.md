@@ -76,10 +76,18 @@ Version 3.64 Goals
 			- FINDING: this happens if Burt has the sword in the main_hall after the timer has expired
 			- DONE: update Condition to solve this
 			- DONE: remove TimerNotActiveCond
-- TBD: create hedgehog_done_eating_mach (update hedgehog description after eating based on presence of shiny_sword)
+- INPROC: create hedgehog_done_eating_mach (update hedgehog description after eating based on presence of shiny_sword)
 	- IDEA: need to enable Timer ending to trigger a Machine
-	- IDEA: in post_action() create timer case
+	- IDEA: in pre_action() create timer case
 	- IDEA: trig_check() method (which is in mach_class_def() module), check for 'timer' case
+	- IDEA: use mach_state in Condition to only implement timer_done based Result once
+	- DONE: update pre_action() to include timer case for Machine type == 'pre_act_timer'
+	- DONE: in mach_class_def() update trig_check() method to include case == 'timer'
+	- DONE: instantiate hedgehog_desc_update_cond of class StateCond
+	- TBD: create ChangeDescResult class
+		- Update hedgehod descript based on presence of shiny_sword
+		- Toggle Machine state to True
+	- TBD: create hedgehog_done_eating_mach() of class InvisMach
 - TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
 	- IDEA: to enable match on 'show' or 'give' <any>, creatre wildcard ('*') functionality within trig_check() method
 - TBD: should the shiny_sword vanish after being given to the royal_hedgehog?
