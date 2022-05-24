@@ -114,6 +114,8 @@ Version 3.68 Goals
 - TBD: documentation:
 	- TBD: updeate creature doc
 		- discuss creature state
+	- TBD: update timer doc with trigger changes from 3.64
+	- TBD: update mach doc with wildcaard cahnges from 3.64
 	- TBD: update class diagram
 	- TBD: update module diagram
 	- TBD: create machine diagram
