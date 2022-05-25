@@ -200,6 +200,15 @@ TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_crea
 - review how creatures vs. items appear in DCv2 - mimic?
 - 'g' as abbreviation for 'again' ?
 - for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
+- Machine 2.0 improvement ideas:
+	- Have simple, single-test / single-action 'Primative' Conditions and Results: prim_cond and prim_result
+	- Composed Conditions & Results: comp_cond / comp_result == AND / OR of multiple primatives
+	- All results capable of Buffering (rename Result classes appropriately)
+	- if no conditions == True then default Result = nothing happens (no need for pass_result)
+	- Establish switch triggers such that timer as trigger is more natural
+	- Generalize in-hand vs. not-in-hand Condition (single primative)
+	- Generalize creature-has-item vs. creature-does-not-have-item Conditions (single primative)
+	- Establish clearer nomenclature for temp variables that will be fully assigned at end (e.g. 'royal_hedgehog-*temp*')
 
 
 *** NEW PUZZLE IDEAS ***
