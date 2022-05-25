@@ -85,6 +85,7 @@ Version 3.64 Goals
 	- DONE: in mach_class_def() update trig_check() method to include case == 'timer'
 	- DONE: instantiate hedgehog_desc_update_cond of class StateCond
 	- INPROC: create ChgDescAndStateResult class
+		- IDEA: **** HANG ON - MAYBE 2 DIFFERENT DESCRIPTIONS SHOULD BE 2 DIFFERENT RESULTS??? ****
 		- TBD: Update hedgehod descript based on presence of shiny_sword
 		- TBD: Toggle Machine state to True
 	- TBD: create hedgehog_done_eating_mach() of class InvisMach
