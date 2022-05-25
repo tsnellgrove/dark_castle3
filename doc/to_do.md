@@ -84,9 +84,9 @@ Version 3.64 Goals
 	- DONE: update pre_action() to include timer case for Machine type == 'pre_act_timer'
 	- DONE: in mach_class_def() update trig_check() method to include case == 'timer'
 	- DONE: instantiate hedgehog_desc_update_cond of class StateCond
-	- TBD: create ChangeDescResult class
-		- Update hedgehod descript based on presence of shiny_sword
-		- Toggle Machine state to True
+	- INPROC: create ChgDescAndStateResult class
+		- TBD: Update hedgehod descript based on presence of shiny_sword
+		- TBD: Toggle Machine state to True
 	- TBD: create hedgehog_done_eating_mach() of class InvisMach
 - TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
 	- IDEA: to enable match on 'show' or 'give' <any>, creatre wildcard ('*') functionality within trig_check() method

@@ -181,3 +181,29 @@ class TimerAndCreatureItemResult(StartTimerResult):
 				self.timer_obj.start()
 				self.creature_obj.creature_items_lst.remove(self.ceature_item_obj)
 				return mach_state, self.cmd_override
+
+class ChgDescAndStateResult(BufferOnlyResult):
+		def __init__(self, name, timer_obj, cmd_override, creature_obj, mach_obj, item_obj):
+				super().__init__(name, timer_obj, cmd_override)
+
+		@property
+		def creature_obj(self):
+				return self._creature_obj
+
+		@creature_obj.setter
+		def creature_obj(self, new_val):
+				self._creature_obj = new_val
+
+		@property
+		def mach_obj(self):
+				return self._mach_obj
+
+		@creature_obj.setter
+		def mach_obj(self, new_val):
+				self._mach_obj = new_val
+
+		@property
+		def item_obj(self):
+				return self._item_obj
+
+
