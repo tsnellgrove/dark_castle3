@@ -209,6 +209,7 @@ TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_crea
 	- Generalize in-hand vs. not-in-hand Condition (single primative)
 	- Generalize creature-has-item vs. creature-does-not-have-item Conditions (single primative)
 	- Establish clearer nomenclature for temp variables that will be fully assigned at end (e.g. 'royal_hedgehog-*temp*')
+- Do a refactoring code review (look into the 'any' command in place of for loops)
 
 
 *** NEW PUZZLE IDEAS ***
