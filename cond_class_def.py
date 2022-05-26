@@ -159,3 +159,30 @@ class NotTimerAndItemCond(PassThruCond):
 						cond_state = not self.timer_obj.active
 				return cond_state
 
+class StateItemInRoomCond(PassThruCond):
+		def __init__(self, name, state_match, item_obj, item_in_room_match):
+				super().__init__(name)
+				self._state_match = state_match # boolean test for passed in boolean value
+				self._item_obj = item_obj
+				self._item_in_room_match = item_in_room_match
+
+		@property
+		def state_match(self):
+				return self._state_match
+
+		@property
+		def item_obj(self):
+				return self._item_obj
+
+		@property
+		def item_in_room_match(self):
+				return self._item_in_room_match
+
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+				room_obj = active_gs.get_room()
+				item_in_room = self.item_obj in room_obj.room_obj_lst
+				return (
+						mach_state == self.state_match 
+						and item_in_room == self.item_in_room_match
+						)
+

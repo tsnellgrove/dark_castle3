@@ -77,15 +77,22 @@ Version 3.64 Goals
 			- DONE: update Condition to solve this
 			- DONE: remove TimerNotActiveCond
 - INPROC: create hedgehog_done_eating_mach (update hedgehog description after eating based on presence of shiny_sword)
-	- IDEA: need to enable Timer ending to trigger a Machine
-	- IDEA: in pre_action() create timer case
-	- IDEA: trig_check() method (which is in mach_class_def() module), check for 'timer' case
-	- IDEA: use mach_state in Condition to only implement timer_done based Result once
-	- DONE: update pre_action() to include timer case for Machine type == 'pre_act_timer'
-	- DONE: in mach_class_def() update trig_check() method to include case == 'timer'
-	- DONE: instantiate hedgehog_desc_update_cond of class StateCond
-	- INPROC: create ChgDescAndStateResult class
+	- DONE: Timer as Trigger
+		- IDEA: need to enable Timer ending to trigger a Machine
+		- IDEA: in pre_action() create timer case
+		- IDEA: trig_check() method (which is in mach_class_def() module), check for 'timer' case
+		- IDEA: use mach_state in Condition to only implement timer_done based Result once
+		- DONE: update pre_action() to include timer case for Machine type == 'pre_act_timer'
+		- DONE: in mach_class_def() update trig_check() method to include case == 'timer'
+	- DONE: Conditions
+		- CANCEL: instantiate hedgehog_desc_update_cond of class StateCond
 		- IDEA: **** HANG ON - MAYBE 2 DIFFERENT DESCRIPTIONS SHOULD BE 2 DIFFERENT RESULTS??? ****
+		- DONE: create StateItemInRoomCond class
+		- DONE: instantiate hedgehog_keeps_sword_cond
+		- DONE: instantiate hedgehog_loses_sword_cond
+		- DONE: run mk_def_pkl()
+	- INPROC: Results
+		- TBD: create ChgDescAndStateResult class
 		- TBD: Update hedgehod descript based on presence of shiny_sword
 		- TBD: Toggle Machine state to True
 	- TBD: create hedgehog_done_eating_mach() of class InvisMach
