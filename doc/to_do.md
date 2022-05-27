@@ -92,9 +92,12 @@ Version 3.64 Goals
 		- DONE: instantiate hedgehog_loses_sword_cond
 		- DONE: run mk_def_pkl()
 	- INPROC: Results
-		- TBD: create ChgDescAndStateResult class
-		- TBD: Update hedgehod descript based on presence of shiny_sword
-		- TBD: Toggle Machine state to True
+		- DONE: create ChgCreatureDescResult class
+		- DONE: Update hedgehod descript based on shiny_sword condition
+		- DONE: Toggle Machine state to True (so that description is only changed once)
+		- DONE: instantiate fed_hedgehog_loses_sword_result and fed_hedgehog_keeps_sword_result
+		- DONE: run mk_def_pkl()
+		- TBD: create description entries for all (4) keys
 	- TBD: create hedgehog_done_eating_mach() of class InvisMach
 - TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
 	- IDEA: to enable match on 'show' or 'give' <any>, creatre wildcard ('*') functionality within trig_check() method

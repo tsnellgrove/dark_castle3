@@ -9,7 +9,7 @@ import pickle
 from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond, RoomCond, CreatureItemCond, NotTimerAndItemCond, StateItemInRoomCond
-from result_class_def import BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, TimerAndCreatureItemResult
+from result_class_def import BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, TimerAndCreatureItemResult, ChgCreatureDescResult
 from mach_class_def import InvisMach, ViewOnlyMach, Warning, Timer
 from creature_class_def import Creature
 from gs_class_def import GameState
@@ -108,6 +108,8 @@ blue_button_result = StartTimerResult('blue_button_result', test_timer, False) #
 start_hedgehog_timer_results = TimerAndCreatureItemResult('start_hedgehog_timer_results', hedgehog_eats_timer, False, 'royal_hedgehog', stale_biscuits)
 pass_result = BufferOnlyResult('pass_result', False)
 hedgehog_guard_result = BufferOnlyResult('hedgehog_guard_result', True)
+fed_hedgehog_keeps_sword_result = ChgCreatureDescResult('fed_hedgehog_keeps_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_smug')
+fed_hedgehog_loses_sword_result = ChgCreatureDescResult('fed_hedgehog_loses_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_yearn')
 
 # name, timer_obj, cmd_override, creature_obj, ceature_item_obj
 
@@ -207,7 +209,8 @@ antechamber_goblin_attacks_result.creature_obj = goblin_guard
 hedgehog_has_biscuit_cond.creature_obj = royal_hedgehog
 hedgehog_eats_timer.alert_anchor = royal_hedgehog
 start_hedgehog_timer_results.creature_obj = royal_hedgehog
-
+fed_hedgehog_keeps_sword_result.creature_obj = royal_hedgehog
+fed_hedgehog_loses_sword_result.creature_obj = royal_hedgehog
 
 ### active_gs is the central store of game info ###
 active_gs = GameState(
