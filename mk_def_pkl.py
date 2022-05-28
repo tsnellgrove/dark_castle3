@@ -143,10 +143,15 @@ big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None, # test
 				0, 'post_act_switch', blue_button, ['pushed'], [],
 				[pass_thru_cond], [blue_button_result])
 
+hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', 0, 'pre_act_timer', hedgehog_eats_timer, [True], None,
+				[hedgehog_keeps_sword_cond, hedgehog_loses_sword_cond, pass_thru_cond],
+				[fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result, pass_result]) # machine_state == post-eating description updated?
 
 goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,
 				[['examine', 'iron_portcullis'], ['examine', 'control_panel'], ['examine', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north']],
 				None, [goblin_in_antechamber_cond, pass_thru_cond], [antechamber_goblin_attacks_result, nothing_happens_result])
+
+
 
 goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, [goblin_attack_mach],
 				{

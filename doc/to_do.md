@@ -99,8 +99,9 @@ Version 3.64 Goals
 		- DONE: run mk_def_pkl()
 		- DONE: create description entries for all (4) keys
 		- DONE: maybe update desc name to indicate Result State change?
-	- TBD: Machine
-		- TBD: create hedgehog_done_eating_mach() of class InvisMach
+	- INPROC: Machine
+		- DONE: create hedgehog_done_eating_mach() of class InvisMach
+		- INPROC: testing!
 - TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
 	- IDEA: to enable match on 'show' or 'give' <any>, creatre wildcard ('*') functionality within trig_check() method
 - TBD: should the shiny_sword vanish after being given to the royal_hedgehog?
@@ -134,6 +135,23 @@ Version 3.68 Goals
 	- TBD: create machine diagram
 		- hedgehog => state machine idea
 	- TBD: create creature diagram
+
+##########################
+### VERSION 3.7x START ###
+##########################
+
+Version 3.7x Goals
+- Refactor code
+- Introduce non-functional requirement code (e.g. saves and obj clean-up)
+- Migrate to web
+
+
+##########################
+### VERSION 3.7x START ###
+##########################
+Version 3.8x Goals
+- New rooms and puzzles!!
+
 
 
 *** Timer Decisions ***
