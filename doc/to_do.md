@@ -76,7 +76,7 @@ Version 3.64 Goals
 			- FINDING: this happens if Burt has the sword in the main_hall after the timer has expired
 			- DONE: update Condition to solve this
 			- DONE: remove TimerNotActiveCond
-- INPROC: create hedgehog_done_eating_mach (update hedgehog description after eating based on presence of shiny_sword)
+- DONE: create hedgehog_done_eating_mach (update hedgehog description after eating based on presence of shiny_sword)
 	- DONE: Timer as Trigger
 		- IDEA: need to enable Timer ending to trigger a Machine
 		- IDEA: in pre_action() create timer case
@@ -91,15 +91,16 @@ Version 3.64 Goals
 		- DONE: instantiate hedgehog_keeps_sword_cond
 		- DONE: instantiate hedgehog_loses_sword_cond
 		- DONE: run mk_def_pkl()
-	- INPROC: Results
+	- DONE: Results
 		- DONE: create ChgCreatureDescResult class
 		- DONE: Update hedgehod descript based on shiny_sword condition
 		- DONE: Toggle Machine state to True (so that description is only changed once)
 		- DONE: instantiate fed_hedgehog_loses_sword_result and fed_hedgehog_keeps_sword_result
 		- DONE: run mk_def_pkl()
-		- TBD: create description entries for all (4) keys
-		- TBD: maybe update desc name to indicate Mach State change?
-	- TBD: create hedgehog_done_eating_mach() of class InvisMach
+		- DONE: create description entries for all (4) keys
+		- DONE: maybe update desc name to indicate Result State change?
+	- TBD: Machine
+		- TBD: create hedgehog_done_eating_mach() of class InvisMach
 - TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
 	- IDEA: to enable match on 'show' or 'give' <any>, creatre wildcard ('*') functionality within trig_check() method
 - TBD: should the shiny_sword vanish after being given to the royal_hedgehog?

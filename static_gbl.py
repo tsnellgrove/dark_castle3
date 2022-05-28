@@ -197,6 +197,11 @@ descript_dict = {
 		'attack_hedgehog_warning_1' : "BURT! What has gotten into you?? We have an evil castle to conquer. Stop trying to slay defenseless woodland creatures!", # old text: "You take a wild swipe at the Royal Hedgehog but it nimbly leaps aside."
 		'attack_hedgehog_warning_2' : "Burt, I mean it - leave the poor little Hedgehog alone!",
 		'hedgehog_guard_result' : "The moment you approach the Shiny Sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's teeth.",
+		'fed_hedgehog_keeps_sword_result' : "The Royal Hedgehog is looking svelte and chipper. It has the swagger of a hedgehog that has just scored a meal of Stale Biscuits and still has it's favorite shiny possession.",
+		'fed_hedgehog_loses_sword_result' : "The Royal Hedgehog is looking svelte and chipper but not entirely content. It's clearly grateful for its recent meal but keeps looking at you hopefully.",
+		'hedgehog_desc_smug' : "The Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.",
+		'hedgehog_desc_yearn' : "The Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.",
+
 
 		### room objects ###
 		'entrance' : "*** Entrance ***\n\nYou are standing atop the drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south the way back home. To the east and west and below you is the Moat.",
