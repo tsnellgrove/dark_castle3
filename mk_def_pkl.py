@@ -178,7 +178,7 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 #		attack_creature_dict, attack_burt_dict, creature_items_lst, dead_creature_obj
 
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None, None,
-				[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach],
+				[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_done_eating_mach],
 				{
 						shiny_sword : 'show_hedgehog_shiny_sword',
 						stale_biscuits : 'show_hedgehog_stale_biscuits'

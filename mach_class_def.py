@@ -63,6 +63,8 @@ class MachineMixIn(object):
 						trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
 				elif case == 'switch':
 						trig_key_lst = word_lst[0]
+				elif  case == 'timer':
+						trig_key_lst = word_lst[0]
 				return trig_key_lst in self.trig_vals_lst
 
 		def run_mach(self, active_gs):
@@ -249,6 +251,9 @@ class Timer(Invisible):
 						self.active = False
 						self.timer_count = 0
 						self.timer_done = True
+
+##				print(self.name, self.timer_count, self.timer_max, self.active, self.timer_done) # for timer troubleshooting
+
 				return cmd_override
 
 		def start(self):

@@ -137,10 +137,10 @@ descript_dict = {
 		'blue_button' : "The Blue Button seems to dare you to push it.",
 		'blue_button_result' : "Uh-oh Burt... not sure you should have pushed that...",
 
-		'hedgehog_eats_timer_1' : "The Royal Hedgehog is ravenously devouring the stale_biscuits and is taking no notice of you at all.",
-		'hedgehog_eats_timer_2' : "The Royal Hedgehog has eaten through half the stale_biscuits but is still giving them all of its attention.",
-		'hedgehog_eats_timer_3' : "The Royal Hedgehog is nearly done eating all of the stale_biscuits and is beginning to look around a bit.",
-		'hedgehog_eats_timer_4' : "The Royal Hedgehog has finished the stale_biscuits and is vigilantly looking around.",
+		'hedgehog_eats_timer_1' : "The Royal Hedgehog is ravenously devouring the Stale Biscuits and is taking no notice of you at all.",
+		'hedgehog_eats_timer_2' : "The Royal Hedgehog has eaten through half the Stale Biscuits but is still giving them all of its attention.",
+		'hedgehog_eats_timer_3' : "The Royal Hedgehog is nearly done eating all of the Stale Biscuits and is beginning to look around a bit.",
+		'hedgehog_eats_timer_4' : "The Royal Hedgehog has finished the Stale Biscuits and is vigilantly looking around.",
 
 		### machine objects ###
 		'control_panel' : "The Control Panel contains three levers: a Left Lever, a Middle Lever, and a Right Lever. The control panel also contains a Red Button. There are no directions posted as to what the controls are for or how to use them (a clear ISO lapse if ever you've seen one Burt).",
@@ -197,10 +197,10 @@ descript_dict = {
 		'attack_hedgehog_warning_1' : "BURT! What has gotten into you?? We have an evil castle to conquer. Stop trying to slay defenseless woodland creatures!", # old text: "You take a wild swipe at the Royal Hedgehog but it nimbly leaps aside."
 		'attack_hedgehog_warning_2' : "Burt, I mean it - leave the poor little Hedgehog alone!",
 		'hedgehog_guard_result' : "The moment you approach the Shiny Sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's teeth.",
-		'fed_hedgehog_keeps_sword_result' : "The Royal Hedgehog is looking svelte and chipper. It has the swagger of a hedgehog that has just scored a meal of Stale Biscuits and still has it's favorite shiny possession.",
-		'fed_hedgehog_loses_sword_result' : "The Royal Hedgehog is looking svelte and chipper but not entirely content. It's clearly grateful for its recent meal but keeps looking at you hopefully.",
-		'hedgehog_desc_smug' : "The Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.",
-		'hedgehog_desc_yearn' : "The Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.",
+		'fed_hedgehog_keeps_sword_result' : "The Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.",
+		'fed_hedgehog_loses_sword_result' : "The Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.",
+		'hedgehog_desc_smug' : "The Royal Hedgehog is looking svelte and chipper. It has the swagger of a hedgehog that has just scored a meal of Stale Biscuits and still has it's favorite shiny possession.",
+		'hedgehog_desc_yearn' : "The Royal Hedgehog is looking svelte and chipper but not entirely content. It's clearly grateful for its recent meal but keeps looking at you hopefully.",
 
 
 		### room objects ###

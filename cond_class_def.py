@@ -64,16 +64,16 @@ class CreatureItemCond(PassThruCond):
 
 
 class StateCond(PassThruCond):
-		def __init__(self, name, match_state_cond):
+		def __init__(self, name, mach_state_cond):
 				super().__init__(name)
-				self._match_state_cond = match_state_cond # boolean test for passed in boolean value
+				self._mach_state_cond = mach_state_cond # boolean test for passed in boolean value
 
 		@property
-		def match_state_cond(self):
-				return self._match_state_cond
+		def mach_state_cond(self):
+				return self._mach_state_cond
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-				return mach_state == self.match_state_cond
+				return mach_state == self.mach_state_cond
 
 class InHandAndStateCond(StateCond):
 		def __init__(self, name, in_hand_lst, mach_state_cond):

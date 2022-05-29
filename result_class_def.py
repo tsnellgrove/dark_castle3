@@ -185,6 +185,8 @@ class TimerAndCreatureItemResult(StartTimerResult):
 class ChgCreatureDescAndStateResult(BufferOnlyResult):
 		def __init__(self, name, cmd_override, creature_obj, new_desc_key):
 				super().__init__(name, cmd_override)
+				self._creature_obj = creature_obj
+				self._new_desc_key = new_desc_key
 
 		@property
 		def creature_obj(self):
@@ -200,7 +202,7 @@ class ChgCreatureDescAndStateResult(BufferOnlyResult):
 
 		def result_exe(self, active_gs, mach_state):
 				try:
-						active_gs.buffer("The " + self.creature_obj.name + " " + descript_dict[self.name])
+						active_gs.buffer(descript_dict[self.name])
 				except:
 						pass
 				self.creature_obj.descript_key = self.new_desc_key

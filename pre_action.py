@@ -10,6 +10,8 @@ def pre_action(active_gs, case, word_lst):
 		cmd_override = False
 		mach_obj_lst = active_gs.mach_obj_lst()
 		for obj in mach_obj_lst:
+##				print(obj) # for mach troubleshooting
+
 				if obj.trigger_type == 'pre_act_cmd':
 						if obj.trig_check(active_gs, case, word_lst):
 								local_override = obj.run_mach(active_gs)

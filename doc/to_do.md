@@ -99,13 +99,12 @@ Version 3.64 Goals
 		- DONE: run mk_def_pkl()
 		- DONE: create description entries for all (4) keys
 		- DONE: maybe update desc name to indicate Result State change?
-	- INPROC: Machine
-		- DONE: create hedgehog_done_eating_mach() of class InvisMach
-		- INPROC: testing!
+	- DONE: Machine
+		- DONE: create hedgehog_done_eating_mach of class InvisMach
+		- DONE: assigne hedgehog_done_eating_mach to royal_hedgehog
+		- DONE: testing!
 - TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
-	- IDEA: to enable match on 'show' or 'give' <any>, creatre wildcard ('*') functionality within trig_check() method
-- TBD: should the shiny_sword vanish after being given to the royal_hedgehog?
-	- IDEA: sure - but maybe in the end scene, the hedgehog places it before Burt's feet and kneels?
+	- IDEA: to enable match on 'show' or 'give' <any>, creatUre wildcard ('*') functionality within trig_check() method
 
 
 ##########################
@@ -113,6 +112,9 @@ Version 3.64 Goals
 ##########################
 Version 3.66 Goals
 - Create conditions, results, and read_scroll machine
+
+- TBD: should the shiny_sword vanish after being given to the royal_hedgehog?
+	- IDEA: sure - but maybe in the end scene, the hedgehog places it before Burt's feet and kneels?
 
 
 ##########################
