@@ -144,6 +144,7 @@ Version 3.68 Goals
 
 Version 3.7x Goals
 - Refactor code
+- Unit Testing (link: https://youtu.be/6tNS--WetLI )
 - Introduce non-functional requirement code (e.g. saves and obj clean-up)
 - Migrate to web
 
