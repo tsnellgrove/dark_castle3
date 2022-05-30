@@ -186,3 +186,20 @@ class StateItemInRoomCond(PassThruCond):
 						and item_in_room == self.item_in_room_match
 						)
 
+class TimerActiveCond(PassThruCond):
+		def __init__(self, name, timer_obj, timer_active_bool):
+				super().__init__(name)
+				self._timer_obj = timer_obj
+				self._timer_active_bool = timer_active_bool
+
+		@property
+		def timer_obj(self):
+				return self._timer_obj
+
+		@property
+		def timer_active_bool(self):
+				return self._timer_active_bool
+
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+				cond_state = self.timer_obj.active == self.timer_active_bool
+				return cond_state

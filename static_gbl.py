@@ -201,7 +201,7 @@ descript_dict = {
 		'fed_hedgehog_loses_sword_result' : "The Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.",
 		'hedgehog_desc_smug' : "The Royal Hedgehog is looking svelte and chipper. It has the swagger of a hedgehog that has just scored a meal of Stale Biscuits and still has it's favorite shiny possession.",
 		'hedgehog_desc_yearn' : "The Royal Hedgehog is looking svelte and chipper but not entirely content. It's clearly grateful for its recent meal but keeps looking at you hopefully.",
-
+		'hedgehog_distracted_result' : "The Royal Hedgehog is too busy eating it's favorite meal of Stale Biscuits to notice what you are doing.",
 
 		### room objects ###
 		'entrance' : "*** Entrance ***\n\nYou are standing atop the drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south the way back home. To the east and west and below you is the Moat.",

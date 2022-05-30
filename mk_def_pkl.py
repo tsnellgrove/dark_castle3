@@ -8,8 +8,12 @@
 import pickle
 from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
-from cond_class_def import PassThruCond, NotInHandCond, StateCond, InHandAndStateCond, SwitchStateCond, LeverArrayCond, RoomCond, CreatureItemCond, NotTimerAndItemCond, StateItemInRoomCond
-from result_class_def import BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult, AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, TimerAndCreatureItemResult, ChgCreatureDescAndStateResult
+from cond_class_def import (PassThruCond, NotInHandCond, StateCond, InHandAndStateCond,
+				SwitchStateCond, LeverArrayCond, RoomCond, CreatureItemCond, NotTimerAndItemCond,
+				StateItemInRoomCond, TimerActiveCond)
+from result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
+				AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult,
+				TimerAndCreatureItemResult, ChgCreatureDescAndStateResult)
 from mach_class_def import InvisMach, ViewOnlyMach, Warning, Timer
 from creature_class_def import Creature
 from gs_class_def import GameState
@@ -94,6 +98,7 @@ hedgehog_has_biscuit_cond = CreatureItemCond('hedgehog_has_biscuit_cond', 'royal
 hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_timer, shiny_sword)
 hedgehog_keeps_sword_cond = StateItemInRoomCond('hedgehog_keeps_sword_cond', False, shiny_sword, True)
 hedgehog_loses_sword_cond = StateItemInRoomCond('hedgehog_loses_sword_cond', False, shiny_sword, False)
+hedgehog_distracted_cond = TimerActiveCond('hedgehog_timer_active_cond', hedgehog_eats_timer, True)
 
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'death', True)
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
@@ -110,6 +115,8 @@ pass_result = BufferOnlyResult('pass_result', False)
 hedgehog_guard_result = BufferOnlyResult('hedgehog_guard_result', True)
 fed_hedgehog_keeps_sword_result = ChgCreatureDescAndStateResult('fed_hedgehog_keeps_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_smug')
 fed_hedgehog_loses_sword_result = ChgCreatureDescAndStateResult('fed_hedgehog_loses_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_yearn')
+hedgehog_distracted_result = BufferOnlyResult('hedgehog_distracted_result', True)
+
 
 # name, timer_obj, cmd_override, creature_obj, ceature_item_obj
 
@@ -151,7 +158,9 @@ goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,
 				[['examine', 'iron_portcullis'], ['examine', 'control_panel'], ['examine', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north']],
 				None, [goblin_in_antechamber_cond, pass_thru_cond], [antechamber_goblin_attacks_result, nothing_happens_result])
 
-
+hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_cmd', None,
+				[['give', '*', 'royal_hedgehog'], ['show', '*', 'royal_hedgehog']], None, 
+				[hedgehog_distracted_cond, pass_thru_cond], [hedgehog_distracted_result, pass_result])
 
 goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, [goblin_attack_mach],
 				{
@@ -178,7 +187,7 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 #		attack_creature_dict, attack_burt_dict, creature_items_lst, dead_creature_obj
 
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None, None,
-				[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_done_eating_mach],
+				[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_done_eating_mach, hedgehog_distracted_mach],
 				{
 						shiny_sword : 'show_hedgehog_shiny_sword',
 						stale_biscuits : 'show_hedgehog_stale_biscuits'

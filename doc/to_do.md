@@ -107,10 +107,19 @@ Version 3.64 Goals
 	- IDEA: to enable match on 'show' or 'give' <any>, creature wildcard ('*') functionality within trig_check() method
 	- DONE: Update trig_check() method in Machine class to recognize '*' as a wildcard
 		- DONE: MachineMixIn trig_check() updated (NOTE: Warning trig_check() not yet updated!!)
-	- TBD: Conditions
-		- TBD: create TimerActiveCond class (include condition match)
-	- TBD: Results
-	- TBD: Machine
+	- DONE: Conditions
+		- DONE: create TimerActiveCond class (include condition match)
+		- DONE: import TimerActiveCond to mk_def_pkl()
+		- DONE: instantiate hedgehog_distracted_cond in mk_def_pkl()
+		- DONE: run mk_def_pkl()
+	- DONE: Results
+		- DONE: instantiate hedgehog_distracted_result of class BufferOnlyResult
+		- DONE: create description entry for 'hedgehog_distracted_result'
+	- INPROC: Machine
+		- DONE: instantiate hedgehog_distracted_mach
+		- DONE: add hedgehog_distracted_mach to royal_hedgehog
+		- DONE: run mk_def_pkl()
+		- TBD: testing! [not working]
 	- TBD: Update Warning class trig_check() to work with wildcards
 
 ##########################
@@ -128,11 +137,28 @@ Version 3.66 Goals
 ##########################
 
 Version 3.68 Goals
+- Clean up creature, machine, warning, and timer coding
 - Create / update program documentation
-- Clean up creature and warning and timer coding
 
-- TBD: coding clean-up
-	- TBD: TBD
+- TBD: Machine coding clean-up
+	- TBD: Machine 2.0 improvement ideas:
+		- Have simple, single-test / single-action 'Primative' Conditions and Results: prim_cond and prim_result
+		- Composed Conditions & Results: comp_cond / comp_result == AND / OR of multiple primatives
+		- All results capable of Buffering (rename Result classes appropriately)
+		- if no conditions == True then default Result = nothing happens (no need for pass_result)
+		- Establish switch triggers such that timer as trigger is more natural
+		- Generalize in-hand vs. not-in-hand Condition (single primative)
+		- Generalize creature-has-item vs. creature-does-not-have-item Conditions (single primative)
+		- Establish clearer nomenclature for temp variables that will be fully assigned at end (e.g. 'royal_hedgehog-*temp*')
+	- TBD: de-dup warning and timer classes
+		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?
+		- IDEA: this makes sense... in all other cases I inherit from simple parents to more complex children
+		- IDEA: WarnClass is simpler... so it should be the parent
+		- IDEA: Actually - how about a TrigDetectMixIn that is inherited by both WarnClass and MachineMixIn and only has trig_check method?
+		- IDEA: A MixIn of a MixIn seems over-complicated... 
+		- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
+		- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
+
 - TBD: documentation:
 	- TBD: updeate creature doc
 		- discuss creature state
@@ -210,21 +236,13 @@ TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") e
 TBD: no swearing in Dark Castle (with warning or else end of game)
 TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
 TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
-- introduce pre-built "warning" machine? use for 'go south', 'attack hedgehog', 'lift heavy rock', etc
+- DONE: introduce pre-built "warning" machine? use for 'go south', 'attack hedgehog', 'lift heavy rock', etc
 - does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
 - change hand from list to string
 - cursing => end of game (requires warning_mach and usniversal scope)
 - lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
 - game saves (requires file clean up?)
 - encumberance (post Burt as object?)
-	- DONE: de-dup warning and timer classes
-		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?
-		- IDEA: this makes sense... in all other cases I inherit from simple parents to more complex children
-		- IDEA: WarnClass is simpler... so it should be the parent
-		- IDEA: Actually - how about a TrigDetectMixIn that is inherited by both WarnClass and MachineMixIn and only has trig_check method?
-		- IDEA: A MixIn of a MixIn seems over-complicated... 
-		- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
-		- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
 - implement carying capacity / container cappacity; Also carry restriction passages, etc..
 - move doc to modules?
 - org modules in directories?
@@ -239,15 +257,6 @@ TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_crea
 - review how creatures vs. items appear in DCv2 - mimic?
 - 'g' as abbreviation for 'again' ?
 - for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
-- Machine 2.0 improvement ideas:
-	- Have simple, single-test / single-action 'Primative' Conditions and Results: prim_cond and prim_result
-	- Composed Conditions & Results: comp_cond / comp_result == AND / OR of multiple primatives
-	- All results capable of Buffering (rename Result classes appropriately)
-	- if no conditions == True then default Result = nothing happens (no need for pass_result)
-	- Establish switch triggers such that timer as trigger is more natural
-	- Generalize in-hand vs. not-in-hand Condition (single primative)
-	- Generalize creature-has-item vs. creature-does-not-have-item Conditions (single primative)
-	- Establish clearer nomenclature for temp variables that will be fully assigned at end (e.g. 'royal_hedgehog-*temp*')
 - Do a refactoring code review (look into the 'any' command in place of for loops)
 
 
