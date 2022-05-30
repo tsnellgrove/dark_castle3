@@ -103,9 +103,15 @@ Version 3.64 Goals
 		- DONE: create hedgehog_done_eating_mach of class InvisMach
 		- DONE: assigne hedgehog_done_eating_mach to royal_hedgehog
 		- DONE: testing!
-- TBD: create hedgehog_distracted_mach (if timer active, inhibits show & give)
-	- IDEA: to enable match on 'show' or 'give' <any>, creatUre wildcard ('*') functionality within trig_check() method
-
+- INPROC: create hedgehog_distracted_mach (if timer active, inhibits show & give)
+	- IDEA: to enable match on 'show' or 'give' <any>, creature wildcard ('*') functionality within trig_check() method
+	- DONE: Update trig_check() method in Machine class to recognize '*' as a wildcard
+		- DONE: MachineMixIn trig_check() updated (NOTE: Warning trig_check() not yet updated!!)
+	- TBD: Conditions
+		- TBD: create TimerActiveCond class (include condition match)
+	- TBD: Results
+	- TBD: Machine
+	- TBD: Update Warning class trig_check() to work with wildcards
 
 ##########################
 ### VERSION 3.66 START ###

@@ -65,6 +65,12 @@ class MachineMixIn(object):
 						trig_key_lst = word_lst[0]
 				elif  case == 'timer':
 						trig_key_lst = word_lst[0]
+
+				if any(ele == '*' for ele in self.trig_vals_lst):
+						w_card_index = self.trig_vals_lst('*')
+						self.trig_vals_lst[w_card_index] = trig_key_lst[w_card_index]
+						# need an error for more than one occurence of a wildcard?
+
 				return trig_key_lst in self.trig_vals_lst
 
 		def run_mach(self, active_gs):
