@@ -66,10 +66,20 @@ class MachineMixIn(object):
 				elif  case == 'timer':
 						trig_key_lst = word_lst[0]
 
+				print(trig_key_lst)
+
 				if any(ele == '*' for ele in self.trig_vals_lst):
-						w_card_index = self.trig_vals_lst('*')
-						self.trig_vals_lst[w_card_index] = trig_key_lst[w_card_index]
+						w_card_lst = self.trig_vals_lst
+						w_card_index = w_card_lst.index('*')
+						w_card_lst[w_card_index] = trig_key_lst[w_card_index]
+
+						print(trig_key_lst, w_card_lst)
+						
+						return trig_key_lst in w_card_lst
+						
 						# need an error for more than one occurence of a wildcard?
+
+				print(trig_key_lst, self.trig_vals_lst)
 
 				return trig_key_lst in self.trig_vals_lst
 
