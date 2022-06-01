@@ -119,7 +119,7 @@ Version 3.64 Goals
 		- DONE: instantiate hedgehog_distracted_mach
 		- DONE: add hedgehog_distracted_mach to royal_hedgehog
 		- DONE: run mk_def_pkl()
-		- TBD: testing! [not working]
+		- TBD: testing! [appears that 'any' line is not working?]
 	- TBD: Update Warning class trig_check() to work with wildcards
 
 ##########################

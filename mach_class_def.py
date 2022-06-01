@@ -69,6 +69,7 @@ class MachineMixIn(object):
 				print(trig_key_lst)
 
 				if any(ele == '*' for ele in self.trig_vals_lst):
+						print("spotted wildcards")
 						w_card_lst = self.trig_vals_lst
 						w_card_index = w_card_lst.index('*')
 						w_card_lst[w_card_index] = trig_key_lst[w_card_index]
