@@ -70,21 +70,27 @@ class MachineMixIn(object):
 
 #				if any(ele == '*' for ele in self.trig_vals_lst):
 				w_card_lst = self.trig_vals_lst
-				wildcard_case = False
+				w_card_case = False
+				print(w_card_lst)
 				for lst_ele in w_card_lst:
-						if '*' in w_card_lst[lst_ele]:
+						print("Index = " + str(lst_ele))
+#						if '*' in w_card_lst[lst_ele]:
+						if '*' in lst_ele:
 								print("spotted wildcards")
-								wildcard_case = True
+								w_card_case = True
 #								w_card_lst = self.trig_vals_lst
-								w_card_index = w_card_lst[lst_ele].index('*')
+#								w_card_index = w_card_lst[lst_ele].index('*')
+								w_card_index = lst_ele.index('*')
 								w_card_lst[lst_ele][w_card_index] = trig_key_lst[lst_ele][w_card_index]
+# Need to figure out index of w_card_lst ???
+								
 
 								print("wildcard case: " + trig_key_lst, w_card_lst)
 
 						if wildcard_case:
 								return trig_key_lst in w_card_lst
 						
-						# need an error for more than one occurence of a wildcard?
+						# need an error for more than one occurence of a wildcard?#
 
 				print("non-wildcard case: " + trig_key_lst, self.trig_vals_lst)
 
