@@ -119,7 +119,7 @@ Version 3.64 Goals
 		- DONE: instantiate hedgehog_distracted_mach
 		- DONE: add hedgehog_distracted_mach to royal_hedgehog
 		- DONE: run mk_def_pkl()
-		- TBD: testing! [appears that 'any' line is not working?]
+		- TBD: testing! [appears that list_of_lists loop is not working as expected => use enumerate() for indexes!!]
 	- TBD: Update Warning class trig_check() to work with wildcards
 
 ##########################
@@ -158,6 +158,13 @@ Version 3.68 Goals
 		- IDEA: A MixIn of a MixIn seems over-complicated... 
 		- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
 		- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
+	- more Modular Machine ideas:
+		- Modular Triggers? (named after intent; match cond, result, & mach)
+		- Primative Conditions (named after condition) [always include single attribute & value] 
+		- Compound Conditions [and / or) (named after intent; match mach, result, & trig) {trig_check() method links primatives}
+		- Primative Results (named after result) [always include single attribute & value] 
+		- Compound Results (named after intent; match cond, trig, & mach) {trig_check() method links primatives}
+		- The basic goal of the primative & compound structure is to increase re-use of Cond & Result classes (too many class-per-var cases)
 
 - TBD: documentation:
 	- TBD: updeate creature doc
