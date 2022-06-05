@@ -66,35 +66,27 @@ class MachineMixIn(object):
 				elif  case == 'timer':
 						trig_key_lst = word_lst[0]
 
-				print(trig_key_lst)
-
-#				if any(ele == '*' for ele in self.trig_vals_lst):
-				w_card_lst = self.trig_vals_lst
-				w_card_case = False
-				print(w_card_lst)
-				for lst_ele in w_card_lst:
-						print("Index = " + str(lst_ele))
-#						if '*' in w_card_lst[lst_ele]:
-						if '*' in lst_ele:
-								print("spotted wildcards")
-								w_card_case = True
-#								w_card_lst = self.trig_vals_lst
-#								w_card_index = w_card_lst[lst_ele].index('*')
-								w_card_index = lst_ele.index('*')
-								w_card_lst[lst_ele][w_card_index] = trig_key_lst[lst_ele][w_card_index]
-# Need to figure out index of w_card_lst ???
-								
-
-								print("wildcard case: " + trig_key_lst, w_card_lst)
-
-						if wildcard_case:
-								return trig_key_lst in w_card_lst
-						
-						# need an error for more than one occurence of a wildcard?#
-
-				print("non-wildcard case: " + trig_key_lst, self.trig_vals_lst)
-
+				print("trig_key_lst = " + str(trig_key_lst))
+				if self.trigger_type == 'pre_act_cmd':
+						wcard_lst = self.trig_vals_lst
+						wcard_case = False
+						print("wcard_lst = " + str(wcard_lst))
+				
+						for lst_index, lst_val in enumerate(wcard_lst):
+								print("Index = " + str(lst_index))
+								if '*' in lst_val:
+										print("spotted wildcards")
+										wcard_case = True
+										wcard_index = lst_val.index('*')
+										wcard_lst[lst_index][wcard_index] = trig_key_lst[lst_index][wcard_index]
+										print("wildcard case: " + str(trig_key_lst), str(wcard_lst))
+		
+								if wcard_case:
+										return trig_key_lst in wcard_lst								
+				print("non-wildcard case: " + str(trig_key_lst), str(self.trig_vals_lst))
 				return trig_key_lst in self.trig_vals_lst
+## need an error for more than one occurence of a wildcard per lst_val?
+
 
 		def run_mach(self, active_gs):
 				cond_return_lst = []
