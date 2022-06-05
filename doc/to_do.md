@@ -119,8 +119,12 @@ Version 3.64 Goals
 		- DONE: instantiate hedgehog_distracted_mach
 		- DONE: add hedgehog_distracted_mach to royal_hedgehog
 		- DONE: run mk_def_pkl()
-		- TBD: testing! [appears that list_of_lists loop is not working as expected => use enumerate() for indexes!!]
-	- TBD: Update Warning class trig_check() to work with wildcards
+		- TBD: testing! 
+			- DONE: appears that list_of_lists loop is not working as expected => use enumerate() for indexes!!
+			- DONE: solved 'only one letter' issue - had double loop operating on single list
+			- TBD: how and why is wcard_lst caching the intermediate '*' values?!?
+			- IDEA: maybe I just need a creature_distracted attribute???
+	- TBD: Update Warning class trig_check() to work with wildcards? Update wildcards to work with post_action or auto?
 
 ##########################
 ### VERSION 3.66 START ###
