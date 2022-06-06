@@ -4,6 +4,7 @@
 # description: class deffinition module for Machines
 
 ### import
+import copy
 from noun_class_def import Invisible, ViewOnly
 from static_gbl import descript_dict
 
@@ -70,7 +71,8 @@ class MachineMixIn(object):
 				if self.trigger_type == 'pre_act_cmd':
 						print(self.name + " has trigger_type == 'pre_act_cmd'")
 #						wcard_lst = []
-						wcard_lst = self.trig_vals_lst
+#						wcard_lst = self.trig_vals_lst
+						wcard_lst = copy.deepcopy(self.trig_vals_lst)
 						wcard_case = False
 						print("wcard_lst = " + str(wcard_lst))
 				
@@ -88,6 +90,7 @@ class MachineMixIn(object):
 #										wcard_lst[lst_index][wcard_index] = trig_key_lst[lst_index][wcard_index]
 										wcard_lst[lst_index][wcard_index] = trig_key_lst[wcard_index]
 										print("updated wcard_lst = " + str(wcard_lst))
+										print("trig_vals_lst = " + str(self.trig_vals_lst))
 		
 								if wcard_case:
 #										print("return value = " + str(trig_key_lst in wcard_lst))
