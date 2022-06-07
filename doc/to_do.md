@@ -119,13 +119,12 @@ Version 3.64 Goals
 		- DONE: instantiate hedgehog_distracted_mach
 		- DONE: add hedgehog_distracted_mach to royal_hedgehog
 		- DONE: run mk_def_pkl()
-		- TBD: testing! 
+		- DONE: testing! 
 			- DONE: appears that list_of_lists loop is not working as expected => use enumerate() for indexes!!
 			- DONE: solved 'only one letter' issue - had double loop operating on single list
 			- DONE: how and why is wcard_lst caching the intermediate '*' values?!?
-			- TBD: need to apply '*' updates to all list members
-			- IDEA: maybe I just need a creature_distracted attribute???
-	- TBD: Update Warning class trig_check() to work with wildcards? Update wildcards to work with post_action or auto?
+			- DONE: need to apply '*' updates to all list members
+			- DONE: comemnt out test print statements
 
 ##########################
 ### VERSION 3.66 START ###
@@ -170,6 +169,10 @@ Version 3.68 Goals
 		- Primative Results (named after result) [always include single attribute & value] 
 		- Compound Results (named after intent; match cond, trig, & mach) {trig_check() method links primatives}
 		- The basic goal of the primative & compound structure is to increase re-use of Cond & Result classes (too many class-per-var cases)
+	- Wildcard clean-ups
+		- Extend trig_check wildcards to 'post_act_cmd' & 'auto_act_cmd'
+		- Extend trig_check wildcards to work with Warnings (or better yet, de-dup Warning's trig_check)
+		- guard against multiple wildcaards per list
 
 - TBD: documentation:
 	- TBD: updeate creature doc
@@ -270,7 +273,7 @@ TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_crea
 - 'g' as abbreviation for 'again' ?
 - for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
 - Do a refactoring code review (look into the 'any' command in place of for loops)
-
+- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute???
 
 *** NEW PUZZLE IDEAS ***
 
