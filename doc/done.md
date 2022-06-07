@@ -1,5 +1,5 @@
 Done List - Dark Castle v3
-May 8, 2022
+June 7, 2022
 
 
 ##########################
@@ -2137,3 +2137,117 @@ Version 3.62 Goals
 		- DONE: test!
 
 
+##########################
+### VERSION 3.64 START ###
+##########################
+
+Version 3.64 Goals
+- Create complex machine for hedgehog creature (including bisuit eating and timer; note that eating must override show & give)
+
+- DONE: map out desired conditions & results
+	- Case 1: hedgehog_eats_timer is active, Burt tries to take sword:
+		- Result = Burt gets sword (standard case)
+	- Case 2: Burt gives (or drops) biscuits:
+		- Result = hedgehog_eats_timer started
+	- Case 3: hedgehog_eats_timer not active, Burt tries to take sword:
+		- Result = hedgehog guards sword (Warning ?)
+	- Case 4: hedgehog_eats_timer is active, Burt tries to give or show to hedgehog:
+		- Result = hedgehog is eating; response is inhibited
+	- Case 5: special machine to update hedgehog description at end of timer
+		- description depends on whether the hedgehog has kept the sword???
+- DONE: create hedgehog_eats_timer (4 turns long, presents text if in scope)
+	- DONE: create hedgehog_eats_timer in mk_def_pkl(); set alert_anchor to royal_hedgehog
+	- DONE: add hedgehog_eats_timer to mk_def_timer() universal_mach_lst
+	- DONE: add timer text descriptions to static_gbl()
+	- DONE: run mk_def_pkl()
+- DONE: create hedgehog_eats_mach (starts timer if give or drop)
+	- DONE: decide whether I will support 'drop biscuits' (leaning towards 'no')
+		- DECISION: 'drop biscuits' will NOT trigger hedgehog_eats_mach
+	- DONE: create Condition for hedgehog_eats_mach 
+		- DONE: create class CreatureItemCond (parent = PassThruCond)
+		- DONE: test for hedgehog has biscuits in cond_check() 
+		- DONE: instantiate hedgehog_has_biscuit_cond in mk_def_pkl()
+		- DONE: add CreatureItemCond to mk_def_pkl() imports and use creature object re-assignment work-around
+		- DONE: run mk_def_pkl()
+	- DONE: create Results for hedgehog_eats_mach (start timer; remove biscuits from hedgehog)
+		- DONE: create class TimerAndCreatureItemResult (parent = StartTimerResult)
+		- DONE: start time and remove creature_item
+		- DONE: fix descript & buffer for StartTimerResult()
+			- DONE: Check existing Results classes
+			- FINDINGS: no Result obj use PassThru, all Result classes inherit from BufferOnlyResult, all Result obj use name as descript_key
+			- DONE: eliminate PassThruResult / update BufferOnlyResult to inherit from 'object' or Invisible
+			- DONE: update BufferOnlyResult to use 'try... except...' buffer approach used in Timer & Warning
+			- DONE: clean up commented code (lots of it!)
+		- DONE: instantiate start_hedgehog_timer_results in mk_def_pkl()
+		- DONE: add TimerAndCreatureItemResult to mk_def_pkl() imports and use creature object re-assignment work-around
+		- DONE: run mk_def_pkl()
+	- DONE: create machine for hedgehog_eats_mach (will be a post_action() mach; class = InvisMach)
+		- DONE: add hedgehog_eats_mach to hedgehog
+		- DONE: test!
+- DONE: create hedgehog_guard_mach (if timer not active, hedgehog guards sword)
+	- DONE: Create Condition
+		- DONE: Create Condition class for hedgehog_eats_timer.active (TimerNotActiveCond)
+		- DONE: instantiate hedgehog_guard_cond
+		- DONE: import TimerActiveCond, run mk_def_pkl()
+	- DONE: create Result
+		- DONE: instantiate hedgehog_guard_result (class = BufferOnlyResult)
+	- DONE: create Mach
+		- DONE: instantiate hedgehog_guard_mach (class = InvisMach)
+		- DONE: type = pre_act_cmd
+		- DONE: add hedgehog_guard_mach to royal_hedgehog
+	- DONE: testing
+		- DONE: std condition testing
+		- DONE: address case of "get sword" producing 'guard' Condition when Burt has already gotten the sword
+			- FINDING: this happens if Burt has the sword in the main_hall after the timer has expired
+			- DONE: update Condition to solve this
+			- DONE: remove TimerNotActiveCond
+- DONE: create hedgehog_done_eating_mach (update hedgehog description after eating based on presence of shiny_sword)
+	- DONE: Timer as Trigger
+		- IDEA: need to enable Timer ending to trigger a Machine
+		- IDEA: in pre_action() create timer case
+		- IDEA: trig_check() method (which is in mach_class_def() module), check for 'timer' case
+		- IDEA: use mach_state in Condition to only implement timer_done based Result once
+		- DONE: update pre_action() to include timer case for Machine type == 'pre_act_timer'
+		- DONE: in mach_class_def() update trig_check() method to include case == 'timer'
+	- DONE: Conditions
+		- CANCEL: instantiate hedgehog_desc_update_cond of class StateCond
+		- IDEA: **** HANG ON - MAYBE 2 DIFFERENT DESCRIPTIONS SHOULD BE 2 DIFFERENT RESULTS??? ****
+		- DONE: create StateItemInRoomCond class
+		- DONE: instantiate hedgehog_keeps_sword_cond
+		- DONE: instantiate hedgehog_loses_sword_cond
+		- DONE: run mk_def_pkl()
+	- DONE: Results
+		- DONE: create ChgCreatureDescResult class
+		- DONE: Update hedgehod descript based on shiny_sword condition
+		- DONE: Toggle Machine state to True (so that description is only changed once)
+		- DONE: instantiate fed_hedgehog_loses_sword_result and fed_hedgehog_keeps_sword_result
+		- DONE: run mk_def_pkl()
+		- DONE: create description entries for all (4) keys
+		- DONE: maybe update desc name to indicate Result State change?
+	- DONE: Machine
+		- DONE: create hedgehog_done_eating_mach of class InvisMach
+		- DONE: assigne hedgehog_done_eating_mach to royal_hedgehog
+		- DONE: testing!
+- DONE: create hedgehog_distracted_mach (if timer active, inhibits show & give)
+	- IDEA: to enable match on 'show' or 'give' <any>, creature wildcard ('*') functionality within trig_check() method
+	- DONE: Update trig_check() method in Machine class to recognize '*' as a wildcard
+		- DONE: MachineMixIn trig_check() updated (NOTE: Warning trig_check() not yet updated!!)
+	- DONE: Conditions
+		- DONE: create TimerActiveCond class (include condition match)
+		- DONE: import TimerActiveCond to mk_def_pkl()
+		- DONE: instantiate hedgehog_distracted_cond in mk_def_pkl()
+		- DONE: run mk_def_pkl()
+	- DONE: Results
+		- DONE: instantiate hedgehog_distracted_result of class BufferOnlyResult
+		- DONE: create description entry for 'hedgehog_distracted_result'
+	- DONE: Machine
+		- DONE: instantiate hedgehog_distracted_mach
+		- DONE: add hedgehog_distracted_mach to royal_hedgehog
+		- DONE: run mk_def_pkl()
+		- DONE: testing! 
+			- DONE: appears that list_of_lists loop is not working as expected => use enumerate() for indexes!!
+			- DONE: solved 'only one letter' issue - had double loop operating on single list
+			- DONE: how and why is wcard_lst caching the intermediate '*' values?!?
+			- DONE: need to apply '*' updates to all list members
+			- DONE: comment out test print statements
+			- DONE: comments cleaned up

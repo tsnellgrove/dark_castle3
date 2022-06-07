@@ -1,6 +1,6 @@
-# program: dark castle v3.62
+# program: dark castle v3.64
 # name: Tom Snellgrove
-# date: May 8, 2022
+# date: June 7, 2022
 # description: class deffinition module for Machines
 
 ### import
@@ -67,33 +67,21 @@ class MachineMixIn(object):
 				elif  case == 'timer':
 						trig_key_lst = word_lst[0]
 
+				# wildcard sub-routine
 				if self.trigger_type == 'pre_act_cmd':
-#						print(self.name + " has trigger_type == 'pre_act_cmd'")
 						wcard_lst = copy.deepcopy(self.trig_vals_lst)
 						wcard_case = False
-#						print("wcard_lst = " + str(wcard_lst))
-				
 						for lst_index, lst_val in enumerate(wcard_lst):
 								if '*' in lst_val:
-#										print("spotted wildcards")
-#										print("trig_key_lst = " + str(trig_key_lst))
-#										print("raw wcard_lst = " + str(wcard_lst))
-#										print("lst_index = " + str(lst_index))
-#										print("lst_val = " + str(lst_val))
 										wcard_case = True
 										wcard_index = lst_val.index('*')
-#										print("wcard_index = " + str(wcard_index))
-										wcard_lst[lst_index][wcard_index] = trig_key_lst[wcard_index]
-#										print("updated wcard_lst = " + str(wcard_lst))
-#										print("trig_vals_lst = " + str(self.trig_vals_lst))
-		
+										wcard_lst[lst_index][wcard_index] = trig_key_lst[wcard_index]	
 						if wcard_case:
 								return_val = trig_key_lst in wcard_lst
 								wcard_lst = []
 								return return_val
-				return trig_key_lst in self.trig_vals_lst
-## need an error for more than one occurence of a wildcard per lst_val?
 
+				return trig_key_lst in self.trig_vals_lst
 
 		def run_mach(self, active_gs):
 				cond_return_lst = []
