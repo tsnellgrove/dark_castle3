@@ -92,12 +92,12 @@ class MachineMixIn(object):
 										print("updated wcard_lst = " + str(wcard_lst))
 										print("trig_vals_lst = " + str(self.trig_vals_lst))
 		
-								if wcard_case:
+						if wcard_case:
 #										print("return value = " + str(trig_key_lst in wcard_lst))
 #										return trig_key_lst in wcard_lst
-										return_val = trig_key_lst in wcard_lst
-										wcard_lst = []
-										return return_val
+								return_val = trig_key_lst in wcard_lst
+								wcard_lst = []
+								return return_val
 #				print("non-wildcard case: " + str(trig_key_lst), str(self.trig_vals_lst))
 				return trig_key_lst in self.trig_vals_lst
 ## need an error for more than one occurence of a wildcard per lst_val?
