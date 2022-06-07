@@ -18,7 +18,8 @@ June 7, 2022
 ### VERSION 3.66 START ###
 ##########################
 Version 3.66 Goals
-- Create read_scroll Conditions, Results, and Machine
+- create ItemMach class
+- create Conditions, Results, and Machine for kinging_scroll (class == ItemMach)
 
 - TBD: should the shiny_sword vanish after being given to the royal_hedgehog?
 	- IDEA: sure - but maybe in the end scene, the hedgehog places it before Burt's feet and kneels?
