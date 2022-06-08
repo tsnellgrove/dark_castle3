@@ -5,7 +5,7 @@
 
 ### import
 import copy
-from noun_class_def import Invisible, ViewOnly
+from noun_class_def import Invisible, ViewOnly, Item
 from static_gbl import descript_dict
 
 ### classes
@@ -100,6 +100,11 @@ class InvisMach(Invisible, MachineMixIn):
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
 class ViewOnlyMach(ViewOnly, MachineMixIn):
+		def __init__(self, name, full_name, root_name, descript_key, writing, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
+				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
+				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
+
+class ItemMach(Item, MachineMixIn):
 		def __init__(self, name, full_name, root_name, descript_key, writing, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)

@@ -21,6 +21,20 @@ Version 3.66 Goals
 - create ItemMach class
 - create Conditions, Results, and Machine for kinging_scroll (class == ItemMach)
 
+- DONE: create class
+	- DONE: create ItemMach class (identical attributes to ViewOnlyMach)
+	- DONE: in mach_class_def(), import Item class from noun_class_def()
+- DONE: big picture:
+	- trigger == read letters
+	- conditions == kinging_scroll in hand and:
+		- if room != throne_room => wrong_room_error
+		- elif hedgehog not exist => no_hedgehog_error
+		- elif royal_crown not worn => crown_not_worn_error
+		- else win_game, score += 15, end_game
+- TBD: conditions
+- TBD: results
+- TBD: mach
+
 - TBD: should the shiny_sword vanish after being given to the royal_hedgehog?
 	- IDEA: sure - but maybe in the end scene, the hedgehog places it before Burt's feet and kneels?
 
@@ -43,6 +57,7 @@ Version 3.68 Goals
 		- Generalize in-hand vs. not-in-hand Condition (single primative)
 		- Generalize creature-has-item vs. creature-does-not-have-item Conditions (single primative)
 		- Establish clearer nomenclature for temp variables that will be fully assigned at end (e.g. 'royal_hedgehog-*temp*')
+		- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
 	- TBD: de-dup warning and timer classes
 		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?
 		- IDEA: this makes sense... in all other cases I inherit from simple parents to more complex children
