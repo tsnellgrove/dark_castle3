@@ -31,7 +31,8 @@ Version 3.66 Goals
 		- elif hedgehog not exist => no_hedgehog_error
 		- elif royal_crown not worn => crown_not_worn_error
 		- else win_game, score += 15, end_game
-- TBD: conditions
+- INPROC: conditions
+	- DONE: created Condition class InHandAndRoomCond
 - TBD: results
 - TBD: mach
 

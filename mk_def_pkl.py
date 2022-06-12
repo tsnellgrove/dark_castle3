@@ -10,7 +10,7 @@ from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, C
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from cond_class_def import (PassThruCond, NotInHandCond, StateCond, InHandAndStateCond,
 				SwitchStateCond, LeverArrayCond, RoomCond, CreatureItemCond, NotTimerAndItemCond,
-				StateItemInRoomCond, TimerActiveCond)
+				StateItemInRoomCond, TimerActiveCond, InHandAndRoomCond, )
 from result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 				AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult,
 				TimerAndCreatureItemResult, ChgCreatureDescAndStateResult)
