@@ -32,7 +32,13 @@ Version 3.66 Goals
 		- elif royal_crown not worn => crown_not_worn_error
 		- else win_game, score += 15, end_game
 - INPROC: conditions
-	- DONE: created Condition class InHandAndRoomCond
+	- DONE: created Condition class InHandAndRoomCond and import class in mk_def_pkl()
+	- DONE: create Condition class InHandAndExistInWorldCond and import class in mk_def_pkl()
+	- DONE: create InHandAndGarmentWornCond and import class in mk_def_pkl()
+	- TBD: instantiate read_scroll_in_throne_room_cond of class InHandAndRoomCond
+	- TBD: instantiate read_scroll_hedgehog_exist_cond of class InHandAndExistInWorldCond
+	- TBD: instantiate read_scroll_crown_worn_cond of class InHandAndGarmentWornCond
+	- TBD: instantiate read_scroll_win_cond of class PassThruCond
 - TBD: results
 - TBD: mach
 

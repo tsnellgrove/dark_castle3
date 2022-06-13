@@ -207,7 +207,9 @@ class TimerActiveCond(PassThruCond):
 class InHandAndRoomCond(PassThruCond):
 		def __init__(self, name, in_hand_lst, match_room_name):
 				super().__init__(name)
-
+				self._in_hand_lst = in_hand_lst # list of items that will meet condition
+				self._match_room_name = match_room_name
+				
 		@property
 		def in_hand_lst(self):
 				return self._in_hand_lst
@@ -221,8 +223,54 @@ class InHandAndRoomCond(PassThruCond):
 				hand_lst = active_gs.get_hand_lst()
 				in_hand = hand_lst[0]
 				room_obj = active_gs.get_room()
-				if (room_obj == match_room_name and in_hand in in_hand_lst):
+				if (room_obj.name == match_room_name and in_hand in self.in_hand_lst):
 						cond_state == True
 				return cond_state
 
+class InHandAndExistInWorldCond(PassThruCond):
+		def __init__(self, name, in_hand_lst, exist_obj):
+				super().__init__(name)
+				self._in_hand_lst = in_hand_lst # list of items that will meet condition
+				self._exist_obj = exist_obj
 
+		@property
+		def in_hand_lst(self):
+				return self._in_hand_lst
+
+		@property
+		def exist_obj(self):
+				return self._exist_obj
+
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+				cond_state = False
+				hand_lst = active_gs.get_hand_lst()
+				in_hand = hand_lst[0]
+				if in_hand not in in_hand_lst:
+						return cond_state
+				for room in active_gs.room_lst:
+						if self.exist_obj in room.room_obj_lst:
+								cond_state = True
+				return cond_state
+
+class InHandAndGarmentWornCond(PassThruCond):
+		def __init__(self, name, in_hand_lst, worn_garment):
+				super().__init__(name)
+				self._in_hand_lst = in_hand_lst # list of items that will meet condition
+				self._worn_garment = worn_garment
+				
+		@property
+		def in_hand_lst(self):
+				return self._in_hand_lst
+
+		@property
+		def worn_garment(self):
+				return self._worn_garment
+
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+				cond_state = False
+				hand_lst = active_gs.get_hand_lst()
+				in_hand = hand_lst[0]
+				worn_lst = active_gs.get_worn_lst()
+				if (self.worn_garment in worn_lst and in_hand in self.in_hand_lst):
+						cond_state == True
+				return cond_state
