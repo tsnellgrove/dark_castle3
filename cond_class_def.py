@@ -214,9 +214,17 @@ class InHandAndRoomCond(PassThruCond):
 		def in_hand_lst(self):
 				return self._in_hand_lst
 
+		@in_hand_lst.setter
+		def in_hand_lst(self, new_lst):
+				self._in_hand_lst = new_lst
+
 		@property
 		def match_room_name(self):
 				return self._match_room_name
+
+		@match_room_name.setter
+		def match_room_name(self, new_obj):
+				self._match_room_name = new_obj
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				cond_state = False
@@ -237,9 +245,17 @@ class InHandAndExistInWorldCond(PassThruCond):
 		def in_hand_lst(self):
 				return self._in_hand_lst
 
+		@in_hand_lst.setter
+		def in_hand_lst(self, new_lst):
+				self._in_hand_lst = new_lst
+
 		@property
 		def exist_obj(self):
 				return self._exist_obj
+
+		@exist_obj.setter
+		def exist_obj(self, new_obj):
+				self._exist_obj = new_obj
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				cond_state = False

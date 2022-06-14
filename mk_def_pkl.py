@@ -100,6 +100,9 @@ hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_t
 hedgehog_keeps_sword_cond = StateItemInRoomCond('hedgehog_keeps_sword_cond', False, shiny_sword, True)
 hedgehog_loses_sword_cond = StateItemInRoomCond('hedgehog_loses_sword_cond', False, shiny_sword, False)
 hedgehog_distracted_cond = TimerActiveCond('hedgehog_timer_active_cond', hedgehog_eats_timer, True)
+read_scroll_in_throne_room_cond = InHandAndRoomCond('read_scroll_in_throne_room_cond', ['kinging_scroll_temp'], 'throne_room_temp')
+read_scroll_hedgehog_exist_cond = InHandAndExistInWorldCond('read_scroll_hedgehog_exist_cond', ['kinging_scroll_temp'], 'royal_hedgehog_temp')
+
 
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'death', True)
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
@@ -226,6 +229,11 @@ hedgehog_eats_timer.alert_anchor = royal_hedgehog
 start_hedgehog_timer_results.creature_obj = royal_hedgehog
 fed_hedgehog_keeps_sword_result.creature_obj = royal_hedgehog
 fed_hedgehog_loses_sword_result.creature_obj = royal_hedgehog
+read_scroll_in_throne_room_cond.in_hand_lst = [kinging_scroll]
+read_scroll_in_throne_room_cond.match_room_name = throne_room
+read_scroll_hedgehog_exist_cond.in_hand_lst = [kinging_scroll]
+read_scroll_hedgehog_exist_cond.exist_obj = royal_hedgehog
+
 
 ### active_gs is the central store of game info ###
 active_gs = GameState(

@@ -35,10 +35,10 @@ Version 3.66 Goals
 	- DONE: created Condition class InHandAndRoomCond and import class in mk_def_pkl()
 	- DONE: create Condition class InHandAndExistInWorldCond and import class in mk_def_pkl()
 	- DONE: create InHandAndGarmentWornCond and import class in mk_def_pkl()
-	- TBD: instantiate read_scroll_in_throne_room_cond of class InHandAndRoomCond
-	- TBD: instantiate read_scroll_hedgehog_exist_cond of class InHandAndExistInWorldCond
-	- TBD: instantiate read_scroll_crown_worn_cond of class InHandAndGarmentWornCond
-	- TBD: instantiate read_scroll_win_cond of class PassThruCond
+	- DONE: instantiate read_scroll_in_throne_room_cond of class InHandAndRoomCond and run mk_def_pkl()
+	- DONE: instantiate read_scroll_hedgehog_exist_cond of class InHandAndExistInWorldCond and run mk_def_pkl()
+	- TBD: instantiate read_scroll_crown_worn_cond of class InHandAndGarmentWornCond and run mk_def_pkl()
+	- TBD: instantiate read_scroll_win_cond of class PassThruCond and run mk_def_pkl()
 - TBD: results
 - TBD: mach
 
