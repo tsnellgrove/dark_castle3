@@ -278,6 +278,10 @@ class InHandAndGarmentWornCond(PassThruCond):
 		def in_hand_lst(self):
 				return self._in_hand_lst
 
+		@in_hand_lst.setter
+		def in_hand_lst(self, new_lst):
+				self._in_hand_lst = new_lst
+
 		@property
 		def worn_garment(self):
 				return self._worn_garment
