@@ -31,15 +31,20 @@ Version 3.66 Goals
 		- elif hedgehog not exist => no_hedgehog_error
 		- elif royal_crown not worn => crown_not_worn_error
 		- else win_game, score += 15, end_game
-- INPROC: conditions
-	- DONE: created Condition class InHandAndRoomCond and import class in mk_def_pkl()
+- DONE: conditions
+	- DONE: create Condition class InHandAndRoomCond and import class in mk_def_pkl()
 	- DONE: create Condition class InHandAndExistInWorldCond and import class in mk_def_pkl()
 	- DONE: create InHandAndGarmentWornCond and import class in mk_def_pkl()
 	- DONE: instantiate read_scroll_in_throne_room_cond of class InHandAndRoomCond and run mk_def_pkl()
 	- DONE: instantiate read_scroll_hedgehog_exist_cond of class InHandAndExistInWorldCond and run mk_def_pkl()
 	- DONE: instantiate read_scroll_crown_worn_cond of class InHandAndGarmentWornCond and run mk_def_pkl()
-	- TBD: instantiate read_scroll_win_cond of class PassThruCond and run mk_def_pkl()
-- TBD: results
+	- DONE: instantiate read_scroll_win_cond of class PassThruCond and run mk_def_pkl()
+- INPROC: results
+	- TBD: create Result class WinGameResult and import class in mk_def_pkl()
+	- TBD: instantiate scroll_wrong_room_result of class BufferOnlyResult and run mk_def_pkl()
+	- TBD: instantiate scroll_no_hedgehog_result of class BufferOnlyResult and run mk_def_pkl()
+	- TBD: instantiate scroll_crown_not_worn_result of class BufferOnlyResult and run mk_def_pkl()
+	- TBD: instantiate scroll_win_game_result of class WinGameResult and run mk_def_pkl()
 - TBD: mach
 
 - TBD: should the shiny_sword vanish after being given to the royal_hedgehog?
@@ -108,7 +113,7 @@ Version 3.7x Goals
 
 
 ##########################
-### VERSION 3.7x START ###
+### VERSION 3.8x START ###
 ##########################
 Version 3.8x Goals
 - New rooms and puzzles!!
@@ -293,6 +298,7 @@ IDEA: create a fun scenario where TravelEffect take item gets used... maybe a gi
 Version 4.xx Goals:
 	- DB back end
 	- "dungeon bulder" web interface (?)
+	- Run on AWS EC2
 
 DONE: Watch YouTube vid on SQLAlchemy: https://youtu.be/51RpDZKShiw
 	DONE: Create practice file
