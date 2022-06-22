@@ -124,6 +124,8 @@ hedgehog_distracted_result = BufferOnlyResult('hedgehog_distracted_result', True
 scroll_wrong_room_result = BufferOnlyResult('scroll_wrong_room_result', False)
 scroll_no_hedgehog_result = BufferOnlyResult('scroll_no_hedgehog_result', False)
 scroll_crown_not_worn_result = BufferOnlyResult('scroll_crown_not_worn_result', False)
+scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'win', False)
+
 
 # name, timer_obj, cmd_override, creature_obj, ceature_item_obj
 
