@@ -40,13 +40,14 @@ Version 3.66 Goals
 	- DONE: instantiate read_scroll_crown_worn_cond of class InHandAndGarmentWornCond and run mk_def_pkl()
 	- DONE: instantiate read_scroll_win_cond of class PassThruCond and run mk_def_pkl()
 - INPROC: results
-	- NA: create Result class WinGameResult and import class in mk_def_pkl() [use class BufferAndEndResult instead]
+	- CANCEL: create Result class WinGameResult and import class in mk_def_pkl() [use class BufferAndEndResult instead]
 	- DONE: instantiate scroll_wrong_room_result of class BufferOnlyResult and run mk_def_pkl()
-	- TBD: instantiate scroll_no_hedgehog_result of class BufferOnlyResult and run mk_def_pkl()
-	- TBD: instantiate scroll_crown_not_worn_result of class BufferOnlyResult and run mk_def_pkl()
+	- DONE: instantiate scroll_no_hedgehog_result of class BufferOnlyResult and run mk_def_pkl()
+	- DONE: instantiate scroll_crown_not_worn_result of class BufferOnlyResult and run mk_def_pkl()
 	- TBD: instantiate scroll_win_game_result of class BufferAndEndResult and run mk_def_pkl()
 	- TBD: create custom score based on ending == 'win'
 - TBD: mach
+	- IDEA: mach = post_act_cmd
 
 - TBD: should the shiny_sword vanish after being given to the royal_hedgehog?
 	- IDEA: sure - but maybe in the end scene, the hedgehog places it before Burt's feet and kneels?

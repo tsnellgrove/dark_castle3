@@ -121,8 +121,9 @@ hedgehog_guard_result = BufferOnlyResult('hedgehog_guard_result', True)
 fed_hedgehog_keeps_sword_result = ChgCreatureDescAndStateResult('fed_hedgehog_keeps_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_smug')
 fed_hedgehog_loses_sword_result = ChgCreatureDescAndStateResult('fed_hedgehog_loses_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_yearn')
 hedgehog_distracted_result = BufferOnlyResult('hedgehog_distracted_result', True)
-scroll_wrong_room_result = BufferAndEndResult('scroll_wrong_room_result', 'win', False)
-
+scroll_wrong_room_result = BufferOnlyResult('scroll_wrong_room_result', False)
+scroll_no_hedgehog_result = BufferOnlyResult('scroll_no_hedgehog_result', False)
+scroll_crown_not_worn_result = BufferOnlyResult('scroll_crown_not_worn_result', False)
 
 # name, timer_obj, cmd_override, creature_obj, ceature_item_obj
 
