@@ -48,7 +48,7 @@ bubbly_potion = Item('bubbly_potion', 'bubbly potion', "potion", 'bubbly_potion'
 torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwriting)
 grimy_axe = Item('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing)
 silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None)
-kinging_scroll = Item('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters)
+# kinging_scroll = Item('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters)
 random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random_mcguffin', None)
 
 cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 'cheese_eat')
@@ -124,7 +124,7 @@ hedgehog_distracted_result = BufferOnlyResult('hedgehog_distracted_result', True
 scroll_wrong_room_result = BufferOnlyResult('scroll_wrong_room_result', False)
 scroll_no_hedgehog_result = BufferOnlyResult('scroll_no_hedgehog_result', False)
 scroll_crown_not_worn_result = BufferOnlyResult('scroll_crown_not_worn_result', False)
-scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'win', False)
+scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won', False)
 
 
 # name, timer_obj, cmd_override, creature_obj, ceature_item_obj
@@ -153,8 +153,6 @@ hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None,
 hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None, [['take', 'shiny_sword']],
 				None, [hedgehog_guard_cond, pass_thru_cond], [hedgehog_guard_result, pass_result])
 
-# name, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst
-
 big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None, # test obj
 				0, 'post_act_switch', blue_button, ['pushed'], [],
 				[pass_thru_cond], [blue_button_result])
@@ -170,6 +168,15 @@ goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,
 hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_cmd', None,
 				[['give', '*', 'royal_hedgehog'], ['show', '*', 'royal_hedgehog']], None, 
 				[hedgehog_distracted_cond, pass_thru_cond], [hedgehog_distracted_result, pass_result])
+
+kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters,
+				None, 'post_act_cmd', None, [['read', 'kinging_scroll']], None,
+				[],
+				[])
+
+
+# ItemMach name, full_name, root_name, descript_key, writing, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst
+
 
 goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, [goblin_attack_mach],
 				{

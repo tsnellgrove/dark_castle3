@@ -45,13 +45,15 @@ Version 3.66 Goals
 	- DONE: instantiate scroll_no_hedgehog_result of class BufferOnlyResult and run mk_def_pkl()
 	- DONE: instantiate scroll_crown_not_worn_result of class BufferOnlyResult and run mk_def_pkl()
 	- DONE: instantiate scroll_win_game_result of class BufferAndEndResult and run mk_def_pkl()
-- TBD: sort out ending() for ending = 'win'
-- TBD: create custom score based on ending == 'win'
-- TBD: mach
+- INPROC: mach
 	- IDEA: mach = post_act_cmd
-
-- TBD: should the shiny_sword vanish after being given to the royal_hedgehog?
+	- INPROC: instantiate kinging_scroll of class ItemMach and run mk_def_pkl()
+- TBD: Create title() routine and static_dict to be referenced in ending()
+- TBD: create custom score based on ending == 'won'
+- TBD: End description update
+	- IDEA: should the shiny_sword vanish after being given to the royal_hedgehog?
 	- IDEA: sure - but maybe in the end scene, the hedgehog places it before Burt's feet and kneels?
+	- TBD: update ending description
 
 
 ##########################
