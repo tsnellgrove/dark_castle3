@@ -15,7 +15,7 @@ from cond_class_def import (PassThruCond, NotInHandCond, StateCond, InHandAndSta
 from result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 				AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult,
 				TimerAndCreatureItemResult, ChgCreatureDescAndStateResult)
-from mach_class_def import InvisMach, ViewOnlyMach, Warning, Timer
+from mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer
 from creature_class_def import Creature
 from gs_class_def import GameState
 
@@ -64,7 +64,7 @@ hedgehog_broach = Clothes('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedge
 wooden_chest = Container('wooden_chest', 'wooden chest', "chest", 'wooden_chest', None,
 				False, False, brass_key, [bubbly_potion]) # test object
 crystal_box = Container('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy,
-				False, False, silver_key, [kinging_scroll])
+				False, False, silver_key, ['kinging_scroll_temp'])
 ## giftbox = Container('giftbox', 'A pretty gift box', None, False, True, 'none', True, [necklace])
 
 glass_bottle = Jug('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', None, True, [fresh_water])
@@ -171,8 +171,8 @@ hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_
 
 kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters,
 				None, 'post_act_cmd', None, [['read', 'kinging_scroll']], None,
-				[],
-				[])
+				[read_scroll_in_throne_room_cond, read_scroll_hedgehog_exist_cond, read_scroll_crown_worn_cond, read_scroll_win_cond],
+				[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result])
 
 
 # ItemMach name, full_name, root_name, descript_key, writing, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst
@@ -246,6 +246,7 @@ read_scroll_in_throne_room_cond.match_room_name = throne_room
 read_scroll_hedgehog_exist_cond.in_hand_lst = [kinging_scroll]
 read_scroll_hedgehog_exist_cond.exist_obj = royal_hedgehog
 read_scroll_crown_worn_cond.in_hand_lst = [kinging_scroll]
+crystal_box.contains = [kinging_scroll]
 
 ### active_gs is the central store of game info ###
 active_gs = GameState(

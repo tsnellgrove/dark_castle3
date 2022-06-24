@@ -47,7 +47,9 @@ Version 3.66 Goals
 	- DONE: instantiate scroll_win_game_result of class BufferAndEndResult and run mk_def_pkl()
 - INPROC: mach
 	- IDEA: mach = post_act_cmd
-	- INPROC: instantiate kinging_scroll of class ItemMach and run mk_def_pkl()
+	- DONE: instantiate kinging_scroll of class ItemMach and run mk_def_pkl()
+	- TBD: update conditions with match_value variable == False to test for False condition
+	- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
 - TBD: Create title() routine and static_dict to be referenced in ending()
 - TBD: create custom score based on ending == 'won'
 - TBD: End description update
@@ -75,6 +77,8 @@ Version 3.68 Goals
 		- Generalize creature-has-item vs. creature-does-not-have-item Conditions (single primative)
 		- Establish clearer nomenclature for temp variables that will be fully assigned at end (e.g. 'royal_hedgehog-*temp*')
 		- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
+		- Should noun obj methods return a 'success' indicator (for pre & post actions)?
+		- Be able to call noun methods in non_buffer mode purely for pre & post action validation?
 	- TBD: de-dup warning and timer classes
 		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?
 		- IDEA: this makes sense... in all other cases I inherit from simple parents to more complex children

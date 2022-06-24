@@ -219,7 +219,7 @@ class Door(ViewOnly):
 
 		@key.setter
 		def key(self, new_key):
-				self._key = key
+				self._key = new_key
 
 		def examine(self, active_gs):
 				super(Door, self).examine(active_gs)
@@ -276,6 +276,10 @@ class Container(Door):
 		@property
 		def contains(self):
 				return self._contains
+
+		@contains.setter
+		def contains(self, new_obj):
+				self._contains = new_obj
 
 		def contains_append(self, item):
 				self._contains.append(item)
