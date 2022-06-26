@@ -205,10 +205,11 @@ class TimerActiveCond(PassThruCond):
 				return cond_state
 
 class InHandAndRoomCond(PassThruCond):
-		def __init__(self, name, in_hand_lst, match_room_name):
+		def __init__(self, name, in_hand_lst, match_room, match_cond):
 				super().__init__(name)
 				self._in_hand_lst = in_hand_lst # list of items that will meet condition
-				self._match_room_name = match_room_name
+				self._match_room = match_room
+				self._match_cond = match_cond
 				
 		@property
 		def in_hand_lst(self):
@@ -219,20 +220,25 @@ class InHandAndRoomCond(PassThruCond):
 				self._in_hand_lst = new_lst
 
 		@property
-		def match_room_name(self):
-				return self._match_room_name
+		def match_room(self):
+				return self._match_room
 
-		@match_room_name.setter
-		def match_room_name(self, new_obj):
-				self._match_room_name = new_obj
+		@match_room.setter
+		def match_room(self, new_obj):
+				self._match_room = new_obj
+
+		@property
+		def match_cond(self):
+				return self._match_cond
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-				cond_state = False
 				hand_lst = active_gs.get_hand_lst()
 				in_hand = hand_lst[0]
 				room_obj = active_gs.get_room()
-				if (room_obj.name == match_room_name and in_hand in self.in_hand_lst):
-						cond_state == True
+				match_state = room_obj == self.match_room
+				cond_state = False
+				if (self.match_cond == match_state and in_hand in self.in_hand_lst):
+						cond_state = True
 				return cond_state
 
 class InHandAndExistInWorldCond(PassThruCond):

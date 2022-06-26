@@ -48,7 +48,10 @@ Version 3.66 Goals
 - INPROC: mach
 	- IDEA: mach = post_act_cmd
 	- DONE: instantiate kinging_scroll of class ItemMach and run mk_def_pkl()
-	- TBD: update conditions with match_value variable == False to test for False condition
+	- INPROC: update conditions with match_value variable == False to test for False condition
+		- DONE: update InHandAndRoomCond with match_cond
+		- TBD: update InHandAndExistInWorldCond with match_cond
+		- TBD: update InHandAndGarmentWornCond with match_cond
 	- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
 - TBD: Create title() routine and static_dict to be referenced in ending()
 - TBD: create custom score based on ending == 'won'
