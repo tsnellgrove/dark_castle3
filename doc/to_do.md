@@ -48,18 +48,18 @@ Version 3.66 Goals
 - INPROC: mach
 	- IDEA: mach = post_act_cmd
 	- DONE: instantiate kinging_scroll of class ItemMach and run mk_def_pkl()
-	- INPROC: update conditions with match_value variable == False to test for False condition
+	- DONE: update conditions with match_value variable == False to test for False condition
 		- DONE: update InHandAndRoomCond with match_cond
-		- TBD: update InHandAndExistInWorldCond with match_cond
-		- TBD: update InHandAndGarmentWornCond with match_cond
-	- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
-- TBD: Create title() routine and static_dict to be referenced in ending()
+		- DONE: update InHandAndExistInWorldCond with match_cond
+		- DONE: update InHandAndGarmentWornCond with match_cond
+	- INPROC: testing
+		- 'look' post silver_key => index error
 - TBD: create custom score based on ending == 'won'
 - TBD: End description update
 	- IDEA: should the shiny_sword vanish after being given to the royal_hedgehog?
 	- IDEA: sure - but maybe in the end scene, the hedgehog places it before Burt's feet and kneels?
 	- TBD: update ending description
-
+- TBD: Create title() routine and static_dict to be referenced in ending()
 
 ##########################
 ### VERSION 3.68 START ###
@@ -81,6 +81,7 @@ Version 3.68 Goals
 		- Establish clearer nomenclature for temp variables that will be fully assigned at end (e.g. 'royal_hedgehog-*temp*')
 		- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
 		- Should noun obj methods return a 'success' indicator (for pre & post actions)?
+			- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
 		- Be able to call noun methods in non_buffer mode purely for pre & post action validation?
 	- TBD: de-dup warning and timer classes
 		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?

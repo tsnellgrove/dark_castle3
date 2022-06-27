@@ -101,8 +101,8 @@ hedgehog_keeps_sword_cond = StateItemInRoomCond('hedgehog_keeps_sword_cond', Fal
 hedgehog_loses_sword_cond = StateItemInRoomCond('hedgehog_loses_sword_cond', False, shiny_sword, False)
 hedgehog_distracted_cond = TimerActiveCond('hedgehog_timer_active_cond', hedgehog_eats_timer, True)
 read_scroll_in_throne_room_cond = InHandAndRoomCond('read_scroll_in_throne_room_cond', ['kinging_scroll_temp'], 'throne_room_temp', False)
-read_scroll_hedgehog_exist_cond = InHandAndExistInWorldCond('read_scroll_hedgehog_exist_cond', ['kinging_scroll_temp'], 'royal_hedgehog_temp')
-read_scroll_crown_worn_cond = InHandAndGarmentWornCond('read_scroll_crown_worn_cond', ['kinging_scroll_temp'], royal_crown)
+read_scroll_hedgehog_exist_cond = InHandAndExistInWorldCond('read_scroll_hedgehog_exist_cond', ['kinging_scroll_temp'], 'royal_hedgehog_temp', False)
+read_scroll_crown_worn_cond = InHandAndGarmentWornCond('read_scroll_crown_worn_cond', ['kinging_scroll_temp'], royal_crown, False)
 read_scroll_win_cond = PassThruCond('read_scroll_win_cond')
 
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'death', True)
