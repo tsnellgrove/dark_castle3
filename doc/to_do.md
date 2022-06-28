@@ -20,6 +20,7 @@ June 7, 2022
 Version 3.66 Goals
 - create ItemMach class
 - create Conditions, Results, and Machine for kinging_scroll (class == ItemMach)
+- game is now playable at the console
 
 - DONE: create class
 	- DONE: create ItemMach class (identical attributes to ViewOnlyMach)
@@ -64,19 +65,30 @@ Version 3.66 Goals
 	- TBD: update ending description
 - TBD: Create title() routine and static_dict to be referenced in ending()
 
+
+
 ##########################
-### VERSION 3.68 START ###
+### VERSION 3.7x START ###
 ##########################
 
-Version 3.68 Goals
+Version 3.7x Goals
+- Plan out code refactoring
+- Refactor code
+- Unit Testing (link: https://youtu.be/6tNS--WetLI ) ???
+- Introduce non-functional requirement code (e.g. saves and pkl clean-up)
+- Integrate with web template
+
+
+##########################
+### VERSION 3.70 START ###
+##########################
+
+Version 3.70 Goals
 - Clean up creature, machine, warning, and timer coding
 - Create / update program documentation
 
 - TBD: Machine coding clean-up
-	- Maybe make Burt an object before making all the machine changes??
 	- TBD: Machine 2.0 improvement ideas:
-		- for active_gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
-		- eliminate 'hasattrib' for containers in active_gs.scope_lst() too
 		- Have simple, single-test / single-action 'Primative' Conditions and Results: prim_cond and prim_result
 		- Composed Conditions & Results: comp_cond / comp_result == AND / OR of multiple primatives
 		- All results capable of Buffering (rename Result classes appropriately)
@@ -108,6 +120,12 @@ Version 3.68 Goals
 		- Extend trig_check wildcards to 'post_act_cmd' & 'auto_act_cmd'
 		- Extend trig_check wildcards to work with Warnings (or better yet, de-dup Warning's trig_check)
 		- guard against multiple wildcaards per list
+	- Results
+		- extend BufferOnlyResult result_exe method in BufferAndEndResult and BufferAndGiveResult
+		- TBD: extend child methods in results_class_def ?
+		- in machines, should conditions and results just be key-value pairs in a dictionary?
+			- As opposed to needing 2 separate lists with identical indexes?
+	- Shorter cond & result names!!
 
 - TBD: documentation:
 	- TBD: updeate creature doc
@@ -120,16 +138,6 @@ Version 3.68 Goals
 		- hedgehog => state machine idea
 	- TBD: create creature diagram
 
-##########################
-### VERSION 3.7x START ###
-##########################
-
-Version 3.7x Goals
-- Refactor code
-- Unit Testing (link: https://youtu.be/6tNS--WetLI )
-- Introduce non-functional requirement code (e.g. saves and pkl clean-up)
-- Integrate with web template
-
 
 ##########################
 ### VERSION 3.8x START ###
@@ -139,12 +147,12 @@ Version 3.8x Goals
 
 
 
-
 *** DECISIONS TO BE DOCUMENTED ***
 
 *** Timer Decisions ***
 - timers are set by machines rather than triggered by player commands
 - other than providing description text, timers are dumb - they just count -  a machine takes all actions
+
 
 
 *** SOMEDAY MAYBE IDEAS ***
@@ -161,10 +169,8 @@ TBD: Try tupples for descript_dict
 - create 'win' test routine with checksum
 - create a hint sub-system
 TBD: for doors and containers, use None option for no lock or no lid?
-- extend BufferOnlyResult result_exe method in BufferAndEndResult and BufferAndGiveResult
 TBD: learn about Super()
 TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
-TBD: extend child methods in results_class_def ?
 TBD: Jenkins integration to automatically update "v3 alpha" tab with latest commits?
 TBD: list of 'contained' internal_switches in MachMixIn attributes?
 	NOTE: (i.e. add to scope and remove levers & button from features?)
@@ -173,11 +179,14 @@ TBD: re-name 'wrapper' to 'app_main'
 TBD: update pickle names
 TBD: out_buff => output (or possibly user_output)
 - Burt as an object?? (allows elimination of attack_burt() method of Creature class)
+		- Maybe make Burt an object before making all the machine changes??
+		- Burt to be obj type Creature
+		- need to work on 'hand' attributes of Creatures
+		- need a 'cant_drop_lst' for backpack
+- Sort out room listing vs. v2 game
 - How to enable switches and machines to self register for universal scope
 	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
 - possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
-- in machines, should conditions and results just be key-value pairs in a dictionary?
-	- As opposed to needing 2 separate lists with identical indexes?
 - Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
 TBD: what should happen if Burt tries to take the axe from a living goblin? (general case)
 	i.e. should creatures have a visible_inventory_lst that is part of examine scope?
@@ -185,6 +194,9 @@ TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") e
 TBD: no swearing in Dark Castle (with warning or else end of game)
 TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
 TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
+		- for active_gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
+		- eliminate 'hasattrib' for containers in active_gs.scope_lst() too
+		- have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
 - DONE: introduce pre-built "warning" machine? use for 'go south', 'attack hedgehog', 'lift heavy rock', etc
 - does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
 - change hand from list to string
