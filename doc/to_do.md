@@ -53,7 +53,10 @@ Version 3.66 Goals
 		- DONE: update InHandAndExistInWorldCond with match_cond
 		- DONE: update InHandAndGarmentWornCond with match_cond
 	- INPROC: testing
-		- 'look' post silver_key => index error
+		- DONE: 'look' post silver_key => index error
+		- CANCEL: need to update active_gs.mach_obj_lst() to check for class ItemMach
+		- FINDING: kinging_scroll not triggering on read but should show as a mach (hasattrib trigger_type)
+		- TBD: print out machs found from post_action and troubleshoot
 - TBD: create custom score based on ending == 'won'
 - TBD: End description update
 	- IDEA: should the shiny_sword vanish after being given to the royal_hedgehog?
@@ -70,7 +73,10 @@ Version 3.68 Goals
 - Create / update program documentation
 
 - TBD: Machine coding clean-up
+	- Maybe make Burt an object before making all the machine changes??
 	- TBD: Machine 2.0 improvement ideas:
+		- for active_gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
+		- eliminate 'hasattrib' for containers in active_gs.scope_lst() too
 		- Have simple, single-test / single-action 'Primative' Conditions and Results: prim_cond and prim_result
 		- Composed Conditions & Results: comp_cond / comp_result == AND / OR of multiple primatives
 		- All results capable of Buffering (rename Result classes appropriately)

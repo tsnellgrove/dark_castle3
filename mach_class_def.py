@@ -53,7 +53,7 @@ class MachineMixIn(object):
 
 		# formats trigger state into trig_key_lst based on case and returns true if trig_key_lst is in trig_vals_lst
 		def trig_check(self, active_gs, case, word_lst):
-				trig_key_lst = 'not_valid'
+				trig_key_lst = ['not_valid']
 				if case == 'go':
 						trig_key_lst = [word_lst[1], word_lst[2]]
 				elif case == '2word':
@@ -68,7 +68,8 @@ class MachineMixIn(object):
 						trig_key_lst = word_lst[0]
 
 				# wildcard sub-routine
-				if self.trigger_type == 'pre_act_cmd':
+				if (self.trigger_type == 'pre_act_cmd' and
+								len(trig_key_lst) == len(self.trig_vals_lst)): # added to avoid index out of range error
 						wcard_lst = copy.deepcopy(self.trig_vals_lst)
 						wcard_case = False
 						for lst_index, lst_val in enumerate(wcard_lst):
