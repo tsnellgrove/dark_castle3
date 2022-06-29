@@ -1,6 +1,6 @@
-# program: dark castle v3.64
+# program: dark castle v3.66
 # name: Tom Snellgrove
-# date: June 7, 2022
+# date: June 29, 2022
 # description: default object instantiation module (used as a tool)
 
 
@@ -48,7 +48,7 @@ bubbly_potion = Item('bubbly_potion', 'bubbly potion', "potion", 'bubbly_potion'
 torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwriting)
 grimy_axe = Item('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing)
 silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None)
-# kinging_scroll = Item('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters)
+## kinging_scroll = Item('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters) # old scroll
 random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random_mcguffin', None)
 
 cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 'cheese_eat')
@@ -127,8 +127,6 @@ scroll_crown_not_worn_result = BufferOnlyResult('scroll_crown_not_worn_result', 
 scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won', False)
 
 
-# name, timer_obj, cmd_override, creature_obj, ceature_item_obj
-
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
 
 attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd', [['attack', 'royal_hedgehog']], 3, 0)
@@ -175,9 +173,6 @@ kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging
 				[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result])
 
 
-# ItemMach name, full_name, root_name, descript_key, writing, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst
-
-
 goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, [goblin_attack_mach],
 				{
 						shiny_sword : 'show_goblin_shiny_sword',
@@ -199,8 +194,6 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 				},
 				[grimy_axe, torn_note], dead_goblin)
 
-# name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict,
-#		attack_creature_dict, attack_burt_dict, creature_items_lst, dead_creature_obj
 
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None, None,
 				[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_done_eating_mach, hedgehog_distracted_mach],
@@ -213,8 +206,6 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 						stale_biscuits : {'response_key' : 'give_hedgehog_biscuits', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : 'hedgehog_eating'}
 				},
 				{
-#						shiny_sword : {'result_code' : 'creature_flee', 'response_key' : 'hedgehog_flees'},
-#						'def_attack' : {'result_code' : None, 'response_key' : 'hedgehog_dodges'}
 						'def_attack' : {'result_code' : 'creature_flee', 'response_key' : 'hedgehog_flees'}
 				},
 				{},
@@ -230,8 +221,6 @@ antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', N
 				{'north' : iron_portcullis}, [])
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
 				[throne, crystal_box, iron_portcullis], {'south' : iron_portcullis}, [broach_dispenser_mach])
-
-# hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, royal_hedgehog)
 
 
 # *** 'object not defined' re-assignment ***

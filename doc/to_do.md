@@ -1,6 +1,6 @@
 To Do List - Dark Castle v3
 
-June 7, 2022
+June 29, 2022
 
 
 *** How to Add Objects ***
@@ -15,51 +15,12 @@ June 7, 2022
 *** NOTES ***
 
 ##########################
-### VERSION 3.66 START ###
+### VERSION 3.68 START ###
 ##########################
-Version 3.66 Goals
-- create ItemMach class
-- create Conditions, Results, and Machine for kinging_scroll (class == ItemMach)
-- game is now playable at the console
+Version 3.68 Goals
+- finish replicating original game
+- in-depth testing
 
-- DONE: create class
-	- DONE: create ItemMach class (identical attributes to ViewOnlyMach)
-	- DONE: in mach_class_def(), import Item class from noun_class_def()
-- DONE: big picture:
-	- trigger == read letters
-	- conditions == kinging_scroll in hand and:
-		- if room != throne_room => wrong_room_error
-		- elif hedgehog not exist => no_hedgehog_error
-		- elif royal_crown not worn => crown_not_worn_error
-		- else win_game, score += 15, end_game
-- DONE: conditions
-	- DONE: create Condition class InHandAndRoomCond and import class in mk_def_pkl()
-	- DONE: create Condition class InHandAndExistInWorldCond and import class in mk_def_pkl()
-	- DONE: create InHandAndGarmentWornCond and import class in mk_def_pkl()
-	- DONE: instantiate read_scroll_in_throne_room_cond of class InHandAndRoomCond and run mk_def_pkl()
-	- DONE: instantiate read_scroll_hedgehog_exist_cond of class InHandAndExistInWorldCond and run mk_def_pkl()
-	- DONE: instantiate read_scroll_crown_worn_cond of class InHandAndGarmentWornCond and run mk_def_pkl()
-	- DONE: instantiate read_scroll_win_cond of class PassThruCond and run mk_def_pkl()
-- DONE: results
-	- CANCEL: create Result class WinGameResult and import class in mk_def_pkl() [use class BufferAndEndResult instead]
-	- DONE: instantiate scroll_wrong_room_result of class BufferOnlyResult and run mk_def_pkl()
-	- DONE: instantiate scroll_no_hedgehog_result of class BufferOnlyResult and run mk_def_pkl()
-	- DONE: instantiate scroll_crown_not_worn_result of class BufferOnlyResult and run mk_def_pkl()
-	- DONE: instantiate scroll_win_game_result of class BufferAndEndResult and run mk_def_pkl()
-- DONE: mach
-	- IDEA: mach = post_act_cmd
-	- DONE: instantiate kinging_scroll of class ItemMach and run mk_def_pkl()
-	- DONE: update conditions with match_value variable == False to test for False condition
-		- DONE: update InHandAndRoomCond with match_cond
-		- DONE: update InHandAndExistInWorldCond with match_cond
-		- DONE: update InHandAndGarmentWornCond with match_cond
-	- DONE: testing
-		- DONE: 'look' post silver_key => index error
-		- CANCEL: need to update active_gs.mach_obj_lst() to check for class ItemMach
-		- FINDING: kinging_scroll not triggering on read but should show as a mach (hasattrib trigger_type)
-		- DONE: print out machs found from post_action and troubleshoot => trigger_val => ['read','illuminated_letters']
-		- DONE: correct re-assignment variable for 1st Condition
-		- TBD: clean up comments
 - TBD: create custom score based on ending == 'won'
 - TBD: End description update
 	- IDEA: should the shiny_sword vanish after being given to the royal_hedgehog?
@@ -67,7 +28,7 @@ Version 3.66 Goals
 	- TBD: update ending description
 	- TBD: also update hedgehog key trade to place key in Burt's hand
 - TBD: Create title() routine and static_dict to be referenced in ending()
-
+- TBD: remove big_bomb test object
 
 
 ##########################

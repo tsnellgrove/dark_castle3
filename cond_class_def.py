@@ -1,6 +1,6 @@
-# program: dark castle v3.64
+# program: dark castle v3.66
 # name: Tom Snellgrove
-# date: June 7, 2022
+# date: June 29, 2022
 # description: class deffinition module for Conditions
 
 
@@ -269,11 +269,9 @@ class InHandAndExistInWorldCond(PassThruCond):
 				return self._match_cond
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-#				cond_state = False
 				hand_lst = active_gs.get_hand_lst()
 				in_hand = hand_lst[0]
 				if in_hand not in self.in_hand_lst:
-#						return cond_state
 						return False
 				match_state = False
 				for room in active_gs.room_lst:
@@ -305,14 +303,10 @@ class InHandAndGarmentWornCond(PassThruCond):
 				return self._match_cond
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-#				cond_state = False
 				hand_lst = active_gs.get_hand_lst()
 				in_hand = hand_lst[0]
 				if in_hand not in self.in_hand_lst:
 						return False
 				worn_lst = active_gs.get_worn_lst()
 				match_state = self.worn_garment in worn_lst
-#				if (self.match_cond == match_state and in_hand in self.in_hand_lst):
-#						cond_state == True
-#				return cond_state
 				return match_state == self.match_cond
