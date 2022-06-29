@@ -22,13 +22,17 @@ Version 3.68 Goals
 - in-depth testing
 
 - TBD: create custom score based on ending == 'won'
+- TBD: Create title() routine and static_dict to be referenced in ending()
+- TBD: for kinging_scroll mach, correct cond from 'scroll in hand' to 'scroll in room scope'
+- TBD: remove big_bomb test object
 - TBD: End description update
 	- IDEA: should the shiny_sword vanish after being given to the royal_hedgehog?
 	- IDEA: sure - but maybe in the end scene, the hedgehog places it before Burt's feet and kneels?
 	- TBD: update ending description
-	- TBD: also update hedgehog key trade to place key in Burt's hand
-- TBD: Create title() routine and static_dict to be referenced in ending()
-- TBD: remove big_bomb test object
+- TBD: also update hedgehog key trade to place key in Burt's hand
+
+
+
 
 
 ##########################
