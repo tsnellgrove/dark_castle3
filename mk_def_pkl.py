@@ -170,7 +170,7 @@ hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_
 				[hedgehog_distracted_cond, pass_thru_cond], [hedgehog_distracted_result, pass_result])
 
 kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters,
-				None, 'post_act_cmd', None, [['read', 'kinging_scroll']], None,
+				None, 'post_act_cmd', None, [['read', 'illuminated_letters']], None,
 				[read_scroll_in_throne_room_cond, read_scroll_hedgehog_exist_cond, read_scroll_crown_worn_cond, read_scroll_win_cond],
 				[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result])
 
@@ -242,7 +242,7 @@ start_hedgehog_timer_results.creature_obj = royal_hedgehog
 fed_hedgehog_keeps_sword_result.creature_obj = royal_hedgehog
 fed_hedgehog_loses_sword_result.creature_obj = royal_hedgehog
 read_scroll_in_throne_room_cond.in_hand_lst = [kinging_scroll]
-read_scroll_in_throne_room_cond.match_room_name = throne_room
+read_scroll_in_throne_room_cond.match_room = throne_room
 read_scroll_hedgehog_exist_cond.in_hand_lst = [kinging_scroll]
 read_scroll_hedgehog_exist_cond.exist_obj = royal_hedgehog
 read_scroll_crown_worn_cond.in_hand_lst = [kinging_scroll]

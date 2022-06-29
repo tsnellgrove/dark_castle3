@@ -19,6 +19,8 @@ def post_action(active_gs, case, word_lst):
 								local_override = obj.run_mach(active_gs)
 
 				if obj.trigger_type == 'post_act_cmd':
+#						print("is of type post_act_cmd: " + str(obj))
 						if obj.trig_check(active_gs, case, word_lst):
+#								print("passes trig_check(): " + str(obj))
 								local_override = obj.run_mach(active_gs)
 
