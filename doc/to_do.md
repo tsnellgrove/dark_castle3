@@ -21,7 +21,9 @@ Version 3.68 Goals
 - finish replicating original game
 - in-depth testing
 
-- TBD: create custom score based on ending == 'won'
+- DONE: update score()
+	- DONE: create custom score based on ending == 'won'
+	- DONE: add in 5 pts for defeating goblin (to get to 75 total)
 - TBD: Create title() routine and static_dict to be referenced in ending()
 - TBD: for kinging_scroll mach, correct cond from 'scroll in hand' to 'scroll in room scope'
 - TBD: remove big_bomb test object
@@ -30,6 +32,7 @@ Version 3.68 Goals
 	- IDEA: sure - but maybe in the end scene, the hedgehog places it before Burt's feet and kneels?
 	- TBD: update ending description
 - TBD: also update hedgehog key trade to place key in Burt's hand
+- "beginner's mind" testing
 
 
 

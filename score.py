@@ -16,7 +16,9 @@ score_val_dict = {
 		'kinging_scroll' : 5,
 		'royal_crown' : 10,
 		'hedgehog_broach' : 5,
-		'hedgehog_attack' : -20
+		'hedgehog_attack' : -20,
+		'game_won' : 15,
+		'goblin_dead' : 5
 }
 
 item_score_lst = [
@@ -78,5 +80,19 @@ def score(active_gs):
 				active_gs.update_score(points)
 				active_gs.set_points_earned_state(score_key, True)
 				active_gs.print_score()
+
+		score_key = 'goblin_dead'
+		if (active_gs.obj_name_exist('dead_goblin') 
+						and active_gs.get_points_earned_state(score_key) == False):
+				points = score_val_dict[score_key]
+				active_gs.update_score(points)
+				active_gs.set_points_earned_state(score_key, True)
+				active_gs.print_score()
+
+		score_key = 'game_won'
+		game_ending = active_gs.get_game_ending()
+		if game_ending == 'won':
+				points = score_val_dict[score_key]
+				active_gs.update_score(points)
 
 		return

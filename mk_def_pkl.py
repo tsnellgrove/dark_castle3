@@ -256,7 +256,8 @@ active_gs = GameState(
 				'kinging_scroll' : False,
 				'royal_crown' : False,
 				'hedgehog_broach' : False,
-				'hedgehog_attack' : False
+				'hedgehog_attack' : False,
+				'goblin_dead' : False
 		},
 		{'universal' : [backpack, burt, fist, conscience]},
 		{
