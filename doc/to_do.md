@@ -25,7 +25,10 @@ Version 3.68 Goals
 	- DONE: create custom score based on ending == 'won'
 	- DONE: add in 5 pts for defeating goblin (to get to 75 total)
 - TBD: Create title() routine and static_dict to be referenced in ending()
-- TBD: for kinging_scroll mach, correct cond from 'scroll in hand' to 'scroll in room scope'
+- TBD: sort out kinging_scroll machine implementation
+	- IDEA: for kinging_scroll mach, correct cond from 'scroll in hand' to 'scroll in room scope'?
+	- IDEA: Does the 'error' case eliminate the need for "noun testing" / "scroll in scope" in post_action(); Can I drop term?
+	- TBD: test
 - TBD: remove big_bomb test object
 - TBD: End description update
 	- IDEA: should the shiny_sword vanish after being given to the royal_hedgehog?
