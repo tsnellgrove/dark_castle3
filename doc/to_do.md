@@ -35,6 +35,8 @@ Version 3.68 Goals
 			- DONE: dedup RoomCond()
 			- DONE: comment clean-up
 		- TBD: InHandAndExistInWorldCond() => InWorldCond()
+			- DONE: refactor
+			- TBD: comment clean-up
 		- TBD: InHandAndGarmentWornCond => WornCond()
 - TBD: remove big_bomb test object
 - TBD: match DCv3 room description to DCv2
