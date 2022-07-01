@@ -125,19 +125,19 @@ class LeverArrayCond(SwitchStateCond):
 						current_val += temp_val
 				return current_val == target_val
 
-class RoomCond(PassThruCond):
-		def __init__(self, name, match_room_name):
-				super().__init__(name)
-				self._match_room_name = match_room_name # room being checked for
+# class RoomCond(PassThruCond):
+#		def __init__(self, name, match_room_name):
+#				super().__init__(name)
+#				self._match_room_name = match_room_name # room being checked for
 
-		@property
-		def match_room_name(self):
-				return self._match_room_name
+#		@property
+#		def match_room_name(self):
+#				return self._match_room_name
 
-		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-				room_obj = active_gs.get_room()
-				room_name = room_obj.name
-				return room_name == self.match_room_name
+#		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+#				room_obj = active_gs.get_room()
+#				room_name = room_obj.name
+#				return room_name == self.match_room_name
 
 class NotTimerAndItemCond(PassThruCond):
 		def __init__(self, name, timer_obj, item_obj):
@@ -204,7 +204,7 @@ class TimerActiveCond(PassThruCond):
 				cond_state = self.timer_obj.active == self.timer_active_bool
 				return cond_state
 
-class RoomCond2(PassThruCond):
+class RoomCond(PassThruCond):
 		def __init__(self, name, match_room, match_cond):
 				super().__init__(name)
 				self._match_room = match_room

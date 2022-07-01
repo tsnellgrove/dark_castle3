@@ -31,8 +31,11 @@ Version 3.68 Goals
 	- IDEA: kinging_scroll *is* the machine... so if it can be *run* it can be *read* => no need for item check!!!
 	- INPROC: eliminate item element of scroll Conditions
 		- DONE: InHandAndRoomCond() => RoomCond()
-		- DONE: comment clean-up
-		- TBD: dedup RoomCond()
+			- DONE: comment clean-up
+			- DONE: dedup RoomCond()
+			- TBD: comment clean-up
+		- TBD: InHandAndExistInWorldCond() => InWorldCond()
+		- TBD: InHandAndGarmentWornCond => WornCond()
 - TBD: remove big_bomb test object
 - TBD: End description update
 	- IDEA: should the shiny_sword vanish after being given to the royal_hedgehog?

@@ -9,8 +9,8 @@ import pickle
 from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from cond_class_def import (PassThruCond, NotInHandCond, StateCond, InHandAndStateCond,
-				SwitchStateCond, LeverArrayCond, RoomCond, CreatureItemCond, NotTimerAndItemCond,
-				StateItemInRoomCond, TimerActiveCond, RoomCond2, InHandAndExistInWorldCond,
+				SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
+				StateItemInRoomCond, TimerActiveCond, RoomCond, InHandAndExistInWorldCond,
 				InHandAndGarmentWornCond)
 from result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 				AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult,
@@ -94,13 +94,13 @@ throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
 correct_lever_array_cond = LeverArrayCond('correct_lever_array_cond', [4,2,1])
 wrong_lever_array_cond = PassThruCond('wrong_lever_array_cond')
-goblin_in_antechamber_cond = RoomCond('goblin_in_antechamber', 'antechamber')
+goblin_in_antechamber_cond = RoomCond('goblin_in_antechamber', 'antechamber_temp', True)
 hedgehog_has_biscuit_cond = CreatureItemCond('hedgehog_has_biscuit_cond', 'royal_hedgehog', stale_biscuits)
 hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_timer, shiny_sword)
 hedgehog_keeps_sword_cond = StateItemInRoomCond('hedgehog_keeps_sword_cond', False, shiny_sword, True)
 hedgehog_loses_sword_cond = StateItemInRoomCond('hedgehog_loses_sword_cond', False, shiny_sword, False)
 hedgehog_distracted_cond = TimerActiveCond('hedgehog_timer_active_cond', hedgehog_eats_timer, True)
-scroll_in_throne_room_cond = RoomCond2('scroll_in_throne_room_cond', 'throne_room_temp', False)
+scroll_in_throne_room_cond = RoomCond('scroll_in_throne_room_cond', 'throne_room_temp', False)
 read_scroll_hedgehog_exist_cond = InHandAndExistInWorldCond('read_scroll_hedgehog_exist_cond', ['kinging_scroll_temp'], 'royal_hedgehog_temp', False)
 read_scroll_crown_worn_cond = InHandAndGarmentWornCond('read_scroll_crown_worn_cond', ['kinging_scroll_temp'], royal_crown, False)
 read_scroll_win_cond = PassThruCond('read_scroll_win_cond')
@@ -231,6 +231,7 @@ start_hedgehog_timer_results.creature_obj = royal_hedgehog
 fed_hedgehog_keeps_sword_result.creature_obj = royal_hedgehog
 fed_hedgehog_loses_sword_result.creature_obj = royal_hedgehog
 scroll_in_throne_room_cond.match_room = throne_room
+goblin_in_antechamber_cond.match_room = antechamber
 read_scroll_hedgehog_exist_cond.in_hand_lst = [kinging_scroll]
 read_scroll_hedgehog_exist_cond.exist_obj = royal_hedgehog
 read_scroll_crown_worn_cond.in_hand_lst = [kinging_scroll]
