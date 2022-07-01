@@ -28,7 +28,11 @@ Version 3.68 Goals
 - TBD: sort out kinging_scroll machine implementation
 	- IDEA: for kinging_scroll mach, correct cond from 'scroll in hand' to 'scroll in room scope'?
 	- IDEA: Does the 'error' case eliminate the need for "noun testing" / "scroll in scope" in post_action(); Can I drop term?
-	- TBD: test
+	- IDEA: kinging_scroll *is* the machine... so if it can be *run* it can be *read* => no need for item check!!!
+	- INPROC: eliminate item element of scroll Conditions
+		- DONE: InHandAndRoomCond() => RoomCond()
+		- TBD: comment clean-up
+		- TBD: dedup RoomCond()
 - TBD: remove big_bomb test object
 - TBD: End description update
 	- IDEA: should the shiny_sword vanish after being given to the royal_hedgehog?
