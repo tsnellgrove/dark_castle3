@@ -71,6 +71,7 @@ Version 3.70 Goals
 
 - TBD: Machine coding clean-up
 	- TBD: Machine 2.0 improvement ideas:
+		- Do we really need to test for goblin in antechamber??? (will the goblin ever move)
 		- Have simple, single-test / single-action 'Primative' Conditions and Results: prim_cond and prim_result
 		- Composed Conditions & Results: comp_cond / comp_result == AND / OR of multiple primatives
 		- All results capable of Buffering (rename Result classes appropriately)
@@ -165,6 +166,10 @@ TBD: out_buff => output (or possibly user_output)
 		- Burt to be obj type Creature
 		- need to work on 'hand' attributes of Creatures
 		- need a 'cant_drop_lst' for backpack
+		- Burt to be in room features
+		- backpack to be open container
+		- creature in_hand obj to be in features and in creature description (same for 'worn')
+		- provides elegant inventory solution
 - Sort out room listing vs. v2 game
 - How to enable switches and machines to self register for universal scope
 	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
