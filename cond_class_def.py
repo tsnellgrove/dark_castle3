@@ -62,7 +62,6 @@ class CreatureItemCond(PassThruCond):
 				cond_state = self.item_obj in self.creature_obj.creature_items_lst
 				return cond_state
 
-
 class StateCond(PassThruCond):
 		def __init__(self, name, mach_state_cond):
 				super().__init__(name)
@@ -124,20 +123,6 @@ class LeverArrayCond(SwitchStateCond):
 						temp_val = temp_val * self.switch_state_val_lst[index_num]
 						current_val += temp_val
 				return current_val == target_val
-
-# class RoomCond(PassThruCond):
-#		def __init__(self, name, match_room_name):
-#				super().__init__(name)
-#				self._match_room_name = match_room_name # room being checked for
-
-#		@property
-#		def match_room_name(self):
-#				return self._match_room_name
-
-#		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-#				room_obj = active_gs.get_room()
-#				room_name = room_obj.name
-#				return room_name == self.match_room_name
 
 class NotTimerAndItemCond(PassThruCond):
 		def __init__(self, name, timer_obj, item_obj):
