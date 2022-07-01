@@ -34,11 +34,14 @@ Version 3.68 Goals
 			- DONE: comment clean-up
 			- DONE: dedup RoomCond()
 			- DONE: comment clean-up
-		- TBD: InHandAndExistInWorldCond() => InWorldCond()
+		- DONE: InHandAndExistInWorldCond() => InWorldCond()
 			- DONE: refactor
-			- TBD: comment clean-up
+			- DONE: comment clean-up
 		- TBD: InHandAndGarmentWornCond => WornCond()
+			- TBD: refactor
+			- TBD: comment clean-up
 - TBD: remove big_bomb test object
+- TBD: eliminate RoomCond from goblin_attack machine?
 - TBD: match DCv3 room description to DCv2
 - TBD: End description update
 	- IDEA: should the shiny_sword vanish after being given to the royal_hedgehog?
