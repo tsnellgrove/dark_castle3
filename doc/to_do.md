@@ -31,7 +31,7 @@ Version 3.68 Goals
 	- IDEA: kinging_scroll *is* the machine... so if it can be *run* it can be *read* => no need for item check!!!
 	- INPROC: eliminate item element of scroll Conditions
 		- DONE: InHandAndRoomCond() => RoomCond()
-		- TBD: comment clean-up
+		- DONE: comment clean-up
 		- TBD: dedup RoomCond()
 - TBD: remove big_bomb test object
 - TBD: End description update

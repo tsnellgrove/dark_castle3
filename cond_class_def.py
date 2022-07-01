@@ -204,22 +204,11 @@ class TimerActiveCond(PassThruCond):
 				cond_state = self.timer_obj.active == self.timer_active_bool
 				return cond_state
 
-# class InHandAndRoomCond(PassThruCond):
-#		def __init__(self, name, in_hand_lst, match_room, match_cond):
 class RoomCond2(PassThruCond):
 		def __init__(self, name, match_room, match_cond):
 				super().__init__(name)
-#				self._in_hand_lst = in_hand_lst # list of items that will meet condition
 				self._match_room = match_room
 				self._match_cond = match_cond
-				
-#		@property
-#		def in_hand_lst(self):
-#				return self._in_hand_lst
-
-#		@in_hand_lst.setter
-#		def in_hand_lst(self, new_lst):
-#				self._in_hand_lst = new_lst
 
 		@property
 		def match_room(self):
@@ -235,13 +224,8 @@ class RoomCond2(PassThruCond):
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				hand_lst = active_gs.get_hand_lst()
-#				in_hand = hand_lst[0]
 				room_obj = active_gs.get_room()
 				match_state = room_obj == self.match_room
-#				cond_state = False
-#				if (self.match_cond == match_state and in_hand in self.in_hand_lst):
-#						cond_state = True
-#				return cond_state
 				return self.match_cond == match_state
 
 class InHandAndExistInWorldCond(PassThruCond):
