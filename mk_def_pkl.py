@@ -78,9 +78,10 @@ middle_lever = LeverSwitch('middle_lever', 'Middle Lever', 'lever', 'middle_leve
 right_lever = LeverSwitch('right_lever', 'Right Lever', 'lever', 'right_lever', None, 'down', None, None)
 red_button = ButtonSwitch('red_button', 'Red Button', 'button', 'red_button', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset')
 
-blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset') # test obj
+## blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button',
+##				None, 'neutral', 'neutral', 'pre_act_auto_switch_reset') # test obj
 
-test_timer = Timer('test_timer', 'auto_act', False, 0, 3, 'variable', False, blue_button) # test obj
+## test_timer = Timer('test_timer', 'auto_act', False, 0, 3, 'variable', False, blue_button) # test obj
 hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, 'royal_hedgehog')
 
 
@@ -113,7 +114,7 @@ throne_pull_result = AddObjToRoomResult('throne_pull_result', hedgehog_broach, F
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
 portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', False)
 antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks_result', 'goblin_placeholder', True)
-blue_button_result = StartTimerResult('blue_button_result', test_timer, False) # test obj
+## blue_button_result = StartTimerResult('blue_button_result', test_timer, False) # test obj
 start_hedgehog_timer_results = TimerAndCreatureItemResult('start_hedgehog_timer_results', hedgehog_eats_timer, False, 'royal_hedgehog', stale_biscuits)
 pass_result = BufferOnlyResult('pass_result', False)
 hedgehog_guard_result = BufferOnlyResult('hedgehog_guard_result', True)
@@ -150,9 +151,9 @@ hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None,
 hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None, [['take', 'shiny_sword']],
 				None, [hedgehog_guard_cond, pass_thru_cond], [hedgehog_guard_result, pass_result])
 
-big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None, # test obj
-				0, 'post_act_switch', blue_button, ['pushed'], [],
-				[pass_thru_cond], [blue_button_result])
+## big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None, # test obj
+##				0, 'post_act_switch', blue_button, ['pushed'], [],
+##				[pass_thru_cond], [blue_button_result])
 
 hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', 0, 'pre_act_timer', hedgehog_eats_timer, [True], None,
 				[hedgehog_keeps_sword_cond, hedgehog_loses_sword_cond, pass_thru_cond],
@@ -211,13 +212,17 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 				[silver_key], None)
 
 
-entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat, blue_button],
-				[front_gate, big_bomb], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn])
+entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
+				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn])
+				# note: for timer testing, big_bomb was in entrance.room_obj_lst and blue_button was in entrance.features
+
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
 				[shiny_sword, front_gate, royal_hedgehog], {'south' : front_gate}, [])
+
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
 				[alcove, left_lever, middle_lever, right_lever, red_button], [iron_portcullis, control_panel, goblin_guard],
 				{'north' : iron_portcullis}, [])
+
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
 				[throne, crystal_box, iron_portcullis], {'south' : iron_portcullis}, [broach_dispenser_mach])
 
@@ -268,14 +273,15 @@ active_gs = GameState(
 				'room' : entrance,
 				'out_buff' : ""
 		},
-		[test_timer, hedgehog_eats_timer],
+##		[test_timer, hedgehog_eats_timer], # timer test universal obj
+		[hedgehog_eats_timer],
 		[entrance, main_hall, antechamber, throne_room]
 )
 
 ### instantiated objects added to list ###
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible obj referenced in room.invis_obj_lst need not be listed ###
-master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, blue_button, big_bomb, royal_hedgehog, goblin_guard, entrance, main_hall, antechamber, throne_room]
+master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, goblin_guard, entrance, main_hall, antechamber, throne_room]
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:

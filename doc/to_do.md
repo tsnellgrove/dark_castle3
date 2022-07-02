@@ -40,15 +40,14 @@ Version 3.68 Goals
 		- DONE: InHandAndGarmentWornCond => WornCond()
 			- DONE: refactor
 			- DONE: comment clean-up
-- TBD: remove big_bomb test object
+- DONE: remove big_bomb test object
 - TBD: eliminate RoomCond from goblin_attack machine?
 - TBD: match DCv3 room description to DCv2
-- TBD: End description update
-	- IDEA: should the shiny_sword vanish after being given to the royal_hedgehog?
-	- IDEA: sure - but maybe in the end scene, the hedgehog places it before Burt's feet and kneels?
-	- TBD: update ending description
-- TBD: also update hedgehog key trade to place key in Burt's hand
-- "beginner's mind" testing
+- TBD: description updates
+	- TBD: in the end scene, the hedgehog places the sword before Burt's feet and kneels?
+	- TBD: also update hedgehog key trade to place key in Burt's hand
+	- TBD: highlight in Moat description how east or west off the drawbridge will lead to a fall into the moat
+- TBD: "beginner's mind" testing
 
 
 
