@@ -25,7 +25,7 @@ Version 3.68 Goals
 	- DONE: create custom score based on ending == 'won'
 	- DONE: add in 5 pts for defeating goblin (to get to 75 total)
 - DONE: Create title() routine and static_dict to be referenced in ending()
-- INPROC: sort out kinging_scroll machine implementation
+- DONE: sort out kinging_scroll machine implementation
 	- IDEA: for kinging_scroll mach, correct cond from 'scroll in hand' to 'scroll in room scope'?
 	- IDEA: Does the 'error' case eliminate the need for "noun testing" / "scroll in scope" in post_action(); Can I drop term?
 	- IDEA: kinging_scroll *is* the machine... so if it can be *run* it can be *read* => no need for item check!!!
@@ -37,9 +37,9 @@ Version 3.68 Goals
 		- DONE: InHandAndExistInWorldCond() => InWorldCond()
 			- DONE: refactor
 			- DONE: comment clean-up
-		- INPROC: InHandAndGarmentWornCond => WornCond()
+		- DONE: InHandAndGarmentWornCond => WornCond()
 			- DONE: refactor
-			- TBD: comment clean-up
+			- DONE: comment clean-up
 - TBD: remove big_bomb test object
 - TBD: eliminate RoomCond from goblin_attack machine?
 - TBD: match DCv3 room description to DCv2

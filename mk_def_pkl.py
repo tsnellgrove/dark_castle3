@@ -101,7 +101,6 @@ hedgehog_loses_sword_cond = StateItemInRoomCond('hedgehog_loses_sword_cond', Fal
 hedgehog_distracted_cond = TimerActiveCond('hedgehog_timer_active_cond', hedgehog_eats_timer, True)
 scroll_not_in_throne_room_cond = RoomCond('scroll_not_in_throne_room_cond', 'throne_room_temp', False)
 hedgehog_not_exist_cond = InWorldCond('hedgehog_not_exist_cond', 'royal_hedgehog_temp', False)
-# read_scroll_crown_worn_cond = InHandAndGarmentWornCond('read_scroll_crown_worn_cond', ['kinging_scroll_temp'], royal_crown, False)
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, False)
 read_scroll_win_cond = PassThruCond('read_scroll_win_cond')
 
@@ -233,7 +232,6 @@ fed_hedgehog_loses_sword_result.creature_obj = royal_hedgehog
 scroll_not_in_throne_room_cond.match_room = throne_room
 goblin_in_antechamber_cond.match_room = antechamber
 hedgehog_not_exist_cond.exist_obj = royal_hedgehog
-# read_scroll_crown_worn_cond.in_hand_lst = [kinging_scroll]
 crystal_box.contains = [kinging_scroll]
 
 ### active_gs is the central store of game info ###
