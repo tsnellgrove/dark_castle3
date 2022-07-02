@@ -71,7 +71,55 @@ Version 3.7x Goals
 ##########################
 
 Version 3.70 Goals
-- Clean up creature, machine, warning, and timer coding
+- refactor Burt as a creature object
+
+Burt as an object
+- why?
+	- allows elimination of attack_burt() method of Creature class
+	- suddenly inventory becomes much more elegant
+	- this is the way
+- when?
+	- Maybe make Burt an object before making all the machine changes??
+	- this is a big refactor => do this first
+- how?
+	- Burt to be obj type Creature
+
+- burt refactor order
+	0) full review of all active_gs attributes to be moved to burt_obj
+	1) update existing creatures (e.g. hand)
+		- need to work on 'hand' attributes of Creatures
+		- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
+		- creature 'worn' attribute
+		- TBD: what should happen if Burt tries to take the axe from a living goblin? (general case)
+			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [no, just 'hand' unless boolean 'True']
+		- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
+		- change hand from list to string
+		- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
+		- creature attribute for inventory_visible == True / False
+		- - this is the chance to make 'hand' an obj rather than a lst !!
+		- creatures can have 'invisible' attribute for machs (like rooms)
+		- if you try to take an obj from a creature's hand => 'The X belongs to the Y'
+		- creatures could have a 'features' attribute (like rooms) for ViewOnly attributes (e.g. burt's 'conscince', princess 'poise')
+	2) instantiate burt_obj
+	3) integrate burt with active_gs (get_hero method)
+		- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict
+	4) move burt_obj from room to room (features attribute) when active_gs moves
+		- Burt to be in room features
+	5) universal descriptors => burt_obj
+	6) updaate burt hand & inventory changes in parallel to active_gs (create setter methods for creatures)
+	7) update module-by-module to read from active_gs to burt_obj (create getter methods for creatures)
+	8) eliminate attack_burt method
+	9) comment out active_gs hand & inv updates
+	10) lots of testing!!!
+	11) clean-up comments
+
+
+##########################
+### VERSION 3.72 START ###
+##########################
+
+Version 3.72 Goals
+- Clean up machine, warning, and timer coding
 - Create / update program documentation
 
 - TBD: Machine coding clean-up
@@ -89,6 +137,8 @@ Version 3.70 Goals
 		- Should noun obj methods return a 'success' indicator (for pre & post actions)?
 			- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
 		- Be able to call noun methods in non_buffer mode purely for pre & post action validation?
+		- for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
+		- each 'primitive' cond only tests for *one* thing (but state of that thing is an attribute to be matched)
 	- TBD: de-dup warning and timer classes
 		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?
 		- IDEA: this makes sense... in all other cases I inherit from simple parents to more complex children
@@ -114,6 +164,8 @@ Version 3.70 Goals
 		- in machines, should conditions and results just be key-value pairs in a dictionary?
 			- As opposed to needing 2 separate lists with identical indexes?
 	- Shorter cond & result names!!
+	- move switch_reset to auto_action() ???
+	- 'trigger_type' => 'trig_type' ??
 
 - TBD: documentation:
 	- TBD: updeate creature doc
@@ -145,73 +197,67 @@ Version 3.8x Goals
 
 *** SOMEDAY MAYBE IDEAS ***
 
-TBD: Figure out a way in web browser to show all adventure text in scrolling window
-TBD: Consider having size values for items and capaicty limits on containers & backpack (should the crystal box really hold an axe?)
+web features:
+- TBD: Figure out a way in web browser to show all adventure text in scrolling window
+
+mechanic features:
+- 'try... except' standard descriptions for examine() method (similar to Warnings)
+- TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
+	- for active_gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
+	- eliminate 'hasattrib' for containers in active_gs.scope_lst() too
+	- have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
+- TBD: for doors and containers, use None option for no lock or no lid?
+- Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
+	- why do I need active_gs.dynamic_descript_dict again?
+- investigate setters & getters for GameState class
+- is there really any need for GameState room_mach_lst() ??
+- TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
+- TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
+- eliminate active_gs.move_dec() ?
+- TBD: Consider having size values for items and capaicty limits on containers & backpack (should the crystal box really hold an axe?)
 	- This becomes important for 'take' capacity as well in shrinking puzzle (??)
-TBD: Try argument unpacking ( https://www.geeksforgeeks.org/packing-and-unpacking-arguments-in-python/ )
-TBD: Try tupples for descript_dict
-	NOTE: Franco on Tupples: A tuple is most suitable for immutable data with a well-defined order.  The static data that you pass to class constructors is often a good example.Another useful time for tuples is when you want dictionary keys with more than one field.  You cannot use something mutable there.
+	- encumberance (post Burt as object?)
+	- implement carying capacity / container cappacity; Also carry restriction passages, etc..
 - fun idea - small creature - like a mouse - as an item
 - more directions
 - landscape / path changes
-- create 'win' test routine with checksum
-- create a hint sub-system
-TBD: for doors and containers, use None option for no lock or no lid?
-TBD: learn about Super()
-TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
-TBD: Jenkins integration to automatically update "v3 alpha" tab with latest commits?
-TBD: list of 'contained' internal_switches in MachMixIn attributes?
-	NOTE: (i.e. add to scope and remove levers & button from features?)
-	NOTE: [this is a good idea but hold off until at least one more control_panel type machine gets created]
-TBD: re-name 'wrapper' to 'app_main'
-TBD: update pickle names
-TBD: out_buff => output (or possibly user_output)
-- Burt as an object?? (allows elimination of attack_burt() method of Creature class)
-		- Maybe make Burt an object before making all the machine changes??
-		- Burt to be obj type Creature
-		- need to work on 'hand' attributes of Creatures
-		- need a 'cant_drop_lst' for backpack
-		- Burt to be in room features
-		- backpack to be open container
-		- creature in_hand obj to be in features and in creature description (same for 'worn')
-		- provides elegant inventory solution
-- Sort out room listing vs. v2 game
+- TBD: list of 'contained' internal_switches in MachMixIn attributes?
+	- NOTE: (i.e. add to scope and remove levers & button from features?)
+	- NOTE: [this is a good idea but hold off until at least one more control_panel type machine gets created]
+- lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
 - How to enable switches and machines to self register for universal scope
 	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
-- possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
-- Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
-TBD: what should happen if Burt tries to take the axe from a living goblin? (general case)
-	i.e. should creatures have a visible_inventory_lst that is part of examine scope?
-TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
-TBD: no swearing in Dark Castle (with warning or else end of game)
-TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
-TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
-		- for active_gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
-		- eliminate 'hasattrib' for containers in active_gs.scope_lst() too
-		- have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
-- DONE: introduce pre-built "warning" machine? use for 'go south', 'attack hedgehog', 'lift heavy rock', etc
-- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
-- change hand from list to string
-- cursing => end of game (requires warning_mach and usniversal scope)
-- lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
+- create vehical puzzle?
+
+file handling:
 - game saves (requires file clean up?)
-- encumberance (post Burt as object?)
-- implement carying capacity / container cappacity; Also carry restriction passages, etc..
 - move doc to modules?
 - org modules in directories?
-- create vehical puzzle?
-- eliminate active_gs.move_dec() ?
-- why do I need active_gs.dynamic_descript_dict again?
-- investigate setters & getters for GameState class
-- move switch_reset to auto_action() ???
-- is there really any need for GameState room_mach_lst() ??
-- 'trigger_type' => 'trig_type' ??
-- 'try... except' standard descriptions for examine() method (similar to Warnings)
-- review how creatures vs. items appear in DCv2 - mimic?
-- 'g' as abbreviation for 'again' ?
-- for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
+
+python techniques:
 - Do a refactoring code review (look into the 'any' command in place of for loops)
-- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute???
+- TBD: Try argument unpacking ( https://www.geeksforgeeks.org/packing-and-unpacking-arguments-in-python/ )
+- TBD: Try tupples for descript_dict
+	- NOTE: Franco on Tupples: A tuple is most suitable for immutable data with a well-defined order.  The static data that you pass to class constructors is often a good example.Another useful time for tuples is when you want dictionary keys with more than one field.  You cannot use something mutable there.
+- TBD: learn about Super()
+- TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
+
+pipeline & testing:
+- create 'win' test routine with checksum
+- TBD: Jenkins integration to automatically update "v3 alpha" tab with latest commits?
+
+interpreter ideas:
+- create a hint sub-system
+- more abreviations: 'g' = 'again', 'z' = 'wait'
+- TBD: no swearing in Dark Castle (with warning or else end of game)
+	- cursing => end of game (requires warning_mach and usniversal scope)
+
+naming conventions:
+- TBD: re-name 'wrapper' to 'app_main'
+- TBD: update pickle names
+- TBD: out_buff => output (or possibly user_output)
+- possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
+
 
 *** NEW PUZZLE IDEAS ***
 
