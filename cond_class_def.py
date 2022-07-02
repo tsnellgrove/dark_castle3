@@ -235,20 +235,22 @@ class InWorldCond(PassThruCond): # note: only works for obj in room.room_obj_lst
 				match_state = active_gs.obj_exist(self.exist_obj) 
 				return match_state == self.match_cond
 
-class InHandAndGarmentWornCond(PassThruCond):
-		def __init__(self, name, in_hand_lst, worn_garment, match_cond):
+# class InHandAndGarmentWornCond(PassThruCond):
+#		def __init__(self, name, in_hand_lst, worn_garment, match_cond):
+class WornCond(PassThruCond):
+		def __init__(self, name, worn_garment, match_cond):
 				super().__init__(name)
-				self._in_hand_lst = in_hand_lst # list of items that will meet condition
+#				self._in_hand_lst = in_hand_lst # list of items that will meet condition
 				self._worn_garment = worn_garment
 				self._match_cond = match_cond
 				
-		@property
-		def in_hand_lst(self):
-				return self._in_hand_lst
+#		@property
+#		def in_hand_lst(self):
+#				return self._in_hand_lst
 
-		@in_hand_lst.setter
-		def in_hand_lst(self, new_lst):
-				self._in_hand_lst = new_lst
+#		@in_hand_lst.setter
+#		def in_hand_lst(self, new_lst):
+#				self._in_hand_lst = new_lst
 
 		@property
 		def worn_garment(self):
@@ -259,10 +261,10 @@ class InHandAndGarmentWornCond(PassThruCond):
 				return self._match_cond
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-				hand_lst = active_gs.get_hand_lst()
-				in_hand = hand_lst[0]
-				if in_hand not in self.in_hand_lst:
-						return False
+#				hand_lst = active_gs.get_hand_lst()
+#				in_hand = hand_lst[0]
+#				if in_hand not in self.in_hand_lst:
+#						return False
 				worn_lst = active_gs.get_worn_lst()
 				match_state = self.worn_garment in worn_lst
 				return match_state == self.match_cond

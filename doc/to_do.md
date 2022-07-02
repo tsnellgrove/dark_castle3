@@ -37,8 +37,8 @@ Version 3.68 Goals
 		- DONE: InHandAndExistInWorldCond() => InWorldCond()
 			- DONE: refactor
 			- DONE: comment clean-up
-		- TBD: InHandAndGarmentWornCond => WornCond()
-			- TBD: refactor
+		- INPROC: InHandAndGarmentWornCond => WornCond()
+			- DONE: refactor
 			- TBD: comment clean-up
 - TBD: remove big_bomb test object
 - TBD: eliminate RoomCond from goblin_attack machine?
@@ -72,6 +72,7 @@ Version 3.7x Goals
 
 Version 3.70 Goals
 - refactor Burt as a creature object
+- refactor coding as I go
 
 Burt as an object
 - why?
@@ -85,8 +86,9 @@ Burt as an object
 	- Burt to be obj type Creature
 
 - burt refactor order
-	0) full review of all active_gs attributes to be moved to burt_obj
-	1) update existing creatures (e.g. hand)
+	1) watch refactoring best-practices videos so I can refactor as I go (I will be re-coding a LOT)
+	2) full review of all active_gs attributes to be moved to burt_obj
+	3) update existing creatures (e.g. hand)
 		- need to work on 'hand' attributes of Creatures
 		- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
 		- creature 'worn' attribute
@@ -100,18 +102,18 @@ Burt as an object
 		- creatures can have 'invisible' attribute for machs (like rooms)
 		- if you try to take an obj from a creature's hand => 'The X belongs to the Y'
 		- creatures could have a 'features' attribute (like rooms) for ViewOnly attributes (e.g. burt's 'conscince', princess 'poise')
-	2) instantiate burt_obj
-	3) integrate burt with active_gs (get_hero method)
+	4) instantiate burt_obj
+	5) integrate burt with active_gs (get_hero method)
 		- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict
-	4) move burt_obj from room to room (features attribute) when active_gs moves
+	6) move burt_obj from room to room (features attribute) when active_gs moves
 		- Burt to be in room features
-	5) universal descriptors => burt_obj
-	6) updaate burt hand & inventory changes in parallel to active_gs (create setter methods for creatures)
-	7) update module-by-module to read from active_gs to burt_obj (create getter methods for creatures)
-	8) eliminate attack_burt method
-	9) comment out active_gs hand & inv updates
-	10) lots of testing!!!
-	11) clean-up comments
+	7) universal descriptors => burt_obj
+	8) updaate burt hand & inventory changes in parallel to active_gs (create setter methods for creatures)
+	9) update module-by-module to read from active_gs to burt_obj (create getter methods for creatures)
+	10) eliminate attack_burt method
+	11) comment out active_gs hand & inv updates
+	12) lots of testing!!!
+	13) clean-up comments
 
 
 ##########################
@@ -166,6 +168,8 @@ Version 3.72 Goals
 	- Shorter cond & result names!!
 	- move switch_reset to auto_action() ???
 	- 'trigger_type' => 'trig_type' ??
+	- naming conventions: need to avoid confusion between match_state and mach_state
+	- naming conventions: cond & result name should be same except post-fix
 
 - TBD: documentation:
 	- TBD: updeate creature doc
