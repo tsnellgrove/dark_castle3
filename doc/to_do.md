@@ -240,6 +240,9 @@ mechanic features:
 	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
 - create vehical puzzle?
 
+game state:
+- active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
+
 file handling:
 - game saves (requires file clean up?)
 - move doc to modules?
