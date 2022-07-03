@@ -41,9 +41,9 @@ Version 3.68 Goals
 			- DONE: refactor
 			- DONE: comment clean-up
 - DONE: remove big_bomb test object
-- INPROC: eliminate RoomCond from goblin_attack machine?
+- DONE: eliminate RoomCond from goblin_attack machine?
 	- DONE: refactor
-	- TBD: clean-up comments
+	- DONE: clean-up comments
 - TBD: match DCv3 room description to DCv2
 - TBD: description updates
 	- TBD: in the end scene, the hedgehog places the sword before Burt's feet and kneels?
@@ -112,9 +112,10 @@ Burt as an object
 	8) updaate burt hand & inventory changes in parallel to active_gs (create setter methods for creatures)
 	9) update module-by-module to read from active_gs to burt_obj (create getter methods for creatures)
 	10) eliminate attack_burt method
-	11) comment out active_gs hand & inv updates
-	12) lots of testing!!!
-	13) clean-up comments
+	11) does room_scope now become a Room method?
+	12) comment out active_gs hand & inv updates
+	13) lots of testing!!!
+	14) clean-up comments
 
 
 ##########################

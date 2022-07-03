@@ -250,6 +250,7 @@ class GameState(object):
 		def auto_in_alert_scope(self, obj):
 				return obj in self.room_mach_lst()
 
+		### world lists ###
 		def obj_exist(self, obj):
 				obj_in_world = False
 				for room in self.room_lst:

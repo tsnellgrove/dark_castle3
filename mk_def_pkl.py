@@ -94,7 +94,6 @@ throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
 correct_lever_array_cond = LeverArrayCond('correct_lever_array_cond', [4,2,1])
 wrong_lever_array_cond = PassThruCond('wrong_lever_array_cond')
-# goblin_in_antechamber_cond = RoomCond('goblin_in_antechamber', 'antechamber_temp', True)
 hedgehog_has_biscuit_cond = CreatureItemCond('hedgehog_has_biscuit_cond', 'royal_hedgehog', stale_biscuits)
 hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_timer, shiny_sword)
 hedgehog_keeps_sword_cond = StateItemInRoomCond('hedgehog_keeps_sword_cond', False, shiny_sword, True)
@@ -113,7 +112,6 @@ nothing_happens_result = BufferOnlyResult('nothing_happens_result', False)
 throne_pull_result = AddObjToRoomResult('throne_pull_result', hedgehog_broach, False)
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
 portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', False)
-# antechamber_goblin_attacks_result = AttackBurtResult('antechamber_goblin_attacks_result', 'goblin_placeholder', True)
 goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'goblin_placeholder', True)
 ## blue_button_result = StartTimerResult('blue_button_result', test_timer, False) # test obj
 start_hedgehog_timer_results = TimerAndCreatureItemResult('start_hedgehog_timer_results', hedgehog_eats_timer, False, 'royal_hedgehog', stale_biscuits)
@@ -162,7 +160,6 @@ hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', 0, 'pre_act_t
 
 goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,
 				[['examine', 'iron_portcullis'], ['examine', 'control_panel'], ['examine', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north']],
-#				None, [goblin_in_antechamber_cond, pass_thru_cond], [antechamber_goblin_attacks_result, nothing_happens_result])
 				None, [pass_thru_cond], [goblin_attacks_result])
 
 hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_cmd', None,
@@ -230,7 +227,6 @@ throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', N
 
 
 # *** 'object not defined' re-assignment ***
-# antechamber_goblin_attacks_result.creature_obj = goblin_guard
 goblin_attacks_result.creature_obj = goblin_guard
 hedgehog_has_biscuit_cond.creature_obj = royal_hedgehog
 hedgehog_eats_timer.alert_anchor = royal_hedgehog
@@ -238,7 +234,6 @@ start_hedgehog_timer_results.creature_obj = royal_hedgehog
 fed_hedgehog_keeps_sword_result.creature_obj = royal_hedgehog
 fed_hedgehog_loses_sword_result.creature_obj = royal_hedgehog
 scroll_not_in_throne_room_cond.match_room = throne_room
-# goblin_in_antechamber_cond.match_room = antechamber
 hedgehog_not_exist_cond.exist_obj = royal_hedgehog
 crystal_box.contains = [kinging_scroll]
 
