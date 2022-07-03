@@ -47,10 +47,10 @@ Version 3.68 Goals
 - DONE: match DCv3 room description to DCv2
 	- DONE: refactor
 	- DONE: clean up comments
-- TBD: description updates
-	- TBD: in the end scene, the hedgehog places the sword before Burt's feet and kneels?
-	- TBD: also update hedgehog key trade to place key in Burt's hand
-	- TBD: highlight in Moat description how east or west off the drawbridge will lead to a fall into the moat
+- DONE: description updates
+	- DONE: in the end scene, the hedgehog places the sword before Burt's feet and kneels?
+	- DONE: also update hedgehog key trade to place key in Burt's hand
+	- DONE: highlight in Moat description how east or west off the drawbridge will lead to a fall into the moat
 - TBD: "beginner's mind" testing
 
 
@@ -283,6 +283,8 @@ IDEA: have a 'jaunty hat' that enables you to move 'twice per time click' (i.e. 
 	- would necesitate default responses to attacks and things like that
 	- could solve nearly any puzzle so need to deliver late in the game
 	- maybe especially useful for solving a '2 button' puzzle
+
+IDEA: use phyisogamy in the game!!
 
 - Back to the Future - time machine chariot idea
 	- chariot is in stable hooked up to old_mare
