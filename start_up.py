@@ -31,7 +31,7 @@ def start_me_up():
 		### introductory text ###
 		active_gs.buffer(descript_dict["introduction"])
 		active_gs.buffer(descript_dict["entrance"])
-		active_gs.buffer("The room contains: Front Gate")
+		active_gs.buffer("There is a Front Gate here.")
 
 		### dump updated objects to save_obj_pickle ###
 		with open('save_obj_pickle2', 'wb') as f:

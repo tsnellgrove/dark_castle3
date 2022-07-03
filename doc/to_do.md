@@ -44,7 +44,9 @@ Version 3.68 Goals
 - DONE: eliminate RoomCond from goblin_attack machine?
 	- DONE: refactor
 	- DONE: clean-up comments
-- TBD: match DCv3 room description to DCv2
+- INPROC: match DCv3 room description to DCv2
+	- DONE: refactor
+	- TBD: clean up comments
 - TBD: description updates
 	- TBD: in the end scene, the hedgehog places the sword before Burt's feet and kneels?
 	- TBD: also update hedgehog key trade to place key in Burt's hand

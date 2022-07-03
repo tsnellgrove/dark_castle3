@@ -22,6 +22,9 @@ class Invisible(object):
 		def name(self):
 				return self._name
 
+		def is_item(self):
+				return False
+
 		def __repr__(self):
 				return f'Object { self.name } is of class { type(self).__name__ } '
 
@@ -130,8 +133,21 @@ class Room(ViewOnly):
 
 		def examine(self, active_gs):
 				super(Room, self).examine(active_gs)
-				room_str = obj_lst_to_str(self.room_obj_lst)
-				active_gs.buffer("The room contains: " + room_str)
+
+				room_item_obj_lst = []
+				room_obj = self.room_obj_lst
+				for obj in room_obj:
+						if not obj.is_item():
+								active_gs.buffer("There is a " + obj.full_name + " here.")
+						else:
+								room_item_obj_lst.append(obj)
+				if len(room_item_obj_lst) > 0:
+						room_item_str_lst = obj_lst_to_str(room_item_obj_lst)
+						active_gs.buffer("The following items are here: " + room_item_str_lst)
+
+#				room_str = obj_lst_to_str(self.room_obj_lst)
+#				active_gs.buffer("The room contains: " + room_str)
+
 				for obj in self.room_obj_lst:
 						obj.print_contents_str(active_gs)
 
@@ -154,6 +170,9 @@ class Room(ViewOnly):
 class Item(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing):
 				super().__init__(name, full_name, root_name, descript_key, writing)
+
+		def is_item(self):
+				return True
 
 		def take(self, active_gs):
 				room_obj = active_gs.get_room()
