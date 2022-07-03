@@ -41,7 +41,9 @@ Version 3.68 Goals
 			- DONE: refactor
 			- DONE: comment clean-up
 - DONE: remove big_bomb test object
-- TBD: eliminate RoomCond from goblin_attack machine?
+- INPROC: eliminate RoomCond from goblin_attack machine?
+	- DONE: refactor
+	- TBD: clean-up comments
 - TBD: match DCv3 room description to DCv2
 - TBD: description updates
 	- TBD: in the end scene, the hedgehog places the sword before Burt's feet and kneels?
@@ -169,6 +171,7 @@ Version 3.72 Goals
 	- 'trigger_type' => 'trig_type' ??
 	- naming conventions: need to avoid confusion between match_state and mach_state
 	- naming conventions: cond & result name should be same except post-fix
+	- sort out ability to push button / pull levers while goblin is guarding
 
 - TBD: documentation:
 	- TBD: updeate creature doc
