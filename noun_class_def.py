@@ -133,10 +133,8 @@ class Room(ViewOnly):
 
 		def examine(self, active_gs):
 				super(Room, self).examine(active_gs)
-
 				room_item_obj_lst = []
-				room_obj = self.room_obj_lst
-				for obj in room_obj:
+				for obj in self.room_obj_lst:
 						if not obj.is_item():
 								active_gs.buffer("There is a " + obj.full_name + " here.")
 						else:
@@ -144,10 +142,6 @@ class Room(ViewOnly):
 				if len(room_item_obj_lst) > 0:
 						room_item_str_lst = obj_lst_to_str(room_item_obj_lst)
 						active_gs.buffer("The following items are here: " + room_item_str_lst)
-
-#				room_str = obj_lst_to_str(self.room_obj_lst)
-#				active_gs.buffer("The room contains: " + room_str)
-
 				for obj in self.room_obj_lst:
 						obj.print_contents_str(active_gs)
 

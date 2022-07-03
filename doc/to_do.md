@@ -44,9 +44,9 @@ Version 3.68 Goals
 - DONE: eliminate RoomCond from goblin_attack machine?
 	- DONE: refactor
 	- DONE: clean-up comments
-- INPROC: match DCv3 room description to DCv2
+- DONE: match DCv3 room description to DCv2
 	- DONE: refactor
-	- TBD: clean up comments
+	- DONE: clean up comments
 - TBD: description updates
 	- TBD: in the end scene, the hedgehog places the sword before Burt's feet and kneels?
 	- TBD: also update hedgehog key trade to place key in Burt's hand
@@ -108,6 +108,8 @@ Burt as an object
 	4) instantiate burt_obj
 	5) integrate burt with active_gs (get_hero method)
 		- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict
+		- Note: get_hero() enables player to take on different characters in the game (e.g. Burt could become a mouse)
+		- does get_hero bias us towards a search for current hero room? Or do we still cache 'room' in active_gs ???
 	6) move burt_obj from room to room (features attribute) when active_gs moves
 		- Burt to be in room features
 	7) universal descriptors => burt_obj
