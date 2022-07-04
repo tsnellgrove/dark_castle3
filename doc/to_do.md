@@ -208,6 +208,10 @@ mechanic features:
 - TBD: perhaps create 'sit' and 'stand' methods for throne? Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
 		- IDEA: would be a bit tricky... interaction with rest of room would be inhibitted while sitting?
 		- IDEA: could possibly have sit be very brief with auto stand since it's not comfortable (not very satisfying) ???
+		- default sit = on floor ('criss-cross-apple-sauce')
+		- full implementation = 'sit on'
+		- for take, push, pull, sit scope = self (i.e. creature_scope)
+		- for all other verbs (?), sit scope = room_scope
 - TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
 	- for active_gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
 	- eliminate 'hasattrib' for containers in active_gs.scope_lst() too
