@@ -51,10 +51,11 @@ Version 3.68 Goals
 	- DONE: in the end scene, the hedgehog places the sword before Burt's feet and kneels?
 	- DONE: also update hedgehog key trade to place key in Burt's hand
 	- DONE: highlight in Moat description how east or west off the drawbridge will lead to a fall into the moat
-- TBD: "beginner's mind" testing
-
-
-
+- INPROC: "beginner's mind" testing
+	- DONE: text updates
+	- TBD: verbs in alphabetical order
+	- TBD: When in antechamber and 'x portcullis', pary comes before attack??
+	- TBD: should have a warning for 'eat biscuits'
 
 
 ##########################
@@ -64,9 +65,7 @@ Version 3.68 Goals
 Version 3.7x Goals
 - Plan out code refactoring
 - Refactor code
-- Unit Testing (link: https://youtu.be/6tNS--WetLI ) ???
-- Introduce non-functional requirement code (e.g. saves and pkl clean-up)
-- Integrate with web template
+- document code
 
 
 ##########################
@@ -190,13 +189,6 @@ Version 3.72 Goals
 	- TBD: create creature diagram
 
 
-##########################
-### VERSION 3.8x START ###
-##########################
-Version 3.8x Goals
-- New rooms and puzzles!!
-
-
 
 *** DECISIONS TO BE DOCUMENTED ***
 
@@ -213,6 +205,9 @@ web features:
 
 mechanic features:
 - 'try... except' standard descriptions for examine() method (similar to Warnings)
+- TBD: perhaps create 'sit' and 'stand' methods for throne? Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
+		- IDEA: would be a bit tricky... interaction with rest of room would be inhibitted while sitting?
+		- IDEA: could possibly have sit be very brief with auto stand since it's not comfortable (not very satisfying) ???
 - TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
 	- for active_gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
 	- eliminate 'hasattrib' for containers in active_gs.scope_lst() too
@@ -239,9 +234,13 @@ mechanic features:
 - How to enable switches and machines to self register for universal scope
 	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
 - create vehical puzzle?
+- shiny sword glows near enemies?
+- make goblin hand contents examinable (e.g. Grimy Axe)
+- create 'jump' command with same response as Zork ('Whee!' I think?)
 
 game state:
 - active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
+- modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
 
 file handling:
 - game saves (requires file clean up?)
@@ -271,6 +270,28 @@ naming conventions:
 - TBD: update pickle names
 - TBD: out_buff => output (or possibly user_output)
 - possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
+
+
+##########################
+### VERSION 3.8x START ###
+##########################
+
+Version 3.8x Goals
+- Introduce non-functional requirement code (e.g. saves and pkl clean-up)
+- Integrate with web template
+- Unit Testing (link: https://youtu.be/6tNS--WetLI ) ???
+
+
+##########################
+### VERSION 3.9x START ###
+##########################
+
+Version 3.9x Goals
+- New rooms and puzzles!!
+- New ideas - ideally should leverage existing coding with minimal addiional feature requirements
+-implement new ideas
+- publish new version and get feedback
+
 
 
 *** NEW PUZZLE IDEAS ***
