@@ -53,7 +53,7 @@ Version 3.68 Goals
 	- DONE: highlight in Moat description how east or west off the drawbridge will lead to a fall into the moat
 - INPROC: "beginner's mind" testing
 	- DONE: text updates
-	- TBD: verbs in alphabetical order
+	- DONE: verbs in alphabetical order
 	- TBD: When in antechamber and 'x portcullis', pary comes before attack??
 	- TBD: should have a warning for 'eat biscuits'
 
@@ -210,8 +210,8 @@ mechanic features:
 		- IDEA: could possibly have sit be very brief with auto stand since it's not comfortable (not very satisfying) ???
 		- default sit = on floor ('criss-cross-apple-sauce')
 		- full implementation = 'sit on'
-		- for take, push, pull, sit scope = self (i.e. creature_scope)
-		- for all other verbs (?), sit scope = room_scope
+		- for most verbs, sit scope = self (i.e. creature_scope)
+		- for examine (?), sit scope = room_scope
 - TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
 	- for active_gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
 	- eliminate 'hasattrib' for containers in active_gs.scope_lst() too

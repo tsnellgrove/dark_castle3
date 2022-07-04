@@ -13,9 +13,10 @@ articles_lst = ['a', 'an', 'the']
 
 one_word_only_lst = ['help', 'credits', 'score', 'version', 'inventory', 'look', 'quit', 'xyzzy42']
 
-known_verbs_lst = ['help', 'examine', 'read', 'go', 'take', 'drop', 'unlock', 'open',
-				'close', 'lock', 'put', 'eat', 'drink', 'wear', 'push', 'pull','show',
-				'give', 'attack'] # remove removed
+known_verbs_lst = ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
+				 'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
+				 'unlock', 'wear'
+				] # remove removed
 
 secret_verbs_lst = ['attack_burt']
 
