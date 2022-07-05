@@ -54,7 +54,7 @@ Version 3.68 Goals
 - INPROC: "beginner's mind" testing
 	- DONE: text updates
 	- DONE: verbs in alphabetical order
-	- TBD: When in antechamber and 'x portcullis', pary comes before attack??
+	- DONE: When in antechamber and 'x portcullis', pary comes before attack?? => solved
 	- TBD: should have a warning for 'eat biscuits'
 
 
@@ -92,6 +92,8 @@ Burt as an object
 	2) full review of all active_gs attributes to be moved to burt_obj
 	3) update existing creatures (e.g. hand)
 		- need to work on 'hand' attributes of Creatures
+		- need to sort out attack_burt method to key off an identifier of the attacker (i.e. golblin attack v.s. other creature)
+		- once creature 'hand' is sorted, reference weapon (e.g. "Grimy Sword") in attack text
 		- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
 		- creature 'worn' attribute
 		- TBD: what should happen if Burt tries to take the axe from a living goblin? (general case)

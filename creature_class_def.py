@@ -167,11 +167,11 @@ class Creature(ViewOnly):
 				else:
 						creature_has_response = False
 
-				active_gs.buffer("You attempt to parry the creature's attack with " +  burt_weapon_name + "!")
+				active_gs.buffer("The " + self.full_name + " attacks and you attempt to parry with " +  burt_weapon_name + "!")
 				if creature_has_response:
 						response_key = self.attack_burt_dict[dict_key]['response_key']
 						response_str = descript_dict[response_key]
-						active_gs.buffer(response_str)
+						active_gs.buffer("The "  + self.full_name + "'s weapon arcs through the air with a lightening-fast stroke and " + response_str)
 						if self.attack_burt_dict[dict_key]['result_code'] == 'creature_flee':
 								room_obj = active_gs.get_room()
 								room_obj.room_obj_lst_remove(self)
