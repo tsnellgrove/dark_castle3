@@ -92,8 +92,11 @@ Burt as an object
 	2) full review of all active_gs attributes to be moved to burt_obj
 	3) update existing creatures (e.g. hand)
 		- need to work on 'hand' attributes of Creatures
-		- need to sort out attack_burt method to key off an identifier of the attacker (i.e. golblin attack v.s. other creature)
-		- once creature 'hand' is sorted, reference weapon (e.g. "Grimy Sword") in attack text
+			- need to sort out attack_burt method to key off an identifier of the attacker (i.e. golblin attack v.s. other creature)
+			- once creature 'hand' is sorted, reference weapon (e.g. "Grimy Sword") in attack text
+			- could have a Weapon class based on Item; could have associatted adverbs and verbs for attack description
+			- once we have a Weapon class, could test for is_weapon() for moat_mach
+			- non-humanoid monster could be a special weapon description case (fun new puzzle idea)
 		- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
 		- creature 'worn' attribute
 		- TBD: what should happen if Burt tries to take the axe from a living goblin? (general case)
@@ -121,6 +124,17 @@ Burt as an object
 	12) comment out active_gs hand & inv updates
 	13) lots of testing!!!
 	14) clean-up comments
+
+
+##########################
+### VERSION 3.71 START ###
+##########################
+
+Version 3.71 Goals
+- modularize remaining GameState class and declarations
+
+- TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
+- TBD: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
 
 
 ##########################
@@ -178,6 +192,7 @@ Version 3.72 Goals
 	- naming conventions: need to avoid confusion between match_state and mach_state
 	- naming conventions: cond & result name should be same except post-fix
 	- sort out ability to push button / pull levers while goblin is guarding
+	- need to implement hedgehog state machine based on creature state
 
 - TBD: documentation:
 	- TBD: updeate creature doc
@@ -191,7 +206,6 @@ Version 3.72 Goals
 	- TBD: create creature diagram
 
 
-
 *** DECISIONS TO BE DOCUMENTED ***
 
 *** Timer Decisions ***
@@ -199,11 +213,21 @@ Version 3.72 Goals
 - other than providing description text, timers are dumb - they just count -  a machine takes all actions
 
 
-
 *** SOMEDAY MAYBE IDEAS ***
 
-web features:
-- TBD: Figure out a way in web browser to show all adventure text in scrolling window
+first: scan puzzle ideas and decide on next puzzles; plan for required features
+
+interpreter ideas:
+- create a hint sub-system
+- more abreviations: 'g' = 'again', 'z' = 'wait'
+- TBD: no swearing in Dark Castle (with warning or else end of game)
+	- cursing => end of game (requires warning_mach and usniversal scope)
+
+naming conventions:
+- TBD: re-name 'wrapper' to 'app_main'
+- TBD: update pickle names
+- TBD: out_buff => output (or possibly user_output)
+- possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
 
 mechanic features:
 - 'try... except' standard descriptions for examine() method (similar to Warnings)
@@ -244,14 +268,13 @@ mechanic features:
 - make goblin hand contents examinable (e.g. Grimy Axe)
 - create 'jump' command with same response as Zork ('Whee!' I think?)
 
-game state:
-- active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
-- modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
-
 file handling:
 - game saves (requires file clean up?)
 - move doc to modules?
 - org modules in directories?
+
+web features:
+- TBD: Figure out a way in web browser to show all adventure text in scrolling window
 
 python techniques:
 - Do a refactoring code review (look into the 'any' command in place of for loops)
@@ -263,19 +286,7 @@ python techniques:
 
 pipeline & testing:
 - create 'win' test routine with checksum
-- TBD: Jenkins integration to automatically update "v3 alpha" tab with latest commits?
-
-interpreter ideas:
-- create a hint sub-system
-- more abreviations: 'g' = 'again', 'z' = 'wait'
-- TBD: no swearing in Dark Castle (with warning or else end of game)
-	- cursing => end of game (requires warning_mach and usniversal scope)
-
-naming conventions:
-- TBD: re-name 'wrapper' to 'app_main'
-- TBD: update pickle names
-- TBD: out_buff => output (or possibly user_output)
-- possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
+- TBD: Jenkins integration to automatically update "v3 alpha" tab with latest commits
 
 
 ##########################
