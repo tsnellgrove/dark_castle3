@@ -283,7 +283,9 @@ mechanic features:
 - fun idea - small creature - like a mouse - as an item
 - more directions
 - landscape / path changes
-- lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
+- food & drink system?
+- darkness & light source system?
+	- lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
 - How to enable switches and machines to self register for universal scope
 	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
 - create vehical puzzle?
