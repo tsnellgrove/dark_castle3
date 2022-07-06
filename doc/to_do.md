@@ -143,6 +143,33 @@ Version 3.71 Goals
 ##########################
 
 Version 3.72 Goals
+- re-work app_main() flow
+	- today: interp() =(if no interp_error)=> pre_action() => cmd_exe() => post_action()
+		- this works if there is an interp() error or if the command is successful... but what if there is a cmd_error ???
+		- as a work-around, I end up re-testing command validity in pre_action() / post_action() - or accepting buggy code (eat_biscuits_warning)
+	- to-be: interp() =(if no interp_error)=> cmd_error_check =(if no cmd_error)=> pre_action() => cmd_exe() => post_action()
+		- so in noun_class, every verb method needs to return cmd_error (boolean) and be able to run in 2 'modes': 'ec_mode' or 'exe_mode'
+		- cmd_error_check() runs the method in ec_mode and returns cmd_error
+		- if not cmd_error: cmd_exe() runs method in exe_mode
+		- can likely shortcut for non '2word' and 'prep' cases
+		- one side effect: every method needs to either throw text on error or do something on success... we cannot take an action on failure (?) 
+
+- related thinking:
+	- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
+		- Should noun obj methods return a 'success' indicator (for pre & post actions)?
+		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
+		- Be able to call noun methods in non_buffer mode purely for pre & post action validation? 
+		- for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
+
+- TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
+		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+
+
+##########################
+### VERSION 3.73 START ###
+##########################
+
+Version 3.73 Goals
 - Clean up machine, warning, and timer coding
 - Create / update program documentation
 
@@ -157,11 +184,6 @@ Version 3.72 Goals
 		- Generalize in-hand vs. not-in-hand Condition (single primative)
 		- Generalize creature-has-item vs. creature-does-not-have-item Conditions (single primative)
 		- Establish clearer nomenclature for temp variables that will be fully assigned at end (e.g. 'royal_hedgehog-*temp*')
-		- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
-		- Should noun obj methods return a 'success' indicator (for pre & post actions)?
-			- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
-		- Be able to call noun methods in non_buffer mode purely for pre & post action validation?
-		- for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
 		- each 'primitive' cond only tests for *one* thing (but state of that thing is an attribute to be matched)
 	- TBD: de-dup warning and timer classes
 		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?
@@ -194,8 +216,9 @@ Version 3.72 Goals
 	- naming conventions: cond & result name should be same except post-fix
 	- sort out ability to push button / pull levers while goblin is guarding
 	- need to implement hedgehog state machine based on creature state
-	- fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
-		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+- TBD: list of 'contained' internal_switches in MachMixIn attributes?
+	- NOTE: (i.e. add to scope and remove levers & button from features?)
+	- NOTE: [this is a good idea but hold off until at least one more control_panel type machine gets created]
 
 - TBD: documentation:
 	- TBD: updeate creature doc
@@ -260,9 +283,6 @@ mechanic features:
 - fun idea - small creature - like a mouse - as an item
 - more directions
 - landscape / path changes
-- TBD: list of 'contained' internal_switches in MachMixIn attributes?
-	- NOTE: (i.e. add to scope and remove levers & button from features?)
-	- NOTE: [this is a good idea but hold off until at least one more control_panel type machine gets created]
 - lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
 - How to enable switches and machines to self register for universal scope
 	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
