@@ -130,6 +130,8 @@ entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'sou
 
 attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd', [['attack', 'royal_hedgehog']], 3, 0)
 
+eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','stale_biscuits']], 3, 0)
+
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
 				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
@@ -212,11 +214,11 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn])
+				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
 				# note: for timer testing, big_bomb was in entrance.room_obj_lst and blue_button was in entrance.features
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
-				[shiny_sword, front_gate, royal_hedgehog], {'south' : front_gate}, [])
+				[shiny_sword, front_gate, royal_hedgehog], {'south' : front_gate}, [eat_biscuits_warning])
 
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
 				[alcove, left_lever, middle_lever, right_lever, red_button], [iron_portcullis, control_panel, goblin_guard],

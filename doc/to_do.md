@@ -51,11 +51,12 @@ Version 3.68 Goals
 	- DONE: in the end scene, the hedgehog places the sword before Burt's feet and kneels?
 	- DONE: also update hedgehog key trade to place key in Burt's hand
 	- DONE: highlight in Moat description how east or west off the drawbridge will lead to a fall into the moat
-- INPROC: "beginner's mind" testing
+- DONE: "beginner's mind" testing
 	- DONE: text updates
 	- DONE: verbs in alphabetical order
 	- DONE: When in antechamber and 'x portcullis', pary comes before attack?? => solved
-	- TBD: should have a warning for 'eat biscuits'
+	- DONE: should have a warning for 'eat biscuits' => with issues... grrr... see 3.7.2 to-dos
+- TBD: submit final version of 3.68 - procedural code parity achieved!!
 
 
 ##########################
@@ -193,6 +194,8 @@ Version 3.72 Goals
 	- naming conventions: cond & result name should be same except post-fix
 	- sort out ability to push button / pull levers while goblin is guarding
 	- need to implement hedgehog state machine based on creature state
+	- fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
+		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
 
 - TBD: documentation:
 	- TBD: updeate creature doc

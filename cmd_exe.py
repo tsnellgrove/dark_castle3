@@ -49,6 +49,9 @@ def special_error(active_gs, word2_obj, word1):
 	elif (word1 == 'take') and (active_gs.scope_check(word2_obj)) and (word2_obj.is_beverage()):
 			active_gs.buffer("You can't 'take' a beverage.")
 			return True
+	elif (word1 in ['drop', 'eat', 'wear']) and (not active_gs.hand_check(word2_obj)):
+			active_gs.buffer("You're not holding the " + word2_obj.full_name + " in your hand.")
+			return True
 	else:
 			return False
 
