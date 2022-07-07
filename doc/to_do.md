@@ -24,15 +24,6 @@ Version 3.7x Goals
 - Refactor code
 - document code
 
-
-##########################
-### VERSION 3.70 START ###
-##########################
-
-Version 3.70 Goals
-- refactor Burt as a creature object
-- refactor coding as I go
-
 - INPROC: refactoring advices
 	1) provide 'None' option for class attributes
 	2) provide 'match_value' for Conditions & Results
@@ -57,6 +48,15 @@ Version 3.70 Goals
 	- 1 & 2 = me
 	- 3 to 10 = https://youtu.be/rp1QR3eGI1k
 	- 11 to 18 = https://youtu.be/wd1JqBWm3lQ
+
+
+##########################
+### VERSION 3.70 START ###
+##########################
+
+Version 3.70 Goals
+- refactor Burt as a creature object
+- refactor coding as I go
 
 Burt as an object
 - why?
