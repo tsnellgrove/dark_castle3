@@ -1,6 +1,6 @@
 To Do List - Dark Castle v3
 
-June 29, 2022
+July 7, 2022
 
 
 *** How to Add Objects ***
@@ -13,50 +13,6 @@ June 29, 2022
 
 	
 *** NOTES ***
-
-##########################
-### VERSION 3.68 START ###
-##########################
-Version 3.68 Goals
-- finish replicating original console game
-- in-depth testing
-
-- DONE: update score()
-	- DONE: create custom score based on ending == 'won'
-	- DONE: add in 5 pts for defeating goblin (to get to 75 total)
-- DONE: Create title() routine and static_dict to be referenced in ending()
-- DONE: sort out kinging_scroll machine implementation
-	- IDEA: for kinging_scroll mach, correct cond from 'scroll in hand' to 'scroll in room scope'?
-	- IDEA: Does the 'error' case eliminate the need for "noun testing" / "scroll in scope" in post_action(); Can I drop term?
-	- IDEA: kinging_scroll *is* the machine... so if it can be *run* it can be *read* => no need for item check!!!
-	- DONE: eliminate item element of scroll Conditions
-		- DONE: InHandAndRoomCond() => RoomCond()
-			- DONE: comment clean-up
-			- DONE: dedup RoomCond()
-			- DONE: comment clean-up
-		- DONE: InHandAndExistInWorldCond() => InWorldCond()
-			- DONE: refactor
-			- DONE: comment clean-up
-		- DONE: InHandAndGarmentWornCond => WornCond()
-			- DONE: refactor
-			- DONE: comment clean-up
-- DONE: remove big_bomb test object
-- DONE: eliminate RoomCond from goblin_attack machine?
-	- DONE: refactor
-	- DONE: clean-up comments
-- DONE: match DCv3 room description to DCv2
-	- DONE: refactor
-	- DONE: clean up comments
-- DONE: description updates
-	- DONE: in the end scene, the hedgehog places the sword before Burt's feet and kneels?
-	- DONE: also update hedgehog key trade to place key in Burt's hand
-	- DONE: highlight in Moat description how east or west off the drawbridge will lead to a fall into the moat
-- DONE: "beginner's mind" testing
-	- DONE: text updates
-	- DONE: verbs in alphabetical order
-	- DONE: When in antechamber and 'x portcullis', pary comes before attack?? => solved
-	- DONE: should have a warning for 'eat biscuits' => with issues... grrr... see 3.7.2 to-dos
-- TBD: submit final version of 3.68 - procedural code parity achieved!!
 
 
 ##########################
@@ -76,6 +32,31 @@ Version 3.7x Goals
 Version 3.70 Goals
 - refactor Burt as a creature object
 - refactor coding as I go
+
+- INPROC: refactoring advices
+	1) provide 'None' option for class attributes
+	2) provide 'match_value' for Conditions & Results
+	3) Merge nested if statements with 'and'
+	4)use 'any' to return boolean rather than for-looping through lists
+	5) pull variable assignments out of loops unless the variable will change within the loop
+	6)consider removing 'inline variables' that are only used once... just return the assigned value... I am guilty of this one a lot... I like how it looks but should reconsider
+	7) can use an 'if expression' with 'condition' statement ???
+	8) use 'if guard statements' to return false cases immediately at the top of the if-then chain; reduces indentation
+	9) MOVE ASSIGNEMENTS CLOSER TO USAGE!! I need this one!!
+	10) SIMPLIFY SEQUENCE CHECKS! don't need to check for if len(lst) > 0: ;; just use if lst:
+	11) When possible, declare a list with intended values... don't declare an empty list and then populate with append
+	12) For cases where you need to reference both a dictionary's keys and their values: don't call values by keys manually... instead, use format 'for key, value in dict.items():' - I need to watch for this in my code - espeically older code
+	13) replace 'for i in range(len(lst)): lst_item = lst[i]' with 'for i, lst_item in enumerate(lst):' ; enumerate gives you both index and value as a tupple... need to see if I can use this?
+	14) replace manual loop counters of lists with enumerate... provides index and value... I think I am guilty of this in my Conditions / Results match-up
+	15) return the conditional comparison itself! I do this now but my old code needs updating!! Note - can force boolean value with bool() function
+	16) if 'if-else' blocks contain duplicate execution, use an 'or' to combine them
+	17) replace multiple value comparisons with 'in list' - or better yet, 'in set' ... since sets have unique values... I need to learn more about sets...
+	18) learn more about 'yield' and 'yield from' for generators
+	
+	Links:
+	- 1 & 2 = me
+	- 3 to 10 = https://youtu.be/rp1QR3eGI1k
+	- 11 to 18 = https://youtu.be/wd1JqBWm3lQ
 
 Burt as an object
 - why?
