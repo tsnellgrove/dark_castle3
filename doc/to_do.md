@@ -106,28 +106,60 @@ Burt as an object
 - how?
 	- Burt to be obj type Creature
 
-- burt refactor order
-	1) watch refactoring best-practices videos so I can refactor as I go (I will be re-coding a LOT)
-	2) full review of all active_gs attributes to be moved to burt_obj
-	3) update existing creatures (e.g. hand)
+burt refactor order
+- DONE: watch refactoring best-practices videos so I can refactor as I go (I will be re-coding a LOT)
+- DONE: full review of all active_gs attributes to be moved to burt_obj
+	- active_gs.state_dict['backpack', 'hand', 'worn']
+	- active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]}
+	- methods:	
+		def get_backpack_lst(self):
+		def backpack_lst_append_item(self, item):
+		def backpack_lst_remove_item(self, item):
+		def get_hand_lst(self):
+		def hand_lst_append_item(self, item):
+		def hand_lst_remove_item(self, item):
+		def hand_check(self, obj):
+		def hand_empty(self):
+		def put_in_hand(self, new_item):
+		def get_worn_lst(self):
+		def worn_lst_append_item(self, item):
+		def worn_lst_remove_item(self, item):
+		def clothing_type_worn(self, item):
+		def get_static_obj(self, static_key):
+		def inventory(self):
+	- will also enable 'room scope' type methods to move to class Room
+- TBD: update existing creatures (e.g. hand & worn)
+	- IDEAS:
 		- need to work on 'hand' attributes of Creatures
-			- need to sort out attack_burt method to key off an identifier of the attacker (i.e. golblin attack v.s. other creature)
+			- change hand from list to string (???)
+			- this is the chance to make 'hand' an obj rather than a lst !!
+			- what should happen if Burt tries to take the axe from a living goblin? (general case)
+			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [no, just 'hand' unless boolean 'True']
+			- if you try to take an obj from a creature's hand => 'The X belongs to the Y'
+		- weapon class:
 			- once creature 'hand' is sorted, reference weapon (e.g. "Grimy Sword") in attack text
 			- could have a Weapon class based on Item; could have associatted adverbs and verbs for attack description
 			- once we have a Weapon class, could test for is_weapon() for moat_mach
 			- non-humanoid monster could be a special weapon description case (fun new puzzle idea)
-		- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
+		- attacking:
+			- incorporate weapon class descriptions
+			- need to sort out attack_burt method to key off an identifier of the attacker (i.e. golblin attack v.s. other creature)
+		- creature_items_lst considerations (i.e. backpack)
+			- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
+			- creature attribute for inventory_visible == True / False
+		- change mach_obj_lst to 'invisible'?
+			- creatures can have 'invisible' attribute for machs (like rooms)
+		- creature 'features'
+			- creatures could have a 'features' attribute (like rooms) for ViewOnly attributes (e.g. burt's 'conscince', princess 'poise')
 		- creature 'worn' attribute
-		- TBD: what should happen if Burt tries to take the axe from a living goblin? (general case)
-			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [no, just 'hand' unless boolean 'True']
-		- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
-		- change hand from list to string
-		- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
-		- creature attribute for inventory_visible == True / False
-		- - this is the chance to make 'hand' an obj rather than a lst !!
-		- creatures can have 'invisible' attribute for machs (like rooms)
-		- if you try to take an obj from a creature's hand => 'The X belongs to the Y'
-		- creatures could have a 'features' attribute (like rooms) for ViewOnly attributes (e.g. burt's 'conscince', princess 'poise')
+			- how to track worn dict?
+		- no action for now
+			- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
+			- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
+	- TBD: create creature.hand attribute
+		- TBD: update creature.give() method
+		- TBD: update room scope and description
+		- TBD: update take method
 	4) instantiate burt_obj
 	5) integrate burt with active_gs (get_hero method)
 		- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict
