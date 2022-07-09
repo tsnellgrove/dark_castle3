@@ -91,6 +91,7 @@ Learning Links:
 ##########################
 
 Version 3.70 Goals
+- extend Creature attributes and methods
 - refactor Burt as a creature object
 - refactor coding as I go
 
