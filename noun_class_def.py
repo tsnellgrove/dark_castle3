@@ -25,6 +25,9 @@ class Invisible(object):
 		def is_item(self):
 				return False
 
+		def is_weapon(self):
+				return False
+
 		def __repr__(self):
 				return f'Object { self.name } is of class { type(self).__name__ } '
 
@@ -425,3 +428,15 @@ class Clothes(Item):
 ##						if self.remove_descript is not None:
 ##								active_gs.buffer(descript_dict[self.remove_descript])
 
+
+class Weapon(Item):
+		def __init__(self, name, full_name, root_name, descript_key, writing, desc_lst):
+				super().__init__(name, full_name, root_name, descript_key, writing)
+				self._desc_lst = desc_lst # descriptive terms associated with using the weapon to 'attack'
+
+		@property
+		def desc_lst(self):
+				return self._desc_lst
+
+		def is_weapon(self):
+				return True

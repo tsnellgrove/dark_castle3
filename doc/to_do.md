@@ -128,23 +128,24 @@ burt refactor order
 		def get_static_obj(self, static_key):
 		def inventory(self):
 	- will also enable 'room scope' type methods to move to class Room
-- TBD: update existing creatures (e.g. hand & worn)
+- INPROC: update existing creatures (e.g. hand & worn)
 	- IDEAS:
+		- weapon class:
+			- once creature 'hand' is sorted, reference weapon (e.g. "Grimy Sword") in attack text
+			- could have a Weapon class based on Item; could have associatted adverbs and verbs for attack description
+			- once we have a Weapon class, could test for is_weapon() for moat_mach
+			- non-humanoid monster could be a special weapon description case (fun new puzzle idea)
 		- need to work on 'hand' attributes of Creatures
 			- change hand from list to string (???)
 			- this is the chance to make 'hand' an obj rather than a lst !!
 			- what should happen if Burt tries to take the axe from a living goblin? (general case)
 			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [no, just 'hand' unless boolean 'True']
 			- if you try to take an obj from a creature's hand => 'The X belongs to the Y'
-		- weapon class:
-			- once creature 'hand' is sorted, reference weapon (e.g. "Grimy Sword") in attack text
-			- could have a Weapon class based on Item; could have associatted adverbs and verbs for attack description
-			- once we have a Weapon class, could test for is_weapon() for moat_mach
-			- non-humanoid monster could be a special weapon description case (fun new puzzle idea)
 		- attacking:
 			- incorporate weapon class descriptions
 			- need to sort out attack_burt method to key off an identifier of the attacker (i.e. golblin attack v.s. other creature)
 		- creature_items_lst considerations (i.e. backpack)
+			- rename to make similar to room?
 			- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
 			- creature attribute for inventory_visible == True / False
 		- change mach_obj_lst to 'invisible'?
@@ -156,10 +157,23 @@ burt refactor order
 		- no action for now
 			- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
 			- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
-	- TBD: create creature.hand attribute
+	- INPROC: Weapon class
+		- DONE: creaate Weapon class (inherits from Item) with desc_lst attribute
+		- DONE: create is_weapon() method; (False for Invisible; True for Weapon)
+		- DONE: import Weapon into mk_def_kpl()
+		- TBD: update shiny_sword and grimy_axe to instantiate as class Weapon
+		- TOD: update moat_mach cond to use is_weapon()
+		- TBD: update attack_burt method to use weapon.desc_lst attributes
+	- TBD: creature hand
+		- TBD: create creature.hand attribute
 		- TBD: update creature.give() method
 		- TBD: update room scope and description
 		- TBD: update take method
+	- TBD: attacking
+	- TBD: creature_items_lst
+	- TBD: invisible
+	- TBD: features
+	- TBD: worn
 	4) instantiate burt_obj
 	5) integrate burt with active_gs (get_hero method)
 		- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict
