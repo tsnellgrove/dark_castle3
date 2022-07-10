@@ -131,10 +131,6 @@ burt refactor order
 - INPROC: update existing creatures (e.g. hand & worn)
 	- IDEAS:
 		- weapon class:
-			- once creature 'hand' is sorted, reference weapon (e.g. "Grimy Sword") in attack text
-			- could have a Weapon class based on Item; could have associatted adverbs and verbs for attack description
-			- once we have a Weapon class, could test for is_weapon() for moat_mach
-			- non-humanoid monster could be a special weapon description case (fun new puzzle idea)
 		- need to work on 'hand' attributes of Creatures
 			- change hand from list to string (???)
 			- this is the chance to make 'hand' an obj rather than a lst !!
@@ -157,12 +153,18 @@ burt refactor order
 		- no action for now
 			- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
 			- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
+			- non-humanoid monster could be a special weapon description case (fun new puzzle idea)
 	- INPROC: Weapon class
+		- IDEAS: 
+			- reference weapon (e.g. "Grimy Sword") in attack text
+			- could have a Weapon class based on Item; could have associatted adverbs and verbs for attack description
+			- once we have a Weapon class, could test for is_weapon() for moat_mach
 		- DONE: creaate Weapon class (inherits from Item) with desc_lst attribute
 		- DONE: create is_weapon() method; (False for Invisible; True for Weapon)
 		- DONE: import Weapon into mk_def_kpl()
-		- TBD: update shiny_sword and grimy_axe to instantiate as class Weapon
-		- TOD: update moat_mach cond to use is_weapon()
+		- DONE: update grimy_axe to instantiate as class Weapon
+		- TBD: update shiny_sword to instantiate as class Weapon
+		- TBD: update moat_mach cond to use is_weapon()
 		- TBD: update attack_burt method to use weapon.desc_lst attributes
 	- TBD: creature hand
 		- TBD: create creature.hand attribute

@@ -45,7 +45,7 @@ shiny_sword = Item('shiny_sword', 'Shiny Sword', "sword", 'shiny_sword', dwarven
 brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None) # test object
 bubbly_potion = Item('bubbly_potion', 'bubbly potion', "potion", 'bubbly_potion', None) # test object
 torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwriting)
-grimy_axe = Item('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing)
+# grimy_axe = Item('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing)
 silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None)
 ## kinging_scroll = Item('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters) # old scroll
 random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random_mcguffin', None)
@@ -59,6 +59,9 @@ royal_crown = Clothes('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None
 baseball_cap = Clothes('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, None, None, 'hat')
 hedgehog_broach = Clothes('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedgehog_broach', None,
 				'wear_hedgehog_broach', 'remove_hedgehog_broach', 'pin')
+
+grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing,
+				[['arcs', 'lightening-fast stroke'],['cleaves', 'violent swing']])
 
 wooden_chest = Container('wooden_chest', 'wooden chest', "chest", 'wooden_chest', None,
 				False, False, brass_key, [bubbly_potion]) # test object
