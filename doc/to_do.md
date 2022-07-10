@@ -165,6 +165,7 @@ burt refactor order
 		- DONE: update grimy_axe to instantiate as class Weapon
 		- DONE: update shiny_sword to instantiate as class Weapon
 		- DONE: update entrance_moat_mach cond to use is_weapon()
+		- DONE: updte GameState with weapon_in_hand() method
 		- TBD: update attack_burt method to use weapon.desc_lst attributes
 		- TBD: clean up comments in mk_def_pkl, cond_class_def
 	- TBD: creature hand

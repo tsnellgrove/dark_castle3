@@ -129,6 +129,10 @@ class GameState(object):
 		def hand_empty(self):
 				return len(self.get_hand_lst()) == 0
 
+		def weapon_in_hand(self):
+				hand_lst = self.get_hand_lst()
+				return bool(hand_lst) and hand_lst[0].is_weapon()
+
 		def put_in_hand(self, new_item):
 				if not self.hand_empty():
 						hand_lst = self.get_hand_lst()

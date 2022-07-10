@@ -50,11 +50,8 @@ class WeaponInHandCond(PassThruCond):
 				return self._weapon_match_cond
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-				in_hand_is_weap = False
-				hand_lst = active_gs.get_hand_lst()
-				if bool(hand_lst):
-						in_hand_is_weap = hand_lst[0].is_weapon()
-				return in_hand_is_weap == self.weapon_match_cond
+				return active_gs.weapon_in_hand() == self.weapon_match_cond
+
 
 class CreatureItemCond(PassThruCond):
 		def __init__(self, name, creature_obj, item_obj):
@@ -118,11 +115,7 @@ class IsWeaponAndStateCond(StateCond):
 				return self._weapon_match_cond
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-				in_hand_is_weap = False
-				hand_lst = active_gs.get_hand_lst()
-				if bool(hand_lst):
-						in_hand_is_weap = hand_lst[0].is_weapon()
-				return (mach_state == self.mach_state_cond) and (in_hand_is_weap == self.weapon_match_cond)
+				return (mach_state == self.mach_state_cond) and (active_gs.weapon_in_hand() == self.weapon_match_cond)
 
 class SwitchStateCond(PassThruCond):
 		def __init__(self, name, switch_state_val_lst):
