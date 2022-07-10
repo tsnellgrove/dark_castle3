@@ -8,9 +8,9 @@
 import pickle
 from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room, Weapon
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
-from cond_class_def import (PassThruCond, NotInHandCond, StateCond, InHandAndStateCond,
+from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
 				SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
-				StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond)
+				StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond)
 from result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 				AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult,
 				TimerAndCreatureItemResult, ChgCreatureDescAndStateResult)
@@ -41,7 +41,7 @@ family_tree = ViewOnly('family_tree', 'Family Tree', 'tree', 'family_tree', None
 dead_goblin = ViewOnly('dead_goblin', 'Dead Goblin', 'goblin', 'dead_goblin', None)
 
 rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None)
-shiny_sword = Item('shiny_sword', 'Shiny Sword', "sword", 'shiny_sword', dwarven_runes)
+# shiny_sword = Item('shiny_sword', 'Shiny Sword', "sword", 'shiny_sword', dwarven_runes)
 brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None) # test object
 bubbly_potion = Item('bubbly_potion', 'bubbly potion', "potion", 'bubbly_potion', None) # test object
 torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwriting)
@@ -62,6 +62,8 @@ hedgehog_broach = Clothes('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedge
 
 grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing,
 				[['arcs', 'lightening-fast stroke'],['cleaves', 'violent swing']])
+shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarven_runes,
+				[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']])
 
 wooden_chest = Container('wooden_chest', 'wooden chest', "chest", 'wooden_chest', None,
 				False, False, brass_key, [bubbly_potion]) # test object
@@ -88,9 +90,12 @@ red_button = ButtonSwitch('red_button', 'Red Button', 'button', 'red_button', No
 hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, 'royal_hedgehog')
 
 
-hand_no_weap_cond = NotInHandCond('hand_no_weap_cond', [shiny_sword, grimy_axe])
-hand_weap_1st_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], False)
-hand_weap_repeat_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], True)
+# hand_no_weap_cond = NotInHandCond('hand_no_weap_cond', [shiny_sword, grimy_axe])
+hand_no_weap_cond = WeaponInHandCond('hand_no_weap_cond', False)
+# hand_weap_1st_cond = InHandAndStateCond('hand_weap_1st_cond', [shiny_sword, grimy_axe], False)
+hand_weap_1st_cond = IsWeaponAndStateCond('hand_weap_1st_cond', True, False)
+# hand_weap_repeat_cond = InHandAndStateCond('hand_weap_repeat_cond', [shiny_sword, grimy_axe], True)
+hand_weap_repeat_cond = IsWeaponAndStateCond('hand_weap_repeat_cond', True, True)
 pass_thru_cond = PassThruCond('pass_thru_cond')
 broach_dispensed_cond = StateCond('broach_dispensed_cond', True)
 throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])

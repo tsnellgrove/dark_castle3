@@ -163,9 +163,10 @@ burt refactor order
 		- DONE: create is_weapon() method; (False for Invisible; True for Weapon)
 		- DONE: import Weapon into mk_def_kpl()
 		- DONE: update grimy_axe to instantiate as class Weapon
-		- TBD: update shiny_sword to instantiate as class Weapon
-		- TBD: update moat_mach cond to use is_weapon()
+		- DONE: update shiny_sword to instantiate as class Weapon
+		- DONE: update entrance_moat_mach cond to use is_weapon()
 		- TBD: update attack_burt method to use weapon.desc_lst attributes
+		- TBD: clean up comments in mk_def_pkl, cond_class_def
 	- TBD: creature hand
 		- TBD: create creature.hand attribute
 		- TBD: update creature.give() method
