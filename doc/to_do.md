@@ -130,13 +130,6 @@ burt refactor order
 	- will also enable 'room scope' type methods to move to class Room
 - INPROC: update existing creatures (e.g. hand & worn)
 	- IDEAS:
-		- weapon class:
-		- need to work on 'hand' attributes of Creatures
-			- change hand from list to string (???)
-			- this is the chance to make 'hand' an obj rather than a lst !!
-			- what should happen if Burt tries to take the axe from a living goblin? (general case)
-			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [no, just 'hand' unless boolean 'True']
-			- if you try to take an obj from a creature's hand => 'The X belongs to the Y'
 		- attacking:
 			- incorporate weapon class descriptions
 			- need to sort out attack_burt method to key off an identifier of the attacker (i.e. golblin attack v.s. other creature)
@@ -166,14 +159,20 @@ burt refactor order
 		- DONE: update shiny_sword to instantiate as class Weapon
 		- DONE: update entrance_moat_mach cond to use is_weapon()
 		- DONE: updte GameState with weapon_in_hand() method
-		- TBD: update attack_burt method to use weapon.desc_lst attributes
 		- TBD: clean up comments in mk_def_pkl, cond_class_def
 	- TBD: creature hand
+		- IDEAS:
+			- change hand from list to string (???)
+			- this is the chance to make 'hand' an obj rather than a lst !!
+			- what should happen if Burt tries to take the axe from a living goblin? (general case)
+			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [no, just 'hand' unless boolean 'True']
+			- if you try to take an obj from a creature's hand => 'The X belongs to the Y'
 		- TBD: create creature.hand attribute
 		- TBD: update creature.give() method
 		- TBD: update room scope and description
-		- TBD: update take method
+		- TBD: update take, drop, inventory method
 	- TBD: attacking
+		- TBD: update attack_burt method to use weapon.desc_lst attributes
 	- TBD: creature_items_lst
 	- TBD: invisible
 	- TBD: features

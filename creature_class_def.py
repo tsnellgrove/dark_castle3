@@ -4,6 +4,7 @@
 # description: class deffinition module for Creatures
 
 ### import
+import random
 from noun_class_def import ViewOnly
 from static_gbl import descript_dict
 
@@ -166,11 +167,15 @@ class Creature(ViewOnly):
 						dict_key = 'def_attack'
 				else:
 						creature_has_response = False
-
+				
 				active_gs.buffer("The " + self.full_name + " attacks and you attempt to parry with " +  burt_weapon_name + "!")
 				if creature_has_response:
 						response_key = self.attack_burt_dict[dict_key]['response_key']
 						response_str = descript_dict[response_key]
+						weapon_desc_index = random.randint(0, 1)
+
+						# *** weapon 'verb' and 'adj_noun' get chosen here once hand is implemented for creatures ***
+
 						active_gs.buffer("The "  + self.full_name + "'s weapon arcs through the air with a lightening-fast stroke and " + response_str)
 						if self.attack_burt_dict[dict_key]['result_code'] == 'creature_flee':
 								room_obj = active_gs.get_room()
