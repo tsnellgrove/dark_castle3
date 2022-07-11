@@ -136,7 +136,7 @@ burt refactor order
 			- rename to make similar to room?
 			- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
 			- creature attribute for inventory_visible == True / False
-			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [no, just 'hand' unless creature = active_gs.hero]
+			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [only 'hand' unless creature = active_gs.hero]
 		- change mach_obj_lst to 'invisible'?
 			- creatures can have 'invisible' attribute for machs (like rooms)
 		- creature 'features'
