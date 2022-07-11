@@ -11,7 +11,7 @@ from static_gbl import descript_dict
 ### classes
 class Creature(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict,
-		attack_creature_dict, attack_burt_dict, creature_items_lst, dead_creature_obj):
+		attack_creature_dict, attack_burt_dict, creature_items_lst, dead_creature_obj, hand_obj_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._creature_state = creature_state
 				self._mach_obj_lst = mach_obj_lst
@@ -21,6 +21,7 @@ class Creature(ViewOnly):
 				self._attack_burt_dict = attack_burt_dict
 				self._creature_items_lst = creature_items_lst
 				self._dead_creature_obj = dead_creature_obj
+				self._hand_obj_lst = hand_obj_lst
 
 		@property
 		def creature_state(self):
@@ -68,6 +69,19 @@ class Creature(ViewOnly):
 		def dead_creature_obj(self):
 				return self._dead_creature_obj
 
+		@property
+		def hand_obj_lst(self):
+				return self._hand_obj_lst
+
+		def hand_obj_lst_append(self, item):
+				self._hand_obj_lst.append(item)
+
+		def hand_obj_lst_remove(self, item):
+				self._hand_obj_lst.remove(item)
+
+		@hand_obj_lst.setter
+		def hand_obj_lst(self, new_state):
+				self._hand_obj_lst = new_state
 
 		def show(self, obj, active_gs):
 				if not active_gs.hand_check(obj):

@@ -160,20 +160,20 @@ burt refactor order
 		- DONE: update shiny_sword to instantiate as class Weapon
 		- DONE: update entrance_moat_mach cond to use is_weapon()
 		- DONE: updte GameState with weapon_in_hand() method
-		- TBD: clean up comments in mk_def_pkl, cond_class_def
-	- TBD: creature hand for existing creatures
+		- DONE: clean up comments in mk_def_pkl, cond_class_def
+	- INPROC: creature hand for existing creatures
 		- IDEAS:
-			- change hand from list to string (???)
-			- this is the chance to make 'hand' an obj rather than a lst !!
+			- change hand from list to scalar (???) => decision: keep hand as a list
 			- what should happen if Burt tries to take the axe from a living goblin? (general case)
 			- if you try to take an obj from a creature's hand => 'The X belongs to the Y'
-		- TBD: create creature.hand attribute
-		- TBD: add grimy_axe to guard_goblin
-		- TBD: update creature.give() method
+		- DONE: create creature.hand_obj_lst attribute
+		- DONE: update instantiation of guard_goblin & royal hedgehog to in mk_def_pkl()
+		- DONE: add grimy_axe to guard_goblin
 		- TBD: update room scope method
 		- TBD: update examine room method
 		- TBD: examine creature method
 		- TBD: take method
+		- TBD: update creature.give() method
 		- TBD: update attack_burt method to use weapon.desc_lst attributes
 	- TBD: attacking
 	- TBD: creature_items_lst
