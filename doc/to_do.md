@@ -131,12 +131,12 @@ burt refactor order
 - INPROC: update existing creatures (e.g. hand & worn)
 	- IDEAS:
 		- attacking:
-			- incorporate weapon class descriptions
 			- need to sort out attack_burt method to key off an identifier of the attacker (i.e. golblin attack v.s. other creature)
 		- creature_items_lst considerations (i.e. backpack)
 			- rename to make similar to room?
 			- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
 			- creature attribute for inventory_visible == True / False
+			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [no, just 'hand' unless creature = active_gs.hero]
 		- change mach_obj_lst to 'invisible'?
 			- creatures can have 'invisible' attribute for machs (like rooms)
 		- creature 'features'
@@ -152,6 +152,7 @@ burt refactor order
 			- reference weapon (e.g. "Grimy Sword") in attack text
 			- could have a Weapon class based on Item; could have associatted adverbs and verbs for attack description
 			- once we have a Weapon class, could test for is_weapon() for moat_mach
+			- incorporate weapon class descriptions
 		- DONE: creaate Weapon class (inherits from Item) with desc_lst attribute
 		- DONE: create is_weapon() method; (False for Invisible; True for Weapon)
 		- DONE: import Weapon into mk_def_kpl()
@@ -160,19 +161,21 @@ burt refactor order
 		- DONE: update entrance_moat_mach cond to use is_weapon()
 		- DONE: updte GameState with weapon_in_hand() method
 		- TBD: clean up comments in mk_def_pkl, cond_class_def
-	- TBD: creature hand
+	- TBD: creature hand for existing creatures
 		- IDEAS:
 			- change hand from list to string (???)
 			- this is the chance to make 'hand' an obj rather than a lst !!
 			- what should happen if Burt tries to take the axe from a living goblin? (general case)
-			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [no, just 'hand' unless boolean 'True']
 			- if you try to take an obj from a creature's hand => 'The X belongs to the Y'
 		- TBD: create creature.hand attribute
+		- TBD: add grimy_axe to guard_goblin
 		- TBD: update creature.give() method
-		- TBD: update room scope and description
-		- TBD: update take, drop, inventory method
-	- TBD: attacking
+		- TBD: update room scope method
+		- TBD: update examine room method
+		- TBD: examine creature method
+		- TBD: take method
 		- TBD: update attack_burt method to use weapon.desc_lst attributes
+	- TBD: attacking
 	- TBD: creature_items_lst
 	- TBD: invisible
 	- TBD: features

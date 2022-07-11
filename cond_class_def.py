@@ -23,23 +23,6 @@ class PassThruCond(object):
 		def __repr__(self):
 				return f'Object { self.name } is of class { type(self).__name__ } '
 
-# class NotInHandCond(PassThruCond):
-#		def __init__(self, name, not_in_hand_lst):
-#				super().__init__(name)
-#				self._not_in_hand_lst = not_in_hand_lst # list of items that will not meet condition
-
-#		@property
-#		def not_in_hand_lst(self):
-#				return self._not_in_hand_lst
-
-#		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-#				cond_state = True
-#				hand_lst = active_gs.get_hand_lst()
-#				for item in self.not_in_hand_lst:
-#						if item in hand_lst:
-#								cond_state = False
-#				return cond_state
-
 class WeaponInHandCond(PassThruCond):
 		def __init__(self, name, weapon_match_cond):
 				super().__init__(name)
@@ -86,24 +69,6 @@ class StateCond(PassThruCond):
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				return mach_state == self.mach_state_cond
-
-# class InHandAndStateCond(StateCond): # no longer needed after creation of Weapon class
-#		def __init__(self, name, in_hand_lst, mach_state_cond):
-#				super().__init__(name, mach_state_cond)
-#				self._in_hand_lst = in_hand_lst # list of items that will meet condition
-
-#		@property
-#		def in_hand_lst(self):
-#				return self._in_hand_lst
-
-#		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-#				cond_state = False
-#				if mach_state == self.mach_state_cond:
-#						hand_lst = active_gs.get_hand_lst()
-#						for item in self.in_hand_lst:
-#								if item in hand_lst:
-#										cond_state = True
-#				return cond_state
 
 class IsWeaponAndStateCond(StateCond):
 		def __init__(self, name, weapon_match_cond, mach_state_cond):
