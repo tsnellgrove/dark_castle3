@@ -171,7 +171,7 @@ burt refactor order
 		- DONE: add grimy_axe to guard_goblin
 		- DONE: clean-up is_container
 		- DONE: create is_creature method
-		- INPROC: update room scope method (can tell that creature's hand isn't empty but scope not working yet)
+		- DONE: update room scope method
 		- TBD: update examine room method
 		- TBD: examine creature method
 		- TBD: take method

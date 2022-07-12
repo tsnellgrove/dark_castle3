@@ -224,8 +224,10 @@ class GameState(object):
 						if len(obj.contains) > 0 and obj.open_state == True:
 								open_cont_obj_lst = open_cont_obj_lst + obj.contains
 				for creature in room_creatures:
-						if not creature.hand_empty:
-								creature_hand_obj_lst.append(obj.hand_item())
+#						print(str(creature) + " hand_empty == " + str(creature.hand_empty()))
+						if not creature.hand_empty():
+#								print(str(creature) + " hand_item == " + str(creature.hand_item()))
+								creature_hand_obj_lst.append(creature.hand_item())
 				scope_lst = scope_lst + open_cont_obj_lst + creature_hand_obj_lst
 				return scope_lst
 
