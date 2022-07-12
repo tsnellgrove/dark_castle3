@@ -213,7 +213,7 @@ class GameState(object):
 				scope_lst.append(room_obj)
 				room_containers = []
 				for obj in scope_lst:
-						if hasattr(obj, 'contains'):
+						if obj.is_container():
 								room_containers.append(obj)
 				open_cont_obj_lst = []
 				for obj in room_containers:

@@ -169,6 +169,7 @@ burt refactor order
 		- DONE: create creature.hand_obj_lst attribute
 		- DONE: update instantiation of guard_goblin & royal hedgehog to in mk_def_pkl()
 		- DONE: add grimy_axe to guard_goblin
+		- DONE: clean-up is_container
 		- TBD: update room scope method
 		- TBD: update examine room method
 		- TBD: examine creature method

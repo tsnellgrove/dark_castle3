@@ -28,6 +28,9 @@ class Invisible(object):
 		def is_weapon(self):
 				return False
 
+		def	is_container(self):
+				return False
+
 		def __repr__(self):
 				return f'Object { self.name } is of class { type(self).__name__ } '
 
@@ -60,9 +63,6 @@ class Writing(Invisible):
 				except:
 						descript_str = descript_dict[self.descript_key]
 				return descript_str
-
-		def is_container(self):
-					return hasattr(self, 'contains')
 
 		def is_beverage(self):
 				return hasattr(self, 'drink_desc_key')
@@ -304,6 +304,9 @@ class Container(Door):
 		def contains_remove(self, item):
 				self._contains.remove(item)
 
+		def	is_container(self):
+				return True
+
 		def examine(self, active_gs):
 				super(Container, self).examine(active_gs)
 				self.print_contents_str(active_gs)
@@ -356,6 +359,9 @@ class Jug(Item):
 		@property
 		def open_state(self):
 				return self._open_state
+
+		def	is_container(self):
+				return True
 
 		def examine(self, active_gs):
 				super(Jug, self).examine(active_gs)
