@@ -83,6 +83,15 @@ class Creature(ViewOnly):
 		def hand_obj_lst(self, new_state):
 				self._hand_obj_lst = new_state
 
+		def is_creature(self):
+				return True
+
+		def hand_empty(self):
+				return not bool(self.hand_obj_lst)
+
+		def hand_item(self):
+				return self.hand_obj_lst[0]
+
 		def show(self, obj, active_gs):
 				if not active_gs.hand_check(obj):
 						active_gs.buffer("You aren't holding the " + obj.full_name)

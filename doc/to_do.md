@@ -170,7 +170,8 @@ burt refactor order
 		- DONE: update instantiation of guard_goblin & royal hedgehog to in mk_def_pkl()
 		- DONE: add grimy_axe to guard_goblin
 		- DONE: clean-up is_container
-		- TBD: update room scope method
+		- DONE: create is_creature method
+		- INPROC: update room scope method (can tell that creature's hand isn't empty but scope not working yet)
 		- TBD: update examine room method
 		- TBD: examine creature method
 		- TBD: take method

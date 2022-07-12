@@ -212,14 +212,21 @@ class GameState(object):
 								+ worn_lst + universal_lst + features_lst)
 				scope_lst.append(room_obj)
 				room_containers = []
+				room_creatures = []
 				for obj in scope_lst:
 						if obj.is_container():
 								room_containers.append(obj)
+						if obj.is_creature():
+								room_creatures.append(obj)
 				open_cont_obj_lst = []
+				creature_hand_obj_lst = []
 				for obj in room_containers:
 						if len(obj.contains) > 0 and obj.open_state == True:
 								open_cont_obj_lst = open_cont_obj_lst + obj.contains
-				scope_lst = scope_lst + open_cont_obj_lst
+				for creature in room_creatures:
+						if not creature.hand_empty:
+								creature_hand_obj_lst.append(obj.hand_item())
+				scope_lst = scope_lst + open_cont_obj_lst + creature_hand_obj_lst
 				return scope_lst
 
 		def writing_check(self, writing):
