@@ -172,7 +172,7 @@ burt refactor order
 		- DONE: clean-up is_container
 		- DONE: create is_creature method
 		- DONE: update room scope method
-		- TBD: update examine room method
+		- DONE: update examine room method
 		- TBD: examine creature method
 		- TBD: take method
 		- TBD: update creature.give() method

@@ -143,12 +143,17 @@ class Room(ViewOnly):
 				for obj in self.room_obj_lst:
 						if not obj.is_item():
 								active_gs.buffer("There is a " + obj.full_name + " here.")
+								obj.print_contents_str(active_gs)
+								if obj.is_creature() and not obj.hand_empty():
+										active_gs.buffer("The " + obj.full_name + " is holding a " + obj.hand_item().full_name)
 						else:
 								room_item_obj_lst.append(obj)
-				if len(room_item_obj_lst) > 0:
+#				if len(room_item_obj_lst) > 0:
+				if room_item_obj_lst:
 						room_item_str_lst = obj_lst_to_str(room_item_obj_lst)
 						active_gs.buffer("The following items are here: " + room_item_str_lst)
-				for obj in self.room_obj_lst:
+#				for obj in self.room_obj_lst:
+				for obj in room_item_obj_lst:
 						obj.print_contents_str(active_gs)
 
 		def go(self, direction, active_gs):
