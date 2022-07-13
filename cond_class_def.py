@@ -37,10 +37,11 @@ class WeaponInHandCond(PassThruCond):
 
 
 class CreatureItemCond(PassThruCond):
-		def __init__(self, name, creature_obj, item_obj):
+		def __init__(self, name, creature_obj, item_obj, match_cond):
 				super().__init__(name)
 				self._creature_obj = creature_obj # creature to check for item ownership
 				self._item_obj = item_obj # item creature must possess for condition to be true
+				self._match_cond = match_cond # boolean state to be matched
 
 		@property
 		def creature_obj(self):
@@ -54,10 +55,14 @@ class CreatureItemCond(PassThruCond):
 		def item_obj(self):
 				return self._item_obj
 
+		@property
+		def match_cond(self):
+				return self._match_cond
+
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 #				cond_state = self.item_obj in self.creature_obj.creature_items_lst
 				cond_state = self.item_obj in self.creature_obj.hand_obj_lst
-				return cond_state
+				return cond_state == self.match_cond
 
 class StateCond(PassThruCond):
 		def __init__(self, name, mach_state_cond):

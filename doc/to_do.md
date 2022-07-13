@@ -179,16 +179,15 @@ burt refactor order
 			- DONE: clean up comments
 			- DONE: add creature hand item to guard clause of take method
 			- DONE: add ['take', 'grimy_axe'] to goblin_attack_mach triggers
-		- INPROC: update creature.give() method
+		- DONE: update creature.give() method
 			- DONE: clean up give method
 			- DONE: create put_in_hand method
 			- DONE: update give method to use creature.put_in_hand method
 			- DONE: sort out hedgehog give mach (update CreatureItemCond and TimerAndCreatureItemResult)
 			- DONE: clean up auto_action() - move switch reset to auto_action()
 			- DONE: clean up auto_action() - create is_timer() method and test in auto_action()
-			- INPROC: create auto_action for goblin to re-draw sword
-			- TBD: test case of giving sword to hedgehog
-			- TBD: clean up comments
+			- DONE: create auto_action for goblin to re-draw sword
+			- DONE: test case of giving sword to hedgehog
 	- TBD: reconsider naming conventions; SHORTTEN!!! (bear in mind that method will always appear after obj)
 		- TBD: update attack and attack_burt method to use weapon.desc_lst attributes
 	- TBD: creature_items_lst
@@ -205,6 +204,7 @@ burt refactor order
 		- Burt to be in room features
 	7) universal descriptors => burt_obj
 	8) updaate burt hand & inventory changes in parallel to active_gs (create setter methods for creatures)
+		- TBD: change goblin re-arm result to take() rather than put_in_hand()
 	9) update module-by-module to read from active_gs to burt_obj (create getter methods for creatures)
 	10) eliminate attack_burt method
 	11) does room_scope now become a Room method?

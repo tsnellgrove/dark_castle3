@@ -17,3 +17,5 @@ def auto_action(active_gs):
 				elif obj.trigger_type == 'auto_act' and obj.is_timer() and obj.active:
 						obj.run_mach(active_gs)
 
+				elif obj.trigger_type == 'auto_act' and not obj.is_timer():
+						obj.run_mach(active_gs)

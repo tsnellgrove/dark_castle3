@@ -186,6 +186,7 @@ class Creature(ViewOnly):
 								room_obj = active_gs.get_room()
 								room_obj.room_obj_lst_remove(self)
 								room_obj.room_obj_lst_extend(self.creature_items_lst)
+								room_obj.room_obj_lst_extend(self.hand_obj_lst)
 								room_obj.room_obj_lst_append(self.dead_creature_obj)
 				else:
 						active_gs.buffer("At the last minute the " + self.full_name + " dodges your fearsome attack with " + burt_weapon_name + ".")

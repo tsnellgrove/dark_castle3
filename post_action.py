@@ -22,3 +22,4 @@ def post_action(active_gs, case, word_lst):
 						if obj.trig_check(active_gs, case, word_lst):
 								local_override = obj.run_mach(active_gs)
 
+

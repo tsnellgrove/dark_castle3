@@ -233,5 +233,8 @@ class PutItemInHandResult(BufferOnlyResult):
 						active_gs.buffer(descript_dict[self.name])
 				except:
 						pass
+# need to eventually change this to 'creature.take' when this is enabled
 				self.creature_obj.put_in_hand(self.item_obj)
+				if self.item_obj in self.creature_obj.creature_items_lst:
+						self.creature_obj.creature_lst_remove_item(self.item_obj)
 				return mach_state, self.cmd_override	
