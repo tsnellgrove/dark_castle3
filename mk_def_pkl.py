@@ -177,6 +177,7 @@ kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging
 				[scroll_not_in_throne_room_cond, hedgehog_not_exist_cond, crown_not_worn_cond, read_scroll_win_cond],
 				[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result])
 
+re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None, [pass_thru_cond], [pass_result])
 
 goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, [goblin_attack_mach],
 				{

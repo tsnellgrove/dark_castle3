@@ -184,7 +184,7 @@ burt refactor order
 			- DONE: create put_in_hand method
 			- DONE: update give method to use creature.put_in_hand method
 			- DONE: sort out hedgehog give mach (update CreatureItemCond and TimerAndCreatureItemResult)
-			- TBD: create auto_action for goblin to re-draw sword
+			- INPROC: create auto_action for goblin to re-draw sword
 			- TBD: test case of giving sword to hedgehog
 			- TBD: clean up comments
 	- TBD: reconsider naming conventions; SHORTTEN!!! (bear in mind that method will always appear after obj)
