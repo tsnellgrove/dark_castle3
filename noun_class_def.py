@@ -148,11 +148,9 @@ class Room(ViewOnly):
 										active_gs.buffer("The " + obj.full_name + " is holding a " + obj.hand_item().full_name)
 						else:
 								room_item_obj_lst.append(obj)
-#				if len(room_item_obj_lst) > 0:
 				if room_item_obj_lst:
 						room_item_str_lst = obj_lst_to_str(room_item_obj_lst)
 						active_gs.buffer("The following items are here: " + room_item_str_lst)
-#				for obj in self.room_obj_lst:
 				for obj in room_item_obj_lst:
 						obj.print_contents_str(active_gs)
 
@@ -209,7 +207,7 @@ class Item(ViewOnly):
 						room_obj.room_obj_lst_remove(self)
 				else:
 						for obj in room_obj_lst: # else remove item from container it's in
-								if obj.is_container() and self in obj.contains:
+								if obj.is_container() and obj.in_container(self):
 										obj.contains_remove(self)
 				return
 
@@ -314,6 +312,9 @@ class Container(Door):
 		@contains.setter
 		def contains(self, new_obj):
 				self._contains = new_obj
+
+		def in_container(self, obj):
+				return obj in self.contains
 
 		def contains_append(self, item):
 				self._contains.append(item)
