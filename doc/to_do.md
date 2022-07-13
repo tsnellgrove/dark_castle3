@@ -185,7 +185,7 @@ burt refactor order
 			- DONE: update give method to use creature.put_in_hand method
 			- DONE: sort out hedgehog give mach (update CreatureItemCond and TimerAndCreatureItemResult)
 			- DONE: clean up auto_action() - move switch reset to auto_action()
-			- TBD: clean up auto_action() - create is_timer() method and test in auto_action()
+			- DONE: clean up auto_action() - create is_timer() method and test in auto_action()
 			- INPROC: create auto_action for goblin to re-draw sword
 			- TBD: test case of giving sword to hedgehog
 			- TBD: clean up comments

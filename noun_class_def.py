@@ -34,6 +34,9 @@ class Invisible(object):
 		def is_creature(self):
 				return False
 
+		def is_timer(self):
+				return False
+
 		def __repr__(self):
 				return f'Object { self.name } is of class { type(self).__name__ } '
 

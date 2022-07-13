@@ -250,6 +250,9 @@ class Timer(Invisible):
 		def alert_anchor(self, new_val):
 				self._alert_anchor = new_val
 
+		def is_timer(self):
+				return True
+
 		def run_mach(self, active_gs):
 				cmd_override = False
 				self.timer_count += 1				
