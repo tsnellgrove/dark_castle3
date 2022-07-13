@@ -209,7 +209,29 @@ class ChgCreatureDescAndStateResult(BufferOnlyResult):
 				self.creature_obj.descript_key = self.new_desc_key
 				mach_state = True
 				return mach_state, self.cmd_override
-				
 
+class PutItemInHandResult(BufferOnlyResult):
+		def __init__(self, name, cmd_override, creature_obj, item_obj):
+				super().__init__(name, cmd_override)
+				self._creature_obj = creature_obj
+				self._item_obj = item_obj
 
+		@property
+		def creature_obj(self):
+				return self._creature_obj
 
+		@creature_obj.setter
+		def creature_obj(self, new_val):
+				self._creature_obj = new_val
+
+		@property
+		def item_obj(self):
+				return self._item_obj
+
+		def result_exe(self, active_gs, mach_state):
+				try:
+						active_gs.buffer(descript_dict[self.name])
+				except:
+						pass
+				self.creature_obj.put_in_hand(self.item_obj)
+				return mach_state, self.cmd_override	

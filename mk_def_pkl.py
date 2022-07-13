@@ -13,7 +13,7 @@ from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
 				StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond)
 from result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 				AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult,
-				TimerAndCreatureItemResult, ChgCreatureDescAndStateResult)
+				TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult)
 from mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer
 from creature_class_def import Creature
 from gs_class_def import GameState
@@ -97,7 +97,7 @@ throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
 correct_lever_array_cond = LeverArrayCond('correct_lever_array_cond', [4,2,1])
 wrong_lever_array_cond = PassThruCond('wrong_lever_array_cond')
-hedgehog_has_biscuit_cond = CreatureItemCond('hedgehog_has_biscuit_cond', 'royal_hedgehog', stale_biscuits)
+hedgehog_has_biscuit_cond = CreatureItemCond('hedgehog_has_biscuit_cond', 'royal_hedgehog_temp', stale_biscuits)
 hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_timer, shiny_sword)
 hedgehog_keeps_sword_cond = StateItemInRoomCond('hedgehog_keeps_sword_cond', False, shiny_sword, True)
 hedgehog_loses_sword_cond = StateItemInRoomCond('hedgehog_loses_sword_cond', False, shiny_sword, False)
@@ -106,6 +106,7 @@ scroll_not_in_throne_room_cond = RoomCond('scroll_not_in_throne_room_cond', 'thr
 hedgehog_not_exist_cond = InWorldCond('hedgehog_not_exist_cond', 'royal_hedgehog_temp', False)
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, False)
 read_scroll_win_cond = PassThruCond('read_scroll_win_cond')
+axe_in_goblin_hand_cond = CreatureItemCond('axe_in_goblin_hand_cond', 'guard_goblin_temp', grimy_axe)
 
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'death', True)
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
@@ -127,7 +128,7 @@ scroll_wrong_room_result = BufferOnlyResult('scroll_wrong_room_result', False)
 scroll_no_hedgehog_result = BufferOnlyResult('scroll_no_hedgehog_result', False)
 scroll_crown_not_worn_result = BufferOnlyResult('scroll_crown_not_worn_result', False)
 scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won', False)
-
+axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
 
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
 
@@ -177,9 +178,10 @@ kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging
 				[scroll_not_in_throne_room_cond, hedgehog_not_exist_cond, crown_not_worn_cond, read_scroll_win_cond],
 				[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result])
 
-re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None, [pass_thru_cond], [pass_result])
+re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None,
+				[axe_in_goblin_hand_cond, pass_thru_cond], [axe_in_goblin_hand_result, pass_result])
 
-goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, [goblin_attack_mach],
+goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, [goblin_attack_mach, re_arm_goblin_mach],
 				{
 						shiny_sword : 'show_goblin_shiny_sword',
 						stale_biscuits : 'show_goblin_stale_bisuits',
@@ -243,6 +245,8 @@ fed_hedgehog_loses_sword_result.creature_obj = royal_hedgehog
 scroll_not_in_throne_room_cond.match_room = throne_room
 hedgehog_not_exist_cond.exist_obj = royal_hedgehog
 crystal_box.contains = [kinging_scroll]
+axe_in_goblin_hand_cond.creature_obj = goblin_guard
+axe_in_goblin_hand_result.creature_obj = goblin_guard
 
 ### active_gs is the central store of game info ###
 active_gs = GameState(
