@@ -146,7 +146,8 @@ class Creature(ViewOnly):
 				new_descript_key = self.give_item_dict[dict_key]['new_descript_key']
 				if accept_item:
 						active_gs.hand_lst_remove_item(obj)
-						self.creature_lst_append_item(obj)
+##						self.creature_lst_append_item(obj)
+						self.put_in_hand(obj) # messes up goblin holding grimy_axe ; need an auto_action
 				if give_item != None:
 						self.creature_lst_remove_item(give_item)
 						active_gs.hand_lst_append_item(give_item)

@@ -179,7 +179,8 @@ class TimerAndCreatureItemResult(StartTimerResult):
 				except:
 						pass
 				self.timer_obj.start()
-				self.creature_obj.creature_items_lst.remove(self.ceature_item_obj)
+#				self.creature_obj.creature_items_lst.remove(self.ceature_item_obj)
+				self.creature_obj.hand_obj_lst_remove(self.ceature_item_obj)
 				return mach_state, self.cmd_override
 
 class ChgCreatureDescAndStateResult(BufferOnlyResult):

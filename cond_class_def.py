@@ -55,7 +55,8 @@ class CreatureItemCond(PassThruCond):
 				return self._item_obj
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-				cond_state = self.item_obj in self.creature_obj.creature_items_lst
+#				cond_state = self.item_obj in self.creature_obj.creature_items_lst
+				cond_state = self.item_obj in self.creature_obj.hand_obj_lst
 				return cond_state
 
 class StateCond(PassThruCond):

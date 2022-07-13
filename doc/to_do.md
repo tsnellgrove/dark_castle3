@@ -182,7 +182,10 @@ burt refactor order
 		- INPROC: update creature.give() method
 			- DONE: clean up give method
 			- DONE: create put_in_hand method
-			- TBD: update give method
+			- DONE: update give method to use creature.put_in_hand method
+			- DONE: sort out hedgehog give mach (update CreatureItemCond and TimerAndCreatureItemResult)
+			- TBD: create auto_action for goblin to re-draw sword
+			- TBD: test case of giving sword to hedgehog
 			- TBD: clean up comments
 	- TBD: reconsider naming conventions; SHORTTEN!!! (bear in mind that method will always appear after obj)
 		- TBD: update attack and attack_burt method to use weapon.desc_lst attributes
