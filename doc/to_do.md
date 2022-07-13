@@ -179,7 +179,11 @@ burt refactor order
 			- DONE: clean up comments
 			- DONE: add creature hand item to guard clause of take method
 			- DONE: add ['take', 'grimy_axe'] to goblin_attack_mach triggers
-		- TBD: update creature.give() method
+		- INPROC: update creature.give() method
+			- DONE: clean up give method
+			- TBD: create hand_swap method
+			- TBD: update give method
+			- TBD: clean up comments
 		- TBD: update attack and attack_burt method to use weapon.desc_lst attributes
 	- TBD: creature_items_lst
 	- TBD: invisible_lst (new name for mach_obj_lst)

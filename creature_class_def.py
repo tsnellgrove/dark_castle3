@@ -118,31 +118,34 @@ class Creature(ViewOnly):
 		def give(self, obj, active_gs):
 				if not active_gs.hand_check(obj):
 						active_gs.buffer("You aren't holding the " + obj.full_name)
+						return
+
+				creature_has_response = True
+				if obj in self.give_item_dict:
+						dict_key = obj
+				elif 'def_give' in self.give_item_dict:
+						dict_key = 'def_give'
 				else:
-						creature_has_response = True
-						if obj in self.give_item_dict:
-								dict_key = obj
-						elif 'def_give' in self.give_item_dict:
-								dict_key = 'def_give'
-						else:
-								creature_has_response = False
-						if creature_has_response:
-								response_key = self.give_item_dict[dict_key]['response_key']
-								response_str = descript_dict[response_key]
-								accept_item = self.give_item_dict[dict_key]['accept_item']
-								give_item = self.give_item_dict[dict_key]['give_item']
-								new_descript_key = self.give_item_dict[dict_key]['new_descript_key']
-								if accept_item:
-										active_gs.hand_lst_remove_item(obj)
-										self.creature_lst_append_item(obj)
-								if give_item != None:
-										self.creature_lst_remove_item(give_item)
-										active_gs.hand_lst_append_item(give_item)
-								if new_descript_key != None:
-										self.descript_key = new_descript_key
-								active_gs.buffer(response_str)
-						else:
-								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
+						creature_has_response = False
+
+				if not creature_has_response:
+						active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
+						return
+
+				response_key = self.give_item_dict[dict_key]['response_key']
+				response_str = descript_dict[response_key]
+				accept_item = self.give_item_dict[dict_key]['accept_item']
+				give_item = self.give_item_dict[dict_key]['give_item']
+				new_descript_key = self.give_item_dict[dict_key]['new_descript_key']
+				if accept_item:
+						active_gs.hand_lst_remove_item(obj)
+						self.creature_lst_append_item(obj)
+				if give_item != None:
+						self.creature_lst_remove_item(give_item)
+						active_gs.hand_lst_append_item(give_item)
+				if new_descript_key != None:
+						self.descript_key = new_descript_key
+				active_gs.buffer(response_str)
 
 		def attack(self, active_gs):
 				if active_gs.hand_empty():
