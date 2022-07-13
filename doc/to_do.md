@@ -173,13 +173,13 @@ burt refactor order
 		- DONE: create is_creature method
 		- DONE: update room scope method
 		- DONE: update examine room method
-		- TBD: examine creature method
+		- DONE: examine creature method
 		- TBD: take method
 		- TBD: update creature.give() method
 		- TBD: update attack_burt method to use weapon.desc_lst attributes
 	- TBD: attacking
 	- TBD: creature_items_lst
-	- TBD: invisible
+	- TBD: invisible (maybe "officiousness" ?)
 	- TBD: features
 	- TBD: worn
 	4) instantiate burt_obj

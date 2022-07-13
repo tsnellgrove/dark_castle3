@@ -92,6 +92,11 @@ class Creature(ViewOnly):
 		def hand_item(self):
 				return self.hand_obj_lst[0]
 
+		def examine(self, active_gs):
+				super(Creature, self).examine(active_gs)
+				if not self.hand_empty():
+						active_gs.buffer("The " + self.full_name + " is holding a " + self.hand_item().full_name)
+
 		def show(self, obj, active_gs):
 				if not active_gs.hand_check(obj):
 						active_gs.buffer("You aren't holding the " + obj.full_name)
