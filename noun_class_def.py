@@ -186,9 +186,16 @@ class Item(ViewOnly):
 						return 
 
 				room_obj = active_gs.get_room()
+				room_obj_lst = room_obj.room_obj_lst
 				backpack_lst = active_gs.get_backpack_lst()
 				worn_lst = active_gs.get_worn_lst()
-				room_obj_lst = room_obj.room_obj_lst
+
+				if self not in room_obj_lst + backpack_lst + worn_lst:
+						for obj in room_obj_lst: # handle case of obj in creature hand
+								if obj.is_creature() and self == obj.hand_item():
+										active_gs.buffer("Burt, you can't take the " + self.full_name + 
+														" it belongs to the " + obj.full_name + "!")
+										return
 
 				active_gs.put_in_hand(self)
 				active_gs.buffer("Taken")
@@ -204,6 +211,7 @@ class Item(ViewOnly):
 						for obj in room_obj_lst: # else remove item from container it's in
 								if obj.is_container() and self in obj.contains:
 										obj.contains_remove(self)
+				return
 
 		def drop(self, active_gs):
 #				if not active_gs.hand_check(self):
