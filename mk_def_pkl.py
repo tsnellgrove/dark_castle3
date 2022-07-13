@@ -164,7 +164,8 @@ hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', 0, 'pre_act_t
 				[fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result, pass_result]) # machine_state == post-eating description updated?
 
 goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,
-				[['examine', 'iron_portcullis'], ['examine', 'control_panel'], ['examine', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north']],
+				[['examine', 'iron_portcullis'], ['examine', 'control_panel'], ['examine', 'grimy_axe'], ['take', 'grimy_axe'],
+				['open', 'iron_portcullis'], ['go', 'north']],
 				None, [pass_thru_cond], [goblin_attacks_result])
 
 hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_cmd', None,

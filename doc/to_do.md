@@ -174,17 +174,16 @@ burt refactor order
 		- DONE: update room scope method
 		- DONE: update examine room method
 		- DONE: examine creature method
-		- INPROC: take method
+		- DONE: take method
 			- DONE: clean up take method
 			- DONE: clean up comments
 			- DONE: add creature hand item to guard clause of take method
-			- TBD: add ['take', 'grimy_axe'] to goblin_attack_mach triggers
+			- DONE: add ['take', 'grimy_axe'] to goblin_attack_mach triggers
 		- TBD: update creature.give() method
-		- TBD: update attack_burt method to use weapon.desc_lst attributes
-	- TBD: attacking
+		- TBD: update attack and attack_burt method to use weapon.desc_lst attributes
 	- TBD: creature_items_lst
-	- TBD: invisible (maybe "officiousness" ?)
-	- TBD: features
+	- TBD: invisible_lst (new name for mach_obj_lst)
+	- TBD: new feature_lst (maybe "officiousness" ?)
 	- TBD: worn
 	4) instantiate burt_obj
 	5) integrate burt with active_gs (get_hero method)
