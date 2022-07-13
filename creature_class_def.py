@@ -92,6 +92,13 @@ class Creature(ViewOnly):
 		def hand_item(self):
 				return self.hand_obj_lst[0]
 
+		def put_in_hand(self, new_item):
+				if not self.hand_empty():
+						hand_item = self.hand_item()
+						self.creature_lst_append_item(hand_item)
+						self.hand_obj_lst_remove(hand_item)
+				self.hand_obj_lst_append(new_item)
+
 		def examine(self, active_gs):
 				super(Creature, self).examine(active_gs)
 				if not self.hand_empty():

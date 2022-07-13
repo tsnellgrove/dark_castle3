@@ -181,7 +181,7 @@ burt refactor order
 			- DONE: add ['take', 'grimy_axe'] to goblin_attack_mach triggers
 		- INPROC: update creature.give() method
 			- DONE: clean up give method
-			- TBD: create hand_swap method
+			- DONE: create put_in_hand method
 			- TBD: update give method
 			- TBD: clean up comments
 		- TBD: update attack and attack_burt method to use weapon.desc_lst attributes
@@ -189,6 +189,7 @@ burt refactor order
 	- TBD: invisible_lst (new name for mach_obj_lst)
 	- TBD: new feature_lst (maybe "officiousness" ?)
 	- TBD: worn
+	- TBD: reconsider naming conventions; SHORTTEN!!!
 	4) instantiate burt_obj
 	5) integrate burt with active_gs (get_hero method)
 		- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict
