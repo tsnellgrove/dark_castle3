@@ -128,7 +128,7 @@ burt refactor order
 		def get_static_obj(self, static_key):
 		def inventory(self):
 	- will also enable 'room scope' type methods to move to class Room
-- INPROC: update existing creatures (e.g. hand & worn)
+- INPROC: update existing Creature class and creaatures (e.g. hand & worn)
 	- IDEAS:
 		- attacking:
 			- need to sort out attack_burt method to key off an identifier of the attacker (i.e. golblin attack v.s. other creature)
@@ -174,7 +174,10 @@ burt refactor order
 		- DONE: update room scope method
 		- DONE: update examine room method
 		- DONE: examine creature method
-		- TBD: take method
+		- INPROC: take method
+			- DONE: clean up take method
+			- TBD: clean up comments
+			- TBD: add creature hand item to guard clause of take method
 		- TBD: update creature.give() method
 		- TBD: update attack_burt method to use weapon.desc_lst attributes
 	- TBD: attacking

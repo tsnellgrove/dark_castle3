@@ -180,29 +180,37 @@ class Item(ViewOnly):
 				return True
 
 		def take(self, active_gs):
+
+				if active_gs.hand_check(self):
+						active_gs.buffer("You're already holding the " + self.full_name)
+						return 
+
 				room_obj = active_gs.get_room()
-				hand_lst = active_gs.get_hand_lst()
+#				hand_lst = active_gs.get_hand_lst()
 				backpack_lst = active_gs.get_backpack_lst()
 				worn_lst = active_gs.get_worn_lst()
 				room_obj_lst = room_obj.room_obj_lst
-				if active_gs.hand_check(self):
-						active_gs.buffer("You're already holding the " + self.full_name)
+
+#				else:
+				active_gs.put_in_hand(self)
+				active_gs.buffer("Taken")
+				if self in backpack_lst: # if taken from backpack, remove from backpack
+						active_gs.backpack_lst_remove_item(self)
+				elif self in worn_lst: # if taken from worn_lst, remove from worn_lst
+						if self.remove_descript is not None:
+								active_gs.buffer(descript_dict[self.remove_descript])
+						active_gs.worn_lst_remove_item(self)
+				elif self in room_obj_lst: # if taken from room, remove from room
+						room_obj.room_obj_lst_remove(self)
 				else:
-						active_gs.put_in_hand(self)
-						active_gs.buffer("Taken")
-						if self in backpack_lst: # if taken from backpack, remove from backpack
-								active_gs.backpack_lst_remove_item(self)
-						elif self in worn_lst: # if taken from worn_lst, remove from worn_lst
-								if self.remove_descript is not None:
-										active_gs.buffer(descript_dict[self.remove_descript])
-								active_gs.worn_lst_remove_item(self)
-						elif self in room_obj_lst: # if taken from room, remove from room
-								room_obj.room_obj_lst_remove(self)
-						else:
-								for obj in room_obj_lst: # else remove item from container it's in
-										if obj.is_container():
-												if self in obj.contains:
-														obj.contains_remove(self)
+						for obj in room_obj_lst: # else remove item from container it's in
+#								if obj.is_container():
+#										if self in obj.contains:
+#												obj.contains_remove(self)
+								if obj.is_container() and self in obj.contains:
+#										if self in obj.contains:
+										obj.contains_remove(self)
+
 
 		def drop(self, active_gs):
 #				if not active_gs.hand_check(self):
