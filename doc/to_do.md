@@ -176,7 +176,7 @@ burt refactor order
 		- DONE: examine creature method
 		- INPROC: take method
 			- DONE: clean up take method
-			- TBD: clean up comments
+			- DONE: clean up comments
 			- TBD: add creature hand item to guard clause of take method
 		- TBD: update creature.give() method
 		- TBD: update attack_burt method to use weapon.desc_lst attributes

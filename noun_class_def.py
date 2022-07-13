@@ -186,12 +186,10 @@ class Item(ViewOnly):
 						return 
 
 				room_obj = active_gs.get_room()
-#				hand_lst = active_gs.get_hand_lst()
 				backpack_lst = active_gs.get_backpack_lst()
 				worn_lst = active_gs.get_worn_lst()
 				room_obj_lst = room_obj.room_obj_lst
 
-#				else:
 				active_gs.put_in_hand(self)
 				active_gs.buffer("Taken")
 				if self in backpack_lst: # if taken from backpack, remove from backpack
@@ -204,13 +202,8 @@ class Item(ViewOnly):
 						room_obj.room_obj_lst_remove(self)
 				else:
 						for obj in room_obj_lst: # else remove item from container it's in
-#								if obj.is_container():
-#										if self in obj.contains:
-#												obj.contains_remove(self)
 								if obj.is_container() and self in obj.contains:
-#										if self in obj.contains:
 										obj.contains_remove(self)
-
 
 		def drop(self, active_gs):
 #				if not active_gs.hand_check(self):
