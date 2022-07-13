@@ -25,9 +25,9 @@ def pre_action(active_gs, case, word_lst):
 ##								if local_override:
 ##										cmd_override = True
 
-				elif obj.trigger_type == 'pre_act_auto_switch_reset':
-						if obj.switch_state != obj.def_switch_state:
-								obj.switch_state = obj.def_switch_state
+#				elif obj.trigger_type == 'pre_act_auto_switch_reset':
+#						if obj.switch_state != obj.def_switch_state:
+#								obj.switch_state = obj.def_switch_state
 
 				elif obj.trigger_type == 'pre_act_timer':
 						trig_case = 'timer'
