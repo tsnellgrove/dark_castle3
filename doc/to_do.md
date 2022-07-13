@@ -184,12 +184,13 @@ burt refactor order
 			- DONE: create put_in_hand method
 			- TBD: update give method
 			- TBD: clean up comments
+	- TBD: reconsider naming conventions; SHORTTEN!!! (bear in mind that method will always appear after obj)
 		- TBD: update attack and attack_burt method to use weapon.desc_lst attributes
 	- TBD: creature_items_lst
 	- TBD: invisible_lst (new name for mach_obj_lst)
 	- TBD: new feature_lst (maybe "officiousness" ?)
 	- TBD: worn
-	- TBD: reconsider naming conventions; SHORTTEN!!!
+	- TBD: refactor review for class Creature methods
 	4) instantiate burt_obj
 	5) integrate burt with active_gs (get_hero method)
 		- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict
