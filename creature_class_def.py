@@ -210,6 +210,10 @@ class Creature(ViewOnly):
 						hand_lst = active_gs.get_hand_lst()
 						burt_weapon_obj = hand_lst[0]
 						burt_weapon_name = 'the ' + burt_weapon_obj.full_name
+				if self.hand_empty():
+						hand_text = ""
+				else:
+						hand_text = " with the " + self.hand_item().full_name
 
 				creature_has_response = True
 				if burt_weapon_obj in self.attack_burt_dict:
@@ -219,15 +223,24 @@ class Creature(ViewOnly):
 				else:
 						creature_has_response = False
 				
-				active_gs.buffer("The " + self.full_name + " attacks and you attempt to parry with " +  burt_weapon_name + "!")
+				active_gs.buffer("The " + self.full_name + " attacks" + hand_text + " and you attempt to parry with " +  burt_weapon_name + "!")
 				if creature_has_response:
 						response_key = self.attack_burt_dict[dict_key]['response_key']
 						response_str = descript_dict[response_key]
-						weapon_desc_index = random.randint(0, 1)
+						attack_start_str = ("The "  + self.full_name)
+						if self.hand_empty():
+								attack_mid_str = " "
+						elif self.hand_item().is_weapon:
+								weapon_desc_index = random.randint(0, 1)
+								weapon_verb = self.hand_item().desc_lst[weapon_desc_index][0]
+								weapon_adj_noun = self.hand_item().desc_lst[weapon_desc_index][1]
+								attack_mid_str = "'s " + self.hand_item().full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + " and "
+						else:
+								attack_mid_str = "'s " + self.hand_item().full_name + "whizzes through the air and "
+						attack_str = attack_start_str + attack_mid_str + response_str
+						active_gs.buffer(attack_str)
 
-						# *** weapon 'verb' and 'adj_noun' get chosen here once hand is implemented for creatures ***
-
-						active_gs.buffer("The "  + self.full_name + "'s weapon arcs through the air with a lightening-fast stroke and " + response_str)
+#						active_gs.buffer("The "  + self.full_name + "'s weapon arcs through the air with a lightening-fast stroke and " + response_str)
 						if self.attack_burt_dict[dict_key]['result_code'] == 'creature_flee':
 								room_obj = active_gs.get_room()
 								room_obj.room_obj_lst_remove(self)

@@ -130,13 +130,6 @@ burt refactor order
 	- will also enable 'room scope' type methods to move to class Room
 - INPROC: update existing Creature class and creaatures (e.g. hand & worn)
 	- IDEAS:
-		- attacking:
-			- need to sort out attack_burt method to key off an identifier of the attacker (i.e. golblin attack v.s. other creature)
-		- creature_items_lst considerations (i.e. backpack)
-			- rename to make similar to room?
-			- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
-			- creature attribute for inventory_visible == True / False
-			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [only 'hand' unless creature = active_gs.hero]
 		- change mach_obj_lst to 'invisible'?
 			- creatures can have 'invisible' attribute for machs (like rooms)
 		- creature 'features'
@@ -192,8 +185,14 @@ burt refactor order
 			- DONE: hand_obj_lst => hand_lst
 			- DONE: hand_obj_lst_append => hand_lst_append
 			- DONE: hand_obj_lst_remove => hand_lst_remove
-		- TBD: update attack and attack_burt method to use weapon.desc_lst attributes
+		- INPROC: update attack and attack_burt method to use weapon.desc_lst attributes
+			- IDEAS: need to sort out attack_burt method to key off an identifier of the attacker (i.e. golblin attack v.s. other creature)
 	- TBD: creature_items_lst
+		- IDEAS:
+			- rename to make similar to room?
+			- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
+			- creature attribute for inventory_visible == True / False
+			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [only 'hand' unless creature = active_gs.hero]
 		- TBD: naming convention => obj_lst
 	- TBD: invisible_lst (new name for mach_obj_lst)
 	- TBD: new feature_lst (maybe "officiousness" ?)
