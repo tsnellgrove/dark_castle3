@@ -187,8 +187,8 @@ class GameState(object):
 
 		### inventory ###
 		def inventory(self):
-				hand_obj_lst = self.get_hand_lst()
-				hand_str = obj_lst_to_str(hand_obj_lst)
+				hand_lst = self.get_hand_lst()
+				hand_str = obj_lst_to_str(hand_lst)
 				self.buffer("In your hand you are holding: " + hand_str)
 
 				backpack_obj_lst = self.get_backpack_lst()
@@ -219,7 +219,7 @@ class GameState(object):
 						if obj.is_creature():
 								room_creatures.append(obj)
 				open_cont_obj_lst = []
-				creature_hand_obj_lst = []
+				creature_hand_lst = []
 				for obj in room_containers:
 						if len(obj.contains) > 0 and obj.open_state == True:
 								open_cont_obj_lst = open_cont_obj_lst + obj.contains
@@ -227,8 +227,8 @@ class GameState(object):
 #						print(str(creature) + " hand_empty == " + str(creature.hand_empty()))
 						if not creature.hand_empty():
 #								print(str(creature) + " hand_item == " + str(creature.hand_item()))
-								creature_hand_obj_lst.append(creature.hand_item())
-				scope_lst = scope_lst + open_cont_obj_lst + creature_hand_obj_lst
+								creature_hand_lst.append(creature.hand_item())
+				scope_lst = scope_lst + open_cont_obj_lst + creature_hand_lst
 				return scope_lst
 
 		def writing_check(self, writing):

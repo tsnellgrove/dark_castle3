@@ -188,9 +188,13 @@ burt refactor order
 			- DONE: clean up auto_action() - create is_timer() method and test in auto_action()
 			- DONE: create auto_action for goblin to re-draw sword
 			- DONE: test case of giving sword to hedgehog
-	- TBD: reconsider naming conventions; SHORTTEN!!! (bear in mind that method will always appear after obj)
+		- DONE: reconsider naming conventions; SHORTTEN!!! (bear in mind that method will always appear after obj)
+			- DONE: hand_obj_lst => hand_lst
+			- DONE: hand_obj_lst_append => hand_lst_append
+			- DONE: hand_obj_lst_remove => hand_lst_remove
 		- TBD: update attack and attack_burt method to use weapon.desc_lst attributes
 	- TBD: creature_items_lst
+		- TBD: naming convention => obj_lst
 	- TBD: invisible_lst (new name for mach_obj_lst)
 	- TBD: new feature_lst (maybe "officiousness" ?)
 	- TBD: worn
