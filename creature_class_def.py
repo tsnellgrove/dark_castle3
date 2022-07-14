@@ -227,17 +227,22 @@ class Creature(ViewOnly):
 				if creature_has_response:
 						response_key = self.attack_burt_dict[dict_key]['response_key']
 						response_str = descript_dict[response_key]
-						attack_start_str = ("The "  + self.full_name)
+#						attack_start_str = ("The "  + self.full_name)
 						if self.hand_empty():
-								attack_mid_str = " "
+#								attack_mid_str = " "
+								attack_start_str = ""
 						elif self.hand_item().is_weapon:
-								weapon_desc_index = random.randint(0, 1)
+								weapon_desc_max = len(self.hand_item().desc_lst) - 1
+								weapon_desc_index = random.randint(0, weapon_desc_max)
 								weapon_verb = self.hand_item().desc_lst[weapon_desc_index][0]
 								weapon_adj_noun = self.hand_item().desc_lst[weapon_desc_index][1]
-								attack_mid_str = "'s " + self.hand_item().full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + " and "
+#								attack_mid_str = "'s " + self.hand_item().full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + " and "
+								attack_start_str = "The " + self.hand_item().full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
 						else:
-								attack_mid_str = "'s " + self.hand_item().full_name + "whizzes through the air and "
-						attack_str = attack_start_str + attack_mid_str + response_str
+#								attack_mid_str = "'s " + self.hand_item().full_name + "whizzes through the air and "
+								attack_start_str = "The " + self.hand_item().full_name + "whizzes through the air. "
+#						attack_str = attack_start_str + attack_mid_str + response_str
+						attack_str = attack_start_str + response_str
 						active_gs.buffer(attack_str)
 
 #						active_gs.buffer("The "  + self.full_name + "'s weapon arcs through the air with a lightening-fast stroke and " + response_str)

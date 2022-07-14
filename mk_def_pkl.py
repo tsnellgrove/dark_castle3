@@ -59,7 +59,7 @@ hedgehog_broach = Clothes('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedge
 				'wear_hedgehog_broach', 'remove_hedgehog_broach', 'pin')
 
 grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing,
-				[['arcs', 'lightening-fast stroke'],['cleaves', 'violent swing']])
+				[['arcs', 'lightening-fast stroke'],['cleaves', 'violent swing'],['hacks', 'deadly intent']])
 shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarven_runes,
 				[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']])
 
