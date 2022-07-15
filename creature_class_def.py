@@ -175,6 +175,14 @@ class Creature(ViewOnly):
 						burt_weapon_obj = hand_lst[0]
 						burt_weapon_name = 'the ' + burt_weapon_obj.full_name
 
+				if self.hand_empty():
+						hand_text = "!"
+				else:
+						hand_text = " with the " + self.hand_item().full_name + "!"
+
+				active_gs.buffer("Fearlessly, you charge forward weilding " +  burt_weapon_name +
+								" while the " + self.full_name + " attempts to parry" + hand_text)
+
 				creature_has_response = True
 				if burt_weapon_obj in self.attack_creature_dict:
 						dict_key = burt_weapon_obj
@@ -183,11 +191,13 @@ class Creature(ViewOnly):
 				else:
 						creature_has_response = False
 
-				active_gs.buffer("Fearlessly, you charge forward weilding " +  burt_weapon_name + "!")
 				if creature_has_response:
 						response_key = self.attack_creature_dict[dict_key]['response_key']
 						response_str = descript_dict[response_key]
 						active_gs.buffer(response_str)
+
+# *** burt doesn't attack that often and generally has long descriptions when he does... maybe for burt attacks weapon words go in default? ***
+
 						if self.attack_creature_dict[dict_key]['result_code'] == 'creature_flee':
 								room_obj = active_gs.get_room()
 								room_obj.room_obj_lst_remove(self)
@@ -227,25 +237,19 @@ class Creature(ViewOnly):
 				if creature_has_response:
 						response_key = self.attack_burt_dict[dict_key]['response_key']
 						response_str = descript_dict[response_key]
-#						attack_start_str = ("The "  + self.full_name)
 						if self.hand_empty():
-#								attack_mid_str = " "
 								attack_start_str = ""
 						elif self.hand_item().is_weapon:
 								weapon_desc_max = len(self.hand_item().desc_lst) - 1
 								weapon_desc_index = random.randint(0, weapon_desc_max)
 								weapon_verb = self.hand_item().desc_lst[weapon_desc_index][0]
 								weapon_adj_noun = self.hand_item().desc_lst[weapon_desc_index][1]
-#								attack_mid_str = "'s " + self.hand_item().full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + " and "
 								attack_start_str = "The " + self.hand_item().full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
 						else:
-#								attack_mid_str = "'s " + self.hand_item().full_name + "whizzes through the air and "
 								attack_start_str = "The " + self.hand_item().full_name + "whizzes through the air. "
-#						attack_str = attack_start_str + attack_mid_str + response_str
 						attack_str = attack_start_str + response_str
 						active_gs.buffer(attack_str)
 
-#						active_gs.buffer("The "  + self.full_name + "'s weapon arcs through the air with a lightening-fast stroke and " + response_str)
 						if self.attack_burt_dict[dict_key]['result_code'] == 'creature_flee':
 								room_obj = active_gs.get_room()
 								room_obj.room_obj_lst_remove(self)

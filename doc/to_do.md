@@ -187,7 +187,7 @@ burt refactor order
 			- DONE: hand_obj_lst_remove => hand_lst_remove
 		- DONE: update attack_burt method to use weapon.desc_lst attributes
 			- IDEAS: need to sort out attack_burt method to key off an identifier of the attacker (i.e. golblin attack v.s. other creature)
-		- TBD: update attack method to use weapon.desc_lst attributes
+		- INPROC: update attack method to use weapon.desc_lst attributes
 	- TBD: creature_items_lst
 		- IDEAS:
 			- rename to make similar to room?
