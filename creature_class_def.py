@@ -11,7 +11,7 @@ from static_gbl import descript_dict
 ### classes
 class Creature(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict,
-		attack_creature_dict, attack_burt_dict, creature_items_lst, dead_creature_obj, hand_lst):
+		attack_creature_dict, attack_burt_dict, creature_items_lst, dead_creature_obj, hand_lst, is_attackable):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._creature_state = creature_state
 				self._mach_obj_lst = mach_obj_lst
@@ -22,6 +22,7 @@ class Creature(ViewOnly):
 				self._creature_items_lst = creature_items_lst
 				self._dead_creature_obj = dead_creature_obj
 				self._hand_lst = hand_lst
+				self._is_attackable = is_attackable
 
 # *** setters & getters ***
 
@@ -72,6 +73,10 @@ class Creature(ViewOnly):
 		@hand_lst.setter
 		def hand_lst(self, new_state):
 				self._hand_lst = new_state
+
+		@property
+		def is_attackable(self):
+				return self._is_attackable
 
 # *** class identification ***
 
@@ -167,6 +172,14 @@ class Creature(ViewOnly):
 				return 
 
 		def attack(self, active_gs):
+				if not self.is_attackable:
+						try:
+								descript_key = 'not_attackable_' + self.full_name
+								active_gs.buffer(descript_dict[descript_key])
+						except:
+								active_gs.buffer(descript_dict['not_attackable_default'])
+						return
+
 				if active_gs.hand_empty():
 						burt_weapon_name = 'your fist'
 						burt_weapon_obj = None

@@ -200,7 +200,7 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 						shiny_sword : {'result_code' : None, 'response_key' : 'parry_goblin'},
 						'def_attack' : {'result_code' : 'burt_death', 'response_key' : 'goblin_slays_burt'}
 				},
-				[torn_note], dead_goblin, [grimy_axe])
+				[torn_note], dead_goblin, [grimy_axe], True)
 
 
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None, None,
@@ -217,7 +217,7 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 						'def_attack' : {'result_code' : 'creature_flee', 'response_key' : 'hedgehog_flees'}
 				},
 				{},
-				[silver_key], None, [])
+				[silver_key], None, [], True)
 
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
