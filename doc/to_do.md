@@ -193,10 +193,15 @@ burt refactor order
 			- INPROC: re-org attack and burt_attack response into 3 sections:
 				- DONE: attack attack_initiation
 				- DONE: burt_attack attack_initiation
+				- INPROC: attack attack_resolution (w/ defaults & custom)
+					- DONE: rename response_key to custom_key
+					- DONE: create custom resolution_key dict entry
+					- TBD: create default attack_resolution dict entries
+					- TBD: update method (move resolution text to the very end - post result_key - which will provide resolution_key_default)
+					- TBD: update text entries
+				- TBD: burt_attack attack_resolution (w/ defaults & custom)
 				- TBD: attack custom_txt <optional>
 				- TBD: burt_attack custom_txt <optional>
-				- TBD: attack attack_resolution (w/ defaults & custom)
-				- TBD: burt_attack attack_resolution (w/ defaults & custom)
 	- TBD: creature_items_lst
 		- IDEAS:
 			- rename to make similar to room?

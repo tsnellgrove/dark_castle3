@@ -193,12 +193,12 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 						'def_give' : {'response_key' : 'give_goblin_default', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : None}
 				},
 				{
-						shiny_sword : {'result_code' : 'creature_death', 'response_key' : 'goblin_slain'},
-						'def_attack' : {'result_code' : 'burt_death', 'response_key' : 'burt_slain_by_goblin'}
+						shiny_sword : {'result_code' : 'creature_death', 'custom_key' : 'goblin_slain', 'resolution_key' : None},
+						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : 'burt_slain_by_goblin', 'resolution_key' : None}
 				},
 				{
-						shiny_sword : {'result_code' : None, 'response_key' : 'parry_goblin'},
-						'def_attack' : {'result_code' : 'burt_death', 'response_key' : 'goblin_slays_burt'}
+						shiny_sword : {'result_code' : None, 'custom_key' : 'parry_goblin', 'resolution_key' : None},
+						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : 'goblin_slays_burt', 'resolution_key' : None}
 				},
 				[torn_note], dead_goblin, [grimy_axe], True)
 
@@ -214,7 +214,7 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 						stale_biscuits : {'response_key' : 'give_hedgehog_biscuits', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : 'hedgehog_eating'}
 				},
 				{
-						'def_attack' : {'result_code' : 'creature_flee', 'response_key' : 'hedgehog_flees'}
+						'def_attack' : {'result_code' : 'creature_flee', 'custom_key' : 'hedgehog_flees', 'resolution_key' : None}
 				},
 				{},
 				[silver_key], None, [], True)

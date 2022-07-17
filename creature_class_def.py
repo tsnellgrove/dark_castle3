@@ -206,8 +206,8 @@ class Creature(ViewOnly):
 						creature_has_response = False
 
 				if creature_has_response:
-						response_key = self.attack_creature_dict[dict_key]['response_key']
-						response_str = descript_dict[response_key]
+						custom_key = self.attack_creature_dict[dict_key]['custom_key']
+						response_str = descript_dict[custom_key]
 						active_gs.buffer(response_str)
 
 # *** burt doesn't attack that often and generally has long descriptions when he does... maybe for burt attacks weapon words go in default? ***
@@ -251,8 +251,8 @@ class Creature(ViewOnly):
 				active_gs.buffer(attack_intiation_str)
 
 				if creature_has_response:
-						response_key = self.attack_burt_dict[dict_key]['response_key']
-						response_str = descript_dict[response_key]
+						custom_key = self.attack_burt_dict[dict_key]['custom_key']
+						response_str = descript_dict[custom_key]
 						if self.hand_empty():
 								attack_start_str = ""
 						elif self.hand_item().is_weapon:
