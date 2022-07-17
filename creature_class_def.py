@@ -210,8 +210,6 @@ class Creature(ViewOnly):
 						response_str = descript_dict[custom_key]
 						active_gs.buffer(response_str)
 
-# *** burt doesn't attack that often and generally has long descriptions when he does... maybe for burt attacks weapon words go in default? ***
-
 						if self.attack_creature_dict[dict_key]['result_code'] == 'creature_flee':
 								room_obj = active_gs.get_room()
 								room_obj.room_obj_lst_remove(self)
@@ -232,6 +230,7 @@ class Creature(ViewOnly):
 						active_gs.buffer("At the last minute the " + self.full_name + " dodges your fearsome attack with " + burt_weapon_name + ".")
 
 		def attack_burt(self, active_gs):
+				# create and buffer attack_initiation_sr
 				if active_gs.hand_empty():
 						burt_weapon_name = 'your fist'
 						burt_weapon_obj = None
@@ -243,10 +242,10 @@ class Creature(ViewOnly):
 						hand_text = ""
 				else:
 						hand_text = " with the " + self.hand_item().full_name
-
 				attack_intiation_str = ("The " + self.full_name + " attacks" + hand_text + " and you attempt to parry with " +  burt_weapon_name + "!")
 				active_gs.buffer(attack_intiation_str)
 
+				# determine if creature has an attack response
 				creature_has_response = True
 				if burt_weapon_obj in self.attack_burt_dict:
 						dict_key = burt_weapon_obj
@@ -255,24 +254,20 @@ class Creature(ViewOnly):
 				else:
 						creature_has_response = False
 
-#				attack_intiation_str = ("The " + self.full_name + " attacks" + hand_text + " and you attempt to parry with " +  burt_weapon_name + "!")
-#				active_gs.buffer(attack_intiation_str)
-
+				# if no response, buffer default text and exit
 				if not creature_has_response:
 						active_gs.buffer("At the last minute you parry the attack from the " + self.full_name + " with " + burt_weapon_name + ".")
 						return
 
-#				if creature_has_response:
+				#	if creature_has_response, buffer custom_str if it exists
 				custom_key = self.attack_burt_dict[dict_key]['custom_key']
-#						response_str = descript_dict[custom_key]
 				try:
 						custom_str = descript_dict[custom_key]
 						active_gs.buffer(custom_str)
 				except:
 						pass
-#				else:
-#						active_gs.buffer("At the last minute you parry the attack from the " + self.full_name + " with " + burt_weapon_name + ".")
 
+				# compose the start of the attack resolution string with verb and adj detail if the creature is weilding a weapon
 				if self.hand_empty():
 						attack_start_str = ""
 				elif self.hand_item().is_weapon:
@@ -283,9 +278,8 @@ class Creature(ViewOnly):
 						attack_start_str = "The " + self.hand_item().full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
 				else:
 						attack_start_str = "The " + self.hand_item().full_name + "whizzes through the air. "
-#						attack_str = attack_start_str + response_str
-#						active_gs.buffer(attack_str)
 
+				# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
 				if self.attack_burt_dict[dict_key]['result_code'] == 'creature_flee':
 						room_obj = active_gs.get_room()
 						room_obj.room_obj_lst_remove(self)
@@ -302,9 +296,7 @@ class Creature(ViewOnly):
 				else:
 						res_key = 'no_result_default_res_key'
 
-#				attack_str = attack_start_str + response_str
+				# buffer the full attack resolution string
 				attack_res_str = attack_start_str + descript_dict[res_key]
 				active_gs.buffer(attack_res_str)
 
-#				else:
-#						active_gs.buffer("At the last minute you parry the attack from the " + self.full_name + " with " + burt_weapon_name + ".")

@@ -182,7 +182,10 @@ descript_dict = {
 		'burt_death_default_res_key' : "You are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
 		'no_result_default_res_key' : "You only barely manage to parry with your own weapon!",
 
-		### creature responses ###		
+
+		### creature responses ###
+		
+		# guard_goblin #
 		'show_goblin_shiny_sword' : "The Guard Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
 		'show_goblin_default' : "The Guard Goblin glares at you with a hauty expression of disdain and then imperiously motions for you to hand the item over for further inspection.",
 		'show_goblin_stale_bisuits' : "The Guard Goblin scowels at the Stale Biscuits, wrinkles its nose, and then mutters something about 'gauche and impertinent' under its breath. You get the distinct impression that the Guard Goblin doesn't think much of biscuits - or biscuit bakers for that matter.",
@@ -191,14 +194,12 @@ descript_dict = {
 		'give_goblin_shiny_sword' : "The Guard Goblin blanches and backs away, terrified at the very thought of even touching the Shiny Sword.",
 		'burt_slain_by_goblin' : "With an echoing war cry you charge the Gurad Goblin, flailing your arms wildly in all directions as you come. This technique has served you well during drunken altercations at the pub but it proves less effective against a trained goblin guard. The last thing you ever see is the Guard Goblin's Grimy Axe swinging towards your head.",
 		'goblin_slain' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. you know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride to meet your foe in battle and dispatch him with one blazing fast strike of your sword.",
-##		'goblin_slays_burt' : "The Guard Goblin attacks with a lightening-fast swing of the Grimy Axe and you are helpless against the onslaught. You will need a better weapon if you are to survive this foe.",
 ##		'goblin_slays_burt' : "The Guard Goblin swings the Grimy Axe with a lightening-fast stroke and you are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
-#		'goblin_slays_burt' : "You are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
-#		'parry_goblin' : "You only barely manage to parry with your own weapon.",
+##		'goblin_slays_burt' : "You are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
+##		'parry_goblin' : "You only barely manage to parry with your own weapon.",
 		'goblin_attacks_result' : "The Guard Goblin does not take kindly to your presence in the north side of the room.",
 
-
-
+		# royal_hedgehog #
 		'hungry_hedgehog' : "This poor little Royal Hedgehog has seen better days. It looks gaunt and like it skipped breakfast - and maybe lunch and dinner too. But despite looking in need of a good meal the Royal Hedgehog's eyes have a bright, territorial gleam in them and it appears to have quite a preference for shiny things. You don't know why but you feel an innate fondness for this small but valiant creature.",
 		'show_hedgehog_stale_biscuits' : "The Royal Hedgehog's eyes light up with excitement! Apparently, Stale Biscuits are a favorite hedgehog delacacy. The Royal Hedgehog gives you a look half way between hopeful and pleading.",
 		'show_hedgehog_shiny_sword' : "The Royal Hedgehog gives a small squeek of excitement. It gives you a yearning look, clearly hoping that you will return its long-time favorite object.",

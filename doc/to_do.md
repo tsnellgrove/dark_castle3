@@ -140,7 +140,7 @@ burt refactor order
 			- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
 			- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
 			- non-humanoid monster could be a special weapon description case (fun new puzzle idea)
-	- INPROC: Weapon class
+	- DONE: Weapon class
 		- IDEAS: 
 			- reference weapon (e.g. "Grimy Sword") in attack text
 			- could have a Weapon class based on Item; could have associatted adverbs and verbs for attack description
@@ -193,16 +193,17 @@ burt refactor order
 			- INPROC: re-org attack and burt_attack response into 3 sections:
 				- DONE: attack attack_initiation
 				- DONE: burt_attack attack_initiation
-				- INPROC: attack_burt attack_resolution (w/ defaults & custom)
+				- DONE: attack_burt attack_resolution (w/ defaults & custom)
 					- DONE: rename response_key to custom_key
 					- DONE: create custom resolution_key dict entry
 					- DONE: create default attack_resolution txt entries in static_gbl()
 					- DONE: update method (move resolution text to the very end - post result_key - which will provide resolution_key_default)
 					- DONE: update custom_text in static_gbl()
-					- TBD: clean up comments
+					- DONE: clean up comments
 				- TBD: burt attack_resolution (w/ defaults & custom)
-				- TBD: attack custom_txt <optional>
-				- TBD: burt_attack custom_txt <optional>
+					- TBD: apply code format from attack_burt() method to attack() method
+					- TBD: attack custom_txt <optional>
+					- TBD: burt_attack custom_txt <optional>
 	- TBD: creature_items_lst
 		- IDEAS:
 			- rename to make similar to room?
