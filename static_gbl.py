@@ -174,10 +174,15 @@ descript_dict = {
 		### creatures ###
 		'guard_goblin' : "The Guard Goblin stands in the Alcove guarding the Control Panel and is armed and dangerous. It wields a Grimy Axe and looks at you with watchful malice. This goblin clearly takes its guard duties very seriously. It would not be wise to approach the Iron Portcullis or the Control Panel (or the Guard Goblin!) un-armed.",
 
-		### creature responses ###
 
+		### attack defaults ###
 		'not_attackable_default' : "You consider attacking but then realize that the act is futile. This foe cannot be vanquished by force of arms. You must find another path to victory.",
-		
+		'creature_flee_default_res_key' : "The creature flees in terror from your unprovoked attack.",
+		'creature_death_default_res_key' : "You dispatch your enemy with one blazing fast strike of your weapon!",
+		'burt_death_default_res_key' : "You are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
+		'no_result_default_res_key' : "You only barely manage to parry with your own weapon!",
+
+		### creature responses ###		
 		'show_goblin_shiny_sword' : "The Guard Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
 		'show_goblin_default' : "The Guard Goblin glares at you with a hauty expression of disdain and then imperiously motions for you to hand the item over for further inspection.",
 		'show_goblin_stale_bisuits' : "The Guard Goblin scowels at the Stale Biscuits, wrinkles its nose, and then mutters something about 'gauche and impertinent' under its breath. You get the distinct impression that the Guard Goblin doesn't think much of biscuits - or biscuit bakers for that matter.",
@@ -188,8 +193,8 @@ descript_dict = {
 		'goblin_slain' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. you know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride to meet your foe in battle and dispatch him with one blazing fast strike of your sword.",
 ##		'goblin_slays_burt' : "The Guard Goblin attacks with a lightening-fast swing of the Grimy Axe and you are helpless against the onslaught. You will need a better weapon if you are to survive this foe.",
 ##		'goblin_slays_burt' : "The Guard Goblin swings the Grimy Axe with a lightening-fast stroke and you are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
-		'goblin_slays_burt' : "You are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
-		'parry_goblin' : "You only barely manage to parry with your own weapon.",
+#		'goblin_slays_burt' : "You are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
+#		'parry_goblin' : "You only barely manage to parry with your own weapon.",
 		'goblin_attacks_result' : "The Guard Goblin does not take kindly to your presence in the north side of the room.",
 
 
