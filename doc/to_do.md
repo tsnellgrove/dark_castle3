@@ -190,7 +190,13 @@ burt refactor order
 		- INPROC: update attack method to use weapon.desc_lst attributes
 			- DONE: add is_attackable attribute to Creature class and instantiate value as True for guard_goblin and royal_hedgehog
 			- DONE: implement not_attackable code for attack method
-			- TBD: re-org attack response into 3 sections: attack_initiation, custom_txt <optional>, attack_resolution (w/ defaults & custom)
+			- INPROC: re-org attack and burt_attack response into 3 sections:
+				- DONE: attack attack_initiation
+				- DONE: burt_attack attack_initiation
+				- TBD: attack custom_txt <optional>
+				- TBD: burt_attack custom_txt <optional>
+				- TBD: attack attack_resolution (w/ defaults & custom)
+				- TBD: burt_attack attack_resolution (w/ defaults & custom)
 	- TBD: creature_items_lst
 		- IDEAS:
 			- rename to make similar to room?

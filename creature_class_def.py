@@ -193,8 +193,9 @@ class Creature(ViewOnly):
 				else:
 						hand_text = " with the " + self.hand_item().full_name + "!"
 
-				active_gs.buffer("Fearlessly, you charge forward weilding " +  burt_weapon_name +
+				attack_intiation_str = ("Fearlessly, you charge forward weilding " +  burt_weapon_name +
 								" while the " + self.full_name + " attempts to parry" + hand_text)
+				active_gs.buffer(attack_intiation_str)
 
 				creature_has_response = True
 				if burt_weapon_obj in self.attack_creature_dict:
@@ -245,8 +246,10 @@ class Creature(ViewOnly):
 						dict_key = 'def_attack'
 				else:
 						creature_has_response = False
-				
-				active_gs.buffer("The " + self.full_name + " attacks" + hand_text + " and you attempt to parry with " +  burt_weapon_name + "!")
+
+				attack_intiation_str = ("The " + self.full_name + " attacks" + hand_text + " and you attempt to parry with " +  burt_weapon_name + "!")
+				active_gs.buffer(attack_intiation_str)
+
 				if creature_has_response:
 						response_key = self.attack_burt_dict[dict_key]['response_key']
 						response_str = descript_dict[response_key]
