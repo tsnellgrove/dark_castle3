@@ -19,7 +19,7 @@ static_dict = {
 ### description dict ###
 descript_dict = {
 		### one-word commands - non-objeects ###
-		'introduction' : "Greetings brave adventurer!\n\nYou are Burt-the-Boneheaded, the only adventurer brave - or foolish - enough to enter the Dark Castle in search of treasure.\n\nType 'help' for help.\n\n",
+		'introduction' : "Greetings brave adventurer!\n\nYou are Burt-the-Baker, the only adventurer brave - or foolish - enough to enter the Dark Castle in search of treasure.\n\nType 'help' for help.\n\n",
 		'help' : "Help syntax = 'help <option>'. Help options = 'basics', 'creatures', 'one-word-commands', 'verbs', 'abbreviations', 'adjectives', prepositions', 'articles', 'read', or 'attack'.",
 		'credits' : "Written and programmed by Tom. Thanks to Toby, Joshua, JoyEllen, Milo, Gideon, Franco, Karl, Andy, Ken and Alec for advice and playtesting!!",
 		
@@ -192,8 +192,10 @@ descript_dict = {
 		'give_goblin_default' : "The Guard Goblin pockets the item and mutters something about the need to confiscate articles of dubious provenance from ill-favored vagrants.",
 		'give_goblin_stale_biscuits' : "The Guard Goblin waves its hand dismissively at the suggestion that it take reciept of the Stale Biscuits and makes an expression indicating that it would be best if we all just pretended that this had never happened.",
 		'give_goblin_shiny_sword' : "The Guard Goblin blanches and backs away, terrified at the very thought of even touching the Shiny Sword.",
-		'burt_slain_by_goblin' : "With an echoing war cry you charge the Gurad Goblin, flailing your arms wildly in all directions as you come. This technique has served you well during drunken altercations at the pub but it proves less effective against a trained goblin guard. The last thing you ever see is the Guard Goblin's Grimy Axe swinging towards your head.",
-		'goblin_slain' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. you know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride to meet your foe in battle and dispatch him with one blazing fast strike of your sword.",
+		'burt_slain_by_goblin' : "With an echoing war cry you charge the Gurad Goblin, flailing your arms wildly in all directions as you come. This technique has served you well during drunken altercations at the pub but it proves less effective against a trained Goblin Guard. The last thing you ever see is the Guard Goblin calmly stepping into fighting stance and readying its weapon.",
+##		previously, 'burt_slain_by_goblin' finsiehd with "'s Grimy Axe swinging towards your head.",
+		'goblin_slain' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. you know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle.",
+##	 previously, 'goblin_slain' finished with " and dispatch him with one blazing fast strike of your sword.",
 ##		'goblin_slays_burt' : "The Guard Goblin swings the Grimy Axe with a lightening-fast stroke and you are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
 ##		'goblin_slays_burt' : "You are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
 ##		'parry_goblin' : "You only barely manage to parry with your own weapon.",

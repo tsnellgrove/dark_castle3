@@ -10,7 +10,7 @@ from static_gbl import descript_dict
 
 titles_dict = {
 		-10: 'Burt the Best Forgotten',
-		0: 'Burt the Boneheaded',
+		0: 'Burt the Baker', # was 'Burt the Boneheaded'
 		10: 'Burt the Beginner',
 		20: 'Burt the Better Than Average',
 		30: 'Burt the Brawny',

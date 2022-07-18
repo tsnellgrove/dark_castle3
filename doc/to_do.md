@@ -200,10 +200,11 @@ burt refactor order
 					- DONE: update method (move resolution text to the very end - post result_key - which will provide resolution_key_default)
 					- DONE: update custom_text in static_gbl()
 					- DONE: clean up comments
-				- TBD: burt attack_resolution (w/ defaults & custom)
-					- TBD: apply code format from attack_burt() method to attack() method
-					- TBD: attack custom_txt <optional>
-					- TBD: burt_attack custom_txt <optional>
+				- INPROC: burt attack_resolution (w/ defaults & custom)
+					- DONE: apply code format from attack_burt() method to attack() method
+					- INPROC: testing (current = attack goblin w/ key; next attack goblin empty_hand; next attack hedgehog)
+					- TBD: update burt_attack custom_txt <optional>
+					- TBD: update attack resolution <optional>
 	- TBD: creature_items_lst
 		- IDEAS:
 			- rename to make similar to room?
@@ -484,6 +485,7 @@ IDEA: create a fun scenario where TravelEffect take item gets used... maybe a gi
 - Nest could be a container with open_state = None and lock_state = None
 
 - Can sharpen and clean sword in mouse hole - maybe only way to get past goblin
+- Until sharpened, sword can only parry goblin?
 - need a non-shrunken ruby to pay for sword sharpening (turns up nose at cheese - says he never touches it because it gives him indigestion)
 - mini Zork maze to get to blacksmith mouse
 - maybe random mouse keeps appearing and if you give it cheese it runs off and can be followed to the blacksmith

@@ -197,8 +197,8 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : 'burt_slain_by_goblin', 'resolution_key' : None}
 				},
 				{
-						shiny_sword : {'result_code' : None, 'custom_key' : 'parry_goblin', 'resolution_key' : None},
-						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : 'goblin_slays_burt', 'resolution_key' : None}
+						shiny_sword : {'result_code' : None, 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'parry_goblin'
+						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : None, 'resolution_key' : None} # was 'custom_key' : 'goblin_slays_burt'
 				},
 				[torn_note], dead_goblin, [grimy_axe], True)
 
