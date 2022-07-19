@@ -220,35 +220,20 @@ class Creature(ViewOnly):
 				except:
 						pass
 
-#				if creature_has_response:
-#						custom_key = self.attack_creature_dict[dict_key]['custom_key']
-#						response_str = descript_dict[custom_key]
-#						active_gs.buffer(response_str)
-
-				# compose the start of the attack resolution string with verb and adj detail if the creature is weilding a weapon
-				hand_lst = active_gs.get_hand_lst()
-				hand_item = hand_lst[0]
-#				if self.hand_empty():
-				if active_gs.hand_empty():
-						attack_start_str = ""
-#				elif self.hand_item().is_weapon:
-				elif hand_item.is_weapon():
-						weapon_desc_max = len(hand_item.desc_lst) - 1
-						weapon_desc_index = random.randint(0, weapon_desc_max)
-						weapon_verb = hand_item.desc_lst[weapon_desc_index][0]
-						weapon_adj_noun = hand_item.desc_lst[weapon_desc_index][1]
-						attack_start_str = "The " + hand_item.full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
-				else:
-						attack_start_str = "The " + hand_item.full_name + " whizzes through the air. "
+### NOTE: GENERATING win_weapon DOESN'T REALLY SOLVE THE PROBLEM... I ACTUALLY NEED TO DETERMINE 'WINNER' AND BASE DESC OFF THEIR 'HAND'
+### NOTE: ALSO NOT DETERMINING IF hand_empty() IN CONJUNCTION WITH 'WINNER' AND ATTACK RESOLUTION
+### NOTE: REALLY NEED TO FIGURE OUT 'WINNER' *FIRST* - THEN HAND STATE AND WEAPON ADJ FLOW FROM THERE
 
 				# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
 				if self.attack_creature_dict[dict_key]['result_code'] == 'creature_flee':
 						room_obj = active_gs.get_room()
 						room_obj.room_obj_lst_remove(self)
 						res_key = 'creature_flee_default_res_key'
+						win_weapon = burt_weapon_obj.full_name
 				elif self.attack_creature_dict[dict_key]['result_code'] == 'burt_death':
 						active_gs.set_game_ending('death')
 						res_key = 'burt_death_default_res_key'
+						win_weapon = self.hand_item().full_name
 				elif self.attack_creature_dict[dict_key]['result_code'] == 'creature_death':
 						room_obj = active_gs.get_room()
 						room_obj.room_obj_lst_remove(self)
@@ -256,15 +241,35 @@ class Creature(ViewOnly):
 						room_obj.room_obj_lst_extend(self.hand_lst)
 						room_obj.room_obj_lst_append(self.dead_creature_obj)
 						res_key = 'creature_death_default_res_key'
+						win_weapon = burt_weapon_obj.full_name						
 				else:
 						res_key = 'no_result_default_res_key'
+						win_weapon = burt_weapon_obj.full_name
+
+				# compose the start of the attack resolution string with verb and adj detail if the creature is weilding a weapon
+				hand_lst = active_gs.get_hand_lst()
+#				hand_item = hand_lst[0]
+##				if self.hand_empty():
+				if active_gs.hand_empty():
+						attack_start_str = ""
+##				elif self.hand_item().is_weapon:
+#				elif hand_item.is_weapon():
+				elif hand_lst[0].is_weapon():
+						hand_item = hand_lst[0]
+						weapon_desc_max = len(hand_item.desc_lst) - 1
+						weapon_desc_index = random.randint(0, weapon_desc_max)
+						weapon_verb = hand_item.desc_lst[weapon_desc_index][0]
+						weapon_adj_noun = hand_item.desc_lst[weapon_desc_index][1]
+##						attack_start_str = "The " + hand_item.full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
+						attack_start_str = "The " + win_weapon + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
+				else:
+##						attack_start_str = "The " + hand_item.full_name + " whizzes through the air. "
+						attack_start_str = "The " + win_weapon + " whizzes through the air. "
 
 				# buffer the full attack resolution string
 				attack_res_str = attack_start_str + descript_dict[res_key]
 				active_gs.buffer(attack_res_str)
-
-#				else:
-#						active_gs.buffer("At the last minute the " + self.full_name + " dodges your fearsome attack with " + burt_weapon_name + ".")
+				return 
 
 		def attack_burt(self, active_gs):
 				# create and buffer attack_initiation_str
@@ -305,6 +310,29 @@ class Creature(ViewOnly):
 				except:
 						pass
 
+				# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
+				if self.attack_burt_dict[dict_key]['result_code'] == 'creature_flee':
+						room_obj = active_gs.get_room()
+						room_obj.room_obj_lst_remove(self)
+						res_key = 'creature_flee_default_res_key'
+						win_weapon = burt_weapon_obj.full_name
+				elif self.attack_burt_dict[dict_key]['result_code'] == 'burt_death':
+						active_gs.set_game_ending('death')
+						res_key = 'burt_death_default_res_key'
+						win_weapon = self.hand_item().full_name
+				elif self.attack_burt_dict[dict_key]['result_code'] == 'creature_death':
+						room_obj = active_gs.get_room()
+						room_obj.room_obj_lst_remove(self)
+						room_obj.room_obj_lst_extend(self.creature_items_lst)
+						room_obj.room_obj_lst_append(self.dead_creature_obj)
+						res_key = 'creature_death_default_res_key'
+						win_weapon = burt_weapon_obj.full_name
+				else:
+						res_key = 'no_result_default_res_key'
+						win_weapon = self.hand_item().full_name
+
+### NOTE: GENERATING win_weapon DOESN'T REALLY SOLVE THE PROBLEM... I ACTUALLY NEED TO DETERMINE 'WINNER' AND BASE DESC OFF THEIR 'HAND'
+
 				# compose the start of the attack resolution string with verb and adj detail if the creature is weilding a weapon
 				if self.hand_empty():
 						attack_start_str = ""
@@ -313,28 +341,13 @@ class Creature(ViewOnly):
 						weapon_desc_index = random.randint(0, weapon_desc_max)
 						weapon_verb = self.hand_item().desc_lst[weapon_desc_index][0]
 						weapon_adj_noun = self.hand_item().desc_lst[weapon_desc_index][1]
-						attack_start_str = "The " + self.hand_item().full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
+##						attack_start_str = "The " + self.hand_item().full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
+						attack_start_str = "The " + win_weapon + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
 				else:
-						attack_start_str = "The " + self.hand_item().full_name + "whizzes through the air. "
-
-				# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
-				if self.attack_burt_dict[dict_key]['result_code'] == 'creature_flee':
-						room_obj = active_gs.get_room()
-						room_obj.room_obj_lst_remove(self)
-						res_key = 'creature_flee_default_res_key'
-				elif self.attack_burt_dict[dict_key]['result_code'] == 'burt_death':
-						active_gs.set_game_ending('death')
-						res_key = 'burt_death_default_res_key'
-				elif self.attack_burt_dict[dict_key]['result_code'] == 'creature_death':
-						room_obj = active_gs.get_room()
-						room_obj.room_obj_lst_remove(self)
-						room_obj.room_obj_lst_extend(self.creature_items_lst)
-						room_obj.room_obj_lst_append(self.dead_creature_obj)
-						res_key = 'creature_death_default_res_key'
-				else:
-						res_key = 'no_result_default_res_key'
+##						attack_start_str = "The " + self.hand_item().full_name + "whizzes through the air. "
+						attack_start_str = "The " + win_weapon + "whizzes through the air. "
 
 				# buffer the full attack resolution string
 				attack_res_str = attack_start_str + descript_dict[res_key]
 				active_gs.buffer(attack_res_str)
-
+				return 
