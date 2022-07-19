@@ -232,14 +232,14 @@ class Creature(ViewOnly):
 				if active_gs.hand_empty():
 						attack_start_str = ""
 #				elif self.hand_item().is_weapon:
-				elif hand_item.is_weapon:
+				elif hand_item.is_weapon():
 						weapon_desc_max = len(hand_item.desc_lst) - 1
 						weapon_desc_index = random.randint(0, weapon_desc_max)
 						weapon_verb = hand_item.desc_lst[weapon_desc_index][0]
 						weapon_adj_noun = hand_item.desc_lst[weapon_desc_index][1]
 						attack_start_str = "The " + hand_item.full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
 				else:
-						attack_start_str = "The " + hand_item.full_name + "whizzes through the air. "
+						attack_start_str = "The " + hand_item.full_name + " whizzes through the air. "
 
 				# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
 				if self.attack_creature_dict[dict_key]['result_code'] == 'creature_flee':
