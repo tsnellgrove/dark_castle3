@@ -211,8 +211,15 @@ burt refactor order
 			- creature attribute for inventory_visible == True / False
 			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [only 'hand' unless creature = active_gs.hero]
 			- only visible if creature = active_gs.hero() ??
-		- TBD: naming convention => obj_lst or item_lst
-	- TBD: new feature_lst (maybe "officiousness" ?); visible to outside world ??
+		- INPROC: naming convention change to obj_lst (no) or item_lst (yes)
+			- TBD: update result_class_def()
+			- TBD: updated creature_class_def()
+		- TBD: shorten item_lst method names:
+			- TBD: creature_lst_append_item => item_lst_append()
+				- TBD: module list
+			- TBD: creature_lst_remove_item => item_lst_remove()
+				- TBD: module list
+	- TBD: new feature_lst (maybe "officiousness" ?); is visible to outside world but not listed via 'examine'
 	- TBD: create creature_inv() method
 		- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
 		- TBD: create get_inv() to get creature inventory
@@ -223,8 +230,10 @@ burt refactor order
 		- TBD: create mach_lst() method for creatures (based on inv_lst)
 	- TBD: worn
 	- TBD: refactor review for class Creature methods
-	- TBD: shorten dict naming
+	- TBD: shorten dict naming for all dicts - 2_word *max*!
 	- TBD: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
+		- TBD: creature_state => state
+		- TBD: dead_creature_obj => corpse
 	4) instantiate burt_obj
 	5) integrate burt with active_gs (get_hero method)
 		- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict
