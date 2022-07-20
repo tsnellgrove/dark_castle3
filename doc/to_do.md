@@ -202,7 +202,7 @@ burt refactor order
 					- DONE: clean up comments
 				- INPROC: burt attack_resolution (w/ defaults & custom)
 					- DONE: apply code format from attack_burt() method to attack() method
-					- INPROC: testing (attack hedgehog)
+					- DONE: testing (attack hedgehog)
 					- TBD: update burt_attack custom_txt <optional>
 					- TBD: update attack resolution <optional>
 	- TBD: creature_items_lst

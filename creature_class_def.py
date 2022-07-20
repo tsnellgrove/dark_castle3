@@ -223,13 +223,17 @@ class Creature(ViewOnly):
 ### NOTE: GENERATING win_weapon DOESN'T REALLY SOLVE THE PROBLEM... I ACTUALLY NEED TO DETERMINE 'WINNER' AND BASE DESC OFF THEIR 'HAND'
 ### NOTE: ALSO NOT DETERMINING IF hand_empty() IN CONJUNCTION WITH 'WINNER' AND ATTACK RESOLUTION
 ### NOTE: REALLY NEED TO FIGURE OUT 'WINNER' *FIRST* - THEN HAND STATE AND WEAPON ADJ FLOW FROM THERE
+### NOTE: order of operations = <attacker> => <custom> => <winner>
 
 				# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
 				if self.attack_creature_dict[dict_key]['result_code'] == 'creature_flee':
 						room_obj = active_gs.get_room()
 						room_obj.room_obj_lst_remove(self)
 						res_key = 'creature_flee_default_res_key'
-						win_weapon = burt_weapon_obj.full_name
+						if active_gs.hand_empty(): # NOTE: IS AN INCOMPLETE SOLUTION - NEED TO FIX WHEN COMBINING attack() and attack_burt()
+								win_weapon = ""
+						else:
+								win_weapon = burt_weapon_obj.full_name
 				elif self.attack_creature_dict[dict_key]['result_code'] == 'burt_death':
 						active_gs.set_game_ending('death')
 						res_key = 'burt_death_default_res_key'
