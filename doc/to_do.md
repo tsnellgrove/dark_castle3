@@ -130,10 +130,10 @@ burt refactor order
 	- will also enable 'room scope' type methods to move to class Room
 - INPROC: update existing Creature class and creaatures (e.g. hand & worn)
 	- IDEAS:
-		- change mach_obj_lst to 'invisible'?
+		- change mach_obj_lst to 'invisible'? or 'invis_lst'?
 			- creatures can have 'invisible' attribute for machs (like rooms)
 		- creature 'features'
-			- creatures could have a 'features' attribute (like rooms) for ViewOnly attributes (e.g. burt's 'conscince', princess 'poise')
+			- creatures could have a 'features' attribute (like rooms) for ViewOnly attributes (e.g. burt's 'conscince', princess 'poise' & 'moxie')
 		- creature 'worn' attribute
 			- how to track worn dict?
 		- no action for now
@@ -154,7 +154,7 @@ burt refactor order
 		- DONE: update entrance_moat_mach cond to use is_weapon()
 		- DONE: updte GameState with weapon_in_hand() method
 		- DONE: clean up comments in mk_def_pkl, cond_class_def
-	- INPROC: creature hand for existing creatures
+	- DONE: creature hand for existing creatures
 		- IDEAS:
 			- change hand from list to scalar (???) => decision: keep hand as a list
 			- what should happen if Burt tries to take the axe from a living goblin? (general case)
@@ -187,10 +187,10 @@ burt refactor order
 			- DONE: hand_obj_lst_remove => hand_lst_remove
 		- DONE: update attack_burt method to use weapon.desc_lst attributes
 			- IDEAS: need to sort out attack_burt method to key off an identifier of the attacker (i.e. golblin attack v.s. other creature)
-		- INPROC: update attack method to use weapon.desc_lst attributes
+		- DONE: update attack method to use weapon.desc_lst attributes
 			- DONE: add is_attackable attribute to Creature class and instantiate value as True for guard_goblin and royal_hedgehog
 			- DONE: implement not_attackable code for attack method
-			- INPROC: re-org attack and burt_attack response into 3 sections:
+			- DONE: re-org attack and burt_attack response into 3 sections:
 				- DONE: attack attack_initiation
 				- DONE: burt_attack attack_initiation
 				- DONE: attack_burt attack_resolution (w/ defaults & custom)
@@ -200,20 +200,20 @@ burt refactor order
 					- DONE: update method (move resolution text to the very end - post result_key - which will provide resolution_key_default)
 					- DONE: update custom_text in static_gbl()
 					- DONE: clean up comments
-				- INPROC: burt attack_resolution (w/ defaults & custom)
+				- DONE: burt attack_resolution (w/ defaults & custom)
 					- DONE: apply code format from attack_burt() method to attack() method
 					- DONE: testing (attack hedgehog)
-					- TBD: update burt_attack custom_txt <optional>
-					- TBD: update attack resolution <optional>
+					- DONE: update hedgehog cutom_attack descriptions
 	- TBD: creature_items_lst
 		- IDEAS:
 			- rename to make similar to room?
 			- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
 			- creature attribute for inventory_visible == True / False
 			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [only 'hand' unless creature = active_gs.hero]
-		- TBD: naming convention => obj_lst
+			- only visible if creature = active_gs.hero() ??
+		- TBD: naming convention => obj_lst or item_lst
 	- TBD: invisible_lst (new name for mach_obj_lst)
-	- TBD: new feature_lst (maybe "officiousness" ?)
+	- TBD: new feature_lst (maybe "officiousness" ?); visible to outside world ??
 	- TBD: worn
 	- TBD: refactor review for class Creature methods
 	4) instantiate burt_obj
@@ -442,6 +442,10 @@ Version 3.9x Goals
 - publish new version and get feedback
 
 
+*** Awesome Words to Use ***
+- find a use for the word "griffonage" (illegible handwriting)
+- recreancy = shameful cowardice : perfidy
+
 
 *** NEW PUZZLE IDEAS ***
 
@@ -530,7 +534,6 @@ IDEA: create a fun scenario where TravelEffect take item gets used... maybe a gi
 		link puzzle to total number of moves? Or to score?
 		repeat option like 'again' / 'g' in Zork (JE request)
 	Possibly add a room 6 with time travel??
-		find a use for the word "griffonage" (illegible handwriting)
 		Opportunity to include princess in game - perhaps have Willie give her the hedgehog_broach to time travel
 		Depict future (opportunity but challenges) by painting to portrait
 		Also get key from time travel - put in container and then refind 100 years later
