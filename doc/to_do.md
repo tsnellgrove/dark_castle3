@@ -215,10 +215,9 @@ burt refactor order
 			- TBD: update result_class_def()
 			- TBD: updated creature_class_def()
 		- TBD: shorten item_lst method names:
-			- TBD: creature_lst_append_item => item_lst_append()
-				- TBD: module list
-			- TBD: creature_lst_remove_item => item_lst_remove()
-				- TBD: module list
+			- TBD: creature_lst_append_item => item_lst_append() and creature_lst_remove_item => item_lst_remove()
+				- TBD: update creature_class_def()
+				- TBD: uupdate result_class_def()
 	- TBD: new feature_lst (maybe "officiousness" ?); is visible to outside world but not listed via 'examine'
 	- TBD: create creature_inv() method
 		- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
