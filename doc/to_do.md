@@ -216,7 +216,15 @@ burt refactor order
 	- TBD: new feature_lst (maybe "officiousness" ?); visible to outside world ??
 	- TBD: worn
 	- TBD: refactor review for class Creature methods
+	- TBD: shorten dict naming
+	- TBD: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
 	4) instantiate burt_obj
+	- TBD: create creature_inv() method
+		- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
+		- TBD: create get_inv() to get creature inventory
+			- TBD: returns hand_lst for all creatures
+			- TBD: returns feature_lst for all creatuers
+			- TBD: returns item_lst if creature == active_gs.get_hero()
 	5) integrate burt with active_gs (get_hero method)
 		- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict
 		- Note: get_hero() enables player to take on different characters in the game (e.g. Burt could become a mouse)
