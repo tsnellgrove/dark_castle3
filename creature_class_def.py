@@ -100,18 +100,15 @@ class Creature(ViewOnly):
 		def put_in_hand(self, new_item):
 				if not self.hand_empty():
 						hand_item = self.hand_item()
-#						self.creature_lst_append_item(hand_item)
 						self.item_lst_append(hand_item)
 						self.hand_lst_remove(hand_item)
 				self.hand_lst_append(new_item)
 
 # *** obj_lst ***
 
-#		def creature_lst_append_item(self, item):
 		def item_lst_append(self, item):
 				self._creature_items_lst.append(item)
 
-#		def creature_lst_remove_item(self, item):
 		def item_lst_remove(self, item):
 				self._creature_items_lst.remove(item)
 
@@ -167,7 +164,6 @@ class Creature(ViewOnly):
 						active_gs.hand_lst_remove_item(obj)
 						self.put_in_hand(obj) # messes up goblin holding grimy_axe ; need an auto_action
 				if give_item != None:
-#						self.creature_lst_remove_item(give_item)
 						self.item_lst_remove(give_item)
 						active_gs.hand_lst_append_item(give_item)
 				if new_descript_key != None:
