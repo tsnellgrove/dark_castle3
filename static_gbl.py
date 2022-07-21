@@ -36,6 +36,7 @@ descript_dict = {
 		'burt' : "Yep, that's you Burt. A fine specimen of a man. If not for the drooling and the farting I don't know how you'd fend off the ladies.",
 		'fist' : "Yep, that's your fist. Still bruised from the last time you swung and missed and hit a wall...", 
 		'conscience' : "Burt, Dark Castle is quite murky enough without pondering your prodigal and Hal-esque misspent youth!",
+		'officiousness' : "The Guard Goblin - despite, or perhaps because of, being a vicious mercanary - wears its weighty officiousness like a badge of honor. It scrutinizes you with a dark look of disaproval and a disapointed twitchs of the head. Any moment now it may ask you whether you've recieved the memo about the new cover sheet for Treaspassing Permit Suspension report.",
 
 		### wrong way errors ###
 		'wrong_way_0' : "Ouch! Burt, stop walking into walls!",

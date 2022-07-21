@@ -11,7 +11,7 @@ from static_gbl import descript_dict
 ### classes
 class Creature(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict,
-		attack_creature_dict, attack_burt_dict, item_lst, dead_creature_obj, hand_lst, is_attackable):
+		attack_creature_dict, attack_burt_dict, item_lst, dead_creature_obj, hand_lst, is_attackable, feature_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._creature_state = creature_state # state
 				self._mach_obj_lst = mach_obj_lst # invisible_lst
@@ -23,6 +23,7 @@ class Creature(ViewOnly):
 				self._dead_creature_obj = dead_creature_obj # corpse
 				self._hand_lst = hand_lst
 				self._is_attackable = is_attackable
+				self._feature_lst = feature_lst
 
 # *** setters & getters ***
 
@@ -77,6 +78,10 @@ class Creature(ViewOnly):
 		@property
 		def is_attackable(self):
 				return self._is_attackable
+
+		@property
+		def feature_lst(self):
+				return self._feature_lst
 
 # *** class identification ***
 

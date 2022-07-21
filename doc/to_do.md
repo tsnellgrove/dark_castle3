@@ -130,10 +130,6 @@ burt refactor order
 	- will also enable 'room scope' type methods to move to class Room
 - INPROC: update existing Creature class and creaatures (e.g. hand & worn)
 	- IDEAS:
-		- change mach_obj_lst to 'invisible'? or 'invis_lst'?
-			- creatures can have 'invisible' attribute for machs (like rooms)
-		- creature 'features'
-			- creatures could have a 'features' attribute (like rooms) for ViewOnly attributes (e.g. burt's 'conscince', princess 'poise' & 'moxie')
 		- creature 'worn' attribute
 			- how to track worn dict?
 		- refactoring noun classes for burt-as-creature
@@ -233,11 +229,18 @@ burt refactor order
 		- DONE: naming convention change to obj_lst (no) or item_lst (yes)
 			- DONE: update result_class_def()
 			- DONE: updated creature_class_def()
-	- TBD: new feature_lst (maybe "officiousness" ?); is visible to outside world but not listed via 'examine'
-		- TBD: add attribute & extend instantiation
-		- TBD: create setters & getters
-		- TBD: create ViewOnly obj to put in goblin & hedgehog instantiation
-		- TBD: create text for new obj
+	- TBD: new feature_lst attribue
+		- IDEAS:
+			- creatures could have a 'features' attribute (like rooms) for ViewOnly attributes (e.g. burt's 'conscince', princess 'poise' & 'moxie')
+			- (maybe goblin's "officiousness" ?)
+			- is visible to outside world but not listed via 'examine'
+			- for burt maybe add brass_lantern - always trust and shining in your off hand... wouldn't want that to go out now would we? Grues...
+		- DONE: add attribute & extend instantiation
+		- DONE: create setters & getters
+		- INPROC: create ViewOnly obj and description text to put in goblin & hedgehog instantiation
+			- DONE: goblin = officiouness
+			- TBD: hedgehog = valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
+		- TBD: update text to hint at easter eggs
 		- TBD: create get_inv() method
 			- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
 			- TBD: create get_inv() to get creature inventory
@@ -246,6 +249,9 @@ burt refactor order
 				- TBD: returns item_lst if creature == active_gs.get_hero()
 		- TBD: update active_gs.scope commands to use get_inv() method
 	- TBD: invisible_lst (new name for mach_obj_lst)
+		- IDEAS:
+			- creatures can have 'invisible' attribute for machs (like rooms)
+			- change mach_obj_lst to 'invisible'? or 'invis_lst'?
 		- TBD: create mach_lst() method for creatures (based on inv_lst)
 	- TBD: worn
 	- TBD: refactor review for class Creature methods
@@ -253,6 +259,7 @@ burt refactor order
 	- TBD: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
 		- TBD: creature_state => state
 		- TBD: dead_creature_obj => corpse
+	- TBD: re-order attributes for better flow
 	4) instantiate burt_obj
 	5) integrate burt with active_gs (get_hero method)
 		- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict

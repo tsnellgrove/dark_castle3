@@ -39,6 +39,7 @@ alcove = ViewOnly('alcove', 'Alcove', 'alcove', 'alcove', None)
 stone_coffer = ViewOnly('stone_coffer', 'Stone Coffer', 'coffer', 'stone_coffer', None)
 family_tree = ViewOnly('family_tree', 'Family Tree', 'tree', 'family_tree', None)
 dead_goblin = ViewOnly('dead_goblin', 'Dead Goblin', 'goblin', 'dead_goblin', None)
+officiousness = ViewOnly('officiousness', 'Officiousness', "officiousness", 'officiousness', None)
 
 rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None)
 brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None) # test object
@@ -200,7 +201,7 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 						shiny_sword : {'result_code' : None, 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'parry_goblin'
 						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : None, 'resolution_key' : None} # was 'custom_key' : 'goblin_slays_burt'
 				},
-				[torn_note], dead_goblin, [grimy_axe], True)
+				[torn_note], dead_goblin, [grimy_axe], True, [officiousness])
 
 
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None, None,
@@ -217,7 +218,7 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 						'def_attack' : {'result_code' : 'creature_flee', 'custom_key' : 'hedgehog_flees', 'resolution_key' : None}
 				},
 				{},
-				[silver_key], None, [], True)
+				[silver_key], None, [], True, [])
 
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
