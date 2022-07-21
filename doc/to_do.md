@@ -211,13 +211,14 @@ burt refactor order
 			- creature attribute for inventory_visible == True / False
 			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [only 'hand' unless creature = active_gs.hero]
 			- only visible if creature = active_gs.hero() ??
-		- INPROC: naming convention change to obj_lst (no) or item_lst (yes)
+		- TBD: creature_lst_append_item => item_lst_append() and creature_lst_remove_item => item_lst_remove()
+			- DONE: update creature_class_def()
+			- DONE: uupdate result_class_def()
+			- TBD: comment clean-up
+		- TBD: naming convention change to obj_lst (no) or item_lst (yes)
 			- TBD: update result_class_def()
 			- TBD: updated creature_class_def()
 		- TBD: shorten item_lst method names:
-			- TBD: creature_lst_append_item => item_lst_append() and creature_lst_remove_item => item_lst_remove()
-				- TBD: update creature_class_def()
-				- TBD: uupdate result_class_def()
 	- TBD: new feature_lst (maybe "officiousness" ?); is visible to outside world but not listed via 'examine'
 	- TBD: create creature_inv() method
 		- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
