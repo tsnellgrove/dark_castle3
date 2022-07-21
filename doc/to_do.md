@@ -136,6 +136,21 @@ burt refactor order
 			- creatures could have a 'features' attribute (like rooms) for ViewOnly attributes (e.g. burt's 'conscince', princess 'poise' & 'moxie')
 		- creature 'worn' attribute
 			- how to track worn dict?
+		- refactoring noun classes for burt-as-creature
+			- think abour 'source' and 'desination'... e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
+			- can we have 'burt' be the default <creature> but other options available?
+				- this would allow give() to become a noun class method... essentially a take() initiated by burt
+				- likewise, show() becomes an examine initiated by burt
+				- maybe each Creature has its own description list?
+					- desc list as creature attribute ???
+				- with a default examine() response similar to "the X is not interesting"
+				- thinking systemically, can we pre-validate noun class methods?
+					- validate() would run between interpreter() and pre_action()
+					- e.g. for take() use case, can we checks to see if obj is_item and is in <room>.obj_scope ?
+					- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
+					- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
+					- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
+				- need to do a detailed mapping of what is required for success in each noun_class() method
 		- no action for now
 			- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
 			- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
