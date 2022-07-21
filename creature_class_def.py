@@ -13,14 +13,14 @@ class Creature(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict,
 		attack_creature_dict, attack_burt_dict, item_lst, dead_creature_obj, hand_lst, is_attackable):
 				super().__init__(name, full_name, root_name, descript_key, writing)
-				self._creature_state = creature_state
-				self._mach_obj_lst = mach_obj_lst
-				self._show_item_dict = show_item_dict
-				self._give_item_dict = give_item_dict
-				self._attack_creature_dict = attack_creature_dict
-				self._attack_burt_dict = attack_burt_dict
+				self._creature_state = creature_state # state
+				self._mach_obj_lst = mach_obj_lst # invisible_lst
+				self._show_item_dict = show_item_dict # show_dict
+				self._give_item_dict = give_item_dict # give_dict
+				self._attack_creature_dict = attack_creature_dict # attacked_dict
+				self._attack_burt_dict = attack_burt_dict # attacking_dict
 				self._item_lst = item_lst
-				self._dead_creature_obj = dead_creature_obj
+				self._dead_creature_obj = dead_creature_obj # corpse
 				self._hand_lst = hand_lst
 				self._is_attackable = is_attackable
 
