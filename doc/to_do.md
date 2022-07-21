@@ -229,6 +229,11 @@ burt refactor order
 		- DONE: naming convention change to obj_lst (no) or item_lst (yes)
 			- DONE: update result_class_def()
 			- DONE: updated creature_class_def()
+		- TBD: argh! rename item_lst to bkpk_lst. Also update item_lst_append() to bkpk_lst_append() and item_lst_remove() to bkpk_lst_remove()
+			- IDEA: class attributes should be descriptive in relation to the *main class* (e.g. a creature has hand_lst & bkpk_lst attributes)
+			- IDEA: class methods can be descriptive in relation to the *attribute variable class* (e.g. a creature has item_lst and vis_lst methods)
+			- IDEA: so for creature == burt, item_lst() = hand_lst + bkpk_lst
+			- IDEA: methods for creature and room = item_lst(), vis_lst(), all_lst(), and mach_lst()
 	- TBD: new feature_lst attribue
 		- IDEAS:
 			- creatures could have a 'features' attribute (like rooms) for ViewOnly attributes (e.g. burt's 'conscince', princess 'poise' & 'moxie')
@@ -243,7 +248,7 @@ burt refactor order
 			- NA: hedgehog = valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
 			- TBD: improvement - hedgehog = loyal! scruffy and dog-like; not mafioso or sycophant
 		- TBD: update text to hint at easter eggs
-		- TBD: create get_inv() method
+		- TBD: create vis_lst(), all_lst, item_lst, and mach_lst methods
 			- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
 			- TBD: create get_inv() to get creature inventory
 				- TBD: returns hand_lst for all creatures
