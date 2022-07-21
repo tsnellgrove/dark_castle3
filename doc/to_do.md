@@ -238,8 +238,10 @@ burt refactor order
 		- DONE: add attribute & extend instantiation
 		- DONE: create setters & getters
 		- INPROC: create ViewOnly obj and description text to put in goblin & hedgehog instantiation
-			- DONE: goblin = officiouness
-			- TBD: hedgehog = valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
+			- INPROC: goblin = officiouness
+				- TBD: "hobgoblin of little minds"
+			- NA: hedgehog = valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
+			- TBD: improvement - hedgehog = loyal! scruffy and dog-like; not mafioso or sycophant
 		- TBD: update text to hint at easter eggs
 		- TBD: create get_inv() method
 			- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
@@ -489,6 +491,8 @@ Version 3.9x Goals
 *** Awesome Words to Use ***
 - find a use for the word "griffonage" (illegible handwriting)
 - recreancy = shameful cowardice : perfidy
+- aubade
+- defenistrate
 
 
 *** NEW PUZZLE IDEAS ***
