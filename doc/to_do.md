@@ -204,7 +204,7 @@ burt refactor order
 					- DONE: apply code format from attack_burt() method to attack() method
 					- DONE: testing (attack hedgehog)
 					- DONE: update hedgehog cutom_attack descriptions
-	- TBD: creature_items_lst
+	- DONE: creature_items_lst => rename to item_lst
 		- IDEAS:
 			- rename to make similar to room?
 			- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
@@ -215,17 +215,21 @@ burt refactor order
 			- DONE: update creature_class_def()
 			- DONE: uupdate result_class_def()
 			- DONE: comment clean-up
-		- TBD: naming convention change to obj_lst (no) or item_lst (yes)
-			- TBD: update result_class_def()
-			- TBD: updated creature_class_def()
-		- TBD: shorten item_lst method names:
+		- DONE: naming convention change to obj_lst (no) or item_lst (yes)
+			- DONE: update result_class_def()
+			- DONE: updated creature_class_def()
 	- TBD: new feature_lst (maybe "officiousness" ?); is visible to outside world but not listed via 'examine'
-	- TBD: create creature_inv() method
-		- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
-		- TBD: create get_inv() to get creature inventory
-			- TBD: returns hand_lst for all creatures
-			- TBD: returns feature_lst for all creatuers
-			- TBD: returns item_lst if creature == active_gs.get_hero()
+		- TBD: add attribute & extend instantiation
+		- TBD: create setters & getters
+		- TBD: create ViewOnly obj to put in goblin & hedgehog instantiation
+		- TBD: create text for new obj
+		- TBD: create get_inv() method
+			- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
+			- TBD: create get_inv() to get creature inventory
+				- TBD: returns hand_lst for all creatures
+				- TBD: returns feature_lst for all creatuers
+				- TBD: returns item_lst if creature == active_gs.get_hero()
+		- TBD: update active_gs.scope commands to use get_inv() method
 	- TBD: invisible_lst (new name for mach_obj_lst)
 		- TBD: create mach_lst() method for creatures (based on inv_lst)
 	- TBD: worn

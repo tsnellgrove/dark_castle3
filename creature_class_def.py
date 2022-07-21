@@ -11,7 +11,7 @@ from static_gbl import descript_dict
 ### classes
 class Creature(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict,
-		attack_creature_dict, attack_burt_dict, creature_items_lst, dead_creature_obj, hand_lst, is_attackable):
+		attack_creature_dict, attack_burt_dict, item_lst, dead_creature_obj, hand_lst, is_attackable):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._creature_state = creature_state
 				self._mach_obj_lst = mach_obj_lst
@@ -19,7 +19,7 @@ class Creature(ViewOnly):
 				self._give_item_dict = give_item_dict
 				self._attack_creature_dict = attack_creature_dict
 				self._attack_burt_dict = attack_burt_dict
-				self._creature_items_lst = creature_items_lst
+				self._item_lst = item_lst
 				self._dead_creature_obj = dead_creature_obj
 				self._hand_lst = hand_lst
 				self._is_attackable = is_attackable
@@ -55,12 +55,12 @@ class Creature(ViewOnly):
 				return self._attack_burt_dict
 
 		@property
-		def creature_items_lst(self):
-				return self._creature_items_lst
+		def item_lst(self):
+				return self._item_lst
 
-		@creature_items_lst.setter
-		def creature_items_lst(self, new_state):
-				self._creature_items_lst = new_state
+		@item_lst.setter
+		def item_lst(self, new_state):
+				self._item_lst = new_state
 
 		@property
 		def dead_creature_obj(self):
@@ -107,10 +107,10 @@ class Creature(ViewOnly):
 # *** obj_lst ***
 
 		def item_lst_append(self, item):
-				self._creature_items_lst.append(item)
+				self._item_lst.append(item)
 
 		def item_lst_remove(self, item):
-				self._creature_items_lst.remove(item)
+				self._item_lst.remove(item)
 
 # *** complex methods ***
 
@@ -241,7 +241,7 @@ class Creature(ViewOnly):
 				elif self.attack_creature_dict[dict_key]['result_code'] == 'creature_death':
 						room_obj = active_gs.get_room()
 						room_obj.room_obj_lst_remove(self)
-						room_obj.room_obj_lst_extend(self.creature_items_lst)
+						room_obj.room_obj_lst_extend(self.item_lst)
 						room_obj.room_obj_lst_extend(self.hand_lst)
 						room_obj.room_obj_lst_append(self.dead_creature_obj)
 						res_key = 'creature_death_default_res_key'
@@ -327,7 +327,7 @@ class Creature(ViewOnly):
 				elif self.attack_burt_dict[dict_key]['result_code'] == 'creature_death':
 						room_obj = active_gs.get_room()
 						room_obj.room_obj_lst_remove(self)
-						room_obj.room_obj_lst_extend(self.creature_items_lst)
+						room_obj.room_obj_lst_extend(self.item_lst)
 						room_obj.room_obj_lst_append(self.dead_creature_obj)
 						res_key = 'creature_death_default_res_key'
 						win_weapon = burt_weapon_obj.full_name
