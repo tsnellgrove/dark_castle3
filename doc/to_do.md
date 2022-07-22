@@ -223,7 +223,7 @@ Version 3.70 Goals
 		- DONE: test
 		- DONE: add to look
 		- DONE: test
-	- TBD: invisible_lst (new name for mach_obj_lst)
+	- TBD: invis_lst (new name for mach_obj_lst)
 		- IDEAS:
 			- creatures can have 'invisible' attribute for machs (like rooms)
 			- change mach_obj_lst to 'invisible'? or 'invis_lst'?
@@ -232,9 +232,9 @@ Version 3.70 Goals
 		- TBD: update active_gs. mach scope commands to use mach_lst() method
 	- TBD: refactor review for class Creature methods
 	- TBD: shorten dict naming for all dicts - 2_word *max*!
-	- TBD: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
-		- TBD: creature_state => state
-		- TBD: dead_creature_obj => corpse
+		- TBD: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
+			- TBD: creature_state => state
+			- TBD: dead_creature_obj => corpse
 	- TBD: re-order attributes for better flow
 	3.3) refactor active_gs. scope
 		- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
