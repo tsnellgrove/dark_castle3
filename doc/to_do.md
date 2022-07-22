@@ -611,7 +611,10 @@ IDEA: create a fun scenario where TravelEffect take item gets used... maybe a gi
 	- 3 turns of shrink in Main Hall; 30 turns in mouse hole
 	- maybe 2 potions in cabinet
 	- Need to keep the magic shrink potion from traveling... maybe have it in a basin with a chain-attached cup?
+	- or maybe you shrink for 3 turns or as long as you're in a confined space - whichever comes later??
 		- (don't want to code every room for being mouse sized)
+- maybe 2nd mouse, every once in a while, gets up from his nap at the table near the blacksmith and sneaks off to the bakery
+	- bakery very hard to find... go to a corner of the maze and then go 'up'!!
 - Maybe a magic radio (a machine entity like the baking machine) in the Maine Hall that plays "Danni I've got your numbrer" when tuned correctly? Gives clue for potion chest. Also maybe acts as distraction during time travel puzzel - plays over gentle lilting of harp, violins, and triange - which enables Burt to cut in and dance with princess (evil prince is off gyrating hips wildly)? Perhaps the magic radio used to live in the throne room but got moved to the main hall after the 'incident' (note could indicate this) ;-D
 - Radio damaged during move from throne room (speaker out; etc)
 	- Radio volume goes to 11 (crossed out?)
