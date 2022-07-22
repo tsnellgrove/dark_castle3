@@ -90,11 +90,6 @@ Learning Links:
 ### VERSION 3.70 START ###
 ##########################
 
-Version 3.70 Goals
-- extend Creature attributes and methods
-- refactor Burt as a creature object
-- refactor coding as I go
-
 Burt as an object
 - why?
 	- allows elimination of attack_burt() method of Creature class
@@ -106,28 +101,11 @@ Burt as an object
 - how?
 	- Burt to be obj type Creature
 
-burt refactor order
+Version 3.70 Goals
+- extend existing Creature attributes and methods to include existing attributes for burt
+
+
 - DONE: watch refactoring best-practices videos so I can refactor as I go (I will be re-coding a LOT)
-- DONE: full review of all active_gs attributes to be moved to burt_obj
-	- active_gs.state_dict['backpack', 'hand', 'worn']
-	- active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]}
-	- methods:	
-		def get_backpack_lst(self):
-		def backpack_lst_append_item(self, item):
-		def backpack_lst_remove_item(self, item):
-		def get_hand_lst(self):
-		def hand_lst_append_item(self, item):
-		def hand_lst_remove_item(self, item):
-		def hand_check(self, obj):
-		def hand_empty(self):
-		def put_in_hand(self, new_item):
-		def get_worn_lst(self):
-		def worn_lst_append_item(self, item):
-		def worn_lst_remove_item(self, item):
-		def clothing_type_worn(self, item):
-		def get_static_obj(self, static_key):
-		def inventory(self):
-	- will also enable 'room scope' type methods to move to class Room
 - INPROC: update existing Creature class and creaatures (e.g. hand & worn)
 	- DONE: Weapon class
 		- IDEAS: 
@@ -232,11 +210,19 @@ burt refactor order
 				- DONE: returns hand_lst for all creatures
 				- DONE: returns feature_lst for all creatuers
 		- DONE: update active_gs.scope commands to use vis_lst() method
-	- TBD: worn_lst
-		- TBD: add attribute & extend instantiation
-		- TBD: create setters & getters
-		- TBD: create append & remove methods
-		- TBD: add to vis_lst()
+	- INPROC: worn_lst
+		- DONE: add attribute & extend instantiation
+		- DONE: create setters & getters
+		- DONE: create append & remove methods
+		- DONE: create examples for hedgehog & goblin
+			- DONE: red_bandana, half gold retriever, half retro martial arts master
+			- DONE: big_medal; writing = gold_capitals = "'GUARD GOBLIN OF THE FORTNIGHT: FOR MERITORIOUS MEMORANDUMS AND THE VIOLENT SUPPRESSION OF MINOR INFRACTIONS'"
+		- DONE: add new obj to mk_def_pkl() pickle statement and also to creature worn_lst attribute
+		- DONE: add worn_lst to vis_lst()
+		- DONE: add to creature examine
+		- DONE: test
+		- TBD: add to look
+		- TBD: test
 	- TBD: invisible_lst (new name for mach_obj_lst)
 		- IDEAS:
 			- creatures can have 'invisible' attribute for machs (like rooms)
@@ -250,10 +236,43 @@ burt refactor order
 		- TBD: creature_state => state
 		- TBD: dead_creature_obj => corpse
 	- TBD: re-order attributes for better flow
+	3.3) refactor active_gs. scope
+		- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
 	3.5) refactor Room class
 		- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 		- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
 	3.7) refactor Container class
+
+##########################
+### VERSION 3.71 START ###
+##########################
+
+Version 3.71 Goals
+- refactor Burt as a creature object
+- refactor coding as I go
+
+- DONE: full review of all active_gs attributes to be moved to burt_obj
+	- active_gs.state_dict['backpack', 'hand', 'worn']
+	- active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]} <= add brass_lantern ? "wouldn't want that to go out!"
+	- methods:	
+		def get_backpack_lst(self):
+		def backpack_lst_append_item(self, item):
+		def backpack_lst_remove_item(self, item):
+		def get_hand_lst(self):
+		def hand_lst_append_item(self, item):
+		def hand_lst_remove_item(self, item):
+		def hand_check(self, obj):
+		def hand_empty(self):
+		def put_in_hand(self, new_item):
+		def get_worn_lst(self):
+		def worn_lst_append_item(self, item):
+		def worn_lst_remove_item(self, item):
+		def clothing_type_worn(self, item):
+		def get_static_obj(self, static_key):
+		def inventory(self):
+	- will also enable 'room scope' type methods to move to class Room
+
+Refactor burt as a Creature class object
 	4) instantiate burt_obj
 			- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
 			- TBD: update creature.vis_lst() to get visible creature inventory
@@ -308,10 +327,10 @@ burt refactor order
 
 
 ##########################
-### VERSION 3.71 START ###
+### VERSION 3.72 START ###
 ##########################
 
-Version 3.71 Goals
+Version 3.72 Goals
 - modularize remaining GameState class and declarations
 
 - TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
@@ -319,10 +338,10 @@ Version 3.71 Goals
 
 
 ##########################
-### VERSION 3.72 START ###
+### VERSION 3.73 START ###
 ##########################
 
-Version 3.72 Goals
+Version 3.73 Goals
 - re-work app_main() flow
 	- today: interp() =(if no interp_error)=> pre_action() => cmd_exe() => post_action()
 		- this works if there is an interp() error or if the command is successful... but what if there is a cmd_error ???
@@ -333,6 +352,13 @@ Version 3.72 Goals
 		- if not cmd_error: cmd_exe() runs method in exe_mode
 		- can likely shortcut for non '2word' and 'prep' cases
 		- one side effect: every method needs to either throw text on error or do something on success... we cannot take an action on failure (?) 
+	- Or, alternatively, maybe we need a validation() module?
+				- thinking systemically, can we pre-validate noun class methods?
+					- validate() would run between interpreter() and pre_action()
+					- e.g. for take() use case, can we checks to see if obj is_item and is in <room>.obj_scope ?
+					- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
+					- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
+					- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
 
 - related thinking:
 	- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
@@ -346,10 +372,10 @@ Version 3.72 Goals
 
 
 ##########################
-### VERSION 3.73 START ###
+### VERSION 3.74 START ###
 ##########################
 
-Version 3.73 Goals
+Version 3.74 Goals
 - Clean up machine, warning, and timer coding
 - Create / update program documentation
 

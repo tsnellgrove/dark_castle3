@@ -27,6 +27,7 @@ small_printing = Writing('small_printing', 'Small Printing', 'printing', 'small_
 illuminated_letters = Writing('illuminated_letters', 'Illuminated Letters', 'letters', 'illuminated_letters')
 calligraphy = Writing('calligraphy', 'Calligraphy', 'calligraphy', 'calligraphy')
 trademark = Writing('trademark', 'Trademark', 'trademark', 'trademark')
+gold_capitals = Writing('gold_capitals', 'Gold Capitals', 'capitals', 'gold_capitals')
 
 dark_castle = ViewOnly('dark_castle', "Dark Castle", "castle", 'dark_castle', None)
 moat = ViewOnly('moat', 'Moat', 'moat', 'moat', None)
@@ -59,6 +60,8 @@ royal_crown = Clothes('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None
 baseball_cap = Clothes('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, None, None, 'hat')
 hedgehog_broach = Clothes('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedgehog_broach', None,
 				'wear_hedgehog_broach', 'remove_hedgehog_broach', 'pin')
+red_bandana = Clothes('red_bandana', 'Red Bandana', 'bandana', 'red_bandana', None, None, None, 'hat')
+big_medal = Clothes('big_medal', 'Big Medal', 'medal', 'big_medal', gold_capitals, None, None, 'pin')
 
 grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing,
 				[['arcs', 'lightening-fast stroke'],['cleaves', 'violent swing'],['hacks', 'deadly intent']])
@@ -202,7 +205,7 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 						shiny_sword : {'result_code' : None, 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'parry_goblin'
 						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : None, 'resolution_key' : None} # was 'custom_key' : 'goblin_slays_burt'
 				},
-				[torn_note], dead_goblin, [grimy_axe], True, [officiousness])
+				[torn_note], dead_goblin, [grimy_axe], True, [officiousness], [big_medal])
 
 
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None, None,
@@ -219,7 +222,7 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 						'def_attack' : {'result_code' : 'creature_flee', 'custom_key' : 'hedgehog_flees', 'resolution_key' : None}
 				},
 				{},
-				[silver_key], None, [], True, [loyalty])
+				[silver_key], None, [], True, [loyalty], [red_bandana])
 
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
@@ -293,7 +296,7 @@ active_gs = GameState(
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible obj referenced in room.invis_obj_lst need not be listed ###
 master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, goblin_guard, entrance, main_hall, antechamber, throne_room, loyalty,
-officiousness]
+officiousness, gold_capitals, red_bandana, big_medal]
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:

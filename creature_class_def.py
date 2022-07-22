@@ -11,7 +11,7 @@ from static_gbl import descript_dict
 ### classes
 class Creature(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict,
-		attack_creature_dict, attack_burt_dict, bkpk_lst, dead_creature_obj, hand_lst, is_attackable, feature_lst):
+		attack_creature_dict, attack_burt_dict, bkpk_lst, dead_creature_obj, hand_lst, is_attackable, feature_lst, worn_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._creature_state = creature_state # state
 				self._mach_obj_lst = mach_obj_lst # invisible_lst
@@ -24,6 +24,7 @@ class Creature(ViewOnly):
 				self._hand_lst = hand_lst
 				self._is_attackable = is_attackable
 				self._feature_lst = feature_lst
+				self._worn_lst = worn_lst
 
 # *** setters & getters ***
 
@@ -83,6 +84,14 @@ class Creature(ViewOnly):
 		def feature_lst(self):
 				return self._feature_lst
 
+		@property
+		def worn_lst(self):
+				return self._worn_lst
+
+		@worn_lst.setter
+		def worn_lst(self, new_state):
+				self._worn_lst = new_state
+
 # *** class identification ***
 
 		def is_creature(self):
@@ -117,15 +126,32 @@ class Creature(ViewOnly):
 		def bkpk_lst_remove(self, item):
 				self._bkpk_lst.remove(item)
 
+# *** worn_lst ***
+
+		def worn_lst_append(self, item):
+				self._worn_lst.append(item)
+
+		def worn_lst_remove(self, item):
+				self._worn_lst.remove(item)
+
+		def worn_empty(self):
+				return not bool(self.worn_lst)
+
+		def worn_str(self):
+				worn_txt_lst = [obj.full_name for obj in self.worn_lst]
+				return ", ".join(worn_txt_lst)
+
 # *** complex methods ***
 
 		def vis_lst(self):
-				return self.hand_lst + self.feature_lst
+				return self.hand_lst + self.worn_lst + self.feature_lst
 
 		def examine(self, active_gs):
 				super(Creature, self).examine(active_gs)
 				if not self.hand_empty():
 						active_gs.buffer("The " + self.full_name + " is holding a " + self.hand_item().full_name)
+				if not self.worn_empty():
+						active_gs.buffer("The " + self.full_name + " is wearing: " + self.worn_str())
 
 		def show(self, obj, active_gs):
 				if not active_gs.hand_check(obj):
