@@ -246,17 +246,17 @@ burt refactor order
 		- DONE: add attribute & extend instantiation
 		- DONE: create setters & getters
 		- INPROC: create ViewOnly obj and description text to put in goblin & hedgehog instantiation
-			- INPROC: goblin = officiouness
-				- TBD: "hobgoblin of little minds"
+			- DONE: goblin = officiouness
+				- DONE: "hobgoblin of little minds"
 			- NA: hedgehog = valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
 			- TBD: improvement - hedgehog = loyal! scruffy and dog-like; not mafioso or sycophant
-		- TBD: update text to hint at easter eggs
+		- TBD: update text to hint at feature_lst obj
 		- TBD: create vis_lst(), all_lst, item_lst, and mach_lst methods
 			- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
-			- TBD: create get_inv() to get creature inventory
+			- TBD: create vis_lst() to get visible creature inventory
 				- TBD: returns hand_lst for all creatures
 				- TBD: returns feature_lst for all creatuers
-				- TBD: returns item_lst if creature == active_gs.get_hero()
+				- TBD: returns item_lst and worn_lst (eventually) if creature == active_gs.get_hero()
 		- TBD: update active_gs.scope commands to use get_inv() method
 	- TBD: invisible_lst (new name for mach_obj_lst)
 		- IDEAS:
