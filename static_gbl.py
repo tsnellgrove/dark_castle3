@@ -209,7 +209,7 @@ descript_dict = {
 		'hedgehog_desc_smug' : "The Royal Hedgehog is looking svelte and chipper. It has the swagger of a hedgehog that has just scored a meal of Stale Biscuits and still has it's favorite shiny possession.",
 		'hedgehog_desc_yearn' : "The Royal Hedgehog is looking svelte and chipper but not entirely content. It's clearly grateful for its recent meal but keeps looking at you hopefully.",
 		'hedgehog_distracted_result' : "The Royal Hedgehog is too busy eating its favorite meal of Stale Biscuits to notice what you are doing.",
-		'loyalty' : "At a glance, it's apparent that the Royal Hedgehog is a loyal creature. It exudes a fierce, if slightly scruffy, allegiance. Not the grasping, starched-suit devotion of the sycophant but the slightly frowzy fidelity of a faithful and adoring dog.",
+		'loyalty' : "At a glance, it's apparent that the Royal Hedgehog is a loyal creature. It exudes a fierce, if slightly scruffy, allegiance. Not the grasping, starched-suit adherence of the sycophant but the slightly frowzy fidelity of a faithful and devoted mut.",
 
 		### kinging_scroll ###
 		'scroll_wrong_room_result' : "Upon reading the Kinging Scroll aloud you hear a distant rumble as if great powers are at work... but then it fades... perhaps you need to read it somewhere else to complete the recipe?",

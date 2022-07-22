@@ -253,13 +253,11 @@ burt refactor order
 				- DONE: "hobgoblin of little minds"
 			- DONE: hedgehog = loyal! scruffy and dog-like; not mafioso or sycophant
 			- DONE: update text to hint at feature_lst obj
-		- TBD: create vis_lst() method
-			- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
-			- TBD: create vis_lst() to get visible creature inventory
-				- TBD: returns hand_lst for all creatures
-				- TBD: returns feature_lst for all creatuers
-				- TBD: returns item_lst and worn_lst (eventually) if creature == active_gs.get_hero()
-		- TBD: update active_gs.scope commands to use vis_lst() method
+		- DONE: create vis_lst() method
+			- DONE: create vis_lst() to get visible creature inventory
+				- DONE: returns hand_lst for all creatures
+				- DONE: returns feature_lst for all creatuers
+		- DONE: update active_gs.scope commands to use vis_lst() method
 	- TBD: invisible_lst (new name for mach_obj_lst)
 		- IDEAS:
 			- creatures can have 'invisible' attribute for machs (like rooms)
@@ -274,6 +272,9 @@ burt refactor order
 		- TBD: dead_creature_obj => corpse
 	- TBD: re-order attributes for better flow
 	4) instantiate burt_obj
+			- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
+			- TBD: update creature.vis_lst() to get visible creature inventory
+				- TBD: returns item_lst and worn_lst if creature == active_gs.get_hero()
 	5) integrate burt with active_gs (get_hero method)
 		- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict
 		- Note: get_hero() enables player to take on different characters in the game (e.g. Burt could become a mouse)

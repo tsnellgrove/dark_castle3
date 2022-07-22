@@ -109,7 +109,7 @@ class Creature(ViewOnly):
 						self.hand_lst_remove(hand_item)
 				self.hand_lst_append(new_item)
 
-# *** obj_lst ***
+# *** bkpk_lst ***
 
 		def bkpk_lst_append(self, item):
 				self._bkpk_lst.append(item)
@@ -118,6 +118,9 @@ class Creature(ViewOnly):
 				self._bkpk_lst.remove(item)
 
 # *** complex methods ***
+
+		def vis_lst(self):
+				return self.hand_lst + self.feature_lst
 
 		def examine(self, active_gs):
 				super(Creature, self).examine(active_gs)
