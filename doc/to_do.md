@@ -232,8 +232,11 @@ burt refactor order
 		- TBD: argh! rename item_lst to bkpk_lst. Also update item_lst_append() to bkpk_lst_append() and item_lst_remove() to bkpk_lst_remove()
 			- IDEA: class attributes should be descriptive in relation to the *main class* (e.g. a creature has hand_lst & bkpk_lst attributes)
 			- IDEA: class methods can be descriptive in relation to the *attribute variable class* (e.g. a creature has item_lst and vis_lst methods)
-			- IDEA: so for creature == burt, item_lst() = hand_lst + bkpk_lst
-			- IDEA: methods for creature and room = item_lst(), vis_lst(), all_lst(), and mach_lst()
+				- IDEA: so for creature == burt, item_lst() = hand_lst + bkpk_lst + worn_lst
+				- IDEA: methods for creature and room = item_lst(), vis_lst(), all_lst(), and mach_lst()
+				- IDEA: the thinking here is that there could always be another category of 'stuff'... maybe next burt gets a fanny pack?
+				- So we never know that for a given class, a given attribute encompasses *all* of the items
+				- for room maybe we should have floor_lst (all the things on the floor ?)
 	- TBD: new feature_lst attribue
 		- IDEAS:
 			- creatures could have a 'features' attribute (like rooms) for ViewOnly attributes (e.g. burt's 'conscince', princess 'poise' & 'moxie')
