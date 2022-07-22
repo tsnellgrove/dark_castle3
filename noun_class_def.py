@@ -109,6 +109,7 @@ class Room(ViewOnly):
 				self._door_paths = door_paths # dictionary of {direction1 : door1}
 				self._invis_obj_lst = invis_obj_lst # list of invisible obj in room
 
+		# getters & setters
 		@property
 		def features(self):
 				return self._features
@@ -140,6 +141,11 @@ class Room(ViewOnly):
 		def invis_obj_lst(self):
 				return self._invis_obj_lst
 
+		# simple methods
+		def elements_lst(self):
+				return self.room_obj_lst + self.features
+		
+		# complex methods
 		def examine(self, active_gs):
 				super(Room, self).examine(active_gs)
 				room_item_obj_lst = []
@@ -352,6 +358,8 @@ class Container(Door):
 						active_gs.buffer("The " + self.full_name + " is closed.")
 				elif obj.is_container():
 						active_gs.buffer("You can't put a container in a container")
+				elif obj.is_creature():
+						active_gs.buffer("You can't put a creature in a container")
 				else:
 						active_gs.hand_lst_remove_item(obj)
 						self.contains_append(obj)
