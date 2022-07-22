@@ -257,7 +257,7 @@ burt refactor order
 			- TBD: update creature.vis_lst() to get visible creature inventory
 				- TBD: returns item_lst and worn_lst if creature == active_gs.get_hero()
 		- TBD: create inventory() method for creature
-		- TBD: burt_creature to be instantiated in entrance.feature_lst
+		- TBD: burt_creature to be instantiated in entrance.feature_lst (can remove burt from scope_list() in active_gs.scope)
 	4.5) Analyze noun classes... which ones update burt inv vs. read from burt inv?
 		- IDEA: start by implementing the burt inv updates in paralelle to active_gs updates
 		- IDEA: create 'jinventory' and 'jlook' commands to confirm that burt_creature matches active_gs.burt
