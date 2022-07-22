@@ -229,7 +229,7 @@ burt refactor order
 		- DONE: naming convention change to obj_lst (no) or item_lst (yes)
 			- DONE: update result_class_def()
 			- DONE: updated creature_class_def()
-		- TBD: argh! rename item_lst to bkpk_lst. Also update item_lst_append() to bkpk_lst_append() and item_lst_remove() to bkpk_lst_remove()
+		- DONE: argh! rename item_lst to bkpk_lst. Also update item_lst_append() to bkpk_lst_append() and item_lst_remove() to bkpk_lst_remove()
 			- IDEA: class attributes should be descriptive in relation to the *main class* (e.g. a creature has hand_lst & bkpk_lst attributes)
 			- IDEA: class methods can be descriptive in relation to the *attribute variable class* (e.g. a creature has item_lst and vis_lst methods)
 				- IDEA: so for creature == burt, item_lst() = hand_lst + bkpk_lst + worn_lst
