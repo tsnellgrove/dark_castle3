@@ -308,6 +308,7 @@ class Container(Door):
 				super().__init__(name, full_name, root_name, descript_key, writing, open_state, unlock_state, key)
 				self._contains = contains # list of items in the container
 
+		# getters & setters
 		@property
 		def contains(self):
 				return self._contains
@@ -316,6 +317,7 @@ class Container(Door):
 		def contains(self, new_obj):
 				self._contains = new_obj
 
+		# simple methods
 		def in_container(self, obj):
 				return obj in self.contains
 
@@ -328,6 +330,13 @@ class Container(Door):
 		def	is_container(self):
 				return True
 
+		def vis_lst(self):
+				vis_lst = []
+				if self.open_state:
+						vis_lst = self.contains
+				return vis_lst
+
+		# complex methods
 		def examine(self, active_gs):
 				super(Container, self).examine(active_gs)
 				self.print_contents_str(active_gs)
@@ -383,6 +392,12 @@ class Jug(Item):
 
 		def	is_container(self):
 				return True
+
+		def vis_lst(self): # DUP FROM CONTAINER CLASS
+				vis_lst = []
+				if self.open_state:
+						vis_lst = self.contains
+				return vis_lst
 
 		def examine(self, active_gs):
 				super(Jug, self).examine(active_gs)

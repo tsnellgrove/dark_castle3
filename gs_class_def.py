@@ -211,9 +211,7 @@ class GameState(object):
 				scope_lst = (room_obj_lst + hand_lst + backpack_lst 
 								+ worn_lst + universal_lst + features_lst)
 				for obj in scope_lst:
-						if obj.is_container() and obj.open_state == True:
-								scope_lst.extend(obj.contains)
-						if obj.is_creature():
+						if obj.is_container() or obj.is_creature():
 								scope_lst.extend(obj.vis_lst())
 				scope_lst.append(room_obj)
 				return scope_lst
