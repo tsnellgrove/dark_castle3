@@ -129,32 +129,6 @@ burt refactor order
 		def inventory(self):
 	- will also enable 'room scope' type methods to move to class Room
 - INPROC: update existing Creature class and creaatures (e.g. hand & worn)
-	- IDEAS:
-		- creature 'worn' attribute
-			- how to track worn dict?
-		- refactoring noun classes for burt-as-creature
-			- think abour 'source' and 'desination'... e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
-			- can we have 'burt' be the default <creature> but other options available?
-				- this would allow give() to become a noun class method... essentially a take() initiated by burt
-				- likewise, show() becomes an examine initiated by burt
-				- maybe each Creature has its own description list?
-					- desc list as creature attribute ???
-				- with a default examine() response similar to "the X is not interesting"
-				- thinking systemically, can we pre-validate noun class methods?
-					- validate() would run between interpreter() and pre_action()
-					- e.g. for take() use case, can we checks to see if obj is_item and is in <room>.obj_scope ?
-					- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
-					- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
-					- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
-				- need to do a detailed mapping of what is required for success in each noun_class() method
-		- no action for now
-			- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
-			- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
-			- non-humanoid monster could be a special weapon description case (fun new puzzle idea)
-			- for burt maybe add brass_lantern - always trust and shining in your off hand... wouldn't want that to go out now would we? Grues...
-			- princess 'poise' & 'moxie'
-			- valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
-			- create all_lst, item_lst, and mach_lst methods for creature class
 	- DONE: Weapon class
 		- IDEAS: 
 			- reference weapon (e.g. "Grimy Sword") in attack text
@@ -241,7 +215,7 @@ burt refactor order
 				- IDEA: the thinking here is that there could always be another category of 'stuff'... maybe next burt gets a fanny pack?
 				- So we never know that for a given class, a given attribute encompasses *all* of the items
 				- for room maybe we should have floor_lst (all the things on the floor ?)
-	- INPROC: new feature_lst attribue
+	- DONE: new feature_lst attribue
 		- IDEAS:
 			- creatures could have a 'features' attribute (like rooms) for ViewOnly attributes (e.g. burt's 'conscince')
 			- (maybe goblin's "officiousness" ?)
@@ -258,23 +232,62 @@ burt refactor order
 				- DONE: returns hand_lst for all creatures
 				- DONE: returns feature_lst for all creatuers
 		- DONE: update active_gs.scope commands to use vis_lst() method
+	- TBD: worn_lst
+		- TBD: add attribute & extend instantiation
+		- TBD: create setters & getters
+		- TBD: create append & remove methods
+		- TBD: add to vis_lst()
 	- TBD: invisible_lst (new name for mach_obj_lst)
 		- IDEAS:
 			- creatures can have 'invisible' attribute for machs (like rooms)
 			- change mach_obj_lst to 'invisible'? or 'invis_lst'?
-		- TBD: rename mach_obj_lst => invisible_lst
+		- TBD: rename mach_obj_lst => invis_lst
 		- TBD: create mach_lst() / all_lst method for creatures (based on vis_lst)
-	- TBD: worn
+		- TBD: update active_gs. mach scope commands to use mach_lst() method
 	- TBD: refactor review for class Creature methods
 	- TBD: shorten dict naming for all dicts - 2_word *max*!
 	- TBD: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
 		- TBD: creature_state => state
 		- TBD: dead_creature_obj => corpse
 	- TBD: re-order attributes for better flow
+	3.5) refactor Room class
+	3.7) refactor Container class
 	4) instantiate burt_obj
 			- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
 			- TBD: update creature.vis_lst() to get visible creature inventory
 				- TBD: returns item_lst and worn_lst if creature == active_gs.get_hero()
+		- TBD: create inventory() method for creature
+		- TBD: burt_creature to be instantiated in entrance.feature_lst
+	4.5) Analyze noun classes... which ones update burt inv vs. read from burt inv?
+		- IDEA: start by implementing the burt inv updates in paralelle to active_gs updates
+		- IDEA: create 'jinventory' and 'jlook' commands to confirm that burt_creature matches active_gs.burt
+		- IDEA: now migrate the 'read' noun classes one-by-one to read from burt_creature (refactoring first as I go)
+		- IDEA: lastly, when all methods point to burt_creature, I can comment out the active_gs.burt update methods and test
+		- IDEAS - Refactor:
+	- IDEAS:
+		- refactoring noun classes for burt-as-creature
+			- think abour 'source' and 'desination'... e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
+			- can we have 'burt' be the default <creature> but other options available?
+				- this would allow give() to become a noun class method... essentially a take() initiated by burt
+				- likewise, show() becomes an examine initiated by burt
+				- maybe each Creature has its own description list?
+					- desc list as creature attribute ???
+				- with a default examine() response similar to "the X is not interesting"
+				- thinking systemically, can we pre-validate noun class methods?
+					- validate() would run between interpreter() and pre_action()
+					- e.g. for take() use case, can we checks to see if obj is_item and is in <room>.obj_scope ?
+					- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
+					- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
+					- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
+				- need to do a detailed mapping of what is required for success in each noun_class() method
+		- IDEAS - future
+			- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
+			- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
+			- non-humanoid monster could be a special weapon description case (fun new puzzle idea)
+			- for burt maybe add brass_lantern - always trust and shining in your off hand... wouldn't want that to go out now would we? Grues...
+			- princess 'poise' & 'moxie'
+			- valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
+			- create all_lst, item_lst, and mach_lst methods for creature class
 	5) integrate burt with active_gs (get_hero method)
 		- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict
 		- Note: get_hero() enables player to take on different characters in the game (e.g. Burt could become a mouse)
