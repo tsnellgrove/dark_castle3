@@ -215,7 +215,7 @@ class GameState(object):
 				for obj in scope_lst:
 #						if obj.is_container():
 						if obj.is_container() and obj.open_state == True:
-								scope_lst.extend(ob.contains())
+								scope_lst.extend(obj.contains)
 #								room_containers.append(obj)
 						if obj.is_creature():
 								scope_lst.extend(obj.vis_lst())
