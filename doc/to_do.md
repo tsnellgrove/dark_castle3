@@ -151,6 +151,10 @@ burt refactor order
 			- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
 			- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
 			- non-humanoid monster could be a special weapon description case (fun new puzzle idea)
+			- for burt maybe add brass_lantern - always trust and shining in your off hand... wouldn't want that to go out now would we? Grues...
+			- princess 'poise' & 'moxie'
+			- valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
+			- create all_lst, item_lst, and mach_lst methods for creature class
 	- DONE: Weapon class
 		- IDEAS: 
 			- reference weapon (e.g. "Grimy Sword") in attack text
@@ -237,32 +241,31 @@ burt refactor order
 				- IDEA: the thinking here is that there could always be another category of 'stuff'... maybe next burt gets a fanny pack?
 				- So we never know that for a given class, a given attribute encompasses *all* of the items
 				- for room maybe we should have floor_lst (all the things on the floor ?)
-	- TBD: new feature_lst attribue
+	- INPROC: new feature_lst attribue
 		- IDEAS:
-			- creatures could have a 'features' attribute (like rooms) for ViewOnly attributes (e.g. burt's 'conscince', princess 'poise' & 'moxie')
+			- creatures could have a 'features' attribute (like rooms) for ViewOnly attributes (e.g. burt's 'conscince')
 			- (maybe goblin's "officiousness" ?)
 			- is visible to outside world but not listed via 'examine'
-			- for burt maybe add brass_lantern - always trust and shining in your off hand... wouldn't want that to go out now would we? Grues...
 		- DONE: add attribute & extend instantiation
 		- DONE: create setters & getters
-		- INPROC: create ViewOnly obj and description text to put in goblin & hedgehog instantiation
+		- DONE: create ViewOnly obj and description text to put in goblin & hedgehog instantiation
 			- DONE: goblin = officiouness
 				- DONE: "hobgoblin of little minds"
-			- NA: hedgehog = valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
-			- TBD: improvement - hedgehog = loyal! scruffy and dog-like; not mafioso or sycophant
-		- TBD: update text to hint at feature_lst obj
-		- TBD: create vis_lst(), all_lst, item_lst, and mach_lst methods
+			- DONE: hedgehog = loyal! scruffy and dog-like; not mafioso or sycophant
+			- DONE: update text to hint at feature_lst obj
+		- TBD: create vis_lst() method
 			- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
 			- TBD: create vis_lst() to get visible creature inventory
 				- TBD: returns hand_lst for all creatures
 				- TBD: returns feature_lst for all creatuers
 				- TBD: returns item_lst and worn_lst (eventually) if creature == active_gs.get_hero()
-		- TBD: update active_gs.scope commands to use get_inv() method
+		- TBD: update active_gs.scope commands to use vis_lst() method
 	- TBD: invisible_lst (new name for mach_obj_lst)
 		- IDEAS:
 			- creatures can have 'invisible' attribute for machs (like rooms)
 			- change mach_obj_lst to 'invisible'? or 'invis_lst'?
-		- TBD: create mach_lst() method for creatures (based on inv_lst)
+		- TBD: rename mach_obj_lst => invisible_lst
+		- TBD: create mach_lst() / all_lst method for creatures (based on vis_lst)
 	- TBD: worn
 	- TBD: refactor review for class Creature methods
 	- TBD: shorten dict naming for all dicts - 2_word *max*!
@@ -501,6 +504,8 @@ Version 3.9x Goals
 - recreancy = shameful cowardice : perfidy
 - aubade
 - defenistrate
+- consigliere
+- consternation
 
 
 *** NEW PUZZLE IDEAS ***

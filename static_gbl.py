@@ -36,7 +36,6 @@ descript_dict = {
 		'burt' : "Yep, that's you Burt. A fine specimen of a man. If not for the drooling and the farting I don't know how you'd fend off the ladies.",
 		'fist' : "Yep, that's your fist. Still bruised from the last time you swung and missed and hit a wall...", 
 		'conscience' : "Burt, Dark Castle is quite murky enough without pondering your prodigal and Hal-esque misspent youth!",
-		'officiousness' : "They say that a foolish consistency is the hobgoblin of little minds - and the Guard Goblin - despite, or perhaps because of, being a vicious mercanary - wears its haughty officiousness like a shiny badge of honor. It scrutinizes you with a displeased frown of disaproval and a captious shake of the head. Any moment now the Guard Goblin looks likely to ask you whether you've recieved the memo about the new cover sheet for the Treaspassing Permit Suspension reports.",
 
 		### wrong way errors ###
 		'wrong_way_0' : "Ouch! Burt, stop walking into walls!",
@@ -170,12 +169,6 @@ descript_dict = {
 		
 		'portcullis_doesnt_open_result' : "You press the button and hear a whirring of gears but nothing happens.",
 
-
-
-		### creatures ###
-		'guard_goblin' : "The Guard Goblin stands in the Alcove guarding the Control Panel and is armed and dangerous. It wields a Grimy Axe and looks at you with watchful malice. This goblin clearly takes its guard duties very seriously. It would not be wise to approach the Iron Portcullis or the Control Panel (or the Guard Goblin!) un-armed.",
-
-
 		### attack defaults ###
 		'not_attackable_default' : "You consider attacking but then realize that the act is futile. This foe cannot be vanquished by force of arms. You must find another path to victory.",
 		'creature_flee_default_res_key' : "The creature flees in terror from your unprovoked attack.",
@@ -184,34 +177,30 @@ descript_dict = {
 		'no_result_default_res_key' : "You only barely manage to parry with your own weapon!",
 
 
-		### creature responses ###
+		### creatures ###
 		
 		# guard_goblin #
+		'guard_goblin' : "The Guard Goblin stands in the Alcove guarding the Control Panel. It wears a crisply ironed uniform and gives off an air of hauty officiousness. The Guard Goblin is also armed and dangerous. It wields a Grimy Axe and observes you with watchful malice. This goblin clearly takes its guard duties very seriously. It would not be wise to approach the Iron Portcullis or the Control Panel (or the Guard Goblin!) un-armed.",
 		'show_goblin_shiny_sword' : "The Guard Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
-		'show_goblin_default' : "The Guard Goblin glares at you with a hauty expression of disdain and then imperiously motions for you to hand the item over for further inspection.",
-		'show_goblin_stale_bisuits' : "The Guard Goblin scowels at the Stale Biscuits, wrinkles its nose, and then mutters something about 'gauche and impertinent' under its breath. You get the distinct impression that the Guard Goblin doesn't think much of biscuits - or biscuit bakers for that matter.",
-		'give_goblin_default' : "The Guard Goblin pockets the item and mutters something about the need to confiscate articles of dubious provenance from ill-favored vagrants.",
+		'show_goblin_default' : "The Guard Goblin glares at you with an officious expression of disdain and then imperiously motions for you to hand the item over for further inspection.",
+		'show_goblin_stale_bisuits' : "The Guard Goblin scowels at the Stale Biscuits, wrinkles its nose, and then mutters something about 'gauche and impertinent' under its breath. You get the distinct impression that the officious Guard Goblin doesn't think much of biscuits - or biscuit bakers for that matter.",
+		'give_goblin_default' : "The Guard Goblin pockets the item and mutters something about castle regulations that require the confiscation articles of dubious provenance from ill-favored vagrants.",
 		'give_goblin_stale_biscuits' : "The Guard Goblin waves its hand dismissively at the suggestion that it take reciept of the Stale Biscuits and makes an expression indicating that it would be best if we all just pretended that this had never happened.",
 		'give_goblin_shiny_sword' : "The Guard Goblin blanches and backs away, terrified at the very thought of even touching the Shiny Sword.",
 		'burt_slain_by_goblin' : "With an echoing war cry you charge the Guard Goblin, flailing your arms wildly in all directions as you come. This technique has served you well during drunken altercations at the pub but it proves less effective against a trained mercenary. The last thing you ever see is the Guard Goblin calmly stepping into fighting stance and drawing back its weapon.",
-##		previously, 'burt_slain_by_goblin' finsiehd with "'s Grimy Axe swinging towards your head.",
 		'goblin_slain' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. you know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle.",
-##	 previously, 'goblin_slain' finished with " and dispatch him with one blazing fast strike of your sword.",
-##		'goblin_slays_burt' : "The Guard Goblin swings the Grimy Axe with a lightening-fast stroke and you are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
-##		'goblin_slays_burt' : "You are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
-##		'parry_goblin' : "You only barely manage to parry with your own weapon.",
-		'goblin_attacks_result' : "The Guard Goblin does not take kindly to your presence in the north side of the room.",
+		'goblin_attacks_result' : "By entering the north side of the room you appear to have violated a castle regulation. The Guard Goblin is incensed and will not tolerate the offense!",
+		'officiousness' : "They say that a foolish consistency is the hobgoblin of little minds - and the Guard Goblin - despite, or perhaps because of, being a vicious mercanary - wears its haughty officiousness like a shiny badge of honor. It scrutinizes you with a displeased frown of disaproval and a captious shake of the head. Any moment now the Guard Goblin looks likely to ask you whether you've recieved the memo about the new cover sheet for the Treaspassing Permit Suspension reports.",
 
 		# royal_hedgehog #
-		'hungry_hedgehog' : "This poor little Royal Hedgehog has seen better days. It looks gaunt and like it skipped breakfast - and maybe lunch and dinner too. But despite looking in need of a good meal the Royal Hedgehog's eyes have a bright, territorial gleam in them and it appears to have quite a preference for shiny things. You don't know why but you feel an innate fondness for this small but valiant creature.",
+		'hungry_hedgehog' : "This poor little Royal Hedgehog has seen better days. It looks gaunt and like it skipped breakfast - and maybe lunch and dinner too. But despite a somewhat bedraggled appearance, the Royal Hedgehog has an air of fierce loyalty about it. It may be in need of a good meal, but the Royal Hedgehog's eyes shine with the bright gleam of devoted guardian. It also appears to have quite a preference for shiny things. You don't know why but you feel an innate fondness for this small but faithful creature.",
 		'show_hedgehog_stale_biscuits' : "The Royal Hedgehog's eyes light up with excitement! Apparently, Stale Biscuits are a favorite hedgehog delacacy. The Royal Hedgehog gives you a look half way between hopeful and pleading.",
 		'show_hedgehog_shiny_sword' : "The Royal Hedgehog gives a small squeek of excitement. It gives you a yearning look, clearly hoping that you will return its long-time favorite object.",
 		'give_hedgehog_biscuits' : "With a yelp of grateful delight the starving hedgehog leaps upon the Stale Biscuits and begins to devour them.",
 		'hedgehog_eating' : "The hedgehog is eating ravenously.",
-		'give_hedgehog_sword' : "The hedgehog beams at you with gratitude for returning the Shiny Sword. From a hidden fold of its fur it takes out a Silver Key and, bowing, places it in your hand.",
-		'hedgehog_sword_returned' : "This hedgehog is on top of the world! It has recently devoured a meal of Stale Biscuits (a rare delicacy among hedgehogs) and now has it's favorite shiny object back. It looks upon you with gratitude and devotion. It sees within you a nobility, compassion, and destiny beyond anything you've hitherto imagined possessing.",
-##		'hedgehog_flees' : "You strike at the Royal Hedgehog and, with a terrified squeek, it flees from your unprovoked attack. You know in your heart that you will come to regret this unkingly deed.",
-		'hedgehog_flees' : "The Royal Hedgehog squeeks in consternation as it dodges your malevolent agression. Even as the valiant little creature gives way, you know in your heart that you will come to regret this unkingly deed.", # consternation alternatives: fright, dismay, alarm
+		'give_hedgehog_sword' : "The hedgehog beams at you with gratitude and loyalty for returning the Shiny Sword. From a hidden fold of its fur it takes out a Silver Key and, bowing, places it in your hand.",
+		'hedgehog_sword_returned' : "This hedgehog is on top of the world! It has recently devoured a meal of Stale Biscuits (a rare delicacy among hedgehogs) and now has it's favorite shiny object back. It looks upon you with gratitude and loyal devotion. It sees within you a nobility, compassion, and destiny beyond anything you've hitherto imagined possessing.",
+		'hedgehog_flees' : "The Royal Hedgehog squeeks in dismay as it dodges your malevolent agression. Even as the loyal little creature gives way, you know in your heart that you will come to regret this unkingly deed.", # consternation alternatives: fright, dismay, alarm
 		'attack_hedgehog_warning_1' : "BURT! What has gotten into you?? We have an evil castle to conquer. Stop trying to slay defenseless woodland creatures!", # old text: "You take a wild swipe at the Royal Hedgehog but it nimbly leaps aside."
 		'attack_hedgehog_warning_2' : "Burt, I mean it - leave the poor little Hedgehog alone!",
 		'hedgehog_guard_result' : "The moment you approach the Shiny Sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's teeth.",
@@ -220,6 +209,7 @@ descript_dict = {
 		'hedgehog_desc_smug' : "The Royal Hedgehog is looking svelte and chipper. It has the swagger of a hedgehog that has just scored a meal of Stale Biscuits and still has it's favorite shiny possession.",
 		'hedgehog_desc_yearn' : "The Royal Hedgehog is looking svelte and chipper but not entirely content. It's clearly grateful for its recent meal but keeps looking at you hopefully.",
 		'hedgehog_distracted_result' : "The Royal Hedgehog is too busy eating its favorite meal of Stale Biscuits to notice what you are doing.",
+		'loyalty' : "At a glance, it's apparent that the Royal Hedgehog is a loyal creature. It exudes a fierce, if slightly scruffy, allegiance. Not the grasping, starched-suit devotion of the sycophant but the slightly frowzy fidelity of a faithful and adoring dog.",
 
 		### kinging_scroll ###
 		'scroll_wrong_room_result' : "Upon reading the Kinging Scroll aloud you hear a distant rumble as if great powers are at work... but then it fades... perhaps you need to read it somewhere else to complete the recipe?",
@@ -236,3 +226,13 @@ descript_dict = {
 		
 		'throne_room' : "*** Throne Room ***\n\nThe room you're currently in is vast - almost cavernous. At the far end sits what must have once been a grand and glorious Throne. To the right of the Throne is a giant Stone Coffer and to the left an elegant pedestal that holds what appears to be a delicate Crystal Box. On either wall there are tall windows - now shattered and ruined - but you you remember hearing stories from your great grandmother, Nana, of the beautiful, glowing stained glass that once filled them. And above the room's entrance hangs a vast (though quite dusty) Family Tree."
 }
+
+
+# *** Not in Use ***
+##		previously, 'burt_slain_by_goblin' finsiehd with "'s Grimy Axe swinging towards your head.",
+##	 previously, 'goblin_slain' finished with " and dispatch him with one blazing fast strike of your sword.",
+##		'goblin_slays_burt' : "The Guard Goblin swings the Grimy Axe with a lightening-fast stroke and you are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
+##		'goblin_slays_burt' : "You are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
+##		'parry_goblin' : "You only barely manage to parry with your own weapon.",
+##		'hedgehog_flees' : "You strike at the Royal Hedgehog and, with a terrified squeek, it flees from your unprovoked attack. You know in your heart that you will come to regret this unkingly deed.",
+
