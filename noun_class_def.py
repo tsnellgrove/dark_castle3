@@ -142,7 +142,7 @@ class Room(ViewOnly):
 				return self._invis_obj_lst
 
 		# simple methods
-		def elements_lst(self):
+		def vis_element_lst(self):
 				return self.room_obj_lst + self.features
 		
 		# complex methods

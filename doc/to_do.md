@@ -251,6 +251,8 @@ burt refactor order
 		- TBD: dead_creature_obj => corpse
 	- TBD: re-order attributes for better flow
 	3.5) refactor Room class
+		- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
+		- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
 	3.7) refactor Container class
 	4) instantiate burt_obj
 			- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
@@ -263,7 +265,7 @@ burt refactor order
 		- IDEA: create 'jinventory' and 'jlook' commands to confirm that burt_creature matches active_gs.burt
 		- IDEA: now migrate the 'read' noun classes one-by-one to read from burt_creature (refactoring first as I go)
 		- IDEA: lastly, when all methods point to burt_creature, I can comment out the active_gs.burt update methods and test
-		- IDEAS - Refactor:
+		- IDEA: Refactor as I go; provide a 'silent mode' for each method() for when it is called by a non-burt creature
 	- IDEAS:
 		- refactoring noun classes for burt-as-creature
 			- think abour 'source' and 'desination'... e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
