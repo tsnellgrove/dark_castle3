@@ -210,7 +210,7 @@ Version 3.70 Goals
 				- DONE: returns hand_lst for all creatures
 				- DONE: returns feature_lst for all creatuers
 		- DONE: update active_gs.scope commands to use vis_lst() method
-	- INPROC: worn_lst
+	- DONE: worn_lst
 		- DONE: add attribute & extend instantiation
 		- DONE: create setters & getters
 		- DONE: create append & remove methods
@@ -221,8 +221,8 @@ Version 3.70 Goals
 		- DONE: add worn_lst to vis_lst()
 		- DONE: add to creature examine
 		- DONE: test
-		- TBD: add to look
-		- TBD: test
+		- DONE: add to look
+		- DONE: test
 	- TBD: invisible_lst (new name for mach_obj_lst)
 		- IDEAS:
 			- creatures can have 'invisible' attribute for machs (like rooms)
