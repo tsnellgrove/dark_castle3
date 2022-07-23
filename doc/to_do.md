@@ -233,10 +233,10 @@ Version 3.70 Goals
 			- DONE: gs_class_def.py
 		- DONE: create mach_lst() / all_lst method for creatures (based on vis_lst)
 		- DONE: update active_gs. mach scope commands to use mach_lst() method
-	- TBD: refactor Creature methods
-			- TBD: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
-				- TBD: creature_state => state
-				- TBD: dead_creature_obj => corpse
+	- INPROC: refactor Creature methods
+			- INPROC: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
+				- DONE: creature_state => state
+				- DONE: dead_creature_obj => corpse
 				- TBD: shorten dict naming for all dicts - 2_word *max*!
 		- TBD: re-order attributes for better flow
 		- TBD: refactor review for class Creature methods
@@ -304,6 +304,7 @@ Refactor burt as a Creature class object
 					- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
 					- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
 					- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
+					- if fail validate() , buffer error and end app_main()
 				- need to do a detailed mapping of what is required for success in each noun_class() method
 		- IDEAS - future
 			- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one

@@ -10,17 +10,17 @@ from static_gbl import descript_dict
 
 ### classes
 class Creature(ViewOnly):
-		def __init__(self, name, full_name, root_name, descript_key, writing, creature_state, invis_lst, show_item_dict, give_item_dict,
-		attack_creature_dict, attack_burt_dict, bkpk_lst, dead_creature_obj, hand_lst, is_attackable, feature_lst, worn_lst):
+		def __init__(self, name, full_name, root_name, descript_key, writing, state, invis_lst, show_item_dict, give_item_dict,
+		attack_creature_dict, attack_burt_dict, bkpk_lst, corpse, hand_lst, is_attackable, feature_lst, worn_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
-				self._creature_state = creature_state # state
+				self._state = state
 				self._invis_lst = invis_lst # invis_lst
 				self._show_item_dict = show_item_dict # show_dict
 				self._give_item_dict = give_item_dict # give_dict
 				self._attack_creature_dict = attack_creature_dict # attacked_dict
 				self._attack_burt_dict = attack_burt_dict # attacking_dict
 				self._bkpk_lst = bkpk_lst
-				self._dead_creature_obj = dead_creature_obj # corpse
+				self._corpse = corpse
 				self._hand_lst = hand_lst
 				self._is_attackable = is_attackable
 				self._feature_lst = feature_lst
@@ -28,12 +28,12 @@ class Creature(ViewOnly):
 
 		# *** setters & getters ***
 		@property
-		def creature_state(self):
-				return self._creature_state
+		def state(self):
+				return self._state
 
-		@creature_state.setter
-		def creature_state(self, new_state):
-				self._creature_state = new_state
+		@state.setter
+		def state(self, new_state):
+				self._state = new_state
 
 		@property
 		def invis_lst(self):
@@ -64,8 +64,8 @@ class Creature(ViewOnly):
 				self._bkpk_lst = new_state
 
 		@property
-		def dead_creature_obj(self):
-				return self._dead_creature_obj
+		def corpse(self):
+				return self._corpse
 
 		@property
 		def hand_lst(self):
@@ -278,7 +278,7 @@ class Creature(ViewOnly):
 						room_obj.room_obj_lst_remove(self)
 						room_obj.room_obj_lst_extend(self.bkpk_lst)
 						room_obj.room_obj_lst_extend(self.hand_lst)
-						room_obj.room_obj_lst_append(self.dead_creature_obj)
+						room_obj.room_obj_lst_append(self.corpse)
 						res_key = 'creature_death_default_res_key'
 						win_weapon = burt_weapon_obj.full_name						
 				else:
@@ -363,7 +363,7 @@ class Creature(ViewOnly):
 						room_obj = active_gs.get_room()
 						room_obj.room_obj_lst_remove(self)
 						room_obj.room_obj_lst_extend(self.bkpk_lst)
-						room_obj.room_obj_lst_append(self.dead_creature_obj)
+						room_obj.room_obj_lst_append(self.corpse)
 						res_key = 'creature_death_default_res_key'
 						win_weapon = burt_weapon_obj.full_name
 				else:
