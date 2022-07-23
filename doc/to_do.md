@@ -234,18 +234,25 @@ Version 3.70 Goals
 		- DONE: create mach_lst() / all_lst method for creatures (based on vis_lst)
 		- DONE: update active_gs. mach scope commands to use mach_lst() method
 	- INPROC: refactor Creature methods
-			- INPROC: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
+			- DONE: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
 				- DONE: creature_state => state
 				- DONE: dead_creature_obj => corpse
-				- INPROC: shorten dict naming for all dicts - 2_word *max*!
+				- DONE: shorten dict naming for all dicts - 2_word *max*!
 		- TBD: re-order attributes for better flow
 		- TBD: refactor review for class Creature methods
-	3.3) refactor Room class
+			- TBD: use not-in-hand generic validation for show & give
+			- TBD: leverage if-then shield pattern
+			- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict and attack_dict)
+			- TBD: re-code attack / attack_burt response correctly based on in-line notes
+			- TBD: review refactor notes
+			- TBD: comment each attribute
+	- TBD: refactor Room class
 		- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 		- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
-	3.5) refactor Container class
-	3.7) refactor active_gs. scope / mach_scope
+	TBD: refactor Container class
+	TBD: refactor active_gs. scope / mach_scope
 			- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
+	TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
 
 ##########################
 ### VERSION 3.71 START ###
