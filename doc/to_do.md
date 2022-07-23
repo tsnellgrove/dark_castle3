@@ -237,7 +237,7 @@ Version 3.70 Goals
 			- INPROC: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
 				- DONE: creature_state => state
 				- DONE: dead_creature_obj => corpse
-				- TBD: shorten dict naming for all dicts - 2_word *max*!
+				- INPROC: shorten dict naming for all dicts - 2_word *max*!
 		- TBD: re-order attributes for better flow
 		- TBD: refactor review for class Creature methods
 	3.3) refactor Room class

@@ -10,12 +10,12 @@ from static_gbl import descript_dict
 
 ### classes
 class Creature(ViewOnly):
-		def __init__(self, name, full_name, root_name, descript_key, writing, state, invis_lst, show_item_dict, give_item_dict,
+		def __init__(self, name, full_name, root_name, descript_key, writing, state, invis_lst, show_dict, give_item_dict,
 		attack_creature_dict, attack_burt_dict, bkpk_lst, corpse, hand_lst, is_attackable, feature_lst, worn_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._state = state
 				self._invis_lst = invis_lst # invis_lst
-				self._show_item_dict = show_item_dict # show_dict
+				self._show_dict = show_dict # show_dict
 				self._give_item_dict = give_item_dict # give_dict
 				self._attack_creature_dict = attack_creature_dict # attacked_dict
 				self._attack_burt_dict = attack_burt_dict # attacking_dict
@@ -40,8 +40,8 @@ class Creature(ViewOnly):
 				return self._invis_lst
 
 		@property
-		def show_item_dict(self):
-				return self._show_item_dict
+		def show_dict(self):
+				return self._show_dict
 
 		@property
 		def give_item_dict(self):
@@ -159,14 +159,14 @@ class Creature(ViewOnly):
 						active_gs.buffer("You aren't holding the " + obj.full_name)
 				else:
 						creature_has_response = True
-						if obj in self.show_item_dict:
+						if obj in self.show_dict:
 								dict_key = obj
-						elif 'def_show' in self.show_item_dict:
+						elif 'def_show' in self.show_dict:
 								dict_key = 'def_show'
 						else:
 								creature_has_response = False
 						if creature_has_response:
-								response_key = self.show_item_dict[dict_key]
+								response_key = self.show_dict[dict_key]
 								response_str = descript_dict[response_key]
 								active_gs.buffer(response_str)
 						else:
