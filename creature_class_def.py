@@ -10,13 +10,13 @@ from static_gbl import descript_dict
 
 ### classes
 class Creature(ViewOnly):
-		def __init__(self, name, full_name, root_name, descript_key, writing, state, invis_lst, show_dict, give_item_dict,
+		def __init__(self, name, full_name, root_name, descript_key, writing, state, invis_lst, show_dict, give_dict,
 		attack_creature_dict, attack_burt_dict, bkpk_lst, corpse, hand_lst, is_attackable, feature_lst, worn_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._state = state
-				self._invis_lst = invis_lst # invis_lst
-				self._show_dict = show_dict # show_dict
-				self._give_item_dict = give_item_dict # give_dict
+				self._invis_lst = invis_lst
+				self._show_dict = show_dict
+				self._give_dict = give_dict
 				self._attack_creature_dict = attack_creature_dict # attacked_dict
 				self._attack_burt_dict = attack_burt_dict # attacking_dict
 				self._bkpk_lst = bkpk_lst
@@ -44,8 +44,8 @@ class Creature(ViewOnly):
 				return self._show_dict
 
 		@property
-		def give_item_dict(self):
-				return self._give_item_dict
+		def give_dict(self):
+				return self._give_dict
 
 		@property
 		def attack_creature_dict(self):
@@ -178,9 +178,9 @@ class Creature(ViewOnly):
 						return
 
 				creature_has_response = True
-				if obj in self.give_item_dict:
+				if obj in self.give_dict:
 						dict_key = obj
-				elif 'def_give' in self.give_item_dict:
+				elif 'def_give' in self.give_dict:
 						dict_key = 'def_give'
 				else:
 						creature_has_response = False
@@ -189,11 +189,11 @@ class Creature(ViewOnly):
 						active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
 						return
 
-				response_key = self.give_item_dict[dict_key]['response_key']
+				response_key = self.give_dict[dict_key]['response_key']
 				response_str = descript_dict[response_key]
-				accept_item = self.give_item_dict[dict_key]['accept_item']
-				give_item = self.give_item_dict[dict_key]['give_item']
-				new_descript_key = self.give_item_dict[dict_key]['new_descript_key']
+				accept_item = self.give_dict[dict_key]['accept_item']
+				give_item = self.give_dict[dict_key]['give_item']
+				new_descript_key = self.give_dict[dict_key]['new_descript_key']
 
 				if accept_item:
 						active_gs.hand_lst_remove_item(obj)
