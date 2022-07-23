@@ -223,11 +223,14 @@ Version 3.70 Goals
 		- DONE: test
 		- DONE: add to look
 		- DONE: test
-	- TBD: invis_lst (new name for mach_obj_lst)
+	- INPROC: invis_lst (new name for mach_obj_lst)
 		- IDEAS:
 			- creatures can have 'invisible' attribute for machs (like rooms)
 			- change mach_obj_lst to 'invisible'? or 'invis_lst'?
-		- TBD: rename mach_obj_lst => invis_lst
+		- DONE: create is_mach() method and assign to classes (MachineMixIn, Warning, & Timer classes return True; all others False)
+		- INPROC: rename mach_obj_lst => invis_lst
+			- TBD: creature_class_def.py
+			- TBD: gs_class_def.py
 		- TBD: create mach_lst() / all_lst method for creatures (based on vis_lst)
 		- TBD: update active_gs. mach scope commands to use mach_lst() method
 	- TBD: refactor review for class Creature methods

@@ -19,6 +19,7 @@ class MachineMixIn(object):
 				self._cond_lst = cond_lst # list of condition obj to test for; should cover all trigger cases
 				self._result_lst = result_lst # list of possible result obj ordered by assciated condition
 
+		# getters & setters
 		@property
 		def mach_state(self):
 				return self._mach_state
@@ -50,6 +51,12 @@ class MachineMixIn(object):
 		@property
 		def result_lst(self):
 				return self._result_lst
+
+		# simple methods
+		def is_mach(self):
+				return True
+
+		# complex methods
 
 		# formats trigger state into trig_key_lst based on case and returns true if trig_key_lst is in trig_vals_lst
 		def trig_check(self, active_gs, case, word_lst):
@@ -145,6 +152,13 @@ class Warning(Invisible):
 				self._warn_count = new_count
 
 ## DUP CODE TO MachineMixIn ###
+
+		# simple methods
+		def is_mach(self):
+				return True
+
+		# complex methods
+
 		# formats trigger state into trig_key_lst based on case and returns true if trig_key_lst is in trig_vals_lst
 		def trig_check(self, active_gs, case, word_lst):
 				trig_key_lst = 'not_valid'
@@ -204,6 +218,8 @@ class Timer(Invisible):
 				self._timer_done = timer_done
 				self._alert_anchor = alert_anchor
 
+		# setters & getters
+
 ## DUP CODE TO MachineMixIn ###
 		@property
 		def trigger_type(self):
@@ -250,9 +266,14 @@ class Timer(Invisible):
 		def alert_anchor(self, new_val):
 				self._alert_anchor = new_val
 
+		# simple methods
+		def is_mach(self):
+				return True
+
 		def is_timer(self):
 				return True
 
+		# complex methods
 		def run_mach(self, active_gs):
 				cmd_override = False
 				self.timer_count += 1				
