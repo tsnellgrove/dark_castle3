@@ -11,14 +11,14 @@ from static_gbl import descript_dict
 ### classes
 class Creature(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, state, invis_lst, show_dict, give_dict,
-		attack_creature_dict, attack_burt_dict, bkpk_lst, corpse, hand_lst, is_attackable, feature_lst, worn_lst):
+		attacked_dict, attack_burt_dict, bkpk_lst, corpse, hand_lst, is_attackable, feature_lst, worn_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._state = state
 				self._invis_lst = invis_lst
 				self._show_dict = show_dict
 				self._give_dict = give_dict
-				self._attack_creature_dict = attack_creature_dict # attacked_dict
-				self._attack_burt_dict = attack_burt_dict # attacking_dict
+				self._attacked_dict = attacked_dict # was attack_creature_dict
+				self._attack_burt_dict = attack_burt_dict # attacking_dict # was attack_burt_dict
 				self._bkpk_lst = bkpk_lst
 				self._corpse = corpse
 				self._hand_lst = hand_lst
@@ -48,8 +48,8 @@ class Creature(ViewOnly):
 				return self._give_dict
 
 		@property
-		def attack_creature_dict(self):
-				return self._attack_creature_dict
+		def attacked_dict(self):
+				return self._attacked_dict
 
 		@property
 		def attack_burt_dict(self):
@@ -235,9 +235,9 @@ class Creature(ViewOnly):
 
 				# determine if creature has an attack response and if so what response key to use
 				creature_has_response = True
-				if burt_weapon_obj in self.attack_creature_dict:
+				if burt_weapon_obj in self.attacked_dict:
 						dict_key = burt_weapon_obj
-				elif 'def_attack' in self.attack_creature_dict:
+				elif 'def_attack' in self.attacked_dict:
 						dict_key = 'def_attack'
 				else:
 						creature_has_response = False
@@ -248,7 +248,7 @@ class Creature(ViewOnly):
 						return 
 
 				#	if creature_has_response, buffer custom_str if it exists
-				custom_key = self.attack_creature_dict[dict_key]['custom_key']
+				custom_key = self.attacked_dict[dict_key]['custom_key']
 				try:
 						custom_str = descript_dict[custom_key]
 						active_gs.buffer(custom_str)
@@ -261,7 +261,7 @@ class Creature(ViewOnly):
 ### NOTE: order of operations = <attacker> => <custom> => <winner>
 
 				# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
-				if self.attack_creature_dict[dict_key]['result_code'] == 'creature_flee':
+				if self.attacked_dict[dict_key]['result_code'] == 'creature_flee':
 						room_obj = active_gs.get_room()
 						room_obj.room_obj_lst_remove(self)
 						res_key = 'creature_flee_default_res_key'
@@ -269,11 +269,11 @@ class Creature(ViewOnly):
 								win_weapon = ""
 						else:
 								win_weapon = burt_weapon_obj.full_name
-				elif self.attack_creature_dict[dict_key]['result_code'] == 'burt_death':
+				elif self.attacked_dict[dict_key]['result_code'] == 'burt_death':
 						active_gs.set_game_ending('death')
 						res_key = 'burt_death_default_res_key'
 						win_weapon = self.hand_item().full_name
-				elif self.attack_creature_dict[dict_key]['result_code'] == 'creature_death':
+				elif self.attacked_dict[dict_key]['result_code'] == 'creature_death':
 						room_obj = active_gs.get_room()
 						room_obj.room_obj_lst_remove(self)
 						room_obj.room_obj_lst_extend(self.bkpk_lst)
