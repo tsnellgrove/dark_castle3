@@ -230,11 +230,11 @@ class GameState(object):
 				room_obj = self.get_room()
 				scope_lst = self.scope_lst() + room_obj.invis_obj_lst
 				for obj in scope_lst:
+#						if obj.is_mach(): # portcullis auto_open issue ???
 						if hasattr(obj, 'trigger_type'):
 								room_mach_lst.append(obj)
-						if hasattr(obj, 'creature_state'):
-								if obj.mach_obj_lst != None:
-										room_mach_lst.extend(obj.mach_obj_lst)
+						if obj.is_creature():
+								room_mach_lst.extend(obj.invis_lst)
 				return room_mach_lst
 
 		def mach_obj_lst(self):

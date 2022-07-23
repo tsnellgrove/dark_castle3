@@ -10,11 +10,11 @@ from static_gbl import descript_dict
 
 ### classes
 class Creature(ViewOnly):
-		def __init__(self, name, full_name, root_name, descript_key, writing, creature_state, mach_obj_lst, show_item_dict, give_item_dict,
+		def __init__(self, name, full_name, root_name, descript_key, writing, creature_state, invis_lst, show_item_dict, give_item_dict,
 		attack_creature_dict, attack_burt_dict, bkpk_lst, dead_creature_obj, hand_lst, is_attackable, feature_lst, worn_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._creature_state = creature_state # state
-				self._mach_obj_lst = mach_obj_lst # invisible_lst
+				self._invis_lst = invis_lst # invis_lst
 				self._show_item_dict = show_item_dict # show_dict
 				self._give_item_dict = give_item_dict # give_dict
 				self._attack_creature_dict = attack_creature_dict # attacked_dict
@@ -37,8 +37,8 @@ class Creature(ViewOnly):
 				self._creature_state = new_state
 
 		@property
-		def mach_obj_lst(self):
-				return self._mach_obj_lst
+		def invis_lst(self):
+				return self._invis_lst
 
 		@property
 		def show_item_dict(self):

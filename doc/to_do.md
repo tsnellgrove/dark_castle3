@@ -228,9 +228,9 @@ Version 3.70 Goals
 			- creatures can have 'invisible' attribute for machs (like rooms)
 			- change mach_obj_lst to 'invisible'? or 'invis_lst'?
 		- DONE: create is_mach() method and assign to classes (MachineMixIn, Warning, & Timer classes return True; all others False)
-		- INPROC: rename mach_obj_lst => invis_lst
-			- TBD: creature_class_def.py
-			- TBD: gs_class_def.py
+		- DONE: rename mach_obj_lst => invis_lst
+			- DONE: creature_class_def.py
+			- DONE: gs_class_def.py
 		- TBD: create mach_lst() / all_lst method for creatures (based on vis_lst)
 		- TBD: update active_gs. mach scope commands to use mach_lst() method
 	- TBD: refactor review for class Creature methods
@@ -239,7 +239,7 @@ Version 3.70 Goals
 			- TBD: creature_state => state
 			- TBD: dead_creature_obj => corpse
 	- TBD: re-order attributes for better flow
-	3.3) refactor active_gs. scope
+	3.3) refactor active_gs. scope / mach_scope
 		- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
 	3.5) refactor Room class
 		- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)

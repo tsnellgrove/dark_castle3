@@ -107,15 +107,27 @@ class InvisMach(Invisible, MachineMixIn):
 				Invisible.__init__(self, name)
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
+		# simple methods
+		def is_mach(self):
+				return True
+
 class ViewOnlyMach(ViewOnly, MachineMixIn):
 		def __init__(self, name, full_name, root_name, descript_key, writing, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
+		# simple methods
+		def is_mach(self):
+				return True
+
 class ItemMach(Item, MachineMixIn):
 		def __init__(self, name, full_name, root_name, descript_key, writing, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
+
+		# simple methods
+		def is_mach(self):
+				return True
 
 class Warning(Invisible):
 		def __init__(self, name, trigger_type, trig_vals_lst, warn_max, warn_count):
