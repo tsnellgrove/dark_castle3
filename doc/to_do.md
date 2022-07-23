@@ -234,11 +234,11 @@ Version 3.70 Goals
 		- DONE: create mach_lst() / all_lst method for creatures (based on vis_lst)
 		- DONE: update active_gs. mach scope commands to use mach_lst() method
 	- INPROC: refactor Creature methods
-			- DONE: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
-				- DONE: creature_state => state
-				- DONE: dead_creature_obj => corpse
-				- DONE: shorten dict naming for all dicts - 2_word *max*!
-		- TBD: re-order attributes for better flow
+		- DONE: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
+			- DONE: creature_state => state
+			- DONE: dead_creature_obj => corpse
+			- DONE: shorten dict naming for all dicts - 2_word *max*!
+		- INPROC: re-order attributes for better flow
 		- TBD: refactor review for class Creature methods
 			- TBD: use not-in-hand generic validation for show & give
 			- TBD: leverage if-then shield pattern

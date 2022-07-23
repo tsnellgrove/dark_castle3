@@ -14,18 +14,18 @@ class Creature(ViewOnly):
 		attacked_dict, attacking_dict, bkpk_lst, corpse, hand_lst, is_attackable, feature_lst, worn_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._state = state
+				self._hand_lst = hand_lst
+				self._bkpk_lst = bkpk_lst
+				self._worn_lst = worn_lst
+				self._feature_lst = feature_lst
 				self._invis_lst = invis_lst
 				self._show_dict = show_dict
 				self._give_dict = give_dict
+				self._is_attackable = is_attackable
 				self._attacked_dict = attacked_dict # was attack_creature_dict
 				self._attacking_dict = attacking_dict # was attack_burt_dict
-				self._bkpk_lst = bkpk_lst
 				self._corpse = corpse
-				self._hand_lst = hand_lst
-				self._is_attackable = is_attackable
-				self._feature_lst = feature_lst
-				self._worn_lst = worn_lst
-
+				
 		# *** setters & getters ***
 		@property
 		def state(self):
@@ -34,6 +34,34 @@ class Creature(ViewOnly):
 		@state.setter
 		def state(self, new_state):
 				self._state = new_state
+
+		@property
+		def hand_lst(self):
+				return self._hand_lst
+
+		@hand_lst.setter
+		def hand_lst(self, new_state):
+				self._hand_lst = new_state
+
+		@property
+		def bkpk_lst(self):
+				return self._bkpk_lst
+
+		@bkpk_lst.setter
+		def bkpk_lst(self, new_state):
+				self._bkpk_lst = new_state
+
+		@property
+		def worn_lst(self):
+				return self._worn_lst
+
+		@worn_lst.setter
+		def worn_lst(self, new_state):
+				self._worn_lst = new_state
+
+		@property
+		def feature_lst(self):
+				return self._feature_lst
 
 		@property
 		def invis_lst(self):
@@ -48,6 +76,10 @@ class Creature(ViewOnly):
 				return self._give_dict
 
 		@property
+		def is_attackable(self):
+				return self._is_attackable
+
+		@property
 		def attacked_dict(self):
 				return self._attacked_dict
 
@@ -56,40 +88,8 @@ class Creature(ViewOnly):
 				return self._attacking_dict
 
 		@property
-		def bkpk_lst(self):
-				return self._bkpk_lst
-
-		@bkpk_lst.setter
-		def bkpk_lst(self, new_state):
-				self._bkpk_lst = new_state
-
-		@property
 		def corpse(self):
 				return self._corpse
-
-		@property
-		def hand_lst(self):
-				return self._hand_lst
-
-		@hand_lst.setter
-		def hand_lst(self, new_state):
-				self._hand_lst = new_state
-
-		@property
-		def is_attackable(self):
-				return self._is_attackable
-
-		@property
-		def feature_lst(self):
-				return self._feature_lst
-
-		@property
-		def worn_lst(self):
-				return self._worn_lst
-
-		@worn_lst.setter
-		def worn_lst(self, new_state):
-				self._worn_lst = new_state
 
 		# *** hand ***
 		def hand_lst_append(self, item):
