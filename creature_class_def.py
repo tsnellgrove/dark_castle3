@@ -26,8 +26,7 @@ class Creature(ViewOnly):
 				self._feature_lst = feature_lst
 				self._worn_lst = worn_lst
 
-# *** setters & getters ***
-
+		# *** setters & getters ***
 		@property
 		def creature_state(self):
 				return self._creature_state
@@ -92,13 +91,7 @@ class Creature(ViewOnly):
 		def worn_lst(self, new_state):
 				self._worn_lst = new_state
 
-# *** class identification ***
-
-		def is_creature(self):
-				return True
-
-# *** hand ***
-
+		# *** hand ***
 		def hand_lst_append(self, item):
 				self._hand_lst.append(item)
 
@@ -118,16 +111,14 @@ class Creature(ViewOnly):
 						self.hand_lst_remove(hand_item)
 				self.hand_lst_append(new_item)
 
-# *** bkpk_lst ***
-
+		# *** bkpk_lst ***
 		def bkpk_lst_append(self, item):
 				self._bkpk_lst.append(item)
 
 		def bkpk_lst_remove(self, item):
 				self._bkpk_lst.remove(item)
 
-# *** worn_lst ***
-
+		# *** worn_lst ***
 		def worn_lst_append(self, item):
 				self._worn_lst.append(item)
 
@@ -141,11 +132,21 @@ class Creature(ViewOnly):
 				worn_txt_lst = [obj.full_name for obj in self.worn_lst]
 				return ", ".join(worn_txt_lst)
 
-# *** complex methods ***
+		# *** simple methods ***
+
+		def is_creature(self):
+				return True
 
 		def vis_lst(self):
 				return self.hand_lst + self.worn_lst + self.feature_lst
 
+		def all_lst(self):
+				return self.hand_lst + self.worn_lst + self.feature_lst + self.bkpk_lst + self.invis_lst 
+
+		def mach_lst(self):
+				return [obj for obj in self.all_lst() if obj.is_mach()]
+
+		# *** complex methods ***
 		def examine(self, active_gs):
 				super(Creature, self).examine(active_gs)
 				if not self.hand_empty():

@@ -223,7 +223,7 @@ Version 3.70 Goals
 		- DONE: test
 		- DONE: add to look
 		- DONE: test
-	- INPROC: invis_lst (new name for mach_obj_lst)
+	- DONE: invis_lst (new name for mach_obj_lst)
 		- IDEAS:
 			- creatures can have 'invisible' attribute for machs (like rooms)
 			- change mach_obj_lst to 'invisible'? or 'invis_lst'?
@@ -231,20 +231,21 @@ Version 3.70 Goals
 		- DONE: rename mach_obj_lst => invis_lst
 			- DONE: creature_class_def.py
 			- DONE: gs_class_def.py
-		- TBD: create mach_lst() / all_lst method for creatures (based on vis_lst)
-		- TBD: update active_gs. mach scope commands to use mach_lst() method
-	- TBD: refactor review for class Creature methods
-	- TBD: shorten dict naming for all dicts - 2_word *max*!
-		- TBD: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
-			- TBD: creature_state => state
-			- TBD: dead_creature_obj => corpse
-	- TBD: re-order attributes for better flow
-	3.3) refactor active_gs. scope / mach_scope
-		- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
-	3.5) refactor Room class
+		- DONE: create mach_lst() / all_lst method for creatures (based on vis_lst)
+		- DONE: update active_gs. mach scope commands to use mach_lst() method
+	- TBD: refactor Creature methods
+			- TBD: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
+				- TBD: creature_state => state
+				- TBD: dead_creature_obj => corpse
+				- TBD: shorten dict naming for all dicts - 2_word *max*!
+		- TBD: re-order attributes for better flow
+		- TBD: refactor review for class Creature methods
+	3.3) refactor Room class
 		- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 		- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
-	3.7) refactor Container class
+	3.5) refactor Container class
+	3.7) refactor active_gs. scope / mach_scope
+			- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
 
 ##########################
 ### VERSION 3.71 START ###

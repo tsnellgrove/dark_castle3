@@ -234,7 +234,7 @@ class GameState(object):
 						if hasattr(obj, 'trigger_type'):
 								room_mach_lst.append(obj)
 						if obj.is_creature():
-								room_mach_lst.extend(obj.invis_lst)
+								room_mach_lst.extend(obj.mach_lst())
 				return room_mach_lst
 
 		def mach_obj_lst(self):
