@@ -31,10 +31,6 @@ def true_one_word(active_gs, word1, room_obj):
 def cmd_execute(active_gs, case, word_lst):
 		room_obj = active_gs.get_room()
 
-#		if case == 'help':
-#				word2 = word_lst[0] # help() now called from interpreter()
-#				help(active_gs, word2) # help() now called from interpreter()
-#				pass
 		if  case == 'tru_1word':
 				word1 = word_lst[0]
 				true_one_word(active_gs, word1, room_obj)
@@ -52,16 +48,6 @@ def cmd_execute(active_gs, case, word_lst):
 ###							active_gs.buffer("You can't " + word1 + " with the " + word2_obj.full_name + ".") # old error
 		elif case == 'prep':
 				dirobj_obj, word1, noun_obj = word_lst
-#				if active_gs.scope_check(noun_obj) == False:
-#						active_gs.buffer("You can't see a " + noun_obj.full_name + " here.")
-#						return
-#				elif active_gs.scope_check(dirobj_obj) == False:
-#						active_gs.buffer("You can't see a " + dirobj_obj.full_name + " here.")
-#						return
-#				elif (word1 in ['put', 'show', 'give']) and (not active_gs.hand_check(noun_obj)):
-#						active_gs.buffer("You're not holding the " + noun_obj.full_name + " in your hand.")
-#						return
-#				else:
 				try:
 						getattr(dirobj_obj, word1)(noun_obj, active_gs)
 				except:
