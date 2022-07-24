@@ -154,7 +154,7 @@ Version 3.71 Goals
 		- DECISION: no clock tick for *any* error in validate()
 			- time_incr(), pre_action, cmd_exe, post_action, and auto_action only run if validate returns True and not 'quit'	
 		- DONE: combine move_valid code from app_main() & cmd_exe() => validate()
-		- TBD: move special_errors from cmd_exe() and in-line prep case error checking in cmd_exe() to validate()
+		- DONE: move special_errors from cmd_exe() and in-line prep case error checking in cmd_exe() to validate()
 		- TBD: clean up validate; use guard pattern (a lot!)
 		- TBD: improve / expand generic error checking
 - TBD: refactor review for class Creature methods
