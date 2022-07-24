@@ -268,6 +268,7 @@ Version 3.705 Goals
 		- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
 		- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
 		- if fail validate() , buffer error and end app_main()
+	- maybe call verb methods with a 'mode' variable that can be validate, exe_std, or exe_silent ??
 - TBD: refactor Room class
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
