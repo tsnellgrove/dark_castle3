@@ -38,8 +38,6 @@ def wrapper(user_input):
 				end(active_gs)
 				return active_gs.get_end_of_game(), active_gs.get_buff()
 
-		cmd_override = False
-
 		case, word_lst = interpreter(user_input, master_obj_lst)
 
 		if case == 'error':
@@ -47,7 +45,8 @@ def wrapper(user_input):
 		else:
 				move_valid = True
 				active_gs.move_inc()		
-		
+
+		cmd_override = False		
 		if move_valid:
 				cmd_override = pre_action(active_gs, case, word_lst)
 		if not cmd_override:

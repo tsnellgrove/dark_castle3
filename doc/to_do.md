@@ -108,12 +108,6 @@ Version 3.705 Goals
 
 - INPROC: create validate.py module
 	- IDEAS:
-		- combine move_valid code from app_main() and special_errors from cmd_exe()
-		- also incorporate in-line prep case error checking in cmd_exe()
-		- distinguist between interpreter errors (no time_inc) and command errors (time inc)
-		- maybe keep quit code (including setting from cmd_exe() ) in app_main() with time_inc after quit loop
-			- use guard pattern with quit and also validate
-		- pre_action, cmd_exe, post_action, and auto_action only run if validate returns True and not 'quit'
 		- thinking systemically, can we pre-validate noun class methods?
 			- validate() would run between interpreter() and pre_action()
 			- e.g. for take() use case, can we checks to see if obj is_item and is in <room>.obj_scope ?
@@ -124,10 +118,16 @@ Version 3.705 Goals
 		- maybe call verb methods with a 'mode' variable that can be validate, exe_std, or exe_silent ??
 	- INPROC: simplify app_main.py
 		- DONE: guard pattern for start_up.py call
-		- INPROC: guard pattern for user_input == 'quit' or user_input == 'q' 
+		- DONE: guard pattern for user_input == 'quit' or user_input == 'q' 
 			- DONE: extract quit from abreviations and one_word
-			- TBD: implement guard pattern
-			- TBD: move cmd_override closer to usage
+			- DONE: move cmd_override closer to usage
+	- TBD: create validate() module
+		- TBD: move case = 'error' code from cmd_exe() to validate()
+		- TBD: guard pattern the case == 'error' if-else
+		- DECISION: no clock tick for *any* error in validate()
+		- TBD: combine move_valid code from app_main() & cmd_exe() => validate()
+		- TBD: move special_errors from cmd_exe() and in-line prep case error checking in cmd_exe() to validate()
+		- time_incr(), pre_action, cmd_exe, post_action, and auto_action only run if validate returns True and not 'quit'
 - TBD: refactor review for class Creature methods
 	- TBD: leverage if-then shield pattern
 	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict and attack_dict)
