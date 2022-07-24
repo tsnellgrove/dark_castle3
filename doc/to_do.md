@@ -240,19 +240,41 @@ Version 3.70 Goals
 			- DONE: shorten dict naming for all dicts - 2_word *max*!
 		- DONE: re-order attributes for better flow
 		- INPROC: refactor review for class Creature methods
-			- TBD: use not-in-hand generic validation for put, show, & give (prep case => verb, noun_obj, dir_obj)
+			- DONE: use not-in-hand generic validation for put, show, & give in cmd_exe prep case code
 			- TBD: leverage if-then shield pattern
 			- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict and attack_dict)
 			- TBD: re-code attack / attack_burt response correctly based on in-line notes
 			- TBD: review refactor notes
 			- TBD: comment each attribute
-	- TBD: refactor Room class
-		- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
-		- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
-	TBD: refactor Container class
-	TBD: refactor active_gs. scope / mach_scope
-			- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
-	TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
+	- TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
+
+##########################
+### VERSION 3.705 START ###
+##########################
+
+Version 3.705 Goals
+- pre-Burt refactor clean-up
+
+- TBD: create validate.py module
+	- combine move_valid code from app_main() and special_errors from cmd_exe()
+	- also incorporate in-line prep case error checking in cmd_exe()
+	- distinguist between interpreter errors (no time_inc) and command errors (time inc)
+	- maybe keep quit code (including setting from cmd_exe() ) in app_main() with time_inc after quit loop
+	- pre_action, cmd_exe, post_action, and auto_action only run if validate returns True and not 'quit'
+	- thinking systemically, can we pre-validate noun class methods?
+		- validate() would run between interpreter() and pre_action()
+		- e.g. for take() use case, can we checks to see if obj is_item and is in <room>.obj_scope ?
+		- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
+		- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
+		- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
+		- if fail validate() , buffer error and end app_main()
+- TBD: refactor Room class
+	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
+	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
+TBD: refactor Container class
+TBD: refactor active_gs. scope / mach_scope
+		- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
+
 
 ##########################
 ### VERSION 3.71 START ###
@@ -305,14 +327,7 @@ Refactor burt as a Creature class object
 				- maybe each Creature has its own description list?
 					- desc list as creature attribute ???
 				- with a default examine() response similar to "the X is not interesting"
-				- thinking systemically, can we pre-validate noun class methods?
-					- validate() would run between interpreter() and pre_action()
-					- e.g. for take() use case, can we checks to see if obj is_item and is in <room>.obj_scope ?
-					- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
-					- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
-					- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
-					- if fail validate() , buffer error and end app_main()
-				- need to do a detailed mapping of what is required for success in each noun_class() method
+			- need to do a detailed mapping of what is required for success in each noun_class() method
 		- IDEAS - future
 			- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
 			- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)

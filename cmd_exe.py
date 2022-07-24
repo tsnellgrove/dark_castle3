@@ -91,7 +91,10 @@ def cmd_execute(active_gs, case, word_lst):
 						return
 				elif active_gs.scope_check(dirobj_obj) == False:
 						active_gs.buffer("You can't see a " + dirobj_obj.full_name + " here.")
-						return 
+						return
+				elif (word1 in ['put', 'show', 'give']) and (not active_gs.hand_check(noun_obj)):
+						active_gs.buffer("You're not holding the " + noun_obj.full_name + " in your hand.")
+						return
 				else:
 						try:
 								getattr(dirobj_obj, word1)(noun_obj, active_gs)

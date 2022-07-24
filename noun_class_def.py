@@ -357,9 +357,10 @@ class Container(Door):
 				self.print_contents_str(active_gs)
 
 		def put(self, obj, active_gs):
-				if not active_gs.hand_check(obj):
-						active_gs.buffer("You aren't holding the " + obj.full_name)
-				elif self.open_state == False:
+#				if not active_gs.hand_check(obj):
+#						active_gs.buffer("You aren't holding the " + obj.full_name)
+#				elif self.open_state == False:
+				if self.open_state == False:
 						active_gs.buffer("The " + self.full_name + " is closed.")
 				elif obj.is_container():
 						active_gs.buffer("You can't put a container in a container")
