@@ -204,7 +204,6 @@ class Item(ViewOnly):
 
 				if self not in room_obj_lst + backpack_lst + worn_lst:
 						for obj in room_obj_lst: # handle case of obj in creature hand
-#								if obj.is_creature() and self == obj.hand_item():
 								if obj.is_creature() and self in obj.vis_lst():
 										active_gs.buffer("Burt, you can't take the " + self.full_name + 
 														" it belongs to the " + obj.full_name + "!")

@@ -10,8 +10,6 @@ from static_gbl import descript_dict
 
 ### classes
 class Creature(ViewOnly):
-#		def __init__(self, name, full_name, root_name, descript_key, writing, state, invis_lst, show_dict, give_dict,
-#		attacked_dict, attacking_dict, bkpk_lst, corpse, hand_lst, is_attackable, feature_lst, worn_lst):
 		def __init__(self, name, full_name, root_name, descript_key, writing,
 						state, hand_lst, bkpk_lst, worn_lst, feature_lst, invis_lst,
 						show_dict, give_dict, is_attackable, attacked_dict, attacking_dict, corpse):
@@ -136,7 +134,6 @@ class Creature(ViewOnly):
 				return ", ".join(worn_txt_lst)
 
 		# *** simple methods ***
-
 		def is_creature(self):
 				return True
 

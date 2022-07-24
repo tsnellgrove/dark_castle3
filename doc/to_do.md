@@ -238,7 +238,7 @@ Version 3.70 Goals
 			- DONE: creature_state => state
 			- DONE: dead_creature_obj => corpse
 			- DONE: shorten dict naming for all dicts - 2_word *max*!
-		- INPROC: re-order attributes for better flow
+		- DONE: re-order attributes for better flow
 		- TBD: refactor review for class Creature methods
 			- TBD: use not-in-hand generic validation for show & give
 			- TBD: leverage if-then shield pattern
