@@ -100,11 +100,29 @@ Burt as an object
 
 
 ##########################
-### VERSION 3.705 START ###
+### VERSION 3.71 START ###
 ##########################
 
-Version 3.705 Goals
-- pre-Burt refactor clean-up
+Version 3.71 Goals
+- re-work app_main() flow with validate() module
+- pre-Burt-to-creature conversion clean-up
+
+- N/A: Old thinking
+	- today: interp() =(if no interp_error)=> pre_action() => cmd_exe() => post_action()
+		- this works if there is an interp() error or if the command is successful... but what if there is a cmd_error ???
+		- as a work-around, I end up re-testing command validity in pre_action() / post_action() - or accepting buggy code (eat_biscuits_warning)
+	- to-be: interp() =(if no interp_error)=> cmd_error_check =(if no cmd_error)=> pre_action() => cmd_exe() => post_action()
+		- so in noun_class, every verb method needs to return cmd_error (boolean) and be able to run in 2 'modes': 'ec_mode' or 'exe_mode'
+		- cmd_error_check() runs the method in ec_mode and returns cmd_error
+		- if not cmd_error: cmd_exe() runs method in exe_mode
+		- can likely shortcut for non '2word' and 'prep' cases
+		- one side effect: every method needs to either throw text on error or do something on success... we cannot take an action on failure (?) 
+- related thinking:
+	- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
+		- Should noun obj methods return a 'success' indicator (for pre & post actions)?
+		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
+		- Be able to call noun methods in non_buffer mode purely for pre & post action validation? 
+		- for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
 
 - INPROC: create validate.py module
 	- IDEAS:
@@ -123,6 +141,7 @@ Version 3.705 Goals
 			- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
 			- this should be enabled by mode = 'exe_creature'
 		- maybe call verb methods with a 'mode' variable that can be validate, exe_std, exe_silent, or exe_creature ??
+		- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
 	- INPROC: simplify app_main.py
 		- DONE: guard pattern for start_up.py call
 		- DONE: guard pattern for user_input == 'quit' or user_input == 'q' 
@@ -145,16 +164,18 @@ Version 3.705 Goals
 - TBD: refactor Room class
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
-TBD: refactor Container class
-TBD: refactor active_gs. scope / mach_scope
+- TBD: refactor Container class
+- TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
+		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+- TBD: refactor active_gs. scope / mach_scope
 		- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
 
 
 ##########################
-### VERSION 3.71 START ###
+### VERSION 3.72 START ###
 ##########################
 
-Version 3.71 Goals
+Version 3.72 Goals
 - refactor Burt as a creature object
 - refactor coding as I go
 
@@ -228,48 +249,15 @@ Refactor burt as a Creature class object
 
 
 ##########################
-### VERSION 3.72 START ###
-##########################
-
-Version 3.72 Goals
-- modularize remaining GameState class and declarations
-
-- TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
-- TBD: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
-
-
-##########################
 ### VERSION 3.73 START ###
 ##########################
 
 Version 3.73 Goals
-- re-work app_main() flow
-	- today: interp() =(if no interp_error)=> pre_action() => cmd_exe() => post_action()
-		- this works if there is an interp() error or if the command is successful... but what if there is a cmd_error ???
-		- as a work-around, I end up re-testing command validity in pre_action() / post_action() - or accepting buggy code (eat_biscuits_warning)
-	- to-be: interp() =(if no interp_error)=> cmd_error_check =(if no cmd_error)=> pre_action() => cmd_exe() => post_action()
-		- so in noun_class, every verb method needs to return cmd_error (boolean) and be able to run in 2 'modes': 'ec_mode' or 'exe_mode'
-		- cmd_error_check() runs the method in ec_mode and returns cmd_error
-		- if not cmd_error: cmd_exe() runs method in exe_mode
-		- can likely shortcut for non '2word' and 'prep' cases
-		- one side effect: every method needs to either throw text on error or do something on success... we cannot take an action on failure (?) 
-	- Or, alternatively, maybe we need a validation() module?
-				- thinking systemically, can we pre-validate noun class methods?
-					- validate() would run between interpreter() and pre_action()
-					- e.g. for take() use case, can we checks to see if obj is_item and is in <room>.obj_scope ?
-					- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
-					- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
-					- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
+- modularize remaining GameState class and declarations
 
-- related thinking:
-	- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
-		- Should noun obj methods return a 'success' indicator (for pre & post actions)?
-		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
-		- Be able to call noun methods in non_buffer mode purely for pre & post action validation? 
-		- for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
-
-- TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
-		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+- TBD: active_gs => gs renaming; point to same obj to start with ??
+- TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
+- TBD: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
 
 
 ##########################
