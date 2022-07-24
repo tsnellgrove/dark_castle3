@@ -8,6 +8,7 @@
 import pickle
 from start_up import start_me_up
 from interp import interpreter
+from validate import validate
 from pre_action import pre_action
 from cmd_exe import cmd_execute
 from post_action import post_action
@@ -38,27 +39,34 @@ def wrapper(user_input):
 				end(active_gs)
 				return active_gs.get_end_of_game(), active_gs.get_buff()
 
+		# interpret and validate user_input
 		case, word_lst = interpreter(user_input, master_obj_lst)
+		input_valid = validate(active_gs, case, word_lst)
 
-		if case == 'error':
-				move_valid = False
-		else:
-				move_valid = True
-				active_gs.move_inc()		
+		# exit if user_input not valid
+		if not input_valid:
+				return active_gs.get_end_of_game(), active_gs.get_buff()
 
+#		if case == 'error':
+#				move_valid = False
+#		else:
+#				move_valid = True
+#				active_gs.move_inc()
+
+		# for valid user_input, increment move count and run pre_action, cmd_exe, post_action, and auto_action
+		active_gs.move_inc()
 		cmd_override = False		
-		if move_valid:
-				cmd_override = pre_action(active_gs, case, word_lst)
+#		if move_valid:
+		cmd_override = pre_action(active_gs, case, word_lst)
 		if not cmd_override:
-				cmd_execute(active_gs, case, word_lst)				
-		if move_valid:
-				post_action(active_gs, case, word_lst)
+				cmd_execute(active_gs, case, word_lst)		
+#		if move_valid:
+		post_action(active_gs, case, word_lst)
 		score(active_gs)
 		if active_gs.get_game_ending() != "tbd":
 				end(active_gs)
-
-		if move_valid:
-				auto_action(active_gs)
+#		if move_valid:
+		auto_action(active_gs)
 
 		### dump updated objects to save_obj_pickle2 ###
 		with open('save_obj_pickle2', 'wb') as f:

@@ -128,7 +128,7 @@ Version 3.71 Goals
 	- IDEAS:
 		- thinking systemically, can we pre-validate noun class methods?
 			- validate() would run between interpreter() and pre_action()
-			- e.g. for take() use case, can we checks to see if obj is_item and is in <room>.obj_scope ?
+			- e.g. for take() use case, can we check to see if obj is_item and is in <room>.obj_scope ?
 			- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
 			- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
 			- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
@@ -142,19 +142,23 @@ Version 3.71 Goals
 			- this should be enabled by mode = 'exe_creature'
 		- maybe call verb methods with a 'mode' variable that can be validate, exe_std, exe_silent, or exe_creature ??
 		- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
-	- INPROC: simplify app_main.py
+	- DONE: simplify app_main.py
 		- DONE: guard pattern for start_up.py call
 		- DONE: guard pattern for user_input == 'quit' or user_input == 'q' 
 			- DONE: extract quit from abreviations and one_word
 			- DONE: move cmd_override closer to usage
-	- TBD: create validate() module
-		- TBD: move case = 'error' code from cmd_exe() to validate()
-		- TBD: guard pattern the case == 'error' if-else
+	- INPROC: create validate() module
+		- DONE: move case = 'error' code from cmd_exe() to validate()
+		- DONE: guard pattern the case == 'error' if-else
 		- DECISION: no clock tick for *any* error in validate()
+			- time_incr(), pre_action, cmd_exe, post_action, and auto_action only run if validate returns True and not 'quit'	
 		- TBD: combine move_valid code from app_main() & cmd_exe() => validate()
 		- TBD: move special_errors from cmd_exe() and in-line prep case error checking in cmd_exe() to validate()
-		- time_incr(), pre_action, cmd_exe, post_action, and auto_action only run if validate returns True and not 'quit'
+		- TBD: improve / expand generic error checking
 - TBD: refactor review for class Creature methods
+	- TBD: introduce 'mode' attribute to attack and burt_attack method
+	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
+	- TBD: re-org to identify 'attacker' and 'winner' 
 	- TBD: leverage if-then shield pattern
 	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict and attack_dict)
 	- TBD: re-code attack / attack_burt response correctly based on in-line notes

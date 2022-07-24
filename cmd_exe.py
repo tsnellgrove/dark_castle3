@@ -63,12 +63,12 @@ def cmd_execute(active_gs, case, word_lst):
 		elif  case == 'tru_1word':
 				word1 = word_lst[0]
 				true_one_word(active_gs, word1, room_obj)
-		elif case == 'error':
-				if word_lst[0] == "random error":
-						output = rand_error()
-				else:
-						output = word_lst[0]
-				active_gs.buffer(output)
+#		elif case == 'error':
+#				if word_lst[0] == "random error":
+#						output = rand_error()
+#				else:
+#						output = word_lst[0]
+#				active_gs.buffer(output)
 		elif case == 'go':
 				room_obj, word1, word2 = word_lst
 				getattr(room_obj, word1)(word2, active_gs)
