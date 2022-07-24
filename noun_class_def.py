@@ -25,6 +25,9 @@ class Invisible(object):
 		def is_item(self):
 				return False
 
+		def is_beverage(self):
+				return False
+
 		def is_weapon(self):
 				return False
 
@@ -72,9 +75,6 @@ class Writing(Invisible):
 				except:
 						descript_str = descript_dict[self.descript_key]
 				return descript_str
-
-		def is_beverage(self):
-				return hasattr(self, 'drink_desc_key')
 
 		def	print_contents_str(self, active_gs):
 				if self.is_container() and self.open_state == True:
@@ -412,6 +412,9 @@ class Beverage(ViewOnly):
 		@property
 		def drink_desc_key(self):
 				return self._drink_desc_key
+
+		def is_beverage(self):
+				return True
 
 		def drink(self, active_gs):
 				hand_lst = active_gs.get_hand_lst()
