@@ -115,7 +115,14 @@ Version 3.705 Goals
 			- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
 			- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
 			- if fail validate() , buffer error and end app_main()
-		- maybe call verb methods with a 'mode' variable that can be validate, exe_std, or exe_silent ??
+		- DECISION: writing perspective
+			- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
+			- in theory, any creature could be used to play the game - and each might have its own description_dict
+			- this would be fun for a short session in a single room but is not practical for extended play
+			- realistically, nearly all descriptions will be from burt's perspective
+			- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
+			- this should be enabled by mode = 'exe_creature'
+		- maybe call verb methods with a 'mode' variable that can be validate, exe_std, exe_silent, or exe_creature ??
 	- INPROC: simplify app_main.py
 		- DONE: guard pattern for start_up.py call
 		- DONE: guard pattern for user_input == 'quit' or user_input == 'q' 
