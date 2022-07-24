@@ -18,11 +18,11 @@ from auto_action import auto_action
 
 ### wrapper code - loads game obj, calls other modules, and saves game obj
 def wrapper(user_input):
+
+		# start-up case
 		if user_input == "xyzzy42":
 				end_of_game, out_buff = start_me_up()
 				return end_of_game, out_buff
-								
-
 
 		# object list loaded from save_obj_pickle2
 		with open('save_obj_pickle2', 'rb') as f:
@@ -31,14 +31,21 @@ def wrapper(user_input):
 		# Gamestate vatiable instantiated from un-pickled list
 		active_gs = master_obj_lst[0]
 		active_gs.reset_buff() # resets buffer
+
+		# quit case
+		if user_input == "quit" or user_input == "q":
+				active_gs.set_game_ending('quit')
+				end(active_gs)
+				return active_gs.get_end_of_game(), active_gs.get_buff()
+
 		cmd_override = False
 
 		case, word_lst = interpreter(user_input, master_obj_lst)
-		
+
 		if case == 'error':
 				move_valid = False
-		elif case == 'tru_1word' and word_lst[0] == 'quit':
-				move_valid = False
+#		elif case == 'tru_1word' and word_lst[0] == 'quit':
+#				move_valid = False
 		else:
 				move_valid = True
 				active_gs.move_inc()		
