@@ -239,8 +239,8 @@ Version 3.70 Goals
 			- DONE: dead_creature_obj => corpse
 			- DONE: shorten dict naming for all dicts - 2_word *max*!
 		- DONE: re-order attributes for better flow
-		- TBD: refactor review for class Creature methods
-			- TBD: use not-in-hand generic validation for show & give
+		- INPROC: refactor review for class Creature methods
+			- TBD: use not-in-hand generic validation for put, show, & give (prep case => verb, noun_obj, dir_obj)
 			- TBD: leverage if-then shield pattern
 			- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict and attack_dict)
 			- TBD: re-code attack / attack_burt response correctly based on in-line notes
