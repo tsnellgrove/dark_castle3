@@ -16,6 +16,9 @@ def rand_error():
 ### *** make error dict local?? ***
 
 def validate(active_gs, case, word_lst):
+
+		# *** interpreter errors ***
+
 		if case == 'error':
 				input_valid = False
 				if word_lst[0] == "random error":
@@ -24,6 +27,8 @@ def validate(active_gs, case, word_lst):
 						output = word_lst[0]
 				active_gs.buffer(output)
 				return False
+
+		# *** command errors ***
 
 		if case == '2word':
 				word2_obj, word1 = word_lst
