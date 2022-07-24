@@ -127,6 +127,7 @@ Version 3.705 Goals
 		- TBD: guard pattern for user_input == 'quit' or user_input == 'q' 
 			- TBD: extract quit from abreviations and one_word
 			- TBD: implement guard pattern
+			- TBD: move cmd_override closer to usage
 - TBD: refactor review for class Creature methods
 	- TBD: leverage if-then shield pattern
 	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict and attack_dict)
