@@ -44,8 +44,6 @@ def wrapper(user_input):
 
 		if case == 'error':
 				move_valid = False
-#		elif case == 'tru_1word' and word_lst[0] == 'quit':
-#				move_valid = False
 		else:
 				move_valid = True
 				active_gs.move_inc()		

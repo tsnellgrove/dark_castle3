@@ -31,7 +31,6 @@ abbreviations_dict = {
 		'l' : 'look',
 		'get' : 'take',
 		'x' : 'examine',
-#		'q' : 'quit',
 		'h' : 'help'
 }
 
