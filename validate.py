@@ -16,7 +16,7 @@ def rand_error():
 ### *** make error dict local?? ***
 
 def validate(active_gs, case, word_lst):
-		input_valid = True
+#		input_valid = True
 		if case == 'error':
 				input_valid = False
 				if word_lst[0] == "random error":
@@ -24,5 +24,30 @@ def validate(active_gs, case, word_lst):
 				else:
 						output = word_lst[0]
 				active_gs.buffer(output)
+				return False
 
-		return input_valid
+		if case == '2word':
+				word2_obj, word1 = word_lst
+				if word1 == 'read' and  active_gs.writing_check(word2_obj) == False:
+						if active_gs.scope_check(word2_obj) == False:
+								active_gs.buffer("You can't see a " + word2_obj.full_name + " here.")
+								return False
+						else:
+								output = "You can't read the " + word2_obj.full_name + ". Try using 'examine' instead."
+								active_gs.buffer(output)
+								return False
+				elif (word1 == 'examine') and (active_gs.writing_check(word2_obj)) == True:
+						output = "You can't examine the " + word2_obj.full_name + ". Try using 'read' instead."
+						active_gs.buffer(output)
+						return False
+				elif (word1 != 'read') and (active_gs.scope_check(word2_obj) == False):
+						active_gs.buffer("You can't see a " + word2_obj.full_name + " here.")
+						return False
+				elif (word1 == 'take') and (active_gs.scope_check(word2_obj)) and (word2_obj.is_beverage()):
+						active_gs.buffer("You can't 'take' a beverage.")
+						return False
+				elif (word1 in ['drop', 'eat', 'wear']) and (not active_gs.hand_check(word2_obj)):
+						active_gs.buffer("You're not holding the " + word2_obj.full_name + " in your hand.")
+						return False
+
+		return True

@@ -153,11 +153,13 @@ Version 3.71 Goals
 		- DONE: guard pattern the case == 'error' if-else
 		- DECISION: no clock tick for *any* error in validate()
 			- time_incr(), pre_action, cmd_exe, post_action, and auto_action only run if validate returns True and not 'quit'	
-		- TBD: combine move_valid code from app_main() & cmd_exe() => validate()
+		- DONE: combine move_valid code from app_main() & cmd_exe() => validate()
 		- TBD: move special_errors from cmd_exe() and in-line prep case error checking in cmd_exe() to validate()
+		- TBD: clean up validate; use guard pattern (a lot!)
 		- TBD: improve / expand generic error checking
 - TBD: refactor review for class Creature methods
 	- TBD: introduce 'mode' attribute to attack and burt_attack method
+	- TBD: do I need to pass init_creature to each verb method in order for mode = 'creature_exe' to work??
 	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
 	- TBD: re-org to identify 'attacker' and 'winner' 
 	- TBD: leverage if-then shield pattern
