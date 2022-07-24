@@ -226,11 +226,6 @@ class Item(ViewOnly):
 				return
 
 		def drop(self, active_gs):
-#				if not active_gs.hand_check(self):
-#						output = "You're not holding the " + self.full_name + " in your hand."
-#						active_gs.buffer(output)
-#				else:
-### moved to cmd_exe() special errors ###
 				active_gs.hand_lst_remove_item(self)
 				room_obj = active_gs.get_room()
 				room_obj.room_obj_lst_append(self)
@@ -357,9 +352,6 @@ class Container(Door):
 				self.print_contents_str(active_gs)
 
 		def put(self, obj, active_gs):
-#				if not active_gs.hand_check(obj):
-#						active_gs.buffer("You aren't holding the " + obj.full_name)
-#				elif self.open_state == False:
 				if self.open_state == False:
 						active_gs.buffer("The " + self.full_name + " is closed.")
 				elif obj.is_container():
@@ -381,11 +373,6 @@ class Food(Item):
 				return self._eat_desc_key
 
 		def eat(self, active_gs):
-#				if not active_gs.hand_check(self):
-#						output = "You're not holding the " + self.full_name + " in your hand."
-#						active_gs.buffer(output)
-#				else:
-### moved to cmd_exe() special errors ###
 					active_gs.hand_lst_remove_item(self)
 					output = "Eaten. The " + self.full_name + " " + descript_dict[self.eat_desc_key]
 					active_gs.buffer(output)
@@ -459,10 +446,6 @@ class Clothes(Item):
 				return self._clothing_type
 
 		def wear(self, active_gs):
-#				if not active_gs.hand_check(self):
-#						output = "You're not holding the " + self.full_name + " in your hand."
-#						active_gs.buffer(output)
-### moved to cmd_exe() special errors ###
 				if active_gs.clothing_type_worn(self): # was 'elif' before special error
 						output = "You are already wearing a " + self.clothing_type + ". You can't wear two garments of the same type at the same time."
 						active_gs.buffer(output)

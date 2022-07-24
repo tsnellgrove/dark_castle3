@@ -155,10 +155,6 @@ class Creature(ViewOnly):
 						active_gs.buffer("The " + self.full_name + " is wearing: " + self.worn_str())
 
 		def show(self, obj, active_gs):
-#				if not active_gs.hand_check(obj):
-#						active_gs.buffer("You aren't holding the " + obj.full_name)
-#				else:
-
 				creature_has_response = True
 				if obj in self.show_dict:
 						dict_key = obj
@@ -174,10 +170,6 @@ class Creature(ViewOnly):
 						active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
 
 		def give(self, obj, active_gs):
-#				if not active_gs.hand_check(obj):
-#						active_gs.buffer("You aren't holding the " + obj.full_name)
-#						return
-
 				creature_has_response = True
 				if obj in self.give_dict:
 						dict_key = obj
