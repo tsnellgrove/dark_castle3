@@ -105,7 +105,7 @@ Burt as an object
 
 Version 3.71 Goals
 - re-work app_main() flow with validate() module
-- pre-Burt-to-creature conversion clean-up
+- pre-Burt-to-creature conversion clean-up in Creature, Room, and Container classes and scope methods
 
 - N/A: Old thinking
 	- today: interp() =(if no interp_error)=> pre_action() => cmd_exe() => post_action()
@@ -124,24 +124,25 @@ Version 3.71 Goals
 		- Be able to call noun methods in non_buffer mode purely for pre & post action validation? 
 		- for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
 
+- IDEAS:
+	- thinking systemically, can we pre-validate noun class methods?
+		- validate() would run between interpreter() and pre_action()
+		- e.g. for take() use case, can we check to see if obj is_item and is in <room>.obj_scope ?
+		- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
+		- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
+		- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
+		- if fail validate() , buffer error and end app_main()
+	- DECISION: writing perspective
+		- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
+		- in theory, any creature could be used to play the game - and each might have its own description_dict
+		- this would be fun for a short session in a single room but is not practical for extended play
+		- realistically, nearly all descriptions will be from burt's perspective
+		- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
+		- this should be enabled by mode = 'exe_creature'
+	- maybe call verb methods with a 'mode' variable that can be validate, exe_std, exe_silent, or exe_creature ??
+	- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
+
 - INPROC: create validate.py module
-	- IDEAS:
-		- thinking systemically, can we pre-validate noun class methods?
-			- validate() would run between interpreter() and pre_action()
-			- e.g. for take() use case, can we check to see if obj is_item and is in <room>.obj_scope ?
-			- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
-			- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
-			- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
-			- if fail validate() , buffer error and end app_main()
-		- DECISION: writing perspective
-			- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
-			- in theory, any creature could be used to play the game - and each might have its own description_dict
-			- this would be fun for a short session in a single room but is not practical for extended play
-			- realistically, nearly all descriptions will be from burt's perspective
-			- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
-			- this should be enabled by mode = 'exe_creature'
-		- maybe call verb methods with a 'mode' variable that can be validate, exe_std, exe_silent, or exe_creature ??
-		- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
 	- DONE: simplify app_main.py
 		- DONE: guard pattern for start_up.py call
 		- DONE: guard pattern for user_input == 'quit' or user_input == 'q' 

@@ -49,7 +49,6 @@ def wrapper(user_input):
 
 		# for valid user_input, increment move count and run pre_action, cmd_exe, post_action, and auto_action
 		active_gs.move_inc()
-		cmd_override = False		
 		cmd_override = pre_action(active_gs, case, word_lst)
 		if not cmd_override:
 				cmd_execute(active_gs, case, word_lst)
@@ -63,7 +62,4 @@ def wrapper(user_input):
 		with open('save_obj_pickle2', 'wb') as f:
 				pickle.dump(master_obj_lst, f)
 
-		end_of_game = active_gs.get_end_of_game()
-		out_buff = active_gs.get_buff()
-
-		return end_of_game, out_buff
+		return active_gs.get_end_of_game(), active_gs.get_buff()
