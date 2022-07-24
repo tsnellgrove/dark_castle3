@@ -1,6 +1,6 @@
-# program: dark castle v3.59
+# program: dark castle v3.70
 # name: Tom Snellgrove
-# date: Feb 9, 2022
+# date: July 24, 2022
 # description: class deffinition module for Machines
 
 ### import

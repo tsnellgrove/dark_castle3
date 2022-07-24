@@ -1,6 +1,6 @@
-# program: dark castle v3.68
+# program: dark castle v3.70
 # name: Tom Snellgrove
-# date: July 7, 2022
+# date: July 24, 2022
 # description: app-side wrapper module that calls game functions
 
 

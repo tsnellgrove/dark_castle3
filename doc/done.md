@@ -1,5 +1,5 @@
 Done List - Dark Castle v3
-July 7, 2022
+July 24, 2022
 
 
 ##########################
@@ -2346,4 +2346,146 @@ Version 3.68 Goals
 - DONE: submit final version of 3.68 - procedural code parity achieved!!
 
 
+##########################
+### VERSION 3.70 START ###
+##########################
+
+Version 3.70 Goals
+- extend existing Creature attributes and methods to include existing attributes for burt
+
+- DONE: watch refactoring best-practices videos so I can refactor as I go (I will be re-coding a LOT)
+- DONE: update existing Creature class and creaatures (e.g. hand & worn)
+	- DONE: Weapon class
+		- IDEAS: 
+			- reference weapon (e.g. "Grimy Sword") in attack text
+			- could have a Weapon class based on Item; could have associatted adverbs and verbs for attack description
+			- once we have a Weapon class, could test for is_weapon() for moat_mach
+			- incorporate weapon class descriptions
+		- DONE: creaate Weapon class (inherits from Item) with desc_lst attribute
+		- DONE: create is_weapon() method; (False for Invisible; True for Weapon)
+		- DONE: import Weapon into mk_def_kpl()
+		- DONE: update grimy_axe to instantiate as class Weapon
+		- DONE: update shiny_sword to instantiate as class Weapon
+		- DONE: update entrance_moat_mach cond to use is_weapon()
+		- DONE: updte GameState with weapon_in_hand() method
+		- DONE: clean up comments in mk_def_pkl, cond_class_def
+	- DONE: creature hand for existing creatures
+		- IDEAS:
+			- change hand from list to scalar (???) => decision: keep hand as a list
+			- what should happen if Burt tries to take the axe from a living goblin? (general case)
+			- if you try to take an obj from a creature's hand => 'The X belongs to the Y'
+		- DONE: create creature.hand_obj_lst attribute
+		- DONE: update instantiation of guard_goblin & royal hedgehog to in mk_def_pkl()
+		- DONE: add grimy_axe to guard_goblin
+		- DONE: clean-up is_container
+		- DONE: create is_creature method
+		- DONE: update room scope method
+		- DONE: update examine room method
+		- DONE: examine creature method
+		- DONE: take method
+			- DONE: clean up take method
+			- DONE: clean up comments
+			- DONE: add creature hand item to guard clause of take method
+			- DONE: add ['take', 'grimy_axe'] to goblin_attack_mach triggers
+		- DONE: update creature.give() method
+			- DONE: clean up give method
+			- DONE: create put_in_hand method
+			- DONE: update give method to use creature.put_in_hand method
+			- DONE: sort out hedgehog give mach (update CreatureItemCond and TimerAndCreatureItemResult)
+			- DONE: clean up auto_action() - move switch reset to auto_action()
+			- DONE: clean up auto_action() - create is_timer() method and test in auto_action()
+			- DONE: create auto_action for goblin to re-draw sword
+			- DONE: test case of giving sword to hedgehog
+		- DONE: reconsider naming conventions; SHORTTEN!!! (bear in mind that method will always appear after obj)
+			- DONE: hand_obj_lst => hand_lst
+			- DONE: hand_obj_lst_append => hand_lst_append
+			- DONE: hand_obj_lst_remove => hand_lst_remove
+		- DONE: update attack_burt method to use weapon.desc_lst attributes
+			- IDEAS: need to sort out attack_burt method to key off an identifier of the attacker (i.e. golblin attack v.s. other creature)
+		- DONE: update attack method to use weapon.desc_lst attributes
+			- DONE: add is_attackable attribute to Creature class and instantiate value as True for guard_goblin and royal_hedgehog
+			- DONE: implement not_attackable code for attack method
+			- DONE: re-org attack and burt_attack response into 3 sections:
+				- DONE: attack attack_initiation
+				- DONE: burt_attack attack_initiation
+				- DONE: attack_burt attack_resolution (w/ defaults & custom)
+					- DONE: rename response_key to custom_key
+					- DONE: create custom resolution_key dict entry
+					- DONE: create default attack_resolution txt entries in static_gbl()
+					- DONE: update method (move resolution text to the very end - post result_key - which will provide resolution_key_default)
+					- DONE: update custom_text in static_gbl()
+					- DONE: clean up comments
+				- DONE: burt attack_resolution (w/ defaults & custom)
+					- DONE: apply code format from attack_burt() method to attack() method
+					- DONE: testing (attack hedgehog)
+					- DONE: update hedgehog cutom_attack descriptions
+	- DONE: creature_items_lst => rename to item_lst
+		- IDEAS:
+			- rename to make similar to room?
+			- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
+			- creature attribute for inventory_visible == True / False
+			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [only 'hand' unless creature = active_gs.hero]
+			- only visible if creature = active_gs.hero() ??
+		- DONE: creature_lst_append_item => item_lst_append() and creature_lst_remove_item => item_lst_remove()
+			- DONE: update creature_class_def()
+			- DONE: uupdate result_class_def()
+			- DONE: comment clean-up
+		- DONE: naming convention change to obj_lst (no) or item_lst (yes)
+			- DONE: update result_class_def()
+			- DONE: updated creature_class_def()
+		- DONE: argh! rename item_lst to bkpk_lst. Also update item_lst_append() to bkpk_lst_append() and item_lst_remove() to bkpk_lst_remove()
+			- IDEA: class attributes should be descriptive in relation to the *main class* (e.g. a creature has hand_lst & bkpk_lst attributes)
+			- IDEA: class methods can be descriptive in relation to the *attribute variable class* (e.g. a creature has item_lst and vis_lst methods)
+				- IDEA: so for creature == burt, item_lst() = hand_lst + bkpk_lst + worn_lst
+				- IDEA: methods for creature and room = item_lst(), vis_lst(), all_lst(), and mach_lst()
+				- IDEA: the thinking here is that there could always be another category of 'stuff'... maybe next burt gets a fanny pack?
+				- So we never know that for a given class, a given attribute encompasses *all* of the items
+				- for room maybe we should have floor_lst (all the things on the floor ?)
+	- DONE: new feature_lst attribue
+		- IDEAS:
+			- creatures could have a 'features' attribute (like rooms) for ViewOnly attributes (e.g. burt's 'conscince')
+			- (maybe goblin's "officiousness" ?)
+			- is visible to outside world but not listed via 'examine'
+		- DONE: add attribute & extend instantiation
+		- DONE: create setters & getters
+		- DONE: create ViewOnly obj and description text to put in goblin & hedgehog instantiation
+			- DONE: goblin = officiouness
+				- DONE: "hobgoblin of little minds"
+			- DONE: hedgehog = loyal! scruffy and dog-like; not mafioso or sycophant
+			- DONE: update text to hint at feature_lst obj
+		- DONE: create vis_lst() method
+			- DONE: create vis_lst() to get visible creature inventory
+				- DONE: returns hand_lst for all creatures
+				- DONE: returns feature_lst for all creatuers
+		- DONE: update active_gs.scope commands to use vis_lst() method
+	- DONE: worn_lst
+		- DONE: add attribute & extend instantiation
+		- DONE: create setters & getters
+		- DONE: create append & remove methods
+		- DONE: create examples for hedgehog & goblin
+			- DONE: red_bandana, half gold retriever, half retro martial arts master
+			- DONE: big_medal; writing = gold_capitals = "'GUARD GOBLIN OF THE FORTNIGHT: FOR MERITORIOUS MEMORANDUMS AND THE VIOLENT SUPPRESSION OF MINOR INFRACTIONS'"
+		- DONE: add new obj to mk_def_pkl() pickle statement and also to creature worn_lst attribute
+		- DONE: add worn_lst to vis_lst()
+		- DONE: add to creature examine
+		- DONE: test
+		- DONE: add to look
+		- DONE: test
+	- DONE: invis_lst (new name for mach_obj_lst)
+		- IDEAS:
+			- creatures can have 'invisible' attribute for machs (like rooms)
+			- change mach_obj_lst to 'invisible'? or 'invis_lst'?
+		- DONE: create is_mach() method and assign to classes (MachineMixIn, Warning, & Timer classes return True; all others False)
+		- DONE: rename mach_obj_lst => invis_lst
+			- DONE: creature_class_def.py
+			- DONE: gs_class_def.py
+		- DONE: create mach_lst() / all_lst method for creatures (based on vis_lst)
+		- DONE: update active_gs. mach scope commands to use mach_lst() method
+	- DONE: refactor Creature methods
+		- DONE: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
+			- DONE: creature_state => state
+			- DONE: dead_creature_obj => corpse
+			- DONE: shorten dict naming for all dicts - 2_word *max*!
+		- DONE: re-order attributes for better flow
+		- DONE: use not-in-hand generic validation for put, show, & give in cmd_exe prep case code
 

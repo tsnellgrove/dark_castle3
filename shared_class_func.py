@@ -1,6 +1,6 @@
-# program: dark castle v3.56
+# program: dark castle v3.70
 # name: Tom Snellgrove
-# date: Dec 31, 2021
+# date: July 24, 2021
 # description: class deffinition module for GameState
 
 
