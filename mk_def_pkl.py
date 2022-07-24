@@ -186,7 +186,10 @@ kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging
 re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None,
 				[axe_in_goblin_hand_cond, pass_thru_cond], [axe_in_goblin_hand_result, pass_result])
 
-goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None, None, [goblin_attack_mach, re_arm_goblin_mach],
+
+goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None,
+				None, [grimy_axe], [torn_note], [big_medal], [officiousness],
+				[goblin_attack_mach, re_arm_goblin_mach],
 				{
 						shiny_sword : 'show_goblin_shiny_sword',
 						stale_biscuits : 'show_goblin_stale_bisuits',
@@ -197,6 +200,7 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 						stale_biscuits : {'response_key' : 'give_goblin_stale_biscuits', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
 						'def_give' : {'response_key' : 'give_goblin_default', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : None}
 				},
+				True,
 				{
 						shiny_sword : {'result_code' : 'creature_death', 'custom_key' : 'goblin_slain', 'resolution_key' : None},
 						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : 'burt_slain_by_goblin', 'resolution_key' : None}
@@ -205,10 +209,36 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 						shiny_sword : {'result_code' : None, 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'parry_goblin'
 						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : None, 'resolution_key' : None} # was 'custom_key' : 'goblin_slays_burt'
 				},
-				[torn_note], dead_goblin, [grimy_axe], True, [officiousness], [big_medal])
+				dead_goblin)
+
+				
+#				None, [goblin_attack_mach, re_arm_goblin_mach],
+#				{
+#						shiny_sword : 'show_goblin_shiny_sword',
+#						stale_biscuits : 'show_goblin_stale_bisuits',
+#						'def_show' : 'show_goblin_default'
+#				}, 
+#				{
+#						shiny_sword : {'response_key' : 'give_goblin_shiny_sword', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
+#						stale_biscuits : {'response_key' : 'give_goblin_stale_biscuits', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
+#						'def_give' : {'response_key' : 'give_goblin_default', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : None}
+#				},
+#				{
+#						shiny_sword : {'result_code' : 'creature_death', 'custom_key' : 'goblin_slain', 'resolution_key' : None},
+#						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : 'burt_slain_by_goblin', 'resolution_key' : None}
+#				},
+#				{
+#						shiny_sword : {'result_code' : None, 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'parry_goblin'
+#						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : None, 'resolution_key' : None} # was 'custom_key' : 'goblin_slays_burt'
+#				},
+#				[torn_note], dead_goblin, [grimy_axe], True, [officiousness], [big_medal])
 
 
-royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None, None,
+#						state, hand_lst, bkpk_lst, worn_lst, feature_lst, invis_lst,
+#						show_dict, give_dict, is_attackable, attacked_dict, attacking_dict, corpse
+
+royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None,
+				None, [], [silver_key], [red_bandana], [loyalty],
 				[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_done_eating_mach, hedgehog_distracted_mach],
 				{
 						shiny_sword : 'show_hedgehog_shiny_sword',
@@ -218,11 +248,30 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 						shiny_sword : {'response_key' : 'give_hedgehog_sword', 'accept_item' : True, 'give_item' : silver_key, 'new_descript_key' : 'hedgehog_sword_returned'},
 						stale_biscuits : {'response_key' : 'give_hedgehog_biscuits', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : 'hedgehog_eating'}
 				},
+				True,
 				{
 						'def_attack' : {'result_code' : 'creature_flee', 'custom_key' : 'hedgehog_flees', 'resolution_key' : None}
 				},
 				{},
-				[silver_key], None, [], True, [loyalty], [red_bandana])
+				None)
+
+
+#				[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_done_eating_mach, hedgehog_distracted_mach],
+#				{
+#						shiny_sword : 'show_hedgehog_shiny_sword',
+#						stale_biscuits : 'show_hedgehog_stale_biscuits'
+#				},
+#				{
+#						shiny_sword : {'response_key' : 'give_hedgehog_sword', 'accept_item' : True, 'give_item' : silver_key, 'new_descript_key' : 'hedgehog_sword_returned'},
+#						stale_biscuits : {'response_key' : 'give_hedgehog_biscuits', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : 'hedgehog_eating'}
+#				},
+#				{
+#						'def_attack' : {'result_code' : 'creature_flee', 'custom_key' : 'hedgehog_flees', 'resolution_key' : None}
+#				},
+#				{},
+#				[silver_key], None, [], True, [loyalty], [red_bandana])
+
+
 
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],

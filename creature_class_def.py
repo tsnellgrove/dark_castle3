@@ -10,8 +10,11 @@ from static_gbl import descript_dict
 
 ### classes
 class Creature(ViewOnly):
-		def __init__(self, name, full_name, root_name, descript_key, writing, state, invis_lst, show_dict, give_dict,
-		attacked_dict, attacking_dict, bkpk_lst, corpse, hand_lst, is_attackable, feature_lst, worn_lst):
+#		def __init__(self, name, full_name, root_name, descript_key, writing, state, invis_lst, show_dict, give_dict,
+#		attacked_dict, attacking_dict, bkpk_lst, corpse, hand_lst, is_attackable, feature_lst, worn_lst):
+		def __init__(self, name, full_name, root_name, descript_key, writing,
+						state, hand_lst, bkpk_lst, worn_lst, feature_lst, invis_lst,
+						show_dict, give_dict, is_attackable, attacked_dict, attacking_dict, corpse):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._state = state
 				self._hand_lst = hand_lst
@@ -278,6 +281,7 @@ class Creature(ViewOnly):
 						room_obj.room_obj_lst_remove(self)
 						room_obj.room_obj_lst_extend(self.bkpk_lst)
 						room_obj.room_obj_lst_extend(self.hand_lst)
+						room_obj.room_obj_lst_extend(self.worn_lst)
 						room_obj.room_obj_lst_append(self.corpse)
 						res_key = 'creature_death_default_res_key'
 						win_weapon = burt_weapon_obj.full_name						
@@ -363,6 +367,8 @@ class Creature(ViewOnly):
 						room_obj = active_gs.get_room()
 						room_obj.room_obj_lst_remove(self)
 						room_obj.room_obj_lst_extend(self.bkpk_lst)
+						room_obj.room_obj_lst_extend(self.hand_lst)
+						room_obj.room_obj_lst_extend(self.worn_lst)
 						room_obj.room_obj_lst_append(self.corpse)
 						res_key = 'creature_death_default_res_key'
 						win_weapon = burt_weapon_obj.full_name
