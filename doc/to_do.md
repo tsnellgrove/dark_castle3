@@ -157,9 +157,10 @@ Version 3.71 Goals
 		- DONE: move special_errors from cmd_exe() and in-line prep case error checking in cmd_exe() to validate()
 		- DONE: analyze existing special_errors
 		- INPROC: sort out specail_errors that deal with method limitations
-			- TBD: move read-not-writing error to read method (currently commented out)
-			- TBD: create mini doc for remaining special / generic errors (4x different kinds of errors - 1x interp & 3x command)
+			- DONE: move read-not-writing error to read method (currently commented out)
 			- TBD: maybe eliminate random interpreter errors?
+			- TBD: create mini doc for remaining special / generic errors (4x different kinds of errors - 1x interp & 3x command)
+			- TBD: document brief history of validate: errors were run from cmd_exe but 1) time issues and 2) pre_action / post_action issues
 		- TBD: clean up validate; use guard pattern (a lot!)
 		- TBD: improve / expand generic error checking
 - TBD: refactor review for class Creature methods
@@ -449,9 +450,21 @@ Version 3.9x Goals
 - defenistrate
 - consigliere
 - consternation
-
+- use phyisogamy in the game!!
 
 *** NEW PUZZLE IDEAS ***
+
+Glum Dragon
+- how about a glum / bored / enui-ladden dragon that is blocking the libary entrance with its bulk
+	- the dragon is too tough to be harmed by - or even to notice - being attacked
+	- instead it just bemoans its misery - misquoting hamlet, and camus ("The underworld is other people")
+	- If given cheesecake (baked in the royal bakery) it can be cheered up - and will go work on its to-do list and read a book and such
+	- note: all other creatures like cheesecake too?
+
+- map
+	- maybe room beyond the Main Hall is the round room with many collapsed / ruined exits
+	- can go east through mouse hole to bakery or smithy
+	- or west to libary - which will then connect player back to cooridor that leads to anti-chamber
 
 Princess Time-Travel Quest:
 - Princess asks Burt if he's an assassin, spy, or suitor => answer = 'baker'
@@ -464,8 +477,6 @@ IDEA: have a 'jaunty hat' that enables you to move 'twice per time click' (i.e. 
 	- would necesitate default responses to attacks and things like that
 	- could solve nearly any puzzle so need to deliver late in the game
 	- maybe especially useful for solving a '2 button' puzzle
-
-IDEA: use phyisogamy in the game!!
 
 - Back to the Future - time machine chariot idea
 	- chariot is in stable hooked up to old_mare

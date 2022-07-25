@@ -71,6 +71,17 @@ def validate(active_gs, case, word_lst):
 #						else:
 #								return True
 
+
+				# *** generic method errors ***
+				if word1 != 'read' and active_gs.scope_check(word2_obj) == False:
+						active_gs.buffer("You can't see a " + word2_obj.full_name + " here.")
+						return False
+
+				if (word1 in ['drop', 'eat', 'wear']) and (not active_gs.hand_check(word2_obj)):
+						active_gs.buffer("You're not holding the " + word2_obj.full_name + " in your hand.")
+						return False
+
+				# *** custom method mis-match errors ***
 				if (word1 == 'examine') and (active_gs.writing_check(word2_obj)) == True:
 						output = "You can't examine the " + word2_obj.full_name + ". Try using 'read' instead."
 						active_gs.buffer(output)
@@ -80,16 +91,14 @@ def validate(active_gs, case, word_lst):
 						active_gs.buffer("You can't 'take' a beverage. Try 'drink' instead.")
 						return False
 
-				if word1 != 'read' and active_gs.scope_check(word2_obj) == False:
-						active_gs.buffer("You can't see a " + word2_obj.full_name + " here.")
-						return False
+				# *** specific method errors ***
 
-				if (word1 in ['drop', 'eat', 'wear']) and (not active_gs.hand_check(word2_obj)):
-						active_gs.buffer("You're not holding the " + word2_obj.full_name + " in your hand.")
-						return False
+				# *** generic method mis-match errors ***
 
 		if case == 'prep':
 				dirobj_obj, word1, noun_obj = word_lst
+
+				# *** generic method errors ***
 				if active_gs.scope_check(noun_obj) == False:
 						active_gs.buffer("You can't see a " + noun_obj.full_name + " here.")
 						return False
