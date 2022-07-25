@@ -181,7 +181,7 @@ def interpreter(user_input, master_obj_lst):
 				if word1 in full_verbs_lst:
 						error_msg = word1 + " what?"
 				else:
-						error_msg = "random error"
+						error_msg = "What??"
 				return 'error', [error_msg]
 
 		# all commands longer than one word should start with a verb

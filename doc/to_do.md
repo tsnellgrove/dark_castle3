@@ -158,7 +158,7 @@ Version 3.71 Goals
 		- DONE: analyze existing special_errors
 		- INPROC: sort out specail_errors that deal with method limitations
 			- DONE: move read-not-writing error to read method (currently commented out)
-			- TBD: maybe eliminate random interpreter errors?
+			- DONE: maybe eliminate random interpreter errors?
 			- TBD: create mini doc for remaining special / generic errors (4x different kinds of errors - 1x interp & 3x command)
 			- TBD: document brief history of validate: errors were run from cmd_exe but 1) time issues and 2) pre_action / post_action issues
 		- TBD: clean up validate; use guard pattern (a lot!)
