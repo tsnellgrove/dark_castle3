@@ -156,7 +156,9 @@ Version 3.71 Goals
 		- DONE: combine move_valid code from app_main() & cmd_exe() => validate()
 		- DONE: move special_errors from cmd_exe() and in-line prep case error checking in cmd_exe() to validate()
 		- DONE: analyze existing special_errors
-		- TBD: sort out specail_errors that deal with method limitations
+		- INPROC: sort out specail_errors that deal with method limitations
+			- TBD: move read-not-writing error to read method (currently commented out)
+			- TBD: create mini doc for remaining special / generic errors
 		- TBD: clean up validate; use guard pattern (a lot!)
 		- TBD: improve / expand generic error checking
 - TBD: refactor review for class Creature methods

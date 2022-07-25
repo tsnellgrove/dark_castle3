@@ -43,6 +43,11 @@ class Invisible(object):
 		def is_mach(self):
 				return False
 
+		def	print_contents_str(self, active_gs):
+				if self.is_container() and self.open_state == True:
+						container_str = obj_lst_to_str(self.contains)
+						active_gs.buffer("The " + self.full_name + " contains: " + container_str)
+
 		def __repr__(self):
 				return f'Object { self.name } is of class { type(self).__name__ } '
 
@@ -75,11 +80,6 @@ class Writing(Invisible):
 				except:
 						descript_str = descript_dict[self.descript_key]
 				return descript_str
-
-		def	print_contents_str(self, active_gs):
-				if self.is_container() and self.open_state == True:
-						container_str = obj_lst_to_str(self.contains)
-						active_gs.buffer("The " + self.full_name + " contains: " + container_str)
 
 		def read(self, active_gs):
 				descript_str = self.get_descript_str(active_gs)
