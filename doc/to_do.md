@@ -158,7 +158,8 @@ Version 3.71 Goals
 		- DONE: analyze existing special_errors
 		- INPROC: sort out specail_errors that deal with method limitations
 			- TBD: move read-not-writing error to read method (currently commented out)
-			- TBD: create mini doc for remaining special / generic errors
+			- TBD: create mini doc for remaining special / generic errors (4x different kinds of errors - 1x interp & 3x command)
+			- TBD: maybe eliminate random interpreter errors?
 		- TBD: clean up validate; use guard pattern (a lot!)
 		- TBD: improve / expand generic error checking
 - TBD: refactor review for class Creature methods
