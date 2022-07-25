@@ -16,6 +16,10 @@ def rand_error():
 ### *** make error dict local?? ***
 
 def validate(active_gs, case, word_lst):
+		"""Validates user input.
+		
+		<more text>
+		"""
 
 		# *** interpreter errors ***
 
