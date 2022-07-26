@@ -155,19 +155,27 @@ class Creature(ViewOnly):
 						active_gs.buffer("The " + self.full_name + " is wearing: " + self.worn_str())
 
 		def show(self, obj, active_gs):
-				creature_has_response = True
-				if obj in self.show_dict:
-						dict_key = obj
-				elif 'def_show' in self.show_dict:
-						dict_key = 'def_show'
-				else:
-						creature_has_response = False
-				if creature_has_response:
-						response_key = self.show_dict[dict_key]
-						response_str = descript_dict[response_key]
-						active_gs.buffer(response_str)
-				else:
-						active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
+				try:
+						active_gs.buffer(descript_dict['show_' + self.name + '_' + obj.name]) 
+				except:
+						try:
+								active_gs.buffer(descript_dict['show_' + self.name + '_default'])
+						except:
+								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
+
+#				creature_has_response = True
+#				if obj in self.show_dict:
+#						dict_key = obj
+#				elif 'def_show' in self.show_dict:
+#						dict_key = 'def_show'
+#				else:
+#						creature_has_response = False
+#				if creature_has_response:
+#						response_key = self.show_dict[dict_key]
+#						response_str = descript_dict[response_key]
+#						active_gs.buffer(response_str)
+#				else:
+#						active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
 
 		def give(self, obj, active_gs):
 				creature_has_response = True
