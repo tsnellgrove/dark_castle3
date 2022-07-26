@@ -148,7 +148,7 @@ Version 3.71 Goals
 		- DONE: guard pattern for user_input == 'quit' or user_input == 'q' 
 			- DONE: extract quit from abreviations and one_word
 			- DONE: move cmd_override closer to usage
-	- INPROC: create validate() module
+	- DONE: create validate() module
 		- DONE: move case = 'error' code from cmd_exe() to validate()
 		- DONE: guard pattern the case == 'error' if-else
 		- DECISION: no clock tick for *any* error in validate()
@@ -156,14 +156,14 @@ Version 3.71 Goals
 		- DONE: combine move_valid code from app_main() & cmd_exe() => validate()
 		- DONE: move special_errors from cmd_exe() and in-line prep case error checking in cmd_exe() to validate()
 		- DONE: analyze existing special_errors
-		- INPROC: sort out specail_errors that deal with method limitations
+		- DONE: sort out specail_errors that deal with method limitations
 			- DONE: move read-not-writing error to read method (currently commented out)
 			- DONE: maybe eliminate random interpreter errors?
 			- DONE: create a multi-line docstring per PEP257
-			- TBD: create mini doc for remaining special / generic errors (4x different kinds of errors - 1x interp & 3x command)
-			- TBD: document brief history of validate: errors were run from cmd_exe but 1) time issues and 2) pre_action / post_action issues
-		- TBD: clean up validate; use guard pattern (a lot!)
-		- TBD: improve / expand generic error checking
+			- DONE: create mini doc for remaining special / generic errors (4x different kinds of errors - 1x interp & 3x command)
+			- DONE: document brief history of validate: errors were run from cmd_exe but 1) time issues and 2) pre_action / post_action issues
+		- DONE: clean up validate; use guard pattern (a lot!)
+		- CANCEL: improve / expand generic error checking
 - TBD: refactor review for class Creature methods
 	- TBD: introduce 'mode' attribute to attack and burt_attack method
 	- TBD: do I need to pass init_creature to each verb method in order for mode = 'creature_exe' to work??
