@@ -12,7 +12,6 @@ from static_gbl import descript_dict
 class Creature(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing,
 						state, hand_lst, bkpk_lst, worn_lst, feature_lst, invis_lst,
-#						show_dict, give_dict, is_attackable, attacked_dict, attacking_dict, corpse):
 						give_dict, is_attackable, attacked_dict, attacking_dict, corpse):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._state = state
@@ -21,7 +20,6 @@ class Creature(ViewOnly):
 				self._worn_lst = worn_lst
 				self._feature_lst = feature_lst
 				self._invis_lst = invis_lst
-#				self._show_dict = show_dict
 				self._give_dict = give_dict
 				self._is_attackable = is_attackable
 				self._attacked_dict = attacked_dict # was attack_creature_dict
@@ -68,10 +66,6 @@ class Creature(ViewOnly):
 		@property
 		def invis_lst(self):
 				return self._invis_lst
-
-#		@property
-#		def show_dict(self):
-#				return self._show_dict
 
 		@property
 		def give_dict(self):

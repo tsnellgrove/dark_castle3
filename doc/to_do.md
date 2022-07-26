@@ -164,9 +164,12 @@ Version 3.71 Goals
 			- DONE: document brief history of validate: errors were run from cmd_exe but 1) time issues and 2) pre_action / post_action issues
 		- DONE: clean up validate; use guard pattern (a lot!)
 		- CANCEL: improve / expand generic error checking
-- TBD: refactor review for class Creature methods
-	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict and attack_dict)
-	- TBD: introduce 'mode' attribute to attack and burt_attack method
+- INPROC: refactor review for class Creature methods
+	- INPROC: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict and attack_dict)
+		- DONE: show
+		- TBD: give (shorten 'accept_item' to 'accept')
+		- TBD: attack
+	- TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show and give and put
 	- TBD: do I need to pass init_creature to each verb method in order for mode = 'creature_exe' to work??
 	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
 	- TBD: re-org to identify 'attacker' and 'winner' 
