@@ -190,11 +190,11 @@ re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, Non
 goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None,
 				None, [grimy_axe], [torn_note], [big_medal], [officiousness],
 				[goblin_attack_mach, re_arm_goblin_mach],
-				{
-						shiny_sword : 'show_goblin_shiny_sword',
-						stale_biscuits : 'show_goblin_stale_bisuits',
-						'def_show' : 'show_goblin_default'
-				}, 
+#				{
+#						shiny_sword : 'show_goblin_shiny_sword',
+#						stale_biscuits : 'show_goblin_stale_bisuits',
+#						'def_show' : 'show_goblin_default'
+#				}, 
 				{
 						shiny_sword : {'response_key' : 'give_goblin_shiny_sword', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
 						stale_biscuits : {'response_key' : 'give_goblin_stale_biscuits', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
@@ -215,10 +215,10 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None,
 				None, [], [silver_key], [red_bandana], [loyalty],
 				[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_done_eating_mach, hedgehog_distracted_mach],
-				{
-						shiny_sword : 'show_hedgehog_shiny_sword',
-						stale_biscuits : 'show_hedgehog_stale_biscuits'
-				},
+#				{
+#						shiny_sword : 'show_hedgehog_shiny_sword',
+#						stale_biscuits : 'show_hedgehog_stale_biscuits'
+#				},
 				{
 						shiny_sword : {'response_key' : 'give_hedgehog_sword', 'accept_item' : True, 'give_item' : silver_key, 'new_descript_key' : 'hedgehog_sword_returned'},
 						stale_biscuits : {'response_key' : 'give_hedgehog_biscuits', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : 'hedgehog_eating'}
