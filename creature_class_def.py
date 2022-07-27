@@ -150,6 +150,12 @@ class Creature(ViewOnly):
 						active_gs.buffer("The " + self.full_name + " is wearing: " + self.worn_str())
 
 		def show(self, obj, active_gs):
+				""" Show item to creature.
+				'Show' is meant to be informational in nature. The Player will learn something about the creature - what it desires and fears - based on its response to the item shown. Therefore the show() method provides only a text response. Provoking an action response (e.g. running away) is outside the standard use case and should be implemented via a Modular Machine.
+				
+				Implementation specifics:
+						1) When creating a new creature, remember to create the show() response descriptions in descript_dict() using the auto-genertated key format.
+				"""
 				try:
 						active_gs.buffer(descript_dict['show_' + self.name + '_' + obj.name]) 
 				except:
@@ -166,11 +172,11 @@ class Creature(ViewOnly):
 				Because give() can fulfill a creature's needs it also has the power to change the creature's mood and therefore update their description.
 				
 				Implementation specifics:
-						1) When creating a new creature be sure to remember to create the response descriptions and (if appropriate) the creature description updates in descript_dict() using the auto-genertated key format.
+						1) When creating a new creature, remember to create the response descriptions and (if appropriate) the creature description updates in descript_dict() using the auto-genertated key format.
 						
 						2) It is assumed that if the creature 'shows no interest' in Burt's gift then they will not accept it, will not provide a gift in response, and will not change their demeanor as a result of the offer.
 						
-						3) It is expected that if a creature won't accept an item from Burt, then they also won't have a gift to give in return.
+						3) It is assumed that if a creature won't accept an item from Burt, then they also won't have a gift to give in return and that their demeanor will not change.
 				"""
 				try:
 						active_gs.buffer(descript_dict['give_' + self.name + '_' + obj.name])
@@ -194,9 +200,8 @@ class Creature(ViewOnly):
 						self.bkpk_lst_remove(give_item)
 						active_gs.hand_lst_append_item(give_item)
 
-				new_descript_key = self.give_dict[give_key]['new_descript_key']
-#				new_descript_key = 'give_' + self.name + '_' + obj.name] + '_descript'
-				if new_descript_key != None:
+				new_descript_key = 'give_' + self.name + '_' + obj.name + '_descript'
+				if new_descript_key in descript_dict:
 						self.descript_key = new_descript_key
 
 				return 
