@@ -18,64 +18,28 @@ def rand_error():
 def validate(active_gs, case, word_lst):
 		"""Validates user_input.
 		
-		Brief History:
-				Originally, most errors were generated in cmd_exe(). This worked 
-				acceptably well right through v3.68 (precedural parity version). However, 
-				as coding progressed a couple issues made it clear this was non-ideal:
+		Brief history of validate():
+				Originally, most errors were generated in cmd_exe(). This worked acceptably well right through v3.68 (precedural parity version). However, as coding progressed a couple issues made it clear this was non-ideal:
 				
-				1) Once timers were introduced, time tracking became important. Previously,
-				errors and time were sort of intended to have a karmic relationship. The
-				turn-counter was incremented for all input and then decremented when it 
-				appeared likely that an error was the interpreter's fault. This was 
-				inconsistent at best - but, once timers were introduced, it ceased to work
-				at all. We couldn't have the hedgehog eating biscuits on an error turn. 
-				The short-term approach was to make Interpreter Errors untimed but Command 
-				errors timed... but a better soluiton was desireable.
+				1) Once timers were introduced, time tracking became important. Previously, errors and time were sort of intended to have a karmic relationship. The turn-counter was incremented for all input and then decremented when it appeared likely that an error was the interpreter's fault. This was inconsistent at best - but, once timers were introduced, it ceased to work at all. We couldn't have the hedgehog eating biscuits on an error turn. The short-term approach was to make Interpreter Errors untimed but Command Errors timed... but a better soluiton was desireable.
 				
-				2) The bigger problem was the more advanced use of pre_action machines. 
-				Machine code is usually triggered by a player command... but what if the 
-				command isn't valid? What if user_input == 'get sword' but Burt already has
-				the sword? The upshot was having to put a 2nd set of error checking into 
-				Condition methods... which was crazy since error checking was already 
-				carefully coded in the noun methods. Clearly a mechanism was needed to 
-				validate whether or not a command would be viable *before* it was 
-				executed.
+				2) The bigger problem was the more advanced use of pre_action machines. Machine code is usually triggered by a player command... but what if the command isn't valid? What if user_input == 'get sword' but Burt already has the sword? The upshot was having to put a 2nd set of error checking into Condition methods... which was crazy since error checking was already carefully coded into the noun class methods. Clearly a mechanism was needed to validate whether or not a command would be viable *before* it was executed.
 				
-				For both these reasons, validate() was inserted between interp() and 
-				pre_action() during refactoring.
+				For both these reasons, validate() was inserted between interp() and pre_action() during refactoring.
 				
 		Error Types:
-				Interpreter Errors: Are determined in interp() and buffered in validate() 
-				When it is unclear what command the player is trying to issue.
+				Interpreter Errors: The interpreter is unclear what command the player is trying to issue.
 				
-				Command Errors: The command is understood but cannot be carried out. 
+				Command Errors: The command is understood but cannot be carried out.
+				
 				There are 4 flavors of Command Error:
-	
-						1) Generic Method Failures: Common command failure cases that occur 
-						across multiple methods. For example, very few commands will run if the 
-						noun of the command is not in Burt's scope. Catching these errors in 
-						validate() avoids needing to re-write the same code repeatedly in each 
-						method.
+						1) Generic Command Failures: Command failure cases that occur across multiple methods. e.g. very few commands will run if the noun of the command is not in the room's scope. Catching these errors in validate() avoids needing to re-write the same error-checking code repeatedly in multiple methods.
 						
-						2) Custom Method Failures: Failure cases specific to a given method. e.g.
-						Burt tries to unlock a container with the wrong key. This is a highly 
-						specific type of error that needs to be addressed in the method code 
-						itself. The error text is buffered and the fail condition is returned 
-						to validate() - which in turn returns False to app_main() - so that no 
-						command is run.
+						2) Custom Command Failures: Command failure cases specific to a given method. e.g. Burt tries to unlock a container with the wrong key. This is a specific type of error that is best addressed in the unlock() method code itself. The error text is buffered and the fail condition is returned to validate() - which then returns False to app_main() - so that no command is actually run.
 						
-						3) Generic Method Mis-Match Errors: The player attempts to use a method 
-						on an incompatible object. These are usually acts of experimentation or 
-						silliness on the player's part. When Burt tries to 'take' Dark Castle no
-						one really expects this to work. So we throw a random snide error.
+						3) Generic Method Mis-Match Errors: The player attempts to use a method on an incompatible object. These are usually acts of experimentation or silliness on the player's part. e.g. when Burt tries to 'take castle' no one really expects the command to work. So we throw a random, appropriately snide error.
 						
-						4) Custom Method Mis-Match Errors: In a few specific cases, player 
-						confusion over which methods can be used with which objects is quite 
-						justified. e.g. it's not unreasonable for the player to attempt to 
-						take the 'water'. In these cases we would like to give an explanitory 
-						error... but we can't provide a Custom Method Failure as the method 
-						cannot run at all. For these cases, we trap the error in advance in 
-						the validate() method so that a clearer response can be given.
+						4) Custom Method Mis-Match Errors: In a few specific cases, player confusion over which methods can be used with which objects is quite justified. e.g. it's not unreasonable for the player to attempt to take the 'water'. In these cases we would like to give an explanitory error - but we can't provide a Custom Method Failure as the method cannot run at all. So, we trap the error in advance in the validate() method so that a helpful response can be given.
 		"""
 
 		# *** interpreter errors ***
@@ -94,7 +58,7 @@ def validate(active_gs, case, word_lst):
 		if case == '2word':
 				word2_obj, word1 = word_lst
 
-				# *** custom method mis-match errors ***
+				# *** custom method mis-matches ***
 				if (word1 == 'examine') and (active_gs.writing_check(word2_obj)) == True:
 						output = "You can't examine the " + word2_obj.full_name + ". Try using 'read' instead."
 						active_gs.buffer(output)
@@ -104,7 +68,7 @@ def validate(active_gs, case, word_lst):
 						active_gs.buffer("You can't 'take' a beverage. Try 'drink' instead.")
 						return False
 
-				# *** generic method errors ***
+				# *** generic command failure ***
 				if word1 != 'read' and active_gs.scope_check(word2_obj) == False:
 						active_gs.buffer("You can't see a " + word2_obj.full_name + " here.")
 						return False
@@ -113,14 +77,14 @@ def validate(active_gs, case, word_lst):
 						active_gs.buffer("You're not holding the " + word2_obj.full_name + " in your hand.")
 						return False
 
-				# *** specific method errors ***
+				# *** specific command failures ***
 
-				# *** generic method mis-match errors ***
+				# *** generic method mis-matches ***
 
 		if case == 'prep':
 				dirobj_obj, word1, noun_obj = word_lst
 
-				# *** generic method errors ***
+				# *** generic command failures ***
 				if active_gs.scope_check(noun_obj) == False:
 						active_gs.buffer("You can't see a " + noun_obj.full_name + " here.")
 						return False

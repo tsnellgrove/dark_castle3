@@ -174,6 +174,7 @@ Version 3.71 Goals
 		- TBD: leverage if-then shield pattern
 		- TBD: review refactor notes - what about 'f' strings??
 		- TBD: comment each new attribute
+		- TBD: write brief essay on naming conventions (!!!) (what about give_dict 'accept' case?)
 - TBD: refactor next phase
 	- TBD: refactor door (detail refactor approach in to_do file below)
 	- TBD: refactor container (vars, add None options, etc)
