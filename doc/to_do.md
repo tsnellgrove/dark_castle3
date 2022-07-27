@@ -167,7 +167,7 @@ Version 3.71 Goals
 - INPROC: refactor review for class Creature methods
 	- INPROC: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict and attack_dict)
 		- DONE: show
-		- TBD: give (shorten 'accept_item' to 'accept')
+		- INPROC: give (shorten 'accept_item' to 'accept')
 		- TBD: attack
 	- TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show and give and put
 	- TBD: do I need to pass init_creature to each verb method in order for mode = 'creature_exe' to work??
