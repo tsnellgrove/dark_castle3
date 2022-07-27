@@ -171,8 +171,7 @@ class Creature(ViewOnly):
 								active_gs.buffer(descript_dict['give_' + self.name + '_default'])
 						except:
 								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
-								return 
-
+								return
 
 				accept_item = self.give_dict[dict_key]['accept_item']
 				give_item = self.give_dict[dict_key]['give_item']
