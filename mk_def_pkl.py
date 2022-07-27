@@ -191,9 +191,9 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 				None, [grimy_axe], [torn_note], [big_medal], [officiousness],
 				[goblin_attack_mach, re_arm_goblin_mach],
 				{
-						shiny_sword : {'accept' : False, 'give' : None, 'new_descript_key' : None},
-						stale_biscuits : {'accept' : False, 'give' : None, 'new_descript_key' : None},
-						'def_give' : {'accept' : True, 'give' : None, 'new_descript_key' : None}
+						shiny_sword : {'accept' : False, 'give' : None},
+						stale_biscuits : {'accept' : False, 'give' : None},
+						'def_give' : {'accept' : True, 'give' : None}
 				},
 				True,
 				{
@@ -211,8 +211,8 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 				None, [], [silver_key], [red_bandana], [loyalty],
 				[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_done_eating_mach, hedgehog_distracted_mach],
 				{
-						shiny_sword : {'accept' : True, 'give' : silver_key, 'new_descript_key' : 'hedgehog_sword_returned'},
-						stale_biscuits : {'accept' : True, 'give' : None, 'new_descript_key' : 'hedgehog_eating'}
+						shiny_sword : {'accept' : True, 'give' : silver_key},
+						stale_biscuits : {'accept' : True, 'give' : None}
 				},
 				True,
 				{

@@ -164,19 +164,22 @@ Version 3.71 Goals
 			- DONE: document brief history of validate: errors were run from cmd_exe but 1) time issues and 2) pre_action / post_action issues
 		- DONE: clean up validate; use guard pattern (a lot!)
 		- CANCEL: improve / expand generic error checking
-- INPROC: refactor review for class Creature methods
-	- INPROC: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict and attack_dict)
+- INPROC: refactor review for 'prep' methods
+	- DONE: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
 		- DONE: show
-		- INPROC: give (shorten 'accept_item' to 'accept')
-		- TBD: attack
-	- TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show and give and put
-	- TBD: do I need to pass init_creature to each verb method in order for mode = 'creature_exe' to work??
+		- DONE: give (shorten 'accept_item' to 'accept')
+	- TBD: refactor put
+	- TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
+- TBD: final refactor pass
+	- TBD: leverage if-then shield pattern
+	- TBD: review refactor notes - what about 'f' strings??
+	- TBD: comment each attribute
+	- TBD: add tripple-quote doc_strings
+- TBD: refactor attack()
+	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
 	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
 	- TBD: re-org to identify 'attacker' and 'winner' 
-	- TBD: leverage if-then shield pattern
 	- TBD: re-code attack / attack_burt response correctly based on in-line notes
-	- TBD: review refactor notes
-	- TBD: comment each attribute
 - TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
 - TBD: refactor Room class
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
@@ -248,6 +251,7 @@ Refactor burt as a Creature class object
 			- princess 'poise' & 'moxie'
 			- valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
 			- create all_lst, item_lst, and mach_lst methods for creature class
+		- TBD: in noun methods, do I need to pass init_creature to each verb method in order for mode = 'creature_exe' to work??
 	5) integrate burt with active_gs (get_hero method)
 		- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict
 		- Note: get_hero() enables player to take on different characters in the game (e.g. Burt could become a mouse)
