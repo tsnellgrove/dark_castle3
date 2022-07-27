@@ -175,7 +175,7 @@ class Creature(ViewOnly):
 						self.put_in_hand(obj) # messes up goblin holding grimy_axe ; need an auto_action
 
 				give_item = self.give_dict[give_key]['give']
-				if give_item != None:
+				if give_item:
 						self.bkpk_lst_remove(give_item)
 						active_gs.hand_lst_append_item(give_item)
 
