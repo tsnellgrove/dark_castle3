@@ -191,9 +191,12 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 				None, [grimy_axe], [torn_note], [big_medal], [officiousness],
 				[goblin_attack_mach, re_arm_goblin_mach],
 				{
-						shiny_sword : {'response_key' : 'give_goblin_shiny_sword', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
-						stale_biscuits : {'response_key' : 'give_goblin_stale_biscuits', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
-						'def_give' : {'response_key' : 'give_goblin_default', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : None}
+#						shiny_sword : {'response_key' : 'give_goblin_shiny_sword', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
+#						stale_biscuits : {'response_key' : 'give_goblin_stale_biscuits', 'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
+#						'def_give' : {'response_key' : 'give_goblin_default', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : None}
+						shiny_sword : {'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
+						stale_biscuits : {'accept_item' : False, 'give_item' : None, 'new_descript_key' : None},
+						'def_give' : {'accept_item' : True, 'give_item' : None, 'new_descript_key' : None}
 				},
 				True,
 				{
@@ -211,8 +214,10 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 				None, [], [silver_key], [red_bandana], [loyalty],
 				[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_done_eating_mach, hedgehog_distracted_mach],
 				{
-						shiny_sword : {'response_key' : 'give_hedgehog_sword', 'accept_item' : True, 'give_item' : silver_key, 'new_descript_key' : 'hedgehog_sword_returned'},
-						stale_biscuits : {'response_key' : 'give_hedgehog_biscuits', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : 'hedgehog_eating'}
+#						shiny_sword : {'response_key' : 'give_hedgehog_sword', 'accept_item' : True, 'give_item' : silver_key, 'new_descript_key' : 'hedgehog_sword_returned'},
+#						stale_biscuits : {'response_key' : 'give_hedgehog_biscuits', 'accept_item' : True, 'give_item' : None, 'new_descript_key' : 'hedgehog_eating'}
+						shiny_sword : {'accept_item' : True, 'give_item' : silver_key, 'new_descript_key' : 'hedgehog_sword_returned'},
+						stale_biscuits : {'accept_item' : True, 'give_item' : None, 'new_descript_key' : 'hedgehog_eating'}
 				},
 				True,
 				{
