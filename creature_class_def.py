@@ -159,23 +159,20 @@ class Creature(ViewOnly):
 								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
 
 		def give(self, obj, active_gs):
-				if obj in self.give_dict:
-						dict_key = obj
-				elif 'def_give' in self.give_dict:
-						dict_key = 'def_give'
-
 				try:
-						active_gs.buffer(descript_dict['give_' + self.name + '_' + obj.name]) 
+						active_gs.buffer(descript_dict['give_' + self.name + '_' + obj.name])
+						give_key = obj
 				except:
 						try:
 								active_gs.buffer(descript_dict['give_' + self.name + '_default'])
+								give_key = 'def_give'
 						except:
 								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
 								return
 
-				accept_item = self.give_dict[dict_key]['accept_item']
-				give_item = self.give_dict[dict_key]['give_item']
-				new_descript_key = self.give_dict[dict_key]['new_descript_key']
+				accept_item = self.give_dict[give_key]['accept_item']
+				give_item = self.give_dict[give_key]['give_item']
+				new_descript_key = self.give_dict[give_key]['new_descript_key']
 
 				if accept_item:
 						active_gs.hand_lst_remove_item(obj)
