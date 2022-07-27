@@ -159,20 +159,29 @@ class Creature(ViewOnly):
 								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
 
 		def give(self, obj, active_gs):
-				creature_has_response = True
+#				creature_has_response = True
 				if obj in self.give_dict:
 						dict_key = obj
 				elif 'def_give' in self.give_dict:
 						dict_key = 'def_give'
-				else:
-						creature_has_response = False
+#				else:
+#						creature_has_response = False
 
-				if not creature_has_response:
-						active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
-						return
+#				if not creature_has_response:
+#						active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
+#						return
 
-				response_key = self.give_dict[dict_key]['response_key']
-				response_str = descript_dict[response_key]
+				try:
+						active_gs.buffer(descript_dict['give_' + self.name + '_' + obj.name]) 
+				except:
+						try:
+								active_gs.buffer(descript_dict['give_' + self.name + '_default'])
+						except:
+								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
+								return 
+
+#				response_key = self.give_dict[dict_key]['response_key']
+#				response_str = descript_dict[response_key]
 				accept_item = self.give_dict[dict_key]['accept_item']
 				give_item = self.give_dict[dict_key]['give_item']
 				new_descript_key = self.give_dict[dict_key]['new_descript_key']
@@ -185,7 +194,8 @@ class Creature(ViewOnly):
 						active_gs.hand_lst_append_item(give_item)
 				if new_descript_key != None:
 						self.descript_key = new_descript_key
-				active_gs.buffer(response_str)
+#				active_gs.buffer(response_str)
+
 				return 
 
 		def attack(self, active_gs):
