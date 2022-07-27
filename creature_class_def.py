@@ -170,16 +170,16 @@ class Creature(ViewOnly):
 								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
 								return
 
-				accept_item = self.give_dict[give_key]['accept_item']
-				give_item = self.give_dict[give_key]['give_item']
-				new_descript_key = self.give_dict[give_key]['new_descript_key']
-
-				if accept_item:
+				if self.give_dict[give_key]['accept']:
 						active_gs.hand_lst_remove_item(obj)
 						self.put_in_hand(obj) # messes up goblin holding grimy_axe ; need an auto_action
+
+				give_item = self.give_dict[give_key]['give']
 				if give_item != None:
 						self.bkpk_lst_remove(give_item)
 						active_gs.hand_lst_append_item(give_item)
+
+				new_descript_key = self.give_dict[give_key]['new_descript_key']
 				if new_descript_key != None:
 						self.descript_key = new_descript_key
 
