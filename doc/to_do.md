@@ -106,6 +106,7 @@ Burt as an object
 Version 3.71 Goals
 - re-work app_main() flow with validate() module
 - pre-Burt-to-creature conversion clean-up in Creature, Room, and Container classes and scope methods
+- start exercising refactor skills!
 
 - N/A: Old thinking
 	- today: interp() =(if no interp_error)=> pre_action() => cmd_exe() => post_action()
@@ -164,32 +165,36 @@ Version 3.71 Goals
 			- DONE: document brief history of validate: errors were run from cmd_exe but 1) time issues and 2) pre_action / post_action issues
 		- DONE: clean up validate; use guard pattern (a lot!)
 		- CANCEL: improve / expand generic error checking
-- INPROC: refactor review for 'prep' methods
+- INPROC: refactor review for show() and give() methods
 	- DONE: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
 		- DONE: show
 		- DONE: give (shorten 'accept_item' to 'accept')
+	- INPROC: final refactor pass
+		- DONE: add tripple-quote doc_strings
+		- TBD: leverage if-then shield pattern
+		- TBD: review refactor notes - what about 'f' strings??
+		- TBD: comment each new attribute
+- TBD: refactor next phase
+	- TBD: refactor door (detail refactor approach in to_do file below)
+	- TBD: refactor container (vars, add None options, etc)
 	- TBD: refactor put
+	- TBD: refactor jug (dual inheritance from Container & Item)
 	- TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
-- TBD: final refactor pass
-	- TBD: leverage if-then shield pattern
-	- TBD: review refactor notes - what about 'f' strings??
-	- TBD: comment each attribute
-	- TBD: add tripple-quote doc_strings
+- TBD: refactor Room class
+	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
+	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
 - TBD: refactor attack()
 	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
 	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
 	- TBD: re-org to identify 'attacker' and 'winner' 
 	- TBD: re-code attack / attack_burt response correctly based on in-line notes
-- TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
-- TBD: refactor Room class
-	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
-	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
-- TBD: refactor Container class
-- TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
-		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
-- TBD: refactor active_gs. scope / mach_scope
-		- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
-
+- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
+- TBD: final clean-up
+	- TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
+	- TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
+			- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+	- TBD: refactor active_gs. scope / mach_scope
+			- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
 
 ##########################
 ### VERSION 3.72 START ###
@@ -274,7 +279,7 @@ Refactor burt as a Creature class object
 ##########################
 
 Version 3.73 Goals
-- modularize remaining GameState class and declarations
+- modularize remaining GameState class and declarations (???)
 
 - TBD: active_gs => gs renaming; point to same obj to start with ??
 - TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
