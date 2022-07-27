@@ -159,6 +159,19 @@ class Creature(ViewOnly):
 								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
 
 		def give(self, obj, active_gs):
+				""" Give item to creature.
+				
+				'Give' is meant to enable barter and trade. If the Player gives an item to a creature - particularly if that creature has shown interest in the item via show() - then the player can reasonably hope for some other useful item in return. Therefore the give() method enables a text response, determines whether the creature will accept the gift, and what, if anything, it will give Burt in return.
+				
+				Because give() can fulfill a creature's needs it also has the power to change the creature's mood and therefore update their description.
+				
+				Implementation specifics:
+						1) When creating a new creature be sure to remember to create the response descriptions and (if appropriate) the creature description updates in descript_dict() using the auto-genertated key format.
+						
+						2) It is assumed that if the creature 'shows no interest' in Burt's gift then they will not accept it, will not provide a gift in response, and will not change their demeanor as a result of the offer.
+						
+						3) It is expected that if a creature won't accept an item from Burt, then they also won't have a gift to give in return.
+				"""
 				try:
 						active_gs.buffer(descript_dict['give_' + self.name + '_' + obj.name])
 						give_key = obj
@@ -170,9 +183,11 @@ class Creature(ViewOnly):
 								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
 								return
 
-				if self.give_dict[give_key]['accept']:
-						active_gs.hand_lst_remove_item(obj)
-						self.put_in_hand(obj) # messes up goblin holding grimy_axe ; need an auto_action
+				if not self.give_dict[give_key]['accept']:
+						return
+						
+				active_gs.hand_lst_remove_item(obj)
+				self.put_in_hand(obj) # messes up goblin holding grimy_axe ; need an auto_action
 
 				give_item = self.give_dict[give_key]['give']
 				if give_item:
@@ -180,6 +195,7 @@ class Creature(ViewOnly):
 						active_gs.hand_lst_append_item(give_item)
 
 				new_descript_key = self.give_dict[give_key]['new_descript_key']
+#				new_descript_key = 'give_' + self.name + '_' + obj.name] + '_descript'
 				if new_descript_key != None:
 						self.descript_key = new_descript_key
 
