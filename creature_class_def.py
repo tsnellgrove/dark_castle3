@@ -154,7 +154,11 @@ class Creature(ViewOnly):
 				
 				Implementation specifics:
 						1) When creating a new creature, remember to create the show() response descriptions in descript_dict() using the auto-genertated key format.
+						2) Creaatures other than burt are not allowed to have containers or creatures in their inventory
 				"""
+				if (obj.is_container()) or (obj.is_creature()):
+						active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
+						return 
 				try:
 						active_gs.buffer(descript_dict[f"show_{self.name}_{obj.name}"]) 
 				except:
@@ -176,7 +180,12 @@ class Creature(ViewOnly):
 						2) It is assumed that if the creature 'shows no interest' in Burt's gift then they will not accept it, will not provide a gift in response, and will not change their demeanor as a result of the offer.
 						
 						3) It is assumed that if a creature won't accept an item from Burt, then they also won't have a gift to give in return and that their demeanor will not change.
+						
+						4) Creaatures other than burt are not allowed to have containers or creatures in their inventory
 				"""
+				if (obj.is_container()) or (obj.is_creature()):
+						active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
+						return 
 				try:
 						active_gs.buffer(descript_dict[f"give_{self.name}_{obj.name}"])
 						give_key = obj
