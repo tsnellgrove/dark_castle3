@@ -185,7 +185,7 @@ Version 3.71 Goals
 		- DONE: don't need to check for if len(lst) > 0: ;; just use if lst: (Also, bool(None) == False
 		- DONE: use list comprehension: 'squares = [i*i for i in range(10)]'
 		- INPROC: Format strings with f-Strings. 'name = "Alex" ;; my_string = f"Hello {name}"
-		- TBD: comment each new attribute
+		- DONE: comment each new attribute
 		- TBD: write brief essay on naming conventions (!!!) (what about give_dict 'accept' case?)
 - TBD: refactor next phase
 	- TBD: refactor door (detail refactor approach in to_do file below)
