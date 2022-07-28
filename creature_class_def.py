@@ -14,17 +14,17 @@ class Creature(ViewOnly):
 						state, hand_lst, bkpk_lst, worn_lst, feature_lst, invis_lst,
 						give_dict, is_attackable, attacked_dict, attacking_dict, corpse):
 				super().__init__(name, full_name, root_name, descript_key, writing)
-				self._state = state
-				self._hand_lst = hand_lst
-				self._bkpk_lst = bkpk_lst
-				self._worn_lst = worn_lst
-				self._feature_lst = feature_lst
-				self._invis_lst = invis_lst
-				self._give_dict = give_dict
-				self._is_attackable = is_attackable
-				self._attacked_dict = attacked_dict # was attack_creature_dict
-				self._attacking_dict = attacking_dict # was attack_burt_dict
-				self._corpse = corpse
+				self._state = state # creature state; not yet in use (v3.70) - intended for state machine functionality
+				self._hand_lst = hand_lst # list of items in creature's hand; is typically only 1 item 
+				self._bkpk_lst = bkpk_lst # list of items in creature's backpack
+				self._worn_lst = worn_lst # list of items currently worn by the creature
+				self._feature_lst = feature_lst # list of visible obj associated w creature but not included in i or l; used for traits like 'loyalty' 
+				self._invis_lst = invis_lst # list of invisible obj associated w creature; typically used for Modular Machines
+				self._give_dict = give_dict # dict of creature reactions to gifts
+				self._is_attackable = is_attackable # bool indicating weather Burt can attack the creature
+				self._attacked_dict = attacked_dict # dict of creature reactions to being attacked
+				self._attacking_dict = attacking_dict # dict of results from creature attacking Burt; no longer needed once type(burt) == creature
+				self._corpse = corpse # if creature can be attacked and killed, 'corpse' == obj for dead creature; else 'corpse' == None
 				
 		# *** setters & getters ***
 		@property
@@ -87,7 +87,7 @@ class Creature(ViewOnly):
 		def corpse(self):
 				return self._corpse
 
-		# *** hand ***
+		# *** hand methods ***
 		def hand_lst_append(self, item):
 				self._hand_lst.append(item)
 
@@ -102,19 +102,18 @@ class Creature(ViewOnly):
 
 		def put_in_hand(self, new_item):
 				if not self.hand_empty():
-						hand_item = self.hand_item()
-						self.bkpk_lst_append(hand_item)
-						self.hand_lst_remove(hand_item)
+						self.bkpk_lst_append(self.hand_item())
+						self.hand_lst_remove(self.hand_item())
 				self.hand_lst_append(new_item)
 
-		# *** bkpk_lst ***
+		# *** bkpk methods ***
 		def bkpk_lst_append(self, item):
 				self._bkpk_lst.append(item)
 
 		def bkpk_lst_remove(self, item):
 				self._bkpk_lst.remove(item)
 
-		# *** worn_lst ***
+		# *** worn methods ***
 		def worn_lst_append(self, item):
 				self._worn_lst.append(item)
 
@@ -145,9 +144,11 @@ class Creature(ViewOnly):
 		def examine(self, active_gs):
 				super(Creature, self).examine(active_gs)
 				if not self.hand_empty():
-						active_gs.buffer("The " + self.full_name + " is holding a " + self.hand_item().full_name)
+#						active_gs.buffer("The " + self.full_name + " is holding a " + self.hand_item().full_name)
+						active_gs.buffer("The{self.full_name} is holding a {self.hand_item().full_name}")
 				if not self.worn_empty():
-						active_gs.buffer("The " + self.full_name + " is wearing: " + self.worn_str())
+#						active_gs.buffer("The " + self.full_name + " is wearing: " + self.worn_str())
+						active_gs.buffer("The {self.full_name} is wearing: {self.worn_str()}")
 
 		def show(self, obj, active_gs):
 				""" Show item to creature.
