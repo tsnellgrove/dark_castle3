@@ -205,6 +205,7 @@ Version 3.71 Goals
 	- TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
 - TBD: refactor Room class
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
+		- is node_lst a better term?
 	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
 - TBD: refactor attack()
 	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
