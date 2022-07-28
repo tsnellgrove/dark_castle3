@@ -178,16 +178,13 @@ class Creature(ViewOnly):
 						3) It is assumed that if a creature won't accept an item from Burt, then they also won't have a gift to give in return and that their demeanor will not change.
 				"""
 				try:
-#						active_gs.buffer(descript_dict['give_' + self.name + '_' + obj.name])
 						active_gs.buffer(descript_dict[f"give_{self.name}_{obj.name}"])
 						give_key = obj
 				except:
 						try:
-#								active_gs.buffer(descript_dict['give_' + self.name + '_default'])
 								active_gs.buffer(descript_dict[f"give_{self.name}_default"])
 								give_key = 'def_give'
 						except:
-#								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
 								active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 								return
 
@@ -202,7 +199,6 @@ class Creature(ViewOnly):
 						self.bkpk_lst_remove(give_item)
 						active_gs.hand_lst_append_item(give_item)
 
-#				new_descript_key = 'give_' + self.name + '_' + obj.name + '_descript'
 				new_descript_key = f"give_{self.name}_{obj.name}_descript"
 				if new_descript_key in descript_dict:
 						self.descript_key = new_descript_key

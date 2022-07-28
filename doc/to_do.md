@@ -11,7 +11,17 @@ July 24, 2022
 5) Run mk_def_pkl()
 6) Add object description in static_gbl
 
-	
+*** Var Naming Conventions ***
+- prefix bools w/ 'is_'
+- postfix lists w/ 'lst'
+- postfix dicts w/ 'dict'
+- variables are assumed to be obj. If similar obj and non-obj vars appear in same function, diff w/ post-fix: worn_lst vs. worn_lst_txt
+- class attributes should be named after physical features of the class (NOT their expected data types): hand_lst, bkpk_lst, worn_lst
+- class data types can be returned via methods: vis_lst, all_lst, mach_lst
+- do NOT reference the class in the attribute - the attribute will always appear w/ the class: creature.state vs. creature.creature_state
+- embrace function context! do NOT attempt a rigorous and exhaustive program-wide naming convention... this way lies madness and very long vars
+- when in doubt, be biased towards shorter vars; bend the rules above as needed to achieve shorter vars; shorter vars == more readable code!
+
 *** NOTES ***
 
 
@@ -165,11 +175,11 @@ Version 3.71 Goals
 			- DONE: document brief history of validate: errors were run from cmd_exe but 1) time issues and 2) pre_action / post_action issues
 		- DONE: clean up validate; use guard pattern (a lot!)
 		- CANCEL: improve / expand generic error checking
-- INPROC: refactor review for show() and give() methods
+- DONE: refactor review for show() and give() methods
 	- DONE: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
 		- DONE: show
 		- DONE: give (shorten 'accept_item' to 'accept')
-	- INPROC: final refactor pass
+	- DONE: final refactor pass
 		- DONE: shorten variable names
 		- DONE: auto-gen keys
 		- DONE: leverage if-then shield pattern 
@@ -184,9 +194,9 @@ Version 3.71 Goals
 		- DONE: use 'any' to return boolean rather than for-looping through lists
 		- DONE: don't need to check for if len(lst) > 0: ;; just use if lst: (Also, bool(None) == False
 		- DONE: use list comprehension: 'squares = [i*i for i in range(10)]'
-		- INPROC: Format strings with f-Strings. 'name = "Alex" ;; my_string = f"Hello {name}"
+		- DONE: Format strings with f-Strings. 'name = "Alex" ;; my_string = f"Hello {name}"
 		- DONE: comment each new attribute
-		- TBD: write brief essay on naming conventions (!!!) (what about give_dict 'accept' case?)
+		- DONE: write brief essay on naming conventions (!!!) (what about give_dict 'accept' case?)
 - TBD: refactor next phase
 	- TBD: refactor door (detail refactor approach in to_do file below)
 	- TBD: refactor container (vars, add None options, etc)
