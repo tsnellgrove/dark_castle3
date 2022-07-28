@@ -157,12 +157,12 @@ class Creature(ViewOnly):
 						1) When creating a new creature, remember to create the show() response descriptions in descript_dict() using the auto-genertated key format.
 				"""
 				try:
-						active_gs.buffer(descript_dict['show_' + self.name + '_' + obj.name]) 
+						active_gs.buffer(descript_dict[f"show_{self.name}_{obj.name}"]) 
 				except:
 						try:
-								active_gs.buffer(descript_dict['show_' + self.name + '_default'])
+								active_gs.buffer(descript_dict[f"show_{self.name}_default"])
 						except:
-								active_gs.buffer("The " + self.full_name + " shows no interest in the " + obj.full_name + ".")
+								active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 
 		def give(self, obj, active_gs):
 				""" Give item to creature.

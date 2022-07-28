@@ -51,9 +51,9 @@ Learn about refactoring:
 29) Simplify if-statements with 'if x in [a, b, c]'. I think I already do this. (same as 17)
 
 - For Loops:
-4)use 'any' to return boolean rather than for-looping through lists
+4) use 'any' to return boolean rather than for-looping through lists
 5) pull variable assignments out of loops unless the variable will change within the loop
-6)consider removing 'inline variables' that are only used once... just return the assigned value... I am guilty of this one a lot... I like how it looks but should reconsider
+6) consider removing 'inline variables' that are only used once... just return the assigned value... I am guilty of this one a lot... I like how it looks but should reconsider
 13) replace 'for i in range(len(lst)): lst_item = lst[i]' with 'for i, lst_item in enumerate(lst):' ; enumerate gives you both index and value as 
 a tupple... need to see if I can use this?
 19) iterate with enumerate to get index & value (same as 13)
@@ -170,9 +170,21 @@ Version 3.71 Goals
 		- DONE: show
 		- DONE: give (shorten 'accept_item' to 'accept')
 	- INPROC: final refactor pass
+		- DONE: shorten variable names
+		- DONE: auto-gen keys
+		- DONE: leverage if-then shield pattern 
 		- DONE: add tripple-quote doc_strings
-		- TBD: leverage if-then shield pattern
-		- TBD: review refactor notes - what about 'f' strings??
+		- DONE: provide 'None' options for variables and 'match' options for Conditions
+		- DONE: MOVE ASSIGNEMENTS CLOSER TO USAGE!
+		- DONE: return the conditional comparison value itself (bool)
+		- DONE: Concatenate strings with '.join'
+		- DONE: merge / shorten if-then-else with use of 'and' & 'or'
+		- DONE: consider removing 'inline variables' that are only used once... just return the assigned value...
+		- DONE: use enumerate to get index & value!
+		- DONE: use 'any' to return boolean rather than for-looping through lists
+		- DONE: don't need to check for if len(lst) > 0: ;; just use if lst: (Also, bool(None) == False
+		- DONE: use list comprehension: 'squares = [i*i for i in range(10)]'
+		- INPROC: Format strings with f-Strings. 'name = "Alex" ;; my_string = f"Hello {name}"
 		- TBD: comment each new attribute
 		- TBD: write brief essay on naming conventions (!!!) (what about give_dict 'accept' case?)
 - TBD: refactor next phase
