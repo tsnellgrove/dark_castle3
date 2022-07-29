@@ -281,15 +281,22 @@ class Door(ViewOnly):
 
 
 		def unlock(self, active_gs):
-				if self.is_unlocked == True:
-						active_gs.buffer("The " + self.full_name + " is already unlocked.")
-				elif self.key is None:
+				if self.key is None:
 						active_gs.buffer("You don't see a keyhole for this door.")
-				elif not active_gs.hand_check(self.key):
+						return 
+				if self.is_unlocked:
+#						active_gs.buffer("The " + self.full_name + " is already unlocked.")
+						active_gs.buffer(f"The {self.full_name} is already unlocked.")
+						return 
+				if not active_gs.hand_check(self.key) and not active_gs.hand_empty() and active_gs.get_hand_lst()[0].root_name == 'key':
 						active_gs.buffer("You aren't holding the correct key.")
-				else:
-						active_gs.buffer("Unlocked")
-						self.is_unlocked = True
+						return 
+				if not active_gs.hand_check(self.key):
+						active_gs.buffer("You aren't holding the key.")
+						return 
+#				else:
+				active_gs.buffer("Unlocked")
+				self.is_unlocked = True
 
 		def open(self, active_gs):
 				if self.is_open == True:
