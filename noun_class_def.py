@@ -44,7 +44,7 @@ class Invisible(object):
 				return False
 
 		def	print_contents_str(self, active_gs):
-				if self.is_container() and self.open_state == True:
+				if self.is_container() and self.is_open == True:
 						container_str = obj_lst_to_str(self.contains)
 						active_gs.buffer("The " + self.full_name + " contains: " + container_str)
 
@@ -187,7 +187,7 @@ class Room(ViewOnly):
 						num = random.randint(0, 4)
 						wrong_way_key = 'wrong_way_' + str(num)
 						active_gs.buffer(descript_dict[wrong_way_key])
-				elif (door_in_path) and (door_obj.open_state == False):
+				elif (door_in_path) and (door_obj.is_open == False):
 						active_gs.buffer("The " +  door_obj.full_name + " is closed.")
 				else:
 						next_room_obj = active_gs.get_next_room(room_obj, direction)
@@ -242,27 +242,27 @@ class Item(ViewOnly):
 				active_gs.buffer("Dropped")
 
 class Door(ViewOnly):
-		def __init__(self, name, full_name, root_name, descript_key, writing, open_state, unlock_state, key):
+		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key):
 				super().__init__(name, full_name, root_name, descript_key, writing)
-				self._open_state = open_state
-				self._unlock_state = unlock_state
+				self._is_open = is_open
+				self._is_unlocked = is_unlocked
 				self._key = key
 
 		@property
-		def unlock_state(self):
-				return self._unlock_state
+		def is_unlocked(self):
+				return self._is_unlocked
 
-		@unlock_state.setter
-		def unlock_state(self, new_state):
-				self._unlock_state = new_state
+		@is_unlocked.setter
+		def is_unlocked(self, new_state):
+				self._is_unlocked = new_state
 
 		@property
-		def open_state(self):
-				return self._open_state
+		def is_open(self):
+				return self._is_open
 
-		@open_state.setter
-		def open_state(self, new_state):
-				self._open_state = new_state
+		@is_open.setter
+		def is_open(self, new_state):
+				self._is_open = new_state
 
 		@property
 		def key(self):
@@ -274,54 +274,54 @@ class Door(ViewOnly):
 
 		def examine(self, active_gs):
 				super(Door, self).examine(active_gs)
-				if self.open_state == False:
+				if self.is_open == False:
 						active_gs.buffer("The " + self.full_name + " is closed.")
 				else:
 						active_gs.buffer("The " + self.full_name + " is open.")
 
 		def unlock(self, active_gs):
-				if self.unlock_state == True:
+				if self.is_unlocked == True:
 						active_gs.buffer("The " + self.full_name + " is already unlocked.")
 				elif self.key is None:
 						active_gs.buffer("You don't see a keyhole for this door.")
 				elif not active_gs.hand_check(self.key):
-						active_gs.buffer("You aren't holding the key.")
+						active_gs.buffer("You aren't holding the correct key.")
 				else:
 						active_gs.buffer("Unlocked")
-						self.unlock_state = True
+						self.is_unlocked = True
 
 		def open(self, active_gs):
-				if self.open_state == True:
+				if self.is_open == True:
 						active_gs.buffer("The " + self.full_name + " is already open.")
-				elif self.unlock_state == False:
+				elif self.is_unlocked == False:
 						active_gs.buffer("The " + self.full_name + " is locked.")
 				else:
-						self.open_state = True
+						self.is_open = True
 						active_gs.buffer("Openned")
 
 		def close(self, active_gs):
-				if self.open_state == False:
+				if self.is_open == False:
 						active_gs.buffer("The " + self.full_name + " is already closed.")
-				elif self.unlock_state == False: # for Iron Portcullis
+				elif self.is_unlocked == False: # for Iron Portcullis
 						active_gs.buffer("The " + self.full_name + " is locked.")
 				else:
-						self.open_state = False
+						self.is_open = False
 						active_gs.buffer("Closed")
 
 		def lock(self, active_gs):
-				if self.open_state == True:
+				if self.is_open == True:
 						active_gs.buffer("You can't lock something that's open.")
-				if not active_gs.hand_check(self.key):
+				elif not active_gs.hand_check(self.key):
 						active_gs.buffer("You aren't holding the key.")
-				elif self.unlock_state == False:
+				elif self.is_unlocked == False:
 						active_gs.buffer("The " + self.full_name + " is already locked.")
 				else:
 						active_gs.buffer("Locked")
-						self.unlock_state = False
+						self.is_unlocked = False
 
 class Container(Door):
-		def __init__(self, name, full_name, root_name, descript_key, writing, open_state, unlock_state, key, contains):
-				super().__init__(name, full_name, root_name, descript_key, writing, open_state, unlock_state, key)
+		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contains):
+				super().__init__(name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key)
 				self._contains = contains # list of items in the container
 
 		# getters & setters
@@ -348,7 +348,7 @@ class Container(Door):
 
 		def vis_lst(self):
 				vis_lst = []
-				if self.open_state:
+				if self.is_open:
 						vis_lst = self.contains
 				return vis_lst
 
@@ -362,7 +362,7 @@ class Container(Door):
 				self.print_contents_str(active_gs)
 
 		def put(self, obj, active_gs):
-				if self.open_state == False:
+				if self.is_open == False:
 						active_gs.buffer("The " + self.full_name + " is closed.")
 				elif obj.is_container():
 						active_gs.buffer("You can't put a container in a container")
@@ -388,9 +388,9 @@ class Food(Item):
 					active_gs.buffer(output)
 
 class Jug(Item):
-		def __init__(self, name, full_name, root_name, descript_key, writing, open_state, contains):
+		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, contains):
 				super().__init__(name, full_name, root_name, descript_key, writing)
-				self._open_state = open_state # is the jug uncapped?
+				self._is_open = is_open # is the jug uncapped?
 				self._contains = contains # obj in the jug
 
 		@property
@@ -398,15 +398,15 @@ class Jug(Item):
 				return self._contains
 
 		@property
-		def open_state(self):
-				return self._open_state
+		def is_open(self):
+				return self._is_open
 
 		def	is_container(self):
 				return True
 
 		def vis_lst(self): # DUP FROM CONTAINER CLASS
 				vis_lst = []
-				if self.open_state:
+				if self.is_open:
 						vis_lst = self.contains
 				return vis_lst
 

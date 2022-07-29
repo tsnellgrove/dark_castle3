@@ -104,11 +104,11 @@ class DoorToggleResult(BufferOnlyResult):
 				return self._door_obj
 
 		def result_exe(self, active_gs, mach_state):
-				if self.door_obj.open_state == True:
-						self.door_obj.open_state = False
+				if self.door_obj.is_open == True:
+						self.door_obj.is_open = False
 						descript_ending = "closes."
 				else:
-						self.door_obj.open_state = True
+						self.door_obj.is_open = True
 						descript_ending = "opens."
 				try:
 						active_gs.buffer(descript_dict[self.name] + descript_ending)

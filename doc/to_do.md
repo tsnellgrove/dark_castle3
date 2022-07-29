@@ -180,13 +180,16 @@ Version 3.71 Goals
 		- DONE: show
 		- DONE: give (shorten 'accept_item' to 'accept')
 		- DONE: update show & give to reject item if is_container or is_creature
-	- DONE: final refactor pass
+	- DONE: refactor pass - basics
 		- DONE: shorten variable names
-		- DONE: auto-gen keys
-		- DONE: leverage if-then shield pattern 
-		- DONE: add tripple-quote doc_strings
-		- DONE: provide 'None' options for variables and 'match' options for Conditions
 		- DONE: MOVE ASSIGNEMENTS CLOSER TO USAGE!
+		- DONE: leverage if-then shield pattern 
+		- DONE: provide 'None' options for variables and 'match' options for Conditions
+		- DONE: Format strings with f-Strings. 'name = "Alex" ;; my_string = f"Hello {name}"
+		- DONE: comment each new attribute
+		- DONE: add tripple-quote doc_strings
+	- DONE: refactor pass-advanced
+		- DONE: auto-gen keys
 		- DONE: return the conditional comparison value itself (bool)
 		- DONE: Concatenate strings with '.join'
 		- DONE: merge / shorten if-then-else with use of 'and' & 'or'
@@ -195,14 +198,18 @@ Version 3.71 Goals
 		- DONE: use 'any' to return boolean rather than for-looping through lists
 		- DONE: don't need to check for if len(lst) > 0: ;; just use if lst: (Also, bool(None) == False
 		- DONE: use list comprehension: 'squares = [i*i for i in range(10)]'
-		- DONE: Format strings with f-Strings. 'name = "Alex" ;; my_string = f"Hello {name}"
-		- DONE: comment each new attribute
-		- DONE: write brief essay on naming conventions (!!!) (what about give_dict 'accept' case?)
+	- DONE: write brief essay on naming conventions (!!!) (what about give_dict 'accept' case?)
 - TBD: refactor next phase
-	- TBD: refactor door (detail refactor approach in to_do file below)
+	- INPROC: refactor door() (same detailed refactor approach as give() & show() above)
+		- DONE: shorten variable names
+			- DONE: open_state => is_open
+				- DONE: noun_class_def()
+				- DONE: result_class_def()
+			- DONE: unlock_state => is_unlocked
+				- DONE: noun_class_def()
 	- TBD: refactor container (vars, add None options, etc)
 	- TBD: refactor put
-	- TBD: refactor jug (dual inheritance from Container & Item)
+	- TBD: refactor jug (dual inheritance from Container & Item) [move container list routine from Invisible() to Container() ?]
 	- TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
 - TBD: refactor Room class
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
