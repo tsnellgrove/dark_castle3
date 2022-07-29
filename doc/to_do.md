@@ -207,9 +207,12 @@ Version 3.71 Goals
 				- DONE: result_class_def()
 			- DONE: unlock_state => is_unlocked
 				- DONE: noun_class_def()
+	- TBD: next refactor
+		- IDEA: is_open == None => empty door frame
 	- TBD: refactor container (vars, add None options, etc)
 	- TBD: refactor put
 	- TBD: refactor jug (dual inheritance from Container & Item) [move container list routine from Invisible() to Container() ?]
+		- IDEA: put for jug fails if obj not is_beverage
 	- TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
 - TBD: refactor Room class
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
