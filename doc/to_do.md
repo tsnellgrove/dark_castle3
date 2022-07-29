@@ -2,7 +2,7 @@ To Do List - Dark Castle v3
 
 July 24, 2022
 
-# git update 3
+
 *** How to Add Objects ***
 1) If needed, create Class and methods in class_def
 2) Instantiate object in mk_def_pkl()
@@ -513,6 +513,13 @@ Version 3.9x Goals
 - use phyisogamy in the game!!
 
 *** NEW PUZZLE IDEAS ***
+
+Game Ending:
+- Kinging Scroll glows faintly... and can only read when sitting on the Royal Leturn... which also glows slightly
+	- lecturn found in the Library (Willy's favorite room in the castle)
+	- But only one thing can be _on_ the lecturn at a time... and there is currently a stuborn_snail there
+	- snaill can only be encouraged to move by showing it the salt from the Kitchen
+	- Depends on class Surface (example obj = table, shelf, lecturn); needs a max_items attribute?
 
 Glum Dragon
 - how about a glum / bored / enui-ladden dragon that is blocking the libary entrance with its bulk

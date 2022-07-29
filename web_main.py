@@ -12,11 +12,11 @@ from app_main import wrapper
 end_of_game = False
 start_of_game = True
 while end_of_game == False:
-		if start_of_game:
-				user_input = "xyzzy42"
-				start_of_game = False
-		else:
-				user_input = input('Type your command: ')
-		end_of_game, output = wrapper(user_input)
-		print(output)
+	if start_of_game:
+			user_input = "xyzzy42"
+			start_of_game = False
+	else:
+		user_input = input('Type your command: ')
+	end_of_game, output = wrapper(user_input)
+	print(output)
 print("THANKS FOR PLAYING!!")
