@@ -273,19 +273,30 @@ class Door(ViewOnly):
 
 		def examine(self, active_gs):
 				super(Door, self).examine(active_gs)
-				if self.is_open:
-						active_gs.buffer(f"The {self.full_name} is open.")
+				# Note: 'if not var:' evalutates var == None to False; so always test None first for clarity
+				if self.is_open is None:
+						active_gs.buffer(f"The {self.full_name} has no closure. It always remains open.")
+						return				
+				if not self.is_open:
+						active_gs.buffer(f"The {self.full_name} is closed.")
 						return
-				active_gs.buffer(f"The {self.full_name} is closed.")
+				active_gs.buffer(f"The {self.full_name} is open.") # is_open == True
 				return
 
-
 		def unlock(self, active_gs):
+				if self.is_open is None:
+						active_gs.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
+						return 
+				if self.is_unlocked is None:
+						active_gs.buffer(f"The {self.full_name} does not appear to have a lock.")
+						return 
 				if self.key is None:
-						active_gs.buffer("You don't see a keyhole for this door.")
+						active_gs.buffer(f"You don't see a keyhole in the {self.full_name}.")
+						return
+				if self.is_open:
+						active_gs.buffer("You can't lock or unlock something that's open.")
 						return 
 				if self.is_unlocked:
-#						active_gs.buffer("The " + self.full_name + " is already unlocked.")
 						active_gs.buffer(f"The {self.full_name} is already unlocked.")
 						return 
 				if not active_gs.hand_check(self.key) and not active_gs.hand_empty() and active_gs.get_hand_lst()[0].root_name == 'key':
@@ -294,18 +305,21 @@ class Door(ViewOnly):
 				if not active_gs.hand_check(self.key):
 						active_gs.buffer("You aren't holding the key.")
 						return 
-#				else:
-				active_gs.buffer("Unlocked")
+				active_gs.buffer("Unlocked") # correct key in hand, is_open == False, is_unlocked == False
 				self.is_unlocked = True
 
 		def open(self, active_gs):
-				if self.is_open == True:
-						active_gs.buffer("The " + self.full_name + " is already open.")
-				elif self.is_unlocked == False:
-						active_gs.buffer("The " + self.full_name + " is locked.")
-				else:
-						self.is_open = True
-						active_gs.buffer("Openned")
+				if self.is_open is None:
+						active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
+						return 
+				if self.is_open:
+						active_gs.buffer(f"The {self.full_name} is already open.")
+						return 
+				if not self.is_unlocked:
+						active_gs.buffer(f"The {self.full_name} is locked.")
+						return 
+				self.is_open = True
+				active_gs.buffer("Openned")
 
 		def close(self, active_gs):
 				if self.is_open == False:
