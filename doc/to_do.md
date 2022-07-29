@@ -207,6 +207,8 @@ Version 3.71 Goals
 				- DONE: result_class_def()
 			- DONE: unlock_state => is_unlocked
 				- DONE: noun_class_def()
+	- N/A: move var assignments closer to usage
+	- INPROC: leverage if-then shield pattern
 	- TBD: next refactor
 		- IDEA: is_open == None => empty door frame
 	- TBD: refactor container (vars, add None options, etc)

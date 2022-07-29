@@ -108,11 +108,14 @@ class ViewOnly(Writing):
 				return (self.writing is not None)
 
 		def examine(self, active_gs):
-				descript_str = self.get_descript_str(active_gs)
-				active_gs.buffer(descript_str)
+#				descript_str = self.get_descript_str(active_gs)
+#				active_gs.buffer(descript_str)
+				active_gs.buffer(self.get_descript_str(active_gs))
 				if self.has_writing():
-						output = "On the " + self.full_name + " you see: " + self.writing.full_name
-						active_gs.buffer(output)
+#						output = "On the " + self.full_name + " you see: " + self.writing.full_name
+#						active_gs.buffer(output)
+						active_gs.buffer(f"On the {self.full_name} you see: {self.writing.full_name}")
+				return
 
 class Room(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, features, room_obj_lst, door_paths, invis_obj_lst):
@@ -274,10 +277,18 @@ class Door(ViewOnly):
 
 		def examine(self, active_gs):
 				super(Door, self).examine(active_gs)
-				if self.is_open == False:
-						active_gs.buffer("The " + self.full_name + " is closed.")
-				else:
-						active_gs.buffer("The " + self.full_name + " is open.")
+#				if self.is_open == False:
+#						active_gs.buffer("The " + self.full_name + " is closed.")
+#				else:
+#						active_gs.buffer("The " + self.full_name + " is open.")
+				if self.is_open:
+#						active_gs.buffer("The " + self.full_name + " is open.")
+						active_gs.buffer(f"The {self.full_name} is open.")
+						return
+#				active_gs.buffer("The " + self.full_name + " is closed.")
+				active_gs.buffer(f"The {self.full_name} is closed.")
+				return
+
 
 		def unlock(self, active_gs):
 				if self.is_unlocked == True:
