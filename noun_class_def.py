@@ -246,6 +246,7 @@ class Door(ViewOnly):
 				self._is_open = is_open
 				self._is_unlocked = is_unlocked
 				self._key = key
+				# Note: 'if not var:' evalutates 'var == None' to False; so always test None first for clarity
 
 		@property
 		def is_unlocked(self):
@@ -273,7 +274,6 @@ class Door(ViewOnly):
 
 		def examine(self, active_gs):
 				super(Door, self).examine(active_gs)
-				# Note: 'if not var:' evalutates var == None to False; so always test None first for clarity
 				if self.is_open is None:
 						active_gs.buffer(f"The {self.full_name} has no closure. It always remains open.")
 						return				
@@ -322,13 +322,17 @@ class Door(ViewOnly):
 				active_gs.buffer("Openned")
 
 		def close(self, active_gs):
-				if self.is_open == False:
-						active_gs.buffer("The " + self.full_name + " is already closed.")
-				elif self.is_unlocked == False: # for Iron Portcullis
-						active_gs.buffer("The " + self.full_name + " is locked.")
-				else:
-						self.is_open = False
-						active_gs.buffer("Closed")
+				if self.is_open is None:
+						active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
+						return 
+				if not self.is_open:
+						active_gs.buffer(f"The {self.full_name} is already closed.")
+						return 
+				if self.is_unlocked == False: # for Iron Portcullis
+						active_gs.buffer(f"The {self.full_name} is locked open.")
+						return 
+				self.is_open = False
+				active_gs.buffer("Closed")
 
 		def lock(self, active_gs):
 				if self.is_open == True:
