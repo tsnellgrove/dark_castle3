@@ -26,7 +26,7 @@ class Creature(ViewOnly):
 				self._attacking_dict = attacking_dict # dict of results from creature attacking Burt; no longer needed once type(burt) == creature
 				self._corpse = corpse # if creature can be attacked and killed, 'corpse' == obj for dead creature; else 'corpse' == None
 				
-		# *** setters & getters ***
+		# *** getters & setters ***
 		@property
 		def state(self):
 				return self._state

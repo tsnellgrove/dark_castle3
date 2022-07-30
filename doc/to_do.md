@@ -213,7 +213,7 @@ Version 3.71 Goals
 		- DONE: format strings w/ f-strings
 		- DONE: comment each new class-specific attribute
 		- DONE: add tripple-quote doc_strings
-		- TBD: detailed testing
+		- DONE: detailed testing
 	- TBD: refactor ViewOnly
 	- TBD: refactor Writing (explain why not a MixIn)
 	- TBD: refactor Invisible

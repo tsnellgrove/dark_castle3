@@ -100,13 +100,16 @@ class ViewOnly(Writing):
 				super().__init__(name, full_name, root_name, descript_key)
 				self._writing = writing
 
+		# *** getters & setters ***
 		@property
 		def writing(self):
 				return self._writing
 
+		# *** simple methods ***
 		def has_writing(self):
 				return (self.writing is not None)
 
+		# *** complex methods ***
 		def examine(self, active_gs):
 				active_gs.buffer(self.get_descript_str(active_gs))
 				if self.has_writing():
@@ -121,7 +124,7 @@ class Room(ViewOnly):
 				self._door_paths = door_paths # dictionary of {direction1 : door1}
 				self._invis_obj_lst = invis_obj_lst # list of invisible obj in room
 
-		# getters & setters
+		# *** getters & setters ***
 		@property
 		def features(self):
 				return self._features
@@ -153,11 +156,11 @@ class Room(ViewOnly):
 		def invis_obj_lst(self):
 				return self._invis_obj_lst
 
-		# simple methods
+		# *** simple methods ***
 		def vis_element_lst(self):
 				return self.room_obj_lst + self.features
 		
-		# complex methods
+		# *** complex methods ***
 		def examine(self, active_gs):
 				super(Room, self).examine(active_gs)
 				room_item_obj_lst = []
@@ -268,6 +271,7 @@ class Door(ViewOnly):
 								'if var:' is the same as 'if bool(var):', and 'bool(None)' evalutates to False. This means that there's a subtle risk of our conditional interpreting 'is_open == None' as 'is_open == False'. For clarity, we always test for the 'is None' cases first. And we always test for 'if var == False:' (as opposed to 'if not var:')							
 				"""
 
+		# *** getters & setters ***
 		@property
 		def is_unlocked(self):
 				return self._is_unlocked
@@ -292,6 +296,7 @@ class Door(ViewOnly):
 		def key(self, new_key):
 				self._key = new_key
 
+		# *** complex methods ***
 		def examine(self, active_gs):
 				super(Door, self).examine(active_gs)
 				""" Door-specific examine() responses to be provided in addition to the base examine() method in ViewOnly  
