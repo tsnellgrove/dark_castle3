@@ -217,6 +217,7 @@ Version 3.71 Goals
 	- TBD: refactor ViewOnly
 	- TBD: refactor Container (vars, add None options, etc), put() method
 	- TBD: refactor Item
+	- TBD: introduce Suitcase class ? (Container + Item => Suitcase => Jug)
 	- TBD: refactor Jug (dual inheritance from Container & Item) [move container list routine from Invisible() to Container() ?]
 		- IDEA: put() for jug fails if obj not is_beverage
 	- TBD: refactor Beverage
