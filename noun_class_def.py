@@ -277,7 +277,7 @@ class Door(ViewOnly):
 				if self.is_open is None:
 						active_gs.buffer(f"The {self.full_name} has no closure. It always remains open.")
 						return				
-				if not self.is_open:
+				if self.is_open == False:
 						active_gs.buffer(f"The {self.full_name} is closed.")
 						return
 				active_gs.buffer(f"The {self.full_name} is open.") # is_open == True
@@ -315,35 +315,49 @@ class Door(ViewOnly):
 				if self.is_open:
 						active_gs.buffer(f"The {self.full_name} is already open.")
 						return 
-				if not self.is_unlocked:
+				if self.is_unlocked == False:
 						active_gs.buffer(f"The {self.full_name} is locked.")
 						return 
 				self.is_open = True
-				active_gs.buffer("Openned")
+				active_gs.buffer("Openned") # is_open == False, is_unlocked == True
 
 		def close(self, active_gs):
 				if self.is_open is None:
 						active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 						return 
-				if not self.is_open:
+				if self.is_open == False:
 						active_gs.buffer(f"The {self.full_name} is already closed.")
 						return 
 				if self.is_unlocked == False: # for Iron Portcullis
 						active_gs.buffer(f"The {self.full_name} is locked open.")
 						return 
 				self.is_open = False
-				active_gs.buffer("Closed")
+				active_gs.buffer("Closed") # is_open == True, is_unlocked == True
 
 		def lock(self, active_gs):
+				if self.is_open is None:
+						active_gs.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
+						return 
+				if self.is_unlocked is None:
+						active_gs.buffer(f"The {self.full_name} does not appear to have a lock.")
+						return 
+				if self.key is None:
+						active_gs.buffer(f"You don't see a keyhole in the {self.full_name}.")
+						return
 				if self.is_open == True:
-						active_gs.buffer("You can't lock something that's open.")
-				elif not active_gs.hand_check(self.key):
+						active_gs.buffer("You can't lock or unlock something that's open.")
+						return
+				if not active_gs.hand_check(self.key) and not active_gs.hand_empty() and active_gs.get_hand_lst()[0].root_name == 'key':
+						active_gs.buffer("You aren't holding the correct key.")
+						return 
+				if not active_gs.hand_check(self.key):
 						active_gs.buffer("You aren't holding the key.")
-				elif self.is_unlocked == False:
-						active_gs.buffer("The " + self.full_name + " is already locked.")
-				else:
-						active_gs.buffer("Locked")
-						self.is_unlocked = False
+						return 
+				if self.is_unlocked == False:
+						active_gs.buffer(f"The {self.full_name} is already locked.")
+						return 
+				active_gs.buffer("Locked") # correct key in hand, is_open == False, is_unlocked == True
+				self.is_unlocked = False
 
 class Container(Door):
 		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contains):
