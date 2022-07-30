@@ -215,6 +215,8 @@ Version 3.71 Goals
 		- TBD: detailed testing
 		- DONE: add tripple-quote doc_strings
 	- TBD: refactor ViewOnly
+	- TBD: refactor Writing (explain why not a MixIn)
+	- TBD: refactor Invisible
 	- TBD: refactor Container (vars, add None options, etc), put() method
 	- TBD: refactor Item
 	- TBD: introduce Suitcase class ? (Container + Item => Suitcase => Jug)
@@ -529,7 +531,7 @@ Game Ending:
 	- lecturn found in the Library (Willy's favorite room in the castle)
 	- But only one thing can be _on_ the lecturn at a time... and there is currently a stuborn_snail there
 	- snaill can only be encouraged to move by showing it the salt from the Kitchen
-	- Depends on class Surface (example obj = table, shelf, lecturn); needs a max_items attribute?
+	- Depends on class Shelf (example obj = table, counter, lecturn - anything with a surface); needs a max_items attribute?
 
 Glum Dragon
 - how about a glum / bored / enui-ladden dragon that is blocking the libary entrance with its bulk
