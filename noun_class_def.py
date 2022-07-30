@@ -243,9 +243,9 @@ class Item(ViewOnly):
 class Door(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key):
 				super().__init__(name, full_name, root_name, descript_key, writing)
-				self._is_open = is_open
-				self._is_unlocked = is_unlocked
-				self._key = key
+				self._is_open = is_open # True if the door is open, False if the door is closed, None if there is no door (useful for Container)
+				self._is_unlocked = is_unlocked # True if the door is unlocked, False if the door is locked, None if there is no lock
+				self._key = key # the key obj required to unlock the door; None means the door is not locked by a key
 				# Note: 'if not var:' evalutates 'var == None' to False; so always test None first for clarity
 
 		@property
