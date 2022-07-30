@@ -246,7 +246,24 @@ class Door(ViewOnly):
 				self._is_open = is_open # True if the door is open, False if the door is closed, None if there is no door (useful for Container)
 				self._is_unlocked = is_unlocked # True if the door is unlocked, False if the door is locked, None if there is no lock
 				self._key = key # the key obj required to unlock the door; None means the door is not locked by a key
-				# Note: 'if not var:' evalutates 'var == None' to False; so always test None first and use 'var == False' for clarity
+				""" Doors allow access to rooms and objects. They can be openned, closed, locked, or unlocked. Locked doors require the correct key to open. Finding a way to open a door is one of the most basic puzzle elements in the game.
+				
+				Implementation Details:
+						Standard doors are pretty straight forward. Whether they are open or closed, locked or unlocked, and what key is required to unlock them are goverened by three method-specific attributes: 'is_open', 'is_unlocked', and 'key'. Generally, 'is_open' and 'is_unlocked' are boolean; 'key' points to an Item object.
+						
+						However, all three variables can also take the value of None and invoke special interpretation when they do:
+							
+								'key is None'' => There's no keyhole in this door. The Iron Portcullis is an example of this - it is locked, but not by a key.
+								
+								'is_locked is None' => The door has no lock and cannot be locked. Although this kind of door is pretty rare in adventure games we see it in our daily lives all the time.
+								
+								'is_open is None' => There is no door to open, close, lock, or unlock. This can probably best be visualized as a doorframe. 
+								
+						The value of the 'is_open is None' case is initially hard to see since it behaves as nothing more than an archway that Burt can walk through. It makes more sense when you rmemember that the Container class inherits from the Door class and only contributes the additional attribute of 'contain_lst'. So a Container with 'is_open is None' is just a box without a lid. Again, a somewhat rare phenomenon in the world of Interactive Fiction dungeons, but a common object in our daily lives. Container inheritance also explains why the error messages for  Door are a bit vague... they need to encompass actions directed to not only the 'front_gate' and 'iron_portcullis' but also the 'crystal_box' and the 'glass_bottle'.
+						
+						A final note on evaluating the difference between None and False:
+								'if var:' is the same as 'if bool(var):', and 'bool(None)' evalutates to False. This means that there's a subtle risk of our conditional interpreting 'is_open == None' as 'is_open == False'. For clarity, we always test for the 'is None' cases first. And we always test for 'if var == False:' (as opposed to 'if not var:')							
+				"""
 
 		@property
 		def is_unlocked(self):
@@ -274,6 +291,8 @@ class Door(ViewOnly):
 
 		def examine(self, active_gs):
 				super(Door, self).examine(active_gs)
+				""" Door-specific examine() responses to be provided in addition to the base examine() method in ViewOnly  
+				"""
 				if self.is_open is None:
 						active_gs.buffer(f"The {self.full_name} has no closure. It always remains open.")
 						return				
@@ -284,6 +303,8 @@ class Door(ViewOnly):
 				return
 
 		def unlock(self, active_gs):
+				""" Unlocks a Door object.
+				"""
 				if self.is_open is None:
 						active_gs.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
 						return 
@@ -309,6 +330,8 @@ class Door(ViewOnly):
 				self.is_unlocked = True
 
 		def open(self, active_gs):
+				""" Opens a Door object.
+				"""
 				if self.is_open is None:
 						active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 						return 
@@ -322,6 +345,8 @@ class Door(ViewOnly):
 				active_gs.buffer("Openned") # is_open == False, is_unlocked == True
 
 		def close(self, active_gs):
+				""" Closes a Door object.
+				"""
 				if self.is_open is None:
 						active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 						return 
@@ -335,6 +360,8 @@ class Door(ViewOnly):
 				active_gs.buffer("Closed") # is_open == True, is_unlocked == True
 
 		def lock(self, active_gs):
+				""" Locks a Door object.
+				"""
 				if self.is_open is None:
 						active_gs.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
 						return 

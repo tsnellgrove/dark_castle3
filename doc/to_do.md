@@ -199,7 +199,7 @@ Version 3.71 Goals
 		- DONE: don't need to check for if len(lst) > 0: ;; just use if lst: (Also, bool(None) == False
 		- DONE: use list comprehension: 'squares = [i*i for i in range(10)]'
 	- DONE: write brief essay on naming conventions (!!!) (what about give_dict 'accept' case?)
-- TBD: refactor next phase
+- INPROC: refactor next phase
 	- INPROC: refactor door() (same detailed refactor approach as give() & show() above)
 		- DONE: shorten variable names
 			- DONE: open_state => is_open
@@ -211,9 +211,9 @@ Version 3.71 Goals
 		- DONE: leverage if-then shield pattern
 		- DONE: provide None options for attributes (flexible implementation for inherited classes like Container)
 		- DONE: format strings w/ f-strings
-		- DONE: commenteach new class-specific attribute
-		- TBD: detailed testing
+		- DONE: comment each new class-specific attribute
 		- DONE: add tripple-quote doc_strings
+		- TBD: detailed testing
 	- TBD: refactor ViewOnly
 	- TBD: refactor Writing (explain why not a MixIn)
 	- TBD: refactor Invisible
