@@ -246,7 +246,7 @@ class Door(ViewOnly):
 				self._is_open = is_open # True if the door is open, False if the door is closed, None if there is no door (useful for Container)
 				self._is_unlocked = is_unlocked # True if the door is unlocked, False if the door is locked, None if there is no lock
 				self._key = key # the key obj required to unlock the door; None means the door is not locked by a key
-				# Note: 'if not var:' evalutates 'var == None' to False; so always test None first for clarity
+				# Note: 'if not var:' evalutates 'var == None' to False; so always test None first and use 'var == False' for clarity
 
 		@property
 		def is_unlocked(self):
