@@ -227,6 +227,7 @@ Version 3.71 Goals
 			- not is_writing && is check_obj_scope() => use x
 			- not check_writing_scope() => don't see it written anywhere
 			- => read writing
+		- TBD: note that read() is uniquely excluded in validate()
 		- TBD: rename writing_check() ??? (check_writing_scope)
 	- TBD: refactor Invisible
 	- TBD: refactor Container (vars, add None options, etc), put() method
