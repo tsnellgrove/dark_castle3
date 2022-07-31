@@ -15,6 +15,7 @@ July 24, 2022
 - prefix bools w/ 'is_'
 - postfix lists w/ 'lst'
 - postfix dicts w/ 'dict'
+- for a method where you will send an obj and get back a bool, pre-fix with 'check'
 - variables are assumed to be obj. If similar obj and non-obj vars appear in same function, diff w/ post-fix: worn_lst vs. worn_lst_txt
 - class attributes should be named after physical features of the class (NOT their expected data types): hand_lst, bkpk_lst, worn_lst
 - class data types can be returned via methods: vis_lst, all_lst, mach_lst
@@ -221,6 +222,7 @@ Version 3.71 Goals
 	- DONE: historic notes on show() & give() - didn't exist in v2
 	- INPROC: refactor Writing (explain why not a MixIn)
 		- DONE: rewrite writing_check() in GameState using any()
+		- TBD: rename writing_check() ??? (check_writing_scope)
 	- TBD: refactor Invisible
 	- TBD: refactor Container (vars, add None options, etc), put() method
 		- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
