@@ -54,12 +54,12 @@ def validate(active_gs, case, word_lst):
 				return False
 
 		# *** command errors ***
-
 		if case == '2word':
 				word2_obj, word1 = word_lst
 
 				# *** custom method mis-matches ***
-				if (word1 == 'examine') and (active_gs.writing_check(word2_obj)) == True:
+#				if (word1 == 'examine') and (active_gs.writing_check(word2_obj)) == True:
+				if (word1 == 'examine') and (active_gs.chk_wrt_is_vis(word2_obj)) == True:
 						output = "You can't examine the " + word2_obj.full_name + ". Try using 'read' instead."
 						active_gs.buffer(output)
 						return False

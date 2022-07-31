@@ -85,10 +85,12 @@ class Writing(Invisible):
 
 		# *** complex methods ***
 		def read(self, active_gs):
-				if active_gs.writing_check(self) == False and active_gs.scope_check(self) == False:
+#				if active_gs.writing_check(self) == False and active_gs.scope_check(self) == False:
+				if active_gs.chk_wrt_is_vis(self) == False and active_gs.scope_check(self) == False:
 						active_gs.buffer("You can't see a " + self.full_name + " here.")
 						return
-				if active_gs.writing_check(self) == False:
+#				if active_gs.writing_check(self) == False:
+				if active_gs.chk_wrt_is_vis(self) == False:
 						output = "You can't read the " + self.full_name + ". Try using 'examine' instead."
 						active_gs.buffer(output)
 						return

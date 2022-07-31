@@ -11,11 +11,12 @@ July 24, 2022
 5) Run mk_def_pkl()
 6) Add object description in static_gbl
 
-*** Var Naming Conventions ***
-- prefix bools w/ 'is_'
+*** Var and Method Naming Conventions ***
+- prefix bools w/ 'is_' (also used for methods where no varriable is passed - e.g. 'obj.is_item()')
 - postfix lists w/ 'lst'
 - postfix dicts w/ 'dict'
-- for a method where you will send an obj and get back a bool, pre-fix with 'check'
+- for a method where you will send an obj and get back a bool, pre-fix with 'chk'
+- avoid the term 'scope' since there are different scopes for different actions... prefer terms like 'is_vis'
 - variables are assumed to be obj. If similar obj and non-obj vars appear in same function, diff w/ post-fix: worn_lst vs. worn_lst_txt
 - class attributes should be named after physical features of the class (NOT their expected data types): hand_lst, bkpk_lst, worn_lst
 - class data types can be returned via methods: vis_lst, all_lst, mach_lst
@@ -222,13 +223,17 @@ Version 3.71 Goals
 	- DONE: historic notes on show() & give() - didn't exist in v2
 	- INPROC: refactor Writing (explain why not a MixIn)
 		- DONE: rewrite writing_check() in GameState using any()
+		- INPROC: variable names
+			- DONE: rename writing_check() => chk_wrt_is_vis()
+				- DONE: gs_class_def.py
+				- DONE: noun_class_def.py
+				- DONE: validate.py
 		- TBD: rework read() error checking with use if is_writing()
 			- not is_writing && not check_obj_scope() => not here
 			- not is_writing && is check_obj_scope() => use x
 			- not check_writing_scope() => don't see it written anywhere
 			- => read writing
-		- TBD: note that read() is uniquely excluded in validate()
-		- TBD: rename writing_check() ??? (check_writing_scope)
+		- TBD: string_doc: note that read() is uniquely excluded in validate()
 	- TBD: refactor Invisible
 	- TBD: refactor Container (vars, add None options, etc), put() method
 		- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
