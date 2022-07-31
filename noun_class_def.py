@@ -58,6 +58,7 @@ class Writing(Invisible):
 				self._root_name = root_name
 				self._descript_key = descript_key
 
+		# *** getters & setters ***
 		@property
 		def full_name(self):
 				return self._full_name
@@ -74,6 +75,7 @@ class Writing(Invisible):
 		def descript_key(self, new_descript):
 				self._descript_key = new_descript
 
+		# *** simple methods ***
 		def get_descript_str(self, active_gs):
 				try:
 						descript_str = active_gs.get_dynamic_desc_dict(self.descript_key)
@@ -81,6 +83,7 @@ class Writing(Invisible):
 						descript_str = descript_dict[self.descript_key]
 				return descript_str
 
+		# *** complex methods ***
 		def read(self, active_gs):
 				if active_gs.writing_check(self) == False and active_gs.scope_check(self) == False:
 						active_gs.buffer("You can't see a " + self.full_name + " here.")

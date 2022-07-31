@@ -152,6 +152,9 @@ class Creature(ViewOnly):
 				""" Show item to creature.
 				'Show' is meant to be informational in nature. The Player will learn something about the creature - what it desires and fears - based on its response to the item shown. Therefore the show() method provides only a text response. Provoking an action response (e.g. running away) is outside the standard use case and should be implemented via a Modular Machine.
 				
+				Historic Note:
+						show() is new to v3 (as are all commands requiring a preposition - as v1 / v2 only supported 2-word commands). Previously, the player's only insight into creature sentiment was the creature's description. Some test players of v2 felt that the act of giving the hedgehog the sword to get the silver key was pretty arbitrary - and they had a point - the clues were pretty subtle.  show() enables greater insight into a creature's mindset - which in turn anables a Dark Castle world of more objects and variety while maintain a feel of determinism.
+				
 				Implementation specifics:
 						1) When creating a new creature, remember to create the show() response descriptions in descript_dict() using the auto-genertated key format.
 						2) Creaatures other than burt are not allowed to have containers or creatures in their inventory
@@ -170,9 +173,10 @@ class Creature(ViewOnly):
 		def give(self, obj, active_gs):
 				""" Give item to creature.
 				
-				'Give' is meant to enable barter and trade. If the Player gives an item to a creature - particularly if that creature has shown interest in the item via show() - then the player can reasonably hope for some other useful item in return. Therefore the give() method enables a text response, determines whether the creature will accept the gift, and what, if anything, it will give Burt in return.
+				'Give' is meant to enable barter and trade. If the Player gives an item to a creature - particularly if that creature has shown interest in the item via show() - then the player can reasonably hope for some other useful item in return. Therefore the give() method enables a text response, determines whether the creature will accept the gift, and what, if anything, it will give Burt in return. Because give() can fulfill a creature's needs it also has the power to change the creature's mood and therefore update their description.
 				
-				Because give() can fulfill a creature's needs it also has the power to change the creature's mood and therefore update their description.
+				Historic Note:
+						Like show(), give() is new to v3. In v1 / v2 , Burt just dropped the 'stale_biscuits' on the floor of the 'main_hall' and the 'royal_hedgehog' charged forward and gobbled them up. With a new interpreter in v3 that enabled prepositions, give() seemed like a more intentional way to enable barter. It also provides more information about creature sentiment regarding objects.
 				
 				Implementation specifics:
 						1) When creating a new creature, remember to create the response descriptions and (if appropriate) the creature description updates in descript_dict() using the auto-genertated key format.

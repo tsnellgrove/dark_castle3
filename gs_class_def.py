@@ -213,13 +213,23 @@ class GameState(object):
 				scope_lst.append(room_obj)
 				return scope_lst
 
-		def writing_check(self, writing):
+#		def writing_check(self, writing):
+#				scope_lst = self.scope_lst()
+#				writing_found = False
+#				for obj in scope_lst:
+#						if obj.writing == writing:
+#								writing_found = True
+#				return writing_found
+
+		def writing_check(self, txt):
 				scope_lst = self.scope_lst()
-				writing_found = False
-				for obj in scope_lst:
-						if obj.writing == writing:
-								writing_found = True
-				return writing_found
+#				writing_found = False
+#				for obj in scope_lst:
+#						if obj.writing == txt:
+#								writing_found = True
+#				return writing_found
+				return any(obj.writing == txt for obj in scope_lst)
+#if any(x == big_foobar for x in foobars):
 
 		def scope_check(self, obj):
 				scope_lst = self.scope_lst()

@@ -218,7 +218,9 @@ Version 3.71 Goals
 		- DONE: format strings w/ f-strings
 		- DONE: comment each new class-specific attribute
 		- DONE: add tripple-quote doc_strings
-	- TBD: refactor Writing (explain why not a MixIn)
+	- DONE: historic notes on show() & give() - didn't exist in v2
+	- INPROC: refactor Writing (explain why not a MixIn)
+		- DONE: rewrite writing_check() in GameState using any()
 	- TBD: refactor Invisible
 	- TBD: refactor Container (vars, add None options, etc), put() method
 		- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
