@@ -222,6 +222,11 @@ Version 3.71 Goals
 	- DONE: historic notes on show() & give() - didn't exist in v2
 	- INPROC: refactor Writing (explain why not a MixIn)
 		- DONE: rewrite writing_check() in GameState using any()
+		- TBD: rework read() error checking with use if is_writing()
+			- not is_writing && not check_obj_scope() => not here
+			- not is_writing && is check_obj_scope() => use x
+			- not check_writing_scope() => don't see it written anywhere
+			- => read writing
 		- TBD: rename writing_check() ??? (check_writing_scope)
 	- TBD: refactor Invisible
 	- TBD: refactor Container (vars, add None options, etc), put() method
