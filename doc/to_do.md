@@ -200,7 +200,7 @@ Version 3.71 Goals
 		- DONE: use list comprehension: 'squares = [i*i for i in range(10)]'
 	- DONE: write brief essay on naming conventions (!!!) (what about give_dict 'accept' case?)
 - INPROC: refactor next phase
-	- INPROC: refactor door() (same detailed refactor approach as give() & show() above)
+	- DONE: refactor door() (same detailed refactor approach as give() & show() above)
 		- DONE: shorten variable names
 			- DONE: open_state => is_open
 				- DONE: noun_class_def()
@@ -214,7 +214,10 @@ Version 3.71 Goals
 		- DONE: comment each new class-specific attribute
 		- DONE: add tripple-quote doc_strings
 		- DONE: detailed testing
-	- TBD: refactor ViewOnly
+	- DONE: refactor ViewOnly
+		- DONE: format strings w/ f-strings
+		- DONE: comment each new class-specific attribute
+		- DONE: add tripple-quote doc_strings
 	- TBD: refactor Writing (explain why not a MixIn)
 	- TBD: refactor Invisible
 	- TBD: refactor Container (vars, add None options, etc), put() method
@@ -229,6 +232,8 @@ Version 3.71 Goals
 	- TBD: refactor Switch
 	- TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
 - TBD: refactor Room class
+	- TBD: should be able to get basic descriptions from Container and Creature classes
+		- TBD: need methods in class for this - reuse in Container & Creature examine
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 		- is node_lst a better term?
 		- Yes!! node_lvl is the key... imagine an inverted tree... node_0 is at top (say room), node_1 are immedaite contents of node_0, and node_2 = the contents of node_1

@@ -82,23 +82,26 @@ class Writing(Invisible):
 				return descript_str
 
 		def read(self, active_gs):
-
 				if active_gs.writing_check(self) == False and active_gs.scope_check(self) == False:
 						active_gs.buffer("You can't see a " + self.full_name + " here.")
 						return
-
 				if active_gs.writing_check(self) == False:
 						output = "You can't read the " + self.full_name + ". Try using 'examine' instead."
 						active_gs.buffer(output)
 						return
-
 				descript_str = self.get_descript_str(active_gs)
 				active_gs.buffer(descript_str)
 
 class ViewOnly(Writing):
 		def __init__(self, name, full_name, root_name, descript_key, writing):
 				super().__init__(name, full_name, root_name, descript_key)
-				self._writing = writing
+				self._writing = writing # Writing obj associated with the ViewOnly object; writing = None if there is nothing to read on the obj
+				""" ViewOnly objects can be examined and text on them can be read, but they can not interacted with in any other way
+				
+				ViewOnly is the most basic class that represents actual entities in the Dark Castle world. It introduces the all-important examine() method. However, the take() method is not yet defined so there's no hazard that Burt will make off with a ViewOnly object. This is actually quite handy. Adventures are inveterate pillagers but with ViewOnly you can be sure that an object will stay where you put it.
+				
+				Because the Writing attribute is introduced in the ViewOnly class, any object that Burt can see is capable of holding text. In a game based on words, enabling lots of in-game text is vital.
+				"""
 
 		# *** getters & setters ***
 		@property
@@ -107,10 +110,12 @@ class ViewOnly(Writing):
 
 		# *** simple methods ***
 		def has_writing(self):
-				return (self.writing is not None)
+				return self.writing is not None
 
 		# *** complex methods ***
 		def examine(self, active_gs):
+				""" Describes an object. examine() is he most fundamental command for gameplay and is the second method available for visible objects after read(). ViewOnly is the ancestor of many other classes and quite a few of them expand upon examine() (e.g. in class Door, examine() is extended to describe whether the door is open or closed).
+				"""
 				active_gs.buffer(self.get_descript_str(active_gs))
 				if self.has_writing():
 						active_gs.buffer(f"On the {self.full_name} you see: {self.writing.full_name}")
