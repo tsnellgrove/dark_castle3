@@ -213,7 +213,6 @@ class GameState(object):
 				scope_lst.append(room_obj)
 				return scope_lst
 
-#		def writing_check(self, wrt_obj):
 		def chk_wrt_is_vis(self, wrt_obj):
 				scope_lst = self.scope_lst()
 				return any(obj.writing == wrt_obj for obj in scope_lst)
