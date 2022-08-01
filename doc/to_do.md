@@ -250,7 +250,7 @@ Version 3.71 Goals
 		- TBD: comment all vars
 		- TBD: string_doc:
 			- TBD: writing()
-			- TBD: read() (note that read() is uniquely excluded in validate() )
+			- TBD: read() (note that read() is uniquely excluded in validate() ) ; also note the idea that writing diff from contents; peering to read
 			- TBD: get_descript_string()
 	- TBD: refactor Invisible
 	- TBD: refactor Container (vars, add None options, etc), put() method
@@ -259,6 +259,10 @@ Version 3.71 Goals
 	- TBD: introduce Suitcase class ? (Container + Item => Suitcase => Jug)
 	- TBD: refactor Jug (dual inheritance from Container & Item) [move container list routine from Invisible() to Container() ?]
 		- IDEA: put() for jug fails if obj not is_beverage
+	- TBD: create Shelf class!!
+		- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
+		- put initial shelf in Main Hall
+		- implement Control Panel as Shelf !! (may need to add control_panel after guard_goblin dies)
 	- TBD: refactor Beverage
 	- TBD: refactor Food
 	- TBD: refactor Clothes
@@ -280,6 +284,7 @@ Version 3.71 Goals
 		- The limit could be imposed at the give(), show(), take(), and put_in_hand() mehtods
 		- if this caused serius issues there could be a modular machine to swap in a dummy non-container obj
 		- could also run a pre-start check on container & creature to throw errors on illegal contents
+		- need to document (to self!) consistent approach to what is visible when Burt looks, examines, or inventories
 	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
 - TBD: refactor attack()
 	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
@@ -571,7 +576,6 @@ Game Ending:
 	- But only one thing can be _on_ the lecturn at a time... and there is currently a stuborn_snail there
 	- snaill can only be encouraged to move by showing it the salt from the Kitchen
 	- Depends on class Shelf (example obj = table, counter, lecturn - anything with a surface); needs a max_items attribute?
-	- Maybe put initial shelf in Main Hall ?
 
 Glum Dragon
 - how about a glum / bored / enui-ladden dragon that is blocking the libary entrance with its bulk
