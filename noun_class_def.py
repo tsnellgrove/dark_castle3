@@ -76,6 +76,9 @@ class Writing(Invisible):
 				self._descript_key = new_descript
 
 		# *** simple methods ***
+		def is_writing(self):
+				return True
+
 		def get_descript_str(self, active_gs):
 				try:
 						descript_str = active_gs.get_dynamic_desc_dict(self.descript_key)
@@ -85,15 +88,26 @@ class Writing(Invisible):
 
 		# *** complex methods ***
 		def read(self, active_gs):
-				if active_gs.chk_wrt_is_vis(self) == False and active_gs.scope_check(self) == False:
-						active_gs.buffer("You can't see a " + self.full_name + " here.")
-						return
-				if active_gs.chk_wrt_is_vis(self) == False:
-						output = "You can't read the " + self.full_name + ". Try using 'examine' instead."
-						active_gs.buffer(output)
-						return
-				descript_str = self.get_descript_str(active_gs)
-				active_gs.buffer(descript_str)
+#				if active_gs.chk_wrt_is_vis(self) == False and active_gs.scope_check(self) == False:
+#						active_gs.buffer("You can't see a " + self.full_name + " here.")
+#						return
+#				if active_gs.chk_wrt_is_vis(self) == False:
+#						output = "You can't read the " + self.full_name + ". Try using 'examine' instead."
+#						active_gs.buffer(output)
+#						return
+#				descript_str = self.get_descript_str(active_gs)
+#				active_gs.buffer(descript_str)
+
+				if not self.is_writing() and not active_gs.scope_check(self):
+						active_gs.buffer(f"You can't see a {self.full_name} here.")
+						return 
+				if not self.is_writing() and active_gs.scope_check(self):
+						active_gs.buffer(f"You can't read the {self.full_name}. Try using 'examine' instead.")
+						return 
+				if not active_gs.chk_wrt_is_vis(self):
+						active_gs.buffer(f"You can't see {self.full_name} written on anything here.")
+						return 
+				active_gs.buffer(self.get_descript_str(active_gs)) # is_writing() and chk_wrt_is_vis() 
 
 class ViewOnly(Writing):
 		def __init__(self, name, full_name, root_name, descript_key, writing):
@@ -112,6 +126,9 @@ class ViewOnly(Writing):
 				return self._writing
 
 		# *** simple methods ***
+		def is_writing(self):
+				return False
+		
 		def has_writing(self):
 				return self.writing is not None
 
