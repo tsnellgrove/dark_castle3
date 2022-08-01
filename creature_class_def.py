@@ -144,9 +144,9 @@ class Creature(ViewOnly):
 		def examine(self, active_gs):
 				super(Creature, self).examine(active_gs)
 				if not self.hand_empty():
-						active_gs.buffer("The{self.full_name} is holding a {self.hand_item().full_name}")
+						active_gs.buffer(f"The {self.full_name} is holding a {self.hand_item().full_name}")
 				if not self.worn_empty():
-						active_gs.buffer("The {self.full_name} is wearing: {self.worn_str()}")
+						active_gs.buffer(f"The {self.full_name} is wearing: {self.worn_str()}")
 
 		def show(self, obj, active_gs):
 				""" Show item to creature.

@@ -236,12 +236,22 @@ Version 3.71 Goals
 			- => read writing
 		- DONE: if-then shielf pattern
 		- DONE: f-strings
-		- TBD: refactor get_dynamic_desc_dict in active_gs()
-			- TBD: rename dynamic_desc_dict => dyn_descript_dict
-			- TBD: rename get_dynamic_desc_dict => get_dyn_descript
-			- TBD: rename set_dynamic_desc_dict => set_dyn_descript
-		- TBD: refactor get_descript_str in noun_class_def()
-		- TBD: string_doc: note that read() is uniquely excluded in validate()
+		- DONE: refactor get_dynamic_desc_dict in active_gs()
+			- DONE: rename dynamic_desc_dict => dyn_descript_dict
+				- gs_class_def()
+			- DONE: rename get_dynamic_desc_dict => get_dyn_descript
+				- gs_class_def()
+				- noun_class_def()
+			- DONE: rename set_dynamic_desc_dict => set_dyn_descript
+				- gs_class_def()
+				- start_up()
+		- TBD: refactor get_dyn_descript and set_dyn_descript in GameState (use if-then shield)
+		- TBD: refactor get_descript_str in noun_class_def() (eliminate interim var descript_str)
+		- TBD: comment all vars
+		- TBD: string_doc:
+			- TBD: writing()
+			- TBD: read() (note that read() is uniquely excluded in validate() )
+			- TBD: get_descript_string()
 	- TBD: refactor Invisible
 	- TBD: refactor Container (vars, add None options, etc), put() method
 		- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature

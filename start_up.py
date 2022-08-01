@@ -22,7 +22,7 @@ def start_me_up():
 		### Assign Random Secret Code ###
 		portcullis_code = random.randint(0, 7)
 		port_code_txt = "'..ode is " + str(portcullis_code) + ". Don't tell anyo..'"
-		active_gs.set_dynamic_desc_dict('messy_handwriting', port_code_txt)
+		active_gs.set_dyn_descript('messy_handwriting', port_code_txt)
 		
 		for obj in master_obj_lst[1:]:
 				if obj.name == 'control_panel':

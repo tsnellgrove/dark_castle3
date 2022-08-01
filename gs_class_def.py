@@ -14,9 +14,9 @@ from shared_class_func import obj_lst_to_str
 
 ### classes
 class GameState(object):
-		def __init__(self, name, dynamic_desc_dict, map_dict, points_earned_dict, static_obj_dict, state_dict, universal_mach_lst, room_lst):
+		def __init__(self, name, dyn_descript_dict, map_dict, points_earned_dict, static_obj_dict, state_dict, universal_mach_lst, room_lst):
 				self._name = name
-				self._dynamic_desc_dict = dynamic_desc_dict
+				self._dyn_descript_dict = dyn_descript_dict
 				self._map_dict = map_dict
 				self._points_earned_dict = points_earned_dict
 				self._static_obj_dict = static_obj_dict
@@ -35,17 +35,17 @@ class GameState(object):
 				return self._room_lst
 
 		### descriptions ###
-		def get_dynamic_desc_dict(self, dynamic_desc_key):
-				if dynamic_desc_key not in self._dynamic_desc_dict:
+		def get_dyn_descript(self, descript_key):
+				if descript_key not in self._dyn_descript_dict:
 						raise KeyError("key does not exist in dict")
 				else:
-						return self._dynamic_desc_dict[dynamic_desc_key]
+						return self._dyn_descript_dict[descript_key]
 
-		def set_dynamic_desc_dict(self, dynamic_desc_key, dynamic_desc_str):
-				if dynamic_desc_key not in self._dynamic_desc_dict:
+		def set_dyn_descript(self, descript_key, dynamic_desc_str):
+				if descript_key not in self._dyn_descript_dict:
 						raise KeyError("key does not exist in dict")
 				else:
-						self._dynamic_desc_dict[dynamic_desc_key] = dynamic_desc_str
+						self._dyn_descript_dict[descript_key] = dynamic_desc_str
 
 		### movement ###
 		def is_valid_map_direction(self, room_obj, direction):
