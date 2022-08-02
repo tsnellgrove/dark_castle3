@@ -570,6 +570,51 @@ Version 3.9x Goals
 
 *** NEW PUZZLE IDEAS ***
 
+Zork Thief = Ferret:
+- dextrous, loves colorful objects, likes to fidtet / fiddle with things, clever
+- will steal an object from burt (or that burt has touched) each time it randomly runs into him (some items off limits?)
+- Some item on a high shelf or complexly locked (like the Zork egg) can only be opened by the ferret
+- burt can indefinitely / eternally distract the ferret (*after* it has solved its puzzle) by giving it a rubks cube (described not named)
+- the ferrets treasures can be found in a hole that burt needs to reach his arm into (scary warnings - could be a grue)
+- maybe the shelf in the main hall is the one place safe from the ferret
+
+Debug mode:
+- Need a debug mode that eliminates 'try' from 2word and prep commands
+
+hedghog:
+- perhaps the hedgehog greets you every time you walk into the main_hall once you return the sword?
+
+Food:
+- bread for Burt (save piecs of cheese for the mice)
+- maybe need to keep feeding biscuits to the hedgehog?
+
+Carry Cappacity Constraints:
+- item 'size' limits (invent point values) for Containers and Narrow Passages
+- instead of big_rock could have sea_chest in main_hall tht burt can barely lug
+	- maybe it's locked but has no key
+	- can be the solution to the Wumpus_bat puzzle
+	- Also, when the bat drops the chest, it smashes open... maybe revealing the rubiks cube (too soon??)
+- Could have a narrow_passage - perhaps a collapsed passage that connects the north and south halves of the castle?
+	- burt can only squeeze through with a few items (no sword)... perhaps the ruby for the smithy mouse is in the north side?
+
+Window:
+- would be need to have a Window class that allows burt to see what he can't take
+- could allow burt to peer into a courtyard with a tree and fountain
+- maybe 2 guard dogs - one with red hat, one with blue hat - that are constantly paroling a passage
+- if burt observest the window for a few turns he can see when to zip past the patrol
+- (when the blue-hat dog looks up expectantly)
+- perhaps window is in the collapsed_passage ??
+
+Writing / engraving:
+- would be nice to have a way to write / engrave on something
+- maybe make a weapon useful against a particular foe by engraving it??
+- or put the dragon to work clearing a passage by making a sign that says 'cheese cake'
+
+Vanishing cabinets:
+- enable limited travel to another part of the dungeon?
+- maybe only work one way (because broken?)
+- or maybe can only bring very little gear?
+
 Game Ending:
 - Kinging Scroll glows faintly... and can only read when sitting on the Royal Leturn... which also glows slightly
 	- lecturn found in the Library (Willy's favorite room in the castle)
