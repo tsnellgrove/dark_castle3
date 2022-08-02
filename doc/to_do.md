@@ -246,7 +246,7 @@ Version 3.71 Goals
 				- gs_class_def()
 				- start_up()
 		- DONE: refactor get_dyn_descript and set_dyn_descript in GameState (use if-then shield)
-		- TBD: refactor get_descript_str in noun_class_def() (eliminate interim var descript_str)
+		- DONE: refactor get_descript_str in noun_class_def() (eliminate interim var descript_str)
 		- TBD: comment all vars
 		- TBD: string_doc:
 			- TBD: writing()

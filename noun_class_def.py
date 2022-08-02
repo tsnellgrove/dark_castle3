@@ -81,10 +81,9 @@ class Writing(Invisible):
 
 		def get_descript_str(self, active_gs):
 				try:
-						descript_str = active_gs.get_dyn_descript(self.descript_key)
+						return active_gs.get_dyn_descript(self.descript_key)
 				except:
-						descript_str = descript_dict[self.descript_key]
-				return descript_str
+						return descript_dict[self.descript_key]
 
 		# *** complex methods ***
 		def read(self, active_gs):
