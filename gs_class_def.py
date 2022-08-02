@@ -38,14 +38,15 @@ class GameState(object):
 		def get_dyn_descript(self, descript_key):
 				if descript_key not in self._dyn_descript_dict:
 						raise KeyError("key does not exist in dict")
-				else:
-						return self._dyn_descript_dict[descript_key]
+						return 
+				return self._dyn_descript_dict[descript_key]
 
-		def set_dyn_descript(self, descript_key, dynamic_desc_str):
+		def set_dyn_descript(self, descript_key, descript_val):
 				if descript_key not in self._dyn_descript_dict:
 						raise KeyError("key does not exist in dict")
-				else:
-						self._dyn_descript_dict[descript_key] = dynamic_desc_str
+						return 
+				self._dyn_descript_dict[descript_key] = descript_val
+				return 
 
 		### movement ###
 		def is_valid_map_direction(self, room_obj, direction):
