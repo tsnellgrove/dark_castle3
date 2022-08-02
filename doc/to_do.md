@@ -247,11 +247,11 @@ Version 3.71 Goals
 				- start_up()
 		- DONE: refactor get_dyn_descript and set_dyn_descript in GameState (use if-then shield)
 		- DONE: refactor get_descript_str in noun_class_def() (eliminate interim var descript_str)
-		- TBD: comment all vars
-		- TBD: string_doc:
+		- DONE: comment all vars
+		- INPROC: string_doc:
 			- TBD: writing()
 			- TBD: read() (note that read() is uniquely excluded in validate() ) ; also note the idea that writing diff from contents; peering to read
-			- TBD: get_descript_string()
+			- DONE: get_descript_string()
 	- TBD: refactor Invisible
 	- TBD: refactor Container (vars, add None options, etc), put() method
 		- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature

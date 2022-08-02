@@ -54,9 +54,9 @@ class Invisible(object):
 class Writing(Invisible):
 		def __init__(self, name, full_name, root_name, descript_key):
 				super().__init__(name)
-				self._full_name = full_name
-				self._root_name = root_name
-				self._descript_key = descript_key
+				self._full_name = full_name # the object name presented to the player. Typical format = "Adj Noun". First character capitalized
+				self._root_name = root_name # the one-word abreviation for the canonical adj_noun formulated name. e.g. rusty_key => key; not unique 
+				self._descript_key = descript_key # the key used to look up the object description in descript_dict
 
 		# *** getters & setters ***
 		@property
@@ -80,6 +80,10 @@ class Writing(Invisible):
 				return True
 
 		def get_descript_str(self, active_gs):
+				""" One might reasonably think that getting the description of an object would be a simple matter of looking up obj.descript_key in descript_dict. This does indeed work the vast majority of the time. And because an object's descript_key is independent of its canonical 'name', we can can change the value of descript_key (and therefore the description value) any time we want to. However, it should be noted that descript_dict lives in a module name static_gbl() - so named because all of its contents are indeed static. This is extremely useful logisticaly. It means that we never need to worry about saving any of the text in descript_dict - because it never changes. Instead we just change obj.descript_key and point to a different ready-made descript_dict value. 
+				
+				But what if we need to algorithmically update the value of a description? A example of this is the 'secret code' on the guard_goblin's torn_note. We generate the random value for the iron_portcullis at the beginning of the game in start_up() and cache that value in the switch code... but how do we update the description for messy_handwriting? There are only 8 possible values so we could have 8 decitionary entries - but a general solution to the problem seems desireable. My solution is to keep a small dyn_descript_dict in GameState where it is saved every turn. Then whenever we examine() or read() we try looking up obj.descript_key in dyn_descript_dict first. If this fails, then we check the static descript_dict. Hence the need for get_descript_str() in Writing.
+				"""
 				try:
 						return active_gs.get_dyn_descript(self.descript_key)
 				except:
