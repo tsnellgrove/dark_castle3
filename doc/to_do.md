@@ -188,6 +188,7 @@ Version 3.71 Goals
 		- DONE: leverage if-then shield pattern 
 		- DONE: provide 'None' options for variables and 'match' options for Conditions
 		- DONE: Format strings with f-Strings. 'name = "Alex" ;; my_string = f"Hello {name}"
+		- DONE: ensure graceful failure of missing key lookups
 		- DONE: comment each new attribute
 		- DONE: add tripple-quote doc_strings
 	- DONE: refactor pass-advanced
