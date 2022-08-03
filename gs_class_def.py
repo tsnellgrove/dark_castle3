@@ -42,11 +42,7 @@ class GameState(object):
 				return self._dyn_descript_dict[descript_key]
 
 		def set_dyn_descript_dict(self, descript_key, descript_val):
-				if descript_key not in self._dyn_descript_dict:
-#						raise KeyError("key does not exist in dict")
-						self._dyn_descript_dict[descript_key] = descript_val
-						return 
-				self._dyn_descript_dict[descript_key] = descript_val
+				self._dyn_descript_dict[descript_key] = descript_val # adds key value pair if it does not exist
 				return 
 
 		### movement ###
