@@ -384,6 +384,7 @@ Refactor burt as a Creature class object
 Version 3.73 Goals
 - modularize remaining GameState class and declarations (???)
 
+- TBD: refactor GameState and dicts in static_gbl() with dunder methods (__getattr__ and __setattr__ ; see email to self on Aug 2, 2022)
 - TBD: active_gs => gs renaming; point to same obj to start with ??
 - TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
 - TBD: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )

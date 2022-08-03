@@ -87,9 +87,12 @@ class Writing(Invisible):
 				But what if we want to dynamically generate a description *once* and then be able to reference it again in the future? An example of this is the 'secret code' on the guard_goblin's torn_note. We generate a random value between 0 and 7 for the iron_portcullis at the beginning of the game in start_up() and save that value to control_panel state... but how do we store the description for messy_handwriting? There are only 8 possible values so we could have 8 static dictionary entries in descript_dict - but a general solution to the problem seems desireable. My approach is to keep a small dyn_descript_dict in GameState where it is saved every turn. Then whenever we examine() or read() we try looking up obj.descript_key in dyn_descript_dict first. If this fails, then we check the static descript_dict. Hence the need for get_descript_str() in Writing.
 				"""
 				try:
-						return active_gs.get_dyn_descript(self.descript_key)
+						return active_gs.get_dyn_descript_dict(self.descript_key)
 				except:
-						return descript_dict[self.descript_key]
+						try:
+								return descript_dict[self.descript_key]
+						except:
+								return f"The {self.full_name} is simply indescribable."
 
 		# *** complex methods ***
 		def read(self, active_gs):

@@ -35,15 +35,16 @@ class GameState(object):
 				return self._room_lst
 
 		### descriptions ###
-		def get_dyn_descript(self, descript_key):
+		def get_dyn_descript_dict(self, descript_key):
 				if descript_key not in self._dyn_descript_dict:
 						raise KeyError("key does not exist in dict")
 						return 
 				return self._dyn_descript_dict[descript_key]
 
-		def set_dyn_descript(self, descript_key, descript_val):
+		def set_dyn_descript_dict(self, descript_key, descript_val):
 				if descript_key not in self._dyn_descript_dict:
-						raise KeyError("key does not exist in dict")
+#						raise KeyError("key does not exist in dict")
+						self._dyn_descript_dict[descript_key] = descript_val
 						return 
 				self._dyn_descript_dict[descript_key] = descript_val
 				return 

@@ -253,7 +253,8 @@ axe_in_goblin_hand_result.creature_obj = goblin_guard
 ### active_gs is the central store of game info ###
 active_gs = GameState(
 		'active_gs',
-		{'messy_handwriting' : ""},
+#		{'messy_handwriting' : ""},
+		{}, # dyn_descript_dict
 		{
 				'entrance' : {'north' : main_hall},
 				'main_hall' : {'south' : entrance, 'north' : antechamber},
