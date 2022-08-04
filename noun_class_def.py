@@ -449,7 +449,7 @@ class Container(Door):
 				super().__init__(name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key)
 				self._contains = contains # list of items in the container
 
-		# getters & setters
+		# *** getters & setters ***
 		@property
 		def contains(self):
 				return self._contains
@@ -458,7 +458,7 @@ class Container(Door):
 		def contains(self, new_obj):
 				self._contains = new_obj
 
-		# simple methods
+		# *** simple methods ***
 		def in_container(self, obj):
 				return obj in self.contains
 
@@ -477,7 +477,7 @@ class Container(Door):
 						vis_lst = self.contains
 				return vis_lst
 
-		# complex methods
+		# *** complex methods ***
 		def examine(self, active_gs):
 				super(Container, self).examine(active_gs)
 				self.print_contents_str(active_gs)

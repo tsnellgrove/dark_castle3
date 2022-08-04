@@ -258,7 +258,11 @@ Version 3.71 Goals
 		- DONE: Format strings with f-Strings. 'name = "Alex" ;; my_string = f"Hello {name}"
 		- DONE: comment each new attribute
 		- DONE: add tripple-quote doc_strings
-	- TBD: refactor Container (vars, add None options, etc), put() method
+	- INPROC: refactor Container (vars, add None options, etc), put() method
+		- INPROC: shorten variable names
+			- INPROC: contains => contain_lst
+				- INPROC: mk_def_pkl()
+				- INPROC: noun_class_def()
 		- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
 	- TBD: refactor Item
 	- TBD: introduce Suitcase class ? (Container + Item => Suitcase => Jug)
