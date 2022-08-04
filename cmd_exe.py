@@ -39,7 +39,7 @@ def cmd_execute(active_gs, case, word_lst):
 				getattr(room_obj, word1)(word2, active_gs)
 		elif case == '2word':
 				word2_obj, word1 = word_lst
-##						getattr(word2_obj, word1)(active_gs) # for troubleshooting
+##				getattr(word2_obj, word1)(active_gs) # for troubleshooting
 				try:
 						getattr(word2_obj, word1)(active_gs)
 				except:

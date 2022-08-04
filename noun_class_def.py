@@ -16,12 +16,20 @@ from shared_class_func import obj_lst_to_str
 ### classes
 class Invisible(object):
 		def __init__(self, name):
-				self._name = name
+				self._name = name # text str of each obj's canonical name; should be unique and immutable
+				""" Invisible is the root object class. There are no instantiated objects of class Invisible but all objects in the game inherit the name attribute and some basic methods from Invisible. 
+				
+				name is a text string that represents the canonical name of an object. It should be identical to the declared object label, unique, and immutable. For object rusty_key, rusty_key.name = 'rusty_key'. For reasons that remain a little murky to my beginner brain, objects in Python have no way of actually knowing their own names. As I understand it, object names are merely labels that are pointers to the actual object... and the object itself has no idea what labels are pointing to it at any given time. In any case, the perceived wisdom is that if you want to be able to reference an object by its name, you'd better give it a name attribute - hence 'name'.
+				
+				The object tree of Dark Castle forks from Invisible. One trunk leads to Writing, then ViewOnly, and then all the other visible objects in the game that Burt can interct with. The other trunk leads to a collection of invisible objects that manage the automated behavior of the game. It might surprise a player of Dark Castle to learn that there are about as many invisible objects in the game as there are visible ones. However if you inspect the take() method you'll see that there's no code there that could trigger the royal_hedgehog to guard the shiny_sword. Likewise, there's no code in go() that could tell Burt about the Rusty Key when he tries to head south from the Entrance. These behaviors and many more are all enabled by invisible objects. See mach_class_def() for more information on these objects.
+				"""
 
+		# *** getters & setters ***
 		@property
 		def name(self):
 				return self._name
 
+		# *** simple methods ***
 		def is_item(self):
 				return False
 
@@ -43,13 +51,14 @@ class Invisible(object):
 		def is_mach(self):
 				return False
 
+		def __repr__(self):
+				return f"Object {self.name} is of class {type(self).__name__}"
+
+		# *** temp method - be moved to Container ***
 		def	print_contents_str(self, active_gs):
 				if self.is_container() and self.is_open == True:
 						container_str = obj_lst_to_str(self.contains)
 						active_gs.buffer("The " + self.full_name + " contains: " + container_str)
-
-		def __repr__(self):
-				return f'Object { self.name } is of class { type(self).__name__ } '
 
 class Writing(Invisible):
 		def __init__(self, name, full_name, root_name, descript_key):
