@@ -15,6 +15,7 @@ July 24, 2022
 - prefix bools w/ 'is_' (also used for methods where no varriable is passed - e.g. 'obj.is_item()')
 - postfix lists w/ 'lst'
 - postfix dicts w/ 'dict'
+- use singular, not the pluaral form of words in variable names (e.g. use 'object_lst', not "objects_lst')
 - for a method where you will send an obj and get back a bool, pre-fix with 'chk'
 - avoid the term 'scope' since there are different scopes for different actions... prefer terms like 'is_vis'
 - variables are assumed to be obj. If similar obj and non-obj vars appear in same function, diff w/ post-fix: worn_lst vs. worn_lst_txt
