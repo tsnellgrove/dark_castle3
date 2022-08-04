@@ -57,6 +57,22 @@ class Writing(Invisible):
 				self._full_name = full_name # the object name presented to the player. Typical format = "Adj Noun". First character capitalized
 				self._root_name = root_name # the one-word abreviation for the canonical adj_noun formulated name. e.g. rusty_key => key; not unique 
 				self._descript_key = descript_key # the key used to look up the object description in descript_dict
+				""" Writing objects represent text which can be read().
+				
+				It may seem counter-intuitive that the first visible object class in the hierarchy is Writing - but when one remembers that all other visible objects can have Writing as an attribute the order makes sense. As the first class that Burt can interactive, Writing introduces three critical attributes:
+						
+						full_name is a text string that represents the object name the player will see. the full_name for object rusty_key is 'Rusty Key'. All object full_names are capitalized as a convention intended to help players recognize which entities in the room descriptions they can interact with.
+						
+						root_name is a text string that represents the one-word "short name" for an object. The root_name for object rusty_key is 'key'. The player can refer to the object by its root_name so long as there are no other visible objects with the same root_name. root_name is used within the interpreter().
+						
+						descript_key is a text string that is used to lookup the description of an object (or in the case of the Writing class, the text of an object) in descript_dict. By default, descript_key == name (i.e. the descript_key for object rusty_key is 'rusty_key'). However, by making descript_key and independent attribute from name, we enable the descriptions (or text) associated with an object to change over time.
+						
+				Historic Note:				
+						The tradition of copous writing samples in text adventures dates right back to Zork itself. In Zork the first interactive object you come across is a mailbox. And within the mailbox is a leaflet you can read and which welcomes you to the game. Dark Castle cleaved tightly to this tradition. From the earliest implementation, the front_gaate had rusty_lettering... which is both a reference to the similar gates of hades in Zork I and of course a nod to good ol' Dante.
+				
+				Implementation Details:
+						It is worth noting that writing is treated a bit differently than other 'noun' objects. In theory, you could think of every ViewOnly and decendent object as 'containing' up to one writing object. But for other open containers (i.e. Containers and Creatures), the contents are listed when Burt enters a room. This is not the case for writing. Writing not included in a creature, room, or container's vis_lst and is only ever mentioned when the object it is written on is examined. This is partly to avoid over-cluttering the room descriptions and partly to provide a sense of discovery when an object is examined. Also, I picture Burt needing to peer closely at writing to make it out in the dim lantern light.
+				"""
 
 		# *** getters & setters ***
 		@property
@@ -96,6 +112,8 @@ class Writing(Invisible):
 
 		# *** complex methods ***
 		def read(self, active_gs):
+				""" Reads text found on an object. Read is the first player-accessible method. For the reasons mentioned above in Writing, writing objects are treated a bit differently than other 'nouns' and therefore the error checking in read() is a bit different as well (writing has it's own unique scope check method, chk_wrt_is_vis). Note that read is uniquely excluded from the 2word generic command failure routines in validate(). 
+				"""
 				if not self.is_writing() and not active_gs.scope_check(self):
 						active_gs.buffer(f"You can't see a {self.full_name} here.")
 						return 
@@ -115,7 +133,7 @@ class ViewOnly(Writing):
 				
 				ViewOnly is the most basic class that represents actual entities in the Dark Castle world. It introduces the all-important examine() method. However, the take() method is not yet defined so there's no hazard that Burt will make off with a ViewOnly object. This is actually quite handy. Adventures are inveterate pillagers but with ViewOnly you can be sure that an object will stay where you put it.
 				
-				Because the Writing attribute is introduced in the ViewOnly class, any object that Burt can see is capable of holding text. In a game based on words, enabling lots of in-game text is vital.
+				Because the writing attribute is introduced in the ViewOnly class, any object that Burt can see is capable of holding text. I originally debated this approach. Of all attributes, writing is probably the one most often set to None. This seemed like a good case for a MixIn class... but then it became clear that I would have at least one member of nearly every class that had writing on it. Two versions of every class - one with writing and one without - certainly didn't seem desirable. Also, I often found myself adding text to objects later on as I realized that a puzzle was too obscure (e.g. the small_printing on the grimy_axe). As of v3.70 there's no conversation in the game - and none likly in the near future - so often it's left to writing to make the Dark Castle world feel explicable and lived in. Ultimately, in a game based on words, enabling lots of in-game text turns out to be pretty important.
 				"""
 
 		# *** getters & setters ***
