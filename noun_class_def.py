@@ -283,7 +283,7 @@ class Item(ViewOnly):
 						room_obj.room_obj_lst_remove(self)
 				else:
 						for obj in room_obj_lst: # else remove item from container it's in
-								if obj.is_container() and obj.in_container(self):
+								if obj.is_container() and obj.chk_in_contain_lst(self):
 										obj.contain_lst_remove(self)
 				return
 
@@ -459,7 +459,7 @@ class Container(Door):
 				self._contain_lst = new_obj
 
 		# *** simple methods ***
-		def in_container(self, obj):
+		def chk_in_contain_lst(self, obj):
 				return obj in self.contain_lst
 
 		def contain_lst_append(self, item):

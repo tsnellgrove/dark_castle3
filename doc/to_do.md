@@ -264,7 +264,8 @@ Version 3.71 Goals
 				- DONE: mk_def_pkl()
 				- DONE: noun_class_def()
 			- TBD: in_container() => chk_in_contain_lst()
-				- TBD: ???
+				- TBD: noun_class_def()
+				- 
 		- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
 	- TBD: refactor Item
 	- TBD: introduce Suitcase class ? (Container + Item => Suitcase => Jug)
