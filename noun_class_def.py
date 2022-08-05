@@ -472,10 +472,12 @@ class Container(Door):
 				return True
 
 		def vis_lst(self):
-				vis_lst = []
+#				vis_lst = []
 				if self.is_open:
-						vis_lst = self.contain_lst
-				return vis_lst
+						return self.contain_lst
+#						vis_lst = self.contain_lst
+#				return vis_lst
+				return []
 
 		# *** complex methods ***
 		def examine(self, active_gs):

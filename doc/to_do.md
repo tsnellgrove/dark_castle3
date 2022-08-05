@@ -259,13 +259,12 @@ Version 3.71 Goals
 		- DONE: comment each new attribute
 		- DONE: add tripple-quote doc_strings
 	- INPROC: refactor Container (vars, add None options, etc), put() method
-		- INPROC: shorten variable names
+		- DONE: shorten variable names
 			- DONE: contains => contain_lst
 				- DONE: mk_def_pkl()
 				- DONE: noun_class_def()
-			- TBD: in_container() => chk_in_contain_lst()
-				- TBD: noun_class_def()
-				- 
+			- DONE: in_container() => chk_in_contain_lst()
+				- DONE: noun_class_def()
 		- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
 	- TBD: refactor Item
 	- TBD: introduce Suitcase class ? (Container + Item => Suitcase => Jug)
