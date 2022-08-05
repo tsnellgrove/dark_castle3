@@ -263,11 +263,14 @@ Version 3.71 Goals
 			- INPROC: contains => contain_lst
 				- INPROC: mk_def_pkl()
 				- INPROC: noun_class_def()
+			- TBD: in_container() => chk_contain_lst()
+				- TBD: ???
 		- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
 	- TBD: refactor Item
 	- TBD: introduce Suitcase class ? (Container + Item => Suitcase => Jug)
 	- TBD: refactor Jug (dual inheritance from Container & Item) [move container list routine from Invisible() to Container() ?]
-		- IDEA: put() for jug fails if obj not is_beverage
+		- TBD: put() for jug fails if obj not is_beverage
+		- TBD: use chk_
 		- TBD: move print_contents_str() from Invisible to Container
 	- TBD: create Shelf class!!
 		- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
