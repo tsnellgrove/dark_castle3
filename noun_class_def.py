@@ -57,7 +57,7 @@ class Invisible(object):
 		# *** temp method - be moved to Container ***
 		def	print_contents_str(self, active_gs):
 				if self.is_container() and self.is_open == True:
-						container_str = obj_lst_to_str(self.contains)
+						container_str = obj_lst_to_str(self.contain_lst)
 						active_gs.buffer("The " + self.full_name + " contains: " + container_str)
 
 class Writing(Invisible):
@@ -284,7 +284,7 @@ class Item(ViewOnly):
 				else:
 						for obj in room_obj_lst: # else remove item from container it's in
 								if obj.is_container() and obj.in_container(self):
-										obj.contains_remove(self)
+										obj.contain_lst_remove(self)
 				return
 
 		def drop(self, active_gs):
@@ -445,28 +445,28 @@ class Door(ViewOnly):
 				self.is_unlocked = False
 
 class Container(Door):
-		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contains):
+		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key)
-				self._contains = contains # list of items in the container
+				self._contain_lst = contain_lst # list of items in the container
 
 		# *** getters & setters ***
 		@property
-		def contains(self):
-				return self._contains
+		def contain_lst(self):
+				return self._contain_lst
 
-		@contains.setter
-		def contains(self, new_obj):
-				self._contains = new_obj
+		@contain_lst.setter
+		def contain_lst(self, new_obj):
+				self._contain_lst = new_obj
 
 		# *** simple methods ***
 		def in_container(self, obj):
-				return obj in self.contains
+				return obj in self.contain_lst
 
-		def contains_append(self, item):
-				self._contains.append(item)
+		def contain_lst_append(self, item):
+				self._contain_lst.append(item)
 
-		def contains_remove(self, item):
-				self._contains.remove(item)
+		def contain_lst_remove(self, item):
+				self._contain_lst.remove(item)
 
 		def	is_container(self):
 				return True
@@ -474,7 +474,7 @@ class Container(Door):
 		def vis_lst(self):
 				vis_lst = []
 				if self.is_open:
-						vis_lst = self.contains
+						vis_lst = self.contain_lst
 				return vis_lst
 
 		# *** complex methods ***
@@ -495,7 +495,7 @@ class Container(Door):
 						active_gs.buffer("You can't put a creature in a container")
 				else:
 						active_gs.hand_lst_remove_item(obj)
-						self.contains_append(obj)
+						self.contain_lst_append(obj)
 						active_gs.buffer("Done")
 						
 class Food(Item):
@@ -513,14 +513,14 @@ class Food(Item):
 					active_gs.buffer(output)
 
 class Jug(Item):
-		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, contains):
+		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, contain_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._is_open = is_open # is the jug uncapped?
-				self._contains = contains # obj in the jug
+				self._contain_lst = contain_lst # obj in the jug
 
 		@property
-		def contains(self):
-				return self._contains
+		def contain_lst(self):
+				return self._contain_lst
 
 		@property
 		def is_open(self):
@@ -532,7 +532,7 @@ class Jug(Item):
 		def vis_lst(self): # DUP FROM CONTAINER CLASS
 				vis_lst = []
 				if self.is_open:
-						vis_lst = self.contains
+						vis_lst = self.contain_lst
 				return vis_lst
 
 		def examine(self, active_gs):
@@ -556,11 +556,11 @@ class Beverage(ViewOnly):
 				if (active_gs.hand_empty()) or (hand_lst[0].is_container() == False):
 						output = "You don't seem to be holding a container of " + self.full_name + " in your hand."
 						active_gs.buffer(output)
-				elif self not in hand_lst[0].contains:
+				elif self not in hand_lst[0].contain_lst:
 						output = "The container in your hand doesn't contain " + self.full_name + "."
 						active_gs.buffer(output)
 				else:
-						hand_lst[0].contains.remove(self)
+						hand_lst[0].contain_lst.remove(self)
 						output = "Drunk. The " + self.full_name + " " + descript_dict[self.drink_desc_key]
 						active_gs.buffer(output)
 

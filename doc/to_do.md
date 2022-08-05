@@ -260,10 +260,10 @@ Version 3.71 Goals
 		- DONE: add tripple-quote doc_strings
 	- INPROC: refactor Container (vars, add None options, etc), put() method
 		- INPROC: shorten variable names
-			- INPROC: contains => contain_lst
-				- INPROC: mk_def_pkl()
-				- INPROC: noun_class_def()
-			- TBD: in_container() => chk_contain_lst()
+			- DONE: contains => contain_lst
+				- DONE: mk_def_pkl()
+				- DONE: noun_class_def()
+			- TBD: in_container() => chk_in_contain_lst()
 				- TBD: ???
 		- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
 	- TBD: refactor Item
@@ -285,6 +285,7 @@ Version 3.71 Goals
 - TBD: refactor Room class
 	- TBD: should be able to get basic descriptions from Container and Creature classes
 		- TBD: need methods in class for this - reuse in Container & Creature examine
+	- TBD: for look, don't show container contents as 'nothing' if the container is_empty() ??
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 		- is node_lst a better term?
 		- Yes!! node_lvl is the key... imagine an inverted tree... node_0 is at top (say room), node_1 are immedaite contents of node_0, and node_2 = the contents of node_1

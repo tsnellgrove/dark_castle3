@@ -246,7 +246,7 @@ fed_hedgehog_keeps_sword_result.creature_obj = royal_hedgehog
 fed_hedgehog_loses_sword_result.creature_obj = royal_hedgehog
 scroll_not_in_throne_room_cond.match_room = throne_room
 hedgehog_not_exist_cond.exist_obj = royal_hedgehog
-crystal_box.contains = [kinging_scroll]
+crystal_box.contain_lst = [kinging_scroll]
 axe_in_goblin_hand_cond.creature_obj = goblin_guard
 axe_in_goblin_hand_result.creature_obj = goblin_guard
 
