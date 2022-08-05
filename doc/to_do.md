@@ -265,6 +265,8 @@ Version 3.71 Goals
 				- DONE: noun_class_def()
 			- DONE: in_container() => chk_in_contain_lst()
 				- DONE: noun_class_def()
+		- DONE: refactor vis_lst
+		- TBD: refactor examine; move print_contents local
 		- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
 	- TBD: refactor Item
 	- TBD: introduce Suitcase class ? (Container + Item => Suitcase => Jug)
