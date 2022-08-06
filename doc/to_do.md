@@ -268,8 +268,10 @@ Version 3.71 Goals
 				- DONE: noun_class_def()
 		- DONE: refactor vis_lst
 		- DONE: refactor examine; move print_contents local
-		- TBD: refactor put
-		- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
+		- DONE: refactor put
+		- DONE: attributes commented
+		- TBD: doc_strings
+			- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
 	- TBD: misc clean-up
 		- TBD: goblin descript => 'viscious Officessness'
 		- TBD: capitalize Creature traits?
@@ -279,18 +281,19 @@ Version 3.71 Goals
 			- Beverage => Liquid
 			- Shelf => Surface
 		- TBD: update 'inventory' to equate to 'examine burt'
-			TBD: description update: "You take stock. Manly rough-and-tumble good looks - check, finely-honed baking skills - check, affable and rougish demeanor - check! If not for the..."
+			- TBD: description update: "You take stock. Manly rough-and-tumble good looks - check, finely-honed baking skills - check, affable and rougish demeanor - check! If not for the..."
 	- TBD: refactor Item
 	- TBD: introduce Suitcase class ? (Container + Item => Suitcase => Jug)
 	- TBD: refactor Jug (dual inheritance from Container & Item) [move container list routine from Invisible() to Container() ?]
 		- TBD: put() for jug fails if obj not is_beverage
 		- TBD: use chk_
 		- TBD: move print_contents_str() from Invisible to Container
+	- TBD: refactor Beverage
 	- TBD: create Shelf class!!
 		- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
 		- put initial shelf in Main Hall
 		- implement Control Panel as Shelf !! (may need to add control_panel after guard_goblin dies)
-	- TBD: refactor Beverage
+
 
 
 ##########################

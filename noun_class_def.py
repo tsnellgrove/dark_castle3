@@ -489,7 +489,7 @@ class Container(Door):
 				return True
 
 		def is_empty(self):
-				return len(self.contain_lst) == 0
+				return not self.contain_lst
 
 		def vis_lst(self):
 				if self.is_open:
@@ -524,15 +524,17 @@ class Container(Door):
 
 		def put(self, obj, active_gs):
 				if self.is_open == False:
-						active_gs.buffer("The " + self.full_name + " is closed.")
-				elif obj.is_container():
+						active_gs.buffer(f"The {self.full_name} is closed.")
+						return 
+				if obj.is_container():
 						active_gs.buffer("You can't put a container in a container")
-				elif obj.is_creature():
+						return 
+				if obj.is_creature():
 						active_gs.buffer("You can't put a creature in a container")
-				else:
-						active_gs.hand_lst_remove_item(obj)
-						self.contain_lst_append(obj)
-						active_gs.buffer("Done")
+						return 
+				active_gs.hand_lst_remove_item(obj)
+				self.contain_lst_append(obj)
+				active_gs.buffer("Done")
 						
 class Food(Item):
 		def __init__(self, name, full_name, root_name, descript_key, writing, eat_desc_key):
