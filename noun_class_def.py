@@ -80,7 +80,7 @@ class Writing(Invisible):
 						The tradition of copous writing samples in text adventures dates right back to Zork itself. In Zork the first interactive object you come across is a mailbox. And within the mailbox is a leaflet you can read and which welcomes you to the game. Dark Castle cleaved tightly to this tradition. From the earliest implementation, the front_gaate had rusty_lettering... which is both a reference to the similar gates of hades in Zork I and of course a nod to good ol' Dante.
 				
 				Implementation Details:
-						It is worth noting that writing is treated a bit differently than other 'noun' objects. In theory, you could think of every ViewOnly and decendent object as 'containing' up to one writing object. But for other open containers (i.e. Containers and Creatures), the contents are listed when Burt enters a room. This is not the case for writing. Writing not included in a creature, room, or container's vis_lst and is only ever mentioned when the object it is written on is examined. This is partly to avoid over-cluttering the room descriptions and partly to provide a sense of discovery when an object is examined. Also, I picture Burt needing to peer closely at writing to make it out in the dim lantern light.
+						It is worth noting that writing is treated a bit differently than other 'noun' objects. Writing is not treated as being 'contained' in the object it is written on. Instead it is treated as an object 'Condition' (similar to a Door being open or closed) and as such it can only be observed via the exameine() method. This is partly to avoid over-cluttering the room descriptions and partly to provide a sense of discovery when an object is examined. Also, I picture Burt needing to peer closely at writing to make it out in the dim lantern light. See the ViewOnly examine() doc_string for details on Active vs. Passive Observation.
 				"""
 
 		# *** getters & setters ***
@@ -159,7 +159,27 @@ class ViewOnly(Writing):
 
 		# *** complex methods ***
 		def examine(self, active_gs):
-				""" Describes an object. examine() is he most fundamental command for gameplay and is the second method available for visible objects after read(). ViewOnly is the ancestor of many other classes and quite a few of them expand upon examine() (e.g. in class Door, examine() is extended to describe whether the door is open or closed).
+				""" Describes an object. examine() is the most fundamental command for gameplay and is the second method available for visible objects after read(). ViewOnly is the ancestor of all visible classes except Writing and quite a few of them expand upon examine() (e.g. in class Door, examine() is extended to describe Condition of the door - i.e. whether it is open or closed).
+				
+				Game Design / Theory:
+						The root examine() method is probably as good a place as anywhere to discuss the game design intentions of what Burt sees and how he sees it. In the Room method we will delve into the notion of node hierarchy - which is also related to what Burt sees - but for now we'll ignore nodes and speak in generalities.
+						
+						Let's start with *what* burt can see. Within the Python coding there are many classes of visible object. But from a game design perspective there are basically only two types of object:
+								
+								Interactive Objects: These are objects that Burt can somehow interact with. This includes all Items, Doors, Containers, Switches, Creatures, and, every once in a while, a ViewOnly object. Solving puzzles and winning the game require Burt to manipulate Interactive Objects.
+								
+								Descriptive Objects: These are always ViewOnly. In fact, most ViewOnly objects are Descriptive Objects. Burt can never manipulate Descriptive Objects and the whole game could be played through without ever paying any attention to them. They exist only to provide a bit of narrative color, to offer some in-game hints, and to provide some geeky humor. In Rooms and Creatures, ViewOnly Descriptive Objects are stored in the feature_lst attribute.
+								
+						Now lets talk about the two types of observation that Burt can engage in:
+						
+								Passive Observaation: This is what happens when Burt uses 'look' to examine a room or 'inventory' to examine himself. The game design goal of Passive Observaation is to provide the player with a broad awareness of what they can currently do in the game. To this end, 'look' + 'inventory' provide a listing of all Interactive Objects currently visible to Burt. However we don't want to drown the player in details every time they 'look' and we do want to encourage them to explore the Dark Castle world closely. So object Descriptions and Conditions are not provided via Passive Observation. Also, Passive Observation does not provide a listing of Descriptive Objects - they are only mentioned in object Descriptions and must then be explicitly examined.
+								
+								Active Observation:  This is when Burt is examining a specific object. e.g. 'examine the front gate'. Burt can only examine one object at a time. The idea is that he is inspecting the object closely. Active Observaation will provide the following:
+										- The object Description
+										- The object Condition (i.e. open, closed, up, down, empty, the presence of wirting, etc)
+										- A List of any Interactive Objects 'contained' within the examined object (including objects held / worn by Creatures)
+				
+						The hope is that, for the player, all of this theory results in intuitive game play. When you want a list of the 'stuff' in a room you 'look'. When you want to know everything about a specific object you use 'examine'. Descriptions should be read carefully because occasionally they include references to things you can look at that aren't mentioned otherwise. But if you're actually reading through the code and wondering "Why aren't Writing objects, the state of Doors, or most ViewOnly objects listed via 'look' or 'inventory' - well, now you know!"
 				"""
 				active_gs.buffer(self.get_descript_str(active_gs))
 				if self.has_writing():
