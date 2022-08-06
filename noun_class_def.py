@@ -240,10 +240,6 @@ class Room(ViewOnly):
 								obj.print_contents_str(active_gs)
 								if obj.is_creature():
 										obj.vis_obj_dispaly(active_gs)
-#								if obj.is_creature() and not obj.hand_empty():
-#										active_gs.buffer("The " + obj.full_name + " is holding a " + obj.hand_item().full_name)
-#								if obj.is_creature() and not obj.worn_empty():
-#										active_gs.buffer("The " + obj.full_name + " is wearing: " + obj.worn_str())
 						else:
 								room_item_obj_lst.append(obj)
 				if room_item_obj_lst:
