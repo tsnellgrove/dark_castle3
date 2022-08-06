@@ -140,7 +140,7 @@ class Creature(ViewOnly):
 		def mach_lst(self):
 				return [obj for obj in self.all_lst() if obj.is_mach()]
 
-		def vis_obj_dispaly(self, active_gs):
+		def vis_obj_disp(self, active_gs):
 				if not self.hand_empty():
 						active_gs.buffer(f"The {self.full_name} is holding a {self.hand_item().full_name}")
 				if not self.worn_empty():
@@ -150,7 +150,7 @@ class Creature(ViewOnly):
 		# *** complex methods ***
 		def examine(self, active_gs):
 				super(Creature, self).examine(active_gs)
-				self.vis_obj_dispaly(active_gs)
+				self.vis_obj_disp(active_gs)
 				return 
 
 		def show(self, obj, active_gs):

@@ -237,9 +237,11 @@ class Room(ViewOnly):
 				for obj in self.room_obj_lst:
 						if not obj.is_item():
 								active_gs.buffer("There is a " + obj.full_name + " here.")
-								obj.print_contents_str(active_gs)
-								if obj.is_creature():
-										obj.vis_obj_dispaly(active_gs)
+#								obj.print_contents_str(active_gs)
+								if obj.is_container() or obj.is_creature():
+										obj.vis_obj_disp(active_gs)
+#								if obj.is_creature():
+#										obj.vis_obj_disp(active_gs)
 						else:
 								room_item_obj_lst.append(obj)
 				if room_item_obj_lst:
@@ -489,19 +491,44 @@ class Container(Door):
 		def	is_container(self):
 				return True
 
+		def is_empty(self):
+				return len(self.contain_lst) == 0
+
 		def vis_lst(self):
 				if self.is_open:
 						return self.contain_lst
 				return []
 
 		# *** complex methods ***
+		def contain_str(self):
+				contain_txt_lst = [obj.full_name for obj in self.contain_lst]
+				return ", ".join(contain_txt_lst)
+
+		def vis_obj_disp(self, active_gs):
+#				if (not self.is_empty()) and (self.is_open()):
+				if self.is_open and not self.is_empty():
+						active_gs.buffer(f"The {self.full_name} contains: {self.contain_str()}")
+				return 
+
+		def obj_cond_disp(self, active_gs):
+				if self.is_empty():
+						active_gs.buffer(f"The {self.full_name} is empty.")
+				return 
+
 		def examine(self, active_gs):
 				super(Container, self).examine(active_gs)
-				self.print_contents_str(active_gs)
+#				if self.is_empty():
+#						active_gs.buffer(f"The {self.full_name} is empty.")
+				self.obj_cond_disp(active_gs)
+				self.vis_obj_disp(active_gs)
+#				self.print_contents_str(active_gs)
+				return 
 
 		def open(self, active_gs):
 				super(Container, self).open(active_gs)
-				self.print_contents_str(active_gs)
+				self.obj_cond_disp(active_gs)
+				self.vis_obj_disp(active_gs)
+#				self.print_contents_str(active_gs)
 
 		def put(self, obj, active_gs):
 				if self.is_open == False:
