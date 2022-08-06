@@ -258,6 +258,7 @@ Version 3.71 Goals
 		- DONE: Format strings with f-Strings. 'name = "Alex" ;; my_string = f"Hello {name}"
 		- DONE: comment each new attribute
 		- DONE: add tripple-quote doc_strings
+	- DONE: create vis_obj_display for Creature class and re-use in Room
 	- INPROC: refactor Container (vars, add None options, etc), put() method
 		- DONE: shorten variable names
 			- DONE: contains => contain_lst
