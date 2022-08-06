@@ -118,7 +118,6 @@ Burt as an object
 ##########################
 
 Version 3.71 Goals
-- re-work app_main() flow with validate() module
 - pre-Burt-to-creature conversion clean-up in Creature, Room, and Container classes and scope methods
 - start exercising refactor skills!
 
@@ -271,6 +270,16 @@ Version 3.71 Goals
 		- DONE: refactor examine; move print_contents local
 		- TBD: refactor put
 		- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
+	- TBD: misc clean-up
+		- TBD: goblin descript => 'viscious Officessness'
+		- TBD: capitalize Creature traits?
+		- TBD: final decision on renaming Classes to 'generic' names
+			- Suitcase => PortableContainer
+			- Jug => PortableLiquidContainer
+			- Beverage => Liquid
+			- Shelf => Surface
+		- TBD: update 'inventory' to equate to 'examine burt'
+			TBD: description update: "You take stock. Manly rough-and-tumble good looks - check, finely-honed baking skills - check, affable and rougish demeanor - check! If not for the..."
 	- TBD: refactor Item
 	- TBD: introduce Suitcase class ? (Container + Item => Suitcase => Jug)
 	- TBD: refactor Jug (dual inheritance from Container & Item) [move container list routine from Invisible() to Container() ?]
@@ -282,6 +291,39 @@ Version 3.71 Goals
 		- put initial shelf in Main Hall
 		- implement Control Panel as Shelf !! (may need to add control_panel after guard_goblin dies)
 	- TBD: refactor Beverage
+
+
+##########################
+### VERSION 3.72 START ###
+##########################
+
+Version 3.72 Goals
+- re-work app_main() flow with validate() module
+- pre-Burt-to-creature conversion clean-up in Creature, Room, and Container classes and scope methods
+- start exercising refactor skills!
+
+Basic Refactor Steps:
+	- refactor pass - basics
+		- shorten variable names
+		- MOVE ASSIGNEMENTS CLOSER TO USAGE!
+		- leverage if-then shield pattern 
+		- provide 'None' options for variables and 'match' options for Conditions
+		- Format strings with f-Strings. 'name = "Alex" ;; my_string = f"Hello {name}"
+		- ensure graceful failure of missing key lookups
+		- comment each new attribute
+		- add tripple-quote doc_strings
+	- refactor pass-advanced
+		- auto-gen keys
+		- return the conditional comparison value itself (bool)
+		- Concatenate strings with '.join'
+		- merge / shorten if-then-else with use of 'and' & 'or'
+		- consider removing 'inline variables' that are only used once... just return the assigned value...
+		- use enumerate to get index & value!
+		- use 'any' to return boolean rather than for-looping through lists
+		- don't need to check for if len(lst) > 0: ;; just use if lst: (Also, bool(None) == False
+		- use list comprehension: 'squares = [i*i for i in range(10)]'
+
+- TBD: finish refactoring nouns
 	- TBD: refactor Food
 	- TBD: refactor Clothes
 	- TBD: refactor Weapon
@@ -291,6 +333,15 @@ Version 3.71 Goals
 	- TBD: should be able to get basic descriptions from Container and Creature classes
 		- TBD: need methods in class for this - reuse in Container & Creature examine
 	- TBD: for look, don't show container contents as 'nothing' if the container is_empty() ??
+	- TBD: refactor active_gs.map
+		- gs will have map as an attribute
+		- subclass map_dict
+		- use __getattr__ and __setattr__ methods to make dict accessible as obj
+		- instantiate in start_up() and save in pickle in case map someday changes during game (fun idea)
+		- methods:
+			- next room
+			- use dict keys to search for item in game world (see score() )
+			- return room burt is in
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 		- is node_lst a better term?
 		- Yes!! node_lvl is the key... imagine an inverted tree... node_0 is at top (say room), node_1 are immedaite contents of node_0, and node_2 = the contents of node_1
@@ -305,7 +356,7 @@ Version 3.71 Goals
 		- could also run a pre-start check on container & creature to throw errors on illegal contents
 		- need to document (to self!) consistent approach to what is visible when Burt looks, examines, or inventories
 	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
-- TBD: refactor attack()
+- TBD: refactor Creature / attack()
 	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
 	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
 	- TBD: re-org to identify 'attacker' and 'winner' 
@@ -319,10 +370,10 @@ Version 3.71 Goals
 			- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
 
 ##########################
-### VERSION 3.72 START ###
+### VERSION 3.73 START ###
 ##########################
 
-Version 3.72 Goals
+Version 3.73 Goals
 - refactor Burt as a creature object
 - refactor coding as I go
 
@@ -394,19 +445,7 @@ Refactor burt as a Creature class object
 	12) comment out active_gs hand & inv updates
 	13) lots of testing!!!
 	14) clean-up comments
-
-
-##########################
-### VERSION 3.73 START ###
-##########################
-
-Version 3.73 Goals
-- modularize remaining GameState class and declarations (???)
-
-- TBD: refactor GameState and dicts in static_gbl() with dunder methods (__getattr__ and __setattr__ ; see email to self on Aug 2, 2022)
-- TBD: active_gs => gs renaming; point to same obj to start with ??
-- TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
-- TBD: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
+	- TBD: move active_gs.universal_lst timer obj to burt.invis_lst
 
 
 ##########################
@@ -414,6 +453,24 @@ Version 3.73 Goals
 ##########################
 
 Version 3.74 Goals
+- refactor remaining app_main chain
+- modularize remaining GameState class and declarations (???)
+
+- TBD: rename active_gs => gs
+- TBD: refactor score
+	- TBD: instead of a dict of score achievements w/ T or F, just have a list of score achievemnts achieved
+	- TBD: link front_gate score to opening door
+- TBD: refactor GameState and dicts in static_gbl() with dunder methods (__getattr__ and __setattr__ ; see email to self on Aug 2, 2022)
+- TBD: active_gs => gs renaming; point to same obj to start with ??
+- TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
+- TBD: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
+
+
+##########################
+### VERSION 3.75 START ###
+##########################
+
+Version 3.75 Goals
 - Clean up machine, warning, and timer coding
 - Create / update program documentation
 
