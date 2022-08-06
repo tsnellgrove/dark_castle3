@@ -268,7 +268,8 @@ Version 3.71 Goals
 			- DONE: in_container() => chk_in_contain_lst()
 				- DONE: noun_class_def()
 		- DONE: refactor vis_lst
-		- TBD: refactor examine; move print_contents local
+		- DONE: refactor examine; move print_contents local
+		- TBD: refactor put
 		- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
 	- TBD: refactor Item
 	- TBD: introduce Suitcase class ? (Container + Item => Suitcase => Jug)
@@ -599,6 +600,7 @@ Zork Thief = Ferret:
 
 Debug mode:
 - Need a debug mode that eliminates 'try' from 2word and prep commands
+- need a secret code to prevent regular player from falling into debug: 'debug poke53281,0'
 
 hedghog:
 - perhaps the hedgehog greets you every time you walk into the main_hall once you return the sword?
