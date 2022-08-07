@@ -123,9 +123,9 @@ class Creature(ViewOnly):
 		def worn_empty(self):
 				return not bool(self.worn_lst)
 
-		def worn_str(self):
-				worn_txt_lst = [obj.full_name for obj in self.worn_lst]
-				return ", ".join(worn_txt_lst)
+#		def worn_str(self):
+#				worn_txt_lst = [obj.full_name for obj in self.worn_lst]
+#				return ", ".join(worn_txt_lst)
 
 		# *** simple methods ***
 		def is_creature(self):
@@ -140,14 +140,16 @@ class Creature(ViewOnly):
 		def mach_lst(self):
 				return [obj for obj in self.all_lst() if obj.is_mach()]
 
+		# *** complex methods ***
 		def vis_obj_disp(self, active_gs):
 				if not self.hand_empty():
 						active_gs.buffer(f"The {self.full_name} is holding a {self.hand_item().full_name}")
 				if not self.worn_empty():
-						active_gs.buffer(f"The {self.full_name} is wearing: {self.worn_str()}")
+						worn_txt_lst = [obj.full_name for obj in self.worn_lst]
+						worn_str = ", ".join(worn_txt_lst)
+						active_gs.buffer(f"The {self.full_name} is wearing: {worn_str}")
 				return 
 
-		# *** complex methods ***
 		def examine(self, active_gs):
 				super(Creature, self).examine(active_gs)
 				self.vis_obj_disp(active_gs)

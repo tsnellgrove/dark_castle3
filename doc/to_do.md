@@ -275,6 +275,7 @@ Version 3.71 Goals
 			- DONE: put: why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
 			- DONE: put: if curious about why no containers in containers see node hierarchy in room
 			- TBD: container: obj know what's in them; keep data in one place
+			- TBD: other complex methods
 	- TBD: misc clean-up
 		- TBD: goblin descript => 'viscious Officessness'
 		- TBD: capitalize Creature traits?
