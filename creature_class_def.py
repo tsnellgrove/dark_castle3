@@ -123,10 +123,6 @@ class Creature(ViewOnly):
 		def worn_empty(self):
 				return not bool(self.worn_lst)
 
-#		def worn_str(self):
-#				worn_txt_lst = [obj.full_name for obj in self.worn_lst]
-#				return ", ".join(worn_txt_lst)
-
 		# *** simple methods ***
 		def is_creature(self):
 				return True

@@ -271,6 +271,7 @@ Version 3.71 Goals
 		- DONE: refactor put
 		- DONE: attributes commented
 		- DONE: consolidate contain_str into vis_obj_dispaly
+		- DONE: consolidate worn_str into vis_obj_display
 		- TBD: doc_strings
 			- DONE: put: why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
 			- DONE: put: if curious about why no containers in containers see node hierarchy in room
