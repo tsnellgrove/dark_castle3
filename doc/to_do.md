@@ -270,8 +270,11 @@ Version 3.71 Goals
 		- DONE: refactor examine; move print_contents local
 		- DONE: refactor put
 		- DONE: attributes commented
+		- DONE: consolidate contain_str into vis_obj_dispaly
 		- TBD: doc_strings
-			- TBD: explain why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
+			- DONE: put: why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
+			- DONE: put: if curious about why no containers in containers see node hierarchy in room
+			- TBD: container: obj know what's in them; keep data in one place
 	- TBD: misc clean-up
 		- TBD: goblin descript => 'viscious Officessness'
 		- TBD: capitalize Creature traits?
@@ -648,6 +651,20 @@ Version 3.9x Goals
 - consternation
 - use phyisogamy in the game!!
 
+
+*** possible new rooms ***
+- upon_drawbridge
+- entrance_hall (home base with well & shelf & hedgehog?)
+- chapel (another possible home base?)
+- courtyard
+- library
+- narrow / collapsed passage
+- kitchen
+- smithy
+- maze
+- wizards_tower
+- dungeons
+
 *** NEW PUZZLE IDEAS ***
 
 Zork Thief = Ferret:
@@ -668,6 +685,10 @@ hedghog:
 Food:
 - bread for Burt (save piecs of cheese for the mice)
 - maybe need to keep feeding biscuits to the hedgehog?
+- perhaps loaf of bread and bottle of water can each provide multiple servers (similar to enchanter)
+- additional water verbs needed: 'fill' and 'pour the <water> on the <noun>'
+- additional bread verbs needed: bake ???
+
 
 Carry Cappacity Constraints:
 - item 'size' limits (invent point values) for Containers and Narrow Passages

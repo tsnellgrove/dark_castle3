@@ -497,13 +497,17 @@ class Container(Door):
 				return []
 
 		# *** complex methods ***
-		def contain_str(self):
-				contain_txt_lst = [obj.full_name for obj in self.contain_lst]
-				return ", ".join(contain_txt_lst)
+#		def contain_str(self):
+#				contain_txt_lst = [obj.full_name for obj in self.contain_lst]
+#				return ", ".join(contain_txt_lst)
 
 		def vis_obj_disp(self, active_gs):
 				if self.is_open and not self.is_empty():
-						active_gs.buffer(f"The {self.full_name} contains: {self.contain_str()}")
+						contain_txt_lst = [obj.full_name for obj in self.contain_lst]
+						contain_str = ", ".join(contain_txt_lst)				
+#						active_gs.buffer(f"The {self.full_name} contains: {self.contain_str()}")
+#						active_gs.buffer(f"The {self.full_name} contains: {", ".join(contain_txt_lst)}")
+						active_gs.buffer(f"The {self.full_name} contains: {contain_str}")
 				return 
 
 		def obj_cond_disp(self, active_gs):
@@ -523,6 +527,14 @@ class Container(Door):
 				self.vis_obj_disp(active_gs)
 
 		def put(self, obj, active_gs):
+				""" Puts an Item in a Container.
+				
+				Implementation Details:
+						For those curious as to why containers can't hold containers or creatures, please see the doc_string on node hierarchy under the Room class
+				
+				Class Design:
+						It might appear that put() could just as well be a method of Item as it is of Container. Code-wise this would certainly work. But what quickly becomes clear when developing verb methods is that the code for testing error cases and buffering terror messages is often longer than the code for executing the command. The corollary to this realization is that we always want to associate a method with its most restrictive noun - which in the case of put() is Container. This means that we don't need to test to see if the target location for put() is a Container - the method simply can't run if it isn't. This same logic applies to other preposition type verb methods like show() and give() - which in theory could be methods of Item but which are more efficiently coded when naturally limited in use by being methods of Creature.
+				"""
 				if self.is_open == False:
 						active_gs.buffer(f"The {self.full_name} is closed.")
 						return 
