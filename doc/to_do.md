@@ -2,6 +2,11 @@ To Do List - Dark Castle v3
 
 July 24, 2022
 
+*** Need a new IDE ***
+- iPad / offline: Pyto
+- Mac Air / Offline: MS VSCode
+- Cloud / Online: CodeAnyWhere, Cloud9 (AWS)
+- Reference article: '5 ways to use Python on an iPad'
 
 *** How to Add Objects ***
 1) If needed, create Class and methods in class_def
@@ -279,6 +284,8 @@ Version 3.71 Goals
 			- DONE: other complex methods
 			- TBD: container: obj know what's in them; keep data in one place
 	- TBD: misc clean-up
+		- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
+			- TBD: test w/ descript_dict => start with version
 		- TBD: Writing descript_key doc_string => Zork tradition of purple prose - leaning in on this
 		- TBD: goblin descript => 'viscious Officessness'
 		- TBD: capitalize Creature traits?
@@ -459,6 +466,7 @@ Refactor burt as a Creature class object
 	13) lots of testing!!!
 	14) clean-up comments
 	- TBD: move active_gs.universal_lst timer obj to burt.invis_lst
+	- TBD: for ViewOnly create methoed 'vis_lst(): return []' to simplify Room.vis_lst() ???
 
 
 ##########################
@@ -471,6 +479,9 @@ Version 3.74 Goals
 
 - TBD: rename active_gs => gs
 - TBD: refactor score
+	- TBD: determine max_score from summ of all possible scores?
+	- TBD: score = class with object being attribute in gs
+	- TBD: print_score() a method of the Score class
 	- TBD: instead of a dict of score achievements w/ T or F, just have a list of score achievemnts achieved
 	- TBD: link front_gate score to opening door
 - TBD: refactor GameState and dicts in static_gbl() with dunder methods (__getattr__ and __setattr__ ; see email to self on Aug 2, 2022)
@@ -636,6 +647,9 @@ Version 3.8x Goals
 - Introduce non-functional requirement code (e.g. saves and pkl clean-up)
 - Integrate with web template
 - Unit Testing (link: https://youtu.be/6tNS--WetLI ) ???
+
+- TBD: debug mode
+- TBD: verbose / brief
 
 
 ##########################

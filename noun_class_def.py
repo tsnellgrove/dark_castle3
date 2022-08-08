@@ -468,6 +468,10 @@ class Container(Door):
 		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key)
 				self._contain_lst = contain_lst # list of objects in the container
+				""" Containers hold items. Like Door (from which Container inherits), they are ViewOnly and, as a class, can be opened, closed, locked, and unlocked. Also like doors, containers are fundamental puzzle elements. Doors are obstacles to entering rooms. Containers are obstacles to getting items.
+				
+				In Dark Castle v1/2, containers were just a coding slight of hand. So when I finally coded them for real, I needed to decide in what way a container and its contents were aware of each other. Presumably the crystal_box knew it contained the kinging_scroll... but did the kinging_scroll 'know' it was in the crystal_box? 
+				"""
 
 		# *** getters & setters ***
 		@property
@@ -539,6 +543,9 @@ class Container(Door):
 				
 				Class Design:
 						It might appear that put() could just as well be a method of Item as it is of Container. Code-wise this would certainly work. But what quickly becomes clear when developing verb methods is that the code for testing error cases and buffering terror messages is often longer than the code for executing the command. The corollary to this realization is that we always want to associate a method with its most restrictive noun - which in the case of put() is Container. This means that we don't need to test to see if the target location for put() is a Container - the method simply can't run if it isn't. This same logic applies to other preposition type verb methods like show() and give() - which in theory could be methods of Item but which are more efficiently coded when naturally limited in use by being methods of Creature.
+				
+				Historic Note:
+						put() was the very first preposition-based command in DCv3. After ages of two-word commands it very exciting to be able to type 'put the rusty key in the crystal box' and have a working result!
 				"""
 				if self.is_open == False:
 						active_gs.buffer(f"The {self.full_name} is closed.")
