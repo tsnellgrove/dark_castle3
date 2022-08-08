@@ -38,10 +38,13 @@ July 24, 2022
 ### VERSION 3.7x START ###
 ##########################
 
-Version 3.7x Goals
-- Plan out code refactoring
-- Refactor code
-- document code
+3.7x Goals
+- implement validate module between interp() and cmd_exe()
+- convert Burt to class Creature
+- modularize Machs
+- refactor all code
+- document all code in-line with doc_strings
+
 
 Learn about refactoring:
 - DONE: Watch refactoring videos and take notes on advice
@@ -117,15 +120,6 @@ Burt as an object
 	- Burt to be obj type Creature
 
 
-
-##########################
-### VERSION 3.71 START ###
-##########################
-
-Version 3.71 Goals
-- pre-Burt-to-creature conversion clean-up in Creature, Room, and Container classes and scope methods
-- start exercising refactor skills!
-
 - N/A: Old thinking
 	- today: interp() =(if no interp_error)=> pre_action() => cmd_exe() => post_action()
 		- this works if there is an interp() error or if the command is successful... but what if there is a cmd_error ???
@@ -136,30 +130,15 @@ Version 3.71 Goals
 		- if not cmd_error: cmd_exe() runs method in exe_mode
 		- can likely shortcut for non '2word' and 'prep' cases
 		- one side effect: every method needs to either throw text on error or do something on success... we cannot take an action on failure (?) 
-- related thinking:
-	- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
-		- Should noun obj methods return a 'success' indicator (for pre & post actions)?
-		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
-		- Be able to call noun methods in non_buffer mode purely for pre & post action validation? 
-		- for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
 
-- IDEAS:
-	- thinking systemically, can we pre-validate noun class methods?
-		- validate() would run between interpreter() and pre_action()
-		- e.g. for take() use case, can we check to see if obj is_item and is in <room>.obj_scope ?
-		- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
-		- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
-		- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
-		- if fail validate() , buffer error and end app_main()
-	- DECISION: writing perspective
-		- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
-		- in theory, any creature could be used to play the game - and each might have its own description_dict
-		- this would be fun for a short session in a single room but is not practical for extended play
-		- realistically, nearly all descriptions will be from burt's perspective
-		- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
-		- this should be enabled by mode = 'exe_creature'
-	- maybe call verb methods with a 'mode' variable that can be validate, exe_std, exe_silent, or exe_creature ??
-	- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
+
+##########################
+### VERSION 3.71 START ###
+##########################
+
+Version 3.71 Goals
+- pre-Burt-to-creature conversion clean-up in Invisibe to Container classes and scope methods
+- start exercising refactor skills!
 
 - INPROC: create validate.py module
 	- DONE: simplify app_main.py
@@ -264,7 +243,7 @@ Version 3.71 Goals
 		- DONE: comment each new attribute
 		- DONE: add tripple-quote doc_strings
 	- DONE: create vis_obj_display for Creature class and re-use in Room
-	- INPROC: refactor Container (vars, add None options, etc), put() method
+	- DONE: refactor Container (vars, add None options, etc), put() method
 		- DONE: shorten variable names
 			- DONE: contains => contain_lst
 				- DONE: mk_def_pkl()
@@ -278,14 +257,12 @@ Version 3.71 Goals
 		- DONE: consolidate contain_str into vis_obj_dispaly
 		- DONE: consolidate worn_str into vis_obj_display
 		- DONE: add vis_obj_disp() to ViewOnly as pass function so that Room.examine() can run vis_obj_disp() for all non-Items
-		- TBD: doc_strings
+		- DONE: doc_strings
 			- DONE: put: why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
 			- DONE: put: if curious about why no containers in containers see node hierarchy in room
 			- DONE: other complex methods
-			- TBD: container: obj know what's in them; keep data in one place
+			- DONE: container: obj know what's in them; keep data in one place
 	- TBD: misc clean-up
-		- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
-			- TBD: test w/ descript_dict => start with version
 		- TBD: Writing descript_key doc_string => Zork tradition of purple prose - leaning in on this
 		- TBD: goblin descript => 'viscious Officessness'
 		- TBD: capitalize Creature traits?
@@ -296,21 +273,6 @@ Version 3.71 Goals
 			- Shelf => Surface
 		- TBD: update 'inventory' to equate to 'examine burt'
 			- TBD: description update: "You take stock. Manly rough-and-tumble good looks - check, finely-honed baking skills - check, affable and rougish demeanor - check! If not for the..."
-	- TBD: refactor Item
-		- TBD: doc_string
-			- TBD: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
-			- TBD: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
-	- TBD: introduce Suitcase class ? (Container + Item => Suitcase => Jug)
-	- TBD: refactor Jug (dual inheritance from Container & Item) [move container list routine from Invisible() to Container() ?]
-		- TBD: put() for jug fails if obj not is_beverage
-		- TBD: use chk_
-		- TBD: move print_contents_str() from Invisible to Container
-	- TBD: refactor Beverage
-	- TBD: create Shelf class!!
-		- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
-		- put initial shelf in Main Hall
-		- implement Control Panel as Shelf !! (may need to add control_panel after guard_goblin dies)
-
 
 
 ##########################
@@ -318,9 +280,8 @@ Version 3.71 Goals
 ##########################
 
 Version 3.72 Goals
-- re-work app_main() flow with validate() module
 - pre-Burt-to-creature conversion clean-up in Creature, Room, and Container classes and scope methods
-- start exercising refactor skills!
+- keep exercising refactor skills!
 
 Basic Refactor Steps:
 	- refactor pass - basics
@@ -344,15 +305,28 @@ Basic Refactor Steps:
 		- use list comprehension: 'squares = [i*i for i in range(10)]'
 
 - TBD: finish refactoring nouns
+	- TBD: refactor Item
+		- TBD: doc_string
+			- TBD: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
+			- TBD: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
+	- TBD: introduce Suitcase class ? (Container + Item => Suitcase => Jug)
+	- TBD: refactor Jug (dual inheritance from Container & Item) [move container list routine from Invisible() to Container() ?]
+		- TBD: put() for jug fails if obj not is_beverage
+		- TBD: use chk_
+		- TBD: move print_contents_str() from Invisible to Container
+	- TBD: refactor Beverage
+	- TBD: create Shelf class!!
+		- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
+		- put initial shelf in Main Hall
+		- implement Control Panel as Shelf !! (may need to add control_panel after guard_goblin dies)
 	- TBD: refactor Food
 	- TBD: refactor Clothes
 	- TBD: refactor Weapon
 	- TBD: refactor Switch
 	- TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
-- TBD: refactor Room class
-	- TBD: should be able to get basic descriptions from Container and Creature classes
-		- TBD: need methods in class for this - reuse in Container & Creature examine
-	- TBD: for look, don't show container contents as 'nothing' if the container is_empty() ??
+- Refactor dicts
+	- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
+		- TBD: test w/ descript_dict => start with version
 	- TBD: refactor active_gs.map
 		- gs will have map as an attribute
 		- subclass map_dict
@@ -362,6 +336,10 @@ Basic Refactor Steps:
 			- next room
 			- use dict keys to search for item in game world (see score() )
 			- return room burt is in
+- TBD: refactor Room class
+	- DONE: should be able to get basic descriptions from Container and Creature classes
+		- DONE: need methods in class for this - reuse in Container & Creature examine
+	- DONE: for look, don't show container contents as 'nothing' if the container is_empty() ??
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 		- is node_lst a better term?
 		- Yes!! node_lvl is the key... imagine an inverted tree... node_0 is at top (say room), node_1 are immedaite contents of node_0, and node_2 = the contents of node_1
@@ -381,6 +359,38 @@ Basic Refactor Steps:
 	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
 	- TBD: re-org to identify 'attacker' and 'winner' 
 	- TBD: re-code attack / attack_burt response correctly based on in-line notes
+	- DECISION: writing perspective
+		- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
+		- in theory, any creature could be used to play the game - and each might have its own description_dict
+		- this would be fun for a short session in a single room but is not practical for extended play
+		- realistically, nearly all descriptions will be from burt's perspective
+		- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
+		- this should be enabled by mode = 'exe_creature'
+	- maybe call verb methods with a 'mode' variable that can be validate, exe_std, exe_silent, or exe_creature ??
+	- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
+
+##########################
+### VERSION 3.73 START ###
+##########################
+
+Version 3.73 Goals
+- re-work app_main() flow with validate() module
+
+- related thinking:
+	- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
+		- Should noun obj methods return a 'success' indicator (for pre & post actions)?
+		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
+		- Be able to call noun methods in non_buffer mode purely for pre & post action validation? 
+		- for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
+- IDEAS:
+	- thinking systemically, can we pre-validate noun class methods?
+		- validate() would run between interpreter() and pre_action()
+		- e.g. for take() use case, can we check to see if obj is_item and is in <room>.obj_scope ?
+		- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
+		- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
+		- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
+		- if fail validate() , buffer error and end app_main()
+
 - TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
 - TBD: final clean-up
 	- TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
@@ -390,10 +400,10 @@ Basic Refactor Steps:
 			- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
 
 ##########################
-### VERSION 3.73 START ###
+### VERSION 3.74 START ###
 ##########################
 
-Version 3.73 Goals
+Version 3.74 Goals
 - refactor Burt as a creature object
 - refactor coding as I go
 
@@ -470,10 +480,10 @@ Refactor burt as a Creature class object
 
 
 ##########################
-### VERSION 3.74 START ###
+### VERSION 3.75 START ###
 ##########################
 
-Version 3.74 Goals
+Version 3.75 Goals
 - refactor remaining app_main chain
 - modularize remaining GameState class and declarations (???)
 
@@ -491,10 +501,10 @@ Version 3.74 Goals
 
 
 ##########################
-### VERSION 3.75 START ###
+### VERSION 3.76 START ###
 ##########################
 
-Version 3.75 Goals
+Version 3.76 Goals
 - Clean up machine, warning, and timer coding
 - Create / update program documentation
 

@@ -470,7 +470,14 @@ class Container(Door):
 				self._contain_lst = contain_lst # list of objects in the container
 				""" Containers hold items. Like Door (from which Container inherits), they are ViewOnly and, as a class, can be opened, closed, locked, and unlocked. Also like doors, containers are fundamental puzzle elements. Doors are obstacles to entering rooms. Containers are obstacles to getting items.
 				
-				In Dark Castle v1/2, containers were just a coding slight of hand. So when I finally coded them for real, I needed to decide in what way a container and its contents were aware of each other. Presumably the crystal_box knew it contained the kinging_scroll... but did the kinging_scroll 'know' it was in the crystal_box? 
+				Program Architecture:
+						In Dark Castle v1/2, containers were just a coding slight of hand. So when I finally coded them for real, I needed to decide in what way a container and its contents were aware of each other. Presumably the crystal_box knew it contained the kinging_scroll... but did the kinging_scroll 'know' it was in the crystal_box? 
+						
+						Ultimately, I decided on two axioms:
+								1) Within the constraints of acceptable performance, data should always live in one and only one location
+								2) An object should know about the objects contained directly within it.
+						
+						From these axioms it becomes clear that containers should know what they contain but items are location 'ignorant': the kinging_scroll has no idea that it's in the crystal_box... or if it gets moved to Burt's hand or to the floor of the throne_room. Along with meeting our 'data in only one place' constraint, this approach also has the benefit of keeping most objeccts simple. There's no need to assign and update an extra 'location' attribute for every object. The down side is that container-type entities (i.e. Containers, Creatures, Rooms) become more complicated - and we end up frequently searching them for their contents. This hierarchal approach to containers is fundamental has been applied to all aspects of the game (e.g. rooms know about the objects within them but know nothing about other rooms outside of them).
 				"""
 
 		# *** getters & setters ***
