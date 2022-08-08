@@ -272,12 +272,14 @@ Version 3.71 Goals
 		- DONE: attributes commented
 		- DONE: consolidate contain_str into vis_obj_dispaly
 		- DONE: consolidate worn_str into vis_obj_display
+		- DONE: add vis_obj_disp() to ViewOnly as pass function so that Room.examine() can run vis_obj_disp() for all non-Items
 		- TBD: doc_strings
 			- DONE: put: why put() is a method of Container not Item (want to constrain to required obj); similar for show() & give() for Creature
 			- DONE: put: if curious about why no containers in containers see node hierarchy in room
+			- DONE: other complex methods
 			- TBD: container: obj know what's in them; keep data in one place
-			- TBD: other complex methods
 	- TBD: misc clean-up
+		- TBD: Writing descript_key doc_string => Zork tradition of purple prose - leaning in on this
 		- TBD: goblin descript => 'viscious Officessness'
 		- TBD: capitalize Creature traits?
 		- TBD: final decision on renaming Classes to 'generic' names
@@ -288,6 +290,9 @@ Version 3.71 Goals
 		- TBD: update 'inventory' to equate to 'examine burt'
 			- TBD: description update: "You take stock. Manly rough-and-tumble good looks - check, finely-honed baking skills - check, affable and rougish demeanor - check! If not for the..."
 	- TBD: refactor Item
+		- TBD: doc_string
+			- TBD: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
+			- TBD: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
 	- TBD: introduce Suitcase class ? (Container + Item => Suitcase => Jug)
 	- TBD: refactor Jug (dual inheritance from Container & Item) [move container list routine from Invisible() to Container() ?]
 		- TBD: put() for jug fails if obj not is_beverage

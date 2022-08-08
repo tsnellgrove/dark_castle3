@@ -157,6 +157,10 @@ class ViewOnly(Writing):
 		def has_writing(self):
 				return self.writing is not None
 
+		def vis_obj_disp(self, active_gs):
+				pass
+				return 
+
 		# *** complex methods ***
 		def examine(self, active_gs):
 				""" Describes an object. examine() is the most fundamental command for gameplay and is the second method available for visible objects after read(). ViewOnly is the ancestor of all visible classes except Writing and quite a few of them expand upon examine() (e.g. in class Door, examine() is extended to describe Condition of the door - i.e. whether it is open or closed).
@@ -237,8 +241,7 @@ class Room(ViewOnly):
 				for obj in self.room_obj_lst:
 						if not obj.is_item():
 								active_gs.buffer("There is a " + obj.full_name + " here.")
-								if obj.is_container() or obj.is_creature():
-										obj.vis_obj_disp(active_gs)
+								obj.vis_obj_disp(active_gs)
 						else:
 								room_item_obj_lst.append(obj)
 				if room_item_obj_lst:
@@ -498,6 +501,8 @@ class Container(Door):
 
 		# *** complex methods ***
 		def vis_obj_disp(self, active_gs):
+				""" Displays a description of the items in the container. Extracting this from method allows Room.examine() to resuse it.
+				"""
 				if self.is_open and not self.is_empty():
 						contain_txt_lst = [obj.full_name for obj in self.contain_lst]
 						contain_str = ", ".join(contain_txt_lst)
@@ -505,18 +510,24 @@ class Container(Door):
 				return 
 
 		def obj_cond_disp(self, active_gs):
+				""" Displays the empty condition description of the container (when approprate). This code would normally live in examine(), but since it is also called by open() it makes sense to convert it to a stand-alone method.
+				"""
 				if self.is_empty():
 						active_gs.buffer(f"The {self.full_name} is empty.")
 				return 
 
 		def examine(self, active_gs):
 				super(Container, self).examine(active_gs)
+				""" Extends Door.examine(). Displays the container condition and visible objects.
+				"""
 				self.obj_cond_disp(active_gs)
 				self.vis_obj_disp(active_gs)
 				return 
 
 		def open(self, active_gs):
 				super(Container, self).open(active_gs)
+				""" Extends Door.open(). Upon opening a container, the player's natural question is "What's in it?". Open for containers answers this question whenever a container is opened. If the container is empty that information is displayed as well.
+				"""
 				self.obj_cond_disp(active_gs)
 				self.vis_obj_disp(active_gs)
 
