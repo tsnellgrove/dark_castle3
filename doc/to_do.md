@@ -262,8 +262,8 @@ Version 3.71 Goals
 			- DONE: put: if curious about why no containers in containers see node hierarchy in room
 			- DONE: other complex methods
 			- DONE: container: obj know what's in them; keep data in one place
-	- TBD: misc clean-up
-		- TBD: Writing descript_key doc_string => Zork tradition of purple prose - leaning in on this
+	- INPROC: misc clean-up
+		- DONE: Writing descript_key doc_string => Zork tradition of purple prose - leaning in on this
 		- TBD: goblin descript => 'viscious Officessness'
 		- TBD: capitalize Creature traits?
 		- TBD: final decision on renaming Classes to 'generic' names
@@ -477,6 +477,13 @@ Refactor burt as a Creature class object
 	14) clean-up comments
 	- TBD: move active_gs.universal_lst timer obj to burt.invis_lst
 	- TBD: for ViewOnly create methoed 'vis_lst(): return []' to simplify Room.vis_lst() ???
+	- TBD: create Chair class based on Surface
+		- TBD: sit() method (depends on 'on' prep)
+		- TBD: need to be able to determine which node Burt is in (i.e. the chair, not just the room); also need ot know room
+		- TBD: look shows room with 'sitting in chair' condition
+		- TBD: can only examine / take other items in the chair (burt's own inventory)
+		- TBD: most other methods just generate "you'll have to stand up to do that"
+		- TBD: vis_lst = chair.vis_lst + room.name
 
 
 ##########################
@@ -488,6 +495,7 @@ Version 3.75 Goals
 - modularize remaining GameState class and declarations (???)
 
 - TBD: rename active_gs => gs
+- TBD: perhaps Map, Score, and Descript are classes w/ static dicts in mehod / class and actual obj in gs attributes
 - TBD: refactor score
 	- TBD: determine max_score from summ of all possible scores?
 	- TBD: score = class with object being attribute in gs
@@ -658,7 +666,9 @@ Version 3.8x Goals
 - Integrate with web template
 - Unit Testing (link: https://youtu.be/6tNS--WetLI ) ???
 
-- TBD: debug mode
+- TBD: Debug mode:
+	- TBD: Need a debug mode that eliminates 'try' from 2word and prep commands
+	- TBD: need a secret code to prevent regular player from falling into debug: 'debug poke53281,0'
 - TBD: verbose / brief
 
 
@@ -681,6 +691,7 @@ Version 3.9x Goals
 - consigliere
 - consternation
 - use phyisogamy in the game!!
+- Gallivanter
 
 
 *** possible new rooms ***
@@ -698,6 +709,12 @@ Version 3.9x Goals
 
 *** NEW PUZZLE IDEAS ***
 
+Vehical:
+- Bucket pulley / weight puzzle in wizard's tower
+- need to adjust weight correctly going up and down
+- need to grab staute (?) on way up / down?
+- or else maybe mine cart / parachute??
+
 Zork Thief = Ferret:
 - dextrous, loves colorful objects, likes to fidtet / fiddle with things, clever
 - will steal an object from burt (or that burt has touched) each time it randomly runs into him (some items off limits?)
@@ -705,10 +722,6 @@ Zork Thief = Ferret:
 - burt can indefinitely / eternally distract the ferret (*after* it has solved its puzzle) by giving it a rubks cube (described not named)
 - the ferrets treasures can be found in a hole that burt needs to reach his arm into (scary warnings - could be a grue)
 - maybe the shelf in the main hall is the one place safe from the ferret
-
-Debug mode:
-- Need a debug mode that eliminates 'try' from 2word and prep commands
-- need a secret code to prevent regular player from falling into debug: 'debug poke53281,0'
 
 hedghog:
 - perhaps the hedgehog greets you every time you walk into the main_hall once you return the sword?
