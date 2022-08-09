@@ -264,15 +264,16 @@ Version 3.71 Goals
 			- DONE: container: obj know what's in them; keep data in one place
 	- INPROC: misc clean-up
 		- DONE: Writing descript_key doc_string => Zork tradition of purple prose - leaning in on this
-		- TBD: goblin descript => 'viscious Officessness'
-		- TBD: capitalize Creature traits?
-		- TBD: final decision on renaming Classes to 'generic' names
+		- DONE: final decision on renaming Classes to 'generic' names (choice is 'generic')
 			- Suitcase => PortableContainer
 			- Jug => PortableLiquidContainer
 			- Beverage => Liquid
 			- Shelf => Surface
-		- TBD: update 'inventory' to equate to 'examine burt'
-			- TBD: description update: "You take stock. Manly rough-and-tumble good looks - check, finely-honed baking skills - check, affable and rougish demeanor - check! If not for the..."
+		- DONE: update 'inventory' to equate to 'examine burt'
+			- DONE: description update: "You take stock. Manly rough-and-tumble good looks - check, finely-honed baking skills - check, affable and rougish demeanor - check! If not for the..."
+		- TBD: goblin descript => 'viscious Officessness'
+		- TBD: capitalize Creature traits?
+
 
 
 ##########################
@@ -309,33 +310,22 @@ Basic Refactor Steps:
 		- TBD: doc_string
 			- TBD: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
 			- TBD: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
-	- TBD: introduce Suitcase class ? (Container + Item => Suitcase => Jug)
-	- TBD: refactor Jug (dual inheritance from Container & Item) [move container list routine from Invisible() to Container() ?]
+	- TBD: introduce PortableContainer class (was Suitcase) (dual inheritance from Container & Item) 
+	- TBD: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
+		- TBD: [move container list routine from Invisible() to Container() ?]
 		- TBD: put() for jug fails if obj not is_beverage
 		- TBD: use chk_
-		- TBD: move print_contents_str() from Invisible to Container
-	- TBD: refactor Beverage
-	- TBD: create Shelf class!!
+		- TBD: move print_contents_str() from Invisible to Container / eliminate
+	- TBD: refactor Beverage to Liquid
+	- TBD: eliminate Jug (replaced by generically named PortableLiquidContainer) 
+	- TBD: create Surface class!! (was 'Shelf')
 		- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
 		- put initial shelf in Main Hall
 		- implement Control Panel as Shelf !! (may need to add control_panel after guard_goblin dies)
 	- TBD: refactor Food
-	- TBD: refactor Clothes
+	- TBD: refactor Clothes => Garments
 	- TBD: refactor Weapon
 	- TBD: refactor Switch
-	- TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
-- Refactor dicts
-	- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
-		- TBD: test w/ descript_dict => start with version
-	- TBD: refactor active_gs.map
-		- gs will have map as an attribute
-		- subclass map_dict
-		- use __getattr__ and __setattr__ methods to make dict accessible as obj
-		- instantiate in start_up() and save in pickle in case map someday changes during game (fun idea)
-		- methods:
-			- next room
-			- use dict keys to search for item in game world (see score() )
-			- return room burt is in
 - TBD: refactor Room class
 	- DONE: should be able to get basic descriptions from Container and Creature classes
 		- DONE: need methods in class for this - reuse in Container & Creature examine
@@ -359,15 +349,7 @@ Basic Refactor Steps:
 	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
 	- TBD: re-org to identify 'attacker' and 'winner' 
 	- TBD: re-code attack / attack_burt response correctly based on in-line notes
-	- DECISION: writing perspective
-		- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
-		- in theory, any creature could be used to play the game - and each might have its own description_dict
-		- this would be fun for a short session in a single room but is not practical for extended play
-		- realistically, nearly all descriptions will be from burt's perspective
-		- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
-		- this should be enabled by mode = 'exe_creature'
-	- maybe call verb methods with a 'mode' variable that can be validate, exe_std, exe_silent, or exe_creature ??
-	- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
+
 
 ##########################
 ### VERSION 3.73 START ###
@@ -391,6 +373,7 @@ Version 3.73 Goals
 		- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
 		- if fail validate() , buffer error and end app_main()
 
+- TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
 - TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
 - TBD: final clean-up
 	- TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
@@ -398,6 +381,16 @@ Version 3.73 Goals
 			- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
 	- TBD: refactor active_gs. scope / mach_scope
 			- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
+	- maybe call verb methods with a 'mode' variable that can be validate, exe_std, exe_silent, or exe_creature ??
+	- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
+	- DECISION: writing perspective
+		- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
+		- in theory, any creature could be used to play the game - and each might have its own description_dict
+		- this would be fun for a short session in a single room but is not practical for extended play
+		- realistically, nearly all descriptions will be from burt's perspective
+		- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
+		- this should be enabled by mode = 'exe_creature'
+
 
 ##########################
 ### VERSION 3.74 START ###
@@ -496,6 +489,18 @@ Version 3.75 Goals
 
 - TBD: rename active_gs => gs
 - TBD: perhaps Map, Score, and Descript are classes w/ static dicts in mehod / class and actual obj in gs attributes
+- Refactor dicts
+	- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
+		- TBD: test w/ descript_dict => start with version
+	- TBD: refactor active_gs.map
+		- gs will have map as an attribute
+		- subclass map_dict
+		- use __getattr__ and __setattr__ methods to make dict accessible as obj
+		- instantiate in start_up() and save in pickle in case map someday changes during game (fun idea)
+		- methods:
+			- next room
+			- use dict keys to search for item in game world (see score() )
+			- return room burt is in
 - TBD: refactor score
 	- TBD: determine max_score from summ of all possible scores?
 	- TBD: score = class with object being attribute in gs

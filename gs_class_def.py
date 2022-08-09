@@ -183,8 +183,9 @@ class GameState(object):
 		def reset_buff(self):
 				self._state_dict['out_buff'] = ""
 
-		### inventory ###
+		### inventory ### (to be moved to Creature method)
 		def inventory(self):
+				self.buffer(descript_dict['burt'])
 				hand_lst = self.get_hand_lst()
 				hand_str = obj_lst_to_str(hand_lst)
 				self.buffer("In your hand you are holding: " + hand_str)
