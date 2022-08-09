@@ -305,7 +305,6 @@ Basic Refactor Steps:
 		- use list comprehension: 'squares = [i*i for i in range(10)]'
 
 - TBD: finish refactoring nouns
-	- TBD: exmine titles for all as separate buffer line (enables brief / verbose and also diff dict)
 	- TBD: refactor Item
 		- TBD: doc_string
 			- TBD: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
@@ -327,6 +326,7 @@ Basic Refactor Steps:
 	- TBD: refactor Weapon
 	- TBD: refactor Switch
 - TBD: refactor Room class
+	- TBD: exmine titles for rooms as separate buffer line (enables brief / verbose and also diff dict)
 	- DONE: should be able to get basic descriptions from Container and Creature classes
 		- DONE: need methods in class for this - reuse in Container & Creature examine
 	- DONE: for look, don't show container contents as 'nothing' if the container is_empty() ??
