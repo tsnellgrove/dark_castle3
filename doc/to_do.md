@@ -271,10 +271,9 @@ Version 3.71 Goals
 			- Shelf => Surface
 		- DONE: update 'inventory' to equate to 'examine burt'
 			- DONE: description update: "You take stock. Manly rough-and-tumble good looks - check, finely-honed baking skills - check, affable and rougish demeanor - check! If not for the..."
-		- TBD: goblin descript => 'viscious Officessness'
 		- TBD: capitalize Creature traits?
-
-
+			- TBD: goblin descript => 'viscious Officessness', 'petty Officiousness'
+		Room Titles as separate examine line (enables brief / verbose and also diff dict)
 
 ##########################
 ### VERSION 3.72 START ###
@@ -428,6 +427,7 @@ Refactor burt as a Creature class object
 				- TBD: returns item_lst and worn_lst if creature == active_gs.get_hero()
 		- TBD: create inventory() method for creature
 		- TBD: burt_creature to be instantiated in entrance.feature_lst (can remove burt from scope_list() in active_gs.scope)
+			- TBD: correction - burt to go in room.floor_lst (not feature_lst) but then exclude from room.vis_lst() [remove(gs.hero)]
 	4.5) Analyze noun classes... which ones update burt inv vs. read from burt inv?
 		- IDEA: start by implementing the burt inv updates in paralelle to active_gs updates
 		- IDEA: create 'jinventory' and 'jlook' commands to confirm that burt_creature matches active_gs.burt
@@ -737,6 +737,9 @@ Food:
 - perhaps loaf of bread and bottle of water can each provide multiple servers (similar to enchanter)
 - additional water verbs needed: 'fill' and 'pour the <water> on the <noun>'
 - additional bread verbs needed: bake ???
+
+Special Glasses / Dream form:
+- let burt see a room using descriptions from another dict
 
 
 Carry Cappacity Constraints:
