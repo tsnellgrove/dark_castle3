@@ -273,7 +273,7 @@ Version 3.71 Goals
 			- DONE: description update: "You take stock. Manly rough-and-tumble good looks - check, finely-honed baking skills - check, affable and rougish demeanor - check! If not for the..."
 		- TBD: capitalize Creature traits?
 			- TBD: goblin descript => 'viscious Officessness', 'petty Officiousness'
-		Room Titles as separate examine line (enables brief / verbose and also diff dict)
+			- 
 
 ##########################
 ### VERSION 3.72 START ###
@@ -305,6 +305,7 @@ Basic Refactor Steps:
 		- use list comprehension: 'squares = [i*i for i in range(10)]'
 
 - TBD: finish refactoring nouns
+	- TBD: exmine titles for all as separate buffer line (enables brief / verbose and also diff dict)
 	- TBD: refactor Item
 		- TBD: doc_string
 			- TBD: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
