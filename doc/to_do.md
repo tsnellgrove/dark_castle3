@@ -162,13 +162,16 @@ Version 3.72 Goals
 - keep exercising refactor skills!
 
 - TBD: finish refactoring nouns
-	- TBD: refactor Item
+	- INPROC: refactor Item
 		- DONE: first-pass refactor of take()
 			- DONE: var names:
 				- DONE: room_obj => room
 				- DONE: room_obj_lst => floor_lst
 			- DONE: use f-string
 			- DONE: use if-then shield pattern
+			- TBD: refactor take from creature failure
+			- IDEA: Room (not Item) should be authoritative for where an item can be found (since Room provides is_vis() )
+			- TBD: create remove_item() method in room and call from take()
 	- TBD: refactor drop()
 		- TBD: doc_string
 			- TBD: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
