@@ -1,6 +1,6 @@
-# program: dark castle v3.70
+# program: dark castle v3.71
 # name: Tom Snellgrove
-# date: July 24, 2022
+# date: Aug 10, 2022
 # description: gets obj from default_pkl, welcome text, sets starting values
 
 

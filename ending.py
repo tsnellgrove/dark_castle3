@@ -1,6 +1,6 @@
-# program: dark castle v3.70
+# program: dark castle v3.71
 # name: Tom Snellgrove
-# date: July 24, 2021
+# date: Aug 10, 2022
 # description: presents end of game text 
 
 
