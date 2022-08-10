@@ -140,7 +140,7 @@ Version 3.71 Goals
 - pre-Burt-to-creature conversion clean-up in Invisibe to Container classes and scope methods
 - start exercising refactor skills!
 
-- INPROC: create validate.py module
+- DONE: create validate.py module
 	- DONE: simplify app_main.py
 		- DONE: guard pattern for start_up.py call
 		- DONE: guard pattern for user_input == 'quit' or user_input == 'q' 
@@ -187,7 +187,7 @@ Version 3.71 Goals
 		- DONE: don't need to check for if len(lst) > 0: ;; just use if lst: (Also, bool(None) == False
 		- DONE: use list comprehension: 'squares = [i*i for i in range(10)]'
 	- DONE: write brief essay on naming conventions (!!!) (what about give_dict 'accept' case?)
-- INPROC: refactor next phase
+- DONE: refactor next phase
 	- DONE: refactor door() (same detailed refactor approach as give() & show() above)
 		- DONE: shorten variable names
 			- DONE: open_state => is_open
@@ -262,7 +262,7 @@ Version 3.71 Goals
 			- DONE: put: if curious about why no containers in containers see node hierarchy in room
 			- DONE: other complex methods
 			- DONE: container: obj know what's in them; keep data in one place
-	- INPROC: misc clean-up
+	- DONE: misc clean-up
 		- DONE: Writing descript_key doc_string => Zork tradition of purple prose - leaning in on this
 		- DONE: final decision on renaming Classes to 'generic' names (choice is 'generic')
 			- Suitcase => PortableContainer
@@ -271,9 +271,9 @@ Version 3.71 Goals
 			- Shelf => Surface
 		- DONE: update 'inventory' to equate to 'examine burt'
 			- DONE: description update: "You take stock. Manly rough-and-tumble good looks - check, finely-honed baking skills - check, affable and rougish demeanor - check! If not for the..."
-		- TBD: capitalize Creature traits?
-			- TBD: goblin descript => 'viscious Officessness', 'petty Officiousness'
-			- 
+		- DONE: capitalize Creature traits? - Yes!
+			- DONE: goblin descript => 'viscious Officessness', 'petty Officiousness'
+
 
 ##########################
 ### VERSION 3.72 START ###
