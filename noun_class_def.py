@@ -285,27 +285,12 @@ class Item(ViewOnly):
 				if active_gs.hand_check(self):
 						active_gs.buffer("You're already holding the " + self.full_name)
 						return 
-
-				room = active_gs.get_room()
-#				floor_lst = room.room_obj_lst
-#				backpack_lst = active_gs.get_backpack_lst()
-#				worn_lst = active_gs.get_worn_lst()
-
-#				if any(obj.is_creature and self in obj.vis_lst() for obj in room.room_obj_lst):
-#						active_gs.buffer(f"Burt, you can't take the {self.full_name} it belongs to the {obj.full_name}!")
-#						return 
-
-				for obj in room.room_obj_lst:
+				for obj in active_gs.get_room().room_obj_lst:
 						if obj.is_creature() and self in obj.vis_lst():
 								active_gs.buffer(f"Burt, you can't take the {self.full_name} it belongs to the {obj.full_name}!")
 								return 
 
-#				if self not in floor_lst + backpack_lst + worn_lst:
-#						for obj in floor_lst: # handle case of obj in creature hand or worn
-#								if obj.is_creature() and self in obj.vis_lst():
-#										active_gs.buffer(f"Burt, you can't take the {self.full_name} it belongs to the {obj.full_name}!")
-#										return
-
+				room = active_gs.get_room()
 				floor_lst = room.room_obj_lst
 				backpack_lst = active_gs.get_backpack_lst()
 				worn_lst = active_gs.get_worn_lst()
