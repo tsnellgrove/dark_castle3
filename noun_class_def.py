@@ -279,37 +279,37 @@ class Item(ViewOnly):
 				return True
 
 		def take(self, active_gs):
-
 				if active_gs.hand_check(self):
 						active_gs.buffer("You're already holding the " + self.full_name)
 						return 
 
-				room_obj = active_gs.get_room()
-				room_obj_lst = room_obj.room_obj_lst
+				room = active_gs.get_room()
+				floor_lst = room.room_obj_lst
 				backpack_lst = active_gs.get_backpack_lst()
 				worn_lst = active_gs.get_worn_lst()
 
-				if self not in room_obj_lst + backpack_lst + worn_lst:
-						for obj in room_obj_lst: # handle case of obj in creature hand
+				if self not in floor_lst + backpack_lst + worn_lst:
+						for obj in floor_lst: # handle case of obj in creature hand or worn
 								if obj.is_creature() and self in obj.vis_lst():
-										active_gs.buffer("Burt, you can't take the " + self.full_name + 
-														" it belongs to the " + obj.full_name + "!")
+										active_gs.buffer(f"Burt, you can't take the {self.full_name} it belongs to the {obj.full_name}!")
 										return
 
 				active_gs.put_in_hand(self)
 				active_gs.buffer("Taken")
 				if self in backpack_lst: # if taken from backpack, remove from backpack
 						active_gs.backpack_lst_remove_item(self)
-				elif self in worn_lst: # if taken from worn_lst, remove from worn_lst
+						return 
+				if self in worn_lst: # if taken from worn_lst, remove from worn_lst
 						if self.remove_descript is not None:
 								active_gs.buffer(descript_dict[self.remove_descript])
 						active_gs.worn_lst_remove_item(self)
-				elif self in room_obj_lst: # if taken from room, remove from room
-						room_obj.room_obj_lst_remove(self)
-				else:
-						for obj in room_obj_lst: # else remove item from container it's in
-								if obj.is_container() and obj.chk_in_contain_lst(self):
-										obj.contain_lst_remove(self)
+						return 
+				if self in floor_lst: # if taken from room, remove from room
+						room.room_obj_lst_remove(self)
+						return 
+				for obj in floor_lst: # else remove item from container it's in
+						if obj.is_container() and obj.chk_in_contain_lst(self):
+								obj.contain_lst_remove(self)
 				return
 
 		def drop(self, active_gs):

@@ -131,15 +131,6 @@ Burt as an object
 		- can likely shortcut for non '2word' and 'prep' cases
 		- one side effect: every method needs to either throw text on error or do something on success... we cannot take an action on failure (?) 
 
-
-##########################
-### VERSION 3.72 START ###
-##########################
-
-Version 3.72 Goals
-- pre-Burt-to-creature conversion clean-up in Creature, Room, and Container classes and scope methods
-- keep exercising refactor skills!
-
 Basic Refactor Steps:
 	- refactor pass - basics
 		- shorten variable names
@@ -161,8 +152,24 @@ Basic Refactor Steps:
 		- don't need to check for if len(lst) > 0: ;; just use if lst: (Also, bool(None) == False
 		- use list comprehension: 'squares = [i*i for i in range(10)]'
 
+
+##########################
+### VERSION 3.72 START ###
+##########################
+
+Version 3.72 Goals
+- pre-Burt-to-creature conversion clean-up in Creature, Room, and Container classes and scope methods
+- keep exercising refactor skills!
+
 - TBD: finish refactoring nouns
 	- TBD: refactor Item
+		- DONE: first-pass refactor of take()
+			- DONE: var names:
+				- DONE: room_obj => room
+				- DONE: room_obj_lst => floor_lst
+			- DONE: use f-string
+			- DONE: use if-then shield pattern
+	- TBD: refactor drop()
 		- TBD: doc_string
 			- TBD: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
 			- TBD: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
