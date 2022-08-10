@@ -164,7 +164,10 @@ class ViewOnly(Writing):
 
 		def vis_obj_disp(self, active_gs):
 				pass
-				return 
+				return
+
+		def vis_lst(self):
+				return []
 
 		# *** complex methods ***
 		def examine(self, active_gs):
@@ -284,15 +287,28 @@ class Item(ViewOnly):
 						return 
 
 				room = active_gs.get_room()
+#				floor_lst = room.room_obj_lst
+#				backpack_lst = active_gs.get_backpack_lst()
+#				worn_lst = active_gs.get_worn_lst()
+
+#				if any(obj.is_creature and self in obj.vis_lst() for obj in room.room_obj_lst):
+#						active_gs.buffer(f"Burt, you can't take the {self.full_name} it belongs to the {obj.full_name}!")
+#						return 
+
+				for obj in room.room_obj_lst:
+						if obj.is_creature() and self in obj.vis_lst():
+								active_gs.buffer(f"Burt, you can't take the {self.full_name} it belongs to the {obj.full_name}!")
+								return 
+
+#				if self not in floor_lst + backpack_lst + worn_lst:
+#						for obj in floor_lst: # handle case of obj in creature hand or worn
+#								if obj.is_creature() and self in obj.vis_lst():
+#										active_gs.buffer(f"Burt, you can't take the {self.full_name} it belongs to the {obj.full_name}!")
+#										return
+
 				floor_lst = room.room_obj_lst
 				backpack_lst = active_gs.get_backpack_lst()
 				worn_lst = active_gs.get_worn_lst()
-
-				if self not in floor_lst + backpack_lst + worn_lst:
-						for obj in floor_lst: # handle case of obj in creature hand or worn
-								if obj.is_creature() and self in obj.vis_lst():
-										active_gs.buffer(f"Burt, you can't take the {self.full_name} it belongs to the {obj.full_name}!")
-										return
 
 				active_gs.put_in_hand(self)
 				active_gs.buffer("Taken")

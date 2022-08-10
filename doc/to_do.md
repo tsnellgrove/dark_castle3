@@ -169,7 +169,10 @@ Version 3.72 Goals
 				- DONE: room_obj_lst => floor_lst
 			- DONE: use f-string
 			- DONE: use if-then shield pattern
-			- TBD: refactor take from creature failure
+			- CANCEL: refactor take from creature failure with any
+				- NOTE: turns out that any() does not work well here:
+						NOTE1: 2nd condition can't be undefined
+						NOTE2: I don't get access to 'obj' outside the expression (so I can't include the creature's name in the error string)
 			- IDEA: Room (not Item) should be authoritative for where an item can be found (since Room provides is_vis() )
 			- TBD: create remove_item() method in room and call from take()
 	- TBD: refactor drop()
