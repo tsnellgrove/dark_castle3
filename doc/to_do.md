@@ -175,6 +175,8 @@ Version 3.72 Goals
 						NOTE2: I don't get access to 'obj' outside the expression (so I can't include the creature's name in the error string)
 			- IDEA: Room (not Item) should be authoritative for where an item can be found (since Room provides is_vis() )
 			- TBD: create remove_item() method in room and call from take()
+				- TBD: create remove_item() method in Container, Creature, GameState (temp) [or maybe chk_in_contain_lst, remove_contain_lst]
+				- TBD: in room.remove_item(), check if item in floor_lst. If not, loop through floor_lst and  if chk_in_contain_lst, remove_contain_lst 
 	- TBD: refactor drop()
 		- TBD: doc_string
 			- TBD: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
