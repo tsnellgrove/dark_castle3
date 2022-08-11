@@ -177,7 +177,8 @@ Version 3.72 Goals
 			- INPROC: create remove_item() method in room and call from take()
 				- DONE: create chk_contain_item() and remove_item() method in Container, Creature, GameState (temp), and ViewOnly (False)
 				- DONE: in room.remove_item(), check if item in floor_lst. If not, loop through floor_lst and  if chk_in_contain_lst, remove_contain_lst 
-				- TBD: call room.remoe from take
+				- TBD: org attrib vs. obj methods using comments
+				- TBD: call room.remove from take
 				- TBD: lots of testing!
 			- TBD: re-add worn removal message to active_gs.worn_lst_remove_item(self)
 	- TBD: refactor drop()
@@ -573,6 +574,7 @@ Version 3.9x Goals
 - consternation
 - use phyisogamy in the game!!
 - Gallivanter
+- Solipsistic
 
 
 *** possible new rooms ***
