@@ -169,6 +169,12 @@ class ViewOnly(Writing):
 		def vis_lst(self):
 				return []
 
+		def chk_contain_item(self, item):
+				return False
+
+		def remove_item(self, item):
+				pass
+
 		# *** complex methods ***
 		def examine(self, active_gs):
 				""" Describes an object. examine() is the most fundamental command for gameplay and is the second method available for visible objects after read(). ViewOnly is the ancestor of all visible classes except Writing and quite a few of them expand upon examine() (e.g. in class Door, examine() is extended to describe Condition of the door - i.e. whether it is open or closed).
@@ -241,8 +247,34 @@ class Room(ViewOnly):
 		# *** simple methods ***
 		def vis_element_lst(self):
 				return self.room_obj_lst + self.features
-		
+
 		# *** complex methods ***
+		def chk_contain_item(self, item):
+				if item in self.room_obj_lst:
+						return True
+				if any(obj.chk_contain_lst(item) for obj in self.room_obj_lst):
+						return True
+				if item in active_gs.get_backpack_lst() + active_gs.get_worn_lst():
+						return True
+				return False
+
+		def remove_item(self, item):
+				if item in self.room_obj_lst:
+						self.room_obj_lst_remove(item)
+						return 
+				for obj in self.room_obj_lst:
+						if obj.chk_contain_item(item):
+								obj.remove_item(item)
+								return 
+				if item in active_gs.get_backpack_lst():
+						active_gs.backpack_lst_remove_item(self)
+						return 
+				if item in active_gs.get_worn_lst():
+						active_gs.worn_lst_remove_item(self)
+						return 
+				raise ValueError(f"Can't remove item {item} from room {self.name}")
+				return 
+
 		def examine(self, active_gs):
 				super(Room, self).examine(active_gs)
 				room_item_obj_lst = []
@@ -515,6 +547,12 @@ class Container(Door):
 				if self.is_open:
 						return self.contain_lst
 				return []
+
+		def chk_contain_item(self, item):
+				return item in self.contain_lst
+
+		def remove_item(self, item):
+				self.contain_lst_remove(item)
 
 		# *** complex methods ***
 		def vis_obj_disp(self, active_gs):

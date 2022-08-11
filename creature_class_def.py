@@ -136,6 +136,22 @@ class Creature(ViewOnly):
 		def mach_lst(self):
 				return [obj for obj in self.all_lst() if obj.is_mach()]
 
+		def chk_contain_item(self, item):
+				return item in self.hand_lst + self.bkpk_lst + self.worn_lst
+
+		def remove_item(self, item):
+				if item in self.hand_lst:
+						self.hand_lst_remove(item)
+						return 
+				if item in self.bkpk_lst:
+						self.bkpk_lst_remove(item)
+						return 
+				if item in self.worn_lst:
+						self.worn_lst_remove(item)
+						return 
+				raise ValueError(f"Can't remove item {item} from creature {self.name}")
+				return 
+
 		# *** complex methods ***
 		def vis_obj_disp(self, active_gs):
 				if not self.hand_empty():
