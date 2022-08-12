@@ -201,6 +201,7 @@ Version 3.72 Goals
 	- TBD: refactor Food
 	- TBD: refactor Clothes => Garments
 		- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
+		- TBD: create Garment class-specific remove() method that calls take() ??
 	- TBD: refactor Weapon
 	- TBD: refactor Switch
 - TBD: refactor Room class
