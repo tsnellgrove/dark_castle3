@@ -139,7 +139,7 @@ class Creature(ViewOnly):
 		def chk_contain_item(self, item):
 				return item in self.hand_lst + self.bkpk_lst + self.worn_lst
 
-		def remove_item(self, item):
+		def remove_item(self, item, active_gs):
 				if item in self.hand_lst:
 						self.hand_lst_remove(item)
 						return 
