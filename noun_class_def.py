@@ -321,30 +321,9 @@ class Item(ViewOnly):
 						if obj.is_creature() and self in obj.vis_lst():
 								active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 								return 
-
-#				room = active_gs.get_room()
-#				floor_lst = room.room_obj_lst
-#				backpack_lst = active_gs.get_backpack_lst()
-#				worn_lst = active_gs.get_worn_lst()
-
 				active_gs.get_room().remove_item(self, active_gs)
 				active_gs.put_in_hand(self)
 				active_gs.buffer("Taken")
-
-#				if self in backpack_lst: # if taken from backpack, remove from backpack
-#						active_gs.backpack_lst_remove_item(self)
-#						return 
-#				if self in worn_lst: # if taken from worn_lst, remove from worn_lst
-#						if self.remove_descript is not None:
-#								active_gs.buffer(descript_dict[self.remove_descript])
-#						active_gs.worn_lst_remove_item(self)
-#						return 
-#				if self in floor_lst: # if taken from room, remove from room
-#						room.room_obj_lst_remove(self)
-#						return 
-#				for obj in floor_lst: # else remove item from container it's in
-#						if obj.is_container() and obj.chk_in_contain_lst(self):
-#								obj.contain_lst_remove(self)
 				return
 
 		def drop(self, active_gs):
