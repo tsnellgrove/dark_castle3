@@ -162,7 +162,7 @@ Version 3.72 Goals
 - keep exercising refactor skills!
 
 - TBD: finish refactoring nouns
-	- INPROC: refactor Item
+	- DONE: refactor Item
 		- DONE: first-pass refactor of take()
 			- DONE: var names:
 				- DONE: room_obj => room
@@ -170,21 +170,22 @@ Version 3.72 Goals
 			- DONE: use f-string
 			- DONE: use if-then shield pattern
 			- CANCEL: refactor take from creature failure with any
-				- NOTE: turns out that any() does not work well here:
-						NOTE1: 2nd condition can't be undefined
-						NOTE2: I don't get access to 'obj' outside the expression (so I can't include the creature's name in the error string)
-			- IDEA: Room (not Item) should be authoritative for where an item can be found (since Room provides is_vis() )
 			- DONE: create remove_item() method in room and call from take()
 				- DONE: create chk_contain_item() and remove_item() method in Container, Creature, GameState (temp), and ViewOnly (False)
 				- DONE: in room.remove_item(), check if item in floor_lst. If not, loop through floor_lst and  if chk_in_contain_lst, remove_contain_lst 
 				- DONE: call room.remove from take
 				- DONE: lots of testing!
-			- TBD: re-add worn removal message to active_gs.worn_lst_remove_item(self)
-			- TBD: org attrib vs. obj methods using comments
+			- DONE: org attrib vs. obj methods using comments
+			- DONE: re-add worn removal message to active_gs.worn_lst_remove_item(self)
 	- TBD: refactor drop()
 		- TBD: doc_string
 			- TBD: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
 			- TBD: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
+			- NOTE: turns out that any() does not work well here:
+				- NOTE1: 2nd condition can't be undefined
+				- NOTE2: I don't get access to 'obj' outside the expression (so I can't include the creature's name in the error string)
+			- IDEA: Room (not Item) should be authoritative for where an item can be found (since Room provides is_vis() )
+				- IDEA: should creature test be in room? unique error requires obj full_name so decided not
 	- TBD: introduce PortableContainer class (was Suitcase) (dual inheritance from Container & Item) 
 	- TBD: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
 		- TBD: [move container list routine from Invisible() to Container() ?]
@@ -199,6 +200,7 @@ Version 3.72 Goals
 		- implement Control Panel as Shelf !! (may need to add control_panel after guard_goblin dies)
 	- TBD: refactor Food
 	- TBD: refactor Clothes => Garments
+		- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
 	- TBD: refactor Weapon
 	- TBD: refactor Switch
 - TBD: refactor Room class

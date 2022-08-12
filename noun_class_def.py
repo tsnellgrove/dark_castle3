@@ -29,7 +29,7 @@ class Invisible(object):
 		def name(self):
 				return self._name
 
-		# *** simple methods ***
+		# *** simple obj methods ***
 		def is_item(self):
 				return False
 
@@ -105,10 +105,11 @@ class Writing(Invisible):
 		def descript_key(self, new_descript):
 				self._descript_key = new_descript
 
-		# *** simple methods ***
+		# *** simple obj methods ***
 		def is_writing(self):
 				return True
 
+		# *** complex obj methods ***
 		def get_descript_str(self, active_gs):
 				"""Provides the current description of an object.
 				
@@ -124,7 +125,6 @@ class Writing(Invisible):
 						except:
 								return f"The {self.full_name} is simply indescribable."
 
-		# *** complex methods ***
 		def read(self, active_gs):
 				""" Reads text found on an object. Read is the first player-accessible method. For the reasons mentioned above in Writing, writing objects are treated a bit differently than other 'nouns' and therefore the error checking in read() is a bit different as well (writing has it's own unique scope check method, chk_wrt_is_vis). Note that read is uniquely excluded from the 2word generic command failure routines in validate(). 
 				"""
@@ -155,13 +155,14 @@ class ViewOnly(Writing):
 		def writing(self):
 				return self._writing
 
-		# *** simple methods ***
-		def is_writing(self):
-				return False
-		
+		# *** attrib methods ***		
 		def has_writing(self):
 				return self.writing is not None
 
+		# *** simple obj methods ***
+		def is_writing(self):
+				return False
+		
 		def vis_obj_disp(self, active_gs):
 				pass
 				return
@@ -174,8 +175,9 @@ class ViewOnly(Writing):
 
 		def remove_item(self, item, active_gs):
 				pass
+				return 
 
-		# *** complex methods ***
+		# *** complex obj methods ***
 		def examine(self, active_gs):
 				""" Describes an object. examine() is the most fundamental command for gameplay and is the second method available for visible objects after read(). ViewOnly is the ancestor of all visible classes except Writing and quite a few of them expand upon examine() (e.g. in class Door, examine() is extended to describe Condition of the door - i.e. whether it is open or closed).
 				
@@ -221,6 +223,15 @@ class Room(ViewOnly):
 		def room_obj_lst(self):
 				return self._room_obj_lst
 
+		@property
+		def door_paths(self):
+				return self._door_paths
+
+		@property
+		def invis_obj_lst(self):
+				return self._invis_obj_lst
+
+		# *** attribute methods ***
 		def room_obj_lst_append(self, item):
 				self._room_obj_lst.append(item)
 
@@ -229,10 +240,6 @@ class Room(ViewOnly):
 
 		def room_obj_lst_remove(self, item):
 				self._room_obj_lst.remove(item)
-
-		@property
-		def door_paths(self):
-				return self._door_paths
 		
 		def	door_in_path(self, direction):
 				return direction in self.door_paths
@@ -240,16 +247,12 @@ class Room(ViewOnly):
 		def get_door(self, direction):
 				return self.door_paths[direction]
 
-		@property
-		def invis_obj_lst(self):
-				return self._invis_obj_lst
-
-		# *** simple methods ***
+		# *** simple object methods ***
 		def vis_element_lst(self):
 				return self.room_obj_lst + self.features
 
-		# *** complex methods ***
-		def chk_contain_item(self, item):
+		# *** complex object methods ***
+		def chk_contain_item(self, item, active_gs):
 				if item in self.room_obj_lst:
 						return True
 				if any(obj.chk_contain_lst(item) for obj in self.room_obj_lst):
@@ -310,9 +313,11 @@ class Item(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 
+		# *** simple object methods ***
 		def is_item(self):
 				return True
 
+		# *** complex object methods ***
 		def take(self, active_gs):
 				if active_gs.hand_check(self):
 						active_gs.buffer("You're already holding the " + self.full_name)
@@ -385,7 +390,7 @@ class Door(ViewOnly):
 		def key(self, new_key):
 				self._key = new_key
 
-		# *** complex methods ***
+		# *** complex obj methods ***
 		def examine(self, active_gs):
 				super(Door, self).examine(active_gs)
 				""" Door-specific examine() responses to be provided in addition to the base examine() method in ViewOnly  
@@ -508,7 +513,7 @@ class Container(Door):
 		def contain_lst(self, new_obj):
 				self._contain_lst = new_obj
 
-		# *** simple methods ***
+		# *** attribute methods ***
 		def chk_in_contain_lst(self, obj):
 				return obj in self.contain_lst
 
@@ -518,24 +523,25 @@ class Container(Door):
 		def contain_lst_remove(self, item):
 				self._contain_lst.remove(item)
 
-		def	is_container(self):
-				return True
-
 		def is_empty(self):
 				return not self.contain_lst
+
+		def chk_contain_item(self, item):
+				return item in self.contain_lst
+
+		# *** simple obj methods ***
+		def	is_container(self):
+				return True
 
 		def vis_lst(self):
 				if self.is_open:
 						return self.contain_lst
 				return []
 
-		def chk_contain_item(self, item):
-				return item in self.contain_lst
-
 		def remove_item(self, item, active_gs):
 				self.contain_lst_remove(item)
 
-		# *** complex methods ***
+		# *** complex obj methods ***
 		def vis_obj_disp(self, active_gs):
 				""" Displays a description of the items in the container. Extracting this from method allows Room.examine() to resuse it.
 				"""
