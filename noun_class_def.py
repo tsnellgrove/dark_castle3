@@ -333,8 +333,7 @@ class Item(ViewOnly):
 
 		def drop(self, active_gs):
 				active_gs.hand_lst_remove_item(self)
-				room_obj = active_gs.get_room()
-				room_obj.room_obj_lst_append(self)
+				active_gs.get_room().room_obj_lst_append(self)
 				active_gs.buffer("Dropped")
 
 class Door(ViewOnly):

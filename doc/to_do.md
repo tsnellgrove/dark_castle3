@@ -177,7 +177,7 @@ Version 3.72 Goals
 				- DONE: lots of testing!
 			- DONE: org attrib vs. obj methods using comments
 			- DONE: re-add worn removal message to active_gs.worn_lst_remove_item(self)
-	- TBD: refactor drop()
+		- DONE: refactor drop()
 		- TBD: doc_string
 			- TBD: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
 			- TBD: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
@@ -201,7 +201,12 @@ Version 3.72 Goals
 	- TBD: refactor Food
 	- TBD: refactor Clothes => Garments
 		- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
-		- TBD: create Garment class-specific remove() method that calls take() ??
+		- CANCEL: create Garment class-specific remove() method that calls take() ??
+		- TBD: auto-gen keys
+			- TBD: implement try for auto-gen key on both append and remove methods
+			- TBD: consider auto-gen keys for all verb methods (probably not)
+			- TBD: Organize auto-gen keys together
+			- TBD: consider creating a separate dict for autogen keys
 	- TBD: refactor Weapon
 	- TBD: refactor Switch
 - TBD: refactor Room class
