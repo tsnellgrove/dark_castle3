@@ -178,8 +178,8 @@ Version 3.72 Goals
 			- DONE: org attrib vs. obj methods using comments
 			- DONE: re-add worn removal message to active_gs.worn_lst_remove_item(self)
 		- DONE: refactor drop()
-		- TBD: doc_string
-			- TBD: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
+		- INPROC: doc_string
+			- DONE: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
 			- TBD: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
 			- NOTE: turns out that any() does not work well here:
 				- NOTE1: 2nd condition can't be undefined

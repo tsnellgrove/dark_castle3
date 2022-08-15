@@ -312,6 +312,14 @@ class Room(ViewOnly):
 class Item(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing):
 				super().__init__(name, full_name, root_name, descript_key, writing)
+				""" Items can be 'taken' and 'dropped'. Item inherits from ViewOnly and has no new attributes - just new methods: take() and drop(). 
+				
+				Implementation Details:
+						All objects of class Item are takable - there's no 'is_takable' attribute to prevent this. To temporarily prevent an Item from being taken you could:
+								1) Initially provide a ViewOnly object and then, when appropriate, swap in an Item object with the same full_name
+								2) Prevent the take() method via a Warning
+								3) Prevent the take() method via a Modular Machine
+				"""
 
 		# *** simple object methods ***
 		def is_item(self):
