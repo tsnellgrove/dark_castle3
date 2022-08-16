@@ -180,12 +180,13 @@ Version 3.72 Goals
 		- DONE: refactor drop()
 		- INPROC: doc_string
 			- DONE: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
+			- DONE: turns out that any() does not work well here:
+				- DONE: 2nd condition can't be undefined
+				- DONE: I don't get access to 'obj' outside the expression (so I can't include the creature's name in the error string)
+			- DONE: Room (not Item) should be authoritative for where an item can be found (since Room provides is_vis() )
+				- CANCEL: should creature test be in room? unique error requires obj full_name so decided not
 			- TBD: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
-			- NOTE: turns out that any() does not work well here:
-				- NOTE1: 2nd condition can't be undefined
-				- NOTE2: I don't get access to 'obj' outside the expression (so I can't include the creature's name in the error string)
-			- IDEA: Room (not Item) should be authoritative for where an item can be found (since Room provides is_vis() )
-				- IDEA: should creature test be in room? unique error requires obj full_name so decided not
+			- TBD: drop
 	- TBD: introduce PortableContainer class (was Suitcase) (dual inheritance from Container & Item) 
 	- TBD: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
 		- TBD: [move container list routine from Invisible() to Container() ?]

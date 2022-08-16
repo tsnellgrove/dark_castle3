@@ -327,6 +327,19 @@ class Item(ViewOnly):
 
 		# *** complex object methods ***
 		def take(self, active_gs):
+				""" Takes an object from either the room or from Burt's inventory and places it into Burt's hand
+				
+				Implementation Detail:
+						take() used to be a much more complex method. Adding the object into Burt's hand is trivial but finding where to remove it from takes some serching. I initially did all that searching in take(). During refactoring it became clear to me that it made more sense to do this in room since room is already responsible for general scope searches and therefore is already required to know all the 'places' where an object could reside.
+						
+						I initially thought that the 'Can't take another creature's stuff' error would be a great use case for the any(if x == y for x in z) pattern. This proved to be incorrect. For one thing, the any() pattern is a one-liner - so 'x' does not exist outside that line - but I need it for the error message on the next line. Also, curiously, it turns out that Python's magic ability to have an 'if x and y' statement where 'y' can be undefined so long as 'x' is False does not work within any(). Code and learn!
+						
+						It may initially be surprising how few tests we need to conduct before performing the method. The logic works as follows:
+								1) We confirm that 'obj' in visible to Burt in validate()
+								2) 'obj' must either be of class Item or inherit from class Item or else the method could not run
+								3) Local error checking ensures that 'obj' is not already in Burt's hand or held / worn by another creature
+								4) Therefore, 'obj' must be a takable Item
+				"""
 				if active_gs.hand_check(self):
 						active_gs.buffer("You're already holding the " + self.full_name)
 						return 
