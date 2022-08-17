@@ -53,7 +53,6 @@ random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random
 cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 'cheese_eat')
 stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 'biscuit_eat')
 
-# fresh_water = Liquid('fresh_water', 'Fresh Water', 'water', 'fresh_water', None, 'water_drink')
 fresh_water = Liquid('fresh_water', 'Fresh Water', 'water', 'fresh_water', None)
 
 royal_crown = Clothes('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 'wear_royal_crown', 'remove_royal_crown', 'hat')

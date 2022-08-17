@@ -676,15 +676,10 @@ class Jug(Item):
 				self.print_contents_str(active_gs)
 
 class Liquid(ViewOnly):
-#		def __init__(self, name, full_name, root_name, descript_key, writing, drink_descript_key):
 		def __init__(self, name, full_name, root_name, descript_key, writing):
 				super().__init__(name, full_name, root_name, descript_key, writing)
-#				self._drink_desc_key = drink_descript_key # key to description of drinking the liquid (stored in descript_dict)
-
-		# *** getters & setters ***
-#		@property
-#		def drink_desc_key(self):
-#				return self._drink_desc_key
+				""" Liquids are ViewOnly objects. You cannot take a Liquid but you can drink() it from a Container.
+				"""
 
 		# *** simple obj methods ***
 		def is_liquid(self):
@@ -692,6 +687,8 @@ class Liquid(ViewOnly):
 
 		# *** complex obj methods ***
 		def drink(self, active_gs):
+				""" Consumes a liquid if it is in a Container that Burt is holding in his hand.
+				"""
 				hand_lst = active_gs.get_hand_lst() # leaving as-is since future Creature refactor will address
 				if (active_gs.hand_empty()) or (hand_lst[0].is_container() == False):
 						active_gs.buffer(f"You don't seem to be holding a container of {self.full_name} in your hand.")
@@ -700,8 +697,6 @@ class Liquid(ViewOnly):
 						active_gs.buffer(f"The container in your hand doesn't contain {self.full_name}.")
 						return 
 				hand_lst[0].contain_lst.remove(self)
-#				output = "Drunk. The " + self.full_name + " " + descript_dict[self.drink_desc_key]
-#				active_gs.buffer(output)
 				active_gs.buffer("Drunk.")
 				try:
 						active_gs.buffer(descript_dict["drink_"+self.name])

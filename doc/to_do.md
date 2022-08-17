@@ -190,7 +190,7 @@ Version 3.72 Goals
 	- DONE: PortableContainer
 		- DONE: introduce PortableContainer class (was Suitcase) (dual inheritance from Container & Item)
 		- DONE: instantiate black_suitcase (test with rusty_key & cheese_wedge)
-	- INPROC: refactor Beverage
+	- DONE: refactor Beverage
 		- DONE: rename class to Liquid
 			- DONE: noun_class_def()
 			- DONE: mk_def_pkl()
@@ -201,16 +201,17 @@ Version 3.72 Goals
 		- DONE: if-then guard technique
 		- DONE: f-string
 		- DONE: elim temp vers (except hand_lst)
-		- INPROC: descript_key => auto-gen key
+		- DONE: descript_key => auto-gen key
 			- DONE: implement auto-gen key
 			- DONE: elim attribute key
 			- DONE: elim descript_dict entry for attribute key
-		- TBD: doc_strings
+		- DONE: doc_strings
 	- TBD: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
 		- TBD: [move container list routine from Invisible() to Container() ?]
 		- TBD: put() for jug fails if obj not is_beverage
 		- TBD: use chk_
 		- TBD: move print_contents_str() from Invisible to Container / eliminate
+		- TBD: create fill() method
 	- TBD: eliminate Jug (replaced by generically named PortableLiquidContainer) 
 	- TBD: create Surface class!! (was 'Shelf')
 		- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
@@ -252,6 +253,10 @@ Version 3.72 Goals
 	- TBD: re-org to identify 'attacker' and 'winner' 
 	- TBD: re-code attack / attack_burt response correctly based on in-line notes
 	- TBD: unify descript approach: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
+	- TBD: create LiquidContainer class
+		- TBD: create new LiquidContainer class
+		- TBD: instantiate old_well in the main_hall which contains fresh water
+		- TBD: update drink() to allow / error for drinking from the old_well
 
 
 ##########################
@@ -624,6 +629,9 @@ Vehical:
 - need to adjust weight correctly going up and down
 - need to grab staute (?) on way up / down?
 - or else maybe mine cart / parachute??
+
+Under Water:
+- treasure at bottom of old well - but need a magical way to hold your breath?
 
 Zork Thief = Ferret:
 - dextrous, loves colorful objects, likes to fidtet / fiddle with things, clever
