@@ -675,10 +675,10 @@ class Jug(Item):
 				super(Jug, self).examine(active_gs)
 				self.print_contents_str(active_gs)
 
-class Beverage(ViewOnly):
+class Liquid(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, drink_descript_key):
 				super().__init__(name, full_name, root_name, descript_key, writing)
-				self._drink_desc_key = drink_descript_key # key to description of drinking the beverage (stored in descript_dict)
+				self._drink_desc_key = drink_descript_key # key to description of drinking the liquid (stored in descript_dict)
 
 		@property
 		def drink_desc_key(self):

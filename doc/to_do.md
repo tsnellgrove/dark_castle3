@@ -190,7 +190,17 @@ Version 3.72 Goals
 	- DONE: PortableContainer
 		- DONE: introduce PortableContainer class (was Suitcase) (dual inheritance from Container & Item)
 		- DONE: instantiate black_suitcase (test with rusty_key & cheese_wedge)
-	- TBD: refactor Beverage to Liquid
+	- INPROC: refactor Beverage
+		- DONE: rename class to Liquid
+			- DONE: noun_class_def()
+			- DONE: mk_def_pkl()
+		- TBD: rename method is_beverage() to is_liquid()
+			- TBD: noun_class_def()
+			- TBD: validate()
+		- TBD: org methods
+		- TBD: std refactor techniques
+		- TBD: descript_key => auto-gen key
+		- TBD: doc_strings
 	- TBD: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
 		- TBD: [move container list routine from Invisible() to Container() ?]
 		- TBD: put() for jug fails if obj not is_beverage
@@ -627,6 +637,7 @@ Food:
 - maybe need to keep feeding biscuits to the hedgehog?
 - perhaps loaf of bread and bottle of water can each provide multiple servers (similar to enchanter)
 - additional water verbs needed: 'fill' and 'pour the <water> on the <noun>'
+	- Perhaps regular containers can't contain liquids?
 - additional bread verbs needed: bake ???
 
 Special Glasses / Dream form:

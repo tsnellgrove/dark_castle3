@@ -6,7 +6,7 @@
 
 # import statements
 import pickle
-from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, PortableContainer, Jug, Door, Room, Weapon
+from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Liquid, Clothes, Container, PortableContainer, Jug, Door, Room, Weapon
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
 				SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
@@ -53,7 +53,7 @@ random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random
 cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 'cheese_eat')
 stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 'biscuit_eat')
 
-fresh_water = Beverage('fresh_water', 'Fresh Water', 'water', 'fresh_water', None, 'water_drink')
+fresh_water = Liquid('fresh_water', 'Fresh Water', 'water', 'fresh_water', None, 'water_drink')
 
 royal_crown = Clothes('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 'wear_royal_crown', 'remove_royal_crown', 'hat')
 baseball_cap = Clothes('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, None, None, 'hat')

@@ -84,7 +84,7 @@ descript_dict = {
 		'cheese_wedge' : "A small wedge of cheese you absconded with from the larder. It's very small - so small that a lone mouse could probably make off with the whole thing - but your mother was saving it for company so you suspect it's quite delicious.",
 		'stale_biscuits' : "The Stale Biscuits are rather unappetizing. There is a Trademark baked into the biscuits.",
 
-		### beverage objects ###
+		### liquid objects ###
 		'fresh_water' : "After your trudge up the hill to Dark Castle the Fresh Water looks invitingly refreshing.",
 
 		### clothes objects ###
