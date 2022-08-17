@@ -201,7 +201,9 @@ Version 3.72 Goals
 		- DONE: if-then guard technique
 		- DONE: f-string
 		- DONE: elim temp vers (except hand_lst)
-		- TBD: descript_key => auto-gen key
+		- INPROC: descript_key => auto-gen key
+			- DONE: implement auto-gen key
+			- TBD: elimin attribute key
 		- TBD: doc_strings
 	- TBD: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
 		- TBD: [move container list routine from Invisible() to Container() ?]
@@ -248,6 +250,7 @@ Version 3.72 Goals
 	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
 	- TBD: re-org to identify 'attacker' and 'winner' 
 	- TBD: re-code attack / attack_burt response correctly based on in-line notes
+	- TBD: unify descript approach: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
 
 
 ##########################

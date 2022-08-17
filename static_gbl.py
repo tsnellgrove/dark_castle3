@@ -109,6 +109,7 @@ descript_dict = {
 
 		### drink descriptions ###
 		'water_drink' : "was refreshing!",
+		'drink_fresh_water' : "That was refreshing!",
 
 		### test objects ###
 		'brass_key' : "The key is brass.",

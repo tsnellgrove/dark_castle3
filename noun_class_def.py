@@ -693,20 +693,19 @@ class Liquid(ViewOnly):
 		def drink(self, active_gs):
 				hand_lst = active_gs.get_hand_lst() # leaving as-is since future Creature refactor will address
 				if (active_gs.hand_empty()) or (hand_lst[0].is_container() == False):
-#						output = f"You don't seem to be holding a container of {self.full_name} in your hand."
-#						active_gs.buffer(output)
 						active_gs.buffer(f"You don't seem to be holding a container of {self.full_name} in your hand.")
 						return 
 				if self not in hand_lst[0].contain_lst:
-#						output = "The container in your hand doesn't contain " + self.full_name + "."
-#						active_gs.buffer(output)
 						active_gs.buffer(f"The container in your hand doesn't contain {self.full_name}.")
 						return 
-#				else:
 				hand_lst[0].contain_lst.remove(self)
-				output = "Drunk. The " + self.full_name + " " + descript_dict[self.drink_desc_key]
-				active_gs.buffer(output)
+#				output = "Drunk. The " + self.full_name + " " + descript_dict[self.drink_desc_key]
+#				active_gs.buffer(output)
 				active_gs.buffer("Drunk.")
+				try:
+						active_gs.buffer(descript_dict["drink_"+self.name])
+				except:
+						pass
 				
 
 class Clothes(Item):
