@@ -197,8 +197,10 @@ Version 3.72 Goals
 		- DONE: rename method is_beverage() to is_liquid()
 			- DONE: noun_class_def()
 			- DONE: validate()
-		- TBD: org methods
-		- TBD: std refactor techniques
+		- DONE: org methods
+		- DONE: if-then guard technique
+		- DONE: f-string
+		- DONE: elim temp vers (except hand_lst)
 		- TBD: descript_key => auto-gen key
 		- TBD: doc_strings
 	- TBD: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
