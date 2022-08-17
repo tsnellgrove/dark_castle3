@@ -641,20 +641,38 @@ class PortableContainer(Container, Item):
 		def is_item(self):
 				return True
 
+## class Child(Parent):
+##		def __init__(self):
+##		super().__init__()   # no arguments is almost always best in Python 3
+
+##		def do_something(self, some_parameter, next_parameter):
+##				super(Child, self).do_something(some_parameter, next_parameter) # name the current class
+##				return some_parameter + next_parameter 
 
 class PortableLiquidContainer(PortableContainer):
 		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
+#		def __init__(self):
 				super().__init__(name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
+#				super().__init__()
 				"""A container that holds liquids and can be taken.
 				"""
 
 		def put(self, obj, active_gs):
-				super(Container, self).put(obj, active_gs)
-				""" Extends put to prohibit non-liquids in PortableLiquidContainer class containers.
+#				super(PortableLiquidContainer, self).put(obj, active_gs)
+				""" put() is over-ridden to prohibit non-liquids in PortableLiquidContainer class containers.
+				
+				Implementation Detail:
+						I wanted this to be an extension of Container.put() and 'super(PortableLiquidContainer, self).put(obj, active_gs)' does throw the correct error when Burt tries to put a non-liquid in the glass_bottle... but only after the object is put in the bottle. So I chose to over-ride the method completely.
 				"""
+				if self.is_open == False:
+						active_gs.buffer(f"The {self.full_name} is closed.")
+						return 
 				if not obj.is_liquid():
 						active_gs.buffer(f"The {self.full_name} can only hold liquids.")
 						return 
+				active_gs.hand_lst_remove_item(obj)
+				self.contain_lst_append(obj)
+				active_gs.buffer("Done")
 
 class Food(Item):
 		def __init__(self, name, full_name, root_name, descript_key, writing, eat_desc_key):

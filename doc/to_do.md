@@ -8,6 +8,7 @@ Aug 10, 2022
 - Cloud / Online: CodeAnyWhere, Cloud9 (AWS)
 - Reference article: '5 ways to use Python on an iPad'
 
+
 *** How to Add Objects ***
 1) If needed, create Class and methods in class_def
 2) Instantiate object in mk_def_pkl()
@@ -15,6 +16,19 @@ Aug 10, 2022
 4) Add object to master_obj_lst in mk_def_pkl() [exception: invisible obj like conditions & results that player will never ref]
 5) Run mk_def_pkl()
 6) Add object description in static_gbl
+
+
+*** Inheritance & Method Extension ***
+- This solution recommended at this stackoverflow link: https://stackoverflow.com/questions/51249310/attributeerror-super-object-has-no-attribute
+
+## class Child(Parent):
+##		def __init__(self): # <== THIS DIDN'T WORK FOR PortableLiquidContainer
+##		super().__init__()   # no arguments is almost always best in Python 3 <== THIS DIDN'T WORK FOR PortableLiquidContainer either
+
+##		def do_something(self, some_parameter, next_parameter):
+##				super(Child, self).do_something(some_parameter, next_parameter) # name the current class <== BUT THIS WAS VITAL!!!
+##				return some_parameter + next_parameter 
+
 
 *** Var and Method Naming Conventions ***
 - prefix bools w/ 'is_' (also used for methods where no varriable is passed - e.g. 'obj.is_item()')
@@ -207,12 +221,11 @@ Version 3.72 Goals
 			- DONE: elim descript_dict entry for attribute key
 		- DONE: doc_strings
 	- INPROC: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
-		- INPROC: testing fail on put non-liquid in glass_bottle; in cmd_exe debug mode
+		- DONE: testing fail on put non-liquid in glass_bottle; in cmd_exe debug mode
+		- DONE: put() for jug fails if obj not is_beverage
 		- TBD: [move container list routine from Invisible() to Container() ?]
-		- TBD: put() for jug fails if obj not is_beverage
 		- TBD: use chk_
 		- TBD: move print_contents_str() from Invisible to Container / eliminate
-		- TBD: create fill() method
 		- TBD: eliminate Jug (replaced by generically named PortableLiquidContainer)
 	- TBD: refactor Food
 	- TBD: refactor Clothes => Garments
