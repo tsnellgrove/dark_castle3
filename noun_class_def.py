@@ -319,6 +319,11 @@ class Item(ViewOnly):
 								1) Initially provide a ViewOnly object and then, when appropriate, swap in an Item object with the same full_name
 								2) Prevent the take() method via a Warning
 								3) Prevent the take() method via a Modular Machine
+				
+				Game Design:
+						Adventurers love Items. This tradition dates back to Zork I itself, where the sole mission of the game was to collect 20 (or 19, depending on who you talk to) treasures and safely store them in a trophy case. Although Dark Castle theoretically follows the Enchanter tradition of saving the land, truthfully, Burt showed up at Dark Castle to score some loot and that desire is never far from his heart. Good game design leverages this love of Items. 
+						
+						Want to intrigue and excite an Adventurer? Show them an out-of-reach item. Want to infuriate an Adventurer? Pilfer their hard won items! Want to make a puzzle hard? Require that the Adventurer surrender an Item to solve it. Dark Castle leans heavily on each of these standard Adventurer herding techniques.
 				"""
 
 		# *** simple object methods ***
@@ -330,7 +335,7 @@ class Item(ViewOnly):
 				""" Takes an object from either the room or from Burt's inventory and places it into Burt's hand
 				
 				Implementation Detail:
-						take() used to be a much more complex method. Adding the object into Burt's hand is trivial but finding where to remove it from takes some serching. I initially did all that searching in take(). During refactoring it became clear to me that it made more sense to do this in room since room is already responsible for general scope searches and therefore is already required to know all the 'places' where an object could reside.
+						take() used to be a more complex method. Adding the object into Burt's hand is trivial but finding where to remove it from takes some serching. I initially did all that searching in take(). During refactoring it became clear that it made sense to do this in Room instead since the Room class is already responsible for providing visible object scope and therefore is already required to know all the places an object could be.
 						
 						I initially thought that the 'Can't take another creature's stuff' error would be a great use case for the any(if x == y for x in z) pattern. This proved to be incorrect. For one thing, the any() pattern is a one-liner - so 'x' does not exist outside that line - but I need it for the error message on the next line. Also, curiously, it turns out that Python's magic ability to have an 'if x and y' statement where 'y' can be undefined so long as 'x' is False does not work within any(). Code and learn!
 						
@@ -353,6 +358,8 @@ class Item(ViewOnly):
 				return
 
 		def drop(self, active_gs):
+				""" Drops an object from Burt's hand to the floor of the room.
+				"""
 				active_gs.hand_lst_remove_item(self)
 				active_gs.get_room().room_obj_lst_append(self)
 				active_gs.buffer("Dropped")

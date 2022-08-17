@@ -185,9 +185,10 @@ Version 3.72 Goals
 				- DONE: I don't get access to 'obj' outside the expression (so I can't include the creature's name in the error string)
 			- DONE: Room (not Item) should be authoritative for where an item can be found (since Room provides is_vis() )
 				- CANCEL: should creature test be in room? unique error requires obj full_name so decided not
-			- TBD: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
-			- TBD: drop
-	- TBD: introduce PortableContainer class (was Suitcase) (dual inheritance from Container & Item) 
+			- DONE: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
+			- DONE: drop
+	- TBD: introduce PortableContainer class (was Suitcase) (dual inheritance from Container & Item)
+		TBD: instantiate sea_chest (test with rusty_key) 
 	- TBD: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
 		- TBD: [move container list routine from Invisible() to Container() ?]
 		- TBD: put() for jug fails if obj not is_beverage
