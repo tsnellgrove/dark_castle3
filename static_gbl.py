@@ -108,7 +108,7 @@ descript_dict = {
 #		".. especially as to some poor creature out there they might be a rare and wonderous delicacy.",
 
 		### drink descriptions ###
-		'water_drink' : "was refreshing!",
+#		'water_drink' : "was refreshing!",
 		'drink_fresh_water' : "That was refreshing!",
 
 		### test objects ###

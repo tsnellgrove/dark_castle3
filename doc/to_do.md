@@ -203,7 +203,8 @@ Version 3.72 Goals
 		- DONE: elim temp vers (except hand_lst)
 		- INPROC: descript_key => auto-gen key
 			- DONE: implement auto-gen key
-			- TBD: elimin attribute key
+			- DONE: elim attribute key
+			- DONE: elim descript_dict entry for attribute key
 		- TBD: doc_strings
 	- TBD: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
 		- TBD: [move container list routine from Invisible() to Container() ?]
