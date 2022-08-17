@@ -189,13 +189,13 @@ Version 3.72 Goals
 			- DONE: drop
 	- DONE: PortableContainer
 		- DONE: introduce PortableContainer class (was Suitcase) (dual inheritance from Container & Item)
-		- DONE: instantiate black_suitcase (test with rusty_key & cheese_wedge) 
+		- DONE: instantiate black_suitcase (test with rusty_key & cheese_wedge)
+	- TBD: refactor Beverage to Liquid
 	- TBD: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
 		- TBD: [move container list routine from Invisible() to Container() ?]
 		- TBD: put() for jug fails if obj not is_beverage
 		- TBD: use chk_
 		- TBD: move print_contents_str() from Invisible to Container / eliminate
-	- TBD: refactor Beverage to Liquid
 	- TBD: eliminate Jug (replaced by generically named PortableLiquidContainer) 
 	- TBD: create Surface class!! (was 'Shelf')
 		- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
