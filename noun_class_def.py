@@ -33,7 +33,7 @@ class Invisible(object):
 		def is_item(self):
 				return False
 
-		def is_beverage(self):
+		def is_liquid(self):
 				return False
 
 		def is_weapon(self):
@@ -684,7 +684,7 @@ class Liquid(ViewOnly):
 		def drink_desc_key(self):
 				return self._drink_desc_key
 
-		def is_beverage(self):
+		def is_liquid(self):
 				return True
 
 		def drink(self, active_gs):

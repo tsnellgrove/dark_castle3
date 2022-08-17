@@ -194,9 +194,9 @@ Version 3.72 Goals
 		- DONE: rename class to Liquid
 			- DONE: noun_class_def()
 			- DONE: mk_def_pkl()
-		- TBD: rename method is_beverage() to is_liquid()
-			- TBD: noun_class_def()
-			- TBD: validate()
+		- DONE: rename method is_beverage() to is_liquid()
+			- DONE: noun_class_def()
+			- DONE: validate()
 		- TBD: org methods
 		- TBD: std refactor techniques
 		- TBD: descript_key => auto-gen key

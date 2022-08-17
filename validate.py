@@ -63,8 +63,8 @@ def validate(active_gs, case, word_lst):
 						active_gs.buffer(output)
 						return False
 
-				if (word1 == 'take') and (active_gs.scope_check(word2_obj)) and (word2_obj.is_beverage()):
-						active_gs.buffer("You can't 'take' a beverage. Try 'drink' instead.")
+				if (word1 == 'take') and (active_gs.scope_check(word2_obj)) and (word2_obj.is_liquid()):
+						active_gs.buffer("You can't 'take' a liquid. Try 'drink' instead.")
 						return False
 
 				# *** generic command failure ***
