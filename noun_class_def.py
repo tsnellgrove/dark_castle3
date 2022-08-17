@@ -595,7 +595,6 @@ class Container(Door):
 				""" Extends Door.examine(). Displays the container condition and visible objects.
 				"""
 				self.obj_cond_disp(active_gs)
-				print(str(self.is_container()))
 				self.vis_obj_disp(active_gs)
 				return 
 
@@ -641,28 +640,18 @@ class PortableContainer(Container, Item):
 		def is_item(self):
 				return True
 
-## class Child(Parent):
-##		def __init__(self):
-##		super().__init__()   # no arguments is almost always best in Python 3
-
-##		def do_something(self, some_parameter, next_parameter):
-##				super(Child, self).do_something(some_parameter, next_parameter) # name the current class
-##				return some_parameter + next_parameter 
-
 class PortableLiquidContainer(PortableContainer):
 		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
-#		def __init__(self):
 				super().__init__(name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
-#				super().__init__()
 				"""A container that holds liquids and can be taken.
 				"""
 
 		def put(self, obj, active_gs):
-#				super(PortableLiquidContainer, self).put(obj, active_gs)
+##				super(PortableLiquidContainer, self).put(obj, active_gs) # this code worked to extend the method from Container.put()
 				""" put() is over-ridden to prohibit non-liquids in PortableLiquidContainer class containers.
 				
 				Implementation Detail:
-						I wanted this to be an extension of Container.put() and 'super(PortableLiquidContainer, self).put(obj, active_gs)' does throw the correct error when Burt tries to put a non-liquid in the glass_bottle... but only after the object is put in the bottle. So I chose to over-ride the method completely.
+						I wanted this to be an extension of Container.put() and using super does throw the correct error when Burt tries to put a non-liquid in the glass_bottle... but only after the object is put in the bottle. So I chose to over-ride the method completely.
 				"""
 				if self.is_open == False:
 						active_gs.buffer(f"The {self.full_name} is closed.")
