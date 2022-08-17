@@ -56,7 +56,7 @@ class Invisible(object):
 
 		# *** temp method - be moved to Container ***
 		def	print_contents_str(self, active_gs):
-				if self.is_container() and self.is_open == True:
+				if self.is_container() and self.is_not_closed() == True:
 						container_str = obj_lst_to_str(self.contain_lst)
 						active_gs.buffer("The " + self.full_name + " contains: " + container_str)
 
@@ -417,6 +417,10 @@ class Door(ViewOnly):
 		def key(self, new_key):
 				self._key = new_key
 
+		# *** attribute methods ***
+		def is_not_closed(self):
+				return self.is_open is not False
+
 		# *** complex obj methods ***
 		def examine(self, active_gs):
 				super(Door, self).examine(active_gs)
@@ -561,7 +565,7 @@ class Container(Door):
 				return True
 
 		def vis_lst(self):
-				if self.is_open:
+				if self.is_not_closed():
 						return self.contain_lst
 				return []
 
@@ -572,7 +576,8 @@ class Container(Door):
 		def vis_obj_disp(self, active_gs):
 				""" Displays a description of the items in the container. Extracting this from method allows Room.examine() to resuse it.
 				"""
-				if self.is_open and not self.is_empty():
+#				if self.is_open and not self.is_empty():
+				if self.is_not_closed() and not self.is_empty():
 						contain_txt_lst = [obj.full_name for obj in self.contain_lst]
 						contain_str = ", ".join(contain_txt_lst)
 						active_gs.buffer(f"The {self.full_name} contains: {contain_str}")
@@ -590,6 +595,7 @@ class Container(Door):
 				""" Extends Door.examine(). Displays the container condition and visible objects.
 				"""
 				self.obj_cond_disp(active_gs)
+				print(str(self.is_container()))
 				self.vis_obj_disp(active_gs)
 				return 
 
@@ -630,9 +636,25 @@ class PortableContainer(Container, Item):
 				Container.__init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
 				"""A container that can be taken.
 				"""
+
 		# *** simple object methods ***
 		def is_item(self):
 				return True
+
+
+class PortableLiquidContainer(PortableContainer):
+		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
+				super().__init__(name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
+				"""A container that holds liquids and can be taken.
+				"""
+
+		def put(self, obj, active_gs):
+				super(Container, self).put(obj, active_gs)
+				""" Extends put to prohibit non-liquids in PortableLiquidContainer class containers.
+				"""
+				if not obj.is_liquid():
+						active_gs.buffer(f"The {self.full_name} can only hold liquids.")
+						return 
 
 class Food(Item):
 		def __init__(self, name, full_name, root_name, descript_key, writing, eat_desc_key):

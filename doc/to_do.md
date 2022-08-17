@@ -161,7 +161,7 @@ Version 3.72 Goals
 - pre-Burt-to-creature conversion clean-up in Creature, Room, and Container classes and scope methods
 - keep exercising refactor skills!
 
-- TBD: finish refactoring nouns
+- TBD: finish refactoring std nouns
 	- DONE: refactor Item
 		- DONE: first-pass refactor of take()
 			- DONE: var names:
@@ -206,17 +206,14 @@ Version 3.72 Goals
 			- DONE: elim attribute key
 			- DONE: elim descript_dict entry for attribute key
 		- DONE: doc_strings
-	- TBD: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
+	- INPROC: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
+		- INPROC: testing fail on put non-liquid in glass_bottle; in cmd_exe debug mode
 		- TBD: [move container list routine from Invisible() to Container() ?]
 		- TBD: put() for jug fails if obj not is_beverage
 		- TBD: use chk_
 		- TBD: move print_contents_str() from Invisible to Container / eliminate
 		- TBD: create fill() method
-	- TBD: eliminate Jug (replaced by generically named PortableLiquidContainer) 
-	- TBD: create Surface class!! (was 'Shelf')
-		- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
-		- put initial shelf in Main Hall
-		- implement Control Panel as Shelf !! (may need to add control_panel after guard_goblin dies)
+		- TBD: eliminate Jug (replaced by generically named PortableLiquidContainer)
 	- TBD: refactor Food
 	- TBD: refactor Clothes => Garments
 		- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
@@ -247,16 +244,16 @@ Version 3.72 Goals
 		- could also run a pre-start check on container & creature to throw errors on illegal contents
 		- need to document (to self!) consistent approach to what is visible when Burt looks, examines, or inventories
 	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
+- TBD: create Surface class!! (was 'Shelf')
+	- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
+	- put initial shelf in Main Hall
+	- implement Control Panel as Shelf !! (may need to add control_panel after guard_goblin dies)
 - TBD: refactor Creature / attack()
 	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
 	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
 	- TBD: re-org to identify 'attacker' and 'winner' 
 	- TBD: re-code attack / attack_burt response correctly based on in-line notes
 	- TBD: unify descript approach: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
-	- TBD: create LiquidContainer class
-		- TBD: create new LiquidContainer class
-		- TBD: instantiate old_well in the main_hall which contains fresh water
-		- TBD: update drink() to allow / error for drinking from the old_well
 
 
 ##########################
@@ -632,6 +629,14 @@ Vehical:
 
 Under Water:
 - treasure at bottom of old well - but need a magical way to hold your breath?
+- old_well as water source in entrance_hall and also passage to... where?
+- can hold breath for 4 turns, locked grate is 2 moves down, get warning on half air and last turn
+	- TBD: create LiquidContainer class
+		- TBD: create new LiquidContainer class
+		- TBD: instantiate old_well in the main_hall which contains fresh water
+		- TBD: update drink() to allow / error for drinking from the old_well
+- lantern is water proof
+- should be like rope puzzle for Zork I... have everything you need in the remote room but can't get out without solving puzzle
 
 Zork Thief = Ferret:
 - dextrous, loves colorful objects, likes to fidtet / fiddle with things, clever
