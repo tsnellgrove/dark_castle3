@@ -48,7 +48,6 @@ brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None) # test obje
 bubbly_potion = Item('bubbly_potion', 'bubbly potion', "potion", 'bubbly_potion', None) # test object
 torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwriting)
 silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None)
-## kinging_scroll = Item('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters) # old scroll
 random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random_mcguffin', None)
 
 cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 'cheese_eat')
@@ -68,16 +67,12 @@ grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing,
 shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarven_runes,
 				[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']])
 
-##wooden_chest = Container('wooden_chest', 'wooden chest', "chest", 'wooden_chest', None,
-##				False, False, brass_key, [bubbly_potion]) # test object
 crystal_box = Container('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy,
 				False, False, silver_key, ['kinging_scroll_temp'])
-## giftbox = Container('giftbox', 'A pretty gift box', None, False, True, 'none', True, [necklace])
 
 glass_bottle = Jug('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', None, True, [fresh_water])
 
 front_gate = Door('front_gate', 'Front Gate', "gate", 'front_gate', rusty_lettering, False, False, rusty_key)
-## screen_door = Door('screen_door', "You should never be able to examine the screen_door", None, False, False, chrome_key)
 iron_portcullis = Door('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, False, False, None)
 
 throne = SpringSliderSwitch('throne', 'Throne', 'throne', 'throne', None, 'neutral', 'neutral', 'auto_switch_reset')
@@ -86,14 +81,7 @@ middle_lever = LeverSwitch('middle_lever', 'Middle Lever', 'lever', 'middle_leve
 right_lever = LeverSwitch('right_lever', 'Right Lever', 'lever', 'right_lever', None, 'down', None, None)
 red_button = ButtonSwitch('red_button', 'Red Button', 'button', 'red_button', None, 'neutral', 'neutral', 'auto_switch_reset')
 
-## blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button',
-##				None, 'neutral', 'neutral', 'pre_act_auto_switch_reset') # test obj
-black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None,
-				False, False, rusty_key, [cheese_wedge])
-
-## test_timer = Timer('test_timer', 'auto_act', False, 0, 3, 'variable', False, blue_button) # test obj
 hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, 'royal_hedgehog')
-
 
 hand_no_weap_cond = WeaponInHandCond('hand_no_weap_cond', False)
 hand_weap_1st_cond = IsWeaponAndStateCond('hand_weap_1st_cond', True, False)
@@ -124,7 +112,6 @@ throne_pull_result = AddObjToRoomResult('throne_pull_result', hedgehog_broach, F
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
 portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', False)
 goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'guard_goblin_temp', True)
-## blue_button_result = StartTimerResult('blue_button_result', test_timer, False) # test obj
 start_hedgehog_timer_results = TimerAndCreatureItemResult('start_hedgehog_timer_results', hedgehog_eats_timer, False, 'royal_hedgehog', stale_biscuits)
 pass_result = BufferOnlyResult('pass_result', False)
 hedgehog_guard_result = BufferOnlyResult('hedgehog_guard_result', True)
@@ -138,9 +125,7 @@ scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won', Fal
 axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
 
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
-
 attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd', [['attack', 'royal_hedgehog']], 3, 0)
-
 eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','stale_biscuits']], 3, 0)
 
 
@@ -162,10 +147,6 @@ hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None,
 
 hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None, [['take', 'shiny_sword']],
 				None, [hedgehog_guard_cond, pass_thru_cond], [hedgehog_guard_result, pass_result])
-
-## big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None, # test obj
-##				0, 'post_act_switch', blue_button, ['pushed'], [],
-##				[pass_thru_cond], [blue_button_result])
 
 hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', 0, 'pre_act_timer', hedgehog_eats_timer, [True], None,
 				[hedgehog_keeps_sword_cond, hedgehog_loses_sword_cond, pass_thru_cond],
@@ -224,8 +205,21 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 				None)
 
 
+# *** Test Objects ***
+## kinging_scroll = Item('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters) # old scroll
+## wooden_chest = Container('wooden_chest', 'wooden chest', "chest", 'wooden_chest', None, False, False, brass_key, [bubbly_potion]) # test object
+## giftbox = Container('giftbox', 'A pretty gift box', None, False, True, 'none', True, [necklace])
+## screen_door = Door('screen_door', "You should never be able to examine the screen_door", None, False, False, chrome_key)
+## blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset') # test obj
+## black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None, False, False, rusty_key, [cheese_wedge])
+## test_timer = Timer('test_timer', 'auto_act', False, 0, 3, 'variable', False, blue_button) # test obj
+## blue_button_result = StartTimerResult('blue_button_result', test_timer, False) # test obj
+## big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None, # test obj, 0, 'post_act_switch', blue_button, ['pushed'], [], [pass_thru_cond], [blue_button_result])
+
+
+# *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-				[front_gate, black_suitcase], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
+				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
 				# note: for timer testing, big_bomb was in entrance.room_obj_lst and blue_button was in entrance.features
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
@@ -295,7 +289,7 @@ active_gs = GameState(
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible obj referenced in room.invis_obj_lst need not be listed ###
 master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, goblin_guard, entrance, main_hall, antechamber, throne_room, loyalty,
-officiousness, gold_capitals, red_bandana, big_medal, black_suitcase]
+officiousness, gold_capitals, red_bandana, big_medal]
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:
