@@ -178,7 +178,7 @@ Version 3.72 Goals
 			- DONE: org attrib vs. obj methods using comments
 			- DONE: re-add worn removal message to active_gs.worn_lst_remove_item(self)
 		- DONE: refactor drop()
-		- INPROC: doc_string
+		- DONE: doc_string
 			- DONE: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
 			- DONE: turns out that any() does not work well here:
 				- DONE: 2nd condition can't be undefined
@@ -187,8 +187,9 @@ Version 3.72 Goals
 				- CANCEL: should creature test be in room? unique error requires obj full_name so decided not
 			- DONE: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
 			- DONE: drop
-	- TBD: introduce PortableContainer class (was Suitcase) (dual inheritance from Container & Item)
-		TBD: instantiate sea_chest (test with rusty_key) 
+	- DONE: PortableContainer
+		- DONE: introduce PortableContainer class (was Suitcase) (dual inheritance from Container & Item)
+		- DONE: instantiate black_suitcase (test with rusty_key & cheese_wedge) 
 	- TBD: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
 		- TBD: [move container list routine from Invisible() to Container() ?]
 		- TBD: put() for jug fails if obj not is_beverage

@@ -624,7 +624,18 @@ class Container(Door):
 				active_gs.hand_lst_remove_item(obj)
 				self.contain_lst_append(obj)
 				active_gs.buffer("Done")
-						
+
+class PortableContainer(Container, Item):
+		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
+				Container.__init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
+##				Item.__init__(self)
+				"""A container that can be taken.
+				"""
+		# *** simple object methods ***
+		def is_item(self):
+				return True
+
+
 class Food(Item):
 		def __init__(self, name, full_name, root_name, descript_key, writing, eat_desc_key):
 				super().__init__(name, full_name, root_name, descript_key, writing)

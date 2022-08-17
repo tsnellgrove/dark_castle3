@@ -6,7 +6,7 @@
 
 # import statements
 import pickle
-from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, Jug, Door, Room, Weapon
+from noun_class_def import Invisible, Writing, ViewOnly, Item, Food, Beverage, Clothes, Container, PortableContainer, Jug, Door, Room, Weapon
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
 				SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
@@ -68,8 +68,8 @@ grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing,
 shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarven_runes,
 				[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']])
 
-wooden_chest = Container('wooden_chest', 'wooden chest', "chest", 'wooden_chest', None,
-				False, False, brass_key, [bubbly_potion]) # test object
+##wooden_chest = Container('wooden_chest', 'wooden chest', "chest", 'wooden_chest', None,
+##				False, False, brass_key, [bubbly_potion]) # test object
 crystal_box = Container('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy,
 				False, False, silver_key, ['kinging_scroll_temp'])
 ## giftbox = Container('giftbox', 'A pretty gift box', None, False, True, 'none', True, [necklace])
@@ -88,6 +88,8 @@ red_button = ButtonSwitch('red_button', 'Red Button', 'button', 'red_button', No
 
 ## blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button',
 ##				None, 'neutral', 'neutral', 'pre_act_auto_switch_reset') # test obj
+black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None,
+				False, False, rusty_key, [cheese_wedge])
 
 ## test_timer = Timer('test_timer', 'auto_act', False, 0, 3, 'variable', False, blue_button) # test obj
 hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, 'royal_hedgehog')
@@ -223,7 +225,7 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
+				[front_gate, black_suitcase], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
 				# note: for timer testing, big_bomb was in entrance.room_obj_lst and blue_button was in entrance.features
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
@@ -292,8 +294,8 @@ active_gs = GameState(
 ### instantiated objects added to list ###
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible obj referenced in room.invis_obj_lst need not be listed ###
-master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, wooden_chest, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, goblin_guard, entrance, main_hall, antechamber, throne_room, loyalty,
-officiousness, gold_capitals, red_bandana, big_medal]
+master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, goblin_guard, entrance, main_hall, antechamber, throne_room, loyalty,
+officiousness, gold_capitals, red_bandana, big_medal, black_suitcase]
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:
