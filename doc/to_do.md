@@ -220,13 +220,12 @@ Version 3.72 Goals
 			- DONE: elim attribute key
 			- DONE: elim descript_dict entry for attribute key
 		- DONE: doc_strings
-	- INPROC: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
+	- DONE: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
 		- DONE: testing fail on put non-liquid in glass_bottle; in cmd_exe debug mode
 		- DONE: put() for jug fails if obj not is_beverage
-		- TBD: [move container list routine from Invisible() to Container() ?]
-		- TBD: use chk_
-		- TBD: move print_contents_str() from Invisible to Container / eliminate
-		- TBD: eliminate Jug (replaced by generically named PortableLiquidContainer)
+		- DONE: elim print_contents_str() 
+		- DONE: eliminate Jug (replaced by generically named PortableLiquidContainer)
+		- DONE: elim obj_lst_to_str
 	- TBD: refactor Food
 	- TBD: refactor Clothes => Garments
 		- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"

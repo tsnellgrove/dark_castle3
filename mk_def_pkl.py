@@ -7,7 +7,7 @@
 # import statements
 import pickle
 from noun_class_def import (Invisible, Writing, ViewOnly, Item, Food, Liquid, Clothes, Container,
-				PortableContainer, PortableLiquidContainer, Jug, Door, Room, Weapon)
+				PortableContainer, PortableLiquidContainer, Door, Room, Weapon)
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
 				SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
