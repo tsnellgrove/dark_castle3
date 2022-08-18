@@ -172,71 +172,59 @@ Basic Refactor Steps:
 ##########################
 
 Version 3.72 Goals
-- pre-Burt-to-creature conversion clean-up in Creature, Room, and Container classes and scope methods
+- pre-Burt-to-creature conversion clean-up in Creature, Room, and Container classes and scope methods, std nouns
 - keep exercising refactor skills!
 
-- TBD: finish refactoring std nouns
-	- DONE: refactor Item
-		- DONE: first-pass refactor of take()
-			- DONE: var names:
-				- DONE: room_obj => room
-				- DONE: room_obj_lst => floor_lst
-			- DONE: use f-string
-			- DONE: use if-then shield pattern
-			- CANCEL: refactor take from creature failure with any
-			- DONE: create remove_item() method in room and call from take()
-				- DONE: create chk_contain_item() and remove_item() method in Container, Creature, GameState (temp), and ViewOnly (False)
-				- DONE: in room.remove_item(), check if item in floor_lst. If not, loop through floor_lst and  if chk_in_contain_lst, remove_contain_lst 
-				- DONE: call room.remove from take
-				- DONE: lots of testing!
-			- DONE: org attrib vs. obj methods using comments
-			- DONE: re-add worn removal message to active_gs.worn_lst_remove_item(self)
-		- DONE: refactor drop()
-		- DONE: doc_string
-			- DONE: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
-			- DONE: turns out that any() does not work well here:
-				- DONE: 2nd condition can't be undefined
-				- DONE: I don't get access to 'obj' outside the expression (so I can't include the creature's name in the error string)
-			- DONE: Room (not Item) should be authoritative for where an item can be found (since Room provides is_vis() )
-				- CANCEL: should creature test be in room? unique error requires obj full_name so decided not
-			- DONE: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
-			- DONE: drop
-	- DONE: PortableContainer
-		- DONE: introduce PortableContainer class (was Suitcase) (dual inheritance from Container & Item)
-		- DONE: instantiate black_suitcase (test with rusty_key & cheese_wedge)
-	- DONE: refactor Beverage
-		- DONE: rename class to Liquid
-			- DONE: noun_class_def()
-			- DONE: mk_def_pkl()
-		- DONE: rename method is_beverage() to is_liquid()
-			- DONE: noun_class_def()
-			- DONE: validate()
-		- DONE: org methods
-		- DONE: if-then guard technique
-		- DONE: f-string
-		- DONE: elim temp vers (except hand_lst)
-		- DONE: descript_key => auto-gen key
-			- DONE: implement auto-gen key
-			- DONE: elim attribute key
-			- DONE: elim descript_dict entry for attribute key
-		- DONE: doc_strings
-	- DONE: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
-		- DONE: testing fail on put non-liquid in glass_bottle; in cmd_exe debug mode
-		- DONE: put() for jug fails if obj not is_beverage
-		- DONE: elim print_contents_str() 
-		- DONE: eliminate Jug (replaced by generically named PortableLiquidContainer)
-		- DONE: elim obj_lst_to_str (move funct to *** local funcs *** in gs_class_def.py); move shared_class_func module to 'legacy' folder
-	- TBD: refactor Food
-	- TBD: refactor Clothes => Garments
-		- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
-		- CANCEL: create Garment class-specific remove() method that calls take() ??
-		- TBD: auto-gen keys
-			- TBD: implement try for auto-gen key on both append and remove methods
-			- TBD: consider auto-gen keys for all verb methods (probably not)
-			- TBD: Organize auto-gen keys together
-			- TBD: consider creating a separate dict for autogen keys
-	- TBD: refactor Weapon
-	- TBD: refactor Switch
+- DONE: refactor Item
+	- DONE: first-pass refactor of take()
+		- DONE: var names:
+			- DONE: room_obj => room
+			- DONE: room_obj_lst => floor_lst
+		- DONE: use f-string
+		- DONE: use if-then shield pattern
+		- CANCEL: refactor take from creature failure with any
+		- DONE: create remove_item() method in room and call from take()
+			- DONE: create chk_contain_item() and remove_item() method in Container, Creature, GameState (temp), and ViewOnly (False)
+			- DONE: in room.remove_item(), check if item in floor_lst. If not, loop through floor_lst and  if chk_in_contain_lst, remove_contain_lst 
+			- DONE: call room.remove from take
+			- DONE: lots of testing!
+		- DONE: org attrib vs. obj methods using comments
+		- DONE: re-add worn removal message to active_gs.worn_lst_remove_item(self)
+	- DONE: refactor drop()
+	- DONE: doc_string
+		- DONE: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
+		- DONE: turns out that any() does not work well here:
+			- DONE: 2nd condition can't be undefined
+			- DONE: I don't get access to 'obj' outside the expression (so I can't include the creature's name in the error string)
+		- DONE: Room (not Item) should be authoritative for where an item can be found (since Room provides is_vis() )
+			- CANCEL: should creature test be in room? unique error requires obj full_name so decided not
+		- DONE: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
+		- DONE: drop
+- DONE: PortableContainer
+	- DONE: introduce PortableContainer class (was Suitcase) (dual inheritance from Container & Item)
+	- DONE: instantiate black_suitcase (test with rusty_key & cheese_wedge)
+- DONE: refactor Beverage
+	- DONE: rename class to Liquid
+		- DONE: noun_class_def()
+		- DONE: mk_def_pkl()
+	- DONE: rename method is_beverage() to is_liquid()
+		- DONE: noun_class_def()
+		- DONE: validate()
+	- DONE: org methods
+	- DONE: if-then guard technique
+	- DONE: f-string
+	- DONE: elim temp vers (except hand_lst)
+	- DONE: descript_key => auto-gen key
+		- DONE: implement auto-gen key
+		- DONE: elim attribute key
+		- DONE: elim descript_dict entry for attribute key
+	- DONE: doc_strings
+- DONE: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
+	- DONE: testing fail on put non-liquid in glass_bottle; in cmd_exe debug mode
+	- DONE: put() for jug fails if obj not is_beverage
+	- DONE: elim print_contents_str() 
+	- DONE: eliminate Jug (replaced by generically named PortableLiquidContainer)
+	- DONE: elim obj_lst_to_str (move funct to *** local funcs *** in gs_class_def.py); move shared_class_func module to 'legacy' folder
 - TBD: refactor Room class
 	- TBD: exmine titles for rooms as separate buffer line (enables brief / verbose and also diff dict)
 	- DONE: should be able to get basic descriptions from Container and Creature classes
@@ -256,6 +244,17 @@ Version 3.72 Goals
 		- could also run a pre-start check on container & creature to throw errors on illegal contents
 		- need to document (to self!) consistent approach to what is visible when Burt looks, examines, or inventories
 	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
+- TBD: refactor Food
+- TBD: refactor Clothes => Garments
+	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
+	- CANCEL: create Garment class-specific remove() method that calls take() ??
+	- TBD: auto-gen keys
+		- TBD: implement try for auto-gen key on both append and remove methods
+		- TBD: consider auto-gen keys for all verb methods (probably not)
+		- TBD: Organize auto-gen keys together
+		- TBD: consider creating a separate dict for autogen keys
+- TBD: refactor Weapon
+- TBD: refactor Switch
 - TBD: create Surface class!! (was 'Shelf')
 	- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
 	- put initial shelf in Main Hall
