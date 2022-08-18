@@ -6,8 +6,6 @@
 
 ### import
 from static_gbl import descript_dict, static_dict
-#from shared_class_func import obj_lst_to_str
-
 
 ### local functions
 def obj_lst_to_str(obj_lst):

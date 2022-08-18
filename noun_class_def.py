@@ -7,7 +7,6 @@
 ### import
 import random
 from static_gbl import descript_dict, static_dict
-# from shared_class_func import obj_lst_to_str
 
 
 ### local functions
@@ -53,12 +52,6 @@ class Invisible(object):
 
 		def __repr__(self):
 				return f"Object {self.name} is of class {type(self).__name__}"
-
-		# *** temp method - be moved to Container ***
-#		def	print_contents_str(self, active_gs):
-#				if self.is_container() and self.is_not_closed() == True:
-#						container_str = obj_lst_to_str(self.contain_lst)
-#						active_gs.buffer("The " + self.full_name + " contains: " + container_str)
 
 class Writing(Invisible):
 		def __init__(self, name, full_name, root_name, descript_key):
@@ -290,10 +283,8 @@ class Room(ViewOnly):
 				if room_item_obj_lst:
 						room_txt_lst = [obj.full_name for obj in room_item_obj_lst]
 						room_item_str = ", ".join(room_txt_lst)
-#						room_item_str_lst = obj_lst_to_str(room_item_obj_lst)
 						active_gs.buffer("The following items are here: " + room_item_str)
 				for obj in room_item_obj_lst:
-#						obj.print_contents_str(active_gs)
 						obj.vis_obj_disp(active_gs)
 
 		def go(self, direction, active_gs):
@@ -579,7 +570,6 @@ class Container(Door):
 		def vis_obj_disp(self, active_gs):
 				""" Displays a description of the items in the container. Extracting this from method allows Room.examine() to resuse it.
 				"""
-#				if self.is_open and not self.is_empty():
 				if self.is_not_closed() and not self.is_empty():
 						contain_txt_lst = [obj.full_name for obj in self.contain_lst]
 						contain_str = ", ".join(contain_txt_lst)
@@ -680,33 +670,6 @@ class Food(Item):
 					output = "Eaten. The " + self.full_name + " " + descript_dict[self.eat_desc_key]
 					active_gs.buffer(output)
 
-#class Jug(Item):
-#		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, contain_lst):
-#				super().__init__(name, full_name, root_name, descript_key, writing)
-#				self._is_open = is_open # is the jug uncapped?
-#				self._contain_lst = contain_lst # obj in the jug
-
-#		@property
-#		def contain_lst(self):
-#				return self._contain_lst
-
-#		@property
-#		def is_open(self):
-#				return self._is_open
-
-#		def	is_container(self):
-#				return True
-
-#		def vis_lst(self): # DUP FROM CONTAINER CLASS
-#				vis_lst = []
-#				if self.is_open:
-#						vis_lst = self.contain_lst
-#				return vis_lst
-
-#		def examine(self, active_gs):
-#				super(Jug, self).examine(active_gs)
-#				self.print_contents_str(active_gs)
-
 class Liquid(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing):
 				super().__init__(name, full_name, root_name, descript_key, writing)
@@ -734,7 +697,7 @@ class Liquid(ViewOnly):
 						active_gs.buffer(descript_dict["drink_"+self.name])
 				except:
 						pass
-				
+				return 
 
 class Clothes(Item):
 		def __init__(self, name, full_name, root_name, descript_key, writing, wear_descript, remove_descript, clothing_type):
