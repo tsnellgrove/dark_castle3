@@ -200,17 +200,17 @@ class ViewOnly(Writing):
 				return
 
 class Room(ViewOnly):
-		def __init__(self, name, full_name, root_name, descript_key, writing, features, room_obj_lst, door_paths, invis_obj_lst):
+		def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, room_obj_lst, door_paths, invis_obj_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
-				self._features = features # list of non-items in room (can be examined but not taken)
+				self._feature_lst = feature_lst # list of non-items in room (can be examined but not taken)
 				self._room_obj_lst = room_obj_lst # list of obj in the room that the player can interact with
 				self._door_paths = door_paths # dictionary of {direction1 : door1}
 				self._invis_obj_lst = invis_obj_lst # list of invisible obj in room
 
 		# *** getters & setters ***
 		@property
-		def features(self):
-				return self._features
+		def feature_lst(self):
+				return self._feature_lst
 
 		@property
 		def room_obj_lst(self):
@@ -242,7 +242,7 @@ class Room(ViewOnly):
 
 		# *** simple object methods ***
 		def vis_element_lst(self):
-				return self.room_obj_lst + self.features
+				return self.room_obj_lst + self.feature_lst
 
 		# *** complex object methods ***
 		def chk_contain_item(self, item, active_gs):

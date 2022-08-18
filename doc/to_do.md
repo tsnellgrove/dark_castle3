@@ -225,7 +225,11 @@ Version 3.72 Goals
 	- DONE: elim print_contents_str() 
 	- DONE: eliminate Jug (replaced by generically named PortableLiquidContainer)
 	- DONE: elim obj_lst_to_str (move funct to *** local funcs *** in gs_class_def.py); move shared_class_func module to 'legacy' folder
-- TBD: refactor Room class
+- INPROC: refactor Room class
+	- INPROC: rename vars
+		- DONE: features => feature_lst
+			- DONE: noun_class_def
+		- TBD: room_obj_lst => floor_lst
 	- TBD: exmine titles for rooms as separate buffer line (enables brief / verbose and also diff dict)
 	- DONE: should be able to get basic descriptions from Container and Creature classes
 		- DONE: need methods in class for this - reuse in Container & Creature examine
