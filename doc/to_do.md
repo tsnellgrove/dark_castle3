@@ -225,7 +225,7 @@ Version 3.72 Goals
 		- DONE: put() for jug fails if obj not is_beverage
 		- DONE: elim print_contents_str() 
 		- DONE: eliminate Jug (replaced by generically named PortableLiquidContainer)
-		- DONE: elim obj_lst_to_str
+		- DONE: elim obj_lst_to_str (move funct to *** local funcs *** in gs_class_def.py); move shared_class_func module to 'legacy' folder
 	- TBD: refactor Food
 	- TBD: refactor Clothes => Garments
 		- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
