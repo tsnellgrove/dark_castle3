@@ -18,6 +18,7 @@ from result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiv
 from mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer
 from creature_class_def import Creature
 from gs_class_def import GameState
+from map_class_def import Map
 
 
 # object instantiation - starting state
@@ -236,6 +237,12 @@ throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', N
 				[throne, crystal_box, iron_portcullis], {'south' : iron_portcullis}, [broach_dispenser_mach])
 
 
+# *** Map ***
+map = Map([{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall},
+				{'room_x' : main_hall, 'dir_x' : 'north', 'door' : None, 'dir_y' : 'south', 'room_y' : antechamber},
+				{'room_x' : antechamber, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : throne_room}])
+
+
 # *** 'object not defined' re-assignment ***
 goblin_attacks_result.creature_obj = goblin_guard
 hedgehog_has_biscuit_cond.creature_obj = royal_hedgehog
@@ -285,7 +292,8 @@ active_gs = GameState(
 		},
 ##		[test_timer, hedgehog_eats_timer], # timer test universal obj
 		[hedgehog_eats_timer],
-		[entrance, main_hall, antechamber, throne_room]
+		[entrance, main_hall, antechamber, throne_room],
+		map
 )
 
 ### instantiated objects added to list ###

@@ -225,19 +225,23 @@ Version 3.72 Goals
 	- DONE: elim print_contents_str() 
 	- DONE: eliminate Jug (replaced by generically named PortableLiquidContainer)
 	- DONE: elim obj_lst_to_str (move funct to *** local funcs *** in gs_class_def.py); move shared_class_func module to 'legacy' folder
-- TBD: refactor map
-	- TBD: create map_class_def.py module
-	- TBD: create Map class with attribute = map_lst
-	- TBD: in mk_def_pkl, import Map
-	- TBD: in mk_def_pkl, instantiate map lst of dicts
-	- TBD: in gs_class_def, add map attribute
-	- TBD: in mk_def_pkl, add instantiated map to active_gs
-	- TBD: create method chk_obj_in_map() # checks of obj in floor_lst in each room in map
-	- TBD: update score to use chk_obj_in_map()
-	- TBD: create vis_lst() method to provide list of doors in room
-	- TBD: add map.vis_lst() to room
-	- TBD: remove doors from rooms in mk_def_pkl
-	- TBD: create vis_obj_display method to provide door condition (door / passage names and directions) for room
+- INPROC: refactor map
+	- DONE: create Map class
+		- DONE: create map_class_def.py module
+		- DONE: create Map class with attribute = map_lst
+		- DONE: in mk_def_pkl, import Map
+		- DONE: in mk_def_pkl, instantiate map lst of dicts
+		- DONE: in gs_class_def, add map attribute
+		- DONE: in mk_def_pkl, add instantiated map to active_gs
+	- TBD: chk_obj_in_map() method
+		- TBD: create method chk_obj_in_map() # checks of obj in floor_lst in each room in map
+		- TBD: update score to use chk_obj_in_map()
+	- TBD: vis_lst() method
+		- TBD: create vis_lst() method to provide list of doors in room
+		- TBD: add map.vis_lst() to room
+		- TBD: remove doors from rooms in mk_def_pkl
+	- TBD: vis_obj_disp
+		- TBD: create vis_obj_disp method to provide door condition (door / passage names and directions) for room
 - INPROC: refactor Room class
 	- INPROC: rename vars
 		- DONE: features => feature_lst
