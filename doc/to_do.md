@@ -233,8 +233,9 @@ Version 3.72 Goals
 		- DONE: in mk_def_pkl, instantiate map lst of dicts
 		- DONE: in gs_class_def, add map attribute
 		- DONE: in mk_def_pkl, add instantiated map to active_gs
-	- TBD: chk_obj_in_map() method
-		- TBD: create method chk_obj_in_map() # checks of obj in floor_lst in each room in map
+	- INPROC: chk_obj_in_map() method
+		- DONE: create method chk_obj_in_map() # checks of obj in floor_lst in each room in map
+		- TBD: rename Room room_obj_lst => floor_lst
 		- TBD: update score to use chk_obj_in_map()
 	- TBD: vis_lst() method
 		- TBD: create vis_lst() method to provide list of doors in room
@@ -242,11 +243,17 @@ Version 3.72 Goals
 		- TBD: remove doors from rooms in mk_def_pkl
 	- TBD: vis_obj_disp
 		- TBD: create vis_obj_disp method to provide door condition (door / passage names and directions) for room
+	- TBD: go back and refactor Map class
 - INPROC: refactor Room class
 	- INPROC: rename vars
 		- DONE: features => feature_lst
 			- DONE: noun_class_def
 		- TBD: room_obj_lst => floor_lst
+			- TBD: noun_class_def
+			- TBD: gs_class_def
+			- TBD: creature_class_def
+			- TBD: cond_class_def
+			- TBD: result_class_def
 	- TBD: exmine titles for rooms as separate buffer line (enables brief / verbose and also diff dict)
 	- DONE: should be able to get basic descriptions from Container and Creature classes
 		- DONE: need methods in class for this - reuse in Container & Creature examine

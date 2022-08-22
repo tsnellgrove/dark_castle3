@@ -224,7 +224,7 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
 				[front_gate], {'north' : front_gate}, [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
-				# note: for timer testing, big_bomb was in entrance.room_obj_lst and blue_button was in entrance.feature_lst
+				# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
 				[shiny_sword, front_gate, royal_hedgehog], {'south' : front_gate}, [eat_biscuits_warning])
