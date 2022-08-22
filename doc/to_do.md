@@ -239,6 +239,8 @@ Version 3.72 Goals
 		- DONE: rename Room room_obj_lst => floor_lst
 		- DONE: update score to use chk_name_in_any_floor_lst()
 		- TBD: update cond with map.chk_obj_in_any_floor_lst
+		- TBD: confirm that active_gs.obj_exist and active_gs.obj_name_exist are no longer needed
+		- TBD: eliminate active_gs.obj_exist and active_gs.obj_name_exist
 	- TBD: vis_lst() method
 		- TBD: create vis_lst() method to provide list of doors in room
 		- TBD: add map.vis_lst() to room
