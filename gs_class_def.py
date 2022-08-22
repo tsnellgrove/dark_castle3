@@ -259,14 +259,14 @@ class GameState(object):
 		def obj_exist(self, obj):
 				obj_in_world = False
 				for room in self.room_lst:
-						if obj in room.room_obj_lst:
+						if obj in room.floor_lst:
 								obj_in_world = True
 				return obj_in_world
 
 		def obj_name_exist(self, name):
 				name_in_world = False
 				for room in self.room_lst:
-						for obj in room.room_obj_lst:
+						for obj in room.floor_lst:
 								if obj.name == name:
 										name_in_world = True
 				return name_in_world

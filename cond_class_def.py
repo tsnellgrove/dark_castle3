@@ -136,7 +136,7 @@ class NotTimerAndItemCond(PassThruCond):
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				cond_state = False
-				if self.item_obj in active_gs.get_room().room_obj_lst:
+				if self.item_obj in active_gs.get_room().floor_lst:
 						cond_state = not self.timer_obj.active
 				return cond_state
 
@@ -161,7 +161,7 @@ class StateItemInRoomCond(PassThruCond):
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				room_obj = active_gs.get_room()
-				item_in_room = self.item_obj in room_obj.room_obj_lst
+				item_in_room = self.item_obj in room_obj.floor_lst
 				return (
 						mach_state == self.state_match 
 						and item_in_room == self.item_in_room_match
@@ -209,7 +209,7 @@ class RoomCond(PassThruCond):
 				match_state = room_obj == self.match_room
 				return self.match_cond == match_state
 
-class InWorldCond(PassThruCond): # note: only works for obj in room.room_obj_lst
+class InWorldCond(PassThruCond): # note: only works for obj in room.floor_lst
 		def __init__(self, name, exist_obj, match_cond):
 				super().__init__(name)
 				self._exist_obj = exist_obj

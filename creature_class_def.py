@@ -294,7 +294,7 @@ class Creature(ViewOnly):
 				# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
 				if self.attacked_dict[dict_key]['result_code'] == 'creature_flee':
 						room_obj = active_gs.get_room()
-						room_obj.room_obj_lst_remove(self)
+						room_obj.floor_lst_remove(self)
 						res_key = 'creature_flee_default_res_key'
 						if active_gs.hand_empty(): # NOTE: IS AN INCOMPLETE SOLUTION - NEED TO FIX WHEN COMBINING attack() and attack_burt()
 								win_weapon = ""
@@ -306,11 +306,11 @@ class Creature(ViewOnly):
 						win_weapon = self.hand_item().full_name
 				elif self.attacked_dict[dict_key]['result_code'] == 'creature_death':
 						room_obj = active_gs.get_room()
-						room_obj.room_obj_lst_remove(self)
-						room_obj.room_obj_lst_extend(self.bkpk_lst)
-						room_obj.room_obj_lst_extend(self.hand_lst)
-						room_obj.room_obj_lst_extend(self.worn_lst)
-						room_obj.room_obj_lst_append(self.corpse)
+						room_obj.floor_lst_remove(self)
+						room_obj.floor_lst_extend(self.bkpk_lst)
+						room_obj.floor_lst_extend(self.hand_lst)
+						room_obj.floor_lst_extend(self.worn_lst)
+						room_obj.floor_lst_append(self.corpse)
 						res_key = 'creature_death_default_res_key'
 						win_weapon = burt_weapon_obj.full_name						
 				else:
@@ -384,7 +384,7 @@ class Creature(ViewOnly):
 				# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
 				if self.attacking_dict[dict_key]['result_code'] == 'creature_flee':
 						room_obj = active_gs.get_room()
-						room_obj.room_obj_lst_remove(self)
+						room_obj.floor_lst_remove(self)
 						res_key = 'creature_flee_default_res_key'
 						win_weapon = burt_weapon_obj.full_name
 				elif self.attacking_dict[dict_key]['result_code'] == 'burt_death':
@@ -393,11 +393,11 @@ class Creature(ViewOnly):
 						win_weapon = self.hand_item().full_name
 				elif self.attacking_dict[dict_key]['result_code'] == 'creature_death':
 						room_obj = active_gs.get_room()
-						room_obj.room_obj_lst_remove(self)
-						room_obj.room_obj_lst_extend(self.bkpk_lst)
-						room_obj.room_obj_lst_extend(self.hand_lst)
-						room_obj.room_obj_lst_extend(self.worn_lst)
-						room_obj.room_obj_lst_append(self.corpse)
+						room_obj.floor_lst_remove(self)
+						room_obj.floor_lst_extend(self.bkpk_lst)
+						room_obj.floor_lst_extend(self.hand_lst)
+						room_obj.floor_lst_extend(self.worn_lst)
+						room_obj.floor_lst_append(self.corpse)
 						res_key = 'creature_death_default_res_key'
 						win_weapon = burt_weapon_obj.full_name
 				else:

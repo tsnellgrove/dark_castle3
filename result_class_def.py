@@ -78,7 +78,7 @@ class BufferAndGiveResult(BufferOnlyResult):
 class AddObjToRoomResult(BufferOnlyResult):
 		def __init__(self, name, room_item, cmd_override):
 				super().__init__(name, cmd_override)
-				self._room_item = room_item # item to be added to room_obj_lst
+				self._room_item = room_item # item to be added to floor_lst
 
 		@property
 		def room_item(self):
@@ -90,7 +90,7 @@ class AddObjToRoomResult(BufferOnlyResult):
 				except:
 						pass
 				room_obj = active_gs.get_room()
-				room_obj.room_obj_lst_append(self.room_item)
+				room_obj.floor_lst_append(self.room_item)
 				mach_state = True
 				return mach_state, self.cmd_override
 

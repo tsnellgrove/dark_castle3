@@ -200,10 +200,10 @@ class ViewOnly(Writing):
 				return
 
 class Room(ViewOnly):
-		def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, room_obj_lst, door_paths, invis_obj_lst):
+		def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, door_paths, invis_obj_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._feature_lst = feature_lst # list of non-items in room (can be examined but not taken)
-				self._room_obj_lst = room_obj_lst # list of obj in the room that the player can interact with
+				self._floor_lst = floor_lst # list of obj in the room that the player can interact with
 				self._door_paths = door_paths # dictionary of {direction1 : door1}
 				self._invis_obj_lst = invis_obj_lst # list of invisible obj in room
 
@@ -213,8 +213,8 @@ class Room(ViewOnly):
 				return self._feature_lst
 
 		@property
-		def room_obj_lst(self):
-				return self._room_obj_lst
+		def floor_lst(self):
+				return self._floor_lst
 
 		@property
 		def door_paths(self):
@@ -225,14 +225,14 @@ class Room(ViewOnly):
 				return self._invis_obj_lst
 
 		# *** attribute methods ***
-		def room_obj_lst_append(self, item):
-				self._room_obj_lst.append(item)
+		def floor_lst_append(self, item):
+				self._floor_lst.append(item)
 
-		def room_obj_lst_extend(self, lst):
-				self._room_obj_lst.extend(lst)
+		def floor_lst_extend(self, lst):
+				self._floor_lst.extend(lst)
 
-		def room_obj_lst_remove(self, item):
-				self._room_obj_lst.remove(item)
+		def floor_lst_remove(self, item):
+				self._floor_lst.remove(item)
 		
 		def	door_in_path(self, direction):
 				return direction in self.door_paths
@@ -242,23 +242,23 @@ class Room(ViewOnly):
 
 		# *** simple object methods ***
 		def vis_element_lst(self):
-				return self.room_obj_lst + self.feature_lst
+				return self.floor_lst + self.feature_lst
 
 		# *** complex object methods ***
 		def chk_contain_item(self, item, active_gs):
-				if item in self.room_obj_lst:
+				if item in self.floor_lst:
 						return True
-				if any(obj.chk_contain_lst(item) for obj in self.room_obj_lst):
+				if any(obj.chk_contain_lst(item) for obj in self.floor_lst):
 						return True
 				if item in active_gs.get_backpack_lst() + active_gs.get_worn_lst():
 						return True
 				return False
 
 		def remove_item(self, item, active_gs):
-				if item in self.room_obj_lst:
-						self.room_obj_lst_remove(item)
+				if item in self.floor_lst:
+						self.floor_lst_remove(item)
 						return 
-				for obj in self.room_obj_lst:
+				for obj in self.floor_lst:
 						if obj.chk_contain_item(item):
 								obj.remove_item(item, active_gs)
 								return 
@@ -274,7 +274,7 @@ class Room(ViewOnly):
 		def examine(self, active_gs):
 				super(Room, self).examine(active_gs)
 				room_item_obj_lst = []
-				for obj in self.room_obj_lst:
+				for obj in self.floor_lst:
 						if not obj.is_item():
 								active_gs.buffer("There is a " + obj.full_name + " here.")
 								obj.vis_obj_disp(active_gs)
@@ -342,7 +342,7 @@ class Item(ViewOnly):
 				if active_gs.hand_check(self):
 						active_gs.buffer("You're already holding the " + self.full_name)
 						return 
-				for obj in active_gs.get_room().room_obj_lst:
+				for obj in active_gs.get_room().floor_lst:
 						if obj.is_creature() and self in obj.vis_lst():
 								active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 								return 
@@ -355,7 +355,7 @@ class Item(ViewOnly):
 				""" Drops an object from Burt's hand to the floor of the room.
 				"""
 				active_gs.hand_lst_remove_item(self)
-				active_gs.get_room().room_obj_lst_append(self)
+				active_gs.get_room().floor_lst_append(self)
 				active_gs.buffer("Dropped")
 
 class Door(ViewOnly):

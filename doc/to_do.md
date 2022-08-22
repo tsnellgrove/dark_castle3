@@ -233,10 +233,10 @@ Version 3.72 Goals
 		- DONE: in mk_def_pkl, instantiate map lst of dicts
 		- DONE: in gs_class_def, add map attribute
 		- DONE: in mk_def_pkl, add instantiated map to active_gs
-	- INPROC: chk_obj_in_map() method
+	- INPROC: map.chk_obj_in_any_floor_lst method (was chk_obj_in_map())
 		- DONE: create method chk_obj_in_map() # checks of obj in floor_lst in each room in map
-		- TBD: rename Room room_obj_lst => floor_lst
-		- TBD: update score to use chk_obj_in_map()
+		- DONE: rename Room room_obj_lst => floor_lst
+		- TBD: update score to use chk_obj_in_any_floor_lst()
 	- TBD: vis_lst() method
 		- TBD: create vis_lst() method to provide list of doors in room
 		- TBD: add map.vis_lst() to room
@@ -248,12 +248,12 @@ Version 3.72 Goals
 	- INPROC: rename vars
 		- DONE: features => feature_lst
 			- DONE: noun_class_def
-		- TBD: room_obj_lst => floor_lst
-			- TBD: noun_class_def
-			- TBD: gs_class_def
-			- TBD: creature_class_def
-			- TBD: cond_class_def
-			- TBD: result_class_def
+		- DONE: room_obj_lst => floor_lst
+			- DONE: noun_class_def
+			- DONE: gs_class_def
+			- DONE: creature_class_def
+			- DONE: cond_class_def
+			- DONE: result_class_def
 	- TBD: exmine titles for rooms as separate buffer line (enables brief / verbose and also diff dict)
 	- DONE: should be able to get basic descriptions from Container and Creature classes
 		- DONE: need methods in class for this - reuse in Container & Creature examine
@@ -272,6 +272,16 @@ Version 3.72 Goals
 		- could also run a pre-start check on container & creature to throw errors on illegal contents
 		- need to document (to self!) consistent approach to what is visible when Burt looks, examines, or inventories
 	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
+- TBD: refactor descript_dict (=> static_dict), autogen_dict (new) and dynamic_dict to Descript class with descript instantiation
+	- call with key and return string; will look like gs.descript(key)
+	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_"
+	- static_dict and autogen_dict live in class; dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
+	- Use guard pattern and check in this order
+		- 1) in dynamic_dict
+		- 2) starts with "ag_" => autogen_dict (no "try", allow failure)
+		- 3) try static_dic except f"the {obj.full_name} is simple indescribable"
+	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
+		- CANCEL: test w/ descript_dict => start with version 
 - TBD: refactor Food
 - TBD: refactor Clothes => Garments
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
@@ -435,8 +445,6 @@ Version 3.75 Goals
 - TBD: rename active_gs => gs
 - TBD: perhaps Map, Score, and Descript are classes w/ static dicts in mehod / class and actual obj in gs attributes
 - Refactor dicts
-	- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
-		- TBD: test w/ descript_dict => start with version
 	- TBD: refactor active_gs.map
 		- gs will have map as an attribute
 		- subclass map_dict

@@ -21,15 +21,17 @@ class Map(object):
 		return f"Object {self.name} is of class {type(self).__name__}"
 
 	# *** complex obj methods ***
-	def chk_obj_in_map(self, obj): # checks of obj in floor_lst in each room in map
+	def get_room_lst(self):
 		room_lst = []
 		for room_pair in self.map_lst:
 			if room_pair['room_x'] not in room_lst:
 				room_lst.append(room_pair['room_x'])
 			if room_pair['room_y'] not in room_lst:
 				room_lst.append(room_pair['room_y'])
-		for room in room_lst:
-			if obj in room.floor_lst:
-				return True
-		return False
+		return room_lst
+	
+	def chk_obj_in_any_floor_lst(self, obj): # checks for obj in floor_lst for each room in map
+		return any(obj in room.floor_lst for room in self.get_room_lst())
+
+
 
