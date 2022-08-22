@@ -668,6 +668,12 @@ Version 3.9x Goals
 
 *** NEW PUZZLE IDEAS ***
 
+
+Alter Terrain:
+- Use Map room_pair updates to alter a room dramatically after a major change
+	- e.g. Zork I resevoir post-dam opening
+	- could use this after a cave in or rock collapse in the dungeons / mines?
+
 Vehical:
 - Bucket pulley / weight puzzle in wizard's tower
 - need to adjust weight correctly going up and down
