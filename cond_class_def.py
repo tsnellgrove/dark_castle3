@@ -228,7 +228,7 @@ class InWorldCond(PassThruCond): # note: only works for obj in room.floor_lst
 				return self._match_cond
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-				match_state = active_gs.obj_exist(self.exist_obj) 
+				match_state = active_gs.map.chk_obj_exist(self.exist_obj)
 				return match_state == self.match_cond
 
 class WornCond(PassThruCond):

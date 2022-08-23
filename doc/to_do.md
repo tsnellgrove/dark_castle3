@@ -233,12 +233,12 @@ Version 3.72 Goals
 		- DONE: in mk_def_pkl, instantiate map lst of dicts
 		- DONE: in gs_class_def, add map attribute
 		- DONE: in mk_def_pkl, add instantiated map to active_gs
-	- INPROC: map.chk_obj_in_any_floor_lst method (was chk_obj_in_map())
+	- INPROC: map.chk_obj_exist method (was chk_obj_in_map() then was map.chk_obj_in_any_floor_lst() )
 		- DONE: create method map.chk_obj_in_any_floor_lst # checks of obj in floor_lst in each room in map
-		- DONE: create method chk_name_in_any_floor_lst(
+		- DONE: create method chk_name_exist( (was chk_name_in_any_floor_lst() )
 		- DONE: rename Room room_obj_lst => floor_lst
-		- DONE: update score to use chk_name_in_any_floor_lst()
-		- TBD: update cond with map.chk_obj_in_any_floor_lst
+		- DONE: update score to use mapchk_name_exist()
+		- DONE: update cond with map.chk_obj_exist
 		- TBD: confirm that active_gs.obj_exist and active_gs.obj_name_exist are no longer needed
 		- TBD: eliminate active_gs.obj_exist and active_gs.obj_name_exist
 	- TBD: vis_lst() method
