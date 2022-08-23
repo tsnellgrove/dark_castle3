@@ -241,10 +241,10 @@ Version 3.72 Goals
 		- DONE: update cond with map.chk_obj_exist
 		- DONE: confirm that active_gs.obj_exist and active_gs.obj_name_exist are no longer needed('goblin_dead' case also addressed in score() )
 		- DONE: eliminate active_gs.obj_exist and active_gs.obj_name_exist
-	- TBD: vis_lst() method
-		- TBD: create vis_lst() method to provide list of doors in room
-		- TBD: add map.vis_lst() to room
-		- TBD: remove doors from rooms in mk_def_pkl
+	- INPROC: door_lst() method
+		- DONE: create door_lst() method to provide list of doors in room
+		- TBD: add map.door_lst() to room.examine()
+		- TBD: remove doors from room.floor_lst in mk_def_pkl()
 	- TBD: vis_obj_disp
 		- TBD: create vis_obj_disp method to provide door condition (door / passage names and directions) for room
 	- TBD: go back and refactor Map class

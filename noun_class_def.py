@@ -273,6 +273,7 @@ class Room(ViewOnly):
 
 		def examine(self, active_gs):
 				super(Room, self).examine(active_gs)
+#				active_gs.buffer(f"The door list is {active_gs.map.door_lst(self)}")
 				room_item_obj_lst = []
 				for obj in self.floor_lst:
 						if not obj.is_item():

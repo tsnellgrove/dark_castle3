@@ -240,7 +240,7 @@ throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', N
 # *** Map ***
 map = Map([{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall},
 				{'room_x' : main_hall, 'dir_x' : 'north', 'door' : None, 'dir_y' : 'south', 'room_y' : antechamber},
-				{'room_x' : antechamber, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : throne_room}])
+				{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}])
 
 
 # *** 'object not defined' re-assignment ***

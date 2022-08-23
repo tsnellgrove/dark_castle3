@@ -11,6 +11,8 @@ class Map(object):
 	def __init__(self, map_lst):
 		self._map_lst = map_lst # list of room-pair dictionaries
 
+## {'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall}
+
 	# *** getters & setters ***
 	@property
 	def map_lst(self):
@@ -39,4 +41,8 @@ class Map(object):
 				if obj.name == name:
 					return True
 		return False
+
+	def	door_lst(self, room): # returns list of doors adjoining a given room
+		return [room_pair['door'] for room_pair in self.map_lst 
+				if (room == room_pair['room_x'] or room == room_pair['room_y']) and room_pair['door'] is not None]
 
