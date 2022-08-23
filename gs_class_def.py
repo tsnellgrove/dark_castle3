@@ -220,7 +220,7 @@ class GameState(object):
 				worn_lst = self.get_worn_lst()
 				universal_lst = self.get_static_obj('universal')
 				room_obj = self.get_room()
-				scope_lst = (hand_lst + backpack_lst + worn_lst + universal_lst + room_obj.vis_element_lst())
+				scope_lst = (hand_lst + backpack_lst + worn_lst + universal_lst + room_obj.vis_element_lst() + self.map.door_lst(self.get_room()))
 				for obj in scope_lst:
 						if obj.is_container() or obj.is_creature():
 								scope_lst.extend(obj.vis_lst())
