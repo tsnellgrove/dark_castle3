@@ -247,7 +247,10 @@ Version 3.72 Goals
 		- TBD: remove doors from room.floor_lst in mk_def_pkl()
 	- TBD: vis_obj_disp
 		- TBD: create vis_obj_disp method to provide door condition (door / passage names and directions) for room
+	- TBD: update go() method to use active_gs.map
+	- TBD: eliminate GameState room_lst and map_dict attributes
 	- TBD: go back and refactor Map class
+- TBD: class by class, reduce from double-tab to single tab
 - INPROC: refactor Room class
 	- INPROC: rename vars
 		- DONE: features => feature_lst
