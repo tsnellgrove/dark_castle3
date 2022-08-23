@@ -82,7 +82,8 @@ def score(active_gs):
 				active_gs.print_score()
 
 		score_key = 'goblin_dead'
-		if (active_gs.obj_name_exist('dead_goblin') 
+#		if (active_gs.obj_name_exist('dead_goblin') 
+		if (active_gs.map.chk_name_exist('dead_goblin') 
 						and active_gs.get_points_earned_state(score_key) == False):
 				points = score_val_dict[score_key]
 				active_gs.update_score(points)
