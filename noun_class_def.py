@@ -297,7 +297,7 @@ class Room(ViewOnly):
 				door_in_path = self.door_in_path(direction)
 				if door_in_path:
 						door_obj = self.get_door(direction)
-				if not active_gs.is_valid_map_direction(room_obj, direction):
+				if not active_gs.map.is_valid_dir(self, direction):
 						num = random.randint(0, 4)
 						wrong_way_key = 'wrong_way_' + str(num)
 						active_gs.buffer(descript_dict[wrong_way_key])

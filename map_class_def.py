@@ -6,12 +6,13 @@
 ### import
 from static_gbl import descript_dict
 
+### module vars
+room_dir_key_lst = [['room_x', 'dir_x'], ['room_y', 'dir_y']]
+
 ### classes
 class Map(object):
 	def __init__(self, map_lst):
 		self._map_lst = map_lst # list of room-pair dictionaries
-
-## {'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall}
 
 	# *** getters & setters ***
 	@property
@@ -87,4 +88,12 @@ class Map(object):
 		room_door_str += "."
 		return room_door_str
 
+	def is_valid_dir(self, room, dir):
+		for room_pair in self.map_lst:
+			for room_dir in room_dir_key_lst:
+				if room_pair[room_dir[0]] == room and room_pair[room_dir[1]] == dir:
+					return True
+		return False
 
+
+# {'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall}
