@@ -250,7 +250,10 @@ Version 3.72 Goals
 		- DONE: create obj_cond_disp method to provide door condition (door / passage names and directions) for room
 		- DONE: add to room.examine()
 	- TBD: update go() method to use active_gs.map
-	- TBD: eliminate GameState room_lst and map_dict attributes
+	- TBD: eliminate legacy attributes
+		- TBD: elim gs.room_lst
+		- TBD: elim gs.map_dict attributes
+		- TBD: elim room.door_dict
 	- TBD: go back and refactor Map class
 	- TBD: update doc_string for Door
 - TBD: class by class, reduce from double-tab to single tab
