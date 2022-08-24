@@ -246,9 +246,9 @@ Version 3.72 Goals
 		- DONE: add map.door_lst() to active_gs scope method
 		- DONE: add map.door_lst() to room.examine
 		- DONE: remove doors from room.floor_lst in mk_def_pkl()
-	- TBD: obj_cond_disp
-		- TBD: create obj_cond_disp method to provide door condition (door / passage names and directions) for room
-		- TBD: add to room.examine()
+	- DONE: obj_cond_disp
+		- DONE: create obj_cond_disp method to provide door condition (door / passage names and directions) for room
+		- DONE: add to room.examine()
 	- TBD: update go() method to use active_gs.map
 	- TBD: eliminate GameState room_lst and map_dict attributes
 	- TBD: go back and refactor Map class
@@ -559,6 +559,7 @@ interpreter ideas:
 - more abreviations: 'g' = 'again', 'z' = 'wait'
 - TBD: no swearing in Dark Castle (with warning or else end of game)
 	- cursing => end of game (requires warning_mach and usniversal scope)
+- fix progromatic usage of "a" vs "an" (e.g. "There is a Iron Portcullis to the north")
 
 naming conventions:
 - TBD: re-name 'wrapper' to 'app_main'

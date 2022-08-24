@@ -46,19 +46,45 @@ class Map(object):
 		return [room_pair['door'] for room_pair in self.map_lst 
 				if (room == room_pair['room_x'] or room == room_pair['room_y']) and room_pair['door'] is not None]
 
+	def get_room_count(self, room):
+		room_count = 0
+		for room_pair in self.map_lst:
+			if room_pair['room_x'] == room:
+				room_count += 1
+			if room_pair['room_y'] == room:
+				room_count += 1
+		return room_count
+
 	def room_doors_str(self, room): # returns string describing a room's doors and passages
-		room_door_str = ""
+		room_door_str = "There is "
+		room_count = self.get_room_count(room)
+		clause_count = 0
 		for room_pair in self.map_lst:
 			if room_pair['room_x'] == room:
 				if room_pair['door'] is None:
-					room_door_str += f"There is a passage to the {room_pair['dir_x']}.\n"
+					room_door_str += f"a passage to the {room_pair['dir_x']}"
 				else:
-					room_door_str += f"There is a {room_pair['door'].full_name} to the {room_pair['dir_x']}.\n"
+					room_door_str += f"a {room_pair['door'].full_name} to the {room_pair['dir_x']}"
+				clause_count +=1
+				if clause_count == room_count:
+					break
+				if clause_count == room_count - 1:
+					room_door_str += " and "
+				else:
+					room_door_str += ", "
 			if room_pair['room_y'] == room:
 				if room_pair['door'] is None:
-					room_door_str += f"There is a passage to the {room_pair['dir_y']}.\n"
+					room_door_str += f"a passage to the {room_pair['dir_y']}"
 				else:
-					room_door_str += f"There is a {room_pair['door'].full_name} to the {room_pair['dir_y']}.\n"
+					room_door_str += f"a {room_pair['door'].full_name} to the {room_pair['dir_y']}"
+				clause_count +=1
+				if clause_count == room_count:
+					break
+				if clause_count == room_count - 1:
+					room_door_str += " and "
+				else:
+					room_door_str += ", "
+		room_door_str += "."
 		return room_door_str
 
 
