@@ -271,11 +271,16 @@ class Room(ViewOnly):
 				raise ValueError(f"Can't remove item {item} from room {self.name}")
 				return 
 
+		def obj_cond_disp(self, active_gs):
+				active_gs.buffer(active_gs.map.room_doors_str(self))
+
 		def examine(self, active_gs):
 				super(Room, self).examine(active_gs)
 #				active_gs.buffer(f"The door list is {active_gs.map.door_lst(self)}")
+				self.obj_cond_disp(active_gs)
 				room_item_obj_lst = []
-				for obj in self.floor_lst + active_gs.map.door_lst(self):
+#				for obj in self.floor_lst + active_gs.map.door_lst(self):
+				for obj in self.floor_lst:
 						if not obj.is_item():
 								active_gs.buffer("There is a " + obj.full_name + " here.")
 								obj.vis_obj_disp(active_gs)

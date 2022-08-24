@@ -46,3 +46,19 @@ class Map(object):
 		return [room_pair['door'] for room_pair in self.map_lst 
 				if (room == room_pair['room_x'] or room == room_pair['room_y']) and room_pair['door'] is not None]
 
+	def room_doors_str(self, room): # returns string describing a room's doors and passages
+		room_door_str = ""
+		for room_pair in self.map_lst:
+			if room_pair['room_x'] == room:
+				if room_pair['door'] is None:
+					room_door_str += f"There is a passage to the {room_pair['dir_x']}.\n"
+				else:
+					room_door_str += f"There is a {room_pair['door'].full_name} to the {room_pair['dir_x']}.\n"
+			if room_pair['room_y'] == room:
+				if room_pair['door'] is None:
+					room_door_str += f"There is a passage to the {room_pair['dir_y']}.\n"
+				else:
+					room_door_str += f"There is a {room_pair['door'].full_name} to the {room_pair['dir_y']}.\n"
+		return room_door_str
+
+
