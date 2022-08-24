@@ -255,6 +255,7 @@ Version 3.72 Goals
 		- TBD: elim gs.map_dict attributes
 		- TBD: elim room.door_dict
 	- TBD: go back and refactor Map class
+		- TBD: break into error vs. execute (2 separate methods in gs.map)
 	- TBD: update doc_string for Door
 - TBD: class by class, reduce from double-tab to single tab
 - INPROC: refactor Room class
@@ -287,7 +288,8 @@ Version 3.72 Goals
 	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
 - TBD: refactor descript_dict (=> static_dict), autogen_dict (new) and dynamic_dict to Descript class with descript instantiation
 	- call with key and return string; will look like gs.descript(key)
-	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_"
+	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() )
+		- Can autogen key try be incorporated into Descript method??
 	- static_dict and autogen_dict live in class; dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
 	- Use guard pattern and check in this order
 		- 1) in dynamic_dict
@@ -295,6 +297,8 @@ Version 3.72 Goals
 		- 3) try static_dic except f"the {obj.full_name} is simple indescribable"
 	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
 		- CANCEL: test w/ descript_dict => start with version 
+- TBD: refactor *.examine()
+	- TBD: universalize use of title, description, condition, vis_obj_lst
 - TBD: refactor Food
 - TBD: refactor Clothes => Garments
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
@@ -342,6 +346,7 @@ Version 3.73 Goals
 
 - TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
 - TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
+	- TBD: this will break the 'go south from Entrance' warning... probably the easiest fix is to create a re-usable unreachable_room to the south
 - TBD: final clean-up
 	- TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
 	- TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand

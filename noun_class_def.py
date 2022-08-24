@@ -188,11 +188,12 @@ class ViewOnly(Writing):
 								Passive Observaation: This is what happens when Burt uses 'look' to examine a room or 'inventory' to examine himself. The game design goal of Passive Observaation is to provide the player with a broad awareness of what they can currently do in the game. To this end, 'look' + 'inventory' provide a listing of all Interactive Objects currently visible to Burt. However we don't want to drown the player in details every time they 'look' and we do want to encourage them to explore the Dark Castle world closely. So object Descriptions and Conditions are not provided via Passive Observation. Also, Passive Observation does not provide a listing of Descriptive Objects - they are only mentioned in object Descriptions and must then be explicitly examined.
 								
 								Active Observation:  This is when Burt is examining a specific object. e.g. 'examine the front gate'. Burt can only examine one object at a time. The idea is that he is inspecting the object closely. Active Observaation will provide the following:
+										- The object Title (rooms only)
 										- The object Description
-										- The object Condition (i.e. open, closed, up, down, empty, the presence of wirting, etc)
+										- The object Condition (i.e. open, closed, up, down, empty, the presence of writing, etc)
 										- A List of any Interactive Objects 'contained' within the examined object (including objects held / worn by Creatures)
 				
-						The hope is that, for the player, all of this theory results in intuitive game play. When you want a list of the 'stuff' in a room you 'look'. When you want to know everything about a specific object you use 'examine'. Descriptions should be read carefully because occasionally they include references to things you can look at that aren't mentioned otherwise. But if you're actually reading through the code and wondering "Why aren't Writing objects, the state of Doors, or most ViewOnly objects listed via 'look' or 'inventory' - well, now you know!"
+						The hope is that, for the player, all of this theory results in intuitive game play. When you want a list of the 'stuff' in a room you 'look'... when you want to know everything about a specific object you 'examine' it... descriptions should be read carefully because, occasionally, they include references to things you can look at that aren't mentioned otherwise... But if you're actually reading through the code and wondering "Why aren't Writing objects, the state of Doors, or most ViewOnly objects listed via 'look' or 'inventory' - well, now you know!"
 				"""
 				active_gs.buffer(self.get_descript_str(active_gs))
 				if self.has_writing():
