@@ -252,8 +252,8 @@ Version 3.72 Goals
 	- INPROC: update go() method to use active_gs.map
 		- DONE: create gs.map.is_valid_dir(self, room)
 		- DONE: use gs.map.is_valid_dir(self, room) in go() method
-		- TBD: create gs.map.get_door(room) method
-		- TBD: use get_door() in go()
+		- DONE: create gs.map.get_door(room) method
+		- DONE: use get_door() in go()
 		- TBD: create gs.map.next_room(room) method
 		- TBD: use get_next_room() in go
 	- TBD: eliminate legacy attributes and methods
@@ -261,6 +261,8 @@ Version 3.72 Goals
 		- TBD: elim gs.map_dict attributes
 		- TBD: elim room.door_dict
 		- TBD: elim active_gs.is_valid_map_direction()
+		- TBD: elim room.self.door_in_path()
+		- TBD: elim room.get_door)
 	- TBD: go back and refactor Map class
 		- TBD: break into error vs. execute (2 separate methods in gs.map)
 	- TBD: update doc_string for Door

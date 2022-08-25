@@ -95,5 +95,9 @@ class Map(object):
 					return True
 		return False
 
+	def get_door(self, room):
+		for room_pair in self.map_lst:
+			if room_pair['room_x'] == room or room_pair['room_y'] == room:
+				return room_pair['door']
 
 # {'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall}
