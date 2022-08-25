@@ -300,9 +300,10 @@ class Room(ViewOnly):
 				if door is not None and door.is_open == False:
 						active_gs.buffer(f"The {door.full_name} is closed.")
 						return 
-				next_room_obj = active_gs.get_next_room(self, dir)
-				active_gs.set_room(next_room_obj)
-				next_room_obj.examine(active_gs)
+				next_room = active_gs.map.get_next_room(self, dir)
+				active_gs.set_room(next_room)
+				next_room.examine(active_gs)
+
 
 class Item(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing):

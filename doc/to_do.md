@@ -249,14 +249,14 @@ Version 3.72 Goals
 	- DONE: obj_cond_disp
 		- DONE: create obj_cond_disp method to provide door condition (door / passage names and directions) for room
 		- DONE: add to room.examine()
-	- INPROC: update go() method to use active_gs.map
+	- DONE: update go() method to use active_gs.map
 		- DONE: create gs.map.is_valid_dir(self, room)
 		- DONE: use gs.map.is_valid_dir(self, room) in go() method
 		- DONE: create gs.map.get_door(room) method
 		- DONE: use get_door() in go()
-		- TBD: create gs.map.next_room(room) method
-		- TBD: use get_next_room() in go
-	- TBD: eliminate legacy attributes and methods
+		- DONE: create gs.map.next_room(room) method
+		- DONE: use get_next_room() in go
+	- INPROC: eliminate legacy attributes and methods
 		- TBD: elim gs.room_lst
 		- TBD: elim gs.map_dict attributes
 		- TBD: elim room.door_dict
@@ -265,7 +265,10 @@ Version 3.72 Goals
 		- TBD: elim room.get_door()
 		- TBD: elim active_gs.get_next_room()
 	- TBD: go back and refactor Map class
-		- TBD: break into error vs. execute (2 separate methods in gs.map)
+		- CANCEL: break into error vs. execute (2 separate methods in gs.map)
+	- TBD: update room condition str to read better for outside (i.e. "passage" doesn't work as well on drawbridge??)
+	- TBD: implement unreachable_room to resolve condition strings for Entrance (e, w, & s)
+	- TBD: update 'fake' descript of Entrance in startup()
 	- TBD: update doc_string for Door
 - TBD: class by class, reduce from double-tab to single tab
 - INPROC: refactor Room class

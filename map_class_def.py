@@ -7,7 +7,7 @@
 from static_gbl import descript_dict
 
 ### module vars
-room_dir_key_lst = [['room_x', 'dir_x'], ['room_y', 'dir_y']]
+room_dir_key_lst = [['room_x', 'dir_x', 'room_y'], ['room_y', 'dir_y', 'room_x']]
 
 ### classes
 class Map(object):
@@ -99,5 +99,11 @@ class Map(object):
 		for room_pair in self.map_lst:
 			if room_pair['room_x'] == room or room_pair['room_y'] == room:
 				return room_pair['door']
+
+	def get_next_room(self, room, dir):
+		for room_pair in self.map_lst:
+			for room_dir in room_dir_key_lst:
+				if room_pair[room_dir[0]] == room and room_pair[room_dir[1]] == dir:
+					return room_pair[room_dir[2]]
 
 # {'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall}
