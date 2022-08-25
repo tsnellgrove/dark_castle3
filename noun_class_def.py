@@ -262,7 +262,7 @@ class Room(ViewOnly):
 				return 
 
 		def obj_cond_disp(self, active_gs):
-				active_gs.buffer(active_gs.map.room_doors_str(self))
+				active_gs.buffer(active_gs.map.get_door_str(self))
 
 		def examine(self, active_gs):
 				super(Room, self).examine(active_gs)

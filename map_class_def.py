@@ -43,7 +43,7 @@ class Map(object):
 					return True
 		return False
 
-	def	door_lst(self, room): # returns list of doors adjoining a given room
+	def	get_door_lst(self, room): # returns list of doors adjoining a given room
 		return [room_pair['door'] for room_pair in self.map_lst 
 				if (room == room_pair['room_x'] or room == room_pair['room_y']) and room_pair['door'] is not None]
 
@@ -56,7 +56,7 @@ class Map(object):
 				room_count += 1
 		return room_count
 
-	def room_doors_str(self, room): # returns string describing a room's doors and passages
+	def get_door_str(self, room): # returns string describing a room's doors and passages
 		room_door_str = "There is "
 		room_count = self.get_room_count(room)
 		clause_count = 0

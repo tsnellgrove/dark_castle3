@@ -264,8 +264,9 @@ Version 3.72 Goals
 		- DONE: elim room.self.door_in_path()
 		- DONE: elim room.get_door()
 		- DONE: elim active_gs.get_next_room()
-	- TBD: go back and refactor Map class
+	- INPROC: go back and refactor Map class
 		- CANCEL: break into error vs. execute (2 separate methods in gs.map)
+		- INPROC: std var names
 	- TBD: update room condition str to read better for outside (i.e. "passage" doesn't work as well on drawbridge??)
 	- TBD: implement unreachable_room to resolve condition strings for Entrance (e, w, & s)
 	- TBD: update 'fake' descript of Entrance in startup()
