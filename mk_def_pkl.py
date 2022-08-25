@@ -258,12 +258,12 @@ axe_in_goblin_hand_result.creature_obj = goblin_guard
 active_gs = GameState(
 		'active_gs',
 		{}, # dyn_descript_dict
-		{
-				'entrance' : {'north' : main_hall},
-				'main_hall' : {'south' : entrance, 'north' : antechamber},
-				'antechamber' : {'south' : main_hall, 'north' : throne_room},
-				'throne_room' : {'south' : antechamber}
-		},
+#		{
+#				'entrance' : {'north' : main_hall},
+#				'main_hall' : {'south' : entrance, 'north' : antechamber},
+#				'antechamber' : {'south' : main_hall, 'north' : throne_room},
+#				'throne_room' : {'south' : antechamber}
+#		},
 		{
 				'rusty_key' : False,
 				'main_hall' : False,
@@ -290,7 +290,7 @@ active_gs = GameState(
 		},
 ##		[test_timer, hedgehog_eats_timer], # timer test universal obj
 		[hedgehog_eats_timer],
-		[entrance, main_hall, antechamber, throne_room],
+#		[entrance, main_hall, antechamber, throne_room],
 		map
 )
 

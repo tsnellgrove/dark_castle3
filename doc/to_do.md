@@ -257,8 +257,8 @@ Version 3.72 Goals
 		- DONE: create gs.map.next_room(room) method
 		- DONE: use get_next_room() in go
 	- INPROC: eliminate legacy attributes and methods
-		- TBD: elim gs.room_lst
-		- TBD: elim gs.map_dict attributes
+		- DONE: elim gs.room_lst
+		- DONE: elim gs.map_dict attributes
 		- DONE: elim room.door_dict
 		- DONE: elim active_gs.is_valid_map_direction()
 		- DONE: elim room.self.door_in_path()
