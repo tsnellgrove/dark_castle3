@@ -234,12 +234,6 @@ class Room(ViewOnly):
 
 		def floor_lst_remove(self, item):
 				self._floor_lst.remove(item)
-		
-		def	door_in_path(self, direction):
-				return direction in self.door_paths
-
-		def get_door(self, direction):
-				return self.door_paths[direction]
 
 		# *** simple object methods ***
 		def vis_element_lst(self):

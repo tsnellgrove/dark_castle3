@@ -58,14 +58,6 @@ class GameState(object):
 				self._dyn_descript_dict[descript_key] = descript_val # adds key value pair if it does not exist
 				return 
 
-		### movement ###
-		def is_valid_map_direction(self, room_obj, direction):
-				return direction in self._map_dict[room_obj.name]
-
-		def get_next_room(self, room_obj, direction):
-				next_room = self._map_dict[room_obj.name][direction]
-				return next_room
-
 		### score ###
 		def get_points_earned_state(self, score_key):
 				if score_key not in self._points_earned_dict:
