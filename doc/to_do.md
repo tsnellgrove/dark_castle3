@@ -31,19 +31,33 @@ Aug 10, 2022
 
 
 *** Var and Method Naming Conventions ***
-- prefix bools w/ 'is_' (also used for methods where no varriable is passed - e.g. 'obj.is_item()')
-- postfix lists w/ 'lst'
-- postfix dicts w/ 'dict'
-- if a method's main purpose is to buffer content, post-fix with 'disp'
-- use singular, not the pluaral form of words in variable names (e.g. use 'object_lst', not "objects_lst')
-- for a method where you will send an obj and get back a bool, pre-fix with 'chk'
-- avoid the term 'scope' since there are different scopes for different actions... prefer terms like 'is_vis'
-- variables are assumed to be obj. If similar obj and non-obj vars appear in same function, diff w/ post-fix: worn_lst vs. worn_lst_txt
-- class attributes should be named after physical features of the class (NOT their expected data types): hand_lst, bkpk_lst, worn_lst
-- class data types can be returned via methods: vis_lst, all_lst, mach_lst
-- do NOT reference the class in the attribute - the attribute will always appear w/ the class: creature.state vs. creature.creature_state
-- embrace function context! do NOT attempt a rigorous and exhaustive program-wide naming convention... this way lies madness and very long vars
-- when in doubt, be biased towards shorter vars; bend the rules above as needed to achieve shorter vars; shorter vars == more readable code!
+- general:
+	- use singular, not the pluaral form of words in variable names (e.g. use 'object_lst', not "objects_lst')
+	- avoid the term 'scope' since there are different scopes for different actions... prefer terms like 'is_vis'
+	- do NOT reference the class in the attribute - the attribute will always appear w/ the class: creature.state vs. creature.creature_state
+	- do NOT attempt a rigorous and exhaustive naming conventions - this way lies madness and very long vars. Embrace function / method context! 
+	- Be biased towards shorter vars; bend naming rules as needed to achieve shorter vars; shorter vars == more readable code!
+- classes:
+	- prefer generic naming for classes (e.g. Container and Surface vs. Chest and Shelf)
+	- class attributes should be named after physical features of the class, NOT their expected data types: hand_lst, bkpk_lst, worn_lst
+		- class data types can be grouped via methods whose naming denotes the data type: vis_lst, all_lst, mach_lst
+- attributes:
+	- prefixes:
+		- 'is' for bools
+	- postfixes:
+		- 'lst' for lists
+		- 'dict' for dictionaries
+		- 'str' for strings
+		- do NOT use 'obj'; vars are assumed to be obj
+			- If similar obj and non-obj vars appear in same function, diff w/ post-fix: worn_lst vs. worn_lst_str
+- methods
+	- prefixes:
+		- 'is' for methods where no varriable is passed - e.g. 'obj.is_item()'
+		- 'chk' for a method where you will send an obj and get back a bool
+		- 'get' for a method that will return a 'usuabl' obj var
+	- postfixes:
+		- 'disp' if a method's main purpose is to buffer content
+
 
 *** NOTES ***
 
