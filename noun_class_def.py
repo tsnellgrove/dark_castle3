@@ -285,8 +285,7 @@ class Room(ViewOnly):
 				if not active_gs.map.is_valid_dir(self, dir):
 						active_gs.buffer(descript_dict[f"wrong_way_{random.randint(0, 4)}"])
 						return
-				door = active_gs.map.get_door(self)
-#				if door is not None and door.is_open == False:
+				door = active_gs.map.get_door(self, dir)
 				if not isinstance(door, str) and door.is_open == False:
 						active_gs.buffer(f"The {door.full_name} is closed.")
 						return 

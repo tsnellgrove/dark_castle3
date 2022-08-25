@@ -278,13 +278,14 @@ Version 3.72 Goals
 		- DONE: elim room.self.door_in_path()
 		- DONE: elim room.get_door()
 		- DONE: elim active_gs.get_next_room()
-	- INPROC: implement unreachable_room to resolve condition strings for Entrance (e, w, & s)
+	- DONE: implement unreachable_room to resolve condition strings for Entrance (e, w, & s)
 		- DONE: create 3x rooms: unreachable_1, unreachable_2, unreachable_3
-		- INPROC: update room condition str to read better for outside (replace 'door' = None with passage_str) [error - walked through portcullis!]
+		- DONE: update room condition str to read better for outside (replace 'door' = None with passage_str) [error - walked through portcullis!]
+		- DONE: fix use of 'and' and 'commas'
+		- DONE: update 'fake' descript of Entrance in startup()
 	- INPROC: go back and refactor Map class
 		- CANCEL: break into error vs. execute (2 separate methods in gs.map)
 		- INPROC: std var names
-	- TBD: update 'fake' descript of Entrance in startup()
 	- TBD: update doc_string for Door
 - TBD: class by class, reduce from double-tab to single tab
 - INPROC: refactor Room class

@@ -63,31 +63,31 @@ class Map(object):
 		clause_count = 0
 		for room_pair in self.map_lst:
 			if room_pair['room_x'] == room:
-#				if room_pair['door'] is None:
 				if isinstance(room_pair['door'], str):
-#					room_door_str += f"a passage to the {room_pair['dir_x']}"
 					room_door_str += f"a {room_pair['door']} to the {room_pair['dir_x']}"
 				else:
 					room_door_str += f"a {room_pair['door'].full_name} to the {room_pair['dir_x']}"
 				clause_count +=1
 				if clause_count == room_count:
 					break
-				if clause_count == room_count - 1:
+				if clause_count == room_count - 1 and clause_count ==1:
 					room_door_str += " and "
+				elif clause_count == room_count - 1:
+					room_door_str += ", and "
 				else:
 					room_door_str += ", "
 			if room_pair['room_y'] == room:
-#				if room_pair['door'] is None:
 				if isinstance(room_pair['door'], str):
-#					room_door_str += f"a passage to the {room_pair['dir_y']}"
 					room_door_str += f"a {room_pair['door']} to the {room_pair['dir_y']}"
 				else:
 					room_door_str += f"a {room_pair['door'].full_name} to the {room_pair['dir_y']}"
 				clause_count +=1
 				if clause_count == room_count:
 					break
-				if clause_count == room_count - 1:
+				if clause_count == room_count - 1 and clause_count ==1:
 					room_door_str += " and "
+				elif clause_count == room_count - 1:
+					room_door_str += ", and "
 				else:
 					room_door_str += ", "
 		room_door_str += "."
@@ -100,9 +100,11 @@ class Map(object):
 					return True
 		return False
 
-	def get_door(self, room):
+	def get_door(self, room, dir):
 		for room_pair in self.map_lst:
-			if room_pair['room_x'] == room or room_pair['room_y'] == room:
+			if room_pair['room_x'] == room and room_pair['dir_x'] == dir:
+				return room_pair['door']
+			if room_pair['room_y'] == room and room_pair['dir_y'] == dir:
 				return room_pair['door']
 
 	def get_next_room(self, room, dir):
