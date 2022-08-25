@@ -258,12 +258,6 @@ axe_in_goblin_hand_result.creature_obj = goblin_guard
 active_gs = GameState(
 		'active_gs',
 		{}, # dyn_descript_dict
-#		{
-#				'entrance' : {'north' : main_hall},
-#				'main_hall' : {'south' : entrance, 'north' : antechamber},
-#				'antechamber' : {'south' : main_hall, 'north' : throne_room},
-#				'throne_room' : {'south' : antechamber}
-#		},
 		{
 				'rusty_key' : False,
 				'main_hall' : False,
@@ -290,13 +284,12 @@ active_gs = GameState(
 		},
 ##		[test_timer, hedgehog_eats_timer], # timer test universal obj
 		[hedgehog_eats_timer],
-#		[entrance, main_hall, antechamber, throne_room],
 		map
 )
 
 ### instantiated objects added to list ###
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
-### invisible obj referenced in room.invis_obj_lst need not be listed ###
+### invisible objects need not be listed ###
 master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, goblin_guard, entrance, main_hall, antechamber, throne_room, loyalty,
 officiousness, gold_capitals, red_bandana, big_medal]
 

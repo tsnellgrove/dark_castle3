@@ -22,16 +22,13 @@ def obj_lst_to_str(obj_lst):
 
 ### classes
 class GameState(object):
-#		def __init__(self, name, dyn_descript_dict, map_dict, points_earned_dict, static_obj_dict, state_dict, universal_mach_lst, room_lst, map):
 		def __init__(self, name, dyn_descript_dict, points_earned_dict, static_obj_dict, state_dict, universal_mach_lst, map):
 				self._name = name
 				self._dyn_descript_dict = dyn_descript_dict
-#				self._map_dict = map_dict
 				self._points_earned_dict = points_earned_dict
 				self._static_obj_dict = static_obj_dict
 				self._state_dict = state_dict
 				self._universal_mach_lst = universal_mach_lst
-#				self._room_lst = room_lst
 				self._map = map
 
 		### setters & getters ###
