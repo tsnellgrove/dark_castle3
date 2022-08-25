@@ -262,7 +262,8 @@ Version 3.72 Goals
 		- TBD: elim room.door_dict
 		- TBD: elim active_gs.is_valid_map_direction()
 		- TBD: elim room.self.door_in_path()
-		- TBD: elim room.get_door)
+		- TBD: elim room.get_door()
+		- TBD: elim active_gs.get_next_room()
 	- TBD: go back and refactor Map class
 		- TBD: break into error vs. execute (2 separate methods in gs.map)
 	- TBD: update doc_string for Door

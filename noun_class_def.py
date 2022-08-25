@@ -292,21 +292,15 @@ class Room(ViewOnly):
 				for obj in room_item_obj_lst:
 						obj.vis_obj_disp(active_gs)
 
-		def go(self, direction, active_gs):
-#				door_in_path = self.door_in_path(direction)
-#				if door_in_path:
-#						door_obj = self.get_door(direction)
-				if not active_gs.map.is_valid_dir(self, direction):
-						num = random.randint(0, 4)
-						active_gs.buffer(descript_dict["wrong_way_" + str(num)])
+		def go(self, dir, active_gs):
+				if not active_gs.map.is_valid_dir(self, dir):
+						active_gs.buffer(descript_dict[f"wrong_way_{random.randint(0, 4)}"])
 						return
 				door = active_gs.map.get_door(self)
-#				if (door_in_path) and (door_obj.is_open == False):
 				if door is not None and door.is_open == False:
-#						active_gs.buffer(f"The {door_obj.full_name} is closed.")
 						active_gs.buffer(f"The {door.full_name} is closed.")
 						return 
-				next_room_obj = active_gs.get_next_room(self, direction)
+				next_room_obj = active_gs.get_next_room(self, dir)
 				active_gs.set_room(next_room_obj)
 				next_room_obj.examine(active_gs)
 
