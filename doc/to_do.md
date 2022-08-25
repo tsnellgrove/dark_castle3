@@ -259,7 +259,7 @@ Version 3.72 Goals
 	- INPROC: eliminate legacy attributes and methods
 		- TBD: elim gs.room_lst
 		- TBD: elim gs.map_dict attributes
-		- INPROC: elim room.door_dict
+		- DONE: elim room.door_dict
 		- DONE: elim active_gs.is_valid_map_direction()
 		- DONE: elim room.self.door_in_path()
 		- DONE: elim room.get_door()
