@@ -280,7 +280,7 @@ Version 3.72 Goals
 		- DONE: elim active_gs.get_next_room()
 	- INPROC: implement unreachable_room to resolve condition strings for Entrance (e, w, & s)
 		- DONE: create 3x rooms: unreachable_1, unreachable_2, unreachable_3
-		- TBD: update room condition str to read better for outside (replace 'door' = None with passage_str)
+		- INPROC: update room condition str to read better for outside (replace 'door' = None with passage_str) [error - walked through portcullis!]
 	- INPROC: go back and refactor Map class
 		- CANCEL: break into error vs. execute (2 separate methods in gs.map)
 		- INPROC: std var names

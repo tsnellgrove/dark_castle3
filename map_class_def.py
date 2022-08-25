@@ -45,7 +45,8 @@ class Map(object):
 
 	def	get_door_lst(self, room): # returns list of doors adjoining a given room
 		return [room_pair['door'] for room_pair in self.map_lst 
-				if (room == room_pair['room_x'] or room == room_pair['room_y']) and room_pair['door'] is not None]
+#				if (room == room_pair['room_x'] or room == room_pair['room_y']) and room_pair['door'] is not None]
+				if (room == room_pair['room_x'] or room == room_pair['room_y']) and not isinstance(room_pair['door'], str)]
 
 	def get_room_count(self, room):
 		room_count = 0
@@ -62,8 +63,10 @@ class Map(object):
 		clause_count = 0
 		for room_pair in self.map_lst:
 			if room_pair['room_x'] == room:
-				if room_pair['door'] is None:
-					room_door_str += f"a passage to the {room_pair['dir_x']}"
+#				if room_pair['door'] is None:
+				if isinstance(room_pair['door'], str):
+#					room_door_str += f"a passage to the {room_pair['dir_x']}"
+					room_door_str += f"a {room_pair['door']} to the {room_pair['dir_x']}"
 				else:
 					room_door_str += f"a {room_pair['door'].full_name} to the {room_pair['dir_x']}"
 				clause_count +=1
@@ -74,8 +77,10 @@ class Map(object):
 				else:
 					room_door_str += ", "
 			if room_pair['room_y'] == room:
-				if room_pair['door'] is None:
-					room_door_str += f"a passage to the {room_pair['dir_y']}"
+#				if room_pair['door'] is None:
+				if isinstance(room_pair['door'], str):
+#					room_door_str += f"a passage to the {room_pair['dir_y']}"
+					room_door_str += f"a {room_pair['door']} to the {room_pair['dir_y']}"
 				else:
 					room_door_str += f"a {room_pair['door'].full_name} to the {room_pair['dir_y']}"
 				clause_count +=1
