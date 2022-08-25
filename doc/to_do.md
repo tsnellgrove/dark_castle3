@@ -259,11 +259,11 @@ Version 3.72 Goals
 	- INPROC: eliminate legacy attributes and methods
 		- TBD: elim gs.room_lst
 		- TBD: elim gs.map_dict attributes
-		- TBD: elim room.door_dict
-		- INPROC: elim active_gs.is_valid_map_direction()
-		- INPROC: elim room.self.door_in_path()
-		- INPROC: elim room.get_door()
-		- INPROC: elim active_gs.get_next_room()
+		- INPROC: elim room.door_dict
+		- DONE: elim active_gs.is_valid_map_direction()
+		- DONE: elim room.self.door_in_path()
+		- DONE: elim room.get_door()
+		- DONE: elim active_gs.get_next_room()
 	- TBD: go back and refactor Map class
 		- CANCEL: break into error vs. execute (2 separate methods in gs.map)
 	- TBD: update room condition str to read better for outside (i.e. "passage" doesn't work as well on drawbridge??)
