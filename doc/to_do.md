@@ -284,8 +284,9 @@ Version 3.72 Goals
 		- DONE: fix use of 'and' and 'commas'
 		- DONE: update 'fake' descript of Entrance in startup()
 	- INPROC: go back and refactor Map class
-		- CANCEL: break into error vs. execute (2 separate methods in gs.map)
 		- INPROC: std var names
+		- TBD: nested for loops
+		- TBD: list comprehension with nested for loops
 	- TBD: update doc_string for Door
 - TBD: class by class, reduce from double-tab to single tab
 - INPROC: refactor Room class

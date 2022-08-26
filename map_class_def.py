@@ -45,7 +45,6 @@ class Map(object):
 
 	def	get_door_lst(self, room): # returns list of doors adjoining a given room
 		return [room_pair['door'] for room_pair in self.map_lst 
-#				if (room == room_pair['room_x'] or room == room_pair['room_y']) and room_pair['door'] is not None]
 				if (room == room_pair['room_x'] or room == room_pair['room_y']) and not isinstance(room_pair['door'], str)]
 
 	def get_room_count(self, room):
