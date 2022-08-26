@@ -27,18 +27,14 @@ class Map(object):
 	# *** complex obj methods ***
 	def get_room_lst(self):
 		room_lst = []
-		[room_lst.append(room_pair[room[0]]) for room_pair in self.map_lst for room in room_key_lst if room_pair[room[0]] not in room_lst]
+		[room_lst.append(room_pair[room[0]]) for room_pair in self.map_lst for room in room_key_lst
+				if room_pair[room[0]] not in room_lst]
 		return room_lst
 	
 	def chk_obj_exist(self, obj): # checks for obj in floor_lst for each room in map
 		return any(obj in room.floor_lst for room in self.get_room_lst())
 
 	def chk_name_exist(self, name): # checks for obj.name in floor_lst for each room in map
-#		for room in self.get_room_lst():
-#			for obj in room.floor_lst:
-#				if obj.name == name:
-#					return True
-#		return False
 		return any(obj.name == name for room in self.get_room_lst() for obj in room.floor_lst)
 
 	def	get_door_lst(self, room): # returns list of doors adjoining a given room
