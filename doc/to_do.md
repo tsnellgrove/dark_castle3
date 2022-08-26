@@ -289,8 +289,8 @@ Version 3.72 Goals
 		- DONE: std var names
 		- DONE: comment attributes
 		- INPROC: nested for loops
-		- TBD: list comprehension with nested for loops
-		- TBD: use any() pattern for bool outcome
+		- INPROC: list comprehension with nested for loops
+		- INPROC: use any() pattern for bool outcome
 		- TBD: raise error if no return in loop
 		- TBD: doc_strings
 	- TBD: update doc_string for Door

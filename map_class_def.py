@@ -39,6 +39,7 @@ class Map(object):
 				if obj.name == name:
 					return True
 		return False
+#		return any(obj.name == name for room in self.get_room_lst() for obj in room.floor_lst)
 
 	def	get_door_lst(self, room): # returns list of doors adjoining a given room
 		return [room_pair['door'] for room_pair in self.map_lst 
