@@ -26,28 +26,38 @@ class Map(object):
 
 	# *** complex obj methods ***
 	def get_room_lst(self):
+		""" Returns a de-duped list of all rooms in map_lst
+		"""
 		room_lst = []
 		[room_lst.append(room_pair[room[0]]) for room_pair in self.map_lst for room in room_key_lst
 				if room_pair[room[0]] not in room_lst]
 		return room_lst
 	
-	def chk_obj_exist(self, obj): # checks for obj in floor_lst for each room in map
+	def chk_obj_exist(self, obj):
+		""" Evaluates whether object obj exists in floor_lst for any room in map_lst
+		"""
 		return any(obj in room.floor_lst for room in self.get_room_lst())
 
-	def chk_name_exist(self, name): # checks for obj.name in floor_lst for each room in map
+	def chk_name_exist(self, name):
+		""" Evaluates whether an obj with obj.name == name exists in floor_lst for any room in map_lst
+		"""
 		return any(obj.name == name for room in self.get_room_lst() for obj in room.floor_lst)
 
-	def	get_door_lst(self, room): # returns list of doors adjoining a given room
+	def	get_door_lst(self, room):
+		""" Returns a list of doors adjoining a given room
+		"""
 		return [room_pair['door'] for room_pair in self.map_lst 
 				if (room == room_pair['room_x'] or room == room_pair['room_y']) and not isinstance(room_pair['door'], str)]
 
 	def get_neighbor_count(self, room):
-		room_count = 0
+		""" Provide a count of rooms that are connected neighbors of a given room
+		"""
+		neighbor_count = 0
 		for room_pair in self.map_lst:
 			for room_lst in room_key_lst:
 				if room_pair[room_lst[0]] == room:
-					room_count += 1
-		return room_count
+					neighbor_count += 1
+		return neighbor_count
 
 	def get_door_str(self, room): # returns string describing a room's doors and passages
 		room_door_str = "There is "
