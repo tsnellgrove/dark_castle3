@@ -41,18 +41,23 @@ class Map(object):
 		return [room_pair['door'] for room_pair in self.map_lst 
 				if (room == room_pair['room_x'] or room == room_pair['room_y']) and not isinstance(room_pair['door'], str)]
 
-	def get_room_count(self, room):
+	def get_neighbor_count(self, room):
 		room_count = 0
 		for room_pair in self.map_lst:
-			if room_pair['room_x'] == room:
-				room_count += 1
-			if room_pair['room_y'] == room:
-				room_count += 1
+			for room_lst in room_key_lst:
+#				print(f"room_lst[0] = {room_lst[0]}")
+				if room_pair[room_lst[0]] == room:
+					room_count += 1
+#			if room_pair['room_x'] == room:
+#				room_count += 1
+#			if room_pair['room_y'] == room:
+#				room_count += 1
+#		print(f"room_count = {room_count}")
 		return room_count
 
 	def get_door_str(self, room): # returns string describing a room's doors and passages
 		room_door_str = "There is "
-		room_count = self.get_room_count(room)
+		room_count = self.get_neighbor_count(room)
 		clause_count = 0
 		for room_pair in self.map_lst:
 			if room_pair['room_x'] == room:
