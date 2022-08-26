@@ -7,7 +7,7 @@
 
 
 ### module vars
-room_dir_key_lst = [['room_x', 'dir_x', 'room_y'], ['room_y', 'dir_y', 'room_x']]
+room_key_lst = [['room_x', 'dir_x', 'room_y'], ['room_y', 'dir_y', 'room_x']]
 
 ### classes
 class Map(object):
@@ -27,15 +27,15 @@ class Map(object):
 	# *** complex obj methods ***
 	def get_room_lst(self):
 		room_lst = []
-		for room_pair in self.map_lst:
-			for room in room_dir_key_lst:
-				if room_pair[room[0]] not in room_lst:
-					room_lst.append(room_pair[room[0]])
-#			if room_pair['room_x'] not in room_lst:
-#				room_lst.append(room_pair['room_x'])
-#			if room_pair['room_y'] not in room_lst:
-#				room_lst.append(room_pair['room_y'])
-		print(room_lst)
+#		for room_pair in self.map_lst:
+#			for room in room_key_lst:
+#				if room_pair[room[0]] not in room_lst:
+#					room_lst.append(room_pair[room[0]])
+#		return room_lst
+
+#		room_lst = []
+		[room_lst.append(room_pair[room[0]]) for room_pair in self.map_lst for room in room_key_lst if room_pair[room[0]] not in room_lst]
+#		print(room_lst)
 		return room_lst
 	
 	def chk_obj_exist(self, obj): # checks for obj in floor_lst for each room in map
@@ -99,7 +99,7 @@ class Map(object):
 
 	def is_valid_dir(self, room, dir):
 		for room_pair in self.map_lst:
-			for room_dir in room_dir_key_lst:
+			for room_dir in room_key_lst:
 				if room_pair[room_dir[0]] == room and room_pair[room_dir[1]] == dir:
 					return True
 		return False
@@ -113,7 +113,7 @@ class Map(object):
 
 	def get_next_room(self, room, dir):
 		for room_pair in self.map_lst:
-			for room_dir in room_dir_key_lst:
+			for room_dir in room_key_lst:
 				if room_pair[room_dir[0]] == room and room_pair[room_dir[1]] == dir:
 					return room_pair[room_dir[2]]
 
