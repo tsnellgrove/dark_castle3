@@ -45,14 +45,8 @@ class Map(object):
 		room_count = 0
 		for room_pair in self.map_lst:
 			for room_lst in room_key_lst:
-#				print(f"room_lst[0] = {room_lst[0]}")
 				if room_pair[room_lst[0]] == room:
 					room_count += 1
-#			if room_pair['room_x'] == room:
-#				room_count += 1
-#			if room_pair['room_y'] == room:
-#				room_count += 1
-#		print(f"room_count = {room_count}")
 		return room_count
 
 	def get_door_str(self, room): # returns string describing a room's doors and passages
