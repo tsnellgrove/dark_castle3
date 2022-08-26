@@ -4,7 +4,7 @@
 # description: class deffinition module for Creatures
 
 ### import
-from static_gbl import descript_dict
+
 
 ### module vars
 room_dir_key_lst = [['room_x', 'dir_x', 'room_y'], ['room_y', 'dir_y', 'room_x']]
@@ -12,7 +12,8 @@ room_dir_key_lst = [['room_x', 'dir_x', 'room_y'], ['room_y', 'dir_y', 'room_x']
 ### classes
 class Map(object):
 	def __init__(self, map_lst):
-		self._map_lst = map_lst # list of room-pair dictionaries
+		self._map_lst = map_lst # list of room_pair dicts
+				# format == {'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall}
 
 	# *** getters & setters ***
 	@property
@@ -27,10 +28,14 @@ class Map(object):
 	def get_room_lst(self):
 		room_lst = []
 		for room_pair in self.map_lst:
-			if room_pair['room_x'] not in room_lst:
-				room_lst.append(room_pair['room_x'])
-			if room_pair['room_y'] not in room_lst:
-				room_lst.append(room_pair['room_y'])
+			for room in room_dir_key_lst:
+				if room_pair[room[0]] not in room_lst:
+					room_lst.append(room_pair[room[0]])
+#			if room_pair['room_x'] not in room_lst:
+#				room_lst.append(room_pair['room_x'])
+#			if room_pair['room_y'] not in room_lst:
+#				room_lst.append(room_pair['room_y'])
+		print(room_lst)
 		return room_lst
 	
 	def chk_obj_exist(self, obj): # checks for obj in floor_lst for each room in map
@@ -112,4 +117,3 @@ class Map(object):
 				if room_pair[room_dir[0]] == room and room_pair[room_dir[1]] == dir:
 					return room_pair[room_dir[2]]
 
-# {'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall}

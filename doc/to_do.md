@@ -167,6 +167,7 @@ Basic Refactor Steps:
 		- provide 'None' options for variables and 'match' options for Conditions
 		- Format strings with f-Strings. 'name = "Alex" ;; my_string = f"Hello {name}"
 		- ensure graceful failure of missing key lookups
+		- raise errors on 'impossible' outcomes
 		- comment each new attribute
 		- add tripple-quote doc_strings
 	- refactor pass-advanced
@@ -284,9 +285,14 @@ Version 3.72 Goals
 		- DONE: fix use of 'and' and 'commas'
 		- DONE: update 'fake' descript of Entrance in startup()
 	- INPROC: go back and refactor Map class
-		- INPROC: std var names
-		- TBD: nested for loops
+		- DONE: review imports
+		- DONE: std var names
+		- DONE: comment attributes
+		- INPROC: nested for loops
 		- TBD: list comprehension with nested for loops
+		- TBD: use any() pattern for bool outcome
+		- TBD: raise error if no return in loop
+		- TBD: doc_strings
 	- TBD: update doc_string for Door
 - TBD: class by class, reduce from double-tab to single tab
 - INPROC: refactor Room class
