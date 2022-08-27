@@ -59,13 +59,16 @@ class Map(object):
 					neighbor_count += 1
 		return neighbor_count
 
-	def get_door_str(self, room): # returns string describing a room's doors and passages
+	def get_door_str(self, room):
+		""" Returns a string describing a room's doors and passages. This in turn will be reported by room.examine as the room condition.
+		
+		Over 30 years ago, my engineering professor for C (before the ++) declared to the class: "No matter what you code, and no moatter what language you code it in, you will always spend 90% of your time and effort on user interface". You would think that in the case of a text adventure he'd be wrong...  but he wasn't.
+		"""
 		room_door_str = "There is "
 		room_count = self.get_neighbor_count(room)
 		clause_count = 0
 		for room_pair in self.map_lst:
 			for room_lst in room_key_lst:
-
 				if room_pair[room_lst[0]] == room:
 					if isinstance(room_pair['door'], str):
 						room_door_str += f"a {room_pair['door']} to the {room_pair[room_lst[1]]}"
@@ -80,36 +83,6 @@ class Map(object):
 						room_door_str += ", and "
 					else:
 						room_door_str += ", "
-
-#			if room_pair['room_x'] == room:
-#				if isinstance(room_pair['door'], str):
-#					room_door_str += f"a {room_pair['door']} to the {room_pair['dir_x']}"
-#				else:
-#					room_door_str += f"a {room_pair['door'].full_name} to the {room_pair['dir_x']}"
-#				clause_count +=1
-#				if clause_count == room_count:
-#					break
-#				if clause_count == room_count - 1 and clause_count ==1:
-#					room_door_str += " and "
-#				elif clause_count == room_count - 1:
-#					room_door_str += ", and "
-#				else:
-#					room_door_str += ", "
-#			if room_pair['room_y'] == room:
-#				if isinstance(room_pair['door'], str):
-#					room_door_str += f"a {room_pair['door']} to the {room_pair['dir_y']}"
-#				else:
-#					room_door_str += f"a {room_pair['door'].full_name} to the {room_pair['dir_y']}"
-#				clause_count +=1
-#				if clause_count == room_count:
-#					break
-#				if clause_count == room_count - 1 and clause_count ==1:
-#					room_door_str += " and "
-#				elif clause_count == room_count - 1:
-#					room_door_str += ", and "
-#				else:
-#					room_door_str += ", "
-
 		room_door_str += "."
 		return room_door_str
 
