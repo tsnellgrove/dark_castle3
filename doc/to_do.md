@@ -284,15 +284,15 @@ Version 3.72 Goals
 		- DONE: update room condition str to read better for outside (replace 'door' = None with passage_str) [error - walked through portcullis!]
 		- DONE: fix use of 'and' and 'commas'
 		- DONE: update 'fake' descript of Entrance in startup()
-	- INPROC: go back and refactor Map class
+	- DONE: go back and refactor Map class
 		- DONE: review imports
 		- DONE: std var names
 		- DONE: comment attributes
-		- INPROC: nested for loops
-		- INPROC: list comprehension with nested for loops
-		- INPROC: use any() pattern for bool outcome
-		- TBD: raise error if no return in loop
-		- TBD: doc_strings
+		- DONE: nested for loops
+		- DONE: list comprehension with nested for loops
+		- DONE: use any() pattern for bool outcome
+		- DONE: raise error if no return in loop
+		- DONE: doc_strings
 	- TBD: update doc_string for Door
 - TBD: class by class, reduce from double-tab to single tab
 - INPROC: refactor Room class
