@@ -64,34 +64,52 @@ class Map(object):
 		room_count = self.get_neighbor_count(room)
 		clause_count = 0
 		for room_pair in self.map_lst:
-			if room_pair['room_x'] == room:
-				if isinstance(room_pair['door'], str):
-					room_door_str += f"a {room_pair['door']} to the {room_pair['dir_x']}"
-				else:
-					room_door_str += f"a {room_pair['door'].full_name} to the {room_pair['dir_x']}"
-				clause_count +=1
-				if clause_count == room_count:
-					break
-				if clause_count == room_count - 1 and clause_count ==1:
-					room_door_str += " and "
-				elif clause_count == room_count - 1:
-					room_door_str += ", and "
-				else:
-					room_door_str += ", "
-			if room_pair['room_y'] == room:
-				if isinstance(room_pair['door'], str):
-					room_door_str += f"a {room_pair['door']} to the {room_pair['dir_y']}"
-				else:
-					room_door_str += f"a {room_pair['door'].full_name} to the {room_pair['dir_y']}"
-				clause_count +=1
-				if clause_count == room_count:
-					break
-				if clause_count == room_count - 1 and clause_count ==1:
-					room_door_str += " and "
-				elif clause_count == room_count - 1:
-					room_door_str += ", and "
-				else:
-					room_door_str += ", "
+			for room_lst in room_key_lst:
+
+				if room_pair[room_lst[0]] == room:
+					if isinstance(room_pair['door'], str):
+						room_door_str += f"a {room_pair['door']} to the {room_pair[room_lst[1]]}"
+					else:
+						room_door_str += f"a {room_pair['door'].full_name} to the {room_pair[room_lst[1]]}"
+					clause_count +=1
+					if clause_count == room_count:
+						break
+					if clause_count == room_count - 1 and clause_count ==1:
+						room_door_str += " and "
+					elif clause_count == room_count - 1:
+						room_door_str += ", and "
+					else:
+						room_door_str += ", "
+
+#			if room_pair['room_x'] == room:
+#				if isinstance(room_pair['door'], str):
+#					room_door_str += f"a {room_pair['door']} to the {room_pair['dir_x']}"
+#				else:
+#					room_door_str += f"a {room_pair['door'].full_name} to the {room_pair['dir_x']}"
+#				clause_count +=1
+#				if clause_count == room_count:
+#					break
+#				if clause_count == room_count - 1 and clause_count ==1:
+#					room_door_str += " and "
+#				elif clause_count == room_count - 1:
+#					room_door_str += ", and "
+#				else:
+#					room_door_str += ", "
+#			if room_pair['room_y'] == room:
+#				if isinstance(room_pair['door'], str):
+#					room_door_str += f"a {room_pair['door']} to the {room_pair['dir_y']}"
+#				else:
+#					room_door_str += f"a {room_pair['door'].full_name} to the {room_pair['dir_y']}"
+#				clause_count +=1
+#				if clause_count == room_count:
+#					break
+#				if clause_count == room_count - 1 and clause_count ==1:
+#					room_door_str += " and "
+#				elif clause_count == room_count - 1:
+#					room_door_str += ", and "
+#				else:
+#					room_door_str += ", "
+
 		room_door_str += "."
 		return room_door_str
 
