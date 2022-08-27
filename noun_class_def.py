@@ -282,7 +282,7 @@ class Room(ViewOnly):
 						obj.vis_obj_disp(active_gs)
 
 		def go(self, dir, active_gs):
-				if not active_gs.map.is_valid_dir(self, dir):
+				if not active_gs.map.chk_valid_dir(self, dir):
 						active_gs.buffer(descript_dict[f"wrong_way_{random.randint(0, 4)}"])
 						return
 				door = active_gs.map.get_door(self, dir)

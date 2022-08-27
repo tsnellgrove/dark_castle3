@@ -52,7 +52,7 @@ Aug 10, 2022
 			- If similar obj and non-obj vars appear in same function, diff w/ post-fix: worn_lst vs. worn_lst_str
 - methods
 	- prefixes:
-		- 'is' for methods where no varriable is passed - e.g. 'obj.is_item()'
+		- 'is' for methods where no varriable is passed but a bool is returned; e.g. 'obj.is_item()'
 		- 'chk' for a method where you will send an obj and get back a bool
 		- 'get' for a method that will return a 'usuabl' obj var
 	- postfixes:

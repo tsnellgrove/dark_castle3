@@ -86,13 +86,11 @@ class Map(object):
 		room_door_str += "."
 		return room_door_str
 
-	def is_valid_dir(self, room, dir):
-#		for room_pair in self.map_lst:
-#			for room_dir in room_key_lst:
-#				if room_pair[room_dir[0]] == room and room_pair[room_dir[1]] == dir:
-#					return True
-#		return False
-		return any(room_pair[room_dir[0]] == room and room_pair[room_dir[1]] == dir for room_pair in self.map_lst for room_dir in room_key_lst)
+	def chk_valid_dir(self, room, dir):
+		""" Evaluates whether going direction dir from room is viable.
+		"""
+		return any(room_pair[room_dir[0]] == room and room_pair[room_dir[1]] == dir
+				for room_pair in self.map_lst for room_dir in room_key_lst)
 
 	def get_door(self, room, dir):
 		for room_pair in self.map_lst:
