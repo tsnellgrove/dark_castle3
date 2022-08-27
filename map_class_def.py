@@ -89,15 +89,19 @@ class Map(object):
 	def chk_valid_dir(self, room, dir):
 		""" Evaluates whether going direction dir from room is viable.
 		"""
-		return any(room_pair[room_dir[0]] == room and room_pair[room_dir[1]] == dir
-				for room_pair in self.map_lst for room_dir in room_key_lst)
+		return any(room_pair[room_lst[0]] == room and room_pair[room_lst[1]] == dir
+				for room_pair in self.map_lst for room_lst in room_key_lst)
 
 	def get_door(self, room, dir):
+		""" Returns room_pair['door'] given a starting room and a direction where room_pair['door'] can be either a door object or a string describing the open passage. Is intended to be run after chk_valid_dir() and will produce an error if run on an invalid route.
+		
+		I initially refactored this method to a list comprehension and returned the 0th member of the list... but this seemed out of keeping with the zen of list comprehension. Also, the nested-for-loop version was more efficient as it returned as soon as it found a match.
+		"""
 		for room_pair in self.map_lst:
-			if room_pair['room_x'] == room and room_pair['dir_x'] == dir:
-				return room_pair['door']
-			if room_pair['room_y'] == room and room_pair['dir_y'] == dir:
-				return room_pair['door']
+			for room_lst in room_key_lst:
+				if room_pair[room_lst[0]] == room and room_pair[room_lst[1]] == dir:
+					return room_pair['door']
+		raise ValueError(f"There is no 'door' value associated with going {dir} from room {room}. This must not be a valid route.")
 
 	def get_next_room(self, room, dir):
 		for room_pair in self.map_lst:
