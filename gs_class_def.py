@@ -228,7 +228,7 @@ class GameState(object):
 		def room_mach_lst(self):
 				room_mach_lst = []
 				room_obj = self.get_room()
-				scope_lst = self.scope_lst() + room_obj.invis_obj_lst
+				scope_lst = self.scope_lst() + room_obj.invis_lst
 				for obj in scope_lst:
 #						if obj.is_mach(): # portcullis auto_open issue ???
 						if hasattr(obj, 'trigger_type'):

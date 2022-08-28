@@ -206,11 +206,11 @@ class ViewOnly(Writing):
 				return
 
 class Room(ViewOnly):
-		def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_obj_lst):
+		def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._feature_lst = feature_lst # list of non-items in room (can be examined but not taken)
 				self._floor_lst = floor_lst # list of obj in the room that the player can interact with
-				self._invis_obj_lst = invis_obj_lst # list of invisible obj in room
+				self._invis_lst = invis_lst # list of invisible obj in room
 
 		# *** getters & setters ***
 		@property
@@ -222,8 +222,8 @@ class Room(ViewOnly):
 				return self._floor_lst
 
 		@property
-		def invis_obj_lst(self):
-				return self._invis_obj_lst
+		def invis_lst(self):
+				return self._invis_lst
 
 		# *** attribute methods ***
 		def floor_lst_append(self, item):
@@ -625,37 +625,38 @@ class Container(Door):
 				active_gs.buffer("Done")
 
 class PortableContainer(Container, Item):
-		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
-				Container.__init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
-				"""A container that can be taken.
-				"""
+	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
+		Container.__init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
+		"""A container that can be taken.
+		"""
 
-		# *** simple object methods ***
-		def is_item(self):
-				return True
+	# *** simple object methods ***
+	def is_item(self):
+		return True
 
 class PortableLiquidContainer(PortableContainer):
-		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
-				super().__init__(name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
-				"""A container that holds liquids and can be taken.
-				"""
+	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
+		super().__init__(name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
+		"""A container that holds liquids and can be taken.
+		"""
 
-		def put(self, obj, active_gs):
-##				super(PortableLiquidContainer, self).put(obj, active_gs) # this code worked to extend the method from Container.put()
-				""" put() is over-ridden to prohibit non-liquids in PortableLiquidContainer class containers.
+	def put(self, obj, active_gs):
+		""" put() is over-ridden to prohibit non-liquids in PortableLiquidContainer class containers.
 				
-				Implementation Detail:
-						I wanted this to be an extension of Container.put() and using super does throw the correct error when Burt tries to put a non-liquid in the glass_bottle... but only after the object is put in the bottle. So I chose to over-ride the method completely. Note that there's no need to check for obj.is_container() or obj.is_creature() since we already restrict the method to liquids.
-				"""
-				if self.is_open == False:
-						active_gs.buffer(f"The {self.full_name} is closed.")
-						return 
-				if not obj.is_liquid():
-						active_gs.buffer(f"The {self.full_name} can only hold liquids.")
-						return 
-				active_gs.hand_lst_remove_item(obj)
-				self.contain_lst_append(obj)
-				active_gs.buffer("Done")
+		Implementation Detail:
+			I wanted this to be an extension of Container.put() and using super does throw the correct error when Burt tries to put a non-liquid in the glass_bottle... but only after the object is put in the bottle. So I chose to over-ride the method completely. Note that there's no need to check for obj.is_container() or obj.is_creature() since we already restrict the method to liquids.
+				
+			Note - this code worked to extend the method from Container.put(): super(PortableLiquidContainer, self).put(obj, active_gs)
+		"""
+		if self.is_open == False:
+			active_gs.buffer(f"The {self.full_name} is closed.")
+			return 
+		if not obj.is_liquid():
+			active_gs.buffer(f"The {self.full_name} can only hold liquids.")
+			return 
+		active_gs.hand_lst_remove_item(obj)
+		self.contain_lst_append(obj)
+		active_gs.buffer("Done")
 
 class Food(Item):
 		def __init__(self, name, full_name, root_name, descript_key, writing, eat_desc_key):

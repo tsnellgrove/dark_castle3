@@ -36,7 +36,9 @@ Aug 10, 2022
 	- avoid the term 'scope' since there are different scopes for different actions... prefer terms like 'is_vis'
 	- do NOT reference the class in the attribute - the attribute will always appear w/ the class: creature.state vs. creature.creature_state
 	- do NOT attempt a rigorous and exhaustive naming conventions - this way lies madness and very long vars. Embrace function / method context! 
-	- Be biased towards shorter vars; bend naming rules as needed to achieve shorter vars; shorter vars == more readable code!
+	- be biased towards shorter vars; bend naming rules as needed to achieve shorter vars; shorter vars == more readable code!
+	- use consistent attribute and method naming across classes whenever possible - especially classes that could be grouped together.
+		- This approach allows for easy itteration across an amorphous list of objects.
 - classes:
 	- prefer generic naming for classes (e.g. Container and Surface vs. Chest and Shelf)
 	- class attributes should be named after physical features of the class, NOT their expected data types: hand_lst, bkpk_lst, worn_lst
@@ -48,8 +50,8 @@ Aug 10, 2022
 		- 'lst' for lists
 		- 'dict' for dictionaries
 		- 'str' for strings
-		- do NOT use 'obj'; vars are assumed to be obj
-			- If similar obj and non-obj vars appear in same function, diff w/ post-fix: worn_lst vs. worn_lst_str
+		- do NOT use 'obj'; vars are assumed to be obj by default
+			- If similar obj and non-obj vars appear in same function, diff w/ post-fix: e.g. worn_lst vs. worn_lst_str
 - methods
 	- prefixes:
 		- 'is' for methods where no varriable is passed but a bool is returned; e.g. 'obj.is_item()'
@@ -294,9 +296,15 @@ Version 3.72 Goals
 		- DONE: raise error if no return in loop
 		- DONE: doc_strings
 	- DONE: update doc_string for Door
-
+- INPROC: class by class, reduce from double-tab to single tab
+	- DONE: web_main.py
+	- DONE: map_class_def.py
+	- INPROC: noun_class_def.py
+		- DONE: PortableContainer
+		- DONE: PortableLiquidContainer
+		- TBD: next!
 - INPROC: refactor Room class
-	- INPROC: rename vars
+	- DONE: rename vars
 		- DONE: features => feature_lst
 			- DONE: noun_class_def
 		- DONE: room_obj_lst => floor_lst
@@ -305,7 +313,9 @@ Version 3.72 Goals
 			- DONE: creature_class_def
 			- DONE: cond_class_def
 			- DONE: result_class_def
-		- TBD: invis_obj_lst) to invis_lst
+		- DONE: invis_obj_lst to invis_lst
+			- DONE: noun_class_def
+			- DONE: gs_class_def
 	- TBD: refactor next steps
 	- INPROC: refactor examine
 		- DONE: exmine titles for rooms as separate buffer line (enables brief / verbose and also diff dict)
@@ -330,7 +340,6 @@ Version 3.72 Goals
 		- could also run a pre-start check on container & creature to throw errors on illegal contents
 		- need to document (to self!) consistent approach to what is visible when Burt looks, examines, or inventories
 	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
-- TBD: class by class, reduce from double-tab to single tab
 - TBD: refactor Food
 - TBD: refactor Clothes => Garments
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
