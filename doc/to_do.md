@@ -240,7 +240,7 @@ Version 3.72 Goals
 	- DONE: elim print_contents_str() 
 	- DONE: eliminate Jug (replaced by generically named PortableLiquidContainer)
 	- DONE: elim obj_lst_to_str (move funct to *** local funcs *** in gs_class_def.py); move shared_class_func module to 'legacy' folder
-- INPROC: refactor map
+- DONE: refactor map
 	- DONE: create Map class
 		- DONE: create map_class_def.py module
 		- DONE: create Map class with attribute = map_lst
@@ -293,8 +293,8 @@ Version 3.72 Goals
 		- DONE: use any() pattern for bool outcome
 		- DONE: raise error if no return in loop
 		- DONE: doc_strings
-	- TBD: update doc_string for Door
-- TBD: class by class, reduce from double-tab to single tab
+	- DONE: update doc_string for Door
+
 - INPROC: refactor Room class
 	- INPROC: rename vars
 		- DONE: features => feature_lst
@@ -305,10 +305,17 @@ Version 3.72 Goals
 			- DONE: creature_class_def
 			- DONE: cond_class_def
 			- DONE: result_class_def
-	- TBD: exmine titles for rooms as separate buffer line (enables brief / verbose and also diff dict)
-	- DONE: should be able to get basic descriptions from Container and Creature classes
-		- DONE: need methods in class for this - reuse in Container & Creature examine
-	- DONE: for look, don't show container contents as 'nothing' if the container is_empty() ??
+		- TBD: invis_obj_lst) to invis_lst
+	- TBD: refactor next steps
+	- INPROC: refactor examine
+		- DONE: exmine titles for rooms as separate buffer line (enables brief / verbose and also diff dict)
+			- DONE: if obj.get_title_str() not None: gs.buffer(if obj.get_title_str()) ; for Room => def get_title_str(self): return self.full_name
+		- DONE: should be able to get basic descriptions from Container and Creature classes
+			- DONE: need methods in class for this - reuse in Container & Creature examine
+		- DONE: for look, don't show container contents as 'nothing' if the container is_empty()
+		- TBD: refactor *.examine()
+			- TBD: universalize use of title, description, condition, vis_obj_lst
+	- TBD: move GameState scope methods to room
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 		- is node_lst a better term?
 		- Yes!! node_lvl is the key... imagine an inverted tree... node_0 is at top (say room), node_1 are immedaite contents of node_0, and node_2 = the contents of node_1
@@ -323,19 +330,7 @@ Version 3.72 Goals
 		- could also run a pre-start check on container & creature to throw errors on illegal contents
 		- need to document (to self!) consistent approach to what is visible when Burt looks, examines, or inventories
 	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
-- TBD: refactor descript_dict (=> static_dict), autogen_dict (new) and dynamic_dict to Descript class with descript instantiation
-	- call with key and return string; will look like gs.descript(key)
-	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() )
-		- Can autogen key try be incorporated into Descript method??
-	- static_dict and autogen_dict live in class; dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
-	- Use guard pattern and check in this order
-		- 1) in dynamic_dict
-		- 2) starts with "ag_" => autogen_dict (no "try", allow failure)
-		- 3) try static_dic except f"the {obj.full_name} is simple indescribable"
-	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
-		- CANCEL: test w/ descript_dict => start with version 
-- TBD: refactor *.examine()
-	- TBD: universalize use of title, description, condition, vis_obj_lst
+- TBD: class by class, reduce from double-tab to single tab
 - TBD: refactor Food
 - TBD: refactor Clothes => Garments
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
@@ -356,8 +351,18 @@ Version 3.72 Goals
 	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
 	- TBD: re-org to identify 'attacker' and 'winner' 
 	- TBD: re-code attack / attack_burt response correctly based on in-line notes
+- TBD: refactor descript_dict (=> static_dict), autogen_dict (new) and dynamic_dict to Descript class with descript instantiation
 	- TBD: unify descript approach: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
-
+	- call with key and return string; will look like gs.descript(key)
+	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() )
+		- Can autogen key try be incorporated into Descript method??
+	- static_dict and autogen_dict live in class; dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
+	- Use guard pattern and check in this order
+		- 1) in dynamic_dict
+		- 2) starts with "ag_" => autogen_dict (no "try", allow failure)
+		- 3) try static_dic except f"the {obj.full_name} is simple indescribable"
+	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
+		- CANCEL: test w/ descript_dict => start with version 
 
 ##########################
 ### VERSION 3.73 START ###

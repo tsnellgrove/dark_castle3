@@ -30,6 +30,7 @@ def start_me_up():
 
 		### introductory text ###
 		active_gs.buffer(descript_dict["introduction"])
+		active_gs.buffer("*** Entrance ***")
 		active_gs.buffer(descript_dict["entrance"])
 		active_gs.buffer("There is a Front Gate to the north, a path to the south, a leap down to the moat to the east, and a leap down to the moat to the west.")
 

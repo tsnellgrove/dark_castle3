@@ -50,6 +50,9 @@ class Invisible(object):
 		def is_mach(self):
 				return False
 
+		def get_title_str(self):
+				return None
+
 		def __repr__(self):
 				return f"Object {self.name} is of class {type(self).__name__}"
 
@@ -195,6 +198,8 @@ class ViewOnly(Writing):
 				
 						The hope is that, for the player, all of this theory results in intuitive game play. When you want a list of the 'stuff' in a room you 'look'... when you want to know everything about a specific object you 'examine' it... descriptions should be read carefully because, occasionally, they include references to things you can look at that aren't mentioned otherwise... But if you're actually reading through the code and wondering "Why aren't Writing objects, the state of Doors, or most ViewOnly objects listed via 'look' or 'inventory' - well, now you know!"
 				"""
+				if self.get_title_str() is not None:
+						active_gs.buffer(self.get_title_str())
 				active_gs.buffer(self.get_descript_str(active_gs))
 				if self.has_writing():
 						active_gs.buffer(f"On the {self.full_name} you see: {self.writing.full_name}")
@@ -233,6 +238,9 @@ class Room(ViewOnly):
 		# *** simple object methods ***
 		def vis_element_lst(self):
 				return self.floor_lst + self.feature_lst
+
+		def get_title_str(self):
+				return f"*** {self.full_name} ***"
 
 		# *** complex object methods ***
 		def chk_contain_item(self, item, active_gs):
@@ -361,7 +369,9 @@ class Door(ViewOnly):
 						In v1 and v2 of Dark Castle, doors could be unlocked and opened but not closed or locked. The problem wasn't actually room doors - it would have been easy to code them to close and lock - the real problem was containers, which were based on the same code base as doors (as is still the case in v3). Containers were the last and most complicated thing I coded in v1 (v2 just being the web version of v1). I was running into the limits of writing the program in procedural code and by this time I knew I was going to do a full re-write in OOP. So faced with the prospect of writing a 'put' verb and more complicated room inventory management, I totally dialed it in. Containers in v1 / v2 simply dumped their contents into the room inventory the moment you managed to open them. But of course that meant you couldn't close the container - because the the objects 'in' the container would still be in the room... hence the lack of 'close' and 'lock'. From a gameplay and puzzle point of view, this was never a problem. But the asymetry always annoyed me - I pictured Nana calling out to Burt across the years "For goodness sake Burtie, close the door behind you!" Properly working Containers and Doors were one of my first goals for v3.
 				
 				Implementation Details:
-						Standard doors are pretty straight forward. Whether they are open or closed, locked or unlocked, and what key is required to unlock them are goverened by three method-specific attributes: 'is_open', 'is_unlocked', and 'key'. Generally, 'is_open' and 'is_unlocked' are boolean; 'key' points to an Item object.
+						Before we talk about how doors work, let's take a moment to meniton where they 'live'. Unlike most other large objects (e.g. Creatures), doors do not reside in room.floor_lst. This is because doors don't really exist in just one room. Instead, they are contained within "door pairs" - which in turn reside in the map_lst attribute of the GameState map object. See map_class_def.py for details.
+						
+						The actual functioning of doors is pretty straight forward. Whether they are open or closed, locked or unlocked, and what key is required to unlock them are goverened by three method-specific attributes: 'is_open', 'is_unlocked', and 'key'. Generally, 'is_open' and 'is_unlocked' are boolean; 'key' points to an Item object.
 						
 						However, all three variables can also take the value of None and invoke special interpretation when they do:
 							
