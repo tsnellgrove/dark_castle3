@@ -601,21 +601,31 @@ class Container(Door):
 #						active_gs.buffer(f"The {self.full_name} is empty.")
 #				return 
 
+		def obj_cond_disp(self, active_gs):
+				super(Container, self).obj_cond_disp(active_gs)
+				""" Displays the empty condition description of the container (when approprate). This code is also called by open().
+				"""
+				if self.is_empty():
+						active_gs.buffer(f"The {self.full_name} is empty.")
+				return 
+
 		def examine(self, active_gs):
 				super(Container, self).examine(active_gs)
 				""" Extends Door.examine(). Displays the container condition and visible objects.
 				"""
 #				self.obj_cond_disp(active_gs)
 				self.vis_obj_disp(active_gs)
-				if self.is_empty():
-						active_gs.buffer(f"The {self.full_name} is empty.")
+#				if self.is_empty():
+#						active_gs.buffer(f"The {self.full_name} is empty.")
 				return 
 
 		def open(self, active_gs):
 				super(Container, self).open(active_gs)
 				""" Extends Door.open(). Upon opening a container, the player's natural question is "What's in it?". Open for containers answers this question whenever a container is opened. If the container is empty that information is displayed as well.
 				"""
-				self.obj_cond_disp(active_gs)
+#				self.obj_cond_disp(active_gs)
+				if self.is_empty():
+						active_gs.buffer(f"The {self.full_name} is empty.")
 				self.vis_obj_disp(active_gs)
 
 		def put(self, obj, active_gs):
