@@ -177,6 +177,10 @@ class ViewOnly(Writing):
 				pass
 				return 
 
+		def vis_obj_disp(self, active_gs):
+				pass
+				return 
+
 		# *** complex obj methods ***
 		def examine(self, active_gs):
 				""" Describes an object. examine() is the most fundamental command for gameplay and is the second method available for visible objects after read(). ViewOnly is the ancestor of all visible classes except Writing and quite a few of them expand upon examine() (e.g. in class Door, examine() is extended to describe Condition of the door - i.e. whether it is open or closed).
@@ -208,6 +212,7 @@ class ViewOnly(Writing):
 				if self.has_writing():
 						active_gs.buffer(f"On the {self.full_name} you see: {self.writing.full_name}")
 				self.obj_cond_disp(active_gs)
+				self.vis_obj_disp(active_gs)
 				return
 
 class Room(ViewOnly):
@@ -277,9 +282,7 @@ class Room(ViewOnly):
 		def obj_cond_disp(self, active_gs):
 				active_gs.buffer(active_gs.map.get_door_str(self))
 
-		def examine(self, active_gs):
-				super(Room, self).examine(active_gs)
-#				self.obj_cond_disp(active_gs)
+		def vis_obj_disp(self, active_gs):
 				room_item_obj_lst = []
 				for obj in self.floor_lst:
 						if not obj.is_item():
@@ -293,6 +296,26 @@ class Room(ViewOnly):
 						active_gs.buffer("The following items are here: " + room_item_str)
 				for obj in room_item_obj_lst:
 						obj.vis_obj_disp(active_gs)
+				return 
+
+#		def examine(self, active_gs):
+#				super(Room, self).examine(active_gs)
+
+#				self.obj_cond_disp(active_gs)
+
+#				room_item_obj_lst = []
+#				for obj in self.floor_lst:
+#						if not obj.is_item():
+#								active_gs.buffer("There is a " + obj.full_name + " here.")
+#								obj.vis_obj_disp(active_gs)
+#						else:
+#								room_item_obj_lst.append(obj)
+#				if room_item_obj_lst:
+#						room_txt_lst = [obj.full_name for obj in room_item_obj_lst]
+#						room_item_str = ", ".join(room_txt_lst)
+#						active_gs.buffer("The following items are here: " + room_item_str)
+#				for obj in room_item_obj_lst:
+#						obj.vis_obj_disp(active_gs)
 
 		def go(self, dir, active_gs):
 				if not active_gs.map.chk_valid_dir(self, dir):
@@ -609,12 +632,14 @@ class Container(Door):
 						active_gs.buffer(f"The {self.full_name} is empty.")
 				return 
 
-		def examine(self, active_gs):
-				super(Container, self).examine(active_gs)
-				""" Extends Door.examine(). Displays the container condition and visible objects.
-				"""
+#		def examine(self, active_gs):
+#				super(Container, self).examine(active_gs)
+#				""" Extends Door.examine(). Displays the container condition and visible objects.
+#				"""
 #				self.obj_cond_disp(active_gs)
-				self.vis_obj_disp(active_gs)
+
+#				self.vis_obj_disp(active_gs)
+
 #				if self.is_empty():
 #						active_gs.buffer(f"The {self.full_name} is empty.")
 				return 

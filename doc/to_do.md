@@ -323,7 +323,7 @@ Version 3.72 Goals
 			- DONE: need methods in class for this - reuse in Container & Creature examine
 		- DONE: for look, don't show container contents as 'nothing' if the container is_empty()
 		- INPROC: universalize use of title, description, writing, condition, vis_obj_lst
-			- INPROC: update examine() with obj_cond_disp()
+			- DONE: update examine() with obj_cond_disp()
 				- DONE: ViewOnly
 					- DONE: Update ViewOnly.examine()
 					- DONE: create default def obj_cond_disp(): => pass
@@ -334,21 +334,22 @@ Version 3.72 Goals
 				- DONE: Switch
 			- DONE: finalize approach to multiple conditions (e.g. Container)
 				- DONE: extended obj_cond_disp() in Container
-			- TBD: update examine() with self.vis_obj_disp(active_gs)
-				- TBD: ViewOnly
-					- TBD: Update ViewOnly.examine()
-					- TBD: create default def vis_obj_disp(active_gs) => pass
-				- TBD: Room
-					- TBD: improve natural language read
-				- TBD: Container
-				- TBD: Creature
-					- TBD: improve natural language read
+			- DONE: update examine() with self.vis_obj_disp(active_gs)
+				- DONE: ViewOnly
+					- DONE: Update ViewOnly.examine()
+					- DONE: create default def vis_obj_disp(active_gs) => pass
+				- DONE: Room
+				- DONE: Container
+				- DONE: Creature
 			- TBD: Finalize change
-				- TBD: update doc_strings for obj_cond_disp() and vis_obj_disp()
 				- TBD: update ViewOnly.examine() doc_string
-					- TBD: Why lock down examine()? 1) Codifies presentation, 2) enables brief and verbose
+					- TBD: 5x components of examine(); Why lock down examine()? 1) Codifies presentation, 2) enables brief and verbose
+				- TBD: update doc_strings for obj_cond_disp() and vis_obj_disp()
 				- TBD: clean up comments in noun_class_def.py and switch_class_def.py (and update doc_strings)
 				- TBD: clean up comments in noun_class_def.py  (and update doc_strings)
+			- TBD: improve natural language read of vis_obj_disp()
+				- TBD: Room
+				- TBD: Creature
 	- TBD: move GameState scope methods to room
 	- TBD: refactor next steps
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)

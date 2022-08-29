@@ -162,10 +162,10 @@ class Creature(ViewOnly):
 						active_gs.buffer(f"The {self.full_name} is wearing: {worn_str}")
 				return 
 
-		def examine(self, active_gs):
-				super(Creature, self).examine(active_gs)
-				self.vis_obj_disp(active_gs)
-				return 
+#		def examine(self, active_gs):
+#				super(Creature, self).examine(active_gs)
+#				self.vis_obj_disp(active_gs)
+#				return 
 
 		def show(self, obj, active_gs):
 				""" Show item to creature.
