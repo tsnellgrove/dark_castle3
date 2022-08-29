@@ -332,14 +332,21 @@ Version 3.72 Goals
 				- DONE: Container
 				- DONE: Creature
 				- DONE: Switch
+			- DONE: finalize approach to multiple conditions (e.g. Container)
+				- DONE: extended obj_cond_disp() in Container
 			- TBD: update examine() with self.vis_obj_disp(active_gs)
 				- TBD: ViewOnly
 					- TBD: Update ViewOnly.examine()
 					- TBD: create default def vis_obj_disp(active_gs) => pass
 				- TBD: Room
+					- TBD: improve natural language read
 				- TBD: Container
 				- TBD: Creature
-			- TBD: finalize approach to multiple conditions (e.g. Container)
+					- TBD: improve natural language read
+			- TBD: Finalize change
+				- TBD: update doc_strings for obj_cond_disp() and vis_obj_disp()
+				- TBD: update ViewOnly.examine() doc_string
+					- TBD: Why lock down examine()? 1) Codifies presentation, 2) enables brief and verbose
 				- TBD: clean up comments in noun_class_def.py and switch_class_def.py (and update doc_strings)
 				- TBD: clean up comments in noun_class_def.py  (and update doc_strings)
 	- TBD: move GameState scope methods to room
