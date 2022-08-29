@@ -316,16 +316,34 @@ Version 3.72 Goals
 		- DONE: invis_obj_lst to invis_lst
 			- DONE: noun_class_def
 			- DONE: gs_class_def
-	- TBD: refactor next steps
 	- INPROC: refactor examine
 		- DONE: exmine titles for rooms as separate buffer line (enables brief / verbose and also diff dict)
 			- DONE: if obj.get_title_str() not None: gs.buffer(if obj.get_title_str()) ; for Room => def get_title_str(self): return self.full_name
 		- DONE: should be able to get basic descriptions from Container and Creature classes
 			- DONE: need methods in class for this - reuse in Container & Creature examine
 		- DONE: for look, don't show container contents as 'nothing' if the container is_empty()
-		- TBD: refactor *.examine()
-			- TBD: universalize use of title, description, condition, vis_obj_lst
+		- INPROC: universalize use of title, description, writing, condition, vis_obj_lst
+			- INPROC: update examine() with obj_cond_disp()
+				- DONE: ViewOnly
+					- DONE: Update ViewOnly.examine()
+					- DONE: create default def obj_cond_disp(): => pass
+				- DONE: Room
+				- DONE: Door
+				- DONE: Container
+				- DONE: Creature
+				- DONE: Switch
+			- TBD: update examine() with self.vis_obj_disp(active_gs)
+				- TBD: ViewOnly
+					- TBD: Update ViewOnly.examine()
+					- TBD: create default def vis_obj_disp(active_gs) => pass
+				- TBD: Room
+				- TBD: Container
+				- TBD: Creature
+			- TBD: finalize approach to multiple conditions (e.g. Container)
+				- TBD: clean up comments in noun_class_def.py and switch_class_def.py (and update doc_strings)
+				- TBD: clean up comments in noun_class_def.py  (and update doc_strings)
 	- TBD: move GameState scope methods to room
+	- TBD: refactor next steps
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 		- is node_lst a better term?
 		- Yes!! node_lvl is the key... imagine an inverted tree... node_0 is at top (say room), node_1 are immedaite contents of node_0, and node_2 = the contents of node_1
@@ -340,7 +358,6 @@ Version 3.72 Goals
 		- could also run a pre-start check on container & creature to throw errors on illegal contents
 		- need to document (to self!) consistent approach to what is visible when Burt looks, examines, or inventories
 	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
-- TBD: refactor Food
 - TBD: refactor Clothes => Garments
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
 	- CANCEL: create Garment class-specific remove() method that calls take() ??
@@ -349,12 +366,14 @@ Version 3.72 Goals
 		- TBD: consider auto-gen keys for all verb methods (probably not)
 		- TBD: Organize auto-gen keys together
 		- TBD: consider creating a separate dict for autogen keys
+- TBD: refactor Food
 - TBD: refactor Weapon
 - TBD: refactor Switch
 - TBD: create Surface class!! (was 'Shelf')
 	- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
 	- put initial shelf in Main Hall
 	- implement Control Panel as Shelf !! (may need to add control_panel after guard_goblin dies)
+- TBD: reorg noun_class_def into base (Invis, Writing, ViewOnly, & Liquid), Item (including Food & Weapon), Room, Door and Container, Surface ??
 - TBD: refactor Creature / attack()
 	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
 	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature

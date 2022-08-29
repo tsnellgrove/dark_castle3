@@ -58,7 +58,10 @@ class LeverSwitch(ViewOnly, SwitchMixIn):
 						self.switch_state = 'down'
 				active_gs.buffer("Pulled.")
 
-		def examine(self, active_gs):
-				super(LeverSwitch, self).examine(active_gs)
-				lever_string = "The " + self.full_name + " is " + self.switch_state + "."
-				active_gs.buffer(lever_string)	
+		def obj_cond_disp(self, active_gs):
+				active_gs.buffer(f"The {self.full_name} is {self.switch_state}.")
+
+#		def examine(self, active_gs):
+#				super(LeverSwitch, self).examine(active_gs)
+#				lever_string = "The " + self.full_name + " is " + self.switch_state + "."
+#				active_gs.buffer(lever_string)

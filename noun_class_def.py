@@ -173,6 +173,10 @@ class ViewOnly(Writing):
 				pass
 				return 
 
+		def obj_cond_disp(self, active_gs):
+				pass
+				return 
+
 		# *** complex obj methods ***
 		def examine(self, active_gs):
 				""" Describes an object. examine() is the most fundamental command for gameplay and is the second method available for visible objects after read(). ViewOnly is the ancestor of all visible classes except Writing and quite a few of them expand upon examine() (e.g. in class Door, examine() is extended to describe Condition of the door - i.e. whether it is open or closed).
@@ -203,6 +207,7 @@ class ViewOnly(Writing):
 				active_gs.buffer(self.get_descript_str(active_gs))
 				if self.has_writing():
 						active_gs.buffer(f"On the {self.full_name} you see: {self.writing.full_name}")
+				self.obj_cond_disp(active_gs)
 				return
 
 class Room(ViewOnly):
@@ -274,7 +279,7 @@ class Room(ViewOnly):
 
 		def examine(self, active_gs):
 				super(Room, self).examine(active_gs)
-				self.obj_cond_disp(active_gs)
+#				self.obj_cond_disp(active_gs)
 				room_item_obj_lst = []
 				for obj in self.floor_lst:
 						if not obj.is_item():
@@ -417,9 +422,8 @@ class Door(ViewOnly):
 				return self.is_open is not False
 
 		# *** complex obj methods ***
-		def examine(self, active_gs):
-				super(Door, self).examine(active_gs)
-				""" Door-specific examine() responses to be provided in addition to the base examine() method in ViewOnly  
+		def obj_cond_disp(self, active_gs):
+				""" Door-specific display conditions for examine().
 				"""
 				if self.is_open is None:
 						active_gs.buffer(f"The {self.full_name} has no closure. It always remains open.")
@@ -428,7 +432,20 @@ class Door(ViewOnly):
 						active_gs.buffer(f"The {self.full_name} is closed.")
 						return
 				active_gs.buffer(f"The {self.full_name} is open.") # is_open == True
-				return
+				return 
+
+#		def examine(self, active_gs):
+#				super(Door, self).examine(active_gs)
+#				""" Door-specific examine() responses to be provided in addition to the base examine() method in ViewOnly  
+#				"""
+#				if self.is_open is None:
+#						active_gs.buffer(f"The {self.full_name} has no closure. It always remains open.")
+#						return				
+#				if self.is_open == False:
+#						active_gs.buffer(f"The {self.full_name} is closed.")
+#						return
+#				active_gs.buffer(f"The {self.full_name} is open.") # is_open == True
+#				return
 
 		def unlock(self, active_gs):
 				""" Unlocks a Door object.
@@ -577,19 +594,21 @@ class Container(Door):
 						active_gs.buffer(f"The {self.full_name} contains: {contain_str}")
 				return 
 
-		def obj_cond_disp(self, active_gs):
-				""" Displays the empty condition description of the container (when approprate). This code would normally live in examine(), but since it is also called by open() it makes sense to convert it to a stand-alone method.
-				"""
-				if self.is_empty():
-						active_gs.buffer(f"The {self.full_name} is empty.")
-				return 
+#		def obj_cond_disp(self, active_gs):
+#				""" Displays the empty condition description of the container (when approprate). This code would normally live in examine(), but since it is also called by open() it makes sense to convert it to a stand-alone method.
+#				"""
+#				if self.is_empty():
+#						active_gs.buffer(f"The {self.full_name} is empty.")
+#				return 
 
 		def examine(self, active_gs):
 				super(Container, self).examine(active_gs)
 				""" Extends Door.examine(). Displays the container condition and visible objects.
 				"""
-				self.obj_cond_disp(active_gs)
+#				self.obj_cond_disp(active_gs)
 				self.vis_obj_disp(active_gs)
+				if self.is_empty():
+						active_gs.buffer(f"The {self.full_name} is empty.")
 				return 
 
 		def open(self, active_gs):
