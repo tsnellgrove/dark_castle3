@@ -296,13 +296,6 @@ Version 3.72 Goals
 		- DONE: raise error if no return in loop
 		- DONE: doc_strings
 	- DONE: update doc_string for Door
-- INPROC: class by class, reduce from double-tab to single tab
-	- DONE: web_main.py
-	- DONE: map_class_def.py
-	- INPROC: noun_class_def.py
-		- DONE: PortableContainer
-		- DONE: PortableLiquidContainer
-		- TBD: next!
 - INPROC: refactor Room class
 	- DONE: rename vars
 		- DONE: features => feature_lst
@@ -344,14 +337,12 @@ Version 3.72 Goals
 			- TBD: Finalize change
 				- TBD: update ViewOnly.examine() doc_string
 					- TBD: 5x components of examine(); Why lock down examine()? 1) Codifies presentation, 2) enables brief and verbose
+					- TBD: cons: leads to an outline-style description; harder to textify
 				- TBD: update doc_strings for obj_cond_disp() and vis_obj_disp()
 				- TBD: clean up comments in noun_class_def.py and switch_class_def.py (and update doc_strings)
 				- TBD: clean up comments in noun_class_def.py  (and update doc_strings)
-			- TBD: improve natural language read of vis_obj_disp()
-				- TBD: Room
-				- TBD: Creature
 	- TBD: move GameState scope methods to room
-	- TBD: refactor next steps
+	- TBD: refactor room next steps
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 		- is node_lst a better term?
 		- Yes!! node_lvl is the key... imagine an inverted tree... node_0 is at top (say room), node_1 are immedaite contents of node_0, and node_2 = the contents of node_1
@@ -366,6 +357,13 @@ Version 3.72 Goals
 		- could also run a pre-start check on container & creature to throw errors on illegal contents
 		- need to document (to self!) consistent approach to what is visible when Burt looks, examines, or inventories
 	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
+- INPROC: class by class, reduce from double-tab to single tab
+	- DONE: web_main.py
+	- DONE: map_class_def.py
+	- INPROC: noun_class_def.py
+		- DONE: PortableContainer
+		- DONE: PortableLiquidContainer
+		- TBD: next!
 - TBD: refactor Clothes => Garments
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
 	- CANCEL: create Garment class-specific remove() method that calls take() ??
@@ -528,7 +526,9 @@ Refactor burt as a Creature class object
 		- TBD: can only examine / take other items in the chair (burt's own inventory)
 		- TBD: most other methods just generate "you'll have to stand up to do that"
 		- TBD: vis_lst = chair.vis_lst + room.name
-
+- TBD: improve natural language / paragraph (vs. outline) read of examine()
+	- TBD: Room
+	- TBD: Creature
 
 ##########################
 ### VERSION 3.75 START ###
