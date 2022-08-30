@@ -334,10 +334,12 @@ Version 3.72 Goals
 				- DONE: Room
 				- DONE: Container
 				- DONE: Creature
-			- TBD: Finalize change
-				- TBD: update ViewOnly.examine() doc_string
-					- TBD: 5x components of examine(); Why lock down examine()? 1) Codifies presentation, 2) enables brief and verbose
-					- TBD: cons: leads to an outline-style description; harder to textify
+			- INPROC: Finalize change
+				- DONE: update ViewOnly.examine() doc_string
+					- DONE: 5x components of examine(); Why lock down examine()? 1) Codifies presentation, 2) enables brief and verbose
+					- DONE: cons: leads to an outline-style description; harder to textify
+				- TBD: rename obj_cond_disp() => cond_disp()  [???]
+				- TBD: rename vis_obj_disp() => contain_disp()  [???]
 				- TBD: update doc_strings for obj_cond_disp() and vis_obj_disp()
 				- TBD: clean up comments in noun_class_def.py and switch_class_def.py (and update doc_strings)
 				- TBD: clean up comments in noun_class_def.py  (and update doc_strings)
