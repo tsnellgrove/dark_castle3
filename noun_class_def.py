@@ -159,9 +159,9 @@ class ViewOnly(Writing):
 		def is_writing(self):
 				return False
 		
-		def vis_obj_disp(self, active_gs):
-				pass
-				return
+#		def contain_disp(self, active_gs):
+#				pass
+#				return
 
 		def vis_lst(self):
 				return []
@@ -173,11 +173,11 @@ class ViewOnly(Writing):
 				pass
 				return 
 
-		def obj_cond_disp(self, active_gs):
+		def cond_disp(self, active_gs):
 				pass
 				return 
 
-		def vis_obj_disp(self, active_gs):
+		def contain_disp(self, active_gs):
 				pass
 				return 
 
@@ -215,8 +215,8 @@ class ViewOnly(Writing):
 				active_gs.buffer(self.get_descript_str(active_gs))
 				if self.has_writing():
 						active_gs.buffer(f"On the {self.full_name} you see: {self.writing.full_name}")
-				self.obj_cond_disp(active_gs)
-				self.vis_obj_disp(active_gs)
+				self.cond_disp(active_gs)
+				self.contain_disp(active_gs)
 				return
 
 class Room(ViewOnly):
@@ -283,15 +283,15 @@ class Room(ViewOnly):
 				raise ValueError(f"Can't remove item {item} from room {self.name}")
 				return 
 
-		def obj_cond_disp(self, active_gs):
+		def cond_disp(self, active_gs):
 				active_gs.buffer(active_gs.map.get_door_str(self))
 
-		def vis_obj_disp(self, active_gs):
+		def contain_disp(self, active_gs):
 				room_item_obj_lst = []
 				for obj in self.floor_lst:
 						if not obj.is_item():
 								active_gs.buffer("There is a " + obj.full_name + " here.")
-								obj.vis_obj_disp(active_gs)
+								obj.contain_disp(active_gs)
 						else:
 								room_item_obj_lst.append(obj)
 				if room_item_obj_lst:
@@ -299,19 +299,19 @@ class Room(ViewOnly):
 						room_item_str = ", ".join(room_txt_lst)
 						active_gs.buffer("The following items are here: " + room_item_str)
 				for obj in room_item_obj_lst:
-						obj.vis_obj_disp(active_gs)
+						obj.contain_disp(active_gs)
 				return 
 
 #		def examine(self, active_gs):
 #				super(Room, self).examine(active_gs)
 
-#				self.obj_cond_disp(active_gs)
+#				self.cond_disp(active_gs)
 
 #				room_item_obj_lst = []
 #				for obj in self.floor_lst:
 #						if not obj.is_item():
 #								active_gs.buffer("There is a " + obj.full_name + " here.")
-#								obj.vis_obj_disp(active_gs)
+#								obj.contain_disp(active_gs)
 #						else:
 #								room_item_obj_lst.append(obj)
 #				if room_item_obj_lst:
@@ -319,7 +319,7 @@ class Room(ViewOnly):
 #						room_item_str = ", ".join(room_txt_lst)
 #						active_gs.buffer("The following items are here: " + room_item_str)
 #				for obj in room_item_obj_lst:
-#						obj.vis_obj_disp(active_gs)
+#						obj.contain_disp(active_gs)
 
 		def go(self, dir, active_gs):
 				if not active_gs.map.chk_valid_dir(self, dir):
@@ -449,7 +449,7 @@ class Door(ViewOnly):
 				return self.is_open is not False
 
 		# *** complex obj methods ***
-		def obj_cond_disp(self, active_gs):
+		def cond_disp(self, active_gs):
 				""" Door-specific display conditions for examine().
 				"""
 				if self.is_open is None:
@@ -612,7 +612,7 @@ class Container(Door):
 				self.contain_lst_remove(item)
 
 		# *** complex obj methods ***
-		def vis_obj_disp(self, active_gs):
+		def contain_disp(self, active_gs):
 				""" Displays a description of the items in the container. Extracting this from method allows Room.examine() to resuse it.
 				"""
 				if self.is_not_closed() and not self.is_empty():
@@ -621,18 +621,18 @@ class Container(Door):
 						active_gs.buffer(f"The {self.full_name} contains: {contain_str}")
 				return 
 
-#		def obj_cond_disp(self, active_gs):
+#		def cond_disp(self, active_gs):
 #				""" Displays the empty condition description of the container (when approprate). This code would normally live in examine(), but since it is also called by open() it makes sense to convert it to a stand-alone method.
 #				"""
 #				if self.is_empty():
 #						active_gs.buffer(f"The {self.full_name} is empty.")
 #				return 
 
-		def obj_cond_disp(self, active_gs):
-				super(Container, self).obj_cond_disp(active_gs)
+		def cond_disp(self, active_gs):
+				super(Container, self).cond_disp(active_gs)
 				""" Displays the empty condition description of the container (when approprate). This code is also called by open().
 				"""
-				if self.is_empty():
+				if self.is_empty() and self.is_not_closed():
 						active_gs.buffer(f"The {self.full_name} is empty.")
 				return 
 
@@ -640,9 +640,9 @@ class Container(Door):
 #				super(Container, self).examine(active_gs)
 #				""" Extends Door.examine(). Displays the container condition and visible objects.
 #				"""
-#				self.obj_cond_disp(active_gs)
+#				self.cond_disp(active_gs)
 
-#				self.vis_obj_disp(active_gs)
+#				self.contain_disp(active_gs)
 
 #				if self.is_empty():
 #						active_gs.buffer(f"The {self.full_name} is empty.")
@@ -652,10 +652,10 @@ class Container(Door):
 				super(Container, self).open(active_gs)
 				""" Extends Door.open(). Upon opening a container, the player's natural question is "What's in it?". Open for containers answers this question whenever a container is opened. If the container is empty that information is displayed as well.
 				"""
-#				self.obj_cond_disp(active_gs)
+#				self.cond_disp(active_gs)
 				if self.is_empty():
 						active_gs.buffer(f"The {self.full_name} is empty.")
-				self.vis_obj_disp(active_gs)
+				self.contain_disp(active_gs)
 
 		def put(self, obj, active_gs):
 				""" Puts an Item in a Container.

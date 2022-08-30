@@ -338,12 +338,16 @@ Version 3.72 Goals
 				- DONE: update ViewOnly.examine() doc_string
 					- DONE: 5x components of examine(); Why lock down examine()? 1) Codifies presentation, 2) enables brief and verbose
 					- DONE: cons: leads to an outline-style description; harder to textify
-				- TBD: rename obj_cond_disp() => cond_disp()  [???]
-				- TBD: rename vis_obj_disp() => contain_disp()  [???]
-				- TBD: update doc_strings for obj_cond_disp() and vis_obj_disp()
-				- TBD: clean up comments in noun_class_def.py and switch_class_def.py (and update doc_strings)
-				- TBD: clean up comments in noun_class_def.py  (and update doc_strings)
+				- DONE: rename obj_cond_disp() => cond_disp()
+					- DONE: noun_class_def
+					- DONE: switch_class_def
+				- DONE: rename vis_obj_disp() => contain_disp()
+					- DONE: noun_class_def
+					- DONE: creature_class_def
+				- TBD: clean up comments in noun_class_def.py, switch_class_def.py, & creature_class_def.py
+				- TBD: update doc_strings for cond_disp() and contain_disp()
 	- TBD: move GameState scope methods to room
+	- TBD: address 'element' method => 'node1' ?
 	- TBD: refactor room next steps
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 		- is node_lst a better term?

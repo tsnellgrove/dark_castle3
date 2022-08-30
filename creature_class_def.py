@@ -153,7 +153,7 @@ class Creature(ViewOnly):
 				return 
 
 		# *** complex methods ***
-		def vis_obj_disp(self, active_gs):
+		def contain_disp(self, active_gs):
 				if not self.hand_empty():
 						active_gs.buffer(f"The {self.full_name} is holding a {self.hand_item().full_name}")
 				if not self.worn_empty():
@@ -164,7 +164,7 @@ class Creature(ViewOnly):
 
 #		def examine(self, active_gs):
 #				super(Creature, self).examine(active_gs)
-#				self.vis_obj_disp(active_gs)
+#				self.contain_disp(active_gs)
 #				return 
 
 		def show(self, obj, active_gs):
