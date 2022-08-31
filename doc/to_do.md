@@ -346,16 +346,18 @@ Version 3.72 Goals
 					- DONE: creature_class_def
 				- DONE: clean up comments in noun_class_def.py, switch_class_def.py, & creature_class_def.py
 				- DONE: update doc_strings for cond_disp() and contain_disp()
-	- TBD: move GameState scope methods to room
+	- INPROC: move GameState scope methods to Room
 		- IDEA: scope method => room.vis_contain_lst = self + doors + Legacy + self.feature_lst + for obj in floor_lst: extend(obj.vis_contain_lst)
 		- IDEA: post Burt to Creature move => if statement in Creature.vis_contain_lst to include self.bkpk_lst & additional node depth
 		- DONE: rename vis_lst() => vis_contain_lst()
 			- DONE: noun_class_def
 			- DONE: creature_class_def
 			- DONE: gs_class_def
-		- TBD: create room.vis_contain_lst()
-		- TBD: address 'element' method => 'node1'
-			- IDEA: do I need this? Instead of room_element_lst , how about just using room.floor_lst ??
+		- DONE: create room.vis_contain_lst()
+		- TBD: test room.vis_contain_lst()
+		- TBD: redirect scope calls to room.vis_contain_lst()
+		- TBD: elim room_element_lst()
+	- TBD: move GameState mach_scope method to Room
 	- TBD: refactor room next steps
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 		- is node_lst a better term?

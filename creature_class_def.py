@@ -127,9 +127,6 @@ class Creature(ViewOnly):
 		def is_creature(self):
 				return True
 
-		def vis_contain_lst(self):
-				return self.hand_lst + self.worn_lst + self.feature_lst
-
 		def all_lst(self):
 				return self.hand_lst + self.worn_lst + self.feature_lst + self.bkpk_lst + self.invis_lst 
 
@@ -153,6 +150,9 @@ class Creature(ViewOnly):
 				return 
 
 		# *** complex methods ***
+		def vis_contain_lst(self, active_gs):
+				return self.hand_lst + self.worn_lst + self.feature_lst
+
 		def contain_disp(self, active_gs):
 				""" Displays a description of the visible items held by the obj. Used in examine().
 				"""

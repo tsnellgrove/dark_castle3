@@ -159,7 +159,7 @@ class ViewOnly(Writing):
 		def is_writing(self):
 				return False
 
-		def vis_contain_lst(self):
+		def vis_contain_lst(self, active_gs):
 				return []
 
 		def chk_contain_item(self, item):
@@ -253,6 +253,29 @@ class Room(ViewOnly):
 				return f"*** {self.full_name} ***"
 
 		# *** complex object methods ***
+		def vis_contain_lst(self, active_gs):
+				legacy_node1_lst = active_gs.get_hand_lst() + active_gs.get_backpack_lst() + active_gs.get_worn_lst() 
+				legacy_contain_lst = legacy_node1_lst
+				for obj in legacy_node1_lst:
+						legacy_contain_lst += obj.vis_contain_lst(active_gs)
+				legacy_contain_lst += active_gs.get_static_obj('universal')
+#				hand_lst = active_gs.get_hand_lst()
+#				backpack_lst = active_gs.get_backpack_lst()
+#				worn_lst = active_gs.get_worn_lst()
+				node1_only_lst =  + self + active_gs.map.get_door_lst(active_gs.get_room()) + self.feature_lst
+#				universal_lst = active_gs.get_static_obj('universal')
+#				room_obj = self.get_room()
+#				scope_lst = (hand_lst + backpack_lst + worn_lst + universal_lst + room_obj.vis_element_lst() + self.map.get_door_lst(self.get_room()))
+				floor_contain_lst = self.floor_lst
+				for obj in self.floor_lst:
+						floor_contain_lst += obj.vis_contain_lst(active_gs)
+#				for obj in scope_lst:
+#						if obj.is_container() or obj.is_creature():
+#								scope_lst.extend(obj.vis_contain_lst(active_gs))
+#				scope_lst.append(room_obj)
+#				return scope_lst
+				return legacy_contain_lst + node1_only_lst + floor_contain_lst
+
 		def chk_contain_item(self, item, active_gs):
 				if item in self.floor_lst:
 						return True
@@ -355,7 +378,7 @@ class Item(ViewOnly):
 						active_gs.buffer("You're already holding the " + self.full_name)
 						return 
 				for obj in active_gs.get_room().floor_lst:
-						if obj.is_creature() and self in obj.vis_contain_lst():
+						if obj.is_creature() and self in obj.vis_contain_lst(active_gs):
 								active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 								return 
 				active_gs.get_room().remove_item(self, active_gs)
@@ -571,7 +594,7 @@ class Container(Door):
 		def	is_container(self):
 				return True
 
-		def vis_contain_lst(self):
+		def vis_contain_lst(self, active_gs):
 				if self.is_not_closed():
 						return self.contain_lst
 				return []
