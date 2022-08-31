@@ -262,7 +262,7 @@ class Room(ViewOnly):
 #				hand_lst = active_gs.get_hand_lst()
 #				backpack_lst = active_gs.get_backpack_lst()
 #				worn_lst = active_gs.get_worn_lst()
-				node1_only_lst =  + self + active_gs.map.get_door_lst(active_gs.get_room()) + self.feature_lst
+				node1_only_lst = [self] + active_gs.map.get_door_lst(self) + self.feature_lst
 #				universal_lst = active_gs.get_static_obj('universal')
 #				room_obj = self.get_room()
 #				scope_lst = (hand_lst + backpack_lst + worn_lst + universal_lst + room_obj.vis_element_lst() + self.map.get_door_lst(self.get_room()))
@@ -323,6 +323,8 @@ class Room(ViewOnly):
 						active_gs.buffer("The following items are here: " + room_item_str)
 				for obj in room_item_obj_lst:
 						obj.contain_disp(active_gs)
+				active_gs.buffer(f"Obj in GameState scope = {active_gs.scope_lst()}") # test code
+				active_gs.buffer(f"Obj in Room scope = {self.vis_contain_lst(active_gs)}") # test code
 				return 
 
 		def go(self, dir, active_gs):

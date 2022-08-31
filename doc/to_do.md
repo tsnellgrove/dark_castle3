@@ -354,7 +354,7 @@ Version 3.72 Goals
 			- DONE: creature_class_def
 			- DONE: gs_class_def
 		- DONE: create room.vis_contain_lst()
-		- TBD: test room.vis_contain_lst()
+		- INPROC: test room.vis_contain_lst()
 		- TBD: redirect scope calls to room.vis_contain_lst()
 		- TBD: elim room_element_lst()
 	- TBD: move GameState mach_scope method to Room
