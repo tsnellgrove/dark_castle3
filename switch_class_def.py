@@ -59,9 +59,7 @@ class LeverSwitch(ViewOnly, SwitchMixIn):
 				active_gs.buffer("Pulled.")
 
 		def cond_disp(self, active_gs):
+				""" Displays object-specific conditions. Used in examine().
+				"""
 				active_gs.buffer(f"The {self.full_name} is {self.switch_state}.")
 
-#		def examine(self, active_gs):
-#				super(LeverSwitch, self).examine(active_gs)
-#				lever_string = "The " + self.full_name + " is " + self.switch_state + "."
-#				active_gs.buffer(lever_string)

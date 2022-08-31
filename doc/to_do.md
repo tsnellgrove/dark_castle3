@@ -309,7 +309,7 @@ Version 3.72 Goals
 		- DONE: invis_obj_lst to invis_lst
 			- DONE: noun_class_def
 			- DONE: gs_class_def
-	- INPROC: refactor examine
+	- DONE: refactor examine
 		- DONE: exmine titles for rooms as separate buffer line (enables brief / verbose and also diff dict)
 			- DONE: if obj.get_title_str() not None: gs.buffer(if obj.get_title_str()) ; for Room => def get_title_str(self): return self.full_name
 		- DONE: should be able to get basic descriptions from Container and Creature classes
@@ -334,7 +334,7 @@ Version 3.72 Goals
 				- DONE: Room
 				- DONE: Container
 				- DONE: Creature
-			- INPROC: Finalize change
+			- DONE: Finalize change
 				- DONE: update ViewOnly.examine() doc_string
 					- DONE: 5x components of examine(); Why lock down examine()? 1) Codifies presentation, 2) enables brief and verbose
 					- DONE: cons: leads to an outline-style description; harder to textify
@@ -344,8 +344,8 @@ Version 3.72 Goals
 				- DONE: rename vis_obj_disp() => contain_disp()
 					- DONE: noun_class_def
 					- DONE: creature_class_def
-				- TBD: clean up comments in noun_class_def.py, switch_class_def.py, & creature_class_def.py
-				- TBD: update doc_strings for cond_disp() and contain_disp()
+				- DONE: clean up comments in noun_class_def.py, switch_class_def.py, & creature_class_def.py
+				- DONE: update doc_strings for cond_disp() and contain_disp()
 	- TBD: move GameState scope methods to room
 	- TBD: address 'element' method => 'node1' ?
 	- TBD: refactor room next steps

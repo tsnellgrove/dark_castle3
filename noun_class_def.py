@@ -158,10 +158,6 @@ class ViewOnly(Writing):
 		# *** simple obj methods ***
 		def is_writing(self):
 				return False
-		
-#		def contain_disp(self, active_gs):
-#				pass
-#				return
 
 		def vis_lst(self):
 				return []
@@ -284,9 +280,13 @@ class Room(ViewOnly):
 				return 
 
 		def cond_disp(self, active_gs):
+				""" Displays object-specific conditions. Used in examine().
+				"""
 				active_gs.buffer(active_gs.map.get_door_str(self))
 
 		def contain_disp(self, active_gs):
+				""" Displays a description of the visible items held by the obj. Used in examine().
+				"""
 				room_item_obj_lst = []
 				for obj in self.floor_lst:
 						if not obj.is_item():
@@ -301,25 +301,6 @@ class Room(ViewOnly):
 				for obj in room_item_obj_lst:
 						obj.contain_disp(active_gs)
 				return 
-
-#		def examine(self, active_gs):
-#				super(Room, self).examine(active_gs)
-
-#				self.cond_disp(active_gs)
-
-#				room_item_obj_lst = []
-#				for obj in self.floor_lst:
-#						if not obj.is_item():
-#								active_gs.buffer("There is a " + obj.full_name + " here.")
-#								obj.contain_disp(active_gs)
-#						else:
-#								room_item_obj_lst.append(obj)
-#				if room_item_obj_lst:
-#						room_txt_lst = [obj.full_name for obj in room_item_obj_lst]
-#						room_item_str = ", ".join(room_txt_lst)
-#						active_gs.buffer("The following items are here: " + room_item_str)
-#				for obj in room_item_obj_lst:
-#						obj.contain_disp(active_gs)
 
 		def go(self, dir, active_gs):
 				if not active_gs.map.chk_valid_dir(self, dir):
@@ -450,7 +431,7 @@ class Door(ViewOnly):
 
 		# *** complex obj methods ***
 		def cond_disp(self, active_gs):
-				""" Door-specific display conditions for examine().
+				""" Displays object-specific conditions. Used in examine().
 				"""
 				if self.is_open is None:
 						active_gs.buffer(f"The {self.full_name} has no closure. It always remains open.")
@@ -613,7 +594,7 @@ class Container(Door):
 
 		# *** complex obj methods ***
 		def contain_disp(self, active_gs):
-				""" Displays a description of the items in the container. Extracting this from method allows Room.examine() to resuse it.
+				""" Displays a description of the visible items held by the obj. Used in examine().
 				"""
 				if self.is_not_closed() and not self.is_empty():
 						contain_txt_lst = [obj.full_name for obj in self.contain_lst]
@@ -621,38 +602,18 @@ class Container(Door):
 						active_gs.buffer(f"The {self.full_name} contains: {contain_str}")
 				return 
 
-#		def cond_disp(self, active_gs):
-#				""" Displays the empty condition description of the container (when approprate). This code would normally live in examine(), but since it is also called by open() it makes sense to convert it to a stand-alone method.
-#				"""
-#				if self.is_empty():
-#						active_gs.buffer(f"The {self.full_name} is empty.")
-#				return 
-
 		def cond_disp(self, active_gs):
 				super(Container, self).cond_disp(active_gs)
-				""" Displays the empty condition description of the container (when approprate). This code is also called by open().
+				""" Displays object-specific conditions. Used in examine().
 				"""
 				if self.is_empty() and self.is_not_closed():
 						active_gs.buffer(f"The {self.full_name} is empty.")
-				return 
-
-#		def examine(self, active_gs):
-#				super(Container, self).examine(active_gs)
-#				""" Extends Door.examine(). Displays the container condition and visible objects.
-#				"""
-#				self.cond_disp(active_gs)
-
-#				self.contain_disp(active_gs)
-
-#				if self.is_empty():
-#						active_gs.buffer(f"The {self.full_name} is empty.")
 				return 
 
 		def open(self, active_gs):
 				super(Container, self).open(active_gs)
 				""" Extends Door.open(). Upon opening a container, the player's natural question is "What's in it?". Open for containers answers this question whenever a container is opened. If the container is empty that information is displayed as well.
 				"""
-#				self.cond_disp(active_gs)
 				if self.is_empty():
 						active_gs.buffer(f"The {self.full_name} is empty.")
 				self.contain_disp(active_gs)

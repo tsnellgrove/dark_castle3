@@ -154,6 +154,8 @@ class Creature(ViewOnly):
 
 		# *** complex methods ***
 		def contain_disp(self, active_gs):
+				""" Displays a description of the visible items held by the obj. Used in examine().
+				"""
 				if not self.hand_empty():
 						active_gs.buffer(f"The {self.full_name} is holding a {self.hand_item().full_name}")
 				if not self.worn_empty():
@@ -161,11 +163,6 @@ class Creature(ViewOnly):
 						worn_str = ", ".join(worn_txt_lst)
 						active_gs.buffer(f"The {self.full_name} is wearing: {worn_str}")
 				return 
-
-#		def examine(self, active_gs):
-#				super(Creature, self).examine(active_gs)
-#				self.contain_disp(active_gs)
-#				return 
 
 		def show(self, obj, active_gs):
 				""" Show item to creature.
