@@ -127,7 +127,7 @@ class Creature(ViewOnly):
 		def is_creature(self):
 				return True
 
-		def vis_lst(self):
+		def vis_contain_lst(self):
 				return self.hand_lst + self.worn_lst + self.feature_lst
 
 		def all_lst(self):

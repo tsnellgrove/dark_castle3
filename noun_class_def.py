@@ -159,7 +159,7 @@ class ViewOnly(Writing):
 		def is_writing(self):
 				return False
 
-		def vis_lst(self):
+		def vis_contain_lst(self):
 				return []
 
 		def chk_contain_item(self, item):
@@ -355,7 +355,7 @@ class Item(ViewOnly):
 						active_gs.buffer("You're already holding the " + self.full_name)
 						return 
 				for obj in active_gs.get_room().floor_lst:
-						if obj.is_creature() and self in obj.vis_lst():
+						if obj.is_creature() and self in obj.vis_contain_lst():
 								active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 								return 
 				active_gs.get_room().remove_item(self, active_gs)
@@ -571,7 +571,7 @@ class Container(Door):
 		def	is_container(self):
 				return True
 
-		def vis_lst(self):
+		def vis_contain_lst(self):
 				if self.is_not_closed():
 						return self.contain_lst
 				return []
