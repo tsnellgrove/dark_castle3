@@ -442,19 +442,6 @@ class Door(ViewOnly):
 				active_gs.buffer(f"The {self.full_name} is open.") # is_open == True
 				return 
 
-#		def examine(self, active_gs):
-#				super(Door, self).examine(active_gs)
-#				""" Door-specific examine() responses to be provided in addition to the base examine() method in ViewOnly  
-#				"""
-#				if self.is_open is None:
-#						active_gs.buffer(f"The {self.full_name} has no closure. It always remains open.")
-#						return				
-#				if self.is_open == False:
-#						active_gs.buffer(f"The {self.full_name} is closed.")
-#						return
-#				active_gs.buffer(f"The {self.full_name} is open.") # is_open == True
-#				return
-
 		def unlock(self, active_gs):
 				""" Unlocks a Door object.
 				"""

@@ -347,7 +347,8 @@ Version 3.72 Goals
 				- DONE: clean up comments in noun_class_def.py, switch_class_def.py, & creature_class_def.py
 				- DONE: update doc_strings for cond_disp() and contain_disp()
 	- TBD: move GameState scope methods to room
-	- TBD: address 'element' method => 'node1' ?
+		- TBD: vis_lst => vis_contain_lst() ; Or maybe better si vis_node1_lst ???
+		- TBD: address 'element' method => 'node1' ?
 	- TBD: refactor room next steps
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 		- is node_lst a better term?
