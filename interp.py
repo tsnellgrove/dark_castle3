@@ -76,7 +76,6 @@ def help(active_gs, option):
 
 ### root_word_count - determines if user command contains root words
 def root_word_count(active_gs, word2_txt):
-#		scope_lst = active_gs.scope_lst()
 		scope_lst = active_gs.get_room().vis_contain_lst(active_gs)
 		root_count = 0
 		obj_name = ""

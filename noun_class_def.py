@@ -246,9 +246,6 @@ class Room(ViewOnly):
 				self._floor_lst.remove(item)
 
 		# *** simple object methods ***
-#		def vis_element_lst(self):
-#				return self.floor_lst + self.feature_lst
-
 		def get_title_str(self):
 				return f"*** {self.full_name} ***"
 
@@ -256,31 +253,14 @@ class Room(ViewOnly):
 		def vis_contain_lst(self, active_gs):
 				return_lst = []
 				legacy_node1_lst = active_gs.get_hand_lst() + active_gs.get_backpack_lst() + active_gs.get_worn_lst() 
-##				legacy_contain_lst = legacy_node1_lst
 				for obj in legacy_node1_lst:
-##						legacy_contain_lst += obj.vis_contain_lst(active_gs)
 						return_lst += obj.vis_contain_lst(active_gs)
-##				legacy_contain_lst += active_gs.get_static_obj('universal')
 				return_lst = return_lst + legacy_node1_lst + active_gs.get_static_obj('universal')
-#				hand_lst = active_gs.get_hand_lst()
-#				backpack_lst = active_gs.get_backpack_lst()
-#				worn_lst = active_gs.get_worn_lst()
 				node1_only_lst = [self] + active_gs.map.get_door_lst(self) + self.feature_lst
 				return_lst = return_lst + node1_only_lst
-#				universal_lst = active_gs.get_static_obj('universal')
-#				room_obj = self.get_room()
-#				scope_lst = (hand_lst + backpack_lst + worn_lst + universal_lst + room_obj.vis_element_lst() + self.map.get_door_lst(self.get_room()))
-##				floor_contain_lst = self.floor_lst
 				for obj in self.floor_lst:
-#						floor_contain_lst += obj.vis_contain_lst(active_gs)
 						return_lst += obj.vis_contain_lst(active_gs)
 				return_lst = return_lst + self.floor_lst
-#				for obj in scope_lst:
-#						if obj.is_container() or obj.is_creature():
-#								scope_lst.extend(obj.vis_contain_lst(active_gs))
-#				scope_lst.append(room_obj)
-#				return scope_lst
-##				return legacy_contain_lst + node1_only_lst + floor_contain_lst
 				return return_lst
 
 		def chk_contain_item(self, item, active_gs):
@@ -330,8 +310,6 @@ class Room(ViewOnly):
 						active_gs.buffer("The following items are here: " + room_item_str)
 				for obj in room_item_obj_lst:
 						obj.contain_disp(active_gs)
-#				active_gs.buffer(f"Obj in GameState scope = {active_gs.scope_lst()}") # test code
-#				active_gs.buffer(f"Obj in Room scope = {self.vis_contain_lst(active_gs)}") # test code
 				return 
 
 		def go(self, dir, active_gs):
