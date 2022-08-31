@@ -354,9 +354,13 @@ Version 3.72 Goals
 			- DONE: creature_class_def
 			- DONE: gs_class_def
 		- DONE: create room.vis_contain_lst()
-		- INPROC: test room.vis_contain_lst()
-		- TBD: redirect scope calls to room.vis_contain_lst()
-		- TBD: elim room_element_lst()
+		- DONE: test room.vis_contain_lst()
+			- INPROC: interp
+			- INPROC: gs_class_def
+			- INPROC: noun_class_def
+		- DONE: redirect scope calls to room.vis_contain_lst()
+		- DONE: elim room_element_lst()
+		- TBD: comment clean-up
 	- TBD: move GameState mach_scope method to Room
 	- TBD: refactor room next steps
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)

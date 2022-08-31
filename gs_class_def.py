@@ -204,31 +204,34 @@ class GameState(object):
 				self.buffer("Special garments you are wearing: " + worn_str)
 
 		### scope lists ###
-		def scope_lst(self):
-				hand_lst = self.get_hand_lst()
-				backpack_lst = self.get_backpack_lst()
-				worn_lst = self.get_worn_lst()
-				universal_lst = self.get_static_obj('universal')
-				room_obj = self.get_room()
-				scope_lst = (hand_lst + backpack_lst + worn_lst + universal_lst + room_obj.vis_element_lst() + self.map.get_door_lst(self.get_room()))
-				for obj in scope_lst:
-						if obj.is_container() or obj.is_creature():
-								scope_lst.extend(obj.vis_contain_lst(self))
-				scope_lst.append(room_obj)
-				return scope_lst
+#		def scope_lst(self):
+#				hand_lst = self.get_hand_lst()
+#				backpack_lst = self.get_backpack_lst()
+#				worn_lst = self.get_worn_lst()
+#				universal_lst = self.get_static_obj('universal')
+#				room_obj = self.get_room()
+#				scope_lst = (hand_lst + backpack_lst + worn_lst + universal_lst + room_obj.vis_element_lst() + self.map.get_door_lst(self.get_room()))
+#				for obj in scope_lst:
+#						if obj.is_container() or obj.is_creature():
+#								scope_lst.extend(obj.vis_contain_lst(self))
+#				scope_lst.append(room_obj)
+#				return scope_lst
 
 		def chk_wrt_is_vis(self, wrt_obj):
-				scope_lst = self.scope_lst()
+#				scope_lst = self.scope_lst()
+				scope_lst = self.get_room().vis_contain_lst(self)
 				return any(obj.writing == wrt_obj for obj in scope_lst)
 
 		def scope_check(self, obj):
-				scope_lst = self.scope_lst()
+#				scope_lst = self.scope_lst()
+				scope_lst = self.get_room().vis_contain_lst(self)
 				return obj in scope_lst
 
 		def room_mach_lst(self):
 				room_mach_lst = []
 				room_obj = self.get_room()
-				scope_lst = self.scope_lst() + room_obj.invis_lst
+#				scope_lst = self.scope_lst() + room_obj.invis_lst
+				scope_lst = self.get_room().vis_contain_lst(self) + room_obj.invis_lst
 				for obj in scope_lst:
 #						if obj.is_mach(): # portcullis auto_open issue ???
 						if hasattr(obj, 'trigger_type'):
