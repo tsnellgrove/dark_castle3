@@ -361,8 +361,14 @@ Version 3.72 Goals
 		- DONE: redirect scope calls to room.vis_contain_lst()
 		- DONE: elim room_element_lst()
 		- DONE: comment clean-up
-	- TBD: move GameState chk_wrt_is_vis to Room
+	- INPROC: move GameState chk_wrt_is_vis() to Room
+		- DONE: crate chk_wrt_is_vis() in Room
+		- DONE: migrate refs to Room
+			- DONE: validate()
+			- DONE: noun_class_def()
+		- TBD: clean up comments
 	- TBD: move GameState scope_check to Room
+		- TBD: in Room, rename to chk_is_vis()
 	- TBD: move GameState mach_obj_lst method to Room
 	- TBD: refactor room next steps
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)

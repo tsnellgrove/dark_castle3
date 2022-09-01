@@ -130,7 +130,7 @@ class Writing(Invisible):
 				if not self.is_writing() and active_gs.scope_check(self):
 						active_gs.buffer(f"You can't read the {self.full_name}. Try using 'examine' instead.")
 						return 
-				if not active_gs.chk_wrt_is_vis(self):
+				if not active_gs.get_room().chk_wrt_is_vis(self, active_gs):
 						active_gs.buffer(f"You can't see {self.full_name} written on anything here.")
 						return 
 				active_gs.buffer(self.get_descript_str(active_gs)) # is_writing() and chk_wrt_is_vis() 
@@ -262,6 +262,9 @@ class Room(ViewOnly):
 						return_lst += obj.vis_contain_lst(active_gs)
 				return_lst = return_lst + self.floor_lst
 				return return_lst
+
+		def chk_wrt_is_vis(self, wrt_obj, active_gs):
+				return any(obj.writing == wrt_obj for obj in self.vis_contain_lst(active_gs))
 
 		def chk_contain_item(self, item, active_gs):
 				if item in self.floor_lst:
