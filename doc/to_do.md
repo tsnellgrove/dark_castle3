@@ -361,12 +361,12 @@ Version 3.72 Goals
 		- DONE: redirect scope calls to room.vis_contain_lst()
 		- DONE: elim room_element_lst()
 		- DONE: comment clean-up
-	- INPROC: move GameState chk_wrt_is_vis() to Room
+	- DONE: move GameState chk_wrt_is_vis() to Room
 		- DONE: crate chk_wrt_is_vis() in Room
 		- DONE: migrate refs to Room
 			- DONE: validate()
 			- DONE: noun_class_def()
-		- TBD: clean up comments
+		- DONE: clean up comments
 	- TBD: move GameState scope_check to Room
 		- TBD: in Room, rename to chk_is_vis()
 	- TBD: move GameState mach_obj_lst method to Room

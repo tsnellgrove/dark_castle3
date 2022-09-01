@@ -124,13 +124,14 @@ class Writing(Invisible):
 		def read(self, active_gs):
 				""" Reads text found on an object. Read is the first player-accessible method. For the reasons mentioned above in Writing, writing objects are treated a bit differently than other 'nouns' and therefore the error checking in read() is a bit different as well (writing has it's own unique scope check method, chk_wrt_is_vis). Note that read is uniquely excluded from the 2word generic command failure routines in validate(). 
 				"""
+				room = active_gs.get_room()
 				if not self.is_writing() and not active_gs.scope_check(self):
 						active_gs.buffer(f"You can't see a {self.full_name} here.")
 						return 
 				if not self.is_writing() and active_gs.scope_check(self):
 						active_gs.buffer(f"You can't read the {self.full_name}. Try using 'examine' instead.")
 						return 
-				if not active_gs.get_room().chk_wrt_is_vis(self, active_gs):
+				if not room.chk_wrt_is_vis(self, active_gs):
 						active_gs.buffer(f"You can't see {self.full_name} written on anything here.")
 						return 
 				active_gs.buffer(self.get_descript_str(active_gs)) # is_writing() and chk_wrt_is_vis() 
