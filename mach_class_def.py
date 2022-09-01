@@ -293,7 +293,8 @@ class Timer(Invisible):
 				timer_key_constant = self.name + "_1"
 				timer_default = "Beep!"
 
-				if active_gs.scope_check(self.alert_anchor):
+#				if active_gs.scope_check(self.alert_anchor):
+				if active_gs.get_room().chk_is_vis(self.alert_anchor, active_gs):
 						if self.message_type == 'variable':
 								try:
 										active_gs.buffer(descript_dict[timer_key])

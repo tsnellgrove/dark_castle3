@@ -367,8 +367,14 @@ Version 3.72 Goals
 			- DONE: validate()
 			- DONE: noun_class_def()
 		- DONE: clean up comments
-	- TBD: move GameState scope_check to Room
-		- TBD: in Room, rename to chk_is_vis()
+	- INPROC: move GameState scope_check() to Room
+		- DONE: in Room, rename to chk_is_vis()
+		- DONE: migrate refs to Room
+			- DONE: validate
+			- DONE: mach_class_def
+			- DONE: noun_class_def
+			- DONE: gs_class_def
+		- DONE: clean up comments
 	- TBD: move GameState mach_obj_lst method to Room
 	- TBD: refactor room next steps
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
