@@ -204,10 +204,6 @@ class GameState(object):
 				self.buffer("Special garments you are wearing: " + worn_str)
 
 		### scope lists ###
-#		def scope_check(self, obj):
-#				scope_lst = self.get_room().vis_contain_lst(self)
-#				return obj in scope_lst
-
 		def room_mach_lst(self):
 				room_mach_lst = []
 				room_obj = self.get_room()

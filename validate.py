@@ -59,19 +59,16 @@ def validate(active_gs, case, word_lst):
 				room = active_gs.get_room()
 
 				# *** custom method mis-matches ***
-#				if (word1 == 'examine') and (active_gs.get_room().chk_wrt_is_vis(word2_obj, active_gs)) == True:
 				if (word1 == 'examine') and (room.chk_wrt_is_vis(word2_obj, active_gs)) == True:
 						output = "You can't examine the " + word2_obj.full_name + ". Try using 'read' instead."
 						active_gs.buffer(output)
 						return False
 
-#				if (word1 == 'take') and (active_gs.scope_check(word2_obj)) and (word2_obj.is_liquid()):
 				if (word1 == 'take') and (room.chk_is_vis(word2_obj, active_gs)) and (word2_obj.is_liquid()):
 						active_gs.buffer("You can't 'take' a liquid. Try 'drink' instead.")
 						return False
 
 				# *** generic command failure ***
-#				if word1 != 'read' and active_gs.scope_check(word2_obj) == False:
 				if word1 != 'read' and room.chk_is_vis(word2_obj, active_gs) == False:
 						active_gs.buffer("You can't see a " + word2_obj.full_name + " here.")
 						return False
@@ -89,11 +86,9 @@ def validate(active_gs, case, word_lst):
 				room = active_gs.get_room()
 
 				# *** generic command failures ***
-#				if active_gs.scope_check(noun_obj) == False:
 				if room.chk_is_vis(noun_obj, active_gs) == False:
 						active_gs.buffer("You can't see a " + noun_obj.full_name + " here.")
 						return False
-#				elif active_gs.scope_check(dirobj_obj) == False:
 				elif room.chk_is_vis(dirobj_obj, active_gs) == False:
 						active_gs.buffer("You can't see a " + dirobj_obj.full_name + " here.")
 						return False
