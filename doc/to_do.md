@@ -375,7 +375,14 @@ Version 3.72 Goals
 			- DONE: noun_class_def
 			- DONE: gs_class_def
 		- DONE: clean up comments
-	- TBD: move GameState mach_obj_lst method to Room
+	- TBD: investigate room_mach_lst() vs. mach_obj_lst() - do I really need them both ???
+	- TBD: move GameState mach_obj_lst() method to Room
+		- TBD: rename to get_mach_lst() and create in Room
+		- TBD: refactor as needed
+		- TBD: migrate refs to Room
+			- TBD: 
+		- TBD: clean up comments
+	- TBD: move remaining mach_list scope methods to Room
 	- TBD: rename vis_contain_lst() to get_vis_contain_lst() ???
 	- TBD: refactor room next steps
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
@@ -392,6 +399,18 @@ Version 3.72 Goals
 		- could also run a pre-start check on container & creature to throw errors on illegal contents
 		- need to document (to self!) consistent approach to what is visible when Burt looks, examines, or inventories
 	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
+	- TBD: move room to dedicated module ???
+
+##########################
+### VERSION 3.73 START ###
+##########################
+
+Version 3.73 Goals
+- finish noun refactor
+- create a class for descriptions
+- create a Surface class
+- rename active_gs => gs
+
 - INPROC: class by class, reduce from double-tab to single tab
 	- DONE: web_main.py
 	- DONE: map_class_def.py
@@ -432,13 +451,15 @@ Version 3.72 Goals
 		- 3) try static_dic except f"the {obj.full_name} is simple indescribable"
 	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
 		- CANCEL: test w/ descript_dict => start with version 
+- TBD: rename active_gs to gs
 
 ##########################
-### VERSION 3.73 START ###
+### VERSION 3.74 START ###
 ##########################
 
-Version 3.73 Goals
+Version 3.74 Goals
 - re-work app_main() flow with validate() module
+- refactor app_main() modules
 
 - related thinking:
 	- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
@@ -473,13 +494,14 @@ Version 3.73 Goals
 		- realistically, nearly all descriptions will be from burt's perspective
 		- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
 		- this should be enabled by mode = 'exe_creature'
+- TBD: refactor app_main() modules
 
 
 ##########################
-### VERSION 3.74 START ###
+### VERSION 3.75 START ###
 ##########################
 
-Version 3.74 Goals
+Version 3.75 Goals
 - refactor Burt as a creature object
 - refactor coding as I go
 
@@ -566,10 +588,10 @@ Refactor burt as a Creature class object
 	- TBD: Creature
 
 ##########################
-### VERSION 3.75 START ###
+### VERSION 3.76 START ###
 ##########################
 
-Version 3.75 Goals
+Version 3.76 Goals
 - refactor remaining app_main chain
 - modularize remaining GameState class and declarations (???)
 
@@ -598,10 +620,10 @@ Version 3.75 Goals
 
 
 ##########################
-### VERSION 3.76 START ###
+### VERSION 3.77 START ###
 ##########################
 
-Version 3.76 Goals
+Version 3.77 Goals
 - Clean up machine, warning, and timer coding
 - Create / update program documentation
 
