@@ -375,11 +375,20 @@ Version 3.72 Goals
 			- DONE: noun_class_def
 			- DONE: gs_class_def
 		- DONE: clean up comments
-	- TBD: investigate room_mach_lst() vs. mach_obj_lst() - do I really need them both ???
-		- TBD: room_mach_lst() only in gs_class_def() => link to mach_obj_lst() ?
+	- DONE: investigate all 3 mach scope methods in GameState
+		- DONE: it appears that def auto_in_alert_scope() is never called
+		- DONE: it appears that only mach_obj_lst() and auto_in_alert_scope() ever call room_mach_lst()
+	- INPROC: simplify mach scope methods in GameState
+		- DONE: merge room_mach_lst() => mach_obj_lst()
+		- DONE: elim auto_in_alert_scope()
+		- DONE: testing
+		- TBD: clean up comments
 	- TBD: move GameState mach_obj_lst() method to Room
-		- TBD: rename to get_mach_lst() and create in Room
+		- TBD: rename mach_obj_lst() to get_mach_lst() and create in Room
 		- TBD: refactor as needed
+			- TBD: troubleshoot use of is_mach()
+			- TBD: prefer use of mach_lst.append(Creature.invis_lst) over Creature all_lst() => mach_lst()
+			- TBD: sort out / elim Creature all_lst() and mach_lst()
 		- TBD: migrate refs to Room
 			- TBD: 
 		- TBD: clean up comments

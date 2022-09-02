@@ -204,25 +204,41 @@ class GameState(object):
 				self.buffer("Special garments you are wearing: " + worn_str)
 
 		### scope lists ###
-		def room_mach_lst(self):
-				room_mach_lst = []
-				room_obj = self.get_room()
-				scope_lst = self.get_room().vis_contain_lst(self) + room_obj.invis_lst
-				for obj in scope_lst:
-#						if obj.is_mach(): # portcullis auto_open issue ???
-						if hasattr(obj, 'trigger_type'):
-								room_mach_lst.append(obj)
-						if obj.is_creature():
-								room_mach_lst.extend(obj.mach_lst())
-				return room_mach_lst
+
 
 		def mach_obj_lst(self):
-				mach_obj_lst = self.room_mach_lst()
-				mach_obj_lst.extend(self.universal_mach_lst)
-				return mach_obj_lst
+				mach_lst = []
+				room_obj = self.get_room()
+				scope_lst = room_obj.vis_contain_lst(self) + room_obj.invis_lst
+				for obj in scope_lst:
+##						if obj.is_mach(): # portcullis auto_open issue ???
+						if hasattr(obj, 'trigger_type'):
+								mach_lst.append(obj)
+						if obj.is_creature():
+								mach_lst.extend(obj.mach_lst())
+				mach_lst.extend(self.universal_mach_lst)
+				return mach_lst
 
-		def auto_in_alert_scope(self, obj):
-				return obj in self.room_mach_lst()
+#		def room_mach_lst(self):
+#				room_mach_lst = []
+#				room_obj = self.get_room()
+#				scope_lst = self.get_room().vis_contain_lst(self) + room_obj.invis_lst
+#				for obj in scope_lst:
+##						if obj.is_mach(): # portcullis auto_open issue ???
+#						if hasattr(obj, 'trigger_type'):
+#								room_mach_lst.append(obj)
+#						if obj.is_creature():
+#								room_mach_lst.extend(obj.mach_lst())
+#				return room_mach_lst
+
+#		def mach_obj_lst(self):
+#				mach_obj_lst = self.room_mach_lst()
+#				mach_obj_lst.extend(self.universal_mach_lst)
+#				return mach_obj_lst
+
+#		def auto_in_alert_scope(self, obj):
+##				return obj in self.room_mach_lst()
+#				return obj in self.mach_obj_lst()
 
 		### obj representation (for printing) ###
 		def __repr__(self):
