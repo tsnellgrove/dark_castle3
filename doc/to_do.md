@@ -703,18 +703,28 @@ Version 3.77 Goals
 - other than providing description text, timers are dumb - they just count -  a machine takes all actions
 
 
-*** SOMEDAY MAYBE IDEAS ***
+*** REFACTOR IDEAS TO BE ORGANIZED ***
 
 first: scan puzzle ideas and decide on next puzzles; plan for required features
 
 interpreter ideas:
+- can I store variables in descript_dict strings? (in f-string format)
+- can I return method errors based on verb method (e.g. "Burt, what kind of person would try to attack a Throne?")
+- should synonyms be an obj attribute??
 - create a hint sub-system
 - more abreviations: 'g' = 'again', 'z' = 'wait'
 - TBD: no swearing in Dark Castle (with warning or else end of game)
 	- cursing => end of game (requires warning_mach and usniversal scope)
 - fix progromatic usage of "a" vs "an" (e.g. "There is a Iron Portcullis to the north")
 
-naming conventions:
+- TBD: Debug mode:
+	- TBD: Need a debug mode that eliminates 'try' from 2word and prep commands
+	- TBD: need a secret code to prevent regular player from falling into debug: 'debug poke53281,0'
+- TBD: verbose / brief
+
+- Unit Testing (link: https://youtu.be/6tNS--WetLI ) ???
+
+naming updates:
 - TBD: re-name 'wrapper' to 'app_main'
 - TBD: update pickle names
 - TBD: out_buff => output (or possibly user_output)
@@ -733,30 +743,14 @@ mechanic features:
 	- for active_gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
 	- eliminate 'hasattrib' for containers in active_gs.scope_lst() too
 	- have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
-- TBD: for doors and containers, use None option for no lock or no lid?
-- Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
-	- why do I need active_gs.dynamic_descript_dict again?
+- DONE: for doors and containers, use None option for no lock or no lid?
+- CANCEL: Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
+	- CANCEL: why do I need active_gs.dynamic_descript_dict again?
 - investigate setters & getters for GameState class
-- is there really any need for GameState room_mach_lst() ??
+- DONE: is there really any need for GameState room_mach_lst() ??
 - TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
 - TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
 - eliminate active_gs.move_dec() ?
-- TBD: Consider having size values for items and capaicty limits on containers & backpack (should the crystal box really hold an axe?)
-	- This becomes important for 'take' capacity as well in shrinking puzzle (??)
-	- encumberance (post Burt as object?)
-	- implement carying capacity / container cappacity; Also carry restriction passages, etc..
-- fun idea - small creature - like a mouse - as an item
-- more directions
-- landscape / path changes
-- food & drink system?
-- darkness & light source system?
-	- lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
-- How to enable switches and machines to self register for universal scope
-	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
-- create vehical puzzle?
-- shiny sword glows near enemies?
-- make goblin hand contents examinable (e.g. Grimy Axe)
-- create 'jump' command with same response as Zork ('Whee!' I think?)
 
 file handling:
 - game saves (requires file clean up?)
@@ -786,12 +780,7 @@ pipeline & testing:
 Version 3.8x Goals
 - Introduce non-functional requirement code (e.g. saves and pkl clean-up)
 - Integrate with web template
-- Unit Testing (link: https://youtu.be/6tNS--WetLI ) ???
-
-- TBD: Debug mode:
-	- TBD: Need a debug mode that eliminates 'try' from 2word and prep commands
-	- TBD: need a secret code to prevent regular player from falling into debug: 'debug poke53281,0'
-- TBD: verbose / brief
+- webify
 
 
 ##########################
@@ -832,6 +821,24 @@ Version 3.9x Goals
 
 *** NEW PUZZLE IDEAS ***
 
+Misc:
+- TBD: Consider having size values for items and capaicty limits on containers & backpack (should the crystal box really hold an axe?)
+	- This becomes important for 'take' capacity as well in shrinking puzzle (??)
+	- encumberance (post Burt as object?)
+	- implement carying capacity / container cappacity; Also carry restriction passages, etc..
+- fun idea - small creature - like a mouse - as an item
+- more directions
+- landscape / path changes
+- food & drink system?
+- darkness & light source system?
+	- lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
+- How to enable switches and machines to self register for universal scope
+	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
+	- IDEA: eliminate universal_scope => just add these to Burt's invis_lst
+- create vehical puzzle?
+- shiny sword glows near enemies?
+- DONE: make goblin hand contents examinable (e.g. Grimy Axe)
+- create 'jump' command with same response as Zork ('Whee!' I think?)
 
 Alter Terrain:
 - Use Map room_pair updates to alter a room dramatically after a major change
