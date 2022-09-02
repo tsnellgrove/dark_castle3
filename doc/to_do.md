@@ -376,6 +376,7 @@ Version 3.72 Goals
 			- DONE: gs_class_def
 		- DONE: clean up comments
 	- TBD: investigate room_mach_lst() vs. mach_obj_lst() - do I really need them both ???
+		- TBD: room_mach_lst() only in gs_class_def() => link to mach_obj_lst() ?
 	- TBD: move GameState mach_obj_lst() method to Room
 		- TBD: rename to get_mach_lst() and create in Room
 		- TBD: refactor as needed
