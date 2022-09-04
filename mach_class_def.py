@@ -102,32 +102,35 @@ class MachineMixIn(object):
 				self.mach_state = temp_mach_state
 				return cmd_override
 
-class InvisMach(Invisible, MachineMixIn):
+# class InvisMach(Invisible, MachineMixIn):
+class InvisMach(MachineMixIn, Invisible):
 		def __init__(self, name, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				Invisible.__init__(self, name)
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
 		# simple methods
-		def is_mach(self):
-				return True
+#		def is_mach(self):
+#				return True
 
-class ViewOnlyMach(ViewOnly, MachineMixIn):
+# class ViewOnlyMach(ViewOnly, MachineMixIn):
+class ViewOnlyMach(MachineMixIn, ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
 		# simple methods
-		def is_mach(self):
-				return True
+#		def is_mach(self):
+#				return True
 
-class ItemMach(Item, MachineMixIn):
+# class ItemMach(Item, MachineMixIn):
+class ItemMach(MachineMixIn, Item):
 		def __init__(self, name, full_name, root_name, descript_key, writing, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
 		# simple methods
-		def is_mach(self):
-				return True
+#		def is_mach(self):
+#				return True
 
 class Warning(Invisible):
 		def __init__(self, name, trigger_type, trig_vals_lst, warn_max, warn_count):

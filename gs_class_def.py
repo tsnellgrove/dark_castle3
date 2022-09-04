@@ -211,8 +211,8 @@ class GameState(object):
 				room_obj = self.get_room()
 				scope_lst = room_obj.vis_contain_lst(self) + room_obj.invis_lst
 				for obj in scope_lst:
-##						if obj.is_mach(): # portcullis auto_open issue ???
-						if hasattr(obj, 'trigger_type'):
+						if obj.is_mach(): # portcullis auto_open issue ???
+#						if hasattr(obj, 'trigger_type'):
 								mach_lst.append(obj)
 						if obj.is_creature():
 								mach_lst.extend(obj.mach_lst())

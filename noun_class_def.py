@@ -279,6 +279,19 @@ class Room(ViewOnly):
 						return True
 				return False
 
+		def get_mach_lst(self, active_gs):
+				mach_lst = []
+#				room_obj = self.get_room()
+				scope_lst = self.vis_contain_lst(active_gs) + room_obj.invis_lst
+				for obj in scope_lst:
+##						if obj.is_mach(): # portcullis auto_open issue ???
+						if hasattr(obj, 'trigger_type'):
+								mach_lst.append(obj)
+						if obj.is_creature():
+								mach_lst.extend(obj.mach_lst())
+				mach_lst.extend(active_gs.universal_mach_lst)
+				return mach_lst
+
 		def remove_item(self, item, active_gs):
 				if item in self.floor_lst:
 						self.floor_lst_remove(item)
