@@ -383,16 +383,16 @@ Version 3.72 Goals
 		- DONE: elim auto_in_alert_scope()
 		- DONE: testing
 		- DONE: clean up comments
-	- INPROC: move GameState mach_obj_lst() method to Room
+	- DONE: move GameState mach_obj_lst() method to Room
 		- DONE: troubleshoot use of is_mach()
-			- TBD: clean up comments
-		- TBD: rename mach_obj_lst() to get_mach_lst() and create in Room
-		- TBD: refactor as needed
-			- TBD: prefer use of mach_lst.append(Creature.invis_lst) over Creature all_lst() => mach_lst()
-			- TBD: sort out / elim Creature all_lst() and mach_lst()
+			- DONE: clean up comments
+		- DONE: rename mach_obj_lst() to get_mach_lst() and create in Room
+		- INPROC: refactor as needed
+			- DONE: prefer use of mach_lst.append(Creature.invis_lst) over Creature all_lst() => mach_lst()
+			- TBD: comment out / elim Creature all_lst() and mach_lst()
 		- TBD: migrate refs to Room
 			- TBD: 
-		- TBD: clean up comments
+		- TBD: clean up comments (creature_class_def, )
 	- TBD: move remaining mach_list scope methods to Room
 	- TBD: rename vis_contain_lst() to get_vis_contain_lst() ???
 	- TBD: refactor room next steps

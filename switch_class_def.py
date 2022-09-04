@@ -33,7 +33,6 @@ class SwitchMixIn(object):
 		def is_mach(self):
 				return True
 
-# class ButtonSwitch(ViewOnly, SwitchMixIn):
 class ButtonSwitch(SwitchMixIn, ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, def_switch_state, trigger_type):
 				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
@@ -51,7 +50,6 @@ class SpringSliderSwitch(ButtonSwitch):
 				self.switch_state = 'pulled'
 				active_gs.buffer("Pulled.")
 
-# class LeverSwitch(ViewOnly, SwitchMixIn):
 class LeverSwitch(SwitchMixIn, ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, def_switch_state, trigger_type):
 				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
