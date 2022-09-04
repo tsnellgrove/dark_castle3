@@ -8,7 +8,6 @@
 
 def pre_action(active_gs, case, word_lst):
 		cmd_override = False
-#		mach_obj_lst = active_gs.mach_obj_lst()
 		mach_obj_lst = active_gs.get_room().get_mach_lst(active_gs)
 		for obj in mach_obj_lst:
 ##				print(obj) # for mach troubleshooting

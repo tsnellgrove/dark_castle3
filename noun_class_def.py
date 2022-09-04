@@ -286,7 +286,6 @@ class Room(ViewOnly):
 						if obj.is_mach():
 								mach_lst.append(obj)
 						if obj.is_creature():
-#								mach_lst.extend(obj.mach_lst())
 								for invis_obj in obj.invis_lst:
 										if invis_obj.is_mach():
 												mach_lst.append(invis_obj)												
