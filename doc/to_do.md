@@ -378,11 +378,11 @@ Version 3.72 Goals
 	- DONE: investigate all 3 mach scope methods in GameState
 		- DONE: it appears that def auto_in_alert_scope() is never called
 		- DONE: it appears that only mach_obj_lst() and auto_in_alert_scope() ever call room_mach_lst()
-	- INPROC: simplify mach scope methods in GameState
+	- DONE: simplify mach scope methods in GameState
 		- DONE: merge room_mach_lst() => mach_obj_lst()
 		- DONE: elim auto_in_alert_scope()
 		- DONE: testing
-		- TBD: clean up comments
+		- DONE: clean up comments
 	- TBD: move GameState mach_obj_lst() method to Room
 		- TBD: rename mach_obj_lst() to get_mach_lst() and create in Room
 		- TBD: refactor as needed
