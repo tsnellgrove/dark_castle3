@@ -7,7 +7,8 @@
 ### import statements ###
 
 def auto_action(active_gs):
-		mach_obj_lst = active_gs.mach_obj_lst()
+#		mach_obj_lst = active_gs.mach_obj_lst()
+		mach_obj_lst = active_gs.get_room().get_mach_lst(active_gs)
 		for obj in mach_obj_lst:
 
 				if obj.trigger_type == 'auto_switch_reset':

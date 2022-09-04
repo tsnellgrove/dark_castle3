@@ -387,12 +387,15 @@ Version 3.72 Goals
 		- DONE: troubleshoot use of is_mach()
 			- DONE: clean up comments
 		- DONE: rename mach_obj_lst() to get_mach_lst() and create in Room
-		- INPROC: refactor as needed
+		- DONE: refactor as needed
 			- DONE: prefer use of mach_lst.append(Creature.invis_lst) over Creature all_lst() => mach_lst()
-			- TBD: comment out / elim Creature all_lst() and mach_lst()
-		- TBD: migrate refs to Room
-			- TBD: 
-		- TBD: clean up comments (creature_class_def, )
+		- DONE: migrate refs to Room
+			- DONE: pre_action()
+			- DONE: post_action()
+			- DONE: auto_action()
+			- DONE; gs_class_def()
+		- TBD: clean up comments (creature_class_def, pre_action(), post_action(), auto_action() )
+		- TBD: comment out / elim Creature all_lst() and mach_lst()
 	- TBD: move remaining mach_list scope methods to Room
 	- TBD: rename vis_contain_lst() to get_vis_contain_lst() ???
 	- TBD: refactor room next steps

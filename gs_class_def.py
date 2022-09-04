@@ -204,17 +204,17 @@ class GameState(object):
 				self.buffer("Special garments you are wearing: " + worn_str)
 
 		### scope lists ###
-		def mach_obj_lst(self):
-				mach_lst = []
-				room_obj = self.get_room()
-				scope_lst = room_obj.vis_contain_lst(self) + room_obj.invis_lst
-				for obj in scope_lst:
-						if obj.is_mach():
-								mach_lst.append(obj)
-						if obj.is_creature():
-								mach_lst.extend(obj.mach_lst())
-				mach_lst.extend(self.universal_mach_lst)
-				return mach_lst
+#		def mach_obj_lst(self):
+#				mach_lst = []
+#				room_obj = self.get_room()
+#				scope_lst = room_obj.vis_contain_lst(self) + room_obj.invis_lst
+#				for obj in scope_lst:
+#						if obj.is_mach():
+#								mach_lst.append(obj)
+#						if obj.is_creature():
+#								mach_lst.extend(obj.mach_lst())
+#				mach_lst.extend(self.universal_mach_lst)
+#				return mach_lst
 
 		### obj representation (for printing) ###
 		def __repr__(self):
