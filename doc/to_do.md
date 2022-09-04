@@ -394,9 +394,8 @@ Version 3.72 Goals
 			- DONE: post_action()
 			- DONE: auto_action()
 			- DONE; gs_class_def()
-		- TBD: clean up comments (creature_class_def, pre_action(), post_action(), auto_action() )
-		- TBD: comment out / elim Creature all_lst() and mach_lst()
-	- TBD: move remaining mach_list scope methods to Room
+		- DONE: clean up comments (creature_class_def, pre_action(), post_action(), auto_action() )
+		- DONE: comment out / elim Creature all_lst() and mach_lst()
 	- TBD: rename vis_contain_lst() to get_vis_contain_lst() ???
 	- TBD: refactor room next steps
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)

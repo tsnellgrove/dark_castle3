@@ -127,11 +127,11 @@ class Creature(ViewOnly):
 		def is_creature(self):
 				return True
 
-		def all_lst(self):
-				return self.hand_lst + self.worn_lst + self.feature_lst + self.bkpk_lst + self.invis_lst 
+#		def all_lst(self):
+#				return self.hand_lst + self.worn_lst + self.feature_lst + self.bkpk_lst + self.invis_lst 
 
-		def mach_lst(self):
-				return [obj for obj in self.all_lst() if obj.is_mach()]
+#		def mach_lst(self):
+#				return [obj for obj in self.all_lst() if obj.is_mach()]
 
 		def chk_contain_item(self, item):
 				return item in self.hand_lst + self.bkpk_lst + self.worn_lst
