@@ -400,7 +400,9 @@ Version 3.72 Goals
 		- DONE: noun_class_def
 		- DONE: creature_class_def
 		- DONE: interp
-	- TBD: refactor room next steps
+	- INPROC: refactor room next steps
+		- DONE: comment each attribute
+		- INPROC: doc_strings
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 		- is node_lst a better term?
 		- Yes!! node_lvl is the key... imagine an inverted tree... node_0 is at top (say room), node_1 are immedaite contents of node_0, and node_2 = the contents of node_1

@@ -151,6 +151,8 @@ class Creature(ViewOnly):
 
 		# *** complex methods ***
 		def get_vis_contain_lst(self, active_gs):
+				""" Returns the list of visible objects contained in the referenced ('self') object
+				"""
 				return self.hand_lst + self.worn_lst + self.feature_lst
 
 		def contain_disp(self, active_gs):

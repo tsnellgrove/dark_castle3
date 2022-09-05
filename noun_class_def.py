@@ -219,8 +219,8 @@ class ViewOnly(Writing):
 class Room(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
-				self._feature_lst = feature_lst # list of non-items in room (can be examined but not taken)
-				self._floor_lst = floor_lst # list of obj in the room that the player can interact with
+				self._feature_lst = feature_lst # list of descriptive obj in the room (can be examined but not interacted with)
+				self._floor_lst = floor_lst # list of obj on the floor of the room that the player can interact with
 				self._invis_lst = invis_lst # list of invisible obj in room
 
 		# *** getters & setters ***
@@ -252,6 +252,8 @@ class Room(ViewOnly):
 
 		# *** scope methods ***
 		def get_vis_contain_lst(self, active_gs):
+				""" Returns the list of visible objects contained in the referenced ('self') object. In Room, provides the visible object scope.
+				"""
 				return_lst = []
 				legacy_node1_lst = active_gs.get_hand_lst() + active_gs.get_backpack_lst() + active_gs.get_worn_lst() 
 				for obj in legacy_node1_lst:
@@ -264,10 +266,14 @@ class Room(ViewOnly):
 				return_lst = return_lst + self.floor_lst
 				return return_lst
 
-		def chk_wrt_is_vis(self, wrt_obj, active_gs):
-				return any(obj.writing == wrt_obj for obj in self.get_vis_contain_lst(active_gs))
+		def chk_wrt_is_vis(self, writing, active_gs):
+				""" Evaluates whether the passed writing is visible.
+				"""
+				return any(obj.writing == writing for obj in self.get_vis_contain_lst(active_gs))
 
 		def chk_is_vis(self, obj, active_gs):
+				""" Evaluates whether the passed object is visible.
+				"""
 				return obj in self.get_vis_contain_lst(active_gs)
 
 		def chk_contain_item(self, item, active_gs):
@@ -603,6 +609,8 @@ class Container(Door):
 				return True
 
 		def get_vis_contain_lst(self, active_gs):
+				""" Returns the list of visible objects contained in the referenced ('self') object
+				"""
 				if self.is_not_closed():
 						return self.contain_lst
 				return []
