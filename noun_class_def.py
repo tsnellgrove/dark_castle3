@@ -160,7 +160,7 @@ class ViewOnly(Writing):
 		def is_writing(self):
 				return False
 
-		def vis_contain_lst(self, active_gs):
+		def get_vis_contain_lst(self, active_gs):
 				return []
 
 		def chk_contain_item(self, item):
@@ -250,25 +250,25 @@ class Room(ViewOnly):
 		def get_title_str(self):
 				return f"*** {self.full_name} ***"
 
-		# *** complex object methods ***
-		def vis_contain_lst(self, active_gs):
+		# *** scope methods ***
+		def get_vis_contain_lst(self, active_gs):
 				return_lst = []
 				legacy_node1_lst = active_gs.get_hand_lst() + active_gs.get_backpack_lst() + active_gs.get_worn_lst() 
 				for obj in legacy_node1_lst:
-						return_lst += obj.vis_contain_lst(active_gs)
+						return_lst += obj.get_vis_contain_lst(active_gs)
 				return_lst = return_lst + legacy_node1_lst + active_gs.get_static_obj('universal')
 				node1_only_lst = [self] + active_gs.map.get_door_lst(self) + self.feature_lst
 				return_lst = return_lst + node1_only_lst
 				for obj in self.floor_lst:
-						return_lst += obj.vis_contain_lst(active_gs)
+						return_lst += obj.get_vis_contain_lst(active_gs)
 				return_lst = return_lst + self.floor_lst
 				return return_lst
 
 		def chk_wrt_is_vis(self, wrt_obj, active_gs):
-				return any(obj.writing == wrt_obj for obj in self.vis_contain_lst(active_gs))
+				return any(obj.writing == wrt_obj for obj in self.get_vis_contain_lst(active_gs))
 
 		def chk_is_vis(self, obj, active_gs):
-				return obj in self.vis_contain_lst(active_gs)
+				return obj in self.get_vis_contain_lst(active_gs)
 
 		def chk_contain_item(self, item, active_gs):
 				if item in self.floor_lst:
@@ -281,7 +281,7 @@ class Room(ViewOnly):
 
 		def get_mach_lst(self, active_gs):
 				mach_lst = []
-				scope_lst = self.vis_contain_lst(active_gs) + self.invis_lst
+				scope_lst = self.get_vis_contain_lst(active_gs) + self.invis_lst
 				for obj in scope_lst:
 						if obj.is_mach():
 								mach_lst.append(obj)
@@ -292,6 +292,7 @@ class Room(ViewOnly):
 				mach_lst.extend(active_gs.universal_mach_lst) # Legacy
 				return mach_lst
 
+		# *** complex object methods ***
 		def remove_item(self, item, active_gs):
 				if item in self.floor_lst:
 						self.floor_lst_remove(item)
@@ -385,7 +386,7 @@ class Item(ViewOnly):
 						active_gs.buffer("You're already holding the " + self.full_name)
 						return 
 				for obj in active_gs.get_room().floor_lst:
-						if obj.is_creature() and self in obj.vis_contain_lst(active_gs):
+						if obj.is_creature() and self in obj.get_vis_contain_lst(active_gs):
 								active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 								return 
 				active_gs.get_room().remove_item(self, active_gs)
@@ -601,7 +602,7 @@ class Container(Door):
 		def	is_container(self):
 				return True
 
-		def vis_contain_lst(self, active_gs):
+		def get_vis_contain_lst(self, active_gs):
 				if self.is_not_closed():
 						return self.contain_lst
 				return []

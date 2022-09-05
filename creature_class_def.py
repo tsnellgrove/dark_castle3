@@ -150,7 +150,7 @@ class Creature(ViewOnly):
 				return 
 
 		# *** complex methods ***
-		def vis_contain_lst(self, active_gs):
+		def get_vis_contain_lst(self, active_gs):
 				return self.hand_lst + self.worn_lst + self.feature_lst
 
 		def contain_disp(self, active_gs):

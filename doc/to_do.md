@@ -56,7 +56,7 @@ Aug 10, 2022
 	- prefixes:
 		- 'is' for methods where no varriable is passed but a bool is returned; e.g. 'obj.is_item()'
 		- 'chk' for a method where you will send an obj and get back a bool
-		- 'get' for a method that will return a 'usuabl' obj var
+		- 'get' for a method that will return a 'usuable' obj var
 	- postfixes:
 		- 'disp' if a method's main purpose is to buffer content
 
@@ -396,7 +396,10 @@ Version 3.72 Goals
 			- DONE; gs_class_def()
 		- DONE: clean up comments (creature_class_def, pre_action(), post_action(), auto_action() )
 		- DONE: comment out / elim Creature all_lst() and mach_lst()
-	- TBD: rename vis_contain_lst() to get_vis_contain_lst() ???
+	- DONE: rename vis_contain_lst() to get_vis_contain_lst() ???
+		- DONE: noun_class_def
+		- DONE: creature_class_def
+		- DONE: interp
 	- TBD: refactor room next steps
 	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 		- is node_lst a better term?
