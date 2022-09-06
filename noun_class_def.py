@@ -252,7 +252,7 @@ class Room(ViewOnly):
 
 		# *** scope methods ***
 		def get_vis_contain_lst(self, active_gs):
-				""" Returns the list of visible objects contained in the referenced ('self') object. In Room, provides the visible object scope.
+				""" Returns the list of visible objects contained in the method-calling object. In Room, provides the visible object scope.
 				"""
 				return_lst = []
 				legacy_node1_lst = active_gs.get_hand_lst() + active_gs.get_backpack_lst() + active_gs.get_worn_lst() 
@@ -267,16 +267,18 @@ class Room(ViewOnly):
 				return return_lst
 
 		def chk_wrt_is_vis(self, writing, active_gs):
-				""" Evaluates whether the passed writing is visible.
+				""" Evaluates whether the passed writing is visible within the methed-calling object.
 				"""
 				return any(obj.writing == writing for obj in self.get_vis_contain_lst(active_gs))
 
 		def chk_is_vis(self, obj, active_gs):
-				""" Evaluates whether the passed object is visible.
+				""" Evaluates whether the passed object is visible within the methed-calling object.
 				"""
 				return obj in self.get_vis_contain_lst(active_gs)
 
 		def chk_contain_item(self, item, active_gs):
+				""" Evaluates whether the passed object is contained within the methed-calling object.
+				"""
 				if item in self.floor_lst:
 						return True
 				if any(obj.chk_contain_lst(item) for obj in self.floor_lst):
@@ -286,6 +288,8 @@ class Room(ViewOnly):
 				return False
 
 		def get_mach_lst(self, active_gs):
+				""" Returns the list of Machine objects contained in the method-calling object. In Room, provides the Machine object scope.
+				"""
 				mach_lst = []
 				scope_lst = self.get_vis_contain_lst(active_gs) + self.invis_lst
 				for obj in scope_lst:
@@ -300,6 +304,8 @@ class Room(ViewOnly):
 
 		# *** complex object methods ***
 		def remove_item(self, item, active_gs):
+				""" Removes the passed object from the methed-calling object. In Room, is used to enable the take() method.
+				"""
 				if item in self.floor_lst:
 						self.floor_lst_remove(item)
 						return 
@@ -340,6 +346,8 @@ class Room(ViewOnly):
 				return 
 
 		def go(self, dir, active_gs):
+				""" Moves a Creature from one room to another
+				"""
 				if not active_gs.map.chk_valid_dir(self, dir):
 						active_gs.buffer(descript_dict[f"wrong_way_{random.randint(0, 4)}"])
 						return

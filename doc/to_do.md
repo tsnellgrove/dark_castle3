@@ -402,22 +402,25 @@ Version 3.72 Goals
 		- DONE: interp
 	- INPROC: refactor room next steps
 		- DONE: comment each attribute
-		- INPROC: doc_strings
-	- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
-		- is node_lst a better term?
-		- Yes!! node_lvl is the key... imagine an inverted tree... node_0 is at top (say room), node_1 are immedaite contents of node_0, and node_2 = the contents of node_1
-		- we can also talk about relative vs. absolute node levels
-		- the goal is for look to return information on node_lvl 0, 1, & 2 (i.e. describe the room, room contents, and items inside room containers / creatures); inventory is similar
-		- however, we want all node levels to actually be in scope
-		- we do NOT want node levels to go too deep... we already forbid containers from holding containers or creatues
-		- we could also forbid creatures (other than Burt) from holding creatuers or containers...
-		- This would make our max node level = 3: entrance => burt_hand => bottle => water
-		- The limit could be imposed at the give(), show(), take(), and put_in_hand() mehtods
-		- if this caused serius issues there could be a modular machine to swap in a dummy non-container obj
-		- could also run a pre-start check on container & creature to throw errors on illegal contents
-		- need to document (to self!) consistent approach to what is visible when Burt looks, examines, or inventories
-	- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
-	- TBD: move room to dedicated module ???
+		- DONE: simple doc_strings
+		- TBD: move go() to Creature
+		- TBD: node doc_string
+			- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
+				- is node_lst a better term?
+				- Yes!! node_lvl is the key... imagine an inverted tree... node_0 is at top (say room), node_1 are immedaite contents of node_0, and node_2 = the contents of node_1
+				- we can also talk about relative vs. absolute node levels
+				- the goal is for look to return information on node_lvl 0, 1, & 2 (i.e. describe the room, room contents, and items inside room containers / creatures); inventory is similar
+				- however, we want all node levels to actually be in scope
+				- we do NOT want node levels to go too deep... we already forbid containers from holding containers or creatues
+				- we could also forbid creatures (other than Burt) from holding creatuers or containers...
+				- This would make our max node level = 3: entrance => burt_hand => bottle => water
+				- The limit could be imposed at the give(), show(), take(), and put_in_hand() mehtods
+				- if this caused serius issues there could be a modular machine to swap in a dummy non-container obj
+				- could also run a pre-start check on container & creature to throw errors on illegal contents
+				- need to document (to self!) consistent approach to what is visible when Burt looks, examines, or inventories
+			- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
+		- TBD: move room to dedicated module
+		- TBD: reduce Room indent to 1 tab
 
 ##########################
 ### VERSION 3.73 START ###

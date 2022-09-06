@@ -137,6 +137,8 @@ class Creature(ViewOnly):
 				return item in self.hand_lst + self.bkpk_lst + self.worn_lst
 
 		def remove_item(self, item, active_gs):
+				""" Removes the passed object from the methed-calling object.
+				"""
 				if item in self.hand_lst:
 						self.hand_lst_remove(item)
 						return 
@@ -227,7 +229,7 @@ class Creature(ViewOnly):
 
 				give_item = self.give_dict[give_key]['give']
 				if give_item:
-						self.bkpk_lst_remove(give_item)
+						self.bkpk_lst_remove(give_item) # replace with remove_item() ??
 						active_gs.hand_lst_append_item(give_item)
 
 				new_descript_key = f"give_{self.name}_{obj.name}_descript"
