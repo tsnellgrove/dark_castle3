@@ -403,7 +403,6 @@ Version 3.72 Goals
 	- INPROC: refactor room next steps
 		- DONE: comment each attribute
 		- DONE: simple doc_strings
-		- TBD: move go() to Creature
 		- TBD: node doc_string
 			- IDEA: element_lst refers to the first-pass list of obj available in the room (i.e. not including those obj in containers or creatures)
 				- is node_lst a better term?
@@ -421,6 +420,10 @@ Version 3.72 Goals
 			- IDEA: vis_element_lst == list of visible elements == room.floor_lst + room.feature_lst
 		- TBD: move room to dedicated module
 		- TBD: reduce Room indent to 1 tab
+		- TBD: move 'base' to dedicaated module
+		- TBD: reduce 'base' indent to 1 tab
+		- TBD: move Rooms & Containers to dedicated module
+		- TBD: reduce R&C indent to 1 tab
 
 ##########################
 ### VERSION 3.73 START ###
@@ -563,6 +566,7 @@ Refactor burt as a Creature class object
 		- IDEA: Refactor as I go; provide a 'silent mode' for each method() for when it is called by a non-burt creature
 	- IDEAS:
 		- refactoring noun classes for burt-as-creature
+			- TBD: move go() to Creature
 			- think abour 'source' and 'desination'... e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
 			- can we have 'burt' be the default <creature> but other options available?
 				- this would allow give() to become a noun class method... essentially a take() initiated by burt
