@@ -157,10 +157,8 @@ class Creature(ViewOnly):
 				"""
 				contain_lst = []
 				node1_item_lst = self.hand_lst + self.worn_lst
-				[contain_lst.append(obj.get_vis_contain_lst(active_gs)) for obj in node1_item_lst]
+				[contain_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in node1_item_lst]
 ##				return self.hand_lst + self.worn_lst + self.feature_lst # when Creatures couldn't hold Containers this was the whole method
-				print(f"contain_lst: {contain_lst}.")
-				print(f"node1_item_lst: {node1_item_lst}.")
 				return node1_item_lst + contain_lst + self.feature_lst
 
 		def contain_disp(self, active_gs):
