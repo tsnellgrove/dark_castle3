@@ -433,7 +433,7 @@ Version 3.72 Goals
 			- someday, surfaces can't hold creatures or surfaces
 			- This aligns all creatures with Burt definition and means a max search depth of node 3
 				- e.g. Room => Creature => PortableContainer => obj or Room => Surface => PortableContainer => obj
-
+- make 'disp' a method prefix???
 
 - MAYBE JUST MAKE BURT A CREATURE NEXT?
 
