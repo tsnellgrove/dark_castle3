@@ -166,10 +166,14 @@ class Creature(ViewOnly):
 				"""
 				if not self.hand_empty():
 						active_gs.buffer(f"The {self.full_name} is holding a {self.hand_item().full_name}")
+						for obj in self.hand_lst:
+								obj.contain_disp(active_gs)
 				if not self.worn_empty():
 						worn_txt_lst = [obj.full_name for obj in self.worn_lst]
 						worn_str = ", ".join(worn_txt_lst)
 						active_gs.buffer(f"The {self.full_name} is wearing: {worn_str}")
+						for obj in self.worn_lst:
+								obj.contain_disp(active_gs)								
 				return 
 
 		def show(self, obj, active_gs):

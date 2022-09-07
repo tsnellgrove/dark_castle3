@@ -400,38 +400,39 @@ Version 3.72 Goals
 		- DONE: noun_class_def
 		- DONE: creature_class_def
 		- DONE: interp
-	- INPROC: refactor room next steps
+	- DONE: refactor room next steps
 		- DONE: comment each attribute
 		- DONE: simple doc_strings
-		- INPROC: update creature & container restrictions
+		- DONE: update creature & container restrictions
 			- DONE: container can't hold container or creature (or, someday, surface) [limit in put()]
 			- DONE: creature can't hold creature (or, someday, surface) [limit in show() & give()]
 			- DONE: update get_vis_contain_lst()
 				- DONE: sort out contain_lst list comprehension
-			- TBD: update contain_disp()
-		- TBD: node doc_string
-			- IDEA: Node Level (node_lvl) refers to the first-pass list of obj available in the room
-				- (i.e. not including those obj in containers or creatures)
-			- Imagine an inverted tree... node_0 is at top (say room)
-				- node_1 are immedaite contents of node_0
-				- node_2 = the contents of node_1 obj
-			- we can talk about relative vs. absolute node levels
-				- the goal is for look to return information on node_lvl 0, 1, & 2
-					- (i.e. describe the room, room contents, and items inside room containers / creatures)
-					- inventory is similar - it is the node_lvl 0, 1, & 2 description of Burt
-				- however, we want all node levels to actually be in scope
-					- we do NOT want node levels to go too deep... we already forbid containers from holding containers or creatues
-					- we could also forbid creatures (other than Burt) from holding creatuers or containers...
-					- This would make our max node level = 3: entrance => burt_hand => bottle => water
-					- The limit could be imposed at the give(), show(), take(), and put_in_hand() mehtods
-				- if this caused serius issues there could be a modular machine to swap in a dummy non-container obj
-				- could also run a pre-start check on container & creature to throw errors on illegal contents
-				- New node level rules:
-					- containers can't hold containers or creatures (or, someday, surfaces)
-					- creatures can't hold creatures (or, someday, surfaces)
-					- someday, surfaces can't hold creatures or surfaces
-					- This aligns all creatures with Burt definition and means a max search depth of node 3
-						- e.g. Room => Creature => PortableContainer => obj or Room => Surface => PortableContainer => obj
+			- DONE: update contain_disp()
+	- TBD: node doc_string
+		- IDEA: Node Level (node_lvl) refers to the first-pass list of obj available in the room
+			- (i.e. not including those obj in containers or creatures)
+		- Imagine an inverted tree... node_0 is at top (say room)
+			- node_1 are immedaite contents of node_0
+			- node_2 = the contents of node_1 obj
+		- we can talk about relative vs. absolute node levels
+			- the goal is for look to return information on node_lvl 0, 1, & 2
+				- receptacle = container, creature, surface
+				- (i.e. describe the room, room contents, and items inside room receptacles)
+				- inventory is similar - it is the node_lvl 0, 1, & 2 description of Burt
+			- however, we want all node levels to actually be in scope
+				- we do NOT want node levels to go too deep... we already forbid containers from holding containers or creatues
+				- we could also forbid creatures (other than Burt) from holding creatuers or containers...
+				- This would make our max node level = 3: entrance => burt_hand => bottle => water
+				- The limit could be imposed at the give(), show(), take(), and put_in_hand() mehtods
+			- if this caused serius issues there could be a modular machine to swap in a dummy non-container obj
+			- could also run a pre-start check on container & creature to throw errors on illegal contents
+		- New node level rules:
+			- containers can't hold containers or creatures (or, someday, surfaces)
+			- creatures can't hold creatures (or, someday, surfaces)
+			- someday, surfaces can't hold creatures or surfaces
+			- This aligns all creatures with Burt definition and means a max search depth of node 3
+				- e.g. Room => Creature => PortableContainer => obj or Room => Surface => PortableContainer => obj
 
 
 - MAYBE JUST MAKE BURT A CREATURE NEXT?

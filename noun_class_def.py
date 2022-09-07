@@ -330,18 +330,18 @@ class Room(ViewOnly):
 		def contain_disp(self, active_gs):
 				""" Displays a description of the visible items held by the obj. Used in examine().
 				"""
-				room_item_obj_lst = []
+				room_item_lst = []
 				for obj in self.floor_lst:
 						if not obj.is_item():
 								active_gs.buffer("There is a " + obj.full_name + " here.")
 								obj.contain_disp(active_gs)
 						else:
-								room_item_obj_lst.append(obj)
-				if room_item_obj_lst:
-						room_txt_lst = [obj.full_name for obj in room_item_obj_lst]
+								room_item_lst.append(obj)
+				if room_item_lst:
+						room_txt_lst = [obj.full_name for obj in room_item_lst]
 						room_item_str = ", ".join(room_txt_lst)
 						active_gs.buffer("The following items are here: " + room_item_str)
-				for obj in room_item_obj_lst:
+				for obj in room_item_lst:
 						obj.contain_disp(active_gs)
 				return 
 
