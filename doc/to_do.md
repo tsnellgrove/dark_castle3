@@ -406,7 +406,9 @@ Version 3.72 Goals
 		- INPROC: update creature & container restrictions
 			- DONE: container can't hold container or creature (or, someday, surface) [limit in put()]
 			- DONE: creature can't hold creature (or, someday, surface) [limit in show() & give()]
-			- TBD: will need to update get_vis_contain_lst()
+			- INPROC: update get_vis_contain_lst()
+				- TBD: sort out contain_lst list comprehension
+			- TBD: update contain_disp()
 		- TBD: node doc_string
 			- IDEA: Node Level (node_lvl) refers to the first-pass list of obj available in the room
 				- (i.e. not including those obj in containers or creatures)

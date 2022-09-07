@@ -155,7 +155,13 @@ class Creature(ViewOnly):
 		def get_vis_contain_lst(self, active_gs):
 				""" Returns the list of visible objects contained in the referenced ('self') object
 				"""
-				return self.hand_lst + self.worn_lst + self.feature_lst
+				contain_lst = []
+				node1_item_lst = self.hand_lst + self.worn_lst
+				[contain_lst.append(obj.get_vis_contain_lst(active_gs)) for obj in node1_item_lst]
+##				return self.hand_lst + self.worn_lst + self.feature_lst # when Creatures couldn't hold Containers this was the whole method
+				print(f"contain_lst: {contain_lst}.")
+				print(f"node1_item_lst: {node1_item_lst}.")
+				return node1_item_lst + contain_lst + self.feature_lst
 
 		def contain_disp(self, active_gs):
 				""" Displays a description of the visible items held by the obj. Used in examine().
@@ -179,7 +185,7 @@ class Creature(ViewOnly):
 						1) When creating a new creature, remember to create the show() response descriptions in descript_dict() using the auto-genertated key format.
 						2) Creaatures other than burt are not allowed to have containers or creatures in their inventory
 				"""
-##				if (obj.is_container()) or (obj.is_creature()):
+##				if (obj.is_container()) or (obj.is_creature()): # previous node_lvl limitation
 				if obj.is_creature():
 						active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 						return 
@@ -208,7 +214,7 @@ class Creature(ViewOnly):
 						
 						4) Creaatures other than burt are not allowed to have containers or creatures in their inventory
 				"""
-##				if (obj.is_container()) or (obj.is_creature()):
+##				if (obj.is_container()) or (obj.is_creature()): # previous node_lvl limitation
 				if obj.is_creature():
 						active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 						return 
