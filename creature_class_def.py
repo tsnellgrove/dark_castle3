@@ -179,7 +179,8 @@ class Creature(ViewOnly):
 						1) When creating a new creature, remember to create the show() response descriptions in descript_dict() using the auto-genertated key format.
 						2) Creaatures other than burt are not allowed to have containers or creatures in their inventory
 				"""
-				if (obj.is_container()) or (obj.is_creature()):
+##				if (obj.is_container()) or (obj.is_creature()):
+				if obj.is_creature():
 						active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 						return 
 				try:
@@ -207,7 +208,8 @@ class Creature(ViewOnly):
 						
 						4) Creaatures other than burt are not allowed to have containers or creatures in their inventory
 				"""
-				if (obj.is_container()) or (obj.is_creature()):
+##				if (obj.is_container()) or (obj.is_creature()):
+				if obj.is_creature():
 						active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 						return 
 				try:

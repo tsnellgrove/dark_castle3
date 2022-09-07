@@ -403,9 +403,9 @@ Version 3.72 Goals
 	- INPROC: refactor room next steps
 		- DONE: comment each attribute
 		- DONE: simple doc_strings
-		- TBD: update creature & container restrictions
-			- TBD: container can't hold container or creature (or, someday, surface)
-			- TBD: creature can't hold creature (or, someday, surface)
+		- INPROC: update creature & container restrictions
+			- DONE: container can't hold container or creature (or, someday, surface) [limit in put()]
+			- DONE: creature can't hold creature (or, someday, surface) [limit in show() & give()]
 			- TBD: will need to update get_vis_contain_lst()
 		- TBD: node doc_string
 			- IDEA: Node Level (node_lvl) refers to the first-pass list of obj available in the room
@@ -424,6 +424,12 @@ Version 3.72 Goals
 					- The limit could be imposed at the give(), show(), take(), and put_in_hand() mehtods
 				- if this caused serius issues there could be a modular machine to swap in a dummy non-container obj
 				- could also run a pre-start check on container & creature to throw errors on illegal contents
+				- New node level rules:
+					- containers can't hold containers or creatures (or, someday, surfaces)
+					- creatures can't hold creatures (or, someday, surfaces)
+					- someday, surfaces can't hold creatures or surfaces
+					- This aligns all creatures with Burt definition and means a max search depth of node 3
+						- e.g. Room => Creature => PortableContainer => obj or Room => Surface => PortableContainer => obj
 
 
 - MAYBE JUST MAKE BURT A CREATURE NEXT?
