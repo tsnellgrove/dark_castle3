@@ -485,6 +485,7 @@ Version 3.73 Goals
 	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
 	- TBD: re-org to identify 'attacker' and 'winner' 
 	- TBD: re-code attack / attack_burt response correctly based on in-line notes
+		- TBD: change to 'attack x with y' (default to obj in hand?); Maybe hedgehog laughs at an attack with a non-weapon?
 - TBD: refactor descript_dict (=> static_dict), autogen_dict (new) and dynamic_dict to Descript class with descript instantiation
 	- TBD: unify descript approach: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
 	- call with key and return string; will look like gs.descript(key)
