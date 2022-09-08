@@ -409,6 +409,7 @@ Version 3.72 Goals
 			- DONE: update get_vis_contain_lst()
 				- DONE: sort out contain_lst list comprehension
 			- DONE: update contain_disp()
+			- DONE: test royal_hedgehog with hand_lst == [glass_bottle]
 	- TBD: node doc_string
 		- IDEA: Node Level (node_lvl) refers to the first-pass list of obj available in the room
 			- (i.e. not including those obj in containers or creatures)
@@ -435,15 +436,22 @@ Version 3.72 Goals
 				- e.g. Room => Creature => PortableContainer => obj or Room => Surface => PortableContainer => obj
 - make 'disp' a method prefix???
 
-- MAYBE JUST MAKE BURT A CREATURE NEXT?
+MAYBE JUST MAKE BURT A CREATURE NEXT?
 
-- NEW VERSION?
-		- TBD: move room to dedicated module
-		- TBD: reduce Room indent to 1 tab
-		- TBD: move 'base' to dedicaated module
-		- TBD: reduce 'base' indent to 1 tab
-		- TBD: move Rooms & Containers to dedicated module
-		- TBD: reduce R&C indent to 1 tab
+NEW VERSION?
+- TBD: move room to dedicated module
+- TBD: reduce Room indent to 1 tab
+- TBD: move 'base' to dedicaated module
+- TBD: reduce 'base' indent to 1 tab
+- TBD: move Rooms & Containers to dedicated module
+- TBD: reduce R&C indent to 1 tab
+- INPROC: class by class, reduce from double-tab to single tab
+	- DONE: web_main.py
+	- DONE: map_class_def.py
+	- INPROC: noun_class_def.py
+		- DONE: PortableContainer
+		- DONE: PortableLiquidContainer
+		- TBD: next!
 
 ##########################
 ### VERSION 3.73 START ###
@@ -455,13 +463,7 @@ Version 3.73 Goals
 - create a Surface class
 - rename active_gs => gs
 
-- INPROC: class by class, reduce from double-tab to single tab
-	- DONE: web_main.py
-	- DONE: map_class_def.py
-	- INPROC: noun_class_def.py
-		- DONE: PortableContainer
-		- DONE: PortableLiquidContainer
-		- TBD: next!
+
 - TBD: refactor Clothes => Garments
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
 	- CANCEL: create Garment class-specific remove() method that calls take() ??
