@@ -410,7 +410,18 @@ Version 3.72 Goals
 				- DONE: sort out contain_lst list comprehension
 			- DONE: update contain_disp()
 			- DONE: test royal_hedgehog with hand_lst == [glass_bottle]
-	- TBD: node doc_string
+		- DONE: New node level rules:
+			- containers can't hold containers or creatures (or, someday, surfaces)
+			- creatures can't hold creatures (or, someday, surfaces)
+			- someday, surfaces can't hold creatures or surfaces
+			- This aligns all creatures with Burt definition and means a max search depth of node 3
+				- e.g. Room => Creature => PortableContainer => obj or Room => Surface => PortableContainer => obj
+		- DONE: New, NEW, node level rules
+			- Creatures and Surfaces can't be put in Containers
+			- PortableContainers CAN be put in Containers
+			- But PortableContainers CAN'T be put in PortableContainers
+			- Zork Kitchen as key reference
+	- INPROC: node doc_string
 		- IDEA: Node Level (node_lvl) refers to the first-pass list of obj available in the room
 			- (i.e. not including those obj in containers or creatures)
 		- Imagine an inverted tree... node_0 is at top (say room)
@@ -428,12 +439,6 @@ Version 3.72 Goals
 				- The limit could be imposed at the give(), show(), take(), and put_in_hand() mehtods
 			- if this caused serius issues there could be a modular machine to swap in a dummy non-container obj
 			- could also run a pre-start check on container & creature to throw errors on illegal contents
-		- New node level rules:
-			- containers can't hold containers or creatures (or, someday, surfaces)
-			- creatures can't hold creatures (or, someday, surfaces)
-			- someday, surfaces can't hold creatures or surfaces
-			- This aligns all creatures with Burt definition and means a max search depth of node 3
-				- e.g. Room => Creature => PortableContainer => obj or Room => Surface => PortableContainer => obj
 - make 'disp' a method prefix???
 
 MAYBE JUST MAKE BURT A CREATURE NEXT?

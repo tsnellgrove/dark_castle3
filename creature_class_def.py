@@ -173,7 +173,7 @@ class Creature(ViewOnly):
 						worn_str = ", ".join(worn_txt_lst)
 						active_gs.buffer(f"The {self.full_name} is wearing: {worn_str}")
 						for obj in self.worn_lst:
-								obj.contain_disp(active_gs)								
+								obj.contain_disp(active_gs)					
 				return 
 
 		def show(self, obj, active_gs):

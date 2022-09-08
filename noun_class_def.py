@@ -41,6 +41,9 @@ class Invisible(object):
 		def	is_container(self):
 				return False
 
+		def is_portablecontainer(self):
+				return False
+
 		def is_creature(self):
 				return False
 
@@ -233,7 +236,7 @@ class Room(ViewOnly):
 						
 						Before we solve the problem, we need some nomenclature to describe it. The terminology I've chosen is "Node" from the study of binary trees (though in this case we have a non-binary tree). Imagine an inverted "tree" with one "node" at the top. This is the Room object, node_0. One level below Room we have nodes for all the visible objects in the Room. These are the node_1 objects. Some of the node_1 objects may be Receptacles and their contents are represented by Nodes on level further down: the node_2 objects. By default when we reference a node_1 object we are discussing 'absolute' node level where the current Room is node_0. But it is also possible to talk about 'relative' node level - for example, if Burt is in the Main Hall and holding the shiny_sword, then the shiny_sword has an absolute node level of node_2 (Room => Creature => Item) but a node level of node_1 relative to Burt (Burt => Item).
 						
-						SOLUTION TEXT TBD
+						SOLUTION TEXT TBD ; LIMITATION ON PORTABLECONTAINER ; NO SURFACE OR CREATURE ITEMS ; ZORK AS GUIDANCE
 				"""
 
 		# *** getters & setters ***
@@ -633,7 +636,9 @@ class Container(Door):
 				""" Returns the list of visible objects contained in the referenced ('self') object
 				"""
 				if self.is_not_closed():
-						return self.contain_lst
+						node2_lst = []
+						[node2_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in self.contain_lst]
+						return self.contain_lst + node2_lst
 				return []
 
 		def remove_item(self, item, active_gs):
@@ -647,6 +652,8 @@ class Container(Door):
 						contain_txt_lst = [obj.full_name for obj in self.contain_lst]
 						contain_str = ", ".join(contain_txt_lst)
 						active_gs.buffer(f"The {self.full_name} contains: {contain_str}")
+						for obj in self.contain_lst:
+								obj.contain_disp(active_gs)
 				return 
 
 		def cond_disp(self, active_gs):
@@ -669,7 +676,7 @@ class Container(Door):
 				""" Puts an Item in a Container.
 				
 				Implementation Details:
-						For those curious as to why containers can't hold containers or creatures, please see the doc_string on node hierarchy under the Room class
+						For those curious as to why containers can't hold surfaces or creatures, please see the doc_string on node hierarchy under the Room class
 				
 				Class Design:
 						It might appear that put() could just as well be a method of Item as it is of Container. Code-wise this would certainly work. But what quickly becomes clear when developing verb methods is that the code for testing error cases and buffering terror messages is often longer than the code for executing the command. The corollary to this realization is that we always want to associate a method with its most restrictive noun - which in the case of put() is Container. This means that we don't need to test to see if the target location for put() is a Container - the method simply can't run if it isn't. This same logic applies to other preposition type verb methods like show() and give() - which in theory could be methods of Item but which are more efficiently coded when naturally limited in use by being methods of Creature.
@@ -680,11 +687,8 @@ class Container(Door):
 				if self.is_open == False:
 						active_gs.buffer(f"The {self.full_name} is closed.")
 						return 
-				if obj.is_container():
-						active_gs.buffer("You can't put a container in a container")
-						return 
 				if obj.is_creature():
-						active_gs.buffer("You can't put a creature in a container")
+						active_gs.buffer(f"You can't put the {obj.full_name} in the {self.full_name}.")
 						return 
 				active_gs.hand_lst_remove_item(obj)
 				self.contain_lst_append(obj)
@@ -699,6 +703,28 @@ class PortableContainer(Container, Item):
 	# *** simple object methods ***
 	def is_item(self):
 		return True
+
+	def is_portablecontainer(self):
+		return True
+
+		def put(self, obj, active_gs):
+				""" Puts an Item in a PortableContainer. 
+				
+				Implementation Details:
+						For those curious as to why PortableContainers can't hold PortableContainers, please see the doc_string on node hierarchy under the Room class.
+				"""
+				if self.is_open == False:
+						active_gs.buffer(f"The {self.full_name} is closed.")
+						return 
+				if obj.is_portablecontainer() or obj.is_creature():
+						active_gs.buffer(f"You can't put the {obj.full_name} in the {self.full_name}.")
+						return 
+#				if obj.is_creature():
+#						active_gs.buffer(f"You can't put the {obj.full_name} in the {self.full_name}.")
+#						return 
+				active_gs.hand_lst_remove_item(obj)
+				self.contain_lst_append(obj)
+				active_gs.buffer("Done")
 
 class PortableLiquidContainer(PortableContainer):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
