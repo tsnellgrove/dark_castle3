@@ -425,7 +425,7 @@ Version 3.72 Goals
 			- DONE: how about creating a chk_content_prohibited() method in Container
 			- DONE: next, extend in PortableContainer
 			- DONE: extend in PortableLiquidContainer
-			- TBD: clean up comments
+			- DONE: clean up comments
 	- INPROC: node doc_string
 		- IDEA: Node Level (node_lvl) refers to the first-pass list of obj available in the room
 			- (i.e. not including those obj in containers or creatures)

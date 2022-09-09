@@ -679,7 +679,7 @@ class Container(Door):
 				""" Puts an Item in a Container.
 				
 				Implementation Details:
-						For those curious as to why containers can't hold surfaces or creatures, please see the doc_string on node hierarchy under the Room class
+						Container.chk_content_prohibited() is used to limit what can be put in a container and is extended further by PortableContainer and PortableLiquidContainer. For details on why Containers can't hold Surfaces or Creatures and why PortableContainers can't hold PortableContainers, please see the doc_string on node hierarchy under the Room class.
 				
 				Class Design:
 						It might appear that put() could just as well be a method of Item as it is of Container. Code-wise this would certainly work. But what quickly becomes clear when developing verb methods is that the code for testing error cases and buffering terror messages is often longer than the code for executing the command. The corollary to this realization is that we always want to associate a method with its most restrictive noun - which in the case of put() is Container. This means that we don't need to test to see if the target location for put() is a Container - the method simply can't run if it isn't. This same logic applies to other preposition type verb methods like show() and give() - which in theory could be methods of Item but which are more efficiently coded when naturally limited in use by being methods of Creature.
@@ -712,24 +712,7 @@ class PortableContainer(Container, Item):
 		return True
 
 	def chk_content_prohibited(self, obj):
-#		return obj.is_creature()
 		return super(PortableContainer, self).chk_content_prohibited(obj) or obj.is_portablecontainer()
-
-#		def put(self, obj, active_gs):
-#				""" Puts an Item in a PortableContainer. 
-				
-#				Implementation Details:
-#						For those curious as to why PortableContainers can't hold PortableContainers, please see the doc_string on node hierarchy under the Room class.
-#				"""
-#				if self.is_open == False:
-#						active_gs.buffer(f"The {self.full_name} is closed.")
-#						return 
-#				if obj.is_portablecontainer() or obj.is_creature():
-#						active_gs.buffer(f"You can't put the {obj.full_name} in the {self.full_name}.")
-#						return 
-#				active_gs.hand_lst_remove_item(obj)
-#				self.contain_lst_append(obj)
-#				active_gs.buffer("Done")
 
 class PortableLiquidContainer(PortableContainer):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
@@ -738,26 +721,7 @@ class PortableLiquidContainer(PortableContainer):
 		"""
 
 	def chk_content_prohibited(self, obj):
-#		return obj.is_creature()
 		return super(PortableLiquidContainer, self).chk_content_prohibited(obj) or not obj.is_liquid()
-
-#	def put(self, obj, active_gs):
-#		""" put() is over-ridden to prohibit non-liquids in PortableLiquidContainer class containers.
-				
-#		Implementation Detail:
-#			I wanted this to be an extension of Container.put() and using super does throw the correct error when Burt tries to put a non-liquid in the glass_bottle... but only after the object is put in the bottle. So I chose to over-ride the method completely. Note that there's no need to check for obj.is_container() or obj.is_creature() since we already restrict the method to liquids.
-				
-#			Note - this code worked to extend the method from Container.put(): super(PortableLiquidContainer, self).put(obj, active_gs)
-#		"""
-#		if self.is_open == False:
-#			active_gs.buffer(f"The {self.full_name} is closed.")
-#			return 
-#		if not obj.is_liquid():
-#			active_gs.buffer(f"The {self.full_name} can only hold liquids.")
-#			return 
-#		active_gs.hand_lst_remove_item(obj)
-#		self.contain_lst_append(obj)
-#		active_gs.buffer("Done")
 
 class Food(Item):
 		def __init__(self, name, full_name, root_name, descript_key, writing, eat_desc_key):
