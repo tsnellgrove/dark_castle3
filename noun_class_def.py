@@ -232,11 +232,11 @@ class Room(ViewOnly):
 				Program Architecture:
 						Rooms are a good time to pause and discuss Receptacles and Nodes. Any visible object that can hold an Item is a Receptacle (i.e. Containers, Creatures, and Surfaces). As discussed in the Container method, Receptacles are 'smart' (i.e. they know what they contain) and Items are 'dumb' (i.e. they don't know what contains them). This means that to generate a list of all visible objects in a room (e.g. via get_vis_contain_lst() ) we need to first compile a list of immediately available objects and then, if any of them are open Receptacles, we need to list all of the ojbects inside *them*. But what if one of the objects inside a Receptacle is, itself, a Receptacle? 
 						
-						In theory, this could get deeply recursive. One obvious answer is "Just don't create very many PortableContainers in the game." But, hypoetheically, the goal is here is to create a tool set that could be used by others to build their own text adventure games... so we would like to put in place some prescriptive guard rails.
+						In theory, this could get deeply recursive. One obvious way to avoid this is "Just don't create very many PortableContainers in the game." But, hypoetheically, the goal is here is to create a tool set that could be used by others to build their own text adventure games... so we would like to put in place some prescriptive guard rails.
 						
 						Before we solve the problem, we need some nomenclature to describe it. The terminology I've chosen is "Node" from the study of binary trees (though in this case we have a non-binary tree). Imagine an inverted "tree" with one "node" at the top. This is the Room object, node_0. One level below Room we have nodes for all the visible objects in the Room. These are the node_1 objects. Some of the node_1 objects may be Receptacles and their contents are represented by Nodes on level further down: the node_2 objects. By default when we reference a node_1 object we are discussing 'absolute' node level where the current Room is node_0. But it is also possible to talk about 'relative' node level - for example, if Burt is in the Main Hall and holding the shiny_sword, then the shiny_sword has an absolute node level of node_2 (Room => Creature => Item) but a node level of node_1 relative to Burt (Burt => Item).
 						
-						SOLUTION TEXT TBD ; LIMITATION ON PORTABLECONTAINER ; NO SURFACE OR CREATURE ITEMS ; ZORK AS GUIDANCE
+						So now that we have have a nomenclature, the key question is: "How do we want the game to work?" Whe could use recursion to allow containers to be indefinitely nested... but this gets cumbersome and hard to represent to the user. 
 				"""
 
 		# *** getters & setters ***
