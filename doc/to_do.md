@@ -423,7 +423,7 @@ Version 3.72 Goals
 			- Zork Kitchen as key reference
 		- INPROC: Not thrilled with 3 independent versions of put()
 			- DONE: how about creating a chk_contents_prohibited() method in Container
-			- TBD: next, extend in PortableContainer
+			- DONE: next, extend in PortableContainer
 			- TBD: extend in PortableLiquidContainer
 			- TBD: clean up comments
 	- INPROC: node doc_string

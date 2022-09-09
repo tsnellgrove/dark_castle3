@@ -711,24 +711,25 @@ class PortableContainer(Container, Item):
 	def is_portablecontainer(self):
 		return True
 
-		def put(self, obj, active_gs):
-				""" Puts an Item in a PortableContainer. 
+	def chk_contents_prohibited(self, obj):
+#		return obj.is_creature()
+		return super(PortableContainer, self).chk_contents_prohibited(obj) or obj.is_portablecontainer()
+
+#		def put(self, obj, active_gs):
+#				""" Puts an Item in a PortableContainer. 
 				
-				Implementation Details:
-						For those curious as to why PortableContainers can't hold PortableContainers, please see the doc_string on node hierarchy under the Room class.
-				"""
-				if self.is_open == False:
-						active_gs.buffer(f"The {self.full_name} is closed.")
-						return 
-				if obj.is_portablecontainer() or obj.is_creature():
-						active_gs.buffer(f"You can't put the {obj.full_name} in the {self.full_name}.")
-						return 
-#				if obj.is_creature():
+#				Implementation Details:
+#						For those curious as to why PortableContainers can't hold PortableContainers, please see the doc_string on node hierarchy under the Room class.
+#				"""
+#				if self.is_open == False:
+#						active_gs.buffer(f"The {self.full_name} is closed.")
+#						return 
+#				if obj.is_portablecontainer() or obj.is_creature():
 #						active_gs.buffer(f"You can't put the {obj.full_name} in the {self.full_name}.")
 #						return 
-				active_gs.hand_lst_remove_item(obj)
-				self.contain_lst_append(obj)
-				active_gs.buffer("Done")
+#				active_gs.hand_lst_remove_item(obj)
+#				self.contain_lst_append(obj)
+#				active_gs.buffer("Done")
 
 class PortableLiquidContainer(PortableContainer):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
