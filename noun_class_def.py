@@ -632,7 +632,7 @@ class Container(Door):
 		def	is_container(self):
 				return True
 
-		def chk_contents_prohibited(self, obj):
+		def chk_content_prohibited(self, obj):
 				return obj.is_creature()
 
 		def remove_item(self, item, active_gs):
@@ -690,7 +690,7 @@ class Container(Door):
 				if self.is_open == False:
 						active_gs.buffer(f"The {self.full_name} is closed.")
 						return
-				if self.chk_contents_prohibited(obj):
+				if self.chk_content_prohibited(obj):
 #				if obj.is_creature():
 						active_gs.buffer(f"You can't put the {obj.full_name} in the {self.full_name}.")
 						return 
@@ -711,9 +711,9 @@ class PortableContainer(Container, Item):
 	def is_portablecontainer(self):
 		return True
 
-	def chk_contents_prohibited(self, obj):
+	def chk_content_prohibited(self, obj):
 #		return obj.is_creature()
-		return super(PortableContainer, self).chk_contents_prohibited(obj) or obj.is_portablecontainer()
+		return super(PortableContainer, self).chk_content_prohibited(obj) or obj.is_portablecontainer()
 
 #		def put(self, obj, active_gs):
 #				""" Puts an Item in a PortableContainer. 
@@ -737,23 +737,27 @@ class PortableLiquidContainer(PortableContainer):
 		"""A container that holds liquids and can be taken.
 		"""
 
-	def put(self, obj, active_gs):
-		""" put() is over-ridden to prohibit non-liquids in PortableLiquidContainer class containers.
+	def chk_content_prohibited(self, obj):
+#		return obj.is_creature()
+		return super(PortableLiquidContainer, self).chk_content_prohibited(obj) or not obj.is_liquid()
+
+#	def put(self, obj, active_gs):
+#		""" put() is over-ridden to prohibit non-liquids in PortableLiquidContainer class containers.
 				
-		Implementation Detail:
-			I wanted this to be an extension of Container.put() and using super does throw the correct error when Burt tries to put a non-liquid in the glass_bottle... but only after the object is put in the bottle. So I chose to over-ride the method completely. Note that there's no need to check for obj.is_container() or obj.is_creature() since we already restrict the method to liquids.
+#		Implementation Detail:
+#			I wanted this to be an extension of Container.put() and using super does throw the correct error when Burt tries to put a non-liquid in the glass_bottle... but only after the object is put in the bottle. So I chose to over-ride the method completely. Note that there's no need to check for obj.is_container() or obj.is_creature() since we already restrict the method to liquids.
 				
-			Note - this code worked to extend the method from Container.put(): super(PortableLiquidContainer, self).put(obj, active_gs)
-		"""
-		if self.is_open == False:
-			active_gs.buffer(f"The {self.full_name} is closed.")
-			return 
-		if not obj.is_liquid():
-			active_gs.buffer(f"The {self.full_name} can only hold liquids.")
-			return 
-		active_gs.hand_lst_remove_item(obj)
-		self.contain_lst_append(obj)
-		active_gs.buffer("Done")
+#			Note - this code worked to extend the method from Container.put(): super(PortableLiquidContainer, self).put(obj, active_gs)
+#		"""
+#		if self.is_open == False:
+#			active_gs.buffer(f"The {self.full_name} is closed.")
+#			return 
+#		if not obj.is_liquid():
+#			active_gs.buffer(f"The {self.full_name} can only hold liquids.")
+#			return 
+#		active_gs.hand_lst_remove_item(obj)
+#		self.contain_lst_append(obj)
+#		active_gs.buffer("Done")
 
 class Food(Item):
 		def __init__(self, name, full_name, root_name, descript_key, writing, eat_desc_key):

@@ -422,9 +422,9 @@ Version 3.72 Goals
 			- But PortableContainers CAN'T be put in PortableContainers
 			- Zork Kitchen as key reference
 		- INPROC: Not thrilled with 3 independent versions of put()
-			- DONE: how about creating a chk_contents_prohibited() method in Container
+			- DONE: how about creating a chk_content_prohibited() method in Container
 			- DONE: next, extend in PortableContainer
-			- TBD: extend in PortableLiquidContainer
+			- DONE: extend in PortableLiquidContainer
 			- TBD: clean up comments
 	- INPROC: node doc_string
 		- IDEA: Node Level (node_lvl) refers to the first-pass list of obj available in the room
