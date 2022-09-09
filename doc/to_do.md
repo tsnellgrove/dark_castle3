@@ -421,6 +421,11 @@ Version 3.72 Goals
 			- PortableContainers CAN be put in Containers
 			- But PortableContainers CAN'T be put in PortableContainers
 			- Zork Kitchen as key reference
+		- INPROC: Not thrilled with 3 independent versions of put()
+			- DONE: how about creating a chk_contents_prohibited() method in Container
+			- TBD: next, extend in PortableContainer
+			- TBD: extend in PortableLiquidContainer
+			- TBD: clean up comments
 	- INPROC: node doc_string
 		- IDEA: Node Level (node_lvl) refers to the first-pass list of obj available in the room
 			- (i.e. not including those obj in containers or creatures)

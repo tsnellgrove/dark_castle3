@@ -632,6 +632,13 @@ class Container(Door):
 		def	is_container(self):
 				return True
 
+		def chk_contents_prohibited(self, obj):
+				return obj.is_creature()
+
+		def remove_item(self, item, active_gs):
+				self.contain_lst_remove(item)
+
+		# *** complex obj methods ***
 		def get_vis_contain_lst(self, active_gs):
 				""" Returns the list of visible objects contained in the referenced ('self') object
 				"""
@@ -641,10 +648,6 @@ class Container(Door):
 						return self.contain_lst + node2_lst
 				return []
 
-		def remove_item(self, item, active_gs):
-				self.contain_lst_remove(item)
-
-		# *** complex obj methods ***
 		def contain_disp(self, active_gs):
 				""" Displays a description of the visible items held by the obj. Used in examine().
 				"""
@@ -686,8 +689,9 @@ class Container(Door):
 				"""
 				if self.is_open == False:
 						active_gs.buffer(f"The {self.full_name} is closed.")
-						return 
-				if obj.is_creature():
+						return
+				if self.chk_contents_prohibited(obj):
+#				if obj.is_creature():
 						active_gs.buffer(f"You can't put the {obj.full_name} in the {self.full_name}.")
 						return 
 				active_gs.hand_lst_remove_item(obj)
