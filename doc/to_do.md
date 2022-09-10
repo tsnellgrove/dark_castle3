@@ -57,8 +57,9 @@ Aug 10, 2022
 		- 'is' for methods where no varriable is passed but a bool is returned; e.g. 'obj.is_item()'
 		- 'chk' for a method where you will send an obj and get back a bool
 		- 'get' for a method that will return a 'usuable' obj var
-	- postfixes:
 		- 'disp' if a method's main purpose is to buffer content
+	- postfixes:
+		- N/A
 
 
 *** NOTES ***
@@ -296,7 +297,7 @@ Version 3.72 Goals
 		- DONE: raise error if no return in loop
 		- DONE: doc_strings
 	- DONE: update doc_string for Door
-- INPROC: refactor Room class
+- DONE: refactor Room class
 	- DONE: rename vars
 		- DONE: features => feature_lst
 			- DONE: noun_class_def
@@ -315,7 +316,7 @@ Version 3.72 Goals
 		- DONE: should be able to get basic descriptions from Container and Creature classes
 			- DONE: need methods in class for this - reuse in Container & Creature examine
 		- DONE: for look, don't show container contents as 'nothing' if the container is_empty()
-		- INPROC: universalize use of title, description, writing, condition, vis_obj_lst
+		- DONE: universalize use of title, description, writing, condition, vis_obj_lst
 			- DONE: update examine() with obj_cond_disp()
 				- DONE: ViewOnly
 					- DONE: Update ViewOnly.examine()
@@ -444,7 +445,14 @@ Version 3.72 Goals
 				- The limit could be imposed at the give(), show(), take(), and put_in_hand() mehtods
 			- if this caused serius issues there could be a modular machine to swap in a dummy non-container obj
 			- could also run a pre-start check on container & creature to throw errors on illegal contents
-- make 'disp' a method prefix???
+- INPROC: make 'disp' a method prefix???
+	- DONE: contain_disp => disp_contain
+		- DONE: creature_class_def
+		- DONE: noun_class_def
+		- DONE: test
+	- TBD: cond_disp => disp_cond
+		- TBD: switch_class_def
+		- TBD: noun_class_def
 
 MAYBE JUST MAKE BURT A CREATURE NEXT?
 

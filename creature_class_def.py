@@ -161,19 +161,19 @@ class Creature(ViewOnly):
 ##				return self.hand_lst + self.worn_lst + self.feature_lst # when Creatures couldn't hold Containers this was the whole method
 				return node1_item_lst + contain_lst + self.feature_lst
 
-		def contain_disp(self, active_gs):
+		def disp_contain(self, active_gs):
 				""" Displays a description of the visible items held by the obj. Used in examine().
 				"""
 				if not self.hand_empty():
 						active_gs.buffer(f"The {self.full_name} is holding a {self.hand_item().full_name}")
 						for obj in self.hand_lst:
-								obj.contain_disp(active_gs)
+								obj.disp_contain(active_gs)
 				if not self.worn_empty():
 						worn_txt_lst = [obj.full_name for obj in self.worn_lst]
 						worn_str = ", ".join(worn_txt_lst)
 						active_gs.buffer(f"The {self.full_name} is wearing: {worn_str}")
 						for obj in self.worn_lst:
-								obj.contain_disp(active_gs)					
+								obj.disp_contain(active_gs)					
 				return 
 
 		def show(self, obj, active_gs):

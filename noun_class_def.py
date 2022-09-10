@@ -177,7 +177,7 @@ class ViewOnly(Writing):
 				pass
 				return 
 
-		def contain_disp(self, active_gs):
+		def disp_contain(self, active_gs):
 				pass
 				return 
 
@@ -216,7 +216,7 @@ class ViewOnly(Writing):
 				if self.has_writing():
 						active_gs.buffer(f"On the {self.full_name} you see: {self.writing.full_name}")
 				self.cond_disp(active_gs)
-				self.contain_disp(active_gs)
+				self.disp_contain(active_gs)
 				return
 
 class Room(ViewOnly):
@@ -343,14 +343,14 @@ class Room(ViewOnly):
 				"""
 				active_gs.buffer(active_gs.map.get_door_str(self))
 
-		def contain_disp(self, active_gs):
+		def disp_contain(self, active_gs):
 				""" Displays a description of the visible items held by the obj. Used in examine().
 				"""
 				room_item_lst = []
 				for obj in self.floor_lst:
 						if not obj.is_item():
 								active_gs.buffer("There is a " + obj.full_name + " here.")
-								obj.contain_disp(active_gs)
+								obj.disp_contain(active_gs)
 						else:
 								room_item_lst.append(obj)
 				if room_item_lst:
@@ -358,7 +358,7 @@ class Room(ViewOnly):
 						room_item_str = ", ".join(room_txt_lst)
 						active_gs.buffer("The following items are here: " + room_item_str)
 				for obj in room_item_lst:
-						obj.contain_disp(active_gs)
+						obj.disp_contain(active_gs)
 				return 
 
 		def go(self, dir, active_gs):
@@ -648,7 +648,7 @@ class Container(Door):
 						return self.contain_lst + node2_lst
 				return []
 
-		def contain_disp(self, active_gs):
+		def disp_contain(self, active_gs):
 				""" Displays a description of the visible items held by the obj. Used in examine().
 				"""
 				if self.is_not_closed() and not self.is_empty():
@@ -656,7 +656,7 @@ class Container(Door):
 						contain_str = ", ".join(contain_txt_lst)
 						active_gs.buffer(f"The {self.full_name} contains: {contain_str}")
 						for obj in self.contain_lst:
-								obj.contain_disp(active_gs)
+								obj.disp_contain(active_gs)
 				return 
 
 		def cond_disp(self, active_gs):
@@ -673,7 +673,7 @@ class Container(Door):
 				"""
 				if self.is_empty():
 						active_gs.buffer(f"The {self.full_name} is empty.")
-				self.contain_disp(active_gs)
+				self.disp_contain(active_gs)
 
 		def put(self, obj, active_gs):
 				""" Puts an Item in a Container.
