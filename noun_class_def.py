@@ -173,7 +173,7 @@ class ViewOnly(Writing):
 				pass
 				return 
 
-		def cond_disp(self, active_gs):
+		def disp_cond(self, active_gs):
 				pass
 				return 
 
@@ -215,7 +215,7 @@ class ViewOnly(Writing):
 				active_gs.buffer(self.get_descript_str(active_gs))
 				if self.has_writing():
 						active_gs.buffer(f"On the {self.full_name} you see: {self.writing.full_name}")
-				self.cond_disp(active_gs)
+				self.disp_cond(active_gs)
 				self.disp_contain(active_gs)
 				return
 
@@ -338,7 +338,7 @@ class Room(ViewOnly):
 				raise ValueError(f"Can't remove item {item} from room {self.name}")
 				return 
 
-		def cond_disp(self, active_gs):
+		def disp_cond(self, active_gs):
 				""" Displays object-specific conditions. Used in examine().
 				"""
 				active_gs.buffer(active_gs.map.get_door_str(self))
@@ -491,7 +491,7 @@ class Door(ViewOnly):
 				return self.is_open is not False
 
 		# *** complex obj methods ***
-		def cond_disp(self, active_gs):
+		def disp_cond(self, active_gs):
 				""" Displays object-specific conditions. Used in examine().
 				"""
 				if self.is_open is None:
@@ -659,8 +659,8 @@ class Container(Door):
 								obj.disp_contain(active_gs)
 				return 
 
-		def cond_disp(self, active_gs):
-				super(Container, self).cond_disp(active_gs)
+		def disp_cond(self, active_gs):
+				super(Container, self).disp_cond(active_gs)
 				""" Displays object-specific conditions. Used in examine().
 				"""
 				if self.is_empty() and self.is_not_closed():

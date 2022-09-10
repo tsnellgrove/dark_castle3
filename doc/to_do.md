@@ -445,14 +445,15 @@ Version 3.72 Goals
 				- The limit could be imposed at the give(), show(), take(), and put_in_hand() mehtods
 			- if this caused serius issues there could be a modular machine to swap in a dummy non-container obj
 			- could also run a pre-start check on container & creature to throw errors on illegal contents
-- INPROC: make 'disp' a method prefix???
+- DONE: make 'disp' a method prefix???
 	- DONE: contain_disp => disp_contain
 		- DONE: creature_class_def
 		- DONE: noun_class_def
 		- DONE: test
-	- TBD: cond_disp => disp_cond
-		- TBD: switch_class_def
-		- TBD: noun_class_def
+	- DONE: cond_disp => disp_cond
+		- DONE: switch_class_def
+		- DONE: noun_class_def
+		- DONE: test
 
 MAYBE JUST MAKE BURT A CREATURE NEXT?
 
