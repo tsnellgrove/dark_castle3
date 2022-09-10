@@ -454,6 +454,8 @@ Version 3.72 Goals
 		- DONE: switch_class_def
 		- DONE: noun_class_def
 		- DONE: test
+- TBD: update 'version', to_do.md, and done.md; commit and tag!
+
 
 MAYBE JUST MAKE BURT A CREATURE NEXT?
 
