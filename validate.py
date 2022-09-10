@@ -1,6 +1,6 @@
-# program: dark castle v3.70
+# program: dark castle v3.72
 # name: Tom Snellgrove
-# date: July 24, 2022
+# date: Sept 10, 2022
 # description: module to validate user_input
 
 

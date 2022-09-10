@@ -1,6 +1,6 @@
 To Do List - Dark Castle v3
 
-Aug 10, 2022
+Sept 10, 2022
 
 *** Need a new IDE ***
 - iPad / offline: Pyto
@@ -33,16 +33,16 @@ Aug 10, 2022
 *** Var and Method Naming Conventions ***
 - general:
 	- use singular, not the pluaral form of words in variable names (e.g. use 'object_lst', not "objects_lst')
-	- avoid the term 'scope' since there are different scopes for different actions... prefer terms like 'is_vis'
+	- avoid the term 'scope' since there are different scopes for different actions... prefer terms like 'vis'
 	- do NOT reference the class in the attribute - the attribute will always appear w/ the class: creature.state vs. creature.creature_state
-	- do NOT attempt a rigorous and exhaustive naming conventions - this way lies madness and very long vars. Embrace function / method context! 
+	- do NOT attempt a rigorous and exhaustive naming convention - this way lies madness and very long vars. Embrace function context! 
 	- be biased towards shorter vars; bend naming rules as needed to achieve shorter vars; shorter vars == more readable code!
 	- use consistent attribute and method naming across classes whenever possible - especially classes that could be grouped together.
 		- This approach allows for easy itteration across an amorphous list of objects.
 - classes:
 	- prefer generic naming for classes (e.g. Container and Surface vs. Chest and Shelf)
 	- class attributes should be named after physical features of the class, NOT their expected data types: hand_lst, bkpk_lst, worn_lst
-		- class data types can be grouped via methods whose naming denotes the data type: vis_lst, all_lst, mach_lst
+		- class data types can be grouped via methods whose naming denotes the data type: vis_lst, mach_lst
 - attributes:
 	- prefixes:
 		- 'is' for bools
@@ -51,7 +51,7 @@ Aug 10, 2022
 		- 'dict' for dictionaries
 		- 'str' for strings
 		- do NOT use 'obj'; vars are assumed to be obj by default
-			- If similar obj and non-obj vars appear in same function, diff w/ post-fix: e.g. worn_lst vs. worn_lst_str
+			- If similar obj and non-obj vars appear in same function, diff the non-obj case: e.g. worn_lst vs. worn_str_lst
 - methods
 	- prefixes:
 		- 'is' for methods where no varriable is passed but a bool is returned; e.g. 'obj.is_item()'
@@ -186,390 +186,10 @@ Basic Refactor Steps:
 
 
 ##########################
-### VERSION 3.72 START ###
-##########################
-
-Version 3.72 Goals
-- pre-Burt-to-creature conversion clean-up in Creature, Room, and Container classes and scope methods, std nouns
-- keep exercising refactor skills!
-
-- DONE: refactor Item
-	- DONE: first-pass refactor of take()
-		- DONE: var names:
-			- DONE: room_obj => room
-			- DONE: room_obj_lst => floor_lst
-		- DONE: use f-string
-		- DONE: use if-then shield pattern
-		- CANCEL: refactor take from creature failure with any
-		- DONE: create remove_item() method in room and call from take()
-			- DONE: create chk_contain_item() and remove_item() method in Container, Creature, GameState (temp), and ViewOnly (False)
-			- DONE: in room.remove_item(), check if item in floor_lst. If not, loop through floor_lst and  if chk_in_contain_lst, remove_contain_lst 
-			- DONE: call room.remove from take
-			- DONE: lots of testing!
-		- DONE: org attrib vs. obj methods using comments
-		- DONE: re-add worn removal message to active_gs.worn_lst_remove_item(self)
-	- DONE: refactor drop()
-	- DONE: doc_string
-		- DONE: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
-		- DONE: turns out that any() does not work well here:
-			- DONE: 2nd condition can't be undefined
-			- DONE: I don't get access to 'obj' outside the expression (so I can't include the creature's name in the error string)
-		- DONE: Room (not Item) should be authoritative for where an item can be found (since Room provides is_vis() )
-			- CANCEL: should creature test be in room? unique error requires obj full_name so decided not
-		- DONE: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
-		- DONE: drop
-- DONE: PortableContainer
-	- DONE: introduce PortableContainer class (was Suitcase) (dual inheritance from Container & Item)
-	- DONE: instantiate black_suitcase (test with rusty_key & cheese_wedge)
-- DONE: refactor Beverage
-	- DONE: rename class to Liquid
-		- DONE: noun_class_def()
-		- DONE: mk_def_pkl()
-	- DONE: rename method is_beverage() to is_liquid()
-		- DONE: noun_class_def()
-		- DONE: validate()
-	- DONE: org methods
-	- DONE: if-then guard technique
-	- DONE: f-string
-	- DONE: elim temp vers (except hand_lst)
-	- DONE: descript_key => auto-gen key
-		- DONE: implement auto-gen key
-		- DONE: elim attribute key
-		- DONE: elim descript_dict entry for attribute key
-	- DONE: doc_strings
-- DONE: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
-	- DONE: testing fail on put non-liquid in glass_bottle; in cmd_exe debug mode
-	- DONE: put() for jug fails if obj not is_beverage
-	- DONE: elim print_contents_str() 
-	- DONE: eliminate Jug (replaced by generically named PortableLiquidContainer)
-	- DONE: elim obj_lst_to_str (move funct to *** local funcs *** in gs_class_def.py); move shared_class_func module to 'legacy' folder
-- DONE: refactor map
-	- DONE: create Map class
-		- DONE: create map_class_def.py module
-		- DONE: create Map class with attribute = map_lst
-		- DONE: in mk_def_pkl, import Map
-		- DONE: in mk_def_pkl, instantiate map lst of dicts
-		- DONE: in gs_class_def, add map attribute
-		- DONE: in mk_def_pkl, add instantiated map to active_gs
-	- DONE: map.chk_obj_exist method (was chk_obj_in_map() then was map.chk_obj_in_any_floor_lst() )
-		- DONE: create method map.chk_obj_in_any_floor_lst # checks of obj in floor_lst in each room in map
-		- DONE: create method chk_name_exist( (was chk_name_in_any_floor_lst() )
-		- DONE: rename Room room_obj_lst => floor_lst
-		- DONE: update score to use mapchk_name_exist()
-		- DONE: update cond with map.chk_obj_exist
-		- DONE: confirm that active_gs.obj_exist and active_gs.obj_name_exist are no longer needed('goblin_dead' case also addressed in score() )
-		- DONE: eliminate active_gs.obj_exist and active_gs.obj_name_exist
-	- DONE: door_lst() method
-		- DONE: create door_lst() method to provide list of doors in room
-		- DONE: add map.door_lst() to active_gs scope method
-		- DONE: add map.door_lst() to room.examine
-		- DONE: remove doors from room.floor_lst in mk_def_pkl()
-	- DONE: obj_cond_disp
-		- DONE: create obj_cond_disp method to provide door condition (door / passage names and directions) for room
-		- DONE: add to room.examine()
-	- DONE: update go() method to use active_gs.map
-		- DONE: create gs.map.is_valid_dir(self, room)
-		- DONE: use gs.map.is_valid_dir(self, room) in go() method
-		- DONE: create gs.map.get_door(room) method
-		- DONE: use get_door() in go()
-		- DONE: create gs.map.next_room(room) method
-		- DONE: use get_next_room() in go
-	- DONE: eliminate legacy attributes and methods
-		- DONE: elim gs.room_lst
-		- DONE: elim gs.map_dict attributes
-		- DONE: elim room.door_dict
-		- DONE: elim active_gs.is_valid_map_direction()
-		- DONE: elim room.self.door_in_path()
-		- DONE: elim room.get_door()
-		- DONE: elim active_gs.get_next_room()
-	- DONE: implement unreachable_room to resolve condition strings for Entrance (e, w, & s)
-		- DONE: create 3x rooms: unreachable_1, unreachable_2, unreachable_3
-		- DONE: update room condition str to read better for outside (replace 'door' = None with passage_str) [error - walked through portcullis!]
-		- DONE: fix use of 'and' and 'commas'
-		- DONE: update 'fake' descript of Entrance in startup()
-	- DONE: go back and refactor Map class
-		- DONE: review imports
-		- DONE: std var names
-		- DONE: comment attributes
-		- DONE: nested for loops
-		- DONE: list comprehension with nested for loops
-		- DONE: use any() pattern for bool outcome
-		- DONE: raise error if no return in loop
-		- DONE: doc_strings
-	- DONE: update doc_string for Door
-- DONE: refactor Room class
-	- DONE: rename vars
-		- DONE: features => feature_lst
-			- DONE: noun_class_def
-		- DONE: room_obj_lst => floor_lst
-			- DONE: noun_class_def
-			- DONE: gs_class_def
-			- DONE: creature_class_def
-			- DONE: cond_class_def
-			- DONE: result_class_def
-		- DONE: invis_obj_lst to invis_lst
-			- DONE: noun_class_def
-			- DONE: gs_class_def
-	- DONE: refactor examine
-		- DONE: exmine titles for rooms as separate buffer line (enables brief / verbose and also diff dict)
-			- DONE: if obj.get_title_str() not None: gs.buffer(if obj.get_title_str()) ; for Room => def get_title_str(self): return self.full_name
-		- DONE: should be able to get basic descriptions from Container and Creature classes
-			- DONE: need methods in class for this - reuse in Container & Creature examine
-		- DONE: for look, don't show container contents as 'nothing' if the container is_empty()
-		- DONE: universalize use of title, description, writing, condition, vis_obj_lst
-			- DONE: update examine() with obj_cond_disp()
-				- DONE: ViewOnly
-					- DONE: Update ViewOnly.examine()
-					- DONE: create default def obj_cond_disp(): => pass
-				- DONE: Room
-				- DONE: Door
-				- DONE: Container
-				- DONE: Creature
-				- DONE: Switch
-			- DONE: finalize approach to multiple conditions (e.g. Container)
-				- DONE: extended obj_cond_disp() in Container
-			- DONE: update examine() with self.vis_obj_disp(active_gs)
-				- DONE: ViewOnly
-					- DONE: Update ViewOnly.examine()
-					- DONE: create default def vis_obj_disp(active_gs) => pass
-				- DONE: Room
-				- DONE: Container
-				- DONE: Creature
-			- DONE: Finalize change
-				- DONE: update ViewOnly.examine() doc_string
-					- DONE: 5x components of examine(); Why lock down examine()? 1) Codifies presentation, 2) enables brief and verbose
-					- DONE: cons: leads to an outline-style description; harder to textify
-				- DONE: rename obj_cond_disp() => cond_disp()
-					- DONE: noun_class_def
-					- DONE: switch_class_def
-				- DONE: rename vis_obj_disp() => contain_disp()
-					- DONE: noun_class_def
-					- DONE: creature_class_def
-				- DONE: clean up comments in noun_class_def.py, switch_class_def.py, & creature_class_def.py
-				- DONE: update doc_strings for cond_disp() and contain_disp()
-	- DONE: move GameState scope methods to Room
-		- IDEA: scope method => room.vis_contain_lst = self + doors + Legacy + self.feature_lst + for obj in floor_lst: extend(obj.vis_contain_lst)
-		- IDEA: post Burt to Creature move => if statement in Creature.vis_contain_lst to include self.bkpk_lst & additional node depth
-		- DONE: rename vis_lst() => vis_contain_lst()
-			- DONE: noun_class_def
-			- DONE: creature_class_def
-			- DONE: gs_class_def
-		- DONE: create room.vis_contain_lst()
-		- DONE: test room.vis_contain_lst()
-			- DONE: interp
-			- DONE: gs_class_def
-			- DONE: noun_class_def
-		- DONE: redirect scope calls to room.vis_contain_lst()
-		- DONE: elim room_element_lst()
-		- DONE: comment clean-up
-	- DONE: move GameState chk_wrt_is_vis() to Room
-		- DONE: crate chk_wrt_is_vis() in Room
-		- DONE: migrate refs to Room
-			- DONE: validate()
-			- DONE: noun_class_def()
-		- DONE: clean up comments
-	- DONE: move GameState scope_check() to Room
-		- DONE: in Room, rename to chk_is_vis()
-		- DONE: migrate refs to Room
-			- DONE: validate
-			- DONE: mach_class_def
-			- DONE: noun_class_def
-			- DONE: gs_class_def
-		- DONE: clean up comments
-	- DONE: investigate all 3 mach scope methods in GameState
-		- DONE: it appears that def auto_in_alert_scope() is never called
-		- DONE: it appears that only mach_obj_lst() and auto_in_alert_scope() ever call room_mach_lst()
-	- DONE: simplify mach scope methods in GameState
-		- DONE: merge room_mach_lst() => mach_obj_lst()
-		- DONE: elim auto_in_alert_scope()
-		- DONE: testing
-		- DONE: clean up comments
-	- DONE: move GameState mach_obj_lst() method to Room
-		- DONE: troubleshoot use of is_mach()
-			- DONE: clean up comments
-		- DONE: rename mach_obj_lst() to get_mach_lst() and create in Room
-		- DONE: refactor as needed
-			- DONE: prefer use of mach_lst.append(Creature.invis_lst) over Creature all_lst() => mach_lst()
-		- DONE: migrate refs to Room
-			- DONE: pre_action()
-			- DONE: post_action()
-			- DONE: auto_action()
-			- DONE; gs_class_def()
-		- DONE: clean up comments (creature_class_def, pre_action(), post_action(), auto_action() )
-		- DONE: comment out / elim Creature all_lst() and mach_lst()
-	- DONE: rename vis_contain_lst() to get_vis_contain_lst() ???
-		- DONE: noun_class_def
-		- DONE: creature_class_def
-		- DONE: interp
-	- DONE: refactor room next steps
-		- DONE: comment each attribute
-		- DONE: simple doc_strings
-		- DONE: update creature & container restrictions
-			- DONE: container can't hold container or creature (or, someday, surface) [limit in put()]
-			- DONE: creature can't hold creature (or, someday, surface) [limit in show() & give()]
-			- DONE: update get_vis_contain_lst()
-				- DONE: sort out contain_lst list comprehension
-			- DONE: update contain_disp()
-			- DONE: test royal_hedgehog with hand_lst == [glass_bottle]
-		- DONE: New node level rules:
-			- containers can't hold containers or creatures (or, someday, surfaces)
-			- creatures can't hold creatures (or, someday, surfaces)
-			- someday, surfaces can't hold creatures or surfaces
-			- This aligns all creatures with Burt definition and means a max search depth of node 3
-				- e.g. Room => Creature => PortableContainer => obj or Room => Surface => PortableContainer => obj
-		- DONE: New, NEW, node level rules
-			- Creatures and Surfaces can't be put in Containers
-			- PortableContainers CAN be put in Containers
-			- But PortableContainers CAN'T be put in PortableContainers
-			- Zork Kitchen as key reference
-		- INPROC: Not thrilled with 3 independent versions of put()
-			- DONE: how about creating a chk_content_prohibited() method in Container
-			- DONE: next, extend in PortableContainer
-			- DONE: extend in PortableLiquidContainer
-			- DONE: clean up comments
-	- DONE: node doc_string
-		- IDEA: Node Level (node_lvl) refers to the first-pass list of obj available in the room
-			- (i.e. not including those obj in containers or creatures)
-		- Imagine an inverted tree... node_0 is at top (say room)
-			- node_1 are immedaite contents of node_0
-			- node_2 = the contents of node_1 obj
-		- we can talk about relative vs. absolute node levels
-			- the goal is for look to return information on node_lvl 0, 1, & 2
-				- receptacle = container, creature, surface
-				- (i.e. describe the room, room contents, and items inside room receptacles)
-				- inventory is similar - it is the node_lvl 0, 1, & 2 description of Burt
-			- however, we want all node levels to actually be in scope
-				- we do NOT want node levels to go too deep... we already forbid containers from holding containers or creatues
-				- we could also forbid creatures (other than Burt) from holding creatuers or containers...
-				- This would make our max node level = 3: entrance => burt_hand => bottle => water
-				- The limit could be imposed at the give(), show(), take(), and put_in_hand() mehtods
-			- if this caused serius issues there could be a modular machine to swap in a dummy non-container obj
-			- could also run a pre-start check on container & creature to throw errors on illegal contents
-- DONE: make 'disp' a method prefix???
-	- DONE: contain_disp => disp_contain
-		- DONE: creature_class_def
-		- DONE: noun_class_def
-		- DONE: test
-	- DONE: cond_disp => disp_cond
-		- DONE: switch_class_def
-		- DONE: noun_class_def
-		- DONE: test
-- TBD: update 'version', to_do.md, and done.md; commit and tag!
-
-
-MAYBE JUST MAKE BURT A CREATURE NEXT?
-
-NEW VERSION?
-- TBD: move room to dedicated module
-- TBD: reduce Room indent to 1 tab
-- TBD: move 'base' to dedicaated module
-- TBD: reduce 'base' indent to 1 tab
-- TBD: move Rooms & Containers to dedicated module
-- TBD: reduce R&C indent to 1 tab
-- INPROC: class by class, reduce from double-tab to single tab
-	- DONE: web_main.py
-	- DONE: map_class_def.py
-	- INPROC: noun_class_def.py
-		- DONE: PortableContainer
-		- DONE: PortableLiquidContainer
-		- TBD: next!
-
-##########################
 ### VERSION 3.73 START ###
 ##########################
 
 Version 3.73 Goals
-- finish noun refactor
-- create a class for descriptions
-- create a Surface class
-- rename active_gs => gs
-
-
-- TBD: refactor Clothes => Garments
-	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
-	- CANCEL: create Garment class-specific remove() method that calls take() ??
-	- TBD: auto-gen keys
-		- TBD: implement try for auto-gen key on both append and remove methods
-		- TBD: consider auto-gen keys for all verb methods (probably not)
-		- TBD: Organize auto-gen keys together
-		- TBD: consider creating a separate dict for autogen keys
-- TBD: refactor Food
-- TBD: refactor Weapon
-- TBD: refactor Switch
-- TBD: create Surface class!! (was 'Shelf')
-	- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
-	- put initial shelf in Main Hall
-	- implement Control Panel as Shelf !! (may need to add control_panel after guard_goblin dies)
-- TBD: reorg noun_class_def into base (Invis, Writing, ViewOnly, & Liquid), Item (including Food & Weapon), Room, Door and Container, Surface ??
-- TBD: refactor Creature / attack()
-	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
-	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
-	- TBD: re-org to identify 'attacker' and 'winner' 
-	- TBD: re-code attack / attack_burt response correctly based on in-line notes
-		- TBD: change to 'attack x with y' (default to obj in hand?); Maybe hedgehog laughs at an attack with a non-weapon?
-- TBD: refactor descript_dict (=> static_dict), autogen_dict (new) and dynamic_dict to Descript class with descript instantiation
-	- TBD: unify descript approach: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
-	- call with key and return string; will look like gs.descript(key)
-	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() )
-		- Can autogen key try be incorporated into Descript method??
-	- static_dict and autogen_dict live in class; dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
-	- Use guard pattern and check in this order
-		- 1) in dynamic_dict
-		- 2) starts with "ag_" => autogen_dict (no "try", allow failure)
-		- 3) try static_dic except f"the {obj.full_name} is simple indescribable"
-	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
-		- CANCEL: test w/ descript_dict => start with version 
-- TBD: rename active_gs to gs
-
-##########################
-### VERSION 3.74 START ###
-##########################
-
-Version 3.74 Goals
-- re-work app_main() flow with validate() module
-- refactor app_main() modules
-
-- related thinking:
-	- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
-		- Should noun obj methods return a 'success' indicator (for pre & post actions)?
-		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
-		- Be able to call noun methods in non_buffer mode purely for pre & post action validation? 
-		- for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
-- IDEAS:
-	- thinking systemically, can we pre-validate noun class methods?
-		- validate() would run between interpreter() and pre_action()
-		- e.g. for take() use case, can we check to see if obj is_item and is in <room>.obj_scope ?
-		- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
-		- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
-		- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
-		- if fail validate() , buffer error and end app_main()
-
-- TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
-- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
-	- TBD: this will break the 'go south from Entrance' warning... probably the easiest fix is to create a re-usable unreachable_room to the south
-- TBD: final clean-up
-	- TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
-	- TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
-			- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
-	- TBD: refactor active_gs. scope / mach_scope
-			- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
-	- maybe call verb methods with a 'mode' variable that can be validate, exe_std, exe_silent, or exe_creature ??
-	- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
-	- DECISION: writing perspective
-		- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
-		- in theory, any creature could be used to play the game - and each might have its own description_dict
-		- this would be fun for a short session in a single room but is not practical for extended play
-		- realistically, nearly all descriptions will be from burt's perspective
-		- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
-		- this should be enabled by mode = 'exe_creature'
-- TBD: refactor app_main() modules
-
-
-##########################
-### VERSION 3.75 START ###
-##########################
-
-Version 3.75 Goals
 - refactor Burt as a creature object
 - refactor coding as I go
 
@@ -656,12 +276,74 @@ Refactor burt as a Creature class object
 	- TBD: Room
 	- TBD: Creature
 
+
 ##########################
-### VERSION 3.76 START ###
+### VERSION 3.73 START ###
 ##########################
 
-Version 3.76 Goals
-- refactor remaining app_main chain
+Version 3.73 Goals
+- post Burt => Creature neatening
+
+- TBD: Room
+	- TBD: move room to dedicated module
+	- TBD: reduce Room indent to 1 tab
+	- TBD: clean up doc_strings for readability
+- TBD: Base
+	- TBD: move 'base' to dedicaated module
+	- TBD: reduce 'base' indent to 1 tab
+	- TBD: clean up doc_strings for readability
+- TBD: D&C
+	- TBD: move Doors & Containers to dedicated module
+	- TBD: reduce D&C indent to 1 tab
+	- TBD: clean up doc_strings for readability
+- INPROC: class by class, reduce from double-tab to single tab
+	- DONE: web_main.py
+	- DONE: map_class_def.py
+	- INPROC: noun_class_def.py
+		- DONE: PortableContainer
+		- DONE: PortableLiquidContainer
+
+
+##########################
+### VERSION 3.74 START ###
+##########################
+
+Version 3.74 Goals
+- finish noun refactor
+- create a class for descriptions
+- create a Surface class
+- rename active_gs => gs
+
+- TBD: refactor Clothes => Garment
+	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
+	- CANCEL: create Garment class-specific remove() method that calls take() ??
+	- TBD: auto-gen keys
+		- TBD: implement try for auto-gen key on both append and remove methods
+		- TBD: consider auto-gen keys for all verb methods (probably not)
+		- TBD: Organize auto-gen keys together
+		- TBD: consider creating a separate dict for autogen keys
+- TBD: refactor Food
+- TBD: refactor Weapon
+- TBD: refactor Switch
+- TBD: create Surface class!! (was 'Shelf')
+	- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
+	- put initial shelf in Main Hall
+	- implement Control Panel as Shelf !! (may need to add control_panel after guard_goblin dies)
+- TBD: reorg noun_class_def into base (Invis, Writing, ViewOnly, & Liquid), Item (including Food & Weapon), Room, Door and Container, Surface ??
+- TBD: refactor Creature / attack() => 'attack x with y'
+	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
+	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
+	- TBD: re-org to identify 'attacker' and 'winner' 
+	- TBD: re-code attack / attack_burt response correctly based on in-line notes
+		- TBD: change to 'attack x with y' (default to obj in hand?); Maybe hedgehog laughs at an attack with a non-weapon?
+
+
+##########################
+### VERSION 3.75 START ###
+##########################
+
+Version 3.75 Goals
+- TBD: rename active_gs to gs
 - modularize remaining GameState class and declarations (???)
 
 - TBD: rename active_gs => gs
@@ -676,6 +358,18 @@ Version 3.76 Goals
 			- next room
 			- use dict keys to search for item in game world (see score() )
 			- return room burt is in
+- TBD: refactor descript_dict (=> static_dict), autogen_dict (new) and dynamic_dict to Descript class with descript instantiation
+	- TBD: unify descript approach: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
+	- call with key and return string; will look like gs.descript(key)
+	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() )
+		- Can autogen key try be incorporated into Descript method??
+	- static_dict and autogen_dict live in class; dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
+	- Use guard pattern and check in this order
+		- 1) in dynamic_dict
+		- 2) starts with "ag_" => autogen_dict (no "try", allow failure)
+		- 3) try static_dic except f"the {obj.full_name} is simple indescribable"
+	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
+		- CANCEL: test w/ descript_dict => start with version 
 - TBD: refactor score
 	- TBD: determine max_score from summ of all possible scores?
 	- TBD: score = class with object being attribute in gs
@@ -686,6 +380,50 @@ Version 3.76 Goals
 - TBD: active_gs => gs renaming; point to same obj to start with ??
 - TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
 - TBD: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
+- TBD: end() => gamestate ???
+
+##########################
+### VERSION 3.76 START ###
+##########################
+
+Version 3.76 Goals
+- re-work app_main() flow with validate() module
+- refactor app_main() modules
+
+- related thinking:
+	- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
+		- Should noun obj methods return a 'success' indicator (for pre & post actions)?
+		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
+		- Be able to call noun methods in non_buffer mode purely for pre & post action validation? 
+		- for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
+- IDEAS:
+	- thinking systemically, can we pre-validate noun class methods?
+		- validate() would run between interpreter() and pre_action()
+		- e.g. for take() use case, can we check to see if obj is_item and is in <room>.obj_scope ?
+		- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
+		- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
+		- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
+		- if fail validate() , buffer error and end app_main()
+
+- TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
+- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
+	- TBD: this will break the 'go south from Entrance' warning... probably the easiest fix is to create a re-usable unreachable_room to the south
+- TBD: final clean-up
+	- TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
+	- TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
+			- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+	- TBD: refactor active_gs. scope / mach_scope
+			- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
+	- maybe call verb methods with a 'mode' variable that can be validate, exe_std, exe_silent, or exe_creature ??
+	- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
+	- DECISION: writing perspective
+		- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
+		- in theory, any creature could be used to play the game - and each might have its own description_dict
+		- this would be fun for a short session in a single room but is not practical for extended play
+		- realistically, nearly all descriptions will be from burt's perspective
+		- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
+		- this should be enabled by mode = 'exe_creature'
+- TBD: refactor app_main() modules
 
 
 ##########################
@@ -693,6 +431,14 @@ Version 3.76 Goals
 ##########################
 
 Version 3.77 Goals
+- refactor remaining app_main chain: interp, pre_action, cmd_exe, post_action, auto_action, score (??), end (?)
+
+
+##########################
+### VERSION 3.78 START ###
+##########################
+
+Version 3.78 Goals
 - Clean up machine, warning, and timer coding
 - Create / update program documentation
 
@@ -743,6 +489,15 @@ Version 3.77 Goals
 	- NOTE: (i.e. add to scope and remove levers & button from features?)
 	- NOTE: [this is a good idea but hold off until at least one more control_panel type machine gets created]
 
+
+##########################
+### VERSION 3.79 START ###
+##########################
+
+Version 3.79 Goals
+- Clean up documentation and incorporate into doc_strings
+- final code clean-up for version 3.x
+
 - TBD: documentation:
 	- TBD: updeate creature doc
 		- discuss creature state
@@ -753,16 +508,59 @@ Version 3.77 Goals
 	- TBD: create machine diagram
 		- hedgehog => state machine idea
 	- TBD: create creature diagram
+	- TBD: Timer Decisions
+		- timers are set by machines rather than triggered by player commands
+		- other than providing description text, timers are dumb - they just count -  a machine takes all actions
+- TBD: naming updates:
+	- TBD: re-name 'wrapper' to 'app_main'
+	- TBD: update pickle names
+	- TBD: out_buff => output (or possibly user_output)
+	- TBD: possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
+	- TBD: create directory structure for modules (e.g. all class definitions in a single directory)
+- TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
+	- for active_gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
+	- eliminate 'hasattrib' for containers in active_gs.scope_lst() too
+	- have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
+- DONE: for doors and containers, use None option for no lock or no lid?
+- CANCEL: Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
+	- CANCEL: why do I need active_gs.dynamic_descript_dict again?
+- mechanic clean-up
+	- investigate setters & getters for GameState class
+	- DONE: is there really any need for GameState room_mach_lst() ??
+	- TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
+	- TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
+	- eliminate active_gs.move_dec() ?
+	- 'try... except' standard descriptions for examine() method (similar to Warnings) (???)
 
 
-*** DECISIONS TO BE DOCUMENTED ***
+##########################
+### VERSION 4.x START ###
+##########################
 
-*** Timer Decisions ***
-- timers are set by machines rather than triggered by player commands
-- other than providing description text, timers are dumb - they just count -  a machine takes all actions
+Version 4.x Goals
+- Introduce non-functional requirement code (e.g. saves and pkl clean-up)
+- Integrate with web template
+- webify
+
+file handling:
+- game saves (requires file clean up?)
+- move doc to modules?
+- org modules in directories?
+
+web features:
+- TBD: Figure out a way in web browser to show all adventure text in scrolling window (???)
 
 
-*** REFACTOR IDEAS TO BE ORGANIZED ***
+##########################
+### VERSION 5.x START ###
+##########################
+
+Version 5.x Goals
+- Research existing IF languages (TADS & INFORM)
+- Plan out expanded adventure
+- Establish new base code needed for new adventure
+- Write new code!
+
 
 first: scan puzzle ideas and decide on next puzzles; plan for required features
 
@@ -783,14 +581,7 @@ interpreter ideas:
 
 - Unit Testing (link: https://youtu.be/6tNS--WetLI ) ???
 
-naming updates:
-- TBD: re-name 'wrapper' to 'app_main'
-- TBD: update pickle names
-- TBD: out_buff => output (or possibly user_output)
-- possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
-
 mechanic features:
-- 'try... except' standard descriptions for examine() method (similar to Warnings)
 - TBD: perhaps create 'sit' and 'stand' methods for throne? Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
 		- IDEA: would be a bit tricky... interaction with rest of room would be inhibitted while sitting?
 		- IDEA: could possibly have sit be very brief with auto stand since it's not comfortable (not very satisfying) ???
@@ -798,26 +589,6 @@ mechanic features:
 		- full implementation = 'sit on'
 		- for most verbs, sit scope = self (i.e. creature_scope)
 		- for examine (?), sit scope = room_scope
-- TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
-	- for active_gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
-	- eliminate 'hasattrib' for containers in active_gs.scope_lst() too
-	- have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
-- DONE: for doors and containers, use None option for no lock or no lid?
-- CANCEL: Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
-	- CANCEL: why do I need active_gs.dynamic_descript_dict again?
-- investigate setters & getters for GameState class
-- DONE: is there really any need for GameState room_mach_lst() ??
-- TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
-- TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
-- eliminate active_gs.move_dec() ?
-
-file handling:
-- game saves (requires file clean up?)
-- move doc to modules?
-- org modules in directories?
-
-web features:
-- TBD: Figure out a way in web browser to show all adventure text in scrolling window
 
 python techniques:
 - Do a refactoring code review (look into the 'any' command in place of for loops)
@@ -833,20 +604,10 @@ pipeline & testing:
 
 
 ##########################
-### VERSION 3.8x START ###
+### VERSION 6.x START ###
 ##########################
 
-Version 3.8x Goals
-- Introduce non-functional requirement code (e.g. saves and pkl clean-up)
-- Integrate with web template
-- webify
-
-
-##########################
-### VERSION 3.9x START ###
-##########################
-
-Version 3.9x Goals
+Version 6.x Goals
 - New rooms and puzzles!!
 - New ideas - ideally should leverage existing coding with minimal addiional feature requirements
 -implement new ideas
@@ -1093,12 +854,11 @@ IDEA: create a fun scenario where TravelEffect take item gets used... maybe a gi
 		keys same colors as ready player 1
 
 
-
 ##########################
-### VERSION 4.xx START ###
+### VERSION X.x START ###
 ##########################
 
-Version 4.xx Goals:
+Version X.x Goals:
 	- DB back end
 	- "dungeon bulder" web interface (?)
 	- Run on AWS EC2
@@ -1124,11 +884,13 @@ TBD: now start working with sqlalchemy again in place of txt files
 
 
 ##########################
-### VERSION 5.xx START ###
+### VERSION Y.y START ###
 ##########################
 
-v5.x IDEAS
+vY.y IDEAS
 - runs on AWS with API GW, Lambda, and DynamoDB!
+
+
 
 
 

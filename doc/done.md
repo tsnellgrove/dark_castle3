@@ -1,5 +1,5 @@
 Done List - Dark Castle v3
-Aug 10, 2022
+Sept 10, 2022
 
 
 ##########################
@@ -2631,5 +2631,277 @@ Version 3.71 Goals
 			- DONE: description update: "You take stock. Manly rough-and-tumble good looks - check, finely-honed baking skills - check, affable and rougish demeanor - check! If not for the..."
 		- DONE: capitalize Creature traits? - Yes!
 			- DONE: goblin descript => 'viscious Officessness', 'petty Officiousness'
+
+
+##########################
+### VERSION 3.72 START ###
+##########################
+
+Version 3.72 Goals
+- pre-Burt-to-creature conversion clean-up in Creature, Room, and Container classes and scope methods, std nouns
+- keep exercising refactor skills!
+
+- DONE: refactor Item
+	- DONE: first-pass refactor of take()
+		- DONE: var names:
+			- DONE: room_obj => room
+			- DONE: room_obj_lst => floor_lst
+		- DONE: use f-string
+		- DONE: use if-then shield pattern
+		- CANCEL: refactor take from creature failure with any
+		- DONE: create remove_item() method in room and call from take()
+			- DONE: create chk_contain_item() and remove_item() method in Container, Creature, GameState (temp), and ViewOnly (False)
+			- DONE: in room.remove_item(), check if item in floor_lst. If not, loop through floor_lst and  if chk_in_contain_lst, remove_contain_lst 
+			- DONE: call room.remove from take
+			- DONE: lots of testing!
+		- DONE: org attrib vs. obj methods using comments
+		- DONE: re-add worn removal message to active_gs.worn_lst_remove_item(self)
+	- DONE: refactor drop()
+	- DONE: doc_string
+		- DONE: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
+		- DONE: turns out that any() does not work well here:
+			- DONE: 2nd condition can't be undefined
+			- DONE: I don't get access to 'obj' outside the expression (so I can't include the creature's name in the error string)
+		- DONE: Room (not Item) should be authoritative for where an item can be found (since Room provides is_vis() )
+			- CANCEL: should creature test be in room? unique error requires obj full_name so decided not
+		- DONE: Game Design: Adventurers love Items, Zork tradition, Burt too, intrigue w/ out of reach Item, infuriate by taking away items
+		- DONE: drop
+- DONE: PortableContainer
+	- DONE: introduce PortableContainer class (was Suitcase) (dual inheritance from Container & Item)
+	- DONE: instantiate black_suitcase (test with rusty_key & cheese_wedge)
+- DONE: refactor Beverage
+	- DONE: rename class to Liquid
+		- DONE: noun_class_def()
+		- DONE: mk_def_pkl()
+	- DONE: rename method is_beverage() to is_liquid()
+		- DONE: noun_class_def()
+		- DONE: validate()
+	- DONE: org methods
+	- DONE: if-then guard technique
+	- DONE: f-string
+	- DONE: elim temp vers (except hand_lst)
+	- DONE: descript_key => auto-gen key
+		- DONE: implement auto-gen key
+		- DONE: elim attribute key
+		- DONE: elim descript_dict entry for attribute key
+	- DONE: doc_strings
+- DONE: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
+	- DONE: testing fail on put non-liquid in glass_bottle; in cmd_exe debug mode
+	- DONE: put() for jug fails if obj not is_beverage
+	- DONE: elim print_contents_str() 
+	- DONE: eliminate Jug (replaced by generically named PortableLiquidContainer)
+	- DONE: elim obj_lst_to_str (move funct to *** local funcs *** in gs_class_def.py); move shared_class_func module to 'legacy' folder
+- DONE: refactor map
+	- DONE: create Map class
+		- DONE: create map_class_def.py module
+		- DONE: create Map class with attribute = map_lst
+		- DONE: in mk_def_pkl, import Map
+		- DONE: in mk_def_pkl, instantiate map lst of dicts
+		- DONE: in gs_class_def, add map attribute
+		- DONE: in mk_def_pkl, add instantiated map to active_gs
+	- DONE: map.chk_obj_exist method (was chk_obj_in_map() then was map.chk_obj_in_any_floor_lst() )
+		- DONE: create method map.chk_obj_in_any_floor_lst # checks of obj in floor_lst in each room in map
+		- DONE: create method chk_name_exist( (was chk_name_in_any_floor_lst() )
+		- DONE: rename Room room_obj_lst => floor_lst
+		- DONE: update score to use mapchk_name_exist()
+		- DONE: update cond with map.chk_obj_exist
+		- DONE: confirm that active_gs.obj_exist and active_gs.obj_name_exist are no longer needed('goblin_dead' case also addressed in score() )
+		- DONE: eliminate active_gs.obj_exist and active_gs.obj_name_exist
+	- DONE: door_lst() method
+		- DONE: create door_lst() method to provide list of doors in room
+		- DONE: add map.door_lst() to active_gs scope method
+		- DONE: add map.door_lst() to room.examine
+		- DONE: remove doors from room.floor_lst in mk_def_pkl()
+	- DONE: obj_cond_disp
+		- DONE: create obj_cond_disp method to provide door condition (door / passage names and directions) for room
+		- DONE: add to room.examine()
+	- DONE: update go() method to use active_gs.map
+		- DONE: create gs.map.is_valid_dir(self, room)
+		- DONE: use gs.map.is_valid_dir(self, room) in go() method
+		- DONE: create gs.map.get_door(room) method
+		- DONE: use get_door() in go()
+		- DONE: create gs.map.next_room(room) method
+		- DONE: use get_next_room() in go
+	- DONE: eliminate legacy attributes and methods
+		- DONE: elim gs.room_lst
+		- DONE: elim gs.map_dict attributes
+		- DONE: elim room.door_dict
+		- DONE: elim active_gs.is_valid_map_direction()
+		- DONE: elim room.self.door_in_path()
+		- DONE: elim room.get_door()
+		- DONE: elim active_gs.get_next_room()
+	- DONE: implement unreachable_room to resolve condition strings for Entrance (e, w, & s)
+		- DONE: create 3x rooms: unreachable_1, unreachable_2, unreachable_3
+		- DONE: update room condition str to read better for outside (replace 'door' = None with passage_str) [error - walked through portcullis!]
+		- DONE: fix use of 'and' and 'commas'
+		- DONE: update 'fake' descript of Entrance in startup()
+	- DONE: go back and refactor Map class
+		- DONE: review imports
+		- DONE: std var names
+		- DONE: comment attributes
+		- DONE: nested for loops
+		- DONE: list comprehension with nested for loops
+		- DONE: use any() pattern for bool outcome
+		- DONE: raise error if no return in loop
+		- DONE: doc_strings
+	- DONE: update doc_string for Door
+- DONE: refactor Room class
+	- DONE: rename vars
+		- DONE: features => feature_lst
+			- DONE: noun_class_def
+		- DONE: room_obj_lst => floor_lst
+			- DONE: noun_class_def
+			- DONE: gs_class_def
+			- DONE: creature_class_def
+			- DONE: cond_class_def
+			- DONE: result_class_def
+		- DONE: invis_obj_lst to invis_lst
+			- DONE: noun_class_def
+			- DONE: gs_class_def
+	- DONE: refactor examine
+		- DONE: exmine titles for rooms as separate buffer line (enables brief / verbose and also diff dict)
+			- DONE: if obj.get_title_str() not None: gs.buffer(if obj.get_title_str()) ; for Room => def get_title_str(self): return self.full_name
+		- DONE: should be able to get basic descriptions from Container and Creature classes
+			- DONE: need methods in class for this - reuse in Container & Creature examine
+		- DONE: for look, don't show container contents as 'nothing' if the container is_empty()
+		- DONE: universalize use of title, description, writing, condition, vis_obj_lst
+			- DONE: update examine() with obj_cond_disp()
+				- DONE: ViewOnly
+					- DONE: Update ViewOnly.examine()
+					- DONE: create default def obj_cond_disp(): => pass
+				- DONE: Room
+				- DONE: Door
+				- DONE: Container
+				- DONE: Creature
+				- DONE: Switch
+			- DONE: finalize approach to multiple conditions (e.g. Container)
+				- DONE: extended obj_cond_disp() in Container
+			- DONE: update examine() with self.vis_obj_disp(active_gs)
+				- DONE: ViewOnly
+					- DONE: Update ViewOnly.examine()
+					- DONE: create default def vis_obj_disp(active_gs) => pass
+				- DONE: Room
+				- DONE: Container
+				- DONE: Creature
+			- DONE: Finalize change
+				- DONE: update ViewOnly.examine() doc_string
+					- DONE: 5x components of examine(); Why lock down examine()? 1) Codifies presentation, 2) enables brief and verbose
+					- DONE: cons: leads to an outline-style description; harder to textify
+				- DONE: rename obj_cond_disp() => cond_disp()
+					- DONE: noun_class_def
+					- DONE: switch_class_def
+				- DONE: rename vis_obj_disp() => contain_disp()
+					- DONE: noun_class_def
+					- DONE: creature_class_def
+				- DONE: clean up comments in noun_class_def.py, switch_class_def.py, & creature_class_def.py
+				- DONE: update doc_strings for cond_disp() and contain_disp()
+	- DONE: move GameState scope methods to Room
+		- IDEA: scope method => room.vis_contain_lst = self + doors + Legacy + self.feature_lst + for obj in floor_lst: extend(obj.vis_contain_lst)
+		- IDEA: post Burt to Creature move => if statement in Creature.vis_contain_lst to include self.bkpk_lst & additional node depth
+		- DONE: rename vis_lst() => vis_contain_lst()
+			- DONE: noun_class_def
+			- DONE: creature_class_def
+			- DONE: gs_class_def
+		- DONE: create room.vis_contain_lst()
+		- DONE: test room.vis_contain_lst()
+			- DONE: interp
+			- DONE: gs_class_def
+			- DONE: noun_class_def
+		- DONE: redirect scope calls to room.vis_contain_lst()
+		- DONE: elim room_element_lst()
+		- DONE: comment clean-up
+	- DONE: move GameState chk_wrt_is_vis() to Room
+		- DONE: crate chk_wrt_is_vis() in Room
+		- DONE: migrate refs to Room
+			- DONE: validate()
+			- DONE: noun_class_def()
+		- DONE: clean up comments
+	- DONE: move GameState scope_check() to Room
+		- DONE: in Room, rename to chk_is_vis()
+		- DONE: migrate refs to Room
+			- DONE: validate
+			- DONE: mach_class_def
+			- DONE: noun_class_def
+			- DONE: gs_class_def
+		- DONE: clean up comments
+	- DONE: investigate all 3 mach scope methods in GameState
+		- DONE: it appears that def auto_in_alert_scope() is never called
+		- DONE: it appears that only mach_obj_lst() and auto_in_alert_scope() ever call room_mach_lst()
+	- DONE: simplify mach scope methods in GameState
+		- DONE: merge room_mach_lst() => mach_obj_lst()
+		- DONE: elim auto_in_alert_scope()
+		- DONE: testing
+		- DONE: clean up comments
+	- DONE: move GameState mach_obj_lst() method to Room
+		- DONE: troubleshoot use of is_mach()
+			- DONE: clean up comments
+		- DONE: rename mach_obj_lst() to get_mach_lst() and create in Room
+		- DONE: refactor as needed
+			- DONE: prefer use of mach_lst.append(Creature.invis_lst) over Creature all_lst() => mach_lst()
+		- DONE: migrate refs to Room
+			- DONE: pre_action()
+			- DONE: post_action()
+			- DONE: auto_action()
+			- DONE; gs_class_def()
+		- DONE: clean up comments (creature_class_def, pre_action(), post_action(), auto_action() )
+		- DONE: comment out / elim Creature all_lst() and mach_lst()
+	- DONE: rename vis_contain_lst() to get_vis_contain_lst() ???
+		- DONE: noun_class_def
+		- DONE: creature_class_def
+		- DONE: interp
+	- DONE: refactor room next steps
+		- DONE: comment each attribute
+		- DONE: simple doc_strings
+		- DONE: update creature & container restrictions
+			- DONE: container can't hold container or creature (or, someday, surface) [limit in put()]
+			- DONE: creature can't hold creature (or, someday, surface) [limit in show() & give()]
+			- DONE: update get_vis_contain_lst()
+				- DONE: sort out contain_lst list comprehension
+			- DONE: update contain_disp()
+			- DONE: test royal_hedgehog with hand_lst == [glass_bottle]
+		- DONE: New node level rules:
+			- containers can't hold containers or creatures (or, someday, surfaces)
+			- creatures can't hold creatures (or, someday, surfaces)
+			- someday, surfaces can't hold creatures or surfaces
+			- This aligns all creatures with Burt definition and means a max search depth of node 3
+				- e.g. Room => Creature => PortableContainer => obj or Room => Surface => PortableContainer => obj
+		- DONE: New, NEW, node level rules
+			- Creatures and Surfaces can't be put in Containers
+			- PortableContainers CAN be put in Containers
+			- But PortableContainers CAN'T be put in PortableContainers
+			- Zork Kitchen as key reference
+		- INPROC: Not thrilled with 3 independent versions of put()
+			- DONE: how about creating a chk_content_prohibited() method in Container
+			- DONE: next, extend in PortableContainer
+			- DONE: extend in PortableLiquidContainer
+			- DONE: clean up comments
+	- DONE: node doc_string
+		- IDEA: Node Level (node_lvl) refers to the first-pass list of obj available in the room
+			- (i.e. not including those obj in containers or creatures)
+		- Imagine an inverted tree... node_0 is at top (say room)
+			- node_1 are immedaite contents of node_0
+			- node_2 = the contents of node_1 obj
+		- we can talk about relative vs. absolute node levels
+			- the goal is for look to return information on node_lvl 0, 1, & 2
+				- receptacle = container, creature, surface
+				- (i.e. describe the room, room contents, and items inside room receptacles)
+				- inventory is similar - it is the node_lvl 0, 1, & 2 description of Burt
+			- however, we want all node levels to actually be in scope
+				- we do NOT want node levels to go too deep... we already forbid containers from holding containers or creatues
+				- we could also forbid creatures (other than Burt) from holding creatuers or containers...
+				- This would make our max node level = 3: entrance => burt_hand => bottle => water
+				- The limit could be imposed at the give(), show(), take(), and put_in_hand() mehtods
+			- if this caused serius issues there could be a modular machine to swap in a dummy non-container obj
+			- could also run a pre-start check on container & creature to throw errors on illegal contents
+- DONE: make 'disp' a method prefix???
+	- DONE: contain_disp => disp_contain
+		- DONE: creature_class_def
+		- DONE: noun_class_def
+		- DONE: test
+	- DONE: cond_disp => disp_cond
+		- DONE: switch_class_def
+		- DONE: noun_class_def
+		- DONE: test
+- DONE: update 'version', modeule dates, to_do.md, and done.md; commit and tag!
 
 
