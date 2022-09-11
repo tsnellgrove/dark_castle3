@@ -212,17 +212,17 @@ Version 3.73 Goals
 		def clothing_type_worn(self, item):
 		def get_static_obj(self, static_key):
 		def inventory(self):
-	- will also enable 'room scope' type methods to move to class Room
+	- DONE: will also enable 'room scope' type methods to move to class Room
+- Refactor burt as a Creature class object
+	- TBD: create burt obj
+		- TBD: instantiate burt in mk_def_pkl()
+		- TBD: burt_creature to be instantiated in entrance.room.floor_lst (can exclude burt from room.vis_lst() [remove(gs.hero)])
+		- TBD: create active_gs dict entry that defines hero == burt and create a get_hero() method to get this info
+		- TBD: update creature.vis_lst() to include bkpk_lst for self == active_gs.get_hero()
+		- TBD: create inventory() method for creature (??) [switch 'inventory' => examine.burt but not yet?]
 
-Refactor burt as a Creature class object
-	4) instantiate burt_obj
-			- TBD: create active_gs dict entry that defines hero = burt and create a get_hero() method to get this info
-			- TBD: update creature.vis_lst() to get visible creature inventory
-				- TBD: returns item_lst and worn_lst if creature == active_gs.get_hero()
-		- TBD: create inventory() method for creature
-		- TBD: burt_creature to be instantiated in entrance.feature_lst (can remove burt from scope_list() in active_gs.scope)
-			- TBD: correction - burt to go in room.floor_lst (not feature_lst) but then exclude from room.vis_lst() [remove(gs.hero)]
-	4.5) Analyze noun classes... which ones update burt inv vs. read from burt inv?
+
+4.5) Analyze noun classes... which ones update burt inv vs. read from burt inv?
 		- IDEA: start by implementing the burt inv updates in paralelle to active_gs updates
 		- IDEA: create 'jinventory' and 'jlook' commands to confirm that burt_creature matches active_gs.burt
 		- IDEA: now migrate the 'read' noun classes one-by-one to read from burt_creature (refactoring first as I go)
@@ -265,16 +265,15 @@ Refactor burt as a Creature class object
 	14) clean-up comments
 	- TBD: move active_gs.universal_lst timer obj to burt.invis_lst
 	- TBD: for ViewOnly create methoed 'vis_lst(): return []' to simplify Room.vis_lst() ???
-	- TBD: create Chair class based on Surface
-		- TBD: sit() method (depends on 'on' prep)
-		- TBD: need to be able to determine which node Burt is in (i.e. the chair, not just the room); also need ot know room
-		- TBD: look shows room with 'sitting in chair' condition
-		- TBD: can only examine / take other items in the chair (burt's own inventory)
-		- TBD: most other methods just generate "you'll have to stand up to do that"
-		- TBD: vis_lst = chair.vis_lst + room.name
 - TBD: improve natural language / paragraph (vs. outline) read of examine()
 	- TBD: Room
 	- TBD: Creature
+- TBD: refactor Creature / attack() => 'attack x with y'
+	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
+	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
+	- TBD: re-org to identify 'attacker' and 'winner' 
+	- TBD: re-code attack / attack_burt response correctly based on in-line notes
+		- TBD: change to 'attack x with y' (default to obj in hand?); Maybe hedgehog laughs at an attack with a non-weapon?
 
 
 ##########################
@@ -284,6 +283,7 @@ Refactor burt as a Creature class object
 Version 3.73 Goals
 - post Burt => Creature neatening
 
+- TBD: reorg noun_class_def into base (Invis, Writing, ViewOnly, & Liquid), Item (including Food & Weapon), Room, Door and Container, Surface ??
 - TBD: Room
 	- TBD: move room to dedicated module
 	- TBD: reduce Room indent to 1 tab
@@ -329,13 +329,20 @@ Version 3.74 Goals
 	- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
 	- put initial shelf in Main Hall
 	- implement Control Panel as Shelf !! (may need to add control_panel after guard_goblin dies)
-- TBD: reorg noun_class_def into base (Invis, Writing, ViewOnly, & Liquid), Item (including Food & Weapon), Room, Door and Container, Surface ??
-- TBD: refactor Creature / attack() => 'attack x with y'
-	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
-	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
-	- TBD: re-org to identify 'attacker' and 'winner' 
-	- TBD: re-code attack / attack_burt response correctly based on in-line notes
-		- TBD: change to 'attack x with y' (default to obj in hand?); Maybe hedgehog laughs at an attack with a non-weapon?
+- TBD: create Chair class based on Surface
+	- TBD: sit() method (depends on 'on' prep)
+	- TBD: need to be able to determine which node Burt is in (i.e. the chair, not just the room); also need ot know room
+	- TBD: look shows room with 'sitting in chair' condition
+	- TBD: can only examine / take other items in the chair (burt's own inventory)
+	- TBD: most other methods just generate "you'll have to stand up to do that"
+	- TBD: vis_lst = chair.vis_lst + room.name
+- TBD: perhaps create 'sit' and 'stand' methods for throne? Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
+	- IDEA: would be a bit tricky... interaction with rest of room would be inhibitted while sitting?
+	- IDEA: could possibly have sit be very brief with auto stand since it's not comfortable (not very satisfying) ???
+	- default sit = on floor ('criss-cross-apple-sauce')
+	- full implementation = 'sit on'
+	- for most verbs, sit scope = self (i.e. creature_scope)
+	- for examine (?), sit scope = room_scope
 
 
 ##########################
@@ -582,13 +589,7 @@ interpreter ideas:
 - Unit Testing (link: https://youtu.be/6tNS--WetLI ) ???
 
 mechanic features:
-- TBD: perhaps create 'sit' and 'stand' methods for throne? Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
-		- IDEA: would be a bit tricky... interaction with rest of room would be inhibitted while sitting?
-		- IDEA: could possibly have sit be very brief with auto stand since it's not comfortable (not very satisfying) ???
-		- default sit = on floor ('criss-cross-apple-sauce')
-		- full implementation = 'sit on'
-		- for most verbs, sit scope = self (i.e. creature_scope)
-		- for examine (?), sit scope = room_scope
+
 
 python techniques:
 - Do a refactoring code review (look into the 'any' command in place of for loops)
