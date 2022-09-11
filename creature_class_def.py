@@ -107,6 +107,9 @@ class Creature(ViewOnly):
 				self.hand_lst_append(new_item)
 
 		# *** bkpk methods ***
+		def bkpk_empty(self):
+				return not bool(self.bkpk_lst)
+
 		def bkpk_lst_append(self, item):
 				self._bkpk_lst.append(item)
 
@@ -156,7 +159,9 @@ class Creature(ViewOnly):
 				""" Returns the list of visible objects contained in the referenced ('self') object
 				"""
 				contain_lst = []
-				node1_item_lst = self.hand_lst + self.worn_lst
+				if self == active_gs.hero:
+						node1_item_lst = self.hand_lst + self.worn_lst + self.bkpk_lst
+				else: node1_item_lst = self.hand_lst + self.worn_lst
 				[contain_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in node1_item_lst]
 ##				return self.hand_lst + self.worn_lst + self.feature_lst # when Creatures couldn't hold Containers this was the whole method
 				return node1_item_lst + contain_lst + self.feature_lst
@@ -168,12 +173,18 @@ class Creature(ViewOnly):
 						active_gs.buffer(f"The {self.full_name} is holding a {self.hand_item().full_name}")
 						for obj in self.hand_lst:
 								obj.disp_contain(active_gs)
+				if self == active_gs.hero and not self.bkpk_empty():
+						bkpk_str_lst = [obj.full_name for obj in self.bkpk_lst]
+						bkpk_str = ", ".join(bkpk_str_lst)
+						active_gs.buffer(f"In your backpack you have: {bkpk_str}")
+						for obj in self.bkpk_lst:
+								obj.disp_contain(active_gs)
 				if not self.worn_empty():
 						worn_txt_lst = [obj.full_name for obj in self.worn_lst]
 						worn_str = ", ".join(worn_txt_lst)
 						active_gs.buffer(f"The {self.full_name} is wearing: {worn_str}")
 						for obj in self.worn_lst:
-								obj.disp_contain(active_gs)					
+								obj.disp_contain(active_gs)
 				return 
 
 		def show(self, obj, active_gs):

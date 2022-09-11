@@ -214,12 +214,28 @@ Version 3.73 Goals
 		def inventory(self):
 	- DONE: will also enable 'room scope' type methods to move to class Room
 - Refactor burt as a Creature class object
-	- TBD: create burt obj
-		- TBD: instantiate burt in mk_def_pkl()
-		- TBD: burt_creature to be instantiated in entrance.room.floor_lst (can exclude burt from room.vis_lst() [remove(gs.hero)])
-		- TBD: create active_gs dict entry that defines hero == burt and create a get_hero() method to get this info
-		- TBD: update creature.vis_lst() to include bkpk_lst for self == active_gs.get_hero()
-		- TBD: create inventory() method for creature (??) [switch 'inventory' => examine.burt but not yet?]
+	- DONE: create burt obj and make him visible
+		- DONE: instantiate burt in mk_def_pkl() (on attack dicts)
+		- DONE: burt_creature to be instantiated in entrance.room.floor_lst
+		- DONE: create active_gs dict entry that defines hero == burt and create a get_hero() method to get this info
+		- DONE: update creature.vis_lst() to include bkpk_lst for self == active_gs.hero
+		- DONE: update disp_contain() method for creature to include backpack for self == active_gs.hero
+	- DECISION: on initial refactor, all 'action' methods except attack() will be implicitly excuted by active_gs.hero
+		- IDEA: making action methods applicable to arbitrary creatures can be considered on a 2nd pass
+	- TBD: address duplicate obj issue
+		- IDEA: we can't test other methods because the interpreter is confused by creature_burt having duplicat items
+		- IDEA: to solve this, we need a temporary exception in vis_contain_lst() that excludes obj possessed by Burt
+		- IDEA: then maybe we need to create a custom jinv() method in Creature to describe burt's inventory?
+ - TBD: move burt
+	 - TBD: move go() to Creature
+	 - TBD: updaate go() to move Burt when player moves
+
+
+
+
+- SOMEDAY
+	- TBD: can exclude burt from room.vis_lst() using remove(activegs.hero)
+	- TBD: switch 'inventory' => examine.burt
 
 
 4.5) Analyze noun classes... which ones update burt inv vs. read from burt inv?
