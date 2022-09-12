@@ -735,9 +735,6 @@ class Food(Item):
 		def eat(self, active_gs):
 					creature = active_gs.hero
 					creature.hand_lst_remove(self)
-#					active_gs.hand_lst_remove_item(self)
-#					output = "Eaten. The " + self.full_name + " " + descript_dict[self.eat_desc_key]
-#					active_gs.buffer(output)
 					active_gs.buffer(f"Eaten. The {self.full_name} {descript_dict[self.eat_desc_key]}")
 
 class Liquid(ViewOnly):

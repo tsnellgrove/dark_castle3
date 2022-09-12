@@ -228,13 +228,13 @@ Version 3.73 Goals
 		- IDEA: then maybe we need to create a custom jinv() method in Creature to describe burt's inventory?
 		- NEW-PLAN: let's just give burt 1 simple obj in his hand and start by updating eat(), drink(), and drop()
 - DONE: map classes and verb methods
-- INPROC: refactor eat
+- DONE: update eat to creature_burt
 	- DONE: food in burt's hand
 	- DONE: update eat for creature_burt
 	- DONE: minor refacto of eat()
 	- DONE: update validate() to include active_gs.hero.chk_in_hand() as part of its hand check
-	- TBD: clean up comments 
-  
+	- DONE: clean up comments 
+- TBD: update drink to creature_burt  
    
     
  - TBD: move burt
