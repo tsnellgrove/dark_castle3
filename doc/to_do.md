@@ -222,14 +222,24 @@ Version 3.73 Goals
 		- DONE: update disp_contain() method for creature to include backpack for self == active_gs.hero
 	- DECISION: on initial refactor, all 'action' methods except attack() will be implicitly excuted by active_gs.hero
 		- IDEA: making action methods applicable to arbitrary creatures can be considered on a 2nd pass
-	- TBD: address duplicate obj issue
+	- CANCEL: address duplicate obj issue
 		- IDEA: we can't test other methods because the interpreter is confused by creature_burt having duplicat items
 		- IDEA: to solve this, we need a temporary exception in vis_contain_lst() that excludes obj possessed by Burt
 		- IDEA: then maybe we need to create a custom jinv() method in Creature to describe burt's inventory?
+		- NEW-PLAN: let's just give burt 1 simple obj in his hand and start by updating eat(), drink(), and drop()
+- DONE: map classes and verb methods
+- INPROC: refactor eat
+	- DONE: food in burt's hand
+	- DONE: update eat for creature_burt
+	- DONE: minor refacto of eat()
+	- DONE: update validate() to include active_gs.hero.chk_in_hand() as part of its hand check
+	- TBD: clean up comments 
+  
+   
+    
  - TBD: move burt
 	 - TBD: move go() to Creature
 	 - TBD: updaate go() to move Burt when player moves
-
 
 
 

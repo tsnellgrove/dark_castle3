@@ -106,6 +106,9 @@ class Creature(ViewOnly):
 						self.hand_lst_remove(self.hand_item())
 				self.hand_lst_append(new_item)
 
+		def chk_in_hand(self, obj):
+				return obj in self.hand_lst
+
 		# *** bkpk methods ***
 		def bkpk_empty(self):
 				return not bool(self.bkpk_lst)
