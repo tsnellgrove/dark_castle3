@@ -753,15 +753,12 @@ class Liquid(ViewOnly):
 				"""
 				creature = active_gs.hero
 				hand_item = creature.hand_item()
-#				hand_lst = active_gs.get_hand_lst() # leaving as-is since future Creature refactor will address
-#				if (active_gs.hand_empty()) or (hand_lst[0].is_container() == False):
 				if (creature.hand_empty()) or (hand_item.is_container() == False):
 						active_gs.buffer(f"You don't seem to be holding a container of {self.full_name} in your hand.")
 						return 
 				if self not in hand_item.contain_lst:
 						active_gs.buffer(f"The container in your hand doesn't contain {self.full_name}.")
 						return 
-#				hand_lst[0].contain_lst.remove(self)
 				hand_item.contain_lst.remove(self)
 				active_gs.buffer("Drunk.")
 				try:
