@@ -429,7 +429,6 @@ class Item(ViewOnly):
 				"""
 				creature = active_gs.hero
 				creature.hand_lst_remove(self)
-#				active_gs.hand_lst_remove_item(self)
 				active_gs.get_room().floor_lst_append(self)
 				active_gs.buffer("Dropped")
 

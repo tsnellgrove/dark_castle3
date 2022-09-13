@@ -241,7 +241,7 @@ Version 3.73 Goals
 - DONE: update drop() to creature_burt
 	- DONE: update drop() method
 	- DONE: update creature_burt & gs_burt
-	- TBD: clean up comments
+	- DONE: clean up comments
 
 
  - TBD: move burt
