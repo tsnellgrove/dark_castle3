@@ -733,9 +733,9 @@ class Food(Item):
 				return self._eat_desc_key
 
 		def eat(self, active_gs):
-					creature = active_gs.hero
-					creature.hand_lst_remove(self)
-					active_gs.buffer(f"Eaten. The {self.full_name} {descript_dict[self.eat_desc_key]}")
+				creature = active_gs.hero
+				creature.hand_lst_remove(self)
+				active_gs.buffer(f"Eaten. The {self.full_name} {descript_dict[self.eat_desc_key]}")
 
 class Liquid(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing):
@@ -751,14 +751,18 @@ class Liquid(ViewOnly):
 		def drink(self, active_gs):
 				""" Consumes a liquid if it is in a Container that Burt is holding in his hand.
 				"""
-				hand_lst = active_gs.get_hand_lst() # leaving as-is since future Creature refactor will address
-				if (active_gs.hand_empty()) or (hand_lst[0].is_container() == False):
+				creature = active_gs.hero
+				hand_item = creature.hand_item()
+#				hand_lst = active_gs.get_hand_lst() # leaving as-is since future Creature refactor will address
+#				if (active_gs.hand_empty()) or (hand_lst[0].is_container() == False):
+				if (creature.hand_empty()) or (hand_item.is_container() == False):
 						active_gs.buffer(f"You don't seem to be holding a container of {self.full_name} in your hand.")
 						return 
-				if self not in hand_lst[0].contain_lst:
+				if self not in hand_item.contain_lst:
 						active_gs.buffer(f"The container in your hand doesn't contain {self.full_name}.")
 						return 
-				hand_lst[0].contain_lst.remove(self)
+#				hand_lst[0].contain_lst.remove(self)
+				hand_item.contain_lst.remove(self)
 				active_gs.buffer("Drunk.")
 				try:
 						active_gs.buffer(descript_dict["drink_"+self.name])

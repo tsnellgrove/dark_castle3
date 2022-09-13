@@ -208,7 +208,7 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 				None)
 
 burt = Creature('burt', 'Burt', 'burt', 'burt', None,
-				None, [cheese_wedge], [], [], [backpack, burt, fist, conscience],
+				None, [glass_bottle], [cheese_wedge], [], [backpack, burt, fist, conscience],
 				[],
 				{},
 				True,
@@ -293,7 +293,7 @@ active_gs = GameState(
 				'move_counter' : 0,
 				'end_of_game' : False,
 				'game_ending' : "tbd",
-				'backpack' : [rusty_key, stale_biscuits, glass_bottle],
+				'backpack' : [rusty_key, stale_biscuits],
 				'hand' : [],
 				'worn' : [],
 				'room' : entrance,

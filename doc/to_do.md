@@ -234,7 +234,10 @@ Version 3.73 Goals
 	- DONE: minor refacto of eat()
 	- DONE: update validate() to include active_gs.hero.chk_in_hand() as part of its hand check
 	- DONE: clean up comments 
-- TBD: update drink to creature_burt  
+- INPROC: update drink to creature_burt
+	- DONE: update drink() method
+	- DONE: update creature_burt & gs_burt
+	- TBD: clean up comments
    
     
  - TBD: move burt
