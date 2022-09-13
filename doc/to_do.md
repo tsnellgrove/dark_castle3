@@ -238,8 +238,12 @@ Version 3.73 Goals
 	- DONE: update drink() method
 	- DONE: update creature_burt & gs_burt
 	- DONE: clean up comments
-   
-    
+- DONE: update drop() to creature_burt
+	- DONE: update drop() method
+	- DONE: update creature_burt & gs_burt
+	- TBD: clean up comments
+
+
  - TBD: move burt
 	 - TBD: move go() to Creature
 	 - TBD: updaate go() to move Burt when player moves

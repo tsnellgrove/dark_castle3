@@ -427,7 +427,9 @@ class Item(ViewOnly):
 		def drop(self, active_gs):
 				""" Drops an object from Burt's hand to the floor of the room.
 				"""
-				active_gs.hand_lst_remove_item(self)
+				creature = active_gs.hero
+				creature.hand_lst_remove(self)
+#				active_gs.hand_lst_remove_item(self)
 				active_gs.get_room().floor_lst_append(self)
 				active_gs.buffer("Dropped")
 
@@ -752,7 +754,8 @@ class Liquid(ViewOnly):
 				""" Consumes a liquid if it is in a Container that Burt is holding in his hand.
 				"""
 				creature = active_gs.hero
-				hand_item = creature.hand_item()
+				if not creature.hand_empty():
+						hand_item = creature.hand_item()
 				if (creature.hand_empty()) or (hand_item.is_container() == False):
 						active_gs.buffer(f"You don't seem to be holding a container of {self.full_name} in your hand.")
 						return 
