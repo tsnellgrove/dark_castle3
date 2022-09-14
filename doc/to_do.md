@@ -247,7 +247,6 @@ Version 3.73 Goals
 	- DONE: update creature_burt & gs_burt
 	- DONE: clean up comments
 - TBD: pause for minor refactor of Creature
-	- TBD: attribute names
 	- TBD: method names
 
 
