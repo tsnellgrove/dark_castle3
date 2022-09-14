@@ -246,9 +246,10 @@ Version 3.73 Goals
 	- DONE: update unlock() method
 	- DONE: update creature_burt & gs_burt
 	- DONE: clean up comments
-- TBD: pause for minor refactor of Creature
-	- TBD: method names
-
+- INPROC: pause for minor refactor of Creature
+	- INPROC: method names
+		- DONE: creature.hand_item() to creature.get_hand_item()
+		- TBD: creature.hand_empty() to creature.hand_is_empty()
 
 
  - TBD: move burt
