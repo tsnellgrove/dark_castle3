@@ -242,6 +242,14 @@ Version 3.73 Goals
 	- DONE: update drop() method
 	- DONE: update creature_burt & gs_burt
 	- DONE: clean up comments
+- DONE: update unlock() to creature_burt
+	- DONE: update unlock() method
+	- DONE: update creature_burt & gs_burt
+	- DONE: clean up comments
+- TBD: pause for minor refactor of Creature
+	- TBD: attribute names
+	- TBD: method names
+
 
 
  - TBD: move burt
@@ -249,11 +257,15 @@ Version 3.73 Goals
 	 - TBD: updaate go() to move Burt when player moves
 
 
-
 - SOMEDAY
-	- TBD: can exclude burt from room.vis_lst() using remove(activegs.hero)
+	- TBD: can exclude burt from room.disp_contain() using remove(active_gs.hero)
 	- TBD: switch 'inventory' => examine.burt
 
+- MAYBE:
+	- TBD: pass 'creature' and 'mode' into verbe methods
+		- TBD: 'mode' = 'validate' or 'exe_std'
+		- TBD: don't need a 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
+			- TBD: if craeture == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
 
 4.5) Analyze noun classes... which ones update burt inv vs. read from burt inv?
 		- IDEA: start by implementing the burt inv updates in paralelle to active_gs updates

@@ -507,6 +507,7 @@ class Door(ViewOnly):
 		def unlock(self, active_gs):
 				""" Unlocks a Door object.
 				"""
+				creature = active_gs.hero
 				if self.is_open is None:
 						active_gs.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
 						return 
@@ -522,10 +523,12 @@ class Door(ViewOnly):
 				if self.is_unlocked:
 						active_gs.buffer(f"The {self.full_name} is already unlocked.")
 						return 
-				if not active_gs.hand_check(self.key) and not active_gs.hand_empty() and active_gs.get_hand_lst()[0].root_name == 'key':
+#				if not active_gs.hand_check(self.key) and not active_gs.hand_empty() and active_gs.get_hand_lst()[0].root_name == 'key':
+				if not creature.chk_in_hand(self.key) and not creature.hand_empty() and creature.hand_item().root_name == 'key':
 						active_gs.buffer("You aren't holding the correct key.")
 						return 
-				if not active_gs.hand_check(self.key):
+#				if not active_gs.hand_check(self.key):
+				if not creature.chk_in_hand(self.key):
 						active_gs.buffer("You aren't holding the key.")
 						return 
 				active_gs.buffer("Unlocked") # correct key in hand, is_open == False, is_unlocked == False
