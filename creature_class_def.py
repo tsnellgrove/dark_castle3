@@ -94,14 +94,14 @@ class Creature(ViewOnly):
 		def hand_lst_remove(self, item):
 				self._hand_lst.remove(item)
 
-		def hand_empty(self):
+		def hand_is_empty(self):
 				return not bool(self.hand_lst)
 
 		def get_hand_item(self):
 				return self.hand_lst[0]
 
 		def put_in_hand(self, new_item):
-				if not self.hand_empty():
+				if not self.hand_is_empty():
 						self.bkpk_lst_append(self.get_hand_item())
 						self.hand_lst_remove(self.get_hand_item())
 				self.hand_lst_append(new_item)
@@ -172,7 +172,7 @@ class Creature(ViewOnly):
 		def disp_contain(self, active_gs):
 				""" Displays a description of the visible items held by the obj. Used in examine().
 				"""
-				if not self.hand_empty():
+				if not self.hand_is_empty():
 						active_gs.buffer(f"The {self.full_name} is holding a {self.get_hand_item().full_name}")
 						for obj in self.hand_lst:
 								obj.disp_contain(active_gs)
@@ -280,7 +280,7 @@ class Creature(ViewOnly):
 						hand_lst = active_gs.get_hand_lst()
 						burt_weapon_obj = hand_lst[0]
 						burt_weapon_name = 'the ' + burt_weapon_obj.full_name
-				if self.hand_empty():
+				if self.hand_is_empty():
 						hand_text = "!"
 				else:
 						hand_text = " with the " + self.get_hand_item().full_name + "!"
@@ -345,7 +345,7 @@ class Creature(ViewOnly):
 				# compose the start of the attack resolution string with verb and adj detail if the creature is weilding a weapon
 				hand_lst = active_gs.get_hand_lst()
 #				hand_item = hand_lst[0]
-##				if self.hand_empty():
+##				if self.hand_is_empty():
 				if active_gs.hand_empty():
 						attack_start_str = ""
 ##				elif self.get_hand_item().is_weapon:
@@ -376,7 +376,7 @@ class Creature(ViewOnly):
 						hand_lst = active_gs.get_hand_lst()
 						burt_weapon_obj = hand_lst[0]
 						burt_weapon_name = 'the ' + burt_weapon_obj.full_name
-				if self.hand_empty():
+				if self.hand_is_empty():
 						hand_text = ""
 				else:
 						hand_text = " with the " + self.get_hand_item().full_name
@@ -432,7 +432,7 @@ class Creature(ViewOnly):
 ### NOTE: GENERATING win_weapon DOESN'T REALLY SOLVE THE PROBLEM... I ACTUALLY NEED TO DETERMINE 'WINNER' AND BASE DESC OFF THEIR 'HAND'
 
 				# compose the start of the attack resolution string with verb and adj detail if the creature is weilding a weapon
-				if self.hand_empty():
+				if self.hand_is_empty():
 						attack_start_str = ""
 				elif self.get_hand_item().is_weapon:
 						weapon_desc_max = len(self.get_hand_item().desc_lst) - 1

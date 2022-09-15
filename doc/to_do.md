@@ -249,12 +249,18 @@ Version 3.73 Goals
 - INPROC: pause for minor refactor of Creature
 	- INPROC: method names
 		- DONE: creature.hand_item() to creature.get_hand_item()
-		- TBD: creature.hand_empty() to creature.hand_is_empty()
+		- DONE: creature.hand_empty() to creature.hand_is_empty()
+			- DONE: creature_class_def()
+			- DONE: noun_class_def()
+		TBD: creature.bkpk_empty() to creature.bkpk_is_empty
 
 
- - TBD: move burt
-	 - TBD: move go() to Creature
-	 - TBD: updaate go() to move Burt when player moves
+- TBD: after updating take(), don't forget to update hand references in score()
+
+
+- TBD: move burt
+	- TBD: move go() to Creature
+	- TBD: updaate go() to move Burt when player moves
 
 
 - SOMEDAY

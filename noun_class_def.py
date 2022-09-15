@@ -523,7 +523,7 @@ class Door(ViewOnly):
 				if self.is_unlocked:
 						active_gs.buffer(f"The {self.full_name} is already unlocked.")
 						return 
-				if not creature.chk_in_hand(self.key) and not creature.hand_empty() and creature.get_hand_item().root_name == 'key':
+				if not creature.chk_in_hand(self.key) and not creature.hand_is_empty() and creature.get_hand_item().root_name == 'key':
 						active_gs.buffer("You aren't holding the correct key.")
 						return 
 				if not creature.chk_in_hand(self.key):
@@ -754,9 +754,9 @@ class Liquid(ViewOnly):
 				""" Consumes a liquid if it is in a Container that Burt is holding in his hand.
 				"""
 				creature = active_gs.hero
-				if not creature.hand_empty():
+				if not creature.hand_is_empty():
 						hand_item = creature.get_hand_item()
-				if (creature.hand_empty()) or (hand_item.is_container() == False):
+				if (creature.hand_is_empty()) or (hand_item.is_container() == False):
 						active_gs.buffer(f"You don't seem to be holding a container of {self.full_name} in your hand.")
 						return 
 				if self not in hand_item.contain_lst:
