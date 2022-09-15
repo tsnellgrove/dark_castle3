@@ -228,26 +228,26 @@ Version 3.73 Goals
 		- IDEA: then maybe we need to create a custom jinv() method in Creature to describe burt's inventory?
 		- NEW-PLAN: let's just give burt 1 simple obj in his hand and start by updating eat(), drink(), and drop()
 - DONE: map classes and verb methods
-- DONE: update eat to creature_burt
-	- DONE: food in burt's hand
-	- DONE: update eat for creature_burt
-	- DONE: minor refacto of eat()
-	- DONE: update validate() to include active_gs.hero.chk_in_hand() as part of its hand check
-	- DONE: clean up comments 
-- DONE: update drink to creature_burt
-	- DONE: update drink() method
-	- DONE: update creature_burt & gs_burt
-	- DONE: clean up comments
-- DONE: update drop() to creature_burt
-	- DONE: update drop() method
-	- DONE: update creature_burt & gs_burt
-	- DONE: clean up comments
-- DONE: update unlock() to creature_burt
-	- DONE: update unlock() method
-	- DONE: update creature_burt & gs_burt
-	- DONE: clean up comments
-- DONE: pause for minor refactor of Creature
-	- DONE: method names
+- INPROC: update verb methods to reference creature_burt
+	- DONE: update eat to creature_burt
+		- DONE: food in burt's hand
+		- DONE: update eat for creature_burt
+		- DONE: minor refacto of eat()
+		- DONE: update validate() to include active_gs.hero.chk_in_hand() as part of its hand check
+		- DONE: clean up comments 
+	- DONE: update drink to creature_burt
+		- DONE: update drink() method
+		- DONE: update creature_burt & gs_burt
+		- DONE: clean up comments
+	- DONE: update drop() to creature_burt
+		- DONE: update drop() method
+		- DONE: update creature_burt & gs_burt
+		- DONE: clean up comments
+	- DONE: update unlock() to creature_burt
+		- DONE: update unlock() method
+		- DONE: update creature_burt & gs_burt
+		- DONE: clean up comments
+	- DONE: pause to update Creature method names
 		- DONE: creature.hand_item() to creature.get_hand_item()
 		- DONE: creature.hand_empty() to creature.hand_is_empty()
 			- DONE: creature_class_def()
@@ -256,12 +256,15 @@ Version 3.73 Goals
 			- DONE: creature_class_def()
 		- DONE: creature.worn_empty() to creature.worn_is_empty()
 			- DONE: creature_class_def()
-- DONE: update lock() to creature_burt
-	- DONE: update lock() method
-	- DONE: clean up comments
+	- DONE: update lock() to creature_burt
+		- DONE: update lock() method
+		- DONE: clean up comments
+	- NOTE: open(), close(), examine(), and read() have no reference to Burt so they do not need to be updated
+	- INPROC: update take() to creature_burt
+		- DONE: update take() method
+		- TBD: clean up comments
+		- TBD: after updating take(), don't forget to update hand references in score()
 
-
-- TBD: after updating take(), don't forget to update hand references in score()
 
 
 - TBD: move burt

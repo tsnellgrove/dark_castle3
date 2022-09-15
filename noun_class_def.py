@@ -412,15 +412,18 @@ class Item(ViewOnly):
 								3) Local error checking ensures that 'obj' is not already in Burt's hand or held / worn by another creature
 								4) Therefore, 'obj' must be a takable Item
 				"""
-				if active_gs.hand_check(self):
+				creature = active_gs.hero
+#				if active_gs.hand_check(self):
+				if creature.chk_in_hand(self):
 						active_gs.buffer("You're already holding the " + self.full_name)
 						return 
 				for obj in active_gs.get_room().floor_lst:
-						if obj.is_creature() and self in obj.get_vis_contain_lst(active_gs):
+						if obj.is_creature() and obj is not active_gs.hero and self in obj.get_vis_contain_lst(active_gs):
 								active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 								return 
 				active_gs.get_room().remove_item(self, active_gs)
-				active_gs.put_in_hand(self)
+#				active_gs.put_in_hand(self)
+				creature.put_in_hand(self)
 				active_gs.buffer("Taken")
 				return
 
