@@ -40,12 +40,10 @@ room_score_lst = [
 
 def score(active_gs):
 		room_obj = active_gs.get_room()
-#		hand_lst = active_gs.get_hand_lst()
 
 		# increment item scores
 		creature = active_gs.hero
 		for score_key in item_score_lst:
-#				if (not active_gs.hand_empty() and hand_lst[0].name == score_key
 				if (not creature.hand_is_empty() and creature.get_hand_item().name == score_key
 								and active_gs.get_points_earned_state(score_key) == False):
 						points = score_val_dict[score_key]
