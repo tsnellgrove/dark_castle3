@@ -256,7 +256,9 @@ Version 3.73 Goals
 			- DONE: creature_class_def()
 		- DONE: creature.worn_empty() to creature.worn_is_empty()
 			- DONE: creature_class_def()
-
+- DONE: update lock() to creature_burt
+	- DONE: update lock() method
+	- TBD: clean up comments
 
 
 - TBD: after updating take(), don't forget to update hand references in score()
