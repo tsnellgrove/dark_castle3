@@ -208,7 +208,7 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 				None)
 
 burt = Creature('burt', 'Burt', 'burt', 'burt', None,
-				None, [rusty_key], [glass_bottle, cheese_wedge], [], [backpack, burt, fist, conscience],
+				None, [], [rusty_key, glass_bottle, cheese_wedge], [], [backpack, burt, fist, conscience],
 				[],
 				{},
 				True,

@@ -262,8 +262,8 @@ Version 3.73 Goals
 	- NOTE: open(), close(), examine(), and read() have no reference to Burt so they do not need to be updated
 	- INPROC: update take() to creature_burt
 		- DONE: update take() method
-		- TBD: clean up comments
-		- TBD: after updating take(), don't forget to update hand references in score()
+		- DONE: clean up comments
+		- DONE: after updating take(), don't forget to update hand references in score()
 
 
 

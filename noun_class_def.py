@@ -413,7 +413,6 @@ class Item(ViewOnly):
 								4) Therefore, 'obj' must be a takable Item
 				"""
 				creature = active_gs.hero
-#				if active_gs.hand_check(self):
 				if creature.chk_in_hand(self):
 						active_gs.buffer("You're already holding the " + self.full_name)
 						return 
@@ -422,7 +421,6 @@ class Item(ViewOnly):
 								active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 								return 
 				active_gs.get_room().remove_item(self, active_gs)
-#				active_gs.put_in_hand(self)
 				creature.put_in_hand(self)
 				active_gs.buffer("Taken")
 				return
