@@ -258,7 +258,7 @@ Version 3.73 Goals
 			- DONE: creature_class_def()
 - DONE: update lock() to creature_burt
 	- DONE: update lock() method
-	- TBD: clean up comments
+	- DONE: clean up comments
 
 
 - TBD: after updating take(), don't forget to update hand references in score()
