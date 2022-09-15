@@ -246,13 +246,17 @@ Version 3.73 Goals
 	- DONE: update unlock() method
 	- DONE: update creature_burt & gs_burt
 	- DONE: clean up comments
-- INPROC: pause for minor refactor of Creature
-	- INPROC: method names
+- DONE: pause for minor refactor of Creature
+	- DONE: method names
 		- DONE: creature.hand_item() to creature.get_hand_item()
 		- DONE: creature.hand_empty() to creature.hand_is_empty()
 			- DONE: creature_class_def()
 			- DONE: noun_class_def()
-		TBD: creature.bkpk_empty() to creature.bkpk_is_empty
+		- DONE: creature.bkpk_empty() to creature.bkpk_is_empty
+			- DONE: creature_class_def()
+		- DONE: creature.worn_empty() to creature.worn_is_empty()
+			- DONE: creature_class_def()
+
 
 
 - TBD: after updating take(), don't forget to update hand references in score()

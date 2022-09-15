@@ -110,7 +110,7 @@ class Creature(ViewOnly):
 				return obj in self.hand_lst
 
 		# *** bkpk methods ***
-		def bkpk_empty(self):
+		def bkpk_is_empty(self):
 				return not bool(self.bkpk_lst)
 
 		def bkpk_lst_append(self, item):
@@ -126,7 +126,7 @@ class Creature(ViewOnly):
 		def worn_lst_remove(self, item):
 				self._worn_lst.remove(item)
 
-		def worn_empty(self):
+		def worn_is_empty(self):
 				return not bool(self.worn_lst)
 
 		# *** simple methods ***
@@ -176,13 +176,13 @@ class Creature(ViewOnly):
 						active_gs.buffer(f"The {self.full_name} is holding a {self.get_hand_item().full_name}")
 						for obj in self.hand_lst:
 								obj.disp_contain(active_gs)
-				if self == active_gs.hero and not self.bkpk_empty():
+				if self == active_gs.hero and not self.bkpk_is_empty():
 						bkpk_str_lst = [obj.full_name for obj in self.bkpk_lst]
 						bkpk_str = ", ".join(bkpk_str_lst)
 						active_gs.buffer(f"In your backpack you have: {bkpk_str}")
 						for obj in self.bkpk_lst:
 								obj.disp_contain(active_gs)
-				if not self.worn_empty():
+				if not self.worn_is_empty():
 						worn_txt_lst = [obj.full_name for obj in self.worn_lst]
 						worn_str = ", ".join(worn_txt_lst)
 						active_gs.buffer(f"The {self.full_name} is wearing: {worn_str}")
