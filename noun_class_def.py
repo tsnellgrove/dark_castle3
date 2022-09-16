@@ -364,6 +364,7 @@ class Room(ViewOnly):
 		def go(self, dir, active_gs):
 				""" Moves a Creature from one room to another
 				"""
+				creature = active_gs.hero
 				if not active_gs.map.chk_valid_dir(self, dir):
 						active_gs.buffer(descript_dict[f"wrong_way_{random.randint(0, 4)}"])
 						return
@@ -373,6 +374,8 @@ class Room(ViewOnly):
 						return 
 				next_room = active_gs.map.get_next_room(self, dir)
 				active_gs.set_room(next_room)
+				next_room.floor_lst_append(creature)
+				self.floor_lst_remove(creature)
 				next_room.examine(active_gs)
 
 

@@ -264,17 +264,31 @@ Version 3.73 Goals
 		- DONE: update take() method
 		- DONE: clean up comments
 		- DONE: after updating take(), don't forget to update hand references in score()
+	- DONE: update go() to creature_burt
+		- DONE: update go() method
+	- DONE: update validate() to include active_gs.hero.chk_in_hand() as part of its hand check for prep case (put, show, give)
+		- NOTE: show is now fully functional for creature_burt
+	- TBD: update give() to creature_burt
+		- TBD: update give() method
+		- TBD: clean up comments
 
-
-
-- TBD: move burt
-	- TBD: move go() to Creature
-	- TBD: updaate go() to move Burt when player moves
 
 
 - SOMEDAY
 	- TBD: can exclude burt from room.disp_contain() using remove(active_gs.hero)
 	- TBD: switch 'inventory' => examine.burt
+	- TBD: update / elim active_gs.get_room() from Room.go() and elsewhere
+
+- ESSAY on verb method / class association
+	- Move Container essay to Room & expand with examples
+		- Burt, take the Key
+		- Burt, put the Cheese in the Box
+		- Burt, show the Biscuits to the Hedgehog
+		- Burt, go north from the Entrance
+	- 3 rules of method association:
+		- 1) It's (almost) never the actor - because the actor is (almost) always Burt
+		- 2) Ask, who or what is being acted on
+		- 3) Choose the noun that is most restrictive
 
 - MAYBE:
 	- TBD: pass 'creature' and 'mode' into verbe methods
