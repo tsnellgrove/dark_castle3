@@ -271,8 +271,13 @@ Version 3.73 Goals
 	- DONE: update give() to creature_burt
 		- DONE: update give() method
 		- DONE: update creature_burt & gs_burt
-		- TBD: clean up comments
-	- TBD: fix entrance_moat_mach
+		- DONE: clean up comments
+	- INPROC: fix entrance_moat_mach
+		- INPROC: update WeaponInHandCond
+		- TBD: update IsWeaponAndStateCond
+		- TBD: update BufferAndEndResult
+		- TBD: update BufferOnlyResult
+		- TBD: update BufferAndGiveResult
 
 
 - SOMEDAY

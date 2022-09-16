@@ -33,7 +33,9 @@ class WeaponInHandCond(PassThruCond):
 				return self._weapon_match_cond
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-				return active_gs.weapon_in_hand() == self.weapon_match_cond
+				creature = active_gs.hero
+#				return active_gs.weapon_in_hand() == self.weapon_match_cond
+				return not creature.hand_is_empty() and creature.get_hand_item().is_weapon() == self.weapon_match_cond
 
 
 class CreatureItemCond(PassThruCond):
