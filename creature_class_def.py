@@ -228,9 +228,10 @@ class Creature(ViewOnly):
 						
 						3) It is assumed that if a creature won't accept an item from Burt, then they also won't have a gift to give in return and that their demeanor will not change.
 						
-						4) Creaatures other than burt are not allowed to have containers or creatures in their inventory
+						4) Creaatures are not allowed to have Creatures or Surfaces in their inventory
 				"""
 ##				if (obj.is_container()) or (obj.is_creature()): # previous node_lvl limitation
+				creature = active_gs.hero
 				if obj.is_creature():
 						active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 						return 
@@ -248,13 +249,15 @@ class Creature(ViewOnly):
 				if not self.give_dict[give_key]['accept']:
 						return
 						
-				active_gs.hand_lst_remove_item(obj)
+#				active_gs.hand_lst_remove_item(obj)
+				creature.hand_lst_remove(obj)
 				self.put_in_hand(obj) # messes up goblin holding grimy_axe ; need an auto_action
 
 				give_item = self.give_dict[give_key]['give']
 				if give_item:
 						self.bkpk_lst_remove(give_item) # replace with remove_item() ??
-						active_gs.hand_lst_append_item(give_item)
+#						active_gs.hand_lst_append_item(give_item)
+						creature.hand_lst_append(give_item)
 
 				new_descript_key = f"give_{self.name}_{obj.name}_descript"
 				if new_descript_key in descript_dict:

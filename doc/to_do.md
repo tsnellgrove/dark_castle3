@@ -268,10 +268,11 @@ Version 3.73 Goals
 		- DONE: update go() method
 	- DONE: update validate() to include active_gs.hero.chk_in_hand() as part of its hand check for prep case (put, show, give)
 		- NOTE: show is now fully functional for creature_burt
-	- TBD: update give() to creature_burt
-		- TBD: update give() method
+	- DONE: update give() to creature_burt
+		- DONE: update give() method
+		- DONE: update creature_burt & gs_burt
 		- TBD: clean up comments
-
+	- TBD: fix entrance_moat_mach
 
 
 - SOMEDAY
