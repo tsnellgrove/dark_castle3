@@ -260,7 +260,7 @@ Version 3.73 Goals
 		- DONE: update lock() method
 		- DONE: clean up comments
 	- NOTE: open(), close(), examine(), and read() have no reference to Burt so they do not need to be updated
-	- INPROC: update take() to creature_burt
+	- DONE: update take() to creature_burt
 		- DONE: update take() method
 		- DONE: clean up comments
 		- DONE: after updating take(), don't forget to update hand references in score()
@@ -272,12 +272,14 @@ Version 3.73 Goals
 		- DONE: update give() method
 		- DONE: update creature_burt & gs_burt
 		- DONE: clean up comments
-	- INPROC: fix entrance_moat_mach
+	- DONE: fix entrance_moat_mach
 		- DONE: update WeaponInHandCond
 		- DONE: update IsWeaponAndStateCond
 		- DONE: update BufferAndGiveResult
+		- DONE: clean up comments
+	- TBD: update wear() for creature_burt
+		- TBD: update wear() method
 		- TBD: clean up comments
-
 
 - SOMEDAY
 	- TBD: can exclude burt from room.disp_contain() using remove(active_gs.hero)

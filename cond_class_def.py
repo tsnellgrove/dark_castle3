@@ -34,7 +34,6 @@ class WeaponInHandCond(PassThruCond):
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				creature = active_gs.hero
-#				return active_gs.weapon_in_hand() == self.weapon_match_cond
 				return not creature.hand_is_empty() and creature.get_hand_item().is_weapon() == self.weapon_match_cond
 
 
@@ -62,7 +61,6 @@ class CreatureItemCond(PassThruCond):
 				return self._match_cond
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-#				cond_state = self.item_obj in self.creature_obj.creature_items_lst
 				cond_state = self.item_obj in self.creature_obj.hand_lst
 				return cond_state == self.match_cond
 
@@ -90,7 +88,6 @@ class IsWeaponAndStateCond(StateCond):
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				creature = active_gs.hero
 				weapon_in_hand = not creature.hand_is_empty() and creature.get_hand_item().is_weapon()
-#				return (mach_state == self.mach_state_cond) and (active_gs.weapon_in_hand() == self.weapon_match_cond)
 				return (mach_state == self.mach_state_cond) and (weapon_in_hand == self.weapon_match_cond)
 
 class SwitchStateCond(PassThruCond):
