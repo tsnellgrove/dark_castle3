@@ -273,11 +273,10 @@ Version 3.73 Goals
 		- DONE: update creature_burt & gs_burt
 		- DONE: clean up comments
 	- INPROC: fix entrance_moat_mach
-		- INPROC: update WeaponInHandCond
-		- TBD: update IsWeaponAndStateCond
-		- TBD: update BufferAndEndResult
-		- TBD: update BufferOnlyResult
-		- TBD: update BufferAndGiveResult
+		- DONE: update WeaponInHandCond
+		- DONE: update IsWeaponAndStateCond
+		- DONE: update BufferAndGiveResult
+		- TBD: clean up comments
 
 
 - SOMEDAY
