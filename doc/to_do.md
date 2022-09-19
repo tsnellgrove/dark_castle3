@@ -532,6 +532,7 @@ Version 3.78 Goals
 
 - TBD: Machine coding clean-up
 	- TBD: Machine 2.0 improvement ideas:
+		- Can we create a general purpose Dispenser machine - for use with Crown and Broach?
 		- Do we really need to test for goblin in antechamber??? (will the goblin ever move)
 		- Have simple, single-test / single-action 'Primative' Conditions and Results: prim_cond and prim_result
 		- Composed Conditions & Results: comp_cond / comp_result == AND / OR of multiple primatives
