@@ -277,8 +277,11 @@ Version 3.73 Goals
 		- DONE: update IsWeaponAndStateCond
 		- DONE: update BufferAndGiveResult
 		- DONE: clean up comments
-	- INPROC: update wear() for creature_burt
+	- DONE: update wear() for creature_burt
 		- DONE: update wear() method
+		- DONE: clean up comments
+	- TBD: update attack() for creature_burt
+		- TBD: update attack() method
 		- TBD: clean up comments
 
 - SOMEDAY

@@ -130,22 +130,11 @@ class Creature(ViewOnly):
 				return not bool(self.worn_lst)
 
 		def chk_clothing_type_worn(self, item):
-#				type_match = False
-#				for garment in self.worn_lst:
-#						if item.clothing_type == garment.clothing_type:
-#								type_match = True
-#				return type_match
 				return any(item.clothing_type == garment.clothing_type for garment in self.worn_lst)
 
 		# *** simple methods ***
 		def is_creature(self):
 				return True
-
-#		def all_lst(self):
-#				return self.hand_lst + self.worn_lst + self.feature_lst + self.bkpk_lst + self.invis_lst 
-
-#		def mach_lst(self):
-#				return [obj for obj in self.all_lst() if obj.is_mach()]
 
 		def chk_contain_item(self, item):
 				return item in self.hand_lst + self.bkpk_lst + self.worn_lst
