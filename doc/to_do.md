@@ -277,14 +277,15 @@ Version 3.73 Goals
 		- DONE: update IsWeaponAndStateCond
 		- DONE: update BufferAndGiveResult
 		- DONE: clean up comments
-	- TBD: update wear() for creature_burt
-		- TBD: update wear() method
+	- INPROC: update wear() for creature_burt
+		- DONE: update wear() method
 		- TBD: clean up comments
 
 - SOMEDAY
 	- TBD: can exclude burt from room.disp_contain() using remove(active_gs.hero)
 	- TBD: switch 'inventory' => examine.burt
 	- TBD: update / elim active_gs.get_room() from Room.go() and elsewhere
+	- TBD: clean-up active_gs worn methods
 
 - ESSAY on verb method / class association
 	- Move Container essay to Room & expand with examples
@@ -397,6 +398,7 @@ Version 3.74 Goals
 
 - TBD: refactor Clothes => Garment
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
+	- TBD: add 'remove descript' for Creature.remove_item() on royal_crown
 	- CANCEL: create Garment class-specific remove() method that calls take() ??
 	- TBD: auto-gen keys
 		- TBD: implement try for auto-gen key on both append and remove methods

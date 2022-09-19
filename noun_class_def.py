@@ -795,15 +795,21 @@ class Clothes(Item):
 				return self._clothing_type
 
 		def wear(self, active_gs):
-				if active_gs.clothing_type_worn(self): # was 'elif' before special error
-						output = "You are already wearing a " + self.clothing_type + ". You can't wear two garments of the same type at the same time."
-						active_gs.buffer(output)
-				else:
-						active_gs.worn_lst_append_item(self)
-						active_gs.hand_lst_remove_item(self)
-						active_gs.buffer("Worn.")
-						if self.wear_descript is not None:
-								active_gs.buffer(descript_dict[self.wear_descript])
+#				if active_gs.clothing_type_worn(self): # was 'elif' before special error
+				creature = active_gs.hero
+				if creature.chk_clothing_type_worn(self):
+#						output = "You are already wearing a " + self.clothing_type + ". You can't wear two garments of the same type at the same time."
+#						active_gs.buffer(output)
+						active_gs.buffer(f"You are already wearing a {self.clothing_type}. You can't wear two garments of the same type at the same time.")
+						return 
+#				else:
+#				active_gs.worn_lst_append_item(self)
+				creature.worn_lst_append(self)
+#				active_gs.hand_lst_remove_item(self)
+				creature.hand_lst_remove(self)
+				active_gs.buffer("Worn.")
+				if self.wear_descript is not None:
+						active_gs.buffer(descript_dict[self.wear_descript])
 
 ##		def remove(self, active_gs):
 ##				if self not in active_gs.get_worn_lst():
