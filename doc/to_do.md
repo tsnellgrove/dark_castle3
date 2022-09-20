@@ -281,7 +281,8 @@ Version 3.73 Goals
 		- DONE: update wear() method
 		- DONE: clean up comments
 	- TBD: update attack() for creature_burt
-		- TBD: update attack() method
+		- DONE: clean up attack() a bit
+		- DONE: update attack() method
 		- TBD: clean up comments
 
 - SOMEDAY

@@ -271,11 +271,14 @@ class Creature(ViewOnly):
 						return
 
 				# create and buffer attack_initiation_str
-				if active_gs.hand_empty():
+#				if active_gs.hand_empty():
+				creature = active_gs.hero
+				if creature.hand_is_empty():
 						burt_weapon_name = 'your fist'
 						burt_weapon_obj = None
 				else:
-						hand_lst = active_gs.get_hand_lst()
+#						hand_lst = active_gs.get_hand_lst()
+						hand_lst = creature.hand_lst
 						burt_weapon_obj = hand_lst[0]
 						burt_weapon_name = 'the ' + burt_weapon_obj.full_name
 				if self.hand_is_empty():
@@ -298,7 +301,8 @@ class Creature(ViewOnly):
 
 				# if no response, buffer default text and exit
 				if not creature_has_response:
-						active_gs.buffer("At the last minute the " + self.full_name + " dodges your fearsome attack with " + burt_weapon_name + ".")
+##						active_gs.buffer("At the last minute the " + self.full_name + " dodges your fearsome attack with " + burt_weapon_name + ".")
+						active_gs.buffer(f"At the last minute the {self.full_name} dodges your fearsome attack with {burt_weapon_name}.")
 						return 
 
 				#	if creature_has_response, buffer custom_str if it exists
@@ -319,7 +323,8 @@ class Creature(ViewOnly):
 						room_obj = active_gs.get_room()
 						room_obj.floor_lst_remove(self)
 						res_key = 'creature_flee_default_res_key'
-						if active_gs.hand_empty(): # NOTE: IS AN INCOMPLETE SOLUTION - NEED TO FIX WHEN COMBINING attack() and attack_burt()
+#						if active_gs.hand_empty(): # NOTE: IS AN INCOMPLETE SOLUTION - NEED TO FIX WHEN COMBINING attack() and attack_burt()
+						if creature.hand_empty(): # NOTE: IS AN INCOMPLETE SOLUTION - NEED TO FIX WHEN COMBINING attack() and attack_burt()
 								win_weapon = ""
 						else:
 								win_weapon = burt_weapon_obj.full_name
@@ -341,13 +346,11 @@ class Creature(ViewOnly):
 						win_weapon = burt_weapon_obj.full_name
 
 				# compose the start of the attack resolution string with verb and adj detail if the creature is weilding a weapon
-				hand_lst = active_gs.get_hand_lst()
-#				hand_item = hand_lst[0]
-##				if self.hand_is_empty():
-				if active_gs.hand_empty():
+#				hand_lst = active_gs.get_hand_lst()
+				hand_lst = creature.hand_lst
+#				if active_gs.hand_empty():
+				if creature.hand_is_empty():
 						attack_start_str = ""
-##				elif self.get_hand_item().is_weapon:
-#				elif hand_item.is_weapon():
 				elif hand_lst[0].is_weapon():
 						hand_item = hand_lst[0]
 						weapon_desc_max = len(hand_item.desc_lst) - 1
