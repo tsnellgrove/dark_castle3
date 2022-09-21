@@ -294,12 +294,14 @@ Version 3.73 Goals
 	- TBD: fix worn score for burt_creature
 	- TBD: fix kinging_scroll machine
 
+
 - SOMEDAY
 	- TBD: can exclude burt from room.disp_contain() using remove(active_gs.hero)
 	- TBD: switch 'inventory' => examine.burt
 	- TBD: update / elim active_gs.get_room() from Room.go() and elsewhere
 	- TBD: clean-up active_gs worn methods
 	- TBD: in active_gs.map create get_hero_room()
+	- TBD: Update methods to pass 'creature' to them
 
 - ESSAY on verb method / class association
 	- Move Container essay to Room & expand with examples
