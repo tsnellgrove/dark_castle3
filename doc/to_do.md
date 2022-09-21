@@ -284,9 +284,15 @@ Version 3.73 Goals
 		- DONE: clean up attack() a bit
 		- DONE: update attack() method
 		- DONE: clean up comments
-	- INPROC: update attack_burt() for creature_burt
+	- DONE: update attack_burt() for creature_burt
 		- DONE: update attack_burt() method
+		- DONE: clean up comments
+	- DONE: test push & pull to confirm they have no creature_burt dependencies
+	- TBD: update put() for creature_burt
+		- TBD: update put() method
 		- TBD: clean up comments
+	- TBD: fix worn score for burt_creature
+	- TBD: fix kinging_scroll machine
 
 - SOMEDAY
 	- TBD: can exclude burt from room.disp_contain() using remove(active_gs.hero)
