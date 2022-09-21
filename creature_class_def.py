@@ -364,11 +364,14 @@ class Creature(ViewOnly):
 
 		def attack_burt(self, active_gs):
 				# create and buffer attack_initiation_str
-				if active_gs.hand_empty():
+#				if active_gs.hand_empty():
+				creature = active_gs.hero
+				if creature.hand_is_empty():
 						burt_weapon_name = 'your fist'
 						burt_weapon_obj = None
 				else:
-						hand_lst = active_gs.get_hand_lst()
+#						hand_lst = active_gs.get_hand_lst()
+						hand_lst = creature.hand_lst
 						burt_weapon_obj = hand_lst[0]
 						burt_weapon_name = 'the ' + burt_weapon_obj.full_name
 				if self.hand_is_empty():

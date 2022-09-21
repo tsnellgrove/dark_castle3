@@ -284,9 +284,8 @@ Version 3.73 Goals
 		- DONE: clean up attack() a bit
 		- DONE: update attack() method
 		- DONE: clean up comments
-	- TBD: update attack_burt() for creature_burt
-		- TBD: clean up attack_burt() a bit
-		- TBD: update attack_burt() method
+	- INPROC: update attack_burt() for creature_burt
+		- DONE: update attack_burt() method
 		- TBD: clean up comments
 
 - SOMEDAY
