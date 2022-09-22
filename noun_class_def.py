@@ -699,10 +699,8 @@ class Container(Door):
 						active_gs.buffer(f"The {self.full_name} is closed.")
 						return
 				if self.chk_content_prohibited(obj):
-#				if obj.is_creature():
 						active_gs.buffer(f"You can't put the {obj.full_name} in the {self.full_name}.")
 						return 
-#				active_gs.hand_lst_remove_item(obj)
 				creature.hand_lst_remove(obj)
 				self.contain_lst_append(obj)
 				active_gs.buffer("Done")

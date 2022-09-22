@@ -288,9 +288,9 @@ Version 3.73 Goals
 		- DONE: update attack_burt() method
 		- DONE: clean up comments
 	- DONE: test push & pull to confirm they have no creature_burt dependencies
-	- TBD: update put() for creature_burt
+	- DONE: update put() for creature_burt
 		- DONE: update put() method
-		- TBD: clean up comments
+		- DONE: clean up comments
 	- TBD: fix worn score for burt_creature
 	- TBD: fix kinging_scroll machine
 
