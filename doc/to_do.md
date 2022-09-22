@@ -292,16 +292,22 @@ Version 3.73 Goals
 		- DONE: update put() method
 		- DONE: clean up comments
 	- DONE: fix worn score for burt_creature
-	- TBD: fix kinging_scroll machine
+	- DONE: fix kinging_scroll machine
+		- DONE: update WornCond for creature_burt
+		- NOTE: FULL GAME IS NOW PLAYABLE VIA CREATURE_BURT!!
+	- TBD: switch 'inventory' => examine.burt
+	- TBD: can exclude burt from room.disp_contain() using remove(active_gs.hero)
+	- TBD: review burt => creature plans and clean-up
 
 
 - SOMEDAY
-	- TBD: can exclude burt from room.disp_contain() using remove(active_gs.hero)
-	- TBD: switch 'inventory' => examine.burt
 	- TBD: update / elim active_gs.get_room() from Room.go() and elsewhere
+	- TBD: move active_gs.static_obj_lst => burt.feature_lst (add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
 	- TBD: clean-up active_gs worn methods
 	- TBD: in active_gs.map create get_hero_room()
 	- TBD: Update methods to pass 'creature' to them
+		- IDEA: don't need a 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
+		- IDEA: if craeture == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
 
 - ESSAY on verb method / class association
 	- Move Container essay to Room & expand with examples
@@ -317,8 +323,6 @@ Version 3.73 Goals
 - MAYBE:
 	- TBD: pass 'creature' and 'mode' into verbe methods
 		- TBD: 'mode' = 'validate' or 'exe_std'
-		- TBD: don't need a 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
-			- TBD: if craeture == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
 
 4.5) Analyze noun classes... which ones update burt inv vs. read from burt inv?
 		- IDEA: start by implementing the burt inv updates in paralelle to active_gs updates

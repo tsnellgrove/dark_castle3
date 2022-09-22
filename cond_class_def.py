@@ -248,6 +248,9 @@ class WornCond(PassThruCond):
 				return self._match_cond
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-				worn_lst = active_gs.get_worn_lst()
-				match_state = self.worn_garment in worn_lst
-				return match_state == self.match_cond
+				creature = active_gs.hero
+#				worn_lst = active_gs.get_worn_lst()
+##				worn_lst = creature.worn_lst
+##				match_state = self.worn_garment in worn_lst
+##				return match_state == self.match_cond
+				return (self.worn_garment in creature.worn_lst) == self.match_cond
