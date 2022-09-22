@@ -40,9 +40,9 @@ room_score_lst = [
 
 def score(active_gs):
 		room_obj = active_gs.get_room()
+		creature = active_gs.hero
 
 		# increment item scores
-		creature = active_gs.hero
 		for score_key in item_score_lst:
 				if (not creature.hand_is_empty() and creature.get_hand_item().name == score_key
 								and active_gs.get_points_earned_state(score_key) == False):
@@ -53,7 +53,7 @@ def score(active_gs):
 
 		# increment worn scores
 		for score_key in worn_score_lst:
-				worn_lst = active_gs.get_worn_lst()
+				worn_lst = creature.worn_lst
 				if len(worn_lst) > 0:
 						for garment in worn_lst:
 								if (garment.name == score_key

@@ -291,7 +291,7 @@ Version 3.73 Goals
 	- DONE: update put() for creature_burt
 		- DONE: update put() method
 		- DONE: clean up comments
-	- TBD: fix worn score for burt_creature
+	- DONE: fix worn score for burt_creature
 	- TBD: fix kinging_scroll machine
 
 
