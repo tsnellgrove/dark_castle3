@@ -170,7 +170,10 @@ class Creature(ViewOnly):
 				""" Displays a description of the visible items held by the obj. Used in examine().
 				"""
 				if not self.hand_is_empty():
-						active_gs.buffer(f"The {self.full_name} is holding a {self.get_hand_item().full_name}")
+						if self == active_gs.hero:
+								active_gs.buffer(f"You are holding a {self.get_hand_item().full_name}")
+						else:
+								active_gs.buffer(f"The {self.full_name} is holding a {self.get_hand_item().full_name}")
 						for obj in self.hand_lst:
 								obj.disp_contain(active_gs)
 				if self == active_gs.hero and not self.bkpk_is_empty():
@@ -182,7 +185,10 @@ class Creature(ViewOnly):
 				if not self.worn_is_empty():
 						worn_txt_lst = [obj.full_name for obj in self.worn_lst]
 						worn_str = ", ".join(worn_txt_lst)
-						active_gs.buffer(f"The {self.full_name} is wearing: {worn_str}")
+						if self == active_gs.hero:
+								active_gs.buffer(f"You are wearing: {worn_str}")
+						else:
+								active_gs.buffer(f"The {self.full_name} is wearing: {worn_str}")
 						for obj in self.worn_lst:
 								obj.disp_contain(active_gs)
 				return 

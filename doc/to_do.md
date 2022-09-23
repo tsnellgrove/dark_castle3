@@ -295,13 +295,19 @@ Version 3.73 Goals
 	- DONE: fix kinging_scroll machine
 		- DONE: update WornCond for creature_burt
 		- NOTE: FULL GAME IS NOW PLAYABLE VIA CREATURE_BURT!!
-	- TBD: switch 'inventory' => examine.burt
+	- INPROC: switch 'inventory' => examine.burt
+		- DONE: update cmd_exe True-One-Word command
+		- DONE: update Creature disp_contain()
+		- TBD: clean up comments
 	- TBD: can exclude burt from room.disp_contain() using remove(active_gs.hero)
 	- TBD: review burt => creature plans and clean-up
 
 
 - SOMEDAY
-	- TBD: move active_gs.static_obj_lst => burt.feature_lst (add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
+	- TBD: move active_gs.static_obj_lst => burt.feature_lst
+		- TBD: add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
+		- TBD: use Zork lantern description and ref of Nana scaring off some pesky "prowler" years ago
+		- TBD: mention of brass langern in inventory
 	- TBD: in active_gs.map create get_hero_room()
 	- TBD: update / elim active_gs.get_room() from Room.go() and elsewhere
 	- TBD: clean-up legacy active_gs methods
