@@ -301,13 +301,14 @@ Version 3.73 Goals
 
 
 - SOMEDAY
-	- TBD: update / elim active_gs.get_room() from Room.go() and elsewhere
 	- TBD: move active_gs.static_obj_lst => burt.feature_lst (add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
-	- TBD: clean-up active_gs worn methods
 	- TBD: in active_gs.map create get_hero_room()
+	- TBD: update / elim active_gs.get_room() from Room.go() and elsewhere
+	- TBD: clean-up legacy active_gs methods
 	- TBD: Update methods to pass 'creature' to them
-		- IDEA: don't need a 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
+		- IDEA: don't need an 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
 		- IDEA: if craeture == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
+
 
 - ESSAY on verb method / class association
 	- Move Container essay to Room & expand with examples
