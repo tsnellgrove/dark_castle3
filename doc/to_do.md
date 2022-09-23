@@ -295,11 +295,11 @@ Version 3.73 Goals
 	- DONE: fix kinging_scroll machine
 		- DONE: update WornCond for creature_burt
 		- NOTE: FULL GAME IS NOW PLAYABLE VIA CREATURE_BURT!!
-	- INPROC: switch 'inventory' => examine.burt
+	- DONE: switch 'inventory' => examine.burt
 		- DONE: update cmd_exe True-One-Word command
 		- DONE: update Creature disp_contain()
-		- TBD: clean up comments
-	- TBD: can exclude burt from room.disp_contain() using remove(active_gs.hero)
+		- DONE: clean up comments
+	- DONE: can exclude burt from room.disp_contain() using remove(active_gs.hero)
 	- TBD: review burt => creature plans and clean-up
 
 

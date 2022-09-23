@@ -348,7 +348,9 @@ class Room(ViewOnly):
 				"""
 				room_item_lst = []
 				for obj in self.floor_lst:
-						if not obj.is_item():
+						if obj == active_gs.hero:
+								pass
+						elif not obj.is_item():
 								active_gs.buffer("There is a " + obj.full_name + " here.")
 								obj.disp_contain(active_gs)
 						else:
