@@ -194,24 +194,6 @@ Version 3.73 Goals
 - refactor coding as I go
 
 - DONE: full review of all active_gs attributes to be moved to burt_obj
-	- active_gs.state_dict['backpack', 'hand', 'worn']
-	- active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]} <= add brass_lantern ? "wouldn't want that to go out!"
-	- methods:	
-		def get_backpack_lst(self):
-		def backpack_lst_append_item(self, item):
-		def backpack_lst_remove_item(self, item):
-		def get_hand_lst(self):
-		def hand_lst_append_item(self, item):
-		def hand_lst_remove_item(self, item):
-		def hand_check(self, obj):
-		def hand_empty(self):
-		def put_in_hand(self, new_item):
-		def get_worn_lst(self):
-		def worn_lst_append_item(self, item):
-		def worn_lst_remove_item(self, item):
-		def clothing_type_worn(self, item):
-		def get_static_obj(self, static_key):
-		def inventory(self):
 	- DONE: will also enable 'room scope' type methods to move to class Room
 - Refactor burt as a Creature class object
 	- DONE: create burt obj and make him visible
@@ -228,7 +210,7 @@ Version 3.73 Goals
 		- IDEA: then maybe we need to create a custom jinv() method in Creature to describe burt's inventory?
 		- NEW-PLAN: let's just give burt 1 simple obj in his hand and start by updating eat(), drink(), and drop()
 - DONE: map classes and verb methods
-- INPROC: update verb methods to reference creature_burt
+- DONE: update verb methods to reference creature_burt
 	- DONE: update eat to creature_burt
 		- DONE: food in burt's hand
 		- DONE: update eat for creature_burt
@@ -300,23 +282,47 @@ Version 3.73 Goals
 		- DONE: update Creature disp_contain()
 		- DONE: clean up comments
 	- DONE: can exclude burt from room.disp_contain() using remove(active_gs.hero)
-	- TBD: review burt => creature plans and clean-up
-
-
-- SOMEDAY
-	- TBD: move active_gs.static_obj_lst => burt.feature_lst
-		- TBD: add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
-		- TBD: use Zork lantern description and ref of Nana scaring off some pesky "prowler" years ago
-		- TBD: mention of brass langern in inventory
-	- TBD: in active_gs.map create get_hero_room()
+- DONE: review burt => creature plans and clean-up
+- TBD: move active_gs.static_obj_lst => burt.feature_lst
+- TBD: add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
+	- TBD: use Zork lantern description and ref of Nana scaring off some pesky "prowler" years ago
+	- TBD: mention of brass langern in inventory
+- TBD: move active_gs.universal_lst timer obj to burt.invis_lst
+	- TBD: universal descriptors => burt_obj (what does this mean???)
+- TBD: in active_gs.map create get_hero_room()
 	- TBD: update / elim active_gs.get_room() from Room.go() and elsewhere
-	- TBD: clean-up legacy active_gs methods
-	- TBD: Update methods to pass 'creature' to them
-		- IDEA: don't need an 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
-		- IDEA: if craeture == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
+- TBD: Update methods to pass 'creature' to them
+	- TBD: burt to be default value (include in def ?)
+	- IDEA: don't need an 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
+	- IDEA: if creature == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
+- TBD: improve natural language / paragraph (vs. outline) read of examine() for Room & Creature
+	- maybe need a buff_no_cr() method in gs.io for this?
 
 
-- ESSAY on verb method / class association
+*** CLEAN-UP ***
+- active_gs.state_dict['backpack', 'hand', 'worn']
+- active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]} <= add brass_lantern ? "wouldn't want that to go out!"
+- active_gs methods:	
+	def get_backpack_lst(self):
+	def backpack_lst_append_item(self, item):
+	def backpack_lst_remove_item(self, item):
+	def get_hand_lst(self):
+	def hand_lst_append_item(self, item):
+	def hand_lst_remove_item(self, item):
+	def hand_check(self, obj):
+	def hand_empty(self):
+	def put_in_hand(self, new_item):
+	def get_worn_lst(self):
+	def worn_lst_append_item(self, item):
+	def worn_lst_remove_item(self, item):
+	def clothing_type_worn(self, item):
+	def get_static_obj(self, static_key):
+	def inventory(self):
+	def get_room()
+
+
+*** DOC ESSAYS ***
+- verb method / class association
 	- Move Container essay to Room & expand with examples
 		- Burt, take the Key
 		- Burt, put the Cheese in the Box
@@ -327,62 +333,51 @@ Version 3.73 Goals
 		- 2) Ask, who or what is being acted on
 		- 3) Choose the noun that is most restrictive
 
-- MAYBE:
-	- TBD: pass 'creature' and 'mode' into verbe methods
-		- TBD: 'mode' = 'validate' or 'exe_std'
 
-4.5) Analyze noun classes... which ones update burt inv vs. read from burt inv?
-		- IDEA: start by implementing the burt inv updates in paralelle to active_gs updates
-		- IDEA: create 'jinventory' and 'jlook' commands to confirm that burt_creature matches active_gs.burt
-		- IDEA: now migrate the 'read' noun classes one-by-one to read from burt_creature (refactoring first as I go)
-		- IDEA: lastly, when all methods point to burt_creature, I can comment out the active_gs.burt update methods and test
-		- IDEA: Refactor as I go; provide a 'silent mode' for each method() for when it is called by a non-burt creature
-	- IDEAS:
-		- refactoring noun classes for burt-as-creature
-			- TBD: move go() to Creature
-			- think abour 'source' and 'desination'... e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
-			- can we have 'burt' be the default <creature> but other options available?
-				- this would allow give() to become a noun class method... essentially a take() initiated by burt
-				- likewise, show() becomes an examine initiated by burt
-				- maybe each Creature has its own description list?
-					- desc list as creature attribute ???
-				- with a default examine() response similar to "the X is not interesting"
-			- need to do a detailed mapping of what is required for success in each noun_class() method
-		- IDEAS - future
-			- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
-			- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
-			- non-humanoid monster could be a special weapon description case (fun new puzzle idea)
-			- for burt maybe add brass_lantern - always trust and shining in your off hand... wouldn't want that to go out now would we? Grues...
-			- princess 'poise' & 'moxie'
-			- valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
-			- create all_lst, item_lst, and mach_lst methods for creature class
-		- TBD: in noun methods, do I need to pass init_creature to each verb method in order for mode = 'creature_exe' to work??
-	5) integrate burt with active_gs (get_hero method)
-		- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict
-		- Note: get_hero() enables player to take on different characters in the game (e.g. Burt could become a mouse)
-		- does get_hero bias us towards a search for current hero room? Or do we still cache 'room' in active_gs ???
-	6) move burt_obj from room to room (features attribute) when active_gs moves
+*** MAYBE ***
+- think abour 'source' and 'desination'... e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
+	- need to do a detailed mapping of what is required for success in each noun_class() method
+- can we have 'burt' be the default <creature> but other options available?
+	- TBD: in noun methods, do I need to pass init_creature to each verb method in order for mode = 'creature_exe' to work??
+	- this would allow give() to become a noun class method... essentially a take() initiated by burt
+	- likewise, show() becomes an examine initiated by burt
+	- TBD: change goblin re-arm result to take() rather than put_in_hand()
+	- maybe each Creature has its own description list?
+		- desc list as creature attribute ???
+	- with a default examine() response similar to "the X is not interesting"
+- IDEAS - future
+	- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
+	- Note: active_gs.hero enables player to take on different characters in the game (e.g. Burt could become a mouse)
+	- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
+	- non-humanoid monster could be a special weapon description case (fun new puzzle idea)
+	- for burt maybe add brass_lantern - always trusty and shining in your off hand... wouldn't want that to go out now would we? Grues...
+	- princess 'poise' & 'moxie'
+	- valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
+	- create all_lst, item_lst, and mach_lst methods for creature class
+
+
+*** LEGACY ***
+- TBD: Analyze noun classes... which ones update burt inv vs. read from burt inv?
+	- IDEA: start by implementing the burt inv updates in paralelle to active_gs updates
+	- IDEA: create 'jinventory' and 'jlook' commands to confirm that burt_creature matches active_gs.burt
+	- IDEA: now migrate the 'read' noun classes one-by-one to read from burt_creature (refactoring first as I go)
+	- IDEA: lastly, when all methods point to burt_creature, I can comment out the active_gs.burt update methods and test
+	- IDEA: Refactor as I go; provide a 'silent mode' for each method() for when it is called by a non-burt creature
+- IDEAS:
+	- refactoring noun classes for burt-as-creature
+		- TBD: move go() to Creature
+- TBD: integrate burt with active_gs (get_hero method)
+	- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict
+	- does get_hero bias us towards a search for current hero room? Or do we still cache 'room' in active_gs ???
+	- TBD: move burt_obj from room to room (features attribute) when active_gs moves
 		- Burt to be in room features
-	7) universal descriptors => burt_obj
-	8) updaate burt hand & inventory changes in parallel to active_gs (create setter methods for creatures)
-		- TBD: change goblin re-arm result to take() rather than put_in_hand()
-	9) update module-by-module to read from active_gs to burt_obj (create getter methods for creatures)
-	10) eliminate attack_burt method
-	11) does room_scope now become a Room method?
-	12) comment out active_gs hand & inv updates
-	13) lots of testing!!!
-	14) clean-up comments
-	- TBD: move active_gs.universal_lst timer obj to burt.invis_lst
+	- updaate burt hand & inventory changes in parallel to active_gs (create setter methods for creatures)
+	- update module-by-module to read from active_gs to burt_obj (create getter methods for creatures)
+	- does room_scope now become a Room method?
+	- comment out active_gs hand & inv updates
+	-  lots of testing!!!
+	- clean-up comments
 	- TBD: for ViewOnly create methoed 'vis_lst(): return []' to simplify Room.vis_lst() ???
-- TBD: improve natural language / paragraph (vs. outline) read of examine()
-	- TBD: Room
-	- TBD: Creature
-- TBD: refactor Creature / attack() => 'attack x with y'
-	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
-	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
-	- TBD: re-org to identify 'attacker' and 'winner' 
-	- TBD: re-code attack / attack_burt response correctly based on in-line notes
-		- TBD: change to 'attack x with y' (default to obj in hand?); Maybe hedgehog laughs at an attack with a non-weapon?
 
 
 ##########################
@@ -435,6 +430,13 @@ Version 3.74 Goals
 - TBD: refactor Food
 - TBD: refactor Weapon
 - TBD: refactor Switch
+- TBD: refactor Creature / attack() => 'attack x with y'
+	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
+	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
+	- TBD: re-org to identify 'attacker' and 'winner' 
+	- TBD: re-code attack / attack_burt response correctly based on in-line notes
+		- TBD: change to 'attack x with y' (default to obj in hand?); Maybe hedgehog laughs at an attack with a non-weapon?
+	- TBD: eliminate attack_burt method
 - TBD: create Surface class!! (was 'Shelf')
 	- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
 	- put initial shelf in Main Hall
@@ -493,6 +495,7 @@ Version 3.75 Goals
 	- TBD: print_score() a method of the Score class
 	- TBD: instead of a dict of score achievements w/ T or F, just have a list of score achievemnts achieved
 	- TBD: link front_gate score to opening door
+- TBD: refactor buffer and caching to gs.io
 - TBD: refactor GameState and dicts in static_gbl() with dunder methods (__getattr__ and __setattr__ ; see email to self on Aug 2, 2022)
 - TBD: active_gs => gs renaming; point to same obj to start with ??
 - TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
@@ -523,6 +526,8 @@ Version 3.76 Goals
 		- if fail validate() , buffer error and end app_main()
 
 - TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
+- TBD: pass 'mode' into verb methods
+- TBD: 'mode' = 'validate' or 'exe_std'
 - TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
 	- TBD: this will break the 'go south from Entrance' warning... probably the easiest fix is to create a re-usable unreachable_room to the south
 - TBD: final clean-up
