@@ -283,18 +283,16 @@ Version 3.73 Goals
 		- DONE: clean up comments
 	- DONE: can exclude burt from room.disp_contain() using remove(active_gs.hero)
 - DONE: review burt => creature plans and clean-up
-- TBD: move active_gs.static_obj_lst => burt.feature_lst
-- TBD: add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
-	- TBD: use Zork lantern description and ref of Nana scaring off some pesky "prowler" years ago
-	- TBD: mention of brass langern in inventory
-- TBD: move active_gs.universal_lst timer obj to burt.invis_lst
-	- TBD: universal descriptors => burt_obj (what does this mean???)
+- DONE: move active_gs.universal_lst timer obj to burt.invis_lst
 - TBD: in active_gs.map create get_hero_room()
 	- TBD: update / elim active_gs.get_room() from Room.go() and elsewhere
 - TBD: Update methods to pass 'creature' to them
 	- TBD: burt to be default value (include in def ?)
 	- IDEA: don't need an 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
 	- IDEA: if creature == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
+- TBD: add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
+	- TBD: use Zork lantern description and ref of Nana scaring off some pesky "prowler" years ago; "battery-powered brass lantern"
+	- TBD: mention of brass langern in inventory
 - TBD: improve natural language / paragraph (vs. outline) read of examine() for Room & Creature
 	- maybe need a buff_no_cr() method in gs.io for this?
 
@@ -346,6 +344,7 @@ Version 3.73 Goals
 		- desc list as creature attribute ???
 	- with a default examine() response similar to "the X is not interesting"
 - IDEAS - future
+	- TBD: move active_gs.static_obj_lst => burt.feature_lst
 	- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
 	- Note: active_gs.hero enables player to take on different characters in the game (e.g. Burt could become a mouse)
 	- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
@@ -364,6 +363,7 @@ Version 3.73 Goals
 	- IDEA: lastly, when all methods point to burt_creature, I can comment out the active_gs.burt update methods and test
 	- IDEA: Refactor as I go; provide a 'silent mode' for each method() for when it is called by a non-burt creature
 - IDEAS:
+	- TBD: universal descriptors => burt_obj
 	- refactoring noun classes for burt-as-creature
 		- TBD: move go() to Creature
 - TBD: integrate burt with active_gs (get_hero method)

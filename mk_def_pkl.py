@@ -208,8 +208,8 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 				None)
 
 burt = Creature('burt', 'Burt', 'burt', 'burt', None,
-				None, [], [rusty_key, glass_bottle, cheese_wedge, stale_biscuits], [], [backpack, burt, fist, conscience],
-				[],
+				None, [], [rusty_key, glass_bottle, cheese_wedge, stale_biscuits], [], [backpack, fist, conscience],
+				[hedgehog_eats_timer],
 				{},
 				True,
 				{},
@@ -300,7 +300,7 @@ active_gs = GameState(
 				'out_buff' : ""
 		},
 ##		[test_timer, hedgehog_eats_timer], # timer test universal obj
-		[hedgehog_eats_timer],
+		[], # was hedgehog_eats_timer - moved to burt.invis_lst
 		map,
 		burt
 )
