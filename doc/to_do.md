@@ -286,6 +286,8 @@ Version 3.73 Goals
 - DONE: move active_gs.universal_lst timer obj to burt.invis_lst
 - INPROC: active_gs.get_room() => active_gs.map.get_her_room()
 	- DONE: in active_gs.map create get_hero_room() initial version
+	- DONE: test get_hero_room() in read() method
+		- NOTE: had issues because active_gs.map does not have a way to reference active_gs; moved get_hero_room() to active_gs with hero for now
 	- TBD: find all modules using active_gs.get_room()
 	- TBD: update to get_hero_room() for Room.go() and elsewhere
 	- TBD: elim active_gs.get_room() 

@@ -175,6 +175,14 @@ class GameState(object):
 						return self._static_obj_dict[static_key]
 
 		### room ###
+		def get_hero_room(self):
+				""" Returns the room that active_gs.hero is currently in
+				"""
+				for room in self.map.get_room_lst():
+						if self.hero in room.floor_lst:
+								return room
+				raise ValueError(f"{self.hero.name} not found.")
+		
 		def get_room(self):
 				return self._state_dict['room']
 
