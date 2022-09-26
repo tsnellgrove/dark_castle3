@@ -284,8 +284,10 @@ Version 3.73 Goals
 	- DONE: can exclude burt from room.disp_contain() using remove(active_gs.hero)
 - DONE: review burt => creature plans and clean-up
 - DONE: move active_gs.universal_lst timer obj to burt.invis_lst
-- TBD: in active_gs.map create get_hero_room()
-	- TBD: update / elim active_gs.get_room() from Room.go() and elsewhere
+- INPROC: active_gs.map.get_her_room()
+	- DONE: in active_gs.map create get_hero_room() initial version
+	- TBD: refactor to list comprehension
+- TBD: update / elim active_gs.get_room() from Room.go() and elsewhere
 - TBD: Update methods to pass 'creature' to them
 	- TBD: burt to be default value (include in def ?)
 	- IDEA: don't need an 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
