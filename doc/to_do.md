@@ -284,23 +284,29 @@ Version 3.73 Goals
 	- DONE: can exclude burt from room.disp_contain() using remove(active_gs.hero)
 - DONE: review burt => creature plans and clean-up
 - DONE: move active_gs.universal_lst timer obj to burt.invis_lst
-- INPROC: active_gs.get_room() => active_gs.map.get_her_room()
+- INPROC: active_gs.get_room() => active_gs.map.get_hero_room()
 	- DONE: in active_gs.map create get_hero_room() initial version
 	- DONE: test get_hero_room() in read() method
 		- NOTE: had issues because active_gs.map does not have a way to reference active_gs; moved get_hero_room() to active_gs with hero for now
-	- TBD: find all modules using active_gs.get_room()
-	- TBD: update to get_hero_room() for Room.go() and elsewhere
-	- TBD: elim active_gs.get_room() 
-- TBD: Update methods to pass 'creature' to them
-	- TBD: burt to be default value (include in def ?)
-	- IDEA: don't need an 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
-	- IDEA: if creature == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
-- TBD: add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
-	- TBD: use Zork lantern description and ref of Nana scaring off some pesky "prowler" years ago; "battery-powered brass lantern"
-	- TBD: mention of brass langern in inventory
-- TBD: improve natural language / paragraph (vs. outline) read of examine() for Room & Creature
-	- maybe need a buff_no_cr() method in gs.io for this?
-
+	- DONE: find all modules using active_gs.get_room()
+		- TBD: noun_class_def() <both get_room and set_room>
+		- TBD: interp()
+		- TBD: validate()
+		- TBD: pre_action()
+		- TBD: cmd_exe()
+		- TBD: post_action()
+		- TBD: auto_action()
+		- TBD: score()
+		- TBD: gs_glass_def() <method defined here>
+		- TBD: creature_class_def()
+		- TBD: mach_class_def()
+		- TBD: cond_class_def()
+		- TBD: result_class_def()
+	- NEW-IDEA: re-use existing active_gs.get_room() calls
+		- TBD: replace get_room() code with get_hero_rooom()
+		- TBD: Also need to comment out set_room() in Room.go() and in active_gs
+		- TBD: And need to convert Read get_hero_room() back to get_room()
+		- TBD: comment 'room' out of active_gs.state_dict
 
 *** CLEAN-UP ***
 - active_gs.state_dict['backpack', 'hand', 'worn']
@@ -322,9 +328,22 @@ Version 3.73 Goals
 	def get_static_obj(self, static_key):
 	def inventory(self):
 	def get_room()
+	def set_room()
+- active_gs.state_dict['rooom']	
 
+- TBD: Update methods to pass 'creature' to them
+	- TBD: burt to be default value (include in def ?)
+	- IDEA: don't need an 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
+	- IDEA: if creature == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
 
-*** DOC ESSAYS ***
+*** NEW FEATURES ***
+- TBD: add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
+	- TBD: use Zork lantern description and ref of Nana scaring off some pesky "prowler" years ago; "battery-powered brass lantern"
+	- TBD: mention of brass langern in inventory
+- TBD: improve natural language / paragraph (vs. outline) read of examine() for Room & Creature
+	- maybe need a buff_no_cr() method in gs.io for this?
+
+*** DOC_STRING ESSAYS ***
 - verb method / class association
 	- Move Container essay to Room & expand with examples
 		- Burt, take the Key
