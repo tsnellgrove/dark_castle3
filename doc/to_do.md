@@ -307,29 +307,29 @@ Version 3.73 Goals
 		- DONE: Also need to comment out set_room() in Room.go() and in active_gs
 		- DONE: And need to convert Read get_hero_room() back to get_room()
 		- DONE: comment 'room' out of active_gs.state_dict
+- INPROC: comment out legacy refs
+	- DONE: def get_room()
+	- DONE:	def set_room()
+	- DONE: active_gs.state_dict['rooom']	
+	- def get_backpack_lst(self):
+	- def backpack_lst_append_item(self, item):
+	- def backpack_lst_remove_item(self, item):
+	- def get_hand_lst(self):
+	- def hand_lst_append_item(self, item):
+	- def hand_lst_remove_item(self, item):
+	- def hand_check(self, obj):
+	- def hand_empty(self):
+	- def put_in_hand(self, new_item):
+	- def get_worn_lst(self):
+	- def worn_lst_append_item(self, item):
+	- def worn_lst_remove_item(self, item):
+	- def clothing_type_worn(self, item):
+	- def get_static_obj(self, static_key):
+	- def inventory(self):
+	- active_gs.state_dict['backpack', 'hand', 'worn']
+	- active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]} <= add brass_lantern ? "wouldn't want that to go out!"
 
-*** CLEAN-UP ***
-- active_gs.state_dict['backpack', 'hand', 'worn']
-- active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]} <= add brass_lantern ? "wouldn't want that to go out!"
-- active_gs methods:	
-	def get_backpack_lst(self):
-	def backpack_lst_append_item(self, item):
-	def backpack_lst_remove_item(self, item):
-	def get_hand_lst(self):
-	def hand_lst_append_item(self, item):
-	def hand_lst_remove_item(self, item):
-	def hand_check(self, obj):
-	def hand_empty(self):
-	def put_in_hand(self, new_item):
-	def get_worn_lst(self):
-	def worn_lst_append_item(self, item):
-	def worn_lst_remove_item(self, item):
-	def clothing_type_worn(self, item):
-	def get_static_obj(self, static_key):
-	def inventory(self):
-	def get_room()
-	def set_room()
-- active_gs.state_dict['rooom']	
+
 
 - TBD: Update methods to pass 'creature' to them
 	- TBD: burt to be default value (include in def ?)
