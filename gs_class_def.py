@@ -175,7 +175,8 @@ class GameState(object):
 						return self._static_obj_dict[static_key]
 
 		### room ###
-		def get_hero_room(self):
+#		def get_hero_room(self):
+		def get_room(self):
 				""" Returns the room that active_gs.hero is currently in
 				"""
 				for room in self.map.get_room_lst():
@@ -183,11 +184,11 @@ class GameState(object):
 								return room
 				raise ValueError(f"{self.hero.name} not found.")
 		
-		def get_room(self):
-				return self._state_dict['room']
+##		def get_room(self):
+##				return self._state_dict['room']
 
-		def set_room(self, value):
-				self._state_dict['room'] = value
+##		def set_room(self, value):
+##				self._state_dict['room'] = value
 
 		### buffer ###
 		def get_buff(self):

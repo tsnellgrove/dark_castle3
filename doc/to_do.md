@@ -302,11 +302,11 @@ Version 3.73 Goals
 		- TBD: mach_class_def()
 		- TBD: cond_class_def()
 		- TBD: result_class_def()
-	- NEW-IDEA: re-use existing active_gs.get_room() calls
-		- TBD: replace get_room() code with get_hero_rooom()
-		- TBD: Also need to comment out set_room() in Room.go() and in active_gs
-		- TBD: And need to convert Read get_hero_room() back to get_room()
-		- TBD: comment 'room' out of active_gs.state_dict
+	- DONE - NEW-IDEA: re-use existing active_gs.get_room() calls
+		- DONE: replace get_room() code with get_hero_rooom()
+		- DONE: Also need to comment out set_room() in Room.go() and in active_gs
+		- DONE: And need to convert Read get_hero_room() back to get_room()
+		- DONE: comment 'room' out of active_gs.state_dict
 
 *** CLEAN-UP ***
 - active_gs.state_dict['backpack', 'hand', 'worn']

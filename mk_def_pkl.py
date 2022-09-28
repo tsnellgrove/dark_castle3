@@ -296,7 +296,7 @@ active_gs = GameState(
 				'backpack' : [],
 				'hand' : [],
 				'worn' : [],
-				'room' : entrance,
+##				'room' : entrance,
 				'out_buff' : ""
 		},
 ##		[test_timer, hedgehog_eats_timer], # timer test universal obj
