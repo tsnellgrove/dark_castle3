@@ -206,7 +206,7 @@ class RoomCond(PassThruCond):
 				return self._match_cond
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-				hand_lst = active_gs.get_hand_lst()
+#				hand_lst = active_gs.get_hand_lst()
 				room_obj = active_gs.get_room()
 				match_state = room_obj == self.match_room
 				return self.match_cond == match_state

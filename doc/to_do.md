@@ -308,18 +308,18 @@ Version 3.73 Goals
 		- DONE: And need to convert Read get_hero_room() back to get_room()
 		- DONE: comment 'room' out of active_gs.state_dict
 - INPROC: comment out legacy refs
-	- DONE: def get_room()
-	- DONE:	def set_room()
-	- DONE: active_gs.state_dict['rooom']	
-	- def get_backpack_lst(self):
-	- def backpack_lst_append_item(self, item):
-	- def backpack_lst_remove_item(self, item):
-	- def get_hand_lst(self):
+	- INPROC: def get_hand_lst(self):
+		- TBD: gs_class_def
+		- DONE: cond_class_def
+		- DONE: noun_class_def
 	- def hand_lst_append_item(self, item):
 	- def hand_lst_remove_item(self, item):
 	- def hand_check(self, obj):
 	- def hand_empty(self):
 	- def put_in_hand(self, new_item):
+	- def get_backpack_lst(self):
+	- def backpack_lst_append_item(self, item):
+	- def backpack_lst_remove_item(self, item):
 	- def get_worn_lst(self):
 	- def worn_lst_append_item(self, item):
 	- def worn_lst_remove_item(self, item):
@@ -328,7 +328,9 @@ Version 3.73 Goals
 	- def inventory(self):
 	- active_gs.state_dict['backpack', 'hand', 'worn']
 	- active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]} <= add brass_lantern ? "wouldn't want that to go out!"
-
+	- INPROC: def get_room()
+	- INPROC:	def set_room()
+	- DONE: active_gs.state_dict['rooom']	
 
 
 - TBD: Update methods to pass 'creature' to them

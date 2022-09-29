@@ -271,10 +271,10 @@ class Room(ViewOnly):
 				""" Returns the list of visible objects contained in the method-calling object. In Room, provides the visible object scope.
 				"""
 				return_lst = []
-				legacy_node1_lst = active_gs.get_hand_lst() + active_gs.get_backpack_lst() + active_gs.get_worn_lst() 
-				for obj in legacy_node1_lst:
-						return_lst += obj.get_vis_contain_lst(active_gs)
-				return_lst = return_lst + legacy_node1_lst + active_gs.get_static_obj('universal')
+#				legacy_node1_lst = active_gs.get_hand_lst() + active_gs.get_backpack_lst() + active_gs.get_worn_lst() 
+#				for obj in legacy_node1_lst:
+#						return_lst += obj.get_vis_contain_lst(active_gs)
+#				return_lst = return_lst + legacy_node1_lst + active_gs.get_static_obj('universal')
 				node1_only_lst = [self] + active_gs.map.get_door_lst(self) + self.feature_lst
 				return_lst = return_lst + node1_only_lst
 				for obj in self.floor_lst:
