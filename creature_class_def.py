@@ -317,7 +317,7 @@ class Creature(ViewOnly):
 						pass
 
 ### NOTE: GENERATING win_weapon DOESN'T REALLY SOLVE THE PROBLEM... I ACTUALLY NEED TO DETERMINE 'WINNER' AND BASE DESC OFF THEIR 'HAND'
-### NOTE: ALSO NOT DETERMINING IF hand_empty() IN CONJUNCTION WITH 'WINNER' AND ATTACK RESOLUTION
+### NOTE: ALSO NOT DETERMINING IF hand_is_empty() IN CONJUNCTION WITH 'WINNER' AND ATTACK RESOLUTION
 ### NOTE: REALLY NEED TO FIGURE OUT 'WINNER' *FIRST* - THEN HAND STATE AND WEAPON ADJ FLOW FROM THERE
 ### NOTE: order of operations = <attacker> => <custom> => <winner>
 
@@ -326,7 +326,7 @@ class Creature(ViewOnly):
 						room_obj = active_gs.get_room()
 						room_obj.floor_lst_remove(self)
 						res_key = 'creature_flee_default_res_key'
-						if creature.hand_empty(): # NOTE: IS AN INCOMPLETE SOLUTION - NEED TO FIX WHEN COMBINING attack() and attack_burt()
+						if creature.hand_is_empty(): # NOTE: IS AN INCOMPLETE SOLUTION - NEED TO FIX WHEN COMBINING attack() and attack_burt()
 								win_weapon = ""
 						else:
 								win_weapon = burt_weapon_obj.full_name

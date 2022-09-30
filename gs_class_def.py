@@ -123,17 +123,17 @@ class GameState(object):
 		def get_hand_lst(self):
 				return self._state_dict['hand']
 
+		def hand_empty(self):
+				return len(self.get_hand_lst()) == 0
+
+#		def hand_check(self, obj):
+#				return obj in self.get_hand_lst()
+
 		def hand_lst_append_item(self, item):
 				self._state_dict['hand'].append(item)
 
-		def hand_lst_remove_item(self, item):
-				self._state_dict['hand'].remove(item)
-
-		def hand_check(self, obj):
-				return obj in self.get_hand_lst()
-
-		def hand_empty(self):
-				return len(self.get_hand_lst()) == 0
+#		def hand_lst_remove_item(self, item):
+#				self._state_dict['hand'].remove(item)
 
 		def weapon_in_hand(self):
 				hand_lst = self.get_hand_lst()

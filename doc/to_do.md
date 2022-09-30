@@ -309,14 +309,21 @@ Version 3.73 Goals
 		- DONE: comment 'room' out of active_gs.state_dict
 - INPROC: comment out legacy refs
 	- INPROC: def get_hand_lst(self):
-		- TBD: gs_class_def
+		- TBD: gs_class_def (def)
 		- DONE: cond_class_def
 		- DONE: noun_class_def
-	- def hand_lst_append_item(self, item):
-	- def hand_lst_remove_item(self, item):
-	- def hand_check(self, obj):
-	- def hand_empty(self):
+	- INPROC: def hand_empty(self):
+		- TBD: gs_class_def (def)
+		- DONE: creature_class_def
+	- DONE: def hand_check(self, obj):
+		- DONE: gs_class_def (def)
+		- DONE: validate()
+	- INPROC: def hand_lst_append_item(self, item):
+		- TBD: gs_class_def (def)
+	- DONE: def hand_lst_remove_item(self, item):
+		- DONE: gs_class_def (def)
 	- def put_in_hand(self, new_item):
+	- def weapon_in_hand(self):
 	- def get_backpack_lst(self):
 	- def backpack_lst_append_item(self, item):
 	- def backpack_lst_remove_item(self, item):

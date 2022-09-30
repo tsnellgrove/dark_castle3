@@ -73,7 +73,8 @@ def validate(active_gs, case, word_lst):
 						active_gs.buffer("You can't see a " + word2_obj.full_name + " here.")
 						return False
 
-				if (word1 in ['drop', 'eat', 'wear']) and (not active_gs.hand_check(word2_obj)) and (not active_gs.hero.chk_in_hand(word2_obj)):
+#				if (word1 in ['drop', 'eat', 'wear']) and (not active_gs.hand_check(word2_obj)) and (not active_gs.hero.chk_in_hand(word2_obj)):
+				if (word1 in ['drop', 'eat', 'wear']) and (not active_gs.hero.chk_in_hand(word2_obj)):
 						active_gs.buffer("You're not holding the " + word2_obj.full_name + " in your hand.")
 						return False
 
@@ -92,7 +93,8 @@ def validate(active_gs, case, word_lst):
 				elif room.chk_is_vis(dirobj_obj, active_gs) == False:
 						active_gs.buffer("You can't see a " + dirobj_obj.full_name + " here.")
 						return False
-				elif (word1 in ['put', 'show', 'give']) and (not active_gs.hand_check(noun_obj)) and (not active_gs.hero.chk_in_hand(noun_obj)):
+#				elif (word1 in ['put', 'show', 'give']) and (not active_gs.hand_check(noun_obj)) and (not active_gs.hero.chk_in_hand(noun_obj)):
+				elif (word1 in ['put', 'show', 'give']) and (not active_gs.hero.chk_in_hand(noun_obj)):
 						active_gs.buffer("You're not holding the " + noun_obj.full_name + " in your hand.")
 						return False
 
