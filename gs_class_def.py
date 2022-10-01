@@ -123,14 +123,14 @@ class GameState(object):
 		def get_hand_lst(self):
 				return self._state_dict['hand']
 
-		def hand_empty(self):
-				return len(self.get_hand_lst()) == 0
+#		def hand_empty(self):
+#				return len(self.get_hand_lst()) == 0
 
 #		def hand_check(self, obj):
 #				return obj in self.get_hand_lst()
 
-		def hand_lst_append_item(self, item):
-				self._state_dict['hand'].append(item)
+#		def hand_lst_append_item(self, item):
+#				self._state_dict['hand'].append(item)
 
 #		def hand_lst_remove_item(self, item):
 #				self._state_dict['hand'].remove(item)
@@ -139,13 +139,13 @@ class GameState(object):
 				hand_lst = self.get_hand_lst()
 				return bool(hand_lst) and hand_lst[0].is_weapon()
 
-		def put_in_hand(self, new_item):
-				if not self.hand_empty():
-						hand_lst = self.get_hand_lst()
-						hand_item = hand_lst[0]
-						self.backpack_lst_append_item(hand_item)
-						self.hand_lst_remove_item(hand_item)
-				self.hand_lst_append_item(new_item)
+#		def put_in_hand(self, new_item):
+#				if not self.hand_empty():
+#						hand_lst = self.get_hand_lst()
+#						hand_item = hand_lst[0]
+#						self.backpack_lst_append_item(hand_item)
+#						self.hand_lst_remove_item(hand_item)
+#				self.hand_lst_append_item(new_item)
 
 		### worn ###
 		def get_worn_lst(self):

@@ -812,7 +812,7 @@ class Clothes(Item):
 ##						output = "You're not wearing the " + self.full_name + "."
 ##						active_gs.buffer(output)
 ##				else:
-##						active_gs.put_in_hand(self)
+##						creature.put_in_hand(self)
 ##						active_gs.worn_lst_remove_item(self)
 ##						active_gs.buffer("Removed.")
 ##						if self.remove_descript is not None:
