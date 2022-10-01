@@ -109,6 +109,11 @@ class Creature(ViewOnly):
 		def chk_in_hand(self, obj):
 				return obj in self.hand_lst
 
+		def in_hand_is_weapon(self):
+				if self.hand_is_empty():
+						return False
+				return self.get_hand_item().is_weapon()
+
 		# *** bkpk methods ***
 		def bkpk_is_empty(self):
 				return not bool(self.bkpk_lst)

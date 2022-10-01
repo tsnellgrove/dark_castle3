@@ -308,41 +308,52 @@ Version 3.73 Goals
 		- DONE: And need to convert Read get_hero_room() back to get_room()
 		- DONE: comment 'room' out of active_gs.state_dict
 - INPROC: comment out legacy refs
-	- INPROC: def get_hand_lst(self):
-		- TBD: gs_class_def (def)
-		- DONE: cond_class_def
-		- DONE: noun_class_def
-	- DONE: def hand_empty(self):
-		- DONE: gs_class_def (def)
-		- DONE: creature_class_def
-	- DONE: def hand_check(self, obj):
-		- DONE: gs_class_def (def)
-		- DONE: validate()
-	- DONE: def hand_lst_append_item(self, item):
-		- DONE: gs_class_def (def)
-	- DONE: def hand_lst_remove_item(self, item):
-		- DONE: gs_class_def (def)
-	- DONE def put_in_hand(self, new_item):
-		- DONE: gs_class_def (def)
-	- TBD: def weapon_in_hand(self):
-		- TBD: gs_class_def (def)
-	- def get_backpack_lst(self):
-	- def backpack_lst_append_item(self, item):
-	- def backpack_lst_remove_item(self, item):
-	- def get_worn_lst(self):
-	- def worn_lst_append_item(self, item):
-	- def worn_lst_remove_item(self, item):
-	- def clothing_type_worn(self, item):
-	- def get_static_obj(self, static_key):
-	- def inventory(self):
-	- active_gs.state_dict['backpack', 'hand', 'worn']
-	- active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]} <= add brass_lantern ? "wouldn't want that to go out!"
-	- INPROC: def get_room()
-	- INPROC:	def set_room()
-	- DONE: active_gs.state_dict['rooom']	
+	- INPROC: sort out active_gs hand refs
+		- INPROC: def get_hand_lst(self):
+			- TBD: gs_class_def (def)
+			- DONE: cond_class_def
+			- DONE: noun_class_def
+		- DONE: def hand_empty(self):
+			- DONE: gs_class_def (def)
+			- DONE: creature_class_def
+		- DONE: def hand_check(self, obj):
+			- DONE: gs_class_def (def)
+			- DONE: validate()
+		- DONE: def hand_lst_append_item(self, item):
+			- DONE: gs_class_def (def)
+		- DONE: def hand_lst_remove_item(self, item):
+			- DONE: gs_class_def (def)
+		- DONE def put_in_hand(self, new_item):
+			- DONE: gs_class_def (def)
+		- DONE: def weapon_in_hand(self):
+			- DONE: gs_class_def (def)
+		- TBD: def inventory(self):
+				- TBD: gs_class_def (def)
+				- TBD: 
+		- TBD: full test run
+	- sort out active_gs backpack refs
+		- def get_backpack_lst(self):
+		- def backpack_lst_append_item(self, item):
+		- def backpack_lst_remove_item(self, item):
+		- TBD: full test run
+	- sort out active_gs worn refs
+		- def get_worn_lst(self):
+		- def worn_lst_append_item(self, item):
+		- def worn_lst_remove_item(self, item):
+		- def clothing_type_worn(self, item):
+		- TBD: full test run
+	- sort out remaining active_gs burt refs
+		- def get_static_obj(self, static_key):
+		- active_gs.state_dict['backpack', 'hand', 'worn']
+		- active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]} <= add brass_lantern ? "wouldn't want that to go out!"
+		- TBD: full test run
+	- sort out old active_gs room refs
+		- INPROC: def get_room()
+		- INPROC:	def set_room()
+		- DONE: active_gs.state_dict['rooom']	
+		- TBD: full test run
 
-
-- TBD: Update methods to pass 'creature' to them
+- TBD: Update methods to pass 'creature' to them (including Conditions??)
 	- TBD: burt to be default value (include in def ?)
 	- IDEA: don't need an 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
 	- IDEA: if creature == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")

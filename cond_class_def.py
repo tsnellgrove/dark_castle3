@@ -34,7 +34,11 @@ class WeaponInHandCond(PassThruCond):
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				creature = active_gs.hero
-				return not creature.hand_is_empty() and creature.get_hand_item().is_weapon() == self.weapon_match_cond
+#				print(str(not creature.hand_is_empty()))
+#				print(str(creature.get_hand_item().is_weapon() == self.weapon_match_cond))
+#				print(str((not creature.hand_is_empty()) and (creature.get_hand_item().is_weapon() == self.weapon_match_cond)))
+#				return (not creature.hand_is_empty()) and (creature.get_hand_item().is_weapon() == self.weapon_match_cond)
+				return creature.in_hand_is_weapon() == self.weapon_match_cond
 
 
 class CreatureItemCond(PassThruCond):
