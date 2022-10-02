@@ -308,9 +308,9 @@ Version 3.73 Goals
 		- DONE: And need to convert Read get_hero_room() back to get_room()
 		- DONE: comment 'room' out of active_gs.state_dict
 - INPROC: comment out legacy refs
-	- INPROC: sort out active_gs hand refs
-		- INPROC: def get_hand_lst(self):
-			- TBD: gs_class_def (def)
+	- DONE: sort out active_gs hand refs
+		- DONE: def get_hand_lst(self):
+			- DONE: gs_class_def (def)
 			- DONE: cond_class_def
 			- DONE: noun_class_def
 		- DONE: def hand_empty(self):
@@ -327,10 +327,10 @@ Version 3.73 Goals
 			- DONE: gs_class_def (def)
 		- DONE: def weapon_in_hand(self):
 			- DONE: gs_class_def (def)
-		- TBD: def inventory(self):
-				- TBD: gs_class_def (def)
-				- TBD: 
-		- TBD: full test run
+		- DONE: def inventory(self):
+				- DONE: gs_class_def (def)
+		- DONE: full test run
+
 	- sort out active_gs backpack refs
 		- def get_backpack_lst(self):
 		- def backpack_lst_append_item(self, item):
@@ -501,6 +501,7 @@ Version 3.74 Goals
 	- full implementation = 'sit on'
 	- for most verbs, sit scope = self (i.e. creature_scope)
 	- for examine (?), sit scope = room_scope
+- make backpack a true container???
 
 
 ##########################
@@ -541,6 +542,8 @@ Version 3.75 Goals
 	- TBD: print_score() a method of the Score class
 	- TBD: instead of a dict of score achievements w/ T or F, just have a list of score achievemnts achieved
 	- TBD: link front_gate score to opening door
+- TBD: refactor hero to gs.hero
+	- TBD: get_room() method belongs to this class ?? (or pass active_gs to active_gs.map and move get_room there ??)
 - TBD: refactor buffer and caching to gs.io
 - TBD: refactor GameState and dicts in static_gbl() with dunder methods (__getattr__ and __setattr__ ; see email to self on Aug 2, 2022)
 - TBD: active_gs => gs renaming; point to same obj to start with ??

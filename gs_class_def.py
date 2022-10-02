@@ -120,8 +120,8 @@ class GameState(object):
 
 		### hand ###
 
-		def get_hand_lst(self):
-				return self._state_dict['hand']
+#		def get_hand_lst(self):
+#				return self._state_dict['hand']
 
 #		def hand_empty(self):
 #				return len(self.get_hand_lst()) == 0
@@ -203,19 +203,19 @@ class GameState(object):
 				self._state_dict['out_buff'] = ""
 
 		### inventory ### (to be moved to Creature method)
-		def inventory(self):
-				self.buffer(descript_dict['burt'])
-				hand_lst = self.get_hand_lst()
-				hand_str = obj_lst_to_str(hand_lst)
-				self.buffer("In your hand you are holding: " + hand_str)
+#		def inventory(self):
+#				self.buffer(descript_dict['burt'])
+#				hand_lst = self.get_hand_lst()
+#				hand_str = obj_lst_to_str(hand_lst)
+#				self.buffer("In your hand you are holding: " + hand_str)
 
-				backpack_obj_lst = self.get_backpack_lst()
-				backpack_str = obj_lst_to_str(backpack_obj_lst)
-				self.buffer("In your backpack you have: " + backpack_str)
+#				backpack_obj_lst = self.get_backpack_lst()
+#				backpack_str = obj_lst_to_str(backpack_obj_lst)
+#				self.buffer("In your backpack you have: " + backpack_str)
 
-				worn_obj_lst = self.get_worn_lst()
-				worn_str = obj_lst_to_str(worn_obj_lst)
-				self.buffer("Special garments you are wearing: " + worn_str)
+#				worn_obj_lst = self.get_worn_lst()
+#				worn_str = obj_lst_to_str(worn_obj_lst)
+#				self.buffer("Special garments you are wearing: " + worn_str)
 
 		### obj representation (for printing) ###
 		def __repr__(self):
