@@ -109,8 +109,8 @@ class GameState(object):
 				self._state_dict['game_ending'] = value
 
 		### backpack ###
-		def get_backpack_lst(self):
-				return self._state_dict['backpack']
+#		def get_backpack_lst(self):
+#				return self._state_dict['backpack']
 
 		def backpack_lst_append_item(self, item):
 				self._state_dict['backpack'].append(item)

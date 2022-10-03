@@ -330,9 +330,10 @@ Version 3.73 Goals
 		- DONE: def inventory(self):
 				- DONE: gs_class_def (def)
 		- DONE: full test run
-
 	- sort out active_gs backpack refs
-		- def get_backpack_lst(self):
+		- TBD: def get_backpack_lst(self):
+			- TBD: gs_class_def (def)
+			- TBD: noun_class_def
 		- def backpack_lst_append_item(self, item):
 		- def backpack_lst_remove_item(self, item):
 		- TBD: full test run

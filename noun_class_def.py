@@ -299,8 +299,8 @@ class Room(ViewOnly):
 						return True
 				if any(obj.chk_contain_lst(item) for obj in self.floor_lst):
 						return True
-				if item in active_gs.get_backpack_lst() + active_gs.get_worn_lst():
-						return True
+#				if item in active_gs.get_backpack_lst() + active_gs.get_worn_lst():
+#						return True
 				return False
 
 		def get_mach_lst(self, active_gs):
@@ -329,12 +329,12 @@ class Room(ViewOnly):
 						if obj.chk_contain_item(item):
 								obj.remove_item(item, active_gs)
 								return 
-				if item in active_gs.get_backpack_lst():
-						active_gs.backpack_lst_remove_item(item)
-						return 
-				if item in active_gs.get_worn_lst():
-						active_gs.worn_lst_remove_item(item)
-						return 
+#				if item in active_gs.get_backpack_lst():
+#						active_gs.backpack_lst_remove_item(item)
+#						return 
+#				if item in active_gs.get_worn_lst():
+#						active_gs.worn_lst_remove_item(item)
+#						return 
 				raise ValueError(f"Can't remove item {item} from room {self.name}")
 				return 
 
