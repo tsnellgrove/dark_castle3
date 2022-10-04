@@ -330,18 +330,21 @@ Version 3.73 Goals
 		- DONE: def inventory(self):
 				- DONE: gs_class_def (def)
 		- DONE: full test run
-	- sort out active_gs backpack refs
-		- TBD: def get_backpack_lst(self):
-			- TBD: gs_class_def (def)
-			- TBD: noun_class_def
-		- def backpack_lst_append_item(self, item):
-		- def backpack_lst_remove_item(self, item):
-		- TBD: full test run
-	- sort out active_gs worn refs
-		- def get_worn_lst(self):
-		- def worn_lst_append_item(self, item):
-		- def worn_lst_remove_item(self, item):
-		- def clothing_type_worn(self, item):
+	- DONE: sort out active_gs backpack refs
+		- DONE: def get_backpack_lst(self):
+			- DONE: gs_class_def (def)
+			- DONE: noun_class_def
+		- DONE: def backpack_lst_append_item(self, item):
+			- DONE: gs_class_def (def)
+		- DONE: def backpack_lst_remove_item(self, item):
+			- DONE: gs_class_def() (def)
+		- DONE: full test run
+	- INPROC: sort out active_gs worn refs
+		- INPROC: def clothing_type_worn(self, item):
+			- TBD: gs_class_def() (def)
+		- TBD: def get_worn_lst(self):
+		- TBD: def worn_lst_append_item(self, item):
+		- TBD: def worn_lst_remove_item(self, item):
 		- TBD: full test run
 	- sort out remaining active_gs burt refs
 		- def get_static_obj(self, static_key):

@@ -112,11 +112,11 @@ class GameState(object):
 #		def get_backpack_lst(self):
 #				return self._state_dict['backpack']
 
-		def backpack_lst_append_item(self, item):
-				self._state_dict['backpack'].append(item)
+#		def backpack_lst_append_item(self, item):
+#				self._state_dict['backpack'].append(item)
 
-		def backpack_lst_remove_item(self, item):
-				self._state_dict['backpack'].remove(item)
+#		def backpack_lst_remove_item(self, item):
+#				self._state_dict['backpack'].remove(item)
 
 		### hand ###
 
