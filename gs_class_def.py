@@ -159,13 +159,13 @@ class GameState(object):
 						self.buffer(descript_dict[item.remove_descript])
 				self._state_dict['worn'].remove(item)
 
-		def clothing_type_worn(self, item):
-				type_match = False
-				worn_lst = self.get_worn_lst()
-				for garment in worn_lst:
-						if item.clothing_type == garment.clothing_type:
-								type_match = True
-				return type_match
+#		def clothing_type_worn(self, item):
+#				type_match = False
+#				worn_lst = self.get_worn_lst()
+#				for garment in worn_lst:
+#						if item.clothing_type == garment.clothing_type:
+#								type_match = True
+#				return type_match
 
 		### static obj ###
 		def get_static_obj(self, static_key):

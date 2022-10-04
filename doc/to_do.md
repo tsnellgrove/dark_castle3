@@ -340,8 +340,8 @@ Version 3.73 Goals
 			- DONE: gs_class_def() (def)
 		- DONE: full test run
 	- INPROC: sort out active_gs worn refs
-		- INPROC: def clothing_type_worn(self, item):
-			- TBD: gs_class_def() (def)
+		- DONE: def clothing_type_worn(self, item):
+			- DONE: gs_class_def() (def)
 		- TBD: def get_worn_lst(self):
 		- TBD: def worn_lst_append_item(self, item):
 		- TBD: def worn_lst_remove_item(self, item):
