@@ -289,19 +289,19 @@ Version 3.73 Goals
 	- DONE: test get_hero_room() in read() method
 		- NOTE: had issues because active_gs.map does not have a way to reference active_gs; moved get_hero_room() to active_gs with hero for now
 	- DONE: find all modules using active_gs.get_room()
-		- TBD: noun_class_def() <both get_room and set_room>
-		- TBD: interp()
-		- TBD: validate()
-		- TBD: pre_action()
-		- TBD: cmd_exe()
-		- TBD: post_action()
-		- TBD: auto_action()
-		- TBD: score()
-		- TBD: gs_glass_def() <method defined here>
-		- TBD: creature_class_def()
-		- TBD: mach_class_def()
-		- TBD: cond_class_def()
-		- TBD: result_class_def()
+		- DONE: noun_class_def() <both get_room and set_room>
+		- DONE: interp()
+		- DONE: validate()
+		- DONE: pre_action()
+		- DONE: cmd_exe()
+		- DONE: post_action()
+		- DONE: auto_action()
+		- DONE: score()
+		- DONE: gs_glass_def() <method defined here>
+		- DONE: creature_class_def()
+		- DONE: mach_class_def()
+		- DONE: cond_class_def()
+		- DONE: result_class_def()
 	- DONE - NEW-IDEA: re-use existing active_gs.get_room() calls
 		- DONE: replace get_room() code with get_hero_rooom()
 		- DONE: Also need to comment out set_room() in Room.go() and in active_gs
@@ -342,7 +342,8 @@ Version 3.73 Goals
 	- INPROC: sort out active_gs worn refs
 		- DONE: def clothing_type_worn(self, item):
 			- DONE: gs_class_def() (def)
-		- TBD: def get_worn_lst(self):
+		- DONE: def get_worn_lst(self):
+			- DONE: gs_class_def() (def)
 		- TBD: def worn_lst_append_item(self, item):
 		- TBD: def worn_lst_remove_item(self, item):
 		- TBD: full test run

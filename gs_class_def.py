@@ -148,8 +148,8 @@ class GameState(object):
 #				self.hand_lst_append_item(new_item)
 
 		### worn ###
-		def get_worn_lst(self):
-				return self._state_dict['worn']
+#		def get_worn_lst(self):
+#				return self._state_dict['worn']
 
 		def worn_lst_append_item(self, item):
 				self._state_dict['worn'].append(item)
