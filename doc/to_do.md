@@ -803,6 +803,17 @@ Version 6.x Goals
 - use phyisogamy in the game!!
 - Gallivanter
 - Solipsistic
+- Bamboozled
+- Flabbergasted
+- Discombobulated
+- Cattywampus
+- Lollygag
+- Makarkey
+- Kerfluffle
+- Brouhaha
+- Nincompoop
+- Skedaddle
+- Pumpernickel
 
 
 *** possible new rooms ***
