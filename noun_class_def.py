@@ -53,6 +53,9 @@ class Invisible(object):
 		def is_mach(self):
 				return False
 
+		def is_garment(self):
+				return False
+
 		def get_title_str(self):
 				return None
 
@@ -795,6 +798,9 @@ class Clothes(Item):
 		@property
 		def clothing_type(self):
 				return self._clothing_type
+
+		def is_garment(self):
+				return True
 
 		def wear(self, active_gs):
 				creature = active_gs.hero

@@ -339,14 +339,16 @@ Version 3.73 Goals
 		- DONE: def backpack_lst_remove_item(self, item):
 			- DONE: gs_class_def() (def)
 		- DONE: full test run
-	- INPROC: sort out active_gs worn refs
+	- DONE: sort out active_gs worn refs
 		- DONE: def clothing_type_worn(self, item):
 			- DONE: gs_class_def() (def)
 		- DONE: def get_worn_lst(self):
 			- DONE: gs_class_def() (def)
-		- TBD: def worn_lst_append_item(self, item):
-		- TBD: def worn_lst_remove_item(self, item):
-		- TBD: full test run
+		- DONE: def worn_lst_append_item(self, item):
+			- DONE: gs_class_def() (def)
+		- DONE: def worn_lst_remove_item(self, item):
+			- DONE: gs_class_def() (def)
+		- DONE: light test run
 	- sort out remaining active_gs burt refs
 		- def get_static_obj(self, static_key):
 		- active_gs.state_dict['backpack', 'hand', 'worn']
@@ -381,6 +383,10 @@ Version 3.73 Goals
 		- 1) It's (almost) never the actor - because the actor is (almost) always Burt
 		- 2) Ask, who or what is being acted on
 		- 3) Choose the noun that is most restrictive
+- Where to include buffer text
+	- example = wear / remove text
+	- tempting to put this in the append / remove methods - but then there's no way to silence them
+	- instead, all buffering should be centralized into the noun methods where 'silence mode' can be enforced
 
 
 *** MAYBE ***
@@ -471,8 +477,10 @@ Version 3.74 Goals
 
 - TBD: refactor Clothes => Garment
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
-	- TBD: add 'remove descript' for Creature.remove_item() on royal_crown
+	- CANCEL: add 'remove descript' for Creature.remove_item() on royal_crown
 	- CANCEL: create Garment class-specific remove() method that calls take() ??
+	- TBD: create an is_worn() method and use in take to trigger 'remove text'
+	- TBD: or possibly extend take() in Garment()
 	- TBD: auto-gen keys
 		- TBD: implement try for auto-gen key on both append and remove methods
 		- TBD: consider auto-gen keys for all verb methods (probably not)

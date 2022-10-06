@@ -151,13 +151,13 @@ class GameState(object):
 #		def get_worn_lst(self):
 #				return self._state_dict['worn']
 
-		def worn_lst_append_item(self, item):
-				self._state_dict['worn'].append(item)
+#		def worn_lst_append_item(self, item):
+#				self._state_dict['worn'].append(item)
 
-		def worn_lst_remove_item(self, item):
-				if item.remove_descript is not None:
-						self.buffer(descript_dict[item.remove_descript])
-				self._state_dict['worn'].remove(item)
+#		def worn_lst_remove_item(self, item):
+#				if item.remove_descript is not None:
+#						self.buffer(descript_dict[item.remove_descript])
+#				self._state_dict['worn'].remove(item)
 
 #		def clothing_type_worn(self, item):
 #				type_match = False
