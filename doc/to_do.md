@@ -349,15 +349,15 @@ Version 3.73 Goals
 		- DONE: def worn_lst_remove_item(self, item):
 			- DONE: gs_class_def() (def)
 		- DONE: light test run
-	- INPROC: sort out remaining active_gs burt refs
+	- DONE: sort out remaining active_gs burt refs
 		- DONE: active_gs.state_dict['backpack', 'hand', 'worn']
 		- DONE: def get_static_obj(self, static_key):
 		- DONE: active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]}
-		- TBD: light test run
+		- DONE: light test run
 	- sort out old active_gs room refs
 		- INPROC: def get_room()
 		- INPROC:	def set_room()
-		- DONE: active_gs.state_dict['rooom']	
+		- DONE: active_gs.state_dict['room']	
 		- TBD: full test run
 
 - TBD: Update methods to pass 'creature' to them (including Conditions??)
