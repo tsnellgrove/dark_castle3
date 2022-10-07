@@ -349,11 +349,11 @@ Version 3.73 Goals
 		- DONE: def worn_lst_remove_item(self, item):
 			- DONE: gs_class_def() (def)
 		- DONE: light test run
-	- sort out remaining active_gs burt refs
-		- def get_static_obj(self, static_key):
-		- active_gs.state_dict['backpack', 'hand', 'worn']
-		- active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]} <= add brass_lantern ? "wouldn't want that to go out!"
-		- TBD: full test run
+	- INPROC: sort out remaining active_gs burt refs
+		- DONE: active_gs.state_dict['backpack', 'hand', 'worn']
+		- DONE: def get_static_obj(self, static_key):
+		- DONE: active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]}
+		- TBD: light test run
 	- sort out old active_gs room refs
 		- INPROC: def get_room()
 		- INPROC:	def set_room()
@@ -367,6 +367,7 @@ Version 3.73 Goals
 
 *** NEW FEATURES ***
 - TBD: add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
+	- add brass_lantern ? "wouldn't want that to go out!"
 	- TBD: use Zork lantern description and ref of Nana scaring off some pesky "prowler" years ago; "battery-powered brass lantern"
 	- TBD: mention of brass langern in inventory
 - TBD: improve natural language / paragraph (vs. outline) read of examine() for Room & Creature

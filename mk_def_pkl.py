@@ -287,20 +287,20 @@ active_gs = GameState(
 				'goblin_dead' : False
 		},
 #		{'universal' : [backpack, burt, fist, conscience]},
-		{'universal' : []},
+#		{'universal' : []},
 		{
 				'score' : 0,
 				'move_counter' : 0,
 				'end_of_game' : False,
 				'game_ending' : "tbd",
-				'backpack' : [],
-				'hand' : [],
-				'worn' : [],
+#				'backpack' : [],
+#				'hand' : [],
+#				'worn' : [],
 ##				'room' : entrance,
 				'out_buff' : ""
 		},
 ##		[test_timer, hedgehog_eats_timer], # timer test universal obj
-		[], # was hedgehog_eats_timer - moved to burt.invis_lst
+#		[], # was hedgehog_eats_timer - moved to burt.invis_lst
 		map,
 		burt
 )

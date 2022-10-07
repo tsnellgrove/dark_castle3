@@ -318,7 +318,7 @@ class Room(ViewOnly):
 								for invis_obj in obj.invis_lst:
 										if invis_obj.is_mach():
 												mach_lst.append(invis_obj)												
-				mach_lst.extend(active_gs.universal_mach_lst) # Legacy
+#				mach_lst.extend(active_gs.universal_mach_lst) # Legacy
 				return mach_lst
 
 		# *** complex object methods ***
