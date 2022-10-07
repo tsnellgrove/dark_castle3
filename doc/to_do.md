@@ -354,11 +354,11 @@ Version 3.73 Goals
 		- DONE: def get_static_obj(self, static_key):
 		- DONE: active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]}
 		- DONE: light test run
-	- sort out old active_gs room refs
-		- INPROC: def get_room()
-		- INPROC:	def set_room()
+	- DONE: sort out old active_gs room refs
+		- DONE: def get_room()
+		- DONE:	def set_room()
 		- DONE: active_gs.state_dict['room']	
-		- TBD: full test run
+	- TBD: full test run
 
 - TBD: Update methods to pass 'creature' to them (including Conditions??)
 	- TBD: burt to be default value (include in def ?)
