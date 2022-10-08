@@ -358,7 +358,10 @@ Version 3.73 Goals
 		- DONE: def get_room()
 		- DONE:	def set_room()
 		- DONE: active_gs.state_dict['room']	
-	- TBD: full test run
+	- DONE: full test run
+- TBD: clean up all comments
+
+- TBD: review and org all *** MAYBE *** items
 
 - TBD: Update methods to pass 'creature' to them (including Conditions??)
 	- TBD: burt to be default value (include in def ?)
@@ -411,6 +414,7 @@ Version 3.73 Goals
 	- princess 'poise' & 'moxie'
 	- valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
 	- create all_lst, item_lst, and mach_lst methods for creature class
+	- how should creature be passed to Conditions & Results?
 
 
 *** LEGACY ***
