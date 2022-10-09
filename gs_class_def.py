@@ -8,40 +8,19 @@
 from static_gbl import descript_dict, static_dict
 
 ### local functions
-# def obj_lst_to_str(obj_lst):
-#		if not isinstance(obj_lst, list):
-#				raise ValueError("is not a list")
-#		elif len(obj_lst) == 0:
-#				lst_str = "nothing"
-#		else:
-#				lst_str = ""
-#				for obj in obj_lst:
-#						lst_str = lst_str + obj.full_name + ", "
-#				lst_str = lst_str[:-2]
-#		return lst_str
+
 
 ### classes
 class GameState(object):
-#		def __init__(self, name, dyn_descript_dict, points_earned_dict, static_obj_dict, state_dict, universal_mach_lst, map, hero):
 		def __init__(self, name, dyn_descript_dict, points_earned_dict, state_dict, map, hero):
 				self._name = name
 				self._dyn_descript_dict = dyn_descript_dict
 				self._points_earned_dict = points_earned_dict
-#				self._static_obj_dict = static_obj_dict
 				self._state_dict = state_dict
-#				self._universal_mach_lst = universal_mach_lst
 				self._map = map
 				self._hero = hero
 
 		### setters & getters ###
-
-#		@property
-#		def universal_mach_lst(self):
-#				return self._universal_mach_lst
-
-#		@property
-#		def room_lst(self):
-#				return self._room_lst
 
 		@property
 		def map(self):
@@ -109,72 +88,6 @@ class GameState(object):
 		def set_game_ending(self, value):
 				self._state_dict['game_ending'] = value
 
-		### backpack ###
-#		def get_backpack_lst(self):
-#				return self._state_dict['backpack']
-
-#		def backpack_lst_append_item(self, item):
-#				self._state_dict['backpack'].append(item)
-
-#		def backpack_lst_remove_item(self, item):
-#				self._state_dict['backpack'].remove(item)
-
-		### hand ###
-
-#		def get_hand_lst(self):
-#				return self._state_dict['hand']
-
-#		def hand_empty(self):
-#				return len(self.get_hand_lst()) == 0
-
-#		def hand_check(self, obj):
-#				return obj in self.get_hand_lst()
-
-#		def hand_lst_append_item(self, item):
-#				self._state_dict['hand'].append(item)
-
-#		def hand_lst_remove_item(self, item):
-#				self._state_dict['hand'].remove(item)
-
-#		def weapon_in_hand(self):
-#				hand_lst = self.get_hand_lst()
-#				return bool(hand_lst) and hand_lst[0].is_weapon()
-
-#		def put_in_hand(self, new_item):
-#				if not self.hand_empty():
-#						hand_lst = self.get_hand_lst()
-#						hand_item = hand_lst[0]
-#						self.backpack_lst_append_item(hand_item)
-#						self.hand_lst_remove_item(hand_item)
-#				self.hand_lst_append_item(new_item)
-
-		### worn ###
-#		def get_worn_lst(self):
-#				return self._state_dict['worn']
-
-#		def worn_lst_append_item(self, item):
-#				self._state_dict['worn'].append(item)
-
-#		def worn_lst_remove_item(self, item):
-#				if item.remove_descript is not None:
-#						self.buffer(descript_dict[item.remove_descript])
-#				self._state_dict['worn'].remove(item)
-
-#		def clothing_type_worn(self, item):
-#				type_match = False
-#				worn_lst = self.get_worn_lst()
-#				for garment in worn_lst:
-#						if item.clothing_type == garment.clothing_type:
-#								type_match = True
-#				return type_match
-
-		### static obj ###
-#		def get_static_obj(self, static_key):
-#				if static_key not in self._static_obj_dict:
-#						raise KeyError("key does not exist in dict")
-#				else:
-#						return self._static_obj_dict[static_key]
-
 		### room ###
 #		def get_hero_room(self):
 		def get_room(self):
@@ -202,21 +115,6 @@ class GameState(object):
 
 		def reset_buff(self):
 				self._state_dict['out_buff'] = ""
-
-		### inventory ### (to be moved to Creature method)
-#		def inventory(self):
-#				self.buffer(descript_dict['burt'])
-#				hand_lst = self.get_hand_lst()
-#				hand_str = obj_lst_to_str(hand_lst)
-#				self.buffer("In your hand you are holding: " + hand_str)
-
-#				backpack_obj_lst = self.get_backpack_lst()
-#				backpack_str = obj_lst_to_str(backpack_obj_lst)
-#				self.buffer("In your backpack you have: " + backpack_str)
-
-#				worn_obj_lst = self.get_worn_lst()
-#				worn_str = obj_lst_to_str(worn_obj_lst)
-#				self.buffer("Special garments you are wearing: " + worn_str)
 
 		### obj representation (for printing) ###
 		def __repr__(self):

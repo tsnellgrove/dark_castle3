@@ -359,7 +359,7 @@ Version 3.73 Goals
 		- DONE:	def set_room()
 		- DONE: active_gs.state_dict['room']	
 	- DONE: full test run
-- TBD: clean up all comments
+- DONE: clean up all comments
 
 - TBD: review and org all *** MAYBE *** items
 

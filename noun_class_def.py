@@ -274,10 +274,6 @@ class Room(ViewOnly):
 				""" Returns the list of visible objects contained in the method-calling object. In Room, provides the visible object scope.
 				"""
 				return_lst = []
-#				legacy_node1_lst = active_gs.get_hand_lst() + active_gs.get_backpack_lst() + active_gs.get_worn_lst() 
-#				for obj in legacy_node1_lst:
-#						return_lst += obj.get_vis_contain_lst(active_gs)
-#				return_lst = return_lst + legacy_node1_lst + active_gs.get_static_obj('universal')
 				node1_only_lst = [self] + active_gs.map.get_door_lst(self) + self.feature_lst
 				return_lst = return_lst + node1_only_lst
 				for obj in self.floor_lst:
@@ -302,8 +298,6 @@ class Room(ViewOnly):
 						return True
 				if any(obj.chk_contain_lst(item) for obj in self.floor_lst):
 						return True
-#				if item in active_gs.get_backpack_lst() + active_gs.get_worn_lst():
-#						return True
 				return False
 
 		def get_mach_lst(self, active_gs):
@@ -317,8 +311,7 @@ class Room(ViewOnly):
 						if obj.is_creature():
 								for invis_obj in obj.invis_lst:
 										if invis_obj.is_mach():
-												mach_lst.append(invis_obj)												
-#				mach_lst.extend(active_gs.universal_mach_lst) # Legacy
+												mach_lst.append(invis_obj)
 				return mach_lst
 
 		# *** complex object methods ***
@@ -332,12 +325,6 @@ class Room(ViewOnly):
 						if obj.chk_contain_item(item):
 								obj.remove_item(item, active_gs)
 								return 
-#				if item in active_gs.get_backpack_lst():
-#						active_gs.backpack_lst_remove_item(item)
-#						return 
-#				if item in active_gs.get_worn_lst():
-#						active_gs.worn_lst_remove_item(item)
-#						return 
 				raise ValueError(f"Can't remove item {item} from room {self.name}")
 				return 
 

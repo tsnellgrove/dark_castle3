@@ -72,8 +72,6 @@ shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarv
 crystal_box = Container('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy,
 				False, False, silver_key, ['kinging_scroll_temp'])
 
-# black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None, False, False, rusty_key, [cheese_wedge])
-# glass_bottle = Jug('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', None, True, [fresh_water])
 glass_bottle = PortableLiquidContainer('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', None, None, None, None, [fresh_water])
 
 front_gate = Door('front_gate', 'Front Gate', "gate", 'front_gate', rusty_lettering, False, False, rusty_key)
@@ -226,7 +224,8 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 ## test_timer = Timer('test_timer', 'auto_act', False, 0, 3, 'variable', False, blue_button) # test obj
 ## blue_button_result = StartTimerResult('blue_button_result', test_timer, False) # test obj
 ## big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None, # test obj, 0, 'post_act_switch', blue_button, ['pushed'], [], [pass_thru_cond], [blue_button_result])
-
+# black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None, False, False, rusty_key, [cheese_wedge])
+# glass_bottle = Jug('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', None, True, [fresh_water]) # legacy glass_bottle
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
@@ -286,21 +285,14 @@ active_gs = GameState(
 				'hedgehog_attack' : False,
 				'goblin_dead' : False
 		},
-#		{'universal' : [backpack, burt, fist, conscience]},
-#		{'universal' : []},
 		{
 				'score' : 0,
 				'move_counter' : 0,
 				'end_of_game' : False,
 				'game_ending' : "tbd",
-#				'backpack' : [],
-#				'hand' : [],
-#				'worn' : [],
 ##				'room' : entrance,
 				'out_buff' : ""
 		},
-##		[test_timer, hedgehog_eats_timer], # timer test universal obj
-#		[], # was hedgehog_eats_timer - moved to burt.invis_lst
 		map,
 		burt
 )
