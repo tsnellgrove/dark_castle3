@@ -360,19 +360,19 @@ Version 3.73 Goals
 		- DONE: active_gs.state_dict['room']	
 	- DONE: full test run
 - DONE: clean up all comments
-
-- TBD: review and org all *** MAYBE *** items
-
+- DONE: review and org all *** MAYBE *** items
 - TBD: Update methods to pass 'creature' to them (including Conditions??)
 	- TBD: burt to be default value (include in def ?)
 	- IDEA: don't need an 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
 	- IDEA: if creature == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
+	- how should creature be passed to Conditions & Results?
 
 *** NEW FEATURES ***
 - TBD: add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
 	- add brass_lantern ? "wouldn't want that to go out!"
 	- TBD: use Zork lantern description and ref of Nana scaring off some pesky "prowler" years ago; "battery-powered brass lantern"
 	- TBD: mention of brass langern in inventory
+	- for burt maybe add brass_lantern - always trusty and shining in your off hand... wouldn't want that to go out now would we? Grues...
 - TBD: improve natural language / paragraph (vs. outline) read of examine() for Room & Creature
 	- maybe need a buff_no_cr() method in gs.io for this?
 
@@ -391,30 +391,6 @@ Version 3.73 Goals
 	- example = wear / remove text
 	- tempting to put this in the append / remove methods - but then there's no way to silence them
 	- instead, all buffering should be centralized into the noun methods where 'silence mode' can be enforced
-
-
-*** MAYBE ***
-- think abour 'source' and 'desination'... e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
-	- need to do a detailed mapping of what is required for success in each noun_class() method
-- can we have 'burt' be the default <creature> but other options available?
-	- TBD: in noun methods, do I need to pass init_creature to each verb method in order for mode = 'creature_exe' to work??
-	- this would allow give() to become a noun class method... essentially a take() initiated by burt
-	- likewise, show() becomes an examine initiated by burt
-	- TBD: change goblin re-arm result to take() rather than put_in_hand()
-	- maybe each Creature has its own description list?
-		- desc list as creature attribute ???
-	- with a default examine() response similar to "the X is not interesting"
-- IDEAS - future
-	- TBD: move active_gs.static_obj_lst => burt.feature_lst
-	- does creature_state really have any value? Maybe build hedgehog before pulling the plug on this one
-	- Note: active_gs.hero enables player to take on different characters in the game (e.g. Burt could become a mouse)
-	- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
-	- non-humanoid monster could be a special weapon description case (fun new puzzle idea)
-	- for burt maybe add brass_lantern - always trusty and shining in your off hand... wouldn't want that to go out now would we? Grues...
-	- princess 'poise' & 'moxie'
-	- valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
-	- create all_lst, item_lst, and mach_lst methods for creature class
-	- how should creature be passed to Conditions & Results?
 
 
 *** LEGACY ***
@@ -440,6 +416,11 @@ Version 3.73 Goals
 	-  lots of testing!!!
 	- clean-up comments
 	- TBD: for ViewOnly create methoed 'vis_lst(): return []' to simplify Room.vis_lst() ???
+- can we have 'burt' be the default <creature> but other options available?
+	- TBD: in noun methods, do I need to pass init_creature to each verb method in order for mode = 'creature_exe' to work??
+	- TBD: move active_gs.static_obj_lst => burt.feature_lst
+	- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
+	- create all_lst, item_lst, and mach_lst methods for creature class
 
 
 ##########################
@@ -554,6 +535,15 @@ Version 3.75 Goals
 		- 3) try static_dic except f"the {obj.full_name} is simple indescribable"
 	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
 		- CANCEL: test w/ descript_dict => start with version 
+		- can compound noun methods be created?
+		- think abour 'source' and 'desination'... e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
+		- need to do a detailed mapping of what is required for success in each noun_class() method
+		- this would allow give() to become a noun class method... essentially a take() initiated by burt
+		- likewise, show() becomes an examine initiated by burt
+		- TBD: change goblin re-arm result to take() rather than put_in_hand()
+		- maybe each Creature has its own description list?
+			- desc list as creature attribute ???
+		- with a default examine() response similar to "the X is not interesting"
 - TBD: refactor score
 	- TBD: determine max_score from summ of all possible scores?
 	- TBD: score = class with object being attribute in gs
@@ -568,6 +558,7 @@ Version 3.75 Goals
 - TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
 - TBD: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
 - TBD: end() => gamestate ???
+- does creature_state really have any value? Maybe build hedgehog state machine before pulling the plug on this one
 
 ##########################
 ### VERSION 3.76 START ###
@@ -837,6 +828,10 @@ Version 6.x Goals
 *** NEW PUZZLE IDEAS ***
 
 Misc:
+- Note: active_gs.hero enables player to take on different characters in the game (e.g. Burt could become a mouse)
+- non-humanoid monster could be a special weapon description case (fun new puzzle idea)
+- princess 'poise' & 'moxie'
+- valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
 - TBD: Consider having size values for items and capaicty limits on containers & backpack (should the crystal box really hold an axe?)
 	- This becomes important for 'take' capacity as well in shrinking puzzle (??)
 	- encumberance (post Burt as object?)
