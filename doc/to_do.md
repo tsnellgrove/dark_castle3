@@ -362,10 +362,14 @@ Version 3.73 Goals
 - DONE: clean up all comments
 - DONE: review and org all *** MAYBE *** items
 - TBD: Update methods to pass 'creature' to them (including Conditions??)
-	- TBD: burt to be default value (include in def ?)
+	- IDEA: use 'None' approach shown here: https://stackoverflow.com/questions/42718870/defining-a-default-argument-as-a-global-variable
 	- IDEA: don't need an 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
-	- IDEA: if creature == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
-	- how should creature be passed to Conditions & Results?
+	- TBD: NEED A TEST CREATURE!! (frog)
+	- INPROC: if creature == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
+	- INPROC: burt to be default value (include in def ?
+		- INPROC: go
+		- TBD: 
+	- TBD: how should creature be passed to Conditions & Results?
 
 *** NEW FEATURES ***
 - TBD: add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")

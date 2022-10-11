@@ -353,10 +353,11 @@ class Room(ViewOnly):
 						obj.disp_contain(active_gs)
 				return 
 
-		def go(self, dir, active_gs):
+		def go(self, dir, active_gs, creature = None):
 				""" Moves a Creature from one room to another
 				"""
-				creature = active_gs.hero
+				if creature is None:
+						creature = active_gs.hero
 				if not active_gs.map.chk_valid_dir(self, dir):
 						active_gs.buffer(descript_dict[f"wrong_way_{random.randint(0, 4)}"])
 						return
