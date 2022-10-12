@@ -361,18 +361,22 @@ Version 3.73 Goals
 	- DONE: full test run
 - DONE: clean up all comments
 - DONE: review and org all *** MAYBE *** items
-- TBD: Update methods to pass 'creature' to them (including Conditions??)
+- INPROC: Update methods to pass 'creature' to them (including Conditions??)
 	- IDEA: use 'None' approach shown here: https://stackoverflow.com/questions/42718870/defining-a-default-argument-as-a-global-variable
 	- IDEA: don't need an 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
-	- TBD: NEED A TEST CREATURE!! (test_frog); "The Test Frog looks testy."
-	- INPROC: if creature == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
-	- INPROC: burt to be default value
-		- INPROC: go
-			- DONE: add default creature attribute and use None state to set to active_gs.hero
-			- TBD: add alternate text for creature is not burt
-			- TBD: add conditional for text if creature is not in the same room as burt
-			- TBD: test_frog test
-		- TBD: 
+	- IDEA: if creature == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
+	- IDEA: burt to be default value
+	- INPROC: go
+		- DONE: add default creature attribute and use None state to set to active_gs.hero
+		- DONE: add alternate text for creature is not burt
+		- DONE: add conditional for text if creature is not in the same room as burt
+		- DONE: create test_frog
+		- TBD: create machine to move test_frog
+		- TBD: test_frog test
+	- IDEA: maybe only enable non-burt creature use of go() method for now?
+
+*** SOMEDAY ***
+	- TBD: enable non-burt creature use of all verb methods 
 	- TBD: how should creature be passed to Conditions & Results?
 
 *** NEW FEATURES ***

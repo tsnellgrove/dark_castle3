@@ -214,6 +214,15 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 				{},
 				None)
 
+test_frog = Creature('test_frog', 'Test Frog', 'frog', 'test_frog', None,
+				None, [], [], [], [],
+				[hedgehog_eats_timer],
+				{},
+				True,
+				{},
+				{},
+				None)
+
 # *** Test Objects ***
 ## kinging_scroll = Item('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters) # old scroll
 ## wooden_chest = Container('wooden_chest', 'wooden chest', "chest", 'wooden_chest', None, False, False, brass_key, [bubbly_potion]) # test object
@@ -229,7 +238,7 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-				[burt], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
+				[burt, test_frog], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
 				# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
@@ -301,7 +310,7 @@ active_gs = GameState(
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible objects need not be listed ###
 master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, goblin_guard, entrance, main_hall, antechamber, throne_room, loyalty,
-officiousness, gold_capitals, red_bandana, big_medal, burt]
+officiousness, gold_capitals, red_bandana, big_medal, burt, test_frog]
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:

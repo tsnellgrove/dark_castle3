@@ -358,6 +358,7 @@ class Room(ViewOnly):
 				"""
 				if creature is None:
 						creature = active_gs.hero
+
 				if not active_gs.map.chk_valid_dir(self, dir):
 						active_gs.buffer(descript_dict[f"wrong_way_{random.randint(0, 4)}"])
 						return
@@ -369,7 +370,13 @@ class Room(ViewOnly):
 ##				active_gs.set_room(next_room)
 				next_room.floor_lst_append(creature)
 				self.floor_lst_remove(creature)
-				next_room.examine(active_gs)
+
+				if creature == active_gs.hero:
+						next_room.examine(active_gs)
+						return 
+				if self == active_gs.get_room():
+						active_gs.buffer(f"The {creature.full_name} goes {dir}")
+				return 
 
 
 class Item(ViewOnly):

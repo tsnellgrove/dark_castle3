@@ -217,6 +217,9 @@ descript_dict = {
 		'hedgehog_distracted_result' : "The Royal Hedgehog is too busy eating its favorite meal of Stale Biscuits to notice what you are doing.",
 		'loyalty' : "At a glance, it's apparent that the Royal Hedgehog is a loyal creature. It exudes a fierce, if slightly scruffy, allegiance. Not the grasping, starched-suit adherence of the sycophant but the slightly frowzy fidelity of a faithful and dependable mut.",
 
+		# test_frog #
+		'test_frog' : "The Test Frog looks testy.",
+
 		### kinging_scroll ###
 		'scroll_wrong_room_result' : "Upon reading the Kinging Scroll aloud you hear a distant rumble as if great powers are at work... but then it fades... perhaps you need to read it somewhere else to complete the recipe?",
 		'scroll_no_hedgehog_result' : "Upon reading the Kinging Scroll aloud, there is a rumble and a bright flash of light in the sky.. but then it dims and the sound fades. Alas, some vital ingredient has gone missing in the castle... this is grim Burt... you may need to start your adventures over from the start and play through with a more benevolent spirit.",
