@@ -364,10 +364,14 @@ Version 3.73 Goals
 - TBD: Update methods to pass 'creature' to them (including Conditions??)
 	- IDEA: use 'None' approach shown here: https://stackoverflow.com/questions/42718870/defining-a-default-argument-as-a-global-variable
 	- IDEA: don't need an 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
-	- TBD: NEED A TEST CREATURE!! (frog)
+	- TBD: NEED A TEST CREATURE!! (test_frog); "The Test Frog looks testy."
 	- INPROC: if creature == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
-	- INPROC: burt to be default value (include in def ?
+	- INPROC: burt to be default value
 		- INPROC: go
+			- DONE: add default creature attribute and use None state to set to active_gs.hero
+			- TBD: add alternate text for creature is not burt
+			- TBD: add conditional for text if creature is not in the same room as burt
+			- TBD: test_frog test
 		- TBD: 
 	- TBD: how should creature be passed to Conditions & Results?
 
