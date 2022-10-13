@@ -237,4 +237,32 @@ class PutItemInHandResult(BufferOnlyResult):
 				self.creature_obj.put_in_hand(self.item_obj)
 				if self.item_obj in self.creature_obj.bkpk_lst:
 						self.creature_obj.bkpk_lst_remove(self.item_obj)
-				return mach_state, self.cmd_override	
+				return mach_state, self.cmd_override
+
+class TravelResult(BufferOnlyResult):
+		def __init__(self, name, cmd_override, creature, dir):
+				super().__init__(name, cmd_override)
+				self._creature = creature
+				self._dir = dir
+
+		@property
+		def creature(self):
+				return self._creature
+
+		@creature.setter
+		def creature(self, new_val):
+				self._creature = new_val
+
+		@property
+		def dir(self):
+				return self._dir
+
+		def result_exe(self, active_gs, mach_state):
+				try:
+						active_gs.buffer(descript_dict[self.name])
+				except:
+						pass
+				room = active_gs.map.get_obj_room(self.creature)
+				room.go(self.dir, active_gs, self.creature)
+	
+

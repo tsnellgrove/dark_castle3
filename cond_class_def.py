@@ -249,3 +249,23 @@ class WornCond(PassThruCond):
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				creature = active_gs.hero
 				return (self.worn_garment in creature.worn_lst) == self.match_cond
+
+class InRoomCond(PassThruCond):
+		def __init__(self, name, creature, match_room, match_cond):
+				super().__init__(name)
+				self._match_room = match_room
+				self._match_cond = match_cond
+
+		@property
+		def match_room(self):
+				return self._match_room
+
+		@property
+		def match_cond(self):
+				return self._match_cond
+
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+				room = active_gs.map.get_obj_room(self.creature)
+				return (room is self.match_room) == self.match_cond
+
+
