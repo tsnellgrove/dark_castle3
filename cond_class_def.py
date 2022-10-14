@@ -257,8 +257,20 @@ class InRoomCond(PassThruCond):
 				self._match_cond = match_cond
 
 		@property
+		def creature(self):
+				return self._creature
+
+		@creature.setter
+		def creature(self, new_val):
+				self._creature = new_val
+
+		@property
 		def match_room(self):
 				return self._match_room
+
+		@match_room.setter
+		def match_room(self, new_val):
+				self._match_room = new_val
 
 		@property
 		def match_cond(self):

@@ -378,6 +378,7 @@ Version 3.73 Goals
 *** SOMEDAY ***
 	- TBD: enable non-burt creature use of all verb methods 
 	- TBD: how should creature be passed to Conditions & Results?
+	- IDEA: alternatives for how to move: dir_lst, room_lst, room_dir_dict
 
 *** NEW FEATURES ***
 - TBD: add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
