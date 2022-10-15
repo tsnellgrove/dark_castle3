@@ -284,7 +284,7 @@ Version 3.73 Goals
 	- DONE: can exclude burt from room.disp_contain() using remove(active_gs.hero)
 - DONE: review burt => creature plans and clean-up
 - DONE: move active_gs.universal_lst timer obj to burt.invis_lst
-- INPROC: active_gs.get_room() => active_gs.map.get_hero_room()
+- DONE: active_gs.get_room() => active_gs.map.get_hero_room()
 	- DONE: in active_gs.map create get_hero_room() initial version
 	- DONE: test get_hero_room() in read() method
 		- NOTE: had issues because active_gs.map does not have a way to reference active_gs; moved get_hero_room() to active_gs with hero for now
@@ -307,7 +307,7 @@ Version 3.73 Goals
 		- DONE: Also need to comment out set_room() in Room.go() and in active_gs
 		- DONE: And need to convert Read get_hero_room() back to get_room()
 		- DONE: comment 'room' out of active_gs.state_dict
-- INPROC: comment out legacy refs
+- DONE: comment out legacy refs
 	- DONE: sort out active_gs hand refs
 		- DONE: def get_hand_lst(self):
 			- DONE: gs_class_def (def)
@@ -361,33 +361,26 @@ Version 3.73 Goals
 	- DONE: full test run
 - DONE: clean up all comments
 - DONE: review and org all *** MAYBE *** items
-- INPROC: Update methods to pass 'creature' to them (including Conditions??)
+- DONE: Update methods to pass 'creature' to them (including Conditions??)
 	- IDEA: use 'None' approach shown here: https://stackoverflow.com/questions/42718870/defining-a-default-argument-as-a-global-variable
 	- IDEA: don't need an 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
 	- IDEA: if creature == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
 	- IDEA: burt to be default value
-	- INPROC: go
+	- DONE: go
 		- DONE: add default creature attribute and use None state to set to active_gs.hero
 		- DONE: add alternate text for creature is not burt
 		- DONE: add conditional for text if creature is not in the same room as burt
 		- DONE: create test_frog
 		- DONE: create machine to move test_frog (start in main_hall and have it walk back & forth between main_hall & antichamber)
-		- INPROC: test_frog test
+		- DONE: test_frog test
 			- DONE: test_frog code runs
-			- TBD: get test_frog mach to run when Burt is not in the room 
+			- DONE: get test_frog mach to run when Burt is not in the room 
 	- IDEA: maybe only enable non-burt creature use of go() method for now?
-
-*** SOMEDAY ***
-	- TBD: enable non-burt creature use of all verb methods 
-	- TBD: how should creature be passed to Conditions & Results?
-	- IDEA: alternatives for how to move: dir_lst, room_lst, room_dir_dict
-
-*** NEW FEATURES ***
-- TBD: add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
-	- add brass_lantern ? "wouldn't want that to go out!"
-	- TBD: use Zork lantern description and ref of Nana scaring off some pesky "prowler" years ago; "battery-powered brass lantern"
-	- TBD: mention of brass langern in inventory
-	- for burt maybe add brass_lantern - always trusty and shining in your off hand... wouldn't want that to go out now would we? Grues...
+- DONE: add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
+	- DONE: add brass_lantern ? "wouldn't want that to go out!"
+	- DONE: use Zork lantern description and ref of Nana scaring off some pesky "prowler" years ago; "battery-powered brass lantern"
+	- DONE: mention of brass langern in inventory
+	- DONE: for burt maybe add brass_lantern - always trusty and shining in your off hand... wouldn't want that to go out now would we? Grues...
 - TBD: improve natural language / paragraph (vs. outline) read of examine() for Room & Creature
 	- maybe need a buff_no_cr() method in gs.io for this?
 
@@ -407,6 +400,11 @@ Version 3.73 Goals
 	- tempting to put this in the append / remove methods - but then there's no way to silence them
 	- instead, all buffering should be centralized into the noun methods where 'silence mode' can be enforced
 
+*** SOMEDAY ***
+	- TBD: enable non-burt creature use of all verb methods 
+	- TBD: how should creature be passed to Conditions & Results?
+	- TBD: how to deal with error messages for non-burt creatures (e.g. test_frog walks into door)
+	- IDEA: alternatives for how to move: dir_lst, room_lst, room_dir_dict
 
 *** LEGACY ***
 - TBD: Analyze noun classes... which ones update burt inv vs. read from burt inv?

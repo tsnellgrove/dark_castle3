@@ -34,9 +34,10 @@ descript_dict = {
 		### universal objects ###
 		'backpack' : "Your trusty, well-worn leather backpack",
 #		'burt' : "Yep, that's you Burt. A fine specimen of a man. If not for the drooling and the farting I don't know how you'd fend off the ladies.",
-		'burt' : "You cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching and the farting I don't know how you'd fend off the ladies!",
+		'burt' : "You cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching and the farting I don't know how you'd fend off the ladies!\n\nIn your off hand you hold a Brass Lantern.",
 		'fist' : "Yep, that's your fist. Still bruised from the last time you swung and missed and hit a wall...", 
 		'conscience' : "Burt, Dark Castle is quite murky enough without pondering your prodigal and Hal-esque misspent youth!",
+		'brass_lantern' : "Your trusty, battered-but-still-working, battery-powered light source. It's been in your household for ages; the family furphy is that your great grandmother, Nana, seized it from a maurauding 'adventurer' ages ago after giving him what-for with a broom. You sure wouldn't want your light source to go out - Dark Castle must be home to hundreds of Grues!",
 
 		### wrong way errors ###
 		'wrong_way_0' : "Ouch! Burt, stop walking into walls!",
