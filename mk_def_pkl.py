@@ -20,7 +20,6 @@ from creature_class_def import Creature
 from gs_class_def import GameState
 from map_class_def import Map
 
-
 # object instantiation - starting state
 rusty_lettering = Writing('rusty_lettering', 'Rusty Lettering', "lettering", 'rusty_lettering')
 dwarven_runes = Writing('dwarven_runes', 'Dwarven Runes', "runes", 'dwarven_runes')
@@ -105,8 +104,6 @@ hedgehog_not_exist_cond = InWorldCond('hedgehog_not_exist_cond', 'royal_hedgehog
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, False)
 read_scroll_win_cond = PassThruCond('read_scroll_win_cond')
 axe_in_goblin_hand_cond = CreatureItemCond('axe_in_goblin_hand_cond', 'guard_goblin_temp', grimy_axe, False)
-frog_in_main_hall_cond = InRoomCond('frog_in_main_hall_cond', 'test_frog_temp', 'main_hall_temp', True) # test creature
-frog_in_antechamber_cond = InRoomCond('frog_in_antechamber_cond', 'test_frog_temp', 'antechamber_temp', True) # test creature
 
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'death', True)
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
@@ -128,14 +125,10 @@ scroll_no_hedgehog_result = BufferOnlyResult('scroll_no_hedgehog_result', False)
 scroll_crown_not_worn_result = BufferOnlyResult('scroll_crown_not_worn_result', False)
 scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won', False)
 axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
-frog_goes_north_result = TravelResult('frog_goes_north_result', False, 'test_frog_temp', 'north')
-frog_goes_south_result = TravelResult('frog_goes_north_result', False, 'test_frog_temp', 'south')
-
 
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
 attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd', [['attack', 'royal_hedgehog']], 3, 0)
 eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','stale_biscuits']], 3, 0)
-
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
 				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
@@ -177,10 +170,6 @@ kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging
 re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None,
 				[axe_in_goblin_hand_cond, pass_thru_cond], [axe_in_goblin_hand_result, pass_result])
 
-frog_travel_mach = InvisMach('frog_travel_mach', None, 'auto_act', None, None, None,
-				[frog_in_main_hall_cond, frog_in_antechamber_cond], [frog_goes_north_result, frog_goes_south_result])
-
-
 goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None,
 				None, [grimy_axe], [torn_note], [big_medal], [officiousness],
 				[goblin_attack_mach, re_arm_goblin_mach],
@@ -216,21 +205,12 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 
 burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 				None, [], [rusty_key, glass_bottle, cheese_wedge, stale_biscuits], [], [backpack, fist, conscience, brass_lantern],
-				[hedgehog_eats_timer, frog_travel_mach],
+				[hedgehog_eats_timer],
 				{},
 				True,
 				{},
 				{},
-				None)
-
-test_frog = Creature('test_frog', 'Test Frog', 'frog', 'test_frog', None,
-				None, [], [], [], [],
-				[],
-				{},
-				True,
-				{},
-				{},
-				None) # test creature
+				None) # note: for non-burt-creature testing, frog_travel_mach was in burt.invis_lst
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
@@ -238,7 +218,8 @@ entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_cast
 				# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
-				[shiny_sword, royal_hedgehog, test_frog], [eat_biscuits_warning])
+				[shiny_sword, royal_hedgehog], [eat_biscuits_warning])
+				# note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
 
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
 				[alcove, left_lever, middle_lever, right_lever, red_button], [control_panel, goblin_guard], [])
@@ -260,8 +241,7 @@ map = Map([{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y'
 				{'room_x' : main_hall, 'dir_x' : 'north', 'door' : 'passage', 'dir_y' : 'south', 'room_y' : antechamber},
 				{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}])
 
-
-# *** 'object not defined' re-assignment ***
+# *** Hierarchy-Based Object Re-assignment ***
 goblin_attacks_result.creature_obj = goblin_guard
 hedgehog_has_biscuit_cond.creature_obj = royal_hedgehog
 hedgehog_eats_timer.alert_anchor = royal_hedgehog
@@ -273,27 +253,6 @@ hedgehog_not_exist_cond.exist_obj = royal_hedgehog
 crystal_box.contain_lst = [kinging_scroll]
 axe_in_goblin_hand_cond.creature_obj = goblin_guard
 axe_in_goblin_hand_result.creature_obj = goblin_guard
-frog_in_main_hall_cond.creature = test_frog
-frog_in_main_hall_cond.match_room = main_hall
-frog_in_antechamber_cond.creature = test_frog
-frog_in_antechamber_cond.match_room = antechamber
-frog_goes_north_result.creature = test_frog
-frog_goes_south_result.creature = test_frog
-
-
-# *** Test Objects ***
-## kinging_scroll = Item('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters) # old scroll
-## wooden_chest = Container('wooden_chest', 'wooden chest', "chest", 'wooden_chest', None, False, False, brass_key, [bubbly_potion]) # test object
-## giftbox = Container('giftbox', 'A pretty gift box', None, False, True, 'none', True, [necklace])
-## screen_door = Door('screen_door', "You should never be able to examine the screen_door", None, False, False, chrome_key)
-## blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset') # test obj
-## black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None, False, False, rusty_key, [cheese_wedge])
-## test_timer = Timer('test_timer', 'auto_act', False, 0, 3, 'variable', False, blue_button) # test obj
-## blue_button_result = StartTimerResult('blue_button_result', test_timer, False) # test obj
-## big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None, # test obj, 0, 'post_act_switch', blue_button, ['pushed'], [], [pass_thru_cond], [blue_button_result])
-# black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None, False, False, rusty_key, [cheese_wedge])
-# glass_bottle = Jug('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', None, True, [fresh_water]) # legacy glass_bottle
-
 
 ### active_gs is the central store of game info ###
 active_gs = GameState(
@@ -327,9 +286,56 @@ active_gs = GameState(
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible objects need not be listed ###
 master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, goblin_guard, entrance, main_hall, antechamber, throne_room, loyalty,
-officiousness, gold_capitals, red_bandana, big_medal, burt, test_frog, brass_lantern]
+officiousness, gold_capitals, red_bandana, big_medal, burt, brass_lantern] # note: big_bomb & test_frog removed
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
+
+# *** Test Objects ***
+
+# --- Legacy Classes 
+# kinging_scroll = Item('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters) # old scroll
+# glass_bottle = Jug('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', None, True, [fresh_water]) # legacy glass_bottle
+
+# --- Never Used ---
+## giftbox = Container('giftbox', 'A pretty gift box', None, False, True, 'none', True, [necklace])
+## screen_door = Door('screen_door', "You should never be able to examine the screen_door", None, False, False, chrome_key)
+
+# --- Small Tests ---
+## wooden_chest = Container('wooden_chest', 'wooden chest', "chest", 'wooden_chest', None, False, False, brass_key, [bubbly_potion]) # test object
+# black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None, False, False, rusty_key, [cheese_wedge])
+
+# --- Big Bomb Test ---
+## blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset') # test obj
+## test_timer = Timer('test_timer', 'auto_act', False, 0, 3, 'variable', False, blue_button) # test obj
+## blue_button_result = StartTimerResult('blue_button_result', test_timer, False) # test obj
+## big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None, # test obj, 0, 'post_act_switch', blue_button, ['pushed'], [], [pass_thru_cond], [blue_button_result])
+
+# --- Test Frog Go Test ---
+# frog_in_main_hall_cond = InRoomCond('frog_in_main_hall_cond', 'test_frog_temp', 'main_hall_temp', True) # test creature
+# frog_in_antechamber_cond = InRoomCond('frog_in_antechamber_cond', 'test_frog_temp', 'antechamber_temp', True) # test creature
+
+# frog_goes_north_result = TravelResult('frog_goes_north_result', False, 'test_frog_temp', 'north')
+# frog_goes_south_result = TravelResult('frog_goes_north_result', False, 'test_frog_temp', 'south')
+
+# frog_travel_mach = InvisMach('frog_travel_mach', None, 'auto_act', None, None, None,
+#				[frog_in_main_hall_cond, frog_in_antechamber_cond], [frog_goes_north_result, frog_goes_south_result])
+
+#test_frog = Creature('test_frog', 'Test Frog', 'frog', 'test_frog', None,
+#				None, [], [], [], [],
+#				[],
+#				{},
+#				True,
+#				{},
+#				{},
+#				None) # test creature
+
+# frog_in_main_hall_cond.creature = test_frog
+# frog_in_main_hall_cond.match_room = main_hall
+# frog_in_antechamber_cond.creature = test_frog
+# frog_in_antechamber_cond.match_room = antechamber
+# frog_goes_north_result.creature = test_frog
+# frog_goes_south_result.creature = test_frog
+
 

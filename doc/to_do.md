@@ -381,6 +381,7 @@ Version 3.73 Goals
 	- DONE: use Zork lantern description and ref of Nana scaring off some pesky "prowler" years ago; "battery-powered brass lantern"
 	- DONE: mention of brass langern in inventory
 	- DONE: for burt maybe add brass_lantern - always trusty and shining in your off hand... wouldn't want that to go out now would we? Grues...
+- DONE: comment out test_frog
 - TBD: improve natural language / paragraph (vs. outline) read of examine() for Room & Creature
 	- maybe need a buff_no_cr() method in gs.io for this?
 
