@@ -371,8 +371,10 @@ Version 3.73 Goals
 		- DONE: add alternate text for creature is not burt
 		- DONE: add conditional for text if creature is not in the same room as burt
 		- DONE: create test_frog
-		- TBD: create machine to move test_frog (start in main_hall and have it walk back & forth between main_hall & antichamber)
-		- TBD: test_frog test
+		- DONE: create machine to move test_frog (start in main_hall and have it walk back & forth between main_hall & antichamber)
+		- INPROC: test_frog test
+			- DONE: test_frog code runs
+			- TBD: get test_frog mach to run when Burt is not in the room 
 	- IDEA: maybe only enable non-burt creature use of go() method for now?
 
 *** SOMEDAY ***

@@ -253,6 +253,7 @@ class WornCond(PassThruCond):
 class InRoomCond(PassThruCond):
 		def __init__(self, name, creature, match_room, match_cond):
 				super().__init__(name)
+				self._creature = creature
 				self._match_room = match_room
 				self._match_cond = match_cond
 

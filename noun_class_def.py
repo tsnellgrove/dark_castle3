@@ -374,8 +374,8 @@ class Room(ViewOnly):
 				if creature == active_gs.hero:
 						next_room.examine(active_gs)
 						return 
-				if self == active_gs.get_room():
-						active_gs.buffer(f"The {creature.full_name} goes {dir}")
+##				if self == active_gs.get_room():
+				active_gs.buffer(f"The {creature.full_name} goes {dir}")
 				return 
 
 

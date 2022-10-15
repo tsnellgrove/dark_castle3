@@ -264,5 +264,5 @@ class TravelResult(BufferOnlyResult):
 						pass
 				room = active_gs.map.get_obj_room(self.creature)
 				room.go(self.dir, active_gs, self.creature)
-	
+				return mach_state, self.cmd_override
 

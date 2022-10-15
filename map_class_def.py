@@ -128,12 +128,12 @@ class Map(object):
 					return room_pair[room_dir[2]]
 		raise ValueError(f"There is no 'room_y' value associated with going {dir} from room {room}. This must not be a valid route.")
 
-		def get_obj_room(self, obj):
-				""" Returns the room that obj is currently in
-				"""
-				for room in self.get_room_lst():
-						if obj in room.floor_lst:
-								return room
-				raise ValueError(f"{self.hero.name} not found.")
+	def get_obj_room(self, obj):
+			""" Returns the room that obj is currently in
+			"""
+			for room in self.get_room_lst():
+				if obj in room.floor_lst:
+					return room
+			raise ValueError(f"{self.hero.name} not found.")
 
 	
