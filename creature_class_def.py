@@ -178,7 +178,8 @@ class Creature(ViewOnly):
 						if self == active_gs.hero:
 								active_gs.buffer(f"You are holding a {self.get_hand_item().full_name}")
 						else:
-								active_gs.buffer(f"The {self.full_name} is holding a {self.get_hand_item().full_name}")
+##								active_gs.buffer(f"The {self.full_name} is holding a {self.get_hand_item().full_name}")
+								active_gs.buff_no_cr(f"The {self.full_name} is holding a {self.get_hand_item().full_name}. ")
 						for obj in self.hand_lst:
 								obj.disp_contain(active_gs)
 				if self == active_gs.hero and not self.bkpk_is_empty():
@@ -193,7 +194,8 @@ class Creature(ViewOnly):
 						if self == active_gs.hero:
 								active_gs.buffer(f"You are wearing: {worn_str}")
 						else:
-								active_gs.buffer(f"The {self.full_name} is wearing: {worn_str}")
+##								active_gs.buffer(f"The {self.full_name} is wearing: {worn_str}")
+								active_gs.buff_no_cr(f"The {self.full_name} is wearing: {worn_str}.")
 						for obj in self.worn_lst:
 								obj.disp_contain(active_gs)
 				return 

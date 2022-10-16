@@ -382,8 +382,9 @@ Version 3.73 Goals
 	- DONE: mention of brass langern in inventory
 	- DONE: for burt maybe add brass_lantern - always trusty and shining in your off hand... wouldn't want that to go out now would we? Grues...
 - DONE: comment out test_frog
-- TBD: improve natural language / paragraph (vs. outline) read of examine() for Room & Creature
-	- maybe need a buff_no_cr() method in gs.io for this?
+- INPROC: improve natural language / paragraph (vs. outline) read of examine() for Room & Creature
+	- DONE: need a buff_no_cr() method in gs.io for this?
+	- TBD: sort out bottle (how should cr work for portable_container)
 
 *** DOC_STRING ESSAYS ***
 - verb method / class association
@@ -527,6 +528,7 @@ Version 3.75 Goals
 
 - TBD: rename active_gs => gs
 - TBD: perhaps Map, Score, and Descript are classes w/ static dicts in mehod / class and actual obj in gs attributes
+- TBD: refactor buffer type commands into gs.io
 - Refactor dicts
 	- TBD: refactor active_gs.map
 		- gs will have map as an attribute

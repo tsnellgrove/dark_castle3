@@ -113,6 +113,16 @@ class GameState(object):
 				out_buff_new = out_buff_old + "\n" + output_str + "\n"
 				self._state_dict['out_buff'] = out_buff_new
 
+		def buff_no_cr(self, output_str):
+				out_buff_old = self._state_dict['out_buff']
+				out_buff_new = out_buff_old + output_str
+				self._state_dict['out_buff'] = out_buff_new
+
+		def buff_cr(self):
+				out_buff_old = self._state_dict['out_buff']
+				out_buff_new = out_buff_old + "\n"
+				self._state_dict['out_buff'] = out_buff_new
+
 		def reset_buff(self):
 				self._state_dict['out_buff'] = ""
 

@@ -341,14 +341,17 @@ class Room(ViewOnly):
 						if obj == active_gs.hero:
 								pass
 						elif not obj.is_item():
-								active_gs.buffer("There is a " + obj.full_name + " here.")
+								active_gs.buff_cr()
+##								active_gs.buffer("There is a " + obj.full_name + " here. ")
+								active_gs.buff_no_cr(f"There is a {obj.full_name} here. ")
 								obj.disp_contain(active_gs)
+								active_gs.buff_cr()
 						else:
 								room_item_lst.append(obj)
 				if room_item_lst:
 						room_txt_lst = [obj.full_name for obj in room_item_lst]
 						room_item_str = ", ".join(room_txt_lst)
-						active_gs.buffer("The following items are here: " + room_item_str)
+						active_gs.buffer(f"The following items are here: {room_item_str}.")
 				for obj in room_item_lst:
 						obj.disp_contain(active_gs)
 				return 
@@ -661,7 +664,8 @@ class Container(Door):
 				if self.is_not_closed() and not self.is_empty():
 						contain_txt_lst = [obj.full_name for obj in self.contain_lst]
 						contain_str = ", ".join(contain_txt_lst)
-						active_gs.buffer(f"The {self.full_name} contains: {contain_str}")
+##						active_gs.buffer(f"The {self.full_name} contains: {contain_str}")
+						active_gs.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
 						for obj in self.contain_lst:
 								obj.disp_contain(active_gs)
 				return 
