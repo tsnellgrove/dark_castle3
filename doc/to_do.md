@@ -384,7 +384,8 @@ Version 3.73 Goals
 - DONE: comment out test_frog
 - INPROC: improve natural language / paragraph (vs. outline) read of examine() for Room & Creature
 	- DONE: need a buff_no_cr() method in gs.io for this?
-	- TBD: sort out bottle (how should cr work for portable_container)
+	- DONE: sort out bottle (how should cr work for portable_container)
+	- TBD: nearly there - just need to sort out openning container and test burt wearing crown
 
 *** DOC_STRING ESSAYS ***
 - verb method / class association

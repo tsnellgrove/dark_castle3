@@ -349,11 +349,13 @@ class Room(ViewOnly):
 						else:
 								room_item_lst.append(obj)
 				if room_item_lst:
+						active_gs.buff_cr()
 						room_txt_lst = [obj.full_name for obj in room_item_lst]
 						room_item_str = ", ".join(room_txt_lst)
-						active_gs.buffer(f"The following items are here: {room_item_str}.")
-				for obj in room_item_lst:
-						obj.disp_contain(active_gs)
+						active_gs.buff_no_cr(f"The following items are here: {room_item_str}. ")
+						for obj in room_item_lst:
+								obj.disp_contain(active_gs)
+						active_gs.buff_cr()
 				return 
 
 		def go(self, dir, active_gs, creature = None):
