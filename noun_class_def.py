@@ -686,7 +686,9 @@ class Container(Door):
 				"""
 				if self.is_empty():
 						active_gs.buffer(f"The {self.full_name} is empty.")
+				active_gs.buff_cr()
 				self.disp_contain(active_gs)
+				active_gs.buff_cr()
 
 		def put(self, obj, active_gs):
 				""" Puts an Item in a Container.

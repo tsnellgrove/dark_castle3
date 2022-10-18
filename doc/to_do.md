@@ -382,32 +382,33 @@ Version 3.73 Goals
 	- DONE: mention of brass langern in inventory
 	- DONE: for burt maybe add brass_lantern - always trusty and shining in your off hand... wouldn't want that to go out now would we? Grues...
 - DONE: comment out test_frog
-- INPROC: improve natural language / paragraph (vs. outline) read of examine() for Room & Creature
+- DONE: improve natural language / paragraph (vs. outline) read of examine() for Room & Creature
 	- DONE: need a buff_no_cr() method in gs.io for this?
 	- DONE: sort out bottle (how should cr work for portable_container)
-	- TBD: nearly there - just need to sort out openning container and test burt wearing crown
+	- DONE: nearly there - just need to sort out openning container and test burt wearing crown
+- TBD: write doc_string essays
+	- verb method / class association
+		- Move Container essay to Room & expand with examples
+			- Burt, take the Key
+			- Burt, put the Cheese in the Box
+			- Burt, show the Biscuits to the Hedgehog
+			- Burt, go north from the Entrance
+		- 3 rules of method association:
+			- 1) It's (almost) never the actor - because the actor is (almost) always Burt
+			- 2) Ask, who or what is being acted on
+			- 3) Choose the noun that is most restrictive
+	- Where to include buffer text
+		- example = wear / remove text
+		- tempting to put this in the append / remove methods - but then there's no way to silence them
+		- instead, all buffering should be centralized into the noun methods where 'silence mode' can be enforced
 
-*** DOC_STRING ESSAYS ***
-- verb method / class association
-	- Move Container essay to Room & expand with examples
-		- Burt, take the Key
-		- Burt, put the Cheese in the Box
-		- Burt, show the Biscuits to the Hedgehog
-		- Burt, go north from the Entrance
-	- 3 rules of method association:
-		- 1) It's (almost) never the actor - because the actor is (almost) always Burt
-		- 2) Ask, who or what is being acted on
-		- 3) Choose the noun that is most restrictive
-- Where to include buffer text
-	- example = wear / remove text
-	- tempting to put this in the append / remove methods - but then there's no way to silence them
-	- instead, all buffering should be centralized into the noun methods where 'silence mode' can be enforced
 
 *** SOMEDAY ***
 	- TBD: enable non-burt creature use of all verb methods 
 	- TBD: how should creature be passed to Conditions & Results?
 	- TBD: how to deal with error messages for non-burt creatures (e.g. test_frog walks into door)
 	- IDEA: alternatives for how to move: dir_lst, room_lst, room_dir_dict
+
 
 *** LEGACY ***
 - TBD: Analyze noun classes... which ones update burt inv vs. read from burt inv?
