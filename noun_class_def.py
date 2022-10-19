@@ -697,7 +697,16 @@ class Container(Door):
 						Container.chk_content_prohibited() is used to limit what can be put in a container and is extended further by PortableContainer and PortableLiquidContainer. For details on why Containers can't hold Surfaces or Creatures and why PortableContainers can't hold PortableContainers, please see the doc_string on node hierarchy under the Room class.
 				
 				Class Design:
-						It might appear that put() could just as well be a method of Item as it is of Container. Code-wise this would certainly work. But what quickly becomes clear when developing verb methods is that the code for testing error cases and buffering terror messages is often longer than the code for executing the command. The corollary to this realization is that we always want to associate a method with its most restrictive noun - which in the case of put() is Container. This means that we don't need to test to see if the target location for put() is a Container - the method simply can't run if it isn't. This same logic applies to other preposition type verb methods like show() and give() - which in theory could be methods of Item but which are more efficiently coded when naturally limited in use by being methods of Creature.
+						It might appear that put() could just as well be a method of Item as it is of Container. Code-wise this would certainly work. But what becomes clear when developing verb methods is that the code for testing error cases and buffering error messages is often longer than the code for actually executing the command. A corollary to this realization is that we always want to associate a method with its most restrictive noun - which in the case of put() is Container. This means that we don't need to test to see if the target location for put() is a Container - the method simply can't run if it isn't. This same logic applies to other preposition type verb methods like show() and give() - which in theory could be methods of Item but which are more efficiently coded when naturally limited in use by being methods of Creature.
+						
+						With Burt now being of class Creature, this principle can be generalized. Nearly every command actually involves Burt as the subject (e.g. "Burt, put the Rusty Key in the Crystal Box"). So while it's tempting to ask "who or what is performing the action?" - this line of reasoning would lead to every verb method being of class Creature. Instead, we generally want to ask "who or what is being acted on?" We can formalize this logic as follows:
+							
+								The 3 rules of method association:
+								1) It's (almost) never the actor - because the actor is (almost) always Burt
+								2) Ask, who or what is being acted on
+								3) Choose the noun that is most restrictive
+								
+						When we apply this razor to "Burt, put the Rusty Key in the Crystal Box", Burt is immediately excluded and, between Rusty Key (class Item) and Crystal Box (class Container) we see that container is more restrictive. So put() is implemented as a verb method of Container.
 				
 				Historic Note:
 						put() was the very first preposition-based command in DCv3. After ages of two-word commands it very exciting to be able to type 'put the rusty key in the crystal box' and have a working result!

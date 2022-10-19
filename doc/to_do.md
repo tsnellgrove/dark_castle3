@@ -386,8 +386,8 @@ Version 3.73 Goals
 	- DONE: need a buff_no_cr() method in gs.io for this?
 	- DONE: sort out bottle (how should cr work for portable_container)
 	- DONE: nearly there - just need to sort out openning container and test burt wearing crown
-- TBD: write doc_string essays
-	- verb method / class association
+- DONE: write doc_string essays
+	- DONE: verb method / class association
 		- Move Container essay to Room & expand with examples
 			- Burt, take the Key
 			- Burt, put the Cheese in the Box
@@ -397,7 +397,8 @@ Version 3.73 Goals
 			- 1) It's (almost) never the actor - because the actor is (almost) always Burt
 			- 2) Ask, who or what is being acted on
 			- 3) Choose the noun that is most restrictive
-	- Where to include buffer text
+	- TBD: Where to include buffer text
+		- essay should be in Creature class 
 		- example = wear / remove text
 		- tempting to put this in the append / remove methods - but then there's no way to silence them
 		- instead, all buffering should be centralized into the noun methods where 'silence mode' can be enforced

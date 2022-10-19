@@ -186,7 +186,6 @@ class Creature(ViewOnly):
 								active_gs.buff_no_cr(f"The {self.full_name} is holding a {self.get_hand_item().full_name}. ")
 								for obj in self.hand_lst:
 										obj.disp_contain(active_gs)
-#						active_gs.buff_cr()
 				if self == active_gs.hero and not self.bkpk_is_empty():
 						active_gs.buff_cr()
 						bkpk_str_lst = [obj.full_name for obj in self.bkpk_lst]
