@@ -1,6 +1,6 @@
 To Do List - Dark Castle v3
 
-Sept 10, 2022
+Oct 20, 2022
 
 *** Need a new IDE ***
 - iPad / offline: Pyto
@@ -186,261 +186,10 @@ Basic Refactor Steps:
 
 
 ##########################
-### VERSION 3.73 START ###
+### VERSION 3.74 START ###
 ##########################
 
-Version 3.73 Goals
-- refactor Burt as a creature object
-- refactor coding as I go
-
-- DONE: full review of all active_gs attributes to be moved to burt_obj
-	- DONE: will also enable 'room scope' type methods to move to class Room
-- Refactor burt as a Creature class object
-	- DONE: create burt obj and make him visible
-		- DONE: instantiate burt in mk_def_pkl() (on attack dicts)
-		- DONE: burt_creature to be instantiated in entrance.room.floor_lst
-		- DONE: create active_gs dict entry that defines hero == burt and create a get_hero() method to get this info
-		- DONE: update creature.vis_lst() to include bkpk_lst for self == active_gs.hero
-		- DONE: update disp_contain() method for creature to include backpack for self == active_gs.hero
-	- DECISION: on initial refactor, all 'action' methods except attack() will be implicitly excuted by active_gs.hero
-		- IDEA: making action methods applicable to arbitrary creatures can be considered on a 2nd pass
-	- CANCEL: address duplicate obj issue
-		- IDEA: we can't test other methods because the interpreter is confused by creature_burt having duplicat items
-		- IDEA: to solve this, we need a temporary exception in vis_contain_lst() that excludes obj possessed by Burt
-		- IDEA: then maybe we need to create a custom jinv() method in Creature to describe burt's inventory?
-		- NEW-PLAN: let's just give burt 1 simple obj in his hand and start by updating eat(), drink(), and drop()
-- DONE: map classes and verb methods
-- DONE: update verb methods to reference creature_burt
-	- DONE: update eat to creature_burt
-		- DONE: food in burt's hand
-		- DONE: update eat for creature_burt
-		- DONE: minor refacto of eat()
-		- DONE: update validate() to include active_gs.hero.chk_in_hand() as part of its hand check
-		- DONE: clean up comments 
-	- DONE: update drink to creature_burt
-		- DONE: update drink() method
-		- DONE: update creature_burt & gs_burt
-		- DONE: clean up comments
-	- DONE: update drop() to creature_burt
-		- DONE: update drop() method
-		- DONE: update creature_burt & gs_burt
-		- DONE: clean up comments
-	- DONE: update unlock() to creature_burt
-		- DONE: update unlock() method
-		- DONE: update creature_burt & gs_burt
-		- DONE: clean up comments
-	- DONE: pause to update Creature method names
-		- DONE: creature.hand_item() to creature.get_hand_item()
-		- DONE: creature.hand_empty() to creature.hand_is_empty()
-			- DONE: creature_class_def()
-			- DONE: noun_class_def()
-		- DONE: creature.bkpk_empty() to creature.bkpk_is_empty
-			- DONE: creature_class_def()
-		- DONE: creature.worn_empty() to creature.worn_is_empty()
-			- DONE: creature_class_def()
-	- DONE: update lock() to creature_burt
-		- DONE: update lock() method
-		- DONE: clean up comments
-	- NOTE: open(), close(), examine(), and read() have no reference to Burt so they do not need to be updated
-	- DONE: update take() to creature_burt
-		- DONE: update take() method
-		- DONE: clean up comments
-		- DONE: after updating take(), don't forget to update hand references in score()
-	- DONE: update go() to creature_burt
-		- DONE: update go() method
-	- DONE: update validate() to include active_gs.hero.chk_in_hand() as part of its hand check for prep case (put, show, give)
-		- NOTE: show is now fully functional for creature_burt
-	- DONE: update give() to creature_burt
-		- DONE: update give() method
-		- DONE: update creature_burt & gs_burt
-		- DONE: clean up comments
-	- DONE: fix entrance_moat_mach
-		- DONE: update WeaponInHandCond
-		- DONE: update IsWeaponAndStateCond
-		- DONE: update BufferAndGiveResult
-		- DONE: clean up comments
-	- DONE: update wear() for creature_burt
-		- DONE: update wear() method
-		- DONE: clean up comments
-	- DONE: update attack() for creature_burt
-		- DONE: clean up attack() a bit
-		- DONE: update attack() method
-		- DONE: clean up comments
-	- DONE: update attack_burt() for creature_burt
-		- DONE: update attack_burt() method
-		- DONE: clean up comments
-	- DONE: test push & pull to confirm they have no creature_burt dependencies
-	- DONE: update put() for creature_burt
-		- DONE: update put() method
-		- DONE: clean up comments
-	- DONE: fix worn score for burt_creature
-	- DONE: fix kinging_scroll machine
-		- DONE: update WornCond for creature_burt
-		- NOTE: FULL GAME IS NOW PLAYABLE VIA CREATURE_BURT!!
-	- DONE: switch 'inventory' => examine.burt
-		- DONE: update cmd_exe True-One-Word command
-		- DONE: update Creature disp_contain()
-		- DONE: clean up comments
-	- DONE: can exclude burt from room.disp_contain() using remove(active_gs.hero)
-- DONE: review burt => creature plans and clean-up
-- DONE: move active_gs.universal_lst timer obj to burt.invis_lst
-- DONE: active_gs.get_room() => active_gs.map.get_hero_room()
-	- DONE: in active_gs.map create get_hero_room() initial version
-	- DONE: test get_hero_room() in read() method
-		- NOTE: had issues because active_gs.map does not have a way to reference active_gs; moved get_hero_room() to active_gs with hero for now
-	- DONE: find all modules using active_gs.get_room()
-		- DONE: noun_class_def() <both get_room and set_room>
-		- DONE: interp()
-		- DONE: validate()
-		- DONE: pre_action()
-		- DONE: cmd_exe()
-		- DONE: post_action()
-		- DONE: auto_action()
-		- DONE: score()
-		- DONE: gs_glass_def() <method defined here>
-		- DONE: creature_class_def()
-		- DONE: mach_class_def()
-		- DONE: cond_class_def()
-		- DONE: result_class_def()
-	- DONE - NEW-IDEA: re-use existing active_gs.get_room() calls
-		- DONE: replace get_room() code with get_hero_rooom()
-		- DONE: Also need to comment out set_room() in Room.go() and in active_gs
-		- DONE: And need to convert Read get_hero_room() back to get_room()
-		- DONE: comment 'room' out of active_gs.state_dict
-- DONE: comment out legacy refs
-	- DONE: sort out active_gs hand refs
-		- DONE: def get_hand_lst(self):
-			- DONE: gs_class_def (def)
-			- DONE: cond_class_def
-			- DONE: noun_class_def
-		- DONE: def hand_empty(self):
-			- DONE: gs_class_def (def)
-			- DONE: creature_class_def
-		- DONE: def hand_check(self, obj):
-			- DONE: gs_class_def (def)
-			- DONE: validate()
-		- DONE: def hand_lst_append_item(self, item):
-			- DONE: gs_class_def (def)
-		- DONE: def hand_lst_remove_item(self, item):
-			- DONE: gs_class_def (def)
-		- DONE def put_in_hand(self, new_item):
-			- DONE: gs_class_def (def)
-		- DONE: def weapon_in_hand(self):
-			- DONE: gs_class_def (def)
-		- DONE: def inventory(self):
-				- DONE: gs_class_def (def)
-		- DONE: full test run
-	- DONE: sort out active_gs backpack refs
-		- DONE: def get_backpack_lst(self):
-			- DONE: gs_class_def (def)
-			- DONE: noun_class_def
-		- DONE: def backpack_lst_append_item(self, item):
-			- DONE: gs_class_def (def)
-		- DONE: def backpack_lst_remove_item(self, item):
-			- DONE: gs_class_def() (def)
-		- DONE: full test run
-	- DONE: sort out active_gs worn refs
-		- DONE: def clothing_type_worn(self, item):
-			- DONE: gs_class_def() (def)
-		- DONE: def get_worn_lst(self):
-			- DONE: gs_class_def() (def)
-		- DONE: def worn_lst_append_item(self, item):
-			- DONE: gs_class_def() (def)
-		- DONE: def worn_lst_remove_item(self, item):
-			- DONE: gs_class_def() (def)
-		- DONE: light test run
-	- DONE: sort out remaining active_gs burt refs
-		- DONE: active_gs.state_dict['backpack', 'hand', 'worn']
-		- DONE: def get_static_obj(self, static_key):
-		- DONE: active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]}
-		- DONE: light test run
-	- DONE: sort out old active_gs room refs
-		- DONE: def get_room()
-		- DONE:	def set_room()
-		- DONE: active_gs.state_dict['room']	
-	- DONE: full test run
-- DONE: clean up all comments
-- DONE: review and org all *** MAYBE *** items
-- DONE: Update methods to pass 'creature' to them (including Conditions??)
-	- IDEA: use 'None' approach shown here: https://stackoverflow.com/questions/42718870/defining-a-default-argument-as-a-global-variable
-	- IDEA: don't need an 'exe_silent' mode - just check in method for whether cereature is burt or is in the same room as burt
-	- IDEA: if creature == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
-	- IDEA: burt to be default value
-	- DONE: go
-		- DONE: add default creature attribute and use None state to set to active_gs.hero
-		- DONE: add alternate text for creature is not burt
-		- DONE: add conditional for text if creature is not in the same room as burt
-		- DONE: create test_frog
-		- DONE: create machine to move test_frog (start in main_hall and have it walk back & forth between main_hall & antichamber)
-		- DONE: test_frog test
-			- DONE: test_frog code runs
-			- DONE: get test_frog mach to run when Burt is not in the room 
-	- IDEA: maybe only enable non-burt creature use of go() method for now?
-- DONE: add brass_lantern ?? mention of grues?? "wouldn't want that to go out!")
-	- DONE: add brass_lantern ? "wouldn't want that to go out!"
-	- DONE: use Zork lantern description and ref of Nana scaring off some pesky "prowler" years ago; "battery-powered brass lantern"
-	- DONE: mention of brass langern in inventory
-	- DONE: for burt maybe add brass_lantern - always trusty and shining in your off hand... wouldn't want that to go out now would we? Grues...
-- DONE: comment out test_frog
-- DONE: improve natural language / paragraph (vs. outline) read of examine() for Room & Creature
-	- DONE: need a buff_no_cr() method in gs.io for this?
-	- DONE: sort out bottle (how should cr work for portable_container)
-	- DONE: nearly there - just need to sort out openning container and test burt wearing crown
-- DONE: write doc_string essays
-	- DONE: verb method / class association
-		- Move Container essay to Room & expand with examples
-			- Burt, take the Key
-			- Burt, put the Cheese in the Box
-			- Burt, show the Biscuits to the Hedgehog
-			- Burt, go north from the Entrance
-		- 3 rules of method association:
-			- 1) It's (almost) never the actor - because the actor is (almost) always Burt
-			- 2) Ask, who or what is being acted on
-			- 3) Choose the noun that is most restrictive
-
-
-*** SOMEDAY ***
-	- TBD: enable non-burt creature use of all verb methods 
-	- TBD: how should creature be passed to Conditions & Results?
-	- TBD: how to deal with error messages for non-burt creatures (e.g. test_frog walks into door)
-	- IDEA: alternatives for how to move: dir_lst, room_lst, room_dir_dict
-
-
-*** LEGACY ***
-- TBD: Analyze noun classes... which ones update burt inv vs. read from burt inv?
-	- IDEA: start by implementing the burt inv updates in paralelle to active_gs updates
-	- IDEA: create 'jinventory' and 'jlook' commands to confirm that burt_creature matches active_gs.burt
-	- IDEA: now migrate the 'read' noun classes one-by-one to read from burt_creature (refactoring first as I go)
-	- IDEA: lastly, when all methods point to burt_creature, I can comment out the active_gs.burt update methods and test
-	- IDEA: Refactor as I go; provide a 'silent mode' for each method() for when it is called by a non-burt creature
-- IDEAS:
-	- TBD: universal descriptors => burt_obj
-	- refactoring noun classes for burt-as-creature
-		- TBD: move go() to Creature
-- TBD: integrate burt with active_gs (get_hero method)
-	- How to pass burt obj? maybe active_gs.get_hero(); burt saved in dict
-	- does get_hero bias us towards a search for current hero room? Or do we still cache 'room' in active_gs ???
-	- TBD: move burt_obj from room to room (features attribute) when active_gs moves
-		- Burt to be in room features
-	- updaate burt hand & inventory changes in parallel to active_gs (create setter methods for creatures)
-	- update module-by-module to read from active_gs to burt_obj (create getter methods for creatures)
-	- does room_scope now become a Room method?
-	- comment out active_gs hand & inv updates
-	-  lots of testing!!!
-	- clean-up comments
-	- TBD: for ViewOnly create methoed 'vis_lst(): return []' to simplify Room.vis_lst() ???
-- can we have 'burt' be the default <creature> but other options available?
-	- TBD: in noun methods, do I need to pass init_creature to each verb method in order for mode = 'creature_exe' to work??
-	- TBD: move active_gs.static_obj_lst => burt.feature_lst
-	- IDEA: for Creatures, instead of headgehog_distracted_mach, maybe I just need a creature_distracted attribute??? (NO)
-	- create all_lst, item_lst, and mach_lst methods for creature class
-
-
-##########################
-### VERSION 3.73 START ###
-##########################
-
-Version 3.73 Goals
+Version 3.74 Goals
 - post Burt => Creature neatening
 
 - TBD: reorg noun_class_def into base (Invis, Writing, ViewOnly, & Liquid), Item (including Food & Weapon), Room, Door and Container, Surface ??
@@ -465,14 +214,14 @@ Version 3.73 Goals
 
 
 ##########################
-### VERSION 3.74 START ###
+### VERSION 3.75 START ###
 ##########################
 
-Version 3.74 Goals
+Version 3.75 Goals
 - finish noun refactor
+- post Burt => Creature neatening
 - create a class for descriptions
 - create a Surface class
-- rename active_gs => gs
 
 - TBD: refactor Clothes => Garment
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
@@ -522,10 +271,10 @@ Version 3.74 Goals
 
 
 ##########################
-### VERSION 3.75 START ###
+### VERSION 3.76 START ###
 ##########################
 
-Version 3.75 Goals
+Version 3.76 Goals
 - TBD: rename active_gs to gs
 - modularize remaining GameState class and declarations (???)
 
@@ -580,10 +329,10 @@ Version 3.75 Goals
 - does creature_state really have any value? Maybe build hedgehog state machine before pulling the plug on this one
 
 ##########################
-### VERSION 3.76 START ###
+### VERSION 3.77 START ###
 ##########################
 
-Version 3.76 Goals
+Version 3.77 Goals
 - re-work app_main() flow with validate() module
 - refactor app_main() modules
 
@@ -626,18 +375,31 @@ Version 3.76 Goals
 
 
 ##########################
-### VERSION 3.77 START ###
-##########################
-
-Version 3.77 Goals
-- refactor remaining app_main chain: interp, pre_action, cmd_exe, post_action, auto_action, score (??), end (?)
-
-
-##########################
 ### VERSION 3.78 START ###
 ##########################
 
 Version 3.78 Goals
+- enable all verb methods for non-burt creatures
+
+- TBD: enable non-burt creature use of all verb methods 
+- TBD: how should creature be passed to Conditions & Results?
+- TBD: how to deal with error messages for non-burt creatures (e.g. test_frog walks into door)
+- IDEA: alternatives for how to to auto-move non-burt creatures: dir_lst, room_lst, room_dir_dict
+
+
+##########################
+### VERSION 3.80 START ###
+##########################
+
+Version 3.890 Goals
+- refactor remaining app_main chain: interp, pre_action, cmd_exe, post_action, auto_action, score (??), end (?)
+
+
+##########################
+### VERSION 3.81 START ###
+##########################
+
+Version 3.81 Goals
 - Clean up machine, warning, and timer coding
 - Create / update program documentation
 
@@ -691,10 +453,10 @@ Version 3.78 Goals
 
 
 ##########################
-### VERSION 3.79 START ###
+### VERSION 3.82 START ###
 ##########################
 
-Version 3.79 Goals
+Version 3.82 Goals
 - Clean up documentation and incorporate into doc_strings
 - final code clean-up for version 3.x
 
