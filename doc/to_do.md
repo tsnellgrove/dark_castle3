@@ -397,11 +397,6 @@ Version 3.73 Goals
 			- 1) It's (almost) never the actor - because the actor is (almost) always Burt
 			- 2) Ask, who or what is being acted on
 			- 3) Choose the noun that is most restrictive
-	- TBD: Where to include buffer text
-		- essay should be in Creature class 
-		- example = wear / remove text
-		- tempting to put this in the append / remove methods - but then there's no way to silence them
-		- instead, all buffering should be centralized into the noun methods where 'silence mode' can be enforced
 
 
 *** SOMEDAY ***
@@ -490,6 +485,11 @@ Version 3.74 Goals
 		- TBD: consider auto-gen keys for all verb methods (probably not)
 		- TBD: Organize auto-gen keys together
 		- TBD: consider creating a separate dict for autogen keys
+	- TBD: doc_string on where to include buffer text
+		- essay should be in Garment class, wear() method
+		- example = wear / remove text
+		- tempting to put this in the append / remove methods - but then there's no way to silence them
+		- instead, all buffering should be centralized into the noun methods where 'silence mode' can be enforced 
 - TBD: refactor Food
 - TBD: refactor Weapon
 - TBD: refactor Switch
