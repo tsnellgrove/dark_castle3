@@ -193,13 +193,24 @@ Version 3.74 Goals
 - post Burt => Creature neatening
 
 - TBD: reorg noun_class_def into base (Invis, Writing, ViewOnly, & Liquid), Item (including Food & Weapon), Room, Door and Container, Surface ??
+- TBD: Base
+	- INPROC: move 'base' to dedicaated module
+		- DONE: Invis
+		- DONE: Writing
+		- DONE: ViewOnly
+		- TBD: Liquid
+	- INPROC: reduce 'base' indent to 1 tab
+		- DONE: Invis
+		- DONE: Writing
+		- DONE: ViewOnly
+		- TBD: Liquid
+	- TBD: clean up doc_strings for readability
+	- TBD: update imports in mk_def_pkl & other classes
+		- TBD: 
+	- TBD: testing
 - TBD: Room
 	- TBD: move room to dedicated module
 	- TBD: reduce Room indent to 1 tab
-	- TBD: clean up doc_strings for readability
-- TBD: Base
-	- TBD: move 'base' to dedicaated module
-	- TBD: reduce 'base' indent to 1 tab
 	- TBD: clean up doc_strings for readability
 - TBD: D&C
 	- TBD: move Doors & Containers to dedicated module
