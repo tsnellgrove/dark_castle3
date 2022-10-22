@@ -206,7 +206,7 @@ Version 3.74 Goals
 	- DONE: elim from noun_class_def using tripple-quotes
 	- DONE: update imports in mk_def_pkl, noun_class_def() & others 
 	- DONE: testing
-	- TBD: clean up comments
+	- DONE: clean up comments
 - TBD: Room
 	- TBD: move room to dedicated module
 	- TBD: reduce Room indent to 1 tab

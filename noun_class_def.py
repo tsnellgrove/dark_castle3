@@ -12,8 +12,9 @@ from base_class_def import Invisible, Writing, ViewOnly
 
 ### local functions
 
-"""
+
 ### classes
+"""
 class Invisible(object):
 		def __init__(self, name):
 				self._name = name # text str of each obj's canonical name; should be unique and immutable

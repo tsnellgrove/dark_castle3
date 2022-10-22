@@ -4,7 +4,6 @@
 # description: class deffinition module for Machines
 
 ### import
-# from noun_class_def import ViewOnly
 from base_class_def import ViewOnly
 
 ### class definitions
