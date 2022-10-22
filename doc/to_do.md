@@ -207,18 +207,23 @@ Version 3.74 Goals
 	- DONE: update imports in mk_def_pkl, noun_class_def() & others 
 	- DONE: testing
 	- DONE: clean up comments
+- TBD: Misc (Liquid)
+	- TBD: move Liquid to dedicated module
+	- TBD: reduce Liquid indent to 1 tab
+	- TBD: clean up doc_strings for readability
 - TBD: Room
 	- TBD: move room to dedicated module
 	- TBD: reduce Room indent to 1 tab
+	- TBD: clean up doc_strings for readability
+- TBD: item_class_def() [Item, Food, Weapon]
+	- TBD: move to dedicated module
+	- TBD: reduce indent to 1 tab
 	- TBD: clean up doc_strings for readability
 - TBD: D&C
 	- TBD: move Doors & Containers to dedicated module
 	- TBD: reduce D&C indent to 1 tab
 	- TBD: clean up doc_strings for readability
-- TBD: Misc (Liquid)
-	- TBD: move Liquid to dedicated module
-	- TBD: reduce Liquid indent to 1 tab
-	- TBD: clean up doc_strings for readability
+
 - INPROC: class by class, reduce from double-tab to single tab
 	- DONE: web_main.py
 	- DONE: map_class_def.py
