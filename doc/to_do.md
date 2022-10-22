@@ -194,18 +194,17 @@ Version 3.74 Goals
 
 - TBD: reorg noun_class_def into base (Invis, Writing, ViewOnly, & Liquid), Item (including Food & Weapon), Room, Door and Container, Surface ??
 - TBD: Base
-	- INPROC: move 'base' to dedicaated module
+	- DONE: move 'base' (Invis, Writing, ViewOnly) to dedicaated module
 		- DONE: Invis
 		- DONE: Writing
 		- DONE: ViewOnly
-		- TBD: Liquid
-	- INPROC: reduce 'base' indent to 1 tab
+	- DONE: reduce 'base' indent to 1 tab
 		- DONE: Invis
 		- DONE: Writing
 		- DONE: ViewOnly
-		- TBD: Liquid
-	- TBD: clean up doc_strings for readability
-	- TBD: update imports in mk_def_pkl & other classes
+	- DONE: clean up doc_strings for readability
+	- TBD: elim from noun_class_def using tripple-quotes
+	- TBD: update imports in mk_def_pkl, noun_class_def() & others
 		- TBD: 
 	- TBD: testing
 - TBD: Room
@@ -215,6 +214,10 @@ Version 3.74 Goals
 - TBD: D&C
 	- TBD: move Doors & Containers to dedicated module
 	- TBD: reduce D&C indent to 1 tab
+	- TBD: clean up doc_strings for readability
+- TBD: Misc (Liquid)
+	- TBD: move Liquid to dedicated module
+	- TBD: reduce Liquid indent to 1 tab
 	- TBD: clean up doc_strings for readability
 - INPROC: class by class, reduce from double-tab to single tab
 	- DONE: web_main.py
