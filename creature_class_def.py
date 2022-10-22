@@ -5,7 +5,8 @@
 
 ### import
 import random
-from noun_class_def import ViewOnly
+# from noun_class_def import ViewOnly
+from base_class_def import ViewOnly
 from static_gbl import descript_dict
 
 ### classes

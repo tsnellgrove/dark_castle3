@@ -5,7 +5,9 @@
 
 ### import
 import copy
-from noun_class_def import Invisible, ViewOnly, Item
+# from noun_class_def import Invisible, ViewOnly, Item
+from noun_class_def import Item
+from base_class_def import Invisible, ViewOnly
 from static_gbl import descript_dict
 
 ### classes

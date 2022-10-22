@@ -192,8 +192,8 @@ Basic Refactor Steps:
 Version 3.74 Goals
 - post Burt => Creature neatening
 
-- TBD: reorg noun_class_def into base (Invis, Writing, ViewOnly, & Liquid), Item (including Food & Weapon), Room, Door and Container, Surface ??
-- TBD: Base
+- IDEA: reorg noun_class_def into base (Invis, Writing, ViewOnly, & Liquid), Item (including Food & Weapon), Room, Door and Container, Surface ??
+- DONE: Base
 	- DONE: move 'base' (Invis, Writing, ViewOnly) to dedicaated module
 		- DONE: Invis
 		- DONE: Writing
@@ -203,10 +203,10 @@ Version 3.74 Goals
 		- DONE: Writing
 		- DONE: ViewOnly
 	- DONE: clean up doc_strings for readability
-	- TBD: elim from noun_class_def using tripple-quotes
-	- TBD: update imports in mk_def_pkl, noun_class_def() & others
-		- TBD: 
-	- TBD: testing
+	- DONE: elim from noun_class_def using tripple-quotes
+	- DONE: update imports in mk_def_pkl, noun_class_def() & others 
+	- DONE: testing
+	- TBD: clean up comments
 - TBD: Room
 	- TBD: move room to dedicated module
 	- TBD: reduce Room indent to 1 tab
