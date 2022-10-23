@@ -207,22 +207,41 @@ Version 3.74 Goals
 	- DONE: update imports in mk_def_pkl, noun_class_def() & others 
 	- DONE: testing
 	- DONE: clean up comments
-- TBD: Misc (Liquid)
-	- TBD: move Liquid to dedicated module
-	- TBD: reduce Liquid indent to 1 tab
-	- TBD: clean up doc_strings for readability
+- DONE: Misc (Liquid)
+	- DONE: move Liquid to dedicated module
+	- DONE: reduce Liquid indent to 1 tab
+	- N/A: clean up doc_strings for readability
+	- DONE: elim from noun_class_def using tripple-quotes
+	- DONE: update imports in mk_def_pkl, noun_class_def() & others 
+	- DONE: testing
+	- N/A: clean up comments
 - TBD: Room
 	- TBD: move room to dedicated module
 	- TBD: reduce Room indent to 1 tab
 	- TBD: clean up doc_strings for readability
+	- TBD: elim from noun_class_def using tripple-quotes
+	- TBD: update imports in mk_def_pkl, noun_class_def() & others 
+	- TBD: testing
+	- TBD: clean up comments
 - TBD: item_class_def() [Item, Food, Weapon]
 	- TBD: move to dedicated module
 	- TBD: reduce indent to 1 tab
 	- TBD: clean up doc_strings for readability
+	- TBD: elim from noun_class_def using tripple-quotes
+	- TBD: update imports in mk_def_pkl, noun_class_def() & others 
+	- TBD: testing
+	- TBD: clean up comments
 - TBD: D&C
 	- TBD: move Doors & Containers to dedicated module
 	- TBD: reduce D&C indent to 1 tab
 	- TBD: clean up doc_strings for readability
+	- TBD: elim from noun_class_def using tripple-quotes
+	- TBD: update imports in mk_def_pkl, noun_class_def() & others 
+	- TBD: testing
+	- TBD: clean up comments
+- TBD: tune description spacing
+	- TBD: fix 'examine bottle' text
+	- TBD: text 'examine box'
 
 - INPROC: class by class, reduce from double-tab to single tab
 	- DONE: web_main.py

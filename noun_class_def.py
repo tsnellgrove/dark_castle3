@@ -8,7 +8,7 @@
 import random
 from static_gbl import descript_dict, static_dict
 from base_class_def import Invisible, Writing, ViewOnly
-
+from misc_class_def import Liquid
 
 ### local functions
 
@@ -231,18 +231,22 @@ class Room(ViewOnly):
 				self._feature_lst = feature_lst # list of descriptive obj in the room (can be examined but not interacted with)
 				self._floor_lst = floor_lst # list of obj on the floor of the room that the player can interact with
 				self._invis_lst = invis_lst # list of invisible obj in room
-				""" Rooms are where everything happens in Dark Castle. Every space Burt can occupy is a 'room' - even if he is outside. All of the game's  visible objects (except Doors) are contained within Rooms. Rooms themselves (along with Doors) reside within the room-pairs of Map.
+				""" Rooms are where everything happens in Dark Castle.
+				
+				Every space Burt can occupy is a 'room' - even if he is outside. All of the game's  visible objects (except Doors) are contained within Rooms. Rooms themselves (along with Doors) reside within the room-pairs of Map.
 				
 				Since everything Burt can interact with on a given turn (except Doors) is in the room that he's occupying, Room is the perfect place to determine object scope. All scope methods for both visible and invisble objects are in Room. Available exits are considered to be conditions of the Room and are presented when the Room is examined. The commands 'look' and 'examine room' have identical results.
 								
 				Program Architecture:
-						Rooms are a good time to pause and discuss Receptacles and Nodes. Any visible object that can hold an Item is a Receptacle (i.e. Containers, Creatures, and Surfaces). As discussed in the Container method, Receptacles are 'smart' (i.e. they know what they contain) and Items are 'dumb' (i.e. they don't know what contains them). This means that to generate a list of all visible objects in a room (e.g. via get_vis_contain_lst() ) we need to first compile a list of immediately available objects and then, if any of them are open Receptacles, we need to list all of the ojbects inside *them*. But what if one of the objects inside a Receptacle is, itself, a Receptacle? 
+						Rooms are a good time to pause and discuss Receptacles and Nodes. 
+						
+						Any visible object that can hold an Item is a Receptacle (i.e. Containers, Creatures, and Surfaces). As discussed in the Container method, Receptacles are 'smart' (i.e. they know what they contain) and Items are 'dumb' (i.e. they know nothing about the container that holds them). This means that to generate a list of all visible objects in a room (e.g. via get_vis_contain_lst() ) we need to first compile a list of immediately available objects and then, if any of them are open Receptacles, we need to list all of the ojbects inside *them*. But what if one of the objects inside a Receptacle is, itself, a Receptacle? 
 						
 						In theory, this could get deeply recursive. One obvious way to avoid this is "Just don't create very many PortableContainers in the game." But, hypoetheically, the goal is here is to create a tool set that could be used by others to build their own text adventure games... so we would like to put in place some prescriptive guard rails.
 						
-						Before we solve the problem, we need some nomenclature to describe it. The terminology I've chosen is "Node" from the study of binary trees (though in this case we have a non-binary tree). Imagine an inverted "tree" with one "node" at the top. This is the Room object, node_0. One level below Room we have nodes for all the visible objects in the Room. These are the node_1 objects. Some of the node_1 objects may be Receptacles and their contents are represented by Nodes one level further down: the node_2 objects. By default when we reference a node_1 object we are discussing 'absolute' node level where the current Room is node_0. But it is also possible to talk about 'relative' node level - for example, if Burt is in the Main Hall and holding the shiny_sword, then the shiny_sword has an absolute node level of node_2 (Room => Creature => Item) but a node level of node_1 relative to Burt (Burt => Item). You will occasionally seed node_1 or node_2 variables referenced in methods. In this case, absolute node level is being used.
+						Before we solve the problem, we need some nomenclature to describe it. The terminology I've chosen is "Node", from the study of binary trees (though in this case we have a non-binary tree). Imagine an inverted "tree" with one "node" at the top. This is the Room object, node_0. One level below Room we have nodes for all the visible objects in the Room. These are the node_1 objects. Some of the node_1 objects may be Receptacles and their contents are represented by Nodes one level further down: the node_2 objects. By default when we reference a node_1 object we are discussing 'absolute' node level where the current Room is node_0. But it is also possible to talk about 'relative' node level - for example, if Burt is in the Main Hall and holding the shiny_sword, then the shiny_sword has an absolute node level of node_2 (Room => Creature => Item) but a node level of node_1 relative to Burt (Burt => Item). You will occasionally see node_1 or node_2 variables referenced in methods. In this case, absolute node level is being used.
 						
-						So now that we have have some terminology, the key question is: "How do we want the game to work?" Whe could use recursion to allow recepticales to be indefinitely nested... but tracking items like this is cumbersome and hard to represent to the user. At the other end of the spectrum, we could disallow any Receptacle nesting - but this seems heavy-handed. The capabilities and limitations of Zork help bring the objective into focus. Early in the game when the player enters the Kitchen they find a sack containing food and a bottle of water on a table. So PortableContainers nested on a Surface seems like a reasonable expectation. PortableContainers nested in Creatures and Containers also happens within the game. But there are no takable Creatures, few, if any, takable Surfaces, and few if any instances of PortableContainers nested in other PortableContainers. Adopting these limits allows us a fun simulation - but limits node level to 3 (Room => Receptacle => PortableContainer => Item) - which is a reasonable depth to manage and represent.
+						So now that we have have some terminology, the key question is: "How do we want the game to work?" Whe could use recursion to allow recepticales to be indefinitely nested... but tracking items like this is cumbersome and hard to represent to the user. At the other end of the spectrum, we could disallow any Receptacle nesting - but this seems heavy-handed. I've taken the capabilities and limitations of Zork are a source of guidance. Early in the game, when the player enters the Kitchen, they find a sack containing food and a bottle of water on a table. So PortableContainers nested on a Surface seems like a reasonable expectation. PortableContainers nested in Creatures and Containers also happens within the game. But there are no takable Creatures, few, if any, takable Surfaces, and few if any instances of PortableContainers nested in other PortableContainers. Adopting these limits allows us a fun simulation - but limits node level to 3 (Room => Receptacle => PortableContainer => Item) - which is a reasonable depth to manage and represent.
 				"""
 
 		# *** getters & setters ***
@@ -399,9 +403,9 @@ class Item(ViewOnly):
 								3) Prevent the take() method via a Modular Machine
 				
 				Game Design:
-						Adventurers love Items. This tradition dates back to Zork I itself, where the sole mission of the game was to collect 20 (or 19, depending on who you talk to) treasures and safely store them in a trophy case. Although Dark Castle theoretically follows the Enchanter tradition of saving the land, truthfully, Burt showed up at Dark Castle to score some loot and that desire is never far from his heart. Good game design leverages this love of Items. 
+						Adventurers love Items. This tradition dates back to Zork I itself, where the sole mission of the game was to collect 20 (or 19, depending on how you count) treasures and safely store them in a trophy case. Although Dark Castle theoretically follows the Enchanter tradition of saving the land, truthfully, Burt showed up at Dark Castle to score some loot and that desire is never far from his heart. Good game design leverages this love of Items. 
 						
-						Want to intrigue and excite an Adventurer? Show them an out-of-reach item. Want to infuriate an Adventurer? Pilfer their hard won items! Want to make a puzzle hard? Require that the Adventurer surrender an Item to solve it. Dark Castle leans heavily on each of these standard Adventurer herding techniques.
+						Want to intrigue and excite an Adventurer? Show them an out-of-reach Item. Want to infuriate an Adventurer? Pilfer their hard won Items! Want to make a puzzle hard? Require that the Adventurer surrender an Item to solve it. Dark Castle leans in heavily on each of these standard Adventurer manipulation techniques.
 				"""
 
 		# *** simple object methods ***
@@ -418,10 +422,10 @@ class Item(ViewOnly):
 						I initially thought that the 'Can't take another creature's stuff' error would be a great use case for the any(if x == y for x in z) pattern. This proved to be incorrect. For one thing, the any() pattern is a one-liner - so 'x' does not exist outside that line - but I need it for the error message on the next line. Also, curiously, it turns out that Python's magic ability to have an 'if x and y' statement where 'y' can be undefined so long as 'x' is False does not work within any(). Code and learn!
 						
 						It may initially be surprising how few tests we need to conduct before performing the method. The logic works as follows:
-								1) We confirm that 'obj' in visible to Burt in validate()
+								1) We confirm that 'obj' is visible to Burt in validate()
 								2) 'obj' must either be of class Item or inherit from class Item or else the method could not run
 								3) Local error checking ensures that 'obj' is not already in Burt's hand or held / worn by another creature
-								4) Therefore, 'obj' must be a takable Item
+								4) Therefore, 'obj' must be a takable Item!
 				"""
 				creature = active_gs.hero
 				if creature.chk_in_hand(self):
@@ -764,11 +768,12 @@ class Food(Item):
 				creature.hand_lst_remove(self)
 				active_gs.buffer(f"Eaten. The {self.full_name} {descript_dict[self.eat_desc_key]}")
 
+"""
 class Liquid(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing):
 				super().__init__(name, full_name, root_name, descript_key, writing)
-				""" Liquids are ViewOnly objects. You cannot take a Liquid but you can drink() it from a Container.
-				"""
+#				" Liquids are ViewOnly objects. You cannot take a Liquid but you can drink() it from a Container.
+#				"
 
 		# *** simple obj methods ***
 		def is_liquid(self):
@@ -776,8 +781,8 @@ class Liquid(ViewOnly):
 
 		# *** complex obj methods ***
 		def drink(self, active_gs):
-				""" Consumes a liquid if it is in a Container that Burt is holding in his hand.
-				"""
+#				" Consumes a liquid if it is in a Container that Burt is holding in his hand.
+#				"
 				creature = active_gs.hero
 				if not creature.hand_is_empty():
 						hand_item = creature.get_hand_item()
@@ -794,6 +799,7 @@ class Liquid(ViewOnly):
 				except:
 						pass
 				return 
+"""
 
 class Clothes(Item):
 		def __init__(self, name, full_name, root_name, descript_key, writing, wear_descript, remove_descript, clothing_type):
