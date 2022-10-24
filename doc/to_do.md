@@ -217,8 +217,8 @@ Version 3.74 Goals
 	- N/A: clean up comments
 - INPROC: Room
 	- DONE: move room to dedicated module
-	- INPROC: reduce Room indent to 1 tab
-	- TBD: clean up doc_strings for readability
+	- DONE: reduce Room indent to 1 tab
+	- DONE: clean up doc_strings for readability
 	- TBD: elim from noun_class_def using tripple-quotes
 	- TBD: update imports in mk_def_pkl, noun_class_def() & others 
 	- TBD: testing
