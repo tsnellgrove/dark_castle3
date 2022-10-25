@@ -215,14 +215,14 @@ Version 3.74 Goals
 	- DONE: update imports in mk_def_pkl, noun_class_def() & others 
 	- DONE: testing
 	- N/A: clean up comments
-- INPROC: Room
+- DONE: Room
 	- DONE: move room to dedicated module
 	- DONE: reduce Room indent to 1 tab
 	- DONE: clean up doc_strings for readability
-	- TBD: elim from noun_class_def using tripple-quotes
-	- TBD: update imports in mk_def_pkl, noun_class_def() & others 
-	- TBD: testing
-	- TBD: clean up comments
+	- DONE: elim from noun_class_def using tripple-quotes
+	- DONE: update imports in mk_def_pkl, noun_class_def() & others 
+	- DONE: testing
+	- N/A: clean up comments
 - TBD: item_class_def() [Item, Food, Weapon]
 	- TBD: move to dedicated module
 	- TBD: reduce indent to 1 tab
@@ -239,9 +239,11 @@ Version 3.74 Goals
 	- TBD: update imports in mk_def_pkl, noun_class_def() & others 
 	- TBD: testing
 	- TBD: clean up comments
+- TBD: remove all refs to noun_class_def.py and move module to /legacy folder
 - TBD: tune description spacing
 	- TBD: fix 'examine bottle' text
 	- TBD: text 'examine box'
+- TBD: create new visible class / verb-method map showing module boundaries
 
 - INPROC: class by class, reduce from double-tab to single tab
 	- DONE: web_main.py

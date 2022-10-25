@@ -9,6 +9,7 @@ import random
 from static_gbl import descript_dict, static_dict
 from base_class_def import Invisible, Writing, ViewOnly
 from misc_class_def import Liquid
+from room_class_def import Room
 
 ### local functions
 
@@ -224,14 +225,14 @@ class ViewOnly(Writing):
 				self.disp_contain(active_gs)
 				return
 """
-
+"""
 class Room(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._feature_lst = feature_lst # list of descriptive obj in the room (can be examined but not interacted with)
 				self._floor_lst = floor_lst # list of obj on the floor of the room that the player can interact with
 				self._invis_lst = invis_lst # list of invisible obj in room
-				""" Rooms are where everything happens in Dark Castle.
+#				" Rooms are where everything happens in Dark Castle.
 				
 				Every space Burt can occupy is a 'room' - even if he is outside. All of the game's  visible objects (except Doors) are contained within Rooms. Rooms themselves (along with Doors) reside within the room-pairs of Map.
 				
@@ -247,7 +248,7 @@ class Room(ViewOnly):
 						Before we solve the problem, we need some nomenclature to describe it. The terminology I've chosen is "Node", from the study of binary trees (though in this case we have a non-binary tree). Imagine an inverted "tree" with one "node" at the top. This is the Room object, node_0. One level below Room we have nodes for all the visible objects in the Room. These are the node_1 objects. Some of the node_1 objects may be Receptacles and their contents are represented by Nodes one level further down: the node_2 objects. By default when we reference a node_1 object we are discussing 'absolute' node level where the current Room is node_0. But it is also possible to talk about 'relative' node level - for example, if Burt is in the Main Hall and holding the shiny_sword, then the shiny_sword has an absolute node level of node_2 (Room => Creature => Item) but a node level of node_1 relative to Burt (Burt => Item). You will occasionally see node_1 or node_2 variables referenced in methods. In this case, absolute node level is being used.
 						
 						So now that we have have some terminology, the key question is: "How do we want the game to work?" Whe could use recursion to allow recepticales to be indefinitely nested... but tracking items like this is cumbersome and hard to represent to the user. At the other end of the spectrum, we could disallow any Receptacle nesting - but this seems heavy-handed. I've taken the capabilities and limitations of Zork are a source of guidance. Early in the game, when the player enters the Kitchen, they find a sack containing food and a bottle of water on a table. So PortableContainers nested on a Surface seems like a reasonable expectation. PortableContainers nested in Creatures and Containers also happens within the game. But there are no takable Creatures, few, if any, takable Surfaces, and few if any instances of PortableContainers nested in other PortableContainers. Adopting these limits allows us a fun simulation - but limits node level to 3 (Room => Receptacle => PortableContainer => Item) - which is a reasonable depth to manage and represent.
-				"""
+#				"
 
 		# *** getters & setters ***
 		@property
@@ -278,8 +279,8 @@ class Room(ViewOnly):
 
 		# *** scope methods ***
 		def get_vis_contain_lst(self, active_gs):
-				""" Returns the list of visible objects contained in the method-calling object. In Room, provides the visible object scope.
-				"""
+#				" Returns the list of visible objects contained in the method-calling object. In Room, provides the visible object scope.
+#				"
 				return_lst = []
 				node1_only_lst = [self] + active_gs.map.get_door_lst(self) + self.feature_lst
 				return_lst = return_lst + node1_only_lst
@@ -289,18 +290,18 @@ class Room(ViewOnly):
 				return return_lst
 
 		def chk_wrt_is_vis(self, writing, active_gs):
-				""" Evaluates whether the passed writing is visible within the methed-calling object.
-				"""
+#				" Evaluates whether the passed writing is visible within the methed-calling object.
+#				"
 				return any(obj.writing == writing for obj in self.get_vis_contain_lst(active_gs))
 
 		def chk_is_vis(self, obj, active_gs):
-				""" Evaluates whether the passed object is visible within the methed-calling object.
-				"""
+#				" Evaluates whether the passed object is visible within the methed-calling object.
+#				"
 				return obj in self.get_vis_contain_lst(active_gs)
 
 		def chk_contain_item(self, item, active_gs):
-				""" Evaluates whether the passed object is contained within the methed-calling object.
-				"""
+#				" Evaluates whether the passed object is contained within the methed-calling object.
+#				"
 				if item in self.floor_lst:
 						return True
 				if any(obj.chk_contain_lst(item) for obj in self.floor_lst):
@@ -308,8 +309,8 @@ class Room(ViewOnly):
 				return False
 
 		def get_mach_lst(self, active_gs):
-				""" Returns the list of Machine objects contained in the method-calling object. In Room, provides the Machine object scope.
-				"""
+#				" Returns the list of Machine objects contained in the method-calling object. In Room, provides the Machine object scope.
+#				"
 				mach_lst = []
 				scope_lst = self.get_vis_contain_lst(active_gs) + self.invis_lst
 				for obj in scope_lst:
@@ -323,8 +324,8 @@ class Room(ViewOnly):
 
 		# *** complex object methods ***
 		def remove_item(self, item, active_gs):
-				""" Removes the passed object from the methed-calling object. In Room, is used to enable the take() method.
-				"""
+#				" Removes the passed object from the methed-calling object. In Room, is used to enable the take() method.
+#				"
 				if item in self.floor_lst:
 						self.floor_lst_remove(item)
 						return 
@@ -336,13 +337,13 @@ class Room(ViewOnly):
 				return 
 
 		def disp_cond(self, active_gs):
-				""" Displays object-specific conditions. Used in examine().
-				"""
+#				" Displays object-specific conditions. Used in examine().
+#				"
 				active_gs.buffer(active_gs.map.get_door_str(self))
 
 		def disp_contain(self, active_gs):
-				""" Displays a description of the visible items held by the obj. Used in examine().
-				"""
+#				" Displays a description of the visible items held by the obj. Used in examine().
+#				"
 				room_item_lst = []
 				for obj in self.floor_lst:
 						if obj == active_gs.hero:
@@ -366,8 +367,8 @@ class Room(ViewOnly):
 				return 
 
 		def go(self, dir, active_gs, creature = None):
-				""" Moves a Creature from one room to another
-				"""
+#				" Moves a Creature from one room to another
+#				"
 				if creature is None:
 						creature = active_gs.hero
 
@@ -389,7 +390,7 @@ class Room(ViewOnly):
 				if self == active_gs.get_room():
 						active_gs.buffer(f"The {creature.full_name} goes {dir}")
 				return 
-
+"""
 
 class Item(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing):
@@ -454,7 +455,9 @@ class Door(ViewOnly):
 				self._is_open = is_open # True if the door is open, False if the door is closed, None if there is no door (useful for Container)
 				self._is_unlocked = is_unlocked # True if the door is unlocked, False if the door is locked, None if there is no lock
 				self._key = key # the key obj required to unlock the door; None means the door is not locked by a key
-				""" Doors allow access to rooms and objects. They can be openned, closed, locked, or unlocked. Locked doors require the correct key to open. Finding a way to open a door is one of the most basic puzzle elements in the game.
+				""" Doors allow access to rooms and objects. They can be openned, closed, locked, or unlocked. Unlocking a door requires the correct key. 
+				
+				Finding a way to open a door is one of the most basic puzzle elements in the game.
 				
 				Historic Note:
 						In v1 and v2 of Dark Castle, doors could be unlocked and opened but not closed or locked. The problem wasn't actually room doors - it would have been easy to code them to close and lock - the real problem was containers, which were based on the same code base as doors (as is still the case in v3). Containers were the last and most complicated thing I coded in v1 (v2 just being the web version of v1). I was running into the limits of writing the program in procedural code and by this time I knew I was going to do a full re-write in OOP. So faced with the prospect of writing a 'put' verb and more complicated room inventory management, I totally dialed it in. Containers in v1 / v2 simply dumped their contents into the room inventory the moment you managed to open them. But of course that meant you couldn't close the container - because the the objects 'in' the container would still be in the room... hence the lack of 'close' and 'lock'. From a gameplay and puzzle point of view, this was never a problem. But the asymetry always annoyed me - I pictured Nana calling out to Burt across the years "For goodness sake Burtie, close the door behind you!" Properly working Containers and Doors were one of my first goals for v3.

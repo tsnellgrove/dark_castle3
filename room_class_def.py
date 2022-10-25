@@ -93,7 +93,7 @@ class Room(ViewOnly):
 				for invis_obj in obj.invis_lst:
 					if invis_obj.is_mach():
 						mach_lst.append(invis_obj)
-			return mach_lst
+		return mach_lst
 
 	# *** complex object methods ***
 	def remove_item(self, item, active_gs):
