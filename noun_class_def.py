@@ -10,6 +10,7 @@ from static_gbl import descript_dict, static_dict
 from base_class_def import Invisible, Writing, ViewOnly
 from misc_class_def import Liquid
 from room_class_def import Room
+from item_class_def import Item, Food, Clothes, Weapon
 
 ### local functions
 
@@ -392,10 +393,11 @@ class Room(ViewOnly):
 				return 
 """
 
+"""
 class Item(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing):
 				super().__init__(name, full_name, root_name, descript_key, writing)
-				""" Items can be 'taken' and 'dropped'. Item inherits from ViewOnly and has no new attributes - just new methods: take() and drop(). 
+#				" Items can be 'taken' and 'dropped'. Item inherits from ViewOnly and has no new attributes - just new methods: take() and drop(). 
 				
 				Implementation Details:
 						All objects of class Item are takable - there's no 'is_takable' attribute to prevent this. To temporarily prevent an Item from being taken you could:
@@ -407,7 +409,7 @@ class Item(ViewOnly):
 						Adventurers love Items. This tradition dates back to Zork I itself, where the sole mission of the game was to collect 20 (or 19, depending on how you count) treasures and safely store them in a trophy case. Although Dark Castle theoretically follows the Enchanter tradition of saving the land, truthfully, Burt showed up at Dark Castle to score some loot and that desire is never far from his heart. Good game design leverages this love of Items. 
 						
 						Want to intrigue and excite an Adventurer? Show them an out-of-reach Item. Want to infuriate an Adventurer? Pilfer their hard won Items! Want to make a puzzle hard? Require that the Adventurer surrender an Item to solve it. Dark Castle leans in heavily on each of these standard Adventurer manipulation techniques.
-				"""
+#				"
 
 		# *** simple object methods ***
 		def is_item(self):
@@ -415,7 +417,7 @@ class Item(ViewOnly):
 
 		# *** complex object methods ***
 		def take(self, active_gs):
-				""" Takes an object from either the room or from Burt's inventory and places it into Burt's hand
+#				" Takes an object from either the room or from Burt's inventory and places it into Burt's hand
 				
 				Implementation Detail:
 						take() used to be a more complex method. Adding the object into Burt's hand is trivial but finding where to remove it from takes some serching. I initially did all that searching in take(). During refactoring it became clear that it made sense to do this in Room instead since the Room class is already responsible for providing visible object scope and therefore is already required to know all the places an object could be.
@@ -427,7 +429,7 @@ class Item(ViewOnly):
 								2) 'obj' must either be of class Item or inherit from class Item or else the method could not run
 								3) Local error checking ensures that 'obj' is not already in Burt's hand or held / worn by another creature
 								4) Therefore, 'obj' must be a takable Item!
-				"""
+#				"
 				creature = active_gs.hero
 				if creature.chk_in_hand(self):
 						active_gs.buffer("You're already holding the " + self.full_name)
@@ -442,12 +444,13 @@ class Item(ViewOnly):
 				return
 
 		def drop(self, active_gs):
-				""" Drops an object from Burt's hand to the floor of the room.
-				"""
+#				" Drops an object from Burt's hand to the floor of the room.
+#				"
 				creature = active_gs.hero
 				creature.hand_lst_remove(self)
 				active_gs.get_room().floor_lst_append(self)
 				active_gs.buffer("Dropped")
+"""
 
 class Door(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key):
@@ -757,6 +760,7 @@ class PortableLiquidContainer(PortableContainer):
 	def chk_content_prohibited(self, obj):
 		return super(PortableLiquidContainer, self).chk_content_prohibited(obj) or not obj.is_liquid()
 
+"""
 class Food(Item):
 		def __init__(self, name, full_name, root_name, descript_key, writing, eat_desc_key):
 				super().__init__(name, full_name, root_name, descript_key, writing)
@@ -770,6 +774,7 @@ class Food(Item):
 				creature = active_gs.hero
 				creature.hand_lst_remove(self)
 				active_gs.buffer(f"Eaten. The {self.full_name} {descript_dict[self.eat_desc_key]}")
+"""
 
 """
 class Liquid(ViewOnly):
@@ -804,6 +809,7 @@ class Liquid(ViewOnly):
 				return 
 """
 
+"""
 class Clothes(Item):
 		def __init__(self, name, full_name, root_name, descript_key, writing, wear_descript, remove_descript, clothing_type):
 				super().__init__(name, full_name, root_name, descript_key, writing)
@@ -860,3 +866,4 @@ class Weapon(Item):
 
 		def is_weapon(self):
 				return True
+"""

@@ -223,15 +223,15 @@ Version 3.74 Goals
 	- DONE: update imports in mk_def_pkl, noun_class_def() & others 
 	- DONE: testing
 	- N/A: clean up comments
-- INPROC: item_class_def() [Item, Food, Clothes, Weapon]
+- DONE: item_class_def() [Item, Food, Clothes, Weapon]
 	- DONE: move to dedicated module
 	- DONE: reduce indent to 1 tab
 	- DONE: clean up doc_strings for readability
-	- TBD: elim from noun_class_def using tripple-quotes
-	- TBD: update imports in mk_def_pkl, noun_class_def() & others 
-	- TBD: testing
-	- TBD: clean up comments
-- TBD: D&C
+	- DONE: elim from noun_class_def using tripple-quotes
+	- DONE: update imports in mk_def_pkl, noun_class_def(), mach_class_def()
+	- DONE: testing
+	- N/A: clean up comments
+- TBD: D&C (door_class_def.py = Door, Container, PortableContainer, and PortableLiquidContainer
 	- TBD: move Doors & Containers to dedicated module
 	- TBD: reduce D&C indent to 1 tab
 	- TBD: clean up doc_strings for readability
@@ -240,10 +240,12 @@ Version 3.74 Goals
 	- TBD: testing
 	- TBD: clean up comments
 - TBD: remove all refs to noun_class_def.py and move module to /legacy folder
+- TBD: create new visible class / verb-method map showing module boundaries
+- TBD: create a centralized doc file
 - TBD: tune description spacing
 	- TBD: fix 'examine bottle' text
 	- TBD: text 'examine box'
-- TBD: create new visible class / verb-method map showing module boundaries
+
 
 - INPROC: class by class, reduce from double-tab to single tab
 	- DONE: web_main.py
@@ -260,7 +262,6 @@ Version 3.74 Goals
 Version 3.75 Goals
 - finish noun refactor
 - post Burt => Creature neatening
-- create a class for descriptions
 - create a Surface class
 
 - TBD: refactor Clothes => Garment
@@ -315,8 +316,9 @@ Version 3.75 Goals
 ##########################
 
 Version 3.76 Goals
-- TBD: rename active_gs to gs
+- rename active_gs to gs
 - modularize remaining GameState class and declarations (???)
+- create a class for descriptions
 
 - TBD: rename active_gs => gs
 - TBD: perhaps Map, Score, and Descript are classes w/ static dicts in mehod / class and actual obj in gs attributes
@@ -367,6 +369,7 @@ Version 3.76 Goals
 - TBD: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
 - TBD: end() => gamestate ???
 - does creature_state really have any value? Maybe build hedgehog state machine before pulling the plug on this one
+
 
 ##########################
 ### VERSION 3.77 START ###
@@ -419,20 +422,20 @@ Version 3.77 Goals
 ##########################
 
 Version 3.78 Goals
+- refactor remaining app_main chain: interp, pre_action, cmd_exe, post_action, auto_action, score (??), end (?)
+
+
+##########################
+### VERSION 3.79 START ###
+##########################
+
+Version 3.79 Goals
 - enable all verb methods for non-burt creatures
 
 - TBD: enable non-burt creature use of all verb methods 
 - TBD: how should creature be passed to Conditions & Results?
 - TBD: how to deal with error messages for non-burt creatures (e.g. test_frog walks into door)
 - IDEA: alternatives for how to to auto-move non-burt creatures: dir_lst, room_lst, room_dir_dict
-
-
-##########################
-### VERSION 3.80 START ###
-##########################
-
-Version 3.890 Goals
-- refactor remaining app_main chain: interp, pre_action, cmd_exe, post_action, auto_action, score (??), end (?)
 
 
 ##########################

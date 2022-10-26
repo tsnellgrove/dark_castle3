@@ -207,7 +207,8 @@ class Creature(ViewOnly):
 				return 
 
 		def show(self, obj, active_gs):
-				""" Show item to creature.
+				""" Shows an item to a creature.
+				
 				'Show' is meant to be informational in nature. The Player will learn something about the creature - what it desires and fears - based on its response to the item shown. Therefore the show() method provides only a text response. Provoking an action response (e.g. running away) is outside the standard use case and should be implemented via a Modular Machine.
 				
 				Historic Note:
@@ -215,7 +216,7 @@ class Creature(ViewOnly):
 				
 				Implementation specifics:
 						1) When creating a new creature, remember to create the show() response descriptions in descript_dict() using the auto-genertated key format.
-						2) Creaatures other than burt are not allowed to have containers or creatures in their inventory
+						2) Creaatures are not allowed to have Creatures or Surfaces in their inventory
 				"""
 ##				if (obj.is_container()) or (obj.is_creature()): # previous node_lvl limitation
 				if obj.is_creature():
@@ -230,7 +231,7 @@ class Creature(ViewOnly):
 								active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 
 		def give(self, obj, active_gs):
-				""" Give item to creature.
+				""" Gives an item to a creature.
 				
 				'Give' is meant to enable barter and trade. If the Player gives an item to a creature - particularly if that creature has shown interest in the item via show() - then the player can reasonably hope for some other useful item in return. Therefore the give() method enables a text response, determines whether the creature will accept the gift, and what, if anything, it will give Burt in return. Because give() can fulfill a creature's needs it also has the power to change the creature's mood and therefore update their description.
 				
@@ -464,3 +465,9 @@ class Creature(ViewOnly):
 				attack_res_str = attack_start_str + descript_dict[res_key]
 				active_gs.buffer(attack_res_str)
 				return 
+
+"""
+- The 'Attack' method is a bit more complex and is intended to enable combat between Burt and creatures. The intent in Dark Castle is for combat to be a purely logical exercise... so if you attack a Creature with the correct weapon you will always win. Burt's "weapon" is whatever he is holding in his hand. If Burt's hand is empty he attacks with his Fist. For a given Creature and burt_weapon, attack() generates a result_code - which has options like 'creature_flee', 'creature_death', and 'burt_death' - and a response_key - which is the descript_dict[] key to the attack's description. As, with the other Creature methods, it's easy to imagine attack() provoking a more complex response than these outcomes - but those are outside the scope of the method and should be implemented via a Modular Machine.
+
+- 'attack_burt' is an awkward 'hidden' verb that enables a creature to proactively attack Burt. Among other things, this work-around highlights that Burt should really be an object himself - rather than an amorphous set of attributes distributed across game state. But this will not be a minor undertaking - so for now, we have the attack_burt() method - which enables 'attack' to remain a 2word command without requiring a 'burt' object to exist. Code-wise, 'attack_burt' is identical to 'attack' with some minor text differences ("You charge..." vs. "You attempt to parry..."). In general, the idea is that when Burt is being attacked he is on the defensive and likely needs the right weapon just to parry.
+"""
