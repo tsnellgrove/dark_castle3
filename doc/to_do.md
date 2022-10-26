@@ -231,10 +231,10 @@ Version 3.74 Goals
 	- DONE: update imports in mk_def_pkl, noun_class_def(), mach_class_def()
 	- DONE: testing
 	- N/A: clean up comments
-- TBD: D&C (door_class_def.py = Door, Container, PortableContainer, and PortableLiquidContainer
-	- TBD: move Doors & Containers to dedicated module
-	- TBD: reduce D&C indent to 1 tab
-	- TBD: clean up doc_strings for readability
+- INPROC: D&C (door_class_def.py = Door, Container, PortableContainer, and PortableLiquidContainer
+	- DONE: move Doors & Containers to dedicated module
+	- DONE: reduce D&C indent to 1 tab
+	- DONE: clean up doc_strings for readability
 	- TBD: elim from noun_class_def using tripple-quotes
 	- TBD: update imports in mk_def_pkl, noun_class_def() & others 
 	- TBD: testing
