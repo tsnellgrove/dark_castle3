@@ -7,6 +7,7 @@
 ### import
 from static_gbl import descript_dict, static_dict
 from base_class_def import ViewOnly
+from item_class_def import Item
 
 
 ### local functions

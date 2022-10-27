@@ -11,6 +11,7 @@ from base_class_def import Invisible, Writing, ViewOnly
 from misc_class_def import Liquid
 from room_class_def import Room
 from item_class_def import Item, Food, Clothes, Weapon
+from door_class_def import Door, Container, PortableContainer, PortableLiquidContainer
 
 ### local functions
 
@@ -452,13 +453,14 @@ class Item(ViewOnly):
 				active_gs.buffer("Dropped")
 """
 
+"""
 class Door(ViewOnly):
 		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key):
 				super().__init__(name, full_name, root_name, descript_key, writing)
 				self._is_open = is_open # True if the door is open, False if the door is closed, None if there is no door (useful for Container)
 				self._is_unlocked = is_unlocked # True if the door is unlocked, False if the door is locked, None if there is no lock
 				self._key = key # the key obj required to unlock the door; None means the door is not locked by a key
-				""" Doors allow access to rooms and objects. They can be openned, closed, locked, or unlocked. Unlocking a door requires the correct key. 
+#				" Doors allow access to rooms and objects. They can be openned, closed, locked, or unlocked. Unlocking a door requires the correct key. 
 				
 				Finding a way to open a door is one of the most basic puzzle elements in the game.
 				
@@ -482,7 +484,7 @@ class Door(ViewOnly):
 						
 						A final note on evaluating the difference between None and False:
 								'if var:' is the same as 'if bool(var):', and 'bool(None)' evalutates to False. This means that there's a subtle risk of our conditional interpreting 'is_open == None' as 'is_open == False'. For clarity, we always test for the 'is None' cases first. And we always test for 'if var == False:' (as opposed to 'if not var:')							
-				"""
+#				"
 
 		# *** getters & setters ***
 		@property
@@ -515,8 +517,8 @@ class Door(ViewOnly):
 
 		# *** complex obj methods ***
 		def disp_cond(self, active_gs):
-				""" Displays object-specific conditions. Used in examine().
-				"""
+#				" Displays object-specific conditions. Used in examine().
+#				"
 				if self.is_open is None:
 						active_gs.buffer(f"The {self.full_name} has no closure. It always remains open.")
 						return				
@@ -527,8 +529,8 @@ class Door(ViewOnly):
 				return 
 
 		def unlock(self, active_gs):
-				""" Unlocks a Door object.
-				"""
+#				" Unlocks a Door object.
+#				"
 				creature = active_gs.hero
 				if self.is_open is None:
 						active_gs.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
@@ -555,8 +557,8 @@ class Door(ViewOnly):
 				self.is_unlocked = True
 
 		def open(self, active_gs):
-				""" Opens a Door object.
-				"""
+#				" Opens a Door object.
+#				"
 				if self.is_open is None:
 						active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 						return 
@@ -570,8 +572,8 @@ class Door(ViewOnly):
 				active_gs.buffer("Openned") # is_open == False, is_unlocked == True
 
 		def close(self, active_gs):
-				""" Closes a Door object.
-				"""
+#				" Closes a Door object.
+#				"
 				if self.is_open is None:
 						active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 						return 
@@ -585,8 +587,8 @@ class Door(ViewOnly):
 				active_gs.buffer("Closed") # is_open == True, is_unlocked == True
 
 		def lock(self, active_gs):
-				""" Locks a Door object.
-				"""
+#				" Locks a Door object.
+#				"
 				creature = active_gs.hero
 				if self.is_open is None:
 						active_gs.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
@@ -616,7 +618,7 @@ class Container(Door):
 		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
 				super().__init__(name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key)
 				self._contain_lst = contain_lst # list of objects in the container
-				""" Containers hold items. Like Door (from which Container inherits), they are ViewOnly and, as a class, can be opened, closed, locked, and unlocked. Also like doors, containers are fundamental puzzle elements. Doors are obstacles to entering rooms. Containers are obstacles to getting items.
+#				" Containers hold items. Like Door (from which Container inherits), they are ViewOnly and, as a class, can be opened, closed, locked, and unlocked. Also like doors, containers are fundamental puzzle elements. Doors are obstacles to entering rooms. Containers are obstacles to getting items.
 				
 				Program Architecture:
 						In Dark Castle v1/2, containers were just a coding slight of hand. So when I finally coded them for real, I needed to decide in what way a container and its contents were aware of each other. Presumably the crystal_box knew it contained the kinging_scroll... but did the kinging_scroll 'know' it was in the crystal_box? 
@@ -626,7 +628,7 @@ class Container(Door):
 								2) An object should know about the objects contained directly within it.
 						
 						From these axioms it becomes clear that containers should know what they contain but items are location 'ignorant': the kinging_scroll has no idea that it's in the crystal_box... or if it gets moved to Burt's hand or to the floor of the throne_room. Along with meeting our 'data in only one place' constraint, this approach also has the benefit of keeping most objeccts simple. There's no need to assign and update an extra 'location' attribute for every object. The down side is that container-type entities (i.e. Containers, Creatures, Rooms) become more complicated - and we end up frequently searching them for their contents. This hierarchal approach to containers is fundamental has been applied to all aspects of the game (e.g. rooms know about the objects within them but know nothing about other rooms outside of them).
-				"""
+#				"
 
 		# *** getters & setters ***
 		@property
@@ -665,8 +667,8 @@ class Container(Door):
 
 		# *** complex obj methods ***
 		def get_vis_contain_lst(self, active_gs):
-				""" Returns the list of visible objects contained in the referenced ('self') object
-				"""
+#				" Returns the list of visible objects contained in the referenced ('self') object
+#				"
 				if self.is_not_closed():
 						node2_lst = []
 						[node2_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in self.contain_lst]
@@ -674,8 +676,8 @@ class Container(Door):
 				return []
 
 		def disp_contain(self, active_gs):
-				""" Displays a description of the visible items held by the obj. Used in examine().
-				"""
+#				" Displays a description of the visible items held by the obj. Used in examine().
+#				"
 				if self.is_not_closed() and not self.is_empty():
 						contain_txt_lst = [obj.full_name for obj in self.contain_lst]
 						contain_str = ", ".join(contain_txt_lst)
@@ -687,16 +689,16 @@ class Container(Door):
 
 		def disp_cond(self, active_gs):
 				super(Container, self).disp_cond(active_gs)
-				""" Displays object-specific conditions. Used in examine().
-				"""
+#				" Displays object-specific conditions. Used in examine().
+#				"
 				if self.is_empty() and self.is_not_closed():
 						active_gs.buffer(f"The {self.full_name} is empty.")
 				return 
 
 		def open(self, active_gs):
 				super(Container, self).open(active_gs)
-				""" Extends Door.open(). Upon opening a container, the player's natural question is "What's in it?". Open for containers answers this question whenever a container is opened. If the container is empty that information is displayed as well.
-				"""
+#				" Extends Door.open(). Upon opening a container, the player's natural question is "What's in it?". Open for containers answers this question whenever a container is opened. If the container is empty that information is displayed as well.
+#				"
 				if self.is_empty():
 						active_gs.buffer(f"The {self.full_name} is empty.")
 				active_gs.buff_cr()
@@ -704,7 +706,7 @@ class Container(Door):
 				active_gs.buff_cr()
 
 		def put(self, obj, active_gs):
-				""" Puts an Item in a Container.
+#				" Puts an Item in a Container.
 				
 				Implementation Details:
 						Container.chk_content_prohibited() is used to limit what can be put in a container and is extended further by PortableContainer and PortableLiquidContainer. For details on why Containers can't hold Surfaces or Creatures and why PortableContainers can't hold PortableContainers, please see the doc_string on node hierarchy under the Room class.
@@ -723,7 +725,7 @@ class Container(Door):
 				
 				Historic Note:
 						put() was the very first preposition-based command in DCv3. After ages of two-word commands it very exciting to be able to type 'put the rusty key in the crystal box' and have a working result!
-				"""
+#				"
 				creature = active_gs.hero
 				if self.is_open == False:
 						active_gs.buffer(f"The {self.full_name} is closed.")
@@ -738,8 +740,8 @@ class Container(Door):
 class PortableContainer(Container, Item):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
 		Container.__init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
-		"""A container that can be taken.
-		"""
+#		"A container that can be taken.
+#		"
 
 	# *** simple object methods ***
 	def is_item(self):
@@ -754,11 +756,12 @@ class PortableContainer(Container, Item):
 class PortableLiquidContainer(PortableContainer):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
 		super().__init__(name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
-		"""A container that holds liquids and can be taken.
-		"""
+#		"A container that holds liquids and can be taken.
+#		"
 
 	def chk_content_prohibited(self, obj):
 		return super(PortableLiquidContainer, self).chk_content_prohibited(obj) or not obj.is_liquid()
+"""
 
 """
 class Food(Item):

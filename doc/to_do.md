@@ -235,10 +235,10 @@ Version 3.74 Goals
 	- DONE: move Doors & Containers to dedicated module
 	- DONE: reduce D&C indent to 1 tab
 	- DONE: clean up doc_strings for readability
-	- TBD: elim from noun_class_def using tripple-quotes
-	- TBD: update imports in mk_def_pkl, noun_class_def() & others 
-	- TBD: testing
-	- TBD: clean up comments
+	- DONE: elim from noun_class_def using tripple-quotes
+	- DONE: update imports in mk_def_pkl, noun_class_def() & others 
+	- DONE: testing
+	- DONE: clean up comments
 - TBD: remove all refs to noun_class_def.py and move module to /legacy folder
 - TBD: create new visible class / verb-method map showing module boundaries
 - TBD: create a centralized doc file
