@@ -239,8 +239,8 @@ Version 3.74 Goals
 	- DONE: update imports in mk_def_pkl, noun_class_def() & others 
 	- DONE: testing
 	- DONE: clean up comments
-- TBD: remove all refs to noun_class_def.py and move module to /legacy folder
-- TBD: create new visible class / verb-method map showing module boundaries
+- DONE: remove all refs to noun_class_def.py and move module to /legacy folder
+- DONE: create new visible class / verb-method map showing module boundaries
 - TBD: create a centralized doc file
 - TBD: tune description spacing
 	- TBD: fix 'examine bottle' text
