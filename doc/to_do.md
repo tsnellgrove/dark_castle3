@@ -139,29 +139,6 @@ Learning Links:
 - TBD: https://youtu.be/KTIl1MugsSY (refactor starts about 7 min in)
 
 
-Burt as an object
-- why?
-	- allows elimination of attack_burt() method of Creature class
-	- suddenly inventory becomes much more elegant
-	- this is the way
-- when?
-	- Maybe make Burt an object before making all the machine changes??
-	- this is a big refactor => do this first
-- how?
-	- Burt to be obj type Creature
-
-
-- N/A: Old thinking
-	- today: interp() =(if no interp_error)=> pre_action() => cmd_exe() => post_action()
-		- this works if there is an interp() error or if the command is successful... but what if there is a cmd_error ???
-		- as a work-around, I end up re-testing command validity in pre_action() / post_action() - or accepting buggy code (eat_biscuits_warning)
-	- to-be: interp() =(if no interp_error)=> cmd_error_check =(if no cmd_error)=> pre_action() => cmd_exe() => post_action()
-		- so in noun_class, every verb method needs to return cmd_error (boolean) and be able to run in 2 'modes': 'ec_mode' or 'exe_mode'
-		- cmd_error_check() runs the method in ec_mode and returns cmd_error
-		- if not cmd_error: cmd_exe() runs method in exe_mode
-		- can likely shortcut for non '2word' and 'prep' cases
-		- one side effect: every method needs to either throw text on error or do something on success... we cannot take an action on failure (?) 
-
 Basic Refactor Steps:
 	- refactor pass - basics
 		- shorten variable names
@@ -231,7 +208,7 @@ Version 3.74 Goals
 	- DONE: update imports in mk_def_pkl, noun_class_def(), mach_class_def()
 	- DONE: testing
 	- N/A: clean up comments
-- INPROC: D&C (door_class_def.py = Door, Container, PortableContainer, and PortableLiquidContainer
+- DONE: D&C (door_class_def.py = Door, Container, PortableContainer, and PortableLiquidContainer
 	- DONE: move Doors & Containers to dedicated module
 	- DONE: reduce D&C indent to 1 tab
 	- DONE: clean up doc_strings for readability
@@ -241,7 +218,6 @@ Version 3.74 Goals
 	- DONE: clean up comments
 - DONE: remove all refs to noun_class_def.py and move module to /legacy folder
 - DONE: create new visible class / verb-method map showing module boundaries
-- TBD: create a centralized doc file
 - TBD: tune description spacing
 	- TBD: fix 'examine bottle' text
 	- TBD: text 'examine box'
@@ -309,6 +285,7 @@ Version 3.75 Goals
 	- for most verbs, sit scope = self (i.e. creature_scope)
 	- for examine (?), sit scope = room_scope
 - make backpack a true container???
+- TBD: create a centralized doc file
 
 
 ##########################
@@ -394,6 +371,7 @@ Version 3.77 Goals
 		- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
 		- if fail validate() , buffer error and end app_main()
 
+- TBD: interpreter - should all nouns be singular? Can 'a' vs. 'an' be fixed?
 - TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
 - TBD: pass 'mode' into verb methods
 - TBD: 'mode' = 'validate' or 'exe_std'
