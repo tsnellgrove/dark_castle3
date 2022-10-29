@@ -218,9 +218,18 @@ Version 3.74 Goals
 	- DONE: clean up comments
 - DONE: remove all refs to noun_class_def.py and move module to /legacy folder
 - DONE: create new visible class / verb-method map showing module boundaries
-- TBD: tune description spacing
+- INPROC: tune description spacing
 	- TBD: fix 'examine bottle' text
 	- TBD: text 'examine box'
+	- IDEA: today, upon examine, Door / Container conditions, writing, and contents are spread across multiple lines.
+	- IDEA: combine to one line?
+	- IDEA: If so, should Writing be last (rather than first)?
+	- IDEA: Proposal = each object (other than burt), upon examination, should have:
+		- one line for Title (rooms only) 
+		- one line for Description
+		- one line for Condition, Contents, and Writing (in that order)
+		- one line for user input 
+		- with one open line between each line of text
 
 
 - INPROC: class by class, reduce from double-tab to single tab
