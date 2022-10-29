@@ -112,7 +112,9 @@ class Room(ViewOnly):
 	def disp_cond(self, active_gs):
 		""" Displays object-specific conditions. Used in examine().
 		"""
-		active_gs.buffer(active_gs.map.get_door_str(self))
+#		active_gs.buffer(active_gs.map.get_door_str(self))
+		active_gs.buff_no_cr(active_gs.map.get_door_str(self))
+		active_gs.buff_cr()
 
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
@@ -136,7 +138,7 @@ class Room(ViewOnly):
 			active_gs.buff_no_cr(f"The following items are here: {room_item_str}. ")
 			for obj in room_item_lst:
 				obj.disp_contain(active_gs)
-				active_gs.buff_cr()
+#				active_gs.buff_cr()
 		return
 
 	def go(self, dir, active_gs, creature = None):

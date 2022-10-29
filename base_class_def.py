@@ -161,10 +161,15 @@ class ViewOnly(Writing):
 		if self.get_title_str() is not None:
 			active_gs.buffer(self.get_title_str())
 		active_gs.buffer(self.get_descript_str(active_gs))
-		if self.has_writing():
-			active_gs.buffer(f"On the {self.full_name} you see: {self.writing.full_name}")
+		active_gs.buff_cr()
+#		if self.has_writing():
+#			active_gs.buffer(f"On the {self.full_name} you see: {self.writing.full_name}")
 		self.disp_cond(active_gs)
 		self.disp_contain(active_gs)
+		if self.has_writing():
+#			active_gs.buffer(f"On the {self.full_name} you see: {self.writing.full_name}")
+			active_gs.buff_no_cr(f"On the {self.full_name} you see: {self.writing.full_name}. ")
+		active_gs.buff_cr()
 		return
 
 
