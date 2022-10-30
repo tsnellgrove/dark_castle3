@@ -83,7 +83,8 @@ def root_word_count(active_gs, word2_txt):
 				if obj.root_name == word2_txt:
 						root_count += 1
 						obj_name = obj.name
-				if obj.has_writing():
+#				if obj.has_writing():
+				if obj.chk_writing():
 						if obj.writing.root_name == word2_txt:
 								root_count += 1
 								obj_name = obj.writing.name

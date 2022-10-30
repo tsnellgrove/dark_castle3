@@ -230,7 +230,24 @@ Version 3.74 Goals
 		- one line for Condition, Contents, and Writing (in that order)
 		- one line for user input 
 		- with one open line between each line of text
-
+	- DONE: standardize examine() of Writing via disp_writing()
+	- TBD: in ViewOnly, create chk_writing()
+		- DONE: has_writing() => chk_writing()
+			- DONE: interp()
+			- DONE: base_class_def()
+	- DONE: in ViewOnly, create chk_cond()
+		- DONE: ViewOnly (False)
+		- DONE: Door (True)
+		- DONE: Room (True)
+		- DONE: LeverSwitch (True)
+	- TBD: in ViewOnly, create chk_contain(active_gs)
+		- TBD: ViewOnley (False)
+		- TBD: Container (variable based on contain_lst)
+		- TBD: Room (variable based on floor_lst)
+		- TBD: Creature (variable based on lists and if burt)
+	- TBD: in examine(), test for if self.chk_writing() or self.chk_cond() or self.chk_contain: buff_cr, <disp>, buff_cr
+	- TBD: tune disp methods for Room, Creature, burt, etc
+	- TBD: testing
 
 - INPROC: class by class, reduce from double-tab to single tab
 	- DONE: web_main.py
@@ -269,6 +286,7 @@ Version 3.75 Goals
 - TBD: refactor Weapon
 - TBD: refactor Switch
 - TBD: refactor Creature / attack() => 'attack x with y'
+	- TBD: Creature conditions to examine??
 	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
 	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
 	- TBD: re-org to identify 'attacker' and 'winner' 

@@ -52,6 +52,9 @@ class Door(ViewOnly):
 	def is_not_closed(self):
 		return self.is_open is not False
 
+	def chk_cond(self):
+		return True
+
 	# *** complex obj methods ***
 	def disp_cond(self, active_gs):
 		""" Displays object-specific conditions. Used in examine().
