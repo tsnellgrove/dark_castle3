@@ -657,6 +657,9 @@ Version 6.x Goals
 *** NEW PUZZLE IDEAS ***
 
 Misc:
+- it would be cool to have an invisibility cloak / spell (probably need to keep it short term / contained)
+- Dragon is bored because it has read every book in the library - need to find a new book to interest it
+- Ferret is named Bartleby
 - Note: active_gs.hero enables player to take on different characters in the game (e.g. Burt could become a mouse)
 - non-humanoid monster could be a special weapon description case (fun new puzzle idea)
 - princess 'poise' & 'moxie'
