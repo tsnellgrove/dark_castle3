@@ -251,7 +251,8 @@ Version 3.74 Goals
 		- DONE: has_cond()
 	- DONE: in examine(), test for if self.has_writing() or self.has_cond() or self.has_contain: buff_cr, <disp>, buff_cr
 	- INPROC: testing
-		- TBD: solve 'i' (examine burt)
+		- DONE: solve 'i' (examine burt)
+		- TBD: solve examine creatures
 		- TBD: full test
 	- TBD: clean up comments
 
