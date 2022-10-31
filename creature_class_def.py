@@ -143,9 +143,10 @@ class Creature(ViewOnly):
 
 		def has_contain(self, active_gs):
 				if self == active_gs.hero:
-						contain_lst = self.hand_lst + self.bkpk_lst + self.worn_lst
-				contain_lst = self.hand_lst + self.worn_lst
-				return bool(self.contain_lst)
+						creature_lst = self.hand_lst + self.bkpk_lst + self.worn_lst
+				creature_lst = self.hand_lst + self.worn_lst
+				print(creature_lst)
+				return bool(creature_lst)
 
 		def chk_contain_item(self, item):
 				return item in self.hand_lst + self.bkpk_lst + self.worn_lst

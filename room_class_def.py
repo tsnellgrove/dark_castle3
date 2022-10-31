@@ -55,7 +55,10 @@ class Room(ViewOnly):
 		return True
 
 	def has_contain(self, active_gs):
-		return bool(self.floor_lst)
+#		contain_lst = self.floor_lst
+#		contain_lst.remove(active_gs.hero)
+#		return bool(contain_lst)
+		return len(self.floor_lst) > 1
 
 	# *** scope methods ***
 	def get_vis_contain_lst(self, active_gs):
@@ -121,7 +124,8 @@ class Room(ViewOnly):
 		"""
 #		active_gs.buffer(active_gs.map.get_door_str(self))
 		active_gs.buff_no_cr(active_gs.map.get_door_str(self))
-		active_gs.buff_cr()
+		if self.has_contain(active_gs) or self.has_writing():
+			active_gs.buff_cr()
 
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().

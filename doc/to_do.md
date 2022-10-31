@@ -249,9 +249,11 @@ Version 3.74 Goals
 		- DONE: has_contain()
 		- DONE: has_writing()
 		- DONE: has_cond()
-	- TBD: in examine(), test for if self.chk_writing() or self.chk_cond() or self.chk_contain: buff_cr, <disp>, buff_cr
-	- TBD: tune disp methods for Room, Creature, burt, etc
-	- TBD: testing
+	- DONE: in examine(), test for if self.has_writing() or self.has_cond() or self.has_contain: buff_cr, <disp>, buff_cr
+	- INPROC: testing
+		- TBD: solve 'i' (examine burt)
+		- TBD: full test
+	- TBD: clean up comments
 
 - INPROC: class by class, reduce from double-tab to single tab
 	- DONE: web_main.py
