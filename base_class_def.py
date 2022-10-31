@@ -129,11 +129,11 @@ class ViewOnly(Writing):
 		return self._writing
 
 	# *** attrib methods ***		
-	def chk_writing(self):
-		return self.writing is not None
-
-#	def has_writing(self):
+#	def chk_writing(self):
 #		return self.writing is not None
+
+	def has_writing(self):
+		return self.writing is not None
 
 	# *** simple obj methods ***
 	def is_writing(self):
@@ -142,6 +142,9 @@ class ViewOnly(Writing):
 	def get_vis_contain_lst(self, active_gs):
 		return []
 
+	def has_contain(self, active_gs):
+		return False
+
 	def chk_contain_item(self, item):
 		return False
 
@@ -149,7 +152,8 @@ class ViewOnly(Writing):
 		pass
 		return 
 
-	def chk_cond(self):
+#	def chk_cond(self):
+	def has_cond(self):
 		return False
 
 	def disp_cond(self, active_gs):
@@ -161,8 +165,8 @@ class ViewOnly(Writing):
 		return 
 
 	def disp_writing(self, active_gs):
-#		if self.has_writing():
-		if self.chk_writing():
+		if self.has_writing():
+#		if self.chk_writing():
 			active_gs.buff_no_cr(f"On the {self.full_name} you see: {self.writing.full_name}. ")
 			return 
 		pass

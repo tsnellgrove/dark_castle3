@@ -50,8 +50,12 @@ class Room(ViewOnly):
 	def get_title_str(self):
 		return f"*** {self.full_name} ***"
 
-	def chk_cond(self):
+#	def chk_cond(self):
+	def has_cond(self):
 		return True
+
+	def has_contain(self, active_gs):
+		return bool(self.floor_lst)
 
 	# *** scope methods ***
 	def get_vis_contain_lst(self, active_gs):

@@ -52,7 +52,8 @@ class Door(ViewOnly):
 	def is_not_closed(self):
 		return self.is_open is not False
 
-	def chk_cond(self):
+#	def chk_cond(self):
+	def has_cond(self):
 		return True
 
 	# *** complex obj methods ***
@@ -175,6 +176,9 @@ class Container(Door):
 		self._contain_lst = new_obj
 
 	# *** attribute methods ***
+	def has_contain(self, active_gs):
+		return bool(self.contain_lst)
+	
 	def chk_in_contain_lst(self, obj):
 		return obj in self.contain_lst
 

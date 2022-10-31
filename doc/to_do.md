@@ -54,7 +54,7 @@ Oct 20, 2022
 			- If similar obj and non-obj vars appear in same function, diff the non-obj case: e.g. worn_lst vs. worn_str_lst
 - methods
 	- prefixes:
-		- 'is' for methods where no varriable is passed but a bool is returned; e.g. 'obj.is_item()'
+		- 'is' / 'has' for methods where no varriable is passed but a bool is returned; e.g. 'obj.is_item()'
 		- 'chk' for a method where you will send an obj and get back a bool
 		- 'get' for a method that will return a 'usuable' obj var
 		- 'disp' if a method's main purpose is to buffer content
@@ -240,11 +240,15 @@ Version 3.74 Goals
 		- DONE: Door (True)
 		- DONE: Room (True)
 		- DONE: LeverSwitch (True)
-	- TBD: in ViewOnly, create chk_contain(active_gs)
-		- TBD: ViewOnley (False)
-		- TBD: Container (variable based on contain_lst)
-		- TBD: Room (variable based on floor_lst)
-		- TBD: Creature (variable based on lists and if burt)
+	- INPROC: in ViewOnly, create chk_contain(active_gs)
+		- DONE: ViewOnley (False)
+		- DONE: Container (variable based on contain_lst)
+		- DONE: Room (variable based on floor_lst)
+		- DONE: Creature (variable based on lists and if burt)
+	- DONE: convert 'chk' to 'has'
+		- DONE: has_contain()
+		- DONE: has_writing()
+		- DONE: has_cond()
 	- TBD: in examine(), test for if self.chk_writing() or self.chk_cond() or self.chk_contain: buff_cr, <disp>, buff_cr
 	- TBD: tune disp methods for Room, Creature, burt, etc
 	- TBD: testing
