@@ -252,7 +252,7 @@ Version 3.74 Goals
 	- DONE: in examine(), test for if self.has_writing() or self.has_cond() or self.has_contain: buff_cr, <disp>, buff_cr
 	- INPROC: testing
 		- DONE: solve 'i' (examine burt)
-		- TBD: solve examine creatures
+		- TBD: solve creatures in room (problem is in Room disp_contain() )
 		- TBD: full test
 	- TBD: clean up comments
 
