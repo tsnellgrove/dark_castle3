@@ -167,7 +167,8 @@ Basic Refactor Steps:
 ##########################
 
 Version 3.74 Goals
-- post Burt => Creature neatening
+- post Burt => class module neatening
+- improve text UI
 
 - IDEA: reorg noun_class_def into base (Invis, Writing, ViewOnly, & Liquid), Item (including Food & Weapon), Room, Door and Container, Surface ??
 - DONE: Base
@@ -255,7 +256,9 @@ Version 3.74 Goals
 		- DONE: solve creatures in room (problem is in Room disp_contain() )
 		- TBD: full test
 	- TBD: clean up comments
-	- TBD: update examine() doc_string to explain spacing methods and discuss importance of isolating game world from description
+	- TBD: update examine() doc_string
+		- TBD: emphasize sepparation of content and presentation (allows for custom display of burt obj)
+		- TBD: explain spacing methods
 
 
 
@@ -264,9 +267,11 @@ Version 3.74 Goals
 ##########################
 
 Version 3.75 Goals
-- finish noun refactor
-- post Burt => Creature neatening
+- finish non-mach class refactor
+- post Burt => Creature updates to Creature class (elim attack_burt() method)
 - create a Surface class
+- create Chair class
+- improve text UI
 
 - TBD: refactor Clothes => Garment
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
