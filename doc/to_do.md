@@ -240,7 +240,7 @@ Version 3.74 Goals
 		- DONE: Door (True)
 		- DONE: Room (True)
 		- DONE: LeverSwitch (True)
-	- INPROC: in ViewOnly, create chk_contain(active_gs)
+	- DONE: in ViewOnly, create chk_contain(active_gs)
 		- DONE: ViewOnley (False)
 		- DONE: Container (variable based on contain_lst)
 		- DONE: Room (variable based on floor_lst)
@@ -252,16 +252,11 @@ Version 3.74 Goals
 	- DONE: in examine(), test for if self.has_writing() or self.has_cond() or self.has_contain: buff_cr, <disp>, buff_cr
 	- INPROC: testing
 		- DONE: solve 'i' (examine burt)
-		- TBD: solve creatures in room (problem is in Room disp_contain() )
+		- DONE: solve creatures in room (problem is in Room disp_contain() )
 		- TBD: full test
 	- TBD: clean up comments
+	- TBD: update examine() doc_string to explain spacing methods and discuss importance of isolating game world from description
 
-- INPROC: class by class, reduce from double-tab to single tab
-	- DONE: web_main.py
-	- DONE: map_class_def.py
-	- INPROC: noun_class_def.py
-		- DONE: PortableContainer
-		- DONE: PortableLiquidContainer
 
 
 ##########################
@@ -294,6 +289,13 @@ Version 3.75 Goals
 - TBD: refactor Switch
 - TBD: refactor Creature / attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
+		- definitely hunger & thirst once burt gains these traits
+	- TBD: hedgehog updates
+		- describe as "stallwart"
+		- Have the hedgehog think burt is playing if he attacks with a non-weapon; starts making wax-on, wax-off motions with paws
+	- TBD: Updatate the trademark on the stale_biscuits... 
+		- perhaps the biscuits say "Nana's" - or better yet, have a sword-and-key emblam on them?
+		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
 	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
 	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
 	- TBD: re-org to identify 'attacker' and 'winner' 

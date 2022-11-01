@@ -124,8 +124,8 @@ class Room(ViewOnly):
 		"""
 #		active_gs.buffer(active_gs.map.get_door_str(self))
 		active_gs.buff_no_cr(active_gs.map.get_door_str(self))
-		if self.has_contain(active_gs) or self.has_writing():
-			active_gs.buff_cr()
+##		if self.has_contain(active_gs) or self.has_writing():
+##			active_gs.buff_cr()
 
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
@@ -136,13 +136,15 @@ class Room(ViewOnly):
 					pass
 			elif not obj.is_item():
 				active_gs.buff_cr()
-##								active_gs.buffer("There is a " + obj.full_name + " here. ")
+				active_gs.buff_cr()
+#								active_gs.buffer("There is a " + obj.full_name + " here. ")
 				active_gs.buff_no_cr(f"There is a {obj.full_name} here. ")
 				obj.disp_contain(active_gs)
-				active_gs.buff_cr()
+##				active_gs.buff_cr()
 			else:
 				room_item_lst.append(obj)
 		if room_item_lst:
+			active_gs.buff_cr()
 			active_gs.buff_cr()
 			room_txt_lst = [obj.full_name for obj in room_item_lst]
 			room_item_str = ", ".join(room_txt_lst)
