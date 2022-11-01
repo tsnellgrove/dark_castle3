@@ -294,14 +294,18 @@ Version 3.75 Goals
 - TBD: refactor Food
 - TBD: refactor Weapon
 - TBD: refactor Switch
-- TBD: Description / text UI updates:
+- TBD: Description updates:
 	- TBD: hedgehog updates
 		- describe as "stallwart"
 		- Have the hedgehog think burt is playing if he attacks with a non-weapon; starts making wax-on, wax-off motions with paws
 	- TBD: Updatate the trademark on the stale_biscuits... 
 		- perhaps the biscuits say "Nana's" - or better yet, have a sword-and-key emblam on them?
 		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
-	- TBD: change backpack and worn lists to include 'a' and 'an' (convert plurals to singulars for this?)
+- TBD: text UI updates:
+	- TBD: change backpack and worn lists to include 'a' and 'an'
+		- IDEA: convert plurals to singulars for this???
+		- IDEA: (given that there is water in the game maybe all singlulars is impossible?)
+	- TBD: sort out plurals - perhaps this becomes a ViewOnly attribute???
 - TBD: refactor Creature / attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
 		- definitely hunger & thirst once burt gains these traits
