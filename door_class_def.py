@@ -62,7 +62,7 @@ class Door(ViewOnly):
 		"""
 		if self.is_open is None:
 #			active_gs.buffer(f"The {self.full_name} has no closure. It always remains open.")
-			active_gs.buff_no_cr(f"The {self.full_name} has no closure. It always remains open. ")
+			active_gs.buff_no_cr(f"The {self.full_name} has no closure; it always remains open. ")
 			return
 		if self.is_open == False:
 #			active_gs.buffer(f"The {self.full_name} is closed.")

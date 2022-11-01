@@ -254,6 +254,8 @@ Version 3.74 Goals
 	- INPROC: testing
 		- DONE: solve 'i' (examine burt)
 		- DONE: solve creatures in room (problem is in Room disp_contain() )
+		- DONE: changed examine() order from <cond> => <contain> => <writing> to <cond> => <writing> => <contain>
+			- IDEA: we want to first know everything about the obj we are examining... then about the other objs it contains
 		- TBD: full test
 	- TBD: clean up comments
 	- TBD: update examine() doc_string
@@ -835,6 +837,7 @@ IDEA: create a fun scenario where TravelEffect take item gets used... maybe a gi
 - maybe random mouse keeps appearing and if you give it cheese it runs off and can be followed to the blacksmith
 - maybe mouse in maze is from Who Moved my Cheese
 - references to grafitti in maze?? (e.g. "what would you do if you weren't afraid?")
+	- IDEA: grafitti on Room wall = disp_writing()
 - Potion cabinet => maze => sharpen payment; cabinet: Royal Potions Maker: Danni Igotyour , potion: 867-5 => combo
 	- Give clues - mention that you hear a boppy tune in your head on description; give some lyrics after 5th attempt
 - Sign on mousehole mentions royal blacksmith and royal baker
