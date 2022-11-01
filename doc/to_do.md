@@ -287,15 +287,17 @@ Version 3.75 Goals
 - TBD: refactor Food
 - TBD: refactor Weapon
 - TBD: refactor Switch
-- TBD: refactor Creature / attack() => 'attack x with y'
-	- TBD: Creature conditions to examine??
-		- definitely hunger & thirst once burt gains these traits
+- TBD: Description / text UI updates:
 	- TBD: hedgehog updates
 		- describe as "stallwart"
 		- Have the hedgehog think burt is playing if he attacks with a non-weapon; starts making wax-on, wax-off motions with paws
 	- TBD: Updatate the trademark on the stale_biscuits... 
 		- perhaps the biscuits say "Nana's" - or better yet, have a sword-and-key emblam on them?
 		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
+	- TBD: change backpack and worn lists to include 'a' and 'an' (convert plurals to singulars for this?)
+- TBD: refactor Creature / attack() => 'attack x with y'
+	- TBD: Creature conditions to examine??
+		- definitely hunger & thirst once burt gains these traits
 	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
 	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
 	- TBD: re-org to identify 'attacker' and 'winner' 
