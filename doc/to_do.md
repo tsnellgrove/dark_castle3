@@ -256,7 +256,10 @@ Version 3.74 Goals
 		- DONE: solve creatures in room (problem is in Room disp_contain() )
 		- DONE: changed examine() order from <cond> => <contain> => <writing> to <cond> => <writing> => <contain>
 			- IDEA: we want to first know everything about the obj we are examining... then about the other objs it contains
-		- TBD: full test
+		- INPROC: full test
+			- TBD: fix 'x button' (no description)
+			- TBD: fix 'x lever' (double space before and after lever condition)
+			- TBD: fix 'open box' when locked (tripple space after 'is locked' response) [need another Container open() 'if... then' for 'locked']
 	- TBD: clean up comments
 	- TBD: update examine() doc_string
 		- TBD: emphasize sepparation of content and presentation (allows for custom display of burt obj)
