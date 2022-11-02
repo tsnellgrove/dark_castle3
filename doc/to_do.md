@@ -297,19 +297,6 @@ Version 3.75 Goals
 - TBD: refactor Food
 - TBD: refactor Weapon
 - TBD: refactor Switch
-- TBD: Description updates:
-	- TBD: hedgehog updates
-		- describe as "stallwart"
-		- Have the hedgehog think burt is playing if he attacks with a non-weapon; starts making wax-on, wax-off motions with paws
-	- TBD: Updatate the trademark on the stale_biscuits... 
-		- perhaps the biscuits say "Nana's" - or better yet, have a sword-and-key emblam on them?
-		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
-- TBD: text UI updates:
-	- TBD: change backpack and worn lists to include 'a' and 'an'
-		- IDEA: convert plurals to singulars for this???
-		- IDEA: (given that there is water in the game maybe all singlulars is impossible?)
-		- IDEA: maybe a txt_handling() module with a disp_lst() func that takes care of 1) "x", "x & y", "x, y, & z"; 2) 'a' or 'an'; 3) plurals
-	- TBD: sort out plurals - perhaps this becomes a ViewOnly attribute???
 - TBD: refactor Creature / attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
 		- definitely hunger & thirst once burt gains these traits
@@ -339,6 +326,23 @@ Version 3.75 Goals
 	- for examine (?), sit scope = room_scope
 - make backpack a true container???
 - TBD: create a centralized doc file
+- TBD: Description updates:
+	- TBD: hedgehog updates
+		- describe as "stallwart"
+		- Have the hedgehog think burt is playing if he attacks with a non-weapon; starts making wax-on, wax-off motions with paws
+	- TBD: Updatate the trademark on the stale_biscuits... 
+		- perhaps the biscuits say "Nana's" - or better yet, have a sword-and-key emblam on them?
+		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
+- TBD: text UI updates:
+	- TBD: change backpack and worn lists to include 'a' and 'an'
+		- IDEA: convert plurals to singulars for this???
+		- IDEA: (given that there is water in the game maybe all singlulars is impossible?)
+		- IDEA: maybe a txt_handling() module with a disp_lst() func that takes care of 1) "x", "x & y", "x, y, & z"; 2) 'a' or 'an'; 3) plurals
+	- TBD: sort out approach to plurals
+		- 1) perhaps this becomes a ViewOnly attribute??? (don't like this - way too many un-used cases of attribute)
+		- 2) possibly ItemPlural class inherits from Item and has method is_plural() which returns True ??
+		- 3) could just have a plural_tuning_lst in the txt_handling() module that checks for known plurals as a one-off?
+			- `Note: the problem with defining plurals in classes is, what if I want to establish plurals for a non-obj (e.g. a path)
 
 
 ##########################
@@ -613,6 +617,7 @@ interpreter ideas:
 - TBD: Debug mode:
 	- TBD: Need a debug mode that eliminates 'try' from 2word and prep commands
 	- TBD: need a secret code to prevent regular player from falling into debug: 'debug poke53281,0'
+	- TBD: maybe debug opens a menu where you can choose start room & choose to disable method and / or description guards
 - TBD: verbose / brief
 
 - Unit Testing (link: https://youtu.be/6tNS--WetLI ) ???
