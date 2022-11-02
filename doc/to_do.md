@@ -305,6 +305,7 @@ Version 3.75 Goals
 	- TBD: change backpack and worn lists to include 'a' and 'an'
 		- IDEA: convert plurals to singulars for this???
 		- IDEA: (given that there is water in the game maybe all singlulars is impossible?)
+		- IDEA: maybe a txt_handling() module with a disp_lst() func that takes care of 1) "x", "x & y", "x, y, & z"; 2) 'a' or 'an'; 3) plurals
 	- TBD: sort out plurals - perhaps this becomes a ViewOnly attribute???
 - TBD: refactor Creature / attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
