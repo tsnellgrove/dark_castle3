@@ -128,10 +128,7 @@ class ViewOnly(Writing):
 	def writing(self):
 		return self._writing
 
-	# *** attrib methods ***		
-#	def chk_writing(self):
-#		return self.writing is not None
-
+	# *** attrib methods ***
 	def has_writing(self):
 		return self.writing is not None
 
@@ -152,7 +149,6 @@ class ViewOnly(Writing):
 		pass
 		return 
 
-#	def chk_cond(self):
 	def has_cond(self):
 		return False
 
@@ -166,7 +162,6 @@ class ViewOnly(Writing):
 
 	def disp_writing(self, active_gs):
 		if self.has_writing():
-#		if self.chk_writing():
 			active_gs.buff_no_cr(f"On the {self.full_name} you see: {self.writing.full_name}. ")
 			return 
 		pass
@@ -181,15 +176,9 @@ class ViewOnly(Writing):
 		active_gs.buffer(self.get_descript_str(active_gs))
 		if self.has_writing() or self.has_cond() or self.has_contain(active_gs):
 			active_gs.buff_cr()
-#		if self.has_writing():
-#			active_gs.buffer(f"On the {self.full_name} you see: {self.writing.full_name}")
 			self.disp_cond(active_gs)
 			self.disp_writing(active_gs)
 			self.disp_contain(active_gs)
-#			self.disp_writing(active_gs)
-##		if self.has_writing():
-#			active_gs.buffer(f"On the {self.full_name} you see: {self.writing.full_name}")
-##			active_gs.buff_no_cr(f"On the {self.full_name} you see: {self.writing.full_name}. ")
 			active_gs.buff_cr()
 		return
 

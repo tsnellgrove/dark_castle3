@@ -61,14 +61,11 @@ class Door(ViewOnly):
 		""" Displays object-specific conditions. Used in examine().
 		"""
 		if self.is_open is None:
-#			active_gs.buffer(f"The {self.full_name} has no closure. It always remains open.")
 			active_gs.buff_no_cr(f"The {self.full_name} has no closure; it always remains open. ")
 			return
 		if self.is_open == False:
-#			active_gs.buffer(f"The {self.full_name} is closed.")
 			active_gs.buff_no_cr(f"The {self.full_name} is closed. ")
 			return
-#		active_gs.buffer(f"The {self.full_name} is open.") # is_open == True
 		active_gs.buff_no_cr(f"The {self.full_name} is open. ") # is_open == True
 		return 
 
@@ -220,7 +217,6 @@ class Container(Door):
 		if self.is_not_closed() and not self.is_empty():
 			contain_txt_lst = [obj.full_name for obj in self.contain_lst]
 			contain_str = ", ".join(contain_txt_lst)
-##			active_gs.buffer(f"The {self.full_name} contains: {contain_str}")
 			active_gs.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
 			for obj in self.contain_lst:
 				obj.disp_contain(active_gs)
@@ -231,7 +227,6 @@ class Container(Door):
 		""" Displays object-specific conditions. Used in examine().
 		"""
 		if self.is_empty() and self.is_not_closed():
-#			active_gs.buffer(f"The {self.full_name} is empty.")
 			active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
 		return 
 

@@ -62,7 +62,6 @@ class LeverSwitch(SwitchMixIn, ViewOnly):
 						self.switch_state = 'down'
 				active_gs.buffer("Pulled.")
 
-#		def chk_cond(self):
 		def has_cond(self):
 				return True
 

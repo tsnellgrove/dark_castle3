@@ -260,7 +260,7 @@ Version 3.74 Goals
 			- DONE: fix 'x button' (no description)
 			- DONE: fix 'x lever' (double space before and after lever condition)
 			- DONE: fix 'open box' when locked (tripple space after 'is locked' response) [need another Container open() 'if... then' for 'locked']
-	- TBD: clean up comments
+	- DONE: clean up comments
 	- TBD: update examine() doc_string
 		- TBD: emphasize sepparation of content and presentation (allows for custom display of burt obj)
 		- TBD: explain spacing methods
@@ -343,6 +343,7 @@ Version 3.75 Goals
 		- 2) possibly ItemPlural class inherits from Item and has method is_plural() which returns True ??
 		- 3) could just have a plural_tuning_lst in the txt_handling() module that checks for known plurals as a one-off?
 			- `Note: the problem with defining plurals in classes is, what if I want to establish plurals for a non-obj (e.g. a path)
+		- Maybe apply 'xxy' prefix on text list if plural??
 	- TBD: drop node 3 (portable_containers in containers) disp?
 		- TBD: can burt know about node 3 items he hasn't 'seen' in this game?
 		- TBD: play through Zork kitchen to test out
