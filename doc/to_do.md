@@ -278,6 +278,8 @@ Version 3.75 Goals
 - create Chair class
 - improve text UI
 
+- TBD: org already refactored classes into consistent sections
+	- IDEA: do I need a 'display' section?
 - TBD: refactor Clothes => Garment
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
 	- CANCEL: add 'remove descript' for Creature.remove_item() on royal_crown
