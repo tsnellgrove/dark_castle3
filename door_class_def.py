@@ -239,8 +239,11 @@ class Container(Door):
 		super(Container, self).open(active_gs)
 		""" Extends Door.open(). Upon opening a container, the player's natural question is "What's in it?". Open for containers answers this question whenever a container is opened. If the container is empty that information is displayed as well.
 		"""
+		if self.is_unlocked == False:
+			return 
 		if self.is_empty():
 			active_gs.buffer(f"The {self.full_name} is empty.")
+			return 
 		active_gs.buff_cr()
 		self.disp_contain(active_gs)
 		active_gs.buff_cr()

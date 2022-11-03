@@ -130,6 +130,7 @@ descript_dict = {
 		'left_lever' : "The Left Lever is old and rusty.",
 		'middle_lever' : "The Middle Lever is old and rusty.",
 		'right_lever' : "The Right Lever is old and rusty.",
+		'red_button' : "The Red Button is to the right of the three levers. You have no idea what it does but it's very big... and red... and shiny. Without concious intent, your hands begins to reach out to push the Big. Red. Shiny. Candy-Like. Button...",
 
 		### warnings ###
 		'entrance_south_warn_1' : "Don't be ridiculous Burt. You just swore to the whole pub that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",

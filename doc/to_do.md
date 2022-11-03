@@ -251,15 +251,15 @@ Version 3.74 Goals
 		- DONE: has_writing()
 		- DONE: has_cond()
 	- DONE: in examine(), test for if self.has_writing() or self.has_cond() or self.has_contain: buff_cr, <disp>, buff_cr
-	- INPROC: testing
+	- DONE: testing
 		- DONE: solve 'i' (examine burt)
 		- DONE: solve creatures in room (problem is in Room disp_contain() )
 		- DONE: changed examine() order from <cond> => <contain> => <writing> to <cond> => <writing> => <contain>
 			- IDEA: we want to first know everything about the obj we are examining... then about the other objs it contains
-		- INPROC: full test
-			- TBD: fix 'x button' (no description)
-			- TBD: fix 'x lever' (double space before and after lever condition)
-			- TBD: fix 'open box' when locked (tripple space after 'is locked' response) [need another Container open() 'if... then' for 'locked']
+		- DONE: full test
+			- DONE: fix 'x button' (no description)
+			- DONE: fix 'x lever' (double space before and after lever condition)
+			- DONE: fix 'open box' when locked (tripple space after 'is locked' response) [need another Container open() 'if... then' for 'locked']
 	- TBD: clean up comments
 	- TBD: update examine() doc_string
 		- TBD: emphasize sepparation of content and presentation (allows for custom display of burt obj)
@@ -343,6 +343,9 @@ Version 3.75 Goals
 		- 2) possibly ItemPlural class inherits from Item and has method is_plural() which returns True ??
 		- 3) could just have a plural_tuning_lst in the txt_handling() module that checks for known plurals as a one-off?
 			- `Note: the problem with defining plurals in classes is, what if I want to establish plurals for a non-obj (e.g. a path)
+	- TBD: drop node 3 (portable_containers in containers) disp?
+		- TBD: can burt know about node 3 items he hasn't 'seen' in this game?
+		- TBD: play through Zork kitchen to test out
 
 
 ##########################
@@ -688,6 +691,7 @@ Version 6.x Goals
 *** NEW PUZZLE IDEAS ***
 
 Misc:
+- maybe, in DC2, before the ball, the princess is missing (hiding from evil prince) and is diguised as a black cat that burt needs to befriend?
 - it would be cool to have an invisibility cloak / spell (probably need to keep it short term / contained)
 - Dragon is bored because it has read every book in the library - need to find a new book to interest it
 - Ferret is named Bartleby
