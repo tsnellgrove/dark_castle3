@@ -229,16 +229,16 @@ class ViewOnly(Writing):
 
 
 	- examine() method [ViewOnly class]:
-		examine() is the most fundamental command for gameplay and is the second method available for visible objects after read(). ViewOnly is the ancestor of all visible classes except Writing and quite a few of them expand upon examine() (e.g. in class Door, examine() is extended to describe Condition of the door - i.e. whether it is open or closed).
+		examine() is the most fundamental command for gameplay and is the second method available for visible objects after read(). ViewOnly is the ancestor of all visible classes except Writing and in earlier versions so the examine() method operates across quite a few different classes.
 		
 		Game Design / Theory:
 			The examine() method is probably as good a place as anywhere to discuss the game design intentions of what Burt sees and how he sees it. In the Room method we will delve into the notion of node hierarchy - which is also related to what Burt sees - but for now we'll ignore nodes and speak in generalities.
 			
-			Let's start with *what* burt can see. There are many Python classes of visible objects. But from a description perspective there are basically only two types of visible object:
+			Let's start with *what* burt can see. There are many Python classes of visible objects. But from a description perspective there are basically only two *types* of visible object:
 					
 				Interactive Objects: These are objects that Burt can somehow interact with. This includes all Items, Doors, Containers, Switches, Creatures, and, every once in a while, a ViewOnly object. Solving puzzles and winning the game requires Burt to manipulate Interactive Objects.
 				
-				Descriptive Objects: These are always ViewOnly. In fact, most ViewOnly objects are Descriptive Objects. Burt can never manipulate Descriptive Objects and the whole game could be played through without ever paying any attention to them. They exist only to provide a bit of narrative color, to offer some in-game hints, and to provide some geeky humor. In Rooms and Creatures, ViewOnly Descriptive Objects are stored in the feature_lst attribute.
+				Descriptive Objects: These are always ViewOnly. In fact, most ViewOnly objects are Descriptive Objects. Burt can never manipulate Descriptive Objects and the whole game could be played through without ever paying any attention to them. They exist only to provide a bit of narrative color, to offer some in-game hints, and to provide some geeky humor. In Rooms and Creatures, ViewOnly Descriptive Objects are stored in the feature_lst attribute. Examples of Descriptive Objects include: dark_castle, moat, faded_tapestries, alcove, stone_coffer, and family_tree.
 					
 			Now lets talk about the two types of observation that Burt can engage in:
 			
@@ -247,14 +247,19 @@ class ViewOnly(Writing):
 				Active Observation:  This is when Burt is examining a specific object. e.g. 'examine the front gate'. Burt can only examine one object at a time. The idea is that he is inspecting the object closely. Active Observaation will provide the following:
 					- The object Title (rooms only)
 					- The object Description
-					- Writing on the object
 					- The object Condition (i.e. open, closed, up, down, empty, etc)
+					- Writing on the object
 					- A List of any Interactive Objects 'contained' within the examined object (including objects held / worn by Creatures)
+					The intent of this ordering is that first we learn everything we can from inspecting a given object - and then we learn more about any objects it may contain.
 	
 				The hope is that, for the player, all of this theory results in intuitive game play. When you want a list of the 'stuff' in a room you 'look'... when you want to know everything about a specific object you 'examine' it... descriptions should be read carefully because, occasionally, they include references to things you can look at that aren't mentioned otherwise... But if you're actually reading through the code and wondering "Why aren't Writing objects, the state of Doors, or most ViewOnly objects listed via 'look' or 'inventory'?" - well, now you know.
 		
 		Historic Note:
-				Originally, examine() was extended by most classes and there was no clear definition of what Burt saw when he examined an object. Codifying what was presented by examine() seemed valuable so I broke it into parts (Title, Description, Writing, Condition, Contained) and defined functions for those in each class. This also has the benefit of making it easier to enable or disable part of the examine() output based on settings like 'brief' and 'verbose'. The down side to this formal approach is that the descriptions have a bulleted feel and are hard to unify into paragraphs.
+				Originally, examine() was extended by most classes and there was no clear definition of what Burt saw when he examined an object. Codifying what was presented by examine() seemed valuable so I broke it into parts (Title, Description, Condition, Writing, Contained) and defined functions for those in each class. 
+
+				
+
+				This also has the benefit of making it easier to enable or disable part of the examine() output based on settings like 'brief' and 'verbose'. The down side to this formal approach is that the descriptions have a bulleted feel and are hard to unify into paragraphs.
 
 """
 
