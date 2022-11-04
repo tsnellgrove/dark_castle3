@@ -261,9 +261,10 @@ Version 3.74 Goals
 			- DONE: fix 'x lever' (double space before and after lever condition)
 			- DONE: fix 'open box' when locked (tripple space after 'is locked' response) [need another Container open() 'if... then' for 'locked']
 	- DONE: clean up comments
-	- TBD: update examine() doc_string
-		- TBD: emphasize sepparation of content and presentation (allows for custom display of burt obj)
-		- TBD: explain spacing methods
+	- DONE: update examine() doc_string
+		- DONE: emphasize sepparation of content and presentation (allows for custom display of burt obj)
+		- DONE: explain spacing methods
+- TBD: final test and version update
 
 
 
@@ -280,6 +281,7 @@ Version 3.75 Goals
 
 - TBD: org already refactored classes into consistent sections
 	- IDEA: do I need a 'display' section?
+	- IDEA: create template for all comment setions - but deleted un-used comment setions (do I need *** attrib methods *** ?)
 - TBD: refactor Clothes => Garment
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
 	- CANCEL: add 'remove descript' for Creature.remove_item() on royal_crown

@@ -23,7 +23,7 @@ class Invisible(object):
 	def name(self):
 		return self._name
 
-	# *** simple obj methods ***
+	# *** simple methods ***
 	def is_item(self):
 		return False
 
@@ -84,11 +84,13 @@ class Writing(Invisible):
 	def descript_key(self, new_descript):
 		self._descript_key = new_descript
 
-	# *** simple obj methods ***
+	# *** simple methods ***
 	def is_writing(self):
 		return True
 
-	# *** complex obj methods ***
+	# *** display methods ***
+
+	# *** complex methods ***
 	def get_descript_str(self, active_gs):
 		"""Provides the current description of an object.
 		"""
@@ -100,6 +102,7 @@ class Writing(Invisible):
 			except:
 				return f"The {self.full_name} is simply indescribable."
 
+	# *** verb methods ***
 	def read(self, active_gs):
 		""" Reads text found on an object.
 		"""
@@ -129,18 +132,13 @@ class ViewOnly(Writing):
 		return self._writing
 
 	# *** attrib methods ***
-	def has_writing(self):
-		return self.writing is not None
 
-	# *** simple obj methods ***
+	# *** simple methods ***
 	def is_writing(self):
 		return False
 
 	def get_vis_contain_lst(self, active_gs):
 		return []
-
-	def has_contain(self, active_gs):
-		return False
 
 	def chk_contain_item(self, item):
 		return False
@@ -149,14 +147,17 @@ class ViewOnly(Writing):
 		pass
 		return 
 
+	# *** display methods ***
 	def has_cond(self):
 		return False
 
-	def disp_cond(self, active_gs):
-		pass
-		return 
+	def has_writing(self):
+		return self.writing is not None
 
-	def disp_contain(self, active_gs):
+	def has_contain(self, active_gs):
+		return False
+
+	def disp_cond(self, active_gs):
 		pass
 		return 
 
@@ -167,7 +168,13 @@ class ViewOnly(Writing):
 		pass
 		return 
 
-	# *** complex obj methods ***
+	def disp_contain(self, active_gs):
+		pass
+		return 
+
+	# *** complex methods ***
+
+	# *** verb methods ***
 	def examine(self, active_gs):
 		""" Describes an object.
 		"""
@@ -253,13 +260,14 @@ class ViewOnly(Writing):
 					The intent of this ordering is that first we learn everything we can from inspecting a given object - and then we learn more about any objects it may contain.
 	
 				The hope is that, for the player, all of this theory results in intuitive game play. When you want a list of the 'stuff' in a room you 'look'... when you want to know everything about a specific object you 'examine' it... descriptions should be read carefully because, occasionally, they include references to things you can look at that aren't mentioned otherwise... But if you're actually reading through the code and wondering "Why aren't Writing objects, the state of Doors, or most ViewOnly objects listed via 'look' or 'inventory'?" - well, now you know.
-		
+
+		Program Architecture:
+			"Saparation of content and presentation" is an age-old programming saw - and rightly so. I embrace this mantra in DarK Castle by having a standard set of 'display' methods (disp_cond(), disp_writing(), and disp_contain() ) who's purpose is to buffer game-world information when an object is examined. This allows me to vary the 'condition' text based on the class (e.e. for a Door, condition = "open" or "closed"; for a LeverSwitch, condition = "up" or "down"). It also allows me to customize descriptions related to the burt Creature object (e.g. since burt is the observer, he is never included in the "look" / "examine <room>" 'contain' list. Also, "inventory" / "i" / "examine burt" does provide a 'contain' list of burt's bkpk_lst - since burt is able to look in his own backpack). Down the road, isolated display methods called from examine should also make it easier to enable or disable part of the examine() output based on settings like 'brief' and 'verbose'. The down side to this formal approach is that the descriptions have a bulleted feel and are hard to unify into paragraphs.
+
+			However, isolated display methods also create their own set of problems. The aesthetic goal of Dark Castle is to feel book-like and present information in traditional paragraph format. But the default presentation that results from isolated dispaly methods is a series of one-line sentences (e.g. "There is a goblin here.", "The goblin is holding: Grimy Axe.", "The goblin is wearing: Big Medal.") each separated by a line of space. It ends up feeling more like a Twitter feed than a book. To solve this I needed to start checking each object to determine which examine() elements it included (has_cond(), has_writing(), has_contain() ). I also needed to enlarge the buffer options from just buffer() (which is equivalent to <cr><text><cr>) to also including buff_no_cr() and buff_cr(). As always, the UI was more work than expected, but the results are now a bit more paragraph like.
+
 		Historic Note:
-				Originally, examine() was extended by most classes and there was no clear definition of what Burt saw when he examined an object. Codifying what was presented by examine() seemed valuable so I broke it into parts (Title, Description, Condition, Writing, Contained) and defined functions for those in each class. 
-
-				
-
-				This also has the benefit of making it easier to enable or disable part of the examine() output based on settings like 'brief' and 'verbose'. The down side to this formal approach is that the descriptions have a bulleted feel and are hard to unify into paragraphs.
+			Originally, examine() was extended by most classes and there was no clear definition of what Burt saw when he examined an object. Codifying what was presented by examine() seemed valuable so I broke it into parts (Title, Description, Condition, Writing, Contained) and defined functions for those in each class. 
 
 """
 
