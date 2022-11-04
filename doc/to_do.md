@@ -714,6 +714,7 @@ Misc:
 - food & drink system?
 - darkness & light source system?
 	- lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
+	- honestly, Grues don't make sense in DC... I intend for there to be a fair number of creatures around the place... why haven't they been eaten by Grues? (one could ask the same about the Troll and the Thief of Zork - but presumably these are dangerous creatures that can fend off Grues?). Instead, I think I'll use the same mechanic (2 dark rooms in a row == death) but the textual explanation will be Nana's warning to young burt "Burty, you mind gallavanting around in the darkness - you'll trip and break your neck!"
 - How to enable switches and machines to self register for universal scope
 	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
 	- IDEA: eliminate universal_scope => just add these to Burt's invis_lst
