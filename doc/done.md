@@ -1,5 +1,5 @@
 Done List - Dark Castle v3
-Oct 20, 2022
+Nov 5, 2022
 
 
 ##########################
@@ -3117,6 +3117,111 @@ Version 3.73 Goals
 			- 1) It's (almost) never the actor - because the actor is (almost) always Burt
 			- 2) Ask, who or what is being acted on
 			- 3) Choose the noun that is most restrictive
+
+
+##########################
+### VERSION 3.74 START ###
+##########################
+
+Version 3.74 Goals
+- post Burt => class module neatening
+- improve text UI
+
+- IDEA: reorg noun_class_def into base (Invis, Writing, ViewOnly, & Liquid), Item (including Food & Weapon), Room, Door and Container, Surface ??
+- DONE: Base
+	- DONE: move 'base' (Invis, Writing, ViewOnly) to dedicaated module
+		- DONE: Invis
+		- DONE: Writing
+		- DONE: ViewOnly
+	- DONE: reduce 'base' indent to 1 tab
+		- DONE: Invis
+		- DONE: Writing
+		- DONE: ViewOnly
+	- DONE: clean up doc_strings for readability
+	- DONE: elim from noun_class_def using tripple-quotes
+	- DONE: update imports in mk_def_pkl, noun_class_def() & others 
+	- DONE: testing
+	- DONE: clean up comments
+- DONE: Misc (Liquid)
+	- DONE: move Liquid to dedicated module
+	- DONE: reduce Liquid indent to 1 tab
+	- N/A: clean up doc_strings for readability
+	- DONE: elim from noun_class_def using tripple-quotes
+	- DONE: update imports in mk_def_pkl, noun_class_def() & others 
+	- DONE: testing
+	- N/A: clean up comments
+- DONE: Room
+	- DONE: move room to dedicated module
+	- DONE: reduce Room indent to 1 tab
+	- DONE: clean up doc_strings for readability
+	- DONE: elim from noun_class_def using tripple-quotes
+	- DONE: update imports in mk_def_pkl, noun_class_def() & others 
+	- DONE: testing
+	- N/A: clean up comments
+- DONE: item_class_def() [Item, Food, Clothes, Weapon]
+	- DONE: move to dedicated module
+	- DONE: reduce indent to 1 tab
+	- DONE: clean up doc_strings for readability
+	- DONE: elim from noun_class_def using tripple-quotes
+	- DONE: update imports in mk_def_pkl, noun_class_def(), mach_class_def()
+	- DONE: testing
+	- N/A: clean up comments
+- DONE: D&C (door_class_def.py = Door, Container, PortableContainer, and PortableLiquidContainer
+	- DONE: move Doors & Containers to dedicated module
+	- DONE: reduce D&C indent to 1 tab
+	- DONE: clean up doc_strings for readability
+	- DONE: elim from noun_class_def using tripple-quotes
+	- DONE: update imports in mk_def_pkl, noun_class_def() & others 
+	- DONE: testing
+	- DONE: clean up comments
+- DONE: remove all refs to noun_class_def.py and move module to /legacy folder
+- DONE: create new visible class / verb-method map showing module boundaries
+- INPROC: tune description spacing
+	- TBD: fix 'examine bottle' text
+	- TBD: text 'examine box'
+	- IDEA: today, upon examine, Door / Container conditions, writing, and contents are spread across multiple lines.
+	- IDEA: combine to one line?
+	- IDEA: If so, should Writing be last (rather than first)?
+	- IDEA: Proposal = each object (other than burt), upon examination, should have:
+		- one line for Title (rooms only) 
+		- one line for Description
+		- one line for Condition, Contents, and Writing (in that order)
+		- one line for user input 
+		- with one open line between each line of text
+	- DONE: standardize examine() of Writing via disp_writing()
+	- TBD: in ViewOnly, create chk_writing()
+		- DONE: has_writing() => chk_writing()
+			- DONE: interp()
+			- DONE: base_class_def()
+	- DONE: in ViewOnly, create chk_cond()
+		- DONE: ViewOnly (False)
+		- DONE: Door (True)
+		- DONE: Room (True)
+		- DONE: LeverSwitch (True)
+	- DONE: in ViewOnly, create chk_contain(active_gs)
+		- DONE: ViewOnley (False)
+		- DONE: Container (variable based on contain_lst)
+		- DONE: Room (variable based on floor_lst)
+		- DONE: Creature (variable based on lists and if burt)
+	- DONE: convert 'chk' to 'has'
+		- DONE: has_contain()
+		- DONE: has_writing()
+		- DONE: has_cond()
+	- DONE: in examine(), test for if self.has_writing() or self.has_cond() or self.has_contain: buff_cr, <disp>, buff_cr
+	- DONE: testing
+		- DONE: solve 'i' (examine burt)
+		- DONE: solve creatures in room (problem is in Room disp_contain() )
+		- DONE: changed examine() order from <cond> => <contain> => <writing> to <cond> => <writing> => <contain>
+			- IDEA: we want to first know everything about the obj we are examining... then about the other objs it contains
+		- DONE: full test
+			- DONE: fix 'x button' (no description)
+			- DONE: fix 'x lever' (double space before and after lever condition)
+			- DONE: fix 'open box' when locked (tripple space after 'is locked' response) [need another Container open() 'if... then' for 'locked']
+	- DONE: clean up comments
+	- DONE: update examine() doc_string
+		- DONE: emphasize sepparation of content and presentation (allows for custom display of burt obj)
+		- DONE: explain spacing methods
+- DONE: final test and version update
 
 
 
