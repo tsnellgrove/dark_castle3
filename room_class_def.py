@@ -10,9 +10,6 @@ from static_gbl import descript_dict, static_dict
 from base_class_def import ViewOnly
 
 
-### local functions
-
-
 ### classes
 class Room(ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst):
@@ -36,7 +33,7 @@ class Room(ViewOnly):
 	def invis_lst(self):
 		return self._invis_lst
 
-	# *** attribute methods ***
+	# *** attrib methods ***
 	def floor_lst_append(self, item):
 		self._floor_lst.append(item)
 
@@ -45,16 +42,6 @@ class Room(ViewOnly):
 
 	def floor_lst_remove(self, item):
 		self._floor_lst.remove(item)
-
-	# *** simple object methods ***
-	def get_title_str(self):
-		return f"*** {self.full_name} ***"
-
-	def has_cond(self):
-		return True
-
-	def has_contain(self, active_gs):
-		return len(self.floor_lst) > 1
 
 	# *** scope methods ***
 	def get_vis_contain_lst(self, active_gs):
@@ -101,7 +88,6 @@ class Room(ViewOnly):
 						mach_lst.append(invis_obj)
 		return mach_lst
 
-	# *** complex object methods ***
 	def remove_item(self, item, active_gs):
 		""" Removes the passed object from the methed-calling object. In Room, is used to enable the take() method.
 		"""
@@ -115,10 +101,20 @@ class Room(ViewOnly):
 		raise ValueError(f"Can't remove item {item} from room {self.name}")
 		return 
 
+	# *** display methods ***
+	def has_cond(self):
+		return True
+
+	def has_contain(self, active_gs):
+		return len(self.floor_lst) > 1
+
 	def disp_cond(self, active_gs):
 		""" Displays object-specific conditions. Used in examine().
 		"""
 		active_gs.buff_no_cr(active_gs.map.get_door_str(self))
+
+	def get_title_str(self):
+		return f"*** {self.full_name} ***"
 
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
@@ -144,6 +140,7 @@ class Room(ViewOnly):
 				obj.disp_contain(active_gs)
 		return
 
+	# *** verb methods ***
 	def go(self, dir, active_gs, creature = None):
 		""" Moves a Creature from one room to another
 		"""

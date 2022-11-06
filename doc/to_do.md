@@ -61,6 +61,24 @@ Nov 5, 2022
 	- postfixes:
 		- N/A
 
+*** Standard Module Sections ***
+Notes:
+- Custom sections exist for some complex classes like Room, Creature, and Container
+- Doulbe-spacing between module section; single-spacing between class sections
+
+<header = program, name, date, description>
+### import
+### local functions
+### classes
+<within a class>
+	# *** getters & setters ***
+	# *** attrib methods ***
+	# *** simple methods ***
+	# *** scope methods ***
+	# *** display methods ***
+	# *** complex methods ***
+	# *** verb methods ***
+""" *** Module Documentation *** """
 
 *** NOTES ***
 
@@ -173,10 +191,16 @@ Version 3.75 Goals
 - create Chair class
 - improve text UI
 
-- TBD: org already refactored classes into consistent sections
-	- IDEA: do I need a 'display' section?
-	- IDEA: create template for all comment setions - but deleted un-used comment setions (do I need *** attrib methods *** ?)
-	- IDEA: consistent sections for doc_strings
+- DONE: reload all tabs post iOS update (16.1)
+- DONE: org already refactored classes into consistent sections
+	- DONE: create a 'display' section
+	- DONE: create template for all comment setions - but delete un-used comment setions
+- TBD: consistent sections for doc_strings
+- TBD: Dedup methds:
+	- TBD: chk_contain_item and chk_in_contain_lst in Container class
+- TBD: refactor Food
+- TBD: refactor Weapon
+- TBD: refactor Switch
 - TBD: refactor Clothes => Garment
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
 	- CANCEL: add 'remove descript' for Creature.remove_item() on royal_crown
@@ -193,9 +217,6 @@ Version 3.75 Goals
 		- example = wear / remove text
 		- tempting to put this in the append / remove methods - but then there's no way to silence them
 		- instead, all buffering should be centralized into the noun methods where 'silence mode' can be enforced 
-- TBD: refactor Food
-- TBD: refactor Weapon
-- TBD: refactor Switch
 - TBD: refactor Creature / attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
 		- definitely hunger & thirst once burt gains these traits
@@ -216,15 +237,14 @@ Version 3.75 Goals
 	- TBD: can only examine / take other items in the chair (burt's own inventory)
 	- TBD: most other methods just generate "you'll have to stand up to do that"
 	- TBD: vis_lst = chair.vis_lst + room.name
-- TBD: perhaps create 'sit' and 'stand' methods for throne? Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
-	- IDEA: would be a bit tricky... interaction with rest of room would be inhibitted while sitting?
-	- IDEA: could possibly have sit be very brief with auto stand since it's not comfortable (not very satisfying) ???
-	- default sit = on floor ('criss-cross-apple-sauce')
-	- full implementation = 'sit on'
-	- for most verbs, sit scope = self (i.e. creature_scope)
-	- for examine (?), sit scope = room_scope
-- make backpack a true container???
-- TBD: create a centralized doc file
+	- TBD: perhaps create 'sit' and 'stand' methods for throne? 
+		- IDEA:Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
+		- IDEA: would be a bit tricky... interaction with rest of room would be inhibitted while sitting?
+		- IDEA: could possibly have sit be very brief with auto stand since it's not comfortable (not very satisfying) ???
+		- default sit = on floor ('criss-cross-apple-sauce')
+		- full implementation = 'sit on'
+		- for most verbs, sit scope = self (i.e. creature_scope)
+		- for examine (?), sit scope = room_scope
 - TBD: Description updates:
 	- TBD: hedgehog updates
 		- describe as "stallwart"
@@ -246,7 +266,9 @@ Version 3.75 Goals
 	- TBD: drop node 3 (portable_containers in containers) disp?
 		- TBD: can burt know about node 3 items he hasn't 'seen' in this game?
 		- TBD: play through Zork kitchen to test out
-
+- TBD: misc updates:
+	- TBD: make backpack a true container???
+	- TBD: create a centralized doc file
 
 ##########################
 ### VERSION 3.76 START ###

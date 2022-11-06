@@ -87,7 +87,7 @@ class Creature(ViewOnly):
 		def corpse(self):
 				return self._corpse
 
-		# *** hand methods ***
+		# *** hand attrib methods ***
 		def hand_lst_append(self, item):
 				self._hand_lst.append(item)
 
@@ -114,7 +114,7 @@ class Creature(ViewOnly):
 						return False
 				return self.get_hand_item().is_weapon()
 
-		# *** bkpk methods ***
+		# *** bkpk attrib methods ***
 		def bkpk_is_empty(self):
 				return not bool(self.bkpk_lst)
 
@@ -124,7 +124,7 @@ class Creature(ViewOnly):
 		def bkpk_lst_remove(self, item):
 				self._bkpk_lst.remove(item)
 
-		# *** worn methods ***
+		# *** worn attrib methods ***
 		def worn_lst_append(self, item):
 				self._worn_lst.append(item)
 
@@ -141,12 +141,17 @@ class Creature(ViewOnly):
 		def is_creature(self):
 				return True
 
-		def has_contain(self, active_gs):
+		# *** scope methods ***
+		def get_vis_contain_lst(self, active_gs):
+				""" Returns the list of visible objects contained in the referenced ('self') object
+				"""
+				contain_lst = []
 				if self == active_gs.hero:
-						creature_lst = self.hand_lst + self.bkpk_lst + self.worn_lst
-				else:
-					creature_lst = self.hand_lst + self.worn_lst
-				return bool(creature_lst)
+						node1_item_lst = self.hand_lst + self.worn_lst + self.bkpk_lst
+				else: node1_item_lst = self.hand_lst + self.worn_lst
+				[contain_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in node1_item_lst]
+##				return self.hand_lst + self.worn_lst + self.feature_lst # when Creatures couldn't hold Containers this was the whole method
+				return node1_item_lst + contain_lst + self.feature_lst
 
 		def chk_contain_item(self, item):
 				return item in self.hand_lst + self.bkpk_lst + self.worn_lst
@@ -166,17 +171,13 @@ class Creature(ViewOnly):
 				raise ValueError(f"Can't remove item {item} from creature {self.name}")
 				return 
 
-		# *** complex methods ***
-		def get_vis_contain_lst(self, active_gs):
-				""" Returns the list of visible objects contained in the referenced ('self') object
-				"""
-				contain_lst = []
+	# *** display methods ***
+		def has_contain(self, active_gs):
 				if self == active_gs.hero:
-						node1_item_lst = self.hand_lst + self.worn_lst + self.bkpk_lst
-				else: node1_item_lst = self.hand_lst + self.worn_lst
-				[contain_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in node1_item_lst]
-##				return self.hand_lst + self.worn_lst + self.feature_lst # when Creatures couldn't hold Containers this was the whole method
-				return node1_item_lst + contain_lst + self.feature_lst
+						creature_lst = self.hand_lst + self.bkpk_lst + self.worn_lst
+				else:
+					creature_lst = self.hand_lst + self.worn_lst
+				return bool(creature_lst)
 
 		def disp_contain(self, active_gs):
 				""" Displays a description of the visible items held by the obj. Used in examine().
@@ -213,6 +214,7 @@ class Creature(ViewOnly):
 								obj.disp_contain(active_gs)
 				return 
 
+	# *** verb methods ***
 		def show(self, obj, active_gs):
 				""" Shows an item to a creature.
 				

@@ -8,9 +8,6 @@
 from static_gbl import descript_dict, static_dict
 
 
-### local functions
-
-
 ### classes
 class Invisible(object):
 	def __init__(self, name):
@@ -88,8 +85,6 @@ class Writing(Invisible):
 	def is_writing(self):
 		return True
 
-	# *** display methods ***
-
 	# *** complex methods ***
 	def get_descript_str(self, active_gs):
 		"""Provides the current description of an object.
@@ -131,8 +126,6 @@ class ViewOnly(Writing):
 	def writing(self):
 		return self._writing
 
-	# *** attrib methods ***
-
 	# *** simple methods ***
 	def is_writing(self):
 		return False
@@ -170,9 +163,7 @@ class ViewOnly(Writing):
 
 	def disp_contain(self, active_gs):
 		pass
-		return 
-
-	# *** complex methods ***
+		return
 
 	# *** verb methods ***
 	def examine(self, active_gs):

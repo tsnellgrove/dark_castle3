@@ -8,8 +8,6 @@
 from static_gbl import descript_dict, static_dict
 from base_class_def import ViewOnly
 
-### local functions
-
 
 ### classes
 class Liquid(ViewOnly):
@@ -18,11 +16,11 @@ class Liquid(ViewOnly):
 		""" Liquids are ViewOnly objects. You cannot take a Liquid but you can drink() it from a Container.
 		"""
 
-	# *** simple obj methods ***
+	# *** simple methods ***
 	def is_liquid(self):
 		return True
 
-	# *** complex obj methods ***
+	# *** verb methods ***
 	def drink(self, active_gs):
 		""" Consumes a liquid if it is in a Container that Burt is holding in his hand.
 		"""

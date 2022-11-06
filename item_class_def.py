@@ -9,9 +9,6 @@ from static_gbl import descript_dict, static_dict
 from base_class_def import ViewOnly
 
 
-### local functions
-
-
 ### classes
 class Item(ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing):
@@ -23,7 +20,7 @@ class Item(ViewOnly):
 	def is_item(self):
 		return True
 
-	# *** complex object methods ***
+	# *** verb methods ***
 	def take(self, active_gs):
 		""" Takes an object from either the room or from Burt's inventory and places it into Burt's hand
 		"""

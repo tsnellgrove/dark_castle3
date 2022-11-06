@@ -10,9 +10,6 @@ from base_class_def import ViewOnly
 from item_class_def import Item
 
 
-### local functions
-
-
 ### classes
 class Door(ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key):
@@ -52,11 +49,10 @@ class Door(ViewOnly):
 	def is_not_closed(self):
 		return self.is_open is not False
 
-#	def chk_cond(self):
+	# *** display methods ***
 	def has_cond(self):
 		return True
 
-	# *** complex obj methods ***
 	def disp_cond(self, active_gs):
 		""" Displays object-specific conditions. Used in examine().
 		"""
@@ -69,6 +65,7 @@ class Door(ViewOnly):
 		active_gs.buff_no_cr(f"The {self.full_name} is open. ") # is_open == True
 		return 
 
+	# *** verb methods ***
 	def unlock(self, active_gs):
 		""" Unlocks a Door object.
 		"""
@@ -172,13 +169,7 @@ class Container(Door):
 	def contain_lst(self, new_obj):
 		self._contain_lst = new_obj
 
-	# *** attribute methods ***
-	def has_contain(self, active_gs):
-		return bool(self.contain_lst)
-	
-	def chk_in_contain_lst(self, obj):
-		return obj in self.contain_lst
-
+	# *** attrib methods ***
 	def contain_lst_append(self, item):
 		self._contain_lst.append(item)
 
@@ -188,20 +179,11 @@ class Container(Door):
 	def is_empty(self):
 		return not self.contain_lst
 
-	def chk_contain_item(self, item):
-		return item in self.contain_lst
-
 	# *** simple obj methods ***
 	def	is_container(self):
 		return True
 
-	def chk_content_prohibited(self, obj):
-		return obj.is_creature()
-
-	def remove_item(self, item, active_gs):
-		self.contain_lst_remove(item)
-
-	# *** complex obj methods ***
+	# *** scope methods ***
 	def get_vis_contain_lst(self, active_gs):
 		""" Returns the list of visible objects contained in the referenced ('self') object
 		"""
@@ -210,6 +192,30 @@ class Container(Door):
 			[node2_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in self.contain_lst]
 			return self.contain_lst + node2_lst
 		return []
+
+	def chk_contain_item(self, item):
+		return item in self.contain_lst
+
+	def chk_in_contain_lst(self, obj):
+		return obj in self.contain_lst
+
+	def remove_item(self, item, active_gs):
+		self.contain_lst_remove(item)
+
+	def chk_content_prohibited(self, obj):
+		return obj.is_creature()
+
+	# *** display methods ***
+	def has_contain(self, active_gs):
+		return bool(self.contain_lst)
+
+	def disp_cond(self, active_gs):
+		super(Container, self).disp_cond(active_gs)
+		""" Displays object-specific conditions. Used in examine().
+		"""
+		if self.is_empty() and self.is_not_closed():
+			active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
+		return 
 
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
@@ -222,14 +228,7 @@ class Container(Door):
 				obj.disp_contain(active_gs)
 		return 
 
-	def disp_cond(self, active_gs):
-		super(Container, self).disp_cond(active_gs)
-		""" Displays object-specific conditions. Used in examine().
-		"""
-		if self.is_empty() and self.is_not_closed():
-			active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
-		return 
-
+	# *** verb methods ***
 	def open(self, active_gs):
 		super(Container, self).open(active_gs)
 		""" Extends Door.open(). Upon opening a container, the player's natural question is "What's in it?". Open for containers answers this question whenever a container is opened. If the container is empty that information is displayed as well.
@@ -264,13 +263,14 @@ class PortableContainer(Container, Item):
 		"""A container that can be taken.
 		"""
 
-	# *** simple object methods ***
+	# *** simple methods ***
 	def is_item(self):
 		return True
 
 	def is_portablecontainer(self):
 		return True
 
+	# *** scope methods ***
 	def chk_content_prohibited(self, obj):
 		return super(PortableContainer, self).chk_content_prohibited(obj) or obj.is_portablecontainer()
 
@@ -281,6 +281,7 @@ class PortableLiquidContainer(PortableContainer):
 		"""A container that holds liquids and can be taken.
 		"""
 
+	# *** scope methods ***
 	def chk_content_prohibited(self, obj):
 		return super(PortableLiquidContainer, self).chk_content_prohibited(obj) or not obj.is_liquid()
 
