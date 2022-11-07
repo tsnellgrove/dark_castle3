@@ -115,7 +115,7 @@ class Weapon(Item):
 
 	* Item class:
 
-		Implementation Details:
+		Implementation Detail:
 			All objects of class Item are takable - there's no 'is_takable' attribute to prevent this. To temporarily prevent an Item from being taken you could:
 				1) Initially provide a ViewOnly object and then, when appropriate, swap in an Item object with the same full_name
 				2) Prevent the take() method via a Warning

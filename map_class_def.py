@@ -14,9 +14,12 @@ class Map(object):
 	def __init__(self, map_lst):
 		self._map_lst = map_lst # list of room_pair dicts; 
 				# format == [{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall}]
-		""" Stores the over-arching map of Dark Castle and provides methods for accessing and updating map info. Contains room_pairs and doors.
-		
-		Implementation Note:
+		""" *** Module Documentation ***
+
+		Overview:
+			Stores the over-arching map of Dark Castle and provides methods for accessing and updating map info. Contains room_pairs and doors.
+
+		Implementation Detail:
 			map_lst is stored in GameState (rather than being a constant declared in the class) to allow for major terrain changes. For example, after a major cave-in the room description might change dramatically and three new passages might open up. One could make all these updates to the original room - but it would be far easier just to redirect to a new room. The most famous example of this behavior is the magic pencil used at the end of The Lurking Horror.
 		
 		Historic Note:

@@ -80,6 +80,17 @@ Notes:
 	# *** verb methods ***
 """ *** Module Documentation *** """
 
+*** standard doc_string sections ***
+""" *** Module Documentation ***
+	* <ClassName> class:
+	- <method_name>() method [<ClassName> class]:
+		Overview:
+		Implementation Detail:
+		Program Architecture:
+		Game Design:
+		Historic Note:
+
+
 *** NOTES ***
 
 
@@ -195,7 +206,7 @@ Version 3.75 Goals
 - DONE: org already refactored classes into consistent sections
 	- DONE: create a 'display' section
 	- DONE: create template for all comment setions - but delete un-used comment setions
-- TBD: consistent sections for doc_strings
+- DONE: consistent sections for doc_strings
 - TBD: Dedup methds:
 	- TBD: chk_contain_item and chk_in_contain_lst in Container class
 - TBD: refactor Food
