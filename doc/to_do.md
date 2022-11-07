@@ -744,6 +744,10 @@ Glum Dragon
 	- can go east through mouse hole to bakery or smithy
 	- or west to libary - which will then connect player back to cooridor that leads to anti-chamber
 
+DCII Time Travel Ideas:
+- In past, burt must convince young_nana to give him Willy's broach in order to drop it behind throne or else timeline is doomed!
+- Perhaps burt first travels fwd in time a week and can pick up an unfinished portrait of burt & princess that gives future status (similar to Back to the Future)
+
 Princess Time-Travel Quest:
 - Princess asks Burt if he's an assassin, spy, or suitor => answer = 'baker'
 - Back in time, need to hide key behind brick (otherwise princess arrives but time travels back behind locked door)
