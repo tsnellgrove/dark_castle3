@@ -196,8 +196,8 @@ class Container(Door):
 	def chk_contain_item(self, item):
 		return item in self.contain_lst
 
-	def chk_in_contain_lst(self, obj):
-		return obj in self.contain_lst
+#	def chk_in_contain_lst(self, obj):
+#		return obj in self.contain_lst
 
 	def remove_item(self, item, active_gs):
 		self.contain_lst_remove(item)

@@ -207,8 +207,13 @@ Version 3.75 Goals
 	- DONE: create a 'display' section
 	- DONE: create template for all comment setions - but delete un-used comment setions
 - DONE: consistent sections for doc_strings
-- TBD: Dedup methds:
-	- TBD: chk_contain_item and chk_in_contain_lst in Container class
+- INPROC: Dedup methds:
+	- DONE: chk_contain_item() and chk_in_contain_lst() in Container class
+		- INFO: chk_contain_item() appears in ViewOnly, Room, Creature, Container
+		- INFO: chk_in_contain_lst() appears in Container
+	- DONE: Comment out chk_in_contain_lst()
+	- TBD: full test
+	- TBD: clean up comments
 - TBD: refactor Food
 - TBD: refactor Weapon
 - TBD: refactor Switch
