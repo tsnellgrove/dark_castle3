@@ -102,11 +102,15 @@ class Weapon(Item):
 	def __init__(self, name, full_name, root_name, descript_key, writing, desc_lst):
 		super().__init__(name, full_name, root_name, descript_key, writing)
 		self._desc_lst = desc_lst # descriptive terms associated with using the weapon to 'attack'
+		""" A Weapon can be used to attack. Weapon is a subclass of Item. 
+		"""
 
+	# *** getters & setters ***
 	@property
 	def desc_lst(self):
 		return self._desc_lst
 
+	# *** simple methods ***
 	def is_weapon(self):
 		return True
 
@@ -140,5 +144,11 @@ class Weapon(Item):
 				3) Local error checking ensures that 'obj' is not already in Burt's hand or held / worn by another creature
 				4) Therefore, 'obj' must be a takable Item!
 
+	# Weapon class:
+
+		Overview:
+			Unlike Zork, which embraced a D&D-style dice-rolling approach to combat, in Dark Castle, fights are decided by pure logic. If you attack a particular creature with a particular weapon, you will win. However, it seems fitting that some objects (shiny_sword, grimy_axe) are innately more likely to be effective than others (stale_biscuits, cheese_wedge, rusty_key). You can attack with the latter but the results are more likely to be comical than deadly.
+
+			The Weapon class also includes the attribute desc_lst, which provides elaborate verbs and adjectives for your attack.
 
 """

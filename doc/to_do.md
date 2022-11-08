@@ -214,8 +214,11 @@ Version 3.75 Goals
 	- DONE: Comment out chk_in_contain_lst()
 	- DONE: full test
 	- DONE: clean up comments
+- DONE: refactor Weapon
 - TBD: refactor Food
-- TBD: refactor Weapon
+	- IDEA: auto-gen descript for eat() ?
+	- IDEA: will I ever want the description to varry?
+	- IDEA: for now at least, use auto-gen description!
 - TBD: refactor Switch
 - TBD: refactor Clothes => Garment
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
