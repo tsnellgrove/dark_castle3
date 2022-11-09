@@ -48,18 +48,26 @@ class Item(ViewOnly):
 
 
 class Food(Item):
-	def __init__(self, name, full_name, root_name, descript_key, writing, eat_desc_key):
+#	def __init__(self, name, full_name, root_name, descript_key, writing, eat_desc_key):
+	def __init__(self, name, full_name, root_name, descript_key, writing):
 		super().__init__(name, full_name, root_name, descript_key, writing)
-		self._eat_desc_key = eat_desc_key # keys to description of eating food (stored in descript_dict)
+#		self._eat_desc_key = eat_desc_key # keys to description of eating food (stored in descript_dict)
+		""" Burt can eat() food. Food may be of interest to other creatures in Dark Castle as well. Food inherits from Item and can be taken.
+		"""
 
-	@property
-	def eat_desc_key(self):
-		return self._eat_desc_key
+	# *** getters & setters ***
+#	@property
+#	def eat_desc_key(self):
+#		return self._eat_desc_key
 
+	# *** verb methods ***
 	def eat(self, active_gs):
+		""" Removes the Food object from the game and provides a description of how the food tasted.
+		"""
 		creature = active_gs.hero
 		creature.hand_lst_remove(self)
-		active_gs.buffer(f"Eaten. The {self.full_name} {descript_dict[self.eat_desc_key]}")
+		eat_desc_key = f"{creature.name}_eat_{self.name}"
+		active_gs.buffer(f"Eaten. The {self.full_name} {descript_dict[eat_desc_key]}")
 		return 
 
 
@@ -147,7 +155,7 @@ class Weapon(Item):
 	# Weapon class:
 
 		Overview:
-			Unlike Zork, which embraced a D&D-style dice-rolling approach to combat, in Dark Castle, fights are decided by pure logic. If you attack a particular creature with a particular weapon, you will win. However, it seems fitting that some objects (shiny_sword, grimy_axe) are innately more likely to be effective than others (stale_biscuits, cheese_wedge, rusty_key). You can attack with the latter but the results are more likely to be comical than deadly.
+			Unlike Zork, which embraced a D&D-style dice-rolling approach to combat, in Dark Castle, fights are decided by pure logic. If Burt attacks a particular creature with a particular object, he will prefail. However, it seems fitting that some objects (shiny_sword, grimy_axe) are innately more likely to be effective than others (stale_biscuits, cheese_wedge, rusty_key). You can attack with the latter but the results are more likely to be comical than deadly.
 
 			The Weapon class also includes the attribute desc_lst, which provides elaborate verbs and adjectives for your attack.
 

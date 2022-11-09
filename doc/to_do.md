@@ -215,10 +215,11 @@ Version 3.75 Goals
 	- DONE: full test
 	- DONE: clean up comments
 - DONE: refactor Weapon
-- TBD: refactor Food
+- INPROC: refactor Food
 	- IDEA: auto-gen descript for eat() ?
 	- IDEA: will I ever want the description to varry?
-	- IDEA: for now at least, use auto-gen description!
+	- DONE: for now at least, use auto-gen description!
+	- TBD: clean up comments
 - TBD: refactor Switch
 - TBD: refactor Clothes => Garment
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
@@ -416,6 +417,8 @@ Version 3.79 Goals
 - TBD: how should creature be passed to Conditions & Results?
 - TBD: how to deal with error messages for non-burt creatures (e.g. test_frog walks into door)
 - IDEA: alternatives for how to to auto-move non-burt creatures: dir_lst, room_lst, room_dir_dict
+- IDEA: for food, maybe have the biscuits take 3 turns to eat... but if burt eats some he gets less time to grab the sword... 
+	- IDEA: maybe don't need warning so much... just keep describing them as tasting worse and worse? Food consistent within creatures?
 
 
 ##########################
