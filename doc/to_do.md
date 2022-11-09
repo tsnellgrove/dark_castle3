@@ -215,11 +215,11 @@ Version 3.75 Goals
 	- DONE: full test
 	- DONE: clean up comments
 - DONE: refactor Weapon
-- INPROC: refactor Food
+- DONE: refactor Food
 	- IDEA: auto-gen descript for eat() ?
 	- IDEA: will I ever want the description to varry?
 	- DONE: for now at least, use auto-gen description!
-	- TBD: clean up comments
+	- DONE: clean up comments
 - TBD: refactor Switch
 - TBD: refactor Clothes => Garment
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"

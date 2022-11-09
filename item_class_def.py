@@ -48,17 +48,10 @@ class Item(ViewOnly):
 
 
 class Food(Item):
-#	def __init__(self, name, full_name, root_name, descript_key, writing, eat_desc_key):
 	def __init__(self, name, full_name, root_name, descript_key, writing):
 		super().__init__(name, full_name, root_name, descript_key, writing)
-#		self._eat_desc_key = eat_desc_key # keys to description of eating food (stored in descript_dict)
 		""" Burt can eat() food. Food may be of interest to other creatures in Dark Castle as well. Food inherits from Item and can be taken.
 		"""
-
-	# *** getters & setters ***
-#	@property
-#	def eat_desc_key(self):
-#		return self._eat_desc_key
 
 	# *** verb methods ***
 	def eat(self, active_gs):
@@ -67,7 +60,7 @@ class Food(Item):
 		creature = active_gs.hero
 		creature.hand_lst_remove(self)
 		eat_desc_key = f"{creature.name}_eat_{self.name}"
-		active_gs.buffer(f"Eaten. The {self.full_name} {descript_dict[eat_desc_key]}")
+		active_gs.buffer(f"Eaten. {descript_dict[eat_desc_key]}")
 		return 
 
 
@@ -151,6 +144,11 @@ class Weapon(Item):
 				2) 'obj' must either be of class Item or inherit from class Item or else the method could not run
 				3) Local error checking ensures that 'obj' is not already in Burt's hand or held / worn by another creature
 				4) Therefore, 'obj' must be a takable Item!
+
+	# Food class:
+
+		Overview: 
+			Food currently has no purpose in the game other than to distract the hedgehog and provide some color. But I eventually envision creating an old-school game like Enchanter where Burt needs to keep eating and hydrating as he plays the game. This will eventually require that food have a quantity attribute (i.e. it takes 3 bites to finish the stale_biscuits) which can be percieved via examine() as a condition.
 
 	# Weapon class:
 

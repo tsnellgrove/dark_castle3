@@ -104,11 +104,8 @@ descript_dict = {
 		'remove_hedgehog_broach' : "You look down fondly at the broach in your hand and wonder if there are any lessons you can still learn from Nana's last words to you...",
 
 		### eat descriptions ###
-#		'cheese_eat' : "tastes delicious!",
-		'burt_eat_cheese_wedge' : "tastes delicious!",
-#		'biscuit_eat' : "taste like damp cardboard that's been run over by a cart. You already regret eating them.",
-		'burt_eat_stale_biscuits' : "taste like damp cardboard that's been run over by a cart. You already regret eating them.",
-#		".. especially as to some poor creature out there they might be a rare and wonderous delicacy.",
+		'burt_eat_cheese_wedge' : "The Cheese Wedge tastes delicious!",
+		'burt_eat_stale_biscuits' : "The Stale Biscuits taste like damp cardboard that's been run over by a cart. You already regret eating them.",
 
 		### drink descriptions ###
 		'drink_fresh_water' : "That was refreshing!",
