@@ -285,6 +285,7 @@ Version 3.75 Goals
 	- TBD: drop node 3 (portable_containers in containers) disp?
 		- TBD: can burt know about node 3 items he hasn't 'seen' in this game?
 		- TBD: play through Zork kitchen to test out
+	- TBD: glass_bottle to jug_from_enchanter
 - TBD: misc updates:
 	- TBD: make backpack a true container???
 	- TBD: create a centralized doc file
