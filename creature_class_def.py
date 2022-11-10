@@ -228,9 +228,9 @@ class Creature(ViewOnly):
 						2) Creaatures are not allowed to have Creatures or Surfaces in their inventory
 				"""
 ##				if (obj.is_container()) or (obj.is_creature()): # previous node_lvl limitation
-				if obj.is_creature():
-						active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
-						return 
+##				if obj.is_creature():
+##						active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
+##						return 
 				try:
 						active_gs.buffer(descript_dict[f"show_{self.name}_{obj.name}"]) 
 				except:
@@ -258,9 +258,9 @@ class Creature(ViewOnly):
 				"""
 ##				if (obj.is_container()) or (obj.is_creature()): # previous node_lvl limitation
 				creature = active_gs.hero
-				if obj.is_creature():
-						active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
-						return 
+##				if obj.is_creature():
+##						active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
+##						return 
 				try:
 						active_gs.buffer(descript_dict[f"give_{self.name}_{obj.name}"])
 						give_key = obj

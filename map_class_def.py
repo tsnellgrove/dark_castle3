@@ -20,7 +20,7 @@ class Map(object):
 			Stores the over-arching map of Dark Castle and provides methods for accessing and updating map info. Contains room_pairs and doors.
 
 		Implementation Detail:
-			map_lst is stored in GameState (rather than being a constant declared in the class) to allow for major terrain changes. For example, after a major cave-in the room description might change dramatically and three new passages might open up. One could make all these updates to the original room - but it would be far easier just to redirect to a new room. The most famous example of this behavior is the magic pencil used at the end of The Lurking Horror.
+			map_lst is stored in GameState (rather than being a constant declared in the class) to allow for major terrain changes. For example, after a major cave-in the room description might change dramatically and three new passages might open up. One could make all these updates to the original room - but it would be far easier just to redirect to a new room. The most famous example of this behavior is the magic pencil used at the end of The Lurking Horror / Enchanter.
 		
 		Historic Note:
 			Before refactoring, map_dict was an attribute of GameState and was a dictionary-of-dictionaries that was keyed off room and direction and returned next_room ast a value. Room.floor_lst contained doors and Room had an attribute, door_dict, that was keyed off direction and returned a door as its value. 

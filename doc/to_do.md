@@ -220,23 +220,34 @@ Version 3.75 Goals
 	- IDEA: will I ever want the description to varry?
 	- DONE: for now at least, use auto-gen description!
 	- DONE: clean up comments
-- TBD: refactor Switch
 - TBD: refactor Clothes => Garment
+	- TBD: rename class Clothes => Garment
+		- TBD: item_class_def
+		- TBD: mk_def_pkl
+	- TBD: decision about auto-gen try
+		- TBD: review how implemented in Creature show() and give()
+		- TBD: consider centralizing into a special buffer comment (e.g. active_gs.buff_try()  ) [for case of 'if try fails then pass']
+		- TBD: wear_descript & remove_desript attributes => auto-gen
+		- TBD: implement wear auto-gen (using 'try') on wear()
+		- TBD: extend take() method in Garment() and implement auto-gen using 'try'
+		- TBD: organize all auto-gens together in static_gbl.py
 	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
-	- CANCEL: add 'remove descript' for Creature.remove_item() on royal_crown
-	- CANCEL: create Garment class-specific remove() method that calls take() ??
-	- TBD: create an is_worn() method and use in take to trigger 'remove text'
-	- TBD: or possibly extend take() in Garment()
-	- TBD: auto-gen keys
-		- TBD: implement try for auto-gen key on both append and remove methods
-		- TBD: consider auto-gen keys for all verb methods (probably not)
-		- TBD: Organize auto-gen keys together
-		- TBD: consider creating a separate dict for autogen keys
-	- TBD: doc_string on where to include buffer text
-		- essay should be in Garment class, wear() method
-		- example = wear / remove text
-		- tempting to put this in the append / remove methods - but then there's no way to silence them
-		- instead, all buffering should be centralized into the noun methods where 'silence mode' can be enforced 
+	- TBD: doc_strings
+		- TBD: base doc_strings for Garment class and wear() method
+		- TBD: doc_string on where to include buffer text
+			- CANCEL: add 'remove descript' for Creature.remove_item() on royal_crown
+			- essay should be in Garment class, wear() method
+			- example = wear / remove text
+			- tempting to put this in the append / remove methods - but then there's no way to silence them
+			- instead, all buffering should be centralized into the noun methods where 'silence mode' can be enforced 
+		- TBD: also doc_string on why NOT remove() command (too many wrong ways to use)
+			- CANCEL: create Garment class-specific remove() method that calls take() ??
+	- TBD: clean-up
+		- TBD: comment out unused code
+		- TBD: testing
+		- TBD: clean up comments
+- TBD: update Food eat() with 'try' approach
+- TBD: refactor Switch
 - TBD: refactor Creature / attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
 		- definitely hunger & thirst once burt gains these traits
@@ -334,6 +345,10 @@ Version 3.76 Goals
 		- maybe each Creature has its own description list?
 			- desc list as creature attribute ???
 		- with a default examine() response similar to "the X is not interesting"
+	- TBD: auto-gen keys
+		- TBD: consider auto-gen keys for all verb methods (probably not)
+		- TBD: Organize auto-gen keys together
+		- TBD: consider creating a separate dict for autogen keys
 - TBD: refactor score
 	- TBD: determine max_score from summ of all possible scores?
 	- TBD: score = class with object being attribute in gs
@@ -359,6 +374,8 @@ Version 3.77 Goals
 - re-work app_main() flow with validate() module
 - refactor app_main() modules
 
+- IDEA: what if we had errors for wrong class usage *in* the wrong class?? e.g. an examine method that only throws an error in Writing??
+	- Could give context-aware errors for many wrong uses?
 - related thinking:
 	- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
 		- Should noun obj methods return a 'success' indicator (for pre & post actions)?
