@@ -64,17 +64,19 @@ class Food(Item):
 		return 
 
 
-class Clothes(Item):
-	def __init__(self, name, full_name, root_name, descript_key, writing, wear_descript, remove_descript, clothing_type):
+class Garment(Item):
+	def __init__(self, name, full_name, root_name, descript_key, writing, remove_descript, clothing_type):
+#	def __init__(self, name, full_name, root_name, descript_key, writing, wear_descript, remove_descript, clothing_type):
 		super().__init__(name, full_name, root_name, descript_key, writing)
-		self._wear_descript = wear_descript # description when wearing garment (can be None)
+#		self._wear_descript = wear_descript # description when wearing garment (can be None)
 		self._remove_descript = remove_descript # description when removing garment (can be None)
 		self._clothing_type = clothing_type # e.g. 'hat'; Burt can only wear one garment of a given type at a time
 
-	@property
-	def wear_descript(self):
-		return self._wear_descript
+#	@property
+#	def wear_descript(self):
+#		return self._wear_descript
 
+	# *** getters & setters ***
 	@property
 	def remove_descript(self):
 		return self._remove_descript
@@ -83,9 +85,11 @@ class Clothes(Item):
 	def clothing_type(self):
 		return self._clothing_type
 
+	# *** simple methods ***
 	def is_garment(self):
 		return True
 
+	# *** verb methods ***
 	def wear(self, active_gs):
 		creature = active_gs.hero
 		if creature.chk_clothing_type_worn(self):
@@ -94,8 +98,9 @@ class Clothes(Item):
 		creature.worn_lst_append(self)
 		creature.hand_lst_remove(self)
 		active_gs.buffer("Worn.")
-		if self.wear_descript is not None:
-			active_gs.buffer(descript_dict[self.wear_descript])
+		active_gs.buff_try_key(f"{creature.name}_wear_{self.name}")
+#		if self.wear_descript is not None:
+#			active_gs.buffer(descript_dict[self.wear_descript])
 		return 
 
 

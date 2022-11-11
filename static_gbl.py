@@ -96,9 +96,11 @@ descript_dict = {
 		'big_medal' : "This is the biggest, most-highly-polished medal you have ever seen.",
 
 		### wear descriptions ###
-		'wear_royal_crown' : "You now feel more regal.",
-		'wear_hedgehog_broach' : "There's no sign of magical properties but you're confident that Nana would be glad to see the Hedgehog Broach being worn in the castle again after all these years. You pause and wonder for a moment and wonder if there are any lessons you can still learn from Nana's last words to you...",
-		
+#		'wear_royal_crown' : "You now feel more regal.",
+		'burt_wear_royal_crown' : "You now feel more regal.",
+#		'wear_hedgehog_broach' : "There's no sign of magical properties but you're confident that Nana would be glad to see the Hedgehog Broach being worn in the castle again after all these years. You pause and wonder for a moment and wonder if there are any lessons you can still learn from Nana's last words to you...",
+		'burt_wear_hedgehog_broach' : "There's no sign of magical properties but you're confident that Nana would be glad to see the Hedgehog Broach being worn in the castle again after all these years. You pause and wonder if there are any lessons you can still learn from Nana's last words to you...",
+				
 		### remove descriptions ###
 		'remove_royal_crown' : "You suddenly feel a bit less kingly.",
 		'remove_hedgehog_broach' : "You look down fondly at the broach in your hand and wonder if there are any lessons you can still learn from Nana's last words to you...",

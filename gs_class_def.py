@@ -123,6 +123,12 @@ class GameState(object):
 				out_buff_new = out_buff_old + "\n"
 				self._state_dict['out_buff'] = out_buff_new
 
+		def buff_try_key(self, desc_key):
+				try:
+						self.buffer(descript_dict[desc_key]) 
+				except:
+						pass
+
 		def reset_buff(self):
 				self._state_dict['out_buff'] = ""
 

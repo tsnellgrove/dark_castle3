@@ -220,18 +220,27 @@ Version 3.75 Goals
 	- IDEA: will I ever want the description to varry?
 	- DONE: for now at least, use auto-gen description!
 	- DONE: clean up comments
-- TBD: refactor Clothes => Garment
-	- TBD: rename class Clothes => Garment
-		- TBD: item_class_def
-		- TBD: mk_def_pkl
-	- TBD: decision about auto-gen try
-		- TBD: review how implemented in Creature show() and give()
-		- TBD: consider centralizing into a special buffer comment (e.g. active_gs.buff_try()  ) [for case of 'if try fails then pass']
-		- TBD: wear_descript & remove_desript attributes => auto-gen
-		- TBD: implement wear auto-gen (using 'try') on wear()
-		- TBD: extend take() method in Garment() and implement auto-gen using 'try'
+- INPROC: refactor Clothes => Garment
+	- DONE: rename class Clothes => Garment
+		- DONE: item_class_def
+		- DONE: mk_def_pkl
+	- DONE: decision about auto-gen try
+		- IDEA: try_buff() takes obj_spec, obj_def, and class_def attributes?
+		- DONE: review how implemented in Creature show() and give()
+		- DONE: consider centralizing into a special buffer comment (e.g. active_gs.buff_try()  ) [for case of 'if try fails then pass']
+		- DONE: cretae buff_try_key() in GameState class
+	- DONE: update wear() to use buff_try_key()
+		- DONE: comment out wear_descript
+		- DONE: updaate obj declarations in mk_def_pkl.py
+		- DONE: testing
+	- TBD: update take() to use buff_try_key()
+		- TBD: extend take() method in Garment() and implement auto-gen using buff_try_key()
+		- TBD: comment out remove_descript
+		- TBD: updaate obj declarations in mk_def_pkl.py
+		- TBD: testing
+	- TBD: gen org
 		- TBD: organize all auto-gens together in static_gbl.py
-	- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
+		- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
 	- TBD: doc_strings
 		- TBD: base doc_strings for Garment class and wear() method
 		- TBD: doc_string on where to include buffer text
@@ -246,7 +255,7 @@ Version 3.75 Goals
 		- TBD: comment out unused code
 		- TBD: testing
 		- TBD: clean up comments
-- TBD: update Food eat() with 'try' approach
+- TBD: update Food eat() with buff_try_key approach
 - TBD: refactor Switch
 - TBD: refactor Creature / attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??

@@ -8,7 +8,7 @@
 import pickle
 from base_class_def import Invisible, Writing, ViewOnly
 from room_class_def import Room
-from item_class_def import Item, Food, Clothes, Weapon
+from item_class_def import Item, Food, Garment, Weapon
 from door_class_def import Door, Container, PortableContainer, PortableLiquidContainer
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from misc_class_def import Liquid
@@ -60,12 +60,11 @@ stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_bis
 
 fresh_water = Liquid('fresh_water', 'Fresh Water', 'water', 'fresh_water', None)
 
-royal_crown = Clothes('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 'wear_royal_crown', 'remove_royal_crown', 'hat')
-baseball_cap = Clothes('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, None, None, 'hat')
-hedgehog_broach = Clothes('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedgehog_broach', None,
-				'wear_hedgehog_broach', 'remove_hedgehog_broach', 'pin')
-red_bandana = Clothes('red_bandana', 'Red Bandana', 'bandana', 'red_bandana', None, None, None, 'hat')
-big_medal = Clothes('big_medal', 'Big Medal', 'medal', 'big_medal', gold_capitals, None, None, 'pin')
+royal_crown = Garment('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 'remove_royal_crown', 'hat')
+baseball_cap = Garment('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, None, 'hat')
+hedgehog_broach = Garment('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedgehog_broach', None, 'remove_hedgehog_broach', 'pin')
+red_bandana = Garment('red_bandana', 'Red Bandana', 'bandana', 'red_bandana', None, None, 'hat')
+big_medal = Garment('big_medal', 'Big Medal', 'medal', 'big_medal', gold_capitals, None, 'pin')
 
 grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing,
 				[['arcs', 'lightening-fast stroke'],['cleaves', 'violent swing'],['hacks', 'deadly intent']])
