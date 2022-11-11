@@ -90,6 +90,8 @@ class Garment(Item):
 		return True
 
 	def chk_is_worn(self, creature):
+		print(creature)
+		print(creature.worn_lst)
 		return self in creature.worn_lst	
 
 	# *** verb methods ***
