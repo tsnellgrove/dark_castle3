@@ -85,11 +85,25 @@ class Garment(Item):
 	def clothing_type(self):
 		return self._clothing_type
 
-	# *** simple methods ***
+	# *** simple methods ***	
 	def is_garment(self):
 		return True
 
+	def chk_is_worn(self, creature):
+		return self in creature.worn_lst	
+
 	# *** verb methods ***
+	def take(self, active_gs):
+		super(Garment, self).take(active_gs)
+		""" Extends Item.take().
+		"""
+		creature = active_gs.hero
+		print(self.chk_is_worn(creature))
+		print(f"{creature.name}_remove_{self.name}")
+		if self.chk_is_worn(creature):
+			active_gs.buff_try_key(f"{creature.name}_remove_{self.name}")
+		return 
+
 	def wear(self, active_gs):
 		creature = active_gs.hero
 		if creature.chk_clothing_type_worn(self):

@@ -102,8 +102,10 @@ descript_dict = {
 		'burt_wear_hedgehog_broach' : "There's no sign of magical properties but you're confident that Nana would be glad to see the Hedgehog Broach being worn in the castle again after all these years. You pause and wonder if there are any lessons you can still learn from Nana's last words to you...",
 				
 		### remove descriptions ###
-		'remove_royal_crown' : "You suddenly feel a bit less kingly.",
-		'remove_hedgehog_broach' : "You look down fondly at the broach in your hand and wonder if there are any lessons you can still learn from Nana's last words to you...",
+#		'remove_royal_crown' : "You suddenly feel a bit less kingly.",
+		'burt_remove_royal_crown' : "You suddenly feel a bit less kingly.",
+#		'remove_hedgehog_broach' : "You look down fondly at the broach in your hand and wonder if there are any lessons you can still learn from Nana's last words to you...",
+		'burt_remove_hedgehog_broach' : "You look down fondly at the broach in your hand and wonder if there are any lessons you can still learn from Nana's last words to you...",		
 
 		### eat descriptions ###
 		'burt_eat_cheese_wedge' : "The Cheese Wedge tastes delicious!",
