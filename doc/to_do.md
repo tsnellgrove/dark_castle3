@@ -254,7 +254,7 @@ Version 3.75 Goals
 		- TBD: also doc_string on why NOT remove() command (too many wrong ways to use)
 			- CANCEL: create Garment class-specific remove() method that calls take() ??
 	- TBD: full test
-	- TBD: update Food eat() with buff_try_key approach
+- TBD: update Food eat() with buff_try_key approach
 - TBD: refactor Liquid
 - TBD: refactor Switch
 - TBD: refactor Creature / attack() => 'attack x with y'
@@ -424,6 +424,8 @@ Version 3.77 Goals
 		- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
 		- this should be enabled by mode = 'exe_creature'
 - TBD: refactor app_main() modules
+- TBD: doc_string about why errors and actions must be clearly delineated (e.g. and error cannot change gamestate)
+- TBD: considers re-distributing not-in hand & read errors back into verb methods ???
 
 
 ##########################
