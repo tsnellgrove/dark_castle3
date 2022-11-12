@@ -69,15 +69,16 @@ class Food(Item):
 
 
 class Garment(Item):
-	def __init__(self, name, full_name, root_name, descript_key, writing, remove_descript, clothing_type):
+#	def __init__(self, name, full_name, root_name, descript_key, writing, remove_descript, clothing_type):
+	def __init__(self, name, full_name, root_name, descript_key, writing, clothing_type):
 		super().__init__(name, full_name, root_name, descript_key, writing)
-		self._remove_descript = remove_descript # description when removing garment (can be None)
+#		self._remove_descript = remove_descript # description when removing garment (can be None)
 		self._clothing_type = clothing_type # e.g. 'hat'; Burt can only wear one garment of a given type at a time
 
 	# *** getters & setters ***
-	@property
-	def remove_descript(self):
-		return self._remove_descript
+#	@property
+#	def remove_descript(self):
+#		return self._remove_descript
 
 	@property
 	def clothing_type(self):

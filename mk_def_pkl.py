@@ -60,11 +60,11 @@ stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_bis
 
 fresh_water = Liquid('fresh_water', 'Fresh Water', 'water', 'fresh_water', None)
 
-royal_crown = Garment('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 'remove_royal_crown', 'hat')
-baseball_cap = Garment('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, None, 'hat')
-hedgehog_broach = Garment('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedgehog_broach', None, 'remove_hedgehog_broach', 'pin')
-red_bandana = Garment('red_bandana', 'Red Bandana', 'bandana', 'red_bandana', None, None, 'hat')
-big_medal = Garment('big_medal', 'Big Medal', 'medal', 'big_medal', gold_capitals, None, 'pin')
+royal_crown = Garment('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 'hat')
+baseball_cap = Garment('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, 'hat')
+hedgehog_broach = Garment('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedgehog_broach', None, 'pin')
+red_bandana = Garment('red_bandana', 'Red Bandana', 'bandana', 'red_bandana', None, 'hat')
+big_medal = Garment('big_medal', 'Big Medal', 'medal', 'big_medal', gold_capitals, 'pin')
 
 grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing,
 				[['arcs', 'lightening-fast stroke'],['cleaves', 'violent swing'],['hacks', 'deadly intent']])

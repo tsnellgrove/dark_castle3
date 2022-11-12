@@ -233,11 +233,11 @@ Version 3.75 Goals
 		- DONE: comment out wear_descript
 		- DONE: updaate obj declarations in mk_def_pkl.py
 		- DONE: testing
-	- INPROC: update take() to use buff_try_key()
+	- DONE: update take() to use buff_try_key()
 		- DONE: update take() method and implement auto-gen using buff_try_key()
-		- TBD: comment out remove_descript
-		- TBD: updaate obj declarations in mk_def_pkl.py
-		- TBD: testing
+		- DONE: comment out remove_descript
+		- DONE: updaate obj declarations in mk_def_pkl.py
+		- DONE: testing
 	- TBD: gen org
 		- TBD: organize all auto-gens together in static_gbl.py
 		- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
