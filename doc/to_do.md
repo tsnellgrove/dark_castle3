@@ -238,10 +238,10 @@ Version 3.75 Goals
 		- DONE: comment out remove_descript
 		- DONE: updaate obj declarations in mk_def_pkl.py
 		- DONE: testing
-	- TBD: gen org
-		- TBD: attribute clothing_type => garment_type 
-		- TBD: Creature chk_clothing_type_worn() method => chk_garment_type_worn()
-		- TBD: Creature chk_is_worn() method => chk_garment_worn
+	- INPROC: gen org
+		- DONE: attribute clothing_type => garment_type 
+		- DONE: Creature chk_clothing_type_worn() method => chk_type_worn()
+		- CANCEL: Creature chk_is_worn() method => chk_garment_worn
 		- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
 		- TBD: organize all auto-gens together in static_gbl.py
 	- TBD: doc_strings

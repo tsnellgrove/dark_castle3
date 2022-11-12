@@ -69,14 +69,18 @@ class Food(Item):
 
 
 class Garment(Item):
-	def __init__(self, name, full_name, root_name, descript_key, writing, clothing_type):
+#	def __init__(self, name, full_name, root_name, descript_key, writing, clothing_type):
+	def __init__(self, name, full_name, root_name, descript_key, writing, garment_type):
 		super().__init__(name, full_name, root_name, descript_key, writing)
-		self._clothing_type = clothing_type # e.g. 'hat'; Burt can only wear one garment of a given type at a time
+#		self._clothing_type = clothing_type # e.g. 'hat'; Burt can only wear one garment of a given type at a time
+		self._garment_type = garment_type # e.g. 'hat'; Burt can only wear one garment of a given type at a time
 
 	# *** getters & setters ***
 	@property
-	def clothing_type(self):
-		return self._clothing_type
+#	def clothing_type(self):
+#		return self._clothing_type
+	def garment_type(self):
+		return self._garment_type
 
 	# *** simple methods ***	
 	def is_garment(self):
@@ -85,8 +89,10 @@ class Garment(Item):
 	# *** verb methods ***
 	def wear(self, active_gs):
 		creature = active_gs.hero
-		if creature.chk_clothing_type_worn(self):
-			active_gs.buffer(f"You are already wearing a {self.clothing_type}. You can't wear two garments of the same type at the same time.")
+#		if creature.chk_clothing_type_worn(self):
+		if creature.chk_type_worn(self):
+#			active_gs.buffer(f"You are already wearing a {self.clothing_type}. You can't wear two garments of the same type at the same time.")
+			active_gs.buffer(f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
 			return 
 		creature.worn_lst_append(self)
 		creature.hand_lst_remove(self)
