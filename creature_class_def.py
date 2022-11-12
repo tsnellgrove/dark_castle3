@@ -134,8 +134,6 @@ class Creature(ViewOnly):
 		def worn_is_empty(self):
 				return not bool(self.worn_lst)
 
-#		def chk_clothing_type_worn(self, item):
-#				return any(item.clothing_type == garment.clothing_type for garment in self.worn_lst)
 		def chk_type_worn(self, item):
 				return any(item.garment_type == garment.garment_type for garment in self.worn_lst)
 
