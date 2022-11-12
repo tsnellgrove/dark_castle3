@@ -239,8 +239,11 @@ Version 3.75 Goals
 		- DONE: updaate obj declarations in mk_def_pkl.py
 		- DONE: testing
 	- TBD: gen org
-		- TBD: organize all auto-gens together in static_gbl.py
+		- TBD: attribute clothing_type => garment_type 
+		- TBD: Creature chk_clothing_type_worn() method => chk_garment_type_worn()
+		- TBD: Creature chk_is_worn() method => chk_garment_worn
 		- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
+		- TBD: organize all auto-gens together in static_gbl.py
 	- TBD: doc_strings
 		- TBD: base doc_strings for Garment class and wear() method
 		- TBD: doc_string on where to include buffer text
@@ -251,11 +254,8 @@ Version 3.75 Goals
 			- instead, all buffering should be centralized into the noun methods where 'silence mode' can be enforced 
 		- TBD: also doc_string on why NOT remove() command (too many wrong ways to use)
 			- CANCEL: create Garment class-specific remove() method that calls take() ??
-	- TBD: clean-up
-		- TBD: comment out unused code
-		- TBD: testing
-		- TBD: clean up comments
-- TBD: update Food eat() with buff_try_key approach
+	- TBD: full test
+	- TBD: update Food eat() with buff_try_key approach
 - TBD: refactor Switch
 - TBD: refactor Creature / attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
