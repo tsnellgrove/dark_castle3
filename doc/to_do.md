@@ -233,8 +233,8 @@ Version 3.75 Goals
 		- DONE: comment out wear_descript
 		- DONE: updaate obj declarations in mk_def_pkl.py
 		- DONE: testing
-	- TBD: update take() to use buff_try_key()
-		- TBD: extend take() method in Garment() and implement auto-gen using buff_try_key()
+	- INPROC: update take() to use buff_try_key()
+		- DONE: update take() method and implement auto-gen using buff_try_key()
 		- TBD: comment out remove_descript
 		- TBD: updaate obj declarations in mk_def_pkl.py
 		- TBD: testing

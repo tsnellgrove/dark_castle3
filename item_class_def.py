@@ -32,9 +32,14 @@ class Item(ViewOnly):
 			if obj.is_creature() and obj is not active_gs.hero and self in obj.get_vis_contain_lst(active_gs):
 				active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 				return 
+
+		active_gs.buffer("Taken")		
+		if creature.chk_is_worn(self):
+			active_gs.buff_try_key(f"{creature.name}_remove_{self.name}")
+
 		active_gs.get_room().remove_item(self, active_gs)
 		creature.put_in_hand(self)
-		active_gs.buffer("Taken")
+#		active_gs.buffer("Taken")
 		return
 
 	def drop(self, active_gs):
@@ -89,22 +94,23 @@ class Garment(Item):
 	def is_garment(self):
 		return True
 
-	def chk_is_worn(self, creature):
-		print(creature)
-		print(creature.worn_lst)
-		return self in creature.worn_lst	
+#	def chk_is_worn(self, creature):
+#		print(creature)
+#		print(creature.worn_lst)
+#		return self in creature.worn_lst	
 
 	# *** verb methods ***
-	def take(self, active_gs):
-		super(Garment, self).take(active_gs)
-		""" Extends Item.take().
-		"""
-		creature = active_gs.hero
-		print(self.chk_is_worn(creature))
-		print(f"{creature.name}_remove_{self.name}")
-		if self.chk_is_worn(creature):
-			active_gs.buff_try_key(f"{creature.name}_remove_{self.name}")
-		return 
+#	def take(self, active_gs):
+#		super(Garment, self).take(active_gs)
+#		""" Extends Item.take().
+#		"""
+#		creature = active_gs.hero
+#		print(creature.chk_is_worn(self))
+#		print(f"{creature.name}_remove_{self.name}")
+##		if self.chk_is_worn(creature):
+#		if creature.chk_is_worn(self):
+#			active_gs.buff_try_key(f"{creature.name}_remove_{self.name}")
+#		return 
 
 	def wear(self, active_gs):
 		creature = active_gs.hero
