@@ -39,7 +39,6 @@ class Item(ViewOnly):
 
 		active_gs.get_room().remove_item(self, active_gs)
 		creature.put_in_hand(self)
-#		active_gs.buffer("Taken")
 		return
 
 	def drop(self, active_gs):
@@ -71,15 +70,9 @@ class Food(Item):
 
 class Garment(Item):
 	def __init__(self, name, full_name, root_name, descript_key, writing, remove_descript, clothing_type):
-#	def __init__(self, name, full_name, root_name, descript_key, writing, wear_descript, remove_descript, clothing_type):
 		super().__init__(name, full_name, root_name, descript_key, writing)
-#		self._wear_descript = wear_descript # description when wearing garment (can be None)
 		self._remove_descript = remove_descript # description when removing garment (can be None)
 		self._clothing_type = clothing_type # e.g. 'hat'; Burt can only wear one garment of a given type at a time
-
-#	@property
-#	def wear_descript(self):
-#		return self._wear_descript
 
 	# *** getters & setters ***
 	@property
@@ -94,24 +87,7 @@ class Garment(Item):
 	def is_garment(self):
 		return True
 
-#	def chk_is_worn(self, creature):
-#		print(creature)
-#		print(creature.worn_lst)
-#		return self in creature.worn_lst	
-
 	# *** verb methods ***
-#	def take(self, active_gs):
-#		super(Garment, self).take(active_gs)
-#		""" Extends Item.take().
-#		"""
-#		creature = active_gs.hero
-#		print(creature.chk_is_worn(self))
-#		print(f"{creature.name}_remove_{self.name}")
-##		if self.chk_is_worn(creature):
-#		if creature.chk_is_worn(self):
-#			active_gs.buff_try_key(f"{creature.name}_remove_{self.name}")
-#		return 
-
 	def wear(self, active_gs):
 		creature = active_gs.hero
 		if creature.chk_clothing_type_worn(self):
@@ -121,8 +97,6 @@ class Garment(Item):
 		creature.hand_lst_remove(self)
 		active_gs.buffer("Worn.")
 		active_gs.buff_try_key(f"{creature.name}_wear_{self.name}")
-#		if self.wear_descript is not None:
-#			active_gs.buffer(descript_dict[self.wear_descript])
 		return 
 
 
