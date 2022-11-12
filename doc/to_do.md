@@ -238,12 +238,11 @@ Version 3.75 Goals
 		- DONE: comment out remove_descript
 		- DONE: updaate obj declarations in mk_def_pkl.py
 		- DONE: testing
-	- INPROC: gen org
+	- DONE: gen org
 		- DONE: attribute clothing_type => garment_type 
 		- DONE: Creature chk_clothing_type_worn() method => chk_type_worn()
 		- CANCEL: Creature chk_is_worn() method => chk_garment_worn
-		- TBD: sort out error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
-		- TBD: organize all auto-gens together in static_gbl.py
+		- DONE: organize all auto-gens together in static_gbl.py
 	- TBD: doc_strings
 		- TBD: base doc_strings for Garment class and wear() method
 		- TBD: doc_string on where to include buffer text
@@ -256,6 +255,7 @@ Version 3.75 Goals
 			- CANCEL: create Garment class-specific remove() method that calls take() ??
 	- TBD: full test
 	- TBD: update Food eat() with buff_try_key approach
+- TBD: refactor Liquid
 - TBD: refactor Switch
 - TBD: refactor Creature / attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
@@ -399,6 +399,8 @@ Version 3.77 Goals
 		- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
 		- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
 		- if fail validate() , buffer error and end app_main()
+
+- TBD: sort out validate() error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
 
 - TBD: interpreter - should all nouns be singular? Can 'a' vs. 'an' be fixed?
 - TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put

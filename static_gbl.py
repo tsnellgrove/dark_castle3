@@ -95,22 +95,6 @@ descript_dict = {
 		'red_bandana' : "The ragged red bandana simultaneously projects juanty air of fluffy dog at the park - and also the rugged look of an 80s-era martial arts master ready for their final showdown.",
 		'big_medal' : "This is the biggest, most-highly-polished medal you have ever seen.",
 
-		### wear descriptions ###
-#		'wear_royal_crown' : "You now feel more regal.",
-		'burt_wear_royal_crown' : "You now feel more regal.",
-#		'wear_hedgehog_broach' : "There's no sign of magical properties but you're confident that Nana would be glad to see the Hedgehog Broach being worn in the castle again after all these years. You pause and wonder for a moment and wonder if there are any lessons you can still learn from Nana's last words to you...",
-		'burt_wear_hedgehog_broach' : "There's no sign of magical properties but you're confident that Nana would be glad to see the Hedgehog Broach being worn in the castle again after all these years. You pause and wonder if there are any lessons you can still learn from Nana's last words to you...",
-				
-		### remove descriptions ###
-		'burt_remove_royal_crown' : "You suddenly feel a bit less kingly.",
-		'burt_remove_hedgehog_broach' : "You look down fondly at the broach in your hand and wonder if there are any lessons you can still learn from Nana's last words to you...",		
-
-		### eat descriptions ###
-		'burt_eat_cheese_wedge' : "The Cheese Wedge tastes delicious!",
-		'burt_eat_stale_biscuits' : "The Stale Biscuits taste like damp cardboard that's been run over by a cart. You already regret eating them.",
-
-		### drink descriptions ###
-		'drink_fresh_water' : "That was refreshing!",
 
 		### test objects ###
 		'brass_key' : "The key is brass.",
@@ -237,7 +221,29 @@ descript_dict = {
 
 		'antechamber' :"You are standing in a what feels more like a wide, tall-ceilinged corridor than a room. Apparently this is the room-before-the-room, the pre-room before the really, really grand room that comes after it. If so, the next room must be quite something because back in it's day this spot was clearly impressive. Alas, like all of the castle it has fallen on dark times and now feels more sinister than grand. The east and west walls are bare stone. To the south is an open passageway leading to the Main Hall and to the north there is an Iron Portcullis that guards the path to the grand chamber beyond. Near the Iron Portcullis on the west wall there is a small Alcove. It appears to have a Control Panel with some levers and a button on it but you can't see it very well due to the dim light. The whole north end of the room is cloaked in shadows that make you uneasy.",
 
-		'throne_room' : "The room you're currently in is vast - almost cavernous. At the far end sits what must have once been a grand and glorious Throne. To the right of the Throne is a giant Stone Coffer and to the left an elegant pedestal that holds what appears to be a delicate Crystal Box. On either wall there are tall windows - now shattered and ruined - but you you remember hearing stories from your great grandmother, Nana, of the beautiful, glowing stained glass that once filled them. And above the room's entrance hangs a vast (though quite dusty) Family Tree."
+		'throne_room' : "The room you're currently in is vast - almost cavernous. At the far end sits what must have once been a grand and glorious Throne. To the right of the Throne is a giant Stone Coffer and to the left an elegant pedestal that holds what appears to be a delicate Crystal Box. On either wall there are tall windows - now shattered and ruined - but you you remember hearing stories from your great grandmother, Nana, of the beautiful, glowing stained glass that once filled them. And above the room's entrance hangs a vast (though quite dusty) Family Tree.",
+
+
+
+# *** auto-gen keys ***
+
+		### wear descriptions ###
+		'burt_wear_royal_crown' : "You now feel more regal.",
+		'burt_wear_hedgehog_broach' : "There's no sign of magical properties but you're confident that Nana would be glad to see the Hedgehog Broach being worn in the castle again after all these years. You pause and wonder if there are any lessons you can still learn from Nana's last words to you...",
+				
+		### remove descriptions ###
+		'burt_remove_royal_crown' : "You suddenly feel a bit less kingly.",
+		'burt_remove_hedgehog_broach' : "You look down fondly at the broach in your hand and wonder if there are any lessons you can still learn from Nana's last words to you...",		
+
+		### eat descriptions ###
+		'burt_eat_cheese_wedge' : "The Cheese Wedge tastes delicious!",
+		'burt_eat_stale_biscuits' : "The Stale Biscuits taste like damp cardboard that's been run over by a cart. You already regret eating them.",
+
+		### drink descriptions ###
+		'drink_fresh_water' : "That was refreshing!",
+
+
+
 }
 
 
