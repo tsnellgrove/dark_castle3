@@ -72,6 +72,8 @@ class Garment(Item):
 	def __init__(self, name, full_name, root_name, descript_key, writing, garment_type):
 		super().__init__(name, full_name, root_name, descript_key, writing)
 		self._garment_type = garment_type # e.g. 'hat'; Burt can only wear one garment of a given type at a time
+		""" Burt can wear() garments. He can only wear one garment of a given type at a time. Some garments may impart special powers.
+		"""
 
 	# *** getters & setters ***
 	@property
@@ -84,6 +86,8 @@ class Garment(Item):
 
 	# *** verb methods ***
 	def wear(self, active_gs):
+		""" Places a garment in a creature's worn inventory and provides a description of any effects that result.
+		"""
 		creature = active_gs.hero
 		if creature.chk_type_worn(self):
 			active_gs.buffer(f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
@@ -141,10 +145,38 @@ class Weapon(Item):
 				3) Local error checking ensures that 'obj' is not already in Burt's hand or held / worn by another creature
 				4) Therefore, 'obj' must be a takable Item!
 
+
 	# Food class:
 
 		Overview: 
 			Food currently has no purpose in the game other than to distract the hedgehog and provide some color. But I eventually envision creating an old-school game like Enchanter where Burt needs to keep eating and hydrating as he plays the game. This will eventually require that food have a quantity attribute (i.e. it takes 3 bites to finish the stale_biscuits) which can be percieved via examine() as a condition.
+
+
+	# Garment class:
+
+		Overview:
+			The Garment class was initially named Clothing and, originally, was only used to enable the royal_crown to be worn. But as the Creature class came more into focus, I made the decision that I wanted Dark Castle to be more vibrantly inhabited than Zork or Enchanter. Since  conversation in IF is extremely challenging, this meant providing more clues to the player about the personality and needs of creatures that Burt meets. Clothing became a key mechanism to display these traits.
+
+		Implementation Detail:
+			For magic garments, like the royal_crown, we want to provide a clue to the player that the garment has special powers. When using the wear() command this is easy. But, for reasons explained under Program Architecture, I decided that there should be no remove() command. Instead, to remove a garment, Burt would just take it. I still wanted to alert that player that the magic effects of the royal_crown had ceased when the garment was removed - but this meant distinguishing between 'take royal_crown' (from the floor_lst) and 'take royal_crown' (from burt's worn_lst).
+			
+			This made linking the magic power alerts to the Creature worn_list_append() and worn_lst_remove() methods very tempting. But, here too, we run into an issue: the long-term goal for Dark Castle as a toolset is to enable every verb method to be executable for any creature. In some cases, the creature may not even be in the same room as Burt... so we need to be able to silence user feedback from a verb method when appropriate.
+			
+			The upshot of all this pondering is taht I ended up incorporating the alert-on-removing-garment into the take() method using the chk_is_worn() method. The key take-away from this thought process is:
+
+			"All user output from verb actions MUST be centralized in the verb method!"
+
+		Program Architecture:
+			We usually focus on the reasons for the solutions we have implemented. But sometimes, the most important decisions are about what we choose NOT to do - and why. After creating the wear() method it seemed very natural to create a remove() method. Not only did it make alerting players to the royal_crown's magic powers easy, it also felt like natural language... when we take off an article of clothing we 'remove' it. And lastly, it increased the verb-count of Dark Castle... which feels like an innately good metric to increase in an interpreter-driven game.
+			
+			But there's a catch... how should remove() work for non-Garment objects? Can you remove() an object from a room's floor? If so, then remove() is actually just an oddly-chosen synonym for take (just like 'get') and does nothing to solve our alert-on-removing-garment problem. Alternatively, maybe remove() only works for class Garment... and it seems fair to throw an error on 'removing' an object from the floor... but what about 'remove kinging_scroll from crystal_box'? That absolutely sounds like valid usage. And while we're at it, what about 'removing' something from Burt's hand? Language usage gets frought fast! 
+			
+			Ultimately, the alternative to having remove() be a synonym for take() is to make it only work for class Garment. But this latter option is far from ideal. The underlying driver behind increasing Dark Castle's verb count is a less artificial language interaction... but the only thing more artificial than a small verb-count is a bunch of general-purpose verbs that can only ever be used in very narrowly defined contexts.
+
+			The result of this thinking is that remove() was eliminated as a verb - if burt wants to take off a garment he just uses the take() command. The broader mantra that accompanies this decision is:
+
+			"When in doubt, expand the applicability of existing verbs rather than co-opting new general-purpose verbs for narrow purposes."
+
 
 	# Weapon class:
 

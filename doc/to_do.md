@@ -220,7 +220,7 @@ Version 3.75 Goals
 	- IDEA: will I ever want the description to varry?
 	- DONE: for now at least, use auto-gen description!
 	- DONE: clean up comments
-- INPROC: refactor Clothes => Garment
+- DONE: refactor Clothes => Garment
 	- DONE: rename class Clothes => Garment
 		- DONE: item_class_def
 		- DONE: mk_def_pkl
@@ -243,17 +243,17 @@ Version 3.75 Goals
 		- DONE: Creature chk_clothing_type_worn() method => chk_type_worn()
 		- CANCEL: Creature chk_is_worn() method => chk_garment_worn
 		- DONE: organize all auto-gens together in static_gbl.py
-	- TBD: doc_strings
-		- TBD: base doc_strings for Garment class and wear() method
-		- TBD: doc_string on where to include buffer text
+	- DONE: doc_strings
+		- DONE: base doc_strings for Garment class and wear() method
+		- DONE: doc_string on where to include buffer text
 			- CANCEL: add 'remove descript' for Creature.remove_item() on royal_crown
-			- essay should be in Garment class, wear() method
-			- example = wear / remove text
-			- tempting to put this in the append / remove methods - but then there's no way to silence them
-			- instead, all buffering should be centralized into the noun methods where 'silence mode' can be enforced 
-		- TBD: also doc_string on why NOT remove() command (too many wrong ways to use)
+			- IDEA: essay should be in Garment class, wear() method
+			- IDEA: example = wear / remove text
+			- IDEA: tempting to put this in the append / remove methods - but then there's no way to silence them
+			- IDEA: instead, all buffering should be centralized into the noun methods where 'silence mode' can be enforced 
+		- DONE: also doc_string on why NOT remove() command (too many wrong ways to use)
 			- CANCEL: create Garment class-specific remove() method that calls take() ??
-	- TBD: full test
+	- DONE: full test
 - TBD: update Food eat() with buff_try_key approach
 - TBD: refactor Liquid
 - TBD: refactor Switch
