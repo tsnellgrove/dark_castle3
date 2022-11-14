@@ -256,7 +256,10 @@ Version 3.75 Goals
 	- DONE: full test
 - DONE: update Food eat() with buff_try_key approach
 - DONE: refactor Liquid
-- TBD: refactor Switch
+- INPROC: refactor Switch
+	- DONE: fix indenting
+	- DONE: implement std comment sections
+	- TBD:
 - TBD: refactor Creature / attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
 		- definitely hunger & thirst once burt gains these traits
