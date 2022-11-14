@@ -255,7 +255,7 @@ Version 3.75 Goals
 			- CANCEL: create Garment class-specific remove() method that calls take() ??
 	- DONE: full test
 - DONE: update Food eat() with buff_try_key approach
-- TBD: refactor Liquid
+- DONE: refactor Liquid
 - TBD: refactor Switch
 - TBD: refactor Creature / attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??

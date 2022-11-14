@@ -240,7 +240,7 @@ descript_dict = {
 		'burt_eat_stale_biscuits' : "The Stale Biscuits taste like damp cardboard that's been run over by a cart. You already regret eating them.",
 
 		### drink descriptions ###
-		'drink_fresh_water' : "That was refreshing!",
+		'burt_drink_fresh_water' : "That was refreshing!",
 
 
 

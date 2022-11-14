@@ -35,9 +35,13 @@ class Liquid(ViewOnly):
 			return 
 		hand_item.contain_lst.remove(self)
 		active_gs.buffer("Drunk.")
-		try:
-			active_gs.buffer(descript_dict["drink_"+self.name])
-		except:
-			pass
+		active_gs.buff_try_key(f"{creature.name}_drink_{self.name}")
 		return 
 
+
+""" *** Module Documentation ***
+
+	* Item class:
+		Overview: Liquids and drinking them currently have no purpose in the game but in future versions I intend to implement food and drink requirements similar to those in Enchanter. I also plan to eventually implement a pour() verb method that allows Burt to do more with water than just drink() it.
+
+"""
