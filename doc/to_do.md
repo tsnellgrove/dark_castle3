@@ -254,7 +254,7 @@ Version 3.75 Goals
 		- DONE: also doc_string on why NOT remove() command (too many wrong ways to use)
 			- CANCEL: create Garment class-specific remove() method that calls take() ??
 	- DONE: full test
-- TBD: update Food eat() with buff_try_key approach
+- DONE: update Food eat() with buff_try_key approach
 - TBD: refactor Liquid
 - TBD: refactor Switch
 - TBD: refactor Creature / attack() => 'attack x with y'

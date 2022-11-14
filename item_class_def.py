@@ -63,8 +63,8 @@ class Food(Item):
 		"""
 		creature = active_gs.hero
 		creature.hand_lst_remove(self)
-		eat_desc_key = f"{creature.name}_eat_{self.name}"
-		active_gs.buffer(f"Eaten. {descript_dict[eat_desc_key]}")
+		active_gs.buffer(f"Eaten.")
+		active_gs.buff_try_key(f"{creature.name}_eat_{self.name}")
 		return 
 
 
