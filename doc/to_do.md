@@ -292,6 +292,8 @@ Version 3.75 Goals
 	- TBD: hedgehog updates
 		- describe as "stallwart"
 		- Have the hedgehog think burt is playing if he attacks with a non-weapon; starts making wax-on, wax-off motions with paws
+		- Upate water_bottle to Enchanter jug
+		- Update shiny_sword to Zork I elven sword
 	- TBD: Updatate the trademark on the stale_biscuits... 
 		- perhaps the biscuits say "Nana's" - or better yet, have a sword-and-key emblam on them?
 		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
