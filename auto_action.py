@@ -11,8 +11,7 @@ def auto_action(active_gs):
 		for obj in mach_obj_lst:
 
 				if obj.trigger_type == 'auto_switch_reset':
-						if obj.switch_state != obj.def_switch_state:
-								obj.switch_state = obj.def_switch_state
+						obj.switch_state = obj.def_switch_state
 
 				elif obj.trigger_type == 'auto_act' and obj.is_timer() and obj.active:
 						obj.run_mach(active_gs)

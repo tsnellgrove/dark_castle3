@@ -170,7 +170,7 @@ Learning Links:
 
 Basic Refactor Steps:
 	- refactor pass - basics
-		- shorten variable names
+		- shorten / standardize variable names
 		- MOVE ASSIGNEMENTS CLOSER TO USAGE!
 		- leverage if-then shield pattern 
 		- provide 'None' options for variables and 'match' options for Conditions
@@ -259,7 +259,14 @@ Version 3.75 Goals
 - INPROC: refactor Switch
 	- DONE: fix indenting
 	- DONE: implement std comment sections
-	- TBD: review ButtonSwitch auto-action
+	- DONE: review ButtonSwitch auto-action
+	- DONE: basic doc_strings
+		- DONE: class doc_strings
+		- DONE: verb doc_strings
+	- TBD: extensive doc_strings
+		- TBD: mix-in pattern
+		- TBD: is_mach()
+		- TBD: switches are dumb
 - TBD: refactor Creature / attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
 		- definitely hunger & thirst once burt gains these traits
