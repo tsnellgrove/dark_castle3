@@ -259,7 +259,7 @@ Version 3.75 Goals
 - INPROC: refactor Switch
 	- DONE: fix indenting
 	- DONE: implement std comment sections
-	- TBD:
+	- TBD: review ButtonSwitch auto-action
 - TBD: refactor Creature / attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
 		- definitely hunger & thirst once burt gains these traits
