@@ -2347,6 +2347,23 @@ Version 3.68 Goals
 
 
 ##########################
+### VERSION 3.7x START ###
+##########################
+
+3.7x Goals
+- implement validate module between interp() and cmd_exe()
+- convert Burt to class Creature
+- modularize Machs
+- refactor all code
+- document all code in-line with doc_strings
+
+
+Learn about refactoring:
+- DONE: Watch refactoring videos and take notes on advice
+- DONE: Re-order and grouip refactoring advice
+
+
+##########################
 ### VERSION 3.70 START ###
 ##########################
 
