@@ -184,18 +184,18 @@ Version 3.75 Goals
 	- DONE: full test
 - DONE: update Food eat() with buff_try_key approach
 - DONE: refactor Liquid
-- INPROC: refactor Switch
+- DONE: refactor Switch
 	- DONE: fix indenting
 	- DONE: implement std comment sections
 	- DONE: review ButtonSwitch auto-action
 	- DONE: basic doc_strings
 		- DONE: class doc_strings
 		- DONE: verb doc_strings
-	- TBD: extensive doc_strings
-		- TBD: mix-in pattern
-		- TBD: switches are dumb
-		- TBD: is_mach()
-		- TBD: Where do switches reside?
+	- DONE: extensive doc_strings
+		- DONE: overview / is_mach()
+		- DONE: mix-in pattern
+		- DONE: switches are dumb
+		- DONE: Where do switches reside?
 - TBD: refactor Creature / attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
 		- definitely hunger & thirst once burt gains these traits
