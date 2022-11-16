@@ -96,3 +96,11 @@ class LeverSwitch(SwitchMixIn, ViewOnly):
 		return 
 
 
+""" *** Module Documentation ***
+
+	* Item class:
+
+		Overview: 
+			Switches trigger and control the behavior of machines. Some switches also exhibit very simple Machine behaviors themselves (i.e. is_mach() is set to True for the SwitchMixIn class). 
+
+"""
