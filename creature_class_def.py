@@ -10,225 +10,215 @@ from static_gbl import descript_dict
 
 ### classes
 class Creature(ViewOnly):
-		def __init__(self, name, full_name, root_name, descript_key, writing,
-						state, hand_lst, bkpk_lst, worn_lst, feature_lst, invis_lst,
-						give_dict, is_attackable, attacked_dict, attacking_dict, corpse):
-				super().__init__(name, full_name, root_name, descript_key, writing)
-				self._state = state # creature state; not yet in use (v3.70) - intended for state machine functionality
-				self._hand_lst = hand_lst # list of items in creature's hand; is typically only 1 item 
-				self._bkpk_lst = bkpk_lst # list of items in creature's backpack
-				self._worn_lst = worn_lst # list of items currently worn by the creature
-				self._feature_lst = feature_lst # list of visible obj associated w creature but not included in i or l; used for traits like 'loyalty' 
-				self._invis_lst = invis_lst # list of invisible obj associated w creature; typically used for Modular Machines
-				self._give_dict = give_dict # dict of creature reactions to gifts
-				self._is_attackable = is_attackable # bool indicating weather Burt can attack the creature
-				self._attacked_dict = attacked_dict # dict of creature reactions to being attacked
-				self._attacking_dict = attacking_dict # dict of results from creature attacking Burt; no longer needed once type(burt) == creature
-				self._corpse = corpse # if creature can be attacked and killed, 'corpse' == obj for dead creature; else 'corpse' == None
-				
-		# *** getters & setters ***
-		@property
-		def state(self):
-				return self._state
+	def __init__(self, name, full_name, root_name, descript_key, writing, state, hand_lst, bkpk_lst,
+			worn_lst, feature_lst, invis_lst, give_dict, is_attackable, attacked_dict, attacking_dict, corpse):
+		super().__init__(name, full_name, root_name, descript_key, writing)
+		self._state = state # creature state; not yet in use (v3.70) - intended for state machine functionality
+		self._hand_lst = hand_lst # list of items in creature's hand; is typically only 1 item 
+		self._bkpk_lst = bkpk_lst # list of items in creature's backpack
+		self._worn_lst = worn_lst # list of items currently worn by the creature
+		self._feature_lst = feature_lst # list of visible obj associated w creature but not included in i or l; used for traits like 'loyalty' 
+		self._invis_lst = invis_lst # list of invisible obj associated w creature; typically used for Modular Machines
+		self._give_dict = give_dict # dict of creature reactions to gifts
+		self._is_attackable = is_attackable # bool indicating weather Burt can attack the creature
+		self._attacked_dict = attacked_dict # dict of creature reactions to being attacked
+		self._attacking_dict = attacking_dict # dict of results from creature attacking Burt; no longer needed once type(burt) == creature
+		self._corpse = corpse # if creature can be attacked and killed, 'corpse' == obj for dead creature; else 'corpse' == None
 
-		@state.setter
-		def state(self, new_state):
-				self._state = new_state
+	# *** getters & setters ***
+	@property
+	def state(self):
+		return self._state
 
-		@property
-		def hand_lst(self):
-				return self._hand_lst
+	@state.setter
+	def state(self, new_state):
+		self._state = new_state
 
-		@hand_lst.setter
-		def hand_lst(self, new_state):
-				self._hand_lst = new_state
+	@property
+	def hand_lst(self):
+		return self._hand_lst
 
-		@property
-		def bkpk_lst(self):
-				return self._bkpk_lst
+	@hand_lst.setter
+	def hand_lst(self, new_state):
+		self._hand_lst = new_state
 
-		@bkpk_lst.setter
-		def bkpk_lst(self, new_state):
-				self._bkpk_lst = new_state
+	@property
+	def bkpk_lst(self):
+		return self._bkpk_lst
 
-		@property
-		def worn_lst(self):
-				return self._worn_lst
+	@bkpk_lst.setter
+	def bkpk_lst(self, new_state):
+		self._bkpk_lst = new_state
 
-		@worn_lst.setter
-		def worn_lst(self, new_state):
-				self._worn_lst = new_state
+	@property
+	def worn_lst(self):
+		return self._worn_lst
 
-		@property
-		def feature_lst(self):
-				return self._feature_lst
+	@worn_lst.setter
+	def worn_lst(self, new_state):
+		self._worn_lst = new_state
 
-		@property
-		def invis_lst(self):
-				return self._invis_lst
+	@property
+	def feature_lst(self):
+		return self._feature_lst
 
-		@property
-		def give_dict(self):
-				return self._give_dict
+	@property
+	def invis_lst(self):
+		return self._invis_lst
 
-		@property
-		def is_attackable(self):
-				return self._is_attackable
+	@property
+	def give_dict(self):
+		return self._give_dict
 
-		@property
-		def attacked_dict(self):
-				return self._attacked_dict
+	@property
+	def is_attackable(self):
+		return self._is_attackable
 
-		@property
-		def attacking_dict(self):
-				return self._attacking_dict
+	@property
+	def attacked_dict(self):
+		return self._attacked_dict
 
-		@property
-		def corpse(self):
-				return self._corpse
+	@property
+	def attacking_dict(self):
+		return self._attacking_dict
 
-		# *** hand attrib methods ***
-		def hand_lst_append(self, item):
-				self._hand_lst.append(item)
+	@property
+	def corpse(self):
+		return self._corpse
 
-		def hand_lst_remove(self, item):
-				self._hand_lst.remove(item)
+	# *** hand attrib methods ***
+	def hand_lst_append(self, item):
+		self._hand_lst.append(item)
 
-		def hand_is_empty(self):
-				return not bool(self.hand_lst)
+	def hand_lst_remove(self, item):
+		self._hand_lst.remove(item)
 
-		def get_hand_item(self):
-				return self.hand_lst[0]
+	def hand_is_empty(self):
+		return not bool(self.hand_lst)
 
-		def put_in_hand(self, new_item):
-				if not self.hand_is_empty():
-						self.bkpk_lst_append(self.get_hand_item())
-						self.hand_lst_remove(self.get_hand_item())
-				self.hand_lst_append(new_item)
+	def get_hand_item(self):
+		return self.hand_lst[0]
 
-		def chk_in_hand(self, obj):
-				return obj in self.hand_lst
+	def put_in_hand(self, new_item):
+		if not self.hand_is_empty():
+			self.bkpk_lst_append(self.get_hand_item())
+			self.hand_lst_remove(self.get_hand_item())
+		self.hand_lst_append(new_item)
 
-		def in_hand_is_weapon(self):
-				if self.hand_is_empty():
-						return False
-				return self.get_hand_item().is_weapon()
+	def chk_in_hand(self, obj):
+		return obj in self.hand_lst
 
-		# *** bkpk attrib methods ***
-		def bkpk_is_empty(self):
-				return not bool(self.bkpk_lst)
+	def in_hand_is_weapon(self):
+		if self.hand_is_empty():
+			return False
+		return self.get_hand_item().is_weapon()
 
-		def bkpk_lst_append(self, item):
-				self._bkpk_lst.append(item)
+	# *** bkpk attrib methods ***
+	def bkpk_is_empty(self):
+		return not bool(self.bkpk_lst)
 
-		def bkpk_lst_remove(self, item):
-				self._bkpk_lst.remove(item)
+	def bkpk_lst_append(self, item):
+		self._bkpk_lst.append(item)
 
-		# *** worn attrib methods ***
-		def worn_lst_append(self, item):
-				self._worn_lst.append(item)
+	def bkpk_lst_remove(self, item):
+		self._bkpk_lst.remove(item)
 
-		def worn_lst_remove(self, item):
-				self._worn_lst.remove(item)
+	# *** worn attrib methods ***
+	def worn_lst_append(self, item):
+		self._worn_lst.append(item)
 
-		def worn_is_empty(self):
-				return not bool(self.worn_lst)
+	def worn_lst_remove(self, item):
+		self._worn_lst.remove(item)
 
-		def chk_type_worn(self, item):
-				return any(item.garment_type == garment.garment_type for garment in self.worn_lst)
+	def worn_is_empty(self):
+		return not bool(self.worn_lst)
 
-		def chk_is_worn(self, garment):
-				return(garment in self.worn_lst)
+	def chk_type_worn(self, item):
+		return any(item.garment_type == garment.garment_type for garment in self.worn_lst)
 
-		# *** simple methods ***
-		def is_creature(self):
-				return True
+	def chk_is_worn(self, garment):
+		return(garment in self.worn_lst)
 
-		# *** scope methods ***
-		def get_vis_contain_lst(self, active_gs):
-				""" Returns the list of visible objects contained in the referenced ('self') object
-				"""
-				contain_lst = []
-				if self == active_gs.hero:
-						node1_item_lst = self.hand_lst + self.worn_lst + self.bkpk_lst
-				else: node1_item_lst = self.hand_lst + self.worn_lst
-				[contain_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in node1_item_lst]
-##				return self.hand_lst + self.worn_lst + self.feature_lst # when Creatures couldn't hold Containers this was the whole method
-				return node1_item_lst + contain_lst + self.feature_lst
+	# *** simple methods ***
+	def is_creature(self):
+		return True
 
-		def chk_contain_item(self, item):
-				return item in self.hand_lst + self.bkpk_lst + self.worn_lst
+	# *** scope methods ***
+	def get_vis_contain_lst(self, active_gs):
+		""" Returns the list of visible objects contained in the referenced ('self') object
+		"""
+		contain_lst = []
+		if self == active_gs.hero:
+			node1_item_lst = self.hand_lst + self.worn_lst + self.bkpk_lst
+		else: node1_item_lst = self.hand_lst + self.worn_lst
+		[contain_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in node1_item_lst]
+##		return self.hand_lst + self.worn_lst + self.feature_lst # when Creatures couldn't hold Containers this was the whole method
+		return node1_item_lst + contain_lst + self.feature_lst
 
-		def remove_item(self, item, active_gs):
-				""" Removes the passed object from the methed-calling object.
-				"""
-				if item in self.hand_lst:
-						self.hand_lst_remove(item)
-						return 
-				if item in self.bkpk_lst:
-						self.bkpk_lst_remove(item)
-						return 
-				if item in self.worn_lst:
-						self.worn_lst_remove(item)
-						return 
-				raise ValueError(f"Can't remove item {item} from creature {self.name}")
-				return 
+	def chk_contain_item(self, item):
+		return item in self.hand_lst + self.bkpk_lst + self.worn_lst
+
+	def remove_item(self, item, active_gs):
+		""" Removes the passed object from the methed-calling object.
+		"""
+		if item in self.hand_lst:
+			self.hand_lst_remove(item)
+			return 
+		if item in self.bkpk_lst:
+			self.bkpk_lst_remove(item)
+			return 
+		if item in self.worn_lst:
+			self.worn_lst_remove(item)
+			return 
+		raise ValueError(f"Can't remove item {item} from creature {self.name}")
+		return 
 
 	# *** display methods ***
-		def has_contain(self, active_gs):
-				if self == active_gs.hero:
-						creature_lst = self.hand_lst + self.bkpk_lst + self.worn_lst
-				else:
-					creature_lst = self.hand_lst + self.worn_lst
-				return bool(creature_lst)
+	def has_contain(self, active_gs):
+		if self == active_gs.hero:
+			creature_lst = self.hand_lst + self.bkpk_lst + self.worn_lst
+		else:
+			creature_lst = self.hand_lst + self.worn_lst
+		return bool(creature_lst)
 
-		def disp_contain(self, active_gs):
-				""" Displays a description of the visible items held by the obj. Used in examine().
-				"""
-				if not self.hand_is_empty():
-						if self == active_gs.hero:
-								active_gs.buff_no_cr(f"You are holding a {self.get_hand_item().full_name}. ")
-								for obj in self.hand_lst:
-										obj.disp_contain(active_gs)
-								active_gs.buff_cr()
-						else:
-								active_gs.buff_no_cr(f"The {self.full_name} is holding a {self.get_hand_item().full_name}. ")
-								for obj in self.hand_lst:
-										obj.disp_contain(active_gs)
-				if self == active_gs.hero and not self.bkpk_is_empty():
-						if not self.hand_is_empty():
-								active_gs.buff_cr()
-						bkpk_str_lst = [obj.full_name for obj in self.bkpk_lst]
-						bkpk_str = ", ".join(bkpk_str_lst)
-						active_gs.buff_no_cr(f"In your backpack you have: {bkpk_str}. ")
-						for obj in self.bkpk_lst:
-								obj.disp_contain(active_gs)
-				if not self.worn_is_empty():
-						worn_txt_lst = [obj.full_name for obj in self.worn_lst]
-						worn_str = ", ".join(worn_txt_lst)
-						if self == active_gs.hero:
-								if (not self.bkpk_is_empty()) or (not self.hand_is_empty()):
-										active_gs.buff_cr()
-										active_gs.buff_cr()
-								active_gs.buff_no_cr(f"You are wearing: {worn_str}.")
-						else:
-								active_gs.buff_no_cr(f"The {self.full_name} is wearing: {worn_str}.")
-						for obj in self.worn_lst:
-								obj.disp_contain(active_gs)
-				return 
+	def disp_contain(self, active_gs):
+		""" Displays a description of the visible items held by the obj. Used in examine().
+		"""
+		if not self.hand_is_empty():
+			if self == active_gs.hero:
+				active_gs.buff_no_cr(f"You are holding a {self.get_hand_item().full_name}. ")
+				for obj in self.hand_lst:
+					obj.disp_contain(active_gs)
+				active_gs.buff_cr()
+			else:
+				active_gs.buff_no_cr(f"The {self.full_name} is holding a {self.get_hand_item().full_name}. ")
+				for obj in self.hand_lst:
+					obj.disp_contain(active_gs)
+		if self == active_gs.hero and not self.bkpk_is_empty():
+			if not self.hand_is_empty():
+				active_gs.buff_cr()
+			bkpk_str_lst = [obj.full_name for obj in self.bkpk_lst]
+			bkpk_str = ", ".join(bkpk_str_lst)
+			active_gs.buff_no_cr(f"In your backpack you have: {bkpk_str}. ")
+			for obj in self.bkpk_lst:
+				obj.disp_contain(active_gs)
+		if not self.worn_is_empty():
+			worn_txt_lst = [obj.full_name for obj in self.worn_lst]
+			worn_str = ", ".join(worn_txt_lst)
+			if self == active_gs.hero:
+				if (not self.bkpk_is_empty()) or (not self.hand_is_empty()):
+					active_gs.buff_cr()
+					active_gs.buff_cr()
+				active_gs.buff_no_cr(f"You are wearing: {worn_str}.")
+			else:
+				active_gs.buff_no_cr(f"The {self.full_name} is wearing: {worn_str}.")
+			for obj in self.worn_lst:
+				obj.disp_contain(active_gs)
+		return 
 
 	# *** verb methods ***
 		def show(self, obj, active_gs):
 				""" Shows an item to a creature.
-				
-				'Show' is meant to be informational in nature. The Player will learn something about the creature - what it desires and fears - based on its response to the item shown. Therefore the show() method provides only a text response. Provoking an action response (e.g. running away) is outside the standard use case and should be implemented via a Modular Machine.
-				
-				Historic Note:
-						show() is new to v3 (as are all commands requiring a preposition - as v1 / v2 only supported 2-word commands). Previously, the player's only insight into creature sentiment was the creature's description. Some test players of v2 felt that the act of giving the hedgehog the sword to get the silver key was pretty arbitrary - and they had a point - the clues were pretty subtle.  show() enables greater insight into a creature's mindset - which in turn anables a Dark Castle world of more objects and variety while maintain a feel of determinism.
-				
-				Implementation specifics:
-						1) When creating a new creature, remember to create the show() response descriptions in descript_dict() using the auto-genertated key format.
-						2) Creaatures are not allowed to have Creatures or Surfaces in their inventory
 				"""
 ##				if (obj.is_container()) or (obj.is_creature()): # previous node_lvl limitation
 ##				if obj.is_creature():
@@ -244,20 +234,6 @@ class Creature(ViewOnly):
 
 		def give(self, obj, active_gs):
 				""" Gives an item to a creature.
-				
-				'Give' is meant to enable barter and trade. If the Player gives an item to a creature - particularly if that creature has shown interest in the item via show() - then the player can reasonably hope for some other useful item in return. Therefore the give() method enables a text response, determines whether the creature will accept the gift, and what, if anything, it will give Burt in return. Because give() can fulfill a creature's needs it also has the power to change the creature's mood and therefore update their description.
-				
-				Historic Note:
-						Like show(), give() is new to v3. In v1 / v2 , Burt just dropped the 'stale_biscuits' on the floor of the 'main_hall' and the 'royal_hedgehog' charged forward and gobbled them up. With a new interpreter in v3 that enabled prepositions, give() seemed like a more intentional way to enable barter. It also provides more information about creature sentiment regarding objects.
-				
-				Implementation specifics:
-						1) When creating a new creature, remember to create the response descriptions and (if appropriate) the creature description updates in descript_dict() using the auto-genertated key format.
-						
-						2) It is assumed that if the creature 'shows no interest' in Burt's gift then they will not accept it, will not provide a gift in response, and will not change their demeanor as a result of the offer.
-						
-						3) It is assumed that if a creature won't accept an item from Burt, then they also won't have a gift to give in return and that their demeanor will not change.
-						
-						4) Creaatures are not allowed to have Creatures or Surfaces in their inventory
 				"""
 ##				if (obj.is_container()) or (obj.is_creature()): # previous node_lvl limitation
 				creature = active_gs.hero
@@ -478,17 +454,60 @@ class Creature(ViewOnly):
 				active_gs.buffer(attack_res_str)
 				return 
 
-"""
-*** Creature Method Philosopy ***
 
-* Over-Arching Approach *
-I'm thinking through two different approaches to creatures. In one approach - I'll call it the "primatives" approach - I declare that each creature has wants and fears (e.g. the hedgehog wants the biscuits, the goblin fears the shiny sword). Under the primatives approach the creatures have innate personalities and the role of creature methods like 'show', 'give', and 'attack' are just to expose those personalities. This is attractive in that it makes the creatures more real and gives general guidance for their future behaviors. However, I'm not sure it's realistic. Dark Castle is not a life simulator... there is no ecosystem or food chain (I mean really, the castle has been abandoned for generations - what have they all been eating??). And the creature's wants and fears are quite idiosyncratic... the goblin is an autocrat who wants to prevent passage to the throne room or any rejuvination of the castle... the hedgehog, along with loving biscuits, is the keeper of Bright Castle's spirit and wants to see it restored. These are not easy desires to model in a simple python object!
+""" *** Module Documentation ***
 
-The other approach I'm considering - I'll call it the "mechanical" approach - is that a creature is wholy defined by its methods. There is no attempt to track and expose a creature's inner desires - their actions are their all - like early impressionism, their surface is their whole. I find this a little unsatisfying - but I also think it's much more implementable. So at least for version 3.x this is the approach I'll take. Perhaps in version 4.x I'll find away to capture the hedgehog's inner yearnings in code ;-D
+	* Creature class:
 
-So, based on the mechanical approach, creatures have three standard interaction methods:
+		Overview: 
+			I'm thinking through two different approaches to creatures. In one approach - I'll call it the "primatives" approach - I declare that each creature has wants and fears (e.g. the hedgehog wants the biscuits, the goblin fears the shiny sword). Under the primatives approach the creatures have innate personalities and the role of creature methods like 'show', 'give', and 'attack' are just to expose those personalities. This is attractive in that it makes the creatures more real and gives general guidance for their future behaviors. However, I'm not sure it's realistic. Dark Castle is not a life simulator... there is no ecosystem or food chain (I mean really, the castle has been abandoned for generations - what have they all been eating??). And the creature's wants and fears are quite idiosyncratic... the goblin is an autocrat who wants to prevent passage to the throne room or any rejuvination of the castle... the hedgehog, along with loving biscuits, is the keeper of Bright Castle's spirit and wants to see it restored. These are not easy desires to model in a simple python object!
+			
+			The other approach I'm considering - I'll call it the "mechanical" approach - is that a creature is wholy defined by its methods. There is no attempt to track and expose a creature's inner desires - their actions are their all - like early impressionism, their surface is their whole. I find this a little unsatisfying - but I also think it's much more implementable. So at least for version 3.x this is the approach I'll take. Perhaps in version 4.x I'll find away to capture the hedgehog's inner yearnings in code ;-D
+			
+			So, based on the mechanical approach, creatures have three standard interaction methods:
+			
+			- The 'Attack' method is a bit more complex and is intended to enable combat between Burt and creatures. The intent in Dark Castle is for combat to be a purely logical exercise... so if you attack a Creature with the correct weapon you will always win. Burt's "weapon" is whatever he is holding in his hand. If Burt's hand is empty he attacks with his Fist. For a given Creature and burt_weapon, attack() generates a result_code - which has options like 'creature_flee', 'creature_death', and 'burt_death' - and a response_key - which is the descript_dict[] key to the attack's description. As, with the other Creature methods, it's easy to imagine attack() provoking a more complex response than these outcomes - but those are outside the scope of the method and should be implemented via a Modular Machine.
+			
+			- 'attack_burt' is an awkward 'hidden' verb that enables a creature to proactively attack Burt. Among other things, this work-around highlights that Burt should really be an object himself - rather than an amorphous set of attributes distributed across game state. But this will not be a minor undertaking - so for now, we have the attack_burt() method - which enables 'attack' to remain a 2word command without requiring a 'burt' object to exist. Code-wise, 'attack_burt' is identical to 'attack' with some minor text differences ("You charge..." vs. "You attempt to parry..."). In general, the idea is that when Burt is being attacked he is on the defensive and likely needs the right weapon just to parry.
 
-- The 'Attack' method is a bit more complex and is intended to enable combat between Burt and creatures. The intent in Dark Castle is for combat to be a purely logical exercise... so if you attack a Creature with the correct weapon you will always win. Burt's "weapon" is whatever he is holding in his hand. If Burt's hand is empty he attacks with his Fist. For a given Creature and burt_weapon, attack() generates a result_code - which has options like 'creature_flee', 'creature_death', and 'burt_death' - and a response_key - which is the descript_dict[] key to the attack's description. As, with the other Creature methods, it's easy to imagine attack() provoking a more complex response than these outcomes - but those are outside the scope of the method and should be implemented via a Modular Machine.
 
-- 'attack_burt' is an awkward 'hidden' verb that enables a creature to proactively attack Burt. Among other things, this work-around highlights that Burt should really be an object himself - rather than an amorphous set of attributes distributed across game state. But this will not be a minor undertaking - so for now, we have the attack_burt() method - which enables 'attack' to remain a 2word command without requiring a 'burt' object to exist. Code-wise, 'attack_burt' is identical to 'attack' with some minor text differences ("You charge..." vs. "You attempt to parry..."). In general, the idea is that when Burt is being attacked he is on the defensive and likely needs the right weapon just to parry.
+	- show() method [Creature class]:
+
+		Overview: 
+			'Show' is meant to be informational in nature. The Player will learn something about the creature - what it desires and fears - based on its response to the item shown. Therefore the show() method provides only a text response. Provoking an action response (e.g. running away) is outside the standard use case and should be implemented via a Modular Machine.
+
+		Implementation Detail:
+			
+			1) When creating a new creature, remember to create the show() response descriptions in descript_dict() using the auto-genertated key format.
+			
+			2) Creaatures are not allowed to have Creatures or Surfaces in their inventory
+				
+		Historic Note:
+			show() is new to v3 (as are all commands requiring a preposition - as v1 / v2 only supported 2-word commands). Previously, the player's only insight into creature sentiment was the creature's description. Some test players of v2 felt that the act of giving the hedgehog the sword to get the silver key was pretty arbitrary - and they had a point - the clues were pretty subtle.  show() enables greater insight into a creature's mindset - which in turn anables a Dark Castle world of more objects and variety while maintain a feel of determinism.
+
+
+	- give() method [Creature class]:
+
+		Overview: 
+			'Give' is meant to enable barter and trade. If the Player gives an item to a creature - particularly if that creature has shown interest in the item via show() - then the player can reasonably hope for some other useful item in return. Therefore the give() method enables a text response, determines whether the creature will accept the gift, and what, if anything, it will give Burt in return. Because give() can fulfill a creature's needs it also has the power to change the creature's mood and therefore update their description.
+
+		Implementation specifics:
+			
+			1) When creating a new creature, remember to create the response descriptions and (if appropriate) the creature description updates in descript_dict() using the auto-genertated key format.
+			
+			2) It is assumed that if the creature 'shows no interest' in Burt's gift then they will not accept it, will not provide a gift in response, and will not change their demeanor as a result of the offer.
+			
+			3) It is assumed that if a creature won't accept an item from Burt, then they also won't have a gift to give in return and that their demeanor will not change.
+			
+			4) Creaatures are not allowed to have Creatures or Surfaces in their inventory
+		
+		Historic Note:
+			Like show(), give() is new to v3. In v1 / v2 , Burt just dropped the 'stale_biscuits' on the floor of the 'main_hall' and the 'royal_hedgehog' charged forward and gobbled them up. With a new interpreter in v3 that enabled prepositions, give() seemed like a more intentional way to enable barter. It also provides more information about creature sentiment regarding objects.
+		
+
+	- attack() method [Creature class]:
+
+		Overview: 
+
+
 """

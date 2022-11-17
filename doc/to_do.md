@@ -196,7 +196,15 @@ Version 3.75 Goals
 		- DONE: mix-in pattern
 		- DONE: switches are dumb
 		- DONE: Where do switches reside?
-- TBD: refactor Creature / attack() => 'attack x with y'
+- INPROC: refactor Creature
+	- DONE: move long doc_strings to end
+	- DONE: fix indentation - up to verb methods
+	- TBD: fix indentation - show() and give()
+	- TBD: fix indentation - attack()
+	- TBD: fix indentation - attack_burt()
+
+
+	- TBD: attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
 		- definitely hunger & thirst once burt gains these traits
 	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
@@ -205,6 +213,7 @@ Version 3.75 Goals
 	- TBD: re-code attack / attack_burt response correctly based on in-line notes
 		- TBD: change to 'attack x with y' (default to obj in hand?); Maybe hedgehog laughs at an attack with a non-weapon?
 	- TBD: eliminate attack_burt method
+
 - TBD: create Surface class!! (was 'Shelf')
 	- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
 	- put initial shelf in Main Hall
