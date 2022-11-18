@@ -10,8 +10,6 @@ from static_gbl import descript_dict
 
 ### classes
 class Creature(ViewOnly):
-#	def __init__(self, name, full_name, root_name, descript_key, writing, state, hand_lst, bkpk_lst,
-#			worn_lst, feature_lst, invis_lst, give_dict, is_attackable, attacked_dict, attacking_dict, corpse):
 	def __init__(self, name, full_name, root_name, descript_key, writing, state, hand_lst, bkpk_lst,
 			worn_lst, feature_lst, invis_lst, give_dict, is_attackable, attacked_dict, attacking_dict):
 		super().__init__(name, full_name, root_name, descript_key, writing)
@@ -25,7 +23,6 @@ class Creature(ViewOnly):
 		self._is_attackable = is_attackable # bool indicating weather Burt can attack the creature
 		self._attacked_dict = attacked_dict # dict of creature reactions to being attacked
 		self._attacking_dict = attacking_dict # dict of results from creature attacking Burt; no longer needed once type(burt) == creature
-#		self._corpse = corpse # if creature can be attacked and killed, 'corpse' == obj for dead creature; else 'corpse' == None
 
 	# *** getters & setters ***
 	@property
@@ -84,11 +81,7 @@ class Creature(ViewOnly):
 	def attacking_dict(self):
 		return self._attacking_dict
 
-#	@property
-#	def corpse(self):
-#		return self._corpse
-
-	# *** hand attrib methods ***
+	# *** attrib methods - hand ***
 	def hand_lst_append(self, item):
 		self._hand_lst.append(item)
 
@@ -115,7 +108,7 @@ class Creature(ViewOnly):
 			return False
 		return self.get_hand_item().is_weapon()
 
-	# *** bkpk attrib methods ***
+	# *** attrib methods - bkpk ***
 	def bkpk_is_empty(self):
 		return not bool(self.bkpk_lst)
 
@@ -125,7 +118,7 @@ class Creature(ViewOnly):
 	def bkpk_lst_remove(self, item):
 		self._bkpk_lst.remove(item)
 
-	# *** worn attrib methods ***
+	# *** attrib methods - worn ***
 	def worn_lst_append(self, item):
 		self._worn_lst.append(item)
 
@@ -345,7 +338,6 @@ class Creature(ViewOnly):
 			room_obj.floor_lst_extend(self.bkpk_lst)
 			room_obj.floor_lst_extend(self.hand_lst)
 			room_obj.floor_lst_extend(self.worn_lst)
-#			room_obj.floor_lst_append(self.corpse)
 			res_key = 'creature_death_default_res_key'
 			win_weapon = burt_weapon_obj.full_name						
 		else:

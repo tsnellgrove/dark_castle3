@@ -188,8 +188,6 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 				{
 						shiny_sword : {'result_code' : None, 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'parry_goblin'
 						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : None, 'resolution_key' : None} # was 'custom_key' : 'goblin_slays_burt'
-#				},
-#				dead_goblin)
 				})
 				
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None,
@@ -204,8 +202,6 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 						'def_attack' : {'result_code' : 'creature_flee', 'custom_key' : 'hedgehog_flees', 'resolution_key' : None}
 				},
 				{})
-#				{},
-#				None)
 
 burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 				None, [], [rusty_key, glass_bottle, cheese_wedge, stale_biscuits], [], [backpack, fist, conscience, brass_lantern],
@@ -213,10 +209,7 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 				{},
 				True,
 				{},
-				{})
-#				{},
-#				None) 
-				# note: for non-burt-creature testing, frog_travel_mach was in burt.invis_lst
+				{}) # note: for non-burt-creature testing, frog_travel_mach was in burt.invis_lst
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],

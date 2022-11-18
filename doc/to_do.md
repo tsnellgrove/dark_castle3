@@ -204,7 +204,7 @@ Version 3.75 Goals
 	- DONE: fix indentation - attack_burt()
 	- DONE: post-indent testing
 	- DONE: elim Creature corpse attribute (we can simply put the dead_goblin in goblin.bkpk_lst)
-	- TBD: clean up comments
+	- DONE: clean up comments
 
 	- TBD: attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
