@@ -13,7 +13,7 @@ class Creature(ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, state, hand_lst, bkpk_lst,
 			worn_lst, feature_lst, invis_lst, give_dict, is_attackable, attacked_dict, attacking_dict, corpse):
 		super().__init__(name, full_name, root_name, descript_key, writing)
-		self._state = state # creature state; not yet in use (v3.70) - intended for state machine functionality
+		self._state = state # creature state; not yet in use (v3.75) - intended for state machine functionality & hunger / thirst
 		self._hand_lst = hand_lst # list of items in creature's hand; is typically only 1 item 
 		self._bkpk_lst = bkpk_lst # list of items in creature's backpack
 		self._worn_lst = worn_lst # list of items currently worn by the creature
@@ -270,191 +270,191 @@ class Creature(ViewOnly):
 		return 
 
 
-		def attack(self, active_gs):
-				# determine if creature can is_attackable; if not, buffer response and exit
-				if not self.is_attackable:
-						try:
-								descript_key = 'not_attackable_' + self.full_name
-								active_gs.buffer(descript_dict[descript_key])
-						except:
-								active_gs.buffer(descript_dict['not_attackable_default'])
-						return
+	def attack(self, active_gs):
+		# determine if creature can is_attackable; if not, buffer response and exit
+		if not self.is_attackable:
+			try:
+				descript_key = 'not_attackable_' + self.full_name
+				active_gs.buffer(descript_dict[descript_key])
+			except:
+				active_gs.buffer(descript_dict['not_attackable_default'])
+			return
 
-				# create and buffer attack_initiation_str
-				creature = active_gs.hero
-				if creature.hand_is_empty():
-						burt_weapon_name = 'your fist'
-						burt_weapon_obj = None
-				else:
-						hand_lst = creature.hand_lst
-						burt_weapon_obj = hand_lst[0]
-						burt_weapon_name = 'the ' + burt_weapon_obj.full_name
-				if self.hand_is_empty():
-						hand_text = "!"
-				else:
-						hand_text = " with the " + self.get_hand_item().full_name + "!"
+		# create and buffer attack_initiation_str
+		creature = active_gs.hero
+		if creature.hand_is_empty():
+			burt_weapon_name = 'your fist'
+			burt_weapon_obj = None
+		else:
+			hand_lst = creature.hand_lst
+			burt_weapon_obj = hand_lst[0]
+			burt_weapon_name = 'the ' + burt_weapon_obj.full_name
+		if self.hand_is_empty():
+			hand_text = "!"
+		else:
+			hand_text = " with the " + self.get_hand_item().full_name + "!"
+		attack_intiation_str = ("Fearlessly, you charge forward weilding " +  burt_weapon_name +
+				" while the " + self.full_name + " attempts to parry" + hand_text)
+		active_gs.buffer(attack_intiation_str)
 
-				attack_intiation_str = ("Fearlessly, you charge forward weilding " +  burt_weapon_name +
-								" while the " + self.full_name + " attempts to parry" + hand_text)
-				active_gs.buffer(attack_intiation_str)
+		# determine if creature has an attack response and if so what response key to use
+		creature_has_response = True
+		if burt_weapon_obj in self.attacked_dict:
+			dict_key = burt_weapon_obj
+		elif 'def_attack' in self.attacked_dict:
+			dict_key = 'def_attack'
+		else:
+			creature_has_response = False
 
-				# determine if creature has an attack response and if so what response key to use
-				creature_has_response = True
-				if burt_weapon_obj in self.attacked_dict:
-						dict_key = burt_weapon_obj
-				elif 'def_attack' in self.attacked_dict:
-						dict_key = 'def_attack'
-				else:
-						creature_has_response = False
+		# if no response, buffer default text and exit
+		if not creature_has_response:
+			active_gs.buffer(f"At the last minute the {self.full_name} dodges your fearsome attack with {burt_weapon_name}.")
+			return 
 
-				# if no response, buffer default text and exit
-				if not creature_has_response:
-						active_gs.buffer(f"At the last minute the {self.full_name} dodges your fearsome attack with {burt_weapon_name}.")
-						return 
-
-				#	if creature_has_response, buffer custom_str if it exists
-				custom_key = self.attacked_dict[dict_key]['custom_key']
-				try:
-						custom_str = descript_dict[custom_key]
-						active_gs.buffer(custom_str)
-				except:
-						pass
+		#	if creature_has_response, buffer custom_str if it exists
+		custom_key = self.attacked_dict[dict_key]['custom_key']
+		try:
+			custom_str = descript_dict[custom_key]
+			active_gs.buffer(custom_str)
+		except:
+			pass
 
 ### NOTE: GENERATING win_weapon DOESN'T REALLY SOLVE THE PROBLEM... I ACTUALLY NEED TO DETERMINE 'WINNER' AND BASE DESC OFF THEIR 'HAND'
 ### NOTE: ALSO NOT DETERMINING IF hand_is_empty() IN CONJUNCTION WITH 'WINNER' AND ATTACK RESOLUTION
 ### NOTE: REALLY NEED TO FIGURE OUT 'WINNER' *FIRST* - THEN HAND STATE AND WEAPON ADJ FLOW FROM THERE
 ### NOTE: order of operations = <attacker> => <custom> => <winner>
 
-				# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
-				if self.attacked_dict[dict_key]['result_code'] == 'creature_flee':
-						room_obj = active_gs.get_room()
-						room_obj.floor_lst_remove(self)
-						res_key = 'creature_flee_default_res_key'
-						if creature.hand_is_empty(): # NOTE: IS AN INCOMPLETE SOLUTION - NEED TO FIX WHEN COMBINING attack() and attack_burt()
-								win_weapon = ""
-						else:
-								win_weapon = burt_weapon_obj.full_name
-				elif self.attacked_dict[dict_key]['result_code'] == 'burt_death':
-						active_gs.set_game_ending('death')
-						res_key = 'burt_death_default_res_key'
-						win_weapon = self.get_hand_item().full_name
-				elif self.attacked_dict[dict_key]['result_code'] == 'creature_death':
-						room_obj = active_gs.get_room()
-						room_obj.floor_lst_remove(self)
-						room_obj.floor_lst_extend(self.bkpk_lst)
-						room_obj.floor_lst_extend(self.hand_lst)
-						room_obj.floor_lst_extend(self.worn_lst)
-						room_obj.floor_lst_append(self.corpse)
-						res_key = 'creature_death_default_res_key'
-						win_weapon = burt_weapon_obj.full_name						
-				else:
-						res_key = 'no_result_default_res_key'
-						win_weapon = burt_weapon_obj.full_name
+		# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
+		if self.attacked_dict[dict_key]['result_code'] == 'creature_flee':
+			room_obj = active_gs.get_room()
+			room_obj.floor_lst_remove(self)
+			res_key = 'creature_flee_default_res_key'
+			if creature.hand_is_empty(): # NOTE: IS AN INCOMPLETE SOLUTION - NEED TO FIX WHEN COMBINING attack() and attack_burt()
+				win_weapon = ""
+			else:
+				win_weapon = burt_weapon_obj.full_name
+		elif self.attacked_dict[dict_key]['result_code'] == 'burt_death':
+			active_gs.set_game_ending('death')
+			res_key = 'burt_death_default_res_key'
+			win_weapon = self.get_hand_item().full_name
+		elif self.attacked_dict[dict_key]['result_code'] == 'creature_death':
+			room_obj = active_gs.get_room()
+			room_obj.floor_lst_remove(self)
+			room_obj.floor_lst_extend(self.bkpk_lst)
+			room_obj.floor_lst_extend(self.hand_lst)
+			room_obj.floor_lst_extend(self.worn_lst)
+			room_obj.floor_lst_append(self.corpse)
+			res_key = 'creature_death_default_res_key'
+			win_weapon = burt_weapon_obj.full_name						
+		else:
+			res_key = 'no_result_default_res_key'
+			win_weapon = burt_weapon_obj.full_name
 
-				# compose the start of the attack resolution string with verb and adj detail if the creature is weilding a weapon
-				hand_lst = creature.hand_lst
-				if creature.hand_is_empty():
-						attack_start_str = ""
-				elif hand_lst[0].is_weapon():
-						hand_item = hand_lst[0]
-						weapon_desc_max = len(hand_item.desc_lst) - 1
-						weapon_desc_index = random.randint(0, weapon_desc_max)
-						weapon_verb = hand_item.desc_lst[weapon_desc_index][0]
-						weapon_adj_noun = hand_item.desc_lst[weapon_desc_index][1]
-##						attack_start_str = "The " + hand_item.full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
-						attack_start_str = "The " + win_weapon + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
-				else:
-##						attack_start_str = "The " + hand_item.full_name + " whizzes through the air. "
-						attack_start_str = "The " + win_weapon + " whizzes through the air. "
+		# compose the start of the attack resolution string with verb and adj detail if the creature is weilding a weapon
+		hand_lst = creature.hand_lst
+		if creature.hand_is_empty():
+			attack_start_str = ""
+		elif hand_lst[0].is_weapon():
+			hand_item = hand_lst[0]
+			weapon_desc_max = len(hand_item.desc_lst) - 1
+			weapon_desc_index = random.randint(0, weapon_desc_max)
+			weapon_verb = hand_item.desc_lst[weapon_desc_index][0]
+			weapon_adj_noun = hand_item.desc_lst[weapon_desc_index][1]
+##			attack_start_str = "The " + hand_item.full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
+			attack_start_str = "The " + win_weapon + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
+		else:
+##			attack_start_str = "The " + hand_item.full_name + " whizzes through the air. "
+			attack_start_str = "The " + win_weapon + " whizzes through the air. "
 
-				# buffer the full attack resolution string
-				attack_res_str = attack_start_str + descript_dict[res_key]
-				active_gs.buffer(attack_res_str)
-				return 
+		# buffer the full attack resolution string
+		attack_res_str = attack_start_str + descript_dict[res_key]
+		active_gs.buffer(attack_res_str)
+		return 
 
-		def attack_burt(self, active_gs):
-				# create and buffer attack_initiation_str
-				creature = active_gs.hero
-				if creature.hand_is_empty():
-						burt_weapon_name = 'your fist'
-						burt_weapon_obj = None
-				else:
-						hand_lst = creature.hand_lst
-						burt_weapon_obj = hand_lst[0]
-						burt_weapon_name = 'the ' + burt_weapon_obj.full_name
-				if self.hand_is_empty():
-						hand_text = ""
-				else:
-						hand_text = " with the " + self.get_hand_item().full_name
 
-				attack_intiation_str = ("The " + self.full_name + " attacks" + hand_text + " and you attempt to parry with " +  burt_weapon_name + "!")
-				active_gs.buffer(attack_intiation_str)
+	def attack_burt(self, active_gs):
+		# create and buffer attack_initiation_str
+		creature = active_gs.hero
+		if creature.hand_is_empty():
+			burt_weapon_name = 'your fist'
+			burt_weapon_obj = None
+		else:
+			hand_lst = creature.hand_lst
+			burt_weapon_obj = hand_lst[0]
+			burt_weapon_name = 'the ' + burt_weapon_obj.full_name
+		if self.hand_is_empty():
+			hand_text = ""
+		else:
+			hand_text = " with the " + self.get_hand_item().full_name
 
-				# determine if creature has an attack response and if so, what response key to use
-				creature_has_response = True
-				if burt_weapon_obj in self.attacking_dict:
-						dict_key = burt_weapon_obj
-				elif 'def_attack' in self.attacking_dict:
-						dict_key = 'def_attack'
-				else:
-						creature_has_response = False
+		attack_intiation_str = ("The " + self.full_name + " attacks" + hand_text + " and you attempt to parry with " +  burt_weapon_name + "!")
+		active_gs.buffer(attack_intiation_str)
 
-				# if no response, buffer default text and exit
-				if not creature_has_response:
-						active_gs.buffer("At the last minute you parry the attack from the " + self.full_name + " with " + burt_weapon_name + ".")
-						return
+		# determine if creature has an attack response and if so, what response key to use
+		creature_has_response = True
+		if burt_weapon_obj in self.attacking_dict:
+			dict_key = burt_weapon_obj
+		elif 'def_attack' in self.attacking_dict:
+			dict_key = 'def_attack'
+		else:
+			creature_has_response = False
 
-				#	if creature_has_response, buffer custom_str if it exists
-				custom_key = self.attacking_dict[dict_key]['custom_key']
-				try:
-						custom_str = descript_dict[custom_key]
-						active_gs.buffer(custom_str)
-				except:
-						pass
+		# if no response, buffer default text and exit
+		if not creature_has_response:
+			active_gs.buffer("At the last minute you parry the attack from the " + self.full_name + " with " + burt_weapon_name + ".")
+			return
 
-				# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
-				if self.attacking_dict[dict_key]['result_code'] == 'creature_flee':
-						room_obj = active_gs.get_room()
-						room_obj.floor_lst_remove(self)
-						res_key = 'creature_flee_default_res_key'
-						win_weapon = burt_weapon_obj.full_name
-				elif self.attacking_dict[dict_key]['result_code'] == 'burt_death':
-						active_gs.set_game_ending('death')
-						res_key = 'burt_death_default_res_key'
-						win_weapon = self.get_hand_item().full_name
-				elif self.attacking_dict[dict_key]['result_code'] == 'creature_death':
-						room_obj = active_gs.get_room()
-						room_obj.floor_lst_remove(self)
-						room_obj.floor_lst_extend(self.bkpk_lst)
-						room_obj.floor_lst_extend(self.hand_lst)
-						room_obj.floor_lst_extend(self.worn_lst)
-						room_obj.floor_lst_append(self.corpse)
-						res_key = 'creature_death_default_res_key'
-						win_weapon = burt_weapon_obj.full_name
-				else:
-						res_key = 'no_result_default_res_key'
-						win_weapon = self.get_hand_item().full_name
+		#	if creature_has_response, buffer custom_str if it exists
+		custom_key = self.attacking_dict[dict_key]['custom_key']
+		try:
+			custom_str = descript_dict[custom_key]
+			active_gs.buffer(custom_str)
+		except:
+			pass
+
+		# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
+		if self.attacking_dict[dict_key]['result_code'] == 'creature_flee':
+			room_obj = active_gs.get_room()
+			room_obj.floor_lst_remove(self)
+			res_key = 'creature_flee_default_res_key'
+			win_weapon = burt_weapon_obj.full_name
+		elif self.attacking_dict[dict_key]['result_code'] == 'burt_death':
+			active_gs.set_game_ending('death')
+			res_key = 'burt_death_default_res_key'
+			win_weapon = self.get_hand_item().full_name
+		elif self.attacking_dict[dict_key]['result_code'] == 'creature_death':
+			room_obj = active_gs.get_room()
+			room_obj.floor_lst_remove(self)
+			room_obj.floor_lst_extend(self.bkpk_lst)
+			room_obj.floor_lst_extend(self.hand_lst)
+			room_obj.floor_lst_extend(self.worn_lst)
+			room_obj.floor_lst_append(self.corpse)
+			res_key = 'creature_death_default_res_key'
+			win_weapon = burt_weapon_obj.full_name
+		else:
+			res_key = 'no_result_default_res_key'
+			win_weapon = self.get_hand_item().full_name
 
 ### NOTE: GENERATING win_weapon DOESN'T REALLY SOLVE THE PROBLEM... I ACTUALLY NEED TO DETERMINE 'WINNER' AND BASE DESC OFF THEIR 'HAND'
 
-				# compose the start of the attack resolution string with verb and adj detail if the creature is weilding a weapon
-				if self.hand_is_empty():
-						attack_start_str = ""
-				elif self.get_hand_item().is_weapon:
-						weapon_desc_max = len(self.get_hand_item().desc_lst) - 1
-						weapon_desc_index = random.randint(0, weapon_desc_max)
-						weapon_verb = self.get_hand_item().desc_lst[weapon_desc_index][0]
-						weapon_adj_noun = self.get_hand_item().desc_lst[weapon_desc_index][1]
-##			attack_start_str = "The " + self.get_get_hand_item().full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
-						attack_start_str = "The " + win_weapon + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
-				else:
-##						attack_start_str = "The " + self.get_hand_item().full_name + "whizzes through the air. "
-						attack_start_str = "The " + win_weapon + "whizzes through the air. "
+		# compose the start of the attack resolution string with verb and adj detail if the creature is weilding a weapon
+		if self.hand_is_empty():
+			attack_start_str = ""
+		elif self.get_hand_item().is_weapon:
+			weapon_desc_max = len(self.get_hand_item().desc_lst) - 1
+			weapon_desc_index = random.randint(0, weapon_desc_max)
+			weapon_verb = self.get_hand_item().desc_lst[weapon_desc_index][0]
+			weapon_adj_noun = self.get_hand_item().desc_lst[weapon_desc_index][1]
+##		attack_start_str = "The " + self.get_get_hand_item().full_name + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
+			attack_start_str = "The " + win_weapon + " " + weapon_verb + " through the air with a " + weapon_adj_noun + ". "
+		else:
+##	attack_start_str = "The " + self.get_hand_item().full_name + "whizzes through the air. "
+			attack_start_str = "The " + win_weapon + "whizzes through the air. "
 
-				# buffer the full attack resolution string
-				attack_res_str = attack_start_str + descript_dict[res_key]
-				active_gs.buffer(attack_res_str)
-				return 
+		# buffer the full attack resolution string
+		attack_res_str = attack_start_str + descript_dict[res_key]
+		active_gs.buffer(attack_res_str)
+		return 
 
 
 """ *** Module Documentation ***

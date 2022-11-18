@@ -200,8 +200,9 @@ Version 3.75 Goals
 	- DONE: move long doc_strings to end
 	- DONE: fix indentation - up to verb methods
 	- DONE: fix indentation - show() and give()
-	- TBD: fix indentation - attack()
-	- TBD: fix indentation - attack_burt()
+	- DONE: fix indentation - attack()
+	- DONE: fix indentation - attack_burt()
+	- DONE: post-indent testing
 
 
 	- TBD: attack() => 'attack x with y'
