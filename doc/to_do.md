@@ -199,7 +199,7 @@ Version 3.75 Goals
 - INPROC: refactor Creature
 	- DONE: move long doc_strings to end
 	- DONE: fix indentation - up to verb methods
-	- TBD: fix indentation - show() and give()
+	- DONE: fix indentation - show() and give()
 	- TBD: fix indentation - attack()
 	- TBD: fix indentation - attack_burt()
 

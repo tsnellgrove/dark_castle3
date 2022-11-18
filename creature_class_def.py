@@ -217,56 +217,58 @@ class Creature(ViewOnly):
 		return 
 
 	# *** verb methods ***
-		def show(self, obj, active_gs):
-				""" Shows an item to a creature.
-				"""
+	def show(self, obj, active_gs):
+		""" Shows an item to a creature.
+		"""
 ##				if (obj.is_container()) or (obj.is_creature()): # previous node_lvl limitation
 ##				if obj.is_creature():
 ##						active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 ##						return 
-				try:
-						active_gs.buffer(descript_dict[f"show_{self.name}_{obj.name}"]) 
-				except:
-						try:
-								active_gs.buffer(descript_dict[f"show_{self.name}_default"])
-						except:
-								active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
+		try:
+			active_gs.buffer(descript_dict[f"show_{self.name}_{obj.name}"]) 
+		except:
+			try:
+				active_gs.buffer(descript_dict[f"show_{self.name}_default"])
+			except:
+				active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 
-		def give(self, obj, active_gs):
-				""" Gives an item to a creature.
-				"""
+
+	def give(self, obj, active_gs):
+		""" Gives an item to a creature.
+		"""
 ##				if (obj.is_container()) or (obj.is_creature()): # previous node_lvl limitation
-				creature = active_gs.hero
 ##				if obj.is_creature():
 ##						active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 ##						return 
-				try:
-						active_gs.buffer(descript_dict[f"give_{self.name}_{obj.name}"])
-						give_key = obj
-				except:
-						try:
-								active_gs.buffer(descript_dict[f"give_{self.name}_default"])
-								give_key = 'def_give'
-						except:
-								active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
-								return
+		creature = active_gs.hero
+		try:
+			active_gs.buffer(descript_dict[f"give_{self.name}_{obj.name}"])
+			give_key = obj
+		except:
+			try:
+				active_gs.buffer(descript_dict[f"give_{self.name}_default"])
+				give_key = 'def_give'
+			except:
+				active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
+				return
 
-				if not self.give_dict[give_key]['accept']:
-						return
-						
-				creature.hand_lst_remove(obj)
-				self.put_in_hand(obj) # messes up goblin holding grimy_axe ; need an auto_action
+		if not self.give_dict[give_key]['accept']:
+			return
+				
+		creature.hand_lst_remove(obj)
+		self.put_in_hand(obj) # messes up goblin holding grimy_axe ; need an auto_action
 
-				give_item = self.give_dict[give_key]['give']
-				if give_item:
-						self.bkpk_lst_remove(give_item) # replace with remove_item() ??
-						creature.hand_lst_append(give_item)
+		give_item = self.give_dict[give_key]['give']
+		if give_item:
+			self.bkpk_lst_remove(give_item) # replace with remove_item() ??
+			creature.hand_lst_append(give_item)
 
-				new_descript_key = f"give_{self.name}_{obj.name}_descript"
-				if new_descript_key in descript_dict:
-						self.descript_key = new_descript_key
+		new_descript_key = f"give_{self.name}_{obj.name}_descript"
+		if new_descript_key in descript_dict:
+			self.descript_key = new_descript_key
 
-				return 
+		return 
+
 
 		def attack(self, active_gs):
 				# determine if creature can is_attackable; if not, buffer response and exit
