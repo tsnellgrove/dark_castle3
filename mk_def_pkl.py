@@ -173,7 +173,7 @@ re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, Non
 				[axe_in_goblin_hand_cond, pass_thru_cond], [axe_in_goblin_hand_result, pass_result])
 
 goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None,
-				None, [grimy_axe], [torn_note], [big_medal], [officiousness],
+				None, [grimy_axe], [torn_note, dead_goblin], [big_medal], [officiousness],
 				[goblin_attack_mach, re_arm_goblin_mach],
 				{
 						shiny_sword : {'accept' : False, 'give' : None},
@@ -188,8 +188,9 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 				{
 						shiny_sword : {'result_code' : None, 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'parry_goblin'
 						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : None, 'resolution_key' : None} # was 'custom_key' : 'goblin_slays_burt'
-				},
-				dead_goblin)
+#				},
+#				dead_goblin)
+				})
 				
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None,
 				None, [], [silver_key], [red_bandana], [loyalty],
@@ -202,8 +203,9 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 				{
 						'def_attack' : {'result_code' : 'creature_flee', 'custom_key' : 'hedgehog_flees', 'resolution_key' : None}
 				},
-				{},
-				None)
+				{})
+#				{},
+#				None)
 
 burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 				None, [], [rusty_key, glass_bottle, cheese_wedge, stale_biscuits], [], [backpack, fist, conscience, brass_lantern],
@@ -211,8 +213,10 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 				{},
 				True,
 				{},
-				{},
-				None) # note: for non-burt-creature testing, frog_travel_mach was in burt.invis_lst
+				{})
+#				{},
+#				None) 
+				# note: for non-burt-creature testing, frog_travel_mach was in burt.invis_lst
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
@@ -330,8 +334,7 @@ with open('default_obj_pickle', 'wb') as f:
 #				{},
 #				True,
 #				{},
-#				{},
-#				None) # test creature
+#				{}) # test creature
 
 # frog_in_main_hall_cond.creature = test_frog
 # frog_in_main_hall_cond.match_room = main_hall

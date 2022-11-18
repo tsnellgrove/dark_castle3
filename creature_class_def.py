@@ -10,8 +10,10 @@ from static_gbl import descript_dict
 
 ### classes
 class Creature(ViewOnly):
+#	def __init__(self, name, full_name, root_name, descript_key, writing, state, hand_lst, bkpk_lst,
+#			worn_lst, feature_lst, invis_lst, give_dict, is_attackable, attacked_dict, attacking_dict, corpse):
 	def __init__(self, name, full_name, root_name, descript_key, writing, state, hand_lst, bkpk_lst,
-			worn_lst, feature_lst, invis_lst, give_dict, is_attackable, attacked_dict, attacking_dict, corpse):
+			worn_lst, feature_lst, invis_lst, give_dict, is_attackable, attacked_dict, attacking_dict):
 		super().__init__(name, full_name, root_name, descript_key, writing)
 		self._state = state # creature state; not yet in use (v3.75) - intended for state machine functionality & hunger / thirst
 		self._hand_lst = hand_lst # list of items in creature's hand; is typically only 1 item 
@@ -23,7 +25,7 @@ class Creature(ViewOnly):
 		self._is_attackable = is_attackable # bool indicating weather Burt can attack the creature
 		self._attacked_dict = attacked_dict # dict of creature reactions to being attacked
 		self._attacking_dict = attacking_dict # dict of results from creature attacking Burt; no longer needed once type(burt) == creature
-		self._corpse = corpse # if creature can be attacked and killed, 'corpse' == obj for dead creature; else 'corpse' == None
+#		self._corpse = corpse # if creature can be attacked and killed, 'corpse' == obj for dead creature; else 'corpse' == None
 
 	# *** getters & setters ***
 	@property
@@ -82,9 +84,9 @@ class Creature(ViewOnly):
 	def attacking_dict(self):
 		return self._attacking_dict
 
-	@property
-	def corpse(self):
-		return self._corpse
+#	@property
+#	def corpse(self):
+#		return self._corpse
 
 	# *** hand attrib methods ***
 	def hand_lst_append(self, item):
@@ -343,7 +345,7 @@ class Creature(ViewOnly):
 			room_obj.floor_lst_extend(self.bkpk_lst)
 			room_obj.floor_lst_extend(self.hand_lst)
 			room_obj.floor_lst_extend(self.worn_lst)
-			room_obj.floor_lst_append(self.corpse)
+#			room_obj.floor_lst_append(self.corpse)
 			res_key = 'creature_death_default_res_key'
 			win_weapon = burt_weapon_obj.full_name						
 		else:
