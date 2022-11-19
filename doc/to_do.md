@@ -354,7 +354,7 @@ Version 3.77 Goals
 		- if fail validate() , buffer error and end app_main()
 
 - TBD: sort out validate() error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
-
+- IDEA: score() and end() should be between post_action() and auto_action() [i.e. between move 'n' and 'n+1']
 - TBD: interpreter - should all nouns be singular? Can 'a' vs. 'an' be fixed?
 - TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
 - TBD: pass 'mode' into verb methods
