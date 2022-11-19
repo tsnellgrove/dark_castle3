@@ -23,6 +23,8 @@ class Creature(ViewOnly):
 		self._is_attackable = is_attackable # bool indicating weather Burt can attack the creature
 		self._attacked_dict = attacked_dict # dict of creature reactions to being attacked
 		self._attacking_dict = attacking_dict # dict of results from creature attacking Burt; no longer needed once type(burt) == creature
+		""" Creatures interact with the world of Dark Castle, move from room to room, and initiate actions. Burt is an object of class Creature.
+		"""
 
 	# *** getters & setters ***
 	@property
@@ -145,9 +147,9 @@ class Creature(ViewOnly):
 		contain_lst = []
 		if self == active_gs.hero:
 			node1_item_lst = self.hand_lst + self.worn_lst + self.bkpk_lst
-		else: node1_item_lst = self.hand_lst + self.worn_lst
+		else:
+				node1_item_lst = self.hand_lst + self.worn_lst
 		[contain_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in node1_item_lst]
-##		return self.hand_lst + self.worn_lst + self.feature_lst # when Creatures couldn't hold Containers this was the whole method
 		return node1_item_lst + contain_lst + self.feature_lst
 
 	def chk_contain_item(self, item):

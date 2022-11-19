@@ -205,6 +205,7 @@ Version 3.75 Goals
 	- DONE: post-indent testing
 	- DONE: elim Creature corpse attribute (we can simply put the dead_goblin in goblin.bkpk_lst)
 	- DONE: clean up comments
+	- INPROC: refactor up to verb methods [at dispaly_contain() ]
 
 	- TBD: attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
@@ -619,6 +620,9 @@ Version 6.x Goals
 *** NEW PUZZLE IDEAS ***
 
 Misc:
+- for Liquid: fill & pour
+- for FlamableItem: light & burn (e.g. matches)
+- PaperItem: burns; also, if writing, ink runs and becomes unreadable
 - maybe sleep in bed (after min # of moves) to dream to get hints? But light must be on so you loose turns of light and wake up hungry and thirsty? Hint is provided randomly based on points not yet accrued?
 - maybe, in DC2, before the ball, the princess is missing (hiding from evil prince) and is diguised as a black cat that burt needs to befriend?
 - it would be cool to have an invisibility cloak / spell (probably need to keep it short term / contained)
