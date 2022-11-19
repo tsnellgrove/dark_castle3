@@ -66,7 +66,7 @@ class Room(ViewOnly):
 		return obj in self.get_vis_contain_lst(active_gs)
 
 	def chk_contain_item(self, item, active_gs):
-		""" Evaluates whether the passed object is contained within the methed-calling object.
+		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item()
 		"""
 		if item in self.floor_lst:
 			return True

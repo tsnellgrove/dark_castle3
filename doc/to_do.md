@@ -205,7 +205,13 @@ Version 3.75 Goals
 	- DONE: post-indent testing
 	- DONE: elim Creature corpse attribute (we can simply put the dead_goblin in goblin.bkpk_lst)
 	- DONE: clean up comments
-	- INPROC: refactor up to verb methods [at dispaly_contain() ]
+	- DONE: refactor up to verb methods
+	- TBD: refactor show()
+		- TBD: review / document recepatacle policy re: Creatures & Surfaces vs. PortableContainers
+		- TBD: clean up comments
+		- TBD: org auto-gen descriptions
+		- TBD: general refactor
+		- TBD: re-usable approach for double-try ?
 
 	- TBD: attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
@@ -264,6 +270,7 @@ Version 3.75 Goals
 - TBD: misc updates:
 	- TBD: make backpack a true container???
 	- TBD: create a centralized doc file
+	- TBD: reconsider showing Receptacle contents on look... maybe too much data? What does Zork do? Restrict to explicit examine??
 
 ##########################
 ### VERSION 3.76 START ###

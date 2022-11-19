@@ -153,6 +153,8 @@ class Creature(ViewOnly):
 		return node1_item_lst + contain_lst + self.feature_lst
 
 	def chk_contain_item(self, item):
+		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item()
+		"""
 		return item in self.hand_lst + self.bkpk_lst + self.worn_lst
 
 	def remove_item(self, item, active_gs):
@@ -179,7 +181,7 @@ class Creature(ViewOnly):
 		return bool(creature_lst)
 
 	def disp_contain(self, active_gs):
-		""" Displays a description of the visible items held by the obj. Used in examine().
+		""" Displays a description of the visible items held by the obj. Used in examine(). Variable output for burt vs. other creatures.
 		"""
 		if not self.hand_is_empty():
 			if self == active_gs.hero:

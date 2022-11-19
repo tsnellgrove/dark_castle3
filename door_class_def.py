@@ -194,6 +194,8 @@ class Container(Door):
 		return []
 
 	def chk_contain_item(self, item):
+		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item()
+		"""
 		return item in self.contain_lst
 
 	def remove_item(self, item, active_gs):
