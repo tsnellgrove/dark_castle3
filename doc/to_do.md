@@ -220,6 +220,8 @@ Version 3.75 Goals
 		- DONE: org auto-gen descriptions
 		- DONE: general refactor
 		- DONE: update all doc_strings
+	- TBD: create attack_b() method
+
 
 	- TBD: attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??

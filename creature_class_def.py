@@ -274,7 +274,7 @@ class Creature(ViewOnly):
 		# determine if creature can is_attackable; if not, buffer response and exit
 		if not self.is_attackable:
 			try:
-				descript_key = 'not_attackable_' + self.full_name
+				descript_key = 'not_attackable_' + self.name
 				active_gs.buffer(descript_dict[descript_key])
 			except:
 				active_gs.buffer(descript_dict['not_attackable_default'])
