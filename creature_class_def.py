@@ -225,10 +225,6 @@ class Creature(ViewOnly):
 	def show(self, obj, active_gs):
 		""" Shows an item to a creature.
 		"""
-##				if (obj.is_container()) or (obj.is_creature()): # previous node_lvl limitation
-##				if obj.is_creature():
-##						active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
-##						return 
 		try:
 			active_gs.buffer(descript_dict[f"show_{self.name}_{obj.name}"]) 
 		except:
@@ -476,6 +472,11 @@ class Creature(ViewOnly):
 			
 			- 'attack_burt' is an awkward 'hidden' verb that enables a creature to proactively attack Burt. Among other things, this work-around highlights that Burt should really be an object himself - rather than an amorphous set of attributes distributed across game state. But this will not be a minor undertaking - so for now, we have the attack_burt() method - which enables 'attack' to remain a 2word command without requiring a 'burt' object to exist. Code-wise, 'attack_burt' is identical to 'attack' with some minor text differences ("You charge..." vs. "You attempt to parry..."). In general, the idea is that when Burt is being attacked he is on the defensive and likely needs the right weapon just to parry.
 
+
+	- take() method [Creature class]:
+
+		Overview:
+			take() in Creature class over-rides the Item method and provides guardrails to ensure that Creature class receptacles cannot be 'taken' even if a CreatureItem class is someday created.
 
 	- show() method [Creature class]:
 

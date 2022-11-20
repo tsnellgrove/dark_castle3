@@ -206,8 +206,9 @@ Version 3.75 Goals
 	- DONE: elim Creature corpse attribute (we can simply put the dead_goblin in goblin.bkpk_lst)
 	- DONE: clean up comments
 	- DONE: refactor up to verb methods
-	- TBD: refactor show()
-		- TBD: review / document recepatacle policy re: Creatures & Surfaces vs. PortableContainers
+	- DONE: create take() method override error
+	- INPROC: refactor show()
+		- DONE: review / document recepatacle policy re: Creatures & Surfaces vs. PortableContainers
 		- TBD: clean up comments
 		- TBD: org auto-gen descriptions
 		- TBD: general refactor
