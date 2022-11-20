@@ -220,6 +220,7 @@ class Creature(ViewOnly):
 		""" Provides a custom error in the case where the player attempts to take() an object of Creature class.
 		"""
 		active_gs.buffer(f"You can't take the {self.full_name}! How would you feel if someone 'took' you?")
+		return 
 
 
 	def show(self, obj, active_gs):
@@ -233,42 +234,39 @@ class Creature(ViewOnly):
 				active_gs.buffer(descript_dict[f"{creature.name}_show_{self.name}_default"])
 			except:
 				active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
+		return 
 
 
 	def give(self, obj, active_gs):
-		""" Gives an item to a creature.
+		""" Gives an item to another creature.
 		"""
-##				if (obj.is_container()) or (obj.is_creature()): # previous node_lvl limitation
-##				if obj.is_creature():
-##						active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
-##						return 
+		# determine other creature's response
 		creature = active_gs.hero
 		try:
-			active_gs.buffer(descript_dict[f"give_{self.name}_{obj.name}"])
+			active_gs.buffer(descript_dict[f"{creature.name}_give_{self.name}_{obj.name}"])
 			give_key = obj
 		except:
 			try:
-				active_gs.buffer(descript_dict[f"give_{self.name}_default"])
+				active_gs.buffer(descript_dict[f"{creature.name}_give_{self.name}_default"])
 				give_key = 'def_give'
 			except:
 				active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 				return
-
 		if not self.give_dict[give_key]['accept']:
 			return
-				
-		creature.hand_lst_remove(obj)
-		self.put_in_hand(obj) # messes up goblin holding grimy_axe ; need an auto_action
 
+		# Other creature recieves gift and may give a gift in return
+		creature.hand_lst_remove(obj)
+		self.put_in_hand(obj) # messes up goblin holding grimy_axe ; addressed with auto_action
 		give_item = self.give_dict[give_key]['give']
 		if give_item:
 			self.bkpk_lst_remove(give_item) # replace with remove_item() ??
 			creature.hand_lst_append(give_item)
 
-		new_descript_key = f"give_{self.name}_{obj.name}_descript"
+		# Update other creature description based on gift given
+		new_descript_key = f"{creature.name}_give_{self.name}_{obj.name}_descript"
 		if new_descript_key in descript_dict:
 			self.descript_key = new_descript_key
-
 		return 
 
 
@@ -463,16 +461,13 @@ class Creature(ViewOnly):
 	* Creature class:
 
 		Overview: 
-			I'm thinking through two different approaches to creatures. In one approach - I'll call it the "primatives" approach - I declare that each creature has wants and fears (e.g. the hedgehog wants the biscuits, the goblin fears the shiny sword). Under the primatives approach the creatures have innate personalities and the role of creature methods like 'show', 'give', and 'attack' are just to expose those personalities. This is attractive in that it makes the creatures more real and gives general guidance for their future behaviors. However, I'm not sure it's realistic. Dark Castle is not a life simulator... there is no ecosystem or food chain (I mean really, the castle has been abandoned for generations - what have they all been eating??). And the creature's wants and fears are quite idiosyncratic... the goblin is an autocrat who wants to prevent passage to the throne room or any rejuvination of the castle... the hedgehog, along with loving biscuits, is the keeper of Bright Castle's spirit and wants to see it restored. These are not easy desires to model in a simple python object!
+			I thought through two different approaches to creatures. 
 			
-			The other approach I'm considering - I'll call it the "mechanical" approach - is that a creature is wholy defined by its methods. There is no attempt to track and expose a creature's inner desires - their actions are their all - like early impressionism, their surface is their whole. I find this a little unsatisfying - but I also think it's much more implementable. So at least for version 3.x this is the approach I'll take. Perhaps in version 4.x I'll find away to capture the hedgehog's inner yearnings in code ;-D
+			In one approach - I'll call it the "primatives" approach - I declare that each creature has wants and fears (e.g. the hedgehog wants the biscuits, the goblin fears the shiny sword). Under the primatives approach the creatures have innate personalities and the role of creature methods like 'show', 'give', and 'attack' are just to expose those personalities. This is attractive in that it makes the creatures more real and gives general guidance for their future behaviors. However, I don't think it's realistic. Dark Castle is not a life simulator... there is no ecosystem or food chain (I mean really, the castle has been abandoned for generations - what have they all been eating??). And the creature's wants and fears are quite idiosyncratic... the goblin is an autocrat who wants to prevent passage to the throne room or any rejuvination of the castle... the hedgehog, along with loving biscuits, is the keeper of Bright Castle's spirit and wants to see it restored. These are not easy desires to model in a simple python object!
 			
-			So, based on the mechanical approach, creatures have three standard interaction methods:
+			The other approach I considered - I'll call it the "mechanical" approach - is that a creature is wholy defined by its methods. There is no attempt to track and expose a creature's inner desires - their actions are their all - like early impressionism, their surface is their whole. I find this a little unsatisfying - but I also think it's much more implementable. So at least for version 3.x this is the approach I'll take. Perhaps in version 4.x I'll find away to capture the hedgehog's inner yearnings in code ;-D
 			
-			- The 'Attack' method is a bit more complex and is intended to enable combat between Burt and creatures. The intent in Dark Castle is for combat to be a purely logical exercise... so if you attack a Creature with the correct weapon you will always win. Burt's "weapon" is whatever he is holding in his hand. If Burt's hand is empty he attacks with his Fist. For a given Creature and burt_weapon, attack() generates a result_code - which has options like 'creature_flee', 'creature_death', and 'burt_death' - and a response_key - which is the descript_dict[] key to the attack's description. As, with the other Creature methods, it's easy to imagine attack() provoking a more complex response than these outcomes - but those are outside the scope of the method and should be implemented via a Modular Machine.
-			
-			- 'attack_burt' is an awkward 'hidden' verb that enables a creature to proactively attack Burt. Among other things, this work-around highlights that Burt should really be an object himself - rather than an amorphous set of attributes distributed across game state. But this will not be a minor undertaking - so for now, we have the attack_burt() method - which enables 'attack' to remain a 2word command without requiring a 'burt' object to exist. Code-wise, 'attack_burt' is identical to 'attack' with some minor text differences ("You charge..." vs. "You attempt to parry..."). In general, the idea is that when Burt is being attacked he is on the defensive and likely needs the right weapon just to parry.
-
+			Based on the "mechanical" approach, creatures have three standard interaction methods: show(), give(), and attack()
 
 	- take() method [Creature class]:
 
@@ -485,9 +480,7 @@ class Creature(ViewOnly):
 			'Show' is meant to be informational in nature. The Player will learn something about the creature - what it desires and fears - based on its response to the item shown. Therefore the show() method provides only a text response. Provoking an action response (e.g. running away) is outside the standard use case and should be implemented via a Modular Machine.
 
 		Implementation Detail:
-			
 			1) When creating a new creature, remember to create the show() response descriptions in descript_dict() using the auto-genertated key format. Auto-gen key format == "<player_creature>_show_<target_creature>_item"
-			
 			2) Creaatures are not allowed to have Creatures or Surfaces in their inventory
 			
 		Historic Note:
@@ -497,16 +490,12 @@ class Creature(ViewOnly):
 	- give() method [Creature class]:
 
 		Overview: 
-			'Give' is meant to enable barter and trade. If the Player gives an item to a creature - particularly if that creature has shown interest in the item via show() - then the player can reasonably hope for some other useful item in return. Therefore the give() method enables a text response, determines whether the creature will accept the gift, and what, if anything, it will give Burt in return. Because give() can fulfill a creature's needs it also has the power to change the creature's mood and therefore update their description.
+			'Give' is meant to enable barter and trade. If the Player gives an item to a creature - particularly if that creature has shown interest in the item via show() - then the player can reasonably hope for some other useful item or information in return. Therefore the give() method enables a text response, determines whether the creature will accept the gift, and what, if anything, it will give Burt in return. Because give() can fulfill a creature's needs it also has the power to change the creature's mood and therefore update their description.
 
 		Implementation specifics:
-			
 			1) When creating a new creature, remember to create the response descriptions and (if appropriate) the creature description updates in descript_dict() using the auto-genertated key format.
-			
 			2) It is assumed that if the creature 'shows no interest' in Burt's gift then they will not accept it, will not provide a gift in response, and will not change their demeanor as a result of the offer.
-			
 			3) It is assumed that if a creature won't accept an item from Burt, then they also won't have a gift to give in return and that their demeanor will not change.
-			
 			4) Creaatures are not allowed to have Creatures or Surfaces in their inventory
 		
 		Historic Note:
@@ -516,6 +505,8 @@ class Creature(ViewOnly):
 	- attack() method [Creature class]:
 
 		Overview: 
-
+			The attack() method is a bit more complex and is intended to enable combat between Burt and creatures. The intent in Dark Castle is for combat to be a purely logical exercise... so if you attack a Creature with the correct weapon you will always win. Burt's "weapon" is whatever he is holding in his hand. If Burt's hand is empty he attacks with his Fist. For a given Creature and burt_weapon, attack() generates a result_code - which has options like 'creature_flee', 'creature_death', and 'burt_death' - and a response_key - which is the descript_dict[] key to the attack's description. As, with the other Creature methods, it's easy to imagine attack() provoking a more complex response than these outcomes - but those are outside the scope of the method and should be implemented via a Modular Machine.
+			
+			'attack_burt' is an awkward 'hidden' verb that enables a creature to proactively attack Burt. Among other things, this work-around highlights that Burt should really be an object himself - rather than an amorphous set of attributes distributed across game state. But this will not be a minor undertaking - so for now, we have the attack_burt() method - which enables 'attack' to remain a 2word command without requiring a 'burt' object to exist. Code-wise, 'attack_burt' is identical to 'attack' with some minor text differences ("You charge..." vs. "You attempt to parry..."). In general, the idea is that when Burt is being attacked he is on the defensive and likely needs the right weapon just to parry.
 
 """

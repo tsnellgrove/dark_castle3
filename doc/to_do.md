@@ -214,7 +214,12 @@ Version 3.75 Goals
 		- CANCEL: general refactor
 		- CANCEL: re-usable approach for double-try ?
 		- DONE: update all doc_strings
-	- TBD: refactor give()
+	- DONE: refactor give()
+		- DONE: clean up comments
+		- DONE: update auto-gen descriptions
+		- DONE: org auto-gen descriptions
+		- DONE: general refactor
+		- DONE: update all doc_strings
 
 	- TBD: attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??
@@ -337,6 +342,7 @@ Version 3.76 Goals
 - TBD: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
 - TBD: end() => gamestate ???
 - does creature_state really have any value? Maybe build hedgehog state machine before pulling the plug on this one
+	- Could simplify 'give', remove description updates from give, and instead implement them as part of state machine?
 
 
 ##########################
