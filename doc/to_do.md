@@ -207,12 +207,14 @@ Version 3.75 Goals
 	- DONE: clean up comments
 	- DONE: refactor up to verb methods
 	- DONE: create take() method override error
-	- INPROC: refactor show()
+	- DONE: refactor show()
 		- DONE: review / document recepatacle policy re: Creatures & Surfaces vs. PortableContainers
-		- TBD: clean up comments
-		- TBD: org auto-gen descriptions
-		- TBD: general refactor
-		- TBD: re-usable approach for double-try ?
+		- DONE: clean up comments
+		- DONE: org auto-gen descriptions
+		- CANCEL: general refactor
+		- CANCEL: re-usable approach for double-try ?
+		- DONE: update all doc_strings
+	- TBD: refactor give()
 
 	- TBD: attack() => 'attack x with y'
 	- TBD: Creature conditions to examine??

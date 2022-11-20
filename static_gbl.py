@@ -172,9 +172,7 @@ descript_dict = {
 		
 		# guard_goblin #
 		'guard_goblin' : "The Guard Goblin stands in the Alcove guarding the Control Panel. It wears a crisply ironed uniform and gives off an air of hauty, even vicious, Officiousness. The Guard Goblin is armed and dangerous. It wields a Grimy Axe and observes you with watchful malice. This goblin clearly takes its guard duties very seriously. It would not be wise to approach the Iron Portcullis or the Control Panel (or the Guard Goblin!) un-armed.",
-		'show_guard_goblin_shiny_sword' : "The Guard Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
-		'show_guard_goblin_default' : "The Guard Goblin glares at you with an officious expression of disdain and then imperiously motions for you to hand the item over for further inspection.",
-		'show_guard_goblin_stale_biscuits' : "The Guard Goblin scowels at the Stale Biscuits, wrinkles its nose, and then mutters something about 'gauche and impertinent' under its breath. You get the distinct impression that the officious Guard Goblin doesn't think much of biscuits - or of biscuit bakers either for that matter.",
+
 		'give_guard_goblin_default' : "The Guard Goblin pockets the item and mutters something about castle regulations that require the confiscation articles of dubious provenance from ill-favored vagrants.",
 		'give_guard_goblin_stale_biscuits' : "The Guard Goblin waves its hand dismissively at the suggestion that it take reciept of the Stale Biscuits and makes an expression indicating that it would be best if we all just pretended that this had never happened.",
 		'give_guard_goblin_shiny_sword' : "The Guard Goblin blanches and backs away, terrified at the thought of even touching the Shiny Sword.",
@@ -185,8 +183,7 @@ descript_dict = {
 
 		# royal_hedgehog #
 		'hungry_hedgehog' : "This poor little Royal Hedgehog has seen better days. It looks gaunt and like it skipped breakfast - and maybe lunch and dinner too. But despite a somewhat bedraggled appearance, the Royal Hedgehog has an air of fierce Loyalty about it. It may be in need of a good meal, but the Royal Hedgehog's eyes shine with the bright gleam of devoted guardian. It also appears to have quite a preference for shiny things. You don't know why but you feel an innate fondness for this small but faithful creature.",
-		'show_royal_hedgehog_stale_biscuits' : "The Royal Hedgehog's eyes light up with excitement! Apparently, Stale Biscuits are a favorite hedgehog delacacy. The Royal Hedgehog gives you a look half way between hopeful and pleading.",
-		'show_royal_hedgehog_shiny_sword' : "The Royal Hedgehog gives a small squeek of excitement and a yearning look - clearly hoping that you will return its long-time favorite object.",
+
 		'give_royal_hedgehog_stale_biscuits' : "With a yelp of grateful delight the starving hedgehog leaps upon the Stale Biscuits and begins to devour them.",
 #		'hedgehog_eating' 
 		'give_royal_hedgehog_stale_biscuits_descript' : "The hedgehog is eating ravenously.",
@@ -242,8 +239,12 @@ descript_dict = {
 		### drink descriptions ###
 		'burt_drink_fresh_water' : "That was refreshing!",
 
-
-
+		### show descriptions ###
+		'burt_show_guard_goblin_shiny_sword' : "The Guard Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
+		'burt_show_guard_goblin_default' : "The Guard Goblin glares at you with an officious expression of disdain and then imperiously motions for you to hand the item over for further inspection.",
+		'burt_show_guard_goblin_stale_biscuits' : "The Guard Goblin scowels at the Stale Biscuits, wrinkles its nose, and then mutters something about 'gauche and impertinent' under its breath. You get the distinct impression that the officious Guard Goblin doesn't think much of biscuits - or of biscuit bakers either for that matter.",
+		'burt_show_royal_hedgehog_stale_biscuits' : "The Royal Hedgehog's eyes light up with excitement! Apparently, Stale Biscuits are a favorite hedgehog delacacy. The Royal Hedgehog gives you a look half way between hopeful and pleading.",
+		'burt_show_royal_hedgehog_shiny_sword' : "The Royal Hedgehog gives a small squeek of excitement and a yearning look - clearly hoping that you will return its long-time favorite object.",
 }
 
 

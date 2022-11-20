@@ -223,13 +223,14 @@ class Creature(ViewOnly):
 
 
 	def show(self, obj, active_gs):
-		""" Shows an item to a creature.
+		""" Shows an item in your hand to another creature.
 		"""
+		creature = active_gs.hero
 		try:
-			active_gs.buffer(descript_dict[f"show_{self.name}_{obj.name}"]) 
+			active_gs.buffer(descript_dict[f"{creature.name}_show_{self.name}_{obj.name}"]) 
 		except:
 			try:
-				active_gs.buffer(descript_dict[f"show_{self.name}_default"])
+				active_gs.buffer(descript_dict[f"{creature.name}_show_{self.name}_default"])
 			except:
 				active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 
@@ -485,12 +486,12 @@ class Creature(ViewOnly):
 
 		Implementation Detail:
 			
-			1) When creating a new creature, remember to create the show() response descriptions in descript_dict() using the auto-genertated key format.
+			1) When creating a new creature, remember to create the show() response descriptions in descript_dict() using the auto-genertated key format. Auto-gen key format == "<player_creature>_show_<target_creature>_item"
 			
 			2) Creaatures are not allowed to have Creatures or Surfaces in their inventory
-				
+			
 		Historic Note:
-			show() is new to v3 (as are all commands requiring a preposition - as v1 / v2 only supported 2-word commands). Previously, the player's only insight into creature sentiment was the creature's description. Some test players of v2 felt that the act of giving the hedgehog the sword to get the silver key was pretty arbitrary - and they had a point - the clues were pretty subtle.  show() enables greater insight into a creature's mindset - which in turn anables a Dark Castle world of more objects and variety while maintain a feel of determinism.
+			show() is new to v3 (as are all commands requiring a preposition - since v1 / v2 only supported 2-word commands). Previously, the player's only insight into creature sentiment was the creature's description. Some test players of v2 felt that the act of giving the hedgehog the sword to get the silver key was pretty arbitrary - and they had a point - the clues (i.e. color of the keyhole on the craystal_box and the crest over the family_tree) were subtle.  show() enables richer creature interactions and a Dark Castle world of greater object variety - while still maintaining a feel of determinism.
 
 
 	- give() method [Creature class]:
