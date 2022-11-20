@@ -223,7 +223,7 @@ Version 3.75 Goals
 	- TBD: create attack_b() method
 
 
-	- TBD: attack() => 'attack x with y'
+	- TBD: attack() => 'attack x with y' (idea = must have weapon in hand to attack with it)
 	- TBD: Creature conditions to examine??
 		- definitely hunger & thirst once burt gains these traits
 	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
