@@ -289,9 +289,13 @@ class Creature(ViewOnly):
 		
 			# <determine hand_obj for src_creature & tgt_creature>
 			
-			# <determine result / winner>
-			
+			# <determine & implement result / winner>
+
+		# <IF SILENT MODE, RETURN>
+
 		# <OUTPUT COMBAT TEXT>
+		
+			# <determine pronouns based on if src_crature == gs.hero>
 		
 			# <buffer attack initiation>
 
