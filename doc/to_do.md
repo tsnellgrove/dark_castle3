@@ -224,6 +224,7 @@ Version 3.75 Goals
 		- DONE: create def for attack_b() method using 'attack x with y' format and active_gs.hero as default base_creature
 		- DONE: test base attack_b() method
 		- DONE: add 'attack_b' to validate check for in_hand
+		- TBD: update hero_weapon with fist obj option
 
 
 		- TBD: attack_b() => attack() [search interp.py and validate.py too]
