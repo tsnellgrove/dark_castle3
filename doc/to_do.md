@@ -220,24 +220,27 @@ Version 3.75 Goals
 		- DONE: org auto-gen descriptions
 		- DONE: general refactor
 		- DONE: update all doc_strings
-	- INPROC: create attack_b() method
-		- DONE: create def for attack_b() method using 'attack x with y' format and active_gs.hero as default base_creature
-		- DONE: test base attack_b() method
-		- DONE: add 'attack_b' to validate check for in_hand
-		- TBD: update hero_weapon with fist obj option
+- INPROC: create attack_b() method
+	- DONE: create def for attack_b() method using 'attack x with y' format and active_gs.hero as default base_creature
+	- DONE: test base attack_b() method
+	- DONE: add 'attack_b' to validate check for in_hand
+	- DONE: explore use of src_creature and tgt_creature
 
+	- TBD: outline planned sections using comments
+		- TBD: initially, replicate existing sections via comments
+		- TBD: re-org method to separate actions vs. text ressponse
+		- TBD: re-org to identify 'attacker' and 'winner' 
 
-		- TBD: attack_b() => attack() [search interp.py and validate.py too]
+	- IDEA: can we differentiate between weapon and non-weapon for results
+	- IDEA: can we customize the attack_initiation enough that it works for the hedgehogs defense of the shiny_sword?
+	- TBD: update hero_weapon with fist obj option
+	- TBD: move to algorithmic key generation for attack_b() responses
+	- TBD: varry response based on whether src_creature == gs.hero
 
-	- TBD: attack() => 'attack x with y' (idea = must have weapon in hand to attack with it)
-	- TBD: Creature conditions to examine??
-		- definitely hunger & thirst once burt gains these traits
-	- TBD: move to algorithmic key generation (gets rid of whole show_dict; big parts of give_dict)
-	- TBD: re-org attack and attack_burt to enable modes: validate, exe_std, exe_silent, exe_creature
-	- TBD: re-org to identify 'attacker' and 'winner' 
-	- TBD: re-code attack / attack_burt response correctly based on in-line notes
-		- TBD: change to 'attack x with y' (default to obj in hand?); Maybe hedgehog laughs at an attack with a non-weapon?
+	- IDEA: Maybe hedgehog laughs at an attack with a non-weapon?
+	- TBD: attack_b() => attack() [search interp.py and validate.py too]
 	- TBD: eliminate attack_burt method
+
 
 - TBD: create Surface class!! (was 'Shelf')
 	- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
@@ -287,6 +290,8 @@ Version 3.75 Goals
 	- TBD: make backpack a true container???
 	- TBD: create a centralized doc file
 	- TBD: reconsider showing Receptacle contents on look... maybe too much data? What does Zork do? Restrict to explicit examine??
+	- TBD: hunger & thirst become Creature conditions to examine??
+
 
 ##########################
 ### VERSION 3.76 START ###

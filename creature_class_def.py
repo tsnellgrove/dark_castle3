@@ -270,21 +270,56 @@ class Creature(ViewOnly):
 		return 
 
 
-	def attack_b(self, obj, active_gs, creature = None):
+	def attack_b(self, obj, active_gs, src_creature = None):
 		""" Attacks a target_creature with an item
 		"""
-		if creature is None:
-			creature = active_gs.hero
+		if src_creature is None:
+			src_creature = active_gs.hero
+		tgt_creature = self
 
-		# determine if target_creature is not is_attackable, buffer response and exit
-		if not self.is_attackable:
+		# determine if tgt_creature is not is_attackable, buffer response and exit
+		if not tgt_creature.is_attackable:
 			try:
-				active_gs.buffer(descript_dict[f"not_attackable_{self.name}"])
+				active_gs.buffer(descript_dict[f"not_attackable_{tgt_creature.name}"])
 			except:
 				active_gs.buffer(descript_dict['not_attackable_default'])
 			return
 
-		active_gs.buffer(f"{creature.full_name} attacks the {self.full_name} with the {obj.full_name}.")
+		# <DETERMINE & IMPLEMENT RESULT> 
+		
+			# <determine hand_obj for src_creature & tgt_creature>
+			
+			# <determine result / winner>
+			
+		# <OUTPUT COMBAT TEXT>
+		
+			# <buffer attack initiation>
+
+			# <buffer custom response>
+
+			# <buffer winner result>
+
+
+		# create and buffer attack_initiation_str
+
+		# determine if creature has an attack response and if so what response key to use
+
+		# if no response, buffer default text and exit
+
+		#	if creature_has_response, buffer custom_str if it exists
+
+		# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
+
+		# compose the start of the attack resolution string with verb and adj detail if the creature is weilding a weapon
+
+		# buffer the full attack resolution string
+
+### NOTE: GENERATING win_weapon DOESN'T REALLY SOLVE THE PROBLEM... I ACTUALLY NEED TO DETERMINE 'WINNER' AND BASE DESC OFF THEIR 'HAND'
+### NOTE: ALSO NOT DETERMINING IF hand_is_empty() IN CONJUNCTION WITH 'WINNER' AND ATTACK RESOLUTION
+### NOTE: REALLY NEED TO FIGURE OUT 'WINNER' *FIRST* - THEN HAND STATE AND WEAPON ADJ FLOW FROM THERE
+### NOTE: order of operations = <attacker> => <custom> => <winner>
+
+		active_gs.buffer(f"{src_creature.full_name} attacks the {tgt_creature.full_name} with the {obj.full_name}.")
 		return 
 
 
