@@ -220,8 +220,13 @@ Version 3.75 Goals
 		- DONE: org auto-gen descriptions
 		- DONE: general refactor
 		- DONE: update all doc_strings
-	- TBD: create attack_b() method
+	- INPROC: create attack_b() method
+		- DONE: create def for attack_b() method using 'attack x with y' format and active_gs.hero as default base_creature
+		- DONE: test base attack_b() method
+		- DONE: add 'attack_b' to validate check for in_hand
 
+
+		- TBD: attack_b() => attack() [search interp.py and validate.py too]
 
 	- TBD: attack() => 'attack x with y' (idea = must have weapon in hand to attack with it)
 	- TBD: Creature conditions to examine??

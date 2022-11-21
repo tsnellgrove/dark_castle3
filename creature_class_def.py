@@ -270,8 +270,29 @@ class Creature(ViewOnly):
 		return 
 
 
+	def attack_b(self, obj, active_gs, creature = None):
+		""" Attacks a target_creature with an item
+		"""
+		if creature is None:
+			creature = active_gs.hero
+
+		# determine if target_creature is not is_attackable, buffer response and exit
+		if not self.is_attackable:
+			try:
+				active_gs.buffer(descript_dict[f"not_attackable_{self.name}"])
+			except:
+				active_gs.buffer(descript_dict['not_attackable_default'])
+			return
+
+		active_gs.buffer(f"{creature.full_name} attacks the {self.full_name} with the {obj.full_name}.")
+		return 
+
+
+
 	def attack(self, active_gs):
-		# determine if creature can is_attackable; if not, buffer response and exit
+		""" Attacks a target_creature with an item
+		"""
+		# determine if creature is_attackable; if not, buffer response and exit
 		if not self.is_attackable:
 			try:
 				descript_key = 'not_attackable_' + self.name
