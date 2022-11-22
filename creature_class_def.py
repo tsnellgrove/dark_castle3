@@ -295,7 +295,10 @@ class Creature(ViewOnly):
 
 		# <OUTPUT COMBAT TEXT>
 		
-			# <determine pronouns based on if src_crature == gs.hero>
+			# <determine pronouns based on 3 possible cases:
+					# <src_creature == gs.hero>
+					# <tgt_creature == gs.hero>
+					# <gs.hero != src_creature && gs.hero != tgt_creature>
 		
 			# <buffer attack initiation>
 
