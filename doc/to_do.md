@@ -225,11 +225,12 @@ Version 3.75 Goals
 	- DONE: test base attack_b() method
 	- DONE: add 'attack_b' to validate check for in_hand
 	- DONE: explore use of src_creature and tgt_creature
+	- DONE: outline planned sections using comments
+		- DONE: initially, replicate existing sections via comments
+		- DONE: re-org method to separate actions vs. text ressponse
+		- DONE: re-org to identify 'attacker' and 'winner' 
+	- TBD: figure out how to reference fist obj? Maybe just first element of tgt_creature.feature_lst ????
 
-	- TBD: outline planned sections using comments
-		- TBD: initially, replicate existing sections via comments
-		- TBD: re-org method to separate actions vs. text ressponse
-		- TBD: re-org to identify 'attacker' and 'winner' 
 
 	- IDEA: can we differentiate between weapon and non-weapon for results
 	- IDEA: can we customize the attack_initiation enough that it works for the hedgehogs defense of the shiny_sword?

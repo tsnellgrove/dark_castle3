@@ -270,26 +270,32 @@ class Creature(ViewOnly):
 		return 
 
 
-	def attack_b(self, obj, active_gs, src_creature = None):
+	def attack_b(self, src_obj, active_gs, src_creature = None):
 		""" Attacks a target_creature with an item
 		"""
 		if src_creature is None:
 			src_creature = active_gs.hero
 		tgt_creature = self
 
-		# determine if tgt_creature is not is_attackable, buffer response and exit
+		# ERROR & RETURN ON COMMAND FAILURES
 		if not tgt_creature.is_attackable:
 			try:
 				active_gs.buffer(descript_dict[f"not_attackable_{tgt_creature.name}"])
 			except:
 				active_gs.buffer(descript_dict['not_attackable_default'])
 			return
+		if (src_obj != fist) and (not src_creature.chk_in_hand(src_obj)):
+			active_gs.buffer(f"You're not holding the {src_obj.full_name} in your hand.")
+			return 
+		if (src_obj == fist) and (not src_creature.hand_is_empty()):
+			active_gs.buffer(f"You can't attack with your fist while you're holding the {src_creature.get_hand_item()}.")
+			return 
 
-		# <DETERMINE & IMPLEMENT RESULT> 
-		
-			# <determine hand_obj for src_creature & tgt_creature>
-			
-			# <determine & implement result / winner>
+		# IMPLEMENT RESULTS
+		# <determine tgt_obj for tgt_creature>
+		tgt_obj = tgt_creature.get_hand_item()
+
+		# <determine & implement result / winner>
 
 		# <IF SILENT MODE, RETURN>
 
