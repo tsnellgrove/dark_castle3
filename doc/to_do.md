@@ -229,9 +229,11 @@ Version 3.75 Goals
 		- DONE: initially, replicate existing sections via comments
 		- DONE: re-org method to separate actions vs. text ressponse
 		- DONE: re-org to identify 'attacker' and 'winner' 
-	- TBD: figure out how to reference fist obj? Maybe just first element of tgt_creature.feature_lst ????
+	- DONE: figure out how to reference fist obj? Maybe just first element of tgt_creature.feature_lst ????
+	- TBD: update hedgehog attacked_dict to work with new dict_keys
 
 
+	- IDEA: could have def_unarmed, def_item, def_weapon responses
 	- IDEA: can we differentiate between weapon and non-weapon for results
 	- IDEA: can we customize the attack_initiation enough that it works for the hedgehogs defense of the shiny_sword?
 	- TBD: update hero_weapon with fist obj option

@@ -284,16 +284,34 @@ class Creature(ViewOnly):
 			except:
 				active_gs.buffer(descript_dict['not_attackable_default'])
 			return
-		if (src_obj != fist) and (not src_creature.chk_in_hand(src_obj)):
+		if (not src_obj in src_creature.feature_lst) and (not src_creature.chk_in_hand(src_obj)):
 			active_gs.buffer(f"You're not holding the {src_obj.full_name} in your hand.")
 			return 
-		if (src_obj == fist) and (not src_creature.hand_is_empty()):
-			active_gs.buffer(f"You can't attack with your fist while you're holding the {src_creature.get_hand_item()}.")
+		if (src_obj in src_creature.feature_lst) and (not src_creature.hand_is_empty()):
+			active_gs.buffer(f"You can't attack with your fist while you're holding the {src_creature.get_hand_item().full_name}.")
 			return 
 
 		# IMPLEMENT RESULTS
+		
 		# <determine tgt_obj for tgt_creature>
-		tgt_obj = tgt_creature.get_hand_item()
+		if tgt_creature.hand_is_empty():
+			tgt_obj = None
+		else:
+			tgt_obj = tgt_creature.get_hand_item()
+
+		# <determine type of attack obj - unarmed, item, or weapon>
+		if src_obj in self.attacked_dict:
+			dict_key = src_obj
+		elif (src_obj in src_creature.feature_lst) and 'def_unarmed' in self.attacked_dict:
+			dict_key = 'def_unarmed'
+		elif (src_obj.is_weapon()) and 'def_weapon' in self.attacked_dict:
+			dict_key = 'def_weapon'
+		elif 'def_item' in self.attacked_dict:
+			dict_key = 'def_item'
+		else:
+			dict_key = 'no_response'
+
+		print(dict_key)
 
 		# <determine & implement result / winner>
 
@@ -332,7 +350,7 @@ class Creature(ViewOnly):
 ### NOTE: REALLY NEED TO FIGURE OUT 'WINNER' *FIRST* - THEN HAND STATE AND WEAPON ADJ FLOW FROM THERE
 ### NOTE: order of operations = <attacker> => <custom> => <winner>
 
-		active_gs.buffer(f"{src_creature.full_name} attacks the {tgt_creature.full_name} with the {obj.full_name}.")
+		active_gs.buffer(f"{src_creature.full_name} attacks the {tgt_creature.full_name} with the {src_obj.full_name}.")
 		return 
 
 
