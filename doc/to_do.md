@@ -235,8 +235,9 @@ Version 3.75 Goals
 		- IDEA: can we differentiate between weapon and non-weapon for results
 		- DONE: update src_obj with fist obj option
 
-	- TBD: implement results
+	- INPROC: implement results
 		- IDEA: creature_flee => creature_flee_rm and creature_flee_dc
+		- TBD: refactor old code
 
 
 	- TBD: move to algorithmic key generation for attack_b() responses

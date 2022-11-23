@@ -314,6 +314,16 @@ class Creature(ViewOnly):
 		print(dict_key)
 
 		# <determine & implement result / winner>
+		room_obj = active_gs.get_room()
+
+		if self.attacked_dict[dict_key]['result_code'] == 'creature_flee_dc':
+			room_obj.floor_lst_remove(self)
+		elif self.attacked_dict[dict_key]['result_code'] == 'burt_death':
+			active_gs.set_game_ending('death')
+		elif self.attacked_dict[dict_key]['result_code'] == 'creature_death':
+			room_obj.floor_lst_remove(self)
+			room_obj.floor_lst_extend(self.bkpk_lst + self.hand_lst + self.worn_lst)
+
 
 		# <IF SILENT MODE, RETURN>
 
