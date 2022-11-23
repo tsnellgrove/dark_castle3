@@ -295,7 +295,7 @@ class Creature(ViewOnly):
 		
 		# determine tgt_obj for tgt_creature
 		if tgt_creature.hand_is_empty():
-			tgt_obj = None
+			tgt_obj = tgt_creature.feature_lst[0] # needs to be sorted out - for hedgehog = sharp_teeth ?
 		else:
 			tgt_obj = tgt_creature.get_hand_item()
 
@@ -310,8 +310,45 @@ class Creature(ViewOnly):
 			result_key = 'def_item'
 		else:
 			result_key = 'no_response'
-
 		print(result_key)
+
+
+		if src_obj in src_creature.feature_lst:
+			src_obj_category = 'unarmed'
+		elif src_obj.is_weapon():
+			src_obj_category = 'weapon'
+		else:
+			src_obj_category = 'item'
+		
+		if tgt_obj in tgt_creature.feature_lst:
+			tgt_obj_category = 'unarmed'
+		elif tgt_obj.is_weapon():
+			tgt_obj_category = 'weapon'
+		else:
+			tgt_obj_category = 'item'
+		
+		src_obj_str_lst = [src_obj.name, src_obj_category, '*']
+		src_creature_str_lst = [src_creature.name, '*']
+		tgt_obj_str_lst = [tgt_obj.name, tgt_obj_category, '*']
+
+		result_key2 = None
+		break_flag = False	
+		for src_obj_str in src_obj_str_lst:
+			for src_creature_str in src_creature_str_lst:
+				for tgt_obj_str in tgt_obj_str_lst:
+					loop_key = f"{src_obj_str}_{src_creature_str}_{tgt_obj_str}"
+					if f"{src_obj_str}_{src_creature_str}_{tgt_obj_str}" in self.attacked_dict:
+						result_key2 = loop_key
+						break_flag = True
+						break
+				if break_flag:
+					break	
+			if break_flag:
+				break
+		if result_key2 == None:
+			result_key2 = 'method_default_result'
+		print(result_key2)
+
 
 		# determine & implement combat result
 		room_obj = active_gs.get_room()

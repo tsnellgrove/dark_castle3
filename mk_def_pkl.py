@@ -202,7 +202,10 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 						'def_attack' : {'result_code' : 'creature_flee', 'custom_key' : 'hedgehog_flees', 'resolution_key' : None},
 						'def_weapon' : {'result_code' : 'creature_flee_dc', 'custom_key' : 'hedgehog_flees', 'resolution_key' : None},
 						'def_unarmed' : {'result_code' : None, 'custom_key' : 'hedgehog_flees', 'resolution_key' : None},
-						'def_item' : {'result_code' : None, 'custom_key' : 'hedgehog_flees', 'resolution_key' : None}
+						'def_item' : {'result_code' : None, 'custom_key' : 'hedgehog_flees', 'resolution_key' : None},
+						'weapon_burt_*' : 'flee_dc',
+						'unarmed_burt_*' : None, # karate kid
+						'*_*_*' : None # dodge
 				},
 				{})
 
