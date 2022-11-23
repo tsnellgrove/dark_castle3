@@ -234,11 +234,21 @@ Version 3.75 Goals
 		- IDEA: could have def_unarmed, def_item, def_weapon responses
 		- IDEA: can we differentiate between weapon and non-weapon for results
 		- DONE: update src_obj with fist obj option
-
-	- INPROC: implement results
+	- DONE: implement results
 		- IDEA: creature_flee => creature_flee_rm and creature_flee_dc
-		- TBD: refactor old code
-
+		- DONE: refactor old code
+	- TBD: implement more rigorous result matrix
+		- IDEA: thus far, for a given tgt_creature, result_key has been based purely on src_obj
+		- IDEA: this works for a 4 room dungeon with 2 creatures but is inherently limited
+		- IDEA: per tgt_creature, result_key should be a combo of <src_obj>_<src_creature>_<tgt_obj>
+			- IDEA: where <src_obj> = [src_obj.name, 'weapon', 'unarmed', 'item', '*']
+			- IDEA: <src_creature> = [src_creature.name, '*']
+			- IDEA: <tgt_obj> = [tgt_obj.name, 'weapon', 'unarmed', 'item', '*']
+			- IDEA: else result_key = 'method_default_result'
+			- IDEA: options should loop such that more specific options are tried first and the loops are in order of src_obj, src_creature, tgt_obj
+			- IDEA: break (flag variant) to exit loop once first hit is found
+		- EXAMPLE: hedgehog => 'weapon'_'burt'_* = 'flee_dc' ; 'unarmed'_'burt'_'*' = None <karate kid> ; '*'_'*'_'*' = None <dodge>
+			- IDEA: the result key will also be used as an auto-gen key for the custom description
 
 	- TBD: move to algorithmic key generation for attack_b() responses
 	- TBD: varry response based on whether src_creature == gs.hero
@@ -248,6 +258,9 @@ Version 3.75 Goals
 
 	- TBD: attack_b() => attack() [search interp.py and validate.py too]
 	- TBD: eliminate attack_burt method
+
+	- TBD: doc_string on details of result matrix (and evolution from original version)
+	- TBD: doc_string history of attack() as a hot mess and driver for burt as Creature class obj
 
 
 - TBD: create Surface class!! (was 'Shelf')

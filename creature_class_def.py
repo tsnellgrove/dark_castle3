@@ -293,37 +293,36 @@ class Creature(ViewOnly):
 
 		# IMPLEMENT RESULTS
 		
-		# <determine tgt_obj for tgt_creature>
+		# determine tgt_obj for tgt_creature
 		if tgt_creature.hand_is_empty():
 			tgt_obj = None
 		else:
 			tgt_obj = tgt_creature.get_hand_item()
 
-		# <determine type of attack obj - unarmed, item, or weapon>
+		# determine type of attack obj - unarmed, item, or weapon
 		if src_obj in self.attacked_dict:
-			dict_key = src_obj
+			result_key = src_obj
 		elif (src_obj in src_creature.feature_lst) and 'def_unarmed' in self.attacked_dict:
-			dict_key = 'def_unarmed'
+			result_key = 'def_unarmed'
 		elif (src_obj.is_weapon()) and 'def_weapon' in self.attacked_dict:
-			dict_key = 'def_weapon'
+			result_key = 'def_weapon'
 		elif 'def_item' in self.attacked_dict:
-			dict_key = 'def_item'
+			result_key = 'def_item'
 		else:
-			dict_key = 'no_response'
+			result_key = 'no_response'
 
-		print(dict_key)
+		print(result_key)
 
-		# <determine & implement result / winner>
+		# determine & implement combat result
 		room_obj = active_gs.get_room()
-
-		if self.attacked_dict[dict_key]['result_code'] == 'creature_flee_dc':
+		result_code = self.attacked_dict[result_key]['result_code']
+		if result_code == 'creature_flee_dc':
 			room_obj.floor_lst_remove(self)
-		elif self.attacked_dict[dict_key]['result_code'] == 'burt_death':
+		elif result_code == 'burt_death':
 			active_gs.set_game_ending('death')
-		elif self.attacked_dict[dict_key]['result_code'] == 'creature_death':
+		elif result_code == 'creature_death':
 			room_obj.floor_lst_remove(self)
 			room_obj.floor_lst_extend(self.bkpk_lst + self.hand_lst + self.worn_lst)
-
 
 		# <IF SILENT MODE, RETURN>
 
