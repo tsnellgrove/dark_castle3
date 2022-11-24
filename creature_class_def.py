@@ -337,7 +337,7 @@ class Creature(ViewOnly):
 		print(result_key) # for testing
 
 		# determine & implement combat result
-		room_obj = active_gs.get_room()
+		room_obj = active_gs.map.get_obj_room(tgt_creature)
 		result_code = self.attacked_dict[result_key]
 		if result_code == 'tgt_flee_dc':
 			room_obj.floor_lst_remove(self)
@@ -352,11 +352,13 @@ class Creature(ViewOnly):
 			room_obj.floor_lst_remove(tgt_creature)
 			room_obj.floor_lst_extend(tgt_creature.bkpk_lst + tgt_creature.hand_lst + tgt_creature.worn_lst)
 
-		# <IF SILENT MODE, RETURN>
+		# IF SILENT MODE, RETURN
+		if room_obj != active_gs.get_room():
+			return 
 
-		# <OUTPUT COMBAT TEXT>
+		# OUTPUT COMBAT TEXT
 		
-			# <determine pronouns based on 3 possible cases:
+		# determine pronouns based on 3 possible cases
 					# <src_creature == gs.hero>
 					# <tgt_creature == gs.hero>
 					# <gs.hero != src_creature && gs.hero != tgt_creature>

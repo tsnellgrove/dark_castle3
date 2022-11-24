@@ -237,7 +237,7 @@ Version 3.75 Goals
 	- DONE: implement results
 		- IDEA: creature_flee => creature_flee_rm and creature_flee_dc
 		- DONE: refactor old code
-	- INPROC: implement more rigorous result matrix
+	- DONE: implement more rigorous result matrix
 		- IDEA: thus far, for a given tgt_creature, result_key has been based purely on src_obj
 		- IDEA: this works for a 4 room dungeon with 2 creatures but is inherently limited
 		- IDEA: per tgt_creature, result_key should be a combo of <src_obj>_<src_creature>_<tgt_obj>
@@ -254,6 +254,7 @@ Version 3.75 Goals
 		- DONE: update result coding
 		- DONE: elim interim hedgehog entry
 		- DONE: clean up comments
+	- DONE: return on gs.hero not in current room
 
 
 	- TBD: move to algorithmic key generation for attack_b() responses
