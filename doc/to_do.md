@@ -253,7 +253,7 @@ Version 3.75 Goals
 		- DONE: result_code2 => result_code
 		- DONE: update result coding
 		- DONE: elim interim hedgehog entry
-		- TBD: clean up comments
+		- DONE: clean up comments
 
 
 	- TBD: move to algorithmic key generation for attack_b() responses

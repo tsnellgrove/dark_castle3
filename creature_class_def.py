@@ -391,27 +391,6 @@ class Creature(ViewOnly):
 		return 
 
 
-		# determine type of attack obj - unarmed, item, or weapon
-#		if src_obj in self.attacked_dict:
-#			result_key = src_obj
-#		elif (src_obj in src_creature.feature_lst) and 'def_unarmed' in self.attacked_dict:
-#			result_key = 'def_unarmed'
-#		elif (src_obj.is_weapon()) and 'def_weapon' in self.attacked_dict:
-#			result_key = 'def_weapon'
-#		elif 'def_item' in self.attacked_dict:
-#			result_key = 'def_item'
-#		else:
-#			result_key = 'no_response'
-#		print(result_key)
-
-#		result_code = self.attacked_dict[result_key]['result_code']
-#		if result_code == 'creature_flee_dc':
-#		elif result_code == 'burt_death':
-#			active_gs.set_game_ending('death')
-#		elif result_code == 'creature_death':
-#			room_obj.floor_lst_remove(self)
-#			room_obj.floor_lst_extend(self.bkpk_lst + self.hand_lst + self.worn_lst)
-
 
 
 	def attack(self, active_gs):
