@@ -295,24 +295,11 @@ class Creature(ViewOnly):
 		
 		# determine tgt_obj for tgt_creature
 		if tgt_creature.hand_is_empty():
-			tgt_obj = tgt_creature.feature_lst[0] # needs to be sorted out - for hedgehog = sharp_teeth ?
+			tgt_obj = tgt_creature.feature_lst[0] # needs to be sorted out for non-burt - for hedgehog = sharp_teeth ?
 		else:
 			tgt_obj = tgt_creature.get_hand_item()
 
-		# determine type of attack obj - unarmed, item, or weapon
-		if src_obj in self.attacked_dict:
-			result_key = src_obj
-		elif (src_obj in src_creature.feature_lst) and 'def_unarmed' in self.attacked_dict:
-			result_key = 'def_unarmed'
-		elif (src_obj.is_weapon()) and 'def_weapon' in self.attacked_dict:
-			result_key = 'def_weapon'
-		elif 'def_item' in self.attacked_dict:
-			result_key = 'def_item'
-		else:
-			result_key = 'no_response'
-		print(result_key)
-
-
+		# determine result key
 		if src_obj in src_creature.feature_lst:
 			src_obj_category = 'unarmed'
 		elif src_obj.is_weapon():
@@ -331,35 +318,39 @@ class Creature(ViewOnly):
 		src_creature_str_lst = [src_creature.name, '*']
 		tgt_obj_str_lst = [tgt_obj.name, tgt_obj_category, '*']
 
-		result_key2 = None
+		result_key = None
 		break_flag = False	
 		for src_obj_str in src_obj_str_lst:
 			for src_creature_str in src_creature_str_lst:
 				for tgt_obj_str in tgt_obj_str_lst:
 					loop_key = f"{src_obj_str}_{src_creature_str}_{tgt_obj_str}"
 					if f"{src_obj_str}_{src_creature_str}_{tgt_obj_str}" in self.attacked_dict:
-						result_key2 = loop_key
+						result_key = loop_key
 						break_flag = True
 						break
 				if break_flag:
 					break	
 			if break_flag:
 				break
-		if result_key2 == None:
-			result_key2 = 'method_default_result'
-		print(result_key2)
-
+		if result_key == None:
+			result_key = 'method_default_result'
+		print(result_key) # for testing
 
 		# determine & implement combat result
 		room_obj = active_gs.get_room()
-		result_code = self.attacked_dict[result_key]['result_code']
-		if result_code == 'creature_flee_dc':
+		result_code = self.attacked_dict[result_key]
+		if result_code == 'tgt_flee_dc':
 			room_obj.floor_lst_remove(self)
-		elif result_code == 'burt_death':
+		elif (result_code == 'src_death') and (src_creature == active_gs.hero):
 			active_gs.set_game_ending('death')
-		elif result_code == 'creature_death':
-			room_obj.floor_lst_remove(self)
-			room_obj.floor_lst_extend(self.bkpk_lst + self.hand_lst + self.worn_lst)
+		elif result_code == 'src_death':
+			room_obj.floor_lst_remove(src_creature)
+			room_obj.floor_lst_extend(src_creature.bkpk_lst + src_creature.hand_lst + src_creature.worn_lst)
+		elif (result_code == 'tgt_death') and (tgt_creature == active_gs.hero):
+			active_gs.set_game_ending('death')
+		elif result_code == 'tgt_death':
+			room_obj.floor_lst_remove(tgt_creature)
+			room_obj.floor_lst_extend(tgt_creature.bkpk_lst + tgt_creature.hand_lst + tgt_creature.worn_lst)
 
 		# <IF SILENT MODE, RETURN>
 
@@ -398,6 +389,28 @@ class Creature(ViewOnly):
 
 		active_gs.buffer(f"{src_creature.full_name} attacks the {tgt_creature.full_name} with the {src_obj.full_name}.")
 		return 
+
+
+		# determine type of attack obj - unarmed, item, or weapon
+#		if src_obj in self.attacked_dict:
+#			result_key = src_obj
+#		elif (src_obj in src_creature.feature_lst) and 'def_unarmed' in self.attacked_dict:
+#			result_key = 'def_unarmed'
+#		elif (src_obj.is_weapon()) and 'def_weapon' in self.attacked_dict:
+#			result_key = 'def_weapon'
+#		elif 'def_item' in self.attacked_dict:
+#			result_key = 'def_item'
+#		else:
+#			result_key = 'no_response'
+#		print(result_key)
+
+#		result_code = self.attacked_dict[result_key]['result_code']
+#		if result_code == 'creature_flee_dc':
+#		elif result_code == 'burt_death':
+#			active_gs.set_game_ending('death')
+#		elif result_code == 'creature_death':
+#			room_obj.floor_lst_remove(self)
+#			room_obj.floor_lst_extend(self.bkpk_lst + self.hand_lst + self.worn_lst)
 
 
 

@@ -249,11 +249,12 @@ Version 3.75 Goals
 			- IDEA: break (flag variant) to exit loop once first hit is found
 		- EXAMPLE: hedgehog => 'weapon'_'burt'_* = 'flee_dc' ; 'unarmed'_'burt'_'*' = None <karate kid> ; '*'_'*'_'*' = None <dodge>
 			- IDEA: the result key will also be used as an auto-gen key for the custom description
-		- TBD: comemnt out / clean up old code
-		- TBD: result_code2 => result_code
-		- TBD: update result coding
-		- TBD: elim interim hedgehog entry
-		- TBD: refactor and simplify new result key-gen code
+		- DONE: comemnt out / clean up old code
+		- DONE: result_code2 => result_code
+		- DONE: update result coding
+		- DONE: elim interim hedgehog entry
+		- TBD: clean up comments
+
 
 	- TBD: move to algorithmic key generation for attack_b() responses
 	- TBD: varry response based on whether src_creature == gs.hero
@@ -263,6 +264,7 @@ Version 3.75 Goals
 
 	- TBD: attack_b() => attack() [search interp.py and validate.py too]
 	- TBD: eliminate attack_burt method
+	- TBD: refactor and simplify new result code
 
 	- TBD: doc_string on details of result matrix (and evolution from original version)
 	- TBD: doc_string history of attack() as a hot mess and driver for burt as Creature class obj
