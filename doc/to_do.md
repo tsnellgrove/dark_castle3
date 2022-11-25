@@ -255,13 +255,16 @@ Version 3.75 Goals
 		- DONE: elim interim hedgehog entry
 		- DONE: clean up comments
 	- DONE: return on gs.hero not in current room
+	- DONE: construct and buffer attack initiation string
+		- DONE: varry response based on whether src_creature == gs.hero
+	- TBD: buffer custom response string
+		- IDEA: move to algorithmic key generation for attack_b() responses
+	- TBD: attack resolution string
+	
 
-
-	- TBD: move to algorithmic key generation for attack_b() responses
-	- TBD: varry response based on whether src_creature == gs.hero
-
-	- IDEA: can we customize the attack_initiation enough that it works for the hedgehogs defense of the shiny_sword?
+	- IDEA: customize the attack_initiation so that it works for hedgehog's defense of the shiny_sword
 	- IDEA: Maybe hedgehog laughs at an attack with a non-weapon?
+
 
 	- TBD: attack_b() => attack() [search interp.py and validate.py too]
 	- TBD: eliminate attack_burt method

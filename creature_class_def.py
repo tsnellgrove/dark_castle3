@@ -358,12 +358,34 @@ class Creature(ViewOnly):
 
 		# OUTPUT COMBAT TEXT
 		
-		# determine pronouns based on 3 possible cases
-					# <src_creature == gs.hero>
-					# <tgt_creature == gs.hero>
-					# <gs.hero != src_creature && gs.hero != tgt_creature>
+		# buffer attack initiation
+		if src_creature == active_gs.hero:
+			src_creature_disp = "You attack"
+			if src_obj_category == 'unarmed':
+				src_obj_disp = f"your {src_obj.full_name}"
+			else:
+				src_obj_disp = f"the {src_obj.full_name}"
+		else:
+			src_creature_disp = f"The {src_creature.full_name} attacks"
+			if src_obj_category == 'unarmed':
+				src_obj_disp = f"its {src_obj.full_name}"
+			else:
+				src_obj_disp = f"the {src_obj.full_name}"
 		
-			# <buffer attack initiation>
+		if tgt_creature == active_gs.hero:
+			tgt_creature_disp = "you attempt"
+			if tgt_obj_category == 'unarmed':
+				tgt_obj_disp = f"your {tgt_obj.full_name}"
+			else:
+				tgt_obj_disp = f"the {tgt_obj.full_name}"
+		else:
+			tgt_creature_disp = f"the {tgt_creature.full_name} attempts"
+			if tgt_obj_category == 'unarmed':
+				tgt_obj_disp = f"dodge"
+			else:
+				tgt_obj_disp = f"parry with the {tgt_obj.full_name}"
+
+		active_gs.buffer(f"{src_creature_disp} with {src_obj_disp} and {tgt_creature_disp} to {tgt_obj_disp}!")
 
 			# <buffer custom response>
 
@@ -388,6 +410,13 @@ class Creature(ViewOnly):
 ### NOTE: ALSO NOT DETERMINING IF hand_is_empty() IN CONJUNCTION WITH 'WINNER' AND ATTACK RESOLUTION
 ### NOTE: REALLY NEED TO FIGURE OUT 'WINNER' *FIRST* - THEN HAND STATE AND WEAPON ADJ FLOW FROM THERE
 ### NOTE: order of operations = <attacker> => <custom> => <winner>
+
+		
+		# determine pronouns based on 3 possible cases
+					# <src_creature == gs.hero>
+					# <tgt_creature == gs.hero>
+					# <gs.hero != src_creature && gs.hero != tgt_creature>
+
 
 		active_gs.buffer(f"{src_creature.full_name} attacks the {tgt_creature.full_name} with the {src_obj.full_name}.")
 		return 
