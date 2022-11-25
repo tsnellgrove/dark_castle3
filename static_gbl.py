@@ -248,6 +248,11 @@ descript_dict = {
 		### description resulting from give ###
 		'burt_give_royal_hedgehog_stale_biscuits_descript' : "The hedgehog is eating ravenously.",
 		'burt_give_royal_hedgehog_shiny_sword_descript' : "This hedgehog is on top of the world! It has recently devoured a meal of Stale Biscuits (a rare delicacy among hedgehogs) and now has it's favorite shiny object back. It looks upon you with gratitude and loyal devotion. It sees within you a nobility, compassion, and destiny beyond anything you've hitherto imagined possessing.",
+
+		### attack descriptions ###
+		'royal_hedgehog_weapon_burt_*' : "The Royal Hedgehog squeeks in dismay as it dodges your malevolent agression. It's loyal gaze changes to one of bewilderment and hearbreak. 'Et tu Burtus?' Even as the loyal little creature gives way, you know in your heart that you will come to regret this unkingly deed.",
+		'royal_hedgehog_unarmed_burt_*' : "The Royal Hedgehog seems to view your unarmed swipe as a playful challenge. It drops into a martial arts pose and beings making wax-on, wax-off motions with its paws.",
+		'royal_hedgehog_*_*_*' : "The Royal Hedgehog is more nimble than you would have expected. It adroitly balances on the balls of its feet and gets ready to bob and weave.",
 }
 
 

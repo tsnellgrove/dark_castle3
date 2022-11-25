@@ -257,17 +257,17 @@ Version 3.75 Goals
 	- DONE: return on gs.hero not in current room
 	- DONE: construct and buffer attack initiation string
 		- DONE: varry response based on whether src_creature == gs.hero
-	- TBD: buffer custom response string
+	- DONE: buffer custom response string
 		- IDEA: move to algorithmic key generation for attack_b() responses
+		- IDEA: Maybe hedgehog laughs at an attack with a non-weapon?
 	- TBD: attack resolution string
-	
-
-	- IDEA: customize the attack_initiation so that it works for hedgehog's defense of the shiny_sword
-	- IDEA: Maybe hedgehog laughs at an attack with a non-weapon?
-
+	- TBD: test attack_b with burt attacking goblin
+	- TBD: test attack_b with goblin attacking burt
+	- TBD: customize the attack_initiation so that it works for hedgehog's defense of the shiny_sword
 
 	- TBD: attack_b() => attack() [search interp.py and validate.py too]
 	- TBD: eliminate attack_burt method
+	- TBD: clean-up unused custom keys
 	- TBD: refactor and simplify new result code
 
 	- TBD: doc_string on details of result matrix (and evolution from original version)
