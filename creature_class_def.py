@@ -341,16 +341,36 @@ class Creature(ViewOnly):
 		result_code = self.attacked_dict[result_key]
 		if result_code == 'tgt_flee_dc':
 			room_obj.floor_lst_remove(self)
+			win_obj = src_obj
+			win_creature = src_creature
+			lose_creature = tgt_creature
 		elif (result_code == 'src_death') and (src_creature == active_gs.hero):
 			active_gs.set_game_ending('death')
+			win_obj = tgt_obj
+			win_creature = tgt_creature
+			lose_creature = src_creature
 		elif result_code == 'src_death':
 			room_obj.floor_lst_remove(src_creature)
 			room_obj.floor_lst_extend(src_creature.bkpk_lst + src_creature.hand_lst + src_creature.worn_lst)
+			win_obj = tgt_obj
+			win_creature = tgt_creature
+			lose_creature = src_creature
 		elif (result_code == 'tgt_death') and (tgt_creature == active_gs.hero):
 			active_gs.set_game_ending('death')
+			win_obj = src_obj
+			win_creature = src_creature
+			lose_creature = tgt_creature
 		elif result_code == 'tgt_death':
 			room_obj.floor_lst_remove(tgt_creature)
 			room_obj.floor_lst_extend(tgt_creature.bkpk_lst + tgt_creature.hand_lst + tgt_creature.worn_lst)
+			win_obj = src_obj
+			win_creature = src_creature
+			lose_creature = tgt_creature
+		else:
+			result_code = 'no_result'
+			win_obj = src_obj
+			win_creature = src_creature
+			lose_creature = tgt_creature
 
 		# IF SILENT MODE, RETURN
 		if room_obj != active_gs.get_room():
@@ -390,10 +410,22 @@ class Creature(ViewOnly):
 		# buffer custom response
 		active_gs.buff_try_key(f"{tgt_creature.name}_{result_key}")
 
+		# attack resolution start - compose string with verb and adj detail if src_creature weilding a weapon 
+		if (win_obj in src_creature.feature_lst) or (win_obj in tgt_creature.feature_lst):
+			resolution_strt_str = ""
+		elif win_obj.is_weapon():
+			weapon_wrd_count = len(win_obj.desc_lst) - 1
+			weapon_wrd_idx = random.randint(0, weapon_wrd_count)
+			weapon_verb = win_obj.desc_lst[weapon_wrd_idx][0]
+			weapon_adj_noun = win_obj.desc_lst[weapon_wrd_idx][1]
+			resolution_strt_str = f"The {win_obj.full_name} {weapon_verb} through the air with a {weapon_adj_noun}."
+		else:
+			resolution_strt_str = f"The {win_obj.full_name} whizzes through the air."			
 
+		# attack resolution end - compose string based on result_code
 
-
-			# <buffer winner result>
+		# buffer attack resolution string
+		active_gs.buffer(f"{resolution_strt_str} RESOLTUION STR TBD")
 
 
 		# create and buffer attack_initiation_str
@@ -402,7 +434,7 @@ class Creature(ViewOnly):
 
 		# if no response, buffer default text and exit
 
-		#	if creature_has_response, buffer custom_str if it exists
+		# if creature_has_response, buffer custom_str if it exists
 
 		# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
 

@@ -260,7 +260,9 @@ Version 3.75 Goals
 	- DONE: buffer custom response string
 		- IDEA: move to algorithmic key generation for attack_b() responses
 		- IDEA: Maybe hedgehog laughs at an attack with a non-weapon?
-	- TBD: attack resolution string
+	- INPROC: attack resolution string
+		- DONE: implement resolution initiation string for hedgehog
+		- TBD: implement resolution ending string for hedgehog
 	- TBD: test attack_b with burt attacking goblin
 	- TBD: test attack_b with goblin attacking burt
 	- TBD: customize the attack_initiation so that it works for hedgehog's defense of the shiny_sword
