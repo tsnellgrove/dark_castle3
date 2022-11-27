@@ -167,6 +167,11 @@ descript_dict = {
 		'burt_death_default_res_key' : "You are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
 		'no_result_default_res_key' : "You only barely manage to parry with your own weapon!",
 
+		'not_attackable_default' : "consider attacking but then think better of it. There must be another path to victory.",
+		'tgt_flee_dc' : "flees in terror from the unprovoked attack.",
+		'tgt_death' : "dispatch the enemy with one blazing fast strike!",
+		'src_death' : "helpless against the onslaught. A better weapon will be needed to survive this foe.",
+		'no_result' : "only barely manage to dodge the assult!",
 
 		### creatures ###
 		
