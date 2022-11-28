@@ -263,7 +263,8 @@ Version 3.75 Goals
 	- INPROC: attack resolution string
 		- DONE: implement resolution initiation string for hedgehog
 		- INPROC: implement resolution ending string for hedgehog
-			- TBD: need to rewrite / recode outcomes from consistent (tgt or src) perspective
+			- DONE: need to rewrite / recode outcomes from consistent (tgt or src) perspective
+			- TBD: sort out weapon verb / adj description for hedgehog
 	- TBD: test attack_b with burt attacking goblin
 	- TBD: test attack_b with goblin attacking burt
 	- TBD: customize the attack_initiation so that it works for hedgehog's defense of the shiny_sword

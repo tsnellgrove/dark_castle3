@@ -169,7 +169,8 @@ descript_dict = {
 
 		'not_attackable_default' : "consider attacking but then think better of it. There must be another path to victory.",
 		'tgt_flee_dc' : "flees in terror from the unprovoked attack.",
-		'tgt_death' : "dispatch the enemy with one blazing fast strike!",
+#		'tgt_death' : "dispatch the enemy with one blazing fast strike!",
+		'tgt_death' : "is slain by the blazing-fast strike!",
 		'src_death' : "helpless against the onslaught. A better weapon will be needed to survive this foe.",
 		'no_result' : "only barely manage to dodge the assult!",
 

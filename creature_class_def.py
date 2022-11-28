@@ -423,11 +423,11 @@ class Creature(ViewOnly):
 			resolution_strt_str = f"The {win_obj.full_name} whizzes through the air."			
 
 		# attack resolution end - compose string based on result_code
-		if src_creature == active_gs.hero:
-			src_creature_disp = "You"
+		if lose_creature == active_gs.hero:
+			lose_creature_disp = "You"
 		else:
-			src_creature_disp = f"The {src_creature.full_name}"
-		resolution_end_str = f"{src_creature_disp} {descript_dict[result_code]} "
+			lose_creature_disp = f"The {lose_creature.full_name}"
+		resolution_end_str = f"{lose_creature_disp} {descript_dict[result_code]} "
 
 		# buffer attack resolution string
 		active_gs.buffer(f"{resolution_strt_str} {resolution_end_str}")
