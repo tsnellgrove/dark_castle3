@@ -260,14 +260,19 @@ Version 3.75 Goals
 	- DONE: buffer custom response string
 		- IDEA: move to algorithmic key generation for attack_b() responses
 		- IDEA: Maybe hedgehog laughs at an attack with a non-weapon?
-	- INPROC: attack resolution string
+	- DONE: attack resolution string
 		- DONE: implement resolution initiation string for hedgehog
-		- INPROC: implement resolution ending string for hedgehog
+		- DONE: implement resolution ending string for hedgehog
 			- DONE: need to rewrite / recode outcomes from consistent (tgt or src) perspective
-			- TBD: sort out weapon verb / adj description for hedgehog
-	- TBD: test attack_b with burt attacking goblin
+			- DONE: sort out weapon verb / adj description for hedgehog
+	- INPROC: test attack_b with burt attacking goblin
+		DONE: burt attacks goblin with key
+		DONE: burt attacks goblin with fist
+		DONE: burt attacks goblin with sword
+		TBD: sort out custom text for burt attacking goblin
 	- TBD: test attack_b with goblin attacking burt
 	- TBD: customize the attack_initiation so that it works for hedgehog's defense of the shiny_sword
+	- TBD: sort out grammar - 'You are' vs. 'The X is'
 
 	- TBD: attack_b() => attack() [search interp.py and validate.py too]
 	- TBD: eliminate attack_burt method

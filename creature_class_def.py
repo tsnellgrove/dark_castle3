@@ -418,9 +418,9 @@ class Creature(ViewOnly):
 			weapon_wrd_idx = random.randint(0, weapon_wrd_count)
 			weapon_verb = win_obj.desc_lst[weapon_wrd_idx][0]
 			weapon_adj_noun = win_obj.desc_lst[weapon_wrd_idx][1]
-			resolution_strt_str = f"The {win_obj.full_name} {weapon_verb} through the air with a {weapon_adj_noun}."
+			resolution_strt_str = f"The {win_obj.full_name} {weapon_verb} through the air with a {weapon_adj_noun}. "
 		else:
-			resolution_strt_str = f"The {win_obj.full_name} whizzes through the air."			
+			resolution_strt_str = f"The {win_obj.full_name} whizzes through the air. "			
 
 		# attack resolution end - compose string based on result_code
 		if lose_creature == active_gs.hero:
@@ -430,7 +430,7 @@ class Creature(ViewOnly):
 		resolution_end_str = f"{lose_creature_disp} {descript_dict[result_code]} "
 
 		# buffer attack resolution string
-		active_gs.buffer(f"{resolution_strt_str} {resolution_end_str}")
+		active_gs.buffer(f"{resolution_strt_str}{resolution_end_str}")
 
 		# create and buffer attack_initiation_str
 

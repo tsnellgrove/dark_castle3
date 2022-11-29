@@ -183,7 +183,10 @@ goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 				True,
 				{
 						shiny_sword : {'result_code' : 'creature_death', 'custom_key' : 'goblin_slain', 'resolution_key' : None},
-						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : 'burt_slain_by_goblin', 'resolution_key' : None}
+						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : 'burt_slain_by_goblin', 'resolution_key' : None},
+						'shiny_sword_burt_*' : 'tgt_death',
+						'weapon_*_*' : None, # parry
+						'*_*_*' : 'src_death'
 				},
 				{
 						shiny_sword : {'result_code' : None, 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'parry_goblin'

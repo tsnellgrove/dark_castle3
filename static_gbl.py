@@ -171,7 +171,7 @@ descript_dict = {
 		'tgt_flee_dc' : "flees in terror from the unprovoked attack.",
 #		'tgt_death' : "dispatch the enemy with one blazing fast strike!",
 		'tgt_death' : "is slain by the blazing-fast strike!",
-		'src_death' : "helpless against the onslaught. A better weapon will be needed to survive this foe.",
+		'src_death' : "is helpless against the onslaught. A better weapon will be needed to survive this foe.",
 		'no_result' : "only barely manage to dodge the assult!",
 
 		### creatures ###
@@ -259,6 +259,11 @@ descript_dict = {
 		'royal_hedgehog_weapon_burt_*' : "The Royal Hedgehog squeeks in dismay as it dodges your malevolent agression. It's loyal gaze changes to one of bewilderment and hearbreak. 'Et tu Burtus?' Even as the loyal little creature gives way, you know in your heart that you will come to regret this unkingly deed.",
 		'royal_hedgehog_unarmed_burt_*' : "The Royal Hedgehog seems to view your unarmed swipe as a playful challenge. It drops into a martial arts pose and beings making wax-on, wax-off motions with its paws.",
 		'royal_hedgehog_*_*_*' : "The Royal Hedgehog is more nimble than you would have expected. It adroitly balances on the balls of its feet and gets ready to bob and weave.",
+
+		'goblin_*_*_*' : "With an echoing war cry you charge the Guard Goblin, flailing your arms wildly in all directions as you come. This technique has served you well during drunken altercations at the pub but it proves less effective against a trained mercenary. The last thing you ever see is the Guard Goblin calmly stepping into fighting stance and drawing back its weapon.",
+		'goblin_shiny_sword_burt_*' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. you know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle.",
+
+
 }
 
 
