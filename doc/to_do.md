@@ -265,15 +265,19 @@ Version 3.75 Goals
 		- DONE: implement resolution ending string for hedgehog
 			- DONE: need to rewrite / recode outcomes from consistent (tgt or src) perspective
 			- DONE: sort out weapon verb / adj description for hedgehog
-	- INPROC: test attack_b with burt attacking goblin
-		DONE: burt attacks goblin with key
-		DONE: burt attacks goblin with fist
-		DONE: burt attacks goblin with sword
-		TBD: sort out custom text for burt attacking goblin
-	- TBD: test attack_b with goblin attacking burt
+	- DONE: test attack_b with burt attacking goblin
+		- DONE: burt attacks goblin with key
+		- DONE: burt attacks goblin with fist
+		- DONE: burt attacks goblin with sword
+		- DONE: sort out custom text for burt attacking goblin
+	- INPROC: test attack_b with goblin attacking burt
+		- DONE: update burt obj with attack_dict
+		- N/A: update custom attack entries for burt in descript_dict
+		- TBD: update Result to call attack_b() instead of attack_burt()
+		- TBD: test
 	- TBD: customize the attack_initiation so that it works for hedgehog's defense of the shiny_sword
-	- TBD: sort out grammar - 'You are' vs. 'The X is'
 
+	- TBD: sort out grammar - 'You are' vs. 'The X is'
 	- TBD: attack_b() => attack() [search interp.py and validate.py too]
 	- TBD: eliminate attack_burt method
 	- TBD: clean-up unused custom keys

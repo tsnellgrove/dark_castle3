@@ -408,6 +408,7 @@ class Creature(ViewOnly):
 		active_gs.buffer(f"{src_creature_disp} with {src_obj_disp} and {tgt_creature_disp} to {tgt_obj_disp}!")
 
 		# buffer custom response
+		print(f"{tgt_creature.name}_{result_key}")
 		active_gs.buff_try_key(f"{tgt_creature.name}_{result_key}")
 
 		# attack resolution start - compose string with verb and adj detail if src_creature weilding a weapon 
