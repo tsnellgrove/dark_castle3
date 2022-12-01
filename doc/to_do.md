@@ -273,7 +273,7 @@ Version 3.75 Goals
 	- INPROC: test attack_b with goblin attacking burt
 		- DONE: update burt obj with attack_dict
 		- N/A: update custom attack entries for burt in descript_dict
-		- TBD: update Result to call attack_b() instead of attack_burt()
+		- INPROC: update Result to call attack_b() instead of attack_burt()
 		- TBD: test
 	- TBD: customize the attack_initiation so that it works for hedgehog's defense of the shiny_sword
 

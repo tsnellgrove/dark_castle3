@@ -136,7 +136,15 @@ class AttackBurtResult(BufferOnlyResult):
 						active_gs.buffer(descript_dict[self.name])
 				except:
 						pass
-				cmd_execute(active_gs, '2word', [self.creature_obj, 'attack_burt'])
+#				cmd_execute(active_gs, '2word', [self.creature_obj, 'attack_burt'])
+				if self.creature_obj.hand_is_empty():
+						hand_obj = None
+				else:
+						hand_obj = self.creature_obj.get_hand_item()
+				tgt_creature = active_gs.hero
+#				self.creature_obj.attack_b(hand_obj, active_gs, tgt_creature)
+				tgt_creature.attack_b(hand_obj, active_gs, self.creature_obj)
+#				room.go(self.dir, active_gs, self.creature)
 				return mach_state, self.cmd_override
 
 class StartTimerResult(BufferOnlyResult):
