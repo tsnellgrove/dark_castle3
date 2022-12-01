@@ -168,6 +168,7 @@ descript_dict = {
 		'no_result_default_res_key' : "You only barely manage to parry with your own weapon!",
 
 		'not_attackable_default' : "consider attacking but then think better of it. There must be another path to victory.",
+		'attack_method_default_result' : "nimbly dodges the attack.",
 		'tgt_flee_dc' : "flees in terror from the unprovoked attack.",
 #		'tgt_death' : "dispatch the enemy with one blazing fast strike!",
 		'tgt_death' : "is slain by the blazing-fast strike!",

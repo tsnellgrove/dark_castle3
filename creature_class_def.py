@@ -318,7 +318,7 @@ class Creature(ViewOnly):
 		src_creature_str_lst = [src_creature.name, '*']
 		tgt_obj_str_lst = [tgt_obj.name, tgt_obj_category, '*']
 
-		result_key = None
+		result_key = 'attack_method_default_result'
 		break_flag = False	
 		for src_obj_str in src_obj_str_lst:
 			for src_creature_str in src_creature_str_lst:
@@ -332,13 +332,16 @@ class Creature(ViewOnly):
 					break	
 			if break_flag:
 				break
-		if result_key == None:
-			result_key = 'method_default_result'
+#		if result_key == None:
+#			result_key = 'attack_method_default_result'
 		print(result_key) # for testing
 
 		# determine & implement combat result
 		room_obj = active_gs.map.get_obj_room(tgt_creature)
-		result_code = self.attacked_dict[result_key]
+		if result_key == 'attack_method_default_result':
+			result_code = None
+		else:
+			result_code = self.attacked_dict[result_key]
 		if result_code == 'tgt_flee_dc':
 			room_obj.floor_lst_remove(self)
 			win_obj = src_obj
@@ -397,7 +400,7 @@ class Creature(ViewOnly):
 			if tgt_obj_category == 'unarmed':
 				tgt_obj_disp = f"your {tgt_obj.full_name}"
 			else:
-				tgt_obj_disp = f"the {tgt_obj.full_name}"
+				tgt_obj_disp = f"parry with the {tgt_obj.full_name}"
 		else:
 			tgt_creature_disp = f"the {tgt_creature.full_name} attempts"
 			if tgt_obj_category == 'unarmed':

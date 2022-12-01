@@ -172,7 +172,7 @@ kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging
 re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None,
 				[axe_in_goblin_hand_cond, pass_thru_cond], [axe_in_goblin_hand_result, pass_result])
 
-goblin_guard = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None,
+guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None,
 				None, [grimy_axe], [torn_note, dead_goblin], [big_medal], [officiousness],
 				[goblin_attack_mach, re_arm_goblin_mach],
 				{
@@ -217,8 +217,8 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 				{
 						shiny_sword : {'result_code' : None, 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'parry_goblin'
 						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'goblin_slays_burt'
-						'weapon_guard_goblin_weapon' : None, # parry
-						'weapon_guard_gobin_*' : 'tgt_death'
+						'grimy_axe_guard_goblin_weapon' : None, # parry
+						'grimy_axe_guard_gobin_*' : 'tgt_death'
 				},
 				{}) # note: for non-burt-creature testing, frog_travel_mach was in burt.invis_lst
 
@@ -232,7 +232,7 @@ main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tap
 				# note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
 
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
-				[alcove, left_lever, middle_lever, right_lever, red_button], [control_panel, goblin_guard], [])
+				[alcove, left_lever, middle_lever, right_lever, red_button], [control_panel, guard_goblin], [])
 
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
 				[throne, crystal_box], [broach_dispenser_mach])
@@ -252,7 +252,7 @@ map = Map([{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y'
 				{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}])
 
 # *** Hierarchy-Based Object Re-assignment ***
-goblin_attacks_result.creature_obj = goblin_guard
+goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_has_biscuit_cond.creature_obj = royal_hedgehog
 hedgehog_eats_timer.alert_anchor = royal_hedgehog
 start_hedgehog_timer_results.creature_obj = royal_hedgehog
@@ -261,8 +261,8 @@ fed_hedgehog_loses_sword_result.creature_obj = royal_hedgehog
 scroll_not_in_throne_room_cond.match_room = throne_room
 hedgehog_not_exist_cond.exist_obj = royal_hedgehog
 crystal_box.contain_lst = [kinging_scroll]
-axe_in_goblin_hand_cond.creature_obj = goblin_guard
-axe_in_goblin_hand_result.creature_obj = goblin_guard
+axe_in_goblin_hand_cond.creature_obj = guard_goblin
+axe_in_goblin_hand_result.creature_obj = guard_goblin
 
 ### active_gs is the central store of game info ###
 active_gs = GameState(
@@ -295,7 +295,7 @@ active_gs = GameState(
 ### instantiated objects added to list ###
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible objects need not be listed ###
-master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, goblin_guard, entrance, main_hall, antechamber, throne_room, loyalty,
+master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, guard_goblin, entrance, main_hall, antechamber, throne_room, loyalty,
 officiousness, gold_capitals, red_bandana, big_medal, burt, brass_lantern] # note: big_bomb & test_frog removed
 
 # list written to pickle
