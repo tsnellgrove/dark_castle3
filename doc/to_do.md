@@ -276,6 +276,7 @@ Version 3.75 Goals
 		- DONE: update Result to call attack_b() instead of attack_burt()
 		- DONE: fixed goblin_guard obj w/ 'guard_goblin' name; all => guard_goblin
 		- INPROC: test [not seeing burt keys; key-gen good; need to investigate self.attacked_dict]
+			- INPROC: next try = copy / paste guard_goblin.name text ???
 	- TBD: customize the attack_initiation so that it works for hedgehog's defense of the shiny_sword
 
 	- TBD: sort out grammar - 'You are' vs. 'The X is'
