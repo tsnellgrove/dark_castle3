@@ -324,6 +324,7 @@ class Creature(ViewOnly):
 			for src_creature_str in src_creature_str_lst:
 				for tgt_obj_str in tgt_obj_str_lst:
 					loop_key = f"{src_obj_str}_{src_creature_str}_{tgt_obj_str}"
+					print(loop_key)
 					if f"{src_obj_str}_{src_creature_str}_{tgt_obj_str}" in self.attacked_dict:
 						result_key = loop_key
 						break_flag = True
