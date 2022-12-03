@@ -708,6 +708,8 @@ Misc:
 	- "(providing light)" in inventory; also is a condition (on)
 	- can move into a dark room, but can't open a container in the dark
 - Randomization feature like the spinning room in Zork 2 ?
+- re-institue remove() verb for Garment; 'take' as synonym
+- link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
 - Interpreter enhancements:
 	- noun synonyms (list in place of base_name)
 	- verb synonyms (attribute of Class? Should verbs associated with obj???)
