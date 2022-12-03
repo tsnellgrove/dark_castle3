@@ -48,11 +48,11 @@ def cmd_execute(active_gs, case, word_lst):
 ###							active_gs.buffer("You can't " + word1 + " with the " + word2_obj.full_name + ".") # old error
 		elif case == 'prep':
 				dirobj_obj, word1, noun_obj = word_lst
-#				print(f"word1 == {word1}; dirobj_obj == {dirobj_obj}; noun_obj == {noun_obj}")
-				getattr(dirobj_obj, word1)(noun_obj, active_gs) # for troubleshooting
-#				try:
-#						getattr(dirobj_obj, word1)(noun_obj, active_gs)
-#				except:
-#						error_msg = rand_error()
-#						active_gs.buffer(error_msg)
+##				print(f"word1 == {word1}; dirobj_obj == {dirobj_obj}; noun_obj == {noun_obj}")
+##				getattr(dirobj_obj, word1)(noun_obj, active_gs) # for troubleshooting
+				try:
+						getattr(dirobj_obj, word1)(noun_obj, active_gs)
+				except:
+						error_msg = rand_error()
+						active_gs.buffer(error_msg)
 

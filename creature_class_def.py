@@ -320,16 +320,10 @@ class Creature(ViewOnly):
 
 		result_key = 'attack_method_default_result'
 		break_flag = False	
-		print(f"tgt_creature == {tgt_creature} == {self.full_name}")
-		print(f"self.attacked_dict == {self.attacked_dict}")
-#		print(f"self.attacked_dict['grimy_axe_guard_gobin_*'] == {self.attacked_dict['grimy_axe_guard_gobin_*']}")
 		for src_obj_str in src_obj_str_lst:
 			for src_creature_str in src_creature_str_lst:
 				for tgt_obj_str in tgt_obj_str_lst:
 					loop_key = f"{src_obj_str}_{src_creature_str}_{tgt_obj_str}"
-					print(loop_key)
-					print(str(loop_key in self.attacked_dict))
-#					if f"{src_obj_str}_{src_creature_str}_{tgt_obj_str}" in self.attacked_dict:
 					if loop_key in self.attacked_dict:
 						result_key = loop_key
 						break_flag = True
@@ -338,9 +332,6 @@ class Creature(ViewOnly):
 					break	
 			if break_flag:
 				break
-#		if result_key == None:
-#			result_key = 'attack_method_default_result'
-		print(result_key) # for testing
 
 		# determine & implement combat result
 		room_obj = active_gs.map.get_obj_room(tgt_creature)
@@ -417,7 +408,6 @@ class Creature(ViewOnly):
 		active_gs.buffer(f"{src_creature_disp} with {src_obj_disp} and {tgt_creature_disp} to {tgt_obj_disp}!")
 
 		# buffer custom response
-		print(f"{tgt_creature.name}_{result_key}")
 		active_gs.buff_try_key(f"{tgt_creature.name}_{result_key}")
 
 		# attack resolution start - compose string with verb and adj detail if src_creature weilding a weapon 
@@ -442,31 +432,13 @@ class Creature(ViewOnly):
 		# buffer attack resolution string
 		active_gs.buffer(f"{resolution_strt_str}{resolution_end_str}")
 
-		# create and buffer attack_initiation_str
 
-		# determine if creature has an attack response and if so what response key to use
-
-		# if no response, buffer default text and exit
-
-		# if creature_has_response, buffer custom_str if it exists
-
-		# implement the results of the attack_response result_code and compose the 2nd half of the attack resolution string
-
-		# compose the start of the attack resolution string with verb and adj detail if the creature is weilding a weapon
-
-		# buffer the full attack resolution string
-
-### NOTE: GENERATING win_weapon DOESN'T REALLY SOLVE THE PROBLEM... I ACTUALLY NEED TO DETERMINE 'WINNER' AND BASE DESC OFF THEIR 'HAND'
-### NOTE: ALSO NOT DETERMINING IF hand_is_empty() IN CONJUNCTION WITH 'WINNER' AND ATTACK RESOLUTION
-### NOTE: REALLY NEED TO FIGURE OUT 'WINNER' *FIRST* - THEN HAND STATE AND WEAPON ADJ FLOW FROM THERE
 ### NOTE: order of operations = <attacker> => <custom> => <winner>
-
 		
-		# determine pronouns based on 3 possible cases
-					# <src_creature == gs.hero>
-					# <tgt_creature == gs.hero>
-					# <gs.hero != src_creature && gs.hero != tgt_creature>
-
+### determine pronouns based on 3 possible cases ###
+# <src_creature == gs.hero>
+# <tgt_creature == gs.hero>
+# <gs.hero != src_creature && gs.hero != tgt_creature>
 
 		active_gs.buffer(f"{src_creature.full_name} attacks the {tgt_creature.full_name} with the {src_obj.full_name}.")
 		return 

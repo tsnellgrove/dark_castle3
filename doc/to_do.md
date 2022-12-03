@@ -270,28 +270,33 @@ Version 3.75 Goals
 		- DONE: burt attacks goblin with fist
 		- DONE: burt attacks goblin with sword
 		- DONE: sort out custom text for burt attacking goblin
-	- INPROC: test attack_b with goblin attacking burt
+	- DONE: test attack_b with goblin attacking burt
 		- DONE: update burt obj with attack_dict
 		- N/A: update custom attack entries for burt in descript_dict
 		- DONE: update Result to call attack_b() instead of attack_burt()
 		- DONE: fixed goblin_guard obj w/ 'guard_goblin' name; all => guard_goblin
 		- DONE: test [not seeing burt keys; key-gen good; need to investigate self.attacked_dict]
 			- DONE: next try = copy / paste guard_goblin.name text ???
-		- TBD: clean up comments / troubleshooting prints
-	- TBD: customize the attack_initiation so that it works for hedgehog's defense of the shiny_sword
-
-	- TBD: for result_code == None, sort out dodge vs. parry
-	- TBD: sort out grammar - 'You are' vs. 'The X is'
-	- TBD: attack_b() => attack() [search interp.py and validate.py too]
-	- TBD: eliminate attack_burt method
-	- TBD: clean-up unused custom keys
-	- TBD: refactor and simplify new result code
-
-	- TBD: doc_string on details of result matrix (and evolution from original version)
-	- TBD: doc_string history of attack() as a hot mess and driver for burt as Creature class obj
-	- TBD: doc_string attack() use of hand_inv elevates impact of hand decision; creatures for opinions
-
+		- DONE: clean up comments / troubleshooting prints
+	- TBD: refine attack output
+		- TBD: implement error condition to prevent attacking self
+		- TBD: general attack language fixes
+		- TBD: for result_code == None, sort out dodge vs. parry; maybe easy parry vs. hard parry?
+		- TBD: customize the attack_initiation to work for hedgehog's defense of the shiny_sword
+		- TBD: sort out grammar - 'You are' vs. 'The X is'
+	- TBD: replace attack() and attack_burt() with attack_b()
+		- TBD: attack_b() => attack() [search interp.py and validate.py too]
+		- TBD: eliminate attack_burt method
+		- TBD: clean-up unused custom keys and creature keys
+		- TBD: elim attacking dict in Creature class
+	- TBD: refactor and simplify new attack code
+	- TBD: doc_strings
+		- TBD: doc_string on details of result matrix (and evolution from original version)
+		- TBD: doc_string history of attack() as a hot mess and driver for burt as Creature class obj
+		- TBD: attack() use of hand_inv elevates impact of hand inv; creatures form opinions
 - TBD: update get_hand_item() to return None if hand_list is empty
+
+
 - TBD: create Surface class!! (was 'Shelf')
 	- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
 	- put initial shelf in Main Hall
