@@ -322,7 +322,7 @@ class Creature(ViewOnly):
 		break_flag = False	
 		print(f"tgt_creature == {tgt_creature} == {self.full_name}")
 		print(f"self.attacked_dict == {self.attacked_dict}")
-		print(f"self.attacked_dict['grimy_axe_guard_gobin_*'] == {self.attacked_dict['grimy_axe_guard_gobin_*']}")
+#		print(f"self.attacked_dict['grimy_axe_guard_gobin_*'] == {self.attacked_dict['grimy_axe_guard_gobin_*']}")
 		for src_obj_str in src_obj_str_lst:
 			for src_creature_str in src_creature_str_lst:
 				for tgt_obj_str in tgt_obj_str_lst:

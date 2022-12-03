@@ -218,7 +218,7 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 						shiny_sword : {'result_code' : None, 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'parry_goblin'
 						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'goblin_slays_burt'
 						'grimy_axe_guard_goblin_weapon' : None, # parry
-						'grimy_axe_guard_gobin_*' : 'tgt_death'
+						'grimy_axe_guard_goblin_*' : 'tgt_death'
 				},
 				{}) # note: for non-burt-creature testing, frog_travel_mach was in burt.invis_lst
 

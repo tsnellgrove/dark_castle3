@@ -275,10 +275,12 @@ Version 3.75 Goals
 		- N/A: update custom attack entries for burt in descript_dict
 		- DONE: update Result to call attack_b() instead of attack_burt()
 		- DONE: fixed goblin_guard obj w/ 'guard_goblin' name; all => guard_goblin
-		- INPROC: test [not seeing burt keys; key-gen good; need to investigate self.attacked_dict]
-			- INPROC: next try = copy / paste guard_goblin.name text ???
+		- DONE: test [not seeing burt keys; key-gen good; need to investigate self.attacked_dict]
+			- DONE: next try = copy / paste guard_goblin.name text ???
+		- TBD: clean up comments / troubleshooting prints
 	- TBD: customize the attack_initiation so that it works for hedgehog's defense of the shiny_sword
 
+	- TBD: for result_code == None, sort out dodge vs. parry
 	- TBD: sort out grammar - 'You are' vs. 'The X is'
 	- TBD: attack_b() => attack() [search interp.py and validate.py too]
 	- TBD: eliminate attack_burt method
@@ -289,7 +291,7 @@ Version 3.75 Goals
 	- TBD: doc_string history of attack() as a hot mess and driver for burt as Creature class obj
 	- TBD: doc_string attack() use of hand_inv elevates impact of hand decision; creatures for opinions
 
-
+- TBD: update get_hand_item() to return None if hand_list is empty
 - TBD: create Surface class!! (was 'Shelf')
 	- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
 	- put initial shelf in Main Hall
@@ -697,6 +699,15 @@ Version 6.x Goals
 *** NEW PUZZLE IDEAS ***
 
 Misc:
+- for light sources:
+	- "(providing light)" in inventory; also is a condition (on)
+	- can move into a dark room, but can't open a container in the dark
+- Randomization feature like the spinning room in Zork 2 ?
+- Interpreter enhancements:
+	- noun synonyms (list in place of base_name)
+	- verb synonyms (attribute of Class? Should verbs associated with obj???)
+	- enable "take all", "drop all"
+	- randomize frequent responses (e.g. "in your spell book you see...")
 - for Liquid: fill & pour
 - for FlamableItem: light & burn (e.g. matches)
 - PaperItem: burns; also, if writing, ink runs and becomes unreadable
