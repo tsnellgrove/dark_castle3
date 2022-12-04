@@ -280,7 +280,7 @@ class Creature(ViewOnly):
 		# ERROR & RETURN ON COMMAND FAILURES
 		if not tgt_creature.is_attackable:
 			try:
-				active_gs.buffer(descript_dict[f"not_attackable_{tgt_creature.name}"])
+				active_gs.buffer(descript_dict[f"not_attackable_{src_creature.name}_{tgt_creature.name}"])
 			except:
 				active_gs.buffer(descript_dict['not_attackable_default'])
 			return
@@ -290,6 +290,9 @@ class Creature(ViewOnly):
 		if (src_obj in src_creature.feature_lst) and (not src_creature.hand_is_empty()):
 			active_gs.buffer(f"You can't attack with your fist while you're holding the {src_creature.get_hand_item().full_name}.")
 			return 
+		if src_creature == tgt_creature:
+			active_gs.buffer("A creature can't attack itself!")
+			return
 
 		# IMPLEMENT RESULTS
 		
@@ -424,9 +427,9 @@ class Creature(ViewOnly):
 
 		# attack resolution end - compose string based on result_code
 		if lose_creature == active_gs.hero:
-			lose_creature_disp = "You"
+			lose_creature_disp = "You are"
 		else:
-			lose_creature_disp = f"The {lose_creature.full_name}"
+			lose_creature_disp = f"The {lose_creature.full_name} is"
 		resolution_end_str = f"{lose_creature_disp} {descript_dict[result_code]} "
 
 		# buffer attack resolution string

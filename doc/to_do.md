@@ -278,12 +278,12 @@ Version 3.75 Goals
 		- DONE: test [not seeing burt keys; key-gen good; need to investigate self.attacked_dict]
 			- DONE: next try = copy / paste guard_goblin.name text ???
 		- DONE: clean up comments / troubleshooting prints
-	- TBD: refine attack output
-		- TBD: implement error condition to prevent attacking self
-		- TBD: general attack language fixes
-		- TBD: for result_code == None, sort out dodge vs. parry; maybe easy parry vs. hard parry?
+	- INPROC: refine attack output
+		- DONE: implement error condition to prevent attacking self
+		- DONE: general attack grammar fixes; "You are" vs. "The X is"
+		- TBD: for result_code == None, sort out dodge vs. parry
+		- TBD: easy parry vs. hard parry?
 		- TBD: customize the attack_initiation to work for hedgehog's defense of the shiny_sword
-		- TBD: sort out grammar - 'You are' vs. 'The X is'
 	- TBD: replace attack() and attack_burt() with attack_b()
 		- TBD: attack_b() => attack() [search interp.py and validate.py too]
 		- TBD: eliminate attack_burt method
