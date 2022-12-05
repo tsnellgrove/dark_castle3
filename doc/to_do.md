@@ -281,8 +281,8 @@ Version 3.75 Goals
 	- INPROC: refine attack output
 		- DONE: implement error condition to prevent attacking self
 		- DONE: general attack grammar fixes; "You are" vs. "The X is"
-		- TBD: for result_code == None, sort out dodge vs. parry
-		- TBD: easy parry vs. hard parry?
+		- DONE: for result_code == None, sort out dodge vs. parry
+		- DONE: easy parry vs. hard parry?
 		- TBD: customize the attack_initiation to work for hedgehog's defense of the shiny_sword
 	- TBD: replace attack() and attack_burt() with attack_b()
 		- TBD: attack_b() => attack() [search interp.py and validate.py too]

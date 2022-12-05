@@ -342,6 +342,7 @@ class Creature(ViewOnly):
 			result_code = None
 		else:
 			result_code = self.attacked_dict[result_key]
+
 		if result_code == 'tgt_flee_dc':
 			room_obj.floor_lst_remove(self)
 			win_obj = src_obj
@@ -366,6 +367,10 @@ class Creature(ViewOnly):
 		elif result_code == 'tgt_death':
 			room_obj.floor_lst_remove(tgt_creature)
 			room_obj.floor_lst_extend(tgt_creature.bkpk_lst + tgt_creature.hand_lst + tgt_creature.worn_lst)
+			win_obj = src_obj
+			win_creature = src_creature
+			lose_creature = tgt_creature
+		elif result_code in ['easy_dodge', 'hard_dodge', 'easy_parry', 'hard_parry']:
 			win_obj = src_obj
 			win_creature = src_creature
 			lose_creature = tgt_creature

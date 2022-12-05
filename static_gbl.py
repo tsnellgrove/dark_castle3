@@ -175,6 +175,11 @@ descript_dict = {
 		'tgt_death' : "slain by the blazing-fast strike!",
 		'src_death' : "helpless against the onslaught. A better weapon will be needed to survive this foe.",
 		'no_result' : "only barely able to dodge the assult!",
+		'easy_dodge' : "easily able to duck and dodge the blow.",
+		'hard_dodge' : "only barely able to dodge the assult!",
+		'easy_parry' : "easily able to parry and thwart the blow.",
+		'hard_parry' : "only barely able to parry the assult!",
+
 
 		### creatures ###
 		
