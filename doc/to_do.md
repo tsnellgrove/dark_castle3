@@ -283,8 +283,11 @@ Version 3.75 Goals
 		- DONE: general attack grammar fixes; "You are" vs. "The X is"
 		- DONE: for result_code == None, sort out dodge vs. parry
 		- DONE: easy parry vs. hard parry?
-		- TBD: customize the attack_initiation to work for hedgehog's defense of the shiny_sword
+		- INPROC: customize the attack_initiation to work for hedgehog's defense of the shiny_sword
+			- DONE: create unarmed obj for hedgehog (Teeth)
+			- TBD: 
 	- TBD: replace attack() and attack_burt() with attack_b()
+		- TBD: decide about introducing unarmed attribute holding unarmed obj (i.e. Fist)
 		- TBD: attack_b() => attack() [search interp.py and validate.py too]
 		- TBD: eliminate attack_burt method
 		- TBD: clean-up unused custom keys and creature keys
@@ -701,20 +704,29 @@ Version 6.x Goals
 - wizards_tower
 - dungeons
 
-*** NEW PUZZLE IDEAS ***
-
-Misc:
-- for light sources:
-	- "(providing light)" in inventory; also is a condition (on)
-	- can move into a dark room, but can't open a container in the dark
-- Randomization feature like the spinning room in Zork 2 ?
-- re-institue remove() verb for Garment; 'take' as synonym
-- link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
+*** INTERPRETER ENHANCEMENT ***
 - Interpreter enhancements:
 	- noun synonyms (list in place of base_name)
 	- verb synonyms (attribute of Class? Should verbs associated with obj???)
 	- enable "take all", "drop all"
 	- randomize frequent responses (e.g. "in your spell book you see...")
+- re-institue remove() verb for Garment; 'take' as synonym
+
+*** STORY IDEAS ***
+- link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
+
+
+*** ARCHITECTURE ***
+- What would a decoupled, micro=services based DC look like? What are the consumers / providers?
+
+*** NEW PUZZLE IDEAS ***
+Misc:
+- for light sources:
+	- "(providing light)" in inventory; also is a condition (on)
+	- can move into a dark room, but can't open a container in the dark
+- Randomization feature like the spinning room in Zork 2 ?
+- Physics puzzles - see-saws, pulleys, and ceterfugal force
+
 - for Liquid: fill & pour
 - for FlamableItem: light & burn (e.g. matches)
 - PaperItem: burns; also, if writing, ink runs and becomes unreadable

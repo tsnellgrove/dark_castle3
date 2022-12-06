@@ -38,6 +38,7 @@ descript_dict = {
 		'fist' : "Yep, that's your fist. Still bruised from the last time you swung and missed and hit a wall...", 
 		'conscience' : "Burt, Dark Castle is quite murky enough without pondering your prodigal and Hal-esque misspent youth!",
 		'brass_lantern' : "Your trusty, battered-but-still-working, battery-powered light source. It's been in your household for ages; the family furphy is that your great grandmother, Nana, seized it from a maurauding 'adventurer' ages ago after giving him what-for with a broom. You sure wouldn't want your light source to go out - Dark Castle must be home to hundreds of Grues!",
+		'fierce_teeth' : "The Royal Hedgehog has huge incisors that could tear a... well wait, that's just not true... the Royal Hedgehog, being of the mamilian Erinaceinae family, has small flat teeth like every hedgehog. But he has such a good natured look to him that it's quite startling to see him roused!",
 
 		### wrong way errors ###
 		'wrong_way_0' : "Ouch! Burt, stop walking into walls!",
