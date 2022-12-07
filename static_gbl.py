@@ -180,6 +180,7 @@ descript_dict = {
 		'hard_dodge' : "only barely able to dodge the assult!",
 		'easy_parry' : "easily able to parry and thwart the blow.",
 		'hard_parry' : "only barely able to parry the assult!",
+		'jump_back' : "startled and compelled to leap back in surprise.",
 
 
 		### creatures ###
@@ -269,6 +270,8 @@ descript_dict = {
 
 		'guard_goblin_*_*_*' : "With an echoing war cry you charge the Guard Goblin, flailing your arms wildly in all directions as you come. This technique has served you well during drunken altercations at the pub but it proves less effective against a trained mercenary. The last thing you ever see is the Guard Goblin calmly stepping into fighting stance and drawing back its weapon.",
 		'guard_goblin_shiny_sword_burt_*' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. you know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle.",
+
+		'burt_fierce_teeth_royal_hedgehog_*' : "The moment you approach the Shiny Sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's teeth.",
 
 
 

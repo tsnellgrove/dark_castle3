@@ -370,7 +370,7 @@ class Creature(ViewOnly):
 			win_obj = src_obj
 			win_creature = src_creature
 			lose_creature = tgt_creature
-		elif result_code in ['easy_dodge', 'hard_dodge', 'easy_parry', 'hard_parry']:
+		elif result_code in ['easy_dodge', 'hard_dodge', 'easy_parry', 'hard_parry', 'jump_back']:
 			win_obj = src_obj
 			win_creature = src_creature
 			lose_creature = tgt_creature

@@ -285,7 +285,11 @@ Version 3.75 Goals
 		- DONE: easy parry vs. hard parry?
 		- INPROC: customize the attack_initiation to work for hedgehog's defense of the shiny_sword
 			- DONE: create unarmed obj for hedgehog (Teeth)
-			- TBD: 
+			- DECISION: use existing attack response system for royal_hedgehog sword defense
+			- DONE: create 'jump_back' result code, static entry, and Burt attacked_dict entry
+			- DONE: create custom response for sword defense
+			- TBD: update Result code to implement attack_b on take() shiny_sword
+			- TBD: fine tune attack display language
 	- TBD: replace attack() and attack_burt() with attack_b()
 		- TBD: decide about introducing unarmed attribute holding unarmed obj (i.e. Fist)
 		- TBD: attack_b() => attack() [search interp.py and validate.py too]
