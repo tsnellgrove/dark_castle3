@@ -288,7 +288,8 @@ Version 3.75 Goals
 			- DECISION: use existing attack response system for royal_hedgehog sword defense
 			- DONE: create 'jump_back' result code, static entry, and Burt attacked_dict entry
 			- DONE: create custom response for sword defense
-			- TBD: update Result code to implement attack_b on take() shiny_sword
+			- DONE: instantiate hedgehog_attacks_result of class AttackBurtResult
+			- DONE: update Result code to implement attack_b on take() shiny_sword
 			- TBD: fine tune attack display language
 	- TBD: replace attack() and attack_burt() with attack_b()
 		- TBD: decide about introducing unarmed attribute holding unarmed obj (i.e. Fist)
@@ -296,12 +297,14 @@ Version 3.75 Goals
 		- TBD: eliminate attack_burt method
 		- TBD: clean-up unused custom keys and creature keys
 		- TBD: elim attacking dict in Creature class
+		- TBD: clean up comments - including hedgehog_guard_result
 	- TBD: refactor and simplify new attack code
 	- TBD: doc_strings
 		- TBD: doc_string on details of result matrix (and evolution from original version)
 		- TBD: doc_string history of attack() as a hot mess and driver for burt as Creature class obj
 		- TBD: attack() use of hand_inv elevates impact of hand inv; creatures form opinions
 - TBD: update get_hand_item() to return None if hand_list is empty
+- TBD: address 'first item in feature_lst is unarmed attack item' hack
 
 
 - TBD: create Surface class!! (was 'Shelf')
@@ -708,6 +711,12 @@ Version 6.x Goals
 - wizards_tower
 - dungeons
 
+*** RESEARCH ***
+- read The Craft of Adventure
+- Play at least 5 games
+- Read the Digital Antiquiarian reviews
+
+
 *** INTERPRETER ENHANCEMENT ***
 - Interpreter enhancements:
 	- noun synonyms (list in place of base_name)
@@ -715,6 +724,8 @@ Version 6.x Goals
 	- enable "take all", "drop all"
 	- randomize frequent responses (e.g. "in your spell book you see...")
 - re-institue remove() verb for Garment; 'take' as synonym
+	- worn obj take() => "You're already wearing it"
+	- obj on floor remove() => "Taken" (i.e. is synonym)
 
 *** STORY IDEAS ***
 - link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)

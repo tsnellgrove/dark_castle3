@@ -117,9 +117,10 @@ throne_pull_result = AddObjToRoomResult('throne_pull_result', hedgehog_broach, F
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
 portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', False)
 goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'guard_goblin_temp', True)
+hedgehog_attacks_result = AttackBurtResult('hedgehog_attacks_result', 'royal_hedgehog_temp', True)
 start_hedgehog_timer_results = TimerAndCreatureItemResult('start_hedgehog_timer_results', hedgehog_eats_timer, False, 'royal_hedgehog', stale_biscuits)
 pass_result = BufferOnlyResult('pass_result', False)
-hedgehog_guard_result = BufferOnlyResult('hedgehog_guard_result', True)
+# hedgehog_guard_result = BufferOnlyResult('hedgehog_guard_result', True)
 fed_hedgehog_keeps_sword_result = ChgCreatureDescAndStateResult('fed_hedgehog_keeps_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_smug')
 fed_hedgehog_loses_sword_result = ChgCreatureDescAndStateResult('fed_hedgehog_loses_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_yearn')
 hedgehog_distracted_result = BufferOnlyResult('hedgehog_distracted_result', True)
@@ -149,8 +150,11 @@ control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control
 hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None, [['give', 'stale_biscuits', 'royal_hedgehog']],
 				None, [hedgehog_has_biscuit_cond, pass_thru_cond], [start_hedgehog_timer_results, pass_result])
 
+#hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None, [['take', 'shiny_sword']],
+#				None, [hedgehog_guard_cond, pass_thru_cond], [hedgehog_guard_result, pass_result])
+
 hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None, [['take', 'shiny_sword']],
-				None, [hedgehog_guard_cond, pass_thru_cond], [hedgehog_guard_result, pass_result])
+				None, [hedgehog_guard_cond, pass_thru_cond], [hedgehog_attacks_result, pass_result])
 
 hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', 0, 'pre_act_timer', hedgehog_eats_timer, [True], None,
 				[hedgehog_keeps_sword_cond, hedgehog_loses_sword_cond, pass_thru_cond],
@@ -255,6 +259,7 @@ map = Map([{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y'
 
 # *** Hierarchy-Based Object Re-assignment ***
 goblin_attacks_result.creature_obj = guard_goblin
+hedgehog_attacks_result.creature_obj = royal_hedgehog
 hedgehog_has_biscuit_cond.creature_obj = royal_hedgehog
 hedgehog_eats_timer.alert_anchor = royal_hedgehog
 start_hedgehog_timer_results.creature_obj = royal_hedgehog

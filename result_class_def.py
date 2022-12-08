@@ -138,7 +138,8 @@ class AttackBurtResult(BufferOnlyResult):
 						pass
 #				cmd_execute(active_gs, '2word', [self.creature_obj, 'attack_burt'])
 				if self.creature_obj.hand_is_empty():
-						hand_obj = None
+						hand_obj = self.creature_obj.feature_lst[0]
+#						hand_obj = None
 				else:
 						hand_obj = self.creature_obj.get_hand_item()
 				tgt_creature = active_gs.hero
