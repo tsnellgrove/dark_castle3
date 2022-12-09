@@ -301,6 +301,7 @@ Version 3.75 Goals
 		- TBD: eliminate attack_burt method
 		- TBD: clean-up unused custom keys and creature keys
 		- TBD: elim attacking dict in Creature class
+		- TBD: elim secret_verbs_lst in interp
 		- TBD: clean up comments - including hedgehog_guard_result
 		- TBD: exit debug mode in cmd_exe (prep)
 	- TBD: refactor and simplify new attack code
