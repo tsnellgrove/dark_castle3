@@ -144,7 +144,8 @@ class AttackBurtResult(BufferOnlyResult):
 						hand_obj = self.creature_obj.get_hand_item()
 				tgt_creature = active_gs.hero
 #				self.creature_obj.attack_b(hand_obj, active_gs, tgt_creature)
-				tgt_creature.attack_b(hand_obj, active_gs, self.creature_obj)
+#				tgt_creature.attack_b(hand_obj, active_gs, self.creature_obj)
+				tgt_creature.attack(hand_obj, active_gs, self.creature_obj)
 #				room.go(self.dir, active_gs, self.creature)
 				return mach_state, self.cmd_override
 

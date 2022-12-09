@@ -270,7 +270,7 @@ class Creature(ViewOnly):
 		return 
 
 
-	def attack_b(self, src_obj, active_gs, src_creature = None):
+	def attack(self, src_obj, active_gs, src_creature = None):
 		""" Attacks a target_creature with an item
 		"""
 		if src_creature is None:
@@ -448,13 +448,13 @@ class Creature(ViewOnly):
 # <tgt_creature == gs.hero>
 # <gs.hero != src_creature && gs.hero != tgt_creature>
 
-		active_gs.buffer(f"{src_creature.full_name} attacks the {tgt_creature.full_name} with the {src_obj.full_name}.")
+#		active_gs.buffer(f"{src_creature.full_name} attacks the {tgt_creature.full_name} with the {src_obj.full_name}.")
 		return 
 
 
 
 
-	def attack(self, active_gs):
+	def attack_c(self, active_gs):
 		""" Attacks a target_creature with an item
 		"""
 		# determine if creature is_attackable; if not, buffer response and exit

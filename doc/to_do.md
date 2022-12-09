@@ -278,27 +278,36 @@ Version 3.75 Goals
 		- DONE: test [not seeing burt keys; key-gen good; need to investigate self.attacked_dict]
 			- DONE: next try = copy / paste guard_goblin.name text ???
 		- DONE: clean up comments / troubleshooting prints
-	- INPROC: refine attack output
+	- DONE: refine attack output
 		- DONE: implement error condition to prevent attacking self
 		- DONE: general attack grammar fixes; "You are" vs. "The X is"
 		- DONE: for result_code == None, sort out dodge vs. parry
 		- DONE: easy parry vs. hard parry?
-		- INPROC: customize the attack_initiation to work for hedgehog's defense of the shiny_sword
+		- DONE: customize the attack_initiation to work for hedgehog's defense of the shiny_sword
 			- DONE: create unarmed obj for hedgehog (Teeth)
 			- DECISION: use existing attack response system for royal_hedgehog sword defense
 			- DONE: create 'jump_back' result code, static entry, and Burt attacked_dict entry
 			- DONE: create custom response for sword defense
 			- DONE: instantiate hedgehog_attacks_result of class AttackBurtResult
 			- DONE: update Result code to implement attack_b on take() shiny_sword
-			- TBD: fine tune attack display language
-	- TBD: replace attack() and attack_burt() with attack_b()
-		- TBD: decide about introducing unarmed attribute holding unarmed obj (i.e. Fist)
-		- TBD: attack_b() => attack() [search interp.py and validate.py too]
+	- INPROC: replace attack() and attack_burt() with attack_b()
+		- INPROC: attack_b() => attack()
+			- DONE: rename attack() => attack_c()
+			- DONE: rename acttack_b() => attack()
+			- DONE: search for attack_b() usage and update to attack()
+				- DONE: interp
+				- DONE: validate
+			- INPROC: test new attack()
 		- TBD: eliminate attack_burt method
 		- TBD: clean-up unused custom keys and creature keys
 		- TBD: elim attacking dict in Creature class
 		- TBD: clean up comments - including hedgehog_guard_result
+		- TBD: exit debug mode in cmd_exe (prep)
 	- TBD: refactor and simplify new attack code
+		- TBD: decide about introducing unarmed attribute holding unarmed obj (i.e. Fist)
+		- TBD: section-by-section
+		- TBD: fine tune attack display language
+	- TBD: update trigger & code for attack_hedgehog_warning
 	- TBD: doc_strings
 		- TBD: doc_string on details of result matrix (and evolution from original version)
 		- TBD: doc_string history of attack() as a hot mess and driver for burt as Creature class obj
