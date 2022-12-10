@@ -290,7 +290,7 @@ Version 3.75 Goals
 			- DONE: create custom response for sword defense
 			- DONE: instantiate hedgehog_attacks_result of class AttackBurtResult
 			- DONE: update Result code to implement attack_b on take() shiny_sword
-	- INPROC: replace attack() and attack_burt() with attack_b()
+	- DONE: replace attack() and attack_burt() with attack_b()
 		- DONE: attack_b() => attack()
 			- DONE: rename attack() => attack_c()
 			- DONE: rename acttack_b() => attack()
@@ -301,13 +301,13 @@ Version 3.75 Goals
 		- DONE: eliminate attack_c() and attack_burt() method
 		- DONE: clean-up unused custom keys and creature keys
 		- DONE: clean up comments - including hedgehog_guard_result
-		- TBD: elim attacking dict in Creature class
-		- TBD: elim secret_verbs_lst in interp
-		- TBD: exit debug mode in cmd_exe (prep)
+		- DONE: elim attacking dict in Creature class
+		- DONE: elim 'attack_burt' in secret_verbs_lst in interp
 	- TBD: refactor and simplify new attack code
 		- TBD: decide about introducing unarmed attribute holding unarmed obj (i.e. Fist)
 		- TBD: section-by-section
 		- TBD: fine tune attack display language
+		- TBD: exit debug mode in cmd_exe (prep)
 	- TBD: update trigger & code for attack_hedgehog_warning
 	- TBD: doc_strings
 		- TBD: doc_string on details of result matrix (and evolution from original version)

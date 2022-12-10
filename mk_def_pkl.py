@@ -186,11 +186,13 @@ guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 						'shiny_sword_burt_*' : 'tgt_death',
 						'weapon_*_*' : 'easy_parry', # parry
 						'*_*_*' : 'src_death'
-				},
-				{
-						shiny_sword : {'result_code' : None, 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'parry_goblin'
-						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : None, 'resolution_key' : None} # was 'custom_key' : 'goblin_slays_burt'
 				})
+#				,
+#				{
+#						shiny_sword : {'result_code' : None, 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'parry_goblin'
+#						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : None, 'resolution_key' : None} # was 'custom_key' : 'goblin_slays_burt'
+#				}
+#				)
 				
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None,
 				None, [], [silver_key], [red_bandana], [fierce_teeth, loyalty],
@@ -204,8 +206,10 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 						'weapon_burt_*' : 'tgt_flee_dc',
 						'unarmed_burt_*' : 'easy_dodge', # karate kid
 						'*_*_*' : 'easy_dodge' # dodge
-				},
-				{})
+				})
+#				,
+#				{}
+#				)
 
 burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 				None, [], [rusty_key, glass_bottle, cheese_wedge, stale_biscuits], [], [fist, backpack, conscience, brass_lantern],
@@ -216,8 +220,9 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 						'grimy_axe_guard_goblin_weapon' : 'hard_parry', # parry
 						'grimy_axe_guard_goblin_*' : 'tgt_death',
 						'fierce_teeth_royal_hedgehog_*' : 'jump_back'
-				},
-				{}) # note: for non-burt-creature testing, frog_travel_mach was in burt.invis_lst
+				}) # note: for non-burt-creature testing, frog_travel_mach was in burt.invis_lst
+#				,
+#				{}) 
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
