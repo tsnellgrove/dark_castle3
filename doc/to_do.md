@@ -298,11 +298,11 @@ Version 3.75 Goals
 				- DONE: interp
 				- DONE: validate
 			- DONE: test new attack()
-		- TBD: eliminate attack_c() and attack_burt() method
-		- TBD: clean-up unused custom keys and creature keys
+		- DONE: eliminate attack_c() and attack_burt() method
+		- DONE: clean-up unused custom keys and creature keys
+		- DONE: clean up comments - including hedgehog_guard_result
 		- TBD: elim attacking dict in Creature class
 		- TBD: elim secret_verbs_lst in interp
-		- TBD: clean up comments - including hedgehog_guard_result
 		- TBD: exit debug mode in cmd_exe (prep)
 	- TBD: refactor and simplify new attack code
 		- TBD: decide about introducing unarmed attribute holding unarmed obj (i.e. Fist)
@@ -706,6 +706,7 @@ Version 6.x Goals
 - Nincompoop
 - Skedaddle
 - Pumpernickel
+- rolly-polly (hedgehog)
 
 
 *** possible new rooms ***
@@ -736,6 +737,7 @@ Version 6.x Goals
 - re-institue remove() verb for Garment; 'take' as synonym
 	- worn obj take() => "You're already wearing it"
 	- obj on floor remove() => "Taken" (i.e. is synonym)
+- assume that item in hand will be used for activity (e.g. attack)
 
 *** STORY IDEAS ***
 - link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)

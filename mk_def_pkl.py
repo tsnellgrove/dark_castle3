@@ -120,7 +120,6 @@ goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'guard_goblin_
 hedgehog_attacks_result = AttackBurtResult('hedgehog_attacks_result', 'royal_hedgehog_temp', True)
 start_hedgehog_timer_results = TimerAndCreatureItemResult('start_hedgehog_timer_results', hedgehog_eats_timer, False, 'royal_hedgehog', stale_biscuits)
 pass_result = BufferOnlyResult('pass_result', False)
-# hedgehog_guard_result = BufferOnlyResult('hedgehog_guard_result', True)
 fed_hedgehog_keeps_sword_result = ChgCreatureDescAndStateResult('fed_hedgehog_keeps_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_smug')
 fed_hedgehog_loses_sword_result = ChgCreatureDescAndStateResult('fed_hedgehog_loses_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_yearn')
 hedgehog_distracted_result = BufferOnlyResult('hedgehog_distracted_result', True)
@@ -149,9 +148,6 @@ control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control
 
 hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None, [['give', 'stale_biscuits', 'royal_hedgehog']],
 				None, [hedgehog_has_biscuit_cond, pass_thru_cond], [start_hedgehog_timer_results, pass_result])
-
-#hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None, [['take', 'shiny_sword']],
-#				None, [hedgehog_guard_cond, pass_thru_cond], [hedgehog_guard_result, pass_result])
 
 hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None, [['take', 'shiny_sword']],
 				None, [hedgehog_guard_cond, pass_thru_cond], [hedgehog_attacks_result, pass_result])
@@ -187,8 +183,6 @@ guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 				},
 				True,
 				{
-						shiny_sword : {'result_code' : 'creature_death', 'custom_key' : 'goblin_slain', 'resolution_key' : None},
-						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : 'burt_slain_by_goblin', 'resolution_key' : None},
 						'shiny_sword_burt_*' : 'tgt_death',
 						'weapon_*_*' : 'easy_parry', # parry
 						'*_*_*' : 'src_death'
@@ -207,7 +201,6 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 				},
 				True,
 				{
-						'def_attack' : {'result_code' : 'creature_flee', 'custom_key' : 'hedgehog_flees', 'resolution_key' : None},
 						'weapon_burt_*' : 'tgt_flee_dc',
 						'unarmed_burt_*' : 'easy_dodge', # karate kid
 						'*_*_*' : 'easy_dodge' # dodge
@@ -220,8 +213,6 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 				{},
 				True,
 				{
-						shiny_sword : {'result_code' : None, 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'parry_goblin'
-						'def_attack' : {'result_code' : 'burt_death', 'custom_key' : None, 'resolution_key' : None}, # was 'custom_key' : 'goblin_slays_burt'
 						'grimy_axe_guard_goblin_weapon' : 'hard_parry', # parry
 						'grimy_axe_guard_goblin_*' : 'tgt_death',
 						'fierce_teeth_royal_hedgehog_*' : 'jump_back'

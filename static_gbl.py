@@ -33,7 +33,6 @@ descript_dict = {
 		
 		### universal objects ###
 		'backpack' : "Your trusty, well-worn leather backpack",
-#		'burt' : "Yep, that's you Burt. A fine specimen of a man. If not for the drooling and the farting I don't know how you'd fend off the ladies.",
 		'burt' : "You cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching and the farting I don't know how you'd fend off the ladies!\n\nIn your off hand you hold a Brass Lantern.",
 		'fist' : "Yep, that's your fist. Still bruised from the last time you swung and missed and hit a wall...", 
 		'conscience' : "Burt, Dark Castle is quite murky enough without pondering your prodigal and Hal-esque misspent youth!",
@@ -170,9 +169,7 @@ descript_dict = {
 
 		'not_attackable_default' : "consider attacking but then think better of it. There must be another path to victory.",
 		'attack_method_default_result' : "nimbly dodges the attack.",
-#		'tgt_flee_dc' : "flees in terror from the unprovoked attack.",
 		'tgt_flee_dc' : "terrirfied and flees from the unprovoked attack.",
-#		'tgt_death' : "dispatch the enemy with one blazing fast strike!",
 		'tgt_death' : "slain by the blazing-fast strike!",
 		'src_death' : "helpless against the onslaught. A better weapon will be needed to survive this foe.",
 		'no_result' : "only barely able to dodge the assult!",
@@ -187,7 +184,6 @@ descript_dict = {
 		
 		# guard_goblin #
 		'guard_goblin' : "The Guard Goblin stands in the Alcove guarding the Control Panel. It wears a crisply ironed uniform and gives off an air of hauty, even vicious, Officiousness. The Guard Goblin is armed and dangerous. It wields a Grimy Axe and observes you with watchful malice. This goblin clearly takes its guard duties very seriously. It would not be wise to approach the Iron Portcullis or the Control Panel (or the Guard Goblin!) un-armed.",
-
 		'burt_slain_by_goblin' : "With an echoing war cry you charge the Guard Goblin, flailing your arms wildly in all directions as you come. This technique has served you well during drunken altercations at the pub but it proves less effective against a trained mercenary. The last thing you ever see is the Guard Goblin calmly stepping into fighting stance and drawing back its weapon.",
 		'goblin_slain' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. you know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle.",
 		'goblin_attacks_result' : "It seems that by entering the north side of the room you have violated a minor castle ordinance. The Guard Goblin is incensed and will not tolerate this flagrant defiance of orthodoxy!",
@@ -285,4 +281,5 @@ descript_dict = {
 ##		'goblin_slays_burt' : "You are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
 ##		'parry_goblin' : "You only barely manage to parry with your own weapon.",
 ##		'hedgehog_flees' : "You strike at the Royal Hedgehog and, with a terrified squeek, it flees from your unprovoked attack. You know in your heart that you will come to regret this unkingly deed.",
-
+#		'tgt_flee_dc' : "flees in terror from the unprovoked attack.",
+#		'tgt_death' : "dispatch the enemy with one blazing fast strike!",
