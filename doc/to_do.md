@@ -711,7 +711,7 @@ Version 6.x Goals
 
 *** possible new rooms ***
 - upon_drawbridge
-- entrance_hall (home base with well & shelf & hedgehog?)
+- entrance_hall (home base with well & safe shelf & hedgehog?)
 - chapel (another possible home base?)
 - courtyard
 - library
@@ -728,6 +728,10 @@ Version 6.x Goals
 - Read the Digital Antiquiarian reviews
 
 
+*** DEBUG TOOLS ***
+- work room for testing similar to tcrf.net Hollywood Hijinx
+
+
 *** INTERPRETER ENHANCEMENT ***
 - Interpreter enhancements:
 	- noun synonyms (list in place of base_name)
@@ -738,52 +742,65 @@ Version 6.x Goals
 	- worn obj take() => "You're already wearing it"
 	- obj on floor remove() => "Taken" (i.e. is synonym)
 - assume that item in hand will be used for activity (e.g. attack)
+- move() command ?
+- create 'jump' command with same response as Zork ('Whee!' I think?)
+
 
 *** STORY IDEAS ***
 - link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
+- valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
+- shiny sword glows near enemies?
 
 
 *** ARCHITECTURE ***
 - What would a decoupled, micro=services based DC look like? What are the consumers / providers?
 
-*** NEW PUZZLE IDEAS ***
-Misc:
+
+*** AMBIENT SIM ***
 - for light sources:
 	- "(providing light)" in inventory; also is a condition (on)
 	- can move into a dark room, but can't open a container in the dark
-- Randomization feature like the spinning room in Zork 2 ?
-- Physics puzzles - see-saws, pulleys, and ceterfugal force
-
 - for Liquid: fill & pour
 - for FlamableItem: light & burn (e.g. matches)
 - PaperItem: burns; also, if writing, ink runs and becomes unreadable
 - maybe sleep in bed (after min # of moves) to dream to get hints? But light must be on so you loose turns of light and wake up hungry and thirsty? Hint is provided randomly based on points not yet accrued?
-- maybe, in DC2, before the ball, the princess is missing (hiding from evil prince) and is diguised as a black cat that burt needs to befriend?
-- it would be cool to have an invisibility cloak / spell (probably need to keep it short term / contained)
-- Dragon is bored because it has read every book in the library - need to find a new book to interest it
-- Ferret is named Bartleby
-- Note: active_gs.hero enables player to take on different characters in the game (e.g. Burt could become a mouse)
-- non-humanoid monster could be a special weapon description case (fun new puzzle idea)
-- princess 'poise' & 'moxie'
-- valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
+- non-humanoid monster could be a special weapon description case (fun new puzzle idea)???
 - TBD: Consider having size values for items and capaicty limits on containers & backpack (should the crystal box really hold an axe?)
 	- This becomes important for 'take' capacity as well in shrinking puzzle (??)
 	- encumberance (post Burt as object?)
 	- implement carying capacity / container cappacity; Also carry restriction passages, etc..
-- fun idea - small creature - like a mouse - as an item
-- more directions
-- landscape / path changes
 - food & drink system?
 - darkness & light source system?
 	- lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
 	- honestly, Grues don't make sense in DC... I intend for there to be a fair number of creatures around the place... why haven't they been eaten by Grues? (one could ask the same about the Troll and the Thief of Zork - but presumably these are dangerous creatures that can fend off Grues?). Instead, I think I'll use the same mechanic (2 dark rooms in a row == death) but the textual explanation will be Nana's warning to young burt "Burty, you mind gallavanting around in the darkness - you'll trip and break your neck!"
-- How to enable switches and machines to self register for universal scope
+- DONE: How to enable switches and machines to self register for universal scope
 	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
-	- IDEA: eliminate universal_scope => just add these to Burt's invis_lst
-- create vehical puzzle?
-- shiny sword glows near enemies?
+	- DONE: eliminate universal_scope => just add these to Burt's invis_lst
 - DONE: make goblin hand contents examinable (e.g. Grimy Axe)
-- create 'jump' command with same response as Zork ('Whee!' I think?)
+
+
+
+*** DC1 PUZZLE IDEAS ***
+Misc:
+- Randomization feature like the spinning room in Zork 2 ? With way to turn it off
+- Physics puzzles - see-saws, pulleys, and ceterfugal force
+- Dragon is bored because it has read every book in the library - need to find a new book to interest it
+- Ferret is named Bartleby
+- landscape / path changes
+- create vehical puzzle?
+
+
+
+*** DC2 PUZZLE IDEAS ***
+- maybe, in DC2, before the ball, the princess is missing (hiding from evil prince) and is diguised as a black cat that burt needs to befriend?
+- it would be cool to have an invisibility cloak / spell (probably need to keep it short term / contained)
+- Note: active_gs.hero enables player to take on different characters in the game (e.g. Burt could become a mouse)
+- princess 'poise' & 'moxie'
+- fun idea - small creature - like a mouse - as an item
+- more directions
+
+
+
 
 Alter Terrain:
 - Use Map room_pair updates to alter a room dramatically after a major change
