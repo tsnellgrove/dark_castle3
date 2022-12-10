@@ -291,14 +291,14 @@ Version 3.75 Goals
 			- DONE: instantiate hedgehog_attacks_result of class AttackBurtResult
 			- DONE: update Result code to implement attack_b on take() shiny_sword
 	- INPROC: replace attack() and attack_burt() with attack_b()
-		- INPROC: attack_b() => attack()
+		- DONE: attack_b() => attack()
 			- DONE: rename attack() => attack_c()
 			- DONE: rename acttack_b() => attack()
 			- DONE: search for attack_b() usage and update to attack()
 				- DONE: interp
 				- DONE: validate
-			- INPROC: test new attack()
-		- TBD: eliminate attack_burt method
+			- DONE: test new attack()
+		- TBD: eliminate attack_c() and attack_burt() method
 		- TBD: clean-up unused custom keys and creature keys
 		- TBD: elim attacking dict in Creature class
 		- TBD: elim secret_verbs_lst in interp

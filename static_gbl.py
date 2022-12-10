@@ -38,7 +38,7 @@ descript_dict = {
 		'fist' : "Yep, that's your fist. Still bruised from the last time you swung and missed and hit a wall...", 
 		'conscience' : "Burt, Dark Castle is quite murky enough without pondering your prodigal and Hal-esque misspent youth!",
 		'brass_lantern' : "Your trusty, battered-but-still-working, battery-powered light source. It's been in your household for ages; the family furphy is that your great grandmother, Nana, seized it from a maurauding 'adventurer' ages ago after giving him what-for with a broom. You sure wouldn't want your light source to go out - Dark Castle must be home to hundreds of Grues!",
-		'fierce_teeth' : "The Royal Hedgehog has huge incisors that could tear a... well wait, that's just not true... the Royal Hedgehog, being of the mamilian Erinaceinae family, has small flat teeth like every hedgehog. But he has such a good natured look to him that it's quite startling to see him roused!",
+		'fierce_teeth' : "The Royal Hedgehog has huge incisors that could tear a... well wait, that's just not true... the Royal Hedgehog, being of the mamilian Erinaceinae family, has small flat teeth like every other hedgehog. But he has such a good natured look to him that it's quite startling to see him roused!",
 
 		### wrong way errors ###
 		'wrong_way_0' : "Ouch! Burt, stop walking into walls!",
@@ -265,11 +265,11 @@ descript_dict = {
 
 		### attack descriptions ###
 		'royal_hedgehog_weapon_burt_*' : "The Royal Hedgehog squeeks in dismay as it dodges your malevolent agression. It's loyal gaze changes to one of bewilderment and hearbreak. 'Et tu Burtus?' Even as the loyal little creature gives way, you know in your heart that you will come to regret this unkingly deed.",
-		'royal_hedgehog_unarmed_burt_*' : "The Royal Hedgehog seems to view your unarmed swipe as a playful challenge. It drops into a martial arts pose and beings making wax-on, wax-off motions with its paws.",
+		'royal_hedgehog_unarmed_burt_*' : "The Royal Hedgehog seems to view your unarmed swipe as a playful challenge. It drops into a martial arts pose and begins making wax-on, wax-off motions with its paws.",
 		'royal_hedgehog_*_*_*' : "The Royal Hedgehog is more nimble than you would have expected. It adroitly balances on the balls of its feet and gets ready to bob and weave.",
 
 		'guard_goblin_*_*_*' : "With an echoing war cry you charge the Guard Goblin, flailing your arms wildly in all directions as you come. This technique has served you well during drunken altercations at the pub but it proves less effective against a trained mercenary. The last thing you ever see is the Guard Goblin calmly stepping into fighting stance and drawing back its weapon.",
-		'guard_goblin_shiny_sword_burt_*' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. you know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle.",
+		'guard_goblin_shiny_sword_burt_*' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. You know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle.",
 
 		'burt_fierce_teeth_royal_hedgehog_*' : "The moment you approach the Shiny Sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's teeth.",
 
