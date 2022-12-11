@@ -18,6 +18,10 @@ static_dict = {
 
 ### description dict ###
 descript_dict = {
+
+
+		#### HELP & ERRORS ####
+
 		### one-word commands - non-objeects ###
 		'introduction' : "Greetings brave adventurer!\n\nYou are Burt-the-Baker, the only adventurer brave - or foolish - enough to enter the Dark Castle in search of treasure.\n\nType 'help' for help.\n\n",
 		'help' : "Help syntax = 'help <option>'. Help options = 'basics', 'creatures', 'one-word-commands', 'verbs', 'abbreviations', 'adjectives', prepositions', 'articles', 'read', or 'attack'.",
@@ -31,14 +35,6 @@ descript_dict = {
 		'help_read' :  "If you can't 'read' something (e.g. a note or a scroll) try 'examine' instead. The item may have some readable text written on it that you'll learn more about via 'examine'.",
 		'help_attack' : "There are various creatures that reside in Dark Castle. Some are friendly but some may not be. Burt can 'attack' a creature using whatever weapon he is holding in his hand. If the creature is hostile and Burt is wielding the correct weapon he may be able to slay it. However there are risks to attacking as well. If the creature is friendly, an 'attack' may scare it away and Burt may lose a valuble ally. And if the creature is hostile but Burt is wielding the wrong weapon, Burt himself may perish. As in real life, combat in Dark Castle is frought!",
 		
-		### universal objects ###
-		'backpack' : "Your trusty, well-worn leather backpack",
-		'burt' : "You cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching and the farting I don't know how you'd fend off the ladies!\n\nIn your off hand you hold a Brass Lantern.",
-		'fist' : "Yep, that's your fist. Still bruised from the last time you swung and missed and hit a wall...", 
-		'conscience' : "Burt, Dark Castle is quite murky enough without pondering your prodigal and Hal-esque misspent youth!",
-		'brass_lantern' : "Your trusty, battered-but-still-working, battery-powered light source. It's been in your household for ages; the family furphy is that your great grandmother, Nana, seized it from a maurauding 'adventurer' ages ago after giving him what-for with a broom. You sure wouldn't want your light source to go out - Dark Castle must be home to hundreds of Grues!",
-		'fierce_teeth' : "The Royal Hedgehog has huge incisors that could tear a... well wait, that's just not true... the Royal Hedgehog, being of the mamilian Erinaceinae family, has small flat teeth like every other hedgehog. But he has such a good natured look to him that it's quite startling to see him roused!",
-
 		### wrong way errors ###
 		'wrong_way_0' : "Ouch! Burt, stop walking into walls!",
 		'wrong_way_1' : "Ouch! You have walked into a wall.",
@@ -52,6 +48,10 @@ descript_dict = {
 		'interp_error_2' : "Burt, I'm just going to pretend I didn't hear that.",
 		'interp_error_3' : "Burt, you've said some strange things over the years but that was a doosey!",
 		'interp_error_4' : "Burt! What would your mother say if she heard you speaking like that!?",
+
+
+
+		#### VISIBLE OBJ ####
 
 		### writing objects ###
 		'rusty_lettering' : "'ABANDON HOPE ALL YE WHO EVEN THINK ABOUT IT'",
@@ -79,7 +79,6 @@ descript_dict = {
 		'grimy_axe' : "A nasty looking weapon - and poorly maintained too. If you ever get out of this castle you should set aside some time to polish it. You notice uppon inspection that there is some Small Printing on the handle.",
 		'silver_key' : "The small silver_key glitters in the dim light. It certainly stands out in the otherwise dreary Dark Castle. If you find a glittering silver keyhole somewhere this is definitely the key for it!",
 		'kinging_scroll' : "Wow this thing is fancy! Huge letters with little pictures inside them and all sorts of curvy flourish at the end of each and every letter. Burt, your humble biscuit-baking, pub-crawling brain doesn't even know what to call this thing but if it did you would call it an illuminated manuscript composed (of course) of Illuminated Letters. Thanks to the hard and thankless work of your first grade teacher, Ms. Lusk, you could probably just manage to read the Illuminated Letters.",
-		'random_mcguffin' : "It's a radom test McGuffin - just what you've always wanted!!",
 
 		### food objects ###
 		'cheese_wedge' : "A small wedge of cheese you absconded with from the larder. It's very small - so small that a lone mouse could probably make off with the whole thing - but your mother was saving it for company so you suspect it's quite delicious.",
@@ -90,83 +89,48 @@ descript_dict = {
 
 		### clothes objects ###
 		'royal_crown' : "Giant rubies: check. Dozens of glittering jewels: check. Gleaming gold and precious metals: check. Yep, this is a *seriously royal* crown you've got here Burt!",
-		'baseball_cap' : "Burt, it's a code-testing Baseball Cap! Your favorite kind!!",
 		'hedgehog_broach' : "The silver Hedgehog Broach is about an inch in diameter and is carved with the crest of a hedgehog bearing a sword and a key. It's strangely familiar... you've seen one just like it... long ago... examining the Hedgehog Broach up close triggers a long forgotten memory...\n\nyou were only five or six years old... you and all your family were at the bedside of your great grandmother, Nana Baker. She was old - very, very old - so old no even was sure how old - not even Nana. She'd been unable to eat or get out of bed for the past week and the village healer had given his solemn verdict that at long last her time had come. The whole village had come round to pay their last respects but now it was just family left. She looked very tired and her eyes were closed.\n\n'Thomas', said Nana, meaning your father, 'I'm weary... be a good lad and go heat me some tea... Nice and hot please.'. Next she sent your mother off for a special pillow she'd loaned to a friend. Soon every member of the family was off on an errand and it was just you and Nana.\n\nQuite suddenly, Nana's eyes opened, bright blue and wide awake. 'Well, Burty, finally we can have a little chat. I wish you were a bit older but now will have to do. Tell me Burty, how do ya feel about baking biscuits?'\n\n'It's na so bad' you'd stammered back.\n\nNana laughed and gave you a warm smile. 'Don't feel bad Burty, I wasn't much of a Baker myself - had a bit of a wild romantic streak in me - just like you. You remind me so much of my Willy... and that's not entirely an accident mind you. Thought I might see a resemblance in your grandfather or father but they were mindful lads and happy enough to be Bakers. I guess it's waited for you to show itself. Probably just as well.'\n\n'Ah Willy... now don't get me wrong, Papa Baker was a good man - hard working and with a kind heart - took me hand when many others wouldn't have and always treated me good. But you're from different stock Burty, very different. And that comes with some responsibilities... you've got a destiny 'afore you and that can be hard on young man with no expecting of it. That's why I'm telling you this now.'\n\n'Your real great grandpa was Willy... William Herbert... last of the line of Flatheads... or so everyone's been told. He was a handsome man... like you Burty. And unlike the rest of his family - full of romance and laughter and travel and adventure. Could be a bit reckless at times but he had a good heart. He proposed to me right proper he did... didn't really have to... he was so high up in society... and so much older too... but the moment I told him he dropped right to one knee and popped the question. Didn't care the least what people said! Swore we'd elope if the high priest wouldn't marry us... and he would have too!'\n\n'Alas, that crazy man... four months before the big day he was wandering about the castle entrance, wearing his bathrobe and Royal Crown, smoking his pipe and reading a book as he walked, as usual, and boom, he trips on the drawbridge and falls right into the Moat! Eaten right up in one big bite by one of those mean old crocodiles that have swum in it forever. Oh the day I heard the news...' And with these words she touched the Hedgehog Broach she always wore over her heart. 'It was a dark day Burty, a dark day for me an' for the castle and all the lands around.'\n\n'Someday Burty William Baker, someday you'll be King. And when you is, you be a good King... a kind and courageous and bold king... and when you is King don't ya be going walking off the edge of the drawbridge with no weapon in your hands and breaking young girl's hearts - you hear me?'\n\nStunned by this strange tale you began to stammer an answer but just then your Father returned with the hot tea. With a wink just for you, Nana's eyes closed again and she sank back into the bed. Minutes later she was gone.\n\nFor years and years you wondered what she was talking about and eventually you began to doubt the conversation had ever even happened. Over time it had faded completely... but here in Dark Castle, with the Hedgehog Broach before you, the memory is clear and real. Nana was buried with her beloved broach - she had insisted on it. This must have been a matching mate - presumably worn by Willy himself.",
 		'red_bandana' : "The ragged red bandana simultaneously projects juanty air of fluffy dog at the park - and also the rugged look of an 80s-era martial arts master ready for their final showdown.",
 		'big_medal' : "This is the biggest, most-highly-polished medal you have ever seen.",
 
-
-		### test objects ###
-		'brass_key' : "The key is brass.",
-		'bubbly_potion' : "The cork-stopperd glass vial contains a bubbly green potion.",
-		'wooden_chest' : "An old wooden chest.",
-				
 		### container objects ###
 		'crystal_box' : "Atop an ornate pedestal to the left of the throne sits an intricate Crystal Box. The crystal panels are heavily leaded and skillfully carved such that you're unable to tell what may lie within. There is a silver keyhole on the front of the Crystal Box that glitters brilliantly - much like the shiny_sword in fact - in the otherwise dark and brooding room. The top of the Crystal Box is engraved with Calligraphy.",
 		
-		### jug objects ###
+		### PortableLiquidContainer objects ###
 		'glass_bottle' : "A clear glass bottle suitable for carrying a liquid. Alas, if only it was filled with ale...",
 		
 		### door objects ###
 		'front_gate' : "The Front Gate is just north of the Dark Castle's drawbridge. It is 10 feet tall and reenforced with steel bands. Imposing indeed! There is Rusty Lettering across the top of the gate and a rusty keyhole next to a handle.",
 		'iron_portcullis' : "Beyond the iron portcullis you can dimly make out the next room.",
 
-		### switch objects ###
-		'left_lever' : "The Left Lever is old and rusty.",
-		'middle_lever' : "The Middle Lever is old and rusty.",
-		'right_lever' : "The Right Lever is old and rusty.",
-		'red_button' : "The Red Button is to the right of the three levers. You have no idea what it does but it's very big... and red... and shiny. Without concious intent, your hands begins to reach out to push the Big. Red. Shiny. Candy-Like. Button...",
 
-		### warnings ###
-		'entrance_south_warn_1' : "Don't be ridiculous Burt. You just swore to the whole pub that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",
-
-		'eat_biscuits_warning_1' : "You'd really rather not. You've been rooming in your Mom's basement and living off the Stale Biscuits in her pantry ever since you finished school - mostly so that you could spend whatever money you had at the pub. You don't mind sleeping in the basement but the Stale Biscuits are really getting to you.. you'll need to be a lot hungrier than you are now before you'll be able to keep another of those down!",
-		'eat_biscuits_warning_2' : "Don't do it Burt. You know they'll only give you indigestion... and to some poor creature out there they might be a rare and wonderous delicacy.",
+		### creatures ###
 		
+		## guard_goblin ##
+		'guard_goblin' : "The Guard Goblin stands in the Alcove guarding the Control Panel. It wears a crisply ironed uniform and gives off an air of hauty, even vicious, Officiousness. The Guard Goblin is armed and dangerous. It wields a Grimy Axe and observes you with watchful malice. This goblin clearly takes its guard duties very seriously. It would not be wise to approach the Iron Portcullis or the Control Panel (or the Guard Goblin!) un-armed.",
 
-		### timers ###
-		'test_timer_1' : "Tick 1",
-		'test_timer_2' : "Tick 2",
-		'test_timer_3' : "Boom!",
-		'big_bomb' : "The Big Bomb has a Blue Button on it.",
-		'blue_button' : "The Blue Button seems to dare you to push it.",
-		'blue_button_result' : "Uh-oh Burt... not sure you should have pushed that...",
+		# feature_lst #
+		'chewed_fingernails' : "Despite its officious demeanor and starched uniform, the Guard Goblin clearly has a terrible fingernail chewing habit. Its nailes are sharp, ragged, and icky!",
+		'officiousness' : "They say that a foolish consistency is the hobgoblin of little minds - and the Guard Goblin wears its petty officiousness like a shiny badge of honor. It scrutinizes you with a displeased frown of disaproval and a captious shake of the head. At any moment the Guard Goblin looks likely to ask you whether you've recieved the memo about the new cover sheet for the Treaspassing Permit Suspension reports.",
 
-		'hedgehog_eats_timer_1' : "The Royal Hedgehog is ravenously devouring the Stale Biscuits and is taking no notice of you at all.",
-		'hedgehog_eats_timer_2' : "The Royal Hedgehog has eaten through half the Stale Biscuits but is still giving them all of its attention.",
-		'hedgehog_eats_timer_3' : "The Royal Hedgehog is nearly done eating all of the Stale Biscuits and is beginning to look around a bit.",
-		'hedgehog_eats_timer_4' : "The Royal Hedgehog has finished the Stale Biscuits and is vigilantly looking around.",
 
-		### machine objects ###
-		'control_panel' : "The Control Panel contains three levers: a Left Lever, a Middle Lever, and a Right Lever. The control panel also contains a Red Button. There are no directions posted as to what the controls are for or how to use them (a clear ISO lapse if ever you've seen one Burt).",
+		## royal_hedgehog ##
+		'hungry_hedgehog' : "This poor little Royal Hedgehog has seen better days. It looks gaunt and like it skipped breakfast - and maybe lunch and dinner too. But despite a somewhat bedraggled appearance, the Royal Hedgehog has an air of fierce Loyalty about it. It may be in need of a good meal, but the Royal Hedgehog's eyes shine with the bright gleam of devoted guardian. It also appears to have quite a preference for shiny things. You don't know why but you feel an innate fondness for this small but faithful creature.",
+		# feature_lst # 
+		'fierce_teeth' : "The Royal Hedgehog has huge incisors that could tear a... well wait, that's just not true... the Royal Hedgehog, being of the mamilian Erinaceinae family, has small flat teeth like every other hedgehog. But he has such a good natured look to him that it's quite startling to see him roused!",
+		'loyalty' : "At a glance, it's apparent that the Royal Hedgehog is a loyal creature. It exudes a fierce, if slightly scruffy, allegiance. Not the grasping, starched-suit adherence of the sycophant but the slightly frowzy fidelity of a faithful and dependable mut.",
 
-		'throne' : "High-backed and intricately carved, the Throne is secured to the floor and wedged against the castle wall behind it. It does not look entirely comfortable but it must have once been very grand indeed. Alas, like the rest of Dark Castle, it is now dingy and ominous with only faint hints of its past glory. The Throne must have heard many secrets in its time... perhaps it still holds some?",
 
-		'die_in_moat_result' : "With confidence and vigor you pitch off the side of the drawbridge and into the Moat. Who knew it would be full of crocodiles?",
+		# burt #
+		'burt' : "You cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching and the farting I don't know how you'd fend off the ladies!\n\nIn your off hand you hold a Brass Lantern.",
+		# feature_lst # 
+		'fist' : "Yep, that's your fist. Still bruised from the last time you swung and missed and hit a wall...", 
+		'backpack' : "Your trusty, well-worn leather backpack",
+		'conscience' : "Burt, Dark Castle is quite murky enough without pondering your prodigal and Hal-esque misspent youth!",
+		'brass_lantern' : "Your trusty, battered-but-still-working, battery-powered light source. It's been in your household for ages; the family furphy is that your great grandmother, Nana, seized it from a maurauding 'adventurer' ages ago after giving him what-for with a broom. You sure wouldn't want your light source to go out - Dark Castle must be home to hundreds of Grues!",
 
-		'moat_croc_scared_result' : "With courage and boldness to spare you leap from the drawbridge into the murky waters of the Moat. Apparently the last time you did this you terrified the local wildlife so much that they are still in hiding. After treading water for a few minutes you clamber back onto the drawbridge.",
 
-		'moat_get_crown_result' : "With courage and boldness to spare you leap from the drawbridge into the murky waters of the Moat. A less resolute adventurer might have turned tail at the sight of the oncoming giant crocodile but not you Burt. Treading water with your feet you take a two-handed grip on your weapon and get ready to face your destiny. Just before reaching you the primitive reptile realizes that you are armed and ready to fight (crocs are famously near-sighted). In surprise and fear it belches up the contents of it's stomach - including the Royal Crown - and flees in fear. With a deft athleticism unlike anything you've ever displayed before today you stow your weapon, snag the Royal Crown before it sinkes, and in one smooth motion adroitly hoist yourself back onto the drawbridge one handed. The lads at the pub would fall over at the sight of your skill and courage! (though mind you, they fall over on a regular basis as it is)",
-
-		'cant_turn_back_result' : "Don't be ridiculous Burt. You just swore to the whole pub that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",
-
-		'throne_push_result' : "You push hard on the Throne. Nothing happens but one side of the throne feels a bit askew - as if something was wedged behind it. Strange...",
-		
-		'throne_pull_result' : "Hoping to find some sort of secret compartment filled with gold - or at least a good souvenir to show to the lads back at the pub - you pull and prod the Throne. As you are pulling the throne forward you hear a metallic 'clank' and something rolls out from beneath the Throne.. it appears to be a Hedgehog Broach. It must have been wedged between the Throne and the castle wall all these years... since the days of the last King! The sight of it brings back old memories... \n\nYou have a strong urge to examine the Hedgehog Broach more closely.",
-		
-		'nothing_happens_result' : "Nothing happens.",
-
-		'toggle_portcullis_result' : "You hear a loud clank, a whirring of gears, and the Iron Portcullis suddenly ",
-		
-		'portcullis_doesnt_open_result' : "You press the button and hear a whirring of gears but nothing happens.",
-
-		### attack defaults ###
-		'not_attackable_default' : "You consider attacking but then realize that the act is futile. This foe cannot be vanquished by force of arms. You must find another path to victory.",
-		'creature_flee_default_res_key' : "The creature flees in terror from your unprovoked attack.",
-		'creature_death_default_res_key' : "You dispatch your enemy with one blazing fast strike of your weapon!",
-		'burt_death_default_res_key' : "You are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
-		'no_result_default_res_key' : "You only barely manage to parry with your own weapon!",
-
+		## attack result display ##
 		'not_attackable_default' : "consider attacking but then think better of it. There must be another path to victory.",
 		'attack_method_default_result' : "nimbly dodges the attack.",
 		'tgt_flee_dc' : "terrirfied and flees from the unprovoked attack.",
@@ -179,40 +143,6 @@ descript_dict = {
 		'hard_parry' : "only barely able to parry the assult!",
 		'jump_back' : "startled and compelled to leap back in surprise.",
 
-
-		### creatures ###
-		
-		# guard_goblin #
-		'guard_goblin' : "The Guard Goblin stands in the Alcove guarding the Control Panel. It wears a crisply ironed uniform and gives off an air of hauty, even vicious, Officiousness. The Guard Goblin is armed and dangerous. It wields a Grimy Axe and observes you with watchful malice. This goblin clearly takes its guard duties very seriously. It would not be wise to approach the Iron Portcullis or the Control Panel (or the Guard Goblin!) un-armed.",
-		'burt_slain_by_goblin' : "With an echoing war cry you charge the Guard Goblin, flailing your arms wildly in all directions as you come. This technique has served you well during drunken altercations at the pub but it proves less effective against a trained mercenary. The last thing you ever see is the Guard Goblin calmly stepping into fighting stance and drawing back its weapon.",
-		'goblin_slain' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. you know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle.",
-		'goblin_attacks_result' : "It seems that by entering the north side of the room you have violated a minor castle ordinance. The Guard Goblin is incensed and will not tolerate this flagrant defiance of orthodoxy!",
-		'officiousness' : "They say that a foolish consistency is the hobgoblin of little minds - and the Guard Goblin wears its petty officiousness like a shiny badge of honor. It scrutinizes you with a displeased frown of disaproval and a captious shake of the head. At any moment the Guard Goblin looks likely to ask you whether you've recieved the memo about the new cover sheet for the Treaspassing Permit Suspension reports.",
-
-		# royal_hedgehog #
-		'hungry_hedgehog' : "This poor little Royal Hedgehog has seen better days. It looks gaunt and like it skipped breakfast - and maybe lunch and dinner too. But despite a somewhat bedraggled appearance, the Royal Hedgehog has an air of fierce Loyalty about it. It may be in need of a good meal, but the Royal Hedgehog's eyes shine with the bright gleam of devoted guardian. It also appears to have quite a preference for shiny things. You don't know why but you feel an innate fondness for this small but faithful creature.",
-
-		'hedgehog_flees' : "The Royal Hedgehog squeeks in dismay as it dodges your malevolent agression. Even as the loyal little creature gives way, you know in your heart that you will come to regret this unkingly deed.", # consternation alternatives: fright, dismay, alarm
-		'attack_hedgehog_warning_1' : "BURT! What has gotten into you?? We have an evil castle to conquer. Stop trying to slay defenseless woodland creatures!", # old text: "You take a wild swipe at the Royal Hedgehog but it nimbly leaps aside."
-		'attack_hedgehog_warning_2' : "Burt, I mean it - leave the poor little Hedgehog alone!",
-		'hedgehog_guard_result' : "The moment you approach the Shiny Sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's teeth.",
-		'fed_hedgehog_keeps_sword_result' : "The Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.",
-		'fed_hedgehog_loses_sword_result' : "The Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.",
-		'hedgehog_desc_smug' : "The Royal Hedgehog is looking svelte and chipper. It has the swagger of a hedgehog that has just scored a meal of Stale Biscuits and still has it's favorite shiny possession.",
-		'hedgehog_desc_yearn' : "The Royal Hedgehog is looking svelte and chipper but not entirely content. It's clearly grateful for its recent meal but keeps looking at you hopefully.",
-		'hedgehog_distracted_result' : "The Royal Hedgehog is too busy eating its favorite meal of Stale Biscuits to notice what you are doing.",
-		'loyalty' : "At a glance, it's apparent that the Royal Hedgehog is a loyal creature. It exudes a fierce, if slightly scruffy, allegiance. Not the grasping, starched-suit adherence of the sycophant but the slightly frowzy fidelity of a faithful and dependable mut.",
-
-		# test_frog #
-		'test_frog' : "The Test Frog looks testy.",
-
-		### kinging_scroll ###
-		'scroll_wrong_room_result' : "Upon reading the Kinging Scroll aloud you hear a distant rumble as if great powers are at work... but then it fades... perhaps you need to read it somewhere else to complete the recipe?",
-		'scroll_no_hedgehog_result' : "Upon reading the Kinging Scroll aloud, there is a rumble and a bright flash of light in the sky.. but then it dims and the sound fades. Alas, some vital ingredient has gone missing in the castle... this is grim Burt... you may need to start your adventures over from the start and play through with a more benevolent spirit.",
-		'scroll_crown_not_worn_result' : "Upon reading the Kinging Scroll aloud, the clouds outside part, the sun shines, there is a booming sound... but then it fades away abruptly. There's one missing ingredient that's keeping the Kinging Scroll from performing its magic... if only there was some token of royal lineage... perhaps some form of headpiece you could wear.. that would proclaim your birthright...",
-		'scroll_win_game_result' : "Upon reading the Kinging Scroll aloud the clouds outside part, the sun shines, there is a booming sound like a great and thunderous gong that echoes and rebounds across the land! By the scroll's power the castle is scourgafied and all that was once dark is now glimmering with color and ligtht. Where Dark Castle once lurked, now gleams Bright Castle! The Stone Coffer magically fills with gold (and also a conveniently provided and legally complete deed to Bright Castle). And suddenly Burt, you find your own somewhat threadbare Baker's clothing replaced by garments of rich velvet and silk. Moments later, the Royal Hedgehog scampers into the Throne Room, places the Silver Sword at your feet, and kneels in fealty. Well done Burt! To the amazement of your family and friends - and the eternal pride of your great grandmother, Nana - you are now the King of Bright Castle!!",
-
-
 		### room objects ###
 		'entrance' : "You are standing atop the drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south the way back home. To the east and west of your precarious perch on the drawbridge - and about three feet below you - is the Moat.",
 		
@@ -224,7 +154,59 @@ descript_dict = {
 
 
 
-# *** auto-gen keys ***
+		#### MACH OBJ & DISP ####
+
+		### warnings ###
+		'entrance_south_warn_1' : "Don't be ridiculous Burt. You just swore to the whole pub that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",
+		'eat_biscuits_warning_1' : "You'd really rather not. You've been rooming in your Mom's basement and living off the Stale Biscuits in her pantry ever since you finished school - mostly so that you could spend whatever money you had at the pub. You don't mind sleeping in the basement but the Stale Biscuits are really getting to you.. you'll need to be a lot hungrier than you are now before you'll be able to keep another of those down!",
+		'eat_biscuits_warning_2' : "Don't do it Burt. You know they'll only give you indigestion... and to some poor creature out there they might be a rare and wonderous delicacy.",
+		'attack_hedgehog_warning_1' : "BURT! What has gotten into you?? We have an evil castle to conquer. Stop trying to slay defenseless woodland creatures!", # old text: "You take a wild swipe at the Royal Hedgehog but it nimbly leaps aside."
+		'attack_hedgehog_warning_2' : "Burt, I mean it - leave the poor little Hedgehog alone!",
+
+		### timers ###
+		'hedgehog_eats_timer_1' : "The Royal Hedgehog is ravenously devouring the Stale Biscuits and is taking no notice of you at all.",
+		'hedgehog_eats_timer_2' : "The Royal Hedgehog has eaten through half the Stale Biscuits but is still giving them all of its attention.",
+		'hedgehog_eats_timer_3' : "The Royal Hedgehog is nearly done eating all of the Stale Biscuits and is beginning to look around a bit.",
+		'hedgehog_eats_timer_4' : "The Royal Hedgehog has finished the Stale Biscuits and is vigilantly looking around.",
+
+		### switch objects ###
+		'left_lever' : "The Left Lever is old and rusty.",
+		'middle_lever' : "The Middle Lever is old and rusty.",
+		'right_lever' : "The Right Lever is old and rusty.",
+		'red_button' : "The Red Button is to the right of the three levers. You have no idea what it does but it's very big... and red... and shiny. Without concious intent, your hands begins to reach out to push the Big. Red. Shiny. Candy-Like. Button...",
+		'throne' : "High-backed and intricately carved, the Throne is secured to the floor and wedged against the castle wall behind it. It does not look entirely comfortable but it must have once been very grand indeed. Alas, like the rest of Dark Castle, it is now dingy and ominous with only faint hints of its past glory. The Throne must have heard many secrets in its time... perhaps it still holds some?",
+
+		### machines & results ###
+		'control_panel' : "The Control Panel contains three levers: a Left Lever, a Middle Lever, and a Right Lever. The control panel also contains a Red Button. There are no directions posted as to what the controls are for or how to use them (a clear ISO lapse if ever you've seen one Burt).",
+
+		'die_in_moat_result' : "With confidence and vigor you pitch off the side of the drawbridge and into the Moat. Who knew it would be full of crocodiles?",
+		'moat_croc_scared_result' : "With courage and boldness to spare you leap from the drawbridge into the murky waters of the Moat. Apparently the last time you did this you terrified the local wildlife so much that they are still in hiding. After treading water for a few minutes you clamber back onto the drawbridge.",
+		'moat_get_crown_result' : "With courage and boldness to spare you leap from the drawbridge into the murky waters of the Moat. A less resolute adventurer might have turned tail at the sight of the oncoming giant crocodile but not you Burt. Treading water with your feet you take a two-handed grip on your weapon and get ready to face your destiny. Just before reaching you the primitive reptile realizes that you are armed and ready to fight (crocs are famously near-sighted). In surprise and fear it belches up the contents of it's stomach - including the Royal Crown - and flees in fear. With a deft athleticism unlike anything you've ever displayed before today you stow your weapon, snag the Royal Crown before it sinkes, and in one smooth motion adroitly hoist yourself back onto the drawbridge one handed. The lads at the pub would fall over at the sight of your skill and courage! (though mind you, they fall over on a regular basis as it is)",
+
+		'cant_turn_back_result' : "Don't be ridiculous Burt. You just swore to the whole pub that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",
+
+		'throne_push_result' : "You push hard on the Throne. Nothing happens but one side of the throne feels a bit askew - as if something was wedged behind it. Strange...",		
+		'throne_pull_result' : "Hoping to find some sort of secret compartment filled with gold - or at least a good souvenir to show to the lads back at the pub - you pull and prod the Throne. As you are pulling the throne forward you hear a metallic 'clank' and something rolls out from beneath the Throne.. it appears to be a Hedgehog Broach. It must have been wedged between the Throne and the castle wall all these years... since the days of the last King! The sight of it brings back old memories... \n\nYou have a strong urge to examine the Hedgehog Broach more closely.",
+		
+		'nothing_happens_result' : "Nothing happens.",
+		'toggle_portcullis_result' : "You hear a loud clank, a whirring of gears, and the Iron Portcullis suddenly ",		
+		'portcullis_doesnt_open_result' : "You press the button and hear a whirring of gears but nothing happens.",
+
+		'hedgehog_guard_result' : "The moment you approach the Shiny Sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's teeth.",
+		'fed_hedgehog_keeps_sword_result' : "The Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.",
+		'fed_hedgehog_loses_sword_result' : "The Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.",
+		'hedgehog_desc_smug' : "The Royal Hedgehog is looking svelte and chipper. It has the swagger of a hedgehog that has just scored a meal of Stale Biscuits and still has it's favorite shiny possession.",
+		'hedgehog_desc_yearn' : "The Royal Hedgehog is looking svelte and chipper but not entirely content. It's clearly grateful for its recent meal but keeps looking at you hopefully.",
+		'hedgehog_distracted_result' : "The Royal Hedgehog is too busy eating its favorite meal of Stale Biscuits to notice what you are doing.",
+
+		'scroll_wrong_room_result' : "Upon reading the Kinging Scroll aloud you hear a distant rumble as if great powers are at work... but then it fades... perhaps you need to read it somewhere else to complete the recipe?",
+		'scroll_no_hedgehog_result' : "Upon reading the Kinging Scroll aloud, there is a rumble and a bright flash of light in the sky.. but then it dims and the sound fades. Alas, some vital ingredient has gone missing in the castle... this is grim Burt... you may need to start your adventures over from the start and play through with a more benevolent spirit.",
+		'scroll_crown_not_worn_result' : "Upon reading the Kinging Scroll aloud, the clouds outside part, the sun shines, there is a booming sound... but then it fades away abruptly. There's one missing ingredient that's keeping the Kinging Scroll from performing its magic... if only there was some token of royal lineage... perhaps some form of headpiece you could wear.. that would proclaim your birthright...",
+		'scroll_win_game_result' : "Upon reading the Kinging Scroll aloud the clouds outside part, the sun shines, there is a booming sound like a great and thunderous gong that echoes and rebounds across the land! By the scroll's power the castle is scourgafied and all that was once dark is now glimmering with color and ligtht. Where Dark Castle once lurked, now gleams Bright Castle! The Stone Coffer magically fills with gold (and also a conveniently provided and legally complete deed to Bright Castle). And suddenly Burt, you find your own somewhat threadbare Baker's clothing replaced by garments of rich velvet and silk. Moments later, the Royal Hedgehog scampers into the Throne Room, places the Silver Sword at your feet, and kneels in fealty. Well done Burt! To the amazement of your family and friends - and the eternal pride of your great grandmother, Nana - you are now the King of Bright Castle!!",
+
+
+
+		#### AUTO-DISP ####
 
 		### wear descriptions ###
 		'burt_wear_royal_crown' : "You now feel more regal.",
@@ -271,6 +253,30 @@ descript_dict = {
 
 
 
+		#### TEST OBJ ####
+
+		# items #
+		'brass_key' : "The key is brass.",
+		'random_mcguffin' : "It's a radom test McGuffin - just what you've always wanted!!",
+
+		# containers #
+		'bubbly_potion' : "The cork-stopperd glass vial contains a bubbly green potion.",
+		'wooden_chest' : "An old wooden chest.",
+
+		# garments #
+		'baseball_cap' : "Burt, it's a code-testing Baseball Cap! Your favorite kind!!",
+
+		# big_bomb machine, blue_button, & test_timer #
+		'test_timer_1' : "Tick 1",
+		'test_timer_2' : "Tick 2",
+		'test_timer_3' : "Boom!",
+		'big_bomb' : "The Big Bomb has a Blue Button on it.",
+		'blue_button' : "The Blue Button seems to dare you to push it.",
+		'blue_button_result' : "Uh-oh Burt... not sure you should have pushed that...",
+
+		# creatures #
+		'test_frog' : "The Test Frog looks testy.",
+
 }
 
 
@@ -283,3 +289,14 @@ descript_dict = {
 ##		'hedgehog_flees' : "You strike at the Royal Hedgehog and, with a terrified squeek, it flees from your unprovoked attack. You know in your heart that you will come to regret this unkingly deed.",
 #		'tgt_flee_dc' : "flees in terror from the unprovoked attack.",
 #		'tgt_death' : "dispatch the enemy with one blazing fast strike!",
+
+#		'creature_flee_default_res_key' : "The creature flees in terror from your unprovoked attack.",
+#		'creature_death_default_res_key' : "You dispatch your enemy with one blazing fast strike of your weapon!",
+#		'burt_death_default_res_key' : "You are helpless against its onslaught. You will need a better weapon if you are to survive this foe.",
+#		'no_result_default_res_key' : "You only barely manage to parry with your own weapon!",
+#		'not_attackable_default' : "You consider attacking but then realize that the act is futile. This foe cannot be vanquished by force of arms. You must find another path to victory.",
+
+#		'burt_slain_by_goblin' : "With an echoing war cry you charge the Guard Goblin, flailing your arms wildly in all directions as you come. This technique has served you well during drunken altercations at the pub but it proves less effective against a trained mercenary. The last thing you ever see is the Guard Goblin calmly stepping into fighting stance and drawing back its weapon.",
+#		'goblin_slain' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. you know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle.",
+#		'goblin_attacks_result' : "It seems that by entering the north side of the room you have violated a minor castle ordinance. The Guard Goblin is incensed and will not tolerate this flagrant defiance of orthodoxy!",
+#		'hedgehog_flees' : "The Royal Hedgehog squeeks in dismay as it dodges your malevolent agression. Even as the loyal little creature gives way, you know in your heart that you will come to regret this unkingly deed.", # consternation alternatives: fright, dismay, alarm

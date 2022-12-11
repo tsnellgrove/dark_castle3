@@ -303,8 +303,10 @@ Version 3.75 Goals
 		- DONE: clean up comments - including hedgehog_guard_result
 		- DONE: elim attacking dict in Creature class
 		- DONE: elim 'attack_burt' in secret_verbs_lst in interp
-	- TBD: refactor and simplify new attack code
-		- TBD: decide about introducing unarmed attribute holding unarmed obj (i.e. Fist)
+	- INPROC: refactor and simplify new attack code
+		- DONE: decide about introducing unarmed attribute holding unarmed obj (i.e. Fist)
+			DECISION: document unarmed attack obj as first list in creature.feature_lst
+		- DONE: general clean-up / org of static_gbl and delet of un-used creature keys
 		- TBD: section-by-section
 		- TBD: fine tune attack display language
 		- TBD: exit debug mode in cmd_exe (prep)

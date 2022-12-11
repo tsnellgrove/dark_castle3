@@ -19,7 +19,7 @@ class Creature(ViewOnly):
 		self._hand_lst = hand_lst # list of items in creature's hand; is typically only 1 item 
 		self._bkpk_lst = bkpk_lst # list of items in creature's backpack
 		self._worn_lst = worn_lst # list of items currently worn by the creature
-		self._feature_lst = feature_lst # list of visible obj associated w creature but not included in i or l; used for traits like 'loyalty' 
+		self._feature_lst = feature_lst # visible obj associated w creature but not shown in i or l; used for traits like 'loyalty'; first obj in lst is used for unarmed attack 
 		self._invis_lst = invis_lst # list of invisible obj associated w creature; typically used for Modular Machines
 		self._give_dict = give_dict # dict of creature reactions to gifts
 		self._is_attackable = is_attackable # bool indicating weather Burt can attack the creature
