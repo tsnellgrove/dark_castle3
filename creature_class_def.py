@@ -10,8 +10,6 @@ from static_gbl import descript_dict
 
 ### classes
 class Creature(ViewOnly):
-#	def __init__(self, name, full_name, root_name, descript_key, writing, state, hand_lst, bkpk_lst,
-#			worn_lst, feature_lst, invis_lst, give_dict, is_attackable, attacked_dict, attacking_dict):
 	def __init__(self, name, full_name, root_name, descript_key, writing, state, hand_lst, bkpk_lst,
 		worn_lst, feature_lst, invis_lst, give_dict, is_attackable, attacked_dict):
 		super().__init__(name, full_name, root_name, descript_key, writing)
@@ -24,7 +22,6 @@ class Creature(ViewOnly):
 		self._give_dict = give_dict # dict of creature reactions to gifts
 		self._is_attackable = is_attackable # bool indicating weather Burt can attack the creature
 		self._attacked_dict = attacked_dict # dict of creature reactions to being attacked
-#		self._attacking_dict = attacking_dict # dict of results from creature attacking Burt; no longer needed once type(burt) == creature
 		""" Creatures interact with the world of Dark Castle, move from room to room, and initiate actions. Burt is an object of class Creature.
 		"""
 
@@ -80,10 +77,6 @@ class Creature(ViewOnly):
 	@property
 	def attacked_dict(self):
 		return self._attacked_dict
-
-#	@property
-#	def attacking_dict(self):
-#		return self._attacking_dict
 
 	# *** attrib methods - hand ***
 	def hand_lst_append(self, item):
@@ -275,11 +268,12 @@ class Creature(ViewOnly):
 	def attack(self, src_obj, active_gs, src_creature = None):
 		""" Attacks a target_creature with an item
 		"""
+		# destermine src_creature & tgt_creature
 		if src_creature is None:
 			src_creature = active_gs.hero
 		tgt_creature = self
 
-		# ERROR & RETURN ON COMMAND FAILURES
+		# display error & return on command failures
 		if not tgt_creature.is_attackable:
 			try:
 				active_gs.buffer(descript_dict[f"not_attackable_{src_creature.name}_{tgt_creature.name}"])
@@ -295,16 +289,14 @@ class Creature(ViewOnly):
 		if src_creature == tgt_creature:
 			active_gs.buffer("A creature can't attack itself!")
 			return
-
-		# IMPLEMENT RESULTS
 		
-		# determine tgt_obj for tgt_creature
+		# determine tgt_obj for tgt_creature (src_obj provided in method arguements)
 		if tgt_creature.hand_is_empty():
 			tgt_obj = tgt_creature.feature_lst[0] # needs to be sorted out for non-burt - for hedgehog = sharp_teeth ?
 		else:
 			tgt_obj = tgt_creature.get_hand_item()
 
-		# determine result key
+		# determine possible result keys
 		if src_obj in src_creature.feature_lst:
 			src_obj_category = 'unarmed'
 		elif src_obj.is_weapon():
@@ -323,6 +315,7 @@ class Creature(ViewOnly):
 		src_creature_str_lst = [src_creature.name, '*']
 		tgt_obj_str_lst = [tgt_obj.name, tgt_obj_category, '*']
 
+		# determine result key
 		result_key = 'attack_method_default_result'
 		break_flag = False	
 		for src_obj_str in src_obj_str_lst:
@@ -338,48 +331,41 @@ class Creature(ViewOnly):
 			if break_flag:
 				break
 
-		# determine & implement combat result
+		# based on result_key, determine creature-specific result code and implement combat actions
 		room_obj = active_gs.map.get_obj_room(tgt_creature)
 		if result_key == 'attack_method_default_result':
-			result_code = None
+			result_code = 'no_result'
 		else:
 			result_code = self.attacked_dict[result_key]
 
 		if result_code == 'tgt_flee_dc':
 			room_obj.floor_lst_remove(self)
 			win_obj = src_obj
-			win_creature = src_creature
 			lose_creature = tgt_creature
 		elif (result_code == 'src_death') and (src_creature == active_gs.hero):
 			active_gs.set_game_ending('death')
 			win_obj = tgt_obj
-			win_creature = tgt_creature
 			lose_creature = src_creature
 		elif result_code == 'src_death':
 			room_obj.floor_lst_remove(src_creature)
 			room_obj.floor_lst_extend(src_creature.bkpk_lst + src_creature.hand_lst + src_creature.worn_lst)
 			win_obj = tgt_obj
-			win_creature = tgt_creature
 			lose_creature = src_creature
 		elif (result_code == 'tgt_death') and (tgt_creature == active_gs.hero):
 			active_gs.set_game_ending('death')
 			win_obj = src_obj
-			win_creature = src_creature
 			lose_creature = tgt_creature
 		elif result_code == 'tgt_death':
 			room_obj.floor_lst_remove(tgt_creature)
 			room_obj.floor_lst_extend(tgt_creature.bkpk_lst + tgt_creature.hand_lst + tgt_creature.worn_lst)
 			win_obj = src_obj
-			win_creature = src_creature
 			lose_creature = tgt_creature
 		elif result_code in ['easy_dodge', 'hard_dodge', 'easy_parry', 'hard_parry', 'jump_back']:
 			win_obj = src_obj
-			win_creature = src_creature
 			lose_creature = tgt_creature
 		else:
 			result_code = 'no_result'
 			win_obj = src_obj
-			win_creature = src_creature
 			lose_creature = tgt_creature
 
 		# IF SILENT MODE, RETURN
