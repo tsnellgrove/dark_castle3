@@ -292,11 +292,12 @@ class Creature(ViewOnly):
 		
 		# determine tgt_obj for tgt_creature (src_obj provided in method arguements)
 		if tgt_creature.hand_is_empty():
-			tgt_obj = tgt_creature.feature_lst[0] # needs to be sorted out for non-burt - for hedgehog = sharp_teeth ?
+			tgt_obj = tgt_creature.feature_lst[0] # feature_lst[0] is a creature's unarmed attack
 		else:
 			tgt_obj = tgt_creature.get_hand_item()
 
 		# determine possible result keys
+		# the intent is to allow keys based on obj names, obj categories, or wildcards
 		if src_obj in src_creature.feature_lst:
 			src_obj_category = 'unarmed'
 		elif src_obj.is_weapon():
@@ -315,7 +316,8 @@ class Creature(ViewOnly):
 		src_creature_str_lst = [src_creature.name, '*']
 		tgt_obj_str_lst = [tgt_obj.name, tgt_obj_category, '*']
 
-		# determine result key
+		# determine actual result key
+		# more specific keys have priority over less specific
 		result_key = 'attack_method_default_result'
 		break_flag = False	
 		for src_obj_str in src_obj_str_lst:
@@ -368,13 +370,15 @@ class Creature(ViewOnly):
 			win_obj = src_obj
 			lose_creature = tgt_creature
 
-		# IF SILENT MODE, RETURN
+		# if hero_creature not in current room, exit with no display
 		if room_obj != active_gs.get_room():
 			return 
 
-		# OUTPUT COMBAT TEXT
+
+		### Display Combat Text ###
 		
-		# buffer attack initiation
+		# create and buffer the 'attack initiation string'
+		# describes the actions and the 'weapons' of both the attacker and the defender
 		if src_creature == active_gs.hero:
 			src_creature_disp = "You attack"
 			if src_obj_category == 'unarmed':
@@ -391,7 +395,7 @@ class Creature(ViewOnly):
 		if tgt_creature == active_gs.hero:
 			tgt_creature_disp = "you attempt"
 			if tgt_obj_category == 'unarmed':
-				tgt_obj_disp = f"your {tgt_obj.full_name}"
+				tgt_obj_disp = f"parry with your {tgt_obj.full_name}"
 			else:
 				tgt_obj_disp = f"parry with the {tgt_obj.full_name}"
 		else:
@@ -400,13 +404,15 @@ class Creature(ViewOnly):
 				tgt_obj_disp = f"dodge"
 			else:
 				tgt_obj_disp = f"parry with the {tgt_obj.full_name}"
-
 		active_gs.buffer(f"{src_creature_disp} with {src_obj_disp} and {tgt_creature_disp} to {tgt_obj_disp}!")
 
-		# buffer custom response
+		# buffer a 'custom attack response' if it exists
+		# the response is unique to the deffender, attack obj, attacker, defense obj
 		active_gs.buff_try_key(f"{tgt_creature.name}_{result_key}")
 
-		# attack resolution start - compose string with verb and adj detail if src_creature weilding a weapon 
+		# 'attack resolution first clause'
+		# compose a string describing the 'winning' blow
+		# provide additional verb and adj detail if src_creature weilding an obj of class Weapon
 		if (win_obj in src_creature.feature_lst) or (win_obj in tgt_creature.feature_lst):
 			resolution_strt_str = ""
 		elif win_obj.is_weapon():
@@ -418,14 +424,15 @@ class Creature(ViewOnly):
 		else:
 			resolution_strt_str = f"The {win_obj.full_name} whizzes through the air. "			
 
-		# attack resolution end - compose string based on result_code
+		# 'attack resolution second clause'
+		# based on result_code, describe the combat outcome for the 'losing' creature
 		if lose_creature == active_gs.hero:
 			lose_creature_disp = "You are"
 		else:
 			lose_creature_disp = f"The {lose_creature.full_name} is"
 		resolution_end_str = f"{lose_creature_disp} {descript_dict[result_code]} "
 
-		# buffer attack resolution string
+		# buffer the full 'attack resolution'
 		active_gs.buffer(f"{resolution_strt_str}{resolution_end_str}")
 		return 
 

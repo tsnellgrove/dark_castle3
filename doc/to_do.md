@@ -307,7 +307,7 @@ Version 3.75 Goals
 		- DONE: decide about introducing unarmed attribute holding unarmed obj (i.e. Fist)
 			DECISION: document unarmed attack obj as first list in creature.feature_lst
 		- DONE: general clean-up / org of static_gbl and delet of un-used creature keys
-		- INPROC: comment each section of attack()
+		- DONE: comment each section of attack()
 		- TBD: section-by-section
 		- TBD: fine tune attack display language
 		- TBD: exit debug mode in cmd_exe (prep)
@@ -747,6 +747,7 @@ Version 6.x Goals
 - assume that item in hand will be used for activity (e.g. attack)
 - move() command ?
 - create 'jump' command with same response as Zork ('Whee!' I think?)
+- randomize description of Burt shown during 'inventory'
 
 
 *** STORY IDEAS ***
