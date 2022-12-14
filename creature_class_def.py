@@ -340,35 +340,53 @@ class Creature(ViewOnly):
 		else:
 			result_code = self.attacked_dict[result_key]
 
-		if result_code == 'tgt_flee_dc':
-			room_obj.floor_lst_remove(self)
-			win_obj = src_obj
-			lose_creature = tgt_creature
-		elif (result_code == 'src_death') and (src_creature == active_gs.hero):
-			active_gs.set_game_ending('death')
-			win_obj = tgt_obj
-			lose_creature = src_creature
-		elif result_code == 'src_death':
-			room_obj.floor_lst_remove(src_creature)
-			room_obj.floor_lst_extend(src_creature.bkpk_lst + src_creature.hand_lst + src_creature.worn_lst)
-			win_obj = tgt_obj
-			lose_creature = src_creature
-		elif (result_code == 'tgt_death') and (tgt_creature == active_gs.hero):
-			active_gs.set_game_ending('death')
-			win_obj = src_obj
-			lose_creature = tgt_creature
-		elif result_code == 'tgt_death':
-			room_obj.floor_lst_remove(tgt_creature)
-			room_obj.floor_lst_extend(tgt_creature.bkpk_lst + tgt_creature.hand_lst + tgt_creature.worn_lst)
-			win_obj = src_obj
-			lose_creature = tgt_creature
-		elif result_code in ['easy_dodge', 'hard_dodge', 'easy_parry', 'hard_parry', 'jump_back']:
+## introduce tgt, src, and tie sub-string cases
+		if result_code in ['tgt_flee_dc', 'tgt_death', 'no_result', 'easy_dodge', 'hard_dodge', 'easy_parry', 'hard_parry', 'jump_back']:
 			win_obj = src_obj
 			lose_creature = tgt_creature
 		else:
-			result_code = 'no_result'
-			win_obj = src_obj
-			lose_creature = tgt_creature
+			win_obj = tgt_obj
+			lose_creature = src_creature
+
+		if lose_creature == active_gs.hero:
+			if result_code in ['src_death', 'tgt_death']:
+				active_gs.set_game_ending('death')
+		else:
+			if result_code in ['src_death', 'tgt_death']:
+				room_obj.floor_lst_remove(lose_creature)
+				room_obj.floor_lst_extend(lose_creature.bkpk_lst + lose_creature.hand_lst + lose_creature.worn_lst)
+			if result_code == 'tgt_flee_dc':
+				room_obj.floor_lst_remove(lose_creature)
+
+#		if result_code == 'tgt_flee_dc':
+#			room_obj.floor_lst_remove(tgt_creature)
+#			win_obj = src_obj
+#			lose_creature = tgt_creature
+#		elif (result_code == 'src_death') and (src_creature == active_gs.hero):
+#			active_gs.set_game_ending('death')
+#			win_obj = tgt_obj
+#			lose_creature = src_creature
+#		elif result_code == 'src_death':
+#			room_obj.floor_lst_remove(src_creature)
+#			room_obj.floor_lst_extend(src_creature.bkpk_lst + src_creature.hand_lst + src_creature.worn_lst)
+#			win_obj = tgt_obj
+#			lose_creature = src_creature
+#		elif (result_code == 'tgt_death') and (tgt_creature == active_gs.hero):
+#			active_gs.set_game_ending('death')
+#			win_obj = src_obj
+#			lose_creature = tgt_creature
+#		elif result_code == 'tgt_death':
+#			room_obj.floor_lst_remove(tgt_creature)
+#			room_obj.floor_lst_extend(tgt_creature.bkpk_lst + tgt_creature.hand_lst + tgt_creature.worn_lst)
+#			win_obj = src_obj
+#			lose_creature = tgt_creature
+#		elif result_code in ['easy_dodge', 'hard_dodge', 'easy_parry', 'hard_parry', 'jump_back']:
+#			win_obj = src_obj
+#			lose_creature = tgt_creature
+#		else:
+#			result_code = 'no_result'
+#			win_obj = src_obj
+#			lose_creature = tgt_creature
 
 		# if hero_creature not in current room, exit with no display
 		if room_obj != active_gs.get_room():
