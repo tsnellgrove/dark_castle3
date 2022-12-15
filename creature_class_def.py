@@ -333,7 +333,7 @@ class Creature(ViewOnly):
 			if break_flag:
 				break
 
-		# based on result_key, determine creature-specific result code and implement combat actions
+		# based on result_key, determine result_code and winner; implement combat actions
 		room_obj = active_gs.map.get_obj_room(tgt_creature)
 		if result_key == 'attack_method_default_result':
 			result_code = 'no_result'
@@ -341,12 +341,22 @@ class Creature(ViewOnly):
 			result_code = self.attacked_dict[result_key]
 
 ## introduce tgt, src, and tie sub-string cases
-		if result_code in ['tgt_flee_dc', 'tgt_death', 'no_result', 'easy_dodge', 'hard_dodge', 'easy_parry', 'hard_parry', 'jump_back']:
-			win_obj = src_obj
-			lose_creature = tgt_creature
-		else:
+#		tie_code_lst = ['no_result', 'easy_dodge', 'hard_dodge', 'easy_parry', 'hard_parry', 'jump_back']
+##		if result_code in ['tgt_flee_dc', 'tgt_death']:
+#		if result_code[0 : 2] == 'tgt' or result_code in tie_code_lst:
+#			win_obj = src_obj
+#			lose_creature = tgt_creature
+#		else:
+#			win_obj = tgt_obj
+#			lose_creature = src_creature
+
+#		print(result_code[0 : 3])
+		if result_code[0 : 3] == 'src':
 			win_obj = tgt_obj
 			lose_creature = src_creature
+		else:
+			win_obj = src_obj
+			lose_creature = tgt_creature			
 
 		if lose_creature == active_gs.hero:
 			if result_code in ['src_death', 'tgt_death']:
