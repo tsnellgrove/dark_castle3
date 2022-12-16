@@ -310,21 +310,6 @@ class Creature(ViewOnly):
 		# the intent is to allow keys based on obj names, obj categories, or wildcards
 		src_obj_category = attack_obj_category(src_obj, src_creature)
 		tgt_obj_category = attack_obj_category(tgt_obj, tgt_creature)
-#		print(f"src_obj_cetegory = {src_obj_category} and tgt_obj_category = {tgt_obj_category}")
-
-#		if src_obj in src_creature.feature_lst:
-#			src_obj_category = 'unarmed'
-#		elif src_obj.is_weapon():
-#			src_obj_category = 'weapon'
-#		else:
-#			src_obj_category = 'item'
-		
-#		if tgt_obj in tgt_creature.feature_lst:
-#			tgt_obj_category = 'unarmed'
-#		elif tgt_obj.is_weapon():
-#			tgt_obj_category = 'weapon'
-#		else:
-#			tgt_obj_category = 'item'
 		
 		src_obj_str_lst = [src_obj.name, src_obj_category, '*']
 		src_creature_str_lst = [src_creature.name, '*']
