@@ -381,7 +381,7 @@ class Creature(ViewOnly):
 		if tgt_creature == active_gs.hero:
 			tgt_creature_disp = "you attempt"
 			if tgt_obj_category == 'unarmed':
-				tgt_obj_disp = f"parry with your {tgt_obj.full_name}"
+				tgt_obj_disp = f"dodge"
 			else:
 				tgt_obj_disp = f"parry with the {tgt_obj.full_name}"
 		else:

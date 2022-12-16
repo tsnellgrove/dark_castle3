@@ -308,15 +308,17 @@ Version 3.75 Goals
 			DECISION: document unarmed attack obj as first list in creature.feature_lst
 		- DONE: general clean-up / org of static_gbl and delet of un-used creature keys
 		- DONE: comment each section of attack()
-		- TBD: create obj_category function ?
-		- TBD: section-by-section
-		- TBD: fine tune attack display language
-			- TBD: if burt unarmed, dodge, not parry
+		- DONE: refactor results
+		- DONE: create obj_category function
+		- TBD: refactor display
+		- INPROC: fine tune attack display language
+			- DONE: if burt unarmed, dodge, not parry
 			- TBD: pro-noun for 'not_attackable_default'
 		- TBD: exit debug mode in cmd_exe (prep)
 	- TBD: update trigger & code for attack_hedgehog_warning
 	- TBD: doc_strings
 		- TBD: doc_string on details of result matrix (and evolution from original version)
+		- TBD: doc_string on attack display components
 		- TBD: doc_string history of attack() as a hot mess and driver for burt as Creature class obj
 		- TBD: attack() use of hand_inv elevates impact of hand inv; creatures form opinions
 - TBD: update get_hand_item() to return None if hand_list is empty
