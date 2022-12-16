@@ -284,7 +284,7 @@ class Creature(ViewOnly):
 			active_gs.buffer(f"You are not holding the {src_obj.full_name} in your hand.")
 			return 
 		if (src_obj in src_creature.feature_lst) and (not src_creature.hand_is_empty()):
-			active_gs.buffer(f"You can't attack with your fist while you're holding the {src_creature.get_hand_item().full_name}.")
+			active_gs.buffer(f"You can't attack with your {src_obj.full_name} while you're holding the {src_creature.get_hand_item().full_name}.")
 			return 
 		if src_creature == tgt_creature:
 			active_gs.buffer("A creature can't attack itself!")

@@ -308,8 +308,11 @@ Version 3.75 Goals
 			DECISION: document unarmed attack obj as first list in creature.feature_lst
 		- DONE: general clean-up / org of static_gbl and delet of un-used creature keys
 		- DONE: comment each section of attack()
+		- TBD: create obj_category function ?
 		- TBD: section-by-section
 		- TBD: fine tune attack display language
+			- TBD: if burt unarmed, dodge, not parry
+			- TBD: pro-noun for 'not_attackable_default'
 		- TBD: exit debug mode in cmd_exe (prep)
 	- TBD: update trigger & code for attack_hedgehog_warning
 	- TBD: doc_strings
