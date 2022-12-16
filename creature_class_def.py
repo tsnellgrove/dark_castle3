@@ -8,6 +8,16 @@ import random
 from base_class_def import ViewOnly
 from static_gbl import descript_dict
 
+### local functions
+def attack_obj_category(obj, creature):
+	if obj in creature.feature_lst:
+		return 'unarmed'
+	elif obj.is_weapon():
+		return 'weapon'
+	else:
+		return 'item'
+
+
 ### classes
 class Creature(ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, state, hand_lst, bkpk_lst,
@@ -298,19 +308,23 @@ class Creature(ViewOnly):
 
 		# determine possible result keys
 		# the intent is to allow keys based on obj names, obj categories, or wildcards
-		if src_obj in src_creature.feature_lst:
-			src_obj_category = 'unarmed'
-		elif src_obj.is_weapon():
-			src_obj_category = 'weapon'
-		else:
-			src_obj_category = 'item'
+		src_obj_category = attack_obj_category(src_obj, src_creature)
+		tgt_obj_category = attack_obj_category(tgt_obj, tgt_creature)
+#		print(f"src_obj_cetegory = {src_obj_category} and tgt_obj_category = {tgt_obj_category}")
+
+#		if src_obj in src_creature.feature_lst:
+#			src_obj_category = 'unarmed'
+#		elif src_obj.is_weapon():
+#			src_obj_category = 'weapon'
+#		else:
+#			src_obj_category = 'item'
 		
-		if tgt_obj in tgt_creature.feature_lst:
-			tgt_obj_category = 'unarmed'
-		elif tgt_obj.is_weapon():
-			tgt_obj_category = 'weapon'
-		else:
-			tgt_obj_category = 'item'
+#		if tgt_obj in tgt_creature.feature_lst:
+#			tgt_obj_category = 'unarmed'
+#		elif tgt_obj.is_weapon():
+#			tgt_obj_category = 'weapon'
+#		else:
+#			tgt_obj_category = 'item'
 		
 		src_obj_str_lst = [src_obj.name, src_obj_category, '*']
 		src_creature_str_lst = [src_creature.name, '*']

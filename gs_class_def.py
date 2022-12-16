@@ -7,9 +7,6 @@
 ### import
 from static_gbl import descript_dict, static_dict
 
-### local functions
-
-
 ### classes
 class GameState(object):
 		def __init__(self, name, dyn_descript_dict, points_earned_dict, state_dict, map, hero):
