@@ -310,7 +310,9 @@ Version 3.75 Goals
 		- DONE: comment each section of attack()
 		- DONE: refactor results
 		- DONE: create obj_category function
-		- TBD: refactor display
+		- INPROC: refactor display
+			- DONE: attack initiation display
+			- TBD: clean up comments
 		- INPROC: fine tune attack display language
 			- DONE: if burt unarmed, dodge, not parry
 			- TBD: pro-noun for 'not_attackable_default'

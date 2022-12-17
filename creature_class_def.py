@@ -369,27 +369,33 @@ class Creature(ViewOnly):
 			src_creature_disp = "You attack"
 			if src_obj_category == 'unarmed':
 				src_obj_disp = f"your {src_obj.full_name}"
-			else:
-				src_obj_disp = f"the {src_obj.full_name}"
+#			else:
+#				src_obj_disp = f"the {src_obj.full_name}"
 		else:
 			src_creature_disp = f"The {src_creature.full_name} attacks"
 			if src_obj_category == 'unarmed':
 				src_obj_disp = f"its {src_obj.full_name}"
-			else:
-				src_obj_disp = f"the {src_obj.full_name}"
+#			else:
+#				src_obj_disp = f"the {src_obj.full_name}"
+		if src_obj_category != 'unarmed':
+			src_obj_disp = f"the {src_obj.full_name}"
 		
 		if tgt_creature == active_gs.hero:
 			tgt_creature_disp = "you attempt"
-			if tgt_obj_category == 'unarmed':
-				tgt_obj_disp = f"dodge"
-			else:
-				tgt_obj_disp = f"parry with the {tgt_obj.full_name}"
+#			if tgt_obj_category == 'unarmed':
+#				tgt_obj_disp = f"dodge"
+#			else:
+#				tgt_obj_disp = f"parry with the {tgt_obj.full_name}"
 		else:
 			tgt_creature_disp = f"the {tgt_creature.full_name} attempts"
-			if tgt_obj_category == 'unarmed':
-				tgt_obj_disp = f"dodge"
-			else:
-				tgt_obj_disp = f"parry with the {tgt_obj.full_name}"
+#			if tgt_obj_category == 'unarmed':
+#				tgt_obj_disp = f"dodge"
+#			else:
+#				tgt_obj_disp = f"parry with the {tgt_obj.full_name}"
+		if tgt_obj_category == 'unarmed':
+			tgt_obj_disp = f"dodge"
+		else:
+			tgt_obj_disp = f"parry with the {tgt_obj.full_name}"
 		active_gs.buffer(f"{src_creature_disp} with {src_obj_disp} and {tgt_creature_disp} to {tgt_obj_disp}!")
 
 		# buffer a 'custom attack response' if it exists
