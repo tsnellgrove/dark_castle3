@@ -315,7 +315,8 @@ Version 3.75 Goals
 			- TBD: clean up comments
 		- INPROC: fine tune attack display language
 			- DONE: if burt unarmed, dodge, not parry
-			- TBD: pro-noun for 'not_attackable_default'
+			- DONE: pro-noun for 'not_attackable_default'
+			- TBD:
 		- TBD: exit debug mode in cmd_exe (prep)
 	- TBD: update trigger & code for attack_hedgehog_warning
 	- TBD: doc_strings
