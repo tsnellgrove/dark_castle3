@@ -303,7 +303,7 @@ Version 3.75 Goals
 		- DONE: clean up comments - including hedgehog_guard_result
 		- DONE: elim attacking dict in Creature class
 		- DONE: elim 'attack_burt' in secret_verbs_lst in interp
-	- INPROC: refactor and simplify new attack code
+	- DONE: refactor and simplify new attack code
 		- DONE: decide about introducing unarmed attribute holding unarmed obj (i.e. Fist)
 			DECISION: document unarmed attack obj as first list in creature.feature_lst
 		- DONE: general clean-up / org of static_gbl and delet of un-used creature keys
@@ -315,11 +315,11 @@ Version 3.75 Goals
 			- DONE: clean up comments
 			- DONE: refactor resolution_strt_str for weapon
 			- DONE: clean up comments
-		- INPROC: fine tune attack display language
+		- DONE: fine tune attack display language
 			- DONE: if burt unarmed, dodge, not parry
 			- DONE: pro-noun for 'not_attackable_default'
-			- TBD: clean-up comments
-		- TBD: exit debug mode in cmd_exe (prep)
+			- DONE: clean-up comments
+		- DONE: exit debug mode in cmd_exe (prep)
 	- TBD: update trigger & code for attack_hedgehog_warning
 	- TBD: doc_strings
 		- TBD: doc_string on details of result matrix (and evolution from original version)

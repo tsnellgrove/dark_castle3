@@ -290,7 +290,6 @@ class Creature(ViewOnly):
 				active_gs.buffer(descript_dict[f"not_attackable_{src_creature.name}_{tgt_creature.name}"])
 			except:
 				active_gs.buffer("You consider attacking but then think better of it. There must be another path to victory.")
-#				active_gs.buffer(descript_dict['not_attackable_default'])
 			return
 		if (not src_obj in src_creature.feature_lst) and (not src_creature.chk_in_hand(src_obj)):
 			active_gs.buffer(f"You are not holding the {src_obj.full_name} in your hand.")
