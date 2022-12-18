@@ -310,15 +310,15 @@ Version 3.75 Goals
 		- DONE: comment each section of attack()
 		- DONE: refactor results
 		- DONE: create obj_category function
-		- INPROC: refactor display
+		- DONE: refactor display
 			- DONE: attack initiation display
 			- DONE: clean up comments
 			- DONE: refactor resolution_strt_str for weapon
-			- TBD: clean up comments
+			- DONE: clean up comments
 		- INPROC: fine tune attack display language
 			- DONE: if burt unarmed, dodge, not parry
 			- DONE: pro-noun for 'not_attackable_default'
-
+			- TBD: clean-up comments
 		- TBD: exit debug mode in cmd_exe (prep)
 	- TBD: update trigger & code for attack_hedgehog_warning
 	- TBD: doc_strings

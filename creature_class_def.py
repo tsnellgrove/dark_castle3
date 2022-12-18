@@ -284,11 +284,13 @@ class Creature(ViewOnly):
 		tgt_creature = self
 
 		# display error & return on command failures
+		# it is assumed (pronoun-wise) that only the player will attack in an unallowed fashion
 		if not tgt_creature.is_attackable:
 			try:
 				active_gs.buffer(descript_dict[f"not_attackable_{src_creature.name}_{tgt_creature.name}"])
 			except:
-				active_gs.buffer(descript_dict['not_attackable_default'])
+				active_gs.buffer("You consider attacking but then think better of it. There must be another path to victory.")
+#				active_gs.buffer(descript_dict['not_attackable_default'])
 			return
 		if (not src_obj in src_creature.feature_lst) and (not src_creature.chk_in_hand(src_obj)):
 			active_gs.buffer(f"You are not holding the {src_obj.full_name} in your hand.")
@@ -297,7 +299,7 @@ class Creature(ViewOnly):
 			active_gs.buffer(f"You can't attack with your {src_obj.full_name} while you're holding the {src_creature.get_hand_item().full_name}.")
 			return 
 		if src_creature == tgt_creature:
-			active_gs.buffer("A creature can't attack itself!")
+			active_gs.buffer("You can't attack yourself!")
 			return
 		
 		# determine tgt_obj for tgt_creature (src_obj provided in method arguements)

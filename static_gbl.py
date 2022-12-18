@@ -131,7 +131,7 @@ descript_dict = {
 
 
 		## attack result display ##
-		'not_attackable_default' : "consider attacking but then think better of it. There must be another path to victory.",
+#		'not_attackable_default' : "You consider attacking but then think better of it. There must be another path to victory.",
 		'attack_method_default_result' : "nimbly dodges the attack.",
 		'tgt_flee_dc' : "terrirfied and flees from the unprovoked attack.",
 		'tgt_death' : "slain by the blazing-fast strike!",
