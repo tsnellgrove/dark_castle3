@@ -397,11 +397,13 @@ class Creature(ViewOnly):
 		if (win_obj in src_creature.feature_lst) or (win_obj in tgt_creature.feature_lst):
 			resolution_strt_str = ""
 		elif win_obj.is_weapon():
-			weapon_wrd_count = len(win_obj.desc_lst) - 1
-			weapon_wrd_idx = random.randint(0, weapon_wrd_count)
-			weapon_verb = win_obj.desc_lst[weapon_wrd_idx][0]
-			weapon_adj_noun = win_obj.desc_lst[weapon_wrd_idx][1]
-			resolution_strt_str = f"The {win_obj.full_name} {weapon_verb} through the air with a {weapon_adj_noun}. "
+#			weapon_wrd_count = len(win_obj.desc_lst) - 1
+#			weapon_wrd_idx = random.randint(0, weapon_wrd_count)
+#			weapon_verb = win_obj.desc_lst[weapon_wrd_idx][0]
+#			weapon_adj_noun = win_obj.desc_lst[weapon_wrd_idx][1]
+			weapon_verb, weapon_adj = win_obj.desc_lst[random.randint(0, len(win_obj.desc_lst) - 1)]
+#			resolution_strt_str = f"The {win_obj.full_name} {weapon_verb} through the air with a {weapon_adj_noun}. "
+			resolution_strt_str = f"The {win_obj.full_name} {weapon_verb} through the air with a {weapon_adj}. "
 		else:
 			resolution_strt_str = f"The {win_obj.full_name} whizzes through the air. "			
 
