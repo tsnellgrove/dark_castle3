@@ -131,7 +131,11 @@ scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won', Fal
 axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
 
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
-attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd', [['attack', 'royal_hedgehog']], 3, 0)
+#attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd', [['attack', 'royal_hedgehog']], 3, 0)
+#attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd',
+#				[['attack', 'royal_hedgehog', 'shiny_sword'], ['attack', 'royal_hedgehog', 'grimy_axe']], 3, 0)
+attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd',
+				[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3, 0)
 eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','stale_biscuits']], 3, 0)
 
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],

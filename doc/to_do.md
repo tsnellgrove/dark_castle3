@@ -320,7 +320,7 @@ Version 3.75 Goals
 			- DONE: pro-noun for 'not_attackable_default'
 			- DONE: clean-up comments
 		- DONE: exit debug mode in cmd_exe (prep)
-	- TBD: update trigger & code for attack_hedgehog_warning
+	- DONE: update trigger & code for attack_hedgehog_warning
 	- TBD: doc_strings
 		- TBD: doc_string on details of result matrix (and evolution from original version)
 		- TBD: doc_string on attack display components
