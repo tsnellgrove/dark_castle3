@@ -321,6 +321,7 @@ Version 3.75 Goals
 			- DONE: clean-up comments
 		- DONE: exit debug mode in cmd_exe (prep)
 	- DONE: update trigger & code for attack_hedgehog_warning
+	- TBD: tune creature_class_def code for word-wrap
 	- TBD: doc_strings
 		- TBD: doc_string on details of result matrix (and evolution from original version)
 		- TBD: doc_string on attack display components
