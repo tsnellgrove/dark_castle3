@@ -321,8 +321,9 @@ Version 3.75 Goals
 			- DONE: clean-up comments
 		- DONE: exit debug mode in cmd_exe (prep)
 	- DONE: update trigger & code for attack_hedgehog_warning
-	- TBD: tune creature_class_def code for word-wrap
-	- TBD: doc_strings
+	- CANCEL: tune creature_class_def code for word-wrap (this is bigger than I thought)
+	- INPROC: doc_strings
+		- INPROC: doc_string edit of existing files
 		- TBD: doc_string on details of result matrix (and evolution from original version)
 		- TBD: doc_string on attack display components
 		- TBD: doc_string history of attack() as a hot mess and driver for burt as Creature class obj
@@ -380,6 +381,7 @@ Version 3.75 Goals
 	- TBD: create a centralized doc file
 	- TBD: reconsider showing Receptacle contents on look... maybe too much data? What does Zork do? Restrict to explicit examine??
 	- TBD: hunger & thirst become Creature conditions to examine??
+- TBD: learn how to use VS Code word wrap and other features
 
 
 ##########################

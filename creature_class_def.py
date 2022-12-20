@@ -17,18 +17,17 @@ def attack_obj_category(obj, creature):
 	else:
 		return 'item'
 
-
 ### classes
 class Creature(ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, state, hand_lst, bkpk_lst,
 		worn_lst, feature_lst, invis_lst, give_dict, is_attackable, attacked_dict):
 		super().__init__(name, full_name, root_name, descript_key, writing)
-		self._state = state # creature state; not yet in use (v3.75) - intended for state machine functionality & hunger / thirst
+		self._state = state # not in use (v3.75) - for state machine functionality, hunger & thirst
 		self._hand_lst = hand_lst # list of items in creature's hand; is typically only 1 item 
 		self._bkpk_lst = bkpk_lst # list of items in creature's backpack
 		self._worn_lst = worn_lst # list of items currently worn by the creature
-		self._feature_lst = feature_lst # visible obj associated w creature but not shown in i or l; used for traits like 'loyalty'; first obj in lst is used for unarmed attack 
-		self._invis_lst = invis_lst # list of invisible obj associated w creature; typically used for Modular Machines
+		self._feature_lst = feature_lst # not vis via i or l; e.g. 'loyalty'; 1st = unarmed attack 
+		self._invis_lst = invis_lst # invisible obj associated w creature; used for Modular Machines
 		self._give_dict = give_dict # dict of creature reactions to gifts
 		self._is_attackable = is_attackable # bool indicating weather Burt can attack the creature
 		self._attacked_dict = attacked_dict # dict of creature reactions to being attacked
@@ -465,16 +464,25 @@ class Creature(ViewOnly):
 	- attack() method [Creature class]:
 
 		Overview: 
+			*DO* doc_string edit of existing files
 			The attack() method is a bit more complex and is intended to enable combat between Burt and creatures. The intent in Dark Castle is for combat to be a purely logical exercise... so if you attack a Creature with the correct weapon you will always win. Burt's "weapon" is whatever he is holding in his hand. If Burt's hand is empty he attacks with his Fist. For a given Creature and burt_weapon, attack() generates a result_code - which has options like 'creature_flee', 'creature_death', and 'burt_death' - and a response_key - which is the descript_dict[] key to the attack's description. As, with the other Creature methods, it's easy to imagine attack() provoking a more complex response than these outcomes - but those are outside the scope of the method and should be implemented via a Modular Machine.
-			
-			'attack_burt' is an awkward 'hidden' verb that enables a creature to proactively attack Burt. Among other things, this work-around highlights that Burt should really be an object himself - rather than an amorphous set of attributes distributed across game state. But this will not be a minor undertaking - so for now, we have the attack_burt() method - which enables 'attack' to remain a 2word command without requiring a 'burt' object to exist. Code-wise, 'attack_burt' is identical to 'attack' with some minor text differences ("You charge..." vs. "You attempt to parry..."). In general, the idea is that when Burt is being attacked he is on the defensive and likely needs the right weapon just to parry.
+		
+		Implementation Detail:
+			*DO* doc_string on details of result matrix (and evolution from original version)
+			Order of operations = <attacker> => <custom> => <winner>
+			doc_string on attack display components
 
-	attack() nots: 
-	- order of operations = <attacker> => <custom> => <winner>
-			
-	- pronouns based on 3 possible cases:
-		src_creature == gs.hero
-		tgt_creature == gs.hero
-		gs.hero != src_creature && gs.hero != tgt_creature
+		Program Architecture:
+			src_creature == gs.hero
+			tgt_creature == gs.hero
+			gs.hero != src_creature && gs.hero != tgt_creature
+
+		Game Design:
+			*DO* attack() use of hand_inv elevates impact of hand inv; creatures form opinions
+			(also, hazzards of flouting convention)
+
+		Historic Note:
+			*DO* doc_string history of attack() as a hot mess and driver for burt as Creature class obj
+			'attack_burt' is an awkward 'hidden' verb that enables a creature to proactively attack Burt. Among other things, this work-around highlights that Burt should really be an object himself - rather than an amorphous set of attributes distributed across game state. But this will not be a minor undertaking - so for now, we have the attack_burt() method - which enables 'attack' to remain a 2word command without requiring a 'burt' object to exist. Code-wise, 'attack_burt' is identical to 'attack' with some minor text differences ("You charge..." vs. "You attempt to parry..."). In general, the idea is that when Burt is being attacked he is on the defensive and likely needs the right weapon just to parry.
 
 """
