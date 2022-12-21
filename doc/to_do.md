@@ -323,9 +323,9 @@ Version 3.75 Goals
 	- DONE: update trigger & code for attack_hedgehog_warning
 	- CANCEL: tune creature_class_def code for word-wrap (this is bigger than I thought)
 	- INPROC: doc_strings
-		- INPROC: doc_string edit of existing files
-		- TBD: doc_string on details of result matrix (and evolution from original version)
-		- TBD: doc_string on attack display components
+		- DONE: doc_string edit of existing files
+		- DONE: doc_string on details of result matrix (and evolution from original version)
+		- DONE: doc_string on attack display components
 		- TBD: doc_string history of attack() as a hot mess and driver for burt as Creature class obj
 		- TBD: attack() use of hand_inv elevates impact of hand inv; creatures form opinions
 - TBD: update get_hand_item() to return None if hand_list is empty

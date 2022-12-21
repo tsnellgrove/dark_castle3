@@ -464,13 +464,24 @@ class Creature(ViewOnly):
 	- attack() method [Creature class]:
 
 		Overview: 
-			*DO* doc_string edit of existing files
-			The attack() method is a bit more complex and is intended to enable combat between Burt and creatures. The intent in Dark Castle is for combat to be a purely logical exercise... so if you attack a Creature with the correct weapon you will always win. Burt's "weapon" is whatever he is holding in his hand. If Burt's hand is empty he attacks with his Fist. For a given Creature and burt_weapon, attack() generates a result_code - which has options like 'creature_flee', 'creature_death', and 'burt_death' - and a response_key - which is the descript_dict[] key to the attack's description. As, with the other Creature methods, it's easy to imagine attack() provoking a more complex response than these outcomes - but those are outside the scope of the method and should be implemented via a Modular Machine.
+			The attack() method is a bit more complex and is intended to enable combat between creatures. In Dark Castle, combat is a purely logical exercise. If you attack a Creature with the correct weapon at the correct time in the correct place, you will always win. Attack is a prepositional command in the form of 'Attack <creature> with <object>'. The attack object must match whatever the attacker is holding in their hand. If the attacker's hand is empty, then unarmed strikes are supported (but often not very effective). The results of an attack include the attacked creature dodging or fleeing and extend all the way up to or or the other creatures being slain. it's easy to imagine attack() provoking a more complex response than these outcomes - but those are outside the scope of the method and should be implemented via a Modular Machine.
 		
 		Implementation Detail:
-			*DO* doc_string on details of result matrix (and evolution from original version)
-			Order of operations = <attacker> => <custom> => <winner>
-			doc_string on attack display components
+			As verb methods go, attack() is fairly complex and perhaps it is over-engineered. The complexity comes from several sources.
+			
+			For one, it is a symetric method that can be used by any creature - not just by Burt. This means that Burt could attack a creature. Or a creature could attack Burt. Or possibly one creature could attack another without Burt even being in the room (Burt attacking Burt is not allowed and is handedled as a command error). This variety of possible combatants drives the need for a lot of case checking and pronoun tuning. It also forces the method to be rigorous about output... all game state changes must be performed first, then we check to see if Burt is even in the room, and if not we return without displaying any text (silent mode).
+
+			Another complexity driver is the variety of object types that Burt can attack with. Attack objects are categorized as 'weapon' (i.e. they are of class Weapon), 'unarmed' (i.e. they reside in a creature's feature_lst), or 'item' (everything else). Attack results can then varry based on the attacking creature, and the exact object or object category that each combatant is holding. It's a felixble system... but again, arguably over engineered. 
+
+			A final driver for complexity is the wealth of description that an attack() generates. Assuming that Burt is in the room to witness (or participate in) the proceedings, there are a total of four separately generated display strings for a given attack():
+				1) The attack initiation string - which states who is attacking with what and what the attacked creature attempts to do (i.e. parry or dodge).
+				2) Custom attack response - this is an auto-gen string which may or may not exist and is displayed if it does.
+				3) Attack Resolution First Clause - this describes the attack stroke of the winner of the combat round. For weapons, randomly chosen custom text is used that's specific to the weapon object.
+				4) Attack Resolution Second Clause - describes the results for the combat looser (which can varry from "easily dodges" to "is slain").
+			Again, quite possibly over-engineered - but hopefully enjoyable to read when combat does breat out!
+			
+			In the context of historic text adventure combat, I'm guess that DCv3 is simpler than Zork's D&D-based attack scheme but more complex than other Infocom games that came after it.
+
 
 		Program Architecture:
 			src_creature == gs.hero
