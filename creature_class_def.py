@@ -484,13 +484,18 @@ class Creature(ViewOnly):
 
 
 		Program Architecture:
-			src_creature == gs.hero
-			tgt_creature == gs.hero
-			gs.hero != src_creature && gs.hero != tgt_creature
+			The attack() method has the following sections:
+			1) Command Errors. This section detects command errors, displays error text, and then exits. This is the one part of the method that is *not* fully symetric. All errors are written with the premise that Burt is attacking - the assumption here is that if a designer is using attack() for a creature then it is there job to use it correctly.
+			2) Results. A list of possible result_keys is generated. This list is compared to the keys in the tgt_creature's attacked_dict (e.g. 'shiny_sword_burt_*') and the first hit is used to lookup the result_code value (e.g. 'tgt_death') with a default value used if no key hit occurs. Based on the result code, the attack results are carried out (e.g. in the case of 'tgt_death', the creature is removed from the game and the creature's inventory is droped on the floor of the room).
+			3) Silent mode check. We check to see if Burt is in the room; if not, we exit.
+			4) Display attack strings. Determine the win_obj and lose_creature and set pronouns appropriately (see Implementation Detail for more info).
 
 		Game Design:
-			*DO* attack() use of hand_inv elevates impact of hand inv; creatures form opinions
-			(also, hazzards of flouting convention)
+			It is said that one flouts convention at one's peril. If so, I am indeed courting doom with my approach to hand inventory. Inventory management in general is deemed to be a necessary evil of the Text Adventures genre... and to the best of my knowledge Dark Castle is unique in making the player manage an entire separate hand inventory on top of their inventory of carried items and worn garments.
+
+			My rational is that I am trying to make Dark Castle more populated than your typical Infocom adventure - and also more interactive. Being able to see what a creature is carying in their hand gives the player more information about them. And creatures in the game can react to Burt based on what *he* is carrying in his hand. Perhaps a store keeper will close up their shop if they see Burt approaching with a weapon. But on the other hand, if Burt is attcked and not carrying a weapon, he is much more likely to perish. The intent here is to create a tesnsion between being prepared in a perilous environment and adhering to the social contract of a community.
+
+			Time will tell whether any of these good intentions warrant yet more inventory management... but this is what I was aiming for.
 
 		Historic Note:
 			*DO* doc_string history of attack() as a hot mess and driver for burt as Creature class obj

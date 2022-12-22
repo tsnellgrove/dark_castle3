@@ -326,8 +326,8 @@ Version 3.75 Goals
 		- DONE: doc_string edit of existing files
 		- DONE: doc_string on details of result matrix (and evolution from original version)
 		- DONE: doc_string on attack display components
+		- DONE: attack() use of hand_inv elevates impact of hand inv; creatures form opinions
 		- TBD: doc_string history of attack() as a hot mess and driver for burt as Creature class obj
-		- TBD: attack() use of hand_inv elevates impact of hand inv; creatures form opinions
 - TBD: update get_hand_item() to return None if hand_list is empty
 - TBD: address 'first item in feature_lst is unarmed attack item' hack
 
