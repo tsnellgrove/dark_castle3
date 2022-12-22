@@ -322,16 +322,25 @@ Version 3.75 Goals
 		- DONE: exit debug mode in cmd_exe (prep)
 	- DONE: update trigger & code for attack_hedgehog_warning
 	- CANCEL: tune creature_class_def code for word-wrap (this is bigger than I thought)
-	- INPROC: doc_strings
+	- DONE: doc_strings
 		- DONE: doc_string edit of existing files
 		- DONE: doc_string on details of result matrix (and evolution from original version)
 		- DONE: doc_string on attack display components
 		- DONE: attack() use of hand_inv elevates impact of hand inv; creatures form opinions
-		- TBD: doc_string history of attack() as a hot mess and driver for burt as Creature class obj
+		- DONE: doc_string history of attack() as a hot mess and driver for burt as Creature class
+- DONE: address 'first item in feature_lst is unarmed attack item' hack (it's a hack but so be it)
+
+
+##########################
+### VERSION 3.76 START ###
+##########################
+
+Version 3.76 Goals
+- New Surface Class
+- New Chair Class
+- Text & UI updates
+
 - TBD: update get_hand_item() to return None if hand_list is empty
-- TBD: address 'first item in feature_lst is unarmed attack item' hack
-
-
 - TBD: create Surface class!! (was 'Shelf')
 	- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
 	- put initial shelf in Main Hall
@@ -385,10 +394,10 @@ Version 3.75 Goals
 
 
 ##########################
-### VERSION 3.76 START ###
+### VERSION 3.77 START ###
 ##########################
 
-Version 3.76 Goals
+Version 3.77 Goals
 - rename active_gs to gs
 - modularize remaining GameState class and declarations (???)
 - create a class for descriptions
@@ -450,10 +459,10 @@ Version 3.76 Goals
 
 
 ##########################
-### VERSION 3.77 START ###
+### VERSION 3.78 START ###
 ##########################
 
-Version 3.77 Goals
+Version 3.78 Goals
 - re-work app_main() flow with validate() module
 - refactor app_main() modules
 
@@ -503,18 +512,18 @@ Version 3.77 Goals
 
 
 ##########################
-### VERSION 3.78 START ###
-##########################
-
-Version 3.78 Goals
-- refactor remaining app_main chain: interp, pre_action, cmd_exe, post_action, auto_action, score (??), end (?)
-
-
-##########################
 ### VERSION 3.79 START ###
 ##########################
 
 Version 3.79 Goals
+- refactor remaining app_main chain: interp, pre_action, cmd_exe, post_action, auto_action, score (??), end (?)
+
+
+##########################
+### VERSION 3.80 START ###
+##########################
+
+Version 3.80 Goals
 - enable all verb methods for non-burt creatures
 
 - TBD: enable non-burt creature use of all verb methods 
