@@ -128,6 +128,9 @@ Version 3.76 Goals
 - Text & UI updates
 
 - TBD: update get_hand_item() to return None if hand_list is empty
+- Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
+	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
+	- e.g. article_plural(obj) => 'a Grimy Axe' or 'Water' or 'an Apple'
 - TBD: create Surface class!! (was 'Shelf')
 	- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
 	- put initial shelf in Main Hall
