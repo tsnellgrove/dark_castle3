@@ -131,6 +131,13 @@ Version 3.76 Goals
 - Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
 	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
 	- e.g. article_plural(obj) => 'a Grimy Axe' or 'Water' or 'an Apple'
+	- maybe plural_dict is a local dict in the Gramarian class?
+	- Or maybe a better class name is just Display (???)
+	- Division of labor: player text => commands == Interp; obj => player response == Output
+	- could put some recurring dispaly routines here (obj_lst => str_lst and such) ??
+	- Display could also hold buffer commands???
+	- Another possible class name == Output ???
+	- Leaning towards Output... this helps distinguish from all the verb-linked Disp methods
 - TBD: create Surface class!! (was 'Shelf')
 	- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
 	- put initial shelf in Main Hall
