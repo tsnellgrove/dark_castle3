@@ -36,6 +36,9 @@ class Invisible(object):
 	def is_portablecontainer(self):
 		return False
 
+	def is_surface(self):
+		return False
+
 	def is_creature(self):
 		return False
 

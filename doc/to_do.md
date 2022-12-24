@@ -127,6 +127,28 @@ Version 3.76 Goals
 - create Chair class
 - Text & UI updates
 
+- TBD: create Surface class!! (was 'Shelf')
+	- GOAL: similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
+		- DONE: create Surface class inheriting from Container in door_class_def
+		- DONE: is_surface() = True; is_container() = False (?); ViewOnly is_surface = False
+			- NOTE: decided not to make is_container) = False for class Surface
+		- N/A: update forbidden obj for Creature and Container to include Surface
+			- NOTE: not needed; just need to not make a PortableSurface class (see Room doc_str)
+		- DONE: write over-loading error methods for open(), close(), lock(), unlock()
+		- DONE: also need to over-load disp_cond ? Maybe a reason to make is_container() = False ?
+			FINDING: does not impact is_container ; just need to over-load
+		- TBD: on second thought, let's add Surface class to prohibited... can't hurt right?
+		- TBD: update put() to implement max_obj restriction
+		- TBD: update display prepositions to be 'in' or 'on' based on is_surface()
+		- TBD: update Interp to check for 'on' prep if is_surface(noun_obj)
+		- TBD: confirm 'put' still works for validate()
+	- TBD: put initial shelf in Main Hall
+		- TBD: instantiate shelf obj
+		- TBD: is_open and is_unlocked both = None; max_obj = 20
+		- TBD: testing!!
+	- TBD: implement Control Panel as Shelf !! (add control_panel to room after guard_goblin dies?)
+	- TBD: sort out how Creatures or prohibitted from having Creatures or Surfaces?
+	- TBD: doc_strings
 - TBD: update get_hand_item() to return None if hand_list is empty
 - Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
 	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
@@ -138,10 +160,6 @@ Version 3.76 Goals
 	- Display could also hold buffer commands???
 	- Another possible class name == Output ???
 	- Leaning towards Output... this helps distinguish from all the verb-linked Disp methods
-- TBD: create Surface class!! (was 'Shelf')
-	- similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
-	- put initial shelf in Main Hall
-	- implement Control Panel as Shelf !! (may need to add control_panel after guard_goblin dies)
 - TBD: create Chair class based on Surface
 	- TBD: sit() method (depends on 'on' prep)
 	- TBD: need to be able to determine which node Burt is in (i.e. the chair, not just the room); also need ot know room

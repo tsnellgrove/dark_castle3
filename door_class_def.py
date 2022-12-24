@@ -285,6 +285,44 @@ class PortableLiquidContainer(PortableContainer):
 		return super(PortableLiquidContainer, self).chk_content_prohibited(obj) or not obj.is_liquid()
 
 
+class Surface(Container):
+	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst, max_obj):
+		super().__init__(name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
+		self._max_obj = max_obj # maximum obj the surface can hold
+		"""A surface on which objects can be placed.
+		"""
+
+	# *** getters & setters ***
+	@property
+	def max_obj(self):
+		return self._max_obj
+
+	# *** simple methods ***
+	def is_surface(self):
+		return True
+
+	# *** display methods ***
+	def disp_cond(self, active_gs):
+		""" Displays object-specific conditions. Used in examine().
+		"""
+		if self.is_empty():
+			active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
+		return 
+
+	# *** verb methods ***
+	def open(self, active_gs):
+		active_gs.buffer(f"How do you propose to 'open' the {self.full_name}?")
+
+	def close(self, active_gs):
+		active_gs.buffer(f"How do you propose to 'close' the {self.full_name}?")
+
+	def lock(self, active_gs):
+		active_gs.buffer(f"How do you propose to 'lock' the {self.full_name}?")
+
+	def unlock(self, active_gs):
+		active_gs.buffer(f"How do you propose to 'unlock' the {self.full_name}?")
+
+
 """ *** Module Documentation ***
 
 	* Door class:
