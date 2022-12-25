@@ -242,15 +242,22 @@ class Container(Door):
 		active_gs.buff_cr()
 
 	def put(self, obj, active_gs):
-		""" Puts an Item in a Container.
+		""" Puts an Item in a Container or on a Surface.
 		"""
 		creature = active_gs.hero
 		if self.is_open == False:
 			active_gs.buffer(f"The {self.full_name} is closed.")
 			return
 		if self.chk_content_prohibited(obj):
-			active_gs.buffer(f"You can't put the {obj.full_name} in the {self.full_name}.")
+			if obj.is_surface():
+				loc_prep = 'on'
+			else:
+				loc_prep = 'in'
+			active_gs.buffer(f"You can't put the {obj.full_name} {loc_prep} the {self.full_name}.")
 			return 
+		if obj.is_surface() and len(obj.contain_lst) > obj.max_obj:
+			active_gs.buffer(f"There's no room on the {self.full_name} for another item.")
+			return
 		creature.hand_lst_remove(obj)
 		self.contain_lst_append(obj)
 		active_gs.buffer("Done")

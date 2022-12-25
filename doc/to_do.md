@@ -127,9 +127,9 @@ Version 3.76 Goals
 - create Chair class
 - Text & UI updates
 
-- TBD: create Surface class!! (was 'Shelf')
+- INPROC: create Surface class!! (was 'Shelf')
 	- GOAL: similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
-		- DONE: create Surface class inheriting from Container in door_class_def
+	- INPROC: create Surface class inheriting from Container in door_class_def
 		- DONE: is_surface() = True; is_container() = False (?); ViewOnly is_surface = False
 			- NOTE: decided not to make is_container) = False for class Surface
 		- N/A: update forbidden obj for Creature and Container to include Surface
@@ -138,16 +138,16 @@ Version 3.76 Goals
 		- DONE: also need to over-load disp_cond ? Maybe a reason to make is_container() = False ?
 			FINDING: does not impact is_container ; just need to over-load
 		- DONE: on second thought, let's add Surface class to prohibited... can't hurt right?
-		- TBD: update put() in Container to implement max_obj restriction
-		- TBD: update display prepositions to be 'in' or 'on' based on is_surface()
+		- DONE: update put() in Container to implement max_obj restriction
+		- DONE: update display prepositions to be 'in' or 'on' based on is_surface()
 		- TBD: update Interp to check for 'on' prep if is_surface(noun_obj)
 		- TBD: confirm 'put' still works for validate()
 	- TBD: put initial shelf in Main Hall
 		- TBD: instantiate shelf obj
 		- TBD: is_open and is_unlocked both = None; max_obj = 20
 		- TBD: testing!!
-	- TBD: implement Control Panel as Shelf !! (add control_panel to room after guard_goblin dies?)
-	- TBD: sort out how Creatures or prohibitted from having Creatures or Surfaces?
+	- TBD: implement Control Panel as Surface!! (add control_panel to room after guard_goblin dies?)
+	- TBD: sort out how Creatures are prohibitted from holding Creatures or Surfaces?
 	- TBD: doc_strings
 - TBD: update get_hand_item() to return None if hand_list is empty
 - Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
@@ -583,6 +583,7 @@ Version 6.x Goals
 	- obj on floor remove() => "Taken" (i.e. is synonym)
 - assume that item in hand will be used for activity (e.g. attack)
 - move() command ?
+- enable 'take all'
 - create 'jump' command with same response as Zork ('Whee!' I think?)
 - randomize description of Burt shown during 'inventory'
 
