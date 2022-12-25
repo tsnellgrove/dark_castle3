@@ -137,8 +137,8 @@ Version 3.76 Goals
 		- DONE: write over-loading error methods for open(), close(), lock(), unlock()
 		- DONE: also need to over-load disp_cond ? Maybe a reason to make is_container() = False ?
 			FINDING: does not impact is_container ; just need to over-load
-		- TBD: on second thought, let's add Surface class to prohibited... can't hurt right?
-		- TBD: update put() to implement max_obj restriction
+		- DONE: on second thought, let's add Surface class to prohibited... can't hurt right?
+		- TBD: update put() in Container to implement max_obj restriction
 		- TBD: update display prepositions to be 'in' or 'on' based on is_surface()
 		- TBD: update Interp to check for 'on' prep if is_surface(noun_obj)
 		- TBD: confirm 'put' still works for validate()

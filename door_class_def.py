@@ -202,7 +202,7 @@ class Container(Door):
 		self.contain_lst_remove(item)
 
 	def chk_content_prohibited(self, obj):
-		return obj.is_creature()
+		return obj.is_creature() or obj.is_surface()
 
 	# *** display methods ***
 	def has_contain(self, active_gs):
