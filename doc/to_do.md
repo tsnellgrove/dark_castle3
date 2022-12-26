@@ -142,10 +142,10 @@ Version 3.76 Goals
 		- DONE: update display prepositions to be 'in' or 'on' based on is_surface()
 		- DONE: update Interp to check for 'on' prep if is_surface(noun_obj)
 		- DONE: confirm 'put' still works for validate()
-	- TBD: put initial shelf in Main Hall
-		- TBD: instantiate shelf obj
-		- TBD: is_open and is_unlocked both = None; max_obj = 20
-		- TBD: testing!!
+	- DONE: put initial shelf in Main Hall
+		- DONE: instantiate shelf obj
+		- NONE: is_open and is_unlocked both = None; max_obj = 20
+		- NONE: testing!!
 		- TBD: clean up comments in Interp
 	- TBD: implement Control Panel as Surface!! (add control_panel to room after guard_goblin dies?)
 	- TBD: sort out how Creatures are prohibitted from holding Creatures or Surfaces?

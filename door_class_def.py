@@ -255,7 +255,7 @@ class Container(Door):
 				loc_prep = 'in'
 			active_gs.buffer(f"You can't put the {obj.full_name} {loc_prep} the {self.full_name}.")
 			return 
-		if obj.is_surface() and len(obj.contain_lst) > obj.max_obj:
+		if self.is_surface() and len(self.contain_lst) >= self.max_obj:
 			active_gs.buffer(f"There's no room on the {self.full_name} for another item.")
 			return
 		creature.hand_lst_remove(obj)

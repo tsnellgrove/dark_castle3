@@ -95,7 +95,10 @@ descript_dict = {
 
 		### container objects ###
 		'crystal_box' : "Atop an ornate pedestal to the left of the throne sits an intricate Crystal Box. The crystal panels are heavily leaded and skillfully carved such that you're unable to tell what may lie within. There is a silver keyhole on the front of the Crystal Box that glitters brilliantly - much like the shiny_sword in fact - in the otherwise dark and brooding room. The top of the Crystal Box is engraved with Calligraphy.",
-		
+
+		### surface objects ###
+		'wooden_shelf' : "The Wooden Shelf looks sturdy and reliable - like it would be a good, safe place to store your stuff.",
+
 		### PortableLiquidContainer objects ###
 		'glass_bottle' : "A clear glass bottle suitable for carrying a liquid. Alas, if only it was filled with ale...",
 		
