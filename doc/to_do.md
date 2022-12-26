@@ -140,12 +140,13 @@ Version 3.76 Goals
 		- DONE: on second thought, let's add Surface class to prohibited... can't hurt right?
 		- DONE: update put() in Container to implement max_obj restriction
 		- DONE: update display prepositions to be 'in' or 'on' based on is_surface()
-		- TBD: update Interp to check for 'on' prep if is_surface(noun_obj)
-		- TBD: confirm 'put' still works for validate()
+		- DONE: update Interp to check for 'on' prep if is_surface(noun_obj)
+		- DONE: confirm 'put' still works for validate()
 	- TBD: put initial shelf in Main Hall
 		- TBD: instantiate shelf obj
 		- TBD: is_open and is_unlocked both = None; max_obj = 20
 		- TBD: testing!!
+		- TBD: clean up comments in Interp
 	- TBD: implement Control Panel as Surface!! (add control_panel to room after guard_goblin dies?)
 	- TBD: sort out how Creatures are prohibitted from holding Creatures or Surfaces?
 	- TBD: doc_strings
@@ -332,6 +333,7 @@ Version 3.78 Goals
 
 Version 3.79 Goals
 - refactor remaining app_main chain: interp, pre_action, cmd_exe, post_action, auto_action, score (??), end (?)
+- Interp deep dive including better solution to prep checking ('put in' vs. 'put on')
 
 
 ##########################

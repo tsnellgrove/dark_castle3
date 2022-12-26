@@ -196,10 +196,20 @@ def interpreter(user_input, master_obj_lst):
 				word2 = user_input_lst[1]
 				help(active_gs, word2)
 				return 'help', [word2]
+#		elif word1 in ['put']:
+#				if ('in' not in user_input_lst) and ('on' not in user_input_lst):
+#						error_msg = "I don't see the word 'in' or 'on' in that sentence."
+#						return 'error', [error_msg]
 		elif word1 in ['put', 'show', 'give', 'attack']:
+#		elif word1 in ['show', 'give', 'attack']:
 				if word1 == 'put':
-						prep = 'in'
-				elif word1 in ['show', 'give']:
+						if 'in' in user_input_lst:
+								prep = 'in'
+						elif 'on' in user_input_lst:
+								prep = 'on'
+						else:
+								prep = 'in or on'
+				if word1 in ['show', 'give']:
 						prep = 'to'
 				elif word1 in ['attack']:
 						prep = 'with'
