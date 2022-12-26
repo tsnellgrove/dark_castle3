@@ -129,7 +129,7 @@ Version 3.76 Goals
 
 - INPROC: create Surface class!! (was 'Shelf')
 	- GOAL: similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
-	- INPROC: create Surface class inheriting from Container in door_class_def
+	- DONE: create Surface class inheriting from Container in door_class_def
 		- DONE: is_surface() = True; is_container() = False (?); ViewOnly is_surface = False
 			- NOTE: decided not to make is_container) = False for class Surface
 		- N/A: update forbidden obj for Creature and Container to include Surface
@@ -146,7 +146,7 @@ Version 3.76 Goals
 		- DONE: instantiate shelf obj
 		- NONE: is_open and is_unlocked both = None; max_obj = 20
 		- NONE: testing!!
-		- TBD: clean up comments in Interp
+		- DONE: clean up comments in Interp
 	- TBD: implement Control Panel as Surface!! (add control_panel to room after guard_goblin dies?)
 	- TBD: sort out how Creatures are prohibitted from holding Creatures or Surfaces?
 	- TBD: doc_strings
