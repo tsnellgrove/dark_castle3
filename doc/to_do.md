@@ -147,9 +147,24 @@ Version 3.76 Goals
 		- NONE: is_open and is_unlocked both = None; max_obj = 20
 		- NONE: testing!!
 		- DONE: clean up comments in Interp
-	- TBD: implement Control Panel as Surface!! (add control_panel to room after guard_goblin dies?)
+	- INPROC: implement Control Panel as Surface!!
+		- DONE: create SurfaceMach class in mach_class_def (import Surface class)
+		- DONE: instantiate control_panel based on SurfaceMach (import SurfaceMach class)
+		- DONE: remove switches from Antechamber feature_lst
+		- TBD: tune text
+		- TBD: add control_panel to room after guard_goblin dies? (so burt can't push button)
+		- TBD: clean up comments in mk_def_pkl
 	- TBD: sort out how Creatures are prohibitted from holding Creatures or Surfaces?
 	- TBD: doc_strings
+- IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
+	- Probably want to introduce this when I add size / weight / capacity to items and Recepticles??
+	- Door class = ViewOnly + OpenMixIn
+	- DoorLock class = ViewOnly + OpenMixIn + LockMixIn
+	- Box class = ViewOnly + ContainMixIn
+	- BoxPortable class = Item + ContainMixIn
+	- BoxLid class = ViewOnly + ContainMixIn + OpenMixIn
+	- BoxLidLock class = ViewOnly + ContainMixIn + OpenMixIn + LockMixIn
+	- Surface class = ViewOnly + ContainMixIn
 - TBD: update get_hand_item() to return None if hand_list is empty
 - Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
 	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
@@ -207,6 +222,7 @@ Version 3.76 Goals
 	- TBD: reconsider showing Receptacle contents on look... maybe too much data? What does Zork do? Restrict to explicit examine??
 	- TBD: hunger & thirst become Creature conditions to examine??
 - TBD: learn how to use VS Code word wrap and other features
+
 
 
 ##########################

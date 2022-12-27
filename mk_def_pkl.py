@@ -18,7 +18,7 @@ from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
 from result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 				AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult,
 				TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult)
-from mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer
+from mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, SurfaceMach
 from creature_class_def import Creature
 from gs_class_def import GameState
 from map_class_def import Map
@@ -146,9 +146,14 @@ broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 'post_act_swit
 				[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
 				[nothing_happens_result, throne_push_result, throne_pull_result]) # machine_state == broach_dispensed
 
-control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control_panel', None,
-				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever],
-				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result])
+# control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control_panel', None,
+#				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever],
+#				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result])
+# machine_state == lever_array_value
+
+control_panel = SurfaceMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, None, None, None, [left_lever, middle_lever, right_lever, red_button], 4,
+				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever], [correct_lever_array_cond, wrong_lever_array_cond],
+				[toggle_portcullis_result, portcullis_doesnt_open_result])
 				# machine_state == lever_array_value
 
 hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None, [['give', 'stale_biscuits', 'royal_hedgehog']],
@@ -228,7 +233,8 @@ main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tap
 				# note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
 
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
-				[alcove, left_lever, middle_lever, right_lever, red_button], [control_panel, guard_goblin], [])
+#				[alcove, left_lever, middle_lever, right_lever, red_button], [control_panel, guard_goblin], [])
+				[alcove], [control_panel, guard_goblin], [])
 
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
 				[throne, crystal_box], [broach_dispenser_mach])

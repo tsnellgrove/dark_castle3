@@ -8,6 +8,7 @@ import copy
 from item_class_def import Item
 from base_class_def import Invisible, ViewOnly
 from static_gbl import descript_dict
+from door_class_def import Surface
 
 ### classes
 class MachineMixIn(object):
@@ -116,6 +117,11 @@ class ViewOnlyMach(MachineMixIn, ViewOnly):
 class ItemMach(MachineMixIn, Item):
 		def __init__(self, name, full_name, root_name, descript_key, writing, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
+				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
+
+class SurfaceMach(MachineMixIn, Surface):
+		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst, max_obj, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
+				Surface.__init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst, max_obj)
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
 class Warning(Invisible):
