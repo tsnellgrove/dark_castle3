@@ -507,6 +507,8 @@ interpreter ideas:
 - TBD: no swearing in Dark Castle (with warning or else end of game)
 	- cursing => end of game (requires warning_mach and usniversal scope)
 - fix progromatic usage of "a" vs "an" (e.g. "There is a Iron Portcullis to the north")
+- unlock => 'unlock with' prep  command
+- default prep behavior = try command with obj in hand
 
 - TBD: Debug mode:
 	- TBD: Need a debug mode that eliminates 'try' from 2word and prep commands
