@@ -151,9 +151,9 @@ Version 3.76 Goals
 		- DONE: create SurfaceMach class in mach_class_def (import Surface class)
 		- DONE: instantiate control_panel based on SurfaceMach (import SurfaceMach class)
 		- DONE: remove switches from Antechamber feature_lst
-		- TBD: tune text
+		- DONE: tune text
 		- TBD: add control_panel to room after guard_goblin dies? (so burt can't push button)
-		- TBD: clean up comments in mk_def_pkl
+		- TBD: clean up comments in mk_def_pkl & static_gbl
 	- TBD: sort out how Creatures are prohibitted from holding Creatures or Surfaces?
 	- TBD: doc_strings
 - IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
