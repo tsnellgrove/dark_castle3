@@ -232,6 +232,18 @@ class InWorldCond(PassThruCond): # note: only works for obj in room.floor_lst
 				match_state = active_gs.map.chk_obj_exist(self.exist_obj)
 				return match_state == self.match_cond
 
+class InWorldStateCond(InWorldCond): # note: only works for obj in room.floor_lst
+		def __init__(self, name, exist_obj, match_cond):
+				super().__init__(name, exist_obj, match_cond)
+
+		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+				panel_dispensed = mach_state
+				if panel_dispensed == False:
+						match_state = active_gs.map.chk_obj_exist(self.exist_obj)
+						return match_state == self.match_cond
+				else:
+						return False
+
 class WornCond(PassThruCond):
 		def __init__(self, name, worn_garment, match_cond):
 				super().__init__(name)

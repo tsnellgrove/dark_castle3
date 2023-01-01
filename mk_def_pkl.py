@@ -14,7 +14,7 @@ from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from misc_class_def import Liquid
 from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
 				SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
-				StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond, InRoomCond)
+				StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond, InRoomCond, InWorldStateCond)
 from result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 				AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult,
 				TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult)
@@ -111,6 +111,7 @@ hedgehog_not_exist_cond = InWorldCond('hedgehog_not_exist_cond', 'royal_hedgehog
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, False)
 read_scroll_win_cond = PassThruCond('read_scroll_win_cond')
 axe_in_goblin_hand_cond = CreatureItemCond('axe_in_goblin_hand_cond', 'guard_goblin_temp', grimy_axe, False)
+goblin_exist_state_cond = InWorldStateCond('goblin_dead_state_cond', 'guard_goblin_temp', False)
 
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'death', True)
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
@@ -182,6 +183,8 @@ kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging
 
 re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None,
 				[axe_in_goblin_hand_cond, pass_thru_cond], [axe_in_goblin_hand_result, pass_result])
+
+dispense_panel_mach = InvisMach('dispense_panel_mach', False, 'auto_act', None, None, None, [], [])
 
 guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None,
 				None, [grimy_axe], [torn_note, dead_goblin], [big_medal], [chewed_fingernails, officiousness],
@@ -266,6 +269,7 @@ hedgehog_not_exist_cond.exist_obj = royal_hedgehog
 crystal_box.contain_lst = [kinging_scroll]
 axe_in_goblin_hand_cond.creature_obj = guard_goblin
 axe_in_goblin_hand_result.creature_obj = guard_goblin
+goblin_exist_state_cond.exist_obj = guard_goblin
 
 ### active_gs is the central store of game info ###
 active_gs = GameState(

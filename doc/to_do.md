@@ -152,7 +152,12 @@ Version 3.76 Goals
 		- DONE: instantiate control_panel based on SurfaceMach (import SurfaceMach class)
 		- DONE: remove switches from Antechamber feature_lst
 		- DONE: tune text
-		- TBD: add control_panel to room after guard_goblin dies? (so burt can't push button)
+		- INPROC: add control_panel to room after guard_goblin dies? (so burt can't push button)
+			- DONE: instantiate dispense_panel_mach() based on class InvisMach
+			- DONE: create InWorldStateCond class
+			- DONE: instantiate goblin_exist_cond() based on InWorldStateCond
+			- TBD: dispense_panel_result()
+			- TBD: test
 		- TBD: clean up comments in mk_def_pkl & static_gbl
 	- TBD: sort out how Creatures are prohibitted from holding Creatures or Surfaces?
 	- TBD: doc_strings
@@ -567,6 +572,7 @@ Version 6.x Goals
 - Skedaddle
 - Pumpernickel
 - rolly-polly (hedgehog)
+- Coddiwomple
 
 
 *** possible new rooms ***
