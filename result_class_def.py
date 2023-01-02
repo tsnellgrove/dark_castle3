@@ -85,6 +85,10 @@ class AddObjToRoomResult(BufferOnlyResult):
 		def room_item(self):
 				return self._room_item
 
+		@room_item.setter
+		def room_item(self, new_val):
+				self._room_item = new_val
+
 		def result_exe(self, active_gs, mach_state):
 				try:
 						active_gs.buffer(descript_dict[self.name])

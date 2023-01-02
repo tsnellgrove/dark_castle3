@@ -133,6 +133,7 @@ scroll_no_hedgehog_result = BufferOnlyResult('scroll_no_hedgehog_result', False)
 scroll_crown_not_worn_result = BufferOnlyResult('scroll_crown_not_worn_result', False)
 scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won', False)
 axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
+dispense_panel_result = AddObjToRoomResult('dispense_panel_result', 'temp_control_panel', False)
 
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
 attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd',
@@ -184,7 +185,7 @@ kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging
 re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None,
 				[axe_in_goblin_hand_cond, pass_thru_cond], [axe_in_goblin_hand_result, pass_result])
 
-dispense_panel_mach = InvisMach('dispense_panel_mach', False, 'auto_act', None, None, None, [], [])
+dispense_panel_mach = InvisMach('dispense_panel_mach', False, 'auto_act', None, None, None, [goblin_exist_state_cond, pass_thru_cond], [dispense_panel_result, pass_result])
 
 guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None,
 				None, [grimy_axe], [torn_note, dead_goblin], [big_medal], [chewed_fingernails, officiousness],
@@ -237,7 +238,7 @@ main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tap
 
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
 #				[alcove, left_lever, middle_lever, right_lever, red_button], [control_panel, guard_goblin], [])
-				[alcove], [control_panel, guard_goblin], [])
+				[alcove], [guard_goblin], [dispense_panel_mach])
 
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
 				[throne, crystal_box], [broach_dispenser_mach])
@@ -270,6 +271,7 @@ crystal_box.contain_lst = [kinging_scroll]
 axe_in_goblin_hand_cond.creature_obj = guard_goblin
 axe_in_goblin_hand_result.creature_obj = guard_goblin
 goblin_exist_state_cond.exist_obj = guard_goblin
+dispense_panel_result.room_item = control_panel
 
 ### active_gs is the central store of game info ###
 active_gs = GameState(

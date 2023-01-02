@@ -238,8 +238,10 @@ class InWorldStateCond(InWorldCond): # note: only works for obj in room.floor_ls
 
 		def cond_check(self, active_gs, mach_state, cond_swicth_lst):
 				panel_dispensed = mach_state
+#				print(f"panel_dispensed = {panel_dispensed}")
 				if panel_dispensed == False:
 						match_state = active_gs.map.chk_obj_exist(self.exist_obj)
+#						print(f"match_state = {match_state}")
 						return match_state == self.match_cond
 				else:
 						return False

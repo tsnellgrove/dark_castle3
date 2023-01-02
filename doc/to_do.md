@@ -152,13 +152,16 @@ Version 3.76 Goals
 		- DONE: instantiate control_panel based on SurfaceMach (import SurfaceMach class)
 		- DONE: remove switches from Antechamber feature_lst
 		- DONE: tune text
-		- INPROC: add control_panel to room after guard_goblin dies? (so burt can't push button)
-			- DONE: instantiate dispense_panel_mach() based on class InvisMach
+		- DONE: add control_panel to room after guard_goblin dies? (so burt can't push button)
+			- DONE: instantiate dispense_panel_mach based on class InvisMach
 			- DONE: create InWorldStateCond class
 			- DONE: instantiate goblin_exist_cond() based on InWorldStateCond
-			- TBD: dispense_panel_result()
-			- TBD: test
-		- TBD: clean up comments in mk_def_pkl & static_gbl
+			- DONE: instantiate dispense_panel_result based on AddObjToRoomResult
+			- DONE: add cond & result to mach; add mach to room (remove control_panel from room)
+			- DONE: test
+			- DONE: update text
+		- TBD: update result class to also update descriptions of Antechamber and Alcove ???
+		- TBD: clean up comments in mk_def_pkl, cond_class_def, & static_gbl
 	- TBD: sort out how Creatures are prohibitted from holding Creatures or Surfaces?
 	- TBD: doc_strings
 - IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
@@ -382,6 +385,8 @@ Version 3.81 Goals
 
 - TBD: Machine coding clean-up
 	- TBD: Machine 2.0 improvement ideas:
+		- BaseCond => always check state
+		- BaseResult => always do a buff_try()
 		- Can we create a general purpose Dispenser machine - for use with Crown and Broach?
 		- Do we really need to test for goblin in antechamber??? (will the goblin ever move)
 		- Have simple, single-test / single-action 'Primative' Conditions and Results: prim_cond and prim_result
