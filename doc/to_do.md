@@ -160,7 +160,7 @@ Version 3.76 Goals
 			- DONE: add cond & result to mach; add mach to room (remove control_panel from room)
 			- DONE: test
 			- DONE: update text
-		- TBD: update result class to also update descriptions of Antechamber and Alcove ???
+		- DONE: create a new result class to also update descriptions of Antechamber
 		- TBD: clean up comments in mk_def_pkl, cond_class_def, & static_gbl
 	- TBD: sort out how Creatures are prohibitted from holding Creatures or Surfaces?
 	- TBD: doc_strings

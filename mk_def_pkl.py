@@ -17,7 +17,7 @@ from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
 				StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond, InRoomCond, InWorldStateCond)
 from result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 				AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult,
-				TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult)
+				TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
 from mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, SurfaceMach
 from creature_class_def import Creature
 from gs_class_def import GameState
@@ -133,7 +133,8 @@ scroll_no_hedgehog_result = BufferOnlyResult('scroll_no_hedgehog_result', False)
 scroll_crown_not_worn_result = BufferOnlyResult('scroll_crown_not_worn_result', False)
 scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won', False)
 axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
-dispense_panel_result = AddObjToRoomResult('dispense_panel_result', 'temp_control_panel', False)
+#dispense_panel_result = AddObjToRoomResult('dispense_panel_result', 'temp_control_panel', False)
+dispense_panel_result = AddObjToRoomAndDescriptResult('dispense_panel_result', 'temp_control_panel', False)
 
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
 attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd',

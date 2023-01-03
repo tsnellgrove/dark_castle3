@@ -99,6 +99,36 @@ class AddObjToRoomResult(BufferOnlyResult):
 				mach_state = True
 				return mach_state, self.cmd_override
 
+class AddObjToRoomAndDescriptResult(BufferOnlyResult):
+		def __init__(self, name, room_item, cmd_override):
+				super().__init__(name, cmd_override)
+				self._room_item = room_item # item to be added to floor_lst
+
+		@property
+		def room_item(self):
+				return self._room_item
+
+		@room_item.setter
+		def room_item(self, new_val):
+				self._room_item = new_val
+
+		def result_exe(self, active_gs, mach_state):
+				try:
+						active_gs.buffer(descript_dict[self.name])
+				except:
+						pass
+				room_obj = active_gs.get_room()
+				room_obj.floor_lst_append(self.room_item)
+
+				new_descript_key = f"{room_obj.name}_{self.name}"
+				if new_descript_key in descript_dict:
+					room_obj.descript_key = new_descript_key
+
+				mach_state = True
+				return mach_state, self.cmd_override
+
+
+
 class DoorToggleResult(BufferOnlyResult):
 		def __init__(self, name, door_obj, cmd_override):
 				super().__init__(name, cmd_override)
