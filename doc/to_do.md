@@ -147,7 +147,7 @@ Version 3.76 Goals
 		- NONE: is_open and is_unlocked both = None; max_obj = 20
 		- NONE: testing!!
 		- DONE: clean up comments in Interp
-	- INPROC: implement Control Panel as Surface!!
+	- DONE: implement Control Panel as Surface!!
 		- DONE: create SurfaceMach class in mach_class_def (import Surface class)
 		- DONE: instantiate control_panel based on SurfaceMach (import SurfaceMach class)
 		- DONE: remove switches from Antechamber feature_lst
@@ -161,7 +161,7 @@ Version 3.76 Goals
 			- DONE: test
 			- DONE: update text
 		- DONE: create a new result class to also update descriptions of Antechamber
-		- TBD: clean up comments in mk_def_pkl, cond_class_def, & static_gbl
+		- DONE: clean up comments in mk_def_pkl, cond_class_def, & static_gbl
 	- TBD: sort out how Creatures are prohibitted from holding Creatures or Surfaces?
 	- TBD: doc_strings
 - IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???

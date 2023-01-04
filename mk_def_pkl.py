@@ -133,7 +133,6 @@ scroll_no_hedgehog_result = BufferOnlyResult('scroll_no_hedgehog_result', False)
 scroll_crown_not_worn_result = BufferOnlyResult('scroll_crown_not_worn_result', False)
 scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won', False)
 axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
-#dispense_panel_result = AddObjToRoomResult('dispense_panel_result', 'temp_control_panel', False)
 dispense_panel_result = AddObjToRoomAndDescriptResult('dispense_panel_result', 'temp_control_panel', False)
 
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
@@ -148,11 +147,6 @@ entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None,
 broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 'post_act_switch', throne, ['pushed', 'pulled'],
 				[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
 				[nothing_happens_result, throne_push_result, throne_pull_result]) # machine_state == broach_dispensed
-
-# control_panel = ViewOnlyMach('control_panel', 'Control Panel', 'panel', 'control_panel', None,
-#				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever],
-#				[correct_lever_array_cond, wrong_lever_array_cond], [toggle_portcullis_result, portcullis_doesnt_open_result])
-# machine_state == lever_array_value
 
 control_panel = SurfaceMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, None, None, None, [left_lever, middle_lever, right_lever, red_button], 4,
 				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever], [correct_lever_array_cond, wrong_lever_array_cond],
