@@ -162,8 +162,11 @@ Version 3.76 Goals
 			- DONE: update text
 		- DONE: create a new result class to also update descriptions of Antechamber
 		- DONE: clean up comments in mk_def_pkl, cond_class_def, & static_gbl
-	- TBD: sort out how Creatures are prohibitted from holding Creatures or Surfaces?
+	- DONE: sort out how Creatures are prohibitted from holding Creatures or Surfaces?
+		- DONE: extended custom take() error to Surface class
 	- TBD: doc_strings
+- IDEA: extend verb errors to ViewOnly for custom responses
+	- TBD: incorporate into validate() routine as errors
 - IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
 	- Probably want to introduce this when I add size / weight / capacity to items and Recepticles??
 	- Door class = ViewOnly + OpenMixIn

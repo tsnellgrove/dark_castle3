@@ -317,17 +317,27 @@ class Surface(Container):
 		return 
 
 	# *** verb methods ***
+	def take(self, active_gs):
+		""" Provides a custom error if the player attempts to take() an object of Surface class.
+		"""
+		active_gs.buffer(f"What kind of person tries to take a {self.full_name}?")
+		return
+
 	def open(self, active_gs):
 		active_gs.buffer(f"How do you propose to 'open' the {self.full_name}?")
+		return
 
 	def close(self, active_gs):
 		active_gs.buffer(f"How do you propose to 'close' the {self.full_name}?")
+		return
 
 	def lock(self, active_gs):
 		active_gs.buffer(f"How do you propose to 'lock' the {self.full_name}?")
+		return
 
 	def unlock(self, active_gs):
 		active_gs.buffer(f"How do you propose to 'unlock' the {self.full_name}?")
+		return
 
 
 """ *** Module Documentation ***
