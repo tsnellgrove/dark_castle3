@@ -403,4 +403,27 @@ class Surface(Container):
 		Historic Note:
 			put() was the very first preposition-based command in DCv3. After ages of two-word commands it very exciting to be able to type 'put the rusty key in the crystal box' and have a working result!
 
+
+	* Surface class:
+
+		Overview:
+			Surface was the first entirely new class created during the refactoring process. It provides a base class for many common object types like shelves, tables, chairs, and beds. 
+
+		Implementation Detail:
+			Surface became the first class to have a capacity limit (max_obj). I implemented this in part because I didn't want Burt putting additional objects on top of the control_panel (which, in my mind, I envision as sticking out from the wall at a 45 degree angle).
+
+			Surface also highlighted an interpreter limitation I hadn't appreciated earlier. Up until now, a given prepositional verb has always had a single correct preposition (e.g. "attack" => "with", "show" => "to", "give" => "to", "put" => "in"). But, with the advent of Surface, put can now have 2 different valid prepositions (i.e. "put" => "in" for Container and "put" => "on" for Surface). This wreaked havoc with the aging interpreter code (there's a reason I'm refactoring interp.py last). I managed to implement a work-around but the larger my object and verb method catalog gets, the more glaring the interpreter limitations become.
+		
+		Program Architecture:
+			In a way, it's odd that between Door, Container, and Surface, Surface came last. Functionally, Container = Door + Surface. By which I mean, the Door class provides the ability to open, close, lock, and unlock. And the Surface class provides the ability to contain items. And Container uses all of the above.
+
+			As a result, I actually have to override the open(), close(), lock(), and unlock() methods for Surface (which, having been written last, currently inherits from Container). This is clearly not an ideal architecture. An alternative would be to rework the method order, and have Door and Surface be independent classes with Container recieving dual inheritance from both.
+
+			However, the more I think about the problem, the more I think it is well suited for a MixIn approach. I could have OpenMixIn, LockMixIn, and ContainMixIn and compose classes from them (i.e. DoorLockable inherits from ViewOnly + OpenMixIn + LockMixIn, Surface inherits from ViewOnly + ContainMixIn, PortableNoLockContainer inherits from Item + OpenMixIn + ContainMixIn, etc..). 
+
+			I'm going to sit on the MixIn idea and let it percolate for a little while - as it will be a lot of work to re-factor Door, Container, and Surface (again!) - but it has a lot of attractions. Among others, it provides a clear extensibility for future preposition concepts such as UnderMixIn and BehindMixIn. Watch this space! ;-D
+
+		Historic Note:
+			My initial reason for creating the Surface class was that control_panel was previously an annoying hack. control_panel itself was of ViewOnlyMach class. This was fine but what to do with left_lever, middle_lever, right_lever, and red_button? The work-around was to mention them explicitly in the control_panel description but then stuff them in antechamber.feature_lst. This always irked me... and the more consistently behaved the Container class became the more unacceptable this work-around felt. One day I started thinking that control_panel should just be a container... but with no lid - and voila - the insight that a Surface class was needed arrived!
+
 """

@@ -164,7 +164,12 @@ Version 3.76 Goals
 		- DONE: clean up comments in mk_def_pkl, cond_class_def, & static_gbl
 	- DONE: sort out how Creatures are prohibitted from holding Creatures or Surfaces?
 		- DONE: extended custom take() error to Surface class
-	- TBD: doc_strings
+	- DONE: doc_strings
+		- DONE: Overview
+		- DONE: implementation detail
+		- DONE: program architecture
+		- DONE: historic note
+
 - IDEA: extend verb errors to ViewOnly for custom responses
 	- TBD: incorporate into validate() routine as errors
 - IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
