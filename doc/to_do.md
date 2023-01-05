@@ -185,6 +185,8 @@ Version 3.76 Goals
 	- names like 'cavity' and 'nook' to describe negative space??
 	- would need to deal with the wording 'look under' and 'look behind'
 - IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
+	- verb synonuyms linked to class / class method?
+	- perhaps additional, optional cusotm verb synonyms as an obj attribute?
 - TBD: update get_hand_item() to return None if hand_list is empty
 - Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
 	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
