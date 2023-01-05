@@ -176,6 +176,10 @@ Version 3.76 Goals
 	- BoxLid class = ViewOnly + ContainMixIn + OpenMixIn
 	- BoxLidLock class = ViewOnly + ContainMixIn + OpenMixIn + LockMixIn
 	- Surface class = ViewOnly + ContainMixIn
+	- Could also have UnderMixIn and BehindMixIn
+	- names like 'cavity' and 'nook' to describe negative space??
+	- would need to deal with the wording 'look under' and 'look behind'
+- IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
 - TBD: update get_hand_item() to return None if hand_list is empty
 - Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
 	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
