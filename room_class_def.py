@@ -52,8 +52,9 @@ class Room(ViewOnly):
 		return_lst = return_lst + node1_only_lst
 		for obj in self.floor_lst:
 			return_lst += obj.get_vis_contain_lst(active_gs)
-		return_lst = return_lst + self.floor_lst
-		return return_lst
+#		return_lst = return_lst + self.floor_lst
+#		return return_lst
+		return return_lst + self.floor_lst
 
 	def chk_wrt_is_vis(self, writing, active_gs):
 		""" Evaluates whether the passed writing is visible within the methed-calling object.

@@ -127,7 +127,7 @@ Version 3.76 Goals
 - create Chair class
 - Text & UI updates
 
-- INPROC: create Surface class!! (was 'Shelf')
+- DONE: create Surface class!! (was 'Shelf')
 	- GOAL: similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
 	- DONE: create Surface class inheriting from Container in door_class_def
 		- DONE: is_surface() = True; is_container() = False (?); ViewOnly is_surface = False
@@ -170,8 +170,30 @@ Version 3.76 Goals
 		- DONE: program architecture
 		- DONE: historic note
 
-- IDEA: extend verb errors to ViewOnly for custom responses
-	- TBD: incorporate into validate() routine as errors
+- TBD: create Chair class which inherits from Surface
+	- TBD: Chair requirements
+		- REQ: basically, Chair is a surface that can hold a crature
+			- REQ: will need to update prohibited_obj
+		- REQ: by default, chair.max_item = 1
+		- REQ: sit() method ('in' or 'on' prep)
+		- REQ: determine which node Burt is in (i.e. the chair, not just the room)
+			- REQ: having determined node using Creature method, get scope from that node
+				- REQ: should all obj have a 'determine node above' ablilty? Just Creature?
+			- REQ; also need to know room
+			- REQ: burt can 'see' the room; but only interact (including 'x') w items in 'i' / chair
+			- REQ: if obj vis but out of reach: "You'll need to stand up to attempt that"
+		- REQ: Also need to update the "find burt" method in .map to find him in a chair
+			- REQ: would be nice if searched-for obj had a method to define where to look for it
+		- REQ: look shows room with 'sitting in chair' condition
+		- CANCEL: vis_lst = chair.vis_lst + room.name
+		REQ: also need a stand() method
+		REQ: should provide auto-gen text as well
+	- TBD: create Chair class
+	- TBD: Throne
+		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
+		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
+	- TBD: maybe a Chair or Bed in the Main Hall?
+
 - IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
 	- Probably want to introduce this when I add size / weight / capacity to items and Recepticles??
 	- Door class = ViewOnly + OpenMixIn
@@ -184,10 +206,15 @@ Version 3.76 Goals
 	- Could also have UnderMixIn and BehindMixIn
 	- names like 'cavity' and 'nook' to describe negative space??
 	- would need to deal with the wording 'look under' and 'look behind'
+
+- IDEA: extend verb errors to ViewOnly for custom responses
+	- TBD: incorporate into validate() routine as errors
+- TBD: update get_hand_item() to return None if hand_list is empty
+
 - IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
 	- verb synonuyms linked to class / class method?
 	- perhaps additional, optional cusotm verb synonyms as an obj attribute?
-- TBD: update get_hand_item() to return None if hand_list is empty
+
 - Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
 	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
 	- e.g. article_plural(obj) => 'a Grimy Axe' or 'Water' or 'an Apple'
@@ -198,22 +225,7 @@ Version 3.76 Goals
 	- Display could also hold buffer commands???
 	- Another possible class name == Output ???
 	- Leaning towards Output... this helps distinguish from all the verb-linked Disp methods
-- TBD: create Chair class based on Surface
-	- TBD: sit() method (depends on 'on' prep)
-	- TBD: need to be able to determine which node Burt is in (i.e. the chair, not just the room); also need ot know room
-	- TBD: look shows room with 'sitting in chair' condition
-	- TBD: can only examine / take other items in the chair (burt's own inventory)
-	- TBD: most other methods just generate "you'll have to stand up to do that"
-	- TBD: vis_lst = chair.vis_lst + room.name
-	- TBD: perhaps create 'sit' and 'stand' methods for throne? 
-		- IDEA:Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
-		- IDEA: would be a bit tricky... interaction with rest of room would be inhibitted while sitting?
-		- IDEA: could possibly have sit be very brief with auto stand since it's not comfortable (not very satisfying) ???
-		- default sit = on floor ('criss-cross-apple-sauce')
-		- full implementation = 'sit on'
-		- for most verbs, sit scope = self (i.e. creature_scope)
-		- for examine (?), sit scope = room_scope
-	- TBD: maybe a chair or cot in the entrance?
+
 - TBD: Description updates:
 	- TBD: hedgehog updates
 		- describe as "stallwart"
@@ -223,6 +235,7 @@ Version 3.76 Goals
 	- TBD: Updatate the trademark on the stale_biscuits... 
 		- perhaps the biscuits say "Nana's" - or better yet, have a sword-and-key emblam on them?
 		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
+
 - TBD: text UI updates:
 	- TBD: change backpack and worn lists to include 'a' and 'an'
 		- IDEA: convert plurals to singulars for this???
@@ -238,6 +251,7 @@ Version 3.76 Goals
 		- TBD: can burt know about node 3 items he hasn't 'seen' in this game?
 		- TBD: play through Zork kitchen to test out
 	- TBD: glass_bottle to jug_from_enchanter
+
 - TBD: misc updates:
 	- TBD: make backpack a true container???
 	- TBD: create a centralized doc file
