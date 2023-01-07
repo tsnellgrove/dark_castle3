@@ -196,8 +196,8 @@ def interpreter(user_input, master_obj_lst):
 				word2 = user_input_lst[1]
 				help(active_gs, word2)
 				return 'help', [word2]
-		elif word1 in ['put', 'show', 'give', 'attack']:
-				if word1 == 'put':
+		elif word1 in ['put', 'show', 'give', 'attack', 'sit']:
+				if word1 in ['put', 'sit']:
 						if 'in' in user_input_lst:
 								prep = 'in'
 						elif 'on' in user_input_lst:

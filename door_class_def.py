@@ -339,6 +339,48 @@ class Surface(Container):
 		active_gs.buffer(f"How do you propose to 'unlock' the {self.full_name}?")
 		return
 
+class Seat(Surface):
+	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst, max_obj):
+		super().__init__(name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst, max_obj)
+		"""A seat on which a Creature can sit.
+		"""
+
+	# *** simple methods ***
+	def is_seat(self):
+		return True
+
+	# *** scope methods ***
+	def chk_content_prohibited(self, obj):
+		return obj.is_surface()
+
+	# *** verb methods ***
+	def sit(self, active_gs, creature = None):
+		""" Sits a creature in a Seat
+		"""
+		# destermine creature
+		if creature is None:
+			creature = active_gs.hero
+
+		if not creature.is_creature():
+			active_gs.buffer(f"The {creature.full_name} can't sit on the {self.full_name}!")
+			return
+		if self.is_surface() and len(self.contain_lst) >= self.max_obj:
+			active_gs.buffer(f"There's no room on the {self.full_name} to sit.")
+			return
+
+		room = active_gs.map.get_obj_room(creature)
+		room.floor_lst_remove(creature)
+		self.contain_lst_append(creature)
+
+		# if hero_creature not in current room, exit with no display
+		if room != active_gs.get_room():
+			return 
+
+		active_gs.buffer("Seated")
+		if creature == active_gs.hero:
+			active_gs.buff_try_key(f"{creature.name}_sit_{self.name}")
+		return
+
 
 """ *** Module Documentation ***
 

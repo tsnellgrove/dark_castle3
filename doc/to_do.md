@@ -170,29 +170,44 @@ Version 3.76 Goals
 		- DONE: program architecture
 		- DONE: historic note
 
-- TBD: create Chair class which inherits from Surface
-	- TBD: Chair requirements
-		- REQ: basically, Chair is a surface that can hold a crature
+- TBD: create Seat class which inherits from Surface
+	- DONE: Seat requirements
+		- REQ: basically, Seat is a surface that can hold a creature
 			- REQ: will need to update prohibited_obj
-		- REQ: by default, chair.max_item = 1
+		- REQ: by default, seat.max_item = 1
 		- REQ: sit() method ('in' or 'on' prep)
-		- REQ: determine which node Burt is in (i.e. the chair, not just the room)
+		- REQ: determine which node Burt is in (i.e. the seat, not just the room)
 			- REQ: having determined node using Creature method, get scope from that node
 				- REQ: should all obj have a 'determine node above' ablilty? Just Creature?
 			- REQ; also need to know room
-			- REQ: burt can 'see' the room; but only interact (including 'x') w items in 'i' / chair
+			- REQ: burt can 'see' the room; but only interact (including 'x') w items in 'i' / seat
 			- REQ: if obj vis but out of reach: "You'll need to stand up to attempt that"
-		- REQ: Also need to update the "find burt" method in .map to find him in a chair
+		- REQ: Also need to update the "find burt" method in .map to find him in a seat
 			- REQ: would be nice if searched-for obj had a method to define where to look for it
-		- REQ: look shows room with 'sitting in chair' condition
-		- CANCEL: vis_lst = chair.vis_lst + room.name
+		- REQ: look shows room with 'sitting in seat' condition
+		- REQ: seated should be a creature condition
+		- CANCEL: vis_lst = seat.vis_lst + room.name
 		REQ: also need a stand() method
 		REQ: should provide auto-gen text as well
-	- TBD: create Chair class
+	- INPROC: create Seat class
+		- DONE: define Seat class
+		- DONE: create sit() method
+		- DONE: add auto-gen buff_try for sit() (similar to drink) - but only for burt
+		- IDEA: stand should be a Creature method
+			- IDEA: don't need seat info, just room; error on in floor_lst already
+		- TBD: create stand() method
+		- TBD: update "find burt" method in active_gs.map
+		- TBD: test sit and stand with burt
+		- TBD: address scope issues
+		- TBD: address 'look' issues
+		- TBD: address 'i' issues (seated in Seat.full_name condition)
+		- TBD: test with test_frog
+		- TBD: tune pro-nouns
 	- TBD: Throne
 		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
 		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
-	- TBD: maybe a Chair or Bed in the Main Hall?
+			- IDEA: add auto_gen description to over-ride (like messy_handwriting)
+	- TBD: maybe a Seat or Bed in the Main Hall?
 
 - IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
 	- Probably want to introduce this when I add size / weight / capacity to items and Recepticles??
@@ -395,6 +410,9 @@ Version 3.79 Goals
 Version 3.80 Goals
 - enable all verb methods for non-burt creatures
 
+- IDEA: errors are only for burt
+- IDEA: auto-gen descriptions (e.g. drink, eat, wear, sit) are only for burt
+- TBD: doc_string on 'semi-symetric' methods
 - TBD: enable non-burt creature use of all verb methods 
 - TBD: how should creature be passed to Conditions & Results?
 - TBD: how to deal with error messages for non-burt creatures (e.g. test_frog walks into door)

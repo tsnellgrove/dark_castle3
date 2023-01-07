@@ -51,6 +51,9 @@ class Invisible(object):
 	def is_garment(self):
 		return False
 
+	def is_seat(self):
+		return False
+
 	def get_title_str(self):
 		return None
 
