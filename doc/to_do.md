@@ -195,8 +195,9 @@ Version 3.76 Goals
 		- DONE: add auto-gen buff_try for sit() (similar to drink) - but only for burt
 		- IDEA: stand should be a Creature method
 			- IDEA: don't need seat info, just room; error on in floor_lst already
-		- TBD: create stand() method
+		- DONE: create stand() method
 		- TBD: update "find burt" method in active_gs.map
+		- TBD: instantiate test_chair in entrance
 		- TBD: test sit and stand with burt
 		- TBD: address scope issues
 		- TBD: address 'look' issues
