@@ -196,14 +196,19 @@ Version 3.76 Goals
 		- IDEA: stand should be a Creature method
 			- IDEA: don't need seat info, just room; error on in floor_lst already
 		- DONE: create stand() method
-		- TBD: update "find burt" method in active_gs.map
-		- TBD: instantiate test_chair in entrance
-		- TBD: test sit and stand with burt
-		- TBD: address scope issues
-		- TBD: address 'look' issues
-		- TBD: address 'i' issues (seated in Seat.full_name condition)
+		- DONE: update "find burt" method in active_gs.map
+		- DONE: instantiate test_chair in entrance
+		- INPROC: test sit with burt
+			- PROB: interp hangs because 'prep' verbs expect noun & dir_obj
+			- IDEA: 'sit in chair' (or 'sit on chair') is really a 2word command
+			- IDEA: for case of sit(), check for 'in' or 'on', then remove them => 2word
+			- IDEA: if no 'in' or 'on' error out: "I don't see an 'on' in that sentence"
+		- TBD: test stand with burt
+		- TBD: address sit scope issues
+		- TBD: address sit 'look' issues
+		- TBD: address sit 'i' issues (seated in Seat.full_name condition)
 		- TBD: test with test_frog
-		- TBD: tune pro-nouns
+		- TBD: tune pronouns
 	- TBD: Throne
 		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
 		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)

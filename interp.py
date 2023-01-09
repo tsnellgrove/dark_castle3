@@ -15,7 +15,7 @@ one_word_only_lst = ['help', 'credits', 'score', 'version', 'inventory', 'look',
 
 known_verbs_lst = ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 				 'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
-				 'unlock', 'wear'
+				 'unlock', 'wear', 'sit', 'stand'
 				] # remove removed
 
 secret_verbs_lst = []
