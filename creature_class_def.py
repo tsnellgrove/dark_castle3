@@ -419,11 +419,11 @@ class Creature(ViewOnly):
 		"""
 
 		room = active_gs.map.get_obj_room(self)
-		if self in room:
+		if self in room.floor_lst:
 			active_gs.buffer("You're already standing!")
 			return
 		
-		room.remove_item(self)
+		room.remove_item(self, active_gs)
 		room.floor_lst_append(self)
 
 		# if hero_creature not in current room, exit with no display

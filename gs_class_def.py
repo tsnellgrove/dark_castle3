@@ -93,8 +93,11 @@ class GameState(object):
 				for room in self.map.get_room_lst():
 						if self.hero in room.floor_lst:
 								return room
+						for room_obj in room.floor_lst:
+								if room_obj.is_seat() and room_obj.chk_contain_item(self.hero):
+										return room
 				raise ValueError(f"{self.hero.name} not found.")
-		
+
 ##		def get_room(self):
 ##				return self._state_dict['room']
 

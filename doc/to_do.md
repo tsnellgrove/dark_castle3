@@ -198,15 +198,18 @@ Version 3.76 Goals
 		- DONE: create stand() method
 		- DONE: update "find burt" method in active_gs.map
 		- DONE: instantiate test_chair in entrance
-		- INPROC: test sit with burt
+		- DONE: test sit with burt
 			- PROB: interp hangs because 'prep' verbs expect noun & dir_obj
-			- IDEA: 'sit in chair' (or 'sit on chair') is really a 2word command
-			- IDEA: for case of sit(), check for 'in' or 'on', then remove them => 2word
-			- IDEA: if no 'in' or 'on' error out: "I don't see an 'on' in that sentence"
-		- TBD: test stand with burt
-		- TBD: address sit scope issues
+				- IDEA: 'sit in chair' (or 'sit on chair') is really a 2word command
+				- IDEA: for case of sit(), check for 'in' or 'on', then remove them => 2word
+				- IDEA: if no 'in' or 'on' error out: "I don't see an 'on' in that sentence"
+			- NEW-IDEA: replace sit() with enter()
+				- IDEA: mn the future, make 'sit in' a Seat class-based verb synonym for 'enter'
+		- DONE: test 'enter chair' with burt
+		- DONE: test stand with burt
 		- TBD: address sit 'look' issues
 		- TBD: address sit 'i' issues (seated in Seat.full_name condition)
+		- TBD: address sit scope issues
 		- TBD: test with test_frog
 		- TBD: tune pronouns
 	- TBD: Throne
@@ -214,6 +217,8 @@ Version 3.76 Goals
 		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
 			- IDEA: add auto_gen description to over-ride (like messy_handwriting)
 	- TBD: maybe a Seat or Bed in the Main Hall?
+	- TBD: create Seat class exit method ?
+		- IDEA: exit auto-brings creature up one node if receptical to exit is not specified?
 
 - IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
 	- Probably want to introduce this when I add size / weight / capacity to items and Recepticles??
@@ -231,6 +236,7 @@ Version 3.76 Goals
 - IDEA: extend verb errors to ViewOnly for custom responses
 	- TBD: incorporate into validate() routine as errors
 - TBD: update get_hand_item() to return None if hand_list is empty
+- TBD: sort out active_gs.get_room() => move to .map & std w/ map.get_obj_room()
 
 - IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
 	- verb synonuyms linked to class / class method?

@@ -11,11 +11,11 @@ from static_gbl import descript_dict
 ### interpreter function language static dictionaries & lists ###
 articles_lst = ['a', 'an', 'the']
 
-one_word_only_lst = ['help', 'credits', 'score', 'version', 'inventory', 'look', 'quit', 'xyzzy42']
+one_word_only_lst = ['help', 'credits', 'score', 'version', 'inventory', 'look', 'quit', 'stand', 'xyzzy42']
 
 known_verbs_lst = ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 				 'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
-				 'unlock', 'wear', 'sit', 'stand'
+				 'unlock', 'wear', 'enter', 'stand'
 				] # remove removed
 
 secret_verbs_lst = []
@@ -196,7 +196,7 @@ def interpreter(user_input, master_obj_lst):
 				word2 = user_input_lst[1]
 				help(active_gs, word2)
 				return 'help', [word2]
-		elif word1 in ['put', 'show', 'give', 'attack', 'sit']:
+		elif word1 in ['put', 'show', 'give', 'attack']:
 				if word1 in ['put', 'sit']:
 						if 'in' in user_input_lst:
 								prep = 'in'

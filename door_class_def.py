@@ -354,7 +354,8 @@ class Seat(Surface):
 		return obj.is_surface()
 
 	# *** verb methods ***
-	def sit(self, active_gs, creature = None):
+#	def sit(self, active_gs, creature = None):
+	def enter(self, active_gs, creature = None):
 		""" Sits a creature in a Seat
 		"""
 		# destermine creature
@@ -376,7 +377,7 @@ class Seat(Surface):
 		if room != active_gs.get_room():
 			return 
 
-		active_gs.buffer("Seated")
+		active_gs.buffer(f"You are now seated in the {self.full_name}.")
 		if creature == active_gs.hero:
 			active_gs.buff_try_key(f"{creature.name}_sit_{self.name}")
 		return
