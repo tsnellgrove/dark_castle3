@@ -170,7 +170,7 @@ Version 3.76 Goals
 		- DONE: program architecture
 		- DONE: historic note
 
-- TBD: create Seat class which inherits from Surface
+- INPROC: create Seat class which inherits from Surface
 	- DONE: Seat requirements
 		- REQ: basically, Seat is a surface that can hold a creature
 			- REQ: will need to update prohibited_obj
@@ -209,6 +209,8 @@ Version 3.76 Goals
 		- DONE: test stand with burt
 		- DONE: tweaked 'remove' text for class Garment (in Item verb method take() )
 		- DONE: address sit 'look' issues
+		- TBD: create method Creature.is_contained()
+		- TBD: create method Creature.get_container()
 		- TBD: address sit 'i' issues (seated in Seat.full_name condition)
 		- TBD: address sit scope issues
 		- TBD: test with test_frog
@@ -241,10 +243,10 @@ Version 3.76 Goals
 - TBD: update get_hand_item() to return None if hand_list is empty
 - TBD: sort out active_gs.get_room() => move to .map & std w/ map.get_obj_room()
 
+- TBD: create a version just for interp() updates and gather all interp updates there!!
 - IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
 	- verb synonuyms linked to class / class method?
 	- perhaps additional, optional cusotm verb synonyms as an obj attribute?
-
 - Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
 	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
 	- e.g. article_plural(obj) => 'a Grimy Axe' or 'Water' or 'an Apple'
@@ -580,6 +582,14 @@ interpreter ideas:
 - fix progromatic usage of "a" vs "an" (e.g. "There is a Iron Portcullis to the north")
 - unlock => 'unlock with' prep  command
 - default prep behavior = try command with obj in hand
+- New interp() Ideas:
+	- interp() refacto shoud be based on objects (contents of rooom)
+	- each obj should have noun syns (in place of root_word)
+	- if user input has multiple obj, determine noun vs. dir_obj from prep usage (i.e. to vs with)
+	- have global verb syns and class-based verb syns (start with global; much easier!)
+		- e.g. 'get' is gbl verb syn for take() but 'sit on' is a Seat class verb syn for enter()
+	- based on verb, validate prep usage
+	- Order of Op: 1) obj noun syns, 2) gbl verb syns
 
 - TBD: Debug mode:
 	- TBD: Need a debug mode that eliminates 'try' from 2word and prep commands
