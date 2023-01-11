@@ -220,11 +220,13 @@ class Container(Door):
 		""" Displays a description of the visible items held by the obj. Used in examine().
 		"""
 		if self.is_not_closed() and not self.is_empty():
-			contain_txt_lst = [obj.full_name for obj in self.contain_lst]
-			contain_str = ", ".join(contain_txt_lst)
-			active_gs.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
+			contain_txt_lst = [obj.full_name for obj in self.contain_lst if obj != active_gs.hero]
+			if contain_txt_lst:
+				contain_str = ", ".join(contain_txt_lst)
+				active_gs.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
 			for obj in self.contain_lst:
-				obj.disp_contain(active_gs)
+				if obj != active_gs.hero:
+					obj.disp_contain(active_gs)
 		return 
 
 	# *** verb methods ***

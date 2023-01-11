@@ -35,6 +35,7 @@ class Item(ViewOnly):
 
 		active_gs.buffer("Taken")		
 		if creature.chk_is_worn(self):
+			active_gs.buffer(f"You are no longer wearing the {self.full_name}.")
 			active_gs.buff_try_key(f"{creature.name}_remove_{self.name}")
 
 		active_gs.get_room().remove_item(self, active_gs)

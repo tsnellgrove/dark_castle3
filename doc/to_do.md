@@ -207,11 +207,14 @@ Version 3.76 Goals
 				- IDEA: mn the future, make 'sit in' a Seat class-based verb synonym for 'enter'
 		- DONE: test 'enter chair' with burt
 		- DONE: test stand with burt
-		- TBD: address sit 'look' issues
+		- DONE: tweaked 'remove' text for class Garment (in Item verb method take() )
+		- DONE: address sit 'look' issues
 		- TBD: address sit 'i' issues (seated in Seat.full_name condition)
 		- TBD: address sit scope issues
 		- TBD: test with test_frog
 		- TBD: tune pronouns
+		- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
+		- TBD: implement ['exit' = node up too ?]
 	- TBD: Throne
 		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
 		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
