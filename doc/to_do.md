@@ -209,11 +209,11 @@ Version 3.76 Goals
 		- DONE: test stand with burt
 		- DONE: tweaked 'remove' text for class Garment (in Item verb method take() )
 		- DONE: address sit 'look' issues
-		- TBD: create method Creature.is_contained()
-		- TBD: create method Creature.get_container()
+		- DONE: create method Creature.is_contained()
+		- DONE: create method Creature.get_container()
 		- TBD: address sit 'i' issues (seated in Seat.full_name condition)
 		- TBD: address sit scope issues
-		- TBD: test with test_frog
+		- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
 		- TBD: tune pronouns
 		- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
 		- TBD: implement ['exit' = node up too ?]
@@ -224,6 +224,8 @@ Version 3.76 Goals
 	- TBD: maybe a Seat or Bed in the Main Hall?
 	- TBD: create Seat class exit method ?
 		- IDEA: exit auto-brings creature up one node if receptical to exit is not specified?
+	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
+	- TBD: should creature.is_contained and creature.get_container be ViewOnly methods?
 
 - IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
 	- Probably want to introduce this when I add size / weight / capacity to items and Recepticles??

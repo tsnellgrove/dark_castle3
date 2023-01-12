@@ -176,6 +176,19 @@ class Creature(ViewOnly):
 		raise ValueError(f"Can't remove item {item} from creature {self.name}")
 		return 
 
+	# NOTE: only works for Creature class; not generalized for other obj
+	def is_contained(self, active_gs):
+		return self in active_gs.map.get_obj_room(self).floor_lst
+
+	def get_container(self, active_gs):
+		if not self.is_contained:
+			raise ValueError(f"{obj.full_name} is not in a container.")
+		else:
+			for obj in active_gs.map.get_obj_room(self).floor_lst:
+				if obj.is_seat() and self in obj.contain_lst:
+					return obj
+		raise ValueError(f"{obj.full_name} not found.")
+
 	# *** display methods ***
 	def has_contain(self, active_gs):
 		if self == active_gs.hero:
