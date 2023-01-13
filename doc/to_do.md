@@ -211,8 +211,10 @@ Version 3.76 Goals
 		- DONE: address sit 'look' issues
 		- DONE: create method Creature.is_contained()
 		- DONE: create method Creature.get_container()
-		- TBD: address sit 'i' issues (seated in Seat.full_name condition)
+		- DONE: address sit 'i' issues (seated in Seat.full_name condition)
+		- TBD: move "in your off hand... brass lantern" to Creature class disp_contain
 		- TBD: address sit scope issues
+		- TBD: full test of burt in chair
 		- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
 		- TBD: tune pronouns
 		- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()

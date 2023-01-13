@@ -75,7 +75,7 @@ class LeverSwitch(SwitchMixIn, ViewOnly):
 		SwitchMixIn.__init__(self, switch_state, def_switch_state, trigger_type)
 
 	# *** display methods ***
-	def has_cond(self):
+	def has_cond(self, active_gs):
 		return True
 
 	def disp_cond(self, active_gs):

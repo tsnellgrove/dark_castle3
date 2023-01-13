@@ -147,7 +147,7 @@ class ViewOnly(Writing):
 		return 
 
 	# *** display methods ***
-	def has_cond(self):
+	def has_cond(self, active_gs):
 		return False
 
 	def has_writing(self):
@@ -178,7 +178,7 @@ class ViewOnly(Writing):
 		if self.get_title_str() is not None:
 			active_gs.buffer(self.get_title_str())
 		active_gs.buffer(self.get_descript_str(active_gs))
-		if self.has_writing() or self.has_cond() or self.has_contain(active_gs):
+		if self.has_writing() or self.has_cond(active_gs) or self.has_contain(active_gs):
 			active_gs.buff_cr()
 			self.disp_cond(active_gs)
 			self.disp_writing(active_gs)

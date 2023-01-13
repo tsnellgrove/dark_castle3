@@ -103,7 +103,7 @@ class Room(ViewOnly):
 		return 
 
 	# *** display methods ***
-	def has_cond(self):
+	def has_cond(self, active_gs):
 		return True
 
 	def has_contain(self, active_gs):

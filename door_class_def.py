@@ -50,7 +50,7 @@ class Door(ViewOnly):
 		return self.is_open is not False
 
 	# *** display methods ***
-	def has_cond(self):
+	def has_cond(self, active_gs):
 		return True
 
 	def disp_cond(self, active_gs):

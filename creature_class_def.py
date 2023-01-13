@@ -178,9 +178,9 @@ class Creature(ViewOnly):
 
 	# NOTE: only works for Creature class; not generalized for other obj
 	def is_contained(self, active_gs):
-		return self in active_gs.map.get_obj_room(self).floor_lst
+		return self not in active_gs.map.get_obj_room(self).floor_lst
 
-	def get_container(self, active_gs):
+	def get_contained_by(self, active_gs):
 		if not self.is_contained:
 			raise ValueError(f"{obj.full_name} is not in a container.")
 		else:
@@ -190,6 +190,22 @@ class Creature(ViewOnly):
 		raise ValueError(f"{obj.full_name} not found.")
 
 	# *** display methods ***
+	def has_cond(self, active_gs):
+		return self.is_contained(active_gs)
+
+	def disp_cond(self, active_gs):
+		""" Displays object-specific conditions. Used in examine().
+		"""
+		if self.has_cond(active_gs):
+			if self == active_gs.hero:
+				active_gs.buff_no_cr(f"You are seated in the {self.get_contained_by(active_gs).full_name}.")
+				active_gs.buff_cr()
+				active_gs.buff_cr()
+			else:
+				active_gs.buff_no_cr(f"The {self.full_name} is seated in the {self.get_contained_by(active_gs).full_name}.")
+		else:
+			pass
+
 	def has_contain(self, active_gs):
 		if self == active_gs.hero:
 			creature_lst = self.hand_lst + self.bkpk_lst + self.worn_lst
