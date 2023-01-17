@@ -212,13 +212,17 @@ Version 3.76 Goals
 		- DONE: create method Creature.is_contained()
 		- DONE: create method Creature.get_container()
 		- DONE: address sit 'i' issues (seated in Seat.full_name condition)
-		- TBD: move "in your off hand... brass lantern" to Creature class disp_contain
+		- DONE: move "in your off hand... brass lantern" to Creature class disp_contain
 		- TBD: address sit scope issues
 		- TBD: full test of burt in chair
 		- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
 		- TBD: tune pronouns
 		- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
 		- TBD: implement ['exit' = node up too ?]
+		- TBD: sort out special case of not displaying lantern if nothing in hand or backpack
+			- IDEA: for burt set has_contain() to True
+			- IDEA: also need to sort out the spacing for nothing in hand or backpack
+			- IDEA: move a buff_cr() to disp_contain for hand
 	- TBD: Throne
 		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
 		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)

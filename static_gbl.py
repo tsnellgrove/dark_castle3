@@ -125,7 +125,10 @@ descript_dict = {
 
 
 		# burt #
-		'burt' : "You cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching and the farting I don't know how you'd fend off the ladies!\n\nIn your off hand you hold a Brass Lantern.",
+		'burt' : "You cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching and the farting I don't know how you'd fend off the ladies!",
+		
+		# \n\nIn your off hand you hold a Brass Lantern.",
+		
 		# feature_lst # 
 		'fist' : "Yep, that's your fist. Still bruised from the last time you swung and missed and hit a wall...", 
 		'backpack' : "Your trusty, well-worn leather backpack",

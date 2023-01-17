@@ -216,6 +216,8 @@ class Creature(ViewOnly):
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine(). Variable output for burt vs. other creatures.
 		"""
+		if self == active_gs.hero:
+			active_gs.buff_no_cr(f"In your off hand you hold a Brass Lantern.\n\n")
 		if not self.hand_is_empty():
 			if self == active_gs.hero:
 				active_gs.buff_no_cr(f"You are holding a {self.get_hand_item().full_name}. ")
