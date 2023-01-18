@@ -210,9 +210,6 @@ class Creature(ViewOnly):
 		if self == active_gs.hero:
 ##			creature_lst = self.hand_lst + self.bkpk_lst + self.worn_lst
 			return True
-#		else:
-#			creature_lst = self.hand_lst + self.worn_lst
-#		return bool(creature_lst)
 		return bool(self.hand_lst + self.worn_lst)
 
 	def disp_contain(self, active_gs):
