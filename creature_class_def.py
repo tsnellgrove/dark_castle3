@@ -208,16 +208,21 @@ class Creature(ViewOnly):
 
 	def has_contain(self, active_gs):
 		if self == active_gs.hero:
-			creature_lst = self.hand_lst + self.bkpk_lst + self.worn_lst
-		else:
-			creature_lst = self.hand_lst + self.worn_lst
-		return bool(creature_lst)
+##			creature_lst = self.hand_lst + self.bkpk_lst + self.worn_lst
+			return True
+#		else:
+#			creature_lst = self.hand_lst + self.worn_lst
+#		return bool(creature_lst)
+		return bool(self.hand_lst + self.worn_lst)
 
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine(). Variable output for burt vs. other creatures.
 		"""
 		if self == active_gs.hero:
-			active_gs.buff_no_cr(f"In your off hand you hold a Brass Lantern.\n\n")
+			active_gs.buff_no_cr(f"In your off hand you hold a Brass Lantern.")
+			if (not self.bkpk_is_empty()) or (not self.hand_is_empty()) or (not self.worn_is_empty()):
+					active_gs.buff_cr()
+					active_gs.buff_cr()
 		if not self.hand_is_empty():
 			if self == active_gs.hero:
 				active_gs.buff_no_cr(f"You are holding a {self.get_hand_item().full_name}. ")
