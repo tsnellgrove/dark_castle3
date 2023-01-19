@@ -48,13 +48,14 @@ class Room(ViewOnly):
 		""" Returns the list of visible objects contained in the method-calling object. In Room, provides the visible object scope.
 		"""
 		return_lst = []
-		node1_only_lst = [self] + active_gs.map.get_door_lst(self) + self.feature_lst
+		node1_only_lst = [self] + active_gs.map.get_door_lst(self) + self.feature_lst + self.floor_lst
 		return_lst = return_lst + node1_only_lst
 		for obj in self.floor_lst:
 			return_lst += obj.get_vis_contain_lst(active_gs)
 #		return_lst = return_lst + self.floor_lst
 #		return return_lst
-		return return_lst + self.floor_lst
+#		return return_lst + self.floor_lst
+		return return_lst
 
 	def chk_wrt_is_vis(self, writing, active_gs):
 		""" Evaluates whether the passed writing is visible within the methed-calling object.

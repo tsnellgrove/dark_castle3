@@ -73,6 +73,10 @@ def validate(active_gs, case, word_lst):
 						active_gs.buffer("You can't see a " + word2_obj.full_name + " here.")
 						return False
 
+				if active_gs.hero.is_contained(active_gs) and word2_obj not in active_gs.hero.get_contained_by(active_gs).get_vis_contain_lst(active_gs):
+						active_gs.buffer(f"You'll have to exit the {active_gs.hero.get_contained_by(active_gs).full_name} to attempt that.")
+						return False
+
 				if (word1 in ['drop', 'eat', 'wear']) and (not active_gs.hero.chk_in_hand(word2_obj)):
 						active_gs.buffer("You're not holding the " + word2_obj.full_name + " in your hand.")
 						return False
