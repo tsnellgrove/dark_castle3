@@ -220,7 +220,8 @@ Version 3.76 Goals
 		- INPROC: address sit out of scope issues
 			- CANCEL: create room.is_reachable()
 			- DONE: in validate() check scope after is_vis for 2word => error
-			- TBD: why does 'look' work from chair but 'x entrance' does not???
+			- DONE: why does 'look' work from chair but 'x entrance' does not???
+			- TBD: can you interact with a Seat while you're sitting in it?
 			- TBD: test for 'water' (node_3 obj)
 			- TBD: validate check for prep case
 		- TBD: address sit in scope issues
@@ -228,18 +229,23 @@ Version 3.76 Goals
 		- TBD: full test of burt in chair
 		- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
 		- TBD: tune pronouns
+
+	- IDEA: maybe need a general Creature container w/ Seat and Bed inheritting? i.e. MixIn?
+		- IDEA: class name = Perch (Seat and Bed inherit from Perch)
+		- IDEA: perch = Creature container with 'translucent' room access
+		- TBD: Perch in_reach attribute that links to room obj
+			- TBD: can access in_reach if also in room; enable general ref of container / surface
 		- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
-		- TBD: implement ['exit' = node up too ?]
-		- IDEA: maybe need a general Creature container w/ Seat and Bed inheritting? i.e. MixIn?
+		- TBD: implement ['exit' = node up too ?] [maybe native = 'exit']
+		- TBD: create Seat class exit method ?
+		- IDEA: exit auto-brings creature up one node if receptical to exit is not specified?
+		- TBD: should creature.is_contained and creature.get_container be ViewOnly methods?
 	- TBD: Throne
 		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
 		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
-			- IDEA: add auto_gen description to over-ride (like messy_handwriting)
+		- IDEA: add auto_gen description to over-ride (like messy_handwriting)
 	- TBD: maybe a Seat or Bed in the Main Hall?
-	- TBD: create Seat class exit method ?
-		- IDEA: exit auto-brings creature up one node if receptical to exit is not specified?
 	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
-	- TBD: should creature.is_contained and creature.get_container be ViewOnly methods?
 
 - IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
 	- Probably want to introduce this when I add size / weight / capacity to items and Recepticles??
@@ -253,6 +259,9 @@ Version 3.76 Goals
 	- Could also have UnderMixIn and BehindMixIn
 	- names like 'cavity' and 'nook' to describe negative space??
 	- would need to deal with the wording 'look under' and 'look behind'
+	- 'look under' adds contents to room.feature_lst
+	- additional 'under' commands = 'put under' and 'reach under'
+	- for MixInHole have commands 'look in' and 'reach in'
 
 - IDEA: extend verb errors to ViewOnly for custom responses
 	- TBD: incorporate into validate() routine as errors
@@ -382,6 +391,7 @@ Version 3.78 Goals
 - re-work app_main() flow with validate() module
 - refactor app_main() modules
 
+- IDEA: need to push errors out of validate() and into methods (non-burt cases)
 - IDEA: what if we had errors for wrong class usage *in* the wrong class?? e.g. an examine method that only throws an error in Writing??
 	- Could give context-aware errors for many wrong uses?
 - related thinking:
@@ -643,13 +653,14 @@ Version 6.x Goals
 
 
 *** Awesome Words to Use ***
-- find a use for the word "griffonage" (illegible handwriting)
-- recreancy = shameful cowardice : perfidy
+- stalwart (hedgehog)
+- griffonage (illegible handwriting)
+- recreancy (shameful cowardice; perfidy)
 - aubade
 - defenistrate
 - consigliere
 - consternation
-- use phyisogamy in the game!!
+- phyisogamy (from 3 Muskateers)
 - Gallivanter
 - Solipsistic
 - Bamboozled
@@ -665,6 +676,8 @@ Version 6.x Goals
 - Pumpernickel
 - rolly-polly (hedgehog)
 - Coddiwomple
+- Sockdolager (forceful blow)
+- sagaciate (get along)
 
 
 *** possible new rooms ***
@@ -710,6 +723,7 @@ Version 6.x Goals
 - link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
 - valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
 - shiny sword glows near enemies?
+- meet the wizard from Enchanter who is searching for a scroll
 
 
 *** ARCHITECTURE ***
