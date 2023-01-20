@@ -221,14 +221,17 @@ Version 3.76 Goals
 			- CANCEL: create room.is_reachable()
 			- DONE: in validate() check scope after is_vis for 2word => error
 			- DONE: why does 'look' work from chair but 'x entrance' does not???
-			- TBD: can you interact with a Seat while you're sitting in it?
-			- TBD: test for 'water' (node_3 obj)
+			- DONE: Decide if you can you interact with a Seat while you're sitting in it?
+				- DECISION: No
+			- DONE: test for 'water' (node_3 obj)
+			- TBD: update 'look' to reference Seat state - include "(which you are sitting in)"
 			- TBD: validate check for prep case
 		- TBD: address sit in scope issues
 			- IDEA: update room.remove() to enable burt to interact with inventory & Seat contents
 		- TBD: full test of burt in chair
 		- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
 		- TBD: tune pronouns
+		- TBD: doc_string to discuss "translucent" scope in Seat (e.g. can't interact w/ Seat itself)
 
 	- IDEA: maybe need a general Creature container w/ Seat and Bed inheritting? i.e. MixIn?
 		- IDEA: class name = Perch (Seat and Bed inherit from Perch)
@@ -267,6 +270,8 @@ Version 3.76 Goals
 	- TBD: incorporate into validate() routine as errors
 - TBD: update get_hand_item() to return None if hand_list is empty
 - TBD: sort out active_gs.get_room() => move to .map & std w/ map.get_obj_room()
+
+*** Unify Notes ***
 
 - TBD: create a version just for interp() updates and gather all interp updates there!!
 - IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
@@ -312,9 +317,9 @@ Version 3.76 Goals
 - TBD: misc updates:
 	- TBD: make backpack a true container???
 	- TBD: create a centralized doc file
-	- TBD: reconsider showing Receptacle contents on look... maybe too much data? What does Zork do? Restrict to explicit examine??
+	- CANCEL: reconsider showing Receptacle contents on look... maybe too much data? What does Zork do? Restrict to explicit examine??
 	- TBD: hunger & thirst become Creature conditions to examine??
-- TBD: learn how to use VS Code word wrap and other features
+- TBD: learn how to use VS Code word wrap and other features for Python
 
 
 
@@ -717,7 +722,7 @@ Version 6.x Goals
 - enable 'take all'
 - create 'jump' command with same response as Zork ('Whee!' I think?)
 - randomize description of Burt shown during 'inventory'
-
+- convert words like 'look' to 2word in interp(), rather than cmd(), if possible
 
 *** STORY IDEAS ***
 - link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
