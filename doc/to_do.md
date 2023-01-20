@@ -228,6 +228,7 @@ Version 3.76 Goals
 			- TBD: validate check for prep case
 		- TBD: address sit in scope issues
 			- IDEA: update room.remove() to enable burt to interact with inventory & Seat contents
+			- TBD: fix remove() for Container
 		- TBD: full test of burt in chair
 		- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
 		- TBD: tune pronouns
