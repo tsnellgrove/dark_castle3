@@ -229,10 +229,12 @@ Version 3.76 Goals
 		- TBD: address sit in scope issues
 			- IDEA: update room.remove() to enable burt to interact with inventory & Seat contents
 			- TBD: fix remove() for Container
+			- TBD: sort out drop() and take() of obj in Seat
 		- TBD: full test of burt in chair
 		- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
 		- TBD: tune pronouns
 		- TBD: doc_string to discuss "translucent" scope in Seat (e.g. can't interact w/ Seat itself)
+		- TBD: doc_string re: Seat as precursor to Vehical
 
 	- IDEA: maybe need a general Creature container w/ Seat and Bed inheritting? i.e. MixIn?
 		- IDEA: class name = Perch (Seat and Bed inherit from Perch)
