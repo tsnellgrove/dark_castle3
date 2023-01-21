@@ -400,6 +400,7 @@ Version 3.78 Goals
 - refactor app_main() modules
 
 - IDEA: need to push errors out of validate() and into methods (non-burt cases)
+	- IDEA: create shared common_errors() function to be run from verb methods
 - IDEA: what if we had errors for wrong class usage *in* the wrong class?? e.g. an examine method that only throws an error in Writing??
 	- Could give context-aware errors for many wrong uses?
 - related thinking:
