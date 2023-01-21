@@ -217,15 +217,15 @@ Version 3.76 Goals
 			- IDEA: for burt set has_contain() to True
 			- IDEA: also need to sort out the spacing for nothing in hand or backpack
 			- IDEA: move a buff_cr() to disp_contain for hand
-		- INPROC: address sit out of scope issues
+		- DONE: address sit out of scope issues
 			- CANCEL: create room.is_reachable()
 			- DONE: in validate() check scope after is_vis for 2word => error
 			- DONE: why does 'look' work from chair but 'x entrance' does not???
 			- DONE: Decide if you can you interact with a Seat while you're sitting in it?
 				- DECISION: No
 			- DONE: test for 'water' (node_3 obj)
-			- TBD: update 'look' to reference Seat state - include "(which you are sitting in)"
-			- TBD: validate check for prep case
+			- DONE: update 'look' to reference Seat state - include "(which you are sitting in)"
+			- DONE: validate check for prep case
 		- TBD: address sit in scope issues
 			- IDEA: update room.remove() to enable burt to interact with inventory & Seat contents
 			- TBD: fix remove() for Container

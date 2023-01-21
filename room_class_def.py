@@ -128,7 +128,11 @@ class Room(ViewOnly):
 			elif not obj.is_item():
 				active_gs.buff_cr()
 				active_gs.buff_cr()
-				active_gs.buff_no_cr(f"There is a {obj.full_name} here. ")
+#				active_gs.buff_no_cr(f"There is a {obj.full_name} here. ")
+				active_gs.buff_no_cr(f"There is a {obj.full_name} here")
+				if active_gs.hero.is_contained(active_gs) and active_gs.hero.get_contained_by(active_gs) == obj:
+					active_gs.buff_no_cr(" (which you are presently occupying)")
+				active_gs.buff_no_cr(". ")
 				obj.disp_contain(active_gs)
 			else:
 				room_item_lst.append(obj)

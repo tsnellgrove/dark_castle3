@@ -93,10 +93,13 @@ def validate(active_gs, case, word_lst):
 				if room.chk_is_vis(noun_obj, active_gs) == False:
 						active_gs.buffer("You can't see a " + noun_obj.full_name + " here.")
 						return False
-				elif room.chk_is_vis(dirobj_obj, active_gs) == False:
+				if room.chk_is_vis(dirobj_obj, active_gs) == False:
 						active_gs.buffer("You can't see a " + dirobj_obj.full_name + " here.")
 						return False
-				elif (word1 in ['put', 'show', 'give']) and (not active_gs.hero.chk_in_hand(noun_obj)):
+				if active_gs.hero.is_contained(active_gs) and dirobj_obj not in active_gs.hero.get_contained_by(active_gs).get_vis_contain_lst(active_gs) + [room]:
+						active_gs.buffer(f"You'll have to exit the {active_gs.hero.get_contained_by(active_gs).full_name} to attempt that.")
+						return False
+				if (word1 in ['put', 'show', 'give']) and (not active_gs.hero.chk_in_hand(noun_obj)):
 						active_gs.buffer("You're not holding the " + noun_obj.full_name + " in your hand.")
 						return False
 
