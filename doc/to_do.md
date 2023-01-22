@@ -235,17 +235,6 @@ Version 3.76 Goals
 		- TBD: tune pronouns
 		- TBD: doc_string to discuss "translucent" scope in Seat (e.g. can't interact w/ Seat itself)
 		- TBD: doc_string re: Seat as precursor to Vehical
-
-	- IDEA: maybe need a general Creature container w/ Seat and Bed inheritting? i.e. MixIn?
-		- IDEA: class name = Perch (Seat and Bed inherit from Perch)
-		- IDEA: perch = Creature container with 'translucent' room access
-		- TBD: Perch in_reach attribute that links to room obj
-			- TBD: can access in_reach if also in room; enable general ref of container / surface
-		- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
-		- TBD: implement ['exit' = node up too ?] [maybe native = 'exit']
-		- TBD: create Seat class exit method ?
-		- IDEA: exit auto-brings creature up one node if receptical to exit is not specified?
-		- TBD: should creature.is_contained and creature.get_container be ViewOnly methods?
 	- TBD: Throne
 		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
 		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
@@ -253,6 +242,23 @@ Version 3.76 Goals
 	- TBD: maybe a Seat or Bed in the Main Hall?
 	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
 
+- IDEA: Given that creatures will be contained:
+	- need to embrace a node-based awareness of creature location
+	- need to embrace the use of recursion on methods like remove()
+	- Apply this to concepts like drop() and stand() / exit()
+	- Do need to set some limits though... maybe Perch obj can't contain Perch obj?
+	- Also need a class for opaque creature container... like a fireplace...
+	- names like 'cavity' and 'nook' to describe negative space??
+- IDEA: maybe need a general Creature container w/ Seat and Bed inheritting? i.e. MixIn?
+	- IDEA: class name = Perch (Seat and Bed inherit from Perch)
+	- IDEA: perch = Creature container with 'translucent' room access
+	- TBD: Perch in_reach attribute that links to room obj
+		- TBD: can access in_reach if also in room; enable general ref of container / surface
+	- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
+	- TBD: implement ['exit' = node up too ?] [maybe native = 'exit']
+	- TBD: create Seat class exit method ?
+	- IDEA: exit auto-brings creature up one node if receptical to exit is not specified?
+	- TBD: should creature.is_contained and creature.get_container be ViewOnly methods?
 - IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
 	- Probably want to introduce this when I add size / weight / capacity to items and Recepticles??
 	- Door class = ViewOnly + OpenMixIn
@@ -263,7 +269,6 @@ Version 3.76 Goals
 	- BoxLidLock class = ViewOnly + ContainMixIn + OpenMixIn + LockMixIn
 	- Surface class = ViewOnly + ContainMixIn
 	- Could also have UnderMixIn and BehindMixIn
-	- names like 'cavity' and 'nook' to describe negative space??
 	- would need to deal with the wording 'look under' and 'look behind'
 	- 'look under' adds contents to room.feature_lst
 	- additional 'under' commands = 'put under' and 'reach under'
