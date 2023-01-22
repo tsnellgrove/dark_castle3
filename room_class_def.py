@@ -99,7 +99,11 @@ class Room(ViewOnly):
 		for obj in self.floor_lst:
 			if obj.chk_contain_item(item):
 				obj.remove_item(item, active_gs)
-				return 
+				return
+			for cont_obj in obj.get_vis_contain_lst(active_gs):
+				if cont_obj.chk_contain_item(item):
+					cont_obj.remove_item(item, active_gs)
+					return
 		raise ValueError(f"Can't remove item {item} from room {self.name}")
 		return 
 

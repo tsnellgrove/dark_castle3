@@ -226,9 +226,9 @@ Version 3.76 Goals
 			- DONE: test for 'water' (node_3 obj)
 			- DONE: update 'look' to reference Seat state - include "(which you are sitting in)"
 			- DONE: validate check for prep case
-		- TBD: address sit in scope issues
+		- INPROC: address sit in scope issues
 			- IDEA: update room.remove() to enable burt to interact with inventory & Seat contents
-			- TBD: fix remove() for Container
+			- DONE: fix remove() for Container
 			- TBD: sort out drop() and take() of obj in Seat
 		- TBD: full test of burt in chair
 		- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
