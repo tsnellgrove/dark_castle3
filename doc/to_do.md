@@ -229,6 +229,8 @@ Version 3.76 Goals
 		- INPROC: address sit in scope issues
 			- IDEA: update room.remove() to enable burt to interact with inventory & Seat contents
 			- DONE: fix remove() for Container
+			- DONE: all verbs tested by burt in chair
+			- TBD: sort out read() in chair (special properties of class Writing)
 			- TBD: sort out drop() and take() of obj in Seat
 		- TBD: full test of burt in chair
 		- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
