@@ -230,7 +230,10 @@ Version 3.76 Goals
 			- IDEA: update room.remove() to enable burt to interact with inventory & Seat contents
 			- DONE: fix remove() for Container
 			- DONE: all verbs tested by burt in chair
-			- TBD: sort out read() in chair (special properties of class Writing)
+			- INPROC: sort out read() in chair (special properties of class Writing)
+				- DONE: in validate(), exclude read() command
+				- TBD: create chk_wrt_is_vis() for Container class
+				- TBD: check for burt contained and wrt not vis in Container in read() 
 			- TBD: sort out drop() and take() of obj in Seat
 		- TBD: full test of burt in chair
 		- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
