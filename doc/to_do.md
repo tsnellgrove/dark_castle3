@@ -230,14 +230,20 @@ Version 3.76 Goals
 			- IDEA: update room.remove() to enable burt to interact with inventory & Seat contents
 			- DONE: fix remove() for Container
 			- DONE: all verbs tested by burt in chair
-			- INPROC: sort out read() in chair (special properties of class Writing)
+			- DONE: sort out read() in chair (special properties of class Writing)
 				- DONE: in validate(), exclude read() command
-				- TBD: create chk_wrt_is_vis() for Container class
-				- TBD: check for burt contained and wrt not vis in Container in read() 
-			- TBD: sort out drop() and take() of obj in Seat
+				- DONE: create chk_wrt_is_vis() for Container class
+				- DONE: check for burt contained and wrt not vis in Container in read() 
+			- INPROC: sort out drop() and take() of obj in Seat
+				- IDEA: Seat could hold obj in addition to burt (i.e. preparing for vehical)
+				- IDEA: take() is already limited by validate() to contents of Seat
+				- IDEA: however drop() currently always puts items in the room.floor_lst
+				- IDEA: need to create a creature.get_node_up() method and make that the drop() dest
 		- TBD: full test of burt in chair
+		- TBD: move examine() to Writing class from validate() [fix doc_string too]
 		- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
 		- TBD: tune pronouns
+		- TBD: sort out synonyms like 'exit' and 'sit'
 		- TBD: doc_string to discuss "translucent" scope in Seat (e.g. can't interact w/ Seat itself)
 		- TBD: doc_string re: Seat as precursor to Vehical
 	- TBD: Throne

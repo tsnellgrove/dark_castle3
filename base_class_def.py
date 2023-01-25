@@ -117,6 +117,9 @@ class Writing(Invisible):
 		if not room.chk_wrt_is_vis(self, active_gs):
 			active_gs.buffer(f"You can't see {self.full_name} written on anything here.")
 			return 
+		if active_gs.hero.is_contained(active_gs) and not active_gs.hero.get_contained_by(active_gs).chk_wrt_is_vis(self,active_gs):
+			active_gs.buffer(f"You'll have to exit the {active_gs.hero.get_contained_by(active_gs).full_name} to attempt that.")
+			return False
 		active_gs.buffer(self.get_descript_str(active_gs)) # is_writing() and chk_wrt_is_vis() 
 
 

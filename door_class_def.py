@@ -193,6 +193,11 @@ class Container(Door):
 			return self.contain_lst + node2_lst
 		return []
 
+	def chk_wrt_is_vis(self, writing, active_gs):
+		""" Evaluates whether the passed writing is visible within the methed-calling object.
+		"""
+		return any(obj.writing == writing for obj in self.get_vis_contain_lst(active_gs))
+
 	def chk_contain_item(self, item):
 		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item()
 		"""
