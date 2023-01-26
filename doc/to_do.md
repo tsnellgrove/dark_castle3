@@ -234,11 +234,12 @@ Version 3.76 Goals
 				- DONE: in validate(), exclude read() command
 				- DONE: create chk_wrt_is_vis() for Container class
 				- DONE: check for burt contained and wrt not vis in Container in read() 
-			- INPROC: sort out drop() and take() of obj in Seat
+			- DONE: sort out drop() and take() of obj in Seat
 				- IDEA: Seat could hold obj in addition to burt (i.e. preparing for vehical)
 				- IDEA: take() is already limited by validate() to contents of Seat
 				- IDEA: however drop() currently always puts items in the room.floor_lst
-				- IDEA: need to create a creature.get_node_up() method and make that the drop() dest
+				- DONE: need to check for containment and spaace in drop method
+			- TBD: update room title to ", from Seat"
 		- TBD: full test of burt in chair
 		- TBD: move examine() to Writing class from validate() [fix doc_string too]
 		- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
@@ -253,6 +254,7 @@ Version 3.76 Goals
 	- TBD: maybe a Seat or Bed in the Main Hall?
 	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
 
+- IDEA: consider converting Writing to Decorations (examine() vs. read() )
 - IDEA: Given that creatures will be contained:
 	- need to embrace a node-based awareness of creature location
 	- need to embrace the use of recursion on methods like remove()

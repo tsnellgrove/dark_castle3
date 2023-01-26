@@ -262,7 +262,8 @@ class Container(Door):
 				loc_prep = 'in'
 			active_gs.buffer(f"You can't put the {obj.full_name} {loc_prep} the {self.full_name}.")
 			return 
-		if self.is_surface() and len(self.contain_lst) >= self.max_obj:
+#		if self.is_surface() and len(self.contain_lst) >= self.max_obj:
+		if self.is_surface() and not self.chk_has_capacity():
 			active_gs.buffer(f"There's no room on the {self.full_name} for another item.")
 			return
 		creature.hand_lst_remove(obj)
@@ -315,6 +316,10 @@ class Surface(Container):
 	def is_surface(self):
 		return True
 
+	# *** scope methods ***
+	def chk_has_capacity(self):
+		return len(self.contain_lst) < self.max_obj
+
 	# *** display methods ***
 	def disp_cond(self, active_gs):
 		""" Displays object-specific conditions. Used in examine().
@@ -359,7 +364,7 @@ class Seat(Surface):
 	# *** scope methods ***
 	def chk_content_prohibited(self, obj):
 		return obj.is_surface()
-
+	
 	# *** verb methods ***
 #	def sit(self, active_gs, creature = None):
 	def enter(self, active_gs, creature = None):

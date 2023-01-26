@@ -46,8 +46,15 @@ class Item(ViewOnly):
 		""" Drops an object from Burt's hand to the floor of the room.
 		"""
 		creature = active_gs.hero
+		if creature.is_contained(active_gs) and not creature.get_contained_by(active_gs).chk_has_capacity():
+			active_gs.buffer(f"There's no room on the {self.full_name} for another item.")
+			return
+
 		creature.hand_lst_remove(self)
-		active_gs.get_room().floor_lst_append(self)
+		if creature.is_contained(active_gs):
+			creature.get_contained_by(active_gs).contain_lst_append(self)
+		else:
+			active_gs.get_room().floor_lst_append(self)
 		active_gs.buffer("Dropped")
 		return 
 
