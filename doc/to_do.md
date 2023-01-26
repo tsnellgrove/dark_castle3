@@ -239,7 +239,7 @@ Version 3.76 Goals
 				- IDEA: take() is already limited by validate() to contents of Seat
 				- IDEA: however drop() currently always puts items in the room.floor_lst
 				- DONE: need to check for containment and spaace in drop method
-			- TBD: update room title to ", from Seat"
+			- TBD: update room title to f", in the {Seat}"
 		- TBD: full test of burt in chair
 		- TBD: move examine() to Writing class from validate() [fix doc_string too]
 		- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
@@ -247,6 +247,7 @@ Version 3.76 Goals
 		- TBD: sort out synonyms like 'exit' and 'sit'
 		- TBD: doc_string to discuss "translucent" scope in Seat (e.g. can't interact w/ Seat itself)
 		- TBD: doc_string re: Seat as precursor to Vehical
+		- TBD: doc_string re: Nested Rooms can't be nested (no chairs on stages)
 	- TBD: Throne
 		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
 		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
@@ -254,6 +255,7 @@ Version 3.76 Goals
 	- TBD: maybe a Seat or Bed in the Main Hall?
 	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
 
+- TBD: review TADS3 terms for Description and preposition
 - IDEA: consider converting Writing to Decorations (examine() vs. read() )
 - IDEA: Given that creatures will be contained:
 	- need to embrace a node-based awareness of creature location
