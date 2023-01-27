@@ -119,8 +119,12 @@ class Room(ViewOnly):
 		"""
 		active_gs.buff_no_cr(active_gs.map.get_door_str(self))
 
-	def get_title_str(self):
-		return f"*** {self.full_name} ***"
+	def get_title_str(self, active_gs):
+#		return_str = f"*** {self.full_name} ***"
+		if active_gs.hero.is_contained(active_gs):
+			return f"*** {self.full_name}, in the {active_gs.hero.get_contained_by(active_gs).full_name} ***"
+		else:
+			return f"*** {self.full_name} ***"
 
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().

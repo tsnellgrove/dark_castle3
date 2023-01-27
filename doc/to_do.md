@@ -239,7 +239,12 @@ Version 3.76 Goals
 				- IDEA: take() is already limited by validate() to contents of Seat
 				- IDEA: however drop() currently always puts items in the room.floor_lst
 				- DONE: need to check for containment and spaace in drop method
-			- TBD: update room title to f", in the {Seat}"
+			- DONE: update room title to f", in the {Seat}"
+				- DONE: confirm that get_title_str() is only used in base() and room()
+				- DONE: update get_title_str() to include active_gs
+				- DONE: update room.get_title_str() to check for creature.is_contained()
+				- DONE: update room.get_title_str() to buffer ", in the {Seat}" if contained
+				- DONE: test
 		- TBD: full test of burt in chair
 		- TBD: move examine() to Writing class from validate() [fix doc_string too]
 		- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item

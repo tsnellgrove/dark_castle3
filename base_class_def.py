@@ -54,7 +54,7 @@ class Invisible(object):
 	def is_seat(self):
 		return False
 
-	def get_title_str(self):
+	def get_title_str(self, active_gs):
 		return None
 
 	def __repr__(self):
@@ -178,8 +178,8 @@ class ViewOnly(Writing):
 	def examine(self, active_gs):
 		""" Describes an object.
 		"""
-		if self.get_title_str() is not None:
-			active_gs.buffer(self.get_title_str())
+		if self.get_title_str(active_gs) is not None:
+			active_gs.buffer(self.get_title_str(active_gs))
 		active_gs.buffer(self.get_descript_str(active_gs))
 		if self.has_writing() or self.has_cond(active_gs) or self.has_contain(active_gs):
 			active_gs.buff_cr()
