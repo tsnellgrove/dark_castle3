@@ -170,7 +170,7 @@ Version 3.76 Goals
 		- DONE: program architecture
 		- DONE: historic note
 
-- INPROC: create Seat class which inherits from Surface
+- DONE: create Seat class which inherits from Surface
 	- DONE: Seat requirements
 		- REQ: basically, Seat is a surface that can hold a creature
 			- REQ: will need to update prohibited_obj
@@ -226,7 +226,7 @@ Version 3.76 Goals
 			- DONE: test for 'water' (node_3 obj)
 			- DONE: update 'look' to reference Seat state - include "(which you are sitting in)"
 			- DONE: validate check for prep case
-		- INPROC: address sit in scope issues
+		- DONE: address sit in scope issues
 			- IDEA: update room.remove() to enable burt to interact with inventory & Seat contents
 			- DONE: fix remove() for Container
 			- DONE: all verbs tested by burt in chair
@@ -245,26 +245,32 @@ Version 3.76 Goals
 				- DONE: update room.get_title_str() to check for creature.is_contained()
 				- DONE: update room.get_title_str() to buffer ", in the {Seat}" if contained
 				- DONE: test
-		- TBD: full test of burt in chair
-		- TBD: move examine() to Writing class from validate() [fix doc_string too]
-		- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
-		- TBD: tune pronouns
-		- TBD: sort out synonyms like 'exit' and 'sit'
-		- TBD: doc_string to discuss "translucent" scope in Seat (e.g. can't interact w/ Seat itself)
-		- TBD: doc_string re: Seat as precursor to Vehical
-		- TBD: doc_string re: Nested Rooms can't be nested (no chairs on stages)
-	- TBD: Throne
-		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
-		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
+
+- TBD: sort out immediate plans for Perch and Nook
+- TBD: sort out immediate plans for MixIns
+
+- TBD: stand() => exit()
+- TBD: Throne
+	- TBD: instantiate throne as obj of class Seat
+	- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
+	- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
 		- IDEA: add auto_gen description to over-ride (like messy_handwriting)
-	- TBD: maybe a Seat or Bed in the Main Hall?
+		- IDEA: or maybe base auto_gen key on descript_key and update that?
+	- TBD: clean up test obj (e.g. test_chair, black_suitcase)
+- TBD: maybe a Seat or Bed in the Main Hall?
+- TBD: document Seat class
 	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
+	- TBD: doc_string on nested-room "translucent" scope Seat (can't interact w/ Seat itself)
+	- TBD: doc_string re: Seat as precursor to Vehical
+	- TBD: doc_string re: Nested Rooms can't be nested (no chairs on stages)
+- TBD: move examine() to Writing class from validate() [fix doc_string too]
 
 - TBD: review TADS3 terms for Description and preposition
 - IDEA: consider converting Writing to Decorations (examine() vs. read() )
 - IDEA: Given that creatures will be contained:
 	- need to embrace a node-based awareness of creature location
 	- need to embrace the use of recursion on methods like remove()
+	- (alternatively, just treat creature-containers as special exceptions)
 	- Apply this to concepts like drop() and stand() / exit()
 	- Do need to set some limits though... maybe Perch obj can't contain Perch obj?
 	- Also need a class for opaque creature container... like a fireplace...
@@ -300,6 +306,7 @@ Version 3.76 Goals
 - TBD: sort out active_gs.get_room() => move to .map & std w/ map.get_obj_room()
 
 *** Unify Notes ***
+*** Plan for interpreter update ***
 
 - TBD: create a version just for interp() updates and gather all interp updates there!!
 - IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
@@ -487,6 +494,8 @@ Version 3.79 Goals
 Version 3.80 Goals
 - enable all verb methods for non-burt creatures
 
+- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
+- TBD: tune pronouns
 - IDEA: errors are only for burt
 - IDEA: auto-gen descriptions (e.g. drink, eat, wear, sit) are only for burt
 - TBD: doc_string on 'semi-symetric' methods
@@ -738,6 +747,7 @@ Version 6.x Goals
 
 
 *** INTERPRETER ENHANCEMENT ***
+- TBD: sort out synonyms like 'stand' and 'sit' and 'lie'
 - Interpreter enhancements:
 	- noun synonyms (list in place of base_name)
 	- verb synonyms (attribute of Class? Should verbs associated with obj???)
