@@ -189,7 +189,7 @@ Version 3.76 Goals
 		- CANCEL: vis_lst = seat.vis_lst + room.name
 		REQ: also need a stand() method
 		REQ: should provide auto-gen text as well
-	- INPROC: create Seat class
+	- DONE: create Seat class
 		- DONE: define Seat class
 		- DONE: create sit() method
 		- DONE: add auto-gen buff_try for sit() (similar to drink) - but only for burt
@@ -246,46 +246,15 @@ Version 3.76 Goals
 				- DONE: update room.get_title_str() to buffer ", in the {Seat}" if contained
 				- DONE: test
 
-- TBD: sort out immediate plans for Perch and Nook
-- TBD: sort out immediate plans for MixIns
-
-- TBD: stand() => exit()
-- TBD: Throne
-	- TBD: instantiate throne as obj of class Seat
-	- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
-	- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
-		- IDEA: add auto_gen description to over-ride (like messy_handwriting)
-		- IDEA: or maybe base auto_gen key on descript_key and update that?
-	- TBD: clean up test obj (e.g. test_chair, black_suitcase)
-- TBD: maybe a Seat or Bed in the Main Hall?
-- TBD: document Seat class
-	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
-	- TBD: doc_string on nested-room "translucent" scope Seat (can't interact w/ Seat itself)
-	- TBD: doc_string re: Seat as precursor to Vehical
-	- TBD: doc_string re: Nested Rooms can't be nested (no chairs on stages)
-- TBD: move examine() to Writing class from validate() [fix doc_string too]
-
-- TBD: review TADS3 terms for Description and preposition
-- IDEA: consider converting Writing to Decorations (examine() vs. read() )
-- IDEA: Given that creatures will be contained:
+- CANCEL: Given that creatures will be contained:
 	- need to embrace a node-based awareness of creature location
 	- need to embrace the use of recursion on methods like remove()
-	- (alternatively, just treat creature-containers as special exceptions)
 	- Apply this to concepts like drop() and stand() / exit()
-	- Do need to set some limits though... maybe Perch obj can't contain Perch obj?
-	- Also need a class for opaque creature container... like a fireplace...
-	- names like 'cavity' and 'nook' to describe negative space??
-- IDEA: maybe need a general Creature container w/ Seat and Bed inheritting? i.e. MixIn?
-	- IDEA: class name = Perch (Seat and Bed inherit from Perch)
-	- IDEA: perch = Creature container with 'translucent' room access
-	- TBD: Perch in_reach attribute that links to room obj
-		- TBD: can access in_reach if also in room; enable general ref of container / surface
-	- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
-	- TBD: implement ['exit' = node up too ?] [maybe native = 'exit']
-	- TBD: create Seat class exit method ?
-	- IDEA: exit auto-brings creature up one node if receptical to exit is not specified?
-	- TBD: should creature.is_contained and creature.get_container be ViewOnly methods?
-- IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
+	- DECISION: alternatively, just treat creature-containers as special exceptions
+
+- TBD: sort out immediate plans for MixIns
+	- TBD: review TADS3 terms for Description and preposition
+	- IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
 	- Probably want to introduce this when I add size / weight / capacity to items and Recepticles??
 	- Door class = ViewOnly + OpenMixIn
 	- DoorLock class = ViewOnly + OpenMixIn + LockMixIn
@@ -300,14 +269,46 @@ Version 3.76 Goals
 	- additional 'under' commands = 'put under' and 'reach under'
 	- for MixInHole have commands 'look in' and 'reach in'
 
-- IDEA: extend verb errors to ViewOnly for custom responses
-	- TBD: incorporate into validate() routine as errors
-- TBD: update get_hand_item() to return None if hand_list is empty
-- TBD: sort out active_gs.get_room() => move to .map & std w/ map.get_obj_room()
+- TBD: sort out immediate plans for Perch and Nook (both inherit from CreatureContainerMixIn ?)
+	- TBD: should creature.is_contained and creature.get_container be ViewOnly methods?
+	- IDEA: maybe need a general Creature container w/ Seat and Bed inheritting? i.e. MixIn?
+		- IDEA: class name = Perch (Seat and Bed inherit from Perch)
+		- IDEA: perch = Creature container with 'translucent' room access
+		- TBD: Perch in_reach attribute that links to room obj
+			- TBD: can access in_reach if also in room; enable general ref of container / surface
+			- Do need to set some limits though... maybe Perch obj can't contain Perch obj?
+		- Also need a class for opaque creature container... like a fireplace...
+		- names like 'cavity' and 'nook' to describe negative space??
+	- TBD: stand() => exit()
+		- TBD: implement ['exit' = node up too ?] [maybe native = 'exit']
+		- TBD: create Seat class exit method ?
+		- IDEA: exit auto-brings creature up one node if receptical to exit is not specified?
+
+- TBD: Throne
+	- TBD: instantiate throne as obj of class Seat
+	- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
+	- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
+		- IDEA: add auto_gen description to over-ride (like messy_handwriting)
+		- IDEA: or maybe base auto_gen key on descript_key and update that?
+	- TBD: clean up test obj (e.g. test_chair, black_suitcase)
+- TBD: maybe a Bed in the Main Hall?
+- TBD: document Seat class
+	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
+	- TBD: doc_string on nested-room "translucent" scope Seat (can't interact w/ Seat itself)
+	- TBD: doc_string re: Seat as precursor to Vehical
+	- TBD: doc_string re: Nested Rooms can't be nested (no chairs on stages)
+- TBD: move examine() to Writing class from validate() [fix doc_string too]
+
 
 *** Unify Notes ***
 *** Plan for interpreter update ***
 
+- IDEA: extend verb errors to ViewOnly for custom responses
+	- TBD: incorporate into validate() routine as errors
+- TBD: update get_hand_item() to return None if hand_list is empty
+- TBD: sort out active_gs.get_room() => move to .map & std w/ map.get_obj_room()
+- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
+- IDEA: consider converting Writing to Decorations (examine() vs. read() )
 - TBD: create a version just for interp() updates and gather all interp updates there!!
 - IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
 	- verb synonuyms linked to class / class method?
