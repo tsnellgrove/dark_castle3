@@ -246,18 +246,67 @@ Version 3.76 Goals
 				- DONE: update room.get_title_str() to buffer ", in the {Seat}" if contained
 				- DONE: test
 
-- CANCEL: Given that creatures will be contained:
-	- need to embrace a node-based awareness of creature location
-	- need to embrace the use of recursion on methods like remove()
-	- Apply this to concepts like drop() and stand() / exit()
-	- DECISION: alternatively, just treat creature-containers as special exceptions
+- TBD: instantiate Creature Containers in actual game
+	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
+	- TBD: switch creature.stand() => creature.exit()
+	- TBD: Throne
+		- TBD: instantiate throne as obj of class Seat
+		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
+		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
+			- IDEA: add auto_gen description to over-ride (like messy_handwriting)
+			- IDEA: or maybe base auto_gen key on descript_key and update that?
+		- TBD: clean up test obj (e.g. test_chair, black_suitcase)
+	- TBD: maybe a Bed in the Main Hall?
+	- TBD: maybe a fireplace in the Main Hall (class = Nook)?
+
+##########################
+### VERSION 3.77 START ###
+##########################
+
+Version 3.77 Goals
+- Convert interactive objects to MixIn class architecture (enables future complex obj)
 
 - INPROC: MixIn approach to door module classes
 	- DONE: new name for module with doors & containers (interactive obj; interactive.py)
-	- INPROC: map out MixIns and inheritance
+	- DONE: map out MixIns and inheritance
+		- ViewOnly class provides 'name', full_name, root_name, descript_key, writing attributes
+		- Item class inherits from ViewOnly and provides take() method
+		- OpenableMixIn provides 'is_open' attribute and open(), close() methods
+		- LockableMixIn provides 'is_unlocked' and 'key' attributes and lock(), unlock() methods
+		- ContainsMixIn provides 'contain_lst', 'max_bulk' and put() method
+		- HoldsMixIn provids 'contain_lst', 'max_count' and put() method
+		- SimpleDoor = ViewOnly + OpenableMixIn
+		- LockableDoor = SimpleDoor + LockableMixIn
+		- SimpleFixedContainer = ViewOnly + ContainsMixIn
+		- LiddedFixedContainer = SimpleChest + OpenableMixIn
+		- LockableFixedContainer = LiddedChest + LockableMixIn
+		- SimplePortableContainer = Item + ContainsMixIn
+		- LiddedPortableContainer = SimplePortableContainer + OpenableMixIn
+		- LockablePortableContainer = LiddedPortableContainer + LockableMixIn
+		- Surface = ViewOnly + HoldsMixIn
+		- Nook = inherits from SimpleFixedContainer; can contain Creatures; provides enter() method
+		- Perch = inherits from Surface; can contain Creatures; 'in_reach' sttribute, enter() method
+		- Seat = inherits from Perch; supports "sit" and "stand"
+		- Bed = inherits from Perch; supports "lie" and "stand"
+	- DONE: sort through remaining notes considerations
+	- TBD: assign 'bulk' attribute to all items
+	- TBD: assign 'bulk' attribute to all creatures (?)
+	- TBD: implement MixIn architecture in interactive module
+		- TBD: create interactive.py module
+		- TBD: import Item from item.py and ViewOnly from base.py
+		- TBD: create OpenableMixIn
+		- TBD: create LockableMixIN
+		- TBD: create SimpleDoor class
+		- TBD: create LockableDoor class
+		- TBD: convert Door objects to LockableDoor class
+		- TBD:
+	- TBD: Perch in_reach attribute that links to room obj
+		- TBD: can access in_reach if also in room; enable general ref of container / surface
+		- Do need to set some limits though... maybe Perch obj can't contain Perch obj?
+		- For throne, crystal_box is in_reach? Update room / throne text to indicate this?
+	- INPROC: review TADS3 terms for Description and preposition
 
-- TBD: sort out immediate plans for MixIns
-	- TBD: review TADS3 terms for Description and preposition
+- INPROC: the sorted list - these misc notes have been incorporated elsewhere
 	- IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
 	- Probably want to introduce this when I add size / weight / capacity to items and Recepticles??
 	- Door class = ViewOnly + OpenMixIn
@@ -267,40 +316,39 @@ Version 3.76 Goals
 	- BoxLid class = ViewOnly + ContainMixIn + OpenMixIn
 	- BoxLidLock class = ViewOnly + ContainMixIn + OpenMixIn + LockMixIn
 	- Surface class = ViewOnly + ContainMixIn
-	- Could also have UnderMixIn and BehindMixIn
-	- would need to deal with the wording 'look under' and 'look behind'
-	- 'look under' adds contents to room.feature_lst
-	- additional 'under' commands = 'put under' and 'reach under'
-	- for MixInHole have commands 'look in' and 'reach in'
-
-- TBD: sort out immediate plans for Perch and Nook (both inherit from CreatureContainerMixIn ?)
-	- TBD: should creature.is_contained and creature.get_container be ViewOnly methods?
-	- IDEA: maybe need a general Creature container w/ Seat and Bed inheritting? i.e. MixIn?
+	- IDEA: maybe need a general Creature container (Perch w/ Seat and Bed inheritting? i.e. MixIn?
 		- IDEA: class name = Perch (Seat and Bed inherit from Perch)
 		- IDEA: perch = Creature container with 'translucent' room access
-		- TBD: Perch in_reach attribute that links to room obj
-			- TBD: can access in_reach if also in room; enable general ref of container / surface
-			- Do need to set some limits though... maybe Perch obj can't contain Perch obj?
 		- Also need a class for opaque creature container... like a fireplace...
 		- names like 'cavity' and 'nook' to describe negative space??
 	- TBD: stand() => exit()
 		- TBD: implement ['exit' = node up too ?] [maybe native = 'exit']
 		- TBD: create Seat class exit method ?
 		- IDEA: exit auto-brings creature up one node if receptical to exit is not specified?
+			- DECISION: no, Creature Containers are a sepcial excpetion; exit() => room.floor_lst
 
-- TBD: Throne
-	- TBD: instantiate throne as obj of class Seat
-	- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
-	- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
-		- IDEA: add auto_gen description to over-ride (like messy_handwriting)
-		- IDEA: or maybe base auto_gen key on descript_key and update that?
-	- TBD: clean up test obj (e.g. test_chair, black_suitcase)
-- TBD: maybe a Bed in the Main Hall?
+- INPROC: the future list - future interactive obj updates / features to be implemented
+	- Could also have UnderMixIn and BehindMixIn
+	- would need to deal with the wording 'look under' and 'look behind'
+	- 'look under' adds contents to room.feature_lst
+	- additional 'under' commands = 'put under' and 'reach under'
+	- for MixInHole have commands 'look in' and 'reach in'
+		- can a 'hole' be dark if the room is light?
+
+- CANCEL: Given that creatures will be contained:
+	- need to embrace a node-based awareness of creature location
+	- need to embrace the use of recursion on methods like remove()
+	- Apply this to concepts like drop() and stand() / exit()
+	- DECISION: alternatively, just treat creature-containers as special exceptions
+
 - TBD: document Seat class
 	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
-	- TBD: doc_string on nested-room "translucent" scope Seat (can't interact w/ Seat itself)
+	- TBD: doc_string on Seat (nested-room) "translucent" scope (can't interact w/ Seat itself)
 	- TBD: doc_string re: Seat as precursor to Vehical
 	- TBD: doc_string re: Nested Rooms can't be nested (no chairs on stages)
+	- TBD: doc_string re: Perch = translucent, Nook = opaque
+	- TBD: doc_string re: bulk for containers, count for surfaces
+	- TBD: doc_string re: nook gets light from room
 - TBD: move examine() to Writing class from validate() [fix doc_string too]
 
 
