@@ -252,6 +252,10 @@ Version 3.76 Goals
 	- Apply this to concepts like drop() and stand() / exit()
 	- DECISION: alternatively, just treat creature-containers as special exceptions
 
+- INPROC: MixIn approach to door module classes
+	- DONE: new name for module with doors & containers (interactive obj; interactive.py)
+	- INPROC: map out MixIns and inheritance
+
 - TBD: sort out immediate plans for MixIns
 	- TBD: review TADS3 terms for Description and preposition
 	- IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
