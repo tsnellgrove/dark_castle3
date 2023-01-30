@@ -247,9 +247,10 @@ Version 3.76 Goals
 				- DONE: test
 
 - INPROC: instantiate Creature Containers in actual game
-	- INPROC: move examine() to Writing class from validate() [fix doc_string too]
-		- TBD: need to sort out how to deal with validate() check on on writing
-		- TBD: possibly defer this mission till I review writing vs. decorations?
+	- INPROC: move examine() to Writing class from validate()
+		- DONE: need to sort out how to deal with validate() check on on writing
+		- TBD: plan for when to finish pushing errors out of validate
+		- TBD: update doc_string in validate to reflect current approach
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
 	- TBD: switch creature.stand() => creature.exit()
 	- TBD: Throne
