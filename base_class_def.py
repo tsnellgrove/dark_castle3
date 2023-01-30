@@ -104,6 +104,14 @@ class Writing(Invisible):
 				return f"The {self.full_name} is simply indescribable."
 
 	# *** verb methods ***
+	def examine(self, active_gs):
+		""" Describes an object.
+		"""
+#		if self.is_writing():
+		active_gs.buffer(f"You can't examine the {self.full_name}. Try using 'read' instead.")
+		return
+
+
 	def read(self, active_gs):
 		""" Reads text found on an object.
 		"""
@@ -178,6 +186,10 @@ class ViewOnly(Writing):
 	def examine(self, active_gs):
 		""" Describes an object.
 		"""
+#		if self.is_writing():
+#			active_gs.buffer(f"You can't examine the {self.full_name}. Try using 'read' instead.")
+#			return
+
 		if self.get_title_str(active_gs) is not None:
 			active_gs.buffer(self.get_title_str(active_gs))
 		active_gs.buffer(self.get_descript_str(active_gs))

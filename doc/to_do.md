@@ -246,7 +246,10 @@ Version 3.76 Goals
 				- DONE: update room.get_title_str() to buffer ", in the {Seat}" if contained
 				- DONE: test
 
-- TBD: instantiate Creature Containers in actual game
+- INPROC: instantiate Creature Containers in actual game
+	- INPROC: move examine() to Writing class from validate() [fix doc_string too]
+		- TBD: need to sort out how to deal with validate() check on on writing
+		- TBD: possibly defer this mission till I review writing vs. decorations?
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
 	- TBD: switch creature.stand() => creature.exit()
 	- TBD: Throne
@@ -349,7 +352,7 @@ Version 3.77 Goals
 	- TBD: doc_string re: Perch = translucent, Nook = opaque
 	- TBD: doc_string re: bulk for containers, count for surfaces
 	- TBD: doc_string re: nook gets light from room
-- TBD: move examine() to Writing class from validate() [fix doc_string too]
+
 
 
 *** Unify Notes ***

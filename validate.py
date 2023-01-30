@@ -59,10 +59,10 @@ def validate(active_gs, case, word_lst):
 				room = active_gs.get_room()
 
 				# *** custom method mis-matches ***
-				if (word1 == 'examine') and (room.chk_wrt_is_vis(word2_obj, active_gs)) == True:
-						output = "You can't examine the " + word2_obj.full_name + ". Try using 'read' instead."
-						active_gs.buffer(output)
-						return False
+#				if (word1 == 'examine') and (room.chk_wrt_is_vis(word2_obj, active_gs)) == True:
+#						output = "You can't examine the " + word2_obj.full_name + ". Try using 'read' instead."
+#						active_gs.buffer(output)
+#						return False
 
 				if (word1 == 'take') and (room.chk_is_vis(word2_obj, active_gs)) and (word2_obj.is_liquid()):
 						active_gs.buffer("You can't 'take' a liquid. Try 'drink' instead.")
