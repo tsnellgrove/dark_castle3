@@ -247,8 +247,17 @@ Version 3.76 Goals
 				- DONE: test
 
 - INPROC: instantiate Creature Containers in actual game
-	- INPROC: move examine() to Writing class from validate()
+	- INPROC: move examine() to Writing class from validate() [because they irk me]
 		- DONE: need to sort out how to deal with validate() check on on writing
+		- DONE: move validate() 'take liquid' error to class Liquid take() method
+		- TBD: create context-specific default verb errors in ViewOnly
+		- TBD: push remaining specific errors out of of validate
+			- TBD: obj no visible error
+				- TBD: in ViewOnly, create obj_not_visible_error(self, active_gs):
+				- TBD: in method, check for vis and then buffer error
+				- TBD: call error methods from verb methods
+			- TBD: obj not in hand
+			- TBD: Creature.is_contained == True
 		- TBD: plan for when to finish pushing errors out of validate
 		- TBD: update doc_string in validate to reflect current approach
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?

@@ -64,9 +64,9 @@ def validate(active_gs, case, word_lst):
 #						active_gs.buffer(output)
 #						return False
 
-				if (word1 == 'take') and (room.chk_is_vis(word2_obj, active_gs)) and (word2_obj.is_liquid()):
-						active_gs.buffer("You can't 'take' a liquid. Try 'drink' instead.")
-						return False
+#				if (word1 == 'take') and (room.chk_is_vis(word2_obj, active_gs)) and (word2_obj.is_liquid()):
+#						active_gs.buffer("You can't 'take' a liquid. Try 'drink' instead.")
+#						return False
 
 				# *** generic command failure ***
 				if word1 != 'read' and not word2_obj.is_writing() and room.chk_is_vis(word2_obj, active_gs) == False:
