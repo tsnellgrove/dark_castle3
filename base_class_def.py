@@ -211,11 +211,25 @@ class ViewOnly(Writing):
 		active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
 		return
 
-	# TBD: 'drink', 'drop', 'eat', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'take', 'wear', 'enter', 'stand'
+	def put(self, obj, active_gs):
+		active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
+		return
+
+	def take(self, active_gs):
+		active_gs.buffer(f"Just how do you intend to pick up a {self.full_name}?")
+		return
+
+	def drop(self, active_gs):
+		active_gs.buffer(f"The {self.full_name} cannot be dropped at this time.")
+		return
+
+	# TBD: 'drink', 'eat', 'go', 'help', 'lock', 'pull','push', 'read', 'wear', 'enter', 'stand'
 	# N/A: 'examine'
 	# DONE: 
 		# Creature: 'show', 'give', 'attack'
 		# Door: 'open', 'close', 'lock', 'unlock'
+		# Container: 'put'
+		# Item: 'take', 'drop'
 
 
 	# *** verb methods ***

@@ -251,7 +251,7 @@ Version 3.76 Goals
 	- INPROC: move examine() to Writing class from validate() [because they irk me]
 		- DONE: need to sort out how to deal with validate() check on on writing
 		- DONE: move validate() 'take liquid' error to class Liquid take() method
-		- TBD: create context-specific default verb errors in ViewOnly
+		- INPROC: create context-specific default verb errors in ViewOnly
 		- TBD: push remaining specific errors out of of validate
 			- TBD: obj no visible error
 				- TBD: in ViewOnly, create obj_not_visible_error(self, active_gs):
@@ -401,6 +401,7 @@ Version 3.77 Goals
 		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
 
 - TBD: text UI updates:
+	- TBD: sort out 'can't drop fist or brass_lantern issue
 	- TBD: change backpack and worn lists to include 'a' and 'an'
 		- IDEA: convert plurals to singulars for this???
 		- IDEA: (given that there is water in the game maybe all singlulars is impossible?)
