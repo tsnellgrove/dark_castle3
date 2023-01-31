@@ -78,6 +78,7 @@ Notes:
 	# *** scope methods ***
 	# *** display methods ***
 	# *** complex methods ***
+	# *** verb error methods ***
 	# *** verb methods ***
 """ *** Module Documentation *** """
 

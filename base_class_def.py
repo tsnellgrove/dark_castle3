@@ -182,14 +182,46 @@ class ViewOnly(Writing):
 		pass
 		return
 
+	# *** verb error methods ***
+	def show(self, obj, active_gs):
+		active_gs.buffer(f"Exactly how would you exect the {self.full_name} to respond to the {obj.full_name}?")
+		return
+
+	def give(self, obj, active_gs):
+		active_gs.buffer(f"And what do you expect the {self.full_name} to do with the {obj.full_name}?")
+		return
+
+	def attack(self, src_obj, active_gs):
+		active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
+		return
+
+	def open(self, active_gs):
+		active_gs.buffer(f"The {self.full_name} cannot be openned.")
+		return
+	
+	def close(self, active_gs):
+		active_gs.buffer(f"The {self.full_name} cannot be closed.")
+		return
+	
+	def lock(self, active_gs):
+		active_gs.buffer(f"The {self.full_name} cannot be locked.")
+		return
+
+	def unlock(self, active_gs):
+		active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
+		return
+
+	# TBD: 'drink', 'drop', 'eat', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'take', 'wear', 'enter', 'stand'
+	# N/A: 'examine'
+	# DONE: 
+		# Creature: 'show', 'give', 'attack'
+		# Door: 'open', 'close', 'lock', 'unlock'
+
+
 	# *** verb methods ***
 	def examine(self, active_gs):
 		""" Describes an object.
 		"""
-#		if self.is_writing():
-#			active_gs.buffer(f"You can't examine the {self.full_name}. Try using 'read' instead.")
-#			return
-
 		if self.get_title_str(active_gs) is not None:
 			active_gs.buffer(self.get_title_str(active_gs))
 		active_gs.buffer(self.get_descript_str(active_gs))

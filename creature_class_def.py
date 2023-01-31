@@ -252,7 +252,7 @@ class Creature(ViewOnly):
 				obj.disp_contain(active_gs)
 		return 
 
-	# *** verb methods ***
+	# *** verb error methods ***
 	def take(self, active_gs):
 		""" Provides a custom error if the player attempts to take() an object of Creature class.
 		"""
@@ -260,6 +260,7 @@ class Creature(ViewOnly):
 		return 
 
 
+	# *** verb methods ***
 	def show(self, obj, active_gs):
 		""" Shows an item in your hand to another creature.
 		"""
