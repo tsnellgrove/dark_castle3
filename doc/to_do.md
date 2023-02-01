@@ -252,6 +252,7 @@ Version 3.76 Goals
 		- DONE: need to sort out how to deal with validate() check on on writing
 		- DONE: move validate() 'take liquid' error to class Liquid take() method
 		- INPROC: create context-specific default verb errors in ViewOnly
+		- TBD: general error for Writing: "That's laudably creative but, truth be told, the only thing you can really do with {writing} is to read it."
 		- TBD: push remaining specific errors out of of validate
 			- TBD: obj no visible error
 				- TBD: in ViewOnly, create obj_not_visible_error(self, active_gs):
@@ -374,6 +375,7 @@ Version 3.77 Goals
 - TBD: update get_hand_item() to return None if hand_list is empty
 - TBD: sort out active_gs.get_room() => move to .map & std w/ map.get_obj_room()
 - TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
+	- TBD: also want to enable 'go in' and 'go out' of chair
 - IDEA: consider converting Writing to Decorations (examine() vs. read() )
 - TBD: create a version just for interp() updates and gather all interp updates there!!
 - IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??

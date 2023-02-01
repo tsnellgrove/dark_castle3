@@ -219,17 +219,38 @@ class ViewOnly(Writing):
 		active_gs.buffer(f"Just how do you intend to pick up a {self.full_name}?")
 		return
 
-	def drop(self, active_gs):
+	def drop(self, active_gs): # not sure this error is actually possible?
 		active_gs.buffer(f"The {self.full_name} cannot be dropped at this time.")
 		return
 
-	# TBD: 'drink', 'eat', 'go', 'help', 'lock', 'pull','push', 'read', 'wear', 'enter', 'stand'
+	def eat(self, active_gs):
+		active_gs.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? Burt, if you keep this up you're going to give Adventurers a bad name!")
+		return
+
+	def wear(self, active_gs):
+		active_gs.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
+		return
+
+	def drink(self, active_gs):
+		active_gs.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")
+		return
+
+	# NEED TO SORT OUT 'GO' ERROR - VS. ERROR IN ROOM - USE FOR 'GO OBJ' ERRORS?
+	def go(self, dir, active_gs):
+		active_gs.buffer(f"Use 'go', in conjunction with a cardinal direction, to travel from one room to another. You cannot 'go {dir}'.")
+		return
+
+	# TBD: 'go', 'help', 'pull','push', 'read', 'enter', 'stand'
 	# N/A: 'examine'
 	# DONE: 
 		# Creature: 'show', 'give', 'attack'
 		# Door: 'open', 'close', 'lock', 'unlock'
 		# Container: 'put'
 		# Item: 'take', 'drop'
+		# Food: 'eat'
+		# Garment: 'wear'
+		# Liquid: 'drink'
+		# Room: 
 
 
 	# *** verb methods ***
