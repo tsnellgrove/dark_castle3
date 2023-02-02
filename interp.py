@@ -11,12 +11,12 @@ from static_gbl import descript_dict
 ### interpreter function language static dictionaries & lists ###
 articles_lst = ['a', 'an', 'the']
 
-one_word_only_lst = ['help', 'credits', 'score', 'version', 'inventory', 'look', 'quit', 'stand', 'xyzzy42']
+one_word_only_lst = ['help', 'credits', 'score', 'version', 'inventory', 'look', 'quit', 'exit', 'xyzzy42']
 
 known_verbs_lst = ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 				 'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
-				 'unlock', 'wear', 'enter', 'stand'
-				] # remove removed
+				 'unlock', 'wear', 'enter', 'exit'
+				] # 'remove' removed; 'stand' => 'exit'
 
 secret_verbs_lst = []
 

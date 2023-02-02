@@ -251,7 +251,11 @@ class ViewOnly(Writing):
 		active_gs.buffer(f"You can't use the word 'enter' with the {self.full_name}.")
 		return
 
-	# TBD: 'enter', 'stand'
+	def exit(self, active_gs):
+		active_gs.buffer(f"You can't use the word 'exit' with the {self.full_name}.")
+		return
+
+	# TBD:
 	# N/A: 'examine', 'help', 'read'
 	# DONE: 
 		# Creature: 'show', 'give', 'attack'
@@ -263,8 +267,7 @@ class ViewOnly(Writing):
 		# Liquid: 'drink'
 		# Room: 'go'
 		# Switch: 'pull','push'
-		# Seat: 'enter'
-
+		# Seat: 'enter', 'exit'
 
 	# *** verb methods ***
 	def examine(self, active_gs):

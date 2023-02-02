@@ -25,6 +25,10 @@ class Item(ViewOnly):
 		active_gs.buffer(f"Despite twisting yourself into a pretzel you still can't manage to enter the {self.full_name}.")
 		return
 
+	def exit(self, active_gs):
+		active_gs.buffer(f"Despite twisting yourself into a pretzel you still can't manage to exit the {self.full_name}.")
+		return
+
 	# *** verb methods ***
 	def take(self, active_gs):
 		""" Takes an object from either the room or from Burt's inventory and places it into Burt's hand

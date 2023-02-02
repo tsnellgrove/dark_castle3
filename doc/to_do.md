@@ -251,7 +251,9 @@ Version 3.76 Goals
 	- INPROC: move examine() to Writing class from validate() [because they irk me]
 		- DONE: need to sort out how to deal with validate() check on on writing
 		- DONE: move validate() 'take liquid' error to class Liquid take() method
-		- INPROC: create context-specific default verb errors in ViewOnly
+		- DONE: stand() => exit()
+		- DONE: create context-specific default verb errors in ViewOnly
+		- TBD: move exit() to Perch class; maybe re-constitute stand() ?
 		- TBD: general error for Writing: "That's laudably creative but, truth be told, the only thing you can really do with {writing} is to read it."
 		- TBD: push remaining specific errors out of of validate
 			- TBD: obj no visible error
@@ -370,6 +372,8 @@ Version 3.77 Goals
 *** Unify Notes ***
 *** Plan for interpreter update ***
 
+- TBD: stand() as Perch synonym for exit()
+- TBD: exit() should apply to chairs and doors => move to Perch / Nook class
 - IDEA: extend verb errors to ViewOnly for custom responses
 	- TBD: incorporate into validate() routine as errors
 - TBD: should have 'go in gate' and 'enter gate' as synonyms for 'go north' from entrance? (doors & rooms ??)
