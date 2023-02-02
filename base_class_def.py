@@ -231,17 +231,31 @@ class ViewOnly(Writing):
 		active_gs.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
 		return
 
-	def drink(self, active_gs):
+	def drink(self, active_gs): 
 		active_gs.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")
 		return
 
-	# NEED TO SORT OUT 'GO' ERROR - VS. ERROR IN ROOM - USE FOR 'GO OBJ' ERRORS?
-	def go(self, dir, active_gs):
-		active_gs.buffer(f"Use 'go', in conjunction with a cardinal direction, to travel from one room to another. You cannot 'go {dir}'.")
+	def go(self, dir, active_gs): # not sure this error ever triggers? Local handling should catch all wrong cases.
+		active_gs.buffer(f"Use 'go', in conjunction with a cardinal direction, to travel from one room to another. You cannot 'go {dir.full_name}'.")
 		return
 
-	# TBD: 'go', 'help', 'pull','push', 'read', 'enter', 'stand'
-	# N/A: 'examine'
+	def push(self, active_gs):
+		active_gs.buffer(f"Pushing on the {self.full_name} has no effect.")
+		return
+
+	def pull(self, active_gs):
+		active_gs.buffer(f"Pushing on the {self.full_name} has no effect.")
+		return
+
+	def enter(self, active_gs):
+		active_gs.buffer(f"You can't use the word 'enter' with the {self.full_name}.")
+		return
+
+	# Consider creating a separate 'enter' error for item (one that mocks the attempt?)
+	# should have 'go in gate' and 'enter gate' as synonyms for 'go north' from entrance?
+
+	# TBD: 'enter', 'stand'
+	# N/A: 'examine', 'help', 'read'
 	# DONE: 
 		# Creature: 'show', 'give', 'attack'
 		# Door: 'open', 'close', 'lock', 'unlock'
@@ -250,7 +264,9 @@ class ViewOnly(Writing):
 		# Food: 'eat'
 		# Garment: 'wear'
 		# Liquid: 'drink'
-		# Room: 
+		# Room: 'go'
+		# Switch: 'pull','push'
+		# Seat: 'enter'
 
 
 	# *** verb methods ***
