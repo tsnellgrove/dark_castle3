@@ -372,6 +372,7 @@ Version 3.77 Goals
 
 - IDEA: extend verb errors to ViewOnly for custom responses
 	- TBD: incorporate into validate() routine as errors
+- TBD: should have 'go in gate' and 'enter gate' as synonyms for 'go north' from entrance? (doors & rooms ??)
 - TBD: update get_hand_item() to return None if hand_list is empty
 - TBD: sort out active_gs.get_room() => move to .map & std w/ map.get_obj_room()
 - TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()

@@ -251,9 +251,6 @@ class ViewOnly(Writing):
 		active_gs.buffer(f"You can't use the word 'enter' with the {self.full_name}.")
 		return
 
-	# Consider creating a separate 'enter' error for item (one that mocks the attempt?)
-	# should have 'go in gate' and 'enter gate' as synonyms for 'go north' from entrance?
-
 	# TBD: 'enter', 'stand'
 	# N/A: 'examine', 'help', 'read'
 	# DONE: 
