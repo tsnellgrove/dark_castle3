@@ -254,6 +254,7 @@ Version 3.76 Goals
 		- DONE: stand() => exit()
 		- DONE: create context-specific default verb errors in ViewOnly
 		- TBD: move exit() to Perch class; maybe re-constitute stand() ?
+			TBD: need to also update interp verb list, interp one_word list, and command on_word function
 		- TBD: general error for Writing: "That's laudably creative but, truth be told, the only thing you can really do with {writing} is to read it."
 		- TBD: push remaining specific errors out of of validate
 			- TBD: obj no visible error
