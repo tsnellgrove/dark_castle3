@@ -448,13 +448,13 @@ class Creature(ViewOnly):
 		active_gs.buffer(f"{resolution_strt_str}{resolution_end_str}")
 		return 
 
-#	def stand(self, active_gs):
-	def exit(self, active_gs):
+	def stand(self, active_gs):
+#	def exit(self, active_gs):
 		""" Enables a Creature to stand up from a Seat or Bed
 		"""
 		room = active_gs.map.get_obj_room(self)
 		if self in room.floor_lst:
-			active_gs.buffer("You're already standing in the room!")
+			active_gs.buffer(f"You're already standing in the {room.full_name}!")
 			return
 		
 		room.remove_item(self, active_gs)
