@@ -388,10 +388,49 @@ class Seat(Surface):
 		# if hero_creature not in current room, exit with no display
 		if room != active_gs.get_room():
 			return 
-
-		active_gs.buffer(f"You are now seated in the {self.full_name}.")
+		
 		if creature == active_gs.hero:
-			active_gs.buff_try_key(f"{creature.name}_sit_{self.name}")
+			active_gs.buffer(f"You are now seated in the {self.full_name}.")
+			active_gs.buff_try_key(f"{creature.name}_enter_{self.name}")
+		else:
+			active_gs.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
+		return
+
+	def exit(self, active_gs, creature = None):
+		""" Sits a creature in a Seat
+		"""
+		# destermine creature
+		if creature is None:
+			creature = active_gs.hero
+
+#		if not creature.is_creature():
+#			active_gs.buffer(f"The {creature.full_name} can't sit on the {self.full_name}!")
+#			return
+#		if self.is_surface() and len(self.contain_lst) >= self.max_obj:
+#			active_gs.buffer(f"There's no room on the {self.full_name} to sit.")
+#			return
+
+		if not creature.is_contained(active_gs):
+			active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
+			return
+		
+		if creature.is_contained(active_gs) and creature.get_contained_by(active_gs) != self:
+			active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
+			return
+
+		room = active_gs.map.get_obj_room(creature)
+		room.floor_lst_append(creature)
+		self.contain_lst_remove(creature)
+
+		# if hero_creature not in current room, exit with no display
+		if room != active_gs.get_room():
+			return 
+		
+		if creature == active_gs.hero:
+			active_gs.buffer(f"You are now standing in the {room.full_name}.")
+			active_gs.buff_try_key(f"{creature.name}_exit_{self.name}")
+		else:
+			active_gs.buffer(f"The {creature.full_name} is now standing in the {room.full_name}.")
 		return
 
 

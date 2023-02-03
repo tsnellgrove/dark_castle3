@@ -253,10 +253,10 @@ Version 3.76 Goals
 		- DONE: move validate() 'take liquid' error to class Liquid take() method
 		- DONE: stand() => exit()
 		- DONE: create context-specific default verb errors in ViewOnly
-		- INPROC: move exit() to Perch class; maybe re-constitute stand() ?
+		- DONE: move exit() to Perch class; maybe re-constitute stand() ?
 			- DONE: stand() re-instated
 			- DONE: also update interp verb list, interp one_word list, and command on_word function
-			- TBD: create exit()
+			- DONE: create exit()
 		- TBD: general error for Writing: "That's laudably creative but, truth be told, the only thing you can really do with {writing} is to read it."
 		- TBD: push remaining specific errors out of of validate
 			- TBD: obj no visible error
