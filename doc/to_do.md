@@ -375,6 +375,15 @@ Version 3.77 Goals
 *** Unify Notes ***
 *** Plan for interpreter update ***
 
+- IDEA: 'talk to creature' format:
+	- IDEA: 'Ask X about Y'
+	- IDEA: 'Tell X about Y'
+	- IDEA: Say 'Z'
+- IDEA: next interp() goals:
+	- IDEA: noun synonyms (different than abreviations)
+	- IDEA: global verb synonyms
+	- IDEA: simple prep verbs ('sit_in')
+	- IDEA: basic interp features: 'take all', 'again', 'wait'
 - TBD: enable 'show writing to creature' is writing is on an item Burt is holding
 - TBD: stand() as Perch synonym for exit()
 - TBD: exit() should apply to chairs and doors => move to Perch / Nook class
