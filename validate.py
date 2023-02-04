@@ -69,6 +69,10 @@ def validate(active_gs, case, word_lst):
 #						return False
 
 				# *** generic command failure ***
+				if word1 != 'read' and word1 != 'examine' and word2_obj.is_writing():
+						active_gs.buffer(f"That's laudably creative but, truth be told, the only thing you can generally do with the {word2_obj.full_name} is to read it.")
+						return False
+
 				if word1 != 'read' and not word2_obj.is_writing() and room.chk_is_vis(word2_obj, active_gs) == False:
 						active_gs.buffer("You can't see a " + word2_obj.full_name + " here.")
 						return False
@@ -90,10 +94,16 @@ def validate(active_gs, case, word_lst):
 				room = active_gs.get_room()
 
 				# *** generic command failures ***
-				if room.chk_is_vis(noun_obj, active_gs) == False:
+				if noun_obj.is_writing():
+						active_gs.buffer(f"That's laudably creative but, truth be told, the only thing you can generally do with the {noun_obj.full_name} is to read it.")
+						return False
+				if dirobj_obj.is_writing():
+						active_gs.buffer(f"That's laudably creative but, truth be told, the only thing you can generally do with the {dirobj_obj.full_name} is to read it.")
+						return False
+				if not noun_obj.is_writing() and room.chk_is_vis(noun_obj, active_gs) == False:
 						active_gs.buffer("You can't see a " + noun_obj.full_name + " here.")
 						return False
-				if room.chk_is_vis(dirobj_obj, active_gs) == False:
+				if not dirobj_obj.is_writing() and room.chk_is_vis(dirobj_obj, active_gs) == False:
 						active_gs.buffer("You can't see a " + dirobj_obj.full_name + " here.")
 						return False
 				if active_gs.hero.is_contained(active_gs) and dirobj_obj not in active_gs.hero.get_contained_by(active_gs).get_vis_contain_lst(active_gs) + [room]:

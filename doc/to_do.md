@@ -257,7 +257,7 @@ Version 3.76 Goals
 			- DONE: stand() re-instated
 			- DONE: also update interp verb list, interp one_word list, and command on_word function
 			- DONE: create exit()
-		- TBD: general error for Writing: "That's laudably creative but, truth be told, the only thing you can really do with {writing} is to read it."
+		- DONE: Writing-specific error => validate()
 		- TBD: push remaining specific errors out of of validate
 			- TBD: obj no visible error
 				- TBD: in ViewOnly, create obj_not_visible_error(self, active_gs):
@@ -375,6 +375,7 @@ Version 3.77 Goals
 *** Unify Notes ***
 *** Plan for interpreter update ***
 
+- TBD: enable 'show writing to creature' is writing is on an item Burt is holding
 - TBD: stand() as Perch synonym for exit()
 - TBD: exit() should apply to chairs and doors => move to Perch / Nook class
 - IDEA: extend verb errors to ViewOnly for custom responses
