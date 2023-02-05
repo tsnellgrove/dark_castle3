@@ -23,7 +23,7 @@ def validate(active_gs, case, word_lst):
 				
 				1) Once timers were introduced, time tracking became important. Previously, errors and time were sort of intended to have a karmic relationship. The turn-counter was incremented for all input and then decremented when it appeared likely that an error was the interpreter's fault. This was inconsistent at best - but, once timers were introduced, it ceased to work at all. We couldn't have the hedgehog eating biscuits on an error turn. The short-term approach was to make Interpreter Errors untimed but Command Errors timed... but a better soluiton was desireable.
 				
-				2) The bigger problem was the more advanced use of pre_action machines. Machine code is usually triggered by a player command... but what if the command isn't valid? What if user_input == 'get sword' but Burt already has the sword? The upshot was having to put a 2nd set of error checking into Condition methods... which was crazy since error checking was already carefully coded into the noun class methods. Clearly a mechanism was needed to validate whether or not a command would be viable *before* it was executed.
+				2) The bigger problem was the more advanced use of pre_action machines. Machine code is usually triggered by a player command... but what if the command isn't valid? What if user_input == 'get sword' but Burt already has the sword? The upshot was having to put a 2nd set of error checking into Condition methods... which was crazy since error checking was already carefully coded into the verb methods. Clearly a mechanism was needed to validate whether or not a command would be viable *before* it was executed.
 				
 				For both these reasons, validate() was inserted between interp() and pre_action() during refactoring.
 				
@@ -81,9 +81,9 @@ def validate(active_gs, case, word_lst):
 						active_gs.buffer(f"You'll have to exit the {active_gs.hero.get_contained_by(active_gs).full_name} to attempt that.")
 						return False
 
-				if (word1 in ['drop', 'eat', 'wear']) and (not active_gs.hero.chk_in_hand(word2_obj)):
-						active_gs.buffer("You're not holding the " + word2_obj.full_name + " in your hand.")
-						return False
+#				if (word1 in []) and (not active_gs.hero.chk_in_hand(word2_obj)): # 'drop', 'eat', 'wear' removed
+#						active_gs.buffer("You're not holding the " + word2_obj.full_name + " in your hand.")
+#						return False
 
 				# *** specific command failures ***
 

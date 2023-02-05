@@ -182,6 +182,13 @@ class ViewOnly(Writing):
 		pass
 		return
 
+	# *** general errors ###
+	def not_in_hand(self, creature, active_gs):
+		if not creature.chk_in_hand(self):
+			active_gs.buffer("You're not holding the " + self.full_name + " in your hand.")
+			return True
+		return False
+
 	# *** verb error methods ***
 	def show(self, obj, active_gs):
 		active_gs.buffer(f"Exactly how would you exect the {self.full_name} to respond to the {obj.full_name}?")
