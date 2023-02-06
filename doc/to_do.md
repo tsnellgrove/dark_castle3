@@ -261,16 +261,19 @@ Version 3.76 Goals
 		- DONE: create exit()
 	- DONE: Writing-specific error => validate()
 	- INPROC: push remaining specific errors out of of validate
-		- INPROC: obj not in hand
+		- DONE: obj not in hand
 			- DONE: create ViewOnly not_in_hand general error
 			- DONE: elim validate() 2word not_in_hand error
-			- TBD: elim validate() prep not_in_hand error
+			- DONE: elim validate() prep not_in_hand error
 		- TBD: obj no visible error
 			- TBD: in ViewOnly, create obj_not_visible_error(self, active_gs):
 			- TBD: in method, check for vis and then buffer error
 			- TBD: call error methods from verb methods
 		- TBD: Creature.is_contained == True
 	- TBD: plan for when to finish pushing errors out of validate
+	- TBD: doc plan to finish the validate() fight:
+		- TBD: finalize plan for 'validate' / 'exe_std' / 'exe_silent' modes to run verb methods in
+		- TBD: how to pull verb method 'try' (from cmd_exe) into validate()
 	- TBD: update doc_string in validate to reflect current approach => method & repeating vs. logic
 
 - TBD: instantiate Creature Containers in actual game
@@ -548,6 +551,7 @@ Version 3.78 Goals
 
 - TBD: sort out validate() error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
 - IDEA: score() and end() should be between post_action() and auto_action() [i.e. between move 'n' and 'n+1']
+
 - TBD: interpreter - should all nouns be singular? Can 'a' vs. 'an' be fixed?
 - TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
 - TBD: pass 'mode' into verb methods
