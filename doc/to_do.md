@@ -265,8 +265,9 @@ Version 3.76 Goals
 			- DONE: create ViewOnly not_in_hand general error
 			- DONE: elim validate() 2word not_in_hand error
 			- DONE: elim validate() prep not_in_hand error
-		- TBD: obj no visible error
-			- TBD: in ViewOnly, create obj_not_visible_error(self, active_gs):
+			- DONE: update error method name to chk_not_in_hand() [resisted chk_and_disp_not_in_hand ]
+		- INPROC: obj no visible error
+			- TBD: in ViewOnly, create chk_not_vis(self, active_gs):
 			- TBD: in method, check for vis and then buffer error
 			- TBD: call error methods from verb methods
 		- TBD: Creature.is_contained == True

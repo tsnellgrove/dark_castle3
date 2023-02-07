@@ -265,7 +265,7 @@ class Creature(ViewOnly):
 		""" Shows an item in your hand to another creature.
 		"""
 		creature = active_gs.hero
-		if obj.not_in_hand(creature, active_gs):
+		if obj.chk_not_in_hand(creature, active_gs):
 			return
 		try:
 			active_gs.buffer(descript_dict[f"{creature.name}_show_{self.name}_{obj.name}"]) 
@@ -282,7 +282,7 @@ class Creature(ViewOnly):
 		"""
 		# determine other creature's response
 		creature = active_gs.hero
-		if obj.not_in_hand(creature, active_gs):
+		if obj.chk_not_in_hand(creature, active_gs):
 			return
 		try:
 			active_gs.buffer(descript_dict[f"{creature.name}_give_{self.name}_{obj.name}"])

@@ -252,7 +252,7 @@ class Container(Door):
 		""" Puts an Item in a Container or on a Surface.
 		"""
 		creature = active_gs.hero
-		if obj.not_in_hand(creature, active_gs):
+		if obj.chk_not_in_hand(creature, active_gs):
 			return
 		if self.is_open == False:
 			active_gs.buffer(f"The {self.full_name} is closed.")
