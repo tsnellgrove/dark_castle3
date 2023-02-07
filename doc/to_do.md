@@ -266,16 +266,18 @@ Version 3.76 Goals
 			- DONE: elim validate() 2word not_in_hand error
 			- DONE: elim validate() prep not_in_hand error
 			- DONE: update error method name to chk_not_in_hand() [resisted chk_and_disp_not_in_hand ]
-		- INPROC: obj no visible error
-			- TBD: in ViewOnly, create chk_not_vis(self, active_gs):
-			- TBD: in method, check for vis and then buffer error
-			- TBD: call error methods from verb methods
+		- INPROC: obj not visible error
+			- DONE: in ViewOnly, create chk_not_vis(self, active_gs):
+			- DONE: in method, check for vis and then buffer error
+			- INPROC: call error methods from verb methods
+				- INPROC: 'examine',
 		- TBD: Creature.is_contained == True
 	- TBD: plan for when to finish pushing errors out of validate
 	- TBD: doc plan to finish the validate() fight:
 		- TBD: finalize plan for 'validate' / 'exe_std' / 'exe_silent' modes to run verb methods in
 		- TBD: how to pull verb method 'try' (from cmd_exe) into validate()
 	- TBD: update doc_string in validate to reflect current approach => method & repeating vs. logic
+	- TBD: doc_string on validate just for user_input (i.e. Burt)
 
 - TBD: instantiate Creature Containers in actual game
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
