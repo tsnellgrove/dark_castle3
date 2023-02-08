@@ -270,8 +270,9 @@ Version 3.76 Goals
 			- DONE: in ViewOnly, create chk_not_vis(self, active_gs):
 			- DONE: in method, check for vis and then buffer error
 			- INPROC: call error methods from verb methods
-				- INPROC: 'examine',
+				- INPROC: 'examine', 'take', 'drop', 'eat', 'wear', 
 		- TBD: Creature.is_contained == True
+		- TBD: add base errors (vis, not sitting, not writing) to base_class verb error calls
 	- TBD: plan for when to finish pushing errors out of validate
 	- TBD: doc plan to finish the validate() fight:
 		- TBD: finalize plan for 'validate' / 'exe_std' / 'exe_silent' modes to run verb methods in

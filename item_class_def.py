@@ -34,6 +34,8 @@ class Item(ViewOnly):
 		""" Takes an object from either the room or from Burt's inventory and places it into Burt's hand
 		"""
 		creature = active_gs.hero
+		if self.chk_not_vis(creature, active_gs):
+			return
 		if creature.chk_in_hand(self):
 			active_gs.buffer("You're already holding the " + self.full_name)
 			return 
@@ -55,6 +57,8 @@ class Item(ViewOnly):
 		""" Drops an object from Burt's hand to the floor of the room.
 		"""
 		creature = active_gs.hero
+		if self.chk_not_vis(creature, active_gs):
+			return
 		if self.chk_not_in_hand(creature, active_gs):
 			return
 		if creature.is_contained(active_gs) and not creature.get_contained_by(active_gs).chk_has_capacity():
@@ -81,6 +85,8 @@ class Food(Item):
 		""" Removes the Food object from the game and provides a description of how the food tasted.
 		"""
 		creature = active_gs.hero
+		if self.chk_not_vis(creature, active_gs):
+			return
 		if self.chk_not_in_hand(creature, active_gs):
 			return
 
@@ -111,6 +117,8 @@ class Garment(Item):
 		""" Places a garment in a creature's worn inventory and provides a description of any effects that result.
 		"""
 		creature = active_gs.hero
+		if self.chk_not_vis(creature, active_gs):
+			return
 		if self in creature.worn_lst:
 			active_gs.buffer(f"You're already wearing the {self.full_name}!")
 			return

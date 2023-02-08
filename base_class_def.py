@@ -190,7 +190,7 @@ class ViewOnly(Writing):
 		return False
 
 	def chk_not_vis(self, creature, active_gs):
-		if not self.is_writing() and active_gs.map.get_obj_room(creature).chk_is_vis(self) == False: 
+		if not self.is_writing() and active_gs.map.get_obj_room(creature).chk_is_vis(self, active_gs) == False: 
 			active_gs.buffer("You can't see a " + self.full_name + " here.")
 			return True
 		return False
@@ -286,7 +286,6 @@ class ViewOnly(Writing):
 	def examine(self, active_gs):
 		""" Describes an object.
 		"""
-
 		creature = active_gs.hero
 		if self.chk_not_vis(creature, active_gs):
 			return

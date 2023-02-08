@@ -70,6 +70,8 @@ class Door(ViewOnly):
 		""" Unlocks a Door object.
 		"""
 		creature = active_gs.hero
+		if self.chk_not_vis(creature, active_gs):
+			return
 		if self.is_open is None:
 			active_gs.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
 			return 
@@ -97,6 +99,9 @@ class Door(ViewOnly):
 	def open(self, active_gs):
 		""" Opens a Door object.
 		"""
+		creature = active_gs.hero
+		if self.chk_not_vis(creature, active_gs):
+			return
 		if self.is_open is None:
 			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 			return 
@@ -112,6 +117,9 @@ class Door(ViewOnly):
 	def close(self, active_gs):
 		""" Closes a Door object.
 		"""
+		creature = active_gs.hero
+		if self.chk_not_vis(creature, active_gs):
+			return
 		if self.is_open is None:
 			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 			return 
@@ -128,6 +136,8 @@ class Door(ViewOnly):
 		""" Locks a Door object.
 		"""
 		creature = active_gs.hero
+		if self.chk_not_vis(creature, active_gs):
+			return
 		if self.is_open is None:
 			active_gs.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
 			return 
@@ -252,6 +262,8 @@ class Container(Door):
 		""" Puts an Item in a Container or on a Surface.
 		"""
 		creature = active_gs.hero
+		if self.chk_not_vis(creature, active_gs):
+			return
 		if obj.chk_not_in_hand(creature, active_gs):
 			return
 		if self.is_open == False:
@@ -331,11 +343,11 @@ class Surface(Container):
 		return 
 
 	# *** verb methods ***
-	def take(self, active_gs):
-		""" Provides a custom error if the player attempts to take() an object of Surface class.
-		"""
-		active_gs.buffer(f"What kind of person tries to take a {self.full_name}?")
-		return
+#	def take(self, active_gs):
+#		""" Provides a custom error if the player attempts to take() an object of Surface class.
+#		"""
+#		active_gs.buffer(f"What kind of person tries to take a {self.full_name}?")
+#		return
 
 	def open(self, active_gs):
 		active_gs.buffer(f"How do you propose to 'open' the {self.full_name}?")
@@ -376,6 +388,8 @@ class Seat(Surface):
 		if creature is None:
 			creature = active_gs.hero
 
+		if self.chk_not_vis(creature, active_gs):
+			return
 		if not creature.is_creature():
 			active_gs.buffer(f"The {creature.full_name} can't sit on the {self.full_name}!")
 			return
@@ -412,10 +426,11 @@ class Seat(Surface):
 #			active_gs.buffer(f"There's no room on the {self.full_name} to sit.")
 #			return
 
+		if self.chk_not_vis(creature, active_gs):
+			return
 		if not creature.is_contained(active_gs):
 			active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
-			return
-		
+			return		
 		if creature.is_contained(active_gs) and creature.get_contained_by(active_gs) != self:
 			active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
 			return
