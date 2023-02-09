@@ -103,6 +103,21 @@ class Writing(Invisible):
 			except:
 				return f"The {self.full_name} is simply indescribable."
 
+	# *** general errors ###
+	def std_error(self, creature, active_gs):
+		room = active_gs.map.get_obj_room(creature)
+		if self.is_writing and not room.chk_wrt_is_vis(self, active_gs):
+			active_gs.buffer(f"You can't see {self.full_name} written on anything here.")
+			return 
+		if not self.is_writing() and room.chk_is_vis(self, active_gs) == False: 
+			active_gs.buffer("You can't see a " + self.full_name + " here.")
+			return True
+##		if word1 != 'read' and word1 != 'exit' and active_gs.hero.is_contained(active_gs) and word2_obj not in active_gs.hero.get_contained_by(active_gs).get_vis_contain_lst(active_gs) + [room]:
+##			active_gs.buffer(f"You'll have to exit the {active_gs.hero.get_contained_by(active_gs).full_name} to attempt that.")
+##			return True
+		
+		return False
+
 	# *** verb methods ***
 	def examine(self, active_gs):
 		""" Describes an object.
