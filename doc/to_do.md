@@ -266,18 +266,18 @@ Version 3.76 Goals
 			- DONE: elim validate() 2word not_in_hand error
 			- DONE: elim validate() prep not_in_hand error
 			- DONE: update error method name to chk_not_in_hand() [resisted chk_and_disp_not_in_hand ]
-		- INPROC: obj not visible error
+		- PAUSE: obj not visible error
 			- DONE: in ViewOnly, create chk_not_vis(self, active_gs):
 			- DONE: in method, check for vis and then buffer error
-			- INPROC: call error methods from verb methods
-				- INPROC: 'examine', Item class verbs, Door class verbs, 
+			- PAUSE: call error methods from verb methods
+				- PAUSE: 'examine', Item class verbs, Door class verbs, 
 		- CANCEL: Creature.is_contained == True
 		- CANCEL: add base errors (vis, not sitting, not writing) to base_class verb error calls
 		- INPROC: new plan for errors:
-			- INPROC: Create std error list:
+			- DONE: Create std error list:
 				- DONE: writing not vis => don't see
 				- DONE: non-writin obj not vis => don't see
-				- INPROC: if creature.is_contained => must exit
+				- DONE: if creature.is_contained => must exit
 			- TBD: Move base verb errors to Writing
 				- call std errors
 				- if is_writing => can only read
