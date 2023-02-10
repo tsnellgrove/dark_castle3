@@ -278,7 +278,9 @@ Version 3.76 Goals
 				- DONE: writing not vis => don't see
 				- DONE: non-writin obj not vis => don't see
 				- DONE: if creature.is_contained => must exit
-			- TBD: Move base verb errors to Writing
+			- INPROC: Move base verb errors to Writing
+				- DONE: move to Writing
+				- INPROC: test std erros and is_writing on 'show'
 				- call std errors
 				- if is_writing => can only read
 				- else => std error

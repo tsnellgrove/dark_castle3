@@ -103,7 +103,7 @@ class Writing(Invisible):
 			except:
 				return f"The {self.full_name} is simply indescribable."
 
-	# *** general errors ###
+	# *** standard errors ###
 	def chk_std_error(self, creature, active_gs):
 		room = active_gs.map.get_obj_room(creature)
 		if self.is_writing and not room.chk_wrt_is_vis(self, active_gs):
@@ -117,13 +117,109 @@ class Writing(Invisible):
 			return True
 		return False
 
-	# *** verb methods ***
+# *** verb error methods ***
 	def examine(self, active_gs):
-		""" Describes an object.
-		"""
 #		if self.is_writing():
 		active_gs.buffer(f"You can't examine the {self.full_name}. Try using 'read' instead.")
 		return
+
+	def show(self, obj, active_gs):
+		creature = active_gs.hero
+		if self.chk_std_error(creature, active_gs):
+			return
+		if obj.chk_std_error(creature, active_gs):
+			return
+		if obj.is_writing():
+			active_gs.buffer(f"That's laudably creative but, truth be told, the only thing you can generally do with the {self.full_name} is to read it.")
+		else:
+			active_gs.buffer(f"Exactly how would you expect the {self.full_name} to respond to the {obj.full_name}?")
+		return
+
+	def give(self, obj, active_gs):
+		active_gs.buffer(f"And what do you expect the {self.full_name} to do with the {obj.full_name}?")
+		return
+
+	def attack(self, src_obj, active_gs):
+		active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
+		return
+
+	def open(self, active_gs):
+		active_gs.buffer(f"The {self.full_name} cannot be openned.")
+		return
+	
+	def close(self, active_gs):
+		active_gs.buffer(f"The {self.full_name} cannot be closed.")
+		return
+	
+	def lock(self, active_gs):
+		active_gs.buffer(f"The {self.full_name} cannot be locked.")
+		return
+
+	def unlock(self, active_gs):
+		active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
+		return
+
+	def put(self, obj, active_gs):
+		active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
+		return
+
+	def take(self, active_gs):
+		active_gs.buffer(f"Just how do you intend to pick up a {self.full_name}?")
+		return
+
+	def drop(self, active_gs): # not sure this error is actually possible?
+		active_gs.buffer(f"The {self.full_name} cannot be dropped at this time.")
+		return
+
+	def eat(self, active_gs):
+		active_gs.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? Burt, if you keep this up you're going to give Adventurers a bad name!")
+		return
+
+	def wear(self, active_gs):
+		active_gs.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
+		return
+
+	def drink(self, active_gs): 
+		active_gs.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")
+		return
+
+	def go(self, dir, active_gs): # not sure this error ever triggers? Local handling should catch all wrong cases.
+		active_gs.buffer(f"Use 'go', in conjunction with a cardinal direction, to travel from one room to another. You cannot 'go {dir.full_name}'.")
+		return
+
+	def push(self, active_gs):
+		active_gs.buffer(f"Pushing on the {self.full_name} has no effect.")
+		return
+
+	def pull(self, active_gs):
+		active_gs.buffer(f"Pushing on the {self.full_name} has no effect.")
+		return
+
+	def enter(self, active_gs):
+		active_gs.buffer(f"You can't use the word 'enter' with the {self.full_name}.")
+		return
+
+	def exit(self, active_gs):
+		active_gs.buffer(f"You can't use the word 'exit' with the {self.full_name}.")
+		return
+
+	# TBD:
+	# N/A: 'examine', 'help', 'read'
+	# DONE: 
+		# Creature: 'show', 'give', 'attack'
+		# Door: 'open', 'close', 'lock', 'unlock'
+		# Container: 'put'
+		# Item: 'take', 'drop'
+		# Food: 'eat'
+		# Garment: 'wear'
+		# Liquid: 'drink'
+		# Room: 'go'
+		# Switch: 'pull','push'
+		# Seat: 'enter', 'exit'
+
+
+	# *** verb methods ***
+
 
 
 	def read(self, active_gs):
@@ -209,92 +305,7 @@ class ViewOnly(Writing):
 			return True
 		return False
 
-	# *** verb error methods ***
-	def show(self, obj, active_gs):
-		active_gs.buffer(f"Exactly how would you exect the {self.full_name} to respond to the {obj.full_name}?")
-		return
-
-	def give(self, obj, active_gs):
-		active_gs.buffer(f"And what do you expect the {self.full_name} to do with the {obj.full_name}?")
-		return
-
-	def attack(self, src_obj, active_gs):
-		active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
-		return
-
-	def open(self, active_gs):
-		active_gs.buffer(f"The {self.full_name} cannot be openned.")
-		return
 	
-	def close(self, active_gs):
-		active_gs.buffer(f"The {self.full_name} cannot be closed.")
-		return
-	
-	def lock(self, active_gs):
-		active_gs.buffer(f"The {self.full_name} cannot be locked.")
-		return
-
-	def unlock(self, active_gs):
-		active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
-		return
-
-	def put(self, obj, active_gs):
-		active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
-		return
-
-	def take(self, active_gs):
-		active_gs.buffer(f"Just how do you intend to pick up a {self.full_name}?")
-		return
-
-	def drop(self, active_gs): # not sure this error is actually possible?
-		active_gs.buffer(f"The {self.full_name} cannot be dropped at this time.")
-		return
-
-	def eat(self, active_gs):
-		active_gs.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? Burt, if you keep this up you're going to give Adventurers a bad name!")
-		return
-
-	def wear(self, active_gs):
-		active_gs.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
-		return
-
-	def drink(self, active_gs): 
-		active_gs.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")
-		return
-
-	def go(self, dir, active_gs): # not sure this error ever triggers? Local handling should catch all wrong cases.
-		active_gs.buffer(f"Use 'go', in conjunction with a cardinal direction, to travel from one room to another. You cannot 'go {dir.full_name}'.")
-		return
-
-	def push(self, active_gs):
-		active_gs.buffer(f"Pushing on the {self.full_name} has no effect.")
-		return
-
-	def pull(self, active_gs):
-		active_gs.buffer(f"Pushing on the {self.full_name} has no effect.")
-		return
-
-	def enter(self, active_gs):
-		active_gs.buffer(f"You can't use the word 'enter' with the {self.full_name}.")
-		return
-
-	def exit(self, active_gs):
-		active_gs.buffer(f"You can't use the word 'exit' with the {self.full_name}.")
-		return
-
-	# TBD:
-	# N/A: 'examine', 'help', 'read'
-	# DONE: 
-		# Creature: 'show', 'give', 'attack'
-		# Door: 'open', 'close', 'lock', 'unlock'
-		# Container: 'put'
-		# Item: 'take', 'drop'
-		# Food: 'eat'
-		# Garment: 'wear'
-		# Liquid: 'drink'
-		# Room: 'go'
-		# Switch: 'pull','push'
-		# Seat: 'enter', 'exit'
 
 	# *** verb methods ***
 	def examine(self, active_gs):
