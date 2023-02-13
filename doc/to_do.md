@@ -280,7 +280,7 @@ Version 3.76 Goals
 				- DONE: if creature.is_contained => must exit
 			- INPROC: Move base verb errors to Writing
 				- DONE: move to Writing
-				- INPROC: test std erros and is_writing on 'show'
+				- INPROC: test std erros and is_writing on 'show' (still!)
 				- call std errors
 				- if is_writing => can only read
 				- else => std error
