@@ -54,10 +54,11 @@ Nov 5, 2022
 			- If similar obj and non-obj vars appear in same function, diff the non-obj case: e.g. worn_lst vs. worn_str_lst
 - methods
 	- prefixes:
-		- 'is' / 'has' for methods where no varriable is passed but a bool is returned; e.g. 'obj.is_item()'
+		- 'is' / 'has' for methods where no var is passed but a bool is returned; e.g. 'obj.is_item()'
 		- 'chk' for a method where you will send an obj and get back a bool
 		- 'get' for a method that will return a 'usuable' obj var
 		- 'disp' if a method's main purpose is to buffer content
+		- 'err' if method's main purpose is to test for an error, throw an error message, and return bool
 	- postfixes:
 		- N/A
 
@@ -280,7 +281,9 @@ Version 3.76 Goals
 				- DONE: if creature.is_contained => must exit
 			- INPROC: Move base verb errors to Writing
 				- DONE: move to Writing
-				- INPROC: test std erros and is_writing on 'show' (Progress!!)
+				- INPROC: test std erros and is_writing on 'show' (Progress!!!)
+					- TBD: incorporate writing while contained into std_err?
+					- IDEA: method verbs as *extensions* (not overpowers) of error verbs??
 				- call std errors
 				- if is_writing => can only read
 				- else => std error
