@@ -103,33 +103,59 @@ class Writing(Invisible):
 			except:
 				return f"The {self.full_name} is simply indescribable."
 
-	# *** standard errors ###
-	def err_not_vis(self, creature, active_gs):
+	# *** standard errors ###	
+	def err_wrt_not_vis(self, creature, active_gs):
 		room = active_gs.map.get_obj_room(creature)
-		if not self.is_writing() and room.chk_is_vis(self, active_gs) == False: 
-			active_gs.buffer("You can't see a " + self.full_name + " here.")
+		if self.is_writing() and not room.chk_wrt_is_vis(self, active_gs):
+			active_gs.buffer(f"You can't see {self.full_name} written on anything here.")
 			return True
 		return False
-	
+
+	def err_wrt_not_in_reach(self, creature, active_gs):
+		if self.is_writing() and creature.is_contained(active_gs) and not creature.get_contained_by(active_gs).chk_wrt_is_vis(self,active_gs):
+			active_gs.buffer(f"You'll have to exit the {creature.get_contained_by(active_gs).full_name} to attempt that.")
+			return True
+		return False
+
 	def err_wrt_class(self, creature, active_gs):
 		if self.is_writing():
 			active_gs.buffer(f"That's laudably creative but, truth be told, the only thing you can generally do with the {self.full_name} is to read it.")
 			return True
 		return False
 
+	def err_not_vis(self, creature, active_gs):
+		room = active_gs.map.get_obj_room(creature)
+		if not self.is_writing() and room.chk_is_vis(self, active_gs) == False: 
+			active_gs.buffer("You can't see a " + self.full_name + " here.")
+			return True
+		return False
+
+	def err_not_in_reach(self, creature, active_gs):
+		room = active_gs.map.get_obj_room(creature)
+		if not self.is_writing() and creature.is_contained(active_gs) and self not in creature.get_contained_by(active_gs).get_vis_contain_lst(active_gs) + [room]:
+			active_gs.buffer(f"You'll have to exit the {creature.get_contained_by(active_gs).full_name} to attempt that.")
+			return True
+		return False
+
 	def err_std(self, creature, active_gs):
 #		print(f"std error check on {self.full_name}")
-		room = active_gs.map.get_obj_room(creature)
-		if self.is_writing() and not room.chk_wrt_is_vis(self, active_gs):
-			active_gs.buffer(f"You can't see {self.full_name} written on anything here.")
+#		room = active_gs.map.get_obj_room(creature)
+#		if self.is_writing() and not room.chk_wrt_is_vis(self, active_gs):
+#			active_gs.buffer(f"You can't see {self.full_name} written on anything here.")
+#			return True
+		if self.err_wrt_not_vis(creature, active_gs):
+			return True
+		if self.err_wrt_not_in_reach(creature, active_gs):
 			return True
 		if self.err_wrt_class(creature, active_gs):
 			return True
 		if self.err_not_vis(creature, active_gs):
 			return True
-		if not self.is_writing() and active_gs.hero.is_contained(active_gs) and self not in active_gs.hero.get_contained_by(active_gs).get_vis_contain_lst(active_gs) + [room]:
-			active_gs.buffer(f"You'll have to exit the {active_gs.hero.get_contained_by(active_gs).full_name} to attempt that.")
+		if self.err_not_in_reach(creature, active_gs):
 			return True
+#		if not self.is_writing() and active_gs.hero.is_contained(active_gs) and self not in active_gs.hero.get_contained_by(active_gs).get_vis_contain_lst(active_gs) + [room]:
+#			active_gs.buffer(f"You'll have to exit the {active_gs.hero.get_contained_by(active_gs).full_name} to attempt that.")
+#			return True
 		return False
 
 # *** verb error methods ***
@@ -150,7 +176,7 @@ class Writing(Invisible):
 #			return
 #		if obj.is_writing():
 #			active_gs.buffer(f"That's laudably creative but, truth be told, the only thing you can generally do with the {obj.full_name} is to read it.")
-		else:
+		if not self.is_creature():
 			active_gs.buffer(f"Exactly how would you expect the {self.full_name} to respond to the {obj.full_name}?")
 		return
 

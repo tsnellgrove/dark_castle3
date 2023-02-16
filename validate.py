@@ -103,10 +103,10 @@ def validate(active_gs, case, word_lst):
 				if word1 != 'show' and dirobj_obj.is_writing():
 						active_gs.buffer(f"That's laudably creative but, truth be told, the only thing you can generally do with the {dirobj_obj.full_name} is to read it.")
 						return False
-				if not noun_obj.is_writing() and room.chk_is_vis(noun_obj, active_gs) == False:
+				if word1 != 'show' and not noun_obj.is_writing() and room.chk_is_vis(noun_obj, active_gs) == False:
 						active_gs.buffer("You can't see a " + noun_obj.full_name + " here.")
 						return False
-				if not dirobj_obj.is_writing() and room.chk_is_vis(dirobj_obj, active_gs) == False:
+				if word1 != 'show' and not dirobj_obj.is_writing() and room.chk_is_vis(dirobj_obj, active_gs) == False:
 						active_gs.buffer("You can't see a " + dirobj_obj.full_name + " here.")
 						return False
 				if word1 != 'show' and active_gs.hero.is_contained(active_gs) and dirobj_obj not in active_gs.hero.get_contained_by(active_gs).get_vis_contain_lst(active_gs) + [room]:

@@ -281,14 +281,16 @@ Version 3.76 Goals
 				- DONE: if creature.is_contained => must exit
 			- INPROC: Move base verb errors to Writing
 				- DONE: move to Writing
-				- INPROC: test std erros and is_writing on 'show' (Progress!!!)
+				- INPROC: test std erros and is_writing on 'show' (final test!)
 					- TBD: incorporate writing while contained into std_err?
 					- IDEA: method verbs as *extensions* (not overpowers) of error verbs??
+					- IDEA: if not self.is_creature(): buffer non-creature error
 				- call std errors
 				- if is_writing => can only read
 				- else => std error
 			- TBD: for all method verbs
 				- call std errors 
+			- IDEA: make verb method mode attribute ('validate', 'std_exe', 'silent_exe') optional
 
 	- TBD: plan for when to finish pushing errors out of validate
 	- TBD: doc plan to finish the validate() fight:
