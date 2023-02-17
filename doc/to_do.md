@@ -4,7 +4,7 @@ Nov 5, 2022
 
 *** Need a new IDE ***
 - iPad / offline: Pyto
-- Mac Air / Offline: MS VSCode
+- Mac Air / Offline: MS VSCode [CHOSEN]
 - Cloud / Online: CodeAnyWhere, Cloud9 (AWS)
 - Reference article: '5 ways to use Python on an iPad'
 
@@ -282,9 +282,15 @@ Version 3.76 Goals
 			- INPROC: Move base verb errors to Writing
 				- DONE: move to Writing
 				- INPROC: test std erros and is_writing on 'show' (final test!)
-					- TBD: incorporate writing while contained into std_err?
+					- DONE: incorporate writing while contained into std_err?
 					- IDEA: method verbs as *extensions* (not overpowers) of error verbs??
 					- IDEA: if not self.is_creature(): buffer non-creature error
+					- DONE: extend creature.show() off of writing.show()
+					- TBD: resolve double error issue (e.g. 'show grimy axe to hedgehog')
+						- IDEA: create custom 'try' in cmd_exe just for word1 = show; break on return False
+					- TBD: consolidate / fix ViewOnly general errors
+					- TBD: clean up comments
+				- TBD: extend new error approach to all verbs
 				- call std errors
 				- if is_writing => can only read
 				- else => std error
