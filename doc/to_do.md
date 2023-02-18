@@ -281,15 +281,17 @@ Version 3.76 Goals
 				- DONE: if creature.is_contained => must exit
 			- INPROC: Move base verb errors to Writing
 				- DONE: move to Writing
-				- INPROC: test std erros and is_writing on 'show' (final test!)
+				- DONE: test std erros and is_writing on 'show' (final test!)
 					- DONE: incorporate writing while contained into std_err?
 					- IDEA: method verbs as *extensions* (not overpowers) of error verbs??
 					- IDEA: if not self.is_creature(): buffer non-creature error
 					- DONE: extend creature.show() off of writing.show()
 					- DONE: resolve double error issue (e.g. 'show grimy axe to hedgehog')
 						- DONE: Return True on Writing.show() and check at start of Creature.show()
-					- TBD: clean up comments
-				- TBD: consolidate / fix ViewOnly general errors
+					- DONE: clean up comments
+				- INPROC: consolidate / fix ViewOnly general errors
+					- TBD: chk_not_vis() => err_not_vis()
+					- TBD: chk_not_in_hand() => move to Writing; change to err_not_in_hand()
 				- TBD: extend new error approach to all verbs
 				- call std errors
 				- if is_writing => can only read

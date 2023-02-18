@@ -70,7 +70,7 @@ class Door(ViewOnly):
 		""" Unlocks a Door object.
 		"""
 		creature = active_gs.hero
-		if self.chk_not_vis(creature, active_gs):
+		if self.err_not_vis(creature, active_gs):
 			return
 		if self.is_open is None:
 			active_gs.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
@@ -100,7 +100,7 @@ class Door(ViewOnly):
 		""" Opens a Door object.
 		"""
 		creature = active_gs.hero
-		if self.chk_not_vis(creature, active_gs):
+		if self.err_not_vis(creature, active_gs):
 			return
 		if self.is_open is None:
 			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
@@ -118,7 +118,7 @@ class Door(ViewOnly):
 		""" Closes a Door object.
 		"""
 		creature = active_gs.hero
-		if self.chk_not_vis(creature, active_gs):
+		if self.err_not_vis(creature, active_gs):
 			return
 		if self.is_open is None:
 			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
@@ -136,7 +136,7 @@ class Door(ViewOnly):
 		""" Locks a Door object.
 		"""
 		creature = active_gs.hero
-		if self.chk_not_vis(creature, active_gs):
+		if self.err_not_vis(creature, active_gs):
 			return
 		if self.is_open is None:
 			active_gs.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
@@ -262,7 +262,7 @@ class Container(Door):
 		""" Puts an Item in a Container or on a Surface.
 		"""
 		creature = active_gs.hero
-		if self.chk_not_vis(creature, active_gs):
+		if self.err_not_vis(creature, active_gs):
 			return
 		if obj.chk_not_in_hand(creature, active_gs):
 			return
@@ -388,7 +388,7 @@ class Seat(Surface):
 		if creature is None:
 			creature = active_gs.hero
 
-		if self.chk_not_vis(creature, active_gs):
+		if self.err_not_vis(creature, active_gs):
 			return
 		if not creature.is_creature():
 			active_gs.buffer(f"The {creature.full_name} can't sit on the {self.full_name}!")
@@ -426,7 +426,7 @@ class Seat(Surface):
 #			active_gs.buffer(f"There's no room on the {self.full_name} to sit.")
 #			return
 
-		if self.chk_not_vis(creature, active_gs):
+		if self.err_not_vis(creature, active_gs):
 			return
 		if not creature.is_contained(active_gs):
 			active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")

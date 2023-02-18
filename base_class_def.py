@@ -330,11 +330,11 @@ class ViewOnly(Writing):
 			return True
 		return False
 
-	def chk_not_vis(self, creature, active_gs):
-		if not self.is_writing() and active_gs.map.get_obj_room(creature).chk_is_vis(self, active_gs) == False: 
-			active_gs.buffer("You can't see a " + self.full_name + " here.")
-			return True
-		return False
+#	def chk_not_vis(self, creature, active_gs):
+#		if not self.is_writing() and active_gs.map.get_obj_room(creature).chk_is_vis(self, active_gs) == False: 
+#			active_gs.buffer("You can't see a " + self.full_name + " here.")
+#			return True
+#		return False
 
 	
 
@@ -343,7 +343,7 @@ class ViewOnly(Writing):
 		""" Describes an object.
 		"""
 		creature = active_gs.hero
-		if self.chk_not_vis(creature, active_gs):
+		if self.err_not_vis(creature, active_gs):
 			return
 
 		if self.get_title_str(active_gs) is not None:
