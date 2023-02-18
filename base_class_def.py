@@ -138,11 +138,6 @@ class Writing(Invisible):
 		return False
 
 	def err_std(self, creature, active_gs):
-#		print(f"std error check on {self.full_name}")
-#		room = active_gs.map.get_obj_room(creature)
-#		if self.is_writing() and not room.chk_wrt_is_vis(self, active_gs):
-#			active_gs.buffer(f"You can't see {self.full_name} written on anything here.")
-#			return True
 		if self.err_wrt_not_vis(creature, active_gs):
 			return True
 		if self.err_wrt_not_in_reach(creature, active_gs):
@@ -153,9 +148,6 @@ class Writing(Invisible):
 			return True
 		if self.err_not_in_reach(creature, active_gs):
 			return True
-#		if not self.is_writing() and active_gs.hero.is_contained(active_gs) and self not in active_gs.hero.get_contained_by(active_gs).get_vis_contain_lst(active_gs) + [room]:
-#			active_gs.buffer(f"You'll have to exit the {active_gs.hero.get_contained_by(active_gs).full_name} to attempt that.")
-#			return True
 		return False
 
 # *** verb error methods ***
@@ -170,12 +162,6 @@ class Writing(Invisible):
 			return True
 		if obj.err_std(creature, active_gs):
 			return True
-#		if self.err_wrt_class(creature, active_gs):
-#			return
-#		if obj.err_wrt_class(creature, active_gs):
-#			return
-#		if obj.is_writing():
-#			active_gs.buffer(f"That's laudably creative but, truth be told, the only thing you can generally do with the {obj.full_name} is to read it.")
 		if not self.is_creature():
 			active_gs.buffer(f"Exactly how would you expect the {self.full_name} to respond to the {obj.full_name}?")
 			return True
@@ -250,9 +236,10 @@ class Writing(Invisible):
 		return
 
 	# TBD:
-	# N/A: 'examine', 'help', 'read'
-	# DONE: 
-		# Creature: 'show', 'give', 'attack'
+		# true1word: 'help' [???]
+		# Writing: 'read'
+		# ViewOnly: 'examine' 
+		# Creature: 'give', 'attack'
 		# Door: 'open', 'close', 'lock', 'unlock'
 		# Container: 'put'
 		# Item: 'take', 'drop'
@@ -262,12 +249,10 @@ class Writing(Invisible):
 		# Room: 'go'
 		# Switch: 'pull','push'
 		# Seat: 'enter', 'exit'
-
+	# DONE:
+		# Creature: 'show'
 
 	# *** verb methods ***
-
-
-
 	def read(self, active_gs):
 		""" Reads text found on an object.
 		"""

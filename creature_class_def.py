@@ -260,12 +260,6 @@ class Creature(ViewOnly):
 		return 
 
 
-#	# *** verb methods ***
-#	def open(self, active_gs):
-#		super(Container, self).open(active_gs)
-#		""" Extends Door.open(). Upon opening a container, the player's natural question is "What's in it?". Open for containers answers this question whenever a container is opened. If the container is empty that information is displayed as well.
-#		"""
-
 	# *** verb methods ***
 	def show(self, obj, active_gs):
 		base_error = super(Creature, self).show(obj, active_gs)
@@ -276,6 +270,8 @@ class Creature(ViewOnly):
 		creature = active_gs.hero
 		if obj.chk_not_in_hand(creature, active_gs):
 			return
+
+
 		try:
 			active_gs.buffer(descript_dict[f"{creature.name}_show_{self.name}_{obj.name}"]) 
 		except:
