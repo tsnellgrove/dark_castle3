@@ -268,9 +268,11 @@ class Creature(ViewOnly):
 
 	# *** verb methods ***
 	def show(self, obj, active_gs):
-		super(Creature, self).show(obj, active_gs)
+		base_error = super(Creature, self).show(obj, active_gs)
 		""" Extends Writing.show(). Shows an item in your hand to another creature.
 		"""
+		if base_error:
+			return
 		creature = active_gs.hero
 		if obj.chk_not_in_hand(creature, active_gs):
 			return

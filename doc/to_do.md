@@ -286,10 +286,10 @@ Version 3.76 Goals
 					- IDEA: method verbs as *extensions* (not overpowers) of error verbs??
 					- IDEA: if not self.is_creature(): buffer non-creature error
 					- DONE: extend creature.show() off of writing.show()
-					- TBD: resolve double error issue (e.g. 'show grimy axe to hedgehog')
-						- IDEA: create custom 'try' in cmd_exe just for word1 = show; break on return False
-					- TBD: consolidate / fix ViewOnly general errors
+					- DONE: resolve double error issue (e.g. 'show grimy axe to hedgehog')
+						- DONE: Return True on Writing.show() and check at start of Creature.show()
 					- TBD: clean up comments
+				- TBD: consolidate / fix ViewOnly general errors
 				- TBD: extend new error approach to all verbs
 				- call std errors
 				- if is_writing => can only read
