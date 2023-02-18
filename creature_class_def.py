@@ -268,7 +268,7 @@ class Creature(ViewOnly):
 		if base_error:
 			return
 		creature = active_gs.hero
-		if obj.chk_not_in_hand(creature, active_gs):
+		if obj.err_not_in_hand(creature, active_gs):
 			return
 
 
@@ -287,7 +287,7 @@ class Creature(ViewOnly):
 		"""
 		# determine other creature's response
 		creature = active_gs.hero
-		if obj.chk_not_in_hand(creature, active_gs):
+		if obj.err_not_in_hand(creature, active_gs):
 			return
 		try:
 			active_gs.buffer(descript_dict[f"{creature.name}_give_{self.name}_{obj.name}"])

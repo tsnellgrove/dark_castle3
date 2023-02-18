@@ -264,7 +264,7 @@ class Container(Door):
 		creature = active_gs.hero
 		if self.err_not_vis(creature, active_gs):
 			return
-		if obj.chk_not_in_hand(creature, active_gs):
+		if obj.err_not_in_hand(creature, active_gs):
 			return
 		if self.is_open == False:
 			active_gs.buffer(f"The {self.full_name} is closed.")

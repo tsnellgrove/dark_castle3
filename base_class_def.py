@@ -137,6 +137,13 @@ class Writing(Invisible):
 			return True
 		return False
 
+	def err_not_in_hand(self, creature, active_gs):
+		if not creature.chk_in_hand(self):
+			active_gs.buffer("You're not holding the " + self.full_name + " in your hand.")
+			return True
+		return False
+
+
 	def err_std(self, creature, active_gs):
 		if self.err_wrt_not_vis(creature, active_gs):
 			return True
@@ -324,11 +331,11 @@ class ViewOnly(Writing):
 		return
 
 	# *** general errors ###
-	def chk_not_in_hand(self, creature, active_gs):
-		if not creature.chk_in_hand(self):
-			active_gs.buffer("You're not holding the " + self.full_name + " in your hand.")
-			return True
-		return False
+#	def chk_not_in_hand(self, creature, active_gs):
+#		if not creature.chk_in_hand(self):
+#			active_gs.buffer("You're not holding the " + self.full_name + " in your hand.")
+#			return True
+#		return False
 
 #	def chk_not_vis(self, creature, active_gs):
 #		if not self.is_writing() and active_gs.map.get_obj_room(creature).chk_is_vis(self, active_gs) == False: 

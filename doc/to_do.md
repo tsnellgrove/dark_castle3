@@ -289,27 +289,44 @@ Version 3.76 Goals
 					- DONE: resolve double error issue (e.g. 'show grimy axe to hedgehog')
 						- DONE: Return True on Writing.show() and check at start of Creature.show()
 					- DONE: clean up comments
-				- INPROC: consolidate / fix ViewOnly general errors
-					- TBD: chk_not_vis() => err_not_vis()
-					- TBD: chk_not_in_hand() => move to Writing; change to err_not_in_hand()
-				- TBD: extend new error approach to all verbs
-				- call std errors
-				- if is_writing => can only read
-				- else => std error
-			- TBD: for all method verbs
-				- call std errors 
-			- IDEA: make verb method mode attribute ('validate', 'std_exe', 'silent_exe') optional
-
-	- TBD: plan for when to finish pushing errors out of validate
-	- TBD: doc plan to finish the validate() fight:
-		- TBD: finalize plan for 'validate' / 'exe_std' / 'exe_silent' modes to run verb methods in
-		- TBD: how to pull verb method 'try' (from cmd_exe) into validate()
-	- TBD: update doc_string in validate to reflect current approach => method & repeating vs. logic
-	- TBD: doc_string on validate just for user_input (i.e. Burt)
+				- DONE: consolidate / fix ViewOnly general errors
+					- DONE: chk_not_vis() => err_not_vis()
+					- DONE: chk_not_in_hand() => move to Writing; change to err_not_in_hand()
+				- INPROC: extend new error approach to all verbs
+					- TBD: true1word / 'help' [???]
+					- TBD: Writing / 'read'
+					- TBD: ViewOnly / 'examine'
+					- TBD: Door
+						- TBD: 'open'
+						- TBD: 'close'
+						- TBD: 'lock'
+						- TBD: 'unlock'
+					- TBD: Container / 'put'
+					- TBD Item:
+						- TBD: 'take'
+						- TBD: 'drop'
+					- TBD: Food / 'eat'
+					- TBD: Garment / 'wear'
+					- TBD: Liquid / 'drink'
+					- TBD: Room / 'go'
+					- TBD: Switch
+						- TBD: 'pull'
+						- TBD: 'push'
+					- TBD: Seat
+						- TBD: 'enter'
+						- TBD: 'exit'
+					- INPROC: Creature
+						- DONE: show
+						- TBD: give
+						- TBD: attack
+						- TBD: stand
+	- TBD: update Writing & Validate doc_strings
+		- TBD: update doc_string in validate to reflect current approach => method & repeating vs. logic
+		- TBD: doc_string on validate just for user_input (i.e. Burt)
 
 - TBD: instantiate Creature Containers in actual game
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
-	- TBD: switch creature.stand() => creature.exit()
+	- CANCEL: switch creature.stand() => creature.exit()
 	- TBD: Throne
 		- TBD: instantiate throne as obj of class Seat
 		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
@@ -317,8 +334,6 @@ Version 3.76 Goals
 			- IDEA: add auto_gen description to over-ride (like messy_handwriting)
 			- IDEA: or maybe base auto_gen key on descript_key and update that?
 		- TBD: clean up test obj (e.g. test_chair, black_suitcase)
-	- TBD: maybe a Bed in the Main Hall?
-	- TBD: maybe a fireplace in the Main Hall (class = Nook)?
 
 ##########################
 ### VERSION 3.77 START ###
@@ -366,7 +381,10 @@ Version 3.77 Goals
 		- TBD: can access in_reach if also in room; enable general ref of container / surface
 		- Do need to set some limits though... maybe Perch obj can't contain Perch obj?
 		- For throne, crystal_box is in_reach? Update room / throne text to indicate this?
-	- INPROC: review TADS3 terms for Description and preposition
+	- TBD: maybe a Bed in the Main Hall?
+	- TBD: maybe a fireplace in the Main Hall (class = Nook)?
+
+- INPROC: review TADS3 terms for Description and preposition
 
 - INPROC: the sorted list - these misc notes have been incorporated elsewhere
 	- IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
@@ -561,6 +579,11 @@ Version 3.78 Goals
 - re-work app_main() flow with validate() module
 - refactor app_main() modules
 
+- TBD: plan for when to finish pushing errors out of validate
+- TBD: doc plan to finish the validate() fight:
+	- TBD: finalize plan for 'validate' / 'exe_std' / 'exe_silent' modes to run verb methods in
+	- TBD: how to pull verb method 'try' (from cmd_exe) into validate()
+- IDEA: make verb method mode attribute ('validate', 'std_exe', 'silent_exe') optional
 - IDEA: need to push errors out of validate() and into methods (non-burt cases)
 	- IDEA: create shared common_errors() function to be run from verb methods
 - IDEA: what if we had errors for wrong class usage *in* the wrong class?? e.g. an examine method that only throws an error in Writing??
