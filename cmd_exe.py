@@ -26,7 +26,6 @@ def true_one_word(active_gs, word1, room_obj):
 				active_gs.hero.examine(active_gs)
 		elif word1 == 'look':
 				room_obj.examine(active_gs)
-#		elif word1 == 'exit':
 		elif word1 == 'stand':
 				active_gs.hero.stand(active_gs)
 		return

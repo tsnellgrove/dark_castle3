@@ -293,7 +293,7 @@ Version 3.76 Goals
 					- DONE: chk_not_vis() => err_not_vis()
 					- DONE: chk_not_in_hand() => move to Writing; change to err_not_in_hand()
 				- INPROC: extend new error approach to all verbs
-					- TBD: true1word / 'help' [???]
+					- N/A: true1word / 'help'
 					- TBD: Writing / 'read'
 					- TBD: ViewOnly / 'examine'
 					- TBD: Door
