@@ -143,7 +143,6 @@ class Writing(Invisible):
 			return True
 		return False
 
-
 	def err_std(self, creature, active_gs):
 		if self.err_wrt_not_vis(creature, active_gs):
 			return True
@@ -167,8 +166,6 @@ class Writing(Invisible):
 		if self.is_writing():
 			active_gs.buffer(f"You can't examine the {self.full_name}. Try using 'read' instead.")
 			return True
-#		if self.err_wrt_class(creature, active_gs):
-#			return True
 		if self.err_not_vis(creature, active_gs):
 			return True
 		if self.err_not_in_reach(creature, active_gs):
@@ -274,7 +271,8 @@ class Writing(Invisible):
 			active_gs.buffer(f"You can't read the {self.full_name}. Try using 'examine' instead.")
 			return 
 
-		active_gs.buffer(self.get_descript_str(active_gs)) # is_writing() and chk_wrt_is_vis() 
+		active_gs.buffer(self.get_descript_str(active_gs)) # is_writing() and chk_wrt_is_vis()
+		return
 
 
 class ViewOnly(Writing):
@@ -328,26 +326,6 @@ class ViewOnly(Writing):
 		pass
 		return
 
-	# *** general errors ###
-#	def chk_not_in_hand(self, creature, active_gs):
-#		if not creature.chk_in_hand(self):
-#			active_gs.buffer("You're not holding the " + self.full_name + " in your hand.")
-#			return True
-#		return False
-
-#	def chk_not_vis(self, creature, active_gs):
-#		if not self.is_writing() and active_gs.map.get_obj_room(creature).chk_is_vis(self, active_gs) == False: 
-#			active_gs.buffer("You can't see a " + self.full_name + " here.")
-#			return True
-#		return False
-
-
-		base_error = super(Creature, self).show(obj, active_gs)
-		""" Extends Writing.show(). Shows an item in your hand to another creature.
-		"""
-		if base_error:
-			return
-
 
 	# *** verb methods ***
 	def examine(self, active_gs):
@@ -357,8 +335,6 @@ class ViewOnly(Writing):
 		if base_error:
 			return
 		creature = active_gs.hero
-#		if self.err_not_vis(creature, active_gs):
-#			return
 
 		if self.get_title_str(active_gs) is not None:
 			active_gs.buffer(self.get_title_str(active_gs))

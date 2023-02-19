@@ -295,7 +295,7 @@ Version 3.76 Goals
 				- INPROC: extend new error approach to all verbs
 					- N/A: true1word / 'help'
 					- DONE: Writing / 'read'
-					- TBD: ViewOnly / 'examine'
+					- DONE: ViewOnly / 'examine'
 					- TBD: Door
 						- TBD: 'open'
 						- TBD: 'close'
@@ -382,7 +382,8 @@ Version 3.77 Goals
 		- Do need to set some limits though... maybe Perch obj can't contain Perch obj?
 		- For throne, crystal_box is in_reach? Update room / throne text to indicate this?
 	- TBD: maybe a Bed in the Main Hall?
-	- TBD: maybe a fireplace in the Main Hall (class = Nook)?
+	- TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
+	- TBD: for UnderMixIn - need to include bulk capacity for negative space
 
 - INPROC: review TADS3 terms for Description and preposition
 
