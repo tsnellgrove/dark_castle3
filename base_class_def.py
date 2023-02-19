@@ -159,9 +159,21 @@ class Writing(Invisible):
 
 # *** verb error methods ***
 	def examine(self, active_gs):
-#		if self.is_writing():
-		active_gs.buffer(f"You can't examine the {self.full_name}. Try using 'read' instead.")
-		return
+		creature = active_gs.hero
+		if self.err_wrt_not_vis(creature, active_gs):
+			return True
+		if self.err_wrt_not_in_reach(creature, active_gs):
+			return True
+		if self.is_writing():
+			active_gs.buffer(f"You can't examine the {self.full_name}. Try using 'read' instead.")
+			return True
+#		if self.err_wrt_class(creature, active_gs):
+#			return True
+		if self.err_not_vis(creature, active_gs):
+			return True
+		if self.err_not_in_reach(creature, active_gs):
+			return True
+		return False
 
 	def show(self, obj, active_gs):
 		creature = active_gs.hero
@@ -329,15 +341,24 @@ class ViewOnly(Writing):
 #			return True
 #		return False
 
-	
+
+		base_error = super(Creature, self).show(obj, active_gs)
+		""" Extends Writing.show(). Shows an item in your hand to another creature.
+		"""
+		if base_error:
+			return
+
 
 	# *** verb methods ***
 	def examine(self, active_gs):
+		base_error = super(ViewOnly, self).examine(active_gs)
 		""" Describes an object.
 		"""
-		creature = active_gs.hero
-		if self.err_not_vis(creature, active_gs):
+		if base_error:
 			return
+		creature = active_gs.hero
+#		if self.err_not_vis(creature, active_gs):
+#			return
 
 		if self.get_title_str(active_gs) is not None:
 			active_gs.buffer(self.get_title_str(active_gs))
