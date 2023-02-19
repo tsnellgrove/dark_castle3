@@ -254,25 +254,13 @@ class Writing(Invisible):
 			return
 		if self.err_wrt_not_in_reach(creature, active_gs):
 			return
-#		if self.err_wrt_class(creature, active_gs):
-#			return True
 		if self.err_not_vis(creature, active_gs):
 			return
 		if self.err_not_in_reach(creature, active_gs):
 			return
-
-#		if not self.is_writing() and not room.chk_is_vis(self, active_gs):
-#			active_gs.buffer(f"You can't see a {self.full_name} here.")
-#			return 
 		if not self.is_writing() and room.chk_is_vis(self, active_gs):
 			active_gs.buffer(f"You can't read the {self.full_name}. Try using 'examine' instead.")
 			return 
-#		if not room.chk_wrt_is_vis(self, active_gs):
-#			active_gs.buffer(f"You can't see {self.full_name} written on anything here.")
-#			return 
-#		if active_gs.hero.is_contained(active_gs) and not active_gs.hero.get_contained_by(active_gs).chk_wrt_is_vis(self,active_gs):
-#			active_gs.buffer(f"You'll have to exit the {active_gs.hero.get_contained_by(active_gs).full_name} to attempt that.")
-#			return False
 
 		active_gs.buffer(self.get_descript_str(active_gs)) # is_writing() and chk_wrt_is_vis() 
 
