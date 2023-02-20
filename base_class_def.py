@@ -180,9 +180,16 @@ class Writing(Invisible):
 			active_gs.buffer(f"Just how do you intend to pick up a {self.full_name}?")
 			return True
 
-	# custom fist error
-	def drop(self, active_gs): # not sure this error is actually possible?
-		active_gs.buffer(f"The {self.full_name} cannot be dropped at this time.")
+	def drop(self, active_gs):
+		creature = active_gs.hero
+		if self.err_std(creature, active_gs):
+			return True
+		if self == creature.feature_lst[0]:
+			active_gs.buffer(f"Burt, you can't drop your {creature.feature_lst[0].full_name} - you're quite attached to it.")
+			return True
+		if not self.is_item():
+			active_gs.buffer(f"You can't even pick up the {self.full_name}... how could you possibly drop it??")
+			return True
 		return
 
 	def show(self, obj, active_gs):

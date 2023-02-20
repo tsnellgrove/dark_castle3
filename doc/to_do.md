@@ -302,6 +302,7 @@ Version 3.76 Goals
 					- TBD: Door
 						- TBD: 'open'
 						- TBD: 'close'
+					- TBD: convert lock() and unlock() to prep verbs ('with {key}')
 						- TBD: 'lock'
 						- TBD: 'unlock'
 					- TBD: Container / 'put'
@@ -323,7 +324,7 @@ Version 3.76 Goals
 	- TBD: update Writing & Validate doc_strings
 		- TBD: update doc_string in validate to reflect current approach => method & repeating vs. logic
 		- TBD: doc_string on validate just for user_input (i.e. Burt)
-	- TBD: convert lock() and unlock() to prep verbs ('with {key}')
+	
 
 
 ##########################

@@ -58,11 +58,12 @@ class Item(ViewOnly):
 		return
 
 	def drop(self, active_gs):
+		base_error = super(Item, self).drop(active_gs)
 		""" Drops an object from Burt's hand to the floor of the room.
 		"""
-		creature = active_gs.hero
-		if self.err_not_vis(creature, active_gs):
+		if base_error:
 			return
+		creature = active_gs.hero
 		if self.err_not_in_hand(creature, active_gs):
 			return
 		if creature.is_contained(active_gs) and not creature.get_contained_by(active_gs).chk_has_capacity():
