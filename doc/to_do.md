@@ -296,15 +296,15 @@ Version 3.76 Goals
 					- N/A: true1word / 'help'
 					- DONE: Writing / 'read'
 					- DONE: ViewOnly / 'examine'
+					- INPROC Item:
+						- DONE: 'take'
+						- TBD: 'drop'
 					- TBD: Door
 						- TBD: 'open'
 						- TBD: 'close'
 						- TBD: 'lock'
 						- TBD: 'unlock'
 					- TBD: Container / 'put'
-					- TBD Item:
-						- TBD: 'take'
-						- TBD: 'drop'
 					- TBD: Food / 'eat'
 					- TBD: Garment / 'wear'
 					- TBD: Liquid / 'drink'
@@ -323,17 +323,8 @@ Version 3.76 Goals
 	- TBD: update Writing & Validate doc_strings
 		- TBD: update doc_string in validate to reflect current approach => method & repeating vs. logic
 		- TBD: doc_string on validate just for user_input (i.e. Burt)
+	- TBD: convert lock() and unlock() to prep verbs ('with {key}')
 
-- TBD: instantiate Creature Containers in actual game
-	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
-	- CANCEL: switch creature.stand() => creature.exit()
-	- TBD: Throne
-		- TBD: instantiate throne as obj of class Seat
-		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
-		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
-			- IDEA: add auto_gen description to over-ride (like messy_handwriting)
-			- IDEA: or maybe base auto_gen key on descript_key and update that?
-		- TBD: clean up test obj (e.g. test_chair, black_suitcase)
 
 ##########################
 ### VERSION 3.77 START ###
@@ -381,9 +372,34 @@ Version 3.77 Goals
 		- TBD: can access in_reach if also in room; enable general ref of container / surface
 		- Do need to set some limits though... maybe Perch obj can't contain Perch obj?
 		- For throne, crystal_box is in_reach? Update room / throne text to indicate this?
+		- TBD: autogen text based on Seat obj.descript
+			- TBD: update other autogen text to key off descript?
+			- TBD: includes take() for unwear
+
+- TBD: instantiate Creature Containers in actual game
+	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
+	- CANCEL: switch creature.stand() => creature.exit()
+	- TBD: Throne
+		- TBD: instantiate throne as obj of class Seat
+		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
+		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
+			- IDEA: add auto_gen description to over-ride (like messy_handwriting)
+			- IDEA: or maybe base auto_gen key on descript_key and update that?
+		- TBD: clean up test obj (e.g. test_chair, black_suitcase)
 	- TBD: maybe a Bed in the Main Hall?
 	- TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
 	- TBD: for UnderMixIn - need to include bulk capacity for negative space
+
+- TBD: document Seat class
+	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
+	- TBD: doc_string on Seat (nested-room) "translucent" scope (can't interact w/ Seat itself)
+	- TBD: doc_string re: Seat as precursor to Vehical
+	- TBD: doc_string re: Nested Rooms can't be nested (no chairs on stages)
+	- TBD: doc_string re: Perch = translucent, Nook = opaque
+	- TBD: doc_string re: bulk for containers, count for surfaces
+	- TBD: doc_string re: nook gets light from room
+
+
 
 - INPROC: review TADS3 terms for Description and preposition
 
@@ -422,14 +438,6 @@ Version 3.77 Goals
 	- Apply this to concepts like drop() and stand() / exit()
 	- DECISION: alternatively, just treat creature-containers as special exceptions
 
-- TBD: document Seat class
-	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
-	- TBD: doc_string on Seat (nested-room) "translucent" scope (can't interact w/ Seat itself)
-	- TBD: doc_string re: Seat as precursor to Vehical
-	- TBD: doc_string re: Nested Rooms can't be nested (no chairs on stages)
-	- TBD: doc_string re: Perch = translucent, Nook = opaque
-	- TBD: doc_string re: bulk for containers, count for surfaces
-	- TBD: doc_string re: nook gets light from room
 
 
 
@@ -581,6 +589,7 @@ Version 3.78 Goals
 - refactor app_main() modules
 
 - TBD: plan for when to finish pushing errors out of validate
+- TBD: for example, validate fix will resolve get sword while in chair error
 - TBD: doc plan to finish the validate() fight:
 	- TBD: finalize plan for 'validate' / 'exe_std' / 'exe_silent' modes to run verb methods in
 	- TBD: how to pull verb method 'try' (from cmd_exe) into validate()

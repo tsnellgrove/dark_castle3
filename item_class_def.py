@@ -29,13 +29,18 @@ class Item(ViewOnly):
 		active_gs.buffer(f"Despite twisting yourself into a pretzel you still can't manage to exit the {self.full_name}.")
 		return
 
+		if base_error:
+			return
+	
+
 	# *** verb methods ***
 	def take(self, active_gs):
+		base_error = super(Item, self).take(active_gs)
 		""" Takes an object from either the room or from Burt's inventory and places it into Burt's hand
 		"""
-		creature = active_gs.hero
-		if self.err_not_vis(creature, active_gs):
+		if base_error:
 			return
+		creature = active_gs.hero
 		if creature.chk_in_hand(self):
 			active_gs.buffer("You're already holding the " + self.full_name)
 			return 
@@ -48,7 +53,6 @@ class Item(ViewOnly):
 		if creature.chk_is_worn(self):
 			active_gs.buffer(f"You are no longer wearing the {self.full_name}.")
 			active_gs.buff_try_key(f"{creature.name}_remove_{self.name}")
-
 		active_gs.get_room().remove_item(self, active_gs)
 		creature.put_in_hand(self)
 		return

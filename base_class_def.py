@@ -172,6 +172,19 @@ class Writing(Invisible):
 			return True
 		return False
 
+	def take(self, active_gs):
+		creature = active_gs.hero
+		if self.err_std(creature, active_gs):
+			return True
+		if not self.is_item():
+			active_gs.buffer(f"Just how do you intend to pick up a {self.full_name}?")
+			return True
+
+	# custom fist error
+	def drop(self, active_gs): # not sure this error is actually possible?
+		active_gs.buffer(f"The {self.full_name} cannot be dropped at this time.")
+		return
+
 	def show(self, obj, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -209,14 +222,6 @@ class Writing(Invisible):
 
 	def put(self, obj, active_gs):
 		active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
-		return
-
-	def take(self, active_gs):
-		active_gs.buffer(f"Just how do you intend to pick up a {self.full_name}?")
-		return
-
-	def drop(self, active_gs): # not sure this error is actually possible?
-		active_gs.buffer(f"The {self.full_name} cannot be dropped at this time.")
 		return
 
 	def eat(self, active_gs):
