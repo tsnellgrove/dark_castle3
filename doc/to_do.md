@@ -296,13 +296,13 @@ Version 3.76 Goals
 					- N/A: true1word / 'help'
 					- DONE: Writing / 'read'
 					- DONE: ViewOnly / 'examine'
-					- INPROC Item:
+					- DONE: Item:
 						- DONE: 'take'
-						- TBD: 'drop'
-					- TBD: Door
+						- DONE: 'drop'
+					- DONE: Door
 						- DONE: 'open'
-						- TBD: 'close'
-					- TBD: convert lock() and unlock() to prep verbs ('with {key}')
+						- DONE: 'close'
+					- TBD: convert lock() and unlock() to prep verbs ('with {key}') [update validate()]
 						- TBD: 'lock'
 						- TBD: 'unlock'
 					- TBD: Container / 'put'
@@ -390,6 +390,7 @@ Version 3.77 Goals
 		- TBD: clean up test obj (e.g. test_chair, black_suitcase)
 	- TBD: maybe a Bed in the Main Hall?
 	- TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
+	- Stone Coffer => no-lid box ?
 	- TBD: for UnderMixIn - need to include bulk capacity for negative space
 
 - TBD: document Seat class

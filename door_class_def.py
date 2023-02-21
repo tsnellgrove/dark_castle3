@@ -123,11 +123,12 @@ class Door(ViewOnly):
 		
 
 	def close(self, active_gs):
+		base_error = super(Door, self).close(active_gs)
 		""" Closes a Door object.
 		"""
-		creature = active_gs.hero
-		if self.err_not_vis(creature, active_gs):
+		if base_error:
 			return
+		creature = active_gs.hero
 		if self.is_open is None:
 			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 			return 
@@ -137,8 +138,11 @@ class Door(ViewOnly):
 		if self.is_unlocked == False: # for Iron Portcullis
 			active_gs.buffer(f"The {self.full_name} is locked open.")
 			return 
-		self.is_open = False
+		
 		active_gs.buffer("Closed") # is_open == True, is_unlocked == True
+
+		self.is_open = False
+		
 
 	def lock(self, active_gs):
 		""" Locks a Door object.

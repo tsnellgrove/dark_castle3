@@ -206,8 +206,13 @@ class Writing(Invisible):
 		return False
 	
 	def close(self, active_gs):
-		active_gs.buffer(f"The {self.full_name} cannot be closed.")
-		return
+		creature = active_gs.hero
+		if self.err_std(creature, active_gs):
+			return True
+		if not self.is_door():
+			active_gs.buffer(f"The {self.full_name} cannot be closed.")
+			return True
+		return False
 
 	def show(self, obj, active_gs):
 		creature = active_gs.hero
