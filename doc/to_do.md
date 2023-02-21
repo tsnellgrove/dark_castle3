@@ -300,7 +300,7 @@ Version 3.76 Goals
 						- DONE: 'take'
 						- TBD: 'drop'
 					- TBD: Door
-						- TBD: 'open'
+						- DONE: 'open'
 						- TBD: 'close'
 					- TBD: convert lock() and unlock() to prep verbs ('with {key}')
 						- TBD: 'lock'
@@ -376,6 +376,7 @@ Version 3.77 Goals
 		- TBD: autogen text based on Seat obj.descript
 			- TBD: update other autogen text to key off descript?
 			- TBD: includes take() for unwear
+		- TBD: fix error where container open extension runs even if container already open error plays
 
 - TBD: instantiate Creature Containers in actual game
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?

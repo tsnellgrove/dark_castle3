@@ -30,6 +30,9 @@ class Invisible(object):
 	def is_weapon(self):
 		return False
 
+	def	is_door(self):
+		return False
+
 	def	is_container(self):
 		return False
 
@@ -179,6 +182,7 @@ class Writing(Invisible):
 		if not self.is_item():
 			active_gs.buffer(f"Just how do you intend to pick up a {self.full_name}?")
 			return True
+		return False
 
 	def drop(self, active_gs):
 		creature = active_gs.hero
@@ -190,6 +194,19 @@ class Writing(Invisible):
 		if not self.is_item():
 			active_gs.buffer(f"You can't even pick up the {self.full_name}... how could you possibly drop it??")
 			return True
+		return False
+
+	def open(self, active_gs):
+		creature = active_gs.hero
+		if self.err_std(creature, active_gs):
+			return True
+		if not self.is_door():
+			active_gs.buffer(f"The {self.full_name} cannot be openned.")
+			return True
+		return False
+	
+	def close(self, active_gs):
+		active_gs.buffer(f"The {self.full_name} cannot be closed.")
 		return
 
 	def show(self, obj, active_gs):
@@ -209,14 +226,6 @@ class Writing(Invisible):
 
 	def attack(self, src_obj, active_gs):
 		active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
-		return
-
-	def open(self, active_gs):
-		active_gs.buffer(f"The {self.full_name} cannot be openned.")
-		return
-	
-	def close(self, active_gs):
-		active_gs.buffer(f"The {self.full_name} cannot be closed.")
 		return
 	
 	def lock(self, active_gs):

@@ -49,6 +49,10 @@ class Door(ViewOnly):
 	def is_not_closed(self):
 		return self.is_open is not False
 
+	# *** simple obj methods ***
+	def	is_door(self):
+		return True
+
 	# *** display methods ***
 	def has_cond(self, active_gs):
 		return True
@@ -97,11 +101,12 @@ class Door(ViewOnly):
 		self.is_unlocked = True
 
 	def open(self, active_gs):
+		base_error = super(Door, self).open(active_gs)
 		""" Opens a Door object.
 		"""
-		creature = active_gs.hero
-		if self.err_not_vis(creature, active_gs):
+		if base_error:
 			return
+		creature = active_gs.hero
 		if self.is_open is None:
 			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 			return 
@@ -111,8 +116,11 @@ class Door(ViewOnly):
 		if self.is_unlocked == False:
 			active_gs.buffer(f"The {self.full_name} is locked.")
 			return 
-		self.is_open = True
+
 		active_gs.buffer("Openned") # is_open == False, is_unlocked == True
+		
+		self.is_open = True
+		
 
 	def close(self, active_gs):
 		""" Closes a Door object.
