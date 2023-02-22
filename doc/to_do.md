@@ -302,7 +302,7 @@ Version 3.76 Goals
 					- DONE: Door
 						- DONE: 'open'
 						- DONE: 'close'
-					- TBD: convert lock() and unlock() to prep verbs ('with {key}') [update validate()]
+					- DONE: convert lock() and unlock() to prep verbs ('with {key}') [update validate()]
 						- TBD: 'lock'
 						- TBD: 'unlock'
 					- TBD: Container / 'put'

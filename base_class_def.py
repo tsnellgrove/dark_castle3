@@ -218,9 +218,10 @@ class Writing(Invisible):
 		active_gs.buffer(f"The {self.full_name} cannot be locked.")
 		return
 
-	def unlock(self, active_gs):
+	def unlock(self, key_obj, active_gs):
 		active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
 		return
+	# need an error for wrong class key
 
 	def show(self, obj, active_gs):
 		creature = active_gs.hero

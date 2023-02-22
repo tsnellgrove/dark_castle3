@@ -196,7 +196,7 @@ def interpreter(user_input, master_obj_lst):
 				word2 = user_input_lst[1]
 				help(active_gs, word2)
 				return 'help', [word2]
-		elif word1 in ['put', 'show', 'give', 'attack', 'lock']:
+		elif word1 in ['put', 'show', 'give', 'attack', 'lock', 'unlock']:
 				if word1 in ['put', 'sit']:
 						if 'in' in user_input_lst:
 								prep = 'in'
@@ -206,7 +206,7 @@ def interpreter(user_input, master_obj_lst):
 								prep = 'in or on'
 				if word1 in ['show', 'give']:
 						prep = 'to'
-				elif word1 in ['attack', 'lock']:
+				elif word1 in ['attack', 'lock', 'unlock']:
 						prep = 'with'
 				if prep not in user_input_lst:
 						error_msg = f"I don't see the word '{prep}' in that sentence."
@@ -221,7 +221,7 @@ def interpreter(user_input, master_obj_lst):
 								return 'error', [noun_error_msg]
 						elif dir_obj_error_state:
 								return 'error', [dir_obj_error_msg]
-						elif word1 in ['attack', 'lock']:
+						elif word1 in ['attack', 'lock', 'unlock']:
 								return 'prep', [noun_obj, word1, dirobj_obj]
 						else:
 								return 'prep', [dirobj_obj, word1, noun_obj]
