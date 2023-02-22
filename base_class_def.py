@@ -214,6 +214,14 @@ class Writing(Invisible):
 			return True
 		return False
 
+	def lock(self, key_obj, active_gs):
+		active_gs.buffer(f"The {self.full_name} cannot be locked.")
+		return
+
+	def unlock(self, active_gs):
+		active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
+		return
+
 	def show(self, obj, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -233,14 +241,6 @@ class Writing(Invisible):
 		active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
 		return
 	
-	def lock(self, active_gs):
-		active_gs.buffer(f"The {self.full_name} cannot be locked.")
-		return
-
-	def unlock(self, active_gs):
-		active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
-		return
-
 	def put(self, obj, active_gs):
 		active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
 		return

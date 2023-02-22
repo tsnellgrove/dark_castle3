@@ -143,8 +143,10 @@ class Door(ViewOnly):
 
 		self.is_open = False
 		
+#def attack(self, src_obj, active_gs, src_creature = None):
 
-	def lock(self, active_gs):
+#	def lock(self, active_gs):
+	def lock(self, key_obj, active_gs):
 		""" Locks a Door object.
 		"""
 		creature = active_gs.hero
@@ -153,6 +155,8 @@ class Door(ViewOnly):
 		if self.is_open is None:
 			active_gs.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
 			return 
+		if key_obj.err_not_in_hand(creature, active_gs):
+			return
 		if self.is_unlocked is None:
 			active_gs.buffer(f"The {self.full_name} does not appear to have a lock.")
 			return 
@@ -162,16 +166,21 @@ class Door(ViewOnly):
 		if self.is_open == True:
 			active_gs.buffer("You can't lock or unlock something that's open.")
 			return
-		if not creature.chk_in_hand(self.key) and not creature.hand_is_empty() and creature.get_hand_item().root_name == 'key':
+#		if not creature.chk_in_hand(self.key) and not creature.hand_is_empty() and creature.get_hand_item().root_name == 'key':
+		if key_obj != self.key and key_obj.root_name == 'key':
 			active_gs.buffer("You aren't holding the correct key.")
 			return 
-		if not creature.chk_in_hand(self.key):
-			active_gs.buffer("You aren't holding the key.")
+#		if not creature.chk_in_hand(key_obj):
+		if key_obj != self.key:
+#			active_gs.buffer("You aren't holding the key.")
+			active_gs.buffer(f"You can't lock the {self.full_name} with the {key_obj.full_name}.")
 			return 
 		if self.is_unlocked == False:
 			active_gs.buffer(f"The {self.full_name} is already locked.")
 			return 
+
 		active_gs.buffer("Locked") # correct key in hand, is_open == False, is_unlocked == True
+
 		self.is_unlocked = False
 
 
