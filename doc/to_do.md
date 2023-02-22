@@ -324,7 +324,14 @@ Version 3.76 Goals
 	- TBD: update Writing & Validate doc_strings
 		- TBD: update doc_string in validate to reflect current approach => method & repeating vs. logic
 		- TBD: doc_string on validate just for user_input (i.e. Burt)
-	
+
+- TBD: New next version goal
+	- TBD: finish error message updates by updating validate() and introducting verb method modes
+	- TBD: auto-complete for prep verbs
+		- TBD: for obj-in-hand prep verbs, try in_hand(); error on hand_empty()
+		- TBD: for Creature prep_verbs, if one creature in room guess that creature, else error
+		- TBD: for Container / Surface prep_verbs, if one class obj in room guess it, else error
+		- TBD: update help() to explain how this works
 
 
 ##########################
