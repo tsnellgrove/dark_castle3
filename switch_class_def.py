@@ -35,6 +35,9 @@ class SwitchMixIn(object):
 		return self._trigger_type
 
 	# *** simple methods ***
+	def is_switch(self):
+		return True
+
 	def is_mach(self):
 		return True
 

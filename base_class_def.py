@@ -45,6 +45,9 @@ class Invisible(object):
 	def is_creature(self):
 		return False
 
+	def is_switch(self):
+		return False
+
 	def is_timer(self):
 		return False
 
@@ -215,8 +218,21 @@ class Writing(Invisible):
 		return False
 
 	def lock(self, key_obj, active_gs):
-		active_gs.buffer(f"The {self.full_name} cannot be locked.")
-		return
+		creature = active_gs.hero
+		if self.err_std(creature, active_gs):
+			return True
+		if key_obj.err_std(creature, active_gs):
+			return True
+		if not self.is_door():
+			active_gs.buffer(f"The {self.full_name} cannot be locked.")
+			return True
+		if key_obj.is_switch():
+			active_gs.buffer(f"You'll need to be more specific about what you want to do with the {key_obj.full_name}.")
+			return True
+		if not key_obj.is_item():
+			active_gs.buffer(f"And just how do you intend to lock a {self.full_name} with a {key_obj.full_name}??")
+			return True
+		return False
 
 	def unlock(self, key_obj, active_gs):
 		active_gs.buffer(f"The {self.full_name} cannot be unlocked.")

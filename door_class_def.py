@@ -153,11 +153,14 @@ class Door(ViewOnly):
 
 #	def lock(self, active_gs):
 	def lock(self, key_obj, active_gs):
+		base_error = super(Door, self).lock(key_obj, active_gs)
 		""" Locks a Door object.
 		"""
-		creature = active_gs.hero
-		if self.err_not_vis(creature, active_gs):
+		if base_error:
 			return
+		creature = active_gs.hero
+#		if self.err_not_vis(creature, active_gs):
+#			return
 		if self.is_open is None:
 			active_gs.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
 			return 
