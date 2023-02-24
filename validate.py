@@ -98,7 +98,7 @@ def validate(active_gs, case, word_lst):
 				room = active_gs.get_room()
 
 				# *** generic command failures ***
-				exclude_lst_prep = ['show', 'lock']
+				exclude_lst_prep = ['show', 'lock', 'unlock']
 				if word1 not in exclude_lst_prep and noun_obj.is_writing():
 						active_gs.buffer(f"That's laudably creative but, truth be told, the only thing you can generally do with the {noun_obj.full_name} is to read it.")
 						return False

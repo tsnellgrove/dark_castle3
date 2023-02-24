@@ -72,11 +72,14 @@ class Door(ViewOnly):
 	# *** verb methods ***
 #	def unlock(self, active_gs):
 	def unlock(self, key_obj, active_gs):
+		base_error = super(Door, self).unlock(key_obj, active_gs)
 		""" Unlocks a Door object.
 		"""
-		creature = active_gs.hero
-		if self.err_not_vis(creature, active_gs):
+		if base_error:
 			return
+		creature = active_gs.hero
+#		if self.err_not_vis(creature, active_gs):
+#			return
 		if self.is_open is None:
 			active_gs.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
 			return 

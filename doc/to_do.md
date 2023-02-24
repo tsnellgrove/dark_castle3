@@ -299,12 +299,12 @@ Version 3.76 Goals
 					- DONE: Item:
 						- DONE: 'take'
 						- DONE: 'drop'
-					- INPROC: Door
+					- DONE: Door
 						- DONE: 'open'
 						- DONE: 'close'
 						- DONE: convert lock() and unlock() to prep verbs ('with {key}') [update validate]
 						- DONE: 'lock'
-						- TBD: 'unlock'
+						- DONE: 'unlock'
 					- TBD: Container / 'put'
 					- TBD: Food / 'eat'
 					- TBD: Garment / 'wear'
