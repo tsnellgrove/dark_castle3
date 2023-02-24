@@ -251,7 +251,6 @@ class Writing(Invisible):
 			return True
 		return False
 
-
 	def show(self, obj, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
