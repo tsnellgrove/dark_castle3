@@ -305,10 +305,10 @@ Version 3.76 Goals
 						- DONE: convert lock() and unlock() to prep verbs ('with {key}') [update validate]
 						- DONE: 'lock'
 						- DONE: 'unlock'
-					- TBD: Container / 'put'
 					- TBD: Food / 'eat'
 					- TBD: Garment / 'wear'
 					- TBD: Liquid / 'drink'
+					- TBD: Container / 'put'
 					- TBD: Room / 'go'
 					- TBD: Switch
 						- TBD: 'pull'
@@ -324,6 +324,8 @@ Version 3.76 Goals
 	- TBD: update Writing & Validate doc_strings
 		- TBD: update doc_string in validate to reflect current approach => method & repeating vs. logic
 		- TBD: doc_string on validate just for user_input (i.e. Burt)
+		- TBD: doc_string journey to get to current approach
+		- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
 
 - TBD: New next version goal
 	- TBD: finish error message updates by updating validate() and introducting verb method modes
