@@ -24,6 +24,9 @@ class Invisible(object):
 	def is_item(self):
 		return False
 
+	def is_food(self):
+		return False
+
 	def is_liquid(self):
 		return False
 
@@ -217,6 +220,23 @@ class Writing(Invisible):
 			return True
 		return False
 
+	def eat(self, active_gs):
+		creature = active_gs.hero
+		if self.err_std(creature, active_gs):
+			return True
+		if not self.is_food():
+			active_gs.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? Burt, if you keep this up you're going to give Adventurers a bad name!")
+			return True
+		return
+
+	def wear(self, active_gs):
+		active_gs.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
+		return
+
+	def drink(self, active_gs): 
+		active_gs.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")
+		return
+
 	def lock(self, key_obj, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -274,18 +294,6 @@ class Writing(Invisible):
 		active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
 		return
 
-	def eat(self, active_gs):
-		active_gs.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? Burt, if you keep this up you're going to give Adventurers a bad name!")
-		return
-
-	def wear(self, active_gs):
-		active_gs.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
-		return
-
-	def drink(self, active_gs): 
-		active_gs.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")
-		return
-
 	def go(self, dir, active_gs): # not sure this error ever triggers? Local handling should catch all wrong cases.
 		active_gs.buffer(f"Use 'go', in conjunction with a cardinal direction, to travel from one room to another. You cannot 'go {dir.full_name}'.")
 		return
@@ -299,13 +307,23 @@ class Writing(Invisible):
 		return
 
 	def enter(self, active_gs):
-		active_gs.buffer(f"You can't use the word 'enter' with the {self.full_name}.")
-		return
+		if self.is_item():
+			active_gs.buffer(f"Despite twisting yourself into a pretzel you still can't manage to enter the {self.full_name}.")
+			return True
+		if not self.is_seat():
+			active_gs.buffer(f"You can't use the word 'enter' with the {self.full_name}.")
+			return True
+		return False
 
 	def exit(self, active_gs):
-		active_gs.buffer(f"You can't use the word 'exit' with the {self.full_name}.")
-		return
-
+		if self.is_item():
+			active_gs.buffer(f"Despite twisting yourself into a pretzel you still can't manage to exit the {self.full_name}.")
+			return True
+		if not self.is_seat():
+			active_gs.buffer(f"You can't use the word 'exit' with the {self.full_name}.")
+			return True
+		return False
+		
 
 	# *** verb methods ***
 	def read(self, active_gs):

@@ -305,7 +305,8 @@ Version 3.76 Goals
 						- DONE: convert lock() and unlock() to prep verbs ('with {key}') [update validate]
 						- DONE: 'lock'
 						- DONE: 'unlock'
-					- TBD: Food / 'eat'
+					- DONE: Food / 'eat'
+					- DONE: move custom enter() and exit() errors from class Item to class Writing
 					- TBD: Garment / 'wear'
 					- TBD: Liquid / 'drink'
 					- TBD: Container / 'put'

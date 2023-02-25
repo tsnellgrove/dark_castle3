@@ -21,17 +21,14 @@ class Item(ViewOnly):
 		return True
 
 	# *** verb error methods ***
-	def enter(self, active_gs):
-		active_gs.buffer(f"Despite twisting yourself into a pretzel you still can't manage to enter the {self.full_name}.")
-		return
+#	def enter(self, active_gs):
+#		active_gs.buffer(f"Despite twisting yourself into a pretzel you still can't manage to enter the {self.full_name}.")
+#		return
 
-	def exit(self, active_gs):
-		active_gs.buffer(f"Despite twisting yourself into a pretzel you still can't manage to exit the {self.full_name}.")
-		return
+#	def exit(self, active_gs):
+#		active_gs.buffer(f"Despite twisting yourself into a pretzel you still can't manage to exit the {self.full_name}.")
+#		return	
 
-		if base_error:
-			return
-	
 
 	# *** verb methods ***
 	def take(self, active_gs):
@@ -49,10 +46,11 @@ class Item(ViewOnly):
 				active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 				return 
 
-		active_gs.buffer("Taken")		
+		active_gs.buffer("Taken")
 		if creature.chk_is_worn(self):
 			active_gs.buffer(f"You are no longer wearing the {self.full_name}.")
 			active_gs.buff_try_key(f"{creature.name}_remove_{self.name}")
+		
 		active_gs.get_room().remove_item(self, active_gs)
 		creature.put_in_hand(self)
 		return
@@ -75,6 +73,7 @@ class Item(ViewOnly):
 			creature.get_contained_by(active_gs).contain_lst_append(self)
 		else:
 			active_gs.get_room().floor_lst_append(self)
+		
 		active_gs.buffer("Dropped")
 		return 
 
@@ -85,13 +84,18 @@ class Food(Item):
 		""" Burt can eat() food. Food may be of interest to other creatures in Dark Castle as well. Food inherits from Item and can be taken.
 		"""
 
+	# *** simple methods ***
+	def is_food(self):
+		return True
+
 	# *** verb methods ***
 	def eat(self, active_gs):
+		base_error = super(Food, self).eat(active_gs)
 		""" Removes the Food object from the game and provides a description of how the food tasted.
 		"""
-		creature = active_gs.hero
-		if self.err_not_vis(creature, active_gs):
+		if base_error:
 			return
+		creature = active_gs.hero
 		if self.err_not_in_hand(creature, active_gs):
 			return
 
@@ -135,6 +139,7 @@ class Garment(Item):
 		
 		creature.worn_lst_append(self)
 		creature.hand_lst_remove(self)
+		
 		active_gs.buffer("Worn.")
 		active_gs.buff_try_key(f"{creature.name}_wear_{self.name}")
 		return 
