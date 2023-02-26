@@ -227,11 +227,16 @@ class Writing(Invisible):
 		if not self.is_food():
 			active_gs.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? Burt, if you keep this up you're going to give Adventurers a bad name!")
 			return True
-		return
+		return False
 
 	def wear(self, active_gs):
-		active_gs.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
-		return
+		creature = active_gs.hero
+		if self.err_std(creature, active_gs):
+			return True
+		if not self.is_garment():
+			active_gs.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
+			return True
+		return False
 
 	def drink(self, active_gs): 
 		active_gs.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")

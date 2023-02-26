@@ -307,7 +307,7 @@ Version 3.76 Goals
 						- DONE: 'unlock'
 					- DONE: Food / 'eat'
 					- DONE: move custom enter() and exit() errors from class Item to class Writing
-					- TBD: Garment / 'wear'
+					- DONE: Garment / 'wear'
 					- TBD: Liquid / 'drink'
 					- TBD: Container / 'put'
 					- TBD: Room / 'go'

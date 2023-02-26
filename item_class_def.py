@@ -123,11 +123,12 @@ class Garment(Item):
 
 	# *** verb methods ***
 	def wear(self, active_gs):
+		base_error = super(Garment, self).wear(active_gs)
 		""" Places a garment in a creature's worn inventory and provides a description of any effects that result.
 		"""
-		creature = active_gs.hero
-		if self.err_not_vis(creature, active_gs):
+		if base_error:
 			return
+		creature = active_gs.hero
 		if self in creature.worn_lst:
 			active_gs.buffer(f"You're already wearing the {self.full_name}!")
 			return

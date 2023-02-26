@@ -365,13 +365,7 @@ class Surface(Container):
 			active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
 		return 
 
-	# *** verb methods ***
-#	def take(self, active_gs):
-#		""" Provides a custom error if the player attempts to take() an object of Surface class.
-#		"""
-#		active_gs.buffer(f"What kind of person tries to take a {self.full_name}?")
-#		return
-
+	# *** verb error methods ***
 	def open(self, active_gs):
 		active_gs.buffer(f"How do you propose to 'open' the {self.full_name}?")
 		return
