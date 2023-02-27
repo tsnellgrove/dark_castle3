@@ -308,7 +308,8 @@ Version 3.76 Goals
 					- DONE: Food / 'eat'
 					- DONE: move custom enter() and exit() errors from class Item to class Writing
 					- DONE: Garment / 'wear'
-					- TBD: Liquid / 'drink'
+					- DONE: Liquid / 'drink'
+					- TBD: move custom take() Liquid error => Writing
 					- TBD: Container / 'put'
 					- TBD: Room / 'go'
 					- TBD: Switch
@@ -385,7 +386,7 @@ Version 3.77 Goals
 		- For throne, crystal_box is in_reach? Update room / throne text to indicate this?
 		- TBD: autogen text based on Seat obj.descript
 			- TBD: update other autogen text to key off descript?
-			- TBD: includes take() for unwear
+			- TBD: includes take() for unwear and drink()
 		- TBD: fix error where container open extension runs even if container already open error plays
 
 - TBD: instantiate Creature Containers in actual game

@@ -28,8 +28,11 @@ class Liquid(ViewOnly):
 		return
 
 	def drink(self, active_gs):
+		base_error = super(Liquid, self).drink(active_gs)
 		""" Consumes a liquid if it is in a Container that Burt is holding in his hand.
 		"""
+		if base_error:
+			return
 		creature = active_gs.hero
 		if not creature.hand_is_empty():
 			hand_item = creature.get_hand_item()
@@ -39,7 +42,9 @@ class Liquid(ViewOnly):
 		if self not in hand_item.contain_lst:
 			active_gs.buffer(f"The container in your hand doesn't contain {self.full_name}.")
 			return 
+
 		hand_item.contain_lst.remove(self)
+
 		active_gs.buffer("Drunk.")
 		active_gs.buff_try_key(f"{creature.name}_drink_{self.name}")
 		return 

@@ -238,9 +238,14 @@ class Writing(Invisible):
 			return True
 		return False
 
-	def drink(self, active_gs): 
-		active_gs.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")
-		return
+	def drink(self, active_gs):
+		creature = active_gs.hero
+		if self.err_std(creature, active_gs):
+			return True
+		if not self.is_liquid():
+			active_gs.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")
+			return True
+		return False
 
 	def lock(self, key_obj, active_gs):
 		creature = active_gs.hero
