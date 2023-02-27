@@ -21,12 +21,6 @@ class Liquid(ViewOnly):
 		return True
 
 	# *** verb methods ***
-	def take(self, active_gs):
-		""" Provides context-specific error message when player attempts to take() a liquid
-		"""
-		active_gs.buffer("You can't 'take' a liquid. Try 'drink' instead.")
-		return
-
 	def drink(self, active_gs):
 		base_error = super(Liquid, self).drink(active_gs)
 		""" Consumes a liquid if it is in a Container that Burt is holding in his hand.

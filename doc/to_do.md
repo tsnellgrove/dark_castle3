@@ -309,7 +309,7 @@ Version 3.76 Goals
 					- DONE: move custom enter() and exit() errors from class Item to class Writing
 					- DONE: Garment / 'wear'
 					- DONE: Liquid / 'drink'
-					- TBD: move custom take() Liquid error => Writing
+					- DONE: move custom take() Liquid error => Writing
 					- TBD: Container / 'put'
 					- TBD: Room / 'go'
 					- TBD: Switch

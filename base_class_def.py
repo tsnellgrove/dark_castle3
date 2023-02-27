@@ -185,6 +185,9 @@ class Writing(Invisible):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
+		if self.is_liquid():
+			active_gs.buffer("You can't 'take' a liquid but you can 'drink' a liquid or you can 'take' a container that holds a liquid.")
+			return True
 		if not self.is_item():
 			active_gs.buffer(f"Just how do you intend to pick up a {self.full_name}?")
 			return True
