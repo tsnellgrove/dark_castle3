@@ -310,11 +310,11 @@ Version 3.76 Goals
 					- DONE: Garment / 'wear'
 					- DONE: Liquid / 'drink'
 					- DONE: move custom take() Liquid error => Writing
-					- TBD: Container / 'put'
-					- TBD: Room / 'go'
+					- DONE: Room / 'go'
 					- TBD: Switch
 						- TBD: 'pull'
 						- TBD: 'push'
+					- TBD: Container / 'put'
 					- TBD: Seat
 						- TBD: 'enter'
 						- TBD: 'exit'

@@ -154,8 +154,11 @@ class Room(ViewOnly):
 
 	# *** verb methods ***
 	def go(self, dir, active_gs, creature = None):
+		base_error = super(Room, self).go(dir, active_gs)
 		""" Moves a Creature from one room to another
 		"""
+		if base_error:
+			return
 		if creature is None:
 			creature = active_gs.hero
 
