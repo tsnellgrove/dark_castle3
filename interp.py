@@ -22,7 +22,7 @@ secret_verbs_lst = []
 
 full_verbs_lst = known_verbs_lst + secret_verbs_lst
 
-valid_dir_lst = ['north', 'south', 'east', 'west']
+# valid_dir_lst = ['north', 'south', 'east', 'west']
 
 abbreviations_dict = {
 		'n' : 'north',
@@ -193,8 +193,8 @@ def interpreter(user_input, master_obj_lst):
 		# handle 2-word commands (special cases first else general case)
 		if word1 == 'go':
 				word2 = user_input_lst[1]
-				if word2 not in valid_dir_lst:
-					return 'error', [f"Unfortunately, '{word2}' is not a valid direction that you can go in."]
+#				if word2 not in valid_dir_lst:
+#					return 'error', [f"Unfortunately, '{word2}' is not a valid direction that you can go in."]
 				return 'go', [room_obj, word1, word2]
 		elif word1 == 'help':
 				word2 = user_input_lst[1]

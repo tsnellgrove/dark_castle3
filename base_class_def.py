@@ -252,6 +252,9 @@ class Writing(Invisible):
 
 	def go(self, dir, active_gs):
 		creature = active_gs.hero
+		if dir not in ['north', 'south', 'east', 'west']:
+			active_gs.buffer(f"'{dir}' is not a valid direction that you can go in.")
+			return True
 		if creature.is_contained(active_gs):
 			active_gs.buffer(f"You'll have to exit the {creature.get_contained_by(active_gs).full_name} to attempt that.")
 			return True
