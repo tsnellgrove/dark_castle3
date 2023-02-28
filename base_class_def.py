@@ -257,6 +257,14 @@ class Writing(Invisible):
 			return True
 		return False
 
+	def push(self, active_gs):
+		active_gs.buffer(f"Pushing on the {self.full_name} has no effect.")
+		return
+
+	def pull(self, active_gs):
+		active_gs.buffer(f"Pulling on the {self.full_name} has no effect.")
+		return
+
 	def lock(self, key_obj, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -312,18 +320,6 @@ class Writing(Invisible):
 	
 	def put(self, obj, active_gs):
 		active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
-		return
-
-#	def go(self, dir, active_gs): # not sure this error ever triggers? Local handling should catch all wrong cases.
-#		active_gs.buffer(f"Use 'go', in conjunction with a cardinal direction, to travel from one room to another. You cannot 'go {dir.full_name}'.")
-#		return
-
-	def push(self, active_gs):
-		active_gs.buffer(f"Pushing on the {self.full_name} has no effect.")
-		return
-
-	def pull(self, active_gs):
-		active_gs.buffer(f"Pushing on the {self.full_name} has no effect.")
 		return
 
 	def enter(self, active_gs):
