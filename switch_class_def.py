@@ -50,9 +50,15 @@ class ButtonSwitch(SwitchMixIn, ViewOnly):
 
 	# *** verb methods ***
 	def push(self, active_gs):
+		base_error = super(ButtonSwitch, self).push(active_gs)
 		""" Sets the switch state to 'pushed' until it is auto-reset in the auto_action.py module
 		"""
+		if base_error:
+			return
+		creature = active_gs.hero
+
 		self.switch_state = 'pushed'
+
 		active_gs.buffer("Pushed.")
 		return 
 

@@ -311,9 +311,9 @@ Version 3.76 Goals
 					- DONE: Liquid / 'drink'
 					- DONE: move custom take() Liquid error => Writing
 					- DONE: Room / 'go'
-					- TBD: Switch
+					- INPROC: Switch
+						- DONE: 'push'
 						- TBD: 'pull'
-						- TBD: 'push'
 					- TBD: Container / 'put'
 					- TBD: Seat
 						- TBD: 'enter'
@@ -899,7 +899,7 @@ Version 6.x Goals
 - Coddiwomple
 - Sockdolager (forceful blow)
 - sagaciate (get along)
-
+- sockdolager
 
 *** possible new rooms ***
 - upon_drawbridge

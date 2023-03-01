@@ -261,8 +261,13 @@ class Writing(Invisible):
 		return False
 
 	def push(self, active_gs):
-		active_gs.buffer(f"Pushing on the {self.full_name} has no effect.")
-		return
+		creature = active_gs.hero
+		if self.err_std(creature, active_gs):
+			return True
+		if not self.is_switch():
+			active_gs.buffer(f"Pushing on the {self.full_name} has no effect.")
+			return True
+		return False
 
 	def pull(self, active_gs):
 		active_gs.buffer(f"Pulling on the {self.full_name} has no effect.")
