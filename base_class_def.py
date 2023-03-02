@@ -270,8 +270,13 @@ class Writing(Invisible):
 		return False
 
 	def pull(self, active_gs):
-		active_gs.buffer(f"Pulling on the {self.full_name} has no effect.")
-		return
+		creature = active_gs.hero
+		if self.err_std(creature, active_gs):
+			return True
+		if not self.is_switch():
+			active_gs.buffer(f"Pulling on the {self.full_name} has no effect.")
+			return True
+		return False
 
 	def lock(self, key_obj, active_gs):
 		creature = active_gs.hero
@@ -307,25 +312,6 @@ class Writing(Invisible):
 			return True
 		return False
 
-	def show(self, obj, active_gs):
-		creature = active_gs.hero
-		if self.err_std(creature, active_gs):
-			return True
-		if obj.err_std(creature, active_gs):
-			return True
-		if not self.is_creature():
-			active_gs.buffer(f"Exactly how would you expect the {self.full_name} to respond to the {obj.full_name}?")
-			return True
-		return False
-
-	def give(self, obj, active_gs):
-		active_gs.buffer(f"And what do you expect the {self.full_name} to do with the {obj.full_name}?")
-		return
-
-	def attack(self, src_obj, active_gs):
-		active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
-		return
-	
 	def put(self, obj, active_gs):
 		active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
 		return
@@ -347,8 +333,26 @@ class Writing(Invisible):
 			active_gs.buffer(f"You can't use the word 'exit' with the {self.full_name}.")
 			return True
 		return False
-		
 
+	def show(self, obj, active_gs):
+		creature = active_gs.hero
+		if self.err_std(creature, active_gs):
+			return True
+		if obj.err_std(creature, active_gs):
+			return True
+		if not self.is_creature():
+			active_gs.buffer(f"Exactly how would you expect the {self.full_name} to respond to the {obj.full_name}?")
+			return True
+		return False
+
+	def give(self, obj, active_gs):
+		active_gs.buffer(f"And what do you expect the {self.full_name} to do with the {obj.full_name}?")
+		return
+
+	def attack(self, src_obj, active_gs):
+		active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
+		return
+	
 	# *** verb methods ***
 	def read(self, active_gs):
 		""" Reads text found on an object.

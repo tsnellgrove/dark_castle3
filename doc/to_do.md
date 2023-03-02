@@ -311,9 +311,9 @@ Version 3.76 Goals
 					- DONE: Liquid / 'drink'
 					- DONE: move custom take() Liquid error => Writing
 					- DONE: Room / 'go'
-					- INPROC: Switch
+					- DONE: Switch
 						- DONE: 'push'
-						- TBD: 'pull'
+						- DONE: 'pull'
 					- TBD: Container / 'put'
 					- TBD: Seat
 						- TBD: 'enter'

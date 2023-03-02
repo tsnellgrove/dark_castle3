@@ -20,16 +20,6 @@ class Item(ViewOnly):
 	def is_item(self):
 		return True
 
-	# *** verb error methods ***
-#	def enter(self, active_gs):
-#		active_gs.buffer(f"Despite twisting yourself into a pretzel you still can't manage to enter the {self.full_name}.")
-#		return
-
-#	def exit(self, active_gs):
-#		active_gs.buffer(f"Despite twisting yourself into a pretzel you still can't manage to exit the {self.full_name}.")
-#		return	
-
-
 	# *** verb methods ***
 	def take(self, active_gs):
 		base_error = super(Item, self).take(active_gs)
@@ -100,6 +90,7 @@ class Food(Item):
 			return
 
 		creature.hand_lst_remove(self)
+		
 		active_gs.buffer(f"Eaten.")
 		active_gs.buff_try_key(f"{creature.name}_eat_{self.name}")
 		return 

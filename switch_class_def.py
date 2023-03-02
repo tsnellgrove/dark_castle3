@@ -70,9 +70,15 @@ class SpringSliderSwitch(ButtonSwitch):
 
 	# *** verb methods ***
 	def pull(self, active_gs):
+		base_error = super(SpringSliderSwitch, self).pull(active_gs)
 		""" Sets the switch state to 'pulled' until it is auto-reset in the auto_action.py module
 		"""
+		if base_error:
+			return
+		creature = active_gs.hero
+
 		self.switch_state = 'pulled'
+
 		active_gs.buffer("Pulled.")
 		return 
 
@@ -95,12 +101,18 @@ class LeverSwitch(SwitchMixIn, ViewOnly):
 
 	# *** verb methods ***
 	def pull(self, active_gs):
+		base_error = super(LeverSwitch, self).pull(active_gs)
 		""" Toggles the switch state between 'up' and 'down'.
 		"""
+		if base_error:
+			return
+		creature = active_gs.hero
+
 		if self.switch_state == 'down':
 			self.switch_state = 'up'
 		else:
 			self.switch_state = 'down'
+			
 		active_gs.buffer("Pulled.")
 		return 
 
