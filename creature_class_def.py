@@ -271,7 +271,6 @@ class Creature(ViewOnly):
 		if obj.err_not_in_hand(creature, active_gs):
 			return
 
-
 		try:
 			active_gs.buffer(descript_dict[f"{creature.name}_show_{self.name}_{obj.name}"]) 
 		except:

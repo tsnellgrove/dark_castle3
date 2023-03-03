@@ -74,7 +74,7 @@ def validate(active_gs, case, word_lst):
 						active_gs.buffer(f"That's X laudably creative but, truth be told, the only thing you can generally do with the {word2_obj.full_name} is to read it.")
 						return False
 
-				exclude_lst = ['read' 'examine', 'take', 'drop', 'eat', 'wear', 'open', 'close', 'drink', 'go', 'push', 'pull', 'put', 'enter', 'exit']
+				exclude_lst = ['read' 'examine', 'take', 'drop', 'eat', 'wear', 'open', 'close', 'drink', 'go', 'push', 'pull', 'enter', 'exit']
 				if word1 not in exclude_lst and not word2_obj.is_writing() and room.chk_is_vis(word2_obj, active_gs) == False:
 #				if word1 != 'read' and not word2_obj.is_writing() and room.chk_is_vis(word2_obj, active_gs) == False:
 						active_gs.buffer("You can't see a " + word2_obj.full_name + " here.")
@@ -98,7 +98,7 @@ def validate(active_gs, case, word_lst):
 				room = active_gs.get_room()
 
 				# *** generic command failures ***
-				exclude_lst_prep = ['show', 'lock', 'unlock']
+				exclude_lst_prep = ['show', 'lock', 'unlock', 'put']
 				if word1 not in exclude_lst_prep and noun_obj.is_writing():
 						active_gs.buffer(f"That's laudably creative but, truth be told, the only thing you can generally do with the {noun_obj.full_name} is to read it.")
 						return False

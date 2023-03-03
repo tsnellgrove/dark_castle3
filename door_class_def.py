@@ -282,11 +282,12 @@ class Container(Door):
 		active_gs.buff_cr()
 
 	def put(self, obj, active_gs):
+		base_error = super(Container, self).put(obj, active_gs)
 		""" Puts an Item in a Container or on a Surface.
 		"""
-		creature = active_gs.hero
-		if self.err_not_vis(creature, active_gs):
+		if base_error:
 			return
+		creature = active_gs.hero
 		if obj.err_not_in_hand(creature, active_gs):
 			return
 		if self.is_open == False:
@@ -299,12 +300,13 @@ class Container(Door):
 				loc_prep = 'in'
 			active_gs.buffer(f"You can't put the {obj.full_name} {loc_prep} the {self.full_name}.")
 			return 
-#		if self.is_surface() and len(self.contain_lst) >= self.max_obj:
 		if self.is_surface() and not self.chk_has_capacity():
 			active_gs.buffer(f"There's no room on the {self.full_name} for another item.")
 			return
+		
 		creature.hand_lst_remove(obj)
 		self.contain_lst_append(obj)
+
 		active_gs.buffer("Done")
 
 

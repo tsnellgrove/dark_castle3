@@ -314,7 +314,7 @@ Version 3.76 Goals
 					- DONE: Switch
 						- DONE: 'push'
 						- DONE: 'pull'
-					- TBD: Container / 'put'
+					- DONE: Container / 'put'
 					- TBD: Seat
 						- TBD: 'enter'
 						- TBD: 'exit'
@@ -323,6 +323,9 @@ Version 3.76 Goals
 						- TBD: give
 						- TBD: attack
 						- TBD: stand
+	- TBD: decide how to address special errors
+		- TBD: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
+		- TBD: fix error where container open extension runs even if container already open error plays
 	- TBD: update Writing & Validate doc_strings
 		- TBD: update doc_string in validate to reflect current approach => method & repeating vs. logic
 		- TBD: doc_string on validate just for user_input (i.e. Burt)
@@ -387,7 +390,6 @@ Version 3.77 Goals
 		- TBD: autogen text based on Seat obj.descript
 			- TBD: update other autogen text to key off descript?
 			- TBD: includes take() for unwear and drink()
-		- TBD: fix error where container open extension runs even if container already open error plays
 
 - TBD: instantiate Creature Containers in actual game
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?

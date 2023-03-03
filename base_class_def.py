@@ -313,8 +313,15 @@ class Writing(Invisible):
 		return False
 
 	def put(self, obj, active_gs):
-		active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
-		return
+		creature = active_gs.hero
+		if obj.err_std(creature, active_gs):
+			return True
+		if self.err_std(creature, active_gs):
+			return True
+		if not self.is_container():
+			active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
+			return True
+		return False
 
 	def enter(self, active_gs):
 		if self.is_item():
