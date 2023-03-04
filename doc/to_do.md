@@ -317,7 +317,7 @@ Version 3.76 Goals
 					- DONE: Container / 'put'
 					- DONE: Seat
 						- DONE: 'enter'
-						- TBD: 'exit'
+						- DONE: 'exit'
 					- INPROC: Creature
 						- DONE: show
 						- TBD: give

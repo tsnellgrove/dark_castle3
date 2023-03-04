@@ -336,11 +336,26 @@ class Writing(Invisible):
 		return False
 
 	def exit(self, active_gs):
+		creature = active_gs.hero
+#		if self.err_std(creature, active_gs):
+#			return True
+
+		if self.err_wrt_not_vis(creature, active_gs):
+			return True
+		if self.err_wrt_not_in_reach(creature, active_gs):
+			return True
+		if self.err_wrt_class(creature, active_gs):
+			return True
+		if self.err_not_vis(creature, active_gs):
+			return True
+		if not self.is_seat() and self.err_not_in_reach(creature, active_gs):
+			return True
+
 		if self.is_item():
 			active_gs.buffer(f"Despite twisting yourself into a pretzel you still can't manage to exit the {self.full_name}.")
 			return True
 		if not self.is_seat():
-			active_gs.buffer(f"You can't use the word 'exit' with the {self.full_name}.")
+			active_gs.buffer(f"You can't use the 'exit' command on the {self.full_name}.")
 			return True
 		return False
 

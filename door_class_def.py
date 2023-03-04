@@ -430,8 +430,11 @@ class Seat(Surface):
 		return
 
 	def exit(self, active_gs, creature = None):
+		base_error = super(Seat, self).exit(active_gs)
 		""" Sits a creature in a Seat
 		"""
+		if base_error:
+			return
 		# destermine creature
 		if creature is None:
 			creature = active_gs.hero
@@ -443,8 +446,8 @@ class Seat(Surface):
 #			active_gs.buffer(f"There's no room on the {self.full_name} to sit.")
 #			return
 
-		if self.err_not_vis(creature, active_gs):
-			return
+#		if self.err_not_vis(creature, active_gs):
+#			return
 		if not creature.is_contained(active_gs):
 			active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
 			return		
