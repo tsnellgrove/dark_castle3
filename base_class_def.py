@@ -324,11 +324,14 @@ class Writing(Invisible):
 		return False
 
 	def enter(self, active_gs):
+		creature = active_gs.hero
+		if self.err_std(creature, active_gs):
+			return True
 		if self.is_item():
 			active_gs.buffer(f"Despite twisting yourself into a pretzel you still can't manage to enter the {self.full_name}.")
 			return True
 		if not self.is_seat():
-			active_gs.buffer(f"You can't use the word 'enter' with the {self.full_name}.")
+			active_gs.buffer(f"You can't use the 'enter' command on the {self.full_name}.")
 			return True
 		return False
 

@@ -401,17 +401,20 @@ class Seat(Surface):
 	# *** verb methods ***
 #	def sit(self, active_gs, creature = None):
 	def enter(self, active_gs, creature = None):
+		base_error = super(Seat, self).enter(active_gs)
 		""" Sits a creature in a Seat
 		"""
+		if base_error:
+			return
 		# destermine creature
 		if creature is None:
 			creature = active_gs.hero
 
-		if self.err_not_vis(creature, active_gs):
-			return
-		if not creature.is_creature():
-			active_gs.buffer(f"The {creature.full_name} can't sit on the {self.full_name}!")
-			return
+#		if self.err_not_vis(creature, active_gs):
+#			return
+#		if not creature.is_creature():
+#			active_gs.buffer(f"The {creature.full_name} can't sit on the {self.full_name}!")
+#			return
 		if self.is_surface() and len(self.contain_lst) >= self.max_obj:
 			active_gs.buffer(f"There's no room on the {self.full_name} to sit.")
 			return
