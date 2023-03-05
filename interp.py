@@ -15,7 +15,7 @@ one_word_only_lst = ['help', 'credits', 'score', 'version', 'inventory', 'look',
 
 known_verbs_lst = ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 				 'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
-				 'unlock', 'wear', 'enter', 'stand', 'exit'
+				 'unlock', 'wear', 'enter', 'exit'
 				] # 'remove' removed
 
 secret_verbs_lst = []
@@ -169,6 +169,8 @@ def interpreter(user_input, master_obj_lst):
 		# handle true one-word commands
 		if len(user_input_lst) == 1 and word1 in one_word_only_lst:
 				return 'tru_1word', [word1]
+		if word1 in one_word_only_lst and len(user_input_lst) > 1:
+				return 'error', [f"Burt, there are too many words in that sentence. '{word1}' is a one word command!"]
 
 		# convert one-word commands that are implicit two-word commands 
 		elif len(user_input_lst) == 1 and word1 in one_word_convert_dict:

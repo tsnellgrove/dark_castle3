@@ -319,10 +319,10 @@ Version 3.76 Goals
 						- DONE: 'enter'
 						- DONE: 'exit'
 					- INPROC: Creature
+						- DONE: stand => update interp() module to throw error on tru_1word + more words
 						- DONE: show
 						- TBD: give
 						- TBD: attack
-						- TBD: stand
 	- TBD: decide how to address special errors
 		- TBD: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
 		- TBD: fix error where container open extension runs even if container already open error plays
@@ -331,6 +331,7 @@ Version 3.76 Goals
 		- TBD: doc_string on validate just for user_input (i.e. Burt)
 		- TBD: doc_string journey to get to current approach
 		- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
+		- TBD: clean up comments in validate
 
 - TBD: New next version goal
 	- TBD: finish error message updates by updating validate() and introducting verb method modes

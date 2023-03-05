@@ -69,21 +69,21 @@ def validate(active_gs, case, word_lst):
 #						return False
 
 				# *** generic command failure ***
-				exclude_lst_2 = ['read', 'examine', 'take', 'drop', 'open', 'close', 'eat', 'wear', 'drink', 'go', 'push', 'pull', 'enter', 'exit']
-				if word1 not in exclude_lst_2 and word2_obj.is_writing():
-						active_gs.buffer(f"That's X laudably creative but, truth be told, the only thing you can generally do with the {word2_obj.full_name} is to read it.")
-						return False
+##				exclude_lst_2 = ['read', 'examine', 'take', 'drop', 'open', 'close', 'eat', 'wear', 'drink', 'go', 'push', 'pull', 'enter', 'exit']
+##				if word1 not in exclude_lst_2 and word2_obj.is_writing():
+##						active_gs.buffer(f"That's X laudably creative but, truth be told, the only thing you can generally do with the {word2_obj.full_name} is to read it.")
+##						return False
 
-				exclude_lst = ['read' 'examine', 'take', 'drop', 'eat', 'wear', 'open', 'close', 'drink', 'go', 'push', 'pull', 'enter', 'exit']
-				if word1 not in exclude_lst and not word2_obj.is_writing() and room.chk_is_vis(word2_obj, active_gs) == False:
+##				exclude_lst = ['read' 'examine', 'take', 'drop', 'eat', 'wear', 'open', 'close', 'drink', 'go', 'push', 'pull', 'enter', 'exit']
+##				if word1 not in exclude_lst and not word2_obj.is_writing() and room.chk_is_vis(word2_obj, active_gs) == False:
 #				if word1 != 'read' and not word2_obj.is_writing() and room.chk_is_vis(word2_obj, active_gs) == False:
-						active_gs.buffer("You can't see a " + word2_obj.full_name + " here.")
-						return False
+##						active_gs.buffer("You can't see a " + word2_obj.full_name + " here.")
+##						return False
 
-				exclude_lst_3 = ['read', 'examine', 'take', 'drop', 'open', 'close', 'eat', 'wear', 'drink', 'go', 'push', 'pull', 'enter', 'exit']
-				if word1 not in exclude_lst_3 and active_gs.hero.is_contained(active_gs) and word2_obj not in active_gs.hero.get_contained_by(active_gs).get_vis_contain_lst(active_gs) + [room]:
-						active_gs.buffer(f"You'll have to exit the {active_gs.hero.get_contained_by(active_gs).full_name} to attempt that.")
-						return False
+##				exclude_lst_3 = ['read', 'examine', 'take', 'drop', 'open', 'close', 'eat', 'wear', 'drink', 'go', 'push', 'pull', 'enter', 'exit']
+##				if word1 not in exclude_lst_3 and active_gs.hero.is_contained(active_gs) and word2_obj not in active_gs.hero.get_contained_by(active_gs).get_vis_contain_lst(active_gs) + [room]:
+##						active_gs.buffer(f"You'll have to exit the {active_gs.hero.get_contained_by(active_gs).full_name} to attempt that.")
+##						return False
 
 #				if (word1 in []) and (not active_gs.hero.chk_in_hand(word2_obj)): # 'drop', 'eat', 'wear' removed
 #						active_gs.buffer("You're not holding the " + word2_obj.full_name + " in your hand.")
