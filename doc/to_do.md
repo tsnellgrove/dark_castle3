@@ -321,7 +321,7 @@ Version 3.76 Goals
 					- INPROC: Creature
 						- DONE: stand => update interp() module to throw error on tru_1word + more words
 						- DONE: show
-						- TBD: give
+						- DONE: give
 						- TBD: attack
 	- TBD: decide how to address special errors
 		- TBD: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')

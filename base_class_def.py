@@ -357,9 +357,9 @@ class Writing(Invisible):
 
 	def show(self, obj, active_gs):
 		creature = active_gs.hero
-		if self.err_std(creature, active_gs):
-			return True
 		if obj.err_std(creature, active_gs):
+			return True
+		if self.err_std(creature, active_gs):
 			return True
 		if not self.is_creature():
 			active_gs.buffer(f"Exactly how would you expect the {self.full_name} to respond to the {obj.full_name}?")
@@ -367,8 +367,15 @@ class Writing(Invisible):
 		return False
 
 	def give(self, obj, active_gs):
-		active_gs.buffer(f"And what do you expect the {self.full_name} to do with the {obj.full_name}?")
-		return
+		creature = active_gs.hero
+		if obj.err_std(creature, active_gs):
+			return True
+		if self.err_std(creature, active_gs):
+			return True
+		if not self.is_creature():
+			active_gs.buffer(f"And what do you expect the {self.full_name} to do with the {obj.full_name}?")
+			return True
+		return False
 
 	def attack(self, src_obj, active_gs):
 		active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")

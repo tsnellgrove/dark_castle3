@@ -282,12 +282,19 @@ class Creature(ViewOnly):
 
 
 	def give(self, obj, active_gs):
+		base_error = super(Creature, self).give(obj, active_gs)
 		""" Gives an item to another creature.
 		"""
+		if base_error:
+			return
 		# determine other creature's response
 		creature = active_gs.hero
 		if obj.err_not_in_hand(creature, active_gs):
 			return
+		if self == creature:
+			active_gs.buffer(f"With great formality and many words of thanks, you hand the {obj.full_name} to yourself.")
+			return
+		
 		try:
 			active_gs.buffer(descript_dict[f"{creature.name}_give_{self.name}_{obj.name}"])
 			give_key = obj
