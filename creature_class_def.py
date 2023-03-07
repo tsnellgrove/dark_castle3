@@ -324,8 +324,11 @@ class Creature(ViewOnly):
 
 
 	def attack(self, src_obj, active_gs, src_creature = None):
+		base_error = super(Creature, self).attack(src_obj, active_gs)
 		""" Attacks a target_creature with an item
 		"""
+		if base_error:
+			return
 		# destermine src_creature & tgt_creature
 		if src_creature is None:
 			src_creature = active_gs.hero

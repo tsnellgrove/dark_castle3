@@ -279,7 +279,7 @@ Version 3.76 Goals
 				- DONE: writing not vis => don't see
 				- DONE: non-writin obj not vis => don't see
 				- DONE: if creature.is_contained => must exit
-			- INPROC: Move base verb errors to Writing
+			- DONE: Move base verb errors to Writing
 				- DONE: move to Writing
 				- DONE: test std erros and is_writing on 'show' (final test!)
 					- DONE: incorporate writing while contained into std_err?
@@ -292,7 +292,7 @@ Version 3.76 Goals
 				- DONE: consolidate / fix ViewOnly general errors
 					- DONE: chk_not_vis() => err_not_vis()
 					- DONE: chk_not_in_hand() => move to Writing; change to err_not_in_hand()
-				- INPROC: extend new error approach to all verbs
+				- DONE: extend new error approach to all verbs
 					- N/A: true1word / 'help'
 					- DONE: Writing / 'read'
 					- DONE: ViewOnly / 'examine'
@@ -318,20 +318,27 @@ Version 3.76 Goals
 					- DONE: Seat
 						- DONE: 'enter'
 						- DONE: 'exit'
-					- INPROC: Creature
+					- DONE: Creature
 						- DONE: stand => update interp() module to throw error on tru_1word + more words
 						- DONE: show
 						- DONE: give
-						- TBD: attack
-	- TBD: decide how to address special errors
-		- TBD: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
-		- TBD: fix error where container open extension runs even if container already open error plays
-	- TBD: update Writing & Validate doc_strings
-		- TBD: update doc_string in validate to reflect current approach => method & repeating vs. logic
-		- TBD: doc_string on validate just for user_input (i.e. Burt)
-		- TBD: doc_string journey to get to current approach
-		- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
-		- TBD: clean up comments in validate
+						- DONE: attack
+		- TBD: decide how to address special errors
+			- TBD: fix error where container open extension runs even if container already open error plays
+			- TBD: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
+		- TBD: update Writing & Validate doc_strings
+			- TBD: update validate doc_string to reflect current approach => method & repeating vs. logic
+			- TBD: doc_string on validate just for user_input (i.e. Burt)
+			- TBD: doc_string journey to get to current approach
+			- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
+			- TBD: clean up comments in validate
+
+		- TBD: validate() clean-up
+			- TBD: fix indents
+			- TBD: elim interp() "random error" option?
+		- TBD: interp() error tuning
+			- TBD: identify interp() errors with "[INTERP]"
+			- TBD: normalize case
 
 - TBD: New next version goal
 	- TBD: finish error message updates by updating validate() and introducting verb method modes

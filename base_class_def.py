@@ -378,8 +378,15 @@ class Writing(Invisible):
 		return False
 
 	def attack(self, src_obj, active_gs):
-		active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
-		return
+		creature = active_gs.hero
+		if src_obj.err_std(creature, active_gs):
+			return True
+		if self.err_std(creature, active_gs):
+			return True
+		if not self.is_creature():
+			active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
+			return True
+		return False
 	
 	# *** verb methods ***
 	def read(self, active_gs):
