@@ -326,6 +326,7 @@ Version 3.76 Goals
 		- TBD: decide how to address special errors
 			- TBD: fix error where container open extension runs even if container already open error plays
 			- TBD: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
+				- TBD: create prep_error() routine that takes both nouns, chks  exist / wrt 1st; then cont
 		- TBD: update Writing & Validate doc_strings
 			- TBD: update validate doc_string to reflect current approach => method & repeating vs. logic
 			- TBD: doc_string on validate just for user_input (i.e. Burt)
