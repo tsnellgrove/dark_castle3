@@ -123,17 +123,21 @@ class Door(ViewOnly):
 			active_gs.buffer(f"The {self.full_name} is locked.")
 			return 
 
+		self.is_open = True
+
 		active_gs.buffer("Openned") # is_open == False, is_unlocked == True
 		# Upon opening a container, the player's natural question is "What's in it?"
-		if self.is_container() and self.is_empty():
-			active_gs.buffer(f"The {self.full_name} is empty.")
-		if self.is_container() and not self.is_empty():
-			active_gs.buff_cr()
-			active_gs.buffer("Print Test 1")
+		if self.is_container():
+			self.disp_cond(active_gs)
 			self.disp_contain(active_gs)
-			active_gs.buff_cr()
+#		if self.is_container() and self.is_empty():
+#			active_gs.buffer(f"The {self.full_name} is empty.")
+#		if self.is_container() and not self.is_empty():
+#			active_gs.buff_cr()
+#			self.disp_contain(active_gs)
+#			active_gs.buff_cr()
 		
-		self.is_open = True
+		
 		
 
 	def close(self, active_gs):
@@ -266,7 +270,6 @@ class Container(Door):
 		""" Displays a description of the visible items held by the obj. Used in examine().
 		"""
 		if self.is_not_closed() and not self.is_empty():
-			active_gs.buffer("Print Test 2")
 			contain_txt_lst = [obj.full_name for obj in self.contain_lst if obj != active_gs.hero]
 			if contain_txt_lst:
 				contain_str = ", ".join(contain_txt_lst)
