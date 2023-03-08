@@ -124,6 +124,14 @@ class Door(ViewOnly):
 			return 
 
 		active_gs.buffer("Openned") # is_open == False, is_unlocked == True
+		# Upon opening a container, the player's natural question is "What's in it?"
+		if self.is_container() and self.is_empty():
+			active_gs.buffer(f"The {self.full_name} is empty.")
+		if self.is_container() and not self.is_empty():
+			active_gs.buff_cr()
+			active_gs.buffer("Print Test 1")
+			self.disp_contain(active_gs)
+			active_gs.buff_cr()
 		
 		self.is_open = True
 		
@@ -258,6 +266,7 @@ class Container(Door):
 		""" Displays a description of the visible items held by the obj. Used in examine().
 		"""
 		if self.is_not_closed() and not self.is_empty():
+			active_gs.buffer("Print Test 2")
 			contain_txt_lst = [obj.full_name for obj in self.contain_lst if obj != active_gs.hero]
 			if contain_txt_lst:
 				contain_str = ", ".join(contain_txt_lst)
@@ -268,18 +277,18 @@ class Container(Door):
 		return 
 
 	# *** verb methods ***
-	def open(self, active_gs):
-		super(Container, self).open(active_gs)
-		""" Extends Door.open(). Upon opening a container, the player's natural question is "What's in it?". Open for containers answers this question whenever a container is opened. If the container is empty that information is displayed as well.
-		"""
-		if self.is_unlocked == False:
-			return 
-		if self.is_empty():
-			active_gs.buffer(f"The {self.full_name} is empty.")
-			return 
-		active_gs.buff_cr()
-		self.disp_contain(active_gs)
-		active_gs.buff_cr()
+#	def open(self, active_gs):
+#		super(Container, self).open(active_gs)
+#		""" Extends Door.open(). Upon opening a container, the player's natural question is "What's in it?". Open for containers answers this question whenever a container is opened. If the container is empty that information is displayed as well.
+#		"""
+#		if self.is_unlocked == False:
+#			return 
+#		if self.is_empty():
+#			active_gs.buffer(f"The {self.full_name} is empty.")
+#			return 
+#		active_gs.buff_cr()
+#		self.disp_contain(active_gs)
+#		active_gs.buff_cr()
 
 	def put(self, obj, active_gs):
 		base_error = super(Container, self).put(obj, active_gs)

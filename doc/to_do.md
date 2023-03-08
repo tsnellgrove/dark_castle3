@@ -324,7 +324,8 @@ Version 3.76 Goals
 						- DONE: give
 						- DONE: attack
 		- TBD: decide how to address special errors
-			- TBD: fix error where container open extension runs even if container already open error plays
+			- INPROC: fix error where container open extension runs even if container already open error plays
+				- TBD: maybe use empty condition???
 			- TBD: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
 				- TBD: create prep_error() routine that takes both nouns, chks  exist / wrt 1st; then cont
 		- TBD: update Writing & Validate doc_strings
