@@ -104,6 +104,7 @@ class Door(ViewOnly):
 		active_gs.buffer("Unlocked") # correct key in hand, is_open == False, is_unlocked == False
 
 		self.is_unlocked = True
+		return
 
 
 	def open(self, active_gs):
@@ -125,11 +126,17 @@ class Door(ViewOnly):
 
 		self.is_open = True
 
-		active_gs.buffer("Openned") # is_open == False, is_unlocked == True
+		active_gs.buff_cr()
+		active_gs.buff_no_cr("Openned. ")
+##		active_gs.buffer("Openned") # is_open == False, is_unlocked == True
 		# Upon opening a container, the player's natural question is "What's in it?"
 		if self.is_container():
-			self.disp_cond(active_gs)
+#			self.disp_cond(active_gs)
+			if self.is_empty():
+				active_gs.buff_no_cr(f"The {self.full_name} is empty.")
 			self.disp_contain(active_gs)
+		active_gs.buff_cr()
+		return
 #		if self.is_container() and self.is_empty():
 #			active_gs.buffer(f"The {self.full_name} is empty.")
 #		if self.is_container() and not self.is_empty():
@@ -160,6 +167,7 @@ class Door(ViewOnly):
 		active_gs.buffer("Closed") # is_open == True, is_unlocked == True
 
 		self.is_open = False
+		return
 
 
 	def lock(self, key_obj, active_gs):
@@ -196,6 +204,7 @@ class Door(ViewOnly):
 		active_gs.buffer("Locked") # correct key in hand, is_open == False, is_unlocked == True
 
 		self.is_unlocked = False
+		return
 
 
 class Container(Door):
@@ -320,6 +329,7 @@ class Container(Door):
 		self.contain_lst_append(obj)
 
 		active_gs.buffer("Done")
+		return
 
 
 class PortableContainer(Container, Item):

@@ -326,7 +326,7 @@ Version 3.76 Goals
 		- INPROC: decide how to address special errors
 			- INPROC: fix error w/ container open extension runs even if container already open error plays
 				- DONE: found problem - needed to update state first
-				- TBD: sort out language & CRS
+				- DONE: sort out language & CRS
 				- TBD: clean up comments
 			- TBD: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
 				- TBD: create prep_error() routine that takes both nouns, chks  exist / wrt 1st; then cont
