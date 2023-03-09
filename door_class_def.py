@@ -128,21 +128,12 @@ class Door(ViewOnly):
 
 		active_gs.buff_cr()
 		active_gs.buff_no_cr("Openned. ")
-##		active_gs.buffer("Openned") # is_open == False, is_unlocked == True
-		# Upon opening a container, the player's natural question is "What's in it?"
 		if self.is_container():
-#			self.disp_cond(active_gs)
 			if self.is_empty():
 				active_gs.buff_no_cr(f"The {self.full_name} is empty.")
 			self.disp_contain(active_gs)
 		active_gs.buff_cr()
 		return
-#		if self.is_container() and self.is_empty():
-#			active_gs.buffer(f"The {self.full_name} is empty.")
-#		if self.is_container() and not self.is_empty():
-#			active_gs.buff_cr()
-#			self.disp_contain(active_gs)
-#			active_gs.buff_cr()
 		
 		
 		
@@ -289,19 +280,6 @@ class Container(Door):
 		return 
 
 	# *** verb methods ***
-#	def open(self, active_gs):
-#		super(Container, self).open(active_gs)
-#		""" Extends Door.open(). Upon opening a container, the player's natural question is "What's in it?". Open for containers answers this question whenever a container is opened. If the container is empty that information is displayed as well.
-#		"""
-#		if self.is_unlocked == False:
-#			return 
-#		if self.is_empty():
-#			active_gs.buffer(f"The {self.full_name} is empty.")
-#			return 
-#		active_gs.buff_cr()
-#		self.disp_contain(active_gs)
-#		active_gs.buff_cr()
-
 	def put(self, obj, active_gs):
 		base_error = super(Container, self).put(obj, active_gs)
 		""" Puts an Item in a Container or on a Surface.

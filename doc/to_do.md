@@ -324,10 +324,10 @@ Version 3.76 Goals
 						- DONE: give
 						- DONE: attack
 		- INPROC: decide how to address special errors
-			- INPROC: fix error w/ container open extension runs even if container already open error plays
+			- DONE: fix error w/ container open extension runs even if container already open error plays
 				- DONE: found problem - needed to update state first
 				- DONE: sort out language & CRS
-				- TBD: clean up comments
+				- DONE: clean up comments
 			- TBD: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
 				- TBD: create prep_error() routine that takes both nouns, chks  exist / wrt 1st; then cont
 		- TBD: update Writing & Validate doc_strings
@@ -616,6 +616,7 @@ Version 3.78 Goals
 - re-work app_main() flow with validate() module
 - refactor app_main() modules
 
+- TBD: make verb method order consistent: errors, actions, user_response (last to sense actions)
 - TBD: plan for when to finish pushing errors out of validate
 - TBD: for example, validate fix will resolve get sword while in chair error
 - TBD: doc plan to finish the validate() fight:
