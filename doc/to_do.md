@@ -330,7 +330,7 @@ Version 3.76 Goals
 				- DONE: clean up comments
 			- INPROC: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
 				- DONE: review existing errors and re-order based on hierarchy
-				- TBD: clean up comments
+				- DONE: clean up comments
 				- TBD: create prep_error() routine that takes both nouns, chks  exist / wrt 1st; then cont
 		- TBD: update Writing & Validate doc_strings
 			- TBD: update validate doc_string to reflect current approach => method & repeating vs. logic
