@@ -328,13 +328,16 @@ Version 3.76 Goals
 				- DONE: found problem - needed to update state first
 				- DONE: sort out language & CRS
 				- DONE: clean up comments
-			- TBD: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
+			- INPROC: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
+				- DONE: review existing errors and re-order based on hierarchy
+				- TBD: clean up comments
 				- TBD: create prep_error() routine that takes both nouns, chks  exist / wrt 1st; then cont
 		- TBD: update Writing & Validate doc_strings
 			- TBD: update validate doc_string to reflect current approach => method & repeating vs. logic
 			- TBD: doc_string on validate just for user_input (i.e. Burt)
 			- TBD: doc_string journey to get to current approach
 			- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
+			- TBD: doc_string error hierarchy: (not_in_rm, is_wrt, not_in_reach, wrong_class), class_spec
 			- TBD: clean up comments in validate
 
 		- TBD: validate() clean-up

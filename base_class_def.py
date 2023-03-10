@@ -152,32 +152,49 @@ class Writing(Invisible):
 			return True
 		return False
 
+#	def err_std(self, creature, active_gs):
+#		if self.err_wrt_not_vis(creature, active_gs):
+#			return True
+#		if self.err_wrt_not_in_reach(creature, active_gs):
+#			return True
+#		if self.err_wrt_class(creature, active_gs):
+#			return True
+#		if self.err_not_vis(creature, active_gs):
+#			return True
+#		if self.err_not_in_reach(creature, active_gs):
+#			return True
+#		return False
+
 	def err_std(self, creature, active_gs):
-		if self.err_wrt_not_vis(creature, active_gs):
+		if self.err_not_vis(creature, active_gs):
 			return True
-		if self.err_wrt_not_in_reach(creature, active_gs):
+		if self.err_wrt_not_vis(creature, active_gs):
 			return True
 		if self.err_wrt_class(creature, active_gs):
 			return True
-		if self.err_not_vis(creature, active_gs):
-			return True
 		if self.err_not_in_reach(creature, active_gs):
+			return True
+		if self.err_wrt_not_in_reach(creature, active_gs):
 			return True
 		return False
 
 # *** verb error methods ***
 	def examine(self, active_gs):
 		creature = active_gs.hero
+		if self.err_not_vis(creature, active_gs):
+			return True
 		if self.err_wrt_not_vis(creature, active_gs):
 			return True
-		if self.err_wrt_not_in_reach(creature, active_gs):
-			return True
+#		if self.err_wrt_not_in_reach(creature, active_gs):
+#			return True
 		if self.is_writing():
 			active_gs.buffer(f"You can't examine the {self.full_name}. Try using 'read' instead.")
 			return True
-		if self.err_not_vis(creature, active_gs):
-			return True
+#		if self.err_not_vis(creature, active_gs):
+#			return True
 		if self.err_not_in_reach(creature, active_gs):
+			return True
+		if self.err_wrt_not_in_reach(creature, active_gs):
 			return True
 		return False
 
@@ -337,13 +354,17 @@ class Writing(Invisible):
 
 	def exit(self, active_gs):
 		creature = active_gs.hero
+		if self.err_not_vis(creature, active_gs):
+			return True
 		if self.err_wrt_not_vis(creature, active_gs):
 			return True
-		if self.err_wrt_not_in_reach(creature, active_gs):
-			return True
+#		if self.err_wrt_not_in_reach(creature, active_gs):
+#			return True
 		if self.err_wrt_class(creature, active_gs):
 			return True
-		if self.err_not_vis(creature, active_gs):
+#		if self.err_not_vis(creature, active_gs):
+#			return True
+		if self.err_wrt_not_in_reach(creature, active_gs):
 			return True
 		if not self.is_seat() and self.err_not_in_reach(creature, active_gs):
 			return True
