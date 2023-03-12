@@ -335,8 +335,16 @@ Version 3.76 Goals
 				- INPROC: test in show
 					- INFO: test fails because I need to call the *method* from the obj...
 					- IDEA: insted, make a func... or make sub methods for top vs. bot cases & call w/ OR
-					- TBD: create err_xst_std() and err_rch_std()
+					- DONE: create err_xst() and err_rch()
+					- DONE: update err_std() with err_xst() and err_rch()
+					- DONE: test use of err_std()
+					- TBD: test show with OR calls of err_xst() and err_rch()
 				- TBD: implement for all prep verbs
+		- TBD: future error enhancements
+			- TBD: read() of obj w/ writing => "On the {obj} you see written..."
+			- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
+			- TBD: examine writing => "The {writing} reads as follows: n/"
+			- TBD: should it be possible to show() Writing ??
 		- TBD: update Writing & Validate doc_strings
 			- TBD: update validate doc_string to reflect current approach => method & repeating vs. logic
 			- TBD: doc_string on validate just for user_input (i.e. Burt)
