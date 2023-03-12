@@ -331,7 +331,12 @@ Version 3.76 Goals
 			- INPROC: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
 				- DONE: review existing errors and re-order based on hierarchy
 				- DONE: clean up comments
-				- TBD: create prep_error() routine that takes both nouns, chks  exist / wrt 1st; then cont
+				- DONE: create prep_error() routine that takes both nouns, chks  exist / wrt 1st; then rch
+				- INPROC: test in show
+					- INFO: test fails because I need to call the *method* from the obj...
+					- IDEA: insted, make a func... or make sub methods for top vs. bot cases & call w/ OR
+					- TBD: create err_xst_std() and err_rch_std()
+				- TBD: implement for all prep verbs
 		- TBD: update Writing & Validate doc_strings
 			- TBD: update validate doc_string to reflect current approach => method & repeating vs. logic
 			- TBD: doc_string on validate just for user_input (i.e. Burt)

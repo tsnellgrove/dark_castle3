@@ -165,6 +165,22 @@ class Writing(Invisible):
 			return True
 		return False
 
+	def err_prep_std(self, obj, creature, active_gs):
+		noun_lst = [obj, self]
+		for element in noun_lst:
+			if element.err_not_vis(creature, active_gs):
+				return True
+			if element.err_wrt_not_vis(creature, active_gs):
+				return True
+			if element.err_wrt_class(creature, active_gs):
+				return True
+		for element in noun_lst:
+			if element.err_not_in_reach(creature, active_gs):
+				return True
+			if element.err_wrt_not_in_reach(creature, active_gs):
+				return True
+		return False
+
 # *** verb error methods ***
 	def examine(self, active_gs):
 		creature = active_gs.hero
@@ -357,6 +373,7 @@ class Writing(Invisible):
 
 	def show(self, obj, active_gs):
 		creature = active_gs.hero
+###		if err_prep_std(obj, creature, active_gs):
 		if obj.err_std(creature, active_gs):
 			return True
 		if self.err_std(creature, active_gs):
