@@ -331,15 +331,16 @@ Version 3.76 Goals
 			- INPROC: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
 				- DONE: review existing errors and re-order based on hierarchy
 				- DONE: clean up comments
-				- DONE: create prep_error() routine that takes both nouns, chks  exist / wrt 1st; then rch
-				- INPROC: test in show
+				- CANCEL: create prep_error() that takes both nouns, chks  exist / wrt 1st; then rch
+				- DONE: test and fix in show
 					- INFO: test fails because I need to call the *method* from the obj...
 					- IDEA: insted, make a func... or make sub methods for top vs. bot cases & call w/ OR
 					- DONE: create err_xst() and err_rch()
 					- DONE: update err_std() with err_xst() and err_rch()
 					- DONE: test use of err_std()
-					- TBD: test show with OR calls of err_xst() and err_rch()
+					- DONE: test show with OR calls of err_xst() and err_rch()
 				- TBD: implement for all prep verbs
+				- TBD: clean up comments
 		- TBD: future error enhancements
 			- TBD: read() of obj w/ writing => "On the {obj} you see written..."
 			- TBD: read() if no writing on obj => "There's nothing written on the {obj}."

@@ -152,7 +152,7 @@ class Writing(Invisible):
 			return True
 		return False
 
-	def xst_err(self, creature, active_gs):
+	def err_xst(self, creature, active_gs):
 		if self.err_not_vis(creature, active_gs):
 			return True
 		if self.err_wrt_not_vis(creature, active_gs):
@@ -161,7 +161,7 @@ class Writing(Invisible):
 			return True
 		return False
 
-	def rch_err(self, creature, active_gs):
+	def err_rch(self, creature, active_gs):
 		if self.err_not_in_reach(creature, active_gs):
 			return True
 		if self.err_wrt_not_in_reach(creature, active_gs):
@@ -169,9 +169,9 @@ class Writing(Invisible):
 		return False
 
 	def err_std(self, creature, active_gs):
-		if self.xst_err(creature, active_gs):
+		if self.err_xst(creature, active_gs):
 			return True
-		if self.rch_err(creature, active_gs):
+		if self.err_rch(creature, active_gs):
 			return True
 #		if self.err_not_vis(creature, active_gs):
 #			return True
@@ -394,9 +394,11 @@ class Writing(Invisible):
 	def show(self, obj, active_gs):
 		creature = active_gs.hero
 #		if err_prep_std(obj, creature, active_gs):
-		if obj.err_std(creature, active_gs):
+#		if obj.err_std(creature, active_gs):
+		if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
 			return True
-		if self.err_std(creature, active_gs):
+#		if self.err_std(creature, active_gs):
+		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
 			return True
 		if not self.is_creature():
 			active_gs.buffer(f"Exactly how would you expect the {self.full_name} to respond to the {obj.full_name}?")
