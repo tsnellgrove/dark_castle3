@@ -316,10 +316,14 @@ class Writing(Invisible):
 
 	def lock(self, key_obj, active_gs):
 		creature = active_gs.hero
-		if self.err_std(creature, active_gs):
+		if key_obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
 			return True
-		if key_obj.err_std(creature, active_gs):
+		if key_obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
 			return True
+#		if self.err_std(creature, active_gs):
+#			return True
+#		if key_obj.err_std(creature, active_gs):
+#			return True
 		if not self.is_door():
 			active_gs.buffer(f"The {self.full_name} cannot be locked.")
 			return True
@@ -333,10 +337,14 @@ class Writing(Invisible):
 
 	def unlock(self, key_obj, active_gs):
 		creature = active_gs.hero
-		if self.err_std(creature, active_gs):
+		if key_obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
 			return True
-		if key_obj.err_std(creature, active_gs):
+		if key_obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
 			return True
+#		if self.err_std(creature, active_gs):
+#			return True
+#		if key_obj.err_std(creature, active_gs):
+#			return True
 		if not self.is_door():
 			active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
 			return True
@@ -393,11 +401,8 @@ class Writing(Invisible):
 
 	def show(self, obj, active_gs):
 		creature = active_gs.hero
-#		if err_prep_std(obj, creature, active_gs):
-#		if obj.err_std(creature, active_gs):
 		if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
 			return True
-#		if self.err_std(creature, active_gs):
 		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
 			return True
 		if not self.is_creature():

@@ -376,11 +376,11 @@ class Surface(Container):
 		active_gs.buffer(f"How do you propose to 'close' the {self.full_name}?")
 		return
 
-	def lock(self, active_gs):
+	def lock(self, key_obj, active_gs):
 		active_gs.buffer(f"How do you propose to 'lock' the {self.full_name}?")
 		return
 
-	def unlock(self, active_gs):
+	def unlock(self, key_obj, active_gs):
 		active_gs.buffer(f"How do you propose to 'unlock' the {self.full_name}?")
 		return
 
