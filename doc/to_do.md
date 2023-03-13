@@ -338,14 +338,19 @@ Version 3.76 Goals
 					- DONE: create err_xst() and err_rch()
 					- DONE: update err_std() with err_xst() and err_rch()
 					- DONE: test use of err_std()
-					- DONE: test show with OR calls of err_xst() and err_rch()
-				- TBD: implement for all prep verbs
+					- DONE: test show() with OR calls of err_xst() and err_rch()
+				- INPROC: implement for all prep verbs
+					- DONE: lock(), unlock(), put()
+					- TBD: give(), attack()
 				- TBD: clean up comments
 		- TBD: future error enhancements
+			- TBD: combine err_xst() and err_rch() into err_prep_std() ??
 			- TBD: read() of obj w/ writing => "On the {obj} you see written..."
 			- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
 			- TBD: examine writing => "The {writing} reads as follows: n/"
 			- TBD: should it be possible to show() Writing ??
+			- TBD: should "put key in moat" do more? what about "enter moat"
+			- TBD: specific put() error for "put suitcase in suitcase"
 		- TBD: update Writing & Validate doc_strings
 			- TBD: update validate doc_string to reflect current approach => method & repeating vs. logic
 			- TBD: doc_string on validate just for user_input (i.e. Burt)
