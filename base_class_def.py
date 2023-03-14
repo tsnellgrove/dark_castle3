@@ -173,31 +173,15 @@ class Writing(Invisible):
 			return True
 		if self.err_rch(creature, active_gs):
 			return True
-#		if self.err_not_vis(creature, active_gs):
-#			return True
-#		if self.err_wrt_not_vis(creature, active_gs):
-#			return True
-#		if self.err_wrt_class(creature, active_gs):
-#			return True
-#		if self.err_not_in_reach(creature, active_gs):
-#			return True
-#		if self.err_wrt_not_in_reach(creature, active_gs):
-#			return True
 		return False
 
 #	def err_prep_std(self, obj, creature, active_gs):
 #		noun_lst = [obj, self]
 #		for element in noun_lst:
-#			if element.err_not_vis(creature, active_gs):
-#				return True
-#			if element.err_wrt_not_vis(creature, active_gs):
-#				return True
-#			if element.err_wrt_class(creature, active_gs):
+#			if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
 #				return True
 #		for element in noun_lst:
-#			if element.err_not_in_reach(creature, active_gs):
-#				return True
-#			if element.err_wrt_not_in_reach(creature, active_gs):
+#			if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
 #				return True
 #		return False
 
@@ -320,10 +304,6 @@ class Writing(Invisible):
 			return True
 		if key_obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
 			return True
-#		if self.err_std(creature, active_gs):
-#			return True
-#		if key_obj.err_std(creature, active_gs):
-#			return True
 		if not self.is_door():
 			active_gs.buffer(f"The {self.full_name} cannot be locked.")
 			return True
@@ -341,10 +321,6 @@ class Writing(Invisible):
 			return True
 		if key_obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
 			return True
-#		if self.err_std(creature, active_gs):
-#			return True
-#		if key_obj.err_std(creature, active_gs):
-#			return True
 		if not self.is_door():
 			active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
 			return True
@@ -362,10 +338,6 @@ class Writing(Invisible):
 			return True
 		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
 			return True
-#		if obj.err_std(creature, active_gs):
-#			return True
-#		if self.err_std(creature, active_gs):
-#			return True
 		if not self.is_container():
 			active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
 			return True
@@ -420,10 +392,6 @@ class Writing(Invisible):
 			return True
 		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
 			return True
-#		if obj.err_std(creature, active_gs):
-#			return True
-#		if self.err_std(creature, active_gs):
-#			return True
 		if not self.is_creature():
 			active_gs.buffer(f"And what do you expect the {self.full_name} to do with the {obj.full_name}?")
 			return True
@@ -435,10 +403,6 @@ class Writing(Invisible):
 			return True
 		if src_obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
 			return True
-#		if src_obj.err_std(creature, active_gs):
-#			return True
-#		if self.err_std(creature, active_gs):
-#			return True
 		if not self.is_creature():
 			active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
 			return True

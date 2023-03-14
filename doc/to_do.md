@@ -323,12 +323,12 @@ Version 3.76 Goals
 						- DONE: show
 						- DONE: give
 						- DONE: attack
-		- INPROC: decide how to address special errors
+		- DONE: decide how to address special errors
 			- DONE: fix error w/ container open extension runs even if container already open error plays
 				- DONE: found problem - needed to update state first
 				- DONE: sort out language & CRS
 				- DONE: clean up comments
-			- INPROC: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
+			- DONE: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
 				- DONE: review existing errors and re-order based on hierarchy
 				- DONE: clean up comments
 				- CANCEL: create prep_error() that takes both nouns, chks  exist / wrt 1st; then rch
@@ -341,15 +341,7 @@ Version 3.76 Goals
 					- DONE: test show() with OR calls of err_xst() and err_rch()
 				- DONE: implement for all prep verbs
 					- DONE: lock(), unlock(), put(), give(), attack()
-				- TBD: clean up comments
-		- TBD: future error enhancements
-			- TBD: combine err_xst() and err_rch() into err_prep_std() ??
-			- TBD: read() of obj w/ writing => "On the {obj} you see written..."
-			- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
-			- TBD: examine writing => "The {writing} reads as follows: n/"
-			- TBD: should it be possible to show() Writing ??
-			- TBD: should "put key in moat" do more? what about "enter moat"
-			- TBD: specific put() error for "put suitcase in suitcase"
+				- DONE: clean up comments
 		- TBD: update Writing & Validate doc_strings
 			- TBD: update validate doc_string to reflect current approach => method & repeating vs. logic
 			- TBD: doc_string on validate just for user_input (i.e. Burt)
@@ -358,12 +350,6 @@ Version 3.76 Goals
 			- TBD: doc_string error hierarchy: (not_in_rm, is_wrt, not_in_reach, wrong_class), class_spec
 			- TBD: clean up comments in validate
 
-		- TBD: validate() clean-up
-			- TBD: fix indents
-			- TBD: elim interp() "random error" option?
-		- TBD: interp() error tuning
-			- TBD: identify interp() errors with "[INTERP]"
-			- TBD: normalize case
 
 - TBD: New next version goal
 	- TBD: finish error message updates by updating validate() and introducting verb method modes
@@ -372,6 +358,23 @@ Version 3.76 Goals
 		- TBD: for Creature prep_verbs, if one creature in room guess that creature, else error
 		- TBD: for Container / Surface prep_verbs, if one class obj in room guess it, else error
 		- TBD: update help() to explain how this works
+
+		- TBD: validate() clean-up
+			- TBD: fix indents
+			- TBD: elim interp() "random error" option?
+		- TBD: interp() error tuning
+			- TBD: identify interp() errors with "[INTERP]"
+			- TBD: normalize case
+		- TBD: future error enhancements
+			- TBD: combine err_xst() and err_rch() into err_prep_std() ??
+			- TBD: read() of obj w/ writing => "On the {obj} you see written..."
+			- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
+			- TBD: examine writing => "The {writing} reads as follows: n/"
+			- TBD: should it be possible to show() Writing ??
+			- TBD: should "put key in moat" do more? what about "enter moat"
+			- TBD: specific put() error for "put suitcase in suitcase"
+
+
 
 
 ##########################
