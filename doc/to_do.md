@@ -348,7 +348,7 @@ Version 3.76 Goals
 			- TBD: doc_string journey to get to current approach
 			- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
 			- TBD: doc_string error hierarchy: (not_in_rm, is_wrt, not_in_reach, wrong_class), class_spec
-			- TBD: clean up comments in validate
+		- TBD: clean up comments in validate
 
 
 - TBD: New next version goal
