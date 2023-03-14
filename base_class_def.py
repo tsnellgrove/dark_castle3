@@ -416,10 +416,14 @@ class Writing(Invisible):
 
 	def give(self, obj, active_gs):
 		creature = active_gs.hero
-		if obj.err_std(creature, active_gs):
+		if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
 			return True
-		if self.err_std(creature, active_gs):
+		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
 			return True
+#		if obj.err_std(creature, active_gs):
+#			return True
+#		if self.err_std(creature, active_gs):
+#			return True
 		if not self.is_creature():
 			active_gs.buffer(f"And what do you expect the {self.full_name} to do with the {obj.full_name}?")
 			return True
