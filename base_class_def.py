@@ -431,10 +431,14 @@ class Writing(Invisible):
 
 	def attack(self, src_obj, active_gs):
 		creature = active_gs.hero
-		if src_obj.err_std(creature, active_gs):
+		if src_obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
 			return True
-		if self.err_std(creature, active_gs):
+		if src_obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
 			return True
+#		if src_obj.err_std(creature, active_gs):
+#			return True
+#		if self.err_std(creature, active_gs):
+#			return True
 		if not self.is_creature():
 			active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
 			return True

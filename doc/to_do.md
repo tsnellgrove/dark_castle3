@@ -339,9 +339,8 @@ Version 3.76 Goals
 					- DONE: update err_std() with err_xst() and err_rch()
 					- DONE: test use of err_std()
 					- DONE: test show() with OR calls of err_xst() and err_rch()
-				- INPROC: implement for all prep verbs
-					- DONE: lock(), unlock(), put(), give()
-					- TBD: attack()
+				- DONE: implement for all prep verbs
+					- DONE: lock(), unlock(), put(), give(), attack()
 				- TBD: clean up comments
 		- TBD: future error enhancements
 			- TBD: combine err_xst() and err_rch() into err_prep_std() ??
