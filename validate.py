@@ -27,19 +27,6 @@ def validate(active_gs, case, word_lst):
 				
 				For both these reasons, validate() was inserted between interp() and pre_action() during refactoring.
 				
-		Error Types:
-				Interpreter Errors: The interpreter is unclear what command the player is trying to issue.
-				
-				Command Errors: The command is understood but cannot be carried out.
-				
-				There are 4 flavors of Command Error:
-						1) Generic Command Failures: Command failure cases that occur across multiple methods. e.g. very few commands will run if the noun of the command is not in the room's scope. Catching these errors in validate() avoids needing to re-write the same error-checking code repeatedly in multiple methods.
-						
-						2) Custom Command Failures: Command failure cases specific to a given method. e.g. Burt tries to unlock a container with the wrong key. This is a specific type of error that is best addressed in the unlock() method code itself. The error text is buffered and the fail condition is returned to validate() - which then returns False to app_main() - so that no command is actually run.
-						
-						3) Generic Method Mis-Match Errors: The player attempts to use a method on an incompatible object. These are usually acts of experimentation or silliness on the player's part. e.g. when Burt tries to 'take castle' no one really expects the command to work. So we throw a random, appropriately snide error.
-						
-						4) Custom Method Mis-Match Errors: In a few specific cases, player confusion over which methods can be used with which objects is quite justified. e.g. it's not unreasonable for the player to attempt to take the 'water'. In these cases we would like to give an explanitory error - but we can't provide a Custom Method Failure as the method cannot run at all. So, we trap the error in advance in the validate() method so that a helpful response can be given.
 		"""
 
 		# *** interpreter errors ***

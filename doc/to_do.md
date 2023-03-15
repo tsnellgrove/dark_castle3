@@ -342,7 +342,8 @@ Version 3.76 Goals
 				- DONE: implement for all prep verbs
 					- DONE: lock(), unlock(), put(), give(), attack()
 				- DONE: clean up comments
-		- TBD: update Writing & Validate doc_strings
+		- INPROC: update Writing & Validate doc_strings
+			- INPROC: update error history
 			- TBD: update validate doc_string to reflect current approach => method & repeating vs. logic
 			- TBD: doc_string on validate just for user_input (i.e. Burt)
 			- TBD: doc_string journey to get to current approach

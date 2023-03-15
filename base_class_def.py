@@ -595,5 +595,37 @@ class ViewOnly(Writing):
 		Historic Note:
 			Originally, examine() was extended by most classes and there was no clear definition of what Burt saw when he examined an object. Codifying what was presented by examine() seemed valuable so I broke it into parts (Title, Description, Condition, Writing, Contained) and defined functions for those in each class. 
 
+
+	* Errors
+		- Error Types:
+			Interpreter Errors: The interpreter is unclear what command the player is trying to issue.
+			
+			Command Errors: The command is understood but cannot be carried out.
+			
+			There are 4 flavors of Command Error:
+				1) Generic Command Errors: Command failure cases that occur across multiple methods. e.g. very few commands will run if the noun of the command is not in the room's scope. Catching these errors in validate() avoids needing to re-write the same error-checking code repeatedly in multiple methods.
+				
+				2) Custom Command Errors: Command failure cases specific to a given method. e.g. Burt tries to unlock a container with the wrong key. This is a specific type of error that is best addressed in the unlock() method code itself. The error text is buffered and the fail condition is returned to validate() - which then returns False to app_main() - so that no command is actually run.
+				
+				3) Generic Method Mis-Match Errors: The player attempts to use a method on an incompatible object. These are usually acts of experimentation or silliness on the player's part. e.g. when Burt tries to 'take castle' no one really expects the command to work. So we throw a random, appropriately snide error.
+				
+				4) Custom Method Mis-Match Errors: In a few specific cases, player confusion over which methods can be used with which objects is quite justified. e.g. it's not unreasonable for the player to attempt to take the 'water'. In these cases we would like to give an explanitory error - but we can't provide a Custom Method Failure as the method cannot run at all. So, we trap the error in advance in the validate() method so that a helpful response can be given.
+
+		A Not-so-Brief History of Errors:
+			From the start, the verb methods themselves were the home for all Generic and Custom Command Errors. I addressed Method Mis-Match cases in cmd_exe() where I simply wrapped the verb method call in a try... except... routine that called a random, non-specific, humorous error. 
+			
+			However, as time passed, and I created more verb methods - and periodically went back to refactor them - the repetition of Generic Command Errors began to bother me. Also, the unfairness of the Custom Method Mis-Match cases (especially examine() for Writing) became clearer. So I began to look for a central pre-verb-method "home" for these error checks.
+
+			Originally, cmd_exe() fit this purpose. I simply checked for the Generic Command Error cases and the Custom Method Mis-Match cases in advance of the try... except... verb method call.
+			
+			This worked acceptably well right through v3.68 (precedural parity version). However, as coding progressed a couple issues made it clear this was non-ideal:
+				1) Once timers were introduced, time tracking became important.	
+
+				2) The bigger problem was the more advanced use of pre_action machines. (see validte() for more info)
+
+			For both these reasons, validate() was inserted between interp() and pre_action() during refactoring and became the new home for Generic Command Errors, Generic Method Mis-Match Errors, and Custom Method Mis-Match Errors.
+
+			<= *** more history here ***
+
 """
 
