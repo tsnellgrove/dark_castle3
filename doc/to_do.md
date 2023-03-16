@@ -343,12 +343,11 @@ Version 3.76 Goals
 					- DONE: lock(), unlock(), put(), give(), attack()
 				- DONE: clean up comments
 		- INPROC: update Writing & Validate doc_strings
-			- INPROC: update error history
+			- DONE: update error history
+			- TBD: doc_string error hierarchy: (not_in_rm, is_wrt, not_in_reach, wrong_class), class_spec
 			- TBD: update validate doc_string to reflect current approach => method & repeating vs. logic
 			- TBD: doc_string on validate just for user_input (i.e. Burt)
-			- TBD: doc_string journey to get to current approach
 			- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
-			- TBD: doc_string error hierarchy: (not_in_rm, is_wrt, not_in_reach, wrong_class), class_spec
 		- TBD: clean up comments in validate
 
 

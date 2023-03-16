@@ -596,11 +596,27 @@ class ViewOnly(Writing):
 			Originally, examine() was extended by most classes and there was no clear definition of what Burt saw when he examined an object. Codifying what was presented by examine() seemed valuable so I broke it into parts (Title, Description, Condition, Writing, Contained) and defined functions for those in each class. 
 
 
-	* Errors
-		- Error Types:
-			Interpreter Errors: The interpreter is unclear what command the player is trying to issue.
-			
-			Command Errors: The command is understood but cannot be carried out.
+	* Error Sub-System
+		- Overview:
+			Hnadling incorrect commands is an innate requirement of any text adventure. It's the error subsystem's job to handle this.
+
+		- Game Design:
+			There are vastly more wrong command strings that can be given than right ones. When the valid command set is small enough, it works to simply accept the correct commands and throw a generic error on everything else. But as the vocabulary grows, the opportunity for genuine mis-wordings increses exponentially (e.g. if Burt can 'enter Throne', why can't he 'enter Moat' ??). At this point, the error sub-system becomes responsible for providing verb usage guidance. Lastly, anyone who plays the full game will recieve quite a few errors - so, in additiona to being instructive, they should also be fun and amusing.
+
+			Along with providing usage guidance and humor, the error sub-system shoudl present the player with the intuitively most obvious issues with their proposed action. 
+
+			*** <more info ***>
+
+
+
+		Program Architecture:
+		
+
+		- Implementation Detail:
+			There are 2 Error Types:
+				1) Interpreter Errors: The interpreter is unclear what command the player is trying to issue.
+				
+				2) Command Errors: The command is understood but cannot be carried out.
 			
 			There are 4 flavors of Command Error:
 				1) Generic Command Errors: Command failure cases that occur across multiple methods. e.g. very few commands will run if the noun of the command is not in the room's scope. Catching these errors in validate() avoids needing to re-write the same error-checking code repeatedly in multiple methods.
@@ -611,7 +627,7 @@ class ViewOnly(Writing):
 				
 				4) Custom Method Mis-Match Errors: In a few specific cases, player confusion over which methods can be used with which objects is quite justified. e.g. it's not unreasonable for the player to attempt to take the 'water'. In these cases we would like to give an explanitory error - but we can't provide a Custom Method Failure as the method cannot run at all. So, we trap the error in advance in the validate() method so that a helpful response can be given.
 
-		A Not-so-Brief History of Errors:
+		- A Not-so-Brief History of Error Handling:
 			From the start, the verb methods themselves were the home for all Generic and Custom Command Errors. I addressed Method Mis-Match cases in cmd_exe() where I simply wrapped the verb method call in a try... except... routine that called a random, non-specific, humorous error. 
 			
 			However, as time passed, and I created more verb methods - and periodically went back to refactor them - the repetition of Generic Command Errors began to bother me. Also, the unfairness of the Custom Method Mis-Match cases (especially examine() for Writing) became clearer. So I began to look for a central pre-verb-method "home" for these error checks.
@@ -625,7 +641,11 @@ class ViewOnly(Writing):
 
 			For both these reasons, validate() was inserted between interp() and pre_action() during refactoring and became the new home for Generic Command Errors, Generic Method Mis-Match Errors, and Custom Method Mis-Match Errors.
 
-			<= *** more history here ***
+			Over time, it began to click for me that a better solutino for Custom Method Mis-Match Errors was to instantiate them in the problem class. So in created a separate take() method in class Liquid that did nothing but throw an error explaining the the use that they were not able to 'take' a liquid and recommending that they try 'drink' instead. Of course, for this to work, I needed to exclude these special cases from any general Method Mis-Match cases that were handled in validate().
+
+			Also, around this time, I began repalying Hollywood Hijinx with my youngest son, Joshua. I'd never played it all the way through before and we had a lot of fun solving it (though I did need hints on both the penguin and the buzz saw - both of which felt like iffy puzzles to me). In playing it I was reminded that Infocom did a nice job of throwing verb-specific errors... where-as Dark Castle still threw generic "Burt, I have no idea what you're talking about" errors for the vast majority of Method Mis-Matches.
+
+			So, this was the state of DC errors when I started coding the Seat class... which required a whole slew of new Generic Command errors. Here, the complexity sins of my past caught up with me. I had error messages being triggered from interp(), validate(), verb classes, and non-verb classes. I struggled repeatedly to troubleshoot bugs because I couldn't easily figure out which bit of code (false) errors were getting triggered from. I eventually got class Seat working but I was so frustrated with the error situation that I pushed off the othe work I had been planning to do and immediately started working on the (hoefully) comprehensive and systemic error solution in Writing.
 
 """
 
