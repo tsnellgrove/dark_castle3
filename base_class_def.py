@@ -601,12 +601,23 @@ class ViewOnly(Writing):
 			Hnadling incorrect commands is an innate requirement of any text adventure. It's the error subsystem's job to handle this.
 
 		- Game Design:
-			There are vastly more wrong command strings that can be given than right ones. When the valid command set is small enough, it works to simply accept the correct commands and throw a generic error on everything else. But as the vocabulary grows, the opportunity for genuine mis-wordings increses exponentially (e.g. if Burt can 'enter Throne', why can't he 'enter Moat' ??). At this point, the error sub-system becomes responsible for providing verb usage guidance. Lastly, anyone who plays the full game will recieve quite a few errors - so, in additiona to being instructive, they should also be fun and amusing.
+			The Purpose of Errors:
+				There are vastly more wrong command strings that can be given than right ones. When the valid command set is small enough, it works to simply accept the correct commands and throw a generic error on everything else. But as the vocabulary grows, the opportunity for genuine mis-wordings increses exponentially (e.g. if Burt can 'enter Throne', why can't he 'enter Moat' ??). At this point, the error sub-system becomes responsible for providing verb usage guidance. Lastly, anyone who plays the full game will recieve quite a few errors - so, in additiona to being instructive, they should also be fun and amusing.
 
-			Along with providing usage guidance and humor, the error sub-system shoudl present the player with the intuitively most obvious issues with their proposed action. 
+			Error Hierarchy:
+				Along with providing usage guidance and humor, the error sub-system should present the player with the intuitively most obvious issues with their proposed action. For example, suppose the players issues the command "unlock gate with silver key". There should be several reasons why this command doesn't succeed: Maybe you aren't holding the key. Maybe the door is already open (in Dark Castle you can't lock or unlock an open door). Maybe the Silver Key is the wrong key for the Gate. In fact, all three of these could be true at once. But we only want to throw one error - and we want that error to reflect the "most obvious" problem (in this case, the fact that you aren't holding the Silver Key that you intended to unlock the Gate with).
 
-			*** <more info ***>
+				The error hierarchy for a given class can be intricate and even debatable (in the above example, one could argue that the door being open is an even more obvious issue than not having the Silver Key in hand). But for most verbs there are some broad initial errors (these are the Generic Command Errors described under Implementation Details) to check that have a standard hierarchy:
+					1. A referenced object is not visible in the room
+					2. A referenced object is of class Writing (and the command is not read() )
+					3. A referenced object is not in reach (for example, because Burt is in a Seat)
+					4. A referenced object is of the wrong class but merrits a custom error (e.g. take(obj) where obj is of class Liquid)
+					5. A referenced object is of the wrong class - generic case. (e.g. take(obj) where obj is not of class Item)
 
+			Errors Are for User Input:
+				One of the issues with traditional text adventures like Zork is that they are often set in vest empty terrains. The Great Underground Empire is fascinating... but nearly devoid of life. I suspect the reason for this is simple: programming creatures is hard. One of my goals is for Dark Castle to feel more "lived in" than Zork... so I intend to make all verb methods "symetric" - meaning that they can optionally take 'creature' as an arguemnt and can be used for any creature in the game - not just Burt. Hopefully, this makes programming creatures easier and encourages a more populous dungeon. 
+				
+				However, there are limits. Errors are tricky. Creatures are tricky. For now at least, throwing gramatically accurate errors for non-Burt creatures is simply out of scope. For non-Burt creatures, errors should be silencable (future feature) - but if not silenced, they will appear to be directed at the user - and at Burt in particular - in second person tense. It is up to the Implementor to avoid programming other creatures to perform error generating tasks!
 
 
 		Program Architecture:
