@@ -342,17 +342,17 @@ Version 3.76 Goals
 				- DONE: implement for all prep verbs
 					- DONE: lock(), unlock(), put(), give(), attack()
 				- DONE: clean up comments
-		- INPROC: update Writing & Validate doc_strings
+		- DONE: update Writing & Validate doc_strings
 			- DONE: update error history
 			- DONE: doc_string error hierarchy: (not_in_rm, is_wrt, not_in_reach, wrong_class), class_spec
 			- DONE: doc_string on validate just for user_input (i.e. Burt)
-			- TBD: update validate doc_string to reflect current approach => method & repeating vs. logic
-			- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
+			- DONE: update validate doc_string to reflect current approach => method & repeating vs. logic
 		- TBD: clean up comments in validate
 
 
 - TBD: New next version goal
 	- TBD: finish error message updates by updating validate() and introducting verb method modes
+		- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
 	- TBD: auto-complete for prep verbs
 		- TBD: for obj-in-hand prep verbs, try in_hand(); error on hand_empty()
 		- TBD: for Creature prep_verbs, if one creature in room guess that creature, else error
@@ -367,6 +367,8 @@ Version 3.76 Goals
 			- TBD: normalize case
 		- TBD: future error enhancements
 			- TBD: combine err_xst() and err_rch() into err_prep_std() ??
+			- TBD: move Writing error blocks to Invisible class ?
+			- TBD: separate module for Invisible class?		
 			- TBD: read() of obj w/ writing => "On the {obj} you see written..."
 			- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
 			- TBD: examine writing => "The {writing} reads as follows: n/"
