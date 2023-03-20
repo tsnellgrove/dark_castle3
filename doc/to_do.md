@@ -387,6 +387,9 @@ Version 3.77 Goals
 - Convert interactive objects to MixIn class architecture (enables future complex obj)
 - Text & UI updates
 
+- Move 3.76 doc to don
+- Figure out how to commit Git tag
+
 - INPROC: MixIn approach to door module classes
 	- DONE: new name for module with doors & containers (interactive obj; interactive.py)
 	- DONE: map out MixIns and inheritance
