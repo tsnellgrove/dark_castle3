@@ -251,7 +251,7 @@ Version 3.76 Goals
 			- DONE: update room.get_title_str() to buffer ", in the {Seat}" if contained
 			- DONE: test
 
-- INPROC: move examine() to Writing class from validate() [because they irk me]
+- DONE: move examine() to Writing class from validate() [because they irk me]
 	- DONE: need to sort out how to deal with validate() check on on writing
 	- DONE: move validate() 'take liquid' error to class Liquid take() method
 	- DONE: stand() => exit()
@@ -261,7 +261,7 @@ Version 3.76 Goals
 		- DONE: also update interp verb list, interp one_word list, and command on_word function
 		- DONE: create exit()
 	- DONE: Writing-specific error => validate()
-	- INPROC: push remaining specific errors out of of validate
+	- DONE: push remaining specific errors out of of validate
 		- DONE: obj not in hand
 			- DONE: create ViewOnly not_in_hand general error
 			- DONE: elim validate() 2word not_in_hand error
@@ -274,7 +274,7 @@ Version 3.76 Goals
 				- PAUSE: 'examine', Item class verbs, Door class verbs, 
 		- CANCEL: Creature.is_contained == True
 		- CANCEL: add base errors (vis, not sitting, not writing) to base_class verb error calls
-		- INPROC: new plan for errors:
+		- DONE: new plan for errors:
 			- DONE: Create std error list:
 				- DONE: writing not vis => don't see
 				- DONE: non-writin obj not vis => don't see
@@ -347,7 +347,7 @@ Version 3.76 Goals
 			- DONE: doc_string error hierarchy: (not_in_rm, is_wrt, not_in_reach, wrong_class), class_spec
 			- DONE: doc_string on validate just for user_input (i.e. Burt)
 			- DONE: update validate doc_string to reflect current approach => method & repeating vs. logic
-		- TBD: clean up comments in validate
+		- DONE: clean up comments in validate
 
 
 - TBD: New next version goal
@@ -361,7 +361,7 @@ Version 3.76 Goals
 
 		- TBD: validate() clean-up
 			- TBD: fix indents
-			- TBD: elim interp() "random error" option?
+			- TBD: elim interp() "random error" option / else option?
 		- TBD: interp() error tuning
 			- TBD: identify interp() errors with "[INTERP]"
 			- TBD: normalize case
