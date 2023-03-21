@@ -3450,3 +3450,235 @@ Version 3.75 Goals
 - DONE: address 'first item in feature_lst is unarmed attack item' hack (it's a hack but so be it)
 
 
+##########################
+### VERSION 3.76 START ###
+##########################
+
+Version 3.76 Goals
+- create Surface class
+- create Seat class
+- pull errors out of validate()
+- implement Seat, Bed, and Nook in game
+
+- DONE: create Surface class!! (was 'Shelf')
+	- GOAL: similar to container but prep is 'on'; no open() or lock() ; has max_obj attribute
+	- DONE: create Surface class inheriting from Container in door_class_def
+		- DONE: is_surface() = True; is_container() = False (?); ViewOnly is_surface = False
+			- NOTE: decided not to make is_container) = False for class Surface
+		- N/A: update forbidden obj for Creature and Container to include Surface
+			- NOTE: not needed; just need to not make a PortableSurface class (see Room doc_str)
+		- DONE: write over-loading error methods for open(), close(), lock(), unlock()
+		- DONE: also need to over-load disp_cond ? Maybe a reason to make is_container() = False ?
+			FINDING: does not impact is_container ; just need to over-load
+		- DONE: on second thought, let's add Surface class to prohibited... can't hurt right?
+		- DONE: update put() in Container to implement max_obj restriction
+		- DONE: update display prepositions to be 'in' or 'on' based on is_surface()
+		- DONE: update Interp to check for 'on' prep if is_surface(noun_obj)
+		- DONE: confirm 'put' still works for validate()
+	- DONE: put initial shelf in Main Hall
+		- DONE: instantiate shelf obj
+		- NONE: is_open and is_unlocked both = None; max_obj = 20
+		- NONE: testing!!
+		- DONE: clean up comments in Interp
+	- DONE: implement Control Panel as Surface!!
+		- DONE: create SurfaceMach class in mach_class_def (import Surface class)
+		- DONE: instantiate control_panel based on SurfaceMach (import SurfaceMach class)
+		- DONE: remove switches from Antechamber feature_lst
+		- DONE: tune text
+		- DONE: add control_panel to room after guard_goblin dies? (so burt can't push button)
+			- DONE: instantiate dispense_panel_mach based on class InvisMach
+			- DONE: create InWorldStateCond class
+			- DONE: instantiate goblin_exist_cond() based on InWorldStateCond
+			- DONE: instantiate dispense_panel_result based on AddObjToRoomResult
+			- DONE: add cond & result to mach; add mach to room (remove control_panel from room)
+			- DONE: test
+			- DONE: update text
+		- DONE: create a new result class to also update descriptions of Antechamber
+		- DONE: clean up comments in mk_def_pkl, cond_class_def, & static_gbl
+	- DONE: sort out how Creatures are prohibitted from holding Creatures or Surfaces?
+		- DONE: extended custom take() error to Surface class
+	- DONE: doc_strings
+		- DONE: Overview
+		- DONE: implementation detail
+		- DONE: program architecture
+		- DONE: historic note
+
+- DONE: define Seat class which inherits from Surface
+	- DONE: Seat requirements
+		- REQ: basically, Seat is a surface that can hold a creature
+			- REQ: will need to update prohibited_obj
+		- REQ: by default, seat.max_item = 1
+		- REQ: sit() method ('in' or 'on' prep)
+		- REQ: determine which node Burt is in (i.e. the seat, not just the room)
+			- REQ: having determined node using Creature method, get scope from that node
+				- REQ: should all obj have a 'determine node above' ablilty? Just Creature?
+			- REQ; also need to know room
+			- REQ: burt can 'see' the room; but only interact (including 'x') w items in 'i' / seat
+			- REQ: if obj vis but out of reach: "You'll need to stand up to attempt that"
+		- REQ: Also need to update the "find burt" method in .map to find him in a seat
+			- REQ: would be nice if searched-for obj had a method to define where to look for it
+		- REQ: look shows room with 'sitting in seat' condition
+		- REQ: seated should be a creature condition
+		- CANCEL: vis_lst = seat.vis_lst + room.name
+		REQ: also need a stand() method
+		REQ: should provide auto-gen text as well
+
+- DONE: create Seat class which inherits from Surface
+	- DONE: define Seat class
+	- DONE: create sit() method
+	- DONE: add auto-gen buff_try for sit() (similar to drink) - but only for burt
+	- IDEA: stand should be a Creature method
+		- IDEA: don't need seat info, just room; error on in floor_lst already
+	- DONE: create stand() method
+	- DONE: update "find burt" method in active_gs.map
+	- DONE: instantiate test_chair in entrance
+	- DONE: test sit with burt
+		- PROB: interp hangs because 'prep' verbs expect noun & dir_obj
+			- IDEA: 'sit in chair' (or 'sit on chair') is really a 2word command
+			- IDEA: for case of sit(), check for 'in' or 'on', then remove them => 2word
+			- IDEA: if no 'in' or 'on' error out: "I don't see an 'on' in that sentence"
+		- NEW-IDEA: replace sit() with enter()
+			- IDEA: mn the future, make 'sit in' a Seat class-based verb synonym for 'enter'
+	- DONE: test 'enter chair' with burt
+	- DONE: test stand with burt
+	- DONE: tweaked 'remove' text for class Garment (in Item verb method take() )
+	- DONE: address sit 'look' issues
+	- DONE: create method Creature.is_contained()
+	- DONE: create method Creature.get_container()
+	- DONE: address sit 'i' issues (seated in Seat.full_name condition)
+	- DONE: move "in your off hand... brass lantern" to Creature class disp_contain
+	- DONE: sort out special case of not displaying lantern if nothing in hand or backpack
+		- IDEA: for burt set has_contain() to True
+		- IDEA: also need to sort out the spacing for nothing in hand or backpack
+		- IDEA: move a buff_cr() to disp_contain for hand
+	- DONE: address sit out of scope issues
+		- CANCEL: create room.is_reachable()
+		- DONE: in validate() check scope after is_vis for 2word => error
+		- DONE: why does 'look' work from chair but 'x entrance' does not???
+		- DONE: Decide if you can you interact with a Seat while you're sitting in it?
+			- DECISION: No
+		- DONE: test for 'water' (node_3 obj)
+		- DONE: update 'look' to reference Seat state - include "(which you are sitting in)"
+		- DONE: validate check for prep case
+	- DONE: address sit in scope issues
+		- IDEA: update room.remove() to enable burt to interact with inventory & Seat contents
+		- DONE: fix remove() for Container
+		- DONE: all verbs tested by burt in chair
+		- DONE: sort out read() in chair (special properties of class Writing)
+			- DONE: in validate(), exclude read() command
+			- DONE: create chk_wrt_is_vis() for Container class
+			- DONE: check for burt contained and wrt not vis in Container in read() 
+		- DONE: sort out drop() and take() of obj in Seat
+			- IDEA: Seat could hold obj in addition to burt (i.e. preparing for vehical)
+			- IDEA: take() is already limited by validate() to contents of Seat
+			- IDEA: however drop() currently always puts items in the room.floor_lst
+			- DONE: need to check for containment and spaace in drop method
+		- DONE: update room title to f", in the {Seat}"
+			- DONE: confirm that get_title_str() is only used in base() and room()
+			- DONE: update get_title_str() to include active_gs
+			- DONE: update room.get_title_str() to check for creature.is_contained()
+			- DONE: update room.get_title_str() to buffer ", in the {Seat}" if contained
+			- DONE: test
+
+- DONE: move examine() to Writing class from validate() [because they irk me]
+	- DONE: need to sort out how to deal with validate() check on on writing
+	- DONE: move validate() 'take liquid' error to class Liquid take() method
+	- DONE: stand() => exit()
+	- DONE: create context-specific default verb errors in ViewOnly
+	- DONE: move exit() to Perch class; maybe re-constitute stand() ?
+		- DONE: stand() re-instated
+		- DONE: also update interp verb list, interp one_word list, and command on_word function
+		- DONE: create exit()
+	- DONE: Writing-specific error => validate()
+	- DONE: push remaining specific errors out of of validate
+		- DONE: obj not in hand
+			- DONE: create ViewOnly not_in_hand general error
+			- DONE: elim validate() 2word not_in_hand error
+			- DONE: elim validate() prep not_in_hand error
+			- DONE: update error method name to chk_not_in_hand() [resisted chk_and_disp_not_in_hand ]
+		- PAUSE: obj not visible error
+			- DONE: in ViewOnly, create chk_not_vis(self, active_gs):
+			- DONE: in method, check for vis and then buffer error
+			- PAUSE: call error methods from verb methods
+				- PAUSE: 'examine', Item class verbs, Door class verbs, 
+		- CANCEL: Creature.is_contained == True
+		- CANCEL: add base errors (vis, not sitting, not writing) to base_class verb error calls
+		- DONE: new plan for errors:
+			- DONE: Create std error list:
+				- DONE: writing not vis => don't see
+				- DONE: non-writin obj not vis => don't see
+				- DONE: if creature.is_contained => must exit
+			- DONE: Move base verb errors to Writing
+				- DONE: move to Writing
+				- DONE: test std erros and is_writing on 'show' (final test!)
+					- DONE: incorporate writing while contained into std_err?
+					- IDEA: method verbs as *extensions* (not overpowers) of error verbs??
+					- IDEA: if not self.is_creature(): buffer non-creature error
+					- DONE: extend creature.show() off of writing.show()
+					- DONE: resolve double error issue (e.g. 'show grimy axe to hedgehog')
+						- DONE: Return True on Writing.show() and check at start of Creature.show()
+					- DONE: clean up comments
+				- DONE: consolidate / fix ViewOnly general errors
+					- DONE: chk_not_vis() => err_not_vis()
+					- DONE: chk_not_in_hand() => move to Writing; change to err_not_in_hand()
+				- DONE: extend new error approach to all verbs
+					- N/A: true1word / 'help'
+					- DONE: Writing / 'read'
+					- DONE: ViewOnly / 'examine'
+					- DONE: Item:
+						- DONE: 'take'
+						- DONE: 'drop'
+					- DONE: Door
+						- DONE: 'open'
+						- DONE: 'close'
+						- DONE: convert lock() and unlock() to prep verbs ('with {key}') [update validate]
+						- DONE: 'lock'
+						- DONE: 'unlock'
+					- DONE: Food / 'eat'
+					- DONE: move custom enter() and exit() errors from class Item to class Writing
+					- DONE: Garment / 'wear'
+					- DONE: Liquid / 'drink'
+					- DONE: move custom take() Liquid error => Writing
+					- DONE: Room / 'go'
+					- DONE: Switch
+						- DONE: 'push'
+						- DONE: 'pull'
+					- DONE: Container / 'put'
+					- DONE: Seat
+						- DONE: 'enter'
+						- DONE: 'exit'
+					- DONE: Creature
+						- DONE: stand => update interp() module to throw error on tru_1word + more words
+						- DONE: show
+						- DONE: give
+						- DONE: attack
+		- DONE: decide how to address special errors
+			- DONE: fix error w/ container open extension runs even if container already open error plays
+				- DONE: found problem - needed to update state first
+				- DONE: sort out language & CRS
+				- DONE: clean up comments
+			- DONE: error order for prep verbs when in Seat (e.g. 'put gate in calligraphy')
+				- DONE: review existing errors and re-order based on hierarchy
+				- DONE: clean up comments
+				- CANCEL: create prep_error() that takes both nouns, chks  exist / wrt 1st; then rch
+				- DONE: test and fix in show
+					- INFO: test fails because I need to call the *method* from the obj...
+					- IDEA: insted, make a func... or make sub methods for top vs. bot cases & call w/ OR
+					- DONE: create err_xst() and err_rch()
+					- DONE: update err_std() with err_xst() and err_rch()
+					- DONE: test use of err_std()
+					- DONE: test show() with OR calls of err_xst() and err_rch()
+				- DONE: implement for all prep verbs
+					- DONE: lock(), unlock(), put(), give(), attack()
+				- DONE: clean up comments
+		- DONE: update Writing & Validate doc_strings
+			- DONE: update error history
+			- DONE: doc_string error hierarchy: (not_in_rm, is_wrt, not_in_reach, wrong_class), class_spec
+			- DONE: doc_string on validate just for user_input (i.e. Burt)
+			- DONE: update validate doc_string to reflect current approach => method & repeating vs. logic
+		- DONE: clean up comments in validate
+	- DONE: figure out how to commit Git tag
+	- DONE: Move 3.76 doc to done
+
+
+	
