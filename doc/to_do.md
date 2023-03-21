@@ -138,6 +138,8 @@ Version 3.77 Goals
 		- TBD: how to pull verb method 'try' (from cmd_exe) into validate()
 		- IDEA: make verb method mode attribute ('validate', 'std_exe', 'silent_exe') optional
 		- Be able to call noun methods in non_buffer mode purely for pre & post action validation? 
+		- TBD: fully envision / flow-chart validate loop
+		- TBD: consider consolidating errors in Writing / Invisible?
 
 	- TBD: testing
 		- TBD: validate should resolve get sword while in chair error
