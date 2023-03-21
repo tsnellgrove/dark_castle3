@@ -350,6 +350,8 @@ Version 3.76 Goals
 		- DONE: clean up comments in validate
 
 
+
+
 - TBD: New next version goal
 	- TBD: finish error message updates by updating validate() and introducting verb method modes
 		- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
@@ -387,7 +389,7 @@ Version 3.77 Goals
 - Convert interactive objects to MixIn class architecture (enables future complex obj)
 - Text & UI updates
 
-- Move 3.76 doc to don
+- Move 3.76 doc to done
 - Figure out how to commit Git tag
 
 - INPROC: MixIn approach to door module classes
