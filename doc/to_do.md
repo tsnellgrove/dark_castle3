@@ -131,57 +131,40 @@ Version 3.77 Goals
 - finish tuning error subsystem
 
 
-- TBD: implement validate()
-	- TBD: planning
-		- TBD: for command-driven machines - especially pre-action - would like to have a systemic way to know if player command runs successfully
-		- TBD: finalize plan for 'validate' / 'exe_std' / 'exe_silent' modes to run verb methods in
-		- TBD: how to pull verb method 'try' (from cmd_exe) into validate()
-		- IDEA: make verb method mode attribute ('validate', 'std_exe', 'silent_exe') optional
-		- Be able to call noun methods in non_buffer mode purely for pre & post action validation? 
-		- TBD: fully envision / flow-chart validate loop
+- INPROC: implement validate() pre-test
+	- DONE: ideate validate() goals
+		- IDEA: need a systemic way to know if player command runs successfully
+			- IDEA: needed for command-triggered machines - especially pre-action
+		- IDEA: pull verb method 'try' from cmd_exe into validate()
+		- IDEA: create an optional verb method mode attribute ('validate', 'std_exe', 'silent_exe')
+			- IDEA: enable calling verb methods in non_buffer mode just for pre & post action validation
+		- IDEA: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
+			- IDEA: call verb methods with a 'mode' variable that can be 'validate'
+			- IDEA: mode options = exe_std, exe_silent, or exe_creature (?)
+		- IDEA: pass 'mode' into verb methods
+	- INPROC: finalize plan verb method modes
+		- IDEA: initially, 'mode' = 'validate', 'exe_std', and 'exe_silent'
+		- IDEA: mode attribute is optional and defaults to 'exe_std'
+		- IDEA: error blocks are *only* run from validate() - so are *only* run for players
+			- CANCEL: need to figure out how to implement silence mode in Writing error blocks
 		- TBD: consider consolidating errors in Writing / Invisible?
+		- TBD: fully envision / flow-chart validate loop
 
-	- TBD: testing
-		- TBD: validate should resolve get sword while in chair error
-		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
 	- TBD: validate() clean-up
 		- TBD: fix indents
 		- TBD: elim interp() "random error" option / else option?
-
-- DROP:
-	- DONE: extend verb errors to ViewOnly for custom responses
-		- DONE: incorporate into validate() routine as errors
-	- TBD: make verb method order consistent: errors, actions, user_response (last to sense actions)
-	- TBD: plan for when to finish pushing errors out of validate
-	- TBD: doc plan to finish the validate() fight:
-	- IDEA: need to push errors out of validate() and into methods (non-burt cases)
-		- IDEA: create shared common_errors() function to be run from verb methods
-	- IDEA: what if we had errors for wrong class usage *in* the wrong class?? e.g. an examine method that only throws an error in Writing??
-		- Could give context-aware errors for many wrong uses?
-	- related thinking:
-		- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
-			- Should noun obj methods return a 'success' indicator (for pre & post actions)?
-			
-
-- IDEAS:
-	- thinking systemically, can we pre-validate noun class methods?
-		- validate() would run between interpreter() and pre_action()
-		- e.g. for take() use case, can we check to see if obj is_item and is in <room>.obj_scope ?
-		- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
-		- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
-		- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
-		- if fail validate() , buffer error and end app_main()
-
-- TBD: sort out validate() error when already wearing crown... ideally should be "You're already wearing"... not "not in your hand"
-
-- TBD: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
-- TBD: pass 'mode' into verb methods
-- TBD: 'mode' = 'validate' or 'exe_std'
-- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
-	- TBD: this will break the 'go south from Entrance' warning... probably the easiest fix is to create a re-usable unreachable_room to the south
-
-	- maybe call verb methods with a 'mode' variable that can be validate, exe_std, exe_silent, or exe_creature ??
-
+	- TBD: implement validate() modes
+		- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
+			- TBD: this will break the 'go south from Entrance' warning... 
+			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south
+	- TBD: validate() testing
+		- DONE: sort out validate() error when already wearing crown... 
+			- DONE: ideally should be "You're already wearing"... not "not in your hand"
+		- TBD: validate should resolve get sword while in chair error
+		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
+	- TBD: validate() doc_strings
+		- TBD: doc_string how validate() works
+		- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
 
 - TBD: error sub-system enhancements
 	- TBD: interp() error tuning
@@ -199,8 +182,7 @@ Version 3.77 Goals
 		- TBD: should "put key in moat" do more? what about "enter moat"
 		- TBD: specific put() error for "put suitcase in suitcase"
 
-- TBD: doc_strings
-	- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
+
 
 
 

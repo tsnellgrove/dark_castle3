@@ -139,3 +139,25 @@ Learning Links:
 - TBD: https://youtu.be/KTIl1MugsSY (refactor starts about 7 min in)
 
 
+- DROP (from validate for 3.77):
+	- DONE: extend verb errors to ViewOnly for custom responses
+		- DONE: incorporate into validate() routine as errors
+	- TBD: make verb method order consistent: errors, actions, user_response (last to sense actions)
+	- TBD: plan for when to finish pushing errors out of validate
+	- TBD: doc plan to finish the validate() fight:
+	- IDEA: need to push errors out of validate() and into methods (non-burt cases)
+		- IDEA: create shared common_errors() function to be run from verb methods
+	- IDEA: what if we had errors for wrong class usage *in* the wrong class?? e.g. an examine method that only throws an error in Writing??
+		- Could give context-aware errors for many wrong uses?
+	- related thinking:
+		- Should really think through a 'validity test' for pre_actions - would like to leverage all the validation code I already have!
+			- Should noun obj methods return a 'success' indicator (for pre & post actions)?
+	- IDEAS:
+		- thinking systemically, can we pre-validate noun class methods?
+			- validate() would run between interpreter() and pre_action()
+			- e.g. for take() use case, can we check to see if obj is_item and is in <room>.obj_scope ?
+			- (would also need to apply not already in <creature>.hand_lst and not in <other_creature>.hand_lst)
+			- maybe need an is_takable() method? perhaps this is where the validation lives?? Returns bool and error message?
+			- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
+			- if fail validate() , buffer error and end app_main()
+
