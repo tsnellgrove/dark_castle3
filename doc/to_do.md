@@ -142,17 +142,24 @@ Version 3.77 Goals
 			- IDEA: call verb methods with a 'mode' variable that can be 'validate'
 			- IDEA: mode options = exe_std, exe_silent, or exe_creature (?)
 		- IDEA: pass 'mode' into verb methods
-	- INPROC: finalize plan verb method modes
+	- DONE: finalize plan verb method modes
 		- IDEA: initially, 'mode' = 'validate', 'exe_std', and 'exe_silent'
 		- IDEA: mode attribute is optional and defaults to 'exe_std'
 		- IDEA: error blocks are *only* run from validate() - so are *only* run for players
 			- CANCEL: need to figure out how to implement silence mode in Writing error blocks
-		- TBD: consider consolidating errors in Writing / Invisible?
-		- TBD: fully envision / flow-chart validate loop
+		- DONE: consider consolidating errors in Writing / Invisible?
+			- DECISION: no, seems right to keep class response in class
+		- DONE: fully envision / flow-chart validate loop
+			- FINDING: intention is to only call error subsystem on mode == 'validate'
 
 	- TBD: validate() clean-up
+		- TBD: move doc_string to end
 		- TBD: fix indents
 		- TBD: elim interp() "random error" option / else option?
+	- TBD: command error coding
+		- TBD: combine err_xst() and err_rch() into err_prep_std() ??
+		- TBD: move Writing error blocks to Invisible class ?
+		- TBD: separate module for Invisible class?
 	- TBD: implement validate() modes
 		- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
 			- TBD: this will break the 'go south from Entrance' warning... 
@@ -170,10 +177,6 @@ Version 3.77 Goals
 	- TBD: interp() error tuning
 		- TBD: identify interp() errors with "[INTERP]"
 		- TBD: normalize case
-	- TBD: command error coding
-		- TBD: combine err_xst() and err_rch() into err_prep_std() ??
-		- TBD: move Writing error blocks to Invisible class ?
-		- TBD: separate module for Invisible class?
 	- TBD: error output tuning	
 		- TBD: read() of obj w/ writing => "On the {obj} you see written..."
 		- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
