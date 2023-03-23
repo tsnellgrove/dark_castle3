@@ -151,15 +151,18 @@ Version 3.77 Goals
 			- DECISION: no, seems right to keep class response in class
 		- DONE: fully envision / flow-chart validate loop
 			- FINDING: intention is to only call error subsystem on mode == 'validate'
+	- DONE: validate() clean-up
+		- DONE: move doc_string to end
+		- DONE: fix indents
+		- DONE: elim interp() "random error" option / else option?
 
-	- TBD: validate() clean-up
-		- TBD: move doc_string to end
-		- TBD: fix indents
-		- TBD: elim interp() "random error" option / else option?
 	- TBD: command error coding
 		- TBD: combine err_xst() and err_rch() into err_prep_std() ??
 		- TBD: move Writing error blocks to Invisible class ?
 		- TBD: separate module for Invisible class?
+		- TBD: make validate() random error dict local?
+		- TBD: prepend "[INTERP]" for interp errors
+
 	- TBD: implement validate() modes
 		- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
 			- TBD: this will break the 'go south from Entrance' warning... 
