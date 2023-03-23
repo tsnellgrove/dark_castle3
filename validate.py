@@ -13,8 +13,6 @@ def rand_error():
 	interp_error_key = 'interp_error_' + str(num)
 	return descript_dict[interp_error_key]
 
-### *** make error dict local?? ***
-
 def validate(active_gs, case, word_lst):
 	"""Validates user_input.
 	"""
@@ -22,10 +20,6 @@ def validate(active_gs, case, word_lst):
 	# *** interpreter errors ***
 
 	if case == 'error':
-#		input_valid = False
-#		if word_lst[0] == "random error":
-#			output = rand_error()
-#		else:
 		output = word_lst[0]
 		active_gs.buffer(output)
 		return False
