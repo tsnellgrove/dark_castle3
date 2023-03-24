@@ -156,12 +156,12 @@ Version 3.77 Goals
 		- DONE: fix indents
 		- DONE: elim interp() "random error" option / else option?
 
-	- TBD: command error coding
+	- INPROC: tune up error coding
+		- DONE: in validate(), prepend "[INTERP]" for interp errors
 		- TBD: combine err_xst() and err_rch() into err_prep_std() ??
 		- TBD: move Writing error blocks to Invisible class ?
 		- TBD: separate module for Invisible class?
-		- TBD: make validate() random error dict local?
-		- TBD: prepend "[INTERP]" for interp errors
+		- TBD: make validate() random error dict local? (post move of 'try')
 
 	- TBD: implement validate() modes
 		- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands

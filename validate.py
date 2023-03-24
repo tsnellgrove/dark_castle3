@@ -21,7 +21,7 @@ def validate(active_gs, case, word_lst):
 
 	if case == 'error':
 		output = word_lst[0]
-		active_gs.buffer(output)
+		active_gs.buffer(f"[INTERP] {output}")
 		return False
 
 	# *** command errors ***
