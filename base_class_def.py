@@ -175,15 +175,15 @@ class Writing(Invisible):
 			return True
 		return False
 
-#	def err_prep_std(self, obj, creature, active_gs):
-#		noun_lst = [obj, self]
-#		for element in noun_lst:
-#			if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
-#				return True
-#		for element in noun_lst:
-#			if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
-#				return True
-#		return False
+	def err_prep_std(self, obj, creature, active_gs):
+#		obj_lst = [obj, self]
+#		for element in obj_lst:
+		if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
+			return True
+#		for element in obj_lst:
+		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
+			return True
+		return False
 
 # *** verb error methods ***
 	def examine(self, active_gs):
@@ -300,10 +300,12 @@ class Writing(Invisible):
 
 	def lock(self, key_obj, active_gs):
 		creature = active_gs.hero
-		if key_obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
+		if self.err_prep_std(key_obj, creature, active_gs):
 			return True
-		if key_obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
-			return True
+#		if key_obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
+#			return True
+#		if key_obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
+#			return True
 		if not self.is_door():
 			active_gs.buffer(f"The {self.full_name} cannot be locked.")
 			return True
@@ -317,10 +319,12 @@ class Writing(Invisible):
 
 	def unlock(self, key_obj, active_gs):
 		creature = active_gs.hero
-		if key_obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
+		if self.err_prep_std(key_obj, creature, active_gs):
 			return True
-		if key_obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
-			return True
+#		if key_obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
+#			return True
+#		if key_obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
+#			return True
 		if not self.is_door():
 			active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
 			return True

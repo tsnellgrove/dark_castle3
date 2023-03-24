@@ -158,15 +158,20 @@ Version 3.77 Goals
 
 	- INPROC: tune up error coding
 		- DONE: in validate(), prepend "[INTERP]" for interp errors
-		- TBD: combine err_xst() and err_rch() into err_prep_std() ??
+		- INPROC: in base(), combine err_xst() and err_rch() into err_prep_std() ??
+			- DONE: lock(), unlock()
+			- TBD: put(), show(), give(), attack()
+			- TBD: clean up comments
 		- TBD: move Writing error blocks to Invisible class ?
+			- TBD: would need to add 'if self.is_invis():' to err_std() ???
 		- TBD: separate module for Invisible class?
-		- TBD: make validate() random error dict local? (post move of 'try')
+			- TBD: move error sub-system doc-strings here too ??
 
 	- TBD: implement validate() modes
 		- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
 			- TBD: this will break the 'go south from Entrance' warning... 
 			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south
+		- TBD: make validate() random error dict local? (post move of 'try')
 	- TBD: validate() testing
 		- DONE: sort out validate() error when already wearing crown... 
 			- DONE: ideally should be "You're already wearing"... not "not in your hand"
