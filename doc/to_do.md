@@ -165,7 +165,8 @@ Version 3.77 Goals
 			- TBD: would need to add 'if self.is_invis():' to err_std() ???
 			- TBD: update read()
 		- TBD: separate module for Invisible class?
-			- TBD: move error sub-system doc-strings here too ??
+			- TBD: update imports for Invisible in mk_def_pkl.py and mach_class_def.py
+			- TBD: move error sub-system doc-strings here too
 
 	- TBD: implement validate() modes
 		- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
@@ -183,13 +184,13 @@ Version 3.77 Goals
 
 - TBD: error sub-system enhancements
 	- TBD: interp() error tuning
-		- TBD: identify interp() errors with "[INTERP]"
+		- DONE: identify interp() errors with "[INTERP]"
 		- TBD: normalize case
 	- TBD: error output tuning	
-		- TBD: read() of obj w/ writing => "On the {obj} you see written..."
+		- TBD: read() of obj w/ writing => "On the {obj}, written in {wrt}, you see: '{txt}'..."
 		- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
 		- TBD: examine writing => "The {writing} reads as follows: n/"
-		- TBD: should it be possible to show() Writing ??
+		- TBD: should it be possible to show() and obj of class Writing or ViewOnly ??
 		- TBD: should "put key in moat" do more? what about "enter moat"
 		- TBD: specific put() error for "put suitcase in suitcase"
 
