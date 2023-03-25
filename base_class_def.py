@@ -344,6 +344,9 @@ class Writing(Invisible):
 #			return True
 #		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
 #			return True
+		if not obj.is_item():
+			active_gs.buffer(f"You can't even pick up the {obj.full_name}... how could you possibly put it somewhere?")
+			return True
 		if not self.is_container():
 			active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
 			return True
@@ -383,10 +386,12 @@ class Writing(Invisible):
 
 	def show(self, obj, active_gs):
 		creature = active_gs.hero
-		if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
+		if self.err_prep_std(obj, creature, active_gs):
 			return True
-		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
-			return True
+#		if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
+#			return True
+#		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
+#			return True
 		if not self.is_creature():
 			active_gs.buffer(f"Exactly how would you expect the {self.full_name} to respond to the {obj.full_name}?")
 			return True
@@ -394,10 +399,12 @@ class Writing(Invisible):
 
 	def give(self, obj, active_gs):
 		creature = active_gs.hero
-		if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
+		if self.err_prep_std(obj, creature, active_gs):
 			return True
-		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
-			return True
+#		if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
+#			return True
+#		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
+#			return True
 		if not self.is_creature():
 			active_gs.buffer(f"And what do you expect the {self.full_name} to do with the {obj.full_name}?")
 			return True
@@ -405,10 +412,12 @@ class Writing(Invisible):
 
 	def attack(self, src_obj, active_gs):
 		creature = active_gs.hero
-		if src_obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
+		if self.err_prep_std(src_obj, creature, active_gs):
 			return True
-		if src_obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
-			return True
+#		if src_obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
+#			return True
+#		if src_obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
+#			return True
 		if not self.is_creature():
 			active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
 			return True
