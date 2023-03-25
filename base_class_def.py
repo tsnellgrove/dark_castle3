@@ -176,11 +176,8 @@ class Writing(Invisible):
 		return False
 
 	def err_prep_std(self, obj, creature, active_gs):
-#		obj_lst = [obj, self]
-#		for element in obj_lst:
 		if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
 			return True
-#		for element in obj_lst:
 		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
 			return True
 		return False
@@ -302,10 +299,6 @@ class Writing(Invisible):
 		creature = active_gs.hero
 		if self.err_prep_std(key_obj, creature, active_gs):
 			return True
-#		if key_obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
-#			return True
-#		if key_obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
-#			return True
 		if not self.is_door():
 			active_gs.buffer(f"The {self.full_name} cannot be locked.")
 			return True
@@ -321,10 +314,6 @@ class Writing(Invisible):
 		creature = active_gs.hero
 		if self.err_prep_std(key_obj, creature, active_gs):
 			return True
-#		if key_obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
-#			return True
-#		if key_obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
-#			return True
 		if not self.is_door():
 			active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
 			return True
@@ -340,10 +329,6 @@ class Writing(Invisible):
 		creature = active_gs.hero
 		if self.err_prep_std(obj, creature, active_gs):
 			return True
-#		if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
-#			return True
-#		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
-#			return True
 		if not obj.is_item():
 			active_gs.buffer(f"You can't even pick up the {obj.full_name}... how could you possibly put it somewhere?")
 			return True
@@ -388,10 +373,6 @@ class Writing(Invisible):
 		creature = active_gs.hero
 		if self.err_prep_std(obj, creature, active_gs):
 			return True
-#		if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
-#			return True
-#		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
-#			return True
 		if not self.is_creature():
 			active_gs.buffer(f"Exactly how would you expect the {self.full_name} to respond to the {obj.full_name}?")
 			return True
@@ -401,10 +382,6 @@ class Writing(Invisible):
 		creature = active_gs.hero
 		if self.err_prep_std(obj, creature, active_gs):
 			return True
-#		if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
-#			return True
-#		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
-#			return True
 		if not self.is_creature():
 			active_gs.buffer(f"And what do you expect the {self.full_name} to do with the {obj.full_name}?")
 			return True
@@ -414,10 +391,6 @@ class Writing(Invisible):
 		creature = active_gs.hero
 		if self.err_prep_std(src_obj, creature, active_gs):
 			return True
-#		if src_obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
-#			return True
-#		if src_obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
-#			return True
 		if not self.is_creature():
 			active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
 			return True
