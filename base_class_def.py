@@ -338,10 +338,12 @@ class Writing(Invisible):
 
 	def put(self, obj, active_gs):
 		creature = active_gs.hero
-		if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
+		if self.err_prep_std(obj, creature, active_gs):
 			return True
-		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
-			return True
+#		if obj.err_xst(creature, active_gs) or self.err_xst(creature, active_gs):
+#			return True
+#		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
+#			return True
 		if not self.is_container():
 			active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
 			return True

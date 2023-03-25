@@ -160,7 +160,8 @@ Version 3.77 Goals
 		- DONE: in validate(), prepend "[INTERP]" for interp errors
 		- INPROC: in base(), combine err_xst() and err_rch() into err_prep_std() ??
 			- DONE: lock(), unlock()
-			- TBD: put(), show(), give(), attack()
+			- INPROC: test put()
+			- TBD: show(), give(), attack()
 			- TBD: clean up comments
 		- TBD: move Writing error blocks to Invisible class ?
 			- TBD: would need to add 'if self.is_invis():' to err_std() ???
