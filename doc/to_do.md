@@ -161,15 +161,16 @@ Version 3.77 Goals
 		- DONE: in base(), combine err_xst() and err_rch() into err_prep_std() ??
 			- DONE: lock(), unlock(), put(), show(), give(), attack()
 			- DONE: clean up comments
-		- TBD: move Writing error blocks to Invisible class
+		- INPROC: move Writing error blocks to Invisible class
 			- DONE: create def is_invisible(self): return True / False in Invisible / Writing
 			- DONE: create err_invis_obj() and add to err_xst()
 			- DONE: move standard errors to Invisible class
-			- TBD: move verb errors to Invisible class
-			- TBD: update read()
+			- DONE: move verb errors to Invisible class
+			- TBD: update read() [maybe add in wrt_err as a more special case??]
 			- TBD: clean up comments
 		- TBD: separate module for Invisible class?
-			- TBD: update imports for Invisible in mk_def_pkl.py and mach_class_def.py
+			- TBD: create invis_class_def.py module
+			- TBD: update imports for Invisible in mk_def_pkl.py, mach_class_def.py, and others (?)
 			- TBD: move error sub-system doc-strings here too
 
 	- TBD: implement validate() modes
@@ -178,8 +179,6 @@ Version 3.77 Goals
 			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south
 		- TBD: make validate() random error dict local? (post move of 'try')
 	- TBD: validate() testing
-		- DONE: sort out validate() error when already wearing crown... 
-			- DONE: ideally should be "You're already wearing"... not "not in your hand"
 		- TBD: validate should resolve get sword while in chair error
 		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
 	- TBD: validate() doc_strings
@@ -191,6 +190,8 @@ Version 3.77 Goals
 		- DONE: identify interp() errors with "[INTERP]"
 		- TBD: normalize case
 	- TBD: error output tuning
+		- DONE: sort out validate() error when already wearing crown... 
+			- DONE: ideally should be "You're already wearing"... not "not in your hand"
 		- TBD: elim "can't see an X here" from interp errors?
 		- TBD: read() of obj w/ writing => "On the {obj}, written in {wrt}, you see: '{txt}'..."
 		- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
