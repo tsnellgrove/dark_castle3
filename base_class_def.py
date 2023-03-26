@@ -69,55 +69,6 @@ class Invisible(object):
 	def get_title_str(self, active_gs):
 		return None
 
-	def __repr__(self):
-		return f"Object {self.name} is of class {type(self).__name__}"
-
-
-class Writing(Invisible):
-	def __init__(self, name, full_name, root_name, descript_key):
-		super().__init__(name)
-		self._full_name = full_name # the object name presented to the player. Typical format = "Adj Noun". First character capitalized
-		self._root_name = root_name # the one-word abreviation for the canonical adj_noun formulated name. e.g. rusty_key => key; not unique 
-		self._descript_key = descript_key # the key used to look up the object description in descript_dict
-		""" Writing objects represent text which can be read().
-		"""
-
-	# *** getters & setters ***
-	@property
-	def full_name(self):
-		return self._full_name
-
-	@property
-	def root_name(self):
-		return self._root_name
-
-	@property
-	def descript_key(self):
-		return self._descript_key
-
-	@descript_key.setter
-	def descript_key(self, new_descript):
-		self._descript_key = new_descript
-
-	# *** simple methods ***
-	def is_invisible(self):
-		return False
-
-	def is_writing(self):
-		return True
-
-	# *** complex methods ***
-	def get_descript_str(self, active_gs):
-		"""Provides the current description of an object.
-		"""
-		try:
-			return active_gs.get_dyn_descript_dict(self.descript_key)
-		except:
-			try:
-				return descript_dict[self.descript_key]
-			except:
-				return f"The {self.full_name} is simply indescribable."
-
 	# *** standard errors ###	
 	def err_invis_obj(self, creature, active_gs):
 		if self.is_invisible():
@@ -195,6 +146,57 @@ class Writing(Invisible):
 		if obj.err_rch(creature, active_gs) or self.err_rch(creature, active_gs):
 			return True
 		return False
+
+	# *** obj representation def ***
+	def __repr__(self):
+		return f"Object {self.name} is of class {type(self).__name__}"
+
+
+class Writing(Invisible):
+	def __init__(self, name, full_name, root_name, descript_key):
+		super().__init__(name)
+		self._full_name = full_name # the object name presented to the player. Typical format = "Adj Noun". First character capitalized
+		self._root_name = root_name # the one-word abreviation for the canonical adj_noun formulated name. e.g. rusty_key => key; not unique 
+		self._descript_key = descript_key # the key used to look up the object description in descript_dict
+		""" Writing objects represent text which can be read().
+		"""
+
+	# *** getters & setters ***
+	@property
+	def full_name(self):
+		return self._full_name
+
+	@property
+	def root_name(self):
+		return self._root_name
+
+	@property
+	def descript_key(self):
+		return self._descript_key
+
+	@descript_key.setter
+	def descript_key(self, new_descript):
+		self._descript_key = new_descript
+
+	# *** simple methods ***
+	def is_invisible(self):
+		return False
+
+	def is_writing(self):
+		return True
+
+	# *** complex methods ***
+	def get_descript_str(self, active_gs):
+		"""Provides the current description of an object.
+		"""
+		try:
+			return active_gs.get_dyn_descript_dict(self.descript_key)
+		except:
+			try:
+				return descript_dict[self.descript_key]
+			except:
+				return f"The {self.full_name} is simply indescribable."
+
 
 # *** verb error methods ***
 	def examine(self, active_gs):

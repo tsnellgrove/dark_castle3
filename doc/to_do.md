@@ -164,7 +164,8 @@ Version 3.77 Goals
 		- TBD: move Writing error blocks to Invisible class
 			- DONE: create def is_invisible(self): return True / False in Invisible / Writing
 			- DONE: create err_invis_obj() and add to err_xst()
-			- TBD: move error blocks to Invisible class
+			- DONE: move standard errors to Invisible class
+			- TBD: move verb errors to Invisible class
 			- TBD: update read()
 			- TBD: clean up comments
 		- TBD: separate module for Invisible class?
