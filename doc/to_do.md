@@ -161,9 +161,12 @@ Version 3.77 Goals
 		- DONE: in base(), combine err_xst() and err_rch() into err_prep_std() ??
 			- DONE: lock(), unlock(), put(), show(), give(), attack()
 			- DONE: clean up comments
-		- TBD: move Writing error blocks to Invisible class ?
-			- TBD: would need to add 'if self.is_invis():' to err_std() ???
+		- TBD: move Writing error blocks to Invisible class
+			- DONE: create def is_invisible(self): return True / False in Invisible / Writing
+			- DONE: create err_invis_obj() and add to err_xst()
+			- TBD: move error blocks to Invisible class
 			- TBD: update read()
+			- TBD: clean up comments
 		- TBD: separate module for Invisible class?
 			- TBD: update imports for Invisible in mk_def_pkl.py and mach_class_def.py
 			- TBD: move error sub-system doc-strings here too
@@ -186,7 +189,8 @@ Version 3.77 Goals
 	- TBD: interp() error tuning
 		- DONE: identify interp() errors with "[INTERP]"
 		- TBD: normalize case
-	- TBD: error output tuning	
+	- TBD: error output tuning
+		- TBD: elim "can't see an X here" from interp errors?
 		- TBD: read() of obj w/ writing => "On the {obj}, written in {wrt}, you see: '{txt}'..."
 		- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
 		- TBD: examine writing => "The {writing} reads as follows: n/"

@@ -21,6 +21,9 @@ class Invisible(object):
 		return self._name
 
 	# *** simple methods ***
+	def is_invisible(self):
+		return True
+
 	def is_item(self):
 		return False
 
@@ -97,6 +100,9 @@ class Writing(Invisible):
 		self._descript_key = new_descript
 
 	# *** simple methods ***
+	def is_invisible(self):
+		return False
+
 	def is_writing(self):
 		return True
 
@@ -113,6 +119,12 @@ class Writing(Invisible):
 				return f"The {self.full_name} is simply indescribable."
 
 	# *** standard errors ###	
+	def err_invis_obj(self, creature, active_gs):
+		if self.is_invisible():
+			active_gs.buffer(f"During a brief moment of clarity, you see that the world around you is nothing but lines of code... vertical trails of glowing green characters tumble down across your vision... realizing that you are The One, you reach for the {self.full_name}... but just as your fingers approach it, the vision evaporates and your insight into Simulation Theory of Life fades from your mind and is forgotten forever...")
+			return True
+		return False
+
 	def err_wrt_not_vis(self, creature, active_gs):
 		room = active_gs.map.get_obj_room(creature)
 		if self.is_writing() and not room.chk_wrt_is_vis(self, active_gs):
@@ -153,6 +165,8 @@ class Writing(Invisible):
 		return False
 
 	def err_xst(self, creature, active_gs):
+		if self.err_invis_obj(creature, active_gs):
+			return True
 		if self.err_not_vis(creature, active_gs):
 			return True
 		if self.err_wrt_not_vis(creature, active_gs):
