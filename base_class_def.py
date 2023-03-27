@@ -158,7 +158,6 @@ class Invisible(object):
 			return True
 		if self.err_not_in_reach(creature, active_gs):
 			return True
-#		if not self.is_writing() and room.chk_is_vis(self, active_gs):
 		if not self.is_writing():
 			active_gs.buffer(f"You can't read the {self.full_name}. Try using 'examine' instead.")
 			return True
@@ -438,7 +437,6 @@ class Writing(Invisible):
 		if base_error:
 			return
 		creature = active_gs.hero
-#		room = active_gs.get_room()
 
 		active_gs.buffer(self.get_descript_str(active_gs)) # is_writing() and chk_wrt_is_vis()
 		return

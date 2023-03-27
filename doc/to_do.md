@@ -161,17 +161,19 @@ Version 3.77 Goals
 		- DONE: in base(), combine err_xst() and err_rch() into err_prep_std() ??
 			- DONE: lock(), unlock(), put(), show(), give(), attack()
 			- DONE: clean up comments
-		- INPROC: move Writing error blocks to Invisible class
+		- DONE: move Writing error blocks to Invisible class
 			- DONE: create def is_invisible(self): return True / False in Invisible / Writing
 			- DONE: create err_invis_obj() and add to err_xst()
 			- DONE: move standard errors to Invisible class
 			- DONE: move verb errors to Invisible class
 			- DONE: update read() [maybe add in wrt_err as a more special case??]
-			- TBD: clean up comments
+			- DONE: clean up comments
 		- TBD: separate module for Invisible class?
 			- TBD: create invis_class_def.py module
 			- TBD: update imports for Invisible in mk_def_pkl.py, mach_class_def.py, and others (?)
 			- TBD: move error sub-system doc-strings here too
+			- TBD: update doc_string to ref errors in Invisible
+			- TBD: doc_string about how errors messages should never *do* anything (time does not pass)
 
 	- TBD: implement validate() modes
 		- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
