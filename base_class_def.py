@@ -148,6 +148,22 @@ class Invisible(object):
 		return False
 
 	# *** verb error methods ***
+	def read(self, active_gs):
+		creature = active_gs.hero
+		if self.err_wrt_not_vis(creature, active_gs):
+			return True
+		if self.err_wrt_not_in_reach(creature, active_gs):
+			return True
+		if self.err_not_vis(creature, active_gs):
+			return True
+		if self.err_not_in_reach(creature, active_gs):
+			return True
+#		if not self.is_writing() and room.chk_is_vis(self, active_gs):
+		if not self.is_writing():
+			active_gs.buffer(f"You can't read the {self.full_name}. Try using 'examine' instead.")
+			return True
+		return False
+
 	def examine(self, active_gs):
 		creature = active_gs.hero
 		if self.err_not_vis(creature, active_gs):
@@ -416,22 +432,13 @@ class Writing(Invisible):
 	
 	# *** verb methods ***
 	def read(self, active_gs):
+		base_error = super(Writing, self).read(active_gs)
 		""" Reads text found on an object.
 		"""
+		if base_error:
+			return
 		creature = active_gs.hero
-		room = active_gs.get_room()
-
-		if self.err_wrt_not_vis(creature, active_gs):
-			return
-		if self.err_wrt_not_in_reach(creature, active_gs):
-			return
-		if self.err_not_vis(creature, active_gs):
-			return
-		if self.err_not_in_reach(creature, active_gs):
-			return
-		if not self.is_writing() and room.chk_is_vis(self, active_gs):
-			active_gs.buffer(f"You can't read the {self.full_name}. Try using 'examine' instead.")
-			return 
+#		room = active_gs.get_room()
 
 		active_gs.buffer(self.get_descript_str(active_gs)) # is_writing() and chk_wrt_is_vis()
 		return

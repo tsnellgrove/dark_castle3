@@ -166,7 +166,7 @@ Version 3.77 Goals
 			- DONE: create err_invis_obj() and add to err_xst()
 			- DONE: move standard errors to Invisible class
 			- DONE: move verb errors to Invisible class
-			- TBD: update read() [maybe add in wrt_err as a more special case??]
+			- DONE: update read() [maybe add in wrt_err as a more special case??]
 			- TBD: clean up comments
 		- TBD: separate module for Invisible class?
 			- TBD: create invis_class_def.py module
