@@ -6,7 +6,8 @@
 
 # import statements
 import pickle
-from base_class_def import Invisible, Writing, ViewOnly
+from invisible_class_def import Invisible
+from base_class_def import Writing, ViewOnly
 from room_class_def import Room
 from item_class_def import Item, Food, Garment, Weapon
 from door_class_def import Door, Container, PortableContainer, PortableLiquidContainer, Surface, Seat

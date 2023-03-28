@@ -6,7 +6,8 @@
 ### import
 import copy
 from item_class_def import Item
-from base_class_def import Invisible, ViewOnly
+from invisible_class_def import Invisible
+from base_class_def import ViewOnly
 from static_gbl import descript_dict
 from door_class_def import Surface
 

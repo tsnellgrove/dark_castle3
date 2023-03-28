@@ -169,11 +169,13 @@ Version 3.77 Goals
 			- DONE: update read() [maybe add in wrt_err as a more special case??]
 			- DONE: clean up comments
 		- TBD: separate module for Invisible class?
-			- TBD: create invis_class_def.py module
-			- TBD: update imports for Invisible in mk_def_pkl.py, mach_class_def.py, and others (?)
+			- DONE: create invis_class_def.py module
+			- DONE: move Invisible class to invisible_class_def.py
+			- DONE: update imports for Invisible in base_class_def, mk_def_pkl.py, & mach_class_def.py
 			- TBD: move error sub-system doc-strings here too
 			- TBD: update doc_string to ref errors in Invisible
 			- TBD: doc_string about how errors messages should never *do* anything (time does not pass)
+			- TBD: clean up unused imports (random add on noticed during invisible_class_def move)
 
 	- TBD: implement validate() modes
 		- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
