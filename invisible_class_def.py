@@ -9,7 +9,7 @@
 class Invisible(object):
 	def __init__(self, name):
 		self._name = name # text str of each obj's canonical name; should be unique and immutable
-		""" Invisible is the root object class. There are no instantiated objects of class Invisible but all objects in the game inherit the name attribute and some basic methods from Invisible. 
+		""" Invisible is the root object class. There are no instantiated objects of class Invisible but all objects in the game inherit the name attribute, class identity methods, and error sub-system from Invisible. 
 		"""
 
 	# *** getters & setters ***
@@ -18,6 +18,10 @@ class Invisible(object):
 		return self._name
 
 	# *** simple methods ***
+	def get_title_str(self, active_gs):
+		return None
+
+	# *** class identity methods ***
 	def is_invisible(self):
 		return True
 
@@ -62,9 +66,6 @@ class Invisible(object):
 
 	def is_seat(self):
 		return False
-
-	def get_title_str(self, active_gs):
-		return None
 
 	# *** standard errors ###	
 	def err_invis_obj(self, creature, active_gs):
@@ -390,6 +391,12 @@ class Invisible(object):
 			
 			The object tree of Dark Castle forks from Invisible. One trunk leads to Writing, then ViewOnly, and then all the other visible objects in the game that Burt can interct with. The other trunk leads to a collection of invisible objects that manage the automated behavior of the game. It might surprise a player of Dark Castle to learn that there are about as many invisible objects in the game as there are visible ones. However if you inspect the take() method you'll see that there's no code there that could trigger the royal_hedgehog to guard the shiny_sword. Likewise, there's no code in go() that could tell Burt about the Rusty Key when he tries to head south from the Entrance. These behaviors and many more are all enabled by invisible objects. See mach_class_def() for more information on these objects.
 
+		Program Architecture:
+			Becase Invisible is the root of the class inheritance tree and is also a class from which no objects are directly instantiated, it is the ideal place for methods that should always be available. There are 2 main classes of these:
+				
+				1) Class Identity Methods: these are the simple class identifyer methods (e.g. is_item() ) that returns True or False and which Dark Castle uses to verrify whether an object belongs to a given class. Within each class in the inheritance tree, the appropriate Class Identity Method is over-ridden with True but in Invisible, all of them are (except is_invisible() ) are set to False.
+
+				2) The Error Sub-System. This is where Method Mis-Match errors are handled for all verb methods. The Error Sub-System spans the whole of Dark Castle but the foundation is laid in Invisible so this is a good place to discuss how it works. It's covered in more detail than anyone but myself could possibly desire in a section of its own.
 
 	* Error Sub-System
 		- Overview:
@@ -416,6 +423,7 @@ class Invisible(object):
 
 		- Implementation Detail:
 			There are 2 Error Types:
+
 				1) Interpreter Errors: The interpreter is unclear what command the player is trying to issue.
 				
 				2) Command Errors: The command is understood but cannot be carried out.
@@ -432,13 +440,16 @@ class Invisible(object):
 		- Program Architecture:
 			We need to deal with two mai variants of Command Errors: 1) Custom Command Errors that are are specific to the verb method and its class and 2) Those errors that are based on Method Mis-Match or are Generic in nature. As mentioned in Implemntation Details, Custom Command Errors are dealt with in the body of the verb method itself. But where to address the other three flavors of Command Errors?
 			
-			Writing is the highest level visible class in the class inheritance tree. So this is an obvious place to catch any Method Mis-Match Error. As a result, every verb method has two error code blocks: One for Custom Command Errors that lives in the verb method itself, and another in Writing that deals with Method Mis-Match Errors and Generic Command Errors (the special exception to this rule is read(), which, of course, belongs in Writing anyhow).
+			Invistible is the top of the class inheritance tree. So this is an obvious place to catch any Method Mis-Match Error. As a result, every verb method has two error code blocks: One for Custom Command Errors that lives in the verb method itself, and another in Invisible that deals with Method Mis-Match Errors and Generic Command Errors.
 
-			These two error code blocks are not independent. Instead, the verb method code block (which addresses class-specific Custom Command Errors) calls (arguably, extends) the Writing error block. The Writing code block returns True if there is an error and Falso on no errors. So the first thing the verb method error block does it to call the Writing block and exit on true.
+			These two error code blocks are not independent. Instead, the verb method code block (which addresses class-specific Custom Command Errors) calls (arguably, extends) the Invisible error block. The Invisible code block returns True if there is an error and Falso on no errors. So the first thing the verb method error block does it to call the Invisible block and exit on true.
 
 			This structure is perhaps a bit heavy-handed but it has the following advantages:
+			
 				1) All Command Errors are generated in only one of two possible code blocks
+
 				2) Re-use of the Generic Command Error / Method Mis-Match Error code block when checking for Custom Command Errors
+
 				3) Because all Command Errors are called within a method (vs. in validate() ), Custom Method Mis-Match errors can easily be generated based on referenced object class.
 
 		- A Not-so-Brief History of Error Handling:
@@ -449,6 +460,7 @@ class Invisible(object):
 			Originally, cmd_exe() fit this purpose. I simply checked for the Generic Command Error cases and the Custom Method Mis-Match cases in advance of the try... except... verb method call.
 			
 			This worked acceptably well right through v3.68 (precedural parity version). However, as coding progressed a couple issues made it clear this was non-ideal:
+
 				1) Once timers were introduced, time tracking became important.	
 
 				2) The bigger problem was the more advanced use of pre_action machines. (see validte() for more info)
@@ -459,6 +471,6 @@ class Invisible(object):
 
 			Also, around this time, I began repalying Hollywood Hijinx with my youngest son, Joshua. I'd never played it all the way through before and we had a lot of fun solving it (though I did need hints on both the penguin and the buzz saw - both of which felt like iffy puzzles to me). In playing it I was reminded that Infocom did a nice job of throwing verb-specific errors... where-as Dark Castle still threw generic "Burt, I have no idea what you're talking about" errors for the vast majority of Method Mis-Matches.
 
-			So, this was the state of DC errors when I started coding the Seat class... which required a whole slew of new Generic Command errors. Here, the complexity sins of my past caught up with me. I had error messages being triggered from interp(), validate(), verb classes, and non-verb classes. I struggled repeatedly to troubleshoot bugs because I couldn't easily figure out which bit of code (false) errors were getting triggered from. I eventually got class Seat working but I was so frustrated with the error situation that I pushed off the othe work I had been planning to do and immediately started working on the (hoefully) comprehensive and systemic error solution in Writing.
+			So, this was the state of DC errors when I started coding the Seat class... which required a whole slew of new Generic Command errors. Here, the complexity sins of my past caught up with me. I had error messages being triggered from interp(), validate(), verb classes, and non-verb classes. I struggled repeatedly to troubleshoot bugs because I couldn't easily figure out which bit of code (false) errors were getting triggered from. I eventually got class Seat working but I was so frustrated with the error situation that I pushed off the othe work I had been planning to do and immediately started working on the (hoefully) comprehensive and systemic error solution. I initially put the foundation of the Error Sub-System in Writing (the highest visible class in the inheritance tree), but quickly realized that Invisible wouild be a better home.
 
 """
