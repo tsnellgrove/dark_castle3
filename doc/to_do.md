@@ -175,8 +175,8 @@ Version 3.77 Goals
 			- DONE: update imports for Invisible in base_class_def, mk_def_pkl.py, & mach_class_def.py
 			- DONE: move error sub-system doc-strings here too
 			- DONE: update doc_string to ref errors in Invisible
-			- TBD: review base doc_string
-			- TBD: doc_string about how errors messages should never *do* anything (time does not pass)
+			- DONE: review base doc_string
+			- DONE: doc_string about how errors messages should never *do* anything (time does not pass)
 			- TBD: clean up unused imports (random add on noticed during invisible_class_def move)
 			- TBD: update comment title for all: *** class identity methods ***
 

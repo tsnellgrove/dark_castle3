@@ -6,11 +6,7 @@
 
 ### import
 from static_gbl import descript_dict
-# from static_gbl import static_dict
 from invisible_class_def import Invisible
-
-
-
 
 
 class Writing(Invisible):
@@ -39,7 +35,7 @@ class Writing(Invisible):
 	def descript_key(self, new_descript):
 		self._descript_key = new_descript
 
-	# *** simple methods ***
+	# *** class identity methods ***
 	def is_invisible(self):
 		return False
 
@@ -83,10 +79,11 @@ class ViewOnly(Writing):
 	def writing(self):
 		return self._writing
 
-	# *** simple methods ***
+	# *** class identity methods ***
 	def is_writing(self):
 		return False
 
+	# *** simple methods ***
 	def get_vis_contain_lst(self, active_gs):
 		return []
 
@@ -158,7 +155,7 @@ class ViewOnly(Writing):
 				descript_key is a text string that is used to lookup the description of an object (or in the case of the Writing class, the text of an object) in descript_dict. By default, descript_key == name (i.e. the descript_key for object rusty_key is 'rusty_key'). However, by making descript_key and independent attribute from name, we enable the descriptions (or text) associated with an object to change over time. 
 
 		Implementation Detail:
-			It is worth noting that writing is treated a bit differently than other 'noun' objects. Writing is not treated as being 'contained' in the object it is written on. Instead it is treated as an object 'Condition' (similar to a Door being open or closed) and as such it can only be observed via the exameine() method. This is partly to avoid over-cluttering the room descriptions and partly to provide a sense of discovery when an object is examined. Also, I picture Burt needing to peer closely at writing to make it out in the dim lantern light. See the ViewOnly examine() doc_string for details on Active vs. Passive Observation.
+			It is worth noting that writing is treated a bit differently than other 'noun' objects. Writing is not treated as being 'contained' in the object it is written on. Instead it is treated as an object 'Condition' (similar to a Door being open or closed) and as such it can only be observed via the examine() method. This is partly to avoid over-cluttering the room descriptions and partly to provide a sense of discovery when an object is examined. Also, I picture Burt needing to peer closely at writing to make it out in the dim lantern light. See the ViewOnly examine() doc_string for details on Active vs. Passive Observation.
 			
 		Game Design:
 			The introduction of descript_key is a good time to say a word about descriptions in general: they are the heart of Interactive Fiction. If you've ever read an IF walk-through it is dull as dust - because the interpreter's vocabulary is tiny and the commands to play the game are simple and repetative. It's the descriptions and the writing that create the illusion of a complex world. 
@@ -180,7 +177,7 @@ class ViewOnly(Writing):
 	- read() method [Writing class]:
 
 		Overview:
-			Read is the first player-accessible method. For the reasons mentioned above in Writing, writing objects are treated a bit differently than other 'nouns' and therefore the error checking in read() is a bit different as well (writing has it's own unique scope check method, chk_wrt_is_vis). Note that read is uniquely excluded from the 2word generic command failure routines in validate(). 
+			Read is the first player-accessible method. For the reasons mentioned above in Writing, writing objects are treated a bit differently than other 'nouns' and therefore the error checking in read() is a bit different as well (writing has it's own unique scope check method, chk_wrt_is_vis). 
 
 
 	* ViewOnly class:
@@ -194,10 +191,10 @@ class ViewOnly(Writing):
 	- examine() method [ViewOnly class]:
 
 		Overview:
-			examine() is the most fundamental command for gameplay and is the second method available for visible objects after read(). ViewOnly is the ancestor of all visible classes except Writing and in earlier versions so the examine() method operates across quite a few different classes.
+			examine() is the most fundamental command for gameplay and is the second method available for visible objects after read(). ViewOnly is the ancestor of all visible classes except Writing so the examine() method operates across quite a few different classes.
 	
 		Program Architecture:
-			"Saparation of content and presentation" is an age-old programming saw - and rightly so. I embrace this mantra in DarK Castle by having a standard set of 'display' methods (disp_cond(), disp_writing(), and disp_contain() ) who's purpose is to buffer game-world information when an object is examined. This allows me to vary the 'condition' text based on the class (e.e. for a Door, condition = "open" or "closed"; for a LeverSwitch, condition = "up" or "down"). It also allows me to customize descriptions related to the burt Creature object (e.g. since burt is the observer, he is never included in the "look" / "examine <room>" 'contain' list. Also, "inventory" / "i" / "examine burt" does provide a 'contain' list of burt's bkpk_lst - since burt is able to look in his own backpack). Down the road, isolated display methods called from examine should also make it easier to enable or disable part of the examine() output based on settings like 'brief' and 'verbose'. The down side to this formal approach is that the descriptions have a bulleted feel and are hard to unify into paragraphs.
+			"Saparation of content and presentation" is an age-old programming saw - and rightly so. I embrace this mantra in Dark Castle by having a standard set of 'display' methods (disp_cond(), disp_writing(), and disp_contain() ) who's purpose is to buffer game-world information when an object is examined. This allows me to vary the 'condition' text based on the class (e.e. for a Door, condition = "open" or "closed"; for a LeverSwitch, condition = "up" or "down"). It also allows me to customize descriptions related to the burt Creature object (e.g. since burt is the observer, he is never included in the "look" / "examine <room>" 'contain' list. Also, "inventory" / "i" / "examine burt" does provide a 'contain' list of burt's bkpk_lst - since burt is able to look in his own backpack). Down the road, isolated display methods called from examine should also make it easier to enable or disable part of the examine() output based on settings like 'brief' and 'verbose'. The down side to this formal approach is that the descriptions have a bulleted feel and are hard to unify into paragraphs.
 	
 			However, isolated display methods also create their own set of problems. The aesthetic goal of Dark Castle is to feel book-like and present information in traditional paragraph format. But the default presentation that results from isolated dispaly methods is a series of one-line sentences (e.g. "There is a goblin here.", "The goblin is holding: Grimy Axe.", "The goblin is wearing: Big Medal.") each separated by a line of space. It ends up feeling more like a Twitter feed than a book. To solve this I needed to start checking each object to determine which examine() elements it included (has_cond(), has_writing(), has_contain() ). I also needed to enlarge the buffer options from just buffer() (which is equivalent to <cr><text><cr>) to also including buff_no_cr() and buff_cr(). As always, the UI was more work than expected, but the results are now a bit more paragraph like.
 		

@@ -437,6 +437,11 @@ class Invisible(object):
 				
 				4) Custom Method Mis-Match Errors: In a few specific cases, player confusion over which methods can be used with which objects is quite justified. e.g. it's not unreasonable for the player to attempt to take the 'water'. In these cases we would like to give an explanitory error - but we can't provide a Custom Method Failure as the method cannot run at all. So, we trap the error in advance in the validate() method so that a helpful response can be given.
 
+			No actions should be performed via errors:
+				As a general rule, no actions should be taken - and no in-game information should be provided - via errors. The error sub-system is intended as a 'pre-check' for user commands, which then aborts from command execution if the command is not valid. Time does not pass on error-generating turns and there are no pre-actions, post-actions, or auto-actions. 
+
+				While it is technically possible to update object state within error code, this is not intended and should be avoided. If a state change will be triggered, it should be handeled within the class verb method - or possibly by a modular machine. Ideally, the same would be true for providing in-game information (e.g. examine() or read() ). An exception to this rule can be made for game meta-information where the player appears to need a usage hint (e.g. "use read() rather than examine() on objects of class Writing"). 
+
 		- Program Architecture:
 			We need to deal with two mai variants of Command Errors: 1) Custom Command Errors that are are specific to the verb method and its class and 2) Those errors that are based on Method Mis-Match or are Generic in nature. As mentioned in Implemntation Details, Custom Command Errors are dealt with in the body of the verb method itself. But where to address the other three flavors of Command Errors?
 			
