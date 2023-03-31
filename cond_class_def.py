@@ -4,9 +4,6 @@
 # description: class deffinition module for Conditions
 
 
-### import
-
-
 ### classes
 class PassThruCond(object):
 		def __init__(self, name):

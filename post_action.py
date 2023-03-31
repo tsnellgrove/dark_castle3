@@ -4,8 +4,6 @@
 # description: identifies and executes pre-action commands
 
 
-### import statements ###
-
 def post_action(active_gs, case, word_lst):
 		cmd_override = False
 		mach_obj_lst = active_gs.get_room().get_mach_lst(active_gs)

@@ -177,7 +177,7 @@ Version 3.77 Goals
 			- DONE: update doc_string to ref errors in Invisible
 			- DONE: review base doc_string
 			- DONE: doc_string about how errors messages should never *do* anything (time does not pass)
-			- TBD: clean up unused imports (random add on noticed during invisible_class_def move)
+			- TBD: clean up unused imports in door_class_def.py, item_class_def.py, misc_class_def.py
 			- TBD: update comment title for all: *** class identity methods ***
 
 	- TBD: implement validate() modes

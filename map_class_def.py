@@ -3,8 +3,6 @@
 # date: Mar 20, 2023
 # description: class deffinition module for Creatures
 
-### import
-
 
 ### module vars
 room_key_lst = [['room_x', 'dir_x', 'room_y'], ['room_y', 'dir_y', 'room_x']] # list of key_lst for a given room_pair

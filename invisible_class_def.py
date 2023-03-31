@@ -4,7 +4,6 @@
 # description: Invisible class deffinition module
 
 
-
 ### classes
 class Invisible(object):
 	def __init__(self, name):
