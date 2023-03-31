@@ -8,6 +8,7 @@
 import random
 from static_gbl import descript_dict, static_dict
 
+
 def rand_error():
 		num = random.randint(0, 4)
 		interp_error_key = 'interp_error_' + str(num)

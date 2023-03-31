@@ -15,7 +15,7 @@ class Item(ViewOnly):
 		""" Items can be 'taken' and 'dropped'. Item inherits from ViewOnly and has no new attributes - just new methods: take() and drop(). 
 		"""
 
-	# *** simple object methods ***
+	# *** class identity methods ***
 	def is_item(self):
 		return True
 
@@ -73,7 +73,7 @@ class Food(Item):
 		""" Burt can eat() food. Food may be of interest to other creatures in Dark Castle as well. Food inherits from Item and can be taken.
 		"""
 
-	# *** simple methods ***
+	# *** class identity methods ***
 	def is_food(self):
 		return True
 
@@ -107,7 +107,7 @@ class Garment(Item):
 	def garment_type(self):
 		return self._garment_type
 
-	# *** simple methods ***	
+	# *** class identity methods ***
 	def is_garment(self):
 		return True
 
@@ -148,7 +148,7 @@ class Weapon(Item):
 	def desc_lst(self):
 		return self._desc_lst
 
-	# *** simple methods ***
+	# *** class identity methods ***
 	def is_weapon(self):
 		return True
 

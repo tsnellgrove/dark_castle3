@@ -157,7 +157,7 @@ Version 3.77 Goals
 		- DONE: fix indents
 		- DONE: elim interp() "random error" option / else option?
 
-	- INPROC: tune up error coding
+	- DONE: tune up error coding
 		- DONE: in validate(), prepend "[INTERP]" for interp errors
 		- DONE: in base(), combine err_xst() and err_rch() into err_prep_std() ??
 			- DONE: lock(), unlock(), put(), show(), give(), attack()
@@ -169,7 +169,7 @@ Version 3.77 Goals
 			- DONE: move verb errors to Invisible class
 			- DONE: update read() [maybe add in wrt_err as a more special case??]
 			- DONE: clean up comments
-		- INPROC: separate module for Invisible class?
+		- DONE: separate module for Invisible class?
 			- DONE: create invis_class_def.py module
 			- DONE: move Invisible class to invisible_class_def.py
 			- DONE: update imports for Invisible in base_class_def, mk_def_pkl.py, & mach_class_def.py
@@ -177,8 +177,8 @@ Version 3.77 Goals
 			- DONE: update doc_string to ref errors in Invisible
 			- DONE: review base doc_string
 			- DONE: doc_string about how errors messages should never *do* anything (time does not pass)
-			- TBD: clean up unused imports in door_class_def.py, item_class_def.py, misc_class_def.py
-			- TBD: update comment title for all: *** class identity methods ***
+			- DONE: clean up unused imports in door_class_def.py, item_class_def.py, misc_class_def.py
+			- DONE: update comment title for all: *** class identity methods ***
 
 	- TBD: implement validate() modes
 		- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands

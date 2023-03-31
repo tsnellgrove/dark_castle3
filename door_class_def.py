@@ -48,7 +48,7 @@ class Door(ViewOnly):
 	def is_not_closed(self):
 		return self.is_open is not False
 
-	# *** simple obj methods ***
+	# *** class identity methods ***
 	def	is_door(self):
 		return True
 
@@ -223,7 +223,7 @@ class Container(Door):
 	def is_empty(self):
 		return not self.contain_lst
 
-	# *** simple obj methods ***
+	# *** class identity methods ***
 	def	is_container(self):
 		return True
 
@@ -315,7 +315,7 @@ class PortableContainer(Container, Item):
 		"""A container that can be taken.
 		"""
 
-	# *** simple methods ***
+	# *** class identity methods ***
 	def is_item(self):
 		return True
 
@@ -350,7 +350,7 @@ class Surface(Container):
 	def max_obj(self):
 		return self._max_obj
 
-	# *** simple methods ***
+	# *** class identity methods ***
 	def is_surface(self):
 		return True
 
@@ -389,7 +389,7 @@ class Seat(Surface):
 		"""A seat on which a Creature can sit.
 		"""
 
-	# *** simple methods ***
+	# *** class identity methods ***
 	def is_seat(self):
 		return True
 

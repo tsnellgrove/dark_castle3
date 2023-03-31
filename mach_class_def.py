@@ -55,7 +55,7 @@ class MachineMixIn(object):
 		def result_lst(self):
 				return self._result_lst
 
-		# simple methods
+		# *** class identity methods ***
 		def is_mach(self):
 				return True
 

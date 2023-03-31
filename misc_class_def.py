@@ -15,7 +15,7 @@ class Liquid(ViewOnly):
 		""" Liquids are ViewOnly objects. You cannot take a Liquid but you can drink() it from a Container.
 		"""
 
-	# *** simple methods ***
+	# *** class identity methods ***
 	def is_liquid(self):
 		return True
 

@@ -140,7 +140,7 @@ class Creature(ViewOnly):
 	def chk_is_worn(self, garment):
 		return(garment in self.worn_lst)
 
-	# *** simple methods ***
+	# *** class identity methods ***
 	def is_creature(self):
 		return True
 
