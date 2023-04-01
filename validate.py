@@ -25,9 +25,22 @@ def validate(active_gs, case, word_lst):
 		return False
 
 	# *** command errors ***
+	two_word_lst = []
+	prep_word_lst = []
+
 	if case == '2word':
 		word2_obj, word1 = word_lst
 		room = active_gs.get_room()
+
+		cmd_error = False # temp
+
+		if word1 in two_word_lst:
+			try:
+				cmd_error = getattr(word2_obj, word1)(active_gs, 'validate')
+			except:
+				cmd_error = True
+				active_gs.buffer(rand_error())
+			return not cmd_error
 
 	if case == 'prep':
 		dirobj_obj, word1, noun_obj = word_lst
