@@ -194,6 +194,7 @@ Version 3.77 Goals
 		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
 	- TBD: validate() doc_strings
 		- TBD: doc_string how validate() works
+		- TBD: doc_string about future 'silent_exe' for symetric creature commands
 		- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
 
 - TBD: error sub-system enhancements
