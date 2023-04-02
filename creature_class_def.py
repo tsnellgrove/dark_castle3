@@ -252,14 +252,6 @@ class Creature(ViewOnly):
 				obj.disp_contain(active_gs)
 		return 
 
-	# *** verb error methods ***
-#	def take(self, active_gs):
-#		""" Provides a custom error if the player attempts to take() an object of Creature class.
-#		"""
-#		active_gs.buffer(f"You can't take the {self.full_name}! How would you feel if someone 'took' you?")
-#		return 
-
-
 	# *** verb methods ***
 	def show(self, obj, active_gs):
 		base_error = super(Creature, self).show(obj, active_gs)
