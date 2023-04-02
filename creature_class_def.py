@@ -253,11 +253,11 @@ class Creature(ViewOnly):
 		return 
 
 	# *** verb error methods ***
-	def take(self, active_gs):
-		""" Provides a custom error if the player attempts to take() an object of Creature class.
-		"""
-		active_gs.buffer(f"You can't take the {self.full_name}! How would you feel if someone 'took' you?")
-		return 
+#	def take(self, active_gs):
+#		""" Provides a custom error if the player attempts to take() an object of Creature class.
+#		"""
+#		active_gs.buffer(f"You can't take the {self.full_name}! How would you feel if someone 'took' you?")
+#		return 
 
 
 	# *** verb methods ***

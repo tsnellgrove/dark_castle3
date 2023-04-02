@@ -183,8 +183,8 @@ Version 3.77 Goals
 	- INPROC: implement validate() modes
 		- INPROC: in validate() for case = '2word':
 			- DONE: implement try <cmd>... except... for specific list of word1 and with mode = 'validate'
-			- TBD: update take() to use mode and add 'take' to two_word_lst in validate
-			- TBD:
+			- DONE: update take() to use mode and add 'take' to two_word_lst in validate
+			- TBD: food()
 		- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
 			- TBD: this will break the 'go south from Entrance' warning... 
 			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south

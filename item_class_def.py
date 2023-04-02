@@ -20,20 +20,31 @@ class Item(ViewOnly):
 		return True
 
 	# *** verb methods ***
-	def take(self, active_gs):
-		base_error = super(Item, self).take(active_gs)
+#	def take(self, active_gs):
+	def take(self, active_gs, mode = None):
+#		base_error = super(Item, self).take(active_gs)
 		""" Takes an object from either the room or from Burt's inventory and places it into Burt's hand
 		"""
-		if base_error:
-			return
+
+		if mode is None:
+			mode = 'std_exe'
+
+		if mode == 'validate':
+			base_error = super(Item, self).take(active_gs, mode)
+			if base_error:
+				return True
+
 		creature = active_gs.hero
-		if creature.chk_in_hand(self):
-			active_gs.buffer("You're already holding the " + self.full_name)
-			return 
-		for obj in active_gs.get_room().floor_lst:
-			if obj.is_creature() and obj is not active_gs.hero and self in obj.get_vis_contain_lst(active_gs):
-				active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
-				return 
+
+		if mode == 'validate':
+			if creature.chk_in_hand(self):
+				active_gs.buffer("You're already holding the " + self.full_name)
+				return True
+			for obj in active_gs.get_room().floor_lst:
+				if obj.is_creature() and obj is not active_gs.hero and self in obj.get_vis_contain_lst(active_gs):
+					active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
+					return True
+			return False
 
 		active_gs.buffer("Taken")
 		if creature.chk_is_worn(self):
