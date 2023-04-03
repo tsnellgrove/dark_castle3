@@ -3,7 +3,7 @@
 # date: Mar 20, 2023
 # description: web main module for a zork-like text adventure game.
 # goals vs. dc2: oop, modular, improved interpreter, working containers, 
-#								integrate triggers, replicate full original, add more puzzles!
+#		integrate triggers, replicate full original, add more puzzles!
 
 ### import statements
 from app_main import wrapper

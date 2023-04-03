@@ -89,15 +89,30 @@ class Food(Item):
 		return True
 
 	# *** verb methods ***
-	def eat(self, active_gs):
-		base_error = super(Food, self).eat(active_gs)
+	def eat(self, active_gs, mode = None):
+#	def eat(self, active_gs):
 		""" Removes the Food object from the game and provides a description of how the food tasted.
 		"""
-		if base_error:
-			return
+
+		if mode is None:
+			mode = 'std_exe'
+
+		if mode == 'validate':
+			base_error = super(Food, self).eat(active_gs, mode)
+			if base_error:
+				return True
+
+#		base_error = super(Food, self).eat(active_gs)
+
+#		if base_error:
+#			return
+
 		creature = active_gs.hero
-		if self.err_not_in_hand(creature, active_gs):
-			return
+
+		if mode == 'validate':
+			if self.err_not_in_hand(creature, active_gs):
+				return True
+			return False
 
 		creature.hand_lst_remove(self)
 		

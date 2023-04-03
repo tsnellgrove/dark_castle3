@@ -218,7 +218,8 @@ class Invisible(object):
 			return True
 		return False
 
-	def eat(self, active_gs):
+	def eat(self, active_gs, mode):
+#	def eat(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
