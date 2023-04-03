@@ -20,23 +20,18 @@ class Item(ViewOnly):
 		return True
 
 	# *** verb methods ***
-#	def take(self, active_gs):
 	def take(self, active_gs, mode = None):
-#		base_error = super(Item, self).take(active_gs)
 		""" Takes an object from either the room or from Burt's inventory and places it into Burt's hand
 		"""
 
 		if mode is None:
 			mode = 'std_exe'
+		creature = active_gs.hero
 		
 		if mode == 'validate':
 			base_error = super(Item, self).take(active_gs, mode)
 			if base_error:
 				return True
-
-		creature = active_gs.hero
-
-		if mode == 'validate':
 			if creature.chk_in_hand(self):
 				active_gs.buffer("You're already holding the " + self.full_name)
 				return True
