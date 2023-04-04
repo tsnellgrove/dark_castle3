@@ -184,7 +184,7 @@ Version 3.77 Goals
 		- INPROC: in validate() for case = '2word':
 			- DONE: implement try <cmd>... except... for specific list of word1 and with mode = 'validate'
 			- INPROC: update verb methods to use 'mode' and be called by validate()
-				- DONE: take(), eat(), drop(), 
+				- DONE: take(), eat(), drop(), wear(), 
 					- DONE: update def
 						- DONE: update def to include mode = None as last attribute
 						- DONE: move doc_string under def
@@ -196,7 +196,7 @@ Version 3.77 Goals
 						- DONE: return True on errors, return False at end of method errors
 					- DONE: in Invisible error method, add mode attribute to def
 					- DONE: in validate(), add verb to two_word_lst or prep_word_lst
-				- TBD: wear()
+				- TBD: read(), examine(), 
 		- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
 			- TBD: this will break the 'go south from Entrance' warning... 
 			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south

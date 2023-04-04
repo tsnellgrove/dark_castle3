@@ -20,7 +20,7 @@ class Item(ViewOnly):
 		return True
 
 	# *** verb methods ***
-	def take(self, active_gs, mode = None):
+	def take(self, active_gs, mode=None):
 		""" Takes an object from either the room or from Burt's inventory and places it into Burt's hand
 		"""
 
@@ -50,8 +50,7 @@ class Item(ViewOnly):
 		creature.put_in_hand(self)
 		return
 
-	def drop(self, active_gs, mode = None):
-#	def drop(self, active_gs):
+	def drop(self, active_gs, mode=None):
 		""" Drops an object from Burt's hand to the floor of the room.
 		"""
 
@@ -91,7 +90,7 @@ class Food(Item):
 		return True
 
 	# *** verb methods ***
-	def eat(self, active_gs, mode = None):
+	def eat(self, active_gs, mode=None):
 		""" Removes the Food object from the game and provides a description of how the food tasted.
 		"""
 
@@ -131,21 +130,27 @@ class Garment(Item):
 		return True
 
 	# *** verb methods ***
-	def wear(self, active_gs):
-		base_error = super(Garment, self).wear(active_gs)
+	def wear(self, active_gs, mode=None):
 		""" Places a garment in a creature's worn inventory and provides a description of any effects that result.
 		"""
-		if base_error:
-			return
+
+		if mode is None:
+			mode = 'std_exe'
 		creature = active_gs.hero
-		if self in creature.worn_lst:
-			active_gs.buffer(f"You're already wearing the {self.full_name}!")
-			return
-		if self.err_not_in_hand(creature, active_gs):
-			return
-		if creature.chk_type_worn(self):
-			active_gs.buffer(f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
-			return 
+
+		if mode == 'validate':
+			base_error = super(Garment, self).wear(active_gs, mode)
+			if base_error:
+				return True
+			if self in creature.worn_lst:
+				active_gs.buffer(f"You're already wearing the {self.full_name}!")
+				return True
+			if self.err_not_in_hand(creature, active_gs):
+				return True
+			if creature.chk_type_worn(self):
+				active_gs.buffer(f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
+				return True
+			return False
 		
 		creature.worn_lst_append(self)
 		creature.hand_lst_remove(self)
