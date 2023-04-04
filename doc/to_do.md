@@ -196,7 +196,7 @@ Version 3.77 Goals
 						- DONE: return True on errors, return False at end of method errors
 					- DONE: in Invisible error method, add mode attribute to def
 					- DONE: in validate(), add verb to two_word_lst or prep_word_lst
-				- TBD: read(), examine(), 
+				- TBD: read(), examine(), open(), close(), drink()
 		- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
 			- TBD: this will break the 'go south from Entrance' warning... 
 			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south

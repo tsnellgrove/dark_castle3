@@ -30,11 +30,11 @@ def validate(active_gs, case, word_lst):
 
 	if case == '2word':
 		word2_obj, word1 = word_lst
-		room = active_gs.get_room()
+		room = active_gs.get_room() # maybe only need this for case = 'go' ?
 
-		cmd_error = False # temp
+		cmd_error = False # temp; don't think I need this even temporary ?
 
-		if word1 in two_word_lst:
+		if word1 in two_word_lst: # temp until all 2word cases covered
 			try:
 				cmd_error = getattr(word2_obj, word1)(active_gs, 'validate')
 			except:
