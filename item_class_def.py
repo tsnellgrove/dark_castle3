@@ -50,18 +50,25 @@ class Item(ViewOnly):
 		creature.put_in_hand(self)
 		return
 
-	def drop(self, active_gs):
-		base_error = super(Item, self).drop(active_gs)
+	def drop(self, active_gs, mode = None):
+#	def drop(self, active_gs):
 		""" Drops an object from Burt's hand to the floor of the room.
 		"""
-		if base_error:
-			return
+
+		if mode is None:
+			mode = 'std_exe'
 		creature = active_gs.hero
-		if self.err_not_in_hand(creature, active_gs):
-			return
-		if creature.is_contained(active_gs) and not creature.get_contained_by(active_gs).chk_has_capacity():
-			active_gs.buffer(f"There's no room on the {self.full_name} for another item.")
-			return
+
+		if mode == 'validate':
+			base_error = super(Item, self).drop(active_gs, mode)
+			if base_error:
+				return True	
+			if self.err_not_in_hand(creature, active_gs):
+				return True
+			if creature.is_contained(active_gs) and not creature.get_contained_by(active_gs).chk_has_capacity():
+				active_gs.buffer(f"There's no room on the {self.full_name} for another item.")
+				return True
+			return False
 
 		creature.hand_lst_remove(self)
 		if creature.is_contained(active_gs):
