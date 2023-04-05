@@ -127,13 +127,19 @@ class ViewOnly(Writing):
 
 
 	# *** verb methods ***
-	def examine(self, active_gs):
-		base_error = super(ViewOnly, self).examine(active_gs)
+	def examine(self, active_gs, mode=None):
 		""" Describes an object.
 		"""
-		if base_error:
-			return
+
+		if mode is None:
+			mode = 'std_exe'
 		creature = active_gs.hero
+
+		if mode == 'validate':
+			base_error = super(ViewOnly, self).examine(active_gs, mode)
+			if base_error:
+				return True
+			return False
 
 		if self.get_title_str(active_gs) is not None:
 			active_gs.buffer(self.get_title_str(active_gs))
