@@ -181,29 +181,30 @@ Version 3.77 Goals
 			- DONE: update comment title for all: *** class identity methods ***
 
 	- INPROC: implement validate() modes
-		- INPROC: in validate() for case = '2word':
-			- DONE: implement try <cmd>... except... for specific list of word1 and with mode = 'validate'
-			- INPROC: update verb methods to use 'mode' and be called by validate()
-				- DONE: take(), eat(), drop(), wear(), 
-					- DONE: update def
-						- DONE: update def to include mode = None as last attribute
-						- DONE: move doc_string under def
-						- DONE: below doc_string add: if mode is None: mode = 'std_exe'
-						- DONE: move creature attribute assignment to below 'if mode is None: '
-						- DONE: pre-fix method errors with mode == validate check
-						- DONE: update base_error call of method with mode attribute
-						- DONE: merge base_error call and local error methods within mode == 'validate'
-						- DONE: return True on errors, return False at end of method errors
-					- DONE: in Invisible error method, add mode attribute to def
-					- DONE: in validate(), add verb to two_word_lst or prep_word_lst
-				- TBD: read(), examine(), open(), close(), drink()
-		- TBD: deploy 'mode' attribute ('validate' and 'std_exe') for all 2word commands
-			- TBD: this will break the 'go south from Entrance' warning... 
-			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south
+		- DONE: implement try <cmd>... except... for specific list of word1 and with mode = 'validate'
+		- INPROC: update case = '2word' verb methods to use 'mode' and be called by validate()
+			- DONE: take(), eat(), drop(), wear(), 
+				- DONE: update def
+					- DONE: update def to include mode = None as last attribute
+					- DONE: move doc_string under def
+					- DONE: below doc_string add: if mode is None: mode = 'std_exe'
+					- DONE: move creature attribute assignment to below 'if mode is None: '
+					- DONE: pre-fix method errors with mode == validate check
+					- DONE: update base_error call of method with mode attribute
+					- DONE: merge base_error call and local error methods within mode == 'validate'
+					- DONE: return True on errors, return False at end of method errors
+				- DONE: in Invisible error method, add mode attribute to def
+				- DONE: in validate(), add verb to two_word_lst or prep_word_lst
+			- TBD: read(), examine(), open(), close(), drink()
+		- TBD: update case = 'prep' verb methods to use 'mode' and be called by validate()
+		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
+		- TBD: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
 		- TBD: make validate() random error dict local? (post move of 'try')
 	- TBD: validate() testing
 		- TBD: validate should resolve get sword while in chair error
 		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
+		- TBD: this will break the 'go south from Entrance' warning... 
+			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south
 	- TBD: validate() doc_strings
 		- TBD: doc_string how validate() works
 		- TBD: doc_string about future 'silent_exe' for symetric creature commands

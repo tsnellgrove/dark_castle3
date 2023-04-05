@@ -145,7 +145,7 @@ class Invisible(object):
 		return False
 
 	# *** verb error methods ***
-	def read(self, active_gs):
+	def read(self, active_gs, mode):
 		creature = active_gs.hero
 		if self.err_wrt_not_vis(creature, active_gs):
 			return True

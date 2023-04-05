@@ -55,13 +55,21 @@ class Writing(Invisible):
 				return f"The {self.full_name} is simply indescribable."
 	
 	# *** verb methods ***
-	def read(self, active_gs):
-		base_error = super(Writing, self).read(active_gs)
+	def read(self, active_gs, mode=None):
+#	def read(self, active_gs):
 		""" Reads text found on an object.
 		"""
-		if base_error:
-			return
+
+		if mode is None:
+			mode = 'std_exe'
 		creature = active_gs.hero
+
+		if mode == 'validate':
+			base_error = super(Writing, self).read(active_gs, mode)
+#			base_error = super(Writing, self).read(active_gs)
+			if base_error:
+				return True
+			return False
 
 		active_gs.buffer(self.get_descript_str(active_gs)) # is_writing() and chk_wrt_is_vis()
 		return
