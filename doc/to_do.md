@@ -195,7 +195,7 @@ Version 3.77 Goals
 					- DONE: return True on errors, return False at end of method errors
 				- DONE: in Invisible error method, add mode attribute to def
 				- DONE: in validate(), add verb to two_word_lst or prep_word_lst
-			- TBD: open(), close(), drink(), push(), pull()
+			- TBD: open(), close(), drink(), push(), pull(), enter(), exit()
 		- TBD: update case = 'prep' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
