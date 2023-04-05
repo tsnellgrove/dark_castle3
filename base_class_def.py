@@ -56,7 +56,6 @@ class Writing(Invisible):
 	
 	# *** verb methods ***
 	def read(self, active_gs, mode=None):
-#	def read(self, active_gs):
 		""" Reads text found on an object.
 		"""
 
@@ -66,12 +65,11 @@ class Writing(Invisible):
 
 		if mode == 'validate':
 			base_error = super(Writing, self).read(active_gs, mode)
-#			base_error = super(Writing, self).read(active_gs)
 			if base_error:
 				return True
 			return False
 
-		active_gs.buffer(self.get_descript_str(active_gs)) # is_writing() and chk_wrt_is_vis()
+		active_gs.buffer(self.get_descript_str(active_gs))
 		return
 
 
