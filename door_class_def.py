@@ -107,7 +107,6 @@ class Door(ViewOnly):
 
 
 	def open(self, active_gs, mode=None):
-#	def open(self, active_gs):
 		""" Opens a Door object.
 		"""
 

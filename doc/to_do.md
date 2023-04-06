@@ -193,6 +193,7 @@ Version 3.77 Goals
 					- DONE: update base_error call of method with mode attribute
 					- DONE: merge base_error call and local error methods within mode == 'validate'
 					- DONE: return True on errors, return False at end of method errors
+					- DONE: for open(), close(), lock(), & unlock(): in Surface error add mode & ret True
 				- DONE: in Invisible error method, add mode attribute to def
 				- DONE: in validate(), add verb to two_word_lst or prep_word_lst
 			- TBD: close(), drink(), push(), pull(), enter(), exit()
