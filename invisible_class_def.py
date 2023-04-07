@@ -208,7 +208,7 @@ class Invisible(object):
 			return True
 		return False
 	
-	def close(self, active_gs):
+	def close(self, active_gs, mode):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True

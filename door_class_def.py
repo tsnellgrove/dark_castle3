@@ -140,23 +140,29 @@ class Door(ViewOnly):
 		active_gs.buff_cr()
 		return
 
-	def close(self, active_gs):
-		base_error = super(Door, self).close(active_gs)
+	def close(self, active_gs, mode=None):
 		""" Closes a Door object.
 		"""
-		if base_error:
-			return
+
+		if mode is None:
+			mode = 'std_exe'
 		creature = active_gs.hero
-		if self.is_open is None:
-			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
-			return 
-		if self.is_open == False:
-			active_gs.buffer(f"The {self.full_name} is already closed.")
-			return 
-		if self.is_unlocked == False: # for Iron Portcullis
-			active_gs.buffer(f"The {self.full_name} is locked open.")
-			return 
-		
+
+		if mode == 'validate':
+			base_error = super(Door, self).close(active_gs, mode)
+			if base_error:
+				return True
+			if self.is_open is None:
+				active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
+				return True
+			if self.is_open == False:
+				active_gs.buffer(f"The {self.full_name} is already closed.")
+				return True
+			if self.is_unlocked == False: # for Iron Portcullis
+				active_gs.buffer(f"The {self.full_name} is locked open.")
+				return True
+			return False
+
 		active_gs.buffer("Closed") # is_open == True, is_unlocked == True
 
 		self.is_open = False
@@ -374,9 +380,9 @@ class Surface(Container):
 		active_gs.buffer(f"How do you propose to 'open' the {self.full_name}?")
 		return True
 
-	def close(self, active_gs):
+	def close(self, active_gs, mode):
 		active_gs.buffer(f"How do you propose to 'close' the {self.full_name}?")
-		return
+		return True
 
 	def lock(self, key_obj, active_gs):
 		active_gs.buffer(f"How do you propose to 'lock' the {self.full_name}?")
