@@ -49,13 +49,19 @@ class ButtonSwitch(SwitchMixIn, ViewOnly):
 		SwitchMixIn.__init__(self, switch_state, def_switch_state, trigger_type)
 
 	# *** verb methods ***
-	def push(self, active_gs):
-		base_error = super(ButtonSwitch, self).push(active_gs)
+	def push(self, active_gs, mode=None):
 		""" Sets the switch state to 'pushed' until it is auto-reset in the auto_action.py module
 		"""
-		if base_error:
-			return
+
+		if mode is None:
+			mode = 'std_exe'
 		creature = active_gs.hero
+
+		if mode == 'validate':
+			base_error = super(ButtonSwitch, self).push(active_gs, mode)
+			if base_error:
+				return True
+			return False
 
 		self.switch_state = 'pushed'
 
