@@ -46,7 +46,7 @@ def cmd_execute(active_gs, case, word_lst):
 					active_gs.buffer(rand_error())
 		elif case == '2word':
 				word2_obj, word1 = word_lst
-##				getattr(word2_obj, word1)(active_gs) # for troubleshooting
+#				getattr(word2_obj, word1)(active_gs) # for troubleshooting
 				try:
 						getattr(word2_obj, word1)(active_gs)
 				except:

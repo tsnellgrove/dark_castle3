@@ -25,7 +25,7 @@ def validate(active_gs, case, word_lst):
 		return False
 
 	# *** command errors ***
-	two_word_lst = ['take', 'eat', 'drop', 'wear', 'read', 'examine', 'open', 'close']
+	two_word_lst = ['take', 'eat', 'drop', 'wear', 'read', 'examine', 'open', 'close', 'drink']
 	prep_word_lst = []
 
 	if case == '2word':
@@ -35,7 +35,7 @@ def validate(active_gs, case, word_lst):
 		cmd_error = False # temp; don't think I need this even temporary ?
 
 		if word1 in two_word_lst: # temp until all 2word cases covered
-##			cmd_error = getattr(word2_obj, word1)(active_gs, 'validate') # for troubleshooting
+#			cmd_error = getattr(word2_obj, word1)(active_gs, 'validate') # for troubleshooting
 			try:
 				cmd_error = getattr(word2_obj, word1)(active_gs, 'validate')
 			except:

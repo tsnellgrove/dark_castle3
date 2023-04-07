@@ -183,7 +183,7 @@ Version 3.77 Goals
 	- INPROC: implement validate() modes
 		- DONE: implement try <cmd>... except... for specific list of word1 and with mode = 'validate'
 		- INPROC: update case = '2word' verb methods to use 'mode' and be called by validate()
-			- DONE: take(), eat(), drop(), wear(), read(), examine(), open(), close(),
+			- DONE: take(), eat(), drop(), wear(), read(), examine(), open(), close(), drink()
 				- DONE: update def
 					- DONE: update def to include mode = None as last attribute
 					- DONE: move doc_string under def
@@ -196,7 +196,7 @@ Version 3.77 Goals
 					- DONE: for lock(), & unlock(): in Surface error add mode & ret True
 				- DONE: in Invisible error method, add mode attribute to def
 				- DONE: in validate(), add verb to two_word_lst or prep_word_lst
-			- TBD: close(), drink(), push(), pull(), enter(), exit()
+			- TBD: push(), pull(), enter(), exit()
 		- TBD: update case = 'prep' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
@@ -206,6 +206,7 @@ Version 3.77 Goals
 		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
 		- TBD: this will break the 'go south from Entrance' warning... 
 			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south
+		- TBD: can I drop local Surface errors
 	- TBD: validate() doc_strings
 		- TBD: doc_string how validate() works
 		- TBD: doc_string about future 'silent_exe' for symetric creature commands
