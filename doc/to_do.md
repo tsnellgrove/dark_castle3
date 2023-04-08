@@ -183,7 +183,8 @@ Version 3.77 Goals
 	- INPROC: implement validate() modes
 		- DONE: implement try <cmd>... except... for specific list of word1 and with mode = 'validate'
 		- INPROC: update case = '2word' verb methods to use 'mode' and be called by validate()
-			- DONE: take(), eat(), drop(), wear(), read(), examine(), open(), close(), drink(), push()
+			- DONE: take(), eat(), drop(), wear(), read(), examine(), open(), close(), drink()
+			- DONE: push(), enter(), 
 				- DONE: update def
 					- DONE: update def to include mode = None as last attribute
 					- DONE: move doc_string under def
@@ -196,7 +197,10 @@ Version 3.77 Goals
 					- DONE: for lock(), & unlock(): in Surface error add mode & ret True
 				- DONE: in Invisible error method, add mode attribute to def
 				- DONE: in validate(), add verb to two_word_lst or prep_word_lst
-			- TBD: enter(), exit(), merge pull() methods in Switch, pull()
+				- DONE: in verb meth, if creature=None is defined, re-order mode=None
+			- TBD: exit(), merge pull() methods in Switch, pull()
+			- TBD: decide about whether to call Invisible error methods with optional mode attribute
+				- TBD: google default attributes in method extension; diff attributes in method extension
 			- TBD: test shelf w/ no local Surface error for open() or close()
 		- TBD: update case = 'prep' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
