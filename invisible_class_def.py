@@ -326,7 +326,7 @@ class Invisible(object):
 			return True
 		return False
 
-	def exit(self, active_gs):
+	def exit(self, active_gs, mode):
 		creature = active_gs.hero
 		if self.err_not_vis(creature, active_gs):
 			return True

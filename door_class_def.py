@@ -407,12 +407,11 @@ class Seat(Surface):
 		return obj.is_surface()
 	
 	# *** verb methods ***
-#	def sit(self, active_gs, creature = None):
 	def enter(self, active_gs, mode=None, creature=None):
 		""" Sits a creature in a Seat
 		"""
 
-		# destermine default vars
+		# destermine default attributes
 		if mode is None:
 			mode = 'std_exe'
 		if creature is None:
@@ -442,22 +441,27 @@ class Seat(Surface):
 			active_gs.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
 		return
 
-	def exit(self, active_gs, creature = None):
-		base_error = super(Seat, self).exit(active_gs)
+	def exit(self, active_gs, mode=None, creature=None):
 		""" Sits a creature in a Seat
 		"""
-		if base_error:
-			return
-		# destermine creature
+
+		# destermine default attributes
+		if mode is None:
+			mode = 'std_exe'
 		if creature is None:
 			creature = active_gs.hero
-		
-		if not creature.is_contained(active_gs):
-			active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
-			return		
-		if creature.is_contained(active_gs) and creature.get_contained_by(active_gs) != self:
-			active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
-			return
+
+		if mode == 'validate':
+			base_error = super(Seat, self).exit(active_gs, mode)
+			if base_error:
+				return True		
+			if not creature.is_contained(active_gs):
+				active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
+				return True
+			if creature.is_contained(active_gs) and creature.get_contained_by(active_gs) != self:
+				active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
+				return
+			return False
 
 		room = active_gs.map.get_obj_room(creature)
 		room.floor_lst_append(creature)
