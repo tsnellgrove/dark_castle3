@@ -34,7 +34,7 @@ class SwitchMixIn(object):
 	def trigger_type(self):
 		return self._trigger_type
 
-	# *** simple methods ***
+	# *** class identity methods ***
 	def is_switch(self):
 		return True
 
@@ -94,6 +94,10 @@ class LeverSwitch(SwitchMixIn, ViewOnly):
 		"""
 		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
 		SwitchMixIn.__init__(self, switch_state, def_switch_state, trigger_type)
+
+	# *** class identity methods ***
+	def is_leverswitch(self):
+		return True
 
 	# *** display methods ***
 	def has_cond(self, active_gs):

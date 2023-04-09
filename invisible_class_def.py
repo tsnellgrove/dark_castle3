@@ -54,6 +54,9 @@ class Invisible(object):
 	def is_switch(self):
 		return False
 
+	def is_leverswitch(self):
+		return False
+
 	def is_timer(self):
 		return False
 
