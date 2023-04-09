@@ -198,10 +198,12 @@ Version 3.77 Goals
 				- DONE: in Invisible error method, add mode attribute to def
 				- DONE: in validate(), add verb to two_word_lst or prep_word_lst
 				- DONE: in verb meth, if creature=None is defined, re-order mode=None
-			- TBD: merge pull() methods in Switch and fix 'pull button', 'push switch' errors
+			- CANCEL: merge pull() methods in Switch
+			- DONE: fix 'pull button', 'push switch' errors
 			- TBD: pull()
 			- TBD: decide about whether to call Invisible error methods with optional mode attribute
-				- TBD: google default attributes in method extension; diff attributes in method extension
+				- IDEA: google default attributes in method extension; diff attributes in method extension
+				- IDEA: thinking at scale, probably best NOT to declare optional attributes where not used
 			- TBD: test shelf w/ no local Surface error for open() or close()
 		- TBD: update case = 'prep' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
@@ -212,12 +214,15 @@ Version 3.77 Goals
 		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
 		- TBD: this will break the 'go south from Entrance' warning... 
 			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south
-		- TBD: can I drop local Surface errors?
 	- TBD: validate() doc_strings
 		- TBD: doc_string how validate() works
 		- TBD: doc_string about future 'silent_exe' for symetric creature commands
 		- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
 		- TBD: update Switch doc_string regarding where buttons reside
+		- TBD: Switch doc_string entry explaining goals
+			- IDEA: verb methods should live in switch_x obj and not need to know about each other
+			- IDEA: the SwitchMixIn class should not need to know about all sub-classes
+			- IDEA: thus, SpringSliderSwich.pull() and LeverSwitch.pull() over-rides are valid compromise
 
 - TBD: error sub-system enhancements
 	- TBD: interp() error tuning

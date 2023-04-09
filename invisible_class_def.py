@@ -54,6 +54,12 @@ class Invisible(object):
 	def is_switch(self):
 		return False
 
+	def is_buttonswitch(self):
+		return False
+
+	def is_springsliderswitch(self):
+		return False
+
 	def is_leverswitch(self):
 		return False
 
@@ -261,7 +267,7 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
-		if not self.is_switch():
+		if not self.is_buttonswitch():
 			active_gs.buffer(f"Pushing on the {self.full_name} has no effect.")
 			return True
 		return False
@@ -270,7 +276,7 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
-		if not self.is_switch():
+		if not self.is_springsliderswitch() and not self.is_leverswitch():
 			active_gs.buffer(f"Pulling on the {self.full_name} has no effect.")
 			return True
 		return False

@@ -48,6 +48,10 @@ class ButtonSwitch(SwitchMixIn, ViewOnly):
 		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
 		SwitchMixIn.__init__(self, switch_state, def_switch_state, trigger_type)
 
+	# *** class identity methods ***
+	def is_buttonswitch(self):
+		return True
+
 	# *** verb methods ***
 	def push(self, active_gs, mode=None):
 		""" Sets the switch state to 'pushed' until it is auto-reset in the auto_action.py module
@@ -73,6 +77,10 @@ class SpringSliderSwitch(ButtonSwitch):
 		""" SpringSliderSwitch class inherits from ButtonSwitch. It is a 3-state switch ('neutral', 'pushed', and 'pulled') that automatically springs back to 'neutral'.
 		"""
 		super().__init__(name, full_name, root_name, descript_key, writing, switch_state, def_switch_state, trigger_type)
+
+	# *** class identity methods ***
+	def is_springsliderswitch(self):
+		return True
 
 	# *** verb methods ***
 	def pull(self, active_gs):
