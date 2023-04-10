@@ -184,7 +184,7 @@ Version 3.77 Goals
 		- DONE: implement try <cmd>... except... for specific list of word1 and with mode = 'validate'
 		- INPROC: update case = '2word' verb methods to use 'mode' and be called by validate()
 			- DONE: take(), eat(), drop(), wear(), read(), examine(), open(), close(), drink()
-			- DONE: push(), enter(), exit()
+			- DONE: push(), enter(), exit(), pull()
 				- DONE: update def
 					- DONE: update def to include mode = None as last attribute
 					- DONE: move doc_string under def
@@ -200,10 +200,10 @@ Version 3.77 Goals
 				- DONE: in verb meth, if creature=None is defined, re-order mode=None
 			- CANCEL: merge pull() methods in Switch
 			- DONE: fix 'pull button', 'push switch' errors
-			- TBD: pull()
 			- TBD: decide about whether to call Invisible error methods with optional mode attribute
 				- IDEA: google default attributes in method extension; diff attributes in method extension
 				- IDEA: thinking at scale, probably best NOT to declare optional attributes where not used
+			- TBD: recode '2word' case in validate() with no word1 check
 			- TBD: test shelf w/ no local Surface error for open() or close()
 		- TBD: update case = 'prep' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
