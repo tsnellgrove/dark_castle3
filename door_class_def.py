@@ -376,21 +376,21 @@ class Surface(Container):
 		return 
 
 	# *** verb error methods ***
-	def open(self, active_gs, mode):
-		active_gs.buffer(f"How do you propose to 'open' the {self.full_name}?")
-		return True
+#	def open(self, active_gs, mode):
+#		active_gs.buffer(f"How do you propose to 'open' the {self.full_name}?")
+#		return True
 
-	def close(self, active_gs, mode):
-		active_gs.buffer(f"How do you propose to 'close' the {self.full_name}?")
-		return True
+#	def close(self, active_gs, mode):
+#		active_gs.buffer(f"How do you propose to 'close' the {self.full_name}?")
+#		return True
 
-	def lock(self, key_obj, active_gs):
-		active_gs.buffer(f"How do you propose to 'lock' the {self.full_name}?")
-		return
+#	def lock(self, key_obj, active_gs):
+#		active_gs.buffer(f"How do you propose to 'lock' the {self.full_name}?")
+#		return
 
-	def unlock(self, key_obj, active_gs):
-		active_gs.buffer(f"How do you propose to 'unlock' the {self.full_name}?")
-		return
+#	def unlock(self, key_obj, active_gs):
+#		active_gs.buffer(f"How do you propose to 'unlock' the {self.full_name}?")
+#		return
 
 class Seat(Surface):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst, max_obj):
