@@ -200,12 +200,20 @@ Version 3.77 Goals
 				- DONE: in verb meth, if creature=None is defined, re-order mode=None
 			- CANCEL: merge pull() methods in Switch
 			- DONE: fix 'pull button', 'push switch' errors
-			- DONE: decide about whether to call Invisible error methods with optional mode attribute
+			- INPROC: decide about whether to call Invisible error methods with optional mode attribute
 				- IDEA: google default attributes in method extension; diff attributes in method extension
 				- IDEA: thinking at scale, probably best NOT to declare optional attributes where not used
 				- DECISION: don't declare optional attributes that will not be use
-			- DONE: test shelf w/ no local Surface error for open() or close()
-			- TBD: remove mode from Invisible error calls & defs
+				- FINDING: can't remove mode... because validate calls Invisibl errors with mode for non verb methods
+				- IDEA: how about instead having 2 different methods: <verb> and <verb>_err
+				- IDEA: centralize all error coding to <verb>_err in Invisible and call from validate()
+				- IDEA: eliminates the need for mode (?) - or at least for passing 'validate' as a mode value
+				- TBD: decision on error merge approach
+			- FAILED: test shelf w/ no local Surface error for open() or close()
+			- INPROC: remove mode from Invisible error calls & defs
+				- DONE: take()
+				- TBD: eat(), drop(), wear(), read(), examine(), open(), close(), drink(), push(), enter(), exit(), pull()
+				- TBD: update mode add process w/ no Invisible mode attrib or call for prep
 			- TBD: recode '2word' case in validate() with no word1 check
 		- TBD: update case = 'prep' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
