@@ -208,12 +208,13 @@ Version 3.77 Goals
 				- IDEA: how about instead having 2 different methods: <verb> and <verb>_err
 				- IDEA: centralize all error coding to <verb>_err in Invisible and call from validate()
 				- IDEA: eliminates the need for mode (?) - or at least for passing 'validate' as a mode value
+				- TBD: check for values needed in method errors
 				- TBD: decision on error merge approach
 			- FAILED: test shelf w/ no local Surface error for open() or close()
-			- INPROC: remove mode from Invisible error calls & defs
-				- DONE: take()
-				- TBD: eat(), drop(), wear(), read(), examine(), open(), close(), drink(), push(), enter(), exit(), pull()
-				- TBD: update mode add process w/ no Invisible mode attrib or call for prep
+			- TBD: merge method errors with Invisible errors (?)
+				- TBD: take(), eat(), drop(), wear(), read(), examine(), open(), close(), drink(), push(), enter(), exit(), pull()
+				- TBD: update validate() add process based on updates
+				- TBD: determine needed doc_string updates
 			- TBD: recode '2word' case in validate() with no word1 check
 		- TBD: update case = 'prep' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
