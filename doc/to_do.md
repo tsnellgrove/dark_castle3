@@ -200,22 +200,23 @@ Version 3.77 Goals
 				- DONE: in verb meth, if creature=None is defined, re-order mode=None
 			- CANCEL: merge pull() methods in Switch
 			- DONE: fix 'pull button', 'push switch' errors
-			- INPROC: decide about whether to call Invisible error methods with optional mode attribute
+			- DONE: decide about whether to call Invisible error methods with optional mode attribute
 				- IDEA: google default attributes in method extension; diff attributes in method extension
 				- IDEA: thinking at scale, probably best NOT to declare optional attributes where not used
 				- DECISION: don't declare optional attributes that will not be use
-				- FINDING: can't remove mode... because validate calls Invisibl errors with mode for non verb methods
+				- FINDING: can't remove mode... validate() calls Invis errs w/ mode for non-vrb methods
 				- IDEA: how about instead having 2 different methods: <verb> and <verb>_err
 				- IDEA: centralize all error coding to <verb>_err in Invisible and call from validate()
-				- IDEA: eliminates the need for mode (?) - or at least for passing 'validate' as a mode value
-				- TBD: check for values needed in method errors
-				- TBD: decision on error merge approach
-			- FAILED: test shelf w/ no local Surface error for open() or close()
-			- TBD: merge method errors with Invisible errors (?)
-				- TBD: take(), eat(), drop(), wear(), read(), examine(), open(), close(), drink(), push(), enter(), exit(), pull()
+				- IDEA: eliminates the need for mode (?) or at least for passing 'validate' as a mode value
+				- DONE: check for values needed in method errors
+				- DONE: decision on error merge approach => Do It
+			- DONE: test shelf w/ no local Surface error for open() or close()
+			- DONE: recode '2word' case in validate() with no word1 check
+			- TBD: merge method errors with Invisible errors & order verb method response last (post do)
+				- TBD: take()
+				- TBD: eat(), drop(), wear(), read(), examine(), open(), close(), drink(), push(), enter(), exit(), pull()
 				- TBD: update validate() add process based on updates
 				- TBD: determine needed doc_string updates
-			- TBD: recode '2word' case in validate() with no word1 check
 		- TBD: update case = 'prep' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
