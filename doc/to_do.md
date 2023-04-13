@@ -221,6 +221,7 @@ Version 3.77 Goals
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
 		- TBD: make validate() random error dict local? (post move of 'try')
+		- TBD: maybe need a 'try' block around cmd_exe verb call just in case? (a 3rd error type)
 	- TBD: validate() testing
 		- TBD: validate should resolve get sword while in chair error
 		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
