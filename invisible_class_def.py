@@ -204,7 +204,8 @@ class Invisible(object):
 				return True
 		return False
 
-	def drop(self, active_gs, mode):
+#	def drop(self, active_gs, mode):
+	def drop_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
@@ -213,6 +214,11 @@ class Invisible(object):
 			return True
 		if not self.is_item():
 			active_gs.buffer(f"You can't even pick up the {self.full_name}... how could you possibly drop it??")
+			return True
+		if self.err_not_in_hand(creature, active_gs):
+			return True
+		if creature.is_contained(active_gs) and not creature.get_contained_by(active_gs).chk_has_capacity():
+			active_gs.buffer(f"There's no room on the {self.full_name} for another item.")
 			return True
 		return False
 
