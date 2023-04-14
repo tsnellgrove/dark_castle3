@@ -235,6 +235,7 @@ Version 3.77 Goals
 			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south
 		- TBD: update take_err() creature check
 	- TBD: validate() doc_strings
+		- TBD: update Invis err doc_string
 		- TBD: doc_string how validate() works
 		- TBD: doc_string about future 'silent_exe' for symetric creature commands
 		- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
