@@ -28,18 +28,18 @@ class Item(ViewOnly):
 			mode = 'std_exe'
 		creature = active_gs.hero
 		
-		if mode == 'validate':
-			base_error = super(Item, self).take(active_gs, mode)
-			if base_error:
-				return True
-			if creature.chk_in_hand(self):
-				active_gs.buffer("You're already holding the " + self.full_name)
-				return True
-			for obj in active_gs.get_room().floor_lst:
-				if obj.is_creature() and obj is not active_gs.hero and self in obj.get_vis_contain_lst(active_gs):
-					active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
-					return True
-			return False
+#		if mode == 'validate':
+#			base_error = super(Item, self).take(active_gs, mode)
+#			if base_error:
+#				return True
+#			if creature.chk_in_hand(self):
+#				active_gs.buffer("You're already holding the " + self.full_name)
+#				return True
+#			for obj in active_gs.get_room().floor_lst:
+#				if obj.is_creature() and obj is not active_gs.hero and self in obj.get_vis_contain_lst(active_gs):
+#					active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
+#					return True
+#			return False
 
 		active_gs.buffer("Taken")
 		if creature.chk_is_worn(self):

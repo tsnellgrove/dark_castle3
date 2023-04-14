@@ -212,9 +212,15 @@ Version 3.77 Goals
 				- DONE: decision on error merge approach => Do It
 			- DONE: test shelf w/ no local Surface error for open() or close()
 			- DONE: recode '2word' case in validate() with no word1 check
-			- TBD: merge method errors with Invisible errors & order verb method response last (post do)
-				- TBD: take()
-				- TBD: eat(), drop(), wear(), read(), examine(), open(), close(), drink(), push(), enter(), exit(), pull()
+			- INPROC: merge method errors with Invisible errors & order verb method response last (post do)
+				- DONE: take()
+					- DONE: update Invis def to _err
+					- DONE: confirm non verb method fencing
+					- DONE: copy verb meth errs to Invis err
+					- DONE: comment out verb meth errs
+					- DONE: update validate two_word_lst_2
+				- TBD: eat(), drop(), wear(), read(), examine(), open(), close(), drink()
+				- TBD: push(), enter(), exit(), pull()
 				- TBD: update validate() add process based on updates
 				- TBD: determine needed doc_string updates
 		- TBD: update case = 'prep' verb methods to use 'mode' and be called by validate()
@@ -227,6 +233,7 @@ Version 3.77 Goals
 		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
 		- TBD: this will break the 'go south from Entrance' warning... 
 			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south
+		- TBD: update take_err() creature check
 	- TBD: validate() doc_strings
 		- TBD: doc_string how validate() works
 		- TBD: doc_string about future 'silent_exe' for symetric creature commands

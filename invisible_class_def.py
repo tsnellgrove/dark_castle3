@@ -184,7 +184,8 @@ class Invisible(object):
 			return True
 		return False
 
-	def take(self, active_gs, mode):
+#	def take(self, active_gs, mode):
+	def take_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
@@ -194,6 +195,13 @@ class Invisible(object):
 		if not self.is_item():
 			active_gs.buffer(f"Just how do you intend to pick up a {self.full_name}?")
 			return True
+		if creature.chk_in_hand(self):
+			active_gs.buffer("You're already holding the " + self.full_name)
+			return True
+		for obj in active_gs.get_room().floor_lst:
+			if obj.is_creature() and obj is not active_gs.hero and self in obj.get_vis_contain_lst(active_gs):
+				active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
+				return True
 		return False
 
 	def drop(self, active_gs, mode):
