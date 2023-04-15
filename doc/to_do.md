@@ -213,13 +213,13 @@ Version 3.77 Goals
 			- DONE: test shelf w/ no local Surface error for open() or close()
 			- DONE: recode '2word' case in validate() with no word1 check
 			- INPROC: merge method errors with Invisible errors & order verb method response last (post do)
-				- DONE: take(), drop()
+				- DONE: take(), drop(), eat()
 					- DONE: update Invis def to _err
 					- DONE: confirm non verb method fencing
 					- DONE: copy verb meth errs to Invis err
 					- DONE: comment out verb meth errs
 					- DONE: update validate two_word_lst_2
-				- TBD: eat(), wear(), read(), examine(), open(), close(), drink()
+				- TBD: wear(), read(), examine(), open(), close(), drink()
 				- TBD: push(), enter(), exit(), pull()
 				- TBD: update validate() add process based on updates
 				- TBD: determine needed doc_string updates

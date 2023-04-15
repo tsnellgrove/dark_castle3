@@ -204,8 +204,8 @@ class Invisible(object):
 				return True
 		return False
 
-#	def drop(self, active_gs, mode):
-	def drop_err(self, active_gs):
+	def drop(self, active_gs, mode):
+#	def drop_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
@@ -240,12 +240,15 @@ class Invisible(object):
 			return True
 		return False
 
-	def eat(self, active_gs, mode):
+#	def eat(self, active_gs, mode):
+	def eat_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
 		if not self.is_food():
 			active_gs.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? Burt, if you keep this up you're going to give Adventurers a bad name!")
+			return True
+		if self.err_not_in_hand(creature, active_gs):
 			return True
 		return False
 

@@ -98,13 +98,13 @@ class Food(Item):
 			mode = 'std_exe'
 		creature = active_gs.hero
 
-		if mode == 'validate':
-			base_error = super(Food, self).eat(active_gs, mode)
-			if base_error:
-				return True
-			if self.err_not_in_hand(creature, active_gs):
-				return True
-			return False
+#		if mode == 'validate':
+#			base_error = super(Food, self).eat(active_gs, mode)
+#			if base_error:
+#				return True
+#			if self.err_not_in_hand(creature, active_gs):
+#				return True
+#			return False
 
 		creature.hand_lst_remove(self)
 		
