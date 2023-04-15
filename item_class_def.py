@@ -138,19 +138,19 @@ class Garment(Item):
 			mode = 'std_exe'
 		creature = active_gs.hero
 
-		if mode == 'validate':
-			base_error = super(Garment, self).wear(active_gs, mode)
-			if base_error:
-				return True
-			if self in creature.worn_lst:
-				active_gs.buffer(f"You're already wearing the {self.full_name}!")
-				return True
-			if self.err_not_in_hand(creature, active_gs):
-				return True
-			if creature.chk_type_worn(self):
-				active_gs.buffer(f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
-				return True
-			return False
+#		if mode == 'validate':
+#			base_error = super(Garment, self).wear(active_gs, mode)
+#			if base_error:
+#				return True
+#			if self in creature.worn_lst:
+#				active_gs.buffer(f"You're already wearing the {self.full_name}!")
+#				return True
+#			if self.err_not_in_hand(creature, active_gs):
+#				return True
+#			if creature.chk_type_worn(self):
+#				active_gs.buffer(f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
+#				return True
+#			return False
 		
 		creature.worn_lst_append(self)
 		creature.hand_lst_remove(self)

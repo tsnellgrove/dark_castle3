@@ -204,8 +204,8 @@ class Invisible(object):
 				return True
 		return False
 
-	def drop(self, active_gs, mode):
-#	def drop_err(self, active_gs):
+#	def drop(self, active_gs, mode):
+	def drop_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
@@ -252,12 +252,21 @@ class Invisible(object):
 			return True
 		return False
 
-	def wear(self, active_gs, wear):
+#	def wear(self, active_gs, wear):
+	def wear_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
 		if not self.is_garment():
 			active_gs.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
+			return True
+		if self in creature.worn_lst:
+			active_gs.buffer(f"You're already wearing the {self.full_name}!")
+			return True
+		if self.err_not_in_hand(creature, active_gs):
+			return True
+		if creature.chk_type_worn(self):
+			active_gs.buffer(f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
 			return True
 		return False
 
