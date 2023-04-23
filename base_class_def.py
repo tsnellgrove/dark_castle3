@@ -63,11 +63,11 @@ class Writing(Invisible):
 			mode = 'std_exe'
 		creature = active_gs.hero
 
-		if mode == 'validate':
-			base_error = super(Writing, self).read(active_gs, mode)
-			if base_error:
-				return True
-			return False
+#		if mode == 'validate':
+#			base_error = super(Writing, self).read(active_gs, mode)
+#			if base_error:
+#				return True
+#			return False
 
 		active_gs.buffer(self.get_descript_str(active_gs))
 		return
