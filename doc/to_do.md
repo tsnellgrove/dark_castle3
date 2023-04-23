@@ -130,6 +130,7 @@ Notes:
 Version 3.77 Goals
 - finish error message tuning by updating validate() and introducting verb method modes
 - finish tuning error subsystem
+- Add Debug Mode
 
 
 - INPROC: implement validate() pre-test
@@ -261,6 +262,11 @@ Version 3.77 Goals
 		- TBD: should "put key in moat" do more? what about "enter moat"
 		- TBD: specific put() error for "put suitcase in suitcase"
 
+- TBD: Debug Mode
+	- TBD: add debug_mode boolean in active_gs
+	- TBD: create 1word debug command ('debug_poke53281,0') that gives state and sets bool
+		- TBD: examample: "Debug Mode is now set to True"
+	- TBD: use debug mode to set error source pre-fixes and also use of 'try for error & cmd'
 
 
 
@@ -272,7 +278,9 @@ Version 3.77 Goals
 Version 3.7x Goals
 - Convert interactive objects to MixIn class architecture (enables future complex obj)
 - Text & UI updates
+- Auto-try unlock(), lock(), attack() with item in hand
 
+- TBD: auto-try 'tool verbs' with item in hand
 
 - INPROC: MixIn approach to door module classes
 	- DONE: new name for module with doors & containers (interactive obj; interactive.py)
