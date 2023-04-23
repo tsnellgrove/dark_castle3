@@ -170,7 +170,8 @@ class Invisible(object):
 			return True
 		return False
 
-	def examine(self, active_gs, mode):
+#	def examine(self, active_gs, mode):
+	def examine_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_not_vis(creature, active_gs):
 			return True

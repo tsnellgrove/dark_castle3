@@ -135,11 +135,11 @@ class ViewOnly(Writing):
 			mode = 'std_exe'
 		creature = active_gs.hero
 
-		if mode == 'validate':
-			base_error = super(ViewOnly, self).examine(active_gs, mode)
-			if base_error:
-				return True
-			return False
+#		if mode == 'validate':
+#			base_error = super(ViewOnly, self).examine(active_gs, mode)
+#			if base_error:
+#				return True
+#			return False
 
 		if self.get_title_str(active_gs) is not None:
 			active_gs.buffer(self.get_title_str(active_gs))
