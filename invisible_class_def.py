@@ -24,6 +24,12 @@ class Invisible(object):
 	def is_invisible(self):
 		return True
 
+	def is_writing(self):
+		return False
+
+	def is_viewonly(self):
+		return False
+
 	def is_item(self):
 		return False
 
@@ -183,6 +189,9 @@ class Invisible(object):
 		if self.err_not_in_reach(creature, active_gs):
 			return True
 		if self.err_wrt_not_in_reach(creature, active_gs):
+			return True
+		if not self.is_viewonly():
+			active_gs.buffer(f"Your mind grapples with the ineffable... it is almost in your grasp when suddenly, unbidden, your favorite 'You Mama' joke from the pub tramples like a raging rhino across the delicate neural fibers that comprise your working memory. The vision is lost - the {self.full_name} is simply beyond your ken.")
 			return True
 		return False
 

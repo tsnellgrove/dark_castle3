@@ -88,6 +88,9 @@ class ViewOnly(Writing):
 	# *** class identity methods ***
 	def is_writing(self):
 		return False
+	
+	def is_viewonly(self):
+		return True
 
 	# *** simple methods ***
 	def get_vis_contain_lst(self, active_gs):
