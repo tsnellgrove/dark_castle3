@@ -221,6 +221,7 @@ Version 3.77 Goals
 					- DONE: update validate two_word_lst_2
 				- TBD: open(), close(), drink()
 				- TBD: push(), enter(), exit(), pull()
+				- TBD: clean up comments
 				- TBD: update validate() add process based on updates
 				- TBD: determine needed doc_string updates
 		- TBD: update case = 'prep' verb methods to use 'mode' and be called by validate()
