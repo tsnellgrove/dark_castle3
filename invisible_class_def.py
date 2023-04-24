@@ -302,12 +302,21 @@ class Invisible(object):
 			return True
 		return False
 
-	def drink(self, active_gs, mode):
+#	def drink(self, active_gs, mode):
+	def drink_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
 		if not self.is_liquid():
 			active_gs.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")
+			return True
+		if not creature.hand_is_empty():
+			hand_item = creature.get_hand_item()
+		if (creature.hand_is_empty()) or (hand_item.is_container() == False):
+			active_gs.buffer(f"You don't seem to be holding a container of {self.full_name} in your hand.")
+			return True
+		if self not in hand_item.contain_lst:
+			active_gs.buffer(f"The container in your hand doesn't contain {self.full_name}.")
 			return True
 		return False
 
