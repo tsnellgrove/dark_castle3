@@ -253,12 +253,22 @@ class Invisible(object):
 			return True
 		return False
 	
-	def close(self, active_gs, mode):
+#	def close(self, active_gs, mode):
+	def close_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
 		if not self.is_door():
 			active_gs.buffer(f"The {self.full_name} cannot be closed.")
+			return True
+		if self.is_open is None:
+			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
+			return True
+		if self.is_open == False:
+			active_gs.buffer(f"The {self.full_name} is already closed.")
+			return True
+		if self.is_unlocked == False: # for Iron Portcullis
+			active_gs.buffer(f"The {self.full_name} is locked open.")
 			return True
 		return False
 
