@@ -233,12 +233,23 @@ class Invisible(object):
 			return True
 		return False
 
-	def open(self, active_gs, mode):
+#	def open(self, active_gs, mode):
+	def open_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
 		if not self.is_door():
 			active_gs.buffer(f"The {self.full_name} cannot be openned.")
+			return True
+		if self.is_open is None:
+			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
+			# active_gs.buffer(f"How do you propose to 'open' the {self.full_name}?")
+			return True
+		if self.is_open:
+			active_gs.buffer(f"The {self.full_name} is already open.")
+			return True
+		if self.is_unlocked == False:
+			active_gs.buffer(f"The {self.full_name} is locked.")
 			return True
 		return False
 	

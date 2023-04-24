@@ -214,13 +214,13 @@ Version 3.77 Goals
 			- DONE: test shelf w/ no local Surface error for open() or close()
 			- DONE: recode '2word' case in validate() with no word1 check
 			- INPROC: merge method errors with Invisible errors & order verb method response last (post do)
-				- DONE: take(), drop(), eat(), wear(), read(), examine(), 
+				- DONE: take(), drop(), eat(), wear(), read(), examine(), open(), 
 					- DONE: update Invis def to _err
 					- DONE: confirm non verb method fencing
 					- DONE: copy verb meth errs to Invis err
 					- DONE: comment out verb meth errs
 					- DONE: update validate two_word_lst_2
-				- TBD: open(), close(), drink()
+				- TBD: close(), drink()
 				- TBD: push(), enter(), exit(), pull()
 				- TBD: clean up comments
 				- TBD: update validate() add process based on updates
@@ -323,6 +323,7 @@ Version 3.7x Goals
 		- TBD: autogen text based on Seat obj.descript
 			- TBD: update other autogen text to key off descript?
 			- TBD: includes take() for unwear and drink()
+		- TBD: for open(), sort out if is_containter() text... bake in "{} is empty"
 
 - TBD: instantiate Creature Containers in actual game
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?

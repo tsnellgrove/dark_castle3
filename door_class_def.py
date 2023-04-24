@@ -114,21 +114,21 @@ class Door(ViewOnly):
 			mode = 'std_exe'
 		creature = active_gs.hero
 
-		if mode == 'validate':
-			base_error = super(Door, self).open(active_gs, mode)
-			if base_error:
-				return True
-			if self.is_open is None:
-				active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
-				# active_gs.buffer(f"How do you propose to 'open' the {self.full_name}?")
-				return True
-			if self.is_open:
-				active_gs.buffer(f"The {self.full_name} is already open.")
-				return True
-			if self.is_unlocked == False:
-				active_gs.buffer(f"The {self.full_name} is locked.")
-				return True
-			return False
+#		if mode == 'validate':
+#			base_error = super(Door, self).open(active_gs, mode)
+#			if base_error:
+#				return True
+#			if self.is_open is None:
+#				active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
+#				# active_gs.buffer(f"How do you propose to 'open' the {self.full_name}?")
+#				return True
+#			if self.is_open:
+#				active_gs.buffer(f"The {self.full_name} is already open.")
+#				return True
+#			if self.is_unlocked == False:
+#				active_gs.buffer(f"The {self.full_name} is locked.")
+#				return True
+#			return False
 
 		self.is_open = True
 
