@@ -27,7 +27,7 @@ def validate(active_gs, case, word_lst):
 	# *** command errors ***
 #	two_word_lst = ['push', 'enter', 'exit', 'pull']
 	prep_word_lst = []
-	two_word_lst_2 = ['take', 'drop', 'eat', 'wear', 'read', 'examine', 'open', 'close', 'drink']
+	two_word_lst_2 = ['take', 'drop', 'eat', 'wear', 'read', 'examine', 'open', 'close', 'drink', 'push']
 
 	if case == '2word':
 		word2_obj, word1 = word_lst

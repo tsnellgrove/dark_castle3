@@ -330,7 +330,8 @@ class Invisible(object):
 			return True
 		return False
 
-	def push(self, active_gs, mode):
+#	def push(self, active_gs, mode):
+	def push_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True

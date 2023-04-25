@@ -61,11 +61,11 @@ class ButtonSwitch(SwitchMixIn, ViewOnly):
 			mode = 'std_exe'
 		creature = active_gs.hero
 
-		if mode == 'validate':
-			base_error = super(ButtonSwitch, self).push(active_gs, mode)
-			if base_error:
-				return True
-			return False
+#		if mode == 'validate':
+#			base_error = super(ButtonSwitch, self).push(active_gs, mode)
+#			if base_error:
+#				return True
+#			return False
 
 		self.switch_state = 'pushed'
 
