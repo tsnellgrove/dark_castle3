@@ -402,14 +402,14 @@ class Seat(Surface):
 		if creature is None:
 			creature = active_gs.hero
 
-		if mode == 'validate':
-			base_error = super(Seat, self).enter(active_gs, mode)
-			if base_error:
-				return True
-			if self.is_surface() and len(self.contain_lst) >= self.max_obj:
-				active_gs.buffer(f"There's no room on the {self.full_name} to sit.")
-				return True
-			return False
+#		if mode == 'validate':
+#			base_error = super(Seat, self).enter(active_gs, mode)
+#			if base_error:
+#				return True
+#			if self.is_surface() and len(self.contain_lst) >= self.max_obj:
+#				active_gs.buffer(f"There's no room on the {self.full_name} to sit.")
+#				return True
+#			return False
 
 		room = active_gs.map.get_obj_room(creature)
 		room.floor_lst_remove(creature)
