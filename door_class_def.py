@@ -436,17 +436,17 @@ class Seat(Surface):
 		if creature is None:
 			creature = active_gs.hero
 
-		if mode == 'validate':
-			base_error = super(Seat, self).exit(active_gs, mode)
-			if base_error:
-				return True		
-			if not creature.is_contained(active_gs):
-				active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
-				return True
-			if creature.is_contained(active_gs) and creature.get_contained_by(active_gs) != self:
-				active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
-				return
-			return False
+#		if mode == 'validate':
+#			base_error = super(Seat, self).exit(active_gs, mode)
+#			if base_error:
+#				return True		
+#			if not creature.is_contained(active_gs):
+#				active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
+#				return True
+#			if creature.is_contained(active_gs) and creature.get_contained_by(active_gs) != self:
+#				active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
+#				return # add True
+#			return False
 
 		room = active_gs.map.get_obj_room(creature)
 		room.floor_lst_append(creature)

@@ -407,7 +407,8 @@ class Invisible(object):
 			return True
 		return False
 
-	def exit(self, active_gs, mode):
+#	def exit(self, active_gs, mode):
+	def exit_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_not_vis(creature, active_gs):
 			return True
@@ -424,6 +425,12 @@ class Invisible(object):
 			return True
 		if not self.is_seat():
 			active_gs.buffer(f"You can't use the 'exit' command on the {self.full_name}.")
+			return True
+		if not creature.is_contained(active_gs):
+			active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
+			return True
+		if creature.is_contained(active_gs) and creature.get_contained_by(active_gs) != self:
+			active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
 			return True
 		return False
 
