@@ -91,11 +91,11 @@ class SpringSliderSwitch(ButtonSwitch):
 			mode = 'std_exe'
 		creature = active_gs.hero
 
-		if mode == 'validate':
-			base_error = super(SpringSliderSwitch, self).pull(active_gs, mode)
-			if base_error:
-				return True
-			return False
+#		if mode == 'validate':
+#			base_error = super(SpringSliderSwitch, self).pull(active_gs, mode)
+#			if base_error:
+#				return True
+#			return False
 
 		self.switch_state = 'pulled'
 
@@ -132,18 +132,18 @@ class LeverSwitch(SwitchMixIn, ViewOnly):
 			mode = 'std_exe'
 		creature = active_gs.hero
 
-		if mode == 'validate':
-			base_error = super(LeverSwitch, self).pull(active_gs, mode)
-			if base_error:
-				return True
-			return False
+#		if mode == 'validate':
+#			base_error = super(LeverSwitch, self).pull(active_gs, mode)
+#			if base_error:
+#				return True
+#			return False
 
 		if self.switch_state == 'down':
 			self.switch_state = 'up'
 		else:
 			self.switch_state = 'down'
 			
-		active_gs.buffer("Pulled.")
+		active_gs.buffer(f"Pulled. The {self.full_name} is now {self.switch_state}.")
 		return 
 
 
