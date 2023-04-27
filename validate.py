@@ -27,7 +27,7 @@ def validate(active_gs, case, word_lst):
 	# *** command errors ***
 #	two_word_lst = []
 	prep_word_lst = []
-	two_word_lst_2 = ['take', 'drop', 'eat', 'wear', 'read', 'examine', 'open', 'close', 'drink', 'push', 'enter', 'exit', 'pull']
+##	two_word_lst_2 = ['take', 'drop', 'eat', 'wear', 'read', 'examine', 'open', 'close', 'drink', 'push', 'enter', 'exit', 'pull']
 
 	if case == '2word':
 		word2_obj, word1 = word_lst
@@ -36,18 +36,23 @@ def validate(active_gs, case, word_lst):
 #		cmd_error = False # temp; don't think I need this even temporary ?
 #		if word1 in two_word_lst: # temp until all 2word cases covered
 
-		if word1 in two_word_lst_2:
+##		if word1 in two_word_lst_2:
 #			err_word = word1 + '_err'
-			cmd_error = getattr(word2_obj, word1 + '_err')(active_gs)
-			return not cmd_error
-
-##		cmd_error = getattr(word2_obj, word1)(active_gs, 'validate') # for troubleshooting
 		try:
-			cmd_error = getattr(word2_obj, word1)(active_gs, 'validate')
+			cmd_error = getattr(word2_obj, word1 + '_err')(active_gs)
 		except:
 			cmd_error = True
 			active_gs.buffer(rand_error())
 		return not cmd_error
+		
+
+##		cmd_error = getattr(word2_obj, word1)(active_gs, 'validate') # for troubleshooting
+##		try:
+##			cmd_error = getattr(word2_obj, word1)(active_gs, 'validate')
+##		except:
+##			cmd_error = True
+##			active_gs.buffer(rand_error())
+##		return not cmd_error
 
 	if case == 'prep':
 		dirobj_obj, word1, noun_obj = word_lst

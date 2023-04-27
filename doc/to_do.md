@@ -221,8 +221,8 @@ Version 3.77 Goals
 					- DONE: copy verb meth errs to Invis err
 					- DONE: comment out verb meth errs
 					- DONE: update validate two_word_lst_2
+				- DONE: update validate() add process based on updates
 				- TBD: clean up comments
-				- TBD: update validate() add process based on updates
 				- TBD: determine needed doc_string updates
 		- TBD: update case = 'prep' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
@@ -648,6 +648,7 @@ Version 3.81 Goals
 - TBD: list of 'contained' internal_switches in MachMixIn attributes?
 	- NOTE: (i.e. add to scope and remove levers & button from features?)
 	- NOTE: [this is a good idea but hold off until at least one more control_panel type machine gets created]
+- TBD: broaden hedgehog response to interacting with sword (e.g. "pull sword" should trigger)
 
 
 ##########################
