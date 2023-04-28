@@ -223,8 +223,8 @@ Version 3.77 Goals
 					- DONE: update validate two_word_lst_2
 				- DONE: update validate() add process based on updates
 				- DONE: clean up comments
-		- TBD: update case = 'prep' verb methods to use 'mode'; call *_err() from validate()
-			- TBD: updated validate() 'if word1 in prep_lst:'
+		- INPROC: update case = 'prep' verb methods to use 'mode'; call *_err() from validate()
+			- DONE: updated validate() 'if word1 in prep_lst:'
 			- TBD: lock()
 				- DONE: update def to include mode = None as last attribute
 				- DONE: move doc_string under def

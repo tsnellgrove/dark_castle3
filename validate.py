@@ -57,6 +57,14 @@ def validate(active_gs, case, word_lst):
 	if case == 'prep':
 		dirobj_obj, word1, noun_obj = word_lst
 		room = active_gs.get_room()
+		if word1 in prep_word_lst:
+			try:
+				cmd_error = getattr(dirobj_obj, word1 + '_err')(noun_obj, active_gs)
+			except:
+				cmd_error = True
+				active_gs.buffer(rand_error())
+			return not cmd_error
+
 
 	return True
 
