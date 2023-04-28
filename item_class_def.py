@@ -23,24 +23,10 @@ class Item(ViewOnly):
 	def take(self, active_gs, mode=None):
 		""" Takes an object from either the room or from Burt's inventory and places it into Burt's hand
 		"""
-
 		if mode is None:
 			mode = 'std_exe'
 		creature = active_gs.hero
 		
-#		if mode == 'validate':
-#			base_error = super(Item, self).take(active_gs, mode)
-#			if base_error:
-#				return True
-#			if creature.chk_in_hand(self):
-#				active_gs.buffer("You're already holding the " + self.full_name)
-#				return True
-#			for obj in active_gs.get_room().floor_lst:
-#				if obj.is_creature() and obj is not active_gs.hero and self in obj.get_vis_contain_lst(active_gs):
-#					active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
-#					return True
-#			return False
-
 		active_gs.buffer("Taken")
 		if creature.chk_is_worn(self):
 			active_gs.buffer(f"You are no longer wearing the {self.full_name}.")
@@ -53,21 +39,9 @@ class Item(ViewOnly):
 	def drop(self, active_gs, mode=None):
 		""" Drops an object from Burt's hand to the floor of the room.
 		"""
-
 		if mode is None:
 			mode = 'std_exe'
 		creature = active_gs.hero
-
-#		if mode == 'validate':
-#			base_error = super(Item, self).drop(active_gs, mode)
-#			if base_error:
-#				return True	
-#			if self.err_not_in_hand(creature, active_gs):
-#				return True
-#			if creature.is_contained(active_gs) and not creature.get_contained_by(active_gs).chk_has_capacity():
-#				active_gs.buffer(f"There's no room on the {self.full_name} for another item.")
-#				return True
-#			return False
 
 		creature.hand_lst_remove(self)
 		if creature.is_contained(active_gs):
@@ -93,18 +67,9 @@ class Food(Item):
 	def eat(self, active_gs, mode=None):
 		""" Removes the Food object from the game and provides a description of how the food tasted.
 		"""
-
 		if mode is None:
 			mode = 'std_exe'
 		creature = active_gs.hero
-
-#		if mode == 'validate':
-#			base_error = super(Food, self).eat(active_gs, mode)
-#			if base_error:
-#				return True
-#			if self.err_not_in_hand(creature, active_gs):
-#				return True
-#			return False
 
 		creature.hand_lst_remove(self)
 		
@@ -133,24 +98,9 @@ class Garment(Item):
 	def wear(self, active_gs, mode=None):
 		""" Places a garment in a creature's worn inventory and provides a description of any effects that result.
 		"""
-
 		if mode is None:
 			mode = 'std_exe'
 		creature = active_gs.hero
-
-#		if mode == 'validate':
-#			base_error = super(Garment, self).wear(active_gs, mode)
-#			if base_error:
-#				return True
-#			if self in creature.worn_lst:
-#				active_gs.buffer(f"You're already wearing the {self.full_name}!")
-#				return True
-#			if self.err_not_in_hand(creature, active_gs):
-#				return True
-#			if creature.chk_type_worn(self):
-#				active_gs.buffer(f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
-#				return True
-#			return False
 		
 		creature.worn_lst_append(self)
 		creature.hand_lst_remove(self)

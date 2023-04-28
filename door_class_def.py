@@ -109,26 +109,9 @@ class Door(ViewOnly):
 	def open(self, active_gs, mode=None):
 		""" Opens a Door object.
 		"""
-
 		if mode is None:
 			mode = 'std_exe'
 		creature = active_gs.hero
-
-#		if mode == 'validate':
-#			base_error = super(Door, self).open(active_gs, mode)
-#			if base_error:
-#				return True
-#			if self.is_open is None:
-#				active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
-#				# active_gs.buffer(f"How do you propose to 'open' the {self.full_name}?")
-#				return True
-#			if self.is_open:
-#				active_gs.buffer(f"The {self.full_name} is already open.")
-#				return True
-#			if self.is_unlocked == False:
-#				active_gs.buffer(f"The {self.full_name} is locked.")
-#				return True
-#			return False
 
 		self.is_open = True
 
@@ -141,28 +124,13 @@ class Door(ViewOnly):
 		active_gs.buff_cr()
 		return
 
+
 	def close(self, active_gs, mode=None):
 		""" Closes a Door object.
 		"""
-
 		if mode is None:
 			mode = 'std_exe'
 		creature = active_gs.hero
-
-#		if mode == 'validate':
-#			base_error = super(Door, self).close(active_gs, mode)
-#			if base_error:
-#				return True
-#			if self.is_open is None:
-#				active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
-#				return True
-#			if self.is_open == False:
-#				active_gs.buffer(f"The {self.full_name} is already closed.")
-#				return True
-#			if self.is_unlocked == False: # for Iron Portcullis
-#				active_gs.buffer(f"The {self.full_name} is locked open.")
-#				return True
-#			return False
 
 		active_gs.buffer("Closed") # is_open == True, is_unlocked == True
 
@@ -395,21 +363,11 @@ class Seat(Surface):
 	def enter(self, active_gs, mode=None, creature=None):
 		""" Sits a creature in a Seat
 		"""
-
 		# destermine default attributes
 		if mode is None:
 			mode = 'std_exe'
 		if creature is None:
 			creature = active_gs.hero
-
-#		if mode == 'validate':
-#			base_error = super(Seat, self).enter(active_gs, mode)
-#			if base_error:
-#				return True
-#			if self.is_surface() and len(self.contain_lst) >= self.max_obj:
-#				active_gs.buffer(f"There's no room on the {self.full_name} to sit.")
-#				return True
-#			return False
 
 		room = active_gs.map.get_obj_room(creature)
 		room.floor_lst_remove(creature)
@@ -426,27 +384,15 @@ class Seat(Surface):
 			active_gs.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
 		return
 
+
 	def exit(self, active_gs, mode=None, creature=None):
 		""" Sits a creature in a Seat
 		"""
-
 		# destermine default attributes
 		if mode is None:
 			mode = 'std_exe'
 		if creature is None:
 			creature = active_gs.hero
-
-#		if mode == 'validate':
-#			base_error = super(Seat, self).exit(active_gs, mode)
-#			if base_error:
-#				return True		
-#			if not creature.is_contained(active_gs):
-#				active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
-#				return True
-#			if creature.is_contained(active_gs) and creature.get_contained_by(active_gs) != self:
-#				active_gs.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
-#				return # add True
-#			return False
 
 		room = active_gs.map.get_obj_room(creature)
 		room.floor_lst_append(creature)

@@ -160,7 +160,6 @@ class Invisible(object):
 		return False
 
 	# *** verb error methods ***
-#	def read(self, active_gs, mode):
 	def read_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_wrt_not_vis(creature, active_gs):
@@ -176,7 +175,6 @@ class Invisible(object):
 			return True
 		return False
 
-#	def examine(self, active_gs, mode):
 	def examine_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_not_vis(creature, active_gs):
@@ -195,7 +193,6 @@ class Invisible(object):
 			return True
 		return False
 
-#	def take(self, active_gs, mode):
 	def take_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -215,7 +212,6 @@ class Invisible(object):
 				return True
 		return False
 
-#	def drop(self, active_gs, mode):
 	def drop_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -233,7 +229,6 @@ class Invisible(object):
 			return True
 		return False
 
-#	def open(self, active_gs, mode):
 	def open_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -253,7 +248,6 @@ class Invisible(object):
 			return True
 		return False
 	
-#	def close(self, active_gs, mode):
 	def close_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -272,7 +266,6 @@ class Invisible(object):
 			return True
 		return False
 
-#	def eat(self, active_gs, mode):
 	def eat_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -284,7 +277,6 @@ class Invisible(object):
 			return True
 		return False
 
-#	def wear(self, active_gs, wear):
 	def wear_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -302,7 +294,6 @@ class Invisible(object):
 			return True
 		return False
 
-#	def drink(self, active_gs, mode):
 	def drink_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -330,7 +321,6 @@ class Invisible(object):
 			return True
 		return False
 
-#	def push(self, active_gs, mode):
 	def push_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -340,7 +330,6 @@ class Invisible(object):
 			return True
 		return False
 
-#	def pull(self, active_gs, mode):
 	def pull_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -392,7 +381,6 @@ class Invisible(object):
 			return True
 		return False
 
-#	def enter(self, active_gs, mode):
 	def enter_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -408,7 +396,6 @@ class Invisible(object):
 			return True
 		return False
 
-#	def exit(self, active_gs, mode):
 	def exit_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_not_vis(creature, active_gs):

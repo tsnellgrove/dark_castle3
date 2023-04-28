@@ -23,27 +23,10 @@ class Liquid(ViewOnly):
 	def drink(self, active_gs, mode=None):
 		""" Consumes a liquid if it is in a Container that Burt is holding in his hand.
 		"""
-
 		if mode is None:
 			mode = 'std_exe'
 		creature = active_gs.hero
 
-#		if mode == 'validate':
-#			base_error = super(Liquid, self).drink(active_gs, mode)
-#			if base_error:
-#				return True
-#			if not creature.hand_is_empty():
-#				hand_item = creature.get_hand_item()
-#			if (creature.hand_is_empty()) or (hand_item.is_container() == False):
-#				active_gs.buffer(f"You don't seem to be holding a container of {self.full_name} in your hand.")
-#				return True
-#			if self not in hand_item.contain_lst:
-#				active_gs.buffer(f"The container in your hand doesn't contain {self.full_name}.")
-#				return True
-#			return False
-
-#		hand_item = creature.get_hand_item()
-#		hand_item.contain_lst.remove(self)
 		creature.get_hand_item().contain_lst.remove(self)
 
 		active_gs.buffer("Drunk.")

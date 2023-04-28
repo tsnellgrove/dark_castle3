@@ -222,7 +222,7 @@ Version 3.77 Goals
 					- DONE: comment out verb meth errs
 					- DONE: update validate two_word_lst_2
 				- DONE: update validate() add process based on updates
-				- TBD: clean up comments
+				- DONE: clean up comments
 				- TBD: determine needed doc_string updates
 		- TBD: update case = 'prep' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
