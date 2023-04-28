@@ -311,16 +311,6 @@ class Invisible(object):
 			return True
 		return False
 
-	def go(self, dir, active_gs):
-		creature = active_gs.hero
-		if dir not in ['north', 'south', 'east', 'west']:
-			active_gs.buffer(f"'{dir}' is not a valid direction that you can go in.")
-			return True
-		if creature.is_contained(active_gs):
-			active_gs.buffer(f"You'll have to exit the {creature.get_contained_by(active_gs).full_name} to attempt that.")
-			return True
-		return False
-
 	def push_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -336,48 +326,6 @@ class Invisible(object):
 			return True
 		if not self.is_springsliderswitch() and not self.is_leverswitch():
 			active_gs.buffer(f"Pulling on the {self.full_name} has no effect.")
-			return True
-		return False
-
-	def lock(self, key_obj, active_gs):
-		creature = active_gs.hero
-		if self.err_prep_std(key_obj, creature, active_gs):
-			return True
-		if not self.is_door():
-			active_gs.buffer(f"The {self.full_name} cannot be locked.")
-			return True
-		if key_obj.is_switch():
-			active_gs.buffer(f"You'll need to be more specific about what you want to do with the {key_obj.full_name}.")
-			return True
-		if not key_obj.is_item():
-			active_gs.buffer(f"And just how do you intend to lock a {self.full_name} with a {key_obj.full_name}??")
-			return True
-		return False
-
-	def unlock(self, key_obj, active_gs):
-		creature = active_gs.hero
-		if self.err_prep_std(key_obj, creature, active_gs):
-			return True
-		if not self.is_door():
-			active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
-			return True
-		if key_obj.is_switch():
-			active_gs.buffer(f"You'll need to be more specific about what you want to do with the {key_obj.full_name}.")
-			return True
-		if not key_obj.is_item():
-			active_gs.buffer(f"And just how do you intend to unlock a {self.full_name} with a {key_obj.full_name}??")
-			return True
-		return False
-
-	def put(self, obj, active_gs):
-		creature = active_gs.hero
-		if self.err_prep_std(obj, creature, active_gs):
-			return True
-		if not obj.is_item():
-			active_gs.buffer(f"You can't even pick up the {obj.full_name}... how could you possibly put it somewhere?")
-			return True
-		if not self.is_container():
-			active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
 			return True
 		return False
 
@@ -422,6 +370,49 @@ class Invisible(object):
 			return True
 		return False
 
+
+	def lock(self, key_obj, active_gs):
+		creature = active_gs.hero
+		if self.err_prep_std(key_obj, creature, active_gs):
+			return True
+		if not self.is_door():
+			active_gs.buffer(f"The {self.full_name} cannot be locked.")
+			return True
+		if key_obj.is_switch():
+			active_gs.buffer(f"You'll need to be more specific about what you want to do with the {key_obj.full_name}.")
+			return True
+		if not key_obj.is_item():
+			active_gs.buffer(f"And just how do you intend to lock a {self.full_name} with a {key_obj.full_name}??")
+			return True
+		return False
+
+	def unlock(self, key_obj, active_gs):
+		creature = active_gs.hero
+		if self.err_prep_std(key_obj, creature, active_gs):
+			return True
+		if not self.is_door():
+			active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
+			return True
+		if key_obj.is_switch():
+			active_gs.buffer(f"You'll need to be more specific about what you want to do with the {key_obj.full_name}.")
+			return True
+		if not key_obj.is_item():
+			active_gs.buffer(f"And just how do you intend to unlock a {self.full_name} with a {key_obj.full_name}??")
+			return True
+		return False
+
+	def put(self, obj, active_gs):
+		creature = active_gs.hero
+		if self.err_prep_std(obj, creature, active_gs):
+			return True
+		if not obj.is_item():
+			active_gs.buffer(f"You can't even pick up the {obj.full_name}... how could you possibly put it somewhere?")
+			return True
+		if not self.is_container():
+			active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
+			return True
+		return False
+
 	def show(self, obj, active_gs):
 		creature = active_gs.hero
 		if self.err_prep_std(obj, creature, active_gs):
@@ -451,6 +442,18 @@ class Invisible(object):
 			active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
 			return True
 		return False
+
+
+	def go(self, dir, active_gs):
+		creature = active_gs.hero
+		if dir not in ['north', 'south', 'east', 'west']:
+			active_gs.buffer(f"'{dir}' is not a valid direction that you can go in.")
+			return True
+		if creature.is_contained(active_gs):
+			active_gs.buffer(f"You'll have to exit the {creature.get_contained_by(active_gs).full_name} to attempt that.")
+			return True
+		return False
+
 
 	# *** obj representation def ***
 	def __repr__(self):

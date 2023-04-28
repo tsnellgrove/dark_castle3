@@ -213,7 +213,7 @@ Version 3.77 Goals
 				- DONE: decision on error merge approach => Do It
 			- DONE: test shelf w/ no local Surface error for open() or close()
 			- DONE: recode '2word' case in validate() with no word1 check
-			- INPROC: merge method errors with Invisible errors & order verb method response last (post do)
+			- DONE: merge method errors with Invisible errors & order verb method response last (post do)
 				- DONE: take(), drop(), eat(), wear(), read(), examine(), open(), close(), drink()
 				- DONE: push(), enter(), exit(), pull()
 					- DONE: update Invis def to _err
@@ -223,8 +223,21 @@ Version 3.77 Goals
 					- DONE: update validate two_word_lst_2
 				- DONE: update validate() add process based on updates
 				- DONE: clean up comments
-				- TBD: determine needed doc_string updates
-		- TBD: update case = 'prep' verb methods to use 'mode' and be called by validate()
+		- TBD: update case = 'prep' verb methods to use 'mode'; call *_err() from validate()
+			- TBD: updated validate() 'if word1 in prep_lst:'
+			- TBD: lock()
+				- DONE: update def to include mode = None as last attribute
+				- DONE: move doc_string under def
+				- DONE: below doc_string add: if mode is None: mode = 'std_exe'
+				- DONE: move creature attribute assignment to below 'if mode is None: '
+				- DONE: return True on errors, return False at end of method errors
+				- DONE: for lock(), & unlock(): in Surface error add mode & ret True (???)
+				- DONE: update Invis def to _err
+				- DONE: confirm non verb method fencing
+				- DONE: copy verb meth errs to Invis err
+				- DONE: comment out verb meth errs
+				- DONE: update validate pre_lst
+			- TBD: unlock(), put(), show(), give(), attack()
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
 		- TBD: make validate() random error dict local? (post move of 'try')
@@ -236,6 +249,7 @@ Version 3.77 Goals
 			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south
 		- TBD: update take_err() creature check
 	- TBD: validate() doc_strings
+		- TBD: determine needed doc_string updates
 		- TBD: update Invis err doc_string
 		- TBD: doc_string how validate() works
 		- TBD: doc_string about future 'silent_exe' for symetric creature commands
