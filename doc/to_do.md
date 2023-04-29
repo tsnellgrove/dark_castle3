@@ -225,13 +225,12 @@ Version 3.77 Goals
 				- DONE: clean up comments
 		- INPROC: update case = 'prep' verb methods to use 'mode'; call *_err() from validate()
 			- DONE: updated validate() 'if word1 in prep_lst:'
-			- TBD: lock()
+			- DONE: lock()
 				- DONE: update def to include mode = None as last attribute
-				- DONE: move doc_string under def
+				- DONE: comment out base_err refs
 				- DONE: below doc_string add: if mode is None: mode = 'std_exe'
 				- DONE: move creature attribute assignment to below 'if mode is None: '
 				- DONE: return True on errors, return False at end of method errors
-				- DONE: for lock(), & unlock(): in Surface error add mode & ret True (???)
 				- DONE: update Invis def to _err
 				- DONE: confirm non verb method fencing
 				- DONE: copy verb meth errs to Invis err

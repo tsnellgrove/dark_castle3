@@ -138,36 +138,19 @@ class Door(ViewOnly):
 		return
 
 
-	def lock(self, key_obj, active_gs):
-		base_error = super(Door, self).lock(key_obj, active_gs)
+	def lock(self, key_obj, active_gs, mode=None):
+#		base_error = super(Door, self).lock(key_obj, active_gs)
 		""" Locks a Door object.
 		"""
-		if base_error:
-			return
+		if mode is None:
+			mode = 'std_exe'
 		creature = active_gs.hero
-		if self.is_open is None:
-			active_gs.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
-			return 
-		if key_obj.err_not_in_hand(creature, active_gs):
-			return
-		if key_obj != self.key and key_obj.root_name != 'key':
-			active_gs.buffer(f"You can't lock the {self.full_name} with the {key_obj.full_name}.")
-			return 
-		if self.is_unlocked is None:
-			active_gs.buffer(f"The {self.full_name} does not appear to have a lock.")
-			return 
-		if self.key is None:
-			active_gs.buffer(f"You don't see a keyhole in the {self.full_name}.")
-			return
-		if self.is_open == True:
-			active_gs.buffer("You can't lock or unlock something that's open.")
-			return
-		if key_obj != self.key and key_obj.root_name == 'key':
-			active_gs.buffer("You aren't holding the correct key.")
-			return 
-		if self.is_unlocked == False:
-			active_gs.buffer(f"The {self.full_name} is already locked.")
-			return 
+
+#		if base_error:
+#			return
+#		creature = active_gs.hero
+
+
 
 		active_gs.buffer("Locked") # correct key in hand, is_open == False, is_unlocked == True
 
