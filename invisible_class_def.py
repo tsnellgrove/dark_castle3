@@ -371,7 +371,6 @@ class Invisible(object):
 		return False
 
 
-#	def lock(self, key_obj, active_gs):
 	def lock_err(self, key_obj, active_gs):
 		creature = active_gs.hero
 		if self.err_prep_std(key_obj, creature, active_gs):
@@ -385,7 +384,6 @@ class Invisible(object):
 		if not key_obj.is_item():
 			active_gs.buffer(f"And just how do you intend to lock a {self.full_name} with a {key_obj.full_name}??")
 			return True
-
 		if self.is_open is None:
 			active_gs.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
 			return True
@@ -409,7 +407,6 @@ class Invisible(object):
 		if self.is_unlocked == False:
 			active_gs.buffer(f"The {self.full_name} is already locked.")
 			return True
-
 		return False
 
 	def unlock(self, key_obj, active_gs):

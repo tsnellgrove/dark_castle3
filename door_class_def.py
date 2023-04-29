@@ -139,18 +139,11 @@ class Door(ViewOnly):
 
 
 	def lock(self, key_obj, active_gs, mode=None):
-#		base_error = super(Door, self).lock(key_obj, active_gs)
 		""" Locks a Door object.
 		"""
 		if mode is None:
 			mode = 'std_exe'
 		creature = active_gs.hero
-
-#		if base_error:
-#			return
-#		creature = active_gs.hero
-
-
 
 		active_gs.buffer("Locked") # correct key in hand, is_open == False, is_unlocked == True
 
