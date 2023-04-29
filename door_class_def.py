@@ -69,22 +69,17 @@ class Door(ViewOnly):
 		return 
 
 	# *** verb methods ***
-#	def unlock(self, key_obj, active_gs):
 	def unlock(self, key_obj, active_gs, mode=None):
-#		base_error = super(Door, self).unlock(key_obj, active_gs)
 		""" Unlocks a Door object.
 		"""
-#		if base_error:
-#			return
 		if mode is None:
 			mode = 'std_exe'
 		creature = active_gs.hero
 
-		active_gs.buffer("Unlocked") # correct key in hand, is_open == False, is_unlocked == False
+		active_gs.buffer("Unlocked")
 
 		self.is_unlocked = True
 		return
-
 
 	def open(self, active_gs, mode=None):
 		""" Opens a Door object.
@@ -112,7 +107,7 @@ class Door(ViewOnly):
 			mode = 'std_exe'
 		creature = active_gs.hero
 
-		active_gs.buffer("Closed") # is_open == True, is_unlocked == True
+		active_gs.buffer("Closed")
 
 		self.is_open = False
 		return
@@ -125,7 +120,7 @@ class Door(ViewOnly):
 			mode = 'std_exe'
 		creature = active_gs.hero
 
-		active_gs.buffer("Locked") # correct key in hand, is_open == False, is_unlocked == True
+		active_gs.buffer("Locked")
 
 		self.is_unlocked = False
 		return
