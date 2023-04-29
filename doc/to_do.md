@@ -225,18 +225,17 @@ Version 3.77 Goals
 				- DONE: clean up comments
 		- INPROC: update case = 'prep' verb methods to use 'mode'; call *_err() from validate()
 			- DONE: updated validate() 'if word1 in prep_lst:'
-			- DONE: lock()
-				- DONE: update def to include mode = None as last attribute
+			- DONE: lock(), unlock()
+				- DONE: update def to include mode=None as last attribute
 				- DONE: comment out base_err refs
 				- DONE: below doc_string add: if mode is None: mode = 'std_exe'
 				- DONE: move creature attribute assignment to below 'if mode is None: '
-				- DONE: return True on errors, return False at end of method errors
+				- DONE: return True on  verb method errors
 				- DONE: update Invis def to _err
 				- DONE: confirm non verb method fencing
-				- DONE: copy verb meth errs to Invis err
-				- DONE: comment out verb meth errs
+				- DONE: cut-paste verb meth errs to Invis err
 				- DONE: update validate pre_lst
-			- TBD: unlock(), put(), show(), give(), attack()
+			- TBD: put(), show(), give(), attack()
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
 		- TBD: make validate() random error dict local? (post move of 'try')
