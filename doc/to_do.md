@@ -228,7 +228,7 @@ Version 3.77 Goals
 			- DONE: lock(), unlock(), put(), 
 				- DONE: update def to include mode=None as last attribute
 				- DONE: comment out base_err refs
-				- DONE: below doc_string add: if mode is None: mode = 'std_exe'
+				- DONE: below doc_string add: if mode is None: mode = 'std'
 				- DONE: move creature attribute assignment to below 'if mode is None: '
 				- DONE: return True on  verb method errors
 				- DONE: update Invis def to _err
@@ -236,6 +236,7 @@ Version 3.77 Goals
 				- DONE: cut-paste verb meth errs to Invis err
 				- DONE: update validate pre_lst
 			- TBD: show(), give(), attack()
+			- DONE: change mode from 'std_exe' to 'std'
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
 		- TBD: make validate() random error dict local? (post move of 'try')

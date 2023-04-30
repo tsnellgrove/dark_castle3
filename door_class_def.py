@@ -73,7 +73,7 @@ class Door(ViewOnly):
 		""" Unlocks a Door object.
 		"""
 		if mode is None:
-			mode = 'std_exe'
+			mode = 'std'
 		creature = active_gs.hero
 
 		active_gs.buffer("Unlocked")
@@ -85,7 +85,7 @@ class Door(ViewOnly):
 		""" Opens a Door object.
 		"""
 		if mode is None:
-			mode = 'std_exe'
+			mode = 'std'
 		creature = active_gs.hero
 
 		self.is_open = True
@@ -104,7 +104,7 @@ class Door(ViewOnly):
 		""" Closes a Door object.
 		"""
 		if mode is None:
-			mode = 'std_exe'
+			mode = 'std'
 		creature = active_gs.hero
 
 		active_gs.buffer("Closed")
@@ -117,7 +117,7 @@ class Door(ViewOnly):
 		""" Locks a Door object.
 		"""
 		if mode is None:
-			mode = 'std_exe'
+			mode = 'std'
 		creature = active_gs.hero
 
 		active_gs.buffer("Locked")
@@ -212,7 +212,7 @@ class Container(Door):
 		""" Puts an Item in a Container or on a Surface.
 		"""
 		if mode is None:
-			mode = 'std_exe'
+			mode = 'std'
 		creature = active_gs.hero
 		
 		creature.hand_lst_remove(obj)
@@ -300,7 +300,7 @@ class Seat(Surface):
 		"""
 		# destermine default attributes
 		if mode is None:
-			mode = 'std_exe'
+			mode = 'std'
 		if creature is None:
 			creature = active_gs.hero
 
@@ -325,7 +325,7 @@ class Seat(Surface):
 		"""
 		# destermine default attributes
 		if mode is None:
-			mode = 'std_exe'
+			mode = 'std'
 		if creature is None:
 			creature = active_gs.hero
 

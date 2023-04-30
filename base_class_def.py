@@ -59,7 +59,7 @@ class Writing(Invisible):
 		""" Reads text found on an object.
 		"""
 		if mode is None:
-			mode = 'std_exe'
+			mode = 'std'
 		creature = active_gs.hero
 
 		active_gs.buffer(self.get_descript_str(active_gs))
@@ -127,7 +127,7 @@ class ViewOnly(Writing):
 		""" Describes an object.
 		"""
 		if mode is None:
-			mode = 'std_exe'
+			mode = 'std'
 		creature = active_gs.hero
 
 		if self.get_title_str(active_gs) is not None:

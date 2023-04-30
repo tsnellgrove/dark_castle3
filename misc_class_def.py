@@ -24,7 +24,7 @@ class Liquid(ViewOnly):
 		""" Consumes a liquid if it is in a Container that Burt is holding in his hand.
 		"""
 		if mode is None:
-			mode = 'std_exe'
+			mode = 'std'
 		creature = active_gs.hero
 
 		creature.get_hand_item().contain_lst.remove(self)

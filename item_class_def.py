@@ -24,7 +24,7 @@ class Item(ViewOnly):
 		""" Takes an object from either the room or from Burt's inventory and places it into Burt's hand
 		"""
 		if mode is None:
-			mode = 'std_exe'
+			mode = 'std'
 		creature = active_gs.hero
 		
 		active_gs.buffer("Taken")
@@ -40,7 +40,7 @@ class Item(ViewOnly):
 		""" Drops an object from Burt's hand to the floor of the room.
 		"""
 		if mode is None:
-			mode = 'std_exe'
+			mode = 'std'
 		creature = active_gs.hero
 
 		creature.hand_lst_remove(self)
@@ -68,7 +68,7 @@ class Food(Item):
 		""" Removes the Food object from the game and provides a description of how the food tasted.
 		"""
 		if mode is None:
-			mode = 'std_exe'
+			mode = 'std'
 		creature = active_gs.hero
 
 		creature.hand_lst_remove(self)
@@ -99,7 +99,7 @@ class Garment(Item):
 		""" Places a garment in a creature's worn inventory and provides a description of any effects that result.
 		"""
 		if mode is None:
-			mode = 'std_exe'
+			mode = 'std'
 		creature = active_gs.hero
 		
 		creature.worn_lst_append(self)
