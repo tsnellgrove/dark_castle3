@@ -209,17 +209,11 @@ class Container(Door):
 
 	# *** verb methods ***
 	def put(self, obj, active_gs, mode=None):
-#	def put(self, obj, active_gs):
-#		base_error = super(Container, self).put(obj, active_gs)
 		""" Puts an Item in a Container or on a Surface.
 		"""
-#		if base_error:
-#			return
 		if mode is None:
 			mode = 'std_exe'
 		creature = active_gs.hero
-
-
 		
 		creature.hand_lst_remove(obj)
 		self.contain_lst_append(obj)
