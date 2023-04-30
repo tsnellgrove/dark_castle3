@@ -208,28 +208,18 @@ class Container(Door):
 		return 
 
 	# *** verb methods ***
-	def put(self, obj, active_gs):
-		base_error = super(Container, self).put(obj, active_gs)
+	def put(self, obj, active_gs, mode=None):
+#	def put(self, obj, active_gs):
+#		base_error = super(Container, self).put(obj, active_gs)
 		""" Puts an Item in a Container or on a Surface.
 		"""
-		if base_error:
-			return
+#		if base_error:
+#			return
+		if mode is None:
+			mode = 'std_exe'
 		creature = active_gs.hero
-		if obj.err_not_in_hand(creature, active_gs):
-			return
-		if self.is_open == False:
-			active_gs.buffer(f"The {self.full_name} is closed.")
-			return
-		if self.chk_content_prohibited(obj):
-			if obj.is_surface():
-				loc_prep = 'on'
-			else:
-				loc_prep = 'in'
-			active_gs.buffer(f"You can't put the {obj.full_name} {loc_prep} the {self.full_name}.")
-			return 
-		if self.is_surface() and not self.chk_has_capacity():
-			active_gs.buffer(f"There's no room on the {self.full_name} for another item.")
-			return
+
+
 		
 		creature.hand_lst_remove(obj)
 		self.contain_lst_append(obj)

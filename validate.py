@@ -23,7 +23,7 @@ def validate(active_gs, case, word_lst):
 		return False
 
 	# *** command errors ***
-	prep_word_lst = ['lock', 'unlock']
+	prep_word_lst = ['lock', 'unlock', 'put']
 	if case == '2word':
 		word2_obj, word1 = word_lst
 		try:
