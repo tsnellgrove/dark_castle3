@@ -475,7 +475,6 @@ class Invisible(object):
 		return False
 
 	def show_err(self, obj, active_gs):
-#	def show(self, obj, active_gs):
 		creature = active_gs.hero
 		if self.err_prep_std(obj, creature, active_gs):
 			return True
@@ -484,7 +483,6 @@ class Invisible(object):
 			return True
 		if obj.err_not_in_hand(creature, active_gs):
 			return True
-
 		return False
 
 	def give(self, obj, active_gs):
