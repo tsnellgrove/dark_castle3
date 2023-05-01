@@ -474,13 +474,17 @@ class Invisible(object):
 			return True
 		return False
 
-	def show(self, obj, active_gs):
+	def show_err(self, obj, active_gs):
+#	def show(self, obj, active_gs):
 		creature = active_gs.hero
 		if self.err_prep_std(obj, creature, active_gs):
 			return True
 		if not self.is_creature():
 			active_gs.buffer(f"Exactly how would you expect the {self.full_name} to respond to the {obj.full_name}?")
 			return True
+		if obj.err_not_in_hand(creature, active_gs):
+			return True
+
 		return False
 
 	def give(self, obj, active_gs):

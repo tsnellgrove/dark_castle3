@@ -253,15 +253,17 @@ class Creature(ViewOnly):
 		return 
 
 	# *** verb methods ***
-	def show(self, obj, active_gs):
-		base_error = super(Creature, self).show(obj, active_gs)
+	def show(self, obj, active_gs, mode=None):
+#	def show(self, obj, active_gs):
+#		base_error = super(Creature, self).show(obj, active_gs)
 		""" Extends Writing.show(). Shows an item in your hand to another creature.
 		"""
-		if base_error:
-			return
+#		if base_error:
+#			return
+		if mode is None:
+			mode = 'std'
 		creature = active_gs.hero
-		if obj.err_not_in_hand(creature, active_gs):
-			return
+
 
 		try:
 			active_gs.buffer(descript_dict[f"{creature.name}_show_{self.name}_{obj.name}"]) 
