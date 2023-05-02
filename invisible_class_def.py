@@ -486,7 +486,6 @@ class Invisible(object):
 		return False
 
 	def give_err(self, obj, active_gs):
-#	def give(self, obj, active_gs):
 		creature = active_gs.hero
 		if self.err_prep_std(obj, creature, active_gs):
 			return True
@@ -496,13 +495,11 @@ class Invisible(object):
 		if not self.is_creature():
 			active_gs.buffer(f"And what do you expect the {self.full_name} to do with the {obj.full_name}?")
 			return True
-
 		if obj.err_not_in_hand(creature, active_gs):
 			return True
 		if self == creature:
 			active_gs.buffer(f"With great formality and many words of thanks, you hand the {obj.full_name} to yourself.")
 			return True
-
 		return False
 
 	def attack(self, src_obj, active_gs):

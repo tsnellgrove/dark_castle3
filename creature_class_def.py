@@ -270,18 +270,11 @@ class Creature(ViewOnly):
 		return 
 
 	def give(self, obj, active_gs, mode=None):
-#	def give(self, obj, active_gs):
-#		base_error = super(Creature, self).give(obj, active_gs)
 		""" Gives an item to another creature.
 		"""
-#		if base_error:
-#			return
 		if mode is None:
 			mode = 'std'
 		creature = active_gs.hero
-
-		
-
 
 		# determine other creature's response
 		try:
@@ -310,7 +303,6 @@ class Creature(ViewOnly):
 		if new_descript_key in descript_dict:
 			self.descript_key = new_descript_key
 		return 
-
 
 	def attack(self, src_obj, active_gs, src_creature = None):
 		base_error = super(Creature, self).attack(src_obj, active_gs)
