@@ -225,7 +225,7 @@ Version 3.77 Goals
 				- DONE: clean up comments
 		- INPROC: update case = 'prep' verb methods to use 'mode'; call *_err() from validate()
 			- DONE: updated validate() 'if word1 in prep_lst:'
-			- DONE: lock(), unlock(), put(), 
+			- DONE: lock(), unlock(), put(), show(), give(), 
 				- DONE: update def to include mode=None as last attribute
 				- DONE: comment out base_err refs
 				- DONE: below doc_string add: if mode is None: mode = 'std'
@@ -235,7 +235,7 @@ Version 3.77 Goals
 				- DONE: confirm non verb method fencing
 				- DONE: cut-paste verb meth errs to Invis err
 				- DONE: update validate pre_lst
-			- TBD: show(), give(), attack()
+			- TBD: attack()
 			- DONE: change mode from 'std_exe' to 'std'
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
