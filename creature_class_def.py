@@ -305,12 +305,8 @@ class Creature(ViewOnly):
 		return 
 
 	def attack(self, src_obj, active_gs, src_creature=None, mode=None):
-#	def attack(self, src_obj, active_gs, src_creature=None):
-#		base_error = super(Creature, self).attack(src_obj, active_gs)
 		""" Attacks a target_creature with an item
 		"""
-#		if base_error:
-#			return
 
 		# destermine src_creature, tgt_creature, and mode
 		if mode is None:
@@ -318,8 +314,6 @@ class Creature(ViewOnly):
 		if src_creature is None:
 			src_creature = active_gs.hero
 		tgt_creature = self
-
-
 		
 		# determine tgt_obj for tgt_creature (src_obj provided in method arguements)
 		if tgt_creature.hand_is_empty():

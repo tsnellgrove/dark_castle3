@@ -505,7 +505,6 @@ class Invisible(object):
 		return False
 
 	def attack_err(self, src_obj, active_gs):
-#	def attack(self, src_obj, active_gs):
 		src_creature = active_gs.hero
 		tgt_creature = self
 		if self.err_prep_std(src_obj, src_creature, active_gs):
@@ -513,9 +512,6 @@ class Invisible(object):
 		if not self.is_creature():
 			active_gs.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
 			return True
-
-		# display error & return on command failures
-		# it is assumed (pronoun-wise) that only the player will attack in an unallowed fashion
 		if not tgt_creature.is_attackable: # consider re-homing 'not_attackable' txt to creature obj
 			try:
 				active_gs.buffer(descript_dict[f"not_attackable_{src_creature.name}_{tgt_creature.name}"])
@@ -531,7 +527,6 @@ class Invisible(object):
 		if src_creature == tgt_creature:
 			active_gs.buffer("You can't attack yourself!")
 			return True
-
 		return False
 
 
