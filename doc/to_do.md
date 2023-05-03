@@ -230,7 +230,7 @@ Version 3.77 Goals
 				- DONE: comment out base_err refs
 				- DONE: below doc_string add: if mode is None: mode = 'std'
 				- DONE: move creature attribute assignment to below 'if mode is None: '
-				- DONE: return True on  verb method errors
+				- DONE: return True on verb method errors
 				- DONE: update Invis def to _err
 				- DONE: confirm non verb method fencing
 				- DONE: cut-paste verb meth errs to Invis err

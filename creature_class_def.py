@@ -304,34 +304,22 @@ class Creature(ViewOnly):
 			self.descript_key = new_descript_key
 		return 
 
-	def attack(self, src_obj, active_gs, src_creature = None):
-		base_error = super(Creature, self).attack(src_obj, active_gs)
+	def attack(self, src_obj, active_gs, src_creature=None, mode=None):
+#	def attack(self, src_obj, active_gs, src_creature=None):
+#		base_error = super(Creature, self).attack(src_obj, active_gs)
 		""" Attacks a target_creature with an item
 		"""
-		if base_error:
-			return
-		# destermine src_creature & tgt_creature
+#		if base_error:
+#			return
+
+		# destermine src_creature, tgt_creature, and mode
+		if mode is None:
+			mode = 'std'
 		if src_creature is None:
 			src_creature = active_gs.hero
 		tgt_creature = self
 
-		# display error & return on command failures
-		# it is assumed (pronoun-wise) that only the player will attack in an unallowed fashion
-		if not tgt_creature.is_attackable:
-			try:
-				active_gs.buffer(descript_dict[f"not_attackable_{src_creature.name}_{tgt_creature.name}"])
-			except:
-				active_gs.buffer("You consider attacking but then think better of it. There must be another path to victory.")
-			return
-		if (not src_obj in src_creature.feature_lst) and (not src_creature.chk_in_hand(src_obj)):
-			active_gs.buffer(f"You are not holding the {src_obj.full_name} in your hand.")
-			return 
-		if (src_obj in src_creature.feature_lst) and (not src_creature.hand_is_empty()):
-			active_gs.buffer(f"You can't attack with your {src_obj.full_name} while you're holding the {src_creature.get_hand_item().full_name}.")
-			return 
-		if src_creature == tgt_creature:
-			active_gs.buffer("You can't attack yourself!")
-			return
+
 		
 		# determine tgt_obj for tgt_creature (src_obj provided in method arguements)
 		if tgt_creature.hand_is_empty():
