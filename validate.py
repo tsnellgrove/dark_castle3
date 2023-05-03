@@ -23,7 +23,6 @@ def validate(active_gs, case, word_lst):
 		return False
 
 	# *** command errors ***
-#	prep_word_lst = ['lock', 'unlock', 'put', 'show', 'give', 'attack']
 	if case == '2word':
 		word2_obj, word1 = word_lst
 		try:
@@ -34,14 +33,13 @@ def validate(active_gs, case, word_lst):
 		return not cmd_error
 	if case == 'prep':
 		dirobj_obj, word1, noun_obj = word_lst
-#		room = active_gs.get_room() # for case = go
-#		if word1 in prep_word_lst:
 		try:
 			cmd_error = getattr(dirobj_obj, word1 + '_err')(noun_obj, active_gs)
 		except:
 			cmd_error = True
 			active_gs.buffer(rand_error())
 		return not cmd_error
+#		room = active_gs.get_room() # for case = go
 	return True
 
 	"""Brief history of validate():

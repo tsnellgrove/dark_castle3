@@ -223,9 +223,9 @@ Version 3.77 Goals
 					- DONE: update validate two_word_lst_2
 				- DONE: update validate() add process based on updates
 				- DONE: clean up comments
-		- INPROC: update case = 'prep' verb methods to use 'mode'; call *_err() from validate()
+		- DONE: update case = 'prep' verb methods to use 'mode'; call *_err() from validate()
 			- DONE: updated validate() 'if word1 in prep_lst:'
-			- DONE: lock(), unlock(), put(), show(), give(), 
+			- DONE: lock(), unlock(), put(), show(), give(), attack()
 				- DONE: update def to include mode=None as last attribute
 				- DONE: comment out base_err refs
 				- DONE: below doc_string add: if mode is None: mode = 'std'
@@ -235,8 +235,8 @@ Version 3.77 Goals
 				- DONE: confirm non verb method fencing
 				- DONE: cut-paste verb meth errs to Invis err
 				- DONE: update validate pre_lst
-			- TBD: attack()
 			- DONE: change mode from 'std_exe' to 'std'
+			- DONE: remove prep_lst from validate() once all prep cases are complete
 		- TBD: update case = 'go' verb methods to use 'mode' and be called by validate()
 		- TBD: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
 		- TBD: make validate() random error dict local? (post move of 'try')
