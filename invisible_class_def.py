@@ -4,6 +4,7 @@
 # description: Invisible class deffinition module
 
 ### import
+import random
 from static_gbl import descript_dict
 
 ### classes
@@ -530,7 +531,7 @@ class Invisible(object):
 		return False
 
 
-	def go(self, dir, active_gs):
+	def go_err(self, dir, active_gs):
 		creature = active_gs.hero
 		if dir not in ['north', 'south', 'east', 'west']:
 			active_gs.buffer(f"'{dir}' is not a valid direction that you can go in.")
@@ -538,6 +539,15 @@ class Invisible(object):
 		if creature.is_contained(active_gs):
 			active_gs.buffer(f"You'll have to exit the {creature.get_contained_by(active_gs).full_name} to attempt that.")
 			return True
+
+		if not active_gs.map.chk_valid_dir(self, dir):
+			active_gs.buffer(descript_dict[f"wrong_way_{random.randint(0, 4)}"])
+			return True
+		door = active_gs.map.get_door(self, dir)
+		if not isinstance(door, str) and door.is_open == False:
+			active_gs.buffer(f"The {door.full_name} is closed.")
+			return True
+
 		return False
 
 
