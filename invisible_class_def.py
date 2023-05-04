@@ -539,7 +539,6 @@ class Invisible(object):
 		if creature.is_contained(active_gs):
 			active_gs.buffer(f"You'll have to exit the {creature.get_contained_by(active_gs).full_name} to attempt that.")
 			return True
-
 		if not active_gs.map.chk_valid_dir(self, dir):
 			active_gs.buffer(descript_dict[f"wrong_way_{random.randint(0, 4)}"])
 			return True
@@ -547,7 +546,6 @@ class Invisible(object):
 		if not isinstance(door, str) and door.is_open == False:
 			active_gs.buffer(f"The {door.full_name} is closed.")
 			return True
-
 		return False
 
 

@@ -49,7 +49,6 @@ def validate(active_gs, case, word_lst):
 		return not cmd_error
 	return True
 
-#		room = active_gs.get_room() # for case = go ?
 
 	"""Brief history of validate():
 			Originally, most errors were generated in cmd_exe(). This worked acceptably well right through v3.68 (precedural parity version). However, as coding progressed a couple issues made it clear this was non-ideal:

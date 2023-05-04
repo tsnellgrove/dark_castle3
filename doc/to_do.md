@@ -237,10 +237,10 @@ Version 3.77 Goals
 				- DONE: update validate pre_lst
 			- DONE: change mode from 'std_exe' to 'std'
 			- DONE: remove prep_lst from validate() once all prep cases are complete
-		- INPROC: update case = 'go' verb methods to use 'mode' and be called by validate()
+		- DONE: update case = 'go' verb methods to use 'mode' and be called by validate()
 			- DONE: update 'go' case in validate()
-			- TBD: updated go() in room_class_deff()
-			- TBD: update go_err() in invisible_class_deff()
+			- DONE: updated go() in room_class_deff()
+			- DONE: update go_err() in invisible_class_deff()
 		- TBD: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
 		- TBD: make validate() random error dict local? (post move of 'try')
 		- TBD: maybe need a 'try' block around cmd_exe verb call just in case? (a 3rd error type)
@@ -250,6 +250,8 @@ Version 3.77 Goals
 		- TBD: this will break the 'go south from Entrance' warning... 
 			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south
 		- TBD: update take_err() creature check
+		- TBD: should be some way to simplify the repeated 'try: ... except:' in validate
+		- TBD: what about cases where I want a machine to operate despite an error - e.g. 'go north' in antechamber triggers goblin
 	- TBD: validate() doc_strings
 		- TBD: determine needed doc_string updates
 		- TBD: update Invis err doc_string
