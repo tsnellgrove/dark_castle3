@@ -13,9 +13,11 @@ articles_lst = ['a', 'an', 'the']
 
 one_word_only_lst = ['help', 'credits', 'score', 'version', 'inventory', 'look', 'quit', 'stand', 'xyzzy42']
 
+one_word_convert_lst = ['north', 'south', 'east', 'west'] # 'inventory', 'look', 'stand'
+
 known_verbs_lst = ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 				 'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
-				 'unlock', 'wear', 'enter', 'exit'
+				 'unlock', 'wear', 'enter', 'exit', 'stand'
 				] # 'remove' removed
 
 secret_verbs_lst = []

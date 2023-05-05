@@ -241,7 +241,16 @@ Version 3.77 Goals
 			- DONE: update 'go' case in validate()
 			- DONE: updated go() in room_class_deff()
 			- DONE: update go_err() in invisible_class_deff()
-		- TBD: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
+		- INPROC: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
+			- DONE: create one_word_convert_lst in interp()
+			- TBD: update interp() one_word_convert for cardinal directions
+			- TBD: update interp() one_word_convert for inventory
+			- TBD: removed 'inventory' from one_word_only
+			- TBD: update interp() one_word_convert for look
+			- TBD: removed 'look' from one_word_only
+			- TBD: update interp() one_word_convert for stand
+			- TBD: removed 'stand' from one_word_only
+			- TBD: add stand_err to invisible_class_deff() error checking (2 word case)
 		- TBD: make validate() random error dict local? (post move of 'try')
 		- TBD: maybe need a 'try' block around cmd_exe verb call just in case? (a 3rd error type)
 	- TBD: validate() testing
@@ -251,7 +260,9 @@ Version 3.77 Goals
 			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south
 		- TBD: update take_err() creature check
 		- TBD: should be some way to simplify the repeated 'try: ... except:' in validate
-		- TBD: what about cases where I want a machine to operate despite an error - e.g. 'go north' in antechamber triggers goblin
+		- TBD: what about cases where I want a machine to operate despite an error
+			- IDEA: e.g. 'go north' in antechamber triggers goblin
+			- IDEA: i.e. should it ever be possible to override an error? If so, then how?
 	- TBD: validate() doc_strings
 		- TBD: determine needed doc_string updates
 		- TBD: update Invis err doc_string
