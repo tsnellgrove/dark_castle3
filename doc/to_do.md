@@ -463,6 +463,8 @@ Version 3.7x Goals
 	- IDEA: e.g. 'go north' in antechamber triggers goblin
 	- IDEA: i.e. should it ever be possible to override an error? If so, then how?
 	- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
+	- IDEA: implication here is that modular machines should be designed so that it is easy to trigger & run them from interupt()
+	- IDEA: the idea here is that narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
 
 - TBD: Description updates:
 	- TBD: hedgehog updates
