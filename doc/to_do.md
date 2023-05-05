@@ -260,9 +260,7 @@ Version 3.77 Goals
 			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south
 		- TBD: update take_err() creature check
 		- TBD: should be some way to simplify the repeated 'try: ... except:' in validate
-		- TBD: what about cases where I want a machine to operate despite an error
-			- IDEA: e.g. 'go north' in antechamber triggers goblin
-			- IDEA: i.e. should it ever be possible to override an error? If so, then how?
+		- TBD: update goblin_attack_mach trigger for non-error cmd (e.g. 'x portcullis' and 'x alcove')
 	- TBD: validate() doc_strings
 		- TBD: determine needed doc_string updates
 		- TBD: update Invis err doc_string
@@ -460,6 +458,11 @@ Version 3.7x Goals
 	- Display could also hold buffer commands???
 	- Another possible class name == Output ???
 	- Leaning towards Output... this helps distinguish from all the verb-linked Disp methods
+
+- TBD: what about cases where I want a modular machine to operate despite an error
+	- IDEA: e.g. 'go north' in antechamber triggers goblin
+	- IDEA: i.e. should it ever be possible to override an error? If so, then how?
+	- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
 
 - TBD: Description updates:
 	- TBD: hedgehog updates
