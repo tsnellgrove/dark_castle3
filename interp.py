@@ -11,9 +11,9 @@ from static_gbl import descript_dict
 ### interpreter function language static dictionaries & lists ###
 articles_lst = ['a', 'an', 'the']
 
-one_word_only_lst = ['help', 'credits', 'score', 'version', 'inventory', 'look', 'quit', 'stand', 'xyzzy42']
+one_word_only_lst = ['help', 'credits', 'score', 'version', 'look', 'quit', 'stand', 'xyzzy42']
 
-one_word_convert_lst = ['north', 'south', 'east', 'west'] # 'inventory', 'look', 'stand'
+one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory'] # 'look', 'stand'
 
 known_verbs_lst = ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 				 'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
@@ -176,13 +176,13 @@ def interpreter(user_input, master_obj_lst):
 
 		# convert one-word commands that are implicit two-word commands 
 		elif len(user_input_lst) == 1 and word1 in one_word_convert_lst:
-#		elif len(user_input_lst) == 1 and word1 in one_word_convert_dict:
-#				user_input_lst.append(word1)
-#				user_input_lst[0] = one_word_convert_dict[word1]
-#				word1 = user_input_lst[0]
 				if word1 in ['north', 'south', 'east', 'west']:
 						user_input_lst.append(word1)
 						user_input_lst[0] = 'go'
+						word1 = user_input_lst[0]
+				if word1 == 'inventory':
+						user_input_lst[0] = 'examine'
+						user_input_lst.append(active_gs.hero.name)
 						word1 = user_input_lst[0]
 
 

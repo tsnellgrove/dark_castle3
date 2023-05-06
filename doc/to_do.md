@@ -244,8 +244,8 @@ Version 3.77 Goals
 		- INPROC: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
 			- DONE: create one_word_convert_lst in interp()
 			- DONE: update interp() one_word_convert for cardinal directions
-			- TBD: update interp() one_word_convert for inventory
-			- TBD: removed 'inventory' from one_word_only
+			- DONE: update interp() one_word_convert for inventory
+			- DONE: removed 'inventory' from one_word_only & from cmd_exe
 			- TBD: update interp() one_word_convert for look
 			- TBD: removed 'look' from one_word_only
 			- TBD: update interp() one_word_convert for stand
