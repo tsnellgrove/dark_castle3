@@ -13,7 +13,7 @@ articles_lst = ['a', 'an', 'the']
 
 one_word_only_lst = ['help', 'credits', 'score', 'version', 'quit', 'stand', 'xyzzy42']
 
-one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory', 'look'] # 'stand'
+one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory', 'look']
 
 known_verbs_lst = ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 				 'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
@@ -178,9 +178,7 @@ def interpreter(user_input, master_obj_lst):
 				if word1 == 'look':
 						user_input_lst[0] = 'examine'
 						user_input_lst.append(active_gs.get_room().name)
-				
 				word1 = user_input_lst[0]
-
 
 		# if not a known true or convertable one-word command, must be an error
 		elif len(user_input_lst) == 1:
