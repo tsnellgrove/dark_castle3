@@ -246,9 +246,9 @@ Version 3.77 Goals
 			- DONE: update interp() one_word_convert for cardinal directions
 			- DONE: update interp() one_word_convert for inventory
 			- DONE: removed 'inventory' from one_word_only & from cmd_exe
-			- TBD: update interp() one_word_convert for look
-			- TBD: removed 'look' from one_word_only
-			- TBD: update interp() one_word_convert for stand
+			- DONE: update interp() one_word_convert for look
+			- DONE: removed 'look' from one_word_only & from cmd_exe
+			- TBD: update interp() one_word_convert for stand()
 			- TBD: removed 'stand' from one_word_only
 			- TBD: add stand_err to invisible_class_deff() error checking (2 word case)
 		- TBD: make validate() random error dict local? (post move of 'try')

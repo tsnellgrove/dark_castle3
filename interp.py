@@ -11,9 +11,9 @@ from static_gbl import descript_dict
 ### interpreter function language static dictionaries & lists ###
 articles_lst = ['a', 'an', 'the']
 
-one_word_only_lst = ['help', 'credits', 'score', 'version', 'look', 'quit', 'stand', 'xyzzy42']
+one_word_only_lst = ['help', 'credits', 'score', 'version', 'quit', 'stand', 'xyzzy42']
 
-one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory'] # 'look', 'stand'
+one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory', 'look'] # 'stand'
 
 known_verbs_lst = ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 				 'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
@@ -35,13 +35,6 @@ abbreviations_dict = {
 		'x' : 'examine',
 		'h' : 'help'
 }
-
-# one_word_convert_dict = {
-#		'north' : 'go',
-#		'south' : 'go',
-#		'east' : 'go',
-#		'west' : 'go'
-# }
 
 ### help = print help info
 def help(active_gs, option):
@@ -179,11 +172,14 @@ def interpreter(user_input, master_obj_lst):
 				if word1 in ['north', 'south', 'east', 'west']:
 						user_input_lst.append(word1)
 						user_input_lst[0] = 'go'
-						word1 = user_input_lst[0]
 				if word1 == 'inventory':
 						user_input_lst[0] = 'examine'
 						user_input_lst.append(active_gs.hero.name)
-						word1 = user_input_lst[0]
+				if word1 == 'look':
+						user_input_lst[0] = 'examine'
+						user_input_lst.append(active_gs.get_room().name)
+				
+				word1 = user_input_lst[0]
 
 
 		# if not a known true or convertable one-word command, must be an error
