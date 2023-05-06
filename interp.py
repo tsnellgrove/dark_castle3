@@ -36,12 +36,12 @@ abbreviations_dict = {
 		'h' : 'help'
 }
 
-one_word_convert_dict = {
-		'north' : 'go',
-		'south' : 'go',
-		'east' : 'go',
-		'west' : 'go'
-}
+# one_word_convert_dict = {
+#		'north' : 'go',
+#		'south' : 'go',
+#		'east' : 'go',
+#		'west' : 'go'
+# }
 
 ### help = print help info
 def help(active_gs, option):
@@ -175,10 +175,16 @@ def interpreter(user_input, master_obj_lst):
 				return 'error', [f"Burt, there are too many words in that sentence. '{word1}' is a one word command!"]
 
 		# convert one-word commands that are implicit two-word commands 
-		elif len(user_input_lst) == 1 and word1 in one_word_convert_dict:
-				user_input_lst.append(word1)
-				user_input_lst[0] = one_word_convert_dict[word1]
-				word1 = user_input_lst[0]
+		elif len(user_input_lst) == 1 and word1 in one_word_convert_lst:
+#		elif len(user_input_lst) == 1 and word1 in one_word_convert_dict:
+#				user_input_lst.append(word1)
+#				user_input_lst[0] = one_word_convert_dict[word1]
+#				word1 = user_input_lst[0]
+				if word1 in ['north', 'south', 'east', 'west']:
+						user_input_lst.append(word1)
+						user_input_lst[0] = 'go'
+						word1 = user_input_lst[0]
+
 
 		# if not a known true or convertable one-word command, must be an error
 		elif len(user_input_lst) == 1:

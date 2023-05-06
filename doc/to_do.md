@@ -243,7 +243,7 @@ Version 3.77 Goals
 			- DONE: update go_err() in invisible_class_deff()
 		- INPROC: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
 			- DONE: create one_word_convert_lst in interp()
-			- TBD: update interp() one_word_convert for cardinal directions
+			- DONE: update interp() one_word_convert for cardinal directions
 			- TBD: update interp() one_word_convert for inventory
 			- TBD: removed 'inventory' from one_word_only
 			- TBD: update interp() one_word_convert for look
@@ -272,6 +272,7 @@ Version 3.77 Goals
 			- IDEA: verb methods should live in switch_x obj and not need to know about each other
 			- IDEA: the SwitchMixIn class should not need to know about all sub-classes
 			- IDEA: thus, SpringSliderSwich.pull() and LeverSwitch.pull() over-rides are valid compromise
+		- TBD: doc_string about fake_door option to address error over-ruling goblin_attack case
 
 - TBD: error sub-system enhancements
 	- TBD: interp() error tuning
@@ -465,6 +466,7 @@ Version 3.7x Goals
 	- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
 	- IDEA: implication here is that modular machines should be designed so that it is easy to trigger & run them from interupt()
 	- IDEA: the idea here is that narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
+	- DECISION: use fake_door for now and swap on goblin death
 
 - TBD: Description updates:
 	- TBD: hedgehog updates
