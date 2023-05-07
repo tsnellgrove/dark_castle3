@@ -11,7 +11,7 @@ from static_gbl import descript_dict
 ### interpreter function language static dictionaries & lists ###
 articles_lst = ['a', 'an', 'the']
 
-one_word_only_lst = ['help', 'credits', 'score', 'version', 'quit', 'stand', 'xyzzy42']
+one_word_only_lst = ['help', 'credits', 'score', 'version', 'quit', 'xyzzy42']
 
 one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory', 'look']
 

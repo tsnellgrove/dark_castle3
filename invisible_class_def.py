@@ -163,6 +163,8 @@ class Invisible(object):
 		return False
 
 	# *** verb error methods ***
+
+	# *** two_word errors ***
 	def read_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_wrt_not_vis(creature, active_gs):
@@ -332,6 +334,22 @@ class Invisible(object):
 			return True
 		return False
 
+	def stand_err(self, active_gs):
+		creature = active_gs.hero
+		if self.err_std(creature, active_gs):
+			return True
+		if not self.is_creature():
+			active_gs.buffer(f"And yet the {self.full_name} continues to just sit there...")
+			return True
+		if self != creature:
+			active_gs.buffer(f"In your most bracing voice you declare: 'If you stand for nothing, what'll you fall for?' - but the {self.full_name} appears to immune to your exhortations.")
+			return True
+		room = active_gs.get_room()
+		if self in room.floor_lst:
+			active_gs.buffer(f"You're already standing in the {room.full_name}!")
+			return True
+		return False
+
 	def enter_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -374,6 +392,7 @@ class Invisible(object):
 		return False
 
 
+	# *** prep errors ***
 	def lock_err(self, key_obj, active_gs):
 		creature = active_gs.hero
 		if self.err_prep_std(key_obj, creature, active_gs):
@@ -531,6 +550,7 @@ class Invisible(object):
 		return False
 
 
+	# *** go_case error ***
 	def go_err(self, dir, active_gs):
 		creature = active_gs.hero
 		if dir not in ['north', 'south', 'east', 'west']:
