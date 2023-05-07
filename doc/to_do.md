@@ -248,7 +248,8 @@ Version 3.77 Goals
 			- DONE: removed 'inventory' from one_word_only & from cmd_exe
 			- DONE: update interp() one_word_convert for look
 			- DONE: removed 'look' from one_word_only & from cmd_exe
-			- TBD: treat stand() as two_word case: 'stand burt'
+			- DONE: convert stand() to two_word case: 'stand burt'
+			- TBD: create two_word_convert for stand()
 			- TBD: need to create new case just for stand (one_word vs. one_word_meta)
 			- TBD: update interp() one_word_convert for stand()
 			- TBD: removed 'stand' from one_word_only

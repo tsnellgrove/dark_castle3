@@ -23,8 +23,6 @@ def true_one_word(active_gs, word1, room_obj):
 				active_gs.buffer(descript_dict['help'])
 		elif word1 == 'credits':
 				active_gs.buffer(descript_dict['credits'])
-#		elif word1 == 'stand':
-#				active_gs.hero.stand(active_gs)
 		return
 
 def cmd_execute(active_gs, case, word_lst):

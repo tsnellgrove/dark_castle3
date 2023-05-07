@@ -342,7 +342,7 @@ class Invisible(object):
 			active_gs.buffer(f"And yet the {self.full_name} continues to just sit there...")
 			return True
 		if self != creature:
-			active_gs.buffer(f"In your most bracing voice you declare: 'If you stand for nothing, what'll you fall for?' - but the {self.full_name} appears to immune to your exhortations.")
+			active_gs.buffer(f"In your most bracing voice you declare: 'If you stand for nothing, what'll you fall for?' - but the {self.full_name} appears to be immune to your exhortations.")
 			return True
 		room = active_gs.get_room()
 		if self in room.floor_lst:
