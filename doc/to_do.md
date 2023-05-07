@@ -241,7 +241,7 @@ Version 3.77 Goals
 			- DONE: update 'go' case in validate()
 			- DONE: updated go() in room_class_deff()
 			- DONE: update go_err() in invisible_class_deff()
-		- INPROC: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
+		- DONE: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
 			- DONE: create one_word_convert_lst in interp()
 			- DONE: update interp() one_word_convert for cardinal directions
 			- DONE: update interp() one_word_convert for inventory
@@ -249,12 +249,7 @@ Version 3.77 Goals
 			- DONE: update interp() one_word_convert for look
 			- DONE: removed 'look' from one_word_only & from cmd_exe
 			- DONE: convert stand() to two_word case: 'stand burt'
-			- TBD: create two_word_convert for stand()
-			- TBD: need to create new case just for stand (one_word vs. one_word_meta)
-			- TBD: update interp() one_word_convert for stand()
-			- TBD: removed 'stand' from one_word_only
-			- TBD: add mode to stand()
-			- TBD: add stand_err to invisible_class_deff() error checking (2 word case)
+			- DONE: create one_word_convert for stand()
 		- TBD: make validate() random error dict local? (post move of 'try')
 		- TBD: maybe need a 'try' block around cmd_exe verb call just in case? (a 3rd error type)
 	- TBD: validate() testing
