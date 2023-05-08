@@ -251,9 +251,12 @@ Version 3.77 Goals
 			- DONE: convert stand() to two_word case: 'stand burt'
 			- DONE: create one_word_convert for stand()
 		- INPROC: update validate()
-			- TBD: refactor validate()
-			- TBD: make validate() random error dict local? (post move of 'try')
+			- DONE: refactor validate()
+			- DONE: update cmd_exe() to single indent
+			- TBD: refactor cmd_exe()
 			- TBD: maybe need a 'try' block around cmd_exe verb call just in case? (a 3rd error type)
+			- TBD: maybe unify tru1word with main code block in cmd_exe() ?
+			- TBD: make validate() random error dict & function local? (post move of 'try')	
 	- TBD: validate() testing
 		- TBD: validate should resolve get sword while in chair error
 		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
