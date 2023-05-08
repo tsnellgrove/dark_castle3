@@ -250,8 +250,10 @@ Version 3.77 Goals
 			- DONE: removed 'look' from one_word_only & from cmd_exe
 			- DONE: convert stand() to two_word case: 'stand burt'
 			- DONE: create one_word_convert for stand()
-		- TBD: make validate() random error dict local? (post move of 'try')
-		- TBD: maybe need a 'try' block around cmd_exe verb call just in case? (a 3rd error type)
+		- INPROC: update validate()
+			- TBD: refactor validate()
+			- TBD: make validate() random error dict local? (post move of 'try')
+			- TBD: maybe need a 'try' block around cmd_exe verb call just in case? (a 3rd error type)
 	- TBD: validate() testing
 		- TBD: validate should resolve get sword while in chair error
 		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???

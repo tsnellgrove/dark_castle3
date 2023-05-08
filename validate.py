@@ -23,31 +23,49 @@ def validate(active_gs, case, word_lst):
 		return False
 
 	# *** command errors ***
-	if case == '2word':
-		word2_obj, word1 = word_lst
+#	if case == '2word':
+#		word2_obj, word1 = word_lst
+#		try:
+#			cmd_error = getattr(word2_obj, word1 + '_err')(active_gs)
+#		except:
+#			cmd_error = True
+#			active_gs.buffer(rand_error())
+#		return not cmd_error
+#	if case == 'prep':
+#		dirobj_obj, word1, noun_obj = word_lst
+#		try:
+#			cmd_error = getattr(dirobj_obj, word1 + '_err')(noun_obj, active_gs)
+#		except:
+#			cmd_error = True
+#			active_gs.buffer(rand_error())
+#		return not cmd_error
+#	if case == 'go':
+#		room_obj, word1, word2 = word_lst
+#		try:
+#			cmd_error = getattr(room_obj, word1 + '_err')(word2, active_gs)
+#		except:
+#			cmd_error = True
+#			active_gs.buffer(rand_error())
+#		return not cmd_error
+#	return True
+
+	if case in ['2word', 'prep', 'go']:
 		try:
-			cmd_error = getattr(word2_obj, word1 + '_err')(active_gs)
-		except:
-			cmd_error = True
-			active_gs.buffer(rand_error())
-		return not cmd_error
-	if case == 'prep':
-		dirobj_obj, word1, noun_obj = word_lst
-		try:
-			cmd_error = getattr(dirobj_obj, word1 + '_err')(noun_obj, active_gs)
-		except:
-			cmd_error = True
-			active_gs.buffer(rand_error())
-		return not cmd_error
-	if case == 'go':
-		room_obj, word1, word2 = word_lst
-		try:
-			cmd_error = getattr(room_obj, word1 + '_err')(word2, active_gs)
+			if case == '2word':
+				word2_obj, word1 = word_lst
+				cmd_error = getattr(word2_obj, word1 + '_err')(active_gs)
+			elif case == 'prep':
+				dirobj_obj, word1, noun_obj = word_lst
+				cmd_error = getattr(dirobj_obj, word1 + '_err')(noun_obj, active_gs)
+			elif case == 'go':
+				room_obj, word1, word2 = word_lst
+				cmd_error = getattr(room_obj, word1 + '_err')(word2, active_gs)
 		except:
 			cmd_error = True
 			active_gs.buffer(rand_error())
 		return not cmd_error
 	return True
+
 
 
 	"""Brief history of validate():
