@@ -253,9 +253,11 @@ Version 3.77 Goals
 		- INPROC: update validate()
 			- DONE: refactor validate()
 			- DONE: update cmd_exe() to single indent
-			- TBD: refactor cmd_exe()
-			- TBD: maybe need a 'try' block around cmd_exe verb call just in case? (a 3rd error type)
-			- TBD: maybe unify tru1word with main code block in cmd_exe() ?
+			- DONE: refactor cmd_exe()
+			- DONE: maybe need a 'try' block around cmd_exe verb call just in case? (a 3rd error type)
+			- DONE: maybe unify tru1word with main code block in cmd_exe() ?
+			- DONE: re-refactor cmd_exe()
+			- TBD: clean-up un-used code in cmd_exe()
 			- TBD: make validate() random error dict & function local? (post move of 'try')	
 	- TBD: validate() testing
 		- TBD: validate should resolve get sword while in chair error
