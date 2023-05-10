@@ -258,7 +258,7 @@ Version 3.77 Goals
 			- DONE: maybe unify tru1word with main code block in cmd_exe() ?
 			- DONE: re-refactor cmd_exe()
 			- DONE: clean-up un-used code in cmd_exe()
-			- TBD: resolve 'help <option>' error and simplify 'help' to run first all in interp()
+			- DONE: resolve 'help <option>' error and simplify 'help' to run first all in interp()
 			- TBD: make validate() random error dict & function local? (post move of 'try')	
 	- TBD: validate() testing
 		- TBD: validate should resolve get sword while in chair error

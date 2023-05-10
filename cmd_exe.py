@@ -20,9 +20,9 @@ def cmd_execute(active_gs, case, word_lst):
 			if word1 == 'version':
 				active_gs.buffer(static_dict['version'])
 				return
-			if word1 == 'help':
-				active_gs.buffer(descript_dict['help'])
-				return
+#			if word1 == 'help':
+#				active_gs.buffer(descript_dict['help'])
+#				return
 			if word1 == 'credits':
 				active_gs.buffer(descript_dict['credits'])
 				return

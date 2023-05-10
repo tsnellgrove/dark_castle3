@@ -11,7 +11,7 @@ from static_gbl import descript_dict
 ### interpreter function language static dictionaries & lists ###
 articles_lst = ['a', 'an', 'the']
 
-one_word_only_lst = ['help', 'credits', 'score', 'version', 'quit', 'xyzzy42']
+one_word_only_lst = ['credits', 'score', 'version', 'quit', 'xyzzy42']
 
 one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory', 'look', 'stand']
 
@@ -162,6 +162,9 @@ def interpreter(user_input, master_obj_lst):
 		word1 = user_input_lst[0]
 
 		# handle true one-word commands
+		if len(user_input_lst) == 1 and word1 == 'help':
+				active_gs.buffer(descript_dict['help'])
+				return 'help', [word1]
 		if len(user_input_lst) == 1 and word1 in one_word_only_lst:
 				return 'tru_1word', [word1]
 		if word1 in one_word_only_lst and len(user_input_lst) > 1:
@@ -195,13 +198,13 @@ def interpreter(user_input, master_obj_lst):
 				return 'error', ["Please start your sentence with a known verb!"]
 
 		# handle 2-word commands (special cases first else general case)
-		if word1 == 'go':
-				word2 = user_input_lst[1]
-				return 'go', [room_obj, word1, word2]
-		elif word1 == 'help':
+		if word1 == 'help':
 				word2 = user_input_lst[1]
 				help(active_gs, word2)
 				return 'help', [word2]
+		elif word1 == 'go':
+				word2 = user_input_lst[1]
+				return 'go', [room_obj, word1, word2]
 		elif word1 in ['put', 'show', 'give', 'attack', 'lock', 'unlock']:
 				if word1 in ['put', 'sit']:
 						if 'in' in user_input_lst:
