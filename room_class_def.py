@@ -5,8 +5,8 @@
 
 
 ### import
-import random
-from static_gbl import descript_dict, static_dict
+# import random
+# from static_gbl import descript_dict, static_dict
 from base_class_def import ViewOnly
 
 

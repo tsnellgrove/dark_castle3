@@ -260,7 +260,10 @@ Version 3.77 Goals
 			- DONE: clean-up un-used code in cmd_exe()
 			- DONE: resolve 'help <option>' error and simplify 'help' to run first all in interp()
 			- TBD: make validate() random error dict & function local? (post move of 'try')	
+			- TBD: make wrong-way errors local to invisible()
+			- TBD: clean-up un-used descript_dict errors
 	- TBD: validate() testing
+		- TBD: clean-up room() imports
 		- TBD: validate should resolve get sword while in chair error
 		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
 		- TBD: this will break the 'go south from Entrance' warning... 
@@ -269,6 +272,7 @@ Version 3.77 Goals
 		- TBD: should be some way to simplify the repeated 'try: ... except:' in validate
 		- TBD: update goblin_attack_mach trigger for non-error cmd (e.g. 'x portcullis' and 'x alcove')
 	- TBD: validate() doc_strings
+		- TBD: interp() doc_string regarding all 'help' cases being handeled locally
 		- TBD: determine needed doc_string updates
 		- TBD: update Invis err doc_string
 		- TBD: doc_string how validate() works
