@@ -271,6 +271,8 @@ Version 3.77 Goals
 		- TBD: update take_err() creature check
 		- TBD: should be some way to simplify the repeated 'try: ... except:' in validate
 		- TBD: update goblin_attack_mach trigger for non-error cmd (e.g. 'x portcullis' and 'x alcove')
+		- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
+			- IDEA: obj should be a black-box
 	- TBD: validate() doc_strings
 		- TBD: interp() doc_string regarding all 'help' cases being handeled locally
 		- TBD: determine needed doc_string updates
