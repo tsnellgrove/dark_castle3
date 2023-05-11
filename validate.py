@@ -16,12 +16,6 @@ val_err_dict = {
 	'val_err_4' : "Burt! What would your mother say if she heard you speaking like that!?",
 }
 
-##def rand_error():
-##	num = random.randint(0, 4)
-#	interp_error_key = 'interp_error_' + str(num)
-#	return descript_dict[interp_error_key]
-##	return val_err_dict['val_err_' + str(num)]
-
 def validate(active_gs, case, word_lst):
 	"""Validates user_input.
 	"""
@@ -45,7 +39,6 @@ def validate(active_gs, case, word_lst):
 				cmd_error = getattr(room_obj, word1 + '_err')(word2, active_gs)
 		except:
 			cmd_error = True
-#			active_gs.buffer(rand_error())
 			active_gs.buffer(val_err_dict['val_err_' + str(random.randint(0, 4))])
 		return not cmd_error
 	return True

@@ -259,7 +259,7 @@ Version 3.77 Goals
 			- DONE: re-refactor cmd_exe()
 			- DONE: clean-up un-used code in cmd_exe()
 			- DONE: resolve 'help <option>' error and simplify 'help' to run first all in interp()
-			- TBD: make validate() random error dict & function local? (post move of 'try')	
+			- DONE: make validate() random error dict & function local? (post move of 'try')	
 			- TBD: make wrong-way errors local to invisible()
 			- TBD: clean-up un-used descript_dict errors
 	- TBD: validate() testing

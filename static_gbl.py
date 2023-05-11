@@ -42,14 +42,6 @@ descript_dict = {
 		'wrong_way_3' : "You can't go that way.",
 		'wrong_way_4' : "And exactly how do you propose to do that?",
 
-		### interpreter errors ###
-#		'interp_error_0' : "Burt, I have no idea what you're talking about!",
-#		'interp_error_1' : "Burt, are you babbling again?",
-#		'interp_error_2' : "Burt, I'm just going to pretend I didn't hear that.",
-#		'interp_error_3' : "Burt, you've said some strange things over the years but that was a doosey!",
-#		'interp_error_4' : "Burt! What would your mother say if she heard you speaking like that!?",
-
-
 
 		#### VISIBLE OBJ ####
 
