@@ -263,7 +263,7 @@ Version 3.77 Goals
 			- DONE: make wrong-way errors local to invisible()
 			- DONE: clean-up un-used descript_dict errors
 
-	- INPROC: validate() testing
+	- DONE: validate() testing
 		- DONE: this will break the 'go south from Entrance' warning... 
 			- DONE: probably the easiest fix is to create a re-usable unreachable_room to the south
 		- DONE: should be some way to simplify the repeated 'try: ... except:' in validate
@@ -271,8 +271,7 @@ Version 3.77 Goals
 		- DONE: validate should resolve get sword while in chair error
 		- CANCEL: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
 			- IDEA: address this during modular machine refactoring
-		- TBD: update take_err() creature check
-		- TBD: update goblin_attack_mach trigger for non-error cmd (e.g. 'x portcullis' and 'x alcove')
+		- DONE: update goblin_attack_mach trigger for non-error cmd (e.g. 'x portcullis' and 'x alcove')
 
 	- TBD: validate() doc_strings
 		- TBD: interp() doc_string regarding all 'help' cases being handeled locally
@@ -456,6 +455,7 @@ Version 3.7x Goals
 	- IDEA: global verb synonyms
 	- IDEA: simple prep verbs ('sit_in')
 	- IDEA: basic interp features: 'take all', 'again', 'wait'
+- TBD: figure out 'behind' prep for case of control panel in alove behind goblin
 - TBD: enable 'show writing to creature' is writing is on an item Burt is holding
 - TBD: stand() as Perch synonym for exit()
 - TBD: exit() should apply to chairs and doors => move to Perch / Nook class
@@ -483,10 +483,14 @@ Version 3.7x Goals
 - TBD: what about cases where I want a modular machine to operate despite an error
 	- IDEA: e.g. 'go north' in antechamber triggers goblin
 	- IDEA: i.e. should it ever be possible to override an error? If so, then how?
+	- IDEA: the 'open portcullis' case is a special problem here - it will tell Burt it's locked...
+		- IDEA: but the Goblin should attack before Burt can touch the Portcullis
 	- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
 	- IDEA: implication here is that modular machines should be designed so that it is easy to trigger & run them from interupt()
 	- IDEA: the idea here is that narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
 	- DECISION: use fake_door for now and swap on goblin death
+	- RECONSIDER: 'take axe' case is not easy to fake out... maybe I do need an interupt() module after all??
+- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
 
 - TBD: Description updates:
 	- TBD: hedgehog updates
