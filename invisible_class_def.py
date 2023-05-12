@@ -487,6 +487,9 @@ class Invisible(object):
 		if not self.is_container():
 			active_gs.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
 			return True
+		if self == obj:
+			active_gs.buffer(f"With all your might you attempt to bend the laws of time, space, and topology to your will... and in response you hear the ancient background radiation of the big bang itself respond: 'Nope, not gonna happen Burt.'")
+			return True
 		if obj.err_not_in_hand(creature, active_gs):
 			return True
 		if self.is_open == False:

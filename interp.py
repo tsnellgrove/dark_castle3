@@ -135,7 +135,7 @@ def noun_handling(master_obj_lst, user_input_lst):
 		if not word2_txt_known:
 				root_count, obj_name = root_word_count(active_gs, word2_txt)
 				if root_count < 1:
-						error_msg = "I don't see a " + word2_txt + " here."
+						error_msg = "I don't see a " + word2_txt.capitalize() + " here."
 						error_state = True
 						return error_state, error_msg, word2_obj
 				elif root_count > 1:

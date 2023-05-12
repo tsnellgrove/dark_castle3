@@ -273,6 +273,22 @@ Version 3.77 Goals
 			- IDEA: address this during modular machine refactoring
 		- DONE: update goblin_attack_mach trigger for non-error cmd (e.g. 'x portcullis' and 'x alcove')
 
+- INPROC: error sub-system enhancements
+	- DONE: interp() error tuning
+		- DONE: identify interp() errors with "[INTERP]"
+		- DONE: normalize case
+	- DONE: error output tuning
+		- DONE: sort out validate() error when already wearing crown... 
+			- DONE: ideally should be "You're already wearing"... not "not in your hand"
+		- CANCEL: elim "can't see an X here" from interp errors?
+		- DONE: specific put() error for "put suitcase in suitcase"
+	- TBD: better localize dict data
+		- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
+			- IDEA: obj should be a black-box
+		- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
+		- TBD: move 'help' responses to help_dict in interp()
+		- TBD: move 'tru_1word' responses to cmd_exe() ???
+
 	- TBD: validate() doc_strings
 		- TBD: interp() doc_string regarding all 'help' cases being handeled locally
 		- TBD: determine needed doc_string updates
@@ -286,27 +302,6 @@ Version 3.77 Goals
 			- IDEA: the SwitchMixIn class should not need to know about all sub-classes
 			- IDEA: thus, SpringSliderSwich.pull() and LeverSwitch.pull() over-rides are valid compromise
 		- TBD: doc_string about fake_door option to address error over-ruling goblin_attack case
-
-- TBD: error sub-system enhancements
-	- TBD: interp() error tuning
-		- DONE: identify interp() errors with "[INTERP]"
-		- TBD: normalize case
-	- TBD: error output tuning
-		- DONE: sort out validate() error when already wearing crown... 
-			- DONE: ideally should be "You're already wearing"... not "not in your hand"
-		- TBD: elim "can't see an X here" from interp errors?
-		- TBD: read() of obj w/ writing => "On the {obj}, written in {wrt}, you see: '{txt}'..."
-		- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
-		- TBD: examine writing => "The {writing} reads as follows: n/"
-		- TBD: should it be possible to show() and obj of class Writing or ViewOnly ??
-		- TBD: should "put key in moat" do more? what about "enter moat"
-		- TBD: specific put() error for "put suitcase in suitcase"
-	- TBD: better localize dict data
-		- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
-			- IDEA: obj should be a black-box
-		- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
-		- TBD: move 'help' responses to help_dict in interp()
-		- TBD: mvoe 'tru_1word' responses to cmd_exe() ???
 
 - TBD: Debug Mode
 	- TBD: add debug_mode boolean in active_gs
@@ -455,6 +450,13 @@ Version 3.7x Goals
 	- IDEA: global verb synonyms
 	- IDEA: simple prep verbs ('sit_in')
 	- IDEA: basic interp features: 'take all', 'again', 'wait'
+	- IDEA: address 'I can't see a x_y' error
+- IDEA: introduce a vs. an
+- TBD: read() of obj w/ writing => "On the {obj}, written in {wrt}, you see: '{txt}'..."
+- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
+- TBD: examine writing => "The {writing} reads as follows: n/"
+- TBD: should it be possible to show() and obj of class Writing or ViewOnly ??
+- TBD: should "put key in moat" do more? what about "enter moat"
 - TBD: figure out 'behind' prep for case of control panel in alove behind goblin
 - TBD: enable 'show writing to creature' is writing is on an item Burt is holding
 - TBD: stand() as Perch synonym for exit()
