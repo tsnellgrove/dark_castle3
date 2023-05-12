@@ -568,7 +568,6 @@ class Invisible(object):
 			active_gs.buffer(f"You'll have to exit the {creature.get_contained_by(active_gs).full_name} to attempt that.")
 			return True
 		if not active_gs.map.chk_valid_dir(self, dir):
-#			active_gs.buffer(descript_dict[f"wrong_way_{random.randint(0, 4)}"])
 			active_gs.buffer(dir_err_dict[f"dir_err_{random.randint(0, 4)}"])
 			return True
 		door = active_gs.map.get_door(self, dir)

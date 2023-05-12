@@ -35,13 +35,6 @@ descript_dict = {
 		'help_read' :  "If you can't 'read' something (e.g. a note or a scroll) try 'examine' instead. The item may have some readable text written on it that you'll learn more about via 'examine'.",
 		'help_attack' : "There are various creatures that reside in Dark Castle. Some are friendly but some may not be. Burt can 'attack' a creature using whatever weapon he is holding in his hand. If the creature is hostile and Burt is wielding the correct weapon he may be able to slay it. However there are risks to attacking as well. If the creature is friendly, an 'attack' may scare it away and Burt may lose a valuble ally. And if the creature is hostile but Burt is wielding the wrong weapon, Burt himself may perish. As in real life, combat in Dark Castle is frought!",
 		
-		### wrong way errors ###
-#		'wrong_way_0' : "Ouch! Burt, stop walking into walls!",
-#		'wrong_way_1' : "Ouch! You have walked into a wall.",
-#		'wrong_way_2' : "There's no exit that way.",
-#		'wrong_way_3' : "You can't go that way.",
-#		'wrong_way_4' : "And exactly how do you propose to do that?",
-
 
 		#### VISIBLE OBJ ####
 

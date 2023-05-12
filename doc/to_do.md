@@ -181,7 +181,7 @@ Version 3.77 Goals
 			- DONE: clean up unused imports in door_class_def.py, item_class_def.py, misc_class_def.py
 			- DONE: update comment title for all: *** class identity methods ***
 
-	- INPROC: implement validate() modes
+	- DONE: implement validate() modes
 		- DONE: implement try <cmd>... except... for specific list of word1 and with mode = 'validate'
 		- INPROC: update case = '2word' verb methods to use 'mode' and be called by validate()
 			- DONE: take(), eat(), drop(), wear(), read(), examine(), open(), close(), drink()
@@ -250,7 +250,7 @@ Version 3.77 Goals
 			- DONE: removed 'look' from one_word_only & from cmd_exe
 			- DONE: convert stand() to two_word case: 'stand burt'
 			- DONE: create one_word_convert for stand()
-		- INPROC: update validate()
+		- DONE: update validate()
 			- DONE: refactor validate()
 			- DONE: update cmd_exe() to single indent
 			- DONE: refactor cmd_exe()
@@ -261,21 +261,19 @@ Version 3.77 Goals
 			- DONE: resolve 'help <option>' error and simplify 'help' to run first all in interp()
 			- DONE: make validate() random error dict & function local? (post move of 'try')	
 			- DONE: make wrong-way errors local to invisible()
-			- TBD: clean-up un-used descript_dict errors
-	- TBD: validate() testing
-		- TBD: clean-up room() imports
-		- TBD: validate should resolve get sword while in chair error
-		- IDEA: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
-		- TBD: this will break the 'go south from Entrance' warning... 
-			- IDEA: probably the easiest fix is to create a re-usable unreachable_room to the south
+			- DONE: clean-up un-used descript_dict errors
+
+	- INPROC: validate() testing
+		- DONE: this will break the 'go south from Entrance' warning... 
+			- DONE: probably the easiest fix is to create a re-usable unreachable_room to the south
+		- DONE: should be some way to simplify the repeated 'try: ... except:' in validate
+		- DONE: clean-up room() imports
+		- DONE: validate should resolve get sword while in chair error
+		- CANCEL: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
+			- IDEA: address this during modular machine refactoring
 		- TBD: update take_err() creature check
-		- TBD: should be some way to simplify the repeated 'try: ... except:' in validate
 		- TBD: update goblin_attack_mach trigger for non-error cmd (e.g. 'x portcullis' and 'x alcove')
-		- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
-			- IDEA: obj should be a black-box
-		- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
-		- TBD: move 'help' responses to help_dict in interp()
-		- TBD: mvoe 'tru_1word' responses to cmd_exe() ???
+
 	- TBD: validate() doc_strings
 		- TBD: interp() doc_string regarding all 'help' cases being handeled locally
 		- TBD: determine needed doc_string updates
@@ -304,6 +302,12 @@ Version 3.77 Goals
 		- TBD: should it be possible to show() and obj of class Writing or ViewOnly ??
 		- TBD: should "put key in moat" do more? what about "enter moat"
 		- TBD: specific put() error for "put suitcase in suitcase"
+	- TBD: better localize dict data
+		- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
+			- IDEA: obj should be a black-box
+		- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
+		- TBD: move 'help' responses to help_dict in interp()
+		- TBD: mvoe 'tru_1word' responses to cmd_exe() ???
 
 - TBD: Debug Mode
 	- TBD: add debug_mode boolean in active_gs
