@@ -283,11 +283,12 @@ Version 3.77 Goals
 		- CANCEL: elim "can't see an X here" from interp errors?
 		- DONE: specific put() error for "put suitcase in suitcase"
 	- TBD: better localize dict data
+		- TBD: move 'help' responses to help_dict in interp()
+		- TBD: move 'tru_1word' responses to cmd_exe() ???	
 		- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
 			- IDEA: obj should be a black-box
 		- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
-		- TBD: move 'help' responses to help_dict in interp()
-		- TBD: move 'tru_1word' responses to cmd_exe() ???
+
 
 	- TBD: validate() doc_strings
 		- TBD: interp() doc_string regarding all 'help' cases being handeled locally
