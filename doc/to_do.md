@@ -260,7 +260,7 @@ Version 3.77 Goals
 			- DONE: clean-up un-used code in cmd_exe()
 			- DONE: resolve 'help <option>' error and simplify 'help' to run first all in interp()
 			- DONE: make validate() random error dict & function local? (post move of 'try')	
-			- TBD: make wrong-way errors local to invisible()
+			- DONE: make wrong-way errors local to invisible()
 			- TBD: clean-up un-used descript_dict errors
 	- TBD: validate() testing
 		- TBD: clean-up room() imports
@@ -273,6 +273,9 @@ Version 3.77 Goals
 		- TBD: update goblin_attack_mach trigger for non-error cmd (e.g. 'x portcullis' and 'x alcove')
 		- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
 			- IDEA: obj should be a black-box
+		- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
+		- TBD: move 'help' responses to help_dict in interp()
+		- TBD: mvoe 'tru_1word' responses to cmd_exe() ???
 	- TBD: validate() doc_strings
 		- TBD: interp() doc_string regarding all 'help' cases being handeled locally
 		- TBD: determine needed doc_string updates

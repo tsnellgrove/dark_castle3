@@ -7,6 +7,14 @@
 import random
 from static_gbl import descript_dict
 
+dir_err_dict = {
+	'dir_err_0' : "Ouch! Burt, stop walking into walls!",
+	'dir_err_1' : "Ouch! You have walked into a wall.",
+	'dir_err_2' : "There's no exit that way.",
+	'dir_err_3' : "You can't go that way.",
+	'dir_err_4' : "And exactly how do you propose to do that?",
+}
+
 ### classes
 class Invisible(object):
 	def __init__(self, name):
@@ -560,7 +568,8 @@ class Invisible(object):
 			active_gs.buffer(f"You'll have to exit the {creature.get_contained_by(active_gs).full_name} to attempt that.")
 			return True
 		if not active_gs.map.chk_valid_dir(self, dir):
-			active_gs.buffer(descript_dict[f"wrong_way_{random.randint(0, 4)}"])
+#			active_gs.buffer(descript_dict[f"wrong_way_{random.randint(0, 4)}"])
+			active_gs.buffer(dir_err_dict[f"dir_err_{random.randint(0, 4)}"])
 			return True
 		door = active_gs.map.get_door(self, dir)
 		if not isinstance(door, str) and door.is_open == False:
