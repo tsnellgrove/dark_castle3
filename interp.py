@@ -6,7 +6,6 @@
 
 ### import statements
 from itertools import islice
-# from static_gbl import descript_dict
 
 ### interpreter function language static dictionaries & lists ###
 articles_lst = ['a', 'an', 'the']
@@ -49,7 +48,6 @@ help_dict = {
 ### help = print help info
 def help(active_gs, option):
 		if option == 'basics':
-#				output = descript_dict['help_basics']
 				output = help_dict['help_basics']
 		elif option == 'verbs':
 				output = "Available verbs include: " + ', '.join(known_verbs_lst)
@@ -62,7 +60,6 @@ def help(active_gs, option):
 				output = ("The following articles are supported but not required: "
 								+ ', '.join(articles_lst))
 		elif option == 'adjectives':
-#					output = descript_dict['help_adjectives']
 					output = help_dict['help_adjectives']
 		elif  option == 'abbreviations':
 				pre_out = "Available abbreviations include: "
@@ -70,19 +67,14 @@ def help(active_gs, option):
 						pre_out = pre_out + key + " = " + abbreviations_dict[key] + ", "
 				output = pre_out[:-2]
 		elif option == 'prepositions':
-#				output = descript_dict['help_prepositions']
 				output = help_dict['help_prepositions']
 		elif option == 'read':
-#				output = descript_dict['help_read']
 				output = help_dict['help_read']
 		elif option == 'attack':
-#				output = descript_dict['help_attack']
 				output = help_dict['help_attack']
 		elif option == 'creatures':
-#				output = descript_dict['help_creatures']
 				output = help_dict['help_creatures']
 		else:
-#				output = descript_dict['help']
 				output = help_dict['help']
 		active_gs.buffer(output)
 
@@ -180,7 +172,6 @@ def interpreter(user_input, master_obj_lst):
 
 		# handle true one-word commands
 		if len(user_input_lst) == 1 and word1 == 'help':
-#				active_gs.buffer(descript_dict['help'])
 				active_gs.buffer(help_dict['help'])
 				return 'help', [word1]
 		if len(user_input_lst) == 1 and word1 in one_word_only_lst:
