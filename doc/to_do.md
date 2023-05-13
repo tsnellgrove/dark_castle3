@@ -273,7 +273,7 @@ Version 3.77 Goals
 			- IDEA: address this during modular machine refactoring
 		- DONE: update goblin_attack_mach trigger for non-error cmd (e.g. 'x portcullis' and 'x alcove')
 
-- INPROC: error sub-system enhancements
+- DONE: error sub-system enhancements
 	- DONE: interp() error tuning
 		- DONE: identify interp() errors with "[INTERP]"
 		- DONE: normalize case
@@ -282,16 +282,18 @@ Version 3.77 Goals
 			- DONE: ideally should be "You're already wearing"... not "not in your hand"
 		- CANCEL: elim "can't see an X here" from interp errors?
 		- DONE: specific put() error for "put suitcase in suitcase"
-	- INPROC: better localize dict data
+	- DONE: better localize dict data (in retrospect, this was not the best idea)
 		- DONE: move 'help' responses to help_dict in interp()
 		- DONE: 'help' text updates
-		- TBD: move 'tru_1word' responses and 'version' to cmd_exe() ???
-		- TBD: move 'introductin' to start_up() ???
-		- TBD: move 'score' to gs_class_def() ???
-		- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
-			- IDEA: obj should be a black-box
-		- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
+		- CANCEL: move 'tru_1word' responses and 'version' to cmd_exe() ???
+		- CANCEL: move 'introductin' to start_up() ???
+		- CANCEL: move 'score' to gs_class_def() ???
 
+- TBD: Debug Mode
+	- TBD: add debug_mode boolean in active_gs
+	- TBD: create 1word debug command ('debug_poke53281,0') that gives state and sets bool
+		- TBD: examample: "Debug Mode is now set to True"
+	- TBD: use debug mode to set error source pre-fixes and also use of 'try for error & cmd'
 
 	- TBD: validate() doc_strings
 		- TBD: interp() doc_string regarding all 'help' cases being handeled locally
@@ -305,13 +307,9 @@ Version 3.77 Goals
 			- IDEA: verb methods should live in switch_x obj and not need to know about each other
 			- IDEA: the SwitchMixIn class should not need to know about all sub-classes
 			- IDEA: thus, SpringSliderSwich.pull() and LeverSwitch.pull() over-rides are valid compromise
-		- TBD: doc_string about fake_door option to address error over-ruling goblin_attack case
+		- CANCEL: doc_string about fake_door option to address error over-ruling goblin_attack case
+			- IDEA: this is maybe not the best approach - maybe skip for now and fix with interupt() later
 
-- TBD: Debug Mode
-	- TBD: add debug_mode boolean in active_gs
-	- TBD: create 1word debug command ('debug_poke53281,0') that gives state and sets bool
-		- TBD: examample: "Debug Mode is now set to True"
-	- TBD: use debug mode to set error source pre-fixes and also use of 'try for error & cmd'
 
 
 
@@ -445,6 +443,20 @@ Version 3.7x Goals
 *** Unify Notes ***
 *** Plan for interpreter update ***
 
+- TBD: make creature obj data more atomic
+	- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
+		- IDEA: obj should be a black-box
+	- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
+- IDEA: think through code vs. data separation for static text
+	- IDEA: imagine future adventure creation tooling where I update descriptions via a web front end
+	- IDEA: I won't want all the description in a DB - that's too much overhead...
+	- IDEA: But I will want all descriptions in one big centralized dictionary for ease of access & update
+	- IDEA: to this end, consider the following:
+		- TBD: move interp() help_dict back to static_gbl() descript_dict
+		- TBD: consolidate val_err_dict from validate() back to static_gbl() descript_dict
+		- TBD: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
+		- TBD: consolidate static_dict into descript_dict
+	- IDEA: error messages will be hard to update - so I want them to be as generic as possible!
 - IDEA: 'talk to creature' format:
 	- IDEA: 'Ask X about Y'
 	- IDEA: 'Tell X about Y'
