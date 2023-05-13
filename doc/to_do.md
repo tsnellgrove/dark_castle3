@@ -285,7 +285,9 @@ Version 3.77 Goals
 	- INPROC: better localize dict data
 		- DONE: move 'help' responses to help_dict in interp()
 		- DONE: 'help' text updates
-		- TBD: move 'tru_1word' responses to cmd_exe() ???	
+		- TBD: move 'tru_1word' responses and 'version' to cmd_exe() ???
+		- TBD: move 'introductin' to start_up() ???
+		- TBD: move 'score' to gs_class_def() ???
 		- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
 			- IDEA: obj should be a black-box
 		- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
