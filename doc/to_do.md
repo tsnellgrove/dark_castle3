@@ -284,7 +284,7 @@ Version 3.77 Goals
 		- DONE: specific put() error for "put suitcase in suitcase"
 	- INPROC: better localize dict data
 		- DONE: move 'help' responses to help_dict in interp()
-		- TBD: 'help' text updates
+		- DONE: 'help' text updates
 		- TBD: move 'tru_1word' responses to cmd_exe() ???	
 		- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
 			- IDEA: obj should be a black-box
