@@ -282,8 +282,9 @@ Version 3.77 Goals
 			- DONE: ideally should be "You're already wearing"... not "not in your hand"
 		- CANCEL: elim "can't see an X here" from interp errors?
 		- DONE: specific put() error for "put suitcase in suitcase"
-	- TBD: better localize dict data
-		- TBD: move 'help' responses to help_dict in interp()
+	- INPROC: better localize dict data
+		- DONE: move 'help' responses to help_dict in interp()
+		- TBD: 'help' text updates
 		- TBD: move 'tru_1word' responses to cmd_exe() ???	
 		- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
 			- IDEA: obj should be a black-box

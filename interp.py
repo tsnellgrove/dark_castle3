@@ -6,7 +6,7 @@
 
 ### import statements
 from itertools import islice
-from static_gbl import descript_dict
+# from static_gbl import descript_dict
 
 ### interpreter function language static dictionaries & lists ###
 articles_lst = ['a', 'an', 'the']
@@ -36,10 +36,21 @@ abbreviations_dict = {
 		'h' : 'help'
 }
 
+help_dict = {
+	'help' : "Help syntax = 'help <option>'. Help options = 'basics', 'creatures', 'one-word-commands', 'verbs', 'abbreviations', 'adjectives', prepositions', 'articles', 'read', or 'attack'.",
+	'help_basics' : "Objects you can examine and interact with are capitalized. Use 'read' (not 'examine') to read text you find written on objects. You can 'take' one object that you can see into your hand at a time from the room, a container, your backpack, or from being worn. Your other hand is holding your light source. In many cases you must be holding an object in your hand in order to act uppon it (e.g. 'unlock', drop', 'eat', 'put', 'wear'). If you are already holding an item when you take something else, the original item you were holding is automatically transferred into your backpack. You can view what you're carying using 'inventory'. Use 'look' to get a description of the room you're in. Type 'quit' to quit.  Start all multi-word commands with a verb.",
+	'help_creatures' : "Despite its age and state of disrepair, Dark Castle contains a number of creatures. Some are helpful, some are not. There are three main commands for interacting with creatures: 'show', 'give', and 'attack'. 'show'ing an item to a creature may give you information about its opinion of that item. 'give'ing an item to a creature may generate a useful response - particularly if it's an object that the creature has an opinion about. Alas, not all encounters can be resolved amicably - and for these cases there is the 'attack' command. Not surprisingly, this can generate a very hostile response (see 'help attack' for more info). Lastly, be aware that each creature has its own priorities and point of view and will respond to Burt's actions accordingly.",
+	'help_adjectives' : "Most nouns have an adjective (e.g. 'rusty key'). The interpreter recognizes adjectives but only requires them if other similar nouns are in the room. So 'take rusty key' and 'take key' are equivalent unless there is another key in the room.",
+	'help_prepositions' : "There are two available prepositions: 'in' and 'to'. 'in' is used with the verb 'put'. This allows you to put items in containers. Example: 'put the rusty key in the wooden chest'. 'to' is used with the verbs 'show' and 'give'. This allows you to show or give items to creatures. Examples: 'show the rusty key to the goblin' or 'give the rusty key to the hedgehog'.",
+	'help_read' :  "If you can't 'read' something (e.g. a note or a scroll) try 'examine' instead. The item may have some readable text written on it that you'll learn more about via 'examine'.",
+	'help_attack' : "There are various creatures that reside in Dark Castle. Some are friendly but some may not be. Burt can 'attack' a creature using whatever weapon he is holding in his hand. If the creature is hostile and Burt is wielding the correct weapon he may be able to slay it. However there are risks to attacking as well. If the creature is friendly, an 'attack' may scare it away and Burt may lose a valuble ally. And if the creature is hostile but Burt is wielding the wrong weapon, Burt himself may perish. As in real life, combat in Dark Castle is frought!",
+}
+
 ### help = print help info
 def help(active_gs, option):
 		if option == 'basics':
-				output = descript_dict['help_basics']
+#				output = descript_dict['help_basics']
+				output = help_dict['help_basics']
 		elif option == 'verbs':
 				output = "Available verbs include: " + ', '.join(known_verbs_lst)
 		elif option == 'one-word-commands':
@@ -51,22 +62,28 @@ def help(active_gs, option):
 				output = ("The following articles are supported but not required: "
 								+ ', '.join(articles_lst))
 		elif option == 'adjectives':
-					output = descript_dict['help_adjectives']
+#					output = descript_dict['help_adjectives']
+					output = help_dict['help_adjectives']
 		elif  option == 'abbreviations':
 				pre_out = "Available abbreviations include: "
 				for key in abbreviations_dict:
 						pre_out = pre_out + key + " = " + abbreviations_dict[key] + ", "
 				output = pre_out[:-2]
 		elif option == 'prepositions':
-				output = descript_dict['help_prepositions']
+#				output = descript_dict['help_prepositions']
+				output = help_dict['help_prepositions']
 		elif option == 'read':
-				output = descript_dict['help_read']
+#				output = descript_dict['help_read']
+				output = help_dict['help_read']
 		elif option == 'attack':
-				output = descript_dict['help_attack']
+#				output = descript_dict['help_attack']
+				output = help_dict['help_attack']
 		elif option == 'creatures':
-				output = descript_dict['help_creatures']
+#				output = descript_dict['help_creatures']
+				output = help_dict['help_creatures']
 		else:
-				output = descript_dict['help']
+#				output = descript_dict['help']
+				output = help_dict['help']
 		active_gs.buffer(output)
 
 ### root_word_count - determines if user command contains root words
@@ -163,7 +180,8 @@ def interpreter(user_input, master_obj_lst):
 
 		# handle true one-word commands
 		if len(user_input_lst) == 1 and word1 == 'help':
-				active_gs.buffer(descript_dict['help'])
+#				active_gs.buffer(descript_dict['help'])
+				active_gs.buffer(help_dict['help'])
 				return 'help', [word1]
 		if len(user_input_lst) == 1 and word1 in one_word_only_lst:
 				return 'tru_1word', [word1]
