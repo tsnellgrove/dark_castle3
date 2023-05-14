@@ -10,7 +10,7 @@ from itertools import islice
 ### interpreter function language static dictionaries & lists ###
 articles_lst = ['a', 'an', 'the']
 
-one_word_only_lst = ['credits', 'score', 'version', 'quit', 'xyzzy42']
+one_word_only_lst = ['credits', 'score', 'version', 'quit', 'xyzzy42', 'debug_poke53281,0']
 
 one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory', 'look', 'stand']
 
@@ -54,9 +54,9 @@ def help(active_gs, option):
 		elif option == 'one-word-commands':
 				display_one_word_lst = one_word_only_lst.copy()
 				display_one_word_lst.pop()
+				display_one_word_lst.pop()
 				display_one_word_lst.extend(['help', 'stand'])
 				output = ("Available one word commands include: "
-#								+ ', '.join(user_one_word_lst))
 								+ ', '.join(display_one_word_lst))
 		elif option == 'articles':
 				output = ("The following articles are supported but not required: "

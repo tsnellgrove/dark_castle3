@@ -289,11 +289,15 @@ Version 3.77 Goals
 		- CANCEL: move 'introductin' to start_up() ???
 		- CANCEL: move 'score' to gs_class_def() ???
 
-- TBD: Debug Mode
-	- TBD: add debug_mode boolean in active_gs
-	- TBD: create 1word debug command ('debug_poke53281,0') that gives state and sets bool
-		- TBD: examample: "Debug Mode is now set to True"
-	- TBD: use debug mode to set error source pre-fixes and also use of 'try for error & cmd'
+- INPROC: Debug Mode
+	- DONE: add debug boolean to state_dict in mk_def_pkl()
+	- DONE: add 1word debug command ('debug_poke53281,0') to one_word_dict
+	- DONE: create setter & getter for state_dict in gs_class_def()
+	- DONE: code for one_word_command that tells state and sets bool in cmd_exe()
+		- DONE: examample: "Debug Mode is now set to True"
+	- TBD: use debug mode to change UI
+		- TBD: if debug, set error source pre-fixes
+		- TBD: if debug, elim use of 'try' for error & cmd
 
 	- TBD: validate() doc_strings
 		- TBD: interp() doc_string regarding all 'help' cases being handeled locally

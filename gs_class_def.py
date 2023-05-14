@@ -20,6 +20,14 @@ class GameState(object):
 		### setters & getters ###
 
 		@property
+		def state_dict(self):
+				return self._state_dict
+
+		@state_dict.setter
+		def state_dict(self, new_state):
+				self._state_dict = new_state
+
+		@property
 		def map(self):
 				return self._map
 
