@@ -6,6 +6,7 @@
 
 ### import statements ###
 import random
+import traceback
 from static_gbl import descript_dict, static_dict
 
 val_err_dict = {
@@ -13,7 +14,7 @@ val_err_dict = {
 	'val_err_1' : "Burt, are you babbling again?",
 	'val_err_2' : "Burt, I'm just going to pretend I didn't hear that.",
 	'val_err_3' : "Burt, you've said some strange things over the years but that was a doosey!",
-	'val_err_4' : "Burt! What would your mother say if she heard you speaking like that!?",
+	'val_err_4' : "Burt! What would your Nana say if she heard you speaking like that!?",
 }
 
 def validate(active_gs, case, word_lst):
@@ -22,14 +23,17 @@ def validate(active_gs, case, word_lst):
 	# *** interpreter errors ***
 	if case == 'error':
 		output = word_lst[0]
-		active_gs.buffer(f"[INTERP] {output}")
+		if active_gs.state_dict['debug']:
+			active_gs.buffer(f"[INTERP] {output}")
+		else:
+			active_gs.buffer(f"{output}")
 		return False
 
 	# *** command errors ***
 	if case in ['2word', 'prep', 'go']:
 		try:
 			if case == '2word':
-				word2_obj, word1 = word_lst
+				word2_obj, word1, break_code = word_lst
 				cmd_error = getattr(word2_obj, word1 + '_err')(active_gs)
 			elif case == 'prep':
 				dirobj_obj, word1, noun_obj = word_lst
@@ -39,7 +43,11 @@ def validate(active_gs, case, word_lst):
 				cmd_error = getattr(room_obj, word1 + '_err')(word2, active_gs)
 		except:
 			cmd_error = True
-			active_gs.buffer(val_err_dict['val_err_' + str(random.randint(0, 4))])
+			if active_gs.state_dict['debug']:
+				print("[VAL]")
+				traceback.print_exc()
+			else:
+				active_gs.buffer(val_err_dict['val_err_' + str(random.randint(0, 4))])
 		return not cmd_error
 	return True
 
