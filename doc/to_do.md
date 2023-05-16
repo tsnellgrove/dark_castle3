@@ -299,8 +299,9 @@ Version 3.77 Goals
 		- DONE: investigate whether error text can be piped to std output => traceback import
 		- DONE: in interp(), if debug, set error source pre-fixes & print error to export 
 		- DONE: move random errors back to static_gbl().descript_dict
-		- TBD: in cmd_exe(), if debug, set error source pre-fixes & print error to export (3 cases)
+		- DONE: in cmd_exe(), if debug, set error source pre-fixes & print error to export (3 cases)
 		- TBD: in validate(), figure out how to use buffer rather than print for except error debug
+		- TBD: maybe I need a misc_err() method in gs that takes err msg & performs the if... else
 
 	- TBD: validate() doc_strings
 		- TBD: interp() doc_string regarding all 'help' cases being handeled locally
