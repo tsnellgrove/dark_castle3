@@ -20,11 +20,19 @@ static_dict = {
 descript_dict = {
 
 
-		#### ONE WORD COMMANDS ####
+		#### ONE WORD & ERRORS ####
 
 		### one-word commands - non-objeects ###
 		'introduction' : "Greetings brave adventurer!\n\nYou are Burt-the-Baker, the only adventurer brave - or foolish - enough to enter the Dark Castle in search of treasure.\n\nType 'help' for help.\n\n",
 		'credits' : "Written and programmed by Tom. Thanks to Toby, Joshua, JoyEllen, Milo, Gideon, Franco, Karl, Andy, Ken and Alec for advice and playtesting!!",
+
+		### error messages ###
+		'misc_err_0' : "Burt, I have no idea what you're talking about!",
+		'misc_err_1' : "Burt, are you babbling again?",
+		'misc_err_2' : "Burt, I'm just going to pretend I didn't hear that.",
+		'misc_err_3' : "Burt, you've said some strange things over the years but that was a doosey!",
+		'misc_err_4' : "Burt! What would your Nana say if she heard you speaking like that!?",
+
 
 		#### VISIBLE OBJ ####
 

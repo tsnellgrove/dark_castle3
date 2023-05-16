@@ -9,13 +9,13 @@ import random
 import traceback
 from static_gbl import descript_dict, static_dict
 
-val_err_dict = {
-	'val_err_0' : "Burt, I have no idea what you're talking about!",
-	'val_err_1' : "Burt, are you babbling again?",
-	'val_err_2' : "Burt, I'm just going to pretend I didn't hear that.",
-	'val_err_3' : "Burt, you've said some strange things over the years but that was a doosey!",
-	'val_err_4' : "Burt! What would your Nana say if she heard you speaking like that!?",
-}
+# val_err_dict = {
+#	'val_err_0' : "Burt, I have no idea what you're talking about!",
+#	'val_err_1' : "Burt, are you babbling again?",
+#	'val_err_2' : "Burt, I'm just going to pretend I didn't hear that.",
+#	'val_err_3' : "Burt, you've said some strange things over the years but that was a doosey!",
+#	'val_err_4' : "Burt! What would your Nana say if she heard you speaking like that!?",
+# }
 
 def validate(active_gs, case, word_lst):
 	"""Validates user_input.
@@ -33,7 +33,7 @@ def validate(active_gs, case, word_lst):
 	if case in ['2word', 'prep', 'go']:
 		try:
 			if case == '2word':
-				word2_obj, word1, break_code = word_lst
+				word2_obj, word1 = word_lst
 				cmd_error = getattr(word2_obj, word1 + '_err')(active_gs)
 			elif case == 'prep':
 				dirobj_obj, word1, noun_obj = word_lst
@@ -47,7 +47,8 @@ def validate(active_gs, case, word_lst):
 				print("[VAL]")
 				traceback.print_exc()
 			else:
-				active_gs.buffer(val_err_dict['val_err_' + str(random.randint(0, 4))])
+#				active_gs.buffer(val_err_dict['val_err_' + str(random.randint(0, 4))])
+				active_gs.buffer(descript_dict['misc_err_' + str(random.randint(0, 4))])
 		return not cmd_error
 	return True
 

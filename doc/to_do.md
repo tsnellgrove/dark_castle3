@@ -295,11 +295,12 @@ Version 3.77 Goals
 	- DONE: create setter & getter for state_dict in gs_class_def()
 	- DONE: code for one_word_command that tells state and sets bool in cmd_exe()
 		- DONE: examample: "Debug Mode is now set to True"
-	- TBD: use debug mode to change UI
+	- INPROC: use debug mode to change UI
 		- DONE: investigate whether error text can be piped to std output => traceback import
 		- DONE: in interp(), if debug, set error source pre-fixes & print error to export 
-		- TBD: move random errors back to static_gbl().descript_dict
+		- DONE: move random errors back to static_gbl().descript_dict
 		- TBD: in cmd_exe(), if debug, set error source pre-fixes & print error to export (3 cases)
+		- TBD: in validate(), figure out how to use buffer rather than print for except error debug
 
 	- TBD: validate() doc_strings
 		- TBD: interp() doc_string regarding all 'help' cases being handeled locally
