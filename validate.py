@@ -36,8 +36,7 @@ def validate(active_gs, case, word_lst):
 		except:
 			cmd_error = True
 			if active_gs.state_dict['debug']:
-				print("[VAL]")
-				traceback.print_exc()
+				active_gs.buffer("[VAL] " + traceback.format_exc())
 			else:
 				active_gs.buffer(descript_dict['misc_err_' + str(random.randint(0, 4))])
 		return not cmd_error
