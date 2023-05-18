@@ -29,10 +29,11 @@ def cmd_execute(active_gs, case, word_lst):
 				active_gs.state_dict['debug'] = not active_gs.state_dict['debug']
 				active_gs.buffer(f"Debug Mode is now set to {active_gs.state_dict['debug']}.")
 				return
-			if active_gs.state_dict['debug']:
-				active_gs.buffer("[CMD] tru_1word case not found")
-			else:
-				active_gs.buffer(descript_dict['misc_err_' + str(random.randint(0, 4))])
+			active_gs.buff_debug_err("[CMD] tru_1word case not found")
+#			if active_gs.state_dict['debug']:
+#				active_gs.buffer("[CMD] tru_1word case not found")
+#			else:
+#				active_gs.buffer(descript_dict['misc_err_' + str(random.randint(0, 4))])
 			return
 		if case == 'go':
 			room_obj, word1, word2 = word_lst
@@ -46,14 +47,16 @@ def cmd_execute(active_gs, case, word_lst):
 			dirobj_obj, word1, noun_obj = word_lst
 			getattr(dirobj_obj, word1)(noun_obj, active_gs)
 			return
-		if active_gs.state_dict['debug']:
-			active_gs.buffer("[CMD] command case error")
-		else:
-			active_gs.buffer(descript_dict['misc_err_' + str(random.randint(0, 4))])
+		active_gs.buff_debug_err("[CMD] command case error")
+#		if active_gs.state_dict['debug']:
+#			active_gs.buffer("[CMD] command case error")
+#		else:
+#			active_gs.buffer(descript_dict['misc_err_' + str(random.randint(0, 4))])
 		return
 	except:
-		if active_gs.state_dict['debug']:
-			active_gs.buffer("[CMD] " + traceback.format_exc())
-		else:
-			active_gs.buffer(descript_dict['misc_err_' + str(random.randint(0, 4))])
+		active_gs.buff_debug_err("[CMD] " + traceback.format_exc())
+#		if active_gs.state_dict['debug']:
+#			active_gs.buffer("[CMD] " + traceback.format_exc())
+#		else:
+#			active_gs.buffer(descript_dict['misc_err_' + str(random.randint(0, 4))])
 	return

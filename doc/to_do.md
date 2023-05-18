@@ -302,7 +302,8 @@ Version 3.77 Goals
 		- DONE: in cmd_exe(), if debug, set error source pre-fixes & print error to export (3 cases)
 		- DONE: in validate(), figure out how to use buffer rather than print for except error debug
 		- DONE: update cmd_exe() except error to buffer traceback and test error cases
-		- TBD: create a buff_err_or_debug() method in gs that takes err msg & performs the if... else
+		- DONE: create a buff_debug_err() method in gs that takes err msg & performs the if... else
+		- TBD: clean up comments and imports in cmd_exe() and validate()
 
 	- TBD: validate() doc_strings
 		- TBD: interp() doc_string regarding all 'help' cases being handeled locally

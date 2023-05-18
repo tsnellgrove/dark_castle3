@@ -5,6 +5,7 @@
 
 
 ### import
+import random
 from static_gbl import descript_dict, static_dict
 
 ### classes
@@ -136,6 +137,12 @@ class GameState(object):
 						self.buffer(descript_dict[desc_key]) 
 				except:
 						pass
+
+		def buff_debug_err(self, debug_str):
+				if self.state_dict['debug']:
+						self.buffer(debug_str)
+				else:
+						self.buffer(descript_dict['misc_err_' + str(random.randint(0, 4))])
 
 		def reset_buff(self):
 				self._state_dict['out_buff'] = ""
