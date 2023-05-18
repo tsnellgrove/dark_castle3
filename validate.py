@@ -5,9 +5,7 @@
 
 
 ### import statements ###
-import random
 import traceback
-from static_gbl import descript_dict, static_dict
 
 def validate(active_gs, case, word_lst):
 	"""Validates user_input.
@@ -36,10 +34,6 @@ def validate(active_gs, case, word_lst):
 		except:
 			cmd_error = True
 			active_gs.buff_debug_err("[VAL] " + traceback.format_exc())
-#			if active_gs.state_dict['debug']:
-#				active_gs.buffer("[VAL] " + traceback.format_exc())
-#			else:
-#				active_gs.buffer(descript_dict['misc_err_' + str(random.randint(0, 4))])
 		return not cmd_error
 	return True
 

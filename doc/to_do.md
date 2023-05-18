@@ -289,13 +289,13 @@ Version 3.77 Goals
 		- CANCEL: move 'introductin' to start_up() ???
 		- CANCEL: move 'score' to gs_class_def() ???
 
-- INPROC: Debug Mode
+- DONE: Debug Mode
 	- DONE: add debug boolean to state_dict in mk_def_pkl()
 	- DONE: add 1word debug command ('debug_poke53281,0') to one_word_dict
 	- DONE: create setter & getter for state_dict in gs_class_def()
 	- DONE: code for one_word_command that tells state and sets bool in cmd_exe()
 		- DONE: examample: "Debug Mode is now set to True"
-	- INPROC: use debug mode to change UI
+	- DONE: use debug mode to change UI
 		- DONE: investigate whether error text can be piped to std output => traceback import
 		- DONE: in interp(), if debug, set error source pre-fixes & print error to export 
 		- DONE: move random errors back to static_gbl().descript_dict
@@ -303,11 +303,11 @@ Version 3.77 Goals
 		- DONE: in validate(), figure out how to use buffer rather than print for except error debug
 		- DONE: update cmd_exe() except error to buffer traceback and test error cases
 		- DONE: create a buff_debug_err() method in gs that takes err msg & performs the if... else
-		- TBD: clean up comments and imports in cmd_exe() and validate()
+		- DONE: clean up comments and imports in cmd_exe() and validate()
 
 	- TBD: validate() doc_strings
-		- TBD: interp() doc_string regarding all 'help' cases being handeled locally
-		- TBD: determine needed doc_string updates
+		- CANCEL: interp() doc_string regarding all 'help' cases being handeled locally
+		- TBD: determine needed doc_string updates - perhaps overview of errors across INTERP, VAL, & CMD
 		- TBD: update Invis err doc_string
 		- TBD: doc_string how validate() works
 		- TBD: doc_string about future 'silent_exe' for symetric creature commands
