@@ -6,6 +6,7 @@
 
 ### import statements ###
 import random
+import traceback
 from static_gbl import descript_dict, static_dict
 
 ### execute commands based on case ###
@@ -52,7 +53,7 @@ def cmd_execute(active_gs, case, word_lst):
 		return
 	except:
 		if active_gs.state_dict['debug']:
-			active_gs.buffer("[CMD] command execute error")
+			active_gs.buffer("[CMD] " + traceback.format_exc())
 		else:
 			active_gs.buffer(descript_dict['misc_err_' + str(random.randint(0, 4))])
 	return
