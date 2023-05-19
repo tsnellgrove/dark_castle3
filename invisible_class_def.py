@@ -590,7 +590,7 @@ class Invisible(object):
 	* Invisible class:
 		
 		Overview:
-			name is a text string that represents the canonical name of an object. It should be identical to the declared object label, unique, and immutable. For object rusty_key, rusty_key.name = 'rusty_key'. For reasons that remain a little murky to my beginner brain, objects in Python have no way of actually knowing their own names. As I understand it, object names are merely labels that are pointers to the actual object... and the object itself has no idea what labels are pointing to it at any given time. In any case, the perceived wisdom is that if you want to be able to reference an object by its name, you'd better give it a name attribute - hence 'name'.
+			'name' is a text string that represents the canonical name of an object. It should be identical to the declared object label, unique, and immutable. For object rusty_key, rusty_key.name = 'rusty_key'. For reasons that remain a little murky to my beginner brain, objects in Python have no way of actually knowing their own names. As I understand it, object names are merely labels that are pointers to the actual object... and the object itself has no idea what labels are pointing to it at any given time. In any case, the perceived wisdom is that if you want to be able to reference an object by its name, you'd better give it a name attribute - hence 'name'.
 			
 			The object tree of Dark Castle forks from Invisible. One trunk leads to Writing, then ViewOnly, and then all the other visible objects in the game that Burt can interct with. The other trunk leads to a collection of invisible objects that manage the automated behavior of the game. It might surprise a player of Dark Castle to learn that there are about as many invisible objects in the game as there are visible ones. However if you inspect the take() method you'll see that there's no code there that could trigger the royal_hedgehog to guard the shiny_sword. Likewise, there's no code in go() that could tell Burt about the Rusty Key when he tries to head south from the Entrance. These behaviors and many more are all enabled by invisible objects. See mach_class_def() for more information on these objects.
 
@@ -607,7 +607,7 @@ class Invisible(object):
 
 		- Game Design:
 			The Purpose of Errors:
-				There are vastly more wrong command strings that can be given than right ones. When the valid command set is small enough, it works to simply accept the correct commands and throw a generic error on everything else. But as the vocabulary grows, the opportunity for genuine mis-wordings increses exponentially (e.g. if Burt can 'enter Throne', why can't he 'enter Moat' ??). At this point, the error sub-system becomes responsible for providing verb usage guidance. Lastly, anyone who plays the full game will recieve quite a few errors - so, in additiona to being instructive, errors should also be varried, fun, and amusing.
+				There are vastly more wrong command strings that can be given than right ones. When the valid command set is small enough, it works to simply accept the correct commands and throw a generic error on everything else. But as the vocabulary grows, the opportunity for genuine mis-wordings increses exponentially (e.g. if Burt can 'enter Throne', why can't he 'enter Moat' ??). At this point, the error sub-system becomes responsible for providing verb usage guidance. Lastly, anyone who plays the full game will recieve quite a few errors - so, in addition to being instructive, errors should also be varried, fun, and amusing.
 
 			Error Hierarchy:
 				Along with providing guidance and humor, the error sub-system should present the player with the intuitively most obvious issue concerning their proposed action. For example, suppose the players issues the command "unlock gate with silver key". There could be several reasons why this command doesn't succeed: Maybe you aren't holding the key. Maybe the door is already open (in Dark Castle you can't lock or unlock an open door). Maybe the Silver Key is the wrong key for the Gate. In fact, all three of these could be true at once. But we only want to throw one error - and we want that error to reflect the "most obvious" problem (in this case, the fact that you aren't holding the Silver Key that you intended to unlock the Gate with).
@@ -625,20 +625,22 @@ class Invisible(object):
 				However, there are limits. Errors are tricky. Creatures are tricky. For now at least, throwing gramatically accurate errors for non-Burt creatures is simply out of scope. For non-Burt creatures, errors should be silencable (future feature) - but if not silenced, they will appear to be directed at the user - and at Burt in particular - in second person tense. It is up to the Implementor to avoid programming other creatures to perform error generating tasks!
 
 		- Implementation Detail:
-			There are 2 Error Types:
+			There are 3 Error Types:
 
-				1) Interpreter Errors: The interpreter is unclear what command the player is trying to issue.
+				1) Interpreter Errors: The interpreter is unclear what command the player is trying to issue. These are usually caused by the limitations of the interpreter. The user needs feedback on what command format or vocabulary the interpreter can handle.
 				
-				2) Command Errors: The command is understood but cannot be carried out.
+				2) Validation Errors: The command is understood but cannot be carried out. Often caused by 'silly' (e.g. 'take moat') commands but sometimes simply by interpreter limiations (e.g. 'unlock castle with key'). The user needs feedback on how each command can be used and what actions are possible in the game world. Validation error response comprises the vast majority of the error sub-system.
+
+				3) Command Errors: The command is understood and not erronious - but cannot be performmed. Almost always a programming error.
 			
-			There are 4 flavors of Command Error:
-				1) Generic Command Errors: Command failure cases that occur across multiple methods. e.g. very few commands will run if the noun of the command is not in the room's scope. Catching these errors in validate() avoids needing to re-write the same error-checking code repeatedly in multiple methods.
+			There are 4 flavors of Validaation Error:
+				1) Generic Validation Errors: Command failure cases that occur across multiple methods. e.g. very few commands will run if the noun of the command is not in the room's scope. Catching these errors in err_std() avoids needing to re-write the same error-checking code repeatedly in multiple methods.
 				
-				2) Custom Command Errors: Command failure cases specific to a given method. e.g. Burt tries to unlock a container with the wrong key. This is a specific type of error that is best addressed in the unlock() method code itself. The error text is buffered and the fail condition is returned to validate() - which then returns False to app_main() - so that no command is actually run.
+				2) Custom Validation Errors: Command failure cases specific to a given method. e.g. Burt tries to unlock a container with the wrong key. This is a specific type of error that is best addressed in the specific unlock_err() method in invisible(). The error text is buffered and the fail condition is returned to validate() - which then returns False to app_main() - so that no command is actually run.
 				
-				3) Generic Method Mis-Match Errors: The player attempts to use a method on an incompatible object. These are usually acts of experimentation or silliness on the player's part. e.g. when Burt tries to 'take castle' no one really expects the command to work. So we throw a random, appropriately snide error.
+				3) Generic Method Mis-Match Errors: The player attempts to use a method on an incompatible object. These are usually acts of experimentation or silliness on the player's part. e.g. when Burt tries to 'take castle' no one really expects the command to work. So we throw an appropriately snide error.
 				
-				4) Custom Method Mis-Match Errors: In a few specific cases, player confusion over which methods can be used with which objects is quite justified. e.g. it's not unreasonable for the player to attempt to take the 'water'. In these cases we would like to give an explanitory error - but we can't provide a Custom Method Failure as the method cannot run at all. So, we trap the error in advance in the validate() method so that a helpful response can be given.
+				4) Custom Method Mis-Match Errors: In a few specific cases, player confusion over which methods can be used with which objects is quite justified. e.g. it's not unreasonable for the player to attempt to take the 'water'. In these cases we give an explanitory error in take_err() in invisible() for the specific error case of taking a liquid.
 
 			No actions should be performed via errors:
 				As a general rule, no actions should be taken - and no in-game information should be provided - via errors. The error sub-system is intended as a 'pre-check' for user commands, which then aborts from command execution if the command is not valid. Time does not pass on error-generating turns and there are no pre-actions, post-actions, or auto-actions. 
@@ -646,19 +648,17 @@ class Invisible(object):
 				While it is technically possible to update object state within error code, this is not intended and should be avoided. If a state change will be triggered, it should be handeled within the class verb method - or possibly by a modular machine. Ideally, the same would be true for providing in-game information (e.g. examine() or read() ). An exception to this rule can be made for game meta-information where the player appears to need a usage hint (e.g. "use read() rather than examine() on objects of class Writing"). 
 
 		- Program Architecture:
-			We need to deal with two mai variants of Command Errors: 1) Custom Command Errors that are are specific to the verb method and its class and 2) Those errors that are based on Method Mis-Match or are Generic in nature. As mentioned in Implemntation Details, Custom Command Errors are dealt with in the body of the verb method itself. But where to address the other three flavors of Command Errors?
+			We need to deal with two main variants of Validate Errors: 1) Custom Validate Errors that are are specific to the verb method and its class and 2) Those errors that are based on Method Mis-Match or are Generic in nature. 
 			
-			Invistible is the top of the class inheritance tree. So this is an obvious place to catch any Method Mis-Match Error. As a result, every verb method has two error code blocks: One for Custom Command Errors that lives in the verb method itself, and another in Invisible that deals with Method Mis-Match Errors and Generic Command Errors.
-
-			These two error code blocks are not independent. Instead, the verb method code block (which addresses class-specific Custom Command Errors) calls (arguably, extends) the Invisible error block. The Invisible code block returns True if there is an error and Falso on no errors. So the first thing the verb method error block does it to call the Invisible block and exit on true.
+			Invisible is the top of the class inheritance tree. So this is an obvious place to catch both types of error. This allows us to address method mis-matches. As a result, every verb method has an error block (<verb>_err) in invisible() that deals with Method Mis-Match Errors, Generic Command Errors, and Custom Validate Errors. The Invisible error code block returns True to validate() if there is an error and Falso on no errors. 
 
 			This structure is perhaps a bit heavy-handed but it has the following advantages:
 			
-				1) All Command Errors are generated in only one of two possible code blocks
+				1) All Validate Errors are generated in only one code block
 
-				2) Re-use of the Generic Command Error / Method Mis-Match Error code block when checking for Custom Command Errors
+				2) Re-use of the Generic Validation Error / Method Mis-Match Error code block when checking for Custom Validate Errors
 
-				3) Because all Command Errors are called within a method (vs. in validate() ), Custom Method Mis-Match errors can easily be generated based on referenced object class.
+				3) Because all Validate Errors are called within invisible(), Custom Method Mis-Match errors can easily be generated based on referenced object class.
 
 		- A Not-so-Brief History of Error Handling:
 			From the start, the verb methods themselves were the home for all Generic and Custom Command Errors. I addressed Method Mis-Match cases in cmd_exe() where I simply wrapped the verb method call in a try... except... routine that called a random, non-specific, humorous error. 
@@ -679,6 +679,6 @@ class Invisible(object):
 
 			Also, around this time, I began repalying Hollywood Hijinx with my youngest son, Joshua. I'd never played it all the way through before and we had a lot of fun solving it (though I did need hints on both the penguin and the buzz saw - both of which felt like iffy puzzles to me). In playing it I was reminded that Infocom did a nice job of throwing verb-specific errors... where-as Dark Castle still threw generic "Burt, I have no idea what you're talking about" errors for the vast majority of Method Mis-Matches.
 
-			So, this was the state of DC errors when I started coding the Seat class... which required a whole slew of new Generic Command errors. Here, the complexity sins of my past caught up with me. I had error messages being triggered from interp(), validate(), verb classes, and non-verb classes. I struggled repeatedly to troubleshoot bugs because I couldn't easily figure out which bit of code (false) errors were getting triggered from. I eventually got class Seat working but I was so frustrated with the error situation that I pushed off the othe work I had been planning to do and immediately started working on the (hoefully) comprehensive and systemic error solution. I initially put the foundation of the Error Sub-System in Writing (the highest visible class in the inheritance tree), but quickly realized that Invisible wouild be a better home.
+			So, this was the state of DC errors when I started coding the Seat class... which required a whole slew of new Generic Command errors. Here, the complexity sins of my past caught up with me. I had error messages being triggered from interp(), validate(), verb classes, and non-verb classes. I struggled repeatedly to troubleshoot bugs because I couldn't easily figure out which bit of code (false) errors were getting triggered from. I eventually got class Seat working but I was so frustrated with the error situation that I pushed off the othe work I had been planning to do and immediately started working on the (hoefully) comprehensive and systemic error solution. I initially put the foundation of the Error Sub-System in Writing (the highest visible class in the inheritance tree), but quickly realized that Invisible wouild be a better home. Also, I initially kept verb-specific errors in the same block as the commands and called the generic error block in invisble() from there - but it soon became clear that a single error block in invisilbe for all code made more sense.
 
 """

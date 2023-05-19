@@ -305,11 +305,12 @@ Version 3.77 Goals
 		- DONE: create a buff_debug_err() method in gs that takes err msg & performs the if... else
 		- DONE: clean up comments and imports in cmd_exe() and validate()
 
-	- TBD: validate() doc_strings
+	- INPROC: validate() doc_strings
 		- CANCEL: interp() doc_string regarding all 'help' cases being handeled locally
-		- TBD: determine needed doc_string updates - perhaps overview of errors across INTERP, VAL, & CMD
-		- TBD: update Invis err doc_string
+		- DONE: determine needed doc_string updates - perhaps overview of errors across INTERP, VAL, & CMD
+		- DONE: update Invis err doc_string
 		- TBD: doc_string how validate() works
+		- TBD: doc_string on debug
 		- TBD: doc_string about future 'silent_exe' for symetric creature commands
 		- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
 		- TBD: update Switch doc_string regarding where buttons reside
