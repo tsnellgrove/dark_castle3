@@ -309,9 +309,8 @@ Version 3.77 Goals
 		- CANCEL: interp() doc_string regarding all 'help' cases being handeled locally
 		- DONE: determine needed doc_string updates - perhaps overview of errors across INTERP, VAL, & CMD
 		- DONE: update Invis err doc_string
-		- TBD: doc_string how validate() works
+		- DONE: doc_string how validate() works
 		- TBD: doc_string on debug
-		- TBD: doc_string about future 'silent_exe' for symetric creature commands
 		- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
 		- TBD: update Switch doc_string regarding where buttons reside
 		- TBD: Switch doc_string entry explaining goals
@@ -667,6 +666,7 @@ Version 3.79 Goals
 Version 3.80 Goals
 - enable all verb methods for non-burt creatures
 
+- TBD: doc_string about future 'silent_exe' for symetric creature commandsv
 - TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
 - TBD: tune pronouns
 - IDEA: errors are only for burt
