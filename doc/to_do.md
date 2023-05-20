@@ -310,8 +310,8 @@ Version 3.77 Goals
 		- DONE: determine needed doc_string updates - perhaps overview of errors across INTERP, VAL, & CMD
 		- DONE: update Invis err doc_string
 		- DONE: doc_string how validate() works
-		- TBD: doc_string on debug
-		- TBD: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
+		- DONE: doc_string on debug
+		- DONE: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
 		- TBD: update Switch doc_string regarding where buttons reside
 		- TBD: Switch doc_string entry explaining goals
 			- IDEA: verb methods should live in switch_x obj and not need to know about each other
@@ -553,7 +553,7 @@ Version 3.7x Goals
 	- CANCEL: reconsider showing Receptacle contents on look... maybe too much data? What does Zork do? Restrict to explicit examine??
 	- TBD: hunger & thirst become Creature conditions to examine??
 - TBD: learn how to use VS Code word wrap and other features for Python
-
+- IDEA: maybe I should call validate() again between pre_action() and cmd_exe() and then again between cmd_exe() and post_action() ?
 
 
 ##########################
