@@ -333,8 +333,9 @@ Version 3.7x Goals
 - Text & UI updates
 - Auto-try unlock(), lock(), attack() with item in hand
 
-- TBD: auto-try 'tool verbs' with item in hand
+- TBD: auto-try 'tool verbs' with item in hand (see below)
 
+- TBD: need to work out max_count vs. max_bulk (or both)
 - INPROC: MixIn approach to door module classes
 	- DONE: new name for module with doors & containers (interactive obj; interactive.py)
 	- DONE: map out MixIns and inheritance
@@ -347,8 +348,8 @@ Version 3.7x Goals
 		- SimpleDoor = ViewOnly + OpenableMixIn
 		- LockableDoor = SimpleDoor + LockableMixIn
 		- SimpleFixedContainer = ViewOnly + ContainsMixIn
-		- LiddedFixedContainer = SimpleChest + OpenableMixIn
-		- LockableFixedContainer = LiddedChest + LockableMixIn
+		- LiddedFixedContainer = SimpleFixedContainer + OpenableMixIn
+		- LockableFixedContainer = LiddedFixedContainer + LockableMixIn
 		- SimplePortableContainer = Item + ContainsMixIn
 		- LiddedPortableContainer = SimplePortableContainer + OpenableMixIn
 		- LockablePortableContainer = LiddedPortableContainer + LockableMixIn
