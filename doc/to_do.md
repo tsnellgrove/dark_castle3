@@ -312,7 +312,7 @@ Version 3.77 Goals
 		- DONE: doc_string how validate() works
 		- DONE: doc_string on debug
 		- DONE: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
-		- TBD: update Switch doc_string regarding where buttons reside
+		- DONE: update Switch doc_string regarding where buttons reside
 		- TBD: Switch doc_string entry explaining goals
 			- IDEA: verb methods should live in switch_x obj and not need to know about each other
 			- IDEA: the SwitchMixIn class should not need to know about all sub-classes
@@ -453,6 +453,7 @@ Version 3.7x Goals
 *** Unify Notes ***
 *** Plan for interpreter update ***
 
+- TBD: enable the 'behind' preposition (with multiple layers of obfustication) and put the control_panel behind the goblin (check TADS implementation)
 - TBD: make creature obj data more atomic
 	- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
 		- IDEA: obj should be a black-box
