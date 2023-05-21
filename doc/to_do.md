@@ -133,7 +133,7 @@ Version 3.77 Goals
 - Add Debug Mode
 
 
-- INPROC: implement validate() pre-test
+- DONE: implement validate() pre-test
 	- DONE: ideate validate() goals
 		- IDEA: need a systemic way to know if player command runs successfully
 			- IDEA: needed for command-triggered machines - especially pre-action
@@ -305,7 +305,7 @@ Version 3.77 Goals
 		- DONE: create a buff_debug_err() method in gs that takes err msg & performs the if... else
 		- DONE: clean up comments and imports in cmd_exe() and validate()
 
-	- INPROC: validate() doc_strings
+	- DONE: validate() doc_strings
 		- CANCEL: interp() doc_string regarding all 'help' cases being handeled locally
 		- DONE: determine needed doc_string updates - perhaps overview of errors across INTERP, VAL, & CMD
 		- DONE: update Invis err doc_string
@@ -313,7 +313,7 @@ Version 3.77 Goals
 		- DONE: doc_string on debug
 		- DONE: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
 		- DONE: update Switch doc_string regarding where buttons reside
-		- TBD: Switch doc_string entry explaining goals
+		- DONE: Switch doc_string entry explaining goals
 			- IDEA: verb methods should live in switch_x obj and not need to know about each other
 			- IDEA: the SwitchMixIn class should not need to know about all sub-classes
 			- IDEA: thus, SpringSliderSwich.pull() and LeverSwitch.pull() over-rides are valid compromise
