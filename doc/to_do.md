@@ -128,11 +128,19 @@ Notes:
 ##########################
 
 Version 3.7x Goals
-- Convert interactive objects to MixIn class architecture (enables future complex obj)
-- Text & UI updates
 - Auto-try unlock(), lock(), attack() with item in hand
+- Convert interactive objects to MixIn class architecture (enables future complex obj)
+- expand Perch class capabilities (reach concept)
+- implement Throne
+- Text & UI updates
+
 
 - TBD: auto-try 'tool verbs' with item in hand (see below)
+- TBD: auto-complete for prep verbs
+	- TBD: for obj-in-hand prep verbs, try in_hand(); error on hand_empty()
+	- TBD: for Creature prep_verbs, if one creature in room guess that creature, else error
+	- TBD: for Container / Surface prep_verbs, if one class obj in room guess it, else error
+	- TBD: update help() to explain how this works
 
 - TBD: need to work out max_count vs. max_bulk (or both)
 - INPROC: MixIn approach to door module classes
@@ -203,11 +211,6 @@ Version 3.7x Goals
 	- TBD: doc_string re: nook gets light from room
 
 
-- TBD: auto-complete for prep verbs
-	- TBD: for obj-in-hand prep verbs, try in_hand(); error on hand_empty()
-	- TBD: for Creature prep_verbs, if one creature in room guess that creature, else error
-	- TBD: for Container / Surface prep_verbs, if one class obj in room guess it, else error
-	- TBD: update help() to explain how this works
 
 
 - INPROC: review TADS3 terms for Description and preposition
