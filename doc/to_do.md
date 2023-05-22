@@ -124,16 +124,18 @@ Notes:
 
 
 ##########################
-### VERSION 3.7x START ###
+### VERSION 3.78 START ###
 ##########################
 
-Version 3.7x Goals
+Version 3.78 Goals
 - Auto-try unlock(), lock(), attack() with item in hand
 - Convert interactive objects to MixIn class architecture (enables future complex obj)
 - expand Perch class capabilities (reach concept)
-- implement Throne
-- Text & UI updates
+- implement Throne as class SeatMach
+- Text & UI updates (??)
 
+
+- TBD: review & unify version to-dos
 
 - TBD: auto-try 'tool verbs' with item in hand (see below)
 - TBD: auto-complete for prep verbs
@@ -209,9 +211,6 @@ Version 3.7x Goals
 	- TBD: doc_string re: Perch = translucent, Nook = opaque
 	- TBD: doc_string re: bulk for containers, count for surfaces
 	- TBD: doc_string re: nook gets light from room
-
-
-
 
 - INPROC: review TADS3 terms for Description and preposition
 
@@ -361,10 +360,10 @@ Version 3.7x Goals
 
 
 ##########################
-### VERSION 3.77 START ###
+### VERSION 3.7x START ###
 ##########################
 
-Version 3.77 Goals
+Version 3.7x Goals
 - rename active_gs to gs
 - modularize remaining GameState class and declarations (???)
 - create a class for descriptions
