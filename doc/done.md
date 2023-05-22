@@ -3681,4 +3681,204 @@ Version 3.76 Goals
 	- DONE: Move 3.76 doc to done
 
 
+##########################
+### VERSION 3.77 START ###
+##########################
+
+Version 3.77 Goals
+- finish error message tuning by updating validate() and introducting verb method modes
+- finish tuning error subsystem
+- Add Debug Mode
+
+
+- DONE: implement validate() pre-test
+	- DONE: ideate validate() goals
+		- IDEA: need a systemic way to know if player command runs successfully
+			- IDEA: needed for command-triggered machines - especially pre-action
+		- IDEA: pull verb method 'try' from cmd_exe into validate()
+		- IDEA: create an optional verb method mode attribute ('validate', 'std_exe', 'silent_exe')
+			- IDEA: enable calling verb methods in non_buffer mode just for pre & post action validation
+		- IDEA: introduce 'mode' attribute ('exe_std' and 'validate') to show, give, and put
+			- IDEA: call verb methods with a 'mode' variable that can be 'validate'
+			- IDEA: mode options = exe_std, exe_silent, or exe_creature (?)
+		- IDEA: pass 'mode' into verb methods
+	- DONE: finalize plan verb method modes
+		- IDEA: initially, 'mode' = 'validate', 'exe_std', and 'exe_silent'
+		- IDEA: mode attribute is optional and defaults to 'exe_std'
+		- IDEA: error blocks are *only* run from validate() - so are *only* run for players
+			- CANCEL: need to figure out how to implement silence mode in Writing error blocks
+		- DONE: consider consolidating errors in Writing / Invisible?
+			- DECISION: no, seems right to keep class response in class
+		- DONE: fully envision / flow-chart validate loop
+			- FINDING: intention is to only call error subsystem on mode == 'validate'
+	- DONE: validate() clean-up
+		- DONE: move doc_string to end
+		- DONE: fix indents
+		- DONE: elim interp() "random error" option / else option?
+
+	- DONE: tune up error coding
+		- DONE: in validate(), prepend "[INTERP]" for interp errors
+		- DONE: in base(), combine err_xst() and err_rch() into err_prep_std() ??
+			- DONE: lock(), unlock(), put(), show(), give(), attack()
+			- DONE: clean up comments
+		- DONE: move Writing error blocks to Invisible class
+			- DONE: create def is_invisible(self): return True / False in Invisible / Writing
+			- DONE: create err_invis_obj() and add to err_xst()
+			- DONE: move standard errors to Invisible class
+			- DONE: move verb errors to Invisible class
+			- DONE: update read() [maybe add in wrt_err as a more special case??]
+			- DONE: clean up comments
+		- DONE: separate module for Invisible class?
+			- DONE: create invis_class_def.py module
+			- DONE: move Invisible class to invisible_class_def.py
+			- DONE: update imports for Invisible in base_class_def, mk_def_pkl.py, & mach_class_def.py
+			- DONE: move error sub-system doc-strings here too
+			- DONE: update doc_string to ref errors in Invisible
+			- DONE: review base doc_string
+			- DONE: doc_string about how errors messages should never *do* anything (time does not pass)
+			- DONE: clean up unused imports in door_class_def.py, item_class_def.py, misc_class_def.py
+			- DONE: update comment title for all: *** class identity methods ***
+
+	- DONE: implement validate() modes
+		- DONE: implement try <cmd>... except... for specific list of word1 and with mode = 'validate'
+		- INPROC: update case = '2word' verb methods to use 'mode' and be called by validate()
+			- DONE: take(), eat(), drop(), wear(), read(), examine(), open(), close(), drink()
+			- DONE: push(), enter(), exit(), pull()
+				- DONE: update def
+					- DONE: update def to include mode = None as last attribute
+					- DONE: move doc_string under def
+					- DONE: below doc_string add: if mode is None: mode = 'std_exe'
+					- DONE: move creature attribute assignment to below 'if mode is None: '
+					- DONE: pre-fix method errors with mode == validate check
+					- DONE: update base_error call of method with mode attribute
+					- DONE: merge base_error call and local error methods within mode == 'validate'
+					- DONE: return True on errors, return False at end of method errors
+					- DONE: for lock(), & unlock(): in Surface error add mode & ret True
+				- DONE: in Invisible error method, add mode attribute to def
+				- DONE: in validate(), add verb to two_word_lst or prep_word_lst
+				- DONE: in verb meth, if creature=None is defined, re-order mode=None
+			- CANCEL: merge pull() methods in Switch
+			- DONE: fix 'pull button', 'push switch' errors
+			- DONE: decide about whether to call Invisible error methods with optional mode attribute
+				- IDEA: google default attributes in method extension; diff attributes in method extension
+				- IDEA: thinking at scale, probably best NOT to declare optional attributes where not used
+				- DECISION: don't declare optional attributes that will not be use
+				- FINDING: can't remove mode... validate() calls Invis errs w/ mode for non-vrb methods
+				- IDEA: how about instead having 2 different methods: <verb> and <verb>_err
+				- IDEA: centralize all error coding to <verb>_err in Invisible and call from validate()
+				- IDEA: eliminates the need for mode (?) or at least for passing 'validate' as a mode value
+				- DONE: check for values needed in method errors
+				- DONE: decision on error merge approach => Do It
+			- DONE: test shelf w/ no local Surface error for open() or close()
+			- DONE: recode '2word' case in validate() with no word1 check
+			- DONE: merge method errors with Invisible errors & order verb method response last (post do)
+				- DONE: take(), drop(), eat(), wear(), read(), examine(), open(), close(), drink()
+				- DONE: push(), enter(), exit(), pull()
+					- DONE: update Invis def to _err
+					- DONE: confirm non verb method fencing
+					- DONE: copy verb meth errs to Invis err
+					- DONE: comment out verb meth errs
+					- DONE: update validate two_word_lst_2
+				- DONE: update validate() add process based on updates
+				- DONE: clean up comments
+		- DONE: update case = 'prep' verb methods to use 'mode'; call *_err() from validate()
+			- DONE: updated validate() 'if word1 in prep_lst:'
+			- DONE: lock(), unlock(), put(), show(), give(), attack()
+				- DONE: update def to include mode=None as last attribute
+				- DONE: comment out base_err refs
+				- DONE: below doc_string add: if mode is None: mode = 'std'
+				- DONE: move creature attribute assignment to below 'if mode is None: '
+				- DONE: return True on verb method errors
+				- DONE: update Invis def to _err
+				- DONE: confirm non verb method fencing
+				- DONE: cut-paste verb meth errs to Invis err
+				- DONE: update validate pre_lst
+			- DONE: change mode from 'std_exe' to 'std'
+			- DONE: remove prep_lst from validate() once all prep cases are complete
+		- DONE: update case = 'go' verb methods to use 'mode' and be called by validate()
+			- DONE: update 'go' case in validate()
+			- DONE: updated go() in room_class_deff()
+			- DONE: update go_err() in invisible_class_deff()
+		- DONE: update case = 'tru1word' verb methods to use 'mode' and be called by validate()
+			- DONE: create one_word_convert_lst in interp()
+			- DONE: update interp() one_word_convert for cardinal directions
+			- DONE: update interp() one_word_convert for inventory
+			- DONE: removed 'inventory' from one_word_only & from cmd_exe
+			- DONE: update interp() one_word_convert for look
+			- DONE: removed 'look' from one_word_only & from cmd_exe
+			- DONE: convert stand() to two_word case: 'stand burt'
+			- DONE: create one_word_convert for stand()
+		- DONE: update validate()
+			- DONE: refactor validate()
+			- DONE: update cmd_exe() to single indent
+			- DONE: refactor cmd_exe()
+			- DONE: maybe need a 'try' block around cmd_exe verb call just in case? (a 3rd error type)
+			- DONE: maybe unify tru1word with main code block in cmd_exe() ?
+			- DONE: re-refactor cmd_exe()
+			- DONE: clean-up un-used code in cmd_exe()
+			- DONE: resolve 'help <option>' error and simplify 'help' to run first all in interp()
+			- DONE: make validate() random error dict & function local? (post move of 'try')	
+			- DONE: make wrong-way errors local to invisible()
+			- DONE: clean-up un-used descript_dict errors
+
+	- DONE: validate() testing
+		- DONE: this will break the 'go south from Entrance' warning... 
+			- DONE: probably the easiest fix is to create a re-usable unreachable_room to the south
+		- DONE: should be some way to simplify the repeated 'try: ... except:' in validate
+		- DONE: clean-up room() imports
+		- DONE: validate should resolve get sword while in chair error
+		- CANCEL: do I need to check for kinging_scroll in hand since this is a post_act_cmd ???
+			- IDEA: address this during modular machine refactoring
+		- DONE: update goblin_attack_mach trigger for non-error cmd (e.g. 'x portcullis' and 'x alcove')
+
+- DONE: error sub-system enhancements
+	- DONE: interp() error tuning
+		- DONE: identify interp() errors with "[INTERP]"
+		- DONE: normalize case
+	- DONE: error output tuning
+		- DONE: sort out validate() error when already wearing crown... 
+			- DONE: ideally should be "You're already wearing"... not "not in your hand"
+		- CANCEL: elim "can't see an X here" from interp errors?
+		- DONE: specific put() error for "put suitcase in suitcase"
+	- DONE: better localize dict data (in retrospect, this was not the best idea)
+		- DONE: move 'help' responses to help_dict in interp()
+		- DONE: 'help' text updates
+		- CANCEL: move 'tru_1word' responses and 'version' to cmd_exe() ???
+		- CANCEL: move 'introductin' to start_up() ???
+		- CANCEL: move 'score' to gs_class_def() ???
+
+- DONE: Debug Mode
+	- DONE: add debug boolean to state_dict in mk_def_pkl()
+	- DONE: add 1word debug command ('debug_poke53281,0') to one_word_dict
+	- DONE: create setter & getter for state_dict in gs_class_def()
+	- DONE: code for one_word_command that tells state and sets bool in cmd_exe()
+		- DONE: examample: "Debug Mode is now set to True"
+	- DONE: use debug mode to change UI
+		- DONE: investigate whether error text can be piped to std output => traceback import
+		- DONE: in interp(), if debug, set error source pre-fixes & print error to export 
+		- DONE: move random errors back to static_gbl().descript_dict
+		- DONE: in cmd_exe(), if debug, set error source pre-fixes & print error to export (3 cases)
+		- DONE: in validate(), figure out how to use buffer rather than print for except error debug
+		- DONE: update cmd_exe() except error to buffer traceback and test error cases
+		- DONE: create a buff_debug_err() method in gs that takes err msg & performs the if... else
+		- DONE: clean up comments and imports in cmd_exe() and validate()
+
+	- DONE: validate() doc_strings
+		- CANCEL: interp() doc_string regarding all 'help' cases being handeled locally
+		- DONE: determine needed doc_string updates - perhaps overview of errors across INTERP, VAL, & CMD
+		- DONE: update Invis err doc_string
+		- DONE: doc_string how validate() works
+		- DONE: doc_string on debug
+		- DONE: doc_string hazzard of non cmd_override pre_action if errors not checked during cmd_exe()
+		- DONE: update Switch doc_string regarding where buttons reside
+		- DONE: Switch doc_string entry explaining goals
+			- IDEA: verb methods should live in switch_x obj and not need to know about each other
+			- IDEA: the SwitchMixIn class should not need to know about all sub-classes
+			- IDEA: thus, SpringSliderSwich.pull() and LeverSwitch.pull() over-rides are valid compromise
+		- CANCEL: doc_string about fake_door option to address error over-ruling goblin_attack case
+			- IDEA: this is maybe not the best approach - maybe skip for now and fix with interupt() later
+
+- DONE: update to v3.77
+
+
 	
