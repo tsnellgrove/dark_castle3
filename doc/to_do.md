@@ -132,89 +132,23 @@ Version 3.78 Goals
 - Convert interactive objects to MixIn class architecture (enables future complex obj)
 - expand Perch class capabilities (reach concept)
 - implement Throne as class SeatMach
-- Text & UI updates (??)
+- Minor arch tuning
 
 
-- TBD: review & unify version to-dos
+- DONE: review & unify version to-dos
 
-- TBD: auto-try 'tool verbs' with item in hand (see below)
-- TBD: auto-complete for prep verbs
+- TBD: auto-try prep 'tool verbs' with item in hand (see below)
 	- TBD: for obj-in-hand prep verbs, try in_hand(); error on hand_empty()
-	- TBD: for Creature prep_verbs, if one creature in room guess that creature, else error
-	- TBD: for Container / Surface prep_verbs, if one class obj in room guess it, else error
+		- TBD: in interp(), create tool_verb_lst = ['lock', 'unlock', 'attack']
+		- TBD: prep section of interp, if no tool & prep given, try contents of hand
+		- TBD: for hand_empty and 'attack' => fist
+		- TBD: for hand_empty and 'lock' or 'unlock' => std 'no with' error
 	- TBD: update help() to explain how this works
+	- CANCEL: for Creature prep_verbs, if one creature in room guess that creature, else error
+	- CANCEL: for Container / Surface prep_verbs, if one class obj in room guess it, else error
 
-- TBD: need to work out max_count vs. max_bulk (or both)
-- INPROC: MixIn approach to door module classes
-	- DONE: new name for module with doors & containers (interactive obj; interactive.py)
-	- DONE: map out MixIns and inheritance
-		- ViewOnly class provides 'name', full_name, root_name, descript_key, writing attributes
-		- Item class inherits from ViewOnly and provides take() method
-		- OpenableMixIn provides 'is_open' attribute and open(), close() methods
-		- LockableMixIn provides 'is_unlocked' and 'key' attributes and lock(), unlock() methods
-		- ContainsMixIn provides 'contain_lst', 'max_bulk' and put() method
-		- HoldsMixIn provids 'contain_lst', 'max_count' and put() method
-		- SimpleDoor = ViewOnly + OpenableMixIn
-		- LockableDoor = SimpleDoor + LockableMixIn
-		- SimpleFixedContainer = ViewOnly + ContainsMixIn
-		- LiddedFixedContainer = SimpleFixedContainer + OpenableMixIn
-		- LockableFixedContainer = LiddedFixedContainer + LockableMixIn
-		- SimplePortableContainer = Item + ContainsMixIn
-		- LiddedPortableContainer = SimplePortableContainer + OpenableMixIn
-		- LockablePortableContainer = LiddedPortableContainer + LockableMixIn
-		- Surface = ViewOnly + HoldsMixIn
-		- Nook = inherits from SimpleFixedContainer; can contain Creatures; provides enter() method
-		- Perch = inherits from Surface; can contain Creatures; 'in_reach' sttribute, enter() method
-		- Seat = inherits from Perch; supports "sit" and "stand"
-		- Bed = inherits from Perch; supports "lie" and "stand"
-	- DONE: sort through remaining notes considerations
-	- TBD: assign 'bulk' attribute to all items
-	- TBD: assign 'bulk' attribute to all creatures (?)
-	- TBD: implement MixIn architecture in interactive module
-		- TBD: create interactive.py module
-		- TBD: import Item from item.py and ViewOnly from base.py
-		- TBD: create OpenableMixIn
-		- TBD: create LockableMixIN
-		- TBD: create SimpleDoor class
-		- TBD: create LockableDoor class
-		- TBD: convert Door objects to LockableDoor class
-		- TBD:
-	- TBD: Perch in_reach attribute that links to room obj
-		- TBD: can access in_reach if also in room; enable general ref of container / surface
-		- Do need to set some limits though... maybe Perch obj can't contain Perch obj?
-		- For throne, crystal_box is in_reach? Update room / throne text to indicate this?
-		- TBD: autogen text based on Seat obj.descript
-			- TBD: update other autogen text to key off descript?
-			- TBD: includes take() for unwear and drink()
-		- TBD: for open(), sort out if is_containter() text... bake in "{} is empty"
-
-- TBD: instantiate Creature Containers in actual game
-	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
-	- CANCEL: switch creature.stand() => creature.exit()
-	- TBD: Throne
-		- TBD: instantiate throne as obj of class Seat
-		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
-		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
-			- IDEA: add auto_gen description to over-ride (like messy_handwriting)
-			- IDEA: or maybe base auto_gen key on descript_key and update that?
-		- TBD: clean up test obj (e.g. test_chair, black_suitcase)
-	- TBD: maybe a Bed in the Main Hall?
-	- TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
-	- Stone Coffer => no-lid box ?
-	- TBD: for UnderMixIn - need to include bulk capacity for negative space
-
-- TBD: document Seat class
-	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
-	- TBD: doc_string on Seat (nested-room) "translucent" scope (can't interact w/ Seat itself)
-	- TBD: doc_string re: Seat as precursor to Vehical
-	- TBD: doc_string re: Nested Rooms can't be nested (no chairs on stages)
-	- TBD: doc_string re: Perch = translucent, Nook = opaque
-	- TBD: doc_string re: bulk for containers, count for surfaces
-	- TBD: doc_string re: nook gets light from room
-
-- INPROC: review TADS3 terms for Description and preposition
-
-- INPROC: the sorted list - these misc notes have been incorporated elsewhere
+- TBD: sort through remaining notes considerations
+	- NOTE: this is a sorted list - these misc notes have been incorporated elsewhere
 	- IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
 	- Probably want to introduce this when I add size / weight / capacity to items and Recepticles??
 	- Door class = ViewOnly + OpenMixIn
@@ -235,13 +169,50 @@ Version 3.78 Goals
 		- IDEA: exit auto-brings creature up one node if receptical to exit is not specified?
 			- DECISION: no, Creature Containers are a sepcial excpetion; exit() => room.floor_lst
 
-- INPROC: the future list - future interactive obj updates / features to be implemented
-	- Could also have UnderMixIn and BehindMixIn
-	- would need to deal with the wording 'look under' and 'look behind'
-	- 'look under' adds contents to room.feature_lst
-	- additional 'under' commands = 'put under' and 'reach under'
-	- for MixInHole have commands 'look in' and 'reach in'
-		- can a 'hole' be dark if the room is light?
+- INPROC: Design MixIn approach to door module classes
+	- TBD: need to work out max_count vs. max_bulk (or both)
+	- IDEA: new name for module with doors & containers (interactive obj; interactive.py)
+	- INPROC: map out MixIns and inheritance
+		- ViewOnly class provides 'name', full_name, root_name, descript_key, writing attributes
+		- Item class inherits from ViewOnly and provides take() method
+		- OpenableMixIn provides 'is_open' attribute and open(), close() methods
+		- LockableMixIn provides 'is_unlocked' and 'key' attributes and lock(), unlock() methods
+		- ContainsMixIn provides 'contain_lst', 'max_bulk' and put() method
+		- HoldsMixIn provids 'contain_lst', 'max_count' and put() method
+		- SimpleDoor = ViewOnly + OpenableMixIn
+		- LockableDoor = SimpleDoor + LockableMixIn
+		- SimpleFixedContainer = ViewOnly + ContainsMixIn
+		- LiddedFixedContainer = SimpleFixedContainer + OpenableMixIn
+		- LockableFixedContainer = LiddedFixedContainer + LockableMixIn
+		- SimplePortableContainer = Item + ContainsMixIn
+		- LiddedPortableContainer = SimplePortableContainer + OpenableMixIn
+		- LockablePortableContainer = LiddedPortableContainer + LockableMixIn
+		- Surface = ViewOnly + HoldsMixIn
+		- Nook = inherits from SimpleFixedContainer; can contain Creatures; provides enter() method
+		- Perch = inherits from Surface; can contain Creatures; 'in_reach' sttribute, enter() method
+		- Seat = inherits from Perch; supports "sit" and "stand"
+		- Bed = inherits from Perch; supports "lie" and "stand"
+	
+- TBD: implement MixIn architecture in interactive module
+	- TBD: assign 'bulk' attribute to all items
+	- TBD: assign 'bulk' attribute to all creatures (?)
+	- TBD: create interactive.py module
+	- TBD: import Item from item.py and ViewOnly from base.py
+	- TBD: create OpenableMixIn
+	- TBD: create LockableMixIN
+	- TBD: create SimpleDoor class
+	- TBD: create LockableDoor class
+	- TBD: convert Door objects to LockableDoor class
+	- TBD:
+	
+- TBD: Perch in_reach attribute that links to room obj
+	- TBD: can access in_reach if also in room; enable general ref of container / surface
+	- Do need to set some limits though... maybe Perch obj can't contain Perch obj?
+	- For throne, crystal_box is in_reach? Update room / throne text to indicate this?
+	- TBD: autogen text based on Seat obj.descript
+		- TBD: update other autogen text to key off descript?
+		- TBD: includes take() for unwear and drink()
+	- TBD: for open(), sort out if is_containter() text... bake in "{} is empty"
 
 - CANCEL: Given that creatures will be contained:
 	- need to embrace a node-based awareness of creature location
@@ -249,17 +220,34 @@ Version 3.78 Goals
 	- Apply this to concepts like drop() and stand() / exit()
 	- DECISION: alternatively, just treat creature-containers as special exceptions
 
+- TBD: instantiate Creature Containers in actual game
+	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
+	- CANCEL: switch creature.stand() => creature.exit()
+	- TBD: Throne
+		- TBD: instantiate throne as obj of class SeatMach
+		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
+		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
+			- IDEA: add auto_gen description to over-ride (like messy_handwriting)
+			- IDEA: or maybe base auto_gen key on descript_key and update that?
+		- TBD: clean up test obj (e.g. test_chair, black_suitcase)
+	- TBD: maybe a Bed in the Main Hall?
+	- TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
+	- Stone Coffer => no-lid box ?
 
+- TBD: document Seat class
+	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
+	- TBD: doc_string on Seat (nested-room) "translucent" scope (can't interact w/ Seat itself)
+	- TBD: doc_string re: Seat as precursor to Vehical
+	- TBD: doc_string re: Nested Rooms can't be nested (no chairs on stages)
+	- TBD: doc_string re: Perch = translucent, Nook = opaque
+	- TBD: doc_string re: bulk for containers, count for surfaces
+	- TBD: doc_string re: nook gets light from room
 
-
-*** Unify Notes ***
-*** Plan for interpreter update ***
-
-- TBD: enable the 'behind' preposition (with multiple layers of obfustication) and put the control_panel behind the goblin (check TADS implementation)
 - TBD: make creature obj data more atomic
 	- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
 		- IDEA: obj should be a black-box
 	- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
+
 - IDEA: think through code vs. data separation for static text
 	- IDEA: imagine future adventure creation tooling where I update descriptions via a web front end
 	- IDEA: I won't want all the description in a DB - that's too much overhead...
@@ -269,7 +257,25 @@ Version 3.78 Goals
 		- TBD: consolidate val_err_dict from validate() back to static_gbl() descript_dict
 		- TBD: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
 		- TBD: consolidate static_dict into descript_dict
-	- IDEA: error messages will be hard to update - so I want them to be as generic as possible!
+	- TBD: dock_string - error messages are hard to update - so I want them to be as generic as possible!
+
+- INPROC: the future list - future interactive obj updates / features to be implemented
+	- Could also have UnderMixIn and BehindMixIn
+	- TBD: for UnderMixIn - need to include bulk capacity for negative space
+	- would need to deal with the wording 'look under' and 'look behind'
+	- 'look under' adds contents to room.feature_lst
+	- additional 'under' commands = 'put under' and 'reach under'
+	- for MixInHole have commands 'look in' and 'reach in'
+		- can a 'hole' be dark if the room is light?
+	- TBD: enable the 'behind' preposition (with multiple layers of obfustication)
+		- TBD: put the control_panel behind the goblin (check TADS implementation)
+
+
+*** Unify Notes ***
+*** Plan for interpreter update ***
+
+- INPROC: review TADS3 terms for Description and preposition
+
 - IDEA: 'talk to creature' format:
 	- IDEA: 'Ask X about Y'
 	- IDEA: 'Tell X about Y'
