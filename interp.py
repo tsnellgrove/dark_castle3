@@ -227,7 +227,11 @@ def interpreter(user_input, master_obj_lst):
 				if word1 in ['show', 'give']:
 						prep = 'to'
 				elif word1 in ['attack', 'lock', 'unlock']:
+						creature = active_gs.hero
+						if len(user_input_lst) < 4 and 'with' not in user_input and not creature.hand_is_empty():
+								user_input_lst.extend(['with',creature.get_hand_item().name])
 						prep = 'with'
+						active_gs.buffer(f"user_input_lst = {user_input_lst}")
 				if prep not in user_input_lst:
 						error_msg = f"I don't see the word '{prep}' in that sentence."
 						return 'error', [error_msg]

@@ -137,12 +137,14 @@ Version 3.78 Goals
 
 - DONE: review & unify version to-dos
 
-- TBD: auto-try prep 'tool verbs' with item in hand (see below)
-	- TBD: for obj-in-hand prep verbs, try in_hand(); error on hand_empty()
-		- TBD: in interp(), create tool_verb_lst = ['lock', 'unlock', 'attack']
-		- TBD: prep section of interp, if no tool & prep given, try contents of hand
-		- TBD: for hand_empty and 'attack' => fist
-		- TBD: for hand_empty and 'lock' or 'unlock' => std 'no with' error
+- INPROC: auto-try prep 'tool verbs' with item in hand (see below)
+	- INPROC: for obj-in-hand prep verbs, try in_hand(); error on hand_empty()
+		- IDEA: 'tool verbs' == prep verbs using 'with'
+		- CANCEL: in interp(), create tool_verb_lst = ['lock', 'unlock', 'attack']
+		- DONE: prep section of interp, if no tool & prep given, try contents of hand
+		- CANCEL: for hand_empty and 'attack' => fist
+		- DONE: for hand_empty => std 'no with' error
+		- TBD: need to add "(with the <hand obj>)" to buffer
 	- TBD: update help() to explain how this works
 	- CANCEL: for Creature prep_verbs, if one creature in room guess that creature, else error
 	- CANCEL: for Container / Surface prep_verbs, if one class obj in room guess it, else error
