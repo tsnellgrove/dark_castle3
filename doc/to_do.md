@@ -137,15 +137,15 @@ Version 3.78 Goals
 
 - DONE: review & unify version to-dos
 
-- INPROC: auto-try prep 'tool verbs' with item in hand (see below)
-	- INPROC: for obj-in-hand prep verbs, try in_hand(); error on hand_empty()
+- DONE: auto-try prep 'tool verbs' with item in hand (see below)
+	- DONE: for obj-in-hand prep verbs, try in_hand(); error on hand_empty()
 		- IDEA: 'tool verbs' == prep verbs using 'with'
 		- CANCEL: in interp(), create tool_verb_lst = ['lock', 'unlock', 'attack']
 		- DONE: prep section of interp, if no tool & prep given, try contents of hand
 		- CANCEL: for hand_empty and 'attack' => fist
 		- DONE: for hand_empty => std 'no with' error
-		- TBD: need to add "(with the <hand obj>)" to buffer
-	- TBD: update help() to explain how this works
+		- DONE: need to add "(with the <hand obj>)" to buffer
+	- DONE: update help() to explain how this works
 	- CANCEL: for Creature prep_verbs, if one creature in room guess that creature, else error
 	- CANCEL: for Container / Surface prep_verbs, if one class obj in room guess it, else error
 
@@ -256,7 +256,7 @@ Version 3.78 Goals
 	- IDEA: But I will want all descriptions in one big centralized dictionary for ease of access & update
 	- IDEA: to this end, consider the following:
 		- TBD: move interp() help_dict back to static_gbl() descript_dict
-		- TBD: consolidate val_err_dict from validate() back to static_gbl() descript_dict
+		- DONE: consolidate val_err_dict from validate() back to static_gbl() descript_dict
 		- TBD: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
 		- TBD: consolidate static_dict into descript_dict
 	- TBD: dock_string - error messages are hard to update - so I want them to be as generic as possible!
@@ -269,7 +269,11 @@ Version 3.78 Goals
 	- additional 'under' commands = 'put under' and 'reach under'
 	- for MixInHole have commands 'look in' and 'reach in'
 		- can a 'hole' be dark if the room is light?
-	- TBD: enable the 'behind' preposition (with multiple layers of obfustication)
+	- TBD: enable the 'behind' preposition (with multiple varients of obfustication)
+		- IDEA: minor_behind = you can see but not reach
+		- IDEA: moderate_behind = can see some
+		- IDEA" major_behind = can't see
+		- Presumably, all 3 flavors of behind impact availability of obj in room list
 		- TBD: put the control_panel behind the goblin (check TADS implementation)
 
 
