@@ -149,30 +149,25 @@ Version 3.78 Goals
 	- CANCEL: for Creature prep_verbs, if one creature in room guess that creature, else error
 	- CANCEL: for Container / Surface prep_verbs, if one class obj in room guess it, else error
 
-- TBD: sort through remaining notes considerations
+- DONE: sort through remaining notes considerations
 	- NOTE: this is a sorted list - these misc notes have been incorporated elsewhere
-	- IDEA: OpenMixIn, LockMixIn, ContainMixIn architecture ???
-	- Probably want to introduce this when I add size / weight / capacity to items and Recepticles??
-	- Door class = ViewOnly + OpenMixIn
-	- DoorLock class = ViewOnly + OpenMixIn + LockMixIn
-	- Box class = ViewOnly + ContainMixIn
-	- BoxPortable class = Item + ContainMixIn
-	- BoxLid class = ViewOnly + ContainMixIn + OpenMixIn
-	- BoxLidLock class = ViewOnly + ContainMixIn + OpenMixIn + LockMixIn
-	- Surface class = ViewOnly + ContainMixIn
-	- IDEA: maybe need a general Creature container (Perch w/ Seat and Bed inheritting? i.e. MixIn?
+	- IDEA: Probably want to introduce this when I add size / weight / capacity to items and Recepticles??
+	- CANCEL: maybe need a general Creature container (Perch w/ Seat and Bed inheritting? i.e. MixIn?
 		- IDEA: class name = Perch (Seat and Bed inherit from Perch)
 		- IDEA: perch = Creature container with 'translucent' room access
 		- Also need a class for opaque creature container... like a fireplace...
 		- names like 'cavity' and 'nook' to describe negative space??
-	- TBD: stand() => exit()
+	- CANCEL: stand() => exit()
 		- TBD: implement ['exit' = node up too ?] [maybe native = 'exit']
 		- TBD: create Seat class exit method ?
 		- IDEA: exit auto-brings creature up one node if receptical to exit is not specified?
-			- DECISION: no, Creature Containers are a sepcial excpetion; exit() => room.floor_lst
+	- DECISION: no, Creature Containers are a sepcial excpetion; exit() => room.floor_lst
 
-- INPROC: Design MixIn approach to door module classes
+- INPROC: Design MixIn approach (e.g. OpenMixIn, LockMixIn, ContainMixIn) to door module classes
 	- TBD: need to work out max_count vs. max_bulk (or both)
+		- do we really need HoldMixIn & ContainMixIn ?
+		- do we really need both ContainerFixedSimple and Surface ? ('prep' = 'in' vs. 'on')
+	- TBD: diagram MixIn approach on paper
 	- IDEA: new name for module with doors & containers (interactive obj; interactive.py)
 	- INPROC: map out MixIns and inheritance
 		- ViewOnly class provides 'name', full_name, root_name, descript_key, writing attributes
@@ -181,19 +176,20 @@ Version 3.78 Goals
 		- LockableMixIn provides 'is_unlocked' and 'key' attributes and lock(), unlock() methods
 		- ContainsMixIn provides 'contain_lst', 'max_bulk' and put() method
 		- HoldsMixIn provids 'contain_lst', 'max_count' and put() method
-		- SimpleDoor = ViewOnly + OpenableMixIn
-		- LockableDoor = SimpleDoor + LockableMixIn
-		- SimpleFixedContainer = ViewOnly + ContainsMixIn
-		- LiddedFixedContainer = SimpleFixedContainer + OpenableMixIn
-		- LockableFixedContainer = LiddedFixedContainer + LockableMixIn
-		- SimplePortableContainer = Item + ContainsMixIn
-		- LiddedPortableContainer = SimplePortableContainer + OpenableMixIn
-		- LockablePortableContainer = LiddedPortableContainer + LockableMixIn
+		- DoorSimple = ViewOnly + OpenableMixIn
+		- DoorLockable = DoorSimple + LockableMixIn
+		- ContainerFixedSimple = ViewOnly + ContainsMixIn
+		- ContainerFixedLidded = ContainerFixedSimple + OpenableMixIn
+		- ContainerFixedLockable = ContainerFixedLidded + LockableMixIn
+		- ContainerPortableSimple = Item + ContainsMixIn
+		- ContainerPortableLidded = ContainerPortableSimple + OpenableMixIn
+		- ContainerPortabLockable = ContainerPortableLidded + LockableMixIn
 		- Surface = ViewOnly + HoldsMixIn
-		- Nook = inherits from SimpleFixedContainer; can contain Creatures; provides enter() method
-		- Perch = inherits from Surface; can contain Creatures; 'in_reach' sttribute, enter() method
-		- Seat = inherits from Perch; supports "sit" and "stand"
-		- Bed = inherits from Perch; supports "lie" and "stand"
+		- Nook = inherits from ContainerFixedSimple; can contain Creatures; provides enter() method
+		- Seat = inherits from Surface; can contain Creatures; 
+			- provides 'in_reach' sttribute, and enter(), exit() methods
+		- Bed = inherits from Seat; supports lie(), sleep()
+		- CANCEL: Perch class - not really differentiated from Seat
 	
 - TBD: implement MixIn architecture in interactive module
 	- TBD: assign 'bulk' attribute to all items
@@ -262,6 +258,7 @@ Version 3.78 Goals
 	- TBD: dock_string - error messages are hard to update - so I want them to be as generic as possible!
 
 - INPROC: the future list - future interactive obj updates / features to be implemented
+	- framework for complex obj to contain sub-elements (e.g. drawer + surface + under == desk)
 	- Could also have UnderMixIn and BehindMixIn
 	- TBD: for UnderMixIn - need to include bulk capacity for negative space
 	- would need to deal with the wording 'look under' and 'look behind'
