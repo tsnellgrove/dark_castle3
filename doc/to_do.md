@@ -163,19 +163,28 @@ Version 3.78 Goals
 		- IDEA: exit auto-brings creature up one node if receptical to exit is not specified?
 	- DECISION: no, Creature Containers are a sepcial excpetion; exit() => room.floor_lst
 
-- INPROC: Design MixIn approach (e.g. OpenMixIn, LockMixIn, ContainMixIn) to door module classes
-	- TBD: need to work out max_count vs. max_bulk (or both)
-		- do we really need HoldMixIn & ContainMixIn ?
-		- do we really need both ContainerFixedSimple and Surface ? ('prep' = 'in' vs. 'on')
-	- TBD: diagram MixIn approach on paper
+- DONE: Design MixIn approach (e.g. OpenMixIn, LockMixIn, ContainMixIn) to door module classes
+	- DONE need to work out max_count vs. max_bulk (or both)
+		- IDEA: do we really need HoldMixIn & ContainMixIn ?
+		- IDEA: do we really need both ContainerFixedSimple and Surface ? ('prep' = 'in' vs. 'on')
+		- DECISION: how container and creature capacity limits will be implemented
+			- DEC: weight will not be used - for now the 'small & heavy' / 'big & light' cases are too few
+			- DEC: every Item will have a 'bulk' attribute
+			- DEC: every container & creature will have attributes: 'max_bulk' and 'max_count'
+			- DEC: in addition, containers will each have a 'prep' attribute (typically 'in' or 'on')
+			- IMPLICATION: there is no need for HoldMixIn (with a separate version of put)
+			- IMP: there is no need for Surface; ContainerFixedSimple is both a 'shelf' and a 'box'
 	- IDEA: new name for module with doors & containers (interactive obj; interactive.py)
-	- INPROC: map out MixIns and inheritance
+	- DONE: map out MixIns and inheritance
 		- ViewOnly class provides 'name', full_name, root_name, descript_key, writing attributes
+		- Creature class adds 'max_bulk' and 'max_count' attributes
 		- Item class inherits from ViewOnly and provides take() method
+			- 'bulk' attribute is added to Item
+			- take() method has checks added for Creature 'max_bulk' and 'max_count'	
 		- OpenableMixIn provides 'is_open' attribute and open(), close() methods
 		- LockableMixIn provides 'is_unlocked' and 'key' attributes and lock(), unlock() methods
-		- ContainsMixIn provides 'contain_lst', 'max_bulk' and put() method
-		- HoldsMixIn provids 'contain_lst', 'max_count' and put() method
+		- ContainsMixIn provides 'contain_lst', 'max_bulk', 'max_count', and 'prep'; also put() method
+			- interp() needs to be updated to reference prep attribute with put() verb
 		- DoorSimple = ViewOnly + OpenableMixIn
 		- DoorLockable = DoorSimple + LockableMixIn
 		- ContainerFixedSimple = ViewOnly + ContainsMixIn
@@ -184,12 +193,16 @@ Version 3.78 Goals
 		- ContainerPortableSimple = Item + ContainsMixIn
 		- ContainerPortableLidded = ContainerPortableSimple + OpenableMixIn
 		- ContainerPortabLockable = ContainerPortableLidded + LockableMixIn
-		- Surface = ViewOnly + HoldsMixIn
-		- Nook = inherits from ContainerFixedSimple; can contain Creatures; provides enter() method
-		- Seat = inherits from Surface; can contain Creatures; 
-			- provides 'in_reach' sttribute, and enter(), exit() methods
-		- Bed = inherits from Seat; supports lie(), sleep()
-		- CANCEL: Perch class - not really differentiated from Seat
+		- Seat = inherits from ContainerFixedSimple; can contain Creatures; 
+			- provides enter() and exit() methods
+			- new 'in_reach' attribute
+		- NEW: to be implemented this pass
+			- Bed = inherits from Seat; supports lie(), sleep() => dream() ??
+			- Nook = closely related to seat but completely isolated from room... how to implement?
+		- CANCEL: 
+			- CANCEL: Perch class - not really differentiated from Seat
+			- CANCEL: HoldsMixIn provids 'contain_lst', 'max_count' and put() method
+			- CANCEL: Surface = ViewOnly + HoldsMixIn
 	
 - TBD: implement MixIn architecture in interactive module
 	- TBD: assign 'bulk' attribute to all items
@@ -232,13 +245,29 @@ Version 3.78 Goals
 	- TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
 	- Stone Coffer => no-lid box ?
 
+- TBD: the future list - future interactive obj updates / features to be implemented
+	- framework for complex obj to contain sub-elements (e.g. drawer + surface + under == desk)
+	- Could also have UnderMixIn and BehindMixIn
+	- TBD: for UnderMixIn - need to include bulk capacity for negative space
+	- would need to deal with the wording 'look under' and 'look behind'
+	- 'look under' adds contents to room.feature_lst
+	- additional 'under' commands = 'put under' and 'reach under'
+	- for MixInHole have commands 'look in' and 'reach in'
+		- can a 'hole' be dark if the room is light?
+	- TBD: enable the 'behind' preposition (with multiple varients of obfustication)
+		- IDEA: minor_behind = you can see but not reach
+		- IDEA: moderate_behind = can see some
+		- IDEA" major_behind = can't see
+		- Presumably, all 3 flavors of behind impact availability of obj in room list
+		- TBD: put the control_panel behind the goblin (check TADS implementation)
+
 - TBD: document Seat class
 	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
 	- TBD: doc_string on Seat (nested-room) "translucent" scope (can't interact w/ Seat itself)
 	- TBD: doc_string re: Seat as precursor to Vehical
 	- TBD: doc_string re: Nested Rooms can't be nested (no chairs on stages)
 	- TBD: doc_string re: Perch = translucent, Nook = opaque
-	- TBD: doc_string re: bulk for containers, count for surfaces
+	- CANCEL: doc_string re: bulk for containers, count for surfaces
 	- TBD: doc_string re: nook gets light from room
 
 - TBD: make creature obj data more atomic
@@ -256,22 +285,6 @@ Version 3.78 Goals
 		- TBD: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
 		- TBD: consolidate static_dict into descript_dict
 	- TBD: dock_string - error messages are hard to update - so I want them to be as generic as possible!
-
-- INPROC: the future list - future interactive obj updates / features to be implemented
-	- framework for complex obj to contain sub-elements (e.g. drawer + surface + under == desk)
-	- Could also have UnderMixIn and BehindMixIn
-	- TBD: for UnderMixIn - need to include bulk capacity for negative space
-	- would need to deal with the wording 'look under' and 'look behind'
-	- 'look under' adds contents to room.feature_lst
-	- additional 'under' commands = 'put under' and 'reach under'
-	- for MixInHole have commands 'look in' and 'reach in'
-		- can a 'hole' be dark if the room is light?
-	- TBD: enable the 'behind' preposition (with multiple varients of obfustication)
-		- IDEA: minor_behind = you can see but not reach
-		- IDEA: moderate_behind = can see some
-		- IDEA" major_behind = can't see
-		- Presumably, all 3 flavors of behind impact availability of obj in room list
-		- TBD: put the control_panel behind the goblin (check TADS implementation)
 
 
 *** Unify Notes ***
