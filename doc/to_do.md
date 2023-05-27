@@ -205,16 +205,21 @@ Version 3.78 Goals
 			- CANCEL: Surface = ViewOnly + HoldsMixIn
 	
 - TBD: implement MixIn architecture in interactive module
-	- TBD: assign 'bulk' attribute to all items
-	- TBD: assign 'bulk' attribute to all creatures (?)
+	- TBD: establish 'bulk' attribute
+		- TBD: assign 'bulk' attribute to all items
+		- TBD: assign 'bulk' attribute to Creatures
+		- TBD: assign 'max_bulk' and 'max_count' to Creatures
+		- TBD: update take() to check for 'max_bulk' and 'max_count'
 	- TBD: create interactive.py module
-	- TBD: import Item from item.py and ViewOnly from base.py
-	- TBD: create OpenableMixIn
-	- TBD: create LockableMixIN
-	- TBD: create SimpleDoor class
-	- TBD: create LockableDoor class
-	- TBD: convert Door objects to LockableDoor class
-	- TBD:
+		- TBD: import Item from item.py and ViewOnly from base.py
+		- TBD: create OpenableMixIn
+		- TBD: DoorSimple class
+		- TBD: create screen_door between entrance_hall and antechamber to test DoorSimple
+	- TBD: create LockableMixIn
+		- TBD: create DoorLockable class
+		- TBD: convert Door object front_gate to LockableDoor class
+		- TBD: convert Door object iron_portcullis to LockableDoor class (test with Mach)
+
 	
 - TBD: Perch in_reach attribute that links to room obj
 	- TBD: can access in_reach if also in room; enable general ref of container / surface
