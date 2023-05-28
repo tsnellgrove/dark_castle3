@@ -205,20 +205,26 @@ Version 3.78 Goals
 			- CANCEL: Surface = ViewOnly + HoldsMixIn
 	
 - INPROC: implement MixIn architecture in interactive module
+	- MOVED: establish 'bulk' attribute for Item
+		- IDEA: adding bulk as an attribute to Item is a good example of the need for MixIn classes
+		- IDEA: rather than troubleshoot diamond inheritance for ages I will back this out and do MixIn 1st
+		- TBD: back out Item, Food, Garment, Weapon, and ItemMach bulk attributes & assignments
+		- TBD: move the 'bulk' to-dos to the bottom of the MixIn updates
 	- INPROC: establish 'bulk' attribute for Item
-		- INPROC: update classes
+		- DONE: update classes
 			- DONE: Item
 			- DONE: Food
 			- DONE: Garment
 			- DONE: Weapon
-			- TBD: PortableContainer
-			- TBD: PortableLiquidContainer
+			- CANCEL: PortableContainer (no bulk but otherwise works for some reason ???)
+			- CANCEL: PortableLiquidContainer (no bulk but otherwise works for some reason ???)
 			- DONE: ItemMach
-		- TBD: assign 'bulk' attribute to all items
-		- TBD: assign 'bulk' attribute to Creatures
+		- DONE: assign 'bulk' attribute to all Item obj
 		- TBD: assign 'max_bulk' and 'max_count' to Creatures
 		- TBD: update take() to check for 'max_bulk' and 'max_count'
+		- TBD: assign 'bulk' attribute to Creatures
 	- TBD: create interactive.py module
+		- TBD: create module file
 		- TBD: import Item from item.py and ViewOnly from base.py
 		- TBD: create OpenableMixIn
 		- TBD: DoorSimple class

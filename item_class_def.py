@@ -12,6 +12,7 @@ from base_class_def import ViewOnly
 class Item(ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, bulk):
 		super().__init__(name, full_name, root_name, descript_key, writing)
+#		ViewOnly().__init__(name, full_name, root_name, descript_key, writing)
 		self._bulk = bulk
 		""" Items can be 'taken' and 'dropped'. Item inherits from ViewOnly and has no new attributes - just new methods: take() and drop(). 
 		"""
@@ -44,6 +45,7 @@ class Item(ViewOnly):
 		
 		active_gs.get_room().remove_item(self, active_gs)
 		creature.put_in_hand(self)
+#		active_gs.buffer(f"The bulk of the {self.full_name} is {self.bulk} pounds.")
 		return
 
 	def drop(self, active_gs, mode=None):
