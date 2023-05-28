@@ -13,6 +13,7 @@ from item_class_def import Item
 class Door(ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key):
 		super().__init__(name, full_name, root_name, descript_key, writing)
+#		ViewOnly().__init__(name, full_name, root_name, descript_key, writing)
 		self._is_open = is_open # True if the door is open, False if the door is closed, None if there is no door (useful for Container)
 		self._is_unlocked = is_unlocked # True if the door is unlocked, False if the door is locked, None if there is no lock
 		self._key = key # the key obj required to unlock the door; None means the door is not locked by a key
@@ -224,7 +225,9 @@ class Container(Door):
 
 class PortableContainer(Container, Item):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
+#		Item.__init__(self, name, full_name, root_name, descript_key, writing, bulk)
 		Container.__init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
+#		Item.__init__(bulk)
 		"""A container that can be taken.
 		"""
 

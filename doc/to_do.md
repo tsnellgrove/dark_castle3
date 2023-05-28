@@ -204,8 +204,16 @@ Version 3.78 Goals
 			- CANCEL: HoldsMixIn provids 'contain_lst', 'max_count' and put() method
 			- CANCEL: Surface = ViewOnly + HoldsMixIn
 	
-- TBD: implement MixIn architecture in interactive module
-	- TBD: establish 'bulk' attribute
+- INPROC: implement MixIn architecture in interactive module
+	- INPROC: establish 'bulk' attribute for Item
+		- INPROC: update classes
+			- DONE: Item
+			- DONE: Food
+			- DONE: Garment
+			- DONE: Weapon
+			- TBD: PortableContainer
+			- TBD: PortableLiquidContainer
+			- DONE: ItemMach
 		- TBD: assign 'bulk' attribute to all items
 		- TBD: assign 'bulk' attribute to Creatures
 		- TBD: assign 'max_bulk' and 'max_count' to Creatures
