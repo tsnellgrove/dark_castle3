@@ -210,7 +210,6 @@ Version 3.78 Goals
 		- IDEA: rather than troubleshoot diamond inheritance for ages I will back this out and do MixIn 1st
 		- DONE: back out Item, Food, Garment, Weapon, and ItemMach bulk attributes & assignments
 		- DONE: move the 'bulk' to-dos to the bottom of the MixIn updates
-
 	- TBD: create interactive.py module
 		- TBD: create module file
 		- TBD: import Item from item.py and ViewOnly from base.py
@@ -249,6 +248,8 @@ Version 3.78 Goals
 	- need to embrace the use of recursion on methods like remove()
 	- Apply this to concepts like drop() and stand() / exit()
 	- DECISION: alternatively, just treat creature-containers as special exceptions
+
+- TBD: Make liquid class Item so as to give it attribute bulk
 
 - TBD: instantiate Creature Containers in actual game
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
@@ -289,6 +290,8 @@ Version 3.78 Goals
 	- CANCEL: doc_string re: bulk for containers, count for surfaces
 	- TBD: doc_string re: nook gets light from room
 
+- TBD: "what would your mothter say" error to "What would your mama say?"
+
 - TBD: make creature obj data more atomic
 	- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
 		- IDEA: obj should be a black-box
@@ -310,6 +313,15 @@ Version 3.78 Goals
 *** Plan for interpreter update ***
 
 - INPROC: review TADS3 terms for Description and preposition
+
+- IDEA: interesting updates for food & bulk
+	- require eating
+	- enable Water to be drunk in small amounts (multiple servers per filled bottle)
+	- enable same partial consumption for bread loaf (calls back to Enchanter)
+	- Make sips of water / bites of bread the one frational bulk amount in game
+	- Enables interesting weight puzzle (4 gallons from 3 & 5 gallon buckets)
+	- Maybe stale_biscuits => 3 biscuits in paper package (Nana sword & key logo; better than McV ref?)
+	- Perhaps for bulk puzzle, have a Pywrong beaker - extremely fragile - breaks if put in pack or dropped
 
 - IDEA: 'talk to creature' format:
 	- IDEA: 'Ask X about Y'
