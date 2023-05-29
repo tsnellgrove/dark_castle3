@@ -51,27 +51,27 @@ dead_goblin = ViewOnly('dead_goblin', 'Dead Goblin', 'goblin', 'dead_goblin', No
 officiousness = ViewOnly('officiousness', 'Officiousness', 'officiousness', 'officiousness', None)
 loyalty = ViewOnly('loyalty', 'Loyalty', 'loyalty', 'loyalty', None)
 
-rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
-brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None, 1) # test object
-bubbly_potion = Item('bubbly_potion', 'bubbly potion', "potion", 'bubbly_potion', None, 1) # test object
-torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwriting, 1)
-silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None, 1)
-random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random_mcguffin', None, 5) # test object
+rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None)
+brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None) # test object
+bubbly_potion = Item('bubbly_potion', 'bubbly potion', "potion", 'bubbly_potion', None) # test object
+torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwriting)
+silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None)
+random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random_mcguffin', None) # test object
 
-cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 1)
-stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 1)
+cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None)
+stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark)
 
 fresh_water = Liquid('fresh_water', 'Fresh Water', 'water', 'fresh_water', None)
 
-royal_crown = Garment('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 5, 'hat')
-baseball_cap = Garment('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, 1, 'hat')
-hedgehog_broach = Garment('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedgehog_broach', None, 1, 'pin')
-red_bandana = Garment('red_bandana', 'Red Bandana', 'bandana', 'red_bandana', None, 1, 'hat')
-big_medal = Garment('big_medal', 'Big Medal', 'medal', 'big_medal', gold_capitals, 5, 'pin')
+royal_crown = Garment('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 'hat')
+baseball_cap = Garment('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, 'hat')
+hedgehog_broach = Garment('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedgehog_broach', None, 'pin')
+red_bandana = Garment('red_bandana', 'Red Bandana', 'bandana', 'red_bandana', None, 'hat')
+big_medal = Garment('big_medal', 'Big Medal', 'medal', 'big_medal', gold_capitals, 'pin')
 
-grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing, 10,
+grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing,
 				[['arcs', 'lightening-fast stroke'],['cleaves', 'violent swing'],['hacks', 'deadly intent']])
-shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarven_runes, 10,
+shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarven_runes,
 				[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']])
 
 crystal_box = Container('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy,
@@ -177,7 +177,7 @@ hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_
 				[['give', '*', 'royal_hedgehog'], ['show', '*', 'royal_hedgehog']], None, 
 				[hedgehog_distracted_cond, pass_thru_cond], [hedgehog_distracted_result, pass_result])
 
-kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters, 1,
+kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters,
 				None, 'post_act_cmd', None, [['read', 'illuminated_letters']], None,
 				[scroll_not_in_throne_room_cond, hedgehog_not_exist_cond, crown_not_worn_cond, read_scroll_win_cond],
 				[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result])

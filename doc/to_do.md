@@ -208,21 +208,9 @@ Version 3.78 Goals
 	- MOVED: establish 'bulk' attribute for Item
 		- IDEA: adding bulk as an attribute to Item is a good example of the need for MixIn classes
 		- IDEA: rather than troubleshoot diamond inheritance for ages I will back this out and do MixIn 1st
-		- TBD: back out Item, Food, Garment, Weapon, and ItemMach bulk attributes & assignments
-		- TBD: move the 'bulk' to-dos to the bottom of the MixIn updates
-	- INPROC: establish 'bulk' attribute for Item
-		- DONE: update classes
-			- DONE: Item
-			- DONE: Food
-			- DONE: Garment
-			- DONE: Weapon
-			- CANCEL: PortableContainer (no bulk but otherwise works for some reason ???)
-			- CANCEL: PortableLiquidContainer (no bulk but otherwise works for some reason ???)
-			- DONE: ItemMach
-		- DONE: assign 'bulk' attribute to all Item obj
-		- TBD: assign 'max_bulk' and 'max_count' to Creatures
-		- TBD: update take() to check for 'max_bulk' and 'max_count'
-		- TBD: assign 'bulk' attribute to Creatures
+		- DONE: back out Item, Food, Garment, Weapon, and ItemMach bulk attributes & assignments
+		- DONE: move the 'bulk' to-dos to the bottom of the MixIn updates
+
 	- TBD: create interactive.py module
 		- TBD: create module file
 		- TBD: import Item from item.py and ViewOnly from base.py
@@ -233,7 +221,19 @@ Version 3.78 Goals
 		- TBD: create DoorLockable class
 		- TBD: convert Door object front_gate to LockableDoor class
 		- TBD: convert Door object iron_portcullis to LockableDoor class (test with Mach)
-
+	- TBD: establish 'bulk' attribute for Item
+		- TBD: update classes
+			- TBD: Item
+			- TBD: Food
+			- TBD: Garment
+			- TBD: Weapon
+			- TBD: PortableContainer
+			- TBD: PortableLiquidContainer
+			- TBD: ItemMach
+		- TBD: assign 'bulk' attribute to all Item obj
+		- TBD: assign 'max_bulk' and 'max_count' to Creatures
+		- TBD: update take() to check for 'max_bulk' and 'max_count'
+		- TBD: assign 'bulk' attribute to Creatures
 	
 - TBD: Perch in_reach attribute that links to room obj
 	- TBD: can access in_reach if also in room; enable general ref of container / surface

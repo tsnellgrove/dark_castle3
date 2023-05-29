@@ -10,21 +10,22 @@ from base_class_def import ViewOnly
 
 ### classes
 class Item(ViewOnly):
-	def __init__(self, name, full_name, root_name, descript_key, writing, bulk):
+	def __init__(self, name, full_name, root_name, descript_key, writing):
+##	def __init__(self, name, full_name, root_name, descript_key, writing, bulk):
 		super().__init__(name, full_name, root_name, descript_key, writing)
-#		ViewOnly().__init__(name, full_name, root_name, descript_key, writing)
-		self._bulk = bulk
+##		ViewOnly().__init__(name, full_name, root_name, descript_key, writing)
+##		self._bulk = bulk
 		""" Items can be 'taken' and 'dropped'. Item inherits from ViewOnly and has no new attributes - just new methods: take() and drop(). 
 		"""
 
 	# *** getters & setters ***
-	@property
-	def bulk(self):
-		return self._bulk
+##	@property
+##	def bulk(self):
+##		return self._bulk
 
-	@bulk.setter
-	def bulk(self, new_bulk):
-		self._bulk = new_bulk
+##	@bulk.setter
+##	def bulk(self, new_bulk):
+##		self._bulk = new_bulk
 
 	# *** class identity methods ***
 	def is_item(self):
@@ -45,7 +46,7 @@ class Item(ViewOnly):
 		
 		active_gs.get_room().remove_item(self, active_gs)
 		creature.put_in_hand(self)
-#		active_gs.buffer(f"The bulk of the {self.full_name} is {self.bulk} pounds.")
+##		active_gs.buffer(f"The bulk of the {self.full_name} is {self.bulk} pounds.")
 		return
 
 	def drop(self, active_gs, mode=None):
@@ -66,8 +67,10 @@ class Item(ViewOnly):
 
 
 class Food(Item):
-	def __init__(self, name, full_name, root_name, descript_key, writing, bulk):
-		super().__init__(name, full_name, root_name, descript_key, writing, bulk)
+	def __init__(self, name, full_name, root_name, descript_key, writing):
+##	def __init__(self, name, full_name, root_name, descript_key, writing, bulk):
+		super().__init__(name, full_name, root_name, descript_key, writing)
+##		super().__init__(name, full_name, root_name, descript_key, writing, bulk)
 		""" Burt can eat() food. Food may be of interest to other creatures in Dark Castle as well. Food inherits from Item and can be taken.
 		"""
 
@@ -91,8 +94,10 @@ class Food(Item):
 
 
 class Garment(Item):
-	def __init__(self, name, full_name, root_name, descript_key, writing, bulk, garment_type):
-		super().__init__(name, full_name, root_name, descript_key, writing, bulk)
+	def __init__(self, name, full_name, root_name, descript_key, writing, garment_type):
+##	def __init__(self, name, full_name, root_name, descript_key, writing, bulk, garment_type):
+		super().__init__(name, full_name, root_name, descript_key, writing)
+##		super().__init__(name, full_name, root_name, descript_key, writing, bulk)
 		self._garment_type = garment_type # e.g. 'hat'; Burt can only wear one garment of a given type at a time
 		""" Burt can wear() garments. He can only wear one garment of a given type at a time. Some garments may impart special powers.
 		"""
@@ -123,8 +128,10 @@ class Garment(Item):
 
 
 class Weapon(Item):
-	def __init__(self, name, full_name, root_name, descript_key, writing, bulk, desc_lst):
-		super().__init__(name, full_name, root_name, descript_key, writing, bulk)
+##	def __init__(self, name, full_name, root_name, descript_key, writing, bulk, desc_lst):
+	def __init__(self, name, full_name, root_name, descript_key, writing, desc_lst):
+##		super().__init__(name, full_name, root_name, descript_key, writing, bulk)
+		super().__init__(name, full_name, root_name, descript_key, writing)
 		self._desc_lst = desc_lst # descriptive terms associated with using the weapon to 'attack'
 		""" A Weapon can be used to attack. Weapon is a subclass of Item. 
 		"""
