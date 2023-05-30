@@ -210,16 +210,31 @@ Version 3.78 Goals
 		- IDEA: rather than troubleshoot diamond inheritance for ages I will back this out and do MixIn 1st
 		- DONE: back out Item, Food, Garment, Weapon, and ItemMach bulk attributes & assignments
 		- DONE: move the 'bulk' to-dos to the bottom of the MixIn updates
-	- TBD: create interactive.py module
-		- TBD: create module file
-		- TBD: import Item from item.py and ViewOnly from base.py
-		- TBD: create OpenableMixIn
-		- TBD: DoorSimple class
+	- INPROC: create interactive.py module
+		- DONE: create module file
+		- DONE: import Item from item.py and ViewOnly from base.py
+		- DONE: create OpenableMixIn class with is_open attribute and setters & getters
+		- DONE: create attribute and display methods
+		- DONE: create verb methods ( open() and close() )
+		- TBD: create DoorSimple class
 		- TBD: create screen_door between entrance_hall and antechamber to test DoorSimple
 	- TBD: create LockableMixIn
+		- TBD: create LockableMixIn class w/ attributes & setters & getters
+		- DONE: create attribute and display methods
+		- DONE: create verb methods ( lock() and unlock() )
 		- TBD: create DoorLockable class
 		- TBD: convert Door object front_gate to LockableDoor class
 		- TBD: convert Door object iron_portcullis to LockableDoor class (test with Mach)
+	- TBD: create ContainsMixIn class with attribute and setters & getters
+	- TBD: create Seat class with attribute and setters & getters (including in_reach_lst)
+		- TBD: Seat in_reach attribute that links to room obj
+		- TBD: can access in_reach if also in room; enable general ref of container / surface
+		- Do need to set some limits though... maybe Perch obj can't contain Perch obj?
+		- For throne, crystal_box is in_reach? Update room / throne text to indicate this?
+		- TBD: autogen text based on Seat obj.descript
+			- TBD: update other autogen text to key off descript?
+			- TBD: includes take() for unwear and drink()
+		- TBD: for open(), sort out if is_containter() text... bake in "{} is empty"
 	- TBD: establish 'bulk' attribute for Item
 		- TBD: update classes
 			- TBD: Item
@@ -234,14 +249,7 @@ Version 3.78 Goals
 		- TBD: update take() to check for 'max_bulk' and 'max_count'
 		- TBD: assign 'bulk' attribute to Creatures
 	
-- TBD: Perch in_reach attribute that links to room obj
-	- TBD: can access in_reach if also in room; enable general ref of container / surface
-	- Do need to set some limits though... maybe Perch obj can't contain Perch obj?
-	- For throne, crystal_box is in_reach? Update room / throne text to indicate this?
-	- TBD: autogen text based on Seat obj.descript
-		- TBD: update other autogen text to key off descript?
-		- TBD: includes take() for unwear and drink()
-	- TBD: for open(), sort out if is_containter() text... bake in "{} is empty"
+
 
 - CANCEL: Given that creatures will be contained:
 	- need to embrace a node-based awareness of creature location
