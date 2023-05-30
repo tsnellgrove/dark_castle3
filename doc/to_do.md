@@ -248,7 +248,7 @@ Version 3.78 Goals
 		- TBD: assign 'max_bulk' and 'max_count' to Creatures
 		- TBD: update take() to check for 'max_bulk' and 'max_count'
 		- TBD: assign 'bulk' attribute to Creatures
-	
+	- TBD: New interactive classes (see above)
 
 
 - CANCEL: Given that creatures will be contained:
