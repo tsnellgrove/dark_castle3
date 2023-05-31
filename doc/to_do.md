@@ -218,7 +218,7 @@ Version 3.78 Goals
 		- DONE: create verb methods ( open() and close() )
 		- DONE: create DoorSimple class
 		- DONE: create screen_door of class DoorSimple
-		- TBD: place screen_door between entrance_hall and antechamber to test DoorSimple
+		- INPROC: place screen_door between entrance_hall and antechamber to test DoorSimple
 	- TBD: create LockableMixIn
 		- TBD: create LockableMixIn class w/ attributes & setters & getters
 		- DONE: create attribute and display methods
