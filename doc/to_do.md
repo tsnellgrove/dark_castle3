@@ -221,6 +221,7 @@ Version 3.78 Goals
 		- DONE: place screen_door between entrance_hall and antechamber to test DoorSimple
 	- TBD: create LockableMixIn
 		- TBD: think about how open_err() and close_err() should distinguish between obj with lids vs. obj w/ lids & locks
+		- IDEA: I think I need is_openable() and is_lockable() ??? So I can eventually eliminate is_door() ???
 		- TBD: address existing is_door() vs. is_door_simple() case for open_err() and close_err()
 		- TBD: create LockableMixIn class w/ attributes & setters & getters
 		- TBD: create attribute and display methods
