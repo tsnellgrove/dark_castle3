@@ -87,6 +87,9 @@ class DoorSimple(OpenableMixIn, ViewOnly):
 	# *** class identity methods ***
 	def	is_door(self):
 		return True
+	
+	def is_simple_door(self):
+		return True
 
 
 

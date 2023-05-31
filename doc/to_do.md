@@ -210,7 +210,7 @@ Version 3.78 Goals
 		- IDEA: rather than troubleshoot diamond inheritance for ages I will back this out and do MixIn 1st
 		- DONE: back out Item, Food, Garment, Weapon, and ItemMach bulk attributes & assignments
 		- DONE: move the 'bulk' to-dos to the bottom of the MixIn updates
-	- INPROC: create interactive.py module
+	- DONE: create interactive.py module
 		- DONE: create module file
 		- DONE: import Item from item.py and ViewOnly from base.py
 		- DONE: create OpenableMixIn class with is_open attribute and setters & getters
@@ -218,11 +218,13 @@ Version 3.78 Goals
 		- DONE: create verb methods ( open() and close() )
 		- DONE: create DoorSimple class
 		- DONE: create screen_door of class DoorSimple
-		- INPROC: place screen_door between entrance_hall and antechamber to test DoorSimple
+		- DONE: place screen_door between entrance_hall and antechamber to test DoorSimple
 	- TBD: create LockableMixIn
+		- TBD: think about how open_err() and close_err() should distinguish between obj with lids vs. obj w/ lids & locks
+		- TBD: address existing is_door() vs. is_door_simple() case for open_err() and close_err()
 		- TBD: create LockableMixIn class w/ attributes & setters & getters
-		- DONE: create attribute and display methods
-		- DONE: create verb methods ( lock() and unlock() )
+		- TBD: create attribute and display methods
+		- TBD: create verb methods ( lock() and unlock() )
 		- TBD: create DoorLockable class
 		- TBD: convert Door object front_gate to LockableDoor class
 		- TBD: convert Door object iron_portcullis to LockableDoor class (test with Mach)
@@ -250,6 +252,8 @@ Version 3.78 Goals
 		- TBD: update take() to check for 'max_bulk' and 'max_count'
 		- TBD: assign 'bulk' attribute to Creatures
 	- TBD: New interactive classes (see above)
+	- TBD: clean-up from old Door class
+		- is_door() vs. is_simple_door()
 
 
 - CANCEL: Given that creatures will be contained:
