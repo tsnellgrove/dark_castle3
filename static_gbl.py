@@ -88,6 +88,7 @@ descript_dict = {
 		### door objects ###
 		'front_gate' : "The Front Gate is just north of the Dark Castle's drawbridge. It is 10 feet tall and reenforced with steel bands. Imposing indeed! There is Rusty Lettering across the top of the gate and a rusty keyhole next to a handle.",
 		'iron_portcullis' : "Beyond the iron portcullis you can dimly make out the next room.",
+        'screen_door' : "This appears to be a test Screen Door.",
 
 
 		### creatures ###

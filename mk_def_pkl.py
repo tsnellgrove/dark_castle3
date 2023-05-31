@@ -309,7 +309,7 @@ active_gs = GameState(
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible objects need not be listed ###
 master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, guard_goblin, entrance, main_hall, antechamber, throne_room, loyalty,
-officiousness, gold_capitals, red_bandana, big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, test_chair, black_suitcase] # note: big_bomb & test_frog removed
+officiousness, gold_capitals, red_bandana, big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, test_chair, black_suitcase, screen_door] # note: big_bomb & test_frog removed
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:

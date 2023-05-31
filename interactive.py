@@ -76,7 +76,8 @@ class OpenableMixIn(object):
 
 
 ### noun classes
-class DoorSimple(ViewOnly, OpenableMixIn):
+# class DoorSimple(ViewOnly, OpenableMixIn):
+class DoorSimple(OpenableMixIn, ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open):
 		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
 		OpenableMixIn.__init__(self, is_open)
