@@ -7,7 +7,7 @@
 from base_class_def import ViewOnly
 from item_class_def import Item
 
-### classes
+### mixin classes
 class OpenableMixIn(object):
 	def __init__(self, is_open):
 		""" The OpenablehMixIn can be combined with other classes (most typically ViewOnly) to produce doors and lidded containers.
@@ -28,6 +28,9 @@ class OpenableMixIn(object):
 		return self.is_open is not False
 
 	# *** display methods ***
+	def has_cond(self, active_gs):
+		return True
+
 	def disp_cond(self, active_gs):
 		""" Displays object-specific conditions. Used in examine().
 		"""
@@ -59,7 +62,6 @@ class OpenableMixIn(object):
 		active_gs.buff_cr()
 		return
 
-
 	def close(self, active_gs, mode=None):
 		""" Closes a Door object.
 		"""
@@ -71,4 +73,19 @@ class OpenableMixIn(object):
 
 		self.is_open = False
 		return
+
+
+### noun classes
+class DoorSimple(ViewOnly, OpenableMixIn):
+	def __init__(self, name, full_name, root_name, descript_key, writing, is_open):
+		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
+		OpenableMixIn.__init__(self, is_open)
+		""" A simple door with no lock.
+		"""
+
+	# *** class identity methods ***
+	def	is_door(self):
+		return True
+
+
 

@@ -11,6 +11,7 @@ from base_class_def import Writing, ViewOnly
 from room_class_def import Room
 from item_class_def import Item, Food, Garment, Weapon
 from door_class_def import Door, Container, PortableContainer, PortableLiquidContainer, Surface, Seat
+from interactive import DoorSimple
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from misc_class_def import Liquid
 from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
@@ -88,6 +89,7 @@ test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None,
 
 front_gate = Door('front_gate', 'Front Gate', "gate", 'front_gate', rusty_lettering, False, False, rusty_key)
 iron_portcullis = Door('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, False, False, None)
+screen_door = DoorSimple('screen_door', 'Screen Door', 'door', 'screen_door', None, False)
 
 throne = SpringSliderSwitch('throne', 'Throne', 'throne', 'throne', None, 'neutral', 'neutral', 'auto_switch_reset')
 left_lever = LeverSwitch('left_lever', 'Left Lever', 'lever', 'left_lever', None, 'down', None, None)

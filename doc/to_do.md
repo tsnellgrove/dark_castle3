@@ -216,8 +216,9 @@ Version 3.78 Goals
 		- DONE: create OpenableMixIn class with is_open attribute and setters & getters
 		- DONE: create attribute and display methods
 		- DONE: create verb methods ( open() and close() )
-		- TBD: create DoorSimple class
-		- TBD: create screen_door between entrance_hall and antechamber to test DoorSimple
+		- DONE: create DoorSimple class
+		- DONE: create screen_door of class DoorSimple
+		- TBD: place screen_door between entrance_hall and antechamber to test DoorSimple
 	- TBD: create LockableMixIn
 		- TBD: create LockableMixIn class w/ attributes & setters & getters
 		- DONE: create attribute and display methods
