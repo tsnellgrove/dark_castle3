@@ -55,6 +55,9 @@ class Invisible(object):
 
 	def	is_openable(self):
 		return False
+	
+	def is_lockable(self):
+		return False
 
 	def	is_door(self):
 		return False
@@ -257,12 +260,13 @@ class Invisible(object):
 			return True
 		if self.is_open is None:
 			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
-			# active_gs.buffer(f"How do you propose to 'open' the {self.full_name}?")
+#			active_gs.buffer(f"How do you propose to 'open' the {self.full_name}?")
 			return True
 		if self.is_open:
 			active_gs.buffer(f"The {self.full_name} is already open.")
 			return True
-		if not self.is_simple_door() and self.is_unlocked == False:
+#		if not self.is_simple_door() and self.is_unlocked == False:
+		if (self.is_lockable() and self.is_unlocked == False) or (self.is_door() and self.is_unlocked == False):
 			active_gs.buffer(f"The {self.full_name} is locked.")
 			return True
 		return False
@@ -280,7 +284,8 @@ class Invisible(object):
 		if self.is_open == False:
 			active_gs.buffer(f"The {self.full_name} is already closed.")
 			return True
-		if not self.is_simple_door() and self.is_unlocked == False: # for Iron Portcullis
+#		if not self.is_simple_door() and self.is_unlocked == False: # for Iron Portcullis
+		if (self.is_lockable() and self.is_unlocked == False) or (self.is_door() and self.is_unlocked == False):
 			active_gs.buffer(f"The {self.full_name} is locked open.")
 			return True
 		return False

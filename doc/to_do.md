@@ -213,12 +213,17 @@ Version 3.78 Goals
 	- DONE: create interactive.py module
 		- DONE: create module file
 		- DONE: import Item from item.py and ViewOnly from base.py
-		- DONE: create OpenableMixIn class with is_open attribute and setters & getters
+	- INPROC: create OpenableMixIn class with is_open attribute and setters & getters
 		- DONE: create attribute and display methods
 		- DONE: create verb methods ( open() and close() )
 		- DONE: create DoorSimple class
 		- DONE: create screen_door of class DoorSimple
 		- DONE: place screen_door between entrance_hall and antechamber to test DoorSimple
+		- DONE: create is_openable() in OpenableMixIn and Invisible() and add to open_err() & close_err()
+		- DONE: create is_lockable() in Invisible() and add to open_err() & close_err()
+		- TBD: introduce can_contain() in open_err(), close_err()
+		- TBD: for open(), sort out if is_containter() => can_contain() text... bake in "{} is empty"
+		- TBD: clean up comments
 	- TBD: create LockableMixIn
 		- TBD: think about how open_err() and close_err() should distinguish between obj with lids vs. obj w/ lids & locks
 		- IDEA: I think I need is_openable() and is_lockable() ??? So I can eventually eliminate is_door() ???
@@ -238,7 +243,6 @@ Version 3.78 Goals
 		- TBD: autogen text based on Seat obj.descript
 			- TBD: update other autogen text to key off descript?
 			- TBD: includes take() for unwear and drink()
-		- TBD: for open(), sort out if is_containter() text... bake in "{} is empty"
 	- TBD: establish 'bulk' attribute for Item
 		- TBD: update classes
 			- TBD: Item
@@ -254,7 +258,7 @@ Version 3.78 Goals
 		- TBD: assign 'bulk' attribute to Creatures
 	- TBD: New interactive classes (see above)
 	- TBD: clean-up from old Door class
-		- is_door() vs. is_simple_door()
+		- is_door(), is_container(), is_surface() and etc
 
 
 - CANCEL: Given that creatures will be contained:
