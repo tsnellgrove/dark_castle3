@@ -53,6 +53,9 @@ class Invisible(object):
 	def is_weapon(self):
 		return False
 
+	def	is_openable(self):
+		return False
+
 	def	is_door(self):
 		return False
 
@@ -249,7 +252,7 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
-		if not self.is_door():
+		if not self.is_door() and not self.is_openable():
 			active_gs.buffer(f"The {self.full_name} cannot be openned.")
 			return True
 		if self.is_open is None:
@@ -268,7 +271,7 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
-		if not self.is_door():
+		if not self.is_door() and not self.is_openable():
 			active_gs.buffer(f"The {self.full_name} cannot be closed.")
 			return True
 		if self.is_open is None:

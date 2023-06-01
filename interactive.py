@@ -22,7 +22,11 @@ class OpenableMixIn(object):
 	@is_open.setter
 	def is_open(self, new_state):
 		self._is_open = new_state
-		
+
+	# *** class identity methods ***
+	def	is_openable(self):
+		return True
+
 	# *** attribute methods ***
 	def is_not_closed(self):
 		return self.is_open is not False
@@ -85,8 +89,8 @@ class DoorSimple(OpenableMixIn, ViewOnly):
 		"""
 
 	# *** class identity methods ***
-	def	is_door(self):
-		return True
+#	def	is_door(self):
+#		return True
 	
 	def is_simple_door(self):
 		return True
