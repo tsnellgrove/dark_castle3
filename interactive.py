@@ -38,9 +38,6 @@ class OpenableMixIn(object):
 	def disp_cond(self, active_gs):
 		""" Displays object-specific conditions. Used in examine().
 		"""
-##		if self.is_open is None:
-##			active_gs.buff_no_cr(f"The {self.full_name} has no closure; it always remains open. ")
-##			return
 		if self.is_open == False:
 			active_gs.buff_no_cr(f"The {self.full_name} is closed. ")
 			return
@@ -61,9 +58,6 @@ class OpenableMixIn(object):
 		active_gs.buff_no_cr("Openned. ")
 		if self.is_container() or self.can_contain():
 			self.disp_open(active_gs)
-#			if self.is_empty():
-#				active_gs.buff_no_cr(f"The {self.full_name} is empty.")
-#			self.disp_contain(active_gs)
 		active_gs.buff_cr()
 		return
 
@@ -81,7 +75,6 @@ class OpenableMixIn(object):
 
 
 ### noun classes
-# class DoorSimple(ViewOnly, OpenableMixIn):
 class DoorSimple(OpenableMixIn, ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open):
 		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
@@ -89,12 +82,6 @@ class DoorSimple(OpenableMixIn, ViewOnly):
 		""" A simple door with no lock.
 		"""
 
-	# *** class identity methods ***
-#	def	is_door(self):
-#		return True
-	
-#	def is_simple_door(self):
-#		return True
 
 
 

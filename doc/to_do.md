@@ -213,29 +213,34 @@ Version 3.78 Goals
 	- DONE: create interactive.py module
 		- DONE: create module file
 		- DONE: import Item from item.py and ViewOnly from base.py
-	- INPROC: create OpenableMixIn class with is_open attribute and setters & getters
+	- DONE: create OpenableMixIn class with is_open attribute and setters & getters
 		- DONE: create attribute and display methods
 		- DONE: create verb methods ( open() and close() )
 		- DONE: create DoorSimple class
 		- DONE: create screen_door of class DoorSimple
 		- DONE: place screen_door between entrance_hall and antechamber to test DoorSimple
+			- DONE: think about how open_err() and close_err() should distinguish between obj with lids vs. obj w/ lids & locks
+			- IDEA: I think I need is_openable() and is_lockable() ??? So I can eventually eliminate is_door() ???
+			- DONE: address existing is_door() vs. is_door_simple() case for open_err() and close_err()
 		- DONE: create is_openable() in OpenableMixIn and Invisible() and add to open_err() & close_err()
 		- DONE: create is_lockable() in Invisible() and add to open_err() & close_err()
 		- DONE: introduce can_contain() in Invisible(), open_err(), close_err()
 		- DONE: for open(), sort out if is_containter() => can_contain() text... bake in "{} is empty"
-		- TBD: clean up comments
-	- TBD: create LockableMixIn
-		- TBD: think about how open_err() and close_err() should distinguish between obj with lids vs. obj w/ lids & locks
-		- IDEA: I think I need is_openable() and is_lockable() ??? So I can eventually eliminate is_door() ???
-		- TBD: address existing is_door() vs. is_door_simple() case for open_err() and close_err()
+		- DONE: clean up comments
+	- TBD: create LockableMixIn class
 		- TBD: create LockableMixIn class w/ attributes & setters & getters
-		- TBD: create attribute and display methods
+		- TBD: create attribute, identity, and display methods
 		- TBD: create verb methods ( lock() and unlock() )
 		- TBD: create DoorLockable class
 		- TBD: convert Door object front_gate to LockableDoor class
 		- TBD: convert Door object iron_portcullis to LockableDoor class (test with Mach)
-	- TBD: create ContainsMixIn class with attribute and setters & getters
+	- TBD: create ContainsMixIn class
+		- TBD: create ContainsMixIn class w/ attributes (contain_lst, max_bulk, max_count, & prep) and setters & getters
+		- TBD: create attribute, identity, and display methods
+		- TBD: create verb methods ( put() )
+		- TBD: create ContainerFixedSimple class
 	- TBD: create Seat class with attribute and setters & getters (including in_reach_lst)
+		- IDEA: finally deliberation over Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 		- TBD: Seat in_reach attribute that links to room obj
 		- TBD: can access in_reach if also in room; enable general ref of container / surface
 		- Do need to set some limits though... maybe Perch obj can't contain Perch obj?
