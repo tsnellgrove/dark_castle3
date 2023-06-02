@@ -222,7 +222,7 @@ Version 3.78 Goals
 		- DONE: create is_openable() in OpenableMixIn and Invisible() and add to open_err() & close_err()
 		- DONE: create is_lockable() in Invisible() and add to open_err() & close_err()
 		- DONE: introduce can_contain() in Invisible(), open_err(), close_err()
-		- TBD: for open(), sort out if is_containter() => can_contain() text... bake in "{} is empty"
+		- DONE: for open(), sort out if is_containter() => can_contain() text... bake in "{} is empty"
 		- TBD: clean up comments
 	- TBD: create LockableMixIn
 		- TBD: think about how open_err() and close_err() should distinguish between obj with lids vs. obj w/ lids & locks

@@ -59,10 +59,11 @@ class OpenableMixIn(object):
 
 		active_gs.buff_cr()
 		active_gs.buff_no_cr("Openned. ")
-		if self.is_container():
-			if self.is_empty():
-				active_gs.buff_no_cr(f"The {self.full_name} is empty.")
-			self.disp_contain(active_gs)
+		if self.is_container() or self.can_contain():
+			self.disp_open(active_gs)
+#			if self.is_empty():
+#				active_gs.buff_no_cr(f"The {self.full_name} is empty.")
+#			self.disp_contain(active_gs)
 		active_gs.buff_cr()
 		return
 

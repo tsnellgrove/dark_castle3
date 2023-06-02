@@ -208,6 +208,12 @@ class Container(Door):
 					obj.disp_contain(active_gs)
 		return 
 
+	def disp_open(self, active_gs):
+		if self.is_empty():
+			active_gs.buff_no_cr(f"The {self.full_name} is empty.")
+		self.disp_contain(active_gs)
+
+
 	# *** verb methods ***
 	def put(self, obj, active_gs, mode=None):
 		""" Puts an Item in a Container or on a Surface.
