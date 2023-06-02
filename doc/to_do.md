@@ -54,7 +54,7 @@ May 22, 2022
 			- If similar obj and non-obj vars appear in same function, diff the non-obj case: e.g. worn_lst vs. worn_str_lst
 - methods
 	- prefixes:
-		- 'is' / 'has' for methods where no var is passed but a bool is returned; e.g. 'obj.is_item()'
+		- 'is'/'has'/'can' for methods where no var is passed but a bool is returned; e.g. 'obj.is_item()'
 		- 'chk' for a method where you will send an obj and get back a bool
 		- 'get' for a method that will return a 'usuable' obj var
 		- 'disp' if a method's main purpose is to buffer content
@@ -221,7 +221,7 @@ Version 3.78 Goals
 		- DONE: place screen_door between entrance_hall and antechamber to test DoorSimple
 		- DONE: create is_openable() in OpenableMixIn and Invisible() and add to open_err() & close_err()
 		- DONE: create is_lockable() in Invisible() and add to open_err() & close_err()
-		- TBD: introduce can_contain() in open_err(), close_err()
+		- DONE: introduce can_contain() in Invisible(), open_err(), close_err()
 		- TBD: for open(), sort out if is_containter() => can_contain() text... bake in "{} is empty"
 		- TBD: clean up comments
 	- TBD: create LockableMixIn
@@ -260,7 +260,6 @@ Version 3.78 Goals
 	- TBD: clean-up from old Door class
 		- is_door(), is_container(), is_surface() and etc
 
-
 - CANCEL: Given that creatures will be contained:
 	- need to embrace a node-based awareness of creature location
 	- need to embrace the use of recursion on methods like remove()
@@ -298,6 +297,12 @@ Version 3.78 Goals
 		- IDEA" major_behind = can't see
 		- Presumably, all 3 flavors of behind impact availability of obj in room list
 		- TBD: put the control_panel behind the goblin (check TADS implementation)
+	- IDEA: 'hole' = contain, opaque from room, no light
+		- 'nook' = 'hole' that can contain Creatures
+		- 'under' = opaque from room but no lighting issues
+		- use 'take from under' for 'under'
+		- use 'reach in' for 'hol'
+		- need to enter() 'nook' to get contents
 
 - TBD: document Seat class
 	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)

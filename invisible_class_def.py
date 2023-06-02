@@ -62,7 +62,10 @@ class Invisible(object):
 	def	is_door(self):
 		return False
 
-	def is_simple_door(self):
+#	def is_simple_door(self):
+#		return False
+
+	def can_contain(self):
 		return False
 
 	def	is_container(self):
@@ -255,10 +258,10 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
-		if not self.is_door() and not self.is_openable():
+		if not self.is_door() and (not self.is_openable() and not self.can_contain()):
 			active_gs.buffer(f"The {self.full_name} cannot be openned.")
 			return True
-		if self.is_open is None:
+		if self.is_open is None or (not self.is_openable() and self.can_contain()):
 			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 #			active_gs.buffer(f"How do you propose to 'open' the {self.full_name}?")
 			return True
@@ -275,10 +278,12 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
-		if not self.is_door() and not self.is_openable():
+#		if not self.is_door() and not self.is_openable():
+		if not self.is_door() and (not self.is_openable() and not self.can_contain()):
 			active_gs.buffer(f"The {self.full_name} cannot be closed.")
 			return True
-		if self.is_open is None:
+#		if self.is_open is None:
+		if self.is_open is None or (not self.is_openable() and self.can_contain()):
 			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 			return True
 		if self.is_open == False:
