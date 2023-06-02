@@ -303,6 +303,12 @@ Version 3.78 Goals
 		- use 'take from under' for 'under'
 		- use 'reach in' for 'hol'
 		- need to enter() 'nook' to get contents
+	- IDEA: what to do on container (or other) loss of light?
+		- e.g. put lantern in box, close box (no stuck)
+		- had thought about lighting up box from interiour - but wouldn't work for switch
+		- is safe to actually turn off lantern - because anything in your hand can still be accessed...
+		- so alternate idea is that hedgehog has to come rescue you
+		- but at least one inventory item gets scattered (hedgehog shrug)
 
 - TBD: document Seat class
 	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
