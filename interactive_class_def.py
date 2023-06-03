@@ -136,10 +136,10 @@ class DoorSimple(OpenableMixIn, ViewOnly):
 		""" A simple door with no lock.
 		"""
 
-class DoorLackable(DoorSimple, LockableMixIn):
+class DoorLockable(LockableMixIn, DoorSimple):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key):
 		DoorSimple.__init__(self, name, full_name, root_name, descript_key, writing, is_open)
-		LockableMixIn.__init__(is_unlocked, key)
+		LockableMixIn.__init__(self, is_unlocked, key)
 		""" A door that can be locked or unlocked.
 		"""
 

@@ -232,7 +232,8 @@ Version 3.78 Goals
 		- DONE: create attribute, identity, and display methods
 		- DONE: create verb methods ( lock() and unlock() )
 		- DONE: create DoorLockable class
-		- TBD: convert Door object front_gate to LockableDoor class
+		- DONE: update err_verb methods 
+		- DONE: convert Door object front_gate to LockableDoor class
 		- TBD: convert Door object iron_portcullis to LockableDoor class (test with Mach)
 	- TBD: create ContainsMixIn class
 		- TBD: create ContainsMixIn class w/ attributes (contain_lst, max_bulk, max_count, & prep) and setters & getters

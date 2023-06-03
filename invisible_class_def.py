@@ -417,7 +417,8 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_prep_std(key_obj, creature, active_gs):
 			return True
-		if not self.is_door():
+#		if not self.is_door():
+		if not self.is_door() and not self.is_lockable():
 			active_gs.buffer(f"The {self.full_name} cannot be locked.")
 			return True
 		if key_obj.is_switch():
@@ -426,7 +427,8 @@ class Invisible(object):
 		if not key_obj.is_item():
 			active_gs.buffer(f"And just how do you intend to lock a {self.full_name} with a {key_obj.full_name}??")
 			return True
-		if self.is_open is None:
+#		if self.is_open is None:
+		if self.is_open is None or (self.can_contain() and not self.is_openable()):
 			active_gs.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
 			return True
 		if key_obj.err_not_in_hand(creature, active_gs):
@@ -434,7 +436,8 @@ class Invisible(object):
 		if key_obj != self.key and key_obj.root_name != 'key':
 			active_gs.buffer(f"You can't lock the {self.full_name} with the {key_obj.full_name}.")
 			return True
-		if self.is_unlocked is None:
+#		if self.is_unlocked is None:
+		if self.is_unlocked is None or (self.is_openable() and not self.is_lockable()):
 			active_gs.buffer(f"The {self.full_name} does not appear to have a lock.")
 			return True
 		if self.key is None:
@@ -455,7 +458,8 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_prep_std(key_obj, creature, active_gs):
 			return True
-		if not self.is_door():
+#		if not self.is_door():
+		if not self.is_door() and not self.is_lockable():
 			active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
 			return True
 		if key_obj.is_switch():
@@ -464,7 +468,8 @@ class Invisible(object):
 		if not key_obj.is_item():
 			active_gs.buffer(f"And just how do you intend to unlock a {self.full_name} with a {key_obj.full_name}??")
 			return True
-		if self.is_open is None:
+#		if self.is_open is None:
+		if self.is_open is None or (self.can_contain() and not self.is_openable()):
 			active_gs.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
 			return True
 		if key_obj.err_not_in_hand(creature, active_gs):
@@ -472,7 +477,8 @@ class Invisible(object):
 		if key_obj != self.key and key_obj.root_name != 'key':
 			active_gs.buffer(f"You can't unlock the {self.full_name} with the {key_obj.full_name}.")
 			return True
-		if self.is_unlocked is None:
+#		if self.is_unlocked is None:
+		if self.is_unlocked is None or (self.is_openable() and not self.is_lockable()):
 			active_gs.buffer(f"The {self.full_name} does not appear to have a lock.")
 			return True
 		if self.key is None:
