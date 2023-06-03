@@ -880,8 +880,56 @@ Misc:
 - princess 'poise' & 'moxie'
 - fun idea - small creature - like a mouse - as an item
 - more directions
+- Princess takes 3 forms:
+	1) Cat => Burt must get her collar
+	2) Raven => ring
+	3) Cockney goth waif (castle servant) => boots
+	- Then princess arrives at ball wearing collar, ring, and boots
+- Burt must also foil evil Prince plan to murder princess (perhaps swap fake dagger for real one?)
+- Burt himself is taken for a lowly Baker (in past time)
+- Basically, Burt and the Princess (in various forms) wander around the castle doing chores learning info
+- Also, Burt has a chance to demonstrate himself as kind and helpful - or not - to disguised princess
+- Meanwhile, the whole castle is in an uproar getting ready for big ball and princess arrival
+- some scattered rumors that princess has "mysterious magical powers"
+- Meeting Nana
+	- Also, somewhere in the mix, Burt must prove who he is to a (much younger) Nana
+	- he needs to get (Willy's) broach, and put it behind the throne
+- Burt is given most of his hot/cold direction via a portrait of himself & princess
+	- As Burt makes right decisions the portrait gets clearer; fades with wrong decisions
+	- Portrait is taken of Burt and waif-princess by great artist who needs stand ins for Prince & Princess wedding portrait
+	- Burt originally (in modeern times) finds the portrait on the pedistal next to the throne and *MUST* put it back there during time travel just before arriving back or else the closed time loop fails (gets multiple hints that there's "something he must do")
+- Dungeon key
+	- in modern times, the one room Burst still can't get into is the dungeon
+	- main key was lost years ago during the "great ball fiasco" and spare has never been found
+	- not viewed as very important since the dungeon side-wall parially collapsed and was flooded by moat
+	- Dungeon is now the lair of the evil croc in the moat 
+	- Burt needs to get the dungeon key in past times
+	- he must somehow get it back to modern times so he can rescue princess in flooded dungeon from croc
+		- why can't she just turn into a fast fish?? need to think through her magic limits
+	- impossible to keep it so must hide it behind a brick (where he will retrieve it in the future)
 
+Princess Time-Travel Quest:
+- Princess asks Burt if he's an assassin, spy, or suitor => answer = 'baker'
+- Back in time, need to hide key behind brick (otherwise princess arrives but time travels back behind locked door)
+- Get key from chief guard via cheesecake?
+- Both Burt and the Princess need to eat food before time travel (nod to hitchhikers guide)
+- Juanty hat to escape guards at just the right time
 
+IDEA: have a 'jaunty hat' that enables you to move 'twice per time click' (i.e. no pre or post actions or move increments for one turn)
+	- would necesitate default responses to attacks and things like that
+	- could solve nearly any puzzle so need to deliver late in the game
+	- maybe especially useful for solving a '2 button' puzzle
+
+- Back to the Future - time machine chariot idea
+	- chariot is in stable hooked up to old_mare
+	- feed old_mare 1.7 boxes of jigga-whats special speed feed and chariot charges forward... at 8.9 mph blue light and time change
+	- dial in chariot picks year
+	- chariot is shiny metal and has a label on is saying "from the grande dutchy of Lorean" (remember, only chariots from the Grande Dutchy can truly call themselves 'De Lorean' - all others are merely fast, shiny chariots)
+	- Special easter eggs... there are 2 full boxes of jigga-what's special feed and 2 70% full boxes on an old dusty shelf (current time). They appear ancient and you've heard that for some reason or other this brand was outlawed 100 years ago - you didn't think any was left in the world... if Burt goes back in time he can feed the 1.7 jw to the old mare to get back in time - at this point, all 4 boxes are consumed (Burt will, in fact remember there as only having been 2 in current time)... but, if Burt attempts to bring a box with him back to the future he will fragment the space-time-continum and find himself sitting at a computer, playing a text adventure... with all of his memories fading and end with the statement "it must have been just a game all along..." with no score = "N/A" and title = time traveller
+
+DCII Time Travel Ideas:
+- In past, burt must convince young_nana to give him Willy's broach in order to drop it behind throne or else timeline is doomed!
+- Perhaps burt first travels fwd in time a week and can pick up an unfinished portrait of burt & princess that gives future status (similar to Back to the Future)
 
 
 Alter Terrain:
@@ -977,28 +1025,6 @@ Glum Dragon
 	- can go east through mouse hole to bakery or smithy
 	- or west to libary - which will then connect player back to cooridor that leads to anti-chamber
 
-DCII Time Travel Ideas:
-- In past, burt must convince young_nana to give him Willy's broach in order to drop it behind throne or else timeline is doomed!
-- Perhaps burt first travels fwd in time a week and can pick up an unfinished portrait of burt & princess that gives future status (similar to Back to the Future)
-
-Princess Time-Travel Quest:
-- Princess asks Burt if he's an assassin, spy, or suitor => answer = 'baker'
-- Back in time, need to hide key behind brick (otherwise princess arrives but time travels back behind locked door)
-- Get key from chief guard via cheesecake?
-- Both Burt and the Princess need to eat food before time travel (nod to hitchhikers guide)
-- Juanty hat to escape guards at just the right time
-
-IDEA: have a 'jaunty hat' that enables you to move 'twice per time click' (i.e. no pre or post actions or move increments for one turn)
-	- would necesitate default responses to attacks and things like that
-	- could solve nearly any puzzle so need to deliver late in the game
-	- maybe especially useful for solving a '2 button' puzzle
-
-- Back to the Future - time machine chariot idea
-	- chariot is in stable hooked up to old_mare
-	- feed old_mare 1.7 boxes of jigga-whats special speed feed and chariot charges forward... at 8.9 mph blue light and time change
-	- dial in chariot picks year
-	- chariot is shiny metal and has a label on is saying "from the grande dutchy of Lorean" (remember, only chariots from the Grande Dutchy can truly call themselves 'De Lorean' - all others are merely fast, shiny chariots)
-	- Special easter eggs... there are 2 full boxes of jigga-what's special feed and 2 70% full boxes on an old dusty shelf (current time). They appear ancient and you've heard that for some reason or other this brand was outlawed 100 years ago - you didn't think any was left in the world... if Burt goes back in time he can feed the 1.7 jw to the old mare to get back in time - at this point, all 4 boxes are consumed (Burt will, in fact remember there as only having been 2 in current time)... but, if Burt attempts to bring a box with him back to the future he will fragment the space-time-continum and find himself sitting at a computer, playing a text adventure... with all of his memories fading and end with the statement "it must have been just a game all along..." with no score = "N/A" and title = time traveller
 
 - Peter Pan puzzle where you catch and make use of your shadow / mirror image?
 
