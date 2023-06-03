@@ -102,10 +102,30 @@ class LockableMixIn(object):
 	def is_lockable(self):
 		return True
 
+	# *** verb methods ***
+	def unlock(self, key_obj, active_gs, mode=None):
+		""" Unlocks a Door object.
+		"""
+		if mode is None:
+			mode = 'std'
+		creature = active_gs.hero
 
+		active_gs.buffer("Unlocked")
 
+		self.is_unlocked = True
+		return
 
+	def lock(self, key_obj, active_gs, mode=None):
+		""" Locks a Door object.
+		"""
+		if mode is None:
+			mode = 'std'
+		creature = active_gs.hero
 
+		active_gs.buffer("Locked")
+
+		self.is_unlocked = False
+		return
 
 
 ### noun classes
@@ -116,6 +136,12 @@ class DoorSimple(OpenableMixIn, ViewOnly):
 		""" A simple door with no lock.
 		"""
 
+class DoorLackable(DoorSimple, LockableMixIn):
+	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key):
+		DoorSimple.__init__(self, name, full_name, root_name, descript_key, writing, is_open)
+		LockableMixIn.__init__(is_unlocked, key)
+		""" A door that can be locked or unlocked.
+		"""
 
 
 

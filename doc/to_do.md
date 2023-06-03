@@ -230,8 +230,8 @@ Version 3.78 Goals
 	- INPROC: create LockableMixIn class
 		- DONE: create LockableMixIn class w/ attributes & setters & getters
 		- DONE: create attribute, identity, and display methods
-		- TBD: create verb methods ( lock() and unlock() )
-		- TBD: create DoorLockable class
+		- DONE: create verb methods ( lock() and unlock() )
+		- DONE: create DoorLockable class
 		- TBD: convert Door object front_gate to LockableDoor class
 		- TBD: convert Door object iron_portcullis to LockableDoor class (test with Mach)
 	- TBD: create ContainsMixIn class
