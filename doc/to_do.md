@@ -227,9 +227,9 @@ Version 3.78 Goals
 		- DONE: introduce can_contain() in Invisible(), open_err(), close_err()
 		- DONE: for open(), sort out if is_containter() => can_contain() text... bake in "{} is empty"
 		- DONE: clean up comments
-	- TBD: create LockableMixIn class
-		- TBD: create LockableMixIn class w/ attributes & setters & getters
-		- TBD: create attribute, identity, and display methods
+	- INPROC: create LockableMixIn class
+		- DONE: create LockableMixIn class w/ attributes & setters & getters
+		- DONE: create attribute, identity, and display methods
 		- TBD: create verb methods ( lock() and unlock() )
 		- TBD: create DoorLockable class
 		- TBD: convert Door object front_gate to LockableDoor class

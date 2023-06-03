@@ -11,7 +11,7 @@ from base_class_def import Writing, ViewOnly
 from room_class_def import Room
 from item_class_def import Item, Food, Garment, Weapon
 from door_class_def import Door, Container, PortableContainer, PortableLiquidContainer, Surface, Seat
-from interactive import DoorSimple
+from interactive_class_def import DoorSimple
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from misc_class_def import Liquid
 from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,

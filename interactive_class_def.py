@@ -10,9 +10,9 @@ from item_class_def import Item
 ### mixin classes
 class OpenableMixIn(object):
 	def __init__(self, is_open):
+		self._is_open = is_open # state of the door; True for door open
 		""" The OpenablehMixIn can be combined with other classes (most typically ViewOnly) to produce doors and lidded containers.
 		"""
-		self._is_open = is_open # state of the door; True for door open
 
 	# *** getters & setters ***
 	@property
@@ -72,6 +72,40 @@ class OpenableMixIn(object):
 
 		self.is_open = False
 		return
+
+
+class LockableMixIn(object):
+	def __init__(self, is_unlocked, key):
+		self._is_unlocked = is_unlocked # True if the door is unlocked, False if the door is locked, None if there is no lock
+		self._key = key # the key obj required to unlock the door; None means the door is not locked by a key
+		""" The LockablehMixIn can be combined with other classes (most typically ViewOnly) to produce lockable doors and containers. Unlocking an object typically requires the correct key.
+		"""
+
+	# *** getters & setters ***
+	@property
+	def is_unlocked(self):
+		return self._is_unlocked
+
+	@is_unlocked.setter
+	def is_unlocked(self, new_state):
+		self._is_unlocked = new_state
+
+	@property
+	def key(self):
+		return self._key
+
+	@key.setter
+	def key(self, new_key):
+		self._key = new_key
+
+	# *** class identity methods ***
+	def is_lockable(self):
+		return True
+
+
+
+
+
 
 
 ### noun classes
