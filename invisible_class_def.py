@@ -62,8 +62,8 @@ class Invisible(object):
 	def	is_door(self):
 		return False
 
-	def can_contain(self):
-		return False
+#	def can_contain(self):
+#		return False
 
 	def	is_container(self):
 		return False
@@ -255,10 +255,12 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
-		if not self.is_door() and (not self.is_openable() and not self.can_contain()):
+#		if not self.is_door() and (not self.is_openable() and not self.can_contain()):
+		if not self.is_door() and (not self.is_openable() and not self.is_container()):
 			active_gs.buffer(f"The {self.full_name} cannot be openned.")
 			return True
-		if self.is_open is None or (not self.is_openable() and self.can_contain()):
+#		if self.is_open is None or (not self.is_openable() and self.can_contain()):
+		if self.is_open is None or (not self.is_openable() and self.is_container()):
 			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 			return True
 		if self.is_open:
@@ -275,11 +277,13 @@ class Invisible(object):
 		if self.err_std(creature, active_gs):
 			return True
 #		if not self.is_door():
-		if not self.is_door() and (not self.is_openable() and not self.can_contain()):
+#		if not self.is_door() and (not self.is_openable() and not self.can_contain()):
+		if not self.is_door() and (not self.is_openable() and not self.is_container()):
 			active_gs.buffer(f"The {self.full_name} cannot be closed.")
 			return True
 #		if self.is_open is None:
-		if self.is_open is None or (not self.is_openable() and self.can_contain()):
+#		if self.is_open is None or (not self.is_openable() and self.can_contain()):
+		if self.is_open is None or (not self.is_openable() and self.is_container()):
 			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 			return True
 		if self.is_open == False:
@@ -428,7 +432,8 @@ class Invisible(object):
 			active_gs.buffer(f"And just how do you intend to lock a {self.full_name} with a {key_obj.full_name}??")
 			return True
 #		if self.is_open is None:
-		if self.is_open is None or (self.can_contain() and not self.is_openable()):
+#		if self.is_open is None or (self.can_contain() and not self.is_openable()):
+		if self.is_open is None or (self.is_container() and not self.is_openable()):
 			active_gs.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
 			return True
 		if key_obj.err_not_in_hand(creature, active_gs):
@@ -469,7 +474,8 @@ class Invisible(object):
 			active_gs.buffer(f"And just how do you intend to unlock a {self.full_name} with a {key_obj.full_name}??")
 			return True
 #		if self.is_open is None:
-		if self.is_open is None or (self.can_contain() and not self.is_openable()):
+#		if self.is_open is None or (self.can_contain() and not self.is_openable()):
+		if self.is_open is None or (self.is_container() and not self.is_openable()):
 			active_gs.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
 			return True
 		if key_obj.err_not_in_hand(creature, active_gs):

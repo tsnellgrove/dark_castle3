@@ -56,7 +56,8 @@ class OpenableMixIn(object):
 
 		active_gs.buff_cr()
 		active_gs.buff_no_cr("Openned. ")
-		if self.is_container() or self.can_contain():
+#		if self.is_container() or self.can_contain():
+		if self.is_container():
 			self.disp_open(active_gs)
 		active_gs.buff_cr()
 		return
@@ -126,6 +127,107 @@ class LockableMixIn(object):
 
 		self.is_unlocked = False
 		return
+
+class ContainsMixIn(object):
+	def __init__(self, contain_lst, max_bulk, max_obj, prep):
+		self._contain_lst = contain_lst # list of objects in the container
+		self._max_bulk = max_bulk # maximum combined bulk the container can hold
+		self._max_obj = max_obj # maximum number of objects the container can hold
+		self._prep = prep # prep to be used when addign obj to container; typically 'in' or 'on'
+		""" The ContainsMixIn can be combined with other classes to hold items.
+		"""
+
+	# *** getters & setters ***
+	@property
+	def contain_lst(self):
+		return self._contain_lst
+
+	@contain_lst.setter
+	def contain_lst(self, new_obj):
+		self._contain_lst = new_obj
+
+	@property
+	def max_bulk(self):
+		return self._max_bulk
+
+	@property
+	def max_obj(self):
+		return self._max_obj
+
+	@property
+	def prep(self):
+		return self._prep
+
+	# *** attrib methods ***
+	def contain_lst_append(self, item):
+		self._contain_lst.append(item)
+
+	def contain_lst_remove(self, item):
+		self._contain_lst.remove(item)
+
+	def is_empty(self):
+		return not self.contain_lst
+
+	# *** class identity methods ***
+	def	is_container(self):
+		return True
+
+	# *** scope methods ***
+	def get_vis_contain_lst(self, active_gs):
+		""" Returns the list of visible objects contained in the referenced ('self') object
+		"""
+		if self.is_not_closed():
+			node2_lst = []
+			[node2_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in self.contain_lst]
+			return self.contain_lst + node2_lst
+		return []
+
+	def chk_wrt_is_vis(self, writing, active_gs):
+		""" Evaluates whether the passed writing is visible within the methed-calling object.
+		"""
+		return any(obj.writing == writing for obj in self.get_vis_contain_lst(active_gs))
+
+	def chk_contain_item(self, item):
+		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item()
+		"""
+		return item in self.contain_lst
+
+	def remove_item(self, item, active_gs):
+		self.contain_lst_remove(item)
+
+	def chk_content_prohibited(self, obj):
+		return obj.is_creature() or obj.is_surface()
+
+	# *** display methods ***
+	def has_contain(self, active_gs):
+		return bool(self.contain_lst)
+
+	def disp_cond(self, active_gs):
+#		super(Container, self).disp_cond(active_gs)
+		super(ContainsMixIn, self).disp_cond(active_gs)
+		""" Displays object-specific conditions. Used in examine().
+		"""
+		if self.is_empty() and self.is_not_closed():
+			active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
+		return 
+
+	def disp_contain(self, active_gs):
+		""" Displays a description of the visible items held by the obj. Used in examine().
+		"""
+		if self.is_not_closed() and not self.is_empty():
+			contain_txt_lst = [obj.full_name for obj in self.contain_lst if obj != active_gs.hero]
+			if contain_txt_lst:
+				contain_str = ", ".join(contain_txt_lst)
+				active_gs.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
+			for obj in self.contain_lst:
+				if obj != active_gs.hero:
+					obj.disp_contain(active_gs)
+		return 
+
+	def disp_open(self, active_gs):
+		if self.is_empty():
+			active_gs.buff_no_cr(f"The {self.full_name} is empty.")
+		self.disp_contain(active_gs)
 
 
 ### noun classes

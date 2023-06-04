@@ -183,7 +183,7 @@ Version 3.78 Goals
 			- take() method has checks added for Creature 'max_bulk' and 'max_count'	
 		- OpenableMixIn provides 'is_open' attribute and open(), close() methods
 		- LockableMixIn provides 'is_unlocked' and 'key' attributes and lock(), unlock() methods
-		- ContainsMixIn provides 'contain_lst', 'max_bulk', 'max_count', and 'prep'; also put() method
+		- ContainsMixIn provides 'contain_lst', 'max_bulk', 'max_obj', and 'prep'; also put() method
 			- interp() needs to be updated to reference prep attribute with put() verb
 		- DoorSimple = ViewOnly + OpenableMixIn
 		- DoorLockable = DoorSimple + LockableMixIn
@@ -226,8 +226,8 @@ Version 3.78 Goals
 			- DONE: address existing is_door() vs. is_door_simple() case for open_err() and close_err()
 		- DONE: create is_openable() in OpenableMixIn and Invisible() and add to open_err() & close_err()
 		- DONE: create is_lockable() in Invisible() and add to open_err() & close_err()
-		- DONE: introduce can_contain() in Invisible(), open_err(), close_err()
-		- DONE: for open(), sort out if is_containter() => can_contain() text... bake in "{} is empty"
+		- DONE: introduce is_container() in Invisible(), open_err(), close_err()
+		- DONE: for open(), sort out if is_containter() => is_contain() text... bake in "{} is empty"
 		- DONE: clean up comments
 	- DONE: create LockableMixIn class
 		- DONE: create LockableMixIn class w/ attributes & setters & getters
@@ -237,12 +237,13 @@ Version 3.78 Goals
 		- DONE: update err_verb methods 
 		- DONE: convert Door object front_gate to LockableDoor class
 		- DONE: convert Door object iron_portcullis to LockableDoor class (test with Mach)
-	- TBD: create ContainsMixIn class
-		- TBD: create ContainsMixIn class w/ attributes: contain_lst, max_bulk, max_count, & prep 
-		- TBD: create setters & getters
-		- TBD: create attribute, identity, and display methods
+	- INPROC: create ContainsMixIn class
+		- DONE: create ContainsMixIn class w/ attributes: contain_lst, max_bulk, max_obj, & prep 
+		- DONE: create setters & getters
+		- DONE: create attribute, identity, scope, and display methods
+		- INPROC: revert can_contain() to is_container() [troubleshooting crystal box]
 		- TBD: create verb methods ( put() )
-		- TBD: update err_verb methods
+		- TBD: update err_verb method
 		- TBD: update interp() to reference prep attribute
 	- TBD: create container noun classes
 		- TBD: create ContainerFixedSimple class
