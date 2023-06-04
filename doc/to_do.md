@@ -241,13 +241,17 @@ Version 3.78 Goals
 		- DONE: create ContainsMixIn class w/ attributes: contain_lst, max_bulk, max_obj, & prep 
 		- DONE: create setters & getters
 		- DONE: create attribute, identity, scope, and display methods
-		- INPROC: revert can_contain() to is_container() [troubleshooting black_suitcase]
+		- DONE: revert can_contain() to is_container()
+			- IDEA: there's a lot of code that looks for is_container - best to re-use it
+			- ISSUE: wrong error messages with open / close & unlock / lock
+			- DONE: had to add is_openable() and is_lockable() identities to Door class
 		- TBD: create verb methods ( put() )
 		- TBD: update err_verb method
 		- TBD: update interp() to reference prep attribute
-	- TBD: create container noun classes
 		- TBD: create ContainerFixedSimple class
 		- TBD: convert Surface obj shelf to ContainerFixedSimple class
+		- TBD: clean up comments!
+	- TBD: create additional container noun classes
 		- TBD: create ContainerFixedLidded
 		- TBD: create ContainerFixedLockable
 		- TBD: convert crystal_box to ContainerFixedLockable class

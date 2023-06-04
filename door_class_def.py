@@ -157,6 +157,12 @@ class Container(Door):
 	def	is_container(self):
 		return True
 
+	def	is_openable(self):
+		return True
+
+	def is_lockable(self):
+		return True
+
 	# *** scope methods ***
 	def get_vis_contain_lst(self, active_gs):
 		""" Returns the list of visible objects contained in the referenced ('self') object
@@ -255,6 +261,9 @@ class PortableLiquidContainer(PortableContainer):
 		"""A container that holds liquids and can be taken.
 		"""
 
+	def is_lockable(self):
+		return False
+
 	# *** scope methods ***
 	def chk_content_prohibited(self, obj):
 		return super(PortableLiquidContainer, self).chk_content_prohibited(obj) or not obj.is_liquid()
@@ -275,6 +284,12 @@ class Surface(Container):
 	# *** class identity methods ***
 	def is_surface(self):
 		return True
+
+	def	is_openable(self):
+		return False
+
+	def is_lockable(self):
+		return False
 
 	# *** scope methods ***
 	def chk_has_capacity(self):
