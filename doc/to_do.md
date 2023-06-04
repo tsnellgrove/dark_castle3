@@ -241,7 +241,7 @@ Version 3.78 Goals
 		- DONE: create ContainsMixIn class w/ attributes: contain_lst, max_bulk, max_obj, & prep 
 		- DONE: create setters & getters
 		- DONE: create attribute, identity, scope, and display methods
-		- INPROC: revert can_contain() to is_container() [troubleshooting crystal box]
+		- INPROC: revert can_contain() to is_container() [troubleshooting black_suitcase]
 		- TBD: create verb methods ( put() )
 		- TBD: update err_verb method
 		- TBD: update interp() to reference prep attribute
