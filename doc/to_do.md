@@ -191,6 +191,8 @@ Version 3.78 Goals
 		- ContainerFixedLidded = ContainerFixedSimple + OpenableMixIn
 		- ContainerFixedLockable = ContainerFixedLidded + LockableMixIn
 		- ContainerPortableSimple = Item + ContainsMixIn
+		- LiquidContainerMixIn provides Scope method (and someday verb methods like fill & pour)
+		- Flask = ContainerPortableSimple + LiquidContainerMixIn
 		- ContainerPortableLidded = ContainerPortableSimple + OpenableMixIn
 		- ContainerPortabLockable = ContainerPortableLidded + LockableMixIn
 		- Seat = inherits from ContainerFixedSimple; can contain Creatures; 
@@ -227,19 +229,33 @@ Version 3.78 Goals
 		- DONE: introduce can_contain() in Invisible(), open_err(), close_err()
 		- DONE: for open(), sort out if is_containter() => can_contain() text... bake in "{} is empty"
 		- DONE: clean up comments
-	- INPROC: create LockableMixIn class
+	- DONE: create LockableMixIn class
 		- DONE: create LockableMixIn class w/ attributes & setters & getters
 		- DONE: create attribute, identity, and display methods
 		- DONE: create verb methods ( lock() and unlock() )
 		- DONE: create DoorLockable class
 		- DONE: update err_verb methods 
 		- DONE: convert Door object front_gate to LockableDoor class
-		- TBD: convert Door object iron_portcullis to LockableDoor class (test with Mach)
+		- DONE: convert Door object iron_portcullis to LockableDoor class (test with Mach)
 	- TBD: create ContainsMixIn class
-		- TBD: create ContainsMixIn class w/ attributes (contain_lst, max_bulk, max_count, & prep) and setters & getters
+		- TBD: create ContainsMixIn class w/ attributes: contain_lst, max_bulk, max_count, & prep 
+		- TBD: create setters & getters
 		- TBD: create attribute, identity, and display methods
 		- TBD: create verb methods ( put() )
+		- TBD: update err_verb methods
+		- TBD: update interp() to reference prep attribute
 		- TBD: create ContainerFixedSimple class
+		- TBD: convert Surface obj shelf to ContainerFixedSimple class
+		- TBD: create ContainerFixedLidded
+		- TBD: create ContainerFixedLockable
+		- TBD: convert crystal_box to ContainerFixedLockable class
+		- TBD: create ContainerPortableSimple
+		- TBD: create LiquidContainerMixIn
+		- TBD: create Flask
+		- TBD: convert bottle to Flask class
+		- TBD: create ContainerPortableLidded
+		- TBD: create ContainerPortabLockable
+		- TBD: convert suitcase to ContainerPortabLockable class
 	- TBD: create Seat class with attribute and setters & getters (including in_reach_lst)
 		- IDEA: finally deliberation over Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 		- TBD: Seat in_reach attribute that links to room obj
