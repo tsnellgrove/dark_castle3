@@ -244,6 +244,7 @@ Version 3.78 Goals
 		- TBD: create verb methods ( put() )
 		- TBD: update err_verb methods
 		- TBD: update interp() to reference prep attribute
+	- TBD: create container noun classes
 		- TBD: create ContainerFixedSimple class
 		- TBD: convert Surface obj shelf to ContainerFixedSimple class
 		- TBD: create ContainerFixedLidded
