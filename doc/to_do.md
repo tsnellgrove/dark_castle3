@@ -252,6 +252,7 @@ Version 3.78 Goals
 		- TBD: convert Surface obj shelf to ContainerFixedSimple class
 		- TBD: clean up comments!
 	- TBD: create additional container noun classes
+		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)
 		- TBD: create ContainerFixedLidded
 		- TBD: create ContainerFixedLockable
 		- TBD: convert crystal_box to ContainerFixedLockable class
@@ -368,6 +369,8 @@ Version 3.78 Goals
 
 *** Unify Notes ***
 *** Plan for interpreter update ***
+
+- IDEA: Liquid handling: "Fill X with Y from Z", "Pour X from Y into Z"
 
 - INPROC: review TADS3 terms for Description and preposition
 
