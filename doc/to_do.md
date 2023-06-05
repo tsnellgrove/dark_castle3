@@ -247,11 +247,10 @@ Version 3.78 Goals
 			- DONE: had to add is_openable() and is_lockable() identities to Door class
 		- DONE: create verb methods ( put() )
 		- DONE: update err_verb method
-			- TBD: fix put() capacity check
+			- DONE: fix put() capacity check (introduce can_contain_temp() )
 		- TBD: update interp() to reference prep attribute
 		- TBD: create ContainerFixedSimple class
 		- TBD: convert Surface obj shelf to ContainerFixedSimple class
-		- TBD: consider grouping "empty" response with contains rather than condition
 		- TBD: clean up comments!
 	- TBD: create additional container noun classes
 		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)
@@ -274,6 +273,11 @@ Version 3.78 Goals
 		- TBD: autogen text based on Seat obj.descript
 			- TBD: update other autogen text to key off descript?
 			- TBD: includes take() for unwear and drink()
+	- TBD: clean-up
+		- TBD: clean-up comments
+		- TBD: clean-up is_door(), is_surface(), can_contain_temp(), etc
+		- TBD: re-factor for clarity (especially ContainsMixIn)
+		- TBD: consider grouping "empty" response with contains rather than condition
 	- TBD: establish 'bulk' attribute for Item
 		- TBD: update classes
 			- TBD: Item
