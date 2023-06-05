@@ -192,11 +192,15 @@ class ContainsMixIn(object):
 		"""
 		return item in self.contain_lst
 
+	def chk_has_capacity(self):
+		return len(self.contain_lst) < self.max_obj
+
 	def remove_item(self, item, active_gs):
 		self.contain_lst_remove(item)
 
 	def chk_content_prohibited(self, obj):
-		return obj.is_creature() or obj.is_surface()
+#		return obj.is_creature() or obj.is_surface()
+		return obj.is_creature()
 
 	# *** display methods ***
 	def has_contain(self, active_gs):
@@ -207,14 +211,17 @@ class ContainsMixIn(object):
 		super(ContainsMixIn, self).disp_cond(active_gs)
 		""" Displays object-specific conditions. Used in examine().
 		"""
-		if self.is_empty() and self.is_not_closed():
+#		if self.is_empty() and self.is_not_closed():
+		if ((self.is_opeable() and self.is_not_closed()) or not self.is_openable()) and self.is_empty():
+#			if self.is_empty():
 			active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
 		return 
 
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
 		"""
-		if self.is_not_closed() and not self.is_empty():
+#		if self.is_not_closed() and not self.is_empty():
+		if ((self.is_opeable() and self.is_not_closed()) or not self.is_openable()) and not self.is_empty():
 			contain_txt_lst = [obj.full_name for obj in self.contain_lst if obj != active_gs.hero]
 			if contain_txt_lst:
 				contain_str = ", ".join(contain_txt_lst)
@@ -228,6 +235,21 @@ class ContainsMixIn(object):
 		if self.is_empty():
 			active_gs.buff_no_cr(f"The {self.full_name} is empty.")
 		self.disp_contain(active_gs)
+
+	# *** verb methods ***
+	def put(self, obj, active_gs, mode=None):
+		""" Puts an Item in a Container or on a Surface.
+		"""
+		if mode is None:
+			mode = 'std'
+		creature = active_gs.hero
+		
+		creature.hand_lst_remove(obj)
+		self.contain_lst_append(obj)
+
+		active_gs.buffer("Done")
+		return
+
 
 
 ### noun classes

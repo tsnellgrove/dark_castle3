@@ -245,11 +245,13 @@ Version 3.78 Goals
 			- IDEA: there's a lot of code that looks for is_container - best to re-use it
 			- ISSUE: wrong error messages with open / close & unlock / lock
 			- DONE: had to add is_openable() and is_lockable() identities to Door class
-		- TBD: create verb methods ( put() )
-		- TBD: update err_verb method
+		- DONE: create verb methods ( put() )
+		- DONE: update err_verb method
+			- TBD: fix put() capacity check
 		- TBD: update interp() to reference prep attribute
 		- TBD: create ContainerFixedSimple class
 		- TBD: convert Surface obj shelf to ContainerFixedSimple class
+		- TBD: consider grouping "empty" response with contains rather than condition
 		- TBD: clean up comments!
 	- TBD: create additional container noun classes
 		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)

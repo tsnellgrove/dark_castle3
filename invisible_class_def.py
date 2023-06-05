@@ -516,18 +516,22 @@ class Invisible(object):
 			return True
 		if obj.err_not_in_hand(creature, active_gs):
 			return True
-		if self.is_open == False:
+#		if self.is_open == False:
+		if self.is_openable and self.is_open == False:
 			active_gs.buffer(f"The {self.full_name} is closed.")
 			return True
 		if self.chk_content_prohibited(obj):
-			if obj.is_surface():
-				loc_prep = 'on'
-			else:
-				loc_prep = 'in'
-			active_gs.buffer(f"You can't put the {obj.full_name} {loc_prep} the {self.full_name}.")
+#			if obj.is_surface():
+#				loc_prep = 'on'
+#			else:
+#				loc_prep = 'in'
+#			active_gs.buffer(f"You can't put the {obj.full_name} {loc_prep} the {self.full_name}.")
+			active_gs.buffer(f"You can't put the {obj.full_name} {self.prep} the {self.full_name}.")
 			return True
-		if self.is_surface() and not self.chk_has_capacity():
-			active_gs.buffer(f"There's no room on the {self.full_name} for another item.")
+#		if self.is_surface() and not self.chk_has_capacity():
+		if not self.chk_has_capacity():
+#			active_gs.buffer(f"There's no room on the {self.full_name} for another item.")
+			active_gs.buffer(f"There's no room {self.prep} the {self.full_name} for another item.")
 			return True
 		return False
 
