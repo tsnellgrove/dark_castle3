@@ -248,7 +248,7 @@ Version 3.78 Goals
 		- DONE: create verb methods ( put() )
 		- DONE: update err_verb method
 			- DONE: fix put() capacity check (introduce can_contain_temp() )
-		- TBD: update interp() to reference prep attribute
+		- DONE: update interp() to reference prep attribute
 		- TBD: create ContainerFixedSimple class
 		- TBD: convert Surface obj shelf to ContainerFixedSimple class
 		- TBD: clean up comments!

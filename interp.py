@@ -217,7 +217,8 @@ def interpreter(user_input, master_obj_lst):
 				word2 = user_input_lst[1]
 				return 'go', [room_obj, word1, word2]
 		elif word1 in ['put', 'show', 'give', 'attack', 'lock', 'unlock']:
-				if word1 in ['put', 'sit']:
+#				if word1 in ['put', 'sit']:
+				if word1 in ['put']:
 						if 'in' in user_input_lst:
 								prep = 'in'
 						elif 'on' in user_input_lst:
@@ -245,6 +246,9 @@ def interpreter(user_input, master_obj_lst):
 						p_p_lst = list(islice(user_input_lst, in_position, None))
 						noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst)
 						dir_obj_error_state, dir_obj_error_msg, dirobj_obj = noun_handling(master_obj_lst, p_p_lst)
+						if noun_obj.can_contain_temp() and word1 == 'put' and prep != noun_obj.prep:
+								error_msg = f"I don't see the word '{noun_obj.prep}' in that sentence."
+								return 'error', [error_msg]
 						if noun_error_state:
 								return 'error', [noun_error_msg]
 						elif dir_obj_error_state:
