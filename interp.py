@@ -246,7 +246,8 @@ def interpreter(user_input, master_obj_lst):
 						p_p_lst = list(islice(user_input_lst, in_position, None))
 						noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst)
 						dir_obj_error_state, dir_obj_error_msg, dirobj_obj = noun_handling(master_obj_lst, p_p_lst)
-						if noun_obj.can_contain_temp() and word1 == 'put' and prep != noun_obj.prep:
+#						print(f"dirobj_obj = {dirobj_obj.name}, can_contain_temp = {noun_obj.can_contain_temp()}, word1 = {word1}, loc_prep = {prep}, ")
+						if dirobj_obj.can_contain_temp() and word1 == 'put' and prep != dirobj_obj.prep:
 								error_msg = f"I don't see the word '{noun_obj.prep}' in that sentence."
 								return 'error', [error_msg]
 						if noun_error_state:

@@ -251,6 +251,7 @@ Version 3.78 Goals
 		- DONE: update interp() to reference prep attribute
 		- DONE: create ContainerFixedSimple class
 		- INPROC: convert Surface obj shelf to ContainerFixedSimple class
+			- TBD: troubleshoot enter room issue
 			- TBD: sort out use of Container.prep in interp()
 		- TBD: clean up comments!
 	- TBD: create additional container noun classes

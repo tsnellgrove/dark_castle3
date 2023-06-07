@@ -81,8 +81,7 @@ black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase
 
 # wooden_shelf = Surface('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None,
 # 				None, None, None, [], 20)
-wooden_shelf = ContainerFixedSimple('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None,
-				[], 999, 20, 'on')
+wooden_shelf = ContainerFixedSimple('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None, [], 999, 20, 'on')
 
 # ContainerFixedSimple attributes = name, full_name, root_name, descript_key, writing, contain_lst, max_bulk, max_obj, prep
 
