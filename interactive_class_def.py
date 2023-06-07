@@ -270,5 +270,10 @@ class DoorLockable(LockableMixIn, DoorSimple):
 		""" A door that can be locked or unlocked.
 		"""
 
-
+class ContainerFixedSimple(ContainsMixIn, ViewOnly):
+	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_bulk, max_obj, prep):
+		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
+		OpenableMixIn.__init__(self, contain_lst, max_bulk, max_obj, prep)
+		""" A simple non-takable container with no lid or lock. Can be a box or a shelf depending on 'prep'
+		"""
 

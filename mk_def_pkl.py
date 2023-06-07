@@ -11,7 +11,7 @@ from base_class_def import Writing, ViewOnly
 from room_class_def import Room
 from item_class_def import Item, Food, Garment, Weapon
 from door_class_def import Door, Container, PortableContainer, PortableLiquidContainer, Surface, Seat
-from interactive_class_def import DoorSimple, DoorLockable
+from interactive_class_def import DoorSimple, DoorLockable, ContainerFixedSimple
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from misc_class_def import Liquid
 from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
@@ -79,8 +79,12 @@ crystal_box = Container('crystal_box', 'Crystal Box', 'box', 'crystal_box', call
 				False, False, silver_key, ['kinging_scroll_temp'])
 black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', small_printing, False, False, rusty_key, [])
 
-wooden_shelf = Surface('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None,
-				None, None, None, [], 20)
+# wooden_shelf = Surface('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None,
+# 				None, None, None, [], 20)
+wooden_shelf = ContainerFixedSimple('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None,
+				[], 999, 20, 'on')
+
+# ContainerFixedSimple attributes = name, full_name, root_name, descript_key, writing, contain_lst, max_bulk, max_obj, prep
 
 glass_bottle = PortableLiquidContainer('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', None, None, None, None, [fresh_water])
 

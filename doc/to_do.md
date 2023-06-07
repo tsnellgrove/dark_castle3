@@ -249,8 +249,9 @@ Version 3.78 Goals
 		- DONE: update err_verb method
 			- DONE: fix put() capacity check (introduce can_contain_temp() )
 		- DONE: update interp() to reference prep attribute
-		- TBD: create ContainerFixedSimple class
-		- TBD: convert Surface obj shelf to ContainerFixedSimple class
+		- DONE: create ContainerFixedSimple class
+		- INPROC: convert Surface obj shelf to ContainerFixedSimple class
+			- TBD: sort out use of Container.prep in interp()
 		- TBD: clean up comments!
 	- TBD: create additional container noun classes
 		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)
