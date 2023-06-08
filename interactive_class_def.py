@@ -215,7 +215,7 @@ class ContainsMixIn(object):
 		""" Displays object-specific conditions. Used in examine().
 		"""
 #		if self.is_empty() and self.is_not_closed():
-		if ((self.is_opeable() and self.is_not_closed()) or not self.is_openable()) and self.is_empty():
+		if ((self.is_openable() and self.is_not_closed()) or not self.is_openable()) and self.is_empty():
 #			if self.is_empty():
 			active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
 		return 

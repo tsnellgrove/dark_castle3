@@ -252,7 +252,8 @@ Version 3.78 Goals
 		- DONE: create ContainerFixedSimple class
 		- INPROC: convert Surface obj shelf to ContainerFixedSimple class
 			- DONE: troubleshoot enter room issue
-			- TBD: debug 'put key on shelf'
+			- DONE: debug 'put key on shelf'
+			- TBD: sort out 'empty' condition for 'x shelf'
 			- TBD: sort out use of Container.prep in interp()
 		- TBD: clean up comments!
 	- TBD: create additional container noun classes
