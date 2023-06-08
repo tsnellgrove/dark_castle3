@@ -250,11 +250,11 @@ Version 3.78 Goals
 			- DONE: fix put() capacity check (introduce can_contain_temp() )
 		- DONE: update interp() to reference prep attribute
 		- DONE: create ContainerFixedSimple class
-		- INPROC: convert Surface obj shelf to ContainerFixedSimple class
+		- DONE: convert Surface obj shelf to ContainerFixedSimple class
 			- DONE: troubleshoot enter room issue
 			- DONE: debug 'put key on shelf'
-			- TBD: sort out 'empty' condition for 'x shelf'
-			- TBD: sort out use of Container.prep in interp()
+			- DONE: sort out 'empty' condition for 'x shelf'
+			- DONE: sort out use of Container.prep in interp()
 		- TBD: clean up comments!
 	- TBD: create additional container noun classes
 		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)

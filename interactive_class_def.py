@@ -209,12 +209,16 @@ class ContainsMixIn(object):
 	def has_contain(self, active_gs):
 		return bool(self.contain_lst)
 
+	def has_cond(self, active_gs):
+		return True
+
 	def disp_cond(self, active_gs):
 #		super(Container, self).disp_cond(active_gs)
 		super(ContainsMixIn, self).disp_cond(active_gs)
 		""" Displays object-specific conditions. Used in examine().
 		"""
 #		if self.is_empty() and self.is_not_closed():
+#		print(f"Value of is_cont_vis equiv = {(self.is_openable() and self.is_not_closed()) or not self.is_openable()}")
 		if ((self.is_openable() and self.is_not_closed()) or not self.is_openable()) and self.is_empty():
 #			if self.is_empty():
 			active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
