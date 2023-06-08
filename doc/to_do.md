@@ -251,7 +251,8 @@ Version 3.78 Goals
 		- DONE: update interp() to reference prep attribute
 		- DONE: create ContainerFixedSimple class
 		- INPROC: convert Surface obj shelf to ContainerFixedSimple class
-			- TBD: troubleshoot enter room issue
+			- DONE: troubleshoot enter room issue
+			- TBD: debug 'put key on shelf'
 			- TBD: sort out use of Container.prep in interp()
 		- TBD: clean up comments!
 	- TBD: create additional container noun classes
@@ -278,6 +279,7 @@ Version 3.78 Goals
 	- TBD: clean-up
 		- TBD: clean-up comments
 		- TBD: clean-up is_door(), is_surface(), can_contain_temp(), etc
+		- TBD: fix display meth use of is_closed() ; create an is_content_vis() meth for ContainsMixIn
 		- TBD: re-factor for clarity (especially ContainsMixIn)
 		- TBD: consider grouping "empty" response with contains rather than condition
 	- TBD: establish 'bulk' attribute for Item

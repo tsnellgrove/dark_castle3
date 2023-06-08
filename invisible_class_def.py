@@ -519,10 +519,13 @@ class Invisible(object):
 			return True
 		if obj.err_not_in_hand(creature, active_gs):
 			return True
+		print(f"For {self.name} the value of is_openable() is {self.is_openable()}")
 #		if self.is_open == False:
-		if self.is_openable and self.is_open == False:
-			active_gs.buffer(f"The {self.full_name} is closed.")
-			return True
+#		if self.is_openable and self.is_open == False:
+		if self.is_openable:
+			if self.is_open == False:
+				active_gs.buffer(f"The {self.full_name} is closed.")
+				return True
 		if self.chk_content_prohibited(obj):
 #			if obj.is_surface():
 #				loc_prep = 'on'
