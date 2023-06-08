@@ -217,7 +217,6 @@ def interpreter(user_input, master_obj_lst):
 				word2 = user_input_lst[1]
 				return 'go', [room_obj, word1, word2]
 		elif word1 in ['put', 'show', 'give', 'attack', 'lock', 'unlock']:
-#				if word1 in ['put', 'sit']:
 				if word1 in ['put']:
 						if 'in' in user_input_lst:
 								prep = 'in'
@@ -233,7 +232,6 @@ def interpreter(user_input, master_obj_lst):
 								user_input_lst.extend(['with',creature.get_hand_item().name])
 								active_gs.buffer(f"(with the {creature.get_hand_item().full_name})")
 						prep = 'with'
-#						active_gs.buffer(f"user_input_lst = {user_input_lst}")
 				if prep not in user_input_lst:
 						error_msg = f"I don't see the word '{prep}' in that sentence."
 						return 'error', [error_msg]
@@ -246,7 +244,6 @@ def interpreter(user_input, master_obj_lst):
 						p_p_lst = list(islice(user_input_lst, in_position, None))
 						noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst)
 						dir_obj_error_state, dir_obj_error_msg, dirobj_obj = noun_handling(master_obj_lst, p_p_lst)
-#						print(f"dirobj_obj = {dirobj_obj.name}, can_contain_temp = {noun_obj.can_contain_temp()}, word1 = {word1}, loc_prep = {prep}, ")
 						if dirobj_obj.can_contain_temp() and word1 == 'put' and prep != dirobj_obj.prep:
 								error_msg = f"I don't see the word '{dirobj_obj.prep}' in that sentence."
 								return 'error', [error_msg]

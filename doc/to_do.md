@@ -237,7 +237,7 @@ Version 3.78 Goals
 		- DONE: update err_verb methods 
 		- DONE: convert Door object front_gate to LockableDoor class
 		- DONE: convert Door object iron_portcullis to LockableDoor class (test with Mach)
-	- INPROC: create ContainsMixIn class
+	- DONE: create ContainsMixIn class
 		- DONE: create ContainsMixIn class w/ attributes: contain_lst, max_bulk, max_obj, & prep 
 		- DONE: create setters & getters
 		- DONE: create attribute, identity, scope, and display methods
@@ -255,10 +255,11 @@ Version 3.78 Goals
 			- DONE: debug 'put key on shelf'
 			- DONE: sort out 'empty' condition for 'x shelf'
 			- DONE: sort out use of Container.prep in interp()
-		- TBD: clean up comments!
+		- DONE: clean up comments!
 	- TBD: create additional container noun classes
 		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)
 		- TBD: create ContainerFixedLidded
+		- TDD: create test_box of class ContainerFixedLidded
 		- TBD: create ContainerFixedLockable
 		- TBD: convert crystal_box to ContainerFixedLockable class
 		- TBD: create ContainerPortableSimple

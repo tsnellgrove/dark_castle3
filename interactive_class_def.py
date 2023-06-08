@@ -56,7 +56,6 @@ class OpenableMixIn(object):
 
 		active_gs.buff_cr()
 		active_gs.buff_no_cr("Openned. ")
-#		if self.is_container() or self.can_contain():
 		if self.is_container():
 			self.disp_open(active_gs)
 		active_gs.buff_cr()
@@ -202,7 +201,6 @@ class ContainsMixIn(object):
 		self.contain_lst_remove(item)
 
 	def chk_content_prohibited(self, obj):
-#		return obj.is_creature() or obj.is_surface()
 		return obj.is_creature()
 
 	# *** display methods ***
@@ -213,21 +211,16 @@ class ContainsMixIn(object):
 		return True
 
 	def disp_cond(self, active_gs):
-#		super(Container, self).disp_cond(active_gs)
 		super(ContainsMixIn, self).disp_cond(active_gs)
 		""" Displays object-specific conditions. Used in examine().
 		"""
-#		if self.is_empty() and self.is_not_closed():
-#		print(f"Value of is_cont_vis equiv = {(self.is_openable() and self.is_not_closed()) or not self.is_openable()}")
 		if ((self.is_openable() and self.is_not_closed()) or not self.is_openable()) and self.is_empty():
-#			if self.is_empty():
 			active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
 		return 
 
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
 		"""
-#		if self.is_not_closed() and not self.is_empty():
 		if ((self.is_openable() and self.is_not_closed()) or not self.is_openable()) and not self.is_empty():
 			contain_txt_lst = [obj.full_name for obj in self.contain_lst if obj != active_gs.hero]
 			if contain_txt_lst:
@@ -256,7 +249,6 @@ class ContainsMixIn(object):
 
 		active_gs.buffer("Done")
 		return
-
 
 
 ### noun classes

@@ -62,9 +62,6 @@ class Invisible(object):
 	def	is_door(self):
 		return False
 
-#	def can_contain(self):
-#		return False
-
 	def	is_container(self):
 		return False
 
@@ -258,18 +255,15 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
-#		if not self.is_door() and (not self.is_openable() and not self.can_contain()):
 		if not self.is_door() and (not self.is_openable() and not self.is_container()):
 			active_gs.buffer(f"The {self.full_name} cannot be openned.")
 			return True
-#		if self.is_open is None or (not self.is_openable() and self.can_contain()):
-		if self.is_open is None or (not self.is_openable() and self.is_container()):
+		if (self.is_door() and self.is_open is None) or (not self.is_openable() and self.is_container()):
 			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 			return True
 		if self.is_open:
 			active_gs.buffer(f"The {self.full_name} is already open.")
 			return True
-#		if not self.is_simple_door() and self.is_unlocked == False:
 		if (self.is_lockable() and self.is_unlocked == False) or (self.is_door() and self.is_unlocked == False):
 			active_gs.buffer(f"The {self.full_name} is locked.")
 			return True
@@ -279,20 +273,15 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
-#		if not self.is_door():
-#		if not self.is_door() and (not self.is_openable() and not self.can_contain()):
 		if not self.is_door() and (not self.is_openable() and not self.is_container()):
 			active_gs.buffer(f"The {self.full_name} cannot be closed.")
 			return True
-#		if self.is_open is None:
-#		if self.is_open is None or (not self.is_openable() and self.can_contain()):
-		if self.is_open is None or (not self.is_openable() and self.is_container()):
+		if (self.is_door() and self.is_open is None) or (not self.is_openable() and self.is_container()):
 			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 			return True
 		if self.is_open == False:
 			active_gs.buffer(f"The {self.full_name} is already closed.")
 			return True
-#		if not self.is_simple_door() and self.is_unlocked == False: 
 		if (self.is_lockable() and self.is_unlocked == False) or (self.is_door() and self.is_unlocked == False):
 			active_gs.buffer(f"The {self.full_name} is locked open.") # for Iron Portcullis
 			return True
@@ -424,7 +413,9 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_prep_std(key_obj, creature, active_gs):
 			return True
-#		if not self.is_door():
+		if (self.is_door() and self.is_open is None) or (self.is_container() and not self.is_openable()):
+			active_gs.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
+			return True
 		if not self.is_door() and not self.is_lockable():
 			active_gs.buffer(f"The {self.full_name} cannot be locked.")
 			return True
@@ -434,17 +425,11 @@ class Invisible(object):
 		if not key_obj.is_item():
 			active_gs.buffer(f"And just how do you intend to lock a {self.full_name} with a {key_obj.full_name}??")
 			return True
-#		if self.is_open is None:
-#		if self.is_open is None or (self.can_contain() and not self.is_openable()):
-		if self.is_open is None or (self.is_container() and not self.is_openable()):
-			active_gs.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
-			return True
 		if key_obj.err_not_in_hand(creature, active_gs):
 			return True
 		if key_obj != self.key and key_obj.root_name != 'key':
 			active_gs.buffer(f"You can't lock the {self.full_name} with the {key_obj.full_name}.")
 			return True
-#		if self.is_unlocked is None:
 		if self.is_unlocked is None or (self.is_openable() and not self.is_lockable()):
 			active_gs.buffer(f"The {self.full_name} does not appear to have a lock.")
 			return True
@@ -466,7 +451,9 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_prep_std(key_obj, creature, active_gs):
 			return True
-#		if not self.is_door():
+		if (self.is_door() and self.is_open is None) or (self.is_container() and not self.is_openable()):
+			active_gs.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
+			return True
 		if not self.is_door() and not self.is_lockable():
 			active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
 			return True
@@ -476,17 +463,11 @@ class Invisible(object):
 		if not key_obj.is_item():
 			active_gs.buffer(f"And just how do you intend to unlock a {self.full_name} with a {key_obj.full_name}??")
 			return True
-#		if self.is_open is None:
-#		if self.is_open is None or (self.can_contain() and not self.is_openable()):
-		if self.is_open is None or (self.is_container() and not self.is_openable()):
-			active_gs.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
-			return True
 		if key_obj.err_not_in_hand(creature, active_gs):
 			return True
 		if key_obj != self.key and key_obj.root_name != 'key':
 			active_gs.buffer(f"You can't unlock the {self.full_name} with the {key_obj.full_name}.")
 			return True
-#		if self.is_unlocked is None:
 		if self.is_unlocked is None or (self.is_openable() and not self.is_lockable()):
 			active_gs.buffer(f"The {self.full_name} does not appear to have a lock.")
 			return True
@@ -519,24 +500,13 @@ class Invisible(object):
 			return True
 		if obj.err_not_in_hand(creature, active_gs):
 			return True
-#		print(f"For {self.name} the value of is_openable() is {self.is_openable()}")
-#		if self.is_open == False:
 		if self.is_openable() and self.is_open == False:
-#		if self.is_openable():
-#			if self.is_open == False:
 			active_gs.buffer(f"The {self.full_name} is closed.")
 			return True
 		if self.chk_content_prohibited(obj):
-#			if obj.is_surface():
-#				loc_prep = 'on'
-#			else:
-#				loc_prep = 'in'
-#			active_gs.buffer(f"You can't put the {obj.full_name} {loc_prep} the {self.full_name}.")
 			active_gs.buffer(f"You can't put the {obj.full_name} {self.prep} the {self.full_name}.")
 			return True
-#		if self.is_surface() and not self.chk_has_capacity():
 		if self.can_contain_temp() and not self.chk_has_capacity():
-#			active_gs.buffer(f"There's no room on the {self.full_name} for another item.")
 			active_gs.buffer(f"There's no room {self.prep} the {self.full_name} for another item.")
 			return True
 		return False
