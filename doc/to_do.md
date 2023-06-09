@@ -256,13 +256,27 @@ Version 3.78 Goals
 			- DONE: sort out 'empty' condition for 'x shelf'
 			- DONE: sort out use of Container.prep in interp()
 		- DONE: clean up comments!
-	- TBD: create additional container noun classes
-		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)
-		- TBD: create ContainerFixedLidded
-		- TDD: create test_box of class ContainerFixedLidded
-		- TBD: create ContainerFixedLockable
+	- DONE: ContainerFixedLidded
+		- DONE: create ContainerFixedLidded class
+		- DONE: import ContainerFixedLidded into mk_def_pkl()
+		- DONE: create cardboard_box of class ContainerFixedLidded for testing
+		- DONE: add to object pickle!
+		- DONE: add cardboard_box to Entrance
+		- DONE: testing! (worked on first try - even openable has_cond() !!)
+	TBD: ContainerFixedLockable
+		- TBD: create ContainerFixedLockable class
+		- TBD: import ContainerFixedLockable into mk_def_pkl()
 		- TBD: convert crystal_box to ContainerFixedLockable class
-		- TBD: create ContainerPortableSimple
+		- TBD: testing!
+	TBD: ContainerPortableSimple
+		- TBD: create ContainerPortableSimple class
+		- TBD: import ContainerPortableSimple into mk_def_pkl()
+		- TBD: created small_barrel of class ContainerPortableSimple
+		- TBD: add to object pickle!
+		- TBD: add small_barrel to Entrance
+		- TBD: testing! 
+	TBD: Portable Liquid Container
+		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)
 		- TBD: create LiquidContainerMixIn
 		- TBD: create Flask
 		- TBD: convert bottle to Flask class
@@ -284,6 +298,8 @@ Version 3.78 Goals
 		- TBD: fix display meth use of is_closed() ; create an is_content_vis() meth for ContainsMixIn
 		- TBD: re-factor for clarity (especially ContainsMixIn)
 		- TBD: consider grouping "empty" response with contains rather than condition
+		- TBD: perhaps MixIns like OpenableMixIn should have their own examine() states?
+			- IDEA: similar to has_contain()
 	- TBD: establish 'bulk' attribute for Item
 		- TBD: update classes
 			- TBD: Item

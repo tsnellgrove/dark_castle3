@@ -11,7 +11,7 @@ from base_class_def import Writing, ViewOnly
 from room_class_def import Room
 from item_class_def import Item, Food, Garment, Weapon
 from door_class_def import Door, Container, PortableContainer, PortableLiquidContainer, Surface, Seat
-from interactive_class_def import DoorSimple, DoorLockable, ContainerFixedSimple
+from interactive_class_def import DoorSimple, DoorLockable, ContainerFixedSimple, ContainerFixedLidded
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from misc_class_def import Liquid
 from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
@@ -82,6 +82,7 @@ black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase
 # wooden_shelf = Surface('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None,
 # 				None, None, None, [], 20)
 wooden_shelf = ContainerFixedSimple('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None, [], 999, 20, 'on')
+cardboard_box = ContainerFixedLidded('cardboard_box', 'Cardboard Box', 'box', 'cardboard_box', None, [], 999, 2, 'in', False)
 
 # ContainerFixedSimple attributes = name, full_name, root_name, descript_key, writing, contain_lst, max_bulk, max_obj, prep
 
@@ -236,7 +237,7 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-				[burt, black_suitcase], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
+				[burt, black_suitcase, cardboard_box], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
 				# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
@@ -314,7 +315,7 @@ active_gs = GameState(
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible objects need not be listed ###
 master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, guard_goblin, entrance, main_hall, antechamber, throne_room, loyalty,
-officiousness, gold_capitals, red_bandana, big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, test_chair, black_suitcase, screen_door] # note: big_bomb & test_frog removed
+officiousness, gold_capitals, red_bandana, big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, test_chair, black_suitcase, screen_door, cardboard_box] # note: big_bomb & test_frog removed
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:
