@@ -11,7 +11,7 @@ from base_class_def import Writing, ViewOnly
 from room_class_def import Room
 from item_class_def import Item, Food, Garment, Weapon
 from door_class_def import Door, Container, PortableContainer, PortableLiquidContainer, Surface, Seat
-from interactive_class_def import DoorSimple, DoorLockable, ContainerFixedSimple, ContainerFixedLidded
+from interactive_class_def import DoorSimple, DoorLockable, ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from misc_class_def import Liquid
 from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
@@ -75,8 +75,11 @@ grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing,
 shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarven_runes,
 				[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']])
 
-crystal_box = Container('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy,
-				False, False, silver_key, ['kinging_scroll_temp'])
+# crystal_box = Container('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy,
+#				False, False, silver_key, ['kinging_scroll_temp'])
+
+crystal_box = ContainerFixedLockable('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy, ['kinging_scroll_temp'], 1, 999, 'in', False, False, silver_key)
+
 black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', small_printing, False, False, rusty_key, [])
 
 # wooden_shelf = Surface('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None,

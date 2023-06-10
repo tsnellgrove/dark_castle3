@@ -278,5 +278,15 @@ class ContainerFixedLidded(ContainsMixIn, OpenableMixIn, ViewOnly):
 		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
 		ContainsMixIn.__init__(self, contain_lst, max_bulk, max_obj, prep)
 		OpenableMixIn.__init__(self, is_open)
-		""" A simple non-takable container with a lid but no lock.
+		""" A non-takable container with a lid but no lock.
 		"""
+
+class ContainerFixedLockable(LockableMixIn, ContainsMixIn, OpenableMixIn, ViewOnly):
+	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_bulk, max_obj, prep, is_open, is_unlocked, key):
+		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
+		ContainsMixIn.__init__(self, contain_lst, max_bulk, max_obj, prep)
+		OpenableMixIn.__init__(self, is_open)
+		LockableMixIn.__init__(self, is_unlocked, key)
+		""" A non-takable container with a lid and a lock.
+		"""
+

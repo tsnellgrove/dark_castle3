@@ -263,19 +263,20 @@ Version 3.78 Goals
 		- DONE: add to object pickle!
 		- DONE: add cardboard_box to Entrance
 		- DONE: testing! (worked on first try - even openable has_cond() !!)
-	TBD: ContainerFixedLockable
-		- TBD: create ContainerFixedLockable class
-		- TBD: import ContainerFixedLockable into mk_def_pkl()
-		- TBD: convert crystal_box to ContainerFixedLockable class
-		- TBD: testing!
-	TBD: ContainerPortableSimple
+	- DONE: ContainerFixedLockable
+		- DONE: create ContainerFixedLockable class
+		- DONE: import ContainerFixedLockable into mk_def_pkl()
+		- DONE: convert crystal_box to ContainerFixedLockable class
+		- DONE: testing!
+	- IDEA: maybe now is the time to introduce Item bulk
+	- TBD: ContainerPortableSimple
 		- TBD: create ContainerPortableSimple class
 		- TBD: import ContainerPortableSimple into mk_def_pkl()
 		- TBD: created small_barrel of class ContainerPortableSimple
 		- TBD: add to object pickle!
 		- TBD: add small_barrel to Entrance
 		- TBD: testing! 
-	TBD: Portable Liquid Container
+	- TBD: Portable Liquid Container
 		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)
 		- TBD: create LiquidContainerMixIn
 		- TBD: create Flask
@@ -300,6 +301,9 @@ Version 3.78 Goals
 		- TBD: consider grouping "empty" response with contains rather than condition
 		- TBD: perhaps MixIns like OpenableMixIn should have their own examine() states?
 			- IDEA: similar to has_contain()
+		- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
+			- IDEA: could have a prep attribute for each prep verb
+			- IDEA: in interp(), have a list of all possible preps and use list to break sentence
 	- TBD: establish 'bulk' attribute for Item
 		- TBD: update classes
 			- TBD: Item

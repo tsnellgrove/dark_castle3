@@ -244,13 +244,13 @@ def interpreter(user_input, master_obj_lst):
 						p_p_lst = list(islice(user_input_lst, in_position, None))
 						noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst)
 						dir_obj_error_state, dir_obj_error_msg, dirobj_obj = noun_handling(master_obj_lst, p_p_lst)
-						if dirobj_obj.can_contain_temp() and word1 == 'put' and prep != dirobj_obj.prep:
-								error_msg = f"I don't see the word '{dirobj_obj.prep}' in that sentence."
-								return 'error', [error_msg]
 						if noun_error_state:
 								return 'error', [noun_error_msg]
 						elif dir_obj_error_state:
 								return 'error', [dir_obj_error_msg]
+						if dirobj_obj.can_contain_temp() and word1 == 'put' and prep != dirobj_obj.prep:
+								error_msg = f"I don't see the word '{dirobj_obj.prep}' in that sentence."
+								return 'error', [error_msg]
 						elif word1 in ['attack', 'lock', 'unlock']:
 								return 'prep', [noun_obj, word1, dirobj_obj]
 						else:
