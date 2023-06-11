@@ -268,7 +268,30 @@ Version 3.78 Goals
 		- DONE: import ContainerFixedLockable into mk_def_pkl()
 		- DONE: convert crystal_box to ContainerFixedLockable class
 		- DONE: testing!
-	- IDEA: maybe now is the time to introduce Item bulk
+	- INPROC: maybe now is the time to introduce Item bulk
+		- IDEA: temporarily remove PortableContainer classes & obj from game and re-introduce as MixIns
+		- DONE: update classes
+			- DONE: Item
+			- DONE: Food
+			- DONE: Garment
+			- DONE: Weapon
+			- CANCEL: PortableContainer
+			- CANCEL: PortableLiquidContainer
+			- DONE: ItemMach
+		- TBD: temporarily remove item-container classes and obj from game
+			- TBD: comment out PortableContainer classes
+				- TBD: PortableContainer
+				- TBD: PortableLiquidContainer
+			- TBD: comment out PortableContainer obj def
+				- TBD: bottle
+				- TBD: black_suitcase
+			- TBD: remove Portable objs from rooms & creatures
+				- TBD: entrance (black suitcase)
+				- TBD: burt inventory (bottle)
+		- TBD: assign 'bulk' attribute to all (remaining) Item obj (including kinging_scroll)
+		- TBD: update put to check for max_bulk capacity limits
+		- TBD: test max_bulk limit
+
 	- TBD: ContainerPortableSimple
 		- TBD: create ContainerPortableSimple class
 		- TBD: import ContainerPortableSimple into mk_def_pkl()
@@ -299,24 +322,14 @@ Version 3.78 Goals
 		- TBD: fix display meth use of is_closed() ; create an is_content_vis() meth for ContainsMixIn
 		- TBD: re-factor for clarity (especially ContainsMixIn)
 		- TBD: consider grouping "empty" response with contains rather than condition
+		- TBD: assign 'max_bulk' and 'max_count' to Creatures
+		- TBD: update take() to check for 'max_bulk'
+		- TBD: assign 'bulk' attribute to Creatures
 		- TBD: perhaps MixIns like OpenableMixIn should have their own examine() states?
 			- IDEA: similar to has_contain()
 		- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 			- IDEA: could have a prep attribute for each prep verb
 			- IDEA: in interp(), have a list of all possible preps and use list to break sentence
-	- TBD: establish 'bulk' attribute for Item
-		- TBD: update classes
-			- TBD: Item
-			- TBD: Food
-			- TBD: Garment
-			- TBD: Weapon
-			- TBD: PortableContainer
-			- TBD: PortableLiquidContainer
-			- TBD: ItemMach
-		- TBD: assign 'bulk' attribute to all Item obj
-		- TBD: assign 'max_bulk' and 'max_count' to Creatures
-		- TBD: update take() to check for 'max_bulk' and 'max_count'
-		- TBD: assign 'bulk' attribute to Creatures
 	- TBD: New interactive classes (see above)
 	- TBD: clean-up from old Door class
 		- is_door(), is_container(), is_surface() and etc
