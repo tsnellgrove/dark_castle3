@@ -308,6 +308,7 @@ Version 3.78 Goals
 		- IDEA: maybe now is the time to conver to Enchanter jug??
 	- TBD: ContainerPortableLidded
 		- TBD: create ContainerPortableLidded
+		- TBD: create method to make bulk = container + contents
 		- TBD: create shoe_box test object
 	- TBD: ContainerPortabLockable
 		- TBD: create ContainerPortabLockable
