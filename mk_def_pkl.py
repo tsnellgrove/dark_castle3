@@ -10,7 +10,8 @@ from invisible_class_def import Invisible
 from base_class_def import Writing, ViewOnly
 from room_class_def import Room
 from item_class_def import Item, Food, Garment, Weapon
-from door_class_def import Door, Container, PortableContainer, PortableLiquidContainer, Surface, Seat
+from door_class_def import Door, Container, Surface, Seat
+## from door_class_def import PortableContainer, PortableLiquidContainer
 from interactive_class_def import DoorSimple, DoorLockable, ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from misc_class_def import Liquid
@@ -52,27 +53,27 @@ dead_goblin = ViewOnly('dead_goblin', 'Dead Goblin', 'goblin', 'dead_goblin', No
 officiousness = ViewOnly('officiousness', 'Officiousness', 'officiousness', 'officiousness', None)
 loyalty = ViewOnly('loyalty', 'Loyalty', 'loyalty', 'loyalty', None)
 
-rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None)
-brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None) # test object
-bubbly_potion = Item('bubbly_potion', 'bubbly potion', "potion", 'bubbly_potion', None) # test object
-torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwriting)
-silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None)
-random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random_mcguffin', None) # test object
+rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
+brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None, 1) # test object
+bubbly_potion = Item('bubbly_potion', 'bubbly potion', "potion", 'bubbly_potion', None, 2) # test object
+torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwriting, 1)
+silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None, 1)
+random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random_mcguffin', None, 5) # test object
 
-cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None)
-stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark)
+cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 1)
+stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 3)
 
 fresh_water = Liquid('fresh_water', 'Fresh Water', 'water', 'fresh_water', None)
 
-royal_crown = Garment('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 'hat')
-baseball_cap = Garment('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, 'hat')
-hedgehog_broach = Garment('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedgehog_broach', None, 'pin')
-red_bandana = Garment('red_bandana', 'Red Bandana', 'bandana', 'red_bandana', None, 'hat')
-big_medal = Garment('big_medal', 'Big Medal', 'medal', 'big_medal', gold_capitals, 'pin')
+royal_crown = Garment('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 5, 'hat')
+baseball_cap = Garment('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, 5, 'hat')
+hedgehog_broach = Garment('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedgehog_broach', None, 1, 'pin')
+red_bandana = Garment('red_bandana', 'Red Bandana', 'bandana', 'red_bandana', None, 5, 'hat')
+big_medal = Garment('big_medal', 'Big Medal', 'medal', 'big_medal', gold_capitals, 2, 'pin')
 
-grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing,
+grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing, 10, 
 				[['arcs', 'lightening-fast stroke'],['cleaves', 'violent swing'],['hacks', 'deadly intent']])
-shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarven_runes,
+shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarven_runes, 10, 
 				[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']])
 
 # crystal_box = Container('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy,
@@ -80,7 +81,7 @@ shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarv
 
 crystal_box = ContainerFixedLockable('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy, ['kinging_scroll_temp'], 1, 999, 'in', False, False, silver_key)
 
-black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', small_printing, False, False, rusty_key, [])
+## black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', small_printing, False, False, rusty_key, [])
 
 # wooden_shelf = Surface('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None,
 # 				None, None, None, [], 20)
@@ -89,7 +90,7 @@ cardboard_box = ContainerFixedLidded('cardboard_box', 'Cardboard Box', 'box', 'c
 
 # ContainerFixedSimple attributes = name, full_name, root_name, descript_key, writing, contain_lst, max_bulk, max_obj, prep
 
-glass_bottle = PortableLiquidContainer('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', None, None, None, None, [fresh_water])
+## glass_bottle = PortableLiquidContainer('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', None, None, None, None, [fresh_water])
 
 test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None,
 				None, None, None, [], 1)
@@ -188,7 +189,7 @@ hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_
 				[['give', '*', 'royal_hedgehog'], ['show', '*', 'royal_hedgehog']], None, 
 				[hedgehog_distracted_cond, pass_thru_cond], [hedgehog_distracted_result, pass_result])
 
-kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters,
+kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters, 1, 
 				None, 'post_act_cmd', None, [['read', 'illuminated_letters']], None,
 				[scroll_not_in_throne_room_cond, hedgehog_not_exist_cond, crown_not_worn_cond, read_scroll_win_cond],
 				[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result])
@@ -228,7 +229,7 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 				})
 
 burt = Creature('burt', 'Burt', 'burt', 'burt', None,
-				None, [], [rusty_key, glass_bottle, cheese_wedge, stale_biscuits], [], [fist, backpack, conscience, brass_lantern],
+				None, [], [rusty_key, cheese_wedge, stale_biscuits], [], [fist, backpack, conscience, brass_lantern],
 				[hedgehog_eats_timer],
 				{},
 				True,
@@ -236,12 +237,12 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 						'grimy_axe_guard_goblin_weapon' : 'hard_parry', # parry
 						'grimy_axe_guard_goblin_*' : 'tgt_death',
 						'fierce_teeth_royal_hedgehog_*' : 'jump_back'
-				}) # note: for non-burt-creature testing, frog_travel_mach was in burt.invis_lst
+				}) # note: for non-burt-creature testing frog_travel_mach was in burt.invis_lstj; glass_bottle temporarily removed from inv
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-				[burt, black_suitcase, cardboard_box], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
-				# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
+				[burt, cardboard_box], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
+				# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst; black_suitcase temporarily removed from floor
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
 				[shiny_sword, royal_hedgehog, wooden_shelf, test_chair], [eat_biscuits_warning])
@@ -317,8 +318,8 @@ active_gs = GameState(
 ### instantiated objects added to list ###
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible objects need not be listed ###
-master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, crystal_box, glass_bottle, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, guard_goblin, entrance, main_hall, antechamber, throne_room, loyalty,
-officiousness, gold_capitals, red_bandana, big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, test_chair, black_suitcase, screen_door, cardboard_box] # note: big_bomb & test_frog removed
+master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, crystal_box, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, guard_goblin, entrance, main_hall, antechamber, throne_room, loyalty,
+officiousness, gold_capitals, red_bandana, big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, test_chair, screen_door, cardboard_box] # note: big_bomb & test_frog removed; black_suitcase & glass_bottle removed
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:

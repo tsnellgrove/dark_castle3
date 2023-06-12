@@ -278,17 +278,18 @@ Version 3.78 Goals
 			- CANCEL: PortableContainer
 			- CANCEL: PortableLiquidContainer
 			- DONE: ItemMach
-		- TBD: temporarily remove item-container classes and obj from game
-			- TBD: comment out PortableContainer classes
-				- TBD: PortableContainer
-				- TBD: PortableLiquidContainer
-			- TBD: comment out PortableContainer obj def
-				- TBD: bottle
-				- TBD: black_suitcase
-			- TBD: remove Portable objs from rooms & creatures
-				- TBD: entrance (black suitcase)
-				- TBD: burt inventory (bottle)
-		- TBD: assign 'bulk' attribute to all (remaining) Item obj (including kinging_scroll)
+		- DONE: temporarily remove item-container classes and obj from game
+			- DONE: comment out PortableContainer classes
+				- DONE: PortableContainer
+				- DONE: PortableLiquidContainer
+			- DONE: comment out PortableContainer obj def
+				- DONE: glass_bottle
+				- DONE: black_suitcase
+			- DONE: remove Portable objs from rooms & creatures
+				- DONE: entrance (black suitcase)
+				- DONE: burt inventory (glass_bottle)
+		- DONE: assign 'bulk' attribute to all (remaining) Item obj (including kinging_scroll)
+		- DONE: test bulk assignment
 		- TBD: update put to check for max_bulk capacity limits
 		- TBD: test max_bulk limit
 
@@ -303,10 +304,14 @@ Version 3.78 Goals
 		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)
 		- TBD: create LiquidContainerMixIn
 		- TBD: create Flask
-		- TBD: convert bottle to Flask class
+		- TBD: convert glass_bottle to Flask class
+		- IDEA: maybe now is the time to conver to Enchanter jug??
+	- TBD: ContainerPortableLidded
 		- TBD: create ContainerPortableLidded
+		- TBD: create shoe_box test object
+	- TBD: ContainerPortabLockable
 		- TBD: create ContainerPortabLockable
-		- TBD: convert suitcase to ContainerPortabLockable class
+		- TBD: convert black_suitcase to ContainerPortabLockable class
 	- TBD: create Seat class with attribute and setters & getters (including in_reach_lst)
 		- IDEA: finally deliberation over Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 		- TBD: Seat in_reach attribute that links to room obj

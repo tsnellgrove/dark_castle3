@@ -235,38 +235,38 @@ class Container(Door):
 		return
 
 
-class PortableContainer(Container, Item):
-	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
+## class PortableContainer(Container, Item):
+##	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
 #		Item.__init__(self, name, full_name, root_name, descript_key, writing, bulk)
-		Container.__init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
+##		Container.__init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
 #		Item.__init__(bulk)
 		"""A container that can be taken.
 		"""
 
 	# *** class identity methods ***
-	def is_item(self):
-		return True
+##	def is_item(self):
+##		return True
 
-	def is_portablecontainer(self):
-		return True
+##	def is_portablecontainer(self):
+##		return True
 
 	# *** scope methods ***
-	def chk_content_prohibited(self, obj):
-		return super(PortableContainer, self).chk_content_prohibited(obj) or obj.is_portablecontainer()
+##	def chk_content_prohibited(self, obj):
+##		return super(PortableContainer, self).chk_content_prohibited(obj) or obj.is_portablecontainer()
 
 
-class PortableLiquidContainer(PortableContainer):
-	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
-		super().__init__(name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
+## class PortableLiquidContainer(PortableContainer):
+##	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
+##		super().__init__(name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst)
 		"""A container that holds liquids and can be taken.
 		"""
 
-	def is_lockable(self):
-		return False
+##	def is_lockable(self):
+##		return False
 
 	# *** scope methods ***
-	def chk_content_prohibited(self, obj):
-		return super(PortableLiquidContainer, self).chk_content_prohibited(obj) or not obj.is_liquid()
+##	def chk_content_prohibited(self, obj):
+##		return super(PortableLiquidContainer, self).chk_content_prohibited(obj) or not obj.is_liquid()
 
 
 class Surface(Container):
