@@ -400,10 +400,10 @@ Version 3.78 Goals
 	- TBD: doc_string re: Seat as precursor to Vehical
 	- TBD: doc_string re: Nested Rooms can't be nested (no chairs on stages)
 	- TBD: doc_string re: Perch = translucent, Nook = opaque
-	- CANCEL: doc_string re: bulk for containers, count for surfaces
+	- TBD: doc_string re: bulk to represent weight and volume (encumberance)
 	- TBD: doc_string re: nook gets light from room
 
-- TBD: "what would your mothter say" error to "What would your mama say?"
+- TBD: "what would your mothter say" error to "What would your Nana say?"
 
 - TBD: make creature obj data more atomic
 	- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
