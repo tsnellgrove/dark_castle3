@@ -290,13 +290,16 @@ Version 3.78 Goals
 				- DONE: burt inventory (glass_bottle)
 		- DONE: assign 'bulk' attribute to all (remaining) Item obj (including kinging_scroll)
 		- DONE: test bulk assignment
-		- TBD: update put to check for max_bulk capacity limits
-		- TBD: test max_bulk limit
+		- DONE: update put_err() to check for max_bulk capacity limits
+		- DONE: test max_bulk limit
+		- TBD: move current_contained_capacity to container method and call from put_err()
+		- TBD: implement current_contained_capacity with list comprehension
 
 	- TBD: ContainerPortableSimple
 		- TBD: create ContainerPortableSimple class
 		- TBD: import ContainerPortableSimple into mk_def_pkl()
 		- TBD: created small_barrel of class ContainerPortableSimple
+		- TBD: decide how to handle bulk for portable containers when they are holding obj ??
 		- TBD: add to object pickle!
 		- TBD: add small_barrel to Entrance
 		- TBD: testing! 
@@ -329,7 +332,8 @@ Version 3.78 Goals
 		- TBD: re-factor for clarity (especially ContainsMixIn)
 		- TBD: consider grouping "empty" response with contains rather than condition
 		- TBD: assign 'max_bulk' and 'max_count' to Creatures
-		- TBD: update take() to check for 'max_bulk'
+		- TBD: create current_carried_cappacity() method for Creature
+		- TBD: update take() to check for 'max_bulk' 
 		- TBD: assign 'bulk' attribute to Creatures
 		- TBD: perhaps MixIns like OpenableMixIn should have their own examine() states?
 			- IDEA: similar to has_contain()

@@ -509,6 +509,13 @@ class Invisible(object):
 		if self.can_contain_temp() and not self.chk_has_capacity():
 			active_gs.buffer(f"There's no room {self.prep} the {self.full_name} for another item.")
 			return True
+		current_contained_bulk = 0
+##		current_contained_bulk += element.bulk for element in self.contain_lst
+		for element in self.contain_lst:
+			current_contained_bulk += element.bulk
+		if self.max_bulk - current_contained_bulk - obj.bulk < 0:
+			active_gs.buffer(f"The {self.full_name} doesn't have enough capacity to hold the {obj.full_name}.")
+			return True
 		return False
 
 	def show_err(self, obj, active_gs):
