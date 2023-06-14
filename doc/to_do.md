@@ -18,6 +18,14 @@ May 22, 2022
 6) Add object description in static_gbl
 
 
+*** List Comprehension vs. Generators ***
+- List comprehension is used to act on a list but returns a list as long as the original
+	- Relevant Link: https://stackoverflow.com/questions/16632124/how-to-emulate-sum-using-a-list-comprehension
+- A generator can be used to reduce the values of a list to a single value
+	- Example: sum(c.a for c in c_list)
+	- Example Link: https://stackoverflow.com/questions/10879867/sum-average-an-attribute-of-a-list-of-objects
+
+
 *** Inheritance & Method Extension ***
 - This solution recommended at this stackoverflow link: https://stackoverflow.com/questions/51249310/attributeerror-super-object-has-no-attribute
 
@@ -268,7 +276,7 @@ Version 3.78 Goals
 		- DONE: import ContainerFixedLockable into mk_def_pkl()
 		- DONE: convert crystal_box to ContainerFixedLockable class
 		- DONE: testing!
-	- INPROC: maybe now is the time to introduce Item bulk
+	- DONE: maybe now is the time to introduce Item bulk
 		- IDEA: temporarily remove PortableContainer classes & obj from game and re-introduce as MixIns
 		- DONE: update classes
 			- DONE: Item
@@ -292,8 +300,8 @@ Version 3.78 Goals
 		- DONE: test bulk assignment
 		- DONE: update put_err() to check for max_bulk capacity limits
 		- DONE: test max_bulk limit
-		- TBD: move current_contained_capacity to container method and call from put_err()
-		- TBD: implement current_contained_capacity with list comprehension
+		- DONE: move current_contained_capacity to container method and call from put_err()
+		- DONE: implement current_contained_capacity with list comprehension
 
 	- TBD: ContainerPortableSimple
 		- TBD: create ContainerPortableSimple class
@@ -337,6 +345,7 @@ Version 3.78 Goals
 		- TBD: assign 'bulk' attribute to Creatures
 		- TBD: perhaps MixIns like OpenableMixIn should have their own examine() states?
 			- IDEA: similar to has_contain()
+		- TBD: create 'bulk' verb to return bulk of obj (only usable in debug mode) ??
 		- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 			- IDEA: could have a prep attribute for each prep verb
 			- IDEA: in interp(), have a list of all possible preps and use list to break sentence
