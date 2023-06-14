@@ -336,6 +336,7 @@ Version 3.78 Goals
 	- TBD: clean-up
 		- TBD: clean-up comments
 		- TBD: clean-up is_door(), is_surface(), can_contain_temp(), etc
+		- TBD: probably time for a general refactor of ContainsMixIn()
 		- TBD: fix display meth use of is_closed() ; create an is_content_vis() meth for ContainsMixIn
 		- TBD: re-factor for clarity (especially ContainsMixIn)
 		- TBD: consider grouping "empty" response with contains rather than condition

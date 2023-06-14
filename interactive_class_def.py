@@ -206,14 +206,6 @@ class ContainsMixIn(object):
 	def get_contained_bulk(self):
 		return sum(element.bulk for element in self.contain_lst)
 
-##		sum(c.a for c in c_list)
-
-#		current_contained_bulk = 0
-#		for element in self.contain_lst:
-#			current_contained_bulk += element.bulk
-#		return current_contained_bulk
-
-
 	# *** display methods ***
 	def has_contain(self, active_gs):
 		return bool(self.contain_lst)
