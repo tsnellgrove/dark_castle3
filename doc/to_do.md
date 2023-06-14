@@ -304,10 +304,11 @@ Version 3.78 Goals
 		- DONE: implement current_contained_capacity with list comprehension
 
 	- TBD: ContainerPortableSimple
+		- TBD: decide how to handle bulk for portable containers when they are holding obj ??
+		- TBD: update put() verb method to update container bulk for Portable Containers
 		- TBD: create ContainerPortableSimple class
 		- TBD: import ContainerPortableSimple into mk_def_pkl()
 		- TBD: created small_barrel of class ContainerPortableSimple
-		- TBD: decide how to handle bulk for portable containers when they are holding obj ??
 		- TBD: add to object pickle!
 		- TBD: add small_barrel to Entrance
 		- TBD: testing! 
