@@ -303,15 +303,30 @@ Version 3.78 Goals
 		- DONE: move current_contained_capacity to container method and call from put_err()
 		- DONE: implement current_contained_capacity with list comprehension
 
-	- TBD: ContainerPortableSimple
-		- TBD: decide how to handle bulk for portable containers when they are holding obj ??
-		- TBD: update put() verb method to update container bulk for Portable Containers
-		- TBD: create ContainerPortableSimple class
-		- TBD: import ContainerPortableSimple into mk_def_pkl()
-		- TBD: created small_barrel of class ContainerPortableSimple
-		- TBD: add to object pickle!
-		- TBD: add small_barrel to Entrance
-		- TBD: testing! 
+	- INPROC: ContainerPortableSimple
+		- DONE: create class	
+			- DONE: create ContainerPortableSimple class
+			- DONE: import ContainerPortableSimple into mk_def_pkl()
+		- DONE: deal with bulk
+			- DONE: decide how to handle bulk for portable containers when they are holding obj
+				- DECISION: portable container bulk = container bulk + contents bulk (i.e. like weight)
+			- DONE: update put() verb method to add Item bulk for Portable Containers
+			- DONE: update ContainsMixIn.remove() method to subtract Item bulk	
+		- INPROC: create test obj
+			- DONE: created small_barrel of class ContainerPortableSimple
+			- DONE: add to object pickle!
+			- DONE: add small_barrel to Entrance
+			- INPROC: testing!
+				- FINDING: 'put barrel on shelf' error
+				- TBD: need to make bulk decrement remove a method extension in ContainerPortableSimple
+		- TBD: create debug verbs: bulk(), 'capacity_raw', 'capacity_remaining', 'bulk_held'
+			- TBD: bulk() in Item() and bulk_err() in Invisible
+			- TBD: capacity_raw() in ContainerMixIn and capacity_raw_err in Invisible
+			- TBD: capacity_remaining() in ContainerMixIn and capacity_remaining_err in Invisible
+			- TBD: bulk_held() in ContainerMixIn and bulk_held() in Invisible
+			- TBD: 'help debug' mode that only works in debug mode ("The first rule of debug mode...")
+		- TBD: testing!
+
 	- TBD: Portable Liquid Container
 		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)
 		- TBD: create LiquidContainerMixIn
@@ -337,6 +352,7 @@ Version 3.78 Goals
 	- TBD: clean-up
 		- TBD: clean-up comments
 		- TBD: clean-up is_door(), is_surface(), can_contain_temp(), etc
+		- TBD: consider renaming bulk to weight
 		- TBD: probably time for a general refactor of ContainsMixIn()
 		- TBD: fix display meth use of is_closed() ; create an is_content_vis() meth for ContainsMixIn
 		- TBD: re-factor for clarity (especially ContainsMixIn)
