@@ -312,13 +312,14 @@ Version 3.78 Goals
 				- DECISION: portable container bulk = container bulk + contents bulk (i.e. like weight)
 			- DONE: update put() verb method to add Item bulk for Portable Containers
 			- DONE: update ContainsMixIn.remove() method to subtract Item bulk	
-		- INPROC: create test obj
+		- DONE: create test obj
 			- DONE: created small_barrel of class ContainerPortableSimple
 			- DONE: add to object pickle!
 			- DONE: add small_barrel to Entrance
-			- INPROC: testing!
+			- DONE: testing!
 				- FINDING: 'put barrel on shelf' error
-				- TBD: need to make bulk decrement remove a method extension in ContainerPortableSimple
+				- DONE: need to make bulk decrement remove a method extension in ContainerPortableSimple
+				- DONE: move bluk increment on put() a method extension in ContainerPortableSimple
 		- TBD: create debug verbs: bulk(), 'capacity_raw', 'capacity_remaining', 'bulk_held'
 			- TBD: bulk() in Item() and bulk_err() in Invisible
 			- TBD: capacity_raw() in ContainerMixIn and capacity_raw_err in Invisible
@@ -326,6 +327,7 @@ Version 3.78 Goals
 			- TBD: bulk_held() in ContainerMixIn and bulk_held() in Invisible
 			- TBD: 'help debug' mode that only works in debug mode ("The first rule of debug mode...")
 		- TBD: testing!
+		- TBD: comment clean up for all modules!
 
 	- TBD: Portable Liquid Container
 		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)

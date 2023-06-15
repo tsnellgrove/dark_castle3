@@ -199,8 +199,8 @@ class ContainsMixIn(object):
 
 	def remove_item(self, item, active_gs):
 		self.contain_lst_remove(item)
-		if self.is_item:
-			self.bulk -= item.bulk
+#		if self.is_item:
+#			self.bulk -= item.bulk
 
 	def chk_content_prohibited(self, obj):
 		return obj.is_creature()
@@ -251,8 +251,8 @@ class ContainsMixIn(object):
 		
 		creature.hand_lst_remove(obj)
 		self.contain_lst_append(obj)
-		if self.is_item:
-			self.bulk += obj.bulk
+#		if self.is_item:
+#			self.bulk += obj.bulk
 
 		active_gs.buffer("Done")
 		return
@@ -298,8 +298,29 @@ class ContainerFixedLockable(LockableMixIn, ContainsMixIn, OpenableMixIn, ViewOn
 		"""
 
 class ContainerPortableSimple(ContainsMixIn, Item):
-		def __init__(self, name, full_name, root_name, descript_key, writing, bulk, contain_lst, max_bulk, max_obj, prep):
-			Item.__init__(self, name, full_name, root_name, descript_key, writing, bulk)
-			ContainsMixIn.__init__(self, contain_lst, max_bulk, max_obj, prep)
-			""" A simple, takable container with no lid or lock. Can be a box or a surface (e.g. a tray) depending on 'prep'
-			"""
+	def __init__(self, name, full_name, root_name, descript_key, writing, bulk, contain_lst, max_bulk, max_obj, prep):
+		Item.__init__(self, name, full_name, root_name, descript_key, writing, bulk)
+		ContainsMixIn.__init__(self, contain_lst, max_bulk, max_obj, prep)
+		""" A simple, takable container with no lid or lock. Can be a box or a surface (e.g. a tray) depending on 'prep'
+		"""
+
+	# *** scope method extensions ***
+	def remove_item(self, item, active_gs):
+		super(ContainerPortableSimple, self).remove_item(item, active_gs)
+		""" Decrements Portable Container bulk when an Item is removed from the Container.
+		"""
+		self.bulk -= item.bulk
+		return
+
+
+	# *** verb method extensions ***
+	def put(self, obj, active_gs, mode=None):
+		super(ContainerPortableSimple, self).put(obj, active_gs, mode=None)
+		""" Increments Portable Container bulk when an Item is put in the Container.
+		"""
+		if mode is None:
+			mode = 'std'
+
+		self.bulk += obj.bulk
+		return
+
