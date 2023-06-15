@@ -320,11 +320,9 @@ Version 3.78 Goals
 				- FINDING: 'put barrel on shelf' error
 				- DONE: need to make bulk decrement remove a method extension in ContainerPortableSimple
 				- DONE: move bluk increment on put() a method extension in ContainerPortableSimple
-		- TBD: create debug verbs: bulk(), 'capacity_raw', 'capacity_remaining', 'bulk_held'
+		- TBD: create debug verbs: bulk() and capacity()
 			- TBD: bulk() in Item() and bulk_err() in Invisible
-			- TBD: capacity_raw() in ContainerMixIn and capacity_raw_err in Invisible
-			- TBD: capacity_remaining() in ContainerMixIn and capacity_remaining_err in Invisible
-			- TBD: bulk_held() in ContainerMixIn and bulk_held() in Invisible
+			- TBD: capacity() in ContainerMixIn and capacity_err() in Invisible (i.e. capacity remaining)
 			- TBD: 'help debug' mode that only works in debug mode ("The first rule of debug mode...")
 		- TBD: testing!
 		- TBD: comment clean up for all modules!
