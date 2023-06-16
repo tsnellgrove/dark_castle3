@@ -320,10 +320,11 @@ Version 3.78 Goals
 				- FINDING: 'put barrel on shelf' error
 				- DONE: need to make bulk decrement remove a method extension in ContainerPortableSimple
 				- DONE: move bluk increment on put() a method extension in ContainerPortableSimple
-		- INPROC: create debug verbs: weight() and capacity()
+		- DONE: create debug verbs: weight() and capacity()
 			- DONE: weight() in Item() and weight_err() in Invisible
 			- DONE: capacity() in ContainerMixIn and capacity_err() in Invisible (i.e. capacity remaining)
-			- TBD: 'help debug' mode that only works in debug mode ("The first rule of debug mode...")
+			- DONE: 'help debug' mode that only works in debug mode ("The first rule of debug mode...")
+				- DONE: in interp() , secret_verbs => debug_verbs ; list debug_verbs in 'help debug'
 		- TBD: consider renaming bulk to weight
 		- TBD: testing!
 		- TBD: comment clean up for all modules!
@@ -363,6 +364,7 @@ Version 3.78 Goals
 		- TBD: create current_carried_cappacity() method for Creature
 		- TBD: update take() to check for 'max_bulk' 
 		- TBD: assign 'bulk' attribute to Creatures
+		- TBD: in debug mode, prefix Invisible errors with [INVIS]
 		- TBD: perhaps MixIns like OpenableMixIn should have their own examine() states?
 			- IDEA: similar to has_contain()
 		- TBD: create 'bulk' verb to return bulk of obj (only usable in debug mode) ??
