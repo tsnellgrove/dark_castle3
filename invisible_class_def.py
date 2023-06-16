@@ -411,6 +411,18 @@ class Invisible(object):
 		if not active_gs.state_dict['debug']:
 			active_gs.buffer("Please start your sentence with a known verb!")
 			return True
+		if not self.is_item():
+			active_gs.buffer("Only Items have weight.")
+			return True
+		return False
+
+	def capacity_err(self, active_gs):
+		if not active_gs.state_dict['debug']:
+			active_gs.buffer("Please start your sentence with a known verb!")
+			return True
+		if not self.is_container():
+			active_gs.buffer("Only Containers have capacity.")
+			return True
 		return False
 
 	# *** prep errors ***

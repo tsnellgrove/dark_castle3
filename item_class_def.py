@@ -66,7 +66,7 @@ class Item(ViewOnly):
 		return 
 
 	def weight(self, active_gs, mode=None):
-		""" Reports the weight of an object. Only usable in debug mode.
+		""" Reports the weight of an Item. Only usable in debug mode.
 		"""
 		if mode is None:
 			mode = 'std'

@@ -322,10 +322,20 @@ Version 3.78 Goals
 				- DONE: move bluk increment on put() a method extension in ContainerPortableSimple
 		- INPROC: create debug verbs: weight() and capacity()
 			- DONE: weight() in Item() and weight_err() in Invisible
-			- TBD: capacity() in ContainerMixIn and capacity_err() in Invisible (i.e. capacity remaining)
+			- DONE: capacity() in ContainerMixIn and capacity_err() in Invisible (i.e. capacity remaining)
 			- TBD: 'help debug' mode that only works in debug mode ("The first rule of debug mode...")
+		- TBD: consider renaming bulk to weight
 		- TBD: testing!
 		- TBD: comment clean up for all modules!
+
+	- TBD: ContainerPortableLidded
+		- TBD: create ContainerPortableLidded
+		- TBD: create method to make bulk = container + contents
+		- TBD: create shoe_box test object
+
+	- TBD: ContainerPortabLockable
+		- TBD: create ContainerPortabLockable
+		- TBD: convert black_suitcase to ContainerPortabLockable class
 
 	- TBD: Portable Liquid Container
 		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)
@@ -333,13 +343,6 @@ Version 3.78 Goals
 		- TBD: create Flask
 		- TBD: convert glass_bottle to Flask class
 		- IDEA: maybe now is the time to conver to Enchanter jug??
-	- TBD: ContainerPortableLidded
-		- TBD: create ContainerPortableLidded
-		- TBD: create method to make bulk = container + contents
-		- TBD: create shoe_box test object
-	- TBD: ContainerPortabLockable
-		- TBD: create ContainerPortabLockable
-		- TBD: convert black_suitcase to ContainerPortabLockable class
 	- TBD: create Seat class with attribute and setters & getters (including in_reach_lst)
 		- IDEA: finally deliberation over Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 		- TBD: Seat in_reach attribute that links to room obj
@@ -352,7 +355,6 @@ Version 3.78 Goals
 	- TBD: clean-up
 		- TBD: clean-up comments
 		- TBD: clean-up is_door(), is_surface(), can_contain_temp(), etc
-		- TBD: consider renaming bulk to weight
 		- TBD: probably time for a general refactor of ContainsMixIn()
 		- TBD: fix display meth use of is_closed() ; create an is_content_vis() meth for ContainsMixIn
 		- TBD: re-factor for clarity (especially ContainsMixIn)

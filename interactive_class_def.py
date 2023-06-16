@@ -251,10 +251,19 @@ class ContainsMixIn(object):
 		
 		creature.hand_lst_remove(obj)
 		self.contain_lst_append(obj)
-#		if self.is_item:
-#			self.bulk += obj.bulk
 
 		active_gs.buffer("Done")
+		return
+
+
+	def capacity(self, active_gs, mode=None):
+		""" Reports the capacity of a Container. Only usable in debug mode.
+		"""
+		if mode is None:
+			mode = 'std'
+		
+		active_gs.buffer(f"The weight capacity of the {self.full_name} is {self.max_bulk}.")
+		active_gs.buffer(f"The object count capacity of the {self.full_name} is {self.max_obj}.")
 		return
 
 
