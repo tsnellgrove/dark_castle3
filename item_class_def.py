@@ -65,6 +65,15 @@ class Item(ViewOnly):
 		active_gs.buffer("Dropped")
 		return 
 
+	def weight(self, active_gs, mode=None):
+		""" Reports the weight of an object. Only usable in debug mode.
+		"""
+		if mode is None:
+			mode = 'std'
+		
+		active_gs.buffer(f"The weight of the {self.full_name} is {self.bulk}.")
+		return
+
 
 class Food(Item):
 #	def __init__(self, name, full_name, root_name, descript_key, writing):

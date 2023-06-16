@@ -407,6 +407,11 @@ class Invisible(object):
 			return True
 		return False
 
+	def weight_err(self, active_gs):
+		if not active_gs.state_dict['debug']:
+			active_gs.buffer("Please start your sentence with a known verb!")
+			return True
+		return False
 
 	# *** prep errors ***
 	def lock_err(self, key_obj, active_gs):
