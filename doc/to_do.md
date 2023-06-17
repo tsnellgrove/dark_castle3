@@ -325,8 +325,9 @@ Version 3.78 Goals
 			- DONE: capacity() in ContainerMixIn and capacity_err() in Invisible (i.e. capacity remaining)
 			- DONE: 'help debug' mode that only works in debug mode ("The first rule of debug mode...")
 				- DONE: in interp() , secret_verbs => debug_verbs ; list debug_verbs in 'help debug'
-		- TBD: consider renaming bulk to weight
-		- TBD: testing!
+		- DONE: consider renaming bulk to weight
+			- DONE: interactive(), invisible(), item(), mach()
+			- DONE: testing!
 		- TBD: comment clean up for all modules!
 
 	- TBD: ContainerPortableLidded
@@ -432,7 +433,7 @@ Version 3.78 Goals
 	- TBD: doc_string re: Seat as precursor to Vehical
 	- TBD: doc_string re: Nested Rooms can't be nested (no chairs on stages)
 	- TBD: doc_string re: Perch = translucent, Nook = opaque
-	- TBD: doc_string re: bulk to represent weight and volume (encumberance)
+	- TBD: doc_string re: weight only vs. weight + volume (encumberance)
 	- TBD: doc_string re: nook gets light from room
 
 - TBD: "what would your mothter say" error to "What would your Nana say?"

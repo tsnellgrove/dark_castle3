@@ -93,7 +93,7 @@ small_barrel = ContainerPortableSimple('small_barrel', 'Small Barrel', 'barrel',
 wooden_shelf = ContainerFixedSimple('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None, [], 999, 20, 'on')
 cardboard_box = ContainerFixedLidded('cardboard_box', 'Cardboard Box', 'box', 'cardboard_box', None, [], 999, 2, 'in', False)
 
-# ContainerFixedSimple attributes = name, full_name, root_name, descript_key, writing, contain_lst, max_bulk, max_obj, prep
+# ContainerFixedSimple attributes = name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep
 
 ## glass_bottle = PortableLiquidContainer('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', None, None, None, None, [fresh_water])
 

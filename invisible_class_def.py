@@ -407,7 +407,8 @@ class Invisible(object):
 			return True
 		return False
 
-	def weight_err(self, active_gs):
+#	def weight_err(self, active_gs):
+	def get_weight_err(self, active_gs):
 		if not active_gs.state_dict['debug']:
 			active_gs.buffer("Please start your sentence with a known verb!")
 			return True
@@ -526,7 +527,7 @@ class Invisible(object):
 		if self.can_contain_temp() and not self.chk_has_capacity():
 			active_gs.buffer(f"There's no room {self.prep} the {self.full_name} for another item.")
 			return True
-		if self.max_bulk - self.get_contained_bulk() - obj.bulk < 0:
+		if self.max_weight - self.get_contained_weight() - obj.weight < 0:
 			active_gs.buffer(f"The {self.full_name} doesn't have enough capacity to hold the {obj.full_name}.")
 			return True
 		return False

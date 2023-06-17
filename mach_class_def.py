@@ -117,9 +117,9 @@ class ViewOnlyMach(MachineMixIn, ViewOnly):
 
 class ItemMach(MachineMixIn, Item):
 #		def __init__(self, name, full_name, root_name, descript_key, writing, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
-		def __init__(self, name, full_name, root_name, descript_key, writing, bulk, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
+		def __init__(self, name, full_name, root_name, descript_key, writing, weight, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 #				Item.__init__(self, name, full_name, root_name, descript_key, writing)
-				Item.__init__(self, name, full_name, root_name, descript_key, writing, bulk)
+				Item.__init__(self, name, full_name, root_name, descript_key, writing, weight)
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
 class SurfaceMach(MachineMixIn, Surface):

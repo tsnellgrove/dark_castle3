@@ -19,7 +19,7 @@ known_verbs_lst = ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 				 'unlock', 'wear', 'enter', 'exit', 'stand'
 				] # 'remove' removed
 
-debug_verb_lst = ['weight', 'capacity']
+debug_verb_lst = ['get_weight', 'capacity']
 
 full_verbs_lst = known_verbs_lst + debug_verb_lst
 

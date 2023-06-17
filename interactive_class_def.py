@@ -128,9 +128,9 @@ class LockableMixIn(object):
 		return
 
 class ContainsMixIn(object):
-	def __init__(self, contain_lst, max_bulk, max_obj, prep):
+	def __init__(self, contain_lst, max_weight, max_obj, prep):
 		self._contain_lst = contain_lst # list of objects in the container
-		self._max_bulk = max_bulk # maximum combined bulk the container can hold
+		self._max_weight = max_weight # maximum combined weight the container can hold
 		self._max_obj = max_obj # maximum number of objects the container can hold
 		self._prep = prep # prep to be used when addign obj to container; typically 'in' or 'on'
 		""" The ContainsMixIn can be combined with other classes to hold items.
@@ -146,8 +146,8 @@ class ContainsMixIn(object):
 		self._contain_lst = new_obj
 
 	@property
-	def max_bulk(self):
-		return self._max_bulk
+	def max_weight(self):
+		return self._max_weight
 
 	@property
 	def max_obj(self):
@@ -200,13 +200,13 @@ class ContainsMixIn(object):
 	def remove_item(self, item, active_gs):
 		self.contain_lst_remove(item)
 #		if self.is_item:
-#			self.bulk -= item.bulk
+#			self.weight -= item.weight
 
 	def chk_content_prohibited(self, obj):
 		return obj.is_creature()
 
-	def get_contained_bulk(self):
-		return sum(element.bulk for element in self.contain_lst)
+	def get_contained_weight(self):
+		return sum(element.weight for element in self.contain_lst)
 
 	# *** display methods ***
 	def has_contain(self, active_gs):
@@ -262,7 +262,7 @@ class ContainsMixIn(object):
 		if mode is None:
 			mode = 'std'
 		
-		active_gs.buffer(f"The weight capacity of the {self.full_name} is {self.max_bulk}.")
+		active_gs.buffer(f"The weight capacity of the {self.full_name} is {self.max_weight}.")
 		active_gs.buffer(f"The object count capacity of the {self.full_name} is {self.max_obj}.")
 		return
 
@@ -283,53 +283,53 @@ class DoorLockable(LockableMixIn, DoorSimple):
 		"""
 
 class ContainerFixedSimple(ContainsMixIn, ViewOnly):
-	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_bulk, max_obj, prep):
+	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep):
 		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
-		ContainsMixIn.__init__(self, contain_lst, max_bulk, max_obj, prep)
+		ContainsMixIn.__init__(self, contain_lst, max_weight, max_obj, prep)
 		""" A simple non-takable container with no lid or lock. Can be a box or a shelf depending on 'prep'
 		"""
 
 class ContainerFixedLidded(ContainsMixIn, OpenableMixIn, ViewOnly):
-	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_bulk, max_obj, prep, is_open):
+	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, is_open):
 		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
-		ContainsMixIn.__init__(self, contain_lst, max_bulk, max_obj, prep)
+		ContainsMixIn.__init__(self, contain_lst, max_weight, max_obj, prep)
 		OpenableMixIn.__init__(self, is_open)
 		""" A non-takable container with a lid but no lock.
 		"""
 
 class ContainerFixedLockable(LockableMixIn, ContainsMixIn, OpenableMixIn, ViewOnly):
-	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_bulk, max_obj, prep, is_open, is_unlocked, key):
+	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, is_open, is_unlocked, key):
 		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
-		ContainsMixIn.__init__(self, contain_lst, max_bulk, max_obj, prep)
+		ContainsMixIn.__init__(self, contain_lst, max_weight, max_obj, prep)
 		OpenableMixIn.__init__(self, is_open)
 		LockableMixIn.__init__(self, is_unlocked, key)
 		""" A non-takable container with a lid and a lock.
 		"""
 
 class ContainerPortableSimple(ContainsMixIn, Item):
-	def __init__(self, name, full_name, root_name, descript_key, writing, bulk, contain_lst, max_bulk, max_obj, prep):
-		Item.__init__(self, name, full_name, root_name, descript_key, writing, bulk)
-		ContainsMixIn.__init__(self, contain_lst, max_bulk, max_obj, prep)
+	def __init__(self, name, full_name, root_name, descript_key, writing, weight, contain_lst, max_weight, max_obj, prep):
+		Item.__init__(self, name, full_name, root_name, descript_key, writing, weight)
+		ContainsMixIn.__init__(self, contain_lst, max_weight, max_obj, prep)
 		""" A simple, takable container with no lid or lock. Can be a box or a surface (e.g. a tray) depending on 'prep'
 		"""
 
 	# *** scope method extensions ***
 	def remove_item(self, item, active_gs):
 		super(ContainerPortableSimple, self).remove_item(item, active_gs)
-		""" Decrements Portable Container bulk when an Item is removed from the Container.
+		""" Decrements Portable Container weight when an Item is removed from the Container.
 		"""
-		self.bulk -= item.bulk
+		self.weight -= item.weight
 		return
 
 
 	# *** verb method extensions ***
 	def put(self, obj, active_gs, mode=None):
 		super(ContainerPortableSimple, self).put(obj, active_gs, mode=None)
-		""" Increments Portable Container bulk when an Item is put in the Container.
+		""" Increments Portable Container weight when an Item is put in the Container.
 		"""
 		if mode is None:
 			mode = 'std'
 
-		self.bulk += obj.bulk
+		self.weight += obj.weight
 		return
 

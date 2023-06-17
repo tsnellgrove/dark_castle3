@@ -11,21 +11,21 @@ from base_class_def import ViewOnly
 ### classes
 class Item(ViewOnly):
 #	def __init__(self, name, full_name, root_name, descript_key, writing):
-	def __init__(self, name, full_name, root_name, descript_key, writing, bulk):
+	def __init__(self, name, full_name, root_name, descript_key, writing, weight):
 		super().__init__(name, full_name, root_name, descript_key, writing)
 ##		ViewOnly().__init__(name, full_name, root_name, descript_key, writing)
-		self._bulk = bulk # represents the weight and volume of the object
+		self._weight = weight # represents the weight of the object
 		""" Items can be 'taken' and 'dropped'. Item inherits from ViewOnly and has no new attributes - just new methods: take() and drop(). 
 		"""
 
 	# *** getters & setters ***
 	@property
-	def bulk(self):
-		return self._bulk
+	def weight(self):
+		return self._weight
 
-	@bulk.setter
-	def bulk(self, new_bulk):
-		self._bulk = new_bulk
+	@weight.setter
+	def weight(self, new_weight):
+		self._weight = new_weight
 
 	# *** class identity methods ***
 	def is_item(self):
@@ -39,6 +39,8 @@ class Item(ViewOnly):
 			mode = 'std'
 		creature = active_gs.hero
 		
+#		print(self.name)
+#		print(self.weight)
 		active_gs.buffer("Taken")
 		if creature.chk_is_worn(self):
 			active_gs.buffer(f"You are no longer wearing the {self.full_name}.")
@@ -46,7 +48,7 @@ class Item(ViewOnly):
 		
 		active_gs.get_room().remove_item(self, active_gs)
 		creature.put_in_hand(self)
-##		active_gs.buffer(f"The bulk of the {self.full_name} is {self.bulk} pounds.")
+##		active_gs.buffer(f"The weight of the {self.full_name} is {self.weight} pounds.")
 		return
 
 	def drop(self, active_gs, mode=None):
@@ -65,21 +67,22 @@ class Item(ViewOnly):
 		active_gs.buffer("Dropped")
 		return 
 
-	def weight(self, active_gs, mode=None):
+#	def weight(self, active_gs, mode=None):
+	def get_weight(self, active_gs, mode=None):
 		""" Reports the weight of an Item. Only usable in debug mode.
 		"""
 		if mode is None:
 			mode = 'std'
 		
-		active_gs.buffer(f"The weight of the {self.full_name} is {self.bulk}.")
+		active_gs.buffer(f"The weight of the {self.full_name} is {self.weight}.")
 		return
 
 
 class Food(Item):
 #	def __init__(self, name, full_name, root_name, descript_key, writing):
-	def __init__(self, name, full_name, root_name, descript_key, writing, bulk):
+	def __init__(self, name, full_name, root_name, descript_key, writing, weight):
 #		super().__init__(name, full_name, root_name, descript_key, writing)
-		super().__init__(name, full_name, root_name, descript_key, writing, bulk)
+		super().__init__(name, full_name, root_name, descript_key, writing, weight)
 		""" Burt can eat() food. Food may be of interest to other creatures in Dark Castle as well. Food inherits from Item and can be taken.
 		"""
 
@@ -104,9 +107,9 @@ class Food(Item):
 
 class Garment(Item):
 #	def __init__(self, name, full_name, root_name, descript_key, writing, garment_type):
-	def __init__(self, name, full_name, root_name, descript_key, writing, bulk, garment_type):
+	def __init__(self, name, full_name, root_name, descript_key, writing, weight, garment_type):
 #		super().__init__(name, full_name, root_name, descript_key, writing)
-		super().__init__(name, full_name, root_name, descript_key, writing, bulk)
+		super().__init__(name, full_name, root_name, descript_key, writing, weight)
 		self._garment_type = garment_type # e.g. 'hat'; Burt can only wear one garment of a given type at a time
 		""" Burt can wear() garments. He can only wear one garment of a given type at a time. Some garments may impart special powers.
 		"""
@@ -137,9 +140,9 @@ class Garment(Item):
 
 
 class Weapon(Item):
-	def __init__(self, name, full_name, root_name, descript_key, writing, bulk, desc_lst):
+	def __init__(self, name, full_name, root_name, descript_key, writing, weight, desc_lst):
 #	def __init__(self, name, full_name, root_name, descript_key, writing, desc_lst):
-		super().__init__(name, full_name, root_name, descript_key, writing, bulk)
+		super().__init__(name, full_name, root_name, descript_key, writing, weight)
 #		super().__init__(name, full_name, root_name, descript_key, writing)
 		self._desc_lst = desc_lst # descriptive terms associated with using the weapon to 'attack'
 		""" A Weapon can be used to attack. Weapon is a subclass of Item. 
