@@ -458,7 +458,13 @@ Version 3.78 Goals
 *** Unify Notes ***
 *** Plan for interpreter update ***
 
-- IDEA: Liquid handling: "Fill X with Y from Z", "Pour X from Y into Z"
+- IDEA: Liquid handling:
+	- IDEA: basic terms
+		- IDEA: drink() [class Liquid method]; 'drink X from Y'
+		- IDEA: fill() [class HoldsLiquidMixIn]; 'fill X with Y', 'fill X from Y' (???)
+		- IDEA: pour() [class HoldsLiquidMixIn] ; 'pour X on / in Y', "Pour X from Y into Z"
+			- NOTE: requires is_item() & in_hand()
+	- IDEA: Advanced terms: mix(), stir(), shake()
 
 - INPROC: review TADS3 terms for Description and preposition
 
