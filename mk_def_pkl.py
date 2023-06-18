@@ -79,30 +79,19 @@ grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing,
 shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarven_runes, 10, 
 				[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']])
 
-# crystal_box = Container('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy,
-#				False, False, silver_key, ['kinging_scroll_temp'])
-
+wooden_shelf = ContainerFixedSimple('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None, [], 999, 20, 'on')
+cardboard_box = ContainerFixedLidded('cardboard_box', 'Cardboard Box', 'box', 'cardboard_box', None, [], 999, 2, 'in', False)
 crystal_box = ContainerFixedLockable('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy, ['kinging_scroll_temp'], 1, 999, 'in', False, False, silver_key)
 
 small_barrel = ContainerPortableSimple('small_barrel', 'Small Barrel', 'barrel', 'small_barrel', None, 2, [], 5, 999, 'in')
 
 ## black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', small_printing, False, False, rusty_key, [])
-
-# wooden_shelf = Surface('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None,
-# 				None, None, None, [], 20)
-wooden_shelf = ContainerFixedSimple('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None, [], 999, 20, 'on')
-cardboard_box = ContainerFixedLidded('cardboard_box', 'Cardboard Box', 'box', 'cardboard_box', None, [], 999, 2, 'in', False)
-
-# ContainerFixedSimple attributes = name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep
-
 ## glass_bottle = PortableLiquidContainer('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', None, None, None, None, [fresh_water])
 
 test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None,
 				None, None, None, [], 1)
 
-# front_gate = Door('front_gate', 'Front Gate', "gate", 'front_gate', rusty_lettering, False, False, rusty_key)
 front_gate = DoorLockable('front_gate', 'Front Gate', "gate", 'front_gate', rusty_lettering, False, False, rusty_key)
-# iron_portcullis = Door('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, False, False, None)
 iron_portcullis = DoorLockable('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, False, False, None)
 screen_door = DoorSimple('screen_door', 'Screen Door', 'door', 'screen_door', None, False)
 

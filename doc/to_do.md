@@ -303,7 +303,7 @@ Version 3.78 Goals
 		- DONE: move current_contained_capacity to container method and call from put_err()
 		- DONE: implement current_contained_capacity with list comprehension
 
-	- INPROC: ContainerPortableSimple
+	- DONE: ContainerPortableSimple
 		- DONE: create class	
 			- DONE: create ContainerPortableSimple class
 			- DONE: import ContainerPortableSimple into mk_def_pkl()
@@ -328,7 +328,7 @@ Version 3.78 Goals
 		- DONE: consider renaming bulk to weight
 			- DONE: interactive(), invisible(), item(), mach()
 			- DONE: testing!
-		- TBD: comment clean up for all modules!
+		- DONE: comment clean up for all modules!
 
 	- TBD: ContainerPortableLidded
 		- TBD: create ContainerPortableLidded

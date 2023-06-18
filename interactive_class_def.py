@@ -199,8 +199,6 @@ class ContainsMixIn(object):
 
 	def remove_item(self, item, active_gs):
 		self.contain_lst_remove(item)
-#		if self.is_item:
-#			self.weight -= item.weight
 
 	def chk_content_prohibited(self, obj):
 		return obj.is_creature()
