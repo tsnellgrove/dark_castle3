@@ -289,17 +289,14 @@ class ContainerFixedSimple(ContainsMixIn, ViewOnly):
 
 class ContainerFixedLidded(ContainsMixIn, OpenableMixIn, ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, is_open):
-		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
-		ContainsMixIn.__init__(self, contain_lst, max_weight, max_obj, prep)
+		ContainerFixedSimple.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep)
 		OpenableMixIn.__init__(self, is_open)
 		""" A non-takable container with a lid but no lock.
 		"""
 
 class ContainerFixedLockable(LockableMixIn, ContainsMixIn, OpenableMixIn, ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, is_open, is_unlocked, key):
-		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
-		ContainsMixIn.__init__(self, contain_lst, max_weight, max_obj, prep)
-		OpenableMixIn.__init__(self, is_open)
+		ContainerFixedLidded.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, is_open)
 		LockableMixIn.__init__(self, is_unlocked, key)
 		""" A non-takable container with a lid and a lock.
 		"""
@@ -319,6 +316,8 @@ class ContainerPortableSimple(ContainsMixIn, Item):
 		self.weight -= item.weight
 		return
 
+	def chk_content_prohibited(self, obj):
+		return super(ContainerPortableSimple, self).chk_content_prohibited(obj) or (obj.is_container() and obj.is_item)
 
 	# *** verb method extensions ***
 	def put(self, obj, active_gs, mode=None):
@@ -331,3 +330,9 @@ class ContainerPortableSimple(ContainsMixIn, Item):
 		self.weight += obj.weight
 		return
 
+class ContainerPortableLidded(OpenableMixIn, ContainerPortableSimple):
+		def __init__(self, name, full_name, root_name, descript_key, writing, weight, contain_lst, max_weight, max_obj, prep, is_open):
+			ContainerPortableSimple.__init__(self, name, full_name, root_name, descript_key, writing, weight, contain_lst, max_weight, max_obj, prep)
+			OpenableMixIn.__init__(self, is_open)
+			""" A takable container with a lid but no lock.
+			"""

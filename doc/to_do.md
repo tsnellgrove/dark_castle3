@@ -330,10 +330,15 @@ Version 3.78 Goals
 			- DONE: testing!
 		- DONE: comment clean up for all modules!
 
-	- TBD: ContainerPortableLidded
-		- TBD: create ContainerPortableLidded
-		- TBD: create method to make bulk = container + contents
-		- TBD: create shoe_box test object
+	- DONE: ContainerPortableLidded
+		- DONE: create class ContainerPortableLidded
+		- DONE: import ContainerPortableLidded into mk_def_pkl.py
+		- DONE: create red_shoebox test object
+		- DONE: add red_shoebox to obj pickle!
+		- DONE: add red_shoebox to Entrance!
+		- DONE: add restriction to ContainerPortableSimple to prohibit portable containers in same
+		- DONE: test
+		- DONE: try basing ContainerFixedLockable on ContainerFixedLidded
 
 	- TBD: ContainerPortabLockable
 		- TBD: create ContainerPortabLockable
@@ -357,6 +362,7 @@ Version 3.78 Goals
 	- TBD: clean-up
 		- TBD: clean-up comments
 		- TBD: clean-up is_door(), is_surface(), can_contain_temp(), etc
+		- TBD: clean-up is_portablecontainer()
 		- TBD: probably time for a general refactor of ContainsMixIn()
 		- TBD: fix display meth use of is_closed() ; create an is_content_vis() meth for ContainsMixIn
 		- TBD: re-factor for clarity (especially ContainsMixIn)
@@ -384,6 +390,8 @@ Version 3.78 Goals
 
 - TBD: Make liquid class Item so as to give it attribute bulk
 	- TBD: updated 'drink X' to 'drink X from Y' ?
+	- TBD: temp idea for bottle - just make capacity 0.5 and nothing else will fit in
+		- IDEA: full solution is to determine effect of liquid for each obj (evaporate, ruin, cool, etc)
 
 - TBD: instantiate Creature Containers in actual game
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
@@ -434,6 +442,7 @@ Version 3.78 Goals
 	- TBD: doc_string re: Nested Rooms can't be nested (no chairs on stages)
 	- TBD: doc_string re: Perch = translucent, Nook = opaque
 	- TBD: doc_string re: weight only vs. weight + volume (encumberance)
+	- TBD: doc_string re: best practices - max_obj for surfaces vs. max_wight for containers
 	- TBD: doc_string re: nook gets light from room
 
 - TBD: "what would your mothter say" error to "What would your Nana say?"
@@ -457,6 +466,11 @@ Version 3.78 Goals
 
 *** Unify Notes ***
 *** Plan for interpreter update ***
+
+
+- Long Term Pondering:
+	- the whole 'hand' concept is looking increasingly dodgy... too much inventory mgmt...
+	- maybe time to bite the recursive bullet and just allow portable containers in portable containers?
 
 - IDEA: Liquid handling:
 	- IDEA: basic terms
@@ -966,6 +980,8 @@ Version 6.x Goals
 - for FlamableItem: light & burn (e.g. matches)
 - PaperItem: burns; also, if writing, ink runs and becomes unreadable
 - maybe sleep in bed (after min # of moves) to dream to get hints? But light must be on so you loose turns of light and wake up hungry and thirsty? Hint is provided randomly based on points not yet accrued?
+- need to check Enchanter to find length of days, when sleep needed, food & drink, etc
+- For dream hint: Burt has dream / memory of Nana teaching him the binary code she would use with Willy while secretly courting (she was a lunch lady?) to set a time to sneak off with him. Would involve 2 types of biscuits on counter... Nana's Own and McVittles (which were awful)... she only had room for 3 biscuits but had to show times from 0 to 7... 
 - non-humanoid monster could be a special weapon description case (fun new puzzle idea)???
 - TBD: Consider having size values for items and capaicty limits on containers & backpack (should the crystal box really hold an axe?)
 	- This becomes important for 'take' capacity as well in shrinking puzzle (??)
