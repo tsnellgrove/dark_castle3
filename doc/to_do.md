@@ -350,6 +350,13 @@ Version 3.78 Goals
 	- TBD: Portable Liquid Container
 		- figure out how to fix Liquid Container... 
 			- for now maybe make max_weight = 0.5, Liquid => Item, water weight = 0.5 (???)
+			- test out 'open bottle' in Zork
+			- think through possible results of liquid contact:
+				- no special results - Container holds water
+				- Obj unimpacted but water 'evaporates'
+				- Obj is ruined / disolved / rendered illegible (e.g. paper note); water "evaporates"
+				- Heated obj is cooled (Zork example; future)
+				- Flame is extinquished (Zork example; future)
 		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)
 		- TBD: create LiquidContainerMixIn
 		- TBD: create Flask
