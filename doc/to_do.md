@@ -340,13 +340,16 @@ Version 3.78 Goals
 		- DONE: test
 		- DONE: try basing ContainerFixedLockable on ContainerFixedLidded
 
-	- INPROC: ContainerPortabLockable
+	- DONE: ContainerPortabLockable
 		- DONE: create ContainerPortabLockable
-		- TBD: import ContainerPortabLockable into mk_def_pkl.py
-		- TBD: convert black_suitcase to ContainerPortabLockable class
-		- TBD: test!
+		- DONE: import ContainerPortabLockable into mk_def_pkl.py
+		- DONE: convert black_suitcase to ContainerPortabLockable class
+		- DONE: put black_suitcase in Entrance
+		- DONE: test!
 
 	- TBD: Portable Liquid Container
+		- figure out how to fix Liquid Container... 
+			- for now maybe make max_weight = 0.5, Liquid => Item, water weight = 0.5 (???)
 		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)
 		- TBD: create LiquidContainerMixIn
 		- TBD: create Flask
