@@ -331,8 +331,16 @@ class ContainerPortableSimple(ContainsMixIn, Item):
 		return
 
 class ContainerPortableLidded(OpenableMixIn, ContainerPortableSimple):
-		def __init__(self, name, full_name, root_name, descript_key, writing, weight, contain_lst, max_weight, max_obj, prep, is_open):
-			ContainerPortableSimple.__init__(self, name, full_name, root_name, descript_key, writing, weight, contain_lst, max_weight, max_obj, prep)
-			OpenableMixIn.__init__(self, is_open)
-			""" A takable container with a lid but no lock.
-			"""
+	def __init__(self, name, full_name, root_name, descript_key, writing, weight, contain_lst, max_weight, max_obj, prep, is_open):
+		ContainerPortableSimple.__init__(self, name, full_name, root_name, descript_key, writing, weight, contain_lst, max_weight, max_obj, prep)
+		OpenableMixIn.__init__(self, is_open)
+		""" A takable container with a lid but no lock.
+		"""
+
+class ContainerPortableLockable(LockableMixIn, ContainerPortableLidded):
+	def __init__(self, name, full_name, root_name, descript_key, writing, weight, contain_lst, max_weight, max_obj, prep, is_open, is_unlocked, key):
+		ContainerPortableLidded.__init__(self, name, full_name, root_name, descript_key, writing, weight, contain_lst, max_weight, max_obj, prep, is_open)
+		LockableMixIn.__init__(self, is_unlocked, key)
+		""" A takable container with a lid and a lock.
+		"""
+

@@ -340,9 +340,11 @@ Version 3.78 Goals
 		- DONE: test
 		- DONE: try basing ContainerFixedLockable on ContainerFixedLidded
 
-	- TBD: ContainerPortabLockable
-		- TBD: create ContainerPortabLockable
+	- INPROC: ContainerPortabLockable
+		- DONE: create ContainerPortabLockable
+		- TBD: import ContainerPortabLockable into mk_def_pkl.py
 		- TBD: convert black_suitcase to ContainerPortabLockable class
+		- TBD: test!
 
 	- TBD: Portable Liquid Container
 		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)

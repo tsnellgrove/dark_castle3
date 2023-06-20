@@ -15,7 +15,7 @@ from door_class_def import Seat
 ## from door_class_def import PortableContainer, PortableLiquidContainer
 from interactive_class_def import DoorSimple, DoorLockable
 from interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable
-from interactive_class_def import ContainerPortableSimple, ContainerPortableLidded
+from interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 from misc_class_def import Liquid
 from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
