@@ -347,18 +347,71 @@ Version 3.78 Goals
 		- DONE: put black_suitcase in Entrance
 		- DONE: test!
 
-	- TBD: Portable Liquid Container
+	- INPROC: Figure out Liquid handling
+		- DONE: Research Infocom liquids
+				- Zork: Glass Bottle 
+					- has one 'quantity of water'
+					- bottle must be held to be drunk
+					- bottle must be openned to be drunk
+				- Enchanter: Jug
+					- has multiple quantities of water
+					- jug has no 'cap': "The jug has no cover. It can't be openned or closed."
+					- must be at least a little 'thirsty' to drink water
+				- Other uses (in Zork):
+					- Water can be poured on flame to put it out
+					- Water can be poured on the heated bell to cool it
+		- INPROC: Long-term Liquid plans
+			- Liquid class
+				- The primary liquid in the game will be water
+				- Main liquid verbs = drink(), pour(), fill()
+					- drink() : 'drink Y from X'
+					- pour() : 'pour X from Y in / on Z'
+					- fill() : 'fill X with Y from Z'
+					- where 'Y' is a Liquid and 'X' and 'Z' are containers / bodies of water
+			- Non Liquid class properties related to liquids
+				- If water is poured in or on an object it has an effect:
+					- no special results (if the obj is a Container then it holds the water)
+					- Obj unimpacted but water 'evaporates'
+					- Obj is ruined / disolved / rendered illegible (e.g. paper note); water "evaporates"
+					- Heated obj is cooled (Zork example; future)
+					- Flame is extinquished (Zork example; future)
+					- note that these effects are properties of the objects - NOT the liquid class
+
+
 		- figure out how to fix Liquid Container... 
 			- for now maybe make max_weight = 0.5, Liquid => Item, water weight = 0.5 (???)
-			- test out 'open bottle' in Zork
-			- think through possible results of liquid contact:
-				- no special results - Container holds water
-				- Obj unimpacted but water 'evaporates'
-				- Obj is ruined / disolved / rendered illegible (e.g. paper note); water "evaporates"
-				- Heated obj is cooled (Zork example; future)
-				- Flame is extinquished (Zork example; future)
+
+
+		- TBD: Make liquid class Item so as to give it attribute bulk
+			- TBD: updated 'drink X' to 'drink X from Y' ?
+			- TBD: temp idea for bottle - just make capacity 0.5 and nothing else will fit in
+				- IDEA: full solution is to determine effect of liquid for each obj (evaporate, ruin, cool, etc)
+		- IDEA: Liquid handling:
+			- IDEA: basic terms
+				- IDEA: drink() [class Liquid method]; 'drink X from Y'
+				- IDEA: fill() [class HoldsLiquidMixIn]; 'fill X with Y', 'fill X from Y' (???)
+				- IDEA: pour() [class HoldsLiquidMixIn] ; 'pour X on / in Y', "Pour X from Y into Z"
+					- NOTE: requires is_item() & in_hand()
+			- IDEA: Advanced terms: mix(), stir(), shake()
+		- for Liquid: fill & pour
+		- additional water verbs needed: 'fill' and 'pour the <water> on the <noun>'
+			- Perhaps regular containers can't contain liquids?
 		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)
 		- TBD: create LiquidContainerMixIn
+		- TBD: create Liquid
+		- PUZZLE: Under Water Puzzle:
+			- treasure at bottom of old well - but need a magical way to hold your breath?
+			- old_well as water source in entrance_hall and also passage to... where?
+			- can hold breath for 4 turns, locked grate is 2 moves down, get warning on half air and last turn
+				- TBD: create LiquidContainer class
+					- TBD: create new LiquidContainer class
+					- TBD: instantiate old_well in the main_hall which contains fresh water
+					- TBD: update drink() to allow / error for drinking from the old_well
+			- lantern is water proof
+			- should be like rope puzzle for Zork I... 
+				- you have everything you need in the remote room but can't get out without solving puzzle
+
+
 		- TBD: create Flask
 		- TBD: convert glass_bottle to Flask class
 		- IDEA: maybe now is the time to conver to Enchanter jug??
@@ -399,11 +452,6 @@ Version 3.78 Goals
 	- need to embrace the use of recursion on methods like remove()
 	- Apply this to concepts like drop() and stand() / exit()
 	- DECISION: alternatively, just treat creature-containers as special exceptions
-
-- TBD: Make liquid class Item so as to give it attribute bulk
-	- TBD: updated 'drink X' to 'drink X from Y' ?
-	- TBD: temp idea for bottle - just make capacity 0.5 and nothing else will fit in
-		- IDEA: full solution is to determine effect of liquid for each obj (evaporate, ruin, cool, etc)
 
 - TBD: instantiate Creature Containers in actual game
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
@@ -483,14 +531,6 @@ Version 3.78 Goals
 - Long Term Pondering:
 	- the whole 'hand' concept is looking increasingly dodgy... too much inventory mgmt...
 	- maybe time to bite the recursive bullet and just allow portable containers in portable containers?
-
-- IDEA: Liquid handling:
-	- IDEA: basic terms
-		- IDEA: drink() [class Liquid method]; 'drink X from Y'
-		- IDEA: fill() [class HoldsLiquidMixIn]; 'fill X with Y', 'fill X from Y' (???)
-		- IDEA: pour() [class HoldsLiquidMixIn] ; 'pour X on / in Y', "Pour X from Y into Z"
-			- NOTE: requires is_item() & in_hand()
-	- IDEA: Advanced terms: mix(), stir(), shake()
 
 - INPROC: review TADS3 terms for Description and preposition
 
@@ -988,7 +1028,6 @@ Version 6.x Goals
 - for light sources:
 	- "(providing light)" in inventory; also is a condition (on)
 	- can move into a dark room, but can't open a container in the dark
-- for Liquid: fill & pour
 - for FlamableItem: light & burn (e.g. matches)
 - PaperItem: burns; also, if writing, ink runs and becomes unreadable
 - maybe sleep in bed (after min # of moves) to dream to get hints? But light must be on so you loose turns of light and wake up hungry and thirsty? Hint is provided randomly based on points not yet accrued?
@@ -1091,17 +1130,6 @@ Vehical:
 - need to grab staute (?) on way up / down?
 - or else maybe mine cart / parachute??
 
-Under Water:
-- treasure at bottom of old well - but need a magical way to hold your breath?
-- old_well as water source in entrance_hall and also passage to... where?
-- can hold breath for 4 turns, locked grate is 2 moves down, get warning on half air and last turn
-	- TBD: create LiquidContainer class
-		- TBD: create new LiquidContainer class
-		- TBD: instantiate old_well in the main_hall which contains fresh water
-		- TBD: update drink() to allow / error for drinking from the old_well
-- lantern is water proof
-- should be like rope puzzle for Zork I... have everything you need in the remote room but can't get out without solving puzzle
-
 Zork Thief = Ferret:
 - dextrous, loves colorful objects, likes to fidtet / fiddle with things, clever
 - will steal an object from burt (or that burt has touched) each time it randomly runs into him (some items off limits?)
@@ -1119,8 +1147,6 @@ Food:
 - bread for Burt (save piecs of cheese for the mice)
 - maybe need to keep feeding biscuits to the hedgehog?
 - perhaps loaf of bread and bottle of water can each provide multiple servers (similar to enchanter)
-- additional water verbs needed: 'fill' and 'pour the <water> on the <noun>'
-	- Perhaps regular containers can't contain liquids?
 - additional bread verbs needed: bake ???
 
 Special Glasses / Dream form:
