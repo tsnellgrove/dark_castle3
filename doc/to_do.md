@@ -347,74 +347,19 @@ Version 3.78 Goals
 		- DONE: put black_suitcase in Entrance
 		- DONE: test!
 
-	- INPROC: Figure out Liquid handling
-		- DONE: Research Infocom liquids
-				- Zork: Glass Bottle 
-					- has one 'quantity of water'
-					- bottle must be held to be drunk
-					- bottle must be openned to be drunk
-				- Enchanter: Jug
-					- has multiple quantities of water
-					- jug has no 'cap': "The jug has no cover. It can't be openned or closed."
-					- must be at least a little 'thirsty' to drink water
-				- Other uses (in Zork):
-					- Water can be poured on flame to put it out
-					- Water can be poured on the heated bell to cool it
-		- INPROC: Long-term Liquid plans
-			- Liquid class
-				- The primary liquid in the game will be water
-				- Main liquid verbs = drink(), pour(), fill()
-					- drink() : 'drink Y from X'
-					- pour() : 'pour X from Y in / on Z'
-					- fill() : 'fill X with Y from Z'
-					- where 'Y' is a Liquid and 'X' and 'Z' are containers / bodies of water
-			- Non Liquid class properties related to liquids
-				- If water is poured in or on an object it has an effect:
-					- no special results (if the obj is a Container then it holds the water)
-					- Obj unimpacted but water 'evaporates'
-					- Obj is ruined / disolved / rendered illegible (e.g. paper note); water "evaporates"
-					- Heated obj is cooled (Zork example; future)
-					- Flame is extinquished (Zork example; future)
-					- note that these effects are properties of the objects - NOT the liquid class
+	- TBD: short-term fix for Liquid Container
+		- TBD: liquid container
+			- TBD: maybe now is the time to convert glass bottle to Enchanter jug??
+			- TBD: jug to be of class ContainerPortableSimple
+			- TBD: for now maybe make earthen_jug.max_weight = 0.5
+			- TBD: test!
+		- TBD: Liquid class
+			- TBD: convert Liquid class to inherit from Item
+			- TBD: update drink method to 'drink X' to 'drink X from Y' (with guess if bottle in hand)
+			- TBD: set water.weight = 0.5
+			- TBD: test !
 
 
-		- figure out how to fix Liquid Container... 
-			- for now maybe make max_weight = 0.5, Liquid => Item, water weight = 0.5 (???)
-
-
-		- TBD: Make liquid class Item so as to give it attribute bulk
-			- TBD: updated 'drink X' to 'drink X from Y' ?
-			- TBD: temp idea for bottle - just make capacity 0.5 and nothing else will fit in
-				- IDEA: full solution is to determine effect of liquid for each obj (evaporate, ruin, cool, etc)
-		- IDEA: Liquid handling:
-			- IDEA: basic terms
-				- IDEA: drink() [class Liquid method]; 'drink X from Y'
-				- IDEA: fill() [class HoldsLiquidMixIn]; 'fill X with Y', 'fill X from Y' (???)
-				- IDEA: pour() [class HoldsLiquidMixIn] ; 'pour X on / in Y', "Pour X from Y into Z"
-					- NOTE: requires is_item() & in_hand()
-			- IDEA: Advanced terms: mix(), stir(), shake()
-		- for Liquid: fill & pour
-		- additional water verbs needed: 'fill' and 'pour the <water> on the <noun>'
-			- Perhaps regular containers can't contain liquids?
-		- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)
-		- TBD: create LiquidContainerMixIn
-		- TBD: create Liquid
-		- PUZZLE: Under Water Puzzle:
-			- treasure at bottom of old well - but need a magical way to hold your breath?
-			- old_well as water source in entrance_hall and also passage to... where?
-			- can hold breath for 4 turns, locked grate is 2 moves down, get warning on half air and last turn
-				- TBD: create LiquidContainer class
-					- TBD: create new LiquidContainer class
-					- TBD: instantiate old_well in the main_hall which contains fresh water
-					- TBD: update drink() to allow / error for drinking from the old_well
-			- lantern is water proof
-			- should be like rope puzzle for Zork I... 
-				- you have everything you need in the remote room but can't get out without solving puzzle
-
-
-		- TBD: create Flask
-		- TBD: convert glass_bottle to Flask class
-		- IDEA: maybe now is the time to conver to Enchanter jug??
 	- TBD: create Seat class with attribute and setters & getters (including in_reach_lst)
 		- IDEA: finally deliberation over Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 		- TBD: Seat in_reach attribute that links to room obj
@@ -531,6 +476,54 @@ Version 3.78 Goals
 - Long Term Pondering:
 	- the whole 'hand' concept is looking increasingly dodgy... too much inventory mgmt...
 	- maybe time to bite the recursive bullet and just allow portable containers in portable containers?
+
+- Liquid handling
+	- INPROC: Research IF liquids
+		- DONE: Infocom
+			- Zork: Glass Bottle 
+				- has one 'quantity of water'
+				- bottle must be held to be drunk
+				- bottle must be openned to be drunk
+			- Enchanter: Jug
+				- has multiple quantities of water
+				- jug has no 'cap': "The jug has no cover. It can't be openned or closed."
+				- must be at least a little 'thirsty' to drink water
+			- Other uses (in Zork):
+				- Water can be poured on flame to put it out
+				- Water can be poured on the heated bell to cool it
+		- TBD: how does TADS do it??
+	- INPROC: Long-term Liquid plans
+		- Liquid class
+			- The primary liquid in the game will be water
+			- Main liquid verbs = drink(), pour(), fill()
+				- where 'Y' is a Liquid and 'X' and 'Z' are containers / bodies of water
+				- drink() : 'drink Y from X'
+					- Liquid method
+				- pour() : 'pour X from Y in / on Z'
+					- ContainerPortableSimple method
+				- fill() : 'fill X with Y from Z'
+					- ContainsMixIn method
+			- - IDEA: Advanced verbs: mix(), stir(), shake()	
+		- Non Liquid class properties related to liquids
+			- If water is poured in or on an object it has an effect:
+				- no special results (if the obj is a Container then it holds the water)
+				- Obj unimpacted but water 'evaporates'
+				- Obj is ruined / disolved / rendered illegible (e.g. paper note); water "evaporates"
+				- Heated obj is cooled (Zork example; future)
+				- Flame is extinquished (Zork example; future)
+				- note that these effects are properties of the objects - NOT the liquid class
+			- Implementation:
+				- for ViewOnly class and below, need an attribute: liquid_result
+					- defines what happens to the obj when it contacts liquid
+					- also defines what happens to the liquid when it contacts the obj
+		- Special case of immersion
+			- You should be able to swim in water and diver under water
+			- Breathing limits will apply
+			- This will mostly be independent of Liquids... 
+				- but anything with a 'ruin' liquid_result == 'ruin' should be destroyed by swimming
+
+
+
 
 - INPROC: review TADS3 terms for Description and preposition
 
@@ -991,6 +984,20 @@ Version 6.x Goals
 - Play at least 5 games
 - Read the Digital Antiquiarian reviews
 
+- PUZZLE: perhaps at some point Burt needs to bake biscuits??
+	- would involve finding and mixing ingredients, right order, starting fire, baking right time / temp
+
+- PUZZLE: Under Water Puzzle:
+	- treasure at bottom of old well - but need a magical way to hold your breath?
+	- old_well as water source in entrance_hall and also passage to... where?
+	- can hold breath for 4 turns, locked grate is 2 moves down, get warning on half air and last turn
+		- TBD: create LiquidContainer class
+			- TBD: create new LiquidContainer class
+			- TBD: instantiate old_well in the main_hall which contains fresh water
+			- TBD: update drink() to allow / error for drinking from the old_well
+	- lantern is water proof
+	- should be like rope puzzle for Zork I... 
+		- you have everything you need in the remote room but can't get out without solving puzzle
 
 *** DEBUG TOOLS ***
 - work room for testing similar to tcrf.net Hollywood Hijinx

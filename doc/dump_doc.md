@@ -161,3 +161,22 @@ Learning Links:
 			- maybe broad command constraint list as well (e.g. obj must always be in room.in_scope?)
 			- if fail validate() , buffer error and end app_main()
 
+Discarded Liquid Ideas:
+- TBD: Make liquid class Item so as to give it attribute bulk
+	- TBD: updated 'drink X' to 'drink X from Y' ?
+	- TBD: temp idea for bottle - just make capacity 0.5 and nothing else will fit in
+		- IDEA: full solution is to determine effect of liquid for each obj (evaporate, ruin, cool, etc)
+- IDEA: Liquid handling:
+	- IDEA: basic terms
+		- IDEA: drink() [class Liquid method]; 'drink X from Y'
+		- IDEA: fill() [class HoldsLiquidMixIn]; 'fill X with Y', 'fill X from Y' (???)
+		- IDEA: pour() [class HoldsLiquidMixIn] ; 'pour X on / in Y', "Pour X from Y into Z"
+			- NOTE: requires is_item() & in_hand()
+- for Liquid: fill & pour
+- additional water verbs needed: 'fill' and 'pour the <water> on the <noun>'
+	- Perhaps regular containers can't contain liquids?
+- IDEA: HoldsLiquidMixIn and HoldsCreatureMixIn (???)
+- TBD: create LiquidContainerMixIn
+- TBD: create Liquid
+- TBD: create Flask
+- TBD: convert glass_bottle to Flask class
