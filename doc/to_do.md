@@ -516,6 +516,11 @@ Version 3.78 Goals
 				- for ViewOnly class and below, need an attribute: liquid_result
 					- defines what happens to the obj when it contacts liquid
 					- also defines what happens to the liquid when it contacts the obj
+		- Special case of bodies of water
+			- does an object sink or flat?
+			- this can get complicated 
+				- maybe keep the Entrance 'well' to a shallow rainwater-fed pool
+				- test with Enchanter spring
 		- Special case of immersion
 			- You should be able to swim in water and diver under water
 			- Breathing limits will apply
