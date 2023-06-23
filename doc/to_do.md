@@ -347,18 +347,21 @@ Version 3.78 Goals
 		- DONE: put black_suitcase in Entrance
 		- DONE: test!
 
-	- TBD: short-term fix for Liquid Container
-		- TBD: liquid container
-			- TBD: maybe now is the time to convert glass bottle to Enchanter jug??
-			- TBD: jug to be of class ContainerPortableSimple
-			- TBD: for now maybe make earthen_jug.max_weight = 0.5
-			- TBD: test!
+	- INPROC: short-term fix for LiquidContainer
+		- DONE: liquid container
+			- DECISION: maybe now is the time to convert glass bottle to Enchanter jug??
+			- DONE: earthen_jug to be of class ContainerPortableSimple
+			- DONE: make earthen_jug.max_weight = 0.5, max_obj = 5
+			- DONE: add to burt inventory
+			- DONE: add to mk_def_pkl() master obj list
+			- DONE: add description
+			- DONE: test!
 		- TBD: Liquid class
-			- TBD: convert Liquid class to inherit from Item
+			- TBD: create Liquid class that inherits from Item
 			- TBD: update drink method to 'drink X' to 'drink X from Y' (with guess if bottle in hand)
 			- TBD: set water.weight = 0.5
 			- TBD: test !
-
+			- TBD: retire PortableLiquidContainer class imports and misc_class_deff.py module
 
 	- TBD: create Seat class with attribute and setters & getters (including in_reach_lst)
 		- IDEA: finally deliberation over Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??

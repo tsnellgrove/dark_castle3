@@ -83,6 +83,7 @@ descript_dict = {
 		'wooden_shelf' : "The Wooden Shelf looks sturdy and reliable - like it would be a good, safe place to store your stuff.",
 
 		### PortableLiquidContainer objects ###
+		'earthen_jug' : "A battered Earthen Jug. According to your Nana, it once belonged to a shifty wizardy fellow who showed up in town and started prying into everyone's cupboards and asking folks if they'd seen any 'loose scrolls'. Nana ran him off with a bread paddle and he scampered so fast he dropped his water jug.", #  For ages it gave off a faint glow and your mum wouldn't have it in the house. You snagged it from the shed for this little adventure. Alas, it no longer appears to glow.
 		'glass_bottle' : "A clear glass bottle suitable for carrying a liquid. Alas, if only it was filled with ale...",
 		
 		### door objects ###

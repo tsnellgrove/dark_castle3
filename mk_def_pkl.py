@@ -84,6 +84,7 @@ cardboard_box = ContainerFixedLidded('cardboard_box', 'Cardboard Box', 'box', 'c
 crystal_box = ContainerFixedLockable('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy, ['kinging_scroll_temp'], 1, 999, 'in', False, False, silver_key)
 
 small_barrel = ContainerPortableSimple('small_barrel', 'Small Barrel', 'barrel', 'small_barrel', None, 2, [], 5, 999, 'in')
+earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'earthen_jug', None, 1, [], 0.5, 5, 'in')
 red_shoebox = ContainerPortableLidded('red_shoebox', 'Red Shoebox', 'shoebox', 'red_shoebox', None, 1, [], 3, 999, 'in', False)
 black_suitcase = ContainerPortableLockable('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None, 3, [], 7, 999, 'in', False, False, rusty_key)
 
@@ -225,7 +226,7 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 				})
 
 burt = Creature('burt', 'Burt', 'burt', 'burt', None,
-				None, [], [rusty_key, cheese_wedge, stale_biscuits], [], [fist, backpack, conscience, brass_lantern],
+				None, [], [rusty_key, cheese_wedge, stale_biscuits, earthen_jug], [], [fist, backpack, conscience, brass_lantern],
 				[hedgehog_eats_timer],
 				{},
 				True,
@@ -315,7 +316,7 @@ active_gs = GameState(
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible objects need not be listed ###
 master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, fresh_water, royal_crown, baseball_cap, hedgehog_broach, crystal_box, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, guard_goblin, entrance, main_hall, antechamber, throne_room, loyalty,
-officiousness, gold_capitals, red_bandana, big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase] # note: big_bomb & test_frog removed; glass_bottle removed
+officiousness, gold_capitals, red_bandana, big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, earthen_jug] # note: big_bomb & test_frog removed; glass_bottle removed
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:
