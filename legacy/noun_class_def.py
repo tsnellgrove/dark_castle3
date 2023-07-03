@@ -8,7 +8,7 @@
 import random
 from static_gbl import descript_dict, static_dict
 from base_class_def import Invisible, Writing, ViewOnly
-from misc_class_def import Liquid
+from legacy.misc_class_def import Liquid
 from room_class_def import Room
 from item_class_def import Item, Food, Clothes, Weapon
 from door_class_def import Door, Container, PortableContainer, PortableLiquidContainer

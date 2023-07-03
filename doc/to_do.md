@@ -356,14 +356,14 @@ Version 3.78 Goals
 			- DONE: add to mk_def_pkl() master obj list
 			- DONE: add description
 			- DONE: test!
-		- INPROC: convert Liquid class to inherit from Item
+		- DONE: convert Liquid class to inherit from Item
 			- DONE: create Liquid class that inherits from Item
 			- DONE: create drink() method
 			- DONE: import new Liquid into mk_def_pkl
 			- DONE: convert obj fresh_water to new Liquid; set fresh_water.weight = 0.5
 			- DONE: add fresh_water to earthen_jug
 			- DONE: test !
-			- TBD: archive misc_class_deff.py module
+			- DONE: misc_class_deff.py module moved to /legacy
 		- TBD: convert drink() to a prep verb
 			- TBD: update drink method to 'drink X' to 'drink X from Y' (with guess if bottle in hand)
 			- TBD: test !
