@@ -356,13 +356,17 @@ Version 3.78 Goals
 			- DONE: add to mk_def_pkl() master obj list
 			- DONE: add description
 			- DONE: test!
-		- TBD: Liquid class
-			- TBD: create Liquid class that inherits from Item
+		- INPROC: convert Liquid class to inherit from Item
+			- DONE: create Liquid class that inherits from Item
+			- DONE: create drink() method
+			- DONE: import new Liquid into mk_def_pkl
+			- DONE: convert obj fresh_water to new Liquid; set fresh_water.weight = 0.5
+			- DONE: add fresh_water to earthen_jug
+			- DONE: test !
+			- TBD: archive misc_class_deff.py module
+		- TBD: convert drink() to a prep verb
 			- TBD: update drink method to 'drink X' to 'drink X from Y' (with guess if bottle in hand)
-			- TBD: set water.weight = 0.5
 			- TBD: test !
-			- TBD: retire PortableLiquidContainer class imports and misc_class_deff.py module
-
 	- TBD: create Seat class with attribute and setters & getters (including in_reach_lst)
 		- IDEA: finally deliberation over Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 		- TBD: Seat in_reach attribute that links to room obj

@@ -9,7 +9,7 @@ import pickle
 from invisible_class_def import Invisible
 from base_class_def import Writing, ViewOnly
 from room_class_def import Room
-from item_class_def import Item, Food, Garment, Weapon
+from item_class_def import Item, Food, Liquid, Garment, Weapon
 from door_class_def import Seat
 ## from door_class_def import Door, Container, Surface
 ## from door_class_def import PortableContainer, PortableLiquidContainer
@@ -17,7 +17,7 @@ from interactive_class_def import DoorSimple, DoorLockable
 from interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable
 from interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
-from misc_class_def import Liquid
+## from misc_class_def import Liquid
 from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
 				SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
 				StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond, InRoomCond, InWorldStateCond)
@@ -66,7 +66,7 @@ random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random
 cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 1)
 stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 3)
 
-fresh_water = Liquid('fresh_water', 'Fresh Water', 'water', 'fresh_water', None)
+fresh_water = Liquid('fresh_water', 'Fresh Water', 'water', 'fresh_water', None, 0.5)
 
 royal_crown = Garment('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 5, 'hat')
 baseball_cap = Garment('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, 5, 'hat')
@@ -84,7 +84,7 @@ cardboard_box = ContainerFixedLidded('cardboard_box', 'Cardboard Box', 'box', 'c
 crystal_box = ContainerFixedLockable('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy, ['kinging_scroll_temp'], 1, 999, 'in', False, False, silver_key)
 
 small_barrel = ContainerPortableSimple('small_barrel', 'Small Barrel', 'barrel', 'small_barrel', None, 2, [], 5, 999, 'in')
-earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'earthen_jug', None, 1, [], 0.5, 5, 'in')
+earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'earthen_jug', None, 1, [fresh_water], 0.5, 5, 'in')
 red_shoebox = ContainerPortableLidded('red_shoebox', 'Red Shoebox', 'shoebox', 'red_shoebox', None, 1, [], 3, 999, 'in', False)
 black_suitcase = ContainerPortableLockable('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None, 3, [], 7, 999, 'in', False, False, rusty_key)
 

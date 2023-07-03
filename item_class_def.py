@@ -97,6 +97,31 @@ class Food(Item):
 		return 
 
 
+class Liquid(Item):
+	def __init__(self, name, full_name, root_name, descript_key, writing, weight):
+		super().__init__(name, full_name, root_name, descript_key, writing, weight)
+		""" Liquids are ViewOnly objects. You cannot take a Liquid but you can drink() it from a Container.
+		"""
+
+	# *** class identity methods ***
+	def is_liquid(self):
+		return True
+	
+	# *** verb methods ***
+	def drink(self, active_gs, mode=None):
+		""" Consumes a liquid if it is in a Container that Burt is holding in his hand.
+		"""
+		if mode is None:
+			mode = 'std'
+		creature = active_gs.hero
+
+		creature.get_hand_item().contain_lst.remove(self)
+
+		active_gs.buffer("Drunk.")
+		active_gs.buff_try_key(f"{creature.name}_drink_{self.name}")
+		return 
+
+
 class Garment(Item):
 	def __init__(self, name, full_name, root_name, descript_key, writing, weight, garment_type):
 		super().__init__(name, full_name, root_name, descript_key, writing, weight)
@@ -144,6 +169,9 @@ class Weapon(Item):
 	# *** class identity methods ***
 	def is_weapon(self):
 		return True
+
+
+
 
 
 """ *** Module Documentation ***
