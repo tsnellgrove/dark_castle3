@@ -512,6 +512,7 @@ Version 3.78 Goals
 	- INPROC: Long-term Liquid plans
 		- Liquid class
 			- The primary liquid in the game will be water
+			- An important point of awareness is that 'water' (unlike all other nouns) cannot be guaranteed to be unique
 			- Main liquid verbs = drink(), pour(), fill()
 				- where 'Y' is a Liquid and 'X' and 'Z' are containers / bodies of water
 				- drink() : 'drink Y from X'
