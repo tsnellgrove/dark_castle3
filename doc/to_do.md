@@ -364,9 +364,18 @@ Version 3.78 Goals
 			- DONE: add fresh_water to earthen_jug
 			- DONE: test !
 			- DONE: misc_class_deff.py module moved to /legacy
-		- TBD: convert drink() to a prep verb
-			- TBD: update drink method to 'drink X' to 'drink X from Y' (with guess if bottle in hand)
-			- TBD: test !
+		- INPROC: update drink method to prep verb: 'drink X' to 'drink X from Y' (guess if bottle in hand)
+			- DONE: add obj attribute to drink() method
+			- DONE: ref obj attribute in drink() remove command
+			- DONE: add drink to interp() prep verbs with prep = 'from'; guess on creature hand
+			- DONE: add obj to drink_err() attributes and add errors for non-container obj or no liquid
+			- DONE: test!
+			- DONE: custom 'moat' error for drink()
+			- DONE: move drink_err() to prep section
+			- DONE: fresh_water => well_water (update all refs in mk_def_pkl)
+			- DONE: updated help() info for 'prepositions'
+			- DONE: test!
+			- TBD: clean up comments in interp(), invisible(), item()
 	- TBD: create Seat class with attribute and setters & getters (including in_reach_lst)
 		- IDEA: finally deliberation over Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 		- TBD: Seat in_reach attribute that links to room obj

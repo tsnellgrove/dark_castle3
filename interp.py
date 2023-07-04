@@ -37,10 +37,10 @@ abbreviations_dict = {
 
 help_dict = {
 	'help' : "Help syntax = 'help <option>'. Help options = 'basics', 'abbreviations', 'adjectives', 'articles', 'attack', 'creatures', 'debug', 'one-word-commands', prepositions', 'read', or 'verbs'.",
-	'help_basics' : "Objects you can examine and interact with are capitalized. Use 'read' (not 'examine') to read text you find written on objects. You can 'take' one object that you can see into your hand at a time from the room, a container, your backpack, or from being worn. Your other hand is holding your light source. In many cases you must be holding an object in your hand in order to act uppon it (e.g. 'unlock', drop', 'eat', 'put', 'wear'). If you are already holding an item when you take something else, the original item you were holding is automatically transferred into your backpack. You can view what you're carying using 'inventory'. Use 'look' to get a description of the room you're in. Type 'quit' to quit.  Start all multi-word commands with a verb.",
+	'help_basics' : "Objects you can examine and interact with are capitalized. Use 'read' (not 'examine') to read text you find written on objects. You can 'take' one object that you can see into your hand at a time from the room, a container, your backpack, or from being worn. Your other hand is holding your light source. In many cases you must be holding an object in your hand in order to act uppon it (e.g. 'unlock', drop', 'eat', 'put', 'wear', 'drink'). If you are already holding an item when you take something else, the original item you were holding is automatically transferred into your backpack. You can view what you're carying using 'inventory'. Use 'look' to get a description of the room you're in. Type 'quit' to quit.  Start all multi-word commands with a verb.",
 	'help_creatures' : "Despite its age and state of disrepair, Dark Castle contains a number of creatures. Some are helpful, some are not. There are three main commands for interacting with creatures: 'show', 'give', and 'attack'. Showing an item to a creature may give you information about its opinion of that item. Giving an item to a creature may generate a useful response - particularly if it's an object that the creature has an opinion about. Alas, not all encounters can be resolved amicably - and for these cases there is the 'attack' command. Not surprisingly, this can generate a very hostile response (see 'help attack' for more info). Lastly, be aware that each creature has its own priorities and point of view and will respond to Burt's actions accordingly.",
 	'help_adjectives' : "Most nouns have an adjective (e.g. 'rusty key'). The interpreter recognizes adjectives but only requires them if other similar nouns are in the room. So 'take rusty key' and 'take key' are equivalent unless there is another key in the room.",
-	'help_prepositions' : "There are four available prepositions: 'in', 'on', 'with', and 'to'. 'in' and 'on' are used with the verb 'put'. This allows you to put items in containers or 'on' surfaces. Example: 'put the rusty key in the wooden chest' or 'put the cheese wedge on the shelf'. 'with' is used to indicate an object to use when performing an action. Example: 'unlock the crystal door with the platinum key'. If you use a verb that is typically performmed with an object (e.g. 'lock', 'unlock', or 'attack') - but omit the the 'with' clause - Dark Castle will assume that you want to perform the command with the object in your hand. 'to' is used with the verbs 'show' and 'give'. This allows you to specify which creature you want to show or give items to. Examples: 'show the rusty key to the goblin' or 'give the rusty key to the hedgehog'.",
+	'help_prepositions' : "There are several available prepositions including: 'in', 'on', 'with', 'to' and 'from'. 'in' and 'on' are used with the verb 'put'. This allows you to put items in containers or 'on' surfaces. Example: 'put the rusty key in the wooden chest' or 'put the cheese wedge on the shelf'. 'with' is used to indicate an object to use when performing an action. Example: 'unlock the crystal door with the platinum key'. If you use a verb that is typically performmed with an object (e.g. 'lock', 'unlock', or 'attack') - but omit the the 'with' clause - Dark Castle will assume that you want to perform the command with the object in your hand. 'to' is used with the verbs 'show' and 'give'. This allows you to specify which creature you want to show or give items to. Examples: 'show the rusty key to the goblin' or 'give the rusty key to the hedgehog'. 'from' is used with the verb 'drink'. Examples: 'drink water from cup'.",
 	'help_read' :  "If you can't 'read' something (e.g. a note or a scroll) try 'examine' instead. The item may have some readable text written on it that you'll learn more about via 'examine'.",
 	'help_attack' : "There are various creatures that reside in Dark Castle. Some are friendly but some may not be. Burt can 'attack' a creature using whatever weapon he is holding in his hand. If the creature is hostile and Burt is wielding the correct weapon he may be able to slay it. However there are risks to attacking as well. If the creature is friendly, an 'attack' may scare it away and Burt may lose a valuble ally. And if the creature is hostile but Burt is wielding the wrong weapon, Burt himself may perish. As in real life, combat in Dark Castle is frought!",
 	'help_debug_error' : "The first rule of debug mode is that we don't talk about debug mode.",
@@ -215,7 +215,7 @@ def interpreter(user_input, master_obj_lst):
 		if word1 not in full_verbs_lst:
 				return 'error', ["Please start your sentence with a known verb!"]
 
-		# handle 2-word commands (special cases first else general case)
+		# handle prep verb commands (special cases first else general case)
 		if word1 == 'help':
 				word2 = user_input_lst[1]
 				help(active_gs, word2)
@@ -223,7 +223,8 @@ def interpreter(user_input, master_obj_lst):
 		elif word1 == 'go':
 				word2 = user_input_lst[1]
 				return 'go', [room_obj, word1, word2]
-		elif word1 in ['put', 'show', 'give', 'attack', 'lock', 'unlock']:
+#		elif word1 in ['put', 'show', 'give', 'attack', 'lock', 'unlock']:
+		elif word1 in ['put', 'show', 'give', 'attack', 'lock', 'unlock', 'drink']:
 				if word1 in ['put']:
 						if 'in' in user_input_lst:
 								prep = 'in'
@@ -231,7 +232,7 @@ def interpreter(user_input, master_obj_lst):
 								prep = 'on'
 						else:
 								prep = 'in or on'
-				if word1 in ['show', 'give']:
+				elif word1 in ['show', 'give']:
 						prep = 'to'
 				elif word1 in ['attack', 'lock', 'unlock']:
 						creature = active_gs.hero
@@ -239,6 +240,12 @@ def interpreter(user_input, master_obj_lst):
 								user_input_lst.extend(['with',creature.get_hand_item().name])
 								active_gs.buffer(f"(with the {creature.get_hand_item().full_name})")
 						prep = 'with'
+				elif word1 in ['drink']:
+						creature = active_gs.hero
+						if len(user_input_lst) < 4 and 'from' not in user_input and not creature.hand_is_empty():
+								user_input_lst.extend(['from',creature.get_hand_item().name])
+								active_gs.buffer(f"(from the {creature.get_hand_item().full_name})")
+						prep = 'from'
 				if prep not in user_input_lst:
 						error_msg = f"I don't see the word '{prep}' in that sentence."
 						return 'error', [error_msg]
@@ -258,7 +265,7 @@ def interpreter(user_input, master_obj_lst):
 						if dirobj_obj.can_contain_temp() and word1 == 'put' and prep != dirobj_obj.prep:
 								error_msg = f"I don't see the word '{dirobj_obj.prep}' in that sentence."
 								return 'error', [error_msg]
-						elif word1 in ['attack', 'lock', 'unlock']:
+						elif word1 in ['attack', 'lock', 'unlock', 'drink']:
 								return 'prep', [noun_obj, word1, dirobj_obj]
 						else:
 								return 'prep', [dirobj_obj, word1, noun_obj]

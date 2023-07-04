@@ -68,7 +68,7 @@ descript_dict = {
 		'stale_biscuits' : "The Stale Biscuits are rather unappetizing. There is a Trademark baked into the biscuits.",
 
 		### liquid objects ###
-		'fresh_water' : "After your trudge up the hill to Dark Castle the Fresh Water looks invitingly refreshing.",
+		'well_water' : "After your trudge up the hill to Dark Castle the Well Water looks invitingly refreshing.",
 
 		### clothes objects ###
 		'royal_crown' : "Giant rubies: check. Dozens of glittering jewels: check. Gleaming gold and precious metals: check. Yep, this is a *seriously royal* crown you've got here Burt!",

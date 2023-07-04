@@ -315,23 +315,6 @@ class Invisible(object):
 			return True
 		return False
 
-	def drink_err(self, active_gs):
-		creature = active_gs.hero
-		if self.err_std(creature, active_gs):
-			return True
-		if not self.is_liquid():
-			active_gs.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")
-			return True
-		if not creature.hand_is_empty():
-			hand_item = creature.get_hand_item()
-		if (creature.hand_is_empty()) or (hand_item.is_container() == False):
-			active_gs.buffer(f"You don't seem to be holding a container of {self.full_name} in your hand.")
-			return True
-		if self not in hand_item.contain_lst:
-			active_gs.buffer(f"The container in your hand doesn't contain {self.full_name}.")
-			return True
-		return False
-
 	def push_err(self, active_gs):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
@@ -426,6 +409,35 @@ class Invisible(object):
 		return False
 
 	# *** prep errors ***
+	def drink_err(self, obj, active_gs):
+		creature = active_gs.hero
+		if self.err_std(creature, active_gs):
+			return True
+		if not self.is_liquid():
+			active_gs.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")
+			return True
+		if obj.name in ['moat']:
+			active_gs.buffer(f"The very thought of drinking from the fetid {obj.full_name} makes you gag.")
+			return True
+		if not obj.is_container():
+			active_gs.buffer(f"How could you possibly drink {self.full_name} from a {obj.full_name}?")
+			return True
+		if creature.hand_is_empty() or creature.get_hand_item() != obj:
+			active_gs.buffer(f"You need to be holding the {obj.full_name} to drink from it.")
+			return True
+		if self not in obj.contain_lst:
+			active_gs.buffer(f"The {obj.full_name} doesn't contain {self.full_name}.")
+			return True
+#		if not creature.hand_is_empty():
+#			hand_item = creature.get_hand_item()
+#		if (creature.hand_is_empty()) or (hand_item.is_container() == False):
+#			active_gs.buffer(f"You don't seem to be holding a container of {self.full_name} in your hand.")
+#			return True
+#		if self not in hand_item.contain_lst:
+#			active_gs.buffer(f"The container in your hand doesn't contain {self.full_name}.")
+#			return True
+		return False
+
 	def lock_err(self, key_obj, active_gs):
 		creature = active_gs.hero
 		if self.err_prep_std(key_obj, creature, active_gs):
