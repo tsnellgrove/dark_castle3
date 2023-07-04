@@ -428,14 +428,6 @@ class Invisible(object):
 		if self not in obj.contain_lst:
 			active_gs.buffer(f"The {obj.full_name} doesn't contain {self.full_name}.")
 			return True
-#		if not creature.hand_is_empty():
-#			hand_item = creature.get_hand_item()
-#		if (creature.hand_is_empty()) or (hand_item.is_container() == False):
-#			active_gs.buffer(f"You don't seem to be holding a container of {self.full_name} in your hand.")
-#			return True
-#		if self not in hand_item.contain_lst:
-#			active_gs.buffer(f"The container in your hand doesn't contain {self.full_name}.")
-#			return True
 		return False
 
 	def lock_err(self, key_obj, active_gs):

@@ -108,7 +108,6 @@ class Liquid(Item):
 		return True
 	
 	# *** verb methods ***
-#	def drink(self, active_gs, mode=None):
 	def drink(self, obj, active_gs, mode=None):
 		""" Consumes a liquid if it is in a Container that Burt is holding in his hand.
 		"""
@@ -116,7 +115,6 @@ class Liquid(Item):
 			mode = 'std'
 		creature = active_gs.hero
 
-#		creature.get_hand_item().contain_lst.remove(self)
 		obj.contain_lst.remove(self)
 
 		active_gs.buffer("Drunk.")

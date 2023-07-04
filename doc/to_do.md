@@ -347,7 +347,7 @@ Version 3.78 Goals
 		- DONE: put black_suitcase in Entrance
 		- DONE: test!
 
-	- INPROC: short-term fix for LiquidContainer
+	- DONE: short-term fix for LiquidContainer
 		- DONE: liquid container
 			- DECISION: maybe now is the time to convert glass bottle to Enchanter jug??
 			- DONE: earthen_jug to be of class ContainerPortableSimple
@@ -364,7 +364,7 @@ Version 3.78 Goals
 			- DONE: add fresh_water to earthen_jug
 			- DONE: test !
 			- DONE: misc_class_deff.py module moved to /legacy
-		- INPROC: update drink method to prep verb: 'drink X' to 'drink X from Y' (guess if bottle in hand)
+		- DONE: update drink method to prep verb: 'drink X' to 'drink X from Y' (guess if bottle in hand)
 			- DONE: add obj attribute to drink() method
 			- DONE: ref obj attribute in drink() remove command
 			- DONE: add drink to interp() prep verbs with prep = 'from'; guess on creature hand
@@ -375,7 +375,8 @@ Version 3.78 Goals
 			- DONE: fresh_water => well_water (update all refs in mk_def_pkl)
 			- DONE: updated help() info for 'prepositions'
 			- DONE: test!
-			- TBD: clean up comments in interp(), invisible(), item()
+			- DONE: clean up comments in interp(), invisible(), item()
+
 	- TBD: create Seat class with attribute and setters & getters (including in_reach_lst)
 		- IDEA: finally deliberation over Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 		- TBD: Seat in_reach attribute that links to room obj
