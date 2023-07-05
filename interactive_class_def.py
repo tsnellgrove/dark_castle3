@@ -287,6 +287,71 @@ class ContainerFixedSimple(ContainsMixIn, ViewOnly):
 		""" A simple non-takable container with no lid or lock. Can be a box or a shelf depending on 'prep'
 		"""
 
+class Seat(ContainsMixIn, ViewOnly):
+	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep):
+		ContainerFixedSimple.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep)
+		""" A seat on which a Creature can sit.
+		"""
+
+	# *** class identity methods ***
+	def is_seat(self):
+		return True
+
+	# *** scope methods ***
+	def chk_content_prohibited(self, obj):
+		return False
+
+	# *** verb methods ***
+	def enter(self, active_gs, mode=None, creature=None):
+		""" Sits a creature in a Seat
+		"""
+		# destermine default attributes
+		if mode is None:
+			mode = 'std'
+		if creature is None:
+			creature = active_gs.hero
+
+		room = active_gs.map.get_obj_room(creature)
+		room.floor_lst_remove(creature)
+		self.contain_lst_append(creature)
+
+		# if hero_creature not in current room, exit with no display
+		if room != active_gs.get_room():
+			return 
+		
+		if creature == active_gs.hero:
+			active_gs.buffer(f"You are now seated in the {self.full_name}.")
+			active_gs.buff_try_key(f"{creature.name}_enter_{self.name}")
+		else:
+			active_gs.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
+		return
+
+
+	def exit(self, active_gs, mode=None, creature=None):
+		""" Sits a creature in a Seat
+		"""
+		# destermine default attributes
+		if mode is None:
+			mode = 'std'
+		if creature is None:
+			creature = active_gs.hero
+
+		room = active_gs.map.get_obj_room(creature)
+		room.floor_lst_append(creature)
+		self.contain_lst_remove(creature)
+
+		# if hero_creature not in current room, exit with no display
+		if room != active_gs.get_room():
+			return 
+		
+		if creature == active_gs.hero:
+			active_gs.buffer(f"You are now standing in the {room.full_name}.")
+			active_gs.buff_try_key(f"{creature.name}_exit_{self.name}")
+		else:
+			active_gs.buffer(f"The {creature.full_name} is now standing in the {room.full_name}.")
+		return
+
+
 class ContainerFixedLidded(ContainsMixIn, OpenableMixIn, ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, is_open):
 		ContainerFixedSimple.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep)

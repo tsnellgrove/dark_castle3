@@ -377,7 +377,15 @@ Version 3.78 Goals
 			- DONE: test!
 			- DONE: clean up comments in interp(), invisible(), item()
 
-	- TBD: create Seat class with attribute and setters & getters (including in_reach_lst)
+	- DONE: create parity Seat class in Interactive module
+		- DONE: create class Seat which inherits from ContainerFixedSimple
+		- DONE: chk_content_prohibited() returns False (i.e. Creature class allowed)
+		- DONE: add in enter() and exit() methods from door
+		- DONE: convert test_chair to Interactive.Seat class
+		- DONE: test!
+
+	- Additional to-dos
+		- TBD: with attribute and setters & getters (including in_reach_lst)
 		- IDEA: finally deliberation over Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 		- TBD: Seat in_reach attribute that links to room obj
 		- TBD: can access in_reach if also in room; enable general ref of container / surface

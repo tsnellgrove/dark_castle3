@@ -359,7 +359,7 @@ class Invisible(object):
 		if not self.is_seat():
 			active_gs.buffer(f"You can't use the 'enter' command on the {self.full_name}.")
 			return True
-		if self.is_surface() and len(self.contain_lst) >= self.max_obj:
+		if self.is_seat() and len(self.contain_lst) >= self.max_obj:
 			active_gs.buffer(f"There's no room on the {self.full_name} to sit.")
 			return True
 		return False

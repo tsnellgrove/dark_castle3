@@ -10,11 +10,11 @@ from invisible_class_def import Invisible
 from base_class_def import Writing, ViewOnly
 from room_class_def import Room
 from item_class_def import Item, Food, Liquid, Garment, Weapon
-from door_class_def import Seat
+## from door_class_def import Seat
 ## from door_class_def import Door, Container, Surface
 ## from door_class_def import PortableContainer, PortableLiquidContainer
 from interactive_class_def import DoorSimple, DoorLockable
-from interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable
+from interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
 from interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
 ## from misc_class_def import Liquid
@@ -92,8 +92,9 @@ black_suitcase = ContainerPortableLockable('black_suitcase', 'Black Suitcase', '
 ## black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', small_printing, False, False, rusty_key, [])
 ## glass_bottle = PortableLiquidContainer('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', None, None, None, None, [fresh_water])
 
-test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None,
-				None, None, None, [], 1)
+# test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, None, None, None, [], 1)
+
+test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 999, 1, 'on')
 
 front_gate = DoorLockable('front_gate', 'Front Gate', "gate", 'front_gate', rusty_lettering, False, False, rusty_key)
 iron_portcullis = DoorLockable('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, False, False, None)
