@@ -287,7 +287,7 @@ class ContainerFixedSimple(ContainsMixIn, ViewOnly):
 		""" A simple non-takable container with no lid or lock. Can be a box or a shelf depending on 'prep'
 		"""
 
-class Seat(ContainsMixIn, ViewOnly):
+class Seat(ContainerFixedSimple):
 	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep):
 		ContainerFixedSimple.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep)
 		""" A seat on which a Creature can sit.

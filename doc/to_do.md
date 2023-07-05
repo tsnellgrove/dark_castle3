@@ -416,6 +416,9 @@ Version 3.78 Goals
 	- TBD: New interactive classes (see above)
 	- TBD: clean-up from old Door class
 		- is_door(), is_container(), is_surface() and etc
+		- door doc_strings => interactive()
+		- door() module to legacy folder
+		- ensure that no room descriptions indicate 'standing' in room (since you could be sitting)
 
 - CANCEL: Given that creatures will be contained:
 	- need to embrace a node-based awareness of creature location
