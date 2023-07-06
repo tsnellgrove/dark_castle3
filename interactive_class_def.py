@@ -299,7 +299,7 @@ class Seat(ContainerFixedSimple):
 
 	# *** scope methods ***
 	def chk_content_prohibited(self, obj):
-		return False
+		return obj.is_seat()
 
 	# *** verb methods ***
 	def enter(self, active_gs, mode=None, creature=None):

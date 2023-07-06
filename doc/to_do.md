@@ -377,23 +377,41 @@ Version 3.78 Goals
 			- DONE: test!
 			- DONE: clean up comments in interp(), invisible(), item()
 
-	- DONE: create parity Seat class in Interactive module
-		- DONE: create class Seat which inherits from ContainerFixedSimple
-		- DONE: chk_content_prohibited() returns False (i.e. Creature class allowed)
-		- DONE: add in enter() and exit() methods from door
-		- DONE: convert test_chair to Interactive.Seat class
-		- DONE: test!
+	- INPROC: Seat class
+		- DONE: create parity Seat class in Interactive module
+			- DONE: create class Seat which inherits from ContainerFixedSimple
+			- DONE: chk_content_prohibited() returns obj.is_seat() (i.e. Creature class allowed)
+			- DONE: add in enter() and exit() methods from door
+			- DONE: convert test_chair to Interactive.Seat class
+			- DONE: test!
+		- DONE: define in_reach behavior
+			- IDEA: in_reach enables a seated creature to access receptical contents as if standing
+				- IDEA: the idea is that the surface / container / floor is close to the Seat
+					- IDEA: this becomes important as the Seat will be the basis for Vehical...
+					- IDEA: and many vehical puzzles hinge on a moving vehical passing close to a takable obj
+					- IDEA: e.g. the buoy in the river in Zork
+				- IDEA: in_reach_lst is a list of recepticles which creature in Seat can access contents
+					- IDEA: however, the creature in the Seat cannot access the recepticle itself
+					- IDEA: if in_reach_lst includes room_name then floor_lst is accessible
+				- IDEA: there needs to be a description update when seated to let player know about access
+		- TBD: in_reach_lst attribute
+			- TBD: create Seat in_reach_lst attribute and update test_chair obj w/ wooden_shelf in_reach
+			- TBD: create Creature methods for is_obj_in_reach() and is_wrt_in_reach()
+			- TBD: update invisible() std_err to use new in_reach() methods
+			- TBD: test!
+			- TBD: expand is_obj_in_reach() and is_wrt_in_reach() to include Seat in_reach_lst attribute
+				- TBD: for is_container() => contain_lst
+				- TBD: for is_room() => floor_lst
+			- TBD: test!
+			- TBD: add a condition to enable player to know what is in reach when seated
+				- NOTE: tricky since in_reach is linked to creature but conidtion is linked to recepticle
+				- TBD: condition for containers
+				- TBD: condition for room floor
 
-	- Additional to-dos
-		- TBD: with attribute and setters & getters (including in_reach_lst)
-		- IDEA: finally deliberation over Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
-		- TBD: Seat in_reach attribute that links to room obj
-		- TBD: can access in_reach if also in room; enable general ref of container / surface
-		- Do need to set some limits though... maybe Perch obj can't contain Perch obj?
-		- For throne, crystal_box is in_reach? Update room / throne text to indicate this?
-		- TBD: autogen text based on Seat obj.descript
-			- TBD: update other autogen text to key off descript?
-			- TBD: includes take() for unwear and drink()
+	- TBD: autogen text based on Seat obj.descript
+		- TBD: update other autogen text to key off descript?
+		- TBD: includes take() for unwear and drink()
+
 	- TBD: clean-up
 		- TBD: clean-up comments
 		- TBD: clean-up is_door(), is_surface(), can_contain_temp(), etc
@@ -430,6 +448,7 @@ Version 3.78 Goals
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
 	- CANCEL: switch creature.stand() => creature.exit()
 	- TBD: Throne
+		- TBD: For throne, crystal_box is in_reach? Update room / throne text to indicate this?
 		- TBD: instantiate throne as obj of class SeatMach
 		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
 		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
@@ -477,6 +496,7 @@ Version 3.78 Goals
 	- TBD: doc_string re: weight only vs. weight + volume (encumberance)
 	- TBD: doc_string re: best practices - max_obj for surfaces vs. max_wight for containers
 	- TBD: doc_string re: nook gets light from room
+	- TBD: doc_string re: Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 
 - TBD: "what would your mothter say" error to "What would your Nana say?"
 
