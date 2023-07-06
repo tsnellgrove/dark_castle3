@@ -405,8 +405,9 @@ Version 3.78 Goals
 			- TBD: test!
 			- TBD: add a condition to enable player to know what is in reach when seated
 				- NOTE: tricky since in_reach is linked to creature but conidtion is linked to recepticle
-				- TBD: condition for containers
-				- TBD: condition for room floor
+					- TBD: condition for containers
+					- TBD: condition for room floor
+				- IDEA: alt => in_reach as examine condition for room if creature.is_contained (like title)
 
 	- TBD: autogen text based on Seat obj.descript
 		- TBD: update other autogen text to key off descript?
