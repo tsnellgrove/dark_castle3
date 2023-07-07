@@ -396,15 +396,15 @@ Version 3.78 Goals
 				- IDEA: there needs to be a description update when seated to let player know about access
 		- INPROC: in_reach_lst attribute
 			- DONE: create Seat in_reach_lst attribute and update test_chair obj w/ wooden_shelf in_reach
-			- INPROC: create Creature methods for is_obj_in_reach() and is_wrt_in_reach()
-				- DONE: is_obj_in_reach()
-				- TBD: is_wrt_in_reach()
-			- INPROC: update invisible() std_err to use new in_reach() methods
-				- DONE: is_obj_in_reach()
-				- TBD: is_wrt_in_reach()
-			- INPROC: test!
-				- DONE: is_obj_in_reach()
-				- TBD: is_wrt_in_reach()
+			- DONE: chk_obj_in_reach()
+				- DONE: Creature method
+				- DONE: update invisible() std_err to use new in_reach() method
+				- DONE: test!
+			- DONE: chk_wrt_in_reach()
+				- DONE: Creature method
+				- DONE: update invisible() std_err to use new in_reach() method
+				- DONE: test!
+			- TBD: clean up comments
 			- TBD: expand is_obj_in_reach() and is_wrt_in_reach() to include Seat in_reach_lst attribute
 				- TBD: for is_container() => contain_lst
 				- TBD: for is_room() => floor_lst
