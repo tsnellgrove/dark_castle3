@@ -189,6 +189,14 @@ class Creature(ViewOnly):
 					return obj
 		raise ValueError(f"{obj.full_name} not found.")
 
+	def is_obj_in_reach(self, obj, active_gs):
+#		if not self.is_contained(active_gs):
+#			return False
+		seat_item_lst = self.get_contained_by(active_gs).get_vis_contain_lst(active_gs)
+		room = active_gs.map.get_obj_room(self)
+		return obj in seat_item_lst + [room]
+#		return self.is_contained(active_gs) and obj not in (self.get_contained_by(active_gs).get_vis_contain_lst(active_gs) + [room])
+
 	# *** display methods ***
 	def has_cond(self, active_gs):
 		return self.is_contained(active_gs)

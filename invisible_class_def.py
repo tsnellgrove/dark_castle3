@@ -135,8 +135,9 @@ class Invisible(object):
 		return False
 
 	def err_not_in_reach(self, creature, active_gs):
-		room = active_gs.map.get_obj_room(creature)
-		if not self.is_writing() and creature.is_contained(active_gs) and self not in creature.get_contained_by(active_gs).get_vis_contain_lst(active_gs) + [room]:
+#		room = active_gs.map.get_obj_room(creature)
+#		if not self.is_writing() and creature.is_contained(active_gs) and self not in creature.get_contained_by(active_gs).get_vis_contain_lst(active_gs) + [room]:
+		if not self.is_writing() and creature.is_contained(active_gs) and not creature.is_obj_in_reach(self, active_gs):
 			active_gs.buffer(f"You'll have to exit the {creature.get_contained_by(active_gs).full_name} to attempt that.")
 			return True
 		return False
@@ -247,7 +248,7 @@ class Invisible(object):
 		if self.err_not_in_hand(creature, active_gs):
 			return True
 		if creature.is_contained(active_gs) and not creature.get_contained_by(active_gs).chk_has_capacity():
-			active_gs.buffer(f"There's no room on the {self.full_name} for another item.")
+			active_gs.buffer(f"There's no room on the {creature.get_contained_by(active_gs).full_name} for another item.")
 			return True
 		return False
 

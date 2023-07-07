@@ -94,7 +94,7 @@ black_suitcase = ContainerPortableLockable('black_suitcase', 'Black Suitcase', '
 
 # test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, None, None, None, [], 1)
 
-test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 999, 1, 'on')
+test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 999, 2, 'on', [wooden_shelf])
 
 front_gate = DoorLockable('front_gate', 'Front Gate', "gate", 'front_gate', rusty_lettering, False, False, rusty_key)
 iron_portcullis = DoorLockable('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, False, False, None)

@@ -288,10 +288,16 @@ class ContainerFixedSimple(ContainsMixIn, ViewOnly):
 		"""
 
 class Seat(ContainerFixedSimple):
-	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep):
+	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, in_reach_lst):
 		ContainerFixedSimple.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep)
+		self._in_reach_lst = in_reach_lst # list of receptacles that are reachable when seated in the seat
 		""" A seat on which a Creature can sit.
 		"""
+
+	# *** getters & setters ***
+	@property
+	def in_reach_lst(self):
+		return self._in_reach_lst
 
 	# *** class identity methods ***
 	def is_seat(self):
