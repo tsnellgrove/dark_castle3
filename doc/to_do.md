@@ -404,7 +404,7 @@ Version 3.78 Goals
 				- DONE: Creature method
 				- DONE: update invisible() std_err to use new in_reach() method
 				- DONE: test!
-			- TBD: clean up comments
+			- DONE: clean up comments
 			- TBD: expand is_obj_in_reach() and is_wrt_in_reach() to include Seat in_reach_lst attribute
 				- TBD: for is_container() => contain_lst
 				- TBD: for is_room() => floor_lst

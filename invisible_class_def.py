@@ -116,7 +116,6 @@ class Invisible(object):
 		return False
 
 	def err_wrt_not_in_reach(self, creature, active_gs):
-#		if self.is_writing() and creature.is_contained(active_gs) and not creature.get_contained_by(active_gs).chk_wrt_is_vis(self,active_gs):
 		if self.is_writing() and creature.is_contained(active_gs) and not creature.chk_wrt_in_reach(self, active_gs):
 			active_gs.buffer(f"You'll have to exit the {creature.get_contained_by(active_gs).full_name} to attempt that.")
 			return True
@@ -136,8 +135,6 @@ class Invisible(object):
 		return False
 
 	def err_not_in_reach(self, creature, active_gs):
-#		room = active_gs.map.get_obj_room(creature)
-#		if not self.is_writing() and creature.is_contained(active_gs) and self not in creature.get_contained_by(active_gs).get_vis_contain_lst(active_gs) + [room]:
 		if not self.is_writing() and creature.is_contained(active_gs) and not creature.chk_obj_in_reach(self, active_gs):
 			active_gs.buffer(f"You'll have to exit the {creature.get_contained_by(active_gs).full_name} to attempt that.")
 			return True
