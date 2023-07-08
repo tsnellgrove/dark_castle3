@@ -408,6 +408,7 @@ Version 3.78 Goals
 			- TBD: expand is_obj_in_reach() and is_wrt_in_reach() to include Seat in_reach_lst attribute
 				- TBD: for is_container() => contain_lst
 				- TBD: for is_room() => floor_lst
+				- TBD: for is_door() => Door
 			- TBD: test!
 			- TBD: add a condition to enable player to know what is in reach when seated
 				- NOTE: tricky since in_reach is linked to creature but conidtion is linked to recepticle
@@ -423,6 +424,8 @@ Version 3.78 Goals
 		- TBD: clean-up comments
 		- TBD: clean-up is_door(), is_surface(), can_contain_temp(), etc
 		- TBD: clean-up is_portablecontainer()
+		- TBD: should identity methods only apply to noun classes, not MixIns? (see is_container() )
+		- TBD: fix ContainerFixed inheritance... Lidded & Lockable should inherit from Noun, not MixIns
 		- TBD: probably time for a general refactor of ContainsMixIn()
 		- TBD: fix display meth use of is_closed() ; create an is_content_vis() meth for ContainsMixIn
 		- TBD: re-factor for clarity (especially ContainsMixIn)

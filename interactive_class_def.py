@@ -273,6 +273,10 @@ class DoorSimple(OpenableMixIn, ViewOnly):
 		""" A simple door with no lock.
 		"""
 
+	# *** class identity methods ***
+	def is_door(self):
+		return True
+
 class DoorLockable(LockableMixIn, DoorSimple):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key):
 		DoorSimple.__init__(self, name, full_name, root_name, descript_key, writing, is_open)
