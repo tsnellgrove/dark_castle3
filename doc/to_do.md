@@ -422,11 +422,14 @@ Version 3.78 Goals
 				- DONE: for is_room() => floor_lst
 				- DONE: for is_openable() => Door
 				- DONE: test
-			- TBD: add a condition to enable player to know what is in reach when seated
-				- NOTE: tricky since in_reach is linked to creature but conidtion is linked to recepticle
-					- TBD: condition for containers
-					- TBD: condition for room floor
-				- IDEA: alt => in_reach as examine condition for room if creature.is_contained (like title)
+			- TBD: update UI to enable player to know what is in reach when seated
+				- DONE: establish UI goals
+					- IDEA: alert player to in-reach under 2 circumstances:
+						- IDEA: 1) when entering Seat
+						- IDEA: 2) when examining room / 'look'ing
+				- TBD: create Creature display method to show in_reach()
+				- TBD: update examine() method to display in_reach if contained
+				- TBD: update enter() method to display in_reach
 
 	- TBD: autogen text based on Seat obj.descript
 		- TBD: update other autogen text to key off descript?
