@@ -205,7 +205,19 @@ class Creature(ViewOnly):
 		return obj in (seat_item_lst + [room] + in_reach_obj_lst)
 
 	def chk_wrt_in_reach(self, wrt, active_gs):
-		return self.get_contained_by(active_gs).chk_wrt_is_vis(wrt, active_gs)
+		wrt_in_seat = self.get_contained_by(active_gs).chk_wrt_is_vis(wrt, active_gs)
+		in_reach_obj_lst = []
+		for receptacle in self.get_contained_by(active_gs).in_reach_lst:
+			if receptacle.is_container():
+				in_reach_obj_lst = in_reach_obj_lst + receptacle.contain_lst + [receptacle]
+			if receptacle.is_room():
+				for floor_obj in receptacle.floor_lst:
+					if floor_obj.is_item():
+						in_reach_obj_lst = in_reach_obj_lst + [floor_obj]
+			if receptacle.is_openable():
+				in_reach_obj_lst = in_reach_obj_lst + [receptacle]
+		wrt_in_reach = any(obj.writing == wrt for obj in in_reach_obj_lst)
+		return wrt_in_seat or wrt_in_reach
 
 	# *** display methods ***
 	def has_cond(self, active_gs):

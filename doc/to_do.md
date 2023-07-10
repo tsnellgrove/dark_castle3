@@ -409,7 +409,7 @@ Version 3.78 Goals
 				- DONE: for is_container() => contain_lst
 				- DONE: for is_room() => floor_lst
 				- DONE: for is_door() => Door
-			- INPROC: test!
+			- DONE: test!
 				- DONE: is_container()
 				- DONE: is_room()
 				- CANCEL: is_door()
@@ -417,10 +417,11 @@ Version 3.78 Goals
 					- IDEA: switch to is_openable()
 				- DONE: is_openable()
 					- DONE: test
-			- TBD: expand is_wrt_in_reach() to include Seat in_reach_lst attribute
-				- TBD: for is_container() => contain_lst
-				- TBD: for is_room() => floor_lst
-				- TBD: for is_door() => Door
+			- DONE: expand is_wrt_in_reach() to include Seat in_reach_lst attribute
+				- DONE: for is_container() => contain_lst
+				- DONE: for is_room() => floor_lst
+				- DONE: for is_openable() => Door
+				- DONE: test
 			- TBD: add a condition to enable player to know what is in reach when seated
 				- NOTE: tricky since in_reach is linked to creature but conidtion is linked to recepticle
 					- TBD: condition for containers
