@@ -405,11 +405,19 @@ Version 3.78 Goals
 				- DONE: update invisible() std_err to use new in_reach() method
 				- DONE: test!
 			- DONE: clean up comments
-			- TBD: expand is_obj_in_reach() and is_wrt_in_reach() to include Seat in_reach_lst attribute
+			- DONE: expand is_obj_in_reach() to include Seat in_reach_lst attribute
+				- DONE: for is_container() => contain_lst
+				- DONE: for is_room() => floor_lst
+				- DONE: for is_door() => Door
+			- TBD: expand is_wrt_in_reach() to include Seat in_reach_lst attribute
 				- TBD: for is_container() => contain_lst
 				- TBD: for is_room() => floor_lst
 				- TBD: for is_door() => Door
-			- TBD: test!
+			- INPROC: test!
+				- DONE: is_container()
+				- DONE: is_room()
+				- INPROC: is_door()
+					- TBD: clean up open_err & close_err refs to old is_door()... or switch to is_openable()?
 			- TBD: add a condition to enable player to know what is in reach when seated
 				- NOTE: tricky since in_reach is linked to creature but conidtion is linked to recepticle
 					- TBD: condition for containers

@@ -303,6 +303,10 @@ class Seat(ContainerFixedSimple):
 	def in_reach_lst(self):
 		return self._in_reach_lst
 
+	@in_reach_lst.setter
+	def in_reach_lst(self, new_lst):
+		self._in_reach_lst = new_lst
+
 	# *** class identity methods ***
 	def is_seat(self):
 		return True

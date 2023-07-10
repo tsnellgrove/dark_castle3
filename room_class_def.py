@@ -41,6 +41,10 @@ class Room(ViewOnly):
 	def floor_lst_remove(self, item):
 		self._floor_lst.remove(item)
 
+	# *** identity method ***
+	def is_room(self):
+		return True
+
 	# *** scope methods ***
 	def get_vis_contain_lst(self, active_gs):
 		""" Returns the list of visible objects contained in the method-calling object. In Room, provides the visible object scope.
