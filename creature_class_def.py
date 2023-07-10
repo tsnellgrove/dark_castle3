@@ -200,7 +200,7 @@ class Creature(ViewOnly):
 				for floor_obj in receptacle.floor_lst:
 					if floor_obj.is_item():
 						in_reach_obj_lst = in_reach_obj_lst + [floor_obj]
-			if receptacle.is_door():
+			if receptacle.is_openable():
 				in_reach_obj_lst = in_reach_obj_lst + [receptacle]
 		return obj in (seat_item_lst + [room] + in_reach_obj_lst)
 
