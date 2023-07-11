@@ -282,6 +282,24 @@ class Creature(ViewOnly):
 				obj.disp_contain(active_gs)
 		return 
 
+	def disp_in_reach(self, active_gs):
+		""" displays in_reach objects for seated creature
+		"""
+		if self != active_gs.hero:
+			return
+		seat_obj = self.get_contained_by(active_gs)
+		in_reach_disp_obj_lst = []
+		for in_reach_obj in seat_obj.in_reach_lst:
+			if not in_reach_obj.is_room():
+				in_reach_disp_obj_lst.append(in_reach_obj)
+			else:
+				for room_obj in in_reach_obj.floor_lst:
+					if room_obj.is_item():
+						in_reach_disp_obj_lst.append(room_obj)
+		in_reach_disp_txt_lst = [obj.full_name for obj in in_reach_disp_obj_lst]
+		in_reach_str = ", ".join(in_reach_disp_txt_lst)
+		active_gs.buffer(f"From your position on the {seat_obj.full_name} you can just reach: {in_reach_str}")
+
 	# *** verb methods ***
 	def show(self, obj, active_gs, mode=None):
 		""" Extends Writing.show(). Shows an item in your hand to another creature.

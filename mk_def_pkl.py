@@ -284,7 +284,7 @@ axe_in_goblin_hand_cond.creature_obj = guard_goblin
 axe_in_goblin_hand_result.creature_obj = guard_goblin
 goblin_exist_state_cond.exist_obj = guard_goblin
 dispense_panel_result.room_item = control_panel
-## test_chair.in_reach_lst = [main_hall]
+## test_chair.in_reach_lst = [main_hall, front_gate]
 
 ### active_gs is the central store of game info ###
 active_gs = GameState(

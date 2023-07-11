@@ -335,6 +335,7 @@ class Seat(ContainerFixedSimple):
 		
 		if creature == active_gs.hero:
 			active_gs.buffer(f"You are now seated in the {self.full_name}.")
+			creature.disp_in_reach(active_gs)
 			active_gs.buff_try_key(f"{creature.name}_enter_{self.name}")
 		else:
 			active_gs.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")

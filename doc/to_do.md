@@ -422,18 +422,19 @@ Version 3.78 Goals
 				- DONE: for is_room() => floor_lst
 				- DONE: for is_openable() => Door
 				- DONE: test
-			- TBD: update UI to enable player to know what is in reach when seated
+			- INPROC: update UI to enable player to know what is in reach when seated
 				- DONE: establish UI goals
 					- IDEA: alert player to in-reach under 2 circumstances:
 						- IDEA: 1) when entering Seat
 						- IDEA: 2) when examining room / 'look'ing
-				- TBD: create Creature display method to show in_reach()
-				- TBD: update examine() method to display in_reach if contained
-				- TBD: update enter() method to display in_reach
+				- DONE: create Creature display method to show in_reach()
+				- DONE: update enter() method to display in_reach
+				- TBD: update examine() method to display in_reach if contained (and if title => room ?)
+			- TBD: doc_string for in_reach
 
-	- TBD: autogen text based on Seat obj.descript
-		- TBD: update other autogen text to key off descript?
-		- TBD: includes take() for unwear and drink()
+		- TBD: for enter(), autogen text based on Seat obj.descript
+			- TBD: update other autogen text to key off descript?
+			- TBD: includes take() for unwear and drink()
 
 	- TBD: clean-up
 		- TBD: clean-up comments
