@@ -394,7 +394,7 @@ Version 3.78 Goals
 					- IDEA: however, the creature in the Seat cannot access the recepticle itself
 					- IDEA: if in_reach_lst includes room_name then floor_lst is accessible
 				- IDEA: there needs to be a description update when seated to let player know about access
-		- INPROC: in_reach_lst attribute
+		- DONE: in_reach_lst attribute
 			- DONE: create Seat in_reach_lst attribute and update test_chair obj w/ wooden_shelf in_reach
 			- DONE: chk_obj_in_reach()
 				- DONE: Creature method
@@ -430,13 +430,19 @@ Version 3.78 Goals
 				- DONE: create Creature display method to show in_reach()
 				- DONE: update enter() method to display in_reach
 				- DONE: update examine() method to display in_reach if contained (and if title => room ?)
+				- DONE: retune in_reach() methods using ViewOnly and elif
+				- DONE: test!
+		- TBD: clean-up from old Door class
+			- TBD: clean-up is_door(), is_container(), is_surface() and etc
+			- TBD: door doc_strings => interactive()
+			- TBD: door() module to legacy folder
+			- TBD: ensure that no room descriptions indicate 'standing' in room (since you could be sitting)
 			- TBD: doc_string for in_reach
 
+	- TBD: general Interactive class clean-up
 		- TBD: for enter(), autogen text based on Seat obj.descript
 			- TBD: update other autogen text to key off descript?
 			- TBD: includes take() for unwear and drink()
-
-	- TBD: clean-up
 		- TBD: clean-up comments
 		- TBD: clean-up is_door(), is_surface(), can_contain_temp(), etc
 		- TBD: clean-up is_portablecontainer()
@@ -445,6 +451,8 @@ Version 3.78 Goals
 		- TBD: probably time for a general refactor of ContainsMixIn()
 		- TBD: fix display meth use of is_closed() ; create an is_content_vis() meth for ContainsMixIn
 		- TBD: re-factor for clarity (especially ContainsMixIn)
+		- TBD: consider whether in_reach methods would be better off in Seat rather than Creature
+		- TBD: consider moving more of in_reach logic into class methods (linked to contain methods)
 		- TBD: consider grouping "empty" response with contains rather than condition
 		- TBD: assign 'max_bulk' and 'max_count' to Creatures
 		- TBD: create current_carried_cappacity() method for Creature
@@ -457,18 +465,6 @@ Version 3.78 Goals
 		- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 			- IDEA: could have a prep attribute for each prep verb
 			- IDEA: in interp(), have a list of all possible preps and use list to break sentence
-	- TBD: New interactive classes (see above)
-	- TBD: clean-up from old Door class
-		- is_door(), is_container(), is_surface() and etc
-		- door doc_strings => interactive()
-		- door() module to legacy folder
-		- ensure that no room descriptions indicate 'standing' in room (since you could be sitting)
-
-- CANCEL: Given that creatures will be contained:
-	- need to embrace a node-based awareness of creature location
-	- need to embrace the use of recursion on methods like remove()
-	- Apply this to concepts like drop() and stand() / exit()
-	- DECISION: alternatively, just treat creature-containers as special exceptions
 
 - TBD: instantiate Creature Containers in actual game
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
@@ -485,34 +481,6 @@ Version 3.78 Goals
 	- TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
 	- Stone Coffer => no-lid box ?
 
-- TBD: the future list - future interactive obj updates / features to be implemented
-	- framework for complex obj to contain sub-elements (e.g. drawer + surface + under == desk)
-	- Could also have UnderMixIn and BehindMixIn
-	- TBD: for UnderMixIn - need to include bulk capacity for negative space
-	- would need to deal with the wording 'look under' and 'look behind'
-	- 'look under' adds contents to room.feature_lst
-	- additional 'under' commands = 'put under' and 'reach under'
-	- for MixInHole have commands 'look in' and 'reach in'
-		- can a 'hole' be dark if the room is light?
-	- TBD: enable the 'behind' preposition (with multiple varients of obfustication)
-		- IDEA: minor_behind = you can see but not reach
-		- IDEA: moderate_behind = can see some
-		- IDEA" major_behind = can't see
-		- Presumably, all 3 flavors of behind impact availability of obj in room list
-		- TBD: put the control_panel behind the goblin (check TADS implementation)
-	- IDEA: 'hole' = contain, opaque from room, no light
-		- 'nook' = 'hole' that can contain Creatures
-		- 'under' = opaque from room but no lighting issues
-		- use 'take from under' for 'under'
-		- use 'reach in' for 'hol'
-		- need to enter() 'nook' to get contents
-	- IDEA: what to do on container (or other) loss of light?
-		- e.g. put lantern in box, close box (no stuck)
-		- had thought about lighting up box from interiour - but wouldn't work for switch
-		- is safe to actually turn off lantern - because anything in your hand can still be accessed...
-		- so alternate idea is that hedgehog has to come rescue you
-		- but at least one inventory item gets scattered (hedgehog shrug)
-
 - TBD: document Seat class
 	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
 	- TBD: doc_string on Seat (nested-room) "translucent" scope (can't interact w/ Seat itself)
@@ -524,23 +492,6 @@ Version 3.78 Goals
 	- TBD: doc_string re: nook gets light from room
 	- TBD: doc_string re: Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 
-- TBD: "what would your mothter say" error to "What would your Nana say?"
-
-- TBD: make creature obj data more atomic
-	- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
-		- IDEA: obj should be a black-box
-	- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
-
-- IDEA: think through code vs. data separation for static text
-	- IDEA: imagine future adventure creation tooling where I update descriptions via a web front end
-	- IDEA: I won't want all the description in a DB - that's too much overhead...
-	- IDEA: But I will want all descriptions in one big centralized dictionary for ease of access & update
-	- IDEA: to this end, consider the following:
-		- TBD: move interp() help_dict back to static_gbl() descript_dict
-		- DONE: consolidate val_err_dict from validate() back to static_gbl() descript_dict
-		- TBD: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
-		- TBD: consolidate static_dict into descript_dict
-	- TBD: dock_string - error messages are hard to update - so I want them to be as generic as possible!
 
 
 *** Unify Notes ***
@@ -602,8 +553,57 @@ Version 3.78 Goals
 			- This will mostly be independent of Liquids... 
 				- but anything with a 'ruin' liquid_result == 'ruin' should be destroyed by swimming
 
+- TBD: Given that creatures will be contained:
+	- need to embrace a node-based awareness of creature location
+	- need to embrace the use of recursion on methods like remove()
+	- Apply this to concepts like drop() and stand() / exit()
+	- DECISION: alternatively, just treat creature-containers as special exceptions
 
+- TBD: the future list - future interactive obj updates / features to be implemented
+	- framework for complex obj to contain sub-elements (e.g. drawer + surface + under == desk)
+	- Could also have UnderMixIn and BehindMixIn
+	- TBD: for UnderMixIn - need to include bulk capacity for negative space
+	- would need to deal with the wording 'look under' and 'look behind'
+	- 'look under' adds contents to room.feature_lst
+	- additional 'under' commands = 'put under' and 'reach under'
+	- for MixInHole have commands 'look in' and 'reach in'
+		- can a 'hole' be dark if the room is light?
+	- TBD: enable the 'behind' preposition (with multiple varients of obfustication)
+		- IDEA: minor_behind = you can see but not reach
+		- IDEA: moderate_behind = can see some
+		- IDEA" major_behind = can't see
+		- Presumably, all 3 flavors of behind impact availability of obj in room list
+		- TBD: put the control_panel behind the goblin (check TADS implementation)
+	- IDEA: 'hole' = contain, opaque from room, no light
+		- 'nook' = 'hole' that can contain Creatures
+		- 'under' = opaque from room but no lighting issues
+		- use 'take from under' for 'under'
+		- use 'reach in' for 'hol'
+		- need to enter() 'nook' to get contents
+	- IDEA: what to do on container (or other) loss of light?
+		- e.g. put lantern in box, close box (no stuck)
+		- had thought about lighting up box from interiour - but wouldn't work for switch
+		- is safe to actually turn off lantern - because anything in your hand can still be accessed...
+		- so alternate idea is that hedgehog has to come rescue you
+		- but at least one inventory item gets scattered (hedgehog shrug)
 
+- TBD: "what would your mothter say" error to "What would your Nana say?"
+
+- TBD: make creature obj data more atomic
+	- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
+		- IDEA: obj should be a black-box
+	- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
+
+- IDEA: think through code vs. data separation for static text
+	- IDEA: imagine future adventure creation tooling where I update descriptions via a web front end
+	- IDEA: I won't want all the description in a DB - that's too much overhead...
+	- IDEA: But I will want all descriptions in one big centralized dictionary for ease of access & update
+	- IDEA: to this end, consider the following:
+		- TBD: move interp() help_dict back to static_gbl() descript_dict
+		- DONE: consolidate val_err_dict from validate() back to static_gbl() descript_dict
+		- TBD: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
+		- TBD: consolidate static_dict into descript_dict
+	- TBD: doc_string - error messages are hard to update - so I want them to be as generic as possible!
 
 - INPROC: review TADS3 terms for Description and preposition
 
