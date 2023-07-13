@@ -445,9 +445,9 @@ Version 3.78 Goals
 				- DONE: invisible()
 				- DONE: test!
 				- DONE: clean-up comments
-			- TBD: is_door()
+			- INPROC: is_door()
+				- DONE: interactive()
 				- TBD: invisible()
-				- TBD: interactive()
 				- TBD: test!
 				- TBD: clean-up comments
 		- TBD: door doc_strings => interactive()
