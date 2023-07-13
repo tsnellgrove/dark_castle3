@@ -448,6 +448,8 @@ Version 3.78 Goals
 			- TBD: is_door()
 				- TBD: invisible()
 				- TBD: interactive()
+				- TBD: test!
+				- TBD: clean-up comments
 		- TBD: door doc_strings => interactive()
 		- TBD: door() module to legacy folder
 		- TBD: ensure that no room descriptions indicate 'standing' in room (since you could be sitting)
