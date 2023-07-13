@@ -377,7 +377,7 @@ Version 3.78 Goals
 			- DONE: test!
 			- DONE: clean up comments in interp(), invisible(), item()
 
-	- INPROC: Seat class
+	- DONE: Seat class
 		- DONE: create parity Seat class in Interactive module
 			- DONE: create class Seat which inherits from ContainerFixedSimple
 			- DONE: chk_content_prohibited() returns obj.is_seat() (i.e. Creature class allowed)
@@ -432,19 +432,43 @@ Version 3.78 Goals
 				- DONE: update examine() method to display in_reach if contained (and if title => room ?)
 				- DONE: retune in_reach() methods using ViewOnly and elif
 				- DONE: test!
-		- TBD: clean-up from old Door class
-			- TBD: clean-up is_door(), is_container(), is_surface() and etc
-			- TBD: door doc_strings => interactive()
-			- TBD: door() module to legacy folder
-			- TBD: ensure that no room descriptions indicate 'standing' in room (since you could be sitting)
+
+	- TBD: clean-up from old Door class
+		- TBD: clean-up is_door(), is_surface(), can_contain_temp(), and is_portablecontainer()
+			- TBD: is_door()
+				- TBD: invisible()
+				- TBD: interactive()
+			- TBD: is_surface()
+				- TBD: invisible()
+			- TBD: can_contain_temp()
+				- TBD: interp()
+				- TBD: interactive()
+				- TBD: invisible()
+			- TBD: is_portablecontainer()
+				- TBD: invisible
+		- TBD: door doc_strings => interactive()
+		- TBD: door() module to legacy folder
+		- TBD: ensure that no room descriptions indicate 'standing' in room (since you could be sitting)
+		
+	- TBD: doc strings
+		- TBD: update existing door() module doc_strings
+		- TBD: seat doc_strings
 			- TBD: doc_string for in_reach
+			- TBD: address Seat as Creature Container (vs. Room node discussion)
+			- TBD: Seat (nested-room) "translucent" scope (can't interact w/ Seat itself)
+			- TBD: Seat as precursor to Vehical
+			- TBD: Nested Rooms can't be nested (no chairs on stages)
+			- TBD: Perch = translucent, Nook = opaque
+			- TBD: weight only vs. weight + volume (encumberance)
+			- TBD: best practices - max_obj for surfaces vs. max_wight for containers
+			- TBD: nook gets light from room
+			- TBD: Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 
 	- TBD: general Interactive class clean-up
 		- TBD: for enter(), autogen text based on Seat obj.descript
 			- TBD: update other autogen text to key off descript?
 			- TBD: includes take() for unwear and drink()
 		- TBD: clean-up comments
-		- TBD: clean-up is_door(), is_surface(), can_contain_temp(), etc
 		- TBD: clean-up is_portablecontainer()
 		- TBD: should identity methods only apply to noun classes, not MixIns? (see is_container() )
 		- TBD: fix ContainerFixed inheritance... Lidded & Lockable should inherit from Noun, not MixIns
@@ -481,16 +505,7 @@ Version 3.78 Goals
 	- TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
 	- Stone Coffer => no-lid box ?
 
-- TBD: document Seat class
-	- TBD: doc_string to address Seat as Creature Container (vs. Room node discussion)
-	- TBD: doc_string on Seat (nested-room) "translucent" scope (can't interact w/ Seat itself)
-	- TBD: doc_string re: Seat as precursor to Vehical
-	- TBD: doc_string re: Nested Rooms can't be nested (no chairs on stages)
-	- TBD: doc_string re: Perch = translucent, Nook = opaque
-	- TBD: doc_string re: weight only vs. weight + volume (encumberance)
-	- TBD: doc_string re: best practices - max_obj for surfaces vs. max_wight for containers
-	- TBD: doc_string re: nook gets light from room
-	- TBD: doc_string re: Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
+
 
 
 
@@ -501,6 +516,8 @@ Version 3.78 Goals
 - Long Term Pondering:
 	- the whole 'hand' concept is looking increasingly dodgy... too much inventory mgmt...
 	- maybe time to bite the recursive bullet and just allow portable containers in portable containers?
+
+- decide if interactive() class objects should eventually have noun identities (e.g. is_door() )
 
 - Liquid handling
 	- INPROC: Research IF liquids
