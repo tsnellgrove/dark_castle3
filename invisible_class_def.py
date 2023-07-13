@@ -65,15 +65,6 @@ class Invisible(object):
 	def	is_container(self):
 		return False
 
-	def can_contain_temp(self):
-		return False
-
-	def is_portablecontainer(self):
-		return False
-
-	def is_surface(self):
-		return False
-
 	def is_room(self):
 		return False
 
@@ -529,7 +520,7 @@ class Invisible(object):
 		if self.chk_content_prohibited(obj):
 			active_gs.buffer(f"You can't put the {obj.full_name} {self.prep} the {self.full_name}.")
 			return True
-		if self.can_contain_temp() and not self.chk_has_capacity():
+		if self.is_container() and not self.chk_has_capacity():
 			active_gs.buffer(f"There's no room {self.prep} the {self.full_name} for another item.")
 			return True
 		if self.max_weight - self.get_contained_weight() - obj.weight < 0:

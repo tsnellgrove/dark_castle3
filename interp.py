@@ -261,7 +261,7 @@ def interpreter(user_input, master_obj_lst):
 								return 'error', [noun_error_msg]
 						elif dir_obj_error_state:
 								return 'error', [dir_obj_error_msg]
-						if dirobj_obj.can_contain_temp() and word1 == 'put' and prep != dirobj_obj.prep:
+						if dirobj_obj.is_container() and word1 == 'put' and prep != dirobj_obj.prep:
 								error_msg = f"I don't see the word '{dirobj_obj.prep}' in that sentence."
 								return 'error', [error_msg]
 						elif word1 in ['attack', 'lock', 'unlock', 'drink']:

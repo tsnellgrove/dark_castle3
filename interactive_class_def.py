@@ -170,9 +170,6 @@ class ContainsMixIn(object):
 	# *** class identity methods ***
 	def	is_container(self):
 		return True
-	
-	def can_contain_temp(self):
-		return True
 
 	# *** scope methods ***
 	def get_vis_contain_lst(self, active_gs):

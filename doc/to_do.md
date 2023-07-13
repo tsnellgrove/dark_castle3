@@ -433,19 +433,21 @@ Version 3.78 Goals
 				- DONE: retune in_reach() methods using ViewOnly and elif
 				- DONE: test!
 
-	- TBD: clean-up from old Door class
-		- TBD: clean-up is_door(), is_surface(), can_contain_temp(), and is_portablecontainer()
+	- INPROC: clean-up from old Door class
+		- INPROc: clean-up is_door(), is_surface(), can_contain_temp(), and is_portablecontainer()
+			- DONE: is_surface()
+				- DONE: invisible()
+			- DONE: is_portablecontainer()
+				- DONE: invisible
+			- DONE: can_contain_temp()
+				- DONE: interp()
+				- DONE: interactive()
+				- DONE: invisible()
+				- DONE: test!
+				- DONE: clean-up comments
 			- TBD: is_door()
 				- TBD: invisible()
 				- TBD: interactive()
-			- TBD: is_surface()
-				- TBD: invisible()
-			- TBD: can_contain_temp()
-				- TBD: interp()
-				- TBD: interactive()
-				- TBD: invisible()
-			- TBD: is_portablecontainer()
-				- TBD: invisible
 		- TBD: door doc_strings => interactive()
 		- TBD: door() module to legacy folder
 		- TBD: ensure that no room descriptions indicate 'standing' in room (since you could be sitting)
@@ -504,6 +506,7 @@ Version 3.78 Goals
 	- TBD: maybe a Bed in the Main Hall?
 	- TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
 	- Stone Coffer => no-lid box ?
+	- move test obj into dedicated section; instantiate but don't place
 
 
 
