@@ -447,8 +447,8 @@ Version 3.78 Goals
 				- DONE: clean-up comments
 			- INPROC: is_door()
 				- DONE: interactive()
-				- TBD: invisible()
-				- TBD: test!
+				- DONE: invisible()
+				- DONE: test!
 				- TBD: clean-up comments
 		- TBD: door doc_strings => interactive()
 		- TBD: door() module to legacy folder

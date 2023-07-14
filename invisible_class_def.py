@@ -59,8 +59,8 @@ class Invisible(object):
 	def is_lockable(self):
 		return False
 
-	def	is_door(self):
-		return False
+#	def	is_door(self):
+#		return False
 
 	def	is_container(self):
 		return False
@@ -248,16 +248,19 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
-		if not self.is_door() and (not self.is_openable() and not self.is_container()):
+#		if not self.is_door() and (not self.is_openable() and not self.is_container()):
+		if not self.is_openable() and not self.is_container():
 			active_gs.buffer(f"The {self.full_name} cannot be openned.")
 			return True
-		if (self.is_door() and self.is_open is None) or (not self.is_openable() and self.is_container()):
+#		if (self.is_door() and self.is_open is None) or (not self.is_openable() and self.is_container()):
+		if not self.is_openable() and self.is_container():
 			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 			return True
 		if self.is_open:
 			active_gs.buffer(f"The {self.full_name} is already open.")
 			return True
-		if (self.is_lockable() and self.is_unlocked == False) or (self.is_door() and self.is_unlocked == False):
+#		if (self.is_lockable() and self.is_unlocked == False) or (self.is_door() and self.is_unlocked == False):
+		if self.is_lockable() and self.is_unlocked == False:
 			active_gs.buffer(f"The {self.full_name} is locked.")
 			return True
 		return False
@@ -266,16 +269,19 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_std(creature, active_gs):
 			return True
-		if not self.is_door() and (not self.is_openable() and not self.is_container()):
+#		if not self.is_door() and (not self.is_openable() and not self.is_container()):
+		if not self.is_openable() and not self.is_container():
 			active_gs.buffer(f"The {self.full_name} cannot be closed.")
 			return True
-		if (self.is_door() and self.is_open is None) or (not self.is_openable() and self.is_container()):
+#		if (self.is_door() and self.is_open is None) or (not self.is_openable() and self.is_container()):
+		if not self.is_openable() and self.is_container():
 			active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
 			return True
 		if self.is_open == False:
 			active_gs.buffer(f"The {self.full_name} is already closed.")
 			return True
-		if (self.is_lockable() and self.is_unlocked == False) or (self.is_door() and self.is_unlocked == False):
+#		if (self.is_lockable() and self.is_unlocked == False) or (self.is_door() and self.is_unlocked == False):
+		if self.is_lockable() and self.is_unlocked == False:
 			active_gs.buffer(f"The {self.full_name} is locked open.") # for Iron Portcullis
 			return True
 		return False
@@ -427,10 +433,12 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_prep_std(key_obj, creature, active_gs):
 			return True
-		if (self.is_door() and self.is_open is None) or (self.is_container() and not self.is_openable()):
+#		if (self.is_door() and self.is_open is None) or (self.is_container() and not self.is_openable()):
+		if self.is_container() and not self.is_openable():
 			active_gs.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
 			return True
-		if not self.is_door() and not self.is_lockable():
+#		if not self.is_door() and not self.is_lockable():
+		if not self.is_lockable():
 			active_gs.buffer(f"The {self.full_name} cannot be locked.")
 			return True
 		if key_obj.is_switch():
@@ -465,10 +473,12 @@ class Invisible(object):
 		creature = active_gs.hero
 		if self.err_prep_std(key_obj, creature, active_gs):
 			return True
-		if (self.is_door() and self.is_open is None) or (self.is_container() and not self.is_openable()):
+#		if (self.is_door() and self.is_open is None) or (self.is_container() and not self.is_openable()):
+		if self.is_container() and not self.is_openable():
 			active_gs.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
 			return True
-		if not self.is_door() and not self.is_lockable():
+#		if not self.is_door() and not self.is_lockable():
+		if not self.is_lockable():
 			active_gs.buffer(f"The {self.full_name} cannot be unlocked.")
 			return True
 		if key_obj.is_switch():
