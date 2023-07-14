@@ -434,7 +434,7 @@ Version 3.78 Goals
 				- DONE: test!
 
 	- INPROC: clean-up from old Door class
-		- INPROc: clean-up is_door(), is_surface(), can_contain_temp(), and is_portablecontainer()
+		- DONE: clean-up is_door(), is_surface(), can_contain_temp(), and is_portablecontainer()
 			- DONE: is_surface()
 				- DONE: invisible()
 			- DONE: is_portablecontainer()
@@ -445,12 +445,12 @@ Version 3.78 Goals
 				- DONE: invisible()
 				- DONE: test!
 				- DONE: clean-up comments
-			- INPROC: is_door()
+			- DONE: is_door()
 				- DONE: interactive()
 				- DONE: invisible()
 				- DONE: test!
-				- TBD: clean-up comments
-		- TBD: door doc_strings => interactive()
+				- DONE: clean-up comments
+		- DONE: door doc_strings => interactive()
 		- TBD: door() module to legacy folder
 		- TBD: ensure that no room descriptions indicate 'standing' in room (since you could be sitting)
 		
