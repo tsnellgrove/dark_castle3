@@ -10,21 +10,17 @@ from invisible_class_def import Invisible
 from base_class_def import Writing, ViewOnly
 from room_class_def import Room
 from item_class_def import Item, Food, Liquid, Garment, Weapon
-## from door_class_def import Seat
-## from door_class_def import Door, Container, Surface
-## from door_class_def import PortableContainer, PortableLiquidContainer
 from interactive_class_def import DoorSimple, DoorLockable
 from interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
 from interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
-## from misc_class_def import Liquid
 from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
 				SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
 				StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond, InRoomCond, InWorldStateCond)
 from result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 				AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult,
 				TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
-from mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, SurfaceMach
+from mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from creature_class_def import Creature
 from gs_class_def import GameState
 from map_class_def import Map
@@ -66,7 +62,6 @@ random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random
 cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 1)
 stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 3)
 
-# fresh_water = Liquid('fresh_water', 'Fresh Water', 'water', 'fresh_water', None, 0.5)
 well_water = Liquid('well_water', 'Well Water', 'water', 'well_water', None, 0.5)
 
 royal_crown = Garment('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 5, 'hat')
@@ -84,21 +79,15 @@ wooden_shelf = ContainerFixedSimple('wooden_shelf', 'Wooden Shelf', 'shelf', 'wo
 cardboard_box = ContainerFixedLidded('cardboard_box', 'Cardboard Box', 'box', 'cardboard_box', None, [], 999, 2, 'in', False)
 crystal_box = ContainerFixedLockable('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy, ['kinging_scroll_temp'], 1, 999, 'in', False, False, silver_key)
 
+screen_door = DoorSimple('screen_door', 'Screen Door', 'door', 'screen_door', None, False)
 small_barrel = ContainerPortableSimple('small_barrel', 'Small Barrel', 'barrel', 'small_barrel', None, 2, [], 5, 999, 'in')
 earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'earthen_jug', None, 1, [well_water], 0.5, 5, 'in')
 red_shoebox = ContainerPortableLidded('red_shoebox', 'Red Shoebox', 'shoebox', 'red_shoebox', None, 1, [], 3, 999, 'in', False)
 black_suitcase = ContainerPortableLockable('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None, 3, [], 7, 999, 'in', False, False, rusty_key)
-
-## black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', small_printing, False, False, rusty_key, [])
-## glass_bottle = PortableLiquidContainer('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', None, None, None, None, [fresh_water])
-
-# test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, None, None, None, [], 1)
-
 test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 999, 2, 'on', [wooden_shelf])
 
 front_gate = DoorLockable('front_gate', 'Front Gate', "gate", 'front_gate', rusty_lettering, False, False, rusty_key)
 iron_portcullis = DoorLockable('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, False, False, None)
-screen_door = DoorSimple('screen_door', 'Screen Door', 'door', 'screen_door', None, False)
 
 throne = SpringSliderSwitch('throne', 'Throne', 'throne', 'throne', None, 'neutral', 'neutral', 'auto_switch_reset')
 left_lever = LeverSwitch('left_lever', 'Left Lever', 'lever', 'left_lever', None, 'down', None, None)
@@ -164,10 +153,16 @@ broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 'post_act_swit
 				[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
 				[nothing_happens_result, throne_push_result, throne_pull_result]) # machine_state == broach_dispensed
 
-control_panel = SurfaceMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, None, None, None, [left_lever, middle_lever, right_lever, red_button], 4,
+#control_panel = SurfaceMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, None, None, None, [left_lever, middle_lever, right_lever, red_button], 4,
+#				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever], [correct_lever_array_cond, wrong_lever_array_cond],
+#				[toggle_portcullis_result, portcullis_doesnt_open_result])
+
+control_panel = ContainerFixedSimpleMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, [left_lever, middle_lever, right_lever, red_button], 999, 4, 'on',
 				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever], [correct_lever_array_cond, wrong_lever_array_cond],
 				[toggle_portcullis_result, portcullis_doesnt_open_result])
 				# machine_state == lever_array_value
+
+# name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst
 
 hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None, [['give', 'stale_biscuits', 'royal_hedgehog']],
 				None, [hedgehog_has_biscuit_cond, pass_thru_cond], [start_hedgehog_timer_results, pass_result])
@@ -326,18 +321,6 @@ with open('default_obj_pickle', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 
 # *** Test Objects ***
-
-# --- Legacy Classes 
-# kinging_scroll = Item('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters) # old scroll
-# glass_bottle = Jug('glass_bottle', 'Glass Bottle', 'bottle', 'glass_bottle', None, True, [fresh_water]) # legacy glass_bottle
-
-# --- Never Used ---
-## giftbox = Container('giftbox', 'A pretty gift box', None, False, True, 'none', True, [necklace])
-## screen_door = Door('screen_door', "You should never be able to examine the screen_door", None, False, False, chrome_key)
-
-# --- Small Tests ---
-## wooden_chest = Container('wooden_chest', 'wooden chest', "chest", 'wooden_chest', None, False, False, brass_key, [bubbly_potion]) # test object
-# black_suitcase = PortableContainer('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None, False, False, rusty_key, [cheese_wedge])
 
 # --- Big Bomb Test ---
 ## blue_button = ButtonSwitch('blue_button', 'Blue Button', 'button', 'blue_button', None, 'neutral', 'neutral', 'pre_act_auto_switch_reset') # test obj

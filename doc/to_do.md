@@ -433,7 +433,7 @@ Version 3.78 Goals
 				- DONE: retune in_reach() methods using ViewOnly and elif
 				- DONE: test!
 
-	- INPROC: clean-up from old Door class
+	- DONE: clean-up from old Door class
 		- DONE: clean-up is_door(), is_surface(), can_contain_temp(), and is_portablecontainer()
 			- DONE: is_surface()
 				- DONE: invisible()
@@ -451,8 +451,9 @@ Version 3.78 Goals
 				- DONE: test!
 				- DONE: clean-up comments
 		- DONE: door doc_strings => interactive()
-		- TBD: door() module to legacy folder
-		- TBD: ensure that no room descriptions indicate 'standing' in room (since you could be sitting)
+		- DONE: door() module to legacy folder
+		- DONE: ensure that no room descriptions indicate 'standing' in room (since you could be sitting)
+		- DONE: update SurfaceMach to ContainerFixedSimpleMach
 		
 	- TBD: doc strings
 		- TBD: update existing door() module doc_strings
@@ -574,6 +575,8 @@ Version 3.78 Goals
 			- Breathing limits will apply
 			- This will mostly be independent of Liquids... 
 				- but anything with a 'ruin' liquid_result == 'ruin' should be destroyed by swimming
+
+- TBD: static_gbl => tupple
 
 - TBD: Given that creatures will be contained:
 	- need to embrace a node-based awareness of creature location

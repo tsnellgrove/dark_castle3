@@ -9,7 +9,8 @@ from item_class_def import Item
 from invisible_class_def import Invisible
 from base_class_def import ViewOnly
 from static_gbl import descript_dict
-from door_class_def import Surface
+# from door_class_def import Surface
+from interactive_class_def import ContainerFixedSimple
 
 ### classes
 class MachineMixIn(object):
@@ -120,9 +121,12 @@ class ItemMach(MachineMixIn, Item):
 				Item.__init__(self, name, full_name, root_name, descript_key, writing, weight)
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
-class SurfaceMach(MachineMixIn, Surface):
-		def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst, max_obj, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
-				Surface.__init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst, max_obj)
+#class SurfaceMach(MachineMixIn, Surface):
+#class SurfaceMach(MachineMixIn, ContainerFixedSimple):
+class ContainerFixedSimpleMach(MachineMixIn, ContainerFixedSimple):
+		def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
+#				Surface.__init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst, max_obj)
+				ContainerFixedSimple.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep)
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
 class Warning(Invisible):
