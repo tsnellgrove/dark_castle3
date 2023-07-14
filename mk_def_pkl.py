@@ -153,16 +153,10 @@ broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 'post_act_swit
 				[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
 				[nothing_happens_result, throne_push_result, throne_pull_result]) # machine_state == broach_dispensed
 
-#control_panel = SurfaceMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, None, None, None, [left_lever, middle_lever, right_lever, red_button], 4,
-#				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever], [correct_lever_array_cond, wrong_lever_array_cond],
-#				[toggle_portcullis_result, portcullis_doesnt_open_result])
-
 control_panel = ContainerFixedSimpleMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, [left_lever, middle_lever, right_lever, red_button], 999, 4, 'on',
 				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever], [correct_lever_array_cond, wrong_lever_array_cond],
 				[toggle_portcullis_result, portcullis_doesnt_open_result])
 				# machine_state == lever_array_value
-
-# name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst
 
 hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None, [['give', 'stale_biscuits', 'royal_hedgehog']],
 				None, [hedgehog_has_biscuit_cond, pass_thru_cond], [start_hedgehog_timer_results, pass_result])
