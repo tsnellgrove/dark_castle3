@@ -420,6 +420,67 @@ class ContainerPortableLockable(LockableMixIn, ContainerPortableLidded):
 
 """ *** Module Documentation ***
 
+	* Module Overview *
+	
+	'interactive' is a vauge term. Hopefully I'll think of a better module name down the road. But the intent is along the vein of 'standardized and prepositionally / combinatorally, interactive'. Hence, not foundational classes like ViewOnly or Item. Not custom objects like Machines. Not classes like Food and Liquid for which there are highly specific, non-combinatorial verb methods (eat() and drink() respectively). Rather, the goal here is to address objects like doors, surfaces, and containers... which all operate in a standard fashion but potentially have some functionality overlap (e.g. doors and containers both open, surfaces and containers both hold Items, etc).
+
+	In early DCv3 versions I treated this as an inheritance chain of monolithic classes: Surface inherited from Container which inherited from Door (in fact, all of these classes lived in a module named door_class_def() ). This approach worked but wasn't very elegant - by the time you got to Surface, all of the attributes related to openning and locking had to be set to None. Ditto for doors and containers without locks. And portable containers were sketchy at best. The final straw was my attempt to add a 'weight' attribute to the Item class. The already sketchy implementation of portable containers completely broke down. It was time for a fresh start.
+
+	Durring refactoring I took a new approach: I created MixIn classes for 'openable', 'lockable', and 'contains'. Then noun classes were built by combining ViewOnly or Item with one or more MixIn.
+
+	* Current MixIn Classes:
+	- OpenableMixIn (methods = open() and close() )
+	- LockableMixIn (methods = lock() and unlock() )
+	- ContainsMixIn (methods = put() )
+
+	* Current Noun Classes:
+	- DoorSimple = ViewOnly + OpenableMixIn
+		e.g. screen_door
+		methods = None
+	- DoorLockable = DoorSimple + LockableMixIn
+		e.g. front_gate
+		methods = None
+	- ContainerFixedSimple = ViewOnly + ContainsMixIn
+		e.g. wooden_shelf or stone_coffer
+		methods = None
+	- Seat (I know, the naming goes a bit sideways here) = ContainerFixedSimple for Creatures
+		e.g. test_chair
+		methods
+			- chk_content_prohibited() over-ride to allow creatures
+			- enter() and exit()
+	- ContainerFixedLidded = ContainerFixedSimple + OpenableMixIn
+		e.g cardbaord_box
+		methods = None
+	- ContainerFixedLockable = ContainerFixedLidded + LockableMixIn
+		e.g. crystal_box
+		methods = None
+	- ContainerPortableSimple = Item + ContainsMixIn
+		e.g. small_barrel or silver_tray
+		methods
+			- put() extension to address weight
+			- remove_item() extension to address weight
+			- chk_content_prohibited() extension to prohibit portable containers
+	- ContainerPortableLidded = ContainerPortableSimple + OpenableMixIn 
+		e.g. red_shoebox
+		methods = None
+	- ContainerPortableLockable = ContainerPortableLidded + LockableMixIn
+		e.g. black_suitcase
+		methods = None
+
+	
+	* <ClassName> class:
+	- <method_name>() method [<ClassName> class]:
+		Overview:
+		Implementation Detail:
+		Program Architecture:
+		Game Design:
+		Historic Note:
+
+	NOTE: check historic put() content for inclusion
+	NOTE: special case of liquids
+
+	*** Start of Historic Monolithic Class Documentation - No Longer Accurate - See above for current! ***	
+	
 	* Door class:
 
 		Overview:
@@ -504,4 +565,6 @@ class ContainerPortableLockable(LockableMixIn, ContainerPortableLidded):
 		Historic Note:
 			My initial reason for creating the Surface class was that control_panel was previously an annoying hack. control_panel itself was of ViewOnlyMach class. This was fine but what to do with left_lever, middle_lever, right_lever, and red_button? The work-around was to mention them explicitly in the control_panel description but then stuff them in antechamber.feature_lst. This always irked me... and the more consistently behaved the Container class became the more unacceptable this work-around felt. One day I started thinking that control_panel should just be a container... but with no lid - and voila - the insight that a Surface class was needed arrived!
 
+			
+	*** End of Historic Monolithic Class Documentation - No Longer Accurate - See above for current! ***	
 """
