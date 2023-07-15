@@ -262,7 +262,7 @@ class ContainsMixIn(object):
 		return
 
 
-### noun classes
+### generic noun classes
 class DoorSimple(OpenableMixIn, ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open):
 		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
@@ -283,82 +283,6 @@ class ContainerFixedSimple(ContainsMixIn, ViewOnly):
 		ContainsMixIn.__init__(self, contain_lst, max_weight, max_obj, prep)
 		""" A simple non-takable container with no lid or lock. Can be a box or a shelf depending on 'prep'
 		"""
-
-class Seat(ContainerFixedSimple):
-	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, in_reach_lst):
-		ContainerFixedSimple.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep)
-		self._in_reach_lst = in_reach_lst # list of receptacles that are reachable when seated in the seat
-		""" A seat on which a Creature can sit.
-		"""
-
-	# *** getters & setters ***
-	@property
-	def in_reach_lst(self):
-		return self._in_reach_lst
-
-	@in_reach_lst.setter
-	def in_reach_lst(self, new_lst):
-		self._in_reach_lst = new_lst
-
-	# *** class identity methods ***
-	def is_seat(self):
-		return True
-
-	# *** scope methods ***
-	def chk_content_prohibited(self, obj):
-		return obj.is_seat()
-
-	# *** verb methods ***
-	def enter(self, active_gs, mode=None, creature=None):
-		""" Sits a creature in a Seat
-		"""
-		# destermine default attributes
-		if mode is None:
-			mode = 'std'
-		if creature is None:
-			creature = active_gs.hero
-
-		room = active_gs.map.get_obj_room(creature)
-		room.floor_lst_remove(creature)
-		self.contain_lst_append(creature)
-
-		# if hero_creature not in current room, exit with no display
-		if room != active_gs.get_room():
-			return 
-		
-		if creature == active_gs.hero:
-			active_gs.buffer(f"You are now seated in the {self.full_name}.")
-			creature.disp_in_reach(active_gs)
-			active_gs.buff_try_key(f"{creature.name}_enter_{self.name}")
-		else:
-			active_gs.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
-		return
-
-
-	def exit(self, active_gs, mode=None, creature=None):
-		""" Sits a creature in a Seat
-		"""
-		# destermine default attributes
-		if mode is None:
-			mode = 'std'
-		if creature is None:
-			creature = active_gs.hero
-
-		room = active_gs.map.get_obj_room(creature)
-		room.floor_lst_append(creature)
-		self.contain_lst_remove(creature)
-
-		# if hero_creature not in current room, exit with no display
-		if room != active_gs.get_room():
-			return 
-		
-		if creature == active_gs.hero:
-			active_gs.buffer(f"You are now standing in the {room.full_name}.")
-			active_gs.buff_try_key(f"{creature.name}_exit_{self.name}")
-		else:
-			active_gs.buffer(f"The {creature.full_name} is now standing in the {room.full_name}.")
-		return
-
 
 class ContainerFixedLidded(ContainsMixIn, OpenableMixIn, ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, is_open):
@@ -417,58 +341,145 @@ class ContainerPortableLockable(LockableMixIn, ContainerPortableLidded):
 		""" A takable container with a lid and a lock.
 		"""
 
+### custom noun classes
+class Seat(ContainerFixedSimple):
+	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, in_reach_lst):
+		ContainerFixedSimple.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep)
+		self._in_reach_lst = in_reach_lst # list of receptacles that are reachable when seated in the seat
+		""" A seat on which a Creature can sit.
+		"""
+
+	# *** getters & setters ***
+	@property
+	def in_reach_lst(self):
+		return self._in_reach_lst
+
+	@in_reach_lst.setter
+	def in_reach_lst(self, new_lst):
+		self._in_reach_lst = new_lst
+
+	# *** class identity methods ***
+	def is_seat(self):
+		return True
+
+	# *** scope methods ***
+	def chk_content_prohibited(self, obj):
+		return obj.is_seat()
+
+	# *** verb methods ***
+	def enter(self, active_gs, mode=None, creature=None):
+		""" Sits a creature in a Seat
+		"""
+		# destermine default attributes
+		if mode is None:
+			mode = 'std'
+		if creature is None:
+			creature = active_gs.hero
+
+		room = active_gs.map.get_obj_room(creature)
+		room.floor_lst_remove(creature)
+		self.contain_lst_append(creature)
+
+		# if hero_creature not in current room, exit with no display
+		if room != active_gs.get_room():
+			return 
+		
+		if creature == active_gs.hero:
+			active_gs.buffer(f"You are now seated in the {self.full_name}.")
+			creature.disp_in_reach(active_gs)
+			active_gs.buff_try_key(f"{creature.name}_enter_{self.name}")
+		else:
+			active_gs.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
+		return
+
+	def exit(self, active_gs, mode=None, creature=None):
+		""" Sits a creature in a Seat
+		"""
+		# destermine default attributes
+		if mode is None:
+			mode = 'std'
+		if creature is None:
+			creature = active_gs.hero
+
+		room = active_gs.map.get_obj_room(creature)
+		room.floor_lst_append(creature)
+		self.contain_lst_remove(creature)
+
+		# if hero_creature not in current room, exit with no display
+		if room != active_gs.get_room():
+			return 
+		
+		if creature == active_gs.hero:
+			active_gs.buffer(f"You are now standing in the {room.full_name}.")
+			active_gs.buff_try_key(f"{creature.name}_exit_{self.name}")
+		else:
+			active_gs.buffer(f"The {creature.full_name} is now standing in the {room.full_name}.")
+		return
+
 
 """ *** Module Documentation ***
 
-	* Module Overview *
+* Module Overview *
 	
-	'interactive' is a vauge term. Hopefully I'll think of a better module name down the road. But the intent is along the vein of 'standardized and prepositionally / combinatorally, interactive'. Hence, not foundational classes like ViewOnly or Item. Not custom objects like Machines. Not classes like Food and Liquid for which there are highly specific, non-combinatorial verb methods (eat() and drink() respectively). Rather, the goal here is to address objects like doors, surfaces, and containers... which all operate in a standard fashion but potentially have some functionality overlap (e.g. doors and containers both open, surfaces and containers both hold Items, etc).
+'interactive' is a vauge term. Hopefully I'll think of a better module name down the road. But the intent is along the vein of 'standardized and prepositionally / combinatorally, interactive'. Hence, not foundational classes like ViewOnly or Item. Not custom objects like Machines. Not classes like Food and Liquid for which there are highly specific, non-combinatorial verb methods (eat() and drink() respectively). Rather, the goal here is to address objects like doors, surfaces, and containers... which all operate in a standard fashion but potentially have some functionality overlap (e.g. doors and containers both open, surfaces and containers both hold Items, etc).
 
-	In early DCv3 versions I treated this as an inheritance chain of monolithic classes: Surface inherited from Container which inherited from Door (in fact, all of these classes lived in a module named door_class_def() ). This approach worked but wasn't very elegant - by the time you got to Surface, all of the attributes related to openning and locking had to be set to None. Ditto for doors and containers without locks. And portable containers were sketchy at best. The final straw was my attempt to add a 'weight' attribute to the Item class. The already sketchy implementation of portable containers completely broke down. It was time for a fresh start.
+In early DCv3 versions I treated this as an inheritance chain of monolithic classes: Surface inherited from Container which inherited from Door (in fact, all of these classes lived in a module named door_class_def() ). This approach worked but wasn't very elegant - by the time you got to Surface, all of the attributes related to openning and locking had to be set to None. Ditto for doors and containers without locks. And portable containers were sketchy at best. The final straw was my attempt to add a 'weight' attribute to the Item class. The already sketchy implementation of portable containers completely broke down. It was time for a fresh start.
 
-	Durring refactoring I took a new approach: I created MixIn classes for 'openable', 'lockable', and 'contains'. Then noun classes were built by combining ViewOnly or Item with one or more MixIn.
+Durring refactoring I took a new approach: I created MixIn classes for 'openable', 'lockable', and 'contains'. Then noun classes were built by combining ViewOnly or Item with one or more MixIn.
 
-	* Current MixIn Classes:
-	- OpenableMixIn (methods = open() and close() )
-	- LockableMixIn (methods = lock() and unlock() )
-	- ContainsMixIn (methods = put() )
+* Current MixIn Classes:
+	- OpenableMixIn
+		attributes = is_open
+		methods = 
+			- open()
+			- close()
+	- LockableMixIn
+		attributes = 
+			- is_unlocked
+			- key
+		methods =
+			- lock()
+			- unlock()
+	- ContainsMixIn
+		attributes = 
+			- contain_lst
+			- max_weight
+			- max_obj
+			- prep
+		methods = put()
 
-	* Current Noun Classes:
+* Current Generic Noun Classes:
 	- DoorSimple = ViewOnly + OpenableMixIn
-		e.g. screen_door
-		methods = None
+		examples = screen_door
 	- DoorLockable = DoorSimple + LockableMixIn
-		e.g. front_gate
-		methods = None
+		examples = front_gate
 	- ContainerFixedSimple = ViewOnly + ContainsMixIn
-		e.g. wooden_shelf or stone_coffer
-		methods = None
-	- Seat (I know, the naming goes a bit sideways here) = ContainerFixedSimple for Creatures
-		e.g. test_chair
-		methods
-			- chk_content_prohibited() over-ride to allow creatures
-			- enter() and exit()
+		examples = wooden_shelf or stone_coffer
 	- ContainerFixedLidded = ContainerFixedSimple + OpenableMixIn
-		e.g cardbaord_box
-		methods = None
+		examples = cardbaord_box
 	- ContainerFixedLockable = ContainerFixedLidded + LockableMixIn
-		e.g. crystal_box
-		methods = None
+		examples = crystal_box
 	- ContainerPortableSimple = Item + ContainsMixIn
-		e.g. small_barrel or silver_tray
-		methods
+		examples = small_barrel or silver_tray
+		methods =
 			- put() extension to address weight
 			- remove_item() extension to address weight
 			- chk_content_prohibited() extension to prohibit portable containers
 	- ContainerPortableLidded = ContainerPortableSimple + OpenableMixIn 
-		e.g. red_shoebox
-		methods = None
+		examples = red_shoebox
 	- ContainerPortableLockable = ContainerPortableLidded + LockableMixIn
-		e.g. black_suitcase
-		methods = None
-
+		examples = black_suitcase
 	
-	* <ClassName> class:
+* Current Custom Noun Classes:
+	- Seat (I know, the naming goes a bit sideways here) = ContainerFixedSimple for Creatures
+		examples = test_chair
+		attributes = in_reach_lst
+		methods = 
+			- chk_content_prohibited() over-ride to allow creatures
+			- enter()
+			- exit()
+
+* <ClassName> class:
 	- <method_name>() method [<ClassName> class]:
 		Overview:
 		Implementation Detail:
