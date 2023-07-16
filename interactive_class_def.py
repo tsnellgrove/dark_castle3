@@ -479,7 +479,31 @@ Durring refactoring I took a new approach: I created MixIn classes for 'openable
 			- enter()
 			- exit()
 
-* <ClassName> class:
+*** MixIn Classes
+* OpenableMixIn class:
+	- Overview:
+		An openable object can be opened and closed. In doing so, the player may reveal either a new passage or one or more new objects to investigate. The most fundamental openable object is the Door. Finding a way to open a door is one of the most basic puzzle elements in interactive fiction.
+
+		Most containers can also be openned and closed. By implementing the open and close functionality as a MixIn, the same code can be applied to many different base objects - from imposing locked-and-barred front gates to champagne bottles.
+
+	- Class Attributes:
+		OpenableMixIn has a single attribute: 'is_open'. 'is_open' is a boolean which can be either True or False (None, was a valid value in the Door class but is no longer supported or used).
+		
+	- open() and close() methods [OpenaableMixIn class]:
+		Overview:
+			open() and close() are quite simple. When called, they set the state of the is_open attribute to True or False respectively and provide confirmational output. Most of the heavy lifting gets done in open_err() and close_err() which check for obj which are not opennable / closeable, or are already openned or closed, or are locked.
+		Implementation Detail:
+			+open container disp+
+			+cond+
+		Program Architecture:
+			++
+		Game Design:
+			On the topic of OpenableMixIn, let's take a moment to meniton where Doors 'live'. Unlike most other large objects (e.g. Creatures), doors do not reside in room.floor_lst. This is because doors don't really exist in just one room. Instead, they are contained within "room pairs" - which in turn reside in the map_lst attribute of the GameState map object. See map_class_def.py for details.
+
+		Historic Note:
+			In v1 and v2 of Dark Castle, doors could be unlocked and opened but not closed or locked. The problem wasn't actually room doors - it would have been easy to code them to close and lock - the real problem was containers, which were based on the same code base as doors (as is still the case in v3). Containers were the last and most complicated thing I coded in v1 (v2 just being the web version of v1). I was running into the limits of writing the program in procedural code and by this time I knew I was going to do a full re-write in OOP. So faced with the prospect of writing a 'put' verb and more complicated room inventory management, I totally dialed it in. Containers in v1 / v2 simply dumped their contents into the room inventory the moment you managed to open them. But of course that meant you couldn't close the container - because the the objects 'in' the container would still be in the room... hence the lack of 'close' and 'lock'. From a gameplay and puzzle point of view, this was never a problem. But the asymetry always annoyed me - I pictured Nana calling out to Burt across the years "For goodness sake Burtie, close the door behind you!" Properly working Containers and Doors were one of my first goals for v3.
+
+* <class_name> class:
 	- <method_name>() method [<ClassName> class]:
 		Overview:
 		Implementation Detail:

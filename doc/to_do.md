@@ -457,6 +457,13 @@ Version 3.78 Goals
 		
 	- TBD: doc strings
 		- TBD: update existing door() module doc_strings
+			- DONE: overview
+			- TBD: OpenableMixIn
+			- TBD: LockableMixIn
+			- TBD: ContainsMixIn
+			- TBD: Door noun classes
+			- TBD: ContainerFixed noun classes
+			- TBD: ContainerPortable noun classes
 		- TBD: seat doc_strings
 			- TBD: doc_string for in_reach
 			- TBD: address Seat as Creature Container (vs. Room node discussion)
@@ -473,6 +480,7 @@ Version 3.78 Goals
 		- TBD: for enter(), autogen text based on Seat obj.descript
 			- TBD: update other autogen text to key off descript?
 			- TBD: includes take() for unwear and drink()
+		- TBD: can I get rid of Openable() method is_not_closed() ?
 		- TBD: clean-up comments
 		- TBD: clean-up is_portablecontainer()
 		- TBD: should identity methods only apply to noun classes, not MixIns? (see is_container() )
