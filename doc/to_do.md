@@ -455,10 +455,10 @@ Version 3.78 Goals
 		- DONE: ensure that no room descriptions indicate 'standing' in room (since you could be sitting)
 		- DONE: update SurfaceMach to ContainerFixedSimpleMach
 		
-	- TBD: doc strings
-		- TBD: update existing door() module doc_strings
+	- INPROC: doc strings
+		- INPROC: update existing door() module doc_strings
 			- DONE: overview
-			- TBD: OpenableMixIn
+			- DONE: OpenableMixIn
 			- TBD: LockableMixIn
 			- TBD: ContainsMixIn
 			- TBD: Door noun classes
