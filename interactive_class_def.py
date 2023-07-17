@@ -492,6 +492,7 @@ Durring refactoring I took a new approach: I created MixIn classes for 'openable
 	- open() and close() methods [OpenaableMixIn class]:
 		Overview:
 			open() and close() are quite simple. When called, they set the state of the is_open attribute to True or False respectively and provide confirmational output. Most of the heavy lifting gets done in open_err() and close_err() which check for obj which are not opennable / closeable, or are already openned or closed, or are locked.
+	
 		Implementation Detail:
 			For the purposes of examine(), an Openable object has a 'condition' (i.e. obj.has_cond() = True) and examine() => disp_cond() will indicate whether the object is openned or closed.
 	
@@ -504,7 +505,33 @@ Durring refactoring I took a new approach: I created MixIn classes for 'openable
 		Historic Note:
 			In v1 and v2 of Dark Castle, doors could be unlocked and opened but not closed or locked. The problem wasn't actually room doors - it would have been easy to code them to close and lock - the real problem was containers, which were based on the same code base as doors (as is still the case in v3). Containers were the last and most complicated thing I coded in v1 (v2 just being the web version of v1). I was running into the limits of writing the program in procedural code and by this time I knew I was going to do a full re-write in OOP. So faced with the prospect of writing a 'put' verb and more complicated room inventory management, I totally dialed it in. Containers in v1 / v2 simply dumped their contents into the room inventory the moment you managed to open them. But of course that meant you couldn't close the container - because the the objects 'in' the container would still be in the room... hence the lack of 'close' and 'lock'. From a gameplay and puzzle point of view, this was never a problem. But the asymetry always annoyed me - I pictured Nana calling out to Burt across the years "For goodness sake Burtie, close the door behind you!" Properly working Containers and Doors were one of my first goals for v3.
 
+* OpenableMixIn class:
+	- Overview:
+		When applied to an existing object, makes it lockable or unlockable. The typical intent is that the existing object also be Openable. However, this is not mandated. In theory, you could have have a car ignition Machine that was Lockable and is_unlocked == True could be the Machine trigger to start the car. 
+
+	- Class Attributes:
+		- is_unlocked: The boolean state of the lock. True => unlocked; False => locked; None is not a valid value (unlike in the previous case of the Door class). 
+		- key: The object that can lock() or unlock() the target Door or Container. If key == None, there is no keyhole and the Door or Container must be openned by some other means (e.g. the iron_portcullis). 
+
+	- lock() and unlock() methods [OpenableMixIn class]:
+		Overview:
+			Prepositional verb methods that expect a command in the form of: 'unlock front_gate with rusty_key'. If a key is not specified and Burt is holding something in his hand, that hand object will be assumed to be the key.
+
+		Implementation Detail:
+			The is_unlocked atribut is stated as a negative (i.e. is_*un*locked) so that the player's typically desired state == True.
+
+		Program Architecture:
+			Initially, all doors and containers were lockable. Since, in practace, not many doors or containers in IF are *not* lockable (even though it's a common occurence in real life) this seemed like a reasonable compromise. But once it became clear that the Surface class would be commonly used, it became clear that the Lockable state should be a MixIn class rather than directly baked into a Noun class.
+		
+		Game Design:
+			There are no fewer than 11 custom errors for lock_err() and unlock_err(). This is partly because, as a prepositional verb method, there are twice as many objects that could be non-sensical (e.g. 'lock moat with cheese') and partly to give the player a helpful nudge when possible (e.g. when they use the *wrong* key). A concerted effort is made to visualize someone walking up to a door to unlock it and to give errors in the order of "least user astonishment" (e.g. the player is warned that an opened door can't be locked before they are warned that they are holding the wrong key).
+		
+		Historic Note:
+			See historic note for OpenableMixIn().
+
 * <class_name> class:
+	- Overview:
+	- Class Attributes:
 	- <method_name>() method [<ClassName> class]:
 		Overview:
 		Implementation Detail:

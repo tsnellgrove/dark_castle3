@@ -459,7 +459,7 @@ Version 3.78 Goals
 		- INPROC: update existing door() module doc_strings
 			- DONE: overview
 			- DONE: OpenableMixIn
-			- TBD: LockableMixIn
+			- DONE: LockableMixIn
 			- TBD: ContainsMixIn
 			- TBD: Door noun classes
 			- TBD: ContainerFixed noun classes
