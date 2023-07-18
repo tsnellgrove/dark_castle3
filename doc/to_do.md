@@ -460,7 +460,7 @@ Version 3.78 Goals
 			- DONE: overview
 			- DONE: OpenableMixIn
 			- DONE: LockableMixIn
-			- TBD: ContainsMixIn
+			- DONE: ContainsMixIn
 			- TBD: Door noun classes
 			- TBD: ContainerFixed noun classes
 			- TBD: ContainerPortable noun classes

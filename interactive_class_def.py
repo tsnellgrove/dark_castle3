@@ -479,6 +479,7 @@ Durring refactoring I took a new approach: I created MixIn classes for 'openable
 			- enter()
 			- exit()
 
+			
 *** MixIn Classes
 * OpenableMixIn class:
 	- Overview:
@@ -505,6 +506,7 @@ Durring refactoring I took a new approach: I created MixIn classes for 'openable
 		Historic Note:
 			In v1 and v2 of Dark Castle, doors could be unlocked and opened but not closed or locked. The problem wasn't actually room doors - it would have been easy to code them to close and lock - the real problem was containers, which were based on the same code base as doors (as is still the case in v3). Containers were the last and most complicated thing I coded in v1 (v2 just being the web version of v1). I was running into the limits of writing the program in procedural code and by this time I knew I was going to do a full re-write in OOP. So faced with the prospect of writing a 'put' verb and more complicated room inventory management, I totally dialed it in. Containers in v1 / v2 simply dumped their contents into the room inventory the moment you managed to open them. But of course that meant you couldn't close the container - because the the objects 'in' the container would still be in the room... hence the lack of 'close' and 'lock'. From a gameplay and puzzle point of view, this was never a problem. But the asymetry always annoyed me - I pictured Nana calling out to Burt across the years "For goodness sake Burtie, close the door behind you!" Properly working Containers and Doors were one of my first goals for v3.
 
+			
 * OpenableMixIn class:
 	- Overview:
 		When applied to an existing object, makes it lockable or unlockable. The typical intent is that the existing object also be Openable. However, this is not mandated. In theory, you could have have a car ignition Machine that was Lockable and is_unlocked == True could be the Machine trigger to start the car. 
@@ -529,6 +531,59 @@ Durring refactoring I took a new approach: I created MixIn classes for 'openable
 		Historic Note:
 			See historic note for OpenableMixIn().
 
+
+* ContainsMixIn class:
+	- Overview:
+		Like doors, containers are fundamental puzzle elements. Doors are obstacles to entering rooms. Containers are obstacles to getting items.
+
+		In Dark Castle v1/2, containers were just a coding slight of hand. So when I finally coded them for real, I needed to decide in what way a container and its contents were aware of each other. Presumably the crystal_box knew it contained the kinging_scroll... but did the kinging_scroll 'know' it was in the crystal_box? 
+		
+		Ultimately, I decided on two axioms:
+			1) Within the constraints of acceptable performance, data should always live in one and only one location
+			2) An object should know about the objects contained directly within it.
+		
+		From these axioms it becomes clear that containers should know what they contain but items are location 'ignorant': the kinging_scroll has no idea that it's in the crystal_box... or if it gets moved to Burt's hand or to the floor of the throne_room. Along with meeting our 'data in only one place' constraint, this approach also has the benefit of keeping most objeccts simple. There's no need to assign and update an extra 'location' attribute for every object. The down side is that recepatacle entities (i.e. Containers, Creatures, Rooms) become more complicated - and we end up frequently searching them for their contents. This hierarchal approach to containers is fundamental and has been applied to all aspects of the game (e.g. rooms know about the objects within them but know nothing about other rooms outside of them).
+		
+	- Class Attributes:
+		- contain_lst: A list of obj in / on the container
+
+		- max_weight: The maximum combined weight of obj that the container can hold. Notice that here, weight is being used as a proxy for volume. At some point, it may become necessary to add an additional 'bulk' attribute to the Item class but for now this seems like a reasonable generalization.
+
+		- max_obj: The maximum count of obj the container can hold. The maximum is independent of max_weight and either limit can make it impossible to place an obj in / on a container. For the sake of simplicity, I typically make only one limit the constraining value and set the other to 999. My default is to constrain "enclosed contaiers" via obj weight and "surfaces" via obj count.
+
+		- prep: The preposition that should be used when putting and object 'in' or 'on' a container - so generally either "in" or "on". The need for 'prep' arrises from the fact that, from an IF topology standpoint, the only difference between an unlidded but "enclosed" container like cardboard_box and a "surface" like wooden_shelf is the preposition used when adding an object to them. Previously, Surface was a class of its own that inherited from Container. Under the MixIn approach, they are both containers - only differentiated by attribute 'prep'.
+
+	- put() method [ContainsMixIn class]:
+		Overview:
+			Used to add obj to containers.
+		
+		Implementation Detail:
+			Container.chk_content_prohibited() is used to limit what can be put in a container and is extended for 'ContainerPortableSimple'. For details on why Containers can't hold Creatures and why 'ContainerPortableSimple' can't hold 'ContainerPortableSimple' obj, please see the explanation on node hierarchy under the Room class.
+
+		Program Architecture:
+			It might appear that put() could just as well be a method of Item as it is of Container. Code-wise this would certainly work. But what becomes clear when developing verb methods is that the code for testing error cases and buffering error messages is often longer than the code for actually executing the command. A corollary to this realization is that we always want to associate a method with its most restrictive noun - which in the case of put() is Container. This means that we don't need to test to see if the target location for put() is a Container - the method simply can't run if it isn't. This same logic applies to other preposition type verb methods like show() and give() - which in theory could be methods of Item but which are more efficiently coded when naturally limited in use by being methods of Creature.
+			
+			With Burt now being of class Creature, this principle can be generalized. Nearly every command actually involves Burt as the subject (e.g. "Burt, put the Rusty Key in the Crystal Box"). So while it's tempting to ask "who or what is performing the action?" - this line of reasoning would lead to every verb method being of class Creature. Instead, we generally want to ask "who or what is being acted on?" We can formalize this logic as follows:
+				
+				The 3 rules of method association:
+				1) It's (almost) never the actor - because the actor is (almost) always Burt
+				2) Ask, who or what is being acted on
+				3) Choose the noun that is most restrictive
+					
+			When we apply this razor to "Burt, put the Rusty Key in the Crystal Box", Burt is immediately excluded and, between Rusty Key (class Item) and Crystal Box (class Container) we see that container is more restrictive. So put() is implemented as a verb method of Container.
+
+		Game Design:
+			ContainsMixIn has a number of scope and display "helper methods" that control what the player sees when they examine() a container, how obj are removed from a container, and how container capacity behaves.
+		
+			The ContainsMixIn class also sees the very first debug-only verb method: capacity(). capacity() gives the remaining weight and obj count capacity of any Container but can only be run in debug mode.
+		
+		Historic Note:
+			put() was the very first preposition-based command in DCv3. After ages of two-word commands it very exciting to be able to type 'put the rusty key in the crystal box' and have a working result!
+
+			Since the Surface class has been subsumed into the ContainsMixIn class, I will give its history here as well. My initial reason for creating the Surface class was that control_panel was previously an annoying hack. control_panel itself was of ViewOnlyMach class. This was fine but what to do with left_lever, middle_lever, right_lever, and red_button? The work-around was to mention them explicitly in the control_panel description but then stuff them in antechamber.feature_lst. This always irked me... and the more consistently behaved the Container class became the more unacceptable this work-around felt. One day I started thinking that control_panel should just be a container... but with no lid - and voila - the insight that a Surface class was needed arrived!		
+
+
+
 * <class_name> class:
 	- Overview:
 	- Class Attributes:
@@ -538,6 +593,9 @@ Durring refactoring I took a new approach: I created MixIn classes for 'openable
 		Program Architecture:
 		Game Design:
 		Historic Note:
+
+
+
 
 	NOTE: check historic put() content for inclusion
 	NOTE: special case of liquids
