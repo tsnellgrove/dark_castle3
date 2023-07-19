@@ -583,11 +583,21 @@ Durring refactoring I took a new approach: I created MixIn classes for 'openable
 			Since the Surface class has been subsumed into the ContainsMixIn class, I will give its history here as well. My initial reason for creating the Surface class was that control_panel was previously an annoying hack. control_panel itself was of ViewOnlyMach class. This was fine but what to do with left_lever, middle_lever, right_lever, and red_button? The work-around was to mention them explicitly in the control_panel description but then stuff them in antechamber.feature_lst. This always irked me... and the more consistently behaved the Container class became the more unacceptable this work-around felt. One day I started thinking that control_panel should just be a container... but with no lid - and voila - the insight that a Surface class was needed arrived!		
 
 
+* Generic Noun classs:
+	- Overview:
+		There are eight Generic Noun classes: DoorSimple, DoorLockable, ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable. With the exception of ContainerPortableSimple, each works as expected based on MixIns and their base class (ViewOnly or Item) with no additional attributes or methods.
 
-* <class_name> class:
+	- Methods:	
+		ContainerPortableSimple is an excpetion because it needs to establish how a portable container's weight changes as a result of having Items added or removed. This is accomplished via extensions to put() and remove_item(). chk_content_prohibited() is also extended to prohibit portable containers from holding other portable containers - which sets an upper bound on receptacle nesting.
+
+	- Implementation Detail:
+		Some special mention should be made here regarding Liquids. As part of refactoring Doors and Containers, teh PortableLiquidContainr class was eliminated and Liquid itself was converted from inheriting from ViewOnly (as the only member of the misc_class_def.py module) to inheriting from Item in item_class_def.py. This enables Liquid to have the newly created 'weight' attribute. Players still can't take() Liquids - but this limit is now enforced by take_err() rather than ViewOnly class membership. At present, the earthen_jug is the only portable container that with a weight limit < 1 and well_water is the only Item with a weight low enough to fit into it - so earthen_jug's unique role as a liquid container remains (albeit via kludgy work-around). I have outlined the (many) features needed to fully implement Liquids in the game and plan to deploy them in a future version.
+
+
+* Seat class:
 	- Overview:
 	- Class Attributes:
-	- <method_name>() method [<ClassName> class]:
+	- enter() and exit methods [Seat class]:
 		Overview:
 		Implementation Detail:
 		Program Architecture:
@@ -595,10 +605,16 @@ Durring refactoring I took a new approach: I created MixIn classes for 'openable
 		Historic Note:
 
 
+- TBD: doc_string for in_reach
+- TBD: address Seat as Creature Container (vs. Room node discussion)
+- TBD: Seat (nested-room) "translucent" scope (can't interact w/ Seat itself)
+- TBD: Seat as precursor to Vehical
+- TBD: Nested Rooms can't be nested (no chairs on stages)
+- TBD: Perch = translucent, Nook = opaque
+- TBD: nook gets light from room
+- TBD: Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 
 
-	NOTE: check historic put() content for inclusion
-	NOTE: special case of liquids
 
 	*** Start of Historic Monolithic Class Documentation - No Longer Accurate - See above for current! ***	
 	

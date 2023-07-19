@@ -456,23 +456,23 @@ Version 3.78 Goals
 		- DONE: update SurfaceMach to ContainerFixedSimpleMach
 		
 	- INPROC: doc strings
-		- INPROC: update existing door() module doc_strings
+		- DONE: update existing door() module doc_strings
 			- DONE: overview
 			- DONE: OpenableMixIn
 			- DONE: LockableMixIn
 			- DONE: ContainsMixIn
-			- TBD: Door noun classes
-			- TBD: ContainerFixed noun classes
-			- TBD: ContainerPortable noun classes
-		- TBD: seat doc_strings
+			- DONE: Door noun classes
+			- DONE: ContainerFixed noun classes
+			- DONE: ContainerPortable noun classes
+		- INPROC: seat doc_strings
 			- TBD: doc_string for in_reach
 			- TBD: address Seat as Creature Container (vs. Room node discussion)
 			- TBD: Seat (nested-room) "translucent" scope (can't interact w/ Seat itself)
 			- TBD: Seat as precursor to Vehical
 			- TBD: Nested Rooms can't be nested (no chairs on stages)
 			- TBD: Perch = translucent, Nook = opaque
-			- TBD: weight only vs. weight + volume (encumberance)
-			- TBD: best practices - max_obj for surfaces vs. max_wight for containers
+			- DONE: weight only vs. weight + volume (encumberance)
+			- DONE: best practices - max_obj for surfaces vs. max_wight for containers
 			- TBD: nook gets light from room
 			- TBD: Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 
