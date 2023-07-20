@@ -596,7 +596,18 @@ Durring refactoring I took a new approach: I created MixIn classes for 'openable
 
 * Seat class:
 	- Overview:
+		The Seat class inherits from ContainerFixedSimple but overrides chk_content_prohibited() to allow the receptacle to hold Creatures. Creatures use the class verb methods enter() and exit() to sit in / on a Seat obj. 
+
+		Conceptually, Seat is a new topology for Dark Castle. Before Seat, the player was either in a room  or they weren't and rooms were treated as hermetically sealed from each other. So if you were in the Entrance you could attempt any action on any obj that was present. And if you weren't in the Entrance, any reference to an obj that was there would only generate a "I can't see a <obj X> here" response.
+
+		By contrast, Seat introduces a level of transluscence to the environment. When you are seated in a chiar, you can reasonably expect to see all the objects in the (modest-sized) room you are sitting in - but unless they are nearby and in-reach, you can't necessarily examine them closely, read text on them, or pick them up.
+
+	- Implementation Detail:
+		The Seat class seeks to replicate the expected transluscent behavior - but much of the heavy lifting actually gets done in the Creature class and, of course, Invisible. Creature contains scope methods is_contained() and get_contained_by() to determine if a creature is seated and, if so, in / on what Seat obj. Creature also contains the chk_obj_in_reach() and chk_wrt_in_reach() methods to determine if a given object is in-reach of the seated creature. In Invisible, the standard error checking applied to nearly every err method includes an in_reach check and an admonition that "You'll have to exit the <Seat obj> to attempt that." if the object or writing is not in reach. 
+
 	- Class Attributes:
+		in_reach_lst: in_reach_lst provides a list of Containers or ViewOnly objects that are in-reach to the Seat obj. If the room name is given then all Items in Room.floor_lst are treated as in-reach.
+
 	- enter() and exit methods [Seat class]:
 		Overview:
 		Implementation Detail:
@@ -605,14 +616,14 @@ Durring refactoring I took a new approach: I created MixIn classes for 'openable
 		Historic Note:
 
 
-- TBD: doc_string for in_reach
 - TBD: address Seat as Creature Container (vs. Room node discussion)
-- TBD: Seat (nested-room) "translucent" scope (can't interact w/ Seat itself)
-- TBD: Seat as precursor to Vehical
 - TBD: Nested Rooms can't be nested (no chairs on stages)
+- TBD: Seat (nested-room) "translucent" scope (can't interact w/ Seat itself)
 - TBD: Perch = translucent, Nook = opaque
-- TBD: nook gets light from room
+- TBD: doc_string for in_reach
+- TBD: Seat as precursor to Vehical
 - TBD: Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
+- TBD: nook gets light from room
 
 
 
