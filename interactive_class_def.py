@@ -598,15 +598,29 @@ Durring refactoring I took a new approach: I created MixIn classes for 'openable
 	- Overview:
 		The Seat class inherits from ContainerFixedSimple but overrides chk_content_prohibited() to allow the receptacle to hold Creatures. Creatures use the class verb methods enter() and exit() to sit in / on a Seat obj. 
 
+	- Implementation Detail:
 		Conceptually, Seat is a new topology for Dark Castle. Before Seat, the player was either in a room  or they weren't and rooms were treated as hermetically sealed from each other. So if you were in the Entrance you could attempt any action on any obj that was present. And if you weren't in the Entrance, any reference to an obj that was there would only generate a "I can't see a <obj X> here" response.
 
 		By contrast, Seat introduces a level of transluscence to the environment. When you are seated in a chiar, you can reasonably expect to see all the objects in the (modest-sized) room you are sitting in - but unless they are nearby and in-reach, you can't necessarily examine them closely, read text on them, or pick them up.
 
-	- Implementation Detail:
 		The Seat class seeks to replicate the expected transluscent behavior - but much of the heavy lifting actually gets done in the Creature class and, of course, Invisible. Creature contains scope methods is_contained() and get_contained_by() to determine if a creature is seated and, if so, in / on what Seat obj. Creature also contains the chk_obj_in_reach() and chk_wrt_in_reach() methods to determine if a given object is in-reach of the seated creature. In Invisible, the standard error checking applied to nearly every err method includes an in_reach check and an admonition that "You'll have to exit the <Seat obj> to attempt that." if the object or writing is not in reach. 
 
+	- Program Architecture:
+		In addition to the introduction of 'translucence', there are a few other architectural consioderations around Seat. One is light. As of this writing, I haven't yet introduced a lighting system to Dark Castle but I do intend to. The idea is that, as part of being 'translucent', Seat will inherit light from the room. But traditional IF also includes small enclosed non-room spaces that are opaque (e.g. the Closet and Fireplace in Hollywood Hijinks). These can be useful for some puzzles and  I'm planning to introduce them down the road. My current proposed class name is Nook.
+
+		Speaking of class names, I debated heavily between Seat and Perch (naming is hard). Perch seems more generic. Seat comes with more expectations that something will be chair-like. But I had already started using Seat by the time I thought of Perch so Seat it is.
+
+		Other MixIns are possible - for example BehindMixIn and UnderMixIn - and I am considering eventually building complex and specific furniture by combining these with Seat. IF also traditionally contains Bed objects. In fact Enchanter has a sleep() mechanic that requires a Bed and I am intending to implement something similar in DC. The intention is that Bed will inherit from Seat and include the sleep() method. I like the idea that the games hint system can be embeded in sleep() generated dreams.
+
+		A final architectural decision I had to make regarding Seat was whether it would be a one-off special case or whether I would finally sucumb to an infinite-depth of recursive receptacles. Someday I will probably need to do the latter but for now I am going with the special-case approach. So no chairs on diases on stages floating in pools for Dark Castle... at least not yet! For now, Seat is a Creature Container - not a universal deeper level of room node.
+
+	- Game Design:
+		Chairs are present in traditional IF but are not typically a vital feature. The Seat class has been a lot of work so one might reasonably ask "why bother?" The answer is that Seat is really the precursor of Vehicle. In fact, a Vehicle is just a Seat that moves from room to room - with all of the same 'translucency' challenges as Seat. And the archtypal Vehicle puzzle is for the player to need to grab an object that can only be reached from thw moving Vehicle (e.g. the inflatable boat in Zork).
+
+		I'm not planning to add vehicle in the immediate future, but reading Tim Anderson's wonderful 'The History of Zork' (https://gunkies.org/wiki/History_of_Zork) brought home for me how complicated vehicles could be if I didn't plan for them from the start. So, since I was refactoring Doors, Containers, and Surfaces already, this seemed like the right time to sort out Seats.
+
 	- Class Attributes:
-		in_reach_lst: in_reach_lst provides a list of Containers or ViewOnly objects that are in-reach to the Seat obj. If the room name is given then all Items in Room.floor_lst are treated as in-reach.
+		in_reach_lst: in_reach_lst provides a list of Containers or ViewOnly objects that are in-reach to the Seat obj. If the room name is given then all Items in Room.floor_lst are treated as in-reach. Interestingly, unlesses explicitly added to in_reach, the Seat itself is not in_reach (if you wanted to examine a chair closely you would probably stand up first).
 
 	- enter() and exit methods [Seat class]:
 		Overview:
@@ -614,17 +628,6 @@ Durring refactoring I took a new approach: I created MixIn classes for 'openable
 		Program Architecture:
 		Game Design:
 		Historic Note:
-
-
-- TBD: address Seat as Creature Container (vs. Room node discussion)
-- TBD: Nested Rooms can't be nested (no chairs on stages)
-- TBD: Seat (nested-room) "translucent" scope (can't interact w/ Seat itself)
-- TBD: Perch = translucent, Nook = opaque
-- TBD: doc_string for in_reach
-- TBD: Seat as precursor to Vehical
-- TBD: Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
-- TBD: nook gets light from room
-
 
 
 	*** Start of Historic Monolithic Class Documentation - No Longer Accurate - See above for current! ***	
