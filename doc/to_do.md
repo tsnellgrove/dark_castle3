@@ -455,7 +455,7 @@ Version 3.78 Goals
 		- DONE: ensure that no room descriptions indicate 'standing' in room (since you could be sitting)
 		- DONE: update SurfaceMach to ContainerFixedSimpleMach
 		
-	- INPROC: doc strings
+	- DONE: doc strings
 		- DONE: update existing door() module doc_strings
 			- DONE: overview
 			- DONE: OpenableMixIn
@@ -464,7 +464,7 @@ Version 3.78 Goals
 			- DONE: Door noun classes
 			- DONE: ContainerFixed noun classes
 			- DONE: ContainerPortable noun classes
-		- INPROC: seat doc_strings
+		- DONE: seat doc_strings
 			- DONE: doc_string for in_reach
 			- DONE: address Seat as Creature Container (vs. Room node discussion)
 			- DONE: Seat (nested-room) "translucent" scope (can't interact w/ Seat itself)
@@ -475,7 +475,7 @@ Version 3.78 Goals
 			- DONE: best practices - max_obj for surfaces vs. max_wight for containers
 			- DONE: nook gets light from room
 			- DONE: Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
-			- TBD: method write-up (synonyms, exit special case of std_err)
+			- DONE: method write-up (synonyms, exit special case of std_err)
 
 	- TBD: general Interactive class clean-up
 		- TBD: for enter(), autogen text based on Seat obj.descript
