@@ -477,32 +477,35 @@ Version 3.78 Goals
 			- DONE: Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 			- DONE: method write-up (synonyms, exit special case of std_err)
 
-	- TBD: general Interactive class clean-up
+	- INPROC: general Interactive class clean-up
+		- DONE: should identity methods only apply to noun classes, not MixIns? [DECISION = NO]
+		- DONE: create 'weight' verb to return bulk of Item (only usable in debug mode) ??
+		- DONE: fix ContainerFixed inheritance... Lidded & Lockable should inherit from Noun, not MixIns
 		- TBD: for enter(), autogen text based on Seat obj.descript
 			- TBD: update other autogen text to key off descript?
-			- TBD: includes take() for unwear and drink()
+			- TBD: same for take() for unwear and drink()
 		- TBD: can I get rid of Openable() method is_not_closed() ?
-		- TBD: clean-up comments
-		- TBD: clean-up is_portablecontainer()
-		- TBD: should identity methods only apply to noun classes, not MixIns? (see is_container() )
-		- TBD: fix ContainerFixed inheritance... Lidded & Lockable should inherit from Noun, not MixIns
-		- TBD: probably time for a general refactor of ContainsMixIn()
 		- TBD: fix display meth use of is_closed() ; create an is_content_vis() meth for ContainsMixIn
-		- TBD: re-factor for clarity (especially ContainsMixIn)
+				- TBD: consider grouping "empty" response with contains rather than condition
+		- TBD: clean-up comments
+		- TBD: probably time for a general refactor review of ContainsMixIn()
 		- TBD: consider whether in_reach methods would be better off in Seat rather than Creature
 		- TBD: consider moving more of in_reach logic into class methods (linked to contain methods)
-		- TBD: consider grouping "empty" response with contains rather than condition
-		- TBD: assign 'max_bulk' and 'max_count' to Creatures
-		- TBD: create current_carried_cappacity() method for Creature
-		- TBD: update take() to check for 'max_bulk' 
-		- TBD: assign 'bulk' attribute to Creatures
+			- CLARIFICATION: i.e. eliminate checking if is_contained before checking in_reach
 		- TBD: in debug mode, prefix Invisible errors with [INVIS]
 		- TBD: perhaps MixIns like OpenableMixIn should have their own examine() states?
 			- IDEA: similar to has_contain()
-		- TBD: create 'bulk' verb to return bulk of obj (only usable in debug mode) ??
-		- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
-			- IDEA: could have a prep attribute for each prep verb
-			- IDEA: in interp(), have a list of all possible preps and use list to break sentence
+
+	- TBD: finish the max_weight deployment
+		- TBD: assign 'max_weight' and 'max_count' to Creatures
+		- TBD: create current_carried_cappacity() method for Creature
+		- TBD: update take() to check for 'max_bulk' 
+		- TBD: assign 'weight' attribute to Creatures
+
+
+	- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
+		- IDEA: could have a prep attribute for each prep verb
+		- IDEA: in interp(), have a list of all possible preps and use list to break sentence
 
 - TBD: instantiate Creature Containers in actual game
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?

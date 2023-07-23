@@ -284,14 +284,16 @@ class ContainerFixedSimple(ContainsMixIn, ViewOnly):
 		""" A simple non-takable container with no lid or lock. Can be a box or a shelf depending on 'prep'
 		"""
 
-class ContainerFixedLidded(ContainsMixIn, OpenableMixIn, ViewOnly):
+# class ContainerFixedLidded(ContainsMixIn, OpenableMixIn, ViewOnly):
+class ContainerFixedLidded(OpenableMixIn, ContainerFixedSimple):
 	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, is_open):
 		ContainerFixedSimple.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep)
 		OpenableMixIn.__init__(self, is_open)
 		""" A non-takable container with a lid but no lock.
 		"""
 
-class ContainerFixedLockable(LockableMixIn, ContainsMixIn, OpenableMixIn, ViewOnly):
+# class ContainerFixedLockable(LockableMixIn, ContainsMixIn, OpenableMixIn, ViewOnly):
+class ContainerFixedLockable(LockableMixIn, ContainerFixedLidded):
 	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, is_open, is_unlocked, key):
 		ContainerFixedLidded.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, is_open)
 		LockableMixIn.__init__(self, is_unlocked, key)
