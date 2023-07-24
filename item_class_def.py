@@ -40,7 +40,7 @@ class Item(ViewOnly):
 		active_gs.buffer("Taken")
 		if creature.chk_is_worn(self):
 			active_gs.buffer(f"You are no longer wearing the {self.full_name}.")
-			active_gs.buff_try_key(f"{creature.name}_remove_{self.name}")
+			active_gs.buff_try_key(f"{creature.name}_remove_{self.descript_key}")
 		
 		active_gs.get_room().remove_item(self, active_gs)
 		creature.put_in_hand(self)
@@ -93,7 +93,7 @@ class Food(Item):
 		creature.hand_lst_remove(self)
 		
 		active_gs.buffer(f"Eaten.")
-		active_gs.buff_try_key(f"{creature.name}_eat_{self.name}")
+		active_gs.buff_try_key(f"{creature.name}_eat_{self.descript_key}")
 		return 
 
 
@@ -118,7 +118,7 @@ class Liquid(Item):
 		obj.contain_lst.remove(self)
 
 		active_gs.buffer("Drunk.")
-		active_gs.buff_try_key(f"{creature.name}_drink_{self.name}")
+		active_gs.buff_try_key(f"{creature.name}_drink_{self.descript_key}")
 		return 
 
 
@@ -150,7 +150,7 @@ class Garment(Item):
 		creature.hand_lst_remove(self)
 		
 		active_gs.buffer("Worn.")
-		active_gs.buff_try_key(f"{creature.name}_wear_{self.name}")
+		active_gs.buff_try_key(f"{creature.name}_wear_{self.descript_key}")
 		return 
 
 

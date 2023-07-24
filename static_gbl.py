@@ -211,7 +211,7 @@ descript_dict = {
 		'burt_eat_stale_biscuits' : "The Stale Biscuits taste like damp cardboard that's been run over by a cart. You already regret eating them.",
 
 		### drink descriptions ###
-		'burt_drink_fresh_water' : "That was refreshing!",
+		'burt_drink_well_water' : "That was refreshing!",
 
 		### show descriptions ###
 		'burt_show_guard_goblin_shiny_sword' : "The Guard Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
@@ -241,6 +241,8 @@ descript_dict = {
 
 		'burt_fierce_teeth_royal_hedgehog_*' : "The moment you approach the Shiny Sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's Fierce Teeth.",
 
+		### test descriptions ###
+		'burt_enter_test_chair' : "The chair feels cozy and nice.",
 
 
 		#### TEST OBJ ####
@@ -267,7 +269,8 @@ descript_dict = {
 		# creatures #
 		'test_frog' : "The Test Frog looks testy.",
 
-}
+
+}		
 
 
 # *** Not in Use ***

@@ -481,9 +481,10 @@ Version 3.78 Goals
 		- DONE: should identity methods only apply to noun classes, not MixIns? [DECISION = NO]
 		- DONE: create 'weight' verb to return bulk of Item (only usable in debug mode) ??
 		- DONE: fix ContainerFixed inheritance... Lidded & Lockable should inherit from Noun, not MixIns
-		- TBD: for enter(), autogen text based on Seat obj.descript
-			- TBD: update other autogen text to key off descript?
-			- TBD: same for take() for unwear and drink()
+		- DONE: autogen text based on Seat obj.descript
+			- DONE: enter()
+			- DONE: take(), wear(), drink(), eat()
+			- DONE: show(), give()
 		- TBD: can I get rid of Openable() method is_not_closed() ?
 		- TBD: fix display meth use of is_closed() ; create an is_content_vis() meth for ContainsMixIn
 				- TBD: consider grouping "empty" response with contains rather than condition
