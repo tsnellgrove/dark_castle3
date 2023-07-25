@@ -485,7 +485,15 @@ Version 3.78 Goals
 			- DONE: enter()
 			- DONE: take(), wear(), drink(), eat()
 			- DONE: show(), give()
-		- TBD: can I get rid of Openable() method is_not_closed() ?
+		- DONE: can I get rid of Openable() method is_not_closed()
+			- DECISION: yes, only exists because in Door class, is_open could take value None
+			- DONE: replace obj.is_not_closed() with obj.is_open
+				- DONE: ContainsMixIn.get_vis_contain_lst()
+				- DONE: ContainsMixIn.disp_cond()
+				- DONE: ContainsMixIn.disp_contain()
+				- DONE: def
+			- DONE: test
+			- DONE: clean up comments
 		- TBD: fix display meth use of is_closed() ; create an is_content_vis() meth for ContainsMixIn
 				- TBD: consider grouping "empty" response with contains rather than condition
 		- TBD: clean-up comments

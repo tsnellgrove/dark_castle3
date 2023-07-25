@@ -27,10 +27,6 @@ class OpenableMixIn(object):
 	def	is_openable(self):
 		return True
 
-	# *** attribute methods ***
-	def is_not_closed(self):
-		return self.is_open is not False
-
 	# *** display methods ***
 	def has_cond(self, active_gs):
 		return True
@@ -175,7 +171,7 @@ class ContainsMixIn(object):
 	def get_vis_contain_lst(self, active_gs):
 		""" Returns the list of visible objects contained in the referenced ('self') object
 		"""
-		if (self.is_openable() and self.is_not_closed()) or (not self.is_openable()):
+		if (self.is_openable() and self.is_open) or (not self.is_openable()):
 			node2_lst = []
 			[node2_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in self.contain_lst]
 			return self.contain_lst + node2_lst
@@ -214,14 +210,14 @@ class ContainsMixIn(object):
 		super(ContainsMixIn, self).disp_cond(active_gs)
 		""" Displays object-specific conditions. Used in examine().
 		"""
-		if ((self.is_openable() and self.is_not_closed()) or not self.is_openable()) and self.is_empty():
+		if ((self.is_openable() and self.is_open) or not self.is_openable()) and self.is_empty():
 			active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
 		return 
 
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
 		"""
-		if ((self.is_openable() and self.is_not_closed()) or not self.is_openable()) and not self.is_empty():
+		if ((self.is_openable() and self.is_open) or not self.is_openable()) and not self.is_empty():
 			contain_txt_lst = [obj.full_name for obj in self.contain_lst if obj != active_gs.hero]
 			if contain_txt_lst:
 				contain_str = ", ".join(contain_txt_lst)
