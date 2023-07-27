@@ -201,23 +201,15 @@ class ContainsMixIn(object):
 
 	# *** display methods ***
 	def has_contain(self, active_gs):
-		return bool(self.contain_lst)
-
-	def has_cond(self, active_gs):
 		return True
-
-	def disp_cond(self, active_gs):
-		super(ContainsMixIn, self).disp_cond(active_gs)
-		""" Displays object-specific conditions. Used in examine().
-		"""
-		if ((self.is_openable() and self.is_open) or not self.is_openable()) and self.is_empty():
-			active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
-		return 
 
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
 		"""
-		if ((self.is_openable() and self.is_open) or not self.is_openable()) and not self.is_empty():
+		if (self.is_openable() and self.is_open) or not self.is_openable():
+			if self.is_empty():
+				active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
+				return
 			contain_txt_lst = [obj.full_name for obj in self.contain_lst if obj != active_gs.hero]
 			if contain_txt_lst:
 				contain_str = ", ".join(contain_txt_lst)

@@ -493,10 +493,15 @@ Version 3.78 Goals
 				- DONE: ContainsMixIn.disp_contain()
 				- DONE: def
 			- DONE: test
+			- DONE: clean up comments		
+		- DONE: group "empty" response with contains rather than condition
+			- DONE: elim ContainsMixIn has_cond()
+			- DONE: add "empty" option to has_contain()
+			- DONE: Test
 			- DONE: clean up comments
-		- TBD: fix display meth use of is_closed() ; create an is_content_vis() meth for ContainsMixIn
-				- TBD: consider grouping "empty" response with contains rather than condition
 		- TBD: clean-up comments
+		- TBD: create an is_content_vis() meth for ContainsMixIn
+		- TBD: understand "fix display meth use of is_closed() "
 		- TBD: probably time for a general refactor review of ContainsMixIn()
 		- TBD: consider whether in_reach methods would be better off in Seat rather than Creature
 		- TBD: consider moving more of in_reach logic into class methods (linked to contain methods)
