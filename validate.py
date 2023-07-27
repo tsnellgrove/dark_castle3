@@ -31,6 +31,8 @@ def validate(active_gs, case, word_lst):
 			elif case == 'go':
 				room_obj, word1, word2 = word_lst
 				cmd_error = getattr(room_obj, word1 + '_err')(word2, active_gs)
+			if cmd_error and active_gs.state_dict['debug']:
+				active_gs.buff_no_cr("[INVIS error postfix]")
 		except:
 			cmd_error = True
 			active_gs.buff_debug_err("[VAL] " + traceback.format_exc())

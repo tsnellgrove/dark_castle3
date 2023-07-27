@@ -499,6 +499,9 @@ Version 3.78 Goals
 			- DONE: add "empty" option to has_contain()
 			- DONE: Test
 			- DONE: clean up comments
+		- DONE: in debug mode, postfix Invisible errors with [INVIS]
+		- IDEA: should MixIns like OpenableMixIn should have their own examine() states? like has_contain() ?
+			- DECISION: "no" for now - not until actually needed - but does sort of make sense
 		- TBD: clean-up comments
 		- TBD: create an is_content_vis() meth for ContainsMixIn
 		- TBD: understand "fix display meth use of is_closed() "
@@ -506,9 +509,6 @@ Version 3.78 Goals
 		- TBD: consider whether in_reach methods would be better off in Seat rather than Creature
 		- TBD: consider moving more of in_reach logic into class methods (linked to contain methods)
 			- CLARIFICATION: i.e. eliminate checking if is_contained before checking in_reach
-		- TBD: in debug mode, prefix Invisible errors with [INVIS]
-		- TBD: perhaps MixIns like OpenableMixIn should have their own examine() states?
-			- IDEA: similar to has_contain()
 
 	- TBD: finish the max_weight deployment
 		- TBD: assign 'max_weight' and 'max_count' to Creatures
