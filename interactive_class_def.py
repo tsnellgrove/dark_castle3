@@ -54,7 +54,6 @@ class OpenableMixIn(object):
 		active_gs.buff_no_cr("Openned. ")
 		if self.is_container():
 			self.disp_contain(active_gs)
-#			self.disp_open(active_gs)
 		active_gs.buff_cr()
 		return
 
@@ -179,7 +178,6 @@ class ContainsMixIn(object):
 	def get_vis_contain_lst(self, active_gs):
 		""" Returns the list of visible objects contained in the referenced ('self') object
 		"""
-#		if (self.is_openable() and self.is_open) or (not self.is_openable()):
 		if self.is_contain_vis():
 			node2_lst = []
 			[node2_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in self.contain_lst]
@@ -215,7 +213,6 @@ class ContainsMixIn(object):
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
 		"""
-#		if (self.is_openable() and self.is_open) or not self.is_openable():
 		if self.is_contain_vis():
 			if self.is_empty():
 				active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
@@ -229,10 +226,6 @@ class ContainsMixIn(object):
 					obj.disp_contain(active_gs)
 		return 
 
-#	def disp_open(self, active_gs):
-#		if self.is_empty():
-#			active_gs.buff_no_cr(f"The {self.full_name} is empty.")
-#		self.disp_contain(active_gs)
 
 	# *** verb methods ***
 	def put(self, obj, active_gs, mode=None):
