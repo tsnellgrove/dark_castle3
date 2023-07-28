@@ -68,7 +68,7 @@ May 22, 2022
 		- 'disp' if a method's main purpose is to buffer content
 		- 'err' if method's main purpose is to test for an error, throw an error message, and return bool
 	- postfixes:
-		- N/A
+		- 'err' if method's main purpose is to test for an error, throw an error message, and return bool
 
 
 *** Standard Module Sections ***
@@ -502,8 +502,8 @@ Version 3.78 Goals
 		- DONE: in debug mode, postfix Invisible errors with [INVIS]
 		- IDEA: should MixIns like OpenableMixIn should have their own examine() states? like has_contain() ?
 			- DECISION: "no" for now - not until actually needed - but does sort of make sense
-		- TBD: clean-up comments
-		- TBD: create an is_content_vis() meth for ContainsMixIn
+		- DONE: clean-up comments
+		- DONE: create an is_contain_vis() meth for ContainsMixIn
 		- TBD: understand "fix display meth use of is_closed() "
 		- TBD: probably time for a general refactor review of ContainsMixIn()
 		- TBD: consider whether in_reach methods would be better off in Seat rather than Creature

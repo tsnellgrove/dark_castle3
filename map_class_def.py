@@ -138,7 +138,6 @@ class Map(object):
 				for room_obj in room.floor_lst:
 					if room_obj.is_seat() and room_obj.chk_contain_item(obj):
 						return room
-#			raise ValueError(f"{self.hero.name} not found.")
 			raise ValueError(f"{obj.full_name} not found.")
 
 	

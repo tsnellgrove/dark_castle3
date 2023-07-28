@@ -9,7 +9,6 @@ from item_class_def import Item
 from invisible_class_def import Invisible
 from base_class_def import ViewOnly
 from static_gbl import descript_dict
-# from door_class_def import Surface
 from interactive_class_def import ContainerFixedSimple
 
 ### classes
