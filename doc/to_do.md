@@ -504,11 +504,17 @@ Version 3.78 Goals
 			- DECISION: "no" for now - not until actually needed - but does sort of make sense
 		- DONE: clean-up comments
 		- DONE: create an is_contain_vis() meth for ContainsMixIn
-		- TBD: understand "fix display meth use of is_closed() "
-		- TBD: probably time for a general refactor review of ContainsMixIn()
-		- TBD: consider whether in_reach methods would be better off in Seat rather than Creature
-		- TBD: consider moving more of in_reach logic into class methods (linked to contain methods)
+		- CANCEL: understand "fix display meth use of is_closed() "
+		- DONE: consider whether in_reach methods would be better off in Seat rather than Creature
+			- DECISION: Ultimately, we want to know if a Creature can reach an obj.
+			- DEC: Instead of checking if a creature is contained and then checking in_reach of seat...
+			- DEC: is better to simply check reach if in_reach to Creature and let Creature check seat cond
+		- DONE: consider moving more of in_reach logic into class methods (linked to contain methods)
 			- CLARIFICATION: i.e. eliminate checking if is_contained before checking in_reach
+			- DECISION: For now, leave Invisible std err checks as is
+			- DEC: Don't want to recreate and amalgamate "is vis" routines
+			- DEC: Also, want in_reach() to funcition independently of is_contained()
+		- TBD: probably time for a general refactor review of ContainsMixIn()
 
 	- TBD: finish the max_weight deployment
 		- TBD: assign 'max_weight' and 'max_count' to Creatures
