@@ -514,7 +514,12 @@ Version 3.78 Goals
 			- DECISION: For now, leave Invisible std err checks as is
 			- DEC: Don't want to recreate and amalgamate "is vis" routines
 			- DEC: Also, want in_reach() to funcition independently of is_contained()
-		- TBD: probably time for a general refactor review of ContainsMixIn()
+		- INPROC: probably time for a general refactor review of ContainsMixIn()
+			- DONE: review of pre-verb methods
+				- DECISION: makes sense to have is_container() and has_contain()
+				- FINDING: similar to is_openable() and has_cond()
+				- FINDING: identity vs. display status
+			- TBD: review of put()
 
 	- TBD: finish the max_weight deployment
 		- TBD: assign 'max_weight' and 'max_count' to Creatures

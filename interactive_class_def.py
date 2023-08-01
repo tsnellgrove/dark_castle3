@@ -169,7 +169,7 @@ class ContainsMixIn(object):
 
 	# *** scope methods ***
 
-	def is_contain_vis(self):
+	def is_content_vis(self):
 		""" Checks whether the contents of the referenced object are visible.
 		"""
 		return (self.is_openable() and self.is_open) or not self.is_openable()
@@ -178,7 +178,7 @@ class ContainsMixIn(object):
 	def get_vis_contain_lst(self, active_gs):
 		""" Returns the list of visible objects contained in the referenced ('self') object
 		"""
-		if self.is_contain_vis():
+		if self.is_content_vis():
 			node2_lst = []
 			[node2_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in self.contain_lst]
 			return self.contain_lst + node2_lst
@@ -213,7 +213,7 @@ class ContainsMixIn(object):
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
 		"""
-		if self.is_contain_vis():
+		if self.is_content_vis():
 			if self.is_empty():
 				active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
 				return
