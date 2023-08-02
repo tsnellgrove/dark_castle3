@@ -514,19 +514,25 @@ Version 3.78 Goals
 			- DECISION: For now, leave Invisible std err checks as is
 			- DEC: Don't want to recreate and amalgamate "is vis" routines
 			- DEC: Also, want in_reach() to funcition independently of is_contained()
-		- INPROC: probably time for a general refactor review of ContainsMixIn()
+		- DONE: probably time for a high-level refactor review of ContainsMixIn()
 			- DONE: review of pre-verb methods
 				- DECISION: makes sense to have is_container() and has_contain()
 				- FINDING: similar to is_openable() and has_cond()
 				- FINDING: identity vs. display status
-			- TBD: review of put()
+			- DONE: review of put()
 
-	- TBD: finish the max_weight deployment
+	- INPROC: finish the max_weight deployment
+		- INPROC: assign 'weight' attribute to Creature
+			- NOTE: need to include weight of std items
+			- DECISION: assign weigth directly to Creature - not to inventory obj (e.g. 'fist')
+			- TBD: assign attribute
 		- TBD: assign 'max_weight' and 'max_count' to Creatures
 		- TBD: create current_carried_cappacity() method for Creature
-		- TBD: update take() to check for 'max_bulk' 
-		- TBD: assign 'weight' attribute to Creatures
-
+		- TBD: update take() to check for 'max_bulk' and increment 'weight'
+			- NOTE: actually, maybe need to update 'append' method to account for modular machines
+		- TBD: update drop() and put() to decrement 'weight'
+			- NOTE: actually, maybe need to update 'remove' method to account for machines, eat(), drink()
+		- TBD: create get_weight() and capacity() debug methods for Creature
 
 	- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 		- IDEA: could have a prep attribute for each prep verb
