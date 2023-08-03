@@ -522,17 +522,25 @@ Version 3.78 Goals
 			- DONE: review of put()
 
 	- INPROC: finish the max_weight deployment
-		- INPROC: assign 'weight' attribute to Creature
+		- DONE: assign 'weight' attribute to Creature
 			- NOTE: need to include weight of std items
 			- DECISION: assign weigth directly to Creature - not to inventory obj (e.g. 'fist')
-			- TBD: assign attribute
-		- TBD: assign 'max_weight' and 'max_count' to Creatures
+			- DONE: add 'weight' attribute to Creature class
+			- DONE: add 'weight' setters & getters to Creature class
+			- DONE: update Creature obj with weight
+		- TBD: assign max_weight attribute to Creatures
+			- TBD: add max_weight attribute to Creature class
+			- TBD: add max_weight setters & getters to Creature class
+			- TBD: update Creature obj with max_weight
+				- DECISION: burt = 150, goblin = 999, hedgehog = 999
+			- TBD: test!
 		- TBD: create current_carried_cappacity() method for Creature
 		- TBD: update take() to check for 'max_bulk' and increment 'weight'
 			- NOTE: actually, maybe need to update 'append' method to account for modular machines
 		- TBD: update drop() and put() to decrement 'weight'
 			- NOTE: actually, maybe need to update 'remove' method to account for machines, eat(), drink()
 		- TBD: create get_weight() and capacity() debug methods for Creature
+		- TBD: doc_string regarding max_weight vs. max_count for creatures
 
 	- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 		- IDEA: could have a prep attribute for each prep verb

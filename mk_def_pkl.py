@@ -65,9 +65,9 @@ stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_bis
 well_water = Liquid('well_water', 'Well Water', 'water', 'well_water', None, 0.5)
 
 royal_crown = Garment('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 5, 'hat')
-baseball_cap = Garment('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, 5, 'hat')
+baseball_cap = Garment('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, 1, 'hat')
 hedgehog_broach = Garment('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedgehog_broach', None, 1, 'pin')
-red_bandana = Garment('red_bandana', 'Red Bandana', 'bandana', 'red_bandana', None, 5, 'hat')
+red_bandana = Garment('red_bandana', 'Red Bandana', 'bandana', 'red_bandana', None, 1, 'hat')
 big_medal = Garment('big_medal', 'Big Medal', 'medal', 'big_medal', gold_capitals, 2, 'pin')
 
 grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing, 10, 
@@ -200,7 +200,7 @@ guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 						'shiny_sword_burt_*' : 'tgt_death',
 						'weapon_*_*' : 'easy_parry', # parry
 						'*_*_*' : 'src_death'
-				})
+				}, 93)
 				
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None,
 				None, [], [silver_key], [red_bandana], [fierce_teeth, loyalty],
@@ -214,7 +214,7 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 						'weapon_burt_*' : 'tgt_flee_dc',
 						'unarmed_burt_*' : 'easy_dodge', # karate kid
 						'*_*_*' : 'easy_dodge' # dodge
-				})
+				}, 22)
 
 burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 				None, [], [rusty_key, cheese_wedge, stale_biscuits, earthen_jug], [], [fist, backpack, conscience, brass_lantern],
@@ -225,7 +225,7 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 						'grimy_axe_guard_goblin_weapon' : 'hard_parry', # parry
 						'grimy_axe_guard_goblin_*' : 'tgt_death',
 						'fierce_teeth_royal_hedgehog_*' : 'jump_back'
-				}) # note: for non-burt-creature testing frog_travel_mach was in burt.invis_lstj; glass_bottle temporarily removed from inv
+				}, 106.5) # note: for non-burt-creature testing frog_travel_mach was in burt.invis_lstj; glass_bottle temporarily removed from inv
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],

@@ -20,7 +20,8 @@ def attack_obj_category(obj, creature):
 ### classes
 class Creature(ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, state, hand_lst, bkpk_lst,
-		worn_lst, feature_lst, invis_lst, give_dict, is_attackable, attacked_dict):
+		worn_lst, feature_lst, invis_lst, give_dict, is_attackable, attacked_dict, weight):
+#		worn_lst, feature_lst, invis_lst, give_dict, is_attackable, attacked_dict):
 		super().__init__(name, full_name, root_name, descript_key, writing)
 		self._state = state # not in use (v3.75) - for state machine functionality, hunger & thirst
 		self._hand_lst = hand_lst # list of items in creature's hand; is typically only 1 item 
@@ -31,6 +32,7 @@ class Creature(ViewOnly):
 		self._give_dict = give_dict # dict of creature reactions to gifts
 		self._is_attackable = is_attackable # bool indicating weather Burt can attack the creature
 		self._attacked_dict = attacked_dict # dict of creature reactions to being attacked
+		self._weight = weight # represents the weight of the creature
 		""" Creatures interact with the world of Dark Castle, move from room to room, and initiate actions. Burt is an object of class Creature.
 		"""
 
@@ -86,6 +88,14 @@ class Creature(ViewOnly):
 	@property
 	def attacked_dict(self):
 		return self._attacked_dict
+
+	@property
+	def weight(self):
+		return self._weight
+
+	@weight.setter
+	def weight(self, new_weight):
+		self._weight = new_weight
 
 	# *** attrib methods - hand ***
 	def hand_lst_append(self, item):
