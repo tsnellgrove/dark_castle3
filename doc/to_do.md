@@ -528,18 +528,23 @@ Version 3.78 Goals
 			- DONE: add 'weight' attribute to Creature class
 			- DONE: add 'weight' setters & getters to Creature class
 			- DONE: update Creature obj with weight
-		- TBD: assign max_weight attribute to Creatures
-			- TBD: add max_weight attribute to Creature class
-			- TBD: add max_weight setters & getters to Creature class
-			- TBD: update Creature obj with max_weight
+		- DONE: assign max_weight attribute to Creatures
+			- DONE: add max_weight attribute to Creature class
+			- DONE: add max_weight setters & getters to Creature class
+			- DONE: update Creature obj with max_weight
 				- DECISION: burt = 150, goblin = 999, hedgehog = 999
-			- TBD: test!
-		- TBD: create current_carried_cappacity() method for Creature
-		- TBD: update take() to check for 'max_bulk' and increment 'weight'
+			- DONE: test!
+		- CANCEL: create current_carried_cappacity() method for Creature
+		- INPROC: update take_err() to check for 'max_bulk'
+			- DONE: update take_err() method
+			- TBD: testing!
+		- TBD: update take() to increment Creature.weight
 			- NOTE: actually, maybe need to update 'append' method to account for modular machines
+			- NOTE: key method to update may be Creature.put_in_hand()
 		- TBD: update drop() and put() to decrement 'weight'
 			- NOTE: actually, maybe need to update 'remove' method to account for machines, eat(), drink()
 		- TBD: create get_weight() and capacity() debug methods for Creature
+		- TBD: address give() method if target creature is beyond max_weight
 		- TBD: doc_string regarding max_weight vs. max_count for creatures
 
 	- IDEA: in interp(), what about making prep check similar to put() for all prep verbs

@@ -222,6 +222,9 @@ class Invisible(object):
 			if obj.is_creature() and obj is not active_gs.hero and self in obj.get_vis_contain_lst(active_gs):
 				active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 				return True
+		if creature.max_weight - creature.weight() - self.weight < 0:
+			active_gs.buffer(f"You don't have enough capacity to take the {self.full_name} along with everything else you are carrying.")
+			return True
 		return False
 
 	def drop_err(self, active_gs):
