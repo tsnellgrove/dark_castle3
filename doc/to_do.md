@@ -535,6 +535,7 @@ Version 3.78 Goals
 				- DECISION: burt = 150, goblin = 999, hedgehog = 999
 			- DONE: test!
 		- CANCEL: create current_carried_cappacity() method for Creature
+			- DECISION: Doesn't make sense; Container was diff - was ViewOnly so had no weight attrib of own
 		- INPROC: update take_err() to check for 'max_bulk'
 			- DONE: update take_err() method
 			- TBD: testing!
