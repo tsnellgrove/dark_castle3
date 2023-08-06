@@ -538,7 +538,10 @@ Version 3.78 Goals
 			- DECISION: Doesn't make sense; Container was diff - was ViewOnly so had no weight attrib of own
 		- INPROC: update take_err() to check for 'max_bulk'
 			- DONE: update take_err() method
-			- TBD: testing!
+			- DONE: testing!
+				- DONE: create big_rock with weight = 50
+				- DONE: add big_rock to entrance
+				- DONE: Test taking big_rock
 		- TBD: update take() to increment Creature.weight
 			- NOTE: actually, maybe need to update 'append' method to account for modular machines
 			- NOTE: key method to update may be Creature.put_in_hand()
