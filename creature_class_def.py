@@ -120,6 +120,7 @@ class Creature(ViewOnly):
 			self.bkpk_lst_append(self.get_hand_item())
 			self.hand_lst_remove(self.get_hand_item())
 		self.hand_lst_append(new_item)
+		self.weight += new_item.weight
 
 	def chk_in_hand(self, obj):
 		return obj in self.hand_lst
@@ -510,6 +511,16 @@ class Creature(ViewOnly):
 			active_gs.buffer(f"You are now standing in the {room.full_name}.")
 		else:
 			active_gs.buffer(f"The {self.full_name} is now standing.")
+		return
+
+# debug methods
+	def get_weight(self, active_gs, mode=None):
+		""" Reports the weight of an Item. Only usable in debug mode.
+		"""
+		if mode is None:
+			mode = 'std'
+		
+		active_gs.buffer(f"The weight of the {self.full_name} is {self.weight}.")
 		return
 
 """ *** Module Documentation ***

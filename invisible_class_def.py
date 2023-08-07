@@ -388,8 +388,8 @@ class Invisible(object):
 		if not active_gs.state_dict['debug']:
 			active_gs.buffer("Please start your sentence with a known verb!")
 			return True
-		if not self.is_item():
-			active_gs.buffer("Only Items have weight.")
+		if not (self.is_item() or self.is_creature()):
+			active_gs.buffer("Only Items and Creatures have weight.")
 			return True
 		return False
 

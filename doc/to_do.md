@@ -536,19 +536,24 @@ Version 3.78 Goals
 			- DONE: test!
 		- CANCEL: create current_carried_cappacity() method for Creature
 			- DECISION: Doesn't make sense; Container was diff - was ViewOnly so had no weight attrib of own
-		- INPROC: update take_err() to check for 'max_bulk'
+		- DONE: update take_err() to check for 'max_bulk'
 			- DONE: update take_err() method
 			- DONE: testing!
-				- DONE: create big_rock with weight = 50
+				- DONE: create big_rock with weight = 40
 				- DONE: add big_rock to entrance
 				- DONE: Test taking big_rock
-		- TBD: update take() to increment Creature.weight
+		- DONE: update take() to increment Creature.weight
 			- NOTE: actually, maybe need to update 'append' method to account for modular machines
 			- NOTE: key method to update may be Creature.put_in_hand()
+			- DONE: update Creature.put_in_hand()
+		- DONE: create get_weight() debug methods for Creature
+			- DONE: test!
 		- TBD: update drop() and put() to decrement 'weight'
 			- NOTE: actually, maybe need to update 'remove' method to account for machines, eat(), drink()
-		- TBD: create get_weight() and capacity() debug methods for Creature
+			- TBD: decrement weight on remove
+			- TBD: address case of item taken from backpack (weight should not change)
 		- TBD: address give() method if target creature is beyond max_weight
+			IDEA: "the X refuses the item. They appear to be overburdened."
 		- TBD: doc_string regarding max_weight vs. max_count for creatures
 
 	- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
