@@ -548,9 +548,13 @@ Version 3.78 Goals
 			- DONE: update Creature.put_in_hand()
 		- DONE: create get_weight() debug methods for Creature
 			- DONE: test!
-		- TBD: update drop() and put() to decrement 'weight'
+		- INPROC: update drop() and put() to decrement 'weight'
 			- NOTE: actually, maybe need to update 'remove' method to account for machines, eat(), drink()
-			- TBD: decrement weight on remove
+			- DONE: decrement weight on Creature.hand_lst_remove()
+			- INPROC: test
+				- FINDING: Creature.hand_lst_remove() won't reduce burt's weight below starting val ???
+				- TBD: troubleshoot (prints and long-form math)
+			- TBD: address special case of drink() [Container.contain_lst_remove()]
 			- TBD: address case of item taken from backpack (weight should not change)
 		- TBD: address give() method if target creature is beyond max_weight
 			IDEA: "the X refuses the item. They appear to be overburdened."

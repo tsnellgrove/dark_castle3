@@ -104,10 +104,14 @@ class Creature(ViewOnly):
 
 	# *** attrib methods - hand ***
 	def hand_lst_append(self, item):
-		self._hand_lst.append(item)
+#		self._hand_lst.append(item)
+		self.hand_lst.append(item)
 
 	def hand_lst_remove(self, item):
-		self._hand_lst.remove(item)
+#		self._hand_lst.remove(item)
+		self.hand_lst.remove(item)
+		self.weight -= item.weight
+		return
 
 	def hand_is_empty(self):
 		return not bool(self.hand_lst)
