@@ -548,7 +548,7 @@ Version 3.78 Goals
 			- DONE: update Creature.put_in_hand()
 		- DONE: create get_weight() debug methods for Creature
 			- DONE: test!
-		- INPROC: update drop() and put() to decrement 'weight'
+		- DONE: update drop() and put() to decrement 'weight'
 			- NOTE: actually, maybe need to update 'remove' method to account for machines, eat(), drink()
 			- DONE: decrement weight on Creature.hand_lst_remove()
 			- DONE: test
@@ -562,13 +562,16 @@ Version 3.78 Goals
 				- DONE: set earthen_jug weight to 1.5
 				- DONE: change drink() => remove_item()
 				- DONE: update drink() to decrement Creature weight
+		- TBD: weight inc / dec for garment / wear
 		- TBD: standardize portable container weight increment / decrement
 			- TBD: move Container increment and decrement to append and remove with conditional on is_item()
 			- TBD: do I really need an extension for portable container? Can I conditionalize probhibited?
+		- TBD: handle edge cases (e.g. 1 lb diff order of operations issues)
 		- TBD: address give() method if target creature is beyond max_weight
 			IDEA: "the X refuses the item. They appear to be overburdened."
-		- TBD: handle edge cases (e.g. 1 lb diff order of operations issues)
-		- TBD: doc_string regarding max_weight vs. max_count for creatures
+		- TBD: doc_strings
+			- TBD: doc_string regarding max_weight vs. max_count for creatures
+			- TBD: compare weight in dark castle to Zork inventory capacity 
 
 	- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 		- IDEA: could have a prep attribute for each prep verb
