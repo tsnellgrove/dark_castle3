@@ -106,11 +106,13 @@ class Creature(ViewOnly):
 	def hand_lst_append(self, item):
 #		self._hand_lst.append(item)
 		self.hand_lst.append(item)
+		self.weight += item.weight
 
 	def hand_lst_remove(self, item):
 #		self._hand_lst.remove(item)
 		self.hand_lst.remove(item)
-		self.weight -= item.weight
+#		self.weight -= item.weight
+		self.weight = self.weight - item.weight
 		return
 
 	def hand_is_empty(self):
@@ -124,7 +126,7 @@ class Creature(ViewOnly):
 			self.bkpk_lst_append(self.get_hand_item())
 			self.hand_lst_remove(self.get_hand_item())
 		self.hand_lst_append(new_item)
-		self.weight += new_item.weight
+#		self.weight += new_item.weight
 
 	def chk_in_hand(self, obj):
 		return obj in self.hand_lst
@@ -140,9 +142,11 @@ class Creature(ViewOnly):
 
 	def bkpk_lst_append(self, item):
 		self._bkpk_lst.append(item)
+		self.weight += item.weight
 
 	def bkpk_lst_remove(self, item):
 		self._bkpk_lst.remove(item)
+		self.weight = self.weight - item.weight
 
 	# *** attrib methods - worn ***
 	def worn_lst_append(self, item):

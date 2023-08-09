@@ -115,7 +115,10 @@ class Liquid(Item):
 			mode = 'std'
 		creature = active_gs.hero
 
-		obj.contain_lst.remove(self)
+#		obj.contain_lst.remove(self)
+		obj.remove_item(self, active_gs)
+		if obj.is_item():
+			creature.weight = creature.weight - self.weight
 
 		active_gs.buffer("Drunk.")
 		active_gs.buff_try_key(f"{creature.name}_drink_{self.descript_key}")

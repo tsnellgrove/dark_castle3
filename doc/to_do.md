@@ -551,13 +551,23 @@ Version 3.78 Goals
 		- INPROC: update drop() and put() to decrement 'weight'
 			- NOTE: actually, maybe need to update 'remove' method to account for machines, eat(), drink()
 			- DONE: decrement weight on Creature.hand_lst_remove()
-			- INPROC: test
+			- DONE: test
 				- FINDING: Creature.hand_lst_remove() won't reduce burt's weight below starting val ???
-				- TBD: troubleshoot (prints and long-form math)
-			- TBD: address special case of drink() [Container.contain_lst_remove()]
-			- TBD: address case of item taken from backpack (weight should not change)
+				- DONE: troubleshoot (prints and long-form math)
+				- DONE: move Creature weight increment to hand append method
+			- DONE: address case of item taken from backpack (weight should not change)
+			- DONE: address special case of drink()
+				- NOTE: needs to be addressed for both Creature and Item
+				- IDEA: [Container.contain_lst_remove()]
+				- DONE: set earthen_jug weight to 1.5
+				- DONE: change drink() => remove_item()
+				- DONE: update drink() to decrement Creature weight
+		- TBD: standardize portable container weight increment / decrement
+			- TBD: move Container increment and decrement to append and remove with conditional on is_item()
+			- TBD: do I really need an extension for portable container? Can I conditionalize probhibited?
 		- TBD: address give() method if target creature is beyond max_weight
 			IDEA: "the X refuses the item. They appear to be overburdened."
+		- TBD: handle edge cases (e.g. 1 lb diff order of operations issues)
 		- TBD: doc_string regarding max_weight vs. max_count for creatures
 
 	- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
