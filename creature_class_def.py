@@ -21,7 +21,6 @@ def attack_obj_category(obj, creature):
 class Creature(ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, state, hand_lst, bkpk_lst,
 		worn_lst, feature_lst, invis_lst, give_dict, is_attackable, attacked_dict, weight, max_weight):
-#		worn_lst, feature_lst, invis_lst, give_dict, is_attackable, attacked_dict):
 		super().__init__(name, full_name, root_name, descript_key, writing)
 		self._state = state # not in use (v3.75) - for state machine functionality, hunger & thirst
 		self._hand_lst = hand_lst # list of items in creature's hand; is typically only 1 item 
@@ -104,14 +103,11 @@ class Creature(ViewOnly):
 
 	# *** attrib methods - hand ***
 	def hand_lst_append(self, item):
-#		self._hand_lst.append(item)
 		self.hand_lst.append(item)
 		self.weight += item.weight
 
 	def hand_lst_remove(self, item):
-#		self._hand_lst.remove(item)
 		self.hand_lst.remove(item)
-#		self.weight -= item.weight
 		self.weight = self.weight - item.weight
 		return
 
@@ -126,7 +122,6 @@ class Creature(ViewOnly):
 			self.bkpk_lst_append(self.get_hand_item())
 			self.hand_lst_remove(self.get_hand_item())
 		self.hand_lst_append(new_item)
-#		self.weight += new_item.weight
 
 	def chk_in_hand(self, obj):
 		return obj in self.hand_lst
