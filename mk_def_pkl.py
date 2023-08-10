@@ -242,7 +242,7 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-				[burt, cardboard_box, small_barrel, red_shoebox, black_suitcase, heavy_rock], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
+				[burt, cardboard_box, small_barrel, red_shoebox, black_suitcase, heavy_rock, baseball_cap], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
 				# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],

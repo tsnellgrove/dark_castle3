@@ -151,9 +151,11 @@ class Creature(ViewOnly):
 	# *** attrib methods - worn ***
 	def worn_lst_append(self, item):
 		self._worn_lst.append(item)
+		self.weight += item.weight
 
 	def worn_lst_remove(self, item):
 		self._worn_lst.remove(item)
+		self.weight = self.weight - item.weight
 
 	def worn_is_empty(self):
 		return not bool(self.worn_lst)

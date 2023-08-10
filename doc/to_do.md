@@ -562,15 +562,22 @@ Version 3.78 Goals
 				- DONE: set earthen_jug weight to 1.5
 				- DONE: change drink() => remove_item()
 				- DONE: update drink() to decrement Creature weight
-		- TBD: weight inc / dec for garment / wear
-		- TBD: standardize portable container weight increment / decrement
+		- DONE: weight inc / dec for garment / wear
+			- DONE: add baseball_cap to entrance
+			- DONE: test!
+				- FINDING: weight drops when wearing cap; then increments when taking it
+			- DONE: fix
+			- DONE: test
+		- INPROC: standardize portable container weight increment / decrement
+			- DONE: move hand weight increment to append method
 			- TBD: move Container increment and decrement to append and remove with conditional on is_item()
 			- TBD: do I really need an extension for portable container? Can I conditionalize probhibited?
 		- TBD: handle edge cases (e.g. 1 lb diff order of operations issues)
 		- TBD: address give() method if target creature is beyond max_weight
 			IDEA: "the X refuses the item. They appear to be overburdened."
 		- TBD: doc_strings
-			- TBD: doc_string regarding max_weight vs. max_count for creatures
+			- TBD: purpose for max_weight & max_count: physics puzzles, perlilous travel, finite surfaces
+			- TBD: max_weight vs. max_count for creatures
 			- TBD: compare weight in dark castle to Zork inventory capacity 
 
 	- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
