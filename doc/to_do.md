@@ -570,8 +570,10 @@ Version 3.78 Goals
 			- DONE: test
 		- INPROC: standardize portable container weight increment / decrement
 			- DONE: move hand weight increment to append method
-			- TBD: move Container increment and decrement to append and remove with conditional on is_item()
+			- DONE: move Container increment and decrement to append and remove with conditional on is_item()
 			- TBD: do I really need an extension for portable container? Can I conditionalize probhibited?
+		- TBD: handle case where burt takes item from portable container in his inventory
+			- IDEA: ref creature.weight in remove_contain_lst()
 		- TBD: handle edge cases (e.g. 1 lb diff order of operations issues)
 		- TBD: address give() method if target creature is beyond max_weight
 			IDEA: "the X refuses the item. They appear to be overburdened."

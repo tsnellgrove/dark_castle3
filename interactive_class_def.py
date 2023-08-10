@@ -156,9 +156,17 @@ class ContainsMixIn(object):
 	# *** attrib methods ***
 	def contain_lst_append(self, item):
 		self._contain_lst.append(item)
+		# Increment Portable Container weight when an Item is put in the Container
+		if self.is_item():
+			self.weight += item.weight
+		return
 
 	def contain_lst_remove(self, item):
 		self._contain_lst.remove(item)
+		# Decrement Portable Container weight when an Item is removed from the Container
+		if self.is_item():
+			self.weight -= item.weight
+		return
 
 	def is_empty(self):
 		return not self.contain_lst
@@ -299,26 +307,26 @@ class ContainerPortableSimple(ContainsMixIn, Item):
 		"""
 
 	# *** scope method extensions ***
-	def remove_item(self, item, active_gs):
-		super(ContainerPortableSimple, self).remove_item(item, active_gs)
-		""" Decrements Portable Container weight when an Item is removed from the Container.
-		"""
-		self.weight -= item.weight
-		return
+#	def remove_item(self, item, active_gs):
+#		super(ContainerPortableSimple, self).remove_item(item, active_gs)
+#		""" Decrements Portable Container weight when an Item is removed from the Container.
+#		"""
+#		self.weight -= item.weight
+#		return
 
 	def chk_content_prohibited(self, obj):
 		return super(ContainerPortableSimple, self).chk_content_prohibited(obj) or (obj.is_container() and obj.is_item)
 
 	# *** verb method extensions ***
-	def put(self, obj, active_gs, mode=None):
-		super(ContainerPortableSimple, self).put(obj, active_gs, mode=None)
-		""" Increments Portable Container weight when an Item is put in the Container.
-		"""
-		if mode is None:
-			mode = 'std'
+#	def put(self, obj, active_gs, mode=None):
+#		super(ContainerPortableSimple, self).put(obj, active_gs, mode=None)
+#		""" Increments Portable Container weight when an Item is put in the Container.
+#		"""
+#		if mode is None:
+#			mode = 'std'
 
-		self.weight += obj.weight
-		return
+#		self.weight += obj.weight
+#		return
 
 class ContainerPortableLidded(OpenableMixIn, ContainerPortableSimple):
 	def __init__(self, name, full_name, root_name, descript_key, writing, weight, contain_lst, max_weight, max_obj, prep, is_open):
