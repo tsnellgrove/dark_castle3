@@ -568,10 +568,10 @@ Version 3.78 Goals
 				- FINDING: weight drops when wearing cap; then increments when taking it
 			- DONE: fix
 			- DONE: test
-		- INPROC: standardize portable container weight increment / decrement
+		- DONE: standardize portable container weight increment / decrement
 			- DONE: move hand weight increment to append method
 			- DONE: move Container increment and decrement to append and remove with conditional on is_item()
-			- TBD: do I really need an extension for portable container? Can I conditionalize probhibited?
+			- DONE: do I really need an extension for portable container? Can I conditionalize probhibited?
 		- TBD: handle case where burt takes item from portable container in his inventory
 			- IDEA: ref creature.weight in remove_contain_lst()
 		- TBD: handle edge cases (e.g. 1 lb diff order of operations issues)
@@ -581,6 +581,7 @@ Version 3.78 Goals
 			- TBD: purpose for max_weight & max_count: physics puzzles, perlilous travel, finite surfaces
 			- TBD: max_weight vs. max_count for creatures
 			- TBD: compare weight in dark castle to Zork inventory capacity 
+			- TBD: update doc_string for Portable Containers (extensions gone)
 
 	- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 		- IDEA: could have a prep attribute for each prep verb

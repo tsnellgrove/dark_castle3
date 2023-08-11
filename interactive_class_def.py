@@ -209,7 +209,12 @@ class ContainsMixIn(object):
 		self.contain_lst_remove(item)
 
 	def chk_content_prohibited(self, obj):
-		return obj.is_creature()
+		if obj.is_creature():
+			return True
+		# can't put portable containers in portable containers
+		if self.is_item() and obj.is_container():
+			return True
+		return False
 
 	def get_contained_weight(self):
 		return sum(element.weight for element in self.contain_lst)
@@ -314,8 +319,8 @@ class ContainerPortableSimple(ContainsMixIn, Item):
 #		self.weight -= item.weight
 #		return
 
-	def chk_content_prohibited(self, obj):
-		return super(ContainerPortableSimple, self).chk_content_prohibited(obj) or (obj.is_container() and obj.is_item)
+#	def chk_content_prohibited(self, obj):
+#		return super(ContainerPortableSimple, self).chk_content_prohibited(obj) or (obj.is_container() and obj.is_item)
 
 	# *** verb method extensions ***
 #	def put(self, obj, active_gs, mode=None):
