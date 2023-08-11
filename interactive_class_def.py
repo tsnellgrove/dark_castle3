@@ -311,28 +311,6 @@ class ContainerPortableSimple(ContainsMixIn, Item):
 		""" A simple, takable container with no lid or lock. Can be a box or a surface (e.g. a tray) depending on 'prep'
 		"""
 
-	# *** scope method extensions ***
-#	def remove_item(self, item, active_gs):
-#		super(ContainerPortableSimple, self).remove_item(item, active_gs)
-#		""" Decrements Portable Container weight when an Item is removed from the Container.
-#		"""
-#		self.weight -= item.weight
-#		return
-
-#	def chk_content_prohibited(self, obj):
-#		return super(ContainerPortableSimple, self).chk_content_prohibited(obj) or (obj.is_container() and obj.is_item)
-
-	# *** verb method extensions ***
-#	def put(self, obj, active_gs, mode=None):
-#		super(ContainerPortableSimple, self).put(obj, active_gs, mode=None)
-#		""" Increments Portable Container weight when an Item is put in the Container.
-#		"""
-#		if mode is None:
-#			mode = 'std'
-
-#		self.weight += obj.weight
-#		return
-
 class ContainerPortableLidded(OpenableMixIn, ContainerPortableSimple):
 	def __init__(self, name, full_name, root_name, descript_key, writing, weight, contain_lst, max_weight, max_obj, prep, is_open):
 		ContainerPortableSimple.__init__(self, name, full_name, root_name, descript_key, writing, weight, contain_lst, max_weight, max_obj, prep)
