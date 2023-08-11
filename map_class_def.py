@@ -60,6 +60,17 @@ class Map(object):
 		"""
 		return any(obj.name == name for room in self.get_room_lst() for obj in room.floor_lst)
 
+	def get_obj_room(self, obj):
+		""" Returns the room that contains obj
+		"""
+		for room in self.get_room_lst():
+			if obj in room.floor_lst:
+				return room
+			for floor_obj in room.floor_lst:
+				if floor_obj.chk_contain_item(self, obj):
+					return room
+		raise ValueError(f"{obj.full_name} not found.")
+
 	def	get_door_lst(self, room):
 		""" Returns a list of doors adjoining a given room
 		"""

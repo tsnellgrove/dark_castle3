@@ -572,8 +572,13 @@ Version 3.78 Goals
 			- DONE: move hand weight increment to append method
 			- DONE: move Container increment and decrement to append and remove with conditional on is_item()
 			- DONE: do I really need an extension for portable container? Can I conditionalize probhibited?
-		- TBD: handle case where burt takes item from portable container in his inventory
+		- INPROC: handle case where burt takes item from portable container in his inventory
 			- IDEA: ref creature.weight in remove_contain_lst()
+			- DONE: create map.get_obj_room(self, obj)
+				- TBD: test
+			- TBD: create map.chk_obj_in_creature_inv(self, item) [returns T or F]
+			- TBD: create map.get_creature_holding_item(self, item) [returns creature]
+			- TBD: update remove_contain_lst() for port container if obj_in_creature to dec creature.weight
 		- TBD: handle edge cases (e.g. 1 lb diff order of operations issues)
 		- TBD: address give() method if target creature is beyond max_weight
 			IDEA: "the X refuses the item. They appear to be overburdened."
