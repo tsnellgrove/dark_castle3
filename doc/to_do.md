@@ -575,7 +575,9 @@ Version 3.78 Goals
 		- INPROC: handle case where burt takes item from portable container in his inventory
 			- IDEA: ref creature.weight in remove_contain_lst()
 			- DONE: create map.get_obj_room(self, obj)
-				- TBD: test
+			- DONE: update std_vis_err to give room of non-vis obj if debug == True
+			- INPROC: test
+				- TBD: need to enhance map.chk_obj_exist() to search containers
 			- TBD: create map.chk_obj_in_creature_inv(self, item) [returns T or F]
 			- TBD: create map.get_creature_holding_item(self, item) [returns creature]
 			- TBD: update remove_contain_lst() for port container if obj_in_creature to dec creature.weight
