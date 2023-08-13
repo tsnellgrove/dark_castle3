@@ -49,11 +49,29 @@ class Map(object):
 		[room_lst.append(room_pair[room[0]]) for room_pair in self.map_lst for room in room_key_lst
 				if room_pair[room[0]] not in room_lst]
 		return room_lst
-	
+
+	def chk_obj_exist_recursive(self, obj, lst):
+		""" Recursive approach
+		"""
+		for element in lst:
+			if element == obj:
+				return True
+			elif isinstance(element, list):
+				return self.chk_obj_exist_recursive(obj, element)
+#		return False
+
 	def chk_obj_exist(self, obj):
 		""" Evaluates whether object obj exists in floor_lst for any room in map_lst
 		"""
-		return any(obj in room.floor_lst for room in self.get_room_lst())
+#		return any(obj in room.floor_lst for room in self.get_room_lst())
+		for room in self.get_room_lst():
+			if obj in room.floor_lst:
+				return True
+			self.chk_obj_exist_recursive(obj, room.floor_lst)
+#			for floor_obj in room.floor_lst:
+#				if floor_obj.chk_contain_item(obj):
+#					return True
+		return False
 
 	def chk_name_exist(self, name):
 		""" Evaluates whether an obj with obj.name == name exists in floor_lst for any room in map_lst
@@ -67,7 +85,7 @@ class Map(object):
 			if obj in room.floor_lst:
 				return room
 			for floor_obj in room.floor_lst:
-				if floor_obj.chk_contain_item(self, obj):
+				if floor_obj.chk_contain_item(obj):
 					return room
 		raise ValueError(f"{obj.full_name} not found.")
 
@@ -147,7 +165,8 @@ class Map(object):
 				if obj in room.floor_lst:
 					return room
 				for room_obj in room.floor_lst:
-					if room_obj.is_seat() and room_obj.chk_contain_item(obj):
+#					if room_obj.is_seat() and room_obj.chk_contain_item(obj):
+					if room_obj.chk_contain_item(obj):
 						return room
 			raise ValueError(f"{obj.full_name} not found.")
 

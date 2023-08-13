@@ -577,7 +577,9 @@ Version 3.78 Goals
 			- DONE: create map.get_obj_room(self, obj)
 			- DONE: update std_vis_err to give room of non-vis obj if debug == True
 			- INPROC: test
-				- TBD: need to enhance map.chk_obj_exist() to search containers
+				- IDEA: need to enhance map.chk_obj_exist() to search containers in containers
+				- FINDING: works for 1 layer of container but not 2; need to solve resursive search
+				- TBD: troubleshoot chk_obj_exist_recursive
 			- TBD: create map.chk_obj_in_creature_inv(self, item) [returns T or F]
 			- TBD: create map.get_creature_holding_item(self, item) [returns creature]
 			- TBD: update remove_contain_lst() for port container if obj_in_creature to dec creature.weight
