@@ -56,8 +56,10 @@ class Map(object):
 		for element in lst:
 			if element == obj:
 				return True
-			elif isinstance(element, list):
-				return self.chk_obj_exist_recursive(obj, element)
+#			elif isinstance(element, list):
+			elif element.is_receptacle:
+				return self.chk_obj_exist_recursive(obj, element.get_contain_lst())
+#				return self.chk_obj_exist_recursive(obj, element)
 #		return False
 
 	def chk_obj_exist(self, obj):

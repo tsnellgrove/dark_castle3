@@ -175,6 +175,9 @@ class ContainsMixIn(object):
 	def	is_container(self):
 		return True
 
+	def is_receptacle(self):
+		return True
+
 	# *** scope methods ***
 
 	def is_content_vis(self):
@@ -201,6 +204,9 @@ class ContainsMixIn(object):
 		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item()
 		"""
 		return item in self.contain_lst
+
+	def get_contain_lst(self):
+		return self.contain_lst
 
 	def chk_has_capacity(self):
 		return len(self.contain_lst) < self.max_obj

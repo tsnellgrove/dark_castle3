@@ -31,6 +31,9 @@ class Invisible(object):
 	def get_title_str(self, active_gs):
 		return None
 
+	def get_contain_lst(self):
+		return []
+
 	# *** class identity methods ***
 	def is_invisible(self):
 		return True
@@ -90,6 +93,9 @@ class Invisible(object):
 		return False
 
 	def is_seat(self):
+		return False
+	
+	def is_receptacle(self):
 		return False
 
 	# *** standard errors ###	

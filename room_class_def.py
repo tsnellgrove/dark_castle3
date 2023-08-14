@@ -45,6 +45,9 @@ class Room(ViewOnly):
 	def is_room(self):
 		return True
 
+	def is_receptacle(self):
+		return True
+
 	# *** scope methods ***
 	def get_vis_contain_lst(self, active_gs):
 		""" Returns the list of visible objects contained in the method-calling object. In Room, provides the visible object scope.
@@ -77,6 +80,9 @@ class Room(ViewOnly):
 		if any(obj.chk_contain_lst(item) for obj in self.floor_lst):
 			return True
 		return False
+
+	def get_contain_lst(self):
+		return self.floor_lst
 
 	def get_mach_lst(self, active_gs):
 		""" Returns the list of Machine objects contained in the method-calling object. In Room, provides the Machine object scope.

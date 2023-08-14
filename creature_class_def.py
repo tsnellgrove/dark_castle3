@@ -165,6 +165,9 @@ class Creature(ViewOnly):
 	def is_creature(self):
 		return True
 
+	def is_receptacle(self):
+		return True
+
 	# *** scope methods ***
 	def get_vis_contain_lst(self, active_gs):
 		""" Returns the list of visible objects contained in the referenced ('self') object
@@ -181,6 +184,9 @@ class Creature(ViewOnly):
 		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item()
 		"""
 		return item in self.hand_lst + self.bkpk_lst + self.worn_lst
+
+	def get_contain_lst(self):
+		return self.hand_lst + self.bkpk_lst + self.worn_lst
 
 	def remove_item(self, item, active_gs):
 		""" Removes the passed object from the methed-calling object.

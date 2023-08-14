@@ -85,7 +85,7 @@ class ViewOnly(Writing):
 	def is_viewonly(self):
 		return True
 
-	# *** simple methods ***
+	# *** scope methods ***
 	def get_vis_contain_lst(self, active_gs):
 		return []
 
