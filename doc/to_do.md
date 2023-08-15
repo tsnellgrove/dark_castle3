@@ -584,6 +584,8 @@ Version 3.78 Goals
 					- DONE: get_contain_lst() (= None execept for Container, Room, & Creature)
 					- DONE: create recursive search routine
 					- INPROC: test gen
+						- DONE: works for Entrance
+						- TBD: get working for all rooms
 					- TBD: test edge cases (like Fist)
 					- TBD: optimize code
 					- TBD: clean-up comments
