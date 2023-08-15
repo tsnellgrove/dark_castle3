@@ -38,6 +38,9 @@ May 22, 2022
 ##				return some_parameter + next_parameter 
 
 
+*** Recursion ***
+- Good link on this topic: https://stackoverflow.com/questions/10544513/breaking-out-of-a-recursive-function
+
 *** Var and Method Naming Conventions ***
 - general:
 	- use singular, not the pluaral form of words in variable names (e.g. use 'object_lst', not "objects_lst')
