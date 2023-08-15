@@ -75,8 +75,8 @@ class Map(object):
 			exist = self.chk_obj_exist_recursive(obj, room.floor_lst)
 			if exist:
 				return True
-			else:
-				return False
+#			else:
+		return False
 #			for floor_obj in room.floor_lst:
 #				if floor_obj.chk_contain_item(obj):
 #					return True

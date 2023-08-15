@@ -586,10 +586,10 @@ Version 3.78 Goals
 					- DONE: create is_receptical (T for Container, Room, & Creature)
 					- DONE: get_contain_lst() (= None execept for Container, Room, & Creature)
 					- DONE: create recursive search routine
-					- INPROC: test gen
+					- DONE: test gen
 						- DONE: works for Entrance
-						- TBD: get working for all rooms
-					- TBD: test edge cases (like Fist)
+						- DONE: get working for all rooms
+					- TBD: Decide on non-Item cases (like Fist, Alcove, front_gate)
 					- TBD: optimize code
 					- TBD: clean-up comments
 				- TBD: normalize Room.chk_contain_item()
