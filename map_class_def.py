@@ -70,7 +70,7 @@ class Map(object):
 		"""
 #		return any(obj in room.floor_lst for room in self.get_room_lst())
 		for room in self.get_room_lst():
-			if obj in room.floor_lst:
+			if obj in room.get_contain_lst():
 				return True
 			exist = self.chk_obj_exist_recursive(obj, room.floor_lst)
 			if exist:

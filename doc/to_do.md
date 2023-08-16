@@ -589,7 +589,9 @@ Version 3.78 Goals
 					- DONE: test gen
 						- DONE: works for Entrance
 						- DONE: get working for all rooms
-					- TBD: Decide on non-Item cases (like Fist, Alcove, front_gate)
+					- DONE: Decide on non-Item cases (like Fist, Alcove, front_gate)
+						- DECISION: include Room.feature_lst and Creature.feature_lst in get_contain_lst()
+						- DONE: update Room.get_contain_lst() and Creature.get_contain_lst()
 					- TBD: optimize code
 					- TBD: clean-up comments
 				- TBD: normalize Room.chk_contain_item()

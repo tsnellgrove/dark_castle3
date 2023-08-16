@@ -186,7 +186,7 @@ class Creature(ViewOnly):
 		return item in self.hand_lst + self.bkpk_lst + self.worn_lst
 
 	def get_contain_lst(self):
-		return self.hand_lst + self.bkpk_lst + self.worn_lst
+		return self.hand_lst + self.bkpk_lst + self.worn_lst + self.feature_lst
 
 	def remove_item(self, item, active_gs):
 		""" Removes the passed object from the methed-calling object.
