@@ -55,11 +55,9 @@ class Map(object):
 		"""
 		for element in lst:
 			if element == obj:
-				print("True")
 				return True
-			elif element.is_receptacle:
-				exist = self.chk_obj_exist_recursive(obj, element.get_contain_lst())
-				if exist:
+			if element.is_receptacle:
+				if self.chk_obj_exist_recursive(obj, element.get_contain_lst()):
 					return True
 
 	def chk_obj_exist(self, obj):
@@ -68,8 +66,7 @@ class Map(object):
 		for room in self.get_room_lst():
 			if obj in room.get_contain_lst():
 				return True
-			exist = self.chk_obj_exist_recursive(obj, room.floor_lst)
-			if exist:
+			if self.chk_obj_exist_recursive(obj, room.floor_lst):
 				return True
 		return False
 

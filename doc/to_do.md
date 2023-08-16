@@ -595,7 +595,9 @@ Version 3.78 Goals
 						- DECISION: include Room.feature_lst and Creature.feature_lst in get_contain_lst()
 						- DONE: update Room.get_contain_lst() and Creature.get_contain_lst()
 					- DONE: clean-up comments
-					- TBD: optimize code
+					- INPROC: optimize code
+						- TBD: set default value of lst to room_lst
+						- TBD: collapse two functions into 1 recursive!
 				- TBD: normalize Room.chk_contain_item()
 			- TBD: create map.chk_obj_in_creature_inv(self, item) [returns T or F]
 			- TBD: create map.get_creature_holding_item(self, item) [returns creature]
