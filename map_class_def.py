@@ -54,9 +54,6 @@ class Map(object):
 		""" Recursive approach
 		"""
 		for element in lst:
-#			print(f"obj = {obj.name}")
-#			print(f"element = {element.name}")
-#			print(f"list = {lst}")
 			if element == obj:
 				print("True")
 				return True
@@ -66,21 +63,22 @@ class Map(object):
 					return True
 
 	def chk_obj_exist(self, obj):
-		""" Evaluates whether object obj exists in floor_lst for any room in map_lst
+		""" Evaluates whether object obj exists in any room in map_lst
 		"""
-#		return any(obj in room.floor_lst for room in self.get_room_lst())
 		for room in self.get_room_lst():
 			if obj in room.get_contain_lst():
 				return True
 			exist = self.chk_obj_exist_recursive(obj, room.floor_lst)
 			if exist:
 				return True
-#			else:
 		return False
-#			for floor_obj in room.floor_lst:
-#				if floor_obj.chk_contain_item(obj):
-#					return True
-#		return False
+
+
+##	def chk_obj_exist(self, obj): # how this method previously worked
+##		""" Evaluates whether object obj exists in floor_lst for any room in map_lst
+##		"""
+##		return any(obj in room.floor_lst for room in self.get_room_lst())
+
 
 	def chk_name_exist(self, name):
 		""" Evaluates whether an obj with obj.name == name exists in floor_lst for any room in map_lst

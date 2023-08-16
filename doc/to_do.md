@@ -40,6 +40,8 @@ May 22, 2022
 
 *** Recursion ***
 - Good link on this topic: https://stackoverflow.com/questions/10544513/breaking-out-of-a-recursive-function
+- pseudo code for recursion: https://stackoverflow.com/questions/65604019/how-to-return-true-or-false-using-recursive-function
+
 
 *** Var and Method Naming Conventions ***
 - general:
@@ -592,8 +594,8 @@ Version 3.78 Goals
 					- DONE: Decide on non-Item cases (like Fist, Alcove, front_gate)
 						- DECISION: include Room.feature_lst and Creature.feature_lst in get_contain_lst()
 						- DONE: update Room.get_contain_lst() and Creature.get_contain_lst()
+					- DONE: clean-up comments
 					- TBD: optimize code
-					- TBD: clean-up comments
 				- TBD: normalize Room.chk_contain_item()
 			- TBD: create map.chk_obj_in_creature_inv(self, item) [returns T or F]
 			- TBD: create map.get_creature_holding_item(self, item) [returns creature]
