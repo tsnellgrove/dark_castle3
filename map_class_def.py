@@ -60,14 +60,21 @@ class Map(object):
 				if self.chk_obj_exist_recursive(obj, element.get_contain_lst()):
 					return True
 
-	def chk_obj_exist(self, obj):
+	def chk_obj_exist(self, obj, lst=None):
 		""" Evaluates whether object obj exists in any room in map_lst
 		"""
-		for room in self.get_room_lst():
-			if obj in room.get_contain_lst():
+		if lst == None:
+			lst = self.get_room_lst()
+
+#		for room in self.get_room_lst():
+		for element in lst:
+#			if obj in room.get_contain_lst():
+			if element == obj:
 				return True
-			if self.chk_obj_exist_recursive(obj, room.floor_lst):
-				return True
+			if element.is_receptacle:
+#				if self.chk_obj_exist_recursive(obj, room.floor_lst):
+				if self.chk_obj_exist(obj, element.get_contain_lst()):
+					return True
 		return False
 
 
