@@ -87,6 +87,24 @@ class Map(object):
 					return room
 		raise ValueError(f"{obj.full_name} not found.")
 
+
+	def get_obj_room2(self, obj, lst=None, room=None):
+		""" Evaluates whether object obj exists in any room in map_lst
+		"""
+		if lst == None:
+			lst = self.get_room_lst()
+		if room == None:
+			room = lst[0]
+
+		for element in lst:
+			if element == obj:
+				return room
+			if element.is_receptacle:
+				if self.chk_obj_exist(obj, element.get_contain_lst(), room):
+					return room
+		return False
+
+
 	def	get_door_lst(self, room):
 		""" Returns a list of doors adjoining a given room
 		"""

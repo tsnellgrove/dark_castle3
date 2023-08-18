@@ -599,7 +599,9 @@ Version 3.78 Goals
 						- DONE: set default value of lst to room_lst
 						- DONE: collapse two functions into 1 recursive!
 						- DONE: clean-up
-				- TBD: normalize Room.chk_contain_item()
+				- CANCEL: normalize Room.chk_contain_item()
+					- DECISION: works for now - leave chk_contain_item() as is till refactor of remove()
+				- INPROC: update map.get_obj_room() to be recursive
 			- TBD: create map.chk_obj_in_creature_inv(self, item) [returns T or F]
 			- TBD: create map.get_creature_holding_item(self, item) [returns creature]
 			- TBD: update remove_contain_lst() for port container if obj_in_creature to dec creature.weight
