@@ -50,16 +50,6 @@ class Map(object):
 				if room_pair[room[0]] not in room_lst]
 		return room_lst
 
-#	def chk_obj_exist_recursive(self, obj, lst):
-#		""" Recursive approach
-#		"""
-#		for element in lst:
-#			if element == obj:
-#				return True
-#			if element.is_receptacle:
-#				if self.chk_obj_exist_recursive(obj, element.get_contain_lst()):
-#					return True
-
 	def chk_obj_exist(self, obj, lst=None):
 		""" Evaluates whether object obj exists in any room in map_lst
 		"""

@@ -584,7 +584,7 @@ Version 3.78 Goals
 			- INPROC: test
 				- IDEA: need to enhance map.chk_obj_exist() to search containers in containers
 				- FINDING: works for 1 layer of container but not 2; need to solve resursive search
-				- INPROC: troubleshoot chk_obj_exist_recursive
+				- DONE: troubleshoot chk_obj_exist_recursive
 					- DONE: create is_receptical (T for Container, Room, & Creature)
 					- DONE: get_contain_lst() (= None execept for Container, Room, & Creature)
 					- DONE: create recursive search routine
@@ -595,10 +595,10 @@ Version 3.78 Goals
 						- DECISION: include Room.feature_lst and Creature.feature_lst in get_contain_lst()
 						- DONE: update Room.get_contain_lst() and Creature.get_contain_lst()
 					- DONE: clean-up comments
-					- INPROC: optimize code
+					- DONE: optimize code
 						- DONE: set default value of lst to room_lst
 						- DONE: collapse two functions into 1 recursive!
-						- TBD: clean-up
+						- DONE: clean-up
 				- TBD: normalize Room.chk_contain_item()
 			- TBD: create map.chk_obj_in_creature_inv(self, item) [returns T or F]
 			- TBD: create map.get_creature_holding_item(self, item) [returns creature]
