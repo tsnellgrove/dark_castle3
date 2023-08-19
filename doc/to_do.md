@@ -602,6 +602,10 @@ Version 3.78 Goals
 				- CANCEL: normalize Room.chk_contain_item()
 					- DECISION: works for now - leave chk_contain_item() as is till refactor of remove()
 				- INPROC: update map.get_obj_room() to be recursive
+					- DONE: updated
+					- TBD: check for get_obj_room() call
+					- TBD: update get_obj_room() call to accept to 2 vars returned
+					- TBD: test!
 			- TBD: create map.chk_obj_in_creature_inv(self, item) [returns T or F]
 			- TBD: create map.get_creature_holding_item(self, item) [returns creature]
 			- TBD: update remove_contain_lst() for port container if obj_in_creature to dec creature.weight

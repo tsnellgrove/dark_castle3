@@ -76,7 +76,7 @@ class Map(object):
 		"""
 		return any(obj.name == name for room in self.get_room_lst() for obj in room.floor_lst)
 
-	def get_obj_room(self, obj):
+	def get_obj_room_old(self, obj):
 		""" Returns the room that contains obj
 		"""
 		for room in self.get_room_lst():
@@ -88,21 +88,28 @@ class Map(object):
 		raise ValueError(f"{obj.full_name} not found.")
 
 
-	def get_obj_room2(self, obj, lst=None, room=None):
-		""" Evaluates whether object obj exists in any room in map_lst
+#	def get_obj_room2(self, obj, lst=None, room=None):
+	def get_obj_room(self, obj, lst=None):
+		""" Returns the room that contains obj
 		"""
 		if lst == None:
 			lst = self.get_room_lst()
-		if room == None:
-			room = lst[0]
+#		if room == None:
+#			room = lst[0]
 
 		for element in lst:
+			room = None
 			if element == obj:
-				return room
+				if lst == self.get_room_lst():
+					room = element
+				return True, room
 			if element.is_receptacle:
-				if self.chk_obj_exist(obj, element.get_contain_lst(), room):
-					return room
-		return False
+				exist, room = self.get_obj_room(obj, element.get_contain_lst())
+				if exist:
+					if lst == self.get_room_lst():
+						room = element
+					return True, room
+		return False, None
 
 
 	def	get_door_lst(self, room):
