@@ -610,9 +610,12 @@ Version 3.78 Goals
 						- invisible_class_def()
 						- map_class_def() [multiple]
 						- result_class_def()
-					- TBD: research how to best dump returned var
-					- TBD: update get_obj_room() call to accept to 2 vars returned
-					- TBD: test!
+					- DONE: reconsider options to pass just room
+						- DECISION: do this!
+					- DONE: update code to return room only
+					- CANCEL: research how to best dump returned var
+					- CANCEL: update get_obj_room() call to accept to 2 vars returned
+					- INPROC: test!
 			- TBD: create map.chk_obj_in_creature_inv(self, item) [returns T or F]
 			- TBD: create map.get_creature_holding_item(self, item) [returns creature]
 			- TBD: update remove_contain_lst() for port container if obj_in_creature to dec creature.weight
