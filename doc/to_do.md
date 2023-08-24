@@ -603,7 +603,14 @@ Version 3.78 Goals
 					- DECISION: works for now - leave chk_contain_item() as is till refactor of remove()
 				- INPROC: update map.get_obj_room() to be recursive
 					- DONE: updated
-					- TBD: check for get_obj_room() call
+					- DONE: check for get_obj_room() call
+						- cond_class_def()
+						- creature_class_def()
+						- interactive_class_def()
+						- invisible_class_def()
+						- map_class_def() [multiple]
+						- result_class_def()
+					- TBD: research how to best dump returned var
 					- TBD: update get_obj_room() call to accept to 2 vars returned
 					- TBD: test!
 			- TBD: create map.chk_obj_in_creature_inv(self, item) [returns T or F]
