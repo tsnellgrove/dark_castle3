@@ -88,40 +88,25 @@ class Map(object):
 #		raise ValueError(f"{obj.full_name} not found.")
 
 
-#	def get_obj_room2(self, obj, lst=None, room=None):
 	def get_obj_room(self, obj, lst=None):
 		""" Returns the room that contains obj
 		"""
 		room_lst = self.get_room_lst()
 		if lst == None:
-##			lst = self.get_room_lst()
 			lst = room_lst
-#		if room == None:
-#			room = lst[0]
 
 		for element in lst:
-##			room = None
 			print(f"lst == {lst}")
 			print(f"element == {element.name}")
 			if element == obj:
-##				if lst == self.get_room_lst():
 				if lst == room_lst: # is this possible for default case??
-##					room = element
 					return element # is this possible for default case??
-##				return True, room
 				return True
 			if element.is_receptacle:
-##				exist, room = self.get_obj_room(obj, element.get_contain_lst())
-##				if exist:
 				if self.get_obj_room(obj, element.get_contain_lst()):
-##					if lst == self.get_room_lst():
 					if element.is_room():
-###					if lst == room_lst:
-##						room = element
 						return element
-##					return True, room
 					return True
-##		return False, None
 		raise ValueError(f"{obj.full_name} not found.")
 
 
