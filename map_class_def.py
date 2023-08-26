@@ -91,18 +91,26 @@ class Map(object):
 	def get_obj_room(self, obj, lst=None):
 		""" Returns the room that contains obj
 		"""
+#		print(f"self == {self}")
+		print(f"obj == {obj.name}")
+
 		room_lst = self.get_room_lst()
 		if lst == None:
 			lst = room_lst
 
 		for element in lst:
+			print(f"obj == {obj.name}")
 			print(f"lst == {lst}")
 			print(f"element == {element.name}")
 			if element == obj:
+				print("element equivalent to obj")
 				if lst == room_lst: # is this possible for default case??
 					return element # is this possible for default case??
 				return True
 			if element.is_receptacle:
+				print("element.is_receptacle")
+				print(f"element == {element.name}")
+				print(f"element.get_contain_lst() == {element.get_contain_lst()}")
 				if self.get_obj_room(obj, element.get_contain_lst()):
 					if element.is_room():
 						return element
