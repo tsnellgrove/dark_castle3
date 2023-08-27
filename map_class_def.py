@@ -107,6 +107,7 @@ class Map(object):
 				if lst == room_lst: # is this possible for default case??
 					return element # is this possible for default case??
 				return True
+			print("element NOT equivalent to obj")
 			if element.is_receptacle():
 				print("element.is_receptacle")
 				print(f"element == {element.name}")
@@ -115,6 +116,8 @@ class Map(object):
 					if element.is_room():
 						return element
 					return True
+			print("element.is NOT receptacle")
+#			return False
 		raise ValueError(f"{obj.full_name} not found.")
 
 
