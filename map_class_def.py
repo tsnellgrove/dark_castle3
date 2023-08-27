@@ -107,7 +107,7 @@ class Map(object):
 				if lst == room_lst: # is this possible for default case??
 					return element # is this possible for default case??
 				return True
-			if element.is_receptacle:
+			if element.is_receptacle():
 				print("element.is_receptacle")
 				print(f"element == {element.name}")
 				print(f"element.get_contain_lst() == {element.get_contain_lst()}")
