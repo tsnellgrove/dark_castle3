@@ -81,8 +81,8 @@ class Room(ViewOnly):
 			return True
 		return False
 
-	def get_contain_lst(self):
-		return self.floor_lst + self.feature_lst
+	def get_contain_lst(self, active_gs):
+		return self.floor_lst + self.feature_lst + active_gs.map.get_door_lst(self)
 
 	def get_mach_lst(self, active_gs):
 		""" Returns the list of Machine objects contained in the method-calling object. In Room, provides the Machine object scope.

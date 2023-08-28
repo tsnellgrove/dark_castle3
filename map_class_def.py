@@ -50,7 +50,7 @@ class Map(object):
 				if room_pair[room[0]] not in room_lst]
 		return room_lst
 
-	def chk_obj_exist(self, obj, lst=None):
+	def chk_obj_exist(self, obj, active_gs, lst=None):
 		""" Evaluates whether object obj exists in any room in map_lst
 		"""
 		if lst == None:
@@ -60,7 +60,7 @@ class Map(object):
 			if element == obj:
 				return True
 			if element.is_receptacle:
-				if self.chk_obj_exist(obj, element.get_contain_lst()):
+				if self.chk_obj_exist(obj, active_gs, element.get_contain_lst(active_gs)):
 					return True
 		return False
 
@@ -76,49 +76,26 @@ class Map(object):
 		"""
 		return any(obj.name == name for room in self.get_room_lst() for obj in room.floor_lst)
 
-#	def get_obj_room_old(self, obj):
-#		""" Returns the room that contains obj
-#		"""
-#		for room in self.get_room_lst():
-#			if obj in room.floor_lst:
-#				return room
-#			for floor_obj in room.floor_lst:
-#				if floor_obj.chk_contain_item(obj):
-#					return room
-#		raise ValueError(f"{obj.full_name} not found.")
 
-
-	def get_obj_room(self, obj, lst=None):
+	def get_obj_room(self, obj, active_gs, lst=None):
 		""" Returns the room that contains obj
 		"""
-#		print(f"self == {self}")
-		print(f"obj == {obj.name}")
-
 		room_lst = self.get_room_lst()
 		if lst == None:
 			lst = room_lst
 
 		for element in lst:
-			print(f"obj == {obj.name}")
-			print(f"lst == {lst}")
-			print(f"element == {element.name}")
 			if element == obj:
-				print("element equivalent to obj")
 				if lst == room_lst: # is this possible for default case??
 					return element # is this possible for default case??
 				return True
-			print("element NOT equivalent to obj")
 			if element.is_receptacle():
-				print("element.is_receptacle")
-				print(f"element == {element.name}")
-				print(f"element.get_contain_lst() == {element.get_contain_lst()}")
-				if self.get_obj_room(obj, element.get_contain_lst()):
+				if self.get_obj_room(obj, active_gs, element.get_contain_lst(active_gs)):
 					if element.is_room():
 						return element
 					return True
-			print("element.is NOT receptacle")
-#			return False
-		raise ValueError(f"{obj.full_name} not found.")
+		if lst == room_lst:
+			raise ValueError(f"{obj.full_name} not found.")
 
 
 	def	get_door_lst(self, room):
@@ -189,17 +166,5 @@ class Map(object):
 				if room_pair[room_dir[0]] == room and room_pair[room_dir[1]] == dir:
 					return room_pair[room_dir[2]]
 		raise ValueError(f"There is no 'room_y' value associated with going {dir} from room {room}. This must not be a valid route.")
-
-##	def get_obj_room(self, obj): # rename to get_creature_room ??? 
-##			""" Returns the room that obj is currently in (so long as it is in room.floor_lst or seat.contain)
-##			"""
-##			for room in self.get_room_lst():
-##				if obj in room.floor_lst:
-##					return room
-##				for room_obj in room.floor_lst:
-#					if room_obj.is_seat() and room_obj.chk_contain_item(obj):
-##					if room_obj.chk_contain_item(obj):
-##						return room
-##			raise ValueError(f"{obj.full_name} not found.")
 
 	

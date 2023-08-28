@@ -31,7 +31,7 @@ class Invisible(object):
 	def get_title_str(self, active_gs):
 		return None
 
-	def get_contain_lst(self):
+	def get_contain_lst(self, active_gs):
 		return []
 
 	# *** class identity methods ***
@@ -106,7 +106,7 @@ class Invisible(object):
 		return False
 
 	def err_wrt_not_vis(self, creature, active_gs):
-		room = active_gs.map.get_obj_room(creature)
+		room = active_gs.map.get_obj_room(creature, active_gs)
 		if self.is_writing() and not room.chk_wrt_is_vis(self, active_gs):
 			active_gs.buffer(f"You can't see {self.full_name} written on anything here.")
 			return True
@@ -125,19 +125,19 @@ class Invisible(object):
 		return False
 
 	def err_not_vis(self, creature, active_gs):
-		room = active_gs.map.get_obj_room(creature)
+		room = active_gs.map.get_obj_room(creature, active_gs)
 		if not self.is_writing() and room.chk_is_vis(self, active_gs) == False and not active_gs.state_dict['debug']: 
 			active_gs.buffer("You can't see a " + self.full_name + " here.")
 			return True
 		if not self.is_writing() and room.chk_is_vis(self, active_gs) == False: 
-			if not active_gs.map.chk_obj_exist(self):
+			if not active_gs.map.chk_obj_exist(self, active_gs):
 				active_gs.buffer(f"The {self.full_name} does not currently exist in the game.")
 				return True
 #			print(f"get_obj_room() called with attribute: {self.name}")
-			if active_gs.map.get_obj_room(self) == room:
+			if active_gs.map.get_obj_room(self, active_gs) == room:
 				active_gs.buffer(f"The {self.full_name} is in the {room.full_name} but not visible to you.")
 				return True
-			active_gs.buffer(f"The {self.full_name} is in the {active_gs.map.get_obj_room(self).full_name}.")
+			active_gs.buffer(f"The {self.full_name} is in the {active_gs.map.get_obj_room(self, active_gs).full_name}.")
 			return True
 		return False
 

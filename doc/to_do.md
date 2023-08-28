@@ -615,7 +615,9 @@ Version 3.78 Goals
 					- DONE: update code to return room only
 					- CANCEL: research how to best dump returned var
 					- CANCEL: update get_obj_room() call to accept to 2 vars returned
-					- INPROC: test!
+					- DONE: find obj test!
+					- DONE: clean-up code
+					- TBD: full game playthrough test
 			- TBD: create map.chk_obj_in_creature_inv(self, item) [returns T or F]
 			- TBD: create map.get_creature_holding_item(self, item) [returns creature]
 			- TBD: update remove_contain_lst() for port container if obj_in_creature to dec creature.weight

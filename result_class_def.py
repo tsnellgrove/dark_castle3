@@ -306,7 +306,7 @@ class TravelResult(BufferOnlyResult):
 						active_gs.buffer(descript_dict[self.name])
 				except:
 						pass
-				room = active_gs.map.get_obj_room(self.creature)
+				room = active_gs.map.get_obj_room(self.creature, active_gs)
 				room.go(self.dir, active_gs, self.creature)
 				return mach_state, self.cmd_override
 

@@ -185,7 +185,7 @@ class Creature(ViewOnly):
 		"""
 		return item in self.hand_lst + self.bkpk_lst + self.worn_lst
 
-	def get_contain_lst(self):
+	def get_contain_lst(self, active_gs):
 		return self.hand_lst + self.bkpk_lst + self.worn_lst + self.feature_lst
 
 	def remove_item(self, item, active_gs):
@@ -205,20 +205,20 @@ class Creature(ViewOnly):
 
 	# NOTE: only works for Creature class; not generalized for other obj
 	def is_contained(self, active_gs):
-		return self not in active_gs.map.get_obj_room(self).floor_lst
+		return self not in active_gs.map.get_obj_room(self, active_gs).floor_lst
 
 	def get_contained_by(self, active_gs):
 		if not self.is_contained:
 			raise ValueError(f"{obj.full_name} is not in a container.")
 		else:
-			for obj in active_gs.map.get_obj_room(self).floor_lst:
+			for obj in active_gs.map.get_obj_room(self, active_gs).floor_lst:
 				if obj.is_seat() and self in obj.contain_lst:
 					return obj
 		raise ValueError(f"{obj.full_name} not found.")
 
 	def chk_obj_in_reach(self, obj, active_gs):
 		seat_item_lst = self.get_contained_by(active_gs).get_vis_contain_lst(active_gs)
-		room = active_gs.map.get_obj_room(self)
+		room = active_gs.map.get_obj_room(self, active_gs)
 		in_reach_obj_lst = []
 		for receptacle in self.get_contained_by(active_gs).in_reach_lst:
 			if receptacle.is_container():
@@ -423,7 +423,7 @@ class Creature(ViewOnly):
 				break
 
 		# based on result_key, determine result_code and winner; implement combat actions
-		room_obj = active_gs.map.get_obj_room(tgt_creature)
+		room_obj = active_gs.map.get_obj_room(tgt_creature, active_gs)
 		if result_key == 'attack_method_default_result':
 			result_code = 'no_result'
 		else:
@@ -510,7 +510,7 @@ class Creature(ViewOnly):
 		if mode is None:
 			mode = 'std'
 
-		room = active_gs.map.get_obj_room(self)		
+		room = active_gs.map.get_obj_room(self, active_gs)		
 		room.remove_item(self, active_gs)
 		room.floor_lst_append(self)
 

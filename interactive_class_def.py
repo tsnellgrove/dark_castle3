@@ -205,7 +205,7 @@ class ContainsMixIn(object):
 		"""
 		return item in self.contain_lst
 
-	def get_contain_lst(self):
+	def get_contain_lst(self, active_gs):
 		return self.contain_lst
 
 	def chk_has_capacity(self):
@@ -366,7 +366,7 @@ class Seat(ContainerFixedSimple):
 		if creature is None:
 			creature = active_gs.hero
 
-		room = active_gs.map.get_obj_room(creature)
+		room = active_gs.map.get_obj_room(creature, active_gs)
 		room.floor_lst_remove(creature)
 		self.contain_lst_append(creature)
 
@@ -391,7 +391,7 @@ class Seat(ContainerFixedSimple):
 		if creature is None:
 			creature = active_gs.hero
 
-		room = active_gs.map.get_obj_room(creature)
+		room = active_gs.map.get_obj_room(creature, active_gs)
 		room.floor_lst_append(creature)
 		self.contain_lst_remove(creature)
 
