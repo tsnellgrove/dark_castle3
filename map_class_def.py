@@ -98,6 +98,31 @@ class Map(object):
 			raise ValueError(f"{obj.full_name} not found.")
 
 
+	def chk_obj_in_creature_inv(self, obj, active_gs, lst=None):
+		""" Evaluates whether obj is in a creature's inventory; returns evaluation & creature
+		"""
+		if lst == None:
+			lst = self.get_room_lst()
+
+		if obj.is_creature():
+			return False
+		for element in lst:
+			if element.is_creature():
+				in_creature_inv = True
+				creature = element
+			else:
+				in_creature_inv = False
+				creature = None
+			if element == obj:
+				return True
+			if element.is_receptacle:
+				if self.chk_obj_exist(obj, active_gs, element.get_contain_lst(active_gs)):
+					if element.is_creature():
+						return in_creature_inv, creature
+					return True
+		return False	
+
+
 	def	get_door_lst(self, room):
 		""" Returns a list of doors adjoining a given room
 		"""

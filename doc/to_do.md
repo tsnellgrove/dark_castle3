@@ -581,7 +581,7 @@ Version 3.78 Goals
 			- IDEA: ref creature.weight in remove_contain_lst()
 			- DONE: create map.get_obj_room(self, obj)
 			- DONE: update std_vis_err to give room of non-vis obj if debug == True
-			- INPROC: test
+			- DONE: test
 				- IDEA: need to enhance map.chk_obj_exist() to search containers in containers
 				- FINDING: works for 1 layer of container but not 2; need to solve resursive search
 				- DONE: troubleshoot chk_obj_exist_recursive
@@ -601,7 +601,7 @@ Version 3.78 Goals
 						- DONE: clean-up
 				- CANCEL: normalize Room.chk_contain_item()
 					- DECISION: works for now - leave chk_contain_item() as is till refactor of remove()
-				- INPROC: update map.get_obj_room() to be recursive
+				- DONE: update map.get_obj_room() to be recursive
 					- DONE: updated
 					- DONE: check for get_obj_room() call
 						- cond_class_def()
@@ -617,9 +617,9 @@ Version 3.78 Goals
 					- CANCEL: update get_obj_room() call to accept to 2 vars returned
 					- DONE: find obj test!
 					- DONE: clean-up code
-					- TBD: full game playthrough test
-			- TBD: create map.chk_obj_in_creature_inv(self, item) [returns T or F]
-			- TBD: create map.get_creature_holding_item(self, item) [returns creature]
+					- DONE: full game playthrough test
+			- DONE: create map.chk_obj_in_creature_inv() [returns bool, creature]
+			- TBD: test map.chk_obj_in_creature_inv()
 			- TBD: update remove_contain_lst() for port container if obj_in_creature to dec creature.weight
 		- TBD: handle edge cases (e.g. 1 lb diff order of operations issues)
 		- TBD: address give() method if target creature is beyond max_weight
