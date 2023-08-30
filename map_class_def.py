@@ -105,22 +105,29 @@ class Map(object):
 			lst = self.get_room_lst()
 
 		if obj.is_creature():
-			return False
+			return False, None
+
 		for element in lst:
-			if element.is_creature():
-				in_creature_inv = True
-				creature = element
-			else:
-				in_creature_inv = False
-				creature = None
+
+#			if element.is_creature():
+#				in_creature_inv = True
+#				creature = element
+#			else:
+#				in_creature_inv = False
+#				creature = None
+
 			if element == obj:
-				return True
+				return True, None
 			if element.is_receptacle:
-				if self.chk_obj_exist(obj, active_gs, element.get_contain_lst(active_gs)):
+				exist, creature_obj = self.chk_obj_exist(obj, active_gs, element.get_contain_lst(active_gs))
+				if exist:
 					if element.is_creature():
-						return in_creature_inv, creature
-					return True
-		return False	
+						return True, element
+					if element.is_room():
+						return creature_obj.is_creature(), creature_obj
+	#					return True
+		if lst == self.get_room_lst():
+			return False, None	
 
 
 	def	get_door_lst(self, room):

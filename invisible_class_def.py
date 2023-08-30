@@ -134,6 +134,9 @@ class Invisible(object):
 				active_gs.buffer(f"The {self.full_name} does not currently exist in the game.")
 				return True
 #			print(f"get_obj_room() called with attribute: {self.name}")
+			exist, creature_obj = active_gs.map.chk_obj_in_creature_inv(self, active_gs)
+			if exist:
+				active_gs.buffer(f"The {self.full_name} is in the inventory of the {creature_obj.full_name}.")
 			if active_gs.map.get_obj_room(self, active_gs) == room:
 				active_gs.buffer(f"The {self.full_name} is in the {room.full_name} but not visible to you.")
 				return True
