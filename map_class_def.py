@@ -107,19 +107,7 @@ class Map(object):
 		if obj.is_creature():
 			return False, None
 
-##		print(f"obj: {obj.full_name}")
-##		print(f"lst: {lst}")
-
 		for element in lst:
-
-##			print(f"element: {element.full_name}")
-#			if element.is_creature():
-#				in_creature_inv = True
-#				creature = element
-#			else:
-#				in_creature_inv = False
-#				creature = None
-
 			if element == obj:
 				return True, None
 			if element.is_receptacle():
@@ -131,8 +119,6 @@ class Map(object):
 						return False, None
 					elif element.is_room():
 						return creature_obj.is_creature(), creature_obj
-#			return False, None
-##		if lst == self.get_room_lst():
 		return False, None	
 
 

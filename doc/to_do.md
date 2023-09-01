@@ -619,10 +619,11 @@ Version 3.78 Goals
 					- DONE: clean-up code
 					- DONE: full game playthrough test
 			- DONE: create map.chk_obj_in_creature_inv() [returns bool, creature]
-			- INPROC: test map.chk_obj_in_creature_inv()
+			- DONE: test map.chk_obj_in_creature_inv()
 				- DONE: troubleshoot method
-				- TBD: full test of method
-				- TBD: clean-up method
+				- DONE: full test of method
+				- DONE: clean-up method
+			- TBD: update remove_contain_lst() to pass active_gs
 			- TBD: update remove_contain_lst() for port container if obj_in_creature to dec creature.weight
 			- TBD: create debug wher_is() function and move obj search methods to it
 		- TBD: handle edge cases (e.g. 1 lb diff order of operations issues)
