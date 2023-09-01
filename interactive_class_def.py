@@ -161,11 +161,14 @@ class ContainsMixIn(object):
 			self.weight += item.weight
 		return
 
-	def contain_lst_remove(self, item):
+	def contain_lst_remove(self, item, active_gs):
 		self._contain_lst.remove(item)
 		# Decrement Portable Container weight when an Item is removed from the Container
 		if self.is_item():
 			self.weight -= item.weight
+			in_creature_inv, creature = active_gs.map.chk_obj_in_creature_inv(self, active_gs)
+			if in_creature_inv:
+				creature.weight -= item.weight
 		return
 
 	def is_empty(self):
@@ -212,7 +215,7 @@ class ContainsMixIn(object):
 		return len(self.contain_lst) < self.max_obj
 
 	def remove_item(self, item, active_gs):
-		self.contain_lst_remove(item)
+		self.contain_lst_remove(item, active_gs)
 
 	def chk_content_prohibited(self, obj):
 		if obj.is_creature():
@@ -393,7 +396,7 @@ class Seat(ContainerFixedSimple):
 
 		room = active_gs.map.get_obj_room(creature, active_gs)
 		room.floor_lst_append(creature)
-		self.contain_lst_remove(creature)
+		self.contain_lst_remove(creature, active_gs)
 
 		# if hero_creature not in current room, exit with no display
 		if room != active_gs.get_room():

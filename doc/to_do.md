@@ -623,9 +623,10 @@ Version 3.78 Goals
 				- DONE: troubleshoot method
 				- DONE: full test of method
 				- DONE: clean-up method
-			- TBD: update remove_contain_lst() to pass active_gs
-			- TBD: update remove_contain_lst() for port container if obj_in_creature to dec creature.weight
+			- DONE: update remove_contain_lst() to pass active_gs (found only in interactive_class_def)
+			- DONE: update remove_contain_lst() for port container if obj_in_creature to dec creature.weight
 			- TBD: create debug wher_is() function and move obj search methods to it
+			- TBD: create methods for creatures and items to manipulate weight attribute and apply
 		- TBD: handle edge cases (e.g. 1 lb diff order of operations issues)
 		- TBD: address give() method if target creature is beyond max_weight
 			IDEA: "the X refuses the item. They appear to be overburdened."
