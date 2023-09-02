@@ -151,21 +151,8 @@ class Invisible(object):
 	def err_not_vis(self, creature, active_gs):
 		room = active_gs.map.get_obj_room(creature, active_gs)
 		if not self.is_writing() and room.chk_is_vis(self, active_gs) == False:
-#		if not self.is_writing() and room.chk_is_vis(self, active_gs) == False and not active_gs.state_dict['debug']: 
 			active_gs.buffer("You can't see a " + self.full_name + " here.")
 			return True
-#		if not self.is_writing() and room.chk_is_vis(self, active_gs) == False: 
-#			if not active_gs.map.chk_obj_exist(self, active_gs):
-#				active_gs.buffer(f"The {self.full_name} does not currently exist in the game.")
-#				return True
-#			exist, creature_obj = active_gs.map.chk_obj_in_creature_inv(self, active_gs)
-#			if exist:
-#				active_gs.buffer(f"The {self.full_name} is in the inventory of the {creature_obj.full_name}.")
-#			if active_gs.map.get_obj_room(self, active_gs) == room:
-#				active_gs.buffer(f"The {self.full_name} is in the {room.full_name} but not visible to you.")
-#				return True
-#			active_gs.buffer(f"The {self.full_name} is in the {active_gs.map.get_obj_room(self, active_gs).full_name}.")
-#			return True
 		return False
 
 	def err_not_in_reach(self, creature, active_gs):
