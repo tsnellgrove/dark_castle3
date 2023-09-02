@@ -98,6 +98,30 @@ class Invisible(object):
 	def is_receptacle(self):
 		return False
 
+	# *** debug methods ###
+	def where_is(self, active_gs, mode=None):
+		""" Reports the weight of an Item. Only usable in debug mode.
+		"""
+		if mode is None:
+			mode = 'std'
+		creature = active_gs.hero
+		
+		if not active_gs.map.chk_obj_exist(self, active_gs):
+			active_gs.buffer(f"The {self.full_name} does not currently exist in the game.")
+			return
+		room = active_gs.map.get_obj_room(creature, active_gs)
+		if room.chk_is_vis(self, active_gs):
+			active_gs.buffer(f"The {self.full_name} is visible in the {room.full_name}, where you are presently.")
+		elif active_gs.map.get_obj_room(self, active_gs) == room:
+			active_gs.buffer(f"The {self.full_name} is not visible to you but is in the {room.full_name}, where you are presently.")
+		else:
+			active_gs.buffer(f"The {self.full_name} is in the {active_gs.map.get_obj_room(self, active_gs).full_name}.")
+		in_inv, inv_creature = active_gs.map.chk_obj_in_creature_inv(self, active_gs)
+		if in_inv:
+			active_gs.buffer(f"The {self.full_name} is in the inventory of the {inv_creature.full_name}.")
+		return
+
+
 	# *** standard errors ###	
 	def err_invis_obj(self, creature, active_gs):
 		if self.is_invisible():
@@ -126,22 +150,22 @@ class Invisible(object):
 
 	def err_not_vis(self, creature, active_gs):
 		room = active_gs.map.get_obj_room(creature, active_gs)
-		if not self.is_writing() and room.chk_is_vis(self, active_gs) == False and not active_gs.state_dict['debug']: 
+		if not self.is_writing() and room.chk_is_vis(self, active_gs) == False:
+#		if not self.is_writing() and room.chk_is_vis(self, active_gs) == False and not active_gs.state_dict['debug']: 
 			active_gs.buffer("You can't see a " + self.full_name + " here.")
 			return True
-		if not self.is_writing() and room.chk_is_vis(self, active_gs) == False: 
-			if not active_gs.map.chk_obj_exist(self, active_gs):
-				active_gs.buffer(f"The {self.full_name} does not currently exist in the game.")
-				return True
-#			print(f"get_obj_room() called with attribute: {self.name}")
-			exist, creature_obj = active_gs.map.chk_obj_in_creature_inv(self, active_gs)
-			if exist:
-				active_gs.buffer(f"The {self.full_name} is in the inventory of the {creature_obj.full_name}.")
-			if active_gs.map.get_obj_room(self, active_gs) == room:
-				active_gs.buffer(f"The {self.full_name} is in the {room.full_name} but not visible to you.")
-				return True
-			active_gs.buffer(f"The {self.full_name} is in the {active_gs.map.get_obj_room(self, active_gs).full_name}.")
-			return True
+#		if not self.is_writing() and room.chk_is_vis(self, active_gs) == False: 
+#			if not active_gs.map.chk_obj_exist(self, active_gs):
+#				active_gs.buffer(f"The {self.full_name} does not currently exist in the game.")
+#				return True
+#			exist, creature_obj = active_gs.map.chk_obj_in_creature_inv(self, active_gs)
+#			if exist:
+#				active_gs.buffer(f"The {self.full_name} is in the inventory of the {creature_obj.full_name}.")
+#			if active_gs.map.get_obj_room(self, active_gs) == room:
+#				active_gs.buffer(f"The {self.full_name} is in the {room.full_name} but not visible to you.")
+#				return True
+#			active_gs.buffer(f"The {self.full_name} is in the {active_gs.map.get_obj_room(self, active_gs).full_name}.")
+#			return True
 		return False
 
 	def err_not_in_reach(self, creature, active_gs):
@@ -418,6 +442,15 @@ class Invisible(object):
 			return True
 		if not self.is_container():
 			active_gs.buffer("Only Containers have capacity.")
+			return True
+		return False
+
+	def where_is_err(self, active_gs):
+		if not active_gs.state_dict['debug']:
+			active_gs.buffer("Please start your sentence with a known verb!")
+			return True
+		if self.is_writing():
+			active_gs.buffer(f"The where_is command does not work for objects of Writing class")
 			return True
 		return False
 

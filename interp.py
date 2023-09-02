@@ -19,7 +19,7 @@ known_verbs_lst = ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 				 'unlock', 'wear', 'enter', 'exit', 'stand'
 				] # 'remove' removed
 
-debug_verb_lst = ['get_weight', 'capacity']
+debug_verb_lst = ['get_weight', 'capacity', 'where_is']
 
 full_verbs_lst = known_verbs_lst + debug_verb_lst
 
@@ -44,7 +44,7 @@ help_dict = {
 	'help_read' :  "If you can't 'read' something (e.g. a note or a scroll) try 'examine' instead. The item may have some readable text written on it that you'll learn more about via 'examine'.",
 	'help_attack' : "There are various creatures that reside in Dark Castle. Some are friendly but some may not be. Burt can 'attack' a creature using whatever weapon he is holding in his hand. If the creature is hostile and Burt is wielding the correct weapon he may be able to slay it. However there are risks to attacking as well. If the creature is friendly, an 'attack' may scare it away and Burt may lose a valuble ally. And if the creature is hostile but Burt is wielding the wrong weapon, Burt himself may perish. As in real life, combat in Dark Castle is frought!",
 	'help_debug_error' : "The first rule of debug mode is that we don't talk about debug mode.",
-	'help_debug' : "There are currently 3 main features to debug mode: 1) Python errors are shown rather than muted, 2) A modeule prefix is provided for game errors, and 3) The following debug verbs are usable: "
+	'help_debug' : "There are currently 3 main features to debug mode: 1) Python errors are shown rather than muted, 2) A module prefix is provided for game errors, and 3) The following debug verbs are usable: "
 }
 
 ### help = print help info
