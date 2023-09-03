@@ -25,6 +25,19 @@ class Item(ViewOnly):
 	def weight(self, new_weight):
 		self._weight = new_weight
 
+	# *** attrib methods ***
+	def increment_weight(self, increment_by):
+		""" Increments the weight of an Item by a given amount
+		"""
+		self.weight += increment_by
+		return
+
+	def decrement_weight(self, decrement_by):
+		""" Decrements the weight of an Item by a given amount
+		"""
+		self.weight -= decrement_by
+		return
+
 	# *** class identity methods ***
 	def is_item(self):
 		return True
