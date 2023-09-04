@@ -68,7 +68,7 @@ class Item(ViewOnly):
 
 		creature.hand_lst_remove(self)
 		if creature.is_contained(active_gs):
-			creature.get_contained_by(active_gs).contain_lst_append(self)
+			creature.get_contained_by(active_gs).contain_lst_append(self, active_gs)
 		else:
 			active_gs.get_room().floor_lst_append(self)
 		

@@ -102,13 +102,27 @@ class Creature(ViewOnly):
 		return self._max_weight
 
 	# *** attrib methods - hand ***
+	def increment_weight(self, increment_by):
+		""" Increments the weight of an Item by a given amount
+		"""
+		self.weight += increment_by
+		return
+
+	def decrement_weight(self, decrement_by):
+		""" Decrements the weight of an Item by a given amount
+		"""
+		self.weight -= decrement_by
+		return
+
+	# *** attrib methods - hand ***
 	def hand_lst_append(self, item):
 		self.hand_lst.append(item)
-		self.weight += item.weight
+		self.increment_weight(item.weight)
+		return
 
 	def hand_lst_remove(self, item):
 		self.hand_lst.remove(item)
-		self.weight = self.weight - item.weight
+		self.decrement_weight(item.weight)
 		return
 
 	def hand_is_empty(self):
@@ -137,20 +151,24 @@ class Creature(ViewOnly):
 
 	def bkpk_lst_append(self, item):
 		self._bkpk_lst.append(item)
-		self.weight += item.weight
+		self.increment_weight(item.weight)
+		return
 
 	def bkpk_lst_remove(self, item):
 		self._bkpk_lst.remove(item)
-		self.weight = self.weight - item.weight
+		self.decrement_weight(item.weight)
+		return
 
 	# *** attrib methods - worn ***
 	def worn_lst_append(self, item):
 		self._worn_lst.append(item)
-		self.weight += item.weight
+		self.increment_weight(item.weight)
+		return
 
 	def worn_lst_remove(self, item):
 		self._worn_lst.remove(item)
-		self.weight = self.weight - item.weight
+		self.decrement_weight(item.weight)
+		return
 
 	def worn_is_empty(self):
 		return not bool(self.worn_lst)

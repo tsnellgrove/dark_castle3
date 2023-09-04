@@ -624,31 +624,30 @@ Version 3.78 Goals
 				- DONE: full test of method
 				- DONE: clean-up method
 			- DONE: update remove_contain_lst() to pass active_gs (found only in interactive_class_def)
+			- DONE: udate append_contain_lst() to pass active_gs
+				- DONE: interactive_class_def()
+				- DONE: item_class_def()
 			- DONE: update remove_contain_lst() for port container if obj_in_creature to dec creature.weight
 			- DONE: create debug wher_is() function and move obj search methods to it
-			- INPROC: create methods for creatures and items to manipulate weight attribute and apply
+			- DONE: create methods for creatures and items to manipulate weight attribute and apply
 				- DONE: Item / Portable Container
 					- DONE: create new wethods under Item
 					- DONE: add methods under Container
 					- DONE: test
 					- DONE: clean-up
-				- TBD: Creature
-					- TBD: create new methods under Creature
-					- TBD: add new methods under Take, Drop, and Container remove (?)
-					- TBD: test
-					- TBD: clean-up
-		- TBD: handle edge cases (e.g. 1 lb diff order of operations issues)
+				- DONE: Creature
+					- DONE: create new methods under Creature
+					- DONE: add new methods under Creature attribute methods and Container remove (?)
+					- DONE: test
+					- DONE: clean-up
 		- TBD: address give() method if target creature is beyond max_weight
 			IDEA: "the X refuses the item. They appear to be overburdened."
+		- TBD: handle edge cases (e.g. 1 lb diff order of operations issues)
 		- TBD: doc_strings
 			- TBD: purpose for max_weight & max_count: physics puzzles, perlilous travel, finite surfaces
 			- TBD: max_weight vs. max_count for creatures
 			- TBD: compare weight in dark castle to Zork inventory capacity 
 			- TBD: update doc_string for Portable Containers (extensions gone)
-
-	- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
-		- IDEA: could have a prep attribute for each prep verb
-		- IDEA: in interp(), have a list of all possible preps and use list to break sentence
 
 - TBD: instantiate Creature Containers in actual game
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
@@ -673,6 +672,10 @@ Version 3.78 Goals
 *** Unify Notes ***
 *** Plan for interpreter update ***
 
+
+- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
+	- IDEA: could have a prep attribute for each prep verb
+	- IDEA: in interp(), have a list of all possible preps and use list to break sentence
 
 - Long Term Pondering:
 	- the whole 'hand' concept is looking increasingly dodgy... too much inventory mgmt...

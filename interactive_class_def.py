@@ -154,21 +154,22 @@ class ContainsMixIn(object):
 		return self._prep
 
 	# *** attrib methods ***
-	def contain_lst_append(self, item):
+	def contain_lst_append(self, item, active_gs):
 		self._contain_lst.append(item)
-		# Increment Portable Container weight when an Item is put in the Container
-		if self.is_item():
+		if self.is_item(): # Increment Portable Container weight if Item is added
 			self.increment_weight(item.weight)
+			in_creature_inv, creature = active_gs.map.chk_obj_in_creature_inv(self, active_gs)
+			if in_creature_inv:
+				creature.increment_weight(item.weight)
 		return
 
 	def contain_lst_remove(self, item, active_gs):
 		self._contain_lst.remove(item)
-		# Decrement Portable Container weight when an Item is removed from the Container
-		if self.is_item():
+		if self.is_item(): # Decrement Portable Container weight if Item is removed
 			self.decrement_weight(item.weight)
 			in_creature_inv, creature = active_gs.map.chk_obj_in_creature_inv(self, active_gs)
 			if in_creature_inv:
-				creature.weight -= item.weight
+				creature.decrement_weight(item.weight)
 		return
 
 	def is_empty(self):
@@ -258,7 +259,7 @@ class ContainsMixIn(object):
 		creature = active_gs.hero
 		
 		creature.hand_lst_remove(obj)
-		self.contain_lst_append(obj)
+		self.contain_lst_append(obj, active_gs)
 
 		active_gs.buffer("Done")
 		return
@@ -371,7 +372,7 @@ class Seat(ContainerFixedSimple):
 
 		room = active_gs.map.get_obj_room(creature, active_gs)
 		room.floor_lst_remove(creature)
-		self.contain_lst_append(creature)
+		self.contain_lst_append(creature, active_gs)
 
 		# if hero_creature not in current room, exit with no display
 		if room != active_gs.get_room():
