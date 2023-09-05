@@ -594,6 +594,9 @@ class Invisible(object):
 		if self == creature:
 			active_gs.buffer(f"With great formality and many words of thanks, you hand the {obj.full_name} to yourself.")
 			return True
+		if self.weight + obj.weight > self.max_weight:
+			active_gs.buffer(f"With a glum shake of their head, the {self.full_name} refuses the {obj.full_name}. You notice that the {self.full_name} appears to be overburdened already.")
+			return True
 		return False
 
 	def attack_err(self, src_obj, active_gs):

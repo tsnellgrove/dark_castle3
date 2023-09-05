@@ -640,7 +640,7 @@ Version 3.78 Goals
 					- DONE: add new methods under Creature attribute methods and Container remove (?)
 					- DONE: test
 					- DONE: clean-up
-		- TBD: address give() method if target creature is beyond max_weight
+		- DONE: address give() method if target creature is beyond max_weight
 			IDEA: "the X refuses the item. They appear to be overburdened."
 		- TBD: handle edge cases (e.g. 1 lb diff order of operations issues)
 		- TBD: doc_strings
