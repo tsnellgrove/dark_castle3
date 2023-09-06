@@ -642,7 +642,12 @@ Version 3.78 Goals
 					- DONE: clean-up
 		- DONE: address give() method if target creature is beyond max_weight
 			IDEA: "the X refuses the item. They appear to be overburdened."
-		- TBD: handle edge cases (e.g. 1 lb diff order of operations issues)
+		- DONE: handle edge cases (e.g. 1 lb diff order of operations issues)
+			- NOTE: very hard to be certain of all cases but I've reviewed; now always remove before append
+		- TBD: update Creature.hand_lst_append() to deal with case where Burt will be overburdened by gift
+			- NOTE: can happen as result of gift (return gift) or modular machine (e.g. royal_crown)
+		- TBD: is there any readon for Interactive.remove_item() ?
+		- TBD: use remove_item() in give() ?
 		- TBD: doc_strings
 			- TBD: purpose for max_weight & max_count: physics puzzles, perlilous travel, finite surfaces
 			- TBD: max_weight vs. max_count for creatures

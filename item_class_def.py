@@ -130,8 +130,6 @@ class Liquid(Item):
 
 #		obj.contain_lst.remove(self)
 		obj.remove_item(self, active_gs)
-		if obj.is_item():
-			creature.weight = creature.weight - self.weight
 
 		active_gs.buffer("Drunk.")
 		active_gs.buff_try_key(f"{creature.name}_drink_{self.descript_key}")
@@ -162,8 +160,8 @@ class Garment(Item):
 			mode = 'std'
 		creature = active_gs.hero
 		
-		creature.worn_lst_append(self)
 		creature.hand_lst_remove(self)
+		creature.worn_lst_append(self)
 		
 		active_gs.buffer("Worn.")
 		active_gs.buff_try_key(f"{creature.name}_wear_{self.descript_key}")
