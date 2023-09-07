@@ -116,6 +116,9 @@ class Creature(ViewOnly):
 
 	# *** attrib methods - hand ***
 	def hand_lst_append(self, item):
+		if self.weight + item.weight >= self.max_weight:
+			pass
+			return
 		self.hand_lst.append(item)
 		self.increment_weight(item.weight)
 		return
