@@ -56,7 +56,7 @@ class Item(ViewOnly):
 			active_gs.buff_try_key(f"{creature.name}_remove_{self.descript_key}")
 		
 		active_gs.get_room().remove_item(self, active_gs)
-		creature.put_in_hand(self)
+		creature.put_in_hand(self, active_gs)
 		return
 
 	def drop(self, active_gs, mode=None):

@@ -116,9 +116,6 @@ class Creature(ViewOnly):
 
 	# *** attrib methods - hand ***
 	def hand_lst_append(self, item):
-		if self.weight + item.weight >= self.max_weight:
-			pass
-			return
 		self.hand_lst.append(item)
 		self.increment_weight(item.weight)
 		return
@@ -134,11 +131,20 @@ class Creature(ViewOnly):
 	def get_hand_item(self):
 		return self.hand_lst[0]
 
-	def put_in_hand(self, new_item):
+	def put_in_hand(self, new_item, active_gs):
+		if self.weight + new_item.weight >= self.max_weight:
+			room = active_gs.map.get_obj_room(self, active_gs)
+			room.floor_lst_append(new_item)
+			if self == active_gs.hero:
+				active_gs.buffer(f"Your burden is too great. You drop the {new_item.full_name} on the floor.")
+			else:
+				active_gs.buffer(f"The {self.full_name} is overburdened and must drop the {new_item.full_name} on the floor.")
+			return
 		if not self.hand_is_empty():
 			self.bkpk_lst_append(self.get_hand_item())
 			self.hand_lst_remove(self.get_hand_item())
 		self.hand_lst_append(new_item)
+		return
 
 	def chk_in_hand(self, obj):
 		return obj in self.hand_lst
@@ -388,7 +394,7 @@ class Creature(ViewOnly):
 
 		# Other creature recieves gift and may give a gift in return
 		creature.hand_lst_remove(obj)
-		self.put_in_hand(obj) # messes up goblin holding grimy_axe ; addressed with auto_action
+		self.put_in_hand(obj, active_gs) # messes up goblin holding grimy_axe ; addressed with auto_action
 		give_item = self.give_dict[give_key]['give']
 		if give_item:
 			self.bkpk_lst_remove(give_item) # replace with remove_item() ??

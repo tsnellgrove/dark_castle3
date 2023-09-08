@@ -644,15 +644,17 @@ Version 3.78 Goals
 			IDEA: "the X refuses the item. They appear to be overburdened."
 		- DONE: handle edge cases (e.g. 1 lb diff order of operations issues)
 			- NOTE: very hard to be certain of all cases but I've reviewed; now always remove before append
-		- TBD: update Creature.hand_lst_append() to deal with case where Burt will be overburdened by gift
+		- INPROC: update Creature.hand_lst_append() to deal with case where Burt will be overburdened by gift
 			- NOTE: can happen as result of gift (return gift) or modular machine (e.g. royal_crown)
-			- TBD: to pass active_gs to hand_lst_append() I first need to pass it to put_in_hand():
-				- TBD: creature_class_def()
-				- TBD: item_class_def()
-				- TBD: result_class_def()
-			- TBD: need to update hand_lst_append() to pass active_gs [ARGH!!]
-				- TBD: creature_class_def()
-		- TBD: is there any readon for Interactive.remove_item() ?
+			- DONE: to pass active_gs to hand_lst_append() I first need to pass it to put_in_hand():
+				- DONE: creature_class_def()
+				- DONE: item_class_def()
+				- DONE: result_class_def()
+			- CANCEL: need to update hand_lst_append() to pass active_gs [ just creature_class_def() ]
+				- IDEA: keep hand_lst_append() simple and update put_in_hand() with "drop if heavy"
+			- DONE: update put_in_hand() to include "drop on floor" (with variable txt for burt / non-burt)
+			- TBD: testing!!
+		- TBD: is there any reason for Interactive.remove_item() ?
 		- TBD: use remove_item() in give() ?
 		- TBD: doc_strings
 			- TBD: purpose for max_weight & max_count: physics puzzles, perlilous travel, finite surfaces

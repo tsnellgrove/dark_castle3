@@ -278,7 +278,7 @@ class PutItemInHandResult(BufferOnlyResult):
 				except:
 						pass
 # need to eventually change this to 'creature.take' when this is enabled
-				self.creature_obj.put_in_hand(self.item_obj)
+				self.creature_obj.put_in_hand(self.item_obj, active_gs)
 				if self.item_obj in self.creature_obj.bkpk_lst:
 						self.creature_obj.bkpk_lst_remove(self.item_obj)
 				return mach_state, self.cmd_override
