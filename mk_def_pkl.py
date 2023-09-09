@@ -238,7 +238,7 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 						'grimy_axe_guard_goblin_weapon' : 'hard_parry', # parry
 						'grimy_axe_guard_goblin_*' : 'tgt_death',
 						'fierce_teeth_royal_hedgehog_*' : 'jump_back'
-				}, 106.5, 150) # note: for non-burt-creature testing frog_travel_mach was in burt.invis_lstj; glass_bottle temporarily removed from inv
+				}, 106.5, 150) # note: for non-burt-creature testing frog_travel_mach was in burt.invis_lstj
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],

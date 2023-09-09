@@ -653,7 +653,8 @@ Version 3.78 Goals
 			- CANCEL: need to update hand_lst_append() to pass active_gs [ just creature_class_def() ]
 				- IDEA: keep hand_lst_append() simple and update put_in_hand() with "drop if heavy"
 			- DONE: update put_in_hand() to include "drop on floor" (with variable txt for burt / non-burt)
-			- TBD: testing!!
+			- DONE: testing!!
+		- DONE: drop take test if taking from bkp_lst or worn_lst
 		- TBD: is there any reason for Interactive.remove_item() ?
 		- TBD: use remove_item() in give() ?
 		- TBD: doc_strings

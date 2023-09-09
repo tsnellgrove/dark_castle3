@@ -72,7 +72,7 @@ class BufferAndGiveResult(BufferOnlyResult):
 				except:
 						pass
 				creature = active_gs.hero
-				creature.put_in_hand(self.give_item)
+				creature.put_in_hand(self.give_item, active_gs)
 				mach_state = True
 				return mach_state, self.cmd_override
 
