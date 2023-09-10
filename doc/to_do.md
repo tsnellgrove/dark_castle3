@@ -691,6 +691,7 @@ Version 3.78 Goals
 *** Unify Notes ***
 *** Plan for interpreter update ***
 
+- Centralize doc (it's past time!)
 
 - IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 	- IDEA: could have a prep attribute for each prep verb
