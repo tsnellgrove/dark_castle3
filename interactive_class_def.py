@@ -182,13 +182,15 @@ class ContainsMixIn(object):
 	def is_receptacle(self):
 		return True
 
-	# *** scope methods ***
 
-	def is_content_vis(self):
-		""" Checks whether the contents of the referenced object are visible.
+	# *** universal scope methods ***
+	def chk_contain_item(self, item):
+		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item()
 		"""
-		return (self.is_openable() and self.is_open) or not self.is_openable()
+		return item in self.contain_lst
 
+	def get_contain_lst(self, active_gs):
+		return self.contain_lst
 
 	def get_vis_contain_lst(self, active_gs):
 		""" Returns the list of visible objects contained in the referenced ('self') object
@@ -199,24 +201,12 @@ class ContainsMixIn(object):
 			return self.contain_lst + node2_lst
 		return []
 
-	def chk_wrt_is_vis(self, writing, active_gs):
-		""" Evaluates whether the passed writing is visible within the methed-calling object.
-		"""
-		return any(obj.writing == writing for obj in self.get_vis_contain_lst(active_gs))
-
-	def chk_contain_item(self, item):
-		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item()
-		"""
-		return item in self.contain_lst
-
-	def get_contain_lst(self, active_gs):
-		return self.contain_lst
-
-	def chk_has_capacity(self):
-		return len(self.contain_lst) < self.max_obj
-
 	def remove_item(self, item, active_gs):
 		self.contain_lst_remove(item, active_gs)
+
+	# ### container-specific scope methods ###
+	def chk_has_capacity(self):
+		return len(self.contain_lst) < self.max_obj
 
 	def chk_content_prohibited(self, obj):
 		if obj.is_creature():
@@ -228,6 +218,17 @@ class ContainsMixIn(object):
 
 	def get_contained_weight(self):
 		return sum(element.weight for element in self.contain_lst)
+
+	def is_content_vis(self):
+		""" Checks whether the contents of the referenced object are visible.
+		"""
+		return (self.is_openable() and self.is_open) or not self.is_openable()
+
+	def chk_wrt_is_vis(self, writing, active_gs):
+		""" Evaluates whether the passed writing is visible within the methed-calling object.
+		"""
+		return any(obj.writing == writing for obj in self.get_vis_contain_lst(active_gs))
+
 
 	# *** display methods ***
 	def has_contain(self, active_gs):

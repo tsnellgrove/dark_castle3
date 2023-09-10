@@ -655,8 +655,13 @@ Version 3.78 Goals
 			- DONE: update put_in_hand() to include "drop on floor" (with variable txt for burt / non-burt)
 			- DONE: testing!!
 		- DONE: drop take test if taking from bkp_lst or worn_lst
-		- TBD: is there any reason for Interactive.remove_item() ?
+		- DONE: is there any reason for Interactive.remove_item() ?
+			- FINDING: yes, is a universal scope method called in Invisible, Creature, Interactive, & Room
+			- DONE: consistently organized all universal scope methods together for clarity
+			- DONE: testing
+			- TBD: clean-up
 		- TBD: use remove_item() in give() ?
+		- TBD: organize universal display methods
 		- TBD: doc_strings
 			- TBD: purpose for max_weight & max_count: physics puzzles, perlilous travel, finite surfaces
 			- TBD: max_weight vs. max_count for creatures

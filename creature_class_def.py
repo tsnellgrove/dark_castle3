@@ -195,7 +195,7 @@ class Creature(ViewOnly):
 	def is_receptacle(self):
 		return True
 
-	# *** scope methods ***
+	# *** universal scope methods ***
 	def get_vis_contain_lst(self, active_gs):
 		""" Returns the list of visible objects contained in the referenced ('self') object
 		"""
@@ -229,6 +229,9 @@ class Creature(ViewOnly):
 			return 
 		raise ValueError(f"Can't remove item {item} from creature {self.name}")
 		return 
+
+
+	# *** creature-specific scope methods ***
 
 	# NOTE: only works for Creature class; not generalized for other obj
 	def is_contained(self, active_gs):

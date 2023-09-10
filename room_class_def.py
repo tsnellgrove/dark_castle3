@@ -48,7 +48,7 @@ class Room(ViewOnly):
 	def is_receptacle(self):
 		return True
 
-	# *** scope methods ***
+	# *** universal scope methods ***
 	def get_vis_contain_lst(self, active_gs):
 		""" Returns the list of visible objects contained in the method-calling object. In Room, provides the visible object scope.
 		"""
@@ -62,16 +62,6 @@ class Room(ViewOnly):
 #		return return_lst + self.floor_lst
 		return return_lst
 
-	def chk_wrt_is_vis(self, writing, active_gs):
-		""" Evaluates whether the passed writing is visible within the methed-calling object.
-		"""
-		return any(obj.writing == writing for obj in self.get_vis_contain_lst(active_gs))
-
-	def chk_is_vis(self, obj, active_gs):
-		""" Evaluates whether the passed object is visible within the methed-calling object.
-		"""
-		return obj in self.get_vis_contain_lst(active_gs)
-
 	def chk_contain_item(self, item, active_gs):
 		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item()
 		"""
@@ -83,20 +73,6 @@ class Room(ViewOnly):
 
 	def get_contain_lst(self, active_gs):
 		return self.floor_lst + self.feature_lst + active_gs.map.get_door_lst(self)
-
-	def get_mach_lst(self, active_gs):
-		""" Returns the list of Machine objects contained in the method-calling object. In Room, provides the Machine object scope.
-		"""
-		mach_lst = []
-		scope_lst = self.get_vis_contain_lst(active_gs) + self.invis_lst
-		for obj in scope_lst:
-			if obj.is_mach():
-				mach_lst.append(obj)
-			if obj.is_creature():
-				for invis_obj in obj.invis_lst:
-					if invis_obj.is_mach():
-						mach_lst.append(invis_obj)
-		return mach_lst
 
 	def remove_item(self, item, active_gs):
 		""" Removes the passed object from the methed-calling object. In Room, is used to enable the take() method.
@@ -115,6 +91,41 @@ class Room(ViewOnly):
 		raise ValueError(f"Can't remove item {item} from room {self.name}")
 		return 
 
+
+	# *** room-specific scope methods ***
+	def chk_wrt_is_vis(self, writing, active_gs):
+		""" Evaluates whether the passed writing is visible within the methed-calling object.
+		"""
+		return any(obj.writing == writing for obj in self.get_vis_contain_lst(active_gs))
+
+	def chk_is_vis(self, obj, active_gs):
+		""" Evaluates whether the passed object is visible within the methed-calling object.
+		"""
+		return obj in self.get_vis_contain_lst(active_gs)
+
+	def get_mach_lst(self, active_gs):
+		""" Returns the list of Machine objects contained in the method-calling object. In Room, provides the Machine object scope.
+		"""
+		mach_lst = []
+		scope_lst = self.get_vis_contain_lst(active_gs) + self.invis_lst
+		for obj in scope_lst:
+			if obj.is_mach():
+				mach_lst.append(obj)
+			if obj.is_creature():
+				for invis_obj in obj.invis_lst:
+					if invis_obj.is_mach():
+						mach_lst.append(invis_obj)
+		return mach_lst
+
+
+	# *** universal display methods ***
+	def get_title_str(self, active_gs):
+		if active_gs.hero.is_contained(active_gs):
+			return f"*** {self.full_name}, in the {active_gs.hero.get_contained_by(active_gs).full_name} ***"
+		else:
+			return f"*** {self.full_name} ***"
+
+
 	# *** display methods ***
 	def has_cond(self, active_gs):
 		return True
@@ -126,12 +137,6 @@ class Room(ViewOnly):
 		""" Displays object-specific conditions. Used in examine().
 		"""
 		active_gs.buff_no_cr(active_gs.map.get_door_str(self))
-
-	def get_title_str(self, active_gs):
-		if active_gs.hero.is_contained(active_gs):
-			return f"*** {self.full_name}, in the {active_gs.hero.get_contained_by(active_gs).full_name} ***"
-		else:
-			return f"*** {self.full_name} ***"
 
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
