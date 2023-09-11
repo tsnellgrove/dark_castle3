@@ -85,7 +85,7 @@ class ViewOnly(Writing):
 	def is_viewonly(self):
 		return True
 
-	# *** display methods ***
+	# *** universal display methods ***
 	def has_cond(self, active_gs):
 		return False
 
@@ -109,6 +109,9 @@ class ViewOnly(Writing):
 	def disp_contain(self, active_gs):
 		pass
 		return
+
+	def get_title_str(self, active_gs):
+		return None
 
 
 	# *** verb methods ***

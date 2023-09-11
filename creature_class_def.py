@@ -232,9 +232,7 @@ class Creature(ViewOnly):
 
 
 	# *** creature-specific scope methods ***
-
-	# NOTE: only works for Creature class; not generalized for other obj
-	def is_contained(self, active_gs):
+	def is_contained(self, active_gs): # only works for Creature class; not generalized for other obj
 		return self not in active_gs.map.get_obj_room(self, active_gs).floor_lst
 
 	def get_contained_by(self, active_gs):
@@ -276,7 +274,7 @@ class Creature(ViewOnly):
 		wrt_in_reach = any(obj.writing == wrt for obj in in_reach_obj_lst)
 		return wrt_in_seat or wrt_in_reach
 
-	# *** display methods ***
+	# *** universal display methods ***
 	def has_cond(self, active_gs):
 		return self.is_contained(active_gs)
 
@@ -339,6 +337,7 @@ class Creature(ViewOnly):
 				obj.disp_contain(active_gs)
 		return 
 
+	# *** creature-specific display methods ***
 	def disp_in_reach(self, active_gs):
 		""" displays in_reach objects for seated creature
 		"""

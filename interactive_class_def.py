@@ -172,8 +172,6 @@ class ContainsMixIn(object):
 				creature.decrement_weight(item.weight)
 		return
 
-	def is_empty(self):
-		return not self.contain_lst
 
 	# *** class identity methods ***
 	def	is_container(self):
@@ -204,15 +202,17 @@ class ContainsMixIn(object):
 	def remove_item(self, item, active_gs):
 		self.contain_lst_remove(item, active_gs)
 
-	# ### container-specific scope methods ###
+	# *** container-specific scope methods ***
+	def is_empty(self):
+		return not self.contain_lst
+
 	def chk_has_capacity(self):
 		return len(self.contain_lst) < self.max_obj
 
 	def chk_content_prohibited(self, obj):
-		if obj.is_creature():
+		if obj.is_creature(): # can't put creatures in containers
 			return True
-		# can't put portable containers in portable containers
-		if self.is_item() and obj.is_container():
+		if self.is_item() and obj.is_container(): # can't put portable containers in portable containers
 			return True
 		return False
 
@@ -266,6 +266,7 @@ class ContainsMixIn(object):
 		return
 
 
+	# *** debug methods ***
 	def capacity(self, active_gs, mode=None):
 		""" Reports the capacity of a Container. Only usable in debug mode.
 		"""
@@ -357,7 +358,7 @@ class Seat(ContainerFixedSimple):
 	def is_seat(self):
 		return True
 
-	# *** scope methods ***
+	# *** container-specific scope methods ***
 	def chk_content_prohibited(self, obj):
 		return obj.is_seat()
 
@@ -365,8 +366,7 @@ class Seat(ContainerFixedSimple):
 	def enter(self, active_gs, mode=None, creature=None):
 		""" Sits a creature in a Seat
 		"""
-		# destermine default attributes
-		if mode is None:
+		if mode is None: # destermine default attributes
 			mode = 'std'
 		if creature is None:
 			creature = active_gs.hero
@@ -375,8 +375,7 @@ class Seat(ContainerFixedSimple):
 		room.floor_lst_remove(creature)
 		self.contain_lst_append(creature, active_gs)
 
-		# if hero_creature not in current room, exit with no display
-		if room != active_gs.get_room():
+		if room != active_gs.get_room(): # if hero_creature not in current room, exit with no display
 			return 
 		
 		if creature == active_gs.hero:
@@ -390,8 +389,7 @@ class Seat(ContainerFixedSimple):
 	def exit(self, active_gs, mode=None, creature=None):
 		""" Enables a creature to exit a Seat
 		"""
-		# destermine default attributes
-		if mode is None:
+		if mode is None: # destermine default attributes
 			mode = 'std'
 		if creature is None:
 			creature = active_gs.hero
@@ -400,8 +398,7 @@ class Seat(ContainerFixedSimple):
 		room.floor_lst_append(creature)
 		self.contain_lst_remove(creature, active_gs)
 
-		# if hero_creature not in current room, exit with no display
-		if room != active_gs.get_room():
+		if room != active_gs.get_room(): # if hero_creature not in current room, exit with no display
 			return 
 		
 		if creature == active_gs.hero:

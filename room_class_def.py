@@ -125,8 +125,6 @@ class Room(ViewOnly):
 		else:
 			return f"*** {self.full_name} ***"
 
-
-	# *** display methods ***
 	def has_cond(self, active_gs):
 		return True
 

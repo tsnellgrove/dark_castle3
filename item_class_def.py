@@ -75,6 +75,7 @@ class Item(ViewOnly):
 		active_gs.buffer("Dropped")
 		return 
 
+	# *** debug methods ***
 	def get_weight(self, active_gs, mode=None):
 		""" Reports the weight of an Item. Only usable in debug mode.
 		"""

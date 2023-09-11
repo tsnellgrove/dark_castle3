@@ -27,9 +27,6 @@ class Invisible(object):
 	def name(self):
 		return self._name
 
-	# *** universal display methods ***
-	def get_title_str(self, active_gs):
-		return None
 
 	# *** universal scope methods ***
 	def get_contain_lst(self, active_gs):

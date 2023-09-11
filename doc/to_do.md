@@ -659,9 +659,10 @@ Version 3.78 Goals
 			- FINDING: yes, is a universal scope method called in Invisible, Creature, Interactive, & Room
 			- DONE: consistently organized all universal scope methods together for clarity
 			- DONE: testing
-			- TBD: clean-up
+			- DONE: clean-up
+		- INPROC: organize universal display methods
+			- TBD: testing
 		- TBD: use remove_item() in give() ?
-		- TBD: organize universal display methods
 		- TBD: doc_strings
 			- TBD: purpose for max_weight & max_count: physics puzzles, perlilous travel, finite surfaces
 			- TBD: max_weight vs. max_count for creatures
