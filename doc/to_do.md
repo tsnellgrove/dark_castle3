@@ -660,8 +660,8 @@ Version 3.78 Goals
 			- DONE: consistently organized all universal scope methods together for clarity
 			- DONE: testing
 			- DONE: clean-up
-		- INPROC: organize universal display methods
-			- TBD: testing
+		- DONE: organize universal display methods
+			- DONE: testing
 		- TBD: use remove_item() in give() ?
 		- TBD: doc_strings
 			- TBD: purpose for max_weight & max_count: physics puzzles, perlilous travel, finite surfaces
