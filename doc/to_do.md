@@ -577,7 +577,7 @@ Version 3.78 Goals
 			- DONE: move hand weight increment to append method
 			- DONE: move Container increment and decrement to append and remove with conditional on is_item()
 			- DONE: do I really need an extension for portable container? Can I conditionalize probhibited?
-		- INPROC: handle case where burt takes item from portable container in his inventory
+		- DONE: handle case where burt takes item from portable container in his inventory
 			- IDEA: ref creature.weight in remove_contain_lst()
 			- DONE: create map.get_obj_room(self, obj)
 			- DONE: update std_vis_err to give room of non-vis obj if debug == True
@@ -644,7 +644,7 @@ Version 3.78 Goals
 			IDEA: "the X refuses the item. They appear to be overburdened."
 		- DONE: handle edge cases (e.g. 1 lb diff order of operations issues)
 			- NOTE: very hard to be certain of all cases but I've reviewed; now always remove before append
-		- INPROC: update Creature.hand_lst_append() to deal with case where Burt will be overburdened by gift
+		- DONE: update Creature.hand_lst_append() to deal with case where Burt will be overburdened by gift
 			- NOTE: can happen as result of gift (return gift) or modular machine (e.g. royal_crown)
 			- DONE: to pass active_gs to hand_lst_append() I first need to pass it to put_in_hand():
 				- DONE: creature_class_def()
@@ -662,7 +662,7 @@ Version 3.78 Goals
 			- DONE: clean-up
 		- DONE: organize universal display methods
 			- DONE: testing
-		- TBD: use remove_item() in give() ?
+		- DONE: use remove_item() in give() ?
 		- TBD: doc_strings
 			- TBD: purpose for max_weight & max_count: physics puzzles, perlilous travel, finite surfaces
 			- TBD: max_weight vs. max_count for creatures

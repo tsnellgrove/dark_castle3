@@ -399,7 +399,8 @@ class Creature(ViewOnly):
 		self.put_in_hand(obj, active_gs) # messes up goblin holding grimy_axe ; addressed with auto_action
 		give_item = self.give_dict[give_key]['give']
 		if give_item:
-			self.bkpk_lst_remove(give_item) # replace with remove_item() ??
+#			self.bkpk_lst_remove(give_item) # replace with remove_item() ??
+			self.remove_item(give_item, active_gs)
 			creature.hand_lst_append(give_item)
 
 		# Update other creature description based on gift given
