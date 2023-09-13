@@ -192,6 +192,8 @@ class Weapon(Item):
 """ *** Module Documentation ***
 
 	* Item class:
+		Attributes:
+			- weight: The Item class has the 'weight' attribute. Containers and Creatures can be limited in the weight (max_weight) or number (max_count) of items they can hold. In modern IF, inventory constraints are considered "old school" but I am, after all, largely modeling after two old-school Infocom games, Zork and Enchanter, both of which make heavy use of Inventory limitationss. The weight attribute also enables physics-based puzzes, crawl-space travel restrictions (which enhance the feel of peril), and the sense of realism provided by finite capacity.
 
 		Implementation Detail:
 			All objects of class Item are takable - there's no 'is_takable' attribute to prevent this. To temporarily prevent an Item from being taken you could:
@@ -203,7 +205,6 @@ class Weapon(Item):
 			Adventurers love Items. This tradition dates back to Zork I itself, where the sole mission of the game was to collect 20 (or 19, depending on how you count) treasures and safely store them in a trophy case. Although Dark Castle theoretically follows the Enchanter tradition of saving the land, truthfully, Burt showed up at Dark Castle to score some loot and that desire is never far from his heart. Good game design leverages this love of Items. 
 			
 			Want to intrigue and excite an Adventurer? Show them an out-of-reach Item. Want to infuriate an Adventurer? Pilfer their hard won Items! Want to make a puzzle hard? Require that the Adventurer surrender an Item to solve it. Dark Castle leans in heavily on each of these standard Adventurer manipulation techniques.
-
 		
 	- take() method [Item class]:
 

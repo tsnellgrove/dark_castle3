@@ -663,8 +663,8 @@ Version 3.78 Goals
 		- DONE: organize universal display methods
 			- DONE: testing
 		- DONE: use remove_item() in give() ?
-		- TBD: doc_strings
-			- TBD: purpose for max_weight & max_count: physics puzzles, perlilous travel, finite surfaces
+		- INPROC: doc_strings
+			- DONE: purpose for max_weight & max_count: physics puzzles, perlilous travel, finite surfaces
 			- TBD: max_weight vs. max_count for creatures
 			- TBD: compare weight in dark castle to Zork inventory capacity 
 			- TBD: update doc_string for Portable Containers (extensions gone)
