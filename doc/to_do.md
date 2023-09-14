@@ -665,8 +665,8 @@ Version 3.78 Goals
 		- DONE: use remove_item() in give() ?
 		- INPROC: doc_strings
 			- DONE: purpose for max_weight & max_count: physics puzzles, perlilous travel, finite surfaces
-			- TBD: max_weight vs. max_count for creatures
-			- TBD: compare weight in dark castle to Zork inventory capacity 
+			- DONE: max_weight vs. max_count for creatures
+			- DONE: compare weight in dark castle to Zork inventory capacity 
 			- TBD: update doc_string for Portable Containers (extensions gone)
 
 - TBD: instantiate Creature Containers in actual game

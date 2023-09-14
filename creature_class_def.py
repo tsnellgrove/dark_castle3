@@ -577,6 +577,14 @@ class Creature(ViewOnly):
 			
 			Based on the "mechanical" approach, creatures have three standard interaction methods: show(), give(), and attack()
 
+		Class Attributes:
+			max_weight is the maximum weight a creature can carry and acts as an inventory limit for Burt. In modern IF, inventory limits are frowned upon as boring constraints that nag but add no value. This can be the case but I still love the old-school nature of needing to carefully decide what you'll carry with you on a particular mission. 
+
+			In Zork, the inventory limit is the number of items a creature can carry - with a random number generator thrown in just to be a bit more caprecious. My hope is that max_weight is a bit less arbitrary but still creates game limitations that require creative problem-solving.
+
+			Ref Link: https://blog.zarfhome.com/2017/08/your-load-is-too-heavy-zork-deep-reading.html
+
+	
 	- take() method [Creature class]:
 
 		Overview:
