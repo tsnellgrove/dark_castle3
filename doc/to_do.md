@@ -482,7 +482,7 @@ Version 3.78 Goals
 			- DONE: Seat vs. Perch... perhaps Perch is more generic?? Seat to include under & behind ??
 			- DONE: method write-up (synonyms, exit special case of std_err)
 
-	- INPROC: general Interactive class clean-up
+	- DONE: general Interactive class clean-up
 		- DONE: should identity methods only apply to noun classes, not MixIns? [DECISION = NO]
 		- DONE: create 'weight' verb to return bulk of Item (only usable in debug mode) ??
 		- DONE: fix ContainerFixed inheritance... Lidded & Lockable should inherit from Noun, not MixIns
@@ -526,7 +526,7 @@ Version 3.78 Goals
 				- FINDING: identity vs. display status
 			- DONE: review of put()
 
-	- INPROC: finish the max_weight deployment
+	- DONE: finish the max_weight deployment
 		- DONE: assign 'weight' attribute to Creature
 			- NOTE: need to include weight of std items
 			- DECISION: assign weigth directly to Creature - not to inventory obj (e.g. 'fist')
@@ -663,13 +663,14 @@ Version 3.78 Goals
 		- DONE: organize universal display methods
 			- DONE: testing
 		- DONE: use remove_item() in give() ?
-		- INPROC: doc_strings
+		- DONE: doc_strings
 			- DONE: purpose for max_weight & max_count: physics puzzles, perlilous travel, finite surfaces
 			- DONE: max_weight vs. max_count for creatures
 			- DONE: compare weight in dark castle to Zork inventory capacity 
-			- TBD: update doc_string for Portable Containers (extensions gone)
+			- DONE: update doc_string for Portable Containers (extensions gone)
 
-- TBD: instantiate Creature Containers in actual game
+- TBD: Clean up from testing and instantiate Creature Containers in actual game
+	- TBD: clean up test obj (making it clear which still exist in game)
 	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
 	- CANCEL: switch creature.stand() => creature.exit()
 	- TBD: Throne
