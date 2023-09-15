@@ -219,7 +219,7 @@ Version 3.78 Goals
 			- CANCEL: HoldsMixIn provids 'contain_lst', 'max_count' and put() method
 			- CANCEL: Surface = ViewOnly + HoldsMixIn
 	
-- INPROC: implement MixIn architecture in interactive module
+- DONE: implement MixIn architecture in interactive module
 	- MOVED: establish 'bulk' attribute for Item
 		- IDEA: adding bulk as an attribute to Item is a good example of the need for MixIn classes
 		- IDEA: rather than troubleshoot diamond inheritance for ages I will back this out and do MixIn 1st
@@ -669,9 +669,13 @@ Version 3.78 Goals
 			- DONE: compare weight in dark castle to Zork inventory capacity 
 			- DONE: update doc_string for Portable Containers (extensions gone)
 
-- TBD: Clean up from testing and instantiate Creature Containers in actual game
-	- TBD: clean up test obj (making it clear which still exist in game)
-	- TBD: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
+- INPROC: Clean up from testing and instantiate Creature Containers in actual game
+	- DONE: clean up test obj (making it clear which still exist in game)
+		- DONE: remove test obj from Entrance
+		- DONE: remove screen_door between main_hall and antechamber
+	- DONE: move test obj into dedicated section; instantiate but don't place
+	- DONE: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
+		- DECISION: leave as is (creature method) for now - is only used by Creatures
 	- CANCEL: switch creature.stand() => creature.exit()
 	- TBD: Throne
 		- TBD: For throne, crystal_box is in_reach? Update room / throne text to indicate this?
@@ -680,11 +684,8 @@ Version 3.78 Goals
 		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
 			- IDEA: add auto_gen description to over-ride (like messy_handwriting)
 			- IDEA: or maybe base auto_gen key on descript_key and update that?
-		- TBD: clean up test obj (e.g. test_chair, black_suitcase)
-	- TBD: maybe a Bed in the Main Hall?
-	- TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
-	- Stone Coffer => no-lid box ?
-	- move test obj into dedicated section; instantiate but don't place
+		- TBD: clean up test_chair
+
 
 
 
@@ -694,6 +695,10 @@ Version 3.78 Goals
 *** Plan for interpreter update ***
 
 - Centralize doc (it's past time!)
+
+- TBD: maybe a Bed in the Main Hall?
+- TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
+- TBD: Stone Coffer => no-lid box ?
 
 - IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 	- IDEA: could have a prep attribute for each prep verb

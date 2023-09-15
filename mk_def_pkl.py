@@ -88,28 +88,33 @@ earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'eart
 front_gate = DoorLockable('front_gate', 'Front Gate', "gate", 'front_gate', rusty_lettering, False, False, rusty_key)
 iron_portcullis = DoorLockable('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, False, False, None)
 
-# misc test obj
-brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None, 1) # test object
-bubbly_potion = Item('bubbly_potion', 'bubbly potion', "potion", 'bubbly_potion', None, 2) # test object
-random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random_mcguffin', None, 5) # test object
-heavy_rock = Item('heavy_rock', 'Heavy Rock', 'rock', 'heavy_rock', None, 40)
-baseball_cap = Garment('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, 1, 'hat')
+# Switches
 throne = SpringSliderSwitch('throne', 'Throne', 'throne', 'throne', None, 'neutral', 'neutral', 'auto_switch_reset')
 left_lever = LeverSwitch('left_lever', 'Left Lever', 'lever', 'left_lever', None, 'down', None, None)
 middle_lever = LeverSwitch('middle_lever', 'Middle Lever', 'lever', 'middle_lever', None, 'down', None, None)
 right_lever = LeverSwitch('right_lever', 'Right Lever', 'lever', 'right_lever', None, 'down', None, None)
 red_button = ButtonSwitch('red_button', 'Red Button', 'button', 'red_button', None, 'neutral', 'neutral', 'auto_switch_reset')
+
+
+# test obj - not currently in use
+brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None, 1) # test object
+bubbly_potion = Item('bubbly_potion', 'bubbly potion', "potion", 'bubbly_potion', None, 2) # test object
+random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random_mcguffin', None, 5) # test object
+heavy_rock = Item('heavy_rock', 'Heavy Rock', 'rock', 'heavy_rock', None, 40)
+baseball_cap = Garment('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, 1, 'hat')
 cardboard_box = ContainerFixedLidded('cardboard_box', 'Cardboard Box', 'box', 'cardboard_box', None, [], 999, 2, 'in', False)
-screen_door = DoorSimple('screen_door', 'Screen Door', 'door', 'screen_door', None, False)
 small_barrel = ContainerPortableSimple('small_barrel', 'Small Barrel', 'barrel', 'small_barrel', None, 2, [], 5, 999, 'in')
 red_shoebox = ContainerPortableLidded('red_shoebox', 'Red Shoebox', 'shoebox', 'red_shoebox', None, 1, [], 3, 999, 'in', False)
 black_suitcase = ContainerPortableLockable('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None, 3, [], 7, 999, 'in', False, False, rusty_key)
+screen_door = DoorSimple('screen_door', 'Screen Door', 'door', 'screen_door', None, False)
+
+# test obj - currently in use
 test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 999, 2, 'on', [wooden_shelf])
 
-
-
+# timers
 hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, 'royal_hedgehog')
 
+# conditions
 hand_no_weap_cond = WeaponInHandCond('hand_no_weap_cond', False)
 hand_weap_1st_cond = IsWeaponAndStateCond('hand_weap_1st_cond', True, False)
 hand_weap_repeat_cond = IsWeaponAndStateCond('hand_weap_repeat_cond', True, True)
@@ -131,6 +136,7 @@ read_scroll_win_cond = PassThruCond('read_scroll_win_cond')
 axe_in_goblin_hand_cond = CreatureItemCond('axe_in_goblin_hand_cond', 'guard_goblin_temp', grimy_axe, False)
 goblin_exist_state_cond = InWorldStateCond('goblin_dead_state_cond', 'guard_goblin_temp', False)
 
+# results
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'death', True)
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
 moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', royal_crown, True)
@@ -153,11 +159,13 @@ scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won', Fal
 axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
 dispense_panel_result = AddObjToRoomAndDescriptResult('dispense_panel_result', 'temp_control_panel', False)
 
+# warnings
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
 attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd',
 				[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3, 0)
 eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','stale_biscuits']], 3, 0)
 
+# machines
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
 				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
 				[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) # machine_state == got_crown
@@ -214,7 +222,8 @@ guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 						'weapon_*_*' : 'easy_parry', # parry
 						'*_*_*' : 'src_death'
 				}, 93, 999)
-				
+
+# creatures				
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None,
 				None, [], [silver_key], [red_bandana], [fierce_teeth, loyalty],
 				[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_done_eating_mach, hedgehog_distracted_mach],
@@ -242,7 +251,7 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-				[burt, cardboard_box, small_barrel, red_shoebox, black_suitcase, heavy_rock, baseball_cap], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
+				[burt], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
 				# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
@@ -267,8 +276,8 @@ map = Map([{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y'
 				{'room_x' : entrance, 'dir_x' : 'south', 'door' : 'path', 'dir_y' : None, 'room_y' : unreachable_1},
 				{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
 				{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
-#				{'room_x' : main_hall, 'dir_x' : 'north', 'door' : 'passage', 'dir_y' : 'south', 'room_y' : antechamber},
-				{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
+				{'room_x' : main_hall, 'dir_x' : 'north', 'door' : 'passage', 'dir_y' : 'south', 'room_y' : antechamber},
+#				{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
 				{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}])
 
 # *** Hierarchy-Based Object Re-assignment ***
