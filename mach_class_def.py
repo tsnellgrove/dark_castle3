@@ -9,7 +9,7 @@ from item_class_def import Item
 from invisible_class_def import Invisible
 from base_class_def import ViewOnly
 from static_gbl import descript_dict
-from interactive_class_def import ContainerFixedSimple
+from interactive_class_def import ContainerFixedSimple, Seat
 
 ### classes
 class MachineMixIn(object):
@@ -124,6 +124,11 @@ class ContainerFixedSimpleMach(MachineMixIn, ContainerFixedSimple):
 		def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 				ContainerFixedSimple.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep)
 				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
+
+#class SeatMach(MachineMixIn, ContainerFixedSimple):
+#		def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, in_reach_lst, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
+#				Seat.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, in_reach_lst)
+#				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
 class Warning(Invisible):
 		def __init__(self, name, trigger_type, trig_vals_lst, warn_max, warn_count):

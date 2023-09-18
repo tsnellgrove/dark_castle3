@@ -678,13 +678,15 @@ Version 3.78 Goals
 		- DECISION: leave as is (creature method) for now - is only used by Creatures
 	- CANCEL: switch creature.stand() => creature.exit()
 	- TBD: Throne
+		- DONE: create class SeatMach
+		- CANCEL: instantiate throne as obj of class SeatMach
+		- TBD: reconsider SwitchMixIn... how to make SpringSliderSwitch a true MixIn?
 		- TBD: For throne, crystal_box is in_reach? Update room / throne text to indicate this?
-		- TBD: instantiate throne as obj of class SeatMach
 		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
 		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
 			- IDEA: add auto_gen description to over-ride (like messy_handwriting)
 			- IDEA: or maybe base auto_gen key on descript_key and update that?
-		- TBD: clean up test_chair
+		- TBD: clean up test_chair and ThroneMach class
 
 
 
