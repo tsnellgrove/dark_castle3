@@ -13,7 +13,7 @@ from item_class_def import Item, Food, Liquid, Garment, Weapon
 from interactive_class_def import DoorSimple, DoorLockable
 from interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
 from interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
-from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch
+from switch_class_def import ButtonSwitch, SpringSliderSwitch, LeverSwitch, ViewOnlyButtonSwitch
 from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
 				SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
 				StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond, InRoomCond, InWorldStateCond)
@@ -93,8 +93,8 @@ throne = SpringSliderSwitch('throne', 'Throne', 'throne', 'throne', None, 'neutr
 left_lever = LeverSwitch('left_lever', 'Left Lever', 'lever', 'left_lever', None, 'down', None, None)
 middle_lever = LeverSwitch('middle_lever', 'Middle Lever', 'lever', 'middle_lever', None, 'down', None, None)
 right_lever = LeverSwitch('right_lever', 'Right Lever', 'lever', 'right_lever', None, 'down', None, None)
-red_button = ButtonSwitch('red_button', 'Red Button', 'button', 'red_button', None, 'neutral', 'neutral', 'auto_switch_reset')
-
+# red_button = ButtonSwitch('red_button', 'Red Button', 'button', 'red_button', None, 'neutral', 'neutral', 'auto_switch_reset')
+red_button = ViewOnlyButtonSwitch('red_button', 'Red Button', 'button', 'red_button', None, 'neutral', 'neutral', 'auto_switch_reset')
 
 # test obj - not currently in use
 brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None, 1) # test object

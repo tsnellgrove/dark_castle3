@@ -41,6 +41,37 @@ class SwitchMixIn(object):
 	def is_mach(self):
 		return True
 
+class ButtonSwitchMixIn(SwitchMixIn):
+	def __init__(self, switch_state, def_switch_state, trigger_type):
+		""" The ButtonSwitchMixIn can be combined with other classes (most typically ViewOnly) to produce a push-button switch the player can manipulate.
+		"""
+		SwitchMixIn.__init__(self, switch_state, def_switch_state, trigger_type)
+
+	# *** class identity methods ***
+	def is_buttonswitch(self):
+		return True
+
+	# *** verb methods ***
+	def push(self, active_gs, mode=None):
+		""" Sets the switch state to 'pushed' until it is auto-reset in the auto_action.py module
+		"""
+		if mode is None:
+			mode = 'std'
+		creature = active_gs.hero
+
+		self.switch_state = 'pushed'
+
+		active_gs.buffer("Pushed.")
+		return 
+
+class ViewOnlyButtonSwitch(ButtonSwitchMixIn, ViewOnly):
+	def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, def_switch_state, trigger_type):
+		""" The ViewOnlyButtonSwitch class combines ViewOnly and ButtonSwitchMixIn to create a simple 2-state ('neutral' or 'pushed') switch that automatically springs back to neutral.
+		"""
+		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
+		ButtonSwitchMixIn.__init__(self, switch_state, def_switch_state, trigger_type)
+
+
 class ButtonSwitch(SwitchMixIn, ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, def_switch_state, trigger_type):
 		""" The ButtonSwitch class combines ViewOnly and SwitchMixIn to create a simple 2-state ('neutral' or 'pushed') switch that automatically springs back to neutral.

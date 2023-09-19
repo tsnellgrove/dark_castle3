@@ -677,10 +677,19 @@ Version 3.78 Goals
 	- DONE: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
 		- DECISION: leave as is (creature method) for now - is only used by Creatures
 	- CANCEL: switch creature.stand() => creature.exit()
-	- TBD: Throne
+	- INPROC: Throne
 		- DONE: create class SeatMach
 		- CANCEL: instantiate throne as obj of class SeatMach
-		- TBD: reconsider SwitchMixIn... how to make SpringSliderSwitch a true MixIn?
+		- DONE: reconsider SwitchMixIn... how to make SpringSliderSwitch a true MixIn?
+			- NOTE: apparently I created these MixIns before I understood that methods should be included
+		- INPROC: ViewOnlyButtonSwitch
+			- DONE: create ButtonSwitchMixIn
+			- DONE: create ViewOnlyButtonSwtich
+			- DONE: update red_button to class ViewOnlyButtonSwtich
+			- DONE: test / troubleshoot (currently "no effect")
+			- TBD: clean-up
+		- TBD: create SliderSwitchMixIn
+		- TBD: create SeatSliderSwitch
 		- TBD: For throne, crystal_box is in_reach? Update room / throne text to indicate this?
 		- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
 		- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
