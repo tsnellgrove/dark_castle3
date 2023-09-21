@@ -6,6 +6,7 @@
 
 ### import
 from base_class_def import ViewOnly
+from interactive_class_def import Seat
 
 
 ### classes
@@ -124,6 +125,14 @@ class SpringSliderSwitchMixIn(ButtonSwitchMixIn):
 
 		active_gs.buffer("Pulled.")
 		return 
+
+
+class SeatSpringSliderSwitch(SpringSliderSwitchMixIn, Seat):
+	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, in_reach_lst, switch_state, def_switch_state, trigger_type):
+		""" The SeatSpringSliderSwitch class combines Seat and SpringSliderSwitchMixIn to create a Seat class that can also be pushed or pulled.
+		"""
+		Seat.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, in_reach_lst)
+		SpringSliderSwitchMixIn.__init__(self, switch_state, def_switch_state, trigger_type)
 
 
 

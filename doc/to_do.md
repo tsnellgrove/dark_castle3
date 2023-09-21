@@ -690,15 +690,19 @@ Version 3.78 Goals
 			- DONE: clean-up
 		- INPROC: SeatSpringSliderSwitch
 			- DONE: create SpringSliderSwitchMixIn
-			- TBD: create SeatSpringSliderSwitch
-			- TBD: update throne to class SeatSpringSliderSwitch
-				- TBD: For throne, crystal_box is in_reach? Update room / throne text to indicate this?
+			- DONE: create SeatSpringSliderSwitch
+			- INPROC: update throne to class SeatSpringSliderSwitch
+				- DONE: base functionality
+				- DONE: For throne, crystal_box is in_reach? Update room / throne text to indicate this?
+				- DONE: base functionality test
 				- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
-				- TBD: autogen text would need to be conditional (i.e. before & after broach dispensed)
-					- IDEA: add auto_gen description to over-ride (like messy_handwriting)
-					- IDEA: or maybe base auto_gen key on descript_key and update that?
-			- TBD: test / troubleshoot (currently "no effect")
-			- TBD: clean-up
+					- IDEA: autogen text would need to be conditional (i.e. before & after broach dispensed)
+					- TBD: 'throne' descript_key => 'throne_pre_broach'
+					- TBD: create descript_dict entry (in dynamic section) for Enter method
+					- TBD: create 'throne_post_broach' descript_key without secrets sentence in descript_dict
+					- TBD: update throne_mach result to change descript_key
+			- TBD: description update test / troubleshoot
+			- TBD: clean-up (Switch class and mk_def_pkl)
 		- TBD: clean up test_chair class
 		- TBD: clean up Switch class
 
