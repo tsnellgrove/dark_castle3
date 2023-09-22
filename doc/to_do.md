@@ -697,9 +697,10 @@ Version 3.78 Goals
 				- DONE: base functionality test
 				- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
 					- IDEA: autogen text would need to be conditional (i.e. before & after broach dispensed)
-					- TBD: 'throne' descript_key => 'throne_pre_broach'
-					- TBD: create descript_dict entry (in dynamic section) for Enter method
-					- TBD: create 'throne_post_broach' descript_key without secrets sentence in descript_dict
+					- DONE: 'throne' descript_key => 'throne_pre_broach'
+					- DONE: create 'throne_post_broach' descript_key w/out secrets sentence in descript_dict
+					- DONE: create descript_dict entry (in dynamic section) for Enter method
+					- TBD: test
 					- TBD: update throne_mach result to change descript_key
 			- TBD: description update test / troubleshoot
 			- TBD: clean-up (Switch class and mk_def_pkl)

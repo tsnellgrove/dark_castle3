@@ -161,7 +161,8 @@ descript_dict = {
 		'middle_lever' : "The Middle Lever is old and rusty.",
 		'right_lever' : "The Right Lever is old and rusty.",
 		'red_button' : "The Red Button is to the right of the three levers. You have no idea what it does but it's very big... and red... and shiny. Without concious intent, your hands begins to reach out to push the Big. Red. Shiny. Candy-Like. Button...",
-		'throne' : "High-backed and intricately carved, the Throne is secured to the floor and wedged against the castle wall behind it. It does not look entirely comfortable but it must have once been very grand indeed. Alas, like the rest of Dark Castle, it is now dingy and ominous with only faint hints of its past glory. The Throne must have heard many secrets in its time... perhaps it still holds some?",
+		'throne_pre_broach' : "High-backed and intricately carved, the Throne is secured to the floor and wedged against the castle wall behind it. It does not look entirely comfortable but it must have once been very grand indeed. Alas, like the rest of Dark Castle, it is now dingy and ominous with only faint hints of its past glory. The Throne must have heard many secrets in its time... perhaps it still holds some?",
+        'throne_post_broach' : "High-backed and intricately carved, the Throne is secured to the floor and wedged against the castle wall behind it. It does not look entirely comfortable but it must have once been very grand indeed. Alas, like the rest of Dark Castle, it is now dingy and ominous with only faint hints of its past glory.",
 
 		### machines & results ###
 		'control_panel' : "The Control Panel contains multiple levers and a button. There are no directions posted as to what the controls are for or how to use them (a clear ISO lapse if ever you've seen one!).",
@@ -197,6 +198,7 @@ descript_dict = {
 
 		### updated room descriptions ###
 		'antechamber_dispense_panel_result' :"You are standing in a what feels more like a wide, tall-ceilinged corridor than a room. Apparently this is the room-before-the-room, the pre-room before the really, really grand room that comes after it. If so, the next room must be quite something because back in it's day this spot was clearly impressive. Alas, like all of the castle it has fallen on dark times and now feels more sinister than grand. The east and west walls are bare stone. To the south is an open passageway leading to the Main Hall and to the north there is an Iron Portcullis that guards the path to the grand chamber beyond. Near the Iron Portcullis on the west wall there is a small Alcove. It appears to have a Control Panel with some levers and a button on it.",
+        'burt_enter_throne_pre_broach' : "Sitting in the throne, it feels out of kilter to you - like it's been pushed or pulled out of alignment by somethinfg.",
 
 		### wear descriptions ###
 		'burt_wear_royal_crown' : "You now feel more regal.",
