@@ -95,7 +95,7 @@ middle_lever = LeverSwitch('middle_lever', 'Middle Lever', 'lever', 'middle_leve
 right_lever = LeverSwitch('right_lever', 'Right Lever', 'lever', 'right_lever', None, 'down', None, None)
 red_button = ViewOnlyButtonSwitch('red_button', 'Red Button', 'button', 'red_button', None, 'neutral', 'neutral', 'auto_switch_reset')
 
-throne = SeatSpringSliderSwitch('throne', 'Throne', 'throne', 'throne', None, [], 999, 2, 'on', [crystal_box], 'neutral', 'neutral', 'auto_switch_reset')
+throne = SeatSpringSliderSwitch('throne', 'Throne', 'throne', 'throne_pre_broach', None, [], 999, 2, 'on', [crystal_box], 'neutral', 'neutral', 'auto_switch_reset')
 
 # test obj - not currently in use
 brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None, 1) # test object

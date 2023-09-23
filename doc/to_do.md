@@ -700,15 +700,15 @@ Version 3.78 Goals
 					- DONE: 'throne' descript_key => 'throne_pre_broach'
 					- DONE: create 'throne_post_broach' descript_key w/out secrets sentence in descript_dict
 					- DONE: create descript_dict entry (in dynamic section) for Enter method
-					- TBD: test
-					- TBD: update throne_mach result to change descript_key
-			- TBD: description update test / troubleshoot
+					- DONE: test
+					- INPROC: update throne_mach result to change descript_key
+						- TBD: create new AddObjToRoomResult class with descript update; pass obj throne
+						- TBD: in mk_def_pkl.py, update class referenced by Result and by Mach
+						- TBD: test
+						- TBD: clean-up
+						- NOTE: this is another case that drives a fix / modularization of Machs! 
 			- TBD: clean-up (Switch class and mk_def_pkl)
 		- TBD: clean up test_chair class
-		- TBD: clean up Switch class
-
-
-
 
 
 
@@ -716,6 +716,19 @@ Version 3.78 Goals
 *** Plan for interpreter update ***
 
 - Centralize doc (it's past time!)
+- Fix indent in all modules! (way past time!!)
+- Re-diagram modules
+- Folderinze modules based on grouping
+
+- Really modularize machines!
+- Sort out prepositional spaces (e.g. Under, Nook, Hole, Bed)
+- Roll up sleaves and fix Interpreter
+
+- Get light working
+- Get liquids working
+- Get food and hunger working
+- Get thirst and beverages working
+- Get tiredness and sleep working
 
 - TBD: maybe a Bed in the Main Hall?
 - TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?

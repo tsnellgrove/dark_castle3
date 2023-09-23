@@ -198,7 +198,9 @@ descript_dict = {
 
 		### updated room descriptions ###
 		'antechamber_dispense_panel_result' :"You are standing in a what feels more like a wide, tall-ceilinged corridor than a room. Apparently this is the room-before-the-room, the pre-room before the really, really grand room that comes after it. If so, the next room must be quite something because back in it's day this spot was clearly impressive. Alas, like all of the castle it has fallen on dark times and now feels more sinister than grand. The east and west walls are bare stone. To the south is an open passageway leading to the Main Hall and to the north there is an Iron Portcullis that guards the path to the grand chamber beyond. Near the Iron Portcullis on the west wall there is a small Alcove. It appears to have a Control Panel with some levers and a button on it.",
-        'burt_enter_throne_pre_broach' : "Sitting in the throne, it feels out of kilter to you - like it's been pushed or pulled out of alignment by somethinfg.",
+
+		### enter descriptions ###
+        'burt_enter_throne_pre_broach' : "Sitting in the throne, it feels slightly out of kilter - as if it's been pushed or pulled out of alignment by something...",
 
 		### wear descriptions ###
 		'burt_wear_royal_crown' : "You now feel more regal.",
