@@ -669,7 +669,7 @@ Version 3.78 Goals
 			- DONE: compare weight in dark castle to Zork inventory capacity 
 			- DONE: update doc_string for Portable Containers (extensions gone)
 
-- INPROC: Clean up from testing and instantiate Creature Containers in actual game
+- DONE: Clean up from testing and instantiate Creature Containers in actual game
 	- DONE: clean up test obj (making it clear which still exist in game)
 		- DONE: remove test obj from Entrance
 		- DONE: remove screen_door between main_hall and antechamber
@@ -677,7 +677,7 @@ Version 3.78 Goals
 	- DONE: decide - should creature.is_contained and creature.get_container be ViewOnly methods?
 		- DECISION: leave as is (creature method) for now - is only used by Creatures
 	- CANCEL: switch creature.stand() => creature.exit()
-	- INPROC: Throne
+	- DONE: Throne
 		- DONE: create class SeatMach
 		- CANCEL: instantiate throne as obj of class SeatMach
 		- DONE: reconsider SwitchMixIn... how to make SpringSliderSwitch a true MixIn?
@@ -688,27 +688,26 @@ Version 3.78 Goals
 			- DONE: update red_button to class ViewOnlyButtonSwtich
 			- DONE: test / troubleshoot (currently "no effect")
 			- DONE: clean-up
-		- INPROC: SeatSpringSliderSwitch
+		- DONE: SeatSpringSliderSwitch
 			- DONE: create SpringSliderSwitchMixIn
 			- DONE: create SeatSpringSliderSwitch
-			- INPROC: update throne to class SeatSpringSliderSwitch
+			- DONE: update throne to class SeatSpringSliderSwitch
 				- DONE: base functionality
 				- DONE: For throne, crystal_box is in_reach? Update room / throne text to indicate this?
 				- DONE: base functionality test
-				- TBD: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
+				- DONE: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
 					- IDEA: autogen text would need to be conditional (i.e. before & after broach dispensed)
 					- DONE: 'throne' descript_key => 'throne_pre_broach'
 					- DONE: create 'throne_post_broach' descript_key w/out secrets sentence in descript_dict
 					- DONE: create descript_dict entry (in dynamic section) for Enter method
 					- DONE: test
-					- INPROC: update throne_mach result to change descript_key
+					- DONE: update throne_mach result to change descript_key
 						- DONE: create new AddObjToRoomResult class with descript update; pass obj throne
 						- DONE: in mk_def_pkl.py, update class referenced by Result and by Mach
 						- DONE: test
-						- TBD: clean-up
+						- DONE: clean-up
 						- NOTE: this is another case that drives a fix / modularization of Machs! 
-			- TBD: clean-up (Switch class and mk_def_pkl)
-		- TBD: clean up test_chair class
+		- DONE: clean up test_chair class
 
 
 
@@ -731,6 +730,7 @@ Version 3.78 Goals
 - Get tiredness and sleep working
 
 - TBD: update winning condition to reading scroll while sitting on throne?
+- TBD: make LeverSwitch a true MixIn
 
 - TBD: maybe a Bed in the Main Hall?
 - TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?

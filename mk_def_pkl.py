@@ -89,12 +89,10 @@ front_gate = DoorLockable('front_gate', 'Front Gate', "gate", 'front_gate', rust
 iron_portcullis = DoorLockable('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, False, False, None)
 
 # Switches
-# throne = SpringSliderSwitch('throne', 'Throne', 'throne', 'throne', None, 'neutral', 'neutral', 'auto_switch_reset')
 left_lever = LeverSwitch('left_lever', 'Left Lever', 'lever', 'left_lever', None, 'down', None, None)
 middle_lever = LeverSwitch('middle_lever', 'Middle Lever', 'lever', 'middle_lever', None, 'down', None, None)
 right_lever = LeverSwitch('right_lever', 'Right Lever', 'lever', 'right_lever', None, 'down', None, None)
 red_button = ViewOnlyButtonSwitch('red_button', 'Red Button', 'button', 'red_button', None, 'neutral', 'neutral', 'auto_switch_reset')
-
 throne = SeatSpringSliderSwitch('throne', 'Throne', 'throne', 'throne_pre_broach', None, [], 999, 2, 'on', [crystal_box], 'neutral', 'neutral', 'auto_switch_reset')
 
 # test obj - not currently in use
@@ -108,9 +106,10 @@ small_barrel = ContainerPortableSimple('small_barrel', 'Small Barrel', 'barrel',
 red_shoebox = ContainerPortableLidded('red_shoebox', 'Red Shoebox', 'shoebox', 'red_shoebox', None, 1, [], 3, 999, 'in', False)
 black_suitcase = ContainerPortableLockable('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None, 3, [], 7, 999, 'in', False, False, rusty_key)
 screen_door = DoorSimple('screen_door', 'Screen Door', 'door', 'screen_door', None, False)
+test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 999, 2, 'on', [wooden_shelf])
 
 # test obj - currently in use
-test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 999, 2, 'on', [wooden_shelf])
+# TBD
 
 # timers
 hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, 'royal_hedgehog')
@@ -143,7 +142,6 @@ moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
 moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', royal_crown, True)
 throne_push_result = BufferOnlyResult('throne_push_result', False)
 nothing_happens_result = BufferOnlyResult('nothing_happens_result', False)
-# throne_pull_result = AddObjToRoomResult('throne_pull_result', hedgehog_broach, False)
 throne_pull_result = AddObjChgDescriptResult('throne_pull_result', hedgehog_broach, throne, 'throne_post_broach', False)
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
 portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', False)
@@ -259,7 +257,7 @@ entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_cast
 				# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
-				[shiny_sword, royal_hedgehog, wooden_shelf, test_chair], [eat_biscuits_warning])
+				[shiny_sword, royal_hedgehog, wooden_shelf], [eat_biscuits_warning])
 				# note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
 
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
