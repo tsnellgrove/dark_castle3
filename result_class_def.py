@@ -99,6 +99,40 @@ class AddObjToRoomResult(BufferOnlyResult):
 				mach_state = True
 				return mach_state, self.cmd_override
 
+class AddObjChgDescriptResult(BufferOnlyResult):
+		def __init__(self, name, room_item, descript_obj, new_descript, cmd_override):
+				super().__init__(name, cmd_override)
+				self._room_item = room_item # item to be added to floor_lst
+				self._descript_obj = descript_obj # object for which descript_key will be changed
+				self._new_descript = new_descript # new descript_key
+
+		@property
+		def room_item(self):
+				return self._room_item
+
+		@room_item.setter
+		def room_item(self, new_val):
+				self._room_item = new_val
+
+		@property
+		def descript_obj(self):
+				return self._descript_obj
+
+		@property
+		def new_descript(self):
+				return self._new_descript
+
+		def result_exe(self, active_gs, mach_state):
+				try:
+						active_gs.buffer(descript_dict[self.name])
+				except:
+						pass
+				room_obj = active_gs.get_room()
+				room_obj.floor_lst_append(self.room_item)
+				mach_state = True
+				self.descript_obj.descript_key = self.new_descript
+				return mach_state, self.cmd_override
+
 class AddObjToRoomAndDescriptResult(BufferOnlyResult):
 		def __init__(self, name, room_item, cmd_override):
 				super().__init__(name, cmd_override)

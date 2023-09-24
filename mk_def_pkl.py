@@ -18,7 +18,7 @@ from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
 				SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
 				StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond, InRoomCond, InWorldStateCond)
 from result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
-				AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult,
+				AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
 				TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
 from mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from creature_class_def import Creature
@@ -143,7 +143,8 @@ moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
 moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', royal_crown, True)
 throne_push_result = BufferOnlyResult('throne_push_result', False)
 nothing_happens_result = BufferOnlyResult('nothing_happens_result', False)
-throne_pull_result = AddObjToRoomResult('throne_pull_result', hedgehog_broach, False)
+# throne_pull_result = AddObjToRoomResult('throne_pull_result', hedgehog_broach, False)
+throne_pull_result = AddObjChgDescriptResult('throne_pull_result', hedgehog_broach, throne, 'throne_post_broach', False)
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
 portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', False)
 goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'guard_goblin_temp', True)
@@ -159,6 +160,8 @@ scroll_crown_not_worn_result = BufferOnlyResult('scroll_crown_not_worn_result', 
 scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won', False)
 axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
 dispense_panel_result = AddObjToRoomAndDescriptResult('dispense_panel_result', 'temp_control_panel', False)
+
+
 
 # warnings
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)

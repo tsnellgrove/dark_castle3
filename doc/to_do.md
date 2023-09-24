@@ -702,9 +702,9 @@ Version 3.78 Goals
 					- DONE: create descript_dict entry (in dynamic section) for Enter method
 					- DONE: test
 					- INPROC: update throne_mach result to change descript_key
-						- TBD: create new AddObjToRoomResult class with descript update; pass obj throne
-						- TBD: in mk_def_pkl.py, update class referenced by Result and by Mach
-						- TBD: test
+						- DONE: create new AddObjToRoomResult class with descript update; pass obj throne
+						- DONE: in mk_def_pkl.py, update class referenced by Result and by Mach
+						- DONE: test
 						- TBD: clean-up
 						- NOTE: this is another case that drives a fix / modularization of Machs! 
 			- TBD: clean-up (Switch class and mk_def_pkl)
@@ -729,6 +729,8 @@ Version 3.78 Goals
 - Get food and hunger working
 - Get thirst and beverages working
 - Get tiredness and sleep working
+
+- TBD: update winning condition to reading scroll while sitting on throne?
 
 - TBD: maybe a Bed in the Main Hall?
 - TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
