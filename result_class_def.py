@@ -1,6 +1,6 @@
-# program: dark castle v3.77
+# program: dark castle v3.78
 # name: Tom Snellgrove
-# date: May 22, 2023
+# date: Sept 25, 2023
 # description: class deffinition module for Conditions
 
 
