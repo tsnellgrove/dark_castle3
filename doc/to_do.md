@@ -133,46 +133,169 @@ Notes:
 		- use list comprehension: 'squares = [i*i for i in range(10)]'
 
 
-*** NOTES ***
+##### FUTURE TO DO #####
 
+*** Centralize doc (it's past time!) ***
 
+*** Fix indent in all modules! (way past time!!) ***
 
+*** minor bug-fix ***
 
+- TBD: make creature obj data more atomic
+	- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
+		- IDEA: obj should be a black-box
+	- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
 
-*** Unify Notes ***
-*** Plan for interpreter update ***
+- IDEA: think through code vs. data separation for static text
+	- IDEA: imagine future adventure creation tooling where I update descriptions via a web front end
+	- IDEA: I won't want all the description in a DB - that's too much overhead...
+	- IDEA: But I will want all descriptions in one big centralized dictionary for ease of access & update
+	- IDEA: to this end, consider the following:
+		- TBD: move interp() help_dict back to static_gbl() descript_dict
+		- DONE: consolidate val_err_dict from validate() back to static_gbl() descript_dict
+		- TBD: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
+		- TBD: consolidate static_dict into descript_dict
+	- TBD: doc_string - error messages are hard to update - so I want them to be as generic as possible!
 
-- Centralize doc (it's past time!)
-- Fix indent in all modules! (way past time!!)
-- Re-diagram modules
-- Folderinze modules based on grouping
-
-- Really modularize machines!
-- Sort out prepositional spaces (e.g. Under, Nook, Hole, Bed)
-- Roll up sleaves and fix Interpreter
-
-- Get light working
-- Get liquids working
-- Get food and hunger working
-- Get thirst and beverages working
-- Get tiredness and sleep working
-
-- TBD: update winning condition to reading scroll while sitting on throne?
 - TBD: make LeverSwitch a true MixIn
+
+- TBD: read() of obj w/ writing => "On the {obj}, written in {wrt}, you see: '{txt}'..."
+- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
+- TBD: examine writing => "The {writing} reads as follows: n/"
+- TBD: should it be possible to show() an obj of class Writing or ViewOnly ??
+	- TBD: enable 'show writing to creature' is writing is on an item Burt is holding
+- TBD: should "put key in moat" do more? what about "enter moat"
+
+- TBD: what about cases where I want a modular machine to operate despite an error
+	- IDEA: e.g. 'go north' in antechamber triggers goblin
+	- IDEA: i.e. should it ever be possible to override an error? If so, then how?
+	- IDEA: the 'open portcullis' case is a special problem here - it will tell Burt it's locked...
+		- IDEA: but the Goblin should attack before Burt can touch the Portcullis
+	- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
+	- IDEA: implication here is that modular machines should be designed so that it is easy to trigger & run them from interupt()
+	- IDEA: the idea here is that narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
+	- DECISION: use fake_door for now and swap on goblin death
+	- RECONSIDER: 'take axe' case is not easy to fake out... maybe I do need an interupt() module after all??
+- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
+
+*** story-driven updates ***
+
+- TBD: "what would your mothter say" error to "What would your Nana say?"
+- TBD: update winning condition to reading scroll while sitting on throne?
+- TBD: Stone Coffer => no-lid box ?
+
+
+*** Re-diagram modules ***
+
+*** Folderinze modules based on grouping ***
+
+*** Really modularize machines! ***
+
+*** Sort out prepositional spaces (e.g. Under, Nook, Hole, Bed) ***
 
 - TBD: maybe a Bed in the Main Hall?
 - TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
-- TBD: Stone Coffer => no-lid box ?
+
+- TBD: the future list - future interactive obj updates / features to be implemented
+	- framework for complex obj to contain sub-elements (e.g. drawer + surface + under == desk)
+	- Could also have UnderMixIn and BehindMixIn
+	- TBD: for UnderMixIn - need to include bulk capacity for negative space
+	- would need to deal with the wording 'look under' and 'look behind'
+	- 'look under' adds contents to room.feature_lst
+	- additional 'under' commands = 'put under' and 'reach under'
+	- for MixInHole have commands 'look in' and 'reach in'
+		- can a 'hole' be dark if the room is light?
+	- TBD: enable the 'behind' preposition (with multiple varients of obfustication)
+		- IDEA: minor_behind = you can see but not reach
+		- IDEA: moderate_behind = can see some
+		- IDEA" major_behind = can't see
+		- Presumably, all 3 flavors of behind impact availability of obj in room list
+		- TBD: put the control_panel behind the goblin (check TADS implementation)
+	- IDEA: 'hole' = contain, opaque from room, no light
+		- 'nook' = 'hole' that can contain Creatures
+		- 'under' = opaque from room but no lighting issues
+		- use 'take from under' for 'under'
+		- use 'reach in' for 'hol'
+		- need to enter() 'nook' to get contents
+
+- TBD: figure out 'behind' prep for case of control panel in alove behind goblin
+
+
+*** Roll up sleaves and fix Interpreter ***
 
 - IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 	- IDEA: could have a prep attribute for each prep verb
 	- IDEA: in interp(), have a list of all possible preps and use list to break sentence
+
+- IDEA: next interp() goals:
+	- IDEA: noun synonyms (different than abreviations)
+	- IDEA: global verb synonyms
+	- IDEA: simple prep verbs ('sit_in')
+	- IDEA: basic interp features: 'take all', 'again', 'wait'
+	- IDEA: address 'I can't see a x_y' error
+- IDEA: introduce a vs. an
+
+- TBD: text UI updates:
+	- TBD: sort out 'can't drop fist or brass_lantern issue
+	- TBD: change backpack and worn lists to include 'a' and 'an'
+		- IDEA: convert plurals to singulars for this???
+		- IDEA: (given that there is water in the game maybe all singlulars is impossible?)
+		- IDEA: maybe a txt_handling() module with a disp_lst() func that takes care of 1) "x", "x & y", "x, y, & z"; 2) 'a' or 'an'; 3) plurals
+	- TBD: sort out approach to plurals
+		- 1) perhaps this becomes a ViewOnly attribute??? (don't like this - way too many un-used cases of attribute)
+		- 2) possibly ItemPlural class inherits from Item and has method is_plural() which returns True ??
+		- 3) could just have a plural_tuning_lst in the txt_handling() module that checks for known plurals as a one-off?
+			- `Note: the problem with defining plurals in classes is, what if I want to establish plurals for a non-obj (e.g. a path)
+		- Maybe apply 'xxy' prefix on text list if plural??
+	- TBD: drop node 3 (portable_containers in containers) disp?
+		- TBD: can burt know about node 3 items he hasn't 'seen' in this game?
+		- TBD: play through Zork kitchen to test out
+
+- TBD: exit() should apply to chairs and doors => move to Perch / Nook class
+- TBD: should have 'go in gate' and 'enter gate' as synonyms for 'go north' from entrance? (doors & rooms ??)
+
+- Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
+	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
+	- e.g. article_plural(obj) => 'a Grimy Axe' or 'Water' or 'an Apple'
+	- maybe plural_dict is a local dict in the Gramarian class?
+	- Or maybe a better class name is just Display (???)
+	- Division of labor: player text => commands == Interp; obj => player response == Output
+	- could put some recurring dispaly routines here (obj_lst => str_lst and such) ??
+	- Display could also hold buffer commands???
+	- Another possible class name == Output ???
+	- Leaning towards Output... this helps distinguish from all the verb-linked Disp methods
+
+*** Long-term Pondering ***
 
 - Long Term Pondering:
 	- the whole 'hand' concept is looking increasingly dodgy... too much inventory mgmt...
 	- maybe time to bite the recursive bullet and just allow portable containers in portable containers?
 
 - decide if interactive() class objects should eventually have noun identities (e.g. is_door() )
+
+- TBD: static_gbl => tupple
+
+- INPROC: Given that creatures will be contained:
+	- INPROC: need to embrace a node-based awareness of creature location
+	- DONE: need to embrace the use of recursion on methods like remove()
+	- INPROC: Apply this to concepts like drop() and stand() / exit()
+	- OLD DECISION: alternatively, just treat creature-containers as special exceptions
+	- NEW DECISION: started using recursion when applying weight to obj & creatures
+- TBD: Alternatively, maybe time to consider letting obj know what container they're in??
+
+- INPROC: review TADS3 terms for Description and preposition
+
+
+*** Get light working ***
+
+- IDEA: what to do on container (or other) loss of light?
+	- e.g. put lantern in box, close box (no stuck)
+	- had thought about lighting up box from interiour - but wouldn't work for switch
+	- is safe to actually turn off lantern - because anything in your hand can still be accessed...
+	- so alternate idea is that hedgehog has to come rescue you
+	- but at least one inventory item gets scattered (hedgehog shrug)
+
+*** Get liquids working ***
 
 - Liquid handling
 	- INPROC: Research IF liquids
@@ -225,61 +348,7 @@ Notes:
 			- This will mostly be independent of Liquids... 
 				- but anything with a 'ruin' liquid_result == 'ruin' should be destroyed by swimming
 
-- TBD: static_gbl => tupple
-
-- TBD: Given that creatures will be contained:
-	- need to embrace a node-based awareness of creature location
-	- need to embrace the use of recursion on methods like remove()
-	- Apply this to concepts like drop() and stand() / exit()
-	- DECISION: alternatively, just treat creature-containers as special exceptions
-
-- TBD: the future list - future interactive obj updates / features to be implemented
-	- framework for complex obj to contain sub-elements (e.g. drawer + surface + under == desk)
-	- Could also have UnderMixIn and BehindMixIn
-	- TBD: for UnderMixIn - need to include bulk capacity for negative space
-	- would need to deal with the wording 'look under' and 'look behind'
-	- 'look under' adds contents to room.feature_lst
-	- additional 'under' commands = 'put under' and 'reach under'
-	- for MixInHole have commands 'look in' and 'reach in'
-		- can a 'hole' be dark if the room is light?
-	- TBD: enable the 'behind' preposition (with multiple varients of obfustication)
-		- IDEA: minor_behind = you can see but not reach
-		- IDEA: moderate_behind = can see some
-		- IDEA" major_behind = can't see
-		- Presumably, all 3 flavors of behind impact availability of obj in room list
-		- TBD: put the control_panel behind the goblin (check TADS implementation)
-	- IDEA: 'hole' = contain, opaque from room, no light
-		- 'nook' = 'hole' that can contain Creatures
-		- 'under' = opaque from room but no lighting issues
-		- use 'take from under' for 'under'
-		- use 'reach in' for 'hol'
-		- need to enter() 'nook' to get contents
-	- IDEA: what to do on container (or other) loss of light?
-		- e.g. put lantern in box, close box (no stuck)
-		- had thought about lighting up box from interiour - but wouldn't work for switch
-		- is safe to actually turn off lantern - because anything in your hand can still be accessed...
-		- so alternate idea is that hedgehog has to come rescue you
-		- but at least one inventory item gets scattered (hedgehog shrug)
-
-- TBD: "what would your mothter say" error to "What would your Nana say?"
-
-- TBD: make creature obj data more atomic
-	- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
-		- IDEA: obj should be a black-box
-	- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
-
-- IDEA: think through code vs. data separation for static text
-	- IDEA: imagine future adventure creation tooling where I update descriptions via a web front end
-	- IDEA: I won't want all the description in a DB - that's too much overhead...
-	- IDEA: But I will want all descriptions in one big centralized dictionary for ease of access & update
-	- IDEA: to this end, consider the following:
-		- TBD: move interp() help_dict back to static_gbl() descript_dict
-		- DONE: consolidate val_err_dict from validate() back to static_gbl() descript_dict
-		- TBD: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
-		- TBD: consolidate static_dict into descript_dict
-	- TBD: doc_string - error messages are hard to update - so I want them to be as generic as possible!
-
-- INPROC: review TADS3 terms for Description and preposition
+*** Get food / hunger and beverages / thirst working ***
 
 - IDEA: interesting updates for food & bulk
 	- require eating
@@ -290,27 +359,26 @@ Notes:
 	- Maybe stale_biscuits => 3 biscuits in paper package (Nana sword & key logo; better than McV ref?)
 	- Perhaps for bulk puzzle, have a Pywrong beaker - extremely fragile - breaks if put in pack or dropped
 
+*** Get tiredness and sleep working ***
+
+*** make database-driven! ***
+
+*** New verbs ***
+
 - IDEA: 'talk to creature' format:
 	- IDEA: 'Ask X about Y'
 	- IDEA: 'Tell X about Y'
 	- IDEA: Say 'Z'
-- IDEA: next interp() goals:
-	- IDEA: noun synonyms (different than abreviations)
-	- IDEA: global verb synonyms
-	- IDEA: simple prep verbs ('sit_in')
-	- IDEA: basic interp features: 'take all', 'again', 'wait'
-	- IDEA: address 'I can't see a x_y' error
-- IDEA: introduce a vs. an
-- TBD: read() of obj w/ writing => "On the {obj}, written in {wrt}, you see: '{txt}'..."
-- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
-- TBD: examine writing => "The {writing} reads as follows: n/"
-- TBD: should it be possible to show() and obj of class Writing or ViewOnly ??
-- TBD: should "put key in moat" do more? what about "enter moat"
-- TBD: figure out 'behind' prep for case of control panel in alove behind goblin
-- TBD: enable 'show writing to creature' is writing is on an item Burt is holding
-- TBD: stand() as Perch synonym for exit()
-- TBD: exit() should apply to chairs and doors => move to Perch / Nook class
-- TBD: should have 'go in gate' and 'enter gate' as synonyms for 'go north' from entrance? (doors & rooms ??)
+
+*** Expansion of Dark Castle ***
+
+##### RANDOM NOTES #####
+
+
+
+
+
+
 - TBD: update get_hand_item() to return None if hand_list is empty
 - TBD: sort out active_gs.get_room() => move to .map & std w/ map.get_obj_room()
 - TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
@@ -320,28 +388,9 @@ Notes:
 - IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
 	- verb synonuyms linked to class / class method?
 	- perhaps additional, optional cusotm verb synonyms as an obj attribute?
-- Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
-	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
-	- e.g. article_plural(obj) => 'a Grimy Axe' or 'Water' or 'an Apple'
-	- maybe plural_dict is a local dict in the Gramarian class?
-	- Or maybe a better class name is just Display (???)
-	- Division of labor: player text => commands == Interp; obj => player response == Output
-	- could put some recurring dispaly routines here (obj_lst => str_lst and such) ??
-	- Display could also hold buffer commands???
-	- Another possible class name == Output ???
-	- Leaning towards Output... this helps distinguish from all the verb-linked Disp methods
 
-- TBD: what about cases where I want a modular machine to operate despite an error
-	- IDEA: e.g. 'go north' in antechamber triggers goblin
-	- IDEA: i.e. should it ever be possible to override an error? If so, then how?
-	- IDEA: the 'open portcullis' case is a special problem here - it will tell Burt it's locked...
-		- IDEA: but the Goblin should attack before Burt can touch the Portcullis
-	- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
-	- IDEA: implication here is that modular machines should be designed so that it is easy to trigger & run them from interupt()
-	- IDEA: the idea here is that narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
-	- DECISION: use fake_door for now and swap on goblin death
-	- RECONSIDER: 'take axe' case is not easy to fake out... maybe I do need an interupt() module after all??
-- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
+
+
 
 - TBD: Description updates:
 	- TBD: hedgehog updates
@@ -353,22 +402,8 @@ Notes:
 		- perhaps the biscuits say "Nana's" - or better yet, have a sword-and-key emblam on them?
 		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
 
-- TBD: text UI updates:
-	- TBD: sort out 'can't drop fist or brass_lantern issue
-	- TBD: change backpack and worn lists to include 'a' and 'an'
-		- IDEA: convert plurals to singulars for this???
-		- IDEA: (given that there is water in the game maybe all singlulars is impossible?)
-		- IDEA: maybe a txt_handling() module with a disp_lst() func that takes care of 1) "x", "x & y", "x, y, & z"; 2) 'a' or 'an'; 3) plurals
-	- TBD: sort out approach to plurals
-		- 1) perhaps this becomes a ViewOnly attribute??? (don't like this - way too many un-used cases of attribute)
-		- 2) possibly ItemPlural class inherits from Item and has method is_plural() which returns True ??
-		- 3) could just have a plural_tuning_lst in the txt_handling() module that checks for known plurals as a one-off?
-			- `Note: the problem with defining plurals in classes is, what if I want to establish plurals for a non-obj (e.g. a path)
-		- Maybe apply 'xxy' prefix on text list if plural??
-	- TBD: drop node 3 (portable_containers in containers) disp?
-		- TBD: can burt know about node 3 items he hasn't 'seen' in this game?
-		- TBD: play through Zork kitchen to test out
-	- TBD: glass_bottle to jug_from_enchanter
+
+
 
 - TBD: misc updates:
 	- TBD: make backpack a true container???
