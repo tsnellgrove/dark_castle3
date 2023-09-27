@@ -137,6 +137,9 @@ Notes:
 
 *** Centralize doc (it's past time!) ***
 
+- TBD: create a centralized doc file
+
+
 *** Fix indent in all modules! (way past time!!) ***
 
 *** minor bug-fix ***
@@ -178,11 +181,26 @@ Notes:
 	- RECONSIDER: 'take axe' case is not easy to fake out... maybe I do need an interupt() module after all??
 - TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
 
+- TBD: update get_hand_item() to return None if hand_list is empty
+- TBD: sort out active_gs.get_room() => move to .map & std w/ map.get_obj_room()
+
 *** story-driven updates ***
 
 - TBD: "what would your mothter say" error to "What would your Nana say?"
 - TBD: update winning condition to reading scroll while sitting on throne?
 - TBD: Stone Coffer => no-lid box ?
+
+- TBD: Description updates:
+	- TBD: hedgehog updates
+		- describe as "stallwart"
+		- Have the hedgehog think burt is playing if he attacks with a non-weapon; starts making wax-on, wax-off motions with paws
+		- Upate water_bottle to Enchanter jug
+		- Update shiny_sword to Zork I elven sword
+	- TBD: Updatate the trademark on the stale_biscuits... 
+		- perhaps the biscuits say "Nana's" - or better yet, have a sword-and-key emblam on them?
+		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
+
+- TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
 
 
 *** Re-diagram modules ***
@@ -190,6 +208,74 @@ Notes:
 *** Folderinze modules based on grouping ***
 
 *** Really modularize machines! ***
+
+*** Refactor app_main() modules ***
+
+- refactor app_main() modules
+- IDEA: score() and end() should be between post_action() and auto_action() [i.e. between move 'n' and 'n+1']
+
+*** Sort out active_gs child classes ***
+
+- rename active_gs to gs
+- modularize remaining GameState class and declarations (???)
+- create a class for descriptions
+
+- TBD: rename active_gs => gs
+- TBD: perhaps Map, Score, and Descript are classes w/ static dicts in mehod / class and actual obj in gs attributes
+- TBD: refactor buffer type commands into gs.io
+- Refactor dicts
+	- TBD: refactor active_gs.map
+		- gs will have map as an attribute
+		- subclass map_dict
+		- use __getattr__ and __setattr__ methods to make dict accessible as obj
+		- instantiate in start_up() and save in pickle in case map someday changes during game (fun idea)
+		- methods:
+			- next room
+			- use dict keys to search for item in game world (see score() )
+			- return room burt is in
+
+- TBD: refactor descript_dict (=> static_dict), autogen_dict (new) and dynamic_dict to Descript class with descript instantiation
+	- TBD: unify descript approach: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
+	- call with key and return string; will look like gs.descript(key)
+	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() )
+		- Can autogen key try be incorporated into Descript method??
+	- static_dict and autogen_dict live in class; dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
+	- Use guard pattern and check in this order
+		- 1) in dynamic_dict
+		- 2) starts with "ag_" => autogen_dict (no "try", allow failure)
+		- 3) try static_dic except f"the {obj.full_name} is simple indescribable"
+	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
+		- CANCEL: test w/ descript_dict => start with version 
+		- can compound noun methods be created?
+		- think abour 'source' and 'desination'... e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
+		- need to do a detailed mapping of what is required for success in each noun_class() method
+		- this would allow give() to become a noun class method... essentially a take() initiated by burt
+		- likewise, show() becomes an examine initiated by burt
+		- TBD: change goblin re-arm result to take() rather than put_in_hand()
+		- maybe each Creature has its own description list?
+			- desc list as creature attribute ???
+		- with a default examine() response similar to "the X is not interesting"
+	- TBD: auto-gen keys
+		- TBD: consider auto-gen keys for all verb methods (probably not)
+		- TBD: Organize auto-gen keys together
+		- TBD: consider creating a separate dict for autogen keys
+
+- TBD: refactor score
+	- TBD: determine max_score from summ of all possible scores?
+	- TBD: score = class with object being attribute in gs
+	- TBD: print_score() a method of the Score class
+	- TBD: instead of a dict of score achievements w/ T or F, just have a list of score achievemnts achieved
+	- TBD: link front_gate score to opening door
+- TBD: refactor hero to gs.hero
+	- TBD: get_room() method belongs to this class ?? (or pass active_gs to active_gs.map and move get_room there ??)
+- TBD: refactor buffer and caching to gs.io
+- TBD: refactor GameState and dicts in static_gbl() with dunder methods (__getattr__ and __setattr__ ; see email to self on Aug 2, 2022)
+- TBD: active_gs => gs renaming; point to same obj to start with ??
+- TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
+- TBD: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
+- TBD: end() => gamestate ???
+- does creature_state really have any value? Maybe build hedgehog state machine before pulling the plug on this one
+	- Could simplify 'give', remove description updates from give, and instead implement them as part of state machine?
 
 *** Sort out prepositional spaces (e.g. Under, Nook, Hole, Bed) ***
 
@@ -265,6 +351,16 @@ Notes:
 	- Another possible class name == Output ???
 	- Leaning towards Output... this helps distinguish from all the verb-linked Disp methods
 
+- TBD: create a version just for interp() updates and gather all interp updates there!!
+- IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
+	- verb synonuyms linked to class / class method?
+	- perhaps additional, optional cusotm verb synonyms as an obj attribute?
+- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
+	- TBD: also want to enable 'go in' and 'go out' of chair
+
+- TBD: interpreter - should all nouns be singular? Can 'a' vs. 'an' be fixed?
+
+
 *** Long-term Pondering ***
 
 - Long Term Pondering:
@@ -284,6 +380,12 @@ Notes:
 - TBD: Alternatively, maybe time to consider letting obj know what container they're in??
 
 - INPROC: review TADS3 terms for Description and preposition
+
+- IDEA: consider converting Writing to Decorations (examine() vs. read() )
+
+- TBD: make backpack a true container???
+- TBD: learn how to use VS Code word wrap and other features for Python
+- IDEA: maybe I should call validate() again between pre_action() and cmd_exe() and then again between cmd_exe() and post_action() ?
 
 
 *** Get light working ***
@@ -359,6 +461,9 @@ Notes:
 	- Maybe stale_biscuits => 3 biscuits in paper package (Nana sword & key logo; better than McV ref?)
 	- Perhaps for bulk puzzle, have a Pywrong beaker - extremely fragile - breaks if put in pack or dropped
 
+- TBD: hunger & thirst become Creature conditions to examine??
+
+
 *** Get tiredness and sleep working ***
 
 *** make database-driven! ***
@@ -375,126 +480,32 @@ Notes:
 ##### RANDOM NOTES #####
 
 
-
-
-
-
-- TBD: update get_hand_item() to return None if hand_list is empty
-- TBD: sort out active_gs.get_room() => move to .map & std w/ map.get_obj_room()
-- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
-	- TBD: also want to enable 'go in' and 'go out' of chair
-- IDEA: consider converting Writing to Decorations (examine() vs. read() )
-- TBD: create a version just for interp() updates and gather all interp updates there!!
-- IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
-	- verb synonuyms linked to class / class method?
-	- perhaps additional, optional cusotm verb synonyms as an obj attribute?
-
-
-
-
-- TBD: Description updates:
-	- TBD: hedgehog updates
-		- describe as "stallwart"
-		- Have the hedgehog think burt is playing if he attacks with a non-weapon; starts making wax-on, wax-off motions with paws
-		- Upate water_bottle to Enchanter jug
-		- Update shiny_sword to Zork I elven sword
-	- TBD: Updatate the trademark on the stale_biscuits... 
-		- perhaps the biscuits say "Nana's" - or better yet, have a sword-and-key emblam on them?
-		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
-
-
-
-
-- TBD: misc updates:
-	- TBD: make backpack a true container???
-	- TBD: create a centralized doc file
-	- CANCEL: reconsider showing Receptacle contents on look... maybe too much data? What does Zork do? Restrict to explicit examine??
-	- TBD: hunger & thirst become Creature conditions to examine??
-- TBD: learn how to use VS Code word wrap and other features for Python
-- IDEA: maybe I should call validate() again between pre_action() and cmd_exe() and then again between cmd_exe() and post_action() ?
-
-
 ##########################
 ### VERSION 3.7x START ###
 ##########################
 
 Version 3.7x Goals
-- rename active_gs to gs
-- modularize remaining GameState class and declarations (???)
-- create a class for descriptions
 
-- TBD: rename active_gs => gs
-- TBD: perhaps Map, Score, and Descript are classes w/ static dicts in mehod / class and actual obj in gs attributes
-- TBD: refactor buffer type commands into gs.io
-- Refactor dicts
-	- TBD: refactor active_gs.map
-		- gs will have map as an attribute
-		- subclass map_dict
-		- use __getattr__ and __setattr__ methods to make dict accessible as obj
-		- instantiate in start_up() and save in pickle in case map someday changes during game (fun idea)
-		- methods:
-			- next room
-			- use dict keys to search for item in game world (see score() )
-			- return room burt is in
-- TBD: refactor descript_dict (=> static_dict), autogen_dict (new) and dynamic_dict to Descript class with descript instantiation
-	- TBD: unify descript approach: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
-	- call with key and return string; will look like gs.descript(key)
-	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() )
-		- Can autogen key try be incorporated into Descript method??
-	- static_dict and autogen_dict live in class; dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
-	- Use guard pattern and check in this order
-		- 1) in dynamic_dict
-		- 2) starts with "ag_" => autogen_dict (no "try", allow failure)
-		- 3) try static_dic except f"the {obj.full_name} is simple indescribable"
-	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
-		- CANCEL: test w/ descript_dict => start with version 
-		- can compound noun methods be created?
-		- think abour 'source' and 'desination'... e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
-		- need to do a detailed mapping of what is required for success in each noun_class() method
-		- this would allow give() to become a noun class method... essentially a take() initiated by burt
-		- likewise, show() becomes an examine initiated by burt
-		- TBD: change goblin re-arm result to take() rather than put_in_hand()
-		- maybe each Creature has its own description list?
-			- desc list as creature attribute ???
-		- with a default examine() response similar to "the X is not interesting"
-	- TBD: auto-gen keys
-		- TBD: consider auto-gen keys for all verb methods (probably not)
-		- TBD: Organize auto-gen keys together
-		- TBD: consider creating a separate dict for autogen keys
-- TBD: refactor score
-	- TBD: determine max_score from summ of all possible scores?
-	- TBD: score = class with object being attribute in gs
-	- TBD: print_score() a method of the Score class
-	- TBD: instead of a dict of score achievements w/ T or F, just have a list of score achievemnts achieved
-	- TBD: link front_gate score to opening door
-- TBD: refactor hero to gs.hero
-	- TBD: get_room() method belongs to this class ?? (or pass active_gs to active_gs.map and move get_room there ??)
-- TBD: refactor buffer and caching to gs.io
-- TBD: refactor GameState and dicts in static_gbl() with dunder methods (__getattr__ and __setattr__ ; see email to self on Aug 2, 2022)
-- TBD: active_gs => gs renaming; point to same obj to start with ??
-- TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
-- TBD: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
-- TBD: end() => gamestate ???
-- does creature_state really have any value? Maybe build hedgehog state machine before pulling the plug on this one
-	- Could simplify 'give', remove description updates from give, and instead implement them as part of state machine?
 
 
 ##########################
-### VERSION 3.78 START ###
+### VERSION 3.7y START ###
 ##########################
 
-Version 3.78 Goals
-- refactor app_main() modules
+Version 3.7y Goals
 
 
-- IDEA: score() and end() should be between post_action() and auto_action() [i.e. between move 'n' and 'n+1']
-- TBD: interpreter - should all nouns be singular? Can 'a' vs. 'an' be fixed?
-- TBD: final clean-up
-	- TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
-	- TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
-			- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
-	- TBD: refactor active_gs. scope / mach_scope
-			- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
+
+
+
+
+- TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
+		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+
+
+- TBD: refactor active_gs. scope / mach_scope
+		- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
+
 	- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
 	- DECISION: writing perspective
 		- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
@@ -503,8 +514,11 @@ Version 3.78 Goals
 		- realistically, nearly all descriptions will be from burt's perspective
 		- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
 		- this should be enabled by mode = 'exe_creature'
+
 - TBD: refactor app_main() modules
+
 - TBD: doc_string about why errors and actions must be clearly delineated (e.g. and error cannot change gamestate)
+
 - TBD: considers re-distributing not-in hand & read errors back into verb methods ???
 
 
