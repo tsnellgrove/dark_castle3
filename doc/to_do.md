@@ -184,6 +184,29 @@ Notes:
 - TBD: update get_hand_item() to return None if hand_list is empty
 - TBD: sort out active_gs.get_room() => move to .map & std w/ map.get_obj_room()
 
+- TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
+		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+
+- TBD: naming updates:
+	- TBD: re-name 'wrapper' to 'app_main'
+	- TBD: update pickle names
+	- TBD: out_buff => output (or possibly user_output)
+	- TBD: possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
+
+- TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
+	- for active_gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
+	- eliminate 'hasattrib' for containers in active_gs.scope_lst() too
+	- have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
+
+- mechanic clean-up
+	- investigate setters & getters for GameState class
+	- DONE: is there really any need for GameState room_mach_lst() ??
+	- TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
+	- TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
+	- eliminate active_gs.move_dec() ?
+	- 'try... except' standard descriptions for examine() method (similar to Warnings) (???)
+
+
 *** story-driven updates ***
 
 - TBD: "what would your mothter say" error to "What would your Nana say?"
@@ -207,12 +230,71 @@ Notes:
 
 *** Folderinze modules based on grouping ***
 
+- TBD: create directory structure for modules (e.g. all class definitions in a single directory)
+
+
 *** Really modularize machines! ***
+
+- Clean up machine, warning, and timer coding
+- Create / update program documentation
+
+- TBD: Machine coding clean-up
+	- TBD: Machine 2.0 improvement ideas:
+		- BaseCond => always check state
+		- BaseResult => always do a buff_try()
+		- Can we create a general purpose Dispenser machine - for use with Crown and Broach?
+		- Do we really need to test for goblin in antechamber??? (will the goblin ever move)
+		- Have simple, single-test / single-action 'Primative' Conditions and Results: prim_cond and prim_result
+		- Composed Conditions & Results: comp_cond / comp_result == AND / OR of multiple primatives
+		- All results capable of Buffering (rename Result classes appropriately)
+		- if no conditions == True then default Result = nothing happens (no need for pass_result)
+		- Establish switch triggers such that timer as trigger is more natural
+		- Generalize in-hand vs. not-in-hand Condition (single primative)
+		- Generalize creature-has-item vs. creature-does-not-have-item Conditions (single primative)
+		- Establish clearer nomenclature for temp variables that will be fully assigned at end (e.g. 'royal_hedgehog-*temp*')
+		- each 'primitive' cond only tests for *one* thing (but state of that thing is an attribute to be matched)
+	- TBD: de-dup warning and timer classes
+		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?
+		- IDEA: this makes sense... in all other cases I inherit from simple parents to more complex children
+		- IDEA: WarnClass is simpler... so it should be the parent
+		- IDEA: Actually - how about a TrigDetectMixIn that is inherited by both WarnClass and MachineMixIn and only has trig_check method?
+		- IDEA: A MixIn of a MixIn seems over-complicated... 
+		- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
+		- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
+	- more Modular Machine ideas:
+		- Modular Triggers? (named after intent; match cond, result, & mach)
+		- Primative Conditions (named after condition) [always include single attribute & value] 
+		- Compound Conditions [and / or) (named after intent; match mach, result, & trig) {trig_check() method links primatives}
+		- Primative Results (named after result) [always include single attribute & value] 
+		- Compound Results (named after intent; match cond, trig, & mach) {trig_check() method links primatives}
+		- The basic goal of the primative & compound structure is to increase re-use of Cond & Result classes (too many class-per-var cases)
+	- Wildcard clean-ups
+		- Extend trig_check wildcards to 'post_act_cmd' & 'auto_act_cmd'
+		- Extend trig_check wildcards to work with Warnings (or better yet, de-dup Warning's trig_check)
+		- guard against multiple wildcaards per list
+	- Results
+		- extend BufferOnlyResult result_exe method in BufferAndEndResult and BufferAndGiveResult
+		- TBD: extend child methods in results_class_def ?
+		- in machines, should conditions and results just be key-value pairs in a dictionary?
+			- As opposed to needing 2 separate lists with identical indexes?
+	- Shorter cond & result names!!
+	- move switch_reset to auto_action() ???
+	- 'trigger_type' => 'trig_type' ??
+	- naming conventions: need to avoid confusion between match_state and mach_state
+	- naming conventions: cond & result name should be same except post-fix
+	- sort out ability to push button / pull levers while goblin is guarding
+	- need to implement hedgehog state machine based on creature state
+- TBD: list of 'contained' internal_switches in MachMixIn attributes?
+	- NOTE: (i.e. add to scope and remove levers & button from features?)
+	- NOTE: [this is a good idea but hold off until at least one more control_panel type machine gets created]
+- TBD: broaden hedgehog response to interacting with sword (e.g. "pull sword" should trigger)
 
 *** Refactor app_main() modules ***
 
 - refactor app_main() modules
+- TBD: refactor app_main() modules
 - IDEA: score() and end() should be between post_action() and auto_action() [i.e. between move 'n' and 'n+1']
+- refactor remaining app_main chain: interp, pre_action, cmd_exe, post_action, auto_action, score (??), end (?)
 
 *** Sort out active_gs child classes ***
 
@@ -259,6 +341,15 @@ Notes:
 		- TBD: consider auto-gen keys for all verb methods (probably not)
 		- TBD: Organize auto-gen keys together
 		- TBD: consider creating a separate dict for autogen keys
+
+	- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
+	- DECISION: writing perspective
+		- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
+		- in theory, any creature could be used to play the game - and each might have its own description_dict
+		- this would be fun for a short session in a single room but is not practical for extended play
+		- realistically, nearly all descriptions will be from burt's perspective
+		- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
+		- this should be enabled by mode = 'exe_creature'
 
 - TBD: refactor score
 	- TBD: determine max_score from summ of all possible scores?
@@ -360,6 +451,8 @@ Notes:
 
 - TBD: interpreter - should all nouns be singular? Can 'a' vs. 'an' be fixed?
 
+- Interp deep dive including better solution to prep checking ('put in' vs. 'put on')
+
 
 *** Long-term Pondering ***
 
@@ -387,6 +480,14 @@ Notes:
 - TBD: learn how to use VS Code word wrap and other features for Python
 - IDEA: maybe I should call validate() again between pre_action() and cmd_exe() and then again between cmd_exe() and post_action() ?
 
+- TBD: refactor active_gs. scope / mach_scope
+		- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
+
+- CANCEL: considers re-distributing not-in hand & read errors back into verb methods ???
+
+- DONE: for doors and containers, use None option for no lock or no lid?
+- CANCEL: Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
+	- CANCEL: why do I need active_gs.dynamic_descript_dict again?
 
 *** Get light working ***
 
@@ -463,8 +564,24 @@ Notes:
 
 - TBD: hunger & thirst become Creature conditions to examine??
 
+- IDEA: for food, maybe have the biscuits take 3 turns to eat... but if burt eats some he gets less time to grab the sword... 
+- IDEA: maybe don't need warning so much... just keep describing them as tasting worse and worse? Food consistent within creatures?
 
 *** Get tiredness and sleep working ***
+
+*** Implement Symetric Verbs ***
+
+- enable all verb methods for non-burt creatures
+- TBD: doc_string about future 'silent_exe' for symetric creature commandsv
+- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
+- TBD: tune pronouns
+- IDEA: errors are only for burt
+- IDEA: auto-gen descriptions (e.g. drink, eat, wear, sit) are only for burt
+- TBD: doc_string on 'semi-symetric' methods
+- TBD: enable non-burt creature use of all verb methods 
+- TBD: how should creature be passed to Conditions & Results?
+- TBD: how to deal with error messages for non-burt creatures (e.g. test_frog walks into door)
+- IDEA: alternatives for how to to auto-move non-burt creatures: dir_lst, room_lst, room_dir_dict
 
 *** make database-driven! ***
 
@@ -475,7 +592,44 @@ Notes:
 	- IDEA: 'Tell X about Y'
 	- IDEA: Say 'Z'
 
+
+*** doc_strings ***
+
+- TBD: doc_string about why errors and actions must be clearly delineated (e.g. and error cannot change gamestate)
+
+- Clean up documentation and incorporate into doc_strings
+
+- TBD: documentation:
+	- TBD: updeate creature doc
+		- discuss creature state
+	- TBD: update timer doc with trigger changes from 3.64
+	- TBD: update mach doc with wildcaard cahnges from 3.64
+	- TBD: update class diagram
+	- TBD: update module diagram
+	- TBD: create machine diagram
+		- hedgehog => state machine idea
+	- TBD: create creature diagram
+	- TBD: Timer Decisions
+		- timers are set by machines rather than triggered by player commands
+		- other than providing description text, timers are dumb - they just count -  a machine takes all actions
+
+*** Out of Game Quality of Life Code ***
+
+- Introduce non-functional requirement code (e.g. saves and pkl clean-up)
+- Integrate with web template
+- webify
+
+file handling:
+- game saves (requires file clean up?)
+- move doc to modules?
+- org modules in directories?
+
+web features:
+- TBD: Figure out a way in web browser to show all adventure text in scrolling window (???)
+
 *** Expansion of Dark Castle ***
+
+
 
 ##### RANDOM NOTES #####
 
@@ -495,164 +649,32 @@ Version 3.7x Goals
 Version 3.7y Goals
 
 
+##########################
+### VERSION 3.7z START ###
+##########################
 
-
-
-
-- TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
-		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
-
-
-- TBD: refactor active_gs. scope / mach_scope
-		- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
-
-	- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
-	- DECISION: writing perspective
-		- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
-		- in theory, any creature could be used to play the game - and each might have its own description_dict
-		- this would be fun for a short session in a single room but is not practical for extended play
-		- realistically, nearly all descriptions will be from burt's perspective
-		- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
-		- this should be enabled by mode = 'exe_creature'
-
-- TBD: refactor app_main() modules
-
-- TBD: doc_string about why errors and actions must be clearly delineated (e.g. and error cannot change gamestate)
-
-- TBD: considers re-distributing not-in hand & read errors back into verb methods ???
+Version 3.7z Goals
 
 
 ##########################
-### VERSION 3.79 START ###
+### VERSION 3.8q START ###
 ##########################
 
-Version 3.79 Goals
-- refactor remaining app_main chain: interp, pre_action, cmd_exe, post_action, auto_action, score (??), end (?)
-- Interp deep dive including better solution to prep checking ('put in' vs. 'put on')
+Version 3.8q Goals
 
 
 ##########################
-### VERSION 3.80 START ###
+### VERSION 3.8u START ###
 ##########################
 
-Version 3.80 Goals
-- enable all verb methods for non-burt creatures
-
-- TBD: doc_string about future 'silent_exe' for symetric creature commandsv
-- TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
-- TBD: tune pronouns
-- IDEA: errors are only for burt
-- IDEA: auto-gen descriptions (e.g. drink, eat, wear, sit) are only for burt
-- TBD: doc_string on 'semi-symetric' methods
-- TBD: enable non-burt creature use of all verb methods 
-- TBD: how should creature be passed to Conditions & Results?
-- TBD: how to deal with error messages for non-burt creatures (e.g. test_frog walks into door)
-- IDEA: alternatives for how to to auto-move non-burt creatures: dir_lst, room_lst, room_dir_dict
-- IDEA: for food, maybe have the biscuits take 3 turns to eat... but if burt eats some he gets less time to grab the sword... 
-	- IDEA: maybe don't need warning so much... just keep describing them as tasting worse and worse? Food consistent within creatures?
+Version 3.8u Goals
 
 
 ##########################
-### VERSION 3.81 START ###
+### VERSION 3.8r START ###
 ##########################
 
-Version 3.81 Goals
-- Clean up machine, warning, and timer coding
-- Create / update program documentation
-
-- TBD: Machine coding clean-up
-	- TBD: Machine 2.0 improvement ideas:
-		- BaseCond => always check state
-		- BaseResult => always do a buff_try()
-		- Can we create a general purpose Dispenser machine - for use with Crown and Broach?
-		- Do we really need to test for goblin in antechamber??? (will the goblin ever move)
-		- Have simple, single-test / single-action 'Primative' Conditions and Results: prim_cond and prim_result
-		- Composed Conditions & Results: comp_cond / comp_result == AND / OR of multiple primatives
-		- All results capable of Buffering (rename Result classes appropriately)
-		- if no conditions == True then default Result = nothing happens (no need for pass_result)
-		- Establish switch triggers such that timer as trigger is more natural
-		- Generalize in-hand vs. not-in-hand Condition (single primative)
-		- Generalize creature-has-item vs. creature-does-not-have-item Conditions (single primative)
-		- Establish clearer nomenclature for temp variables that will be fully assigned at end (e.g. 'royal_hedgehog-*temp*')
-		- each 'primitive' cond only tests for *one* thing (but state of that thing is an attribute to be matched)
-	- TBD: de-dup warning and timer classes
-		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?
-		- IDEA: this makes sense... in all other cases I inherit from simple parents to more complex children
-		- IDEA: WarnClass is simpler... so it should be the parent
-		- IDEA: Actually - how about a TrigDetectMixIn that is inherited by both WarnClass and MachineMixIn and only has trig_check method?
-		- IDEA: A MixIn of a MixIn seems over-complicated... 
-		- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
-		- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
-	- more Modular Machine ideas:
-		- Modular Triggers? (named after intent; match cond, result, & mach)
-		- Primative Conditions (named after condition) [always include single attribute & value] 
-		- Compound Conditions [and / or) (named after intent; match mach, result, & trig) {trig_check() method links primatives}
-		- Primative Results (named after result) [always include single attribute & value] 
-		- Compound Results (named after intent; match cond, trig, & mach) {trig_check() method links primatives}
-		- The basic goal of the primative & compound structure is to increase re-use of Cond & Result classes (too many class-per-var cases)
-	- Wildcard clean-ups
-		- Extend trig_check wildcards to 'post_act_cmd' & 'auto_act_cmd'
-		- Extend trig_check wildcards to work with Warnings (or better yet, de-dup Warning's trig_check)
-		- guard against multiple wildcaards per list
-	- Results
-		- extend BufferOnlyResult result_exe method in BufferAndEndResult and BufferAndGiveResult
-		- TBD: extend child methods in results_class_def ?
-		- in machines, should conditions and results just be key-value pairs in a dictionary?
-			- As opposed to needing 2 separate lists with identical indexes?
-	- Shorter cond & result names!!
-	- move switch_reset to auto_action() ???
-	- 'trigger_type' => 'trig_type' ??
-	- naming conventions: need to avoid confusion between match_state and mach_state
-	- naming conventions: cond & result name should be same except post-fix
-	- sort out ability to push button / pull levers while goblin is guarding
-	- need to implement hedgehog state machine based on creature state
-- TBD: list of 'contained' internal_switches in MachMixIn attributes?
-	- NOTE: (i.e. add to scope and remove levers & button from features?)
-	- NOTE: [this is a good idea but hold off until at least one more control_panel type machine gets created]
-- TBD: broaden hedgehog response to interacting with sword (e.g. "pull sword" should trigger)
-
-
-##########################
-### VERSION 3.82 START ###
-##########################
-
-Version 3.82 Goals
-- Clean up documentation and incorporate into doc_strings
-- final code clean-up for version 3.x
-
-- TBD: documentation:
-	- TBD: updeate creature doc
-		- discuss creature state
-	- TBD: update timer doc with trigger changes from 3.64
-	- TBD: update mach doc with wildcaard cahnges from 3.64
-	- TBD: update class diagram
-	- TBD: update module diagram
-	- TBD: create machine diagram
-		- hedgehog => state machine idea
-	- TBD: create creature diagram
-	- TBD: Timer Decisions
-		- timers are set by machines rather than triggered by player commands
-		- other than providing description text, timers are dumb - they just count -  a machine takes all actions
-- TBD: naming updates:
-	- TBD: re-name 'wrapper' to 'app_main'
-	- TBD: update pickle names
-	- TBD: out_buff => output (or possibly user_output)
-	- TBD: possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
-	- TBD: create directory structure for modules (e.g. all class definitions in a single directory)
-- TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
-	- for active_gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
-	- eliminate 'hasattrib' for containers in active_gs.scope_lst() too
-	- have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
-- DONE: for doors and containers, use None option for no lock or no lid?
-- CANCEL: Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
-	- CANCEL: why do I need active_gs.dynamic_descript_dict again?
-- mechanic clean-up
-	- investigate setters & getters for GameState class
-	- DONE: is there really any need for GameState room_mach_lst() ??
-	- TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
-	- TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
-	- eliminate active_gs.move_dec() ?
-	- 'try... except' standard descriptions for examine() method (similar to Warnings) (???)
+Version 3.8r Goals
 
 
 ##########################
@@ -660,17 +682,6 @@ Version 3.82 Goals
 ##########################
 
 Version 4.x Goals
-- Introduce non-functional requirement code (e.g. saves and pkl clean-up)
-- Integrate with web template
-- webify
-
-file handling:
-- game saves (requires file clean up?)
-- move doc to modules?
-- org modules in directories?
-
-web features:
-- TBD: Figure out a way in web browser to show all adventure text in scrolling window (???)
 
 
 ##########################
@@ -1099,7 +1110,7 @@ IDEA: create a fun scenario where TravelEffect take item gets used... maybe a gi
 
 Version X.x Goals:
 	- DB back end
-	- "dungeon bulder" web interface (?)
+	- "dungeon builder" web interface (?)
 	- Run on AWS EC2
 
 DONE: Watch YouTube vid on SQLAlchemy: https://youtu.be/51RpDZKShiw
