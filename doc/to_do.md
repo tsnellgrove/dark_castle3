@@ -453,6 +453,41 @@ Notes:
 
 - Interp deep dive including better solution to prep checking ('put in' vs. 'put on')
 
+interpreter ideas:
+- can I store variables in descript_dict strings? (in f-string format)
+- can I return method errors based on verb method (e.g. "Burt, what kind of person would try to attack a Throne?")
+- should synonyms be an obj attribute??
+- more abreviations: 'g' = 'again', 'z' = 'wait'
+- fix progromatic usage of "a" vs "an" (e.g. "There is a Iron Portcullis to the north")
+
+- DONE: unlock => 'unlock with' prep  command
+- DONE: default prep behavior = try command with obj in hand
+- New interp() Ideas:
+	- interp() refacto shoud be based on objects (contents of rooom)
+	- each obj should have noun syns (in place of root_word)
+	- if user input has multiple obj, determine noun vs. dir_obj from prep usage (i.e. to vs with)
+	- have global verb syns and class-based verb syns (start with global; much easier!)
+		- e.g. 'get' is gbl verb syn for take() but 'sit on' is a Seat class verb syn for enter()
+	- based on verb, validate prep usage
+	- Order of Op: 1) obj noun syns, 2) gbl verb syns
+
+*-- INTERPRETER ENHANCEMENT --*
+- TBD: sort out synonyms like 'stand' and 'sit' and 'lie'
+- Interpreter enhancements:
+	- noun synonyms (list in place of base_name)
+	- verb synonyms (attribute of Class? Should verbs associated with obj???)
+	- enable "take all", "drop all"
+	- randomize frequent responses (e.g. "in your spell book you see...")
+- re-institue remove() verb for Garment; 'take' as synonym
+	- worn obj take() => "You're already wearing it"
+	- obj on floor remove() => "Taken" (i.e. is synonym)
+- assume that item in hand will be used for activity (e.g. attack)
+- move() command ?
+- enable 'take all'
+- create 'jump' command with same response as Zork ('Whee!' I think?)
+- randomize description of Burt shown during 'inventory'
+- convert words like 'look' to 2word in interp(), rather than cmd(), if possible
+
 
 *** Long-term Pondering ***
 
@@ -488,6 +523,18 @@ Notes:
 - DONE: for doors and containers, use None option for no lock or no lid?
 - CANCEL: Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
 	- CANCEL: why do I need active_gs.dynamic_descript_dict again?
+
+python techniques:
+- Do a refactoring code review (look into the 'any' command in place of for loops)
+- TBD: Try argument unpacking ( https://www.geeksforgeeks.org/packing-and-unpacking-arguments-in-python/ )
+- TBD: Try tupples for descript_dict
+	- NOTE: Franco on Tupples: A tuple is most suitable for immutable data with a well-defined order.  The static data that you pass to class constructors is often a good example.Another useful time for tuples is when you want dictionary keys with more than one field.  You cannot use something mutable there.
+- TBD: learn about Super()
+- TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
+
+pipeline & testing:
+- create 'win' test routine with checksum
+- TBD: Jenkins integration to automatically update "v3 alpha" tab with latest commits
 
 *** Get light working ***
 
@@ -627,8 +674,96 @@ file handling:
 web features:
 - TBD: Figure out a way in web browser to show all adventure text in scrolling window (???)
 
+- create a hint sub-system
+- TBD: no swearing in Dark Castle (with warning or else end of game)
+	- cursing => end of game (requires warning_mach and usniversal scope)
+
+- TBD: Debug mode:
+	- TBD: Need a debug mode that eliminates 'try' from 2word and prep commands
+	- TBD: need a secret code to prevent regular player from falling into debug: 'debug poke53281,0'
+	- TBD: maybe debug opens a menu where you can choose start room & choose to disable method and / or description guards
+- TBD: verbose / brief
+
+- Unit Testing (link: https://youtu.be/6tNS--WetLI ) ???
+
+* DEBUG TOOLS *
+- work room for testing similar to tcrf.net Hollywood Hijinx
+
+
 *** Expansion of Dark Castle ***
 
+- Research existing IF languages (TADS & INFORM)
+- Plan out expanded adventure
+- Establish new base code needed for new adventure
+- Write new code!
+
+first: scan puzzle ideas and decide on next puzzles; plan for required features
+
+- New rooms and puzzles!!
+- New ideas - ideally should leverage existing coding with minimal addiional feature requirements
+-implement new ideas
+- publish new version and get feedback
+
+*-- Awesome Words to Use --*
+- stalwart (hedgehog)
+- griffonage (illegible handwriting)
+- recreancy (shameful cowardice; perfidy)
+- aubade
+- defenistrate
+- consigliere
+- consternation
+- phyisogamy (from 3 Muskateers)
+- Gallivanter
+- Solipsistic
+- Bamboozled
+- Flabbergasted
+- Discombobulated
+- Cattywampus
+- Lollygag
+- Makarkey
+- Kerfluffle
+- Brouhaha
+- Nincompoop
+- Skedaddle
+- Pumpernickel
+- rolly-polly (hedgehog)
+- Coddiwomple
+- Sockdolager (forceful blow)
+- sagaciate (get along)
+- sockdolager
+
+*-- possible new rooms --*
+- upon_drawbridge
+- entrance_hall (home base with well & safe shelf & hedgehog?)
+- chapel (another possible home base?)
+- courtyard
+- library
+- narrow / collapsed passage
+- kitchen
+- smithy
+- maze
+- wizards_tower
+- dungeons
+
+*-- RESEARCH --*
+- read The Craft of Adventure
+- Play at least 5 games
+- Read the Digital Antiquiarian reviews
+
+- PUZZLE: perhaps at some point Burt needs to bake biscuits??
+	- would involve finding and mixing ingredients, right order, starting fire, baking right time / temp
+
+- PUZZLE: Under Water Puzzle:
+	- treasure at bottom of old well - but need a magical way to hold your breath?
+	- old_well as water source in entrance_hall and also passage to... where?
+	- can hold breath for 4 turns, locked grate is 2 moves down, get warning on half air and last turn
+		- TBD: create LiquidContainer class
+			- TBD: create new LiquidContainer class
+			- TBD: instantiate old_well in the main_hall which contains fresh water
+			- TBD: update drink() to allow / error for drinking from the old_well
+	- lantern is water proof
+	- should be like rope puzzle for Zork I... 
+		- you have everything you need in the remote room but can't get out without solving puzzle
 
 
 ##### RANDOM NOTES #####
@@ -689,56 +824,6 @@ Version 4.x Goals
 ##########################
 
 Version 5.x Goals
-- Research existing IF languages (TADS & INFORM)
-- Plan out expanded adventure
-- Establish new base code needed for new adventure
-- Write new code!
-
-
-first: scan puzzle ideas and decide on next puzzles; plan for required features
-
-interpreter ideas:
-- can I store variables in descript_dict strings? (in f-string format)
-- can I return method errors based on verb method (e.g. "Burt, what kind of person would try to attack a Throne?")
-- should synonyms be an obj attribute??
-- create a hint sub-system
-- more abreviations: 'g' = 'again', 'z' = 'wait'
-- TBD: no swearing in Dark Castle (with warning or else end of game)
-	- cursing => end of game (requires warning_mach and usniversal scope)
-- fix progromatic usage of "a" vs "an" (e.g. "There is a Iron Portcullis to the north")
-- unlock => 'unlock with' prep  command
-- default prep behavior = try command with obj in hand
-- New interp() Ideas:
-	- interp() refacto shoud be based on objects (contents of rooom)
-	- each obj should have noun syns (in place of root_word)
-	- if user input has multiple obj, determine noun vs. dir_obj from prep usage (i.e. to vs with)
-	- have global verb syns and class-based verb syns (start with global; much easier!)
-		- e.g. 'get' is gbl verb syn for take() but 'sit on' is a Seat class verb syn for enter()
-	- based on verb, validate prep usage
-	- Order of Op: 1) obj noun syns, 2) gbl verb syns
-
-- TBD: Debug mode:
-	- TBD: Need a debug mode that eliminates 'try' from 2word and prep commands
-	- TBD: need a secret code to prevent regular player from falling into debug: 'debug poke53281,0'
-	- TBD: maybe debug opens a menu where you can choose start room & choose to disable method and / or description guards
-- TBD: verbose / brief
-
-- Unit Testing (link: https://youtu.be/6tNS--WetLI ) ???
-
-mechanic features:
-
-
-python techniques:
-- Do a refactoring code review (look into the 'any' command in place of for loops)
-- TBD: Try argument unpacking ( https://www.geeksforgeeks.org/packing-and-unpacking-arguments-in-python/ )
-- TBD: Try tupples for descript_dict
-	- NOTE: Franco on Tupples: A tuple is most suitable for immutable data with a well-defined order.  The static data that you pass to class constructors is often a good example.Another useful time for tuples is when you want dictionary keys with more than one field.  You cannot use something mutable there.
-- TBD: learn about Super()
-- TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
-
-pipeline & testing:
-- create 'win' test routine with checksum
-- TBD: Jenkins integration to automatically update "v3 alpha" tab with latest commits
 
 
 ##########################
@@ -746,93 +831,8 @@ pipeline & testing:
 ##########################
 
 Version 6.x Goals
-- New rooms and puzzles!!
-- New ideas - ideally should leverage existing coding with minimal addiional feature requirements
--implement new ideas
-- publish new version and get feedback
 
 
-*** Awesome Words to Use ***
-- stalwart (hedgehog)
-- griffonage (illegible handwriting)
-- recreancy (shameful cowardice; perfidy)
-- aubade
-- defenistrate
-- consigliere
-- consternation
-- phyisogamy (from 3 Muskateers)
-- Gallivanter
-- Solipsistic
-- Bamboozled
-- Flabbergasted
-- Discombobulated
-- Cattywampus
-- Lollygag
-- Makarkey
-- Kerfluffle
-- Brouhaha
-- Nincompoop
-- Skedaddle
-- Pumpernickel
-- rolly-polly (hedgehog)
-- Coddiwomple
-- Sockdolager (forceful blow)
-- sagaciate (get along)
-- sockdolager
-
-*** possible new rooms ***
-- upon_drawbridge
-- entrance_hall (home base with well & safe shelf & hedgehog?)
-- chapel (another possible home base?)
-- courtyard
-- library
-- narrow / collapsed passage
-- kitchen
-- smithy
-- maze
-- wizards_tower
-- dungeons
-
-*** RESEARCH ***
-- read The Craft of Adventure
-- Play at least 5 games
-- Read the Digital Antiquiarian reviews
-
-- PUZZLE: perhaps at some point Burt needs to bake biscuits??
-	- would involve finding and mixing ingredients, right order, starting fire, baking right time / temp
-
-- PUZZLE: Under Water Puzzle:
-	- treasure at bottom of old well - but need a magical way to hold your breath?
-	- old_well as water source in entrance_hall and also passage to... where?
-	- can hold breath for 4 turns, locked grate is 2 moves down, get warning on half air and last turn
-		- TBD: create LiquidContainer class
-			- TBD: create new LiquidContainer class
-			- TBD: instantiate old_well in the main_hall which contains fresh water
-			- TBD: update drink() to allow / error for drinking from the old_well
-	- lantern is water proof
-	- should be like rope puzzle for Zork I... 
-		- you have everything you need in the remote room but can't get out without solving puzzle
-
-*** DEBUG TOOLS ***
-- work room for testing similar to tcrf.net Hollywood Hijinx
-
-
-*** INTERPRETER ENHANCEMENT ***
-- TBD: sort out synonyms like 'stand' and 'sit' and 'lie'
-- Interpreter enhancements:
-	- noun synonyms (list in place of base_name)
-	- verb synonyms (attribute of Class? Should verbs associated with obj???)
-	- enable "take all", "drop all"
-	- randomize frequent responses (e.g. "in your spell book you see...")
-- re-institue remove() verb for Garment; 'take' as synonym
-	- worn obj take() => "You're already wearing it"
-	- obj on floor remove() => "Taken" (i.e. is synonym)
-- assume that item in hand will be used for activity (e.g. attack)
-- move() command ?
-- enable 'take all'
-- create 'jump' command with same response as Zork ('Whee!' I think?)
-- randomize description of Burt shown during 'inventory'
-- convert words like 'look' to 2word in interp(), rather than cmd(), if possible
 
 *** STORY IDEAS ***
 - link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
