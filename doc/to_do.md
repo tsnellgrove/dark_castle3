@@ -225,6 +225,12 @@ Notes:
 
 - TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
 
+*-- STORY IDEAS --*
+- link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
+- valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
+- shiny sword glows near enemies?
+- meet the wizard from Enchanter who is searching for a scroll
+
 
 *** Re-diagram modules ***
 
@@ -288,6 +294,11 @@ Notes:
 	- NOTE: (i.e. add to scope and remove levers & button from features?)
 	- NOTE: [this is a good idea but hold off until at least one more control_panel type machine gets created]
 - TBD: broaden hedgehog response to interacting with sword (e.g. "pull sword" should trigger)
+
+- DONE: How to enable switches and machines to self register for universal scope
+	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
+	- DONE: eliminate universal_scope => just add these to Burt's invis_lst
+
 
 *** Refactor app_main() modules ***
 
@@ -397,6 +408,13 @@ Notes:
 
 - TBD: figure out 'behind' prep for case of control panel in alove behind goblin
 
+- non-humanoid monster could be a special weapon description case (fun new puzzle idea)???
+- DONE: Consider having size values for items and capaicty limits on containers & backpack (should the crystal box really hold an axe?)
+	- This becomes important for 'take' capacity as well in shrinking puzzle (??)
+	- encumberance (post Burt as object?)
+	- implement carying capacity / container cappacity; Also carry restriction passages, etc..
+- DONE: make goblin hand contents examinable (e.g. Grimy Axe)
+
 
 *** Roll up sleaves and fix Interpreter ***
 
@@ -488,6 +506,9 @@ interpreter ideas:
 - randomize description of Burt shown during 'inventory'
 - convert words like 'look' to 2word in interp(), rather than cmd(), if possible
 
+*-- ARCHITECTURE --*
+- What would a decoupled, micro=services based DC look like? What are the consumers / providers?
+
 
 *** Long-term Pondering ***
 
@@ -544,6 +565,17 @@ pipeline & testing:
 	- is safe to actually turn off lantern - because anything in your hand can still be accessed...
 	- so alternate idea is that hedgehog has to come rescue you
 	- but at least one inventory item gets scattered (hedgehog shrug)
+
+*-- AMBIENT SIM --*
+- for light sources:
+	- "(providing light)" in inventory; also is a condition (on)
+	- can move into a dark room, but can't open a container in the dark
+- for FlamableItem: light & burn (e.g. matches)
+- PaperItem: burns; also, if writing, ink runs and becomes unreadable
+
+- darkness & light source system?
+	- lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
+	- honestly, Grues don't make sense in DC... I intend for there to be a fair number of creatures around the place... why haven't they been eaten by Grues? (one could ask the same about the Troll and the Thief of Zork - but presumably these are dangerous creatures that can fend off Grues?). Instead, I think I'll use the same mechanic (2 dark rooms in a row == death) but the textual explanation will be Nana's warning to young burt "Burty, you mind gallavanting around in the darkness - you'll trip and break your neck!"
 
 *** Get liquids working ***
 
@@ -614,7 +646,14 @@ pipeline & testing:
 - IDEA: for food, maybe have the biscuits take 3 turns to eat... but if burt eats some he gets less time to grab the sword... 
 - IDEA: maybe don't need warning so much... just keep describing them as tasting worse and worse? Food consistent within creatures?
 
+- food & drink system?
+
 *** Get tiredness and sleep working ***
+
+- maybe sleep in bed (after min # of moves) to dream to get hints? But light must be on so you loose turns of light and wake up hungry and thirsty? Hint is provided randomly based on points not yet accrued?
+- need to check Enchanter to find length of days, when sleep needed, food & drink, etc
+- For dream hint: Burt has dream / memory of Nana teaching him the binary code she would use with Willy while secretly courting (she was a lunch lady?) to set a time to sneak off with him. Would involve 2 types of biscuits on counter... Nana's Own and McVittles (which were awful)... she only had room for 3 biscuits but had to show times from 0 to 7... 
+
 
 *** Implement Symetric Verbs ***
 
@@ -765,6 +804,98 @@ first: scan puzzle ideas and decide on next puzzles; plan for required features
 	- should be like rope puzzle for Zork I... 
 		- you have everything you need in the remote room but can't get out without solving puzzle
 
+*-- DC1 PUZZLE IDEAS --*
+Misc:
+- Randomization feature like the spinning room in Zork 2 ? With way to turn it off
+- Physics puzzles - see-saws, pulleys, and ceterfugal force
+- Dragon is bored because it has read every book in the library - need to find a new book to interest it
+- Ferret is named Bartleby
+- landscape / path changes
+- create vehical puzzle?
+
+*-- DC2 PUZZLE IDEAS --*
+- maybe, in DC2, before the ball, the princess is missing (hiding from evil prince) and is diguised as a black cat that burt needs to befriend?
+- it would be cool to have an invisibility cloak / spell (probably need to keep it short term / contained)
+- Note: active_gs.hero enables player to take on different characters in the game (e.g. Burt could become a mouse)
+- princess 'poise' & 'moxie'
+- fun idea - small creature - like a mouse - as an item
+- more directions
+- Princess takes 3 forms:
+	1) Cat => Burt must get her collar
+	2) Raven => ring
+	3) Cockney goth waif (castle servant) => boots
+	- Then princess arrives at ball wearing collar, ring, and boots
+- Burt must also foil evil Prince plan to murder princess (perhaps swap fake dagger for real one?)
+- Burt himself is taken for a lowly Baker (in past time)
+- Basically, Burt and the Princess (in various forms) wander around the castle doing chores learning info
+- Also, Burt has a chance to demonstrate himself as kind and helpful - or not - to disguised princess
+- Meanwhile, the whole castle is in an uproar getting ready for big ball and princess arrival
+- some scattered rumors that princess has "mysterious magical powers"
+- Meeting Nana
+	- Also, somewhere in the mix, Burt must prove who he is to a (much younger) Nana
+	- he needs to get (Willy's) broach, and put it behind the throne
+- Burt is given most of his hot/cold direction via a portrait of himself & princess
+	- As Burt makes right decisions the portrait gets clearer; fades with wrong decisions
+	- Portrait is taken of Burt and waif-princess by great artist who needs stand ins for Prince & Princess wedding portrait
+	- Burt originally (in modeern times) finds the portrait on the pedistal next to the throne and *MUST* put it back there during time travel just before arriving back or else the closed time loop fails (gets multiple hints that there's "something he must do")
+- Dungeon key
+	- in modern times, the one room Burst still can't get into is the dungeon
+	- main key was lost years ago during the "great ball fiasco" and spare has never been found
+	- not viewed as very important since the dungeon side-wall parially collapsed and was flooded by moat
+	- Dungeon is now the lair of the evil croc in the moat 
+	- Burt needs to get the dungeon key in past times
+	- he must somehow get it back to modern times so he can rescue princess in flooded dungeon from croc
+		- why can't she just turn into a fast fish?? need to think through her magic limits
+	- impossible to keep it so must hide it behind a brick (where he will retrieve it in the future)
+
+- Princess Time-Travel Quest:
+	- Princess asks Burt if he's an assassin, spy, or suitor => answer = 'baker'
+	- Back in time, need to hide key behind brick (otherwise princess arrives but time travels back behind locked door)
+	- Get key from chief guard via cheesecake?
+	- Both Burt and the Princess need to eat food before time travel (nod to hitchhikers guide)
+	- Juanty hat to escape guards at just the right time
+
+IDEA: have a 'jaunty hat' that enables you to move 'twice per time click' (i.e. no pre or post actions or move increments for one turn)
+	- would necesitate default responses to attacks and things like that
+	- could solve nearly any puzzle so need to deliver late in the game
+	- maybe especially useful for solving a '2 button' puzzle
+
+- Back to the Future - time machine chariot idea
+	- chariot is in stable hooked up to old_mare
+	- feed old_mare 1.7 boxes of jigga-whats special speed feed and chariot charges forward... at 8.9 mph blue light and time change
+	- dial in chariot picks year
+	- chariot is shiny metal and has a label on is saying "from the grande dutchy of Lorean" (remember, only chariots from the Grande Dutchy can truly call themselves 'De Lorean' - all others are merely fast, shiny chariots)
+	- Special easter eggs... there are 2 full boxes of jigga-what's special feed and 2 70% full boxes on an old dusty shelf (current time). They appear ancient and you've heard that for some reason or other this brand was outlawed 100 years ago - you didn't think any was left in the world... if Burt goes back in time he can feed the 1.7 jw to the old mare to get back in time - at this point, all 4 boxes are consumed (Burt will, in fact remember there as only having been 2 in current time)... but, if Burt attempts to bring a box with him back to the future he will fragment the space-time-continum and find himself sitting at a computer, playing a text adventure... with all of his memories fading and end with the statement "it must have been just a game all along..." with no score = "N/A" and title = time traveller
+
+DCII Time Travel Ideas:
+- In past, burt must convince young_nana to give him Willy's broach in order to drop it behind throne or else timeline is doomed!
+- Perhaps burt first travels fwd in time a week and can pick up an unfinished portrait of burt & princess that gives future status (similar to Back to the Future)
+
+
+Alter Terrain:
+- Use Map room_pair updates to alter a room dramatically after a major change
+	- e.g. Zork I resevoir post-dam opening
+	- could use this after a cave in or rock collapse in the dungeons / mines?
+
+Vehical:
+- Bucket pulley / weight puzzle in wizard's tower
+- need to adjust weight correctly going up and down
+- need to grab staute (?) on way up / down?
+- or else maybe mine cart / parachute??
+
+Zork Thief = Ferret:
+- dextrous, loves colorful objects, likes to fidtet / fiddle with things, clever
+- will steal an object from burt (or that burt has touched) each time it randomly runs into him (some items off limits?)
+- Some item on a high shelf or complexly locked (like the Zork egg) can only be opened by the ferret
+- burt can indefinitely / eternally distract the ferret (*after* it has solved its puzzle) by giving it a rubks cube (described not named)
+- the ferrets treasures can be found in a hole that burt needs to reach his arm into (scary warnings - could be a grue)
+- maybe the shelf in the main hall is the one place safe from the ferret
+- or else the object is in the courtyard and ferret gets it after burt sees it through window?? (seems like less agency?)
+- hedgehog chases ferret away from Entrance Hall any time it randomely attempts to enter (entrance hall has well & shelf too)
+
+hedghog:
+- perhaps the hedgehog greets you every time you walk into the main_hall once you return the sword?
+
 
 ##### RANDOM NOTES #####
 
@@ -834,135 +965,7 @@ Version 6.x Goals
 
 
 
-*** STORY IDEAS ***
-- link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
-- valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
-- shiny sword glows near enemies?
-- meet the wizard from Enchanter who is searching for a scroll
 
-
-*** ARCHITECTURE ***
-- What would a decoupled, micro=services based DC look like? What are the consumers / providers?
-
-
-*** AMBIENT SIM ***
-- for light sources:
-	- "(providing light)" in inventory; also is a condition (on)
-	- can move into a dark room, but can't open a container in the dark
-- for FlamableItem: light & burn (e.g. matches)
-- PaperItem: burns; also, if writing, ink runs and becomes unreadable
-- maybe sleep in bed (after min # of moves) to dream to get hints? But light must be on so you loose turns of light and wake up hungry and thirsty? Hint is provided randomly based on points not yet accrued?
-- need to check Enchanter to find length of days, when sleep needed, food & drink, etc
-- For dream hint: Burt has dream / memory of Nana teaching him the binary code she would use with Willy while secretly courting (she was a lunch lady?) to set a time to sneak off with him. Would involve 2 types of biscuits on counter... Nana's Own and McVittles (which were awful)... she only had room for 3 biscuits but had to show times from 0 to 7... 
-- non-humanoid monster could be a special weapon description case (fun new puzzle idea)???
-- TBD: Consider having size values for items and capaicty limits on containers & backpack (should the crystal box really hold an axe?)
-	- This becomes important for 'take' capacity as well in shrinking puzzle (??)
-	- encumberance (post Burt as object?)
-	- implement carying capacity / container cappacity; Also carry restriction passages, etc..
-- food & drink system?
-- darkness & light source system?
-	- lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
-	- honestly, Grues don't make sense in DC... I intend for there to be a fair number of creatures around the place... why haven't they been eaten by Grues? (one could ask the same about the Troll and the Thief of Zork - but presumably these are dangerous creatures that can fend off Grues?). Instead, I think I'll use the same mechanic (2 dark rooms in a row == death) but the textual explanation will be Nana's warning to young burt "Burty, you mind gallavanting around in the darkness - you'll trip and break your neck!"
-- DONE: How to enable switches and machines to self register for universal scope
-	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
-	- DONE: eliminate universal_scope => just add these to Burt's invis_lst
-- DONE: make goblin hand contents examinable (e.g. Grimy Axe)
-
-
-
-*** DC1 PUZZLE IDEAS ***
-Misc:
-- Randomization feature like the spinning room in Zork 2 ? With way to turn it off
-- Physics puzzles - see-saws, pulleys, and ceterfugal force
-- Dragon is bored because it has read every book in the library - need to find a new book to interest it
-- Ferret is named Bartleby
-- landscape / path changes
-- create vehical puzzle?
-
-
-
-*** DC2 PUZZLE IDEAS ***
-- maybe, in DC2, before the ball, the princess is missing (hiding from evil prince) and is diguised as a black cat that burt needs to befriend?
-- it would be cool to have an invisibility cloak / spell (probably need to keep it short term / contained)
-- Note: active_gs.hero enables player to take on different characters in the game (e.g. Burt could become a mouse)
-- princess 'poise' & 'moxie'
-- fun idea - small creature - like a mouse - as an item
-- more directions
-- Princess takes 3 forms:
-	1) Cat => Burt must get her collar
-	2) Raven => ring
-	3) Cockney goth waif (castle servant) => boots
-	- Then princess arrives at ball wearing collar, ring, and boots
-- Burt must also foil evil Prince plan to murder princess (perhaps swap fake dagger for real one?)
-- Burt himself is taken for a lowly Baker (in past time)
-- Basically, Burt and the Princess (in various forms) wander around the castle doing chores learning info
-- Also, Burt has a chance to demonstrate himself as kind and helpful - or not - to disguised princess
-- Meanwhile, the whole castle is in an uproar getting ready for big ball and princess arrival
-- some scattered rumors that princess has "mysterious magical powers"
-- Meeting Nana
-	- Also, somewhere in the mix, Burt must prove who he is to a (much younger) Nana
-	- he needs to get (Willy's) broach, and put it behind the throne
-- Burt is given most of his hot/cold direction via a portrait of himself & princess
-	- As Burt makes right decisions the portrait gets clearer; fades with wrong decisions
-	- Portrait is taken of Burt and waif-princess by great artist who needs stand ins for Prince & Princess wedding portrait
-	- Burt originally (in modeern times) finds the portrait on the pedistal next to the throne and *MUST* put it back there during time travel just before arriving back or else the closed time loop fails (gets multiple hints that there's "something he must do")
-- Dungeon key
-	- in modern times, the one room Burst still can't get into is the dungeon
-	- main key was lost years ago during the "great ball fiasco" and spare has never been found
-	- not viewed as very important since the dungeon side-wall parially collapsed and was flooded by moat
-	- Dungeon is now the lair of the evil croc in the moat 
-	- Burt needs to get the dungeon key in past times
-	- he must somehow get it back to modern times so he can rescue princess in flooded dungeon from croc
-		- why can't she just turn into a fast fish?? need to think through her magic limits
-	- impossible to keep it so must hide it behind a brick (where he will retrieve it in the future)
-
-Princess Time-Travel Quest:
-- Princess asks Burt if he's an assassin, spy, or suitor => answer = 'baker'
-- Back in time, need to hide key behind brick (otherwise princess arrives but time travels back behind locked door)
-- Get key from chief guard via cheesecake?
-- Both Burt and the Princess need to eat food before time travel (nod to hitchhikers guide)
-- Juanty hat to escape guards at just the right time
-
-IDEA: have a 'jaunty hat' that enables you to move 'twice per time click' (i.e. no pre or post actions or move increments for one turn)
-	- would necesitate default responses to attacks and things like that
-	- could solve nearly any puzzle so need to deliver late in the game
-	- maybe especially useful for solving a '2 button' puzzle
-
-- Back to the Future - time machine chariot idea
-	- chariot is in stable hooked up to old_mare
-	- feed old_mare 1.7 boxes of jigga-whats special speed feed and chariot charges forward... at 8.9 mph blue light and time change
-	- dial in chariot picks year
-	- chariot is shiny metal and has a label on is saying "from the grande dutchy of Lorean" (remember, only chariots from the Grande Dutchy can truly call themselves 'De Lorean' - all others are merely fast, shiny chariots)
-	- Special easter eggs... there are 2 full boxes of jigga-what's special feed and 2 70% full boxes on an old dusty shelf (current time). They appear ancient and you've heard that for some reason or other this brand was outlawed 100 years ago - you didn't think any was left in the world... if Burt goes back in time he can feed the 1.7 jw to the old mare to get back in time - at this point, all 4 boxes are consumed (Burt will, in fact remember there as only having been 2 in current time)... but, if Burt attempts to bring a box with him back to the future he will fragment the space-time-continum and find himself sitting at a computer, playing a text adventure... with all of his memories fading and end with the statement "it must have been just a game all along..." with no score = "N/A" and title = time traveller
-
-DCII Time Travel Ideas:
-- In past, burt must convince young_nana to give him Willy's broach in order to drop it behind throne or else timeline is doomed!
-- Perhaps burt first travels fwd in time a week and can pick up an unfinished portrait of burt & princess that gives future status (similar to Back to the Future)
-
-
-Alter Terrain:
-- Use Map room_pair updates to alter a room dramatically after a major change
-	- e.g. Zork I resevoir post-dam opening
-	- could use this after a cave in or rock collapse in the dungeons / mines?
-
-Vehical:
-- Bucket pulley / weight puzzle in wizard's tower
-- need to adjust weight correctly going up and down
-- need to grab staute (?) on way up / down?
-- or else maybe mine cart / parachute??
-
-Zork Thief = Ferret:
-- dextrous, loves colorful objects, likes to fidtet / fiddle with things, clever
-- will steal an object from burt (or that burt has touched) each time it randomly runs into him (some items off limits?)
-- Some item on a high shelf or complexly locked (like the Zork egg) can only be opened by the ferret
-- burt can indefinitely / eternally distract the ferret (*after* it has solved its puzzle) by giving it a rubks cube (described not named)
-- the ferrets treasures can be found in a hole that burt needs to reach his arm into (scary warnings - could be a grue)
-- maybe the shelf in the main hall is the one place safe from the ferret
-- or else the object is in the courtyard and ferret gets it after burt sees it through window?? (seems like less agency?)
-- hedgehog chases ferret away from Entrance Hall any time it randomely attempts to enter (entrance hall has well & shelf too)
-
-hedghog:
-- perhaps the hedgehog greets you every time you walk into the main_hall once you return the sword?
 
 Food:
 - bread for Burt (save piecs of cheese for the mice)
