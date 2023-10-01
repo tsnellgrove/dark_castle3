@@ -139,7 +139,6 @@ Notes:
 
 - TBD: create a centralized doc file
 
-
 *** Fix indent in all modules! (way past time!!) ***
 
 *** minor bug-fix ***
@@ -415,6 +414,9 @@ Notes:
 	- implement carying capacity / container cappacity; Also carry restriction passages, etc..
 - DONE: make goblin hand contents examinable (e.g. Grimy Axe)
 
+Window:
+- would be need to have a Window class that allows burt to see what he can't take
+
 
 *** Roll up sleaves and fix Interpreter ***
 
@@ -648,6 +650,12 @@ pipeline & testing:
 
 - food & drink system?
 
+Food:
+- bread for Burt (save piecs of cheese for the mice)
+- maybe need to keep feeding biscuits to the hedgehog?
+- perhaps loaf of bread and bottle of water can each provide multiple servers (similar to enchanter)
+- additional bread verbs needed: bake ???
+
 *** Get tiredness and sleep working ***
 
 - maybe sleep in bed (after min # of moves) to dream to get hints? But light must be on so you loose turns of light and wake up hungry and thirsty? Hint is provided randomly based on points not yet accrued?
@@ -727,6 +735,35 @@ web features:
 
 * DEBUG TOOLS *
 - work room for testing similar to tcrf.net Hollywood Hijinx
+
+- "dungeon builder" web interface (?)
+
+- runs on AWS with API GW, Lambda, and DynamoDB!
+
+*** DB Driven ***
+
+Version X.x Goals:
+	- DB back end
+	- "dungeon builder" web interface (?)
+	- Run on AWS EC2
+
+DONE: Watch YouTube vid on SQLAlchemy: https://youtu.be/51RpDZKShiw
+	DONE: Create practice file
+	DONE: Watch video
+
+DONE: instantiate sqlalchemy DB
+	DONE: Queue huge sdk issues due to ancient version of sqlalchemy...
+	DONE: Have upgraded to version 1.1.2 using Stash but still getting issues in sqlite compiler
+	DONE: Think I might have to upgrade to 1.4.x to get JSON support for sqlalchemy.dialect.sqlite (installed 1.4.18)
+	DONE: now requires install of importlib_metadata (installed via 'pip install')
+	DONE: now I need to 'pip install typing_extensions'
+	NOTE: APPEARS TO WORK!!!
+
+TBD: now start working with sqlalchemy again in place of txt files
+	TBD: How do I setup a DB that continues to persist independent of an app running??
+	TBD: Before returning values, Interpreter must save stateful_dict to DB
+	TBD: Before running code, must load the value of stateful_dict from DB
+	IDEA: default object values should start as a DB entry (or txt files) and be loaded on new game
 
 
 *** Expansion of Dark Castle ***
@@ -896,86 +933,8 @@ Zork Thief = Ferret:
 hedghog:
 - perhaps the hedgehog greets you every time you walk into the main_hall once you return the sword?
 
-
-##### RANDOM NOTES #####
-
-
-##########################
-### VERSION 3.7x START ###
-##########################
-
-Version 3.7x Goals
-
-
-
-##########################
-### VERSION 3.7y START ###
-##########################
-
-Version 3.7y Goals
-
-
-##########################
-### VERSION 3.7z START ###
-##########################
-
-Version 3.7z Goals
-
-
-##########################
-### VERSION 3.8q START ###
-##########################
-
-Version 3.8q Goals
-
-
-##########################
-### VERSION 3.8u START ###
-##########################
-
-Version 3.8u Goals
-
-
-##########################
-### VERSION 3.8r START ###
-##########################
-
-Version 3.8r Goals
-
-
-##########################
-### VERSION 4.x START ###
-##########################
-
-Version 4.x Goals
-
-
-##########################
-### VERSION 5.x START ###
-##########################
-
-Version 5.x Goals
-
-
-##########################
-### VERSION 6.x START ###
-##########################
-
-Version 6.x Goals
-
-
-
-
-
-Food:
-- bread for Burt (save piecs of cheese for the mice)
-- maybe need to keep feeding biscuits to the hedgehog?
-- perhaps loaf of bread and bottle of water can each provide multiple servers (similar to enchanter)
-- additional bread verbs needed: bake ???
-
 Special Glasses / Dream form:
 - let burt see a room using descriptions from another dict
-
 
 Carry Cappacity Constraints:
 - item 'size' limits (invent point values) for Containers and Narrow Passages
@@ -985,14 +944,6 @@ Carry Cappacity Constraints:
 	- Also, when the bat drops the chest, it smashes open... maybe revealing the rubiks cube (too soon??)
 - Could have a narrow_passage - perhaps a collapsed passage that connects the north and south halves of the castle?
 	- burt can only squeeze through with a few items (no sword)... perhaps the ruby for the smithy mouse is in the north side?
-
-Window:
-- would be need to have a Window class that allows burt to see what he can't take
-- could allow burt to peer into a courtyard with a tree and fountain
-- maybe 2 guard dogs - one with red hat, one with blue hat - that are constantly paroling a passage
-- if burt observest the window for a few turns he can see when to zip past the patrol
-- (when the blue-hat dog looks up expectantly)
-- perhaps window is in the collapsed_passage ??
 
 Writing / engraving:
 - would be nice to have a way to write / engrave on something
@@ -1004,8 +955,16 @@ Vanishing cabinets:
 - maybe only work one way (because broken?)
 - or maybe can only bring very little gear?
 
+Window:
+- would be need to have a Window class that allows burt to see what he can't take
+- could allow burt to peer into a courtyard with a tree and fountain
+- maybe 2 guard dogs - one with red hat, one with blue hat - that are constantly paroling a passage
+- if burt observest the window for a few turns he can see when to zip past the patrol
+- (when the blue-hat dog looks up expectantly)
+- perhaps window is in the collapsed_passage ??
+
 Game Ending:
-- Kinging Scroll glows faintly... and can only read when sitting on the Royal Leturn... which also glows slightly
+- Kinging Scroll glows faintly... and can only read when sitting on the Royal Lecturn... which also glows slightly
 	- lecturn found in the Library (Willy's favorite room in the castle)
 	- But only one thing can be _on_ the lecturn at a time... and there is currently a stuborn_snail there
 	- snaill can only be encouraged to move by showing it the salt from the Kitchen
@@ -1107,33 +1066,76 @@ IDEA: create a fun scenario where TravelEffect take item gets used... maybe a gi
 		keys same colors as ready player 1
 
 
+##### RANDOM NOTES #####
+
+
+##########################
+### VERSION 3.7x START ###
+##########################
+
+Version 3.7x Goals
+
+
+
+##########################
+### VERSION 3.7y START ###
+##########################
+
+Version 3.7y Goals
+
+
+##########################
+### VERSION 3.7z START ###
+##########################
+
+Version 3.7z Goals
+
+
+##########################
+### VERSION 3.8q START ###
+##########################
+
+Version 3.8q Goals
+
+
+##########################
+### VERSION 3.8u START ###
+##########################
+
+Version 3.8u Goals
+
+
+##########################
+### VERSION 3.8r START ###
+##########################
+
+Version 3.8r Goals
+
+
+##########################
+### VERSION 4.x START ###
+##########################
+
+Version 4.x Goals
+
+
+##########################
+### VERSION 5.x START ###
+##########################
+
+Version 5.x Goals
+
+
+##########################
+### VERSION 6.x START ###
+##########################
+
+Version 6.x Goals
+
+
 ##########################
 ### VERSION X.x START ###
 ##########################
-
-Version X.x Goals:
-	- DB back end
-	- "dungeon builder" web interface (?)
-	- Run on AWS EC2
-
-DONE: Watch YouTube vid on SQLAlchemy: https://youtu.be/51RpDZKShiw
-	DONE: Create practice file
-	DONE: Watch video
-
-DONE: instantiate sqlalchemy DB
-	DONE: Queue huge sdk issues due to ancient version of sqlalchemy...
-	DONE: Have upgraded to version 1.1.2 using Stash but still getting issues in sqlite compiler
-	DONE: Think I might have to upgrade to 1.4.x to get JSON support for sqlalchemy.dialect.sqlite (installed 1.4.18)
-	DONE: now requires install of importlib_metadata (installed via 'pip install')
-	DONE: now I need to 'pip install typing_extensions'
-	NOTE: APPEARS TO WORK!!!
-
-TBD: now start working with sqlalchemy again in place of txt files
-	TBD: How do I setup a DB that continues to persist independent of an app running??
-	TBD: Before returning values, Interpreter must save stateful_dict to DB
-	TBD: Before running code, must load the value of stateful_dict from DB
-	IDEA: default object values should start as a DB entry (or txt files) and be loaded on new game
-
 
 
 ##########################
@@ -1141,7 +1143,7 @@ TBD: now start working with sqlalchemy again in place of txt files
 ##########################
 
 vY.y IDEAS
-- runs on AWS with API GW, Lambda, and DynamoDB!
+
 
 
 
