@@ -12,25 +12,6 @@ class Map(object):
 	def __init__(self, map_lst):
 		self._map_lst = map_lst # list of room_pair dicts; 
 				# format == [{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall}]
-		""" *** Module Documentation ***
-
-		Overview:
-			Stores the over-arching map of Dark Castle and provides methods for accessing and updating map info. Contains room_pairs and doors.
-
-		Implementation Detail:
-			map_lst is stored in GameState (rather than being a constant declared in the class) to allow for major terrain changes. For example, after a major cave-in the room description might change dramatically and three new passages might open up. One could make all these updates to the original room - but it would be far easier just to redirect to a new room. The most famous example of this behavior is the magic pencil used at the end of The Lurking Horror / Enchanter.
-		
-		Historic Note:
-			Before refactoring, map_dict was an attribute of GameState and was a dictionary-of-dictionaries that was keyed off room and direction and returned next_room ast a value. Room.floor_lst contained doors and Room had an attribute, door_dict, that was keyed off direction and returned a door as its value. 
-			
-			This worked fine but had a few logistical and philosphical flaws. Logistically, GameState was an ugly monolith. It had *way* too many methods. It was hard to keep track of them all. So it was high time to apply OOP to the operational aspects of the game and organize game state information into classes with methods that would then become attributes of GameState. Map became the first such operational object, in advance of migrating Burt to a Creature. The intention is to do the same for the rest of the operational capabilities in Game State.
-			
-			The other issue was more about data design philosophy... There was a GameState map_dict entry for room_x that pointed to room_y, and a map_dict entry for room_y that pointed to room_x... but they were independent entries that seemed to imply that the connection was arbitrary. There were also separate door_dict entries for both room_x and room_y that each pointed to the same door that was between them - but again were in theory entirely independent. Lastly, the same door was in floor_lst of both rooms. As my theory of node hierarchy matured, it seemed "right" that there should be one and only one instance of every object... so why was there two of every door?
-			
-			I considered making doors 'smart' and allowing them know about the rooms on either side of them. This was simple but it broke my rule that 'objects only know what they contain'. Also, it obviated the need for a central map, and I was convinced that a human-readible master map would be a valuable design aid. I even contemplated breaking doors in half... each side of the door would be contained in a given room and link back to a 'master door' that would maintain open and locked state for both. This had the attrictive capability of showing different features on each side of a door... but it seemed over-engineered and, again, eliminated the central map.
-			
-			The eventual solution was the concept of 'room pairs' - the idea that the whole map is essentially comprised of pairs of rooms that are connected. And that in all but a few exceptional cases, if room_x leads to room_y, then room_y will lead to room_x - and that the door or passage between them will be contained uniquely and consistently within that pair. Based on this thinking I created a custom data structure: a list of room_pair dictionaries (I used a dictionary rather than a list for the sake of making the structure self-documenting). The structure requires a lot of custom methods to access - but this turned out to be a bit of a fun master class in list comprehension. Doors now appear once and only once in map_lst. Of course, now rooms appear multiple times, but for some reason this doesn't bother me. YMMV.
-		"""
 
 	# *** getters & setters ***
 	@property
