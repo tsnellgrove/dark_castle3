@@ -143,23 +143,21 @@ Notes:
 Version 3.79 Goals
 - Centralize doc (it's past time!)
 
-- TBD: create a centralized doc file
-	- TBD: create doc.md file in /doc
-	- INPROC: cut / paste content into doc.md
+- DONE: create a centralized doc file
+	- DONE: create doc.md file in /doc
+	- DONE: cut / paste content into doc.md
 		- DONE: web_main.py
 		- DONE: validate.py
 		- DONE: map_class_def.py
-		- TBD: invisible_class_def.py
-		- TBD: base_class_def.py
-		- TBD: item_class_def.py
-		- TBD: interactive_class_def.py
-		- TBD: room_class_def.py
-		- TBD: creature_class_def.py
-		- TBD: switch_class_def.py
-		- TBD: cond_class_def.py
-		- TBD: result_class_def.py
-		- TBD: mach_class_def.py
-	- INPROC: no doc to move
+		- DONE: invisible_class_def.py
+		- DONE: base_class_def.py
+		- DONE: item_class_def.py
+		- DONE: interactive_class_def.py
+		- DONE: room_class_def.py
+		- DONE: creature_class_def.py
+		- DONE: switch_class_def.py
+		- DONE: mach_class_def.py
+	- DONE: no doc to move
 		- DONE: app_main.py
 		- DONE: start_up.py
 		- DONE: interp.py
@@ -172,6 +170,10 @@ Version 3.79 Goals
 		- DONE: mk_def_pkl.py
 		- DONE: static_gbl.py
 		- DONE: gs_class_def.py
+		- DONE: cond_class_def.py
+		- DONE: result_class_def.py
+- TBD: Fix indent in all modules! (way past time!!)
+- TBD: read doc
 
 
 
@@ -179,7 +181,6 @@ Version 3.79 Goals
 
 
 
-*** Fix indent in all modules! (way past time!!) ***
 
 *** minor bug-fix ***
 

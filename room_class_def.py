@@ -183,25 +183,3 @@ class Room(ViewOnly):
 		if self == active_gs.get_room():
 			active_gs.buffer(f"The {creature.full_name} goes {dir}")
 		return 
-
-
-""" *** Module Documentation ***
-
-	* Room class:
-
-		Overview:
-			Every space Burt can occupy is a 'room' - even if he is outside. All of the game's  visible objects (except Doors) are contained within Rooms. Rooms themselves (along with Doors) reside within the room-pairs of Map.
-			
-			Since everything Burt can interact with on a given turn (except Doors) is in the room that he's occupying, Room is the perfect place to determine object scope. All scope methods for both visible and invisble objects are in Room. Available exits are considered to be conditions of the Room and are presented when the Room is examined. The commands 'look' and 'examine room' have identical results.
-
-		Program Architecture:
-			Rooms are a good time to pause and discuss Receptacles and Nodes. 
-			
-			Any visible object that can hold an Item is a Receptacle (i.e. Containers, Creatures, and Surfaces). As discussed in the Container method, Receptacles are 'smart' (i.e. they know what they contain) and Items are 'dumb' (i.e. they know nothing about the container that holds them). This means that to generate a list of all visible objects in a room (e.g. via get_vis_contain_lst() ) we need to first compile a list of immediately available objects and then, if any of them are open Receptacles, we need to list all of the ojbects inside *them*. But what if one of the objects inside a Receptacle is, itself, a Receptacle? 
-			
-			In theory, this could get deeply recursive. One obvious way to avoid this is "Just don't create very many PortableContainers in the game." But, hypoetheically, the goal is here is to create a tool set that could be used by others to build their own text adventure games... so we would like to put in place some prescriptive guard rails.
-			
-			Before we solve the problem, we need some nomenclature to describe it. The terminology I've chosen is "Node", from the study of binary trees (though in this case we have a non-binary tree). Imagine an inverted "tree" with one "node" at the top. This is the Room object, node_0. One level below Room we have nodes for all the visible objects in the Room. These are the node_1 objects. Some of the node_1 objects may be Receptacles and their contents are represented by Nodes one level further down: the node_2 objects. By default when we reference a node_1 object we are discussing 'absolute' node level where the current Room is node_0. But it is also possible to talk about 'relative' node level - for example, if Burt is in the Main Hall and holding the shiny_sword, then the shiny_sword has an absolute node level of node_2 (Room => Creature => Item) but a node level of node_1 relative to Burt (Burt => Item). You will occasionally see node_1 or node_2 variables referenced in methods. In this case, absolute node level is being used.
-			
-			So now that we have have some terminology, the key question is: "How do we want the game to work?" Whe could use recursion to allow recepticales to be indefinitely nested... but tracking items like this is cumbersome and hard to represent to the user. At the other end of the spectrum, we could disallow any Receptacle nesting - but this seems heavy-handed. I've taken the capabilities and limitations of Zork are a source of guidance. Early in the game, when the player enters the Kitchen, they find a sack containing food and a bottle of water on a table. So PortableContainers nested on a Surface seems like a reasonable expectation. PortableContainers nested in Creatures and Containers also happens within the game. But there are no takable Creatures, few, if any, takable Surfaces, and few if any instances of PortableContainers nested in other PortableContainers. Adopting these limits allows us a fun simulation - but limits node level to 3 (Room => Receptacle => PortableContainer => Item) - which is a reasonable depth to manage and represent.
-"""
