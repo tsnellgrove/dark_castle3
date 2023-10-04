@@ -172,7 +172,17 @@ Version 3.79 Goals
 		- DONE: gs_class_def.py
 		- DONE: cond_class_def.py
 		- DONE: result_class_def.py
-- TBD: Fix indent in all modules! (way past time!!)
+- INPROC: Fix indent in all modules! (way past time!!)
+	- DONE: app_main.py
+	- DONE: auto_action.py
+	- TBD: cond_class_def.py
+
+	- DONE: web_main.py
+- INPROC: don't need to fix
+	- DONE: base_class_def.py
+	- DONE: cmd_exe.py
+	- DONE: 
+
 - TBD: read doc
 
 
