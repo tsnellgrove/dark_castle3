@@ -175,7 +175,7 @@ Version 3.79 Goals
 - INPROC: Fix indent in all modules! (way past time!!)
 	- DONE: app_main.py
 	- DONE: auto_action.py
-	- TBD: cond_class_def.py
+	- INPROC: cond_class_def.py (testing needed)
 
 	- DONE: web_main.py
 - INPROC: don't need to fix
