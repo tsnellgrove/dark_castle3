@@ -554,7 +554,9 @@ class Creature(ViewOnly):
 			active_gs.buffer(f"The {self.full_name} is now standing.")
 		return
 
-# debug methods
+	### debug methods ###
+
+
 	def get_weight(self, active_gs, mode=None):
 		""" Reports the weight of an Item. Only usable in debug mode.
 		"""
