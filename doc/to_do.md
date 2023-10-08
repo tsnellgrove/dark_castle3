@@ -178,8 +178,9 @@ Version 3.79 Goals
 	- DONE: cond_class_def.py
 	- DONE: ending.py
 	- DONE: gs_class_def.py
+	- DONE: interp.py
 
-	- TBD: interp.py
+	- TBD: mach_class_def.py
 
 	- DONE: web_main.py
 - INPROC: don't need to fix
@@ -187,6 +188,8 @@ Version 3.79 Goals
 	- DONE: cmd_exe.py
 	- DONE: creature_class_def.py
 	- DONE: interctive_class_def.py
+	- DONE: invisible_class_def.py
+	- DONE: item_class_def.py
 
 - TBD: read doc
 
