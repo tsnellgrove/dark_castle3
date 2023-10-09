@@ -178,9 +178,9 @@ Version 3.79 Goals
 	- DONE: cond_class_def.py
 	- DONE: ending.py
 	- DONE: gs_class_def.py
-	- DONE: interp.py
+	- DONE: interp.py 
 
-	- TBD: mach_class_def.py
+	- INPROC: mach_class_def.py (Timer class TBD)
 
 	- DONE: web_main.py
 - INPROC: don't need to fix
