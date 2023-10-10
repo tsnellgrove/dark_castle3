@@ -216,107 +216,107 @@ class Warning(Invisible):
 
 
 class Timer(Invisible):
-		def __init__(self, name, trigger_type, active, timer_count, timer_max, message_type, timer_done, alert_anchor):
-				super().__init__(name)
+	def __init__(self, name, trigger_type, active, timer_count, timer_max, message_type, timer_done, alert_anchor):
+		super().__init__(name)
 
 ## DUP CODE TO MachineMixIn ###
-				self._trigger_type = trigger_type # pre_act_cmd, pre_act_switch, pre_act_auto, post_act_cmd, post_act_switch, or post_act_auto
+		self._trigger_type = trigger_type # pre_act_cmd, pre_act_switch, pre_act_auto, post_act_cmd, post_act_switch, or post_act_auto
 ## DUP CODE TO MachineMixIn ###
 
-				self._active = active
-				self._timer_count = timer_count
-				self._timer_max = timer_max
-				self._message_type = message_type
-				self._timer_done = timer_done
-				self._alert_anchor = alert_anchor
+		self._active = active
+		self._timer_count = timer_count
+		self._timer_max = timer_max
+		self._message_type = message_type
+		self._timer_done = timer_done
+		self._alert_anchor = alert_anchor
 
-		# setters & getters
+	# setters & getters
 
 ## DUP CODE TO MachineMixIn ###
-		@property
-		def trigger_type(self):
-				return self._trigger_type
+	@property
+	def trigger_type(self):
+		return self._trigger_type
 ## DUP CODE TO MachineMixIn ###
 
-		@property
-		def active(self):
-				return self._active
+	@property
+	def active(self):
+		return self._active
 
-		@active.setter
-		def active(self, new_val):
-				self._active = new_val
+	@active.setter
+	def active(self, new_val):
+		self._active = new_val
 
-		@property
-		def timer_count(self):
-				return self._timer_count
+	@property
+	def timer_count(self):
+		return self._timer_count
 
-		@timer_count.setter
-		def timer_count(self, new_count):
-				self._timer_count = new_count
+	@timer_count.setter
+	def timer_count(self, new_count):
+		self._timer_count = new_count
 
-		@property
-		def timer_max(self):
-				return self._timer_max
+	@property
+	def timer_max(self):
+		return self._timer_max
 
-		@property
-		def message_type(self):
-				return self._message_type
+	@property
+	def message_type(self):
+		return self._message_type
 
-		@property
-		def timer_done(self):
-				return self._timer_done
+	@property
+	def timer_done(self):
+		return self._timer_done
 
-		@timer_done.setter
-		def timer_done(self, new_val):
-				self._timer_done = new_val
+	@timer_done.setter
+	def timer_done(self, new_val):
+		self._timer_done = new_val
 
-		@property
-		def alert_anchor(self):
-				return self._alert_anchor
+	@property
+	def alert_anchor(self):
+		return self._alert_anchor
 
-		@alert_anchor.setter
-		def alert_anchor(self, new_val):
-				self._alert_anchor = new_val
+	@alert_anchor.setter
+	def alert_anchor(self, new_val):
+		self._alert_anchor = new_val
 
-		# simple methods
-		def is_mach(self):
-				return True
+	# simple methods
+	def is_mach(self):
+		return True
 
-		def is_timer(self):
-				return True
+	def is_timer(self):
+		return True
 
-		# complex methods
-		def run_mach(self, active_gs):
-				cmd_override = False
-				self.timer_count += 1				
-				timer_key = self.name + "_" + str(self.timer_count)
-				timer_key_constant = self.name + "_1"
-				timer_default = "Beep!"
+	# complex methods
+	def run_mach(self, active_gs):
+		cmd_override = False
+		self.timer_count += 1				
+		timer_key = self.name + "_" + str(self.timer_count)
+		timer_key_constant = self.name + "_1"
+		timer_default = "Beep!"
 
-				if active_gs.get_room().chk_is_vis(self.alert_anchor, active_gs):
-						if self.message_type == 'variable':
-								try:
-										active_gs.buffer(descript_dict[timer_key])
-								except:
-										active_gs.buffer(timer_default)
-						elif self.message_type == 'constant':
-								try:
-										active_gs.buffer(descript_dict[timer_key_constant])
-								except:
-										active_gs.buffer(timer_default)
+		if active_gs.get_room().chk_is_vis(self.alert_anchor, active_gs):
+			if self.message_type == 'variable':
+				try:
+					active_gs.buffer(descript_dict[timer_key])
+				except:
+					active_gs.buffer(timer_default)
+			elif self.message_type == 'constant':
+				try:
+					active_gs.buffer(descript_dict[timer_key_constant])
+				except:
+					active_gs.buffer(timer_default)
 
-				if self.timer_count == self.timer_max:
-						self.active = False
-						self.timer_count = 0
-						self.timer_done = True
+		if self.timer_count == self.timer_max:
+			self.active = False
+			self.timer_count = 0
+			self.timer_done = True
 
 ##				print(self.name, self.timer_count, self.timer_max, self.active, self.timer_done) # for timer troubleshooting
 
-				return cmd_override
+		return cmd_override
 
-		def start(self):
-				self.active = True
+	def start(self):
+		self.active = True
 
-		def reset(self):
-				self.timer_count = 0
+	def reset(self):
+		self.timer_count = 0
 

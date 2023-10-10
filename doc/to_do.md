@@ -179,8 +179,8 @@ Version 3.79 Goals
 	- DONE: ending.py
 	- DONE: gs_class_def.py
 	- DONE: interp.py 
-
-	- INPROC: mach_class_def.py (Timer class TBD)
+	- DONE: mach_class_def.py
+	- DONE: mk_def_pkl.py
 
 	- DONE: web_main.py
 - INPROC: don't need to fix
@@ -190,6 +190,7 @@ Version 3.79 Goals
 	- DONE: interctive_class_def.py
 	- DONE: invisible_class_def.py
 	- DONE: item_class_def.py
+	- DONE: map_class_def.py
 
 - TBD: read doc
 

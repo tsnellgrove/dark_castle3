@@ -15,11 +15,11 @@ from interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, Co
 from interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from switch_class_def import LeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
 from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
-				SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
-				StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond, InRoomCond, InWorldStateCond)
+		SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
+		StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond, InRoomCond, InWorldStateCond)
 from result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
-				AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
-				TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
+		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
+		TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
 from mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from creature_class_def import Creature
 from gs_class_def import GameState
@@ -164,108 +164,108 @@ dispense_panel_result = AddObjToRoomAndDescriptResult('dispense_panel_result', '
 # warnings
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
 attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd',
-				[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3, 0)
+		[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3, 0)
 eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','stale_biscuits']], 3, 0)
 
 # machines
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
-				None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
-				[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) # machine_state == got_crown
+		None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
+		[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) # machine_state == got_crown
 
 broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 'post_act_switch', throne, ['pushed', 'pulled'],
-				[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
-				[nothing_happens_result, throne_push_result, throne_pull_result]) # machine_state == broach_dispensed
+		[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
+		[nothing_happens_result, throne_push_result, throne_pull_result]) # machine_state == broach_dispensed
 
 control_panel = ContainerFixedSimpleMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, [left_lever, middle_lever, right_lever, red_button], 999, 4, 'on',
-				0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever], [correct_lever_array_cond, wrong_lever_array_cond],
-				[toggle_portcullis_result, portcullis_doesnt_open_result])
-				# machine_state == lever_array_value
+		0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever], [correct_lever_array_cond, wrong_lever_array_cond],
+		[toggle_portcullis_result, portcullis_doesnt_open_result])
+		# machine_state == lever_array_value
 
 hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None, [['give', 'stale_biscuits', 'royal_hedgehog']],
-				None, [hedgehog_has_biscuit_cond, pass_thru_cond], [start_hedgehog_timer_results, pass_result])
+		None, [hedgehog_has_biscuit_cond, pass_thru_cond], [start_hedgehog_timer_results, pass_result])
 
 hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None, [['take', 'shiny_sword']],
-				None, [hedgehog_guard_cond, pass_thru_cond], [hedgehog_attacks_result, pass_result])
+		None, [hedgehog_guard_cond, pass_thru_cond], [hedgehog_attacks_result, pass_result])
 
 hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', 0, 'pre_act_timer', hedgehog_eats_timer, [True], None,
-				[hedgehog_keeps_sword_cond, hedgehog_loses_sword_cond, pass_thru_cond],
-				[fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result, pass_result]) # machine_state == post-eating description updated?
+		[hedgehog_keeps_sword_cond, hedgehog_loses_sword_cond, pass_thru_cond],
+		[fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result, pass_result]) # machine_state == post-eating description updated?
 
 goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,
-				[['examine', 'iron_portcullis'], ['examine', 'alcove'], ['examine', 'grimy_axe'], ['take', 'grimy_axe'],
-				['open', 'iron_portcullis'], ['go', 'north']],
-				None, [pass_thru_cond], [goblin_attacks_result])
+		[['examine', 'iron_portcullis'], ['examine', 'alcove'], ['examine', 'grimy_axe'], ['take', 'grimy_axe'],
+		['open', 'iron_portcullis'], ['go', 'north']],
+		None, [pass_thru_cond], [goblin_attacks_result])
 
 hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_cmd', None,
-				[['give', '*', 'royal_hedgehog'], ['show', '*', 'royal_hedgehog']], None, 
-				[hedgehog_distracted_cond, pass_thru_cond], [hedgehog_distracted_result, pass_result])
+		[['give', '*', 'royal_hedgehog'], ['show', '*', 'royal_hedgehog']], None, 
+		[hedgehog_distracted_cond, pass_thru_cond], [hedgehog_distracted_result, pass_result])
 
 kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters, 1, 
-				None, 'post_act_cmd', None, [['read', 'illuminated_letters']], None,
-				[scroll_not_in_throne_room_cond, hedgehog_not_exist_cond, crown_not_worn_cond, read_scroll_win_cond],
-				[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result])
+		None, 'post_act_cmd', None, [['read', 'illuminated_letters']], None,
+		[scroll_not_in_throne_room_cond, hedgehog_not_exist_cond, crown_not_worn_cond, read_scroll_win_cond],
+		[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result])
 
 re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None,
-				[axe_in_goblin_hand_cond, pass_thru_cond], [axe_in_goblin_hand_result, pass_result])
+		[axe_in_goblin_hand_cond, pass_thru_cond], [axe_in_goblin_hand_result, pass_result])
 
 dispense_panel_mach = InvisMach('dispense_panel_mach', False, 'auto_act', None, None, None, [goblin_exist_state_cond, pass_thru_cond], [dispense_panel_result, pass_result])
 
 guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None,
-				None, [grimy_axe], [torn_note, dead_goblin], [big_medal], [chewed_fingernails, officiousness],
-				[goblin_attack_mach, re_arm_goblin_mach],
-				{
-						shiny_sword : {'accept' : False, 'give' : None},
-						stale_biscuits : {'accept' : False, 'give' : None},
-						'def_give' : {'accept' : True, 'give' : None}
-				},
-				True,
-				{
-						'shiny_sword_burt_*' : 'tgt_death',
-						'weapon_*_*' : 'easy_parry', # parry
-						'*_*_*' : 'src_death'
-				}, 93, 999)
+		None, [grimy_axe], [torn_note, dead_goblin], [big_medal], [chewed_fingernails, officiousness],
+		[goblin_attack_mach, re_arm_goblin_mach],
+		{
+			shiny_sword : {'accept' : False, 'give' : None},
+			stale_biscuits : {'accept' : False, 'give' : None},
+			'def_give' : {'accept' : True, 'give' : None}
+		},
+		True,
+		{
+			'shiny_sword_burt_*' : 'tgt_death',
+			'weapon_*_*' : 'easy_parry', # parry
+			'*_*_*' : 'src_death'
+		}, 93, 999)
 
 # creatures				
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None,
-				None, [], [silver_key], [red_bandana], [fierce_teeth, loyalty],
-				[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_done_eating_mach, hedgehog_distracted_mach],
-				{
-						shiny_sword : {'accept' : True, 'give' : silver_key},
-						stale_biscuits : {'accept' : True, 'give' : None}
-				},
-				True,
-				{
-						'weapon_burt_*' : 'tgt_flee_dc',
-						'unarmed_burt_*' : 'easy_dodge', # karate kid
-						'*_*_*' : 'easy_dodge' # dodge
-				}, 22, 999)
+		None, [], [silver_key], [red_bandana], [fierce_teeth, loyalty],
+		[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_done_eating_mach, hedgehog_distracted_mach],
+		{
+			shiny_sword : {'accept' : True, 'give' : silver_key},
+			stale_biscuits : {'accept' : True, 'give' : None}
+		},
+		True,
+		{
+			'weapon_burt_*' : 'tgt_flee_dc',
+			'unarmed_burt_*' : 'easy_dodge', # karate kid
+			'*_*_*' : 'easy_dodge' # dodge
+		}, 22, 999)
 
 burt = Creature('burt', 'Burt', 'burt', 'burt', None,
-				None, [], [rusty_key, cheese_wedge, stale_biscuits, earthen_jug], [], [fist, backpack, conscience, brass_lantern],
-				[hedgehog_eats_timer],
-				{},
-				True,
-				{
-						'grimy_axe_guard_goblin_weapon' : 'hard_parry', # parry
-						'grimy_axe_guard_goblin_*' : 'tgt_death',
-						'fierce_teeth_royal_hedgehog_*' : 'jump_back'
-				}, 106.5, 150) # note: for non-burt-creature testing frog_travel_mach was in burt.invis_lstj
+		None, [], [rusty_key, cheese_wedge, stale_biscuits, earthen_jug], [], [fist, backpack, conscience, brass_lantern],
+		[hedgehog_eats_timer],
+		{},
+		True,
+		{
+			'grimy_axe_guard_goblin_weapon' : 'hard_parry', # parry
+			'grimy_axe_guard_goblin_*' : 'tgt_death',
+			'fierce_teeth_royal_hedgehog_*' : 'jump_back'
+		}, 106.5, 150) # note: for non-burt-creature testing frog_travel_mach was in burt.invis_lstj
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-				[burt], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
-				# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
+		[burt], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
+		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
-				[shiny_sword, royal_hedgehog, wooden_shelf], [eat_biscuits_warning])
-				# note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
+		[shiny_sword, royal_hedgehog, wooden_shelf], [eat_biscuits_warning])
+		# note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
 
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
-#				[alcove, left_lever, middle_lever, right_lever, red_button], [control_panel, guard_goblin], [])
-				[alcove], [guard_goblin], [dispense_panel_mach])
+#		[alcove, left_lever, middle_lever, right_lever, red_button], [control_panel, guard_goblin], [])
+		[alcove], [guard_goblin], [dispense_panel_mach])
 
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
-				[throne, crystal_box], [broach_dispenser_mach])
+		[throne, crystal_box], [broach_dispenser_mach])
 
 unreachable_1 = Room('unreachable_1', 'Unreachable', 'unreachable_1', 'unreachable_1', None, [], [], [])
 
@@ -275,12 +275,12 @@ unreachable_3 = Room('unreachable_3', 'Unreachable', 'unreachable_3', 'unreachab
 
 # *** Map ***
 map = Map([{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall},
-				{'room_x' : entrance, 'dir_x' : 'south', 'door' : 'path', 'dir_y' : None, 'room_y' : unreachable_1},
-				{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
-				{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
-				{'room_x' : main_hall, 'dir_x' : 'north', 'door' : 'passage', 'dir_y' : 'south', 'room_y' : antechamber},
-#				{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
-				{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}])
+		{'room_x' : entrance, 'dir_x' : 'south', 'door' : 'path', 'dir_y' : None, 'room_y' : unreachable_1},
+		{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
+		{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
+		{'room_x' : main_hall, 'dir_x' : 'north', 'door' : 'passage', 'dir_y' : 'south', 'room_y' : antechamber},
+#		{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
+		{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}])
 
 # *** Hierarchy-Based Object Re-assignment ***
 goblin_attacks_result.creature_obj = guard_goblin
@@ -301,31 +301,31 @@ dispense_panel_result.room_item = control_panel
 
 ### active_gs is the central store of game info ###
 active_gs = GameState(
-		'active_gs',
-		{}, # dyn_descript_dict
-		{
-				'rusty_key' : False,
-				'main_hall' : False,
-				'shiny_sword' : False,
-				'throne_room' : False,
-				'silver_key' : False,
-				'kinging_scroll' : False,
-				'royal_crown' : False,
-				'hedgehog_broach' : False,
-				'hedgehog_attack' : False,
-				'goblin_dead' : False
-		},
-		{
-				'score' : 0,
-				'move_counter' : 0,
-				'end_of_game' : False,
-				'game_ending' : "tbd",
-				'debug' : False,
-##				'room' : entrance,
-				'out_buff' : ""
-		},
-		map,
-		burt
+	'active_gs',
+	{}, # dyn_descript_dict
+	{
+		'rusty_key' : False,
+		'main_hall' : False,
+		'shiny_sword' : False,
+		'throne_room' : False,
+		'silver_key' : False,
+		'kinging_scroll' : False,
+		'royal_crown' : False,
+		'hedgehog_broach' : False,
+		'hedgehog_attack' : False,
+		'goblin_dead' : False
+	},
+	{
+		'score' : 0,
+		'move_counter' : 0,
+		'end_of_game' : False,
+		'game_ending' : "tbd",
+		'debug' : False,
+##		'room' : entrance,
+		'out_buff' : ""
+	},
+	map,
+	burt
 )
 
 ### instantiated objects added to list ###
@@ -336,7 +336,7 @@ officiousness, gold_capitals, red_bandana, big_medal, burt, brass_lantern, fierc
 
 # list written to pickle
 with open('default_obj_pickle', 'wb') as f:
-		pickle.dump(master_obj_lst, f)
+	pickle.dump(master_obj_lst, f)
 
 # *** Test Objects ***
 
