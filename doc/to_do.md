@@ -182,6 +182,10 @@ Version 3.79 Goals
 	- DONE: mach_class_def.py
 	- DONE: mk_def_pkl.py
 	- DONE: post_action.py
+	- DONE: pre_action.py
+	- DONE: result_class_def.py
+
+	- TBD: score.py
 
 	- DONE: web_main.py
 - INPROC: don't need to fix
@@ -192,6 +196,7 @@ Version 3.79 Goals
 	- DONE: invisible_class_def.py
 	- DONE: item_class_def.py
 	- DONE: map_class_def.py
+	- DONE: room_class_def.py
 
 - TBD: read doc
 
