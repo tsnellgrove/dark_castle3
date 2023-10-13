@@ -184,8 +184,9 @@ Version 3.79 Goals
 	- DONE: post_action.py
 	- DONE: pre_action.py
 	- DONE: result_class_def.py
+	- DONE: score.py
 
-	- TBD: score.py
+	- TBD: start_up.py
 
 	- DONE: web_main.py
 - INPROC: don't need to fix
