@@ -172,7 +172,7 @@ Version 3.79 Goals
 		- DONE: gs_class_def.py
 		- DONE: cond_class_def.py
 		- DONE: result_class_def.py
-- INPROC: Fix indent in all modules! (way past time!!)
+- DONE: Fix indent in all modules! (way past time!!)
 	- DONE: app_main.py
 	- DONE: auto_action.py
 	- DONE: cond_class_def.py
@@ -185,11 +185,10 @@ Version 3.79 Goals
 	- DONE: pre_action.py
 	- DONE: result_class_def.py
 	- DONE: score.py
-
-	- TBD: start_up.py
-
+	- DONE: start_up.py
+	- DONE: static_gbl.py
 	- DONE: web_main.py
-- INPROC: don't need to fix
+- DONE: don't need to fix
 	- DONE: base_class_def.py
 	- DONE: cmd_exe.py
 	- DONE: creature_class_def.py
@@ -198,14 +197,19 @@ Version 3.79 Goals
 	- DONE: item_class_def.py
 	- DONE: map_class_def.py
 	- DONE: room_class_def.py
+	- DONE: switch_class_def.py
+	- DONE: validate.py
+	- DONE: web_main.py
+
 
 - TBD: read doc
 
 
+*** Re-diagram modules ***
 
 
-
-
+*** Folderinze modules based on grouping ***
+- TBD: create directory structure for modules (e.g. all class definitions in a single directory)
 
 
 *** minor bug-fix ***
@@ -296,13 +300,6 @@ Version 3.79 Goals
 - valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
 - shiny sword glows near enemies?
 - meet the wizard from Enchanter who is searching for a scroll
-
-
-*** Re-diagram modules ***
-
-*** Folderinze modules based on grouping ***
-
-- TBD: create directory structure for modules (e.g. all class definitions in a single directory)
 
 
 *** Really modularize machines! ***
