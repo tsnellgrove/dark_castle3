@@ -201,15 +201,10 @@ Version 3.79 Goals
 	- DONE: validate.py
 	- DONE: web_main.py
 
-
-- TBD: read doc
-
-
-*** Re-diagram modules ***
-
-
-*** Folderinze modules based on grouping ***
-- TBD: create directory structure for modules (e.g. all class definitions in a single directory)
+- TBD: diagram modules
+- TBD: folderize modules based on diagram
+	- IDEA: create directory structure for modules (e.g. all class definitions in a single directory)
+- TBD: skim / org doc
 
 
 *** minor bug-fix ***
