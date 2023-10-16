@@ -18,7 +18,6 @@ from auto_action import auto_action
 
 
 ### loads game obj, calls other modules, and saves game obj ###
-# def wrapper(user_input):
 def app_main(user_input):
 
 	# start-up case

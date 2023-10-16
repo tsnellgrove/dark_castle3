@@ -6,20 +6,17 @@
 #		integrate triggers, replicate full original, add more puzzles!
 
 ### import statements
-#from app_main import wrapper
 from app_main import app_main
 
 ### main routine
 end_of_game = False
 start_of_game = True
-# while end_of_game == False:
 while not end_of_game:
 	if start_of_game:
 		user_input = "xyzzy42"
 		start_of_game = False
 	else:
 		user_input = input('Type your command: ')
-#	end_of_game, output = wrapper(user_input)
 	end_of_game, output = app_main(user_input)
 	print(output)
 print("THANKS FOR PLAYING!!")
