@@ -205,6 +205,12 @@ Version 3.79 Goals
 	- DONE: in web_main() => while not end_of_game:
 	- DONE: in app_main() rename wrapper method to app_main()
 	- DONE: comment clean-up
+	- DONE: web_main, class_def modules, mk_def_pkl()
+
+	- TBD: app_main [start], static_gbl(), start_up, pickles, 
+	- TBD: app_main [rest]
+	- TBD: move run chain
+
 - TBD: folderize modules based on diagram
 	- IDEA: create directory structure for modules (e.g. all class definitions in a single directory)
 - TBD: skim / org doc
