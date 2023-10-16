@@ -201,7 +201,9 @@ Version 3.79 Goals
 	- DONE: validate.py
 	- DONE: web_main.py
 
-- TBD: diagram modules
+- INPROC: diagram modules
+	- DONE: in web_main() => while not end_of_game:
+	- DONE: in app_main() rename wrapper method to app_main()
 - TBD: folderize modules based on diagram
 	- IDEA: create directory structure for modules (e.g. all class definitions in a single directory)
 - TBD: skim / org doc
