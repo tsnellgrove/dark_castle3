@@ -206,8 +206,8 @@ Version 3.79 Goals
 	- DONE: in app_main() rename wrapper method to app_main()
 	- DONE: comment clean-up
 	- DONE: web_main, class_def modules, mk_def_pkl()
+	- DONE: app_main [start], static_gbl(), start_up, pickles, 
 
-	- TBD: app_main [start], static_gbl(), start_up, pickles, 
 	- TBD: app_main [rest]
 	- TBD: move run chain
 
