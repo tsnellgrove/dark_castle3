@@ -207,8 +207,8 @@ Version 3.79 Goals
 	- DONE: comment clean-up
 	- DONE: web_main, class_def modules, mk_def_pkl()
 	- DONE: app_main [start], static_gbl(), start_up, pickles, 
+	- DONE: app_main [rest]
 
-	- TBD: app_main [rest]
 	- TBD: move run chain
 
 - TBD: folderize modules based on diagram
