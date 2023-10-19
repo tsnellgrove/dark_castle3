@@ -201,16 +201,14 @@ Version 3.79 Goals
 	- DONE: validate.py
 	- DONE: web_main.py
 
-- INPROC: diagram modules
+- DONE: diagram modules
 	- DONE: in web_main() => while not end_of_game:
 	- DONE: in app_main() rename wrapper method to app_main()
 	- DONE: comment clean-up
 	- DONE: web_main, class_def modules, mk_def_pkl()
 	- DONE: app_main [start], static_gbl(), start_up, pickles, 
 	- DONE: app_main [rest]
-
-	- TBD: move run chain
-
+	- DONE: move run chain
 - TBD: folderize modules based on diagram
 	- IDEA: create directory structure for modules (e.g. all class definitions in a single directory)
 - TBD: skim / org doc
@@ -233,6 +231,7 @@ Version 3.79 Goals
 		- TBD: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
 		- TBD: consolidate static_dict into descript_dict
 	- TBD: doc_string - error messages are hard to update - so I want them to be as generic as possible!
+	- Score dictionary
 
 - TBD: make LeverSwitch a true MixIn
 
