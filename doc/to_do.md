@@ -200,7 +200,6 @@ Version 3.79 Goals
 	- DONE: switch_class_def.py
 	- DONE: validate.py
 	- DONE: web_main.py
-
 - DONE: diagram modules
 	- DONE: in web_main() => while not end_of_game:
 	- DONE: in app_main() rename wrapper method to app_main()
@@ -209,8 +208,20 @@ Version 3.79 Goals
 	- DONE: app_main [start], static_gbl(), start_up, pickles, 
 	- DONE: app_main [rest]
 	- DONE: move run chain
-- TBD: folderize modules based on diagram
+- INPROC: folderize modules based on diagram
 	- IDEA: create directory structure for modules (e.g. all class definitions in a single directory)
+	- DONE: based on diagram, group modules together
+		- tools = mk_def_pkl
+		- class_std = Invisible, Base, Item, Interactive, Room, Creature
+		- class_mach = Switches, Mach, Cond, Result
+		- class_gs = GameState, Map
+		- persist_pkl = def_pkl, sav_pkl
+		- gbl = static_gbl
+		- web = web_main
+		- app_main = app_main, start_up
+		- app_turn = interp, validate, pre_act, cmd_exe, post_act, score, auto_act, end
+	- TBD: learn about python packages
+
 - TBD: skim / org doc
 
 
