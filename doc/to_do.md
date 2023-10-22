@@ -208,19 +208,18 @@ Version 3.79 Goals
 	- DONE: app_main [start], static_gbl(), start_up, pickles, 
 	- DONE: app_main [rest]
 	- DONE: move run chain
-- INPROC: folderize modules based on diagram
+- INPROC: package modules based on diagram
 	- IDEA: create directory structure for modules (e.g. all class definitions in a single directory)
-	- DONE: based on diagram, group modules together
-		- tools = mk_def_pkl
-		- class_std = Invisible, Base, Item, Interactive, Room, Creature
-		- class_mach = Switches, Mach, Cond, Result
-		- class_gs = GameState, Map
-		- persist_pkl = def_pkl, sav_pkl
-		- gbl = static_gbl
-		- web = web_main
-		- app_main = app_main, start_up
-		- app_turn = interp, validate, pre_act, cmd_exe, post_act, score, auto_act, end
-	- TBD: learn about python packages
+	- DONE: based on diagram, group modules together into 'dc3' dir
+		- <root> = __init__.py, web_main, static_gbl
+		- class_std = __init__.py, Invisible, Base, Item, Interactive, Room, Creature
+		- class_mach = __init__.py, Switches, Mach, Cond, Result
+		- class_gs = __init__.py, GameState, Map
+		- persist = __init__.py, def_pkl, sav_pkl, mk_def_pkl
+		- app_main = __init__.py, app_main, start_up
+		- app_turn = __init__.py, interp, validate, pre_act, cmd_exe, post_act, score, auto_act, end
+	- DONE: start learning about python packages
+	- TBD: first pkg: /dc3/app_main
 
 - TBD: skim / org doc
 
