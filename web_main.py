@@ -6,7 +6,8 @@
 #		integrate triggers, replicate full original, add more puzzles!
 
 ### import statements
-from app_main import app_main
+# from app_main import app_main
+from dc3.app_main.app_main import app_main
 
 ### main routine
 end_of_game = False

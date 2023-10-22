@@ -6,7 +6,8 @@
 
 ### import statements
 import pickle
-from start_up import start_me_up
+# from start_up import start_me_up
+from dc3.app_main.start_up import start_me_up
 from interp import interpreter
 from validate import validate
 from pre_action import pre_action
