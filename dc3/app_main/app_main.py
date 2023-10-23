@@ -6,21 +6,15 @@
 
 ### import statements
 import pickle
-# from start_up import start_me_up
-# from interp import interpreter
-# from validate import validate
-
 from dc3.app_main.start_up import start_me_up
 from dc3.app_turn.interp import interpreter
 from dc3.app_turn.validate import validate
-
-from pre_action import pre_action
-from cmd_exe import cmd_execute
-from post_action import post_action
-from score import score
-from ending import end
-from auto_action import auto_action
-
+from dc3.app_turn.pre_action import pre_action
+from dc3.app_turn.cmd_exe import cmd_execute
+from dc3.app_turn.post_action import post_action
+from dc3.app_turn.score import score
+from dc3.app_turn.ending import end
+from dc3.app_turn.auto_action import auto_action
 
 ### loads game obj, calls other modules, and saves game obj ###
 def app_main(user_input):

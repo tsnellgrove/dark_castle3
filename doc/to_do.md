@@ -212,12 +212,13 @@ Version 3.79 Goals
 	- IDEA: create directory structure for modules (e.g. all class definitions in a single directory)
 	- INPROC: based on diagram, group modules together into 'dc3' dir
 		- DONE: app_main = __init__.py, app_main, start_up
-		- INPROC: app_turn = __init__.py, interp, validate, pre_act, cmd_exe, post_act, score, auto_act, end
+		- DONE: app_turn = __init__.py, interp, validate, pre_act, cmd_exe, post_act, score, auto_act, end
 		- TBD: class_std = __init__.py, Invisible, Base, Item, Interactive, Room, Creature
 		- TBD: class_mach = __init__.py, Switches, Mach, Cond, Result
 		- TBD: class_gs = __init__.py, GameState, Map
-		- TBD: persist = __init__.py, def_pkl, sav_pkl, mk_def_pkl
-		- TBD: <root> = __init__.py, web_main, static_gbl
+		- TBD: persist = __init__.py, def_pkl, sav_pkl
+		- TBD: tools = mk_def_pkl
+		- TBD: <root> = __init__.py, web_main, static_gbl, doc.md
 	- DONE: start learning about python packages
 	- TBD: first pkg: /dc3/app_main
 

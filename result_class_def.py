@@ -6,7 +6,7 @@
 
 ### import
 from static_gbl import descript_dict, static_dict
-from cmd_exe import cmd_execute
+# from dc3.app_turn.cmd_exe import cmd_execute
 
 
 ### classes
