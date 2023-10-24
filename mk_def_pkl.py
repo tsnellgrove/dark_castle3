@@ -6,13 +6,13 @@
 
 # import statements
 import pickle
-from invisible_class_def import Invisible
-from base_class_def import Writing, ViewOnly
-from room_class_def import Room
-from item_class_def import Item, Food, Liquid, Garment, Weapon
-from interactive_class_def import DoorSimple, DoorLockable
-from interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
-from interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
+from dc3.class_std.invisible_class_def import Invisible
+from dc3.class_std.base_class_def import Writing, ViewOnly
+from dc3.class_std.room_class_def import Room
+from dc3.class_std.item_class_def import Item, Food, Liquid, Garment, Weapon
+from dc3.class_std.interactive_class_def import DoorSimple, DoorLockable
+from dc3.class_std.interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
+from dc3.class_std.interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from switch_class_def import LeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
 from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
 		SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
@@ -21,7 +21,7 @@ from result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiv
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
 		TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
 from mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
-from creature_class_def import Creature
+from dc3.class_std.creature_class_def import Creature
 from gs_class_def import GameState
 from map_class_def import Map
 

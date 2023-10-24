@@ -5,7 +5,7 @@
 
 ### import
 import random
-from base_class_def import ViewOnly
+from dc3.class_std.base_class_def import ViewOnly
 from static_gbl import descript_dict
 
 ### local functions

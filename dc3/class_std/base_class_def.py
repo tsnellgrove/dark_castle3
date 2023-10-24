@@ -6,7 +6,7 @@
 
 ### import
 from static_gbl import descript_dict
-from invisible_class_def import Invisible
+from dc3.class_std.invisible_class_def import Invisible
 
 
 class Writing(Invisible):
