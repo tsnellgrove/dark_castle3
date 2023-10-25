@@ -13,14 +13,14 @@ from dc3.class_std.item_class_def import Item, Food, Liquid, Garment, Weapon
 from dc3.class_std.interactive_class_def import DoorSimple, DoorLockable
 from dc3.class_std.interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
 from dc3.class_std.interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
-from switch_class_def import LeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
-from cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
+from dc3.class_mach.switch_class_def import LeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
+from dc3.class_mach.cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
 		SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
 		StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond, InRoomCond, InWorldStateCond)
-from result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
+from dc3.class_mach.result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
 		TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
-from mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
+from dc3.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from dc3.class_std.creature_class_def import Creature
 from gs_class_def import GameState
 from map_class_def import Map

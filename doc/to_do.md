@@ -213,8 +213,8 @@ Version 3.79 Goals
 	- INPROC: based on diagram, group modules together into 'dc3' dir
 		- DONE: app_main = __init__.py, app_main, start_up
 		- DONE: app_turn = __init__.py, interp, validate, pre_act, cmd_exe, post_act, score, auto_act, end
-		- INPROC: class_std = __init__.py, Invisible, Base, Item, Interactive, Room, Creature
-		- TBD: class_mach = __init__.py, Switches, Mach, Cond, Result
+		- DONE: class_std = __init__.py, Invisible, Base, Item, Interactive, Room, Creature
+		- DONE: class_mach = __init__.py, Switches, Mach, Cond, Result
 		- TBD: class_gs = __init__.py, GameState, Map
 		- TBD: persist = __init__.py, def_pkl, sav_pkl
 		- TBD: tools = mk_def_pkl
