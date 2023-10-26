@@ -8,7 +8,7 @@ import copy
 from dc3.class_std.item_class_def import Item
 from dc3.class_std.invisible_class_def import Invisible
 from dc3.class_std.base_class_def import ViewOnly
-from static_gbl import descript_dict
+from dc3.data.static_gbl import descript_dict
 from dc3.class_std.interactive_class_def import ContainerFixedSimple, Seat
 
 ### classes

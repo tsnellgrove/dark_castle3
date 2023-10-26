@@ -6,7 +6,7 @@
 ### import
 import random
 from dc3.class_std.base_class_def import ViewOnly
-from static_gbl import descript_dict
+from dc3.data.static_gbl import descript_dict
 
 ### local functions
 def attack_obj_category(obj, creature):

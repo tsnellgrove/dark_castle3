@@ -6,7 +6,7 @@
 
 ### imports ###
 import math
-from static_gbl import descript_dict
+from dc3.data.static_gbl import descript_dict
 
 titles_dict = {
 	-10: 'Burt the Best Forgotten',

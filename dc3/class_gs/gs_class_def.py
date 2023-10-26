@@ -6,7 +6,7 @@
 
 ### import
 import random
-from static_gbl import descript_dict, static_dict
+from dc3.data.static_gbl import descript_dict, static_dict
 
 ### classes
 class GameState(object):

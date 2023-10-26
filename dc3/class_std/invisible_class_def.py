@@ -5,7 +5,7 @@
 
 ### import
 import random
-from static_gbl import descript_dict
+from dc3.data.static_gbl import descript_dict
 
 dir_err_dict = {
 	'dir_err_0' : "Ouch! Burt, stop walking into walls!",

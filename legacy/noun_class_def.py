@@ -6,7 +6,7 @@
 
 ### import
 import random
-from static_gbl import descript_dict, static_dict
+from dc3.data.static_gbl import descript_dict, static_dict
 from dc3.class_std.base_class_def import Invisible, Writing, ViewOnly
 from legacy.misc_class_def import Liquid
 from dc3.class_std.room_class_def import Room

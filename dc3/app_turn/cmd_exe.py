@@ -6,7 +6,7 @@
 
 ### import statements ###
 import traceback
-from static_gbl import descript_dict, static_dict
+from dc3.data.static_gbl import descript_dict, static_dict
 
 ### execute commands based on case ###
 def cmd_execute(active_gs, case, word_lst):

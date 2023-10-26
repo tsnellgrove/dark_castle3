@@ -22,8 +22,8 @@ from dc3.class_mach.result_class_def import (BufferOnlyResult, BufferAndEndResul
 		TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
 from dc3.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from dc3.class_std.creature_class_def import Creature
-from gs_class_def import GameState
-from map_class_def import Map
+from dc3.class_gs.gs_class_def import GameState
+from dc3.class_gs.map_class_def import Map
 
 # *** object instantiation - starting state ***
 

@@ -215,10 +215,13 @@ Version 3.79 Goals
 		- DONE: app_turn = __init__.py, interp, validate, pre_act, cmd_exe, post_act, score, auto_act, end
 		- DONE: class_std = __init__.py, Invisible, Base, Item, Interactive, Room, Creature
 		- DONE: class_mach = __init__.py, Switches, Mach, Cond, Result
-		- TBD: class_gs = __init__.py, GameState, Map
-		- TBD: persist = __init__.py, def_pkl, sav_pkl
+		- DONE: class_gs = __init__.py, GameState, Map
+		- DONE: data = __init__.py, static_gbl
 		- TBD: tools = mk_def_pkl
-		- TBD: <root> = __init__.py, web_main, static_gbl, doc.md
+		- TBD: <root> = __init__.py, web_main, doc.md
+		- TBD: move pkls to 'data' and rename
+			- TBD: def_pkl
+			- TBD: sav_pkl
 	- DONE: start learning about python packages
 	- TBD: first pkg: /dc3/app_main
 
