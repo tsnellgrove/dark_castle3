@@ -217,7 +217,8 @@ Version 3.79 Goals
 		- DONE: class_mach = __init__.py, Switches, Mach, Cond, Result
 		- DONE: class_gs = __init__.py, GameState, Map
 		- DONE: data = __init__.py, static_gbl
-		- TBD: tools = mk_def_pkl
+		- INPROC: tools = mk_def_pkl
+			- INPROC: solve "No module named 'dc3'" (see dc3/tools/test_import.py)
 		- TBD: <root> = __init__.py, web_main, doc.md
 		- TBD: move pkls to 'data' and rename
 			- TBD: def_pkl
