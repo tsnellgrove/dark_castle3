@@ -5,6 +5,9 @@
 
 
 # import statements
+import sys
+sys.path.append('/Users/tas/Documents/Python/dark_castle3')
+
 import pickle
 from dc3.class_std.invisible_class_def import Invisible
 from dc3.class_std.base_class_def import Writing, ViewOnly

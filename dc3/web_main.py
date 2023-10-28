@@ -6,7 +6,8 @@
 #		integrate triggers, replicate full original, add more puzzles!
 
 ### import statements
-# from app_main import app_main
+import sys
+sys.path.append('/Users/tas/Documents/Python/dark_castle3')
 from dc3.app_main.app_main import app_main
 
 ### main routine
