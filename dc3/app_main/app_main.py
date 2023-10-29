@@ -25,7 +25,6 @@ def app_main(user_input):
 		return end_of_game, out_buff
 
 	# object list loaded from save_obj_pickle2
-# 	with open('save_obj_pickle2', 'rb') as f:
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'rb') as f:
 		master_obj_lst = pickle.load(f)
 
@@ -59,7 +58,6 @@ def app_main(user_input):
 	auto_action(active_gs)
 
 	### dump updated objects to save_obj_pickle2 ###
-# 	with open('save_obj_pickle2', 'wb') as f:
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 

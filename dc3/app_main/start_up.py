@@ -14,7 +14,6 @@ from dc3.data.static_gbl import descript_dict
 def start_me_up():
 
 	### object list loaded from default_obj_pickle ###
-#	with open('default_obj_pickle', 'rb') as f:
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/def_pkl', 'rb') as f:
 		master_obj_lst = pickle.load(f)
 
@@ -36,7 +35,6 @@ def start_me_up():
 	active_gs.buffer("There is a Front Gate to the north, a path to the south, a leap down to the moat to the east, and a leap down to the moat to the west.")
 
 	### dump updated objects to save_obj_pickle ###
-#	with open('save_obj_pickle2', 'wb') as f:
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 
