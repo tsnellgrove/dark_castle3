@@ -338,8 +338,13 @@ master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, 
 officiousness, gold_capitals, red_bandana, big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, earthen_jug, heavy_rock] # note: big_bomb & test_frog removed; glass_bottle removed
 
 # list written to pickle
-with open('default_obj_pickle', 'wb') as f:
+with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/def_pkl', 'wb') as f:
 	pickle.dump(master_obj_lst, f)
+
+
+# with open('/full/path/to/file', 'wb') as f:
+#    pickle.dump(object, f)
+
 
 # *** Test Objects ***
 
