@@ -208,7 +208,7 @@ Version 3.79 Goals
 	- DONE: app_main [start], static_gbl(), start_up, pickles, 
 	- DONE: app_main [rest]
 	- DONE: move run chain
-- INPROC: package modules based on diagram
+- DONE: package modules based on diagram
 	- IDEA: create directory structure for modules (e.g. all class definitions in a single directory)
 	- DONE: start learning about python packages
 	- DONE: first pkg: /dc3/app_main
@@ -222,9 +222,9 @@ Version 3.79 Goals
 		- DONE: tools = mk_def_pkl
 			- DONE: solve "No module named 'dc3'" (see dc3/tools/test_import.py)
 		- DONE: <root> = __init__.py, web_main, doc.md
-		- TBD: move pkls to 'data' and rename
-			- TBD: def_pkl
-			- TBD: sav_pkl
+		- DONE: move pkls to 'data' and rename
+			- DONE: def_pkl
+			- DONE: sav_pkl
 
 
 - TBD: skim / org doc
