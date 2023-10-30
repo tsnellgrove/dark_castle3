@@ -141,7 +141,12 @@ Notes:
 ##########################
 
 Version 3.79 Goals
+- General clean-up
 - Centralize doc (it's past time!)
+- Fix / unify indent
+- Create updated app diagram
+- Organize module into package
+
 
 - DONE: create a centralized doc file
 	- DONE: create doc.md file in /doc
@@ -227,15 +232,22 @@ Version 3.79 Goals
 			- DONE: sav_pkl
 
 
-- TBD: skim / org doc
+##########################
+### VERSION 3.80 START ###
+##########################
+
+Version 3.89 Goals
+- Refactor gbl_static and buffering
 
 
-*** minor bug-fix ***
+- Pre-Planning:
+	- DONE: org all descript content into one place
+	- TBD: think through goals of centralized data from tools perspective
+	- TBD: think through isolation of static vs. dynamic data
+	- TBD: think through modularization of active_gs
+	- TBD: think through desire to modularize descriptions by Creature()
+	- TBD: research how to efficiently rename active_gs.buffer() => active_gs.<x>.buffer()
 
-- TBD: make creature obj data more atomic
-	- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
-		- IDEA: obj should be a black-box
-	- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
 
 - IDEA: think through code vs. data separation for static text
 	- IDEA: imagine future adventure creation tooling where I update descriptions via a web front end
@@ -248,6 +260,58 @@ Version 3.79 Goals
 		- TBD: consolidate static_dict into descript_dict
 	- TBD: doc_string - error messages are hard to update - so I want them to be as generic as possible!
 	- Score dictionary
+	- Other dictionaries to consolidate?
+
+Rename:
+	- TBD: out_buff => output (or possibly user_output)
+
+- TBD: create a gs class (gs_active.io) for descriptions
+	- TBD: refactor buffer type commands into gs.io
+
+- TBD: refactor descript_dict (=> static_dict), autogen_dict (new) and dynamic_dict to Descript class with descript instantiation
+	- TBD: unify descript approach: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
+	- call with key and return string; will look like gs.descript(key)
+	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() )
+		- Can autogen key try be incorporated into Descript method??
+	- static_dict and autogen_dict live in class; dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
+	- Use guard pattern and check in this order
+		- 1) in dynamic_dict
+		- 2) starts with "ag_" => autogen_dict (no "try", allow failure)
+		- 3) try static_dic except f"the {obj.full_name} is simple indescribable"
+	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
+		- CANCEL: test w/ descript_dict => start with version 
+		- can compound noun methods be created?
+		- think abour 'source' and 'desination'... e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
+		- need to do a detailed mapping of what is required for success in each noun_class() method
+		- this would allow give() to become a noun class method... essentially a take() initiated by burt
+		- likewise, show() becomes an examine initiated by burt
+		- TBD: change goblin re-arm result to take() rather than put_in_hand()
+		- maybe each Creature has its own description list?
+			- desc list as creature attribute ???
+		- with a default examine() response similar to "the X is not interesting"
+
+	- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
+	- DECISION: writing perspective
+		- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
+		- in theory, any creature could be used to play the game - and each might have its own description_dict
+		- this would be fun for a short session in a single room but is not practical for extended play
+		- realistically, nearly all descriptions will be from burt's perspective
+		- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
+		- this should be enabled by mode = 'exe_creature'
+
+- TBD: refactor buffer and caching to gs.io
+- TBD: refactor GameState and dicts in static_gbl() with dunder methods (__getattr__ and __setattr__ ; see 
+
+
+# ***************** #
+
+
+*** minor bug-fix ***
+
+- TBD: make creature obj data more atomic
+	- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
+		- IDEA: obj should be a black-box
+	- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
 
 - TBD: make LeverSwitch a true MixIn
 
@@ -268,6 +332,7 @@ Version 3.79 Goals
 	- IDEA: the idea here is that narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
 	- DECISION: use fake_door for now and swap on goblin death
 	- RECONSIDER: 'take axe' case is not easy to fake out... maybe I do need an interupt() module after all??
+	- Maybe just 'x axe' case?
 - TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
 
 - TBD: update get_hand_item() to return None if hand_list is empty
@@ -277,9 +342,8 @@ Version 3.79 Goals
 		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
 
 - TBD: naming updates:
-	- TBD: re-name 'wrapper' to 'app_main'
-	- TBD: update pickle names
-	- TBD: out_buff => output (or possibly user_output)
+	- DONE: re-name 'wrapper' to 'app_main'
+	- DONE: update pickle names
 	- TBD: possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
 
 - TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
@@ -295,6 +359,7 @@ Version 3.79 Goals
 	- eliminate active_gs.move_dec() ?
 	- 'try... except' standard descriptions for examine() method (similar to Warnings) (???)
 
+- TBD: reveiw / update / finalize doc file
 
 *** story-driven updates ***
 
@@ -393,11 +458,9 @@ Version 3.79 Goals
 
 - rename active_gs to gs
 - modularize remaining GameState class and declarations (???)
-- create a class for descriptions
 
 - TBD: rename active_gs => gs
 - TBD: perhaps Map, Score, and Descript are classes w/ static dicts in mehod / class and actual obj in gs attributes
-- TBD: refactor buffer type commands into gs.io
 - Refactor dicts
 	- TBD: refactor active_gs.map
 		- gs will have map as an attribute
@@ -409,40 +472,10 @@ Version 3.79 Goals
 			- use dict keys to search for item in game world (see score() )
 			- return room burt is in
 
-- TBD: refactor descript_dict (=> static_dict), autogen_dict (new) and dynamic_dict to Descript class with descript instantiation
-	- TBD: unify descript approach: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
-	- call with key and return string; will look like gs.descript(key)
-	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() )
-		- Can autogen key try be incorporated into Descript method??
-	- static_dict and autogen_dict live in class; dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
-	- Use guard pattern and check in this order
-		- 1) in dynamic_dict
-		- 2) starts with "ag_" => autogen_dict (no "try", allow failure)
-		- 3) try static_dic except f"the {obj.full_name} is simple indescribable"
-	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
-		- CANCEL: test w/ descript_dict => start with version 
-		- can compound noun methods be created?
-		- think abour 'source' and 'desination'... e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
-		- need to do a detailed mapping of what is required for success in each noun_class() method
-		- this would allow give() to become a noun class method... essentially a take() initiated by burt
-		- likewise, show() becomes an examine initiated by burt
-		- TBD: change goblin re-arm result to take() rather than put_in_hand()
-		- maybe each Creature has its own description list?
-			- desc list as creature attribute ???
-		- with a default examine() response similar to "the X is not interesting"
 	- TBD: auto-gen keys
 		- TBD: consider auto-gen keys for all verb methods (probably not)
 		- TBD: Organize auto-gen keys together
 		- TBD: consider creating a separate dict for autogen keys
-
-	- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
-	- DECISION: writing perspective
-		- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
-		- in theory, any creature could be used to play the game - and each might have its own description_dict
-		- this would be fun for a short session in a single room but is not practical for extended play
-		- realistically, nearly all descriptions will be from burt's perspective
-		- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
-		- this should be enabled by mode = 'exe_creature'
 
 - TBD: refactor score
 	- TBD: determine max_score from summ of all possible scores?
@@ -452,8 +485,7 @@ Version 3.79 Goals
 	- TBD: link front_gate score to opening door
 - TBD: refactor hero to gs.hero
 	- TBD: get_room() method belongs to this class ?? (or pass active_gs to active_gs.map and move get_room there ??)
-- TBD: refactor buffer and caching to gs.io
-- TBD: refactor GameState and dicts in static_gbl() with dunder methods (__getattr__ and __setattr__ ; see email to self on Aug 2, 2022)
+email to self on Aug 2, 2022)
 - TBD: active_gs => gs renaming; point to same obj to start with ??
 - TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
 - TBD: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
