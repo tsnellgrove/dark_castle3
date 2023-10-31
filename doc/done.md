@@ -4455,3 +4455,100 @@ Version 3.78 Goals
 		- DONE: clean up test_chair class
 - DONE: update to v3.78
 
+
+
+##########################
+### VERSION 3.79 START ###
+##########################
+
+Version 3.79 Goals
+- General clean-up
+- Centralize doc (it's past time!)
+- Fix / unify indent
+- Create updated app diagram
+- Organize module into package
+
+
+- DONE: create a centralized doc file
+	- DONE: create doc.md file in /doc
+	- DONE: cut / paste content into doc.md
+		- DONE: web_main.py
+		- DONE: validate.py
+		- DONE: map_class_def.py
+		- DONE: invisible_class_def.py
+		- DONE: base_class_def.py
+		- DONE: item_class_def.py
+		- DONE: interactive_class_def.py
+		- DONE: room_class_def.py
+		- DONE: creature_class_def.py
+		- DONE: switch_class_def.py
+		- DONE: mach_class_def.py
+	- DONE: no doc to move
+		- DONE: app_main.py
+		- DONE: start_up.py
+		- DONE: interp.py
+		- DONE: cmd_exe.py
+		- DONE: pre_action.py
+		- DONE: post_action.py
+		- DONE: auto_action.py
+		- DONE: score.py
+		- DONE: ending.py
+		- DONE: mk_def_pkl.py
+		- DONE: static_gbl.py
+		- DONE: gs_class_def.py
+		- DONE: cond_class_def.py
+		- DONE: result_class_def.py
+- DONE: Fix indent in all modules! (way past time!!)
+	- DONE: app_main.py
+	- DONE: auto_action.py
+	- DONE: cond_class_def.py
+	- DONE: ending.py
+	- DONE: gs_class_def.py
+	- DONE: interp.py 
+	- DONE: mach_class_def.py
+	- DONE: mk_def_pkl.py
+	- DONE: post_action.py
+	- DONE: pre_action.py
+	- DONE: result_class_def.py
+	- DONE: score.py
+	- DONE: start_up.py
+	- DONE: static_gbl.py
+	- DONE: web_main.py
+- DONE: don't need to fix
+	- DONE: base_class_def.py
+	- DONE: cmd_exe.py
+	- DONE: creature_class_def.py
+	- DONE: interctive_class_def.py
+	- DONE: invisible_class_def.py
+	- DONE: item_class_def.py
+	- DONE: map_class_def.py
+	- DONE: room_class_def.py
+	- DONE: switch_class_def.py
+	- DONE: validate.py
+	- DONE: web_main.py
+- DONE: diagram modules
+	- DONE: in web_main() => while not end_of_game:
+	- DONE: in app_main() rename wrapper method to app_main()
+	- DONE: comment clean-up
+	- DONE: web_main, class_def modules, mk_def_pkl()
+	- DONE: app_main [start], static_gbl(), start_up, pickles, 
+	- DONE: app_main [rest]
+	- DONE: move run chain
+- DONE: package modules based on diagram
+	- IDEA: create directory structure for modules (e.g. all class definitions in a single directory)
+	- DONE: start learning about python packages
+	- DONE: first pkg: /dc3/app_main
+	- INPROC: based on diagram, group modules together into 'dc3' dir
+		- DONE: app_main = __init__.py, app_main, start_up
+		- DONE: app_turn = __init__.py, interp, validate, pre_act, cmd_exe, post_act, score, auto_act, end
+		- DONE: class_std = __init__.py, Invisible, Base, Item, Interactive, Room, Creature
+		- DONE: class_mach = __init__.py, Switches, Mach, Cond, Result
+		- DONE: class_gs = __init__.py, GameState, Map
+		- DONE: data = __init__.py, static_gbl
+		- DONE: tools = mk_def_pkl
+			- DONE: solve "No module named 'dc3'" (see dc3/tools/test_import.py)
+		- DONE: <root> = __init__.py, web_main, doc.md
+		- DONE: move pkls to 'data' and rename
+			- DONE: def_pkl
+			- DONE: sav_pkl
+
