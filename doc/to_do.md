@@ -169,6 +169,9 @@ Rename:
 	- Score dictionary
 	- Other dictionaries to consolidate?
 
+- THINKING:
+	- want an i.o. subclass that stores dyn descriptsions (gs today) and had methods to get descriptions (in base() today) / dyn-descripts (in gs today) and also performs all buffering (in gs today); Would point to universal, centralized static dict (static_gbl)
+
 
 - TBD: refactor descript_dict (=> static_dict), autogen_dict (new) and dynamic_dict to Descript class with descript instantiation; i.e. create a gs class (gs_active.io) for descriptions
 	- TBD: refactor buffer type commands into gs.io
