@@ -146,6 +146,7 @@ Version 3.89 Goals
 
 - Pre-Planning:
 	- DONE: org all descript content into one place
+	- TBD: decide whether to use __getattr__ (link): https://stackoverflow.com/questions/10761779/when-to-use-getattr
 	- TBD: think through goals of centralized data from tools perspective
 	- TBD: think through isolation of static vs. dynamic data
 	- TBD: think through modularization of active_gs
@@ -154,7 +155,9 @@ Version 3.89 Goals
 
 
 Rename:
-	- TBD: out_buff => output (or possibly user_output)
+- TBD: out_buff => output (or possibly user_output)
+
+- TBD: should static_dict actually be a tupple / namedtupple?
 
 - IDEA: think through code vs. data separation for static text
 	- IDEA: imagine future adventure creation tooling where I update descriptions via a web front end
@@ -169,22 +172,33 @@ Rename:
 	- Score dictionary
 	- Other dictionaries to consolidate?
 
-- THINKING:
-	- want an i.o. subclass that stores dyn descriptsions (gs today) and had methods to get descriptions (in base() today) / dyn-descripts (in gs today) and also performs all buffering (in gs today); Would point to universal, centralized static dict (static_gbl)
+- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
+	- DECISION: writing perspective (need to update doc)
+		- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
+		- in theory, any creature could be used to play the game - and each might have its own description_dict
+		- this would be fun for a short session in a single room but is not practical for extended play
+		- realistically, nearly all descriptions will be from burt's perspective
+		- but in some cases creatures will use methods to take actions and burt will *obeserve* their actions
+		- this should be enabled by mode = 'exe_creature'
 
-
-- TBD: refactor descript_dict (=> static_dict), autogen_dict (new) and dynamic_dict to Descript class with descript instantiation; i.e. create a gs class (gs_active.io) for descriptions
-	- TBD: refactor buffer type commands into gs.io
-
-	- TBD: unify descript approach: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
+- TBD: unify descript approach: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
 	- call with key and return string; will look like gs.descript(key)
 	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() )
-		- Can autogen key try be incorporated into Descript method??
-	- static_dict and autogen_dict live in class; dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
+	- CANCEL: refactor descript_dict (=> static_dict), autogen_dict (new) and dynamic_dict to Descript class with descript instantiation; i.e. create a gs class (gs_active.io) for descriptions
+	- Can autogen key try be incorporated into Descript method??
+
+- i.o. sub-class:
+	- want an i.o. subclass that stores dyn descriptsions (gs today) and had methods to get descriptions (in base() today) / dyn-descripts (in gs today) and also performs all buffering (in gs today); Would point to universal, centralized static dict (static_gbl)
+	- TBD: refactor buffer type commands into gs.io
+	- TBD: refactor buffer and caching to gs.io
+
+- static_dict and autogen_dict live in class; dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
 	- Use guard pattern and check in this order
 		- 1) in dynamic_dict
 		- 2) starts with "ag_" => autogen_dict (no "try", allow failure)
 		- 3) try static_dic except f"the {obj.full_name} is simple indescribable"
+
+- TBD: refactor GameState and dicts in static_gbl() with dunder methods (__getattr__ and __setattr__ ; see 
 	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (no set)
 		- CANCEL: test w/ descript_dict => start with version 
 		- can compound noun methods be created?
@@ -197,17 +211,9 @@ Rename:
 			- desc list as creature attribute ???
 		- with a default examine() response similar to "the X is not interesting"
 
-	- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
-	- DECISION: writing perspective
-		- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
-		- in theory, any creature could be used to play the game - and each might have its own description_dict
-		- this would be fun for a short session in a single room but is not practical for extended play
-		- realistically, nearly all descriptions will be from burt's perspective
-		- but in some cases creatures will use methods to take actions and burt will *obeserve* there actions
-		- this should be enabled by mode = 'exe_creature'
 
-- TBD: refactor buffer and caching to gs.io
-- TBD: refactor GameState and dicts in static_gbl() with dunder methods (__getattr__ and __setattr__ ; see 
+
+
 
 
 # ***************** #
