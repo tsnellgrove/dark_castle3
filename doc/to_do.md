@@ -159,33 +159,40 @@ Rename:
 
 - TBD: should static_dict actually be a tupple / namedtupple?
 
-- IDEA: think through code vs. data separation for static text
+- TBD: centralize all static data into static_gbl.py
+	- IDEA: think through code vs. data separation for static text
 	- IDEA: imagine future adventure creation tooling where I update descriptions via a web front end
 	- IDEA: I won't want all the description in a DB - that's too much overhead...
 	- IDEA: But I will want all descriptions in one big centralized dictionary for ease of access & update
-	- IDEA: to this end, consider the following:
-		- TBD: move interp() help_dict back to static_gbl() descript_dict
+	- INPROC: to this end, investigate centralizing the following dicts:
 		- DONE: consolidate val_err_dict from validate() back to static_gbl() descript_dict
+		- TBD: move interp() help_dict back to static_gbl() descript_dict
 		- TBD: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
 		- TBD: consolidate static_dict into descript_dict
-	- TBD: doc_string - error messages are hard to update - so I want them to be as generic as possible!
-	- Score dictionary
-	- Other dictionaries to consolidate?
+		- TBD: Score dictionary
+		- TBD: Other dictionaries to consolidate?
+	- TBD: [DOC] error messages are hard to update - so I want them to be as generic as possible!
 
-- how can I make descript_dict modular so that other dicts can be chosen (if I want to temporarily tell adventure from another persepctive)
-	- DECISION: writing perspective (need to update doc)
-		- With burt being a creature and all methods being rewritten to work with the Creature class, we have a choice
-		- in theory, any creature could be used to play the game - and each might have its own description_dict
+- IDEA: should I make descript_dict modular so that other dicts can be chosen? 
+	IDEA: helpful if I want to temporarily tell adventure from another persepctive
+	- TBD: [DOC] writing perspective (need to update doc):
+		- burt being a creature and all methods being rewritten to work with Creature class, we have a choice
+		- in theory, any creature could be used to play the game - each might have its own description_dict
 		- this would be fun for a short session in a single room but is not practical for extended play
 		- realistically, nearly all descriptions will be from burt's perspective
 		- but in some cases creatures will use methods to take actions and burt will *obeserve* their actions
-		- this should be enabled by mode = 'exe_creature'
+		- CANCEL: this should be enabled by mode = 'exe_creature'
+		- as part of making verb methods 'symetric', 'creature' should be checked for in each method
 
-- TBD: unify descript approach: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
+- TBD: unify descript approach: 
+	- TBD: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
 	- call with key and return string; will look like gs.descript(key)
-	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() )
-	- CANCEL: refactor descript_dict (=> static_dict), autogen_dict (new) and dynamic_dict to Descript class with descript instantiation; i.e. create a gs class (gs_active.io) for descriptions
-	- Can autogen key try be incorporated into Descript method??
+	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() ) => consolidate to central dict
+	- CANCEL: Can autogen key try be incorporated into Descript method??
+		- CANCEL: refactor descript_dict 
+		- CANCEL: idea was to store (static_dict), autogen_dict (new) and dynamic_dict in Descript class
+		- CANCEL: with descript instantiation; i.e. create a gs class (gs_active.io) for descriptions
+		- CANCEL: have decided to keep static_gbl.py independent
 
 - i.o. sub-class:
 	- want an i.o. subclass that stores dyn descriptsions (gs today) and had methods to get descriptions (in base() today) / dyn-descripts (in gs today) and also performs all buffering (in gs today); Would point to universal, centralized static dict (static_gbl)
@@ -210,9 +217,6 @@ Rename:
 		- maybe each Creature has its own description list?
 			- desc list as creature attribute ???
 		- with a default examine() response similar to "the X is not interesting"
-
-
-
 
 
 
