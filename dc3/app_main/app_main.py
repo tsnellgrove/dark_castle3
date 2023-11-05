@@ -21,8 +21,8 @@ def app_main(user_input):
 
 	# start-up case
 	if user_input == "xyzzy42":
-		end_of_game, out_buff = start_me_up()
-		return end_of_game, out_buff
+		end_of_game, user_output = start_me_up()
+		return end_of_game, user_output
 
 	# object list loaded from save_obj_pickle2
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'rb') as f:

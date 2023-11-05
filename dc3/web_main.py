@@ -19,8 +19,8 @@ while not end_of_game:
 		start_of_game = False
 	else:
 		user_input = input('Type your command: ')
-	end_of_game, output = app_main(user_input)
-	print(output)
+	end_of_game, user_output = app_main(user_input)
+	print(user_output)
 print("THANKS FOR PLAYING!!")
 
 
