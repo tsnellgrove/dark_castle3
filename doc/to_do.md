@@ -36,7 +36,7 @@ Version 3.80 Goals
 	- INPROC: to this end, investigate centralizing the following dicts:
 		- DONE: consolidate val_err_dict from validate() back to static_gbl() descript_dict
 		- DONE: move interp() help_dict back to static_gbl() descript_dict
-		- TBD: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
+		- DONE: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
 		- TBD: consolidate static_dict into descript_dict
 		- TBD: Score dictionary
 		- TBD: Other dictionaries to consolidate?
