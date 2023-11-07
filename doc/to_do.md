@@ -28,7 +28,7 @@ Version 3.80 Goals
 
 - DONE: in app_main, rename out_buff => user_output
 
-- TBD: centralize all static data into static_gbl.py
+- INPROC: centralize all static data into static_gbl.py
 	- IDEA: think through code vs. data separation for static text
 	- IDEA: imagine future adventure creation tooling where I update descriptions via a web front end
 	- IDEA: I won't want all the description in a DB - that's too much overhead...
@@ -41,6 +41,7 @@ Version 3.80 Goals
 		- TBD: Score dictionary
 		- TBD: Other dictionaries to consolidate?
 	- TBD: [DOC] error messages are hard to update - so I want them to be as generic as possible!
+	- TBD: [DOC] tooling plan / central dict
 
 - TBD: refactor GameState and dicts in static_gbl() with dunder methods ( __getattr__ and __setattr__ )
 	- LINK: see: https://stackoverflow.com/questions/10761779/when-to-use-getattr

@@ -32,6 +32,13 @@ descript_dict = {
 	'misc_err_3' : "Burt, you've said some strange things over the years but that was a doosey!",
 	'misc_err_4' : "Burt! What would your Nana say if she heard you speaking like that!?",
 
+	### direction errors ###
+	'dir_err_0' : "Ouch! Burt, stop walking into walls!",
+	'dir_err_1' : "Ouch! You have walked into a wall.",
+	'dir_err_2' : "There's no exit that way.",
+	'dir_err_3' : "You can't go that way.",
+	'dir_err_4' : "And exactly how do you propose to do that?",
+
 	### help commands ###
 	'help' : "Help syntax = 'help <option>'. Help options = 'basics', 'abbreviations', 'adjectives', 'articles', 'attack', 'creatures', 'debug', 'one-word-commands', prepositions', 'read', or 'verbs'.",
 	'help_basics' : "Objects you can examine and interact with are capitalized. Use 'read' (not 'examine') to read text you find written on objects. You can 'take' one object that you can see into your hand at a time from the room, a container, your backpack, or from being worn. Your other hand is holding your light source. In many cases you must be holding an object in your hand in order to act uppon it (e.g. 'unlock', drop', 'eat', 'put', 'wear', 'drink'). If you are already holding an item when you take something else, the original item you were holding is automatically transferred into your backpack. You can view what you're carying using 'inventory'. Use 'look' to get a description of the room you're in. Type 'quit' to quit.  Start all multi-word commands with a verb.",
