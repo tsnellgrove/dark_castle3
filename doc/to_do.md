@@ -38,6 +38,11 @@ Version 3.80 Goals
 		- DONE: move interp() help_dict back to static_gbl() descript_dict
 		- DONE: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
 		- TBD: consolidate static_dict into descript_dict
+			- cmd_exe.py
+			- gs_class_def.py
+			- result_class_def.py
+			- static_gbl.py
+		- TBD: End dict
 		- TBD: Score dictionary
 		- TBD: Other dictionaries to consolidate?
 	- TBD: [DOC] error messages are hard to update - so I want them to be as generic as possible!
@@ -99,6 +104,10 @@ Version 3.80 Goals
 
 
 # *** FUTURE TO DO *** #
+
+*** end sub-class ***
+
+*** score sub-class ***
 
 
 *** minor bug-fix ***
