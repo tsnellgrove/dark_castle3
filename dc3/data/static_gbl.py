@@ -12,12 +12,17 @@
 
 ### static dictionary ###
 static_dict = {
-	'version' : '3.77',
+	'version' : '3.79',
 	'max_score' : 75,
 }
 
 ### description dict ###
 descript_dict = {
+
+	### universal constants ###
+	'version' : '3.79',
+	'max_score' : 75,
+
 
 	#### ONE WORD & ERRORS ####
 
