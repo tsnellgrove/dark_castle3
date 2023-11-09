@@ -10,12 +10,6 @@
 ### (because static_init => class_def) ###
 
 
-### static dictionary ###
-static_dict = {
-	'version' : '3.79',
-	'max_score' : 75,
-}
-
 ### description dict ###
 descript_dict = {
 

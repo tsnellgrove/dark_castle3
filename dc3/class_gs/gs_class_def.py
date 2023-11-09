@@ -6,7 +6,7 @@
 
 ### import
 import random
-from dc3.data.static_gbl import descript_dict, static_dict
+from dc3.data.static_gbl import descript_dict
 
 ### classes
 class GameState(object):
@@ -68,7 +68,7 @@ class GameState(object):
 
 	def print_score(self):
 		output1 = ("Your score is now " + str(self.get_score()))
-		output2 = (" out of " + str(static_dict['max_score']))
+		output2 = (" out of " + str(descript_dict['max_score']))
 		self.buffer(output1 + output2)
 
 	### game moves counter ###

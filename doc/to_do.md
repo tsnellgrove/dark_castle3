@@ -37,11 +37,11 @@ Version 3.80 Goals
 		- DONE: consolidate val_err_dict from validate() back to static_gbl() descript_dict
 		- DONE: move interp() help_dict back to static_gbl() descript_dict
 		- DONE: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
-		- INPROC: consolidate static_dict into descript_dict
+		- DONE: consolidate static_dict into descript_dict
 			- DONE: static_gbl.py
 			- DONE: cmd_exe.py
-			- TBD: gs_class_def.py
-			- TBD: result_class_def.py
+			- DONE: gs_class_def.py
+			- DONE: result_class_def.py
 		- TBD: End dict
 		- TBD: Score dictionary
 		- TBD: Other dictionaries to consolidate?

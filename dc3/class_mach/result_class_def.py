@@ -5,7 +5,7 @@
 
 
 ### import
-from dc3.data.static_gbl import descript_dict, static_dict
+from dc3.data.static_gbl import descript_dict
 # from dc3.app_turn.cmd_exe import cmd_execute
 
 
