@@ -18,6 +18,19 @@ descript_dict = {
 	'max_score' : 75,
 
 
+	'titles_by_score' : {
+		-10: 'Burt the Best Forgotten',
+		0: 'Burt the Baker', # was 'Burt the Boneheaded'
+		10: 'Burt the Beginner',
+		20: 'Burt the Better Than Average',
+		30: 'Burt the Brawny',
+		40: 'Burt the Brainy',
+		50: 'Burt the Benevolent',
+		60: 'Burt the Breathtaking',
+		70: 'Burt the Bodacious',
+		80: 'Burt the Bold, King of Bright Castle'
+	},
+
 	#### ONE WORD & ERRORS ####
 
 	### one-word commands - non-objeects ###

@@ -42,7 +42,7 @@ Version 3.80 Goals
 			- DONE: cmd_exe.py
 			- DONE: gs_class_def.py
 			- DONE: result_class_def.py
-		- TBD: End dict
+		- DONE: End dict
 		- TBD: Score dictionary
 		- TBD: Other dictionaries to consolidate?
 	- TBD: [DOC] error messages are hard to update - so I want them to be as generic as possible!

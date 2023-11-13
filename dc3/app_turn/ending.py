@@ -8,18 +8,6 @@
 import math
 from dc3.data.static_gbl import descript_dict
 
-titles_dict = {
-	-10: 'Burt the Best Forgotten',
-	0: 'Burt the Baker', # was 'Burt the Boneheaded'
-	10: 'Burt the Beginner',
-	20: 'Burt the Better Than Average',
-	30: 'Burt the Brawny',
-	40: 'Burt the Brainy',
-	50: 'Burt the Benevolent',
-	60: 'Burt the Breathtaking',
-	70: 'Burt the Bodacious',
-	80: 'Burt the Bold, King of Bright Castle'
-}
 
 ### end routine ###
 def end(active_gs):
@@ -33,7 +21,7 @@ def end(active_gs):
 		title_score = 0
 	else:
 		title_score = math.ceil(score / 10) * 10
-	title = titles_dict[title_score]
+	title = descript_dict['titles_by_score'][title_score]
 
 	if game_ending == 'death':
 		active_gs.buffer("You have died.")
