@@ -43,7 +43,10 @@ Version 3.80 Goals
 			- DONE: gs_class_def.py
 			- DONE: result_class_def.py
 		- DONE: End dict
-		- TBD: Score dictionary
+		- INPROC: Score dictionary
+			- DONE: move score_val_dict to descript_dict
+			- INPROC: update score routines to call descript_dict
+			- TBD: migrate lists to descript_dict
 		- TBD: Other dictionaries to consolidate?
 	- TBD: [DOC] error messages are hard to update - so I want them to be as generic as possible!
 	- TBD: [DOC] tooling plan / central dict
@@ -106,6 +109,10 @@ Version 3.80 Goals
 
 
 # *** FUTURE TO DO *** #
+
+*** score sub-class ***
+- TBD: update score achievement dict in gs => list that starts empty and holds achieved score items
+- TBD: figure out way to capture custom score pts via standard lists that reside in descript_dict
 
 *** end sub-class ***
 

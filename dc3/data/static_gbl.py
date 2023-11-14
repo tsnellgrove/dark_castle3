@@ -31,6 +31,20 @@ descript_dict = {
 		80: 'Burt the Bold, King of Bright Castle'
 	},
 
+	'score_val' : {
+		'rusty_key' : 5,
+		'main_hall' : 5,
+		'shiny_sword' : 10,
+		'throne_room' : 10,
+		'silver_key' : 5,
+		'kinging_scroll' : 5,
+		'royal_crown' : 10,
+		'hedgehog_broach' : 5,
+		'hedgehog_attack' : -20,
+		'game_won' : 15,
+		'goblin_dead' : 5
+	},
+
 	#### ONE WORD & ERRORS ####
 
 	### one-word commands - non-objeects ###

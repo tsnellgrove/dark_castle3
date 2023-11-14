@@ -5,6 +5,7 @@
 
 
 ### import statements
+from dc3.data.static_gbl import descript_dict
 
 ### score dictionaries and lists ###
 score_val_dict = {
@@ -46,7 +47,8 @@ def score(active_gs):
 	for score_key in item_score_lst:
 		if (not creature.hand_is_empty() and creature.get_hand_item().name == score_key
 				and active_gs.get_points_earned_state(score_key) == False):
-			points = score_val_dict[score_key]
+#			points = score_val_dict[score_key]
+			points = descript_dict['score_val'][score_key]
 			active_gs.update_score(points)
 			active_gs.set_points_earned_state(score_key, True)
 			active_gs.print_score()
