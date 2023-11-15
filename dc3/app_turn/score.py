@@ -59,7 +59,8 @@ def score(active_gs):
 		if len(worn_lst) > 0:
 			for garment in worn_lst:
 				if (garment.name == score_key and active_gs.get_points_earned_state(score_key) == False):
-					points = score_val_dict[score_key]
+#					points = score_val_dict[score_key]
+					points = descript_dict['score_val'][score_key]
 					active_gs.update_score(points)
 					active_gs.set_points_earned_state(score_key, True)
 					active_gs.print_score()
@@ -67,7 +68,8 @@ def score(active_gs):
 	# increment room scores
 	for score_key in room_score_lst:
 		if (room_obj.name == score_key and active_gs.get_points_earned_state(score_key) == False):
-			points = score_val_dict[score_key]
+#			points = score_val_dict[score_key]
+			points = descript_dict['score_val'][score_key]
 			active_gs.update_score(points)
 			active_gs.set_points_earned_state(score_key, True)
 			active_gs.print_score()
