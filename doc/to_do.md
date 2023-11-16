@@ -45,8 +45,10 @@ Version 3.80 Goals
 		- DONE: End dict
 		- INPROC: Score dictionary
 			- DONE: move score_val_dict to descript_dict
-			- INPROC: update score routines to call descript_dict
-			- TBD: migrate lists to descript_dict
+			- DONE: update score routines to call descript_dict
+			- TBD: migrate item list to descript_dict
+			- TBD: migrate room list to descript_dict
+			- TBD: migrate wear list to descript_dict
 		- TBD: Other dictionaries to consolidate?
 	- TBD: [DOC] error messages are hard to update - so I want them to be as generic as possible!
 	- TBD: [DOC] tooling plan / central dict
