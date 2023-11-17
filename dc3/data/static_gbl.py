@@ -45,6 +45,16 @@ descript_dict = {
 		'goblin_dead' : 5
 	},
 
+
+	'item_score_lst' : [
+		'rusty_key',
+		'shiny_sword',
+		'silver_key',
+		'kinging_scroll',
+		'hedgehog_broach'
+	],
+
+
 	#### ONE WORD & ERRORS ####
 
 	### one-word commands - non-objeects ###

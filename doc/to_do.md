@@ -47,7 +47,7 @@ Version 3.80 Goals
 			- DONE: move score_val_dict to descript_dict
 			- DONE: update score routines to call descript_dict
 			- TBD: migrate item list to descript_dict
-			- TBD: migrate room list to descript_dict
+			- DONE: migrate room list to descript_dict
 			- TBD: migrate wear list to descript_dict
 		- TBD: Other dictionaries to consolidate?
 	- TBD: [DOC] error messages are hard to update - so I want them to be as generic as possible!

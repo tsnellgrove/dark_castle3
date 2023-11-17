@@ -8,13 +8,6 @@
 from dc3.data.static_gbl import descript_dict
 
 ### score dictionaries and lists ###
-item_score_lst = [
-	'rusty_key',
-	'shiny_sword',
-	'silver_key',
-	'kinging_scroll',
-	'hedgehog_broach'
-]
 
 worn_score_lst = [
 	'royal_crown'
@@ -30,7 +23,7 @@ def score(active_gs):
 	creature = active_gs.hero
 
 	# increment item scores
-	for score_key in item_score_lst:
+	for score_key in descript_dict['item_score_lst']:
 		if (not creature.hand_is_empty() and creature.get_hand_item().name == score_key
 				and active_gs.get_points_earned_state(score_key) == False):
 			points = descript_dict['score_val'][score_key]
