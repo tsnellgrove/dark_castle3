@@ -54,6 +54,14 @@ descript_dict = {
 		'hedgehog_broach'
 	],
 
+	'worn_score_lst' : [
+		'royal_crown'
+	],
+
+	'room_score_lst' : [
+		'main_hall',
+		'throne_room'
+	],
 
 	#### ONE WORD & ERRORS ####
 

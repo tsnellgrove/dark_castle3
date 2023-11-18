@@ -7,16 +7,6 @@
 ### import statements
 from dc3.data.static_gbl import descript_dict
 
-### score dictionaries and lists ###
-
-worn_score_lst = [
-	'royal_crown'
-]
-
-room_score_lst = [
-	'main_hall',
-	'throne_room'
-]
 
 def score(active_gs):
 	room_obj = active_gs.get_room()
@@ -32,7 +22,7 @@ def score(active_gs):
 			active_gs.print_score()
 
 	# increment worn scores
-	for score_key in worn_score_lst:
+	for score_key in descript_dict['worn_score_lst']:
 		worn_lst = creature.worn_lst
 		if len(worn_lst) > 0:
 			for garment in worn_lst:
@@ -43,7 +33,7 @@ def score(active_gs):
 					active_gs.print_score()
 
 	# increment room scores
-	for score_key in room_score_lst:
+	for score_key in descript_dict['room_score_lst']:
 		if (room_obj.name == score_key and active_gs.get_points_earned_state(score_key) == False):
 			points = descript_dict['score_val'][score_key]
 			active_gs.update_score(points)
