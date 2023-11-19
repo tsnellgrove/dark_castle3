@@ -11,7 +11,7 @@ Version 3.80 Goals
 - Refactor gbl_static and buffering
 
 
-- Pre-Planning:
+- DONE: Pre-Planning:
 	- DONE: org all descript content into one place
 	- DONE: decide whether to use __getattr__ (link): 
 	- DONE: think through goals of centralized data from tools perspective
@@ -33,7 +33,7 @@ Version 3.80 Goals
 	- IDEA: imagine future adventure creation tooling where I update descriptions via a web front end
 	- IDEA: I won't want all the description in a DB - that's too much overhead...
 	- IDEA: But I will want all descriptions in one big centralized dictionary for ease of access & update
-	- INPROC: to this end, investigate centralizing the following dicts:
+	- DONE: to this end, investigate centralizing the following dicts:
 		- DONE: consolidate val_err_dict from validate() back to static_gbl() descript_dict
 		- DONE: move interp() help_dict back to static_gbl() descript_dict
 		- DONE: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
@@ -49,7 +49,8 @@ Version 3.80 Goals
 			- DONE: migrate item list to descript_dict
 			- DONE: migrate room list to descript_dict
 			- DONE: migrate wear list to descript_dict
-		- TBD: Other dictionaries to consolidate?
+		- DONE: check for other dictionaries to consolidate?
+			- DECISION: for now, keep interp() dicts local
 	- TBD: [DOC] error messages are hard to update - so I want them to be as generic as possible!
 	- TBD: [DOC] tooling plan / central dict
 
