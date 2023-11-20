@@ -51,8 +51,8 @@ Version 3.80 Goals
 			- DONE: migrate wear list to static_dict
 		- DONE: check for other dictionaries to consolidate?
 			- DECISION: for now, keep interp() dicts local
-	- TBD: [DOC] error messages are hard to update - so I want them to be as generic as possible!
-	- TBD: [DOC] tooling plan / central dict
+	- DONE: [DOC] error messages are hard to update - so I want them to be as generic as possible!
+	- DONE: [DOC] tooling plan / central dict
 
 - DONE: rename descript_dict => static_dict
 

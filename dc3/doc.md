@@ -141,6 +141,24 @@ Burt as an object
 		- one side effect: every method needs to either throw text on error or do something on success... we cannot take an action on failure (?) 
 
 ###############
+# static_gbl.py #
+###############
+
+static_gbl.py holds static_dict which, as the name implies, holds nearly all the static values of the game. These are mostly text descriptions for various objects but also include constants, like the game 'version', and dictionaries like 'score_val'.
+
+There are several advantages to having a centralized static dictionary:
+1) Eliminates the overhead of managing a database for values that will never change.
+2) Eventually, when I create a web interface for creating objects and descriptions, this makes it much easier to edit those static values.
+3) Isolates static from dynamic data.
+
+Historically, static_dict was once multiple dictionaries: descript_dict for object descriptions and static_dict for constants. There were also numerous local dictionaries in modules like score.py and ending.py. I eventually merged all of these into one dictionary named static_dict.
+
+It is worth noting that there are 2 main areas of static descriptions / constants that have NOT been migrated to static_dict:
+1) Error messages: for now, these remain embeded in code. This means that while it is easy to update object descriptions is is hard to update error messages... so in general error text should be as simple and broadly applicable as possible.
+2) The lists and dictionaries from interp.py. interp.py needs a major over-haul and I expect this to be easier if I can reference these locally. Once I have fully updated interp.py, I intend to centralize these elements to static_dict.
+
+
+###############
 # validate.py #
 ###############
 
