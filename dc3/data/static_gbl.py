@@ -11,7 +11,7 @@
 
 
 ### description dict ###
-descript_dict = {
+static_dict = {
 
 	### universal constants ###
 	'version' : '3.79',

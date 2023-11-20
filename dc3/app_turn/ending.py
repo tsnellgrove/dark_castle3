@@ -6,7 +6,7 @@
 
 ### imports ###
 import math
-from dc3.data.static_gbl import descript_dict
+from dc3.data.static_gbl import static_dict
 
 
 ### end routine ###
@@ -21,7 +21,7 @@ def end(active_gs):
 		title_score = 0
 	else:
 		title_score = math.ceil(score / 10) * 10
-	title = descript_dict['titles_by_score'][title_score]
+	title = static_dict['titles_by_score'][title_score]
 
 	if game_ending == 'death':
 		active_gs.buffer("You have died.")
@@ -34,7 +34,7 @@ def end(active_gs):
 	active_gs.print_score()
 	active_gs.buffer("Your title is: " + title)
 	if game_ending == 'won':
-		active_gs.buffer(descript_dict['credits'])
+		active_gs.buffer(static_dict['credits'])
 	active_gs.set_end_of_game(True)
 
 	return

@@ -305,7 +305,7 @@ dispense_panel_result.room_item = control_panel
 ### active_gs is the central store of game info ###
 active_gs = GameState(
 	'active_gs',
-	{}, # dyn_descript_dict
+	{}, # dyn_static_dict
 	{
 		'rusty_key' : False,
 		'main_hall' : False,

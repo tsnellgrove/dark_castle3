@@ -5,7 +5,7 @@
 
 
 ### import
-from dc3.data.static_gbl import descript_dict
+from dc3.data.static_gbl import static_dict
 from dc3.class_std.invisible_class_def import Invisible
 
 
@@ -14,7 +14,7 @@ class Writing(Invisible):
 		super().__init__(name)
 		self._full_name = full_name # the object name presented to the player. Typical format = "Adj Noun". First character capitalized
 		self._root_name = root_name # the one-word abreviation for the canonical adj_noun formulated name. e.g. rusty_key => key; not unique 
-		self._descript_key = descript_key # the key used to look up the object description in descript_dict
+		self._descript_key = descript_key # the key used to look up the object description in static_dict
 		""" Writing objects represent text which can be read().
 		"""
 
@@ -47,10 +47,10 @@ class Writing(Invisible):
 		"""Provides the current description of an object.
 		"""
 		try:
-			return active_gs.get_dyn_descript_dict(self.descript_key)
+			return active_gs.get_dyn_static_dict(self.descript_key)
 		except:
 			try:
-				return descript_dict[self.descript_key]
+				return static_dict[self.descript_key]
 			except:
 				return f"The {self.full_name} is simply indescribable."
 	

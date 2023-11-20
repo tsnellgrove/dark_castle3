@@ -6,7 +6,7 @@
 
 ### import statements
 from itertools import islice
-from dc3.data.static_gbl import descript_dict
+from dc3.data.static_gbl import static_dict
 
 ### interpreter function language static dictionaries & lists ###
 articles_lst = ['a', 'an', 'the']
@@ -39,7 +39,7 @@ abbreviations_dict = {
 ### help = print help info
 def help(active_gs, option):
 	if option == 'basics':
-		output = descript_dict['help_basics']
+		output = static_dict['help_basics']
 	elif option == 'verbs':
 		output = "Available verbs include: " + ', '.join(known_verbs_lst)
 	elif option == 'one-word-commands':
@@ -51,27 +51,27 @@ def help(active_gs, option):
 	elif option == 'articles':
 		output = ("The following articles are supported but not required: " + ', '.join(articles_lst))
 	elif option == 'adjectives':
-		output = descript_dict['help_adjectives']
+		output = static_dict['help_adjectives']
 	elif  option == 'abbreviations':
 		pre_out = "Available abbreviations include: "
 		for key in abbreviations_dict:
 			pre_out = pre_out + key + " = " + abbreviations_dict[key] + ", "
 		output = pre_out[:-2]
 	elif option == 'prepositions':
-		output = descript_dict['help_prepositions']
+		output = static_dict['help_prepositions']
 	elif option == 'read':
-		output = descript_dict['help_read']
+		output = static_dict['help_read']
 	elif option == 'attack':
-		output = descript_dict['help_attack']
+		output = static_dict['help_attack']
 	elif option == 'creatures':
-		output = descript_dict['help_creatures']
+		output = static_dict['help_creatures']
 	elif option == 'debug':
 		if not active_gs.state_dict['debug']:
-			output = descript_dict['help_debug_error']
+			output = static_dict['help_debug_error']
 		else:
-			output = descript_dict['help_debug'] + ', '.join(debug_verb_lst)
+			output = static_dict['help_debug'] + ', '.join(debug_verb_lst)
 	else:
-		output = descript_dict['help']
+		output = static_dict['help']
 	active_gs.buffer(output)
 
 ### root_word_count - determines if user command contains root words
@@ -168,7 +168,7 @@ def interpreter(user_input, master_obj_lst):
 
 	# handle true one-word commands
 	if len(user_input_lst) == 1 and word1 == 'help':
-		active_gs.buffer(descript_dict['help'])
+		active_gs.buffer(static_dict['help'])
 		return 'help', [word1]
 	if len(user_input_lst) == 1 and word1 in one_word_only_lst:
 		return 'tru_1word', [word1]

@@ -6,7 +6,7 @@
 ### import
 import random
 from dc3.class_std.base_class_def import ViewOnly
-from dc3.data.static_gbl import descript_dict
+from dc3.data.static_gbl import static_dict
 
 ### local functions
 def attack_obj_category(obj, creature):
@@ -365,10 +365,10 @@ class Creature(ViewOnly):
 		creature = active_gs.hero
 
 		try:
-			active_gs.buffer(descript_dict[f"{creature.name}_show_{self.name}_{obj.descript_key}"]) 
+			active_gs.buffer(static_dict[f"{creature.name}_show_{self.name}_{obj.descript_key}"]) 
 		except:
 			try:
-				active_gs.buffer(descript_dict[f"{creature.name}_show_{self.name}_default"])
+				active_gs.buffer(static_dict[f"{creature.name}_show_{self.name}_default"])
 			except:
 				active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 		return 
@@ -382,11 +382,11 @@ class Creature(ViewOnly):
 
 		# determine other creature's response
 		try:
-			active_gs.buffer(descript_dict[f"{creature.name}_give_{self.name}_{obj.descript_key}"])
+			active_gs.buffer(static_dict[f"{creature.name}_give_{self.name}_{obj.descript_key}"])
 			give_key = obj
 		except:
 			try:
-				active_gs.buffer(descript_dict[f"{creature.name}_give_{self.name}_default"])
+				active_gs.buffer(static_dict[f"{creature.name}_give_{self.name}_default"])
 				give_key = 'def_give'
 			except:
 				active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
@@ -405,7 +405,7 @@ class Creature(ViewOnly):
 
 		# Update other creature description based on gift given
 		new_descript_key = f"{creature.name}_give_{self.name}_{obj.name}_descript"
-		if new_descript_key in descript_dict:
+		if new_descript_key in static_dict:
 			self.descript_key = new_descript_key
 		return 
 
@@ -528,7 +528,7 @@ class Creature(ViewOnly):
 			lose_creature_disp = "You are"
 		else:
 			lose_creature_disp = f"The {lose_creature.full_name} is"
-		resolution_end_str = f"{lose_creature_disp} {descript_dict[result_code]} "
+		resolution_end_str = f"{lose_creature_disp} {static_dict[result_code]} "
 
 		# buffer the full 'attack resolution'
 		active_gs.buffer(f"{resolution_strt_str}{resolution_end_str}")

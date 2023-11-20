@@ -8,7 +8,7 @@
 ### import statements
 import pickle
 import random
-from dc3.data.static_gbl import descript_dict
+from dc3.data.static_gbl import static_dict
 
 ### start_me_up - gets obj from default_pkl, welcome text, sets starting values
 def start_me_up():
@@ -22,16 +22,16 @@ def start_me_up():
 	### Assign Random Secret Code ###
 	portcullis_code = random.randint(0, 7)
 	port_code_txt = "'..ode is " + str(portcullis_code) + ". Don't tell anyo..'"
-	active_gs.set_dyn_descript_dict('messy_handwriting', port_code_txt)
+	active_gs.set_dyn_static_dict('messy_handwriting', port_code_txt)
 	
 	for obj in master_obj_lst[1:]:
 		if obj.name == 'control_panel':
 			obj.mach_state = portcullis_code
 
 	### introductory text ###
-	active_gs.buffer(descript_dict["introduction"])
+	active_gs.buffer(static_dict["introduction"])
 	active_gs.buffer("*** Entrance ***")
-	active_gs.buffer(descript_dict["entrance"])
+	active_gs.buffer(static_dict["entrance"])
 	active_gs.buffer("There is a Front Gate to the north, a path to the south, a leap down to the moat to the east, and a leap down to the moat to the west.")
 
 	### dump updated objects to save_obj_pickle ###

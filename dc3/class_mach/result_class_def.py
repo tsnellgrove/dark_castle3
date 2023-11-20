@@ -5,7 +5,7 @@
 
 
 ### import
-from dc3.data.static_gbl import descript_dict
+from dc3.data.static_gbl import static_dict
 # from dc3.app_turn.cmd_exe import cmd_execute
 
 
@@ -25,7 +25,7 @@ class BufferOnlyResult(object):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(descript_dict[self.name])
+			active_gs.buffer(static_dict[self.name])
 		except:
 			pass
 		return mach_state, self.cmd_override
@@ -49,7 +49,7 @@ class BufferAndEndResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(descript_dict[self.name])
+			active_gs.buffer(static_dict[self.name])
 		except:
 			pass
 		active_gs.set_game_ending(self.ending)
@@ -67,7 +67,7 @@ class BufferAndGiveResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(descript_dict[self.name])
+			active_gs.buffer(static_dict[self.name])
 		except:
 			pass
 		creature = active_gs.hero
@@ -91,7 +91,7 @@ class AddObjToRoomResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(descript_dict[self.name])
+			active_gs.buffer(static_dict[self.name])
 		except:
 			pass
 		room_obj = active_gs.get_room()
@@ -125,7 +125,7 @@ class AddObjChgDescriptResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(descript_dict[self.name])
+			active_gs.buffer(static_dict[self.name])
 		except:
 			pass
 		room_obj = active_gs.get_room()
@@ -150,14 +150,14 @@ class AddObjToRoomAndDescriptResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(descript_dict[self.name])
+			active_gs.buffer(static_dict[self.name])
 		except:
 			pass
 		room_obj = active_gs.get_room()
 		room_obj.floor_lst_append(self.room_item)
 
 		new_descript_key = f"{room_obj.name}_{self.name}"
-		if new_descript_key in descript_dict:
+		if new_descript_key in static_dict:
 			room_obj.descript_key = new_descript_key
 
 		mach_state = True
@@ -181,7 +181,7 @@ class DoorToggleResult(BufferOnlyResult):
 			self.door_obj.is_open = True
 			descript_ending = "opens."
 		try:
-			active_gs.buffer(descript_dict[self.name] + descript_ending)
+			active_gs.buffer(static_dict[self.name] + descript_ending)
 		except:
 			pass
 
@@ -203,7 +203,7 @@ class AttackBurtResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(descript_dict[self.name])
+			active_gs.buffer(static_dict[self.name])
 		except:
 			pass
 #			cmd_execute(active_gs, '2word', [self.creature_obj, 'attack_burt'])
@@ -231,7 +231,7 @@ class StartTimerResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(descript_dict[self.name])
+			active_gs.buffer(static_dict[self.name])
 		except:
 			pass
 		self.timer_obj.start()
@@ -258,7 +258,7 @@ class TimerAndCreatureItemResult(StartTimerResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(descript_dict[self.name])
+			active_gs.buffer(static_dict[self.name])
 		except:
 			pass
 		self.timer_obj.start()
@@ -286,7 +286,7 @@ class ChgCreatureDescAndStateResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(descript_dict[self.name])
+			active_gs.buffer(static_dict[self.name])
 		except:
 			pass
 		self.creature_obj.descript_key = self.new_desc_key
@@ -314,7 +314,7 @@ class PutItemInHandResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(descript_dict[self.name])
+			active_gs.buffer(static_dict[self.name])
 		except:
 			pass
 # need to eventually change this to 'creature.take' when this is enabled
@@ -344,7 +344,7 @@ class TravelResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(descript_dict[self.name])
+			active_gs.buffer(static_dict[self.name])
 		except:
 			pass
 		room = active_gs.map.get_obj_room(self.creature, active_gs)

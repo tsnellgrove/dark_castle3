@@ -6,7 +6,7 @@
 
 ### import
 import random
-from dc3.data.static_gbl import descript_dict, static_dict
+from dc3.data.static_gbl import static_dict, static_dict
 from dc3.class_std.base_class_def import Invisible, Writing, ViewOnly
 from legacy.misc_class_def import Liquid
 from dc3.class_std.room_class_def import Room
@@ -72,7 +72,7 @@ class Writing(Invisible):
 				super().__init__(name)
 				self._full_name = full_name # the object name presented to the player. Typical format = "Adj Noun". First character capitalized
 				self._root_name = root_name # the one-word abreviation for the canonical adj_noun formulated name. e.g. rusty_key => key; not unique 
-				self._descript_key = descript_key # the key used to look up the object description in descript_dict
+				self._descript_key = descript_key # the key used to look up the object description in static_dict
 #				" Writing objects represent text which can be read().
 				
 				It may seem counter-intuitive that the first visible object class in the hierarchy is Writing - but when one remembers that all other visible objects can have Writing as an attribute the order makes sense. As the first class that Burt can interactive, Writing introduces three critical attributes:
@@ -81,7 +81,7 @@ class Writing(Invisible):
 						
 						root_name is a text string that represents the one-word "short name" for an object. The root_name for object rusty_key is 'key'. The player can refer to the object by its root_name so long as there are no other visible objects with the same root_name. root_name is used within the interpreter().
 						
-						descript_key is a text string that is used to lookup the description of an object (or in the case of the Writing class, the text of an object) in descript_dict. By default, descript_key == name (i.e. the descript_key for object rusty_key is 'rusty_key'). However, by making descript_key and independent attribute from name, we enable the descriptions (or text) associated with an object to change over time. 
+						descript_key is a text string that is used to lookup the description of an object (or in the case of the Writing class, the text of an object) in static_dict. By default, descript_key == name (i.e. the descript_key for object rusty_key is 'rusty_key'). However, by making descript_key and independent attribute from name, we enable the descriptions (or text) associated with an object to change over time. 
 						
 				Historic Note:				
 						The tradition of copous writing samples in text adventures dates right back to Zork itself. In Zork the first interactive object you come across is a mailbox. And within the mailbox is a leaflet you can read and which welcomes you to the game. Dark Castle cleaved tightly to this tradition. From the earliest implementation, the front_gaate had rusty_lettering... which is both a reference to the similar gates of hades in Zork I and of course a nod to good ol' Dante.
@@ -120,15 +120,15 @@ class Writing(Invisible):
 		def get_descript_str(self, active_gs):
 #				"Provides the current description of an object.
 				
-				One might reasonably think that getting the description of an object would be a simple matter of looking up obj.descript_key in descript_dict. This does indeed work the vast majority of the time. And because an object's descript_key is independent of its canonical 'name', we can can change the value of descript_key (and therefore the description value) any time we want to. However, it should be noted that descript_dict lives in a module name static_gbl() - so named because all of its contents are indeed static. This is extremely useful logisticaly. It means that we never need to worry about saving any of the text in descript_dict - because it never changes. Instead we just change obj.descript_key and point to a different ready-made descript_dict value. Alternatively, if we need to dynamically generate a description, we can do that within a method based on current GameState (e.g. the description provided by inventory() ).
+				One might reasonably think that getting the description of an object would be a simple matter of looking up obj.descript_key in static_dict. This does indeed work the vast majority of the time. And because an object's descript_key is independent of its canonical 'name', we can can change the value of descript_key (and therefore the description value) any time we want to. However, it should be noted that static_dict lives in a module name static_gbl() - so named because all of its contents are indeed static. This is extremely useful logisticaly. It means that we never need to worry about saving any of the text in static_dict - because it never changes. Instead we just change obj.descript_key and point to a different ready-made static_dict value. Alternatively, if we need to dynamically generate a description, we can do that within a method based on current GameState (e.g. the description provided by inventory() ).
 				
-				But what if we want to dynamically generate a description *once* and then be able to reference it again in the future? An example of this is the 'secret code' on the guard_goblin's torn_note. We generate a random value between 0 and 7 for the iron_portcullis at the beginning of the game in start_up() and save that value to control_panel state... but how do we store the description for messy_handwriting? There are only 8 possible values so we could have 8 static dictionary entries in descript_dict - but a general solution to the problem seems desireable. My approach is to keep a small dyn_descript_dict in GameState where it is saved every turn. Then whenever we examine() or read() we try looking up obj.descript_key in dyn_descript_dict first. If this fails, then we check the static descript_dict. Hence the need for get_descript_str() in Writing.
+				But what if we want to dynamically generate a description *once* and then be able to reference it again in the future? An example of this is the 'secret code' on the guard_goblin's torn_note. We generate a random value between 0 and 7 for the iron_portcullis at the beginning of the game in start_up() and save that value to control_panel state... but how do we store the description for messy_handwriting? There are only 8 possible values so we could have 8 static dictionary entries in static_dict - but a general solution to the problem seems desireable. My approach is to keep a small dyn_static_dict in GameState where it is saved every turn. Then whenever we examine() or read() we try looking up obj.descript_key in dyn_static_dict first. If this fails, then we check the static static_dict. Hence the need for get_descript_str() in Writing.
 #				"
 				try:
-						return active_gs.get_dyn_descript_dict(self.descript_key)
+						return active_gs.get_dyn_static_dict(self.descript_key)
 				except:
 						try:
-								return descript_dict[self.descript_key]
+								return static_dict[self.descript_key]
 						except:
 								return f"The {self.full_name} is simply indescribable."
 
@@ -375,7 +375,7 @@ class Room(ViewOnly):
 						creature = active_gs.hero
 
 				if not active_gs.map.chk_valid_dir(self, dir):
-						active_gs.buffer(descript_dict[f"wrong_way_{random.randint(0, 4)}"])
+						active_gs.buffer(static_dict[f"wrong_way_{random.randint(0, 4)}"])
 						return
 				door = active_gs.map.get_door(self, dir)
 				if not isinstance(door, str) and door.is_open == False:
@@ -767,7 +767,7 @@ class PortableLiquidContainer(PortableContainer):
 class Food(Item):
 		def __init__(self, name, full_name, root_name, descript_key, writing, eat_desc_key):
 				super().__init__(name, full_name, root_name, descript_key, writing)
-				self._eat_desc_key = eat_desc_key # keys to description of eating food (stored in descript_dict)
+				self._eat_desc_key = eat_desc_key # keys to description of eating food (stored in static_dict)
 
 		@property
 		def eat_desc_key(self):
@@ -776,7 +776,7 @@ class Food(Item):
 		def eat(self, active_gs):
 				creature = active_gs.hero
 				creature.hand_lst_remove(self)
-				active_gs.buffer(f"Eaten. The {self.full_name} {descript_dict[self.eat_desc_key]}")
+				active_gs.buffer(f"Eaten. The {self.full_name} {static_dict[self.eat_desc_key]}")
 """
 
 """
@@ -806,7 +806,7 @@ class Liquid(ViewOnly):
 				hand_item.contain_lst.remove(self)
 				active_gs.buffer("Drunk.")
 				try:
-						active_gs.buffer(descript_dict["drink_"+self.name])
+						active_gs.buffer(static_dict["drink_"+self.name])
 				except:
 						pass
 				return 
@@ -844,7 +844,7 @@ class Clothes(Item):
 				creature.hand_lst_remove(self)
 				active_gs.buffer("Worn.")
 				if self.wear_descript is not None:
-						active_gs.buffer(descript_dict[self.wear_descript])
+						active_gs.buffer(static_dict[self.wear_descript])
 
 ##		def remove(self, active_gs):
 ##				if self not in active_gs.get_worn_lst():
@@ -855,7 +855,7 @@ class Clothes(Item):
 ##						active_gs.worn_lst_remove_item(self)
 ##						active_gs.buffer("Removed.")
 ##						if self.remove_descript is not None:
-##								active_gs.buffer(descript_dict[self.remove_descript])
+##								active_gs.buffer(static_dict[self.remove_descript])
 
 
 class Weapon(Item):

@@ -8,7 +8,7 @@ import copy
 from dc3.class_std.item_class_def import Item
 from dc3.class_std.invisible_class_def import Invisible
 from dc3.class_std.base_class_def import ViewOnly
-from dc3.data.static_gbl import descript_dict
+from dc3.data.static_gbl import static_dict
 from dc3.class_std.interactive_class_def import ContainerFixedSimple, Seat
 
 ### classes
@@ -201,13 +201,13 @@ class Warning(Invisible):
 		if self.warn_max == 0:
 			cmd_override = True
 			try:
-				active_gs.buffer(descript_dict[warn_key_recur])
+				active_gs.buffer(static_dict[warn_key_recur])
 			except:
 				active_gs.buffer(warn_default)
 		elif self.warn_count < self.warn_max:
 			cmd_override = True
 			try:
-				active_gs.buffer(descript_dict[warn_key])
+				active_gs.buffer(static_dict[warn_key])
 			except:
 				active_gs.buffer(warn_default)
 		elif self.warn_count == self.warn_max:
@@ -296,12 +296,12 @@ class Timer(Invisible):
 		if active_gs.get_room().chk_is_vis(self.alert_anchor, active_gs):
 			if self.message_type == 'variable':
 				try:
-					active_gs.buffer(descript_dict[timer_key])
+					active_gs.buffer(static_dict[timer_key])
 				except:
 					active_gs.buffer(timer_default)
 			elif self.message_type == 'constant':
 				try:
-					active_gs.buffer(descript_dict[timer_key_constant])
+					active_gs.buffer(static_dict[timer_key_constant])
 				except:
 					active_gs.buffer(timer_default)
 

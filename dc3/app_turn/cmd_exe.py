@@ -6,7 +6,7 @@
 
 ### import statements ###
 import traceback
-from dc3.data.static_gbl import descript_dict
+from dc3.data.static_gbl import static_dict
 
 ### execute commands based on case ###
 def cmd_execute(active_gs, case, word_lst):
@@ -19,10 +19,10 @@ def cmd_execute(active_gs, case, word_lst):
 				active_gs.print_score()
 				return
 			if word1 == 'version':
-				active_gs.buffer(descript_dict['version'])
+				active_gs.buffer(static_dict['version'])
 				return
 			if word1 == 'credits':
-				active_gs.buffer(descript_dict['credits'])
+				active_gs.buffer(static_dict['credits'])
 				return
 			if word1 == 'debug_poke53281,0':
 				active_gs.state_dict['debug'] = not active_gs.state_dict['debug']

@@ -337,7 +337,7 @@ IN-PROC: move stateful_dict['universal'] to static_dict['universal'] ???
 	DONE: clean up comments
 	DONE: Move descriptions_dict to static_init
 DONE: Centralize all descriptions into a description_dict declared in a dedicated module
-	DONE: copy descriptions to static_init() descript_dict
+	DONE: copy descriptions to static_init() static_dict
 	DONE: change description source from self.desc to description_dict
 	DONE: clean up comments in classes()
 	DONE: eliminate self.desc attribute in classes() and init()
@@ -560,7 +560,7 @@ DONE: New Class
 	DONE: create Food Class (child of Item) with eat method
 		DONE: Crete cheese_wedge obj
 		DONE: create stale_biscuits obj (with Trademark)
-DONE: Pull eat description from descript_dict
+DONE: Pull eat description from static_dict
 DONE: provide useful error on trying to examine writing (advise player to 'read')
 	NOTE: Is non-trivial since 'Writing' does not have an examine method. Added guidance in 'help basic' instead
 
@@ -1208,7 +1208,7 @@ DONE: implement RoomEffect for simplest case (go south from entrance)
 		DONE: declare entrance_south
 		DONE: in mk_def_pkl add TravelEffect obj to entrance Room obj
 		DONE: add entrance_south to def_pkl dump
-		DONE: effect_desc to descript_dict
+		DONE: effect_desc to static_dict
 		DONE: run mk_def_pkl 
 	DONE: create TravelEffect methods
 		DONE: create trigger_check() method for TravelEffect
@@ -1234,7 +1234,7 @@ DONE: entrance_east and eantrance_west (simple death cases)
 		DONE: create entrance_east and entrance_west with game_ending = 'death'
 		DONE: add entrance_east and entrance_west to entrance.invis_obj_lst
 		DONE: add entrance_east and entrance_west to def_pkl dump
-		DONE: add entrance_east and entrance_west to descript_dict
+		DONE: add entrance_east and entrance_west to static_dict
 		DONE: run mk_def_pkl
 		DONE: test
 	DONE: update TravelEffect trigger()method
@@ -1801,7 +1801,7 @@ DONE: implement give() method
 		DONE: confirm that item is in hand
 		DONE: implement Creature def_give behavior
 		DONE: if accept_item: remove item from hand and add to creature_item_lst
-		DONE: buffer descript_dict[response_key]
+		DONE: buffer static_dict[response_key]
 		DONE: if exchange_item != None: removie item from creature_item_lst and add to hand
 		DONE: if new_descript_key != None: update self.descript_key
 		DONE: method default response = "the <creature> is not interested in the <item>"
@@ -1823,7 +1823,7 @@ DONE: create attack() method
 	DONE: create attack() method
 		DONE: burt_weapon = hand_item ('Fist' if hand is empty)
 		DONE: implement 'def_attack' behavior
-		DONE: buffer descript_dict[response_key]
+		DONE: buffer static_dict[response_key]
 		DONE: if result_code == 'creature_flee': remove creature from room_obj_lst
 		DONE: if result_code == 'creature_death': 
 			DONE: creature_items_lst => room_obj_lst
@@ -1837,7 +1837,7 @@ DONE: create attack() method
 	DONE: add 'attack' to verb_lst in interp()
 	DONE: add attack() attributes (including creature_item_lst) to goblin
 	DONE: add attack_response text to static_gbl
-	DONE: add descript_dict entry for dead_goblin
+	DONE: add static_dict entry for dead_goblin
 	DONE: run mk_def_pkl()
 	DONE: test attack() method
 		DONE: troubleshoot double show and give
@@ -1940,7 +1940,7 @@ Version 3.61 Goals
 			- DONE: name, trigger_type, trig_vals_lst from InvisClass
 			- DONE: warn_max, warn_count, warn_key_1, warn_key_2 = local attributes
 			- DONE: create setters for local (and getter for warn_count)
-		- DONE: override run_mach with warn-specific code (buffer descript_dict[warn_key], return override value)
+		- DONE: override run_mach with warn-specific code (buffer static_dict[warn_key], return override value)
 	- N/A: update pre_action() code to handle warning case (maybe warnings before machs???)
 	- DONE: instantiate warn obj: eterance_south_warn
 		- DONE: add WarnClass to mk_def_pkl imports
@@ -1969,7 +1969,7 @@ Version 3.61 Goals
 		- DONE: comment out entrance_south_mach result and conditions obj
 - DONE: more scalable approach to warnings:
 	- DONE: warning improvement ideation
-		- IDEA: obj_name+str(count); if exist descript_dict[key]: active_gs.buffer(descript_dict[key]); else: buffer default
+		- IDEA: obj_name+str(count); if exist static_dict[key]: active_gs.buffer(static_dict[key]); else: buffer default
 		- IDEA: or maybe the pythonic approach here is "try" ?
 		- IDEA: initial Warning attributes = name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2
 		- IDEA: should be able to eliminate warn_key_1, warn_key_2
@@ -1978,7 +1978,7 @@ Version 3.61 Goals
 		- DONE: add increment for warn_count (how did I forget this??)
 		- DONE: eliminate warn_key_1 and warn_key_2 attributes
 		- DONE: update obj instantiation
-		- DONE: update descript_dict key
+		- DONE: update static_dict key
 		- DONE: test infinite case
 		- DONE: test limited case
 		- DONE: create static warn_default = "I'm not sure that's a good idea Burt..."
@@ -2598,7 +2598,7 @@ Version 3.71 Goals
 		- DONE: if-then shielf pattern
 		- DONE: f-strings
 		- DONE: refactor get_dynamic_desc_dict in active_gs()
-			- DONE: rename dynamic_desc_dict => dyn_descript_dict
+			- DONE: rename dynamic_desc_dict => dyn_static_dict
 				- gs_class_def()
 			- DONE: rename get_dynamic_desc_dict => get_dyn_descript
 				- gs_class_def()
@@ -2700,7 +2700,7 @@ Version 3.72 Goals
 	- DONE: descript_key => auto-gen key
 		- DONE: implement auto-gen key
 		- DONE: elim attribute key
-		- DONE: elim descript_dict entry for attribute key
+		- DONE: elim static_dict entry for attribute key
 	- DONE: doc_strings
 - DONE: Create new PortableLiquidContainer to replace Jug (Container + Item => PortableContainer => PortableLiquidContainer)
 	- DONE: testing fail on put non-liquid in glass_bottle; in cmd_exe debug mode
@@ -3391,7 +3391,7 @@ Version 3.75 Goals
 		- DONE: sort out custom text for burt attacking goblin
 	- DONE: test attack_b with goblin attacking burt
 		- DONE: update burt obj with attack_dict
-		- N/A: update custom attack entries for burt in descript_dict
+		- N/A: update custom attack entries for burt in static_dict
 		- DONE: update Result to call attack_b() instead of attack_burt()
 		- DONE: fixed goblin_guard obj w/ 'guard_goblin' name; all => guard_goblin
 		- DONE: test [not seeing burt keys; key-gen good; need to investigate self.attacked_dict]
@@ -3819,7 +3819,7 @@ Version 3.77 Goals
 			- DONE: resolve 'help <option>' error and simplify 'help' to run first all in interp()
 			- DONE: make validate() random error dict & function local? (post move of 'try')	
 			- DONE: make wrong-way errors local to invisible()
-			- DONE: clean-up un-used descript_dict errors
+			- DONE: clean-up un-used static_dict errors
 
 	- DONE: validate() testing
 		- DONE: this will break the 'go south from Entrance' warning... 
@@ -3856,7 +3856,7 @@ Version 3.77 Goals
 	- DONE: use debug mode to change UI
 		- DONE: investigate whether error text can be piped to std output => traceback import
 		- DONE: in interp(), if debug, set error source pre-fixes & print error to export 
-		- DONE: move random errors back to static_gbl().descript_dict
+		- DONE: move random errors back to static_gbl().static_dict
 		- DONE: in cmd_exe(), if debug, set error source pre-fixes & print error to export (3 cases)
 		- DONE: in validate(), figure out how to use buffer rather than print for except error debug
 		- DONE: update cmd_exe() except error to buffer traceback and test error cases
@@ -4443,8 +4443,8 @@ Version 3.78 Goals
 				- DONE: Description when 'sit': "feels out of kilter - pushed or pulled out of alignment"
 					- IDEA: autogen text would need to be conditional (i.e. before & after broach dispensed)
 					- DONE: 'throne' descript_key => 'throne_pre_broach'
-					- DONE: create 'throne_post_broach' descript_key w/out secrets sentence in descript_dict
-					- DONE: create descript_dict entry (in dynamic section) for Enter method
+					- DONE: create 'throne_post_broach' descript_key w/out secrets sentence in static_dict
+					- DONE: create static_dict entry (in dynamic section) for Enter method
 					- DONE: test
 					- DONE: update throne_mach result to change descript_key
 						- DONE: create new AddObjToRoomResult class with descript update; pass obj throne

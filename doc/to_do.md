@@ -34,33 +34,33 @@ Version 3.80 Goals
 	- IDEA: I won't want all the description in a DB - that's too much overhead...
 	- IDEA: But I will want all descriptions in one big centralized dictionary for ease of access & update
 	- DONE: to this end, investigate centralizing the following dicts:
-		- DONE: consolidate val_err_dict from validate() back to static_gbl() descript_dict
-		- DONE: move interp() help_dict back to static_gbl() descript_dict
-		- DONE: consolidate dir_err_dict from invisible() back to static_gbl() descript_dict
-		- DONE: consolidate static_dict into descript_dict
+		- DONE: consolidate val_err_dict from validate() back to static_gbl() static_dict
+		- DONE: move interp() help_dict back to static_gbl() static_dict
+		- DONE: consolidate dir_err_dict from invisible() back to static_gbl() static_dict
+		- DONE: consolidate static_dict into static_dict
 			- DONE: static_gbl.py
 			- DONE: cmd_exe.py
 			- DONE: gs_class_def.py
 			- DONE: result_class_def.py
 		- DONE: End dict
 		- DONE: Score dictionary
-			- DONE: move score_val_dict to descript_dict
-			- DONE: update score routines to call descript_dict
-			- DONE: migrate item list to descript_dict
-			- DONE: migrate room list to descript_dict
-			- DONE: migrate wear list to descript_dict
+			- DONE: move score_val_dict to static_dict
+			- DONE: update score routines to call static_dict
+			- DONE: migrate item list to static_dict
+			- DONE: migrate room list to static_dict
+			- DONE: migrate wear list to static_dict
 		- DONE: check for other dictionaries to consolidate?
 			- DECISION: for now, keep interp() dicts local
 	- TBD: [DOC] error messages are hard to update - so I want them to be as generic as possible!
 	- TBD: [DOC] tooling plan / central dict
 
-- TBD: rename descript_dict => static_dict
+- DONE: rename descript_dict => static_dict
 
 - TBD: refactor GameState and dicts in static_gbl() with dunder methods ( __getattr__ and __setattr__ )
 	- LINK: see: https://stackoverflow.com/questions/10761779/when-to-use-getattr
 	- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (and s__setattr__ for future tools)
 
-- IDEA: should I make descript_dict modular so that other dicts can be chosen? 
+- IDEA: should I make static_dict modular so that other dicts can be chosen? 
 	IDEA: helpful if I want to temporarily tell adventure from another persepctive
 	- TBD: [DOC] writing perspective (need to update doc):
 		- burt being a creature and all methods being rewritten to work with Creature class, we have a choice
@@ -79,7 +79,7 @@ Version 3.80 Goals
 	- call with key and return string; will look like gs.descript(key)
 	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() ) => consolidate to central dict
 	- CANCEL: Can autogen key try be incorporated into Descript method??
-		- CANCEL: refactor descript_dict 
+		- CANCEL: refactor static_dict 
 		- CANCEL: idea was to store (static_dict), autogen_dict (new) and dynamic_dict in Descript class
 		- CANCEL: with descript instantiation; i.e. create a gs class (gs_active.io) for descriptions
 		- CANCEL: have decided to keep static_gbl.py independent
@@ -97,7 +97,7 @@ Version 3.80 Goals
 		- 3) try static_dic except f"the {obj.full_name} is simple indescribable"
 
 - CANCEL: alternate descript return ideas for alternate, noun-based methods
-	- CANCEL: test w/ descript_dict => start with version 
+	- CANCEL: test w/ static_dict => start with version 
 	- can compound noun methods be created?
 	- think abour 'source' and 'desination'... 
 	- e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
@@ -115,7 +115,7 @@ Version 3.80 Goals
 
 *** score sub-class ***
 - TBD: update score achievement dict in gs => list that starts empty and holds achieved score items
-- TBD: figure out way to capture custom score pts via standard lists that reside in descript_dict
+- TBD: figure out way to capture custom score pts via standard lists that reside in static_dict
 
 *** end sub-class ***
 
@@ -405,7 +405,7 @@ Window:
 - Interp deep dive including better solution to prep checking ('put in' vs. 'put on')
 
 interpreter ideas:
-- can I store variables in descript_dict strings? (in f-string format)
+- can I store variables in static_dict strings? (in f-string format)
 - can I return method errors based on verb method (e.g. "Burt, what kind of person would try to attack a Throne?")
 - should synonyms be an obj attribute??
 - more abreviations: 'g' = 'again', 'z' = 'wait'
@@ -476,12 +476,12 @@ interpreter ideas:
 
 - DONE: for doors and containers, use None option for no lock or no lid?
 - CANCEL: Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
-	- CANCEL: why do I need active_gs.dynamic_descript_dict again?
+	- CANCEL: why do I need active_gs.dynamic_static_dict again?
 
 python techniques:
 - Do a refactoring code review (look into the 'any' command in place of for loops)
 - TBD: Try argument unpacking ( https://www.geeksforgeeks.org/packing-and-unpacking-arguments-in-python/ )
-- TBD: Try tupples for descript_dict
+- TBD: Try tupples for static_dict
 	- NOTE: Franco on Tupples: A tuple is most suitable for immutable data with a well-defined order.  The static data that you pass to class constructors is often a good example.Another useful time for tuples is when you want dictionary keys with more than one field.  You cannot use something mutable there.
 - TBD: learn about Super()
 - TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
