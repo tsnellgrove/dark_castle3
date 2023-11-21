@@ -56,11 +56,7 @@ Version 3.80 Goals
 
 - DONE: rename descript_dict => static_dict
 
-- TBD: refactor GameState and dicts in static_gbl() with dunder methods ( __getattr__ and __setattr__ )
-	- LINK: see: https://stackoverflow.com/questions/10761779/when-to-use-getattr
-	- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (and s__setattr__ for future tools)
-
-- IDEA: should I make static_dict modular so that other dicts can be chosen? 
+- DONE: should I make static_dict modular so that other dicts can be chosen? 
 	IDEA: helpful if I want to temporarily tell adventure from another persepctive
 	- TBD: [DOC] writing perspective (need to update doc):
 		- burt being a creature and all methods being rewritten to work with Creature class, we have a choice
@@ -85,6 +81,12 @@ Version 3.80 Goals
 		- CANCEL: have decided to keep static_gbl.py independent
 		- CANCEL: static_dict and autogen_dict live in class
 		- CANCEL: dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
+
+TBD: move get_descript from base_class() to io()
+
+- TBD: refactor GameState and dicts in static_gbl() with dunder methods ( __getattr__ and __setattr__ )
+	- LINK: see: https://stackoverflow.com/questions/10761779/when-to-use-getattr
+	- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (and s__setattr__ for future tools)
 
 - i.o. sub-class:
 	- want an i.o. subclass that stores dyn descriptsions (gs today) and had methods to get descriptions (in base() today) / dyn-descripts (in gs today) and also performs all buffering (in gs today); Would point to universal, centralized static dict (static_gbl)
@@ -607,6 +609,12 @@ Food:
 - TBD: how should creature be passed to Conditions & Results?
 - TBD: how to deal with error messages for non-burt creatures (e.g. test_frog walks into door)
 - IDEA: alternatives for how to to auto-move non-burt creatures: dir_lst, room_lst, room_dir_dict
+
+- In some cases creatures will use methods to take actions and burt will *obeserve* their actions
+	- this should be enabled by mode = 'exe_creature'
+	- DECISION: part of making verb methods 'symetric', 'creature' should be checked for in each method
+
+
 
 *** make database-driven! ***
 

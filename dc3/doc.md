@@ -157,6 +157,9 @@ It is worth noting that there are 2 main areas of static descriptions / constant
 1) Error messages: for now, these remain embeded in code. This means that while it is easy to update object descriptions is is hard to update error messages... so in general error text should be as simple and broadly applicable as possible.
 2) The lists and dictionaries from interp.py. interp.py needs a major over-haul and I expect this to be easier if I can reference these locally. Once I have fully updated interp.py, I intend to centralize these elements to static_dict.
 
+Description Perspective:
+- With burt being a creature and all methods being rewritten to work symetrically with Creature class, we have a choice. in theory, any creature could be used to play the game - and each might have its own description_dict. So each Creature could have it's own set of descriptions for every object in the game. This would be fun for a short session in a single room but is not practical for extended play. Realistically, nearly all descriptions will be from burt's perspective. 
+
 
 ###############
 # validate.py #
