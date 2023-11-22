@@ -76,11 +76,20 @@ Version 3.80 Goals
 	- DONE: define io in mk_def_pkl()
 	- DONE: test
 
+- INPROC: move dyn_dict to io
+	- DONE: add dyn_dict as attribute of IO class
+	- DONE: add get & set methods for dyn_dict
+	- DONE: add dyn_dict to attribute def of io in mk_def_pkl()
+	- DONE: update startup() to call gs.io.dyn_dict
+	- DONE: update base_class_def() to call gs.io.dyn_dict
+	- DONE: test
+	- TBD: clean-up gs_class_def(), mk_def_pkl(), startup(), base_class_def()
+
 - TBD: unify descript approach:
-	- TBD: move dyn_descript_dict to io
 	- TBD: investigate auto-gen entries in static_dict
 	- TBD: move get_descript_str() to io
 	- TBD: eliminate direct calls to static_dict()
+
 
 things to go into io
 	buff_dict
