@@ -27,6 +27,7 @@ from dc3.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, War
 from dc3.class_std.creature_class_def import Creature
 from dc3.class_gs.gs_class_def import GameState
 from dc3.class_gs.map_class_def import Map
+from dc3.class_gs.io_class_def import IO
 
 # *** object instantiation - starting state ***
 
@@ -283,7 +284,10 @@ map = Map([{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y'
 		{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
 		{'room_x' : main_hall, 'dir_x' : 'north', 'door' : 'passage', 'dir_y' : 'south', 'room_y' : antechamber},
 #		{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
-		{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}])
+		{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}]
+		)
+
+io = IO('io')
 
 # *** Hierarchy-Based Object Re-assignment ***
 goblin_attacks_result.creature_obj = guard_goblin
@@ -328,6 +332,7 @@ active_gs = GameState(
 		'out_buff' : ""
 	},
 	map,
+	io,
 	burt
 )
 

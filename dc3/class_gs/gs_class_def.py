@@ -10,12 +10,13 @@ from dc3.data.static_gbl import static_dict
 
 ### classes
 class GameState(object):
-	def __init__(self, name, dyn_static_dict, points_earned_dict, state_dict, map, hero):
+	def __init__(self, name, dyn_static_dict, points_earned_dict, state_dict, map, io, hero):
 		self._name = name
 		self._dyn_static_dict = dyn_static_dict
 		self._points_earned_dict = points_earned_dict
 		self._state_dict = state_dict
 		self._map = map
+		self._io = io
 		self._hero = hero
 
 	### setters & getters ###
@@ -31,6 +32,10 @@ class GameState(object):
 	@property
 	def map(self):
 		return self._map
+
+	@property
+	def io(self):
+		return self._io
 
 	@property
 	def hero(self):

@@ -70,7 +70,29 @@ Version 3.80 Goals
 		- CANCEL: this should be enabled by mode = 'exe_creature'
 	- DECISION: part of making verb methods 'symetric', 'creature' should be checked for in each method
 
-- TBD: unify descript approach: 
+- DONE: create IO class
+	- DONE: create class IO
+	- DONE: add io as attribute of gs
+	- DONE: define io in mk_def_pkl()
+	- DONE: test
+
+- TBD: unify descript approach:
+	- TBD: move dyn_descript_dict to io
+	- TBD: investigate auto-gen entries in static_dict
+	- TBD: move get_descript_str() to io
+	- TBD: eliminate direct calls to static_dict()
+
+things to go into io
+	buff_dict
+	dyn_descript_dict
+	all buff methods
+	get_descript_str method
+
+goals
+	class just for io that abstracts the io process for the rest of the app
+
+
+
 	- TBD: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
 	- call with key and return string; will look like gs.descript(key)
 	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() ) => consolidate to central dict

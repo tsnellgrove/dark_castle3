@@ -1,7 +1,7 @@
 # program: dark castle v3.79
 # name: Tom Snellgrove
 # date: Oct 31, 2023
-# description: class deffinition module for Creatures
+# description: class deffinition module for Map
 
 
 ### module vars
