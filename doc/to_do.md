@@ -9,7 +9,7 @@ Nov 5, 2022
 
 Version 3.80 Goals
 - Refactor gbl_static and buffering
-
+- Create class just for io that abstracts the io process for the rest of the app
 
 - DONE: Pre-Planning:
 	- DONE: org all descript content into one place
@@ -144,26 +144,18 @@ Version 3.80 Goals
 
 - TBD: eliminate direct calls to static_dict()
 	- TBD: think through approach
+	- TBD: centralize all static_dict calls to descript method
 
-- TBD: [DOC] purpose of dyn_dict
-
-- TBD: centralize all static_dict calls to descript method
+- TBD: doc updates
+	- TBD: [DOC] purpose of dyn_dict
+	- TBD: [DOC] thinking behind isolating static_dict from dyn_dict
 	- TBD: [DOC] abstraction allows for changes in static_dict structure in the future with minimal impact
+	- TBD: [DOC] long-term DB strat
 
 - TBD: long over-due game_state clean-up
 	- TBD: skim through notes on renaming gs and fixing get_room
 	- TBD: rename gs_class => gs
 	- TBD: finally fix get_room => rename and move to gs.map
-
-
-things to go into io
-	buff_dict
-	dyn_descript_dict
-	all buff methods
-	get_descript_str method
-
-goals
-	class just for io that abstracts the io process for the rest of the app
 
 
 
@@ -178,8 +170,6 @@ goals
 		- CANCEL: static_dict and autogen_dict live in class
 		- CANCEL: dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
 
-TBD: move get_descript from base_class() to io()
-
 - CANCEL: refactor GameState and dicts in static_gbl() with dunder methods ( __getattr__ and __setattr__ )
 	- LINK: see: https://stackoverflow.com/questions/10761779/when-to-use-getattr
 	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (and s__setattr__ for future tools)
@@ -192,7 +182,7 @@ TBD: move get_descript from base_class() to io()
 	- Use guard pattern and check dicts in this order
 		- 1) in dynamic_dict
 		- 2) starts with "ag_" => autogen_dict (no "try", allow failure)
-		- 3) try static_dic except f"the {obj.full_name} is simple indescribable"
+		- 3) try static_dic except f"the {obj.full_name} is simply indescribable"
 
 - CANCEL: alternate descript return ideas for alternate, noun-based methods
 	- CANCEL: test w/ static_dict => start with version 
