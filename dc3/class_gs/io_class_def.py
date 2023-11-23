@@ -8,10 +8,12 @@ from dc3.data.static_gbl import static_dict
 
 ### classes
 class IO(object):
-	def __init__(self, name, dyn_dict):
+	def __init__(self, name, dyn_dict, buff_dict):
 		self._name = name # name of obj
 		self._dyn_dict = dyn_dict # dict of non-static values that persist during game
+		self._buff_dict = buff_dict # holds buffered output
 
+	### setters & getters ###
 	@property
 	def name(self):
 		return self._name
@@ -24,6 +26,15 @@ class IO(object):
 	def dyn_dict(self, new_val):
 		self._dyn_dict = new_val
 
+	@property
+	def buff_dict(self):
+		return self._buff_dict
+
+	@buff_dict.setter
+	def buff_dict(self, new_val):
+		self._buff_dict = new_val
+
+	### description methods ###
 	def get_dyn_dict(self, key):
 		if key not in self.dyn_dict:
 			raise KeyError("key does not exist in dict")
@@ -43,3 +54,6 @@ class IO(object):
 				return static_dict[key]
 			except:
 				return f"The {ref} is simply indescribable."
+
+	### buffer methods ###
+	

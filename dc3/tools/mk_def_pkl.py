@@ -287,7 +287,10 @@ map = Map([{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y'
 		{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}]
 		)
 
-io = IO('io', {})
+io = IO('io', # name
+		{}, # dyn_dict
+		{'new_buff' : ""} # buff_dict
+		)
 
 # *** Hierarchy-Based Object Re-assignment ***
 goblin_attacks_result.creature_obj = guard_goblin

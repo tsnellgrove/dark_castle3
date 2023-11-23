@@ -95,7 +95,24 @@ Version 3.80 Goals
 	- DONE: clean-up base_class_def()
 	- DONE: test exception case and also torn note case
 
-- TBD: think through a buff_d() method that auto-buffers the called description
+- DONE: think through a buff_d() method that auto-buffers the called description
+	- DECISION: Yes - this makes sense and leads to a natural link of descript & buffer
+
+- DONE: decide if descript & buffer should both be in io... or should each have its own sub-class?
+	- DECISION: yes, they belong together
+
+- INPROC: migrate buffer() methods to io
+	- DONE: add buff_dict attribute to IO class
+	- DONE: update mk_def_pkl() with buff_dict definition
+	- TBD: update existing buff_get() and buff_reset() methods (in gs) to act on io.buff_dict
+	- TBD: update existing buffer methods (in gs) to action io.buff_dict
+	- TBD: create io methods for get & reset buff_dict
+	- TBD: update existing get & reset calls to point to io methods
+	- TBD: create buffer method in IO class
+	- TBD: create unified buff_d() method in IO class
+	- TBD: update existing buffer() calls to point to IO class
+	- TBD: create custom buffer() methods in IO class
+	- TBD: update existing buffer() calls to point to IO class
 
 - TBD: eliminate direct calls to static_dict()
 	- TBD: think through approach
@@ -110,7 +127,6 @@ Version 3.80 Goals
 	- TBD: rename gs_class => gs
 	- TBD: finally fix get_room => rename and move to gs.map
 
-- TBD: decide if descript & buffer should both be in io... or should each have its own sub-class?
 
 things to go into io
 	buff_dict
@@ -136,9 +152,9 @@ goals
 
 TBD: move get_descript from base_class() to io()
 
-- TBD: refactor GameState and dicts in static_gbl() with dunder methods ( __getattr__ and __setattr__ )
+- CANCEL: refactor GameState and dicts in static_gbl() with dunder methods ( __getattr__ and __setattr__ )
 	- LINK: see: https://stackoverflow.com/questions/10761779/when-to-use-getattr
-	- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (and s__setattr__ for future tools)
+	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (and s__setattr__ for future tools)
 
 - i.o. sub-class:
 	- want an i.o. subclass that stores dyn descriptsions (gs today) and had methods to get descriptions (in base() today) / dyn-descripts (in gs today) and also performs all buffering (in gs today); Would point to universal, centralized static dict (static_gbl)
