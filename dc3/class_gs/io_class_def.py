@@ -70,7 +70,7 @@ class IO(object):
 		return
 
 	def buff_d(self, key, ref):
-		"""Buffers the description associate with the provided key
+		"""Buffers the description associate with the provided key attribute. ref attribute is used to create a default description if none has been defined 
 		"""
 		self.buffer(self.get_str(key, ref))
 		return

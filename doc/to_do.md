@@ -131,11 +131,15 @@ Version 3.80 Goals
 		- DONE: update read() and examine() to call buff_d()
 		- DONE: test
 		- DONE: clean up comments in base_class_def()
-	- TBD: investigate how to best update active_gs.buffer(static_dict['x']) calls
-	- TBD: decide whether buff_debug_err() stays in gs or moves to io (will need to pass gs.debug if moves)
-	- TBD: update existing buffer() calls to point to IO class
-	- TBD: create custom buffer() methods in IO class
-	- TBD: update existing buffer() calls to point to IO class
+	- TBD: buffer calls
+		- TBD: investigate how to best update active_gs.buffer(static_dict['x']) calls
+		- TBD: maybe create an active_gs.io.buff_e() method for events (no 'ref' attribute needed)
+		- TBD: investigate whether remaining active_gs.buffer("x") calls can be mass-updated with io
+		- TBD: update existing buffer() calls to point to IO class
+	- TBD: custom buff calls
+		- TBD: create custom buffer() methods in IO class
+		- TBD: decide if buff_debug_err() stays in gs or moves to io (will need to pass gs.debug if moves)
+		- TBD: update existing buffer() calls to point to IO class
 	- TBD: clean-up gs(), mk_def_pkl()
 
 - TBD: eliminate direct calls to static_dict()
