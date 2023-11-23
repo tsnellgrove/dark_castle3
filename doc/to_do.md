@@ -125,12 +125,12 @@ Version 3.80 Goals
 		- DONE: comment out gs.reset_buff
 		- DONE: test
 		- DONE: clean-up comments in gs & app_main()
-	- INPROC: std buffer() method in IO class
+	- DONE: std buffer() method in IO class
 		- DONE: create buffer method in IO class
 		- DONE: create unified buff_d() method in IO class
 		- DONE: update read() and examine() to call buff_d()
 		- DONE: test
-		- TBD: clean up comments in base_class_def()
+		- DONE: clean up comments in base_class_def()
 	- TBD: investigate how to best update active_gs.buffer(static_dict['x']) calls
 	- TBD: decide whether buff_debug_err() stays in gs or moves to io (will need to pass gs.debug if moves)
 	- TBD: update existing buffer() calls to point to IO class

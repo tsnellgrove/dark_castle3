@@ -75,4 +75,3 @@ class IO(object):
 		self.buffer(self.get_str(key, ref))
 		return
 
-# active_gs.buffer(active_gs.io.get_str(self.descript_key, self.full_name))
