@@ -106,7 +106,8 @@ Version 3.80 Goals
 	- DONE: update mk_def_pkl() with buff_dict definition
 	- DONE: update existing buff_get() and buff_reset() methods (in gs) to act on io.buff_dict
 	- DONE: update existing buffer methods (in gs) to action io.buff_dict
-	- TBD: test
+	- DONE: test
+	- DONE: comment out gs.state_dict['out_buff']
 	- TBD: create io methods for get & reset buff_dict
 	- TBD: update existing get & reset calls to point to io methods
 	- TBD: create buffer method in IO class
@@ -115,6 +116,7 @@ Version 3.80 Goals
 	- TBD: update existing buffer() calls to point to IO class
 	- TBD: create custom buffer() methods in IO class
 	- TBD: update existing buffer() calls to point to IO class
+	- TBD: clean-up gs(), mk_def_pkl()
 
 - TBD: eliminate direct calls to static_dict()
 	- TBD: think through approach
