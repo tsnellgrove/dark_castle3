@@ -85,7 +85,7 @@ Version 3.80 Goals
 	- DONE: test
 	- DONE: clean-up gs_class_def(), mk_def_pkl(), startup(), base_class_def()
 
-- DONE: unify descript approach:
+- INPROC: unify descript approach:
 	- DONE: investigate auto-gen entries in static_dict
 	- DONE: instantiate get_descript_str() in io
 	- DONE: redirect read() to gs.io.get_str()
@@ -93,6 +93,7 @@ Version 3.80 Goals
 	- DONE: redirect examine() to gs.io.get_str()
 	- DONE: test
 	- DONE: clean-up base_class_def()
+	- TBD: test exception case and also torn note case
 
 - TBD: think through a buff_d() method that auto-buffers the called description
 
