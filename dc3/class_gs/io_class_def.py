@@ -63,4 +63,16 @@ class IO(object):
 		self.buff_dict['current_turn'] = ""
 		return
 
+	def buffer(self, output_str):
+		out_buff_old = self.buff_dict['current_turn']
+		out_buff_new = out_buff_old + "\n" + output_str + "\n"
+		self.buff_dict['current_turn'] = out_buff_new
+		return
 
+	def buff_d(self, key, ref):
+		"""Buffers the description associate with the provided key
+		"""
+		self.buffer(self.get_str(key, ref))
+		return
+
+# active_gs.buffer(active_gs.io.get_str(self.descript_key, self.full_name))
