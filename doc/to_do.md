@@ -117,13 +117,13 @@ Version 3.80 Goals
 		- DONE: comment out gs.get_buff
 		- DONE: test
 		- DONE: clean up comments in gs, app_main, and start_up
-	- TBD: reset_buff()
-		- TBD: create io method for buff_reset
-		- TBD: update existing reset calls to point to io method
-			- TBD: ???
-		- TBD: test
-		- TBD: comment out gs.reset_buff
-		- TBD: test
+	- INPROC: reset_buff()
+		- DONE: create io method for buff_reset
+		- DONE: update existing reset calls to point to io method
+			- DONE: app_main
+		- DONE: test
+		- DONE: comment out gs.reset_buff
+		- DONE: test
 		- TBD: clean-up comments in gs & ???
 	- TBD: create buffer method in IO class
 	- TBD: create unified buff_d() method in IO class

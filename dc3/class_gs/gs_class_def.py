@@ -143,9 +143,9 @@ class GameState(object):
 		else:
 			self.buffer(static_dict['misc_err_' + str(random.randint(0, 4))])
 
-	def reset_buff(self):
-#		self._state_dict['out_buff'] = ""
-		self.io.buff_dict['current_turn'] = "" 
+#	def reset_buff(self):
+##		self._state_dict['out_buff'] = ""
+#		self.io.buff_dict['current_turn'] = "" 
 
 	### obj representation (for printing) ###
 	def __repr__(self):

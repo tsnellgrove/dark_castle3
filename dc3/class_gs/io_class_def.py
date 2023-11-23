@@ -59,3 +59,8 @@ class IO(object):
 	def get_buff(self):
 		return self.buff_dict['current_turn']
 
+	def reset_buff(self):
+		self.buff_dict['current_turn'] = ""
+		return
+
+
