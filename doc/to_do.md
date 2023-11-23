@@ -124,7 +124,7 @@ Version 3.80 Goals
 		- DONE: test
 		- DONE: comment out gs.reset_buff
 		- DONE: test
-		- TBD: clean-up comments in gs & ???
+		- TBD: clean-up comments in gs & app_main()
 	- TBD: create buffer method in IO class
 	- TBD: create unified buff_d() method in IO class
 	- TBD: decide whether buff_debug_err() stays in gs or moves to io (will need to pass gs.debug if moves)

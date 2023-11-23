@@ -30,7 +30,6 @@ def app_main(user_input):
 
 	# Gamestate vatiable instantiated from un-pickled list
 	active_gs = master_obj_lst[0]
-#	active_gs.reset_buff() # resets buffer
 	active_gs.io.reset_buff() # resets buffer
 
 	# quit case
