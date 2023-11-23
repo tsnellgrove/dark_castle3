@@ -56,4 +56,6 @@ class IO(object):
 				return f"The {ref} is simply indescribable."
 
 	### buffer methods ###
-	
+	def get_buff(self):
+		return self.buff_dict['current_turn']
+

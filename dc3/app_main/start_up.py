@@ -39,6 +39,7 @@ def start_me_up():
 		pickle.dump(master_obj_lst, f)
 
 	end_of_game = active_gs.get_end_of_game()
-	out_buff = active_gs.get_buff()
+#	out_buff = active_gs.get_buff()
+	out_buff = active_gs.io.get_buff()
 
 	return end_of_game, out_buff

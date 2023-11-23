@@ -108,8 +108,23 @@ Version 3.80 Goals
 	- DONE: update existing buffer methods (in gs) to action io.buff_dict
 	- DONE: test
 	- DONE: comment out gs.state_dict['out_buff']
-	- TBD: create io methods for get & reset buff_dict
-	- TBD: update existing get & reset calls to point to io methods
+	- INPROC: get_buff()
+		- DONE: create io method for get_buff
+		- DONE: update existing get_buff calls to point to io method
+			- DONE: app_main
+			- DONE: start_up
+		- DONE: test
+		- DONE: comment out gs.get_buff
+		- DONE: test
+		- TBD: clean up comments in gs, app_main, and start_up
+	- TBD: reset_buff()
+		- TBD: create io method for buff_reset
+		- TBD: update existing reset calls to point to io method
+			- TBD: ???
+		- TBD: test
+		- TBD: comment out gs.reset_buff
+		- TBD: test
+		- TBD: clean-up comments in gs & ???
 	- TBD: create buffer method in IO class
 	- TBD: create unified buff_d() method in IO class
 	- TBD: decide whether buff_debug_err() stays in gs or moves to io (will need to pass gs.debug if moves)
