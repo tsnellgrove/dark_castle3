@@ -107,10 +107,6 @@ class GameState(object):
 ##				self._state_dict['room'] = value
 
 	### buffer ###
-#	def get_buff(self):
-##		return self._state_dict['out_buff']
-#		return self.io.buff_dict['current_turn']
-
 	def buffer(self, output_str):
 #		out_buff_old = self._state_dict['out_buff']
 		out_buff_old = self.io.buff_dict['current_turn']

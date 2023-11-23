@@ -36,7 +36,6 @@ def app_main(user_input):
 	if user_input == "quit" or user_input == "q":
 		active_gs.set_game_ending('quit')
 		end(active_gs)
-#		return active_gs.get_end_of_game(), active_gs.get_buff()
 		return active_gs.get_end_of_game(), active_gs.io.get_buff()
 
 	# interpret and validate user_input
@@ -45,7 +44,6 @@ def app_main(user_input):
 
 	# exit if user_input not valid
 	if not input_valid:
-#		return active_gs.get_end_of_game(), active_gs.get_buff()
 		return active_gs.get_end_of_game(), active_gs.io.get_buff()
 
 	# for valid user_input, increment move count and run pre_action, cmd_exe, post_action, and auto_action
@@ -63,5 +61,4 @@ def app_main(user_input):
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 
-#	return active_gs.get_end_of_game(), active_gs.get_buff()
 	return active_gs.get_end_of_game(), active_gs.io.get_buff()

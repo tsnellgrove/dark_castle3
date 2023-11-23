@@ -108,7 +108,7 @@ Version 3.80 Goals
 	- DONE: update existing buffer methods (in gs) to action io.buff_dict
 	- DONE: test
 	- DONE: comment out gs.state_dict['out_buff']
-	- INPROC: get_buff()
+	- DONE: get_buff()
 		- DONE: create io method for get_buff
 		- DONE: update existing get_buff calls to point to io method
 			- DONE: app_main
@@ -116,7 +116,7 @@ Version 3.80 Goals
 		- DONE: test
 		- DONE: comment out gs.get_buff
 		- DONE: test
-		- TBD: clean up comments in gs, app_main, and start_up
+		- DONE: clean up comments in gs, app_main, and start_up
 	- TBD: reset_buff()
 		- TBD: create io method for buff_reset
 		- TBD: update existing reset calls to point to io method
