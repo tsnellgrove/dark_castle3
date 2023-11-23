@@ -85,14 +85,14 @@ Version 3.80 Goals
 	- DONE: test
 	- DONE: clean-up gs_class_def(), mk_def_pkl(), startup(), base_class_def()
 
-- INPROC: unify descript approach:
+- DONE: unify descript approach:
 	- DONE: investigate auto-gen entries in static_dict
 	- DONE: instantiate get_descript_str() in io
 	- DONE: redirect read() to gs.io.get_str()
 	- DONE: test
 	- DONE: redirect examine() to gs.io.get_str()
 	- DONE: test
-	- TBD: clean-up base_class_def()
+	- DONE: clean-up base_class_def()
 
 - TBD: think through a buff_d() method that auto-buffers the called description
 
@@ -104,6 +104,10 @@ Version 3.80 Goals
 - TBD: centralize all static_dict calls to descript method
 	- TBD: [DOC] abstraction allows for changes in static_dict structure in the future with minimal impact
 
+- TBD: long over-due game_state clean-up
+	- TBD: skim through notes on renaming gs and fixing get_room
+	- TBD: rename gs_class => gs
+	- TBD: finally fix get_room => rename and move to gs.map
 
 - TBD: decide if descript & buffer should both be in io... or should each have its own sub-class?
 
