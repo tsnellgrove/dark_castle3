@@ -289,7 +289,7 @@ map = Map([{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y'
 
 io = IO('io', # name
 		{}, # dyn_dict
-		{'new_buff' : ""} # buff_dict
+		{'current_turn' : ""} # buff_dict
 		)
 
 # *** Hierarchy-Based Object Re-assignment ***

@@ -104,12 +104,14 @@ Version 3.80 Goals
 - INPROC: migrate buffer() methods to io
 	- DONE: add buff_dict attribute to IO class
 	- DONE: update mk_def_pkl() with buff_dict definition
-	- TBD: update existing buff_get() and buff_reset() methods (in gs) to act on io.buff_dict
-	- TBD: update existing buffer methods (in gs) to action io.buff_dict
+	- DONE: update existing buff_get() and buff_reset() methods (in gs) to act on io.buff_dict
+	- DONE: update existing buffer methods (in gs) to action io.buff_dict
+	- TBD: test
 	- TBD: create io methods for get & reset buff_dict
 	- TBD: update existing get & reset calls to point to io methods
 	- TBD: create buffer method in IO class
 	- TBD: create unified buff_d() method in IO class
+	- TBD: decide whether buff_debug_err() stays in gs or moves to io (will need to pass gs.debug if moves)
 	- TBD: update existing buffer() calls to point to IO class
 	- TBD: create custom buffer() methods in IO class
 	- TBD: update existing buffer() calls to point to IO class

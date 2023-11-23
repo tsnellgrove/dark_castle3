@@ -108,22 +108,32 @@ class GameState(object):
 
 	### buffer ###
 	def get_buff(self):
-		return self._state_dict['out_buff']
+#		return self._state_dict['out_buff']
+		return self.io.buff_dict['current_turn']
 
 	def buffer(self, output_str):
-		out_buff_old = self._state_dict['out_buff']
+#		out_buff_old = self._state_dict['out_buff']
+		out_buff_old = self.io.buff_dict['current_turn']
 		out_buff_new = out_buff_old + "\n" + output_str + "\n"
-		self._state_dict['out_buff'] = out_buff_new
+#		self._state_dict['out_buff'] = out_buff_new
+		self.io.buff_dict['current_turn'] = out_buff_new
+		return
 
 	def buff_no_cr(self, output_str):
-		out_buff_old = self._state_dict['out_buff']
+#		out_buff_old = self._state_dict['out_buff']
+		out_buff_old = self.io.buff_dict['current_turn']
 		out_buff_new = out_buff_old + output_str
-		self._state_dict['out_buff'] = out_buff_new
+#		self._state_dict['out_buff'] = out_buff_new
+		self.io.buff_dict['current_turn'] = out_buff_new
+		return
 
 	def buff_cr(self):
-		out_buff_old = self._state_dict['out_buff']
+#		out_buff_old = self._state_dict['out_buff']
+		out_buff_old = self.io.buff_dict['current_turn']
 		out_buff_new = out_buff_old + "\n"
-		self._state_dict['out_buff'] = out_buff_new
+#		self._state_dict['out_buff'] = out_buff_new
+		self.io.buff_dict['current_turn'] = out_buff_new
+		return
 
 	def buff_try_key(self, desc_key):
 		try:
@@ -138,7 +148,8 @@ class GameState(object):
 			self.buffer(static_dict['misc_err_' + str(random.randint(0, 4))])
 
 	def reset_buff(self):
-		self._state_dict['out_buff'] = ""
+#		self._state_dict['out_buff'] = ""
+		self.io.buff_dict['current_turn'] = "" 
 
 	### obj representation (for printing) ###
 	def __repr__(self):
