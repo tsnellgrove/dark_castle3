@@ -47,7 +47,6 @@ class Writing(Invisible):
 		"""Provides the current description of an object.
 		"""
 		try:
-#			return active_gs.get_dyn_static_dict(self.descript_key)
 			return active_gs.io.get_dyn_dict(self.descript_key)
 		except:
 			try:

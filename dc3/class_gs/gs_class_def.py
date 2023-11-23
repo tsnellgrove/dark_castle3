@@ -10,10 +10,8 @@ from dc3.data.static_gbl import static_dict
 
 ### classes
 class GameState(object):
-#	def __init__(self, name, dyn_static_dict, points_earned_dict, state_dict, map, io, hero):
 	def __init__(self, name, points_earned_dict, state_dict, map, io, hero):
 		self._name = name
-#		self._dyn_static_dict = dyn_static_dict
 		self._points_earned_dict = points_earned_dict
 		self._state_dict = state_dict
 		self._map = map
@@ -41,17 +39,6 @@ class GameState(object):
 	@property
 	def hero(self):
 		return self._hero
-
-	### descriptions ###
-#	def get_dyn_static_dict(self, descript_key):
-#		if descript_key not in self._dyn_static_dict:
-#			raise KeyError("key does not exist in dict")
-#			return 
-#		return self._dyn_static_dict[descript_key]
-
-#	def set_dyn_static_dict(self, descript_key, descript_val):
-#		self._dyn_static_dict[descript_key] = descript_val # adds key value pair if it does not exist
-#		return 
 
 	### score ###
 	def get_points_earned_state(self, score_key):

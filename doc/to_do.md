@@ -83,13 +83,14 @@ Version 3.80 Goals
 	- DONE: update startup() to call gs.io.dyn_dict
 	- DONE: update base_class_def() to call gs.io.dyn_dict
 	- DONE: test
-	- TBD: clean-up gs_class_def(), mk_def_pkl(), startup(), base_class_def()
+	- DONE: clean-up gs_class_def(), mk_def_pkl(), startup(), base_class_def()
 
 - TBD: unify descript approach:
 	- TBD: investigate auto-gen entries in static_dict
 	- TBD: move get_descript_str() to io
 	- TBD: eliminate direct calls to static_dict()
 
+- TBD: decide if descript & buffer should both be in io... or should each have its own sub-class?
 
 things to go into io
 	buff_dict
