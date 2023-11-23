@@ -43,16 +43,16 @@ class Writing(Invisible):
 		return True
 
 	# *** complex methods ***
-	def get_descript_str(self, active_gs):
-		"""Provides the current description of an object.
-		"""
-		try:
-			return active_gs.io.get_dyn_dict(self.descript_key)
-		except:
-			try:
-				return static_dict[self.descript_key]
-			except:
-				return f"The {self.full_name} is simply indescribable."
+#	def get_descript_str(self, active_gs):
+#		"""Provides the current description of an object.
+#		"""
+#		try:
+#			return active_gs.io.get_dyn_dict(self.descript_key)
+#		except:
+#			try:
+#				return static_dict[self.descript_key]
+#			except:
+#				return f"The {self.full_name} is simply indescribable."
 	
 	# *** verb methods ***
 	def read(self, active_gs, mode=None):
@@ -62,7 +62,8 @@ class Writing(Invisible):
 			mode = 'std'
 		creature = active_gs.hero
 
-		active_gs.buffer(self.get_descript_str(active_gs))
+#		active_gs.buffer(self.get_descript_str(active_gs))
+		active_gs.buffer(active_gs.io.get_str(self.descript_key, self.full_name))
 		return
 
 
@@ -124,7 +125,8 @@ class ViewOnly(Writing):
 
 		if self.get_title_str(active_gs) is not None:
 			active_gs.buffer(self.get_title_str(active_gs))
-		active_gs.buffer(self.get_descript_str(active_gs))
+#		active_gs.buffer(self.get_descript_str(active_gs))
+		active_gs.buffer(active_gs.io.get_str(self.descript_key, self.full_name))
 		if self.has_writing() or self.has_cond(active_gs) or self.has_contain(active_gs):
 			active_gs.buff_cr()
 			self.disp_cond(active_gs)

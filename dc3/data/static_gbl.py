@@ -10,7 +10,7 @@
 ### (because static_init => class_def) ###
 
 
-### description dict ###
+### static dict ###
 static_dict = {
 
 	### universal constants ###

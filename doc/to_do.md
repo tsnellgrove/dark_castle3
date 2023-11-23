@@ -76,7 +76,7 @@ Version 3.80 Goals
 	- DONE: define io in mk_def_pkl()
 	- DONE: test
 
-- INPROC: move dyn_dict to io
+- DONE: move dyn_dict to io
 	- DONE: add dyn_dict as attribute of IO class
 	- DONE: add get & set methods for dyn_dict
 	- DONE: add dyn_dict to attribute def of io in mk_def_pkl()
@@ -85,10 +85,25 @@ Version 3.80 Goals
 	- DONE: test
 	- DONE: clean-up gs_class_def(), mk_def_pkl(), startup(), base_class_def()
 
-- TBD: unify descript approach:
-	- TBD: investigate auto-gen entries in static_dict
-	- TBD: move get_descript_str() to io
-	- TBD: eliminate direct calls to static_dict()
+- INPROC: unify descript approach:
+	- DONE: investigate auto-gen entries in static_dict
+	- DONE: instantiate get_descript_str() in io
+	- DONE: redirect read() to gs.io.get_str()
+	- DONE: test
+	- DONE: redirect examine() to gs.io.get_str()
+	- DONE: test
+	- TBD: clean-up base_class_def()
+
+- TBD: think through a buff_d() method that auto-buffers the called description
+
+- TBD: eliminate direct calls to static_dict()
+	- TBD: think through approach
+
+- TBD: [DOC] purpose of dyn_dict
+
+- TBD: centralize all static_dict calls to descript method
+	- TBD: [DOC] abstraction allows for changes in static_dict structure in the future with minimal impact
+
 
 - TBD: decide if descript & buffer should both be in io... or should each have its own sub-class?
 

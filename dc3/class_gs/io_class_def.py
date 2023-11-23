@@ -3,6 +3,9 @@
 # date: Nov 22, 2023
 # description: class deffinition module for io
 
+### import
+from dc3.data.static_gbl import static_dict
+
 ### classes
 class IO(object):
 	def __init__(self, name, dyn_dict):
@@ -29,3 +32,14 @@ class IO(object):
 	def set_dyn_dict(self, key, val):
 		self.dyn_dict[key] = val # adds key value pair if it does not exist
 		return 
+
+	def get_str(self, key, ref):
+		"""Provides a string (usually a description) from dyn_dict and static_dict.
+		"""
+		try:
+			return self.get_dyn_dict(key)
+		except:
+			try:
+				return static_dict[key]
+			except:
+				return f"The {ref} is simply indescribable."
