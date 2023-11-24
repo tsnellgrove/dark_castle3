@@ -168,7 +168,7 @@ def interpreter(user_input, master_obj_lst):
 
 	# handle true one-word commands
 	if len(user_input_lst) == 1 and word1 == 'help':
-		active_gs.buffer(static_dict['help'])
+		active_gs.io.buff_e('help')
 		return 'help', [word1]
 	if len(user_input_lst) == 1 and word1 in one_word_only_lst:
 		return 'tru_1word', [word1]

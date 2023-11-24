@@ -75,3 +75,8 @@ class IO(object):
 		self.buffer(self.get_str(key, ref))
 		return
 
+	def buff_e(self, key):
+		"""Buffers the description associate with the provided key attribute. ref attribute is used to create a default description if none has been defined 
+		"""
+		self.buffer(self.get_str(key, 'experience'))
+		return

@@ -34,7 +34,7 @@ def end(active_gs):
 	active_gs.print_score()
 	active_gs.buffer("Your title is: " + title)
 	if game_ending == 'won':
-		active_gs.buffer(static_dict['credits'])
+		active_gs.io.buff_e('credits')
 	active_gs.set_end_of_game(True)
 
 	return

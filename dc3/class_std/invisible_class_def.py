@@ -610,7 +610,7 @@ class Invisible(object):
 			return True
 		if not tgt_creature.is_attackable: # consider re-homing 'not_attackable' txt to creature obj
 			try:
-				active_gs.buffer(static_dict[f"not_attackable_{src_creature.name}_{tgt_creature.name}"])
+				active_gs.io.buff_e(f"not_attackable_{src_creature.name}_{tgt_creature.name}")
 			except:
 				active_gs.buffer("You consider attacking but then think better of it. There must be another path to victory.")
 			return True
@@ -636,7 +636,7 @@ class Invisible(object):
 			active_gs.buffer(f"You'll have to exit the {creature.get_contained_by(active_gs).full_name} to attempt that.")
 			return True
 		if not active_gs.map.chk_valid_dir(self, dir):
-			active_gs.buffer(static_dict[f"dir_err_{random.randint(0, 4)}"])
+			active_gs.io.buff_e(f"dir_err_{random.randint(0, 4)}")
 			return True
 		door = active_gs.map.get_door(self, dir)
 		if not isinstance(door, str) and door.is_open == False:

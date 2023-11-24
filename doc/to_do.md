@@ -132,9 +132,18 @@ Version 3.80 Goals
 		- DONE: test
 		- DONE: clean up comments in base_class_def()
 	- TBD: buffer calls
-		- TBD: investigate how to best update active_gs.buffer(static_dict['x']) calls
-		- TBD: maybe create an active_gs.io.buff_e() method for events (no 'ref' attribute needed)
-		- TBD: investigate whether remaining active_gs.buffer("x") calls can be mass-updated with io
+		- DONE: investigate how to best update active_gs.buffer(static_dict['x']) calls
+		- DONE: maybe create an active_gs.io.buff_e() method for events (no 'ref' attribute needed)
+		- INPROC: update existing active_gs.buffer(static_dict['x']) with active_gs.io.buff_e('x')
+			- DONE: start_up()
+			- DONE: cmd_exe()
+			- DONE: ending()
+			- DONE: interp()
+			- DONE: invisible_class_def()
+			- TBD: mach_class_def()
+			- TBD: result_class_def()
+			- TBD: creature_class_def()
+		- TBD:: investigate whether remaining active_gs.buffer("x") calls can be mass-updated with io
 		- TBD: update existing buffer() calls to point to IO class
 	- TBD: custom buff calls
 		- TBD: create custom buffer() methods in IO class

@@ -19,10 +19,10 @@ def cmd_execute(active_gs, case, word_lst):
 				active_gs.print_score()
 				return
 			if word1 == 'version':
-				active_gs.buffer(static_dict['version'])
+				active_gs.io.buff_e('version')
 				return
 			if word1 == 'credits':
-				active_gs.buffer(static_dict['credits'])
+				active_gs.io.buff_e('credits')
 				return
 			if word1 == 'debug_poke53281,0':
 				active_gs.state_dict['debug'] = not active_gs.state_dict['debug']
