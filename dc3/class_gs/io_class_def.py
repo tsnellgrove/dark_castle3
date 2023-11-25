@@ -45,7 +45,7 @@ class IO(object):
 		return 
 
 	def get_str(self, key, ref):
-		"""Provides a string (usually a description) from dyn_dict and static_dict.
+		"""Provides a string (usually a description) from dyn_dict and static_dict. Includes failover to ref-based description.
 		"""
 		try:
 			return self.get_dyn_dict(key)
@@ -54,6 +54,15 @@ class IO(object):
 				return static_dict[key]
 			except:
 				return f"The {ref} is simply indescribable."
+
+	def get_str_no_ref(self, key):
+			"""Provides a string (usually a description) from dyn_dict and static_dict. No ref / fail-over. Useful for cases where the calling method will provide alternate text of its own on dict lookup failure.
+			"""
+			try:
+				return self.get_dyn_dict(key)
+			except:
+				return static_dict[key]
+				
 
 	### buffer methods ###
 	def get_buff(self):
@@ -70,13 +79,19 @@ class IO(object):
 		return
 
 	def buff_d(self, key, ref):
-		"""Buffers the description associate with the provided key attribute. ref attribute is used to create a default description if none has been defined 
+		"""Buffer Description. Buffers the description associate with the provided key attribute. ref attribute is used to create a default description if none has been defined 
 		"""
 		self.buffer(self.get_str(key, ref))
 		return
 
 	def buff_e(self, key):
-		"""Buffers the description associate with the provided key attribute. ref attribute is used to create a default description if none has been defined 
+		"""Buffer Event. Buffers the event description associate with the provided key attribute. 
 		"""
 		self.buffer(self.get_str(key, 'experience'))
+		return
+	
+	def buff_a(self, key):
+		"""Buffer Auto-Gen. Buffers the event description associate with the provided key attribute. Fails if key does not exist. 
+		"""
+		self.buffer(self.get_str_no_ref(key))
 		return
