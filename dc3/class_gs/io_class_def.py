@@ -79,19 +79,19 @@ class IO(object):
 		return
 
 	def buff_d(self, key, ref):
-		"""Buffer Description. Buffers the description associate with the provided key attribute. ref attribute is used to create a default description if none has been defined 
+		"""Buffer Description. Buffers the description associate with the provided key attribute. ref attribute is used to create a default description if none has been defined in static_dict.
 		"""
 		self.buffer(self.get_str(key, ref))
 		return
 
 	def buff_e(self, key):
-		"""Buffer Event. Buffers the event description associate with the provided key attribute. 
+		"""Buffer Event. Buffers the event description associated with the provided key attribute. Unlike buff_e(), there is no ref attribute for the default description.
 		"""
 		self.buffer(self.get_str(key, 'experience'))
 		return
 	
 	def buff_a(self, key):
-		"""Buffer Auto-Gen. Buffers the event description associate with the provided key attribute. Fails if key does not exist. 
+		"""Buffer Auto-Gen. Buffers the description associated with the provided auto-gen key attribute. Fails if key does not exist - which allows local try / except defaults built into the calling method to be expressed.
 		"""
 		self.buffer(self.get_str_no_ref(key))
 		return

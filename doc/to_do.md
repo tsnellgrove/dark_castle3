@@ -142,7 +142,7 @@ Version 3.80 Goals
 			- DONE: interp()
 			- DONE: invisible_class_def()
 			- DONE: creature_class_def()
-			- TBD: mach_class_def()
+			- DONE: mach_class_def()
 			- TBD: result_class_def()
 		- TBD:: investigate whether remaining active_gs.buffer("x") calls can be mass-updated with io
 		- TBD: update existing buffer() calls to point to IO class

@@ -196,22 +196,27 @@ class Warning(Invisible):
 		self.warn_count += 1
 		warn_key = self.name + "_" + str(self.warn_count)
 		warn_key_recur = self.name + "_1"
-		warn_default = "I'm not sure that's a good idea Burt..."
-		warn_close = "Don't say I didn't warn you Burt..."
+#		warn_default = "I'm not sure that's a good idea Burt..."
+#		warn_close = "Don't say I didn't warn you Burt..."
 		if self.warn_max == 0:
 			cmd_override = True
 			try:
-				active_gs.buffer(static_dict[warn_key_recur])
+#				active_gs.buffer(static_dict[warn_key_recur])
+				active_gs.io.buff_a(warn_key_recur)
 			except:
-				active_gs.buffer(warn_default)
+#				active_gs.buffer(warn_default)
+				active_gs.buffer("I'm not sure that's a good idea Burt...")
 		elif self.warn_count < self.warn_max:
 			cmd_override = True
 			try:
-				active_gs.buffer(static_dict[warn_key])
+#				active_gs.buffer(static_dict[warn_key])
+				active_gs.io.buff_a(warn_key)
 			except:
-				active_gs.buffer(warn_default)
+#				active_gs.buffer(warn_default)
+				active_gs.buffer("I'm not sure that's a good idea Burt...")
 		elif self.warn_count == self.warn_max:
-			active_gs.buffer(warn_close)
+#			active_gs.buffer(warn_close)
+			active_gs.buffer("Don't say I didn't warn you Burt...")
 		return cmd_override
 
 
@@ -291,19 +296,23 @@ class Timer(Invisible):
 		self.timer_count += 1				
 		timer_key = self.name + "_" + str(self.timer_count)
 		timer_key_constant = self.name + "_1"
-		timer_default = "Beep!"
+#		timer_default = "Beep!"
 
 		if active_gs.get_room().chk_is_vis(self.alert_anchor, active_gs):
 			if self.message_type == 'variable':
 				try:
-					active_gs.buffer(static_dict[timer_key])
+#					active_gs.buffer(static_dict[timer_key])
+					active_gs.io.buff_a(timer_key)
 				except:
-					active_gs.buffer(timer_default)
+#					active_gs.buffer(timer_default)
+					active_gs.buffer("Beep!")
 			elif self.message_type == 'constant':
 				try:
-					active_gs.buffer(static_dict[timer_key_constant])
+#					active_gs.buffer(static_dict[timer_key_constant])
+					active_gs.io.buff_a(timer_key_constant)
 				except:
-					active_gs.buffer(timer_default)
+#					active_gs.buffer(timer_default)
+					active_gs.buffer("Beep!")
 
 		if self.timer_count == self.timer_max:
 			self.active = False
