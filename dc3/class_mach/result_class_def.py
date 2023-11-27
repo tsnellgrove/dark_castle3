@@ -25,7 +25,6 @@ class BufferOnlyResult(object):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-#			active_gs.buffer(static_dict[self.name])
 			active_gs.io.buff_a(self.name)
 		except:
 			pass
@@ -50,7 +49,6 @@ class BufferAndEndResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-#			active_gs.buffer(static_dict[self.name])
 			active_gs.io.buff_a(self.name)
 		except:
 			pass
@@ -69,7 +67,6 @@ class BufferAndGiveResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-#			active_gs.buffer(static_dict[self.name])
 			active_gs.io.buff_a(self.name)
 		except:
 			pass
@@ -94,7 +91,6 @@ class AddObjToRoomResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-#			active_gs.buffer(static_dict[self.name])
 			active_gs.io.buff_a(self.name)
 		except:
 			pass
@@ -129,7 +125,6 @@ class AddObjChgDescriptResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-#			active_gs.buffer(static_dict[self.name])
 			active_gs.io.buff_a(self.name)
 		except:
 			pass
@@ -155,7 +150,6 @@ class AddObjToRoomAndDescriptResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-#			active_gs.buffer(static_dict[self.name])
 			active_gs.io.buff_a(self.name)
 		except:
 			pass
@@ -209,7 +203,6 @@ class AttackBurtResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-#			active_gs.buffer(static_dict[self.name])
 			active_gs.io.buff_a(self.name)
 		except:
 			pass
@@ -238,7 +231,6 @@ class StartTimerResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-#			active_gs.buffer(static_dict[self.name])
 			active_gs.io.buff_a(self.name)
 		except:
 			pass
@@ -266,7 +258,6 @@ class TimerAndCreatureItemResult(StartTimerResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-#			active_gs.buffer(static_dict[self.name])
 			active_gs.io.buff_a(self.name)
 		except:
 			pass
@@ -295,7 +286,6 @@ class ChgCreatureDescAndStateResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-#			active_gs.buffer(static_dict[self.name])
 			active_gs.io.buff_a(self.name)
 		except:
 			pass
@@ -324,7 +314,6 @@ class PutItemInHandResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-#			active_gs.buffer(static_dict[self.name])
 			active_gs.io.buff_a(self.name)
 		except:
 			pass
@@ -355,7 +344,6 @@ class TravelResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-#			active_gs.buffer(static_dict[self.name])
 			active_gs.io.buff_a(self.name)
 		except:
 			pass
