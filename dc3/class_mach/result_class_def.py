@@ -25,7 +25,8 @@ class BufferOnlyResult(object):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(static_dict[self.name])
+#			active_gs.buffer(static_dict[self.name])
+			active_gs.io.buff_a(self.name)
 		except:
 			pass
 		return mach_state, self.cmd_override
@@ -49,7 +50,8 @@ class BufferAndEndResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(static_dict[self.name])
+#			active_gs.buffer(static_dict[self.name])
+			active_gs.io.buff_a(self.name)
 		except:
 			pass
 		active_gs.set_game_ending(self.ending)
@@ -67,7 +69,8 @@ class BufferAndGiveResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(static_dict[self.name])
+#			active_gs.buffer(static_dict[self.name])
+			active_gs.io.buff_a(self.name)
 		except:
 			pass
 		creature = active_gs.hero
@@ -91,7 +94,8 @@ class AddObjToRoomResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(static_dict[self.name])
+#			active_gs.buffer(static_dict[self.name])
+			active_gs.io.buff_a(self.name)
 		except:
 			pass
 		room_obj = active_gs.get_room()
@@ -125,7 +129,8 @@ class AddObjChgDescriptResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(static_dict[self.name])
+#			active_gs.buffer(static_dict[self.name])
+			active_gs.io.buff_a(self.name)
 		except:
 			pass
 		room_obj = active_gs.get_room()
@@ -150,7 +155,8 @@ class AddObjToRoomAndDescriptResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(static_dict[self.name])
+#			active_gs.buffer(static_dict[self.name])
+			active_gs.io.buff_a(self.name)
 		except:
 			pass
 		room_obj = active_gs.get_room()
@@ -203,7 +209,8 @@ class AttackBurtResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(static_dict[self.name])
+#			active_gs.buffer(static_dict[self.name])
+			active_gs.io.buff_a(self.name)
 		except:
 			pass
 #			cmd_execute(active_gs, '2word', [self.creature_obj, 'attack_burt'])
@@ -231,7 +238,8 @@ class StartTimerResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(static_dict[self.name])
+#			active_gs.buffer(static_dict[self.name])
+			active_gs.io.buff_a(self.name)
 		except:
 			pass
 		self.timer_obj.start()
@@ -258,7 +266,8 @@ class TimerAndCreatureItemResult(StartTimerResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(static_dict[self.name])
+#			active_gs.buffer(static_dict[self.name])
+			active_gs.io.buff_a(self.name)
 		except:
 			pass
 		self.timer_obj.start()
@@ -286,7 +295,8 @@ class ChgCreatureDescAndStateResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(static_dict[self.name])
+#			active_gs.buffer(static_dict[self.name])
+			active_gs.io.buff_a(self.name)
 		except:
 			pass
 		self.creature_obj.descript_key = self.new_desc_key
@@ -314,7 +324,8 @@ class PutItemInHandResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(static_dict[self.name])
+#			active_gs.buffer(static_dict[self.name])
+			active_gs.io.buff_a(self.name)
 		except:
 			pass
 # need to eventually change this to 'creature.take' when this is enabled
@@ -344,7 +355,8 @@ class TravelResult(BufferOnlyResult):
 
 	def result_exe(self, active_gs, mach_state):
 		try:
-			active_gs.buffer(static_dict[self.name])
+#			active_gs.buffer(static_dict[self.name])
+			active_gs.io.buff_a(self.name)
 		except:
 			pass
 		room = active_gs.map.get_obj_room(self.creature, active_gs)
