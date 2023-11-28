@@ -131,11 +131,11 @@ Version 3.80 Goals
 		- DONE: update read() and examine() to call buff_d()
 		- DONE: test
 		- DONE: clean up comments in base_class_def()
-	- TBD: buffer calls
+	- INPROC: buffer calls
 		- DONE: investigate how to best update active_gs.buffer(static_dict['x']) calls
 		- DONE: maybe create an active_gs.io.buff_e() method for events (no 'ref' attribute needed)
 		- DONE: create buff_a() routine so that calling methods with failure fall-backs can use them
-		- INPROC: update existing active_gs.buffer(static_dict['x']) with active_gs.io.buff_e('x')
+		- DONE: update existing active_gs.buffer(static_dict['x']) with active_gs.io.buff_e('x')
 			- DONE: start_up()
 			- DONE: cmd_exe()
 			- DONE: ending()
@@ -143,7 +143,7 @@ Version 3.80 Goals
 			- DONE: invisible_class_def()
 			- DONE: creature_class_def()
 			- DONE: mach_class_def()
-			- INPROC: result_class_def()
+			- DONE: result_class_def()
 			- 	DONE: sort out DoorToggle result with compound dict lookup and local buffer
 		- TBD:: investigate whether remaining active_gs.buffer("x") calls can be mass-updated with io
 		- TBD: update existing buffer() calls to point to IO class
