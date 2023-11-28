@@ -145,7 +145,7 @@ Version 3.80 Goals
 			- DONE: mach_class_def()
 			- DONE: result_class_def()
 			- 	DONE: sort out DoorToggle result with compound dict lookup and local buffer
-		- TBD:: investigate whether remaining active_gs.buffer("x") calls can be mass-updated with io
+		- TBD: investigate whether remaining active_gs.buffer("x") calls can be mass-updated with io
 		- TBD: update existing buffer() calls to point to IO class
 	- TBD: custom buff calls
 		- TBD: create custom buffer() methods in IO class
