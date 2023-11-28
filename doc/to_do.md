@@ -144,7 +144,7 @@ Version 3.80 Goals
 			- DONE: creature_class_def()
 			- DONE: mach_class_def()
 			- INPROC: result_class_def()
-			- TBD: sort out DoorToggle result with compound dict lookup and local buffer
+			- 	DONE: sort out DoorToggle result with compound dict lookup and local buffer
 		- TBD:: investigate whether remaining active_gs.buffer("x") calls can be mass-updated with io
 		- TBD: update existing buffer() calls to point to IO class
 	- TBD: custom buff calls
