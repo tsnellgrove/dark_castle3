@@ -18,7 +18,7 @@ Version 3.80 Goals
 	- DONE: think through isolation of static vs. dynamic data
 	- DONE: think through modularization of active_gs
 	- DONE: think through desire to modularize descriptions by Creature()
-	- DONE: research how to efficiently rename active_gs.buffer() => active_gs.<x>.buffer()
+	- DONE: research how to efficiently rename active_gs.io.buffer() => active_gs.<x>.buffer()
 		LINK: https://www.youtube.com/watch?v=M6EPqUctGrU
 
 - DONE: should static_dict actually be a tupple / namedtupple?
@@ -131,11 +131,11 @@ Version 3.80 Goals
 		- DONE: update read() and examine() to call buff_d()
 		- DONE: test
 		- DONE: clean up comments in base_class_def()
-	- INPROC: buffer calls
-		- DONE: investigate how to best update active_gs.buffer(static_dict['x']) calls
+	- DONE: buffer calls
+		- DONE: investigate how to best update active_gs.io.buffer(static_dict['x']) calls
 		- DONE: maybe create an active_gs.io.buff_e() method for events (no 'ref' attribute needed)
 		- DONE: create buff_a() routine so that calling methods with failure fall-backs can use them
-		- DONE: update existing active_gs.buffer(static_dict['x']) with active_gs.io.buff_e('x')
+		- DONE: update existing active_gs.io.buffer(static_dict['x']) with active_gs.io.buff_e('x')
 			- DONE: start_up()
 			- DONE: cmd_exe()
 			- DONE: ending()
@@ -145,8 +145,8 @@ Version 3.80 Goals
 			- DONE: mach_class_def()
 			- DONE: result_class_def()
 			- 	DONE: sort out DoorToggle result with compound dict lookup and local buffer
-		- TBD: investigate whether remaining active_gs.buffer("x") calls can be mass-updated with io
-		- TBD: update existing buffer() calls to point to IO class
+		- DONE: investigate whether remaining active_gs.io.buffer("x") calls can be mass-updated with io
+		- DONE: update existing buffer() calls to point to IO class
 	- TBD: custom buff calls
 		- TBD: create custom buffer() methods in IO class
 		- TBD: decide if buff_debug_err() stays in gs or moves to io (will need to pass gs.debug if moves)

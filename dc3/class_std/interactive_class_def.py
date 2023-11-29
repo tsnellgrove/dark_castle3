@@ -64,7 +64,7 @@ class OpenableMixIn(object):
 			mode = 'std'
 		creature = active_gs.hero
 
-		active_gs.buffer("Closed")
+		active_gs.io.buffer("Closed")
 
 		self.is_open = False
 		return
@@ -106,7 +106,7 @@ class LockableMixIn(object):
 			mode = 'std'
 		creature = active_gs.hero
 
-		active_gs.buffer("Unlocked")
+		active_gs.io.buffer("Unlocked")
 
 		self.is_unlocked = True
 		return
@@ -118,7 +118,7 @@ class LockableMixIn(object):
 			mode = 'std'
 		creature = active_gs.hero
 
-		active_gs.buffer("Locked")
+		active_gs.io.buffer("Locked")
 
 		self.is_unlocked = False
 		return
@@ -262,7 +262,7 @@ class ContainsMixIn(object):
 		creature.hand_lst_remove(obj)
 		self.contain_lst_append(obj, active_gs)
 
-		active_gs.buffer("Done")
+		active_gs.io.buffer("Done")
 		return
 
 
@@ -273,8 +273,8 @@ class ContainsMixIn(object):
 		if mode is None:
 			mode = 'std'
 		
-		active_gs.buffer(f"The weight capacity of the {self.full_name} is {self.max_weight}.")
-		active_gs.buffer(f"The object count capacity of the {self.full_name} is {self.max_obj}.")
+		active_gs.io.buffer(f"The weight capacity of the {self.full_name} is {self.max_weight}.")
+		active_gs.io.buffer(f"The object count capacity of the {self.full_name} is {self.max_obj}.")
 		return
 
 
@@ -379,11 +379,11 @@ class Seat(ContainerFixedSimple):
 			return 
 		
 		if creature == active_gs.hero:
-			active_gs.buffer(f"You are now seated in the {self.full_name}.")
+			active_gs.io.buffer(f"You are now seated in the {self.full_name}.")
 			active_gs.buff_try_key(f"{creature.name}_enter_{self.descript_key}")
 			creature.disp_in_reach(active_gs)
 		else:
-			active_gs.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
+			active_gs.io.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
 		return
 
 	def exit(self, active_gs, mode=None, creature=None):
@@ -402,10 +402,10 @@ class Seat(ContainerFixedSimple):
 			return 
 		
 		if creature == active_gs.hero:
-			active_gs.buffer(f"You are now standing in the {room.full_name}.")
+			active_gs.io.buffer(f"You are now standing in the {room.full_name}.")
 			active_gs.buff_try_key(f"{creature.name}_exit_{self.name}")
 		else:
-			active_gs.buffer(f"The {creature.full_name} is now standing in the {room.full_name}.")
+			active_gs.io.buffer(f"The {creature.full_name} is now standing in the {room.full_name}.")
 		return
 
 

@@ -26,7 +26,7 @@ def cmd_execute(active_gs, case, word_lst):
 				return
 			if word1 == 'debug_poke53281,0':
 				active_gs.state_dict['debug'] = not active_gs.state_dict['debug']
-				active_gs.buffer(f"Debug Mode is now set to {active_gs.state_dict['debug']}.")
+				active_gs.io.buffer(f"Debug Mode is now set to {active_gs.state_dict['debug']}.")
 				return
 			active_gs.buff_debug_err("[CMD] tru_1word case not found")
 			return

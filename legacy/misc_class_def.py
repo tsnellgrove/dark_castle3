@@ -29,7 +29,7 @@ class Liquid(ViewOnly):
 
 		creature.get_hand_item().contain_lst.remove(self)
 
-		active_gs.buffer("Drunk.")
+		active_gs.io.buffer("Drunk.")
 		active_gs.buff_try_key(f"{creature.name}_drink_{self.name}")
 		return 
 

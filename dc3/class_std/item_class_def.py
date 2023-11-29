@@ -50,9 +50,9 @@ class Item(ViewOnly):
 			mode = 'std'
 		creature = active_gs.hero
 		
-		active_gs.buffer("Taken")
+		active_gs.io.buffer("Taken")
 		if creature.chk_is_worn(self):
-			active_gs.buffer(f"You are no longer wearing the {self.full_name}.")
+			active_gs.io.buffer(f"You are no longer wearing the {self.full_name}.")
 			active_gs.buff_try_key(f"{creature.name}_remove_{self.descript_key}")
 		
 		active_gs.get_room().remove_item(self, active_gs)
@@ -72,7 +72,7 @@ class Item(ViewOnly):
 		else:
 			active_gs.get_room().floor_lst_append(self)
 		
-		active_gs.buffer("Dropped")
+		active_gs.io.buffer("Dropped")
 		return 
 
 	# *** debug methods ***
@@ -82,7 +82,7 @@ class Item(ViewOnly):
 		if mode is None:
 			mode = 'std'
 		
-		active_gs.buffer(f"The weight of the {self.full_name} is {self.weight}.")
+		active_gs.io.buffer(f"The weight of the {self.full_name} is {self.weight}.")
 		return
 
 
@@ -106,7 +106,7 @@ class Food(Item):
 
 		creature.hand_lst_remove(self)
 		
-		active_gs.buffer(f"Eaten.")
+		active_gs.io.buffer(f"Eaten.")
 		active_gs.buff_try_key(f"{creature.name}_eat_{self.descript_key}")
 		return 
 
@@ -132,7 +132,7 @@ class Liquid(Item):
 #		obj.contain_lst.remove(self)
 		obj.remove_item(self, active_gs)
 
-		active_gs.buffer("Drunk.")
+		active_gs.io.buffer("Drunk.")
 		active_gs.buff_try_key(f"{creature.name}_drink_{self.descript_key}")
 		return 
 
@@ -164,7 +164,7 @@ class Garment(Item):
 		creature.hand_lst_remove(self)
 		creature.worn_lst_append(self)
 		
-		active_gs.buffer("Worn.")
+		active_gs.io.buffer("Worn.")
 		active_gs.buff_try_key(f"{creature.name}_wear_{self.descript_key}")
 		return 
 

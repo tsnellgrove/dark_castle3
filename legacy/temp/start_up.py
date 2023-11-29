@@ -29,10 +29,10 @@ def start_me_up():
 			obj.mach_state = portcullis_code
 
 	### introductory text ###
-	active_gs.buffer(static_dict["introduction"])
-	active_gs.buffer("*** Entrance ***")
-	active_gs.buffer(static_dict["entrance"])
-	active_gs.buffer("There is a Front Gate to the north, a path to the south, a leap down to the moat to the east, and a leap down to the moat to the west.")
+	active_gs.io.buffer(static_dict["introduction"])
+	active_gs.io.buffer("*** Entrance ***")
+	active_gs.io.buffer(static_dict["entrance"])
+	active_gs.io.buffer("There is a Front Gate to the north, a path to the south, a leap down to the moat to the east, and a leap down to the moat to the west.")
 
 	### dump updated objects to save_obj_pickle ###
 	with open('save_obj_pickle2', 'wb') as f:

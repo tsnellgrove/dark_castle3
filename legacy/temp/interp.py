@@ -83,7 +83,7 @@ def help(active_gs, option):
 			output = help_dict['help_debug'] + ', '.join(debug_verb_lst)
 	else:
 		output = help_dict['help']
-	active_gs.buffer(output)
+	active_gs.io.buffer(output)
 
 ### root_word_count - determines if user command contains root words
 def root_word_count(active_gs, word2_txt):
@@ -179,7 +179,7 @@ def interpreter(user_input, master_obj_lst):
 
 	# handle true one-word commands
 	if len(user_input_lst) == 1 and word1 == 'help':
-		active_gs.buffer(help_dict['help'])
+		active_gs.io.buffer(help_dict['help'])
 		return 'help', [word1]
 	if len(user_input_lst) == 1 and word1 in one_word_only_lst:
 		return 'tru_1word', [word1]
@@ -235,13 +235,13 @@ def interpreter(user_input, master_obj_lst):
 			creature = active_gs.hero
 			if len(user_input_lst) < 4 and 'with' not in user_input and not creature.hand_is_empty():
 				user_input_lst.extend(['with',creature.get_hand_item().name])
-				active_gs.buffer(f"(with the {creature.get_hand_item().full_name})")
+				active_gs.io.buffer(f"(with the {creature.get_hand_item().full_name})")
 			prep = 'with'
 		elif word1 in ['drink']:
 			creature = active_gs.hero
 			if len(user_input_lst) < 4 and 'from' not in user_input and not creature.hand_is_empty():
 				user_input_lst.extend(['from',creature.get_hand_item().name])
-				active_gs.buffer(f"(from the {creature.get_hand_item().full_name})")
+				active_gs.io.buffer(f"(from the {creature.get_hand_item().full_name})")
 			prep = 'from'
 		if prep not in user_input_lst:
 			error_msg = f"I don't see the word '{prep}' in that sentence."

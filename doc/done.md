@@ -1969,7 +1969,7 @@ Version 3.61 Goals
 		- DONE: comment out entrance_south_mach result and conditions obj
 - DONE: more scalable approach to warnings:
 	- DONE: warning improvement ideation
-		- IDEA: obj_name+str(count); if exist static_dict[key]: active_gs.buffer(static_dict[key]); else: buffer default
+		- IDEA: obj_name+str(count); if exist static_dict[key]: active_gs.io.buffer(static_dict[key]); else: buffer default
 		- IDEA: or maybe the pythonic approach here is "try" ?
 		- IDEA: initial Warning attributes = name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2
 		- IDEA: should be able to eliminate warn_key_1, warn_key_2
@@ -1992,7 +1992,7 @@ Version 3.61 Goals
 		- IDEA: can be triggered by function call timer_obj.start()
 		- IDEA: run for a set amount of time timer_max
 		- IDEA: increment timer_count each time a turn successfully passes (watch out for errors that don't count!)
-		- IDEA: if silent_timer == False: active_gs.buffer(timer_descript_key) where timer_descript_key = name + str(timer_count)
+		- IDEA: if silent_timer == False: active_gs.io.buffer(timer_descript_key) where timer_descript_key = name + str(timer_count)
 		- IDEA: timer attributes: name, active (T or F), timer_count, timer_max, message_type ('silent', 'variable', 'constant'), trigger_type = 'auto_pre_act'
 		- IDEA: like buttons, timers should be 'dumb' - the smarts live in a machine
 	- DONE: create Timer class

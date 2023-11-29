@@ -77,7 +77,7 @@ class Door(ViewOnly):
 			mode = 'std'
 		creature = active_gs.hero
 
-		active_gs.buffer("Unlocked")
+		active_gs.io.buffer("Unlocked")
 
 		self.is_unlocked = True
 		return
@@ -108,7 +108,7 @@ class Door(ViewOnly):
 			mode = 'std'
 		creature = active_gs.hero
 
-		active_gs.buffer("Closed")
+		active_gs.io.buffer("Closed")
 
 		self.is_open = False
 		return
@@ -121,7 +121,7 @@ class Door(ViewOnly):
 			mode = 'std'
 		creature = active_gs.hero
 
-		active_gs.buffer("Locked")
+		active_gs.io.buffer("Locked")
 
 		self.is_unlocked = False
 		return
@@ -231,7 +231,7 @@ class Container(Door):
 		creature.hand_lst_remove(obj)
 		self.contain_lst_append(obj)
 
-		active_gs.buffer("Done")
+		active_gs.io.buffer("Done")
 		return
 
 
@@ -337,10 +337,10 @@ class Seat(Surface):
 			return 
 		
 		if creature == active_gs.hero:
-			active_gs.buffer(f"You are now seated in the {self.full_name}.")
+			active_gs.io.buffer(f"You are now seated in the {self.full_name}.")
 			active_gs.buff_try_key(f"{creature.name}_enter_{self.name}")
 		else:
-			active_gs.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
+			active_gs.io.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
 		return
 
 
@@ -362,10 +362,10 @@ class Seat(Surface):
 			return 
 		
 		if creature == active_gs.hero:
-			active_gs.buffer(f"You are now standing in the {room.full_name}.")
+			active_gs.io.buffer(f"You are now standing in the {room.full_name}.")
 			active_gs.buff_try_key(f"{creature.name}_exit_{self.name}")
 		else:
-			active_gs.buffer(f"The {creature.full_name} is now standing in the {room.full_name}.")
+			active_gs.io.buffer(f"The {creature.full_name} is now standing in the {room.full_name}.")
 		return
 
 

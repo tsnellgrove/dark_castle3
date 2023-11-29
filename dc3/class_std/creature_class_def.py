@@ -136,9 +136,9 @@ class Creature(ViewOnly):
 			room = active_gs.map.get_obj_room(self, active_gs)
 			room.floor_lst_append(new_item)
 			if self == active_gs.hero:
-				active_gs.buffer(f"Your burden is too great. You drop the {new_item.full_name} on the floor.")
+				active_gs.io.buffer(f"Your burden is too great. You drop the {new_item.full_name} on the floor.")
 			else:
-				active_gs.buffer(f"The {self.full_name} is overburdened and must drop the {new_item.full_name} on the floor.")
+				active_gs.io.buffer(f"The {self.full_name} is overburdened and must drop the {new_item.full_name} on the floor.")
 			return
 		if not self.hand_is_empty():
 			self.bkpk_lst_append(self.get_hand_item())
@@ -354,7 +354,7 @@ class Creature(ViewOnly):
 						in_reach_disp_obj_lst.append(room_obj)
 		in_reach_disp_txt_lst = [obj.full_name for obj in in_reach_disp_obj_lst]
 		in_reach_str = ", ".join(in_reach_disp_txt_lst)
-		active_gs.buffer(f"From your position on the {seat_obj.full_name} you can just reach: {in_reach_str}")
+		active_gs.io.buffer(f"From your position on the {seat_obj.full_name} you can just reach: {in_reach_str}")
 
 	# *** verb methods ***
 	def show(self, obj, active_gs, mode=None):
@@ -370,7 +370,7 @@ class Creature(ViewOnly):
 			try:
 				active_gs.io.buff_a(f"{creature.name}_show_{self.name}_default")
 			except:
-				active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
+				active_gs.io.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 		return 
 
 	def give(self, obj, active_gs, mode=None):
@@ -389,7 +389,7 @@ class Creature(ViewOnly):
 				active_gs.io.buff_a(f"{creature.name}_give_{self.name}_default")
 				give_key = 'def_give'
 			except:
-				active_gs.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
+				active_gs.io.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 				return
 		if not self.give_dict[give_key]['accept']:
 			return
@@ -505,7 +505,7 @@ class Creature(ViewOnly):
 		else:
 			tgt_obj_disp = f"parry with the {tgt_obj.full_name}"
 		
-		active_gs.buffer(f"{src_creature_disp} with {src_obj_disp} and {tgt_creature_disp} to {tgt_obj_disp}!")
+		active_gs.io.buffer(f"{src_creature_disp} with {src_obj_disp} and {tgt_creature_disp} to {tgt_obj_disp}!")
 
 		# buffer a 'custom attack response' if it exists
 		# the response is unique to the deffender, attack obj, attacker, defense obj
@@ -531,7 +531,7 @@ class Creature(ViewOnly):
 		resolution_end_str = f"{lose_creature_disp} {static_dict[result_code]} "
 
 		# buffer the full 'attack resolution'
-		active_gs.buffer(f"{resolution_strt_str}{resolution_end_str}")
+		active_gs.io.buffer(f"{resolution_strt_str}{resolution_end_str}")
 		return 
 
 	def stand(self, active_gs, mode=None):
@@ -549,9 +549,9 @@ class Creature(ViewOnly):
 			return 
 
 		if self == active_gs.hero:
-			active_gs.buffer(f"You are now standing in the {room.full_name}.")
+			active_gs.io.buffer(f"You are now standing in the {room.full_name}.")
 		else:
-			active_gs.buffer(f"The {self.full_name} is now standing.")
+			active_gs.io.buffer(f"The {self.full_name} is now standing.")
 		return
 
 	### debug methods ###
@@ -563,7 +563,7 @@ class Creature(ViewOnly):
 		if mode is None:
 			mode = 'std'
 		
-		active_gs.buffer(f"The weight of the {self.full_name} is {self.weight}.")
+		active_gs.io.buffer(f"The weight of the {self.full_name} is {self.weight}.")
 		return
 
 

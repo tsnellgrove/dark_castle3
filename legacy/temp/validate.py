@@ -14,9 +14,9 @@ def validate(active_gs, case, word_lst):
 	if case == 'error':
 		output = word_lst[0]
 		if active_gs.state_dict['debug']:
-			active_gs.buffer(f"[INTERP] {output}")
+			active_gs.io.buffer(f"[INTERP] {output}")
 		else:
-			active_gs.buffer(f"{output}")
+			active_gs.io.buffer(f"{output}")
 		return False
 
 	# *** command errors ***

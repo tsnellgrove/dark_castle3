@@ -62,7 +62,7 @@ class ButtonSwitchMixIn(SwitchMixIn):
 
 		self.switch_state = 'pushed'
 
-		active_gs.buffer("Pushed.")
+		active_gs.io.buffer("Pushed.")
 		return 
 
 class ViewOnlyButtonSwitch(ButtonSwitchMixIn, ViewOnly):
@@ -92,7 +92,7 @@ class SpringSliderSwitchMixIn(ButtonSwitchMixIn):
 
 		self.switch_state = 'pulled'
 
-		active_gs.buffer("Pulled.")
+		active_gs.io.buffer("Pulled.")
 		return 
 
 
@@ -139,7 +139,7 @@ class LeverSwitch(SwitchMixIn, ViewOnly):
 		else:
 			self.switch_state = 'down'
 			
-		active_gs.buffer(f"Pulled. The {self.full_name} is now {self.switch_state}.")
+		active_gs.io.buffer(f"Pulled. The {self.full_name} is now {self.switch_state}.")
 		return 
 
 

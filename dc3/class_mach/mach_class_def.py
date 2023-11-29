@@ -201,15 +201,15 @@ class Warning(Invisible):
 			try:
 				active_gs.io.buff_a(warn_key_recur)
 			except:
-				active_gs.buffer("I'm not sure that's a good idea Burt...")
+				active_gs.io.buffer("I'm not sure that's a good idea Burt...")
 		elif self.warn_count < self.warn_max:
 			cmd_override = True
 			try:
 				active_gs.io.buff_a(warn_key)
 			except:
-				active_gs.buffer("I'm not sure that's a good idea Burt...")
+				active_gs.io.buffer("I'm not sure that's a good idea Burt...")
 		elif self.warn_count == self.warn_max:
-			active_gs.buffer("Don't say I didn't warn you Burt...")
+			active_gs.io.buffer("Don't say I didn't warn you Burt...")
 		return cmd_override
 
 
@@ -295,12 +295,12 @@ class Timer(Invisible):
 				try:
 					active_gs.io.buff_a(timer_key)
 				except:
-					active_gs.buffer("Beep!")
+					active_gs.io.buffer("Beep!")
 			elif self.message_type == 'constant':
 				try:
 					active_gs.io.buff_a(timer_key_constant)
 				except:
-					active_gs.buffer("Beep!")
+					active_gs.io.buffer("Beep!")
 
 		if self.timer_count == self.timer_max:
 			self.active = False

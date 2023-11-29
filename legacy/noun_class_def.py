@@ -137,15 +137,15 @@ class Writing(Invisible):
 #				"
 				room = active_gs.get_room()
 				if not self.is_writing() and not room.chk_is_vis(self, active_gs):
-						active_gs.buffer(f"You can't see a {self.full_name} here.")
+						active_gs.io.buffer(f"You can't see a {self.full_name} here.")
 						return 
 				if not self.is_writing() and room.chk_is_vis(self, active_gs):
-						active_gs.buffer(f"You can't read the {self.full_name}. Try using 'examine' instead.")
+						active_gs.io.buffer(f"You can't read the {self.full_name}. Try using 'examine' instead.")
 						return 
 				if not room.chk_wrt_is_vis(self, active_gs):
-						active_gs.buffer(f"You can't see {self.full_name} written on anything here.")
+						active_gs.io.buffer(f"You can't see {self.full_name} written on anything here.")
 						return 
-				active_gs.buffer(self.get_descript_str(active_gs)) # is_writing() and chk_wrt_is_vis() 
+				active_gs.io.buffer(self.get_descript_str(active_gs)) # is_writing() and chk_wrt_is_vis() 
 
 class ViewOnly(Writing):
 		def __init__(self, name, full_name, root_name, descript_key, writing):
@@ -219,10 +219,10 @@ class ViewOnly(Writing):
 						Originally, examine() was extended by most classes and there was no clear definition of what Burt saw when he examined an object. Codifying what was presented by examine() seemed valuable so I broke it into parts (Title, Description, Writing, Condition, Contained) and defined functions for those in each class. The also has the benefit of making it easier to enable or disable part of the examine() output based on settings like 'brief' and 'verbose'. The down side to this formal approach is that the descriptions have a bulleted feel and are hard to unify into paragraphs.
 #				"
 				if self.get_title_str() is not None:
-						active_gs.buffer(self.get_title_str())
-				active_gs.buffer(self.get_descript_str(active_gs))
+						active_gs.io.buffer(self.get_title_str())
+				active_gs.io.buffer(self.get_descript_str(active_gs))
 				if self.has_writing():
-						active_gs.buffer(f"On the {self.full_name} you see: {self.writing.full_name}")
+						active_gs.io.buffer(f"On the {self.full_name} you see: {self.writing.full_name}")
 				self.disp_cond(active_gs)
 				self.disp_contain(active_gs)
 				return
@@ -341,7 +341,7 @@ class Room(ViewOnly):
 		def disp_cond(self, active_gs):
 #				" Displays object-specific conditions. Used in examine().
 #				"
-				active_gs.buffer(active_gs.map.get_door_str(self))
+				active_gs.io.buffer(active_gs.map.get_door_str(self))
 
 		def disp_contain(self, active_gs):
 #				" Displays a description of the visible items held by the obj. Used in examine().
@@ -352,7 +352,7 @@ class Room(ViewOnly):
 								pass
 						elif not obj.is_item():
 								active_gs.buff_cr()
-##								active_gs.buffer("There is a " + obj.full_name + " here. ")
+##								active_gs.io.buffer("There is a " + obj.full_name + " here. ")
 								active_gs.buff_no_cr(f"There is a {obj.full_name} here. ")
 								obj.disp_contain(active_gs)
 								active_gs.buff_cr()
@@ -375,11 +375,11 @@ class Room(ViewOnly):
 						creature = active_gs.hero
 
 				if not active_gs.map.chk_valid_dir(self, dir):
-						active_gs.buffer(static_dict[f"wrong_way_{random.randint(0, 4)}"])
+						active_gs.io.buffer(static_dict[f"wrong_way_{random.randint(0, 4)}"])
 						return
 				door = active_gs.map.get_door(self, dir)
 				if not isinstance(door, str) and door.is_open == False:
-						active_gs.buffer(f"The {door.full_name} is closed.")
+						active_gs.io.buffer(f"The {door.full_name} is closed.")
 						return 
 				next_room = active_gs.map.get_next_room(self, dir)
 ##				active_gs.set_room(next_room)
@@ -390,7 +390,7 @@ class Room(ViewOnly):
 						next_room.examine(active_gs)
 						return 
 				if self == active_gs.get_room():
-						active_gs.buffer(f"The {creature.full_name} goes {dir}")
+						active_gs.io.buffer(f"The {creature.full_name} goes {dir}")
 				return 
 """
 
@@ -433,15 +433,15 @@ class Item(ViewOnly):
 #				"
 				creature = active_gs.hero
 				if creature.chk_in_hand(self):
-						active_gs.buffer("You're already holding the " + self.full_name)
+						active_gs.io.buffer("You're already holding the " + self.full_name)
 						return 
 				for obj in active_gs.get_room().floor_lst:
 						if obj.is_creature() and obj is not active_gs.hero and self in obj.get_vis_contain_lst(active_gs):
-								active_gs.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
+								active_gs.io.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 								return 
 				active_gs.get_room().remove_item(self, active_gs)
 				creature.put_in_hand(self)
-				active_gs.buffer("Taken")
+				active_gs.io.buffer("Taken")
 				return
 
 		def drop(self, active_gs):
@@ -450,7 +450,7 @@ class Item(ViewOnly):
 				creature = active_gs.hero
 				creature.hand_lst_remove(self)
 				active_gs.get_room().floor_lst_append(self)
-				active_gs.buffer("Dropped")
+				active_gs.io.buffer("Dropped")
 """
 
 """
@@ -520,12 +520,12 @@ class Door(ViewOnly):
 #				" Displays object-specific conditions. Used in examine().
 #				"
 				if self.is_open is None:
-						active_gs.buffer(f"The {self.full_name} has no closure. It always remains open.")
+						active_gs.io.buffer(f"The {self.full_name} has no closure. It always remains open.")
 						return				
 				if self.is_open == False:
-						active_gs.buffer(f"The {self.full_name} is closed.")
+						active_gs.io.buffer(f"The {self.full_name} is closed.")
 						return
-				active_gs.buffer(f"The {self.full_name} is open.") # is_open == True
+				active_gs.io.buffer(f"The {self.full_name} is open.") # is_open == True
 				return 
 
 		def unlock(self, active_gs):
@@ -533,85 +533,85 @@ class Door(ViewOnly):
 #				"
 				creature = active_gs.hero
 				if self.is_open is None:
-						active_gs.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
+						active_gs.io.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
 						return 
 				if self.is_unlocked is None:
-						active_gs.buffer(f"The {self.full_name} does not appear to have a lock.")
+						active_gs.io.buffer(f"The {self.full_name} does not appear to have a lock.")
 						return 
 				if self.key is None:
-						active_gs.buffer(f"You don't see a keyhole in the {self.full_name}.")
+						active_gs.io.buffer(f"You don't see a keyhole in the {self.full_name}.")
 						return
 				if self.is_open:
-						active_gs.buffer("You can't lock or unlock something that's open.")
+						active_gs.io.buffer("You can't lock or unlock something that's open.")
 						return 
 				if self.is_unlocked:
-						active_gs.buffer(f"The {self.full_name} is already unlocked.")
+						active_gs.io.buffer(f"The {self.full_name} is already unlocked.")
 						return 
 				if not creature.chk_in_hand(self.key) and not creature.hand_is_empty() and creature.get_hand_item().root_name == 'key':
-						active_gs.buffer("You aren't holding the correct key.")
+						active_gs.io.buffer("You aren't holding the correct key.")
 						return 
 				if not creature.chk_in_hand(self.key):
-						active_gs.buffer("You aren't holding the key.")
+						active_gs.io.buffer("You aren't holding the key.")
 						return 
-				active_gs.buffer("Unlocked") # correct key in hand, is_open == False, is_unlocked == False
+				active_gs.io.buffer("Unlocked") # correct key in hand, is_open == False, is_unlocked == False
 				self.is_unlocked = True
 
 		def open(self, active_gs):
 #				" Opens a Door object.
 #				"
 				if self.is_open is None:
-						active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
+						active_gs.io.buffer(f"The {self.full_name} has no closure. It is always open.")
 						return 
 				if self.is_open:
-						active_gs.buffer(f"The {self.full_name} is already open.")
+						active_gs.io.buffer(f"The {self.full_name} is already open.")
 						return 
 				if self.is_unlocked == False:
-						active_gs.buffer(f"The {self.full_name} is locked.")
+						active_gs.io.buffer(f"The {self.full_name} is locked.")
 						return 
 				self.is_open = True
-				active_gs.buffer("Openned") # is_open == False, is_unlocked == True
+				active_gs.io.buffer("Openned") # is_open == False, is_unlocked == True
 
 		def close(self, active_gs):
 #				" Closes a Door object.
 #				"
 				if self.is_open is None:
-						active_gs.buffer(f"The {self.full_name} has no closure. It is always open.")
+						active_gs.io.buffer(f"The {self.full_name} has no closure. It is always open.")
 						return 
 				if self.is_open == False:
-						active_gs.buffer(f"The {self.full_name} is already closed.")
+						active_gs.io.buffer(f"The {self.full_name} is already closed.")
 						return 
 				if self.is_unlocked == False: # for Iron Portcullis
-						active_gs.buffer(f"The {self.full_name} is locked open.")
+						active_gs.io.buffer(f"The {self.full_name} is locked open.")
 						return 
 				self.is_open = False
-				active_gs.buffer("Closed") # is_open == True, is_unlocked == True
+				active_gs.io.buffer("Closed") # is_open == True, is_unlocked == True
 
 		def lock(self, active_gs):
 #				" Locks a Door object.
 #				"
 				creature = active_gs.hero
 				if self.is_open is None:
-						active_gs.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
+						active_gs.io.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
 						return 
 				if self.is_unlocked is None:
-						active_gs.buffer(f"The {self.full_name} does not appear to have a lock.")
+						active_gs.io.buffer(f"The {self.full_name} does not appear to have a lock.")
 						return 
 				if self.key is None:
-						active_gs.buffer(f"You don't see a keyhole in the {self.full_name}.")
+						active_gs.io.buffer(f"You don't see a keyhole in the {self.full_name}.")
 						return
 				if self.is_open == True:
-						active_gs.buffer("You can't lock or unlock something that's open.")
+						active_gs.io.buffer("You can't lock or unlock something that's open.")
 						return
 				if not creature.chk_in_hand(self.key) and not creature.hand_is_empty() and creature.get_hand_item().root_name == 'key':
-						active_gs.buffer("You aren't holding the correct key.")
+						active_gs.io.buffer("You aren't holding the correct key.")
 						return 
 				if not creature.chk_in_hand(self.key):
-						active_gs.buffer("You aren't holding the key.")
+						active_gs.io.buffer("You aren't holding the key.")
 						return 
 				if self.is_unlocked == False:
-						active_gs.buffer(f"The {self.full_name} is already locked.")
+						active_gs.io.buffer(f"The {self.full_name} is already locked.")
 						return 
-				active_gs.buffer("Locked") # correct key in hand, is_open == False, is_unlocked == True
+				active_gs.io.buffer("Locked") # correct key in hand, is_open == False, is_unlocked == True
 				self.is_unlocked = False
 
 class Container(Door):
@@ -681,7 +681,7 @@ class Container(Door):
 				if self.is_not_closed() and not self.is_empty():
 						contain_txt_lst = [obj.full_name for obj in self.contain_lst]
 						contain_str = ", ".join(contain_txt_lst)
-##						active_gs.buffer(f"The {self.full_name} contains: {contain_str}")
+##						active_gs.io.buffer(f"The {self.full_name} contains: {contain_str}")
 						active_gs.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
 						for obj in self.contain_lst:
 								obj.disp_contain(active_gs)
@@ -692,7 +692,7 @@ class Container(Door):
 #				" Displays object-specific conditions. Used in examine().
 #				"
 				if self.is_empty() and self.is_not_closed():
-						active_gs.buffer(f"The {self.full_name} is empty.")
+						active_gs.io.buffer(f"The {self.full_name} is empty.")
 				return 
 
 		def open(self, active_gs):
@@ -700,7 +700,7 @@ class Container(Door):
 #				" Extends Door.open(). Upon opening a container, the player's natural question is "What's in it?". Open for containers answers this question whenever a container is opened. If the container is empty that information is displayed as well.
 #				"
 				if self.is_empty():
-						active_gs.buffer(f"The {self.full_name} is empty.")
+						active_gs.io.buffer(f"The {self.full_name} is empty.")
 				active_gs.buff_cr()
 				self.disp_contain(active_gs)
 				active_gs.buff_cr()
@@ -728,14 +728,14 @@ class Container(Door):
 #				"
 				creature = active_gs.hero
 				if self.is_open == False:
-						active_gs.buffer(f"The {self.full_name} is closed.")
+						active_gs.io.buffer(f"The {self.full_name} is closed.")
 						return
 				if self.chk_content_prohibited(obj):
-						active_gs.buffer(f"You can't put the {obj.full_name} in the {self.full_name}.")
+						active_gs.io.buffer(f"You can't put the {obj.full_name} in the {self.full_name}.")
 						return 
 				creature.hand_lst_remove(obj)
 				self.contain_lst_append(obj)
-				active_gs.buffer("Done")
+				active_gs.io.buffer("Done")
 
 class PortableContainer(Container, Item):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key, contain_lst):
@@ -776,7 +776,7 @@ class Food(Item):
 		def eat(self, active_gs):
 				creature = active_gs.hero
 				creature.hand_lst_remove(self)
-				active_gs.buffer(f"Eaten. The {self.full_name} {static_dict[self.eat_desc_key]}")
+				active_gs.io.buffer(f"Eaten. The {self.full_name} {static_dict[self.eat_desc_key]}")
 """
 
 """
@@ -798,15 +798,15 @@ class Liquid(ViewOnly):
 				if not creature.hand_is_empty():
 						hand_item = creature.get_hand_item()
 				if (creature.hand_is_empty()) or (hand_item.is_container() == False):
-						active_gs.buffer(f"You don't seem to be holding a container of {self.full_name} in your hand.")
+						active_gs.io.buffer(f"You don't seem to be holding a container of {self.full_name} in your hand.")
 						return 
 				if self not in hand_item.contain_lst:
-						active_gs.buffer(f"The container in your hand doesn't contain {self.full_name}.")
+						active_gs.io.buffer(f"The container in your hand doesn't contain {self.full_name}.")
 						return 
 				hand_item.contain_lst.remove(self)
-				active_gs.buffer("Drunk.")
+				active_gs.io.buffer("Drunk.")
 				try:
-						active_gs.buffer(static_dict["drink_"+self.name])
+						active_gs.io.buffer(static_dict["drink_"+self.name])
 				except:
 						pass
 				return 
@@ -838,24 +838,24 @@ class Clothes(Item):
 		def wear(self, active_gs):
 				creature = active_gs.hero
 				if creature.chk_clothing_type_worn(self):
-						active_gs.buffer(f"You are already wearing a {self.clothing_type}. You can't wear two garments of the same type at the same time.")
+						active_gs.io.buffer(f"You are already wearing a {self.clothing_type}. You can't wear two garments of the same type at the same time.")
 						return 
 				creature.worn_lst_append(self)
 				creature.hand_lst_remove(self)
-				active_gs.buffer("Worn.")
+				active_gs.io.buffer("Worn.")
 				if self.wear_descript is not None:
-						active_gs.buffer(static_dict[self.wear_descript])
+						active_gs.io.buffer(static_dict[self.wear_descript])
 
 ##		def remove(self, active_gs):
 ##				if self not in active_gs.get_worn_lst():
 ##						output = "You're not wearing the " + self.full_name + "."
-##						active_gs.buffer(output)
+##						active_gs.io.buffer(output)
 ##				else:
 ##						creature.put_in_hand(self)
 ##						active_gs.worn_lst_remove_item(self)
-##						active_gs.buffer("Removed.")
+##						active_gs.io.buffer("Removed.")
 ##						if self.remove_descript is not None:
-##								active_gs.buffer(static_dict[self.remove_descript])
+##								active_gs.io.buffer(static_dict[self.remove_descript])
 
 
 class Weapon(Item):

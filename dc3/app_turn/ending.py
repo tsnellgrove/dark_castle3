@@ -24,15 +24,15 @@ def end(active_gs):
 	title = static_dict['titles_by_score'][title_score]
 
 	if game_ending == 'death':
-		active_gs.buffer("You have died.")
+		active_gs.io.buffer("You have died.")
 	elif game_ending == 'quit':
-		active_gs.buffer("You have quit.")
+		active_gs.io.buffer("You have quit.")
 	elif game_ending == 'won':
-		active_gs.buffer("You have won!")
+		active_gs.io.buffer("You have won!")
 
-	active_gs.buffer("Your adventure ended after " + str(moves) + " moves.")
+	active_gs.io.buffer("Your adventure ended after " + str(moves) + " moves.")
 	active_gs.print_score()
-	active_gs.buffer("Your title is: " + title)
+	active_gs.io.buffer("Your title is: " + title)
 	if game_ending == 'won':
 		active_gs.io.buff_e('credits')
 	active_gs.set_end_of_game(True)

@@ -181,5 +181,5 @@ class Room(ViewOnly):
 			next_room.examine(active_gs)
 			return 
 		if self == active_gs.get_room():
-			active_gs.buffer(f"The {creature.full_name} goes {dir}")
+			active_gs.io.buffer(f"The {creature.full_name} goes {dir}")
 		return 

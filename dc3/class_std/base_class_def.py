@@ -111,7 +111,7 @@ class ViewOnly(Writing):
 		creature = active_gs.hero
 
 		if self.get_title_str(active_gs) is not None:
-			active_gs.buffer(self.get_title_str(active_gs))
+			active_gs.io.buffer(self.get_title_str(active_gs))
 		active_gs.io.buff_d(self.descript_key, self.full_name)
 		if self.has_writing() or self.has_cond(active_gs) or self.has_contain(active_gs):
 			active_gs.buff_cr()
