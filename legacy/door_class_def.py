@@ -61,12 +61,12 @@ class Door(ViewOnly):
 		""" Displays object-specific conditions. Used in examine().
 		"""
 		if self.is_open is None:
-			active_gs.buff_no_cr(f"The {self.full_name} has no closure; it always remains open. ")
+			active_gs.io.buff_no_cr(f"The {self.full_name} has no closure; it always remains open. ")
 			return
 		if self.is_open == False:
-			active_gs.buff_no_cr(f"The {self.full_name} is closed. ")
+			active_gs.io.buff_no_cr(f"The {self.full_name} is closed. ")
 			return
-		active_gs.buff_no_cr(f"The {self.full_name} is open. ") # is_open == True
+		active_gs.io.buff_no_cr(f"The {self.full_name} is open. ") # is_open == True
 		return 
 
 	# *** verb methods ***
@@ -92,10 +92,10 @@ class Door(ViewOnly):
 		self.is_open = True
 
 		active_gs.buff_cr()
-		active_gs.buff_no_cr("Openned. ")
+		active_gs.io.buff_no_cr("Openned. ")
 		if self.is_container():
 			if self.is_empty():
-				active_gs.buff_no_cr(f"The {self.full_name} is empty.")
+				active_gs.io.buff_no_cr(f"The {self.full_name} is empty.")
 			self.disp_contain(active_gs)
 		active_gs.buff_cr()
 		return
@@ -198,7 +198,7 @@ class Container(Door):
 		""" Displays object-specific conditions. Used in examine().
 		"""
 		if self.is_empty() and self.is_not_closed():
-			active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
+			active_gs.io.buff_no_cr(f"The {self.full_name} is empty. ")
 		return 
 
 	def disp_contain(self, active_gs):
@@ -208,7 +208,7 @@ class Container(Door):
 			contain_txt_lst = [obj.full_name for obj in self.contain_lst if obj != active_gs.hero]
 			if contain_txt_lst:
 				contain_str = ", ".join(contain_txt_lst)
-				active_gs.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
+				active_gs.io.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
 			for obj in self.contain_lst:
 				if obj != active_gs.hero:
 					obj.disp_contain(active_gs)
@@ -216,7 +216,7 @@ class Container(Door):
 
 	def disp_open(self, active_gs):
 		if self.is_empty():
-			active_gs.buff_no_cr(f"The {self.full_name} is empty.")
+			active_gs.io.buff_no_cr(f"The {self.full_name} is empty.")
 		self.disp_contain(active_gs)
 
 
@@ -300,7 +300,7 @@ class Surface(Container):
 		""" Displays object-specific conditions. Used in examine().
 		"""
 		if self.is_empty():
-			active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
+			active_gs.io.buff_no_cr(f"The {self.full_name} is empty. ")
 		return 
 
 

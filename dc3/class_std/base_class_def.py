@@ -89,7 +89,7 @@ class ViewOnly(Writing):
 
 	def disp_writing(self, active_gs):
 		if self.has_writing():
-			active_gs.buff_no_cr(f"On the {self.full_name} you see: {self.writing.full_name}. ")
+			active_gs.io.buff_no_cr(f"On the {self.full_name} you see: {self.writing.full_name}. ")
 			return 
 		pass
 		return 

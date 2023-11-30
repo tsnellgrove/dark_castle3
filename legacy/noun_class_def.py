@@ -353,7 +353,7 @@ class Room(ViewOnly):
 						elif not obj.is_item():
 								active_gs.buff_cr()
 ##								active_gs.io.buffer("There is a " + obj.full_name + " here. ")
-								active_gs.buff_no_cr(f"There is a {obj.full_name} here. ")
+								active_gs.io.buff_no_cr(f"There is a {obj.full_name} here. ")
 								obj.disp_contain(active_gs)
 								active_gs.buff_cr()
 						else:
@@ -362,7 +362,7 @@ class Room(ViewOnly):
 						active_gs.buff_cr()
 						room_txt_lst = [obj.full_name for obj in room_item_lst]
 						room_item_str = ", ".join(room_txt_lst)
-						active_gs.buff_no_cr(f"The following items are here: {room_item_str}. ")
+						active_gs.io.buff_no_cr(f"The following items are here: {room_item_str}. ")
 						for obj in room_item_lst:
 								obj.disp_contain(active_gs)
 						active_gs.buff_cr()
@@ -682,7 +682,7 @@ class Container(Door):
 						contain_txt_lst = [obj.full_name for obj in self.contain_lst]
 						contain_str = ", ".join(contain_txt_lst)
 ##						active_gs.io.buffer(f"The {self.full_name} contains: {contain_str}")
-						active_gs.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
+						active_gs.io.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
 						for obj in self.contain_lst:
 								obj.disp_contain(active_gs)
 				return 

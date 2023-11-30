@@ -35,9 +35,9 @@ class OpenableMixIn(object):
 		""" Displays object-specific conditions. Used in examine().
 		"""
 		if self.is_open == False:
-			active_gs.buff_no_cr(f"The {self.full_name} is closed. ")
+			active_gs.io.buff_no_cr(f"The {self.full_name} is closed. ")
 			return
-		active_gs.buff_no_cr(f"The {self.full_name} is open. ") # is_open == True
+		active_gs.io.buff_no_cr(f"The {self.full_name} is open. ") # is_open == True
 		return 
 
     # *** verb methods ***
@@ -51,7 +51,7 @@ class OpenableMixIn(object):
 		self.is_open = True
 
 		active_gs.buff_cr()
-		active_gs.buff_no_cr("Openned. ")
+		active_gs.io.buff_no_cr("Openned. ")
 		if self.is_container():
 			self.disp_contain(active_gs)
 		active_gs.buff_cr()
@@ -239,12 +239,12 @@ class ContainsMixIn(object):
 		"""
 		if self.is_content_vis():
 			if self.is_empty():
-				active_gs.buff_no_cr(f"The {self.full_name} is empty. ")
+				active_gs.io.buff_no_cr(f"The {self.full_name} is empty. ")
 				return
 			contain_txt_lst = [obj.full_name for obj in self.contain_lst if obj != active_gs.hero]
 			if contain_txt_lst:
 				contain_str = ", ".join(contain_txt_lst)
-				active_gs.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
+				active_gs.io.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
 			for obj in self.contain_lst:
 				if obj != active_gs.hero:
 					obj.disp_contain(active_gs)

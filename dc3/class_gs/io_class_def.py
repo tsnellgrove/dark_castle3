@@ -95,3 +95,9 @@ class IO(object):
 		"""
 		self.buffer(self.get_str_no_ref(key))
 		return
+
+	def buff_no_cr(self, output_str):
+		out_buff_old = self.buff_dict['current_turn']
+		out_buff_new = out_buff_old + output_str
+		self.buff_dict['current_turn'] = out_buff_new
+		return

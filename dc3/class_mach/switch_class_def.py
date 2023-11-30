@@ -123,7 +123,7 @@ class LeverSwitch(SwitchMixIn, ViewOnly):
 	def disp_cond(self, active_gs):
 		""" Displays object-specific conditions. Used in examine().
 		"""
-		active_gs.buff_no_cr(f"The {self.full_name} is {self.switch_state}.")
+		active_gs.io.buff_no_cr(f"The {self.full_name} is {self.switch_state}.")
 		return 
 
 	# *** verb methods ***

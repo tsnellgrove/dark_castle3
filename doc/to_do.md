@@ -147,10 +147,24 @@ Version 3.80 Goals
 			- 	DONE: sort out DoorToggle result with compound dict lookup and local buffer
 		- DONE: investigate whether remaining active_gs.io.buffer("x") calls can be mass-updated with io
 		- DONE: update existing buffer() calls to point to IO class
-	- TBD: custom buff calls
-		- TBD: create custom buffer() methods in IO class
+	- INPROC: custom buff calls
+		- INPROC: migrate custom buffer() methods to IO class
+			- DONE: buff_no_cr()
+				- DONE: create in IO class
+				- DONE: test call in IO class
+				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
+				- DONE: test run game
+			- TBD: buff_cr()
+				- TBD: create in IO class
+				- TBD: test call in IO class
+				- TBD: find / replace calls active_gs.buff => active_gs.io.buff
+				- TBD: test run game
+			- TBD: buff_try_key()
+				- TBD: create in IO class
+				- TBD: test call in IO class
+				- TBD: find / replace calls active_gs.buff => active_gs.io.buff
+				- TBD: test run game
 		- TBD: decide if buff_debug_err() stays in gs or moves to io (will need to pass gs.debug if moves)
-		- TBD: update existing buffer() calls to point to IO class
 	- TBD: clean-up gs(), mk_def_pkl()
 
 - TBD: eliminate direct calls to static_dict()

@@ -115,13 +115,13 @@ class GameState(object):
 		self.io.buff_dict['current_turn'] = out_buff_new
 		return
 
-	def buff_no_cr(self, output_str):
-#		out_buff_old = self._state_dict['out_buff']
-		out_buff_old = self.io.buff_dict['current_turn']
-		out_buff_new = out_buff_old + output_str
-#		self._state_dict['out_buff'] = out_buff_new
-		self.io.buff_dict['current_turn'] = out_buff_new
-		return
+#	def buff_no_cr(self, output_str):
+##		out_buff_old = self._state_dict['out_buff']
+#		out_buff_old = self.io.buff_dict['current_turn']
+#		out_buff_new = out_buff_old + output_str
+##		self._state_dict['out_buff'] = out_buff_new
+#		self.io.buff_dict['current_turn'] = out_buff_new
+#		return
 
 	def buff_cr(self):
 #		out_buff_old = self._state_dict['out_buff']

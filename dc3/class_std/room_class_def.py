@@ -134,7 +134,7 @@ class Room(ViewOnly):
 	def disp_cond(self, active_gs):
 		""" Displays object-specific conditions. Used in examine().
 		"""
-		active_gs.buff_no_cr(active_gs.map.get_door_str(self))
+		active_gs.io.buff_no_cr(active_gs.map.get_door_str(self))
 
 	def disp_contain(self, active_gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
@@ -146,10 +146,10 @@ class Room(ViewOnly):
 			elif not obj.is_item():
 				active_gs.buff_cr()
 				active_gs.buff_cr()
-				active_gs.buff_no_cr(f"There is a {obj.full_name} here")
+				active_gs.io.buff_no_cr(f"There is a {obj.full_name} here")
 				if active_gs.hero.is_contained(active_gs) and active_gs.hero.get_contained_by(active_gs) == obj:
-					active_gs.buff_no_cr(" (which you are presently occupying)")
-				active_gs.buff_no_cr(". ")
+					active_gs.io.buff_no_cr(" (which you are presently occupying)")
+				active_gs.io.buff_no_cr(". ")
 				obj.disp_contain(active_gs)
 			else:
 				room_item_lst.append(obj)
@@ -158,7 +158,7 @@ class Room(ViewOnly):
 			active_gs.buff_cr()
 			room_txt_lst = [obj.full_name for obj in room_item_lst]
 			room_item_str = ", ".join(room_txt_lst)
-			active_gs.buff_no_cr(f"The following items are here: {room_item_str}. ")
+			active_gs.io.buff_no_cr(f"The following items are here: {room_item_str}. ")
 			for obj in room_item_lst:
 				obj.disp_contain(active_gs)
 		return
