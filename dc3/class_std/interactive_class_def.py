@@ -50,11 +50,11 @@ class OpenableMixIn(object):
 
 		self.is_open = True
 
-		active_gs.buff_cr()
+		active_gs.io.buff_cr()
 		active_gs.io.buff_no_cr("Openned. ")
 		if self.is_container():
 			self.disp_contain(active_gs)
-		active_gs.buff_cr()
+		active_gs.io.buff_cr()
 		return
 
 	def close(self, active_gs, mode=None):

@@ -101,3 +101,9 @@ class IO(object):
 		out_buff_new = out_buff_old + output_str
 		self.buff_dict['current_turn'] = out_buff_new
 		return
+	
+	def buff_cr(self):
+		out_buff_old = self.buff_dict['current_turn']
+		out_buff_new = out_buff_old + "\n"
+		self.buff_dict['current_turn'] = out_buff_new
+		return

@@ -91,13 +91,13 @@ class Door(ViewOnly):
 
 		self.is_open = True
 
-		active_gs.buff_cr()
+		active_gs.io.buff_cr()
 		active_gs.io.buff_no_cr("Openned. ")
 		if self.is_container():
 			if self.is_empty():
 				active_gs.io.buff_no_cr(f"The {self.full_name} is empty.")
 			self.disp_contain(active_gs)
-		active_gs.buff_cr()
+		active_gs.io.buff_cr()
 		return
 
 

@@ -144,8 +144,8 @@ class Room(ViewOnly):
 			if obj == active_gs.hero:
 					pass
 			elif not obj.is_item():
-				active_gs.buff_cr()
-				active_gs.buff_cr()
+				active_gs.io.buff_cr()
+				active_gs.io.buff_cr()
 				active_gs.io.buff_no_cr(f"There is a {obj.full_name} here")
 				if active_gs.hero.is_contained(active_gs) and active_gs.hero.get_contained_by(active_gs) == obj:
 					active_gs.io.buff_no_cr(" (which you are presently occupying)")
@@ -154,8 +154,8 @@ class Room(ViewOnly):
 			else:
 				room_item_lst.append(obj)
 		if room_item_lst:
-			active_gs.buff_cr()
-			active_gs.buff_cr()
+			active_gs.io.buff_cr()
+			active_gs.io.buff_cr()
 			room_txt_lst = [obj.full_name for obj in room_item_lst]
 			room_item_str = ", ".join(room_txt_lst)
 			active_gs.io.buff_no_cr(f"The following items are here: {room_item_str}. ")

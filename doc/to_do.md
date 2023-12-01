@@ -154,11 +154,11 @@ Version 3.80 Goals
 				- DONE: test call in IO class
 				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
 				- DONE: test run game
-			- TBD: buff_cr()
-				- TBD: create in IO class
-				- TBD: test call in IO class
-				- TBD: find / replace calls active_gs.buff => active_gs.io.buff
-				- TBD: test run game
+			- DONE: buff_cr()
+				- DONE: create in IO class
+				- DONE: test call in IO class
+				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
+				- DONE: test run game
 			- TBD: buff_try_key()
 				- TBD: create in IO class
 				- TBD: test call in IO class

@@ -284,8 +284,8 @@ class Creature(ViewOnly):
 		if self.has_cond(active_gs):
 			if self == active_gs.hero:
 				active_gs.io.buff_no_cr(f"You are seated in the {self.get_contained_by(active_gs).full_name}.")
-				active_gs.buff_cr()
-				active_gs.buff_cr()
+				active_gs.io.buff_cr()
+				active_gs.io.buff_cr()
 			else:
 				active_gs.io.buff_no_cr(f"The {self.full_name} is seated in the {self.get_contained_by(active_gs).full_name}.")
 		else:
@@ -303,21 +303,21 @@ class Creature(ViewOnly):
 		if self == active_gs.hero:
 			active_gs.io.buff_no_cr(f"In your off hand you hold a Brass Lantern.")
 			if (not self.bkpk_is_empty()) or (not self.hand_is_empty()) or (not self.worn_is_empty()):
-					active_gs.buff_cr()
-					active_gs.buff_cr()
+					active_gs.io.buff_cr()
+					active_gs.io.buff_cr()
 		if not self.hand_is_empty():
 			if self == active_gs.hero:
 				active_gs.io.buff_no_cr(f"You are holding a {self.get_hand_item().full_name}. ")
 				for obj in self.hand_lst:
 					obj.disp_contain(active_gs)
-				active_gs.buff_cr()
+				active_gs.io.buff_cr()
 			else:
 				active_gs.io.buff_no_cr(f"The {self.full_name} is holding a {self.get_hand_item().full_name}. ")
 				for obj in self.hand_lst:
 					obj.disp_contain(active_gs)
 		if self == active_gs.hero and not self.bkpk_is_empty():
 			if not self.hand_is_empty():
-				active_gs.buff_cr()
+				active_gs.io.buff_cr()
 			bkpk_str_lst = [obj.full_name for obj in self.bkpk_lst]
 			bkpk_str = ", ".join(bkpk_str_lst)
 			active_gs.io.buff_no_cr(f"In your backpack you have: {bkpk_str}. ")
@@ -328,8 +328,8 @@ class Creature(ViewOnly):
 			worn_str = ", ".join(worn_txt_lst)
 			if self == active_gs.hero:
 				if (not self.bkpk_is_empty()) or (not self.hand_is_empty()):
-					active_gs.buff_cr()
-					active_gs.buff_cr()
+					active_gs.io.buff_cr()
+					active_gs.io.buff_cr()
 				active_gs.io.buff_no_cr(f"You are wearing: {worn_str}.")
 			else:
 				active_gs.io.buff_no_cr(f"The {self.full_name} is wearing: {worn_str}.")

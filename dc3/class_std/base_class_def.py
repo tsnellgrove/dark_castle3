@@ -114,11 +114,11 @@ class ViewOnly(Writing):
 			active_gs.io.buffer(self.get_title_str(active_gs))
 		active_gs.io.buff_d(self.descript_key, self.full_name)
 		if self.has_writing() or self.has_cond(active_gs) or self.has_contain(active_gs):
-			active_gs.buff_cr()
+			active_gs.io.buff_cr()
 			self.disp_cond(active_gs)
 			self.disp_writing(active_gs)
 			self.disp_contain(active_gs)
-			active_gs.buff_cr()
+			active_gs.io.buff_cr()
 		if self.get_title_str(active_gs) is not None and creature.is_contained(active_gs) and creature.get_contained_by(active_gs).in_reach_lst:
 			creature.disp_in_reach(active_gs)
 		return
