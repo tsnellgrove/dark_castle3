@@ -159,11 +159,11 @@ Version 3.80 Goals
 				- DONE: test call in IO class
 				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
 				- DONE: test run game
-			- TBD: buff_try_key()
-				- TBD: create in IO class
-				- TBD: test call in IO class
-				- TBD: find / replace calls active_gs.buff => active_gs.io.buff
-				- TBD: test run game
+			- DONE: buff_try_key()
+				- DONE: create in IO class
+				- DONE: test call in IO class
+				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
+				- DONE: test run game
 		- TBD: decide if buff_debug_err() stays in gs or moves to io (will need to pass gs.debug if moves)
 	- TBD: clean-up gs(), mk_def_pkl()
 

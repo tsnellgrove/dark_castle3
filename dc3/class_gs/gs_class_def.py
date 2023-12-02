@@ -123,19 +123,19 @@ class GameState(object):
 #		self.io.buff_dict['current_turn'] = out_buff_new
 #		return
 
-	def buff_cr(self):
-#		out_buff_old = self._state_dict['out_buff']
-		out_buff_old = self.io.buff_dict['current_turn']
-		out_buff_new = out_buff_old + "\n"
-#		self._state_dict['out_buff'] = out_buff_new
-		self.io.buff_dict['current_turn'] = out_buff_new
-		return
+#	def buff_cr(self):
+##		out_buff_old = self._state_dict['out_buff']
+#		out_buff_old = self.io.buff_dict['current_turn']
+#		out_buff_new = out_buff_old + "\n"
+##		self._state_dict['out_buff'] = out_buff_new
+#		self.io.buff_dict['current_turn'] = out_buff_new
+#		return
 
-	def buff_try_key(self, desc_key):
-		try:
-			self.buffer(static_dict[desc_key]) 
-		except:
-			pass
+#	def buff_try_key(self, desc_key):
+#		try:
+#			self.buffer(static_dict[desc_key]) 
+#		except:
+#			pass
 
 	def buff_debug_err(self, debug_str):
 		if self.state_dict['debug']:

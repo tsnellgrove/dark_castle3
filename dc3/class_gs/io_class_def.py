@@ -107,3 +107,9 @@ class IO(object):
 		out_buff_new = out_buff_old + "\n"
 		self.buff_dict['current_turn'] = out_buff_new
 		return
+	
+	def buff_try_key(self, desc_key):
+		try:
+			self.buffer(static_dict[desc_key]) 
+		except:
+			pass
