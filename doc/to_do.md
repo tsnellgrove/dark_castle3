@@ -164,10 +164,23 @@ Version 3.80 Goals
 				- DONE: test call in IO class
 				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
 				- DONE: test run game
-		- TBD: decide if buff_debug_err() stays in gs or moves to io (will need to pass gs.debug if moves)
+			- DONE: decide if buff_debug_err() stays or moves to io (will need to pass gs.debug if moves)
+				- DECISION: yes, migrate to buff_d() ; must pass 'debug' value
+			- INPROC: buff_debug_err() => buff_dbg()
+				- DONE: create in IO class
+				- TBD: test call in IO class
+				- TBD: find / replace calls active_gs.buff => active_gs.io.buff
+				- TBD: test run game
 	- TBD: clean-up gs(), mk_def_pkl()
+	- TBD: normalize buff options
+		- TBD: reconsider integration of get_str() and buffer(); is it consistent??
+		- TBD: rename buffer() => buff()
+		- TBD: rename buff_a() => buff_f() ['f' for fail]
+		- TBD: update buff_try_key() to check dyn_dict
+		- TBD: rename buff_try_key() => buff_s ['s' for silent failure]
 
 - TBD: eliminate direct calls to static_dict()
+	- TBD: investigate how many still exist
 	- TBD: think through approach
 	- TBD: centralize all static_dict calls to descript method
 
@@ -181,6 +194,7 @@ Version 3.80 Goals
 	- TBD: skim through notes on renaming gs and fixing get_room
 	- TBD: rename gs_class => gs
 	- TBD: finally fix get_room => rename and move to gs.map
+	- TBD: fix debug capacity() to work with creatures (?)
 
 
 

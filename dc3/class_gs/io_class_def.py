@@ -4,6 +4,7 @@
 # description: class deffinition module for io
 
 ### import
+import random
 from dc3.data.static_gbl import static_dict
 
 ### classes
@@ -113,3 +114,11 @@ class IO(object):
 			self.buffer(static_dict[desc_key]) 
 		except:
 			pass
+
+#	def buff_debug_err(self, debug_str):
+	def buff_dbg(self, debug_str, debug):
+#		if self.state_dict['debug']:
+		if debug:
+			self.buffer(debug_str)
+		else:
+			self.buffer(static_dict['misc_err_' + str(random.randint(0, 4))])
