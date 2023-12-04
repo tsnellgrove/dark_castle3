@@ -87,6 +87,11 @@ class GameState(object):
 	def set_game_ending(self, value):
 		self._state_dict['game_ending'] = value
 
+	### debug mode ###
+
+	def is_dbg(self):
+		return self.state_dict['debug']
+
 	### room ###
 #		def get_hero_room(self):
 	def get_room(self):
@@ -137,11 +142,11 @@ class GameState(object):
 #		except:
 #			pass
 
-	def buff_debug_err(self, debug_str):
-		if self.state_dict['debug']:
-			self.buffer(debug_str)
-		else:
-			self.buffer(static_dict['misc_err_' + str(random.randint(0, 4))])
+#	def buff_debug_err(self, debug_str):
+#		if self.state_dict['debug']:
+#			self.buffer(debug_str)
+#		else:
+#			self.buffer(static_dict['misc_err_' + str(random.randint(0, 4))])
 
 	### obj representation (for printing) ###
 	def __repr__(self):

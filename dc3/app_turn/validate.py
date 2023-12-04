@@ -35,7 +35,7 @@ def validate(active_gs, case, word_lst):
 				active_gs.io.buff_no_cr("[INVIS error postfix]")
 		except:
 			cmd_error = True
-			active_gs.buff_debug_err("[VAL] " + traceback.format_exc())
+			active_gs.io.buff_dbg("[VAL] " + traceback.format_exc(), active_gs.is_dbg())
 		return not cmd_error
 	return True
 

@@ -28,7 +28,8 @@ def cmd_execute(active_gs, case, word_lst):
 				active_gs.state_dict['debug'] = not active_gs.state_dict['debug']
 				active_gs.io.buffer(f"Debug Mode is now set to {active_gs.state_dict['debug']}.")
 				return
-			active_gs.buff_debug_err("[CMD] tru_1word case not found")
+#			active_gs.buff_debug_err("[CMD] tru_1word case not found")
+			active_gs.io.buff_dbg("[CMD] tru_1word case not found", active_gs.is_dbg())
 			return
 		if case == 'go':
 			room_obj, word1, word2 = word_lst
@@ -42,8 +43,10 @@ def cmd_execute(active_gs, case, word_lst):
 			dirobj_obj, word1, noun_obj = word_lst
 			getattr(dirobj_obj, word1)(noun_obj, active_gs)
 			return
-		active_gs.buff_debug_err("[CMD] command case error")
+#		active_gs.buff_debug_err("[CMD] command case error")
+		active_gs.io.buff_dbg("[CMD] command case error", active_gs.is_dbg())
 		return
 	except:
-		active_gs.buff_debug_err("[CMD] " + traceback.format_exc())
+#		active_gs.buff_debug_err("[CMD] " + traceback.format_exc())
+		active_gs.io.buff_dbg("[CMD] " + traceback.format_exc(), active_gs.is_dbg())
 	return

@@ -147,8 +147,8 @@ Version 3.80 Goals
 			- 	DONE: sort out DoorToggle result with compound dict lookup and local buffer
 		- DONE: investigate whether remaining active_gs.io.buffer("x") calls can be mass-updated with io
 		- DONE: update existing buffer() calls to point to IO class
-	- INPROC: custom buff calls
-		- INPROC: migrate custom buffer() methods to IO class
+	- DONE: custom buff calls
+		- DONE: migrate custom buffer() methods to IO class
 			- DONE: buff_no_cr()
 				- DONE: create in IO class
 				- DONE: test call in IO class
@@ -166,12 +166,13 @@ Version 3.80 Goals
 				- DONE: test run game
 			- DONE: decide if buff_debug_err() stays or moves to io (will need to pass gs.debug if moves)
 				- DECISION: yes, migrate to buff_d() ; must pass 'debug' value
-			- INPROC: buff_debug_err() => buff_dbg()
+			- DONE: buff_debug_err() => buff_dbg()
 				- DONE: create in IO class
-				- TBD: test call in IO class
-				- TBD: find / replace calls active_gs.buff => active_gs.io.buff
-				- TBD: test run game
-	- TBD: clean-up gs(), mk_def_pkl()
+				- DONE: test call in IO class
+				- DONE: create active_gs.is_dbg()
+				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
+				- DONE: test run game
+	- TBD: clean-up gs(), mk_def_pkl(), validate()
 	- TBD: normalize buff options
 		- TBD: reconsider integration of get_str() and buffer(); is it consistent??
 		- TBD: rename buffer() => buff()
