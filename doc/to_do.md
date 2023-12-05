@@ -172,7 +172,7 @@ Version 3.80 Goals
 				- DONE: create active_gs.is_dbg()
 				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
 				- DONE: test run game
-	- TBD: clean-up gs(), mk_def_pkl(), validate()
+	- DONE: clean-up gs(), mk_def_pkl(), validate()
 	- TBD: normalize buff options
 		- TBD: reconsider integration of get_str() and buffer(); is it consistent??
 		- TBD: rename buffer() => buff()

@@ -115,9 +115,7 @@ class IO(object):
 		except:
 			pass
 
-#	def buff_debug_err(self, debug_str):
 	def buff_dbg(self, debug_str, debug):
-#		if self.state_dict['debug']:
 		if debug:
 			self.buffer(debug_str)
 		else:

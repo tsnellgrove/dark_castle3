@@ -62,7 +62,7 @@ class GameState(object):
 	def print_score(self):
 		output1 = ("Your score is now " + str(self.get_score()))
 		output2 = (" out of " + str(static_dict['max_score']))
-		self.buffer(output1 + output2)
+		self.io.buffer(output1 + output2)
 
 	### game moves counter ###
 	def move_inc(self):
@@ -111,42 +111,6 @@ class GameState(object):
 ##		def set_room(self, value):
 ##				self._state_dict['room'] = value
 
-	### buffer ###
-	def buffer(self, output_str):
-#		out_buff_old = self._state_dict['out_buff']
-		out_buff_old = self.io.buff_dict['current_turn']
-		out_buff_new = out_buff_old + "\n" + output_str + "\n"
-#		self._state_dict['out_buff'] = out_buff_new
-		self.io.buff_dict['current_turn'] = out_buff_new
-		return
-
-#	def buff_no_cr(self, output_str):
-##		out_buff_old = self._state_dict['out_buff']
-#		out_buff_old = self.io.buff_dict['current_turn']
-#		out_buff_new = out_buff_old + output_str
-##		self._state_dict['out_buff'] = out_buff_new
-#		self.io.buff_dict['current_turn'] = out_buff_new
-#		return
-
-#	def buff_cr(self):
-##		out_buff_old = self._state_dict['out_buff']
-#		out_buff_old = self.io.buff_dict['current_turn']
-#		out_buff_new = out_buff_old + "\n"
-##		self._state_dict['out_buff'] = out_buff_new
-#		self.io.buff_dict['current_turn'] = out_buff_new
-#		return
-
-#	def buff_try_key(self, desc_key):
-#		try:
-#			self.buffer(static_dict[desc_key]) 
-#		except:
-#			pass
-
-#	def buff_debug_err(self, debug_str):
-#		if self.state_dict['debug']:
-#			self.buffer(debug_str)
-#		else:
-#			self.buffer(static_dict['misc_err_' + str(random.randint(0, 4))])
 
 	### obj representation (for printing) ###
 	def __repr__(self):

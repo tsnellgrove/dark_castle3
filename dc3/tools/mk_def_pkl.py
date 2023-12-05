@@ -331,7 +331,6 @@ active_gs = GameState(
 		'game_ending' : "tbd",
 		'debug' : False,
 ##		'room' : entrance,
-#		'out_buff' : ""
 	},
 	map,
 	io,
