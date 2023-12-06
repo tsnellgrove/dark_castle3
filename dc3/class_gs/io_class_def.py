@@ -79,6 +79,18 @@ class IO(object):
 		self.buff_dict['current_turn'] = out_buff_new
 		return
 
+	def buff_no_cr(self, output_str):
+		out_buff_old = self.buff_dict['current_turn']
+		out_buff_new = out_buff_old + output_str
+		self.buff_dict['current_turn'] = out_buff_new
+		return
+	
+	def buff_cr(self):
+		out_buff_old = self.buff_dict['current_turn']
+		out_buff_new = out_buff_old + "\n"
+		self.buff_dict['current_turn'] = out_buff_new
+		return
+
 	def buff_d(self, key, ref):
 		"""Buffer Description. Buffers the description associate with the provided key attribute. ref attribute is used to create a default description if none has been defined in static_dict.
 		"""
@@ -97,25 +109,17 @@ class IO(object):
 		self.buffer(self.get_str_no_ref(key))
 		return
 
-	def buff_no_cr(self, output_str):
-		out_buff_old = self.buff_dict['current_turn']
-		out_buff_new = out_buff_old + output_str
-		self.buff_dict['current_turn'] = out_buff_new
-		return
-	
-	def buff_cr(self):
-		out_buff_old = self.buff_dict['current_turn']
-		out_buff_new = out_buff_old + "\n"
-		self.buff_dict['current_turn'] = out_buff_new
-		return
-	
 	def buff_try_key(self, desc_key):
+		"""Buffer Auto-Gen. Buffers the description associated with the provided auto-gen key attribute. Passes if key does not exist - which allows local try / except defaults built into the calling method to be expressed.
+		"""
 		try:
 			self.buffer(static_dict[desc_key]) 
 		except:
 			pass
 
 	def buff_dbg(self, debug_str, debug):
+		"""Buffer debug string if in debug mode. Otherwise, buffers random error.
+		"""
 		if debug:
 			self.buffer(debug_str)
 		else:

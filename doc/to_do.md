@@ -173,8 +173,8 @@ Version 3.80 Goals
 				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
 				- DONE: test run game
 	- DONE: clean-up gs(), mk_def_pkl(), validate()
-	- TBD: normalize buff options
-		- TBD: reconsider integration of get_str() and buffer(); is it consistent??
+	- INPROC: normalize buff options
+		- INPROC: reconsider integration of get_str() and buffer(); is it consistent??
 		- TBD: rename buffer() => buff()
 		- TBD: rename buff_a() => buff_f() ['f' for fail]
 		- TBD: update buff_try_key() to check dyn_dict
@@ -196,6 +196,7 @@ Version 3.80 Goals
 	- TBD: rename gs_class => gs
 	- TBD: finally fix get_room => rename and move to gs.map
 	- TBD: fix debug capacity() to work with creatures (?)
+	- TBD: how can sub-classes (IO & Map) call to main class (GameState) [e.g. buff_dbg()] ??
 
 
 
