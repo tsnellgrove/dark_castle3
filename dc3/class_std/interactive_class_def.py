@@ -380,7 +380,7 @@ class Seat(ContainerFixedSimple):
 		
 		if creature == active_gs.hero:
 			active_gs.io.buffer(f"You are now seated in the {self.full_name}.")
-			active_gs.io.buff_try_key(f"{creature.name}_enter_{self.descript_key}")
+			active_gs.io.buff_s(f"{creature.name}_enter_{self.descript_key}")
 			creature.disp_in_reach(active_gs)
 		else:
 			active_gs.io.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
@@ -403,7 +403,7 @@ class Seat(ContainerFixedSimple):
 		
 		if creature == active_gs.hero:
 			active_gs.io.buffer(f"You are now standing in the {room.full_name}.")
-			active_gs.io.buff_try_key(f"{creature.name}_exit_{self.name}")
+			active_gs.io.buff_s(f"{creature.name}_exit_{self.name}")
 		else:
 			active_gs.io.buffer(f"The {creature.full_name} is now standing in the {room.full_name}.")
 		return

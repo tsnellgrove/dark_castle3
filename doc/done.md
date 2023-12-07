@@ -3275,13 +3275,13 @@ Version 3.75 Goals
 		- IDEA: try_buff() takes obj_spec, obj_def, and class_def attributes?
 		- DONE: review how implemented in Creature show() and give()
 		- DONE: consider centralizing into a special buffer comment (e.g. active_gs.buff_try()  ) [for case of 'if try fails then pass']
-		- DONE: cretae buff_try_key() in GameState class
-	- DONE: update wear() to use buff_try_key()
+		- DONE: cretae buff_s() in GameState class
+	- DONE: update wear() to use buff_s()
 		- DONE: comment out wear_descript
 		- DONE: updaate obj declarations in mk_def_pkl.py
 		- DONE: testing
-	- DONE: update take() to use buff_try_key()
-		- DONE: update take() method and implement auto-gen using buff_try_key()
+	- DONE: update take() to use buff_s()
+		- DONE: update take() method and implement auto-gen using buff_s()
 		- DONE: comment out remove_descript
 		- DONE: updaate obj declarations in mk_def_pkl.py
 		- DONE: testing

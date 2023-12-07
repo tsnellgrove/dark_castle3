@@ -159,7 +159,7 @@ Version 3.80 Goals
 				- DONE: test call in IO class
 				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
 				- DONE: test run game
-			- DONE: buff_try_key()
+			- DONE: buff_s()
 				- DONE: create in IO class
 				- DONE: test call in IO class
 				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
@@ -174,11 +174,12 @@ Version 3.80 Goals
 				- DONE: test run game
 	- DONE: clean-up gs(), mk_def_pkl(), validate()
 	- INPROC: normalize buff options
-		- INPROC: reconsider integration of get_str() and buffer(); is it consistent??
+		- DONE: reconsider integration of get_str() and buffer(); is it consistent??
+		- DONE: update buff_s() to check dyn_dict
+		- DONE: rename buff_s() => buff_s ['s' for silent failure]
 		- TBD: rename buffer() => buff()
 		- TBD: rename buff_a() => buff_f() ['f' for fail]
-		- TBD: update buff_try_key() to check dyn_dict
-		- TBD: rename buff_try_key() => buff_s ['s' for silent failure]
+
 
 - TBD: eliminate direct calls to static_dict()
 	- TBD: investigate how many still exist

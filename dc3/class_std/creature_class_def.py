@@ -509,7 +509,7 @@ class Creature(ViewOnly):
 
 		# buffer a 'custom attack response' if it exists
 		# the response is unique to the deffender, attack obj, attacker, defense obj
-		active_gs.io.buff_try_key(f"{tgt_creature.name}_{result_key}")
+		active_gs.io.buff_s(f"{tgt_creature.name}_{result_key}")
 
 		# 'attack resolution first clause'
 		# compose a string describing the 'winning' blow
