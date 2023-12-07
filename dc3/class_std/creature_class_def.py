@@ -365,10 +365,10 @@ class Creature(ViewOnly):
 		creature = active_gs.hero
 
 		try:
-			active_gs.io.buff_a(f"{creature.name}_show_{self.name}_{obj.descript_key}")
+			active_gs.io.buff_f(f"{creature.name}_show_{self.name}_{obj.descript_key}")
 		except:
 			try:
-				active_gs.io.buff_a(f"{creature.name}_show_{self.name}_default")
+				active_gs.io.buff_f(f"{creature.name}_show_{self.name}_default")
 			except:
 				active_gs.io.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 		return 
@@ -382,11 +382,11 @@ class Creature(ViewOnly):
 
 		# determine other creature's response
 		try:
-			active_gs.io.buff_a(f"{creature.name}_give_{self.name}_{obj.descript_key}")
+			active_gs.io.buff_f(f"{creature.name}_give_{self.name}_{obj.descript_key}")
 			give_key = obj
 		except:
 			try:
-				active_gs.io.buff_a(f"{creature.name}_give_{self.name}_default")
+				active_gs.io.buff_f(f"{creature.name}_give_{self.name}_default")
 				give_key = 'def_give'
 			except:
 				active_gs.io.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")

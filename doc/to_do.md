@@ -134,7 +134,7 @@ Version 3.80 Goals
 	- DONE: buffer calls
 		- DONE: investigate how to best update active_gs.io.buffer(static_dict['x']) calls
 		- DONE: maybe create an active_gs.io.buff_e() method for events (no 'ref' attribute needed)
-		- DONE: create buff_a() routine so that calling methods with failure fall-backs can use them
+		- DONE: create buff_f() routine so that calling methods with failure fall-backs can use them
 		- DONE: update existing active_gs.io.buffer(static_dict['x']) with active_gs.io.buff_e('x')
 			- DONE: start_up()
 			- DONE: cmd_exe()
@@ -177,8 +177,9 @@ Version 3.80 Goals
 		- DONE: reconsider integration of get_str() and buffer(); is it consistent??
 		- DONE: update buff_s() to check dyn_dict
 		- DONE: rename buff_s() => buff_s ['s' for silent failure]
+		- DONE: rename buff_f() => buff_f() ['f' for fail]
 		- TBD: rename buffer() => buff()
-		- TBD: rename buff_a() => buff_f() ['f' for fail]
+		- TBD: review buff_f() cases and convert to buff_s() if failure state is pass
 
 
 - TBD: eliminate direct calls to static_dict()

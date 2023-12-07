@@ -199,13 +199,13 @@ class Warning(Invisible):
 		if self.warn_max == 0:
 			cmd_override = True
 			try:
-				active_gs.io.buff_a(warn_key_recur)
+				active_gs.io.buff_f(warn_key_recur)
 			except:
 				active_gs.io.buffer("I'm not sure that's a good idea Burt...")
 		elif self.warn_count < self.warn_max:
 			cmd_override = True
 			try:
-				active_gs.io.buff_a(warn_key)
+				active_gs.io.buff_f(warn_key)
 			except:
 				active_gs.io.buffer("I'm not sure that's a good idea Burt...")
 		elif self.warn_count == self.warn_max:
@@ -293,12 +293,12 @@ class Timer(Invisible):
 		if active_gs.get_room().chk_is_vis(self.alert_anchor, active_gs):
 			if self.message_type == 'variable':
 				try:
-					active_gs.io.buff_a(timer_key)
+					active_gs.io.buff_f(timer_key)
 				except:
 					active_gs.io.buffer("Beep!")
 			elif self.message_type == 'constant':
 				try:
-					active_gs.io.buff_a(timer_key_constant)
+					active_gs.io.buff_f(timer_key_constant)
 				except:
 					active_gs.io.buffer("Beep!")
 

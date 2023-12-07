@@ -103,14 +103,14 @@ class IO(object):
 		self.buffer(self.get_str(key, 'experience'))
 		return
 	
-	def buff_a(self, key):
-		"""Buffer Auto-Gen. Buffers the description associated with the provided auto-gen key attribute. Fails if key does not exist - which allows local try / except defaults built into the calling method to be expressed.
+	def buff_f(self, key):
+		"""Buffer Fail. Buffers the text associated with the provided key attribute. Fails if key does not exist. Useful for cases where the calling method provides local try / except clauses.
 		"""
 		self.buffer(self.get_str_no_ref(key))
 		return
 
 	def buff_s(self, key):
-		"""Buffer Silent. Buffers the description associated with the key attribute. Fails silently (passes) if key does not exist. Useful for cases where there may or may not be a description provided.
+		"""Buffer Silent. Buffers the text associated with the key attribute. Fails silently (passes) if key does not exist. Useful for cases where there may or may not be a description provided.
 		"""
 		try:
 			self.buffer(self.get_str_no_ref(key))

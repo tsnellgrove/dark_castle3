@@ -610,7 +610,7 @@ class Invisible(object):
 			return True
 		if not tgt_creature.is_attackable: # consider re-homing 'not_attackable' txt to creature obj
 			try:
-				active_gs.io.buff_a(f"not_attackable_{src_creature.name}_{tgt_creature.name}")
+				active_gs.io.buff_f(f"not_attackable_{src_creature.name}_{tgt_creature.name}")
 			except:
 				active_gs.io.buffer("You consider attacking but then think better of it. There must be another path to victory.")
 			return True
