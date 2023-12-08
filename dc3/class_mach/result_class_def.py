@@ -24,10 +24,11 @@ class BufferOnlyResult(object):
 		return self._cmd_override
 
 	def result_exe(self, active_gs, mach_state):
-		try:
-			active_gs.io.buff_f(self.name)
-		except:
-			pass
+		active_gs.io.buff_s(self.name)
+#		try:
+#			active_gs.io.buff_f(self.name)
+#		except:
+#			pass
 		return mach_state, self.cmd_override
 
 	def __repr__(self):
@@ -48,10 +49,11 @@ class BufferAndEndResult(BufferOnlyResult):
 ##		super(BufferAndEndResult, self).results_exe(active_gs, mach_state)
 
 	def result_exe(self, active_gs, mach_state):
-		try:
-			active_gs.io.buff_f(self.name)
-		except:
-			pass
+		active_gs.io.buff_s(self.name)
+#		try:
+#			active_gs.io.buff_f(self.name)
+#		except:
+#			pass
 		active_gs.set_game_ending(self.ending)
 		return mach_state, self.cmd_override
 
@@ -66,10 +68,11 @@ class BufferAndGiveResult(BufferOnlyResult):
 		return self._give_item
 
 	def result_exe(self, active_gs, mach_state):
-		try:
-			active_gs.io.buff_f(self.name)
-		except:
-			pass
+		active_gs.io.buff_s(self.name)
+#		try:
+#			active_gs.io.buff_f(self.name)
+#		except:
+#			pass
 		creature = active_gs.hero
 		creature.put_in_hand(self.give_item, active_gs)
 		mach_state = True
