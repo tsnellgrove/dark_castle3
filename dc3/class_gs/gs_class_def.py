@@ -5,7 +5,7 @@
 
 
 ### import
-import random
+#import random
 from dc3.data.static_gbl import static_dict
 
 ### classes

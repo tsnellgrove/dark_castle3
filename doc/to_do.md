@@ -101,7 +101,7 @@ Version 3.80 Goals
 - DONE: decide if descript & buffer should both be in io... or should each have its own sub-class?
 	- DECISION: yes, they belong together
 
-- INPROC: migrate buffer() methods to io
+- DONE: migrate buffer() methods to io
 	- DONE: add buff_dict attribute to IO class
 	- DONE: update mk_def_pkl() with buff_dict definition
 	- DONE: update existing buff_get() and buff_reset() methods (in gs) to act on io.buff_dict
@@ -173,7 +173,7 @@ Version 3.80 Goals
 				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
 				- DONE: test run game
 	- DONE: clean-up gs(), mk_def_pkl(), validate()
-	- INPROC: normalize buff options
+	- DONE: normalize buff options
 		- DONE: reconsider integration of get_str() and buffer(); is it consistent??
 		- DONE: update buff_s() to check dyn_dict
 		- DONE: rename buff_s() => buff_s ['s' for silent failure]
@@ -182,7 +182,8 @@ Version 3.80 Goals
 			- DONE: convert buff_f()... pass => buff_s()
 			- DONE: test
 			- DONE: clean-up result_class_def()
-		- TBD: rename buffer() => buff()
+		- DONE: decide whether to rename buffer() => buff()
+			- DECISION: keep full name buffer() - is easier to distinguish from buff_x() options
 
 
 
