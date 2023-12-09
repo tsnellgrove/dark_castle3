@@ -185,12 +185,13 @@ Version 3.80 Goals
 		- DONE: decide whether to rename buffer() => buff()
 			- DECISION: keep full name buffer() - is easier to distinguish from buff_x() options
 
-
-
-- TBD: eliminate direct calls to static_dict()
-	- TBD: investigate how many still exist
-	- TBD: think through approach
-	- TBD: centralize all static_dict calls to descript method
+- INPROC: eliminate direct calls to static_dict()
+	- DONE: investigate how many still exist (42 total)
+	- DONE: think through approach
+		- DECISION: migrate all text calls
+		- DECISION: leave dict & lst look-ups as is for now - resolve with end & score class migrations
+	- TBD: shorten get_str_no_ref() => get_str_nr()
+	- TBD: centralize all text-based static_dict calls to gs.io.get_str_nr() method
 
 - TBD: doc updates
 	- TBD: [DOC] purpose of dyn_dict
@@ -205,8 +206,13 @@ Version 3.80 Goals
 	- TBD: fix debug capacity() to work with creatures (?)
 	- TBD: how can sub-classes (IO & Map) call to main class (GameState) [e.g. buff_dbg()] ??
 
+- TBD: new IO-based features:
+	- TBD: Cache last user input and enable 'again' / 'g' command
+	- TBD: Enable 'wait' / 'z' command
 
 
+
+- TBD: review old notes and determine which if any still need to be done
 	- TBD: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
 	- call with key and return string; will look like gs.descript(key)
 	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() ) => consolidate to central dict
@@ -218,33 +224,67 @@ Version 3.80 Goals
 		- CANCEL: static_dict and autogen_dict live in class
 		- CANCEL: dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
 
-- CANCEL: refactor GameState and dicts in static_gbl() with dunder methods ( __getattr__ and __setattr__ )
-	- LINK: see: https://stackoverflow.com/questions/10761779/when-to-use-getattr
-	- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (and s__setattr__ for future tools)
+	- CANCEL: refactor GameState & dicts in static_gbl() with dunder methods ( __getattr__ and __setattr__ )
+		- LINK: see: https://stackoverflow.com/questions/10761779/when-to-use-getattr
+		- CANCEL: create dict_class_def.py w/ StaticDict and __getattr___ (and s__setattr__ for future tools)
 
-- i.o. sub-class:
-	- want an i.o. subclass that stores dyn descriptsions (gs today) and had methods to get descriptions (in base() today) / dyn-descripts (in gs today) and also performs all buffering (in gs today); Would point to universal, centralized static dict (static_gbl)
-	- TBD: refactor buffer type commands into gs.io
-	- TBD: refactor buffer and caching to gs.io
-	- TBD: out_buff => user_output
-	- Use guard pattern and check dicts in this order
-		- 1) in dynamic_dict
-		- 2) starts with "ag_" => autogen_dict (no "try", allow failure)
-		- 3) try static_dic except f"the {obj.full_name} is simply indescribable"
+	- i.o. sub-class:
+		- want an i.o. subclass that stores dyn descriptsions (gs today) and had methods to get descriptions (in base() today) / dyn-descripts (in gs today) and also performs all buffering (in gs today); Would point to universal, centralized static dict (static_gbl)
+		- TBD: refactor buffer type commands into gs.io
+		- TBD: refactor buffer and caching to gs.io
+		- TBD: out_buff => user_output
+		- Use guard pattern and check dicts in this order
+			- 1) in dynamic_dict
+			- 2) starts with "ag_" => autogen_dict (no "try", allow failure)
+			- 3) try static_dic except f"the {obj.full_name} is simply indescribable"
 
-- CANCEL: alternate descript return ideas for alternate, noun-based methods
-	- CANCEL: test w/ static_dict => start with version 
-	- can compound noun methods be created?
-	- think abour 'source' and 'desination'... 
-	- e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
-	- need to do a detailed mapping of what is required for success in each noun_class() method
-	- this would allow give() to become a noun class method... essentially a take() initiated by burt
-	- likewise, show() becomes an examine initiated by burt
-	- change goblin re-arm result to take() rather than put_in_hand()
-		
-- Cache last user input and enable 'again' / 'g' command
+	- CANCEL: alternate descript return ideas for alternate, noun-based methods
+		- CANCEL: test w/ static_dict => start with version 
+		- can compound noun methods be created?
+		- think abour 'source' and 'desination'... 
+		- e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
+		- need to do a detailed mapping of what is required for success in each noun_class() method
+		- this would allow give() to become a noun class method... essentially a take() initiated by burt
+		- likewise, show() becomes an examine initiated by burt
+		- change goblin re-arm result to take() rather than put_in_hand()
 
-- Enable 'wait' / 'z' command
+	- TBD: more gs sub-class ideas:
+		- rename active_gs to gs
+		- modularize remaining GameState class and declarations (???)
+
+		- TBD: rename active_gs => gs
+		- TBD: perhaps Map, Score, and Descript are classes w/ static dicts in mehod / class and actual obj in gs attributes
+		- Refactor dicts
+			- TBD: refactor active_gs.map
+				- gs will have map as an attribute
+				- subclass map_dict
+				- use __getattr__ and __setattr__ methods to make dict accessible as obj
+				- instantiate in start_up() and save in pickle in case map someday changes during game (fun idea)
+				- methods:
+					- next room
+					- use dict keys to search for item in game world (see score() )
+					- return room burt is in
+
+			- TBD: auto-gen keys
+				- TBD: consider auto-gen keys for all verb methods (probably not)
+				- TBD: Organize auto-gen keys together
+				- TBD: consider creating a separate dict for autogen keys
+
+		- TBD: refactor score
+			- TBD: determine max_score from summ of all possible scores?
+			- TBD: score = class with object being attribute in gs
+			- TBD: print_score() a method of the Score class
+			- TBD: instead of a dict of score achievements w/ T or F, just have a list of score achievemnts achieved
+			- TBD: link front_gate score to opening door
+		- TBD: refactor hero to gs.hero
+			- TBD: get_room() method belongs to this class ?? (or pass active_gs to active_gs.map and move get_room there ??)
+		email to self on Aug 2, 2022)
+		- TBD: active_gs => gs renaming; point to same obj to start with ??
+		- TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
+		- TBD: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
+		- TBD: end() => gamestate ???
+		- does creature_state really have any value? Maybe build hedgehog state machine before pulling the plug on this one
+			- Could simplify 'give', remove description updates from give, and instead implement them as part of state machine?
 
 
 # *** FUTURE TO DO *** #
@@ -254,8 +294,10 @@ Version 3.80 Goals
 - TBD: figure out way to capture custom score pts via standard lists that reside in static_dict
 
 *** end sub-class ***
+- TBD: make end routine a sub-class of gs
+- TBD: determine if any other gs clean-up is needed
 
-*** score sub-class ***
+
 
 
 *** minor bug-fix ***
@@ -407,44 +449,6 @@ Version 3.80 Goals
 - IDEA: score() and end() should be between post_action() and auto_action() [i.e. between move 'n' and 'n+1']
 - refactor remaining app_main chain: interp, pre_action, cmd_exe, post_action, auto_action, score (??), end (?)
 
-*** Sort out active_gs child classes ***
-
-- rename active_gs to gs
-- modularize remaining GameState class and declarations (???)
-
-- TBD: rename active_gs => gs
-- TBD: perhaps Map, Score, and Descript are classes w/ static dicts in mehod / class and actual obj in gs attributes
-- Refactor dicts
-	- TBD: refactor active_gs.map
-		- gs will have map as an attribute
-		- subclass map_dict
-		- use __getattr__ and __setattr__ methods to make dict accessible as obj
-		- instantiate in start_up() and save in pickle in case map someday changes during game (fun idea)
-		- methods:
-			- next room
-			- use dict keys to search for item in game world (see score() )
-			- return room burt is in
-
-	- TBD: auto-gen keys
-		- TBD: consider auto-gen keys for all verb methods (probably not)
-		- TBD: Organize auto-gen keys together
-		- TBD: consider creating a separate dict for autogen keys
-
-- TBD: refactor score
-	- TBD: determine max_score from summ of all possible scores?
-	- TBD: score = class with object being attribute in gs
-	- TBD: print_score() a method of the Score class
-	- TBD: instead of a dict of score achievements w/ T or F, just have a list of score achievemnts achieved
-	- TBD: link front_gate score to opening door
-- TBD: refactor hero to gs.hero
-	- TBD: get_room() method belongs to this class ?? (or pass active_gs to active_gs.map and move get_room there ??)
-email to self on Aug 2, 2022)
-- TBD: active_gs => gs renaming; point to same obj to start with ??
-- TBD: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
-- TBD: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
-- TBD: end() => gamestate ???
-- does creature_state really have any value? Maybe build hedgehog state machine before pulling the plug on this one
-	- Could simplify 'give', remove description updates from give, and instead implement them as part of state machine?
 
 *** Sort out prepositional spaces (e.g. Under, Nook, Hole, Bed) ***
 
