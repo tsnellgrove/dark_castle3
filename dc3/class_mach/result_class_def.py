@@ -93,10 +93,11 @@ class AddObjToRoomResult(BufferOnlyResult):
 		self._room_item = new_val
 
 	def result_exe(self, active_gs, mach_state):
-		try:
-			active_gs.io.buff_f(self.name)
-		except:
-			pass
+		active_gs.io.buff_s(self.name)
+#		try:
+#			active_gs.io.buff_f(self.name)
+#		except:
+#			pass
 		room_obj = active_gs.get_room()
 		room_obj.floor_lst_append(self.room_item)
 		mach_state = True
@@ -127,10 +128,11 @@ class AddObjChgDescriptResult(BufferOnlyResult):
 		return self._new_descript
 
 	def result_exe(self, active_gs, mach_state):
-		try:
-			active_gs.io.buff_f(self.name)
-		except:
-			pass
+		active_gs.io.buff_s(self.name)
+#		try:
+#			active_gs.io.buff_f(self.name)
+#		except:
+#			pass
 		room_obj = active_gs.get_room()
 		room_obj.floor_lst_append(self.room_item)
 		mach_state = True
@@ -152,10 +154,11 @@ class AddObjToRoomAndDescriptResult(BufferOnlyResult):
 		self._room_item = new_val
 
 	def result_exe(self, active_gs, mach_state):
-		try:
-			active_gs.io.buff_f(self.name)
-		except:
-			pass
+		active_gs.io.buff_s(self.name)
+#		try:
+#			active_gs.io.buff_f(self.name)
+#		except:
+#			pass
 		room_obj = active_gs.get_room()
 		room_obj.floor_lst_append(self.room_item)
 
@@ -207,11 +210,12 @@ class AttackBurtResult(BufferOnlyResult):
 		self._creature_obj = new_val
 
 	def result_exe(self, active_gs, mach_state):
-		try:
-			active_gs.io.buff_f(self.name)
-		except:
-			pass
-#			cmd_execute(active_gs, '2word', [self.creature_obj, 'attack_burt'])
+		active_gs.io.buff_s(self.name)
+#		try:
+#			active_gs.io.buff_f(self.name)
+#		except:
+#			pass
+##			cmd_execute(active_gs, '2word', [self.creature_obj, 'attack_burt'])
 		if self.creature_obj.hand_is_empty():
 			hand_obj = self.creature_obj.feature_lst[0]
 #			hand_obj = None
@@ -235,10 +239,11 @@ class StartTimerResult(BufferOnlyResult):
 		return self._timer_obj
 
 	def result_exe(self, active_gs, mach_state):
-		try:
-			active_gs.io.buff_f(self.name)
-		except:
-			pass
+		active_gs.io.buff_s(self.name)
+#		try:
+#			active_gs.io.buff_f(self.name)
+#		except:
+#			pass
 		self.timer_obj.start()
 		return mach_state, self.cmd_override
 
@@ -262,10 +267,11 @@ class TimerAndCreatureItemResult(StartTimerResult):
 		return self._ceature_item_obj
 
 	def result_exe(self, active_gs, mach_state):
-		try:
-			active_gs.io.buff_f(self.name)
-		except:
-			pass
+		active_gs.io.buff_s(self.name)
+#		try:
+#			active_gs.io.buff_f(self.name)
+#		except:
+#			pass
 		self.timer_obj.start()
 		self.creature_obj.hand_lst_remove(self.ceature_item_obj)
 		return mach_state, self.cmd_override
@@ -290,10 +296,11 @@ class ChgCreatureDescAndStateResult(BufferOnlyResult):
 		return self._new_desc_key
 
 	def result_exe(self, active_gs, mach_state):
-		try:
-			active_gs.io.buff_f(self.name)
-		except:
-			pass
+		active_gs.io.buff_s(self.name)
+#		try:
+#			active_gs.io.buff_f(self.name)
+#		except:
+#			pass
 		self.creature_obj.descript_key = self.new_desc_key
 		mach_state = True
 		return mach_state, self.cmd_override
@@ -318,10 +325,11 @@ class PutItemInHandResult(BufferOnlyResult):
 		return self._item_obj
 
 	def result_exe(self, active_gs, mach_state):
-		try:
-			active_gs.io.buff_f(self.name)
-		except:
-			pass
+		active_gs.io.buff_s(self.name)
+#		try:
+#			active_gs.io.buff_f(self.name)
+#		except:
+#			pass
 # need to eventually change this to 'creature.take' when this is enabled
 		self.creature_obj.put_in_hand(self.item_obj, active_gs)
 		if self.item_obj in self.creature_obj.bkpk_lst:
@@ -348,10 +356,11 @@ class TravelResult(BufferOnlyResult):
 		return self._dir
 
 	def result_exe(self, active_gs, mach_state):
-		try:
-			active_gs.io.buff_f(self.name)
-		except:
-			pass
+		active_gs.io.buff_s(self.name)
+#		try:
+#			active_gs.io.buff_f(self.name)
+#		except:
+#			pass
 		room = active_gs.map.get_obj_room(self.creature, active_gs)
 		room.go(self.dir, active_gs, self.creature)
 		return mach_state, self.cmd_override

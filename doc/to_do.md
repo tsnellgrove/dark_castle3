@@ -179,6 +179,9 @@ Version 3.80 Goals
 		- DONE: rename buff_s() => buff_s ['s' for silent failure]
 		- DONE: rename buff_f() => buff_f() ['f' for fail]
 		- INPROC: review buff_f() cases and convert to buff_s() if failure state is pass
+			- DONE: convert buff_f()... pass => buff_s()
+			- DONE: test
+			- TBD: clean-up result_class_def()
 		- TBD: rename buffer() => buff()
 
 
@@ -311,6 +314,7 @@ Version 3.80 Goals
 
 *** story-driven updates ***
 
+- TBD: fix Goblin description to no longer mention Control Panel
 - TBD: "what would your mothter say" error to "What would your Nana say?"
 - TBD: update winning condition to reading scroll while sitting on throne?
 - TBD: Stone Coffer => no-lid box ?
