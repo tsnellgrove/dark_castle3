@@ -178,10 +178,10 @@ Version 3.80 Goals
 		- DONE: update buff_s() to check dyn_dict
 		- DONE: rename buff_s() => buff_s ['s' for silent failure]
 		- DONE: rename buff_f() => buff_f() ['f' for fail]
-		- INPROC: review buff_f() cases and convert to buff_s() if failure state is pass
+		- DONE: review buff_f() cases and convert to buff_s() if failure state is pass
 			- DONE: convert buff_f()... pass => buff_s()
 			- DONE: test
-			- TBD: clean-up result_class_def()
+			- DONE: clean-up result_class_def()
 		- TBD: rename buffer() => buff()
 
 
