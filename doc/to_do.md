@@ -190,7 +190,7 @@ Version 3.80 Goals
 	- DONE: think through approach
 		- DECISION: migrate all text calls
 		- DECISION: leave dict & lst look-ups as is for now - resolve with end & score class migrations
-	- TBD: shorten get_str_no_ref() => get_str_nr()
+	- DONE: shorten get_str_no_ref() => get_str_nr()
 	- TBD: centralize all text-based static_dict calls to gs.io.get_str_nr() method
 
 - TBD: doc updates

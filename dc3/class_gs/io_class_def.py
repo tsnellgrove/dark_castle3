@@ -56,7 +56,7 @@ class IO(object):
 			except:
 				return f"The {ref} is simply indescribable."
 
-	def get_str_no_ref(self, key):
+	def get_str_nr(self, key):
 			"""Provides a string (usually a description) from dyn_dict and static_dict. No ref / fail-over. Useful for cases where the calling method will provide alternate text of its own on dict lookup failure.
 			"""
 			try:
@@ -106,14 +106,14 @@ class IO(object):
 	def buff_f(self, key):
 		"""Buffer Fail. Buffers the text associated with the provided key attribute. Fails if key does not exist. Useful for cases where the calling method provides local try / except clauses.
 		"""
-		self.buffer(self.get_str_no_ref(key))
+		self.buffer(self.get_str_nr(key))
 		return
 
 	def buff_s(self, key):
 		"""Buffer Silent. Buffers the text associated with the key attribute. Fails silently (passes) if key does not exist. Useful for cases where there may or may not be a description provided.
 		"""
 		try:
-			self.buffer(self.get_str_no_ref(key))
+			self.buffer(self.get_str_nr(key))
 		except:
 			pass
 

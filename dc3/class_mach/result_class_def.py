@@ -163,7 +163,7 @@ class DoorToggleResult(BufferOnlyResult):
 			self.door_obj.is_open = True
 			descript_ending = "opens."
 		try:
-			descript_start = active_gs.io.get_str_no_ref(self.name)
+			descript_start = active_gs.io.get_str_nr(self.name)
 			descript = descript_start + descript_ending
 			active_gs.io.buffer(descript)
 		except:
