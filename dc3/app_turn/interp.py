@@ -39,7 +39,8 @@ abbreviations_dict = {
 ### help = print help info
 def help(active_gs, option):
 	if option == 'basics':
-		output = static_dict['help_basics']
+#		output = static_dict['help_basics']
+		output = active_gs.io.get_str_nr('help_basics')
 	elif option == 'verbs':
 		output = "Available verbs include: " + ', '.join(known_verbs_lst)
 	elif option == 'one-word-commands':
@@ -51,27 +52,35 @@ def help(active_gs, option):
 	elif option == 'articles':
 		output = ("The following articles are supported but not required: " + ', '.join(articles_lst))
 	elif option == 'adjectives':
-		output = static_dict['help_adjectives']
+#		output = static_dict['help_adjectives']
+		output = active_gs.io.get_str_nr('help_adjectives')
 	elif  option == 'abbreviations':
 		pre_out = "Available abbreviations include: "
 		for key in abbreviations_dict:
 			pre_out = pre_out + key + " = " + abbreviations_dict[key] + ", "
 		output = pre_out[:-2]
 	elif option == 'prepositions':
-		output = static_dict['help_prepositions']
+#		output = static_dict['help_prepositions']
+		output = active_gs.io.get_str_nr('help_prepositions')
 	elif option == 'read':
-		output = static_dict['help_read']
+#		output = static_dict['help_read']
+		output = active_gs.io.get_str_nr('help_read')
 	elif option == 'attack':
-		output = static_dict['help_attack']
+#		output = static_dict['help_attack']
+		output = active_gs.io.get_str_nr('help_attack')
 	elif option == 'creatures':
-		output = static_dict['help_creatures']
+#		output = static_dict['help_creatures']
+		output = active_gs.io.get_str_nr('help_creatures')
 	elif option == 'debug':
 		if not active_gs.state_dict['debug']:
-			output = static_dict['help_debug_error']
+#			output = static_dict['help_debug_error']
+			output = active_gs.io.get_str_nr('help_debug_error')
 		else:
-			output = static_dict['help_debug'] + ', '.join(debug_verb_lst)
+#			output = static_dict['help_debug'] + ', '.join(debug_verb_lst)
+			output = active_gs.io.get_str_nr('help_debug') + ', '.join(debug_verb_lst)
 	else:
-		output = static_dict['help']
+#		output = static_dict['help']
+		output = active_gs.io.get_str_nr('help')
 	active_gs.io.buffer(output)
 
 ### root_word_count - determines if user command contains root words
