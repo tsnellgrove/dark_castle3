@@ -528,7 +528,7 @@ class Creature(ViewOnly):
 			lose_creature_disp = "You are"
 		else:
 			lose_creature_disp = f"The {lose_creature.full_name} is"
-		resolution_end_str = f"{lose_creature_disp} {static_dict[result_code]} "
+		resolution_end_str = f"{lose_creature_disp} {active_gs.io.get_str_nr(result_code)} "
 
 		# buffer the full 'attack resolution'
 		active_gs.io.buffer(f"{resolution_strt_str}{resolution_end_str}")

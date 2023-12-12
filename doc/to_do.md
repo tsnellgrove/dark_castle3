@@ -191,9 +191,10 @@ Version 3.80 Goals
 		- DECISION: migrate all text calls
 		- DECISION: leave dict & lst look-ups as is for now - resolve with end & score class migrations
 	- DONE: shorten get_str_no_ref() => get_str_nr()
-	- INPROC: centralize all text-based static_dict calls to gs.io.get_str_nr() method
+	- DONE: centralize all text-based static_dict calls to gs.io.get_str_nr() method
 		- DONE: interp()
-		- TBD: 
+		- DONE: creature()
+	- TBD: create list & dict lookups for score & ending
 
 - TBD: doc updates
 	- TBD: [DOC] purpose of dyn_dict

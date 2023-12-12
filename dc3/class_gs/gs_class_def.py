@@ -61,7 +61,7 @@ class GameState(object):
 
 	def print_score(self):
 		output1 = ("Your score is now " + str(self.get_score()))
-		output2 = (" out of " + str(static_dict['max_score']))
+		output2 = (" out of " + str(self.io.get_str_nr('max_score')))	
 		self.io.buffer(output1 + output2)
 
 	### game moves counter ###
