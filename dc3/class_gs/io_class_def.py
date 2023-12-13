@@ -57,13 +57,17 @@ class IO(object):
 				return f"The {ref} is simply indescribable."
 
 	def get_str_nr(self, key):
-			"""Provides a string (usually a description) from dyn_dict and static_dict. No ref / fail-over. Useful for cases where the calling method will provide alternate text of its own on dict lookup failure.
-			"""
-			try:
-				return self.get_dyn_dict(key)
-			except:
-				return static_dict[key]
+		"""Provides a string (usually a description) from dyn_dict and static_dict. No ref / fail-over. Useful for cases where the calling method will provide alternate text of its own on dict lookup failure.
+		"""
+		try:
+			return self.get_dyn_dict(key)
+		except:
+			return static_dict[key]
 				
+	def get_dict_val(self, key1, key2):
+		"""Returns a dictionary value from a dict within static_dict.
+		"""
+		return static_dict[key1][key2]
 
 	### buffer methods ###
 	def get_buff(self):

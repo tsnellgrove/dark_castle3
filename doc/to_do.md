@@ -194,7 +194,11 @@ Version 3.80 Goals
 	- DONE: centralize all text-based static_dict calls to gs.io.get_str_nr() method
 		- DONE: interp()
 		- DONE: creature()
-	- TBD: create list & dict lookups for score & ending
+	- INPROC: create list & dict lookups for score & ending
+		- DONE: create get_dict_val() in IO class
+		- TBD: replace direct calls to static_dict dicts
+		- TBD: create get_lst in IO class
+		- TBD: replace direct calls to static_dict lists
 
 - TBD: doc updates
 	- TBD: [DOC] purpose of dyn_dict
