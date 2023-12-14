@@ -196,9 +196,10 @@ Version 3.80 Goals
 		- DONE: creature()
 	- INPROC: create list & dict lookups for score & ending
 		- DONE: create get_dict_val() in IO class
-		- TBD: replace direct calls to static_dict dicts
+		- DONE: replace direct calls to static_dict dicts
 		- TBD: create get_lst in IO class
 		- TBD: replace direct calls to static_dict lists
+		- TBD: clean up unneeded imports of static_gbl()
 
 - TBD: doc updates
 	- TBD: [DOC] purpose of dyn_dict
