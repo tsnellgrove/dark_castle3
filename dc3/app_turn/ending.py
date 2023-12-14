@@ -21,7 +21,7 @@ def end(active_gs):
 		title_score = 0
 	else:
 		title_score = math.ceil(score / 10) * 10
-	title = static_dict['titles_by_score'][title_score]
+	title = active_gs.io.get_dict_val('titles_by_score', title_score)
 
 	if game_ending == 'death':
 		active_gs.io.buffer("You have died.")

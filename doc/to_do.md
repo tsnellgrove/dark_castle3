@@ -299,6 +299,7 @@ Version 3.80 Goals
 *** score sub-class ***
 - TBD: update score achievement dict in gs => list that starts empty and holds achieved score items
 - TBD: figure out way to capture custom score pts via standard lists that reside in static_dict
+- TBD: LOT of opportunity for code optimization in score()!
 
 *** end sub-class ***
 - TBD: make end routine a sub-class of gs
