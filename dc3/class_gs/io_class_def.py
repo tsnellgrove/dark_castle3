@@ -69,6 +69,12 @@ class IO(object):
 		"""
 		return static_dict[key1][key2]
 
+	def get_lst(self, key):
+		"""Returns a list from a dict within static_dict.
+		"""
+		return static_dict[key]
+
+
 	### buffer methods ###
 	def get_buff(self):
 		return self.buff_dict['current_turn']
