@@ -6,7 +6,6 @@
 
 ### imports ###
 import math
-from dc3.data.static_gbl import static_dict
 
 
 ### end routine ###

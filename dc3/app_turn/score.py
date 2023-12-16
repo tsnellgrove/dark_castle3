@@ -5,7 +5,6 @@
 
 
 ### import statements
-from dc3.data.static_gbl import static_dict
 
 
 def score(active_gs):

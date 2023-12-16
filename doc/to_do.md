@@ -199,7 +199,11 @@ Version 3.80 Goals
 		- DONE: replace direct calls to static_dict dicts
 		- DONE: create get_lst in IO class
 		- DONE: replace direct calls to static_dict lists
-	- TBD: clean up unneeded imports of static_gbl()
+	- DONE: clean up unneeded imports of static_gbl()
+	- TBD: fix result_class() and creature() calls of static_dict
+		- TBD: result_class_def()
+		- TBD: creature()
+		- TBD: clean up imports of static_dict
 
 - TBD: doc updates
 	- TBD: [DOC] purpose of dyn_dict

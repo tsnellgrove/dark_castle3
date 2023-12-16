@@ -8,7 +8,6 @@
 ### import statements
 import pickle
 import random
-from dc3.data.static_gbl import static_dict
 
 ### start_me_up - gets obj from default_pkl, welcome text, sets starting values
 def start_me_up():

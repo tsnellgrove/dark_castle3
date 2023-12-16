@@ -6,7 +6,6 @@
 
 ### import statements
 from itertools import islice
-from dc3.data.static_gbl import static_dict
 
 ### interpreter function language static dictionaries & lists ###
 articles_lst = ['a', 'an', 'the']

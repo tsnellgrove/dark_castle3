@@ -5,7 +5,6 @@
 
 
 ### import
-from dc3.data.static_gbl import static_dict
 from dc3.class_std.invisible_class_def import Invisible
 
 
