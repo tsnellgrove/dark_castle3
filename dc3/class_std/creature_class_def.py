@@ -6,7 +6,7 @@
 ### import
 import random
 from dc3.class_std.base_class_def import ViewOnly
-from dc3.data.static_gbl import static_dict
+
 
 ### local functions
 def attack_obj_category(obj, creature):
@@ -405,7 +405,7 @@ class Creature(ViewOnly):
 
 		# Update other creature description based on gift given
 		new_descript_key = f"{creature.name}_give_{self.name}_{obj.name}_descript"
-		if new_descript_key in static_dict:
+		if active_gs.io.chk_str_exist(new_descript_key):
 			self.descript_key = new_descript_key
 		return 
 

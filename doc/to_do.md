@@ -185,7 +185,7 @@ Version 3.80 Goals
 		- DONE: decide whether to rename buffer() => buff()
 			- DECISION: keep full name buffer() - is easier to distinguish from buff_x() options
 
-- INPROC: eliminate direct calls to static_dict()
+- DONE: eliminate direct calls to static_dict()
 	- DONE: investigate how many still exist (42 total)
 	- DONE: think through approach
 		- DECISION: migrate all text calls
@@ -200,10 +200,13 @@ Version 3.80 Goals
 		- DONE: create get_lst in IO class
 		- DONE: replace direct calls to static_dict lists
 	- DONE: clean up unneeded imports of static_gbl()
-	- TBD: fix result_class() and creature() calls of static_dict
-		- TBD: result_class_def()
-		- TBD: creature()
-		- TBD: clean up imports of static_dict
+	- DONE: fix result_class() and creature() calls of static_dict
+		- DONE: create chk_str_exist()
+		- DONE: result_class_def()
+		- DONE: creature()
+		- DONE: clean up imports of static_dict
+
+- TBD: review old notes and determine which, if any, still need to be done
 
 - TBD: doc updates
 	- TBD: [DOC] purpose of dyn_dict
@@ -222,9 +225,7 @@ Version 3.80 Goals
 	- TBD: Cache last user input and enable 'again' / 'g' command
 	- TBD: Enable 'wait' / 'z' command
 
-
-
-- TBD: review old notes and determine which if any still need to be done
+- TBD: REVIEW OLD NOTES
 	- TBD: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
 	- call with key and return string; will look like gs.descript(key)
 	- all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() ) => consolidate to central dict

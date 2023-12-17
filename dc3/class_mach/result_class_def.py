@@ -5,7 +5,6 @@
 
 
 ### import
-from dc3.data.static_gbl import static_dict
 
 
 ### classes
@@ -138,7 +137,7 @@ class AddObjToRoomAndDescriptResult(BufferOnlyResult):
 		room_obj.floor_lst_append(self.room_item)
 
 		new_descript_key = f"{room_obj.name}_{self.name}"
-		if new_descript_key in static_dict:
+		if active_gs.io.chk_str_exist(new_descript_key):
 			room_obj.descript_key = new_descript_key
 
 		mach_state = True

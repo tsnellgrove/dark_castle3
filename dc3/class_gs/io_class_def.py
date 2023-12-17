@@ -35,6 +35,14 @@ class IO(object):
 	def buff_dict(self, new_val):
 		self._buff_dict = new_val
 
+
+	### check dict methods ###
+	def chk_str_exist(self, key):
+		if key not in self.dyn_dict and key not in static_dict:
+			return False
+		return True
+
+
 	### description methods ###
 	def get_dyn_dict(self, key):
 		if key not in self.dyn_dict:
