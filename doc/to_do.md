@@ -210,7 +210,11 @@ Version 3.80 Goals
 
 - INPROC: long over-due game_state clean-up
 	- DONE: rename gs_class => gs
-	- TBD: finally fix get_room => rename and move to gs.map
+	- INPROC: finally fix get_room => rename and move to gs.map
+		- TBD: create get_hero_rm(self, gs) in gs.map
+		- TBD: test redirect gs.get_room() calls to gs.io.get_hero_rm()
+		- TBD: migrate all calls to gs.io.get_hero_rm()
+		- TBD: clean-up gs.get_room()
 	- TBD: how can sub-classes (IO & Map) call to main class (GameState) [e.g. buff_dbg()] ??
 
 - TBD: new IO-based features:
@@ -222,6 +226,7 @@ Version 3.80 Goals
 	- TBD: [DOC] thinking behind isolating static_dict from dyn_dict
 	- TBD: [DOC] abstraction allows for changes in static_dict structure in the future with minimal impact
 	- TBD: [DOC] long-term DB strat
+	- TBD: [DOC] decisions to search for hero rather than cache location
 
 - DONE: REVIEW OLD NOTES
 	- DONE: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
