@@ -28,43 +28,43 @@ class OpenableMixIn(object):
 		return True
 
 	# *** display methods ***
-	def has_cond(self, active_gs):
+	def has_cond(self, gs):
 		return True
 
-	def disp_cond(self, active_gs):
+	def disp_cond(self, gs):
 		""" Displays object-specific conditions. Used in examine().
 		"""
 		if self.is_open == False:
-			active_gs.io.buff_no_cr(f"The {self.full_name} is closed. ")
+			gs.io.buff_no_cr(f"The {self.full_name} is closed. ")
 			return
-		active_gs.io.buff_no_cr(f"The {self.full_name} is open. ") # is_open == True
+		gs.io.buff_no_cr(f"The {self.full_name} is open. ") # is_open == True
 		return 
 
     # *** verb methods ***
-	def open(self, active_gs, mode=None):
+	def open(self, gs, mode=None):
 		""" Opens a Door object.
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 
 		self.is_open = True
 
-		active_gs.io.buff_cr()
-		active_gs.io.buff_no_cr("Openned. ")
+		gs.io.buff_cr()
+		gs.io.buff_no_cr("Openned. ")
 		if self.is_container():
-			self.disp_contain(active_gs)
-		active_gs.io.buff_cr()
+			self.disp_contain(gs)
+		gs.io.buff_cr()
 		return
 
-	def close(self, active_gs, mode=None):
+	def close(self, gs, mode=None):
 		""" Closes a Door object.
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 
-		active_gs.io.buffer("Closed")
+		gs.io.buffer("Closed")
 
 		self.is_open = False
 		return
@@ -99,26 +99,26 @@ class LockableMixIn(object):
 		return True
 
 	# *** verb methods ***
-	def unlock(self, key_obj, active_gs, mode=None):
+	def unlock(self, key_obj, gs, mode=None):
 		""" Unlocks a Door object.
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 
-		active_gs.io.buffer("Unlocked")
+		gs.io.buffer("Unlocked")
 
 		self.is_unlocked = True
 		return
 
-	def lock(self, key_obj, active_gs, mode=None):
+	def lock(self, key_obj, gs, mode=None):
 		""" Locks a Door object.
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 
-		active_gs.io.buffer("Locked")
+		gs.io.buffer("Locked")
 
 		self.is_unlocked = False
 		return
@@ -154,20 +154,20 @@ class ContainsMixIn(object):
 		return self._prep
 
 	# *** attrib methods ***
-	def contain_lst_append(self, item, active_gs):
+	def contain_lst_append(self, item, gs):
 		self._contain_lst.append(item)
 		if self.is_item(): # Increment Portable Container weight if Item is added
 			self.increment_weight(item.weight)
-			in_creature_inv, creature = active_gs.map.chk_obj_in_creature_inv(self, active_gs)
+			in_creature_inv, creature = gs.map.chk_obj_in_creature_inv(self, gs)
 			if in_creature_inv:
 				creature.increment_weight(item.weight)
 		return
 
-	def contain_lst_remove(self, item, active_gs):
+	def contain_lst_remove(self, item, gs):
 		self._contain_lst.remove(item)
 		if self.is_item(): # Decrement Portable Container weight if Item is removed
 			self.decrement_weight(item.weight)
-			in_creature_inv, creature = active_gs.map.chk_obj_in_creature_inv(self, active_gs)
+			in_creature_inv, creature = gs.map.chk_obj_in_creature_inv(self, gs)
 			if in_creature_inv:
 				creature.decrement_weight(item.weight)
 		return
@@ -187,20 +187,20 @@ class ContainsMixIn(object):
 		"""
 		return item in self.contain_lst
 
-	def get_contain_lst(self, active_gs):
+	def get_contain_lst(self, gs):
 		return self.contain_lst
 
-	def get_vis_contain_lst(self, active_gs):
+	def get_vis_contain_lst(self, gs):
 		""" Returns the list of visible objects contained in the referenced ('self') object
 		"""
 		if self.is_content_vis():
 			node2_lst = []
-			[node2_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in self.contain_lst]
+			[node2_lst.extend(obj.get_vis_contain_lst(gs)) for obj in self.contain_lst]
 			return self.contain_lst + node2_lst
 		return []
 
-	def remove_item(self, item, active_gs):
-		self.contain_lst_remove(item, active_gs)
+	def remove_item(self, item, gs):
+		self.contain_lst_remove(item, gs)
 
 	# *** container-specific scope methods ***
 	def is_empty(self):
@@ -224,57 +224,57 @@ class ContainsMixIn(object):
 		"""
 		return (self.is_openable() and self.is_open) or not self.is_openable()
 
-	def chk_wrt_is_vis(self, writing, active_gs):
+	def chk_wrt_is_vis(self, writing, gs):
 		""" Evaluates whether the passed writing is visible within the methed-calling object.
 		"""
-		return any(obj.writing == writing for obj in self.get_vis_contain_lst(active_gs))
+		return any(obj.writing == writing for obj in self.get_vis_contain_lst(gs))
 
 
 	# *** display methods ***
-	def has_contain(self, active_gs):
+	def has_contain(self, gs):
 		return True
 	
-	def disp_contain(self, active_gs):
+	def disp_contain(self, gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
 		"""
 		if self.is_content_vis():
 			if self.is_empty():
-				active_gs.io.buff_no_cr(f"The {self.full_name} is empty. ")
+				gs.io.buff_no_cr(f"The {self.full_name} is empty. ")
 				return
-			contain_txt_lst = [obj.full_name for obj in self.contain_lst if obj != active_gs.hero]
+			contain_txt_lst = [obj.full_name for obj in self.contain_lst if obj != gs.hero]
 			if contain_txt_lst:
 				contain_str = ", ".join(contain_txt_lst)
-				active_gs.io.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
+				gs.io.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
 			for obj in self.contain_lst:
-				if obj != active_gs.hero:
-					obj.disp_contain(active_gs)
+				if obj != gs.hero:
+					obj.disp_contain(gs)
 		return 
 
 
 	# *** verb methods ***
-	def put(self, obj, active_gs, mode=None):
+	def put(self, obj, gs, mode=None):
 		""" Puts an Item in a Container or on a Surface.
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 		
 		creature.hand_lst_remove(obj)
-		self.contain_lst_append(obj, active_gs)
+		self.contain_lst_append(obj, gs)
 
-		active_gs.io.buffer("Done")
+		gs.io.buffer("Done")
 		return
 
 
 	# *** debug methods ***
-	def capacity(self, active_gs, mode=None):
+	def capacity(self, gs, mode=None):
 		""" Reports the capacity of a Container. Only usable in debug mode.
 		"""
 		if mode is None:
 			mode = 'std'
 		
-		active_gs.io.buffer(f"The weight capacity of the {self.full_name} is {self.max_weight}.")
-		active_gs.io.buffer(f"The object count capacity of the {self.full_name} is {self.max_obj}.")
+		gs.io.buffer(f"The weight capacity of the {self.full_name} is {self.max_weight}.")
+		gs.io.buffer(f"The object count capacity of the {self.full_name} is {self.max_obj}.")
 		return
 
 
@@ -363,49 +363,49 @@ class Seat(ContainerFixedSimple):
 		return obj.is_seat()
 
 	# *** verb methods ***
-	def enter(self, active_gs, mode=None, creature=None):
+	def enter(self, gs, mode=None, creature=None):
 		""" Sits a creature in a Seat
 		"""
 		if mode is None: # destermine default attributes
 			mode = 'std'
 		if creature is None:
-			creature = active_gs.hero
+			creature = gs.hero
 
-		room = active_gs.map.get_obj_room(creature, active_gs)
+		room = gs.map.get_obj_room(creature, gs)
 		room.floor_lst_remove(creature)
-		self.contain_lst_append(creature, active_gs)
+		self.contain_lst_append(creature, gs)
 
-		if room != active_gs.get_room(): # if hero_creature not in current room, exit with no display
+		if room != gs.get_room(): # if hero_creature not in current room, exit with no display
 			return 
 		
-		if creature == active_gs.hero:
-			active_gs.io.buffer(f"You are now seated in the {self.full_name}.")
-			active_gs.io.buff_s(f"{creature.name}_enter_{self.descript_key}")
-			creature.disp_in_reach(active_gs)
+		if creature == gs.hero:
+			gs.io.buffer(f"You are now seated in the {self.full_name}.")
+			gs.io.buff_s(f"{creature.name}_enter_{self.descript_key}")
+			creature.disp_in_reach(gs)
 		else:
-			active_gs.io.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
+			gs.io.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
 		return
 
-	def exit(self, active_gs, mode=None, creature=None):
+	def exit(self, gs, mode=None, creature=None):
 		""" Enables a creature to exit a Seat
 		"""
 		if mode is None: # destermine default attributes
 			mode = 'std'
 		if creature is None:
-			creature = active_gs.hero
+			creature = gs.hero
 
-		room = active_gs.map.get_obj_room(creature, active_gs)
+		room = gs.map.get_obj_room(creature, gs)
 		room.floor_lst_append(creature)
-		self.contain_lst_remove(creature, active_gs)
+		self.contain_lst_remove(creature, gs)
 
-		if room != active_gs.get_room(): # if hero_creature not in current room, exit with no display
+		if room != gs.get_room(): # if hero_creature not in current room, exit with no display
 			return 
 		
-		if creature == active_gs.hero:
-			active_gs.io.buffer(f"You are now standing in the {room.full_name}.")
-			active_gs.io.buff_s(f"{creature.name}_exit_{self.name}")
+		if creature == gs.hero:
+			gs.io.buffer(f"You are now standing in the {room.full_name}.")
+			gs.io.buff_s(f"{creature.name}_exit_{self.name}")
 		else:
-			active_gs.io.buffer(f"The {creature.full_name} is now standing in the {room.full_name}.")
+			gs.io.buffer(f"The {creature.full_name} is now standing in the {room.full_name}.")
 		return
 
 

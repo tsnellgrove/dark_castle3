@@ -49,20 +49,20 @@ class Room(ViewOnly):
 		return True
 
 	# *** universal scope methods ***
-	def get_vis_contain_lst(self, active_gs):
+	def get_vis_contain_lst(self, gs):
 		""" Returns the list of visible objects contained in the method-calling object. In Room, provides the visible object scope.
 		"""
 		return_lst = []
-		node1_only_lst = [self] + active_gs.map.get_door_lst(self) + self.feature_lst + self.floor_lst
+		node1_only_lst = [self] + gs.map.get_door_lst(self) + self.feature_lst + self.floor_lst
 		return_lst = return_lst + node1_only_lst
 		for obj in self.floor_lst:
-			return_lst += obj.get_vis_contain_lst(active_gs)
+			return_lst += obj.get_vis_contain_lst(gs)
 #		return_lst = return_lst + self.floor_lst
 #		return return_lst
 #		return return_lst + self.floor_lst
 		return return_lst
 
-	def chk_contain_item(self, item, active_gs):
+	def chk_contain_item(self, item, gs):
 		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item()
 		"""
 		if item in self.floor_lst:
@@ -71,10 +71,10 @@ class Room(ViewOnly):
 			return True
 		return False
 
-	def get_contain_lst(self, active_gs):
-		return self.floor_lst + self.feature_lst + active_gs.map.get_door_lst(self)
+	def get_contain_lst(self, gs):
+		return self.floor_lst + self.feature_lst + gs.map.get_door_lst(self)
 
-	def remove_item(self, item, active_gs):
+	def remove_item(self, item, gs):
 		""" Removes the passed object from the methed-calling object. In Room, is used to enable the take() method.
 		"""
 		if item in self.floor_lst:
@@ -82,32 +82,32 @@ class Room(ViewOnly):
 			return 
 		for obj in self.floor_lst:
 			if obj.chk_contain_item(item):
-				obj.remove_item(item, active_gs)
+				obj.remove_item(item, gs)
 				return
-			for cont_obj in obj.get_vis_contain_lst(active_gs):
+			for cont_obj in obj.get_vis_contain_lst(gs):
 				if cont_obj.chk_contain_item(item):
-					cont_obj.remove_item(item, active_gs)
+					cont_obj.remove_item(item, gs)
 					return
 		raise ValueError(f"Can't remove item {item} from room {self.name}")
 		return 
 
 
 	# *** room-specific scope methods ***
-	def chk_wrt_is_vis(self, writing, active_gs):
+	def chk_wrt_is_vis(self, writing, gs):
 		""" Evaluates whether the passed writing is visible within the methed-calling object.
 		"""
-		return any(obj.writing == writing for obj in self.get_vis_contain_lst(active_gs))
+		return any(obj.writing == writing for obj in self.get_vis_contain_lst(gs))
 
-	def chk_is_vis(self, obj, active_gs):
+	def chk_is_vis(self, obj, gs):
 		""" Evaluates whether the passed object is visible within the methed-calling object.
 		"""
-		return obj in self.get_vis_contain_lst(active_gs)
+		return obj in self.get_vis_contain_lst(gs)
 
-	def get_mach_lst(self, active_gs):
+	def get_mach_lst(self, gs):
 		""" Returns the list of Machine objects contained in the method-calling object. In Room, provides the Machine object scope.
 		"""
 		mach_lst = []
-		scope_lst = self.get_vis_contain_lst(active_gs) + self.invis_lst
+		scope_lst = self.get_vis_contain_lst(gs) + self.invis_lst
 		for obj in scope_lst:
 			if obj.is_mach():
 				mach_lst.append(obj)
@@ -119,67 +119,67 @@ class Room(ViewOnly):
 
 
 	# *** universal display methods ***
-	def get_title_str(self, active_gs):
-		if active_gs.hero.is_contained(active_gs):
-			return f"*** {self.full_name}, in the {active_gs.hero.get_contained_by(active_gs).full_name} ***"
+	def get_title_str(self, gs):
+		if gs.hero.is_contained(gs):
+			return f"*** {self.full_name}, in the {gs.hero.get_contained_by(gs).full_name} ***"
 		else:
 			return f"*** {self.full_name} ***"
 
-	def has_cond(self, active_gs):
+	def has_cond(self, gs):
 		return True
 
-	def has_contain(self, active_gs):
+	def has_contain(self, gs):
 		return len(self.floor_lst) > 1
 
-	def disp_cond(self, active_gs):
+	def disp_cond(self, gs):
 		""" Displays object-specific conditions. Used in examine().
 		"""
-		active_gs.io.buff_no_cr(active_gs.map.get_door_str(self))
+		gs.io.buff_no_cr(gs.map.get_door_str(self))
 
-	def disp_contain(self, active_gs):
+	def disp_contain(self, gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
 		"""
 		room_item_lst = []
 		for obj in self.floor_lst:
-			if obj == active_gs.hero:
+			if obj == gs.hero:
 					pass
 			elif not obj.is_item():
-				active_gs.io.buff_cr()
-				active_gs.io.buff_cr()
-				active_gs.io.buff_no_cr(f"There is a {obj.full_name} here")
-				if active_gs.hero.is_contained(active_gs) and active_gs.hero.get_contained_by(active_gs) == obj:
-					active_gs.io.buff_no_cr(" (which you are presently occupying)")
-				active_gs.io.buff_no_cr(". ")
-				obj.disp_contain(active_gs)
+				gs.io.buff_cr()
+				gs.io.buff_cr()
+				gs.io.buff_no_cr(f"There is a {obj.full_name} here")
+				if gs.hero.is_contained(gs) and gs.hero.get_contained_by(gs) == obj:
+					gs.io.buff_no_cr(" (which you are presently occupying)")
+				gs.io.buff_no_cr(". ")
+				obj.disp_contain(gs)
 			else:
 				room_item_lst.append(obj)
 		if room_item_lst:
-			active_gs.io.buff_cr()
-			active_gs.io.buff_cr()
+			gs.io.buff_cr()
+			gs.io.buff_cr()
 			room_txt_lst = [obj.full_name for obj in room_item_lst]
 			room_item_str = ", ".join(room_txt_lst)
-			active_gs.io.buff_no_cr(f"The following items are here: {room_item_str}. ")
+			gs.io.buff_no_cr(f"The following items are here: {room_item_str}. ")
 			for obj in room_item_lst:
-				obj.disp_contain(active_gs)
+				obj.disp_contain(gs)
 		return
 
 	# *** verb methods ***
-	def go(self, dir, active_gs, creature=None, mode=None):
+	def go(self, dir, gs, creature=None, mode=None):
 		""" Moves a Creature from one room to another
 		"""
 		if mode is None:
 			mode = 'std'
 		if creature is None:
-			creature = active_gs.hero
+			creature = gs.hero
 
-		next_room = active_gs.map.get_next_room(self, dir)
-##			active_gs.set_room(next_room)
+		next_room = gs.map.get_next_room(self, dir)
+##			gs.set_room(next_room)
 		next_room.floor_lst_append(creature)
 		self.floor_lst_remove(creature)
 
-		if creature == active_gs.hero:
-			next_room.examine(active_gs)
+		if creature == gs.hero:
+			next_room.examine(gs)
 			return 
-		if self == active_gs.get_room():
-			active_gs.io.buffer(f"The {creature.full_name} goes {dir}")
+		if self == gs.get_room():
+			gs.io.buffer(f"The {creature.full_name} goes {dir}")
 		return 

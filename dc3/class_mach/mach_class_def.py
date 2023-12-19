@@ -61,7 +61,7 @@ class MachineMixIn(object):
 	# complex methods
 
 	# formats trigger state into trig_key_lst based on case and returns true if trig_key_lst is in trig_vals_lst
-	def trig_check(self, active_gs, case, word_lst):
+	def trig_check(self, gs, case, word_lst):
 		trig_key_lst = ['not_valid']
 		if case == 'go':
 			trig_key_lst = [word_lst[1], word_lst[2]]
@@ -92,14 +92,14 @@ class MachineMixIn(object):
 
 		return trig_key_lst in self.trig_vals_lst
 
-	def run_mach(self, active_gs):
+	def run_mach(self, gs):
 		cond_return_lst = []
 		for cond in self.cond_lst:
-			cond_return = cond.cond_check(active_gs, self.mach_state, self.cond_swicth_lst)
+			cond_return = cond.cond_check(gs, self.mach_state, self.cond_swicth_lst)
 			cond_return_lst.append(cond_return)
 		result_index = cond_return_lst.index(True)
 		result = self.result_lst[result_index]
-		temp_mach_state, cmd_override = result.result_exe(active_gs, self.mach_state)
+		temp_mach_state, cmd_override = result.result_exe(gs, self.mach_state)
 		self.mach_state = temp_mach_state
 		return cmd_override
 
@@ -171,7 +171,7 @@ class Warning(Invisible):
 	# complex methods
 
 	# formats trigger state into trig_key_lst based on case and returns true if trig_key_lst is in trig_vals_lst
-	def trig_check(self, active_gs, case, word_lst):
+	def trig_check(self, gs, case, word_lst):
 		trig_key_lst = 'not_valid'
 		if case == 'go':
 			trig_key_lst = [word_lst[1], word_lst[2]]
@@ -190,7 +190,7 @@ class Warning(Invisible):
 ## DUP CODE TO MachineMixIn ###
 
 
-	def run_mach(self, active_gs):
+	def run_mach(self, gs):
 		cmd_override = False
 		self.warn_count += 1
 		warn_key = self.name + "_" + str(self.warn_count)
@@ -198,17 +198,17 @@ class Warning(Invisible):
 		if self.warn_max == 0:
 			cmd_override = True
 			try:
-				active_gs.io.buff_f(warn_key_recur)
+				gs.io.buff_f(warn_key_recur)
 			except:
-				active_gs.io.buffer("I'm not sure that's a good idea Burt...")
+				gs.io.buffer("I'm not sure that's a good idea Burt...")
 		elif self.warn_count < self.warn_max:
 			cmd_override = True
 			try:
-				active_gs.io.buff_f(warn_key)
+				gs.io.buff_f(warn_key)
 			except:
-				active_gs.io.buffer("I'm not sure that's a good idea Burt...")
+				gs.io.buffer("I'm not sure that's a good idea Burt...")
 		elif self.warn_count == self.warn_max:
-			active_gs.io.buffer("Don't say I didn't warn you Burt...")
+			gs.io.buffer("Don't say I didn't warn you Burt...")
 		return cmd_override
 
 
@@ -283,23 +283,23 @@ class Timer(Invisible):
 		return True
 
 	# complex methods
-	def run_mach(self, active_gs):
+	def run_mach(self, gs):
 		cmd_override = False
 		self.timer_count += 1				
 		timer_key = self.name + "_" + str(self.timer_count)
 		timer_key_constant = self.name + "_1"
 
-		if active_gs.get_room().chk_is_vis(self.alert_anchor, active_gs):
+		if gs.get_room().chk_is_vis(self.alert_anchor, gs):
 			if self.message_type == 'variable':
 				try:
-					active_gs.io.buff_f(timer_key)
+					gs.io.buff_f(timer_key)
 				except:
-					active_gs.io.buffer("Beep!")
+					gs.io.buffer("Beep!")
 			elif self.message_type == 'constant':
 				try:
-					active_gs.io.buff_f(timer_key_constant)
+					gs.io.buff_f(timer_key_constant)
 				except:
-					active_gs.io.buffer("Beep!")
+					gs.io.buffer("Beep!")
 
 		if self.timer_count == self.timer_max:
 			self.active = False

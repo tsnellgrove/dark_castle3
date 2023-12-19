@@ -16,9 +16,9 @@ Version 3.80 Goals
 	- DONE: decide whether to use __getattr__ (link): 
 	- DONE: think through goals of centralized data from tools perspective
 	- DONE: think through isolation of static vs. dynamic data
-	- DONE: think through modularization of active_gs
+	- DONE: think through modularization of gs
 	- DONE: think through desire to modularize descriptions by Creature()
-	- DONE: research how to efficiently rename active_gs.io.buffer() => active_gs.<x>.buffer()
+	- DONE: research how to efficiently rename gs.io.buffer() => gs.<x>.buffer()
 		LINK: https://www.youtube.com/watch?v=M6EPqUctGrU
 
 - DONE: should static_dict actually be a tupple / namedtupple?
@@ -132,10 +132,10 @@ Version 3.80 Goals
 		- DONE: test
 		- DONE: clean up comments in base_class_def()
 	- DONE: buffer calls
-		- DONE: investigate how to best update active_gs.io.buffer(static_dict['x']) calls
-		- DONE: maybe create an active_gs.io.buff_e() method for events (no 'ref' attribute needed)
+		- DONE: investigate how to best update gs.io.buffer(static_dict['x']) calls
+		- DONE: maybe create an gs.io.buff_e() method for events (no 'ref' attribute needed)
 		- DONE: create buff_f() routine so that calling methods with failure fall-backs can use them
-		- DONE: update existing active_gs.io.buffer(static_dict['x']) with active_gs.io.buff_e('x')
+		- DONE: update existing gs.io.buffer(static_dict['x']) with gs.io.buff_e('x')
 			- DONE: start_up()
 			- DONE: cmd_exe()
 			- DONE: ending()
@@ -145,32 +145,32 @@ Version 3.80 Goals
 			- DONE: mach_class_def()
 			- DONE: result_class_def()
 			- 	DONE: sort out DoorToggle result with compound dict lookup and local buffer
-		- DONE: investigate whether remaining active_gs.io.buffer("x") calls can be mass-updated with io
+		- DONE: investigate whether remaining gs.io.buffer("x") calls can be mass-updated with io
 		- DONE: update existing buffer() calls to point to IO class
 	- DONE: custom buff calls
 		- DONE: migrate custom buffer() methods to IO class
 			- DONE: buff_no_cr()
 				- DONE: create in IO class
 				- DONE: test call in IO class
-				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
+				- DONE: find / replace calls gs.buff => gs.io.buff
 				- DONE: test run game
 			- DONE: buff_cr()
 				- DONE: create in IO class
 				- DONE: test call in IO class
-				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
+				- DONE: find / replace calls gs.buff => gs.io.buff
 				- DONE: test run game
 			- DONE: buff_s()
 				- DONE: create in IO class
 				- DONE: test call in IO class
-				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
+				- DONE: find / replace calls gs.buff => gs.io.buff
 				- DONE: test run game
 			- DONE: decide if buff_debug_err() stays or moves to io (will need to pass gs.debug if moves)
 				- DECISION: yes, migrate to buff_d() ; must pass 'debug' value
 			- DONE: buff_debug_err() => buff_dbg()
 				- DONE: create in IO class
 				- DONE: test call in IO class
-				- DONE: create active_gs.is_dbg()
-				- DONE: find / replace calls active_gs.buff => active_gs.io.buff
+				- DONE: create gs.is_dbg()
+				- DONE: find / replace calls gs.buff => gs.io.buff
 				- DONE: test run game
 	- DONE: clean-up gs(), mk_def_pkl(), validate()
 	- DONE: normalize buff options
@@ -208,8 +208,8 @@ Version 3.80 Goals
 
 - DONE: review old notes and determine which, if any, still need to be done
 
-- TBD: long over-due game_state clean-up
-	- TBD: rename gs_class => gs
+- INPROC: long over-due game_state clean-up
+	- DONE: rename gs_class => gs
 	- TBD: finally fix get_room => rename and move to gs.map
 	- TBD: how can sub-classes (IO & Map) call to main class (GameState) [e.g. buff_dbg()] ??
 
@@ -257,11 +257,11 @@ Version 3.80 Goals
 		- CANCEL: change goblin re-arm result to take() rather than put_in_hand()
 
 	- DONE: more gs sub-class ideas:
-		- DONE: rename active_gs to gs
+		- DONE: rename gs to gs
 		- DONE: modularize remaining GameState class and declarations (???)
 		- DONE: perhaps Map, Score, and Descript are classes w/ static dicts in mehod / class and actual obj in gs attributes
 		- DONE: Refactor dicts
-			- DONE: refactor active_gs.map
+			- DONE: refactor gs.map
 				- gs will have map as an attribute
 				- subclass map_dict
 			- CANCEL: methods:
@@ -275,11 +275,11 @@ Version 3.80 Goals
 			- CANCEL: consider creating a separate dict for autogen keys
 
 		- DONE: refactor hero to gs.hero
-			- AGREE: get_room() method belongs to this class ?? (or pass active_gs to active_gs.map and move get_room there ??)
+			- AGREE: get_room() method belongs to this class ?? (or pass gs to gs.map and move get_room there ??)
 	- DONE: email to self on Aug 2, 2022)
-		- DONE: active_gs => gs renaming; point to same obj to start with ??
-		- DONE: active_gs holds list of smaller game state components? clock + scoreboard + map + printer ??
-		- DONE: modularize mk_def_pkl() and active_gs ( how about gs.sboard.get_score() )
+		- DONE: gs => gs renaming; point to same obj to start with ??
+		- DONE: gs holds list of smaller game state components? clock + scoreboard + map + printer ??
+		- DONE: modularize mk_def_pkl() and gs ( how about gs.sboard.get_score() )
 		- DONE: end() => gamestate ???
 
 
@@ -347,7 +347,7 @@ Version 3.80 Goals
 - TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
 
 - TBD: update get_hand_item() to return None if hand_list is empty
-- TBD: sort out active_gs.get_room() => move to .map & std w/ map.get_obj_room()
+- TBD: sort out gs.get_room() => move to .map & std w/ map.get_obj_room()
 
 - TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
 		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
@@ -357,9 +357,9 @@ Version 3.80 Goals
 	- DONE: update pickle names
 	- TBD: possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
 
-- TBD: elim hasattrib() in active_gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
-	- for active_gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
-	- eliminate 'hasattrib' for containers in active_gs.scope_lst() too
+- TBD: elim hasattrib() in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
+	- for gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
+	- eliminate 'hasattrib' for containers in gs.scope_lst() too
 	- have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
 
 - mechanic clean-up
@@ -367,7 +367,7 @@ Version 3.80 Goals
 	- DONE: is there really any need for GameState room_mach_lst() ??
 	- TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
 	- TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
-	- eliminate active_gs.move_dec() ?
+	- eliminate gs.move_dec() ?
 	- 'try... except' standard descriptions for examine() method (similar to Warnings) (???)
 
 - TBD: reveiw / update / finalize doc file
@@ -627,14 +627,14 @@ interpreter ideas:
 - TBD: learn how to use VS Code word wrap and other features for Python
 - IDEA: maybe I should call validate() again between pre_action() and cmd_exe() and then again between cmd_exe() and post_action() ?
 
-- TBD: refactor active_gs. scope / mach_scope
+- TBD: refactor gs. scope / mach_scope
 		- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
 
 - CANCEL: considers re-distributing not-in hand & read errors back into verb methods ???
 
 - DONE: for doors and containers, use None option for no lock or no lid?
 - CANCEL: Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
-	- CANCEL: why do I need active_gs.dynamic_static_dict again?
+	- CANCEL: why do I need gs.dynamic_static_dict again?
 
 python techniques:
 - Do a refactoring code review (look into the 'any' command in place of for loops)
@@ -948,7 +948,7 @@ Misc:
 *-- DC2 PUZZLE IDEAS --*
 - maybe, in DC2, before the ball, the princess is missing (hiding from evil prince) and is diguised as a black cat that burt needs to befriend?
 - it would be cool to have an invisibility cloak / spell (probably need to keep it short term / contained)
-- Note: active_gs.hero enables player to take on different characters in the game (e.g. Burt could become a mouse)
+- Note: gs.hero enables player to take on different characters in the game (e.g. Burt could become a mouse)
 - princess 'poise' & 'moxie'
 - fun idea - small creature - like a mouse - as an item
 - more directions

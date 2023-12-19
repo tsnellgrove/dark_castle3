@@ -7,60 +7,60 @@
 ### import statements
 
 
-def score(active_gs):
-	room_obj = active_gs.get_room()
-	creature = active_gs.hero
+def score(gs):
+	room_obj = gs.get_room()
+	creature = gs.hero
 
 	# increment item scores
 #	for score_key in static_dict['item_score_lst']:
-	for score_key in active_gs.io.get_lst('item_score_lst'):
+	for score_key in gs.io.get_lst('item_score_lst'):
 		if (not creature.hand_is_empty() and creature.get_hand_item().name == score_key
-				and active_gs.get_points_earned_state(score_key) == False):
-			points = active_gs.io.get_dict_val('score_val', score_key)
-			active_gs.update_score(points)
-			active_gs.set_points_earned_state(score_key, True)
-			active_gs.print_score()
+				and gs.get_points_earned_state(score_key) == False):
+			points = gs.io.get_dict_val('score_val', score_key)
+			gs.update_score(points)
+			gs.set_points_earned_state(score_key, True)
+			gs.print_score()
 
 	# increment worn scores
 #	for score_key in static_dict['worn_score_lst']:
-	for score_key in active_gs.io.get_lst('worn_score_lst'):
+	for score_key in gs.io.get_lst('worn_score_lst'):
 		worn_lst = creature.worn_lst
 		if len(worn_lst) > 0:
 			for garment in worn_lst:
-				if (garment.name == score_key and active_gs.get_points_earned_state(score_key) == False):
-					points = active_gs.io.get_dict_val('score_val', score_key)
-					active_gs.update_score(points)
-					active_gs.set_points_earned_state(score_key, True)
-					active_gs.print_score()
+				if (garment.name == score_key and gs.get_points_earned_state(score_key) == False):
+					points = gs.io.get_dict_val('score_val', score_key)
+					gs.update_score(points)
+					gs.set_points_earned_state(score_key, True)
+					gs.print_score()
 
 	# increment room scores
 #	for score_key in static_dict['room_score_lst']:
-	for score_key in active_gs.io.get_lst('room_score_lst'):
-		if (room_obj.name == score_key and active_gs.get_points_earned_state(score_key) == False):
-			points = active_gs.io.get_dict_val('score_val', score_key)
-			active_gs.update_score(points)
-			active_gs.set_points_earned_state(score_key, True)
-			active_gs.print_score()
+	for score_key in gs.io.get_lst('room_score_lst'):
+		if (room_obj.name == score_key and gs.get_points_earned_state(score_key) == False):
+			points = gs.io.get_dict_val('score_val', score_key)
+			gs.update_score(points)
+			gs.set_points_earned_state(score_key, True)
+			gs.print_score()
 
 	# custom scoring
 	score_key = 'hedgehog_attack'
-	if (not active_gs.map.chk_name_exist('royal_hedgehog') and active_gs.get_points_earned_state(score_key) == False):
-		points = active_gs.io.get_dict_val('score_val', score_key)
-		active_gs.update_score(points)
-		active_gs.set_points_earned_state(score_key, True)
-		active_gs.print_score()
+	if (not gs.map.chk_name_exist('royal_hedgehog') and gs.get_points_earned_state(score_key) == False):
+		points = gs.io.get_dict_val('score_val', score_key)
+		gs.update_score(points)
+		gs.set_points_earned_state(score_key, True)
+		gs.print_score()
 
 	score_key = 'goblin_dead'
-	if (active_gs.map.chk_name_exist('dead_goblin') and active_gs.get_points_earned_state(score_key) == False):
-		points = active_gs.io.get_dict_val('score_val', score_key)
-		active_gs.update_score(points)
-		active_gs.set_points_earned_state(score_key, True)
-		active_gs.print_score()
+	if (gs.map.chk_name_exist('dead_goblin') and gs.get_points_earned_state(score_key) == False):
+		points = gs.io.get_dict_val('score_val', score_key)
+		gs.update_score(points)
+		gs.set_points_earned_state(score_key, True)
+		gs.print_score()
 
 	score_key = 'game_won'
-	game_ending = active_gs.get_game_ending()
+	game_ending = gs.get_game_ending()
 	if game_ending == 'won':
-		points = active_gs.io.get_dict_val('score_val', score_key)
-		active_gs.update_score(points)
+		points = gs.io.get_dict_val('score_val', score_key)
+		gs.update_score(points)
 
 	return

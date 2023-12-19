@@ -131,14 +131,14 @@ class Creature(ViewOnly):
 	def get_hand_item(self):
 		return self.hand_lst[0]
 
-	def put_in_hand(self, new_item, active_gs):
+	def put_in_hand(self, new_item, gs):
 		if self.weight + new_item.weight >= self.max_weight:
-			room = active_gs.map.get_obj_room(self, active_gs)
+			room = gs.map.get_obj_room(self, gs)
 			room.floor_lst_append(new_item)
-			if self == active_gs.hero:
-				active_gs.io.buffer(f"Your burden is too great. You drop the {new_item.full_name} on the floor.")
+			if self == gs.hero:
+				gs.io.buffer(f"Your burden is too great. You drop the {new_item.full_name} on the floor.")
 			else:
-				active_gs.io.buffer(f"The {self.full_name} is overburdened and must drop the {new_item.full_name} on the floor.")
+				gs.io.buffer(f"The {self.full_name} is overburdened and must drop the {new_item.full_name} on the floor.")
 			return
 		if not self.hand_is_empty():
 			self.bkpk_lst_append(self.get_hand_item())
@@ -196,15 +196,15 @@ class Creature(ViewOnly):
 		return True
 
 	# *** universal scope methods ***
-	def get_vis_contain_lst(self, active_gs):
+	def get_vis_contain_lst(self, gs):
 		""" Returns the list of visible objects contained in the referenced ('self') object
 		"""
 		contain_lst = []
-		if self == active_gs.hero:
+		if self == gs.hero:
 			node1_item_lst = self.hand_lst + self.worn_lst + self.bkpk_lst
 		else:
 				node1_item_lst = self.hand_lst + self.worn_lst
-		[contain_lst.extend(obj.get_vis_contain_lst(active_gs)) for obj in node1_item_lst]
+		[contain_lst.extend(obj.get_vis_contain_lst(gs)) for obj in node1_item_lst]
 		return node1_item_lst + contain_lst + self.feature_lst
 
 	def chk_contain_item(self, item):
@@ -212,10 +212,10 @@ class Creature(ViewOnly):
 		"""
 		return item in self.hand_lst + self.bkpk_lst + self.worn_lst
 
-	def get_contain_lst(self, active_gs):
+	def get_contain_lst(self, gs):
 		return self.hand_lst + self.bkpk_lst + self.worn_lst + self.feature_lst
 
-	def remove_item(self, item, active_gs):
+	def remove_item(self, item, gs):
 		""" Removes the passed object from the methed-calling object.
 		"""
 		if item in self.hand_lst:
@@ -232,23 +232,23 @@ class Creature(ViewOnly):
 
 
 	# *** creature-specific scope methods ***
-	def is_contained(self, active_gs): # only works for Creature class; not generalized for other obj
-		return self not in active_gs.map.get_obj_room(self, active_gs).floor_lst
+	def is_contained(self, gs): # only works for Creature class; not generalized for other obj
+		return self not in gs.map.get_obj_room(self, gs).floor_lst
 
-	def get_contained_by(self, active_gs):
+	def get_contained_by(self, gs):
 		if not self.is_contained:
 			raise ValueError(f"{obj.full_name} is not in a container.")
 		else:
-			for obj in active_gs.map.get_obj_room(self, active_gs).floor_lst:
+			for obj in gs.map.get_obj_room(self, gs).floor_lst:
 				if obj.is_seat() and self in obj.contain_lst:
 					return obj
 		raise ValueError(f"{obj.full_name} not found.")
 
-	def chk_obj_in_reach(self, obj, active_gs):
-		seat_item_lst = self.get_contained_by(active_gs).get_vis_contain_lst(active_gs)
-		room = active_gs.map.get_obj_room(self, active_gs)
+	def chk_obj_in_reach(self, obj, gs):
+		seat_item_lst = self.get_contained_by(gs).get_vis_contain_lst(gs)
+		room = gs.map.get_obj_room(self, gs)
 		in_reach_obj_lst = []
-		for receptacle in self.get_contained_by(active_gs).in_reach_lst:
+		for receptacle in self.get_contained_by(gs).in_reach_lst:
 			if receptacle.is_container():
 				in_reach_obj_lst = in_reach_obj_lst + receptacle.contain_lst + [receptacle]
 			elif receptacle.is_room():
@@ -259,10 +259,10 @@ class Creature(ViewOnly):
 				in_reach_obj_lst = in_reach_obj_lst + [receptacle]
 		return obj in (seat_item_lst + [room] + in_reach_obj_lst)
 
-	def chk_wrt_in_reach(self, wrt, active_gs):
-		wrt_in_seat = self.get_contained_by(active_gs).chk_wrt_is_vis(wrt, active_gs)
+	def chk_wrt_in_reach(self, wrt, gs):
+		wrt_in_seat = self.get_contained_by(gs).chk_wrt_is_vis(wrt, gs)
 		in_reach_obj_lst = []
-		for receptacle in self.get_contained_by(active_gs).in_reach_lst:
+		for receptacle in self.get_contained_by(gs).in_reach_lst:
 			if receptacle.is_container():
 				in_reach_obj_lst = in_reach_obj_lst + receptacle.contain_lst + [receptacle]
 			elif receptacle.is_room():
@@ -275,75 +275,75 @@ class Creature(ViewOnly):
 		return wrt_in_seat or wrt_in_reach
 
 	# *** universal display methods ***
-	def has_cond(self, active_gs):
-		return self.is_contained(active_gs)
+	def has_cond(self, gs):
+		return self.is_contained(gs)
 
-	def disp_cond(self, active_gs):
+	def disp_cond(self, gs):
 		""" Displays object-specific conditions. Used in examine().
 		"""
-		if self.has_cond(active_gs):
-			if self == active_gs.hero:
-				active_gs.io.buff_no_cr(f"You are seated in the {self.get_contained_by(active_gs).full_name}.")
-				active_gs.io.buff_cr()
-				active_gs.io.buff_cr()
+		if self.has_cond(gs):
+			if self == gs.hero:
+				gs.io.buff_no_cr(f"You are seated in the {self.get_contained_by(gs).full_name}.")
+				gs.io.buff_cr()
+				gs.io.buff_cr()
 			else:
-				active_gs.io.buff_no_cr(f"The {self.full_name} is seated in the {self.get_contained_by(active_gs).full_name}.")
+				gs.io.buff_no_cr(f"The {self.full_name} is seated in the {self.get_contained_by(gs).full_name}.")
 		else:
 			pass
 
-	def has_contain(self, active_gs):
-		if self == active_gs.hero:
+	def has_contain(self, gs):
+		if self == gs.hero:
 ##			creature_lst = self.hand_lst + self.bkpk_lst + self.worn_lst
 			return True
 		return bool(self.hand_lst + self.worn_lst)
 
-	def disp_contain(self, active_gs):
+	def disp_contain(self, gs):
 		""" Displays a description of the visible items held by the obj. Used in examine(). Variable output for burt vs. other creatures.
 		"""
-		if self == active_gs.hero:
-			active_gs.io.buff_no_cr(f"In your off hand you hold a Brass Lantern.")
+		if self == gs.hero:
+			gs.io.buff_no_cr(f"In your off hand you hold a Brass Lantern.")
 			if (not self.bkpk_is_empty()) or (not self.hand_is_empty()) or (not self.worn_is_empty()):
-					active_gs.io.buff_cr()
-					active_gs.io.buff_cr()
+					gs.io.buff_cr()
+					gs.io.buff_cr()
 		if not self.hand_is_empty():
-			if self == active_gs.hero:
-				active_gs.io.buff_no_cr(f"You are holding a {self.get_hand_item().full_name}. ")
+			if self == gs.hero:
+				gs.io.buff_no_cr(f"You are holding a {self.get_hand_item().full_name}. ")
 				for obj in self.hand_lst:
-					obj.disp_contain(active_gs)
-				active_gs.io.buff_cr()
+					obj.disp_contain(gs)
+				gs.io.buff_cr()
 			else:
-				active_gs.io.buff_no_cr(f"The {self.full_name} is holding a {self.get_hand_item().full_name}. ")
+				gs.io.buff_no_cr(f"The {self.full_name} is holding a {self.get_hand_item().full_name}. ")
 				for obj in self.hand_lst:
-					obj.disp_contain(active_gs)
-		if self == active_gs.hero and not self.bkpk_is_empty():
+					obj.disp_contain(gs)
+		if self == gs.hero and not self.bkpk_is_empty():
 			if not self.hand_is_empty():
-				active_gs.io.buff_cr()
+				gs.io.buff_cr()
 			bkpk_str_lst = [obj.full_name for obj in self.bkpk_lst]
 			bkpk_str = ", ".join(bkpk_str_lst)
-			active_gs.io.buff_no_cr(f"In your backpack you have: {bkpk_str}. ")
+			gs.io.buff_no_cr(f"In your backpack you have: {bkpk_str}. ")
 			for obj in self.bkpk_lst:
-				obj.disp_contain(active_gs)
+				obj.disp_contain(gs)
 		if not self.worn_is_empty():
 			worn_txt_lst = [obj.full_name for obj in self.worn_lst]
 			worn_str = ", ".join(worn_txt_lst)
-			if self == active_gs.hero:
+			if self == gs.hero:
 				if (not self.bkpk_is_empty()) or (not self.hand_is_empty()):
-					active_gs.io.buff_cr()
-					active_gs.io.buff_cr()
-				active_gs.io.buff_no_cr(f"You are wearing: {worn_str}.")
+					gs.io.buff_cr()
+					gs.io.buff_cr()
+				gs.io.buff_no_cr(f"You are wearing: {worn_str}.")
 			else:
-				active_gs.io.buff_no_cr(f"The {self.full_name} is wearing: {worn_str}.")
+				gs.io.buff_no_cr(f"The {self.full_name} is wearing: {worn_str}.")
 			for obj in self.worn_lst:
-				obj.disp_contain(active_gs)
+				obj.disp_contain(gs)
 		return 
 
 	# *** creature-specific display methods ***
-	def disp_in_reach(self, active_gs):
+	def disp_in_reach(self, gs):
 		""" displays in_reach objects for seated creature
 		"""
-		if self != active_gs.hero:
+		if self != gs.hero:
 			return
-		seat_obj = self.get_contained_by(active_gs)
+		seat_obj = self.get_contained_by(gs)
 		in_reach_disp_obj_lst = []
 		for in_reach_obj in seat_obj.in_reach_lst:
 			if not in_reach_obj.is_room():
@@ -354,62 +354,62 @@ class Creature(ViewOnly):
 						in_reach_disp_obj_lst.append(room_obj)
 		in_reach_disp_txt_lst = [obj.full_name for obj in in_reach_disp_obj_lst]
 		in_reach_str = ", ".join(in_reach_disp_txt_lst)
-		active_gs.io.buffer(f"From your position on the {seat_obj.full_name} you can just reach: {in_reach_str}")
+		gs.io.buffer(f"From your position on the {seat_obj.full_name} you can just reach: {in_reach_str}")
 
 	# *** verb methods ***
-	def show(self, obj, active_gs, mode=None):
+	def show(self, obj, gs, mode=None):
 		""" Extends Writing.show(). Shows an item in your hand to another creature.
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 
 		try:
-			active_gs.io.buff_f(f"{creature.name}_show_{self.name}_{obj.descript_key}")
+			gs.io.buff_f(f"{creature.name}_show_{self.name}_{obj.descript_key}")
 		except:
 			try:
-				active_gs.io.buff_f(f"{creature.name}_show_{self.name}_default")
+				gs.io.buff_f(f"{creature.name}_show_{self.name}_default")
 			except:
-				active_gs.io.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
+				gs.io.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 		return 
 
-	def give(self, obj, active_gs, mode=None):
+	def give(self, obj, gs, mode=None):
 		""" Gives an item to another creature.
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 
 		# determine other creature's response
 		try:
-			active_gs.io.buff_f(f"{creature.name}_give_{self.name}_{obj.descript_key}")
+			gs.io.buff_f(f"{creature.name}_give_{self.name}_{obj.descript_key}")
 			give_key = obj
 		except:
 			try:
-				active_gs.io.buff_f(f"{creature.name}_give_{self.name}_default")
+				gs.io.buff_f(f"{creature.name}_give_{self.name}_default")
 				give_key = 'def_give'
 			except:
-				active_gs.io.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
+				gs.io.buffer(f"The {self.full_name} shows no interest in the {obj.full_name}.")
 				return
 		if not self.give_dict[give_key]['accept']:
 			return
 
 		# Other creature recieves gift and may give a gift in return
 		creature.hand_lst_remove(obj)
-		self.put_in_hand(obj, active_gs) # messes up goblin holding grimy_axe ; addressed with auto_action
+		self.put_in_hand(obj, gs) # messes up goblin holding grimy_axe ; addressed with auto_action
 		give_item = self.give_dict[give_key]['give']
 		if give_item:
 #			self.bkpk_lst_remove(give_item) # replace with remove_item() ??
-			self.remove_item(give_item, active_gs)
+			self.remove_item(give_item, gs)
 			creature.hand_lst_append(give_item)
 
 		# Update other creature description based on gift given
 		new_descript_key = f"{creature.name}_give_{self.name}_{obj.name}_descript"
-		if active_gs.io.chk_str_exist(new_descript_key):
+		if gs.io.chk_str_exist(new_descript_key):
 			self.descript_key = new_descript_key
 		return 
 
-	def attack(self, src_obj, active_gs, src_creature=None, mode=None):
+	def attack(self, src_obj, gs, src_creature=None, mode=None):
 		""" Attacks a target_creature with an item
 		"""
 
@@ -417,7 +417,7 @@ class Creature(ViewOnly):
 		if mode is None:
 			mode = 'std'
 		if src_creature is None:
-			src_creature = active_gs.hero
+			src_creature = gs.hero
 		tgt_creature = self
 		
 		# determine tgt_obj for tgt_creature (src_obj provided in method arguements)
@@ -453,7 +453,7 @@ class Creature(ViewOnly):
 				break
 
 		# based on result_key, determine result_code and winner; implement combat actions
-		room_obj = active_gs.map.get_obj_room(tgt_creature, active_gs)
+		room_obj = gs.map.get_obj_room(tgt_creature, gs)
 		if result_key == 'attack_method_default_result':
 			result_code = 'no_result'
 		else:
@@ -466,9 +466,9 @@ class Creature(ViewOnly):
 			win_obj = src_obj
 			lose_creature = tgt_creature			
 
-		if lose_creature == active_gs.hero:
+		if lose_creature == gs.hero:
 			if result_code in ['src_death', 'tgt_death']:
-				active_gs.set_game_ending('death')
+				gs.set_game_ending('death')
 		else:
 			if result_code in ['src_death', 'tgt_death']:
 				room_obj.floor_lst_remove(lose_creature)
@@ -477,7 +477,7 @@ class Creature(ViewOnly):
 				room_obj.floor_lst_remove(lose_creature)
 
 		# if hero_creature not in current room, exit with no display
-		if room_obj != active_gs.get_room():
+		if room_obj != gs.get_room():
 			return 
 
 
@@ -485,7 +485,7 @@ class Creature(ViewOnly):
 		
 		# create and buffer the 'attack initiation string'
 		# describes the actions and the 'weapons' of both the attacker and the defender
-		if src_creature == active_gs.hero:
+		if src_creature == gs.hero:
 			src_creature_disp = "You attack"
 			if src_obj_category == 'unarmed':
 				src_obj_disp = f"your {src_obj.full_name}"
@@ -496,7 +496,7 @@ class Creature(ViewOnly):
 		if src_obj_category != 'unarmed':
 			src_obj_disp = f"the {src_obj.full_name}"
 		
-		if tgt_creature == active_gs.hero:
+		if tgt_creature == gs.hero:
 			tgt_creature_disp = "you attempt"
 		else:
 			tgt_creature_disp = f"the {tgt_creature.full_name} attempts"
@@ -505,11 +505,11 @@ class Creature(ViewOnly):
 		else:
 			tgt_obj_disp = f"parry with the {tgt_obj.full_name}"
 		
-		active_gs.io.buffer(f"{src_creature_disp} with {src_obj_disp} and {tgt_creature_disp} to {tgt_obj_disp}!")
+		gs.io.buffer(f"{src_creature_disp} with {src_obj_disp} and {tgt_creature_disp} to {tgt_obj_disp}!")
 
 		# buffer a 'custom attack response' if it exists
 		# the response is unique to the deffender, attack obj, attacker, defense obj
-		active_gs.io.buff_s(f"{tgt_creature.name}_{result_key}")
+		gs.io.buff_s(f"{tgt_creature.name}_{result_key}")
 
 		# 'attack resolution first clause'
 		# compose a string describing the 'winning' blow
@@ -524,46 +524,46 @@ class Creature(ViewOnly):
 
 		# 'attack resolution second clause'
 		# based on result_code, describe the combat outcome for the 'losing' creature
-		if lose_creature == active_gs.hero:
+		if lose_creature == gs.hero:
 			lose_creature_disp = "You are"
 		else:
 			lose_creature_disp = f"The {lose_creature.full_name} is"
-		resolution_end_str = f"{lose_creature_disp} {active_gs.io.get_str_nr(result_code)} "
+		resolution_end_str = f"{lose_creature_disp} {gs.io.get_str_nr(result_code)} "
 
 		# buffer the full 'attack resolution'
-		active_gs.io.buffer(f"{resolution_strt_str}{resolution_end_str}")
+		gs.io.buffer(f"{resolution_strt_str}{resolution_end_str}")
 		return 
 
-	def stand(self, active_gs, mode=None):
+	def stand(self, gs, mode=None):
 		""" Enables a Creature to stand up from a Seat or Bed
 		"""
 		if mode is None:
 			mode = 'std'
 
-		room = active_gs.map.get_obj_room(self, active_gs)		
-		room.remove_item(self, active_gs)
+		room = gs.map.get_obj_room(self, gs)		
+		room.remove_item(self, gs)
 		room.floor_lst_append(self)
 
 		# if hero_creature not in current room, exit with no display
-		if room != active_gs.get_room():
+		if room != gs.get_room():
 			return 
 
-		if self == active_gs.hero:
-			active_gs.io.buffer(f"You are now standing in the {room.full_name}.")
+		if self == gs.hero:
+			gs.io.buffer(f"You are now standing in the {room.full_name}.")
 		else:
-			active_gs.io.buffer(f"The {self.full_name} is now standing.")
+			gs.io.buffer(f"The {self.full_name} is now standing.")
 		return
 
 	### debug methods ###
 
 
-	def get_weight(self, active_gs, mode=None):
+	def get_weight(self, gs, mode=None):
 		""" Reports the weight of an Item. Only usable in debug mode.
 		"""
 		if mode is None:
 			mode = 'std'
 		
-		active_gs.io.buffer(f"The weight of the {self.full_name} is {self.weight}.")
+		gs.io.buffer(f"The weight of the {self.full_name} is {self.weight}.")
 		return
 
 

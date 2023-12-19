@@ -21,8 +21,8 @@ class BufferOnlyResult(object):
 	def cmd_override(self):
 		return self._cmd_override
 
-	def result_exe(self, active_gs, mach_state):
-		active_gs.io.buff_s(self.name)
+	def result_exe(self, gs, mach_state):
+		gs.io.buff_s(self.name)
 		return mach_state, self.cmd_override
 
 	def __repr__(self):
@@ -38,13 +38,13 @@ class BufferAndEndResult(BufferOnlyResult):
 	def ending(self):
 		return self._ending
 
-##	def results_exe(self, active_gs, mach_state):
-##		active_gs.set_game_ending(self.ending)
-##		super(BufferAndEndResult, self).results_exe(active_gs, mach_state)
+##	def results_exe(self, gs, mach_state):
+##		gs.set_game_ending(self.ending)
+##		super(BufferAndEndResult, self).results_exe(gs, mach_state)
 
-	def result_exe(self, active_gs, mach_state):
-		active_gs.io.buff_s(self.name)
-		active_gs.set_game_ending(self.ending)
+	def result_exe(self, gs, mach_state):
+		gs.io.buff_s(self.name)
+		gs.set_game_ending(self.ending)
 		return mach_state, self.cmd_override
 
 
@@ -57,10 +57,10 @@ class BufferAndGiveResult(BufferOnlyResult):
 	def give_item(self):
 		return self._give_item
 
-	def result_exe(self, active_gs, mach_state):
-		active_gs.io.buff_s(self.name)
-		creature = active_gs.hero
-		creature.put_in_hand(self.give_item, active_gs)
+	def result_exe(self, gs, mach_state):
+		gs.io.buff_s(self.name)
+		creature = gs.hero
+		creature.put_in_hand(self.give_item, gs)
 		mach_state = True
 		return mach_state, self.cmd_override
 
@@ -78,9 +78,9 @@ class AddObjToRoomResult(BufferOnlyResult):
 	def room_item(self, new_val):
 		self._room_item = new_val
 
-	def result_exe(self, active_gs, mach_state):
-		active_gs.io.buff_s(self.name)
-		room_obj = active_gs.get_room()
+	def result_exe(self, gs, mach_state):
+		gs.io.buff_s(self.name)
+		room_obj = gs.get_room()
 		room_obj.floor_lst_append(self.room_item)
 		mach_state = True
 		return mach_state, self.cmd_override
@@ -109,9 +109,9 @@ class AddObjChgDescriptResult(BufferOnlyResult):
 	def new_descript(self):
 		return self._new_descript
 
-	def result_exe(self, active_gs, mach_state):
-		active_gs.io.buff_s(self.name)
-		room_obj = active_gs.get_room()
+	def result_exe(self, gs, mach_state):
+		gs.io.buff_s(self.name)
+		room_obj = gs.get_room()
 		room_obj.floor_lst_append(self.room_item)
 		mach_state = True
 		self.descript_obj.descript_key = self.new_descript
@@ -131,13 +131,13 @@ class AddObjToRoomAndDescriptResult(BufferOnlyResult):
 	def room_item(self, new_val):
 		self._room_item = new_val
 
-	def result_exe(self, active_gs, mach_state):
-		active_gs.io.buff_s(self.name)
-		room_obj = active_gs.get_room()
+	def result_exe(self, gs, mach_state):
+		gs.io.buff_s(self.name)
+		room_obj = gs.get_room()
 		room_obj.floor_lst_append(self.room_item)
 
 		new_descript_key = f"{room_obj.name}_{self.name}"
-		if active_gs.io.chk_str_exist(new_descript_key):
+		if gs.io.chk_str_exist(new_descript_key):
 			room_obj.descript_key = new_descript_key
 
 		mach_state = True
@@ -153,7 +153,7 @@ class DoorToggleResult(BufferOnlyResult):
 	def door_obj(self):
 		return self._door_obj
 
-	def result_exe(self, active_gs, mach_state):
+	def result_exe(self, gs, mach_state):
 		if self.door_obj.is_open == True:
 			self.door_obj.is_open = False
 			descript_ending = "closes."
@@ -161,9 +161,9 @@ class DoorToggleResult(BufferOnlyResult):
 			self.door_obj.is_open = True
 			descript_ending = "opens."
 		try:
-			descript_start = active_gs.io.get_str_nr(self.name)
+			descript_start = gs.io.get_str_nr(self.name)
 			descript = descript_start + descript_ending
-			active_gs.io.buffer(descript)
+			gs.io.buffer(descript)
 		except:
 			pass
 
@@ -183,19 +183,19 @@ class AttackBurtResult(BufferOnlyResult):
 	def creature_obj(self, new_val):
 		self._creature_obj = new_val
 
-	def result_exe(self, active_gs, mach_state):
-		active_gs.io.buff_s(self.name)
-##			cmd_execute(active_gs, '2word', [self.creature_obj, 'attack_burt'])
+	def result_exe(self, gs, mach_state):
+		gs.io.buff_s(self.name)
+##			cmd_execute(gs, '2word', [self.creature_obj, 'attack_burt'])
 		if self.creature_obj.hand_is_empty():
 			hand_obj = self.creature_obj.feature_lst[0]
 #			hand_obj = None
 		else:
 			hand_obj = self.creature_obj.get_hand_item()
-		tgt_creature = active_gs.hero
-#		self.creature_obj.attack_b(hand_obj, active_gs, tgt_creature)
-#		tgt_creature.attack_b(hand_obj, active_gs, self.creature_obj)
-		tgt_creature.attack(hand_obj, active_gs, self.creature_obj)
-#		room.go(self.dir, active_gs, self.creature)
+		tgt_creature = gs.hero
+#		self.creature_obj.attack_b(hand_obj, gs, tgt_creature)
+#		tgt_creature.attack_b(hand_obj, gs, self.creature_obj)
+		tgt_creature.attack(hand_obj, gs, self.creature_obj)
+#		room.go(self.dir, gs, self.creature)
 		return mach_state, self.cmd_override
 
 
@@ -208,8 +208,8 @@ class StartTimerResult(BufferOnlyResult):
 	def timer_obj(self):
 		return self._timer_obj
 
-	def result_exe(self, active_gs, mach_state):
-		active_gs.io.buff_s(self.name)
+	def result_exe(self, gs, mach_state):
+		gs.io.buff_s(self.name)
 		self.timer_obj.start()
 		return mach_state, self.cmd_override
 
@@ -232,8 +232,8 @@ class TimerAndCreatureItemResult(StartTimerResult):
 	def ceature_item_obj(self):
 		return self._ceature_item_obj
 
-	def result_exe(self, active_gs, mach_state):
-		active_gs.io.buff_s(self.name)
+	def result_exe(self, gs, mach_state):
+		gs.io.buff_s(self.name)
 		self.timer_obj.start()
 		self.creature_obj.hand_lst_remove(self.ceature_item_obj)
 		return mach_state, self.cmd_override
@@ -257,8 +257,8 @@ class ChgCreatureDescAndStateResult(BufferOnlyResult):
 	def new_desc_key(self):
 		return self._new_desc_key
 
-	def result_exe(self, active_gs, mach_state):
-		active_gs.io.buff_s(self.name)
+	def result_exe(self, gs, mach_state):
+		gs.io.buff_s(self.name)
 		self.creature_obj.descript_key = self.new_desc_key
 		mach_state = True
 		return mach_state, self.cmd_override
@@ -282,10 +282,10 @@ class PutItemInHandResult(BufferOnlyResult):
 	def item_obj(self):
 		return self._item_obj
 
-	def result_exe(self, active_gs, mach_state):
-		active_gs.io.buff_s(self.name)
+	def result_exe(self, gs, mach_state):
+		gs.io.buff_s(self.name)
 # need to eventually change this to 'creature.take' when this is enabled
-		self.creature_obj.put_in_hand(self.item_obj, active_gs)
+		self.creature_obj.put_in_hand(self.item_obj, gs)
 		if self.item_obj in self.creature_obj.bkpk_lst:
 			self.creature_obj.bkpk_lst_remove(self.item_obj)
 		return mach_state, self.cmd_override
@@ -309,9 +309,9 @@ class TravelResult(BufferOnlyResult):
 	def dir(self):
 		return self._dir
 
-	def result_exe(self, active_gs, mach_state):
-		active_gs.io.buff_s(self.name)
-		room = active_gs.map.get_obj_room(self.creature, active_gs)
-		room.go(self.dir, active_gs, self.creature)
+	def result_exe(self, gs, mach_state):
+		gs.io.buff_s(self.name)
+		room = gs.map.get_obj_room(self.creature, gs)
+		room.go(self.dir, gs, self.creature)
 		return mach_state, self.cmd_override
 

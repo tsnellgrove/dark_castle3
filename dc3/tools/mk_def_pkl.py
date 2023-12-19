@@ -309,9 +309,9 @@ goblin_exist_state_cond.exist_obj = guard_goblin
 dispense_panel_result.room_item = control_panel
 ## test_chair.in_reach_lst = [main_hall, front_gate, wooden_shelf]
 
-### active_gs is the central store of game info ###
-active_gs = GameState(
-	'active_gs',
+### gs is the central store of game info ###
+gs = GameState(
+	'gs',
 	{
 		'rusty_key' : False,
 		'main_hall' : False,
@@ -340,7 +340,7 @@ active_gs = GameState(
 ### instantiated objects added to list ###
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible objects need not be listed ###
-master_obj_lst = [active_gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, well_water, royal_crown, baseball_cap, hedgehog_broach, crystal_box, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, guard_goblin, entrance, main_hall, antechamber, throne_room, loyalty,
+master_obj_lst = [gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, well_water, royal_crown, baseball_cap, hedgehog_broach, crystal_box, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, guard_goblin, entrance, main_hall, antechamber, throne_room, loyalty,
 officiousness, gold_capitals, red_bandana, big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, earthen_jug, heavy_rock] # note: big_bomb & test_frog removed; glass_bottle removed
 
 # list written to pickle

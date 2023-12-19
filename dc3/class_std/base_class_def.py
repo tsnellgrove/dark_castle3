@@ -42,14 +42,14 @@ class Writing(Invisible):
 		return True
 	
 	# *** verb methods ***
-	def read(self, active_gs, mode=None):
+	def read(self, gs, mode=None):
 		""" Reads text found on an object.
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 
-		active_gs.io.buff_d(self.descript_key, self.full_name)
+		gs.io.buff_d(self.descript_key, self.full_name)
 		return
 
 
@@ -73,53 +73,53 @@ class ViewOnly(Writing):
 		return True
 
 	# *** universal display methods ***
-	def has_cond(self, active_gs):
+	def has_cond(self, gs):
 		return False
 
 	def has_writing(self):
 		return self.writing is not None
 
-	def has_contain(self, active_gs):
+	def has_contain(self, gs):
 		return False
 
-	def disp_cond(self, active_gs):
+	def disp_cond(self, gs):
 		pass
 		return 
 
-	def disp_writing(self, active_gs):
+	def disp_writing(self, gs):
 		if self.has_writing():
-			active_gs.io.buff_no_cr(f"On the {self.full_name} you see: {self.writing.full_name}. ")
+			gs.io.buff_no_cr(f"On the {self.full_name} you see: {self.writing.full_name}. ")
 			return 
 		pass
 		return 
 
-	def disp_contain(self, active_gs):
+	def disp_contain(self, gs):
 		pass
 		return
 
-	def get_title_str(self, active_gs):
+	def get_title_str(self, gs):
 		return None
 
 
 	# *** verb methods ***
-	def examine(self, active_gs, mode=None):
+	def examine(self, gs, mode=None):
 		""" Describes an object.
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 
-		if self.get_title_str(active_gs) is not None:
-			active_gs.io.buffer(self.get_title_str(active_gs))
-		active_gs.io.buff_d(self.descript_key, self.full_name)
-		if self.has_writing() or self.has_cond(active_gs) or self.has_contain(active_gs):
-			active_gs.io.buff_cr()
-			self.disp_cond(active_gs)
-			self.disp_writing(active_gs)
-			self.disp_contain(active_gs)
-			active_gs.io.buff_cr()
-		if self.get_title_str(active_gs) is not None and creature.is_contained(active_gs) and creature.get_contained_by(active_gs).in_reach_lst:
-			creature.disp_in_reach(active_gs)
+		if self.get_title_str(gs) is not None:
+			gs.io.buffer(self.get_title_str(gs))
+		gs.io.buff_d(self.descript_key, self.full_name)
+		if self.has_writing() or self.has_cond(gs) or self.has_contain(gs):
+			gs.io.buff_cr()
+			self.disp_cond(gs)
+			self.disp_writing(gs)
+			self.disp_contain(gs)
+			gs.io.buff_cr()
+		if self.get_title_str(gs) is not None and creature.is_contained(gs) and creature.get_contained_by(gs).in_reach_lst:
+			creature.disp_in_reach(gs)
 		return
 
 

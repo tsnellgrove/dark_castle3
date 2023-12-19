@@ -9,10 +9,10 @@ import math
 
 
 ### end routine ###
-def end(active_gs):
-	moves = active_gs._state_dict['move_counter']
-	game_ending = active_gs.get_game_ending()
-	score = active_gs.get_score()
+def end(gs):
+	moves = gs._state_dict['move_counter']
+	game_ending = gs.get_game_ending()
+	score = gs.get_score()
 
 	if score < 0:
 		title_score = -10
@@ -20,20 +20,20 @@ def end(active_gs):
 		title_score = 0
 	else:
 		title_score = math.ceil(score / 10) * 10
-	title = active_gs.io.get_dict_val('titles_by_score', title_score)
+	title = gs.io.get_dict_val('titles_by_score', title_score)
 
 	if game_ending == 'death':
-		active_gs.io.buffer("You have died.")
+		gs.io.buffer("You have died.")
 	elif game_ending == 'quit':
-		active_gs.io.buffer("You have quit.")
+		gs.io.buffer("You have quit.")
 	elif game_ending == 'won':
-		active_gs.io.buffer("You have won!")
+		gs.io.buffer("You have won!")
 
-	active_gs.io.buffer("Your adventure ended after " + str(moves) + " moves.")
-	active_gs.print_score()
-	active_gs.io.buffer("Your title is: " + title)
+	gs.io.buffer("Your adventure ended after " + str(moves) + " moves.")
+	gs.print_score()
+	gs.io.buffer("Your title is: " + title)
 	if game_ending == 'won':
-		active_gs.io.buff_e('credits')
-	active_gs.set_end_of_game(True)
+		gs.io.buff_e('credits')
+	gs.set_end_of_game(True)
 
 	return

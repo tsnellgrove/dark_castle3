@@ -48,7 +48,7 @@ help_dict = {
 }
 
 ### help = print help info
-def help(active_gs, option):
+def help(gs, option):
 	if option == 'basics':
 		output = help_dict['help_basics']
 	elif option == 'verbs':
@@ -77,17 +77,17 @@ def help(active_gs, option):
 	elif option == 'creatures':
 		output = help_dict['help_creatures']
 	elif option == 'debug':
-		if not active_gs.state_dict['debug']:
+		if not gs.state_dict['debug']:
 			output = help_dict['help_debug_error']
 		else:
 			output = help_dict['help_debug'] + ', '.join(debug_verb_lst)
 	else:
 		output = help_dict['help']
-	active_gs.io.buffer(output)
+	gs.io.buffer(output)
 
 ### root_word_count - determines if user command contains root words
-def root_word_count(active_gs, word2_txt):
-	scope_lst = active_gs.get_room().get_vis_contain_lst(active_gs)
+def root_word_count(gs, word2_txt):
+	scope_lst = gs.get_room().get_vis_contain_lst(gs)
 	root_count = 0
 	obj_name = ""
 	for obj in scope_lst:
@@ -121,7 +121,7 @@ def input_cleanup(user_input):
 
 ### handle nouns and adjectives
 def noun_handling(master_obj_lst, user_input_lst):
-	active_gs = master_obj_lst[0]
+	gs = master_obj_lst[0]
 	error_state = False
 	error_msg = ""
 	word2_obj = ""
@@ -149,7 +149,7 @@ def noun_handling(master_obj_lst, user_input_lst):
 
 	# check to see if the word2 is a root_name; convert to obj_name if valid
 	if not word2_txt_known:
-		root_count, obj_name = root_word_count(active_gs, word2_txt)
+		root_count, obj_name = root_word_count(gs, word2_txt)
 		if root_count < 1:
 			error_msg = "I don't see a " + word2_txt.capitalize() + " here."
 			error_state = True
@@ -166,8 +166,8 @@ def noun_handling(master_obj_lst, user_input_lst):
 
 ### interpreter - determine user intent
 def interpreter(user_input, master_obj_lst):
-	active_gs = master_obj_lst[0]
-	room_obj = active_gs.get_room()
+	gs = master_obj_lst[0]
+	room_obj = gs.get_room()
 	user_input_lst = input_cleanup(user_input)
 
 	# error if no input or the only input is articles 
@@ -179,7 +179,7 @@ def interpreter(user_input, master_obj_lst):
 
 	# handle true one-word commands
 	if len(user_input_lst) == 1 and word1 == 'help':
-		active_gs.io.buffer(help_dict['help'])
+		gs.io.buffer(help_dict['help'])
 		return 'help', [word1]
 	if len(user_input_lst) == 1 and word1 in one_word_only_lst:
 		return 'tru_1word', [word1]
@@ -193,12 +193,12 @@ def interpreter(user_input, master_obj_lst):
 			user_input_lst[0] = 'go'
 		if word1 == 'inventory':
 			user_input_lst[0] = 'examine'
-			user_input_lst.append(active_gs.hero.name)
+			user_input_lst.append(gs.hero.name)
 		if word1 == 'look':
 			user_input_lst[0] = 'examine'
-			user_input_lst.append(active_gs.get_room().name)
+			user_input_lst.append(gs.get_room().name)
 		if word1 == 'stand':
-			user_input_lst.append(active_gs.hero.name)
+			user_input_lst.append(gs.hero.name)
 		word1 = user_input_lst[0]
 
 	# if not a known true or convertable one-word command, must be an error
@@ -216,7 +216,7 @@ def interpreter(user_input, master_obj_lst):
 	# handle prep verb commands (special cases first else general case)
 	if word1 == 'help':
 		word2 = user_input_lst[1]
-		help(active_gs, word2)
+		help(gs, word2)
 		return 'help', [word2]
 	elif word1 == 'go':
 		word2 = user_input_lst[1]
@@ -232,16 +232,16 @@ def interpreter(user_input, master_obj_lst):
 		elif word1 in ['show', 'give']:
 			prep = 'to'
 		elif word1 in ['attack', 'lock', 'unlock']:
-			creature = active_gs.hero
+			creature = gs.hero
 			if len(user_input_lst) < 4 and 'with' not in user_input and not creature.hand_is_empty():
 				user_input_lst.extend(['with',creature.get_hand_item().name])
-				active_gs.io.buffer(f"(with the {creature.get_hand_item().full_name})")
+				gs.io.buffer(f"(with the {creature.get_hand_item().full_name})")
 			prep = 'with'
 		elif word1 in ['drink']:
-			creature = active_gs.hero
+			creature = gs.hero
 			if len(user_input_lst) < 4 and 'from' not in user_input and not creature.hand_is_empty():
 				user_input_lst.extend(['from',creature.get_hand_item().name])
-				active_gs.io.buffer(f"(from the {creature.get_hand_item().full_name})")
+				gs.io.buffer(f"(from the {creature.get_hand_item().full_name})")
 			prep = 'from'
 		if prep not in user_input_lst:
 			error_msg = f"I don't see the word '{prep}' in that sentence."

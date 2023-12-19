@@ -31,7 +31,7 @@ class Map(object):
 				if room_pair[room[0]] not in room_lst]
 		return room_lst
 
-	def chk_obj_exist(self, obj, active_gs, lst=None):
+	def chk_obj_exist(self, obj, gs, lst=None):
 		""" Evaluates whether object obj exists in any room in map_lst
 		"""
 		if lst == None:
@@ -41,7 +41,7 @@ class Map(object):
 			if element == obj:
 				return True
 			if element.is_receptacle():
-				if self.chk_obj_exist(obj, active_gs, element.get_contain_lst(active_gs)):
+				if self.chk_obj_exist(obj, gs, element.get_contain_lst(gs)):
 					return True
 		return False
 
@@ -58,7 +58,7 @@ class Map(object):
 		return any(obj.name == name for room in self.get_room_lst() for obj in room.floor_lst)
 
 
-	def get_obj_room(self, obj, active_gs, lst=None):
+	def get_obj_room(self, obj, gs, lst=None):
 		""" Returns the room that contains obj
 		"""
 		room_lst = self.get_room_lst()
@@ -71,7 +71,7 @@ class Map(object):
 					return element # is this possible for default case??
 				return True
 			if element.is_receptacle():
-				if self.get_obj_room(obj, active_gs, element.get_contain_lst(active_gs)):
+				if self.get_obj_room(obj, gs, element.get_contain_lst(gs)):
 					if element.is_room():
 						return element
 					return True
@@ -79,7 +79,7 @@ class Map(object):
 			raise ValueError(f"{obj.full_name} not found.")
 
 
-	def chk_obj_in_creature_inv(self, obj, active_gs, lst=None):
+	def chk_obj_in_creature_inv(self, obj, gs, lst=None):
 		""" Evaluates whether obj is in a creature's inventory; returns evaluation & creature
 		"""
 		if lst == None:
@@ -92,7 +92,7 @@ class Map(object):
 			if element == obj:
 				return True, None
 			if element.is_receptacle():
-				exist, creature_obj = self.chk_obj_in_creature_inv(obj, active_gs, element.get_contain_lst(active_gs))
+				exist, creature_obj = self.chk_obj_in_creature_inv(obj, gs, element.get_contain_lst(gs))
 				if exist:
 					if element is not None and element.is_creature():
 						return True, element

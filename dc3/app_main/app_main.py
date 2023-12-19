@@ -29,36 +29,36 @@ def app_main(user_input):
 		master_obj_lst = pickle.load(f)
 
 	# Gamestate vatiable instantiated from un-pickled list
-	active_gs = master_obj_lst[0]
-	active_gs.io.reset_buff() # resets buffer
+	gs = master_obj_lst[0]
+	gs.io.reset_buff() # resets buffer
 
 	# quit case
 	if user_input == "quit" or user_input == "q":
-		active_gs.set_game_ending('quit')
-		end(active_gs)
-		return active_gs.get_end_of_game(), active_gs.io.get_buff()
+		gs.set_game_ending('quit')
+		end(gs)
+		return gs.get_end_of_game(), gs.io.get_buff()
 
 	# interpret and validate user_input
 	case, word_lst = interpreter(user_input, master_obj_lst)
-	input_valid = validate(active_gs, case, word_lst)
+	input_valid = validate(gs, case, word_lst)
 
 	# exit if user_input not valid
 	if not input_valid:
-		return active_gs.get_end_of_game(), active_gs.io.get_buff()
+		return gs.get_end_of_game(), gs.io.get_buff()
 
 	# for valid user_input, increment move count and run pre_action, cmd_exe, post_action, and auto_action
-	active_gs.move_inc()
-	cmd_override = pre_action(active_gs, case, word_lst)
+	gs.move_inc()
+	cmd_override = pre_action(gs, case, word_lst)
 	if not cmd_override:
-		cmd_execute(active_gs, case, word_lst)
-	post_action(active_gs, case, word_lst)
-	score(active_gs)
-	if active_gs.get_game_ending() != "tbd":
-		end(active_gs)
-	auto_action(active_gs)
+		cmd_execute(gs, case, word_lst)
+	post_action(gs, case, word_lst)
+	score(gs)
+	if gs.get_game_ending() != "tbd":
+		end(gs)
+	auto_action(gs)
 
 	### dump updated objects to save_obj_pickle2 ###
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 
-	return active_gs.get_end_of_game(), active_gs.io.get_buff()
+	return gs.get_end_of_game(), gs.io.get_buff()

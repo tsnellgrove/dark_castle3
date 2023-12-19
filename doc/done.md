@@ -792,11 +792,11 @@ IN-PROC: Simple Refactoring
 								- DONE: pass game_state in to go method!!! (suggested by JE)
 								- NOTES: Yes - THIS WORKS!!! NO DUPS!!! 
 							- DONE: full implementation of game_state._paths
-							- DONE: rename game_state to active_gs
+							- DONE: rename game_state to gs
 							- DONE: comment clean up
-							- DONE: now that I'm passing active_gs, simplify classes => single standard import
+							- DONE: now that I'm passing gs, simplify classes => single standard import
 							- DONE: Mark unused modules
-							- DONE: move active_gs declaration to default_pickle
+							- DONE: move gs declaration to default_pickle
 							- DONE: clean up comments
 							- DONE: Declare v3.42 complete!
 
@@ -819,7 +819,7 @@ DONE: sort out interpreter()
 	DONE: Sort out "put" command
 	DONE: Sort out interpreter master_obj_lst declaration & passing - commented out
 	DONE: found and fixed small_print => small_printing error (root_name conflicted with reserved command 'print')
-	DONE: move stateful_dict and active_gs to front of declarations
+	DONE: move stateful_dict and gs to front of declarations
 	DONE: sort out use of eval
 	DONE: sort out noun_handling master_obj_lst declaration & passing
 	DONE: clean up comments
@@ -830,10 +830,10 @@ DONE: sort out interpreter()
 		- DONE: stop explicitly passing stateful_dict to noun_handling()
 		- DONE: clean up comments
 	DONE: examine limits to declarations in start_me_up and wrapper
-		- DONE: remove full obj declarations from start_me_up() and just declare stateful_dict and active_gs
+		- DONE: remove full obj declarations from start_me_up() and just declare stateful_dict and gs
 		- NOTE: garbage collection still has all obj in scope once master_obj_lst is unpickled!
 		- DONE: comment clean-up
-		- DONE: remove full obj declarations from wapper() and just declare stateful_dict and active_gs
+		- DONE: remove full obj declarations from wapper() and just declare stateful_dict and gs
 		- DONE: comment clean-up
 	DONE: move help, error, and tru_1word case execution from interpreter() to cmd_execute()
 		DONE: move help routine to cmd_execute()
@@ -880,7 +880,7 @@ Someday: clean up *very* ugly master_obj_lst passing
 	- or Someday: Eliminate eval using class-based-dict; link: https://stackoverflow.com/questions/1176136/convert-string-to-python-class-object
 someday: do we really need to declare objs in wrapper??
 	- can I just load master_obj_lst from the pickle and pull from it selectively?
-	- the only thing I really need to use all the time out of master_obj_lst is stateful_dict and active_gs
+	- the only thing I really need to use all the time out of master_obj_lst is stateful_dict and gs
 someday: ditto for start_me_up
 
 
@@ -889,7 +889,7 @@ someday: ditto for start_me_up
 ##########################
 
 Version 3.46 Goals:
-- Refactor code to migrate variables from stateful_dict => active_gs
+- Refactor code to migrate variables from stateful_dict => gs
 
 Notes:
 - Approach is to migrate variables one sub-dict at a time
@@ -897,16 +897,16 @@ Notes:
 
 DONE: Refactor stateful_dict['paths']
 DONE: Refactor stateful_dict['points_earned_dict']
-	DONE: add points_earned_dict to GameState vars and define active_gs values in make_default_pickle()
-	DONE: pass active_gs to dc3_score
+	DONE: add points_earned_dict to GameState vars and define gs values in make_default_pickle()
+	DONE: pass gs to dc3_score
 	DONE: create method to get and set score state for a given score_key
-	DONE: For items - update score() to use active_gs score state
-	DONE: For rooms - update score() to use active_gs score state
+	DONE: For items - update score() to use gs score state
+	DONE: For rooms - update score() to use gs score state
 	DONE: comment out stateful_dict points_earned_dict
 	DONE: clean up comments
 DONE: "Easy" use cases = 'current_score', 'score', 'move_counter', 'end_of_game', 'game_ending'
 	DONE: current_score & score
-		DONE: add 'score' to active_gs.state_dict (and clean up class_deff comments & prints)
+		DONE: add 'score' to gs.state_dict (and clean up class_deff comments & prints)
 		DONE: create increase_score() method for GameState
 		DONE: update score() function to call increase_score() method
 		DONE: create get_score() method in GameState
@@ -916,7 +916,7 @@ DONE: "Easy" use cases = 'current_score', 'score', 'move_counter', 'end_of_game'
 		DONE: comment out 'score'
 		DONE: clean up comments
 	DONE: 'move_counter'
-		DONE: add 'move_counter' to active_gs.state_dict
+		DONE: add 'move_counter' to gs.state_dict
 		DONE: create 'move_inc' method in GameState to increment moves
 		DONE: create 'move_dec' method in GameState to decrement moves
 		DONE: update wrapper() with move_inc
@@ -926,7 +926,7 @@ DONE: "Easy" use cases = 'current_score', 'score', 'move_counter', 'end_of_game'
 		DONE: comment out 'move_counter' in stateful_dict
 		DONE: clean up comments
 	DONE: 'end_of_game' & 'game_ending'
-		DONE: add 'end_of_game' & 'game_ending' to active_gs.state_dict and run mk_default_pkl()
+		DONE: add 'end_of_game' & 'game_ending' to gs.state_dict and run mk_default_pkl()
 		DONE: create get & set 'end_of_game' in GameState
 		DONE: create get & set 'game_ending' in GameState
 		DONE: update 'quit' in cmd_exe() with set_game_ending
@@ -937,24 +937,24 @@ DONE: "Easy" use cases = 'current_score', 'score', 'move_counter', 'end_of_game'
 		DONE: comment out 'end_of_game' & 'game_ending' in stateful_dict & run mk_defaul_pkl()
 		DONE: clean up comments
 DONE: 'universal'
-	DONE: add 'universal' to active_gs.state_dict and run mk_default_pkl()
+	DONE: add 'universal' to gs.state_dict and run mk_default_pkl()
 	DONE: create get_static_obj method in GameState
-	DONE: in cmd_exe() '2word' and 'put' cases pass active_gs to scope_check() & writing_check()
-	DONE: in helper() pass in active_gs to scope_check() & writing_check() and pass active_gs to scope_list()
-	DONE: in helper() pass in active_gs to scope_list and update 'universal_lst' with get_universal_scope
-	DONE: from noun_handling(), pass active_gs to root_word_count()
-	DONE: from root_word_count, pass active_gs to scope_lst()
+	DONE: in cmd_exe() '2word' and 'put' cases pass gs to scope_check() & writing_check()
+	DONE: in helper() pass in gs to scope_check() & writing_check() and pass gs to scope_list()
+	DONE: in helper() pass in gs to scope_list and update 'universal_lst' with get_universal_scope
+	DONE: from noun_handling(), pass gs to root_word_count()
+	DONE: from root_word_count, pass gs to scope_lst()
 	DONE: test updates
 	DONE: comment out 'universal' in stateful_dict and run mk_default_pkl()
 	DONE: test updates
 	DONE: clean up comments
-DONE: pass active_gs to all class verb methods
+DONE: pass gs to all class verb methods
 	DONE: troubleshoot examine.door error
 		DONE: solve bug (scope_check in examine sub for door)
 		DONE: clean-up comments
 	DONE: '2word' case = read
 		DONE: in "try" from '2word' case create if 'read'
-		DONE: add active_gs to method
+		DONE: add gs to method
 		DONE: test
 	DONE: '2word' case = eat
 	DONE: '2word' case = drink
@@ -964,47 +964,47 @@ DONE: pass active_gs to all class verb methods
 	DONE: '2word' case = lock
 	DONE: '2word' case = unlock
 	DONE: '2word' case = open (2 methods)
-		NOTE: learned I need to pass active_gs in super
+		NOTE: learned I need to pass gs in super
 	DONE: '2word' case = examine (many methods!)
 		DONE: Update in cmd_exe() tru_1word() too
 		DONE: Update in Room 'go' method in class_def()
 	DONE: remove if & try for 2-word case
 	DONE: clean-up comments
 	DONE 'put' case
-		DONE: put => active_gs
+		DONE: put => gs
 	DONE: in cmd_exe() create rand_error() function
 DONE: Refactor stateful_dict['dynamic_desc_dict']
-	DONE: move dynamic_desc_dict from stateful_dict to active_gs
+	DONE: move dynamic_desc_dict from stateful_dict to gs
 	DONE: comment out stateful_dict sub-dict and re-run mk_default_pkl
 	DONE: clean up comments
 IN-PROC: 'backpack'
-	DONE: add 'backpack' to active_gs
+	DONE: add 'backpack' to gs
 	DONE: investigate 'backpack' usage
 	DONE: create get_backpack_lst method in GameState
 	DONE: create backpack_lst_append method in GameState
 	DONE: create backpack_lst_remove in method GameState
-	DONE: add active_gs backpack methods to modules and comment out stateful_dict
+	DONE: add gs backpack methods to modules and comment out stateful_dict
 		DONE: Update scope_lst() in helper(), inventory() in helper(), take() method in Item class_def()
 		DONE: comment out stateful_dict
 		DONE: clean up comments
 DONE: 'hand'
-	DONE: add 'hand' to active_gs
+	DONE: add 'hand' to gs
 	DONE: create methods: get, append, remove
 	DONE: Update helper(), class_def(), & score()
 	DONE: comment out stateful_dict 'hand'
 	DONE: testing!!
 	DONE: clean-up comments
 TBD: 'room'
-	DONE: add 'room' to active_gs
+	DONE: add 'room' to gs
 	DONE: create methods: get & set
 	DONE: update score(), helper(), cmd_exe(), interpret(), class_def()
 	DONE: comment out stateful_dict 'room'
 	DONE: detailed testing: score(), helper(), cmd_exe(), interpret(), class_def()
 	DONE: clean-up comments
 IN-PROC: 'out_buff' & buffer()
-	DONE: add 'out_buff' to active_gs
+	DONE: add 'out_buff' to gs
 	DONE: create methods: get & buffer
-	DONE: in wrapper(), get and combine both stateful_dict and active_gs buffers and pass the combined out_buff to main()
+	DONE: in wrapper(), get and combine both stateful_dict and gs buffers and pass the combined out_buff to main()
 	IN-PROC: update modules:
 		DONE: document N/A modules: score(), interpret(), mk_default_pkl(), wrapper(), static(), main()
 		DONE: end()
@@ -1065,7 +1065,7 @@ DONE: remove stateful_dict
 ##########################
 
 Version 3.48 Goals
-- Migrate most helper() functions to methods of active_gs
+- Migrate most helper() functions to methods of gs
 - sets and gets for rest of class definitions
 
 IN-PROC: start migrating helper() functions to GameState methods
@@ -1214,7 +1214,7 @@ DONE: implement RoomEffect for simplest case (go south from entrance)
 		DONE: create trigger_check() method for TravelEffect
 		DONE: create initial trigger() method for TravelEffect
 			DONE: buffer  effect_desc
-	DONE: create method in active_gs to return list of in-scope inter_obj
+	DONE: create method in gs to return list of in-scope inter_obj
 	DONE: create pre-action_cmd() module
 		DONE: for inter_obj in pre_action_lst: trigger_state = trigger_check() method
 		DONE: if trigger_state, cmd_override = trigger() method
@@ -1238,7 +1238,7 @@ DONE: entrance_east and eantrance_west (simple death cases)
 		DONE: run mk_def_pkl
 		DONE: test
 	DONE: update TravelEffect trigger()method
-		DONE: if game_ending not None: active_gs.set_game_ending(game_ending)
+		DONE: if game_ending not None: gs.set_game_ending(game_ending)
 		DONE: test
 
 IDEA: east / west TravelEffect obj I will eventually want:
@@ -1258,10 +1258,10 @@ DONE: entrance_east_no_weap and eantrance_west_no_weap (full death cases)
 		DONE: run mk_def_pkl
 		DONE: test
 	DONE: update TravelEffect trig_check() method
-		DONE: update to check if in_hand_cond not None: and, if not, for loop to confirm in_hand_lst obj in active_gs.hand_lst matches in_hand_cond
+		DONE: update to check if in_hand_cond not None: and, if not, for loop to confirm in_hand_lst obj in gs.hand_lst matches in_hand_cond
 		DONE: test
 
-DONE: can I used active_gs.hand_check() in TravelEffect method trig_check() ?
+DONE: can I used gs.hand_check() in TravelEffect method trig_check() ?
 
 IDEA: additional capabilities I need to go from entrance_east to entrance_east_weap?
 - give_or_take, give_item, put_place
@@ -1277,12 +1277,12 @@ DONE: entrance_east_weap and eantrance_west_weap (get item case but no counter y
 				DONE: update entrance_west_weap with new attributes = 'give', random_mcguffin, and None
 		DONE: run mk_def_pkl
 		DONE: test
-	DONE: create active_gs.put_in_hand(item) method
+	DONE: create gs.put_in_hand(item) method
 		DONE: if not hand_empty(), swap current hand_lst to backpack
-		DONE: active_gs.hand_lst_append_item(item) 
+		DONE: gs.hand_lst_append_item(item) 
 	DONE: update TravelEffect trigger() method
 		DONE: define room_obj
-		DONE: check for take_or_give and either active_gs.put_in_hand(give_item) 
+		DONE: check for take_or_give and either gs.put_in_hand(give_item) 
 				or, if not hand_empty(), put_place.append(hand_lst[0]) and hand_lst[0].remove
 		DONE: test
 
@@ -1393,7 +1393,7 @@ DONE: create crown object
 	DONE: create crown obj = royal_crown
 	DONE: Add royal_crown to game world
 	DONE: update score for crown in hand  (10 pts) [note: in dc2, 5 pts for getting crown & 5 for wearing crown]
-	DONE: Update active_gs to include 'worn' attribute
+	DONE: Update gs to include 'worn' attribute
 	DONE: Update inventory() function in cmd_exe() module to show 'worn' in inventory
 	DONE: test inventory
 	DONE: create wear method (should check if other items of same clothing_type are already worn)
@@ -1405,7 +1405,7 @@ DONE: create crown object
 	DONE: switch score for royal_crown to 'wear' (10 pts)
 DONE: code clean-up
 	DONE: Organize GameState class into sections
-	DONE: Put active_gs.put_in_hand() in Item class take() method
+	DONE: Put gs.put_in_hand() in Item class take() method
 	DONE: Test
 	DONE: Clean up comments
 	DONE: Update take() method to include clothes (with remove text)
@@ -1832,7 +1832,7 @@ DONE: create attack() method
 			DONE: add dead_creature_obj to Creature class attributes
 			DONE: update goblin obj
 			DONE: create dead_goblin ViewOnly obj
-		DONE: if result_code == 'burt_death': active_gs.set_game_ending('death')
+		DONE: if result_code == 'burt_death': gs.set_game_ending('death')
 		DONE: method default response = "At the last minute the <creature> dodges your vicious attack with the <burt_weapon>"
 	DONE: add 'attack' to verb_lst in interp()
 	DONE: add attack() attributes (including creature_item_lst) to goblin
@@ -1969,7 +1969,7 @@ Version 3.61 Goals
 		- DONE: comment out entrance_south_mach result and conditions obj
 - DONE: more scalable approach to warnings:
 	- DONE: warning improvement ideation
-		- IDEA: obj_name+str(count); if exist static_dict[key]: active_gs.io.buffer(static_dict[key]); else: buffer default
+		- IDEA: obj_name+str(count); if exist static_dict[key]: gs.io.buffer(static_dict[key]); else: buffer default
 		- IDEA: or maybe the pythonic approach here is "try" ?
 		- IDEA: initial Warning attributes = name, trigger_type, trig_vals_lst, warn_max, warn_count, warn_key_1, warn_key_2
 		- IDEA: should be able to eliminate warn_key_1, warn_key_2
@@ -1992,7 +1992,7 @@ Version 3.61 Goals
 		- IDEA: can be triggered by function call timer_obj.start()
 		- IDEA: run for a set amount of time timer_max
 		- IDEA: increment timer_count each time a turn successfully passes (watch out for errors that don't count!)
-		- IDEA: if silent_timer == False: active_gs.io.buffer(timer_descript_key) where timer_descript_key = name + str(timer_count)
+		- IDEA: if silent_timer == False: gs.io.buffer(timer_descript_key) where timer_descript_key = name + str(timer_count)
 		- IDEA: timer attributes: name, active (T or F), timer_count, timer_max, message_type ('silent', 'variable', 'constant'), trigger_type = 'auto_pre_act'
 		- IDEA: like buttons, timers should be 'dumb' - the smarts live in a machine
 	- DONE: create Timer class
@@ -2041,13 +2041,13 @@ Version 3.61 Goals
 		- IDEA: e.g. the Hedgehog will eat the biscuits for 3 turns but Burt shouldn't hear about it if he's left the room
 		- IDEA: So, to start with at least we will set the "alert scope" to the room the timer / auto event is happening in
 		- IDEA: if Burt is in a room he sees and hears the events in the room. If he's outside the room he sees and hears nothing.
-		- IDEA: So we need an active_gs method that can determine if a given timer / auto is in the same room as Burt
+		- IDEA: So we need an gs method that can determine if a given timer / auto is in the same room as Burt
 		- IDEA: since we can get mach scope for the room Burt is in, it shouldn't be too hard to check if a given timer / auto is in the mach_lst
 		- IDEA: this addresses alerts but maybe not results... 
 		- IDEA: for example if Burt lights a fuse and walks away - Burt may not be harmed but the room should be changed...
 		- IDEA: but that can be dealt with in the future...
 - DONE: implement alert_scope for test timer
-	- DONE: in active_gs, create method auto_in_alert_scope(self): which checks to see if self is in mach_lst and returns True or False
+	- DONE: in gs, create method auto_in_alert_scope(self): which checks to see if self is in mach_lst and returns True or False
 	- PROB: test_timer stops ticking when Burt leaves the room...
 		- IDEA: universal scope to solve timer not running when Burt out of room
 		- IDEA: today, the timer only ticks if it is in mach_lst... which is based on machines, warnings, & auto in the same room as Burt
@@ -2113,16 +2113,16 @@ Version 3.62 Goals
 		- DONE: shiny sword = flee
 	- DONE: point reduction (-20) for attacking hedgehog?
 		- DONE: added 'hedgehog_attack' to score_val_dict in score()
-		- DONE: added 'hedgehog_attack' to active_gs dict in mk_def_pkl()
+		- DONE: added 'hedgehog_attack' to gs dict in mk_def_pkl()
 		- DONE: created "custom scoring" section in score()
-		- DONE: only active_gs is passed into score() so royal_hedgehog and main_hall are undefined
-			- DONE: create room_lst in active_gs
-			- DONE: create an active_gs method obj_exist() that can evaluate whether an obj is in the game (in any room's room_obj_lst)
-			- DONE: call active_gs.obj_exist(royal_hedgehog) from the "custom scoring" section of score()
+		- DONE: only gs is passed into score() so royal_hedgehog and main_hall are undefined
+			- DONE: create room_lst in gs
+			- DONE: create an gs method obj_exist() that can evaluate whether an obj is in the game (in any room's room_obj_lst)
+			- DONE: call gs.obj_exist(royal_hedgehog) from the "custom scoring" section of score()
 			- ISSUE: I have a room search... but royal_hedgehog is *still* undefined... so I guess I need a room search based on obj name
 				- IDEA: is this getting silly? Should I just pass master_obj_lst to score()?
 				- IDEA: no... there's a value to being able to search rooms by name - and it's ultimately shorter than searching all obj
-				- DONE: create obj_name_exist() methd in active_gs()
+				- DONE: create obj_name_exist() methd in gs()
 				- DONE: update score()
 	- DONE: sword attack warning
 		- DONE: sort out warning scheme
@@ -2294,7 +2294,7 @@ Version 3.66 Goals
 		- DONE: update InHandAndGarmentWornCond with match_cond
 	- DONE: testing
 		- DONE: 'look' post silver_key => index error
-		- CANCEL: need to update active_gs.mach_obj_lst() to check for class ItemMach
+		- CANCEL: need to update gs.mach_obj_lst() to check for class ItemMach
 		- FINDING: kinging_scroll not triggering on read but should show as a mach (hasattrib trigger_type)
 		- DONE: print out machs found from post_action and troubleshoot => trigger_val => ['read','illuminated_letters']
 		- DONE: correct re-assignment variable for 1st Condition
@@ -2441,8 +2441,8 @@ Version 3.70 Goals
 			- rename to make similar to room?
 			- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
 			- creature attribute for inventory_visible == True / False
-			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [only 'hand' unless creature = active_gs.hero]
-			- only visible if creature = active_gs.hero() ??
+			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [only 'hand' unless creature = gs.hero]
+			- only visible if creature = gs.hero() ??
 		- DONE: creature_lst_append_item => item_lst_append() and creature_lst_remove_item => item_lst_remove()
 			- DONE: update creature_class_def()
 			- DONE: uupdate result_class_def()
@@ -2474,7 +2474,7 @@ Version 3.70 Goals
 			- DONE: create vis_lst() to get visible creature inventory
 				- DONE: returns hand_lst for all creatures
 				- DONE: returns feature_lst for all creatuers
-		- DONE: update active_gs.scope commands to use vis_lst() method
+		- DONE: update gs.scope commands to use vis_lst() method
 	- DONE: worn_lst
 		- DONE: add attribute & extend instantiation
 		- DONE: create setters & getters
@@ -2497,7 +2497,7 @@ Version 3.70 Goals
 			- DONE: creature_class_def.py
 			- DONE: gs_class_def.py
 		- DONE: create mach_lst() / all_lst method for creatures (based on vis_lst)
-		- DONE: update active_gs. mach scope commands to use mach_lst() method
+		- DONE: update gs. mach scope commands to use mach_lst() method
 	- DONE: refactor Creature methods
 		- DONE: review and shorten all attribute and method names; * remember that the method will always be associated with an object! *
 			- DONE: creature_state => state
@@ -2597,7 +2597,7 @@ Version 3.71 Goals
 			- => read writing
 		- DONE: if-then shielf pattern
 		- DONE: f-strings
-		- DONE: refactor get_dynamic_desc_dict in active_gs()
+		- DONE: refactor get_dynamic_desc_dict in gs()
 			- DONE: rename dynamic_desc_dict => dyn_static_dict
 				- gs_class_def()
 			- DONE: rename get_dynamic_desc_dict => get_dyn_descript
@@ -2672,7 +2672,7 @@ Version 3.72 Goals
 			- DONE: call room.remove from take
 			- DONE: lots of testing!
 		- DONE: org attrib vs. obj methods using comments
-		- DONE: re-add worn removal message to active_gs.worn_lst_remove_item(self)
+		- DONE: re-add worn removal message to gs.worn_lst_remove_item(self)
 	- DONE: refactor drop()
 	- DONE: doc_string
 		- DONE: Imp Detail: only diff - take(), no attrib chg, all items takable, ways to stop take: swap w/ ViewOnly, Warning, Mach
@@ -2715,24 +2715,24 @@ Version 3.72 Goals
 		- DONE: in mk_def_pkl, import Map
 		- DONE: in mk_def_pkl, instantiate map lst of dicts
 		- DONE: in gs_class_def, add map attribute
-		- DONE: in mk_def_pkl, add instantiated map to active_gs
+		- DONE: in mk_def_pkl, add instantiated map to gs
 	- DONE: map.chk_obj_exist method (was chk_obj_in_map() then was map.chk_obj_in_any_floor_lst() )
 		- DONE: create method map.chk_obj_in_any_floor_lst # checks of obj in floor_lst in each room in map
 		- DONE: create method chk_name_exist( (was chk_name_in_any_floor_lst() )
 		- DONE: rename Room room_obj_lst => floor_lst
 		- DONE: update score to use mapchk_name_exist()
 		- DONE: update cond with map.chk_obj_exist
-		- DONE: confirm that active_gs.obj_exist and active_gs.obj_name_exist are no longer needed('goblin_dead' case also addressed in score() )
-		- DONE: eliminate active_gs.obj_exist and active_gs.obj_name_exist
+		- DONE: confirm that gs.obj_exist and gs.obj_name_exist are no longer needed('goblin_dead' case also addressed in score() )
+		- DONE: eliminate gs.obj_exist and gs.obj_name_exist
 	- DONE: door_lst() method
 		- DONE: create door_lst() method to provide list of doors in room
-		- DONE: add map.door_lst() to active_gs scope method
+		- DONE: add map.door_lst() to gs scope method
 		- DONE: add map.door_lst() to room.examine
 		- DONE: remove doors from room.floor_lst in mk_def_pkl()
 	- DONE: obj_cond_disp
 		- DONE: create obj_cond_disp method to provide door condition (door / passage names and directions) for room
 		- DONE: add to room.examine()
-	- DONE: update go() method to use active_gs.map
+	- DONE: update go() method to use gs.map
 		- DONE: create gs.map.is_valid_dir(self, room)
 		- DONE: use gs.map.is_valid_dir(self, room) in go() method
 		- DONE: create gs.map.get_door(room) method
@@ -2743,10 +2743,10 @@ Version 3.72 Goals
 		- DONE: elim gs.room_lst
 		- DONE: elim gs.map_dict attributes
 		- DONE: elim room.door_dict
-		- DONE: elim active_gs.is_valid_map_direction()
+		- DONE: elim gs.is_valid_map_direction()
 		- DONE: elim room.self.door_in_path()
 		- DONE: elim room.get_door()
-		- DONE: elim active_gs.get_next_room()
+		- DONE: elim gs.get_next_room()
 	- DONE: implement unreachable_room to resolve condition strings for Entrance (e, w, & s)
 		- DONE: create 3x rooms: unreachable_1, unreachable_2, unreachable_3
 		- DONE: update room condition str to read better for outside (replace 'door' = None with passage_str) [error - walked through portcullis!]
@@ -2793,10 +2793,10 @@ Version 3.72 Goals
 				- DONE: Switch
 			- DONE: finalize approach to multiple conditions (e.g. Container)
 				- DONE: extended obj_cond_disp() in Container
-			- DONE: update examine() with self.vis_obj_disp(active_gs)
+			- DONE: update examine() with self.vis_obj_disp(gs)
 				- DONE: ViewOnly
 					- DONE: Update ViewOnly.examine()
-					- DONE: create default def vis_obj_disp(active_gs) => pass
+					- DONE: create default def vis_obj_disp(gs) => pass
 				- DONE: Room
 				- DONE: Container
 				- DONE: Creature
@@ -2930,16 +2930,16 @@ Version 3.73 Goals
 - refactor Burt as a creature object
 - refactor coding as I go
 
-- DONE: full review of all active_gs attributes to be moved to burt_obj
+- DONE: full review of all gs attributes to be moved to burt_obj
 	- DONE: will also enable 'room scope' type methods to move to class Room
 - Refactor burt as a Creature class object
 	- DONE: create burt obj and make him visible
 		- DONE: instantiate burt in mk_def_pkl() (on attack dicts)
 		- DONE: burt_creature to be instantiated in entrance.room.floor_lst
-		- DONE: create active_gs dict entry that defines hero == burt and create a get_hero() method to get this info
-		- DONE: update creature.vis_lst() to include bkpk_lst for self == active_gs.hero
-		- DONE: update disp_contain() method for creature to include backpack for self == active_gs.hero
-	- DECISION: on initial refactor, all 'action' methods except attack() will be implicitly excuted by active_gs.hero
+		- DONE: create gs dict entry that defines hero == burt and create a get_hero() method to get this info
+		- DONE: update creature.vis_lst() to include bkpk_lst for self == gs.hero
+		- DONE: update disp_contain() method for creature to include backpack for self == gs.hero
+	- DECISION: on initial refactor, all 'action' methods except attack() will be implicitly excuted by gs.hero
 		- IDEA: making action methods applicable to arbitrary creatures can be considered on a 2nd pass
 	- CANCEL: address duplicate obj issue
 		- IDEA: we can't test other methods because the interpreter is confused by creature_burt having duplicat items
@@ -2952,7 +2952,7 @@ Version 3.73 Goals
 		- DONE: food in burt's hand
 		- DONE: update eat for creature_burt
 		- DONE: minor refacto of eat()
-		- DONE: update validate() to include active_gs.hero.chk_in_hand() as part of its hand check
+		- DONE: update validate() to include gs.hero.chk_in_hand() as part of its hand check
 		- DONE: clean up comments 
 	- DONE: update drink to creature_burt
 		- DONE: update drink() method
@@ -2985,7 +2985,7 @@ Version 3.73 Goals
 		- DONE: after updating take(), don't forget to update hand references in score()
 	- DONE: update go() to creature_burt
 		- DONE: update go() method
-	- DONE: update validate() to include active_gs.hero.chk_in_hand() as part of its hand check for prep case (put, show, give)
+	- DONE: update validate() to include gs.hero.chk_in_hand() as part of its hand check for prep case (put, show, give)
 		- NOTE: show is now fully functional for creature_burt
 	- DONE: update give() to creature_burt
 		- DONE: update give() method
@@ -3018,14 +3018,14 @@ Version 3.73 Goals
 		- DONE: update cmd_exe True-One-Word command
 		- DONE: update Creature disp_contain()
 		- DONE: clean up comments
-	- DONE: can exclude burt from room.disp_contain() using remove(active_gs.hero)
+	- DONE: can exclude burt from room.disp_contain() using remove(gs.hero)
 - DONE: review burt => creature plans and clean-up
-- DONE: move active_gs.universal_lst timer obj to burt.invis_lst
-- DONE: active_gs.get_room() => active_gs.map.get_hero_room()
-	- DONE: in active_gs.map create get_hero_room() initial version
+- DONE: move gs.universal_lst timer obj to burt.invis_lst
+- DONE: gs.get_room() => gs.map.get_hero_room()
+	- DONE: in gs.map create get_hero_room() initial version
 	- DONE: test get_hero_room() in read() method
-		- NOTE: had issues because active_gs.map does not have a way to reference active_gs; moved get_hero_room() to active_gs with hero for now
-	- DONE: find all modules using active_gs.get_room()
+		- NOTE: had issues because gs.map does not have a way to reference gs; moved get_hero_room() to gs with hero for now
+	- DONE: find all modules using gs.get_room()
 		- DONE: noun_class_def() <both get_room and set_room>
 		- DONE: interp()
 		- DONE: validate()
@@ -3039,13 +3039,13 @@ Version 3.73 Goals
 		- DONE: mach_class_def()
 		- DONE: cond_class_def()
 		- DONE: result_class_def()
-	- DONE - NEW-IDEA: re-use existing active_gs.get_room() calls
+	- DONE - NEW-IDEA: re-use existing gs.get_room() calls
 		- DONE: replace get_room() code with get_hero_rooom()
-		- DONE: Also need to comment out set_room() in Room.go() and in active_gs
+		- DONE: Also need to comment out set_room() in Room.go() and in gs
 		- DONE: And need to convert Read get_hero_room() back to get_room()
-		- DONE: comment 'room' out of active_gs.state_dict
+		- DONE: comment 'room' out of gs.state_dict
 - DONE: comment out legacy refs
-	- DONE: sort out active_gs hand refs
+	- DONE: sort out gs hand refs
 		- DONE: def get_hand_lst(self):
 			- DONE: gs_class_def (def)
 			- DONE: cond_class_def
@@ -3067,7 +3067,7 @@ Version 3.73 Goals
 		- DONE: def inventory(self):
 				- DONE: gs_class_def (def)
 		- DONE: full test run
-	- DONE: sort out active_gs backpack refs
+	- DONE: sort out gs backpack refs
 		- DONE: def get_backpack_lst(self):
 			- DONE: gs_class_def (def)
 			- DONE: noun_class_def
@@ -3076,7 +3076,7 @@ Version 3.73 Goals
 		- DONE: def backpack_lst_remove_item(self, item):
 			- DONE: gs_class_def() (def)
 		- DONE: full test run
-	- DONE: sort out active_gs worn refs
+	- DONE: sort out gs worn refs
 		- DONE: def clothing_type_worn(self, item):
 			- DONE: gs_class_def() (def)
 		- DONE: def get_worn_lst(self):
@@ -3086,15 +3086,15 @@ Version 3.73 Goals
 		- DONE: def worn_lst_remove_item(self, item):
 			- DONE: gs_class_def() (def)
 		- DONE: light test run
-	- DONE: sort out remaining active_gs burt refs
-		- DONE: active_gs.state_dict['backpack', 'hand', 'worn']
+	- DONE: sort out remaining gs burt refs
+		- DONE: gs.state_dict['backpack', 'hand', 'worn']
 		- DONE: def get_static_obj(self, static_key):
-		- DONE: active_gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]}
+		- DONE: gs.static_obj_lst = {'universal' : [backpack, burt, fist, conscience]}
 		- DONE: light test run
-	- DONE: sort out old active_gs room refs
+	- DONE: sort out old gs room refs
 		- DONE: def get_room()
 		- DONE:	def set_room()
-		- DONE: active_gs.state_dict['room']	
+		- DONE: gs.state_dict['room']	
 	- DONE: full test run
 - DONE: clean up all comments
 - DONE: review and org all *** MAYBE *** items
@@ -3104,7 +3104,7 @@ Version 3.73 Goals
 	- IDEA: if creature == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
 	- IDEA: burt to be default value
 	- DONE: go
-		- DONE: add default creature attribute and use None state to set to active_gs.hero
+		- DONE: add default creature attribute and use None state to set to gs.hero
 		- DONE: add alternate text for creature is not burt
 		- DONE: add conditional for text if creature is not in the same room as burt
 		- DONE: create test_frog
@@ -3215,7 +3215,7 @@ Version 3.74 Goals
 		- DONE: Door (True)
 		- DONE: Room (True)
 		- DONE: LeverSwitch (True)
-	- DONE: in ViewOnly, create chk_contain(active_gs)
+	- DONE: in ViewOnly, create chk_contain(gs)
 		- DONE: ViewOnley (False)
 		- DONE: Container (variable based on contain_lst)
 		- DONE: Room (variable based on floor_lst)
@@ -3274,7 +3274,7 @@ Version 3.75 Goals
 	- DONE: decision about auto-gen try
 		- IDEA: try_buff() takes obj_spec, obj_def, and class_def attributes?
 		- DONE: review how implemented in Creature show() and give()
-		- DONE: consider centralizing into a special buffer comment (e.g. active_gs.buff_try()  ) [for case of 'if try fails then pass']
+		- DONE: consider centralizing into a special buffer comment (e.g. gs.buff_try()  ) [for case of 'if try fails then pass']
 		- DONE: cretae buff_s() in GameState class
 	- DONE: update wear() to use buff_s()
 		- DONE: comment out wear_descript
@@ -3340,7 +3340,7 @@ Version 3.75 Goals
 		- DONE: general refactor
 		- DONE: update all doc_strings
 - INPROC: create attack_b() method
-	- DONE: create def for attack_b() method using 'attack x with y' format and active_gs.hero as default base_creature
+	- DONE: create def for attack_b() method using 'attack x with y' format and gs.hero as default base_creature
 	- DONE: test base attack_b() method
 	- DONE: add 'attack_b' to validate check for in_hand
 	- DONE: explore use of src_creature and tgt_creature
@@ -3530,7 +3530,7 @@ Version 3.76 Goals
 	- IDEA: stand should be a Creature method
 		- IDEA: don't need seat info, just room; error on in floor_lst already
 	- DONE: create stand() method
-	- DONE: update "find burt" method in active_gs.map
+	- DONE: update "find burt" method in gs.map
 	- DONE: instantiate test_chair in entrance
 	- DONE: test sit with burt
 		- PROB: interp hangs because 'prep' verbs expect noun & dir_obj
@@ -3575,7 +3575,7 @@ Version 3.76 Goals
 			- DONE: need to check for containment and spaace in drop method
 		- DONE: update room title to f", in the {Seat}"
 			- DONE: confirm that get_title_str() is only used in base() and room()
-			- DONE: update get_title_str() to include active_gs
+			- DONE: update get_title_str() to include gs
 			- DONE: update room.get_title_str() to check for creature.is_contained()
 			- DONE: update room.get_title_str() to buffer ", in the {Seat}" if contained
 			- DONE: test
@@ -3597,7 +3597,7 @@ Version 3.76 Goals
 			- DONE: elim validate() prep not_in_hand error
 			- DONE: update error method name to chk_not_in_hand() [resisted chk_and_disp_not_in_hand ]
 		- PAUSE: obj not visible error
-			- DONE: in ViewOnly, create chk_not_vis(self, active_gs):
+			- DONE: in ViewOnly, create chk_not_vis(self, gs):
 			- DONE: in method, check for vis and then buffer error
 			- PAUSE: call error methods from verb methods
 				- PAUSE: 'examine', Item class verbs, Door class verbs, 
@@ -4368,8 +4368,8 @@ Version 3.78 Goals
 				- DONE: troubleshoot method
 				- DONE: full test of method
 				- DONE: clean-up method
-			- DONE: update remove_contain_lst() to pass active_gs (found only in interactive_class_def)
-			- DONE: udate append_contain_lst() to pass active_gs
+			- DONE: update remove_contain_lst() to pass gs (found only in interactive_class_def)
+			- DONE: udate append_contain_lst() to pass gs
 				- DONE: interactive_class_def()
 				- DONE: item_class_def()
 			- DONE: update remove_contain_lst() for port container if obj_in_creature to dec creature.weight
@@ -4391,11 +4391,11 @@ Version 3.78 Goals
 			- NOTE: very hard to be certain of all cases but I've reviewed; now always remove before append
 		- DONE: update Creature.hand_lst_append() to deal with case where Burt will be overburdened by gift
 			- NOTE: can happen as result of gift (return gift) or modular machine (e.g. royal_crown)
-			- DONE: to pass active_gs to hand_lst_append() I first need to pass it to put_in_hand():
+			- DONE: to pass gs to hand_lst_append() I first need to pass it to put_in_hand():
 				- DONE: creature_class_def()
 				- DONE: item_class_def()
 				- DONE: result_class_def()
-			- CANCEL: need to update hand_lst_append() to pass active_gs [ just creature_class_def() ]
+			- CANCEL: need to update hand_lst_append() to pass gs [ just creature_class_def() ]
 				- IDEA: keep hand_lst_append() simple and update put_in_hand() with "drop if heavy"
 			- DONE: update put_in_hand() to include "drop on floor" (with variable txt for burt / non-burt)
 			- DONE: testing!!

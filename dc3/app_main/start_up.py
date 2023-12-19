@@ -16,28 +16,28 @@ def start_me_up():
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/def_pkl', 'rb') as f:
 		master_obj_lst = pickle.load(f)
 
-	active_gs = master_obj_lst[0]
+	gs = master_obj_lst[0]
 
 	### Assign Random Secret Code ###
 	portcullis_code = random.randint(0, 7)
 	port_code_txt = "'..ode is " + str(portcullis_code) + ". Don't tell anyo..'"
-	active_gs.io.set_dyn_dict('messy_handwriting', port_code_txt)
+	gs.io.set_dyn_dict('messy_handwriting', port_code_txt)
 	
 	for obj in master_obj_lst[1:]:
 		if obj.name == 'control_panel':
 			obj.mach_state = portcullis_code
 
 	### introductory text ###
-	active_gs.io.buff_e('introduction')
-	active_gs.io.buffer("*** Entrance ***")
-	active_gs.io.buff_e('entrance')
-	active_gs.io.buffer("There is a Front Gate to the north, a path to the south, a leap down to the moat to the east, and a leap down to the moat to the west.")
+	gs.io.buff_e('introduction')
+	gs.io.buffer("*** Entrance ***")
+	gs.io.buff_e('entrance')
+	gs.io.buffer("There is a Front Gate to the north, a path to the south, a leap down to the moat to the east, and a leap down to the moat to the west.")
 
 	### dump updated objects to save_obj_pickle ###
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 
-	end_of_game = active_gs.get_end_of_game()
-	out_buff = active_gs.io.get_buff()
+	end_of_game = gs.get_end_of_game()
+	out_buff = gs.io.get_buff()
 
 	return end_of_game, out_buff

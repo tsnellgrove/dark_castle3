@@ -43,46 +43,46 @@ class Item(ViewOnly):
 		return True
 
 	# *** verb methods ***
-	def take(self, active_gs, mode=None):
+	def take(self, gs, mode=None):
 		""" Takes an object from either the room or from Burt's inventory and places it into Burt's hand
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 		
-		active_gs.io.buffer("Taken")
+		gs.io.buffer("Taken")
 		if creature.chk_is_worn(self):
-			active_gs.io.buffer(f"You are no longer wearing the {self.full_name}.")
-			active_gs.io.buff_s(f"{creature.name}_remove_{self.descript_key}")
+			gs.io.buffer(f"You are no longer wearing the {self.full_name}.")
+			gs.io.buff_s(f"{creature.name}_remove_{self.descript_key}")
 		
-		active_gs.get_room().remove_item(self, active_gs)
-		creature.put_in_hand(self, active_gs)
+		gs.get_room().remove_item(self, gs)
+		creature.put_in_hand(self, gs)
 		return
 
-	def drop(self, active_gs, mode=None):
+	def drop(self, gs, mode=None):
 		""" Drops an object from Burt's hand to the floor of the room.
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 
 		creature.hand_lst_remove(self)
-		if creature.is_contained(active_gs):
-			creature.get_contained_by(active_gs).contain_lst_append(self, active_gs)
+		if creature.is_contained(gs):
+			creature.get_contained_by(gs).contain_lst_append(self, gs)
 		else:
-			active_gs.get_room().floor_lst_append(self)
+			gs.get_room().floor_lst_append(self)
 		
-		active_gs.io.buffer("Dropped")
+		gs.io.buffer("Dropped")
 		return 
 
 	# *** debug methods ***
-	def get_weight(self, active_gs, mode=None):
+	def get_weight(self, gs, mode=None):
 		""" Reports the weight of an Item. Only usable in debug mode.
 		"""
 		if mode is None:
 			mode = 'std'
 		
-		active_gs.io.buffer(f"The weight of the {self.full_name} is {self.weight}.")
+		gs.io.buffer(f"The weight of the {self.full_name} is {self.weight}.")
 		return
 
 
@@ -97,17 +97,17 @@ class Food(Item):
 		return True
 	
 	# *** verb methods ***
-	def eat(self, active_gs, mode=None):
+	def eat(self, gs, mode=None):
 		""" Removes the Food object from the game and provides a description of how the food tasted.
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 
 		creature.hand_lst_remove(self)
 		
-		active_gs.io.buffer(f"Eaten.")
-		active_gs.io.buff_s(f"{creature.name}_eat_{self.descript_key}")
+		gs.io.buffer(f"Eaten.")
+		gs.io.buff_s(f"{creature.name}_eat_{self.descript_key}")
 		return 
 
 
@@ -122,18 +122,18 @@ class Liquid(Item):
 		return True
 	
 	# *** verb methods ***
-	def drink(self, obj, active_gs, mode=None):
+	def drink(self, obj, gs, mode=None):
 		""" Consumes a liquid if it is in a Container that Burt is holding in his hand.
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 
 #		obj.contain_lst.remove(self)
-		obj.remove_item(self, active_gs)
+		obj.remove_item(self, gs)
 
-		active_gs.io.buffer("Drunk.")
-		active_gs.io.buff_s(f"{creature.name}_drink_{self.descript_key}")
+		gs.io.buffer("Drunk.")
+		gs.io.buff_s(f"{creature.name}_drink_{self.descript_key}")
 		return 
 
 
@@ -154,18 +154,18 @@ class Garment(Item):
 		return True
 
 	# *** verb methods ***
-	def wear(self, active_gs, mode=None):
+	def wear(self, gs, mode=None):
 		""" Places a garment in a creature's worn inventory and provides a description of any effects that result.
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 		
 		creature.hand_lst_remove(self)
 		creature.worn_lst_append(self)
 		
-		active_gs.io.buffer("Worn.")
-		active_gs.io.buff_s(f"{creature.name}_wear_{self.descript_key}")
+		gs.io.buffer("Worn.")
+		gs.io.buff_s(f"{creature.name}_wear_{self.descript_key}")
 		return 
 
 

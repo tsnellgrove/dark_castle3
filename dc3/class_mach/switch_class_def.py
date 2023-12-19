@@ -53,16 +53,16 @@ class ButtonSwitchMixIn(SwitchMixIn):
 		return True
 
 	# *** verb methods ***
-	def push(self, active_gs, mode=None):
+	def push(self, gs, mode=None):
 		""" Sets the switch state to 'pushed' until it is auto-reset in the auto_action.py module
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 
 		self.switch_state = 'pushed'
 
-		active_gs.io.buffer("Pushed.")
+		gs.io.buffer("Pushed.")
 		return 
 
 class ViewOnlyButtonSwitch(ButtonSwitchMixIn, ViewOnly):
@@ -83,16 +83,16 @@ class SpringSliderSwitchMixIn(ButtonSwitchMixIn):
 		return True
 
 	# *** verb methods ***
-	def pull(self, active_gs, mode=None):
+	def pull(self, gs, mode=None):
 		""" Sets the switch state to 'pulled' until it is auto-reset in the auto_action.py module
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 
 		self.switch_state = 'pulled'
 
-		active_gs.io.buffer("Pulled.")
+		gs.io.buffer("Pulled.")
 		return 
 
 
@@ -117,29 +117,29 @@ class LeverSwitch(SwitchMixIn, ViewOnly):
 		return True
 
 	# *** display methods ***
-	def has_cond(self, active_gs):
+	def has_cond(self, gs):
 		return True
 
-	def disp_cond(self, active_gs):
+	def disp_cond(self, gs):
 		""" Displays object-specific conditions. Used in examine().
 		"""
-		active_gs.io.buff_no_cr(f"The {self.full_name} is {self.switch_state}.")
+		gs.io.buff_no_cr(f"The {self.full_name} is {self.switch_state}.")
 		return 
 
 	# *** verb methods ***
-	def pull(self, active_gs, mode=None):
+	def pull(self, gs, mode=None):
 		""" Toggles the switch state between 'up' and 'down'.
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 
 		if self.switch_state == 'down':
 			self.switch_state = 'up'
 		else:
 			self.switch_state = 'down'
 			
-		active_gs.io.buffer(f"Pulled. The {self.full_name} is now {self.switch_state}.")
+		gs.io.buffer(f"Pulled. The {self.full_name} is now {self.switch_state}.")
 		return 
 
 

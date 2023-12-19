@@ -952,7 +952,7 @@ Triggers are what start Machines but Conditions determine what happens when they
 
 The Machine class has two Switch-related attributes: cond_switch_lst and cond_lst. cond_switch_lst is a list of switches whose state impacts condidtions. cond_lst is an ordered list of conditions that are possible when the machine is triggered. The conditions within cond_lst should cover all possible cases... e.g. if cond_1 is the case where item_x in hand_lst then cond_2 woudld typically be the case where item_x not in hand_lst.
 
-Each Condition class includes a name attribute and whatever other attributes are needed to check the condition and a method, named cond_check(), that returns True or False. cond_check is called from the Machine class run_mach() method so cond_check() is limited to evaluating conditions beased on the values of active_gs, cond_switch_lst, and mach_state. 
+Each Condition class includes a name attribute and whatever other attributes are needed to check the condition and a method, named cond_check(), that returns True or False. cond_check is called from the Machine class run_mach() method so cond_check() is limited to evaluating conditions beased on the values of gs, cond_switch_lst, and mach_state. 
 
 
 Results:
@@ -960,7 +960,7 @@ There is a Result associated with each Condition. The Result updates the game en
 
 Each Result class includes the attributes it needs to function. For example, the BufferAndGiveResult class includes the give_item attribute which specifies the Item to be placed into Burt's hand when the Result executes.
 
-Each Result class also has a result_exe() method associated with it. result_exe() is passed active_gs and mach_state and returns mach_state (the Machine's own state variable) and cmd_override (which determines whether the Result overrides the Player's own command).
+Each Result class also has a result_exe() method associated with it. result_exe() is passed gs and mach_state and returns mach_state (the Machine's own state variable) and cmd_override (which determines whether the Result overrides the Player's own command).
 
 Results are associated with a given machine via the result_lst Machine attribute.
 
@@ -1002,7 +1002,7 @@ app_main() calls pre_action() next. It sees that control_panel is a machine but,
 
 Since cmd_override == False, cmd_exe executes the Player's command. The ButtonSwitch push() method is called and red_button.switch_state = 'pushed' and the response "Pushed." is buffered to the user output.
 
-Control is passed back to app_main() which now calls post_action(). post_action() gets mach_obj_lst (the list of Machine objects in scope) from active_gs and itterates through it searching for any Machines that have trigger_type == 'post_act_switch'. control_panel meets these conditions so trig_case = 'switch' and trig_switch_state_lst = the state of the Machine's trigger switch = the state of control_panel's trigger switch = the state of red_button = 'pushed'. 
+Control is passed back to app_main() which now calls post_action(). post_action() gets mach_obj_lst (the list of Machine objects in scope) from gs and itterates through it searching for any Machines that have trigger_type == 'post_act_switch'. control_panel meets these conditions so trig_case = 'switch' and trig_switch_state_lst = the state of the Machine's trigger switch = the state of control_panel's trigger switch = the state of red_button = 'pushed'. 
 
 Under the same if clause, the value of control_panel.trig_check() is checked and, since 'pushed' is in 'trig_val_lst' (trig_val_lst == ['pushed']), trig_check returns True and control_panel.run_mach() is run.
 
@@ -1056,7 +1056,7 @@ Beyond their core functionality, Timers are interesting because they are our fir
 
 *Valid Turns*
 
-The first is that we need to get more rigorous about what does and does not constitute a valid turn. In the past I called active_gs.move_inc() at the start of app_main() and then selectively called active_gs.move_dec() from within interp() when any error seemed more like the interpreter's fault than the player's. But now, with auto commands in play, we need a clear and consistent measure of which turns are valid so that the timer doesn't tick on a non-valid turn. To enable this I eliminated the move_dec() calls in interp() and set a move_valid variable (boolean) within app_main(). For all 'case' == 'error' and also the 'quit' command, move_valid = False. In this case, no pre, post, or auto actions are called. Whereas, for move_valid == True, move_inc() gets called and pre, post, and auto actions are executed.
+The first is that we need to get more rigorous about what does and does not constitute a valid turn. In the past I called gs.move_inc() at the start of app_main() and then selectively called gs.move_dec() from within interp() when any error seemed more like the interpreter's fault than the player's. But now, with auto commands in play, we need a clear and consistent measure of which turns are valid so that the timer doesn't tick on a non-valid turn. To enable this I eliminated the move_dec() calls in interp() and set a move_valid variable (boolean) within app_main(). For all 'case' == 'error' and also the 'quit' command, move_valid = False. In this case, no pre, post, or auto actions are called. Whereas, for move_valid == True, move_inc() gets called and pre, post, and auto actions are executed.
 
 *Auto Message Timing*
 

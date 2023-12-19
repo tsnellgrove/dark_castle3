@@ -13,7 +13,7 @@ class PassThruCond(object):
 	def name(self):
 		return self._name
 
-	def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
 		cond_state = True
 		return cond_state
 
@@ -30,8 +30,8 @@ class WeaponInHandCond(PassThruCond):
 	def weapon_match_cond(self):
 		return self._weapon_match_cond
 
-	def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-		creature = active_gs.hero
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		creature = gs.hero
 		return creature.in_hand_is_weapon() == self.weapon_match_cond
 
 
@@ -58,7 +58,7 @@ class CreatureItemCond(PassThruCond):
 	def match_cond(self):
 		return self._match_cond
 
-	def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
 		cond_state = self.item_obj in self.creature_obj.hand_lst
 		return cond_state == self.match_cond
 
@@ -72,7 +72,7 @@ class StateCond(PassThruCond):
 	def mach_state_cond(self):
 		return self._mach_state_cond
 
-	def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
 		return mach_state == self.mach_state_cond
 
 
@@ -85,8 +85,8 @@ class IsWeaponAndStateCond(StateCond):
 	def weapon_match_cond(self):
 		return self._weapon_match_cond
 
-	def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-		creature = active_gs.hero
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		creature = gs.hero
 		weapon_in_hand = not creature.hand_is_empty() and creature.get_hand_item().is_weapon()
 		return (mach_state == self.mach_state_cond) and (weapon_in_hand == self.weapon_match_cond)
 
@@ -100,7 +100,7 @@ class SwitchStateCond(PassThruCond):
 	def switch_state_val_lst(self):
 		return self._switch_state_val_lst
 
-	def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
 		switch_state_lst = []
 		for switch in cond_swicth_lst:
 			switch_state_lst.append(switch.switch_state)
@@ -111,7 +111,7 @@ class LeverArrayCond(SwitchStateCond):
 	def __init__(self, name, switch_state_val_lst):
 		super().__init__(name, switch_state_val_lst)
 
-	def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
 		target_val = mach_state
 		current_val = 0
 		for lever in cond_swicth_lst:
@@ -139,9 +139,9 @@ class NotTimerAndItemCond(PassThruCond):
 	def item_obj(self):
 		return self._item_obj
 
-	def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
 		cond_state = False
-		if self.item_obj in active_gs.get_room().floor_lst:
+		if self.item_obj in gs.get_room().floor_lst:
 			cond_state = not self.timer_obj.active
 		return cond_state
 
@@ -165,8 +165,8 @@ class StateItemInRoomCond(PassThruCond):
 	def item_in_room_match(self):
 		return self._item_in_room_match
 
-	def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-		room_obj = active_gs.get_room()
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		room_obj = gs.get_room()
 		item_in_room = self.item_obj in room_obj.floor_lst
 		return (
 			mach_state == self.state_match 
@@ -188,7 +188,7 @@ class TimerActiveCond(PassThruCond):
 	def timer_active_bool(self):
 		return self._timer_active_bool
 
-	def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
 		cond_state = self.timer_obj.active == self.timer_active_bool
 		return cond_state
 
@@ -211,8 +211,8 @@ class RoomCond(PassThruCond):
 	def match_cond(self):
 		return self._match_cond
 
-	def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-		room_obj = active_gs.get_room()
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		room_obj = gs.get_room()
 		match_state = room_obj == self.match_room
 		return self.match_cond == match_state
 
@@ -235,8 +235,8 @@ class InWorldCond(PassThruCond): # note: only works for obj in room.floor_lst
 	def match_cond(self):
 		return self._match_cond
 
-	def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-		match_state = active_gs.map.chk_obj_exist(self.exist_obj, active_gs)
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		match_state = gs.map.chk_obj_exist(self.exist_obj, gs)
 		return match_state == self.match_cond
 
 
@@ -244,10 +244,10 @@ class InWorldStateCond(InWorldCond): # note: only works for obj in room.floor_ls
 	def __init__(self, name, exist_obj, match_cond):
 		super().__init__(name, exist_obj, match_cond)
 
-	def cond_check(self, active_gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
 		panel_dispensed = mach_state
 		if panel_dispensed == False:
-			match_state = active_gs.map.chk_obj_exist(self.exist_obj, active_gs)
+			match_state = gs.map.chk_obj_exist(self.exist_obj, gs)
 			return match_state == self.match_cond
 		else:
 			return False
@@ -267,8 +267,8 @@ class WornCond(PassThruCond):
 	def match_cond(self):
 		return self._match_cond
 
-	def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-		creature = active_gs.hero
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		creature = gs.hero
 		return (self.worn_garment in creature.worn_lst) == self.match_cond
 
 
@@ -299,8 +299,8 @@ class InRoomCond(PassThruCond):
 	def match_cond(self):
 		return self._match_cond
 
-	def cond_check(self, active_gs, mach_state, cond_swicth_lst):
-		room = active_gs.map.get_obj_room(self.creature, active_gs)
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		room = gs.map.get_obj_room(self.creature, gs)
 		return (room is self.match_room) == self.match_cond
 
 

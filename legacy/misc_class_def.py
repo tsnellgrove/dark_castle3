@@ -20,17 +20,17 @@ class Liquid(ViewOnly):
 		return True
 
 	# *** verb methods ***
-	def drink(self, active_gs, mode=None):
+	def drink(self, gs, mode=None):
 		""" Consumes a liquid if it is in a Container that Burt is holding in his hand.
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = active_gs.hero
+		creature = gs.hero
 
 		creature.get_hand_item().contain_lst.remove(self)
 
-		active_gs.io.buffer("Drunk.")
-		active_gs.io.buff_s(f"{creature.name}_drink_{self.name}")
+		gs.io.buffer("Drunk.")
+		gs.io.buff_s(f"{creature.name}_drink_{self.name}")
 		return 
 
 

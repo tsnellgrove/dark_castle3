@@ -94,7 +94,7 @@ class GameState(object):
 	### room ###
 #		def get_hero_room(self):
 	def get_room(self):
-		""" Returns the room that active_gs.hero is currently in
+		""" Returns the room that gs.hero is currently in
 		"""
 		for room in self.map.get_room_lst():
 			if self.hero in room.floor_lst:
