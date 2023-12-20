@@ -8,7 +8,7 @@
 
 
 def score(gs):
-	room_obj = gs.get_room()
+	room_obj = gs.map.get_hero_rm(gs)
 	creature = gs.hero
 
 	# increment item scores
