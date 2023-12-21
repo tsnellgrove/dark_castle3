@@ -75,7 +75,7 @@ def help(gs, option):
 
 ### root_word_count - determines if user command contains root words
 def root_word_count(gs, word2_txt):
-	scope_lst = gs.get_room().get_vis_contain_lst(gs)
+	scope_lst = gs.map.get_hero_rm(gs).get_vis_contain_lst(gs)
 	root_count = 0
 	obj_name = ""
 	for obj in scope_lst:
@@ -155,7 +155,7 @@ def noun_handling(master_obj_lst, user_input_lst):
 ### interpreter - determine user intent
 def interpreter(user_input, master_obj_lst):
 	gs = master_obj_lst[0]
-	room_obj = gs.get_room()
+	room_obj = gs.map.get_hero_rm(gs)
 	user_input_lst = input_cleanup(user_input)
 
 	# error if no input or the only input is articles 
@@ -184,7 +184,7 @@ def interpreter(user_input, master_obj_lst):
 			user_input_lst.append(gs.hero.name)
 		if word1 == 'look':
 			user_input_lst[0] = 'examine'
-			user_input_lst.append(gs.get_room().name)
+			user_input_lst.append(gs.map.get_hero_rm(gs).name)
 		if word1 == 'stand':
 			user_input_lst.append(gs.hero.name)
 		word1 = user_input_lst[0]

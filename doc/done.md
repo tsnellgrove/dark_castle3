@@ -3021,11 +3021,11 @@ Version 3.73 Goals
 	- DONE: can exclude burt from room.disp_contain() using remove(gs.hero)
 - DONE: review burt => creature plans and clean-up
 - DONE: move gs.universal_lst timer obj to burt.invis_lst
-- DONE: gs.get_room() => gs.map.get_hero_room()
+- DONE: gs.map.get_hero_rm(gs) => gs.map.get_hero_room()
 	- DONE: in gs.map create get_hero_room() initial version
 	- DONE: test get_hero_room() in read() method
 		- NOTE: had issues because gs.map does not have a way to reference gs; moved get_hero_room() to gs with hero for now
-	- DONE: find all modules using gs.get_room()
+	- DONE: find all modules using gs.map.get_hero_rm(gs)
 		- DONE: noun_class_def() <both get_room and set_room>
 		- DONE: interp()
 		- DONE: validate()
@@ -3039,7 +3039,7 @@ Version 3.73 Goals
 		- DONE: mach_class_def()
 		- DONE: cond_class_def()
 		- DONE: result_class_def()
-	- DONE - NEW-IDEA: re-use existing gs.get_room() calls
+	- DONE - NEW-IDEA: re-use existing gs.map.get_hero_rm(gs) calls
 		- DONE: replace get_room() code with get_hero_rooom()
 		- DONE: Also need to comment out set_room() in Room.go() and in gs
 		- DONE: And need to convert Read get_hero_room() back to get_room()

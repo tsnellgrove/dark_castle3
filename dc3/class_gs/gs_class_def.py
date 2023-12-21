@@ -92,17 +92,17 @@ class GameState(object):
 		return self.state_dict['debug']
 
 	### room ###
-#		def get_hero_room(self):
-	def get_room(self):
-		""" Returns the room that gs.hero is currently in
-		"""
-		for room in self.map.get_room_lst():
-			if self.hero in room.floor_lst:
-				return room
-			for room_obj in room.floor_lst:
-				if room_obj.is_seat() and room_obj.chk_contain_item(self.hero):
-					return room
-		raise ValueError(f"{self.hero.name} not found.")
+##		def get_hero_room(self):
+#	def get_room(self):
+#		""" Returns the room that gs.hero is currently in
+#		"""
+#		for room in self.map.get_room_lst():
+#			if self.hero in room.floor_lst:
+#				return room
+#			for room_obj in room.floor_lst:
+#				if room_obj.is_seat() and room_obj.chk_contain_item(self.hero):
+#					return room
+#		raise ValueError(f"{self.hero.name} not found.")
 
 ##		def get_room(self):
 ##				return self._state_dict['room']

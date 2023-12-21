@@ -180,6 +180,6 @@ class Room(ViewOnly):
 		if creature == gs.hero:
 			next_room.examine(gs)
 			return 
-		if self == gs.get_room():
+		if self == gs.map.get_hero_rm(gs):
 			gs.io.buffer(f"The {creature.full_name} goes {dir}")
 		return 

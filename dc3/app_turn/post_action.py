@@ -6,7 +6,7 @@
 
 def post_action(gs, case, word_lst):
 	cmd_override = False
-	mach_obj_lst = gs.get_room().get_mach_lst(gs)
+	mach_obj_lst = gs.map.get_hero_rm(gs).get_mach_lst(gs)
 	for obj in mach_obj_lst:
 		if obj.trigger_type == 'post_act_switch':
 			trig_case = 'switch'

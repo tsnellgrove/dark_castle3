@@ -212,9 +212,9 @@ Version 3.80 Goals
 	- DONE: rename gs_class => gs
 	- INPROC: finally fix get_room => rename and move to gs.map
 		- DONE: create get_hero_rm(self, gs) in gs.map
-		- DONE: test redirect gs.get_room() calls to gs.io.get_hero_rm() [in score()]
-		- TBD: migrate all calls to gs.io.get_hero_rm()
-		- TBD: clean-up gs.get_room()
+		- DONE: test redirect gs.map.get_hero_rm(gs) calls to gs.io.get_hero_rm() [in score()]
+		- DONE: migrate all calls to gs.io.get_hero_rm()
+		- TBD: clean-up gs.map.get_hero_rm(gs)
 	- TBD: how can sub-classes (IO & Map) call to main class (GameState) [e.g. buff_dbg()] ??
 
 - TBD: new IO-based features:
@@ -352,7 +352,7 @@ Version 3.80 Goals
 - TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
 
 - TBD: update get_hand_item() to return None if hand_list is empty
-- TBD: sort out gs.get_room() => move to .map & std w/ map.get_obj_room()
+- TBD: sort out gs.map.get_hero_rm(gs) => move to .map & std w/ map.get_obj_room()
 
 - TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
 		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe

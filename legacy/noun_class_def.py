@@ -135,7 +135,7 @@ class Writing(Invisible):
 		def read(self, gs):
 #				" Reads text found on an object. Read is the first player-accessible method. For the reasons mentioned above in Writing, writing objects are treated a bit differently than other 'nouns' and therefore the error checking in read() is a bit different as well (writing has it's own unique scope check method, chk_wrt_is_vis). Note that read is uniquely excluded from the 2word generic command failure routines in validate(). 
 #				"
-				room = gs.get_room()
+				room = gs.map.get_hero_rm(gs)
 				if not self.is_writing() and not room.chk_is_vis(self, gs):
 						gs.io.buffer(f"You can't see a {self.full_name} here.")
 						return 
@@ -389,7 +389,7 @@ class Room(ViewOnly):
 				if creature == gs.hero:
 						next_room.examine(gs)
 						return 
-				if self == gs.get_room():
+				if self == gs.map.get_hero_rm(gs):
 						gs.io.buffer(f"The {creature.full_name} goes {dir}")
 				return 
 """
@@ -435,11 +435,11 @@ class Item(ViewOnly):
 				if creature.chk_in_hand(self):
 						gs.io.buffer("You're already holding the " + self.full_name)
 						return 
-				for obj in gs.get_room().floor_lst:
+				for obj in gs.map.get_hero_rm(gs).floor_lst:
 						if obj.is_creature() and obj is not gs.hero and self in obj.get_vis_contain_lst(gs):
 								gs.io.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 								return 
-				gs.get_room().remove_item(self, gs)
+				gs.map.get_hero_rm(gs).remove_item(self, gs)
 				creature.put_in_hand(self)
 				gs.io.buffer("Taken")
 				return
@@ -449,7 +449,7 @@ class Item(ViewOnly):
 #				"
 				creature = gs.hero
 				creature.hand_lst_remove(self)
-				gs.get_room().floor_lst_append(self)
+				gs.map.get_hero_rm(gs).floor_lst_append(self)
 				gs.io.buffer("Dropped")
 """
 

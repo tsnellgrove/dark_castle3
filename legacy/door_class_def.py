@@ -333,7 +333,7 @@ class Seat(Surface):
 		self.contain_lst_append(creature)
 
 		# if hero_creature not in current room, exit with no display
-		if room != gs.get_room():
+		if room != gs.map.get_hero_rm(gs):
 			return 
 		
 		if creature == gs.hero:
@@ -358,7 +358,7 @@ class Seat(Surface):
 		self.contain_lst_remove(creature)
 
 		# if hero_creature not in current room, exit with no display
-		if room != gs.get_room():
+		if room != gs.map.get_hero_rm(gs):
 			return 
 		
 		if creature == gs.hero:
