@@ -35,7 +35,6 @@ def validate(gs, case, word_lst):
 				gs.io.buff_no_cr("[INVIS error postfix]")
 		except:
 			cmd_error = True
-#			gs.io.buff_dbg("[VAL] " + traceback.format_exc(), gs.is_dbg())
 			gs.io.buff_dbg("[VAL] " + traceback.format_exc(), gs)
 		return not cmd_error
 	return True

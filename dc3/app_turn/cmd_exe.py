@@ -27,8 +27,6 @@ def cmd_execute(gs, case, word_lst):
 				gs.state_dict['debug'] = not gs.state_dict['debug']
 				gs.io.buffer(f"Debug Mode is now set to {gs.state_dict['debug']}.")
 				return
-#			gs.buff_debug_err("[CMD] tru_1word case not found")
-#			gs.io.buff_dbg("[CMD] tru_1word case not found", gs.is_dbg())
 			gs.io.buff_dbg("[CMD] tru_1word case not found", gs)
 			return
 		if case == 'go':
@@ -43,12 +41,8 @@ def cmd_execute(gs, case, word_lst):
 			dirobj_obj, word1, noun_obj = word_lst
 			getattr(dirobj_obj, word1)(noun_obj, gs)
 			return
-#		gs.buff_debug_err("[CMD] command case error")
-#		gs.io.buff_dbg("[CMD] command case error", gs.is_dbg())
 		gs.io.buff_dbg("[CMD] command case error", gs)
 		return
 	except:
-#		gs.buff_debug_err("[CMD] " + traceback.format_exc())
-#		gs.io.buff_dbg("[CMD] " + traceback.format_exc(), gs.is_dbg())
 		gs.io.buff_dbg("[CMD] " + traceback.format_exc(), gs)
 	return
