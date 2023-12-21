@@ -208,14 +208,16 @@ Version 3.80 Goals
 
 - DONE: review old notes and determine which, if any, still need to be done
 
-- INPROC: long over-due game_state clean-up
+- DONE: long over-due game_state clean-up
 	- DONE: rename gs_class => gs
 	- DONE: finally fix get_room => rename and move to gs.map
 		- DONE: create get_hero_rm(self, gs) in gs.map
 		- DONE: test redirect gs.map.get_hero_rm(gs) calls to gs.io.get_hero_rm() [in score()]
 		- DONE: migrate all calls to gs.io.get_hero_rm()
 		- DONE: clean-up gs.map.get_hero_rm(gs)
-	- TBD: how can sub-classes (IO & Map) call to main class (GameState) [e.g. buff_dbg()] ??
+	- DONE: how can sub-classes (IO & Map) call to main class (GameState) [e.g. buff_dbg()]
+		- FINDING: just need to pass gs
+		- DONE: update io.buff_dbg() => io.buff_dbg(gs)
 
 - TBD: new IO-based features:
 	- TBD: Cache last user input and enable 'again' / 'g' command
