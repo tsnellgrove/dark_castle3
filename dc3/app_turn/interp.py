@@ -10,7 +10,7 @@ from itertools import islice
 ### interpreter function language static dictionaries & lists ###
 articles_lst = ['a', 'an', 'the']
 
-one_word_only_lst = ['credits', 'score', 'version', 'quit', 'xyzzy42', 'debug_poke53281,0']
+one_word_only_lst = ['credits', 'score', 'version', 'quit', 'again', 'xyzzy42', 'debug_poke53281,0']
 
 one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory', 'look', 'stand']
 
@@ -32,7 +32,8 @@ abbreviations_dict = {
 	'l' : 'look',
 	'get' : 'take',
 	'x' : 'examine',
-	'h' : 'help'
+	'h' : 'help',
+	'g' : 'again'
 }
 
 ### help = print help info
@@ -156,7 +157,12 @@ def noun_handling(master_obj_lst, user_input_lst):
 def interpreter(user_input, master_obj_lst):
 	gs = master_obj_lst[0]
 	room_obj = gs.map.get_hero_rm(gs)
+	gs.io.last_input_str = user_input
 	user_input_lst = input_cleanup(user_input)
+
+#	# handle 'again' case
+#	if len(user_input_lst) == 1 and user_input_lst[0] == 'again':
+#		pass
 
 	# error if no input or the only input is articles 
 	if len(user_input_lst) < 1:

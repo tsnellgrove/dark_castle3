@@ -220,7 +220,18 @@ Version 3.80 Goals
 		- DONE: update io.buff_dbg() => io.buff_dbg(gs)
 
 - TBD: new IO-based features:
-	- TBD: Cache last user input and enable 'again' / 'g' command
+	- INPROC: Cache last user input and enable 'again' / 'g' command
+		- CANCEL: create gs.io.set_prev_buff()
+		- CANCEL: call gs.io.set_prev_buff() from end of app_main()
+		- IDEA: need to cach input, not output!!!
+		- DONE: add 'again' to one_word list; add 'g' to abbreviations_dict (both in interp())
+		- DONE: add last_input_str as attribute of gs.io
+		- DONE: update interp() to set gs.io.last_input_str
+		- TBD: handle 'again' case in app_main
+		- TBD: clean up set_pre_buff (in gs.io) and set_prev_buff() call (in app main)
+		- TBD: clean up 'again' case in interp()
+		- TBD: maybe clean up 'again' one_word and 'g' abreviation ??
+		- TBD: updated buffer to be a str rather than a dict ?
 	- TBD: Enable 'wait' / 'z' command
 
 - TBD: doc updates

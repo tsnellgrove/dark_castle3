@@ -61,4 +61,7 @@ def app_main(user_input):
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 
+#	# set last turn buffer to contents of this turn's buffer
+#	gs.io.set_prev_buff()
+
 	return gs.get_end_of_game(), gs.io.get_buff()

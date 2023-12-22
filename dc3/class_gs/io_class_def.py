@@ -9,10 +9,11 @@ from dc3.data.static_gbl import static_dict
 
 ### classes
 class IO(object):
-	def __init__(self, name, dyn_dict, buff_dict):
+	def __init__(self, name, dyn_dict, buff_dict, last_input_str):
 		self._name = name # name of obj
 		self._dyn_dict = dyn_dict # dict of non-static values that persist during game
 		self._buff_dict = buff_dict # holds buffered output
+		self._last_input_str = last_input_str # holds previous turn's input
 
 	### setters & getters ###
 	@property
@@ -35,13 +36,20 @@ class IO(object):
 	def buff_dict(self, new_val):
 		self._buff_dict = new_val
 
+	@property
+	def last_input_str(self):
+		return self._last_input_str
+
+	@last_input_str.setter
+	def last_input_str(self, new_val):
+		self._last_input_str = new_val
+
 
 	### check dict methods ###
 	def chk_str_exist(self, key):
 		if key not in self.dyn_dict and key not in static_dict:
 			return False
 		return True
-
 
 	### description methods ###
 	def get_dyn_dict(self, key):
@@ -90,6 +98,10 @@ class IO(object):
 	def reset_buff(self):
 		self.buff_dict['current_turn'] = ""
 		return
+
+#	def set_prev_buff(self):
+#		self.buff_dict['last_turn'] = self.buff_dict['current_turn']
+#		return
 
 	def buffer(self, output_str):
 		out_buff_old = self.buff_dict['current_turn']
