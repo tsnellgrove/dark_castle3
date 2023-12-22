@@ -38,7 +38,12 @@ def app_main(user_input):
 		end(gs)
 		return gs.get_end_of_game(), gs.io.get_buff()
 
+	# again case
+	if user_input == 'again' or user_input == 'g':
+		user_input = gs.io.last_input_str
+
 	# interpret and validate user_input
+	gs.io.last_input_str = user_input
 	case, word_lst = interpreter(user_input, master_obj_lst)
 	input_valid = validate(gs, case, word_lst)
 

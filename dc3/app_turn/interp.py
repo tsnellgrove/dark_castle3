@@ -157,7 +157,7 @@ def noun_handling(master_obj_lst, user_input_lst):
 def interpreter(user_input, master_obj_lst):
 	gs = master_obj_lst[0]
 	room_obj = gs.map.get_hero_rm(gs)
-	gs.io.last_input_str = user_input
+#	gs.io.last_input_str = user_input
 	user_input_lst = input_cleanup(user_input)
 
 #	# handle 'again' case
