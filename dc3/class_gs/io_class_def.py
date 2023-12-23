@@ -9,10 +9,12 @@ from dc3.data.static_gbl import static_dict
 
 ### classes
 class IO(object):
-	def __init__(self, name, dyn_dict, buff_dict, last_input_str):
+#	def __init__(self, name, dyn_dict, buff_dict, last_input_str):
+	def __init__(self, name, dyn_dict, buff_str, last_input_str):
 		self._name = name # name of obj
 		self._dyn_dict = dyn_dict # dict of non-static values that persist during game
-		self._buff_dict = buff_dict # holds buffered output
+#		self._buff_dict = buff_dict # holds buffered output
+		self._buff_str = buff_str # holds buffered output
 		self._last_input_str = last_input_str # holds previous turn's input
 
 	### setters & getters ###
@@ -29,12 +31,18 @@ class IO(object):
 		self._dyn_dict = new_val
 
 	@property
-	def buff_dict(self):
-		return self._buff_dict
+#	def buff_dict(self):
+#		return self._buff_dict
+	def buff_str(self):
+		return self._buff_str
 
-	@buff_dict.setter
-	def buff_dict(self, new_val):
-		self._buff_dict = new_val
+#	@buff_dict.setter
+#	def buff_dict(self, new_val):
+#		self._buff_dict = new_val
+
+	@buff_str.setter
+	def buff_str(self, new_val):
+		self._buff_str = new_val
 
 	@property
 	def last_input_str(self):
@@ -93,10 +101,12 @@ class IO(object):
 
 	### buffer methods ###
 	def get_buff(self):
-		return self.buff_dict['current_turn']
+#		return self.buff_dict['current_turn']
+		return self.buff_str
 
 	def reset_buff(self):
-		self.buff_dict['current_turn'] = ""
+#		self.buff_dict['current_turn'] = ""
+		self.buff_str = ""
 		return
 
 #	def set_prev_buff(self):
@@ -104,21 +114,27 @@ class IO(object):
 #		return
 
 	def buffer(self, output_str):
-		out_buff_old = self.buff_dict['current_turn']
+#		out_buff_old = self.buff_dict['current_turn']
+		out_buff_old = self.buff_str
 		out_buff_new = out_buff_old + "\n" + output_str + "\n"
-		self.buff_dict['current_turn'] = out_buff_new
+#		self.buff_dict['current_turn'] = out_buff_new
+		self.buff_str = out_buff_new
 		return
 
 	def buff_no_cr(self, output_str):
-		out_buff_old = self.buff_dict['current_turn']
+#		out_buff_old = self.buff_dict['current_turn']
+		out_buff_old = self.buff_str
 		out_buff_new = out_buff_old + output_str
-		self.buff_dict['current_turn'] = out_buff_new
+#		self.buff_dict['current_turn'] = out_buff_new
+		self.buff_str = out_buff_new
 		return
 	
 	def buff_cr(self):
-		out_buff_old = self.buff_dict['current_turn']
+#		out_buff_old = self.buff_dict['current_turn']
+		out_buff_old = self.buff_str
 		out_buff_new = out_buff_old + "\n"
-		self.buff_dict['current_turn'] = out_buff_new
+#		self.buff_dict['current_turn'] = out_buff_new
+		self.buff_str = out_buff_new
 		return
 
 	def buff_d(self, key, ref):

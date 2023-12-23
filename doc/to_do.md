@@ -220,7 +220,7 @@ Version 3.80 Goals
 		- DONE: update io.buff_dbg() => io.buff_dbg(gs)
 
 - INPROC: new IO-based features:
-	- INPROC: Cache last user input and enable 'again' / 'g' command
+	- DONE: Cache last user input and enable 'again' / 'g' command
 		- CANCEL: create gs.io.set_prev_buff()
 		- CANCEL: call gs.io.set_prev_buff() from end of app_main()
 		- IDEA: need to cach input, not output!!!
@@ -235,7 +235,7 @@ Version 3.80 Goals
 		- DONE: re-add 'again' and 'g' to interp() lists to enable help documentation
 		- DONE: clean up set_pre_buff (in gs.io) and set_prev_buff() call (in app main)
 		- DONE: clean up 'again' case in interp()
-		- TBD: updated buffer to be a str rather than a dict ?
+		- DONE: updated buffer to be a str rather than a dict ?
 	- TBD: Enable 'wait' / 'z' command
 
 - TBD: doc updates

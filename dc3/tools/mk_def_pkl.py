@@ -289,7 +289,8 @@ map = Map([{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y'
 
 io = IO('io', # name
 		{}, # dyn_dict
-		{'current_turn' : ""}, # buff_dict
+#		{'current_turn' : ""}, # buff_dict
+		"", # buff_str
 		"" # last_input_str
 		)
 
