@@ -38,17 +38,19 @@ def app_main(user_input):
 		end(gs)
 		return gs.get_end_of_game(), gs.io.get_buff()
 
-	# again case
+	# again command
 	if user_input == 'again' or user_input == 'g':
 		user_input = gs.io.last_input_str
+	gs.io.last_input_str = user_input # sets 'again' value for next turn
 
-	# interpret and validate user_input
-	gs.io.last_input_str = user_input
+	# interpret and validate user_input	
 	case, word_lst = interpreter(user_input, master_obj_lst)
 	input_valid = validate(gs, case, word_lst)
 
 	# exit if user_input not valid
 	if not input_valid:
+		with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
+			pickle.dump(master_obj_lst, f)
 		return gs.get_end_of_game(), gs.io.get_buff()
 
 	# for valid user_input, increment move count and run pre_action, cmd_exe, post_action, and auto_action

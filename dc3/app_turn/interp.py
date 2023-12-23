@@ -10,7 +10,7 @@ from itertools import islice
 ### interpreter function language static dictionaries & lists ###
 articles_lst = ['a', 'an', 'the']
 
-one_word_only_lst = ['credits', 'score', 'version', 'quit', 'again', 'xyzzy42', 'debug_poke53281,0']
+one_word_only_lst = ['credits', 'score', 'version', 'quit', 'xyzzy42', 'debug_poke53281,0']
 
 one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory', 'look', 'stand']
 
@@ -32,8 +32,7 @@ abbreviations_dict = {
 	'l' : 'look',
 	'get' : 'take',
 	'x' : 'examine',
-	'h' : 'help',
-	'g' : 'again'
+	'h' : 'help'
 }
 
 ### help = print help info
