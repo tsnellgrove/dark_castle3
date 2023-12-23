@@ -237,6 +237,10 @@ Version 3.80 Goals
 		- DONE: clean up 'again' case in interp()
 		- DONE: updated buffer to be a str rather than a dict ?
 	- TBD: Enable 'wait' / 'z' command
+		- IDEA: under wait command, need to enter app_main... but only process auto_action() & move_incr ??
+		- TBD: need to include 'wait' & 'z' in interp() lists for help doc
+		- TBD: consider including 'wait' (& other one-word) in interp() one-word-list to get err on "wait x"
+		- TBD: update 'help basics' to include 'go north' => 'north'
 
 - TBD: doc updates
 	- TBD: [DOC] purpose of dyn_dict
