@@ -41,7 +41,7 @@ def app_main(user_input):
 	# again command
 	if user_input == 'again' or user_input == 'g':
 		user_input = gs.io.last_input_str
-	gs.io.last_input_str = user_input # sets 'again' value for next turn
+	gs.io.last_input_str = user_input # sets 'again' last_turn input value for next_turn
 
 	# interpret and validate user_input	
 	case, word_lst = interpreter(user_input, master_obj_lst)
@@ -67,8 +67,5 @@ def app_main(user_input):
 	### dump updated objects to save_obj_pickle2 ###
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
-
-#	# set last turn buffer to contents of this turn's buffer
-#	gs.io.set_prev_buff()
 
 	return gs.get_end_of_game(), gs.io.get_buff()

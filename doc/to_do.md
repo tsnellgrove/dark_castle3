@@ -231,10 +231,10 @@ Version 3.80 Goals
 		- DONE: test (fails to cache commands that gen errors; e.g. 's', 'g', 'n', 'g'; does not cache 'n')
 			- SOLVED: needed to save obj state on valid_cmd == False in order to cach last_input_str
 			- IDEA: this is too bad - I liked forced statelessness for invalid cmds - but no way around it
-		- TBD: help doc for 'again' ("utility commands")
-		- TBD: clean up set_pre_buff (in gs.io) and set_prev_buff() call (in app main)
-		- TBD: clean up 'again' case in interp()
-		- DONE: clean up 'again' one_word and 'g' abreviation ??
+		- DONE: clean up 'again' one_word and 'g' abreviation
+		- DONE: re-add 'again' and 'g' to interp() lists to enable help documentation
+		- DONE: clean up set_pre_buff (in gs.io) and set_prev_buff() call (in app main)
+		- DONE: clean up 'again' case in interp()
 		- TBD: updated buffer to be a str rather than a dict ?
 	- TBD: Enable 'wait' / 'z' command
 
@@ -530,6 +530,9 @@ Window:
 
 
 *** Roll up sleaves and fix Interpreter ***
+
+- TBD: make 'help' a one-word-command
+- TBD: do we really need the start-up command as a defined 'one-word-command' ?
 
 - IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 	- IDEA: could have a prep attribute for each prep verb
