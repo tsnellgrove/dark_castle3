@@ -55,13 +55,16 @@ def app_main(user_input):
 
 	# for valid user_input, increment move count and run pre_action, cmd_exe, post_action, and auto_action
 	gs.move_inc()
-	cmd_override = pre_action(gs, case, word_lst)
-	if not cmd_override:
-		cmd_execute(gs, case, word_lst)
-	post_action(gs, case, word_lst)
-	score(gs)
-	if gs.get_game_ending() != "tbd":
-		end(gs)
+	if word_lst[0] != 'wait' and word_lst[0] != 'z':
+		cmd_override = pre_action(gs, case, word_lst)
+		if not cmd_override:
+			cmd_execute(gs, case, word_lst)
+		post_action(gs, case, word_lst)
+		score(gs)
+		if gs.get_game_ending() != "tbd":
+			end(gs)
+	else:
+		gs.io.buffer("Waiting...")
 	auto_action(gs)
 
 	### dump updated objects to save_obj_pickle2 ###

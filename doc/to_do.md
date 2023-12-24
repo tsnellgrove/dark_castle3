@@ -219,7 +219,7 @@ Version 3.80 Goals
 		- FINDING: just need to pass gs
 		- DONE: update io.buff_dbg() => io.buff_dbg(gs)
 
-- INPROC: new IO-based features:
+- DONE: new IO-based features:
 	- DONE: Cache last user input and enable 'again' / 'g' command
 		- CANCEL: create gs.io.set_prev_buff()
 		- CANCEL: call gs.io.set_prev_buff() from end of app_main()
@@ -236,11 +236,19 @@ Version 3.80 Goals
 		- DONE: clean up set_pre_buff (in gs.io) and set_prev_buff() call (in app main)
 		- DONE: clean up 'again' case in interp()
 		- DONE: updated buffer to be a str rather than a dict ?
-	- TBD: Enable 'wait' / 'z' command
-		- IDEA: under wait command, need to enter app_main... but only process auto_action() & move_incr ??
-		- TBD: need to include 'wait' & 'z' in interp() lists for help doc
-		- TBD: consider including 'wait' (& other one-word) in interp() one-word-list to get err on "wait x"
-		- TBD: update 'help basics' to include 'go north' => 'north'
+	- DONE: Enable 'wait' / 'z' command
+		- DONE: wait command, in app_main... but only process auto_action() & move_incr ??
+		- DONE: need to include 'wait' & 'z' in interp() lists for help doc
+		- DONE: testing
+
+- TBD: fix some interp() / help() aspects
+	- TBD: consider including 'wait' (& other one-word) in interp() one-word-list to get err on "wait x"
+	- TBD: update 'help basics' to include 'go north' => 'north'
+	- TBD: incorporate one-word-convert commands into one-word help
+	- TBD: make 'help' a one-word-command
+	- TBD: do we really need the start-up command as a defined 'one-word-command' ?
+	- TBD: revisit why 'help' is in interp() [there was a good reason - is it still valid?]
+
 
 - TBD: doc updates
 	- TBD: [DOC] purpose of dyn_dict
@@ -534,9 +542,6 @@ Window:
 
 
 *** Roll up sleaves and fix Interpreter ***
-
-- TBD: make 'help' a one-word-command
-- TBD: do we really need the start-up command as a defined 'one-word-command' ?
 
 - IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 	- IDEA: could have a prep attribute for each prep verb
