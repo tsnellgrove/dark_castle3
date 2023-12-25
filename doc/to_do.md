@@ -241,13 +241,16 @@ Version 3.80 Goals
 		- DONE: need to include 'wait' & 'z' in interp() lists for help doc
 		- DONE: testing
 
-- TBD: fix some interp() / help() aspects
-	- TBD: consider including 'wait' (& other one-word) in interp() one-word-list to get err on "wait x"
-	- TBD: update 'help basics' to include 'go north' => 'north'
-	- TBD: incorporate one-word-convert commands into one-word help
+- INPROC: fix some interp() / help() aspects
+	- INPROC: revisit why 'help' is in interp() [there was a good reason - is it still valid?]
+		- TBD: move lists & dicts from interp() to static_dict ?
+		- TBD: move help() funtion to cmd_exe() ?
 	- TBD: make 'help' a one-word-command
 	- TBD: do we really need the start-up command as a defined 'one-word-command' ?
-	- TBD: revisit why 'help' is in interp() [there was a good reason - is it still valid?]
+	- TBD: incorporate one-word-convert commands into one-word help
+	- TBD: consider including 'wait' (& other one-word) in interp() one-word-list to get err on "wait x"
+	- TBD: update 'help basics' to include 'go north' => 'north'
+
 
 
 - TBD: doc updates
