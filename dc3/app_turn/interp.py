@@ -8,7 +8,7 @@
 from itertools import islice
 
 ### interpreter function language static dictionaries & lists ###
-articles_lst = ['a', 'an', 'the']
+# articles_lst = ['a', 'an', 'the']
 
 one_word_only_lst = ['credits', 'score', 'version', 'wait', 'xyzzy42', 'debug_poke53281,0']
 
@@ -50,7 +50,7 @@ def help(gs, option):
 		display_one_word_lst.extend(['again', 'help', 'quit', 'stand'])
 		output = ("Available one word commands include: " + ', '.join(sorted(display_one_word_lst)))
 	elif option == 'articles':
-		output = ("The following articles are supported but not required: " + ', '.join(articles_lst))
+		output = ("The following articles are supported but not required: " + ', '.join(gs.io.get_lst('articles_lst')))
 	elif option == 'adjectives':
 		output = gs.io.get_str_nr('help_adjectives')
 	elif  option == 'abbreviations':
@@ -91,7 +91,8 @@ def root_word_count(gs, word2_txt):
 	return root_count, obj_name
 
 ### input_cleanup - convert user_input str to lst, lower, convert abbreviations, remove articles
-def input_cleanup(user_input):
+def input_cleanup(gs, user_input):
+# def input_cleanup(user_input):
 	# first, convert user input string into word list
 	lst = []
 	lst.append(user_input)
@@ -105,7 +106,8 @@ def input_cleanup(user_input):
 		user_input_lst[n] = word
 		n += 1
 	# finally, strip out articles
-	for article in articles_lst:
+#	for article in articles_lst:
+	for article in gs.io.get_lst('articles_lst'):
 		user_input_lst = [word for word in user_input_lst if word != article]
 	return user_input_lst
 
@@ -158,7 +160,8 @@ def noun_handling(master_obj_lst, user_input_lst):
 def interpreter(user_input, master_obj_lst):
 	gs = master_obj_lst[0]
 	room_obj = gs.map.get_hero_rm(gs)
-	user_input_lst = input_cleanup(user_input)
+#	user_input_lst = input_cleanup(user_input)
+	user_input_lst = input_cleanup(gs, user_input)
 
 	# error if no input or the only input is articles 
 	if len(user_input_lst) < 1:

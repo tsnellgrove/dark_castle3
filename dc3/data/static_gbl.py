@@ -17,7 +17,38 @@ static_dict = {
 	'version' : '3.79',
 	'max_score' : 75,
 
+	### interp lists ###
 
+	'articles_lst' : ['a', 'an', 'the'],
+
+	'one_word_only_lst' : ['credits', 'score', 'version', 'wait', 'xyzzy42', 'debug_poke53281,0'],
+
+	'one_word_convert_lst' : ['north', 'south', 'east', 'west', 'inventory', 'look', 'stand'],
+
+	'known_verbs_lst' : ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
+		'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
+		'unlock', 'wear', 'enter', 'exit', 'stand'
+	],
+
+	'debug_verb_lst' : ['get_weight', 'capacity', 'where_is'],
+
+#	'full_verbs_lst' : known_verbs_lst + debug_verb_lst
+
+	'abbreviations_dict' : {
+		'n' : 'north',
+		's' : 'south',
+		'e' : 'east',
+		'w' : 'west',
+		'i' : 'inventory',
+		'l' : 'look',
+		'get' : 'take',
+		'x' : 'examine',
+		'h' : 'help',
+		'g' : 'again',
+		'z' : 'wait'
+	},
+
+	### score lists ###
 	'titles_by_score' : {
 		-10: 'Burt the Best Forgotten',
 		0: 'Burt the Baker', # was 'Burt the Boneheaded'
@@ -44,7 +75,6 @@ static_dict = {
 		'game_won' : 15,
 		'goblin_dead' : 5
 	},
-
 
 	'item_score_lst' : [
 		'rusty_key',

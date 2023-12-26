@@ -243,7 +243,10 @@ Version 3.80 Goals
 
 - INPROC: fix some interp() / help() aspects
 	- INPROC: revisit why 'help' is in interp() [there was a good reason - is it still valid?]
-		- TBD: move lists & dicts from interp() to static_dict ?
+		- DONE: copy lists & dicts from interp() to static_dict
+		- INPROC: call static_dict interp lists & dict
+			- DONE: articles_lst
+			- TBD: 
 		- TBD: move help() funtion to cmd_exe() ?
 	- TBD: make 'help' a one-word-command
 	- TBD: do we really need the start-up command as a defined 'one-word-command' ?
