@@ -12,7 +12,7 @@ one_word_only_lst = ['credits', 'score', 'version', 'wait', 'xyzzy42', 'debug_po
 
 one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory', 'look', 'stand']
 
-debug_verb_lst = ['get_weight', 'capacity', 'where_is']
+# debug_verb_lst = ['get_weight', 'capacity', 'where_is']
 
 abbreviations_dict = {
 	'n' : 'north',
@@ -33,7 +33,7 @@ def help(gs, option):
 	if option == 'basics':
 		output = gs.io.get_str_nr('help_basics')
 	elif option == 'verbs':
-		output = "Available verbs include: " + ', '.join(gs.io.get_lst('known_verbs_lst'))
+		output = "Available verbs include: " + ', '.join(gs.io.get_lst('known_verb_lst'))
 	elif option == 'one-word-commands':
 		display_one_word_lst = one_word_only_lst.copy()
 		display_one_word_lst.pop()
@@ -61,7 +61,8 @@ def help(gs, option):
 		if not gs.state_dict['debug']:
 			output = gs.io.get_str_nr('help_debug_error')
 		else:
-			output = gs.io.get_str_nr('help_debug') + ', '.join(debug_verb_lst)
+#			output = gs.io.get_str_nr('help_debug') + ', '.join(debug_verb_lst)
+			output = gs.io.get_str_nr('help_debug') + ', '.join(gs.io.get_lst('debug_verb_lst'))
 	else:
 		output = gs.io.get_str_nr('help')
 	gs.io.buffer(output)
@@ -150,7 +151,8 @@ def interpreter(user_input, master_obj_lst):
 	gs = master_obj_lst[0]
 	room_obj = gs.map.get_hero_rm(gs)
 	user_input_lst = input_cleanup(gs, user_input)
-	full_verbs_lst = gs.io.get_lst('known_verbs_lst') + debug_verb_lst
+#	full_verbs_lst = gs.io.get_lst('known_verbs_lst') + debug_verb_lst
+	full_verbs_lst = gs.io.get_lst('known_verb_lst') + gs.io.get_lst('debug_verb_lst')
 
 	# error if no input or the only input is articles 
 	if len(user_input_lst) < 1:

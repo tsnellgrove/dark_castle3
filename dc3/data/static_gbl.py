@@ -25,7 +25,7 @@ static_dict = {
 
 	'one_word_convert_lst' : ['north', 'south', 'east', 'west', 'inventory', 'look', 'stand'],
 
-	'known_verbs_lst' : ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
+	'known_verb_lst' : ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 		'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
 		'unlock', 'wear', 'enter', 'exit', 'stand'
 	],
