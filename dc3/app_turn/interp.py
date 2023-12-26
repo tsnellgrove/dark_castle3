@@ -8,8 +8,6 @@
 from itertools import islice
 
 ### interpreter function language static dictionaries & lists ###
-# articles_lst = ['a', 'an', 'the']
-
 one_word_only_lst = ['credits', 'score', 'version', 'wait', 'xyzzy42', 'debug_poke53281,0']
 
 one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory', 'look', 'stand']
@@ -92,7 +90,6 @@ def root_word_count(gs, word2_txt):
 
 ### input_cleanup - convert user_input str to lst, lower, convert abbreviations, remove articles
 def input_cleanup(gs, user_input):
-# def input_cleanup(user_input):
 	# first, convert user input string into word list
 	lst = []
 	lst.append(user_input)
@@ -106,7 +103,6 @@ def input_cleanup(gs, user_input):
 		user_input_lst[n] = word
 		n += 1
 	# finally, strip out articles
-#	for article in articles_lst:
 	for article in gs.io.get_lst('articles_lst'):
 		user_input_lst = [word for word in user_input_lst if word != article]
 	return user_input_lst
@@ -160,7 +156,6 @@ def noun_handling(master_obj_lst, user_input_lst):
 def interpreter(user_input, master_obj_lst):
 	gs = master_obj_lst[0]
 	room_obj = gs.map.get_hero_rm(gs)
-#	user_input_lst = input_cleanup(user_input)
 	user_input_lst = input_cleanup(gs, user_input)
 
 	# error if no input or the only input is articles 
