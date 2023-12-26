@@ -254,6 +254,7 @@ Version 3.80 Goals
 	- TBD: do we really need the start-up command as a defined 'one-word-command' ?
 	- TBD: incorporate one-word-convert commands into one-word help
 	- TBD: consider including 'wait' (& other one-word) in interp() one-word-list to get err on "wait x"
+	- TBD: special list for one-word-commands to be included in 'help' (e.g. 'help' & 'quit') ??
 	- TBD: update 'help basics' to include 'go north' => 'north'
 
 
