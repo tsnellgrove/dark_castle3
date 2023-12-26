@@ -12,15 +12,7 @@ one_word_only_lst = ['credits', 'score', 'version', 'wait', 'xyzzy42', 'debug_po
 
 one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory', 'look', 'stand']
 
-# known_verbs_lst = ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
-#	'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
-#	'unlock', 'wear', 'enter', 'exit', 'stand'
-# ] # 'remove' removed
-
 debug_verb_lst = ['get_weight', 'capacity', 'where_is']
-
-# full_verbs_lst = known_verbs_lst + debug_verb_lst
-# full_verbs_lst = gs.io.get_lst('known_verbs_lst') + debug_verb_lst
 
 abbreviations_dict = {
 	'n' : 'north',
@@ -41,7 +33,6 @@ def help(gs, option):
 	if option == 'basics':
 		output = gs.io.get_str_nr('help_basics')
 	elif option == 'verbs':
-#		output = "Available verbs include: " + ', '.join(known_verbs_lst)
 		output = "Available verbs include: " + ', '.join(gs.io.get_lst('known_verbs_lst'))
 	elif option == 'one-word-commands':
 		display_one_word_lst = one_word_only_lst.copy()

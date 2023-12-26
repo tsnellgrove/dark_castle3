@@ -246,7 +246,8 @@ Version 3.80 Goals
 		- DONE: copy lists & dicts from interp() to static_dict
 		- INPROC: call static_dict interp lists & dict
 			- DONE: articles_lst
-			- TBD: 
+			- DON: known_verbs_lst
+			- TBD: debug_verbs_lst
 		- TBD: move help() funtion to cmd_exe() ?
 	- TBD: make 'help' a one-word-command
 	- TBD: do we really need the start-up command as a defined 'one-word-command' ?

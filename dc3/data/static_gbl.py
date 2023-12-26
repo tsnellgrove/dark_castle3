@@ -32,8 +32,6 @@ static_dict = {
 
 	'debug_verb_lst' : ['get_weight', 'capacity', 'where_is'],
 
-#	'full_verbs_lst' : known_verbs_lst + debug_verb_lst
-
 	'abbreviations_dict' : {
 		'n' : 'north',
 		's' : 'south',
