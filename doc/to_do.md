@@ -248,7 +248,9 @@ Version 3.80 Goals
 			- DONE: articles_lst
 			- DONE: known_verbs_lst
 			- DONE: debug_verb_lst
-			- TBD: abbreviations_dict
+			- DONE: abbreviations_dict
+			- TBD: one_word_only_lst
+			- TBD: one_word_convert_lst
 		- TBD: move help() funtion to cmd_exe() ?
 	- TBD: make 'help' a one-word-command
 	- TBD: do we really need the start-up command as a defined 'one-word-command' ?

@@ -85,18 +85,14 @@ class IO(object):
 		"""
 		return static_dict[dict_name]
 
-#	def get_dict_val(self, key1, key2):
 	def get_dict_val(self, dict_name, dict_key):
 		"""Returns a dictionary value from a dict within static_dict.
 		"""
-#		return static_dict[key1][key2]
 		return static_dict[dict_name][dict_key]
 
-#	def get_lst(self, key):
 	def get_lst(self, lst_name):
 		"""Returns a list from a dict within static_dict.
 		"""
-#		return static_dict[key]
 		return static_dict[lst_name]
 
 
