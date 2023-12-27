@@ -12,19 +12,19 @@ one_word_only_lst = ['credits', 'score', 'version', 'wait', 'xyzzy42', 'debug_po
 
 one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory', 'look', 'stand']
 
-abbreviations_dict = {
-	'n' : 'north',
-	's' : 'south',
-	'e' : 'east',
-	'w' : 'west',
-	'i' : 'inventory',
-	'l' : 'look',
-	'get' : 'take',
-	'x' : 'examine',
-	'h' : 'help',
-	'g' : 'again',
-	'z' : 'wait'
-}
+# abbreviations_dict = {
+#	'n' : 'north',
+#	's' : 'south',
+#	'e' : 'east',
+#	'w' : 'west',
+#	'i' : 'inventory',
+#	'l' : 'look',
+#	'get' : 'take',
+#	'x' : 'examine',
+#	'h' : 'help',
+#	'g' : 'again',
+#	'z' : 'wait'
+# }
 
 ### help = print help info
 def help(gs, option):
@@ -44,8 +44,10 @@ def help(gs, option):
 		output = gs.io.get_str_nr('help_adjectives')
 	elif  option == 'abbreviations':
 		pre_out = "Available abbreviations include: "
-		for key in abbreviations_dict:
-			pre_out = pre_out + key + " = " + abbreviations_dict[key] + ", "
+#		for key in abbreviations_dict:
+		for key in gs.io.get_dict('abbreviations_dict'):
+#			pre_out = pre_out + key + " = " + abbreviations_dict[key] + ", "
+			pre_out = pre_out + key + " = " + gs.io.get_dict_val('abbreviations_dict',key) + ", "
 		output = pre_out[:-2]
 	elif option == 'prepositions':
 		output = gs.io.get_str_nr('help_prepositions')
@@ -89,8 +91,10 @@ def input_cleanup(gs, user_input):
 	n = 0 
 	for word in user_input_lst:
 		word = word.lower()	
-		if word in abbreviations_dict:
-			word = abbreviations_dict[word]
+#		if word in abbreviations_dict:
+		if word in gs.io.get_dict('abbreviations_dict'):
+#			word = abbreviations_dict[word]
+			word = gs.io.get_dict_val('abbreviations_dict',word)
 		user_input_lst[n] = word
 		n += 1
 	# finally, strip out articles
