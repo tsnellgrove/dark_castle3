@@ -241,17 +241,16 @@ Version 3.80 Goals
 		- DONE: need to include 'wait' & 'z' in interp() lists for help doc
 		- DONE: testing
 
-- INPROC: fix some interp() / help() aspects
-	- INPROC: revisit why 'help' is in interp() [there was a good reason - is it still valid?]
-		- DONE: copy lists & dicts from interp() to static_dict
-		- INPROC: call static_dict interp lists & dict
-			- DONE: articles_lst
-			- DONE: known_verbs_lst
-			- DONE: debug_verb_lst
-			- DONE: abbreviations_dict
-			- TBD: one_word_only_lst
-			- TBD: one_word_convert_lst
-		- TBD: move help() funtion to cmd_exe() ?
+- INPROC: fix some interp() / help() aspects (revisit why 'help' is in interp() )
+	- DONE: copy lists & dicts from interp() to static_dict
+	- INPROC: call static_dict interp lists & dict
+		- DONE: articles_lst
+		- DONE: known_verbs_lst
+		- DONE: debug_verb_lst
+		- DONE: abbreviations_dict
+		- DONE: one_word_only_lst
+		- TBD: one_word_convert_lst
+	- TBD: move help() funtion to cmd_exe() ?
 	- TBD: make 'help' a one-word-command
 	- TBD: do we really need the start-up command as a defined 'one-word-command' ?
 	- TBD: incorporate one-word-convert commands into one-word help

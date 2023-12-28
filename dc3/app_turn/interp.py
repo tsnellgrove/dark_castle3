@@ -8,7 +8,7 @@
 from itertools import islice
 
 ### interpreter function language static dictionaries & lists ###
-one_word_only_lst = ['credits', 'score', 'version', 'wait', 'xyzzy42', 'debug_poke53281,0']
+# one_word_only_lst = ['credits', 'score', 'version', 'wait', 'xyzzy42', 'debug_poke53281,0']
 
 one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory', 'look', 'stand']
 
@@ -19,7 +19,8 @@ def help(gs, option):
 	elif option == 'verbs':
 		output = "Available verbs include: " + ', '.join(gs.io.get_lst('known_verb_lst'))
 	elif option == 'one-word-commands':
-		display_one_word_lst = one_word_only_lst.copy()
+#		display_one_word_lst = one_word_only_lst.copy()
+		display_one_word_lst = gs.io.get_lst('one_word_only_lst').copy()
 		display_one_word_lst.pop()
 		display_one_word_lst.pop()
 		display_one_word_lst.extend(['again', 'help', 'quit', 'stand'])
@@ -147,9 +148,11 @@ def interpreter(user_input, master_obj_lst):
 	if len(user_input_lst) == 1 and word1 == 'help':
 		gs.io.buff_e('help')
 		return 'help', [word1]
-	if len(user_input_lst) == 1 and word1 in one_word_only_lst:
+#	if len(user_input_lst) == 1 and word1 in one_word_only_lst:
+	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_only_lst'):
 		return 'tru_1word', [word1]
-	if word1 in one_word_only_lst and len(user_input_lst) > 1:
+#	if word1 in one_word_only_lst and len(user_input_lst) > 1:
+	if word1 in gs.io.get_lst('one_word_only_lst') and len(user_input_lst) > 1:
 		return 'error', [f"Burt, there are too many words in that sentence. '{word1}' is a one word command!"]
 
 	# convert one-word commands that are implicit two-word commands 
