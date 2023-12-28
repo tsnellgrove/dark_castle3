@@ -8,7 +8,7 @@
 from itertools import islice
 
 ### interpreter function language static dictionaries & lists ###
-one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory', 'look', 'stand']
+# one_word_convert_lst = ['north', 'south', 'east', 'west', 'inventory', 'look', 'stand']
 
 ### help = print help info
 def help(gs, option):
@@ -151,7 +151,8 @@ def interpreter(user_input, master_obj_lst):
 		return 'error', [f"Burt, there are too many words in that sentence. '{word1}' is a one word command!"]
 
 	# convert one-word commands that are implicit two-word commands 
-	elif len(user_input_lst) == 1 and word1 in one_word_convert_lst:
+#	elif len(user_input_lst) == 1 and word1 in one_word_convert_lst:
+	elif len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst'):
 		if word1 in ['north', 'south', 'east', 'west']:
 			user_input_lst.append(word1)
 			user_input_lst[0] = 'go'

@@ -243,16 +243,16 @@ Version 3.80 Goals
 
 - INPROC: fix some interp() / help() aspects (revisit why 'help' is in interp() )
 	- DONE: copy lists & dicts from interp() to static_dict
-	- INPROC: call static_dict interp lists & dict
+	- DONE: call static_dict interp lists & dict
 		- DONE: articles_lst
 		- DONE: known_verbs_lst
 		- DONE: debug_verb_lst
 		- DONE: abbreviations_dict
 		- DONE: one_word_only_lst
-		- TBD: one_word_convert_lst
-	- TBD: move help() funtion to cmd_exe() ?
-	- TBD: make 'help' a one-word-command
+		- DONE: one_word_convert_lst
+	- TBD: move help() funtion to cmd_exe()
 	- TBD: do we really need the start-up command as a defined 'one-word-command' ?
+	- TBD: make 'help' a one-word-command
 	- TBD: incorporate one-word-convert commands into one-word help
 	- TBD: consider including 'wait' (& other one-word) in interp() one-word-list to get err on "wait x"
 	- TBD: special list for one-word-commands to be included in 'help' (e.g. 'help' & 'quit') ??
