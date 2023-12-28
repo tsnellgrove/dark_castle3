@@ -257,6 +257,7 @@ Version 3.80 Goals
 	- TBD: consider including 'wait' (& other one-word) in interp() one-word-list to get err on "wait x"
 	- TBD: special list for one-word-commands to be included in 'help' (e.g. 'help' & 'quit') ??
 	- TBD: update 'help basics' to include 'go north' => 'north'
+	- TBD: briefly document the purpose of interp list in-line in static_dict
 
 
 
