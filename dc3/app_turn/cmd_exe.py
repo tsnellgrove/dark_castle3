@@ -11,7 +11,6 @@ import traceback
 def cmd_execute(gs, case, word_lst):
 	try:
 		if case == 'help':
-
 			option = word_lst[0]
 			if option == 'basics':
 				output = gs.io.get_str_nr('help_basics')
@@ -49,8 +48,6 @@ def cmd_execute(gs, case, word_lst):
 				output = gs.io.get_str_nr('help')
 			gs.io.buffer(output)
 			return
-
-#			return
 		if  case == 'tru_1word':
 			word1 = word_lst[0]
 			if word1 == 'score':

@@ -7,43 +7,6 @@
 ### import statements
 from itertools import islice
 
-### help = print help info
-def help(gs, option):
-	if option == 'basics':
-		output = gs.io.get_str_nr('help_basics')
-	elif option == 'verbs':
-		output = "Available verbs include: " + ', '.join(gs.io.get_lst('known_verb_lst'))
-	elif option == 'one-word-commands':
-		display_one_word_lst = gs.io.get_lst('one_word_only_lst').copy()
-		display_one_word_lst.pop()
-		display_one_word_lst.pop()
-		display_one_word_lst.extend(['again', 'help', 'quit', 'stand'])
-		output = ("Available one word commands include: " + ', '.join(sorted(display_one_word_lst)))
-	elif option == 'articles':
-		output = ("The following articles are supported but not required: " + ', '.join(gs.io.get_lst('articles_lst')))
-	elif option == 'adjectives':
-		output = gs.io.get_str_nr('help_adjectives')
-	elif  option == 'abbreviations':
-		pre_out = "Available abbreviations include: "
-		for key in gs.io.get_dict('abbreviations_dict'):
-			pre_out = pre_out + key + " = " + gs.io.get_dict_val('abbreviations_dict',key) + ", "
-		output = pre_out[:-2]
-	elif option == 'prepositions':
-		output = gs.io.get_str_nr('help_prepositions')
-	elif option == 'read':
-		output = gs.io.get_str_nr('help_read')
-	elif option == 'attack':
-		output = gs.io.get_str_nr('help_attack')
-	elif option == 'creatures':
-		output = gs.io.get_str_nr('help_creatures')
-	elif option == 'debug':
-		if not gs.state_dict['debug']:
-			output = gs.io.get_str_nr('help_debug_error')
-		else:
-			output = gs.io.get_str_nr('help_debug') + ', '.join(gs.io.get_lst('debug_verb_lst'))
-	else:
-		output = gs.io.get_str_nr('help')
-	gs.io.buffer(output)
 
 ### root_word_count - determines if user command contains root words
 def root_word_count(gs, word2_txt):
@@ -177,7 +140,6 @@ def interpreter(user_input, master_obj_lst):
 	# handle prep verb commands (special cases first else general case)
 	if word1 == 'help':
 		word2 = user_input_lst[1]
-#		help(gs, word2)
 		return 'help', [word2]
 	elif word1 == 'go':
 		word2 = user_input_lst[1]
