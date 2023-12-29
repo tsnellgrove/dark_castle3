@@ -250,16 +250,15 @@ Version 3.80 Goals
 		- DONE: abbreviations_dict
 		- DONE: one_word_only_lst
 		- DONE: one_word_convert_lst
-	- TBD: move help() funtion to cmd_exe()
+	- DONE: move help() funtion to cmd_exe()
 	- TBD: do we really need the start-up command as a defined 'one-word-command' ?
-	- TBD: make 'help' a one-word-command
-	- TBD: incorporate one-word-convert commands into one-word help
-	- TBD: consider including 'wait' (& other one-word) in interp() one-word-list to get err on "wait x"
-	- TBD: special list for one-word-commands to be included in 'help' (e.g. 'help' & 'quit') ??
-	- TBD: update 'help basics' to include 'go north' => 'north'
-	- TBD: briefly document the purpose of interp list in-line in static_dict
-
-
+	- IDEA: lots of specific lists including: one_or_two_word_lst, pre_interp_word_lst, one_word_secret_lst
+		- TBD: make 'help' a one-word-command
+		- TBD: incorporate one-word-convert commands into one-word help
+		- TBD: consider including 'wait' (& other one-word) in interp() one-word-list to get err on "wait x"
+		- TBD: special list for one-word-commands to be included in 'help' (e.g. 'help' & 'quit') ??
+		- TBD: update 'help basics' to include 'go north' => 'north'
+		- TBD: briefly document the purpose of interp list in-line in static_dict
 
 - TBD: doc updates
 	- TBD: [DOC] purpose of dyn_dict
@@ -267,6 +266,7 @@ Version 3.80 Goals
 	- TBD: [DOC] abstraction allows for changes in static_dict structure in the future with minimal impact
 	- TBD: [DOC] long-term DB strat
 	- TBD: [DOC] decisions to search for hero rather than cache location
+	- TBD: [DOC] update doc about where 2-word help is executed (interp => cmd_exe)
 
 - DONE: REVIEW OLD NOTES
 	- DONE: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
@@ -353,6 +353,7 @@ Version 3.80 Goals
 *** minor bug-fix ***
 
 - SOMEDAY / MAYBE:
+	- do we need user_input == secret word to trigger startup()? Can't we just pass boolean?
 	- TBD: does creature_state really have any value? Maybe build hedgehog state machine before pulling the plug on this one
 	- TBD: Could simplify 'give', remove description updates from give, and instead implement them as part of state machine?
 	- TBD: use __getattr__ and __setattr__ methods to make dict accessible as obj

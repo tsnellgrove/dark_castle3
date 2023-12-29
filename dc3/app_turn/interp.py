@@ -177,7 +177,7 @@ def interpreter(user_input, master_obj_lst):
 	# handle prep verb commands (special cases first else general case)
 	if word1 == 'help':
 		word2 = user_input_lst[1]
-		help(gs, word2)
+#		help(gs, word2)
 		return 'help', [word2]
 	elif word1 == 'go':
 		word2 = user_input_lst[1]

@@ -11,7 +11,46 @@ import traceback
 def cmd_execute(gs, case, word_lst):
 	try:
 		if case == 'help':
+
+			option = word_lst[0]
+			if option == 'basics':
+				output = gs.io.get_str_nr('help_basics')
+			elif option == 'verbs':
+				output = "Available verbs include: " + ', '.join(gs.io.get_lst('known_verb_lst'))
+			elif option == 'one-word-commands':
+				display_one_word_lst = gs.io.get_lst('one_word_only_lst').copy()
+				display_one_word_lst.pop()
+				display_one_word_lst.pop()
+				display_one_word_lst.extend(['again', 'help', 'quit', 'stand'])
+				output = ("Available one word commands include: " + ', '.join(sorted(display_one_word_lst)))
+			elif option == 'articles':
+				output = ("The following articles are supported but not required: " + ', '.join(gs.io.get_lst('articles_lst')))
+			elif option == 'adjectives':
+				output = gs.io.get_str_nr('help_adjectives')
+			elif  option == 'abbreviations':
+				pre_out = "Available abbreviations include: "
+				for key in gs.io.get_dict('abbreviations_dict'):
+					pre_out = pre_out + key + " = " + gs.io.get_dict_val('abbreviations_dict',key) + ", "
+				output = pre_out[:-2]
+			elif option == 'prepositions':
+				output = gs.io.get_str_nr('help_prepositions')
+			elif option == 'read':
+				output = gs.io.get_str_nr('help_read')
+			elif option == 'attack':
+				output = gs.io.get_str_nr('help_attack')
+			elif option == 'creatures':
+				output = gs.io.get_str_nr('help_creatures')
+			elif option == 'debug':
+				if not gs.state_dict['debug']:
+					output = gs.io.get_str_nr('help_debug_error')
+				else:
+					output = gs.io.get_str_nr('help_debug') + ', '.join(gs.io.get_lst('debug_verb_lst'))
+			else:
+				output = gs.io.get_str_nr('help')
+			gs.io.buffer(output)
 			return
+
+#			return
 		if  case == 'tru_1word':
 			word1 = word_lst[0]
 			if word1 == 'score':
