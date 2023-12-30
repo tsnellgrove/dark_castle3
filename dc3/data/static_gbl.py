@@ -21,9 +21,15 @@ static_dict = {
 
 	'articles_lst' : ['a', 'an', 'the'],
 
-    'one_word_only_lst' : ['credits', 'score', 'version', 'wait', 'debug_poke53281,0'],
+	'pre_interp_word_lst' : ['quit', 'wait', 'again'],
+    
+	'one_word_secret_lst' : ['debug_poke53281,0'],
+
+    'one_word_only_lst' : ['credits', 'score', 'version', 'debug_poke53281,0'],
 
 	'one_word_convert_lst' : ['north', 'south', 'east', 'west', 'inventory', 'look', 'stand'],
+
+	'one_or_two_word_lst' : ['help'], 
 
 	'known_verb_lst' : ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 		'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',

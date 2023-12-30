@@ -254,13 +254,13 @@ Version 3.80 Goals
 	- IDEA: do we really need the start-up command as a defined 'one-word-command' ?
 		- DONE: eliminate secret start-up code from one_word_only_lst
 	- IDEA: lots of specific lists
-		- TBD: create one_or_two_word_lst ('help')
-		- TBD: pre_interp_word_lst ('quit', 'wait', 'again')
-		- TBD: one_word_secret_lst ('debug_poke53281,0)
-		- TBD: make 'help' a one-word-command
-	- IDEA: incorporate one-word-convert commands into one-word help
-	- IDEA: or else use help routine but check for 1 word option first?
-		- TBD:
+		- DONE: create one_or_two_word_lst ('help')
+		- DONE: pre_interp_word_lst ('quit', 'wait', 'again')
+		- DONE: one_word_secret_lst ('debug_poke53281,0)
+	- IDEA: make 'help' a one-word-command; or else use help routine but check for 1 word option first?
+		- TBD: 
+	- TBD: check on one_word_only_list + one_word_secret_lst on interp() one-word-only case
+	- TBD: incorporate multiple3 word lists (including one_word_convert_lst) into one-word help response 
 	- TBD: other word list tuning
 		- TBD: consider including 'wait' (& other one-word) in interp() one-word-list to get err on "wait x"
 		- TBD: special list for one-word-commands to be included in 'help' (e.g. 'help' & 'quit') ??
