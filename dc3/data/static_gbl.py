@@ -21,7 +21,8 @@ static_dict = {
 
 	'articles_lst' : ['a', 'an', 'the'],
 
-	'one_word_only_lst' : ['credits', 'score', 'version', 'wait', 'xyzzy42', 'debug_poke53281,0'],
+#	'one_word_only_lst' : ['credits', 'score', 'version', 'wait', 'xyzzy42', 'debug_poke53281,0'],
+    'one_word_only_lst' : ['credits', 'score', 'version', 'wait', 'debug_poke53281,0'],
 
 	'one_word_convert_lst' : ['north', 'south', 'east', 'west', 'inventory', 'look', 'stand'],
 

@@ -251,13 +251,22 @@ Version 3.80 Goals
 		- DONE: one_word_only_lst
 		- DONE: one_word_convert_lst
 	- DONE: move help() funtion to cmd_exe()
-	- TBD: do we really need the start-up command as a defined 'one-word-command' ?
-	- IDEA: lots of specific lists including: one_or_two_word_lst, pre_interp_word_lst, one_word_secret_lst
+	- IDEA: do we really need the start-up command as a defined 'one-word-command' ?
+		- DONE: eliminate secret start-up code from one_word_only_lst
+	- IDEA: lots of specific lists
+		- TBD: create one_or_two_word_lst ('help')
+		- TBD: pre_interp_word_lst ('quit', 'wait', 'again')
+		- TBD: one_word_secret_lst ('debug_poke53281,0)
 		- TBD: make 'help' a one-word-command
-		- TBD: incorporate one-word-convert commands into one-word help
+	- IDEA: incorporate one-word-convert commands into one-word help
+	- IDEA: or else use help routine but check for 1 word option first?
+		- TBD:
+	- TBD: other word list tuning
 		- TBD: consider including 'wait' (& other one-word) in interp() one-word-list to get err on "wait x"
 		- TBD: special list for one-word-commands to be included in 'help' (e.g. 'help' & 'quit') ??
 		- TBD: update 'help basics' to include 'go north' => 'north'
+		- TBD: add 'restart' command to app_main (also to addto  pre_interp_word_lst)
+		- TBD: possibly eliminate use of secret word to trigger startup() ?
 		- TBD: briefly document the purpose of interp list in-line in static_dict
 
 - TBD: doc updates
