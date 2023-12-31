@@ -105,7 +105,6 @@ def interpreter(user_input, master_obj_lst):
 	# handle true one-word commands
 	if len(user_input_lst) == 1 and word1 == 'help':
 		return 'help', [word1]
-#	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_only_lst'):
 	if len(user_input_lst) == 1 and word1 in tru_1word_lst:
 		return 'tru_1word', [word1]
 	if word1 in gs.io.get_lst('one_word_only_lst') and len(user_input_lst) > 1:

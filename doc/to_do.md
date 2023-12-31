@@ -261,6 +261,7 @@ Version 3.80 Goals
 	- DONE: check on one_word_only_list + one_word_secret_lst on interp() one-word-only case
 	- DONE: implement 'wait' in app main pre-interp() and remove 'wait' from one_word_only_lst
 	- TBD: incorporate multiple word lists (including one_word_convert_lst) into one-word help response 
+	- TBD: incorportat multipel word lists (except 'help') into 'too many words...' error
 	- TBD: other word list tuning
 		- TBD: consider including 'wait' (& other one-word) in interp() one-word-list to get err on "wait x"
 		- TBD: special list for one-word-commands to be included in 'help' (e.g. 'help' & 'quit') ??
@@ -268,6 +269,7 @@ Version 3.80 Goals
 		- TBD: add 'restart' command to app_main (also to addto  pre_interp_word_lst)
 		- TBD: possibly eliminate use of secret word to trigger startup() ?
 		- TBD: briefly document the purpose of interp list in-line in static_dict
+		- TBD: improve code efficency of cmd_exe() help case
 
 - TBD: doc updates
 	- TBD: [DOC] purpose of dyn_dict
