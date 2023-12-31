@@ -259,8 +259,8 @@ Version 3.80 Goals
 		- DONE: one_word_secret_lst ('debug_poke53281,0)
 	- DONE: use cmd_exe() help case for 1-word-help but check for 1 word option first
 	- DONE: check on one_word_only_list + one_word_secret_lst on interp() one-word-only case
-	- TBD: implement 'wait' in app main pre-interp() and remove 'wait' from one_word_only_lst
-	- TBD: incorporate multiple3 word lists (including one_word_convert_lst) into one-word help response 
+	- DONE: implement 'wait' in app main pre-interp() and remove 'wait' from one_word_only_lst
+	- TBD: incorporate multiple word lists (including one_word_convert_lst) into one-word help response 
 	- TBD: other word list tuning
 		- TBD: consider including 'wait' (& other one-word) in interp() one-word-list to get err on "wait x"
 		- TBD: special list for one-word-commands to be included in 'help' (e.g. 'help' & 'quit') ??

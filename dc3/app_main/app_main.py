@@ -43,11 +43,20 @@ def app_main(user_input):
 		user_input = gs.io.last_input_str
 	gs.io.last_input_str = user_input # sets 'again' last_turn input value for next_turn
 
+	# wait command
+	if user_input == 'wait' or user_input == 'z':
+		gs.move_inc()
+		gs.io.buffer("Waiting...")
+		auto_action(gs)
+		with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
+			pickle.dump(master_obj_lst, f)
+		return gs.get_end_of_game(), gs.io.get_buff()
+
 	# interpret and validate user_input	
 	case, word_lst = interpreter(user_input, master_obj_lst)
 	input_valid = validate(gs, case, word_lst)
 
-	# exit if user_input not valid
+	# exit if user_input not valid (need to save state due to 'again' command)
 	if not input_valid:
 		with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 			pickle.dump(master_obj_lst, f)
@@ -55,16 +64,16 @@ def app_main(user_input):
 
 	# for valid user_input, increment move count and run pre_action, cmd_exe, post_action, and auto_action
 	gs.move_inc()
-	if word_lst[0] != 'wait' and word_lst[0] != 'z':
-		cmd_override = pre_action(gs, case, word_lst)
-		if not cmd_override:
-			cmd_execute(gs, case, word_lst)
-		post_action(gs, case, word_lst)
-		score(gs)
-		if gs.get_game_ending() != "tbd":
-			end(gs)
-	else:
-		gs.io.buffer("Waiting...")
+#	if word_lst[0] != 'wait' and word_lst[0] != 'z':
+	cmd_override = pre_action(gs, case, word_lst)
+	if not cmd_override:
+		cmd_execute(gs, case, word_lst)
+	post_action(gs, case, word_lst)
+	score(gs)
+	if gs.get_game_ending() != "tbd":
+		end(gs)
+#	else:
+#		gs.io.buffer("Waiting...")
 	auto_action(gs)
 
 	### dump updated objects to save_obj_pickle2 ###
