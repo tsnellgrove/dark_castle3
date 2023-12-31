@@ -93,6 +93,7 @@ def interpreter(user_input, master_obj_lst):
 	room_obj = gs.map.get_hero_rm(gs)
 	user_input_lst = input_cleanup(gs, user_input)
 	full_verbs_lst = gs.io.get_lst('known_verb_lst') + gs.io.get_lst('debug_verb_lst')
+	tru_1word_lst = gs.io.get_lst('one_word_only_lst') + gs.io.get_lst('one_word_secret_lst')
 
 	# error if no input or the only input is articles 
 	if len(user_input_lst) < 1:
@@ -103,9 +104,9 @@ def interpreter(user_input, master_obj_lst):
 
 	# handle true one-word commands
 	if len(user_input_lst) == 1 and word1 == 'help':
-#		gs.io.buff_e('help')
 		return 'help', [word1]
-	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_only_lst'):
+#	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_only_lst'):
+	if len(user_input_lst) == 1 and word1 in tru_1word_lst:
 		return 'tru_1word', [word1]
 	if word1 in gs.io.get_lst('one_word_only_lst') and len(user_input_lst) > 1:
 		return 'error', [f"Burt, there are too many words in that sentence. '{word1}' is a one word command!"]

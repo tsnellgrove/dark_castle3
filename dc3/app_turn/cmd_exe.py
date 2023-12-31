@@ -12,7 +12,9 @@ def cmd_execute(gs, case, word_lst):
 	try:
 		if case == 'help':
 			option = word_lst[0]
-			if option == 'basics':
+			if option == 'help':
+				output = gs.io.get_str_nr('help')
+			elif option == 'basics':
 				output = gs.io.get_str_nr('help_basics')
 			elif option == 'verbs':
 				output = "Available verbs include: " + ', '.join(gs.io.get_lst('known_verb_lst'))
