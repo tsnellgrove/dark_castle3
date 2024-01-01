@@ -33,18 +33,22 @@ def app_main(user_input):
 	gs.io.reset_buff() # resets buffer
 
 	# quit case
-	if user_input == "quit" or user_input == "q":
+	user_input_lc = user_input.lower()
+	if user_input_lc == "quit" or user_input_lc == "q":
 		gs.set_game_ending('quit')
 		end(gs)
 		return gs.get_end_of_game(), gs.io.get_buff()
 
+	print(f"Last Turn input: {gs.io.last_input_str}")
+
 	# again command
-	if user_input == 'again' or user_input == 'g':
+	if user_input_lc == 'again' or user_input_lc == 'g':
 		user_input = gs.io.last_input_str
+
 	gs.io.last_input_str = user_input # sets 'again' last_turn input value for next_turn
 
 	# wait command
-	if user_input == 'wait' or user_input == 'z':
+	if user_input_lc == 'wait' or user_input_lc == 'z':
 		gs.move_inc()
 		gs.io.buffer("Waiting...")
 		auto_action(gs)

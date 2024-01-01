@@ -262,7 +262,8 @@ Version 3.80 Goals
 	- INPROC: fix 'wait'
 		- DONE: implement 'wait' in app main pre-interp()
 		- DONE: remove 'wait' from one_word_only_lst
-		- TBD: convert pre-interp commands to lower case
+		- DONE: convert pre-interp commands to lower case
+		- TBD: enable 'again' of 'wait' => fix user_input_lc assignment!!
 	- TBD: incorporate multiple word lists (including one_word_convert_lst) into one-word help response 
 	- TBD: incorportat multiple word lists (except 'help') into 'too many words...' error
 	- TBD: other word list tuning
