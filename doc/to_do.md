@@ -259,29 +259,29 @@ Version 3.80 Goals
 		- DONE: one_word_secret_lst ('debug_poke53281,0)
 	- DONE: use cmd_exe() help case for 1-word-help but check for 1 word option first
 	- DONE: check on one_word_only_list + one_word_secret_lst on interp() one-word-only case
-	- INPROC: fix 'wait'
+	- DONE: fix 'wait'
 		- DONE: implement 'wait' in app main pre-interp()
 		- DONE: remove 'wait' from one_word_only_lst
 		- DONE: convert pre-interp commands to lower case
-		- TBD: enable 'again' of 'wait' => fix user_input_lc assignment!!
-	- TBD: incorporate multiple word lists (including one_word_convert_lst) into one-word help response 
-	- TBD: incorportat multiple word lists (except 'help') into 'too many words...' error
+		- DONE: enable 'again' of 'wait' => fix user_input_lc assignment!!
+	- TBD: incorporate multiple word lists: 
+		- TBD: for 'help one-word-commands': (including one_word_convert_lst)
+		- TBD: for 'too many words...' error (not including one_or_two_word_lst)
 	- TBD: other word list tuning
-		- TBD: consider including 'wait' (& other one-word) in interp() one-word-list to get err on "wait x"
-		- TBD: special list for one-word-commands to be included in 'help' (e.g. 'help' & 'quit') ??
 		- TBD: update 'help basics' to include 'go north' => 'north'
-		- TBD: add 'restart' command to app_main (also to addto  pre_interp_word_lst)
+		- TBD: add 'restart' command to app_main (also to add to  pre_interp_word_lst)
 		- TBD: possibly eliminate use of secret word to trigger startup() ?
-		- TBD: briefly document the purpose of interp list in-line in static_dict
 		- TBD: improve code efficency of cmd_exe() help case
+		- TBD: briefly document the purpose of interp list in-line in static_dict
+		- TBD: add confirmation prompt for 'quit' and 'restart' ?
 
 - TBD: doc updates
 	- TBD: [DOC] purpose of dyn_dict
 	- TBD: [DOC] thinking behind isolating static_dict from dyn_dict
-	- TBD: [DOC] abstraction allows for changes in static_dict structure in the future with minimal impact
+	- TBD: [DOC] IO abstraction allows for changes in static_dict structure in the future with minimal impact
 	- TBD: [DOC] long-term DB strat
 	- TBD: [DOC] decisions to search for hero rather than cache location
-	- TBD: [DOC] update doc about where 2-word help is executed (interp => cmd_exe)
+	- TBD: [DOC] update doc about where 2-word help is executed ( interp() => cmd_exe() )
 
 - DONE: REVIEW OLD NOTES
 	- DONE: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
@@ -351,7 +351,7 @@ Version 3.80 Goals
 - TBD: LOT of opportunity for code optimization in score()!
 
 - TBD: refactor score
-	- TBD: determine max_score from summ of all possible scores?
+	- TBD: determine max_score from sum of all possible scores?
 	- TBD: score = class with object being attribute in gs
 	- TBD: print_score() a method of the Score class
 	- TBD: instead of a dict of score achievements w/ T or F, just a list of score items achieved
