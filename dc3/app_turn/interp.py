@@ -112,7 +112,6 @@ def interpreter(user_input, master_obj_lst):
 						 gs.io.get_lst('one_word_convert_lst') + 
 						 gs.io.get_lst('one_word_secret_lst') 
 						)
-#	if word1 in gs.io.get_lst('one_word_only_lst') and len(user_input_lst) > 1:
 	if word1 in one_word_max_lst and len(user_input_lst) > 1:
 		return 'error', [f"Burt, there are too many words in that sentence. '{word1}' is a one word command!"]
 
