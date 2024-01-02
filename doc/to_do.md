@@ -267,11 +267,11 @@ Version 3.80 Goals
 	- DONE: incorporate multiple word lists: 
 		- DONE: for 'help one-word-commands': (including one_word_convert_lst)
 		- DONE: for 'too many words...' error (not including one_or_two_word_lst)
-	- TBD: other word list tuning
+	- INPROC: other word list tuning
+		- INPROC: improve code efficency of cmd_exe() help case
 		- TBD: update 'help basics' to include 'go north' => 'north'
 		- TBD: add 'restart' command to app_main (also to add to  pre_interp_word_lst)
 		- TBD: possibly eliminate use of secret word to trigger startup() ?
-		- TBD: improve code efficency of cmd_exe() help case
 		- TBD: briefly document the purpose of interp list in-line in static_dict
 		- TBD: add confirmation prompt for 'quit' and 'restart' ?
 

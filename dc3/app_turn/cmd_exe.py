@@ -16,6 +16,16 @@ def cmd_execute(gs, case, word_lst):
 				output = gs.io.get_str_nr('help')
 			elif option == 'basics':
 				output = gs.io.get_str_nr('help_basics')
+			elif option == 'adjectives':
+				output = gs.io.get_str_nr('help_adjectives')			
+			elif option == 'prepositions':
+				output = gs.io.get_str_nr('help_prepositions')
+			elif option == 'read':
+				output = gs.io.get_str_nr('help_read')
+			elif option == 'attack':
+				output = gs.io.get_str_nr('help_attack')
+			elif option == 'creatures':
+				output = gs.io.get_str_nr('help_creatures')
 			elif option == 'verbs':
 				output = "Available verbs include: " + ', '.join(gs.io.get_lst('known_verb_lst'))
 			elif option == 'one-word-commands':
@@ -27,21 +37,11 @@ def cmd_execute(gs, case, word_lst):
 				output = ("Available one word commands include: " + ', '.join(sorted(display_one_word_lst)))
 			elif option == 'articles':
 				output = ("The following articles are supported but not required: " + ', '.join(gs.io.get_lst('articles_lst')))
-			elif option == 'adjectives':
-				output = gs.io.get_str_nr('help_adjectives')
 			elif  option == 'abbreviations':
 				pre_out = "Available abbreviations include: "
 				for key in gs.io.get_dict('abbreviations_dict'):
 					pre_out = pre_out + key + " = " + gs.io.get_dict_val('abbreviations_dict',key) + ", "
 				output = pre_out[:-2]
-			elif option == 'prepositions':
-				output = gs.io.get_str_nr('help_prepositions')
-			elif option == 'read':
-				output = gs.io.get_str_nr('help_read')
-			elif option == 'attack':
-				output = gs.io.get_str_nr('help_attack')
-			elif option == 'creatures':
-				output = gs.io.get_str_nr('help_creatures')
 			elif option == 'debug':
 				if not gs.state_dict['debug']:
 					output = gs.io.get_str_nr('help_debug_error')
