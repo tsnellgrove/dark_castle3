@@ -107,7 +107,13 @@ def interpreter(user_input, master_obj_lst):
 		return 'help', [word1]
 	if len(user_input_lst) == 1 and word1 in tru_1word_lst:
 		return 'tru_1word', [word1]
-	if word1 in gs.io.get_lst('one_word_only_lst') and len(user_input_lst) > 1:
+	one_word_max_lst = (gs.io.get_lst('one_word_only_lst') + 
+						 gs.io.get_lst('pre_interp_word_lst') + 
+						 gs.io.get_lst('one_word_convert_lst') + 
+						 gs.io.get_lst('one_word_secret_lst') 
+						)
+#	if word1 in gs.io.get_lst('one_word_only_lst') and len(user_input_lst) > 1:
+	if word1 in one_word_max_lst and len(user_input_lst) > 1:
 		return 'error', [f"Burt, there are too many words in that sentence. '{word1}' is a one word command!"]
 
 	# convert one-word commands that are implicit two-word commands 

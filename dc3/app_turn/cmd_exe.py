@@ -19,9 +19,14 @@ def cmd_execute(gs, case, word_lst):
 			elif option == 'verbs':
 				output = "Available verbs include: " + ', '.join(gs.io.get_lst('known_verb_lst'))
 			elif option == 'one-word-commands':
-				display_one_word_lst = gs.io.get_lst('one_word_only_lst').copy()
-				display_one_word_lst.pop()
-				display_one_word_lst.extend(['again', 'help', 'quit', 'stand'])
+				display_one_word_lst = (gs.io.get_lst('one_word_only_lst') + 
+						 gs.io.get_lst('pre_interp_word_lst') + 
+						 gs.io.get_lst('one_word_convert_lst') + 
+						 gs.io.get_lst('one_or_two_word_lst') 
+						)
+#				display_one_word_lst = gs.io.get_lst('one_word_only_lst').copy()
+#				display_one_word_lst.pop()
+#				display_one_word_lst.extend(['again', 'help', 'quit', 'stand'])
 				output = ("Available one word commands include: " + ', '.join(sorted(display_one_word_lst)))
 			elif option == 'articles':
 				output = ("The following articles are supported but not required: " + ', '.join(gs.io.get_lst('articles_lst')))

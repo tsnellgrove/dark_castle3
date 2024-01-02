@@ -264,9 +264,9 @@ Version 3.80 Goals
 		- DONE: remove 'wait' from one_word_only_lst
 		- DONE: convert pre-interp commands to lower case
 		- DONE: enable 'again' of 'wait' => fix user_input_lc assignment!!
-	- TBD: incorporate multiple word lists: 
-		- TBD: for 'help one-word-commands': (including one_word_convert_lst)
-		- TBD: for 'too many words...' error (not including one_or_two_word_lst)
+	- DONE: incorporate multiple word lists: 
+		- DONE: for 'help one-word-commands': (including one_word_convert_lst)
+		- DONE: for 'too many words...' error (not including one_or_two_word_lst)
 	- TBD: other word list tuning
 		- TBD: update 'help basics' to include 'go north' => 'north'
 		- TBD: add 'restart' command to app_main (also to add to  pre_interp_word_lst)

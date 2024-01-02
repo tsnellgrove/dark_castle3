@@ -49,7 +49,8 @@ static_dict = {
 		'x' : 'examine',
 		'h' : 'help',
 		'g' : 'again',
-		'z' : 'wait'
+		'z' : 'wait',
+        'q' : 'quit'
 	},
 
 	### score lists ###
