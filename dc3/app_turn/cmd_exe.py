@@ -14,21 +14,9 @@ def cmd_execute(gs, case, word_lst):
 			option = word_lst[0]
 			if option == 'help':
 				output = gs.io.get_str_nr('help')
-#			elif option == 'basics':
 			elif option in ['basics', 'adjectives', 'prepositions', 'read', 'attack', 'creatures']:
 				key_str = "help_" + option
 				output = gs.io.get_str_nr(key_str)
-#				output = gs.io.get_str_nr('help_basics')
-#			elif option == 'adjectives':
-#				output = gs.io.get_str_nr('help_adjectives')			
-#			elif option == 'prepositions':
-#				output = gs.io.get_str_nr('help_prepositions')
-#			elif option == 'read':
-#				output = gs.io.get_str_nr('help_read')
-#			elif option == 'attack':
-#				output = gs.io.get_str_nr('help_attack')
-#			elif option == 'creatures':
-#				output = gs.io.get_str_nr('help_creatures')
 			elif option == 'verbs':
 				output = "Available verbs include: " + ', '.join(gs.io.get_lst('known_verb_lst'))
 			elif option == 'one-word-commands':
