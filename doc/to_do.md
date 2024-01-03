@@ -268,7 +268,7 @@ Version 3.80 Goals
 		- DONE: for 'help one-word-commands': (including one_word_convert_lst)
 		- DONE: for 'too many words...' error (not including one_or_two_word_lst)
 	- INPROC: other word list tuning
-		- INPROC: improve code efficency of cmd_exe() help case
+		- DONE: improve code efficency of cmd_exe() help case
 		- TBD: update 'help basics' to include 'go north' => 'north'
 		- TBD: add 'restart' command to app_main (also to add to  pre_interp_word_lst)
 		- TBD: possibly eliminate use of secret word to trigger startup() ?
