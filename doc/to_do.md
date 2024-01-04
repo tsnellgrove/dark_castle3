@@ -269,10 +269,13 @@ Version 3.80 Goals
 		- DONE: for 'too many words...' error (not including one_or_two_word_lst)
 	- INPROC: other word list tuning
 		- DONE: improve code efficency of cmd_exe() help case
-		- TBD: update 'help basics' to include 'go north' => 'north'
-		- TBD: add 'restart' command to app_main (also to add to  pre_interp_word_lst)
+		- DONE: update 'help basics' to include 'go north' => 'north'
+		- TBD: add 'restart' command to app_main
+			- TBD: add 'restart' routine in app_main()
+			- TBD: in web_main(), key off output to reset start_of_game = True
+		 	- TBD: add restart to  pre_interp_word_lst
 		- TBD: possibly eliminate use of secret word to trigger startup() ?
-		- TBD: briefly document the purpose of interp list in-line in static_dict
+		- TBD: briefly document the purpose of interp lists in-line in static_dict
 		- TBD: add confirmation prompt for 'quit' and 'restart' ?
 
 - TBD: doc updates
