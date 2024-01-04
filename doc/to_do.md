@@ -270,10 +270,10 @@ Version 3.80 Goals
 	- INPROC: other word list tuning
 		- DONE: improve code efficency of cmd_exe() help case
 		- DONE: update 'help basics' to include 'go north' => 'north'
-		- TBD: add 'restart' command to app_main
-			- TBD: add 'restart' routine in app_main()
-			- TBD: in web_main(), key off output to reset start_of_game = True
-		 	- TBD: add restart to  pre_interp_word_lst
+		- DONE: add 'restart' command to app_main
+			- DONE: add 'restart' routine in app_main()
+			- DONE: in web_main(), key off output to reset start_of_game = True
+		 	- DONE: add restart to  pre_interp_word_lst
 		- TBD: possibly eliminate use of secret word to trigger startup() ?
 		- TBD: briefly document the purpose of interp lists in-line in static_dict
 		- TBD: add confirmation prompt for 'quit' and 'restart' ?
@@ -359,11 +359,15 @@ Version 3.80 Goals
 	- TBD: print_score() a method of the Score class
 	- TBD: instead of a dict of score achievements w/ T or F, just a list of score items achieved
 	- TBD: link front_gate score to opening door
+	- TBD: incorporate move count into score sub-class and create get_moves() method
+	- TBD: turn title calc into get_title() method as well (pull from ending() )
+	- TBD: add score, moves, and title to 'restart' ending (but this will impact web_main trigger...)
 
 
 *** end sub-class ***
 - TBD: make end routine a sub-class of gs
 - TBD: determine if any other gs clean-up is needed
+- TBD: incorporate 'restart' into game ending options
 
 
 

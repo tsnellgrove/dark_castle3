@@ -21,7 +21,7 @@ static_dict = {
 
 	'articles_lst' : ['a', 'an', 'the'],
 
-	'pre_interp_word_lst' : ['quit', 'wait', 'again'],
+	'pre_interp_word_lst' : ['quit', 'wait', 'again', 'restart'],
     
 	'one_word_secret_lst' : ['debug_poke53281,0'],
 

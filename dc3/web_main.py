@@ -21,6 +21,8 @@ while not end_of_game:
 		user_input = input('Type your command: ')
 	end_of_game, user_output = app_main(user_input)
 	print(user_output)
+	if user_output == "\nRestarting...\n":
+		start_of_game = True
 print("THANKS FOR PLAYING!!")
 
 

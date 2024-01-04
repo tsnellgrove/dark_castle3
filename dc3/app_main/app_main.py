@@ -34,9 +34,13 @@ def app_main(user_input):
 
 
 	### pre-interp word cases ('quit', 'again', 'wait') ###
-	if user_input.lower() == "quit" or user_input.lower() == "q":
+	if user_input.lower() == 'quit' or user_input.lower() == 'q':
 		gs.set_game_ending('quit')
 		end(gs)
+		return gs.get_end_of_game(), gs.io.get_buff()
+
+	if user_input.lower() == 'restart':
+		gs.io.buffer("Restarting...")
 		return gs.get_end_of_game(), gs.io.get_buff()
 
 	if user_input.lower() == 'again' or user_input.lower() == 'g':
