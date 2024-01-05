@@ -17,10 +17,12 @@ from dc3.app_turn.ending import end
 from dc3.app_turn.auto_action import auto_action
 
 ### loads game obj, calls other modules, and saves game obj ###
-def app_main(user_input):
+def app_main(user_input, start_of_game):
+# def app_main(user_input):
 
 	# start-up case
-	if user_input == "xyzzy42":
+#	if user_input == "xyzzy42":
+	if start_of_game == True:
 		end_of_game, user_output = start_me_up()
 		return end_of_game, user_output
 

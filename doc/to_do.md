@@ -274,7 +274,8 @@ Version 3.80 Goals
 			- DONE: add 'restart' routine in app_main()
 			- DONE: in web_main(), key off output to reset start_of_game = True
 		 	- DONE: add restart to  pre_interp_word_lst
-		- TBD: possibly eliminate use of secret word to trigger startup() ?
+		- TBD: possibly eliminate use of secret word to trigger startup()
+			- TBD: add start_of_game attribute to app_main()
 		- TBD: briefly document the purpose of interp lists in-line in static_dict
 		- TBD: add confirmation prompt for 'quit' and 'restart' ?
 
