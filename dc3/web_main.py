@@ -15,15 +15,10 @@ end_of_game = False
 start_of_game = True
 user_input = ""
 while not end_of_game:
-#	if start_of_game:
 	if not start_of_game:
-#		user_input = "xyzzy42"
-#		start_of_game = False
-#	else:
 		user_input = input('Type your command: ')
-#	end_of_game, user_output = app_main(user_input)
 	end_of_game, user_output = app_main(user_input, start_of_game)
-	start_of_game = False # new
+	start_of_game = False
 	print(user_output)
 	if user_output == "\nRestarting...\n":
 		start_of_game = True

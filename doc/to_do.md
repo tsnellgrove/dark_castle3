@@ -274,8 +274,10 @@ Version 3.80 Goals
 			- DONE: add 'restart' routine in app_main()
 			- DONE: in web_main(), key off output to reset start_of_game = True
 		 	- DONE: add restart to  pre_interp_word_lst
-		- TBD: possibly eliminate use of secret word to trigger startup()
-			- TBD: add start_of_game attribute to app_main()
+		- DONE: possibly eliminate use of secret word to trigger startup()
+			- DONE: add start_of_game attribute to app_main()
+			- DONE: eliminate magic word
+			- DONE: clean up comments
 		- TBD: briefly document the purpose of interp lists in-line in static_dict
 		- TBD: add confirmation prompt for 'quit' and 'restart' ?
 
@@ -286,6 +288,7 @@ Version 3.80 Goals
 	- TBD: [DOC] long-term DB strat
 	- TBD: [DOC] decisions to search for hero rather than cache location
 	- TBD: [DOC] update doc about where 2-word help is executed ( interp() => cmd_exe() )
+	- TBD: [DOC] eliminate ref to magic word
 
 - DONE: REVIEW OLD NOTES
 	- DONE: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
@@ -369,11 +372,15 @@ Version 3.80 Goals
 - TBD: make end routine a sub-class of gs
 - TBD: determine if any other gs clean-up is needed
 - TBD: incorporate 'restart' into game ending options
+- TBD: trigger restart based on end_of_game attribute rather than user_output
 
 
 
 
 *** minor bug-fix ***
+
+
+- maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
 
 - SOMEDAY / MAYBE:
 	- do we need user_input == secret word to trigger startup()? Can't we just pass boolean?
