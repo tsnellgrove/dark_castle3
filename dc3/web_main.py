@@ -13,11 +13,13 @@ from dc3.app_main.app_main import app_main
 ### main routine
 end_of_game = False
 start_of_game = True
+user_input = ""
 while not end_of_game:
-	if start_of_game:
-		user_input = "xyzzy42"
+#	if start_of_game:
+	if not start_of_game:
+#		user_input = "xyzzy42"
 #		start_of_game = False
-	else:
+#	else:
 		user_input = input('Type your command: ')
 #	end_of_game, user_output = app_main(user_input)
 	end_of_game, user_output = app_main(user_input, start_of_game)
