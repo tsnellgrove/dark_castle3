@@ -267,7 +267,7 @@ Version 3.80 Goals
 	- DONE: incorporate multiple word lists: 
 		- DONE: for 'help one-word-commands': (including one_word_convert_lst)
 		- DONE: for 'too many words...' error (not including one_or_two_word_lst)
-	- INPROC: other word list tuning
+	- DONE: other word list tuning
 		- DONE: improve code efficency of cmd_exe() help case
 		- DONE: update 'help basics' to include 'go north' => 'north'
 		- DONE: add 'restart' command to app_main
@@ -278,8 +278,7 @@ Version 3.80 Goals
 			- DONE: add start_of_game attribute to app_main()
 			- DONE: eliminate magic word
 			- DONE: clean up comments
-		- TBD: briefly document the purpose of interp lists in-line in static_dict
-		- TBD: add confirmation prompt for 'quit' and 'restart' ?
+		- CANCEL: briefly document the purpose of interp lists in-line in static_dict
 
 - TBD: doc updates
 	- TBD: [DOC] purpose of dyn_dict
@@ -379,6 +378,9 @@ Version 3.80 Goals
 
 *** minor bug-fix ***
 
+- TBD: add confirmation prompt for 'quit' and 'restart' ?
+	- IDEA: do check in web_main() based on returned exit_req value
+	- IDEA: if exit_req: validate_exit = (Y/N); if validate_exit => end_of_game = True
 
 - maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
 
