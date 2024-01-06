@@ -175,6 +175,16 @@ Brief history of validate():
     For both these reasons, validate() was inserted between interp() and pre_action() during refactoring. The idea is that every command is inspected in validate() and, if invalid, an error message is presented, validate() returns False, time is not incremented, and we ask the player for new input. We only ever reach cmd_exe() if validate() returns True.
 
 
+###############
+# gs_class_def.py #
+###############
+
+*** Module Documentation ***
+Overview:
+Implementation Detail:
+Historic Note:
+
+
 ####################
 # map_class_def.py #
 ####################
@@ -186,6 +196,8 @@ Stores the over-arching map of Dark Castle and provides methods for accessing an
 
 Implementation Detail:
 map_lst is stored in GameState (rather than being a constant declared in the class) to allow for major terrain changes. For example, after a major cave-in the room description might change dramatically and three new passages might open up. One could make all these updates to the original room - but it would be far easier just to redirect to a new room. The most famous example of this behavior is the magic pencil used at the end of The Lurking Horror / Enchanter.
+
+map_class_def() is also the home for any method that requires searching the entire map for an object. There are several search methods but get_hero_rm() is the most commonly used. Before becomeing gs.io.get_hero_rm() this method was previously gs.get_room(). It's only purpose is to search the map for hero (i.e. Burt) and return the room that he resides in. This generates a lot of extra work since it needs to be run nearly every 'turn' and and could very easily be cached. This is similar to the situation with searching for objects that don't know what container they're in - but is by far the most common case. My thinking is to start of with a data normalization approach... and then de-normalizer (i.e. cache) for performance purposes down the road. So likely, hero_rm will eventually become an attribute of map.
 
 Historic Note:
 Before refactoring, map_dict was an attribute of GameState and was a dictionary-of-dictionaries that was keyed off room and direction and returned next_room ast a value. Room.floor_lst contained doors and Room had an attribute, door_dict, that was keyed off direction and returned a door as its value. 
@@ -346,7 +358,7 @@ The eventual solution was the concept of 'room pairs' - the idea that the whole 
 		
 		But what if we want to dynamically generate a description *once* and then be able to reference it again in the future? An example of this is the 'secret code' on the guard_goblin's torn_note. We generate a random value between 0 and 7 for the iron_portcullis at the beginning of the game in start_up() and save that value to control_panel state... but how do we store the description for messy_handwriting? There are only 8 possible values so we could have 8 static dictionary entries in static_dict - but a general solution to the problem seems desireable. My approach is to keep a small dyn_dict in GameState where it is saved every turn. Then whenever we examine() or read() we try looking up obj.descript_key in dyn_dict first. If this fails, then we check the static static_dict. Hence the need for get_str() in IO.
 
-		In the initial implementation of get_str(), only read() and examine() called get_str(). Many other methods simply accessed static_dict[] directly. During the creation of the IO subclass (v3.80) get_str() was moved from the Writing class to the IO class and all static_dict[] refs were reidirected to io.get_str(). The goal here was to abstract the static data layer so that it can be changed to multiple dictionaries or a database as needed in the future.
+		In the initial implementation of get_str(), only read() and examine() called get_str(). Many other methods simply accessed static_dict[] directly. During the creation of the IO subclass (v3.80) get_str() was moved from the Writing class to the IO class and all static_dict[] refs were reidirected to io.get_str(). The goal here was to abstract the static data layer so that it can be changed to multiple dictionaries or a database as needed in the future. My current, long-term, persistance strategy is to eventually store all dynamic data (i.e. object attribute values and the contents of dyn_dict) in a NoSQL DB and keep the static content in a single large dictionary - but this plan could evolve.
 
 
 - read() method [Writing class]:
