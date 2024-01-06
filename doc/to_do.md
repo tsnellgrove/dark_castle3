@@ -281,9 +281,9 @@ Version 3.80 Goals
 		- CANCEL: briefly document the purpose of interp lists in-line in static_dict
 
 - TBD: doc updates
-	- TBD: [DOC] purpose of dyn_dict
-	- TBD: [DOC] thinking behind isolating static_dict from dyn_dict
-	- TBD: [DOC] IO abstraction allows for changes in static_dict structure in the future with minimal impact
+	- DONE: [DOC] purpose of dyn_dict
+	- DONE: [DOC] thinking behind isolating static_dict from dyn_dict
+	- DONE: [DOC] IO abstraction allows for changes in static_dict structure in the future with min impact
 	- TBD: [DOC] long-term DB strat
 	- TBD: [DOC] decisions to search for hero rather than cache location
 	- TBD: [DOC] update doc about where 2-word help is executed ( interp() => cmd_exe() )
