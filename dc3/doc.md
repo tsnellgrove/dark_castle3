@@ -107,12 +107,23 @@ CODING SPECIFICS:
 	- Was very conflicted re balance between less repitition vs. less readible & less customizable; Pondering
 	- The code was more readable & customizable before; maybe implement a simple boolean function instead
 
-- Moving the help() function to interpreter()
-	- The macro organization of the program is for interpreter() to interpret the players intent and for cmd_exe() to execute it
-	- However, at the module level, the idea is that the interpreter() module is uniquely focussed on language semantics
-	- The help() function is also (mostly) focussed on language semantics - specificly exposing them to the player
-	- Moving help() to interpreter() also enables us to make all the static lists and dictionaries local to interpreter()
-	- The balance between module-level structure and macro-program flow seems best served by moving the help() function to interpreter()
+- Moving the help() routine to cmd_exe():
+	- During the creation of the IO sub-class (v3.80), I decided to centralize static data - including the word lists and dictionaries in interpreter() - to static_gbl.py and access it via get_str(), get_lst(), and get_dict() in IO. 
+		- In the future, this will make it much easier to update the word lists / dicts via developer tooling
+		- It also makes it easy to move the help() routine to cmd_exe() where it really belongs.
+	- Historic info on the previous location of the help() routine:
+		- Moving the help() function to interpreter():
+			- The macro organization of the program is for interpreter() to interpret the players intent and for cmd_exe() to execute it
+			- However, at the module level, the idea is that the interpreter() module is uniquely focussed on language semantics
+			- The help() function is also (mostly) focussed on language semantics - specificly exposing them to the player
+			- Moving help() to interpreter() also enables us to make all the static lists and dictionaries local to interpreter()
+			- The balance between module-level structure and macro-program flow seems best served by moving the help() function to interpreter()
+
+- Elimination of the 'magic word' ('xyzzy') trigger for startup()
+	- Before v3.80 (where the IO su b-class was implemented), I only passed user_input from web_main() to app_main(). In web_main(), I checked to see if start_of_game was True and, if so, set user_input to a secret command ('xyzzy42') which then triggered calling startup() from app_main(). This had felt fun and clever and easter-egg-y... but ultimately it was sloppy code.
+	- During v3.80 I tightend things up and just passed start_of_game to app_main().
+	- I'm currently (v3.80) still processing the 'restart' command in web_main based on the user_output string and intend to fix this soon when I create the Ending as a subclass.
+	- The moral of the story here is, where possible, trigger on variables, not strings.
 
 DECISION: keep all the smarts in machine; lever only knows if it's up or down
 DECISION: prefer shallow class inheritance tree over deep

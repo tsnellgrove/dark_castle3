@@ -280,14 +280,16 @@ Version 3.80 Goals
 			- DONE: clean up comments
 		- CANCEL: briefly document the purpose of interp lists in-line in static_dict
 
-- INPROC: doc updates
+- DONE: doc updates
 	- DONE: [DOC] purpose of dyn_dict
 	- DONE: [DOC] thinking behind isolating static_dict from dyn_dict
 	- DONE: [DOC] IO abstraction allows for changes in static_dict structure in the future with min impact
 	- DONE: [DOC] long-term DB strat
 	- DONE: [DOC] decisions to search for hero rather than cache location
-	- TBD: [DOC] update doc about where 2-word help is executed ( interp() => cmd_exe() )
-	- TBD: [DOC] eliminate ref to magic word
+	- DONE: [DOC] update doc about where 2-word help is executed ( interp() => cmd_exe() )
+	- DONE: [DOC] eliminate ref to magic word
+
+### OLD NOTES RVIEWED IN V3.80 ###
 
 - DONE: REVIEW OLD NOTES
 	- DONE: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
@@ -347,6 +349,8 @@ Version 3.80 Goals
 		- DONE: gs holds list of smaller game state components? clock + scoreboard + map + printer ??
 		- DONE: modularize mk_def_pkl() and gs ( how about gs.sboard.get_score() )
 		- DONE: end() => gamestate ???
+
+### END OF OLD NOTES RVIEWED IN V3.80 ###
 
 
 # *** FUTURE TO DO *** #
