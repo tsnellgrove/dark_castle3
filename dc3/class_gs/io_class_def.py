@@ -1,6 +1,6 @@
-# program: dark castle v3.79
+# program: dark castle v3.80
 # name: Tom Snellgrove
-# date: Nov 22, 2023
+# date: Jan 7, 2024
 # description: class deffinition module for io
 
 ### import

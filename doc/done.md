@@ -4552,3 +4552,351 @@ Version 3.79 Goals
 			- DONE: def_pkl
 			- DONE: sav_pkl
 
+##########################
+### VERSION 3.80 START ###
+##########################
+
+Version 3.80 Goals
+- Refactor gbl_static and buffering
+- Create class just for io that abstracts the io process for the rest of the app
+
+- DONE: Pre-Planning:
+	- DONE: org all descript content into one place
+	- DONE: decide whether to use __getattr__ (link): 
+	- DONE: think through goals of centralized data from tools perspective
+	- DONE: think through isolation of static vs. dynamic data
+	- DONE: think through modularization of gs
+	- DONE: think through desire to modularize descriptions by Creature()
+	- DONE: research how to efficiently rename gs.io.buffer() => gs.<x>.buffer()
+		LINK: https://www.youtube.com/watch?v=M6EPqUctGrU
+
+- DONE: should static_dict actually be a tupple / namedtupple?
+	- DECISION: *NO* - because I do want to be able to alter Tupple entries with tool functions
+	- DECISION: I want static_gbl to be centralized for update purposes
+	- IDEA: maybe make static_dict() a class with return and update methods?
+
+- DONE: in app_main, rename out_buff => user_output
+
+- INPROC: centralize all static data into static_gbl.py
+	- IDEA: think through code vs. data separation for static text
+	- IDEA: imagine future adventure creation tooling where I update descriptions via a web front end
+	- IDEA: I won't want all the description in a DB - that's too much overhead...
+	- IDEA: But I will want all descriptions in one big centralized dictionary for ease of access & update
+	- DONE: to this end, investigate centralizing the following dicts:
+		- DONE: consolidate val_err_dict from validate() back to static_gbl() static_dict
+		- DONE: move interp() help_dict back to static_gbl() static_dict
+		- DONE: consolidate dir_err_dict from invisible() back to static_gbl() static_dict
+		- DONE: consolidate static_dict into static_dict
+			- DONE: static_gbl.py
+			- DONE: cmd_exe.py
+			- DONE: gs_class_def.py
+			- DONE: result_class_def.py
+		- DONE: End dict
+		- DONE: Score dictionary
+			- DONE: move score_val_dict to static_dict
+			- DONE: update score routines to call static_dict
+			- DONE: migrate item list to static_dict
+			- DONE: migrate room list to static_dict
+			- DONE: migrate wear list to static_dict
+		- DONE: check for other dictionaries to consolidate?
+			- DECISION: for now, keep interp() dicts local
+	- DONE: [DOC] error messages are hard to update - so I want them to be as generic as possible!
+	- DONE: [DOC] tooling plan / central dict
+
+- DONE: rename descript_dict => static_dict
+
+- DONE: should I make static_dict modular so that other dicts can be chosen? 
+	IDEA: helpful if I want to temporarily tell adventure from another persepctive
+	- TBD: [DOC] writing perspective (need to update doc):
+		- burt being a creature and all methods being rewritten to work with Creature class, we have a choice
+		- in theory, any creature could be used to play the game - each might have its own description_dict
+			- maybe each Creature has its own description list?
+			- desc list as creature attribute ???
+			- with a default examine() response similar to "the X is not interesting"
+			- this would be fun for a short session in a single room but is not practical for extended play
+		- realistically, nearly all descriptions will be from burt's perspective
+		- but in some cases creatures will use methods to take actions and burt will *obeserve* their actions
+		- CANCEL: this should be enabled by mode = 'exe_creature'
+	- DECISION: part of making verb methods 'symetric', 'creature' should be checked for in each method
+
+- DONE: create IO class
+	- DONE: create class IO
+	- DONE: add io as attribute of gs
+	- DONE: define io in mk_def_pkl()
+	- DONE: test
+
+- DONE: move dyn_dict to io
+	- DONE: add dyn_dict as attribute of IO class
+	- DONE: add get & set methods for dyn_dict
+	- DONE: add dyn_dict to attribute def of io in mk_def_pkl()
+	- DONE: update startup() to call gs.io.dyn_dict
+	- DONE: update base_class_def() to call gs.io.dyn_dict
+	- DONE: test
+	- DONE: clean-up gs_class_def(), mk_def_pkl(), startup(), base_class_def()
+
+- DONE: unify descript approach:
+	- DONE: investigate auto-gen entries in static_dict
+	- DONE: instantiate get_descript_str() in io
+	- DONE: redirect read() to gs.io.get_str()
+	- DONE: test
+	- DONE: redirect examine() to gs.io.get_str()
+	- DONE: test
+	- DONE: clean-up base_class_def()
+	- DONE: test exception case and also torn note case
+
+- DONE: think through a buff_d() method that auto-buffers the called description
+	- DECISION: Yes - this makes sense and leads to a natural link of descript & buffer
+
+- DONE: decide if descript & buffer should both be in io... or should each have its own sub-class?
+	- DECISION: yes, they belong together
+
+- DONE: migrate buffer() methods to io
+	- DONE: add buff_dict attribute to IO class
+	- DONE: update mk_def_pkl() with buff_dict definition
+	- DONE: update existing buff_get() and buff_reset() methods (in gs) to act on io.buff_dict
+	- DONE: update existing buffer methods (in gs) to action io.buff_dict
+	- DONE: test
+	- DONE: comment out gs.state_dict['out_buff']
+	- DONE: get_buff()
+		- DONE: create io method for get_buff
+		- DONE: update existing get_buff calls to point to io method
+			- DONE: app_main
+			- DONE: start_up
+		- DONE: test
+		- DONE: comment out gs.get_buff
+		- DONE: test
+		- DONE: clean up comments in gs, app_main, and start_up
+	- DONE: reset_buff()
+		- DONE: create io method for buff_reset
+		- DONE: update existing reset calls to point to io method
+			- DONE: app_main
+		- DONE: test
+		- DONE: comment out gs.reset_buff
+		- DONE: test
+		- DONE: clean-up comments in gs & app_main()
+	- DONE: std buffer() method in IO class
+		- DONE: create buffer method in IO class
+		- DONE: create unified buff_d() method in IO class
+		- DONE: update read() and examine() to call buff_d()
+		- DONE: test
+		- DONE: clean up comments in base_class_def()
+	- DONE: buffer calls
+		- DONE: investigate how to best update gs.io.buffer(static_dict['x']) calls
+		- DONE: maybe create an gs.io.buff_e() method for events (no 'ref' attribute needed)
+		- DONE: create buff_f() routine so that calling methods with failure fall-backs can use them
+		- DONE: update existing gs.io.buffer(static_dict['x']) with gs.io.buff_e('x')
+			- DONE: start_up()
+			- DONE: cmd_exe()
+			- DONE: ending()
+			- DONE: interp()
+			- DONE: invisible_class_def()
+			- DONE: creature_class_def()
+			- DONE: mach_class_def()
+			- DONE: result_class_def()
+			- 	DONE: sort out DoorToggle result with compound dict lookup and local buffer
+		- DONE: investigate whether remaining gs.io.buffer("x") calls can be mass-updated with io
+		- DONE: update existing buffer() calls to point to IO class
+	- DONE: custom buff calls
+		- DONE: migrate custom buffer() methods to IO class
+			- DONE: buff_no_cr()
+				- DONE: create in IO class
+				- DONE: test call in IO class
+				- DONE: find / replace calls gs.buff => gs.io.buff
+				- DONE: test run game
+			- DONE: buff_cr()
+				- DONE: create in IO class
+				- DONE: test call in IO class
+				- DONE: find / replace calls gs.buff => gs.io.buff
+				- DONE: test run game
+			- DONE: buff_s()
+				- DONE: create in IO class
+				- DONE: test call in IO class
+				- DONE: find / replace calls gs.buff => gs.io.buff
+				- DONE: test run game
+			- DONE: decide if buff_debug_err() stays or moves to io (will need to pass gs.debug if moves)
+				- DECISION: yes, migrate to buff_d() ; must pass 'debug' value
+			- DONE: buff_debug_err() => buff_dbg()
+				- DONE: create in IO class
+				- DONE: test call in IO class
+				- DONE: create gs.is_dbg()
+				- DONE: find / replace calls gs.buff => gs.io.buff
+				- DONE: test run game
+	- DONE: clean-up gs(), mk_def_pkl(), validate()
+	- DONE: normalize buff options
+		- DONE: reconsider integration of get_str() and buffer(); is it consistent??
+		- DONE: update buff_s() to check dyn_dict
+		- DONE: rename buff_s() => buff_s ['s' for silent failure]
+		- DONE: rename buff_f() => buff_f() ['f' for fail]
+		- DONE: review buff_f() cases and convert to buff_s() if failure state is pass
+			- DONE: convert buff_f()... pass => buff_s()
+			- DONE: test
+			- DONE: clean-up result_class_def()
+		- DONE: decide whether to rename buffer() => buff()
+			- DECISION: keep full name buffer() - is easier to distinguish from buff_x() options
+
+- DONE: eliminate direct calls to static_dict()
+	- DONE: investigate how many still exist (42 total)
+	- DONE: think through approach
+		- DECISION: migrate all text calls
+		- DECISION: leave dict & lst look-ups as is for now - resolve with end & score class migrations
+	- DONE: shorten get_str_no_ref() => get_str_nr()
+	- DONE: centralize all text-based static_dict calls to gs.io.get_str_nr() method
+		- DONE: interp()
+		- DONE: creature()
+	- DONE: create list & dict lookups for score & ending
+		- DONE: create get_dict_val() in IO class
+		- DONE: replace direct calls to static_dict dicts
+		- DONE: create get_lst in IO class
+		- DONE: replace direct calls to static_dict lists
+	- DONE: clean up unneeded imports of static_gbl()
+	- DONE: fix result_class() and creature() calls of static_dict
+		- DONE: create chk_str_exist()
+		- DONE: result_class_def()
+		- DONE: creature()
+		- DONE: clean up imports of static_dict
+
+- DONE: review old notes and determine which, if any, still need to be done
+
+- DONE: long over-due game_state clean-up
+	- DONE: rename gs_class => gs
+	- DONE: finally fix get_room => rename and move to gs.map
+		- DONE: create get_hero_rm(self, gs) in gs.map
+		- DONE: test redirect gs.map.get_hero_rm(gs) calls to gs.io.get_hero_rm() [in score()]
+		- DONE: migrate all calls to gs.io.get_hero_rm()
+		- DONE: clean-up gs.map.get_hero_rm(gs)
+	- DONE: how can sub-classes (IO & Map) call to main class (GameState) [e.g. buff_dbg()]
+		- FINDING: just need to pass gs
+		- DONE: update io.buff_dbg() => io.buff_dbg(gs)
+
+- DONE: new IO-based features:
+	- DONE: Cache last user input and enable 'again' / 'g' command
+		- CANCEL: create gs.io.set_prev_buff()
+		- CANCEL: call gs.io.set_prev_buff() from end of app_main()
+		- IDEA: need to cach input, not output!!!
+		- DONE: add 'again' to one_word list; add 'g' to abbreviations_dict (both in interp())
+		- DONE: add last_input_str as attribute of gs.io
+		- DONE: update app_main() to set gs.io.last_input_str
+		- DONE: handle 'again' case in app_main (below gs assignment & quit but above set for last_input_str)
+		- DONE: test (fails to cache commands that gen errors; e.g. 's', 'g', 'n', 'g'; does not cache 'n')
+			- SOLVED: needed to save obj state on valid_cmd == False in order to cach last_input_str
+			- IDEA: this is too bad - I liked forced statelessness for invalid cmds - but no way around it
+		- DONE: clean up 'again' one_word and 'g' abreviation
+		- DONE: re-add 'again' and 'g' to interp() lists to enable help documentation
+		- DONE: clean up set_pre_buff (in gs.io) and set_prev_buff() call (in app main)
+		- DONE: clean up 'again' case in interp()
+		- DONE: updated buffer to be a str rather than a dict ?
+	- DONE: Enable 'wait' / 'z' command
+		- DONE: wait command, in app_main... but only process auto_action() & move_incr ??
+		- DONE: need to include 'wait' & 'z' in interp() lists for help doc
+		- DONE: testing
+
+- INPROC: fix some interp() / help() aspects (revisit why 'help' is in interp() )
+	- DONE: copy lists & dicts from interp() to static_dict
+	- DONE: call static_dict interp lists & dict
+		- DONE: articles_lst
+		- DONE: known_verbs_lst
+		- DONE: debug_verb_lst
+		- DONE: abbreviations_dict
+		- DONE: one_word_only_lst
+		- DONE: one_word_convert_lst
+	- DONE: move help() funtion to cmd_exe()
+	- IDEA: do we really need the start-up command as a defined 'one-word-command' ?
+		- DONE: eliminate secret start-up code from one_word_only_lst
+	- IDEA: lots of specific lists
+		- DONE: create one_or_two_word_lst ('help')
+		- DONE: pre_interp_word_lst ('quit', 'wait', 'again')
+		- DONE: one_word_secret_lst ('debug_poke53281,0)
+	- DONE: use cmd_exe() help case for 1-word-help but check for 1 word option first
+	- DONE: check on one_word_only_list + one_word_secret_lst on interp() one-word-only case
+	- DONE: fix 'wait'
+		- DONE: implement 'wait' in app main pre-interp()
+		- DONE: remove 'wait' from one_word_only_lst
+		- DONE: convert pre-interp commands to lower case
+		- DONE: enable 'again' of 'wait' => fix user_input_lc assignment!!
+	- DONE: incorporate multiple word lists: 
+		- DONE: for 'help one-word-commands': (including one_word_convert_lst)
+		- DONE: for 'too many words...' error (not including one_or_two_word_lst)
+	- DONE: other word list tuning
+		- DONE: improve code efficency of cmd_exe() help case
+		- DONE: update 'help basics' to include 'go north' => 'north'
+		- DONE: add 'restart' command to app_main
+			- DONE: add 'restart' routine in app_main()
+			- DONE: in web_main(), key off output to reset start_of_game = True
+		 	- DONE: add restart to  pre_interp_word_lst
+		- DONE: possibly eliminate use of secret word to trigger startup()
+			- DONE: add start_of_game attribute to app_main()
+			- DONE: eliminate magic word
+			- DONE: clean up comments
+		- CANCEL: briefly document the purpose of interp lists in-line in static_dict
+
+- DONE: doc updates
+	- DONE: [DOC] purpose of dyn_dict
+	- DONE: [DOC] thinking behind isolating static_dict from dyn_dict
+	- DONE: [DOC] IO abstraction allows for changes in static_dict structure in the future with min impact
+	- DONE: [DOC] long-term DB strat
+	- DONE: [DOC] decisions to search for hero rather than cache location
+	- DONE: [DOC] update doc about where 2-word help is executed ( interp() => cmd_exe() )
+	- DONE: [DOC] eliminate ref to magic word
+
+### OLD NOTES RVIEWED IN V3.80 ###
+
+- DONE: REVIEW OLD NOTES
+	- DONE: how to make get_descript_str() [which has a default response] work with auto-gen descript keys [which depend on the possibility of failure]? Need a consistent solution
+		- DONE: call with key and return string; will look like gs.descript(key)
+		- CANCEL: all autogen keys & vals live in autogen_dict and are pre-fixed with "ag_" (note: the defining feature of autogen keys = try: buffer() ) => consolidate to central dict
+	- CANCEL: Can autogen key try be incorporated into Descript method??
+		- CANCEL: refactor static_dict 
+		- CANCEL: idea was to store (static_dict), autogen_dict (new) and dynamic_dict in Descript class
+		- CANCEL: with descript instantiation; i.e. create a gs class (gs_active.io) for descriptions
+		- CANCEL: have decided to keep static_gbl.py independent
+		- CANCEL: static_dict and autogen_dict live in class
+		- CANCEL: dynamic_dict is lone class attribute and is instantiated in mk_def_pkl()
+
+	- DONE: i.o. sub-class:
+		- DONE: want an i.o. subclass that stores dyn descriptsions (gs today) and had methods to get descriptions (in base() today) / dyn-descripts (in gs today) and also performs all buffering (in gs today); Would point to universal, centralized static dict (static_gbl)
+		- DONE: refactor buffer type commands into gs.io
+		- DONE: refactor buffer and caching to gs.io
+		- DONE: out_buff => user_output
+		- DONE: Use guard pattern and check dicts in this order
+			- 1) in dynamic_dict
+			- 2) starts with "ag_" => autogen_dict (no "try", allow failure)
+			- 3) try static_dic except f"the {obj.full_name} is simply indescribable"
+
+	- CANCEL: alternate descript return ideas for alternate, noun-based methods
+		- DECISION: this was a clever idea but actual language is not so symetric
+		- CANCEL: test w/ static_dict => start with version 
+		- CANCEL: can compound noun methods be created?
+		- CANCEL: think abour 'source' and 'desination'... 
+		- CANCEL: e.g. for take(), source = is_item in <room>.obj_scope; destination = <creature>.hand_lst
+		- CANCEL: need to do a detailed mapping of what is required for success in each noun_class() method
+		- CANCEL: this would allow give() to become a noun class method... a take() initiated by burt
+		- CANCEL: likewise, show() becomes an examine initiated by burt
+		- CANCEL: change goblin re-arm result to take() rather than put_in_hand()
+
+	- DONE: more gs sub-class ideas:
+		- DONE: rename gs to gs
+		- DONE: modularize remaining GameState class and declarations (???)
+		- DONE: perhaps Map, Score, and Descript are classes w/ static dicts in mehod / class and actual obj in gs attributes
+		- DONE: Refactor dicts
+			- DONE: refactor gs.map
+				- gs will have map as an attribute
+				- subclass map_dict
+			- CANCEL: methods:
+				- next room
+				- use dict keys to search for item in game world (see score() )
+				- return room burt is in
+
+		- DONE: auto-gen keys
+			- DONE: consider auto-gen keys for all verb methods (probably not)
+			- DONE: Organize auto-gen keys together
+			- CANCEL: consider creating a separate dict for autogen keys
+
+		- DONE: refactor hero to gs.hero
+			- AGREE: get_room() method belongs to this class ?? (or pass gs to gs.map and move get_room there ??)
+	- DONE: email to self on Aug 2, 2022)
+		- DONE: gs => gs renaming; point to same obj to start with ??
+		- DONE: gs holds list of smaller game state components? clock + scoreboard + map + printer ??
+		- DONE: modularize mk_def_pkl() and gs ( how about gs.sboard.get_score() )
+		- DONE: end() => gamestate ???
+
+### END OF OLD NOTES RVIEWED IN V3.80 ###

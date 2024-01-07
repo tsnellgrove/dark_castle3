@@ -1,6 +1,6 @@
-# program: dark castle v3.79
+# program: dark castle v3.80
 # name: Tom Snellgrove
-# date: Oct 31, 2023
+# date: Jan 7, 2024
 # description: provides mix in classes for interactive objects
 
 ### import statements
