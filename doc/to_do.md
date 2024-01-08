@@ -10,25 +10,25 @@ Version 3.81 Goals
 - Create gamestate sub-class just for scoring & turn count
 - Refactor score sub-class to make it more efficient
 
-- TBD: Problem definition
+- DONE: Problem definition
 	- Review and order all existing notes
 
-
-*** score sub-class ***
-- TBD: update score achievement dict in gs => list that starts empty and holds achieved score items
-- TBD: figure out way to capture custom score pts via standard lists that reside in static_dict
-- TBD: LOT of opportunity for code optimization in score()!
-
-- TBD: refactor score
-	- TBD: determine max_score from sum of all possible scores?
+- INPROC: migrate score to sub-class of gs:
+	- INPROC: create score sub-class
 	- TBD: score = class with object being attribute in gs
-	- TBD: print_score() a method of the Score class
-	- TBD: instead of a dict of score achievements w/ T or F, just a list of score items achieved
-	- TBD: link front_gate score to opening door
-	- TBD: incorporate move count into score sub-class and create get_moves() method
-	- TBD: turn title calc into get_title() method as well (pull from ending() )
-	- TBD: add score, moves, and title to 'restart' ending (but this will impact web_main trigger...)
+	- TBD: print_score() a method of the Score class	
 
+- TBD: refactor score() code:
+	- TBD: update score achievement dict in gs => list that starts empty and holds achieved score items
+	- TBD: instead of a dict of score achievements w/ T or F, just a list of score items achieved
+	- TBD: LOT of opportunity for code optimization in score()!
+	- TBD: determine max_score from sum of all possible scores?
+	- TBD: migrate score lists / dicts to gbl_static()
+	- TBD: figure out way to capture custom score pts via standard lists that reside in static_dict
+	- TBD: incorporate move count into score sub-class and create get_moves() method
+	- TBD: migrate title to score()
+	- TBD: turn title calc into get_title() method as well (pull from ending() )
+	- TBD: link front_gate score to opening door (???)
 
 
 # *** FUTURE TO DO *** #
@@ -39,7 +39,9 @@ Version 3.81 Goals
 - TBD: make end routine a sub-class of gs
 - TBD: determine if any other gs clean-up is needed
 - TBD: incorporate 'restart' into game ending options
+- TBD: add score, moves, and title to 'restart' ending (but this will impact web_main trigger...)
 - TBD: trigger restart based on end_of_game attribute rather than user_output
+
 
 
 
