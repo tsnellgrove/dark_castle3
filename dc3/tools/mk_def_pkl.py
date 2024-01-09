@@ -28,6 +28,7 @@ from dc3.class_std.creature_class_def import Creature
 from dc3.class_gs.gs_class_def import GameState
 from dc3.class_gs.map_class_def import Map
 from dc3.class_gs.io_class_def import IO
+from dc3.class_gs.score_class_def import Score
 
 # *** object instantiation - starting state ***
 
@@ -294,6 +295,8 @@ io = IO('io', # name
 		"" # last_input_str
 		)
 
+score = Score('score')
+
 # *** Hierarchy-Based Object Re-assignment ***
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog
@@ -336,6 +339,7 @@ gs = GameState(
 	},
 	map,
 	io,
+	score,
 	burt
 )
 

@@ -8,15 +8,20 @@
 
 ### classes
 class Score(object):
-	
-    # TBD attributes including name; then setters & getters
+	def __init__(self, name):
+		self._name = name # name of obj
 
-    def score(gs):
+	### setters & getters ###
+	@property
+	def name(self):
+		return self._name
+
+    ### score methods ###
+def score(self, gs):
         room_obj = gs.map.get_hero_rm(gs)
         creature = gs.hero
 
         # increment item scores
-    #	for score_key in static_dict['item_score_lst']:
         for score_key in gs.io.get_lst('item_score_lst'):
             if (not creature.hand_is_empty() and creature.get_hand_item().name == score_key
                     and gs.get_points_earned_state(score_key) == False):
@@ -26,7 +31,6 @@ class Score(object):
                 gs.print_score()
 
         # increment worn scores
-    #	for score_key in static_dict['worn_score_lst']:
         for score_key in gs.io.get_lst('worn_score_lst'):
             worn_lst = creature.worn_lst
             if len(worn_lst) > 0:
@@ -38,7 +42,6 @@ class Score(object):
                         gs.print_score()
 
         # increment room scores
-    #	for score_key in static_dict['room_score_lst']:
         for score_key in gs.io.get_lst('room_score_lst'):
             if (room_obj.name == score_key and gs.get_points_earned_state(score_key) == False):
                 points = gs.io.get_dict_val('score_val', score_key)
