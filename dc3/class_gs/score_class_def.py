@@ -8,16 +8,22 @@
 
 ### classes
 class Score(object):
-	def __init__(self, name):
-		self._name = name # name of obj
+    def __init__(self, name):
+        self._name = name # name of obj
 
 	### setters & getters ###
-	@property
-	def name(self):
-		return self._name
+    @property
+    def name(self):
+        return self._name
 
     ### score methods ###
-def get_score(self, gs):
+    def print_points(self, gs, score_key):
+        points = gs.io.get_dict_val('score_val', score_key)
+        gs.update_score(points)
+        gs.set_points_earned_state(score_key, True)
+        gs.print_score()
+
+    def get_score(self, gs):
         room_obj = gs.map.get_hero_rm(gs)
         creature = gs.hero
 
@@ -25,10 +31,11 @@ def get_score(self, gs):
         for score_key in gs.io.get_lst('item_score_lst'):
             if (not creature.hand_is_empty() and creature.get_hand_item().name == score_key
                     and gs.get_points_earned_state(score_key) == False):
-                points = gs.io.get_dict_val('score_val', score_key)
-                gs.update_score(points)
-                gs.set_points_earned_state(score_key, True)
-                gs.print_score()
+                self.print_points(gs, score_key)
+#                points = gs.io.get_dict_val('score_val', score_key)
+#                gs.update_score(points)
+#                gs.set_points_earned_state(score_key, True)
+#                gs.print_score()
 
         # increment worn scores
         for score_key in gs.io.get_lst('worn_score_lst'):

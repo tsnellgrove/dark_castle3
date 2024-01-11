@@ -75,8 +75,8 @@ def app_main(user_input, start_of_game):
 	if not cmd_override:
 		cmd_execute(gs, case, word_lst)
 	post_action(gs, case, word_lst)
-	score(gs)
-#	gs.score.get_score(gs)
+#	score(gs)
+	gs.score.get_score(gs)
 	if gs.get_game_ending() != "tbd":
 		end(gs)
 	auto_action(gs)

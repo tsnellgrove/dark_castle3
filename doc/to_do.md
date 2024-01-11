@@ -17,10 +17,16 @@ Version 3.81 Goals
 	- DONE: create score sub-class
 	- DONE: add score as attribute of gs
 	- DONE: in mk_def_pkl(): import Score, define score of class Score, add score as attribute of gs
-	- INPROC: call gs.score.get_score(gs)
-	- TBD: fix strange indent error in Score class
+	- DONE: call gs.score.get_score(gs)
+		- DONE: fix strange indent error in Score class (had to replace initial tabs with 4-space tabs)
+	- INPROC: refactor get_score()
+		- INPROC: apply code re-use
+		- TBD: 
 	- TBD: score = class with object being attribute in gs
-	- TBD: print_score() a method of the Score class	
+	- TBD: print_score() a method of the Score class
+	- TBD: clean-up
+		- TBD: elim score() call in app_main()
+		- TBD: score.py => legacy folder
 
 - TBD: refactor score() code:
 	- TBD: update score achievement dict in gs => list that starts empty and holds achieved score items
