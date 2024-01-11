@@ -17,7 +17,7 @@ Version 3.81 Goals
 	- DONE: create score sub-class
 	- DONE: add score as attribute of gs
 	- DONE: in mk_def_pkl(): import Score, define score of class Score, add score as attribute of gs
-	- TBD: call gs.score.score(gs)
+	- INPROC: call gs.score.get_score(gs)
 	- TBD: fix strange indent error in Score class
 	- TBD: score = class with object being attribute in gs
 	- TBD: print_score() a method of the Score class	

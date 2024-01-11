@@ -17,7 +17,7 @@ class Score(object):
 		return self._name
 
     ### score methods ###
-def score(self, gs):
+def get_score(self, gs):
         room_obj = gs.map.get_hero_rm(gs)
         creature = gs.hero
 
