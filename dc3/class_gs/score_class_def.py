@@ -43,10 +43,11 @@ class Score(object):
             if len(worn_lst) > 0:
                 for garment in worn_lst:
                     if (garment.name == score_key and gs.get_points_earned_state(score_key) == False):
-                        points = gs.io.get_dict_val('score_val', score_key)
-                        gs.update_score(points)
-                        gs.set_points_earned_state(score_key, True)
-                        gs.print_score()
+                        self.print_points(gs, score_key)
+#                        points = gs.io.get_dict_val('score_val', score_key)
+#                        gs.update_score(points)
+#                        gs.set_points_earned_state(score_key, True)
+#                        gs.print_score()
 
         # increment room scores
         for score_key in gs.io.get_lst('room_score_lst'):
