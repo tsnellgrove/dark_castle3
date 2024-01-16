@@ -12,7 +12,6 @@ from dc3.app_turn.validate import validate
 from dc3.app_turn.pre_action import pre_action
 from dc3.app_turn.cmd_exe import cmd_execute
 from dc3.app_turn.post_action import post_action
-from dc3.app_turn.score import score
 from dc3.app_turn.ending import end
 from dc3.app_turn.auto_action import auto_action
 
@@ -75,7 +74,6 @@ def app_main(user_input, start_of_game):
 	if not cmd_override:
 		cmd_execute(gs, case, word_lst)
 	post_action(gs, case, word_lst)
-#	score(gs)
 	gs.score.get_score(gs)
 	if gs.get_game_ending() != "tbd":
 		end(gs)

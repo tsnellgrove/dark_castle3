@@ -32,10 +32,6 @@ class Score(object):
             if (not creature.hand_is_empty() and creature.get_hand_item().name == score_key
                     and gs.get_points_earned_state(score_key) == False):
                 self.print_points(gs, score_key)
-#                points = gs.io.get_dict_val('score_val', score_key)
-#                gs.update_score(points)
-#                gs.set_points_earned_state(score_key, True)
-#                gs.print_score()
 
         # increment worn scores
         for score_key in gs.io.get_lst('worn_score_lst'):
@@ -44,36 +40,20 @@ class Score(object):
                 for garment in worn_lst:
                     if (garment.name == score_key and gs.get_points_earned_state(score_key) == False):
                         self.print_points(gs, score_key)
-#                        points = gs.io.get_dict_val('score_val', score_key)
-#                        gs.update_score(points)
-#                        gs.set_points_earned_state(score_key, True)
-#                        gs.print_score()
 
         # increment room scores
         for score_key in gs.io.get_lst('room_score_lst'):
             if (room_obj.name == score_key and gs.get_points_earned_state(score_key) == False):
                 self.print_points(gs, score_key)
-#                points = gs.io.get_dict_val('score_val', score_key)
-#                gs.update_score(points)
-#                gs.set_points_earned_state(score_key, True)
-#                gs.print_score()
 
         # custom scoring
         score_key = 'hedgehog_attack'
         if (not gs.map.chk_name_exist('royal_hedgehog') and gs.get_points_earned_state(score_key) == False):
             self.print_points(gs, score_key)
-#            points = gs.io.get_dict_val('score_val', score_key)
-#            gs.update_score(points)
-#            gs.set_points_earned_state(score_key, True)
-#            gs.print_score()
 
         score_key = 'goblin_dead'
         if (gs.map.chk_name_exist('dead_goblin') and gs.get_points_earned_state(score_key) == False):
             self.print_points(gs, score_key)
-#            points = gs.io.get_dict_val('score_val', score_key)
-#            gs.update_score(points)
-#            gs.set_points_earned_state(score_key, True)
-#            gs.print_score()
 
         score_key = 'game_won'
         game_ending = gs.get_game_ending()

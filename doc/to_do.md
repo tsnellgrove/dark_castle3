@@ -21,24 +21,27 @@ Version 3.81 Goals
 		- DONE: fix strange indent error in Score class (had to replace initial tabs with 4-space tabs)
 	- INPROC: refactor get_score()
 		- DONE: apply code re-use
-		- TBD: 
+		- TBD: figure out way to capture custom score pts via standard lists that reside in static_dict
+		- TBD: update score dict in gs => list that starts empty and holds achieved score items
+		- TBD: instead of a dict of score achievements w/ T or F, just a list of score items achieved
+		- TBD: LOT of opportunity for code optimization in score()!
+
 	- TBD: score = class with object being attribute in gs
 	- TBD: print_score() a method of the Score class
 	- TBD: clean-up
-		- TBD: elim score() call in app_main()
 		- TBD: score.py => legacy folder
 
 - TBD: refactor score() code:
-	- TBD: update score achievement dict in gs => list that starts empty and holds achieved score items
-	- TBD: instead of a dict of score achievements w/ T or F, just a list of score items achieved
-	- TBD: LOT of opportunity for code optimization in score()!
 	- TBD: determine max_score from sum of all possible scores?
 	- TBD: migrate score lists / dicts to gbl_static()
-	- TBD: figure out way to capture custom score pts via standard lists that reside in static_dict
 	- TBD: incorporate move count into score sub-class and create get_moves() method
 	- TBD: migrate title to score()
 	- TBD: turn title calc into get_title() method as well (pull from ending() )
+
+- TBD: additional ideas:
 	- TBD: link front_gate score to opening door (???)
+	- IDEA: seems ineficient to check every turn for every point... 
+	- IDEA: can I bake scoring into verb methods (e.g. take, go, attack, open)
 
 
 # *** FUTURE TO DO *** #
