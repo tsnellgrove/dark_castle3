@@ -20,7 +20,7 @@ Version 3.81 Goals
 	- DONE: call gs.score.get_score(gs)
 		- DONE: fix strange indent error in Score class (had to replace initial tabs with 4-space tabs)
 	- INPROC: refactor get_score()
-		- INPROC: apply code re-use
+		- DONE: apply code re-use
 		- TBD: 
 	- TBD: score = class with object being attribute in gs
 	- TBD: print_score() a method of the Score class
