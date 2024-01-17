@@ -46,14 +46,19 @@ class Score(object):
             if (room_obj.name == score_key and gs.get_points_earned_state(score_key) == False):
                 self.print_points(gs, score_key)
 
-        # custom scoring
-        score_key = 'hedgehog_attack'
-        if (not gs.map.chk_name_exist('royal_hedgehog') and gs.get_points_earned_state(score_key) == False):
-            self.print_points(gs, score_key)
+        # obj not in game scores
+        for score_key in gs.io.get_lst('obj_in_game_lst'):
+            if (not gs.map.chk_name_exist(score_key) and gs.get_points_earned_state(score_key) == False):
+                self.print_points(gs, score_key)
 
-        score_key = 'goblin_dead'
-        if (gs.map.chk_name_exist('dead_goblin') and gs.get_points_earned_state(score_key) == False):
-            self.print_points(gs, score_key)
+        # custom scoring
+#        score_key = 'hedgehog_attack'
+#        if (not gs.map.chk_name_exist('royal_hedgehog') and gs.get_points_earned_state(score_key) == False):
+#            self.print_points(gs, score_key)
+
+#        score_key = 'goblin_dead'
+#        if (gs.map.chk_name_exist('dead_goblin') and gs.get_points_earned_state(score_key) == False):
+#            self.print_points(gs, score_key)
 
         score_key = 'game_won'
         game_ending = gs.get_game_ending()
@@ -62,3 +67,4 @@ class Score(object):
             gs.update_score(points)
 
         return
+    

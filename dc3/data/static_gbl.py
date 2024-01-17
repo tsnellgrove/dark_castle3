@@ -77,8 +77,10 @@ static_dict = {
 		'royal_crown' : 10,
 		'hedgehog_broach' : 5,
 		'hedgehog_attack' : -20,
+        'royal_hedgehog' : -20,
 		'game_won' : 15,
-		'goblin_dead' : 5
+		'goblin_dead' : 5,
+        'guard_goblin' : 5
 	},
 
 	'item_score_lst' : [
@@ -96,6 +98,11 @@ static_dict = {
 	'room_score_lst' : [
 		'main_hall',
 		'throne_room'
+	],
+
+	'obj_in_game_lst' : [
+        'royal_hedgehog',
+        'guard_goblin'
 	],
 
 	#### ONE WORD & ERRORS ####
