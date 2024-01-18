@@ -21,7 +21,7 @@ Version 3.81 Goals
 		- DONE: fix strange indent error in Score class (had to replace initial tabs with 4-space tabs)
 	- INPROC: refactor get_score()
 		- DONE: apply code re-use
-		- INPROC: figure out way to capture custom score pts via standard lists that reside in static_dict
+		- DONE: figure out way to capture custom score pts via standard lists that reside in static_dict
 		- TBD: update score dict in gs => list that starts empty and holds achieved score items
 		- TBD: instead of a dict of score achievements w/ T or F, just a list of score items achieved
 		- TBD: LOT of opportunity for code optimization in score()!
