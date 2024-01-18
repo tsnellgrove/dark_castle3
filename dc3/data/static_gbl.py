@@ -76,10 +76,8 @@ static_dict = {
 		'kinging_scroll' : 5,
 		'royal_crown' : 10,
 		'hedgehog_broach' : 5,
-#		'hedgehog_attack' : -20,
         'royal_hedgehog' : -20,
 		'game_won' : 15,
-#		'goblin_dead' : 5,
         'guard_goblin' : 5
 	},
 

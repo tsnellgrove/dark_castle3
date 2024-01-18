@@ -51,15 +51,6 @@ class Score(object):
             if (not gs.map.chk_name_exist(score_key) and gs.get_points_earned_state(score_key) == False):
                 self.print_points(gs, score_key)
 
-        # custom scoring
-#        score_key = 'hedgehog_attack'
-#        if (not gs.map.chk_name_exist('royal_hedgehog') and gs.get_points_earned_state(score_key) == False):
-#            self.print_points(gs, score_key)
-
-#        score_key = 'goblin_dead'
-#        if (gs.map.chk_name_exist('dead_goblin') and gs.get_points_earned_state(score_key) == False):
-#            self.print_points(gs, score_key)
-
         score_key = 'game_won'
         game_ending = gs.get_game_ending()
         if game_ending == 'won':

@@ -326,9 +326,7 @@ gs = GameState(
 		'kinging_scroll' : False,
 		'royal_crown' : False,
 		'hedgehog_broach' : False,
-#		'hedgehog_attack' : False,
 		'royal_hedgehog' : False,
-#		'goblin_dead' : False,
 		'guard_goblin' : False
 	},
 	{

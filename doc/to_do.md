@@ -11,7 +11,8 @@ Version 3.81 Goals
 - Refactor score sub-class to make it more efficient
 
 - DONE: Problem definition
-	- Review and order all existing notes
+	- DONE: Review and order all existing notes
+	- IDEA: score = class with object being attribute in gs
 
 - INPROC: migrate score to sub-class of gs:
 	- DONE: create score sub-class
@@ -19,21 +20,22 @@ Version 3.81 Goals
 	- DONE: in mk_def_pkl(): import Score, define score of class Score, add score as attribute of gs
 	- DONE: call gs.score.get_score(gs)
 		- DONE: fix strange indent error in Score class (had to replace initial tabs with 4-space tabs)
-	- INPROC: refactor get_score()
+	- DONE: refactor get_score() - first pass
 		- DONE: apply code re-use
 		- DONE: figure out way to capture custom score pts via standard lists that reside in static_dict
-		- TBD: update score dict in gs => list that starts empty and holds achieved score items
-		- TBD: instead of a dict of score achievements w/ T or F, just a list of score items achieved
-		- TBD: LOT of opportunity for code optimization in score()!
-
-	- TBD: score = class with object being attribute in gs
-	- TBD: print_score() a method of the Score class
+	- TBD: migrate score() data and methods to score_class()
+		- TBD: migrate score lists / dicts from gs_class() to gbl_static()	
+		- TBD: migrate score methods from gs_class() to score_class()
+			- TBD: print_score() a method of the Score class	
 	- TBD: clean-up
 		- TBD: score.py => legacy folder
 
 - TBD: refactor score() code:
+	- TBD: update score dict in gs => list that starts empty and holds achieved score items
+	- TBD: instead of a dict of score achievements w/ T or F, just a list of score items achieved
 	- TBD: determine max_score from sum of all possible scores?
-	- TBD: migrate score lists / dicts to gbl_static()
+
+- TBD: moves and titles
 	- TBD: incorporate move count into score sub-class and create get_moves() method
 	- TBD: migrate title to score()
 	- TBD: turn title calc into get_title() method as well (pull from ending() )
