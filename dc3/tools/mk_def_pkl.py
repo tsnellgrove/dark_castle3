@@ -331,18 +331,18 @@ dispense_panel_result.room_item = control_panel
 ### gs is the central store of game info ###
 gs = GameState(
 	'gs',
-	{
-		'rusty_key' : False,
-		'main_hall' : False,
-		'shiny_sword' : False,
-		'throne_room' : False,
-		'silver_key' : False,
-		'kinging_scroll' : False,
-		'royal_crown' : False,
-		'hedgehog_broach' : False,
-		'royal_hedgehog' : False,
-		'guard_goblin' : False
-	},
+#	{
+#		'rusty_key' : False,
+#		'main_hall' : False,
+#		'shiny_sword' : False,
+#		'throne_room' : False,
+#		'silver_key' : False,
+#		'kinging_scroll' : False,
+#		'royal_crown' : False,
+#		'hedgehog_broach' : False,
+#		'royal_hedgehog' : False,
+#		'guard_goblin' : False
+#	},
 	{
 		'score' : 0,
 		'move_counter' : 0,

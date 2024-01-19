@@ -9,9 +9,10 @@
 
 ### classes
 class GameState(object):
-	def __init__(self, name, points_earned_dict, state_dict, map, io, score, hero):
+#	def __init__(self, name, points_earned_dict, state_dict, map, io, score, hero):
+	def __init__(self, name, state_dict, map, io, score, hero):
 		self._name = name
-		self._points_earned_dict = points_earned_dict
+#		self._points_earned_dict = points_earned_dict
 		self._state_dict = state_dict
 		self._map = map
 		self._io = io
@@ -45,17 +46,17 @@ class GameState(object):
 		return self._hero
 
 	### score ###
-	def get_points_earned_state(self, score_key):
-		if score_key not in self._points_earned_dict:
-			raise KeyError("key does not exist in dict")
-		else:
-			return self._points_earned_dict[score_key]
+#	def get_points_earned_state(self, score_key):
+#		if score_key not in self._points_earned_dict:
+#			raise KeyError("key does not exist in dict")
+#		else:
+#			return self._points_earned_dict[score_key]
 
-	def set_points_earned_state(self, score_key, value):
-		if score_key not in self._points_earned_dict:
-			raise KeyError("key does not exist in dict")
-		else:
-			self._points_earned_dict[score_key] = value
+#	def set_points_earned_state(self, score_key, value):
+#		if score_key not in self._points_earned_dict:
+#			raise KeyError("key does not exist in dict")
+#		else:
+#			self._points_earned_dict[score_key] = value
 
 	def update_score(self, points):
 		self._state_dict['score'] += points 

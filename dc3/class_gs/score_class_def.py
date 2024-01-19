@@ -33,7 +33,6 @@ class Score(object):
     def print_points(self, gs, score_key):
         points = gs.io.get_dict_val('score_val', score_key)
         gs.update_score(points)
-#        gs.set_points_earned_state(score_key, True)
         self.set_points_earned_state(score_key, True)
         gs.print_score()
 
@@ -44,7 +43,6 @@ class Score(object):
         # increment item scores
         for score_key in gs.io.get_lst('item_score_lst'):
             if (not creature.hand_is_empty() and creature.get_hand_item().name == score_key
-#                    and gs.get_points_earned_state(score_key) == False):
                     and self.get_points_earned_state(score_key) == False):
                 self.print_points(gs, score_key)
 
@@ -53,19 +51,16 @@ class Score(object):
             worn_lst = creature.worn_lst
             if len(worn_lst) > 0:
                 for garment in worn_lst:
-#                    if (garment.name == score_key and gs.get_points_earned_state(score_key) == False):
                     if (garment.name == score_key and self.get_points_earned_state(score_key) == False):
                         self.print_points(gs, score_key)
 
         # increment room scores
         for score_key in gs.io.get_lst('room_score_lst'):
-#            if (room_obj.name == score_key and gs.get_points_earned_state(score_key) == False):
             if (room_obj.name == score_key and self.get_points_earned_state(score_key) == False):
                 self.print_points(gs, score_key)
 
         # obj not in game scores
         for score_key in gs.io.get_lst('obj_in_game_lst'):
-#            if (not gs.map.chk_name_exist(score_key) and gs.get_points_earned_state(score_key) == False):
             if (not gs.map.chk_name_exist(score_key) and self.get_points_earned_state(score_key) == False):
                 self.print_points(gs, score_key)
 
