@@ -295,7 +295,21 @@ io = IO('io', # name
 		"" # last_input_str
 		)
 
-score = Score('score')
+score = Score(
+	'score',
+	{
+		'rusty_key' : False,
+		'main_hall' : False,
+		'shiny_sword' : False,
+		'throne_room' : False,
+		'silver_key' : False,
+		'kinging_scroll' : False,
+		'royal_crown' : False,
+		'hedgehog_broach' : False,
+		'royal_hedgehog' : False,
+		'guard_goblin' : False
+	}
+	)
 
 # *** Hierarchy-Based Object Re-assignment ***
 goblin_attacks_result.creature_obj = guard_goblin
