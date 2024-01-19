@@ -24,11 +24,11 @@ Version 3.81 Goals
 		- DONE: apply code re-use
 		- DONE: figure out way to capture custom score pts via standard lists that reside in static_dict
 	- INPROC: migrate score() data and methods to score_class()
-		- INPROC: migrate score lists / dicts from gs_class() to score_class()
+		- DONE: migrate score lists / dicts from gs_class() to score_class()
 			- DONE: add points_earned_dict to score_class() attributes
 			- DONE: add dict getters & setters to score_class()
 			- DONE: redirect score.get_score() to call gets & sets from self
-			- TBD: remove points_earned_dict from gs_class() and mk_def_pkl(); clean up get_score()
+			- DONE: remove points_earned_dict from gs_class() and mk_def_pkl(); clean up get_score()
 		- TBD: migrate score attribute
 			- TBD:
 		- TBD: migrate score methods from gs_class() to score_class()
