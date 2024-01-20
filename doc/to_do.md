@@ -18,26 +18,24 @@ Version 3.81 Goals
 	- DONE: create score sub-class
 	- DONE: add score as attribute of gs
 	- DONE: in mk_def_pkl(): import Score, define score of class Score, add score as attribute of gs
-	- DONE: call gs.score.get_score(gs)
+	- DONE: call gs.score.check_score(gs)
 		- DONE: fix strange indent error in Score class (had to replace initial tabs with 4-space tabs)
-	- DONE: refactor get_score() - first pass
+	- DONE: refactor check_score() - first pass
 		- DONE: apply code re-use
 		- DONE: figure out way to capture custom score pts via standard lists that reside in static_dict
 	- INPROC: migrate score() data and methods to score_class()
 		- DONE: migrate score lists / dicts from gs_class() to score_class()
 			- DONE: add points_earned_dict to score_class() attributes
 			- DONE: add dict getters & setters to score_class()
-			- DONE: redirect score.get_score() to call gets & sets from self
-			- DONE: remove points_earned_dict from gs_class() and mk_def_pkl(); clean up get_score()
-		- INPROC: migrate score attribute
+			- DONE: redirect score.check_score() to call gets & sets from self
+			- DONE: remove points_earned_dict from gs_class() and mk_def_pkl(); clean up check_score()
+		- INPROC: migrate score attribute and methods
 			- DONE: add score to score_class() attributes
 			- DONE: add getters & setters
 			- DONE: migrate methods
 			- DONE: update method calls from gs_class() to score_class()
 			- DONE: redirect method calls to gs.score()
-			- TBD: clean-up score_class(), mk_def_pkl(), app_main()
-		- TBD: migrate score methods from gs_class() to score_class(), ending(), cmd_exe()
-			- TBD: print_score() a method of the Score class	
+			- TBD: clean-up gs_class(), score_class(), mk_def_pkl(), app_main(), ending(), cmd_exe()
 	- TBD: clean-up
 		- TBD: score.py => legacy folder
 

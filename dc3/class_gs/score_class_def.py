@@ -40,30 +40,22 @@ class Score(object):
 
     ### score methods ###
     def update_score(self, points):
-#        self._state_dict['score'] += points
         self.score += points
 
     def get_score(self):
-#        return self._state_dict['score']
         return self.score
 
-#    def print_score(self):
     def print_score(self, gs):
         output1 = ("Your score is now " + str(self.get_score()))
-#        output2 = (" out of " + str(self.io.get_str_nr('max_score')))
         output2 = (" out of " + str(gs.io.get_str_nr('max_score')))
-#        self.io.buffer(output1 + output2)
         gs.io.buffer(output1 + output2)
 
     def print_points(self, gs, score_key):
         points = gs.io.get_dict_val('score_val', score_key)
-#        gs.update_score(points)
         self.update_score(points)
         self.set_points_earned_state(score_key, True)
-#        gs.print_score()
         self.print_score(gs)
 
-#    def get_score(self, gs):
     def check_score(self, gs):
         room_obj = gs.map.get_hero_rm(gs)
         creature = gs.hero
@@ -96,7 +88,6 @@ class Score(object):
         game_ending = gs.get_game_ending()
         if game_ending == 'won':
             points = gs.io.get_dict_val('score_val', score_key)
-#            gs.update_score(points)
             self.update_score(points)
 
         return

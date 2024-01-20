@@ -45,8 +45,6 @@ def cmd_execute(gs, case, word_lst):
 		if  case == 'tru_1word':
 			word1 = word_lst[0]
 			if word1 == 'score':
-#				gs.print_score()
-#				gs.score.print_score()
 				gs.score.print_score(gs)
 				return
 			if word1 == 'version':
