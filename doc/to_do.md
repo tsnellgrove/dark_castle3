@@ -23,19 +23,19 @@ Version 3.81 Goals
 	- DONE: refactor check_score() - first pass
 		- DONE: apply code re-use
 		- DONE: figure out way to capture custom score pts via standard lists that reside in static_dict
-	- INPROC: migrate score() data and methods to score_class()
+	- DONE: migrate score() data and methods to score_class()
 		- DONE: migrate score lists / dicts from gs_class() to score_class()
 			- DONE: add points_earned_dict to score_class() attributes
 			- DONE: add dict getters & setters to score_class()
 			- DONE: redirect score.check_score() to call gets & sets from self
 			- DONE: remove points_earned_dict from gs_class() and mk_def_pkl(); clean up check_score()
-		- INPROC: migrate score attribute and methods
+		- DONE: migrate score attribute and methods
 			- DONE: add score to score_class() attributes
 			- DONE: add getters & setters
 			- DONE: migrate methods
 			- DONE: update method calls from gs_class() to score_class()
 			- DONE: redirect method calls to gs.score()
-			- TBD: clean-up gs_class(), score_class(), mk_def_pkl(), app_main(), ending(), cmd_exe()
+			- DONE: clean-up gs_class(), score_class(), mk_def_pkl(), app_main(), ending(), cmd_exe()
 	- TBD: clean-up
 		- TBD: score.py => legacy folder
 
@@ -44,7 +44,7 @@ Version 3.81 Goals
 	- TBD: instead of a dict of score achievements w/ T or F, just a list of score items achieved
 	- TBD: determine max_score from sum of all possible scores?
 
-- TBD: moves and titles
+- TBD: moves and titles (?)
 	- TBD: incorporate move count into score sub-class and create get_moves() method
 	- TBD: migrate title to score()
 	- TBD: turn title calc into get_title() method as well (pull from ending() )
