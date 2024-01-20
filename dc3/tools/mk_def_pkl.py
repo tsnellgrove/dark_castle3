@@ -333,7 +333,6 @@ dispense_panel_result.room_item = control_panel
 gs = GameState(
 	'gs',
 	{
-#		'score' : 0,
 		'move_counter' : 0,
 		'end_of_game' : False,
 		'game_ending' : "tbd",
