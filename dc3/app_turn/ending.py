@@ -12,7 +12,8 @@ import math
 def end(gs):
 	moves = gs._state_dict['move_counter']
 	game_ending = gs.get_game_ending()
-	score = gs.get_score()
+#	score = gs.get_score()
+	score = gs.score.get_score()
 
 	if score < 0:
 		title_score = -10
@@ -30,7 +31,9 @@ def end(gs):
 		gs.io.buffer("You have won!")
 
 	gs.io.buffer("Your adventure ended after " + str(moves) + " moves.")
-	gs.print_score()
+#	gs.print_score()
+#	gs.score.print_score()
+	gs.score.print_score(gs)
 	gs.io.buffer("Your title is: " + title)
 	if game_ending == 'won':
 		gs.io.buff_e('credits')

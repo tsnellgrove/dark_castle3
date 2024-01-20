@@ -44,16 +44,16 @@ class GameState(object):
 		return self._hero
 
 	### score ###
-	def update_score(self, points):
-		self._state_dict['score'] += points 
+#	def update_score(self, points):
+#		self._state_dict['score'] += points 
 
-	def get_score(self):
-		return self._state_dict['score']
+#	def get_score(self):
+#		return self._state_dict['score']
 
-	def print_score(self):
-		output1 = ("Your score is now " + str(self.get_score()))
-		output2 = (" out of " + str(self.io.get_str_nr('max_score')))	
-		self.io.buffer(output1 + output2)
+#	def print_score(self):
+#		output1 = ("Your score is now " + str(self.get_score()))
+#		output2 = (" out of " + str(self.io.get_str_nr('max_score')))	
+#		self.io.buffer(output1 + output2)
 
 	### game moves counter ###
 	def move_inc(self):

@@ -296,7 +296,8 @@ io = IO('io', # name
 		)
 
 score = Score(
-	'score',
+	'score', # name
+	0, # score
 	{
 		'rusty_key' : False,
 		'main_hall' : False,
@@ -308,7 +309,7 @@ score = Score(
 		'hedgehog_broach' : False,
 		'royal_hedgehog' : False,
 		'guard_goblin' : False
-	}
+	} # points_earned_dict
 	)
 
 # *** Hierarchy-Based Object Re-assignment ***

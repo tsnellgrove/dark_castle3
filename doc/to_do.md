@@ -29,9 +29,14 @@ Version 3.81 Goals
 			- DONE: add dict getters & setters to score_class()
 			- DONE: redirect score.get_score() to call gets & sets from self
 			- DONE: remove points_earned_dict from gs_class() and mk_def_pkl(); clean up get_score()
-		- TBD: migrate score attribute
-			- TBD:
-		- TBD: migrate score methods from gs_class() to score_class()
+		- INPROC: migrate score attribute
+			- DONE: add score to score_class() attributes
+			- DONE: add getters & setters
+			- DONE: migrate methods
+			- DONE: update method calls from gs_class() to score_class()
+			- DONE: redirect method calls to gs.score()
+			- TBD: clean-up score_class(), mk_def_pkl(), app_main()
+		- TBD: migrate score methods from gs_class() to score_class(), ending(), cmd_exe()
 			- TBD: print_score() a method of the Score class	
 	- TBD: clean-up
 		- TBD: score.py => legacy folder
