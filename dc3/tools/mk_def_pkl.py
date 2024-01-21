@@ -298,18 +298,18 @@ io = IO('io', # name
 score = Score(
 	'score', # name
 	0, # score
-	{
-		'rusty_key' : False,
-		'main_hall' : False,
-		'shiny_sword' : False,
-		'throne_room' : False,
-		'silver_key' : False,
-		'kinging_scroll' : False,
-		'royal_crown' : False,
-		'hedgehog_broach' : False,
-		'royal_hedgehog' : False,
-		'guard_goblin' : False
-	}, # points_earned_dict
+#	{
+#		'rusty_key' : False,
+#		'main_hall' : False,
+#		'shiny_sword' : False,
+#		'throne_room' : False,
+#		'silver_key' : False,
+#		'kinging_scroll' : False,
+#		'royal_crown' : False,
+#		'hedgehog_broach' : False,
+#		'royal_hedgehog' : False,
+#		'guard_goblin' : False
+#	}, # points_earned_dict
 	[] # pts_earned_lst
 	)
 

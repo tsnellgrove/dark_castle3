@@ -43,7 +43,7 @@ Version 3.81 Goals
 	- INPROC: update score dict in gs => list that starts empty and holds achieved score items
 		- DONE: create pts_earned_lst attribute in score_class() and mk_def_pkl()
 		- DONE: create chk_pts_earned() and set_pts_earned() methods in score_class()
-		- TBD: replace score calls in check_score()
+		- DONE: replace score calls in check_score()
 		- TBD: clean up points_earned_dict attribute & methods in score_class() and mk_def_pkl()
 	- TBD: determine max_score from sum of all possible scores?
 
