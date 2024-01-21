@@ -40,11 +40,12 @@ Version 3.81 Goals
 		- DONE: score.py => legacy folder
 
 - INPROC: refactor score() code:
-	- INPROC: update score dict in gs => list that starts empty and holds achieved score items
+	- DONE: update score dict in gs => list that starts empty and holds achieved score items
 		- DONE: create pts_earned_lst attribute in score_class() and mk_def_pkl()
 		- DONE: create chk_pts_earned() and set_pts_earned() methods in score_class()
 		- DONE: replace score calls in check_score()
-		- TBD: clean up points_earned_dict attribute & methods in score_class() and mk_def_pkl()
+		- DONE: clean up points_earned_dict attribute & methods in score_class() and mk_def_pkl()
+	- TBD: eliminate get_score() [already have a getter routine, don't need a 2nd]
 	- TBD: determine max_score from sum of all possible scores?
 
 - TBD: additional ideas:
