@@ -36,23 +36,29 @@ Version 3.81 Goals
 			- DONE: update method calls from gs_class() to score_class()
 			- DONE: redirect method calls to gs.score()
 			- DONE: clean-up gs_class(), score_class(), mk_def_pkl(), app_main(), ending(), cmd_exe()
-	- TBD: clean-up
-		- TBD: score.py => legacy folder
+	- DONE: clean-up
+		- DONE: score.py => legacy folder
 
 - TBD: refactor score() code:
 	- TBD: update score dict in gs => list that starts empty and holds achieved score items
 	- TBD: instead of a dict of score achievements w/ T or F, just a list of score items achieved
 	- TBD: determine max_score from sum of all possible scores?
 
+- TBD: additional ideas:
+	- IDEA: seems ineficient to check every turn for every point... 
+	- IDEA: can I bake scoring into verb methods (e.g. take, go, attack, open)
+	- TBD: scorep_check() to be called from verb methods
+		- TBD: call from cmd_exe() and post_action()
+		- TBD: lookup scorable events in dict of lists with key = verb (e.g. 'take')
+		- TBD: pass the key from cmd_exe() and post_action()
+		- TBD: for post action, final 15 pts should be based on mach run - not win or 'read'
+		- TBD: for post_action() call, key = mach name
+	- TBD: link front_gate score to opening door (???)
+
 - TBD: moves and titles (?)
 	- TBD: incorporate move count into score sub-class and create get_moves() method
 	- TBD: migrate title to score()
 	- TBD: turn title calc into get_title() method as well (pull from ending() )
-
-- TBD: additional ideas:
-	- TBD: link front_gate score to opening door (???)
-	- IDEA: seems ineficient to check every turn for every point... 
-	- IDEA: can I bake scoring into verb methods (e.g. take, go, attack, open)
 
 
 # *** FUTURE TO DO *** #
