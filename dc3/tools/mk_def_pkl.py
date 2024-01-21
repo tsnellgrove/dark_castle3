@@ -309,7 +309,8 @@ score = Score(
 		'hedgehog_broach' : False,
 		'royal_hedgehog' : False,
 		'guard_goblin' : False
-	} # points_earned_dict
+	}, # points_earned_dict
+	[] # pts_earned_lst
 	)
 
 # *** Hierarchy-Based Object Re-assignment ***

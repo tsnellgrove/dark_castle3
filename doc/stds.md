@@ -67,7 +67,7 @@ Nov 5, 2022
 			- If similar obj and non-obj vars appear in same function, diff the non-obj case: e.g. worn_lst vs. worn_str_lst
 - methods
 	- prefixes:
-		- 'is'/'has'/'can' for methods where no var is passed but a bool is returned; e.g. 'obj.is_item()'
+		- 'is'/'are'/'has'/'can' for no var is passed but a bool is returned; e.g. 'obj.is_item()'
 		- 'chk' for a method where you will send an obj and get back a bool
 		- 'get' for a method that will return a 'usuable' obj var
 		- 'disp' if a method's main purpose is to buffer content

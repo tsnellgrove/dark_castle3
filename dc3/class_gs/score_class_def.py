@@ -8,10 +8,11 @@
 
 ### classes
 class Score(object):
-    def __init__(self, name, score, points_earned_dict):
+    def __init__(self, name, score, points_earned_dict, pts_earned_lst):
         self._name = name # name of obj
         self._score = score # current player score
         self._points_earned_dict = points_earned_dict # which points has the player already earned?
+        self._pots_earned_lst = pts_earned_lst # which points has the player already earned?
 
 	### setters & getters ###
     @property
@@ -25,6 +26,14 @@ class Score(object):
     @score.setter
     def score(self, new_score):
         self._score = new_score
+
+    @property
+    def pts_earned_lst(self):
+        return self._pts_earned_lst
+    
+    @pts_earned_lst.setter
+    def pts_earned_lst(self, new_lst):
+        self._pts_earned_lst = new_lst
 
     def get_points_earned_state(self, score_key):
         if score_key not in self._points_earned_dict:
@@ -44,6 +53,15 @@ class Score(object):
 
     def get_score(self):
         return self.score
+
+    def chk_pts_earned(self, score_key):
+        if score_key in self._points_earned_lst:
+            return True
+        return False
+
+    def set_pts_earned(self, score_key):
+        self.pts_earned_lst.append(score_key)
+        return
 
     def print_score(self, gs):
         output1 = ("Your score is now " + str(self.get_score()))
