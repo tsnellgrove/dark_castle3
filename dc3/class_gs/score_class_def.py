@@ -38,8 +38,8 @@ class Score(object):
     def update_score(self, points):
         self.score += points
 
-    def get_score(self):
-        return self.score
+#    def get_score(self):
+#        return self.score
 
     def chk_pts_earned(self, score_key):
         if score_key in self.pts_earned_lst:
@@ -51,7 +51,8 @@ class Score(object):
         return
 
     def print_score(self, gs):
-        output1 = ("Your score is now " + str(self.get_score()))
+#        output1 = ("Your score is now " + str(self.get_score()))
+        output1 = ("Your score is now " + str(self.score))
         output2 = (" out of " + str(gs.io.get_str_nr('max_score')))
         gs.io.buffer(output1 + output2)
 

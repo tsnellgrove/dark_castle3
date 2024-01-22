@@ -45,7 +45,8 @@ Version 3.81 Goals
 		- DONE: create chk_pts_earned() and set_pts_earned() methods in score_class()
 		- DONE: replace score calls in check_score()
 		- DONE: clean up points_earned_dict attribute & methods in score_class() and mk_def_pkl()
-	- TBD: eliminate get_score() [already have a getter routine, don't need a 2nd]
+	- DONE: eliminate get_score() [already have a getter routine, don't need a 2nd]
+	- TBD: eliminate update_score()
 	- TBD: determine max_score from sum of all possible scores?
 
 - TBD: additional ideas:
