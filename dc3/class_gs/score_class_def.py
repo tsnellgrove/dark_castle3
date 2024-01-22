@@ -50,8 +50,6 @@ class Score(object):
         gs.io.buffer(output1 + output2)
 
     def print_points(self, gs, score_key):
-#        points = gs.io.get_dict_val('score_val', score_key)
-#        self.score += points
         self.score += gs.io.get_dict_val('score_val', score_key)
         self.set_pts_earned(score_key)
         self.print_score(gs)
@@ -87,8 +85,6 @@ class Score(object):
         score_key = 'game_won'
         game_ending = gs.get_game_ending()
         if game_ending == 'won':
-#            points = gs.io.get_dict_val('score_val', score_key)
-#            self.score += points
             self.score += gs.io.get_dict_val('score_val', score_key)
 
         return
