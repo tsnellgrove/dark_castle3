@@ -39,7 +39,7 @@ Version 3.81 Goals
 	- DONE: clean-up
 		- DONE: score.py => legacy folder
 
-- INPROC: refactor score() code:
+- DONE: refactor score() code:
 	- DONE: update score dict in gs => list that starts empty and holds achieved score items
 		- DONE: create pts_earned_lst attribute in score_class() and mk_def_pkl()
 		- DONE: create chk_pts_earned() and set_pts_earned() methods in score_class()
@@ -47,11 +47,12 @@ Version 3.81 Goals
 		- DONE: clean up points_earned_dict attribute & methods in score_class() and mk_def_pkl()
 	- DONE: eliminate get_score() [already have a getter routine, don't need a 2nd]
 	- DONE: eliminate update_score()
-	- TBD: determine max_score from sum of all possible scores?
+	- DONE: determine max_score from sum of all possible scores?
 
 - TBD: additional ideas:
 	- IDEA: seems ineficient to check every turn for every point... 
 	- IDEA: can I bake scoring into verb methods (e.g. take, go, attack, open)
+	- IDEA: better yet, triiger from cmd_exe() and post_act() ?
 	- TBD: scorep_check() to be called from verb methods
 		- TBD: call from cmd_exe() and post_action()
 		- TBD: lookup scorable events in dict of lists with key = verb (e.g. 'take')
@@ -59,8 +60,9 @@ Version 3.81 Goals
 		- TBD: for post action, final 15 pts should be based on mach run - not win or 'read'
 		- TBD: for post_action() call, key = mach name
 	- TBD: link front_gate score to opening door (???)
+	- IDEA: ideally, would have a tool module that calced & cached max_score to static_dict
 
-- TBD: moves and titles (?)
+- TBD: moves and titles (=> NO, keep these where they are)
 	- TBD: incorporate move count into score sub-class and create get_moves() method
 	- TBD: migrate title to score()
 	- TBD: turn title calc into get_title() method as well (pull from ending() )

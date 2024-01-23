@@ -53,7 +53,7 @@ class Score(object):
 
     def print_score(self, gs):
         output1 = ("Your score is now " + str(self.score))
-#        output2 = (" out of " + str(gs.io.get_str_nr('max_score')))
+##        output2 = (" out of " + str(gs.io.get_str_nr('max_score')))
         output2 = (" out of " + str(self.get_max_score(gs)))
         gs.io.buffer(output1 + output2)
 

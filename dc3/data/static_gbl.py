@@ -15,7 +15,7 @@ static_dict = {
 
 	### universal constants ###
 	'version' : '3.79',
-	'max_score' : 75,
+##	'max_score' : 75,
 
 	### interp lists ###
 
