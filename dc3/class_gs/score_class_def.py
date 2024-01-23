@@ -44,9 +44,17 @@ class Score(object):
         self.pts_earned_lst.append(score_key)
         return
 
+    def get_max_score(self, gs):
+        max_score = 0
+        for score_item in gs.io.get_dict('score_val'):
+            if gs.io.get_dict_val('score_val', score_item) > 0:
+                max_score += gs.io.get_dict_val('score_val', score_item)
+        return max_score
+
     def print_score(self, gs):
         output1 = ("Your score is now " + str(self.score))
-        output2 = (" out of " + str(gs.io.get_str_nr('max_score')))
+#        output2 = (" out of " + str(gs.io.get_str_nr('max_score')))
+        output2 = (" out of " + str(self.get_max_score(gs)))
         gs.io.buffer(output1 + output2)
 
     def print_points(self, gs, score_key):
