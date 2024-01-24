@@ -81,6 +81,13 @@ static_dict = {
         'guard_goblin' : 5
 	},
 
+	'score_event_dict' : {
+        'take' : ['rusty_key', 'shiny_sword', 'silver_key', 'kinging_scroll', 'hedgehog_broach'],
+        'wear' : ['royal_crown'],
+        'go' : ['main_hall', 'throne_room'],
+        'attack' : ['royal_hedgehog', 'guard_goblin']
+	},
+
 	'item_score_lst' : [
 		'rusty_key',
 		'shiny_sword',

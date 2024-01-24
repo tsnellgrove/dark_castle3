@@ -62,6 +62,14 @@ class Score(object):
         self.set_pts_earned(score_key)
         self.print_score(gs)
 
+
+# 'go' => verb ; room.name => event
+#			if ('go' in gs.io.get_dict('score_event_dict') 
+#	   				and gs.map.get_hero_rm(gs).name in gs.io.get_dict_val('score_event_dict', 'go')
+#					and gs.map.get_hero_rm(gs).name not in gs.score.pts_earned_lst):
+
+
+
     def check_score(self, gs):
         room_obj = gs.map.get_hero_rm(gs)
         creature = gs.hero

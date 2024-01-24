@@ -53,7 +53,9 @@ Version 3.81 Goals
 	- IDEA: seems ineficient to check every turn for every point... 
 	- IDEA: can I bake scoring into verb methods (e.g. take, go, attack, open)
 	- IDEA: better yet, triiger from cmd_exe() and post_act() ?
-	- TBD: scorep_check() to be called from verb methods
+	- TBD: score_check() to be called from verb methods
+		- DONE: create 'score_event_dict' in static_dict
+		- INPROC: create alt score method in score_class
 		- TBD: call from cmd_exe() and post_action()
 		- TBD: lookup scorable events in dict of lists with key = verb (e.g. 'take')
 		- TBD: pass the key from cmd_exe() and post_action()
