@@ -62,6 +62,7 @@ def cmd_execute(gs, case, word_lst):
 		if case == 'go':
 			room_obj, word1, word2 = word_lst
 			getattr(room_obj, word1)(word2, gs)
+			gs.score.disp_score(word1, gs.map.get_hero_rm(gs).name, gs)
 			return
 		if case == '2word':
 			word2_obj, word1 = word_lst

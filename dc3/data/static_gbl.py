@@ -100,10 +100,10 @@ static_dict = {
 		'royal_crown'
 	],
 
-	'room_score_lst' : [
-		'main_hall',
-		'throne_room'
-	],
+#	'room_score_lst' : [
+#		'main_hall',
+#		'throne_room'
+#	],
 
 	'obj_in_game_lst' : [
         'royal_hedgehog',

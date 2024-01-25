@@ -49,18 +49,25 @@ Version 3.81 Goals
 	- DONE: eliminate update_score()
 	- DONE: determine max_score from sum of all possible scores?
 
-- TBD: additional ideas:
+- INPROC: additional ideas:
 	- IDEA: seems ineficient to check every turn for every point... 
 	- IDEA: can I bake scoring into verb methods (e.g. take, go, attack, open)
 	- IDEA: better yet, triiger from cmd_exe() and post_act() ?
 	- TBD: score_check() to be called from verb methods
 		- DONE: create 'score_event_dict' in static_dict
-		- INPROC: create alt score method in score_class
-		- TBD: call from cmd_exe() and post_action()
-		- TBD: lookup scorable events in dict of lists with key = verb (e.g. 'take')
-		- TBD: pass the key from cmd_exe() and post_action()
-		- TBD: for post action, final 15 pts should be based on mach run - not win or 'read'
-		- TBD: for post_action() call, key = mach name
+			- IDEA: lookup scorable events in dict of lists with key = verb (e.g. 'take')
+		- DONE: create alt score method in score_class
+		- INPROC: call from cmd_exe() and post_action()
+			- DONE: call from cmd_exe() 'go' case
+			- TBD: call from cmd_exe() '2-word' case
+			- TBD: call from cmd_exe() 'prep' case (attack)
+				- IDEA: prep case may sometimes require noun and dir_obj
+				- IDEA: other times, noun and '*'
+				- IDEA: also, some prep verbs do not have simple outcomes (e.g. attack =/ oppenent killed)
+			- TBD: call from post_action()
+				- TBD: for post action, final 15 pts should be based on mach run - not win or 'read'
+				- TBD: for post_action() call, key = mach name
+			- TBD: clean up score_class() and static_gbl()
 	- TBD: link front_gate score to opening door (???)
 	- IDEA: ideally, would have a tool module that calced & cached max_score to static_dict
 
