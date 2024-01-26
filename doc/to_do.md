@@ -61,24 +61,28 @@ Version 3.81 Goals
 			- DONE: call from cmd_exe() 'go' case
 			- DONE: call from cmd_exe() '2-word' case
 			- INPROC: call from cmd_exe() 'prep' case (attack)
-				- IDEA: prep case may sometimes require noun and dir_obj
-				- IDEA: other times, noun and '*'
-				- IDEA: also, some prep verbs do not have simple outcomes (e.g. attack =/ oppenent killed)
-				- IDEA: in case of hedgehog, would be nice to use dir_obj.is_weapon()
-				- IDEA: among other things, this is maybe a driver to identify prep verbs in static_dict
-				- IDEA: for prep case, need to send dir_obj
+				- IDEA: new ideas for 'prep verbs':
+					- IDEA: prep case may sometimes require noun and dir_obj
+					- IDEA: other times, noun and '*'
+					- IDEA: also, some prep verbs don't have simple outcomes (e.g. attack =/ oppenent killed)
+					- IDEA: in case of hedgehog, would be nice to use dir_obj.is_weapon()
+					- IDEA: among other things, this is maybe a driver to identify prep verbs in static_dict
+					- IDEA: for prep case, need to send dir_obj
 					- IDEA: universalize score_disp() or crete custom prep_score_disp() ??
-				- IDEA: for attack in particular, maybe just check game existence of noun score_disp()
-				- DONE: create 'prep_verb_lst' in static_dict and call from interp()
-				- DONE: create 'var_outcome_verb_lst' in static_dict
-				- TBD: add dir_obj attribute to score_disp(); call with value None from case 'go' & '2_word'
-				- TBD: create score check for standard 'prep_verb' case
-				- TBD: test 'unlock gate with rusty_key' case
-				- TBD: set 'entrance' points to trigger on 'open gate'
-				- TBD: add check for 'var_outcome_verb_lst' in score_disp
-				- TBD: implement '*' case for dir_obj
-				- TBD: for 'attack', check for target not exist in game in 'var_outcome' case
-				- TBD: for 'give', check for 'noun' in target creature inv
+					- IDEA: for attack in particular, maybe just check game existence of noun score_disp()
+				- DONE: static list updates
+					- DONE: create 'prep_verb_lst' in static_dict and call from interp()
+					- DONE: create 'var_outcome_verb_lst' in static_dict
+				- TBD: update score_disp() for std 'prep verb' case:
+					- TBD: add dir_obj attribute to score_disp(); call with None from case 'go' & '2_word'
+					- TBD: create score check for standard 'prep_verb' case
+					- TBD: implement '*' case for dir_obj
+					- TBD: test 'unlock gate with rusty_key' case
+					- TBD: set 'entrance' points to trigger on 'open gate'
+				- TBD: address special case of 'var_outcome_verb_lst':
+					- TBD: add check for 'var_outcome_verb_lst' in score_disp
+					- TBD: for 'attack', check for target not exist in game in 'var_outcome' case
+					- TBD: for 'give', check for 'noun' in target creature inv
 			- TBD: call from post_action()
 				- IDEA: for post_action() call, key = mach name
 				- IDEA: for post action, final 15 pts should be based on mach run - not win or 'read'
