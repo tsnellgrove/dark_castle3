@@ -60,7 +60,7 @@ Version 3.81 Goals
 		- INPROC: call from cmd_exe() and post_action()
 			- DONE: call from cmd_exe() 'go' case
 			- DONE: call from cmd_exe() '2-word' case
-			- TBD: call from cmd_exe() 'prep' case (attack)
+			- INPROC: call from cmd_exe() 'prep' case (attack)
 				- IDEA: prep case may sometimes require noun and dir_obj
 				- IDEA: other times, noun and '*'
 				- IDEA: also, some prep verbs do not have simple outcomes (e.g. attack =/ oppenent killed)
@@ -69,14 +69,22 @@ Version 3.81 Goals
 				- IDEA: for prep case, need to send dir_obj
 					- IDEA: universalize score_disp() or crete custom prep_score_disp() ??
 				- IDEA: for attack in particular, maybe just check game existence of noun score_disp()
+				- DONE: create 'prep_verb_lst' in static_dict and call from interp()
+				- DONE: create 'var_outcome_verb_lst' in static_dict
+				- TBD: add dir_obj attribute to score_disp(); call with value None from case 'go' & '2_word'
+				- TBD: create score check for standard 'prep_verb' case
+				- TBD: test 'unlock gate with rusty_key' case
+				- TBD: set 'entrance' points to trigger on 'open gate'
+				- TBD: add check for 'var_outcome_verb_lst' in score_disp
+				- TBD: implement '*' case for dir_obj
+				- TBD: for 'attack', check for target not exist in game in 'var_outcome' case
+				- TBD: for 'give', check for 'noun' in target creature inv
 			- TBD: call from post_action()
 				- IDEA: for post_action() call, key = mach name
 				- IDEA: for post action, final 15 pts should be based on mach run - not win or 'read'
 				- TBD: pts for silver_key
 				- TBD: pts for winning mach
-				
-				
-			- TBD: clean up score_class() and static_gbl()
+			- TBD: clean up score_class(), static_gbl(), interp()
 	- TBD: link front_gate score to opening door (???)
 	- IDEA: ideally, would have a tool module that calced & cached max_score to static_dict
 

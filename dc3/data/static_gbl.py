@@ -36,6 +36,10 @@ static_dict = {
 		'unlock', 'wear', 'enter', 'exit', 'stand'
 	],
 
+	'prep_verb_lst' : ['put', 'show', 'give', 'attack', 'lock', 'unlock', 'drink'],
+    
+	'var_outcome_verb_lst' : ['give', 'attack'],
+
 	'debug_verb_lst' : ['get_weight', 'capacity', 'where_is'],
 
 	'abbreviations_dict' : {
