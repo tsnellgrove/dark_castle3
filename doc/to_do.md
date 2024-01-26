@@ -83,10 +83,12 @@ Version 3.81 Goals
 					- TBD: add check for 'var_outcome_verb_lst' in score_disp
 					- TBD: for 'attack', check for target not exist in game in 'var_outcome' case
 					- TBD: for 'give', check for 'noun' in target creature inv
+					- TBD: 'attack hedgehog' case (dir_obj = '*')
+					- TBD: 'attack guard_goblin' case (dir_obj = 'shiny_sword')
+					- TBD: 'give shiny_sword to hedgehog' case (silver_key pts)
 			- TBD: call from post_action()
 				- IDEA: for post_action() call, key = mach name
 				- IDEA: for post action, final 15 pts should be based on mach run - not win or 'read'
-				- TBD: pts for silver_key
 				- TBD: pts for winning mach
 			- TBD: clean up score_class(), static_gbl(), interp()
 	- TBD: link front_gate score to opening door (???)
