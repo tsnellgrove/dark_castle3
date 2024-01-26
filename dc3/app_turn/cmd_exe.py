@@ -67,6 +67,7 @@ def cmd_execute(gs, case, word_lst):
 		if case == '2word':
 			word2_obj, word1 = word_lst
 			getattr(word2_obj, word1)(gs)
+			gs.score.disp_score(word1, word2_obj.name, gs)
 			return
 		if case == 'prep':
 			dirobj_obj, word1, noun_obj = word_lst

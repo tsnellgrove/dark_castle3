@@ -79,18 +79,18 @@ class Score(object):
         creature = gs.hero
 
         # increment item scores
-        for score_key in gs.io.get_lst('item_score_lst'):
-            if (not creature.hand_is_empty() and creature.get_hand_item().name == score_key
-                    and not self.chk_pts_earned(score_key)):
-                self.print_points(gs, score_key)
+#        for score_key in gs.io.get_lst('item_score_lst'):
+#            if (not creature.hand_is_empty() and creature.get_hand_item().name == score_key
+#                    and not self.chk_pts_earned(score_key)):
+#                self.print_points(gs, score_key)
 
         # increment worn scores
-        for score_key in gs.io.get_lst('worn_score_lst'):
-            worn_lst = creature.worn_lst
-            if len(worn_lst) > 0:
-                for garment in worn_lst:
-                    if (garment.name == score_key and not self.chk_pts_earned(score_key)):
-                        self.print_points(gs, score_key)
+#        for score_key in gs.io.get_lst('worn_score_lst'):
+#            worn_lst = creature.worn_lst
+#            if len(worn_lst) > 0:
+#                for garment in worn_lst:
+#                    if (garment.name == score_key and not self.chk_pts_earned(score_key)):
+#                        self.print_points(gs, score_key)
 
         # increment room scores
 #        for score_key in gs.io.get_lst('room_score_lst'):

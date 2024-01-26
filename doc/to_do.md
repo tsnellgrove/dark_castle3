@@ -59,14 +59,23 @@ Version 3.81 Goals
 		- DONE: create alt score method in score_class
 		- INPROC: call from cmd_exe() and post_action()
 			- DONE: call from cmd_exe() 'go' case
-			- TBD: call from cmd_exe() '2-word' case
+			- DONE: call from cmd_exe() '2-word' case
 			- TBD: call from cmd_exe() 'prep' case (attack)
 				- IDEA: prep case may sometimes require noun and dir_obj
 				- IDEA: other times, noun and '*'
 				- IDEA: also, some prep verbs do not have simple outcomes (e.g. attack =/ oppenent killed)
+				- IDEA: in case of hedgehog, would be nice to use dir_obj.is_weapon()
+				- IDEA: among other things, this is maybe a driver to identify prep verbs in static_dict
+				- IDEA: for prep case, need to send dir_obj
+					- IDEA: universalize score_disp() or crete custom prep_score_disp() ??
+				- IDEA: for attack in particular, maybe just check game existence of noun score_disp()
 			- TBD: call from post_action()
-				- TBD: for post action, final 15 pts should be based on mach run - not win or 'read'
-				- TBD: for post_action() call, key = mach name
+				- IDEA: for post_action() call, key = mach name
+				- IDEA: for post action, final 15 pts should be based on mach run - not win or 'read'
+				- TBD: pts for silver_key
+				- TBD: pts for winning mach
+				
+				
 			- TBD: clean up score_class() and static_gbl()
 	- TBD: link front_gate score to opening door (???)
 	- IDEA: ideally, would have a tool module that calced & cached max_score to static_dict

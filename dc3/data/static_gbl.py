@@ -88,17 +88,17 @@ static_dict = {
         'attack' : ['royal_hedgehog', 'guard_goblin']
 	},
 
-	'item_score_lst' : [
-		'rusty_key',
-		'shiny_sword',
-		'silver_key',
-		'kinging_scroll',
-		'hedgehog_broach'
-	],
+#	'item_score_lst' : [
+#		'rusty_key',
+#		'shiny_sword',
+#		'silver_key',
+#		'kinging_scroll',
+#		'hedgehog_broach'
+#	],
 
-	'worn_score_lst' : [
-		'royal_crown'
-	],
+#	'worn_score_lst' : [
+#		'royal_crown'
+#	],
 
 #	'room_score_lst' : [
 #		'main_hall',
