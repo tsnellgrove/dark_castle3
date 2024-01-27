@@ -127,6 +127,14 @@ Version 3.81 Goals
 
 - maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
 
+- TBD: Separate static_dicts for game vs. engine
+	- IDEA: planning for tooling in the future - want to separate what game designer can update vs. what platform designer (aka game engine deisgner) can update
+	- TBD: eng_static_dict = interp, version, help, errors (remove "Burt" ref from errors)
+	- TBD :game_static_dict = game-specific static content
+	- update io() calls to include optional dict attribute (game_static_dict by default)
+	- update method calls for eng_static_dict to include over-ride
+	- review error messages not in static_dict and remove any "burt" refs
+
 - SOMEDAY / MAYBE:
 	- do we need user_input == secret word to trigger startup()? Can't we just pass boolean?
 	- TBD: does creature_state really have any value? Maybe build hedgehog state machine before pulling the plug on this one
