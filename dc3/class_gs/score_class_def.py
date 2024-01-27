@@ -63,11 +63,6 @@ class Score(object):
         self.print_score(gs)
 
 
-# 'go' => verb ; room.name => event
-#			if ('go' in gs.io.get_dict('score_event_dict') 
-#	   				and gs.map.get_hero_rm(gs).name in gs.io.get_dict_val('score_event_dict', 'go')
-#					and gs.map.get_hero_rm(gs).name not in gs.score.pts_earned_lst):
-
     def disp_score(self, verb_str, noun_str, driobj_str, gs):
 ##        print(noun_str)
         if noun_str in gs.score.pts_earned_lst:
@@ -75,25 +70,16 @@ class Score(object):
         if verb_str not in gs.io.get_dict('score_event_dict'):
             return
         if driobj_str == None:
-#            if (verb_str in gs.io.get_dict('score_event_dict') 
-#                    and noun_str in gs.io.get_dict_val('score_event_dict', verb_str)):
             if noun_str in gs.io.get_dict_val('score_event_dict', verb_str):
                 self.print_points(gs, noun_str)
         else:
 ##            print(verb_str)
 ##            print(noun_str)
 ##            print(driobj_str)
-#            if (verb_str in gs.io.get_dict('score_event_dict') 
-#                    and [noun_str, driobj_str] in gs.io.get_dict_val('score_event_dict', verb_str)):
             if [noun_str, driobj_str] in gs.io.get_dict_val('score_event_dict', verb_str):
                 self.print_points(gs, noun_str)
         return
 
-#    def disp_score(self, verb_str, noun_str, gs):
-#        if (verb_str in gs.io.get_dict('score_event_dict') 
-#                and noun_str in gs.io.get_dict_val('score_event_dict', verb_str)
-#                and noun_str not in gs.score.pts_earned_lst):
-#            self.print_points(gs, noun_str)
 
     def check_score(self, gs):
         room_obj = gs.map.get_hero_rm(gs)

@@ -79,8 +79,8 @@ Version 3.81 Goals
 					- DONE: test 'unlock gate with rusty_key' case
 					- DONE: set 'entrance' points to trigger on 'open gate'
 				- TBD: address architecture
-					- TBD: fix prep_verb noun vs. dirobj nomenclature once and for all!
-					- TBD: merge score_event_dict and score_val_dict					
+					- TBD: merge score_event_dict and score_val_dict
+					- TBD: fix prep_verb noun vs. dirobj nomenclature once and for all!				
 				- TBD: address special case of 'var_outcome_verb_lst':
 					- TBD: add check for 'var_outcome_verb_lst' in score_disp
 					- TBD: for 'attack', check for target not exist in game in 'var_outcome' case
