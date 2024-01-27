@@ -73,11 +73,11 @@ Version 3.81 Goals
 				- DONE: static list updates
 					- DONE: create 'prep_verb_lst' in static_dict and call from interp()
 					- DONE: create 'var_outcome_verb_lst' in static_dict
-				- TBD: update score_disp() for std 'prep verb' case:
-					- TBD: add dir_obj attribute to score_disp(); call with None from case 'go' & '2_word'
-					- TBD: create score check for standard 'prep_verb' case
-					- TBD: implement '*' case for dir_obj
+				- INPROC: update score_disp() for std 'prep verb' case:
+					- DONE: add dir_obj attribute to score_disp(); call with None from case 'go' & '2_word'
+					- TBD: create score check for standard 'prep_verb' case (list of lists struct)
 					- TBD: test 'unlock gate with rusty_key' case
+					- TBD: implement '*' case for dir_obj
 					- TBD: set 'entrance' points to trigger on 'open gate'
 				- TBD: address special case of 'var_outcome_verb_lst':
 					- TBD: add check for 'var_outcome_verb_lst' in score_disp
