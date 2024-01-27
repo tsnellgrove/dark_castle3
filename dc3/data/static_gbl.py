@@ -73,7 +73,8 @@ static_dict = {
 
 	'score_val' : {
 		'rusty_key' : 5,
-		'main_hall' : 5,
+        'front_gate' : 5,
+#		'main_hall' : 5,
 		'shiny_sword' : 10,
 		'throne_room' : 10,
 		'silver_key' : 5,
@@ -88,8 +89,11 @@ static_dict = {
 	'score_event_dict' : {
         'take' : ['rusty_key', 'shiny_sword', 'silver_key', 'kinging_scroll', 'hedgehog_broach'],
         'wear' : ['royal_crown'],
-        'go' : ['main_hall', 'throne_room'],
-        'attack' : ['royal_hedgehog', 'guard_goblin']
+        'go' : ['throne_room'],
+#        'go' : ['main_hall', 'throne_room'],
+        'open' : ['front_gate']
+##        'unlock' : [['front_gate', 'rusty_key']]
+#        'attack' : ['royal_hedgehog', 'guard_goblin']
 	},
 
 #	'item_score_lst' : [

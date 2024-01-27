@@ -72,6 +72,7 @@ def cmd_execute(gs, case, word_lst):
 		if case == 'prep':
 			dirobj_obj, word1, noun_obj = word_lst
 			getattr(dirobj_obj, word1)(noun_obj, gs)
+			gs.score.disp_score(word1, dirobj_obj.name, noun_obj.name, gs)
 			return
 		gs.io.buff_dbg("[CMD] command case error", gs)
 		return

@@ -73,16 +73,19 @@ Version 3.81 Goals
 				- DONE: static list updates
 					- DONE: create 'prep_verb_lst' in static_dict and call from interp()
 					- DONE: create 'var_outcome_verb_lst' in static_dict
-				- INPROC: update score_disp() for std 'prep verb' case:
+				- DONE: update score_disp() for std 'prep verb' case:
 					- DONE: add dir_obj attribute to score_disp(); call with None from case 'go' & '2_word'
-					- TBD: create score check for standard 'prep_verb' case (list of lists struct)
-					- TBD: test 'unlock gate with rusty_key' case
-					- TBD: implement '*' case for dir_obj
-					- TBD: set 'entrance' points to trigger on 'open gate'
+					- DONE: create score check for standard 'prep_verb' case (list of lists struct)
+					- DONE: test 'unlock gate with rusty_key' case
+					- DONE: set 'entrance' points to trigger on 'open gate'
+				- TBD: address architecture
+					- TBD: fix prep_verb noun vs. dirobj nomenclature once and for all!
+					- TBD: merge score_event_dict and score_val_dict					
 				- TBD: address special case of 'var_outcome_verb_lst':
 					- TBD: add check for 'var_outcome_verb_lst' in score_disp
 					- TBD: for 'attack', check for target not exist in game in 'var_outcome' case
 					- TBD: for 'give', check for 'noun' in target creature inv
+					- TBD: implement '*' case for dir_obj
 					- TBD: 'attack hedgehog' case (dir_obj = '*')
 					- TBD: 'attack guard_goblin' case (dir_obj = 'shiny_sword')
 					- TBD: 'give shiny_sword to hedgehog' case (silver_key pts)
@@ -91,6 +94,7 @@ Version 3.81 Goals
 				- IDEA: for post action, final 15 pts should be based on mach run - not win or 'read'
 				- TBD: pts for winning mach
 			- TBD: clean up score_class(), static_gbl(), interp()
+			- TBD: [DOC] updated approach to score
 	- TBD: link front_gate score to opening door (???)
 	- IDEA: ideally, would have a tool module that calced & cached max_score to static_dict
 
