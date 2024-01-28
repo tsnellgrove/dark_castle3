@@ -107,33 +107,6 @@ static_dict = {
         'unlock' : {('front_gate', 'rusty_key') : 5}
 	},
 
-#	'score_dict' : {
-#        'take' : {'rusty_key' : 5},
-#        'take' : {'shiny_sword' : 10},
-#        'take' : {'hedgehog_broach' : 5},
-#        'take' : {'kinging_scroll' : 5},
-#        'open' : {'front_gate' : 5},
-#        'go' : {'throne_room' : 10},
-#        'wear' : {'royal_crown' : 10}        
-#	},
-
-
-#	'item_score_lst' : [
-#		'rusty_key',
-#		'shiny_sword',
-#		'silver_key',
-#		'kinging_scroll',
-#		'hedgehog_broach'
-#	],
-
-#	'worn_score_lst' : [
-#		'royal_crown'
-#	],
-
-#	'room_score_lst' : [
-#		'main_hall',
-#		'throne_room'
-#	],
 
 	'obj_in_game_lst' : [
         'royal_hedgehog',

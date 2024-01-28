@@ -67,35 +67,20 @@ class Score(object):
 ##        print(noun_str)
         if noun_str in gs.score.pts_earned_lst:
             return
-###        if verb_str not in gs.io.get_dict('score_event_dict'):
         if verb_str not in gs.io.get_dict('score_dict'):
             return
         if driobj_str == None:
             nouns_key = noun_str
         else:
             nouns_key = (noun_str, driobj_str)
-####            if noun_str in gs.io.get_dict_val('score_event_dict', verb_str):
-#####        if nouns_key in gs.io.get_dict_val('score_event_dict', verb_str):
         if nouns_key in gs.io.get_dict_val('score_dict', verb_str):
-###                self.print_points(gs, noun_str)
-###                self.score += gs.io.get_dict_val('score_val', score_key)
-####                self.score += gs.io.get_dict('score_dict')[verb_str][noun_str] # fix w/ getter!
                 self.score += gs.io.get_dict('score_dict')[verb_str][nouns_key] # fix w/ getter!
                 self.set_pts_earned(noun_str)
                 self.print_score(gs)
-####        else:
-####            pass
 ##            print(verb_str)
 ##            print(noun_str)
 ##            print(driobj_str)
-###            if [noun_str, driobj_str] in gs.io.get_dict_val('score_event_dict', verb_str):
-###                self.print_points(gs, noun_str)
         return
-
-
-
-
-
 
 
     def check_score(self, gs):
@@ -103,23 +88,6 @@ class Score(object):
         creature = gs.hero
 
         # increment item scores
-#        for score_key in gs.io.get_lst('item_score_lst'):
-#            if (not creature.hand_is_empty() and creature.get_hand_item().name == score_key
-#                    and not self.chk_pts_earned(score_key)):
-#                self.print_points(gs, score_key)
-
-        # increment worn scores
-#        for score_key in gs.io.get_lst('worn_score_lst'):
-#            worn_lst = creature.worn_lst
-#            if len(worn_lst) > 0:
-#                for garment in worn_lst:
-#                    if (garment.name == score_key and not self.chk_pts_earned(score_key)):
-#                        self.print_points(gs, score_key)
-
-        # increment room scores
-#        for score_key in gs.io.get_lst('room_score_lst'):
-#            if (room_obj.name == score_key and not self.chk_pts_earned(score_key)):
-#                self.print_points(gs, score_key)
 
         # obj not in game scores
         for score_key in gs.io.get_lst('obj_in_game_lst'):

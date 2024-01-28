@@ -82,11 +82,13 @@ Version 3.81 Goals
 					- INPROC: merge score_event_dict and score_val_dict
 						- DONE: address 'go' and '2_word' cases
 						- DONE: address basic 'prep' cases
-						- TBD: clean-up score_class() and static_gbl()
-						- TBD: fix double-dict call (create method)
+						- DONE: clean-up score_class() and static_gbl()
 						- TBD: fix max score calc
-						- TBD: more clean-up
-					- TBD: fix prep_verb noun vs. dirobj nomenclature once and for all!				
+						- TBD: fix double-dict call (create method)
+						- TBD: more clean-up: score_class(), static_dict()
+					- TBD: replace dirobj = None with alt str (maybe 'none')
+					- TBD: update score.pts_earned_lst to store 'noun_str'-'verb_str'-'dirobj_str'
+					- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
 				- TBD: address special case of 'var_outcome_verb_lst':
 					- TBD: add check for 'var_outcome_verb_lst' in score_disp
 					- TBD: for 'attack', check for target not exist in game in 'var_outcome' case
@@ -95,6 +97,7 @@ Version 3.81 Goals
 					- TBD: 'attack hedgehog' case (dir_obj = '*')
 					- TBD: 'attack guard_goblin' case (dir_obj = 'shiny_sword')
 					- TBD: 'give shiny_sword to hedgehog' case (silver_key pts)
+					- TBD: clean-up score_class(), static_dict, elminate 'unlock' score
 			- TBD: call from post_action()
 				- IDEA: for post_action() call, key = mach name
 				- IDEA: for post action, final 15 pts should be based on mach run - not win or 'read'
