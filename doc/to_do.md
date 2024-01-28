@@ -78,8 +78,11 @@ Version 3.81 Goals
 					- DONE: create score check for standard 'prep_verb' case (list of lists struct)
 					- DONE: test 'unlock gate with rusty_key' case
 					- DONE: set 'entrance' points to trigger on 'open gate'
-				- TBD: address architecture
-					- TBD: merge score_event_dict and score_val_dict
+				- INPROC: address architecture
+					- INPROC: merge score_event_dict and score_val_dict
+						- DONE: address for 'go' and '2_word' cases
+						- TBD: address for 'prep cases
+						- TBD: clean-up score_class() and static_gbl()
 					- TBD: fix prep_verb noun vs. dirobj nomenclature once and for all!				
 				- TBD: address special case of 'var_outcome_verb_lst':
 					- TBD: add check for 'var_outcome_verb_lst' in score_disp
