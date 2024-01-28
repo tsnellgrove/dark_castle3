@@ -86,8 +86,9 @@ Version 3.81 Goals
 						- TBD: fix max score calc
 						- TBD: fix double-dict call (create method)
 						- TBD: more clean-up: score_class(), static_dict()
-					- TBD: replace dirobj = None with alt str (maybe 'none')
 					- TBD: update score.pts_earned_lst to store 'noun_str'-'verb_str'-'dirobj_str'
+						- IDEA: replace dirobj = None with alt str (maybe 'none')
+						- IDEA: alternatively, maybe convert pts_earned_dict to holding tupples?
 					- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
 				- TBD: address special case of 'var_outcome_verb_lst':
 					- TBD: add check for 'var_outcome_verb_lst' in score_disp
