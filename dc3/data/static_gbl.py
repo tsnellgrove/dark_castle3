@@ -104,7 +104,7 @@ static_dict = {
         'open' : {'front_gate' : 5},
         'go' : {'throne_room' : 10},
         'wear' : {'royal_crown' : 10},
-        'unlock' : {['front_gate', 'rusty_key'], 5}
+        'unlock' : {('front_gate', 'rusty_key') : 5}
 	},
 
 #	'score_dict' : {

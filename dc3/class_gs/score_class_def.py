@@ -71,14 +71,20 @@ class Score(object):
         if verb_str not in gs.io.get_dict('score_dict'):
             return
         if driobj_str == None:
-            if noun_str in gs.io.get_dict_val('score_event_dict', verb_str):
+            nouns_key = noun_str
+        else:
+            nouns_key = (noun_str, driobj_str)
+####            if noun_str in gs.io.get_dict_val('score_event_dict', verb_str):
+#####        if nouns_key in gs.io.get_dict_val('score_event_dict', verb_str):
+        if nouns_key in gs.io.get_dict_val('score_dict', verb_str):
 ###                self.print_points(gs, noun_str)
 ###                self.score += gs.io.get_dict_val('score_val', score_key)
-                self.score += gs.io.get_dict('score_dict')[verb_str][noun_str] # fix w/ getter!
+####                self.score += gs.io.get_dict('score_dict')[verb_str][noun_str] # fix w/ getter!
+                self.score += gs.io.get_dict('score_dict')[verb_str][nouns_key] # fix w/ getter!
                 self.set_pts_earned(noun_str)
                 self.print_score(gs)
-        else:
-            pass
+####        else:
+####            pass
 ##            print(verb_str)
 ##            print(noun_str)
 ##            print(driobj_str)
