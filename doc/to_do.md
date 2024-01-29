@@ -83,7 +83,7 @@ Version 3.81 Goals
 						- DONE: address 'go' and '2_word' cases
 						- DONE: address basic 'prep' cases
 						- DONE: clean-up score_class() and static_gbl()
-						- TBD: fix max score calc
+						- DONE: fix max score calc
 						- TBD: fix double-dict call (create method)
 						- TBD: more clean-up: score_class(), static_dict()
 					- TBD: update score.pts_earned_lst to store 'noun_str'-'verb_str'-'dirobj_str'

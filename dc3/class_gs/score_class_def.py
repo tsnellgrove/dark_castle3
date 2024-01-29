@@ -46,15 +46,8 @@ class Score(object):
 
     def get_max_score(self, gs):
         max_score = 0
-#        for score_item in gs.io.get_dict('score_val'):
-#            if gs.io.get_dict_val('score_val', score_item) > 0:
-#                max_score += gs.io.get_dict_val('score_val', score_item)
         for verb in gs.io.get_dict('score_dict'):
-#            print(verb)
-#            print(gs.io.get_dict('score_dict')[verb])
-#            for nouns_key in gs.io.get_dict_val('score_val', verb):
             for nouns_key in gs.io.get_dict('score_dict')[verb]:
-#                print(nouns_key)
                 if gs.io.get_dict('score_dict')[verb][nouns_key] > 0:
                     max_score += gs.io.get_dict('score_dict')[verb][nouns_key] # fix with io getter
         max_score += 25 # temp correction for 'attack', 'give', and win_mach

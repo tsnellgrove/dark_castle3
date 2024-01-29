@@ -72,27 +72,27 @@ static_dict = {
 	},
 
 	'score_val' : {
-		'rusty_key' : 5,
-        'front_gate' : 5,
-		'shiny_sword' : 10,
-		'throne_room' : 10,
+#		'rusty_key' : 5,
+#        'front_gate' : 5,
+#		'shiny_sword' : 10,
+#		'throne_room' : 10,
 		'silver_key' : 5,
-		'kinging_scroll' : 5,
-		'royal_crown' : 10,
-		'hedgehog_broach' : 5,
+#		'kinging_scroll' : 5,
+#		'royal_crown' : 10,
+#		'hedgehog_broach' : 5,
         'royal_hedgehog' : -20,
 		'game_won' : 15,
         'guard_goblin' : 5
 	},
 
-	'score_event_dict' : {
-        'take' : ['rusty_key', 'shiny_sword', 'kinging_scroll', 'hedgehog_broach'],
-        'wear' : ['royal_crown'],
-        'go' : ['throne_room'],
-        'open' : ['front_gate']
+#	'score_event_dict' : {
+#        'take' : ['rusty_key', 'shiny_sword', 'kinging_scroll', 'hedgehog_broach'],
+#        'wear' : ['royal_crown'],
+#        'go' : ['throne_room'],
+#        'open' : ['front_gate']
 ##        'unlock' : [['front_gate', 'rusty_key']]
 #        'attack' : ['royal_hedgehog', 'guard_goblin']
-	},
+#	},
 
 	'score_dict' : {
         'take' : {
