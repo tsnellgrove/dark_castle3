@@ -78,31 +78,34 @@ Version 3.81 Goals
 					- DONE: create score check for standard 'prep_verb' case (list of lists struct)
 					- DONE: test 'unlock gate with rusty_key' case
 					- DONE: set 'entrance' points to trigger on 'open gate'
-				- INPROC: address architecture
+				- DONE: address architecture
 					- DONE: merge score_event_dict and score_val_dict
 						- DONE: address 'go' and '2_word' cases
 						- DONE: address basic 'prep' cases
 						- DONE: clean-up score_class() and static_gbl()
 						- DONE: fix max score calc
-					- TBD: update score.pts_earned_lst to store 'noun_str'-'verb_str'-'dirobj_str'
-						- IDEA: replace dirobj = None with alt str (maybe 'none')
-						- IDEA: alternatively, maybe convert pts_earned_dict to holding tupples?
-					- TBD: fix double-dict call - create score_class() method
-					- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
-					- TBD: more clean-up: score_class(), static_dict()
+					- DONE: update score.pts_earned_lst to store 'noun_str'-'verb_str'-'dirobj_str'
+						- CANCEL: replace dirobj = None with alt str (maybe 'none')
+						- DONE: alternatively, maybe convert pts_earned_dict to holding tupples?
 				- TBD: address special case of 'var_outcome_verb_lst':
+					- TBD: add vanilla case of 'give' and 'attack'
+						- TBD: 'attack guard_goblin' case (dir_obj = 'shiny_sword')
+						- TBD: 'give shiny_sword to hedgehog' case (silver_key pts)
+						- TBD: 'attack hedgehog' case (dir_obj = 'shiny_sword', 'grimy_axe)
+					- TBD: test false case
 					- TBD: add check for 'var_outcome_verb_lst' in score_disp
 					- TBD: for 'attack', check for target not exist in game in 'var_outcome' case
 					- TBD: for 'give', check for 'noun' in target creature inv
 					- TBD: implement '*' case for dir_obj
 					- TBD: 'attack hedgehog' case (dir_obj = '*')
-					- TBD: 'attack guard_goblin' case (dir_obj = 'shiny_sword')
-					- TBD: 'give shiny_sword to hedgehog' case (silver_key pts)
 					- TBD: clean-up score_class(), static_dict, elminate 'unlock' score
 			- TBD: call from post_action()
 				- IDEA: for post_action() call, key = mach name
 				- IDEA: for post action, final 15 pts should be based on mach run - not win or 'read'
 				- TBD: pts for winning mach
+			- TBD: fixes
+				- TBD: fix double-dict call - create score_class() method
+				- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
 			- TBD: clean up score_class(), static_gbl(), interp()
 			- TBD: [DOC] updated approach to score
 	- TBD: link front_gate score to opening door (???)
