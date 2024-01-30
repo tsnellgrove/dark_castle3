@@ -79,17 +79,17 @@ Version 3.81 Goals
 					- DONE: test 'unlock gate with rusty_key' case
 					- DONE: set 'entrance' points to trigger on 'open gate'
 				- INPROC: address architecture
-					- INPROC: merge score_event_dict and score_val_dict
+					- DONE: merge score_event_dict and score_val_dict
 						- DONE: address 'go' and '2_word' cases
 						- DONE: address basic 'prep' cases
 						- DONE: clean-up score_class() and static_gbl()
 						- DONE: fix max score calc
-						- TBD: fix double-dict call (create method)
-						- TBD: more clean-up: score_class(), static_dict()
 					- TBD: update score.pts_earned_lst to store 'noun_str'-'verb_str'-'dirobj_str'
 						- IDEA: replace dirobj = None with alt str (maybe 'none')
 						- IDEA: alternatively, maybe convert pts_earned_dict to holding tupples?
+					- TBD: fix double-dict call - create score_class() method
 					- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
+					- TBD: more clean-up: score_class(), static_dict()
 				- TBD: address special case of 'var_outcome_verb_lst':
 					- TBD: add check for 'var_outcome_verb_lst' in score_disp
 					- TBD: for 'attack', check for target not exist in game in 'var_outcome' case
