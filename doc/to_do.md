@@ -88,16 +88,17 @@ Version 3.81 Goals
 						- CANCEL: replace dirobj = None with alt str (maybe 'none')
 						- DONE: alternatively, maybe convert pts_earned_dict to holding tupples?
 				- INPROC: address special case of 'var_outcome_verb_lst':
-					- INPROC: add vanilla case of 'give' and 'attack'
-						- INPROC: 'attack guard_goblin' case (dir_obj = 'shiny_sword')
-						- TBD: 'give shiny_sword to hedgehog' case (silver_key pts)
-						- TBD: 'attack hedgehog' case (dir_obj = 'shiny_sword', 'grimy_axe)
-					- TBD: test false case
-					- TBD: add check for 'var_outcome_verb_lst' in score_disp
-					- TBD: for 'attack', check for target not exist in game in 'var_outcome' case
-					- TBD: for 'give', check for 'noun' in target creature inv
+					- DONE: add vanilla case of 'give' and 'attack'
+						- DONE: 'attack guard_goblin' case (dir_obj = 'shiny_sword')
+						- DONE: 'give shiny_sword to hedgehog' case (silver_key pts)
+						- DONE: 'attack hedgehog' case (dir_obj = 'shiny_sword', 'grimy_axe)
+					- TBD: address variable outcome verbs
+						- TBD: test false case
+						- TBD: add check for 'var_outcome_verb_lst' in score_disp
+						- TBD: for 'attack', check for target not exist in game in 'var_outcome' case
+						- TBD: for 'give', check for 'noun' in target creature inv
 					- TBD: implement '*' case for dir_obj
-					- TBD: 'attack hedgehog' case (dir_obj = '*')
+						- TBD: 'attack hedgehog' case (dir_obj = '*')
 					- TBD: clean-up score_class(), static_dict, elminate 'unlock' score
 			- TBD: call from post_action()
 				- IDEA: for post_action() call, key = mach name

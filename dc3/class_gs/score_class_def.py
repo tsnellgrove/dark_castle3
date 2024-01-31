@@ -66,7 +66,9 @@ class Score(object):
 
 
     def disp_score(self, verb_str, noun_str, driobj_str, gs):
-##        print(noun_str)
+#        print(verb_str)
+#        print(noun_str)
+#        print(driobj_str)
         if (verb_str,noun_str,driobj_str) in gs.score.pts_earned_lst:
             return
         if verb_str not in gs.io.get_dict('score_dict'):
@@ -75,13 +77,11 @@ class Score(object):
             subj_key = noun_str
         else:
             subj_key = (noun_str, driobj_str)
+ #       print(subj_key)
         if subj_key in gs.io.get_dict_val('score_dict', verb_str):
                 self.score += gs.io.get_dict('score_dict')[verb_str][subj_key] # fix w/ getter!
                 self.pts_earned_lst.append((verb_str,noun_str,driobj_str))
                 self.print_score(gs)
-##            print(verb_str)
-##            print(noun_str)
-##            print(driobj_str)
         return
 
 

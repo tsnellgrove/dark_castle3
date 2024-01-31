@@ -105,10 +105,12 @@ static_dict = {
         'go' : {'throne_room' : 10},
         'wear' : {'royal_crown' : 10},
         'unlock' : {('front_gate', 'rusty_key') : 5},
-        'give' : {('silver_key', 'royal_hedgehog') : 5},
-        'attack' : {('shiny_sword', 'guard_goblin') : 5},
-        'attack' : {('shiny_sword', 'royal_hedgehog') : -20},
-        'attack' : {('grimy_axe', 'royal_hedgehog') : -20}
+        'give' : {('royal_hedgehog', 'shiny_sword') : 5},
+        'attack' : {
+            	('guard_goblin', 'shiny_sword') : 5,
+        		('royal_hedgehog', 'shiny_sword') : -20,
+        		('royal_hedgehog', 'grimy_axe') : -20
+                }
 	},
 
 
