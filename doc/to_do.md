@@ -87,9 +87,9 @@ Version 3.81 Goals
 					- DONE: update score.pts_earned_lst to store 'noun_str'-'verb_str'-'dirobj_str'
 						- CANCEL: replace dirobj = None with alt str (maybe 'none')
 						- DONE: alternatively, maybe convert pts_earned_dict to holding tupples?
-				- TBD: address special case of 'var_outcome_verb_lst':
-					- TBD: add vanilla case of 'give' and 'attack'
-						- TBD: 'attack guard_goblin' case (dir_obj = 'shiny_sword')
+				- INPROC: address special case of 'var_outcome_verb_lst':
+					- INPROC: add vanilla case of 'give' and 'attack'
+						- INPROC: 'attack guard_goblin' case (dir_obj = 'shiny_sword')
 						- TBD: 'give shiny_sword to hedgehog' case (silver_key pts)
 						- TBD: 'attack hedgehog' case (dir_obj = 'shiny_sword', 'grimy_axe)
 					- TBD: test false case

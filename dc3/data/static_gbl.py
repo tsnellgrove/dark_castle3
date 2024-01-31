@@ -104,14 +104,18 @@ static_dict = {
         'open' : {'front_gate' : 5},
         'go' : {'throne_room' : 10},
         'wear' : {'royal_crown' : 10},
-        'unlock' : {('front_gate', 'rusty_key') : 5}
+        'unlock' : {('front_gate', 'rusty_key') : 5},
+        'give' : {('silver_key', 'royal_hedgehog') : 5},
+        'attack' : {('shiny_sword', 'guard_goblin') : 5},
+        'attack' : {('shiny_sword', 'royal_hedgehog') : -20},
+        'attack' : {('grimy_axe', 'royal_hedgehog') : -20}
 	},
 
 
-	'obj_in_game_lst' : [
-        'royal_hedgehog',
-        'guard_goblin'
-	],
+#	'obj_in_game_lst' : [
+#        'royal_hedgehog',
+#        'guard_goblin'
+#	],
 
 	#### ONE WORD & ERRORS ####
 
