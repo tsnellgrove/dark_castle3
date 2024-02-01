@@ -57,10 +57,10 @@ Version 3.81 Goals
 		- DONE: create 'score_event_dict' in static_dict
 			- IDEA: lookup scorable events in dict of lists with key = verb (e.g. 'take')
 		- DONE: create alt score method in score_class
-		- INPROC: call from cmd_exe() and post_action()
+		- DONE: call from cmd_exe() and post_action()
 			- DONE: call from cmd_exe() 'go' case
 			- DONE: call from cmd_exe() '2-word' case
-			- INPROC: call from cmd_exe() 'prep' case (attack)
+			- DONE: call from cmd_exe() 'prep' case (attack)
 				- IDEA: new ideas for 'prep verbs':
 					- IDEA: prep case may sometimes require noun and dir_obj
 					- IDEA: other times, noun and '*'
@@ -87,28 +87,35 @@ Version 3.81 Goals
 					- DONE: update score.pts_earned_lst to store 'noun_str'-'verb_str'-'dirobj_str'
 						- CANCEL: replace dirobj = None with alt str (maybe 'none')
 						- DONE: alternatively, maybe convert pts_earned_dict to holding tupples?
-				- INPROC: address special case of 'var_outcome_verb_lst':
-					- DONE: add vanilla case of 'give' and 'attack'
-						- DONE: 'attack guard_goblin' case (dir_obj = 'shiny_sword')
-						- DONE: 'give shiny_sword to hedgehog' case (silver_key pts)
-						- DONE: 'attack hedgehog' case (dir_obj = 'shiny_sword', 'grimy_axe)
-					- TBD: address variable outcome verbs
-						- TBD: test false case
-						- TBD: add check for 'var_outcome_verb_lst' in score_disp
-						- TBD: for 'attack', check for target not exist in game in 'var_outcome' case
-						- TBD: for 'give', check for 'noun' in target creature inv
-					- TBD: implement '*' case for dir_obj
-						- TBD: 'attack hedgehog' case (dir_obj = '*')
-					- TBD: clean-up score_class(), static_dict, elminate 'unlock' score
-			- TBD: call from post_action()
+				- DONE: add vanilla case of 'give' and 'attack'
+					- DONE: 'attack guard_goblin' case (dir_obj = 'shiny_sword')
+					- DONE: 'give shiny_sword to hedgehog' case (silver_key pts)
+					- DONE: 'attack hedgehog' case (dir_obj = 'shiny_sword', 'grimy_axe)
+			- INPROC: call from post_action()
 				- IDEA: for post_action() call, key = mach name
 				- IDEA: for post action, final 15 pts should be based on mach run - not win or 'read'
 				- TBD: pts for winning mach
-			- TBD: fixes
-				- TBD: fix double-dict call - create score_class() method
-				- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
-			- TBD: clean up score_class(), static_gbl(), interp()
-			- TBD: [DOC] updated approach to score
+					- TBD: update result_exe() to return result.name
+					- TBD: update pre_act() and post_act() to accept result.name return
+					- TBD: update post_act() to call score_disp(mach.name, result.name, None)
+					- TBD: update score_dict in static_dict to include entry for 'mach' {'result' : <score>}
+					- TBD: test
+					- TBD: clean-up score_dict & static_dict
+					- TBD: [DOC] update mach doc to mention result.name return
+			- TBD: address special case of 'var_outcome_verb_lst' (?)
+				- TBD: address variable outcome verbs
+					- TBD: test false case
+					- TBD: add check for 'var_outcome_verb_lst' in score_disp
+					- TBD: for 'attack', check for target not exist in game in 'var_outcome' case
+					- TBD: for 'give', check for 'noun' in target creature inv
+				- TBD: implement '*' case for dir_obj
+					- TBD: 'attack hedgehog' case (dir_obj = '*')
+				- TBD: clean-up score_class(), static_dict, elminate 'unlock' score
+		- TBD: fixes
+			- TBD: fix double-dict call - create score_class() method
+			- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
+		- TBD: clean up score_class(), static_gbl(), interp()
+		- TBD: [DOC] updated approach to score
 	- TBD: link front_gate score to opening door (???)
 	- IDEA: ideally, would have a tool module that calced & cached max_score to static_dict
 
