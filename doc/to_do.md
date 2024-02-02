@@ -94,12 +94,13 @@ Version 3.81 Goals
 			- INPROC: call from post_action()
 				- IDEA: for post_action() call, key = mach name
 				- IDEA: for post action, final 15 pts should be based on mach run - not win or 'read'
-				- TBD: pts for winning mach
-					- TBD: update result_exe() to return result.name
-					- TBD: update pre_act() and post_act() to accept result.name return
-					- TBD: update post_act() to call score_disp(mach.name, result.name, None)
-					- TBD: update score_dict in static_dict to include entry for 'mach' {'result' : <score>}
-					- TBD: test
+				- INPROC: pts for winning mach
+					- DONE: update run_mach() to return result.name
+					- DONE: update pre_act() and post_act() to accept result.name return
+					- DONE: update post_act() (cmd case) to call score_disp(mach.name, result.name, None)
+					- DONE: update post_act() (switch case) to call score_disp(mach.name, result.name, None)
+					- DONE: update score_dict in static_dict to include entry for 'mach' {'result' : <score>}
+					- TBD: test ('get sword' not working)
 					- TBD: clean-up score_dict & static_dict
 					- TBD: [DOC] update mach doc to mention result.name return
 			- TBD: address special case of 'var_outcome_verb_lst' (?)

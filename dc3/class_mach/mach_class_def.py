@@ -101,7 +101,7 @@ class MachineMixIn(object):
 		result = self.result_lst[result_index]
 		temp_mach_state, cmd_override = result.result_exe(gs, self.mach_state)
 		self.mach_state = temp_mach_state
-		return cmd_override
+		return cmd_override, result.name
 
 class InvisMach(MachineMixIn, Invisible):
 	def __init__(self, name, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
