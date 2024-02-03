@@ -91,10 +91,10 @@ Version 3.81 Goals
 					- DONE: 'attack guard_goblin' case (dir_obj = 'shiny_sword')
 					- DONE: 'give shiny_sword to hedgehog' case (silver_key pts)
 					- DONE: 'attack hedgehog' case (dir_obj = 'shiny_sword', 'grimy_axe)
-			- INPROC: call from post_action()
+			- DONE: call from post_action()
 				- IDEA: for post_action() call, key = mach name
 				- IDEA: for post action, final 15 pts should be based on mach run - not win or 'read'
-				- INPROC: pts for winning mach
+				- DONE: pts for winning mach
 					- DONE: update run_mach() to return result.name
 					- DONE: update pre_act() and post_act() to accept result.name return
 					- DONE: update post_act() (cmd case) to call score_disp(mach.name, result.name, None)
@@ -102,7 +102,7 @@ Version 3.81 Goals
 					- DONE: update score_dict in static_dict to include entry for 'mach' {'result' : <score>}
 					- DONE: test ('get sword' not working)
 					- DONE: elminate 'unlock' score
-					- TBD: clean-up app_main(), score_dict & static_dict
+					- DONE: clean-up app_main(), score_dict & static_dict
 			- TBD: address special case of 'var_outcome_verb_lst' (?)
 				- TBD: address variable outcome verbs
 					- TBD: test false case
@@ -118,7 +118,15 @@ Version 3.81 Goals
 		- TBD: clean up score_class(), static_gbl(), interp()
 	- TBD: document
 		- TBD: [DOC] updated approach to score
-		- TBD: [DOC] update mach doc to mention result.name return
+			- instead of checking every score item every turn, from app_main()...
+			- just check relevant actions from cmd_exe() and post_act() [because are validate successful]
+			- scoring should also be the result of palyer action so don't need to check on pre_act / auto_act
+			- store earned points as tupples of verb, noun, dir_obj 
+			- (provides unique identifier vs. only one score per noun - e.g. open vs. unlock front_gate)
+			- some verbs - even when succuessful - have variable outcomes (e.g 'give', 'attack')...
+			- best to check these for successful execution 
+			- also nice to have '*' option for dir_obj (avoids listing all weapons for 'attack hedgehog')
+			- also, update run_mach doc to mention result.name return
 	- DONE: link front_gate score to opening door
 
 - CANCEL: moves and titles (=> NO, keep these where they are)

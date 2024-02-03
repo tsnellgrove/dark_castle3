@@ -35,16 +35,6 @@ class Score(object):
         self._pts_earned_lst = new_lst
 
     ### score methods ###
-##    def chk_pts_earned(self, score_key):
-#        if score_key in self.pts_earned_lst:
-#            return True
-#        return False
-##        return score_key in self.pts_earned_lst
-
-#    def set_pts_earned(self, score_key):
-#        self.pts_earned_lst.append(score_key)
-#        return
-
     def get_max_score(self, gs):
         max_score = 0
         for verb in gs.io.get_dict('score_dict'):
@@ -57,12 +47,6 @@ class Score(object):
         output1 = ("Your score is now " + str(self.score))
         output2 = (" out of " + str(self.get_max_score(gs)))
         gs.io.buffer(output1 + output2)
-
-#    def print_points(self, gs, score_key):
-#        self.score += gs.io.get_dict_val('score_val', score_key)
-#        self.set_pts_earned(score_key)
-#        self.print_score(gs)
-
 
     def disp_score(self, verb_str, noun_str, driobj_str, gs):
         if (verb_str,noun_str,driobj_str) in gs.score.pts_earned_lst:
@@ -77,24 +61,4 @@ class Score(object):
                 self.score += gs.io.get_dict('score_dict')[verb_str][subj_key] # fix w/ getter!
                 self.pts_earned_lst.append((verb_str,noun_str,driobj_str))
                 self.print_score(gs)
-        return
-
-
-#    def check_score(self, gs):
-#        room_obj = gs.map.get_hero_rm(gs)
-#        creature = gs.hero
-
-        # increment item scores
-
-        # obj not in game scores
-#        for score_key in gs.io.get_lst('obj_in_game_lst'):
-#            if (not gs.map.chk_name_exist(score_key) and not self.chk_pts_earned(score_key)):
-#                self.print_points(gs, score_key)
-
-#        score_key = 'game_won'
-#        game_ending = gs.get_game_ending()
-#        if game_ending == 'won':
-#            self.score += gs.io.get_dict_val('score_val', score_key)
-
-#        return
-    
+        return    

@@ -15,7 +15,6 @@ static_dict = {
 
 	### universal constants ###
 	'version' : '3.79',
-##	'max_score' : 75,
 
 	### interp lists ###
 
@@ -57,7 +56,7 @@ static_dict = {
         'q' : 'quit'
 	},
 
-	### score lists ###
+	### title and score dicts ###
 	'titles_by_score' : {
 		-10: 'Burt the Best Forgotten',
 		0: 'Burt the Baker', # was 'Burt the Boneheaded'
@@ -70,29 +69,6 @@ static_dict = {
 		70: 'Burt the Bodacious',
 		80: 'Burt the Bold, Baron of Bright Castle'
 	},
-
-#	'score_val' : {
-#		'rusty_key' : 5,
-#        'front_gate' : 5,
-#		'shiny_sword' : 10,
-#		'throne_room' : 10,
-#		'silver_key' : 5,
-#		'kinging_scroll' : 5,
-#		'royal_crown' : 10,
-#		'hedgehog_broach' : 5,
-#        'royal_hedgehog' : -20,
-#		'game_won' : 15,
-#        'guard_goblin' : 5
-#	},
-
-#	'score_event_dict' : {
-#        'take' : ['rusty_key', 'shiny_sword', 'kinging_scroll', 'hedgehog_broach'],
-#        'wear' : ['royal_crown'],
-#        'go' : ['throne_room'],
-#        'open' : ['front_gate']
-##        'unlock' : [['front_gate', 'rusty_key']]
-#        'attack' : ['royal_hedgehog', 'guard_goblin']
-#	},
 
 	'score_dict' : {
         'take' : {
@@ -114,11 +90,6 @@ static_dict = {
         'kinging_scroll' : {'scroll_win_game_result' : 15}
 	},
 
-
-#	'obj_in_game_lst' : [
-#        'royal_hedgehog',
-#        'guard_goblin'
-#	],
 
 	#### ONE WORD & ERRORS ####
 
