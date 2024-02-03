@@ -50,7 +50,7 @@ class Score(object):
             for nouns_key in gs.io.get_dict('score_dict')[verb]:
                 if gs.io.get_dict('score_dict')[verb][nouns_key] > 0:
                     max_score += gs.io.get_dict('score_dict')[verb][nouns_key] # fix with io getter
-        max_score += 15 # temp correction for 'attack', 'give', and win_mach
+#        max_score += 15 # temp correction for 'attack', 'give', and win_mach
         return max_score
 
     def print_score(self, gs):
@@ -96,10 +96,10 @@ class Score(object):
 #            if (not gs.map.chk_name_exist(score_key) and not self.chk_pts_earned(score_key)):
 #                self.print_points(gs, score_key)
 
-        score_key = 'game_won'
-        game_ending = gs.get_game_ending()
-        if game_ending == 'won':
-            self.score += gs.io.get_dict_val('score_val', score_key)
+#        score_key = 'game_won'
+#        game_ending = gs.get_game_ending()
+#        if game_ending == 'won':
+#            self.score += gs.io.get_dict_val('score_val', score_key)
 
         return
     

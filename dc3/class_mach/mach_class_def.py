@@ -209,7 +209,7 @@ class Warning(Invisible):
 				gs.io.buffer("I'm not sure that's a good idea Burt...")
 		elif self.warn_count == self.warn_max:
 			gs.io.buffer("Don't say I didn't warn you Burt...")
-		return cmd_override
+		return cmd_override, cmd_override
 
 
 class Timer(Invisible):
@@ -308,7 +308,7 @@ class Timer(Invisible):
 
 ##				print(self.name, self.timer_count, self.timer_max, self.active, self.timer_done) # for timer troubleshooting
 
-		return cmd_override
+		return cmd_override, cmd_override
 
 	def start(self):
 		self.active = True
