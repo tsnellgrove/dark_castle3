@@ -118,6 +118,7 @@ Version 3.81 Goals
 		- TBD: clean up score_class(), static_gbl(), interp()
 	- TBD: document
 		- TBD: [DOC] updated approach to score
+			- state-based scoring => action-based scoring (state takes code to inspect)
 			- instead of checking every score item every turn, from app_main()...
 			- just check relevant actions from cmd_exe() and post_act() [because are validate successful]
 			- scoring should also be the result of palyer action so don't need to check on pre_act / auto_act
