@@ -118,6 +118,7 @@ Version 3.81 Goals
 		- TBD: clean up score_class(), static_gbl(), interp()
 	- TBD: document
 		- TBD: [DOC] updated approach to score
+			- score refactor from module & gs attributes to subclass of gs w/ attributes & methods
 			- state-based scoring => action-based scoring (state takes code to inspect)
 			- instead of checking every score item every turn, from app_main()...
 			- just check relevant actions from cmd_exe() and post_act() [because are validate successful]
