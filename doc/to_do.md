@@ -100,9 +100,9 @@ Version 3.81 Goals
 					- DONE: update post_act() (cmd case) to call score_disp(mach.name, result.name, None)
 					- DONE: update post_act() (switch case) to call score_disp(mach.name, result.name, None)
 					- DONE: update score_dict in static_dict to include entry for 'mach' {'result' : <score>}
-					- TBD: test ('get sword' not working)
-					- TBD: clean-up score_dict & static_dict
-					- TBD: [DOC] update mach doc to mention result.name return
+					- DONE: test ('get sword' not working)
+					- DONE: elminate 'unlock' score
+					- TBD: clean-up app_main(), score_dict & static_dict
 			- TBD: address special case of 'var_outcome_verb_lst' (?)
 				- TBD: address variable outcome verbs
 					- TBD: test false case
@@ -111,19 +111,20 @@ Version 3.81 Goals
 					- TBD: for 'give', check for 'noun' in target creature inv
 				- TBD: implement '*' case for dir_obj
 					- TBD: 'attack hedgehog' case (dir_obj = '*')
-				- TBD: clean-up score_class(), static_dict, elminate 'unlock' score
+				- TBD: clean-up score_class(), static_dict
 		- TBD: fixes
 			- TBD: fix double-dict call - create score_class() method
 			- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
 		- TBD: clean up score_class(), static_gbl(), interp()
+	- TBD: document
 		- TBD: [DOC] updated approach to score
-	- TBD: link front_gate score to opening door (???)
-	- IDEA: ideally, would have a tool module that calced & cached max_score to static_dict
+		- TBD: [DOC] update mach doc to mention result.name return
+	- DONE: link front_gate score to opening door
 
-- TBD: moves and titles (=> NO, keep these where they are)
-	- TBD: incorporate move count into score sub-class and create get_moves() method
-	- TBD: migrate title to score()
-	- TBD: turn title calc into get_title() method as well (pull from ending() )
+- CANCEL: moves and titles (=> NO, keep these where they are)
+	- CANCEL: incorporate move count into score sub-class and create get_moves() method
+	- CANCEL: migrate title to score()
+	- CANCEL: turn title calc into get_title() method as well (pull from ending() )
 
 
 # *** FUTURE TO DO *** #
@@ -166,6 +167,8 @@ Version 3.81 Goals
 	- TBD: refactor GameState & dicts in static_gbl() with dunder methods ( __getattr__ and __setattr__ )
 		- LINK: see: https://stackoverflow.com/questions/10761779/when-to-use-getattr
 		- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (and s__setattr__ for future tools)
+
+- IDEA: ideally, would have a tool module that calced & cached max_score to static_dict
 
 - TBD: debug
 	- TBD: fix debug capacity() to work with creatures (?)

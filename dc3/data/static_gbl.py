@@ -71,19 +71,19 @@ static_dict = {
 		80: 'Burt the Bold, Baron of Bright Castle'
 	},
 
-	'score_val' : {
+#	'score_val' : {
 #		'rusty_key' : 5,
 #        'front_gate' : 5,
 #		'shiny_sword' : 10,
 #		'throne_room' : 10,
-		'silver_key' : 5,
+#		'silver_key' : 5,
 #		'kinging_scroll' : 5,
 #		'royal_crown' : 10,
 #		'hedgehog_broach' : 5,
-        'royal_hedgehog' : -20,
-		'game_won' : 15,
-        'guard_goblin' : 5
-	},
+#        'royal_hedgehog' : -20,
+#		'game_won' : 15,
+#        'guard_goblin' : 5
+#	},
 
 #	'score_event_dict' : {
 #        'take' : ['rusty_key', 'shiny_sword', 'kinging_scroll', 'hedgehog_broach'],

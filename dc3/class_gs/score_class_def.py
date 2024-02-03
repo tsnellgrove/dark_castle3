@@ -35,14 +35,15 @@ class Score(object):
         self._pts_earned_lst = new_lst
 
     ### score methods ###
-    def chk_pts_earned(self, score_key):
-        if score_key in self.pts_earned_lst:
-            return True
-        return False
+##    def chk_pts_earned(self, score_key):
+#        if score_key in self.pts_earned_lst:
+#            return True
+#        return False
+##        return score_key in self.pts_earned_lst
 
-    def set_pts_earned(self, score_key):
-        self.pts_earned_lst.append(score_key)
-        return
+#    def set_pts_earned(self, score_key):
+#        self.pts_earned_lst.append(score_key)
+#        return
 
     def get_max_score(self, gs):
         max_score = 0
@@ -50,25 +51,20 @@ class Score(object):
             for nouns_key in gs.io.get_dict('score_dict')[verb]:
                 if gs.io.get_dict('score_dict')[verb][nouns_key] > 0:
                     max_score += gs.io.get_dict('score_dict')[verb][nouns_key] # fix with io getter
-#        max_score += 15 # temp correction for 'attack', 'give', and win_mach
         return max_score
 
     def print_score(self, gs):
         output1 = ("Your score is now " + str(self.score))
-##        output2 = (" out of " + str(gs.io.get_str_nr('max_score')))
         output2 = (" out of " + str(self.get_max_score(gs)))
         gs.io.buffer(output1 + output2)
 
-    def print_points(self, gs, score_key):
-        self.score += gs.io.get_dict_val('score_val', score_key)
-        self.set_pts_earned(score_key)
-        self.print_score(gs)
+#    def print_points(self, gs, score_key):
+#        self.score += gs.io.get_dict_val('score_val', score_key)
+#        self.set_pts_earned(score_key)
+#        self.print_score(gs)
 
 
     def disp_score(self, verb_str, noun_str, driobj_str, gs):
-#        print(verb_str)
-#        print(noun_str)
-#        print(driobj_str)
         if (verb_str,noun_str,driobj_str) in gs.score.pts_earned_lst:
             return
         if verb_str not in gs.io.get_dict('score_dict'):
@@ -77,7 +73,6 @@ class Score(object):
             subj_key = noun_str
         else:
             subj_key = (noun_str, driobj_str)
- #       print(subj_key)
         if subj_key in gs.io.get_dict_val('score_dict', verb_str):
                 self.score += gs.io.get_dict('score_dict')[verb_str][subj_key] # fix w/ getter!
                 self.pts_earned_lst.append((verb_str,noun_str,driobj_str))
@@ -85,9 +80,9 @@ class Score(object):
         return
 
 
-    def check_score(self, gs):
-        room_obj = gs.map.get_hero_rm(gs)
-        creature = gs.hero
+#    def check_score(self, gs):
+#        room_obj = gs.map.get_hero_rm(gs)
+#        creature = gs.hero
 
         # increment item scores
 
@@ -101,5 +96,5 @@ class Score(object):
 #        if game_ending == 'won':
 #            self.score += gs.io.get_dict_val('score_val', score_key)
 
-        return
+#        return
     
