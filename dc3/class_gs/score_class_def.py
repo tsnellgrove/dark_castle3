@@ -57,8 +57,15 @@ class Score(object):
             subj_key = noun_str
         else:
             subj_key = (noun_str, driobj_str)
-        if subj_key in gs.io.get_dict_val('score_dict', verb_str):
-                self.score += gs.io.get_dict('score_dict')[verb_str][subj_key] # fix w/ getter!
-                self.pts_earned_lst.append((verb_str,noun_str,driobj_str))
-                self.print_score(gs)
+        if subj_key not in gs.io.get_dict_val('score_dict', verb_str):
+            return
+        # variable outcome verb special cases
+        if verb_str == 'attack' and gs.map.chk_name_exist(noun_str):
+            return
+        if verb_str == 'give' and not gs.map.get_obj_from_name(noun_str, gs).chk_contain_name(driobj_str):
+            return
+        # score action is successful
+        self.score += gs.io.get_dict('score_dict')[verb_str][subj_key] # fix w/ getter!
+        self.pts_earned_lst.append((verb_str,noun_str,driobj_str))
+        self.print_score(gs)
         return    

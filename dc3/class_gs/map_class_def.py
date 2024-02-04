@@ -57,6 +57,12 @@ class Map(object):
 		"""
 		return any(obj.name == name for room in self.get_room_lst() for obj in room.floor_lst)
 
+	def get_obj_from_name(self, name_str, gs): # room = hero_room ; search limited to room floor
+		room = self.get_hero_rm(gs)
+		for obj in room.floor_lst:
+			if obj.name == name_str:
+				return obj
+		raise ValueError('An obj with name name_str was not found in hero_rm.')
 
 	def get_obj_room(self, obj, gs, lst=None):
 		""" Returns the room that contains obj

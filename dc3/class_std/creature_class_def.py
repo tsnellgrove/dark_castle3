@@ -232,6 +232,12 @@ class Creature(ViewOnly):
 
 
 	# *** creature-specific scope methods ***
+	def chk_contain_name(self, name_str): # does NOT check in containers; used in disp_score to validate 'give'
+		for obj in self.hand_lst + self.bkpk_lst + self.worn_lst:
+			if obj.name == name_str:
+				return True
+		return False
+
 	def is_contained(self, gs): # only works for Creature class; not generalized for other obj
 		return self not in gs.map.get_obj_room(self, gs).floor_lst
 
