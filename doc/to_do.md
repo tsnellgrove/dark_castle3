@@ -167,6 +167,24 @@ Version 3.81 Goals
 	- update io() calls to include optional dict attribute (game_static_dict by default)
 	- update method calls for eng_static_dict to include over-ride
 	- review error messages not in static_dict and remove any "burt" refs
+- IDEA: more thinking on this topic:
+	- tactical: 
+		- separate version numbers for game and engine
+		- separate static_dict for engine vs. game (remove Burt refs from Engine text)
+		- separate folder for game; contains game_static_dict
+		- also, one-time setup function (like mk_def_pkl() ) that calculates static values for a game version
+			- max_score; lives in game_ver_static_dict
+			- str_to_obj_idx = a dict that converts name_str to obj; lives in game_ver_static_dict or gs (?)
+	- strategic:
+		- think engine that supports multi-game, multi-player, multi-instance
+			- engine = modules & static_dict
+			- game = obj_pkl & game_ver_static_dict
+			- user = user_id, game_instance_saves
+			- instance = save games
+		- most static data is based on game version (e.g. most text; also max_score)
+		- but some static data is based on game instance (e.g. randome # for portcullis => gs)
+
+
 
 - SOMEDAY / MAYBE:
 	- do we need user_input == secret word to trigger startup()? Can't we just pass boolean?
