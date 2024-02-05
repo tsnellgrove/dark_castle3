@@ -113,6 +113,7 @@ Version 3.81 Goals
 					- DONE: normalize score_dict keys (all tupples)
 					- INPROC: 'attack hedgehog' case (dir_obj = '*')
 						- TBD: troubleshooting => need to update subj_key for pts at bottom of method
+						- IDEA: need to sort out correct key (regular or wildcard) early in disp_score()
 				- TBD: clean-up score_class(), static_dict
 		- TBD: fixes
 			- TBD: fix double-dict call - create score_class() method
