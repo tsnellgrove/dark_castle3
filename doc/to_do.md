@@ -104,12 +104,13 @@ Version 3.81 Goals
 					- DONE: elminate 'unlock' score
 					- DONE: clean-up app_main(), score_dict & static_dict
 			- INPROC: address special case of 'var_outcome_verb_lst' (?)
-				- INPROC: address variable outcome verbs
+				- DONE: address variable outcome verbs
 					- CANCEL: add check for 'var_outcome_verb_lst' in score_disp
 					- DONE: for 'attack', check for target not exist in game in 'var_outcome' case
 					- DONE: for 'give', check for 'noun' in target creature inv
-					- TBD: test false cases
-				- TBD: implement '*' case for dir_obj
+					- DONE: test false cases
+				- INPROC: implement '*' case for dir_obj
+					- TBD: normalize score_dict keys (all tupples)
 					- TBD: 'attack hedgehog' case (dir_obj = '*')
 				- TBD: clean-up score_class(), static_dict
 		- TBD: fixes
