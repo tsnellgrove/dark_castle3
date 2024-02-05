@@ -72,22 +72,23 @@ static_dict = {
 
 	'score_dict' : {
         'take' : {
-            	'rusty_key' : 5,
-        		'shiny_sword' : 10,
-        		'hedgehog_broach' : 5,
-        		'kinging_scroll' : 5
+            	('rusty_key', None) : 5,
+        		('shiny_sword', None) : 10,
+        		('hedgehog_broach', None) : 5,
+        		('kinging_scroll', None) : 5
                 },
-        'open' : {'front_gate' : 5},
-        'go' : {'throne_room' : 10},
-        'wear' : {'royal_crown' : 10},
+        'open' : {('front_gate', None) : 5},
+        'go' : {('throne_room', None) : 10},
+        'wear' : {('royal_crown', None) : 10},
 #        'unlock' : {('front_gate', 'rusty_key') : 5},
         'give' : {('royal_hedgehog', 'shiny_sword') : 5},
         'attack' : {
             	('guard_goblin', 'shiny_sword') : 5,
-        		('royal_hedgehog', 'shiny_sword') : -20,
-        		('royal_hedgehog', 'grimy_axe') : -20
+#        		('royal_hedgehog', 'shiny_sword') : -20,
+#        		('royal_hedgehog', 'grimy_axe') : -20,
+                ('royal_hedgehog', '*') : -20
                 },
-        'kinging_scroll' : {'scroll_win_game_result' : 15}
+        'kinging_scroll' : {('scroll_win_game_result', None) : 15}
 	},
 
 

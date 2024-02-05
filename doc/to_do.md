@@ -110,8 +110,9 @@ Version 3.81 Goals
 					- DONE: for 'give', check for 'noun' in target creature inv
 					- DONE: test false cases
 				- INPROC: implement '*' case for dir_obj
-					- TBD: normalize score_dict keys (all tupples)
-					- TBD: 'attack hedgehog' case (dir_obj = '*')
+					- DONE: normalize score_dict keys (all tupples)
+					- INPROC: 'attack hedgehog' case (dir_obj = '*')
+						- TBD: troubleshooting => need to update subj_key for pts at bottom of method
 				- TBD: clean-up score_class(), static_dict
 		- TBD: fixes
 			- TBD: fix double-dict call - create score_class() method
@@ -161,6 +162,7 @@ Version 3.81 Goals
 
 - maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
 
+- need to solve the name-to-obj challenge systemically - see below for idea
 - TBD: Separate static_dicts for game vs. engine
 	- IDEA: planning for tooling in the future - want to separate what game designer can update vs. what platform designer (aka game engine deisgner) can update
 	- TBD: eng_static_dict = interp, version, help, errors (remove "Burt" ref from errors)
