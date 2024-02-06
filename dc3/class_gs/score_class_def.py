@@ -59,10 +59,7 @@ class Score(object):
             subj_key = (noun_str, dirobj_key)
         if subj_key not in gs.io.get_dict_val('score_dict', verb_str):
             return
-#        if (subj_key not in gs.io.get_dict_val('score_dict', verb_str)
-#                and (noun_str, '*') not in gs.io.get_dict_val('score_dict', verb_str)):
-#            return
-#        if (verb_str,noun_str,driobj_str) in gs.score.pts_earned_lst:
+        # have the points for this score condition already been earned?
         if (verb_str, noun_str, dirobj_key) in gs.score.pts_earned_lst:
             return
         # variable outcome verb special cases
@@ -70,10 +67,8 @@ class Score(object):
             return
         if verb_str == 'give' and not gs.map.get_obj_from_name(noun_str, gs).chk_contain_name(dirobj_str):
             return
-        # score action is successful
-#        self.score += gs.io.get_dict('score_dict')[verb_str][subj_key] # fix w/ getter!
+        # score condition is valid
         self.score += gs.io.get_dict('score_dict')[verb_str][subj_key] # fix w/ getter!
-#        self.pts_earned_lst.append((verb_str,noun_str,dirobj_str))
         self.pts_earned_lst.append((verb_str, noun_str, dirobj_key))
         self.print_score(gs)
         return    

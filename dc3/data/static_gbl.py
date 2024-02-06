@@ -84,8 +84,6 @@ static_dict = {
         'give' : {('royal_hedgehog', 'shiny_sword') : 5},
         'attack' : {
             	('guard_goblin', 'shiny_sword') : 5,
-#        		('royal_hedgehog', 'shiny_sword') : -20,
-#        		('royal_hedgehog', 'grimy_axe') : -20,
                 ('royal_hedgehog', '*') : -20
                 },
         'kinging_scroll' : {('scroll_win_game_result', None) : 15}
