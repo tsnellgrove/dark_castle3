@@ -48,27 +48,32 @@ class Score(object):
         output2 = (" out of " + str(self.get_max_score(gs)))
         gs.io.buffer(output1 + output2)
 
-    def disp_score(self, verb_str, noun_str, driobj_str, gs):
-        if (verb_str,noun_str,driobj_str) in gs.score.pts_earned_lst:
-            return
+    def disp_score(self, verb_str, noun_str, dirobj_str, gs):
         if verb_str not in gs.io.get_dict('score_dict'):
             return
-#        if driobj_str == None:
-#            subj_key = noun_str
-#        else:
-        subj_key = (noun_str, driobj_str)
-#        if subj_key not in gs.io.get_dict_val('score_dict', verb_str):
-        if (subj_key not in gs.io.get_dict_val('score_dict', verb_str)
-                and (noun_str, '*') not in gs.io.get_dict_val('score_dict', verb_str)):
+        # determine whether dirobj_key is standard or wildcard
+        dirobj_key = dirobj_str
+        subj_key = (noun_str, dirobj_key)
+        if subj_key not in gs.io.get_dict_val('score_dict', verb_str):
+            dirobj_key = '*'
+            subj_key = (noun_str, dirobj_key)
+        if subj_key not in gs.io.get_dict_val('score_dict', verb_str):
+            return
+#        if (subj_key not in gs.io.get_dict_val('score_dict', verb_str)
+#                and (noun_str, '*') not in gs.io.get_dict_val('score_dict', verb_str)):
+#            return
+#        if (verb_str,noun_str,driobj_str) in gs.score.pts_earned_lst:
+        if (verb_str, noun_str, dirobj_key) in gs.score.pts_earned_lst:
             return
         # variable outcome verb special cases
         if verb_str == 'attack' and gs.map.chk_name_exist(noun_str):
             return
-        if verb_str == 'give' and not gs.map.get_obj_from_name(noun_str, gs).chk_contain_name(driobj_str):
+        if verb_str == 'give' and not gs.map.get_obj_from_name(noun_str, gs).chk_contain_name(dirobj_str):
             return
         # score action is successful
 #        self.score += gs.io.get_dict('score_dict')[verb_str][subj_key] # fix w/ getter!
         self.score += gs.io.get_dict('score_dict')[verb_str][subj_key] # fix w/ getter!
-        self.pts_earned_lst.append((verb_str,noun_str,driobj_str))
+#        self.pts_earned_lst.append((verb_str,noun_str,dirobj_str))
+        self.pts_earned_lst.append((verb_str, noun_str, dirobj_key))
         self.print_score(gs)
         return    
