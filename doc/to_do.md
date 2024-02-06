@@ -60,6 +60,7 @@ Version 3.81 Goals
 		- DONE: call from cmd_exe() and post_action()
 			- DONE: call from cmd_exe() 'go' case
 			- DONE: call from cmd_exe() '2-word' case
+				- DONE: link front_gate score to opening front_gate
 			- DONE: call from cmd_exe() 'prep' case (attack)
 				- IDEA: new ideas for 'prep verbs':
 					- IDEA: prep case may sometimes require noun and dir_obj
@@ -103,22 +104,22 @@ Version 3.81 Goals
 					- DONE: test ('get sword' not working)
 					- DONE: elminate 'unlock' score
 					- DONE: clean-up app_main(), score_dict & static_dict
-			- INPROC: address special case of 'var_outcome_verb_lst' (?)
+			- DONE: address special case of 'var_outcome_verb_lst' (?)
 				- DONE: address variable outcome verbs
 					- CANCEL: add check for 'var_outcome_verb_lst' in score_disp
 					- DONE: for 'attack', check for target not exist in game in 'var_outcome' case
 					- DONE: for 'give', check for 'noun' in target creature inv
 					- DONE: test false cases
-				- INPROC: implement '*' case for dir_obj
+				- DONE: implement '*' case for dir_obj
 					- DONE: normalize score_dict keys (all tupples)
 					- DONE: 'attack hedgehog' case (dir_obj = '*')
 						- DONE: troubleshooting => need to update subj_key for pts at bottom of method
 						- IDEA: need to sort out correct key (regular or wildcard) early in disp_score()
-				- TBD: clean-up score_class(), static_dict
+					- DONE: clean-up score_class(), static_dict
 		- TBD: fixes
-			- TBD: fix double-dict call - create score_class() method
+			- TBD: fix double-dict call - create io_class() method
 			- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
-		- TBD: clean up score_class(), static_gbl(), interp()
+			- TBD: clean up score_class(), static_gbl(), interp()
 	- TBD: document
 		- TBD: [DOC] updated approach to score
 			- score refactor from module & gs attributes to subclass of gs w/ attributes & methods
@@ -132,7 +133,6 @@ Version 3.81 Goals
 			- best to check these for successful execution 
 			- also nice to have '*' option for dir_obj (avoids listing all weapons for 'attack hedgehog')
 			- also, update run_mach doc to mention result.name return
-	- DONE: link front_gate score to opening door
 
 - CANCEL: moves and titles (=> NO, keep these where they are)
 	- CANCEL: incorporate move count into score sub-class and create get_moves() method
