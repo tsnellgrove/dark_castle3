@@ -128,6 +128,7 @@ Version 3.81 Goals
 			- just check relevant actions from cmd_exe() and post_act() [because are validate successful]
 			- scoring should also be the result of palyer action so don't need to check on pre_act / auto_act
 			- store earned points as tupples of verb, noun, dir_obj 
+			- max_score calculation assumes that all positive points are available in a single game
 			- (provides unique identifier vs. only one score per noun - e.g. open vs. unlock front_gate)
 			- some verbs - even when succuessful - have variable outcomes (e.g 'give', 'attack')...
 			- best to check these for successful execution 

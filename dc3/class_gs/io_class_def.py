@@ -90,6 +90,11 @@ class IO(object):
 		"""
 		return static_dict[dict_name][dict_key]
 
+	def get_ddict_val(self, dict_name, dict_key1, dict_key2):
+		"""Returns a  value from a double-dictionary within static_dict.
+		"""
+		return static_dict[dict_name][dict_key1][dict_key2]
+
 	def get_lst(self, lst_name):
 		"""Returns a list from a dict within static_dict.
 		"""
