@@ -117,8 +117,9 @@ Version 3.81 Goals
 						- IDEA: need to sort out correct key (regular or wildcard) early in disp_score()
 					- DONE: clean-up score_class(), static_dict
 		- TBD: fixes
-			- TBD: fix double-dict call - create io_class() method
+			- INPROC: fix double-dict call - create io_class() method
 			- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
+				IDEA: swap to meth_noun_str and attrib_noun_str ??
 			- TBD: clean up score_class(), static_gbl(), interp()
 	- TBD: document
 		- TBD: [DOC] updated approach to score

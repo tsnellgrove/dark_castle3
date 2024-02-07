@@ -38,11 +38,8 @@ class Score(object):
     def get_max_score(self, gs):
         max_score = 0
         for verb in gs.io.get_dict('score_dict'):
-#            for subj_key in gs.io.get_dict('score_dict')[verb]:
             for subj_key in gs.io.get_dict_val('score_dict', verb):
-#                if gs.io.get_dict('score_dict')[verb][subj_key] > 0:
                 if gs.io.get_ddict_val('score_dict', verb, subj_key) > 0:
-#                    max_score += gs.io.get_dict('score_dict')[verb][nouns_key] # fix with io getter
                     max_score += gs.io.get_ddict_val('score_dict', verb, subj_key)
         return max_score
 
