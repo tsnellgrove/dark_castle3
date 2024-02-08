@@ -68,7 +68,7 @@ class Score(object):
         if verb_str == 'give' and not gs.map.get_obj_from_name(noun_str, gs).chk_contain_name(dirobj_str):
             return
         # score condition is valid
-        self.score += gs.io.get_dict('score_dict')[verb_str][subj_key] # fix w/ getter!
+        self.score += gs.io.get_ddict_val('score_dict', verb_str, subj_key)
         self.pts_earned_lst.append((verb_str, noun_str, dirobj_key))
         self.print_score(gs)
         return    
