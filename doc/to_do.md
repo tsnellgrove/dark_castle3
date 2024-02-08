@@ -116,11 +116,9 @@ Version 3.81 Goals
 						- DONE: troubleshooting => need to update subj_key for pts at bottom of method
 						- IDEA: need to sort out correct key (regular or wildcard) early in disp_score()
 					- DONE: clean-up score_class(), static_dict
-		- INPROC: fixes
+		- DONE: fixes
 			- DONE: fix double-dict call - create io_class() method
-			- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
-				IDEA: swap to meth_noun_str and attrib_noun_str ??
-			- TBD: clean up score_class(), static_gbl(), interp()
+			- DONE: clean up score_class(), static_gbl(), interp()
 	- TBD: document
 		- TBD: [DOC] updated approach to score
 			- score refactor from module & gs attributes to subclass of gs w/ attributes & methods
@@ -190,6 +188,8 @@ Version 3.81 Goals
 		- most static data is based on game version (e.g. most text; also max_score)
 		- but some static data is based on game instance (e.g. randome # for portcullis => gs)
 
+- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
+	IDEA: swap to meth_noun_str and attrib_noun_str ??
 
 
 - SOMEDAY / MAYBE:
@@ -202,7 +202,7 @@ Version 3.81 Goals
 		- LINK: see: https://stackoverflow.com/questions/10761779/when-to-use-getattr
 		- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (and s__setattr__ for future tools)
 
-- IDEA: ideally, would have a tool module that calced & cached max_score to static_dict
+- IDEA: ideally, would have a tool module that called & cached max_score to static_dict
 
 - TBD: debug
 	- TBD: fix debug capacity() to work with creatures (?)

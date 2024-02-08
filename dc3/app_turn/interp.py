@@ -149,7 +149,6 @@ def interpreter(user_input, master_obj_lst):
 	elif word1 == 'go':
 		word2 = user_input_lst[1]
 		return 'go', [room_obj, word1, word2]
-#	elif word1 in ['put', 'show', 'give', 'attack', 'lock', 'unlock', 'drink']:
 	elif word1 in gs.io.get_lst('prep_verb_lst'):
 		if word1 in ['put']:
 			if 'in' in user_input_lst:
