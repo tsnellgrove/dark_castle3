@@ -155,14 +155,14 @@ Burt as an object
 # static_gbl.py #
 ###############
 
-static_gbl.py holds static_dict which, as the name implies, holds nearly all the static values of the game. These are mostly text descriptions for various objects but also include constants, like the game 'version', and dictionaries like 'score_val'.
+static_gbl.py holds static_dict which, as the name implies, holds nearly all the static values of the game. These are mostly text descriptions for various objects but also include constants, like the game 'version', and dictionaries like 'score_dict'.
 
 There are several advantages to having a centralized static dictionary:
 1) Eliminates the overhead of managing a database for values that will never change.
 2) Eventually, when I create a web interface for creating objects and descriptions, this makes it much easier to edit those static values.
 3) Isolates static from dynamic data.
 
-Historically, static_dict was once multiple dictionaries: descript_dict for object descriptions and static_dict for constants. There were also numerous local dictionaries in modules like score.py and ending.py. I eventually merged all of these into one dictionary named static_dict.
+Historically, static_dict was once multiple dictionaries: descript_dict for object descriptions and static_dict for constants. There were also numerous local dictionaries in modules like score.py and ending.py (both of which themselves were eventually merged into subclasses of GameState). I eventually merged all of these into one dictionary named static_dict.
 
 It is worth noting that there are 2 main areas of static descriptions / constants that have NOT been migrated to static_dict:
 1) Error messages: for now, these remain embeded in code. This means that while it is easy to update object descriptions is is hard to update error messages... so in general error text should be as simple and broadly applicable as possible.
@@ -936,9 +936,9 @@ To get the response text, web_main calls app_main. app_main is the heart of the 
 	1) load the object variables from the game's save pickle and increment the move count
 	2) calls the interpreter function to convert the user's input into a game command. interpreter returns a 'case' and a 'word_lst'
 	3) before executing the game command, app_main now calls the pre_action function. pre_action scans the available machine scope (simplisticaly, the room Burt is in) for machines that have pre_act triggers. If any exist, checks to see if any pre_action Machines are triggered and, if so,  runs those Machines. The pre_action function returns the boolean variable cmd_override to app_main. cmd_override == True is for cases where the pre_action negates the player's command.
-	4) If cmd_override is False, app_main now calls cmd_exe to execute the player's command (e.g. "take key" => "Taken")
-	5) app_main now calls the post_action function which determines if the player's command (for example, pulling a lever) triggers a post_action Machine. If so, the Machine is run.
-	6) app_main calls score to check if any gamestate changes (e.g. Burt entering a new room or Burt holding an object in his hand for the first time) merrit a score increase. If so, score is increased and an update to the player is buffered.
+	4) If cmd_override is False, app_main now calls cmd_exe to execute the player's command (e.g. "take key" => "Taken"). From the three cases of cmd_exe(), calls disp_score() from the Score subclass.
+	5) disp_score() ... checks if any gamestate changes (e.g. Burt entering a new room or Burt holding an object in his hand for the first time) merrit a score increase. If so, score is increased and an update to the player is buffered.
+	6) app_main now calls the post_action function which determines if the player's command (for example, pulling a lever) triggers a post_action Machine. If so, the Machine is run. post_act() also calls disp_score() to see if Machine results have impacted the player's score.
 	7) if game_ending != 'tbd' then app_main calls the 'end' function to buffer the end of game text
 	8) app_main saves the updated objects to the save pickle and resturns 'output' and 'end_of_game' to web_main
 

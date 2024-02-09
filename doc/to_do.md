@@ -120,7 +120,7 @@ Version 3.81 Goals
 			- DONE: fix double-dict call - create io_class() method
 			- DONE: clean up score_class(), static_gbl(), interp()
 	- TBD: document
-		- TBD: [DOC] updated approach to score
+		- INPROC: [DOC] updated approach to score
 			- score refactor from module & gs attributes to subclass of gs w/ attributes & methods
 			- state-based scoring => action-based scoring (state takes code to inspect)
 			- instead of checking every score item every turn, from app_main()...
