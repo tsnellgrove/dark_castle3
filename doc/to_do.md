@@ -14,7 +14,7 @@ Version 3.81 Goals
 	- DONE: Review and order all existing notes
 	- IDEA: score = class with object being attribute in gs
 
-- INPROC: migrate score to sub-class of gs:
+- DONE: migrate score to sub-class of gs:
 	- DONE: create score sub-class
 	- DONE: add score as attribute of gs
 	- DONE: in mk_def_pkl(): import Score, define score of class Score, add score as attribute of gs
@@ -119,8 +119,8 @@ Version 3.81 Goals
 		- DONE: fixes
 			- DONE: fix double-dict call - create io_class() method
 			- DONE: clean up score_class(), static_gbl(), interp()
-	- TBD: document
-		- INPROC: [DOC] updated approach to score
+	- DONE: document
+		- DONE: [DOC] updated approach to score
 			- score refactor from module & gs attributes to subclass of gs w/ attributes & methods
 			- state-based scoring => action-based scoring (state takes code to inspect)
 			- instead of checking every score item every turn, from app_main()...
