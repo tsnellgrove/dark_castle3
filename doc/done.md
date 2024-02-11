@@ -1,5 +1,5 @@
 Done List - Dark Castle v3
-Nov 5, 2022
+Feb 11, 2024
 
 
 ##########################
@@ -4900,3 +4900,146 @@ Version 3.80 Goals
 		- DONE: end() => gamestate ???
 
 ### END OF OLD NOTES RVIEWED IN V3.80 ###
+
+
+##########################
+### VERSION 3.81 START ###
+##########################
+
+Version 3.81 Goals
+- Create gamestate sub-class just for scoring & turn count
+- Refactor score sub-class to make it more efficient
+
+- DONE: Problem definition
+	- DONE: Review and order all existing notes
+	- IDEA: score = class with object being attribute in gs
+
+- DONE: migrate score to sub-class of gs:
+	- DONE: create score sub-class
+	- DONE: add score as attribute of gs
+	- DONE: in mk_def_pkl(): import Score, define score of class Score, add score as attribute of gs
+	- DONE: call gs.score.check_score(gs)
+		- DONE: fix strange indent error in Score class (had to replace initial tabs with 4-space tabs)
+	- DONE: refactor check_score() - first pass
+		- DONE: apply code re-use
+		- DONE: figure out way to capture custom score pts via standard lists that reside in static_dict
+	- DONE: migrate score() data and methods to score_class()
+		- DONE: migrate score lists / dicts from gs_class() to score_class()
+			- DONE: add points_earned_dict to score_class() attributes
+			- DONE: add dict getters & setters to score_class()
+			- DONE: redirect score.check_score() to call gets & sets from self
+			- DONE: remove points_earned_dict from gs_class() and mk_def_pkl(); clean up check_score()
+		- DONE: migrate score attribute and methods
+			- DONE: add score to score_class() attributes
+			- DONE: add getters & setters
+			- DONE: migrate methods
+			- DONE: update method calls from gs_class() to score_class()
+			- DONE: redirect method calls to gs.score()
+			- DONE: clean-up gs_class(), score_class(), mk_def_pkl(), app_main(), ending(), cmd_exe()
+	- DONE: clean-up
+		- DONE: score.py => legacy folder
+
+- DONE: refactor score() code:
+	- DONE: update score dict in gs => list that starts empty and holds achieved score items
+		- DONE: create pts_earned_lst attribute in score_class() and mk_def_pkl()
+		- DONE: create chk_pts_earned() and set_pts_earned() methods in score_class()
+		- DONE: replace score calls in check_score()
+		- DONE: clean up points_earned_dict attribute & methods in score_class() and mk_def_pkl()
+	- DONE: eliminate get_score() [already have a getter routine, don't need a 2nd]
+	- DONE: eliminate update_score()
+	- DONE: determine max_score from sum of all possible scores?
+
+- INPROC: additional ideas:
+	- IDEA: seems ineficient to check every turn for every point... 
+	- IDEA: can I bake scoring into verb methods (e.g. take, go, attack, open)
+	- IDEA: better yet, triiger from cmd_exe() and post_act() ?
+	- TBD: score_check() to be called from verb methods
+		- DONE: create 'score_event_dict' in static_dict
+			- IDEA: lookup scorable events in dict of lists with key = verb (e.g. 'take')
+		- DONE: create alt score method in score_class
+		- DONE: call from cmd_exe() and post_action()
+			- DONE: call from cmd_exe() 'go' case
+			- DONE: call from cmd_exe() '2-word' case
+				- DONE: link front_gate score to opening front_gate
+			- DONE: call from cmd_exe() 'prep' case (attack)
+				- IDEA: new ideas for 'prep verbs':
+					- IDEA: prep case may sometimes require noun and dir_obj
+					- IDEA: other times, noun and '*'
+					- IDEA: also, some prep verbs don't have simple outcomes (e.g. attack =/ oppenent killed)
+					- IDEA: in case of hedgehog, would be nice to use dir_obj.is_weapon()
+					- IDEA: among other things, this is maybe a driver to identify prep verbs in static_dict
+					- IDEA: for prep case, need to send dir_obj
+					- IDEA: universalize score_disp() or crete custom prep_score_disp() ??
+					- IDEA: for attack in particular, maybe just check game existence of noun score_disp()
+				- DONE: static list updates
+					- DONE: create 'prep_verb_lst' in static_dict and call from interp()
+					- DONE: create 'var_outcome_verb_lst' in static_dict
+				- DONE: update score_disp() for std 'prep verb' case:
+					- DONE: add dir_obj attribute to score_disp(); call with None from case 'go' & '2_word'
+					- DONE: create score check for standard 'prep_verb' case (list of lists struct)
+					- DONE: test 'unlock gate with rusty_key' case
+					- DONE: set 'entrance' points to trigger on 'open gate'
+				- DONE: address architecture
+					- DONE: merge score_event_dict and score_val_dict
+						- DONE: address 'go' and '2_word' cases
+						- DONE: address basic 'prep' cases
+						- DONE: clean-up score_class() and static_gbl()
+						- DONE: fix max score calc
+					- DONE: update score.pts_earned_lst to store 'noun_str'-'verb_str'-'dirobj_str'
+						- CANCEL: replace dirobj = None with alt str (maybe 'none')
+						- DONE: alternatively, maybe convert pts_earned_dict to holding tupples?
+				- DONE: add vanilla case of 'give' and 'attack'
+					- DONE: 'attack guard_goblin' case (dir_obj = 'shiny_sword')
+					- DONE: 'give shiny_sword to hedgehog' case (silver_key pts)
+					- DONE: 'attack hedgehog' case (dir_obj = 'shiny_sword', 'grimy_axe)
+			- DONE: call from post_action()
+				- IDEA: for post_action() call, key = mach name
+				- IDEA: for post action, final 15 pts should be based on mach run - not win or 'read'
+				- DONE: pts for winning mach
+					- DONE: update run_mach() to return result.name
+					- DONE: update pre_act() and post_act() to accept result.name return
+					- DONE: update post_act() (cmd case) to call score_disp(mach.name, result.name, None)
+					- DONE: update post_act() (switch case) to call score_disp(mach.name, result.name, None)
+					- DONE: update score_dict in static_dict to include entry for 'mach' {'result' : <score>}
+					- DONE: test ('get sword' not working)
+					- DONE: elminate 'unlock' score
+					- DONE: clean-up app_main(), score_dict & static_dict
+			- DONE: address special case of 'var_outcome_verb_lst' (?)
+				- DONE: address variable outcome verbs
+					- CANCEL: add check for 'var_outcome_verb_lst' in score_disp
+					- DONE: for 'attack', check for target not exist in game in 'var_outcome' case
+					- DONE: for 'give', check for 'noun' in target creature inv
+					- DONE: test false cases
+				- DONE: implement '*' case for dir_obj
+					- DONE: normalize score_dict keys (all tupples)
+					- DONE: 'attack hedgehog' case (dir_obj = '*')
+						- DONE: troubleshooting => need to update subj_key for pts at bottom of method
+						- IDEA: need to sort out correct key (regular or wildcard) early in disp_score()
+					- DONE: clean-up score_class(), static_dict
+		- DONE: fixes
+			- DONE: fix double-dict call - create io_class() method
+			- DONE: clean up score_class(), static_gbl(), interp()
+	- DONE: document
+		- DONE: [DOC] updated approach to score
+			- score refactor from module & gs attributes to subclass of gs w/ attributes & methods
+			- state-based scoring => action-based scoring (state takes code to inspect)
+			- instead of checking every score item every turn, from app_main()...
+			- just check relevant actions from cmd_exe() and post_act() [because are validate successful]
+			- scoring should also be the result of palyer action so don't need to check on pre_act / auto_act
+			- store earned points as tupples of verb, noun, dir_obj 
+			- max_score calculation assumes that all positive points are available in a single game
+			- (provides unique identifier vs. only one score per noun - e.g. open vs. unlock front_gate)
+			- some verbs - even when succuessful - have variable outcomes (e.g 'give', 'attack')...
+			- best to check these for successful execution 
+			- also nice to have '*' option for dir_obj (avoids listing all weapons for 'attack hedgehog')
+			- also, update run_mach doc to mention result.name return
+
+- CANCEL: moves and titles (=> NO, keep these where they are)
+	- CANCEL: incorporate move count into score sub-class and create get_moves() method
+	- CANCEL: migrate title to score()
+	- CANCEL: turn title calc into get_title() method as well (pull from ending() )
+
+
+
+
+
