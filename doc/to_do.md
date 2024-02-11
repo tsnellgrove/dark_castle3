@@ -6,17 +6,29 @@ Feb 11, 2024
 ### VERSION 3.82 START ###
 ##########################
 
-Version 3.81 Goals
+Version 3.82 Goals
 - Create gamestate sub-class just for ending
 - Refactor score sub-class to make it more efficient
 
 *** end sub-class ***
 - TBD: make end routine a sub-class of gs
-- TBD: determine if any other gs clean-up is needed
-- TBD: incorporate 'restart' into game ending options
-- TBD: add score, moves, and title to 'restart' ending (but this will impact web_main trigger...)
-- TBD: trigger restart based on end_of_game attribute rather than user_output
-
+	- TBD: create end_class_def()
+	- TBD: add end as attribute of GameState in gs_class_def()
+	- TBD: instantiate End of class end_class_def() in mk_def_pkl()
+	- TBD: move ending attributes to End
+		- TBD: end_of_game from gs.state_dict => gs.end.end_of_game
+		- TBD: game_ending from gs.state_dict => gs.end.end_of_game
+	- TBD: move end() from ending() to gs.end()
+- TBD: clean up GameState
+	- TBD: move turn from state_dict to attribute
+	- TBD: move debug from state_dict to attribute
+	- TBD: elim state_dict
+- TBD: refactor gs.end()
+	- TBD: trigger end state off of end_of_game, instead of (game_end != 'tbd') [app_main() I think?]
+	- TBD: incorporate 'restart' into game ending options
+	- TBD: add score, moves, and title to 'restart' ending (but this will impact web_main trigger...)
+	- TBD: trigger restart based on end_of_game attribute rather than user_output
+	- TBD: determine if any other gs clean-up is needed
 
 # *** FUTURE TO DO *** #
 
