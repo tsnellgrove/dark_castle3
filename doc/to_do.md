@@ -15,8 +15,12 @@ Version 3.82 Goals
 	- DONE: create end_class_def() including setters & getters
 	- DONE: add end as attribute of GameState in gs_class_def()
 	- DONE: instantiate End of class end_class_def() in mk_def_pkl()
-	- TBD: move ending attributes to End
-		- TBD: end_of_game from gs.state_dict => gs.end.end_of_game
+	- TBD: move GameState end attributes to End class
+		- TBD: end_of_game from gs.state_dict => gs.end.is_end_of_game
+			- TBD: web_main()
+			- TBD: app_main()
+			- TBD: start_up()
+			- TBD: ending()
 		- TBD: game_ending from gs.state_dict => gs.end.end_of_game
 	- TBD: move end() from ending() to gs.end()
 - TBD: clean up GameState
