@@ -9,12 +9,13 @@
 
 ### classes
 class GameState(object):
-	def __init__(self, name, state_dict, map, io, score, hero):
+	def __init__(self, name, state_dict, map, io, score, end, hero):
 		self._name = name
 		self._state_dict = state_dict
 		self._map = map
 		self._io = io
 		self._score = score
+		self._end = end
 		self._hero = hero
 
 	### setters & getters ###
@@ -38,6 +39,10 @@ class GameState(object):
 	@property
 	def score(self):
 		return self._score
+
+	@property
+	def end(self):
+		return self._end
 
 	@property
 	def hero(self):

@@ -29,6 +29,7 @@ from dc3.class_gs.gs_class_def import GameState
 from dc3.class_gs.map_class_def import Map
 from dc3.class_gs.io_class_def import IO
 from dc3.class_gs.score_class_def import Score
+from dc3.class_gs.end_class_def import End
 
 # *** object instantiation - starting state ***
 
@@ -301,6 +302,11 @@ score = Score(
 	[] # pts_earned_lst
 	)
 
+end = End('end', # name
+		  False, # is_end_of_game
+		  'tbd' # game_ending
+		  )
+
 # *** Hierarchy-Based Object Re-assignment ***
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog
@@ -331,6 +337,7 @@ gs = GameState(
 	map,
 	io,
 	score,
+	end,
 	burt
 )
 

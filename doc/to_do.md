@@ -11,10 +11,10 @@ Version 3.82 Goals
 - Refactor score sub-class to make it more efficient
 
 *** end sub-class ***
-- TBD: make end routine a sub-class of gs
-	- TBD: create end_class_def()
-	- TBD: add end as attribute of GameState in gs_class_def()
-	- TBD: instantiate End of class end_class_def() in mk_def_pkl()
+- INPROC: make end routine a sub-class of gs
+	- DONE: create end_class_def() including setters & getters
+	- DONE: add end as attribute of GameState in gs_class_def()
+	- DONE: instantiate End of class end_class_def() in mk_def_pkl()
 	- TBD: move ending attributes to End
 		- TBD: end_of_game from gs.state_dict => gs.end.end_of_game
 		- TBD: game_ending from gs.state_dict => gs.end.end_of_game
@@ -138,6 +138,8 @@ Version 3.82 Goals
 
 - TBD: reveiw / update / finalize doc file
 
+*** separate engine vs. game vs. instance ***
+
 *** story-driven updates ***
 
 - TBD: fix Goblin description to no longer mention Control Panel
@@ -231,6 +233,9 @@ Version 3.82 Goals
 - TBD: refactor app_main() modules
 - IDEA: score() and end() should be between post_action() and auto_action() [i.e. between move 'n' and 'n+1']
 - refactor remaining app_main chain: interp, pre_action, cmd_exe, post_action, auto_action, score (??), end (?)
+
+
+*** refactor Creature ***
 
 
 *** Sort out prepositional spaces (e.g. Under, Nook, Hole, Bed) ***
