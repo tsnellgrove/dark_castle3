@@ -15,29 +15,46 @@ Version 3.82 Goals
 	- DONE: create end_class_def() including setters & getters
 	- DONE: add end as attribute of GameState in gs_class_def()
 	- DONE: instantiate End of class end_class_def() in mk_def_pkl()
-	- TBD: move GameState end attributes to End class
-		- TBD: end_of_game from gs.state_dict => gs.end.is_end_of_game
-			- TBD: web_main()
-			- TBD: app_main()
-			- TBD: start_up()
-			- TBD: ending()
-		- TBD: game_ending from gs.state_dict => gs.end.end_of_game
-	- TBD: move end() from ending() to gs.end()
-- TBD: clean up GameState
-	- TBD: move turn from state_dict to attribute
-	- TBD: move debug from state_dict to attribute
-	- TBD: elim state_dict
+	- DONE: move GameState end attributes to End class
+		- DONE: end_of_game from gs.state_dict => gs.end.is_end_of_game
+			- DONE: web_main()
+			- DONE: app_main()
+			- DONE: start_up()
+			- DONE: ending()
+		- DONE: game_ending from gs.state_dict => gs.end.end_of_game
+			- DONE: app_main()
+			- DONE: results()
+			- DONE: creature()
+		- DONE: testing
+	- TBD: additional updates
+		- TBD: clean-up gs_class_def, end_class_def, web_main, app_main, start_up, creature, results
+		- TBD: reconsider.... is_end_of_game => is_end
+		- TBD: why return is_end_of_game from start_me_up() ???? (just return False)
 - TBD: refactor gs.end()
+	- TBD: move end() from ending() to gs.end()
+	- TBD: ending() => Legacy folder
 	- TBD: trigger end state off of end_of_game, instead of (game_end != 'tbd') [app_main() I think?]
+		- TBD: should results() and creature() set is_end_of_game rather than game_ending?
 	- TBD: incorporate 'restart' into game ending options
 	- TBD: add score, moves, and title to 'restart' ending (but this will impact web_main trigger...)
 	- TBD: trigger restart based on end_of_game attribute rather than user_output
 	- TBD: determine if any other gs clean-up is needed
+- TBD: clean up GameState
+	- TBD: move turn from state_dict to attribute
+	- TBD: move debug from state_dict to attribute
+	- TBD: elim state_dict
+- TBD: overdue early code refactoring
+	- TBD: refactor of web_main
+	- TBD refactor of app_main
+	- TBD refactor of start_up
+
 
 # *** FUTURE TO DO *** #
 
 
 *** minor bug-fix ***
+
+- TBD: add hero_room as Map attribute
 
 - TBD: add confirmation prompt for 'quit' and 'restart' ?
 	- IDEA: do check in web_main() based on returned exit_req value

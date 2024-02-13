@@ -23,7 +23,7 @@ class End(object):
         return self._is_end_of_game
 
     @is_end_of_game.setter
-    def score(self, new_val):
+    def is_end_of_game(self, new_val):
         self._is_end_of_game = new_val
 
     @property

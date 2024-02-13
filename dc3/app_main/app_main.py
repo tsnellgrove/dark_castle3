@@ -12,16 +12,16 @@ from dc3.app_turn.validate import validate
 from dc3.app_turn.pre_action import pre_action
 from dc3.app_turn.cmd_exe import cmd_execute
 from dc3.app_turn.post_action import post_action
-from dc3.app_turn.ending import end
+from dc3.app_turn.ending import end as end_old
 from dc3.app_turn.auto_action import auto_action
 
 ### loads game obj, calls other modules, and saves game obj ###
-def app_main(user_input, start_of_game):
+def app_main(user_input, is_start_of_game):
 
 	# start-up case
-	if start_of_game == True:
-		end_of_game, user_output = start_me_up()
-		return end_of_game, user_output
+	if is_start_of_game == True:
+		is_end_of_game, user_output = start_me_up()
+		return is_end_of_game, user_output
 
 	# object list loaded from save_obj_pickle2
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'rb') as f:
@@ -34,13 +34,17 @@ def app_main(user_input, start_of_game):
 
 	### pre-interp word cases ('quit', 'again', 'wait') ###
 	if user_input.lower() == 'quit' or user_input.lower() == 'q':
-		gs.set_game_ending('quit')
-		end(gs)
-		return gs.get_end_of_game(), gs.io.get_buff()
+#		gs.set_game_ending('quit')
+		gs.end.game_ending = 'quit'
+#		end(gs)
+		end_old(gs)
+#		return gs.get_end_of_game(), gs.io.get_buff()
+		return gs.end.is_end_of_game, gs.io.get_buff()
 
 	if user_input.lower() == 'restart':
 		gs.io.buffer("Restarting...")
-		return gs.get_end_of_game(), gs.io.get_buff()
+#		return gs.get_end_of_game(), gs.io.get_buff()
+		return gs.end.is_end_of_game, gs.io.get_buff()
 
 	if user_input.lower() == 'again' or user_input.lower() == 'g':
 		user_input = gs.io.last_input_str
@@ -53,7 +57,8 @@ def app_main(user_input, start_of_game):
 		auto_action(gs)
 		with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 			pickle.dump(master_obj_lst, f)
-		return gs.get_end_of_game(), gs.io.get_buff()
+#		return gs.get_end_of_game(), gs.io.get_buff()
+		return gs.end.is_end_of_game, gs.io.get_buff()
 
 
 	### all other word cases ###
@@ -66,7 +71,8 @@ def app_main(user_input, start_of_game):
 	if not input_valid:
 		with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 			pickle.dump(master_obj_lst, f)
-		return gs.get_end_of_game(), gs.io.get_buff()
+#		return gs.get_end_of_game(), gs.io.get_buff()
+		return gs.end.is_end_of_game, gs.io.get_buff()
 
 	# for valid user_input, increment move count and run pre_action, cmd_exe, post_action, and auto_action
 	gs.move_inc()
@@ -74,12 +80,15 @@ def app_main(user_input, start_of_game):
 	if not cmd_override:
 		cmd_execute(gs, case, word_lst)
 	post_action(gs, case, word_lst)
-	if gs.get_game_ending() != "tbd":
-		end(gs)
+#	if gs.get_game_ending() != "tbd":
+	if gs.end.game_ending != "tbd":
+#		end(gs)
+		end_old(gs)
 	auto_action(gs)
 
 	### dump updated objects to save_obj_pickle2 ###
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 
-	return gs.get_end_of_game(), gs.io.get_buff()
+#	return gs.get_end_of_game(), gs.io.get_buff()
+	return gs.end.is_end_of_game, gs.io.get_buff()

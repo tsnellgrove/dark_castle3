@@ -474,7 +474,8 @@ class Creature(ViewOnly):
 
 		if lose_creature == gs.hero:
 			if result_code in ['src_death', 'tgt_death']:
-				gs.set_game_ending('death')
+#				gs.set_game_ending('death')
+				gs.end.game_ending = 'death'
 		else:
 			if result_code in ['src_death', 'tgt_death']:
 				room_obj.floor_lst_remove(lose_creature)
