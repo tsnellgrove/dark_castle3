@@ -405,7 +405,6 @@ class Creature(ViewOnly):
 		self.put_in_hand(obj, gs) # messes up goblin holding grimy_axe ; addressed with auto_action
 		give_item = self.give_dict[give_key]['give']
 		if give_item:
-#			self.bkpk_lst_remove(give_item) # replace with remove_item() ??
 			self.remove_item(give_item, gs)
 			creature.hand_lst_append(give_item)
 
@@ -474,7 +473,6 @@ class Creature(ViewOnly):
 
 		if lose_creature == gs.hero:
 			if result_code in ['src_death', 'tgt_death']:
-#				gs.set_game_ending('death')
 				gs.end.game_ending = 'death'
 		else:
 			if result_code in ['src_death', 'tgt_death']:

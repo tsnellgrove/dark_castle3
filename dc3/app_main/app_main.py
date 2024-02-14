@@ -34,16 +34,12 @@ def app_main(user_input, is_start_of_game):
 
 	### pre-interp word cases ('quit', 'again', 'wait') ###
 	if user_input.lower() == 'quit' or user_input.lower() == 'q':
-#		gs.set_game_ending('quit')
 		gs.end.game_ending = 'quit'
-#		end(gs)
 		end_old(gs)
-#		return gs.get_end_of_game(), gs.io.get_buff()
 		return gs.end.is_end_of_game, gs.io.get_buff()
 
 	if user_input.lower() == 'restart':
 		gs.io.buffer("Restarting...")
-#		return gs.get_end_of_game(), gs.io.get_buff()
 		return gs.end.is_end_of_game, gs.io.get_buff()
 
 	if user_input.lower() == 'again' or user_input.lower() == 'g':
@@ -57,7 +53,6 @@ def app_main(user_input, is_start_of_game):
 		auto_action(gs)
 		with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 			pickle.dump(master_obj_lst, f)
-#		return gs.get_end_of_game(), gs.io.get_buff()
 		return gs.end.is_end_of_game, gs.io.get_buff()
 
 
@@ -71,7 +66,6 @@ def app_main(user_input, is_start_of_game):
 	if not input_valid:
 		with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 			pickle.dump(master_obj_lst, f)
-#		return gs.get_end_of_game(), gs.io.get_buff()
 		return gs.end.is_end_of_game, gs.io.get_buff()
 
 	# for valid user_input, increment move count and run pre_action, cmd_exe, post_action, and auto_action
@@ -80,9 +74,7 @@ def app_main(user_input, is_start_of_game):
 	if not cmd_override:
 		cmd_execute(gs, case, word_lst)
 	post_action(gs, case, word_lst)
-#	if gs.get_game_ending() != "tbd":
 	if gs.end.game_ending != "tbd":
-#		end(gs)
 		end_old(gs)
 	auto_action(gs)
 
@@ -90,5 +82,4 @@ def app_main(user_input, is_start_of_game):
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 
-#	return gs.get_end_of_game(), gs.io.get_buff()
 	return gs.end.is_end_of_game, gs.io.get_buff()

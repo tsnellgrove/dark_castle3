@@ -11,7 +11,6 @@ import math
 ### end routine ###
 def end(gs):
 	moves = gs._state_dict['move_counter']
-#	game_ending = gs.get_game_ending()
 	game_ending = gs.end.game_ending
 	score = gs.score.score
 
@@ -35,7 +34,6 @@ def end(gs):
 	gs.io.buffer("Your title is: " + title)
 	if game_ending == 'won':
 		gs.io.buff_e('credits')
-#	gs.set_end_of_game(True)
 	gs.end.is_end_of_game = True
 
 	return

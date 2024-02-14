@@ -58,18 +58,6 @@ class GameState(object):
 	def get_moves(self):
 		return self._state_dict['move_counter']
 
-	### game ending ###
-#	def get_end_of_game(self):
-#		return self._state_dict['end_of_game']
-
-#	def set_end_of_game(self, value):
-#		self._state_dict['end_of_game'] = value
-
-#	def get_game_ending(self):
-#		return self._state_dict['game_ending']
-
-#	def set_game_ending(self, value):
-#		self._state_dict['game_ending'] = value
 
 	### debug mode ###
 

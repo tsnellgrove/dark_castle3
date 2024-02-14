@@ -37,10 +37,4 @@ def start_me_up():
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 
-#	end_of_game = gs.get_end_of_game()
-#	is_end_of_game = gs.end.is_end_of_game
-#	out_buff = gs.io.get_buff()
-
-#	return end_of_game, out_buff
-#	return is_end_of_game, out_buff
 	return gs.end.is_end_of_game, gs.io.get_buff()
