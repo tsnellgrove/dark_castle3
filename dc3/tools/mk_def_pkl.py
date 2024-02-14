@@ -329,8 +329,8 @@ gs = GameState(
 	'gs',
 	{
 		'move_counter' : 0,
-		'end_of_game' : False,
-		'game_ending' : "tbd",
+#		'end_of_game' : False,
+#		'game_ending' : "tbd",
 		'debug' : False,
 ##		'room' : entrance,
 	},

@@ -27,6 +27,7 @@ Version 3.82 Goals
 			- DONE: creature()
 		- DONE: testing
 	- TBD: additional updates
+		- TBD: comment out gs_class_def() and mk_def_pkl()
 		- TBD: clean-up gs_class_def, end_class_def, web_main, app_main, start_up, creature, results
 		- TBD: reconsider.... is_end_of_game => is_end
 		- TBD: why return is_end_of_game from start_me_up() ???? (just return False)
