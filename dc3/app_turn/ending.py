@@ -34,6 +34,6 @@ def end(gs):
 	gs.io.buffer("Your title is: " + title)
 	if game_ending == 'won':
 		gs.io.buff_e('credits')
-	gs.end.is_end_of_game = True
+	gs.end.is_end = True
 
 	return

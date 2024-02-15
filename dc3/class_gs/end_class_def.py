@@ -8,9 +8,9 @@
 
 ### classes
 class End(object):
-    def __init__(self, name, is_end_of_game, game_ending):
+    def __init__(self, name, is_end, game_ending):
         self._name = name # name of obj
-        self._is_end_of_game = is_end_of_game # bool indicating whether or not the game has ended
+        self._is_end = is_end # bool indicating whether or not the game has ended
         self._game_ending = game_ending # string that indicates type of ending (e.g. 'won', 'quit', etc.)
 
 	### setters & getters ###
@@ -19,12 +19,12 @@ class End(object):
         return self._name
 
     @property
-    def is_end_of_game(self):
-        return self._is_end_of_game
+    def is_end(self):
+        return self._is_end
 
-    @is_end_of_game.setter
-    def is_end_of_game(self, new_val):
-        self._is_end_of_game = new_val
+    @is_end.setter
+    def is_end(self, new_val):
+        self._is_end = new_val
 
     @property
     def game_ending(self):

@@ -303,7 +303,7 @@ score = Score(
 	)
 
 end = End('end', # name
-		  False, # is_end_of_game
+		  False, # is_end
 		  'tbd' # game_ending
 		  )
 

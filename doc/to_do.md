@@ -29,7 +29,8 @@ Version 3.82 Goals
 	- INPROC: additional updates
 		- DONE: comment out gs_class_def() and mk_def_pkl()
 		- DONE: clean mk_def_pkl, gs_class_def, ending, web_main, app_main, start_up, creature, results
-		- TBD: reconsider.... is_end_of_game => is_end ; also, in web_main, is_start
+		- DONE: reconsider.... is_end_of_game => is_end ; also, in web_main, is_start
+			- DONE: web_main(), app_main(), start_up(), ending(), end_class_def()
 		- TBD: why return is_end_of_game from start_me_up() ???? (just return False)
 - TBD: refactor gs.end()
 	- TBD: move end() from ending() to gs.end()

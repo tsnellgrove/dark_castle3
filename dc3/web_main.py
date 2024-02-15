@@ -11,17 +11,17 @@ sys.path.append('/Users/tas/Documents/Python/dark_castle3')
 from dc3.app_main.app_main import app_main
 
 ### main routine
-is_end_of_game = False
-is_start_of_game = True
+is_end = False
+is_start = True
 user_input = ""
-while not is_end_of_game:
-	if not is_start_of_game:
+while not is_end:
+	if not is_start:
 		user_input = input('Type your command: ')
-	is_end_of_game, user_output = app_main(user_input, is_start_of_game)
-	is_start_of_game = False
+	is_end, user_output = app_main(user_input, is_start)
+	is_start = False
 	print(user_output)
 	if user_output == "\nRestarting...\n":
-		is_start_of_game = True
+		is_start = True
 print("THANKS FOR PLAYING!!")
 
 
