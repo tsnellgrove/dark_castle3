@@ -20,8 +20,10 @@ def app_main(user_input, is_start_of_game):
 
 	# start-up case
 	if is_start_of_game == True:
-		is_end, user_output = start_me_up()
-		return is_end, user_output
+#		is_end, user_output = start_me_up()
+		user_output = start_me_up()
+#		return is_end, user_output
+		return False, user_output
 
 	# object list loaded from save_obj_pickle2
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'rb') as f:
