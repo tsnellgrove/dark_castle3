@@ -37,7 +37,6 @@ class End(object):
     ### end methods ###
     def end(self, gs):
         moves = gs._state_dict['move_counter']
-    #    game_ending = gs.end.game_ending
         game_ending = self.game_ending
         score = gs.score.score
 
@@ -61,7 +60,6 @@ class End(object):
         gs.io.buffer("Your title is: " + title)
         if game_ending == 'won':
             gs.io.buff_e('credits')
-#        gs.end.is_end = True
         self.is_end = True
 
         return
