@@ -59,6 +59,10 @@ Version 3.82 Goals
 
 *** minor bug-fix ***
 
+- TBD: interpreter idea => permitted verbs & synonymbs by class (e.g. 'doff' for Garment)
+
+- TBD: implement 'stowe' command => put obj in hand into backpack
+
 - TBD: add hero_room as Map attribute
 
 - TBD: add confirmation prompt for 'quit' and 'restart' ?
