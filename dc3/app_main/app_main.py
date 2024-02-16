@@ -12,7 +12,7 @@ from dc3.app_turn.validate import validate
 from dc3.app_turn.pre_action import pre_action
 from dc3.app_turn.cmd_exe import cmd_execute
 from dc3.app_turn.post_action import post_action
-from dc3.app_turn.ending import end as end_old
+# from dc3.app_turn.ending import end as end_old
 from dc3.app_turn.auto_action import auto_action
 
 ### loads game obj, calls other modules, and saves game obj ###
@@ -35,7 +35,8 @@ def app_main(user_input, is_start_of_game):
 	### pre-interp word cases ('quit', 'again', 'wait') ###
 	if user_input.lower() == 'quit' or user_input.lower() == 'q':
 		gs.end.game_ending = 'quit'
-		end_old(gs)
+		gs.end.end(gs)
+	#	end_old(gs)
 		return gs.end.is_end, gs.io.get_buff()
 
 	if user_input.lower() == 'restart':
@@ -75,7 +76,8 @@ def app_main(user_input, is_start_of_game):
 		cmd_execute(gs, case, word_lst)
 	post_action(gs, case, word_lst)
 	if gs.end.game_ending != "tbd":
-		end_old(gs)
+#		end_old(gs)
+		gs.end.end(gs)
 	auto_action(gs)
 
 	### dump updated objects to save_obj_pickle2 ###

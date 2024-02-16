@@ -33,7 +33,10 @@ Version 3.82 Goals
 			- DONE: web_main(), app_main(), start_up(), ending(), end_class_def()
 		- DONE: why return is_end from start_me_up() ???? (just return False)
 - TBD: refactor gs.end()
-	- TBD: move end() from ending() to gs.end()
+	- DONE: move end() from ending() to gs.end()
+	- DONE: update end() calls in app_main()
+	- DONE: test
+	- TBD: clean up comments in End and app_main()
 	- TBD: ending() => Legacy folder
 	- TBD: trigger end state off of end_of_game, instead of (game_end != 'tbd') [app_main() I think?]
 		- TBD: should results() and creature() set is_end_of_game rather than game_ending?
