@@ -39,8 +39,14 @@ Version 3.82 Goals
 	- DONE: clean up comments in End and app_main()
 	- DONE: ending() => Legacy folder
 	- DONE: initial clean-up of end()
-	- TBD: trigger end state off of end_of_game, instead of (game_end != 'tbd') [app_main() I think?]
+	- DONE: set is_end in end() but at top of method
+	- DONE: end() => disp_end() # really, the main purpose of method is to display ending text
+	- TBD: change initial value of game_ending from 'tbd' => None
+	- TBD: avoid triggering end state off of game_end != 'tbd' 
+		- IDEA: if game_ending is being changed, just call end() then and there?
+		- TBD: fix in app_main()
 		- TBD: should results() and creature() set is_end_of_game rather than game_ending?
+	- TBD: raise error case if none of end types holds
 	- TBD: incorporate 'restart' into game ending options
 	- TBD: add score, moves, and title to 'restart' ending (but this will impact web_main trigger...)
 	- TBD: trigger restart based on end_of_game attribute rather than user_output

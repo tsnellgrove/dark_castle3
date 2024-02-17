@@ -35,10 +35,9 @@ class End(object):
         self._game_ending = new_val
 
     ### end methods ###
-    def end(self, gs):
-#        moves = gs._state_dict['move_counter']
-#        game_ending = self.game_ending
-#        score = gs.score.score
+#    def end(self, gs):
+    def disp_end(self, gs):
+        self.is_end = True
 
         if gs.score.score < 0:
             title_score = -10
@@ -48,7 +47,6 @@ class End(object):
             title_score = math.ceil(gs.score.score / 10) * 10
         title = gs.io.get_dict_val('titles_by_score', title_score)
 
-#        if game_ending == 'death':
         if self.game_ending == 'death':
             gs.io.buffer("You have died.")
         elif self.game_ending == 'quit':
@@ -56,12 +54,10 @@ class End(object):
         elif self.game_ending == 'won':
             gs.io.buffer("You have won!")
 
-#        gs.io.buffer("Your adventure ended after " + str(moves) + " moves.")
         gs.io.buffer("Your adventure ended after " + str(gs._state_dict['move_counter']) + " moves.")
         gs.score.print_score(gs)
         gs.io.buffer("Your title is: " + title)
         if self.game_ending == 'won':
             gs.io.buff_e('credits')
-        self.is_end = True
 
         return

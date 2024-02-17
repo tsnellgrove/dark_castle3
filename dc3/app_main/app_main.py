@@ -34,7 +34,8 @@ def app_main(user_input, is_start_of_game):
 	### pre-interp word cases ('quit', 'again', 'wait') ###
 	if user_input.lower() == 'quit' or user_input.lower() == 'q':
 		gs.end.game_ending = 'quit'
-		gs.end.end(gs)
+#		gs.end.end(gs)
+		gs.end.disp_end(gs)
 		return gs.end.is_end, gs.io.get_buff()
 
 	if user_input.lower() == 'restart':
@@ -53,7 +54,6 @@ def app_main(user_input, is_start_of_game):
 		with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 			pickle.dump(master_obj_lst, f)
 		return gs.end.is_end, gs.io.get_buff()
-
 
 	### all other word cases ###
 
@@ -74,7 +74,8 @@ def app_main(user_input, is_start_of_game):
 		cmd_execute(gs, case, word_lst)
 	post_action(gs, case, word_lst)
 	if gs.end.game_ending != "tbd":
-		gs.end.end(gs)
+#		gs.end.end(gs)
+		gs.end.disp_end(gs)
 	auto_action(gs)
 
 	### dump updated objects to save_obj_pickle2 ###
