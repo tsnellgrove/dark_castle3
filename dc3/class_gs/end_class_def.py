@@ -35,7 +35,6 @@ class End(object):
         self._game_ending = new_val
 
     ### end methods ###
-#    def end(self, gs):
     def disp_end(self, gs):
         self.is_end = True
 

@@ -41,24 +41,29 @@ Version 3.82 Goals
 	- DONE: initial clean-up of end()
 	- DONE: set is_end in end() but at top of method
 	- DONE: end() => disp_end() # really, the main purpose of method is to display ending text
-	- TBD: change initial value of game_ending from 'tbd' => None
+	- DONE: change initial value of game_ending from 'tbd' => None
 	- TBD: avoid triggering end state off of game_end != 'tbd' 
 		- IDEA: if game_ending is being changed, just call end() then and there?
 		- TBD: fix in app_main()
 		- TBD: should results() and creature() set is_end_of_game rather than game_ending?
+	- TBD: do NOT run auto_act() if is_end == True ??
 	- TBD: raise error case if none of end types holds
 	- TBD: incorporate 'restart' into game ending options
-	- TBD: add score, moves, and title to 'restart' ending (but this will impact web_main trigger...)
-	- TBD: trigger restart based on end_of_game attribute rather than user_output
+		- TBD: add score, moves, and title to 'restart' ending (but this will impact web_main trigger...)
+		- CANCEL: trigger restart based on end_of_game attribute rather than user_output => won't work
+		- TBD: alternatively, pull specific text string from use_output and trigger restart off of that
 	- TBD: determine if any other gs clean-up is needed
+- TBD: [DOC] for End class
+	- TBD: purpose of disp_end() is to calc title, present it, and sent is_end
+	- TBD: when facing an end state, set end.game_ending and call end.disp_end()
 - TBD: clean up GameState
 	- TBD: move turn from state_dict to attribute
 	- TBD: move debug from state_dict to attribute
 	- TBD: elim state_dict
 - TBD: overdue early code refactoring
 	- TBD: refactor of web_main
-	- TBD refactor of app_main
-	- TBD refactor of start_up
+	- TBD: refactor of app_main (reverse shielf approach?)
+	- TBD: refactor of start_up (should all be game instance focussed)
 
 
 # *** FUTURE TO DO *** #

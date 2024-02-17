@@ -304,7 +304,7 @@ score = Score(
 
 end = End('end', # name
 		  False, # is_end
-		  'tbd' # game_ending
+		  None # game_ending
 		  )
 
 # *** Hierarchy-Based Object Re-assignment ***
