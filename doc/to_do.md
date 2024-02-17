@@ -37,7 +37,7 @@ Version 3.82 Goals
 	- DONE: update end() calls in app_main()
 	- DONE: test
 	- DONE: clean up comments in End and app_main()
-	- TBD: ending() => Legacy folder
+	- DONE: ending() => Legacy folder
 	- TBD: trigger end state off of end_of_game, instead of (game_end != 'tbd') [app_main() I think?]
 		- TBD: should results() and creature() set is_end_of_game rather than game_ending?
 	- TBD: incorporate 'restart' into game ending options
