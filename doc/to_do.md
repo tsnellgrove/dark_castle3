@@ -42,6 +42,7 @@ Version 3.82 Goals
 	- DONE: set is_end in end() but at top of method
 	- DONE: end() => disp_end() # really, the main purpose of method is to display ending text
 	- DONE: change initial value of game_ending from 'tbd' => None
+	- TBD; convert game_ending to dis_end() sentence: "You have <game_ending>" [died]
 	- TBD: avoid triggering end state off of game_end != 'tbd' 
 		- IDEA: if game_ending is being changed, just call end() then and there?
 		- TBD: fix in app_main()
