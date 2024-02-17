@@ -38,6 +38,7 @@ Version 3.82 Goals
 	- DONE: test
 	- DONE: clean up comments in End and app_main()
 	- DONE: ending() => Legacy folder
+	- DONE: initial clean-up of end()
 	- TBD: trigger end state off of end_of_game, instead of (game_end != 'tbd') [app_main() I think?]
 		- TBD: should results() and creature() set is_end_of_game rather than game_ending?
 	- TBD: incorporate 'restart' into game ending options
@@ -58,6 +59,8 @@ Version 3.82 Goals
 
 
 *** minor bug-fix ***
+
+- TBD: make title increment (currently 10) a game-settable constant?
 
 - TBD: interpreter idea => permitted verbs & synonymbs by class (e.g. 'doff' for Garment)
 
