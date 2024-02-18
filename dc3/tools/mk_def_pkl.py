@@ -143,7 +143,7 @@ axe_in_goblin_hand_cond = CreatureItemCond('axe_in_goblin_hand_cond', 'guard_gob
 goblin_exist_state_cond = InWorldStateCond('goblin_dead_state_cond', 'guard_goblin_temp', False)
 
 # results
-die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'death', True)
+die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'died.', True)
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
 moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', royal_crown, True)
 throne_push_result = BufferOnlyResult('throne_push_result', False)
@@ -161,7 +161,7 @@ hedgehog_distracted_result = BufferOnlyResult('hedgehog_distracted_result', True
 scroll_wrong_room_result = BufferOnlyResult('scroll_wrong_room_result', False)
 scroll_no_hedgehog_result = BufferOnlyResult('scroll_no_hedgehog_result', False)
 scroll_crown_not_worn_result = BufferOnlyResult('scroll_crown_not_worn_result', False)
-scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won', False)
+scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won!', False)
 axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
 dispense_panel_result = AddObjToRoomAndDescriptResult('dispense_panel_result', 'temp_control_panel', False)
 

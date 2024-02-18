@@ -32,7 +32,7 @@ class BufferOnlyResult(object):
 class BufferAndEndResult(BufferOnlyResult):
 	def __init__(self, name, ending, cmd_override):
 		super().__init__(name, cmd_override)
-		self._ending = ending # game ending - typically 'death' due to a room hazzard
+		self._ending = ending # game ending - typically 'died' due to a room hazzard
 
 	@property
 	def ending(self):
