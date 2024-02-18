@@ -475,7 +475,6 @@ class Creature(ViewOnly):
 			if result_code in ['src_death', 'tgt_death']:
 				gs.end.game_ending = 'died.'
 				gs.end.is_end = True
-#				gs.end.disp_end(gs)
 		else:
 			if result_code in ['src_death', 'tgt_death']:
 				room_obj.floor_lst_remove(lose_creature)

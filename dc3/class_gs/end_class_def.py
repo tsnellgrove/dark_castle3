@@ -36,8 +36,6 @@ class End(object):
 
     ### end methods ###
     def disp_end(self, gs):
-        self.is_end = True
-
         if gs.score.score < 0:
             title_score = -10
         elif gs.score.score == 0:
@@ -47,7 +45,6 @@ class End(object):
         title = gs.io.get_dict_val('titles_by_score', title_score)
 
         gs.io.buffer(f"You have {self.game_ending}")
-
         gs.io.buffer("Your adventure ended after " + str(gs._state_dict['move_counter']) + " moves.")
         gs.score.print_score(gs)
         gs.io.buffer("Your title is: " + title)

@@ -46,7 +46,6 @@ class BufferAndEndResult(BufferOnlyResult):
 		gs.io.buff_s(self.name)
 		gs.end.game_ending = self.ending
 		gs.end.is_end = True
-#		gs.end.disp_end(gs)
 		return mach_state, self.cmd_override
 
 

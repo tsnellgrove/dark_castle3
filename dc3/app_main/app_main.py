@@ -73,10 +73,10 @@ def app_main(user_input, is_start_of_game):
 	if not cmd_override:
 		cmd_execute(gs, case, word_lst)
 	post_action(gs, case, word_lst)
-#	if gs.end.game_ending != None:
 	if gs.end.is_end:
 		gs.end.disp_end(gs)
-	auto_action(gs)
+	if not gs.end.is_end:
+		auto_action(gs)
 
 	### dump updated objects to save_obj_pickle2 ###
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
