@@ -67,6 +67,7 @@ Version 3.82 Goals
 - TBD: overdue early code refactoring
 	- TBD: refactor of web_main
 	- TBD: refactor of app_main (reverse shield approach? unify)
+		- IDEA: key if / then values = is_end, is_wait, is_valid, is_stateful
 	- TBD: refactor of start_up (should all be game instance focussed)
 
 
