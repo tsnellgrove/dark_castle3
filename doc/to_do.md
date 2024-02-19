@@ -52,10 +52,10 @@ Version 3.82 Goals
 		- DONE: should results() and creature() set is_end rather than game_ending?
 		- DONE: so work around is setting is_end inline and then calling disp_end based on is_end in app_main
 	- DONE: do NOT run auto_act() if is_end == True ??	
-	- TBD: incorporate 'restart' into game ending options
-		- TBD: add score, moves, and title to 'restart' ending (but this will impact web_main trigger...)
+	- DONE: incorporate 'restart' into game ending options
+		- DONE: add score, moves, and title to 'restart' ending (but this will impact web_main trigger...)
 		- CANCEL: trigger restart based on end_of_game attribute rather than user_output => won't work
-		- TBD: alternatively, pull specific text string from use_output and trigger restart off of that
+		- DONE: alternatively, pull specific text string from use_output and trigger restart off of that
 - TBD: [DOC] for End class
 	- TBD: purpose of disp_end() is to calc title, present it, and sent is_end
 	- TBD: when facing an end state, set end.game_ending and call end.disp_end()

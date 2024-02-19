@@ -20,7 +20,7 @@ while not is_end:
 	is_end, user_output = app_main(user_input, is_start)
 	is_start = False
 	print(user_output)
-	if user_output == "\nRestarting...\n":
+	if user_output[-15:] == "\nRestarting...\n":
 		is_start = True
 print("THANKS FOR PLAYING!!")
 
