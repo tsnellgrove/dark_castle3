@@ -56,9 +56,9 @@ Version 3.82 Goals
 		- DONE: add score, moves, and title to 'restart' ending (but this will impact web_main trigger...)
 		- CANCEL: trigger restart based on end_of_game attribute rather than user_output => won't work
 		- DONE: alternatively, pull specific text string from use_output and trigger restart off of that
-- TBD: [DOC] for End class
-	- TBD: purpose of disp_end() is to calc title, present it, and sent is_end
-	- TBD: when facing an end state, set end.game_ending and call end.disp_end()
+- DONE: [DOC] for End class
+	- DONE: purpose of disp_end() is to calc title, and present ending text
+	- DONE: when facing an end state, set end.is_end, end.game_ending and call end.disp_end()
 - TBD: clean up GameState
 	- TBD: move turn from state_dict to attribute
 	- TBD: move debug from state_dict to attribute

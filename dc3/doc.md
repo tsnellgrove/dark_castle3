@@ -245,6 +245,31 @@ Since validate() ensures that we only reach cmd_exe() if the command is successf
 One last minor tweak from v3.81 was that max_score went from being a static value in static_dict to dynamically generated on every usage. This has scalability advantages - max_score will automatically be updated as the game designer adds scoring events - seems a bit ineficient. In the future it would be nice to update max_score on every run of mk_def_pkl(), rather than every run of the game. This is in the backlog. Lastly, there is an underlying assumption here that all non-negative scoring events are available in a single game. This may not be the intent of every game designer but for now it seems like a reasonable premise.
 
 
+####################
+# end_class_def.py #
+####################
+
+*** Module Documentation ***
+
+Overview:
+The End class holds a couple essential attributes for the game ending: 'is_end' and 'game_ending' and the disp_end() method. End is instantiated in the game as 'end' in mk_def_pkl() which is, itself, an attribute of gs (the instantiation of GameState).
+
+is_end is a boolean that tracks whether the game will end after the current turn. This value is ultimately passed back to web_main() and governs the while loop that propels that game forward each turn.
+
+game_ending is a string that does double duty. It can have the values of 'quit.', 'died.', 'restarted.', or 'won!'. and is used both as a declarative statement regarding how the game ended f"You have {game_ending}" and also to trigger the game credits in the case of game_ending == 'won!' .
+
+The purpose of disp_end() is to buffer the appropriate end-of-game text. This includes calculating and buffering the player's title which is based on their score.
+
+Implementation Detail / Historic Note:
+Like Score, IO, and Map, a large portion of the End class was once embeded directly in GameState prior to version 3.81. As part of the GameState modularization effort, it became it's own class. end_of_game became is_end (following my official naming convention for booleans) and both it and game_ending were pulled out fo gs.state_dict and made attributes of gs.end(). disp_end had previously been named end() and had lived in its own module named ending(). ending() had at one time held the titles_by_score dictionary but this was centralized into static_dict in static_global() before 3.81.
+
+In prior variations, end() had a number of purposes and was not consistently called. During refactoring I realized that its only job was display-oriented and renamed it as such. At the same time I incorporated restart into the cases that could trigger disp_end (this is not actually an is_end case but it is the ending of the current game).
+
+Under the current implementation, when an end-of-game condition is met (presently only 'quit' and 'restart' in app_main(), attack() in Creature, and one case of result_exe() ) is_ending is set (except for the restart case), game_ending is set, and disp_end() is called.
+
+I also took the refactor opportunity to put a conditional in front of auto_act in app_main() so that there was no chance an auto-action would run after the player ending text.
+
+
 ##########################
 # invisible_class_def.py #
 ##########################
@@ -962,7 +987,7 @@ To get the response text, web_main calls app_main. app_main is the heart of the 
 	4) If cmd_override is False, app_main now calls cmd_exe to execute the player's command (e.g. "take key" => "Taken"). From the three cases of cmd_exe(), calls disp_score() from the Score subclass.
 	5) disp_score() checks whether the player's current command matches any of the score conditions in score_dict. If so, score is increased and an update to the player is buffered.
 	6) app_main now calls the post_action function which determines if the player's command (for example, pulling a lever) triggers a post_action Machine. If so, the Machine is run. post_act() also calls disp_score() to see if Machine results have impacted the player's score.
-	7) if game_ending != 'tbd' then app_main calls the 'end' function to buffer the end of game text
+	7) if gs.end.is_end == True then app_main calls gs.end.disp_end() method to buffer the end of game text
 	8) app_main saves the updated objects to the save pickle and resturns 'output' and 'end_of_game' to web_main
 
 The key take-away from the app_main flow is that, both before and after the player's command execution call, the game "gets a turn". These ad-hoc pro-active or responsive game actions are what the Machine construct enables.
