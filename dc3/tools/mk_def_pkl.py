@@ -332,11 +332,12 @@ gs = GameState(
 		'debug' : False,
 ##		'room' : entrance,
 	},
+	False, # is_debug
 	map,
 	io,
 	score,
 	end,
-	burt
+	burt # hero
 )
 
 ### instantiated objects added to list ###
