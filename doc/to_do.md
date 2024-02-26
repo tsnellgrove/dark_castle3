@@ -67,21 +67,32 @@ Version 3.82 Goals
 		- DONE: update calling methods / functions from gs.state_dict['debug'] => gs.is_debug
 		- DONE: test error (gs_class_def), help (cmd_exe), set (cmd_exe)
 		- DONE: clean-up gs_class_def, io_class_def, cmd_exe, validate, invistible(), mk_def_pkl()
-	- TBD: move turn from state_dict to attribute
-		- TBD: create is_debug attribute and setters & getters
+	- TBD: move move_count from state_dict to attribute
+		- TBD: create move_count attribute and setters & getters
 		- TBD: update mk_def_pkl()
 		- TBD: update calling methods / functions
 	- TBD: elim state_dict
-	- TBD: [DOC] gs modularization
+
+
+
+
+# *** FUTURE TO DO *** #
+
+##########################
+### VERSION 3.83 START ###
+##########################
+
+Version 3.83 Goals
+- Create gamestate sub-class just for core attributes and methods (debug, hero, move_count)
+- Refactor early run modules (web_main(), app_main(), and startup() )
+
+- TBD: create Core class and migrate debug, hero, and move_count attributes and methods to it
 - TBD: overdue early code refactoring
 	- TBD: refactor of web_main
 	- TBD: refactor of app_main (reverse shield approach? unify)
 		- IDEA: key if / then values = is_end, is_wait, is_valid, is_stateful
 	- TBD: refactor of start_up (should all be game instance focussed)
-
-
-# *** FUTURE TO DO *** #
-
+- TBD: [DOC] gs modularization - GameState only holds classes as attributes
 
 *** minor bug-fix ***
 
