@@ -63,8 +63,10 @@ Version 3.82 Goals
 	- INPROC: move debug from state_dict to attribute is_debug
 		- DONE: create is_debug attribute and setters & getters
 		- DONE: update mk_def_pkl()
-		- TBD: is_dbg() => just check state of gs.is_debug bool
+		- DONE: is_dbg() => just check state of gs.is_debug bool
 		- TBD: update calling methods / functions from gs.state_dict['debug'] => gs.is_debug
+		- DONE: test error (gs_class_def), help (cmd_exe), set (cmd_exe)
+		- TBD: clean-up gs_class_def, io_class_def, cmd_exe, validate, invistible(), mk_def_pkl()
 	- TBD: move turn from state_dict to attribute
 		- TBD: create is_debug attribute and setters & getters
 		- TBD: update mk_def_pkl()

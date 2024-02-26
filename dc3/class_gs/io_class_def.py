@@ -156,7 +156,8 @@ class IO(object):
 	def buff_dbg(self, debug_str, gs):
 		"""Buffers the debug_str attribute if the game is in debug mode. Otherwise, buffers a random error.
 		"""
-		if gs.is_dbg():
+#		if gs.is_dbg():
+		if gs.is_debug:
 			self.buffer(debug_str)
 		else:
 			self.buffer(static_dict['misc_err_' + str(random.randint(0, 4))])

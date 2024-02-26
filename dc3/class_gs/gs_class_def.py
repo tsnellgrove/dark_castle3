@@ -70,8 +70,8 @@ class GameState(object):
 
 	### debug mode ###
 
-	def is_dbg(self):
-		return self.state_dict['debug']
+#	def is_dbg(self):
+#		return self.state_dict['debug']
 
 	### room ###
 
