@@ -60,13 +60,13 @@ Version 3.82 Goals
 	- DONE: purpose of disp_end() is to calc title, and present ending text
 	- DONE: when facing an end state, set end.is_end, end.game_ending and call end.disp_end()
 - INPROC: clean up GameState
-	- INPROC: move debug from state_dict to attribute is_debug
+	- DONE: move debug from state_dict to attribute is_debug
 		- DONE: create is_debug attribute and setters & getters
 		- DONE: update mk_def_pkl()
 		- DONE: is_dbg() => just check state of gs.is_debug bool
-		- TBD: update calling methods / functions from gs.state_dict['debug'] => gs.is_debug
+		- DONE: update calling methods / functions from gs.state_dict['debug'] => gs.is_debug
 		- DONE: test error (gs_class_def), help (cmd_exe), set (cmd_exe)
-		- TBD: clean-up gs_class_def, io_class_def, cmd_exe, validate, invistible(), mk_def_pkl()
+		- DONE: clean-up gs_class_def, io_class_def, cmd_exe, validate, invistible(), mk_def_pkl()
 	- TBD: move turn from state_dict to attribute
 		- TBD: create is_debug attribute and setters & getters
 		- TBD: update mk_def_pkl()

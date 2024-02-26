@@ -34,7 +34,6 @@ def cmd_execute(gs, case, word_lst):
 					pre_out = pre_out + key + " = " + gs.io.get_dict_val('abbreviations_dict',key) + ", "
 				output = pre_out[:-2]
 			elif option == 'debug':
-	#			if not gs.state_dict['debug']:
 				if not gs.is_debug:
 					output = gs.io.get_str_nr('help_debug_error')
 				else:
@@ -55,9 +54,7 @@ def cmd_execute(gs, case, word_lst):
 				gs.io.buff_e('credits')
 				return
 			if word1 == 'debug_poke53281,0':
-#				gs.state_dict['debug'] = not gs.state_dict['debug']
 				gs.is_debug = not gs.is_debug
-#				gs.io.buffer(f"Debug Mode is now set to {gs.state_dict['debug']}.")
 				gs.io.buffer(f"Debug Mode is now set to {str(gs.is_debug)}.")
 				return
 			gs.io.buff_dbg("[CMD] tru_1word case not found", gs)

@@ -13,7 +13,6 @@ def validate(gs, case, word_lst):
 	# *** interpreter errors ***
 	if case == 'error':
 		output = word_lst[0]
-#		if gs.state_dict['debug']:
 		if gs.is_debug:
 			gs.io.buffer(f"[INTERP] {output}")
 		else:
@@ -32,7 +31,6 @@ def validate(gs, case, word_lst):
 			elif case == 'go':
 				room_obj, word1, word2 = word_lst
 				cmd_error = getattr(room_obj, word1 + '_err')(word2, gs)
-#			if cmd_error and gs.state_dict['debug']:
 			if cmd_error and gs.is_debug:
 				gs.io.buff_no_cr("[INVIS error postfix]")
 		except:

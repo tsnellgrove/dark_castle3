@@ -67,12 +67,6 @@ class GameState(object):
 	def get_moves(self):
 		return self._state_dict['move_counter']
 
-
-	### debug mode ###
-
-#	def is_dbg(self):
-#		return self.state_dict['debug']
-
 	### room ###
 
 ##		def get_room(self):

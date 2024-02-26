@@ -329,7 +329,6 @@ gs = GameState(
 	'gs',
 	{
 		'move_counter' : 0,
-#		'debug' : False,
 ##		'room' : entrance,
 	},
 	False, # is_debug
