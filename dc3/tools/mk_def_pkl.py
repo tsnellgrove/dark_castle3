@@ -327,10 +327,10 @@ dispense_panel_result.room_item = control_panel
 ### gs is the central store of game info ###
 gs = GameState(
 	'gs',
-	{
+#	{
 #		'move_counter' : 0,
 ##		'room' : entrance,
-	},
+#	},
 	False, # is_debug
 	0, # move_count
 	map,

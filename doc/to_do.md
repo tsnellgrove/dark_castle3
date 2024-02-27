@@ -73,7 +73,9 @@ Version 3.82 Goals
 		- DONE: comment out get_move()
 		- DONE: update calling methods / functions
 		- DONE: clean up gs_class_def(), end_class_def(), mk_def_pkl()
-	- TBD: elim state_dict
+	- INPROC: elim state_dict
+		- DONE: elim in gs and mk_def_pkl()
+		- clean up gs and mk_def_pkl()
 
 
 
