@@ -328,7 +328,7 @@ dispense_panel_result.room_item = control_panel
 gs = GameState(
 	'gs',
 	{
-		'move_counter' : 0,
+#		'move_counter' : 0,
 ##		'room' : entrance,
 	},
 	False, # is_debug

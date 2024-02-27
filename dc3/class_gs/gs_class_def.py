@@ -68,15 +68,10 @@ class GameState(object):
 
 	### game moves counter ###
 	def move_inc(self):
-#		self._state_dict['move_counter'] += 1
 		self.move_count += 1
 
 	def move_dec(self):
-#			self._state_dict['move_counter'] -= 1
 		self.move_count -= 1
-
-#	def get_moves(self):
-#		return self._state_dict['move_counter']
 
 	### room ###
 

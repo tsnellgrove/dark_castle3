@@ -45,7 +45,6 @@ class End(object):
         title = gs.io.get_dict_val('titles_by_score', title_score)
 
         gs.io.buffer(f"You have {self.game_ending}")
-#        gs.io.buffer("Your adventure ended after " + str(gs._state_dict['move_counter']) + " moves.")
         gs.io.buffer("Your adventure ended after " + str(gs.move_count) + " moves.")
         gs.score.print_score(gs)
         gs.io.buffer("Your title is: " + title)
