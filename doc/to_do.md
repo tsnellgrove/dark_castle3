@@ -67,10 +67,12 @@ Version 3.82 Goals
 		- DONE: update calling methods / functions from gs.state_dict['debug'] => gs.is_debug
 		- DONE: test error (gs_class_def), help (cmd_exe), set (cmd_exe)
 		- DONE: clean-up gs_class_def, io_class_def, cmd_exe, validate, invistible(), mk_def_pkl()
-	- TBD: move move_count from state_dict to attribute
-		- TBD: create move_count attribute and setters & getters
-		- TBD: update mk_def_pkl()
-		- TBD: update calling methods / functions
+	- INPROC: move move_count from state_dict to attribute
+		- DONE: create move_count attribute and setters & getters
+		- DONE: update mk_def_pkl()
+		- DONE: comment out get_move()
+		- DONE: update calling methods / functions
+		- TBD: clean up gs_class_def(), end_class_def(), 
 	- TBD: elim state_dict
 
 

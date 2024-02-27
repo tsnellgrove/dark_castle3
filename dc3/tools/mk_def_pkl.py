@@ -332,6 +332,7 @@ gs = GameState(
 ##		'room' : entrance,
 	},
 	False, # is_debug
+	0, # move_count
 	map,
 	io,
 	score,

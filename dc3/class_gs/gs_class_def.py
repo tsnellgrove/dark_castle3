@@ -9,10 +9,11 @@
 
 ### classes
 class GameState(object):
-	def __init__(self, name, state_dict, is_debug, map, io, score, end, hero):
+	def __init__(self, name, state_dict, is_debug, move_count, map, io, score, end, hero):
 		self._name = name
 		self._state_dict = state_dict
 		self._is_debug = is_debug
+		self._move_count = move_count
 		self._map = map
 		self._io = io
 		self._score = score
@@ -38,6 +39,14 @@ class GameState(object):
 		self._is_debug = new_val
 
 	@property
+	def move_count(self):
+		return self._move_count
+
+	@move_count.setter
+	def move_count(self, new_val):
+		self._move_count = new_val
+
+	@property
 	def map(self):
 		return self._map
 
@@ -59,13 +68,15 @@ class GameState(object):
 
 	### game moves counter ###
 	def move_inc(self):
-		self._state_dict['move_counter'] += 1
+#		self._state_dict['move_counter'] += 1
+		self.move_count += 1
 
 	def move_dec(self):
-			self._state_dict['move_counter'] -= 1
+#			self._state_dict['move_counter'] -= 1
+		self.move_count -= 1
 
-	def get_moves(self):
-		return self._state_dict['move_counter']
+#	def get_moves(self):
+#		return self._state_dict['move_counter']
 
 	### room ###
 
