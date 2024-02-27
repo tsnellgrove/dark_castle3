@@ -32,7 +32,7 @@ Version 3.82 Goals
 		- DONE: reconsider.... is_end_of_game => is_end ; also, in web_main, is_start
 			- DONE: web_main(), app_main(), start_up(), ending(), end_class_def()
 		- DONE: why return is_end from start_me_up() ???? (just return False)
-- INPROC: refactor gs.end()
+- DONE: refactor gs.end()
 	- DONE: move end() from ending() to gs.end()
 	- DONE: update end() calls in app_main()
 	- DONE: test
@@ -59,7 +59,7 @@ Version 3.82 Goals
 - DONE: [DOC] for End class
 	- DONE: purpose of disp_end() is to calc title, and present ending text
 	- DONE: when facing an end state, set end.is_end, end.game_ending and call end.disp_end()
-- INPROC: clean up GameState
+- DONE: clean up GameState
 	- DONE: move debug from state_dict to attribute is_debug
 		- DONE: create is_debug attribute and setters & getters
 		- DONE: update mk_def_pkl()
@@ -73,9 +73,9 @@ Version 3.82 Goals
 		- DONE: comment out get_move()
 		- DONE: update calling methods / functions
 		- DONE: clean up gs_class_def(), end_class_def(), mk_def_pkl()
-	- INPROC: elim state_dict
+	- DONE: elim state_dict
 		- DONE: elim in gs and mk_def_pkl()
-		- clean up gs and mk_def_pkl()
+		- DONE: clean up gs and mk_def_pkl()
 
 
 

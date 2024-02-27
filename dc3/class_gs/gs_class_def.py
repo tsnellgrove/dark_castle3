@@ -9,10 +9,8 @@
 
 ### classes
 class GameState(object):
-#	def __init__(self, name, state_dict, is_debug, move_count, map, io, score, end, hero):
 	def __init__(self, name, is_debug, move_count, map, io, score, end, hero):
 		self._name = name
-#		self._state_dict = state_dict
 		self._is_debug = is_debug
 		self._move_count = move_count
 		self._map = map
@@ -25,14 +23,6 @@ class GameState(object):
 	@property
 	def name(self):
 		return self._name
-
-#	@property
-#	def state_dict(self):
-#		return self._state_dict
-
-#	@state_dict.setter
-#	def state_dict(self, new_state):
-#		self._state_dict = new_state
 
 	@property
 	def is_debug(self):
@@ -76,15 +66,6 @@ class GameState(object):
 
 	def move_dec(self):
 		self.move_count -= 1
-
-	### room ###
-
-##		def get_room(self):
-##				return self._state_dict['room']
-
-##		def set_room(self, value):
-##				self._state_dict['room'] = value
-
 
 	### obj representation (for printing) ###
 	def __repr__(self):
