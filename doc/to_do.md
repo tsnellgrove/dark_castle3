@@ -1,86 +1,6 @@
 To Do List - Dark Castle v3
-Feb 11, 2024
+Feb 28, 2024
 
-
-##########################
-### VERSION 3.82 START ###
-##########################
-
-Version 3.82 Goals
-- Create gamestate sub-class just for ending
-- Refactor score sub-class to make it more efficient
-
-*** end sub-class ***
-- DONE: make end routine a sub-class of gs
-	- DONE: create end_class_def() including setters & getters
-	- DONE: add end as attribute of GameState in gs_class_def()
-	- DONE: instantiate End of class end_class_def() in mk_def_pkl()
-	- DONE: move GameState end attributes to End class
-		- DONE: end_of_game from gs.state_dict => gs.end.is_end_of_game
-			- DONE: web_main()
-			- DONE: app_main()
-			- DONE: start_up()
-			- DONE: ending()
-		- DONE: game_ending from gs.state_dict => gs.end.end_of_game
-			- DONE: app_main()
-			- DONE: results()
-			- DONE: creature()
-		- DONE: testing
-	- DONE: additional updates
-		- DONE: comment out gs_class_def() and mk_def_pkl()
-		- DONE: clean mk_def_pkl, gs_class_def, ending, web_main, app_main, start_up, creature, results
-		- DONE: reconsider.... is_end_of_game => is_end ; also, in web_main, is_start
-			- DONE: web_main(), app_main(), start_up(), ending(), end_class_def()
-		- DONE: why return is_end from start_me_up() ???? (just return False)
-- DONE: refactor gs.end()
-	- DONE: move end() from ending() to gs.end()
-	- DONE: update end() calls in app_main()
-	- DONE: test
-	- DONE: clean up comments in End and app_main()
-	- DONE: ending() => Legacy folder
-	- DONE: initial clean-up of end()
-	- DONE: set is_end in end() but at top of method
-	- DONE: end() => disp_end() # really, the main purpose of method is to display ending text
-	- DONE: change initial value of game_ending from 'tbd' => None
-	- DONE: convert game_ending to dis_end() sentence: "You have <game_ending>" [died]
-	- CANCEL: raise error case if none of end types holds
-	- DONE: avoid triggering end state off of game_end != 'tbd' 
-		- CANCEL: if game_ending is being changed, just call end() then and there?
-		- CANCEL: fix in app_main()
-		- IDEA: calling disp_end() immediately after setting game_ending risks score coming after end text
-		- IDEA: end text should always be last
-		- DONE: should results() and creature() set is_end rather than game_ending?
-		- DONE: so work around is setting is_end inline and then calling disp_end based on is_end in app_main
-	- DONE: do NOT run auto_act() if is_end == True ??	
-	- DONE: incorporate 'restart' into game ending options
-		- DONE: add score, moves, and title to 'restart' ending (but this will impact web_main trigger...)
-		- CANCEL: trigger restart based on end_of_game attribute rather than user_output => won't work
-		- DONE: alternatively, pull specific text string from use_output and trigger restart off of that
-- DONE: [DOC] for End class
-	- DONE: purpose of disp_end() is to calc title, and present ending text
-	- DONE: when facing an end state, set end.is_end, end.game_ending and call end.disp_end()
-- DONE: clean up GameState
-	- DONE: move debug from state_dict to attribute is_debug
-		- DONE: create is_debug attribute and setters & getters
-		- DONE: update mk_def_pkl()
-		- DONE: is_dbg() => just check state of gs.is_debug bool
-		- DONE: update calling methods / functions from gs.state_dict['debug'] => gs.is_debug
-		- DONE: test error (gs_class_def), help (cmd_exe), set (cmd_exe)
-		- DONE: clean-up gs_class_def, io_class_def, cmd_exe, validate, invistible(), mk_def_pkl()
-	- DONE: move move_count from state_dict to attribute
-		- DONE: create move_count attribute and setters & getters
-		- DONE: update mk_def_pkl()
-		- DONE: comment out get_move()
-		- DONE: update calling methods / functions
-		- DONE: clean up gs_class_def(), end_class_def(), mk_def_pkl()
-	- DONE: elim state_dict
-		- DONE: elim in gs and mk_def_pkl()
-		- DONE: clean up gs and mk_def_pkl()
-
-
-
-
-# *** FUTURE TO DO *** #
 
 ##########################
 ### VERSION 3.83 START ###
@@ -97,6 +17,8 @@ Version 3.83 Goals
 		- IDEA: key if / then values = is_end, is_wait, is_valid, is_stateful
 	- TBD: refactor of start_up (should all be game instance focussed)
 - TBD: [DOC] gs modularization - GameState only holds classes as attributes
+
+# *** FUTURE TO DO *** #
 
 *** minor bug-fix ***
 
