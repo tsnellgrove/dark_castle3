@@ -30,6 +30,7 @@ from dc3.class_gs.map_class_def import Map
 from dc3.class_gs.io_class_def import IO
 from dc3.class_gs.score_class_def import Score
 from dc3.class_gs.end_class_def import End
+from dc3.class_gs.core_class_def import Core
 
 # *** object instantiation - starting state ***
 
@@ -279,7 +280,15 @@ unreachable_2 = Room('unreachable_2', 'Unreachable', 'unreachable_2', 'unreachab
 
 unreachable_3 = Room('unreachable_3', 'Unreachable', 'unreachable_3', 'unreachable_3', None, [], [], [])
 
-# *** Map ***
+# *** gs class modules ***
+core = Core(
+		'core', #name
+		burt, # hero
+        0, # move_count
+        False # is_debug
+		)
+
+
 map = Map([{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall},
 		{'room_x' : entrance, 'dir_x' : 'south', 'door' : 'path', 'dir_y' : None, 'room_y' : unreachable_1},
 		{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
@@ -327,6 +336,7 @@ dispense_panel_result.room_item = control_panel
 ### gs is the central store of game info ###
 gs = GameState(
 	'gs',
+	core, # Core attribute class
 	False, # is_debug
 	0, # move_count
 	map,

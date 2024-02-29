@@ -9,8 +9,21 @@ Version 3.83 Goals
 - Create gamestate sub-class just for core attributes and methods (debug, hero, move_count)
 - Refactor early run modules (web_main(), app_main(), and startup() )
 
-- TBD: create Core class and migrate debug, hero, and move_count attributes and methods to it
-- TBD: overdue early code refactoring
+- INPROC: create Core class and migrate debug, hero, and move_count attributes and methods to it
+	- DONE: create core_class_def() including setters & getters
+	- DONE: import Core from core_class_def() into mk_def_pkl()
+	- DONE: instantiate core of class Core in mk_def_pkl()
+	- DONE: add core as attribute of GameState in gs_class_def() and mk_def_pkl()
+	- TBD: move GameState end attributes to Core class
+		- TBD: hero from gs => gs.core
+		- TBD: move_count from gs => gs.core ; also move_count methods
+		- TBD: debug from gs => gs.core
+
+- TBD: gs attribute class clean-up / standardize
+	- TBD: standardize gs attribute classes in mk_def_pkl()
+	- TBD: add name attribute for Map
+
+- TBD: over-due early code refactoring
 	- TBD: refactor of web_main
 	- TBD: refactor of app_main (reverse shield approach? unify)
 		- IDEA: key if / then values = is_end, is_wait, is_valid, is_stateful
