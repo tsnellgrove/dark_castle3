@@ -14,8 +14,10 @@ Version 3.83 Goals
 	- DONE: import Core from core_class_def() into mk_def_pkl()
 	- DONE: instantiate core of class Core in mk_def_pkl()
 	- DONE: add core as attribute of GameState in gs_class_def() and mk_def_pkl()
-	- TBD: move GameState end attributes to Core class
+	- INPROC: move GameState end attributes to Core class
 		- TBD: hero from gs => gs.core
+			TBD: prep for find & replace
+			TBD: find and replace gs.hero => gs.core.hero
 		- TBD: move_count from gs => gs.core ; also move_count methods
 		- TBD: debug from gs => gs.core
 
