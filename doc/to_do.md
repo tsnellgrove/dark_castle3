@@ -15,10 +15,18 @@ Version 3.83 Goals
 	- DONE: instantiate core of class Core in mk_def_pkl()
 	- DONE: add core as attribute of GameState in gs_class_def() and mk_def_pkl()
 	- INPROC: move GameState end attributes to Core class
+		- TBD: move_count from gs => gs.core 
+			DONE: redirect gs.move_count calls to gs.core.move_count
+			TBD: remove move_count attribute from GameState and mk_def_pkl()
+			TBD: clean up gs_class_def() and end_class_def()
+			TBD: migrate move_count methods to Core class
+				TBD: copy move_count methiods to Core class
+				TBD: add gs as an attribute of move_count methods
+				TBD: redirect method calls
+				TBD: clean up gs_class_def() and app_main()
 		- TBD: hero from gs => gs.core
 			TBD: prep for find & replace
 			TBD: find and replace gs.hero => gs.core.hero
-		- TBD: move_count from gs => gs.core ; also move_count methods
 		- TBD: debug from gs => gs.core
 
 - TBD: gs attribute class clean-up / standardize

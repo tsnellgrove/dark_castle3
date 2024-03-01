@@ -338,7 +338,7 @@ gs = GameState(
 	'gs',
 	core, # Core attribute class
 	False, # is_debug
-	0, # move_count
+#	0, # move_count
 	map,
 	io,
 	score,
