@@ -9,12 +9,10 @@
 
 ### classes
 class GameState(object):
-#	def __init__(self, name, core, is_debug, move_count, map, io, score, end, hero):
 	def __init__(self, name, core, is_debug, map, io, score, end, hero):
 		self._name = name
 		self._core = core
 		self._is_debug = is_debug
-#		self._move_count = move_count
 		self._map = map
 		self._io = io
 		self._score = score
@@ -38,14 +36,6 @@ class GameState(object):
 	def is_debug(self, new_val):
 		self._is_debug = new_val
 
-#	@property
-#	def move_count(self):
-#		return self._move_count
-
-#	@move_count.setter
-#	def move_count(self, new_val):
-#		self._move_count = new_val
-
 	@property
 	def map(self):
 		return self._map
@@ -68,11 +58,9 @@ class GameState(object):
 
 	### game moves counter ###
 	def move_inc(self):
-#		self.move_count += 1
 		self.core.move_count += 1
 
 	def move_dec(self):
-#		self.move_count -= 1
 		self.core.move_count -= 1
 
 	### obj representation (for printing) ###
