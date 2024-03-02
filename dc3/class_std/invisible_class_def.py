@@ -415,7 +415,7 @@ class Invisible(object):
 		return False
 
 	def get_weight_err(self, gs):
-		if not gs.is_debug:
+		if not gs.core.is_debug:
 			gs.io.buffer("Please start your sentence with a known verb!")
 			return True
 		if not (self.is_item() or self.is_creature()):
@@ -424,7 +424,7 @@ class Invisible(object):
 		return False
 
 	def capacity_err(self, gs):
-		if not gs.is_debug:
+		if not gs.core.is_debug:
 			gs.io.buffer("Please start your sentence with a known verb!")
 			return True
 		if not self.is_container():
@@ -433,7 +433,7 @@ class Invisible(object):
 		return False
 
 	def where_is_err(self, gs):
-		if not gs.is_debug:
+		if not gs.core.is_debug:
 			gs.io.buffer("Please start your sentence with a known verb!")
 			return True
 		if self.is_writing():
