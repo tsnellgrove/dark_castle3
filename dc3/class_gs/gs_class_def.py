@@ -9,11 +9,9 @@
 
 ### classes
 class GameState(object):
-#	def __init__(self, name, core, is_debug, map, io, score, end, hero):
 	def __init__(self, name, core, map, io, score, end, hero):
 		self._name = name
 		self._core = core
-#		self._is_debug = is_debug
 		self._map = map
 		self._io = io
 		self._score = score
@@ -28,14 +26,6 @@ class GameState(object):
 	@property
 	def core(self):
 		return self._core
-
-#	@property
-#	def is_debug(self):
-#		return self._is_debug
-
-#	@is_debug.setter
-#	def is_debug(self, new_val):
-#		self._is_debug = new_val
 
 	@property
 	def map(self):

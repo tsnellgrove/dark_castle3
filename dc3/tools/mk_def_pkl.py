@@ -335,9 +335,8 @@ dispense_panel_result.room_item = control_panel
 
 ### gs is the central store of game info ###
 gs = GameState(
-	'gs',
+	'gs', # name
 	core, # Core attribute class
-#	False, # is_debug
 	map,
 	io,
 	score,

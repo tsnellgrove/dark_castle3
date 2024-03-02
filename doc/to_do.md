@@ -25,10 +25,11 @@ Version 3.83 Goals
 			- DONE: eliminate gs.move_dec() ?
 			- DONE: redirect method calls
 			- DONE: clean up gs_class_def() and app_main()
-		- INPROC: is_debug from gs => gs.core
+		- DONE: is_debug from gs => gs.core
 			- DONE: update call gs.is_debug calls to gs.core.is_debug
 			- DONE: test
-			- TBD: clean up gs.is_debug in gs_class_def() and mk_def_pkl()
+			- DONE: clean up gs.is_debug in gs_class_def() and mk_def_pkl()
+			- DONE: clean up comments
 		- TBD: hero from gs => gs.core
 			- TBD: prep for find & replace
 			- TBD: find and replace gs.hero => gs.core.hero
