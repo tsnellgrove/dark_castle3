@@ -52,7 +52,8 @@ def app_main(user_input, is_start_of_game):
 	gs.io.last_input_str = user_input # sets 'again' last_turn input value for next_turn
 
 	if user_input.lower() == 'wait' or user_input.lower() == 'z':
-		gs.move_inc()
+#		gs.move_inc()
+		gs.core.move_inc()
 		gs.io.buffer("Waiting...")
 		auto_action(gs)
 		with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
@@ -72,7 +73,8 @@ def app_main(user_input, is_start_of_game):
 		return gs.end.is_end, gs.io.get_buff()
 
 	# for valid user_input, increment move count and run pre_action, cmd_exe, post_action, and auto_action
-	gs.move_inc()
+#	gs.move_inc()
+	gs.core.move_inc()
 	cmd_override = pre_action(gs, case, word_lst)
 	if not cmd_override:
 		cmd_execute(gs, case, word_lst)

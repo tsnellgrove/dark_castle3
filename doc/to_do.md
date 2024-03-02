@@ -19,10 +19,11 @@ Version 3.83 Goals
 			- DONE: redirect gs.move_count calls to gs.core.move_count
 			- DONE: remove move_count attribute from GameState and mk_def_pkl()
 			- DONE: clean up gs_class_def() and end_class_def()
-		- TBD: migrate move_count methods to Core class
-			- TBD: copy move_count methiods to Core class
-			- TBD: add gs as an attribute of move_count methods
-			- TBD: redirect method calls
+		- INPROC: migrate move_count methods to Core class
+			- DONE: copy move_count methiods to Core class
+			- CANCEL: add gs as an attribute of move_count methods
+			- DONE: eliminate gs.move_dec() ?
+			- DONE: redirect method calls
 			- TBD: clean up gs_class_def() and app_main()
 		- TBD: hero from gs => gs.core
 			- TBD: prep for find & replace
@@ -150,7 +151,6 @@ Version 3.83 Goals
 	- DONE: is there really any need for GameState room_mach_lst() ??
 	- TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
 	- TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
-	- eliminate gs.move_dec() ?
 	- 'try... except' standard descriptions for examine() method (similar to Warnings) (???)
 
 - TBD: reveiw / update / finalize doc file

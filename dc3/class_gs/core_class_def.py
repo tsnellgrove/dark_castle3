@@ -40,4 +40,12 @@ class Core(object):
         self._is_debug = new_val
 
 
+	### move_count methods ###
+    def move_inc(self):
+        self.move_count += 1
+
+#    def move_dec(self):
+#        self.move_count -= 1
+
+
 
