@@ -19,16 +19,16 @@ Version 3.83 Goals
 			- DONE: redirect gs.move_count calls to gs.core.move_count
 			- DONE: remove move_count attribute from GameState and mk_def_pkl()
 			- DONE: clean up gs_class_def() and end_class_def()
-		- INPROC: migrate move_count methods to Core class
+		- DONE: migrate move_count methods to Core class
 			- DONE: copy move_count methiods to Core class
 			- CANCEL: add gs as an attribute of move_count methods
 			- DONE: eliminate gs.move_dec() ?
 			- DONE: redirect method calls
-			- TBD: clean up gs_class_def() and app_main()
+			- DONE: clean up gs_class_def() and app_main()
+		- TBD: debug from gs => gs.core
 		- TBD: hero from gs => gs.core
 			- TBD: prep for find & replace
 			- TBD: find and replace gs.hero => gs.core.hero
-		- TBD: debug from gs => gs.core
 
 - TBD: gs attribute class clean-up / standardize
 	- TBD: standardize gs attribute classes in mk_def_pkl()

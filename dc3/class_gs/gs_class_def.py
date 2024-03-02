@@ -56,13 +56,6 @@ class GameState(object):
 	def hero(self):
 		return self._hero
 
-	### game moves counter ###
-	def move_inc(self):
-		self.core.move_count += 1
-
-	def move_dec(self):
-		self.core.move_count -= 1
-
 	### obj representation (for printing) ###
 	def __repr__(self):
 		return f'Object { self._name } is of class { type(self).__name__ } '
