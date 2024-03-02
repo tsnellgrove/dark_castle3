@@ -337,7 +337,7 @@ dispense_panel_result.room_item = control_panel
 gs = GameState(
 	'gs',
 	core, # Core attribute class
-	False, # is_debug
+#	False, # is_debug
 	map,
 	io,
 	score,
