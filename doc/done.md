@@ -2441,8 +2441,8 @@ Version 3.70 Goals
 			- rename to make similar to room?
 			- need a 'cant_drop_lst' for backpack => creature_obj_lst (no need to worry about backpack as open container)
 			- creature attribute for inventory_visible == True / False
-			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [only 'hand' unless creature = gs.hero]
-			- only visible if creature = gs.hero() ??
+			- i.e. should creatures have a visible_inventory_lst that is part of examine scope? [only 'hand' unless creature = gs.core.hero]
+			- only visible if creature = gs.core.hero() ??
 		- DONE: creature_lst_append_item => item_lst_append() and creature_lst_remove_item => item_lst_remove()
 			- DONE: update creature_class_def()
 			- DONE: uupdate result_class_def()
@@ -2937,9 +2937,9 @@ Version 3.73 Goals
 		- DONE: instantiate burt in mk_def_pkl() (on attack dicts)
 		- DONE: burt_creature to be instantiated in entrance.room.floor_lst
 		- DONE: create gs dict entry that defines hero == burt and create a get_hero() method to get this info
-		- DONE: update creature.vis_lst() to include bkpk_lst for self == gs.hero
-		- DONE: update disp_contain() method for creature to include backpack for self == gs.hero
-	- DECISION: on initial refactor, all 'action' methods except attack() will be implicitly excuted by gs.hero
+		- DONE: update creature.vis_lst() to include bkpk_lst for self == gs.core.hero
+		- DONE: update disp_contain() method for creature to include backpack for self == gs.core.hero
+	- DECISION: on initial refactor, all 'action' methods except attack() will be implicitly excuted by gs.core.hero
 		- IDEA: making action methods applicable to arbitrary creatures can be considered on a 2nd pass
 	- CANCEL: address duplicate obj issue
 		- IDEA: we can't test other methods because the interpreter is confused by creature_burt having duplicat items
@@ -2952,7 +2952,7 @@ Version 3.73 Goals
 		- DONE: food in burt's hand
 		- DONE: update eat for creature_burt
 		- DONE: minor refacto of eat()
-		- DONE: update validate() to include gs.hero.chk_in_hand() as part of its hand check
+		- DONE: update validate() to include gs.core.hero.chk_in_hand() as part of its hand check
 		- DONE: clean up comments 
 	- DONE: update drink to creature_burt
 		- DONE: update drink() method
@@ -2985,7 +2985,7 @@ Version 3.73 Goals
 		- DONE: after updating take(), don't forget to update hand references in score()
 	- DONE: update go() to creature_burt
 		- DONE: update go() method
-	- DONE: update validate() to include gs.hero.chk_in_hand() as part of its hand check for prep case (put, show, give)
+	- DONE: update validate() to include gs.core.hero.chk_in_hand() as part of its hand check for prep case (put, show, give)
 		- NOTE: show is now fully functional for creature_burt
 	- DONE: update give() to creature_burt
 		- DONE: update give() method
@@ -3018,7 +3018,7 @@ Version 3.73 Goals
 		- DONE: update cmd_exe True-One-Word command
 		- DONE: update Creature disp_contain()
 		- DONE: clean up comments
-	- DONE: can exclude burt from room.disp_contain() using remove(gs.hero)
+	- DONE: can exclude burt from room.disp_contain() using remove(gs.core.hero)
 - DONE: review burt => creature plans and clean-up
 - DONE: move gs.universal_lst timer obj to burt.invis_lst
 - DONE: gs.map.get_hero_rm(gs) => gs.map.get_hero_room()
@@ -3104,7 +3104,7 @@ Version 3.73 Goals
 	- IDEA: if creature == burt: buffer("std txt")  else: if creature in burt_room: buffer("creature txt")
 	- IDEA: burt to be default value
 	- DONE: go
-		- DONE: add default creature attribute and use None state to set to gs.hero
+		- DONE: add default creature attribute and use None state to set to gs.core.hero
 		- DONE: add alternate text for creature is not burt
 		- DONE: add conditional for text if creature is not in the same room as burt
 		- DONE: create test_frog
@@ -3340,7 +3340,7 @@ Version 3.75 Goals
 		- DONE: general refactor
 		- DONE: update all doc_strings
 - INPROC: create attack_b() method
-	- DONE: create def for attack_b() method using 'attack x with y' format and gs.hero as default base_creature
+	- DONE: create def for attack_b() method using 'attack x with y' format and gs.core.hero as default base_creature
 	- DONE: test base attack_b() method
 	- DONE: add 'attack_b' to validate check for in_hand
 	- DONE: explore use of src_creature and tgt_creature
@@ -3373,9 +3373,9 @@ Version 3.75 Goals
 		- DONE: update result coding
 		- DONE: elim interim hedgehog entry
 		- DONE: clean up comments
-	- DONE: return on gs.hero not in current room
+	- DONE: return on gs.core.hero not in current room
 	- DONE: construct and buffer attack initiation string
-		- DONE: varry response based on whether src_creature == gs.hero
+		- DONE: varry response based on whether src_creature == gs.core.hero
 	- DONE: buffer custom response string
 		- IDEA: move to algorithmic key generation for attack_b() responses
 		- IDEA: Maybe hedgehog laughs at an attack with a non-weapon?
@@ -4891,7 +4891,7 @@ Version 3.80 Goals
 			- DONE: Organize auto-gen keys together
 			- CANCEL: consider creating a separate dict for autogen keys
 
-		- DONE: refactor hero to gs.hero
+		- DONE: refactor hero to gs.core.hero
 			- AGREE: get_room() method belongs to this class ?? (or pass gs to gs.map and move get_room there ??)
 	- DONE: email to self on Aug 2, 2022)
 		- DONE: gs => gs renaming; point to same obj to start with ??

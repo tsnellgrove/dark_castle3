@@ -9,7 +9,7 @@
 
 def score(gs):
 	room_obj = gs.map.get_hero_rm(gs)
-	creature = gs.hero
+	creature = gs.core.hero
 
 	# increment item scores
 #	for score_key in static_dict['item_score_lst']:

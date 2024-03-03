@@ -47,7 +47,7 @@ class Writing(Invisible):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 
 		gs.io.buff_d(self.descript_key, self.full_name)
 		return
@@ -107,7 +107,7 @@ class ViewOnly(Writing):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 
 		if self.get_title_str(gs) is not None:
 			gs.io.buffer(self.get_title_str(gs))

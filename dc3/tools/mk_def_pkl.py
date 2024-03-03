@@ -341,7 +341,7 @@ gs = GameState(
 	io,
 	score,
 	end,
-	burt # hero
+#	burt # hero
 )
 
 ### instantiated objects added to list ###

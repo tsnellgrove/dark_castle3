@@ -30,9 +30,11 @@ Version 3.83 Goals
 			- DONE: test
 			- DONE: clean up gs.is_debug in gs_class_def() and mk_def_pkl()
 			- DONE: clean up comments
-		- TBD: hero from gs => gs.core
-			- TBD: prep for find & replace
-			- TBD: find and replace gs.hero => gs.core.hero
+		- INPROC: hero from gs => gs.core
+			- DONE: prep for find & replace
+			- DONE: find and replace gs.core.hero => gs.core.hero
+			- TBD: clean up gs.hero in gs_class_def() and mk_def_pkl()
+			- TBD: clean up comments
 
 - TBD: gs attribute class clean-up / standardize
 	- TBD: standardize gs attribute classes in mk_def_pkl()
@@ -740,7 +742,7 @@ Misc:
 *-- DC2 PUZZLE IDEAS --*
 - maybe, in DC2, before the ball, the princess is missing (hiding from evil prince) and is diguised as a black cat that burt needs to befriend?
 - it would be cool to have an invisibility cloak / spell (probably need to keep it short term / contained)
-- Note: gs.hero enables player to take on different characters in the game (e.g. Burt could become a mouse)
+- Note: gs.core.hero enables player to take on different characters in the game (e.g. Burt could become a mouse)
 - princess 'poise' & 'moxie'
 - fun idea - small creature - like a mouse - as an item
 - more directions

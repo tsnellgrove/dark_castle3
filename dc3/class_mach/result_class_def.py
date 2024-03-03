@@ -60,7 +60,7 @@ class BufferAndGiveResult(BufferOnlyResult):
 
 	def result_exe(self, gs, mach_state):
 		gs.io.buff_s(self.name)
-		creature = gs.hero
+		creature = gs.core.hero
 		creature.put_in_hand(self.give_item, gs)
 		mach_state = True
 		return mach_state, self.cmd_override
@@ -192,7 +192,7 @@ class AttackBurtResult(BufferOnlyResult):
 #			hand_obj = None
 		else:
 			hand_obj = self.creature_obj.get_hand_item()
-		tgt_creature = gs.hero
+		tgt_creature = gs.core.hero
 #		self.creature_obj.attack_b(hand_obj, gs, tgt_creature)
 #		tgt_creature.attack_b(hand_obj, gs, self.creature_obj)
 		tgt_creature.attack(hand_obj, gs, self.creature_obj)

@@ -348,7 +348,7 @@ class Room(ViewOnly):
 #				"
 				room_item_lst = []
 				for obj in self.floor_lst:
-						if obj == gs.hero:
+						if obj == gs.core.hero:
 								pass
 						elif not obj.is_item():
 								gs.io.buff_cr()
@@ -372,7 +372,7 @@ class Room(ViewOnly):
 #				" Moves a Creature from one room to another
 #				"
 				if creature is None:
-						creature = gs.hero
+						creature = gs.core.hero
 
 				if not gs.map.chk_valid_dir(self, dir):
 						gs.io.buffer(static_dict[f"wrong_way_{random.randint(0, 4)}"])
@@ -386,7 +386,7 @@ class Room(ViewOnly):
 				next_room.floor_lst_append(creature)
 				self.floor_lst_remove(creature)
 
-				if creature == gs.hero:
+				if creature == gs.core.hero:
 						next_room.examine(gs)
 						return 
 				if self == gs.map.get_hero_rm(gs):
@@ -431,12 +431,12 @@ class Item(ViewOnly):
 								3) Local error checking ensures that 'obj' is not already in Burt's hand or held / worn by another creature
 								4) Therefore, 'obj' must be a takable Item!
 #				"
-				creature = gs.hero
+				creature = gs.core.hero
 				if creature.chk_in_hand(self):
 						gs.io.buffer("You're already holding the " + self.full_name)
 						return 
 				for obj in gs.map.get_hero_rm(gs).floor_lst:
-						if obj.is_creature() and obj is not gs.hero and self in obj.get_vis_contain_lst(gs):
+						if obj.is_creature() and obj is not gs.core.hero and self in obj.get_vis_contain_lst(gs):
 								gs.io.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 								return 
 				gs.map.get_hero_rm(gs).remove_item(self, gs)
@@ -447,7 +447,7 @@ class Item(ViewOnly):
 		def drop(self, gs):
 #				" Drops an object from Burt's hand to the floor of the room.
 #				"
-				creature = gs.hero
+				creature = gs.core.hero
 				creature.hand_lst_remove(self)
 				gs.map.get_hero_rm(gs).floor_lst_append(self)
 				gs.io.buffer("Dropped")
@@ -531,7 +531,7 @@ class Door(ViewOnly):
 		def unlock(self, gs):
 #				" Unlocks a Door object.
 #				"
-				creature = gs.hero
+				creature = gs.core.hero
 				if self.is_open is None:
 						gs.io.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
 						return 
@@ -589,7 +589,7 @@ class Door(ViewOnly):
 		def lock(self, gs):
 #				" Locks a Door object.
 #				"
-				creature = gs.hero
+				creature = gs.core.hero
 				if self.is_open is None:
 						gs.io.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
 						return 
@@ -726,7 +726,7 @@ class Container(Door):
 				Historic Note:
 						put() was the very first preposition-based command in DCv3. After ages of two-word commands it very exciting to be able to type 'put the rusty key in the crystal box' and have a working result!
 #				"
-				creature = gs.hero
+				creature = gs.core.hero
 				if self.is_open == False:
 						gs.io.buffer(f"The {self.full_name} is closed.")
 						return
@@ -774,7 +774,7 @@ class Food(Item):
 				return self._eat_desc_key
 
 		def eat(self, gs):
-				creature = gs.hero
+				creature = gs.core.hero
 				creature.hand_lst_remove(self)
 				gs.io.buffer(f"Eaten. The {self.full_name} {static_dict[self.eat_desc_key]}")
 """
@@ -794,7 +794,7 @@ class Liquid(ViewOnly):
 		def drink(self, gs):
 #				" Consumes a liquid if it is in a Container that Burt is holding in his hand.
 #				"
-				creature = gs.hero
+				creature = gs.core.hero
 				if not creature.hand_is_empty():
 						hand_item = creature.get_hand_item()
 				if (creature.hand_is_empty()) or (hand_item.is_container() == False):
@@ -836,7 +836,7 @@ class Clothes(Item):
 				return True
 
 		def wear(self, gs):
-				creature = gs.hero
+				creature = gs.core.hero
 				if creature.chk_clothing_type_worn(self):
 						gs.io.buffer(f"You are already wearing a {self.clothing_type}. You can't wear two garments of the same type at the same time.")
 						return 

@@ -48,7 +48,7 @@ class Item(ViewOnly):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 		
 		gs.io.buffer("Taken")
 		if creature.chk_is_worn(self):
@@ -64,7 +64,7 @@ class Item(ViewOnly):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 
 		creature.hand_lst_remove(self)
 		if creature.is_contained(gs):
@@ -102,7 +102,7 @@ class Food(Item):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 
 		creature.hand_lst_remove(self)
 		
@@ -127,7 +127,7 @@ class Liquid(Item):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 
 #		obj.contain_lst.remove(self)
 		obj.remove_item(self, gs)
@@ -159,7 +159,7 @@ class Garment(Item):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 		
 		creature.hand_lst_remove(self)
 		creature.worn_lst_append(self)

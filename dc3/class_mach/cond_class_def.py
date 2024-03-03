@@ -31,7 +31,7 @@ class WeaponInHandCond(PassThruCond):
 		return self._weapon_match_cond
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		creature = gs.hero
+		creature = gs.core.hero
 		return creature.in_hand_is_weapon() == self.weapon_match_cond
 
 
@@ -86,7 +86,7 @@ class IsWeaponAndStateCond(StateCond):
 		return self._weapon_match_cond
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		creature = gs.hero
+		creature = gs.core.hero
 		weapon_in_hand = not creature.hand_is_empty() and creature.get_hand_item().is_weapon()
 		return (mach_state == self.mach_state_cond) and (weapon_in_hand == self.weapon_match_cond)
 
@@ -268,7 +268,7 @@ class WornCond(PassThruCond):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		creature = gs.hero
+		creature = gs.core.hero
 		return (self.worn_garment in creature.worn_lst) == self.match_cond
 
 

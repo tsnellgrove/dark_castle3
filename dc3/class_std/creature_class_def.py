@@ -135,7 +135,7 @@ class Creature(ViewOnly):
 		if self.weight + new_item.weight >= self.max_weight:
 			room = gs.map.get_obj_room(self, gs)
 			room.floor_lst_append(new_item)
-			if self == gs.hero:
+			if self == gs.core.hero:
 				gs.io.buffer(f"Your burden is too great. You drop the {new_item.full_name} on the floor.")
 			else:
 				gs.io.buffer(f"The {self.full_name} is overburdened and must drop the {new_item.full_name} on the floor.")
@@ -200,7 +200,7 @@ class Creature(ViewOnly):
 		""" Returns the list of visible objects contained in the referenced ('self') object
 		"""
 		contain_lst = []
-		if self == gs.hero:
+		if self == gs.core.hero:
 			node1_item_lst = self.hand_lst + self.worn_lst + self.bkpk_lst
 		else:
 				node1_item_lst = self.hand_lst + self.worn_lst
@@ -288,7 +288,7 @@ class Creature(ViewOnly):
 		""" Displays object-specific conditions. Used in examine().
 		"""
 		if self.has_cond(gs):
-			if self == gs.hero:
+			if self == gs.core.hero:
 				gs.io.buff_no_cr(f"You are seated in the {self.get_contained_by(gs).full_name}.")
 				gs.io.buff_cr()
 				gs.io.buff_cr()
@@ -298,7 +298,7 @@ class Creature(ViewOnly):
 			pass
 
 	def has_contain(self, gs):
-		if self == gs.hero:
+		if self == gs.core.hero:
 ##			creature_lst = self.hand_lst + self.bkpk_lst + self.worn_lst
 			return True
 		return bool(self.hand_lst + self.worn_lst)
@@ -306,13 +306,13 @@ class Creature(ViewOnly):
 	def disp_contain(self, gs):
 		""" Displays a description of the visible items held by the obj. Used in examine(). Variable output for burt vs. other creatures.
 		"""
-		if self == gs.hero:
+		if self == gs.core.hero:
 			gs.io.buff_no_cr(f"In your off hand you hold a Brass Lantern.")
 			if (not self.bkpk_is_empty()) or (not self.hand_is_empty()) or (not self.worn_is_empty()):
 					gs.io.buff_cr()
 					gs.io.buff_cr()
 		if not self.hand_is_empty():
-			if self == gs.hero:
+			if self == gs.core.hero:
 				gs.io.buff_no_cr(f"You are holding a {self.get_hand_item().full_name}. ")
 				for obj in self.hand_lst:
 					obj.disp_contain(gs)
@@ -321,7 +321,7 @@ class Creature(ViewOnly):
 				gs.io.buff_no_cr(f"The {self.full_name} is holding a {self.get_hand_item().full_name}. ")
 				for obj in self.hand_lst:
 					obj.disp_contain(gs)
-		if self == gs.hero and not self.bkpk_is_empty():
+		if self == gs.core.hero and not self.bkpk_is_empty():
 			if not self.hand_is_empty():
 				gs.io.buff_cr()
 			bkpk_str_lst = [obj.full_name for obj in self.bkpk_lst]
@@ -332,7 +332,7 @@ class Creature(ViewOnly):
 		if not self.worn_is_empty():
 			worn_txt_lst = [obj.full_name for obj in self.worn_lst]
 			worn_str = ", ".join(worn_txt_lst)
-			if self == gs.hero:
+			if self == gs.core.hero:
 				if (not self.bkpk_is_empty()) or (not self.hand_is_empty()):
 					gs.io.buff_cr()
 					gs.io.buff_cr()
@@ -347,7 +347,7 @@ class Creature(ViewOnly):
 	def disp_in_reach(self, gs):
 		""" displays in_reach objects for seated creature
 		"""
-		if self != gs.hero:
+		if self != gs.core.hero:
 			return
 		seat_obj = self.get_contained_by(gs)
 		in_reach_disp_obj_lst = []
@@ -368,7 +368,7 @@ class Creature(ViewOnly):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 
 		try:
 			gs.io.buff_f(f"{creature.name}_show_{self.name}_{obj.descript_key}")
@@ -384,7 +384,7 @@ class Creature(ViewOnly):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 
 		# determine other creature's response
 		try:
@@ -422,7 +422,7 @@ class Creature(ViewOnly):
 		if mode is None:
 			mode = 'std'
 		if src_creature is None:
-			src_creature = gs.hero
+			src_creature = gs.core.hero
 		tgt_creature = self
 		
 		# determine tgt_obj for tgt_creature (src_obj provided in method arguements)
@@ -471,7 +471,7 @@ class Creature(ViewOnly):
 			win_obj = src_obj
 			lose_creature = tgt_creature			
 
-		if lose_creature == gs.hero:
+		if lose_creature == gs.core.hero:
 			if result_code in ['src_death', 'tgt_death']:
 				gs.end.game_ending = 'died.'
 				gs.end.is_end = True
@@ -491,7 +491,7 @@ class Creature(ViewOnly):
 		
 		# create and buffer the 'attack initiation string'
 		# describes the actions and the 'weapons' of both the attacker and the defender
-		if src_creature == gs.hero:
+		if src_creature == gs.core.hero:
 			src_creature_disp = "You attack"
 			if src_obj_category == 'unarmed':
 				src_obj_disp = f"your {src_obj.full_name}"
@@ -502,7 +502,7 @@ class Creature(ViewOnly):
 		if src_obj_category != 'unarmed':
 			src_obj_disp = f"the {src_obj.full_name}"
 		
-		if tgt_creature == gs.hero:
+		if tgt_creature == gs.core.hero:
 			tgt_creature_disp = "you attempt"
 		else:
 			tgt_creature_disp = f"the {tgt_creature.full_name} attempts"
@@ -530,7 +530,7 @@ class Creature(ViewOnly):
 
 		# 'attack resolution second clause'
 		# based on result_code, describe the combat outcome for the 'losing' creature
-		if lose_creature == gs.hero:
+		if lose_creature == gs.core.hero:
 			lose_creature_disp = "You are"
 		else:
 			lose_creature_disp = f"The {lose_creature.full_name} is"
@@ -554,7 +554,7 @@ class Creature(ViewOnly):
 		if room != gs.map.get_hero_rm(gs):
 			return 
 
-		if self == gs.hero:
+		if self == gs.core.hero:
 			gs.io.buffer(f"You are now standing in the {room.full_name}.")
 		else:
 			gs.io.buffer(f"The {self.full_name} is now standing.")

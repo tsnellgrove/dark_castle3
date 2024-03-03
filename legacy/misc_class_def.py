@@ -25,7 +25,7 @@ class Liquid(ViewOnly):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 
 		creature.get_hand_item().contain_lst.remove(self)
 

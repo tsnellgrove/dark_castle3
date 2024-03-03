@@ -58,7 +58,7 @@ class ButtonSwitchMixIn(SwitchMixIn):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 
 		self.switch_state = 'pushed'
 
@@ -88,7 +88,7 @@ class SpringSliderSwitchMixIn(ButtonSwitchMixIn):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 
 		self.switch_state = 'pulled'
 
@@ -132,7 +132,7 @@ class LeverSwitch(SwitchMixIn, ViewOnly):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 
 		if self.switch_state == 'down':
 			self.switch_state = 'up'

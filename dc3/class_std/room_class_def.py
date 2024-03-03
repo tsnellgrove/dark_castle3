@@ -120,8 +120,8 @@ class Room(ViewOnly):
 
 	# *** universal display methods ***
 	def get_title_str(self, gs):
-		if gs.hero.is_contained(gs):
-			return f"*** {self.full_name}, in the {gs.hero.get_contained_by(gs).full_name} ***"
+		if gs.core.hero.is_contained(gs):
+			return f"*** {self.full_name}, in the {gs.core.hero.get_contained_by(gs).full_name} ***"
 		else:
 			return f"*** {self.full_name} ***"
 
@@ -141,13 +141,13 @@ class Room(ViewOnly):
 		"""
 		room_item_lst = []
 		for obj in self.floor_lst:
-			if obj == gs.hero:
+			if obj == gs.core.hero:
 					pass
 			elif not obj.is_item():
 				gs.io.buff_cr()
 				gs.io.buff_cr()
 				gs.io.buff_no_cr(f"There is a {obj.full_name} here")
-				if gs.hero.is_contained(gs) and gs.hero.get_contained_by(gs) == obj:
+				if gs.core.hero.is_contained(gs) and gs.core.hero.get_contained_by(gs) == obj:
 					gs.io.buff_no_cr(" (which you are presently occupying)")
 				gs.io.buff_no_cr(". ")
 				obj.disp_contain(gs)
@@ -170,14 +170,14 @@ class Room(ViewOnly):
 		if mode is None:
 			mode = 'std'
 		if creature is None:
-			creature = gs.hero
+			creature = gs.core.hero
 
 		next_room = gs.map.get_next_room(self, dir)
 ##			gs.set_room(next_room)
 		next_room.floor_lst_append(creature)
 		self.floor_lst_remove(creature)
 
-		if creature == gs.hero:
+		if creature == gs.core.hero:
 			next_room.examine(gs)
 			return 
 		if self == gs.map.get_hero_rm(gs):

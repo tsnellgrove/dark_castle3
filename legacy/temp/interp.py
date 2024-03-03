@@ -193,12 +193,12 @@ def interpreter(user_input, master_obj_lst):
 			user_input_lst[0] = 'go'
 		if word1 == 'inventory':
 			user_input_lst[0] = 'examine'
-			user_input_lst.append(gs.hero.name)
+			user_input_lst.append(gs.core.hero.name)
 		if word1 == 'look':
 			user_input_lst[0] = 'examine'
 			user_input_lst.append(gs.map.get_hero_rm(gs).name)
 		if word1 == 'stand':
-			user_input_lst.append(gs.hero.name)
+			user_input_lst.append(gs.core.hero.name)
 		word1 = user_input_lst[0]
 
 	# if not a known true or convertable one-word command, must be an error
@@ -232,13 +232,13 @@ def interpreter(user_input, master_obj_lst):
 		elif word1 in ['show', 'give']:
 			prep = 'to'
 		elif word1 in ['attack', 'lock', 'unlock']:
-			creature = gs.hero
+			creature = gs.core.hero
 			if len(user_input_lst) < 4 and 'with' not in user_input and not creature.hand_is_empty():
 				user_input_lst.extend(['with',creature.get_hand_item().name])
 				gs.io.buffer(f"(with the {creature.get_hand_item().full_name})")
 			prep = 'with'
 		elif word1 in ['drink']:
-			creature = gs.hero
+			creature = gs.core.hero
 			if len(user_input_lst) < 4 and 'from' not in user_input and not creature.hand_is_empty():
 				user_input_lst.extend(['from',creature.get_hand_item().name])
 				gs.io.buffer(f"(from the {creature.get_hand_item().full_name})")

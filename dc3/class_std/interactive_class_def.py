@@ -46,7 +46,7 @@ class OpenableMixIn(object):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 
 		self.is_open = True
 
@@ -62,7 +62,7 @@ class OpenableMixIn(object):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 
 		gs.io.buffer("Closed")
 
@@ -104,7 +104,7 @@ class LockableMixIn(object):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 
 		gs.io.buffer("Unlocked")
 
@@ -116,7 +116,7 @@ class LockableMixIn(object):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 
 		gs.io.buffer("Locked")
 
@@ -241,12 +241,12 @@ class ContainsMixIn(object):
 			if self.is_empty():
 				gs.io.buff_no_cr(f"The {self.full_name} is empty. ")
 				return
-			contain_txt_lst = [obj.full_name for obj in self.contain_lst if obj != gs.hero]
+			contain_txt_lst = [obj.full_name for obj in self.contain_lst if obj != gs.core.hero]
 			if contain_txt_lst:
 				contain_str = ", ".join(contain_txt_lst)
 				gs.io.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
 			for obj in self.contain_lst:
-				if obj != gs.hero:
+				if obj != gs.core.hero:
 					obj.disp_contain(gs)
 		return 
 
@@ -257,7 +257,7 @@ class ContainsMixIn(object):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 		
 		creature.hand_lst_remove(obj)
 		self.contain_lst_append(obj, gs)
@@ -369,7 +369,7 @@ class Seat(ContainerFixedSimple):
 		if mode is None: # destermine default attributes
 			mode = 'std'
 		if creature is None:
-			creature = gs.hero
+			creature = gs.core.hero
 
 		room = gs.map.get_obj_room(creature, gs)
 		room.floor_lst_remove(creature)
@@ -378,7 +378,7 @@ class Seat(ContainerFixedSimple):
 		if room != gs.map.get_hero_rm(gs): # if hero_creature not in current room, exit with no display
 			return 
 		
-		if creature == gs.hero:
+		if creature == gs.core.hero:
 			gs.io.buffer(f"You are now seated in the {self.full_name}.")
 			gs.io.buff_s(f"{creature.name}_enter_{self.descript_key}")
 			creature.disp_in_reach(gs)
@@ -392,7 +392,7 @@ class Seat(ContainerFixedSimple):
 		if mode is None: # destermine default attributes
 			mode = 'std'
 		if creature is None:
-			creature = gs.hero
+			creature = gs.core.hero
 
 		room = gs.map.get_obj_room(creature, gs)
 		room.floor_lst_append(creature)
@@ -401,7 +401,7 @@ class Seat(ContainerFixedSimple):
 		if room != gs.map.get_hero_rm(gs): # if hero_creature not in current room, exit with no display
 			return 
 		
-		if creature == gs.hero:
+		if creature == gs.core.hero:
 			gs.io.buffer(f"You are now standing in the {room.full_name}.")
 			gs.io.buff_s(f"{creature.name}_exit_{self.name}")
 		else:

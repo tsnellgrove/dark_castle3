@@ -104,7 +104,7 @@ class Invisible(object):
 		"""
 		if mode is None:
 			mode = 'std'
-		creature = gs.hero
+		creature = gs.core.hero
 		
 		if not gs.map.chk_obj_exist(self, gs):
 			gs.io.buffer(f"The {self.full_name} does not currently exist in the game.")
@@ -203,7 +203,7 @@ class Invisible(object):
 
 	# *** two_word errors ***
 	def read_err(self, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_wrt_not_vis(creature, gs):
 			return True
 		if self.err_wrt_not_in_reach(creature, gs):
@@ -218,7 +218,7 @@ class Invisible(object):
 		return False
 
 	def examine_err(self, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_not_vis(creature, gs):
 			return True
 		if self.err_wrt_not_vis(creature, gs):
@@ -236,7 +236,7 @@ class Invisible(object):
 		return False
 
 	def take_err(self, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True
 		if self.is_liquid():
@@ -249,7 +249,7 @@ class Invisible(object):
 			gs.io.buffer("You're already holding the " + self.full_name)
 			return True
 		for obj in gs.map.get_hero_rm(gs).floor_lst:
-			if obj.is_creature() and obj is not gs.hero and self in obj.get_vis_contain_lst(gs):
+			if obj.is_creature() and obj is not gs.core.hero and self in obj.get_vis_contain_lst(gs):
 				gs.io.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 				return True
 #		if creature.max_weight - creature.weight() - self.weight < 0:
@@ -259,7 +259,7 @@ class Invisible(object):
 		return False
 
 	def drop_err(self, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True
 		if self == creature.feature_lst[0]:
@@ -276,7 +276,7 @@ class Invisible(object):
 		return False
 
 	def open_err(self, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True
 		if not self.is_openable() and not self.is_container():
@@ -294,7 +294,7 @@ class Invisible(object):
 		return False
 	
 	def close_err(self, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True
 		if not self.is_openable() and not self.is_container():
@@ -312,7 +312,7 @@ class Invisible(object):
 		return False
 
 	def eat_err(self, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True
 		if not self.is_food():
@@ -323,7 +323,7 @@ class Invisible(object):
 		return False
 
 	def wear_err(self, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True
 		if not self.is_garment():
@@ -340,7 +340,7 @@ class Invisible(object):
 		return False
 
 	def push_err(self, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True
 		if not self.is_buttonswitch():
@@ -349,7 +349,7 @@ class Invisible(object):
 		return False
 
 	def pull_err(self, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True
 		if not self.is_springsliderswitch() and not self.is_leverswitch():
@@ -358,7 +358,7 @@ class Invisible(object):
 		return False
 
 	def stand_err(self, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True
 		if not self.is_creature():
@@ -374,7 +374,7 @@ class Invisible(object):
 		return False
 
 	def enter_err(self, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True
 		if self.is_item():
@@ -389,7 +389,7 @@ class Invisible(object):
 		return False
 
 	def exit_err(self, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_not_vis(creature, gs):
 			return True
 		if self.err_wrt_not_vis(creature, gs):
@@ -443,7 +443,7 @@ class Invisible(object):
 
 	# *** prep errors ***
 	def drink_err(self, obj, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True
 		if not self.is_liquid():
@@ -464,7 +464,7 @@ class Invisible(object):
 		return False
 
 	def lock_err(self, key_obj, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_prep_std(key_obj, creature, gs):
 			return True
 		if self.is_container() and not self.is_openable():
@@ -502,7 +502,7 @@ class Invisible(object):
 		return False
 
 	def unlock_err(self, key_obj, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_prep_std(key_obj, creature, gs):
 			return True
 		if self.is_container() and not self.is_openable():
@@ -540,7 +540,7 @@ class Invisible(object):
 		return False
 
 	def put_err(self, obj, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_prep_std(obj, creature, gs):
 			return True
 		if not obj.is_item():
@@ -569,7 +569,7 @@ class Invisible(object):
 		return False
 
 	def show_err(self, obj, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_prep_std(obj, creature, gs):
 			return True
 		if not self.is_creature():
@@ -580,7 +580,7 @@ class Invisible(object):
 		return False
 
 	def give_err(self, obj, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if self.err_prep_std(obj, creature, gs):
 			return True
 		if not obj.is_item():
@@ -600,7 +600,7 @@ class Invisible(object):
 		return False
 
 	def attack_err(self, src_obj, gs):
-		src_creature = gs.hero
+		src_creature = gs.core.hero
 		tgt_creature = self
 		if self.err_prep_std(src_obj, src_creature, gs):
 			return True
@@ -627,7 +627,7 @@ class Invisible(object):
 
 	# *** go_case error ***
 	def go_err(self, dir, gs):
-		creature = gs.hero
+		creature = gs.core.hero
 		if dir not in ['north', 'south', 'east', 'west']:
 			gs.io.buffer(f"'{dir}' is not a valid direction that you can go in.")
 			return True
