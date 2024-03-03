@@ -9,7 +9,6 @@
 
 ### classes
 class GameState(object):
-#	def __init__(self, name, core, map, io, score, end, hero):
 	def __init__(self, name, core, map, io, score, end):
 		self._name = name
 		self._core = core
@@ -17,7 +16,6 @@ class GameState(object):
 		self._io = io
 		self._score = score
 		self._end = end
-#		self._hero = hero
 
 	### setters & getters ###
 	@property
@@ -43,10 +41,6 @@ class GameState(object):
 	@property
 	def end(self):
 		return self._end
-
-#	@property
-#	def hero(self):
-#		return self._hero
 
 	### obj representation (for printing) ###
 	def __repr__(self):

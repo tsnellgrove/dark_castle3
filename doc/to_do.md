@@ -9,12 +9,12 @@ Version 3.83 Goals
 - Create gamestate sub-class just for core attributes and methods (debug, hero, move_count)
 - Refactor early run modules (web_main(), app_main(), and startup() )
 
-- INPROC: create Core class and migrate debug, hero, and move_count attributes and methods to it
+- DONE: create Core class and migrate debug, hero, and move_count attributes and methods to it
 	- DONE: create core_class_def() including setters & getters
 	- DONE: import Core from core_class_def() into mk_def_pkl()
 	- DONE: instantiate core of class Core in mk_def_pkl()
 	- DONE: add core as attribute of GameState in gs_class_def() and mk_def_pkl()
-	- INPROC: move GameState end attributes to Core class
+	- DONE: move GameState end attributes to Core class
 		- DONE: move_count from gs => gs.core 
 			- DONE: redirect gs.move_count calls to gs.core.move_count
 			- DONE: remove move_count attribute from GameState and mk_def_pkl()
@@ -30,15 +30,16 @@ Version 3.83 Goals
 			- DONE: test
 			- DONE: clean up gs.is_debug in gs_class_def() and mk_def_pkl()
 			- DONE: clean up comments
-		- INPROC: hero from gs => gs.core
+		- DONE: hero from gs => gs.core
 			- DONE: prep for find & replace
 			- DONE: find and replace gs.core.hero => gs.core.hero
-			- TBD: clean up gs.hero in gs_class_def() and mk_def_pkl()
-			- TBD: clean up comments
+			- DONE: clean up gs.hero in gs_class_def() and mk_def_pkl()
+			- DONE: clean up comments
 
 - TBD: gs attribute class clean-up / standardize
 	- TBD: standardize gs attribute classes in mk_def_pkl()
 	- TBD: add name attribute for Map
+	- TBD: consistent commenting
 
 - TBD: over-due early code refactoring
 	- TBD: refactor of web_main
@@ -64,6 +65,12 @@ Version 3.83 Goals
 	- IDEA: if exit_req: validate_exit = (Y/N); if validate_exit => end_of_game = True
 
 - maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
+
+- TBD: as part of symetric functions reveiw...
+	- re-examine current use of creature = gs.core.hero
+	- if non-hero creatures never hit errors... do we need this in the Invisible class ??
+
+- TBD: both Creature and Interactive need some rework I think...
 
 - need to solve the name-to-obj challenge systemically - see below for idea
 - TBD: Separate static_dicts for game vs. engine
