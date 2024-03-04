@@ -282,39 +282,51 @@ unreachable_3 = Room('unreachable_3', 'Unreachable', 'unreachable_3', 'unreachab
 
 # *** gs class modules ***
 core = Core(
-		'core', #name
+		'core', # name
 		burt, # hero
         0, # move_count
         False # is_debug
 		)
 
-
-map = Map([{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall},
+map = Map(
+		'map', # name
+		[{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall},
 		{'room_x' : entrance, 'dir_x' : 'south', 'door' : 'path', 'dir_y' : None, 'room_y' : unreachable_1},
 		{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
 		{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
 		{'room_x' : main_hall, 'dir_x' : 'north', 'door' : 'passage', 'dir_y' : 'south', 'room_y' : antechamber},
 #		{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
-		{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}]
+		{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}] # map_lst
 		)
 
-io = IO('io', # name
+io = IO(
+		'io', # name
 		{}, # dyn_dict
-#		{'current_turn' : ""}, # buff_dict
 		"", # buff_str
 		"" # last_input_str
 		)
 
 score = Score(
-	'score', # name
-	0, # score
-	[] # pts_earned_lst
-	)
+		'score', # name
+		0, # score
+		[] # pts_earned_lst
+		)
 
-end = End('end', # name
-		  False, # is_end
-		  None # game_ending
-		  )
+end = End(
+		'end', # name
+		False, # is_end
+		None # game_ending
+		)
+
+### gs is the central store of game info ###
+gs = GameState(
+		'gs', # name
+		core, # Core class; fundamental attributes of game state
+		map, # Map class; dungeon navigation capabilities
+		io, # IO class; all buffering and static dictionary lookup for game
+		score, # Score class; all score-related functions of game
+		end # End class; end-of-game title and dispaly
+		)
 
 # *** Hierarchy-Based Object Re-assignment ***
 goblin_attacks_result.creature_obj = guard_goblin
@@ -333,15 +345,6 @@ goblin_exist_state_cond.exist_obj = guard_goblin
 dispense_panel_result.room_item = control_panel
 ## test_chair.in_reach_lst = [main_hall, front_gate, wooden_shelf]
 
-### gs is the central store of game info ###
-gs = GameState(
-	'gs', # name
-	core, # Core attribute class
-	map,
-	io,
-	score,
-	end
-)
 
 ### instantiated objects added to list ###
 ### Used as an obj index in Interp() - must include all non-invisible obj ###

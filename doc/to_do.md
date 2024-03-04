@@ -36,10 +36,10 @@ Version 3.83 Goals
 			- DONE: clean up gs.hero in gs_class_def() and mk_def_pkl()
 			- DONE: clean up comments
 
-- TBD: gs attribute class clean-up / standardize
-	- TBD: standardize gs attribute classes in mk_def_pkl()
-	- TBD: add name attribute for Map
-	- TBD: consistent commenting
+- DONE: gs attribute class clean-up / standardize
+	- DONE: standardize gs attribute classes in mk_def_pkl()
+	- DONE: add name attribute for Map
+	- DONE: consistent commenting
 
 - TBD: over-due early code refactoring
 	- TBD: refactor of web_main
