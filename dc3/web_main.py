@@ -17,12 +17,8 @@ user_input = ""
 while not is_end:
 	if not is_start:
 		user_input = input('Type your command: ')
-#	is_end, user_output = app_main(user_input, is_start)
 	is_start, is_end, user_output = app_main(user_input, is_start)
-#	is_start = False
 	print(user_output)
-#	if user_output[-15:] == "\nRestarting...\n":
-#		is_start = True
 print("THANKS FOR PLAYING!!")
 
 
