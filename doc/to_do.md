@@ -41,8 +41,9 @@ Version 3.83 Goals
 	- DONE: add name attribute for Map
 	- DONE: consistent commenting
 
-- TBD: over-due early code refactoring
-	- TBD: refactor of web_main
+- INPROC: over-due early code refactoring
+	- DONE: refactor of web_main
+		- DONE: return is_start from app_main()
 	- TBD: refactor of app_main (reverse shield approach? unify)
 		- IDEA: key if / then values = is_end, is_wait, is_valid, is_stateful
 	- TBD: refactor of start_up (should all be game instance focussed)

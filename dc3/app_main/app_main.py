@@ -15,12 +15,13 @@ from dc3.app_turn.post_action import post_action
 from dc3.app_turn.auto_action import auto_action
 
 ### loads game obj, calls other modules, and saves game obj ###
-def app_main(user_input, is_start_of_game):
+def app_main(user_input, is_start):
 
 	# start-up case
-	if is_start_of_game == True:
+	if is_start == True:
 		user_output = start_me_up()
-		return False, user_output
+		is_start = False
+		return is_start, False, user_output
 
 	# object list loaded from save_obj_pickle2
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'rb') as f:
@@ -37,14 +38,15 @@ def app_main(user_input, is_start_of_game):
 ##		gs.end.is_end == True
 		gs.end.disp_end(gs)
 ##		return gs.end.is_end, gs.io.get_buff()
-		return True, gs.io.get_buff()
+		return is_start, True, gs.io.get_buff()
 
 	if user_input.lower() == 'restart':
 		gs.end.game_ending = 'restarted.'
 		gs.end.disp_end(gs)
 		gs.io.buffer("Restarting...")
+		is_start = True
 ##		return gs.end.is_end, gs.io.get_buff()
-		return False, gs.io.get_buff()
+		return is_start, False, gs.io.get_buff()
 
 	if user_input.lower() == 'again' or user_input.lower() == 'g':
 		user_input = gs.io.last_input_str
@@ -57,7 +59,7 @@ def app_main(user_input, is_start_of_game):
 		auto_action(gs)
 		with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 			pickle.dump(master_obj_lst, f)
-		return gs.end.is_end, gs.io.get_buff()
+		return is_start, gs.end.is_end, gs.io.get_buff()
 
 	### all other word cases ###
 
@@ -69,7 +71,7 @@ def app_main(user_input, is_start_of_game):
 	if not input_valid:
 		with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 			pickle.dump(master_obj_lst, f)
-		return gs.end.is_end, gs.io.get_buff()
+		return is_start, gs.end.is_end, gs.io.get_buff()
 
 	# for valid user_input, increment move count and run pre_action, cmd_exe, post_action, and auto_action
 	gs.core.move_inc()
@@ -86,4 +88,4 @@ def app_main(user_input, is_start_of_game):
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 
-	return gs.end.is_end, gs.io.get_buff()
+	return is_start, gs.end.is_end, gs.io.get_buff()
