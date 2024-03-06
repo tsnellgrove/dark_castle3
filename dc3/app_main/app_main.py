@@ -19,16 +19,40 @@ def app_main(user_input, is_start):
 
 	# load objects
 	# reset buffer
-	# local var declarations (is_stateful = True)
+	# local var declarations 
+		# is_stateful = False
+		# is_interp_cmd = True
+		# is_interp_valid = False
 
 	# non-interp cases
 		# if start-up
-		# elif 'quit' (is_stateful = False)
-		# elif 'restart' (is_stateful = False)
-		# elif 'wait' case
-	
-	# 'again' case
-	# set last input
+		# elif 'quit' (is_stateful = False, is_interp_cmd = False)
+		# elif 'restart' (is_stateful = False, is_interp_cmd = False)
+		# elif 'wait' case (is_interp_cmd = False, is_stateful = True )
+		# elif 'again' case
+
+	# if is_interp_cmd:
+		# interp
+		# is_intermp_valid = validate()
+
+	# if is_interp_valid:
+		# is_stateful = True
+
+	# if is_stateful:
+		# move_inc()
+
+	# if is_interp_valid:
+		# pre-act()
+		# cmd_exe()
+		# post_act()
+
+	# if is_end: end()
+	# else: auto_act()
+
+	# if is_stateful:
+		# set last input
+		# obj dump
+	# return
 	
 
 
