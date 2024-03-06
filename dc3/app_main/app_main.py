@@ -17,6 +17,25 @@ from dc3.app_turn.auto_action import auto_action
 ### loads game obj, calls other modules, and saves game obj ###
 def app_main(user_input, is_start):
 
+	# load objects
+	# reset buffer
+	# local var declarations (is_stateful = True)
+
+	# non-interp cases
+		# if start-up
+		# elif 'quit' (is_stateful = False)
+		# elif 'restart' (is_stateful = False)
+		# elif 'wait' case
+	
+	# 'again' case
+	# set last input
+	
+
+
+
+
+
+
 	# start-up case
 	if is_start == True:
 		user_output = start_me_up()
