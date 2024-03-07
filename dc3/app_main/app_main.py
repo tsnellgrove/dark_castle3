@@ -24,12 +24,14 @@ def app_main(user_input, is_start):
 		# is_stateful = False
 		# is_interp_cmd = False
 		# is_interp_valid = False
+		# is_restart = False
+		# is_wait = False
 
 	# non-interp cases
 		# if is_start: (user_output = startup(), is_start = False)
 		# elif 'quit': (game_ending = 'quit', gs.end.is_end = True)
-		# elif 'restart': (game_ending = 'restart', is_start = True)
-		# elif 'wait' case: (is_stateful = True, buffer("Waiting..."), move_inc() )
+		# elif 'restart': (game_ending = 'restart', is_start = True, is_restart = True)
+		# elif 'wait' case: (is_stateful = True, is_wait = True)
 		# elif 'again' case: (user_input = gs.io.last_input, is_interp_cmd = True)
 		# else: (is_interp_cmd = True)
 
@@ -37,16 +39,19 @@ def app_main(user_input, is_start):
 		# interp
 		# is_intermp_valid = validate()
 
+	# if is_interp_valid or is_wait:
+		#move_inc()
+
 	# if is_interp_valid:
 		# is_stateful = True
-		# move_inc()
 		# pre-act()
 		# cmd_exe()
 		# post_act()
 
-	# if gs.end.is_end or game_ending = 'restart': disp_end()
-	# else: auto_act()
-	# if game_ending = 'restart': ( buffer("Restarting...") )
+	# if is_wait: buffer("Waiting...")
+	# if gs.end.is_end or is_restart: disp_end()
+	# elif is_interp_valid or is_wait: auto_act()
+	# if is_restart: ( buffer("Restarting...") )
 
 	# if is_stateful:
 		# store last input

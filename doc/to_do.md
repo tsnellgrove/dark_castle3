@@ -47,7 +47,8 @@ Version 3.83 Goals
 	- INPROC: refactor of app_main (reverse shield approach? unify)
 		- IDEA: key if / then values = is_end, is_wait, is_valid, is_stateful, is_interp_cmd
 		- IDEA: # non-interp command # section with elifs
-		- INPROC: outline new structure in comments
+		- DONE: pseudo-code new structure in comments
+		- TBD: create to-be comment sections
 	- TBD: refactor of start_up (should all be game instance focussed)
 - TBD: [DOC] gs modularization - GameState only holds classes as attributes
 
