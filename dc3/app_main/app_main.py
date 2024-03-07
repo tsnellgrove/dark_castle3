@@ -20,16 +20,18 @@ def app_main(user_input, is_start):
 	# load objects
 	# reset buffer
 	# local var declarations 
+		# gs = obj_lst[0]
 		# is_stateful = False
-		# is_interp_cmd = True
+		# is_interp_cmd = False
 		# is_interp_valid = False
 
 	# non-interp cases
-		# if start-up
-		# elif 'quit' (is_stateful = False, is_interp_cmd = False)
-		# elif 'restart' (is_stateful = False, is_interp_cmd = False)
-		# elif 'wait' case (is_interp_cmd = False, is_stateful = True )
-		# elif 'again' case
+		# if is_start: (user_output = startup(), is_start = False)
+		# elif 'quit': (game_ending = 'quit', gs.end.is_end = True)
+		# elif 'restart': (game_ending = 'restart', is_start = True)
+		# elif 'wait' case: (is_stateful = True, buffer("Waiting..."), move_inc() )
+		# elif 'again' case: (user_input = gs.io.last_input, is_interp_cmd = True)
+		# else: (is_interp_cmd = True)
 
 	# if is_interp_cmd:
 		# interp
@@ -37,27 +39,20 @@ def app_main(user_input, is_start):
 
 	# if is_interp_valid:
 		# is_stateful = True
-
-	# if is_stateful:
 		# move_inc()
-
-	# if is_interp_valid:
 		# pre-act()
 		# cmd_exe()
 		# post_act()
 
-	# if is_end: end()
+	# if gs.end.is_end or game_ending = 'restart': disp_end()
 	# else: auto_act()
+	# if game_ending = 'restart': ( buffer("Restarting...") )
 
 	# if is_stateful:
-		# set last input
+		# store last input
 		# obj dump
-	# return
+	# return is_start, gs.end.is_end, user_output
 	
-
-
-
-
 
 
 	# start-up case
@@ -78,7 +73,7 @@ def app_main(user_input, is_start):
 	### pre-interp word cases ('quit', 'again', 'wait') ###
 	if user_input.lower() == 'quit' or user_input.lower() == 'q':
 		gs.end.game_ending = 'quit.'
-##		gs.end.is_end == True
+##		gs.end.is_end = True
 		gs.end.disp_end(gs)
 ##		return gs.end.is_end, gs.io.get_buff()
 		return is_start, True, gs.io.get_buff()
