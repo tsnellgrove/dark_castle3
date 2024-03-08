@@ -17,42 +17,50 @@ from dc3.app_turn.auto_action import auto_action
 ### loads game obj, calls other modules, and saves game obj ###
 def app_main(user_input, is_start):
 
+	## new game case
+		# if is_start: (user_output = startup() )
+		# return False, False, user_output
+
+	## initiate app_main() - load obj and reset buffer
 	# load objects
 	# reset buffer
-	# local var declarations 
-		# gs = obj_lst[0]
-		# is_stateful = False
-		# is_interp_cmd = False
-		# is_interp_valid = False
-		# is_restart = False
-		# is_wait = False
 
-	# non-interp cases
-		# if is_start: (user_output = startup(), is_start = False)
-		# elif 'quit': (game_ending = 'quit', gs.end.is_end = True)
-		# elif 'restart': (game_ending = 'restart', is_start = True, is_restart = True)
-		# elif 'wait' case: (is_stateful = True, is_wait = True)
-		# elif 'again' case: (user_input = gs.io.last_input, is_interp_cmd = True)
-		# else: (is_interp_cmd = True)
+	## local var declarations 
+	# gs = obj_lst[0]
+	# is_stateful = False
+	# is_interp_cmd = False
+	# is_interp_valid = False
 
+	## non-interp command cases
+	# if 'quit': (game_ending = 'quit', gs.end.is_end = True)
+	# elif 'restart': (game_ending = 'restart', is_start = True, is_restart = True)
+	# elif 'wait' case: (is_stateful = True, is_wait = True)
+	# elif 'again' case: (user_input = gs.io.last_input, is_interp_cmd = True)
+	# else: (is_interp_cmd = True)
+
+	## for interp commands, interp inpute and validate command
 	# if is_interp_cmd:
 		# interp
 		# is_intermp_valid = validate()
 
-	# if is_interp_valid or is_wait:
+	## increment move
+	# if is_interp_valid or is_stateful:
 		#move_inc()
 
+	## for valid interp commands, process in-turn game resposne
 	# if is_interp_valid:
 		# is_stateful = True
 		# pre-act()
 		# cmd_exe()
 		# post_act()
 
+	## post-turn output
 	# if is_wait: buffer("Waiting...")
-	# if gs.end.is_end or is_restart: disp_end()
+	# if gs.end.is_end or is_start: disp_end()
 	# elif is_interp_valid or is_wait: auto_act()
 	# if is_restart: ( buffer("Restarting...") )
 
+	## save state if statefule and then return
 	# if is_stateful:
 		# store last input
 		# obj dump

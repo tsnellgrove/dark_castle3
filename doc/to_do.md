@@ -48,7 +48,8 @@ Version 3.83 Goals
 		- IDEA: key if / then values = is_end, is_wait, is_valid, is_stateful, is_interp_cmd
 		- IDEA: # non-interp command # section with elifs
 		- DONE: pseudo-code new structure in comments
-		- TBD: create to-be comment sections
+		- DONE: create to-be comment sections
+		- TBD: code it!
 	- TBD: refactor of start_up (should all be game instance focussed)
 - TBD: [DOC] gs modularization - GameState only holds classes as attributes
 
