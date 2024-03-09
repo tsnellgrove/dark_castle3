@@ -67,12 +67,12 @@ def app_main(user_input, is_start):
 		post_action(gs, case, word_lst)
 
 	# post-turn output (nominally, the turn ends on post_act()); auto_action() essentially occurs at the *start* of the *next* turn)
-	if gs.end.is_end or is_start:
+	if gs.end.is_end or is_start: 
 		gs.end.disp_end(gs)
-	elif is_stateful:
+	elif is_stateful: # need to avoid case where auto_act() runs after player dies from is_valid_interp command (in which case is_stateful = True)
 		auto_action(gs)
 	if is_start:
-		gs.io.buffer("Restarting...")
+		gs.io.buffer("Restarting...") # should appear after the 'you have restarted' end text and before the 'welcome' text
 
 	# close out turn - if stateful, save state and last inupt (for 'again' case) and then return
 	if is_stateful:
