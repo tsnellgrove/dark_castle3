@@ -49,9 +49,11 @@ Version 3.83 Goals
 		- IDEA: # non-interp command # section with elifs
 		- DONE: pseudo-code new structure in comments
 		- DONE: create to-be comment sections
-		- TBD: code it!
+		- DONE: code it!
 	- TBD: refactor of start_up (should all be game instance focussed)
 - TBD: [DOC] gs modularization - GameState only holds classes as attributes
+- TBD: [DOC] app_main refactor notes - if-then-shield pattern reversal
+- TBD: clean up comments in app_main()
 
 # *** FUTURE TO DO *** #
 
