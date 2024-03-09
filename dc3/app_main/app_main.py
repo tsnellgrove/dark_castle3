@@ -17,56 +17,48 @@ from dc3.app_turn.auto_action import auto_action
 ### loads game obj, calls other modules, and saves game obj ###
 def app_main(user_input, is_start):
 
-	## for new game - call start_me_up and return start_me_up() output
+	# for new game - call start_me_up and return start_me_up() output
 	if is_start == True:
 		user_output = start_me_up()
 		return False, False, user_output
 
-	## initiate app_main() - load obj, declare gs, and reset buffer
+	# initiate app_main() - load obj, declare gs, and reset buffer
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'rb') as f:
 		master_obj_lst = pickle.load(f)
 	gs = master_obj_lst[0]
 	gs.io.reset_buff()
 
-	## local var declarations 
+	# local var declarations 
 	is_stateful = False
 	is_interp_cmd = False
 	is_interp_valid = False
 
-	## non-interp command cases
-	# if 'quit': (game_ending = 'quit', gs.end.is_end = True)
+	# non-interp command cases
 	if user_input.lower() == 'quit' or user_input.lower() == 'q':
 		gs.end.game_ending = 'quit.'
 		gs.end.is_end = True
-	# elif 'restart': (game_ending = 'restart', is_start = True)
 	elif user_input.lower() == 'restart':
 		gs.end.game_ending = 'restarted.'
 		is_start = True
-	# elif 'wait' case: (is_stateful = True, buffer("Waiting..."))
 	elif user_input.lower() == 'wait' or user_input.lower() == 'z':
 		is_stateful = True
 		gs.io.buffer("Waiting...")
-	# elif 'again' case: (user_input = gs.io.last_input, is_interp_cmd = True)
 	elif user_input.lower() == 'again' or user_input.lower() == 'g':
 		is_interp_cmd = True
 		user_input = gs.io.last_input_str
-	# else: (is_interp_cmd = True)
 	else:
 		is_interp_cmd = True
 
-	## for interp commands, interp inpute and validate command
-	# if is_interp_cmd: (interp, is_interp_valid = validate() )
+	# for interp commands, interp user_input and validate command
 	if is_interp_cmd:
 		case, word_lst = interpreter(user_input, master_obj_lst)
 		is_interp_valid = validate(gs, case, word_lst)
 
-	## increment move
-	# if is_interp_valid or is_stateful: move_inc()
+	# if command is valid or is_stateful (captures 'wait' case), increment move
 	if is_interp_valid or is_stateful:
 		gs.core.move_inc()
 
-	## for valid interp commands, process in-turn game resposne
-	# if is_interp_valid: (is_stateful = True , pre-act() , cmd_exe() , post_act() )
+	# for valid interp commands, process in-turn game response
 	if is_interp_valid:
 		is_stateful = True
 		cmd_override = pre_action(gs, case, word_lst)
@@ -74,24 +66,19 @@ def app_main(user_input, is_start):
 			cmd_execute(gs, case, word_lst)
 		post_action(gs, case, word_lst)
 
-	## post-turn output
-	# if gs.end.is_end or is_start: disp_end()
+	# post-turn output (nominally, the turn ends on post_act()); auto_action() essentially occurs at the *start* of the *next* turn)
 	if gs.end.is_end or is_start:
 		gs.end.disp_end(gs)
-	# elif is_stateful: auto_act()
 	elif is_stateful:
 		auto_action(gs)
-	# if is_start: ( buffer("Restarting...") )
 	if is_start:
 		gs.io.buffer("Restarting...")
 
-	## close out turn - save state and last inupt (for 'again') if statefule and then return
-	# if is_stateful: (store last input , obj dump )
+	# close out turn - if stateful, save state and last inupt (for 'again' case) and then return
 	if is_stateful:
 		gs.io.last_input_str = user_input
 		with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 			pickle.dump(master_obj_lst, f)
-	# return is_start, gs.end.is_end, user_output
 	return is_start, gs.end.is_end, gs.io.get_buff()
 	
 
