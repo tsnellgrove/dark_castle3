@@ -50,10 +50,15 @@ Version 3.83 Goals
 		- DONE: pseudo-code new structure in comments
 		- DONE: create to-be comment sections
 		- DONE: code it!
-	- TBD: refactor of start_up (should all be game instance focussed)
-- TBD: [DOC] gs modularization - GameState only holds classes as attributes
-- TBD: [DOC] app_main refactor notes - if-then-shield pattern reversal
+		- DONE: [DOC] app_main refactor notes - if-then-shield pattern reversal
+	- DONE: [DOC] gs modularization - GameState only holds classes as attributes
+	- INPROC: refactor of start_up (should all be game instance focussed)
+		- DONE: tune post-intro spacing
+		- TBD: general refactor clean-up
+		- TBD: consider introducing str_to_obj_dict in Core to enable ease of entrance.examine(gs)
 - TBD: clean up comments in app_main()
+
+
 
 # *** FUTURE TO DO *** #
 

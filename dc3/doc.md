@@ -191,10 +191,14 @@ Brief history of validate():
 ###############
 
 *** Module Documentation ***
-Overview:
-Implementation Detail:
-Historic Note:
+Overview: 
+gs_class_def.py defines the GameState class.
 
+Implementation Detail:
+GameState holds all of the non-object-specific attributes of the game (e.g. move_count). GameState is instantiated as gs in mk_def_pkl(). GameState itself holds no direct data and has no methods. Instead, its attributes are a series of modular classes (e.g. Core, End, IO, Map, Score) that hold relevant attributes and methods. GameState is an esential resource for nearly every function and method in the game and is heavily passed.
+
+Historic Note:
+The modular nature of GameState is relatively new and was not fully implemented until v3.83. Initially, GameState held a dictionary of values (state_dict) and all the methods for maintaining general game state. As the game grew in complexity, so did the GameState class. Eventually, it became unmanageable and existing elements started to be refactored into separate classes. This began with the Map class but didn't complete until v3.83 with Core class.
 
 ####################
 # map_class_def.py #
@@ -981,8 +985,9 @@ To understand Machines it helps to first understand the high-level module call f
 It all starts with web_main, a very simple web-tier function who's only job is to get user input and present the app's response text to that input. 
 
 To get the response text, web_main calls app_main. app_main is the heart of the app. It recieves user_input from web_app and converts it into output (the app's response text). In the special case of the game's first turn, app_main calls start_me_up which prints a welcome and sets some one-time game variables. But for all subsequent calls to app_main the following flow occurs:
-	1) load the object variables from the game's save pickle and increment the move count
+	1) load the object variables from the game's save pickle and reset the output buffer
 	2) calls the interpreter function to convert the user's input into a game command. interpreter returns a 'case' and a 'word_lst'
+	2.5) The interpreted command is checked by validate(). If it is not valid, an error message will be buffered by validate() and no stateful changes to the game will take place. If valid, move count gets incremented and we move on to executing the player's command. 
 	3) before executing the game command, app_main now calls the pre_action function. pre_action scans the available machine scope (simplisticaly, the room Burt is in) for machines that have pre_act triggers. If any exist, checks to see if any pre_action Machines are triggered and, if so,  runs those Machines. The pre_action function returns the boolean variable cmd_override to app_main. cmd_override == True is for cases where the pre_action negates the player's command.
 	4) If cmd_override is False, app_main now calls cmd_exe to execute the player's command (e.g. "take key" => "Taken"). From the three cases of cmd_exe(), calls disp_score() from the Score subclass.
 	5) disp_score() checks whether the player's current command matches any of the score conditions in score_dict. If so, score is increased and an update to the player is buffered.
@@ -992,6 +997,7 @@ To get the response text, web_main calls app_main. app_main is the heart of the 
 
 The key take-away from the app_main flow is that, both before and after the player's command execution call, the game "gets a turn". These ad-hoc pro-active or responsive game actions are what the Machine construct enables.
 
+Note: in version 3.83, app_main() was significantly refactored. By this time, new special cases had been added ('restart', 'again', and 'wait') and the code had become opaque. I had taken the if-then-shild approach and had new fewer than eight return statements in the function and it was far from clear - even to me - how the over-arching code flow was supposed to work. In refactoring, I kept the early return for is_start == True (after calling start_me_up() ) but created a consistent flow, goverened by some core primative booleans (is_stateful, is_interp_cmd, is_interp_valid) for all remaining cases. For me the result is much more readable - and should make adding additional special cases much easier. Despite these changes, the description above (written before refactoring) is still a good overview of app_main()'s core functionality.
 
 The Modular Machine Components:
 Michines are composed of Triggers, Switches, Conditions, Results, and the framework of the Machine itself which orchestrates all of these. I'll detail each of these below.
