@@ -75,7 +75,7 @@ def app_main(user_input, is_start):
 		gs.io.buffer("Restarting...") # should appear after the 'you have restarted' end text and before the 'welcome' text
 
 	# close out turn - if stateful, save state and last inupt (for 'again' case) and then return
-	if is_stateful:
+	if is_stateful and not gs.end.is_end: # no need to save state if player has won or died
 		gs.io.last_input_str = user_input
 		with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 			pickle.dump(master_obj_lst, f)
