@@ -52,12 +52,13 @@ Version 3.83 Goals
 		- DONE: code it!
 		- DONE: [DOC] app_main refactor notes - if-then-shield pattern reversal
 	- DONE: [DOC] gs modularization - GameState only holds classes as attributes
-	- INPROC: refactor of start_up (should all be game instance focussed)
+	- DONE: refactor of start_up (should all be game instance focussed)
 		- DONE: tune post-intro spacing
 		- DONE: general refactor clean-up
 		- DONE: elim manual text
 		- DONE: comment clean-up
-		- TBD: elim user_output return from start_me_up() [just call get_buff from app_main() ]
+		- CANCEL: elim user_output return from start_me_up() [just call get_buff from app_main() ]
+			- NOTE: can't call gs.io.get_buff() from app_main() in startup return because don't have gs yet
 - TBD: clean up comments in app_main()
 
 
