@@ -41,7 +41,7 @@ Version 3.83 Goals
 	- DONE: add name attribute for Map
 	- DONE: consistent commenting
 
-- INPROC: over-due early code refactoring
+- DONE: over-due early code refactoring
 	- DONE: refactor of web_main
 		- DONE: return is_start from app_main()
 	- DONE: refactor of app_main (reverse shield approach? unify)
@@ -59,7 +59,8 @@ Version 3.83 Goals
 		- DONE: comment clean-up
 		- CANCEL: elim user_output return from start_me_up() [just call get_buff from app_main() ]
 			- NOTE: can't call gs.io.get_buff() from app_main() in startup return because don't have gs yet
-- TBD: clean up comments in app_main()
+- DONE: clean up comments in app_main()
+- TBD: solve 'z' followed by 'g'
 
 
 
