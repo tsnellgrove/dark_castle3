@@ -54,7 +54,9 @@ Version 3.83 Goals
 	- DONE: [DOC] gs modularization - GameState only holds classes as attributes
 	- INPROC: refactor of start_up (should all be game instance focussed)
 		- DONE: tune post-intro spacing
-		- TBD: general refactor clean-up
+		- DONE: general refactor clean-up
+		- DONE: elim manual text
+		- TBD: comment clean-up
 		- TBD: consider introducing str_to_obj_dict in Core to enable ease of entrance.examine(gs)
 - TBD: clean up comments in app_main()
 
