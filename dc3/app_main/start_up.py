@@ -1,7 +1,7 @@
 # program: dark castle v3.82
 # name: Tom Snellgrove
 # date: Feb 28, 2024
-# description: gets obj from default_pkl, buffers welcome text, sets starting values, creates sav_pkl
+# description: gets obj from def_pkl, buffers starting text, sets starting values, creates sav_pkl
 
 ### import statements
 import pickle
@@ -9,14 +9,13 @@ import random
 
 
 def start_me_up():
-
-	# object list loaded from default_obj_pickle ###
+	# object list loaded from def_pkl ###
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/def_pkl', 'rb') as f:
 		master_obj_lst = pickle.load(f)
 
 	gs = master_obj_lst[0]
 
-	# Assign Random Secret Code ###
+	# Determine Random Secret Code ###
 	portcullis_code = random.randint(0, 7)
 	port_code_txt = "'..ode is " + str(portcullis_code) + ". Don't tell anyo..'"
 	gs.io.set_dyn_dict('messy_handwriting', port_code_txt)
@@ -31,13 +30,7 @@ def start_me_up():
 		if obj.name == 'entrance':
 			obj.examine(gs)
 
-	### introductory text ###
-#	gs.io.buff_e('introduction')
-#	gs.io.buffer("*** Entrance ***")
-#	gs.io.buff_e('entrance')
-#	gs.io.buffer("There is a Front Gate to the north, a path to the south, a leap down to the moat to the east, and a leap down to the moat to the west.")
-
-	### dump updated objects to save_obj_pickle ###
+	# dump updated objects to sav_pkl ###
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 

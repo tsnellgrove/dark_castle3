@@ -56,8 +56,8 @@ Version 3.83 Goals
 		- DONE: tune post-intro spacing
 		- DONE: general refactor clean-up
 		- DONE: elim manual text
-		- TBD: comment clean-up
-		- TBD: consider introducing str_to_obj_dict in Core to enable ease of entrance.examine(gs)
+		- DONE: comment clean-up
+		- TBD: elim user_output return from start_me_up() [just call get_buff from app_main() ]
 - TBD: clean up comments in app_main()
 
 
@@ -65,6 +65,8 @@ Version 3.83 Goals
 # *** FUTURE TO DO *** #
 
 *** minor bug-fix ***
+
+- TBD: consider introducing str_to_obj_dict in Core to enable ease of entrance.examine(gs)
 
 - TBD: make title increment (currently 10) a game-settable constant?
 
