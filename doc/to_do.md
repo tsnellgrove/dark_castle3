@@ -60,7 +60,7 @@ Version 3.83 Goals
 		- CANCEL: elim user_output return from start_me_up() [just call get_buff from app_main() ]
 			- NOTE: can't call gs.io.get_buff() from app_main() in startup return because don't have gs yet
 - DONE: clean up comments in app_main()
-- TBD: solve 'z' followed by 'g'
+- DONE: solve 'z' followed by 'g'
 
 
 

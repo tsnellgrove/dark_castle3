@@ -30,24 +30,31 @@ def app_main(user_input, is_start):
 
 	# local var declarations 
 	is_stateful = False
-	is_interp_cmd = False
+#	is_interp_cmd = False
+	is_interp_cmd = True
 	is_interp_valid = False
 
-	# non-interp command cases
+	# initial command cases
 	if user_input.lower() == 'quit' or user_input.lower() == 'q':
 		gs.end.game_ending = 'quit.'
 		gs.end.is_end = True
+		is_interp_cmd = False
 	elif user_input.lower() == 'restart':
 		gs.end.game_ending = 'restarted.'
 		is_start = True
+		is_interp_cmd = False
 	elif user_input.lower() == 'again' or user_input.lower() == 'g':
-		is_interp_cmd = True
+#		is_interp_cmd = True
 		user_input = gs.io.last_input_str
-	elif user_input.lower() == 'wait' or user_input.lower() == 'z':
+
+	# non-interp command cases ('wait' must be independent 'if' in case of 'z', 'g')
+	if user_input.lower() == 'wait' or user_input.lower() == 'z':
 		is_stateful = True
 		gs.io.buffer("Waiting...")
-	else:
-		is_interp_cmd = True
+		is_interp_cmd = False
+#	else:
+##		gs.io.buffer(user_input)
+#		is_interp_cmd = True
 
 	# for interp commands, interp user_input and validate command
 	if is_interp_cmd:
@@ -74,10 +81,13 @@ def app_main(user_input, is_start):
 	if is_start:
 		gs.io.buffer("Restarting...") # should appear after the 'you have restarted' end text and before the 'welcome' text
 
-	# close out turn - if stateful, save state and last inupt (for 'again' case) and then return
-	if is_stateful and not gs.end.is_end: # no need to save state if player has won or died
-		gs.io.last_input_str = user_input
-		with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
-			pickle.dump(master_obj_lst, f)
+	# close out turn - save state and last inupt (for 'again' case) and then return
+	# note: need to save state even if is_stateful == False else 'again' won't work
+#	if is_stateful and not gs.end.is_end: # no need to save state if player has won or died
+#	gs.io.buffer(user_input)
+	gs.io.last_input_str = user_input
+#	gs.io.buffer(gs.io.last_input_str)
+	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
+		pickle.dump(master_obj_lst, f)
 	return is_start, gs.end.is_end, gs.io.get_buff()
 	
