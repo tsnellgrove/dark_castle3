@@ -33,7 +33,7 @@ def app_main(user_input, is_start):
 	is_interp_cmd = True
 	is_interp_valid = False
 
-	# initial command cases
+	# mutually exclusive non-interp command cases
 	if user_input.lower() == 'quit' or user_input.lower() == 'q':
 		gs.end.game_ending = 'quit.'
 		gs.end.is_end = True
@@ -45,7 +45,7 @@ def app_main(user_input, is_start):
 	elif user_input.lower() == 'again' or user_input.lower() == 'g':
 		user_input = gs.io.last_input_str
 
-	# non-interp command cases ('wait' must be independent 'if' in case of 'z', 'g')
+	# post-'again', non-interp command cases (must be independent 'if' in case of 'again')
 	if user_input.lower() == 'wait' or user_input.lower() == 'z':
 		is_stateful = True
 		gs.io.buffer("Waiting...")
