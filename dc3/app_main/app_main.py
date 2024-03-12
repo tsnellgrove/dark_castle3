@@ -30,7 +30,6 @@ def app_main(user_input, is_start):
 
 	# local var declarations 
 	is_stateful = False
-#	is_interp_cmd = False
 	is_interp_cmd = True
 	is_interp_valid = False
 
@@ -44,7 +43,6 @@ def app_main(user_input, is_start):
 		is_start = True
 		is_interp_cmd = False
 	elif user_input.lower() == 'again' or user_input.lower() == 'g':
-#		is_interp_cmd = True
 		user_input = gs.io.last_input_str
 
 	# non-interp command cases ('wait' must be independent 'if' in case of 'z', 'g')
@@ -52,9 +50,6 @@ def app_main(user_input, is_start):
 		is_stateful = True
 		gs.io.buffer("Waiting...")
 		is_interp_cmd = False
-#	else:
-##		gs.io.buffer(user_input)
-#		is_interp_cmd = True
 
 	# for interp commands, interp user_input and validate command
 	if is_interp_cmd:
@@ -82,11 +77,8 @@ def app_main(user_input, is_start):
 		gs.io.buffer("Restarting...") # should appear after the 'you have restarted' end text and before the 'welcome' text
 
 	# close out turn - save state and last inupt (for 'again' case) and then return
-	# note: need to save state even if is_stateful == False else 'again' won't work
-#	if is_stateful and not gs.end.is_end: # no need to save state if player has won or died
-#	gs.io.buffer(user_input)
+	# note: need to save state even if is_stateful == False else 'again' won't work on error cases
 	gs.io.last_input_str = user_input
-#	gs.io.buffer(gs.io.last_input_str)
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 	return is_start, gs.end.is_end, gs.io.get_buff()
