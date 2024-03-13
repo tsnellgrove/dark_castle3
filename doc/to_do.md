@@ -1,72 +1,21 @@
 To Do List - Dark Castle v3
-Feb 28, 2024
+Mar 13, 2024
+
 
 ##########################
-### VERSION 3.83 START ###
+### VERSION 3.84 START ###
 ##########################
 
-Version 3.83 Goals
-- Create gamestate sub-class just for core attributes and methods (debug, hero, move_count)
-- Refactor early run modules (web_main(), app_main(), and startup() )
-
-- DONE: create Core class and migrate debug, hero, and move_count attributes and methods to it
-	- DONE: create core_class_def() including setters & getters
-	- DONE: import Core from core_class_def() into mk_def_pkl()
-	- DONE: instantiate core of class Core in mk_def_pkl()
-	- DONE: add core as attribute of GameState in gs_class_def() and mk_def_pkl()
-	- DONE: move GameState end attributes to Core class
-		- DONE: move_count from gs => gs.core 
-			- DONE: redirect gs.move_count calls to gs.core.move_count
-			- DONE: remove move_count attribute from GameState and mk_def_pkl()
-			- DONE: clean up gs_class_def() and end_class_def()
-		- DONE: migrate move_count methods to Core class
-			- DONE: copy move_count methiods to Core class
-			- CANCEL: add gs as an attribute of move_count methods
-			- DONE: eliminate gs.move_dec() ?
-			- DONE: redirect method calls
-			- DONE: clean up gs_class_def() and app_main()
-		- DONE: is_debug from gs => gs.core
-			- DONE: update call gs.is_debug calls to gs.core.is_debug
-			- DONE: test
-			- DONE: clean up gs.is_debug in gs_class_def() and mk_def_pkl()
-			- DONE: clean up comments
-		- DONE: hero from gs => gs.core
-			- DONE: prep for find & replace
-			- DONE: find and replace gs.core.hero => gs.core.hero
-			- DONE: clean up gs.hero in gs_class_def() and mk_def_pkl()
-			- DONE: clean up comments
-
-- DONE: gs attribute class clean-up / standardize
-	- DONE: standardize gs attribute classes in mk_def_pkl()
-	- DONE: add name attribute for Map
-	- DONE: consistent commenting
-
-- DONE: over-due early code refactoring
-	- DONE: refactor of web_main
-		- DONE: return is_start from app_main()
-	- DONE: refactor of app_main (reverse shield approach? unify)
-		- IDEA: key if / then values = is_end, is_wait, is_valid, is_stateful, is_interp_cmd
-		- IDEA: # non-interp command # section with elifs
-		- DONE: pseudo-code new structure in comments
-		- DONE: create to-be comment sections
-		- DONE: code it!
-		- DONE: [DOC] app_main refactor notes - if-then-shield pattern reversal
-	- DONE: [DOC] gs modularization - GameState only holds classes as attributes
-	- DONE: refactor of start_up (should all be game instance focussed)
-		- DONE: tune post-intro spacing
-		- DONE: general refactor clean-up
-		- DONE: elim manual text
-		- DONE: comment clean-up
-		- CANCEL: elim user_output return from start_me_up() [just call get_buff from app_main() ]
-			- NOTE: can't call gs.io.get_buff() from app_main() in startup return because don't have gs yet
-- DONE: clean up comments in app_main()
-- DONE: solve 'z' followed by 'g'
+Version 3.84 Goals
+- Review minor bug-fix list and set goals for 3.84
 
 
 
 # *** FUTURE TO DO *** #
 
 *** minor bug-fix ***
+
+- TBD: change version & date comments to just web_main() and static_dict (add date to 'version')
 
 - TBD: consider introducing str_to_obj_dict in Core to enable ease of entrance.examine(gs)
 
@@ -186,6 +135,10 @@ Version 3.83 Goals
 
 - TBD: reveiw / update / finalize doc file
 
+- DONE: refactor app_main() modules
+- DONE: refactor app_main() modules
+- DONE: score() and end() should be between post_action() and auto_action() [i.e. between move 'n' and 'n+1']
+
 *** separate engine vs. game vs. instance ***
 
 *** story-driven updates ***
@@ -212,7 +165,6 @@ Version 3.83 Goals
 - valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
 - shiny sword glows near enemies?
 - meet the wizard from Enchanter who is searching for a scroll
-
 
 *** Really modularize machines! ***
 
@@ -277,9 +229,6 @@ Version 3.83 Goals
 
 *** Refactor app_main() modules ***
 
-- refactor app_main() modules
-- TBD: refactor app_main() modules
-- IDEA: score() and end() should be between post_action() and auto_action() [i.e. between move 'n' and 'n+1']
 - refactor remaining app_main chain: interp, pre_action, cmd_exe, post_action, auto_action, score (??), end (?)
 
 

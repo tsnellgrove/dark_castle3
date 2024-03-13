@@ -5116,3 +5116,65 @@ Version 3.82 Goals
 		- DONE: clean up gs and mk_def_pkl()
 
 
+##########################
+### VERSION 3.83 START ###
+##########################
+
+Version 3.83 Goals
+- Create gamestate sub-class just for core attributes and methods (debug, hero, move_count)
+- Refactor early run modules (web_main(), app_main(), and startup() )
+
+- DONE: create Core class and migrate debug, hero, and move_count attributes and methods to it
+	- DONE: create core_class_def() including setters & getters
+	- DONE: import Core from core_class_def() into mk_def_pkl()
+	- DONE: instantiate core of class Core in mk_def_pkl()
+	- DONE: add core as attribute of GameState in gs_class_def() and mk_def_pkl()
+	- DONE: move GameState end attributes to Core class
+		- DONE: move_count from gs => gs.core 
+			- DONE: redirect gs.move_count calls to gs.core.move_count
+			- DONE: remove move_count attribute from GameState and mk_def_pkl()
+			- DONE: clean up gs_class_def() and end_class_def()
+		- DONE: migrate move_count methods to Core class
+			- DONE: copy move_count methiods to Core class
+			- CANCEL: add gs as an attribute of move_count methods
+			- DONE: eliminate gs.move_dec() ?
+			- DONE: redirect method calls
+			- DONE: clean up gs_class_def() and app_main()
+		- DONE: is_debug from gs => gs.core
+			- DONE: update call gs.is_debug calls to gs.core.is_debug
+			- DONE: test
+			- DONE: clean up gs.is_debug in gs_class_def() and mk_def_pkl()
+			- DONE: clean up comments
+		- DONE: hero from gs => gs.core
+			- DONE: prep for find & replace
+			- DONE: find and replace gs.core.hero => gs.core.hero
+			- DONE: clean up gs.hero in gs_class_def() and mk_def_pkl()
+			- DONE: clean up comments
+
+- DONE: gs attribute class clean-up / standardize
+	- DONE: standardize gs attribute classes in mk_def_pkl()
+	- DONE: add name attribute for Map
+	- DONE: consistent commenting
+
+- DONE: over-due early code refactoring
+	- DONE: refactor of web_main
+		- DONE: return is_start from app_main()
+	- DONE: refactor of app_main (reverse shield approach? unify)
+		- IDEA: key if / then values = is_end, is_wait, is_valid, is_stateful, is_interp_cmd
+		- IDEA: # non-interp command # section with elifs
+		- DONE: pseudo-code new structure in comments
+		- DONE: create to-be comment sections
+		- DONE: code it!
+		- DONE: [DOC] app_main refactor notes - if-then-shield pattern reversal
+	- DONE: [DOC] gs modularization - GameState only holds classes as attributes
+	- DONE: refactor of start_up (should all be game instance focussed)
+		- DONE: tune post-intro spacing
+		- DONE: general refactor clean-up
+		- DONE: elim manual text
+		- DONE: comment clean-up
+		- CANCEL: elim user_output return from start_me_up() [just call get_buff from app_main() ]
+			- NOTE: can't call gs.io.get_buff() from app_main() in startup return because don't have gs yet
+- DONE: clean up comments in app_main()
+- DONE: solve 'z' followed by 'g' / make 'again' work for error cases
+
+

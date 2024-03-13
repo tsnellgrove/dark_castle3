@@ -1,6 +1,6 @@
-# program: dark castle v3.82
+# program: dark castle v3.83
 # name: Tom Snellgrove
-# date: Feb 28, 2024
+# date: Mar 13, 2024
 # description: gets obj from def_pkl, buffers starting text, sets starting values, creates sav_pkl
 
 ### import statements
