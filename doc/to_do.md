@@ -8,38 +8,47 @@ Mar 13, 2024
 
 Version 3.84 Goals
 - Review minor bug-fix list and set goals for 3.84
+- Fix the random bugs!
 
+*** minor bug-fix ***
+- TBD: change version & date comments to just web_main() and static_dict (add date to 'version')
+- TBD: make title increment (currently 10) a game-settable constant?
+- TBD: implement 'stowe' command => put obj in hand into backpack
+- TBD: add hero_room as Map attribute
+	- TBD: sort out gs.map.get_hero_rm(gs) => move to .map & std w/ map.get_obj_room()
+- TBD: add confirmation prompt for 'quit' and 'restart' ?
+	- IDEA: do check in web_main() based on returned exit_req value
+	- IDEA: if exit_req: validate_exit = (Y/N); if validate_exit => end_of_game = True
+- TBD: debug
+	- TBD: fix debug capacity() to work with creatures (?)
+- TBD: simplify read() vs. examine()
+	- TBD: read() of obj w/ writing => "On the {obj}, written in {wrt}, you see: '{txt}'..."
+	- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
+	- TBD: examine writing => "The {writing} reads as follows: n/"
+- TBD: should "put key in moat" do more? what about "enter moat"
+- TBD: update get_hand_item() to return None if hand_list is empty
+- TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
+
+*** already done ***
+- DONE: do we need user_input == secret word to trigger startup()? Can't we just pass boolean?
+- DONE: naming updates:
+	- DONE: re-name 'wrapper' to 'app_main'
+	- DONE: update pickle names
+- DONE: investigate setters & getters for GameState class
+- DONE: is there really any need for GameState room_mach_lst() ??
+- DONE: 'try... except' standard descriptions for examine() method (similar to Warnings) (???)
+- DONE: refactor app_main() modules
+- DONE: refactor app_main() modules
+- DONE: put score() & end() between post_action() and auto_action() [i.e. between move 'n' and 'n+1']
 
 
 # *** FUTURE TO DO *** #
 
-*** minor bug-fix ***
 
-- TBD: change version & date comments to just web_main() and static_dict (add date to 'version')
+*** separate engine vs. game vs. instance ***
 
-- TBD: consider introducing str_to_obj_dict in Core to enable ease of entrance.examine(gs)
+- TBD: implement game save & restore
 
-- TBD: make title increment (currently 10) a game-settable constant?
-
-- TBD: interpreter idea => permitted verbs & synonymbs by class (e.g. 'doff' for Garment)
-
-- TBD: implement 'stowe' command => put obj in hand into backpack
-
-- TBD: add hero_room as Map attribute
-
-- TBD: add confirmation prompt for 'quit' and 'restart' ?
-	- IDEA: do check in web_main() based on returned exit_req value
-	- IDEA: if exit_req: validate_exit = (Y/N); if validate_exit => end_of_game = True
-
-- maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
-
-- TBD: as part of symetric functions reveiw...
-	- re-examine current use of creature = gs.core.hero
-	- if non-hero creatures never hit errors... do we need this in the Invisible class ??
-
-- TBD: both Creature and Interactive need some rework I think...
-
-- need to solve the name-to-obj challenge systemically - see below for idea
 - TBD: Separate static_dicts for game vs. engine
 	- IDEA: planning for tooling in the future - want to separate what game designer can update vs. what platform designer (aka game engine deisgner) can update
 	- TBD: eng_static_dict = interp, version, help, errors (remove "Burt" ref from errors)
@@ -52,6 +61,7 @@ Version 3.84 Goals
 		- separate version numbers for game and engine
 		- separate static_dict for engine vs. game (remove Burt refs from Engine text)
 		- separate folder for game; contains game_static_dict
+		- need to solve the name-to-obj challenge systemically - see below for idea
 		- also, one-time setup function (like mk_def_pkl() ) that calculates static values for a game version
 			- max_score; lives in game_ver_static_dict
 			- str_to_obj_idx = a dict that converts name_str to obj; lives in game_ver_static_dict or gs (?)
@@ -64,84 +74,19 @@ Version 3.84 Goals
 		- most static data is based on game version (e.g. most text; also max_score)
 		- but some static data is based on game instance (e.g. randome # for portcullis => gs)
 
-- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
-	IDEA: swap to meth_noun_str and attrib_noun_str ??
-
-
-- SOMEDAY / MAYBE:
-	- do we need user_input == secret word to trigger startup()? Can't we just pass boolean?
-	- TBD: does creature_state really have any value? Maybe build hedgehog state machine before pulling the plug on this one
-	- TBD: Could simplify 'give', remove description updates from give, and instead implement them as part of state machine?
-	- TBD: use __getattr__ and __setattr__ methods to make dict accessible as obj
-	- TBD: instantiate in start_up() and save in pickle in case map someday changes during game (fun idea)
-	- TBD: refactor GameState & dicts in static_gbl() with dunder methods ( __getattr__ and __setattr__ )
-		- LINK: see: https://stackoverflow.com/questions/10761779/when-to-use-getattr
-		- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (and s__setattr__ for future tools)
-
 - IDEA: ideally, would have a tool module that called & cached max_score to static_dict
 
-- TBD: debug
-	- TBD: fix debug capacity() to work with creatures (?)
-
-- TBD: make creature obj data more atomic
-	- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
-		- IDEA: obj should be a black-box
-	- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
-
-- TBD: make LeverSwitch a true MixIn
-
-- TBD: read() of obj w/ writing => "On the {obj}, written in {wrt}, you see: '{txt}'..."
-- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
-- TBD: examine writing => "The {writing} reads as follows: n/"
-- TBD: should it be possible to show() an obj of class Writing or ViewOnly ??
-	- TBD: enable 'show writing to creature' is writing is on an item Burt is holding
-- TBD: should "put key in moat" do more? what about "enter moat"
-
-- TBD: what about cases where I want a modular machine to operate despite an error
-	- IDEA: e.g. 'go north' in antechamber triggers goblin
-	- IDEA: i.e. should it ever be possible to override an error? If so, then how?
-	- IDEA: the 'open portcullis' case is a special problem here - it will tell Burt it's locked...
-		- IDEA: but the Goblin should attack before Burt can touch the Portcullis
-	- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
-	- IDEA: implication here is that modular machines should be designed so that it is easy to trigger & run them from interupt()
-	- IDEA: the idea here is that narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
-	- DECISION: use fake_door for now and swap on goblin death
-	- RECONSIDER: 'take axe' case is not easy to fake out... maybe I do need an interupt() module after all??
-	- Maybe just 'x axe' case?
-- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
-
-- TBD: update get_hand_item() to return None if hand_list is empty
-- TBD: sort out gs.map.get_hero_rm(gs) => move to .map & std w/ map.get_obj_room()
-
-- TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
-		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
-
-- TBD: naming updates:
-	- DONE: re-name 'wrapper' to 'app_main'
-	- DONE: update pickle names
-	- TBD: possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
+- TBD: instantiate map in start_up() and save in pickle in case map someday changes during game (fun idea)
 
 - TBD: elim hasattrib() in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
 	- for gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
 	- eliminate 'hasattrib' for containers in gs.scope_lst() too
 	- have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
 
-- mechanic clean-up
-	- investigate setters & getters for GameState class
-	- DONE: is there really any need for GameState room_mach_lst() ??
-	- TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
-	- TBD: sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
-	- 'try... except' standard descriptions for examine() method (similar to Warnings) (???)
-
-- TBD: reveiw / update / finalize doc file
-
-- DONE: refactor app_main() modules
-- DONE: refactor app_main() modules
-- DONE: score() and end() should be between post_action() and auto_action() [i.e. between move 'n' and 'n+1']
-
-*** separate engine vs. game vs. instance ***
 
 *** story-driven updates ***
+
+- maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
 
 - TBD: fix Goblin description to no longer mention Control Panel
 - TBD: "what would your mothter say" error to "What would your Nana say?"
@@ -166,7 +111,29 @@ Version 3.84 Goals
 - shiny sword glows near enemies?
 - meet the wizard from Enchanter who is searching for a scroll
 
+
 *** Really modularize machines! ***
+
+- mechanic clean-up
+	- TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
+
+- TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
+		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+
+- TBD: what about cases where I want a modular machine to operate despite an error
+	- IDEA: e.g. 'go north' in antechamber triggers goblin
+	- IDEA: i.e. should it ever be possible to override an error? If so, then how?
+	- IDEA: the 'open portcullis' case is a special problem here - it will tell Burt it's locked...
+		- IDEA: but the Goblin should attack before Burt can touch the Portcullis
+	- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
+	- IDEA: implication here is that modular machines should be designed so that it is easy to trigger & run them from interupt()
+	- IDEA: the idea here is that narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
+	- DECISION: use fake_door for now and swap on goblin death
+	- RECONSIDER: 'take axe' case is not easy to fake out... maybe I do need an interupt() module after all??
+	- Maybe just 'x axe' case?
+- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
+
+- TBD: make LeverSwitch a true MixIn
 
 - Clean up machine, warning, and timer coding
 - Create / update program documentation
@@ -229,53 +196,40 @@ Version 3.84 Goals
 
 *** Refactor app_main() modules ***
 
-- refactor remaining app_main chain: interp, pre_action, cmd_exe, post_action, auto_action, score (??), end (?)
+- TBD: refactor remaining app_main chain: pre_action, cmd_exe, post_action, auto_action
+
+- TBD: use __getattr__ and __setattr__ methods to make dict accessible as obj
+- TBD: refactor GameState & dicts in static_gbl() with dunder methods ( __getattr__ and __setattr__ )
+	- LINK: see: https://stackoverflow.com/questions/10761779/when-to-use-getattr
+	- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (and s__setattr__ for future tools)
+
 
 
 *** refactor Creature ***
 
+- TBD: does creature_state really have any value? Maybe build hedgehog state machine before pulling the plug on this one
+- TBD: Could simplify 'give', remove description updates from give, and instead implement them as part of state machine?
 
-*** Sort out prepositional spaces (e.g. Under, Nook, Hole, Bed) ***
+- TBD: should it be possible to show() an obj of class Writing or ViewOnly ??
+	- TBD: enable 'show writing to creature' is writing is on an item Burt is holding
 
-- TBD: maybe a Bed in the Main Hall?
-- TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
+- TBD: make creature obj data more atomic
+	- TBD: create weapon() method to provide adj & adv (vs reading weapon_dict via attack() )
+		- IDEA: obj should be a black-box
+	- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
 
-- TBD: the future list - future interactive obj updates / features to be implemented
-	- framework for complex obj to contain sub-elements (e.g. drawer + surface + under == desk)
-	- Could also have UnderMixIn and BehindMixIn
-	- TBD: for UnderMixIn - need to include bulk capacity for negative space
-	- would need to deal with the wording 'look under' and 'look behind'
-	- 'look under' adds contents to room.feature_lst
-	- additional 'under' commands = 'put under' and 'reach under'
-	- for MixInHole have commands 'look in' and 'reach in'
-		- can a 'hole' be dark if the room is light?
-	- TBD: enable the 'behind' preposition (with multiple varients of obfustication)
-		- IDEA: minor_behind = you can see but not reach
-		- IDEA: moderate_behind = can see some
-		- IDEA" major_behind = can't see
-		- Presumably, all 3 flavors of behind impact availability of obj in room list
-		- TBD: put the control_panel behind the goblin (check TADS implementation)
-	- IDEA: 'hole' = contain, opaque from room, no light
-		- 'nook' = 'hole' that can contain Creatures
-		- 'under' = opaque from room but no lighting issues
-		- use 'take from under' for 'under'
-		- use 'reach in' for 'hol'
-		- need to enter() 'nook' to get contents
+*** refactor Interactive ***
 
-- TBD: figure out 'behind' prep for case of control panel in alove behind goblin
-
-- non-humanoid monster could be a special weapon description case (fun new puzzle idea)???
-- DONE: Consider having size values for items and capaicty limits on containers & backpack (should the crystal box really hold an axe?)
-	- This becomes important for 'take' capacity as well in shrinking puzzle (??)
-	- encumberance (post Burt as object?)
-	- implement carying capacity / container cappacity; Also carry restriction passages, etc..
-- DONE: make goblin hand contents examinable (e.g. Grimy Axe)
-
-Window:
-- would be need to have a Window class that allows burt to see what he can't take
+- TBD
 
 
 *** Roll up sleaves and fix Interpreter ***
+
+- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
+	IDEA: swap to meth_noun_str and attrib_noun_str ??
+
+- TBD: consider introducing str_to_obj_dict in Core (enable ease of entrance.examine(gs) in startup() )
+- TBD: interpreter idea => permitted verbs & synonymbs by class (e.g. 'doff' for Garment)
 
 - IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 	- IDEA: could have a prep attribute for each prep verb
@@ -369,52 +323,45 @@ interpreter ideas:
 - What would a decoupled, micro=services based DC look like? What are the consumers / providers?
 
 
-*** Long-term Pondering ***
+*** Sort out prepositional spaces (e.g. Under, Nook, Hole, Bed) ***
 
-- Long Term Pondering:
-	- the whole 'hand' concept is looking increasingly dodgy... too much inventory mgmt...
-	- maybe time to bite the recursive bullet and just allow portable containers in portable containers?
+- TBD: maybe a Bed in the Main Hall?
+- TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
 
-- decide if interactive() class objects should eventually have noun identities (e.g. is_door() )
+- TBD: the future list - future interactive obj updates / features to be implemented
+	- framework for complex obj to contain sub-elements (e.g. drawer + surface + under == desk)
+	- Could also have UnderMixIn and BehindMixIn
+	- TBD: for UnderMixIn - need to include bulk capacity for negative space
+	- would need to deal with the wording 'look under' and 'look behind'
+	- 'look under' adds contents to room.feature_lst
+	- additional 'under' commands = 'put under' and 'reach under'
+	- for MixInHole have commands 'look in' and 'reach in'
+		- can a 'hole' be dark if the room is light?
+	- TBD: enable the 'behind' preposition (with multiple varients of obfustication)
+		- IDEA: minor_behind = you can see but not reach
+		- IDEA: moderate_behind = can see some
+		- IDEA" major_behind = can't see
+		- Presumably, all 3 flavors of behind impact availability of obj in room list
+		- TBD: put the control_panel behind the goblin (check TADS implementation)
+	- IDEA: 'hole' = contain, opaque from room, no light
+		- 'nook' = 'hole' that can contain Creatures
+		- 'under' = opaque from room but no lighting issues
+		- use 'take from under' for 'under'
+		- use 'reach in' for 'hol'
+		- need to enter() 'nook' to get contents
 
-- TBD: static_gbl => tupple
+- TBD: figure out 'behind' prep for case of control panel in alove behind goblin
 
-- INPROC: Given that creatures will be contained:
-	- INPROC: need to embrace a node-based awareness of creature location
-	- DONE: need to embrace the use of recursion on methods like remove()
-	- INPROC: Apply this to concepts like drop() and stand() / exit()
-	- OLD DECISION: alternatively, just treat creature-containers as special exceptions
-	- NEW DECISION: started using recursion when applying weight to obj & creatures
-- TBD: Alternatively, maybe time to consider letting obj know what container they're in??
+- non-humanoid monster could be a special weapon description case (fun new puzzle idea)???
+- DONE: Consider having size values for items and capaicty limits on containers & backpack (should the crystal box really hold an axe?)
+	- This becomes important for 'take' capacity as well in shrinking puzzle (??)
+	- encumberance (post Burt as object?)
+	- implement carying capacity / container cappacity; Also carry restriction passages, etc..
+- DONE: make goblin hand contents examinable (e.g. Grimy Axe)
 
-- INPROC: review TADS3 terms for Description and preposition
+Window:
+- would be need to have a Window class that allows burt to see what he can't take
 
-- IDEA: consider converting Writing to Decorations (examine() vs. read() )
-
-- TBD: make backpack a true container???
-- TBD: learn how to use VS Code word wrap and other features for Python
-- IDEA: maybe I should call validate() again between pre_action() and cmd_exe() and then again between cmd_exe() and post_action() ?
-
-- TBD: refactor gs. scope / mach_scope
-		- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
-
-- CANCEL: considers re-distributing not-in hand & read errors back into verb methods ???
-
-- DONE: for doors and containers, use None option for no lock or no lid?
-- CANCEL: Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
-	- CANCEL: why do I need gs.dynamic_static_dict again?
-
-python techniques:
-- Do a refactoring code review (look into the 'any' command in place of for loops)
-- TBD: Try argument unpacking ( https://www.geeksforgeeks.org/packing-and-unpacking-arguments-in-python/ )
-- TBD: Try tupples for static_dict
-	- NOTE: Franco on Tupples: A tuple is most suitable for immutable data with a well-defined order.  The static data that you pass to class constructors is often a good example.Another useful time for tuples is when you want dictionary keys with more than one field.  You cannot use something mutable there.
-- TBD: learn about Super()
-- TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
-
-pipeline & testing:
-- create 'win' test routine with checksum
-- TBD: Jenkins integration to automatically update "v3 alpha" tab with latest commits
 
 *** Get light working ***
 
@@ -435,6 +382,7 @@ pipeline & testing:
 - darkness & light source system?
 	- lantern (requires darkness travel tracker, timer, item_mach, univeral scope, death by grue)
 	- honestly, Grues don't make sense in DC... I intend for there to be a fair number of creatures around the place... why haven't they been eaten by Grues? (one could ask the same about the Troll and the Thief of Zork - but presumably these are dangerous creatures that can fend off Grues?). Instead, I think I'll use the same mechanic (2 dark rooms in a row == death) but the textual explanation will be Nana's warning to young burt "Burty, you mind gallavanting around in the darkness - you'll trip and break your neck!"
+
 
 *** Get liquids working ***
 
@@ -489,6 +437,7 @@ pipeline & testing:
 			- This will mostly be independent of Liquids... 
 				- but anything with a 'ruin' liquid_result == 'ruin' should be destroyed by swimming
 
+
 *** Get food / hunger and beverages / thirst working ***
 
 - IDEA: interesting updates for food & bulk
@@ -522,6 +471,10 @@ Food:
 
 *** Implement Symetric Verbs ***
 
+- TBD: as part of symetric functions reveiw...
+	- re-examine current use of creature = gs.core.hero
+	- if non-hero creatures never hit errors... do we need this in the Invisible class ??
+
 - enable all verb methods for non-burt creatures
 - TBD: doc_string about future 'silent_exe' for symetric creature commandsv
 - TBD: test with test_frog holding test_box (PortableContainer) holding red_mcguffin Item
@@ -538,6 +491,57 @@ Food:
 	- this should be enabled by mode = 'exe_creature'
 	- DECISION: part of making verb methods 'symetric', 'creature' should be checked for in each method
 
+
+*** Long-term Pondering ***
+
+- TBD: reveiw / update / finalize doc file
+
+- TBD: possibly rename modules to indicate usage first? i.e. creature_class_def.py => class_def_creature.py ???
+
+- Long Term Pondering:
+	- the whole 'hand' concept is looking increasingly dodgy... too much inventory mgmt...
+	- maybe time to bite the recursive bullet and just allow portable containers in portable containers?
+
+- decide if interactive() class objects should eventually have noun identities (e.g. is_door() )
+
+- TBD: static_gbl => tupple
+
+- INPROC: Given that creatures will be contained:
+	- INPROC: need to embrace a node-based awareness of creature location
+	- DONE: need to embrace the use of recursion on methods like remove()
+	- INPROC: Apply this to concepts like drop() and stand() / exit()
+	- OLD DECISION: alternatively, just treat creature-containers as special exceptions
+	- NEW DECISION: started using recursion when applying weight to obj & creatures
+- TBD: Alternatively, maybe time to consider letting obj know what container they're in??
+
+- INPROC: review TADS3 terms for Description and preposition
+
+- IDEA: consider converting Writing to Decorations (examine() vs. read() )
+
+- TBD: make backpack a true container???
+- TBD: learn how to use VS Code word wrap and other features for Python
+- IDEA: maybe I should call validate() again between pre_action() and cmd_exe() and then again between cmd_exe() and post_action() ?
+
+- TBD: refactor gs. scope / mach_scope
+		- Use list comprehension to eliminate for-loop? (link: https://medium.com/self-training-data-science-enthusiast/python-list-comprehensions-use-list-comprehension-to-replace-your-stupid-for-loop-and-if-else-9405acfa4404 )
+
+- CANCEL: considers re-distributing not-in hand & read errors back into verb methods ???
+
+- DONE: for doors and containers, use None option for no lock or no lid?
+- CANCEL: Can I just set descript_key for Note in mk_def_pkl() with setter rather than whole dynamic_dict?
+	- CANCEL: why do I need gs.dynamic_static_dict again?
+
+python techniques:
+- Do a refactoring code review (look into the 'any' command in place of for loops)
+- TBD: Try argument unpacking ( https://www.geeksforgeeks.org/packing-and-unpacking-arguments-in-python/ )
+- TBD: Try tupples for static_dict
+	- NOTE: Franco on Tupples: A tuple is most suitable for immutable data with a well-defined order.  The static data that you pass to class constructors is often a good example.Another useful time for tuples is when you want dictionary keys with more than one field.  You cannot use something mutable there.
+- TBD: learn about Super()
+- TBD: read this article: https://sangeeta.io/posts/a-super-post-on-python-inheritance/
+
+pipeline & testing:
+- create 'win' test routine with checksum
+- TBD: Jenkins integration to automatically update "v3 alpha" tab with latest commits
 
 
 *** make database-driven! ***
