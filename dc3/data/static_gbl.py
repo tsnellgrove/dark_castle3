@@ -14,7 +14,7 @@
 static_dict = {
 
 	### universal constants ###
-	'version' : '3.83',
+	'version' : '3.83 (3/13/2024)',
 
 	### interp lists ###
 

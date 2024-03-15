@@ -1,7 +1,6 @@
-# program: dark castle v3.83
-# name: Tom Snellgrove
-# date: Mar 13, 2024
-# description: app-side wrapper module that calls game functions
+# program: dark castle
+# author: Tom Snellgrove
+# module description: app-side wrapper module that calls game functions
 
 
 ### import statements

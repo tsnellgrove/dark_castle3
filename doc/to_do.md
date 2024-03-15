@@ -11,7 +11,7 @@ Version 3.84 Goals
 - Fix the random bugs!
 
 *** minor bug-fix ***
-- TBD: change version & date comments to just web_main() and static_dict (add date to 'version')
+- DONE: change version & date comments to just web_main() and static_dict (add date to 'version')
 - TBD: make title increment (currently 10) a game-settable constant?
 - TBD: implement 'stowe' command => put obj in hand into backpack
 - TBD: add hero_room as Map attribute

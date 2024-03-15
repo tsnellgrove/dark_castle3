@@ -1,7 +1,6 @@
-# program: dark castle v3.83
-# name: Tom Snellgrove
-# date: Mar 13, 2024
-# description: provides mix in classes for interactive objects
+# program: dark castle
+# author: Tom Snellgrove
+# module description: provides mix in classes for interactive objects
 
 ### import statements
 from dc3.class_std.base_class_def import ViewOnly

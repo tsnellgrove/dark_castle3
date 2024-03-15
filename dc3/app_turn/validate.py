@@ -1,7 +1,6 @@
-# program: dark castle v3.83
-# name: Tom Snellgrove
-# date: Mar 13, 2024
-# description: module to validate user_input
+# program: dark castle
+# author: Tom Snellgrove
+# module description: module to validate user_input
 
 
 ### import statements ###

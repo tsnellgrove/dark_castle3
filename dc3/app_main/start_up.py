@@ -1,7 +1,6 @@
-# program: dark castle v3.83
-# name: Tom Snellgrove
-# date: Mar 13, 2024
-# description: gets obj from def_pkl, buffers starting text, sets starting values, creates sav_pkl
+# program: dark castle
+# author: Tom Snellgrove
+# module description: gets obj from def_pkl, buffers starting text, sets starting values, creates sav_pkl
 
 ### import statements
 import pickle

@@ -1,7 +1,6 @@
-# program: dark castle v3.83
-# name: Tom Snellgrove
-# date: Mar 13, 2024
-# description: converts player input into game commands
+# program: dark castle
+# author: Tom Snellgrove
+# module description: converts player input into game commands
 
 
 ### import statements
