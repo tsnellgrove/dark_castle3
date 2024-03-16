@@ -12,7 +12,7 @@ Version 3.84 Goals
 
 *** minor bug-fix ***
 - DONE: change version & date comments to just web_main() and static_dict (add date to 'version')
-- TBD: make title increment (currently 10) a game-settable constant?
+- DONE: make title increment (currently 10) a game-settable constant?
 - TBD: implement 'stowe' command => put obj in hand into backpack
 - TBD: add hero_room as Map attribute
 	- TBD: sort out gs.map.get_hero_rm(gs) => move to .map & std w/ map.get_obj_room()
@@ -48,6 +48,8 @@ Version 3.84 Goals
 *** separate engine vs. game vs. instance ***
 
 - TBD: implement game save & restore
+
+- TBD: need to provide defaul engine mechanisms with option to replace with custom game versions (e.g. need a default set of titles title_factor that can be over-ridden with game-specific)
 
 - TBD: Separate static_dicts for game vs. engine
 	- IDEA: planning for tooling in the future - want to separate what game designer can update vs. what platform designer (aka game engine deisgner) can update

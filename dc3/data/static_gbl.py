@@ -57,6 +57,8 @@ static_dict = {
 	},
 
 	### title and score dicts ###
+    'title_factor' : 10,
+
 	'titles_by_score' : {
 		-10: 'Burt the Best Forgotten',
 		0: 'Burt the Baker', # was 'Burt the Boneheaded'
