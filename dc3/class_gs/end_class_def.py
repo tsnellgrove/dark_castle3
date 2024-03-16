@@ -37,12 +37,10 @@ class End(object):
     def disp_end(self, gs):
         title_factor = gs.io.get_str_nr('title_factor')
         if gs.score.score < 0:
-#            title_score = -10
             title_score = -title_factor
         elif gs.score.score == 0:
             title_score = 0
         else:
-#            title_score = math.ceil(gs.score.score / 10) * 10
             title_score = math.ceil(gs.score.score / title_factor) * title_factor
         title = gs.io.get_dict_val('titles_by_score', title_score)
 
