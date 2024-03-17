@@ -274,6 +274,24 @@ class Invisible(object):
 			return True
 		return False
 
+	def stowe_err(self, gs):
+		creature = gs.core.hero
+		if self.err_std(creature, gs):
+			return True
+		if creature.hand_is_empty():
+			gs.io.buffer(f"{creature.full_name}, your hand is empty!")
+			return True
+		if self == creature.feature_lst[0]:
+			gs.io.buffer(f"{creature.full_name}, you can't stowe your {creature.feature_lst[0].full_name} - you're quite attached to it.")
+			return True
+		if not self.is_item():
+			gs.io.buffer(f"You can't even pick up the {self.full_name}... how could you possibly put it in your backpack??")
+			return True
+		if self.err_not_in_hand(creature, gs):
+			return True		
+		return False
+
+
 	def open_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):

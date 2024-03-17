@@ -89,6 +89,7 @@ def noun_handling(master_obj_lst, user_input_lst):
 ### interpreter - determine user intent
 def interpreter(user_input, master_obj_lst):
 	gs = master_obj_lst[0]
+	creature = gs.core.hero
 	room_obj = gs.map.get_hero_rm(gs)
 	user_input_lst = input_cleanup(gs, user_input)
 	full_verbs_lst = gs.io.get_lst('known_verb_lst') + gs.io.get_lst('debug_verb_lst')
@@ -115,7 +116,7 @@ def interpreter(user_input, master_obj_lst):
 		return 'error', [f"Burt, there are too many words in that sentence. '{word1}' is a one word command!"]
 
 	# convert one-word commands that are implicit two-word commands 
-	elif len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst'):
+	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst'):
 		if word1 in ['north', 'south', 'east', 'west']:
 			user_input_lst.append(word1)
 			user_input_lst[0] = 'go'
@@ -126,11 +127,15 @@ def interpreter(user_input, master_obj_lst):
 			user_input_lst[0] = 'examine'
 			user_input_lst.append(gs.map.get_hero_rm(gs).name)
 		if word1 == 'stand':
-			user_input_lst.append(gs.core.hero.name)
+#			user_input_lst.append(gs.core.hero.name)
+			user_input_lst.append(creature.name)
+		if word1 in ['drop', 'stowe', 'wear', 'eat'] and not creature.hand_is_empty():
+			user_input_lst.append(creature.get_hand_item().name)
+			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
 		word1 = user_input_lst[0]
 
 	# if not a known true or convertable one-word command, must be an error
-	elif len(user_input_lst) == 1:
+	if len(user_input_lst) == 1:
 		if word1 in full_verbs_lst:
 			error_msg = word1 + " what?"
 		else:

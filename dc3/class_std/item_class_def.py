@@ -74,6 +74,17 @@ class Item(ViewOnly):
 		gs.io.buffer("Dropped")
 		return 
 
+	def stowe(self, gs, mode=None):
+		""" Stowes the object in a creatures hand in their backpack."""
+		if mode is None:
+			mode = 'std'
+		creature = gs.core.hero
+
+		creature.hand_lst_remove(self)
+		creature.bkpk_lst_append(self)
+		gs.io.buffer("Stowed")
+		return
+
 	# *** debug methods ***
 	def get_weight(self, gs, mode=None):
 		""" Reports the weight of an Item. Only usable in debug mode.

@@ -13,9 +13,14 @@ Version 3.84 Goals
 *** minor bug-fix ***
 - DONE: change version & date comments to just web_main() and static_dict (add date to 'version')
 - DONE: make title increment (currently 10) a game-settable constant?
-- TBD: implement 'stowe' command => put obj in hand into backpack
+- DONE: implement 'stowe' command => put obj in hand into backpack
+	- DONE: create stowe() as method of Item
+	- DONE: add 'stowe' to verb list
+	- DONE: create stowe_err() in Invisible
+	- DONE: enable assume contents of hand for drop, stowe, eat, wear
 - TBD: add hero_room as Map attribute
 	- TBD: sort out gs.map.get_hero_rm(gs) => move to .map & std w/ map.get_obj_room()
+	- TBD: find cases where hero is searched for and fix
 - TBD: add confirmation prompt for 'quit' and 'restart' ?
 	- IDEA: do check in web_main() based on returned exit_req value
 	- IDEA: if exit_req: validate_exit = (Y/N); if validate_exit => end_of_game = True
