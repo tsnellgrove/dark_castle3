@@ -173,6 +173,7 @@ class Room(ViewOnly):
 
 		next_room = gs.map.get_next_room(self, dir)
 ##			gs.set_room(next_room)
+		gs.map.hero_loc = next_room
 		next_room.floor_lst_append(creature)
 		self.floor_lst_remove(creature)
 

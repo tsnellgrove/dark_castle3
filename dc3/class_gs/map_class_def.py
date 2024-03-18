@@ -8,8 +8,9 @@ room_key_lst = [['room_x', 'dir_x', 'room_y'], ['room_y', 'dir_y', 'room_x']] # 
 
 ### classes
 class Map(object):
-	def __init__(self, name, map_lst):
+	def __init__(self, name, hero_loc, map_lst):
 		self._name = name
+		self._hero_loc = hero_loc # the current location of the player's character
 		self._map_lst = map_lst # list of room_pair dicts; 
 				# format == [{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall}]
 
@@ -18,6 +19,14 @@ class Map(object):
 	def name(self):
 		return self._name
 	
+	@property
+	def hero_loc(self):
+		return self._hero_loc
+
+	@hero_loc.setter
+	def hero_loc(self, new_val):
+		self._hero_loc = new_val
+
 	@property
 	def map_lst(self):
 		return self._map_lst
