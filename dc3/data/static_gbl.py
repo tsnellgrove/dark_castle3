@@ -28,9 +28,10 @@ static_dict = {
 
 	'one_word_convert_lst' : [
         'north', 'south', 'east', 'west',
-        'inventory', 'look', 
-        'stand', 'drop', 'stowe', 'eat', 'wear'
+        'inventory', 'look', 'stand'
     ],
+
+	'assumed_noun_2word_lst' : ['drop', 'stowe', 'eat', 'wear'],
 
 	'one_or_two_word_lst' : ['help'], 
 

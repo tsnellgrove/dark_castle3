@@ -18,6 +18,7 @@ Version 3.84 Goals
 	- DONE: add 'stowe' to verb list
 	- DONE: create stowe_err() in Invisible
 	- DONE: enable assume contents of hand for drop, stowe, eat, wear
+	- DONE: fix 'drop key' & 'wear crown' (2word commands not working for new convert commands)
 - INPROC: add hero_room as Map attribute
 	- DONE: sort out gs.map.get_hero_rm(gs) => move to .map & std w/ map.get_obj_room()
 		- DONE: add hero_loc as attribute of gs.map
@@ -25,7 +26,6 @@ Version 3.84 Goals
 		- DONE: set hero_loc to entrance in mk_def_pkl()
 		- DONE: update hero_loc on move 
 		- DONE: test with print() statement
-	- TBD: fix 'drop key' & 'wear crown' (2word commands not working for new convert commands)
 	- TBD: find cases where hero is searched for and fix
 - TBD: add confirmation prompt for 'quit' and 'restart' ?
 	- IDEA: do check in web_main() based on returned exit_req value
