@@ -127,12 +127,10 @@ def interpreter(user_input, master_obj_lst):
 			user_input_lst[0] = 'examine'
 			user_input_lst.append(gs.map.get_hero_rm(gs).name)
 		if word1 == 'stand':
-#			user_input_lst.append(gs.core.hero.name)
 			user_input_lst.append(creature.name)
 		word1 = user_input_lst[0]
 
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst'):
-#		if word1 in ['drop', 'stowe', 'wear', 'eat'] and not creature.hand_is_empty():
 		if not creature.hand_is_empty():
 			user_input_lst.append(creature.get_hand_item().name)
 			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
