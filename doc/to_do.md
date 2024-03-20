@@ -26,7 +26,10 @@ Version 3.84 Goals
 		- DONE: set hero_loc to entrance in mk_def_pkl()
 		- DONE: update hero_loc on move 
 		- DONE: test with print() statement
-	- TBD: find cases where hero is searched for and fix
+	- INPROC: find cases where hero is searched for and fix
+		- DONE: up to and including map_class_def()
+		- TBD: remaining cases
+	- TBD: [DOC] decision to cache hero_loc
 - TBD: add confirmation prompt for 'quit' and 'restart' ?
 	- IDEA: do check in web_main() based on returned exit_req value
 	- IDEA: if exit_req: validate_exit = (Y/N); if validate_exit => end_of_game = True

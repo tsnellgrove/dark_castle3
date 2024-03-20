@@ -7,7 +7,8 @@
 
 def pre_action(gs, case, word_lst):
 	cmd_override = False
-	mach_obj_lst = gs.map.get_hero_rm(gs).get_mach_lst(gs)
+#	mach_obj_lst = gs.map.get_hero_rm(gs).get_mach_lst(gs)
+	mach_obj_lst = gs.map.hero_loc.get_mach_lst(gs)
 	for obj in mach_obj_lst:
 ##		print(obj) # for mach troubleshooting
 
