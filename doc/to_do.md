@@ -29,6 +29,7 @@ Version 3.84 Goals
 	- INPROC: find cases where hero is searched for and fix
 		- DONE: up to and including map_class_def()
 		- TBD: remaining cases
+	- TBD: gs.map.hero_loc => gs.map.hero_rm ???
 	- TBD: [DOC] decision to cache hero_loc
 - TBD: add confirmation prompt for 'quit' and 'restart' ?
 	- IDEA: do check in web_main() based on returned exit_req value
