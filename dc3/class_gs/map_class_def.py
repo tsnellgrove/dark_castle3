@@ -98,10 +98,10 @@ class Map(object):
 		if lst == room_lst:
 			raise ValueError(f"{obj.full_name} not found.")
 
-	def get_hero_rm(self, gs):
-		""" Returns the room that gs.core.hero is currently in
-		"""
-		return self.hero_loc
+##	def get_hero_rm(self, gs):
+##		""" Returns the room that gs.core.hero is currently in
+##		"""
+##		return self.hero_loc
 #		for room in self.get_room_lst():
 #			if gs.core.hero in room.floor_lst:
 #				return room

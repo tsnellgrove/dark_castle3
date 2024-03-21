@@ -374,7 +374,8 @@ class Seat(ContainerFixedSimple):
 		room.floor_lst_remove(creature)
 		self.contain_lst_append(creature, gs)
 
-		if room != gs.map.get_hero_rm(gs): # if hero_creature not in current room, exit with no display
+#		if room != gs.map.get_hero_rm(gs): # if hero_creature not in current room, exit with no display
+		if room != gs.map.hero_loc: # if hero_creature not in current room, exit with no display
 			return 
 		
 		if creature == gs.core.hero:
@@ -397,7 +398,8 @@ class Seat(ContainerFixedSimple):
 		room.floor_lst_append(creature)
 		self.contain_lst_remove(creature, gs)
 
-		if room != gs.map.get_hero_rm(gs): # if hero_creature not in current room, exit with no display
+#		if room != gs.map.get_hero_rm(gs): # if hero_creature not in current room, exit with no display
+		if room != gs.map.hero_loc: # if hero_creature not in current room, exit with no display
 			return 
 		
 		if creature == gs.core.hero:

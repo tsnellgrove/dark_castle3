@@ -80,7 +80,8 @@ class AddObjToRoomResult(BufferOnlyResult):
 
 	def result_exe(self, gs, mach_state):
 		gs.io.buff_s(self.name)
-		room_obj = gs.map.get_hero_rm(gs)
+#		room_obj = gs.map.get_hero_rm(gs)
+		room_obj = gs.map.hero_loc
 		room_obj.floor_lst_append(self.room_item)
 		mach_state = True
 		return mach_state, self.cmd_override
@@ -111,7 +112,8 @@ class AddObjChgDescriptResult(BufferOnlyResult):
 
 	def result_exe(self, gs, mach_state):
 		gs.io.buff_s(self.name)
-		room_obj = gs.map.get_hero_rm(gs)
+#		room_obj = gs.map.get_hero_rm(gs)
+		room_obj = gs.map.hero_loc
 		room_obj.floor_lst_append(self.room_item)
 		mach_state = True
 		self.descript_obj.descript_key = self.new_descript
@@ -133,7 +135,8 @@ class AddObjToRoomAndDescriptResult(BufferOnlyResult):
 
 	def result_exe(self, gs, mach_state):
 		gs.io.buff_s(self.name)
-		room_obj = gs.map.get_hero_rm(gs)
+#		room_obj = gs.map.get_hero_rm(gs)
+		room_obj = gs.map.hero_loc
 		room_obj.floor_lst_append(self.room_item)
 
 		new_descript_key = f"{room_obj.name}_{self.name}"

@@ -482,7 +482,8 @@ class Creature(ViewOnly):
 				room_obj.floor_lst_remove(lose_creature)
 
 		# if hero_creature not in current room, exit with no display
-		if room_obj != gs.map.get_hero_rm(gs):
+#		if room_obj != gs.map.get_hero_rm(gs):
+		if room_obj != gs.map.hero_loc:
 			return 
 
 
@@ -550,7 +551,8 @@ class Creature(ViewOnly):
 		room.floor_lst_append(self)
 
 		# if hero_creature not in current room, exit with no display
-		if room != gs.map.get_hero_rm(gs):
+#		if room != gs.map.get_hero_rm(gs):
+		if room != gs.map.hero_loc:
 			return 
 
 		if self == gs.core.hero:

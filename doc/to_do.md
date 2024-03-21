@@ -19,7 +19,7 @@ Version 3.84 Goals
 	- DONE: create stowe_err() in Invisible
 	- DONE: enable assume contents of hand for drop, stowe, eat, wear
 	- DONE: fix 'drop key' & 'wear crown' (2word commands not working for new convert commands)
-- INPROC: add hero_room as Map attribute
+- INPROC: add hero_rm as Map attribute
 	- DONE: sort out gs.map.get_hero_rm(gs) => move to .map & std w/ map.get_obj_room()
 		- DONE: add hero_loc as attribute of gs.map
 		- DONE: setters and getters
@@ -28,8 +28,10 @@ Version 3.84 Goals
 		- DONE: test with print() statement
 	- INPROC: find cases where hero is searched for and fix
 		- DONE: up to and including map_class_def()
-		- TBD: remaining cases
-	- TBD: gs.map.hero_loc => gs.map.hero_rm ???
+		- DONE: remaining cases
+		- DONE: test
+		- TBD: gs.map.hero_loc => gs.map.hero_rm ???
+		- TBD: elim commented 'get_hero_rm('
 	- TBD: [DOC] decision to cache hero_loc
 - TBD: add confirmation prompt for 'quit' and 'restart' ?
 	- IDEA: do check in web_main() based on returned exit_req value
