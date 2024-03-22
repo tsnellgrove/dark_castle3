@@ -8,9 +8,9 @@ room_key_lst = [['room_x', 'dir_x', 'room_y'], ['room_y', 'dir_y', 'room_x']] # 
 
 ### classes
 class Map(object):
-	def __init__(self, name, hero_loc, map_lst):
+	def __init__(self, name, hero_rm, map_lst):
 		self._name = name
-		self._hero_loc = hero_loc # the current location of the player's character (previously searched for)
+		self._hero_rm = hero_rm # the current location of the player's character (previously searched for)
 		self._map_lst = map_lst # list of room_pair dicts; 
 				# format == [{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall}]
 
@@ -20,12 +20,12 @@ class Map(object):
 		return self._name
 	
 	@property
-	def hero_loc(self):
-		return self._hero_loc
+	def hero_rm(self):
+		return self._hero_rm
 
-	@hero_loc.setter
-	def hero_loc(self, new_val):
-		self._hero_loc = new_val
+	@hero_rm.setter
+	def hero_rm(self, new_val):
+		self._hero_rm = new_val
 
 	@property
 	def map_lst(self):
@@ -72,7 +72,7 @@ class Map(object):
 
 	def get_obj_from_name(self, name_str, gs): # room = hero_room ; search limited to room floor
 #		room = self.get_hero_rm(gs)
-		room = self.hero_loc
+		room = self.hero_rm
 		for obj in room.floor_lst:
 			if obj.name == name_str:
 				return obj
@@ -101,7 +101,7 @@ class Map(object):
 ##	def get_hero_rm(self, gs):
 ##		""" Returns the room that gs.core.hero is currently in
 ##		"""
-##		return self.hero_loc
+##		return self.hero_rm
 #		for room in self.get_room_lst():
 #			if gs.core.hero in room.floor_lst:
 #				return room

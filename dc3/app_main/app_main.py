@@ -58,7 +58,7 @@ def app_main(user_input, is_start):
 	# if command is valid or is_stateful (captures 'wait' case), increment move
 	if is_interp_valid or is_stateful:
 		gs.core.move_inc()
-#		gs.io.buffer(f"Hero room = {gs.map.hero_loc.full_name}")
+#		gs.io.buffer(f"Hero room = {gs.map.hero_rm.full_name}")
 
 	# for valid interp commands, process in-turn game response
 	if is_interp_valid:

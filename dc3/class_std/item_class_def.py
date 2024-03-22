@@ -55,7 +55,7 @@ class Item(ViewOnly):
 			gs.io.buff_s(f"{creature.name}_remove_{self.descript_key}")
 		
 #		gs.map.get_hero_rm(gs).remove_item(self, gs)
-		gs.map.hero_loc.remove_item(self, gs)
+		gs.map.hero_rm.remove_item(self, gs)
 		creature.put_in_hand(self, gs)
 		return
 
@@ -71,7 +71,7 @@ class Item(ViewOnly):
 			creature.get_contained_by(gs).contain_lst_append(self, gs)
 		else:
 #			gs.map.get_hero_rm(gs).floor_lst_append(self)
-			gs.map.hero_loc.floor_lst_append(self)
+			gs.map.hero_rm.floor_lst_append(self)
 		
 		gs.io.buffer("Dropped")
 		return 

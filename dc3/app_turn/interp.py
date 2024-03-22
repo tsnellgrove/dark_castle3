@@ -10,7 +10,7 @@ from itertools import islice
 ### root_word_count - determines if user command contains root words
 def root_word_count(gs, word2_txt):
 #	scope_lst = gs.map.get_hero_rm(gs).get_vis_contain_lst(gs)
-	scope_lst = gs.map.hero_loc.get_vis_contain_lst(gs)
+	scope_lst = gs.map.hero_rm.get_vis_contain_lst(gs)
 	root_count = 0
 	obj_name = ""
 	for obj in scope_lst:
@@ -92,7 +92,7 @@ def interpreter(user_input, master_obj_lst):
 	gs = master_obj_lst[0]
 	creature = gs.core.hero
 #	room_obj = gs.map.get_hero_rm(gs)
-	room_obj = gs.map.hero_loc
+	room_obj = gs.map.hero_rm
 	user_input_lst = input_cleanup(gs, user_input)
 	full_verbs_lst = gs.io.get_lst('known_verb_lst') + gs.io.get_lst('debug_verb_lst')
 	tru_1word_lst = gs.io.get_lst('one_word_only_lst') + gs.io.get_lst('one_word_secret_lst')
@@ -128,7 +128,7 @@ def interpreter(user_input, master_obj_lst):
 		if word1 == 'look':
 			user_input_lst[0] = 'examine'
 #			user_input_lst.append(gs.map.get_hero_rm(gs).name)
-			user_input_lst.append(gs.map.hero_loc.name)
+			user_input_lst.append(gs.map.hero_rm.name)
 		if word1 == 'stand':
 			user_input_lst.append(creature.name)
 		word1 = user_input_lst[0]

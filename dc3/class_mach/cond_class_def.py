@@ -141,7 +141,7 @@ class NotTimerAndItemCond(PassThruCond):
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
 		cond_state = False
 #		if self.item_obj in gs.map.get_hero_rm(gs).floor_lst:
-		if self.item_obj in gs.map.hero_loc.floor_lst:
+		if self.item_obj in gs.map.hero_rm.floor_lst:
 			cond_state = not self.timer_obj.active
 		return cond_state
 
@@ -167,7 +167,7 @@ class StateItemInRoomCond(PassThruCond):
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
 #		room_obj = gs.map.get_hero_rm(gs)
-		room_obj = gs.map.hero_loc
+		room_obj = gs.map.hero_rm
 		item_in_room = self.item_obj in room_obj.floor_lst
 		return (
 			mach_state == self.state_match 
@@ -214,7 +214,7 @@ class RoomCond(PassThruCond):
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
 #		room_obj = gs.map.get_hero_rm(gs)
-		room_obj = gs.map.hero_loc
+		room_obj = gs.map.hero_rm
 		match_state = room_obj == self.match_room
 		return self.match_cond == match_state
 

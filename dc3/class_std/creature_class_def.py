@@ -483,7 +483,7 @@ class Creature(ViewOnly):
 
 		# if hero_creature not in current room, exit with no display
 #		if room_obj != gs.map.get_hero_rm(gs):
-		if room_obj != gs.map.hero_loc:
+		if room_obj != gs.map.hero_rm:
 			return 
 
 
@@ -552,7 +552,7 @@ class Creature(ViewOnly):
 
 		# if hero_creature not in current room, exit with no display
 #		if room != gs.map.get_hero_rm(gs):
-		if room != gs.map.hero_loc:
+		if room != gs.map.hero_rm:
 			return 
 
 		if self == gs.core.hero:

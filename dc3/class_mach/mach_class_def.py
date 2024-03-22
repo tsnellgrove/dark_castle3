@@ -289,7 +289,7 @@ class Timer(Invisible):
 		timer_key_constant = self.name + "_1"
 
 #		if gs.map.get_hero_rm(gs).chk_is_vis(self.alert_anchor, gs):
-		if gs.map.hero_loc.chk_is_vis(self.alert_anchor, gs):
+		if gs.map.hero_rm.chk_is_vis(self.alert_anchor, gs):
 			if self.message_type == 'variable':
 				try:
 					gs.io.buff_f(timer_key)
