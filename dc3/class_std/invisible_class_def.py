@@ -247,7 +247,6 @@ class Invisible(object):
 		if creature.chk_in_hand(self):
 			gs.io.buffer("You're already holding the " + self.full_name)
 			return True
-#		for obj in gs.map.get_hero_rm(gs).floor_lst:
 		for obj in gs.map.hero_rm.floor_lst:
 			if obj.is_creature() and obj is not gs.core.hero and self in obj.get_vis_contain_lst(gs):
 				gs.io.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
@@ -385,10 +384,8 @@ class Invisible(object):
 		if self != creature:
 			gs.io.buffer(f"In your most bracing voice you declare: 'If you stand for nothing, what'll you fall for?' - but the {self.full_name} appears to be immune to your exhortations.")
 			return True
-#		room = gs.map.get_hero_rm(gs)
-		room = gs.map.hero_rm
-		if self in room.floor_lst:
-			gs.io.buffer(f"You're already standing in the {room.full_name}!")
+		if self in gs.map.hero_rm.floor_lst:
+			gs.io.buffer(f"You're already standing in the {gs.map.hero_rm.full_name}!")
 			return True
 		return False
 

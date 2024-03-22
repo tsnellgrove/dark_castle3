@@ -26,13 +26,14 @@ Version 3.84 Goals
 		- DONE: set hero_rm to entrance in mk_def_pkl()
 		- DONE: update hero_rm on move 
 		- DONE: test with print() statement
-	- INPROC: find cases where hero is searched for and fix
+	- DONE: find cases where hero is searched for and fix
 		- DONE: up to and including map_class_def()
 		- DONE: remaining cases
 		- DONE: test
 		- DONE: gs.map.hero_rm => gs.map.hero_rm ???
-		- INPROC: elim commented 'get_hero_rm('
+		- DONE: elim commented 'get_hero_rm('
 	- TBD: [DOC] decision to cache hero_rm
+- TBD: fix 'attack X' so that it defaults to using Fist if hand is empty
 - TBD: add confirmation prompt for 'quit' and 'restart' ?
 	- IDEA: do check in web_main() based on returned exit_req value
 	- IDEA: if exit_req: validate_exit = (Y/N); if validate_exit => end_of_game = True
