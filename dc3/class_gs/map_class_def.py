@@ -71,9 +71,7 @@ class Map(object):
 		return any(obj.name == name for room in self.get_room_lst() for obj in room.floor_lst)
 
 	def get_obj_from_name(self, name_str, gs): # room = hero_room ; search limited to room floor
-#		room = self.get_hero_rm(gs)
-		room = self.hero_rm
-		for obj in room.floor_lst:
+		for obj in self.hero_rm.floor_lst:
 			if obj.name == name_str:
 				return obj
 		raise ValueError('An obj with name name_str was not found in hero_rm.')
@@ -97,18 +95,6 @@ class Map(object):
 					return True
 		if lst == room_lst:
 			raise ValueError(f"{obj.full_name} not found.")
-
-##	def get_hero_rm(self, gs):
-##		""" Returns the room that gs.core.hero is currently in
-##		"""
-##		return self.hero_rm
-#		for room in self.get_room_lst():
-#			if gs.core.hero in room.floor_lst:
-#				return room
-#			for room_obj in room.floor_lst:
-#				if room_obj.is_seat() and room_obj.chk_contain_item(gs.core.hero):
-#					return room
-#		raise ValueError(f"{gs.core.hero.name} not found.")
 
 	def chk_obj_in_creature_inv(self, obj, gs, lst=None):
 		""" Evaluates whether obj is in a creature's inventory; returns evaluation & creature

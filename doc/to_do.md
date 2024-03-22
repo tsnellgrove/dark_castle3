@@ -31,7 +31,7 @@ Version 3.84 Goals
 		- DONE: remaining cases
 		- DONE: test
 		- DONE: gs.map.hero_rm => gs.map.hero_rm ???
-		- TBD: elim commented 'get_hero_rm('
+		- INPROC: elim commented 'get_hero_rm('
 	- TBD: [DOC] decision to cache hero_rm
 - TBD: add confirmation prompt for 'quit' and 'restart' ?
 	- IDEA: do check in web_main() based on returned exit_req value
