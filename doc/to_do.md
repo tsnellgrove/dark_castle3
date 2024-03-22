@@ -19,7 +19,7 @@ Version 3.84 Goals
 	- DONE: create stowe_err() in Invisible
 	- DONE: enable assume contents of hand for drop, stowe, eat, wear
 	- DONE: fix 'drop key' & 'wear crown' (2word commands not working for new convert commands)
-- INPROC: add hero_rm as Map attribute
+- DONE: add hero_rm as Map attribute
 	- DONE: sort out gs.map.get_hero_rm(gs) => move to .map & std w/ map.get_obj_room()
 		- DONE: add hero_rm as attribute of gs.map
 		- DONE: setters and getters
@@ -32,7 +32,7 @@ Version 3.84 Goals
 		- DONE: test
 		- DONE: gs.map.hero_rm => gs.map.hero_rm ???
 		- DONE: elim commented 'get_hero_rm('
-	- TBD: [DOC] decision to cache hero_rm
+	- DONE: [DOC] decision to cache hero_rm
 - TBD: fix 'attack X' so that it defaults to using Fist if hand is empty
 - TBD: add confirmation prompt for 'quit' and 'restart' ?
 	- IDEA: do check in web_main() based on returned exit_req value
