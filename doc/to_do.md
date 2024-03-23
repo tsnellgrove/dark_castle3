@@ -43,7 +43,7 @@ Version 3.84 Goals
 	- TBD: read() of obj w/ writing => "On the {obj}, written in {wrt}, you see: '{txt}'..."
 	- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
 	- TBD: examine writing => "The {writing} reads as follows: n/"
-- TBD: should "put key in moat" do more? what about "enter moat"
+
 - TBD: update get_hand_item() to return None if hand_list is empty
 - TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
 
@@ -240,7 +240,48 @@ Version 3.84 Goals
 
 *** refactor Interactive ***
 
-- TBD
+- TBD: clean up and make more efficient
+
+- TBD: should "put key in moat" do more? what about "enter moat"
+
+- TBD: Sort out prepositional spaces (e.g. Under, Nook, Hole, Bed) ***
+
+- TBD: maybe a Bed in the Main Hall?
+- TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
+
+- TBD: the future list - future interactive obj updates / features to be implemented
+	- framework for complex obj to contain sub-elements (e.g. drawer + surface + under == desk)
+	- Could also have UnderMixIn and BehindMixIn
+	- TBD: for UnderMixIn - need to include bulk capacity for negative space
+	- would need to deal with the wording 'look under' and 'look behind'
+	- 'look under' adds contents to room.feature_lst
+	- additional 'under' commands = 'put under' and 'reach under'
+	- for MixInHole have commands 'look in' and 'reach in'
+		- can a 'hole' be dark if the room is light?
+	- TBD: enable the 'behind' preposition (with multiple varients of obfustication)
+		- IDEA: minor_behind = you can see but not reach
+		- IDEA: moderate_behind = can see some
+		- IDEA" major_behind = can't see
+		- Presumably, all 3 flavors of behind impact availability of obj in room list
+		- TBD: put the control_panel behind the goblin (check TADS implementation)
+	- IDEA: 'hole' = contain, opaque from room, no light
+		- 'nook' = 'hole' that can contain Creatures
+		- 'under' = opaque from room but no lighting issues
+		- use 'take from under' for 'under'
+		- use 'reach in' for 'hol'
+		- need to enter() 'nook' to get contents
+
+- TBD: figure out 'behind' prep for case of control panel in alove behind goblin
+
+- non-humanoid monster could be a special weapon description case (fun new puzzle idea)???
+- DONE: Consider having size values for items and capaicty limits on containers & backpack (should the crystal box really hold an axe?)
+	- This becomes important for 'take' capacity as well in shrinking puzzle (??)
+	- encumberance (post Burt as object?)
+	- implement carying capacity / container cappacity; Also carry restriction passages, etc..
+- DONE: make goblin hand contents examinable (e.g. Grimy Axe)
+
+Window:
+- would be need to have a Window class that allows burt to see what he can't take
 
 
 *** Roll up sleaves and fix Interpreter ***
@@ -342,45 +383,6 @@ interpreter ideas:
 *-- ARCHITECTURE --*
 - What would a decoupled, micro=services based DC look like? What are the consumers / providers?
 
-
-*** Sort out prepositional spaces (e.g. Under, Nook, Hole, Bed) ***
-
-- TBD: maybe a Bed in the Main Hall?
-- TBD: maybe a fireplace in the Main Hall (class = Nook)? Or better yet, Alcove as class Nook?
-
-- TBD: the future list - future interactive obj updates / features to be implemented
-	- framework for complex obj to contain sub-elements (e.g. drawer + surface + under == desk)
-	- Could also have UnderMixIn and BehindMixIn
-	- TBD: for UnderMixIn - need to include bulk capacity for negative space
-	- would need to deal with the wording 'look under' and 'look behind'
-	- 'look under' adds contents to room.feature_lst
-	- additional 'under' commands = 'put under' and 'reach under'
-	- for MixInHole have commands 'look in' and 'reach in'
-		- can a 'hole' be dark if the room is light?
-	- TBD: enable the 'behind' preposition (with multiple varients of obfustication)
-		- IDEA: minor_behind = you can see but not reach
-		- IDEA: moderate_behind = can see some
-		- IDEA" major_behind = can't see
-		- Presumably, all 3 flavors of behind impact availability of obj in room list
-		- TBD: put the control_panel behind the goblin (check TADS implementation)
-	- IDEA: 'hole' = contain, opaque from room, no light
-		- 'nook' = 'hole' that can contain Creatures
-		- 'under' = opaque from room but no lighting issues
-		- use 'take from under' for 'under'
-		- use 'reach in' for 'hol'
-		- need to enter() 'nook' to get contents
-
-- TBD: figure out 'behind' prep for case of control panel in alove behind goblin
-
-- non-humanoid monster could be a special weapon description case (fun new puzzle idea)???
-- DONE: Consider having size values for items and capaicty limits on containers & backpack (should the crystal box really hold an axe?)
-	- This becomes important for 'take' capacity as well in shrinking puzzle (??)
-	- encumberance (post Burt as object?)
-	- implement carying capacity / container cappacity; Also carry restriction passages, etc..
-- DONE: make goblin hand contents examinable (e.g. Grimy Axe)
-
-Window:
-- would be need to have a Window class that allows burt to see what he can't take
 
 
 *** Get light working ***
