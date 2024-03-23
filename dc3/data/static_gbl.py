@@ -42,7 +42,7 @@ static_dict = {
 
 	'prep_verb_lst' : ['put', 'show', 'give', 'attack', 'lock', 'unlock', 'drink'],
     
-	'var_outcome_verb_lst' : ['give', 'attack'], # is relevant but not used in score.disp_score()
+	'var_outcome_verb_lst' : ['give', 'attack'], # for reference; not actually used in score.disp_score()
 
 	'debug_verb_lst' : ['get_weight', 'capacity', 'where_is'],
 
