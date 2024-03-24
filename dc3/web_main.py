@@ -16,7 +16,6 @@ from dc3.app_main.app_main import app_main
 is_end = False
 is_start = True
 call_app_main = True
-# user_input = ""
 
 ### main routine
 while not is_end:
@@ -37,16 +36,8 @@ while not is_end:
 
 	if call_app_main:
 		is_start, is_end, user_output = app_main(user_input)
-#		is_start, is_end, user_output = app_main(user_input, is_start)
-#	if not is_start:
-#		user_input = input('Type your command: ')
-#	is_start, is_end, user_output = app_main(user_input, is_start)
+
 	print(user_output)
 print("THANKS FOR PLAYING!!")
-
-
-#	if is_start == True:
-#		user_output = start_me_up()
-#		return False, False, user_output
 
 

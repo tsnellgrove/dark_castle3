@@ -34,7 +34,7 @@ Version 3.84 Goals
 		- DONE: elim commented 'get_hero_rm('
 	- DONE: [DOC] decision to cache hero_rm
 - DONE: fix 'attack X' so that it defaults to using Fist if hand is empty
-- TBD: add confirmation prompt for 'quit' and 'restart' ?
+- DONE: add confirmation prompt for 'quit' and 'restart' ?
 	- CANCEL: do check in web_main() based on returned exit_req value
 	- CANCEL: if exit_req: validate_exit = (Y/N); if validate_exit => end_of_game = True
 	- IDEA: all user input must happen in web_main()... so confirmation must happen in web_main()
@@ -45,14 +45,13 @@ Version 3.84 Goals
 	- DONE: if user_input.lower() in ['quit', 'q', 'restart']: confirm w/ 'Y' or 'y'; else break
 	- DONE: no longer need to pass is_start to app main; elim
 	- DONE: test
-	- TBD: clean-up web_main(), app_main()
+	- DONE: clean-up web_main(), app_main()
 - TBD: debug
 	- TBD: fix debug capacity() to work with creatures (?)
 - TBD: simplify read() vs. examine()
 	- TBD: read() of obj w/ writing => "On the {obj}, written in {wrt}, you see: '{txt}'..."
 	- TBD: read() if no writing on obj => "There's nothing written on the {obj}."
 	- TBD: examine writing => "The {writing} reads as follows: n/"
-
 - TBD: update get_hand_item() to return None if hand_list is empty
 - TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
 
