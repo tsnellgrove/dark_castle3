@@ -294,6 +294,8 @@ Window:
 
 *** Roll up sleaves and fix Interpreter ***
 
+- TBD: read for DCv3 parser ideas: https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
+
 - TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
 	IDEA: swap to meth_noun_str and attrib_noun_str ??
 
