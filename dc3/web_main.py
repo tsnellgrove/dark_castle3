@@ -12,17 +12,32 @@ sys.path.append('/Users/tas/Documents/Python/dark_castle3')
 from dc3.app_main.start_up import start_me_up
 from dc3.app_main.app_main import app_main
 
-### main routine
+### initialize local variables
 is_end = False
 is_start = True
-user_input = ""
+call_app_main = True
+# user_input = ""
+
+### main routine
 while not is_end:
 	if is_start:
+		user_input = ""
 		user_output = start_me_up()
 		is_start = False
+		call_app_main = False
 	else:
 		user_input = input('Type your command: ')
-		is_start, is_end, user_output = app_main(user_input, is_start)
+		call_app_main = True
+
+	if user_input.lower() in ['q', 'quit', 'restart']:
+		cmd_conf_input = input('Are you sure you want to leave? (Y / N): ')
+		if cmd_conf_input.lower() not in ['y', 'yes']:
+			user_output = "Thank goodness you reconsidered!"
+			call_app_main = False
+
+	if call_app_main:
+		is_start, is_end, user_output = app_main(user_input)
+#		is_start, is_end, user_output = app_main(user_input, is_start)
 #	if not is_start:
 #		user_input = input('Type your command: ')
 #	is_start, is_end, user_output = app_main(user_input, is_start)

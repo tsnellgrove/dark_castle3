@@ -42,9 +42,10 @@ Version 3.84 Goals
 	- IDEA: so, need to confirm in web_main() and, if confirmed, pass on to app_main()
 	- DONE: to simplify web_main() , call start_me_up() directly from web_main()
 	- DONE: else statement for getting user_input
-	- TBD: clean-up
-	- TBD: if user_input.lower() in ['quit', 'q', 'restart']: confirm w/ 'Y' or 'y'; else break
-	- TBD: test & clean-up
+	- DONE: if user_input.lower() in ['quit', 'q', 'restart']: confirm w/ 'Y' or 'y'; else break
+	- DONE: no longer need to pass is_start to app main; elim
+	- DONE: test
+	- TBD: clean-up web_main(), app_main()
 - TBD: debug
 	- TBD: fix debug capacity() to work with creatures (?)
 - TBD: simplify read() vs. examine()

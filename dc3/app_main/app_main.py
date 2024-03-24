@@ -5,7 +5,7 @@
 
 ### import statements
 import pickle
-from dc3.app_main.start_up import start_me_up
+# from dc3.app_main.start_up import start_me_up
 from dc3.app_turn.interp import interpreter
 from dc3.app_turn.validate import validate
 from dc3.app_turn.pre_action import pre_action
@@ -14,12 +14,13 @@ from dc3.app_turn.post_action import post_action
 from dc3.app_turn.auto_action import auto_action
 
 ### loads game obj, calls other modules, and saves game obj ###
-def app_main(user_input, is_start):
+def app_main(user_input):
+# def app_main(user_input, is_start):
 
 	# for new game - call start_me_up and return start_me_up() output
-	if is_start == True:
-		user_output = start_me_up()
-		return False, False, user_output
+#	if is_start == True:
+#		user_output = start_me_up()
+#		return False, False, user_output
 
 	# initiate app_main() - load obj, declare gs, and reset buffer
 	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'rb') as f:
@@ -28,6 +29,7 @@ def app_main(user_input, is_start):
 	gs.io.reset_buff()
 
 	# local var declarations 
+	is_start = False
 	is_stateful = False
 	is_interp_cmd = True
 	is_interp_valid = False
