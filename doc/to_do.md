@@ -35,8 +35,16 @@ Version 3.84 Goals
 	- DONE: [DOC] decision to cache hero_rm
 - DONE: fix 'attack X' so that it defaults to using Fist if hand is empty
 - TBD: add confirmation prompt for 'quit' and 'restart' ?
-	- IDEA: do check in web_main() based on returned exit_req value
-	- IDEA: if exit_req: validate_exit = (Y/N); if validate_exit => end_of_game = True
+	- CANCEL: do check in web_main() based on returned exit_req value
+	- CANCEL: if exit_req: validate_exit = (Y/N); if validate_exit => end_of_game = True
+	- IDEA: all user input must happen in web_main()... so confirmation must happen in web_main()
+	- IDEA: but, if 'quit' or 'restart' confirmed, want to show disp_end() text
+	- IDEA: so, need to confirm in web_main() and, if confirmed, pass on to app_main()
+	- DONE: to simplify web_main() , call start_me_up() directly from web_main()
+	- DONE: else statement for getting user_input
+	- TBD: clean-up
+	- TBD: if user_input.lower() in ['quit', 'q', 'restart']: confirm w/ 'Y' or 'y'; else break
+	- TBD: test & clean-up
 - TBD: debug
 	- TBD: fix debug capacity() to work with creatures (?)
 - TBD: simplify read() vs. examine()

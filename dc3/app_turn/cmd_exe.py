@@ -17,7 +17,7 @@ def cmd_execute(gs, case, word_lst):
 				key_str = "help_" + option
 				output = gs.io.get_str_nr(key_str)
 			elif option == 'verbs':
-				output = "Available verbs include: " + ', '.join(gs.io.get_lst('known_verb_lst'))
+				output = "Available verbs include: " + ', '.join(sorted(gs.io.get_lst('known_verb_lst')))
 			elif option == 'one-word-commands':
 				display_one_word_lst = (gs.io.get_lst('one_word_only_lst') + 
 						 gs.io.get_lst('pre_interp_word_lst') + 
