@@ -46,8 +46,8 @@ Version 3.84 Goals
 	- DONE: no longer need to pass is_start to app main; elim
 	- DONE: test
 	- DONE: clean-up web_main(), app_main()
-- TBD: debug
-	- TBD: fix debug capacity() to work with creatures (?)
+- DONE: debug
+	- DONE: fix debug capacity() (for max_weight only) to work with creatures
 - TBD: simplify read() vs. examine()
 	- TBD: read() of obj w/ writing => "On the {obj}, written in {wrt}, you see: '{txt}'..."
 	- TBD: read() if no writing on obj => "There's nothing written on the {obj}."

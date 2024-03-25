@@ -571,4 +571,11 @@ class Creature(ViewOnly):
 		gs.io.buffer(f"The weight of the {self.full_name} is {self.weight}.")
 		return
 
-
+	def capacity(self, gs, mode=None):
+		""" Reports the capacity of a Creature. Only usable in debug mode.
+		"""
+		if mode is None:
+			mode = 'std'
+		
+		gs.io.buffer(f"The weight capacity of the {self.full_name} is {self.max_weight}.")
+		return
