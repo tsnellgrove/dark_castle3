@@ -96,6 +96,9 @@ class Invisible(object):
 	
 	def is_receptacle(self):
 		return False
+	
+	def has_writing(self):
+		return False
 
 	# *** debug methods ###
 	def where_is(self, gs, mode=None):
@@ -211,9 +214,12 @@ class Invisible(object):
 			return True
 		if self.err_not_in_reach(creature, gs):
 			return True
-		if not self.is_writing():
-			gs.io.buffer(f"You can't read the {self.full_name}. Try using 'examine' instead.")
+		if not self.is_writing() and not self.has_writing():
+			gs.io.buffer(f"How can you possibly read a {self.full_name}?!")
 			return True
+#		if not self.is_writing():
+#			gs.io.buffer(f"You can't read the {self.full_name}. Try using 'examine' instead.")
+#			return True
 		return False
 
 	def examine_err(self, gs):
