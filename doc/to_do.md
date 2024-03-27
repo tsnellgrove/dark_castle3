@@ -53,10 +53,14 @@ Version 3.84 Goals
 		- DONE: define has_writing() to return false in Invisible (evaluates writing attribute in Base)
 		- DONE: in read(), handle case of not is_writing but has_writing
 		- DONE: test
-		- TBD: clean up Base and Invisible
-	- IDEA: read() if no writing on obj => "There's nothing written on the {obj}."
+		- DONE: clean up Base and Invisible
+	- DONE: read() if no writing on obj => "There's nothing written on the {obj}."
 		- DONE: implement in Invisible err
-	- IDEA: examine writing => "The {writing} reads as follows: n/"
+	- INPROC: examine writing => "The {writing} reads as follows: n/"
+		- DONE: remove is_writing() case from examine_err() in Invisible
+		- DONE: create Writing version of examine()
+		- INPROC: test (error)
+		- TBD: clean up Base and Invisible
 - TBD: update get_hand_item() to return None if hand_list is empty
 - TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
 

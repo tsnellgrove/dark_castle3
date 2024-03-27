@@ -55,7 +55,20 @@ class Writing(Invisible):
 			gs.io.buffer(f"On the {self.full_name}, written in {self.writing.full_name}, you see the text {gs.io.get_str(self.writing.name, self.writing.full_name)}.")
 			return
 
-# "On the {obj}, written in {wrt}, you see: '{txt}'..."
+	def examine(self, gs, mode=None):
+		""" Writing-specific Examine.
+		"""
+		if mode is None:
+			mode = 'std'
+		creature = gs.core.hero
+
+		gs.io.buff_d(self.descript_key, self.full_name)
+		gs.io.buffer(f"The {self.full_name} reads as follows: {gs.io.get_str(self.name, self.full_name)}.")
+
+		return
+	
+# "The {writing} reads as follows: n/"
+
 
 class ViewOnly(Writing):
 	def __init__(self, name, full_name, root_name, descript_key, writing):
