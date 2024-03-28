@@ -59,8 +59,11 @@ Version 3.84 Goals
 	- INPROC: examine writing => "The {writing} reads as follows: n/"
 		- DONE: remove is_writing() case from examine_err() in Invisible
 		- DONE: create Writing version of examine()
-		- INPROC: test (error)
+		- DONE: test (error)
 		- TBD: clean up Base and Invisible
+	- TBD: [DOC]
+		- TBD: stowe() commnad
+		- TBD: read() vs. examine()
 - TBD: update get_hand_item() to return None if hand_list is empty
 - TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
 

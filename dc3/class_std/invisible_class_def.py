@@ -232,7 +232,8 @@ class Invisible(object):
 			return True
 		if self.err_wrt_not_in_reach(creature, gs):
 			return True
-		if not self.is_viewonly():
+#		if not self.is_viewonly():
+		if not self.is_writing() and not self.is_viewonly():
 			gs.io.buffer(f"Your mind grapples with the ineffable... it is almost in your grasp when suddenly, unbidden, your favorite 'You Mama' joke from the pub tramples like a raging rhino across the delicate neural fibers that comprise your working memory. The vision is lost - the {self.full_name} is simply beyond your ken.")
 			return True
 		return False
