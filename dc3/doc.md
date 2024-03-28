@@ -437,6 +437,8 @@ I also took the refactor opportunity to put a conditional in front of auto_act i
 		
 		Because the writing attribute is introduced in the ViewOnly class, any object that Burt can see is capable of holding text. I originally debated this approach. Of all attributes, writing is probably the one most often set to None. This seemed like a good case for a MixIn class... but then it became clear that I would have at least one member of nearly every class that had writing on it. Two versions of every class - one with writing and one without - certainly didn't seem desirable. Also, I often found myself adding text to objects later on as I realized that a puzzle was too obscure (e.g. the small_printing on the grimy_axe). As of v3.70 there's no conversation in the game - and none likly in the near future - so often it's left to writing to make the Dark Castle world feel explicable and lived in. Ultimately, in a game based on words, enabling lots of in-game text turns out to be pretty important.
 
+		Update: for a long time I clung to the rigorous approach that read() could only apply to Writing. There was a logical 'Russian Doll' consistency to this that I enjoyed. And sometimes, it made sense... the rusty_lettering was on the front_gate... you couldn't read a front_gate - you read() the rusty_lettering. However, once you get to objects like the torn_note or the kinging_scroll, this works less well. It seems perfectly reasonable to read a note... even if the note in question does have messy_handwriting on it. So, in favor of fun over pedantic consistency, in v3.84, I finally made it possible to read() and object for which has_writing() is True. At the same time, I also enabled examining Writing. Sometimes the right solution takes time but I get there in the end ;-D
+
 
 - examine() method [ViewOnly class]:
 
@@ -509,6 +511,15 @@ I also took the refactor opportunity to put a conditional in front of auto_act i
 			3) Local error checking ensures that 'obj' is not already in Burt's hand or held / worn by another creature
 			4) Therefore, 'obj' must be a takable Item!
 
+- drop() method [Item class]
+
+	Implementation Details:
+		The obvious inverse of take(). In general, all dropped items go to the room's 'floor'. In the event that Burt is contained in a Seat, dropped items fall into the seat. Seat's can have a limited holding capacity so it is possible that in certain circumstances, Burt will not be able to drop an item.
+
+- stowe() method [Item class]
+
+	Implementation Details:
+		Moves and Item from Burt's hand to his backpack. stowe() is similar to close() for Interactive objects... it is nevere needed in the game but feels like it should logically be possible. It was not introduced until v3.84.
 
 # Food class:
 
