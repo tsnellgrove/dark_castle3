@@ -52,7 +52,7 @@ class Writing(Invisible):
 			gs.io.buff_d(self.descript_key, self.full_name)
 			return
 		elif self.has_writing():
-			gs.io.buffer(f"On the {self.full_name}, written in {self.writing.full_name}, you see the text: {gs.io.get_str(self.writing.name, self.writing.full_name)}.")
+			gs.io.buffer(f"On the {self.full_name}, written in {self.writing.full_name}, you read: {gs.io.get_str(self.writing.name, self.writing.full_name)}.")
 			return
 
 	def examine(self, gs, mode=None):

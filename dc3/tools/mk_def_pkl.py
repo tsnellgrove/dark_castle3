@@ -208,7 +208,8 @@ hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_
 		[hedgehog_distracted_cond, pass_thru_cond], [hedgehog_distracted_result, pass_result])
 
 kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters, 1, 
-		None, 'post_act_cmd', None, [['read', 'illuminated_letters']], None,
+		None, 'post_act_cmd', None, 
+		[['read', 'illuminated_letters'],['read', 'kinging_scroll'], ['examine', 'illuminated_letters']], None,
 		[scroll_not_in_throne_room_cond, hedgehog_not_exist_cond, crown_not_worn_cond, read_scroll_win_cond],
 		[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result])
 

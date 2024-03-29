@@ -64,7 +64,7 @@ Version 3.84 Goals
 	- INPROC: [DOC]
 		- DONE: stowe() commnad
 		- DONE: read() vs. examine()
-		- TBD: include 'read scroll' as win condition (?)
+		- INPROC: include 'read scroll' as win condition (still need to test 'x lettering')
 - TBD: update get_hand_item() to return None if hand_list is empty
 - TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
 
