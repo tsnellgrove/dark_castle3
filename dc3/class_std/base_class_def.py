@@ -63,7 +63,7 @@ class Writing(Invisible):
 		creature = gs.core.hero
 
 		gs.io.buff_d(self.descript_key, self.full_name)
-		gs.io.buffer(f"The {self.full_name} reads as follows: {gs.io.get_str(self.name, self.full_name)}.")
+##		gs.io.buffer(f"The {self.full_name} reads as follows: {gs.io.get_str(self.name, self.full_name)}.")
 
 		return
 

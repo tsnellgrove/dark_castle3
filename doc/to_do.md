@@ -48,7 +48,7 @@ Version 3.84 Goals
 	- DONE: clean-up web_main(), app_main()
 - DONE: debug
 	- DONE: fix debug capacity() (for max_weight only) to work with creatures
-- INPROC: simplify read() vs. examine()
+- DONE: simplify read() vs. examine()
 	- DONE: read() of obj w/ writing => "On the {obj}, written in {wrt}, you see: '{txt}'..."
 		- DONE: define has_writing() to return false in Invisible (evaluates writing attribute in Base)
 		- DONE: in read(), handle case of not is_writing but has_writing
@@ -61,10 +61,11 @@ Version 3.84 Goals
 		- DONE: create Writing version of examine()
 		- DONE: test (error)
 		- DONE: clean up Base and Invisible
-	- INPROC: [DOC]
+	- DONE: [DOC]
 		- DONE: stowe() commnad
 		- DONE: read() vs. examine()
-		- INPROC: include 'read scroll' as win condition (still need to test 'x lettering')
+		- DONE: include 'read scroll' as win condition (still need to test 'x lettering')
+		- DONE: help for read
 - TBD: update get_hand_item() to return None if hand_list is empty
 - TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
 
