@@ -66,7 +66,12 @@ Version 3.84 Goals
 		- DONE: read() vs. examine()
 		- DONE: include 'read scroll' as win condition (still need to test 'x lettering')
 		- DONE: help for read
-- TBD: update get_hand_item() to return None if hand_list is empty
+- CANCEL: update get_hand_item() to return None if hand_list is empty
+	- DECISION: this doesn't really solve the problem...
+	- DECISION: we just end up having to check get_hand_item() for None vs. checking is_hand_empty() for T
+	- DECISION: if there was just one use case for hand_item we could do it in a function and decide there...
+	- DECISION: but there are MANY uses for hand_item...
+	- DECISION: the real question here is whether the hand concept itself is worth keeping?
 - TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
 
 *** already done ***
