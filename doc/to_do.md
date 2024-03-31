@@ -1,94 +1,15 @@
 To Do List - Dark Castle v3
-Mar 13, 2024
+Mar 31, 2024
 
 
 ##########################
-### VERSION 3.84 START ###
+### VERSION 3.85 START ###
 ##########################
 
-Version 3.84 Goals
-- Review minor bug-fix list and set goals for 3.84
-- Fix the random bugs!
-
-*** minor bug-fix ***
-- DONE: change version & date comments to just web_main() and static_dict (add date to 'version')
-- DONE: make title increment (currently 10) a game-settable constant?
-- DONE: implement 'stowe' command => put obj in hand into backpack
-	- DONE: create stowe() as method of Item
-	- DONE: add 'stowe' to verb list
-	- DONE: create stowe_err() in Invisible
-	- DONE: enable assume contents of hand for drop, stowe, eat, wear
-	- DONE: fix 'drop key' & 'wear crown' (2word commands not working for new convert commands)
-- DONE: add hero_rm as Map attribute
-	- DONE: sort out gs.map.get_hero_rm(gs) => move to .map & std w/ map.get_obj_room()
-		- DONE: add hero_rm as attribute of gs.map
-		- DONE: setters and getters
-		- DONE: set hero_rm to entrance in mk_def_pkl()
-		- DONE: update hero_rm on move 
-		- DONE: test with print() statement
-	- DONE: find cases where hero is searched for and fix
-		- DONE: up to and including map_class_def()
-		- DONE: remaining cases
-		- DONE: test
-		- DONE: gs.map.hero_rm => gs.map.hero_rm ???
-		- DONE: elim commented 'get_hero_rm('
-	- DONE: [DOC] decision to cache hero_rm
-- DONE: fix 'attack X' so that it defaults to using Fist if hand is empty
-- DONE: add confirmation prompt for 'quit' and 'restart' ?
-	- CANCEL: do check in web_main() based on returned exit_req value
-	- CANCEL: if exit_req: validate_exit = (Y/N); if validate_exit => end_of_game = True
-	- IDEA: all user input must happen in web_main()... so confirmation must happen in web_main()
-	- IDEA: but, if 'quit' or 'restart' confirmed, want to show disp_end() text
-	- IDEA: so, need to confirm in web_main() and, if confirmed, pass on to app_main()
-	- DONE: to simplify web_main() , call start_me_up() directly from web_main()
-	- DONE: else statement for getting user_input
-	- DONE: if user_input.lower() in ['quit', 'q', 'restart']: confirm w/ 'Y' or 'y'; else break
-	- DONE: no longer need to pass is_start to app main; elim
-	- DONE: test
-	- DONE: clean-up web_main(), app_main()
-- DONE: debug
-	- DONE: fix debug capacity() (for max_weight only) to work with creatures
-- DONE: simplify read() vs. examine()
-	- DONE: read() of obj w/ writing => "On the {obj}, written in {wrt}, you see: '{txt}'..."
-		- DONE: define has_writing() to return false in Invisible (evaluates writing attribute in Base)
-		- DONE: in read(), handle case of not is_writing but has_writing
-		- DONE: test
-		- DONE: clean up Base and Invisible
-	- DONE: read() if no writing on obj => "There's nothing written on the {obj}."
-		- DONE: implement in Invisible err
-	- DONE: examine writing => "The {writing} reads as follows: n/"
-		- DONE: remove is_writing() case from examine_err() in Invisible
-		- DONE: create Writing version of examine()
-		- DONE: test (error)
-		- DONE: clean up Base and Invisible
-	- DONE: [DOC]
-		- DONE: stowe() commnad
-		- DONE: read() vs. examine()
-		- DONE: include 'read scroll' as win condition (still need to test 'x lettering')
-		- DONE: help for read
-- CANCEL: update get_hand_item() to return None if hand_list is empty
-	- DECISION: this doesn't really solve the problem...
-	- DECISION: we just end up having to check get_hand_item() for None vs. checking is_hand_empty() for T
-	- DECISION: if there was just one use case for hand_item we could do it in a function and decide there...
-	- DECISION: but there are MANY uses for hand_item...
-	- DECISION: the real question here is whether the hand concept itself is worth keeping?
-- TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
-
-*** already done ***
-- DONE: do we need user_input == secret word to trigger startup()? Can't we just pass boolean?
-- DONE: naming updates:
-	- DONE: re-name 'wrapper' to 'app_main'
-	- DONE: update pickle names
-- DONE: investigate setters & getters for GameState class
-- DONE: is there really any need for GameState room_mach_lst() ??
-- DONE: 'try... except' standard descriptions for examine() method (similar to Warnings) (???)
-- DONE: refactor app_main() modules
-- DONE: refactor app_main() modules
-- DONE: put score() & end() between post_action() and auto_action() [i.e. between move 'n' and 'n+1']
-
-
-# *** FUTURE TO DO *** #
-
+Version 3.85 Goals
+- Review to-dos and set precise goals for 3.85
+- Isolate game engine vs. game vs. game instance
+- Introduce save & restore features
 
 *** separate engine vs. game vs. instance ***
 
@@ -131,6 +52,9 @@ Version 3.84 Goals
 	- have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
 
 
+# *** FUTURE TO DO *** #
+
+
 *** story-driven updates ***
 
 - maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
@@ -166,6 +90,10 @@ Version 3.84 Goals
 
 - TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
 		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+
+- TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
+	- ANALYSIS: basic problem pattern = obj => obj_mach => obj_cond / obj_result => obj
+	- IDEA: can we pass or link obj to obj_con / obj_result innately (not explicitly) as part of call/assignment?
 
 - TBD: what about cases where I want a modular machine to operate despite an error
 	- IDEA: e.g. 'go north' in antechamber triggers goblin
