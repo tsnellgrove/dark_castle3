@@ -9,47 +9,54 @@ Mar 31, 2024
 Version 3.85 Goals
 - Review to-dos and set precise goals for 3.85
 - Isolate game engine vs. game vs. game instance
+- solve the name-to-obj challenge systemically
 - Introduce save & restore features
 
 *** separate engine vs. game vs. instance ***
 
-- TBD: implement game save & restore
+- IDEA: big picture thinking
+	- IDEA: think engine that supports multi-game, multi-player, multi-instance
+		- IDEA: engine = modules & static_dict
+		- IDEA: game = obj_pkl & game_ver_static_dict
+		- IDEA: user = user_id, game_instance_saves
+		- IDEA: instance = save games
+	- IDEA: most static data is based on game version (e.g. most text; also max_score)
+	- IDEA: but some static data is based on game instance (e.g. random # for portcullis => gs)
+	- IDEA: for now, don't worry about multi-user - focus is on multi-game
 
-- TBD: need to provide defaul engine mechanisms with option to replace with custom game versions (e.g. need a default set of titles title_factor that can be over-ridden with game-specific)
+- DONE: instantiate map in mk_def_pkl() and save in pickle in case map someday changes during game (fun idea)
+
+- TBD: decide on game folder structure
+	- IDEA: separate folder for game; contains game_static_dict
 
 - TBD: Separate static_dicts for game vs. engine
-	- IDEA: planning for tooling in the future - want to separate what game designer can update vs. what platform designer (aka game engine deisgner) can update
+	- IDEA: planning for tooling in the future
+	- IDEA: want to separate what game designer can update vs. what platform / engine designer can update
 	- TBD: eng_static_dict = interp, version, help, errors (remove "Burt" ref from errors)
-	- TBD :game_static_dict = game-specific static content
-	- update io() calls to include optional dict attribute (game_static_dict by default)
-	- update method calls for eng_static_dict to include over-ride
-	- review error messages not in static_dict and remove any "burt" refs
-- IDEA: more thinking on this topic:
-	- tactical: 
-		- separate version numbers for game and engine
-		- separate static_dict for engine vs. game (remove Burt refs from Engine text)
-		- separate folder for game; contains game_static_dict
-		- need to solve the name-to-obj challenge systemically - see below for idea
-		- also, one-time setup function (like mk_def_pkl() ) that calculates static values for a game version
-			- max_score; lives in game_ver_static_dict
-			- str_to_obj_idx = a dict that converts name_str to obj; lives in game_ver_static_dict or gs (?)
-	- strategic:
-		- think engine that supports multi-game, multi-player, multi-instance
-			- engine = modules & static_dict
-			- game = obj_pkl & game_ver_static_dict
-			- user = user_id, game_instance_saves
-			- instance = save games
-		- most static data is based on game version (e.g. most text; also max_score)
-		- but some static data is based on game instance (e.g. randome # for portcullis => gs)
+	- TBD: game_static_dict = game-specific static content
+	- TBD: update io() calls to include optional dict attribute (game_static_dict by default)
+	- TBD: update method calls for eng_static_dict to include over-ride
+	- TBD: review error messages / engine text not in static_dict and remove any "burt" refs
 
-- IDEA: ideally, would have a tool module that called & cached max_score to static_dict
+- TBD: separate version numbers for game and engine
+	- IDEA: assume a 'lazy game designer' who doesn't create custom values; should work anyhow
+	- TBD: create version for each dict
+	- TBD: update version() cmd to display both game & enging versions
 
-- TBD: instantiate map in start_up() and save in pickle in case map someday changes during game (fun idea)
+- IDEA: need to provide defaul engine mechanisms with option to replace with custom game versions
+	- IDEA: assume a 'lazy game designer' who doesn't create custom values; should work anyhow
+	- TBD: need a default set of titles title_factor that can be over-ridden with game-specific
 
-- TBD: elim hasattrib() in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
+- TBD: one-time setup function (like mk_def_pkl() ) that calculates static values for a game version
+	- max_score; lives in game_ver_static_dict (i.e. calc max_score in mk_def_pkl() & cache in static_dict)
+	- str_to_obj_dict = a dict that converts name_str to obj; lives in game_ver_static_dict or gs (?)
+
+- TBD: elim hasattrib() in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes (?)
 	- for gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
 	- eliminate 'hasattrib' for containers in gs.scope_lst() too
 	- have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
+
+- TBD: implement game save & restore
 
 
 # *** FUTURE TO DO *** #
