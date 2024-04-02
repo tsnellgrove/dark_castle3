@@ -26,8 +26,14 @@ Version 3.85 Goals
 
 - DONE: instantiate map in mk_def_pkl() and save in pickle in case map someday changes during game (fun idea)
 
-- TBD: decide on game folder structure
+- INPROC: decide on game folder structure
 	- IDEA: separate folder for game; contains game_static_dict
+	- DONE: need a name for my game engine: cleesh (Enchanter spell to turn creature into small amphibian)
+	- DONE: cleesh logo = red spotted newt
+	- DONE: create games/dark_castle directory
+	- DONE: create games/dark_castle/game_file and games/dark_castle/working
+	- TBD: change top level directory from 'dc3' => 'cleesh'
+	- TBD: curent game directory as attribute of gs.core
 
 - TBD: Separate static_dicts for game vs. engine
 	- IDEA: planning for tooling in the future
@@ -58,6 +64,7 @@ Version 3.85 Goals
 
 - TBD: implement game save & restore
 
+- TBD: document future to-do of multi-user
 
 # *** FUTURE TO DO *** #
 
