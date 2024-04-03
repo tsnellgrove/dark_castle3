@@ -64,6 +64,25 @@ Version 3.85 Goals
 
 - TBD: implement game save & restore
 
+- TBD: create alternate (simple!) game
+	- IDEA: the only way to really make a muliti-game system is to create a 2nd game
+	- IDEA: alt game = 'a cup of tea' - you play as Cecily who, with her sister, runs the pub
+	- IDEA: Cecily is bookish; here sister is very popular with lads; Cecily just want peace before pub opens
+	- IDEA: to drink tea, Cecily must lock front door, sit in comfy chair, read book, eat biscuit
+	- IDEA: also, she must get rid of Burt who wants her attention (give rusty_key to burt)
+	- IDEA: Cecily sort of likes Burt - he's better than that Gaston fellow - but overgrown puppy
+	- IDEA: Winning condition = drink Tea; Time up when pub opens (belching contest begins); 9 bells
+	- IDEA: Gaston keeps flirting with her sister; big-headed and constantly singing...
+	- IDEA: book is riff on LotR; office workers on death march project; must bring TTL report to shredder
+		- IDEA: led by bearded application developer, heart-string-pulling retirement party at end
+		- IDEA: always saved by IT person at critical moment
+
+- TBD: create a game menu class as an attribute of gs
+
+- TBD: future ideas for 'a cup of tea'
+	- TBD: a thermal attribute for obj that cools over time
+	- TBD: an hour glass machine (changes time as turns pass; has flip() verb) 
+
 - TBD: document future to-do of multi-user
 
 # *** FUTURE TO DO *** #
