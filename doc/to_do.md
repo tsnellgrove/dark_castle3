@@ -26,7 +26,7 @@ Version 3.85 Goals
 
 - DONE: instantiate map in mk_def_pkl() and save in pickle in case map someday changes during game (fun idea)
 
-- INPROC: decide on game folder structure
+- DONE: decide on game folder structure
 	- IDEA: separate folder for game; contains game_static_dict
 	- DONE: need a name for my game engine: cleesh (Enchanter spell to turn creature into small amphibian)
 	- DONE: cleesh logo = red spotted newt
@@ -35,7 +35,7 @@ Version 3.85 Goals
 	- DONE: change top level directory from 'dc3' => 'cleesh' 
 		- NOTE: could have just changed and accepted auto update
 	- DONE: test
-	- TBD: clean
+	- DONE: clean up comments
 
 - TBD: Separate static_dicts for game vs. engine
 	- IDEA: planning for tooling in the future

@@ -5,12 +5,6 @@
 
 ### import statements
 import pickle
-# from dc3.app_turn.interp import interpreter
-# from dc3.app_turn.validate import validate
-# from dc3.app_turn.pre_action import pre_action
-# from dc3.app_turn.cmd_exe import cmd_execute
-# from dc3.app_turn.post_action import post_action
-# from dc3.app_turn.auto_action import auto_action
 from cleesh.app_turn.interp import interpreter
 from cleesh.app_turn.validate import validate
 from cleesh.app_turn.pre_action import pre_action
@@ -22,7 +16,6 @@ from cleesh.app_turn.auto_action import auto_action
 def app_main(user_input):
 	# initiate app_main() - load obj, declare gs, and reset buffer
 	with open('/Users/tas/Documents/Python/dark_castle3/cleesh/data/sav_pkl', 'rb') as f:
-#	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'rb') as f:
 		master_obj_lst = pickle.load(f)
 	gs = master_obj_lst[0]
 	gs.io.reset_buff()
@@ -79,7 +72,6 @@ def app_main(user_input):
 	# close out turn - save state and last inupt (for 'again' case) and then return
 	# note: need to save state even if is_stateful == False else 'again' won't work on error cases
 	gs.io.last_input_str = user_input
-#	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 	with open('/Users/tas/Documents/Python/dark_castle3/cleesh/data/sav_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 	return is_start, gs.end.is_end, gs.io.get_buff()

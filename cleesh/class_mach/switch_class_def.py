@@ -6,8 +6,6 @@
 ### import
 from cleesh.class_std.base_class_def import ViewOnly
 from cleesh.class_std.interactive_class_def import Seat
-# from dc3.class_std.base_class_def import ViewOnly
-# from dc3.class_std.interactive_class_def import Seat
 
 ### classes
 class SwitchMixIn(object):

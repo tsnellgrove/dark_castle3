@@ -9,28 +9,6 @@ import sys
 sys.path.append('/Users/tas/Documents/Python/dark_castle3')
 
 import pickle
-# from dc3.class_std.invisible_class_def import Invisible
-# from dc3.class_std.base_class_def import Writing, ViewOnly
-# from dc3.class_std.room_class_def import Room
-# from dc3.class_std.item_class_def import Item, Food, Liquid, Garment, Weapon
-# from dc3.class_std.interactive_class_def import DoorSimple, DoorLockable
-# from dc3.class_std.interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
-# from dc3.class_std.interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
-# from dc3.class_mach.switch_class_def import LeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
-# from dc3.class_mach.cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
-#		SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
-#		StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond, InRoomCond, InWorldStateCond)
-# from dc3.class_mach.result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
-#		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
-#		TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
-# from dc3.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
-# from dc3.class_std.creature_class_def import Creature
-# from dc3.class_gs.gs_class_def import GameState
-# from dc3.class_gs.map_class_def import Map
-# from dc3.class_gs.io_class_def import IO
-# from dc3.class_gs.score_class_def import Score
-# from dc3.class_gs.end_class_def import End
-# from dc3.class_gs.core_class_def import Core
 from cleesh.class_std.invisible_class_def import Invisible
 from cleesh.class_std.base_class_def import Writing, ViewOnly
 from cleesh.class_std.room_class_def import Room
@@ -378,7 +356,6 @@ officiousness, gold_capitals, red_bandana, big_medal, burt, brass_lantern, fierc
 
 # list written to pickle
 with open('/Users/tas/Documents/Python/dark_castle3/cleesh/data/def_pkl', 'wb') as f:
-# with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/def_pkl', 'wb') as f:
 	pickle.dump(master_obj_lst, f)
 
 

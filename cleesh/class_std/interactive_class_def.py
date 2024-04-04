@@ -5,8 +5,6 @@
 ### import statements
 from cleesh.class_std.base_class_def import ViewOnly
 from cleesh.class_std.item_class_def import Item
-# from dc3.class_std.base_class_def import ViewOnly
-# from dc3.class_std.item_class_def import Item
 
 ### mixin classes
 class OpenableMixIn(object):

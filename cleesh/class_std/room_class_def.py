@@ -5,7 +5,6 @@
 
 ### import
 from cleesh.class_std.base_class_def import ViewOnly
-# from dc3.class_std.base_class_def import ViewOnly
 
 
 ### classes

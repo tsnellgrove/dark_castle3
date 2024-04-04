@@ -9,7 +9,6 @@ import random
 
 def start_me_up():
 	# object list loaded from def_pkl ###
-#	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/def_pkl', 'rb') as f:
 	with open('/Users/tas/Documents/Python/dark_castle3/cleesh/data/def_pkl', 'rb') as f:
 		master_obj_lst = pickle.load(f)
 
@@ -31,7 +30,6 @@ def start_me_up():
 			obj.examine(gs)
 
 	# dump updated objects to sav_pkl ###
-#	with open('/Users/tas/Documents/Python/dark_castle3/dc3/data/sav_pkl', 'wb') as f:
 	with open('/Users/tas/Documents/Python/dark_castle3/cleesh/data/sav_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 

@@ -4,7 +4,6 @@
 
 ### import
 import random
-# from dc3.class_std.base_class_def import ViewOnly
 from cleesh.class_std.base_class_def import ViewOnly
 
 

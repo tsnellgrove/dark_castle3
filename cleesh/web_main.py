@@ -11,8 +11,6 @@ import sys
 sys.path.append('/Users/tas/Documents/Python/dark_castle3')
 from cleesh.app_main.start_up import start_me_up
 from cleesh.app_main.app_main import app_main
-# from dc3.app_main.start_up import start_me_up
-# from dc3.app_main.app_main import app_main
 
 ### initialize local variables
 is_end = False
