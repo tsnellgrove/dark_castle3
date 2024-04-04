@@ -32,8 +32,10 @@ Version 3.85 Goals
 	- DONE: cleesh logo = red spotted newt
 	- DONE: create games/dark_castle directory
 	- DONE: create games/dark_castle/game_file and games/dark_castle/working
-	- TBD: change top level directory from 'dc3' => 'cleesh'
-	- TBD: curent game directory as attribute of gs.core
+	- DONE: change top level directory from 'dc3' => 'cleesh' 
+		- NOTE: could have just changed and accepted auto update
+	- DONE: test
+	- TBD: clean
 
 - TBD: Separate static_dicts for game vs. engine
 	- IDEA: planning for tooling in the future
@@ -43,6 +45,7 @@ Version 3.85 Goals
 	- TBD: update io() calls to include optional dict attribute (game_static_dict by default)
 	- TBD: update method calls for eng_static_dict to include over-ride
 	- TBD: review error messages / engine text not in static_dict and remove any "burt" refs
+	- TBD: curent game directory as attribute of gs.core
 
 - TBD: separate version numbers for game and engine
 	- IDEA: assume a 'lazy game designer' who doesn't create custom values; should work anyhow
