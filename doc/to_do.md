@@ -37,12 +37,12 @@ Version 3.85 Goals
 	- DONE: test
 	- DONE: clean up comments
 
-- TBD: Separate static_dicts for game vs. engine
+- INPROC: Separate static_dicts for game vs. engine
 	- IDEA: planning for tooling in the future
 	- IDEA: want to separate what game designer can update vs. what platform / engine designer can update
-	- TBD: eng_static_dict = interp, version, help, errors (remove "Burt" ref from errors)
-	- TBD: game_static_dict = game-specific static content
+	- DONE: game_static_dict = game-specific static content
 	- TBD: update io() calls to include optional dict attribute (game_static_dict by default)
+	- TBD: eng_static_dict = interp, version, help, errors (remove "Burt" ref from errors)
 	- TBD: update method calls for eng_static_dict to include over-ride
 	- TBD: review error messages / engine text not in static_dict and remove any "burt" refs
 	- TBD: curent game directory as attribute of gs.core
