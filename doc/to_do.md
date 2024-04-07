@@ -41,11 +41,11 @@ Version 3.85 Goals
 	- IDEA: planning for tooling in the future
 	- IDEA: want to separate what game designer can update vs. what platform / engine designer can update
 	- DONE: game_static_dict = game-specific static content
+	- DONE: curent game directory as attribute of gs.core
 	- TBD: update io() calls to include optional dict attribute (game_static_dict by default)
 	- TBD: eng_static_dict = interp, version, help, errors (remove "Burt" ref from errors)
 	- TBD: update method calls for eng_static_dict to include over-ride
 	- TBD: review error messages / engine text not in static_dict and remove any "burt" refs
-	- TBD: curent game directory as attribute of gs.core
 
 - TBD: separate version numbers for game and engine
 	- IDEA: assume a 'lazy game designer' who doesn't create custom values; should work anyhow
