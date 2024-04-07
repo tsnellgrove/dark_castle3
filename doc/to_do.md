@@ -42,7 +42,12 @@ Version 3.85 Goals
 	- IDEA: want to separate what game designer can update vs. what platform / engine designer can update
 	- DONE: game_static_dict = game-specific static content
 	- DONE: curent game directory as attribute of gs.core
+	- TBD: in static_gbl() and io_class_def() update static_dict => engine_static_dict
+	- TBD: decide whether to enable explicit dict choice - or just always try game first, engine 2nd
+	- DECISION: TBD
 	- TBD: update io() calls to include optional dict attribute (game_static_dict by default)
+		- TBD: get_str
+		- TBD: 
 	- TBD: eng_static_dict = interp, version, help, errors (remove "Burt" ref from errors)
 	- TBD: update method calls for eng_static_dict to include over-ride
 	- TBD: review error messages / engine text not in static_dict and remove any "burt" refs
