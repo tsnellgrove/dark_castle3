@@ -10,7 +10,7 @@
 
 
 ### static dict ###
-static_dict = {
+engine_static_dict = {
 
 	### universal constants ###
 	'version' : '3.84 (3/31/2024)',

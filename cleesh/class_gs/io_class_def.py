@@ -4,7 +4,7 @@
 
 ### import
 import random
-from cleesh.data.static_gbl import static_dict
+from cleesh.data.static_gbl import engine_static_dict
 
 ### classes
 class IO(object):
@@ -46,7 +46,7 @@ class IO(object):
 
 	### check dict methods ###
 	def chk_str_exist(self, key):
-		if key not in self.dyn_dict and key not in static_dict:
+		if key not in self.dyn_dict and key not in engine_static_dict:
 			return False
 		return True
 
@@ -61,43 +61,43 @@ class IO(object):
 		return 
 
 	def get_str(self, key, ref):
-		"""Provides a string (usually a description) from dyn_dict and static_dict. Includes failover to ref-based description.
+		"""Provides a string (usually a description) from dyn_dict and engine_static_dict. Includes failover to ref-based description.
 		"""
 		try:
 			return self.get_dyn_dict(key)
 		except:
 			try:
-				return static_dict[key]
+				return engine_static_dict[key]
 			except:
 				return f"The {ref} is simply indescribable."
 
 	def get_str_nr(self, key):
-		"""Provides a string (usually a description) from dyn_dict and static_dict. No ref / fail-over. Useful for cases where the calling method will provide alternate text of its own on dict lookup failure.
+		"""Provides a string (usually a description) from dyn_dict and engine_static_dict. No ref / fail-over. Useful for cases where the calling method will provide alternate text of its own on dict lookup failure.
 		"""
 		try:
 			return self.get_dyn_dict(key)
 		except:
-			return static_dict[key]
+			return engine_static_dict[key]
 	
 	def get_dict(self, dict_name):
-		"""Returns a dict from within static_dict.
+		"""Returns a dict from within engine_static_dict.
 		"""
-		return static_dict[dict_name]
+		return engine_static_dict[dict_name]
 
 	def get_dict_val(self, dict_name, dict_key):
-		"""Returns a dictionary value from a dict within static_dict.
+		"""Returns a dictionary value from a dict within engine_static_dict.
 		"""
-		return static_dict[dict_name][dict_key]
+		return engine_static_dict[dict_name][dict_key]
 
 	def get_ddict_val(self, dict_name, dict_key1, dict_key2):
-		"""Returns a  value from a double-dictionary within static_dict.
+		"""Returns a  value from a double-dictionary within engine_static_dict.
 		"""
-		return static_dict[dict_name][dict_key1][dict_key2]
+		return engine_static_dict[dict_name][dict_key1][dict_key2]
 
 	def get_lst(self, lst_name):
-		"""Returns a list from a dict within static_dict.
+		"""Returns a list from a dict within engine_static_dict.
 		"""
-		return static_dict[lst_name]
+		return engine_static_dict[lst_name]
 
 
 	### buffer methods ###
@@ -127,7 +127,7 @@ class IO(object):
 		return
 
 	def buff_d(self, key, ref):
-		"""Buffer Description. Buffers the description (usually of an object) associated with the key attribute. The ref attribute is used to create a default description if none has been defined in static_dict.
+		"""Buffer Description. Buffers the description (usually of an object) associated with the key attribute. The ref attribute is used to create a default description if none has been defined in engine_static_dict.
 		"""
 		self.buffer(self.get_str(key, ref))
 		return
@@ -158,4 +158,4 @@ class IO(object):
 		if gs.core.is_debug:
 			self.buffer(debug_str)
 		else:
-			self.buffer(static_dict['misc_err_' + str(random.randint(0, 4))])
+			self.buffer(engine_static_dict['misc_err_' + str(random.randint(0, 4))])

@@ -12,7 +12,7 @@ class Writing(Invisible):
 		super().__init__(name)
 		self._full_name = full_name # the object name presented to the player. Typical format = "Adj Noun". First character capitalized
 		self._root_name = root_name # the one-word abreviation for the canonical adj_noun formulated name. e.g. rusty_key => key; not unique 
-		self._descript_key = descript_key # the key used to look up the object description in static_dict
+		self._descript_key = descript_key # key used to look up the object description in game_static_dict
 		""" Writing objects represent text which can be read().
 		"""
 
