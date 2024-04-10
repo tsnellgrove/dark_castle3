@@ -46,15 +46,27 @@ Version 3.85 Goals
 	- DONE: decide whether to enable explicit dict choice - or just always try game first, engine 2nd
 		- DECISION: in general, always try game_static_dict first; on except => engine_static_dict
 		- DECISION: should also have an explicit engine-only lookup: get_str_e() [or dict / lst equiv]
-	- TBD: consider - implement via separate methods or via passed in mode w/ default = 'std' / alt = 'eng'?
-	- TBD: implement get_str_e()
-		- TBD: determine & list cases where answer will always be in engine_static_dict (e.g. interp() )
-		- TBD: create get_str_e() and other needed methods
-		- TBD: call get_str_e() and other needed methods
-	- TBD: update io() calls to try game_static_dict first
-		- TBD: get_str
-		- TBD: 
-	- TBD: update method calls for eng_static_dict to include over-ride
+	- DONE: consider - separate methods or via passed in mode w/ default = 'std' / alt = 'eng'?
+		- DONE: determine & list cases where answer will always be in engine_static_dict (e.g. interp() )
+		- FINDING: key cases = get_str, get_lst, get_dict, get_dict_val
+		- IDEA: highly unlikely but don't want to enable a case where game designer could over-ride engine
+		- IDEA: implication is that all IO methods should be able to support 'enging only' case
+		- DECISION: implement as 'mode' that gets passed with default = 'std' (vs. 'eng')
+	- TBD: implement get_str() with mode
+		- TBD: update method
+		- TBD: implement and test for 'version'
+		- TBD: update static dicts => 'game_version' & 'engine_version'
+		- TBD: update version() command to show 'engine_version' and, if exist, 'game_engine'
+		- TBD: test
+	- TBD: implement get_lst() with mode
+	- TBD: implement get_dict() with mode
+	- TBD: implement get_dict_val() with mode
+	- TBD: update standard method calls for eng_static_dict to include over-ride
+		- TBD: get_str()
+		- TBD: get_lst()
+		- TBD: get_dict()
+		- TBD: get_dict_val()
+	- TBD: delete unused portion of each static dict
 
 - TBD: de-burt engine / error messages
 	- TBD: eng_static_dict = interp, version, help, errors (remove "Burt" ref from errors)
