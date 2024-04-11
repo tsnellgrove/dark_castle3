@@ -53,6 +53,11 @@ Version 3.85 Goals
 		- IDEA: implication is that all IO methods should be able to support 'enging only' case
 		- DECISION: implement as 'mode' that gets passed with default = 'std' (vs. 'eng')
 	- TBD: implement get_str() with mode
+		- DONE: import game_static_dict
+		- DONE: add mode attribute
+		- DONE: add additional try-except clause for game_static_dict
+		- DONE: test
+		- TBD: add if-then clause for mode == eng
 		- TBD: update method
 		- TBD: implement and test for 'version'
 		- TBD: update static dicts => 'game_version' & 'engine_version'

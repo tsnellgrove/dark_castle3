@@ -5,6 +5,7 @@
 ### import
 import random
 from cleesh.data.static_gbl import engine_static_dict
+from cleesh.games.dark_castle.game_file.game_static_gbl import game_static_dict
 
 ### classes
 class IO(object):
@@ -60,16 +61,23 @@ class IO(object):
 		self.dyn_dict[key] = val # adds key value pair if it does not exist
 		return 
 
-	def get_str(self, key, ref):
+#	def get_str(self, key, ref):
+	def get_str(self, key, ref, mode=None):
 		"""Provides a string (usually a description) from dyn_dict and engine_static_dict. Includes failover to ref-based description.
 		"""
+		if mode is None:
+			mode = 'std'
+
 		try:
 			return self.get_dyn_dict(key)
 		except:
 			try:
-				return engine_static_dict[key]
+				return game_static_dict[key]
 			except:
-				return f"The {ref} is simply indescribable."
+				try:
+					return engine_static_dict[key]
+				except:
+					return f"The {ref} is simply indescribable."
 
 	def get_str_nr(self, key):
 		"""Provides a string (usually a description) from dyn_dict and engine_static_dict. No ref / fail-over. Useful for cases where the calling method will provide alternate text of its own on dict lookup failure.
