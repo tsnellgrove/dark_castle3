@@ -13,7 +13,9 @@
 engine_static_dict = {
 
 	### universal constants ###
-	'version' : '3.84 (3/31/2024)',
+    'engine_name' : "Cleesh",
+
+	'engine_version' : '3.84 (3/31/2024)',
 
 	### interp lists ###
 

@@ -16,6 +16,8 @@ game_static_dict = {
 	#### STANDARD DICT ELEMENTS ####
 
 	### universal constants ###
+    'game_name' : "Dark Castle",
+
 	'game_version' : '3.84 (3/31/2024)',
 
 	### title and score dicts ###

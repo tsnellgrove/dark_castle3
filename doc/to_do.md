@@ -58,10 +58,14 @@ Version 3.85 Goals
 		- DONE: add additional try-except clause for game_static_dict
 		- DONE: test
 		- DONE: add if-then clause for mode == eng
-		- TBD: implement and test for 'version'
-		- TBD: update static dicts => 'game_version' & 'engine_version'
-		- TBD: update version() command to show 'engine_version' and, if exist, 'game_engine'
-		- TBD: test
+		- DONE: implement and test for 'version'
+		- DONE: update static dicts => 'game_version' & 'engine_version'
+		- DONE: update version() command to show 'engine_version' and, if exist, 'game_engine'
+		- DONE: test
+	- TBD: create a non-ref version of get_str()
+		- TBD: review get_str() method and usage
+		- TBD: create alternate method get_str_s() with fixed error
+		- TBD: test get_str_s() with version
 	- TBD: implement get_lst() with mode
 	- TBD: implement get_dict() with mode
 	- TBD: implement get_dict_val() with mode

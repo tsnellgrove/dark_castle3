@@ -47,7 +47,8 @@ def cmd_execute(gs, case, word_lst):
 				gs.score.print_score(gs)
 				return
 			if word1 == 'version':
-				gs.io.buff_e('version')
+				gs.io.buffer(f"{gs.io.get_str('game_name','game_name')} version = {gs.io.get_str('game_version','version')}")
+				gs.io.buffer(f"{gs.io.get_str('engine_name','engine_name', 'eng')} version = {gs.io.get_str('engine_version','version','eng')}")
 				return
 			if word1 == 'credits':
 				gs.io.buff_e('credits')
