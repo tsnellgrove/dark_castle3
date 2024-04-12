@@ -68,16 +68,25 @@ class IO(object):
 		if mode is None:
 			mode = 'std'
 
-		try:
-			return self.get_dyn_dict(key)
-		except:
+		if mode == 'eng':
 			try:
-				return game_static_dict[key]
+				return self.get_dyn_dict(key)
 			except:
 				try:
 					return engine_static_dict[key]
 				except:
 					return f"The {ref} is simply indescribable."
+		else:			
+			try:
+				return self.get_dyn_dict(key)
+			except:
+				try:
+					return game_static_dict[key]
+				except:
+					try:
+						return engine_static_dict[key]
+					except:
+						return f"The {ref} is simply indescribable."
 
 	def get_str_nr(self, key):
 		"""Provides a string (usually a description) from dyn_dict and engine_static_dict. No ref / fail-over. Useful for cases where the calling method will provide alternate text of its own on dict lookup failure.

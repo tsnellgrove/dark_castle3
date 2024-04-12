@@ -57,8 +57,7 @@ Version 3.85 Goals
 		- DONE: add mode attribute
 		- DONE: add additional try-except clause for game_static_dict
 		- DONE: test
-		- TBD: add if-then clause for mode == eng
-		- TBD: update method
+		- DONE: add if-then clause for mode == eng
 		- TBD: implement and test for 'version'
 		- TBD: update static dicts => 'game_version' & 'engine_version'
 		- TBD: update version() command to show 'engine_version' and, if exist, 'game_engine'
@@ -72,6 +71,7 @@ Version 3.85 Goals
 		- TBD: get_dict()
 		- TBD: get_dict_val()
 	- TBD: delete unused portion of each static dict
+	- TBD: [DOC] game vs. engine approach
 
 - TBD: de-burt engine / error messages
 	- TBD: eng_static_dict = interp, version, help, errors (remove "Burt" ref from errors)
