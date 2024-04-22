@@ -52,7 +52,7 @@ Version 3.85 Goals
 		- IDEA: highly unlikely but don't want to enable a case where game designer could over-ride engine
 		- IDEA: implication is that all IO methods should be able to support 'enging only' case
 		- DECISION: implement as 'mode' that gets passed with default = 'std' (vs. 'eng')
-	- TBD: implement get_str() with mode
+	- DONE: implement get_str() with mode
 		- DONE: import game_static_dict
 		- DONE: add mode attribute
 		- DONE: add additional try-except clause for game_static_dict
@@ -62,10 +62,12 @@ Version 3.85 Goals
 		- DONE: update static dicts => 'game_version' & 'engine_version'
 		- DONE: update version() command to show 'engine_version' and, if exist, 'game_engine'
 		- DONE: test
-	- TBD: create a non-ref version of get_str()
-		- TBD: review get_str() method and usage
-		- TBD: create alternate method get_str_s() with fixed error
-		- TBD: test get_str_s() with version
+	- INPROC: create a non-ref version of get_str()
+		- DONE: review get_str() method and usage
+		- FINDING: can just use get_str_nr()
+		- TBD: update get_str_nr() with mode option
+		- TBD: test get_str_nr() with version
+		- TBD: simplify (remove mode option from) get_str() ??
 	- TBD: implement get_lst() with mode
 	- TBD: implement get_dict() with mode
 	- TBD: implement get_dict_val() with mode

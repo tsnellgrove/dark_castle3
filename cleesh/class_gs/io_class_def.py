@@ -61,9 +61,8 @@ class IO(object):
 		self.dyn_dict[key] = val # adds key value pair if it does not exist
 		return 
 
-#	def get_str(self, key, ref):
 	def get_str(self, key, ref, mode=None):
-		"""Provides a string (usually a description) from dyn_dict and engine_static_dict. Includes failover to ref-based description.
+		"""Provides a string (usually a description) from dyn_dict, game_static_dict, and engine_static_dict. Includes failover to ref-based description.
 		"""
 		if mode is None:
 			mode = 'std'
