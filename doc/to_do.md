@@ -65,19 +65,20 @@ Version 3.85 Goals
 	- INPROC: create a non-ref version of get_str()
 		- DONE: review get_str() method and usage
 		- FINDING: can just use get_str_nr()
-		- TBD: update get_str_nr() with mode option
-		- TBD: test get_str_nr() with version
-		- TBD: simplify (remove mode option from) get_str() ??
+		- DONE: update get_str_nr() with mode option
+		- DONE: test get_str_nr() with version
+		- TBD: simplify (remove mode option from) get_str()
 	- TBD: implement get_lst() with mode
 	- TBD: implement get_dict() with mode
-	- TBD: implement get_dict_val() with mode
+	- TBD: implement get_dict_val() with mode (???)
 	- TBD: update standard method calls for eng_static_dict to include over-ride
 		- TBD: get_str()
 		- TBD: get_lst()
 		- TBD: get_dict()
-		- TBD: get_dict_val()
+		- TBD: get_dict_val() => get_dict()[key]
 	- TBD: delete unused portion of each static dict
 	- TBD: [DOC] game vs. engine approach
+	- TBD: [DOC] small number of methods that can guarantee 'eng' mode to avoid risk of rouge game dev
 
 - TBD: de-burt engine / error messages
 	- TBD: eng_static_dict = interp, version, help, errors (remove "Burt" ref from errors)

@@ -87,14 +87,26 @@ class IO(object):
 					except:
 						return f"The {ref} is simply indescribable."
 
-	def get_str_nr(self, key):
-		"""Provides a string (usually a description) from dyn_dict and engine_static_dict. No ref / fail-over. Useful for cases where the calling method will provide alternate text of its own on dict lookup failure.
+	def get_str_nr(self, key, mode=None):
+		"""Provides a string (usually a description) from dyn_dict, game_static_dict, and engine_static_dict. No ref / fail-over. Useful for cases where the calling method will provide alternate text of its own on dict lookup failure.
 		"""
-		try:
-			return self.get_dyn_dict(key)
-		except:
-			return engine_static_dict[key]
-	
+		if mode is None:
+			mode = 'std'
+
+		if mode == 'eng':
+			try:
+				return self.get_dyn_dict(key)
+			except:
+				return engine_static_dict[key]
+		else:
+			try:
+				return self.get_dyn_dict(key)
+			except:
+				try:
+					return game_static_dict[key]
+				except:
+					return engine_static_dict[key]
+
 	def get_dict(self, dict_name):
 		"""Returns a dict from within engine_static_dict.
 		"""
