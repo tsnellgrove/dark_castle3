@@ -61,31 +61,33 @@ class IO(object):
 		self.dyn_dict[key] = val # adds key value pair if it does not exist
 		return 
 
-	def get_str(self, key, ref, mode=None):
+#	def get_str(self, key, ref, mode=None):
+	def get_str(self, key, ref):
 		"""Provides a string (usually a description) from dyn_dict, game_static_dict, and engine_static_dict. Includes failover to ref-based description.
 		"""
-		if mode is None:
-			mode = 'std'
+#		if mode is None:
+#			mode = 'std'
 
-		if mode == 'eng':
+#		if mode == 'eng':
+#			try:
+#				return self.get_dyn_dict(key)
+#			except:
+#				try:
+#					return engine_static_dict[key]
+#				except:
+#					return f"The {ref} is simply indescribable."
+#		else:
+
+		try:
+			return self.get_dyn_dict(key)
+		except:
 			try:
-				return self.get_dyn_dict(key)
+				return game_static_dict[key]
 			except:
 				try:
 					return engine_static_dict[key]
 				except:
 					return f"The {ref} is simply indescribable."
-		else:			
-			try:
-				return self.get_dyn_dict(key)
-			except:
-				try:
-					return game_static_dict[key]
-				except:
-					try:
-						return engine_static_dict[key]
-					except:
-						return f"The {ref} is simply indescribable."
 
 	def get_str_nr(self, key, mode=None):
 		"""Provides a string (usually a description) from dyn_dict, game_static_dict, and engine_static_dict. No ref / fail-over. Useful for cases where the calling method will provide alternate text of its own on dict lookup failure.

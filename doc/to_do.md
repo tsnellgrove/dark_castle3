@@ -62,12 +62,12 @@ Version 3.85 Goals
 		- DONE: update static dicts => 'game_version' & 'engine_version'
 		- DONE: update version() command to show 'engine_version' and, if exist, 'game_engine'
 		- DONE: test
-	- INPROC: create a non-ref version of get_str()
+	- DONE: create a non-ref version of get_str()
 		- DONE: review get_str() method and usage
 		- FINDING: can just use get_str_nr()
 		- DONE: update get_str_nr() with mode option
 		- DONE: test get_str_nr() with version
-		- TBD: simplify (remove mode option from) get_str()
+		- DONE: simplify (remove mode option from) get_str()
 	- TBD: implement get_lst() with mode
 	- TBD: implement get_dict() with mode
 	- TBD: implement get_dict_val() with mode (???)
