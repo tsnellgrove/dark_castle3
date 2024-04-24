@@ -110,11 +110,20 @@ class IO(object):
 		"""
 		return engine_static_dict[dict_name][dict_key1][dict_key2]
 
-	def get_lst(self, lst_name):
+#	def get_lst(self, lst_name):
+	def get_lst(self, lst_name, mode=None):
 		"""Returns a list from a dict within engine_static_dict.
 		"""
-		return engine_static_dict[lst_name]
+		if mode is None:
+			mode = 'std'
 
+		if mode == 'eng':
+			return engine_static_dict[lst_name]
+		else:
+			try:
+				return game_static_dict[lst_name]
+			except:
+				return engine_static_dict[lst_name]
 
 	### buffer methods ###
 	def get_buff(self):

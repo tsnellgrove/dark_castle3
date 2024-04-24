@@ -68,12 +68,12 @@ Version 3.85 Goals
 		- DONE: update get_str_nr() with mode option
 		- DONE: test get_str_nr() with version
 		- DONE: simplify (remove mode option from) get_str()
-	- TBD: implement get_lst() with mode
+	- INPROC: implement get_lst() with mode
+		- DONE: add optional mode attribute to get_lst()
+		- TBD: update standard method calls for eng_static_dict to include over-ride
 	- TBD: implement get_dict() with mode
 	- TBD: implement get_dict_val() with mode (???)
 	- TBD: update standard method calls for eng_static_dict to include over-ride
-		- TBD: get_str()
-		- TBD: get_lst()
 		- TBD: get_dict()
 		- TBD: get_dict_val() => get_dict()[key]
 	- TBD: delete unused portion of each static dict
