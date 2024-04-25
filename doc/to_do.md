@@ -68,18 +68,20 @@ Version 3.85 Goals
 		- DONE: update get_str_nr() with mode option
 		- DONE: test get_str_nr() with version
 		- DONE: simplify (remove mode option from) get_str()
-	- INPROC: implement get_lst() with mode
+	- DONE: implement get_lst() with mode
 		- DONE: add optional mode attribute to get_lst()
 		- DONE: update standard get_lst() calls for eng_static_dict to include over-ride
 			- DONE: cmd_exe()
 			- DONE: interp()
-		- TBD: clean up comments
+		- DONE: clean up comments
 	- TBD: implement get_dict() with mode
-	- TBD: implement get_dict_val() with mode (???)
-	- TBD: update standard method calls for eng_static_dict to include over-ride
-		- TBD: get_dict()
-		- TBD: get_dict_val() => get_dict()[key]
+		- TBD: add optional mode attribute to get_dict()
+		- TBD: update get_dict() calls in cmd_exe() and interp() to include 'eng' mode
+		- TBD: clean up comments
+	- TBD: in cmd_exe() and interp(), convert get_dict_val('dict','key')) => get_dict('dict','eng')[key]
 	- TBD: delete unused portion of each static dict
+		- TBD: clean-up engine_static_dict
+		- TBD: clean-up game_static_dict
 	- TBD: [DOC] game vs. engine approach
 	- TBD: [DOC] small number of methods that can guarantee 'eng' mode to avoid risk of rouge game dev
 

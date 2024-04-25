@@ -110,9 +110,8 @@ class IO(object):
 		"""
 		return engine_static_dict[dict_name][dict_key1][dict_key2]
 
-#	def get_lst(self, lst_name):
 	def get_lst(self, lst_name, mode=None):
-		"""Returns a list from a dict within engine_static_dict.
+		"""Returns a list from a dict within engine_static_dict or game_static_dict.
 		"""
 		if mode is None:
 			mode = 'std'
