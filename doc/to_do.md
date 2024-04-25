@@ -70,7 +70,10 @@ Version 3.85 Goals
 		- DONE: simplify (remove mode option from) get_str()
 	- INPROC: implement get_lst() with mode
 		- DONE: add optional mode attribute to get_lst()
-		- TBD: update standard method calls for eng_static_dict to include over-ride
+		- DONE: update standard get_lst() calls for eng_static_dict to include over-ride
+			- DONE: cmd_exe()
+			- DONE: interp()
+		- TBD: clean up comments
 	- TBD: implement get_dict() with mode
 	- TBD: implement get_dict_val() with mode (???)
 	- TBD: update standard method calls for eng_static_dict to include over-ride

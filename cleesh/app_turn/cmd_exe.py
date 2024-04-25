@@ -17,16 +17,16 @@ def cmd_execute(gs, case, word_lst):
 				key_str = "help_" + option
 				output = gs.io.get_str_nr(key_str)
 			elif option == 'verbs':
-				output = "Available verbs include: " + ', '.join(sorted(gs.io.get_lst('known_verb_lst')))
+				output = "Available verbs include: " + ', '.join(sorted(gs.io.get_lst('known_verb_lst','eng')))
 			elif option == 'one-word-commands':
-				display_one_word_lst = (gs.io.get_lst('one_word_only_lst') + 
-						 gs.io.get_lst('pre_interp_word_lst') + 
-						 gs.io.get_lst('one_word_convert_lst') + 
-						 gs.io.get_lst('one_or_two_word_lst') 
+				display_one_word_lst = (gs.io.get_lst('one_word_only_lst','eng') + 
+						 gs.io.get_lst('pre_interp_word_lst','eng') + 
+						 gs.io.get_lst('one_word_convert_lst','eng') + 
+						 gs.io.get_lst('one_or_two_word_lst','eng') 
 						)
 				output = ("Available one word commands include: " + ', '.join(sorted(display_one_word_lst)))
 			elif option == 'articles':
-				output = ("The following articles are supported but not required: " + ', '.join(gs.io.get_lst('articles_lst')))
+				output = ("The following articles are supported but not required: " + ', '.join(gs.io.get_lst('articles_lst','eng')))
 			elif  option == 'abbreviations':
 				pre_out = "Available abbreviations include: "
 				for key in gs.io.get_dict('abbreviations_dict'):
@@ -36,7 +36,7 @@ def cmd_execute(gs, case, word_lst):
 				if not gs.core.is_debug:
 					output = gs.io.get_str_nr('help_debug_error')
 				else:
-					output = gs.io.get_str_nr('help_debug') + ', '.join(gs.io.get_lst('debug_verb_lst'))
+					output = gs.io.get_str_nr('help_debug') + ', '.join(gs.io.get_lst('debug_verb_lst','eng'))
 			else:
 				output = gs.io.get_str_nr('help')
 			gs.io.buffer(output)

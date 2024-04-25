@@ -37,7 +37,7 @@ def input_cleanup(gs, user_input):
 		user_input_lst[n] = word
 		n += 1
 	# finally, strip out articles
-	for article in gs.io.get_lst('articles_lst'):
+	for article in gs.io.get_lst('articles_lst','eng'):
 		user_input_lst = [word for word in user_input_lst if word != article]
 	return user_input_lst
 
@@ -91,8 +91,8 @@ def interpreter(user_input, master_obj_lst):
 	gs = master_obj_lst[0]
 	creature = gs.core.hero
 	user_input_lst = input_cleanup(gs, user_input)
-	full_verbs_lst = gs.io.get_lst('known_verb_lst') + gs.io.get_lst('debug_verb_lst')
-	tru_1word_lst = gs.io.get_lst('one_word_only_lst') + gs.io.get_lst('one_word_secret_lst')
+	full_verbs_lst = gs.io.get_lst('known_verb_lst','eng') + gs.io.get_lst('debug_verb_lst','eng')
+	tru_1word_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
 
 	# error if no input or the only input is articles 
 	if len(user_input_lst) < 1:
@@ -106,16 +106,16 @@ def interpreter(user_input, master_obj_lst):
 		return 'help', [word1]
 	if len(user_input_lst) == 1 and word1 in tru_1word_lst:
 		return 'tru_1word', [word1]
-	one_word_max_lst = (gs.io.get_lst('one_word_only_lst') + 
-						 gs.io.get_lst('pre_interp_word_lst') + 
-						 gs.io.get_lst('one_word_convert_lst') + 
-						 gs.io.get_lst('one_word_secret_lst') 
+	one_word_max_lst = (gs.io.get_lst('one_word_only_lst','eng') + 
+						 gs.io.get_lst('pre_interp_word_lst','eng') + 
+						 gs.io.get_lst('one_word_convert_lst','eng') + 
+						 gs.io.get_lst('one_word_secret_lst','eng') 
 						)
 	if word1 in one_word_max_lst and len(user_input_lst) > 1:
 		return 'error', [f"Burt, there are too many words in that sentence. '{word1}' is a one word command!"]
 
 	# convert one-word commands that are implicit two-word commands 
-	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst'):
+	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst','eng'):
 		if word1 in ['north', 'south', 'east', 'west']:
 			user_input_lst.append(word1)
 			user_input_lst[0] = 'go'
@@ -129,7 +129,7 @@ def interpreter(user_input, master_obj_lst):
 			user_input_lst.append(creature.name)
 		word1 = user_input_lst[0]
 
-	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst'):
+	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst','eng'):
 		if not creature.hand_is_empty():
 			user_input_lst.append(creature.get_hand_item().name)
 			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
@@ -153,7 +153,7 @@ def interpreter(user_input, master_obj_lst):
 	elif word1 == 'go':
 		word2 = user_input_lst[1]
 		return 'go', [gs.map.hero_rm, word1, word2]
-	elif word1 in gs.io.get_lst('prep_verb_lst'):
+	elif word1 in gs.io.get_lst('prep_verb_lst','eng'):
 		if word1 in ['put']:
 			if 'in' in user_input_lst:
 				prep = 'in'
