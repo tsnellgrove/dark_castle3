@@ -95,10 +95,19 @@ class IO(object):
 				except:
 					return engine_static_dict[key]
 
-	def get_dict(self, dict_name):
-		"""Returns a dict from within engine_static_dict.
+	def get_dict(self, dict_name, mode=None):
+		"""Returns a dict from within engine_static_dict or game_static_dict.
 		"""
-		return engine_static_dict[dict_name]
+		if mode is None:
+			mode = 'std'
+
+		if mode == 'eng':
+			return engine_static_dict[dict_name]
+		else:
+			try:
+				return game_static_dict[dict_name]
+			except:
+				return engine_static_dict[dict_name]
 
 	def get_dict_val(self, dict_name, dict_key):
 		"""Returns a dictionary value from a dict within engine_static_dict.

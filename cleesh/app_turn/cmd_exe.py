@@ -29,7 +29,7 @@ def cmd_execute(gs, case, word_lst):
 				output = ("The following articles are supported but not required: " + ', '.join(gs.io.get_lst('articles_lst','eng')))
 			elif  option == 'abbreviations':
 				pre_out = "Available abbreviations include: "
-				for key in gs.io.get_dict('abbreviations_dict'):
+				for key in gs.io.get_dict('abbreviations_dict','eng'):
 					pre_out = pre_out + key + " = " + gs.io.get_dict_val('abbreviations_dict',key) + ", "
 				output = pre_out[:-2]
 			elif option == 'debug':
