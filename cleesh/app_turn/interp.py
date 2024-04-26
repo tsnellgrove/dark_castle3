@@ -33,9 +33,7 @@ def input_cleanup(gs, user_input):
 	for word in user_input_lst:
 		word = word.lower()
 		abbrev_dict = gs.io.get_dict('abbreviations_dict','eng')
-#		if word in gs.io.get_dict('abbreviations_dict','eng'):
 		if word in abbrev_dict:
-#			word = gs.io.get_dict_val('abbreviations_dict',word)
 			word = abbrev_dict[word]
 		user_input_lst[n] = word
 		n += 1

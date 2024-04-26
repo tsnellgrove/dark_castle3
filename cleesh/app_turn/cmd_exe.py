@@ -30,9 +30,7 @@ def cmd_execute(gs, case, word_lst):
 			elif  option == 'abbreviations':
 				pre_out = "Available abbreviations include: "
 				abbrev_dict = gs.io.get_dict('abbreviations_dict','eng')
-#				for key in gs.io.get_dict('abbreviations_dict','eng'):
 				for key in abbrev_dict:
-#					pre_out = pre_out + key + " = " + gs.io.get_dict_val('abbreviations_dict',key) + ", "
 					pre_out = pre_out + key + " = " + abbrev_dict[key] + ", "
 				output = pre_out[:-2]
 			elif option == 'debug':

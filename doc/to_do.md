@@ -78,7 +78,7 @@ Version 3.85 Goals
 		- DONE: add optional mode attribute to get_dict()
 		- DONE: update get_dict() calls in cmd_exe() and interp() to include 'eng' mode
 		- DONE: clean up comments
-	- TBD: in cmd_exe() and interp(), convert get_dict_val('dict','key')) => get_dict('dict','eng')[key]
+	- DONE: in cmd_exe() and interp(), convert get_dict_val('dict','key')) => get_dict('dict','eng')[key]
 	- TBD: delete unused portion of each static dict
 		- TBD: clean-up engine_static_dict
 		- TBD: clean-up game_static_dict
