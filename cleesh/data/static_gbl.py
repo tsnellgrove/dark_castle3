@@ -1,6 +1,6 @@
-# program: dark castle
+# program: Cleesh game engine
 # name: Tom Snellgrove
-# description: static dictionary initialization function module
+# description: static dictionary initialization module
 
 
 ### this module declares static variables ###
@@ -62,6 +62,43 @@ engine_static_dict = {
         'q' : 'quit'
 	},
 
+
+	#### ONE WORD & ERRORS ####
+
+	### one-word commands - non-objeects ###
+	'credits' : "The Cleesh game engine was written and programmed by Tom.",
+
+	### error messages ###
+	'misc_err_0' : "Burt, I have no idea what you're talking about!",
+	'misc_err_1' : "Burt, are you babbling again?",
+	'misc_err_2' : "Burt, I'm just going to pretend I didn't hear that.",
+	'misc_err_3' : "Burt, you've said some strange things over the years but that was a doosey!",
+	'misc_err_4' : "Burt! What would your Nana say if she heard you speaking like that!?",
+
+	### direction errors ###
+	'dir_err_0' : "Ouch! Burt, stop walking into walls!",
+	'dir_err_1' : "Ouch! You have walked into a wall.",
+	'dir_err_2' : "There's no exit that way.",
+	'dir_err_3' : "You can't go that way.",
+	'dir_err_4' : "And exactly how do you propose to do that?",
+
+	### help commands ###
+	'help' : "Help syntax = 'help <option>'. Help options = 'basics', 'abbreviations', 'adjectives', 'articles', 'attack', 'creatures', 'debug', 'one-word-commands', prepositions', 'read', or 'verbs'.",
+	'help_basics' : "Objects you can examine and interact with are capitalized. To travel, use the 'go' command: 'go <cardinal direction'. Travel can be further abbreviated to just: '<cardinal direction>'. Use 'read' to read text you find written on objects. You can 'take' one object that you can see into your hand at a time from the room, a container, your backpack, or from being worn. Your other hand is holding your light source. In many cases you must be holding an object in your hand in order to act uppon it (e.g. 'unlock', drop', 'eat', 'put', 'wear', 'drink'). If you are already holding an item when you take something else, the original item you were holding is automatically transferred into your backpack. You can view what you're carying using 'inventory'. Use 'look' to get a description of the room you're in. Start all multi-word commands with a verb. Type 'quit' to quit.",
+	'help_creatures' : "Despite its age and state of disrepair, Dark Castle contains a number of creatures. Some are helpful, some are not. There are three main commands for interacting with creatures: 'show', 'give', and 'attack'. Showing an item to a creature may give you information about its opinion of that item. Giving an item to a creature may generate a useful response - particularly if it's an object that the creature has an opinion about. Alas, not all encounters can be resolved amicably - and for these cases there is the 'attack' command. Not surprisingly, this can generate a very hostile response (see 'help attack' for more info). Lastly, be aware that each creature has its own priorities and point of view and will respond to Burt's actions accordingly.",
+	'help_adjectives' : "Most nouns have an adjective (e.g. 'rusty key'). The interpreter recognizes adjectives but only requires them if other similar nouns are in the room. So 'take rusty key' and 'take key' are equivalent unless there is another key in the room.",
+	'help_prepositions' : "There are several available prepositions including: 'in', 'on', 'with', 'to' and 'from'. 'in' and 'on' are used with the verb 'put'. This allows you to put items in containers or 'on' surfaces. Example: 'put the rusty key in the wooden chest' or 'put the cheese wedge on the shelf'. 'with' is used to indicate an object to use when performing an action. Example: 'unlock the crystal door with the platinum key'. If you use a verb that is typically performmed with an object (e.g. 'lock', 'unlock', or 'attack') - but omit the the 'with' clause - Dark Castle will assume that you want to perform the command with the object in your hand. 'to' is used with the verbs 'show' and 'give'. This allows you to specify which creature you want to show or give items to. Examples: 'show the rusty key to the goblin' or 'give the rusty key to the hedgehog'. 'from' is used with the verb 'drink'. Examples: 'drink water from cup'.",
+##	'help_read' :  "If you can't 'read' something (e.g. a note or a scroll) try 'examine' instead. The item may have some readable text written on it that you'll learn more about via 'examine'.",
+    'help_read' :  "If you find an object with text written on it, you can 'read <text>'. Alternatively, 'examine <text>' and 'read <object with text on it>' prodcue similar results.",
+	'help_attack' : "There are various creatures that reside in Dark Castle. Some are friendly but some may not be. Burt can 'attack' a creature using whatever weapon he is holding in his hand. If the creature is hostile and Burt is wielding the correct weapon he may be able to slay it. However there are risks to attacking as well. If the creature is friendly, an 'attack' may scare it away and Burt may lose a valuble ally. And if the creature is hostile but Burt is wielding the wrong weapon, Burt himself may perish. As in real life, combat in Dark Castle is frought!",
+	'help_debug_error' : "The first rule of debug mode is that we don't talk about debug mode.",
+	'help_debug' : "There are currently 3 main features to debug mode: 1) Python errors are shown rather than muted, 2) A module prefix is provided for game errors, and 3) The following debug verbs are usable: ",
+
+}
+
+"""
+### game_static_dict contents ###
+
 	### title and score dicts ###
     'title_factor' : 10,
 
@@ -97,40 +134,9 @@ engine_static_dict = {
         'kinging_scroll' : {('scroll_win_game_result', None) : 15}
 	},
 
-
-	#### ONE WORD & ERRORS ####
-
 	### one-word commands - non-objeects ###
 	'introduction' : "Greetings brave adventurer!\n\nYou are Burt-the-Baker, the only adventurer brave - or foolish - enough to enter the Dark Castle in search of treasure.\n\nType 'help' for help.",
 	'credits' : "Written and programmed by Tom. Thanks to Toby, Joshua, JoyEllen, Milo, Gideon, Franco, Karl, Andy, Ken and Alec for advice and playtesting!!",
-
-	### error messages ###
-	'misc_err_0' : "Burt, I have no idea what you're talking about!",
-	'misc_err_1' : "Burt, are you babbling again?",
-	'misc_err_2' : "Burt, I'm just going to pretend I didn't hear that.",
-	'misc_err_3' : "Burt, you've said some strange things over the years but that was a doosey!",
-	'misc_err_4' : "Burt! What would your Nana say if she heard you speaking like that!?",
-
-	### direction errors ###
-	'dir_err_0' : "Ouch! Burt, stop walking into walls!",
-	'dir_err_1' : "Ouch! You have walked into a wall.",
-	'dir_err_2' : "There's no exit that way.",
-	'dir_err_3' : "You can't go that way.",
-	'dir_err_4' : "And exactly how do you propose to do that?",
-
-	### help commands ###
-	'help' : "Help syntax = 'help <option>'. Help options = 'basics', 'abbreviations', 'adjectives', 'articles', 'attack', 'creatures', 'debug', 'one-word-commands', prepositions', 'read', or 'verbs'.",
-	'help_basics' : "Objects you can examine and interact with are capitalized. To travel, use the 'go' command: 'go <cardinal direction'. Travel can be further abbreviated to just: '<cardinal direction>'. Use 'read' to read text you find written on objects. You can 'take' one object that you can see into your hand at a time from the room, a container, your backpack, or from being worn. Your other hand is holding your light source. In many cases you must be holding an object in your hand in order to act uppon it (e.g. 'unlock', drop', 'eat', 'put', 'wear', 'drink'). If you are already holding an item when you take something else, the original item you were holding is automatically transferred into your backpack. You can view what you're carying using 'inventory'. Use 'look' to get a description of the room you're in. Start all multi-word commands with a verb. Type 'quit' to quit.",
-	'help_creatures' : "Despite its age and state of disrepair, Dark Castle contains a number of creatures. Some are helpful, some are not. There are three main commands for interacting with creatures: 'show', 'give', and 'attack'. Showing an item to a creature may give you information about its opinion of that item. Giving an item to a creature may generate a useful response - particularly if it's an object that the creature has an opinion about. Alas, not all encounters can be resolved amicably - and for these cases there is the 'attack' command. Not surprisingly, this can generate a very hostile response (see 'help attack' for more info). Lastly, be aware that each creature has its own priorities and point of view and will respond to Burt's actions accordingly.",
-	'help_adjectives' : "Most nouns have an adjective (e.g. 'rusty key'). The interpreter recognizes adjectives but only requires them if other similar nouns are in the room. So 'take rusty key' and 'take key' are equivalent unless there is another key in the room.",
-	'help_prepositions' : "There are several available prepositions including: 'in', 'on', 'with', 'to' and 'from'. 'in' and 'on' are used with the verb 'put'. This allows you to put items in containers or 'on' surfaces. Example: 'put the rusty key in the wooden chest' or 'put the cheese wedge on the shelf'. 'with' is used to indicate an object to use when performing an action. Example: 'unlock the crystal door with the platinum key'. If you use a verb that is typically performmed with an object (e.g. 'lock', 'unlock', or 'attack') - but omit the the 'with' clause - Dark Castle will assume that you want to perform the command with the object in your hand. 'to' is used with the verbs 'show' and 'give'. This allows you to specify which creature you want to show or give items to. Examples: 'show the rusty key to the goblin' or 'give the rusty key to the hedgehog'. 'from' is used with the verb 'drink'. Examples: 'drink water from cup'.",
-##	'help_read' :  "If you can't 'read' something (e.g. a note or a scroll) try 'examine' instead. The item may have some readable text written on it that you'll learn more about via 'examine'.",
-    'help_read' :  "If you find an object with text written on it, you can 'read <text>'. Alternatively, 'examine <text>' and 'read <object with text on it>' prodcue similar results.",
-	'help_attack' : "There are various creatures that reside in Dark Castle. Some are friendly but some may not be. Burt can 'attack' a creature using whatever weapon he is holding in his hand. If the creature is hostile and Burt is wielding the correct weapon he may be able to slay it. However there are risks to attacking as well. If the creature is friendly, an 'attack' may scare it away and Burt may lose a valuble ally. And if the creature is hostile but Burt is wielding the wrong weapon, Burt himself may perish. As in real life, combat in Dark Castle is frought!",
-	'help_debug_error' : "The first rule of debug mode is that we don't talk about debug mode.",
-	'help_debug' : "There are currently 3 main features to debug mode: 1) Python errors are shown rather than muted, 2) A module prefix is provided for game errors, and 3) The following debug verbs are usable: ",
-
-
 
 	#### VISIBLE OBJ ####
 
@@ -372,6 +378,9 @@ engine_static_dict = {
 	'test_frog' : "The Test Frog looks testy.",
 
 }		
+
+
+"""
 
 
 # *** Not in Use ***

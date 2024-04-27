@@ -112,12 +112,12 @@ class IO(object):
 	def get_dict_val(self, dict_name, dict_key):
 		"""Returns a dictionary value from a dict within engine_static_dict.
 		"""
-		return engine_static_dict[dict_name][dict_key]
+		return game_static_dict[dict_name][dict_key]
 
 	def get_ddict_val(self, dict_name, dict_key1, dict_key2):
 		"""Returns a  value from a double-dictionary within engine_static_dict.
 		"""
-		return engine_static_dict[dict_name][dict_key1][dict_key2]
+		return game_static_dict[dict_name][dict_key1][dict_key2]
 
 	def get_lst(self, lst_name, mode=None):
 		"""Returns a list from a dict within engine_static_dict or game_static_dict.

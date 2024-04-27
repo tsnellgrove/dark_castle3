@@ -79,9 +79,10 @@ Version 3.85 Goals
 		- DONE: update get_dict() calls in cmd_exe() and interp() to include 'eng' mode
 		- DONE: clean up comments
 	- DONE: in cmd_exe() and interp(), convert get_dict_val('dict','key')) => get_dict('dict','eng')[key]
-	- TBD: delete unused portion of each static dict
-		- TBD: clean-up engine_static_dict
-		- TBD: clean-up game_static_dict
+	- INPROC: delete unused portion of each static dict
+		- DONE: clean-up engine_static_dict
+		- DONE: clean-up game_static_dict
+		- INPROC: full game test
 	- TBD: [DOC] game vs. engine approach
 	- TBD: [DOC] small number of methods that can guarantee 'eng' mode to avoid risk of rouge game dev
 
@@ -136,6 +137,8 @@ Version 3.85 Goals
 *** story-driven updates ***
 
 - maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
+- update 'eat biscuit' warning text... should ref baker job and Nana
+- update hedgehog description while eating to "The RH is ravenously eating"
 
 - TBD: fix Goblin description to no longer mention Control Panel
 - TBD: "what would your mothter say" error to "What would your Nana say?"

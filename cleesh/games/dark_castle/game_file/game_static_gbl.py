@@ -57,7 +57,7 @@ game_static_dict = {
 
 	### one-word commands - non-objeects ###
 	'introduction' : "Greetings brave adventurer!\n\nYou are Burt-the-Baker, the only adventurer brave - or foolish - enough to enter the Dark Castle in search of treasure.\n\nType 'help' for help.",
-	'credits' : "Written and programmed by Tom. Thanks to Toby, Joshua, JoyEllen, Milo, Gideon, Franco, Karl, Andy, Ken and Alec for advice and playtesting!!",
+	'credits' : "The Dark Castle game was written and programmed by Tom. Thanks to Toby, Joshua, JoyEllen, Milo, Gideon, Franco, Karl, Andy, Ken and Alec for advice and playtesting!!",
 
 
 	#### VISIBLE OBJ ####
@@ -271,11 +271,11 @@ game_static_dict = {
 
 	'burt_fierce_teeth_royal_hedgehog_*' : "The moment you approach the Shiny Sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's Fierce Teeth.",
 
-	### test descriptions ###
-	'burt_enter_test_chair' : "The chair feels cozy and nice.",
-
 
 	#### TEST OBJ ####
+
+	### test descriptions ###
+	'burt_enter_test_chair' : "The chair feels cozy and nice.",
 
 	# items #
 	'brass_key' : "The key is brass.",
