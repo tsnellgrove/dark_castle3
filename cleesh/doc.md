@@ -151,6 +151,15 @@ Burt as an object
 		- can likely shortcut for non '2word' and 'prep' cases
 		- one side effect: every method needs to either throw text on error or do something on success... we cannot take an action on failure (?) 
 
+GAME VS. ENGINE:
+- In IF, it is common for there to be a game engine that spans multiple independent games. The idea is that the interpreter and simulation aspects of IF remain constant for a given engine... while the story and nouns change for every game. Frotz is one of many examples of this.
+- From the start I pictured Dark Castle following this model and wrote various aspects of it thinking "this will be useful for future games / game writers" - in fact, I often had to talk myself out of creating elaborate features that Dark Castle itself didn't have an immediate use for. None-the-less, it wasn't until v3.85 that I actually began the work of formally separating the Dark Castle game from its underlying engine.
+- The first step was to give the engine itself a name: "Cleesh". Cleesh is named after the (famous Infocaom game) Enchanter spell that turns a creature into a small amphibian. I chose this name because, unlike most other Enchanter spells, it wasn't already in use for other IF tools (that I know of) and also because, from childhood, I've adored the red spotted eft salamander.
+- The next step was to create a games folder and within it a dark_castle directory. This I populated with the game_static_global() module that holds game_static_dict which in turn contains all the game-specific text for Dark Castle (i.e. the vast majority of what was previously in static_dict). I also renamed static_dict => engine_static_dict. 
+- In a very few cases, both static dicts have similar fields (e.g. 'version'). But in most cases, data should be either in game_static_dict or engine_static_dict. The default approach for gs.io.get_str() is to search in game_static_dict first and, if a key isn't found there, search in engine_static_dict. The thinking here is that we want to plan for a 'distracted game developer' - so where possible, engine_static_dict should provide a "good enough" entry for a given string search.
+- However, for a few critical io calls (get_str_nr, get_lst, get_dict) I have created a mode attribute that allows for explicitly calling data from enging_static_dict. The idea here is that, while it's highly unlikely there will ever be any Cleesh game devs other than myself, in theory, there could be - and if there were, we wouldn't want a rouge game dev to be able to altern key engine responses to the user.
+
+
 ###############
 # static_gbl.py #
 ###############

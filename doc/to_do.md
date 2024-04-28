@@ -79,12 +79,12 @@ Version 3.85 Goals
 		- DONE: update get_dict() calls in cmd_exe() and interp() to include 'eng' mode
 		- DONE: clean up comments
 	- DONE: in cmd_exe() and interp(), convert get_dict_val('dict','key')) => get_dict('dict','eng')[key]
-	- INPROC: delete unused portion of each static dict
+	- DONE: delete unused portion of each static dict
 		- DONE: clean-up engine_static_dict
 		- DONE: clean-up game_static_dict
-		- INPROC: full game test
-	- TBD: [DOC] game vs. engine approach
-	- TBD: [DOC] small number of methods that can guarantee 'eng' mode to avoid risk of rouge game dev
+		- DONE: full game test
+	- DONE: [DOC] game vs. engine approach
+	- DONE: [DOC] small number of methods that can guarantee 'eng' mode to avoid risk of rouge game dev
 
 - TBD: de-burt engine / error messages
 	- TBD: eng_static_dict = interp, version, help, errors (remove "Burt" ref from errors)
@@ -144,6 +144,13 @@ Version 3.85 Goals
 - TBD: "what would your mothter say" error to "What would your Nana say?"
 - TBD: update winning condition to reading scroll while sitting on throne?
 - TBD: Stone Coffer => no-lid box ?
+
+- TBD: play & note obvious nouns with no description; provide description (e.g. 'keyhole')
+- TBD: search on obj nouns and ensure always capitalized
+- TBD: make path names (provided via 'l') examinable nouns ('path' => Winding Path)
+- TBD: fix post-goblin-slain Antechamber description
+- TBD: update win condition to must be sitting on throne
+
 
 - TBD: Description updates:
 	- TBD: hedgehog updates
@@ -562,6 +569,12 @@ Food:
 - maybe sleep in bed (after min # of moves) to dream to get hints? But light must be on so you loose turns of light and wake up hungry and thirsty? Hint is provided randomly based on points not yet accrued?
 - need to check Enchanter to find length of days, when sleep needed, food & drink, etc
 - For dream hint: Burt has dream / memory of Nana teaching him the binary code she would use with Willy while secretly courting (she was a lunch lady?) to set a time to sneak off with him. Would involve 2 types of biscuits on counter... Nana's Own and McVittles (which were awful)... she only had room for 3 biscuits but had to show times from 0 to 7... 
+
+
+
+*** Introduce transparency ***
+
+- e.g. Crystal Box should show kinging_scroll / empty / contents
 
 
 *** Implement Symetric Verbs ***
