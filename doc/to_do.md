@@ -322,6 +322,41 @@ Window:
 
 *** Roll up sleaves and fix Interpreter ***
 
+*** Commands List ***
+- if you meet a person:
+	- Talk to <name>
+	- Tell <name> about <X>
+	- Give <thing> to <name>
+	- Show <thing> to <name>
+
+- If you find a thing:
+	- Turn <X>
+	- Feel <X>
+	- Fill <X>
+	- Smell <X>
+	- Listen to <X>
+	- Break <X>
+	- Burn <X>
+	- Look under <X>
+	- Climb <X>
+	- Wave <X>
+	- Take <X> off
+	- Turn <X> on
+	- Dig in <X>
+	- Enter <X>
+	- Search <X>
+
+- Also
+	- Listen
+	- Sleep
+	- Wake up
+	- Undo
+	- Jump
+	- Pray
+	- Curse
+	- Sing
+
+
 - TBD: read for DCv3 parser ideas: https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
 
 - TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
