@@ -249,7 +249,7 @@ class Invisible(object):
 			return True
 		for obj in gs.map.hero_rm.floor_lst:
 			if obj.is_creature() and obj is not gs.core.hero and self in obj.get_vis_contain_lst(gs):
-				gs.io.buffer(f"Burt, you can't take the {self.full_name}. It belongs to the {obj.full_name}!")
+				gs.io.buffer(f"You can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 				return True
 		if  not creature.chk_contain_item(self) and (creature.weight + self.weight) > creature.max_weight:
 			gs.io.buffer(f"You don't have enough capacity to take the {self.full_name} along with everything else you are carrying.")
@@ -261,7 +261,7 @@ class Invisible(object):
 		if self.err_std(creature, gs):
 			return True
 		if self == creature.feature_lst[0]:
-			gs.io.buffer(f"Burt, you can't drop your {creature.feature_lst[0].full_name} - you're quite attached to it.")
+			gs.io.buffer(f"You can't drop your {creature.feature_lst[0].full_name} - you're quite attached to it.")
 			return True
 		if not self.is_item():
 			gs.io.buffer(f"You can't even pick up the {self.full_name}... how could you possibly drop it??")
@@ -332,7 +332,7 @@ class Invisible(object):
 		if self.err_std(creature, gs):
 			return True
 		if not self.is_food():
-			gs.io.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? Burt, if you keep this up you're going to give Adventurers a bad name!")
+			gs.io.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? If you keep this up you're going to give Adventurers a bad name!")
 			return True
 		if self.err_not_in_hand(creature, gs):
 			return True
@@ -565,7 +565,7 @@ class Invisible(object):
 			gs.io.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
 			return True
 		if self == obj:
-			gs.io.buffer(f"With all your might you attempt to bend the laws of time, space, and topology to your will... and in response you hear the ancient background radiation of the big bang itself respond: 'Nope, not gonna happen Burt.'")
+			gs.io.buffer(f"With all your might you attempt to bend the laws of time, space, and topology to your will... and in response you hear the ancient background radiation of the big bang itself respond: 'Nope, not gonna happen.'")
 			return True
 		if obj.err_not_in_hand(creature, gs):
 			return True

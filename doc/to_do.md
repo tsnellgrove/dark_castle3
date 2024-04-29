@@ -86,22 +86,28 @@ Version 3.85 Goals
 	- DONE: [DOC] game vs. engine approach
 	- DONE: [DOC] small number of methods that can guarantee 'eng' mode to avoid risk of rouge game dev
 
-- TBD: de-burt engine / error messages
-	- TBD: eng_static_dict = interp, version, help, errors (remove "Burt" ref from errors)
-	- TBD: review error messages / engine text not in static_dict and remove any "burt" refs
+- DONE: de-burt engine / error messages
+	- DONE: eng_static_dict = interp, version, help, errors (remove "Burt" ref from errors)
+	- DONE: review error messages / engine text not in static_dict and remove any "burt" refs
 
-- TBD: separate version numbers for game and engine
-	- IDEA: assume a 'lazy game designer' who doesn't create custom values; should work anyhow
-	- TBD: create version for each dict
-	- TBD: update version() cmd to display both game & enging versions
+- DONE: separate version numbers for game and engine
+	- DONE: assume a 'lazy game designer' who doesn't create custom values; should work anyhow
+	- DONE: create version for each dict
+	- DONE: update version() cmd to display both game & enging versions
+
+- TBD: sort out home for game data files and the modules that update them
+	- TBD: finalize vision of pkl_sav & pkl_def vs. mk_def_pkl vs. start_me_up() for game
+	- TBD: rename pkl_sav => pkl_active
+	- TBD: move pkls to dark_castle dir
+	- TBD: move start_me_up file to dark_castle dir
+	- TBD: move mk_def_pkl to dark_castle dir
+	- TBD: one-time setup function (like mk_def_pkl() ) that calculates static values for a game version
+		- TBD: max_score; lives in game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
+		- TBD: str_to_obj_dict = a dict that converts name_str to obj; lives in game_ver_static_dict or gs
 
 - IDEA: need to provide defaul engine mechanisms with option to replace with custom game versions
 	- IDEA: assume a 'lazy game designer' who doesn't create custom values; should work anyhow
 	- TBD: need a default set of titles title_factor that can be over-ridden with game-specific
-
-- TBD: one-time setup function (like mk_def_pkl() ) that calculates static values for a game version
-	- max_score; lives in game_ver_static_dict (i.e. calc max_score in mk_def_pkl() & cache in static_dict)
-	- str_to_obj_dict = a dict that converts name_str to obj; lives in game_ver_static_dict or gs (?)
 
 - TBD: elim hasattrib() in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes (?)
 	- for gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
@@ -122,12 +128,11 @@ Version 3.85 Goals
 	- IDEA: book is riff on LotR; office workers on death march project; must bring TTL report to shredder
 		- IDEA: led by bearded application developer, heart-string-pulling retirement party at end
 		- IDEA: always saved by IT person at critical moment
-
-- TBD: create a game menu class as an attribute of gs
-
 - TBD: future ideas for 'a cup of tea'
 	- TBD: a thermal attribute for obj that cools over time
 	- TBD: an hour glass machine (changes time as turns pass; has flip() verb) 
+
+- TBD: create a game menu class as an attribute of gs
 
 - TBD: document future to-do of multi-user
 
