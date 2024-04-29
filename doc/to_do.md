@@ -97,6 +97,7 @@ Version 3.85 Goals
 
 - TBD: sort out home for game data files and the modules that update them
 	- TBD: finalize vision of pkl_sav & pkl_def vs. mk_def_pkl vs. start_me_up() for game
+	- TBD: where to keep data like game pkl path?
 	- TBD: rename pkl_sav => pkl_active
 	- TBD: move pkls to dark_castle dir
 	- TBD: move start_me_up file to dark_castle dir
