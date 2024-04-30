@@ -103,8 +103,15 @@ Version 3.85 Goals
 		- pkl_def =rename=> start_pkl => games\dark_castle\game_file (generic starting game obj)
 		- start_up() => games\dark_castle\game_file (converts start_pkl to active_pkl)
 		- pkl_sav =rename=> active_pkl => games\dark_castle\working (holds obj for specific session)
-	- TBD: where to keep data like game_name, game_path?
-		- IDEA: gs.game class module ??
+	- TBD: where to keep data like game_name, game_full_name, game_path?
+		- IDEA: gs.game_menu class module
+		- IDEA: need a game_menue directory
+		- IDEA: in \game_menue , need a gm_menu_static_dict that contains game_lst
+		- IDEA: gm_menue_static_dict also holds dict of list of [game_full name, game_descript, game_path]
+		- IDEA: need outer game_name loop for web_main() ; set to None at start; if None, go to menu
+		- IDEA: menue shows list of games - each with a number, and asks user to choose or quit
+		- IDEA: on game_menu choice, populate values of game_menu_class_def()
+		- IDEA: on quit from game, game_name is reset to None
 	- TBD: rename pkl_sav => pkl_active
 	- TBD: move pkls to dark_castle dir
 	- TBD: move start_me_up file to dark_castle dir
