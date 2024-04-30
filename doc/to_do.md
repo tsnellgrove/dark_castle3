@@ -95,9 +95,16 @@ Version 3.85 Goals
 	- DONE: create version for each dict
 	- DONE: update version() cmd to display both game & enging versions
 
-- TBD: sort out home for game data files and the modules that update them
-	- TBD: finalize vision of pkl_sav & pkl_def vs. mk_def_pkl vs. start_me_up() for game
-	- TBD: where to keep data like game pkl path?
+- INPROC: sort out home for game data files and the modules that update them
+	- DONE: finalize vision of pkl_sav & pkl_def vs. mk_def_pkl vs. start_me_up() for game
+		- IDEA: at this point, we only want to discern between engine, game, and session
+		- IDEA: in the future, I will need to implement multi-user
+		- mk_def_pkl() =rename=> mk_start_pkl => games\dark_castle\game_file (creates start_pkl) 
+		- pkl_def =rename=> start_pkl => games\dark_castle\game_file (generic starting game obj)
+		- start_up() => games\dark_castle\game_file (converts start_pkl to active_pkl)
+		- pkl_sav =rename=> active_pkl => games\dark_castle\working (holds obj for specific session)
+	- TBD: where to keep data like game_name, game_path?
+		- IDEA: gs.game class module ??
 	- TBD: rename pkl_sav => pkl_active
 	- TBD: move pkls to dark_castle dir
 	- TBD: move start_me_up file to dark_castle dir
