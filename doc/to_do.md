@@ -123,10 +123,14 @@ Version 3.85 Goals
 	- DONE: re-purpose gs.core.game_dir => gs.core.game_name
 		- DONE: update gs.core()
 		- DONE: update mk_def_pkl()
-	- TBD: create menu_start_up() moduel in \app_main
 	- TBD: extend web_main() with menu wrapper (no double check on Q for quit)
+		- IDEA: initially, just pull list from engine_static_dict and print to screen
+		- IDEA: input = table_int or Q to quit 
 		- IDEA: don't really need to save game_name ... just need to pass it in to app_main for start_up path
-
+		- TBD: add game menue prompt to web_main()
+	- TBD: create game_menu() module in \app_main to display game menue using PrettyTable
+		- LINK: https://stackoverflow.com/questions/9535954/printing-lists-as-tabular-data
+		- LINK: https://amrinarosyd.medium.com/prettytable-vs-tabulate-which-should-you-use-e9054755f170#:~:text=Tabulate%20requires%20you%20to%20import,function%20to%20print%20the%20table.&text=PrettyTable%20allows%20you%20to%20customize,%2C%20alignment%2C%20and%20border%20style.
 	- TBD: rename pkl_sav => pkl_active
 	- TBD: move pkls to dark_castle dir
 	- TBD: move start_me_up file to dark_castle dir
