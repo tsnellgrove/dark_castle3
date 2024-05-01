@@ -106,6 +106,7 @@ Version 3.85 Goals
 	- DONE: where to keep data like game_name, game_full_name, game_path?
 		- IDEA: gs.game_menu class module
 			- IDEA: only attribute == game_name ?
+			- IDEA: instead, just replace gs.core.game_dir (not yet in use) with game_name
 		- IDEA: need a game_menue directory
 		- IDEA: in \game_menue , need a gm_menu_static_dict that contains game_lst
 			- IDEA: what if game_lst lives in engine_static_dict ?
@@ -119,9 +120,12 @@ Version 3.85 Goals
 	- DONE: create static_dict entries:
 		- DONE: engine_static_dict (game_lst)
 		- DONE: game_static_dict (game_name, game_full_name, game_descript)
-	- TBD: create menu_class_def() (attribute = game_name) [or can I use core_class_def() ?]
+	- DONE: re-purpose gs.core.game_dir => gs.core.game_name
+		- DONE: update gs.core()
+		- DONE: update mk_def_pkl()
 	- TBD: create menu_start_up() moduel in \app_main
 	- TBD: extend web_main() with menu wrapper (no double check on Q for quit)
+		- IDEA: don't really need to save game_name ... just need to pass it in to app_main for start_up path
 
 	- TBD: rename pkl_sav => pkl_active
 	- TBD: move pkls to dark_castle dir

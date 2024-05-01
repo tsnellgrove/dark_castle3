@@ -287,7 +287,7 @@ core = Core(
 		burt, # hero
         0, # move_count
         False, # is_debug
-		dark_castle # game_dir
+		dark_castle # game_name
 		)
 
 map = Map(
