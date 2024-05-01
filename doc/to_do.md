@@ -116,10 +116,10 @@ Version 3.85 Goals
 		- IDEA: menue shows list of games - each with a number, and asks user to choose or quit
 		- IDEA: on game_menu choice, populate values of game_menu_class_def()
 		- IDEA: on quit from game, game_name is reset to None
-	- TBD: create static_dict entries:
-		- TBD: engine_static_dict (game_lst)
-		- TBD: game_static_dict (game_name, game_full_name, game_descript)
-	- TBD: create menu_class_def() (attribute = game_name)
+	- DONE: create static_dict entries:
+		- DONE: engine_static_dict (game_lst)
+		- DONE: game_static_dict (game_name, game_full_name, game_descript)
+	- TBD: create menu_class_def() (attribute = game_name) [or can I use core_class_def() ?]
 	- TBD: create menu_start_up() moduel in \app_main
 	- TBD: extend web_main() with menu wrapper (no double check on Q for quit)
 

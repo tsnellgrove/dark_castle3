@@ -15,6 +15,14 @@ game_static_dict = {
 
 	#### STANDARD DICT ELEMENTS ####
 
+	### menu info ###
+ 
+	'game_name' : 'dark_castle',
+    
+	'game_full_name' : 'Dark Castle',
+    
+	'game_descript' : "A classic Zork-like adventure of bravery and baking!",
+
 	### universal constants ###
     'game_name' : "Dark Castle",
 

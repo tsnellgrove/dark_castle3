@@ -17,6 +17,9 @@ engine_static_dict = {
 
 	'engine_version' : '3.84 (3/31/2024)',
 
+	### Menu Constants ###
+	'game_lst' : ['dark_castle'],
+
 	### interp lists ###
 
 	'articles_lst' : ['a', 'an', 'the'],
