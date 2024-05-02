@@ -130,6 +130,7 @@ Version 3.85 Goals
 		- INPROC: add game menue prompt to web_main()
 			- INPROC: get user game choice input
 				- DONE: re-loop if response is out of range int
+				- IDEA: user_num = 0; if userchoice == 'q', break; else try: user_num = int(user_choice); except: user_num = 0  ; if usernum > 0 and user_num <= len(game_lst): <good> ; 
 				- TBD: handle response is real num
 				- TBD: handle resposne is letter
 				- TBD: quite on 'q'
