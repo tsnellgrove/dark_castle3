@@ -127,7 +127,12 @@ Version 3.85 Goals
 		- IDEA: initially, just pull list from engine_static_dict and print to screen
 		- IDEA: input = table_int or Q to quit 
 		- IDEA: don't really need to save game_name ... just need to pass it in to app_main for start_up path
-		- TBD: add game menue prompt to web_main()
+		- INPROC: add game menue prompt to web_main()
+			- INPROC: get user game choice input
+				- DONE: re-loop if response is out of range int
+				- TBD: handle response is real num
+				- TBD: handle resposne is letter
+				- TBD: quite on 'q'
 	- TBD: create game_menu() module in \app_main to display game menue using PrettyTable
 		- LINK: https://stackoverflow.com/questions/9535954/printing-lists-as-tabular-data
 		- LINK: https://amrinarosyd.medium.com/prettytable-vs-tabulate-which-should-you-use-e9054755f170#:~:text=Tabulate%20requires%20you%20to%20import,function%20to%20print%20the%20table.&text=PrettyTable%20allows%20you%20to%20customize,%2C%20alignment%2C%20and%20border%20style.
