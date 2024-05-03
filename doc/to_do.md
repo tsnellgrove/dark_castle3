@@ -123,17 +123,17 @@ Version 3.85 Goals
 	- DONE: re-purpose gs.core.game_dir => gs.core.game_name
 		- DONE: update gs.core()
 		- DONE: update mk_def_pkl()
-	- TBD: extend web_main() with menu wrapper (no double check on Q for quit)
+	- DONE: extend web_main() with menu wrapper (no double check on Q for quit)
 		- IDEA: initially, just pull list from engine_static_dict and print to screen
 		- IDEA: input = table_int or Q to quit 
 		- IDEA: don't really need to save game_name ... just need to pass it in to app_main for start_up path
-		- INPROC: add game menue prompt to web_main()
-			- INPROC: get user game choice input
+		- DONE: add game menue prompt to web_main()
+			- DONE: get user game choice input
 				- DONE: re-loop if response is out of range int
-				- IDEA: user_num = 0; if userchoice == 'q', break; else try: user_num = int(user_choice); except: user_num = 0  ; if usernum > 0 and user_num <= len(game_lst): <good> ; 
-				- TBD: handle response is real num
-				- TBD: handle resposne is letter
-				- TBD: quite on 'q'
+				- IDEA: user_num = 0; if userchoice == 'q', break; else try: user_num = int(user_choice); 	except: user_num = 0  ; if usernum > 0 and user_num <= len(game_lst): <good> ; 
+				- DONE: handle response is real num
+				- DONE: handle resposne is letter
+				- DONE: quite on 'q'
 	- TBD: create game_menu() module in \app_main to display game menue using PrettyTable
 		- LINK: https://stackoverflow.com/questions/9535954/printing-lists-as-tabular-data
 		- LINK: https://amrinarosyd.medium.com/prettytable-vs-tabulate-which-should-you-use-e9054755f170#:~:text=Tabulate%20requires%20you%20to%20import,function%20to%20print%20the%20table.&text=PrettyTable%20allows%20you%20to%20customize,%2C%20alignment%2C%20and%20border%20style.
