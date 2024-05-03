@@ -22,15 +22,20 @@ is_start = True
 call_app_main = True
 
 # game choice routine
-while str(user_choice).lower != 'q':
+while True:
 	print("Game List:")
 	game_lst = engine_static_dict['game_lst']
 	print(game_lst)
-	user_choice = input("Type the number of the game you want to play or type 'Q' to quit:")
+	user_choice = input("Type the number of the game you want to play or type 'Q' to quit: ")
+	print(f"user_choice = {user_choice}")
+	if user_choice.strip() == 'q' or user_choice.strip() == 'Q':
+		break
 	max_num = len(game_lst)
-	user_num = int(user_choice)
-#	if str(user_choice).lower != 'q' and user_choice > 0 and user_choice <= max_num and isinstance(user_choice, int):
-	if user_num > 0 and user_num <= max_num and isinstance(user_num, int):
+	try:
+		user_num = int(user_choice)
+	except:
+		user_num = 0
+	if user_num > 0 and user_num <= max_num:
 		
 		# in-game routine
 		while not is_end:
