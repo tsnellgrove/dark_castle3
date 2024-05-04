@@ -134,27 +134,34 @@ Version 3.85 Goals
 				- DONE: handle response is real num
 				- DONE: handle resposne is letter
 				- DONE: quite on 'q'
-	- TBD: create game_menu() module in \app_main to display game menue using PrettyTable
+	- DONE: create game_menu() module in \app_main to display game menue using PrettyTable
 		- LINK: https://stackoverflow.com/questions/9535954/printing-lists-as-tabular-data
 		- LINK: https://amrinarosyd.medium.com/prettytable-vs-tabulate-which-should-you-use-e9054755f170#:~:text=Tabulate%20requires%20you%20to%20import,function%20to%20print%20the%20table.&text=PrettyTable%20allows%20you%20to%20customize,%2C%20alignment%2C%20and%20border%20style.
-	- TBD: rename pkl_sav => pkl_active
-	- TBD: move pkls to dark_castle dir
-	- TBD: move start_me_up file to dark_castle dir
-	- TBD: move mk_def_pkl to dark_castle dir
+
+	- TBD: finalize menue
+		- TBD: fix game choice issue (2x option 1 in a row)
+		- TBD: clean-up spacing
+
+	- TBD: move game files => /game
+		- TBD: rename pkl_sav => pkl_active
+		- TBD: move pkls to dark_castle dir
+		- TBD: move start_me_up file to dark_castle dir
+		- TBD: move mk_def_pkl to dark_castle dir
+
 	- TBD: one-time setup function (like mk_def_pkl() ) that calculates static values for a game version
-		- TBD: max_score; lives in game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
-		- TBD: str_to_obj_dict = a dict that converts name_str to obj; lives in game_ver_static_dict or gs
+		- TBD: max_score; => game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
+		- TBD: str_to_obj_dict = dict that converts name_str to obj; lives in game_ver_static_dict or gs
+
+	- TBD: elim hasattrib() in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
+		- for gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
+		- eliminate 'hasattrib' for containers in gs.scope_lst() too
+		- have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
+
+- TBD: implement game save & restore
 
 - IDEA: need to provide defaul engine mechanisms with option to replace with custom game versions
 	- IDEA: assume a 'lazy game designer' who doesn't create custom values; should work anyhow
 	- TBD: need a default set of titles title_factor that can be over-ridden with game-specific
-
-- TBD: elim hasattrib() in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes (?)
-	- for gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
-	- eliminate 'hasattrib' for containers in gs.scope_lst() too
-	- have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
-
-- TBD: implement game save & restore
 
 - TBD: create alternate (simple!) game
 	- IDEA: the only way to really make a muliti-game system is to create a 2nd game
