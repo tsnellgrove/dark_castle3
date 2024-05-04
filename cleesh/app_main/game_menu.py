@@ -5,6 +5,7 @@
 
 ### base import
 from prettytable import PrettyTable
+from importlib import import_module
 from cleesh.data.static_gbl import engine_static_dict
 
 
@@ -17,9 +18,11 @@ def print_game_menu():
     for game in game_lst:
         index += 1
         import_str = f"cleesh.games.{game}.game_file.game_static_gbl"
-        from import_str import game_static_dict
-        row_lst = [index, game_static_dict['game_full_name'], game_static_dict['game_descript']]
-        menu.ad_row(row_lst)
+        game_static_gbl = import_module(import_str)
+#        from import_str import game_static_dict
+        row_lst = [index, game_static_gbl.game_static_dict['game_full_name'], game_static_gbl.game_static_dict['game_descript']]
+        menu.add_row(row_lst)
     print(menu)
+    return index
 
 # from cleesh.games.dark_castle.game_file.game_static_gbl import game_static_dict

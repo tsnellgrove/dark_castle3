@@ -11,7 +11,8 @@ import sys
 sys.path.append('/Users/tas/Documents/Python/dark_castle3')
 from cleesh.app_main.start_up import start_me_up
 from cleesh.app_main.app_main import app_main
-from cleesh.data.static_gbl import engine_static_dict
+from cleesh.app_main.game_menu import print_game_menu
+# from cleesh.data.static_gbl import engine_static_dict
 
 ### initialize local variables
 user_choice = ""
@@ -23,14 +24,15 @@ call_app_main = True
 
 # game choice routine
 while True:
-	print("Game List:")
-	game_lst = engine_static_dict['game_lst']
-	print(game_lst)
+	max_num = print_game_menu()
+#	print("Game List:")
+#	game_lst = engine_static_dict['game_lst']
+#	print(game_lst)
 	user_choice = input("Type the number of the game you want to play or type 'Q' to quit: ")
 	print(f"user_choice = {user_choice}")
 	if user_choice.strip() == 'q' or user_choice.strip() == 'Q':
 		break
-	max_num = len(game_lst)
+#	max_num = len(game_lst)
 	try:
 		user_num = int(user_choice)
 	except:
