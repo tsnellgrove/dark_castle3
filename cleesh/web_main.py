@@ -25,14 +25,10 @@ call_app_main = True
 # game choice routine
 while True:
 	max_num = print_game_menu()
-#	print("Game List:")
-#	game_lst = engine_static_dict['game_lst']
-#	print(game_lst)
 	user_choice = input("Type the number of the game you want to play or type 'Q' to quit: ")
 	print(f"user_choice = {user_choice}")
 	if user_choice.strip() == 'q' or user_choice.strip() == 'Q':
 		break
-#	max_num = len(game_lst)
 	try:
 		user_num = int(user_choice)
 	except:

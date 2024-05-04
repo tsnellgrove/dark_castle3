@@ -19,10 +19,7 @@ def print_game_menu():
         index += 1
         import_str = f"cleesh.games.{game}.game_file.game_static_gbl"
         game_static_gbl = import_module(import_str)
-#        from import_str import game_static_dict
         row_lst = [index, game_static_gbl.game_static_dict['game_full_name'], game_static_gbl.game_static_dict['game_descript']]
         menu.add_row(row_lst)
     print(menu)
     return index
-
-# from cleesh.games.dark_castle.game_file.game_static_gbl import game_static_dict
