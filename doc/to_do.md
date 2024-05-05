@@ -143,11 +143,20 @@ Version 3.85 Goals
 		- DONE: clean-up spacing
 
 	- TBD: move game files => /game
-		- TBD: rename pkl_sav => pkl_active
-		- TBD: move pkls to dark_castle dir
-		- TBD: move start_me_up file to dark_castle dir
-		- TBD: move mk_def_pkl to dark_castle dir
+		- TBD: rename sav_pkl => active_pkl; move to dark_castle\working
+		- TBD: rename def_pkl => game_pkl; move to dark_castle\game_file
+		- TBD: move start_up() to dark_castle\working
+		- TBD: move mk_def_pkl to dark_castle dir; rename to game_update()
 		- TBD: update all game file imports (e.g. in gs.io() module) to import based on gs.core.game_name
+
+- TBD: create alternate (simple!) game called cup_of_tea
+	- IDEA: the only way to really make a muliti-game system is to create a 2nd game
+	- IDEA: alt game = 'a cup of tea' - you play as Cecily who, with her sister, runs the pub
+	- IDEA: Cecily is bookish; her sister is very popular with lads; Cecily just want peace before pub opens
+	- IDEA: initial game: very simple
+		- IDEA: single room (pub), obj = tea_cup, , hot_tea, rusty_key, comfy_chair; hero = Cecily
+		- IDEA: win = drink tea
+		- TBD: create adventure
 
 	- TBD: one-time setup function (like mk_def_pkl() ) that calculates static values for a game version
 		- TBD: max_score; => game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
@@ -163,15 +172,6 @@ Version 3.85 Goals
 - IDEA: need to provide defaul engine mechanisms with option to replace with custom game versions
 	- IDEA: assume a 'lazy game designer' who doesn't create custom values; should work anyhow
 	- TBD: need a default set of titles title_factor that can be over-ridden with game-specific
-
-- TBD: create alternate (simple!) game called cup_of_tea
-	- IDEA: the only way to really make a muliti-game system is to create a 2nd game
-	- IDEA: alt game = 'a cup of tea' - you play as Cecily who, with her sister, runs the pub
-	- IDEA: Cecily is bookish; her sister is very popular with lads; Cecily just want peace before pub opens
-	- IDEA: initial game: very simple
-		- IDEA: single room (pub), obj = tea_cup, , hot_tea, rusty_key, comfy_chair; hero = Cecily
-		- IDEA: win = drink tea
-		- TBD: create adventure
 
 - TBD: future updates for cup_of_tea (this will eventually be the setup for why Burt went to DC)
 	- IDEA: to drink tea, Cecily must lock front door, sit in comfy chair, read book, eat biscuit
