@@ -21,5 +21,7 @@ def print_game_menu():
         game_static_gbl = import_module(import_str)
         row_lst = [index, game_static_gbl.game_static_dict['game_full_name'], game_static_gbl.game_static_dict['game_descript']]
         menu.add_row(row_lst)
+    print()
     print(menu)
+    print()
     return index
