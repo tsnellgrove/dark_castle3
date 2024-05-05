@@ -138,15 +138,16 @@ Version 3.85 Goals
 		- LINK: https://stackoverflow.com/questions/9535954/printing-lists-as-tabular-data
 		- LINK: https://amrinarosyd.medium.com/prettytable-vs-tabulate-which-should-you-use-e9054755f170#:~:text=Tabulate%20requires%20you%20to%20import,function%20to%20print%20the%20table.&text=PrettyTable%20allows%20you%20to%20customize,%2C%20alignment%2C%20and%20border%20style.
 
-	- TBD: finalize menue
-		- TBD: fix game choice issue (2x option 1 in a row)
-		- TBD: clean-up spacing
+	- DONE: finalize menue
+		- DONE: fix game choice issue (2x option 1 in a row)
+		- DONE: clean-up spacing
 
 	- TBD: move game files => /game
 		- TBD: rename pkl_sav => pkl_active
 		- TBD: move pkls to dark_castle dir
 		- TBD: move start_me_up file to dark_castle dir
 		- TBD: move mk_def_pkl to dark_castle dir
+		- TBD: update all game file imports (e.g. in gs.io() module) to import based on gs.core.game_name
 
 	- TBD: one-time setup function (like mk_def_pkl() ) that calculates static values for a game version
 		- TBD: max_score; => game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
@@ -163,23 +164,29 @@ Version 3.85 Goals
 	- IDEA: assume a 'lazy game designer' who doesn't create custom values; should work anyhow
 	- TBD: need a default set of titles title_factor that can be over-ridden with game-specific
 
-- TBD: create alternate (simple!) game
+- TBD: create alternate (simple!) game called cup_of_tea
 	- IDEA: the only way to really make a muliti-game system is to create a 2nd game
 	- IDEA: alt game = 'a cup of tea' - you play as Cecily who, with her sister, runs the pub
-	- IDEA: Cecily is bookish; here sister is very popular with lads; Cecily just want peace before pub opens
+	- IDEA: Cecily is bookish; her sister is very popular with lads; Cecily just want peace before pub opens
+	- IDEA: initial game: very simple
+		- IDEA: single room (pub), obj = tea_cup, , hot_tea, rusty_key, comfy_chair; hero = Cecily
+		- IDEA: win = drink tea
+		- TBD: create adventure
+
+- TBD: future updates for cup_of_tea (this will eventually be the setup for why Burt went to DC)
 	- IDEA: to drink tea, Cecily must lock front door, sit in comfy chair, read book, eat biscuit
 	- IDEA: also, she must get rid of Burt who wants her attention (give rusty_key to burt)
 	- IDEA: Cecily sort of likes Burt - he's better than that Gaston fellow - but overgrown puppy
+	- IDEA: night before, Burt was bragging to whole pub about how he would storm Dark Castle, get treasure
 	- IDEA: Winning condition = drink Tea; Time up when pub opens (belching contest begins); 9 bells
 	- IDEA: Gaston keeps flirting with her sister; big-headed and constantly singing...
 	- IDEA: book is riff on LotR; office workers on death march project; must bring TTL report to shredder
 		- IDEA: led by bearded application developer, heart-string-pulling retirement party at end
 		- IDEA: always saved by IT person at critical moment
 - TBD: future ideas for 'a cup of tea'
-	- TBD: a thermal attribute for obj that cools over time
+	- TBD: a thermal attribute for obj that cools over time (hot_tea => warm_tea => cold_tea)
 	- TBD: an hour glass machine (changes time as turns pass; has flip() verb) 
 
-- TBD: create a game menu class as an attribute of gs
 
 - TBD: document future to-do of multi-user
 
