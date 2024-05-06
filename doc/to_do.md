@@ -166,14 +166,17 @@ Version 3.85 Goals
 		- IDEA: win = drink tea
 		- TBD: create adventure
 
-	- TBD: one-time setup function (like mk_def_pkl() ) that calculates static values for a game version
-		- TBD: max_score; => game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
-		- TBD: str_to_obj_dict = dict that converts name_str to obj; lives in game_ver_static_dict or gs
+- TBD: one-time setup function (like mk_def_pkl() ) that calculates static values for a game version
+	- TBD: max_score; => game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
+	- TBD: str_to_obj_dict = dict that converts name_str to obj; lives in game_ver_static_dict or gs
+		- TBD: elim hasattrib() in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
+		- TBD: for gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
+		- TBD: eliminate 'hasattrib' for containers in gs.scope_lst() too
+		- TBD: have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
+		- TBD: update start_up to pull directly from str_to_obj_dict
+		- IDEA: implement start_up_dict for each game and make start_up() part of engine (=> /app_main)
 
-	- TBD: elim hasattrib() in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
-		- for gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
-		- eliminate 'hasattrib' for containers in gs.scope_lst() too
-		- have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
+- IDEA: perhaps start_up dzat
 
 - TBD: implement game save & restore
 
