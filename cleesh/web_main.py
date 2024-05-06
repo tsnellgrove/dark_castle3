@@ -9,7 +9,7 @@
 ### import statements
 import sys
 sys.path.append('/Users/tas/Documents/Python/dark_castle3')
-from cleesh.app_main.start_up import start_me_up
+from cleesh.games.dark_castle.game_file.start_up import start_me_up
 from cleesh.app_main.app_main import app_main
 from cleesh.app_main.game_menu import print_game_menu
 

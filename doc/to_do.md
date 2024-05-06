@@ -142,12 +142,20 @@ Version 3.85 Goals
 		- DONE: fix game choice issue (2x option 1 in a row)
 		- DONE: clean-up spacing
 
-	- TBD: move game files => /game
-		- TBD: rename sav_pkl => active_pkl; move to dark_castle\working
-		- TBD: rename def_pkl => game_pkl; move to dark_castle\game_file
-		- TBD: move start_up() to dark_castle\working
-		- TBD: move mk_def_pkl to dark_castle dir; rename to game_update()
-		- TBD: update all game file imports (e.g. in gs.io() module) to import based on gs.core.game_name
+	- INPROC: move game files => /game
+		- DONE: copy mk_def_pkl to dark_castle/game_files dir; rename to game_update()
+		- DONE: update game_update() to create game_pkl in dark_castle/game_files dir
+		- DONE: move start_up() to dark_castle\game_files
+		- NOTE: vscode auto-updates web_main() to import start_up() from correct dir
+		- DONE: update start_up() to point create active_pkl in dark_castle/working
+		- DONE: update app_main() to open active_pkl from dark_castle/working
+		- TBD: clean-up
+			- TBD: clean up mk_def_pkl() and def_pkl
+			- TBD: clean up sav_pkl
+			- TBD: clean up comments in game_update() and start_up()
+			- TBD: clean up comments in app_main()
+
+- TBD: update all game file imports (e.g. in gs.io() module) to import based on gs.core.game_name
 
 - TBD: create alternate (simple!) game called cup_of_tea
 	- IDEA: the only way to really make a muliti-game system is to create a 2nd game
