@@ -142,18 +142,18 @@ Version 3.85 Goals
 		- DONE: fix game choice issue (2x option 1 in a row)
 		- DONE: clean-up spacing
 
-	- INPROC: move game files => /game
+	- DONE: move game files => /game
 		- DONE: copy mk_def_pkl to dark_castle/game_files dir; rename to game_update()
 		- DONE: update game_update() to create game_pkl in dark_castle/game_files dir
 		- DONE: move start_up() to dark_castle\game_files
 		- NOTE: vscode auto-updates web_main() to import start_up() from correct dir
 		- DONE: update start_up() to point create active_pkl in dark_castle/working
 		- DONE: update app_main() to open active_pkl from dark_castle/working
-		- TBD: clean-up
-			- TBD: clean up mk_def_pkl() and def_pkl
-			- TBD: clean up sav_pkl
-			- TBD: clean up comments in game_update() and start_up()
-			- TBD: clean up comments in app_main()
+		- DONE: clean-up
+			- DONE: clean up mk_def_pkl() and def_pkl
+			- DONE: clean up sav_pkl
+			- DONE: clean up comments in game_update() and start_up()
+			- DONE: clean up comments in app_main()
 
 - TBD: update all game file imports (e.g. in gs.io() module) to import based on gs.core.game_name
 
@@ -176,7 +176,12 @@ Version 3.85 Goals
 		- TBD: update start_up to pull directly from str_to_obj_dict
 		- IDEA: implement start_up_dict for each game and make start_up() part of engine (=> /app_main)
 
-- IDEA: perhaps start_up dzat
+- IDEA: perhaps start_up back to app_main; calls session_assignment() from game
+	- IDEA: engine start_up coppies game_files/game_pkl => working/active_pkl
+	- IDEA: engine start_up calls game_files/session_assignment()
+	- IDEA: engine start_up buffers game_static_dict['intro']
+	- IDEA: engine start_up buffers examine of gs.core.start_rm
+	- TBD: move start_up back to /app_main
 
 - TBD: implement game save & restore
 
