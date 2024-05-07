@@ -155,8 +155,12 @@ Version 3.85 Goals
 			- DONE: clean up comments in game_update() and start_up()
 			- DONE: clean up comments in app_main()
 
-- TBD: dynamic pathing
-	- TBD: update all game file imports (e.g. in gs.io() module) to import based on gs.core.game_name
+- INPROC: dynamic pathing
+	- DONE: return game_lst from game_menu()
+	- DONE: determine game_name from game_lst and validated user_num
+	- TBD: update all game file imports to import based on gs.core.game_name
+		- TBD: web_main()
+		- TBD: gs.io()
 	- TBD: update all pickle paths based on gs.core.game_name
 
 - TBD: create alternate (simple!) game called cup_of_tea

@@ -24,4 +24,4 @@ def print_game_menu():
     print()
     print(menu)
     print()
-    return index
+    return index, game_lst
