@@ -155,7 +155,9 @@ Version 3.85 Goals
 			- DONE: clean up comments in game_update() and start_up()
 			- DONE: clean up comments in app_main()
 
-- TBD: update all game file imports (e.g. in gs.io() module) to import based on gs.core.game_name
+- TBD: dynamic pathing
+	- TBD: update all game file imports (e.g. in gs.io() module) to import based on gs.core.game_name
+	- TBD: update all pickle paths based on gs.core.game_name
 
 - TBD: create alternate (simple!) game called cup_of_tea
 	- IDEA: the only way to really make a muliti-game system is to create a 2nd game
