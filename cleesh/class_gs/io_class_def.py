@@ -4,8 +4,15 @@
 
 ### import
 import random
+from importlib import import_module
 from cleesh.data.static_gbl import engine_static_dict
 from cleesh.games.dark_castle.game_file.game_static_gbl import game_static_dict
+
+### local functions
+def get_game_dict(self):
+	import_str = f"cleesh.games.{self.game_name}.game_file.game_static_gbl"
+	game_static_gbl = import_module(import_str)
+	return game_static_gbl.game_static_dict
 
 ### classes
 class IO(object):
