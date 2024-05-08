@@ -160,9 +160,9 @@ Version 3.85 Goals
 	- DONE: determine game_name from game_lst and validated user_num
 	- INPROC: update all game file imports to import based on gs.core.game_name
 		- DONE: web_main()
-		- TBD: gs.io()
+		- INPROC: gs.io()
 			- IDEA; mabybe need to make game_name an attribute of IO ??
-			- TBD: move game_name attribute from core to io
+			- DONE: move game_name attribute from core to io
 			- TBD: create io import funciton to import game_static_dict
 			- TBD: call import function from io get_str() / get_lst() / get_dict() methods
 	- TBD: update all pickle paths based on gs.core.game_name

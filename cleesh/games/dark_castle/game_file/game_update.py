@@ -286,8 +286,8 @@ core = Core(
 		'core', # name
 		burt, # hero
         0, # move_count
-        False, # is_debug
-		dark_castle # game_name
+        False # is_debug
+#		dark_castle # game_name
 		)
 
 map = Map(
@@ -306,7 +306,8 @@ io = IO(
 		'io', # name
 		{}, # dyn_dict
 		"", # buff_str
-		"" # last_input_str
+		"", # last_input_str
+		dark_castle # game_name
 		)
 
 score = Score(

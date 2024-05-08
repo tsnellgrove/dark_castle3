@@ -9,11 +9,12 @@ from cleesh.games.dark_castle.game_file.game_static_gbl import game_static_dict
 
 ### classes
 class IO(object):
-	def __init__(self, name, dyn_dict, buff_str, last_input_str):
+	def __init__(self, name, dyn_dict, buff_str, last_input_str, game_name):
 		self._name = name # name of obj
 		self._dyn_dict = dyn_dict # dict of non-static values that persist during game
 		self._buff_str = buff_str # holds buffered output
 		self._last_input_str = last_input_str # holds previous turn's input
+		self._game_name = game_name # name of the current game (also the path to the game)
 
 	### setters & getters ###
 	@property
@@ -44,6 +45,13 @@ class IO(object):
 	def last_input_str(self, new_val):
 		self._last_input_str = new_val
 
+	@property
+	def game_name(self):
+		return self._game_name
+
+	@game_name.setter
+	def game_name(self, new_val):
+		self._game_name = new_val
 
 	### check dict methods ###
 	def chk_str_exist(self, key):
