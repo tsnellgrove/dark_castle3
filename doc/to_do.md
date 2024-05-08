@@ -187,6 +187,7 @@ Version 3.85 Goals
 	- IDEA: engine start_up calls game_files/session_assignment()
 	- IDEA: engine start_up buffers game_static_dict['intro']
 	- IDEA: engine start_up buffers examine of gs.core.start_rm
+	- IDEA: session_file is an attribute of of gs.core ; if gs.core.session_file == None then don't call
 	- TBD: move start_up back to /app_main
 
 - TBD: implement game save & restore
