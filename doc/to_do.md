@@ -161,6 +161,7 @@ Version 3.85 Goals
 	- INPROC: update all game file imports to import based on gs.core.game_name
 		- DONE: web_main()
 		- TBD: gs.io()
+			- IDEA; mabybe need to make game_name an attribute of IO ??
 	- TBD: update all pickle paths based on gs.core.game_name
 
 - TBD: create alternate (simple!) game called cup_of_tea
