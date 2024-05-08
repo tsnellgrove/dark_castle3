@@ -158,8 +158,8 @@ Version 3.85 Goals
 - INPROC: dynamic pathing
 	- DONE: return game_lst from game_menu()
 	- DONE: determine game_name from game_lst and validated user_num
-	- TBD: update all game file imports to import based on gs.core.game_name
-		- TBD: web_main()
+	- INPROC: update all game file imports to import based on gs.core.game_name
+		- DONE: web_main()
 		- TBD: gs.io()
 	- TBD: update all pickle paths based on gs.core.game_name
 

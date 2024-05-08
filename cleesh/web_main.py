@@ -8,8 +8,9 @@
 
 ### import statements
 import sys
+from importlib import import_module
 sys.path.append('/Users/tas/Documents/Python/dark_castle3')
-from cleesh.games.dark_castle.game_file.start_up import start_me_up
+# from cleesh.games.dark_castle.game_file.start_up import start_me_up
 from cleesh.app_main.app_main import app_main
 from cleesh.app_main.game_menu import print_game_menu
 
@@ -39,7 +40,9 @@ while True:
 		while not is_end:
 			if is_start:
 				user_input = ""
-				user_output = start_me_up()
+				import_str = f"cleesh.games.{game_name}.game_file.start_up"
+				user_output = import_module(import_str).start_me_up()
+#				user_output = start_me_up()
 				is_start = False
 				call_app_main = False
 			else:
