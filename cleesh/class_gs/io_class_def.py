@@ -4,13 +4,15 @@
 
 ### import
 import random
+# import sys
 from importlib import import_module
+# sys.path.append('/Users/tas/Documents/Python/dark_castle3')
 from cleesh.data.static_gbl import engine_static_dict
-from cleesh.games.dark_castle.game_file.game_static_gbl import game_static_dict
+# from cleesh.games.dark_castle.game_file.game_static_gbl import game_static_dict
 
 ### local functions
-def get_game_dict(self):
-	import_str = f"cleesh.games.{self.game_name}.game_file.game_static_gbl"
+def get_game_dict(game_name):
+	import_str = f"cleesh.games.{game_name}.game_file.game_static_gbl"
 	game_static_gbl = import_module(import_str)
 	return game_static_gbl.game_static_dict
 
@@ -83,7 +85,8 @@ class IO(object):
 			return self.get_dyn_dict(key)
 		except:
 			try:
-				return game_static_dict[key]
+#				return game_static_dict[key]
+				return get_game_dict(self.game_name)[key]
 			except:
 				try:
 					return engine_static_dict[key]
@@ -106,7 +109,8 @@ class IO(object):
 				return self.get_dyn_dict(key)
 			except:
 				try:
-					return game_static_dict[key]
+#					return game_static_dict[key]
+					return get_game_dict(self.game_name)[key]
 				except:
 					return engine_static_dict[key]
 
@@ -120,19 +124,23 @@ class IO(object):
 			return engine_static_dict[dict_name]
 		else:
 			try:
-				return game_static_dict[dict_name]
+#				return game_static_dict[dict_name]
+				return get_game_dict(self.game_name)[dict_name]
+#			print(get_game_dict(self.game_name)[dict_name])
 			except:
 				return engine_static_dict[dict_name]
 
 	def get_dict_val(self, dict_name, dict_key):
 		"""Returns a dictionary value from a dict within engine_static_dict.
 		"""
-		return game_static_dict[dict_name][dict_key]
+#		return game_static_dict[dict_name][dict_key]
+		return get_game_dict(self.game_name)[dict_name][dict_key]
 
 	def get_ddict_val(self, dict_name, dict_key1, dict_key2):
 		"""Returns a  value from a double-dictionary within engine_static_dict.
 		"""
-		return game_static_dict[dict_name][dict_key1][dict_key2]
+#		return game_static_dict[dict_name][dict_key1][dict_key2]
+		return get_game_dict(self.game_name)[dict_name][dict_key1][dict_key2]
 
 	def get_lst(self, lst_name, mode=None):
 		"""Returns a list from a dict within engine_static_dict or game_static_dict.
@@ -144,7 +152,8 @@ class IO(object):
 			return engine_static_dict[lst_name]
 		else:
 			try:
-				return game_static_dict[lst_name]
+#				return game_static_dict[lst_name]
+				return get_game_dict(self.game_name)[lst_name]
 			except:
 				return engine_static_dict[lst_name]
 
