@@ -37,7 +37,7 @@ Version 3.85 Goals
 	- DONE: test
 	- DONE: clean up comments
 
-- INPROC: Separate static_dicts for game vs. engine
+- DONE: Separate static_dicts for game vs. engine
 	- IDEA: planning for tooling in the future
 	- IDEA: want to separate what game designer can update vs. what platform / engine designer can update
 	- DONE: game_static_dict = game-specific static content
@@ -95,7 +95,7 @@ Version 3.85 Goals
 	- DONE: create version for each dict
 	- DONE: update version() cmd to display both game & enging versions
 
-- INPROC: sort out home for game data files and the modules that update them
+- DONE: sort out home for game data files and the modules that update them
 	- DONE: finalize vision of pkl_sav & pkl_def vs. mk_def_pkl vs. start_me_up() for game
 		- IDEA: at this point, we only want to discern between engine, game, and session
 		- IDEA: in the future, I will need to implement multi-user
@@ -155,10 +155,10 @@ Version 3.85 Goals
 			- DONE: clean up comments in game_update() and start_up()
 			- DONE: clean up comments in app_main()
 
-- INPROC: dynamic pathing
+- DONE: dynamic pathing
 	- DONE: return game_lst from game_menu()
 	- DONE: determine game_name from game_lst and validated user_num
-	- INPROC: update all game file imports to import based on gs.core.game_name
+	- DONE: update all game file imports to import based on gs.core.game_name
 		- DONE: web_main()
 		- DONE: gs.io()
 			- IDEA; mabybe need to make game_name an attribute of IO ??
@@ -167,26 +167,25 @@ Version 3.85 Goals
 			- DONE: call import function from io get_str() / get_lst() / get_dict() methods
 			- DONE: comment out static import of game_static_dict
 			- DONE: clean-up comments
-	- INPROC: update all pickle paths based on gs.core.game_name
+	- DONE: update all pickle paths based on gs.core.game_name
 		- CANCEL: game_update [is dedicated to dark_castle => can be static]
 		- CANCEL: start_up [is dedicated to dark_castle (for now) => can be static]
-		- INPROC: app_main
+		- DONE: app_main
 			- DONE: in web_app(), pass game_name to app_main()
 			- DONE: in app_main(), compose pickle load string based on game_name
 			- DONE: test
-			- TBD: clean up comments
+			- DONE: clean up comments
 
-
-- TBD: create alternate (simple!) game called cup_of_tea
+- TBD: create alternate (very simple!) game called cup_of_tea
 	- IDEA: the only way to really make a muliti-game system is to create a 2nd game
-	- IDEA: alt game = 'a cup of tea' - you play as Cecily who, with her sister, runs the pub
-	- IDEA: Cecily is bookish; her sister is very popular with lads; Cecily just want peace before pub opens
+	- IDEA: alt game == cup_of_tea - you play as Cecily who, with her sister, runs the pub
+	- IDEA: Cecily is bookish; sister is very popular with lads; Cecily just want peace before pub opens
 	- IDEA: initial game: very simple
 		- IDEA: single room (pub), obj = tea_cup, , hot_tea, rusty_key, comfy_chair; hero = Cecily
 		- IDEA: win = drink tea
-		- TBD: create adventure
+	- TBD: create adventure
 
-- TBD: one-time setup function (like mk_def_pkl() ) that calculates static values for a game version
+- TBD: one-time setup function (game_update() ) that calculates static values for a game version
 	- TBD: max_score; => game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
 	- TBD: str_to_obj_dict = dict that converts name_str to obj; lives in game_ver_static_dict or gs
 		- TBD: elim hasattrib() in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
@@ -196,17 +195,18 @@ Version 3.85 Goals
 		- TBD: update start_up to pull directly from str_to_obj_dict
 		- IDEA: implement start_up_dict for each game and make start_up() part of engine (=> /app_main)
 
-- IDEA: perhaps start_up back to app_main; calls session_assignment() from game
+- TBD: move start_up() back to app_main; calls session_code() from game
 	- IDEA: engine start_up coppies game_files/game_pkl => working/active_pkl
-	- IDEA: engine start_up calls game_files/session_assignment()
+	- IDEA: engine start_up calls game_files/session_code()
 	- IDEA: engine start_up buffers game_static_dict['intro']
 	- IDEA: engine start_up buffers examine of gs.core.start_rm
 	- IDEA: session_file is an attribute of of gs.core ; if gs.core.session_file == None then don't call
 	- TBD: move start_up back to /app_main
+	- TBD: make start_up pickle load dynamic based on game_name
 
 - TBD: implement game save & restore
 
-- IDEA: need to provide defaul engine mechanisms with option to replace with custom game versions
+- IDEA: need to provide default engine mechanisms with option to replace with custom game versions
 	- IDEA: assume a 'lazy game designer' who doesn't create custom values; should work anyhow
 	- TBD: need a default set of titles title_factor that can be over-ridden with game-specific
 
@@ -220,10 +220,9 @@ Version 3.85 Goals
 	- IDEA: book is riff on LotR; office workers on death march project; must bring TTL report to shredder
 		- IDEA: led by bearded application developer, heart-string-pulling retirement party at end
 		- IDEA: always saved by IT person at critical moment
-- TBD: future ideas for 'a cup of tea'
-	- TBD: a thermal attribute for obj that cools over time (hot_tea => warm_tea => cold_tea)
-	- TBD: an hour glass machine (changes time as turns pass; has flip() verb) 
-
+	- TBD: future mechanics for 'a cup of tea'
+		- TBD: a thermal attribute for obj that cools over time (hot_tea => warm_tea => cold_tea)
+		- TBD: an hour glass machine (changes time as turns pass; has flip() verb) 
 
 - TBD: document future to-do of multi-user
 

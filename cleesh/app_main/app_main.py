@@ -17,7 +17,6 @@ def app_main(user_input, game_name):
 	# initiate app_main() - load obj, declare gs, and reset buffer
 	pkl_str = f"/Users/tas/Documents/Python/dark_castle3/cleesh/games/{game_name}/working/active_pkl"
 	with open(pkl_str, 'rb') as f:
-#	with open('/Users/tas/Documents/Python/dark_castle3/cleesh/games/dark_castle/working/active_pkl', 'rb') as f:
 		master_obj_lst = pickle.load(f)
 	gs = master_obj_lst[0]
 	gs.io.reset_buff()
@@ -75,7 +74,6 @@ def app_main(user_input, game_name):
 	# note: need to save state even if is_stateful == False else 'again' won't work on error cases
 	gs.io.last_input_str = user_input
 	with open(pkl_str, 'wb') as f:
-#	with open('/Users/tas/Documents/Python/dark_castle3/cleesh/games/dark_castle/working/active_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 	return is_start, gs.end.is_end, gs.io.get_buff()
 	
