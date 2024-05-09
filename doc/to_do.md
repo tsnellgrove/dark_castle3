@@ -180,6 +180,7 @@ Version 3.85 Goals
 	- IDEA: the only way to really make a muliti-game system is to create a 2nd game
 	- IDEA: alt game == cup_of_tea - you play as Cecily who, with her sister, runs the pub
 	- IDEA: Cecily is bookish; sister is very popular with lads; Cecily just want peace before pub opens
+	- IDEA: wears a cloak with pockets
 	- IDEA: initial game: very simple
 		- IDEA: single room (pub), obj = tea_cup, , hot_tea, rusty_key, comfy_chair; hero = Cecily
 		- IDEA: win = drink tea
@@ -187,6 +188,7 @@ Version 3.85 Goals
 		- DONE: create cup_of_team directory in games/
 		- DONE: create game_file/ and working/ directories in cup_of_tea
 		- DONE: copy __init__.py file into all 3 directories
+		- DONE: create game_update.py template
 		- TBD: 
 
 - TBD: one-time setup function (game_update() ) that calculates static values for a game version
