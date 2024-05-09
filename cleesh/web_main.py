@@ -52,7 +52,7 @@ while True:
 					user_output = "Thank goodness you reconsidered!"
 					call_app_main = False
 			if call_app_main:
-				is_start, is_end, user_output = app_main(user_input)
+				is_start, is_end, user_output = app_main(user_input, game_name)
 			print(user_output)
 		print("THANKS FOR PLAYING!!")
 print("GOODBYE!")

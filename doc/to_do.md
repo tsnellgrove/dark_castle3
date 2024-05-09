@@ -167,7 +167,15 @@ Version 3.85 Goals
 			- DONE: call import function from io get_str() / get_lst() / get_dict() methods
 			- DONE: comment out static import of game_static_dict
 			- DONE: clean-up comments
-	- TBD: update all pickle paths based on gs.core.game_name
+	- INPROC: update all pickle paths based on gs.core.game_name
+		- CANCEL: game_update [is dedicated to dark_castle => can be static]
+		- CANCEL: start_up [is dedicated to dark_castle (for now) => can be static]
+		- INPROC: app_main
+			- DONE: in web_app(), pass game_name to app_main()
+			- DONE: in app_main(), compose pickle load string based on game_name
+			- DONE: test
+			- TBD: clean up comments
+
 
 - TBD: create alternate (simple!) game called cup_of_tea
 	- IDEA: the only way to really make a muliti-game system is to create a 2nd game
