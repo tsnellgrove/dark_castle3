@@ -183,6 +183,7 @@ Version 3.85 Goals
 	- IDEA: wears a cloak with pockets
 	- IDEA: initial game: very simple
 		- IDEA: single room (pub), obj = tea_cup, hot_tea, rusty_key, comfy_chair; hero = Cecily
+		- IDEA: tea writing = "A drink with jam and bread"
 		- IDEA: win = drink tea
 	- INPROC: create adventure
 		- DONE: create cup_of_team directory in games/
