@@ -182,7 +182,7 @@ Version 3.85 Goals
 	- IDEA: Cecily is bookish; sister is very popular with lads; Cecily just want peace before pub opens
 	- IDEA: wears a cloak with pockets
 	- IDEA: initial game: very simple
-		- IDEA: single room (pub), obj = tea_cup, , hot_tea, rusty_key, comfy_chair; hero = Cecily
+		- IDEA: single room (pub), obj = tea_cup, hot_tea, rusty_key, comfy_chair; hero = Cecily
 		- IDEA: win = drink tea
 	- INPROC: create adventure
 		- DONE: create cup_of_team directory in games/

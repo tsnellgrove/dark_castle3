@@ -35,14 +35,7 @@ from cleesh.class_gs.core_class_def import Core
 # *** object instantiation - starting state ***
 
 # Writing obj
-rusty_lettering = Writing('rusty_lettering', 'Rusty Lettering', "lettering", 'rusty_lettering')
-dwarven_runes = Writing('dwarven_runes', 'Dwarven Runes', "runes", 'dwarven_runes')
-messy_handwriting = Writing('messy_handwriting', 'Messy Handwriting', 'handwriting', 'messy_handwriting')
-small_printing = Writing('small_printing', 'Small Printing', 'printing', 'small_printing')
-illuminated_letters = Writing('illuminated_letters', 'Illuminated Letters', 'letters', 'illuminated_letters')
 calligraphy = Writing('calligraphy', 'Calligraphy', 'calligraphy', 'calligraphy')
-trademark = Writing('trademark', 'Trademark', 'trademark', 'trademark')
-gold_capitals = Writing('gold_capitals', 'Gold Capitals', 'capitals', 'gold_capitals')
 
 # ViewOnly
 dark_castle = ViewOnly('dark_castle', "Dark Castle", "castle", 'dark_castle', None)
@@ -64,43 +57,33 @@ loyalty = ViewOnly('loyalty', 'Loyalty', 'loyalty', 'loyalty', None)
 
 # Item
 rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
-torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwriting, 1)
-silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None, 1)
 
 # Food
-cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 1)
-stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 3)
+# cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 1)
+
 
 # Liquid
-well_water = Liquid('well_water', 'Well Water', 'water', 'well_water', None, 0.5)
+tea = Liquid('tea', 'Tea', 'tea', 'tea', None, 0.5)
 
 # Garment
-royal_crown = Garment('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 5, 'hat')
-hedgehog_broach = Garment('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedgehog_broach', None, 1, 'pin')
-red_bandana = Garment('red_bandana', 'Red Bandana', 'bandana', 'red_bandana', None, 1, 'hat')
-big_medal = Garment('big_medal', 'Big Medal', 'medal', 'big_medal', gold_capitals, 2, 'pin')
+# royal_crown = Garment('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 5, 'hat')
+# hedgehog_broach = Garment('hedgehog_broach', 'Hedgehog Broach', 'broach', 'hedgehog_broach', None, 1, 'pin')
 
 # Weapon
-grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing, 10, 
-				[['arcs', 'lightening-fast stroke'],['cleaves', 'violent swing'],['hacks', 'deadly intent']])
-shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarven_runes, 10, 
-				[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']])
+# shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarven_runes, 10, 
+#				[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']])
 
 # Container
 wooden_shelf = ContainerFixedSimple('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None, [], 999, 20, 'on')
-crystal_box = ContainerFixedLockable('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy, ['kinging_scroll_temp'], 1, 999, 'in', False, False, silver_key)
-earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'earthen_jug', None, 1.5, [well_water], 0.5, 5, 'in')
+tea_cup = ContainerPortableSimple('tea_cup', 'Tea Cup', 'cup', 'tea_cup', calligraphy, 1.5, [tea], 0.5, 5, 'in')
 
 # Door
-front_gate = DoorLockable('front_gate', 'Front Gate', "gate", 'front_gate', rusty_lettering, False, False, rusty_key)
-iron_portcullis = DoorLockable('iron_portcullis', 'Iron Portcullis', 'portcullis', 'iron_portcullis', None, False, False, None)
+front_gate = DoorLockable('front_gate', 'Front Gate', "gate", 'front_gate', calligraphy, False, False, rusty_key)
 
 # Switches
-left_lever = LeverSwitch('left_lever', 'Left Lever', 'lever', 'left_lever', None, 'down', None, None)
-middle_lever = LeverSwitch('middle_lever', 'Middle Lever', 'lever', 'middle_lever', None, 'down', None, None)
-right_lever = LeverSwitch('right_lever', 'Right Lever', 'lever', 'right_lever', None, 'down', None, None)
-red_button = ViewOnlyButtonSwitch('red_button', 'Red Button', 'button', 'red_button', None, 'neutral', 'neutral', 'auto_switch_reset')
-throne = SeatSpringSliderSwitch('throne', 'Throne', 'throne', 'throne_pre_broach', None, [], 999, 2, 'on', [crystal_box], 'neutral', 'neutral', 'auto_switch_reset')
+# left_lever = LeverSwitch('left_lever', 'Left Lever', 'lever', 'left_lever', None, 'down', None, None)
+# red_button = ViewOnlyButtonSwitch('red_button', 'Red Button', 'button', 'red_button', None, 'neutral', 'neutral', 'auto_switch_reset')
+# throne = SeatSpringSliderSwitch('throne', 'Throne', 'throne', 'throne_pre_broach', None, [], 999, 2, 'on', [crystal_box], 'neutral', 'neutral', 'auto_switch_reset')
 
 # test obj - not currently in use
 brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None, 1) # test object
@@ -131,26 +114,26 @@ throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
 correct_lever_array_cond = LeverArrayCond('correct_lever_array_cond', [4,2,1])
 wrong_lever_array_cond = PassThruCond('wrong_lever_array_cond')
-hedgehog_has_biscuit_cond = CreatureItemCond('hedgehog_has_biscuit_cond', 'royal_hedgehog_temp', stale_biscuits, True)
-hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_timer, shiny_sword)
-hedgehog_keeps_sword_cond = StateItemInRoomCond('hedgehog_keeps_sword_cond', False, shiny_sword, True)
-hedgehog_loses_sword_cond = StateItemInRoomCond('hedgehog_loses_sword_cond', False, shiny_sword, False)
+# hedgehog_has_biscuit_cond = CreatureItemCond('hedgehog_has_biscuit_cond', 'royal_hedgehog_temp', stale_biscuits, True)
+# hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_timer, shiny_sword)
+# hedgehog_keeps_sword_cond = StateItemInRoomCond('hedgehog_keeps_sword_cond', False, shiny_sword, True)
+# hedgehog_loses_sword_cond = StateItemInRoomCond('hedgehog_loses_sword_cond', False, shiny_sword, False)
 hedgehog_distracted_cond = TimerActiveCond('hedgehog_timer_active_cond', hedgehog_eats_timer, True)
 scroll_not_in_throne_room_cond = RoomCond('scroll_not_in_throne_room_cond', 'throne_room_temp', False)
 hedgehog_not_exist_cond = InWorldCond('hedgehog_not_exist_cond', 'royal_hedgehog_temp', False)
-crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, False)
+# crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, False)
 read_scroll_win_cond = PassThruCond('read_scroll_win_cond')
-axe_in_goblin_hand_cond = CreatureItemCond('axe_in_goblin_hand_cond', 'guard_goblin_temp', grimy_axe, False)
+# axe_in_goblin_hand_cond = CreatureItemCond('axe_in_goblin_hand_cond', 'guard_goblin_temp', grimy_axe, False)
 goblin_exist_state_cond = InWorldStateCond('goblin_dead_state_cond', 'guard_goblin_temp', False)
 
 # results
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'died.', True)
 moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
-moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', royal_crown, True)
+# moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', royal_crown, True)
 throne_push_result = BufferOnlyResult('throne_push_result', False)
 nothing_happens_result = BufferOnlyResult('nothing_happens_result', False)
-throne_pull_result = AddObjChgDescriptResult('throne_pull_result', hedgehog_broach, throne, 'throne_post_broach', False)
-toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
+# throne_pull_result = AddObjChgDescriptResult('throne_pull_result', hedgehog_broach, throne, 'throne_post_broach', False)
+# toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
 portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', False)
 goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'guard_goblin_temp', True)
 hedgehog_attacks_result = AttackBurtResult('hedgehog_attacks_result', 'royal_hedgehog_temp', True)
@@ -230,26 +213,12 @@ cecily = Creature('cecily', 'Cecily', 'cecily', 'cecily', None,
 		}, 90, 90)
 
 # *** Rooms ***
-entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
+pub = Room('pub', 'Pub', "pub", 'pub', None, [dark_castle, moat],
 		[cecily], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
-main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
-		[shiny_sword, wooden_shelf], [eat_biscuits_warning])
-		# note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
-
-antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
-#		[alcove, left_lever, middle_lever, right_lever, red_button], [control_panel, guard_goblin], [])
-		[alcove], [], [dispense_panel_mach])
-
-throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
-		[throne, crystal_box], [broach_dispenser_mach])
-
 unreachable_1 = Room('unreachable_1', 'Unreachable', 'unreachable_1', 'unreachable_1', None, [], [], [])
 
-unreachable_2 = Room('unreachable_2', 'Unreachable', 'unreachable_2', 'unreachable_2', None, [], [], [])
-
-unreachable_3 = Room('unreachable_3', 'Unreachable', 'unreachable_3', 'unreachable_3', None, [], [], [])
 
 # *** gs class modules ***
 core = Core(
@@ -262,14 +231,10 @@ core = Core(
 
 map = Map(
 		'map', # name
-		entrance, # hero_rm
-		[{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall},
-		{'room_x' : entrance, 'dir_x' : 'south', 'door' : 'path', 'dir_y' : None, 'room_y' : unreachable_1},
-		{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
-		{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
-		{'room_x' : main_hall, 'dir_x' : 'north', 'door' : 'passage', 'dir_y' : 'south', 'room_y' : antechamber},
-#		{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
-		{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}] # map_lst
+		pub, # hero_rm
+		[
+			{'room_x' : pub, 'dir_x' : 'south', 'door' : front_gate, 'dir_y' : None, 'room_y' : unreachable_1},
+		] # map_lst
 		)
 
 io = IO(
@@ -308,8 +273,8 @@ gs = GameState(
 ### instantiated objects added to list ###
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible objects need not be listed ###
-master_obj_lst = [gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, trademark, dark_castle, moat, backpack, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, well_water, royal_crown, baseball_cap, hedgehog_broach, crystal_box, front_gate, iron_portcullis, control_panel, throne, left_lever, middle_lever, right_lever, red_button, entrance, main_hall, antechamber, throne_room, loyalty,
-officiousness, gold_capitals, red_bandana, big_medal, cecily, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, earthen_jug, heavy_rock] # note: big_bomb & test_frog removed; glass_bottle removed
+master_obj_lst = [gs, calligraphy, dark_castle, moat, backpack, fist, conscience, faded_tapestries, alcove, stone_coffer, family_tree, dead_goblin, rusty_key, brass_key, bubbly_potion, kinging_scroll, random_mcguffin, baseball_cap, front_gate, control_panel, pub, loyalty,
+officiousness, cecily, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, heavy_rock] # note: big_bomb & test_frog removed; glass_bottle removed
 
 # list written to pickle
 with open('/Users/tas/Documents/Python/dark_castle3/cleesh/games/cup_of_tea/game_file/game_pkl', 'wb') as f:
