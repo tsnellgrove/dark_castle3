@@ -190,7 +190,11 @@ Version 3.85 Goals
 		- DONE: create game_file/ and working/ directories in cup_of_tea
 		- DONE: copy __init__.py file into all 3 directories
 		- DONE: create game_update.py template
-		- TBD: 
+		- DONE: simplify game_update.py for cup_of_tea obj
+		- TBD: game_static_gbl() for cup_of_tea obj
+		- TBD: start_up() for cup_of_tea obj
+		- TBD: create machine for win
+		- TBD: testing!
 
 - TBD: one-time setup function (game_update() ) that calculates static values for a game version
 	- TBD: max_score; => game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
