@@ -1,4 +1,4 @@
-# program: dark castle
+# game: A Cup of Tea
 # name: Tom Snellgrove
 # description: holds the static game dictionary
 
@@ -17,53 +17,31 @@ game_static_dict = {
 
 	### menu info ###
  
-	'game_name' : 'dark_castle',
+	'game_name' : 'cup_of_tea',
     
-	'game_full_name' : 'Dark Castle',
+	'game_full_name' : 'A Cup of Tea',
     
-	'game_descript' : "A classic Zork-like adventure of bravery and baking!",
+	'game_descript' : "A very simple game that proves out the multi-game ability of the Cleesh engine.",
 
 	### universal constants ###
-	'game_version' : '3.84 (3/31/2024)',
+	'game_version' : '0.10 (5/12/2024)',
 
 	### title and score dicts ###
     'title_factor' : 10,
 
 	'titles_by_score' : {
-		-10: 'Burt the Best Forgotten',
-		0: 'Burt the Baker', # was 'Burt the Boneheaded'
-		10: 'Burt the Beginner',
-		20: 'Burt the Better Than Average',
-		30: 'Burt the Brawny',
-		40: 'Burt the Brainy',
-		50: 'Burt the Benevolent',
-		60: 'Burt the Breathtaking',
-		70: 'Burt the Bodacious',
-		80: 'Burt the Bold, Baron of Bright Castle'
+		-10: 'Cecily the Strained',
+		0: 'Cecily the Stressed', 
+		10: 'Burt the Serene'
 	},
 
 	'score_dict' : {
-        'take' : {
-            	('rusty_key', None) : 5,
-        		('shiny_sword', None) : 10,
-        		('hedgehog_broach', None) : 5,
-        		('kinging_scroll', None) : 5
-                },
-        'open' : {('front_gate', None) : 5},
-        'go' : {('throne_room', None) : 10},
-        'wear' : {('royal_crown', None) : 10},
-#        'unlock' : {('front_gate', 'rusty_key') : 5},
-        'give' : {('royal_hedgehog', 'shiny_sword') : 5},
-        'attack' : {
-            	('guard_goblin', 'shiny_sword') : 5,
-                ('royal_hedgehog', '*') : -20
-                },
-        'kinging_scroll' : {('scroll_win_game_result', None) : 15}
+        'drink' : {('tea', None) : 10}
 	},
 
 	### one-word commands - non-objeects ###
 	'introduction' : "Greetings brave adventurer!\n\nYou are Burt-the-Baker, the only adventurer brave - or foolish - enough to enter the Dark Castle in search of treasure.\n\nType 'help' for help.",
-	'credits' : "The Dark Castle game was written and programmed by Tom. Thanks to Toby, Joshua, JoyEllen, Milo, Gideon, Franco, Karl, Andy, Ken and Alec for advice and playtesting!!",
+	'credits' : "The A Cup of Tea game was written and programmed by Tom.",
 
 
 	#### VISIBLE OBJ ####

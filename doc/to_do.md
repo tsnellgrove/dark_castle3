@@ -191,7 +191,7 @@ Version 3.85 Goals
 		- DONE: copy __init__.py file into all 3 directories
 		- DONE: create game_update.py template
 		- DONE: simplify game_update.py for cup_of_tea obj
-		- TBD: game_static_gbl() for cup_of_tea obj
+		- INPROC: game_static_gbl() for cup_of_tea obj
 		- TBD: start_up() for cup_of_tea obj
 		- TBD: create machine for win
 		- TBD: testing!
