@@ -39,7 +39,7 @@ game_static_dict = {
         'drink' : {('tea', None) : 10}
 	},
 
-# cecily, comfy_chair, pub,
+# cecily, pub,
 
 	### one-word commands - non-objeects ###
 	'introduction' : "Hello!\n\nYou are Cecily-the-Serene - or at least you would be - if only you could manage to get a quiet moment to yourself to have a cup of tea. But as the youngest daughter of the family that runs the only pub in the village, quiet moments can be hard to come by!\n\nType 'help' for help.",
@@ -75,6 +75,7 @@ game_static_dict = {
 	
 	### door objects ###
 	'creaky_door' : "The front door to your familie's pub (and home, since you live on the second floor). It's always had a ferocious creak to it.",
+    'comfy_chair' : "The Comfy Chair is a big ragged around the edges but still cozy to curl up in. It's a small oasis of relaxation amidst a sea of ale-fuled raucousness.",
 
 	### creatures ###
 	
