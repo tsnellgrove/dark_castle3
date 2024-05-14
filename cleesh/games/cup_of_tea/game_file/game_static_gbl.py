@@ -60,7 +60,7 @@ game_static_dict = {
 	### food objects ###
 
 	### liquid objects ###
-	'tea' : "Look at that - a perfectly brewed cup of tea. If only you could get a quiet moment to enjo it.",
+	'tea' : "Look at that - a perfectly brewed cup of tea. If only you could get a quiet moment to enjoy it.",
 
 	### clothes objects ###
 
