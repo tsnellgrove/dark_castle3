@@ -49,7 +49,7 @@ game_static_dict = {
 
 	### writing objects ###
     'cursive' : "'A drink with jam and bread'",
-    'block_text' : "McGiggin's Pub (close the door you fool!)",
+    'block_text' : "McGiggin's Pub (close the door ya' fool!)",
 
 	### ViewOnly objects ###
 	
