@@ -39,7 +39,6 @@ game_static_dict = {
         'drink' : {('tea', None) : 10}
 	},
 
-# cecily, pub,
 
 	### one-word commands - non-objeects ###
 	'introduction' : "Hello!\n\nYou are Cecily-the-Serene - or at least you would be - if only you could manage to get a quiet moment to yourself to have a cup of tea. But as the youngest daughter of the family that runs the only pub in the village, quiet moments can be hard to come by!\n\nType 'help' for help.",
@@ -82,10 +81,13 @@ game_static_dict = {
 	# feature_lst #
 
 	# burt #
-	'burt' : "You cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching and the farting I don't know how you'd fend off the ladies!",
+    'cecily' : "You give yourself a self-concious once-over: at age 19 and the youngest daughter of Ethan McGiggin, the prosperous owner of the town's only pub, you should be well on your way towards matrimony - but to your mother's dismay and your own deep gratitude, it appears to be nowhere on the horrizon. Of course you're also the more homely and introverted daughter - more fond of books than boys they say. Your older sister, Chrissy, the queen of the viallage, has always had a dozzen men at a time circling her in eratic orbits, moths to the flame - so who would ever notice you?",
 	
 	# feature_lst # 
 	'hand' : "Yes, that's your Hand. Small, like the rest of you, with long dexterous fingers with a knack for sewing but a few calouses from serving and daily chores. Your favorit Tea Cup is just the right size for this hand...", 
+
+	### room objects ###
+    'pub' : "You are in your family's pub. Sunlight streams through the windows showing a room full of well-worn tables and chairs with a large bar standing across from the entrance. Any moment the regulars will arrive, clamoring for their favorite brews, arguing loudly over sports and poltics, and hurling darts in the general direction of the dart board - and the pub will ignite with sound and motion.",
 
 	## attack result display ##
 	'attack_method_default_result' : "nimbly dodges the attack.",
@@ -98,15 +100,6 @@ game_static_dict = {
 	'easy_parry' : "easily able to parry and thwart the blow.",
 	'hard_parry' : "only barely able to parry the assult!",
 	'jump_back' : "startled and compelled to leap back in surprise.",
-
-	### room objects ###
-	'entrance' : "You are atop the drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south, the way back home. To the east and west of your precarious perch on the drawbridge - and about three feet below you - is the Moat.",
-	
-	'main_hall' : "You are in what was once the sumptuous main hall of the castle. Faded Tapestries hang on the east and west walls. The Front Gate is to the south. And a foreboding archway leads to the north.",
-
-	'antechamber' :"You are in a what feels more like a wide, tall-ceilinged corridor than a room. Apparently this is the room-before-the-room, the pre-room before the really, really grand room that comes after it. If so, the next room must be quite something because, back in it's day, this spot was clearly impressive. Alas, like all of the castle, it has fallen on dark times and now feels more sinister than grand. The east and west walls are bare stone. To the south is an open passageway leading to the Main Hall and to the north there is an Iron Portcullis that guards the path to the grand chamber beyond. Near the Iron Portcullis on the west wall there is a small Alcove. It appears to have some kind of apperatus in it but you can't see it very well due to the dim light and the Guard Goblin standing in front of it and glowering at you. The whole north end of the room is cloaked in shadows that make you uneasy.",
-
-	'throne_room' : "The room you're currently in is vast - almost cavernous. At the far end sits what must have once been a grand and glorious Throne. To the right of the Throne is a giant Stone Coffer and to the left an elegant pedestal that holds what appears to be a delicate Crystal Box. On either wall there are tall windows - now shattered, ruined, and completely choked with thorned vines - but you you remember hearing stories from your great grandmother, Nana, of the beautiful, glowing stained glass that once filled them. And above the room's entrance hangs a vast (though quite dusty) Family Tree.",
 
 
 	#### MACH OBJ & DISP ####
