@@ -193,7 +193,7 @@ Version 3.85 Goals
 		- DONE: simplify game_update.py for cup_of_tea obj
 		- DONE: obj game_static_gbl() for cup_of_tea obj
 		- DONE: start_up() for cup_of_tea obj
-		- TBD: create machine for win
+		- DONE: create machine for win
 		- TBD: win dict entry for game_static_gbl()
 		- TBD: testing!
 
