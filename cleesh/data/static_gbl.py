@@ -18,7 +18,7 @@ engine_static_dict = {
 	'engine_version' : '3.84 (3/31/2024)',
 
 	### Menu Constants ###
-	'game_lst' : ['dark_castle'],
+	'game_lst' : ['cup_of_tea', 'dark_castle'],
 
 	### interp lists ###
 

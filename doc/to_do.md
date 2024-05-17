@@ -194,8 +194,14 @@ Version 3.85 Goals
 		- DONE: obj game_static_gbl() for cup_of_tea obj
 		- DONE: start_up() for cup_of_tea obj
 		- DONE: create machine for win
-		- TBD: win dict entry for game_static_gbl()
-		- TBD: testing!
+		- DONE: win dict entry for game_static_gbl()
+		- DONE: add cup_of_tea to game menu (engine_static_dict)
+		- INPROC: testing!
+			- TBD: test 'score' command
+			- TBD: add 'help' notice
+			- TBD: fix tea_cup
+			- TBD: fix chair (add sit descript, address reach)
+			- TBD: test 'drink tea' and win condition
 
 - TBD: one-time setup function (game_update() ) that calculates static values for a game version
 	- TBD: max_score; => game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)

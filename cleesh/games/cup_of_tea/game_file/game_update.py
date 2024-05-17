@@ -55,7 +55,7 @@ tea = Liquid('tea', 'Tea', 'tea', 'tea', None, 0.5)
 # Weapon
 
 # Container
-dingy_shelf = ContainerFixedSimple('dingy_shelf', 'Dingy Shelf', 'shelf', 'dingy_shelf', None, [], 999, 20, 'on')
+dingy_shelf = ContainerFixedSimple('dingy_shelf', 'Dingy Shelf', 'shelf', 'dingy_shelf', None, [rusty_key], 999, 20, 'on')
 tea_cup = ContainerPortableSimple('tea_cup', 'Tea Cup', 'cup', 'tea_cup', cursive, 1.5, [tea], 0.5, 5, 'in')
 comfy_chair = Seat('comfy_chair', 'Comfy Chair', 'chair', 'comfy_chair', None, [], 999, 2, 'on', [])
 
@@ -87,11 +87,11 @@ cecily = Creature('cecily', 'Cecily', 'cecily', 'cecily', None,
 		[],
 		{},
 		True,
-		{}, 90, 90)
+		{}, 90, 120)
 
 # *** Rooms ***
 pub = Room('pub', 'Pub', "pub", 'pub', None, [],
-		[cecily], [tea_drunk_mach])
+		[cecily, dingy_shelf, tea_cup, comfy_chair], [tea_drunk_mach])
 
 unreachable_1 = Room('unreachable_1', 'Unreachable', 'unreachable_1', 'unreachable_1', None, [], 
 		[], [])
