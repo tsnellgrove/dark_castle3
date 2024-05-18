@@ -150,7 +150,7 @@ gs = GameState(
 ### instantiated objects added to list ###
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible objects need not be listed ###
-master_obj_lst = [gs, rusty_key, brass_key, cecily, cursive, block_text, hand, dingy_shelf, tea, comfy_chair, creaky_door, pub, unreachable_1] # note: big_bomb & test_frog removed; glass_bottle removed
+master_obj_lst = [gs, rusty_key, brass_key, cecily, tea_cup, cursive, block_text, hand, dingy_shelf, tea, comfy_chair, creaky_door, pub, unreachable_1] # note: big_bomb & test_frog removed; glass_bottle removed
 
 # list written to pickle
 with open('/Users/tas/Documents/Python/dark_castle3/cleesh/games/cup_of_tea/game_file/game_pkl', 'wb') as f:

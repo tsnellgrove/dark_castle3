@@ -197,9 +197,9 @@ Version 3.85 Goals
 		- DONE: win dict entry for game_static_gbl()
 		- DONE: add cup_of_tea to game menu (engine_static_dict)
 		- INPROC: testing!
-			- TBD: test 'score' command
-			- TBD: add 'help' notice
-			- TBD: fix tea_cup
+			- DONE: test 'score' command
+			- DONE: add 'help' notice
+			- DONE: fix tea_cup
 			- TBD: fix chair (add sit descript, address reach)
 			- TBD: test 'drink tea' and win condition
 
