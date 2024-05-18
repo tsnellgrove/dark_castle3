@@ -242,6 +242,8 @@ Version 3.85 Goals
 		- TBD: a thermal attribute for obj that cools over time (hot_tea => warm_tea => cold_tea)
 		- TBD: an hour glass machine (changes time as turns pass; has flip() verb) 
 
+- TBD: debug error in interp() that states that obj_name was not in pickle "I don't see a X here"
+
 - TBD: document future to-do of multi-user
 
 # *** FUTURE TO DO *** #
