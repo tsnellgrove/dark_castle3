@@ -672,6 +672,8 @@ interpreter ideas:
 - IDEA: maybe don't need warning so much... just keep describing them as tasting worse and worse? Food consistent within creatures?
 
 - food & drink system?
+- hunger & thirst to be indepedent boolean settings in gs.core
+- hunger & thirst durations settable in gs.core
 
 Food:
 - bread for Burt (save piecs of cheese for the mice)
@@ -680,6 +682,8 @@ Food:
 - additional bread verbs needed: bake ???
 
 *** Get tiredness and sleep working ***
+
+- sleep to be a setable boolean in gs.core; also setable duration
 
 - maybe sleep in bed (after min # of moves) to dream to get hints? But light must be on so you loose turns of light and wake up hungry and thirsty? Hint is provided randomly based on points not yet accrued?
 - need to check Enchanter to find length of days, when sleep needed, food & drink, etc
