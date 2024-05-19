@@ -380,7 +380,8 @@ class Seat(ContainerFixedSimple):
 		if creature == gs.core.hero:
 			gs.io.buffer(f"You are now seated in the {self.full_name}.")
 			gs.io.buff_s(f"{creature.name}_enter_{self.descript_key}")
-			creature.disp_in_reach(gs)
+			if len(self.in_reach_lst) > 0:
+				creature.disp_in_reach(gs)
 		else:
 			gs.io.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
 		return

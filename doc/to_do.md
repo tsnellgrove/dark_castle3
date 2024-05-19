@@ -200,7 +200,7 @@ Version 3.85 Goals
 			- DONE: test 'score' command
 			- DONE: add 'help' notice
 			- DONE: fix tea_cup
-			- TBD: fix chair (add sit descript, address reach)
+			- DONE: fix chair (add sit descript, address reach)
 			- TBD: test 'drink tea' and win condition
 
 - TBD: one-time setup function (game_update() ) that calculates static values for a game version

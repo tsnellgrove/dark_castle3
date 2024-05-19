@@ -107,6 +107,7 @@ game_static_dict = {
 	### updated room descriptions ###
 
 	### enter descriptions ###
+	'cecily_enter_comfy_chair' : "Your favorite comfy chair - the perfect place for a sip of tea!",
 
 	### wear descriptions ###
 			

@@ -349,6 +349,8 @@ class Creature(ViewOnly):
 		if self != gs.core.hero:
 			return
 		seat_obj = self.get_contained_by(gs)
+		if len(seat_obj.in_reach_lst) == 0:
+			return
 		in_reach_disp_obj_lst = []
 		for in_reach_obj in seat_obj.in_reach_lst:
 			if not in_reach_obj.is_room():
@@ -358,6 +360,8 @@ class Creature(ViewOnly):
 					if room_obj.is_item():
 						in_reach_disp_obj_lst.append(room_obj)
 		in_reach_disp_txt_lst = [obj.full_name for obj in in_reach_disp_obj_lst]
+		if len(in_reach_disp_txt_lst) == 0:
+			return
 		in_reach_str = ", ".join(in_reach_disp_txt_lst)
 		gs.io.buffer(f"From your position on the {seat_obj.full_name} you can just reach: {in_reach_str}")
 
