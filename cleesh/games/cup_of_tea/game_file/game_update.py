@@ -79,7 +79,7 @@ tea_drunk_win_result = BufferAndEndResult('tea_drunk_win_result', 'won!', False)
 # warnings
 
 # machines
-tea_drunk_mach = InvisMach('tea_drunk_mach', None, 'post_act_cmd', None, [['drink', 'tea']], None, [pass_thru_cond], [tea_drunk_win_result])
+tea_drunk_mach = InvisMach('tea_drunk_mach', None, 'post_act_cmd', None, [['drink', 'tea_cup', 'tea']], None, [pass_thru_cond], [tea_drunk_win_result])
 
 # Creatures
 cecily = Creature('cecily', 'Cecily', 'cecily', 'cecily', None,

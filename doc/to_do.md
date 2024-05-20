@@ -201,7 +201,9 @@ Version 3.85 Goals
 			- DONE: add 'help' notice
 			- DONE: fix tea_cup
 			- DONE: fix chair (add sit descript, address reach)
-			- TBD: test 'drink tea' and win condition
+			- DONE: test 'drink tea' and win condition
+			- TBD: fix 'drink tea' score
+			- TBD: add 'any key to continue' between game end and return to game menu
 
 - TBD: one-time setup function (game_update() ) that calculates static values for a game version
 	- TBD: max_score; => game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
@@ -229,6 +231,7 @@ Version 3.85 Goals
 	- TBD: need a default set of titles title_factor that can be over-ridden with game-specific
 
 - TBD: future updates for cup_of_tea (this will eventually be the setup for why Burt went to DC)
+	- TBD: need to fix door (have pub folks charge in)
 	- IDEA: to drink tea, Cecily must lock front door, sit in comfy chair, read book, eat biscuit
 	- IDEA: also, she must get rid of Burt who wants her attention (give rusty_key to burt)
 	- IDEA: Cecily sort of likes Burt - he's better than that Gaston fellow - but overgrown puppy
