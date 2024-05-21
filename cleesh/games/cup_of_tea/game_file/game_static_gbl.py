@@ -32,13 +32,14 @@ game_static_dict = {
 	'titles_by_score' : {
 		-10: 'Cecily the Strained',
 		0: 'Cecily the Stressed', 
-		10: 'Burt the Serene'
+		10: 'Cecily the Serene'
 	},
 
 	'score_dict' : {
-        'drink' : {('tea', None) : 10}
+        'drink' : {('tea', 'tea_cup') : 10}
 	},
 
+#	'give' : {('royal_hedgehog', 'shiny_sword') : 5},
 
 	### one-word commands - non-objeects ###
 	'introduction' : "Hello!\n\nYou are Cecily-the-Serene - or at least you would be - if only you could manage to get a quiet moment to yourself to have a cup of tea. But as the youngest daughter of the family that runs the only pub in the village, quiet moments can be hard to come by!\n\nType 'help' for help.",

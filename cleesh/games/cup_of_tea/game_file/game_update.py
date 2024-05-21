@@ -60,7 +60,8 @@ tea_cup = ContainerPortableSimple('tea_cup', 'Tea Cup', 'cup', 'tea_cup', cursiv
 comfy_chair = Seat('comfy_chair', 'Comfy Chair', 'chair', 'comfy_chair', None, [], 999, 2, 'on', [])
 
 # Door
-creaky_door = DoorLockable('creaky_door', 'Creaky Door', "door", 'creaky_door', block_text, False, False, rusty_key)
+creaky_door = DoorLockable('creaky_door', 'Creaky Door', "door", 'creaky_door', block_text, False, False, brass_key)
+# set creaky_door to unlocked once warning mach in place
 
 # Switches
 
@@ -83,11 +84,11 @@ tea_drunk_mach = InvisMach('tea_drunk_mach', None, 'post_act_cmd', None, [['drin
 
 # Creatures
 cecily = Creature('cecily', 'Cecily', 'cecily', 'cecily', None,
-		None, [], [brass_key], [], [hand],
+		None, [], [], [], [hand],
 		[],
 		{},
 		True,
-		{}, 90, 120)
+		{}, 90, 120) # add brass_key to inventory once warning mach in place
 
 # *** Rooms ***
 pub = Room('pub', 'Pub', "pub", 'pub', None, [],
