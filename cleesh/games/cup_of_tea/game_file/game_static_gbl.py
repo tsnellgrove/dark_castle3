@@ -24,7 +24,7 @@ game_static_dict = {
 	'game_descript' : "A very simple game that proves out the multi-game ability of the Cleesh engine.",
 
 	### universal constants ###
-	'game_version' : '0.10 (5/12/2024)',
+	'game_version' : '0.15 (5/22/2024)',
 
 	### title and score dicts ###
     'title_factor' : 10,

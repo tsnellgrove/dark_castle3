@@ -1,7 +1,7 @@
-# program: dark castle
-# version: 3.84
+# program: cleesh game engine
+# version: 3.86
 # author: Tom Snellgrove
-# date: Mar 31, 2024
+# date: May 22, 2024
 # description: web main module for a zork-like text adventure game.
 # goals vs. dc2: oop, modular, improved interpreter, working containers, 
 #		modularized machines, and replicate full original.
