@@ -5262,3 +5262,204 @@ Version 3.84 Goals
 - DONE: put score() & end() between post_action() and auto_action() [i.e. between move 'n' and 'n+1']
 
 
+##########################
+### VERSION 3.85 START ###
+##########################
+
+Version 3.85 Goals
+- Review to-dos and set precise goals for 3.85
+- Isolate game engine vs. game vs. game instance
+- create game menu interface
+- create mini game 2 (A Cup of Tea)
+
+- IDEA: big picture thinking
+	- IDEA: think engine that supports multi-game, multi-player, multi-instance
+		- IDEA: engine = modules & static_dict
+		- IDEA: game = obj_pkl & game_ver_static_dict
+		- IDEA: user = user_id, game_instance_saves
+		- IDEA: instance = save games
+	- IDEA: most static data is based on game version (e.g. most text; also max_score)
+	- IDEA: but some static data is based on game instance (e.g. random # for portcullis => gs)
+	- IDEA: for now, don't worry about multi-user - focus is on multi-game
+
+- DONE: instantiate map in mk_def_pkl() and save in pickle in case map someday changes during game (fun idea)
+
+- DONE: decide on game folder structure
+	- IDEA: separate folder for game; contains game_static_dict
+	- DONE: need a name for my game engine: cleesh (Enchanter spell to turn creature into small amphibian)
+	- DONE: cleesh logo = red spotted newt
+	- DONE: create games/dark_castle directory
+	- DONE: create games/dark_castle/game_file and games/dark_castle/working
+	- DONE: change top level directory from 'dc3' => 'cleesh' 
+		- NOTE: could have just changed and accepted auto update
+	- DONE: test
+	- DONE: clean up comments
+
+- DONE: Separate static_dicts for game vs. engine
+	- IDEA: planning for tooling in the future
+	- IDEA: want to separate what game designer can update vs. what platform / engine designer can update
+	- DONE: game_static_dict = game-specific static content
+	- DONE: curent game directory as attribute of gs.core
+	- DONE: in static_gbl() and io_class_def() update static_dict => engine_static_dict
+	- DONE: decide whether to enable explicit dict choice - or just always try game first, engine 2nd
+		- DECISION: in general, always try game_static_dict first; on except => engine_static_dict
+		- DECISION: should also have an explicit engine-only lookup: get_str_e() [or dict / lst equiv]
+	- DONE: consider - separate methods or via passed in mode w/ default = 'std' / alt = 'eng'?
+		- DONE: determine & list cases where answer will always be in engine_static_dict (e.g. interp() )
+		- FINDING: key cases = get_str, get_lst, get_dict, get_dict_val
+		- IDEA: highly unlikely but don't want to enable a case where game designer could over-ride engine
+		- IDEA: implication is that all IO methods should be able to support 'enging only' case
+		- DECISION: implement as 'mode' that gets passed with default = 'std' (vs. 'eng')
+	- DONE: implement get_str() with mode
+		- DONE: import game_static_dict
+		- DONE: add mode attribute
+		- DONE: add additional try-except clause for game_static_dict
+		- DONE: test
+		- DONE: add if-then clause for mode == eng
+		- DONE: implement and test for 'version'
+		- DONE: update static dicts => 'game_version' & 'engine_version'
+		- DONE: update version() command to show 'engine_version' and, if exist, 'game_engine'
+		- DONE: test
+	- DONE: create a non-ref version of get_str()
+		- DONE: review get_str() method and usage
+		- FINDING: can just use get_str_nr()
+		- DONE: update get_str_nr() with mode option
+		- DONE: test get_str_nr() with version
+		- DONE: simplify (remove mode option from) get_str()
+	- DONE: implement get_lst() with mode
+		- DONE: add optional mode attribute to get_lst()
+		- DONE: update standard get_lst() calls for eng_static_dict to include over-ride
+			- DONE: cmd_exe()
+			- DONE: interp()
+		- DONE: clean up comments
+	- DONE: implement get_dict() with mode
+		- DONE: add optional mode attribute to get_dict()
+		- DONE: update get_dict() calls in cmd_exe() and interp() to include 'eng' mode
+		- DONE: clean up comments
+	- DONE: in cmd_exe() and interp(), convert get_dict_val('dict','key')) => get_dict('dict','eng')[key]
+	- DONE: delete unused portion of each static dict
+		- DONE: clean-up engine_static_dict
+		- DONE: clean-up game_static_dict
+		- DONE: full game test
+	- DONE: [DOC] game vs. engine approach
+	- DONE: [DOC] small number of methods that can guarantee 'eng' mode to avoid risk of rouge game dev
+
+- DONE: de-burt engine / error messages
+	- DONE: eng_static_dict = interp, version, help, errors (remove "Burt" ref from errors)
+	- DONE: review error messages / engine text not in static_dict and remove any "burt" refs
+
+- DONE: separate version numbers for game and engine
+	- DONE: assume a 'lazy game designer' who doesn't create custom values; should work anyhow
+	- DONE: create version for each dict
+	- DONE: update version() cmd to display both game & enging versions
+
+- DONE: sort out home for game data files and the modules that update them
+	- DONE: finalize vision of pkl_sav & pkl_def vs. mk_def_pkl vs. start_me_up() for game
+		- IDEA: at this point, we only want to discern between engine, game, and session
+		- IDEA: in the future, I will need to implement multi-user
+		- mk_def_pkl() =rename=> mk_start_pkl => games\dark_castle\game_file (creates start_pkl) 
+		- pkl_def =rename=> start_pkl => games\dark_castle\game_file (generic starting game obj)
+		- start_up() => games\dark_castle\game_file (converts start_pkl to active_pkl)
+		- pkl_sav =rename=> active_pkl => games\dark_castle\working (holds obj for specific session)
+	- DONE: where to keep data like game_name, game_full_name, game_path?
+		- IDEA: gs.game_menu class module
+			- IDEA: only attribute == game_name ?
+			- IDEA: instead, just replace gs.core.game_dir (not yet in use) with game_name
+		- IDEA: need a game_menue directory
+		- IDEA: in \game_menue , need a gm_menu_static_dict that contains game_lst
+			- IDEA: what if game_lst lives in engine_static_dict ?
+		- IDEA: gm_menue_static_dict also holds dict of list of [game_full name, game_descript, game_path]
+			- IDEA: and game_name, game_full_name, and game_descript live in game_static_dict ?
+			- IDEA: and game path always == game_name ??
+		- IDEA: need outer game_name loop for web_main() ; set to None at start; if None, go to menu
+		- IDEA: menue shows list of games - each with a number, and asks user to choose or quit
+		- IDEA: on game_menu choice, populate values of game_menu_class_def()
+		- IDEA: on quit from game, game_name is reset to None
+	- DONE: create static_dict entries:
+		- DONE: engine_static_dict (game_lst)
+		- DONE: game_static_dict (game_name, game_full_name, game_descript)
+	- DONE: re-purpose gs.core.game_dir => gs.core.game_name
+		- DONE: update gs.core()
+		- DONE: update mk_def_pkl()
+	- DONE: extend web_main() with menu wrapper (no double check on Q for quit)
+		- IDEA: initially, just pull list from engine_static_dict and print to screen
+		- IDEA: input = table_int or Q to quit 
+		- IDEA: don't really need to save game_name ... just need to pass it in to app_main for start_up path
+		- DONE: add game menue prompt to web_main()
+			- DONE: get user game choice input
+				- DONE: re-loop if response is out of range int
+				- IDEA: user_num = 0; if userchoice == 'q', break; else try: user_num = int(user_choice); 	except: user_num = 0  ; if usernum > 0 and user_num <= len(game_lst): <good> ; 
+				- DONE: handle response is real num
+				- DONE: handle resposne is letter
+				- DONE: quite on 'q'
+	- DONE: create game_menu() module in \app_main to display game menue using PrettyTable
+		- LINK: https://stackoverflow.com/questions/9535954/printing-lists-as-tabular-data
+		- LINK: https://amrinarosyd.medium.com/prettytable-vs-tabulate-which-should-you-use-e9054755f170#:~:text=Tabulate%20requires%20you%20to%20import,function%20to%20print%20the%20table.&text=PrettyTable%20allows%20you%20to%20customize,%2C%20alignment%2C%20and%20border%20style.
+
+	- DONE: finalize menue
+		- DONE: fix game choice issue (2x option 1 in a row)
+		- DONE: clean-up spacing
+
+	- DONE: move game files => /game
+		- DONE: copy mk_def_pkl to dark_castle/game_files dir; rename to game_update()
+		- DONE: update game_update() to create game_pkl in dark_castle/game_files dir
+		- DONE: move start_up() to dark_castle\game_files
+		- NOTE: vscode auto-updates web_main() to import start_up() from correct dir
+		- DONE: update start_up() to point create active_pkl in dark_castle/working
+		- DONE: update app_main() to open active_pkl from dark_castle/working
+		- DONE: clean-up
+			- DONE: clean up mk_def_pkl() and def_pkl
+			- DONE: clean up sav_pkl
+			- DONE: clean up comments in game_update() and start_up()
+			- DONE: clean up comments in app_main()
+
+- DONE: dynamic pathing
+	- DONE: return game_lst from game_menu()
+	- DONE: determine game_name from game_lst and validated user_num
+	- DONE: update all game file imports to import based on gs.core.game_name
+		- DONE: web_main()
+		- DONE: gs.io()
+			- IDEA; mabybe need to make game_name an attribute of IO ??
+			- DONE: move game_name attribute from core to io
+			- DONE: create io import funciton ( get_game_dict() ) to import game_static_dict
+			- DONE: call import function from io get_str() / get_lst() / get_dict() methods
+			- DONE: comment out static import of game_static_dict
+			- DONE: clean-up comments
+	- DONE: update all pickle paths based on gs.core.game_name
+		- CANCEL: game_update [is dedicated to dark_castle => can be static]
+		- CANCEL: start_up [is dedicated to dark_castle (for now) => can be static]
+		- DONE: app_main
+			- DONE: in web_app(), pass game_name to app_main()
+			- DONE: in app_main(), compose pickle load string based on game_name
+			- DONE: test
+			- DONE: clean up comments
+
+- DONE: create alternate (very simple!) game called cup_of_tea
+	- IDEA: the only way to really make a muliti-game system is to create a 2nd game
+	- IDEA: alt game == cup_of_tea - you play as Cecily who, with her sister, runs the pub
+	- IDEA: Cecily is bookish; sister is very popular with lads; Cecily just want peace before pub opens
+	- IDEA: wears a cloak with pockets
+	- IDEA: initial game: very simple
+		- IDEA: single room (pub), obj = tea_cup, hot_tea, rusty_key, comfy_chair; hero = Cecily
+		- IDEA: tea writing = "A drink with jam and bread"
+		- IDEA: win = drink tea
+	- DONE: create adventure
+		- DONE: create cup_of_team directory in games/
+		- DONE: create game_file/ and working/ directories in cup_of_tea
+		- DONE: copy __init__.py file into all 3 directories
+		- DONE: create game_update.py template
+		- DONE: simplify game_update.py for cup_of_tea obj
+		- DONE: obj game_static_gbl() for cup_of_tea obj
+		- DONE: start_up() for cup_of_tea obj
+		- DONE: create machine for win
+		- DONE: win dict entry for game_static_gbl()
+		- DONE: add cup_of_tea to game menu (engine_static_dict)
+		- DONE: testing!
+			- DONE: test 'score' command
+			- DONE: add 'help' notice
+			- DONE: fix tea_cup
+			- DONE: fix chair (add sit descript, address reach)
+			- DONE: test 'drink tea' and win condition
+			- DONE: fix 'drink tea' score
+			- DONE: address door bug
+- DONE: wrap on 3.85 and set goals for 3.86 (post multi-game clean-up) and beyond (cup_of_tea enahnce)
