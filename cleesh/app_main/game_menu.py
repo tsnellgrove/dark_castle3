@@ -20,7 +20,7 @@ def print_game_menu():
         import_str = f"cleesh.games.{game_name}.game_file.game_static_gbl"
         game_static_gbl = import_module(import_str)
         row_lst = [index, game_static_gbl.game_static_dict['game_full_name'], game_static_gbl.game_static_dict['game_descript']]
-        menu.add_row(row_lst)
+        menu.add_row(row_lst, divider=True)
     print()
     print(menu)
     print()

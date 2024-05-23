@@ -55,4 +55,6 @@ while True:
 				is_start, is_end, user_output = app_main(user_input, game_name)
 			print(user_output)
 		print("THANKS FOR PLAYING!!")
+		print()
+		any_key = input("Press Enter To Return To The Game Menu: ")
 print("GOODBYE!")

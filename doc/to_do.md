@@ -11,24 +11,31 @@ Version 3.86 Goals
 - tune start-up
 - Introduce save & restore features
 
-- TBD: add 'any key to return to the game menu' after "THANKS FOR PLAYING"
+- DONE: clean up game menu:
+	- DONE: add 'any key to return to the game menu' after "THANKS FOR PLAYING"
+	- DONE: add row dividers in game menu
 
 - TBD: one-time setup function (game_update() ) that calculates static values for a game version
-	- TBD: max_score; => game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
-	- TBD: str_to_obj_dict = dict that converts name_str to obj; lives in game_ver_static_dict or gs
-		- TBD: elim hasattrib() in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
+	- TBD: max_score
+		- TBD: max_score; => game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
+	- TBD: str_to_obj_dict
+		- TBD: confirm that every obj has a name attribute
+		- TBD: in game_update, create str_to_obj_dict = dict ; converts name_str to obj; lives in gs.core
+	- TBD: elim hasattrib() 
+		- TBD: in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
 		- TBD: for gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
 		- TBD: eliminate 'hasattrib' for containers in gs.scope_lst() too
-		- TBD: have a default methods is_contain and is_mach for Invisible that returns False; overload to True for exception cases
+		- TBD: have default methods is_contain and is_mach for Invisible that returns False; 
+			- TBD: overload to True for exception cases
 		- TBD: update start_up to pull directly from str_to_obj_dict
-		- IDEA: implement start_up_dict for each game and make start_up() part of engine (=> /app_main)
 
 - TBD: move start_up() back to app_main; calls session_code() from game
-	- IDEA: engine start_up coppies game_files/game_pkl => working/active_pkl
-	- IDEA: engine start_up calls game_files/session_code()
-	- IDEA: engine start_up buffers game_static_dict['intro']
-	- IDEA: engine start_up buffers examine of gs.core.start_rm
-	- IDEA: session_file is an attribute of of gs.core ; if gs.core.session_file == None then don't call
+	- IDEA: implement start_up_dict for each game and make start_up() part of engine (=> /app_main)
+		- IDEA: engine start_up coppies game_files/game_pkl => working/active_pkl
+		- IDEA: engine start_up calls game_files/session_code()
+		- IDEA: engine start_up buffers game_static_dict['intro']
+		- IDEA: engine start_up buffers examine of gs.core.start_rm
+		- IDEA: session_file is attribute of of gs.core ; if gs.core.session_file == None then don't call
 	- TBD: move start_up back to /app_main
 	- TBD: make start_up pickle load dynamic based on game_name
 
