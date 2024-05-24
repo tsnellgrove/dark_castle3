@@ -15,12 +15,17 @@ Version 3.86 Goals
 	- DONE: add 'any key to return to the game menu' after "THANKS FOR PLAYING"
 	- DONE: add row dividers in game menu
 
-- TBD: one-time setup function (game_update() ) that calculates static values for a game version
-	- TBD: max_score
-		- TBD: max_score; => game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
+- INPROC: one-time setup function (game_update() ) that calculates static values for a game version
+	- INPROC: max_score
+		- CANCEL: max_score; => game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
+		- IDEA: want to have as little code as possible in game update (now that we have 1 per game)
+		- DONE: convert max_score to game_static_dict value
+		- DONE: update gs.score call for max_score
+		- TBD: clean up comments 
 	- TBD: str_to_obj_dict
 		- TBD: confirm that every obj has a name attribute
-		- TBD: in game_update, create str_to_obj_dict = dict ; converts name_str to obj; lives in gs.core
+		- TBD: in game_update, create str_to_obj_dict = dict ; converts name_str to obj
+		- IDEA: can we do this in start_up() and assign to gs.core attribute?
 	- TBD: elim hasattrib() 
 		- TBD: in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
 		- TBD: for gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine

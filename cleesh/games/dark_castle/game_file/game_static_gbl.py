@@ -28,6 +28,8 @@ game_static_dict = {
 
 	### title and score dicts ###
     'title_factor' : 10,
+    
+	'max_score' : 75,
 
 	'titles_by_score' : {
 		-10: 'Burt the Best Forgotten',

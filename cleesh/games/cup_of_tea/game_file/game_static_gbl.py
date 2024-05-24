@@ -29,6 +29,8 @@ game_static_dict = {
 	### title and score dicts ###
     'title_factor' : 10,
 
+	'max_score' : 10,
+
 	'titles_by_score' : {
 		-10: 'Cecily the Strained',
 		0: 'Cecily the Stressed', 
