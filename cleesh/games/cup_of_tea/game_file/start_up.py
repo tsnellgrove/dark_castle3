@@ -24,9 +24,7 @@ def start_me_up():
 	gs.io.buff_e('introduction')
 
 	# buffer <start_rm>.examine()
-	for obj in master_obj_lst[1:]:
-		if obj.name == 'pub':
-			obj.examine(gs)
+	gs.core.get_str_to_obj_dict('pub').examine(gs)
 
 	# dump updated objects to sav_pkl
 	with open('/Users/tas/Documents/Python/dark_castle3/cleesh/games/cup_of_tea/working/active_pkl', 'wb') as f:

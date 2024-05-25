@@ -30,9 +30,9 @@ Version 3.86 Goals
 			- DONE: add empty assignment to game_update for both games
 			- DONE: create start_up routine that creates dict and assigns to gs.core attrib (both games)
 			- DONE: test via print
-	- TBD: elim hasattrib() and other strange obj lookups
-		- TBD: fix dark_castle start_up
-		- TBD: fix cup_of_tea start_up
+	- INPROC: elim hasattrib() and other strange obj lookups
+		- DONE: fix dark_castle start_up
+		- DONE: fix cup_of_tea start_up
 		- TBD: in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
 		- TBD: for gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
 		- TBD: eliminate 'hasattrib' for containers in gs.scope_lst() too
@@ -65,6 +65,12 @@ Version 3.86 Goals
 
 #        output2 = (" out of " + str(self.get_max_score(gs)))
 
+*** unused code in dark_castle/.../start_up() ***
+#	for obj in master_obj_lst[1:]:
+#		if obj.name == 'control_panel':
+#			obj.mach_state = portcullis_code
+#		if obj.name == 'entrance':
+#			obj.examine(gs)
 
 
 # *** FUTURE TO DO *** #
