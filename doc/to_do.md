@@ -22,11 +22,17 @@ Version 3.86 Goals
 		- DONE: convert max_score to game_static_dict value
 		- DONE: update gs.score call for max_score
 		- DONE: clean up comments 
-	- INPROC: str_to_obj_dict
-		- TBD: confirm that every obj has a name attribute
-		- TBD: in game_update, create str_to_obj_dict = dict ; converts name_str to obj
-		- IDEA: can we do this in start_up() and assign to gs.core attribute?
-	- TBD: elim hasattrib() 
+	- DONE: str_to_obj_dict
+		- DONE: confirm that every obj has a name attribute (confirmed)
+		- DONE: in start_up(), create str_to_obj_dict = dict => gs.core attrib
+			- DONE: add str_to_obj_dict to gs.core attributes
+			- DONE: setters & getters (manual since is dict)
+			- DONE: add empty assignment to game_update for both games
+			- DONE: create start_up routine that creates dict and assigns to gs.core attrib (both games)
+			- DONE: test via print
+	- TBD: elim hasattrib() and other strange obj lookups
+		- TBD: fix dark_castle start_up
+		- TBD: fix cup_of_tea start_up
 		- TBD: in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
 		- TBD: for gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
 		- TBD: eliminate 'hasattrib' for containers in gs.scope_lst() too
@@ -39,7 +45,7 @@ Version 3.86 Goals
 		- IDEA: engine start_up coppies game_files/game_pkl => working/active_pkl
 		- IDEA: engine start_up calls game_files/session_code()
 		- IDEA: engine start_up buffers game_static_dict['intro']
-		- IDEA: engine start_up buffers examine of gs.core.start_rm
+		- IDEA: engine start_up buffers examine of gs.core.start_rm (create as gs.core attrib)
 		- IDEA: session_file is attribute of of gs.core ; if gs.core.session_file == None then don't call
 	- TBD: move start_up back to /app_main
 	- TBD: make start_up pickle load dynamic based on game_name

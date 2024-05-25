@@ -8,28 +8,27 @@ import pickle
 
 
 def start_me_up():
-	# object list loaded from def_pkl ###
+	# object list loaded from def_pkl
 	with open('/Users/tas/Documents/Python/dark_castle3/cleesh/games/cup_of_tea/game_file/game_pkl', 'rb') as f:
 		master_obj_lst = pickle.load(f)
 
 	gs = master_obj_lst[0]
 
-	# Determine Random Secret Code ###
-#	portcullis_code = random.randint(0, 7)
-#	port_code_txt = "'..ode is " + str(portcullis_code) + ". Don't tell anyo..'"
-#	gs.io.set_dyn_dict('messy_handwriting', port_code_txt)
-	
-	# introductory text ###
+	# assign str_to_obj_dict
+	for obj in master_obj_lst:
+		gs.core.set_str_to_obj_dict(obj.name, obj)
+
+	# assign game session values
+
+	# buffer introductory text
 	gs.io.buff_e('introduction')
 
-	# set control_panel.mach_state and buffer entrance.examine()
+	# buffer <start_rm>.examine()
 	for obj in master_obj_lst[1:]:
-#		if obj.name == 'control_panel':
-#			obj.mach_state = portcullis_code
 		if obj.name == 'pub':
 			obj.examine(gs)
 
-	# dump updated objects to sav_pkl ###
+	# dump updated objects to sav_pkl
 	with open('/Users/tas/Documents/Python/dark_castle3/cleesh/games/cup_of_tea/working/active_pkl', 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 

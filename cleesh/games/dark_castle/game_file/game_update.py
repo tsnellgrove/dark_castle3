@@ -286,8 +286,8 @@ core = Core(
 		'core', # name
 		burt, # hero
         0, # move_count
-        False # is_debug
-#		dark_castle # game_name
+        False, # is_debug
+		{} # str_to_obj_dict
 		)
 
 map = Map(
