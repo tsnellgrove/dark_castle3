@@ -16,13 +16,13 @@ Version 3.86 Goals
 	- DONE: add row dividers in game menu
 
 - INPROC: one-time setup function (game_update() ) that calculates static values for a game version
-	- INPROC: max_score
+	- DONE: max_score
 		- CANCEL: max_score; => game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
 		- IDEA: want to have as little code as possible in game update (now that we have 1 per game)
 		- DONE: convert max_score to game_static_dict value
 		- DONE: update gs.score call for max_score
-		- TBD: clean up comments 
-	- TBD: str_to_obj_dict
+		- DONE: clean up comments 
+	- INPROC: str_to_obj_dict
 		- TBD: confirm that every obj has a name attribute
 		- TBD: in game_update, create str_to_obj_dict = dict ; converts name_str to obj
 		- IDEA: can we do this in start_up() and assign to gs.core attribute?
@@ -47,6 +47,19 @@ Version 3.86 Goals
 - TBD: implement game save & restore
 
 - TBD: debug error in interp() that states that obj_name was not in pickle "I don't see a X here"
+
+*** unused code from score_class_def() ***
+#    def get_max_score(self, gs):
+#        max_score = 0
+#        for verb in gs.io.get_dict('score_dict'):
+#            for subj_key in gs.io.get_dict_val('score_dict', verb):
+#                if gs.io.get_ddict_val('score_dict', verb, subj_key) > 0:
+#                    max_score += gs.io.get_ddict_val('score_dict', verb, subj_key)
+#        return max_score
+
+#        output2 = (" out of " + str(self.get_max_score(gs)))
+
+
 
 # *** FUTURE TO DO *** #
 
