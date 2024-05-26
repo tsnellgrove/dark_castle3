@@ -33,9 +33,10 @@ Version 3.86 Goals
 	- INPROC: elim hasattrib() and other strange obj lookups
 		- DONE: fix dark_castle start_up
 		- DONE: fix cup_of_tea start_up
+		- TBD: elim getattr in cmd_exe()
 		- TBD: in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
-		- TBD: for gs.mach_obj_lst(), eliminate 'hasattrib' and create method to check for being machine
-		- TBD: eliminate 'hasattrib' for containers in gs.scope_lst() too
+		- TBD: for gs.mach_obj_lst(), eliminate 'getattr' and create method to check for being machine
+		- TBD: eliminate 'getattr' for containers in gs.scope_lst() too
 		- TBD: have default methods is_contain and is_mach for Invisible that returns False; 
 			- TBD: overload to True for exception cases
 		- TBD: update start_up to pull directly from str_to_obj_dict
