@@ -30,16 +30,20 @@ Version 3.86 Goals
 			- DONE: add empty assignment to game_update for both games
 			- DONE: create start_up routine that creates dict and assigns to gs.core attrib (both games)
 			- DONE: test via print
-	- INPROC: elim hasattrib() and other strange obj lookups
+	- INPROC: elim getattr() and other strange obj lookups
 		- DONE: fix dark_castle start_up
 		- DONE: fix cup_of_tea start_up
-		- TBD: elim getattr in cmd_exe()
+		- CANCEL: elim getattr in cmd_exe() [still need getattr to convert string to method call]
+		- CANCEL: elim getattr in validate() [still need getattr to convert string to method call]
+		- TBD: create gs.core method to return bool based on whether string is in str_to_obj_dict
+		- TBD: elim loop-based txt-to-obj conversion in interp() [2 cases]
+	- TBD:
 		- TBD: in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
 		- TBD: for gs.mach_obj_lst(), eliminate 'getattr' and create method to check for being machine
 		- TBD: eliminate 'getattr' for containers in gs.scope_lst() too
 		- TBD: have default methods is_contain and is_mach for Invisible that returns False; 
 			- TBD: overload to True for exception cases
-		- TBD: update start_up to pull directly from str_to_obj_dict
+
 
 - TBD: move start_up() back to app_main; calls session_code() from game
 	- IDEA: implement start_up_dict for each game and make start_up() part of engine (=> /app_main)
