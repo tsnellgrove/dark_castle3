@@ -68,10 +68,6 @@ def noun_handling(master_obj_lst, user_input_lst):
 	if gs.core.is_key_in_sto_dict(word2_txt):
 		word2_txt_known = True
 		word2_obj = gs.core.get_str_to_obj_dict(word2_txt)
-#	for obj in master_obj_lst[1:]:
-#		if obj.name == word2_txt:
-#			word2_txt_known = True
-#			word2_obj = obj
 
 	# check to see if the word2 is a root_name; convert to obj_name if valid
 	if not word2_txt_known:
@@ -87,9 +83,6 @@ def noun_handling(master_obj_lst, user_input_lst):
 		else:
 			if gs.core.is_key_in_sto_dict(obj_name):
 				word2_obj = gs.core.get_str_to_obj_dict(obj_name)
-#			for obj in master_obj_lst[1:]:
-#				if obj.name == obj_name:
-#						word2_obj = obj
 	return error_state, error_msg, word2_obj
 
 ### interpreter - determine user intent

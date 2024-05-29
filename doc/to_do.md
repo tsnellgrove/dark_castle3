@@ -30,13 +30,14 @@ Version 3.86 Goals
 			- DONE: add empty assignment to game_update for both games
 			- DONE: create start_up routine that creates dict and assigns to gs.core attrib (both games)
 			- DONE: test via print
-	- INPROC: elim getattr() and other strange obj lookups
+	- DONE: elim getattr() and other strange obj lookups
 		- DONE: fix dark_castle start_up
 		- DONE: fix cup_of_tea start_up
 		- CANCEL: elim getattr in cmd_exe() [still need getattr to convert string to method call]
 		- CANCEL: elim getattr in validate() [still need getattr to convert string to method call]
 		- DONE: create gs.core method to return bool based on whether string is in str_to_obj_dict
 		- DONE: elim loop-based txt-to-obj conversion in interp() [2 cases]
+		- DONE: comment clean-up
 	- TBD:
 		- TBD: in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
 		- TBD: for gs.mach_obj_lst(), eliminate 'getattr' and create method to check for being machine
