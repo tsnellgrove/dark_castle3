@@ -12,7 +12,7 @@ class Core(object):
         self._hero = hero # the Creature class object that is the hero of the game
         self._move_count = move_count # tracks the number of valid moves made by the player
         self._is_debug = is_debug # a boolean that defines whether the game is in debug mode (default = False)
-        self._str_to_obj_dict = str_to_obj_dict
+        self._str_to_obj_dict = str_to_obj_dict # dict that enables look-up of game obj via name str keys
 
 	### setters & getters ###
     @property
