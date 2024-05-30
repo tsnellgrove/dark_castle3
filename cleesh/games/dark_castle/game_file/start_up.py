@@ -6,6 +6,13 @@
 import pickle
 import random
 
+def game_session_vars(self, gs):
+	# assign game session values
+	portcullis_code = random.randint(0, 7)
+	port_code_txt = f"'..ode is {str(portcullis_code)}. Don't tell anyo..'"
+	gs.io.set_dyn_dict('messy_handwriting', port_code_txt)
+	gs.core.get_str_to_obj_dict('control_panel').mach_state = portcullis_code
+	return
 
 def start_me_up():
 	# object list loaded from def_pkl

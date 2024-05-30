@@ -50,11 +50,15 @@ Version 3.86 Goals
 	- INPROC: move start_up back to /app_main
 		- DONE: make start_up pickle load dynamic based on game_name
 		- DONE: call room description based on gs.map.hero_rm.name
-		- TBD: create gs.core.session_file attrib
-		- TBD: create session values assignment section for game start_up
-		- TBD: programatically import session values assignment based on gs.core.session_file
+		- DONE: create game_session_vars() in game start_up
+		- DONE: create gs.core.has_session_vars attrib
+		- DONE: programatically import session values assignment based on gs.core.session_file
+		- DONE: call game_session_vars() from clessh start_up
+		- DONE: cut-over change
 		- TBD: redirect web_main() to call cleesh start_up()
-
+		- TBD: rename start_up() => game_start_up() and update string 
+		- TBD: testing
+		- TBD: clean-up
 
 - TBD: implement game save & restore
 

@@ -287,7 +287,8 @@ core = Core(
 		burt, # hero
         0, # move_count
         False, # is_debug
-		{} # str_to_obj_dict
+		{}, # str_to_obj_dict
+		True # has_session_vars
 		)
 
 map = Map(

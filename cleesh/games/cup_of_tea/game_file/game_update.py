@@ -104,7 +104,8 @@ core = Core(
 		cecily, # hero
         0, # move_count
         False, # is_debug
-		{} # str_to_obj_dict
+		{}, # str_to_obj_dict
+		False # has_session_vars
 		)
 
 map = Map(
