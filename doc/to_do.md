@@ -57,7 +57,9 @@ Version 3.86 Goals
 		- DONE: cut-over change
 		- DONE: redirect web_main() to call cleesh start_up()
 		- DONE: testing
-		- TBD: clean-up web_main(), start_up(), dark_castle/game_start_up(), elim cup_of_tea/start_up
+		- DONE: clean-up web_main(), start_up(), elim cup_of_tea/start_up
+		- DONE: test
+		- DONE: dark_castle/game_start_up()
 		- TBD: rename start_up() => game_start_up() and update string 
 		- TBD: testing
 
@@ -90,6 +92,9 @@ Version 3.86 Goals
 #		if obj.name == 'entrance':
 #			obj.examine(gs)
 
+*** unused code from web_main ***
+#	import_str = f"cleesh.games.{game_name}.game_file.start_up"
+#	user_output = import_module(import_str).start_me_up()
 
 # *** FUTURE TO DO *** #
 

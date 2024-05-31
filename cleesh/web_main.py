@@ -40,8 +40,6 @@ while True:
 		while not is_end:
 			if is_start:
 				user_input = ""
-#				import_str = f"cleesh.games.{game_name}.game_file.start_up"
-#				user_output = import_module(import_str).start_me_up()
 				user_output = start_me_up(game_name)
 				is_start = False
 				call_app_main = False
