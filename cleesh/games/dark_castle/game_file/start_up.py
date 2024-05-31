@@ -6,7 +6,7 @@
 import pickle
 import random
 
-def game_session_vars(self, gs):
+def game_session_vars(gs):
 	# assign game session values
 	portcullis_code = random.randint(0, 7)
 	port_code_txt = f"'..ode is {str(portcullis_code)}. Don't tell anyo..'"

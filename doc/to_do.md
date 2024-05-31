@@ -55,10 +55,11 @@ Version 3.86 Goals
 		- DONE: programatically import session values assignment based on gs.core.session_file
 		- DONE: call game_session_vars() from clessh start_up
 		- DONE: cut-over change
-		- TBD: redirect web_main() to call cleesh start_up()
+		- DONE: redirect web_main() to call cleesh start_up()
+		- DONE: testing
+		- TBD: clean-up web_main(), start_up(), dark_castle/game_start_up(), elim cup_of_tea/start_up
 		- TBD: rename start_up() => game_start_up() and update string 
 		- TBD: testing
-		- TBD: clean-up
 
 - TBD: implement game save & restore
 
