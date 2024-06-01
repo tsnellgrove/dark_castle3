@@ -21,7 +21,7 @@ def start_me_up(game_name):
 
 	# assign game session values
 	if gs.core.has_session_vars:
-		import_str = f"cleesh.games.{game_name}.game_file.start_up"
+		import_str = f"cleesh.games.{game_name}.game_file.game_start_up"
 		import_module(import_str).game_session_vars(gs)
 
 	# buffer introductory text and starting room description

@@ -60,8 +60,8 @@ Version 3.86 Goals
 		- DONE: clean-up web_main(), start_up(), elim cup_of_tea/start_up
 		- DONE: test
 		- DONE: dark_castle/game_start_up()
-		- TBD: rename start_up() => game_start_up() and update string 
-		- TBD: testing
+		- DONE: rename start_up() => game_start_up() and update string 
+		- DONE: testing
 
 - TBD: implement game save & restore
 
@@ -185,6 +185,10 @@ Version 3.86 Goals
 
 
 *** story-driven updates ***
+
+- search for 'Nana'-based errors
+- Fix: 'officious' == offering unwanted advice => NOT hidebound or miro-managerial
+
 - maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
 - update 'eat biscuit' warning text... should ref baker job and Nana
 - update hedgehog description while eating to "The RH is ravenously eating"
@@ -225,32 +229,6 @@ Version 3.86 Goals
 - TBD: refactor GameState & dicts in static_gbl() with dunder methods ( __getattr__ and __setattr__ )
 	- LINK: see: https://stackoverflow.com/questions/10761779/when-to-use-getattr
 	- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (and s__setattr__ for future tools)
-
-
-*** get on the web and start working in the open! ***
-- TBD: figure out multi-user
-- TBD: get flask on Amazon Linux 2023 on EC2 working!
-- TBD: Have 'prod' game tab, 'legacy' tab, and 'dev' tab
-- TBD: link mac updates to dev tab via pipelines
-- TBD: link dev tab to prod during manual updates
-
-
-*** cup_of_tea enhancements ***
-- IDEA: need to provide default engine mechanisms with option to replace with custom game versions
-	- IDEA: assume a 'lazy game designer' who doesn't create custom values; should work anyhow
-	- TBD: need a default set of titles title_factor that can be over-ridden with game-specific
-- TBD: future updates for cup_of_tea (this will eventually be the setup for why Burt went to DC)
-	- TBD: need to fix door (have pub folks charge in)
-	- IDEA: to drink tea, Cecily must lock front door, sit in comfy chair, read book, eat biscuit
-	- IDEA: also, she must get rid of Burt who wants her attention (give rusty_key to burt)
-	- IDEA: Cecily sort of likes Burt - he's better than that Gaston fellow - but overgrown puppy
-	- IDEA: night before, Burt was bragging to whole pub about how he would storm Dark Castle, get treasure
-	- IDEA: Winning condition = drink Tea; Time up when pub opens (belching contest begins); 9 bells
-	- IDEA: Gaston keeps flirting with her sister; big-headed and constantly singing...
-	- IDEA: book is riff on LotR; 
-		- IDEA: office workers on death march project; must bring TTL report to shredder
-		- IDEA: led by bearded application developer, heart-string-pulling retirement party at end
-		- IDEA: always saved by IT person at critical moment
 
 
 *** refactor Creature ***
@@ -440,6 +418,32 @@ interpreter ideas:
 
 *-- ARCHITECTURE --*
 - What would a decoupled, micro=services based DC look like? What are the consumers / providers?
+
+
+*** get on the web and start working in the open! ***
+- TBD: figure out multi-user
+- TBD: get flask on Amazon Linux 2023 on EC2 working!
+- TBD: Have 'prod' game tab, 'legacy' tab, and 'dev' tab
+- TBD: link mac updates to dev tab via pipelines
+- TBD: link dev tab to prod during manual updates
+- TBD: pull in DB migration to get ready for web
+
+*** cup_of_tea enhancements ***
+- IDEA: need to provide default engine mechanisms with option to replace with custom game versions
+	- IDEA: assume a 'lazy game designer' who doesn't create custom values; should work anyhow
+	- TBD: need a default set of titles title_factor that can be over-ridden with game-specific
+- TBD: future updates for cup_of_tea (this will eventually be the setup for why Burt went to DC)
+	- TBD: need to fix door (have pub folks charge in)
+	- IDEA: to drink tea, Cecily must lock front door, sit in comfy chair, read book, eat biscuit
+	- IDEA: also, she must get rid of Burt who wants her attention (give rusty_key to burt)
+	- IDEA: Cecily sort of likes Burt - he's better than that Gaston fellow - but overgrown puppy
+	- IDEA: night before, Burt was bragging to whole pub about how he would storm Dark Castle, get treasure
+	- IDEA: Winning condition = drink Tea; Time up when pub opens (belching contest begins); 9 bells
+	- IDEA: Gaston keeps flirting with her sister; big-headed and constantly singing...
+	- IDEA: book is riff on LotR; 
+		- IDEA: office workers on death march project; must bring TTL report to shredder
+		- IDEA: led by bearded application developer, heart-string-pulling retirement party at end
+		- IDEA: always saved by IT person at critical moment
 
 
 *** Get light working ***
