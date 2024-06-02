@@ -24,7 +24,7 @@ engine_static_dict = {
 
 	'articles_lst' : ['a', 'an', 'the'],
 
-	'pre_interp_word_lst' : ['quit', 'wait', 'again', 'restart'],
+	'pre_interp_word_lst' : ['quit', 'wait', 'again', 'restart', 'save', 'restore'],
     
 	'one_word_secret_lst' : ['debug_poke53281,0'],
 
@@ -76,7 +76,7 @@ engine_static_dict = {
 	'misc_err_1' : ", are you babbling again?",
 	'misc_err_2' : ", I'm just going to pretend I didn't hear that.",
 	'misc_err_3' : ", you've said some strange things over the years but that was a doosey!",
-	'misc_err_4' : "! What would your Nana say if she heard you speaking like that!?",
+	'misc_err_4' : "! What would your Mother say if she heard you speaking like that!?",
 
 	### direction errors ###
 	'dir_err_0' : "Ouch! Stop walking into walls!",
@@ -86,7 +86,7 @@ engine_static_dict = {
 	'dir_err_4' : "And exactly how do you propose to do that?",
 
 	### help commands ###
-	'help' : "Help syntax = 'help <option>'. Help options = 'basics', 'abbreviations', 'adjectives', 'articles', 'attack', 'creatures', 'debug', 'one-word-commands', prepositions', 'read', or 'verbs'.",
+	'help' : "Help syntax = 'help <option>'. Help options = 'basics', 'abbreviations', 'adjectives', 'articles', 'attack', 'creatures', 'debug', 'one-word-commands', prepositions', 'read', 'save' or 'verbs'.",
 	'help_basics' : "Objects you can examine and interact with are capitalized. To travel, use the 'go' command: 'go <cardinal direction'. Travel can be further abbreviated to just: '<cardinal direction>'. Use 'read' to read text you find written on objects. You can 'take' one object that you can see into your hand at a time from the room, a container, your backpack, or from being worn. Your other hand is holding your light source. In many cases you must be holding an object in your hand in order to act uppon it (e.g. 'unlock', drop', 'eat', 'put', 'wear', 'drink'). If you are already holding an item when you take something else, the original item you were holding is automatically transferred into your backpack. You can view what you're carying using 'inventory'. Use 'look' to get a description of the room you're in. Start all multi-word commands with a verb. Type 'quit' to quit.",
 	'help_creatures' : "Despite its age and state of disrepair, Dark Castle contains a number of creatures. Some are helpful, some are not. There are three main commands for interacting with creatures: 'show', 'give', and 'attack'. Showing an item to a creature may give you information about its opinion of that item. Giving an item to a creature may generate a useful response - particularly if it's an object that the creature has an opinion about. Alas, not all encounters can be resolved amicably - and for these cases there is the 'attack' command. Not surprisingly, this can generate a very hostile response (see 'help attack' for more info). Lastly, be aware that each creature has its own priorities and point of view and will respond to your actions accordingly.",
 	'help_adjectives' : "Most nouns have an adjective (e.g. 'rusty key'). The interpreter recognizes adjectives but only requires them if other similar nouns are in the room. So 'take rusty key' and 'take key' are equivalent unless there is another key in the room.",
@@ -96,7 +96,7 @@ engine_static_dict = {
 	'help_attack' : "There are various creatures that reside in Dark Castle. Some are friendly but some may not be. You can 'attack' a creature using whatever weapon he is holding in his hand. If the creature is hostile and you are wielding the correct weapon you may be able to slay it. However there are risks to attacking as well. If the creature is friendly, an 'attack' may scare it away and you may lose a valuble ally. And if the creature is hostile but you are wielding the wrong weapon, you yourself may perish. As in real life, combat in Dark Castle is frought!",
 	'help_debug_error' : "The first rule of debug mode is that we don't talk about debug mode.",
 	'help_debug' : "There are currently 3 main features to debug mode: 1) Python errors are shown rather than muted, 2) A module prefix is provided for game errors, and 3) The following debug verbs are usable: ",
-
+    'help_save' : "Type 'save' to save your game. Type 'restore' to restore from save. There is only one save slot. New saves over-write old saves. Restoring over-writes current game state."
 }
 
 """

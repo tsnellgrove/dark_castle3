@@ -13,6 +13,7 @@ sys.path.append('/Users/tas/Documents/Python/dark_castle3')
 from cleesh.app_main.app_main import app_main
 from cleesh.app_main.start_up import start_me_up
 from cleesh.app_main.game_menu import print_game_menu
+from cleesh.app_main.file_io import save_game, restore_game
 
 # initialize menu variables
 user_choice = ""
@@ -51,6 +52,22 @@ while True:
 				if cmd_conf_input.lower() not in ['y', 'yes']:
 					user_output = "Thank goodness you reconsidered!"
 					call_app_main = False
+			if user_input.lower() in ['save']:
+				cmd_conf_input = input('Save overwrites old save. Confirm? (Y / N): ')
+				if cmd_conf_input.lower() not in ['y', 'yes']:
+					user_output = "Save aborted."
+				else:
+					save_game(game_name)
+					user_output = "Game saved."
+				call_app_main = False
+			if user_input.lower() in ['restore']:
+				cmd_conf_input = input('Restore overwrites current game. Confirm? (Y / N): ')
+				if cmd_conf_input.lower() not in ['y', 'yes']:
+					user_output = "Restore aborted."
+				else:
+					restore_game(game_name)
+					user_output = "Game restored."
+				call_app_main = False
 			if call_app_main:
 				is_start, is_end, user_output = app_main(user_input, game_name)
 			print(user_output)

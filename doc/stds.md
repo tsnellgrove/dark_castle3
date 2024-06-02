@@ -131,3 +131,6 @@ Notes:
 		- use 'any' to return boolean rather than for-looping through lists
 		- don't need to check for if len(lst) > 0: ;; just use if lst: (Also, bool(None) == False
 		- use list comprehension: 'squares = [i*i for i in range(10)]'
+
+Links:
+- very useful 'how to copy files in python' link: https://stackoverflow.com/questions/123198/how-to-copy-files

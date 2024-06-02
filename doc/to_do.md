@@ -64,6 +64,20 @@ Version 3.86 Goals
 		- DONE: testing
 
 - TBD: implement game save & restore
+	- DONE: add 'save' and 'restore' to static_gbl() 'pre_interp_word_lst'
+	- DONE: add 'help_save' to help respones
+	- DONE: create file_io() module in ~/app_main/
+	- DONE: create <game_name>/saves folder and __init__.py for both games
+	- DONE: create save_game(game_name) function in file_io
+	- DONE: create restore_game(game_name) function in file_io()
+	- DONE: import save_game and restore_game from file_io()
+	- DONE: create 'save' response in web_main()
+	- DONE: create 'restore' response in webmain()
+	- DONE: test
+	- TBD: create a standard 'are you sure' function in web_main()
+		- IDEA: on != 'y', f"{user_input.capitalize()} aborted."
+		- IDEA: returns confirm bool
+	- TBD: call are_you_sure(check_str) from main web_main() routine 
 
 - TBD: debug error in interp() that states that obj_name was not in pickle "I don't see a X here"
 
