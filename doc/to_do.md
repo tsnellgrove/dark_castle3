@@ -79,6 +79,8 @@ Version 3.86 Goals
 		- IDEA: returns confirm bool
 	- TBD: call are_you_sure(check_str) from main web_main() routine 
 
+- TBD: separate help category for move_commands (i.e. separate from one_word_commands)
+
 - TBD: debug error in interp() that states that obj_name was not in pickle "I don't see a X here"
 
 *** already done ***
