@@ -74,10 +74,13 @@ Version 3.86 Goals
 	- DONE: create 'save' response in web_main()
 	- DONE: create 'restore' response in webmain()
 	- DONE: test
-	- TBD: create a standard 'are you sure' function in web_main()
+	- DONE: create a standard confirm_choice() function in web_main()
 		- IDEA: on != 'y', f"{user_input.capitalize()} aborted."
-		- IDEA: returns confirm bool
-	- TBD: call are_you_sure(check_str) from main web_main() routine 
+		- IDEA: returns confirm bool, user_output
+	- DONE: call confirm_choice(warn_str) from main web_main() routine
+	- TBD: clean-up web_main()
+
+- TBD: press any key to continue on restart?
 
 - TBD: separate help category for move_commands (i.e. separate from one_word_commands)
 

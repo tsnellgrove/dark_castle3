@@ -15,6 +15,16 @@ from cleesh.app_main.start_up import start_me_up
 from cleesh.app_main.game_menu import print_game_menu
 from cleesh.app_main.file_io import save_game, restore_game
 
+#local functions
+def confirm_choice(user_input, warn_str):
+	is_confirm = True
+	user_output = ""
+	confirm_input = input(warn_str + ' (Y / N): ')
+	if confirm_input.lower() not in ['y', 'yes']:
+		user_output = f"{user_input.capitalize()} aborted."
+		is_confirm = False
+	return user_output, is_confirm
+
 # initialize menu variables
 user_choice = ""
 user_num = 0
@@ -48,23 +58,31 @@ while True:
 				user_input = input('Type your command: ')
 				call_app_main = True
 			if user_input.lower() in ['q', 'quit', 'restart']:
-				cmd_conf_input = input('Are you sure you want to leave? (Y / N): ')
-				if cmd_conf_input.lower() not in ['y', 'yes']:
-					user_output = "Thank goodness you reconsidered!"
+				if user_input.lower() == 'q':
+					user_input = 'quit'
+				user_output, is_confirm = confirm_choice(user_input, 'Are you sure you want to leave?')
+				if not is_confirm:
+#				cmd_conf_input = input('Are you sure you want to leave? (Y / N): ')
+#				if cmd_conf_input.lower() not in ['y', 'yes']:
+#					user_output = "Thank goodness you reconsidered!"
 					call_app_main = False
 			if user_input.lower() in ['save']:
-				cmd_conf_input = input('Save overwrites old save. Confirm? (Y / N): ')
-				if cmd_conf_input.lower() not in ['y', 'yes']:
-					user_output = "Save aborted."
-				else:
+				user_output, is_confirm = confirm_choice(user_input, 'Save overwrites old save. Confirm?')
+				if is_confirm:
+#				cmd_conf_input = input('Save overwrites old save. Confirm? (Y / N): ')
+#				if cmd_conf_input.lower() not in ['y', 'yes']:
+#					user_output = "Save aborted."
+#				else:
 					save_game(game_name)
 					user_output = "Game saved."
 				call_app_main = False
 			if user_input.lower() in ['restore']:
-				cmd_conf_input = input('Restore overwrites current game. Confirm? (Y / N): ')
-				if cmd_conf_input.lower() not in ['y', 'yes']:
-					user_output = "Restore aborted."
-				else:
+				user_output, is_confirm = confirm_choice(user_input, 'Restore overwrites current game. Confirm?')
+				if is_confirm:
+#				cmd_conf_input = input('Restore overwrites current game. Confirm? (Y / N): ')
+#				if cmd_conf_input.lower() not in ['y', 'yes']:
+#					user_output = "Restore aborted."
+#				else:
 					restore_game(game_name)
 					user_output = "Game restored."
 				call_app_main = False
