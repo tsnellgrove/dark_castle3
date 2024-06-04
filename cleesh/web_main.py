@@ -8,7 +8,7 @@
 
 ### import statements
 import sys
-from importlib import import_module
+# from importlib import import_module
 sys.path.append('/Users/tas/Documents/Python/dark_castle3')
 from cleesh.app_main.app_main import app_main
 from cleesh.app_main.start_up import start_me_up
@@ -58,31 +58,21 @@ while True:
 				user_input = input('Type your command: ')
 				call_app_main = True
 			if user_input.lower() in ['q', 'quit', 'restart']:
+			# for 'q' / 'restart', after confirm_choice(), still need to pass to app_main to get score
 				if user_input.lower() == 'q':
 					user_input = 'quit'
 				user_output, is_confirm = confirm_choice(user_input, 'Are you sure you want to leave?')
 				if not is_confirm:
-#				cmd_conf_input = input('Are you sure you want to leave? (Y / N): ')
-#				if cmd_conf_input.lower() not in ['y', 'yes']:
-#					user_output = "Thank goodness you reconsidered!"
 					call_app_main = False
 			if user_input.lower() in ['save']:
 				user_output, is_confirm = confirm_choice(user_input, 'Save overwrites old save. Confirm?')
 				if is_confirm:
-#				cmd_conf_input = input('Save overwrites old save. Confirm? (Y / N): ')
-#				if cmd_conf_input.lower() not in ['y', 'yes']:
-#					user_output = "Save aborted."
-#				else:
 					save_game(game_name)
 					user_output = "Game saved."
 				call_app_main = False
 			if user_input.lower() in ['restore']:
 				user_output, is_confirm = confirm_choice(user_input, 'Restore overwrites current game. Confirm?')
 				if is_confirm:
-#				cmd_conf_input = input('Restore overwrites current game. Confirm? (Y / N): ')
-#				if cmd_conf_input.lower() not in ['y', 'yes']:
-#					user_output = "Restore aborted."
-#				else:
 					restore_game(game_name)
 					user_output = "Game restored."
 				call_app_main = False

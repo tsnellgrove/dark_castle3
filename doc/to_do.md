@@ -63,7 +63,7 @@ Version 3.86 Goals
 		- DONE: rename start_up() => game_start_up() and update string 
 		- DONE: testing
 
-- TBD: implement game save & restore
+- DONE: implement game save & restore
 	- DONE: add 'save' and 'restore' to static_gbl() 'pre_interp_word_lst'
 	- DONE: add 'help_save' to help respones
 	- DONE: create file_io() module in ~/app_main/
@@ -78,13 +78,14 @@ Version 3.86 Goals
 		- IDEA: on != 'y', f"{user_input.capitalize()} aborted."
 		- IDEA: returns confirm bool, user_output
 	- DONE: call confirm_choice(warn_str) from main web_main() routine
-	- TBD: clean-up web_main()
+	- DONE: clean-up web_main()
 
-- TBD: press any key to continue on restart?
-
-- TBD: separate help category for move_commands (i.e. separate from one_word_commands)
-
-- TBD: debug error in interp() that states that obj_name was not in pickle "I don't see a X here"
+- INPROC: Misc clean-up
+	- DONE: comment on Q / Restart being sent to app_main (for score)
+	- TBD: solve no-save-to-restore issue
+	- TBD: press any key to continue on restart?
+	- TBD: separate help category for move_commands (i.e. separate from one_word_commands)
+	- TBD: debug error in interp() that states that obj_name was not in pickle "I don't see a X here"
 
 *** already done ***
 - in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
@@ -114,6 +115,14 @@ Version 3.86 Goals
 *** unused code from web_main ***
 #	import_str = f"cleesh.games.{game_name}.game_file.start_up"
 #	user_output = import_module(import_str).start_me_up()
+
+*** unused code from web_main ***
+
+#				cmd_conf_input = input('Save overwrites old save. Confirm? (Y / N): ')
+#				if cmd_conf_input.lower() not in ['y', 'yes']:
+#					user_output = "Save aborted."
+#				else:
+
 
 # *** FUTURE TO DO *** #
 
