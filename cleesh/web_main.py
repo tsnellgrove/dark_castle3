@@ -67,15 +67,11 @@ while True:
 				user_output, is_confirm = confirm_choice(user_input, 'Save overwrites old save. Confirm?')
 				if is_confirm:
 					user_output = save_game(game_name)
-#					save_game(game_name)
-#					user_output = "Game saved."
 				call_app_main = False
 			if user_input.lower() in ['restore']:
 				user_output, is_confirm = confirm_choice(user_input, 'Restore overwrites current game. Confirm?')
 				if is_confirm:
 					user_output = restore_game(game_name)
-#					restore_game(game_name)
-#					user_output = "Game restored."
 				call_app_main = False
 			if call_app_main:
 				is_start, is_end, user_output = app_main(user_input, game_name)
