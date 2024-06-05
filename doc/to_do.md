@@ -83,6 +83,7 @@ Version 3.86 Goals
 - INPROC: Misc clean-up
 	- DONE: comment on Q / Restart being sent to app_main (for score)
 	- TBD: solve no-save-to-restore issue
+		- IDEA: https://stackoverflow.com/questions/82831/how-do-i-check-whether-a-file-exists-without-exceptions
 	- TBD: press any key to continue on restart?
 	- TBD: separate help category for move_commands (i.e. separate from one_word_commands)
 	- TBD: debug error in interp() that states that obj_name was not in pickle "I don't see a X here"
