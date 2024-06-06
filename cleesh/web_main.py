@@ -76,6 +76,8 @@ while True:
 			if call_app_main:
 				is_start, is_end, user_output = app_main(user_input, game_name)
 			print(user_output)
+			if user_input.lower() == 'restart'and is_confirm:
+				any_key = input("Press Enter to continue: ")
 		print("THANKS FOR PLAYING!!")
 		print()
 		any_key = input("Press Enter To Return To The Game Menu: ")
