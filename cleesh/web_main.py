@@ -18,9 +18,9 @@ from cleesh.app_main.file_io import save_game, restore_game
 def confirm_choice(user_input, warn_str):
 	is_confirm = True
 	user_output = ""
-	confirm_input = input(warn_str + ' (Y / N): ')
+	confirm_input = input("\n" + warn_str + ' (Y / N): ')
 	if confirm_input.lower() not in ['y', 'yes']:
-		user_output = f"{user_input.capitalize()} aborted."
+		user_output = f"\n{user_input.capitalize()} aborted.\n"
 		is_confirm = False
 	return user_output, is_confirm
 

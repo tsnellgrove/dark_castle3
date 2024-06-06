@@ -13,7 +13,7 @@ def save_game(game_name):
     src = f"/Users/tas/Documents/Python/dark_castle3/cleesh/games/{game_name}/working/active_pkl"
     dst = f"/Users/tas/Documents/Python/dark_castle3/cleesh/games/{game_name}/saves/save_pkl"
     shutil.copyfile(src, dst)
-    user_output = "Game saved."
+    user_output = "\nGame saved.\n"
     return user_output
 
 def restore_game(game_name):
@@ -22,7 +22,7 @@ def restore_game(game_name):
     if my_file.is_file():
         dst = f"/Users/tas/Documents/Python/dark_castle3/cleesh/games/{game_name}/working/active_pkl"
         shutil.copyfile(src, dst)
-        user_output = "Game restored."
+        user_output = "\nGame restored.\n"
     else:
-        user_output = "There is no saved game to restore."
+        user_output = "\nThere is no saved game to restore.\n"
     return user_output

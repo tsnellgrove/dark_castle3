@@ -85,7 +85,7 @@ Version 3.86 Goals
 	- DONE: solve no-save-to-restore issue
 		- IDEA: https://stackoverflow.com/questions/82831/how-do-i-check-whether-a-file-exists-without-exceptions
 		- IDEA: for save & restore, move user_output generation to file_io()
-	- TBD: fix spacing for save & restore options
+	- DONE: fix spacing for save & restore options
 	- TBD: press any key to continue on restart?
 	- TBD: separate help category for move_commands (i.e. separate from one_word_commands)
 	- TBD: debug error in interp() that states that obj_name was not in pickle "I don't see a X here"
