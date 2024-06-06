@@ -88,6 +88,12 @@ Version 3.86 Goals
 	- DONE: fix spacing for save & restore options
 	- DONE: press any key to continue on restart?
 	- TBD: separate help category for move_commands (i.e. separate from one_word_commands)
+		- TBD: create 'one_word_move_lst' : ['north', 'south', 'east', 'west']
+		- TBD: in static_gbl() , update one-word 'help' to include move_commands
+		- TBD: in cmd_exe() , create response for move_commands
+		- TBD: in interpreter() , combine 'one_word_move_lst' as needed
+		- TBD: in static_gbl(), remove directions from 'one_word_convert'
+		- TBD: test 'help one_word_commands'
 	- TBD: debug error in interp() that states that obj_name was not in pickle "I don't see a X here"
 
 *** already done ***
