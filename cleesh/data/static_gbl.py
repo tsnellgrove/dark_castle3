@@ -30,10 +30,7 @@ engine_static_dict = {
 
     'one_word_only_lst' : ['credits', 'score', 'version'],
 
-	'one_word_convert_lst' : [
-#        'north', 'south', 'east', 'west',
-        'inventory', 'look', 'stand'
-    ],
+	'one_word_convert_lst' : ['inventory', 'look', 'stand'],
 
 	'one_word_travel_lst' : ['north', 'south', 'east', 'west'],
 
