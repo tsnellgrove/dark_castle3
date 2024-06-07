@@ -87,13 +87,16 @@ Version 3.86 Goals
 		- IDEA: for save & restore, move user_output generation to file_io()
 	- DONE: fix spacing for save & restore options
 	- DONE: press any key to continue on restart?
-	- TBD: separate help category for move_commands (i.e. separate from one_word_commands)
-		- TBD: create 'one_word_move_lst' : ['north', 'south', 'east', 'west']
-		- TBD: in static_gbl() , update one-word 'help' to include move_commands
-		- TBD: in cmd_exe() , create response for move_commands
-		- TBD: in interpreter() , combine 'one_word_move_lst' as needed
-		- TBD: in static_gbl(), remove directions from 'one_word_convert'
-		- TBD: test 'help one_word_commands'
+	- INPROC: separate help category for move_commands (i.e. separate from one_word_commands)
+		- DONE: create 'one_word_travel_lst' : ['north', 'south', 'east', 'west']
+		- DONE: in static_gbl() , update one-word 'help' to include travel commands
+		- DONE: in cmd_exe() , create help response for 'help travel'
+		- DONE: test "help" and "help travel"
+		- DONE: in interpreter() , combine 'one_travel_move_lst' as needed
+		- DONE: test
+		- DONE: in static_gbl(), remove directions from 'one_word_convert'
+		- DONE: test 'help one_word_commands'
+		- TBD: clean-up interpreter(), static_gbl()
 	- TBD: debug error in interp() that states that obj_name was not in pickle "I don't see a X here"
 
 *** already done ***

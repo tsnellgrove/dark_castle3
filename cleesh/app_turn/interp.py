@@ -114,7 +114,9 @@ def interpreter(user_input, master_obj_lst):
 		return 'error', [f"Burt, there are too many words in that sentence. '{word1}' is a one word command!"]
 
 	# convert one-word commands that are implicit two-word commands 
-	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst','eng'):
+	full_one_word_lst = gs.io.get_lst('one_word_convert_lst','eng') + gs.io.get_lst('one_word_travel_lst','eng')
+#	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst','eng'):
+	if len(user_input_lst) == 1 and word1 in full_one_word_lst:
 		if word1 in ['north', 'south', 'east', 'west']:
 			user_input_lst.append(word1)
 			user_input_lst[0] = 'go'

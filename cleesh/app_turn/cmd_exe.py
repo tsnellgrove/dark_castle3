@@ -33,6 +33,8 @@ def cmd_execute(gs, case, word_lst):
 				for key in abbrev_dict:
 					pre_out = pre_out + key + " = " + abbrev_dict[key] + ", "
 				output = pre_out[:-2]
+			elif option == 'travel':
+				output = gs.io.get_str_nr(f"help_{option}") + ', '.join(gs.io.get_lst('one_word_travel_lst','eng'))
 			elif option == 'debug':
 				if not gs.core.is_debug:
 					output = gs.io.get_str_nr('help_debug_error')
