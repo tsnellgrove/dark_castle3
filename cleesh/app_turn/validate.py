@@ -34,7 +34,8 @@ def validate(gs, case, word_lst):
 				gs.io.buff_no_cr("[INVIS error postfix]")
 		except:
 			cmd_error = True
-			gs.io.buff_dbg("[VAL] " + traceback.format_exc(), gs)
+			debug_str = f"[VAL] {traceback.format_exc()}\nDid you possibly forget to add the noun obj to the pickle in game_update() ?"
+			gs.io.buff_dbg(debug_str, gs)
 		return not cmd_error
 	return True
 

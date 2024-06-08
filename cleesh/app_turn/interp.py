@@ -95,7 +95,7 @@ def interpreter(user_input, master_obj_lst):
 
 	# error if no input or the only input is articles 
 	if len(user_input_lst) < 1:
-		return 'error', ["I have no idea what you're talking about Burt!"]
+		return 'error', ["I have no idea what you're talking about!"]
 
 	# len(user_input_lst) is not < 1 so user_input_lst must have at least one word in it
 	word1 = user_input_lst[0]
@@ -111,7 +111,7 @@ def interpreter(user_input, master_obj_lst):
 						 gs.io.get_lst('one_word_secret_lst','eng') 
 						)
 	if word1 in one_word_max_lst and len(user_input_lst) > 1:
-		return 'error', [f"Burt, there are too many words in that sentence. '{word1}' is a one word command!"]
+		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
 
 	# convert one-word commands that are implicit two-word commands 
 	full_one_word_lst = gs.io.get_lst('one_word_convert_lst','eng') + gs.io.get_lst('one_word_travel_lst','eng')

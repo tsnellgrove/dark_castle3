@@ -39,7 +39,7 @@ Version 3.86 Goals
 		- DONE: elim loop-based txt-to-obj conversion in interp() [2 cases]
 		- DONE: comment clean-up
 
-- TBD: move start_up() back to app_main; calls session_code() from game
+- DONE: move start_up() back to app_main; calls session_code() from game
 	- IDEA: implement start_up_dict for each game and make start_up() part of engine (=> /app_main)
 		- IDEA: engine start_up coppies game_files/game_pkl => working/active_pkl
 		- IDEA: engine start_up calls game_files/session_code()
@@ -47,7 +47,7 @@ Version 3.86 Goals
 		- CANCLE: engine start_up buffers examine of gs.core.start_rm (create as gs.core attrib)
 			- IDEA: just use gs.map.hero_rm.name
 		- IDEA: session_file is attribute of of gs.core ; if gs.core.session_file == None then don't call
-	- INPROC: move start_up back to /app_main
+	- DONE: move start_up back to /app_main
 		- DONE: make start_up pickle load dynamic based on game_name
 		- DONE: call room description based on gs.map.hero_rm.name
 		- DONE: create game_session_vars() in game start_up
@@ -80,7 +80,7 @@ Version 3.86 Goals
 	- DONE: call confirm_choice(warn_str) from main web_main() routine
 	- DONE: clean-up web_main()
 
-- INPROC: Misc clean-up
+- DONE: Misc clean-up
 	- DONE: comment on Q / Restart being sent to app_main (for score)
 	- DONE: solve no-save-to-restore issue
 		- IDEA: https://stackoverflow.com/questions/82831/how-do-i-check-whether-a-file-exists-without-exceptions
@@ -97,7 +97,8 @@ Version 3.86 Goals
 		- DONE: in static_gbl(), remove directions from 'one_word_convert'
 		- DONE: test 'help one_word_commands'
 		- DONE: clean-up interpreter(), static_gbl()
-	- TBD: debug error in interp() that states that obj_name was not in pickle "I don't see a X here"
+	- DONE: debug error in validate() that hints that obj_name is not in pickle
+
 
 *** already done ***
 - in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
