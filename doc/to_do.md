@@ -7,47 +7,54 @@ To Do List - Dark Castle v3
 Start Date: Jun 10, 2024
 End Date: 
 
-Version 3.87.0 Goals
-- Introduce standard versioning nomenclature
-- Improve machine modularization
-- incorporate Warnings into Modular Machine code
-- Address response limitations due to std machines
+Version 3.87.0 Goals:
+- review all mod-mach ideas / TBD to data
+- introduce standard versioning nomenclature
+- review current mod-mach functioning
+- review of Switch class
+- improve machine modularization
+- incorporate Warnings and Timers into mod-mach code
+- address response limitations due to std machines
+- mod-mach bug fixes
+- update mod-mach doc
 
+*** to do org ***
+- TBD: std version nomenclature 
+	- TBD: start using std versioning format: x.y.z (build #) => api.features.bug-fix (internal)
+		- REF: https://softwareengineering.stackexchange.com/questions/368643/should-we-assign-version-numbers-for-internal-releases
+	- TBD: Reversion cleesh and games with new starting numbers
 
-*** Really modularize machines! ***
-- nomenclature - start using std versioning format: x.y.z (build #) => api.features.bug-fix (internal)
-	- https://softwareengineering.stackexchange.com/questions/368643/should-we-assign-version-numbers-for-internal-releases
-	- Reversion cleesh and games with new starting numbers
+- TBD: mod-mach bug fixes
+	- TBD: auto_static_behavior for goblin? each turn - maybe should be a standard function??
+		EXAMPLE: "the goblin is eyeing you coldly"
+	- TBD: fix eat_biscuits_warning 
+		- TBD so that it no longer lives in just entrance and main_hall 
+		- TBD: and no longer triggers when biscuits not in hand
+		- IDEA:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
 
-- mechanic clean-up
-	- TBD: auto_static_behavior for goblin? (e.g. "the goblin is eyeing you coldly") each turn - maybe should be a standard function??
+- TBD: additional problems to solve
+	- TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj
+		- EXAMPLE: re-assigning goblin to goblin_mach after goblin Creature instantiation
+		- ANALYSIS: basic problem pattern = obj => obj_mach => obj_cond / obj_result => obj
+		- IDEA: pass/link obj to obj_con/obj_result innately (not explicitly) as part of call/assignment?
 
-- TBD: fix eat_biscuits_warning so that it no longer lives in just entrance and main_hall and no longer triggers when biscuits not in hand
-		- suggest making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
-
-- TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj (e.g. re-assigning goblin to goblin_mach after goblin Creature instantiation)
-	- ANALYSIS: basic problem pattern = obj => obj_mach => obj_cond / obj_result => obj
-	- IDEA: can we pass or link obj to obj_con / obj_result innately (not explicitly) as part of call/assignment?
-
-- TBD: what about cases where I want a modular machine to operate despite an error
+- TBD: Cases where I want a modular machine to operate despite an error
 	- IDEA: e.g. 'go north' in antechamber triggers goblin
 	- IDEA: i.e. should it ever be possible to override an error? If so, then how?
 	- IDEA: the 'open portcullis' case is a special problem here - it will tell Burt it's locked...
 		- IDEA: but the Goblin should attack before Burt can touch the Portcullis
 	- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
-	- IDEA: implication here is that modular machines should be designed so that it is easy to trigger & run them from interupt()
-	- IDEA: the idea here is that narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
+	- IDEA: modular machines should be designed so that it is easy to trigger & run them from interupt()
+	- IDEA: narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
 	- DECISION: use fake_door for now and swap on goblin death
-	- RECONSIDER: 'take axe' case is not easy to fake out... maybe I do need an interupt() module after all??
+	- RECONSIDER: 'take axe' case is hard to fake out... maybe I do need an interupt() module after all??
 	- Maybe just 'x axe' case?
-- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
+	- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
 
-- TBD: make LeverSwitch a true MixIn
+- TBD: review of switch class
+	- TBD: make LeverSwitch a true MixIn
 
-- Clean up machine, warning, and timer coding
-- Create / update program documentation
-
-- TBD: Machine coding clean-up
+- TBD: mod-mach coding clean-up
 	- TBD: Machine 2.0 improvement ideas:
 		- BaseCond => always check state
 		- BaseResult => always do a buff_try()
@@ -62,6 +69,7 @@ Version 3.87.0 Goals
 		- Generalize creature-has-item vs. creature-does-not-have-item Conditions (single primative)
 		- Establish clearer nomenclature for temp variables that will be fully assigned at end (e.g. 'royal_hedgehog-*temp*')
 		- each 'primitive' cond only tests for *one* thing (but state of that thing is an attribute to be matched)
+	
 	- TBD: de-dup warning and timer classes
 		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?
 		- IDEA: this makes sense... in all other cases I inherit from simple parents to more complex children
@@ -70,6 +78,7 @@ Version 3.87.0 Goals
 		- IDEA: A MixIn of a MixIn seems over-complicated... 
 		- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
 		- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
+
 	- more Modular Machine ideas:
 		- Modular Triggers? (named after intent; match cond, result, & mach)
 		- Primative Conditions (named after condition) [always include single attribute & value] 
@@ -97,6 +106,9 @@ Version 3.87.0 Goals
 	- NOTE: (i.e. add to scope and remove levers & button from features?)
 	- NOTE: [this is a good idea but hold off until at least one more control_panel type machine gets created]
 - TBD: broaden hedgehog response to interacting with sword (e.g. "pull sword" should trigger)
+
+
+*** already done ***
 
 - DONE: How to enable switches and machines to self register for universal scope
 	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
