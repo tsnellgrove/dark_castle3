@@ -5463,3 +5463,142 @@ Version 3.85 Goals
 			- DONE: fix 'drink tea' score
 			- DONE: address door bug
 - DONE: wrap on 3.85 and set goals for 3.86 (post multi-game clean-up) and beyond (cup_of_tea enahnce)
+
+
+##########################
+### VERSION 3.86 START ###
+##########################
+
+Start Date: May 22, 2024
+End Date: Jun 9, 2024
+
+Version 3.86 Goals
+- solve the name-to-obj challenge systemically
+- tune start-up
+- Introduce save & restore features
+
+- DONE: clean up game menu:
+	- DONE: add 'any key to return to the game menu' after "THANKS FOR PLAYING"
+	- DONE: add row dividers in game menu
+
+- DONE: one-time setup function (game_update() ) that calculates static values for a game version
+	- DONE: max_score
+		- CANCEL: max_score; => game_static_dict (calc max_score in mk_def_pkl() & cache in static_dict)
+		- IDEA: want to have as little code as possible in game update (now that we have 1 per game)
+		- DONE: convert max_score to game_static_dict value
+		- DONE: update gs.score call for max_score
+		- DONE: clean up comments 
+	- DONE: str_to_obj_dict
+		- DONE: confirm that every obj has a name attribute (confirmed)
+		- DONE: in start_up(), create str_to_obj_dict = dict => gs.core attrib
+			- DONE: add str_to_obj_dict to gs.core attributes
+			- DONE: setters & getters (manual since is dict)
+			- DONE: add empty assignment to game_update for both games
+			- DONE: create start_up routine that creates dict and assigns to gs.core attrib (both games)
+			- DONE: test via print
+	- DONE: elim getattr() and other strange obj lookups
+		- DONE: fix dark_castle start_up
+		- DONE: fix cup_of_tea start_up
+		- CANCEL: elim getattr in cmd_exe() [still need getattr to convert string to method call]
+		- CANCEL: elim getattr in validate() [still need getattr to convert string to method call]
+		- DONE: create gs.core method to return bool based on whether string is in str_to_obj_dict
+		- DONE: elim loop-based txt-to-obj conversion in interp() [2 cases]
+		- DONE: comment clean-up
+
+- DONE: move start_up() back to app_main; calls session_code() from game
+	- IDEA: implement start_up_dict for each game and make start_up() part of engine (=> /app_main)
+		- IDEA: engine start_up coppies game_files/game_pkl => working/active_pkl
+		- IDEA: engine start_up calls game_files/session_code()
+		- IDEA: engine start_up buffers game_static_dict['intro']
+		- CANCLE: engine start_up buffers examine of gs.core.start_rm (create as gs.core attrib)
+			- IDEA: just use gs.map.hero_rm.name
+		- IDEA: session_file is attribute of of gs.core ; if gs.core.session_file == None then don't call
+	- DONE: move start_up back to /app_main
+		- DONE: make start_up pickle load dynamic based on game_name
+		- DONE: call room description based on gs.map.hero_rm.name
+		- DONE: create game_session_vars() in game start_up
+		- DONE: create gs.core.has_session_vars attrib
+		- DONE: programatically import session values assignment based on gs.core.session_file
+		- DONE: call game_session_vars() from clessh start_up
+		- DONE: cut-over change
+		- DONE: redirect web_main() to call cleesh start_up()
+		- DONE: testing
+		- DONE: clean-up web_main(), start_up(), elim cup_of_tea/start_up
+		- DONE: test
+		- DONE: dark_castle/game_start_up()
+		- DONE: rename start_up() => game_start_up() and update string 
+		- DONE: testing
+
+- DONE: implement game save & restore
+	- DONE: add 'save' and 'restore' to static_gbl() 'pre_interp_word_lst'
+	- DONE: add 'help_save' to help respones
+	- DONE: create file_io() module in ~/app_main/
+	- DONE: create <game_name>/saves folder and __init__.py for both games
+	- DONE: create save_game(game_name) function in file_io
+	- DONE: create restore_game(game_name) function in file_io()
+	- DONE: import save_game and restore_game from file_io()
+	- DONE: create 'save' response in web_main()
+	- DONE: create 'restore' response in webmain()
+	- DONE: test
+	- DONE: create a standard confirm_choice() function in web_main()
+		- IDEA: on != 'y', f"{user_input.capitalize()} aborted."
+		- IDEA: returns confirm bool, user_output
+	- DONE: call confirm_choice(warn_str) from main web_main() routine
+	- DONE: clean-up web_main()
+
+- DONE: Misc clean-up
+	- DONE: comment on Q / Restart being sent to app_main (for score)
+	- DONE: solve no-save-to-restore issue
+		- IDEA: https://stackoverflow.com/questions/82831/how-do-i-check-whether-a-file-exists-without-exceptions
+		- IDEA: for save & restore, move user_output generation to file_io()
+	- DONE: fix spacing for save & restore options
+	- DONE: press any key to continue on restart?
+	- DONE: separate help category for move_commands (i.e. separate from one_word_commands)
+		- DONE: create 'one_word_travel_lst' : ['north', 'south', 'east', 'west']
+		- DONE: in static_gbl() , update one-word 'help' to include travel commands
+		- DONE: in cmd_exe() , create help response for 'help travel'
+		- DONE: test "help" and "help travel"
+		- DONE: in interpreter() , combine 'one_travel_move_lst' as needed
+		- DONE: test
+		- DONE: in static_gbl(), remove directions from 'one_word_convert'
+		- DONE: test 'help one_word_commands'
+		- DONE: clean-up interpreter(), static_gbl()
+	- DONE: debug error in validate() that hints that obj_name is not in pickle
+
+
+*** already done ***
+- in gs scope checks => is_cont(), is_mach(), is_creature() methods within classes
+- for gs.mach_obj_lst(), eliminate 'getattr' and create method to check for being machine
+- eliminate 'getattr' for containers in gs.scope_lst() too
+- have default methods is_contain and is_mach for Invisible that returns False; 
+	- overload to True for exception cases
+
+*** unused code from score_class_def() ***
+#    def get_max_score(self, gs):
+#        max_score = 0
+#        for verb in gs.io.get_dict('score_dict'):
+#            for subj_key in gs.io.get_dict_val('score_dict', verb):
+#                if gs.io.get_ddict_val('score_dict', verb, subj_key) > 0:
+#                    max_score += gs.io.get_ddict_val('score_dict', verb, subj_key)
+#        return max_score
+
+#        output2 = (" out of " + str(self.get_max_score(gs)))
+
+*** unused code in dark_castle/.../start_up() ***
+#	for obj in master_obj_lst[1:]:
+#		if obj.name == 'control_panel':
+#			obj.mach_state = portcullis_code
+#		if obj.name == 'entrance':
+#			obj.examine(gs)
+
+*** unused code from web_main ***
+#	import_str = f"cleesh.games.{game_name}.game_file.start_up"
+#	user_output = import_module(import_str).start_me_up()
+
+*** unused code from web_main ***
+
+#				cmd_conf_input = input('Save overwrites old save. Confirm? (Y / N): ')
+#				if cmd_conf_input.lower() not in ['y', 'yes']:
+#					user_output = "Save aborted."
+#				else:
+

@@ -24,7 +24,7 @@ game_static_dict = {
 	'game_descript' : "A classic Zork-like adventure of bravery and baking!",
 
 	### universal constants ###
-	'game_version' : '3.86 (5/22/2024)',
+	'game_version' : '3.86 (6/9/2024)',
 
 	### title and score dicts ###
     'title_factor' : 10,
