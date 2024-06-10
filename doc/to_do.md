@@ -1,8 +1,8 @@
 To Do List - Dark Castle v3
 
-##########################
+############################
 ### VERSION 3.87.0 START ###
-##########################
+############################
 
 Start Date: Jun 10, 2024
 End Date: 
@@ -24,7 +24,7 @@ Version 3.87.0 Goals:
 		- REF: https://softwareengineering.stackexchange.com/questions/368643/should-we-assign-version-numbers-for-internal-releases
 	- TBD: Reversion cleesh and games with new starting numbers
 
-- TBD: read mod-mach doc
+- TBD: read existing mod-mach doc
 
 - TBD: mod-mach bug fixes
 	- TBD: auto_static_behavior for goblin? each turn - maybe should be a standard function??
@@ -33,14 +33,17 @@ Version 3.87.0 Goals:
 		- TBD so that it no longer lives in just entrance and main_hall 
 		- TBD: and no longer triggers when biscuits not in hand
 		- IDEA:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+	- TBD: Do we really need to test for goblin in antechamber??? (will the goblin ever move)
 
 - TBD: additional problems to solve
 	- TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj
 		- EXAMPLE: re-assigning goblin to goblin_mach after goblin Creature instantiation
 		- ANALYSIS: basic problem pattern = obj => obj_mach => obj_cond / obj_result => obj
 		- IDEA: pass/link obj to obj_con/obj_result innately (not explicitly) as part of call/assignment?
+		- TBD: Establish clearer nomenclature for temp variables that will be fully assigned at end
+			- EXMP: 'royal_hedgehog-*temp*'
 
-- TBD: Cases where I want a modular machine to operate despite an error
+- TBD: Cases where I want a modular machine to run despite an error standard
 	- IDEA: e.g. 'go north' in antechamber triggers goblin
 	- IDEA: i.e. should it ever be possible to override an error? If so, then how?
 	- IDEA: the 'open portcullis' case is a special problem here - it will tell Burt it's locked...
@@ -56,36 +59,44 @@ Version 3.87.0 Goals:
 - TBD: review of switch class
 	- TBD: make LeverSwitch a true MixIn
 
-- TBD: mod-mach coding clean-up
-	- TBD: Machine 2.0 improvement ideas:
-		- BaseCond => always check state
-		- BaseResult => always do a buff_try()
-		- Can we create a general purpose Dispenser machine - for use with Crown and Broach?
-		- Do we really need to test for goblin in antechamber??? (will the goblin ever move)
-		- Have simple, single-test / single-action 'Primative' Conditions and Results: prim_cond and prim_result
-		- Composed Conditions & Results: comp_cond / comp_result == AND / OR of multiple primatives
-		- All results capable of Buffering (rename Result classes appropriately)
-		- if no conditions == True then default Result = nothing happens (no need for pass_result)
-		- Establish switch triggers such that timer as trigger is more natural
-		- Generalize in-hand vs. not-in-hand Condition (single primative)
-		- Generalize creature-has-item vs. creature-does-not-have-item Conditions (single primative)
-		- Establish clearer nomenclature for temp variables that will be fully assigned at end (e.g. 'royal_hedgehog-*temp*')
-		- each 'primitive' cond only tests for *one* thing (but state of that thing is an attribute to be matched)
-		- IDEA: debug_describe and debug_show_mach commands
-			- IDEA: to dep obj names short, just use abreviations <mach_name>_r1_m1
-			- IDEA: to understant what mod-mach does, have attribute that explains each module
-			- IDEA: also explains each result and condition
-			- IDEA: then have debug-only command that describes mod-mach based on that attribute
-			- IDEA: would also presumably need debug_show_mach command
+- TBD: state machines and other general purpose mod-machs
+	- IDEA: Can we create a general purpose Dispenser machine - for use with Crown and Broach?
+
+- TBD: de-dup warning and timer classes
+	- IDEA: it appears that "selective inheritance" just isn't a thing. What now?
+	- IDEA: makes sense... in all other cases I inherit from simple parents to more complex children
+	- IDEA: WarnClass is simpler... so it should be the parent
+	- IDEA: TrigDetectMixIn - inherited by both WarnClass and MachineMixIn w/ only trig_check method?
+	- IDEA: A MixIn of a MixIn seems over-complicated... 
+	- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
+	- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
+
+- TBD: mod-mach improvement ideas:
+	- IDEA: general org ideas
+		- IDEA: BaseCond => always check state
+		- IDEA: BaseResult => always do a buff_try()
+		- IDEA: All results capable of Buffering (rename Result classes appropriately)
+		- IDEA: if no conditions == True then default Result = nothing happens (no need for pass_result)
+		- IDEA: Establish switch triggers such that timer as trigger is more natural
+	- IDEA: Composed Conditions & Results: comp_cond / comp_result == AND / OR of multiple primatives
+		- IDEA: like the idea of AND vs. OR option
+		- IDEA: NOT option for each cond module is vital
+			- EXMP: Generalize in-hand vs. not-in-hand Condition (single primative)
+			- EXMP: Generalize creature-has-item vs. creature-does-not-have-item Cond (single primative)
+		- IDEA: each 'primitive' cond tests for *one* thing (but state of thing is attrib to be matched)
+	- IDEA: Have simple, 1-test/ 1-action 'Primative' Conditions and Results: prim_cond and prim_result
+		- IDEA: would we really want each primative cond & rslt linked?
+		- IDEA: lean towards composing result_1 from r1_m1, r1_m2, & r1_m3 => linked to comp cond
+	- IDEA: debug_describe and debug_show_mach commands
+		- IDEA: to dep obj names short, just use abreviations <mach_name>_r1_m1
+		- IDEA: to understant what mod-mach does, have attribute that explains each module
+		- IDEA: also explains each result and condition
+		- IDEA: then have debug-only command that describes mod-mach based on that attribute
+		- IDEA: would also presumably need debug_show_mach command
 	
-	- TBD: de-dup warning and timer classes
-		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?
-		- IDEA: this makes sense... in all other cases I inherit from simple parents to more complex children
-		- IDEA: WarnClass is simpler... so it should be the parent
-		- IDEA: Actually - how about a TrigDetectMixIn that is inherited by both WarnClass and MachineMixIn and only has trig_check method?
-		- IDEA: A MixIn of a MixIn seems over-complicated... 
-		- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
-		- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
+
+
+
 
 	- more Modular Machine ideas:
 		- Modular Triggers? (named after intent; match cond, result, & mach)
@@ -115,13 +126,10 @@ Version 3.87.0 Goals:
 	- NOTE: [this is a good idea but hold off until at least one more control_panel type machine gets created]
 - TBD: broaden hedgehog response to interacting with sword (e.g. "pull sword" should trigger)
 
-
 *** already done ***
-
 - DONE: How to enable switches and machines to self register for universal scope
 	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
 	- DONE: eliminate universal_scope => just add these to Burt's invis_lst
-
 
 
 # *** FUTURE TO DO *** #
