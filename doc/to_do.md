@@ -24,6 +24,8 @@ Version 3.87.0 Goals:
 		- REF: https://softwareengineering.stackexchange.com/questions/368643/should-we-assign-version-numbers-for-internal-releases
 	- TBD: Reversion cleesh and games with new starting numbers
 
+- TBD: read mod-mach doc
+
 - TBD: mod-mach bug fixes
 	- TBD: auto_static_behavior for goblin? each turn - maybe should be a standard function??
 		EXAMPLE: "the goblin is eyeing you coldly"
@@ -69,6 +71,12 @@ Version 3.87.0 Goals:
 		- Generalize creature-has-item vs. creature-does-not-have-item Conditions (single primative)
 		- Establish clearer nomenclature for temp variables that will be fully assigned at end (e.g. 'royal_hedgehog-*temp*')
 		- each 'primitive' cond only tests for *one* thing (but state of that thing is an attribute to be matched)
+		- IDEA: debug_describe and debug_show_mach commands
+			- IDEA: to dep obj names short, just use abreviations <mach_name>_r1_m1
+			- IDEA: to understant what mod-mach does, have attribute that explains each module
+			- IDEA: also explains each result and condition
+			- IDEA: then have debug-only command that describes mod-mach based on that attribute
+			- IDEA: would also presumably need debug_show_mach command
 	
 	- TBD: de-dup warning and timer classes
 		- IDEA: after cleaning up some typos it appears that "selective inheritance" just isn't a thing. What now?
