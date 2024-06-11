@@ -26,6 +26,95 @@ Version 3.87.0 Goals:
 
 - TBD: read existing mod-mach doc
 
+- TBD: review of switch class
+	- TBD: make LeverSwitch a true MixIn
+
+- TBD: results and conditions
+	- IDEA: goal is a single method for conditions and a single method for results
+	- IDEA: for conditions, attributes = modules + logic_str + descript_str
+	- IDEA: use attribute packing / kwargs to pack conditions / results with variable # of attributes
+	- IDEA: room should have show_machs() method that lists all local mod-machs
+	- IDEA: machine mix-in should have a describe() method that describes the machine (like K8s)
+
+- TBD: mod-mach improvement ideas:
+	- IDEA: naming
+		- IDEA: Shorter cond & result names!!
+		- IDEA: Compound Results and Conditions named after intent
+		- IDEA: naming conventions: need to avoid confusion between match_state and mach_state
+		- IDEA: naming conventions: cond & result name should be same except post-fix
+		- IDEA: address long naming issue with describe() ability
+		- IDEA: 'trigger_type' => 'trig_type' ??
+	- IDEA: general org ideas
+		- IDEA: BaseCond => always check state
+		- IDEA: BaseResult => always do a buff_try()
+		- IDEA: All results capable of Buffering (rename Result classes appropriately)
+		- IDEA: if no conditions == True then default Result = nothing happens (no need for pass_result)
+		- IDEA: Establish switch triggers such that timer as trigger is more natural
+		- IDEA: in machines, should conditions and results just be key-value pairs in a dictionary?
+			- IDEA: As opposed to needing 2 separate lists with identical indexes?
+		- IDEA: move switch_reset to auto_action() ???
+	- IDEA: triggers
+		- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
+	- IDEA: primative conditions & results modules
+		- IDEA: goal of primative & compound structure is to increase re-use of Cond & Result classes 
+			- IDEA: currently too many class-per-var cases
+		- IDEA: Primative Conditions (named after condition) [always include single attribute & value] 
+		- IDEA: Compound Conditions [and / or) 
+			- IDEA: named after intent; match mach, result, & trig 
+			- IDEA: {trig_check() method links primatives}
+		- IDEA: Primative Results (named after result) [always include single attribute & value] 
+		- IDEA: Compound Results (named after intent
+			- IDEA: match cond, trig, & mach) 
+			- IDEA: {trig_check() method links primatives}
+	- IDEA: Composed Conditions & Results: comp_cond / comp_result == AND / OR of multiple primatives
+		- IDEA: like the idea of AND vs. OR option
+		- IDEA: NOT option for each cond module is vital
+			- EXMP: Generalize in-hand vs. not-in-hand Condition (single primative)
+			- EXMP: Generalize creature-has-item vs. creature-does-not-have-item Cond (single primative)
+		- IDEA: each 'primitive' cond tests for *one* thing (but state of thing is attrib to be matched)
+	- IDEA: Have simple, 1-test/ 1-action 'Primative' Conditions and Results: prim_cond and prim_result
+		- IDEA: would we really want each primative cond & rslt linked?
+		- IDEA: lean towards composing result_1 from r1_m1, r1_m2, & r1_m3 => linked to comp cond
+	- IDEA: debug_describe and debug_show_mach commands
+		- IDEA: to dep obj names short, just use abreviations <mach_name>_r1_m1
+		- IDEA: to understant what mod-mach does, have attribute that explains each module
+		- IDEA: also explains each result and condition
+		- IDEA: then have debug-only command that describes mod-mach based on that attribute
+		- IDEA: would also presumably need debug_show_mach command
+	- IDEA: Wildcard clean-ups
+		- IDEA: Extend trig_check wildcards to 'post_act_cmd' & 'auto_act_cmd'
+		- IDEA: Extend trig_check wildcards to work with Warnings (or de-dup Warning's trig_check)
+		- IDEA: guard against multiple wildcaards per list
+	- IDEA: Results
+		- IDEA: extend BufferOnlyResult result_exe method in BufferAndEndResult and BufferAndGiveResult
+		- IDEA: extend child methods in results_class_def ?
+
+- IDEA: list of 'contained' internal_switches in MachMixIn attributes?
+	- IDEA: (i.e. add to scope and remove levers & button from features?)
+	- IDEA: [hold off until at least one more control_panel type machine gets created]
+
+- TBD: Cases where I want a modular machine to run despite an error standard
+	- IDEA: e.g. 'go north' in antechamber triggers goblin
+	- IDEA: i.e. should it ever be possible to override an error? If so, then how?
+	- IDEA: the 'open portcullis' case is a special problem here - it will tell Burt it's locked...
+		- IDEA: but the Goblin should attack before Burt can touch the Portcullis
+	- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
+	- IDEA: modular machines should be designed so that it is easy to trigger & run them from interupt()
+	- IDEA: narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
+	- DECISION: use fake_door for now and swap on goblin death
+	- RECONSIDER: 'take axe' case is hard to fake out... maybe I do need an interupt() module after all??
+	- Maybe just 'x axe' case?
+	- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
+
+- TBD: de-dup warning and timer classes
+	- IDEA: it appears that "selective inheritance" just isn't a thing. What now?
+	- IDEA: makes sense... in all other cases I inherit from simple parents to more complex children
+	- IDEA: WarnClass is simpler... so it should be the parent
+	- IDEA: TrigDetectMixIn - inherited by both WarnClass and MachineMixIn w/ only trig_check method?
+	- IDEA: A MixIn of a MixIn seems over-complicated... 
+	- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
+	- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
+
 - TBD: mod-mach bug fixes
 	- TBD: auto_static_behavior for goblin? each turn - maybe should be a standard function??
 		EXAMPLE: "the goblin is eyeing you coldly"
@@ -42,89 +131,11 @@ Version 3.87.0 Goals:
 		- IDEA: pass/link obj to obj_con/obj_result innately (not explicitly) as part of call/assignment?
 		- TBD: Establish clearer nomenclature for temp variables that will be fully assigned at end
 			- EXMP: 'royal_hedgehog-*temp*'
-
-- TBD: Cases where I want a modular machine to run despite an error standard
-	- IDEA: e.g. 'go north' in antechamber triggers goblin
-	- IDEA: i.e. should it ever be possible to override an error? If so, then how?
-	- IDEA: the 'open portcullis' case is a special problem here - it will tell Burt it's locked...
-		- IDEA: but the Goblin should attack before Burt can touch the Portcullis
-	- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
-	- IDEA: modular machines should be designed so that it is easy to trigger & run them from interupt()
-	- IDEA: narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
-	- DECISION: use fake_door for now and swap on goblin death
-	- RECONSIDER: 'take axe' case is hard to fake out... maybe I do need an interupt() module after all??
-	- Maybe just 'x axe' case?
-	- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
-
-- TBD: review of switch class
-	- TBD: make LeverSwitch a true MixIn
-
-- TBD: state machines and other general purpose mod-machs
+	- TBD: broaden hedgehog response to interacting with sword (e.g. "pull sword" should trigger)
+	- IDEA: sort out ability to push button / pull levers while goblin is guarding
+	- IDEA: need to implement hedgehog state machine based on creature state
+	- TBD: state machines and other general purpose mod-machs
 	- IDEA: Can we create a general purpose Dispenser machine - for use with Crown and Broach?
-
-- TBD: de-dup warning and timer classes
-	- IDEA: it appears that "selective inheritance" just isn't a thing. What now?
-	- IDEA: makes sense... in all other cases I inherit from simple parents to more complex children
-	- IDEA: WarnClass is simpler... so it should be the parent
-	- IDEA: TrigDetectMixIn - inherited by both WarnClass and MachineMixIn w/ only trig_check method?
-	- IDEA: A MixIn of a MixIn seems over-complicated... 
-	- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
-	- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
-
-- TBD: mod-mach improvement ideas:
-	- IDEA: general org ideas
-		- IDEA: BaseCond => always check state
-		- IDEA: BaseResult => always do a buff_try()
-		- IDEA: All results capable of Buffering (rename Result classes appropriately)
-		- IDEA: if no conditions == True then default Result = nothing happens (no need for pass_result)
-		- IDEA: Establish switch triggers such that timer as trigger is more natural
-	- IDEA: Composed Conditions & Results: comp_cond / comp_result == AND / OR of multiple primatives
-		- IDEA: like the idea of AND vs. OR option
-		- IDEA: NOT option for each cond module is vital
-			- EXMP: Generalize in-hand vs. not-in-hand Condition (single primative)
-			- EXMP: Generalize creature-has-item vs. creature-does-not-have-item Cond (single primative)
-		- IDEA: each 'primitive' cond tests for *one* thing (but state of thing is attrib to be matched)
-	- IDEA: Have simple, 1-test/ 1-action 'Primative' Conditions and Results: prim_cond and prim_result
-		- IDEA: would we really want each primative cond & rslt linked?
-		- IDEA: lean towards composing result_1 from r1_m1, r1_m2, & r1_m3 => linked to comp cond
-	- IDEA: debug_describe and debug_show_mach commands
-		- IDEA: to dep obj names short, just use abreviations <mach_name>_r1_m1
-		- IDEA: to understant what mod-mach does, have attribute that explains each module
-		- IDEA: also explains each result and condition
-		- IDEA: then have debug-only command that describes mod-mach based on that attribute
-		- IDEA: would also presumably need debug_show_mach command
-	
-
-
-
-
-	- more Modular Machine ideas:
-		- Modular Triggers? (named after intent; match cond, result, & mach)
-		- Primative Conditions (named after condition) [always include single attribute & value] 
-		- Compound Conditions [and / or) (named after intent; match mach, result, & trig) {trig_check() method links primatives}
-		- Primative Results (named after result) [always include single attribute & value] 
-		- Compound Results (named after intent; match cond, trig, & mach) {trig_check() method links primatives}
-		- The basic goal of the primative & compound structure is to increase re-use of Cond & Result classes (too many class-per-var cases)
-	- Wildcard clean-ups
-		- Extend trig_check wildcards to 'post_act_cmd' & 'auto_act_cmd'
-		- Extend trig_check wildcards to work with Warnings (or better yet, de-dup Warning's trig_check)
-		- guard against multiple wildcaards per list
-	- Results
-		- extend BufferOnlyResult result_exe method in BufferAndEndResult and BufferAndGiveResult
-		- TBD: extend child methods in results_class_def ?
-		- in machines, should conditions and results just be key-value pairs in a dictionary?
-			- As opposed to needing 2 separate lists with identical indexes?
-	- Shorter cond & result names!!
-	- move switch_reset to auto_action() ???
-	- 'trigger_type' => 'trig_type' ??
-	- naming conventions: need to avoid confusion between match_state and mach_state
-	- naming conventions: cond & result name should be same except post-fix
-	- sort out ability to push button / pull levers while goblin is guarding
-	- need to implement hedgehog state machine based on creature state
-- TBD: list of 'contained' internal_switches in MachMixIn attributes?
-	- NOTE: (i.e. add to scope and remove levers & button from features?)
-	- NOTE: [this is a good idea but hold off until at least one more control_panel type machine gets created]
-- TBD: broaden hedgehog response to interacting with sword (e.g. "pull sword" should trigger)
 
 *** already done ***
 - DONE: How to enable switches and machines to self register for universal scope
