@@ -19,22 +19,32 @@ Version 3.87.0 Goals:
 - update mod-mach doc
 
 *** to do org ***
-- TBD: std version nomenclature 
-	- TBD: start using std versioning format: x.y.z (build #) => api.features.bug-fix (internal)
+- DONE: std version nomenclature 
+	- IDEA: start using std versioning format: x.y.z (build #) => api.features.bug-fix (internal)
 		- REF: https://softwareengineering.stackexchange.com/questions/368643/should-we-assign-version-numbers-for-internal-releases
-	- TBD: Reversion cleesh and games with new starting numbers
+	- IDEA: Reversion cleesh and games with new starting numbers
+	- DONE: cleesh reversion 
+		- DONE: from '3.86 (6/9/2024)' to '3.8.0 (build 0001)'
+	- DONE: dark_castle reversion 
+		DONE: from '3.86 (6/9/2024)' to '3.1.0 (build 0001)'
+	- DONE: cup_of_tea reversion 
+		DONE: from '0.15 (5/22/2024)' to '0.1.0 (build 0001)'
 
 - TBD: read existing mod-mach doc
 
-- TBD: review of switch class
+- TBD: review existing switch class
 	- TBD: make LeverSwitch a true MixIn
+
+- TBD: review existing mach, cond, result classes
+
+- TBD: review existing warning and timer classes
 
 - TBD: results and conditions
 	- IDEA: goal is a single method for conditions and a single method for results
 	- IDEA: for conditions, attributes = modules + logic_str + descript_str
 	- IDEA: use attribute packing / kwargs to pack conditions / results with variable # of attributes
 	- IDEA: room should have show_machs() method that lists all local mod-machs
-	- IDEA: machine mix-in should have a describe() method that describes the machine (like K8s)
+	- IDEA: machine mix-in should have a dbg_describe() method that describes the machine (like K8s)
 
 - TBD: mod-mach improvement ideas:
 	- IDEA: naming
@@ -44,17 +54,17 @@ Version 3.87.0 Goals:
 		- IDEA: naming conventions: cond & result name should be same except post-fix
 		- IDEA: address long naming issue with describe() ability
 		- IDEA: 'trigger_type' => 'trig_type' ??
+	- IDEA: triggers
+		- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
 	- IDEA: general org ideas
 		- IDEA: BaseCond => always check state
 		- IDEA: BaseResult => always do a buff_try()
 		- IDEA: All results capable of Buffering (rename Result classes appropriately)
-		- IDEA: if no conditions == True then default Result = nothing happens (no need for pass_result)
+		- IDEA: if no conditions == True then default_result = nothing happens (no need for pass_result)
 		- IDEA: Establish switch triggers such that timer as trigger is more natural
 		- IDEA: in machines, should conditions and results just be key-value pairs in a dictionary?
 			- IDEA: As opposed to needing 2 separate lists with identical indexes?
 		- IDEA: move switch_reset to auto_action() ???
-	- IDEA: triggers
-		- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
 	- IDEA: primative conditions & results modules
 		- IDEA: goal of primative & compound structure is to increase re-use of Cond & Result classes 
 			- IDEA: currently too many class-per-var cases
@@ -75,12 +85,6 @@ Version 3.87.0 Goals:
 	- IDEA: Have simple, 1-test/ 1-action 'Primative' Conditions and Results: prim_cond and prim_result
 		- IDEA: would we really want each primative cond & rslt linked?
 		- IDEA: lean towards composing result_1 from r1_m1, r1_m2, & r1_m3 => linked to comp cond
-	- IDEA: debug_describe and debug_show_mach commands
-		- IDEA: to dep obj names short, just use abreviations <mach_name>_r1_m1
-		- IDEA: to understant what mod-mach does, have attribute that explains each module
-		- IDEA: also explains each result and condition
-		- IDEA: then have debug-only command that describes mod-mach based on that attribute
-		- IDEA: would also presumably need debug_show_mach command
 	- IDEA: Wildcard clean-ups
 		- IDEA: Extend trig_check wildcards to 'post_act_cmd' & 'auto_act_cmd'
 		- IDEA: Extend trig_check wildcards to work with Warnings (or de-dup Warning's trig_check)
@@ -88,6 +92,12 @@ Version 3.87.0 Goals:
 	- IDEA: Results
 		- IDEA: extend BufferOnlyResult result_exe method in BufferAndEndResult and BufferAndGiveResult
 		- IDEA: extend child methods in results_class_def ?
+	- IDEA: dbg_describe and debug_show_mach commands
+		- IDEA: to dep obj names short, just use abreviations <mach_name>_r1_m1
+		- IDEA: to understant what mod-mach does, have attribute that explains each module
+		- IDEA: also explains each result and condition
+		- IDEA: then have debug-only command that describes mod-mach based on that attribute
+		- IDEA: would also presumably need debug_show_mach command
 
 - IDEA: list of 'contained' internal_switches in MachMixIn attributes?
 	- IDEA: (i.e. add to scope and remove levers & button from features?)
