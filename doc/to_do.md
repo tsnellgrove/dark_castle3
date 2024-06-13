@@ -30,7 +30,10 @@ Version 3.87.0 Goals:
 	- DONE: cup_of_tea reversion 
 		DONE: from '0.15 (5/22/2024)' to '0.1.0 (build 0001)'
 
-- TBD: read existing mod-mach doc
+- INPROC: read existing mod-mach doc
+	- DONE: read and update 'Road to' section
+	- TBD: read 'Components' section
+	- TBD: 
 
 - TBD: review existing switch class
 	- TBD: make LeverSwitch a true MixIn
