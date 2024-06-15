@@ -39,8 +39,10 @@ Version 3.87.0 Goals:
 
 - INPROC: read existing mod-mach doc
 	- DONE: read and update 'Road to' section
-	- TBD: read 'Components' section
-	- TBD: 
+	- DONE: read 'Components' section
+	- TBD: read 'Example' section
+	- TBD: read 'Warnings' section
+	- TBD: read 'Timers' section
 
 - TBD: review existing switch class
 	- TBD: make LeverSwitch a true MixIn
