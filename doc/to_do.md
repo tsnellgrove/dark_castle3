@@ -30,6 +30,13 @@ Version 3.87.0 Goals:
 	- DONE: cup_of_tea reversion 
 		DONE: from '0.15 (5/22/2024)' to '0.1.0 (build 0001)'
 
+- DONE: setup new MacBook Air for coding
+	- DONE: install VS Code
+	- DONE: install homebrew
+	- DONE: install git
+	- DONE: git clone dark_castle3 repo
+	- DONE: git stage / commit / push
+
 - INPROC: read existing mod-mach doc
 	- DONE: read and update 'Road to' section
 	- TBD: read 'Components' section
