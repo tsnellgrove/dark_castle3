@@ -37,12 +37,12 @@ Version 3.87.0 Goals:
 	- DONE: git clone dark_castle3 repo
 	- DONE: git stage / commit / push
 
-- INPROC: read existing mod-mach doc
+- DONE: read existing mod-mach doc
 	- DONE: read and update 'Road to' section
 	- DONE: read 'Components' section
-	- TBD: read 'Example' section
-	- TBD: read 'Warnings' section
-	- TBD: read 'Timers' section
+	- DONE: read 'Example' section
+	- DONE: read 'Warnings' section
+	- DONE: read 'Timers' section
 
 - TBD: review existing switch class
 	- TBD: make LeverSwitch a true MixIn
@@ -158,6 +158,8 @@ Version 3.87.0 Goals:
 	- IDEA: need to implement hedgehog state machine based on creature state
 	- TBD: state machines and other general purpose mod-machs
 	- IDEA: Can we create a general purpose Dispenser machine - for use with Crown and Broach?
+
+- TBD: update modular machine doc!
 
 *** already done ***
 - DONE: How to enable switches and machines to self register for universal scope
