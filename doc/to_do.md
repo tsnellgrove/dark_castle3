@@ -44,8 +44,13 @@ Version 3.87.0 Goals:
 	- DONE: read 'Warnings' section
 	- DONE: read 'Timers' section
 
-- TBD: review existing switch class
-	- TBD: make LeverSwitch a true MixIn
+- INPROC: switch class
+	- DONE: review existing switch class
+	- INPROC: make LeverSwitch a true MixIn
+		- DONE: remove ViewOnly from LeverSwitch
+		- DONE: create ViewOnlyLeverSwitch
+		- DONE: update import and assignment in dark_castle
+		- TBD: text & fix errors
 
 - TBD: review existing mach, cond, result classes
 

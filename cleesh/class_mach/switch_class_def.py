@@ -103,11 +103,13 @@ class SeatSpringSliderSwitch(SpringSliderSwitchMixIn, Seat):
 
 
 
-class LeverSwitch(SwitchMixIn, ViewOnly):
-	def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, def_switch_state, trigger_type):
-		""" LeverSwitch class combines ViewOnly and SwitchMixIn to create a 2-state ('up' or 'down') stateful switch.
+# class LeverSwitch(SwitchMixIn, ViewOnly):
+class LeverSwitchMixIn(SwitchMixIn):
+#	def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, def_switch_state, trigger_type):
+	def __init__(self, switch_state, def_switch_state, trigger_type):
+		""" LeverSwitch class inherits from ButtonSwitchMixIn. It is a 2-state ('up' or 'down') stateful switch.
 		"""
-		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
+#		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
 		SwitchMixIn.__init__(self, switch_state, def_switch_state, trigger_type)
 
 	# *** class identity methods ***
@@ -141,4 +143,9 @@ class LeverSwitch(SwitchMixIn, ViewOnly):
 		return 
 
 
-
+class ViewOnlyLeverSwitch(LeverSwitchMixIn, ViewOnly):
+	def __init__(self, name, full_name, root_name, descript_key, writing, switch_state, def_switch_state, trigger_type):
+		""" LeverSwitch class combines ViewOnly and SwitchMixIn to create a 2-state ('up' or 'down') stateful switch.
+		"""
+		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
+		LeverSwitchMixIn.__init__(self, switch_state, def_switch_state, trigger_type)
