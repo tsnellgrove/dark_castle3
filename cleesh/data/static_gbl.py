@@ -13,6 +13,8 @@
 engine_static_dict = {
 
 	### universal constants ###
+    'root_path_str' : '/Users/thomassnellgrove/Documents/Python/dark_castle3',
+
     'engine_name' : "Cleesh",
 
 	'engine_version' : '3.8.0 (build 0001)', # api.features.bug-fix (internal); was '3.86 (6/9/2024)' until 6/12/2024

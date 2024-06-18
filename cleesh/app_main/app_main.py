@@ -15,7 +15,9 @@ from cleesh.app_turn.auto_action import auto_action
 ### loads game obj, calls other modules, and saves game obj ###
 def app_main(user_input, game_name):
 	# initiate app_main() - load obj, declare gs, and reset buffer
-	pkl_str = f"/Users/tas/Documents/Python/dark_castle3/cleesh/games/{game_name}/working/active_pkl"
+	root_path_str = '/Users/thomassnellgrove/Documents/Python/dark_castle3'
+	# pkl_str = f"/Users/tas/Documents/Python/dark_castle3/cleesh/games/{game_name}/working/active_pkl"
+	pkl_str = f"{root_path_str}/cleesh/games/{game_name}/working/active_pkl"
 	with open(pkl_str, 'rb') as f:
 		master_obj_lst = pickle.load(f)
 	gs = master_obj_lst[0]

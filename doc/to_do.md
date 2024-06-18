@@ -44,6 +44,21 @@ Version 3.87.0 Goals:
 	- DONE: read 'Warnings' section
 	- DONE: read 'Timers' section
 
+- INPROC: new mac updates
+	- INPROC: fix root_path_str issue
+		- DONE: define new root_path_str
+		- DONE: update all path calls
+		- DONE: test
+		- TBD: install pretty table
+		- TBD: re-test
+		- TBD: clean-up web_main(), app_main(), file_io(), start_up(), both game_updates()
+	- TBD: documentation
+		- TBD: document install dependencies somewhere (lioke prettytable)
+		- TBD: go back and do cleaner fix for root_path_str bootstrapping (maybe text file?? Or bash cmd?)
+	- TBD: better solve for root_path_str
+		- TBD: elim engine static_global entry for root_path_str - this never gets used
+		- TBD: incorporate game_name into obj save in game_update() modules
+
 - INPROC: switch class
 	- DONE: review existing switch class
 	- INPROC: make LeverSwitch a true MixIn
