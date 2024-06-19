@@ -8,7 +8,6 @@
 import sys
 root_path_str = '/Users/thomassnellgrove/Documents/Python/dark_castle3'
 sys.path.append(root_path_str)
-# sys.path.append('/Users/tas/Documents/Python/dark_castle3')
 
 import pickle
 from cleesh.class_std.invisible_class_def import Invisible
@@ -157,7 +156,6 @@ gs = GameState(
 master_obj_lst = [gs, rusty_key, brass_key, tea_cup, cecily, cursive, block_text, hand, dingy_shelf, tea, comfy_chair, creaky_door, pub, unreachable_1]
 
 # list written to pickle
-# with open('/Users/tas/Documents/Python/dark_castle3/cleesh/games/cup_of_tea/game_file/game_pkl', 'wb') as f:
 with open(f"{root_path_str}/cleesh/games/cup_of_tea/game_file/game_pkl", 'wb') as f:
 	pickle.dump(master_obj_lst, f)
 

@@ -9,8 +9,6 @@
 ### import statements
 import sys
 root_path_str = '/Users/thomassnellgrove/Documents/Python/dark_castle3'
-# sys.path.append('/Users/tas/Documents/Python/dark_castle3')
-# sys.path.append('/Users/thomassnellgrove/Documents/Python/dark_castle3')
 sys.path.append(root_path_str)
 from cleesh.app_main.app_main import app_main
 from cleesh.app_main.start_up import start_me_up

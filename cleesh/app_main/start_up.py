@@ -12,7 +12,6 @@ def start_me_up(game_name):
 	# object list loaded from game_pkl
 	root_path_str = '/Users/thomassnellgrove/Documents/Python/dark_castle3'
 	pkl_str = f"{root_path_str}/cleesh/games/{game_name}/game_file/game_pkl"
-#	pkl_str = f"/Users/tas/Documents/Python/dark_castle3/cleesh/games/{game_name}/game_file/game_pkl"
 	with open(pkl_str, 'rb') as f:
 		master_obj_lst = pickle.load(f)
 	gs = master_obj_lst[0]
@@ -31,7 +30,6 @@ def start_me_up(game_name):
 	gs.core.get_str_to_obj_dict(gs.map.hero_rm.name).examine(gs)
 
 	# dump updated objects to active_pkl
-#	pkl_str = f"/Users/tas/Documents/Python/dark_castle3/cleesh/games/{game_name}/working/active_pkl"
 	pkl_str = f"{root_path_str}/cleesh/games/{game_name}/working/active_pkl"
 	with open(pkl_str, 'wb') as f:
 		pickle.dump(master_obj_lst, f)

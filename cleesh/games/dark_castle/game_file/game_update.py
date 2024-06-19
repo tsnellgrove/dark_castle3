@@ -8,8 +8,6 @@
 import sys
 root_path_str = '/Users/thomassnellgrove/Documents/Python/dark_castle3'
 sys.path.append(root_path_str)
-# sys.path.append('/Users/tas/Documents/Python/dark_castle3')
-# sys.path.append('/Users/thomassnellgrove/Documents/Python/dark_castle3')
 
 import pickle
 from cleesh.class_std.invisible_class_def import Invisible
@@ -361,13 +359,10 @@ master_obj_lst = [gs, rusty_lettering, dwarven_runes, messy_handwriting, small_p
 officiousness, gold_capitals, red_bandana, big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, earthen_jug, heavy_rock] # note: big_bomb & test_frog removed; glass_bottle removed
 
 # list written to pickle
-# with open('/Users/tas/Documents/Python/dark_castle3/cleesh/games/dark_castle/game_file/game_pkl', 'wb') as f:
 with open(f"{root_path_str}/cleesh/games/dark_castle/game_file/game_pkl", 'wb') as f:
 	pickle.dump(master_obj_lst, f)
 
 
-# with open('/full/path/to/file', 'wb') as f:
-#    pickle.dump(object, f)
 
 
 # *** Test Objects ***

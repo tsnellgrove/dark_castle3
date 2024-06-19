@@ -45,19 +45,25 @@ Version 3.87.0 Goals:
 	- DONE: read 'Timers' section
 
 - INPROC: new mac updates
-	- INPROC: fix root_path_str issue
+	- DONE: fix root_path_str issue
 		- DONE: define new root_path_str
 		- DONE: update all path calls
 		- DONE: test
-		- TBD: install pretty table
-		- TBD: re-test
-		- TBD: clean-up web_main(), app_main(), file_io(), start_up(), both game_updates()
-	- TBD: documentation
-		- TBD: document install dependencies somewhere (lioke prettytable)
-		- TBD: go back and do cleaner fix for root_path_str bootstrapping (maybe text file?? Or bash cmd?)
-	- TBD: better solve for root_path_str
-		- TBD: elim engine static_global entry for root_path_str - this never gets used
-		- TBD: incorporate game_name into obj save in game_update() modules
+		- DONE: install pretty table: "pip3 install prettytable"
+		- DONE: re-test
+		- DONE: clean-up web_main(), app_main(), file_io(), start_up(), both game_updates()
+		- DONE: elim engine static_global entry for root_path_str - this never gets used
+- TBD: game install routine
+	- TBD: pass root_path_str from web_main() to all other modules:
+		- TBD: app_main(), file_io(), start_up(), both game_updates()
+	- TBD: randome fix: incorporate game_name into obj save in game_update() modules
+	- TBD: document install dependencies somewhere: set root_path_str & install prettytable
+	- TBD: cleaner fix for root_path_str bootstrapping (maybe text file?? Or bash cmd?)
+		- IDEA: in /cleesh/tools/ create module that can perform install
+			- IDEA: uses bash script to write root_path_str to txt file in /cleesh (same dir as web_main.py)
+			- IDEA: also attempts to install prettytable: "pip3 install prettytable"
+			- IDEA: web_main.py reads text file to get root_path_str
+
 
 - INPROC: switch class
 	- DONE: review existing switch class
@@ -180,6 +186,7 @@ Version 3.87.0 Goals:
 	- IDEA: Can we create a general purpose Dispenser machine - for use with Crown and Broach?
 
 - TBD: update modular machine doc!
+
 
 *** already done ***
 - DONE: How to enable switches and machines to self register for universal scope
