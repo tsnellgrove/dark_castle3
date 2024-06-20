@@ -57,10 +57,12 @@ Version 3.87.0 Goals:
 	- INPROC: pass root_path_str from web_main() to all other modules:
 		- DONE: web_main(), app_main(), file_io(), start_up()
 		- DONE: test
-		- TBD: clean-up web_main(), app_main(), file_io(), start_up(), both game_updates()
+		- DONE: clean-up web_main(), app_main(), file_io(), start_up()
 		- TBD: random fix: incorporate game_name into obj save in game_update() modules
+	- IDEA: is relative pathing possibel?
 	- TBD: create root_path_str import process
 		- TBD: create cleesh.cfg in root of /cleesh with root_path_str
+		- IDEA: can we just do a direct lookup of root_path_str in web_main() ??
 		- TBD: in web_main() and game_updates() read root_path_str from cleesh.cfg
 	- TBD: document install dependencies somewhere: set root_path_str & install prettytable
 	- TBD: cleaner fix for root_path_str bootstrapping (maybe text file?? Or bash cmd?)
