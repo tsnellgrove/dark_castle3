@@ -54,12 +54,13 @@ Version 3.87.0 Goals:
 		- DONE: clean-up web_main(), app_main(), file_io(), start_up(), both game_updates()
 		- DONE: elim engine static_global entry for root_path_str - this never gets used
 - INPROC: game install routine
-	- INPROC: pass root_path_str from web_main() to all other modules:
+	- DONE: pass root_path_str from web_main() to all other modules:
 		- DONE: web_main(), app_main(), file_io(), start_up()
 		- DONE: test
 		- DONE: clean-up web_main(), app_main(), file_io(), start_up()
-		- TBD: random fix: incorporate game_name into obj save in game_update() modules
-	- IDEA: is relative pathing possibel?
+		- CANCEL: incorporate game_name into obj save in game_update() modules (no need; file is game-specific)
+	- IDEA: is relative pathing possible?
+		- LINK: https://stackoverflow.com/questions/21259070/struggling-to-append-a-relative-path-to-my-sys-path
 	- TBD: create root_path_str import process
 		- TBD: create cleesh.cfg in root of /cleesh with root_path_str
 		- IDEA: can we just do a direct lookup of root_path_str in web_main() ??
