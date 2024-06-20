@@ -8,9 +8,9 @@ from importlib import import_module
 
 
 ### main routine
-def start_me_up(game_name):
+def start_me_up(game_name, root_path_str):
 	# object list loaded from game_pkl
-	root_path_str = '/Users/thomassnellgrove/Documents/Python/dark_castle3'
+#	root_path_str = '/Users/thomassnellgrove/Documents/Python/dark_castle3'
 	pkl_str = f"{root_path_str}/cleesh/games/{game_name}/game_file/game_pkl"
 	with open(pkl_str, 'rb') as f:
 		master_obj_lst = pickle.load(f)

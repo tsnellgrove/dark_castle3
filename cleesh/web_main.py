@@ -51,7 +51,8 @@ while True:
 		while not is_end:
 			if is_start:
 				user_input = ""
-				user_output = start_me_up(game_name)
+#				user_output = start_me_up(game_name)
+				user_output = start_me_up(game_name, root_path_str)
 				is_start = False
 				call_app_main = False
 			else:
@@ -67,15 +68,18 @@ while True:
 			if user_input.lower() in ['save']:
 				user_output, is_confirm = confirm_choice(user_input, 'Save overwrites old save. Confirm?')
 				if is_confirm:
-					user_output = save_game(game_name)
+#					user_output = save_game(game_name)
+					user_output = save_game(game_name, root_path_str)
 				call_app_main = False
 			if user_input.lower() in ['restore']:
 				user_output, is_confirm = confirm_choice(user_input, 'Restore overwrites current game. Confirm?')
 				if is_confirm:
-					user_output = restore_game(game_name)
+#					user_output = restore_game(game_name)
+					user_output = restore_game(game_name, root_path_str)
 				call_app_main = False
 			if call_app_main:
-				is_start, is_end, user_output = app_main(user_input, game_name)
+#				is_start, is_end, user_output = app_main(user_input, game_name)
+				is_start, is_end, user_output = app_main(user_input, game_name, root_path_str)
 			print(user_output)
 			if user_input.lower() == 'restart'and is_confirm:
 				any_key = input("Press Enter to continue: ")

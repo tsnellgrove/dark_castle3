@@ -53,10 +53,15 @@ Version 3.87.0 Goals:
 		- DONE: re-test
 		- DONE: clean-up web_main(), app_main(), file_io(), start_up(), both game_updates()
 		- DONE: elim engine static_global entry for root_path_str - this never gets used
-- TBD: game install routine
-	- TBD: pass root_path_str from web_main() to all other modules:
-		- TBD: app_main(), file_io(), start_up(), both game_updates()
-	- TBD: randome fix: incorporate game_name into obj save in game_update() modules
+- INPROC: game install routine
+	- INPROC: pass root_path_str from web_main() to all other modules:
+		- DONE: web_main(), app_main(), file_io(), start_up()
+		- DONE: test
+		- TBD: clean-up web_main(), app_main(), file_io(), start_up(), both game_updates()
+		- TBD: random fix: incorporate game_name into obj save in game_update() modules
+	- TBD: create root_path_str import process
+		- TBD: create cleesh.cfg in root of /cleesh with root_path_str
+		- TBD: in web_main() and game_updates() read root_path_str from cleesh.cfg
 	- TBD: document install dependencies somewhere: set root_path_str & install prettytable
 	- TBD: cleaner fix for root_path_str bootstrapping (maybe text file?? Or bash cmd?)
 		- IDEA: in /cleesh/tools/ create module that can perform install
