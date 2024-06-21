@@ -61,6 +61,10 @@ Version 3.87.0 Goals:
 		- CANCEL: incorporate game_name into obj save in game_update() modules (no need; file is game-specific)
 	- IDEA: is relative pathing possible?
 		- LINK: https://stackoverflow.com/questions/21259070/struggling-to-append-a-relative-path-to-my-sys-path
+		- DONE: got web_main() working with import os ability
+		- DONE: game_update() for cup_of_tea
+		- DONE: game_update() for dark_castle
+		- TBD: clean up comments in web_main(), & both game_update()
 	- TBD: create root_path_str import process
 		- TBD: create cleesh.cfg in root of /cleesh with root_path_str
 		- IDEA: can we just do a direct lookup of root_path_str in web_main() ??

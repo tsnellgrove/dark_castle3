@@ -5,8 +5,10 @@
 
 
 # import statements
-import sys
-root_path_str = '/Users/thomassnellgrove/Documents/Python/dark_castle3'
+import sys, os
+# print(f"My Path: {os.path.realpath(__file__)}")
+# root_path_str = '/Users/thomassnellgrove/Documents/Python/dark_castle3'
+root_path_str = os.path.realpath(__file__).replace('/cleesh/games/cup_of_tea/game_file/game_update.py','')
 sys.path.append(root_path_str)
 
 import pickle
@@ -17,7 +19,7 @@ from cleesh.class_std.item_class_def import Item, Food, Liquid, Garment, Weapon
 from cleesh.class_std.interactive_class_def import DoorSimple, DoorLockable
 from cleesh.class_std.interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
 from cleesh.class_std.interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
-from cleesh.class_mach.switch_class_def import LeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
+from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
 from cleesh.class_mach.cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
 		SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
 		StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond, InRoomCond, InWorldStateCond)

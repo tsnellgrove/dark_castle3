@@ -7,8 +7,11 @@
 #		modularized machines, and replicate full original.
 
 ### import statements
-import sys
-root_path_str = '/Users/thomassnellgrove/Documents/Python/dark_castle3'
+import sys, os
+# print(f"My Path: {os.path.realpath(__file__)}")
+# root_path_str = '/Users/thomassnellgrove/Documents/Python/dark_castle3'
+root_path_str = os.path.realpath(__file__).replace('/cleesh/web_main.py','')
+print(root_path_str)
 sys.path.append(root_path_str)
 from cleesh.app_main.app_main import app_main
 from cleesh.app_main.start_up import start_me_up
