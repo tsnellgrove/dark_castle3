@@ -44,7 +44,7 @@ Version 3.87.0 Goals:
 	- DONE: read 'Warnings' section
 	- DONE: read 'Timers' section
 
-- INPROC: new mac updates
+- DONE: new mac updates (build 0001)
 	- DONE: fix root_path_str issue
 		- DONE: define new root_path_str
 		- DONE: update all path calls
@@ -53,37 +53,28 @@ Version 3.87.0 Goals:
 		- DONE: re-test
 		- DONE: clean-up web_main(), app_main(), file_io(), start_up(), both game_updates()
 		- DONE: elim engine static_global entry for root_path_str - this never gets used
-- INPROC: game install routine
+- DONE: game install routine
 	- DONE: pass root_path_str from web_main() to all other modules:
 		- DONE: web_main(), app_main(), file_io(), start_up()
 		- DONE: test
 		- DONE: clean-up web_main(), app_main(), file_io(), start_up()
 		- CANCEL: incorporate game_name into obj save in game_update() modules (no need; file is game-specific)
-	- IDEA: is relative pathing possible?
+	- DONE: auto-localization
 		- LINK: https://stackoverflow.com/questions/21259070/struggling-to-append-a-relative-path-to-my-sys-path
 		- DONE: got web_main() working with import os ability
 		- DONE: game_update() for cup_of_tea
 		- DONE: game_update() for dark_castle
-		- TBD: clean up comments in web_main(), & both game_update()
-	- TBD: create root_path_str import process
-		- TBD: create cleesh.cfg in root of /cleesh with root_path_str
-		- IDEA: can we just do a direct lookup of root_path_str in web_main() ??
-		- TBD: in web_main() and game_updates() read root_path_str from cleesh.cfg
-	- TBD: document install dependencies somewhere: set root_path_str & install prettytable
-	- TBD: cleaner fix for root_path_str bootstrapping (maybe text file?? Or bash cmd?)
-		- IDEA: in /cleesh/tools/ create module that can perform install
-			- IDEA: uses bash script to write root_path_str to txt file in /cleesh (same dir as web_main.py)
-			- IDEA: also attempts to install prettytable: "pip3 install prettytable"
-			- IDEA: web_main.py reads text file to get root_path_str
+		- DONE: clean up comments in web_main(), & both game_update()
+	- DONE: document install dependencies somewhere: set root_path_str & install prettytable
 
-
-- INPROC: switch class
+- INPROC: switch class (build 0002)
 	- DONE: review existing switch class
 	- INPROC: make LeverSwitch a true MixIn
 		- DONE: remove ViewOnly from LeverSwitch
 		- DONE: create ViewOnlyLeverSwitch
 		- DONE: update import and assignment in dark_castle
 		- TBD: text & fix errors
+		- TBD: update version build #
 
 - TBD: review existing mach, cond, result classes
 

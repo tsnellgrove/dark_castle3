@@ -1,7 +1,14 @@
-Dark Castle v3.83
+Cleesh
+3.8.0 (build 0001)
 Tom Snellgrove
-Mar 13, 2024
+Jun 21, 2024
 
+
+########################
+# install dependencies #
+########################
+
+Before running the game you will need to install all import dependencies. Most imports will already be included in your python environment but you will likely need to manually install prettytable: 'pip3 install prettytable'
 
 
 ###############

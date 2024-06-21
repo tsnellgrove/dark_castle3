@@ -6,8 +6,6 @@
 
 # import statements
 import sys, os
-# print(f"My Path: {os.path.realpath(__file__)}")
-# root_path_str = '/Users/thomassnellgrove/Documents/Python/dark_castle3'
 root_path_str = os.path.realpath(__file__).replace('/cleesh/games/dark_castle/game_file/game_update.py','')
 sys.path.append(root_path_str)
 
