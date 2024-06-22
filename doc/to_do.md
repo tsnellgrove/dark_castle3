@@ -67,25 +67,26 @@ Version 3.87.0 Goals:
 		- DONE: clean up comments in web_main(), & both game_update()
 	- DONE: document install dependencies somewhere: set root_path_str & install prettytable
 
-- INPROC: switch class (build 0002)
+- DONE: switch class (build 0002)
 	- DONE: review existing switch class
-	- INPROC: make LeverSwitch a true MixIn
+	- DONE: make LeverSwitch a true MixIn
 		- DONE: remove ViewOnly from LeverSwitch
 		- DONE: create ViewOnlyLeverSwitch
 		- DONE: update import and assignment in dark_castle
-		- TBD: text & fix errors
-		- TBD: update version build #
+		- DONE: text & fix errors
+		- DONE: update version build #
 
 - TBD: review existing mach, cond, result classes
 
 - TBD: review existing warning and timer classes
 
-- TBD: results and conditions
+- TBD: results and conditions (build 0003 ??)
 	- IDEA: goal is a single method for conditions and a single method for results
 	- IDEA: for conditions, attributes = modules + logic_str + descript_str
 	- IDEA: use attribute packing / kwargs to pack conditions / results with variable # of attributes
 	- IDEA: room should have show_machs() method that lists all local mod-machs
 	- IDEA: machine mix-in should have a dbg_describe() method that describes the machine (like K8s)
+	- TBD: update version build #
 
 - TBD: mod-mach improvement ideas:
 	- IDEA: naming
