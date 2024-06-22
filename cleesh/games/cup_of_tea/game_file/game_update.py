@@ -1,4 +1,4 @@
-# program: cup_of_tea v0.10
+# program: cup_of_tea
 # name: Tom Snellgrove
 # date: May 9, 2024
 # description: default object instantiation module (used as a tool)

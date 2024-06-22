@@ -28,7 +28,9 @@ Version 3.87.0 Goals:
 	- DONE: dark_castle reversion 
 		DONE: from '3.86 (6/9/2024)' to '3.1.0 (build 0001)'
 	- DONE: cup_of_tea reversion 
-		DONE: from '0.15 (5/22/2024)' to '0.1.0 (build 0001)'
+		- DONE: from '0.15 (5/22/2024)' to '0.1.0 (build 0001)'
+	- IDEA: since the game code has not changed since last release, there should be no build #
+		- DONE: updated
 
 - DONE: setup new MacBook Air for coding
 	- DONE: install VS Code
