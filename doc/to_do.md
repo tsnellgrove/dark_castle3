@@ -78,11 +78,22 @@ Version 3.87.0 Goals:
 		- DONE: text & fix errors
 		- DONE: update version build #
 
+- INPROC: refactor app_turn modules (mach code only) (build 0003 ??)
+	- DONE: refactor pre_action()
+	- TBD: refactor post_action()
+		- TBD: does score ever actually trigger on result.name ??
+	- TBD: refactor auto_action()
+	- TBD: update version build #
+
 - TBD: review existing mach, cond, result classes
+	- TBD: cond review
 
 - TBD: review existing warning and timer classes
+	- TBD: refactor app_turn modules (warning & timer code)
 
-- TBD: results and conditions (build 0003 ??)
+
+
+- TBD: results and conditions 
 	- IDEA: goal is a single method for conditions and a single method for results
 	- IDEA: for conditions, attributes = modules + logic_str + descript_str
 	- IDEA: use attribute packing / kwargs to pack conditions / results with variable # of attributes
