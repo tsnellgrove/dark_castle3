@@ -1,4 +1,4 @@
-# program: dark castle
+# program: cleesh
 # author: Tom Snellgrove
 # module description: identifies and executes pre-action commands
 

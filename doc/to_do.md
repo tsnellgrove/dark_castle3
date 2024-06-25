@@ -78,15 +78,15 @@ Version 3.87.0 Goals:
 		- DONE: text & fix errors
 		- DONE: update version build #
 
-- INPROC: refactor app_turn modules (mach code only) (build 0003 ??)
+- DONE: refactor app_turn modules (mach code only) (build 0003) [Jun 26, 2024]
 	- DONE: refactor pre_action()
 	- DONE: refactor post_action()
 		- DONE: initial clean-up
 		- DONE: reverse result_name (verb) and obj_name (noun) in score_disp() call
 		- DONE: test
 		- DONE: clean-up comments
-	- TBD: refactor auto_action()
-	- TBD: update version build #
+	- DONE: refactor auto_action()
+	- DONE: update version build #
 
 - TBD: review existing mach, cond, result classes
 	- TBD: cond review
