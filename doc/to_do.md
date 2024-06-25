@@ -78,7 +78,7 @@ Version 3.87.0 Goals:
 		- DONE: text & fix errors
 		- DONE: update version build #
 
-- DONE: refactor app_turn modules (mach code only) (build 0003) [Jun 26, 2024]
+- DONE: refactor app_turn modules (mach code only) (build 0003) [Jun 25, 2024]
 	- DONE: refactor pre_action()
 	- DONE: refactor post_action()
 		- DONE: initial clean-up
