@@ -52,7 +52,8 @@ game_static_dict = {
         		('kinging_scroll', None) : 5
                 },
         'open' : {('front_gate', None) : 5},
-        'go' : {('throne_room', None) : 10},
+#        'go' : {('throne_room', None) : 10},
+        'toggle_portcullis_result' : {('control_panel', None) : 10},
         'wear' : {('royal_crown', None) : 10},
 #        'unlock' : {('front_gate', 'rusty_key') : 5},
         'give' : {('royal_hedgehog', 'shiny_sword') : 5},
@@ -60,7 +61,8 @@ game_static_dict = {
             	('guard_goblin', 'shiny_sword') : 5,
                 ('royal_hedgehog', '*') : -20
                 },
-        'kinging_scroll' : {('scroll_win_game_result', None) : 15}
+#        'kinging_scroll' : {('scroll_win_game_result', None) : 15}
+        'scroll_win_game_result' : {('kinging_scroll', None) : 15}
 	},
 
 	### one-word commands - non-objeects ###

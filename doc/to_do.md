@@ -80,8 +80,11 @@ Version 3.87.0 Goals:
 
 - INPROC: refactor app_turn modules (mach code only) (build 0003 ??)
 	- DONE: refactor pre_action()
-	- TBD: refactor post_action()
-		- TBD: does score ever actually trigger on result.name ??
+	- INPROC: refactor post_action()
+		- DONE: initial clean-up
+		- DONE: reverse result_name (verb) and obj_name (noun) in score_disp() call
+		- DONE: test
+		- TBD: clean-up comments
 	- TBD: refactor auto_action()
 	- TBD: update version build #
 
