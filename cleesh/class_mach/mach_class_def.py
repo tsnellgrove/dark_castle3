@@ -13,7 +13,7 @@ from cleesh.class_std.interactive_class_def import ContainerFixedSimple, Seat
 class MachineMixIn(object):
 	def __init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 		self._mach_state = mach_state # machine state variable; boolean for simple machines; Int for complex
-		self._trigger_type = trigger_type # pre_act_cmd, pre_act_switch, pre_act_auto, post_act_cmd, post_act_switch, or post_act_auto
+		self._trigger_type = trigger_type # pre_act_cmd, pre_act_timer, post_act_cmd, post_act_switch, auto_act, auto_switch_reset
 		self._trig_switch = trig_switch # the switch whose state change can trigger the machine (only one switch per machine)
 		self._trig_vals_lst = trig_vals_lst # tirgger values that will start the machine (commands or switch states; None for auto?)
 		self._cond_swicth_lst = cond_swicth_lst # list of switches associated with the machine with states that contribute to conditions

@@ -88,12 +88,16 @@ Version 3.87.0 Goals:
 	- DONE: refactor auto_action()
 	- DONE: update version build #
 
-- TBD: review existing mach, cond, result classes
+- INPROC: review existing mach, cond, result classes
+	- INPROC: mach review
+		- DONE: trig_check()
+		- TBD: run_mach()
+		- TBD: need a deep dive on trig_check() wildcard routine
 	- TBD: cond review
+	- TBD: result review
 
 - TBD: review existing warning and timer classes
 	- TBD: refactor app_turn modules (warning & timer code)
-
 
 
 - TBD: results and conditions 
@@ -162,17 +166,37 @@ Version 3.87.0 Goals:
 	- IDEA: [hold off until at least one more control_panel type machine gets created]
 
 - TBD: Cases where I want a modular machine to run despite an error standard
-	- IDEA: e.g. 'go north' in antechamber triggers goblin
-	- IDEA: i.e. should it ever be possible to override an error? If so, then how?
-	- IDEA: the 'open portcullis' case is a special problem here - it will tell Burt it's locked...
-		- IDEA: but the Goblin should attack before Burt can touch the Portcullis
-	- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
-	- IDEA: modular machines should be designed so that it is easy to trigger & run them from interupt()
-	- IDEA: narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
-	- DECISION: use fake_door for now and swap on goblin death
-	- RECONSIDER: 'take axe' case is hard to fake out... maybe I do need an interupt() module after all??
-	- Maybe just 'x axe' case?
-	- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
+	- IDEA: problem description
+		- IDEA: e.g. 'go north' in antechamber triggers goblin
+		- IDEA: i.e. should it ever be possible to override an error? If so, then how?
+		- IDEA: the 'open portcullis' case is a special problem here - it will tell Burt it's locked...
+			- IDEA: but the Goblin should attack before Burt can touch the Portcullis
+	- IDEA: general thinking / philosophy
+		- IDEA: narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
+		- DECISION: use fake_door for now and swap on goblin death
+		- RECONSIDER: 'take axe' case is hard to fake out... maybe I do need an interupt() module after all??
+	- IDEA: possible solution 1
+		- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
+		- IDEA: modular machines should be designed so that it is easy to trigger & run them from interupt()
+	- IDEA: possible solutions 2
+		- IDEA: what we really need to do is differentiate between "attemptable" failure vs. "impossible"
+		- IDEA: attempting to open a locked door is the poster child for this
+			- IDEA: it is reasonable for the player to attempt a new door they find
+			- IDEA: in fact, they can only learn that it is locked by making the attempt
+			- IDEA: further, if there is a guard in the room, it is reasonably that they take action
+			- IDEA: against a player that is rattling the locked door they are guarding
+		- IDEA: by contrast: 'eat horseshoe' (when there is no nearby horseshoe) is NOT attemptable
+			- IDEA: and should not be dignified by a pre_action() response
+		- TBD: in errors, return is_attemptable
+			- TBD: if is_attemptable == True, time passes, and both pre_act() and auto_act() run
+			- IDEA: all errors that return useful info (e.g. 'locked door') are attemptable
+			- IDEA: is_attemptable = False for all cases where the obj is not in room
+			- IDEA: in between is tricky... 
+			- IDEA: go <direction w/ no exit> and take <obj held by creature> are good attemptable candidates
+	- IDEA: alternative work-arounds:
+		- TBD: Maybe just 'x axe' case?
+		- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
+
 
 - TBD: de-dup warning and timer classes
 	- IDEA: it appears that "selective inheritance" just isn't a thing. What now?
@@ -191,6 +215,7 @@ Version 3.87.0 Goals:
 		- TBD: and no longer triggers when biscuits not in hand
 		- IDEA:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
 	- TBD: Do we really need to test for goblin in antechamber??? (will the goblin ever move)
+	- TBD: should hedgehog_distracted_mach just be replaced by a Creature class attribute?
 
 - TBD: additional problems to solve
 	- TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj
