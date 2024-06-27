@@ -88,10 +88,14 @@ Version 3.87.0 Goals:
 	- DONE: refactor auto_action()
 	- DONE: update version build #
 
-- INPROC: review existing mach, cond, result classes
+- INPROC: review existing mach, cond, result classes (build 0004)
 	- INPROC: mach review
 		- DONE: trig_check()
-		- TBD: run_mach()
+		- INPROC: refactor run_mach()
+			- DONE: update code to eliminate dual index creation
+			- DONE: test
+			- TBD: exit and re-test
+			- TBD: comment clean-up
 		- TBD: need a deep dive on trig_check() wildcard routine
 	- TBD: cond review
 	- TBD: result review
@@ -232,6 +236,17 @@ Version 3.87.0 Goals:
 
 - TBD: update modular machine doc!
 
+*** Eliminated Code ***
+	def run_mach(self, gs):
+		cond_return_lst = []
+		for cond in self.cond_lst:
+			cond_return = cond.cond_check(gs, self.mach_state, self.cond_swicth_lst)
+			cond_return_lst.append(cond_return)
+		result_index = cond_return_lst.index(True)
+		result = self.result_lst[result_index]
+		temp_mach_state, cmd_override = result.result_exe(gs, self.mach_state)
+		self.mach_state = temp_mach_state
+		return cmd_override, result.name
 
 *** already done ***
 - DONE: How to enable switches and machines to self register for universal scope

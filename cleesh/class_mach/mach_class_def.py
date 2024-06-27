@@ -91,16 +91,25 @@ class MachineMixIn(object):
 
 		return trig_key_lst in self.trig_vals_lst
 
+#	def run_mach(self, gs):
+#		cond_return_lst = []
+#		for cond in self.cond_lst:
+#			cond_return = cond.cond_check(gs, self.mach_state, self.cond_swicth_lst)
+#			cond_return_lst.append(cond_return)
+#		result_index = cond_return_lst.index(True)
+#		result = self.result_lst[result_index]
+#		temp_mach_state, cmd_override = result.result_exe(gs, self.mach_state)
+#		self.mach_state = temp_mach_state
+#		return cmd_override, result.name
+
 	def run_mach(self, gs):
-		cond_return_lst = []
-		for cond in self.cond_lst:
-			cond_return = cond.cond_check(gs, self.mach_state, self.cond_swicth_lst)
-			cond_return_lst.append(cond_return)
-		result_index = cond_return_lst.index(True)
-		result = self.result_lst[result_index]
-		temp_mach_state, cmd_override = result.result_exe(gs, self.mach_state)
-		self.mach_state = temp_mach_state
-		return cmd_override, result.name
+		for idx, cond in enumerate(self.cond_lst):
+			if cond.cond_check(gs, self.mach_state, self.cond_swicth_lst):
+				result = self.result_lst[idx]
+#				temp_mach_state, cmd_override = result.result_exe(gs, self.mach_state)
+#				self.mach_state = temp_mach_state
+				self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
+				return cmd_override, result.name
 
 class InvisMach(MachineMixIn, Invisible):
 	def __init__(self, name, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
