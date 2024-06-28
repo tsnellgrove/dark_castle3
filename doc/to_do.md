@@ -91,11 +91,12 @@ Version 3.87.0 Goals:
 - INPROC: review existing mach, cond, result classes (build 0004)
 	- INPROC: mach review
 		- DONE: trig_check()
-		- INPROC: refactor run_mach()
+		- DONE: refactor run_mach()
 			- DONE: update code to eliminate dual index creation
 			- DONE: test
-			- TBD: exit and re-test
-			- TBD: comment clean-up
+			- DONE: exit and re-test
+			- NOTE: was worried that returning a method arguement would cause a circular ref but apparently not
+			- DONE: comment clean-up
 		- TBD: need a deep dive on trig_check() wildcard routine
 	- TBD: cond review
 	- TBD: result review
