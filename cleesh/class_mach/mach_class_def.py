@@ -74,6 +74,7 @@ class MachineMixIn(object):
 			trig_key_lst = word_lst[0]
 		elif  case == 'timer':
 			trig_key_lst = word_lst[0]
+		print(f"mach = {self.name}, trig_key_lst = {trig_key_lst}")
 
 		# wildcard sub-routine
 		if (self.trigger_type == 'pre_act_cmd' and len(trig_key_lst) == len(self.trig_vals_lst)): # added to avoid index out of range error
@@ -92,6 +93,7 @@ class MachineMixIn(object):
 		return trig_key_lst in self.trig_vals_lst
 
 	def run_mach(self, gs):
+		print(f"mach running; mach_name = {self.name}")
 		for idx, cond in enumerate(self.cond_lst):
 			if cond.cond_check(gs, self.mach_state, self.cond_swicth_lst):
 				result = self.result_lst[idx]

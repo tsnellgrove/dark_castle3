@@ -97,7 +97,10 @@ Version 3.87.0 Goals:
 			- DONE: exit and re-test
 			- NOTE: was worried that returning a method arguement would cause a circular ref but apparently not
 			- DONE: comment clean-up
-		- TBD: need a deep dive on trig_check() wildcard routine
+		- INPROC: need a deep dive on trig_check() wildcard routine
+			- DONE: test existing wildcard routine via hedgehog_distracted_mach => does not appear to work
+			- INPROC: troubleshoot hedgehog_distracted_mach (confirm '*' issue by replacing w/ shiny_sword)
+			- TBD: fix / refactor hedgehog_distracted_mach
 	- TBD: cond review
 	- TBD: result review
 
