@@ -89,7 +89,7 @@ Version 3.87.0 Goals:
 	- DONE: update version build #
 
 - INPROC: review existing mach, cond, result classes (build 0004)
-	- INPROC: mach review
+	- DONE: mach review
 		- DONE: trig_check()
 		- DONE: refactor run_mach()
 			- DONE: update code to eliminate dual index creation
@@ -97,13 +97,13 @@ Version 3.87.0 Goals:
 			- DONE: exit and re-test
 			- NOTE: was worried that returning a method arguement would cause a circular ref but apparently not
 			- DONE: comment clean-up
-		- INPROC: need a deep dive on trig_check() wildcard routine
+		- DONE: need a deep dive on trig_check() wildcard routine
 			- DONE: test existing wildcard routine via hedgehog_distracted_mach => does not appear to work
-			- INPROC: troubleshoot hedgehog_distracted_mach
+			- DONE: troubleshoot hedgehog_distracted_mach
 				- DONE: confirm '*' issue by replacing w/ shiny_sword => works; '*' is the issue
 				- DONE: fix / refactor hedgehog_distracted_mach / trig_check() wildcard routine
-				- DECISION: wildcards are only valid for nouns
-				- TBD: clean up comments
+				- DECISION: wildcards will only be valid for nouns
+				- DONE: clean up comments
 	- TBD: cond review
 	- TBD: result review
 
