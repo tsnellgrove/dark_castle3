@@ -99,8 +99,11 @@ Version 3.87.0 Goals:
 			- DONE: comment clean-up
 		- INPROC: need a deep dive on trig_check() wildcard routine
 			- DONE: test existing wildcard routine via hedgehog_distracted_mach => does not appear to work
-			- INPROC: troubleshoot hedgehog_distracted_mach (confirm '*' issue by replacing w/ shiny_sword)
-			- TBD: fix / refactor hedgehog_distracted_mach
+			- INPROC: troubleshoot hedgehog_distracted_mach
+				- DONE: confirm '*' issue by replacing w/ shiny_sword => works; '*' is the issue
+				- DONE: fix / refactor hedgehog_distracted_mach / trig_check() wildcard routine
+				- DECISION: wildcards are only valid for nouns
+				- TBD: clean up comments
 	- TBD: cond review
 	- TBD: result review
 
@@ -216,6 +219,7 @@ Version 3.87.0 Goals:
 	- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
 
 - TBD: mod-mach bug fixes
+	- TBD: fix hedgehog description after sword is returned (before goblin killed)
 	- TBD: auto_static_behavior for goblin? each turn - maybe should be a standard function??
 		EXAMPLE: "the goblin is eyeing you coldly"
 	- TBD: fix eat_biscuits_warning 

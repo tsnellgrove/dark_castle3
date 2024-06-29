@@ -60,37 +60,42 @@ class MachineMixIn(object):
 	# complex methods
 
 	# formats trigger state into trig_key_lst based on case and returns true if trig_key_lst is in trig_vals_lst
+	# wildcards are only supported for nouns
 	def trig_check(self, gs, case, word_lst):
 		trig_key_lst = ['not_valid']
+		trig_wc_lst = ['not_valid']
 		if case == 'go':
 			trig_key_lst = [word_lst[1], word_lst[2]]
 		elif case == '2word':
 			trig_key_lst = [word_lst[1], word_lst[0].name]
+			trig_wc_lst = [word_lst[1], '*']
 		elif  case == 'tru_1word':
 			trig_key_lst = word_lst
 		elif  case == 'prep':
 			trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
+			trig_wc_lst = [word_lst[1], '*', word_lst[0].name]
 		elif case == 'switch':
 			trig_key_lst = word_lst[0]
 		elif  case == 'timer':
 			trig_key_lst = word_lst[0]
-		print(f"mach = {self.name}, trig_key_lst = {trig_key_lst}")
+#		print(f"mach = {self.name}, trig_key_lst = {trig_key_lst}")
 
 		# wildcard sub-routine
-		if (self.trigger_type == 'pre_act_cmd' and len(trig_key_lst) == len(self.trig_vals_lst)): # added to avoid index out of range error
-			wcard_lst = copy.deepcopy(self.trig_vals_lst)
-			wcard_case = False
-			for lst_index, lst_val in enumerate(wcard_lst):
-				if '*' in lst_val:
-					wcard_case = True
-					wcard_index = lst_val.index('*')
-					wcard_lst[lst_index][wcard_index] = trig_key_lst[wcard_index]	
-			if wcard_case:
-				return_val = trig_key_lst in wcard_lst
-				wcard_lst = []
-				return return_val
+#		if (self.trigger_type == 'pre_act_cmd' and len(trig_key_lst) <= len(self.trig_vals_lst)): # added to avoid index out of range error
+#			wcard_lst = copy.deepcopy(self.trig_vals_lst)
+#			wcard_case = False
+#			for lst_index, lst_val in enumerate(wcard_lst):
+#				if '*' in lst_val:
+#					wcard_case = True
+#					wcard_index = lst_val.index('*')
+#					wcard_lst[lst_index][wcard_index] = trig_key_lst[wcard_index]
+#					print(f"wcard_lst = {wcard_lst[lst_index][wcard_index]}")
+#			if wcard_case:
+#				return_val = trig_key_lst in wcard_lst
+#				wcard_lst = []
+#				return return_val
 
-		return trig_key_lst in self.trig_vals_lst
+		return (trig_key_lst in self.trig_vals_lst) or (trig_wc_lst in self.trig_vals_lst)
 
 	def run_mach(self, gs):
 		print(f"mach running; mach_name = {self.name}")
