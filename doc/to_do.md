@@ -105,7 +105,9 @@ Version 3.87.0 Goals:
 			- DONE: clean up comments
 	- DONE: update version build #
 
-- TBD: cond review (0005) []
+- INPROC: cond review (0005) []
+	- DONE: review and categorize existing conditions
+	- TBD:
 	- TBD: update version build #
 
 - TBD: result review

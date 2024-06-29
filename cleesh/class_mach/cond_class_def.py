@@ -3,6 +3,25 @@
 # module description: class deffinition module for Conditions
 
 
+# Condition class (x) : inherits from (Y) : cond_check() method returns (Z) > [combo?]
+
+# PassThruCond() : 		parent class :	 	True
+# WeaponInHandCond : 	PassThruCond :		match on hero holding weapon
+# CreatureItemCond : 	PassThruCond :	 	match on creature holding item
+# StateCond : 			PassThruCond :  	match mach_state
+# IsWeaponAndStateCond : StateCond :	 	(match mach_state) && (match weapon in hero hand) > [combo]
+# SwitchStateCond : 	PassThruCond :	 	match switch_state_lst
+# LeverArrayCond : 		SwitchStateCond :	sum of switch_state_val_lst = mach_state
+# NotTimerAndItemCond :	PassThruCond :	 	(item_obj in hero_rm.floor_lst) && (not timer_obj.active) > [combo]
+# StateItemInRoomCond :	PassThruCond :		(match item_obj in hero_rm.floor_lst) && (match mach_state) > [combo]
+# TimerActiveCond :		PassThruCond :		match timer_obj.active
+# RoomCond :			PassThruCond :		match hero_rm
+# InWorldCond :			PassThruCond :		match chk_obj_exist
+# InWorldStateCond :	InWorldCond :		(not mach_state) and (match chk_obj_exist) [combo]
+# WornCond :			PassThruCond :		match garment is worn
+# InRoomCond :			PassThruCond :		match creature in match_rm
+
+
 ### classes
 class PassThruCond(object):
 	def __init__(self, name):
