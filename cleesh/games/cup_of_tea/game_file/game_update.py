@@ -18,7 +18,7 @@ from cleesh.class_std.interactive_class_def import DoorSimple, DoorLockable
 from cleesh.class_std.interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
 from cleesh.class_std.interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
-from cleesh.class_mach.cond_class_def import (PassThruCond, TrueCond, StateCond, WeaponInHandCond,
+from cleesh.class_mach.cond_class_def import (TrueCond, StateCond, WeaponInHandCond,
 		SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
 		StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond,
 		IsWeaponAndStateCond, InRoomCond, InWorldStateCond)
@@ -74,7 +74,6 @@ creaky_door = DoorLockable('creaky_door', 'Creaky Door', "door", 'creaky_door', 
 # timers
 
 # conditions
-# pass_thru_cond = PassThruCond('pass_thru_cond')
 true_cond = TrueCond('true_cond')
 
 # results

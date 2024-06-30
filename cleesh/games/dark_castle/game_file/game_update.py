@@ -18,7 +18,7 @@ from cleesh.class_std.interactive_class_def import DoorSimple, DoorLockable
 from cleesh.class_std.interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
 from cleesh.class_std.interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
-from cleesh.class_mach.cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
+from cleesh.class_mach.cond_class_def import (PassThruCond, TrueCond, StateCond, WeaponInHandCond,
 		SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
 		StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond, InRoomCond, InWorldStateCond)
 from cleesh.class_mach.result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
@@ -123,6 +123,7 @@ test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 9
 hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, 'royal_hedgehog')
 
 # conditions
+true_cond = TrueCond('true_cond')
 hand_no_weap_cond = WeaponInHandCond('hand_no_weap_cond', False)
 hand_weap_1st_cond = IsWeaponAndStateCond('hand_weap_1st_cond', True, False)
 hand_weap_repeat_cond = IsWeaponAndStateCond('hand_weap_repeat_cond', True, True)

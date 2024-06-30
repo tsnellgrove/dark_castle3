@@ -108,7 +108,9 @@ Version 3.87.0 Goals:
 - INPROC: cond review (0005) []
 	- DONE: review and categorize existing conditions
 	- TBD: refactor / rename simple conditions
-		- TBD: PassThruCond => TrueCond
+		- INRPOC: PassThruCond => TrueCond
+			- DONE: cup_of_tea
+			- TBD: dark_castle
 	- TBD: sort out combo cond
 	- IDEA: perhaps cond_lst is a list-of-lists; 
 		- IDEA: i.e. each cond is in a list; if len(cond) > 0 then 'and' them?
