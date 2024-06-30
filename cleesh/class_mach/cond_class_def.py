@@ -24,7 +24,7 @@
 
 
 ### classes
-class PassThruCond(object):
+class PassThruCond(object): # OLD COND
 	def __init__(self, name):
 		self._name = name
 
@@ -38,6 +38,24 @@ class PassThruCond(object):
 
 	def __repr__(self):
 		return f'Object { self.name } is of class { type(self).__name__ } '
+
+
+class TrueCond(object): # NEW COND
+	def __init__(self, name):
+		self._name = name
+
+	@property
+	def name(self):
+		return self._name
+
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		return True
+
+	def __repr__(self):
+		return f'Object { self.name } is of class { type(self).__name__ } '
+
+
+# *** To Be Reviewed ***
 
 
 class WeaponInHandCond(PassThruCond):

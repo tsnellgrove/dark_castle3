@@ -18,9 +18,10 @@ from cleesh.class_std.interactive_class_def import DoorSimple, DoorLockable
 from cleesh.class_std.interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
 from cleesh.class_std.interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
-from cleesh.class_mach.cond_class_def import (PassThruCond, StateCond, WeaponInHandCond,
+from cleesh.class_mach.cond_class_def import (PassThruCond, TrueCond, StateCond, WeaponInHandCond,
 		SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
-		StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond, IsWeaponAndStateCond, InRoomCond, InWorldStateCond)
+		StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, WornCond,
+		IsWeaponAndStateCond, InRoomCond, InWorldStateCond)
 from cleesh.class_mach.result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
 		TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
@@ -73,7 +74,8 @@ creaky_door = DoorLockable('creaky_door', 'Creaky Door', "door", 'creaky_door', 
 # timers
 
 # conditions
-pass_thru_cond = PassThruCond('pass_thru_cond')
+# pass_thru_cond = PassThruCond('pass_thru_cond')
+true_cond = TrueCond('true_cond')
 
 # results
 tea_drunk_win_result = BufferAndEndResult('tea_drunk_win_result', 'won!', False)
@@ -81,7 +83,7 @@ tea_drunk_win_result = BufferAndEndResult('tea_drunk_win_result', 'won!', False)
 # warnings
 
 # machines
-tea_drunk_mach = InvisMach('tea_drunk_mach', None, 'post_act_cmd', None, [['drink', 'tea_cup', 'tea']], None, [pass_thru_cond], [tea_drunk_win_result])
+tea_drunk_mach = InvisMach('tea_drunk_mach', None, 'post_act_cmd', None, [['drink', 'tea_cup', 'tea']], None, [true_cond], [tea_drunk_win_result])
 
 # Creatures
 cecily = Creature('cecily', 'Cecily', 'cecily', 'cecily', None,
