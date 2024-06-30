@@ -117,6 +117,8 @@ Version 3.87.0 Goals:
 		- IDEA: i.e. each cond is in a list; if len(cond) > 0 then 'and' them?
 		- IDEA: so this happens at the Machine class / run_mach level
 		- IDEA: this way, there is no class of combo_and_cond... which would just add complexity
+		- IDEA: cond_combo_lst[0] = 'and' or 'or'
+	- TBD: for Mach class, create an 'active' attribute
 	- TBD: update version build #
 
 - TBD: result review
@@ -338,6 +340,12 @@ Version 3.87.0 Goals:
 		- IDEA: obj should be a black-box
 	- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
 
+- IDEA: Distracted state & description as creature attribute; inhibits 'show', 'give', attack 'commands'
+	- "The create to distracted to notice what you are showing them"
+	- "You think better of attacking the distracted creature"
+- IDEA: Creature state is linked to descript; e.g. hedgehog_descript_1
+- IDEAD: machine result changes Creature State; State machine itself changes creature attributes based on state
+	- e.g. start timer, description, machine active, distracted attribute, etc
 
 *** refactor Interactive ***
 - TBD: clean up and make more efficient
