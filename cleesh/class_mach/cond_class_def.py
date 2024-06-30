@@ -5,7 +5,7 @@
 
 # Condition class (x) : inherits from (Y) : cond_check() method returns (Z) > [combo?]
 
-# PassThruCond() : 		parent class :	 	True
+# PassThruCond : 		parent class :	 	True ==> DONE (rename TrueCond)
 # WornCond :			PassThruCond :		match garment is worn
 # RoomCond :			PassThruCond :		match hero_rm
 # InRoomCond :			PassThruCond :		match creature in match_rm
@@ -24,7 +24,10 @@
 
 
 ### classes
-class PassThruCond(object): # OLD COND
+
+# *** OLD COND - NOT IN USE ***
+
+class PassThruCond(object):
 	def __init__(self, name):
 		self._name = name
 
@@ -39,6 +42,9 @@ class PassThruCond(object): # OLD COND
 	def __repr__(self):
 		return f'Object { self.name } is of class { type(self).__name__ } '
 
+# *** OLD COND - NOT IN USE ***
+
+# *** NEW COND - NOW IN USE ***
 
 class TrueCond(object): # NEW COND
 	def __init__(self, name):
@@ -54,9 +60,10 @@ class TrueCond(object): # NEW COND
 	def __repr__(self):
 		return f'Object { self.name } is of class { type(self).__name__ } '
 
+# *** NEW COND - NOW IN USE ***
+
 
 # *** To Be Reviewed ***
-
 
 class WeaponInHandCond(PassThruCond):
 	def __init__(self, name, weapon_match_cond):
