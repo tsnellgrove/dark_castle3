@@ -114,7 +114,7 @@ Version 3.87.0 Goals:
 		- INPROC: WornCond
 			- DONE: refactor cond
 			- INPROC: update cark_castle
-				- TBD: troubleshoot error on read scroll with no crown
+				- TBD: troubleshoot error on read scroll with no crown (indent error? try w/out creature)
 	- TBD: sort out combo cond
 	- IDEA: perhaps cond_lst is a list-of-lists; 
 		- IDEA: i.e. each cond is in a list; if len(cond) > 0 then 'and' them?
