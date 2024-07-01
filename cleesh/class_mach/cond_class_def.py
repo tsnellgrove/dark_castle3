@@ -42,6 +42,26 @@ class PassThruCond(object):
 	def __repr__(self):
 		return f'Object { self.name } is of class { type(self).__name__ } '
 
+
+# class WornCond(PassThruCond):
+#	def __init__(self, name, worn_garment, match_cond):
+#		super().__init__(name)
+#		self._worn_garment = worn_garment
+#		self._match_cond = match_cond
+
+#	@property
+#	def worn_garment(self):
+#		return self._worn_garment
+
+#	@property
+#	def match_cond(self):
+#		return self._match_cond
+
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		creature = gs.core.hero
+#		return (self.worn_garment in creature.worn_lst) == self.match_cond
+
+
 # *** OLD COND - NOT IN USE ***
 
 # *** NEW COND - NOW IN USE ***
@@ -59,6 +79,28 @@ class TrueCond(object): # NEW COND
 
 	def __repr__(self):
 		return f'Object { self.name } is of class { type(self).__name__ } '
+
+class WornCond(TrueCond):
+	def __init__(self, name, worn_garment, creature_obj, match_cond):
+		super().__init__(name)
+		self._worn_garment = worn_garment
+		self._creature_obj = creature_obj
+		self._match_cond = match_cond
+
+	@property
+	def worn_garment(self):
+		return self._worn_garment
+
+	@property
+	def creature_obj(self):
+		return self._creature_obj
+
+	@property
+	def match_cond(self):
+		return self._match_cond
+
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		return (self.worn_garment in self.creature_obj.worn_lst) == self.match_cond
 
 # *** NEW COND - NOW IN USE ***
 
@@ -293,25 +335,6 @@ class InWorldStateCond(InWorldCond): # note: only works for obj in room.floor_ls
 			return match_state == self.match_cond
 		else:
 			return False
-
-
-class WornCond(PassThruCond):
-	def __init__(self, name, worn_garment, match_cond):
-		super().__init__(name)
-		self._worn_garment = worn_garment
-		self._match_cond = match_cond
-
-	@property
-	def worn_garment(self):
-		return self._worn_garment
-
-	@property
-	def match_cond(self):
-		return self._match_cond
-
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		creature = gs.core.hero
-		return (self.worn_garment in creature.worn_lst) == self.match_cond
 
 
 class InRoomCond(PassThruCond):
