@@ -111,12 +111,17 @@ Version 3.87.0 Goals:
 		- DONE: PassThruCond => TrueCond
 			- DONE: cup_of_tea
 			- DONE: dark_castle
-		- INPROC: WornCond
+		- DONE: WornCond
 			- DONE: refactor cond
-			- DONE: update cark_castle
+			- DONE: update dark_castle
 				- DONE: troubleshoot error on read scroll with no crown (indent error? try w/out creature)
 				- FINDING: I think the issue was lack of a setter to over-write the 'temp_burt' placeholder
-				- TBD: clean up comments
+				- DONE: clean up comments
+		- TBD: RoomCond & InRoomCond
+			- TBD: cond usage eval - do we really need both?
+			- TBD: refactor cond
+			- TBD: update dark_castle
+		- TBD:
 	- TBD: sort out combo cond
 	- IDEA: perhaps cond_lst is a list-of-lists; 
 		- IDEA: i.e. each cond is in a list; if len(cond) > 0 then 'and' them?

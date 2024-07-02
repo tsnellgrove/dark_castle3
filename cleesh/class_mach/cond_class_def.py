@@ -5,8 +5,10 @@
 
 # Condition class (x) : inherits from (Y) : cond_check() method returns (Z) > [combo?]
 
-# PassThruCond : 		parent class :	 	True ==> DONE (rename TrueCond)
-# WornCond :			PassThruCond :		match garment is worn
+# TrueCond :			parent class :		True (parent class)
+# WornCond :			TrueCond :			match garment is worn
+
+# PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
 # RoomCond :			PassThruCond :		match hero_rm
 # InRoomCond :			PassThruCond :		match creature in match_rm
 # InWorldCond :			PassThruCond :		match chk_obj_exist
@@ -24,6 +26,52 @@
 
 
 ### classes
+
+
+# *** NEW COND - NOW IN USE ***
+
+class TrueCond(object): # NEW COND
+	def __init__(self, name):
+		self._name = name
+
+	@property
+	def name(self):
+		return self._name
+
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		return True
+
+	def __repr__(self):
+		return f'Object { self.name } is of class { type(self).__name__ } '
+
+class WornCond(TrueCond):
+	def __init__(self, name, worn_garment, creature_obj, match_cond):
+		super().__init__(name)
+		self._worn_garment = worn_garment
+		self._creature_obj = creature_obj
+		self._match_cond = match_cond
+
+	@property
+	def worn_garment(self):
+		return self._worn_garment
+
+	@property
+	def creature_obj(self):
+		return self._creature_obj
+
+	@creature_obj.setter
+	def creature_obj(self, new_obj):
+		self._creature_obj = new_obj
+
+	@property
+	def match_cond(self):
+		return self._match_cond
+
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		return (self.worn_garment in self.creature_obj.worn_lst) == self.match_cond
+
+# *** NEW COND - NOW IN USE ***
+
 
 # *** OLD COND - NOT IN USE ***
 
@@ -63,60 +111,6 @@ class PassThruCond(object):
 
 
 # *** OLD COND - NOT IN USE ***
-
-# *** NEW COND - NOW IN USE ***
-
-class TrueCond(object): # NEW COND
-	def __init__(self, name):
-		self._name = name
-
-	@property
-	def name(self):
-		return self._name
-
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		return True
-
-	def __repr__(self):
-		return f'Object { self.name } is of class { type(self).__name__ } '
-
-class WornCond(TrueCond):
-#	def __init__(self, name, worn_garment, creature_obj, match_cond):
-##	def __init__(self, name, worn_garment, match_cond):
-	def __init__(self, name, worn_garment, creature_obj, match_cond):
-		super().__init__(name)
-		self._worn_garment = worn_garment
-#		self._creature_obj = creature_obj
-		self._creature_obj = creature_obj
-		self._match_cond = match_cond
-
-	@property
-	def worn_garment(self):
-		return self._worn_garment
-
-#	@property
-#	def creature_obj(self):
-#		return self._creature_obj
-
-	@property
-	def creature_obj(self):
-		return self._creature_obj
-
-	@creature_obj.setter
-	def creature_obj(self, new_obj):
-		self._creature_obj = new_obj
-
-	@property
-	def match_cond(self):
-		return self._match_cond
-
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-##		creature_obj = gs.core.hero
-#		return (self.worn_garment in self.creature_obj.worn_lst) == self.match_cond
-		return (self.worn_garment in self.creature_obj.worn_lst) == self.match_cond
-##		return (self.worn_garment in creature_obj.worn_lst) == self.match_cond
-
-# *** NEW COND - NOW IN USE ***
 
 
 # *** To Be Reviewed ***
