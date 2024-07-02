@@ -81,9 +81,12 @@ class TrueCond(object): # NEW COND
 		return f'Object { self.name } is of class { type(self).__name__ } '
 
 class WornCond(TrueCond):
+#	def __init__(self, name, worn_garment, creature_obj, match_cond):
+##	def __init__(self, name, worn_garment, match_cond):
 	def __init__(self, name, worn_garment, creature_obj, match_cond):
 		super().__init__(name)
 		self._worn_garment = worn_garment
+#		self._creature_obj = creature_obj
 		self._creature_obj = creature_obj
 		self._match_cond = match_cond
 
@@ -91,16 +94,27 @@ class WornCond(TrueCond):
 	def worn_garment(self):
 		return self._worn_garment
 
+#	@property
+#	def creature_obj(self):
+#		return self._creature_obj
+
 	@property
 	def creature_obj(self):
 		return self._creature_obj
+
+	@creature_obj.setter
+	def creature_obj(self, new_obj):
+		self._creature_obj = new_obj
 
 	@property
 	def match_cond(self):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
+##		creature_obj = gs.core.hero
+#		return (self.worn_garment in self.creature_obj.worn_lst) == self.match_cond
 		return (self.worn_garment in self.creature_obj.worn_lst) == self.match_cond
+##		return (self.worn_garment in creature_obj.worn_lst) == self.match_cond
 
 # *** NEW COND - NOW IN USE ***
 

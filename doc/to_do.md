@@ -113,8 +113,10 @@ Version 3.87.0 Goals:
 			- DONE: dark_castle
 		- INPROC: WornCond
 			- DONE: refactor cond
-			- INPROC: update cark_castle
-				- TBD: troubleshoot error on read scroll with no crown (indent error? try w/out creature)
+			- DONE: update cark_castle
+				- DONE: troubleshoot error on read scroll with no crown (indent error? try w/out creature)
+				- FINDING: I think the issue was lack of a setter to over-write the 'temp_burt' placeholder
+				- TBD: clean up comments
 	- TBD: sort out combo cond
 	- IDEA: perhaps cond_lst is a list-of-lists; 
 		- IDEA: i.e. each cond is in a list; if len(cond) > 0 then 'and' them?
