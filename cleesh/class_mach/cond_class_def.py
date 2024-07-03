@@ -7,7 +7,7 @@
 
 # TrueCond :			parent class :		True (parent class)
 # WornCond :			TrueCond :			match garment is worn
-# InRoomCond :			TrueCond :			match creature in match_rm
+# ObjInRmCond :			TrueCond :			match creature in match_rm
 
 # PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
 
@@ -76,7 +76,7 @@ class WornCond(TrueCond):
 		return (self.worn_garment in self.creature_obj.worn_lst) == self.match_cond
 
 
-class InRoomCond(TrueCond):
+class ObjInRmCond(TrueCond):
 	def __init__(self, name, match_room, creature_obj, match_cond):
 		super().__init__(name)
 		self._match_room = match_room

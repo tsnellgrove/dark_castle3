@@ -18,7 +18,7 @@ from cleesh.class_std.interactive_class_def import DoorSimple, DoorLockable
 from cleesh.class_std.interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
 from cleesh.class_std.interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
-from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, InRoomCond, StateCond, WeaponInHandCond,
+from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjInRmCond, StateCond, WeaponInHandCond,
 		SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
 		StateItemInRoomCond, TimerActiveCond, InWorldCond, IsWeaponAndStateCond, InWorldStateCond)
 from cleesh.class_mach.result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
@@ -125,7 +125,7 @@ hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'var
 # conditions
 true_cond = TrueCond('true_cond')
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
-not_in_throne_room_cond = InRoomCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
+not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
 
 hand_no_weap_cond = WeaponInHandCond('hand_no_weap_cond', False)
 hand_weap_1st_cond = IsWeaponAndStateCond('hand_weap_1st_cond', True, False)
@@ -376,8 +376,8 @@ with open(f"{root_path_str}/cleesh/games/dark_castle/game_file/game_pkl", 'wb') 
 ## big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None, # test obj, 0, 'post_act_switch', blue_button, ['pushed'], [], [pass_thru_cond], [blue_button_result])
 
 # --- Test Frog Go Test ---
-# frog_in_main_hall_cond = InRoomCond('frog_in_main_hall_cond', 'main_hall_temp', 'test_frog_temp', True) # test creature
-# frog_in_antechamber_cond = InRoomCond('frog_in_antechamber_cond', 'antechamber_temp', 'test_frog_temp', True) # test creature
+# frog_in_main_hall_cond = ObjInRmCond('frog_in_main_hall_cond', 'main_hall_temp', 'test_frog_temp', True) # test creature
+# frog_in_antechamber_cond = ObjInRmCond('frog_in_antechamber_cond', 'antechamber_temp', 'test_frog_temp', True) # test creature
 
 # frog_goes_north_result = TravelResult('frog_goes_north_result', False, 'test_frog_temp', 'north')
 # frog_goes_south_result = TravelResult('frog_goes_north_result', False, 'test_frog_temp', 'south')
