@@ -9,6 +9,7 @@
 # WornCond :			TrueCond :			match garment is worn
 
 # PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
+
 # RoomCond :			PassThruCond :		match hero_rm
 # InRoomCond :			PassThruCond :		match creature in match_rm
 # InWorldCond :			PassThruCond :		match chk_obj_exist
@@ -70,10 +71,43 @@ class WornCond(TrueCond):
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
 		return (self.worn_garment in self.creature_obj.worn_lst) == self.match_cond
 
+
+class InRoomCond(TrueCond):
+	def __init__(self, name, match_room, creature_obj, match_cond):
+		super().__init__(name)
+		self._match_room = match_room
+		self._creature_obj = creature_obj
+		self._match_cond = match_cond
+
+	@property
+	def match_room(self):
+		return self._match_room
+
+	@match_room.setter
+	def match_room(self, new_val):
+		self._match_room = new_val
+
+	@property
+	def creature_obj(self):
+		return self._creature_obj
+
+	@creature_obj.setter
+	def creature_obj(self, new_val):
+		self._creature_obj = new_val
+
+	@property
+	def match_cond(self):
+		return self._match_cond
+
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		room = gs.map.get_obj_room(self.creature_obj, gs)
+#		return (room is self.match_room) == self.match_cond
+		return (gs.map.get_obj_room(self.creature_obj, gs) is self.match_room) == self.match_cond
+
 # *** NEW COND - NOW IN USE ***
 
 
-# *** OLD COND - NOT IN USE ***
+# *** OLD COND - REFACTORED ***
 
 class PassThruCond(object):
 	def __init__(self, name):
@@ -110,10 +144,65 @@ class PassThruCond(object):
 #		return (self.worn_garment in creature.worn_lst) == self.match_cond
 
 
-# *** OLD COND - NOT IN USE ***
+# *** OLD COND - REFACTORED ***
 
 
 # *** To Be Reviewed ***
+
+class RoomCond(PassThruCond):
+	def __init__(self, name, match_room, match_cond):
+		super().__init__(name)
+		self._match_room = match_room
+		self._match_cond = match_cond
+
+	@property
+	def match_room(self):
+		return self._match_room
+
+	@match_room.setter
+	def match_room(self, new_obj):
+		self._match_room = new_obj
+
+	@property
+	def match_cond(self):
+		return self._match_cond
+
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		match_state = (gs.map.hero_rm == self.match_room)
+		return self.match_cond == match_state
+
+
+# class InRoomCond(PassThruCond):
+#	def __init__(self, name, creature, match_room, match_cond):
+#		super().__init__(name)
+#		self._creature = creature
+#		self._match_room = match_room
+#		self._match_cond = match_cond
+
+#	@property
+#	def creature(self):
+#		return self._creature
+
+#	@creature.setter
+#	def creature(self, new_val):
+#		self._creature = new_val
+
+#	@property
+#	def match_room(self):
+#		return self._match_room
+
+#	@match_room.setter
+#	def match_room(self, new_val):
+#		self._match_room = new_val
+
+#	@property
+#	def match_cond(self):
+#		return self._match_cond
+
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		room = gs.map.get_obj_room(self.creature, gs)
+#		return (room is self.match_room) == self.match_cond
+
 
 class WeaponInHandCond(PassThruCond):
 	def __init__(self, name, weapon_match_cond):
@@ -286,29 +375,6 @@ class TimerActiveCond(PassThruCond):
 		return cond_state
 
 
-class RoomCond(PassThruCond):
-	def __init__(self, name, match_room, match_cond):
-		super().__init__(name)
-		self._match_room = match_room
-		self._match_cond = match_cond
-
-	@property
-	def match_room(self):
-		return self._match_room
-
-	@match_room.setter
-	def match_room(self, new_obj):
-		self._match_room = new_obj
-
-	@property
-	def match_cond(self):
-		return self._match_cond
-
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		match_state = (gs.map.hero_rm == self.match_room)
-		return self.match_cond == match_state
-
-
 class InWorldCond(PassThruCond): # note: only works for obj in room.floor_lst
 	def __init__(self, name, exist_obj, match_cond):
 		super().__init__(name)
@@ -345,35 +411,6 @@ class InWorldStateCond(InWorldCond): # note: only works for obj in room.floor_ls
 			return False
 
 
-class InRoomCond(PassThruCond):
-	def __init__(self, name, creature, match_room, match_cond):
-		super().__init__(name)
-		self._creature = creature
-		self._match_room = match_room
-		self._match_cond = match_cond
 
-	@property
-	def creature(self):
-		return self._creature
-
-	@creature.setter
-	def creature(self, new_val):
-		self._creature = new_val
-
-	@property
-	def match_room(self):
-		return self._match_room
-
-	@match_room.setter
-	def match_room(self, new_val):
-		self._match_room = new_val
-
-	@property
-	def match_cond(self):
-		return self._match_cond
-
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		room = gs.map.get_obj_room(self.creature, gs)
-		return (room is self.match_room) == self.match_cond
 
 

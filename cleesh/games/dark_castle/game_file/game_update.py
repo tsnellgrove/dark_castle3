@@ -18,9 +18,9 @@ from cleesh.class_std.interactive_class_def import DoorSimple, DoorLockable
 from cleesh.class_std.interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
 from cleesh.class_std.interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
-from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, StateCond, WeaponInHandCond,
+from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, InRoomCond, RoomCond, StateCond, WeaponInHandCond,
 		SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
-		StateItemInRoomCond, TimerActiveCond, RoomCond, InWorldCond, IsWeaponAndStateCond, InRoomCond, InWorldStateCond)
+		StateItemInRoomCond, TimerActiveCond, InWorldCond, IsWeaponAndStateCond, InWorldStateCond)
 from cleesh.class_mach.result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
 		TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
@@ -125,6 +125,9 @@ hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'var
 # conditions
 true_cond = TrueCond('true_cond')
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
+not_in_throne_room_cond = InRoomCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
+
+scroll_not_in_throne_room_cond = RoomCond('scroll_not_in_throne_room_cond', 'throne_room_temp', False)
 
 hand_no_weap_cond = WeaponInHandCond('hand_no_weap_cond', False)
 hand_weap_1st_cond = IsWeaponAndStateCond('hand_weap_1st_cond', True, False)
@@ -138,7 +141,6 @@ hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_t
 hedgehog_keeps_sword_cond = StateItemInRoomCond('hedgehog_keeps_sword_cond', False, shiny_sword, True)
 hedgehog_loses_sword_cond = StateItemInRoomCond('hedgehog_loses_sword_cond', False, shiny_sword, False)
 hedgehog_distracted_cond = TimerActiveCond('hedgehog_timer_active_cond', hedgehog_eats_timer, True)
-scroll_not_in_throne_room_cond = RoomCond('scroll_not_in_throne_room_cond', 'throne_room_temp', False)
 hedgehog_not_exist_cond = InWorldCond('hedgehog_not_exist_cond', 'royal_hedgehog_temp', False)
 axe_in_goblin_hand_cond = CreatureItemCond('axe_in_goblin_hand_cond', 'guard_goblin_temp', grimy_axe, False)
 goblin_exist_state_cond = InWorldStateCond('goblin_dead_state_cond', 'guard_goblin_temp', False)
@@ -210,7 +212,7 @@ hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_
 kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters, 1, 
 		None, 'post_act_cmd', None, 
 		[['read', 'illuminated_letters'],['read', 'kinging_scroll'], ['examine', 'illuminated_letters']], None,
-		[scroll_not_in_throne_room_cond, hedgehog_not_exist_cond, crown_not_worn_cond, true_cond],
+		[not_in_throne_room_cond, hedgehog_not_exist_cond, crown_not_worn_cond, true_cond],
 		[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result])
 
 re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None,
@@ -335,6 +337,11 @@ gs = GameState(
 
 # *** Hierarchy-Based Object Re-assignment ***
 crown_not_worn_cond.creature_obj = burt
+not_in_throne_room_cond.match_room = throne_room
+not_in_throne_room_cond.creature_obj = burt
+
+scroll_not_in_throne_room_cond.match_room = throne_room
+
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog
 hedgehog_has_biscuit_cond.creature_obj = royal_hedgehog
@@ -342,7 +349,6 @@ hedgehog_eats_timer.alert_anchor = royal_hedgehog
 start_hedgehog_timer_results.creature_obj = royal_hedgehog
 fed_hedgehog_keeps_sword_result.creature_obj = royal_hedgehog
 fed_hedgehog_loses_sword_result.creature_obj = royal_hedgehog
-scroll_not_in_throne_room_cond.match_room = throne_room
 hedgehog_not_exist_cond.exist_obj = royal_hedgehog
 crystal_box.contain_lst = [kinging_scroll]
 axe_in_goblin_hand_cond.creature_obj = guard_goblin
@@ -374,8 +380,8 @@ with open(f"{root_path_str}/cleesh/games/dark_castle/game_file/game_pkl", 'wb') 
 ## big_bomb = ViewOnlyMach('big_bomb', 'Big Bomb', 'bomb', 'big_bomb', None, # test obj, 0, 'post_act_switch', blue_button, ['pushed'], [], [pass_thru_cond], [blue_button_result])
 
 # --- Test Frog Go Test ---
-# frog_in_main_hall_cond = InRoomCond('frog_in_main_hall_cond', 'test_frog_temp', 'main_hall_temp', True) # test creature
-# frog_in_antechamber_cond = InRoomCond('frog_in_antechamber_cond', 'test_frog_temp', 'antechamber_temp', True) # test creature
+# frog_in_main_hall_cond = InRoomCond('frog_in_main_hall_cond', 'main_hall_temp', 'test_frog_temp', True) # test creature
+# frog_in_antechamber_cond = InRoomCond('frog_in_antechamber_cond', 'antechamber_temp', 'test_frog_temp', True) # test creature
 
 # frog_goes_north_result = TravelResult('frog_goes_north_result', False, 'test_frog_temp', 'north')
 # frog_goes_south_result = TravelResult('frog_goes_north_result', False, 'test_frog_temp', 'south')
