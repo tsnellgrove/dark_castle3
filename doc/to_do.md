@@ -117,14 +117,16 @@ Version 3.87.0 Goals:
 				- DONE: troubleshoot error on read scroll with no crown (indent error? try w/out creature)
 				- FINDING: I think the issue was lack of a setter to over-write the 'temp_burt' placeholder
 				- DONE: clean up comments
-		- TBD: RoomCond & InRoomCond
+		- INPROC: RoomCond & InRoomCond
 			- DONE: cond usage eval - do we really need both?
 				- FINDING: no - InRoomCond is better written but was only used for test_frog
 				- FINDING: RoomCond and InRoomCond duplicate functionality
 				- DECISION: re-purpose InRoomCond to inherit from TrueCond and match std WornCond format
 			- DONE: refactor cond
 			- DONE: update dark_castle
-			- TBD: clean up comments
+			- DONE: clean up comments
+			- TBD: test
+			- TBD: creature_obj => obj (InRoomCond could be used for any obj); maybe InRoomCond => ObjInRmCond ??
 		- TBD: 
 	- TBD: sort out combo cond
 	- IDEA: perhaps cond_lst is a list-of-lists; 

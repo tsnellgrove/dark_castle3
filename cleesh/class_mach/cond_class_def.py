@@ -7,11 +7,11 @@
 
 # TrueCond :			parent class :		True (parent class)
 # WornCond :			TrueCond :			match garment is worn
+# InRoomCond :			TrueCond :			match creature in match_rm
 
 # PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
 
-# RoomCond :			PassThruCond :		match hero_rm
-# InRoomCond :			PassThruCond :		match creature in match_rm
+
 # InWorldCond :			PassThruCond :		match chk_obj_exist
 # # CreatureItemCond : 	PassThruCond :	 	match on creature holding item
 # WeaponInHandCond : 	PassThruCond :		match on hero holding weapon
@@ -24,6 +24,10 @@
 # StateItemInRoomCond :	PassThruCond :		(match item_obj in hero_rm.floor_lst) && (match mach_state) > [combo]
 # InWorldStateCond :	InWorldCond :		(not mach_state) and (match chk_obj_exist) [combo]
 # LeverArrayCond : 		SwitchStateCond :	sum of switch_state_val_lst = mach_state
+
+
+# *** deleted ***
+# RoomCond :			PassThruCond :		match hero_rm
 
 
 ### classes
@@ -100,8 +104,6 @@ class InRoomCond(TrueCond):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
-#		room = gs.map.get_obj_room(self.creature_obj, gs)
-#		return (room is self.match_room) == self.match_cond
 		return (gs.map.get_obj_room(self.creature_obj, gs) is self.match_room) == self.match_cond
 
 # *** NEW COND - NOW IN USE ***
@@ -144,32 +146,27 @@ class PassThruCond(object):
 #		return (self.worn_garment in creature.worn_lst) == self.match_cond
 
 
-# *** OLD COND - REFACTORED ***
+# class RoomCond(PassThruCond):
+#	def __init__(self, name, match_room, match_cond):
+#		super().__init__(name)
+#		self._match_room = match_room
+#		self._match_cond = match_cond
 
+#	@property
+#	def match_room(self):
+#		return self._match_room
 
-# *** To Be Reviewed ***
+#	@match_room.setter
+#	def match_room(self, new_obj):
+#		self._match_room = new_obj
 
-class RoomCond(PassThruCond):
-	def __init__(self, name, match_room, match_cond):
-		super().__init__(name)
-		self._match_room = match_room
-		self._match_cond = match_cond
+#	@property
+#	def match_cond(self):
+#		return self._match_cond
 
-	@property
-	def match_room(self):
-		return self._match_room
-
-	@match_room.setter
-	def match_room(self, new_obj):
-		self._match_room = new_obj
-
-	@property
-	def match_cond(self):
-		return self._match_cond
-
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		match_state = (gs.map.hero_rm == self.match_room)
-		return self.match_cond == match_state
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		match_state = (gs.map.hero_rm == self.match_room)
+#		return self.match_cond == match_state
 
 
 # class InRoomCond(PassThruCond):
@@ -202,6 +199,12 @@ class RoomCond(PassThruCond):
 #	def cond_check(self, gs, mach_state, cond_swicth_lst):
 #		room = gs.map.get_obj_room(self.creature, gs)
 #		return (room is self.match_room) == self.match_cond
+
+
+# *** OLD COND - REFACTORED ***
+
+
+# *** To Be Reviewed ***
 
 
 class WeaponInHandCond(PassThruCond):
