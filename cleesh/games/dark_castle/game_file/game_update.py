@@ -336,7 +336,7 @@ gs = GameState(
 # *** Hierarchy-Based Object Re-assignment ***
 crown_not_worn_cond.creature_obj = burt
 not_in_throne_room_cond.match_room = throne_room
-not_in_throne_room_cond.creature_obj = burt
+not_in_throne_room_cond.obj = burt
 
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog

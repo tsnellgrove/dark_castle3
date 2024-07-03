@@ -7,23 +7,24 @@
 
 # TrueCond :			parent class :		True (parent class)
 # WornCond :			TrueCond :			match garment is worn
-# ObjInRmCond :			TrueCond :			match creature in match_rm
+# ObjInRmCond :			TrueCond :			match obj room to match_rm
+
+# CreatureItemCond : 	PassThruCond :	 	match on creature holding item
 
 # PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
 
-
 # InWorldCond :			PassThruCond :		match chk_obj_exist
-# # CreatureItemCond : 	PassThruCond :	 	match on creature holding item
 # WeaponInHandCond : 	PassThruCond :		match on hero holding weapon
 # StateCond : 			PassThruCond :  	match mach_state
 # SwitchStateCond : 	PassThruCond :	 	match switch_state_lst
 # TimerActiveCond :		PassThruCond :		match timer_obj.active
 
+# LeverArrayCond : 		SwitchStateCond :	sum of switch_state_val_lst = mach_state
+
 # IsWeaponAndStateCond : StateCond :	 	(match mach_state) && (match weapon in hero hand) > [combo]
 # NotTimerAndItemCond :	PassThruCond :	 	(item_obj in hero_rm.floor_lst) && (not timer_obj.active) > [combo]
 # StateItemInRoomCond :	PassThruCond :		(match item_obj in hero_rm.floor_lst) && (match mach_state) > [combo]
 # InWorldStateCond :	InWorldCond :		(not mach_state) and (match chk_obj_exist) [combo]
-# LeverArrayCond : 		SwitchStateCond :	sum of switch_state_val_lst = mach_state
 
 
 # *** deleted ***
@@ -77,10 +78,10 @@ class WornCond(TrueCond):
 
 
 class ObjInRmCond(TrueCond):
-	def __init__(self, name, match_room, creature_obj, match_cond):
+	def __init__(self, name, match_room, obj, match_cond):
 		super().__init__(name)
 		self._match_room = match_room
-		self._creature_obj = creature_obj
+		self._obj = obj
 		self._match_cond = match_cond
 
 	@property
@@ -92,19 +93,19 @@ class ObjInRmCond(TrueCond):
 		self._match_room = new_val
 
 	@property
-	def creature_obj(self):
-		return self._creature_obj
+	def obj(self):
+		return self._obj
 
-	@creature_obj.setter
-	def creature_obj(self, new_val):
-		self._creature_obj = new_val
+	@obj.setter
+	def obj(self, new_val):
+		self._obj = new_val
 
 	@property
 	def match_cond(self):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		return (gs.map.get_obj_room(self.creature_obj, gs) is self.match_room) == self.match_cond
+		return (gs.map.get_obj_room(self.obj, gs) is self.match_room) == self.match_cond
 
 # *** NEW COND - NOW IN USE ***
 
