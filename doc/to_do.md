@@ -210,6 +210,8 @@ Version 3.87.0 Goals:
 	- IDEA: [hold off until at least one more control_panel type machine gets created]
 
 - TBD: Cases where I want a modular machine to run despite an error standard
+	- IDEA: perhaps move to separate 'Errors' section
+		- IDEA: new Errors class inherits from Invisible; now also returns is_attemptable
 	- IDEA: problem description
 		- IDEA: e.g. 'go north' in antechamber triggers goblin
 		- IDEA: i.e. should it ever be possible to override an error? If so, then how?
@@ -565,6 +567,11 @@ interpreter ideas:
 		- IDEA: led by bearded application developer, heart-string-pulling retirement party at end
 		- IDEA: always saved by IT person at critical moment
 
+*** New Room Update ***
+- IDEA: convert Moat to actual rooms?
+	- IDEA: Create on_the_moat room that e, w, d lead to 
+	- IDEA: unarmed players get one turn before croc attacks
+	- IDEA: no floor to room (items drop down several rooms)
 
 *** Get light working ***
 - IDEA: what to do on container (or other) loss of light?
