@@ -128,7 +128,11 @@ Version 3.87.0 Goals:
 			- DONE: creature_obj => obj (InRoomCond could be used for any obj)
 			- DONE: InRoomCond => ObjInRmCond ??
 			- DONE: test
-		- TBD: CreatureItemCond
+		- DONE: CreatureItemCond => ItemInHandCond
+			- DONE: update cond
+			- DONE: update dark_castle
+			- DONE: test
+			- TBD: clean up comments
 	- TBD: sort out combo cond
 	- IDEA: perhaps cond_lst is a list-of-lists; 
 		- IDEA: i.e. each cond is in a list; if len(cond) > 0 then 'and' them?
