@@ -19,7 +19,7 @@ from cleesh.class_std.interactive_class_def import ContainerFixedSimple, Contain
 from cleesh.class_std.interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
 from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjInRmCond, ItemInHandCond, StateCond, WeaponInHandCond,
-		SwitchStateCond, LeverArrayCond, CreatureItemCond, NotTimerAndItemCond,
+		SwitchStateCond, LeverArrayCond, NotTimerAndItemCond,
 		StateItemInRoomCond, TimerActiveCond, InWorldCond, IsWeaponAndStateCond, InWorldStateCond)
 from cleesh.class_mach.result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
@@ -126,13 +126,8 @@ hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'var
 true_cond = TrueCond('true_cond')
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
 not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
-
-# hedgehog_has_biscuit_cond = CreatureItemCond('hedgehog_has_biscuit_cond', 'royal_hedgehog_temp', stale_biscuits, True)
-# axe_in_goblin_hand_cond = CreatureItemCond('axe_in_goblin_hand_cond', 'guard_goblin_temp', grimy_axe, False)
-
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', stale_biscuits, 'royal_hedgehog_temp', True)
 axe_in_goblin_hand_cond = ItemInHandCond('axe_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
-
 
 hand_no_weap_cond = WeaponInHandCond('hand_no_weap_cond', False)
 hand_weap_1st_cond = IsWeaponAndStateCond('hand_weap_1st_cond', True, False)
@@ -141,7 +136,6 @@ broach_dispensed_cond = StateCond('broach_dispensed_cond', True)
 throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
 correct_lever_array_cond = LeverArrayCond('correct_lever_array_cond', [4,2,1])
-
 hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_timer, shiny_sword)
 hedgehog_keeps_sword_cond = StateItemInRoomCond('hedgehog_keeps_sword_cond', False, shiny_sword, True)
 hedgehog_loses_sword_cond = StateItemInRoomCond('hedgehog_loses_sword_cond', False, shiny_sword, False)
@@ -345,8 +339,6 @@ not_in_throne_room_cond.match_room = throne_room
 not_in_throne_room_cond.obj = burt
 biscuits_in_hedgehog_hand_cond.creature_obj = royal_hedgehog
 axe_in_goblin_hand_cond.creature_obj = guard_goblin
-
-# hedgehog_has_biscuit_cond.creature_obj = royal_hedgehog
 
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog

@@ -8,8 +8,7 @@
 # TrueCond :			parent class :		True (parent class)
 # WornCond :			TrueCond :			match garment is worn
 # ObjInRmCond :			TrueCond :			match obj room to match_rm
-
-# CreatureItemCond : 	PassThruCond :	 	match on creature holding item
+# ItemInHandCond :		TrueCond :			match obj in hand to match_cond
 
 # PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
 
@@ -29,6 +28,7 @@
 
 # *** deleted ***
 # RoomCond :			PassThruCond :		match hero_rm
+# CreatureItemCond : 	PassThruCond :	 	match on creature holding item
 
 
 ### classes
@@ -132,8 +132,6 @@ class ItemInHandCond(TrueCond):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
-#		cond_state = self.item_obj in self.creature_obj.hand_lst
-#		return cond_state == self.match_cond
 		return (self.item_obj in self.creature_obj.hand_lst) == self.match_cond
 
 
@@ -158,32 +156,32 @@ class PassThruCond(object):
 		return f'Object { self.name } is of class { type(self).__name__ } '
 
 
-class CreatureItemCond(PassThruCond):
-	def __init__(self, name, creature_obj, item_obj, match_cond):
-		super().__init__(name)
-		self._creature_obj = creature_obj # creature to check for item ownership
-		self._item_obj = item_obj # item creature must possess for condition to be true
-		self._match_cond = match_cond # boolean state to be matched
+# class CreatureItemCond(PassThruCond):
+#	def __init__(self, name, creature_obj, item_obj, match_cond):
+#		super().__init__(name)
+#		self._creature_obj = creature_obj # creature to check for item ownership
+#		self._item_obj = item_obj # item creature must possess for condition to be true
+#		self._match_cond = match_cond # boolean state to be matched
 
-	@property
-	def creature_obj(self):
-		return self._creature_obj
+#	@property
+#	def creature_obj(self):
+#		return self._creature_obj
 
-	@creature_obj.setter
-	def creature_obj(self, new_obj):
-		self._creature_obj = new_obj
+#	@creature_obj.setter
+#	def creature_obj(self, new_obj):
+#		self._creature_obj = new_obj
 
-	@property
-	def item_obj(self):
-		return self._item_obj
+#	@property
+#	def item_obj(self):
+#		return self._item_obj
 
-	@property
-	def match_cond(self):
-		return self._match_cond
+#	@property
+#	def match_cond(self):
+#		return self._match_cond
 
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		cond_state = self.item_obj in self.creature_obj.hand_lst
-		return cond_state == self.match_cond
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		cond_state = self.item_obj in self.creature_obj.hand_lst
+#		return cond_state == self.match_cond
 
 
 # class WornCond(PassThruCond):

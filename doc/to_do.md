@@ -132,7 +132,8 @@ Version 3.87.0 Goals:
 			- DONE: update cond
 			- DONE: update dark_castle
 			- DONE: test
-			- TBD: clean up comments
+			- DONE: clean up comments
+		TBD: 
 	- TBD: sort out combo cond
 	- IDEA: perhaps cond_lst is a list-of-lists; 
 		- IDEA: i.e. each cond is in a list; if len(cond) > 0 then 'and' them?
