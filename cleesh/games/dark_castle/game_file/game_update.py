@@ -128,8 +128,6 @@ crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', 
 not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', stale_biscuits, 'royal_hedgehog_temp', True)
 axe_in_goblin_hand_cond = ItemInHandCond('axe_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
-
-# hand_no_weap_cond = WeaponInHandCond('hand_no_weap_cond', False)
 no_weap_in_hand_cond = WeaponInHandCond('hand_no_weap_cond', 'burt_temp', False)
 
 hand_weap_1st_cond = IsWeaponAndStateCond('hand_weap_1st_cond', True, False)

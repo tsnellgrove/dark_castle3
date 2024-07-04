@@ -9,11 +9,11 @@
 # WornCond :			TrueCond :			match garment is worn
 # ObjInRmCond :			TrueCond :			match obj room to match_rm
 # ItemInHandCond :		TrueCond :			match obj in hand to match_cond
+# WeaponInHandCond : 	TrueCond :			match on hero holding weapon
 
 # PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
 
 # InWorldCond :			PassThruCond :		match chk_obj_exist
-# WeaponInHandCond : 	PassThruCond :		match on hero holding weapon
 # StateCond : 			PassThruCond :  	match mach_state
 # SwitchStateCond : 	PassThruCond :	 	match switch_state_lst
 # TimerActiveCond :		PassThruCond :		match timer_obj.active
