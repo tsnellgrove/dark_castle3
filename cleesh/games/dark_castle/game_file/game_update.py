@@ -18,8 +18,8 @@ from cleesh.class_std.interactive_class_def import DoorSimple, DoorLockable
 from cleesh.class_std.interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
 from cleesh.class_std.interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
-from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjInRmCond, ItemInHandCond, StateCond, WeaponInHandCond,
-		SwitchStateCond, LeverArrayCond, NotTimerAndItemCond,
+from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjInRmCond, ItemInHandCond, WeaponInHandCond,
+		SwitchStateCond, LeverArrayCond, NotTimerAndItemCond, StateCond, 
 		StateItemInRoomCond, TimerActiveCond, InWorldCond, IsWeaponAndStateCond, InWorldStateCond)
 from cleesh.class_mach.result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
@@ -129,7 +129,9 @@ not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_te
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', stale_biscuits, 'royal_hedgehog_temp', True)
 axe_in_goblin_hand_cond = ItemInHandCond('axe_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
 
-hand_no_weap_cond = WeaponInHandCond('hand_no_weap_cond', False)
+# hand_no_weap_cond = WeaponInHandCond('hand_no_weap_cond', False)
+no_weap_in_hand_cond = WeaponInHandCond('hand_no_weap_cond', 'burt_temp', False)
+
 hand_weap_1st_cond = IsWeaponAndStateCond('hand_weap_1st_cond', True, False)
 hand_weap_repeat_cond = IsWeaponAndStateCond('hand_weap_repeat_cond', True, True)
 broach_dispensed_cond = StateCond('broach_dispensed_cond', True)
@@ -176,7 +178,7 @@ eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','s
 
 # machines
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
-		None, [hand_no_weap_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
+		None, [no_weap_in_hand_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
 		[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) # machine_state == got_crown
 
 broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 'post_act_switch', throne, ['pushed', 'pulled'],
@@ -339,6 +341,7 @@ not_in_throne_room_cond.match_room = throne_room
 not_in_throne_room_cond.obj = burt
 biscuits_in_hedgehog_hand_cond.creature_obj = royal_hedgehog
 axe_in_goblin_hand_cond.creature_obj = guard_goblin
+no_weap_in_hand_cond.creature_obj = burt
 
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog

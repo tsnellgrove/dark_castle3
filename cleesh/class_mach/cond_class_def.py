@@ -135,6 +135,29 @@ class ItemInHandCond(TrueCond):
 		return (self.item_obj in self.creature_obj.hand_lst) == self.match_cond
 
 
+class WeaponInHandCond(TrueCond):
+	def __init__(self, name, creature_obj, match_cond):
+		super().__init__(name)
+		self._creature_obj = creature_obj # creature to check for holding weapon
+		self._match_cond = match_cond # Whether is_weapon() should be true or false to match cond
+
+	@property
+	def creature_obj(self):
+		return self._creature_obj
+
+	@creature_obj.setter
+	def creature_obj(self, new_obj):
+		self._creature_obj = new_obj
+
+	@property
+	def match_cond(self):
+		return self._match_cond
+
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		creature = gs.core.hero
+		return (self.creature_obj.in_hand_is_weapon() == self.match_cond)
+
+
 # *** NEW COND - NOW IN USE ***
 
 
@@ -258,24 +281,24 @@ class PassThruCond(object):
 #		return (room is self.match_room) == self.match_cond
 
 
+# class WeaponInHandCond(PassThruCond):
+#	def __init__(self, name, weapon_match_cond):
+#		super().__init__(name)
+#		self._weapon_match_cond = weapon_match_cond # Whether is_weapon() should be true or false to match cond
+
+#	@property
+#	def weapon_match_cond(self):
+#		return self._weapon_match_cond
+
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		creature = gs.core.hero
+#		return creature.in_hand_is_weapon() == self.weapon_match_cond
+
+
 # *** OLD COND - REFACTORED ***
 
 
 # *** To Be Reviewed ***
-
-
-class WeaponInHandCond(PassThruCond):
-	def __init__(self, name, weapon_match_cond):
-		super().__init__(name)
-		self._weapon_match_cond = weapon_match_cond # Whether is_weapon() should be true or false to match cond
-
-	@property
-	def weapon_match_cond(self):
-		return self._weapon_match_cond
-
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		creature = gs.core.hero
-		return creature.in_hand_is_weapon() == self.weapon_match_cond
 
 
 class StateCond(PassThruCond):
