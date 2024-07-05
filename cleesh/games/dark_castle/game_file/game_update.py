@@ -18,9 +18,10 @@ from cleesh.class_std.interactive_class_def import DoorSimple, DoorLockable
 from cleesh.class_std.interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
 from cleesh.class_std.interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
-from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjInRmCond, ItemInHandCond, WeaponInHandCond,
-		SwitchStateCond, LeverArrayCond, NotTimerAndItemCond, StateCond, 
-		StateItemInRoomCond, TimerActiveCond, InWorldCond, IsWeaponAndStateCond, InWorldStateCond)
+from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjInRmCond, ObjInWorldCond, 
+		ItemInHandCond, WeaponInHandCond,
+		StateCond, TimerActiveCond, SwitchStateCond, LeverArrayCond, InWorldCond, 
+		StateItemInRoomCond, NotTimerAndItemCond, IsWeaponAndStateCond, InWorldStateCond)
 from cleesh.class_mach.result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
 		TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
@@ -126,6 +127,10 @@ hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'var
 true_cond = TrueCond('true_cond')
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
 not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
+
+hedgehog_not_exist_cond = InWorldCond('hedgehog_not_exist_cond', 'royal_hedgehog_temp', False)
+hedgehog_not_in_world_cond = ObjInWorldCond('hedgehog_not_in_world_cond', 'royal_hedgehog_temp', False)
+
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', stale_biscuits, 'royal_hedgehog_temp', True)
 axe_in_goblin_hand_cond = ItemInHandCond('axe_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
 no_weap_in_hand_cond = WeaponInHandCond('hand_no_weap_cond', 'burt_temp', False)
@@ -140,7 +145,6 @@ hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_t
 hedgehog_keeps_sword_cond = StateItemInRoomCond('hedgehog_keeps_sword_cond', False, shiny_sword, True)
 hedgehog_loses_sword_cond = StateItemInRoomCond('hedgehog_loses_sword_cond', False, shiny_sword, False)
 hedgehog_distracted_cond = TimerActiveCond('hedgehog_timer_active_cond', hedgehog_eats_timer, True)
-hedgehog_not_exist_cond = InWorldCond('hedgehog_not_exist_cond', 'royal_hedgehog_temp', False)
 goblin_exist_state_cond = InWorldStateCond('goblin_dead_state_cond', 'guard_goblin_temp', False)
 
 # results
@@ -210,7 +214,7 @@ hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_
 kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters, 1, 
 		None, 'post_act_cmd', None, 
 		[['read', 'illuminated_letters'],['read', 'kinging_scroll'], ['examine', 'illuminated_letters']], None,
-		[not_in_throne_room_cond, hedgehog_not_exist_cond, crown_not_worn_cond, true_cond],
+		[not_in_throne_room_cond, hedgehog_not_in_world_cond, crown_not_worn_cond, true_cond],
 		[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result])
 
 re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None,
@@ -337,6 +341,10 @@ gs = GameState(
 crown_not_worn_cond.creature_obj = burt
 not_in_throne_room_cond.match_room = throne_room
 not_in_throne_room_cond.obj = burt
+
+hedgehog_not_in_world_cond.obj = royal_hedgehog
+hedgehog_not_exist_cond.exist_obj = royal_hedgehog
+
 biscuits_in_hedgehog_hand_cond.creature_obj = royal_hedgehog
 axe_in_goblin_hand_cond.creature_obj = guard_goblin
 no_weap_in_hand_cond.creature_obj = burt
@@ -347,7 +355,6 @@ hedgehog_eats_timer.alert_anchor = royal_hedgehog
 start_hedgehog_timer_results.creature_obj = royal_hedgehog
 fed_hedgehog_keeps_sword_result.creature_obj = royal_hedgehog
 fed_hedgehog_loses_sword_result.creature_obj = royal_hedgehog
-hedgehog_not_exist_cond.exist_obj = royal_hedgehog
 crystal_box.contain_lst = [kinging_scroll]
 axe_in_goblin_hand_result.creature_obj = guard_goblin
 goblin_exist_state_cond.exist_obj = guard_goblin

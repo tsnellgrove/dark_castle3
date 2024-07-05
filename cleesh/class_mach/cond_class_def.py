@@ -8,12 +8,12 @@
 # TrueCond :			parent class :		True (parent class)
 # WornCond :			TrueCond :			match garment is worn
 # ObjInRmCond :			TrueCond :			match obj room to match_rm
+# ObjInWorldCond :		TrueCond :			match obj in world
 # ItemInHandCond :		TrueCond :			match obj in hand to match_cond
 # WeaponInHandCond : 	TrueCond :			match on hero holding weapon
 
 # PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
 
-# InWorldCond :			PassThruCond :		match chk_obj_exist
 # StateCond : 			PassThruCond :  	match mach_state
 # SwitchStateCond : 	PassThruCond :	 	match switch_state_lst
 # TimerActiveCond :		PassThruCond :		match timer_obj.active
@@ -108,6 +108,30 @@ class ObjInRmCond(TrueCond):
 		return (gs.map.get_obj_room(self.obj, gs) is self.match_room) == self.match_cond
 
 
+class ObjInWorldCond(TrueCond):
+	def __init__(self, name, obj, match_cond):
+		super().__init__(name)
+		self._obj = obj
+		self._match_cond = match_cond
+
+	@property
+	def obj(self):
+		return self._obj
+
+	@obj.setter
+	def obj(self, new_obj):
+		self._obj = new_obj
+
+	@property
+	def match_cond(self):
+		return self._match_cond
+
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		match_state = gs.map.chk_obj_exist(self.obj, gs)
+#		return match_state == self.match_cond
+		return (gs.map.chk_obj_exist(self.obj, gs) == self.match_cond)
+
+
 class ItemInHandCond(TrueCond):
 	def __init__(self, name, item_obj, creature_obj, match_cond):
 		super().__init__(name)
@@ -154,7 +178,6 @@ class WeaponInHandCond(TrueCond):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
-#		creature = gs.core.hero
 		return (self.creature_obj.in_hand_is_weapon() == self.match_cond)
 
 
@@ -295,6 +318,29 @@ class PassThruCond(object):
 #		return creature.in_hand_is_weapon() == self.weapon_match_cond
 
 
+class InWorldCond(PassThruCond): # note: only works for obj in room.floor_lst
+	def __init__(self, name, exist_obj, match_cond):
+		super().__init__(name)
+		self._exist_obj = exist_obj
+		self._match_cond = match_cond
+
+	@property
+	def exist_obj(self):
+		return self._exist_obj
+
+	@exist_obj.setter
+	def exist_obj(self, new_obj):
+		self._exist_obj = new_obj
+
+	@property
+	def match_cond(self):
+		return self._match_cond
+
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		match_state = gs.map.chk_obj_exist(self.exist_obj, gs)
+		return match_state == self.match_cond
+
+
 # *** OLD COND - REFACTORED ***
 
 
@@ -428,29 +474,6 @@ class TimerActiveCond(PassThruCond):
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
 		cond_state = self.timer_obj.active == self.timer_active_bool
 		return cond_state
-
-
-class InWorldCond(PassThruCond): # note: only works for obj in room.floor_lst
-	def __init__(self, name, exist_obj, match_cond):
-		super().__init__(name)
-		self._exist_obj = exist_obj
-		self._match_cond = match_cond
-
-	@property
-	def exist_obj(self):
-		return self._exist_obj
-
-	@exist_obj.setter
-	def exist_obj(self, new_obj):
-		self._exist_obj = new_obj
-
-	@property
-	def match_cond(self):
-		return self._match_cond
-
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		match_state = gs.map.chk_obj_exist(self.exist_obj, gs)
-		return match_state == self.match_cond
 
 
 class InWorldStateCond(InWorldCond): # note: only works for obj in room.floor_lst

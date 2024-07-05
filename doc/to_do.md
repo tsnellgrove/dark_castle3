@@ -138,10 +138,10 @@ Version 3.87.0 Goals:
 			- DONE: update dark_castle
 			- DONE: test
 			- DONE: clean up comments
-		- TBD: InWorldCond
-			- TBD: update cond
-			- TBD: update dark_castle
-			- TBD: test
+		- INPROC: InWorldCond => ObjInWorldCond
+			- DONE: update cond
+			- DONE: update dark_castle
+			- DONE: test
 			- TBD: clean up comments
 		- TBD: <TBD>
 			- TBD: update cond
@@ -153,7 +153,7 @@ Version 3.87.0 Goals:
 		- IDEA: i.e. each cond is in a list; if len(cond) > 0 then 'and' them?
 		- IDEA: so this happens at the Machine class / run_mach level
 		- IDEA: this way, there is no class of combo_and_cond... which would just add complexity
-		- IDEA: cond_combo_lst[0] = 'and' or 'or'
+		- IDEA: cond_combo_lst = [cond_1, 'and', cond_2] or [cond_1, 'or', cond_2] (etc, left to right)
 	- TBD: for Mach class, create an 'active' attribute
 	- TBD: update version build #
 
