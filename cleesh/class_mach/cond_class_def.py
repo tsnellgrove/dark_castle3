@@ -23,7 +23,7 @@
 # IsWeaponAndStateCond : StateCond :	 	(match mach_state) && (match weapon in hero hand) > [combo]
 # NotTimerAndItemCond :	PassThruCond :	 	(item_obj in hero_rm.floor_lst) && (not timer_obj.active) > [combo]
 # StateItemInRoomCond :	PassThruCond :		(match item_obj in hero_rm.floor_lst) && (match mach_state) > [combo]
-# InWorldStateCond :	InWorldCond :		(not mach_state) and (match chk_obj_exist) [combo]
+# InWorldStateCond :	ObjInWorldCond :		(not mach_state) and (match chk_obj_exist) [combo]
 
 
 # *** deleted ***
@@ -316,27 +316,27 @@ class PassThruCond(object):
 #		return creature.in_hand_is_weapon() == self.weapon_match_cond
 
 
-class InWorldCond(PassThruCond): # note: only works for obj in room.floor_lst
-	def __init__(self, name, exist_obj, match_cond):
-		super().__init__(name)
-		self._exist_obj = exist_obj
-		self._match_cond = match_cond
+# class InWorldCond(PassThruCond): # note: only works for obj in room.floor_lst
+#	def __init__(self, name, exist_obj, match_cond):
+#		super().__init__(name)
+#		self._exist_obj = exist_obj
+#		self._match_cond = match_cond
 
-	@property
-	def exist_obj(self):
-		return self._exist_obj
+#	@property
+#	def exist_obj(self):
+#		return self._exist_obj
 
-	@exist_obj.setter
-	def exist_obj(self, new_obj):
-		self._exist_obj = new_obj
+#	@exist_obj.setter
+#	def exist_obj(self, new_obj):
+#		self._exist_obj = new_obj
 
-	@property
-	def match_cond(self):
-		return self._match_cond
+#	@property
+#	def match_cond(self):
+#		return self._match_cond
 
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		match_state = gs.map.chk_obj_exist(self.exist_obj, gs)
-		return match_state == self.match_cond
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		match_state = gs.map.chk_obj_exist(self.exist_obj, gs)
+#		return match_state == self.match_cond
 
 
 # *** OLD COND - REFACTORED ***
@@ -474,9 +474,12 @@ class TimerActiveCond(PassThruCond):
 		return cond_state
 
 
-class InWorldStateCond(InWorldCond): # note: only works for obj in room.floor_lst
-	def __init__(self, name, exist_obj, match_cond):
-		super().__init__(name, exist_obj, match_cond)
+#class InWorldStateCond(InWorldCond):
+class InWorldStateCond(ObjInWorldCond):
+#	def __init__(self, name, exist_obj, match_cond):
+	def __init__(self, name, obj, match_cond):
+#		super().__init__(name, exist_obj, match_cond)
+		super().__init__(name, obj, match_cond)
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
 		panel_dispensed = mach_state

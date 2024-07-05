@@ -138,13 +138,13 @@ Version 3.87.0 Goals:
 			- DONE: update dark_castle
 			- DONE: test
 			- DONE: clean up comments
-		- INPROC: InWorldCond => ObjInWorldCond
+		- DONE: InWorldCond => ObjInWorldCond
 			- DONE: update cond
 			- DONE: update dark_castle
 			- DONE: test
 			- DONE: clean up comments
-			- TBD: sort out InWorldCond dependencies of InWorldStateCond
-			- TBD: clean up comments
+			- DONE: sort out InWorldCond dependencies of InWorldStateCond
+			- DONE: clean up comments
 		- TBD: <TBD>
 			- TBD: update cond
 			- TBD: update dark_castle
