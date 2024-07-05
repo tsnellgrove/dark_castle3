@@ -127,10 +127,7 @@ hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'var
 true_cond = TrueCond('true_cond')
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
 not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
-
-hedgehog_not_exist_cond = InWorldCond('hedgehog_not_exist_cond', 'royal_hedgehog_temp', False)
 hedgehog_not_in_world_cond = ObjInWorldCond('hedgehog_not_in_world_cond', 'royal_hedgehog_temp', False)
-
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', stale_biscuits, 'royal_hedgehog_temp', True)
 axe_in_goblin_hand_cond = ItemInHandCond('axe_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
 no_weap_in_hand_cond = WeaponInHandCond('hand_no_weap_cond', 'burt_temp', False)
@@ -341,10 +338,7 @@ gs = GameState(
 crown_not_worn_cond.creature_obj = burt
 not_in_throne_room_cond.match_room = throne_room
 not_in_throne_room_cond.obj = burt
-
 hedgehog_not_in_world_cond.obj = royal_hedgehog
-hedgehog_not_exist_cond.exist_obj = royal_hedgehog
-
 biscuits_in_hedgehog_hand_cond.creature_obj = royal_hedgehog
 axe_in_goblin_hand_cond.creature_obj = guard_goblin
 no_weap_in_hand_cond.creature_obj = burt

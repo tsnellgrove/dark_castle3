@@ -127,8 +127,6 @@ class ObjInWorldCond(TrueCond):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
-#		match_state = gs.map.chk_obj_exist(self.obj, gs)
-#		return match_state == self.match_cond
 		return (gs.map.chk_obj_exist(self.obj, gs) == self.match_cond)
 
 

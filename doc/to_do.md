@@ -142,6 +142,8 @@ Version 3.87.0 Goals:
 			- DONE: update cond
 			- DONE: update dark_castle
 			- DONE: test
+			- DONE: clean up comments
+			- TBD: sort out InWorldCond dependencies of InWorldStateCond
 			- TBD: clean up comments
 		- TBD: <TBD>
 			- TBD: update cond
