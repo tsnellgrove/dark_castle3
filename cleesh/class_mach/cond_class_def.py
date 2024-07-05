@@ -10,7 +10,7 @@
 # ObjInRmCond :			TrueCond :			match obj room to match_rm
 # ObjInWorldCond :		TrueCond :			match obj in world
 # ItemInHandCond :		TrueCond :			match obj in hand to match_cond
-# WeaponInHandCond : 	TrueCond :			match on hero holding weapon
+# WeaponInHandCond : 	TrueCond :			match on craeture holding weapon
 
 # PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
 
