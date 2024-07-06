@@ -15,9 +15,8 @@
 # PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
 
 # StateCond : 			PassThruCond :  	match mach_state
-# SwitchStateCond : 	PassThruCond :	 	match switch_state_lst
 # TimerActiveCond :		PassThruCond :		match timer_obj.active
-
+# SwitchStateCond : 	PassThruCond :	 	match switch_state_lst
 # LeverArrayCond : 		SwitchStateCond :	sum of switch_state_val_lst = mach_state
 
 # IsWeaponAndStateCond : StateCond :	 	(match mach_state) && (match weapon in hero hand) > [combo]

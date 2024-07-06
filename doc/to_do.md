@@ -145,6 +145,13 @@ Version 3.87.0 Goals:
 			- DONE: clean up comments
 			- DONE: sort out InWorldCond dependencies of InWorldStateCond
 			- DONE: clean up comments
+		- TBD: StateCond => MachStateCond
+			- TBD: update cond
+			- TBD: update dark_castle
+			- TBD: test
+			- TBD: clean up comments
+			- TBD: sort out dependant Cond classes
+			- TBD: test & clean up comments
 		- TBD: <TBD>
 			- TBD: update cond
 			- TBD: update dark_castle
@@ -295,8 +302,10 @@ Version 3.87.0 Goals:
 	- TBD: broaden hedgehog response to interacting with sword (e.g. "pull sword" should trigger)
 	- IDEA: sort out ability to push button / pull levers while goblin is guarding
 	- IDEA: need to implement hedgehog state machine based on creature state
+		- IDEA: Both hedgehog and throne_broach_dispenser would be better implemented as state machines
 	- TBD: state machines and other general purpose mod-machs
 	- IDEA: Can we create a general purpose Dispenser machine - for use with Crown and Broach?
+		- IDEA: would also be useful for control_panel
 
 - TBD: update modular machine doc!
 
