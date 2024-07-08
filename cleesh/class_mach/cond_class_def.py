@@ -178,6 +178,19 @@ class WeaponInHandCond(TrueCond):
 		return (self.creature_obj.in_hand_is_weapon() == self.match_cond)
 
 
+class MachStateCond(TrueCond):
+	def __init__(self, name, match_cond):
+		super().__init__(name)
+		self._match_cond = match_cond # condition value to test for match
+
+	@property
+	def match_cond(self):
+		return self._match_cond
+
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		return (mach_state == self.match_cond)
+
+
 # *** NEW COND - NOW IN USE ***
 
 
@@ -338,12 +351,6 @@ class PassThruCond(object):
 #		return match_state == self.match_cond
 
 
-# *** OLD COND - REFACTORED ***
-
-
-# *** To Be Reviewed ***
-
-
 class StateCond(PassThruCond):
 	def __init__(self, name, mach_state_cond):
 		super().__init__(name)
@@ -355,6 +362,12 @@ class StateCond(PassThruCond):
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
 		return mach_state == self.mach_state_cond
+
+
+# *** OLD COND - REFACTORED ***
+
+
+# *** To Be Reviewed ***
 
 
 class IsWeaponAndStateCond(StateCond):
