@@ -147,8 +147,8 @@ Version 3.87.0 Goals:
 			- DONE: clean up comments
 		- INPROC: StateCond => MachStateCond
 			- DONE: update cond
-			- TBD: update dark_castle
-			- TBD: test
+			- DONE: update dark_castle
+			- DONE: test
 			- TBD: clean up comments
 			- TBD: sort out dependant Cond classes
 			- TBD: test & clean up comments
