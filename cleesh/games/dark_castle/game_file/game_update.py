@@ -20,7 +20,7 @@ from cleesh.class_std.interactive_class_def import ContainerPortableSimple, Cont
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
 from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjInRmCond, ObjInWorldCond, 
 		ItemInHandCond, WeaponInHandCond, MachStateCond, 
-		StateCond, TimerActiveCond, SwitchStateCond, LeverArrayCond,
+		TimerActiveCond, SwitchStateCond, LeverArrayCond,
 		StateItemInRoomCond, NotTimerAndItemCond, IsWeaponAndStateCond, InWorldStateCond)
 from cleesh.class_mach.result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
@@ -131,12 +131,8 @@ hedgehog_not_in_world_cond = ObjInWorldCond('hedgehog_not_in_world_cond', 'royal
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', stale_biscuits, 'royal_hedgehog_temp', True)
 axe_in_goblin_hand_cond = ItemInHandCond('axe_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
 no_weap_in_hand_cond = WeaponInHandCond('hand_no_weap_cond', 'burt_temp', False)
-
-# broach_dispensed_cond = StateCond('broach_dispensed_cond', True)
 broach_dispensed_cond = MachStateCond('broach_dispensed_cond', True)
 
-hand_weap_1st_cond = IsWeaponAndStateCond('hand_weap_1st_cond', True, False)
-hand_weap_repeat_cond = IsWeaponAndStateCond('hand_weap_repeat_cond', True, True)
 throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
 correct_lever_array_cond = LeverArrayCond('correct_lever_array_cond', [4,2,1])
@@ -144,6 +140,9 @@ hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_t
 hedgehog_keeps_sword_cond = StateItemInRoomCond('hedgehog_keeps_sword_cond', False, shiny_sword, True)
 hedgehog_loses_sword_cond = StateItemInRoomCond('hedgehog_loses_sword_cond', False, shiny_sword, False)
 hedgehog_distracted_cond = TimerActiveCond('hedgehog_timer_active_cond', hedgehog_eats_timer, True)
+
+hand_weap_1st_cond = IsWeaponAndStateCond('hand_weap_1st_cond', True, False)
+hand_weap_repeat_cond = IsWeaponAndStateCond('hand_weap_repeat_cond', True, True)
 goblin_exist_state_cond = InWorldStateCond('goblin_dead_state_cond', 'guard_goblin_temp', False)
 
 # results

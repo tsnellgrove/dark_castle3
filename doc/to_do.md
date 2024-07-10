@@ -145,13 +145,18 @@ Version 3.87.0 Goals:
 			- DONE: clean up comments
 			- DONE: sort out InWorldCond dependencies of InWorldStateCond
 			- DONE: clean up comments
-		- INPROC: StateCond => MachStateCond
+		- DONE: StateCond => MachStateCond
 			- DONE: update cond
 			- DONE: update dark_castle
 			- DONE: test
+			- DONE: clean up comments
+			- DONE: sort out dependant Cond classes
+			- DONE: test & clean up comments
+		- TBD: TimerActiveCond
+			- TBD: update cond
+			- TBD: update dark_castle
+			- TBD: test
 			- TBD: clean up comments
-			- TBD: sort out dependant Cond classes
-			- TBD: test & clean up comments
 		- TBD: <TBD>
 			- TBD: update cond
 			- TBD: update dark_castle
