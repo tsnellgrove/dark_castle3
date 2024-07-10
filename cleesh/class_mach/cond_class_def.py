@@ -12,10 +12,10 @@
 # ItemInHandCond :		TrueCond :			match obj in hand to match_cond
 # WeaponInHandCond : 	TrueCond :			match on craeture holding weapon
 # MachStateCond : 		TrueCond :		  	match mach_state
+# TimerActiveCond :		TrueCond :			match timer_obj.active
 
 # PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
 
-# TimerActiveCond :		PassThruCond :		match timer_obj.active
 # SwitchStateCond : 	PassThruCond :	 	match switch_state_lst
 # LeverArrayCond : 		SwitchStateCond :	sum of switch_state_val_lst = mach_state
 
@@ -193,6 +193,24 @@ class MachStateCond(TrueCond):
 		return (mach_state == self.match_cond)
 
 
+class TimerActiveCond(TrueCond):
+	def __init__(self, name, timer_obj, match_cond):
+		super().__init__(name)
+		self._timer_obj = timer_obj
+		self._match_cond = match_cond
+
+	@property
+	def timer_obj(self):
+		return self._timer_obj
+
+	@property
+	def match_cond(self):
+		return self._match_cond
+
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		return (self.timer_obj.active == self.match_cond)
+
+
 # *** NEW COND - NOW IN USE ***
 
 
@@ -366,6 +384,25 @@ class PassThruCond(object):
 #		return mach_state == self.mach_state_cond
 
 
+# class TimerActiveCond(PassThruCond):
+#	def __init__(self, name, timer_obj, timer_active_bool):
+#		super().__init__(name)
+#		self._timer_obj = timer_obj
+#		self._timer_active_bool = timer_active_bool
+
+#	@property
+#	def timer_obj(self):
+#		return self._timer_obj
+
+#	@property
+#	def timer_active_bool(self):
+#		return self._timer_active_bool
+
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		cond_state = self.timer_obj.active == self.timer_active_bool
+#		return cond_state
+
+
 # *** OLD COND - REFACTORED ***
 
 
@@ -470,26 +507,6 @@ class StateItemInRoomCond(PassThruCond):
 			mach_state == self.state_match 
 			and item_in_room == self.item_in_room_match
 			)
-
-
-class TimerActiveCond(PassThruCond):
-	def __init__(self, name, timer_obj, timer_active_bool):
-		super().__init__(name)
-		self._timer_obj = timer_obj
-		self._timer_active_bool = timer_active_bool
-
-	@property
-	def timer_obj(self):
-		return self._timer_obj
-
-	@property
-	def timer_active_bool(self):
-		return self._timer_active_bool
-
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		cond_state = self.timer_obj.active == self.timer_active_bool
-		return cond_state
-
 
 #class InWorldStateCond(InWorldCond):
 class InWorldStateCond(ObjInWorldCond):

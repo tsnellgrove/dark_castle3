@@ -152,7 +152,12 @@ Version 3.87.0 Goals:
 			- DONE: clean up comments
 			- DONE: sort out dependant Cond classes
 			- DONE: test & clean up comments
-		- TBD: TimerActiveCond
+		- DONE: TimerActiveCond
+			- DONE: update cond
+			- DONE: update dark_castle
+			- DONE: test
+			- DONE: clean up comments
+		- TBD: SwitchStateCond
 			- TBD: update cond
 			- TBD: update dark_castle
 			- TBD: test
