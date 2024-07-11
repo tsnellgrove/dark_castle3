@@ -157,7 +157,14 @@ Version 3.87.0 Goals:
 			- DONE: update dark_castle
 			- DONE: test
 			- DONE: clean up comments
-		- TBD: SwitchStateCond
+		- DONE: SwitchStateCond
+			- DONE: update cond
+			- DONE: update dark_castle
+			- DONE: test
+			- DONE: clean up comments
+			- DONE: sort out dependant Cond classes
+			- DONE: test & clean up comments
+		- TBD: LeverArrayCond
 			- TBD: update cond
 			- TBD: update dark_castle
 			- TBD: test

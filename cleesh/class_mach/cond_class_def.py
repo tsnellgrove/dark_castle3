@@ -13,10 +13,10 @@
 # WeaponInHandCond : 	TrueCond :			match on craeture holding weapon
 # MachStateCond : 		TrueCond :		  	match mach_state
 # TimerActiveCond :		TrueCond :			match timer_obj.active
+# SwitchStateCond : 	TrueCond :		 	match switch_state_lst
 
 # PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
 
-# SwitchStateCond : 	PassThruCond :	 	match switch_state_lst
 # LeverArrayCond : 		SwitchStateCond :	sum of switch_state_val_lst = mach_state
 
 # NotTimerAndItemCond :	PassThruCond :	 	(item_obj in hero_rm.floor_lst) && (not timer_obj.active) > [combo]
@@ -211,6 +211,22 @@ class TimerActiveCond(TrueCond):
 		return (self.timer_obj.active == self.match_cond)
 
 
+class SwitchStateCond(TrueCond):
+	def __init__(self, name, match_cond_lst):
+		super().__init__(name)
+		self._match_cond_lst = match_cond_lst # list of switch state values to meet condition
+
+	@property
+	def match_cond_lst(self):
+		return self._match_cond_lst
+
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		switch_state_lst = []
+		for switch in cond_swicth_lst:
+			switch_state_lst.append(switch.switch_state)
+		return (switch_state_lst == self.match_cond_lst)
+
+
 # *** NEW COND - NOW IN USE ***
 
 
@@ -403,6 +419,22 @@ class PassThruCond(object):
 #		return cond_state
 
 
+# class SwitchStateCond(PassThruCond):
+#	def __init__(self, name, switch_state_val_lst):
+#		super().__init__(name)
+#		self._switch_state_val_lst = switch_state_val_lst # list of switch state values to meet condition
+
+#	@property
+#	def switch_state_val_lst(self):
+#		return self._switch_state_val_lst
+
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		switch_state_lst = []
+#		for switch in cond_swicth_lst:
+#			switch_state_lst.append(switch.switch_state)
+#		return switch_state_lst == self.switch_state_val_lst
+
+
 # *** OLD COND - REFACTORED ***
 
 
@@ -427,25 +459,9 @@ class IsWeaponAndStateCond(MachStateCond):
 		return (mach_state == self.match_cond) and (weapon_in_hand == self.weapon_match_cond)
 
 
-class SwitchStateCond(PassThruCond):
-	def __init__(self, name, switch_state_val_lst):
-		super().__init__(name)
-		self._switch_state_val_lst = switch_state_val_lst # list of switch state values to meet condition
-
-	@property
-	def switch_state_val_lst(self):
-		return self._switch_state_val_lst
-
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		switch_state_lst = []
-		for switch in cond_swicth_lst:
-			switch_state_lst.append(switch.switch_state)
-		return switch_state_lst == self.switch_state_val_lst
-
-
 class LeverArrayCond(SwitchStateCond):
-	def __init__(self, name, switch_state_val_lst):
-		super().__init__(name, switch_state_val_lst)
+	def __init__(self, name, match_cond_lst):
+		super().__init__(name, match_cond_lst)
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
 		target_val = mach_state
@@ -456,7 +472,7 @@ class LeverArrayCond(SwitchStateCond):
 			else:
 				temp_val = 0
 			index_num = cond_swicth_lst.index(lever)
-			temp_val = temp_val * self.switch_state_val_lst[index_num]
+			temp_val = temp_val * self.match_cond_lst[index_num]
 			current_val += temp_val
 		return current_val == target_val
 
