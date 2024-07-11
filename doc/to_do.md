@@ -164,10 +164,10 @@ Version 3.87.0 Goals:
 			- DONE: clean up comments
 			- DONE: sort out dependant Cond classes
 			- DONE: test & clean up comments
-		- TBD: LeverArrayCond
-			- TBD: update cond
-			- TBD: update dark_castle
-			- TBD: test
+		- INPROC: LeverArrayCond
+			- DONE: update cond
+			- DONE: update dark_castle
+			- DONE: test
 			- TBD: clean up comments
 		- TBD: <TBD>
 			- TBD: update cond

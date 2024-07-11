@@ -14,14 +14,12 @@
 # MachStateCond : 		TrueCond :		  	match mach_state
 # TimerActiveCond :		TrueCond :			match timer_obj.active
 # SwitchStateCond : 	TrueCond :		 	match switch_state_lst
+# LeverArrayCond : 		TrueCond :			sum of lever_val_lst = mach_state
 
 # PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
 
-# LeverArrayCond : 		SwitchStateCond :	sum of switch_state_val_lst = mach_state
-
 # NotTimerAndItemCond :	PassThruCond :	 	(item_obj in hero_rm.floor_lst) && (not timer_obj.active) > [combo]
 # StateItemInRoomCond :	PassThruCond :		(match item_obj in hero_rm.floor_lst) && (match mach_state) > [combo]
-
 # IsWeaponAndStateCond : MachStateCond :	(match mach_state) && (match weapon in hero hand) > [combo]
 # InWorldStateCond :	ObjInWorldCond :	(not mach_state) and (match chk_obj_exist) [combo]
 
@@ -225,6 +223,34 @@ class SwitchStateCond(TrueCond):
 		for switch in cond_swicth_lst:
 			switch_state_lst.append(switch.switch_state)
 		return (switch_state_lst == self.match_cond_lst)
+
+
+class LeverArrayCond(TrueCond):
+	def __init__(self, name, lever_val_lst):
+		super().__init__(name)
+		self._lever_val_lst = lever_val_lst # list of values for levers that are up; same len as cond_swtch_lst
+
+	@property
+	def lever_val_lst(self):
+		return self._lever_val_lst
+
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		target_val = mach_state
+#		current_val = 0
+		array_val = 0
+		for idx, lever in enumerate(cond_swicth_lst):
+#		for lever in cond_swicth_lst:
+			if lever.switch_state == 'up':
+#				temp_val = 1
+				array_val += self.lever_val_lst[idx]
+#			else:
+#				temp_val = 0
+#			index_num = cond_swicth_lst.index(lever)
+#			temp_val = temp_val * self.match_cond_lst[index_num]
+#			current_val += temp_val
+#		return current_val == target_val
+		print(array_val)
+		return (array_val == mach_state)
 
 
 # *** NEW COND - NOW IN USE ***
@@ -435,6 +461,24 @@ class PassThruCond(object):
 #		return switch_state_lst == self.switch_state_val_lst
 
 
+# class LeverArrayCond(SwitchStateCond):
+#	def __init__(self, name, match_cond_lst):
+#		super().__init__(name, match_cond_lst)
+
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		target_val = mach_state
+#		current_val = 0
+#		for lever in cond_swicth_lst:
+#			if lever.switch_state == 'up':
+#				temp_val = 1
+#			else:
+#				temp_val = 0
+#			index_num = cond_swicth_lst.index(lever)
+#			temp_val = temp_val * self.match_cond_lst[index_num]
+#			current_val += temp_val
+#		return current_val == target_val
+
+
 # *** OLD COND - REFACTORED ***
 
 
@@ -457,24 +501,6 @@ class IsWeaponAndStateCond(MachStateCond):
 		creature = gs.core.hero
 		weapon_in_hand = not creature.hand_is_empty() and creature.get_hand_item().is_weapon()
 		return (mach_state == self.match_cond) and (weapon_in_hand == self.weapon_match_cond)
-
-
-class LeverArrayCond(SwitchStateCond):
-	def __init__(self, name, match_cond_lst):
-		super().__init__(name, match_cond_lst)
-
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		target_val = mach_state
-		current_val = 0
-		for lever in cond_swicth_lst:
-			if lever.switch_state == 'up':
-				temp_val = 1
-			else:
-				temp_val = 0
-			index_num = cond_swicth_lst.index(lever)
-			temp_val = temp_val * self.match_cond_lst[index_num]
-			current_val += temp_val
-		return current_val == target_val
 
 
 class NotTimerAndItemCond(PassThruCond):
