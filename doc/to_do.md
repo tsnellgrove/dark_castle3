@@ -107,7 +107,7 @@ Version 3.87.0 Goals:
 
 - INPROC: cond review (0005) []
 	- DONE: review and categorize existing conditions
-	- INPROC: refactor / rename simple conditions
+	- DONE: refactor / rename simple conditions
 		- DONE: PassThruCond => TrueCond
 			- DONE: cup_of_tea
 			- DONE: dark_castle
@@ -164,24 +164,27 @@ Version 3.87.0 Goals:
 			- DONE: clean up comments
 			- DONE: sort out dependant Cond classes
 			- DONE: test & clean up comments
-		- INPROC: LeverArrayCond
+		- DONE: LeverArrayCond
 			- DONE: update cond
 			- DONE: update dark_castle
 			- DONE: test
-			- TBD: clean up comments
-		- TBD: <TBD>
-			- TBD: update cond
-			- TBD: update dark_castle
-			- TBD: test
-			- TBD: clean up comments
+			- DONE: clean up comments
 	- TBD: sort out combo cond
-	- IDEA: perhaps cond_lst is a list-of-lists; 
-		- IDEA: i.e. each cond is in a list; if len(cond) > 0 then 'and' them?
-		- IDEA: so this happens at the Machine class / run_mach level
-		- IDEA: this way, there is no class of combo_and_cond... which would just add complexity
-		- IDEA: cond_combo_lst = [cond_1, 'and', cond_2] or [cond_1, 'or', cond_2] (etc, left to right)
-	- TBD: for Mach class, create an 'active' attribute
+		- IDEA: perhaps cond_lst is a list-of-lists; 
+			- IDEA: i.e. each cond is in a list; if len(cond) > 0 then 'and' them?
+			- IDEA: so this happens at the Machine class / run_mach level
+			- IDEA: this way, there is no class of combo_and_cond... which would just add complexity
+			- IDEA: cond_combo_lst = [cond_1, 'and', cond_2] or [cond_1, 'or', cond_2] (etc, left to right)
+		- TBD: update combo cond 1-by-1
+			- TBD: IsWeaponAndStateCond
+				- TBD: update run_mach() for element is_list case
+				- TBD: loop through list
+				- TBD: evaluate combo based on intersitial logic operators
+				- TBD: create obj for IsWeaponAndStateCond
+				- TBD: implement IsWeaponAndStateCond case in dark_castle
 	- TBD: update version build #
+
+- TBD: for Mach class, create an 'active' attribute
 
 - TBD: result review
 

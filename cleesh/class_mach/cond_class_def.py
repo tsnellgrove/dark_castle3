@@ -14,7 +14,7 @@
 # MachStateCond : 		TrueCond :		  	match mach_state
 # TimerActiveCond :		TrueCond :			match timer_obj.active
 # SwitchStateCond : 	TrueCond :		 	match switch_state_lst
-# LeverArrayCond : 		TrueCond :			sum of lever_val_lst = mach_state
+# LeverArrayCond : 		TrueCond :			sum of lever_val_lst == mach_state
 
 # PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
 
@@ -226,7 +226,7 @@ class SwitchStateCond(TrueCond):
 
 
 class LeverArrayCond(TrueCond):
-	def __init__(self, name, lever_val_lst):
+	def __init__(self, name, lever_val_lst): # target value lives in mach_state as a machine attribute
 		super().__init__(name)
 		self._lever_val_lst = lever_val_lst # list of values for levers that are up; same len as cond_swtch_lst
 
@@ -235,21 +235,10 @@ class LeverArrayCond(TrueCond):
 		return self._lever_val_lst
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
-#		target_val = mach_state
-#		current_val = 0
 		array_val = 0
 		for idx, lever in enumerate(cond_swicth_lst):
-#		for lever in cond_swicth_lst:
 			if lever.switch_state == 'up':
-#				temp_val = 1
 				array_val += self.lever_val_lst[idx]
-#			else:
-#				temp_val = 0
-#			index_num = cond_swicth_lst.index(lever)
-#			temp_val = temp_val * self.match_cond_lst[index_num]
-#			current_val += temp_val
-#		return current_val == target_val
-		print(array_val)
 		return (array_val == mach_state)
 
 
