@@ -175,12 +175,13 @@ Version 3.87.0 Goals:
 			- IDEA: so this happens at the Machine class / run_mach level
 			- IDEA: this way, there is no class of combo_and_cond... which would just add complexity
 			- IDEA: cond_combo_lst = [cond_1, 'and', cond_2] or [cond_1, 'or', cond_2] (etc, left to right)
-		- TBD: update combo cond 1-by-1
-			- TBD: IsWeaponAndStateCond
-				- TBD: update run_mach() for element is_list case
-				- TBD: loop through list
-				- TBD: evaluate combo based on intersitial logic operators
-				- TBD: create obj for IsWeaponAndStateCond
+		- INPROC: update combo cond 1-by-1
+			- INPROC: IsWeaponAndStateCond
+				- DONE: update run_mach() for element is_list case
+				- DONE: loop through list
+				- DONE: evaluate combo based on list[0] logic operator
+				- TBD: create individual conditions for IsWeaponAndStateCond
+				- TBD: create combo list obj for IsWeaponAndStateCond
 				- TBD: implement IsWeaponAndStateCond case in dark_castle
 	- TBD: update version build #
 
