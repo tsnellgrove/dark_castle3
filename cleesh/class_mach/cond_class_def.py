@@ -20,7 +20,6 @@
 
 # NotTimerAndItemCond :	PassThruCond :	 	(item_obj in hero_rm.floor_lst) && (not timer_obj.active) > [combo]
 # StateItemInRoomCond :	PassThruCond :		(match item_obj in hero_rm.floor_lst) && (match mach_state) > [combo]
-# IsWeaponAndStateCond : MachStateCond :	(match mach_state) && (match weapon in hero hand) > [combo]
 # InWorldStateCond :	ObjInWorldCond :	(not mach_state) and (match chk_obj_exist) [combo]
 
 
@@ -28,7 +27,7 @@
 # RoomCond :			PassThruCond :		match hero_rm
 # CreatureItemCond : 	PassThruCond :	 	match on creature holding item
 # StateCond : 			PassThruCond :  	match mach_state
-
+# IsWeaponAndStateCond : MachStateCond :	(match mach_state) && (match weapon in hero hand) > [combo]
 
 ### classes
 
@@ -468,28 +467,29 @@ class PassThruCond(object):
 #		return current_val == target_val
 
 
+## class IsWeaponAndStateCond(StateCond):
+# class IsWeaponAndStateCond(MachStateCond):
+##	def __init__(self, name, weapon_match_cond, mach_state_cond):
+#	def __init__(self, name, weapon_match_cond, match_cond):
+##		super().__init__(name, mach_state_cond)
+#		super().__init__(name, match_cond)
+#		self._weapon_match_cond = weapon_match_cond # list of items that will meet condition
+
+#	@property
+#	def weapon_match_cond(self):
+#		return self._weapon_match_cond
+
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		creature = gs.core.hero
+#		weapon_in_hand = not creature.hand_is_empty() and creature.get_hand_item().is_weapon()
+#		return (mach_state == self.match_cond) and (weapon_in_hand == self.weapon_match_cond)
+
+
+
 # *** OLD COND - REFACTORED ***
 
 
 # *** To Be Reviewed ***
-
-
-# class IsWeaponAndStateCond(StateCond):
-class IsWeaponAndStateCond(MachStateCond):
-#	def __init__(self, name, weapon_match_cond, mach_state_cond):
-	def __init__(self, name, weapon_match_cond, match_cond):
-#		super().__init__(name, mach_state_cond)
-		super().__init__(name, match_cond)
-		self._weapon_match_cond = weapon_match_cond # list of items that will meet condition
-
-	@property
-	def weapon_match_cond(self):
-		return self._weapon_match_cond
-
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		creature = gs.core.hero
-		weapon_in_hand = not creature.hand_is_empty() and creature.get_hand_item().is_weapon()
-		return (mach_state == self.match_cond) and (weapon_in_hand == self.weapon_match_cond)
 
 
 class NotTimerAndItemCond(PassThruCond):

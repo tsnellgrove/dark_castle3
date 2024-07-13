@@ -20,7 +20,7 @@ from cleesh.class_std.interactive_class_def import ContainerPortableSimple, Cont
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
 from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjInRmCond, ObjInWorldCond, 
 		ItemInHandCond, WeaponInHandCond, MachStateCond, TimerActiveCond, SwitchStateCond, LeverArrayCond,
-		StateItemInRoomCond, NotTimerAndItemCond, IsWeaponAndStateCond, InWorldStateCond)
+		StateItemInRoomCond, NotTimerAndItemCond, InWorldStateCond)
 from cleesh.class_mach.result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
 		TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
@@ -131,16 +131,16 @@ biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond'
 axe_in_goblin_hand_cond = ItemInHandCond('axe_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
 no_weap_in_hand_cond = WeaponInHandCond('hand_no_weap_cond', 'burt_temp', False)
 broach_dispensed_cond = MachStateCond('broach_dispensed_cond', True)
+crown_not_dispensed_cond = MachStateCond('crown_not_dispensed_cond', False)
+crown_dispensed_cond = MachStateCond('crown_dispensed_cond', True)
 hedgehog_eats_timer_active_cond = TimerActiveCond('hedgehog_eats_timer_active_cond', hedgehog_eats_timer, True) # hedgehog is distracted
-lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [4,2,1])
-
 throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
+lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [4,2,1])
+
 hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_timer, shiny_sword)
 hedgehog_keeps_sword_cond = StateItemInRoomCond('hedgehog_keeps_sword_cond', False, shiny_sword, True)
 hedgehog_loses_sword_cond = StateItemInRoomCond('hedgehog_loses_sword_cond', False, shiny_sword, False)
-hand_weap_1st_cond = IsWeaponAndStateCond('hand_weap_1st_cond', True, False)
-hand_weap_repeat_cond = IsWeaponAndStateCond('hand_weap_repeat_cond', True, True)
 goblin_exist_state_cond = InWorldStateCond('goblin_dead_state_cond', 'guard_goblin_temp', False)
 
 # results
@@ -176,7 +176,8 @@ eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','s
 
 # machines
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
-		None, [no_weap_in_hand_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
+#		None, [no_weap_in_hand_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
+		None, [no_weap_in_hand_cond, crown_not_dispensed_cond, crown_dispensed_cond],
 		[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) # machine_state == got_crown
 
 broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 'post_act_switch', throne, ['pushed', 'pulled'],

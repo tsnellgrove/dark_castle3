@@ -176,13 +176,18 @@ Version 3.87.0 Goals:
 			- IDEA: this way, there is no class of combo_and_cond... which would just add complexity
 			- IDEA: cond_combo_lst = [cond_1, 'and', cond_2] or [cond_1, 'or', cond_2] (etc, left to right)
 		- INPROC: update combo cond 1-by-1
-			- INPROC: IsWeaponAndStateCond
+			- DONE: IsWeaponAndStateCond
 				- DONE: update run_mach() for element is_list case
 				- DONE: loop through list
 				- DONE: evaluate combo based on list[0] logic operator
-				- TBD: create individual conditions for IsWeaponAndStateCond
-				- TBD: create combo list obj for IsWeaponAndStateCond
-				- TBD: implement IsWeaponAndStateCond case in dark_castle
+				- CANCEL: create individual conditions for IsWeaponAndStateCond
+				- CANCEL: create combo list obj for IsWeaponAndStateCond
+				- CANCEL: implement IsWeaponAndStateCond case in dark_castle
+				- FINDING: embarassing but it turns out I don't even need IsWeaponAndStateCond
+				- DONE: update moat_mach with use of MachStateCond
+				- DONE: elim IsWeaponAndStateCond
+			- TBD: redo SwitchStateCond w/ enumerate and false check on each switch in list
+			- TBD: InWorldStateCond
 	- TBD: update version build #
 
 - TBD: for Mach class, create an 'active' attribute
