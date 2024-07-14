@@ -20,14 +20,14 @@
 
 # NotTimerAndItemCond :	PassThruCond :	 	(item_obj in hero_rm.floor_lst) && (not timer_obj.active) > [combo]
 # StateItemInRoomCond :	PassThruCond :		(match item_obj in hero_rm.floor_lst) && (match mach_state) > [combo]
-# InWorldStateCond :	ObjInWorldCond :	(not mach_state) and (match chk_obj_exist) [combo]
-
 
 # *** deleted ***
 # RoomCond :			PassThruCond :		match hero_rm
 # CreatureItemCond : 	PassThruCond :	 	match on creature holding item
 # StateCond : 			PassThruCond :  	match mach_state
 # IsWeaponAndStateCond : MachStateCond :	(match mach_state) && (match weapon in hero hand) > [combo]
+# InWorldStateCond :	ObjInWorldCond :	(not mach_state) and (match chk_obj_exist) [combo]
+
 
 ### classes
 
@@ -485,6 +485,21 @@ class PassThruCond(object):
 #		return (mach_state == self.match_cond) and (weapon_in_hand == self.weapon_match_cond)
 
 
+## class InWorldStateCond(InWorldCond):
+#class InWorldStateCond(ObjInWorldCond):
+##	def __init__(self, name, exist_obj, match_cond):
+#	def __init__(self, name, obj, match_cond):
+##		super().__init__(name, exist_obj, match_cond)
+#		super().__init__(name, obj, match_cond)
+
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		panel_dispensed = mach_state
+#		if panel_dispensed == False:
+#			match_state = gs.map.chk_obj_exist(self.exist_obj, gs)
+#			return match_state == self.match_cond
+#		else:
+#			return False
+
 
 # *** OLD COND - REFACTORED ***
 
@@ -539,20 +554,6 @@ class StateItemInRoomCond(PassThruCond):
 			and item_in_room == self.item_in_room_match
 			)
 
-#class InWorldStateCond(InWorldCond):
-class InWorldStateCond(ObjInWorldCond):
-#	def __init__(self, name, exist_obj, match_cond):
-	def __init__(self, name, obj, match_cond):
-#		super().__init__(name, exist_obj, match_cond)
-		super().__init__(name, obj, match_cond)
-
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		panel_dispensed = mach_state
-		if panel_dispensed == False:
-			match_state = gs.map.chk_obj_exist(self.exist_obj, gs)
-			return match_state == self.match_cond
-		else:
-			return False
 
 
 

@@ -187,7 +187,10 @@ Version 3.87.0 Goals:
 				- DONE: update moat_mach with use of MachStateCond
 				- DONE: elim IsWeaponAndStateCond
 			- DONE: redo SwitchStateCond w/ enumerate and false check on each switch in list
-			- TBD: InWorldStateCond
+			- INPROC: elim InWorldStateCond
+				- DONE: rewrite panel dispenser cond to no longer need combo condition
+				- TBD: elimn combo condition
+				- TBD: clean up comments
 	- TBD: update version build #
 
 - TBD: for Mach class, create an 'active' attribute
@@ -358,6 +361,7 @@ Version 3.87.0 Goals:
 
 *** story-driven updates ***
 
+- Fix Antechamber description sill mentions goblin after death
 - search for 'Nana'-based errors
 - Fix: 'officious' == offering unwanted advice => NOT hidebound or miro-managerial
 
