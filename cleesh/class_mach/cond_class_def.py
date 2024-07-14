@@ -218,10 +218,14 @@ class SwitchStateCond(TrueCond):
 		return self._match_cond_lst
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		switch_state_lst = []
-		for switch in cond_swicth_lst:
-			switch_state_lst.append(switch.switch_state)
-		return (switch_state_lst == self.match_cond_lst)
+		for idx, switch in enumerate(cond_swicth_lst):
+			if switch.switch_state != self.match_cond_lst[idx]:
+				return False
+		return True
+#		switch_state_lst = []
+#		for switch in cond_swicth_lst:
+#			switch_state_lst.append(switch.switch_state)
+#		return (switch_state_lst == self.match_cond_lst)
 
 
 class LeverArrayCond(TrueCond):

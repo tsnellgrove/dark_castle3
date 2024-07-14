@@ -186,7 +186,7 @@ Version 3.87.0 Goals:
 				- FINDING: embarassing but it turns out I don't even need IsWeaponAndStateCond
 				- DONE: update moat_mach with use of MachStateCond
 				- DONE: elim IsWeaponAndStateCond
-			- TBD: redo SwitchStateCond w/ enumerate and false check on each switch in list
+			- DONE: redo SwitchStateCond w/ enumerate and false check on each switch in list
 			- TBD: InWorldStateCond
 	- TBD: update version build #
 
