@@ -192,6 +192,9 @@ Version 3.87.0 Goals:
 				- DONE: elimn combo condition
 				- DONE: clean up comments
 			- TBD: investigte need for StateItemInRoomCond
+	- TBD: update cond & mach to assume "pass" result if cond not listed
+		- EXAMPLE: in dispense_panel_mach , should not need broach_dispensed_cond
+		- NOTE: need to address this in run_mach() cond_check() => False if no cond == True
 	- TBD: update version build #
 
 - TBD: for Mach class, create an 'active' attribute
