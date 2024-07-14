@@ -187,10 +187,11 @@ Version 3.87.0 Goals:
 				- DONE: update moat_mach with use of MachStateCond
 				- DONE: elim IsWeaponAndStateCond
 			- DONE: redo SwitchStateCond w/ enumerate and false check on each switch in list
-			- INPROC: elim InWorldStateCond
+			- DONE: elim InWorldStateCond
 				- DONE: rewrite panel dispenser cond to no longer need combo condition
-				- TBD: elimn combo condition
-				- TBD: clean up comments
+				- DONE: elimn combo condition
+				- DONE: clean up comments
+			- TBD: investigte need for StateItemInRoomCond
 	- TBD: update version build #
 
 - TBD: for Mach class, create an 'active' attribute

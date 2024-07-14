@@ -137,12 +137,9 @@ hedgehog_eats_timer_active_cond = TimerActiveCond('hedgehog_eats_timer_active_co
 throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
 lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [4,2,1])
-
 goblin_in_world_cond = ObjInWorldCond('goblin_in_world_cond', 'guard_goblin_temp', True)
 broach_dispensed_cond = MachStateCond('broach_dispensed_cond', True)
 broach_not_dispensed_cond = MachStateCond('broach_not_dispensed_cond', False)
-
-# goblin_exist_state_cond = InWorldStateCond('goblin_dead_state_cond', 'guard_goblin_temp', False)
 
 hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_timer, shiny_sword)
 hedgehog_keeps_sword_cond = StateItemInRoomCond('hedgehog_keeps_sword_cond', False, shiny_sword, True)
@@ -222,8 +219,6 @@ kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging
 
 re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None,
 		[axe_in_goblin_hand_cond, true_cond], [axe_in_goblin_hand_result, pass_result])
-
-# dispense_panel_mach = InvisMach('dispense_panel_mach', False, 'auto_act', None, None, None, [goblin_exist_state_cond, true_cond], [dispense_panel_result, pass_result])
 
 dispense_panel_mach = InvisMach('dispense_panel_mach', False, 'auto_act', None, None, None, 
 		[goblin_in_world_cond, broach_dispensed_cond, broach_not_dispensed_cond], 
@@ -354,17 +349,17 @@ axe_in_goblin_hand_cond.creature_obj = guard_goblin
 no_weap_in_hand_cond.creature_obj = burt
 goblin_in_world_cond.obj = guard_goblin
 
-# goblin_exist_state_cond.exist_obj = guard_goblin
-
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog
-hedgehog_eats_timer.alert_anchor = royal_hedgehog
 start_hedgehog_timer_results.creature_obj = royal_hedgehog
 fed_hedgehog_keeps_sword_result.creature_obj = royal_hedgehog
 fed_hedgehog_loses_sword_result.creature_obj = royal_hedgehog
-crystal_box.contain_lst = [kinging_scroll]
 axe_in_goblin_hand_result.creature_obj = guard_goblin
 dispense_panel_result.room_item = control_panel
+
+hedgehog_eats_timer.alert_anchor = royal_hedgehog
+crystal_box.contain_lst = [kinging_scroll]
+
 ## test_chair.in_reach_lst = [main_hall, front_gate, wooden_shelf]
 
 
