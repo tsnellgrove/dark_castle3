@@ -194,7 +194,10 @@ Version 3.87.0 Goals:
 			- INPROC: investigte need for StateItemInRoomCond
 				- DONE: refeacto pre_action() with update for 'pre_act_timer' case
 				- DONE: test
-				- TBD: clean-up comments
+				- DONE: clean-up comments
+				- TBD: do I really need to check mach_state in hedgehog_done_eating_mach ??
+					- IDEA: is this just to avoid running every move?? [need a state machine!]
+					- IDEA: if so, should check mach_state first, followed by 2x obj_in_rm cases
 	- TBD: update cond & mach to assume "pass" result if cond not listed
 		- EXAMPLE: in dispense_panel_mach , should not need broach_dispensed_cond
 		- NOTE: need to address this in run_mach() cond_check() => False if no cond == True
