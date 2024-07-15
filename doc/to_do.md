@@ -203,7 +203,10 @@ Version 3.87.0 Goals:
 					- DONE: create new obj_is_on_floor() method in Room class
 					- DONE: create new simple conditions based on MachStateCond and ObjOnRmFlrCond classes
 					- DONE: test
-					- TBD: clean up comments
+					- DONE: clean up comments
+					- TBD: troubleshooting of new hh_descript_mach()
+			- TBD: investigate need for NotTimerAndItemCond
+	- TBD: if no current need for complex cond, archive code at bottom of method via comments plug-in 
 	- TBD: update cond & mach to assume "pass" result if cond not listed
 		- EXAMPLE: in dispense_panel_mach , should not need broach_dispensed_cond
 		- NOTE: need to address this in run_mach() cond_check() => False if no cond == True

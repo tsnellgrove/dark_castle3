@@ -20,7 +20,7 @@ from cleesh.class_std.interactive_class_def import ContainerPortableSimple, Cont
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
 from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond, ObjInRmCond, ObjInWorldCond, 
 		ItemInHandCond, WeaponInHandCond, MachStateCond, TimerActiveCond, SwitchStateCond, LeverArrayCond,
-		StateItemInRoomCond, NotTimerAndItemCond)
+		NotTimerAndItemCond)
 from cleesh.class_mach.result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
 		TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
@@ -140,15 +140,12 @@ lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_s
 goblin_in_world_cond = ObjInWorldCond('goblin_in_world_cond', 'guard_goblin_temp', True)
 broach_dispensed_cond = MachStateCond('broach_dispensed_cond', True)
 broach_not_dispensed_cond = MachStateCond('broach_not_dispensed_cond', False)
-
 hedgehog_descript_updated_cond = MachStateCond('hedgehog_descript_updated_cond', True)
-sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'entrance_temp', shiny_sword, False)
 sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'entrance_temp', shiny_sword, True)
+sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'entrance_temp', shiny_sword, False)
 
 
 hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_timer, shiny_sword)
-hedgehog_keeps_sword_cond = StateItemInRoomCond('hedgehog_keeps_sword_cond', False, shiny_sword, True)
-hedgehog_loses_sword_cond = StateItemInRoomCond('hedgehog_loses_sword_cond', False, shiny_sword, False)
 
 
 # results
@@ -203,11 +200,8 @@ hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None,
 hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None, [['take', 'shiny_sword']],
 		None, [hedgehog_guard_cond, true_cond], [hedgehog_attacks_result, pass_result])
 
-# hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', 0, 'pre_act_timer', hedgehog_eats_timer, [True], None,
 hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', False, 'pre_act_timer', hedgehog_eats_timer, [True], None,									  
-#		[hedgehog_keeps_sword_cond, hedgehog_loses_sword_cond, true_cond],
 		[hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
-#		[fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result, pass_result]) # machine_state == has the machine  run? (ie. has the hedgehog's description been updated already?)
 		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result]) # machine_state == has the machine  run? (ie. has the hedgehog's description been updated already?)
 
 goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,

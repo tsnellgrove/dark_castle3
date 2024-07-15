@@ -20,7 +20,6 @@
 # PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
 
 # NotTimerAndItemCond :	PassThruCond :	 	(item_obj in hero_rm.floor_lst) && (not timer_obj.active) > [combo]
-# StateItemInRoomCond :	PassThruCond :		(match item_obj in hero_rm.floor_lst) && (match mach_state) > [combo]
 
 # *** deleted ***
 # RoomCond :			PassThruCond :		match hero_rm
@@ -28,7 +27,7 @@
 # StateCond : 			PassThruCond :  	match mach_state
 # IsWeaponAndStateCond : MachStateCond :	(match mach_state) && (match weapon in hero hand) > [combo]
 # InWorldStateCond :	ObjInWorldCond :	(not mach_state) and (match chk_obj_exist) [combo]
-
+# StateItemInRoomCond :	PassThruCond :		(match item_obj in hero_rm.floor_lst) && (match mach_state) > [combo]
 
 ### classes
 
@@ -533,6 +532,33 @@ class PassThruCond(object):
 #			return False
 
 
+# class StateItemInRoomCond(PassThruCond):
+#	def __init__(self, name, state_match, item_obj, item_in_room_match):
+#		super().__init__(name)
+#		self._state_match = state_match # boolean test for passed in boolean value
+#		self._item_obj = item_obj
+#		self._item_in_room_match = item_in_room_match
+
+#	@property
+#	def state_match(self):
+#		return self._state_match
+
+#	@property
+#	def item_obj(self):
+#		return self._item_obj
+
+#	@property
+#	def item_in_room_match(self):
+#		return self._item_in_room_match
+
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		item_in_room = self.item_obj in gs.map.hero_rm.floor_lst
+#		return (
+#			mach_state == self.state_match 
+#			and item_in_room == self.item_in_room_match
+#			)
+
+
 # *** OLD COND - REFACTORED ***
 
 
@@ -560,31 +586,7 @@ class NotTimerAndItemCond(PassThruCond):
 		return cond_state
 
 
-class StateItemInRoomCond(PassThruCond):
-	def __init__(self, name, state_match, item_obj, item_in_room_match):
-		super().__init__(name)
-		self._state_match = state_match # boolean test for passed in boolean value
-		self._item_obj = item_obj
-		self._item_in_room_match = item_in_room_match
 
-	@property
-	def state_match(self):
-		return self._state_match
-
-	@property
-	def item_obj(self):
-		return self._item_obj
-
-	@property
-	def item_in_room_match(self):
-		return self._item_in_room_match
-
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		item_in_room = self.item_obj in gs.map.hero_rm.floor_lst
-		return (
-			mach_state == self.state_match 
-			and item_in_room == self.item_in_room_match
-			)
 
 
 
