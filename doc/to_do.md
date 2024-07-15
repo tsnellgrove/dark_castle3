@@ -195,9 +195,15 @@ Version 3.87.0 Goals:
 				- DONE: refeacto pre_action() with update for 'pre_act_timer' case
 				- DONE: test
 				- DONE: clean-up comments
-				- TBD: do I really need to check mach_state in hedgehog_done_eating_mach ??
+				- INPROC: do I really need to check mach_state in hedgehog_done_eating_mach ??
 					- IDEA: is this just to avoid running every move?? [need a state machine!]
 					- IDEA: if so, should check mach_state first, followed by 2x obj_in_rm cases
+					- DONE: update hh_descript_update_mach mach_state to False
+					- DONE: create new ObjOnRmFlrCond class
+					- DONE: create new obj_is_on_floor() method in Room class
+					- DONE: create new simple conditions based on MachStateCond and ObjOnRmFlrCond classes
+					- DONE: test
+					- TBD: clean up comments
 	- TBD: update cond & mach to assume "pass" result if cond not listed
 		- EXAMPLE: in dispense_panel_mach , should not need broach_dispensed_cond
 		- NOTE: need to address this in run_mach() cond_check() => False if no cond == True

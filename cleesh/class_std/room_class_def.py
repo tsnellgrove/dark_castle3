@@ -40,6 +40,9 @@ class Room(ViewOnly):
 	def floor_lst_remove(self, item):
 		self._floor_lst.remove(item)
 
+	def obj_is_on_floor(self, obj):
+		return (obj in self.floor_lst)
+
 	# *** identity method ***
 	def is_room(self):
 		return True

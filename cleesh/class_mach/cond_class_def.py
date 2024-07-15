@@ -7,6 +7,7 @@
 
 # TrueCond :			parent class :		True (parent class)
 # WornCond :			TrueCond :			match garment is worn
+# ObjOnRmFlrCond:		TrueCond :			match obj on rm floor
 # ObjInRmCond :			TrueCond :			match obj room to match_rm
 # ObjInWorldCond :		TrueCond :			match obj in world
 # ItemInHandCond :		TrueCond :			match obj in hand to match_cond
@@ -73,6 +74,37 @@ class WornCond(TrueCond):
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
 		return (self.worn_garment in self.creature_obj.worn_lst) == self.match_cond
+
+
+class ObjOnRmFlrCond(TrueCond):
+	def __init__(self, name, match_room, obj, match_cond):
+		super().__init__(name)
+		self._match_room = match_room
+		self._obj = obj
+		self._match_cond = match_cond
+
+	@property
+	def match_room(self):
+		return self._match_room
+
+	@match_room.setter
+	def match_room(self, new_val):
+		self._match_room = new_val
+
+	@property
+	def obj(self):
+		return self._obj
+
+	@obj.setter
+	def obj(self, new_val):
+		self._obj = new_val
+
+	@property
+	def match_cond(self):
+		return self._match_cond
+
+	def cond_check(self, gs, mach_state, cond_swicth_lst):
+		return (self.match_room.obj_is_on_floor(self.obj) == self.match_cond)
 
 
 class ObjInRmCond(TrueCond):
