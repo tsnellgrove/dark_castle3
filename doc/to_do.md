@@ -191,7 +191,10 @@ Version 3.87.0 Goals:
 				- DONE: rewrite panel dispenser cond to no longer need combo condition
 				- DONE: elimn combo condition
 				- DONE: clean up comments
-			- TBD: investigte need for StateItemInRoomCond
+			- INPROC: investigte need for StateItemInRoomCond
+				- DONE: refeacto pre_action() with update for 'pre_act_timer' case
+				- DONE: test
+				- TBD: clean-up comments
 	- TBD: update cond & mach to assume "pass" result if cond not listed
 		- EXAMPLE: in dispense_panel_mach , should not need broach_dispensed_cond
 		- NOTE: need to address this in run_mach() cond_check() => False if no cond == True
@@ -365,6 +368,8 @@ Version 3.87.0 Goals:
 
 *** story-driven updates ***
 
+
+- TBD: hedgehog description should change when distracted by food
 - Fix Antechamber description sill mentions goblin after death
 - search for 'Nana'-based errors
 - Fix: 'officious' == offering unwanted advice => NOT hidebound or miro-managerial
