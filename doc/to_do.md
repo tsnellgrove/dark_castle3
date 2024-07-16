@@ -191,11 +191,11 @@ Version 3.87.0 Goals:
 				- DONE: rewrite panel dispenser cond to no longer need combo condition
 				- DONE: elimn combo condition
 				- DONE: clean up comments
-			- INPROC: investigte need for StateItemInRoomCond
+			- DONE: investigte need for StateItemInRoomCond
 				- DONE: refeacto pre_action() with update for 'pre_act_timer' case
 				- DONE: test
 				- DONE: clean-up comments
-				- INPROC: do I really need to check mach_state in hedgehog_done_eating_mach ??
+				- DONE: do I really need to check mach_state in hedgehog_done_eating_mach ??
 					- IDEA: is this just to avoid running every move?? [need a state machine!]
 					- IDEA: if so, should check mach_state first, followed by 2x obj_in_rm cases
 					- DONE: update hh_descript_update_mach mach_state to False
@@ -205,7 +205,7 @@ Version 3.87.0 Goals:
 					- DONE: test
 					- DONE: clean up comments
 					- DONE: troubleshooting of new hh_descript_mach()
-					- TBD: fix attribute methods in Room class (why ref self._floor_lst ?)
+					- DONE: fix attribute methods in Room class (why ref self._floor_lst ?)
 			- TBD: investigate need for NotTimerAndItemCond
 	- TBD: if no current need for complex cond, archive code at bottom of method via comments plug-in 
 	- TBD: update cond & mach to assume "pass" result if cond not listed

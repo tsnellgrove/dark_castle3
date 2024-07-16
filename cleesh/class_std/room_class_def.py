@@ -32,13 +32,16 @@ class Room(ViewOnly):
 
 	# *** attrib methods ***
 	def floor_lst_append(self, item):
-		self._floor_lst.append(item)
+#		self._floor_lst.append(item)
+		self.floor_lst.append(item)
 
 	def floor_lst_extend(self, lst):
-		self._floor_lst.extend(lst)
+#		self._floor_lst.extend(lst)
+		self.floor_lst.extend(lst)
 
 	def floor_lst_remove(self, item):
-		self._floor_lst.remove(item)
+#		self._floor_lst.remove(item)
+		self.floor_lst.remove(item)
 
 	def is_obj_on_floor(self, obj):
 		return (obj in self.floor_lst)
