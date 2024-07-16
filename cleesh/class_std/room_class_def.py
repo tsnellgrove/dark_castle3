@@ -41,8 +41,6 @@ class Room(ViewOnly):
 		self._floor_lst.remove(item)
 
 	def is_obj_on_floor(self, obj):
-#		print(f"{obj.name} is on the floor of {self.name}; floor_lst = {str(self._floor_lst)}")
-#		print(f"Room = {self.name}, floor_lst = {self._floor_lst}; {obj.name} in floor_lst = {obj in self._floor_lst}")
 		return (obj in self.floor_lst)
 
 	# *** identity method ***

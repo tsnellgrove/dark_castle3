@@ -97,7 +97,6 @@ class MachineMixIn(object):
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
 					return cmd_override, result.name
 			else:
-#				print(f"Cond {cond.name} is {cond.cond_check(gs, self.mach_state, self.cond_swicth_lst)}")
 				if cond.cond_check(gs, self.mach_state, self.cond_swicth_lst):
 					result = self.result_lst[idx]
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
