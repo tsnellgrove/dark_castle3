@@ -204,7 +204,8 @@ Version 3.87.0 Goals:
 					- DONE: create new simple conditions based on MachStateCond and ObjOnRmFlrCond classes
 					- DONE: test
 					- DONE: clean up comments
-					- TBD: troubleshooting of new hh_descript_mach()
+					- DONE: troubleshooting of new hh_descript_mach()
+					- TBD: fix attribute methods in Room class (why ref self._floor_lst ?)
 			- TBD: investigate need for NotTimerAndItemCond
 	- TBD: if no current need for complex cond, archive code at bottom of method via comments plug-in 
 	- TBD: update cond & mach to assume "pass" result if cond not listed

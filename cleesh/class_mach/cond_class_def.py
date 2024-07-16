@@ -103,7 +103,7 @@ class ObjOnRmFlrCond(TrueCond):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		return (self.match_room.obj_is_on_floor(self.obj) == self.match_cond)
+		return (self.match_room.is_obj_on_floor(self.obj) == self.match_cond)
 
 
 class ObjInRmCond(TrueCond):

@@ -141,8 +141,8 @@ goblin_in_world_cond = ObjInWorldCond('goblin_in_world_cond', 'guard_goblin_temp
 broach_dispensed_cond = MachStateCond('broach_dispensed_cond', True)
 broach_not_dispensed_cond = MachStateCond('broach_not_dispensed_cond', False)
 hedgehog_descript_updated_cond = MachStateCond('hedgehog_descript_updated_cond', True)
-sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'entrance_temp', shiny_sword, True)
-sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'entrance_temp', shiny_sword, False)
+sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_haal_temp', shiny_sword, True)
+sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_haal_temp', shiny_sword, False)
 
 
 hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_timer, shiny_sword)
@@ -181,7 +181,6 @@ eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','s
 
 # machines
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
-#		None, [no_weap_in_hand_cond, hand_weap_1st_cond, hand_weap_repeat_cond],
 		None, [no_weap_in_hand_cond, crown_not_dispensed_cond, crown_dispensed_cond],
 		[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) # machine_state == got_crown
 
@@ -350,8 +349,8 @@ biscuits_in_hedgehog_hand_cond.creature_obj = royal_hedgehog
 axe_in_goblin_hand_cond.creature_obj = guard_goblin
 no_weap_in_hand_cond.creature_obj = burt
 goblin_in_world_cond.obj = guard_goblin
-sword_not_on_floor.match_room = entrance
-sword_on_floor.match_room = entrance
+sword_not_on_floor.match_room = main_hall
+sword_on_floor.match_room = main_hall
 
 
 goblin_attacks_result.creature_obj = guard_goblin
