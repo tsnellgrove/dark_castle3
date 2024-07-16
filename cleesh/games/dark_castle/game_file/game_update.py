@@ -138,7 +138,6 @@ throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
 lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [4,2,1])
 goblin_in_world_cond = ObjInWorldCond('goblin_in_world_cond', 'guard_goblin_temp', True)
-# panel_dispensed_cond = MachStateCond('panel_dispensed_cond', True)
 panel_not_dispensed_cond = MachStateCond('panel_not_dispensed_cond', False)
 hedgehog_descript_updated_cond = MachStateCond('hedgehog_descript_updated_cond', True)
 sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_haal_temp', shiny_sword, True)
@@ -221,9 +220,7 @@ re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, Non
 		[axe_in_goblin_hand_cond, true_cond], [axe_in_goblin_hand_result, pass_result])
 
 dispense_panel_mach = InvisMach('dispense_panel_mach', False, 'auto_act', None, None, None, 
-#		[goblin_in_world_cond, panel_dispensed_cond, panel_not_dispensed_cond], 
 		[goblin_in_world_cond, panel_not_dispensed_cond, true_cond], 
-#		[pass_result, pass_result, dispense_panel_result]) # mach_state = has panel been dispensed
 		[pass_result, dispense_panel_result, pass_result, ]) # mach_state = has panel been dispensed
 
 guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None,
