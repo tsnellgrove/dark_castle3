@@ -138,8 +138,8 @@ throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
 lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [4,2,1])
 goblin_in_world_cond = ObjInWorldCond('goblin_in_world_cond', 'guard_goblin_temp', True)
-broach_dispensed_cond = MachStateCond('broach_dispensed_cond', True)
-broach_not_dispensed_cond = MachStateCond('broach_not_dispensed_cond', False)
+# panel_dispensed_cond = MachStateCond('panel_dispensed_cond', True)
+panel_not_dispensed_cond = MachStateCond('panel_not_dispensed_cond', False)
 hedgehog_descript_updated_cond = MachStateCond('hedgehog_descript_updated_cond', True)
 sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_haal_temp', shiny_sword, True)
 sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_haal_temp', shiny_sword, False)
@@ -182,16 +182,15 @@ eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','s
 # machines
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
 		None, [no_weap_in_hand_cond, crown_not_dispensed_cond, crown_dispensed_cond],
-		[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) # machine_state == got_crown
+		[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]) # mach_state == got_crown
 
 broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 'post_act_switch', throne, ['pushed', 'pulled'],
 		[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
-		[nothing_happens_result, throne_push_result, throne_pull_result]) # machine_state == broach_dispensed
+		[nothing_happens_result, throne_push_result, throne_pull_result]) # mach_state == broach_dispensed
 
 control_panel = ContainerFixedSimpleMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, [left_lever, middle_lever, right_lever, red_button], 999, 4, 'on',
 		0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever], 
-		[lever_array_matches_mach_state_cond, true_cond], [toggle_portcullis_result, portcullis_doesnt_open_result])
-		# machine_state == lever_array_value
+		[lever_array_matches_mach_state_cond, true_cond], [toggle_portcullis_result, portcullis_doesnt_open_result]) # mach_state == lever_array_value
 
 hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None, [['give', 'stale_biscuits', 'royal_hedgehog']],
 		None, [biscuits_in_hedgehog_hand_cond, true_cond], [start_hedgehog_timer_results, pass_result])
@@ -201,7 +200,7 @@ hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None
 
 hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', False, 'pre_act_timer', hedgehog_eats_timer, [True], None,									  
 		[hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
-		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result]) # machine_state == has the machine  run? (ie. has the hedgehog's description been updated already?)
+		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result]) # mach_state == has the machine  run? (ie. has the hedgehog's description been updated already?)
 
 goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,
 		[['examine', 'iron_portcullis'], ['examine', 'alcove'], ['examine', 'grimy_axe'], ['take', 'grimy_axe'],
@@ -222,8 +221,10 @@ re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, Non
 		[axe_in_goblin_hand_cond, true_cond], [axe_in_goblin_hand_result, pass_result])
 
 dispense_panel_mach = InvisMach('dispense_panel_mach', False, 'auto_act', None, None, None, 
-		[goblin_in_world_cond, broach_dispensed_cond, broach_not_dispensed_cond], 
-		[pass_result, pass_result, dispense_panel_result])
+#		[goblin_in_world_cond, panel_dispensed_cond, panel_not_dispensed_cond], 
+		[goblin_in_world_cond, panel_not_dispensed_cond, true_cond], 
+#		[pass_result, pass_result, dispense_panel_result]) # mach_state = has panel been dispensed
+		[pass_result, dispense_panel_result, pass_result, ]) # mach_state = has panel been dispensed
 
 guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None,
 		None, [grimy_axe], [torn_note, dead_goblin], [big_medal], [chewed_fingernails, officiousness],

@@ -206,7 +206,7 @@ Version 3.87.0 Goals:
 					- DONE: clean up comments
 					- DONE: troubleshooting of new hh_descript_mach()
 					- DONE: fix attribute methods in Room class (why ref self._floor_lst ?)
-			- TBD: sort out dispense_panel_mach (broach conds ???)
+			- DONE: sort out dispense_panel_mach (broach conds => panel conds)
 			- TBD: investigate need for NotTimerAndItemCond
 	- TBD: if no current need for complex cond, archive code at bottom of method via comments plug-in 
 	- TBD: update cond & mach to assume "pass" result if cond not listed
@@ -287,6 +287,10 @@ Version 3.87.0 Goals:
 - IDEA: list of 'contained' internal_switches in MachMixIn attributes?
 	- IDEA: (i.e. add to scope and remove levers & button from features?)
 	- IDEA: [hold off until at least one more control_panel type machine gets created]
+
+- TBD: advanced ideas:
+	- IDEA: state machine for hedgehog
+	- IDEA: event bus for goblin dies => dispense panel
 
 - TBD: Cases where I want a modular machine to run despite an error standard
 	- IDEA: perhaps move to separate 'Errors' section
