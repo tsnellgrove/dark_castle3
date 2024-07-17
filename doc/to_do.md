@@ -207,12 +207,15 @@ Version 3.87.0 Goals:
 					- DONE: troubleshooting of new hh_descript_mach()
 					- DONE: fix attribute methods in Room class (why ref self._floor_lst ?)
 			- DONE: sort out dispense_panel_mach (broach conds => panel conds)
-			- TBD: investigate need for NotTimerAndItemCond
-	- TBD: if no current need for complex cond, archive code at bottom of method via comments plug-in 
+			- DONE: investigate need for NotTimerAndItemCond
+				- DONE: eliminate NotTimerAndItemCond
+	- TBD: if no current need for complex cond, archive code at bottom of method via comments plug-in
 	- TBD: update cond & mach to assume "pass" result if cond not listed
 		- EXAMPLE: in dispense_panel_mach , should not need broach_dispensed_cond
 		- NOTE: need to address this in run_mach() cond_check() => False if no cond == True
+		- NOTE: proceed with caution - game currently errors if not all conditions provided
 		- TBD: update machs so that true_cond => pass_cond is always last
+	- TBD: clean up Cond class module
 	- TBD: update version build #
 
 - TBD: for Mach class, create an 'active' attribute

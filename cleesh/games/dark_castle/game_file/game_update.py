@@ -19,8 +19,7 @@ from cleesh.class_std.interactive_class_def import ContainerFixedSimple, Contain
 from cleesh.class_std.interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
 from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond, ObjInRmCond, ObjInWorldCond, 
-		ItemInHandCond, WeaponInHandCond, MachStateCond, TimerActiveCond, SwitchStateCond, LeverArrayCond,
-		NotTimerAndItemCond)
+		ItemInHandCond, WeaponInHandCond, MachStateCond, TimerActiveCond, SwitchStateCond, LeverArrayCond)
 from cleesh.class_mach.result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
 		TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
@@ -125,27 +124,24 @@ hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'var
 # conditions
 true_cond = TrueCond('true_cond')
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
-not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
-hedgehog_not_in_world_cond = ObjInWorldCond('hedgehog_not_in_world_cond', 'royal_hedgehog_temp', False)
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', stale_biscuits, 'royal_hedgehog_temp', True)
 axe_in_goblin_hand_cond = ItemInHandCond('axe_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
 no_weap_in_hand_cond = WeaponInHandCond('hand_no_weap_cond', 'burt_temp', False)
+sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_haal_temp', shiny_sword, True)
+sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_haal_temp', shiny_sword, False)
+not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
+hedgehog_not_in_world_cond = ObjInWorldCond('hedgehog_not_in_world_cond', 'royal_hedgehog_temp', False)
+goblin_in_world_cond = ObjInWorldCond('goblin_in_world_cond', 'guard_goblin_temp', True)
 broach_dispensed_cond = MachStateCond('broach_dispensed_cond', True)
 crown_not_dispensed_cond = MachStateCond('crown_not_dispensed_cond', False)
 crown_dispensed_cond = MachStateCond('crown_dispensed_cond', True)
+panel_not_dispensed_cond = MachStateCond('panel_not_dispensed_cond', False)
+hedgehog_descript_updated_cond = MachStateCond('hedgehog_descript_updated_cond', True)
 hedgehog_eats_timer_active_cond = TimerActiveCond('hedgehog_eats_timer_active_cond', hedgehog_eats_timer, True) # hedgehog is distracted
+hedgehog_eats_timer_not_active_cond = TimerActiveCond('hedgehog_eats_timer_not_active_cond', hedgehog_eats_timer, False) # hedgehog is not eating
 throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
 lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [4,2,1])
-goblin_in_world_cond = ObjInWorldCond('goblin_in_world_cond', 'guard_goblin_temp', True)
-panel_not_dispensed_cond = MachStateCond('panel_not_dispensed_cond', False)
-hedgehog_descript_updated_cond = MachStateCond('hedgehog_descript_updated_cond', True)
-sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_haal_temp', shiny_sword, True)
-sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_haal_temp', shiny_sword, False)
-
-
-hedgehog_guard_cond = NotTimerAndItemCond('hedgehog_guard_cond', hedgehog_eats_timer, shiny_sword)
-
 
 # results
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'died.', True)
@@ -195,7 +191,7 @@ hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None,
 		None, [biscuits_in_hedgehog_hand_cond, true_cond], [start_hedgehog_timer_results, pass_result])
 
 hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None, [['take', 'shiny_sword']],
-		None, [hedgehog_guard_cond, true_cond], [hedgehog_attacks_result, pass_result])
+		None, [hedgehog_eats_timer_not_active_cond, true_cond], [hedgehog_attacks_result, pass_result])
 
 hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', False, 'pre_act_timer', hedgehog_eats_timer, [True], None,									  
 		[hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],

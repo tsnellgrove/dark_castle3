@@ -17,9 +17,6 @@
 # SwitchStateCond : 	TrueCond :		 	match switch_state_lst
 # LeverArrayCond : 		TrueCond :			sum of lever_val_lst == mach_state
 
-# PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
-
-# NotTimerAndItemCond :	PassThruCond :	 	(item_obj in hero_rm.floor_lst) && (not timer_obj.active) > [combo]
 
 # *** deleted ***
 # RoomCond :			PassThruCond :		match hero_rm
@@ -28,6 +25,10 @@
 # IsWeaponAndStateCond : MachStateCond :	(match mach_state) && (match weapon in hero hand) > [combo]
 # InWorldStateCond :	ObjInWorldCond :	(not mach_state) and (match chk_obj_exist) [combo]
 # StateItemInRoomCond :	PassThruCond :		(match item_obj in hero_rm.floor_lst) && (match mach_state) > [combo]
+# NotTimerAndItemCond :	PassThruCond :	 	(item_obj in hero_rm.floor_lst) && (not timer_obj.active) > [combo]
+# PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
+
+
 
 ### classes
 
@@ -277,20 +278,20 @@ class LeverArrayCond(TrueCond):
 
 # *** OLD COND - REFACTORED ***
 
-class PassThruCond(object):
-	def __init__(self, name):
-		self._name = name
+# class PassThruCond(object):
+#	def __init__(self, name):
+#		self._name = name
 
-	@property
-	def name(self):
-		return self._name
+#	@property
+#	def name(self):
+#		return self._name
 
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		cond_state = True
-		return cond_state
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		cond_state = True
+#		return cond_state
 
-	def __repr__(self):
-		return f'Object { self.name } is of class { type(self).__name__ } '
+#	def __repr__(self):
+#		return f'Object { self.name } is of class { type(self).__name__ } '
 
 
 # class CreatureItemCond(PassThruCond):
@@ -559,31 +560,34 @@ class PassThruCond(object):
 #			)
 
 
+# class NotTimerAndItemCond(PassThruCond):
+#	def __init__(self, name, timer_obj, item_obj):
+#		super().__init__(name)
+#		self._timer_obj = timer_obj
+#		self._item_obj = item_obj
+
+#	@property
+#	def timer_obj(self):
+#		return self._timer_obj
+
+#	@property
+#	def item_obj(self):
+#		return self._item_obj
+
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#		cond_state = False
+#		if self.item_obj in gs.map.hero_rm.floor_lst:
+#			cond_state = not self.timer_obj.active
+#		return cond_state
+
+
 # *** OLD COND - REFACTORED ***
 
 
 # *** To Be Reviewed ***
 
 
-class NotTimerAndItemCond(PassThruCond):
-	def __init__(self, name, timer_obj, item_obj):
-		super().__init__(name)
-		self._timer_obj = timer_obj
-		self._item_obj = item_obj
 
-	@property
-	def timer_obj(self):
-		return self._timer_obj
-
-	@property
-	def item_obj(self):
-		return self._item_obj
-
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		cond_state = False
-		if self.item_obj in gs.map.hero_rm.floor_lst:
-			cond_state = not self.timer_obj.active
-		return cond_state
 
 
 
