@@ -105,7 +105,7 @@ Version 3.87.0 Goals:
 			- DONE: clean up comments
 	- DONE: update version build #
 
-- INPROC: cond review (build 0005) [Jul 17, 2024]
+- DONE: cond review (build 0005) [Jul 17, 2024]
 	- DONE: review and categorize existing conditions
 	- DONE: refactor / rename simple conditions
 		- DONE: PassThruCond => TrueCond
