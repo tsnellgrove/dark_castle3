@@ -167,7 +167,6 @@ axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', Fal
 dispense_panel_result = AddObjToRoomAndDescriptResult('dispense_panel_result', 'temp_control_panel', False)
 
 
-
 # warnings
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0)
 attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd',
@@ -188,11 +187,9 @@ control_panel = ContainerFixedSimpleMach('control_panel', 'Control Panel', 'pane
 		[lever_array_matches_mach_state_cond, true_cond], [toggle_portcullis_result, portcullis_doesnt_open_result]) # mach_state == lever_array_value
 
 hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None, [['give', 'stale_biscuits', 'royal_hedgehog']],
-#		None, [biscuits_in_hedgehog_hand_cond, true_cond], [start_hedgehog_timer_results, pass_result])
 		None, [biscuits_in_hedgehog_hand_cond], [start_hedgehog_timer_results])
 
 hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None, [['take', 'shiny_sword']],
-#		None, [hedgehog_eats_timer_not_active_cond, true_cond], [hedgehog_attacks_result, pass_result])
 		None, [hedgehog_eats_timer_not_active_cond], [hedgehog_attacks_result])
 
 hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', False, 'pre_act_timer', hedgehog_eats_timer, [True], None,									  
@@ -206,7 +203,6 @@ goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,
 
 hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_cmd', None,
 		[['give', '*', 'royal_hedgehog'], ['show', '*', 'royal_hedgehog']], None, 
-#		[hedgehog_eats_timer_active_cond, true_cond], [hedgehog_distracted_result, pass_result])
 		[hedgehog_eats_timer_active_cond], [hedgehog_distracted_result])
 
 kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters, 1, 
@@ -216,14 +212,14 @@ kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging
 		[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result])
 
 re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None,
-#		[axe_in_goblin_hand_cond, true_cond], [axe_in_goblin_hand_result, pass_result])
 		[axe_not_in_goblin_hand_cond], [axe_in_goblin_hand_result])
 
 dispense_panel_mach = InvisMach('dispense_panel_mach', False, 'auto_act', None, None, None, 
-#		[goblin_in_world_cond, panel_not_dispensed_cond, true_cond], 
 		[goblin_in_world_cond, panel_not_dispensed_cond], 
-#		[pass_result, dispense_panel_result, pass_result]) # mach_state = has panel been dispensed
 		[pass_result, dispense_panel_result]) # mach_state = has panel been dispensed
+
+
+# *** creatures	***
 
 guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None,
 		None, [grimy_axe], [torn_note, dead_goblin], [big_medal], [chewed_fingernails, officiousness],
@@ -240,7 +236,6 @@ guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 			'*_*_*' : 'src_death'
 		}, 93, 999)
 
-# creatures				
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None,
 		None, [], [silver_key], [red_bandana], [fierce_teeth, loyalty],
 		[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_done_eating_mach, hedgehog_distracted_mach],
@@ -288,7 +283,9 @@ unreachable_2 = Room('unreachable_2', 'Unreachable', 'unreachable_2', 'unreachab
 
 unreachable_3 = Room('unreachable_3', 'Unreachable', 'unreachable_3', 'unreachable_3', None, [], [], [])
 
+
 # *** gs class modules ***
+
 core = Core(
 		'core', # name
 		burt, # hero
