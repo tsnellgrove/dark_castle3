@@ -105,7 +105,7 @@ Version 3.87.0 Goals:
 			- DONE: clean up comments
 	- DONE: update version build #
 
-- INPROC: cond review (0005) []
+- INPROC: cond review (build 0005) [Jul 17, 2024]
 	- DONE: review and categorize existing conditions
 	- DONE: refactor / rename simple conditions
 		- DONE: PassThruCond => TrueCond
@@ -215,10 +215,19 @@ Version 3.87.0 Goals:
 		- NOTE: need to address this in run_mach() cond_check() => False if no cond == True
 		- NOTE: proceed with caution - game currently errors if not all conditions provided
 		- DONE: update machs so that true_cond => pass_cond is always last
-	- TBD: clean up Cond class module
-	- TBD: update version build #
+	- DONE: clean up Cond class module
+	- DONE: summary of deleted condition classes:
+# PassThruCond : 		parent class :	 	True ==> DONE (legacy parent class)
+# RoomCond :			PassThruCond :		match hero_rm
+# CreatureItemCond : 	PassThruCond :	 	match on creature holding item
+# StateCond : 			PassThruCond :  	match mach_state
+# IsWeaponAndStateCond : MachStateCond :	(match mach_state) && (match weapon in hero hand) > [combo]
+# InWorldStateCond :	ObjInWorldCond :	(not mach_state) and (match chk_obj_exist) [combo]
+# StateItemInRoomCond :	PassThruCond :		(match item_obj in hero_rm.floor_lst) && (match mach_state) > [combo]
+# NotTimerAndItemCond :	PassThruCond :	 	(item_obj in hero_rm.floor_lst) && (not timer_obj.active) > [combo]
+	- DONE: update version build #
 
-- TBD: result review
+- TBD: result review (build 0006) []
 
 - TBD: mach review
 	- TBD: general Mach class review
