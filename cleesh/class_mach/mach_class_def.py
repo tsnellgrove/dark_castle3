@@ -87,6 +87,7 @@ class MachineMixIn(object):
 				result = self.result_lst[idx]
 				self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
 				return cmd_override, result.name
+		return False, 'pass_result'
 
 
 # *** start unused code for combo conditions ***

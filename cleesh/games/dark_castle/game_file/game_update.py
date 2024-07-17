@@ -125,7 +125,7 @@ hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'var
 true_cond = TrueCond('true_cond')
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', stale_biscuits, 'royal_hedgehog_temp', True)
-axe_in_goblin_hand_cond = ItemInHandCond('axe_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
+axe_not_in_goblin_hand_cond = ItemInHandCond('axe_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
 no_weap_in_hand_cond = WeaponInHandCond('hand_no_weap_cond', 'burt_temp', False)
 sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_haal_temp', shiny_sword, True)
 sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_haal_temp', shiny_sword, False)
@@ -188,10 +188,12 @@ control_panel = ContainerFixedSimpleMach('control_panel', 'Control Panel', 'pane
 		[lever_array_matches_mach_state_cond, true_cond], [toggle_portcullis_result, portcullis_doesnt_open_result]) # mach_state == lever_array_value
 
 hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None, [['give', 'stale_biscuits', 'royal_hedgehog']],
-		None, [biscuits_in_hedgehog_hand_cond, true_cond], [start_hedgehog_timer_results, pass_result])
+#		None, [biscuits_in_hedgehog_hand_cond, true_cond], [start_hedgehog_timer_results, pass_result])
+		None, [biscuits_in_hedgehog_hand_cond], [start_hedgehog_timer_results])
 
 hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None, [['take', 'shiny_sword']],
-		None, [hedgehog_eats_timer_not_active_cond, true_cond], [hedgehog_attacks_result, pass_result])
+#		None, [hedgehog_eats_timer_not_active_cond, true_cond], [hedgehog_attacks_result, pass_result])
+		None, [hedgehog_eats_timer_not_active_cond], [hedgehog_attacks_result])
 
 hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', False, 'pre_act_timer', hedgehog_eats_timer, [True], None,									  
 		[hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
@@ -204,7 +206,8 @@ goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,
 
 hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_cmd', None,
 		[['give', '*', 'royal_hedgehog'], ['show', '*', 'royal_hedgehog']], None, 
-		[hedgehog_eats_timer_active_cond, true_cond], [hedgehog_distracted_result, pass_result])
+#		[hedgehog_eats_timer_active_cond, true_cond], [hedgehog_distracted_result, pass_result])
+		[hedgehog_eats_timer_active_cond], [hedgehog_distracted_result])
 
 kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', illuminated_letters, 1, 
 		None, 'post_act_cmd', None, 
@@ -213,11 +216,14 @@ kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging
 		[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result])
 
 re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None,
-		[axe_in_goblin_hand_cond, true_cond], [axe_in_goblin_hand_result, pass_result])
+#		[axe_in_goblin_hand_cond, true_cond], [axe_in_goblin_hand_result, pass_result])
+		[axe_not_in_goblin_hand_cond], [axe_in_goblin_hand_result])
 
 dispense_panel_mach = InvisMach('dispense_panel_mach', False, 'auto_act', None, None, None, 
-		[goblin_in_world_cond, panel_not_dispensed_cond, true_cond], 
-		[pass_result, dispense_panel_result, pass_result, ]) # mach_state = has panel been dispensed
+#		[goblin_in_world_cond, panel_not_dispensed_cond, true_cond], 
+		[goblin_in_world_cond, panel_not_dispensed_cond], 
+#		[pass_result, dispense_panel_result, pass_result]) # mach_state = has panel been dispensed
+		[pass_result, dispense_panel_result]) # mach_state = has panel been dispensed
 
 guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin', None,
 		None, [grimy_axe], [torn_note, dead_goblin], [big_medal], [chewed_fingernails, officiousness],
@@ -340,7 +346,7 @@ not_in_throne_room_cond.match_room = throne_room
 not_in_throne_room_cond.obj = burt
 hedgehog_not_in_world_cond.obj = royal_hedgehog
 biscuits_in_hedgehog_hand_cond.creature_obj = royal_hedgehog
-axe_in_goblin_hand_cond.creature_obj = guard_goblin
+axe_not_in_goblin_hand_cond.creature_obj = guard_goblin
 no_weap_in_hand_cond.creature_obj = burt
 goblin_in_world_cond.obj = guard_goblin
 sword_not_on_floor.match_room = main_hall
