@@ -14,3 +14,4 @@ def auto_action(gs):
 			_unused1, _unused2 = obj.run_mach(gs)
 		elif obj.trigger_type == 'auto_act' and not obj.is_timer():
 			_unused1, _unused2 = obj.run_mach(gs)
+	return

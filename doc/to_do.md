@@ -220,36 +220,45 @@ Version 3.87.0 Goals:
 
 - TBD: result review
 
-- TBD: review existing warning and timer classes
-	- TBD: refactor app_turn modules (warning & timer code)
-
-- TBD: for Mach class, create an 'active' attribute
-
-
-- TBD: results and conditions 
-	- IDEA: goal is a single method for conditions and a single method for results
-	- IDEA: for conditions, attributes = modules + logic_str + descript_str
-	- IDEA: use attribute packing / kwargs to pack conditions / results with variable # of attributes
+- TBD: mach review
+	- TBD: general Mach class review
+	- TBD: for Mach class, create an 'active' attribute
 	- IDEA: room should have show_machs() method that lists all local mod-machs
-	- IDEA: machine mix-in should have a dbg_describe() method that describes the machine (like K8s)
+	- TBD: review of Mach class obj
+	- IDEA: triggers
+		- IDEA: 'trigger_type' => 'trig_type' ??
+		- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
+		- IDEA: Establish switch triggers such that timer as trigger is more natural
 	- TBD: update version build #
 
-- TBD: mod-mach improvement ideas:
+- TBD: review existing Warning class - refactor / integrate with Mach class
+	- TBD: refactor app_turn modules (warning & timer code)
+	- TBD: update version build #
+
+- TBD: review existing Timer class - refactor / integrate with Mach class
+	- TBD: update version build #
+
+- TBD: results and conditions 
+
+
+
+- TBD: review mod-mach improvement ideas:
+	- IDEA: initial ideas
+		- IDEA: goal is a single method for conditions and a single method for results (???)
+		- IDEA: for conditions, attributes = modules + logic_str + descript_str
+		- IDEA: use attribute packing / kwargs to pack conditions / results with variable # of attributes
+		- IDEA: machine mix-in should have a dbg_describe() method that describes the machine (like K8s)
 	- IDEA: naming
 		- IDEA: Shorter cond & result names!!
 		- IDEA: Compound Results and Conditions named after intent
 		- IDEA: naming conventions: need to avoid confusion between match_state and mach_state
 		- IDEA: naming conventions: cond & result name should be same except post-fix
 		- IDEA: address long naming issue with describe() ability
-		- IDEA: 'trigger_type' => 'trig_type' ??
-	- IDEA: triggers
-		- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
 	- IDEA: general org ideas
 		- IDEA: BaseCond => always check state
 		- IDEA: BaseResult => always do a buff_try()
 		- IDEA: All results capable of Buffering (rename Result classes appropriately)
 		- IDEA: if no conditions == True then default_result = nothing happens (no need for pass_result)
-		- IDEA: Establish switch triggers such that timer as trigger is more natural
 		- IDEA: in machines, should conditions and results just be key-value pairs in a dictionary?
 			- IDEA: As opposed to needing 2 separate lists with identical indexes?
 		- IDEA: move switch_reset to auto_action() ???
@@ -257,7 +266,7 @@ Version 3.87.0 Goals:
 		- IDEA: goal of primative & compound structure is to increase re-use of Cond & Result classes 
 			- IDEA: currently too many class-per-var cases
 		- IDEA: Primative Conditions (named after condition) [always include single attribute & value] 
-		- IDEA: Compound Conditions [and / or) 
+		- IDEA: Compound Conditions (and / or) 
 			- IDEA: named after intent; match mach, result, & trig 
 			- IDEA: {trig_check() method links primatives}
 		- IDEA: Primative Results (named after result) [always include single attribute & value] 
