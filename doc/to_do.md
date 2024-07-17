@@ -169,13 +169,13 @@ Version 3.87.0 Goals:
 			- DONE: update dark_castle
 			- DONE: test
 			- DONE: clean up comments
-	- TBD: sort out combo cond
+	- DONE: sort out combo cond
 		- IDEA: perhaps cond_lst is a list-of-lists; 
 			- IDEA: i.e. each cond is in a list; if len(cond) > 0 then 'and' them?
 			- IDEA: so this happens at the Machine class / run_mach level
 			- IDEA: this way, there is no class of combo_and_cond... which would just add complexity
 			- IDEA: cond_combo_lst = [cond_1, 'and', cond_2] or [cond_1, 'or', cond_2] (etc, left to right)
-		- INPROC: update combo cond 1-by-1
+		- DONE: update combo cond 1-by-1
 			- DONE: IsWeaponAndStateCond
 				- DONE: update run_mach() for element is_list case
 				- DONE: loop through list
