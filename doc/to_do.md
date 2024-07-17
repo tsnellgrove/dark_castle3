@@ -218,12 +218,12 @@ Version 3.87.0 Goals:
 	- TBD: clean up Cond class module
 	- TBD: update version build #
 
-- TBD: for Mach class, create an 'active' attribute
-
 - TBD: result review
 
 - TBD: review existing warning and timer classes
 	- TBD: refactor app_turn modules (warning & timer code)
+
+- TBD: for Mach class, create an 'active' attribute
 
 
 - TBD: results and conditions 
