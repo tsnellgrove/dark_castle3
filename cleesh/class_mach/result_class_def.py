@@ -1,10 +1,26 @@
 # program: dark castle
 # author: Tom Snellgrove
-# module description: class deffinition module for Conditions
+# module description: class deffinition module for Results
 
 
 ### import
 
+
+
+# *** summary of result classes ***
+
+# Result class (x) : 		inherits from (Y) : result_exe() method performs (Z)
+#-------------------    	-------------       ---------------------------------
+
+# BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
+# BufferAndEndResult :		BufferOnlyResult :	buffer, set ending val, set is_end = True
+# BufferAndGiveResult :		BufferOnlyResult :	buff, obj => hero hand; sets mach_state = True [need creature attrib]
+# AddObjToRoomResult :		BufferOnlyResult :	buff, obj => hero_rm.floor_lst; sets mach_state = True [get mach rm? atttrib name => obj not item?]
+# AddObjChgDescriptResult : BufferOnlyResult :	AddObjToRoomResult + chg obj descript key + mach_state = True [COMBO]
+# AddObjToRoomAndDescriptResult : BOResult :	similar to AddObjChgDescriptResult; chg rm descript [COMBO] [DEDUP]
+# DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
+# AttackBurtResult :		BufferOnlyResult :	creature attacks burt [REFACT?] [address in_hand in creature.attack()?]
+#
 
 ### classes
 class BufferOnlyResult(object):

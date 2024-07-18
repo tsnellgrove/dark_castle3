@@ -227,7 +227,12 @@ Version 3.87.0 Goals:
 # NotTimerAndItemCond :	PassThruCond :	 	(item_obj in hero_rm.floor_lst) && (not timer_obj.active) > [combo]
 	- DONE: update version build #
 
-- TBD: result review (build 0006) []
+- INPROC: result review (build 0006) []
+	- INPROC: review and categorize existing results
+	- TBD: decide if I should attempt to use super() on inherited results
+	- TBD: decide if results should be symetric... can they be operated by non-players? 
+	- TBD: even if machs only opperated by hero, what if opp from another rm? If so, buff only if in rm?
+	- TBD: should BufferResult have a is_mach_state_set attrib?
 
 - TBD: mach review
 	- TBD: general Mach class review
@@ -457,6 +462,8 @@ Version 3.87.0 Goals:
 
 
 *** refactor Creature ***
+- Sort out the wierd thing where unarmed attack is represented by first item in feature_lst
+
 - TBD: does creature_state really have any value? Maybe build hedgehog state machine before pulling the plug on this one
 - TBD: Could simplify 'give', remove description updates from give, and instead implement them as part of state machine?
 
