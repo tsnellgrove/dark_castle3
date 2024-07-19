@@ -20,7 +20,7 @@
 # AddObjToRoomAndDescriptResult : BOResult :	similar to AddObjChgDescriptResult; chg rm descript [COMBO] [DEDUP]
 # DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
 # AttackBurtResult :		BufferOnlyResult :	creature attacks burt [REFACT?] [address in_hand in creature.attack()?]
-#
+
 
 ### classes
 class BufferOnlyResult(object):
