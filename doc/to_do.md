@@ -238,11 +238,16 @@ Version 3.87.0 Goals:
 			- DECISION: yes, need to be room aware for result buffering
 		- DONE: should BufferResult have a is_mach_state_set attrib?
 			- DECISION: yes, BaseResult should do room-aware buffer + option to set mach_state
-	- TBD: update Mach class
-		- TBD: add alert_anchor attrib
-		- TBD: add is_active atytrib
-		- TBD: update cup_of_tea game machs
+	- INPROC: update Mach class
+		- DONE: add alert_anchor and is_active attribs to MachMixIn
+		- DONE: setters & getters
+		- DONE: add attribs to all 4 resultant classes (e.g. InvisMach)
+		- DONE: update Room.get_mach_lst() to ref 'active'
+		- DONE: update cup_of_tea game machs
+		- DONE: test
 		- TBD: update dark_castle3 game machs
+		- TBD: test
+		- TBD: clean up comments in mach_class(), room_class(), 
 	- TBD: result class refactoring
 		- TBD: BufferOnlyResult => BaseResult (buffer w/ alert_anchor) + set mach_state option (set vs. reset ??)
 

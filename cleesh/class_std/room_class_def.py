@@ -111,11 +111,13 @@ class Room(ViewOnly):
 		mach_lst = []
 		scope_lst = self.get_vis_contain_lst(gs) + self.invis_lst
 		for obj in scope_lst:
-			if obj.is_mach():
+#			if obj.is_mach():
+			if obj.is_mach() and obj.is_active:
 				mach_lst.append(obj)
 			if obj.is_creature():
 				for invis_obj in obj.invis_lst:
-					if invis_obj.is_mach():
+#					if invis_obj.is_mach():
+					if invis_obj.is_mach() and obj.is_active:
 						mach_lst.append(invis_obj)
 		return mach_lst
 
