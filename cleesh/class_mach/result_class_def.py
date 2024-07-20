@@ -19,10 +19,25 @@
 # AddObjChgDescriptResult : BufferOnlyResult :	AddObjToRoomResult + chg obj descript key + mach_state = True [COMBO]
 # AddObjToRoomAndDescriptResult : BOResult :	similar to AddObjChgDescriptResult; chg rm descript [COMBO] [DEDUP]
 # DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
-# AttackBurtResult :		BufferOnlyResult :	creature attacks burt [REFACT?] [address in_hand in creature.attack()?]
+# AttackBurtResult :		BufferOnlyResult :	buff, creature attacks burt [REFACT?] [address in_hand in creature.attack()?]
+# StartTimerResult :		BufferOnlyResult :	buff, starts timer
+# TimerAndCreatureItemResult StartTimerResult :	buff, starts timer and removes obj from creature hand [REFACT w/ eat???] [COMBO]
+# ChgCreatureDescAndStateResult BufferOnlyResult : buff, change creature descript, set mach_state = True
+# PutItemInHandResult :		BufferOnlyResult :	buff, put item in creature hand, remove item from creature bkpk [REFACT w/ take?]
+# TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir
 
 
 ### classes
+
+### *** NEW RESULT CLASSES ***
+
+
+### *** NEW RESULT CLASSES ***
+
+
+
+### *** OLD RESULT CLASSES TO REVIEW ***
+
 class BufferOnlyResult(object):
 	def __init__(self, name, cmd_override):
 		self._name = name
@@ -329,3 +344,4 @@ class TravelResult(BufferOnlyResult):
 		room.go(self.dir, gs, self.creature)
 		return mach_state, self.cmd_override
 
+### *** OLD RESULT CLASSES TO REVIEW ***

@@ -228,11 +228,23 @@ Version 3.87.0 Goals:
 	- DONE: update version build #
 
 - INPROC: result review (build 0006) []
-	- INPROC: review and categorize existing results
-	- TBD: decide if I should attempt to use super() on inherited results
-	- TBD: decide if results should be symetric... can they be operated by non-players? 
-	- TBD: even if machs only opperated by hero, what if opp from another rm? If so, buff only if in rm?
-	- TBD: should BufferResult have a is_mach_state_set attrib?
+	- DONE: review and categorize existing results
+	- DONE: initial result decision-making
+		- DONE: decide if I should attempt to use super() on inherited results
+			- DECISION: yes, attempt to use super()
+		- DONE: decide if results should be symetric... can they be operated by non-players?
+			- DECISION: yes, attempt to make symetric
+		- DONE: even if machs only opperated by hero, what if opp from another rm? If so, buff only if in rm?
+			- DECISION: yes, need to be room aware for result buffering
+		- DONE: should BufferResult have a is_mach_state_set attrib?
+			- DECISION: yes, BaseResult should do room-aware buffer + option to set mach_state
+	- TBD: update Mach class
+		- TBD: add alert_anchor attrib
+		- TBD: add is_active atytrib
+		- TBD: update cup_of_tea game machs
+		- TBD: update dark_castle3 game machs
+	- TBD: result class refactoring
+		- TBD: BufferOnlyResult => BaseResult (buffer w/ alert_anchor) + set mach_state option (set vs. reset ??)
 
 - TBD: mach review
 	- TBD: general Mach class review
@@ -682,6 +694,9 @@ interpreter ideas:
 		- IDEA: office workers on death march project; must bring TTL report to shredder
 		- IDEA: led by bearded application developer, heart-string-pulling retirement party at end
 		- IDEA: always saved by IT person at critical moment
+
+*** Introduce multi-room puzzle ***
+- IDEA: trigger in one room, switch in 2nd room, effect in 3rd room
 
 *** New Room Update ***
 - IDEA: convert Moat to actual rooms?
