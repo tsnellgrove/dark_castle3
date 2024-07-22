@@ -254,9 +254,13 @@ Version 3.87.0 Goals:
 				- FINDING: Mach.is_active refers to whether or not the game should consider the mach to exist
 				- FINDING: Timer.active refers to whether or not the timer is currently running
 				- FINDING: this nomenclature is innately confusing
-				- TBD: choose better nomenclature (e.g. perhaps Timer.active => Timer.is_running)
-				- TBD: add is_active attribute to Timer
-				- TBD: add is_active attribute to Warning
+				- CANCEL: choose better nomenclature (e.g. perhaps Timer.active => Timer.is_running)
+					- DECISION: too many timer.active references
+				- TBD: mach.is_active => mach.is_enabled
+					- TBD: mach_class
+					- TBD: room_class
+				- TBD: add is_enabled attribute to Timer
+				- TBD: add is_enabled attribute to Warning
 		- TBD: clean up comments in mach_class(), room_class(), 
 	- TBD: result class refactoring
 		- TBD: BufferOnlyResult => BaseResult (buffer w/ alert_anchor) + set mach_state option (set vs. reset ??)
