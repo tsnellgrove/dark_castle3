@@ -245,8 +245,18 @@ Version 3.87.0 Goals:
 		- DONE: update Room.get_mach_lst() to ref 'active'
 		- DONE: update cup_of_tea game machs
 		- DONE: test
-		- TBD: update dark_castle3 game machs
-		- TBD: test
+		- DONE: update dark_castle3 game machs
+		- INPROC: test
+			- INPROC: troubleshooting issue
+				- FINDING: timers and warnings are effectively of class Mach (even though inedependent for now)
+				- FINDING: this means that they will also be tested for is_active by Room.get_mach_lst()
+				- FINDING: but Mach.is_active and Timer.active mean two very different things:
+				- FINDING: Mach.is_active refers to whether or not the game should consider the mach to exist
+				- FINDING: Timer.active refers to whether or not the timer is currently running
+				- FINDING: this nomenclature is innately confusing
+				- TBD: choose better nomenclature (e.g. perhaps Timer.active => Timer.is_running)
+				- TBD: add is_active attribute to Timer
+				- TBD: add is_active attribute to Warning
 		- TBD: clean up comments in mach_class(), room_class(), 
 	- TBD: result class refactoring
 		- TBD: BufferOnlyResult => BaseResult (buffer w/ alert_anchor) + set mach_state option (set vs. reset ??)

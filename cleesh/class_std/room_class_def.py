@@ -115,9 +115,11 @@ class Room(ViewOnly):
 			if obj.is_mach() and obj.is_active:
 				mach_lst.append(obj)
 			if obj.is_creature():
+#				print(f"obj = {obj.name}")
 				for invis_obj in obj.invis_lst:
+#					print(f"invis_obj = {invis_obj.name}")
 #					if invis_obj.is_mach():
-					if invis_obj.is_mach() and obj.is_active:
+					if invis_obj.is_mach() and invis_obj.is_active:
 						mach_lst.append(invis_obj)
 		return mach_lst
 
