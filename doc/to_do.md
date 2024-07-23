@@ -286,7 +286,13 @@ Version 3.87.0 Goals:
 		- DONE: 'git branch' to confirm new branch exists but that master is still checked out
 		- DONE: 'git checkout branching_test' to switch focus to branching_test branch
 		- DONE: 'git branch' to confirm that focus in on branching_test
-		- 
+		- DONE: Commit via VS Code to commit changes locally
+		- DONE: Push via VS Code to push branch changes to origin (GitHub)
+		- TBD: 'git merge branching_test'
+		- TBD: VS Code Push to push merge to origin (GitHub)
+		- TBD: confirm that origin is updated
+		- TBD: 'git branch -d branching_test' to clean-up local branch
+		- TBD: 'git push origin --delete branching_test' to clean up origin
 	- TBD: result class refactoring
 		- TBD: BufferOnlyResult => BaseResult (buffer w/ alert_anchor) + set mach_state option (set vs. reset ??)
 
