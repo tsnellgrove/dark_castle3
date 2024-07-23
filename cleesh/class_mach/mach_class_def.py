@@ -12,7 +12,7 @@ from cleesh.class_std.interactive_class_def import ContainerFixedSimple, Seat
 ### classes
 class MachineMixIn(object):
 #	def __init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
-	def __init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_active):
+	def __init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled):
 		self._mach_state = mach_state # machine state variable; boolean for simple machines; Int for complex
 		self._trigger_type = trigger_type # pre_act_cmd, pre_act_timer, post_act_cmd, post_act_switch, auto_act, auto_switch_reset
 		self._trig_switch = trig_switch # the switch whose state change can trigger the machine (only one switch per machine)
@@ -21,7 +21,7 @@ class MachineMixIn(object):
 		self._cond_lst = cond_lst # list of condition obj to test for; should cover all trigger cases
 		self._result_lst = result_lst # list of possible result obj ordered by assciated condition
 		self._alert_anchor = alert_anchor # hero must be in same room as alert_anchor to get mach updates
-		self._is_active = is_active # bool indicating whether mach is active
+		self._is_enabled = is_enabled # bool indicating whether mach is enabled to run
 
 	# getters & setters
 	@property
@@ -65,8 +65,8 @@ class MachineMixIn(object):
 		self._alert_anchor = new_val
 
 	@property
-	def is_active(self):
-		return self._is_active
+	def is_enabled(self):
+		return self._is_enabled
 
 	# *** class identity methods ***
 	def is_mach(self):
@@ -135,24 +135,24 @@ class MachineMixIn(object):
 
 
 class InvisMach(MachineMixIn, Invisible):
-	def __init__(self, name, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_active):
+	def __init__(self, name, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled):
 		Invisible.__init__(self, name)
-		MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_active)
+		MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled)
 
 class ViewOnlyMach(MachineMixIn, ViewOnly):
-	def __init__(self, name, full_name, root_name, descript_key, writing, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_active):
+	def __init__(self, name, full_name, root_name, descript_key, writing, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled):
 		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
-		MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_active)
+		MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled)
 
 class ItemMach(MachineMixIn, Item):
-	def __init__(self, name, full_name, root_name, descript_key, writing, weight, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_active):
+	def __init__(self, name, full_name, root_name, descript_key, writing, weight, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled):
 		Item.__init__(self, name, full_name, root_name, descript_key, writing, weight)
-		MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_active)
+		MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled)
 
 class ContainerFixedSimpleMach(MachineMixIn, ContainerFixedSimple):
-	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_active):
+	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled):
 		ContainerFixedSimple.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep)
-		MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_active)
+		MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled)
 
 #class SeatMach(MachineMixIn, ContainerFixedSimple):
 #		def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, in_reach_lst, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
@@ -160,7 +160,8 @@ class ContainerFixedSimpleMach(MachineMixIn, ContainerFixedSimple):
 #				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
 class Warning(Invisible):
-	def __init__(self, name, trigger_type, trig_vals_lst, warn_max, warn_count):
+#	def __init__(self, name, trigger_type, trig_vals_lst, warn_max, warn_count):
+	def __init__(self, name, trigger_type, trig_vals_lst, warn_max, warn_count, is_enabled):
 		super().__init__(name)
 
 ## DUP CODE TO MachineMixIn ###
@@ -170,6 +171,7 @@ class Warning(Invisible):
 
 		self._warn_max = warn_max # max number of warnings - usually 0 or 2
 		self._warn_count = warn_count # number of warnings given so far
+		self._is_enabled = is_enabled # bool indicating whether warning is enabled to run
 
 ## DUP CODE TO MachineMixIn ###
 	@property
@@ -192,6 +194,10 @@ class Warning(Invisible):
 	@warn_count.setter
 	def warn_count(self, new_count):
 		self._warn_count = new_count
+
+	@property
+	def is_enabled(self):
+		return self._is_enabled
 
 ## DUP CODE TO MachineMixIn ###
 
@@ -244,7 +250,8 @@ class Warning(Invisible):
 
 
 class Timer(Invisible):
-	def __init__(self, name, trigger_type, active, timer_count, timer_max, message_type, timer_done, alert_anchor):
+#	def __init__(self, name, trigger_type, active, timer_count, timer_max, message_type, timer_done, alert_anchor):
+	def __init__(self, name, trigger_type, active, timer_count, timer_max, message_type, timer_done, alert_anchor, is_enabled):
 		super().__init__(name)
 
 ## DUP CODE TO MachineMixIn ###
@@ -257,6 +264,7 @@ class Timer(Invisible):
 		self._message_type = message_type
 		self._timer_done = timer_done
 		self._alert_anchor = alert_anchor
+		self._is_enabled = is_enabled # bool indicating whether timer is enabled to run
 
 	# setters & getters
 
@@ -305,6 +313,10 @@ class Timer(Invisible):
 	@alert_anchor.setter
 	def alert_anchor(self, new_val):
 		self._alert_anchor = new_val
+
+	@property
+	def is_enabled(self):
+		return self._is_enabled
 
 	# simple methods
 	def is_mach(self):

@@ -247,7 +247,7 @@ Version 3.87.0 Goals:
 		- DONE: test
 		- DONE: update dark_castle3 game machs
 		- INPROC: test
-			- INPROC: troubleshooting issue
+			- DONE: troubleshooting issue #1
 				- FINDING: timers and warnings are effectively of class Mach (even though inedependent for now)
 				- FINDING: this means that they will also be tested for is_active by Room.get_mach_lst()
 				- FINDING: but Mach.is_active and Timer.active mean two very different things:
@@ -256,12 +256,25 @@ Version 3.87.0 Goals:
 				- FINDING: this nomenclature is innately confusing
 				- CANCEL: choose better nomenclature (e.g. perhaps Timer.active => Timer.is_running)
 					- DECISION: too many timer.active references
-				- TBD: mach.is_active => mach.is_enabled
-					- TBD: mach_class
-					- TBD: room_class
-				- TBD: add is_enabled attribute to Timer
-				- TBD: add is_enabled attribute to Warning
-		- TBD: clean up comments in mach_class(), room_class(), 
+				- DONE: mach.is_active => mach.is_enabled
+					- DONE: mach_class
+					- DONE: room_class
+				- DONE: add is_enabled attribute to Warning
+					- DONE: add to attributes
+					- DONE: add setters & getters
+					- DONE: add in game_update
+				- DONE: add is_enabled attribute to Timer
+					- DONE: add to attributes
+					- DONE: add setters & getters
+					- DONE: add in game_update
+			- INPROC: troubleshooting issues #2
+				- FINDING: now I am running into issues with Switches - since they have identity is_mach
+				- FINDING: this is true to enable auto-switch restes in auto_action()
+				- FINDING: however, since (today) all switches are physical, is_enabled attrib seems wrong
+				- FINDING: attempted to use get_mach_lst() logic for enabled machs or switches in Room
+				- FINDING: but this is throwing errors (appears that Room is being added to mach_lst)
+				- TBD: figure out why Room is being added to mach_lst; fix or create separate get_switch_lst()
+		- TBD: clean up comments in mach_class(), room_class(), post_action(), 
 	- TBD: result class refactoring
 		- TBD: BufferOnlyResult => BaseResult (buffer w/ alert_anchor) + set mach_state option (set vs. reset ??)
 
