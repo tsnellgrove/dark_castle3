@@ -274,7 +274,7 @@ Version 3.87.0 Goals:
 		- DONE: decide if I should attempt to use super() on inherited results
 			- DECISION: yes, attempt to use super()
 		- DONE: decide if results should be symetric... can they be operated by non-players?
-			- DECISION: yes, attempt to make symetric
+			- DECISION: no, don't attempt symetric - non-hero creatures receiving results is rare and tricky
 		- DONE: even if machs only opperated by hero, what if opp from another rm? If so, buff only if in rm?
 			- DECISION: yes, need to be room aware for result buffering
 		- DONE: should BufferResult have a is_mach_state_set attrib?
