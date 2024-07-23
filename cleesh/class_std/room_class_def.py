@@ -59,9 +59,6 @@ class Room(ViewOnly):
 		return_lst = return_lst + node1_only_lst
 		for obj in self.floor_lst:
 			return_lst += obj.get_vis_contain_lst(gs)
-#		return_lst = return_lst + self.floor_lst
-#		return return_lst
-#		return return_lst + self.floor_lst
 		return return_lst
 
 	def chk_contain_item(self, item, gs):
@@ -111,17 +108,10 @@ class Room(ViewOnly):
 		mach_lst = []
 		scope_lst = self.get_vis_contain_lst(gs) + self.invis_lst
 		for obj in scope_lst:
-#			if obj.is_mach():
-			if (obj.is_switch()) or (obj.is_mach() and obj.is_enabled):
-#			if (obj.is_mach() and obj.is_enabled) or (obj.is_switch()):
-#			if (obj.is_mach() and obj.is_enabled):
+			if (obj.is_switch()) or (obj.is_mach() and obj.is_enabled): # in future, may add is_enabled attrib to Switch class
 				mach_lst.append(obj)
 			if obj.is_creature():
-#				print(f"obj = {obj.name}")
 				for invis_obj in obj.invis_lst:
-#					print(f"invis_obj = {invis_obj.name}")
-#					if invis_obj.is_mach():
-#					if (invis_obj.is_mach() and invis_obj.is_enabled) or (invis_obj.is_switch()):
 					if invis_obj.is_mach() and invis_obj.is_enabled:
 						mach_lst.append(invis_obj)
 		return mach_lst
@@ -182,7 +172,6 @@ class Room(ViewOnly):
 			creature = gs.core.hero
 
 		next_room = gs.map.get_next_room(self, dir)
-##			gs.set_room(next_room)
 		gs.map.hero_rm = next_room
 		next_room.floor_lst_append(creature)
 		self.floor_lst_remove(creature)

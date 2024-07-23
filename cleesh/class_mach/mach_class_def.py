@@ -11,7 +11,6 @@ from cleesh.class_std.interactive_class_def import ContainerFixedSimple, Seat
 
 ### classes
 class MachineMixIn(object):
-#	def __init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 	def __init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled):
 		self._mach_state = mach_state # machine state variable; boolean for simple machines; Int for complex
 		self._trigger_type = trigger_type # pre_act_cmd, pre_act_timer, post_act_cmd, post_act_switch, auto_act, auto_switch_reset
@@ -160,7 +159,6 @@ class ContainerFixedSimpleMach(MachineMixIn, ContainerFixedSimple):
 #				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
 class Warning(Invisible):
-#	def __init__(self, name, trigger_type, trig_vals_lst, warn_max, warn_count):
 	def __init__(self, name, trigger_type, trig_vals_lst, warn_max, warn_count, is_enabled):
 		super().__init__(name)
 
@@ -250,7 +248,6 @@ class Warning(Invisible):
 
 
 class Timer(Invisible):
-#	def __init__(self, name, trigger_type, active, timer_count, timer_max, message_type, timer_done, alert_anchor):
 	def __init__(self, name, trigger_type, active, timer_count, timer_max, message_type, timer_done, alert_anchor, is_enabled):
 		super().__init__(name)
 

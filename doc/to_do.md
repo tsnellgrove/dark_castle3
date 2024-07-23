@@ -228,7 +228,7 @@ Version 3.87.0 Goals:
 	- DONE: update version build #
 
 
-- INPROC: update Mach class (build 0007) []
+- DONE: update Mach class (build 0006) [Jul 23, 2024]
 	- DONE: add alert_anchor and is_active attribs to MachMixIn
 	- DONE: setters & getters
 	- DONE: add attribs to all 4 resultant classes (e.g. InvisMach)
@@ -266,7 +266,7 @@ Version 3.87.0 Goals:
 			- DONE: figure out why Room is being added to mach_lst; fix or create separate get_switch_lst()
 				- FINDING: was calling obj.is_switch [i.e. and attrib] instead of ob.is_switch() [a method]
 				- FINDING: also, needed to put switch option first in 'or' logic - to avoid is_enabled() eval
-	- TBD: clean up comments in mach_class(), room_class(), post_action()
+	- DONE: clean up comments in mach_class(), room_class(), post_action()
 
 - INPROC: result review (build 0007) []
 	- DONE: review and categorize existing results
