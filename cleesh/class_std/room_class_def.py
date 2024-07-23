@@ -112,8 +112,9 @@ class Room(ViewOnly):
 		scope_lst = self.get_vis_contain_lst(gs) + self.invis_lst
 		for obj in scope_lst:
 #			if obj.is_mach():
-##			if (obj.is_mach() and obj.is_enabled) or (obj.is_switch):
-			if (obj.is_mach() and obj.is_enabled):
+			if (obj.is_switch()) or (obj.is_mach() and obj.is_enabled):
+#			if (obj.is_mach() and obj.is_enabled) or (obj.is_switch()):
+#			if (obj.is_mach() and obj.is_enabled):
 				mach_lst.append(obj)
 			if obj.is_creature():
 #				print(f"obj = {obj.name}")

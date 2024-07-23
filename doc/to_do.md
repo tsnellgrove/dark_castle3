@@ -227,7 +227,48 @@ Version 3.87.0 Goals:
 # NotTimerAndItemCond :	PassThruCond :	 	(item_obj in hero_rm.floor_lst) && (not timer_obj.active) > [combo]
 	- DONE: update version build #
 
-- INPROC: result review (build 0006) []
+
+- INPROC: update Mach class (build 0007) []
+	- DONE: add alert_anchor and is_active attribs to MachMixIn
+	- DONE: setters & getters
+	- DONE: add attribs to all 4 resultant classes (e.g. InvisMach)
+	- DONE: update Room.get_mach_lst() to ref 'active'
+	- DONE: update cup_of_tea game machs
+	- DONE: test
+	- DONE: update dark_castle3 game machs
+	- DONE: test
+		- DONE: troubleshooting issue #1
+			- FINDING: timers and warnings are effectively of class Mach (even though inedependent for now)
+			- FINDING: this means that they will also be tested for is_active by Room.get_mach_lst()
+			- FINDING: but Mach.is_active and Timer.active mean two very different things:
+			- FINDING: Mach.is_active refers to whether or not the game should consider the mach to exist
+			- FINDING: Timer.active refers to whether or not the timer is currently running
+			- FINDING: this nomenclature is innately confusing
+			- CANCEL: choose better nomenclature (e.g. perhaps Timer.active => Timer.is_running)
+				- DECISION: too many timer.active references
+			- DONE: mach.is_active => mach.is_enabled
+				- DONE: mach_class
+				- DONE: room_class
+			- DONE: add is_enabled attribute to Warning
+				- DONE: add to attributes
+				- DONE: add setters & getters
+				- DONE: add in game_update
+			- DONE: add is_enabled attribute to Timer
+				- DONE: add to attributes
+				- DONE: add setters & getters
+				- DONE: add in game_update
+		- DONE: troubleshooting issues #2
+			- FINDING: now I am running into issues with Switches - since they have identity is_mach
+			- FINDING: this is true to enable auto-switch restes in auto_action()
+			- FINDING: however, since (today) all switches are physical, is_enabled attrib seems wrong
+			- FINDING: attempted to use get_mach_lst() logic for enabled machs or switches in Room
+			- FINDING: but this is throwing errors (appears that Room is being added to mach_lst)
+			- DONE: figure out why Room is being added to mach_lst; fix or create separate get_switch_lst()
+				- FINDING: was calling obj.is_switch [i.e. and attrib] instead of ob.is_switch() [a method]
+				- FINDING: also, needed to put switch option first in 'or' logic - to avoid is_enabled() eval
+	- TBD: clean up comments in mach_class(), room_class(), post_action()
+
+- INPROC: result review (build 0007) []
 	- DONE: review and categorize existing results
 	- DONE: initial result decision-making
 		- DONE: decide if I should attempt to use super() on inherited results
@@ -238,43 +279,6 @@ Version 3.87.0 Goals:
 			- DECISION: yes, need to be room aware for result buffering
 		- DONE: should BufferResult have a is_mach_state_set attrib?
 			- DECISION: yes, BaseResult should do room-aware buffer + option to set mach_state
-	- INPROC: update Mach class
-		- DONE: add alert_anchor and is_active attribs to MachMixIn
-		- DONE: setters & getters
-		- DONE: add attribs to all 4 resultant classes (e.g. InvisMach)
-		- DONE: update Room.get_mach_lst() to ref 'active'
-		- DONE: update cup_of_tea game machs
-		- DONE: test
-		- DONE: update dark_castle3 game machs
-		- INPROC: test
-			- DONE: troubleshooting issue #1
-				- FINDING: timers and warnings are effectively of class Mach (even though inedependent for now)
-				- FINDING: this means that they will also be tested for is_active by Room.get_mach_lst()
-				- FINDING: but Mach.is_active and Timer.active mean two very different things:
-				- FINDING: Mach.is_active refers to whether or not the game should consider the mach to exist
-				- FINDING: Timer.active refers to whether or not the timer is currently running
-				- FINDING: this nomenclature is innately confusing
-				- CANCEL: choose better nomenclature (e.g. perhaps Timer.active => Timer.is_running)
-					- DECISION: too many timer.active references
-				- DONE: mach.is_active => mach.is_enabled
-					- DONE: mach_class
-					- DONE: room_class
-				- DONE: add is_enabled attribute to Warning
-					- DONE: add to attributes
-					- DONE: add setters & getters
-					- DONE: add in game_update
-				- DONE: add is_enabled attribute to Timer
-					- DONE: add to attributes
-					- DONE: add setters & getters
-					- DONE: add in game_update
-			- INPROC: troubleshooting issues #2
-				- FINDING: now I am running into issues with Switches - since they have identity is_mach
-				- FINDING: this is true to enable auto-switch restes in auto_action()
-				- FINDING: however, since (today) all switches are physical, is_enabled attrib seems wrong
-				- FINDING: attempted to use get_mach_lst() logic for enabled machs or switches in Room
-				- FINDING: but this is throwing errors (appears that Room is being added to mach_lst)
-				- TBD: figure out why Room is being added to mach_lst; fix or create separate get_switch_lst()
-		- TBD: clean up comments in mach_class(), room_class(), post_action(), 
 	- TBD: result class refactoring
 		- TBD: BufferOnlyResult => BaseResult (buffer w/ alert_anchor) + set mach_state option (set vs. reset ??)
 
