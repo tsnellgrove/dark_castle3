@@ -282,7 +282,7 @@ Version 3.87.0 Goals:
 	- DONE: test git branching for new feature developemnt
 		- link: https://www.split.io/blog/understanding-the-feature-branching-strategy-in-git/
 		- DONE: 'git branch' to confirm *master
-		- DONE: 'git branch branching_ttest' to create new branch
+		- DONE: 'git branch branching_test' to create new branch
 		- DONE: 'git branch' to confirm new branch exists but that master is still checked out
 		- DONE: 'git checkout branching_test' to switch focus to branching_test branch
 		- DONE: 'git branch' to confirm that focus in on branching_test
@@ -290,6 +290,7 @@ Version 3.87.0 Goals:
 		- DONE: Push via VS Code to push branch changes to origin (GitHub)
 		- DONE: 2nd commit & push test
 		- DONE: 3rd commit & push test
+		- DONE: <CMD><OPT>S (to save all files)
 		- DONE: 'git add .' to add files to be committed
 		- DONE: 'git commit -m "5th update"
 		- DONE: 'git push" to push updates to origin (GitHub)
