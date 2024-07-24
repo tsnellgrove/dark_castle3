@@ -304,7 +304,7 @@ Version 3.87.0 Goals:
 		- DONE: 'git push origin --delete branching_test' to clean up origin
 	- TBD: result class refactoring
 		- INPROC: BufferOnlyResult => BaseResult (buffer w/ alert_anchor) + set mach_state option (set vs. reset)
-			- INPROC: create new BaseResult_feature git branch
+			- DONE: create new BaseResult_feature git branch
 				- DONE: 'git branch' to confirm *master
 				- DONE: 'git branch BaseResult_feature' to create new branch
 				- DONE: 'git branch' to confirm new branch exists but that master is still checked out
