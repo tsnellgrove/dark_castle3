@@ -304,6 +304,24 @@ Version 3.87.0 Goals:
 		- DONE: 'git push origin --delete branching_test' to clean up origin
 	- TBD: result class refactoring
 		- TBD: BufferOnlyResult => BaseResult (buffer w/ alert_anchor) + set mach_state option (set vs. reset ??)
+			- TBD: create new BaseResult_feature git branch
+				- TBD: 'git branch' to confirm *master
+				- TBD: 'git branch BaseResult_feature' to create new branch
+				- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+				- TBD: 'git checkout BaseResult_feature' to switch focus to branching_test branch
+				- TBD: 'git push' to push new branch to origin
+				- TBD: update doc TBDs to DONEs
+				- TBD: <CMD><OPT>S (to save all files)
+				- TBD: 'git add .' to add files to be committed
+				- TBD: 'git commit -m "5th update"
+				- TBD: 'git push" to push updates to origin (GitHub)
+			- TBD: create BaseResult in results_class()
+				- TBD:
+
+				
+
+
+
 
 - TBD: mach review
 	- TBD: general Mach class review
