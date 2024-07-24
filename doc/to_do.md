@@ -280,7 +280,8 @@ Version 3.87.0 Goals:
 		- DONE: should BufferResult have a is_mach_state_set attrib?
 			- DECISION: yes, BaseResult should do room-aware buffer + option to set mach_state
 	- DONE: test git branching for new feature developemnt
-		- link: https://www.split.io/blog/understanding-the-feature-branching-strategy-in-git/
+		- LINK: https://www.split.io/blog/understanding-the-feature-branching-strategy-in-git/
+		- LINK: https://www.linkedin.com/pulse/using-git-implement-new-featurechange-without-affecting-michel-noel/
 		- DONE: 'git branch' to confirm *master
 		- DONE: 'git branch branching_test' to create new branch
 		- DONE: 'git branch' to confirm new branch exists but that master is still checked out
