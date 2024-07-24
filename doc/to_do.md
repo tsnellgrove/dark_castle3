@@ -342,8 +342,9 @@ Version 3.87.0 Goals:
 			- DONE: 'git push' to push merge to origin (GitHub)
 			- DONE: confirm that origin is updated
 			- DONE: confirm that code is updated and still runs
-			- TBD: 'git branch -d BaseResult_feature' to clean-up local branch
-			- TBD: 'git push origin --delete BaseResult_feature' to clean up origin
+			- DONE: 'git branch -d BaseResult_feature' to clean-up local branch
+			- DONE: 'git push origin --delete BaseResult_feature' to clean up origin
+			- DONE: post-branch-delete run test
 		- TBD: BufferAndEndResult => inherit from BaseResult & use super()
 			- TBD: 
 			- TBD: add BufferAndEndResult result names to run_mach call for result_exe()
