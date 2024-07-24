@@ -309,12 +309,14 @@ Version 3.87.0 Goals:
 				- DONE: 'git branch BaseResult_feature' to create new branch
 				- DONE: 'git branch' to confirm new branch exists but that master is still checked out
 				- DONE: 'git checkout BaseResult_feature' to switch focus to branching_test branch
-				- TBD: 'git push' to push new branch to origin
-				- TBD: update doc TBDs to DONEs
-				- TBD: <CMD><OPT>S (to save all files)
-				- TBD: 'git add .' to add files to be committed
-				- TBD: 'git commit -m "5th update"
-				- TBD: 'git push" to push updates to origin (GitHub)
+				- CANCEL: 'git push' to push new branch to origin
+					- FINDING: failed: "fatal: The current branch BaseResult_feature has no upstream branch."
+					- FINDING: but Push via VS Code button worked fine
+				- DONE: update doc TBDs to DONEs
+				- DONE: <CMD><OPT>S (to save all files)
+				- DONE: 'git add .' to add files to be committed
+				- DONE: 'git commit -m "5th update"
+				- DONE: 'git push" to push updates to origin (GitHub)
 			- TBD: create BaseResult in results_class()
 				- TBD:
 
