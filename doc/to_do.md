@@ -298,8 +298,8 @@ Version 3.87.0 Goals:
 		- DONE: 'git merge branching_test -m "branch test merge"'
 		- DONE: 'git push' to push merge to origin (GitHub)
 		- DONE: confirm that origin is updated
-		- TBD: 'git branch -d branching_test' to clean-up local branch
-		- TBD: 'git push origin --delete branching_test' to clean up origin
+		- DONE: 'git branch -d branching_test' to clean-up local branch
+		- DONE: 'git push origin --delete branching_test' to clean up origin
 	- TBD: result class refactoring
 		- TBD: BufferOnlyResult => BaseResult (buffer w/ alert_anchor) + set mach_state option (set vs. reset ??)
 
