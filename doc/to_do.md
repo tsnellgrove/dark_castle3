@@ -335,7 +335,7 @@ Version 3.87.0 Goals:
 				- DONE: dark_castle/game_files/game_update()
 					- DONE: updated all BufferOnlyResult obj => BaseResult
 				- DONE: test
-			TBD: git branch merge with master
+			DONE: git branch merge with master
 			- DONE: 'git checkout master' to switch focus to master
 			- DONE: 'git branch: to confirm focus
 			- DONE: 'git merge BaseResult_feature -m "branch BaseResult_feature merge"'
