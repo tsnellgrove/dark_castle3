@@ -335,6 +335,14 @@ Version 3.87.0 Goals:
 				- DONE: dark_castle/game_files/game_update()
 					- DONE: updated all BufferOnlyResult obj => BaseResult
 				- DONE: test
+			TBD: git branch merge with master
+			- TBD: 'git checkout master' to switch focus to master
+			- TBD: 'git branch: to confirm focus
+			- TBD: 'git merge BaseResult_feature -m "branch BaseResult_feature merge"'
+			- TBD: 'git push' to push merge to origin (GitHub)
+			- TBD: confirm that origin is updated
+			- TBD: 'git branch -d BaseResult_feature' to clean-up local branch
+			- TBD: 'git push origin --delete BaseResult_feature' to clean up origin
 		- TBD: BufferAndEndResult => inherit from BaseResult & use super()
 			- TBD: 
 			- TBD: add BufferAndEndResult result names to run_mach call for result_exe()
