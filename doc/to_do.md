@@ -290,8 +290,11 @@ Version 3.87.0 Goals:
 		- DONE: Push via VS Code to push branch changes to origin (GitHub)
 		- DONE: 2nd commit & push test
 		- DONE: 3rd commit & push test
-		- DONE: 'git checkout master' to switch focus to master
-		- DONE: 'git branch: to confirm focus
+		- DONE: 'git add .' to add files to be committed
+		- DONE: 'git commit -m "5th update"
+		- DONE: 'git push" to push updates to origin (GitHub)
+		- TBD: 'git checkout master' to switch focus to master
+		- TBD: 'git branch: to confirm focus
 		- TBD: 'git merge branching_test -m "branch test merge"'
 		- TBD: VS Code Push to push merge to origin (GitHub)
 		- TBD: confirm that origin is updated
