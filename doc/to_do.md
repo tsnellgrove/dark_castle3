@@ -335,6 +335,9 @@ Version 3.87.0 Goals:
 				- DONE: dark_castle/game_files/game_update()
 					- DONE: updated all BufferOnlyResult obj => BaseResult
 				- DONE: test
+		- TBD: BufferAndEndResult => inherit from BaseResult & use super()
+			- TBD: 
+			- TBD: add BufferAndEndResult result names to run_mach call for result_exe()
 		- TBD: update call from run_mach(); self.mach_state => self.alert_anchor
 
 

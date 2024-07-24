@@ -16,7 +16,6 @@
 
 # BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
 
-
 # BufferAndEndResult :		BufferOnlyResult :	buffer, set ending val, set is_end = True
 # BufferAndGiveResult :		BufferOnlyResult :	buff, obj => hero hand; sets mach_state = True [need creature attrib]
 # AddObjToRoomResult :		BufferOnlyResult :	buff, obj => hero_rm.floor_lst; sets mach_state = True [get mach rm? atttrib name => obj not item?]
