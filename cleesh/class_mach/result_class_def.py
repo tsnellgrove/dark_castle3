@@ -12,7 +12,11 @@
 # Result class (x) : 		inherits from (Y) : result_exe() method performs (Z)
 #-------------------    	-------------       ---------------------------------
 
+# BaseResult :				N/A (is parent) :	buffer using result.name as key if event in rm; set mach_state
+
 # BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
+
+
 # BufferAndEndResult :		BufferOnlyResult :	buffer, set ending val, set is_end = True
 # BufferAndGiveResult :		BufferOnlyResult :	buff, obj => hero hand; sets mach_state = True [need creature attrib]
 # AddObjToRoomResult :		BufferOnlyResult :	buff, obj => hero_rm.floor_lst; sets mach_state = True [get mach rm? atttrib name => obj not item?]
@@ -27,10 +31,53 @@
 # TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir
 
 
+
+
 ### classes
 
 ### *** NEW RESULT CLASSES ***
 
+class BaseResult(object):
+	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override):
+		self._name = name
+		self._cmd_override = cmd_override # does the triggered pre-action over-ride the 'standard' response to player command?
+		self._is_mach_state_set = is_mach_state_set # bool where True indicates that mach_state will be set
+		self._mach_state_val = mach_state_val # value mach_state should be set to if is_mach_state_set is True; None if not set
+
+	@property
+	def name(self):
+		return self._name
+
+	@property
+	def cmd_override(self):
+		return self._cmd_override
+
+	@property
+	def is_mach_state_set(self):
+		return self._is_mach_state_set
+
+	@property
+	def is_mach_state_set(self):
+		return self._is_mach_state_set
+
+	@property
+	def mach_state_val(self):
+		return self._mach_state_val
+
+#	def result_exe(self, gs, mach_state):
+	def result_exe(self, gs, mach_state, alert_anchor): # need to add alert_anchor attrib to call
+		if alert_anchor.is_room():
+			event_rm = alert_anchor
+		else:
+			event_rm = gs.map.get_obj_room(alert_anchor, gs)
+		if gs.map.hero_rm == event_rm:
+			gs.io.buff_s(self.name)
+		if self.is_mach_state_set:
+			mach_state = self.mach_state_val
+		return mach_state, self.cmd_override
+
+	def __repr__(self):
+		return f'Object { self.name } is of class { type(self).__name__ } '
 
 ### *** NEW RESULT CLASSES ***
 

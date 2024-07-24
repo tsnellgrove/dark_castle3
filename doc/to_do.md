@@ -302,8 +302,8 @@ Version 3.87.0 Goals:
 		- DONE: confirm that origin is updated
 		- DONE: 'git branch -d branching_test' to clean-up local branch
 		- DONE: 'git push origin --delete branching_test' to clean up origin
-	- TBD: result class refactoring
-		- INPROC: BufferOnlyResult => BaseResult (buffer w/ alert_anchor) + set mach_state option (set vs. reset)
+	- INPROC: result class refactoring
+		- DONE: BufferOnlyResult => BaseResult (buffer w/ alert_anchor) + set mach_state option (set vs. reset)
 			- DONE: create new BaseResult_feature git branch
 				- DONE: 'git branch' to confirm *master
 				- DONE: 'git branch BaseResult_feature' to create new branch
@@ -317,8 +317,26 @@ Version 3.87.0 Goals:
 				- DONE: 'git add .' to add files to be committed
 				- DONE: 'git commit -m "5th update"
 				- DONE: 'git push" to push updates to origin (GitHub)
-			- TBD: create BaseResult in results_class()
-				- TBD:
+			- DONE: create BaseResult in results_class()
+				- DONE: create BaseResult based on BufferOnlyResult
+				- DONE: add alert_anchor to result_exe() call
+				- DONE: test for hero in same room as event before buffering
+				- DECISION: no descript_key attrib - keep simple - just buffer based on resutl_name as key
+				- DONE: add attribs for mach_state
+					- IDEA: bool attrib => is_mach_state_set
+					- IDEA: val attrib => mach_state_val
+					- DONE: add attribs
+					- DONE: create setters & getters
+				- FINDING: result_exe() never uses mach_state() [why whould it?]
+					- CANCEL: elim mach_state attrib in result_exe() call
+					- FINDING: actually, do need it - to pass back mach_state when not set
+			- DONE: convert BufferOnlyResult to BaseResult
+				- DONE: add BaseResult to import in game_update() for both games
+				- DONE: dark_castle/game_files/game_update()
+					- DONE: updated all BufferOnlyResult obj => BaseResult
+				- DONE: test
+		- TBD: update call from run_mach(); self.mach_state => self.alert_anchor
+
 
 				
 

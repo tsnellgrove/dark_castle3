@@ -20,7 +20,8 @@ from cleesh.class_std.interactive_class_def import ContainerPortableSimple, Cont
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
 from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond, ObjInRmCond, ObjInWorldCond, 
 		ItemInHandCond, WeaponInHandCond, MachStateCond, TimerActiveCond, SwitchStateCond, LeverArrayCond)
-from cleesh.class_mach.result_class_def import (BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
+from cleesh.class_mach.result_class_def import (BaseResult, 
+		BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
 		TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
 from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
@@ -144,27 +145,38 @@ throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
 lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [4,2,1])
 
 # results
+# pass_result = BufferOnlyResult('pass_result', False)
+# moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
+# nothing_happens_result = BufferOnlyResult('nothing_happens_result', False)
+# throne_push_result = BufferOnlyResult('throne_push_result', False)
+# portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', False)
+# hedgehog_distracted_result = BufferOnlyResult('hedgehog_distracted_result', True)
+# scroll_wrong_room_result = BufferOnlyResult('scroll_wrong_room_result', False)
+# scroll_no_hedgehog_result = BufferOnlyResult('scroll_no_hedgehog_result', False)
+# scroll_crown_not_worn_result = BufferOnlyResult('scroll_crown_not_worn_result', False)
+
+pass_result = BaseResult('pass_result', False, None, False)
+moat_croc_scared_result = BaseResult('moat_croc_scared_result', False, None, True)
+nothing_happens_result = BaseResult('nothing_happens_result', False, None, False)
+throne_push_result = BaseResult('throne_push_result', False, None, False)
+portcullis_doesnt_open_result = BaseResult('portcullis_doesnt_open_result', False, None, False)
+hedgehog_distracted_result = BaseResult('hedgehog_distracted_result', False, None, True)
+scroll_wrong_room_result = BaseResult('scroll_wrong_room_result', False, None, False)
+scroll_no_hedgehog_result = BaseResult('scroll_no_hedgehog_result', False, None, False)
+scroll_crown_not_worn_result = BaseResult('scroll_crown_not_worn_result', False, None, False)
+
 die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'died.', True)
-moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
+scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won!', False)
 moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', royal_crown, True)
-throne_push_result = BufferOnlyResult('throne_push_result', False)
-nothing_happens_result = BufferOnlyResult('nothing_happens_result', False)
+axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
 throne_pull_result = AddObjChgDescriptResult('throne_pull_result', hedgehog_broach, throne, 'throne_post_broach', False)
+dispense_panel_result = AddObjToRoomAndDescriptResult('dispense_panel_result', 'temp_control_panel', False)
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
-portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', False)
 goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'guard_goblin_temp', True)
 hedgehog_attacks_result = AttackBurtResult('hedgehog_attacks_result', 'royal_hedgehog_temp', True)
 start_hedgehog_timer_results = TimerAndCreatureItemResult('start_hedgehog_timer_results', hedgehog_eats_timer, False, 'royal_hedgehog', stale_biscuits)
-pass_result = BufferOnlyResult('pass_result', False)
 fed_hedgehog_keeps_sword_result = ChgCreatureDescAndStateResult('fed_hedgehog_keeps_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_smug')
 fed_hedgehog_loses_sword_result = ChgCreatureDescAndStateResult('fed_hedgehog_loses_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_yearn')
-hedgehog_distracted_result = BufferOnlyResult('hedgehog_distracted_result', True)
-scroll_wrong_room_result = BufferOnlyResult('scroll_wrong_room_result', False)
-scroll_no_hedgehog_result = BufferOnlyResult('scroll_no_hedgehog_result', False)
-scroll_crown_not_worn_result = BufferOnlyResult('scroll_crown_not_worn_result', False)
-scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won!', False)
-axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
-dispense_panel_result = AddObjToRoomAndDescriptResult('dispense_panel_result', 'temp_control_panel', False)
 
 
 # warnings

@@ -99,7 +99,13 @@ class MachineMixIn(object):
 		for idx, cond in enumerate(self.cond_lst):
 			if cond.cond_check(gs, self.mach_state, self.cond_swicth_lst):
 				result = self.result_lst[idx]
-				self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
+# CLEAN UP ONCE RESULT MIGRATION COMPLETE!
+				if (result.name in ['pass_result', 'moat_croc_scared_result', 'nothing_happens_result', 
+							'throne_push_result', 'portcullis_doesnt_open_result', 'hedgehog_distracted_result',
+							'scroll_wrong_room_result', 'scroll_no_hedgehog_result', 'scroll_crown_not_worn_result']):
+					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state, self.alert_anchor)
+				else:
+					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
 				return cmd_override, result.name
 		return False, 'pass_result'
 
