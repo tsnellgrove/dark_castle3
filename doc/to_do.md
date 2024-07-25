@@ -345,7 +345,7 @@ Version 3.87.0 Goals:
 			- DONE: 'git branch -d BaseResult_feature' to clean-up local branch
 			- DONE: 'git push origin --delete BaseResult_feature' to clean up origin
 			- DONE: post-branch-delete run test
-		- TBD: BufferAndEndResult => inherit from BaseResult & use super()
+		- DONE: BufferAndEndResult => inherit from BaseResult & use super()
 			- DONE: create new BufferAndEndResult_feature git branch
 				- DONE: 'git branch' to confirm *master
 				- DONE: 'git branch BufferAndEndResult_feature' to create new branch
@@ -374,17 +374,19 @@ Version 3.87.0 Goals:
 					- DONE: update in cup_of_tea
 					- DONE: update in dark_castl
 				- DUNE: comment clean-up: result_class, cup_of_tea//game_update, dark_castle//game_update
-			- INPROC: git branch merge with master
-				- TBD: 'git checkout master' to switch focus to master
-				- TBD: 'git branch: to confirm focus
-				- TBD: 'git merge BufferAndEndResult_feature -m "branch BufferAndEndResult_feature merge"'
-				- TBD: 'git push' to push merge to origin (GitHub)
-				- TBD: confirm that origin is updated
-				- TBD: confirm that code is updated and still runs
-				- TBD: 'git branch -d BufferAndEndResult_feature' to clean-up local branch
-				- TBD: 'git push origin --delete BufferAndEndResult_feature' to clean up origin
-				- TBD: confirm origin is cleaned up
-				- TBD: post-branch-delete run test
+			- DONE: git branch merge with master
+				- DONE: 'git checkout master' to switch focus to master
+				- DONE: 'git branch: to confirm focus
+				- DONE: 'git merge BufferAndEndResult_feature -m "branch BufferAndEndResult_feature merge"'
+				- DONE: 'git push' to push merge to origin (GitHub)
+				- DONE: confirm that origin is updated
+				- DONE: confirm that code is updated and still runs
+				- DONE: 'git branch -d BufferAndEndResult_feature' to clean-up local branch
+				- DONE: 'git push origin --delete BufferAndEndResult_feature' to clean up origin
+				- DONE: confirm origin is cleaned up
+				- DONE: post-branch-delete run test
+
+
 		- TBD: <TEMPLATE>
 			- TBD: create new <FEATURE_NAME>_feature git branch
 				- TBD: 'git branch' to confirm *master
