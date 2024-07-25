@@ -358,7 +358,7 @@ Version 3.87.0 Goals:
 				- DONE: 'git commit -m "doc update"
 				- DONE: 'git push" to push updates to origin (GitHub)
 				- DONE: confirm new branch on GitHub
-			- INPROC: add BufferAndEndResult result names to run_mach call for result_exe()
+			- DONE: add BufferAndEndResult result names to run_mach call for result_exe()
 				- DONE: update BufferAndEndResult to inherit from BaseResult
 				- DONE: update BufferAndEndResult attrib list and order
 				- DONE: update cup_of_tea game_update() to use new BufferAndEndResult
@@ -374,7 +374,7 @@ Version 3.87.0 Goals:
 					- DONE: update in cup_of_tea
 					- DONE: update in dark_castl
 				- DUNE: comment clean-up: result_class, cup_of_tea//game_update, dark_castle//game_update
-			- TBD: git branch merge with master
+			- INPROC: git branch merge with master
 				- TBD: 'git checkout master' to switch focus to master
 				- TBD: 'git branch: to confirm focus
 				- TBD: 'git merge BufferAndEndResult_feature -m "branch BufferAndEndResult_feature merge"'
