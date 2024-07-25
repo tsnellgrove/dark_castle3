@@ -346,18 +346,18 @@ Version 3.87.0 Goals:
 			- DONE: 'git push origin --delete BaseResult_feature' to clean up origin
 			- DONE: post-branch-delete run test
 		- TBD: BufferAndEndResult => inherit from BaseResult & use super()
-			- INPROC: create new BufferAndEndResult_feature git branch
+			- DONE: create new BufferAndEndResult_feature git branch
 				- DONE: 'git branch' to confirm *master
 				- DONE: 'git branch BufferAndEndResult_feature' to create new branch
 				- DONE: 'git branch' to confirm new branch exists but that master is still checked out
 				- DONE: 'git checkout BufferAndEndResult_feature' to switch focus to branching_test branch
 				- DONE: but Push via VS Code button
 				- DONE: update doc TBDs to DONEs
-				- TBD: <CMD><OPT>S (to save all files)
-				- TBD: 'git add .' to add files to be committed
-				- TBD: 'git commit -m "doc update"
-				- TBD: 'git push" to push updates to origin (GitHub)
-				- TBD: confirm new branch on GitHub
+				- DONE: <CMD><OPT>S (to save all files)
+				- DON: 'git add .' to add files to be committed
+				- DONE: 'git commit -m "doc update"
+				- DONE: 'git push" to push updates to origin (GitHub)
+				- DONE: confirm new branch on GitHub
 			- TBD: add BufferAndEndResult result names to run_mach call for result_exe()
 				- TBD: 
 			- TBD: git branch merge with master
