@@ -369,6 +369,10 @@ Version 3.87.0 Goals:
 					- DONE: update result obj attribs
 					- DONE: add dark_castle BufferAndEndResult result to run_mach result_exe list
 					- DONE: test
+				- DONE: result class update: BufferAndEndResult => EndResult
+					- DONE: update in result_class()
+					- DONE: update in cup_of_tea
+					- DONE: update in dark_castl
 				- TBD: comment clean-up: result_class, cup_of_tea//game_update, dark_castle//game_update
 			- TBD: git branch merge with master
 				- TBD: 'git checkout master' to switch focus to master

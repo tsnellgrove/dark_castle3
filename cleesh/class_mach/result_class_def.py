@@ -13,10 +13,10 @@
 #-------------------    	-------------       ---------------------------------
 
 # BaseResult :				N/A (is parent) :	buffer using result.name as key if event in rm; set mach_state
+# EndResult :				BaseResult :		buffer, set ending val, set is_end = True
 
 # BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
 
-# BufferAndEndResult :		BufferOnlyResult :	buffer, set ending val, set is_end = True
 # BufferAndGiveResult :		BufferOnlyResult :	buff, obj => hero hand; sets mach_state = True [need creature attrib]
 # AddObjToRoomResult :		BufferOnlyResult :	buff, obj => hero_rm.floor_lst; sets mach_state = True [get mach rm? atttrib name => obj not item?]
 # AddObjChgDescriptResult : BufferOnlyResult :	AddObjToRoomResult + chg obj descript key + mach_state = True [COMBO]
@@ -29,8 +29,8 @@
 # PutItemInHandResult :		BufferOnlyResult :	buff, put item in creature hand, remove item from creature bkpk [REFACT w/ take?]
 # TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir
 
-
-
+# deleted
+# BufferAndEndResult :		BufferOnlyResult :	buffer, set ending val, set is_end = True
 
 ### classes
 
@@ -79,9 +79,8 @@ class BaseResult(object):
 		return f'Object { self.name } is of class { type(self).__name__ } '
 
 
-
-
-class BufferAndEndResult(BaseResult):
+# class BufferAndEndResult(BaseResult):
+class EndResult(BaseResult):
 	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override, ending):
 		super().__init__(name, is_mach_state_set, mach_state_val, cmd_override)
 		self._ending = ending # game ending - typically 'died' due to a room hazzard
@@ -98,7 +97,8 @@ class BufferAndEndResult(BaseResult):
 #		gs.io.buff_s(self.name)
 		gs.end.game_ending = self.ending
 		gs.end.is_end = True
-		super(BufferAndEndResult, self).result_exe(gs, mach_state, alert_anchor)
+#		super(BufferAndEndResult, self).result_exe(gs, mach_state, alert_anchor)
+		super(EndResult, self).result_exe(gs, mach_state, alert_anchor)
 		return mach_state, self.cmd_override
 
 

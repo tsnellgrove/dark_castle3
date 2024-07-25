@@ -20,8 +20,8 @@ from cleesh.class_std.interactive_class_def import ContainerPortableSimple, Cont
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
 from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond, ObjInRmCond, ObjInWorldCond, 
 		ItemInHandCond, WeaponInHandCond, MachStateCond, TimerActiveCond, SwitchStateCond, LeverArrayCond)
-from cleesh.class_mach.result_class_def import (BaseResult, 
-		BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
+from cleesh.class_mach.result_class_def import (BaseResult, EndResult, 
+		BufferOnlyResult, BufferAndGiveResult,
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
 		TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
 from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
@@ -166,10 +166,12 @@ scroll_no_hedgehog_result = BaseResult('scroll_no_hedgehog_result', False, None,
 scroll_crown_not_worn_result = BaseResult('scroll_crown_not_worn_result', False, None, False)
 
 # die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'died.', True)
-die_in_moat_result = BufferAndEndResult('die_in_moat_result', False, None, True, 'died.')
+# die_in_moat_result = BufferAndEndResult('die_in_moat_result', False, None, True, 'died.')
+die_in_moat_result = EndResult('die_in_moat_result', False, None, True, 'died.')
 
 # scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won!', False)
-scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', False, None, False, 'won!')
+# scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', False, None, False, 'won!')
+scroll_win_game_result = EndResult('scroll_win_game_result', False, None, False, 'won!')
 
 # name, is_mach_state_set, mach_state_val, cmd_override, ending
 
