@@ -76,9 +76,6 @@ creaky_door = DoorLockable('creaky_door', 'Creaky Door', "door", 'creaky_door', 
 true_cond = TrueCond('true_cond')
 
 # *** results ***
-
-# tea_drunk_win_result = BufferAndEndResult('tea_drunk_win_result', 'won!', False)
-# tea_drunk_win_result = BufferAndEndResult('tea_drunk_win_result', False, None, False, 'won!')
 tea_drunk_win_result = EndResult('tea_drunk_win_result', False, None, False, 'won!')
 
 # *** warnings ***

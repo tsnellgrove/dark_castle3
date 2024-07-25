@@ -63,7 +63,6 @@ class BaseResult(object):
 	def mach_state_val(self):
 		return self._mach_state_val
 
-#	def result_exe(self, gs, mach_state):
 	def result_exe(self, gs, mach_state, alert_anchor): # need to add alert_anchor attrib to call
 		if alert_anchor.is_room():
 			event_rm = alert_anchor
@@ -89,15 +88,9 @@ class EndResult(BaseResult):
 	def ending(self):
 		return self._ending
 
-##	def results_exe(self, gs, mach_state):
-##		gs.set_game_ending(self.ending)
-##		super(BufferAndEndResult, self).results_exe(gs, mach_state)
-
 	def result_exe(self, gs, mach_state, alert_anchor):
-#		gs.io.buff_s(self.name)
 		gs.end.game_ending = self.ending
 		gs.end.is_end = True
-#		super(BufferAndEndResult, self).result_exe(gs, mach_state, alert_anchor)
 		super(EndResult, self).result_exe(gs, mach_state, alert_anchor)
 		return mach_state, self.cmd_override
 

@@ -373,7 +373,7 @@ Version 3.87.0 Goals:
 					- DONE: update in result_class()
 					- DONE: update in cup_of_tea
 					- DONE: update in dark_castl
-				- TBD: comment clean-up: result_class, cup_of_tea//game_update, dark_castle//game_update
+				- DUNE: comment clean-up: result_class, cup_of_tea//game_update, dark_castle//game_update
 			- TBD: git branch merge with master
 				- TBD: 'git checkout master' to switch focus to master
 				- TBD: 'git branch: to confirm focus

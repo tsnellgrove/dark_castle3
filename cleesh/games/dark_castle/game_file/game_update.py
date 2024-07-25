@@ -119,10 +119,10 @@ test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 9
 # test obj - currently in use
 # TBD
 
-# timers
+# *** timers ***
 hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, 'temp_royal_hedgehog', True)
 
-# conditions
+# *** conditions ***
 true_cond = TrueCond('true_cond')
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', stale_biscuits, 'royal_hedgehog_temp', True)
@@ -144,17 +144,7 @@ throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
 lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [4,2,1])
 
-# results
-# pass_result = BufferOnlyResult('pass_result', False)
-# moat_croc_scared_result = BufferOnlyResult('moat_croc_scared_result', True)
-# nothing_happens_result = BufferOnlyResult('nothing_happens_result', False)
-# throne_push_result = BufferOnlyResult('throne_push_result', False)
-# portcullis_doesnt_open_result = BufferOnlyResult('portcullis_doesnt_open_result', False)
-# hedgehog_distracted_result = BufferOnlyResult('hedgehog_distracted_result', True)
-# scroll_wrong_room_result = BufferOnlyResult('scroll_wrong_room_result', False)
-# scroll_no_hedgehog_result = BufferOnlyResult('scroll_no_hedgehog_result', False)
-# scroll_crown_not_worn_result = BufferOnlyResult('scroll_crown_not_worn_result', False)
-
+# *** results ***
 pass_result = BaseResult('pass_result', False, None, False)
 moat_croc_scared_result = BaseResult('moat_croc_scared_result', False, None, True)
 nothing_happens_result = BaseResult('nothing_happens_result', False, None, False)
@@ -164,17 +154,8 @@ hedgehog_distracted_result = BaseResult('hedgehog_distracted_result', False, Non
 scroll_wrong_room_result = BaseResult('scroll_wrong_room_result', False, None, False)
 scroll_no_hedgehog_result = BaseResult('scroll_no_hedgehog_result', False, None, False)
 scroll_crown_not_worn_result = BaseResult('scroll_crown_not_worn_result', False, None, False)
-
-# die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'died.', True)
-# die_in_moat_result = BufferAndEndResult('die_in_moat_result', False, None, True, 'died.')
 die_in_moat_result = EndResult('die_in_moat_result', False, None, True, 'died.')
-
-# scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won!', False)
-# scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', False, None, False, 'won!')
 scroll_win_game_result = EndResult('scroll_win_game_result', False, None, False, 'won!')
-
-# name, is_mach_state_set, mach_state_val, cmd_override, ending
-
 
 moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', royal_crown, True)
 axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
@@ -187,14 +168,13 @@ start_hedgehog_timer_results = TimerAndCreatureItemResult('start_hedgehog_timer_
 fed_hedgehog_keeps_sword_result = ChgCreatureDescAndStateResult('fed_hedgehog_keeps_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_smug')
 fed_hedgehog_loses_sword_result = ChgCreatureDescAndStateResult('fed_hedgehog_loses_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_yearn')
 
-
-# warnings
+# *** warnings ***
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0, True)
 attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd',
 		[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3, 0, True)
 eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','stale_biscuits']], 3, 0, True)
 
-# machines
+# *** machines ***
 entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
 		None, [no_weap_in_hand_cond, crown_not_dispensed_cond, crown_dispensed_cond],
 		[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result],
