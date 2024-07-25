@@ -365,9 +365,11 @@ Version 3.87.0 Goals:
 					- DONE: update result obj attribs
 					- DONE: add cup_of_tea BufferAndEndResult result to run_mach result_exe list
 					- DONE: resolve error (need to explicityl return after super() )
-				- TBD: update dark_castle game_update to use new BufferAndEndResult
-					- TBD: update result obj attribs
-					- TBD: add dark_castle BufferAndEndResult result to run_mach result_exe list
+				- DONE: update dark_castle game_update to use new BufferAndEndResult
+					- DONE: update result obj attribs
+					- DONE: add dark_castle BufferAndEndResult result to run_mach result_exe list
+					- DONE: test
+				- TBD: comment clean-up: result_class, cup_of_tea//game_update, dark_castle//game_update
 			- TBD: git branch merge with master
 				- TBD: 'git checkout master' to switch focus to master
 				- TBD: 'git branch: to confirm focus
@@ -591,6 +593,7 @@ Version 3.87.0 Goals:
 
 *** story-driven updates ***
 
+- TBD: sort out double print of score after win
 
 - TBD: hedgehog description should change when distracted by food
 - Fix Antechamber description sill mentions goblin after death

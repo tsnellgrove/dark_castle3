@@ -165,8 +165,15 @@ scroll_wrong_room_result = BaseResult('scroll_wrong_room_result', False, None, F
 scroll_no_hedgehog_result = BaseResult('scroll_no_hedgehog_result', False, None, False)
 scroll_crown_not_worn_result = BaseResult('scroll_crown_not_worn_result', False, None, False)
 
-die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'died.', True)
-scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won!', False)
+# die_in_moat_result = BufferAndEndResult('die_in_moat_result', 'died.', True)
+die_in_moat_result = BufferAndEndResult('die_in_moat_result', False, None, True, 'died.')
+
+# scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', 'won!', False)
+scroll_win_game_result = BufferAndEndResult('scroll_win_game_result', False, None, False, 'won!')
+
+# name, is_mach_state_set, mach_state_val, cmd_override, ending
+
+
 moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', royal_crown, True)
 axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
 throne_pull_result = AddObjChgDescriptResult('throne_pull_result', hedgehog_broach, throne, 'throne_post_broach', False)
