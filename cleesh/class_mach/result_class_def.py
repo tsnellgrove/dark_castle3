@@ -78,6 +78,30 @@ class BaseResult(object):
 	def __repr__(self):
 		return f'Object { self.name } is of class { type(self).__name__ } '
 
+
+
+
+class BufferAndEndResult(BaseResult):
+	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override, ending):
+		super().__init__(name, is_mach_state_set, mach_state_val, cmd_override)
+		self._ending = ending # game ending - typically 'died' due to a room hazzard
+
+	@property
+	def ending(self):
+		return self._ending
+
+##	def results_exe(self, gs, mach_state):
+##		gs.set_game_ending(self.ending)
+##		super(BufferAndEndResult, self).results_exe(gs, mach_state)
+
+	def result_exe(self, gs, mach_state, alert_anchor):
+#		gs.io.buff_s(self.name)
+		gs.end.game_ending = self.ending
+		gs.end.is_end = True
+		super(BufferAndEndResult, self).result_exe(gs, mach_state, alert_anchor)
+		return mach_state, self.cmd_override
+
+
 ### *** NEW RESULT CLASSES ***
 
 
@@ -105,24 +129,24 @@ class BufferOnlyResult(object):
 		return f'Object { self.name } is of class { type(self).__name__ } '
 
 
-class BufferAndEndResult(BufferOnlyResult):
-	def __init__(self, name, ending, cmd_override):
-		super().__init__(name, cmd_override)
-		self._ending = ending # game ending - typically 'died' due to a room hazzard
+# class BufferAndEndResult(BufferOnlyResult):
+#	def __init__(self, name, ending, cmd_override):
+#		super().__init__(name, cmd_override)
+#		self._ending = ending # game ending - typically 'died' due to a room hazzard
 
-	@property
-	def ending(self):
-		return self._ending
+#	@property
+#	def ending(self):
+#		return self._ending
 
 ##	def results_exe(self, gs, mach_state):
 ##		gs.set_game_ending(self.ending)
 ##		super(BufferAndEndResult, self).results_exe(gs, mach_state)
 
-	def result_exe(self, gs, mach_state):
-		gs.io.buff_s(self.name)
-		gs.end.game_ending = self.ending
-		gs.end.is_end = True
-		return mach_state, self.cmd_override
+#	def result_exe(self, gs, mach_state):
+#		gs.io.buff_s(self.name)
+#		gs.end.game_ending = self.ending
+#		gs.end.is_end = True
+#		return mach_state, self.cmd_override
 
 
 class BufferAndGiveResult(BufferOnlyResult):

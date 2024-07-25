@@ -102,7 +102,8 @@ class MachineMixIn(object):
 # CLEAN UP ONCE RESULT MIGRATION COMPLETE!
 				if (result.name in ['pass_result', 'moat_croc_scared_result', 'nothing_happens_result', 
 							'throne_push_result', 'portcullis_doesnt_open_result', 'hedgehog_distracted_result',
-							'scroll_wrong_room_result', 'scroll_no_hedgehog_result', 'scroll_crown_not_worn_result']):
+							'scroll_wrong_room_result', 'scroll_no_hedgehog_result', 'scroll_crown_not_worn_result',
+							'tea_drunk_win_result']):
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state, self.alert_anchor)
 				else:
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)

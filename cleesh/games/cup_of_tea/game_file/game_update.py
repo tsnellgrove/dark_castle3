@@ -20,8 +20,8 @@ from cleesh.class_std.interactive_class_def import ContainerPortableSimple, Cont
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
 from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond, ObjInRmCond, ObjInWorldCond, 
 		ItemInHandCond, WeaponInHandCond, MachStateCond, TimerActiveCond, SwitchStateCond, LeverArrayCond)
-from cleesh.class_mach.result_class_def import (BaseResult, 
-		BufferOnlyResult, BufferAndEndResult, BufferAndGiveResult,
+from cleesh.class_mach.result_class_def import (BaseResult, BufferAndEndResult, 
+		BufferOnlyResult, BufferAndGiveResult,
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
 		TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
 from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
@@ -72,17 +72,20 @@ creaky_door = DoorLockable('creaky_door', 'Creaky Door', "door", 'creaky_door', 
 
 # timers
 
-# conditions
+# *** conditions ***
 true_cond = TrueCond('true_cond')
 
-# results
-tea_drunk_win_result = BufferAndEndResult('tea_drunk_win_result', 'won!', False)
+# *** results ***
 
-# warnings
+# tea_drunk_win_result = BufferAndEndResult('tea_drunk_win_result', 'won!', False)
+tea_drunk_win_result = BufferAndEndResult('tea_drunk_win_result', False, None, False, 'won!')
 
-# machines
+# *** warnings ***
+
+# *** machines ***
 tea_drunk_mach = InvisMach('tea_drunk_mach', None, 'post_act_cmd', None, 
-				[['drink', 'tea_cup', 'tea']], None, [true_cond], [tea_drunk_win_result],
+				[['drink', 'tea_cup', 'tea']], None, 
+				[true_cond], [tea_drunk_win_result],
 				'pub_temp', True)
 
 # Creatures
