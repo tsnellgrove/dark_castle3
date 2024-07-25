@@ -346,8 +346,56 @@ Version 3.87.0 Goals:
 			- DONE: 'git push origin --delete BaseResult_feature' to clean up origin
 			- DONE: post-branch-delete run test
 		- TBD: BufferAndEndResult => inherit from BaseResult & use super()
-			- TBD: 
+			- TBD: create new BufferAndEndResult_feature git branch
+				- TBD: 'git branch' to confirm *master
+				- TBD: 'git branch BufferAndEndResult_feature' to create new branch
+				- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+				- TBD: 'git checkout BufferAndEndResult_feature' to switch focus to branching_test branch
+				- TBD: but Push via VS Code button
+				- TBD: update doc TBDs to DONEs
+				- TBD: <CMD><OPT>S (to save all files)
+				- TBD: 'git add .' to add files to be committed
+				- TBD: 'git commit -m "doc update"
+				- TBD: 'git push" to push updates to origin (GitHub)
+				- TBD: confirm new branch on GitHub
 			- TBD: add BufferAndEndResult result names to run_mach call for result_exe()
+				- TBD: 
+			- TBD: git branch merge with master
+				- TBD: 'git checkout master' to switch focus to master
+				- TBD: 'git branch: to confirm focus
+				- TBD: 'git merge BufferAndEndResult_feature -m "branch BufferAndEndResult_feature merge"'
+				- TBD: 'git push' to push merge to origin (GitHub)
+				- TBD: confirm that origin is updated
+				- TBD: confirm that code is updated and still runs
+				- TBD: 'git branch -d BufferAndEndResult_feature' to clean-up local branch
+				- TBD: 'git push origin --delete BufferAndEndResult_feature' to clean up origin
+				- TBD: confirm origin is cleaned up
+				- TBD: post-branch-delete run test
+		- TBD: <TEMPLATE>
+			- TBD: create new <FEATURE_NAME>_feature git branch
+				- TBD: 'git branch' to confirm *master
+				- TBD: 'git branch <FEATURE_NAME>' to create new branch
+				- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+				- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
+				- TBD: but Push via VS Code button
+				- TBD: update doc TBDs to DONEs
+				- TBD: <CMD><OPT>S (to save all files)
+				- TBD: 'git add .' to add files to be committed
+				- TBD: 'git commit -m "doc update"
+				- TBD: 'git push" to push updates to origin (GitHub)
+				- TBD: confirm new branch on GitHub
+			- TBD: <CODE CHANGES>
+			- TBD: git branch merge with master
+				- TBD: 'git checkout master' to switch focus to master
+				- TBD: 'git branch: to confirm focus
+				- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+				- TBD: 'git push' to push merge to origin (GitHub)
+				- TBD: confirm that origin is updated
+				- TBD: confirm that code is updated and still runs
+				- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+				- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+				- TBD: confirm origin is cleaned up
+				- TBD: post-branch-delete run test
 		- TBD: update call from run_mach(); self.mach_state => self.alert_anchor
 
 
