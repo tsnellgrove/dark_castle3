@@ -12,22 +12,32 @@
 # Result class (x) : 		inherits from (Y) : result_exe() method performs (Z)
 #-------------------    	-------------       ---------------------------------
 
+# *** new ***
 # BaseResult :				N/A (is parent) :	buffer using result.name as key if event in rm; set mach_state
-# EndResult :				BaseResult :		buffer, set ending val, set is_end = True
+# EndResult :				BaseResult :		base + set ending val, set is_end = True
+# ChgDescriptResult	:		BaseResult :		base + change obj descript_key
 
+# *** legacy ***
 # BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
 
+# *** simple cases ***
+# ChgCreatureDescAndStateResult BufferOnlyResult : buff, change creature descript, set mach_state = True
 # BufferAndGiveResult :		BufferOnlyResult :	buff, obj => hero hand; sets mach_state = True [need creature attrib]
-# AddObjToRoomResult :		BufferOnlyResult :	buff, obj => hero_rm.floor_lst; sets mach_state = True [get mach rm? atttrib name => obj not item?]
+# TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir [not called]
+# StartTimerResult :		BufferOnlyResult :	buff, starts timer [not called]
+# AddObjToRoomResult :		BufferOnlyResult :	buff, obj => hero_rm.floor_lst; sets mach_state = True [get mach rm? atttrib name => obj not item?][not called]
+
+# *** combo cases ***
 # AddObjChgDescriptResult : BufferOnlyResult :	AddObjToRoomResult + chg obj descript key + mach_state = True [COMBO]
 # AddObjToRoomAndDescriptResult : BOResult :	similar to AddObjChgDescriptResult; chg rm descript [COMBO] [DEDUP]
-# DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
-# AttackBurtResult :		BufferOnlyResult :	buff, creature attacks burt [REFACT?] [address in_hand in creature.attack()?]
-# StartTimerResult :		BufferOnlyResult :	buff, starts timer
 # TimerAndCreatureItemResult StartTimerResult :	buff, starts timer and removes obj from creature hand [REFACT w/ eat???] [COMBO]
-# ChgCreatureDescAndStateResult BufferOnlyResult : buff, change creature descript, set mach_state = True
+
+# *** refactor cases ***
+# AttackBurtResult :		BufferOnlyResult :	buff, creature attacks burt [REFACT?] [address in_hand in creature.attack()?]
+# DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
 # PutItemInHandResult :		BufferOnlyResult :	buff, put item in creature hand, remove item from creature bkpk [REFACT w/ take?]
-# TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir
+
+
 
 # deleted
 # BufferAndEndResult :		BufferOnlyResult :	buffer, set ending val, set is_end = True
