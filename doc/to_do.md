@@ -385,7 +385,34 @@ Version 3.87.0 Goals:
 				- DONE: 'git push origin --delete BufferAndEndResult_feature' to clean up origin
 				- DONE: confirm origin is cleaned up
 				- DONE: post-branch-delete run test
-
+		- TBD: ChgCreatureDescAndStateResult => ChgDescriptResult
+			- TBD: create new ChgDescriptResult_feature git branch
+				- TBD: 'git branch' to confirm *master
+				- TBD: 'git branch ChgDescriptResult_feature' to create new branch
+				- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+				- TBD: 'git checkout ChgDescriptResult_feature' to switch focus to branching_test branch
+				- TBD: but Push via VS Code button
+				- TBD: update doc TBDs to DONEs
+				- TBD: <CMD><OPT>S (to save all files)
+				- TBD: 'git add .' to add files to be committed
+				- TBD: 'git commit -m "doc update"
+				- TBD: 'git push" to push updates to origin (GitHub)
+				- TBD: confirm new branch on GitHub
+			- TBD: refactor ChgCreatureDescAndStateResult => ChgDescriptResult
+				- TBD: copy ChgCreatureDescAndStateResult; change parent to BaseResult
+				- TBD: change creature_obj => obj (class should be able to change the descript_key for any obj)
+				- TBD: use super() call BaseResult buffer and mach_state change
+			- TBD: git branch merge with master
+				- TBD: 'git checkout master' to switch focus to master
+				- TBD: 'git branch: to confirm focus
+				- TBD: 'git merge ChgDescriptResult_feature -m "branch ChgDescriptResult merge"'
+				- TBD: 'git push' to push merge to origin (GitHub)
+				- TBD: confirm that origin is updated
+				- TBD: confirm that code is updated and still runs
+				- TBD: 'git branch -d ChgDescriptResult_feature' to clean-up local branch
+				- TBD: 'git push origin --delete ChgDescriptResult_feature' to clean up origin
+				- TBD: confirm origin is cleaned up
+				- TBD: post-branch-delete run test
 
 		- TBD: <TEMPLATE>
 			- TBD: create new <FEATURE_NAME>_feature git branch
