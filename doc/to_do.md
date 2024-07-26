@@ -393,11 +393,11 @@ Version 3.87.0 Goals:
 				- DONE: 'git checkout ChgDescriptResult_feature' to switch focus to branching_test branch
 				- DONE: Push via VS Code button
 				- DONE: update doc TBDs to DONEs
-				- TBD: <CMD><OPT>S (to save all files)
-				- TBD: 'git add .' to add files to be committed
-				- TBD: 'git commit -m "doc update"
-				- TBD: 'git push" to push updates to origin (GitHub)
-				- TBD: confirm new branch on GitHub
+				- DONE: <CMD><OPT>S (to save all files)
+				- DONE: 'git add .' to add files to be committed
+				- DONE: 'git commit -m "doc update"
+				- DONE: 'git push" to push updates to origin (GitHub)
+				- DONE: confirm new branch on GitHub
 			- TBD: refactor ChgCreatureDescAndStateResult => ChgDescriptResult
 				- TBD: copy ChgCreatureDescAndStateResult; change parent to BaseResult
 				- TBD: change creature_obj => obj (class should be able to change the descript_key for any obj)
