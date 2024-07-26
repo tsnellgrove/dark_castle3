@@ -398,10 +398,20 @@ Version 3.87.0 Goals:
 				- DONE: 'git commit -m "doc update"
 				- DONE: 'git push" to push updates to origin (GitHub)
 				- DONE: confirm new branch on GitHub
-			- TBD: refactor ChgCreatureDescAndStateResult => ChgDescriptResult
-				- TBD: copy ChgCreatureDescAndStateResult; change parent to BaseResult
-				- TBD: change creature_obj => obj (class should be able to change the descript_key for any obj)
-				- TBD: use super() call BaseResult buffer and mach_state change
+			- INPROC: refactor ChgCreatureDescAndStateResult => ChgDescriptResult
+				- DONE: result class updates
+					- DONE: copy ChgCreatureDescAndStateResult; change parent to BaseResult
+					- DONE: change creature_obj => obj (class should change descript_key for any obj)
+					- DONE: use super() call BaseResult buffer and mach_state change
+					- DONE: update result_exe() attribs
+				- INPROC: update game files
+					- DONE: add new result class to game_update imports
+					- TBD: update game_update result obj classes, attribs, and post-assignment updates
+					- TBD: add result obj to mach_run() exception list
+					- TBD: comment out old result class
+				- TBD: test & clean-up
+					- TBD: test
+					- TBD: clean-up
 			- TBD: git branch merge with master
 				- TBD: 'git checkout master' to switch focus to master
 				- TBD: 'git branch: to confirm focus

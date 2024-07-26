@@ -105,6 +105,32 @@ class EndResult(BaseResult):
 		return mach_state, self.cmd_override
 
 
+class ChgDescriptResult(BaseResult):
+	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override, obj, new_descript_key):
+		super().__init__(name, is_mach_state_set, mach_state_val, cmd_override)
+		self._obj = obj # the obj who's description will be changed
+		self._new_descript_key = new_descript_key # the obj's new decript_key
+
+	@property
+	def obj(self):
+		return self._obj
+
+	@obj.setter
+	def obj(self, new_val):
+		self._obj = new_val
+
+	@property
+	def new_descript_key(self):
+		return self._new_descript_key
+
+	def result_exe(self, gs, mach_state, alert_anchor):
+#		gs.io.buff_s(self.name)
+		self.obj.descript_key = self.new_descript_key
+#		mach_state = True
+		super(ChgDescriptResult, self).result_exe(gs, mach_state, alert_anchor)
+		return mach_state, self.cmd_override
+
+
 ### *** NEW RESULT CLASSES ***
 
 
@@ -151,6 +177,35 @@ class BufferOnlyResult(object):
 #		gs.end.is_end = True
 #		return mach_state, self.cmd_override
 
+
+class ChgCreatureDescAndStateResult(BufferOnlyResult):
+	def __init__(self, name, cmd_override, creature_obj, new_desc_key):
+		super().__init__(name, cmd_override)
+		self._creature_obj = creature_obj
+		self._new_desc_key = new_desc_key
+
+	@property
+	def creature_obj(self):
+		return self._creature_obj
+
+	@creature_obj.setter
+	def creature_obj(self, new_val):
+		self._creature_obj = new_val
+
+	@property
+	def new_desc_key(self):
+		return self._new_desc_key
+
+	def result_exe(self, gs, mach_state):
+		gs.io.buff_s(self.name)
+		self.creature_obj.descript_key = self.new_desc_key
+		mach_state = True
+		return mach_state, self.cmd_override
+
+
+### *** OLD RESULT CLASSES TO REVIEW ***
+
+### *** TO BE REVIEWED ***
 
 class BufferAndGiveResult(BufferOnlyResult):
 	def __init__(self, name, give_item, cmd_override):
@@ -338,31 +393,6 @@ class TimerAndCreatureItemResult(StartTimerResult):
 		gs.io.buff_s(self.name)
 		self.timer_obj.start()
 		self.creature_obj.hand_lst_remove(self.ceature_item_obj)
-		return mach_state, self.cmd_override
-
-
-class ChgCreatureDescAndStateResult(BufferOnlyResult):
-	def __init__(self, name, cmd_override, creature_obj, new_desc_key):
-		super().__init__(name, cmd_override)
-		self._creature_obj = creature_obj
-		self._new_desc_key = new_desc_key
-
-	@property
-	def creature_obj(self):
-		return self._creature_obj
-
-	@creature_obj.setter
-	def creature_obj(self, new_val):
-		self._creature_obj = new_val
-
-	@property
-	def new_desc_key(self):
-		return self._new_desc_key
-
-	def result_exe(self, gs, mach_state):
-		gs.io.buff_s(self.name)
-		self.creature_obj.descript_key = self.new_desc_key
-		mach_state = True
 		return mach_state, self.cmd_override
 
 
