@@ -385,14 +385,14 @@ Version 3.87.0 Goals:
 				- DONE: 'git push origin --delete BufferAndEndResult_feature' to clean up origin
 				- DONE: confirm origin is cleaned up
 				- DONE: post-branch-delete run test
-		- TBD: ChgCreatureDescAndStateResult => ChgDescriptResult
-			- TBD: create new ChgDescriptResult_feature git branch
-				- TBD: 'git branch' to confirm *master
-				- TBD: 'git branch ChgDescriptResult_feature' to create new branch
-				- TBD: 'git branch' to confirm new branch exists but that master is still checked out
-				- TBD: 'git checkout ChgDescriptResult_feature' to switch focus to branching_test branch
-				- TBD: but Push via VS Code button
-				- TBD: update doc TBDs to DONEs
+		- INPROC: ChgCreatureDescAndStateResult => ChgDescriptResult
+			- DONE: create new ChgDescriptResult_feature git branch
+				- DONE: 'git branch' to confirm *master
+				- DONE: 'git branch ChgDescriptResult_feature' to create new branch
+				- DONE: 'git branch' to confirm new branch exists but that master is still checked out
+				- DONE: 'git checkout ChgDescriptResult_feature' to switch focus to branching_test branch
+				- DONE: Push via VS Code button
+				- DONE: update doc TBDs to DONEs
 				- TBD: <CMD><OPT>S (to save all files)
 				- TBD: 'git add .' to add files to be committed
 				- TBD: 'git commit -m "doc update"
