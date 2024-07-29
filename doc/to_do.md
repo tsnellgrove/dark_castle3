@@ -302,155 +302,160 @@ Version 3.87.0 Goals:
 		- DONE: confirm that origin is updated
 		- DONE: 'git branch -d branching_test' to clean-up local branch
 		- DONE: 'git push origin --delete branching_test' to clean up origin
-	- INPROC: result class refactoring
-		- DONE: BufferOnlyResult => BaseResult (buffer w/ alert_anchor) + set mach_state option (set vs. reset)
-			- DONE: create new BaseResult_feature git branch
-				- DONE: 'git branch' to confirm *master
-				- DONE: 'git branch BaseResult_feature' to create new branch
-				- DONE: 'git branch' to confirm new branch exists but that master is still checked out
-				- DONE: 'git checkout BaseResult_feature' to switch focus to branching_test branch
-				- CANCEL: 'git push' to push new branch to origin
-					- FINDING: failed: "fatal: The current branch BaseResult_feature has no upstream branch."
-					- FINDING: but Push via VS Code button worked fine
-				- DONE: update doc TBDs to DONEs
-				- DONE: <CMD><OPT>S (to save all files)
-				- DONE: 'git add .' to add files to be committed
-				- DONE: 'git commit -m "5th update"
-				- DONE: 'git push" to push updates to origin (GitHub)
-			- DONE: create BaseResult in results_class()
-				- DONE: create BaseResult based on BufferOnlyResult
-				- DONE: add alert_anchor to result_exe() call
-				- DONE: test for hero in same room as event before buffering
-				- DECISION: no descript_key attrib - keep simple - just buffer based on resutl_name as key
-				- DONE: add attribs for mach_state
-					- IDEA: bool attrib => is_mach_state_set
-					- IDEA: val attrib => mach_state_val
-					- DONE: add attribs
-					- DONE: create setters & getters
-				- FINDING: result_exe() never uses mach_state() [why whould it?]
-					- CANCEL: elim mach_state attrib in result_exe() call
-					- FINDING: actually, do need it - to pass back mach_state when not set
-			- DONE: convert BufferOnlyResult to BaseResult
-				- DONE: add BaseResult to import in game_update() for both games
-				- DONE: dark_castle/game_files/game_update()
-					- DONE: updated all BufferOnlyResult obj => BaseResult
+
+- INPROC: result class refactoring
+	- DONE: BufferOnlyResult => BaseResult (buffer w/ alert_anchor) + set mach_state option (set vs. reset)
+		- DONE: create new BaseResult_feature git branch
+			- DONE: 'git branch' to confirm *master
+			- DONE: 'git branch BaseResult_feature' to create new branch
+			- DONE: 'git branch' to confirm new branch exists but that master is still checked out
+			- DONE: 'git checkout BaseResult_feature' to switch focus to branching_test branch
+			- CANCEL: 'git push' to push new branch to origin
+				- FINDING: failed: "fatal: The current branch BaseResult_feature has no upstream branch."
+				- FINDING: but Push via VS Code button worked fine
+			- DONE: update doc TBDs to DONEs
+			- DONE: <CMD><OPT>S (to save all files)
+			- DONE: 'git add .' to add files to be committed
+			- DONE: 'git commit -m "5th update"
+			- DONE: 'git push" to push updates to origin (GitHub)
+		- DONE: create BaseResult in results_class()
+			- DONE: create BaseResult based on BufferOnlyResult
+			- DONE: add alert_anchor to result_exe() call
+			- DONE: test for hero in same room as event before buffering
+			- DECISION: no descript_key attrib - keep simple - just buffer based on resutl_name as key
+			- DONE: add attribs for mach_state
+				- IDEA: bool attrib => is_mach_state_set
+				- IDEA: val attrib => mach_state_val
+				- DONE: add attribs
+				- DONE: create setters & getters
+			- FINDING: result_exe() never uses mach_state() [why whould it?]
+				- CANCEL: elim mach_state attrib in result_exe() call
+				- FINDING: actually, do need it - to pass back mach_state when not set
+		- DONE: convert BufferOnlyResult to BaseResult
+			- DONE: add BaseResult to import in game_update() for both games
+			- DONE: dark_castle/game_files/game_update()
+				- DONE: updated all BufferOnlyResult obj => BaseResult
+			- DONE: test
+		- DONE: git branch merge with master
+		- DONE: 'git checkout master' to switch focus to master
+		- DONE: 'git branch: to confirm focus
+		- DONE: 'git merge BaseResult_feature -m "branch BaseResult_feature merge"'
+		- DONE: 'git push' to push merge to origin (GitHub)
+		- DONE: confirm that origin is updated
+		- DONE: confirm that code is updated and still runs
+		- DONE: 'git branch -d BaseResult_feature' to clean-up local branch
+		- DONE: 'git push origin --delete BaseResult_feature' to clean up origin
+		- DONE: post-branch-delete run test
+	- DONE: BufferAndEndResult => inherit from BaseResult & use super()
+		- DONE: create new BufferAndEndResult_feature git branch
+			- DONE: 'git branch' to confirm *master
+			- DONE: 'git branch BufferAndEndResult_feature' to create new branch
+			- DONE: 'git branch' to confirm new branch exists but that master is still checked out
+			- DONE: 'git checkout BufferAndEndResult_feature' to switch focus to branching_test branch
+			- DONE: but Push via VS Code button
+			- DONE: update doc TBDs to DONEs
+			- DONE: <CMD><OPT>S (to save all files)
+			- DON: 'git add .' to add files to be committed
+			- DONE: 'git commit -m "doc update"
+			- DONE: 'git push" to push updates to origin (GitHub)
+			- DONE: confirm new branch on GitHub
+		- DONE: add BufferAndEndResult result names to run_mach call for result_exe()
+			- DONE: update BufferAndEndResult to inherit from BaseResult
+			- DONE: update BufferAndEndResult attrib list and order
+			- DONE: update cup_of_tea game_update() to use new BufferAndEndResult
+				- DONE: update result obj attribs
+				- DONE: add cup_of_tea BufferAndEndResult result to run_mach result_exe list
+				- DONE: resolve error (need to explicityl return after super() )
+			- DONE: update dark_castle game_update to use new BufferAndEndResult
+				- DONE: update result obj attribs
+				- DONE: add dark_castle BufferAndEndResult result to run_mach result_exe list
 				- DONE: test
-			DONE: git branch merge with master
+			- DONE: result class update: BufferAndEndResult => EndResult
+				- DONE: update in result_class()
+				- DONE: update in cup_of_tea
+				- DONE: update in dark_castl
+			- DUNE: comment clean-up: result_class, cup_of_tea//game_update, dark_castle//game_update
+		- DONE: git branch merge with master
 			- DONE: 'git checkout master' to switch focus to master
 			- DONE: 'git branch: to confirm focus
-			- DONE: 'git merge BaseResult_feature -m "branch BaseResult_feature merge"'
+			- DONE: 'git merge BufferAndEndResult_feature -m "branch BufferAndEndResult_feature merge"'
 			- DONE: 'git push' to push merge to origin (GitHub)
 			- DONE: confirm that origin is updated
 			- DONE: confirm that code is updated and still runs
-			- DONE: 'git branch -d BaseResult_feature' to clean-up local branch
-			- DONE: 'git push origin --delete BaseResult_feature' to clean up origin
+			- DONE: 'git branch -d BufferAndEndResult_feature' to clean-up local branch
+			- DONE: 'git push origin --delete BufferAndEndResult_feature' to clean up origin
+			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
-		- DONE: BufferAndEndResult => inherit from BaseResult & use super()
-			- DONE: create new BufferAndEndResult_feature git branch
-				- DONE: 'git branch' to confirm *master
-				- DONE: 'git branch BufferAndEndResult_feature' to create new branch
-				- DONE: 'git branch' to confirm new branch exists but that master is still checked out
-				- DONE: 'git checkout BufferAndEndResult_feature' to switch focus to branching_test branch
-				- DONE: but Push via VS Code button
-				- DONE: update doc TBDs to DONEs
-				- DONE: <CMD><OPT>S (to save all files)
-				- DON: 'git add .' to add files to be committed
-				- DONE: 'git commit -m "doc update"
-				- DONE: 'git push" to push updates to origin (GitHub)
-				- DONE: confirm new branch on GitHub
-			- DONE: add BufferAndEndResult result names to run_mach call for result_exe()
-				- DONE: update BufferAndEndResult to inherit from BaseResult
-				- DONE: update BufferAndEndResult attrib list and order
-				- DONE: update cup_of_tea game_update() to use new BufferAndEndResult
-					- DONE: update result obj attribs
-					- DONE: add cup_of_tea BufferAndEndResult result to run_mach result_exe list
-					- DONE: resolve error (need to explicityl return after super() )
-				- DONE: update dark_castle game_update to use new BufferAndEndResult
-					- DONE: update result obj attribs
-					- DONE: add dark_castle BufferAndEndResult result to run_mach result_exe list
-					- DONE: test
-				- DONE: result class update: BufferAndEndResult => EndResult
-					- DONE: update in result_class()
-					- DONE: update in cup_of_tea
-					- DONE: update in dark_castl
-				- DUNE: comment clean-up: result_class, cup_of_tea//game_update, dark_castle//game_update
-			- DONE: git branch merge with master
-				- DONE: 'git checkout master' to switch focus to master
-				- DONE: 'git branch: to confirm focus
-				- DONE: 'git merge BufferAndEndResult_feature -m "branch BufferAndEndResult_feature merge"'
-				- DONE: 'git push' to push merge to origin (GitHub)
-				- DONE: confirm that origin is updated
-				- DONE: confirm that code is updated and still runs
-				- DONE: 'git branch -d BufferAndEndResult_feature' to clean-up local branch
-				- DONE: 'git push origin --delete BufferAndEndResult_feature' to clean up origin
-				- DONE: confirm origin is cleaned up
-				- DONE: post-branch-delete run test
-		- INPROC: ChgCreatureDescAndStateResult => ChgDescriptResult
-			- DONE: create new ChgDescriptResult_feature git branch
-				- DONE: 'git branch' to confirm *master
-				- DONE: 'git branch ChgDescriptResult_feature' to create new branch
-				- DONE: 'git branch' to confirm new branch exists but that master is still checked out
-				- DONE: 'git checkout ChgDescriptResult_feature' to switch focus to branching_test branch
-				- DONE: Push via VS Code button
-				- DONE: update doc TBDs to DONEs
-				- DONE: <CMD><OPT>S (to save all files)
-				- DONE: 'git add .' to add files to be committed
-				- DONE: 'git commit -m "doc update"
-				- DONE: 'git push" to push updates to origin (GitHub)
-				- DONE: confirm new branch on GitHub
-			- DONE: refactor ChgCreatureDescAndStateResult => ChgDescriptResult
-				- DONE: result class updates
-					- DONE: copy ChgCreatureDescAndStateResult; change parent to BaseResult
-					- DONE: change creature_obj => obj (class should change descript_key for any obj)
-					- DONE: use super() call BaseResult buffer and mach_state change
-					- DONE: update result_exe() attribs
-				- DONE: update game files
-					- DONE: add new result class to game_update imports
-					- DONE: update game_update result obj classes, attribs, and post-assignment updates
-					- DONE: add result obj to mach_run() exception list
-					- DONE: update post-attrib assignment if needed
-					- DONE: comment out old result class
-				- DONE: test & clean-up
-					- DONE: test
-					- DONE: clean-up game_update(), result_class()
-			- TBD: git branch merge with master
-				- TBD: 'git checkout master' to switch focus to master
-				- TBD: 'git branch: to confirm focus
-				- TBD: 'git merge ChgDescriptResult_feature -m "branch ChgDescriptResult merge"'
-				- TBD: 'git push' to push merge to origin (GitHub)
-				- TBD: confirm that origin is updated
-				- TBD: confirm that code is updated and still runs
-				- TBD: 'git branch -d ChgDescriptResult_feature' to clean-up local branch
-				- TBD: 'git push origin --delete ChgDescriptResult_feature' to clean up origin
-				- TBD: confirm origin is cleaned up
-				- TBD: post-branch-delete run test
+	- DONE: ChgCreatureDescAndStateResult => ChgDescriptResult
+		- DONE: create new ChgDescriptResult_feature git branch
+			- DONE: 'git branch' to confirm *master
+			- DONE: 'git branch ChgDescriptResult_feature' to create new branch
+			- DONE: 'git branch' to confirm new branch exists but that master is still checked out
+			- DONE: 'git checkout ChgDescriptResult_feature' to switch focus to branching_test branch
+			- DONE: Push via VS Code button
+			- DONE: update doc TBDs to DONEs
+			- DONE: <CMD><OPT>S (to save all files)
+			- DONE: 'git add .' to add files to be committed
+			- DONE: 'git commit -m "doc update"
+			- DONE: 'git push" to push updates to origin (GitHub)
+			- DONE: confirm new branch on GitHub
+		- DONE: refactor ChgCreatureDescAndStateResult => ChgDescriptResult
+			- DONE: result class updates
+				- DONE: copy ChgCreatureDescAndStateResult; change parent to BaseResult
+				- DONE: change creature_obj => obj (class should change descript_key for any obj)
+				- DONE: use super() call BaseResult buffer and mach_state change
+				- DONE: update result_exe() attribs
+			- DONE: update game files
+				- DONE: add new result class to game_update imports
+				- DONE: update game_update result obj classes, attribs, and post-assignment updates
+				- DONE: add result obj to mach_run() exception list
+				- DONE: update post-attrib assignment if needed
+				- DONE: comment out old result class
+			- DONE: test & clean-up
+				- DONE: test
+				- DONE: clean-up game_update(), result_class()
+		- DONE: git branch merge with master
+			- DONE: 'git checkout master' to switch focus to master
+			- DONE: 'git branch: to confirm focus
+			- DONE: 'git merge ChgDescriptResult_feature -m "branch ChgDescriptResult merge"'
+			- DONE: 'git push' to push merge to origin (GitHub)
+			- DONE: confirm that origin is updated
+			- DONE: confirm that code is updated and still runs
+			- DONE: 'git branch -d ChgDescriptResult_feature' to clean-up local branch
+			- DONE: 'git push origin --delete ChgDescriptResult_feature' to clean up origin
+			- DONE: confirm origin is cleaned up
+			- DONE: post-branch-delete run test
 
-		- TBD: <TEMPLATE>
-			- TBD: create new <FEATURE_NAME>_feature git branch
-				- TBD: 'git branch' to confirm *master
-				- TBD: 'git branch <FEATURE_NAME>' to create new branch
-				- TBD: 'git branch' to confirm new branch exists but that master is still checked out
-				- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
-				- TBD: but Push via VS Code button
-				- TBD: update doc TBDs to DONEs
-				- TBD: <CMD><OPT>S (to save all files)
-				- TBD: 'git add .' to add files to be committed
-				- TBD: 'git commit -m "doc update"
-				- TBD: 'git push" to push updates to origin (GitHub)
-				- TBD: confirm new branch on GitHub
-			- TBD: <CODE CHANGES>
-			- TBD: git branch merge with master
-				- TBD: 'git checkout master' to switch focus to master
-				- TBD: 'git branch: to confirm focus
-				- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
-				- TBD: 'git push' to push merge to origin (GitHub)
-				- TBD: confirm that origin is updated
-				- TBD: confirm that code is updated and still runs
-				- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
-				- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
-				- TBD: confirm origin is cleaned up
-				- TBD: post-branch-delete run test
-		- TBD: update call from run_mach(); self.mach_state => self.alert_anchor
+	- IDEAS:
+		- BufferAndGiveResult => GiveItemResult == "obj given to creature" (give in 'silent mode)
+		- PutItemInHandResult => TakeItemResult == "obj taken by creature" (take in 'silent' mode)
+
+	- TBD: <TEMPLATE>
+		- TBD: create new <FEATURE_NAME>_feature git branch
+			- TBD: 'git branch' to confirm *master
+			- TBD: 'git branch <FEATURE_NAME>' to create new branch
+			- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+			- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
+			- TBD: but Push via VS Code button
+			- TBD: update doc TBDs to DONEs
+			- TBD: <CMD><OPT>S (to save all files)
+			- TBD: 'git add .' to add files to be committed
+			- TBD: 'git commit -m "doc update"
+			- TBD: 'git push" to push updates to origin (GitHub)
+			- TBD: confirm new branch on GitHub
+		- TBD: <CODE CHANGES>
+		- TBD: git branch merge with master
+			- TBD: 'git checkout master' to switch focus to master
+			- TBD: 'git branch: to confirm focus
+			- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+			- TBD: 'git push' to push merge to origin (GitHub)
+			- TBD: confirm that origin is updated
+			- TBD: confirm that code is updated and still runs
+			- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+			- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+			- TBD: confirm origin is cleaned up
+			- TBD: post-branch-delete run test
+	- TBD: update call from run_mach(); self.mach_state => self.alert_anchor
 
 
 - TBD: mach review
@@ -629,6 +634,8 @@ Version 3.87.0 Goals:
 
 # *** FUTURE TO DO *** #
 
+*** debug ideas ***
+- TBD: instantiate obj in hero inventory
 
 *** story-driven updates ***
 
