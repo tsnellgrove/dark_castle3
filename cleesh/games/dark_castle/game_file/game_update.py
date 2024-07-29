@@ -23,7 +23,7 @@ from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond
 from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, 
 		BufferOnlyResult, BufferAndGiveResult,
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
-		TimerAndCreatureItemResult, ChgCreatureDescAndStateResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
+		TimerAndCreatureItemResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
 from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from cleesh.class_std.creature_class_def import Creature
 from cleesh.class_gs.gs_class_def import GameState
@@ -156,6 +156,8 @@ scroll_no_hedgehog_result = BaseResult('scroll_no_hedgehog_result', False, None,
 scroll_crown_not_worn_result = BaseResult('scroll_crown_not_worn_result', False, None, False)
 die_in_moat_result = EndResult('die_in_moat_result', False, None, True, 'died.')
 scroll_win_game_result = EndResult('scroll_win_game_result', False, None, False, 'won!')
+fed_hedgehog_keeps_sword_result = ChgDescriptResult('fed_hedgehog_keeps_sword_result', True, True, False, 'royal_hedgehog_temp', 'hedgehog_desc_smug')
+fed_hedgehog_loses_sword_result = ChgDescriptResult('fed_hedgehog_loses_sword_result', True, True, False, 'royal_hedgehog_temp', 'hedgehog_desc_yearn')
 
 moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', royal_crown, True)
 axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
@@ -165,8 +167,7 @@ toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_por
 goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'guard_goblin_temp', True)
 hedgehog_attacks_result = AttackBurtResult('hedgehog_attacks_result', 'royal_hedgehog_temp', True)
 start_hedgehog_timer_results = TimerAndCreatureItemResult('start_hedgehog_timer_results', hedgehog_eats_timer, False, 'royal_hedgehog', stale_biscuits)
-fed_hedgehog_keeps_sword_result = ChgCreatureDescAndStateResult('fed_hedgehog_keeps_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_smug')
-fed_hedgehog_loses_sword_result = ChgCreatureDescAndStateResult('fed_hedgehog_loses_sword_result', False, 'royal_hedgehog_temp', 'hedgehog_desc_yearn')
+
 
 # *** warnings ***
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0, True)
@@ -376,11 +377,12 @@ goblin_attack_mach.alert_anchor = guard_goblin
 re_arm_goblin_mach.alert_anchor = guard_goblin
 kinging_scroll.alert_anchor = kinging_scroll
 
+fed_hedgehog_keeps_sword_result.obj = royal_hedgehog
+fed_hedgehog_loses_sword_result.obj = royal_hedgehog
+
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog
 start_hedgehog_timer_results.creature_obj = royal_hedgehog
-fed_hedgehog_keeps_sword_result.creature_obj = royal_hedgehog
-fed_hedgehog_loses_sword_result.creature_obj = royal_hedgehog
 axe_in_goblin_hand_result.creature_obj = guard_goblin
 dispense_panel_result.room_item = control_panel
 

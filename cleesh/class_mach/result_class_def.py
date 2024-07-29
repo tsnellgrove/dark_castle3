@@ -21,7 +21,6 @@
 # BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
 
 # *** simple cases ***
-# ChgCreatureDescAndStateResult BufferOnlyResult : buff, change creature descript, set mach_state = True
 # BufferAndGiveResult :		BufferOnlyResult :	buff, obj => hero hand; sets mach_state = True [need creature attrib]
 # TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir [not called]
 # StartTimerResult :		BufferOnlyResult :	buff, starts timer [not called]
@@ -37,10 +36,9 @@
 # DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
 # PutItemInHandResult :		BufferOnlyResult :	buff, put item in creature hand, remove item from creature bkpk [REFACT w/ take?]
 
-
-
 # deleted
 # BufferAndEndResult :		BufferOnlyResult :	buffer, set ending val, set is_end = True
+# ChgCreatureDescAndStateResult BufferOnlyResult : buff, change creature descript, set mach_state = True
 
 ### classes
 
@@ -124,9 +122,7 @@ class ChgDescriptResult(BaseResult):
 		return self._new_descript_key
 
 	def result_exe(self, gs, mach_state, alert_anchor):
-#		gs.io.buff_s(self.name)
 		self.obj.descript_key = self.new_descript_key
-#		mach_state = True
 		super(ChgDescriptResult, self).result_exe(gs, mach_state, alert_anchor)
 		return mach_state, self.cmd_override
 
@@ -178,29 +174,29 @@ class BufferOnlyResult(object):
 #		return mach_state, self.cmd_override
 
 
-class ChgCreatureDescAndStateResult(BufferOnlyResult):
-	def __init__(self, name, cmd_override, creature_obj, new_desc_key):
-		super().__init__(name, cmd_override)
-		self._creature_obj = creature_obj
-		self._new_desc_key = new_desc_key
+# class ChgCreatureDescAndStateResult(BufferOnlyResult):
+#	def __init__(self, name, cmd_override, creature_obj, new_desc_key):
+#		super().__init__(name, cmd_override)
+#		self._creature_obj = creature_obj
+#		self._new_desc_key = new_desc_key
 
-	@property
-	def creature_obj(self):
-		return self._creature_obj
+#	@property
+#	def creature_obj(self):
+#		return self._creature_obj
 
-	@creature_obj.setter
-	def creature_obj(self, new_val):
-		self._creature_obj = new_val
+#	@creature_obj.setter
+#	def creature_obj(self, new_val):
+#		self._creature_obj = new_val
 
-	@property
-	def new_desc_key(self):
-		return self._new_desc_key
+#	@property
+#	def new_desc_key(self):
+#		return self._new_desc_key
 
-	def result_exe(self, gs, mach_state):
-		gs.io.buff_s(self.name)
-		self.creature_obj.descript_key = self.new_desc_key
-		mach_state = True
-		return mach_state, self.cmd_override
+#	def result_exe(self, gs, mach_state):
+#		gs.io.buff_s(self.name)
+#		self.creature_obj.descript_key = self.new_desc_key
+#		mach_state = True
+#		return mach_state, self.cmd_override
 
 
 ### *** OLD RESULT CLASSES TO REVIEW ***

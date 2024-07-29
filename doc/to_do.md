@@ -398,20 +398,21 @@ Version 3.87.0 Goals:
 				- DONE: 'git commit -m "doc update"
 				- DONE: 'git push" to push updates to origin (GitHub)
 				- DONE: confirm new branch on GitHub
-			- INPROC: refactor ChgCreatureDescAndStateResult => ChgDescriptResult
+			- DONE: refactor ChgCreatureDescAndStateResult => ChgDescriptResult
 				- DONE: result class updates
 					- DONE: copy ChgCreatureDescAndStateResult; change parent to BaseResult
 					- DONE: change creature_obj => obj (class should change descript_key for any obj)
 					- DONE: use super() call BaseResult buffer and mach_state change
 					- DONE: update result_exe() attribs
-				- INPROC: update game files
+				- DONE: update game files
 					- DONE: add new result class to game_update imports
-					- TBD: update game_update result obj classes, attribs, and post-assignment updates
-					- TBD: add result obj to mach_run() exception list
-					- TBD: comment out old result class
-				- TBD: test & clean-up
-					- TBD: test
-					- TBD: clean-up
+					- DONE: update game_update result obj classes, attribs, and post-assignment updates
+					- DONE: add result obj to mach_run() exception list
+					- DONE: update post-attrib assignment if needed
+					- DONE: comment out old result class
+				- DONE: test & clean-up
+					- DONE: test
+					- DONE: clean-up game_update(), result_class()
 			- TBD: git branch merge with master
 				- TBD: 'git checkout master' to switch focus to master
 				- TBD: 'git branch: to confirm focus
@@ -450,11 +451,6 @@ Version 3.87.0 Goals:
 				- TBD: confirm origin is cleaned up
 				- TBD: post-branch-delete run test
 		- TBD: update call from run_mach(); self.mach_state => self.alert_anchor
-
-
-				
-
-
 
 
 - TBD: mach review
@@ -637,6 +633,9 @@ Version 3.87.0 Goals:
 *** story-driven updates ***
 
 - TBD: sort out double print of score after win
+
+- TBD: case where player drops sword in same room as hedgehog after using it... 
+	- TBD: need to update description / situation; perhaps should give key and change to adoring description?
 
 - TBD: hedgehog description should change when distracted by food
 - Fix Antechamber description sill mentions goblin after death
