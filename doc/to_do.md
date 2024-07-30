@@ -426,7 +426,7 @@ Version 3.87.0 Goals:
 			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
 	- INPROC: BufferAndGiveResult => GiveItemResult
-		- INPROC: create new BufferAndGiveResult_feature git branch
+		- DONE: create new BufferAndGiveResult_feature git branch
 			- DONE: 'git branch' to confirm *master
 			- DONE: 'git branch BufferAndGiveResult_feature' to create new branch
 			- DONE: 'git branch' to confirm new branch exists but that master is still checked out
@@ -439,15 +439,17 @@ Version 3.87.0 Goals:
 			- DONE: 'git commit -m "doc update"
 			- DONE: 'git push" to push updates to origin (GitHub)
 			- DONE: confirm new branch on GitHub
-		- TBD: refactor BufferAndGiveResult => GiveItemResult
-			- TBD: result class updates
-				- TBD: copy existing class; change parent to BaseResult
-				- TBD: <specific changes>: introduce creature attrib
-				- TBD: use super() call BaseResult buffer and mach_state change
-				- TBD: update result_exe() attribs
-			- TBD: update game files
-				- TBD: add new result class to game_update imports
+		- INPROC: refactor BufferAndGiveResult => GiveItemResult
+			- DONE: result class updates
+				- DONE: copy existing class; change parent to BaseResult and update class name
+				- DONE: update setters and getters
+				- DONE: <specific changes>: introduce tgt_creature attrib
+				- DONE: use super() call BaseResult buffer and mach_state change
+				- DONE: update result_exe() attribs
+			- INPROC: update game files
+				- DONE: add new result class to game_update imports
 				- TBD: update game_update result obj classes, attribs, and post-assignment updates
+				- TBD: set mach_state appropriately
 				- TBD: add result obj to mach_run() exception list
 				- TBD: update post-attrib assignment if needed
 				- TBD: comment out old result class

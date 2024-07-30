@@ -16,12 +16,14 @@
 # BaseResult :				N/A (is parent) :	buffer using result.name as key if event in rm; set mach_state
 # EndResult :				BaseResult :		base + set ending val, set is_end = True
 # ChgDescriptResult	:		BaseResult :		base + change obj descript_key
+# GiveItemResult : 			BaseResult :		base + give item_obj to tgt_creature
 
 # *** legacy ***
 # BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
 
 # *** simple cases ***
 # BufferAndGiveResult :		BufferOnlyResult :	buff, obj => hero hand; sets mach_state = True [need creature attrib]
+# PutItemInHandResult :		BufferOnlyResult :	buff, put item in creature hand, remove item from creature bkpk [REFACT w/ take?]
 # TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir [not called]
 # StartTimerResult :		BufferOnlyResult :	buff, starts timer [not called]
 # AddObjToRoomResult :		BufferOnlyResult :	buff, obj => hero_rm.floor_lst; sets mach_state = True [get mach rm? atttrib name => obj not item?][not called]
@@ -34,7 +36,6 @@
 # *** refactor cases ***
 # AttackBurtResult :		BufferOnlyResult :	buff, creature attacks burt [REFACT?] [address in_hand in creature.attack()?]
 # DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
-# PutItemInHandResult :		BufferOnlyResult :	buff, put item in creature hand, remove item from creature bkpk [REFACT w/ take?]
 
 # deleted
 # BufferAndEndResult :		BufferOnlyResult :	buffer, set ending val, set is_end = True
@@ -127,6 +128,33 @@ class ChgDescriptResult(BaseResult):
 		return mach_state, self.cmd_override
 
 
+class GiveItemResult(BaseResult):
+	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override, item_obj, tgt_creature):
+		super().__init__(name, is_mach_state_set, mach_state_val, cmd_override)
+		self._item_obj = item_obj # item to be given to tgt_creature
+		self._tgt_creature = tgt_creature # creature to whom the item_obj will be given
+
+	@property
+	def item_obj(self):
+		return self._item_obj
+
+	@property
+	def tgt_creature(self):
+		return self._tgt_creature
+
+	@tgt_creature.setter
+	def tgt_creature(self, new_obj):
+		self._tgt_creature = new_obj
+
+	def result_exe(self, gs, mach_state, alert_anchor):
+#		gs.io.buff_s(self.name)
+#		creature = gs.core.hero
+		self.tgt_creature.put_in_hand(self.item_obj, gs)
+#		mach_state = True
+		super(GiveItemResult, self).result_exe(gs, mach_state, alert_anchor)
+		return mach_state, self.cmd_override
+
+
 ### *** NEW RESULT CLASSES ***
 
 
@@ -199,10 +227,6 @@ class BufferOnlyResult(object):
 #		return mach_state, self.cmd_override
 
 
-### *** OLD RESULT CLASSES TO REVIEW ***
-
-### *** TO BE REVIEWED ***
-
 class BufferAndGiveResult(BufferOnlyResult):
 	def __init__(self, name, give_item, cmd_override):
 		super().__init__(name, cmd_override)
@@ -218,6 +242,11 @@ class BufferAndGiveResult(BufferOnlyResult):
 		creature.put_in_hand(self.give_item, gs)
 		mach_state = True
 		return mach_state, self.cmd_override
+
+
+### *** OLD RESULT CLASSES TO REVIEW ***
+
+### *** TO BE REVIEWED ***
 
 
 class AddObjToRoomResult(BufferOnlyResult):
