@@ -425,9 +425,47 @@ Version 3.87.0 Goals:
 			- DONE: 'git push origin --delete ChgDescriptResult_feature' to clean up origin
 			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
-
+	- TBD: BufferAndGiveResult => GiveItemResult
+		- TBD: create new BufferAndGiveResult_feature git branch
+			- TBD: 'git branch' to confirm *master
+			- TBD: 'git branch BufferAndGiveResult_feature' to create new branch
+			- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+			- TBD: 'git checkout BufferAndGiveResult_feature' to switch focus to branching_test branch
+			- TBD: but Push via VS Code button
+			- TBD: update doc TBDs to DONEs
+			- TBD: <CMD><OPT>S (to save all files)
+			- TBD: 'git add .' to add files to be committed
+			- TBD: 'git commit -m "doc update"
+			- TBD: 'git push" to push updates to origin (GitHub)
+			- TBD: confirm new branch on GitHub
+		- TBD: refactor BufferAndGiveResult => GiveItemResult
+			- TBD: result class updates
+				- TBD: copy existing class; change parent to BaseResult
+				- TBD: <specific changes>: introduce creature attrib
+				- TBD: use super() call BaseResult buffer and mach_state change
+				- TBD: update result_exe() attribs
+			- TBD: update game files
+				- TBD: add new result class to game_update imports
+				- TBD: update game_update result obj classes, attribs, and post-assignment updates
+				- TBD: add result obj to mach_run() exception list
+				- TBD: update post-attrib assignment if needed
+				- TBD: comment out old result class
+			- TBD: test & clean-up
+				- TBD: test
+				- TBD: clean-up game_update(), result_class()
+		- TBD: git branch merge with master
+			- TBD: 'git checkout master' to switch focus to master
+			- TBD: 'git branch: to confirm focus
+			- TBD: 'git merge BufferAndGiveResult_feature -m "branch BufferAndGiveResult_feature merge"'
+			- TBD: 'git push' to push merge to origin (GitHub)
+			- TBD: confirm that origin is updated
+			- TBD: confirm that code is updated and still runs
+			- TBD: 'git branch -d BufferAndGiveResult_feature' to clean-up local branch
+			- TBD: 'git push origin --delete BufferAndGiveResult_feature' to clean up origin
+			- TBD: confirm origin is cleaned up
+			- TBD: post-branch-delete run test
+	
 	- IDEAS:
-		- BufferAndGiveResult => GiveItemResult == "obj given to creature" (give in 'silent mode)
 		- PutItemInHandResult => TakeItemResult == "obj taken by creature" (take in 'silent' mode)
 
 	- TBD: <TEMPLATE>
