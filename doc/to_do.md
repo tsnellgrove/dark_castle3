@@ -425,14 +425,15 @@ Version 3.87.0 Goals:
 			- DONE: 'git push origin --delete ChgDescriptResult_feature' to clean up origin
 			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
-	- TBD: BufferAndGiveResult => GiveItemResult
-		- TBD: create new BufferAndGiveResult_feature git branch
-			- TBD: 'git branch' to confirm *master
-			- TBD: 'git branch BufferAndGiveResult_feature' to create new branch
-			- TBD: 'git branch' to confirm new branch exists but that master is still checked out
-			- TBD: 'git checkout BufferAndGiveResult_feature' to switch focus to branching_test branch
-			- TBD: but Push via VS Code button
-			- TBD: update doc TBDs to DONEs
+	- INPROC: BufferAndGiveResult => GiveItemResult
+		- INPROC: create new BufferAndGiveResult_feature git branch
+			- DONE: 'git branch' to confirm *master
+			- DONE: 'git branch BufferAndGiveResult_feature' to create new branch
+			- DONE: 'git branch' to confirm new branch exists but that master is still checked out
+			- DONE: 'git checkout BufferAndGiveResult_feature' to switch focus to branching_test branch
+			- DONE: 'git branch' to confirm new branch is now in focus
+			- DONE: Publish Branch via VS Code button
+			- DONE: update doc TBDs to DONEs
 			- TBD: <CMD><OPT>S (to save all files)
 			- TBD: 'git add .' to add files to be committed
 			- TBD: 'git commit -m "doc update"
@@ -474,7 +475,8 @@ Version 3.87.0 Goals:
 			- TBD: 'git branch <FEATURE_NAME>' to create new branch
 			- TBD: 'git branch' to confirm new branch exists but that master is still checked out
 			- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
-			- TBD: but Push via VS Code button
+			- TBD: 'git branch' to confirm new branch is now in focus
+			- TBD: Publish Branch via VS Code button
 			- TBD: update doc TBDs to DONEs
 			- TBD: <CMD><OPT>S (to save all files)
 			- TBD: 'git add .' to add files to be committed
