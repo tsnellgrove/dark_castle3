@@ -215,7 +215,7 @@ hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', False,
 		'pre_act_timer', hedgehog_eats_timer, [True], None,									  
 		[hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
 		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result],
-		'royal_hedgehog_temp', True) # mach_state == has the machine  run? (ie. has the hedgehog's description been updated already?)
+		'royal_hedgehog_temp', True) # mach_state == has the machine run? (ie. has the hedgehog's description been updated already?)
 
 hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_cmd', None,
 		[['give', '*', 'royal_hedgehog'], ['show', '*', 'royal_hedgehog']], None, 

@@ -446,16 +446,22 @@ Version 3.87.0 Goals:
 				- DONE: <specific changes>: introduce tgt_creature attrib
 				- DONE: use super() call BaseResult buffer and mach_state change
 				- DONE: update result_exe() attribs
-			- DOEN: update game files
+			- DONE: update game files
 				- DONE: add new result class to game_update imports
 				- DONE: update game_update result obj classes, attribs, and post-assignment updates
 				- DONE: set mach_state appropriately
 				- DONE: add result obj to mach_run() exception list
 				- DONE: update post-attrib assignment if needed
 				- DONE: comment out old result class and remove from import (in nnew name)
-			- TBD: test & clean-up
-				- TBD: test
-				- TBD: clean-up game_update(), result_class()
+			- INPROC: test & clean-up
+				- DONE: test
+					- FINDING: appears that mach_state is not getting set in BaseResult (suspected this)
+					- FINDING: mach_state is getting set in BaseResult - but set is not sticking => mach_class
+					- FINDING: solved it! Neet to return super().result_exe() !!!
+				- DONE: extend lesson-learned to other chile classes of BaseResult
+					- DONE: ChgDescriptResult
+					- DONE: EndResult
+				- TBD: clean-up game_update(), result_class(), mach_class()
 		- TBD: git branch merge with master
 			- TBD: 'git checkout master' to switch focus to master
 			- TBD: 'git branch: to confirm focus

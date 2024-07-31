@@ -79,15 +79,16 @@ class BaseResult(object):
 			event_rm = gs.map.get_obj_room(alert_anchor, gs)
 		if gs.map.hero_rm == event_rm:
 			gs.io.buff_s(self.name)
+#		print(f"is_mach_state_set = {self.is_mach_state_set}, mach_state_val = {self.mach_state_val}, current (pre-set) mach_state ={mach_state}")
 		if self.is_mach_state_set:
 			mach_state = self.mach_state_val
+#		print(f"is_mach_state_set = {self.is_mach_state_set}, mach_state_val = {self.mach_state_val}, current (post-set) mach_state ={mach_state}")
 		return mach_state, self.cmd_override
 
 	def __repr__(self):
 		return f'Object { self.name } is of class { type(self).__name__ } '
 
 
-# class BufferAndEndResult(BaseResult):
 class EndResult(BaseResult):
 	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override, ending):
 		super().__init__(name, is_mach_state_set, mach_state_val, cmd_override)
@@ -100,8 +101,9 @@ class EndResult(BaseResult):
 	def result_exe(self, gs, mach_state, alert_anchor):
 		gs.end.game_ending = self.ending
 		gs.end.is_end = True
-		super(EndResult, self).result_exe(gs, mach_state, alert_anchor)
-		return mach_state, self.cmd_override
+#		super(EndResult, self).result_exe(gs, mach_state, alert_anchor)
+#		return mach_state, self.cmd_override
+		return super(EndResult, self).result_exe(gs, mach_state, alert_anchor)
 
 
 class ChgDescriptResult(BaseResult):
@@ -124,8 +126,9 @@ class ChgDescriptResult(BaseResult):
 
 	def result_exe(self, gs, mach_state, alert_anchor):
 		self.obj.descript_key = self.new_descript_key
-		super(ChgDescriptResult, self).result_exe(gs, mach_state, alert_anchor)
-		return mach_state, self.cmd_override
+#		super(ChgDescriptResult, self).result_exe(gs, mach_state, alert_anchor)
+#		return mach_state, self.cmd_override
+		return super(ChgDescriptResult, self).result_exe(gs, mach_state, alert_anchor)
 
 
 class GiveItemResult(BaseResult):
@@ -151,8 +154,11 @@ class GiveItemResult(BaseResult):
 #		creature = gs.core.hero
 		self.tgt_creature.put_in_hand(self.item_obj, gs)
 #		mach_state = True
-		super(GiveItemResult, self).result_exe(gs, mach_state, alert_anchor)
-		return mach_state, self.cmd_override
+#		super(GiveItemResult, self).result_exe(gs, mach_state, alert_anchor)
+#		print(f"mach_state = {mach_state}, self.mach_state_val = {self.mach_state_val}")
+#		return mach_state, self.cmd_override
+#		return mach_state, super().cmd_override
+		return super(GiveItemResult, self).result_exe(gs, mach_state, alert_anchor)
 
 
 ### *** NEW RESULT CLASSES ***

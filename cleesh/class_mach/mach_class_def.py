@@ -100,6 +100,7 @@ class MachineMixIn(object):
 			if cond.cond_check(gs, self.mach_state, self.cond_swicth_lst):
 				result = self.result_lst[idx]
 # CLEAN UP ONCE RESULT MIGRATION COMPLETE!
+#				print(f"Pre-Result: {self.name} mach_state = {self.mach_state}")
 				if (result.name in ['pass_result', 'moat_croc_scared_result', 'nothing_happens_result', 
 							'throne_push_result', 'portcullis_doesnt_open_result', 'hedgehog_distracted_result',
 							'scroll_wrong_room_result', 'scroll_no_hedgehog_result', 'scroll_crown_not_worn_result',
@@ -108,6 +109,7 @@ class MachineMixIn(object):
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state, self.alert_anchor)
 				else:
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
+#				print(f"Post-Result: {self.name} mach_state = {self.mach_state}")
 				return cmd_override, result.name
 		return False, 'pass_result'
 
