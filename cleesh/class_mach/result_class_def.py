@@ -22,7 +22,6 @@
 # BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
 
 # *** simple cases ***
-# BufferAndGiveResult :		BufferOnlyResult :	buff, obj => hero hand; sets mach_state = True [need creature attrib]
 # PutItemInHandResult :		BufferOnlyResult :	buff, put item in creature hand, remove item from creature bkpk [REFACT w/ take?]
 # TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir [not called]
 # StartTimerResult :		BufferOnlyResult :	buff, starts timer [not called]
@@ -40,6 +39,7 @@
 # deleted
 # BufferAndEndResult :		BufferOnlyResult :	buffer, set ending val, set is_end = True
 # ChgCreatureDescAndStateResult BufferOnlyResult : buff, change creature descript, set mach_state = True
+# BufferAndGiveResult :		BufferOnlyResult :	buff, obj => hero hand; sets mach_state = True [need creature attrib]
 
 ### classes
 
@@ -79,10 +79,8 @@ class BaseResult(object):
 			event_rm = gs.map.get_obj_room(alert_anchor, gs)
 		if gs.map.hero_rm == event_rm:
 			gs.io.buff_s(self.name)
-#		print(f"is_mach_state_set = {self.is_mach_state_set}, mach_state_val = {self.mach_state_val}, current (pre-set) mach_state ={mach_state}")
 		if self.is_mach_state_set:
 			mach_state = self.mach_state_val
-#		print(f"is_mach_state_set = {self.is_mach_state_set}, mach_state_val = {self.mach_state_val}, current (post-set) mach_state ={mach_state}")
 		return mach_state, self.cmd_override
 
 	def __repr__(self):
@@ -101,8 +99,6 @@ class EndResult(BaseResult):
 	def result_exe(self, gs, mach_state, alert_anchor):
 		gs.end.game_ending = self.ending
 		gs.end.is_end = True
-#		super(EndResult, self).result_exe(gs, mach_state, alert_anchor)
-#		return mach_state, self.cmd_override
 		return super(EndResult, self).result_exe(gs, mach_state, alert_anchor)
 
 
@@ -126,8 +122,6 @@ class ChgDescriptResult(BaseResult):
 
 	def result_exe(self, gs, mach_state, alert_anchor):
 		self.obj.descript_key = self.new_descript_key
-#		super(ChgDescriptResult, self).result_exe(gs, mach_state, alert_anchor)
-#		return mach_state, self.cmd_override
 		return super(ChgDescriptResult, self).result_exe(gs, mach_state, alert_anchor)
 
 
@@ -150,15 +144,11 @@ class GiveItemResult(BaseResult):
 		self._tgt_creature = new_obj
 
 	def result_exe(self, gs, mach_state, alert_anchor):
-#		gs.io.buff_s(self.name)
-#		creature = gs.core.hero
 		self.tgt_creature.put_in_hand(self.item_obj, gs)
-#		mach_state = True
-#		super(GiveItemResult, self).result_exe(gs, mach_state, alert_anchor)
-#		print(f"mach_state = {mach_state}, self.mach_state_val = {self.mach_state_val}")
-#		return mach_state, self.cmd_override
-#		return mach_state, super().cmd_override
-		return super(GiveItemResult, self).result_exe(gs, mach_state, alert_anchor)
+		return super(GiveItemResult, self).result_exe(gs, mach_state, alert_anchor) 
+		# Note: if mach_state was a class attrib of BaseResult, 
+			# could call super().result_exe() in GiveItemResult.result_exe body
+			# and then return super()mach_state, super().cmd_override
 
 
 ### *** NEW RESULT CLASSES ***

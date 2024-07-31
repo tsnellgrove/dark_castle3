@@ -439,7 +439,7 @@ Version 3.87.0 Goals:
 			- DONE: 'git commit -m "doc update"
 			- DONE: 'git push" to push updates to origin (GitHub)
 			- DONE: confirm new branch on GitHub
-		- INPROC: refactor BufferAndGiveResult => GiveItemResult
+		- DONE: refactor BufferAndGiveResult => GiveItemResult
 			- DONE: result class updates
 				- DONE: copy existing class; change parent to BaseResult and update class name
 				- DONE: update setters and getters
@@ -453,7 +453,7 @@ Version 3.87.0 Goals:
 				- DONE: add result obj to mach_run() exception list
 				- DONE: update post-attrib assignment if needed
 				- DONE: comment out old result class and remove from import (in nnew name)
-			- INPROC: test & clean-up
+			- DONE: test & clean-up
 				- DONE: test
 					- FINDING: appears that mach_state is not getting set in BaseResult (suspected this)
 					- FINDING: mach_state is getting set in BaseResult - but set is not sticking => mach_class
@@ -461,7 +461,7 @@ Version 3.87.0 Goals:
 				- DONE: extend lesson-learned to other chile classes of BaseResult
 					- DONE: ChgDescriptResult
 					- DONE: EndResult
-				- TBD: clean-up game_update(), result_class(), mach_class()
+				- DONE: clean-up game_update(), result_class(), mach_class()
 		- TBD: git branch merge with master
 			- TBD: 'git checkout master' to switch focus to master
 			- TBD: 'git branch: to confirm focus

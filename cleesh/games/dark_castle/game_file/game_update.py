@@ -158,11 +158,7 @@ die_in_moat_result = EndResult('die_in_moat_result', False, None, True, 'died.')
 scroll_win_game_result = EndResult('scroll_win_game_result', False, None, False, 'won!')
 fed_hedgehog_keeps_sword_result = ChgDescriptResult('fed_hedgehog_keeps_sword_result', True, True, False, 'royal_hedgehog_temp', 'hedgehog_desc_smug')
 fed_hedgehog_loses_sword_result = ChgDescriptResult('fed_hedgehog_loses_sword_result', True, True, False, 'royal_hedgehog_temp', 'hedgehog_desc_yearn')
-
-# moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', royal_crown, True)
 moat_get_crown_result = GiveItemResult('moat_get_crown_result', True, True, True, royal_crown, 'temp_burt')
-
-# name, is_mach_state_set, mach_state_val, cmd_override, item_obj, tgt_creature
 
 axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
 throne_pull_result = AddObjChgDescriptResult('throne_pull_result', hedgehog_broach, throne, 'throne_post_broach', False)
