@@ -227,21 +227,21 @@ class BufferOnlyResult(object):
 #		return mach_state, self.cmd_override
 
 
-class BufferAndGiveResult(BufferOnlyResult):
-	def __init__(self, name, give_item, cmd_override):
-		super().__init__(name, cmd_override)
-		self._give_item = give_item # item to be given to Burt
+# class BufferAndGiveResult(BufferOnlyResult):
+#	def __init__(self, name, give_item, cmd_override):
+#		super().__init__(name, cmd_override)
+#		self._give_item = give_item # item to be given to Burt
 
-	@property
-	def give_item(self):
-		return self._give_item
+#	@property
+#	def give_item(self):
+#		return self._give_item
 
-	def result_exe(self, gs, mach_state):
-		gs.io.buff_s(self.name)
-		creature = gs.core.hero
-		creature.put_in_hand(self.give_item, gs)
-		mach_state = True
-		return mach_state, self.cmd_override
+#	def result_exe(self, gs, mach_state):
+#		gs.io.buff_s(self.name)
+#		creature = gs.core.hero
+#		creature.put_in_hand(self.give_item, gs)
+#		mach_state = True
+#		return mach_state, self.cmd_override
 
 
 ### *** OLD RESULT CLASSES TO REVIEW ***

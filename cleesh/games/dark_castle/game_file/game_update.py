@@ -21,7 +21,7 @@ from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButt
 from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond, ObjInRmCond, ObjInWorldCond, 
 		ItemInHandCond, WeaponInHandCond, MachStateCond, TimerActiveCond, SwitchStateCond, LeverArrayCond)
 from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, GiveItemResult, 
-		BufferOnlyResult, BufferAndGiveResult,
+		BufferOnlyResult, 
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
 		TimerAndCreatureItemResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
 from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
@@ -159,7 +159,11 @@ scroll_win_game_result = EndResult('scroll_win_game_result', False, None, False,
 fed_hedgehog_keeps_sword_result = ChgDescriptResult('fed_hedgehog_keeps_sword_result', True, True, False, 'royal_hedgehog_temp', 'hedgehog_desc_smug')
 fed_hedgehog_loses_sword_result = ChgDescriptResult('fed_hedgehog_loses_sword_result', True, True, False, 'royal_hedgehog_temp', 'hedgehog_desc_yearn')
 
-moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', royal_crown, True)
+# moat_get_crown_result = BufferAndGiveResult('moat_get_crown_result', royal_crown, True)
+moat_get_crown_result = GiveItemResult('moat_get_crown_result', True, True, True, royal_crown, 'temp_burt')
+
+# name, is_mach_state_set, mach_state_val, cmd_override, item_obj, tgt_creature
+
 axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
 throne_pull_result = AddObjChgDescriptResult('throne_pull_result', hedgehog_broach, throne, 'throne_post_broach', False)
 dispense_panel_result = AddObjToRoomAndDescriptResult('dispense_panel_result', 'temp_control_panel', False)
@@ -379,6 +383,7 @@ kinging_scroll.alert_anchor = kinging_scroll
 
 fed_hedgehog_keeps_sword_result.obj = royal_hedgehog
 fed_hedgehog_loses_sword_result.obj = royal_hedgehog
+moat_get_crown_result.tgt_creature = burt
 
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog

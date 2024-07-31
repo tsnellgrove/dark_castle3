@@ -446,13 +446,13 @@ Version 3.87.0 Goals:
 				- DONE: <specific changes>: introduce tgt_creature attrib
 				- DONE: use super() call BaseResult buffer and mach_state change
 				- DONE: update result_exe() attribs
-			- INPROC: update game files
+			- DOEN: update game files
 				- DONE: add new result class to game_update imports
-				- TBD: update game_update result obj classes, attribs, and post-assignment updates
-				- TBD: set mach_state appropriately
-				- TBD: add result obj to mach_run() exception list
-				- TBD: update post-attrib assignment if needed
-				- TBD: comment out old result class
+				- DONE: update game_update result obj classes, attribs, and post-assignment updates
+				- DONE: set mach_state appropriately
+				- DONE: add result obj to mach_run() exception list
+				- DONE: update post-attrib assignment if needed
+				- DONE: comment out old result class and remove from import (in nnew name)
 			- TBD: test & clean-up
 				- TBD: test
 				- TBD: clean-up game_update(), result_class()

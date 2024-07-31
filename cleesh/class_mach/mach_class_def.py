@@ -104,7 +104,7 @@ class MachineMixIn(object):
 							'throne_push_result', 'portcullis_doesnt_open_result', 'hedgehog_distracted_result',
 							'scroll_wrong_room_result', 'scroll_no_hedgehog_result', 'scroll_crown_not_worn_result',
 							'tea_drunk_win_result', 'die_in_moat_result', 'scroll_win_game_result', 
-							'fed_hedgehog_keeps_sword_result', 'fed_hedgehog_loses_sword_result']):
+							'fed_hedgehog_keeps_sword_result', 'fed_hedgehog_loses_sword_result', 'moat_get_crown_result']):
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state, self.alert_anchor)
 				else:
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
