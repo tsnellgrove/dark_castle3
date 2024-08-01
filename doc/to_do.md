@@ -268,7 +268,7 @@ Version 3.87.0 Goals:
 				- FINDING: also, needed to put switch option first in 'or' logic - to avoid is_enabled() eval
 	- DONE: clean up comments in mach_class(), room_class(), post_action()
 
-- INPROC: result review (build 0007) []
+- INPROC: result review + simple cases (build 0007) []
 	- DONE: review and categorize existing results
 	- DONE: initial result decision-making
 		- DONE: decide if I should attempt to use super() on inherited results
@@ -302,8 +302,6 @@ Version 3.87.0 Goals:
 		- DONE: confirm that origin is updated
 		- DONE: 'git branch -d branching_test' to clean-up local branch
 		- DONE: 'git push origin --delete branching_test' to clean up origin
-
-- INPROC: result class refactoring
 	- DONE: BufferOnlyResult => BaseResult (buffer w/ alert_anchor) + set mach_state option (set vs. reset)
 		- DONE: create new BaseResult_feature git branch
 			- DONE: 'git branch' to confirm *master
@@ -462,20 +460,61 @@ Version 3.87.0 Goals:
 					- DONE: ChgDescriptResult
 					- DONE: EndResult
 				- DONE: clean-up game_update(), result_class(), mach_class()
-		- INPROC: git branch merge with master
+		- DONE: git branch merge with master
 			- DONE: 'git checkout master' to switch focus to master
 			- DONE: 'git branch: to confirm focus
 			- DONE: 'git merge BufferAndGiveResult_feature -m "branch BufferAndGiveResult_feature merge"'
 			- DONE: 'git push' to push merge to origin (GitHub)
 			- DONE: confirm that origin is updated
 			- DONE: confirm that code is updated and still runs
-			- TBD: 'git branch -d BufferAndGiveResult_feature' to clean-up local branch
-			- TBD: 'git push origin --delete BufferAndGiveResult_feature' to clean up origin
+			- DONE: 'git branch -d BufferAndGiveResult_feature' to clean-up local branch
+			- DONE: 'git push origin --delete BufferAndGiveResult_feature' to clean up origin
+			- DONE: confirm origin is cleaned up
+			- DONE: post-branch-delete run test
+	- TBD: PutItemInHandResult => TakeItemResult
+		- TBD: create new PutItemInHandResult_feature git branch
+			- TBD: 'git branch' to confirm *master
+			- TBD: 'git branch PutItemInHandResult_feature' to create new branch
+			- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+			- TBD: 'git checkout PutItemInHandResult_feature' to switch focus to branching_test branch
+			- TBD: 'git branch' to confirm new branch is now in focus
+			- TBD: Publish Branch via VS Code button
+			- TBD: update doc TBDs to DONEs
+			- TBD: <CMD><OPT>S (to save all files)
+			- TBD: 'git add .' to add files to be committed
+			- TBD: 'git commit -m "doc update"
+			- TBD: 'git push" to push updates to origin (GitHub)
+			- TBD: confirm new branch on GitHub
+		- TBD: refactor PutItemInHandResult => TakeItemResult
+			- TBD: result class updates
+				- TBD: copy existing class; change parent to BaseResult and update class name
+				- TBD: update setters and getters
+				- TBD: specific class changes - code from take() method:
+					- TBD: gs.map.hero_rm.remove_item(self, gs) => get_obj_room(creature_obj)
+					- TBD: creature_obj.put_in_hand(self, gs)
+				- TBD: use return super().result_exe() to return BaseResult buffer and mach_state change
+				- TBD: update result_exe() attribs
+			- TBD: update game files
+				- TBD: add new result class to game_update imports
+				- TBD: update Result obj name if appropriate => goblin_takes_axe_result
+				- TBD: update game_update result obj classes, attribs, and post-assignment updates
+				- TBD: set mach_state appropriately
+				- TBD: add result obj to mach_run() exception list
+				- TBD: update post-attrib assignment if needed
+				- TBD: comment out old result class and remove from import (in nnew name)
+			- TBD: test & clean-up
+				- TBD: clean-up game_update(), result_class(), mach_class() [??]
+		- TBD: git branch merge with master
+			- TBD: 'git checkout master' to switch focus to master
+			- TBD: 'git branch: to confirm focus
+			- TBD: 'git merge PutItemInHandResult_feature -m "branch PutItemInHandResult_feature merge"'
+			- TBD: 'git push' to push merge to origin (GitHub)
+			- TBD: confirm that origin is updated
+			- TBD: confirm that code is updated and still runs
+			- TBD: 'git branch -d PutItemInHandResult_feature' to clean-up local branch
+			- TBD: 'git push origin --delete PutItemInHandResult_feature' to clean up origin
 			- TBD: confirm origin is cleaned up
 			- TBD: post-branch-delete run test
-	
-	- IDEAS:
-		- PutItemInHandResult => TakeItemResult == "obj taken by creature" (take in 'silent' mode)
 
 	- TBD: <TEMPLATE>
 		- TBD: create new <FEATURE_NAME>_feature git branch
@@ -491,7 +530,23 @@ Version 3.87.0 Goals:
 			- TBD: 'git commit -m "doc update"
 			- TBD: 'git push" to push updates to origin (GitHub)
 			- TBD: confirm new branch on GitHub
-		- TBD: <CODE CHANGES>
+		- TBD: refactor <CODE CHANGES>
+			- TBD: result class updates
+				- TBD: copy existing class; change parent to BaseResult and update class name
+				- TBD: update setters and getters
+				- TBD: specific class changes: <list here>
+				- TBD: use return super().result_exe() to return BaseResult buffer and mach_state change
+				- TBD: update result_exe() attribs
+			- TBD: update game files
+				- TBD: add new result class to game_update imports
+				- TBD: update Result obj name if appropriate
+				- TBD: update game_update result obj classes, attribs, and post-assignment updates
+				- TBD: set mach_state appropriately
+				- TBD: add result obj to mach_run() exception list
+				- TBD: update post-attrib assignment if needed
+				- TBD: comment out old result class and remove from import (in nnew name)
+			- TBD: test & clean-up
+				- TBD: clean-up game_update(), result_class(), mach_class() [??]
 		- TBD: git branch merge with master
 			- TBD: 'git checkout master' to switch focus to master
 			- TBD: 'git branch: to confirm focus
@@ -960,6 +1015,10 @@ interpreter ideas:
 		- IDEA: office workers on death march project; must bring TTL report to shredder
 		- IDEA: led by bearded application developer, heart-string-pulling retirement party at end
 		- IDEA: always saved by IT person at critical moment
+
+*** Enable Verbe Methods for Machines ***
+- IDEA: enable silent run mode for verb methods so that I can use them in result_exe()
+- IDEA: start with Item.take() => TakeResult
 
 *** Introduce multi-room puzzle ***
 - IDEA: trigger in one room, switch in 2nd room, effect in 3rd room
