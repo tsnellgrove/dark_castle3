@@ -462,13 +462,13 @@ Version 3.87.0 Goals:
 					- DONE: ChgDescriptResult
 					- DONE: EndResult
 				- DONE: clean-up game_update(), result_class(), mach_class()
-		- TBD: git branch merge with master
-			- TBD: 'git checkout master' to switch focus to master
-			- TBD: 'git branch: to confirm focus
-			- TBD: 'git merge BufferAndGiveResult_feature -m "branch BufferAndGiveResult_feature merge"'
-			- TBD: 'git push' to push merge to origin (GitHub)
-			- TBD: confirm that origin is updated
-			- TBD: confirm that code is updated and still runs
+		- INPROC: git branch merge with master
+			- DONE: 'git checkout master' to switch focus to master
+			- DONE: 'git branch: to confirm focus
+			- DONE: 'git merge BufferAndGiveResult_feature -m "branch BufferAndGiveResult_feature merge"'
+			- DONE: 'git push' to push merge to origin (GitHub)
+			- DONE: confirm that origin is updated
+			- DONE: confirm that code is updated and still runs
 			- TBD: 'git branch -d BufferAndGiveResult_feature' to clean-up local branch
 			- TBD: 'git push origin --delete BufferAndGiveResult_feature' to clean up origin
 			- TBD: confirm origin is cleaned up
