@@ -472,19 +472,20 @@ Version 3.87.0 Goals:
 			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
 	- INPROC: PutItemInHandResult => TakeItemResult
-		- INPROC: create new PutItemInHandResult_feature git branch
+		- DONE: create new PutItemInHandResult_feature git branch
 			- DONE: 'git branch' to confirm *master
 			- DONE: 'git branch PutItemInHandResult_feature' to create new branch
 			- DONE: 'git branch' to confirm new branch exists but that master is still checked out
 			- DONE: 'git checkout PutItemInHandResult_feature' to switch focus to branching_test branch
 			- DONE: 'git branch' to confirm new branch is now in focus
 			- DONE: Publish Branch via VS Code button
+			- DONE: confirm new branch on GitHub
 			- DONE: update doc TBDs to DONEs
-			- TBD: <CMD><OPT>S (to save all files)
-			- TBD: 'git add .' to add files to be committed
-			- TBD: 'git commit -m "doc update"
-			- TBD: 'git push" to push updates to origin (GitHub)
-			- TBD: confirm new branch on GitHub
+			- DONE: <CMD><OPT>S (to save all files)
+			- DONE: 'git add .' to add files to be committed
+			- DONE: 'git commit -m "doc updates"
+			- DONE: 'git push" to push updates to origin (GitHub)
+			- DONE: confirm new branch on GitHub is  now ahead of master
 		- TBD: refactor PutItemInHandResult => TakeItemResult
 			- TBD: result class updates
 				- TBD: copy existing class; change parent to BaseResult and update class name
@@ -524,12 +525,13 @@ Version 3.87.0 Goals:
 			- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
 			- TBD: 'git branch' to confirm new branch is now in focus
 			- TBD: Publish Branch via VS Code button
+			- TBD: confirm new branch on GitHub
 			- TBD: update doc TBDs to DONEs
 			- TBD: <CMD><OPT>S (to save all files)
 			- TBD: 'git add .' to add files to be committed
-			- TBD: 'git commit -m "doc update"
+			- TBD: 'git commit -m "doc updates"
 			- TBD: 'git push" to push updates to origin (GitHub)
-			- TBD: confirm new branch on GitHub
+			- TBD: confirm new branch on GitHub is now ahead of master
 		- TBD: refactor <CODE CHANGES>
 			- TBD: result class updates
 				- TBD: copy existing class; change parent to BaseResult and update class name
