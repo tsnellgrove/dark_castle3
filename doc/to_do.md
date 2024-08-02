@@ -486,25 +486,26 @@ Version 3.87.0 Goals:
 			- DONE: 'git commit -m "doc updates"
 			- DONE: 'git push" to push updates to origin (GitHub)
 			- DONE: confirm new branch on GitHub is  now ahead of master
-		- TBD: refactor PutItemInHandResult => TakeItemResult
-			- TBD: result class updates
-				- TBD: copy existing class; change parent to BaseResult and update class name
-				- TBD: update setters and getters
-				- TBD: specific class changes - code from take() method:
-					- TBD: gs.map.hero_rm.remove_item(self, gs) => get_obj_room(creature_obj)
-					- TBD: creature_obj.put_in_hand(self, gs)
-				- TBD: use return super().result_exe() to return BaseResult buffer and mach_state change
-				- TBD: update result_exe() attribs
-			- TBD: update game files
-				- TBD: add new result class to game_update imports
-				- TBD: update Result obj name if appropriate => goblin_takes_axe_result
-				- TBD: update game_update result obj classes, attribs, and post-assignment updates
-				- TBD: set mach_state appropriately
-				- TBD: add result obj to mach_run() exception list
-				- TBD: update post-attrib assignment if needed
-				- TBD: comment out old result class and remove from import (in nnew name)
-			- TBD: test & clean-up
-				- TBD: clean-up game_update(), result_class(), mach_class() [??]
+		- INPROC: refactor PutItemInHandResult => TakeItemResult
+			- DONE: result class updates
+				- DONE: copy existing class; change parent to BaseResult and update class name
+				- DONE: update attribs and setters and getters
+				- DONE: update result_exe() attribs
+				- DONE: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
+				- DONE: specific class changes - code from take() method:
+					- DONE: gs.map.hero_rm.remove_item(self, gs) => get_obj_room(creature_obj)
+					- DONE: creature_obj.put_in_hand(self, gs)				
+			- DONE: update game files
+				- DONE: add new result class to game_update imports
+				- DONE: update Result obj name if appropriate => goblin_takes_axe_result
+				- DONE: update game_update result obj classes, attribs, and post-assignment updates
+				- DONE: set mach_state appropriately
+				- DONE: update post-attrib assignment if needed
+				- DONE: add result name to mach_run() exception list
+				- DONE: comment out old result class and remove from import (in new name)
+			- DONE: test & clean-up
+				- DONE: test
+				- DONE: clean-up game_update(), result_class(), mach_class() [??]
 		- TBD: git branch merge with master
 			- TBD: 'git checkout master' to switch focus to master
 			- TBD: 'git branch: to confirm focus
@@ -535,19 +536,20 @@ Version 3.87.0 Goals:
 		- TBD: refactor <CODE CHANGES>
 			- TBD: result class updates
 				- TBD: copy existing class; change parent to BaseResult and update class name
-				- TBD: update setters and getters
-				- TBD: specific class changes: <list here>
-				- TBD: use return super().result_exe() to return BaseResult buffer and mach_state change
+				- TBD: update attribs and setters and getters
 				- TBD: update result_exe() attribs
+				- TBD: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
+				- TBD: specific class changes: <list here>
 			- TBD: update game files
 				- TBD: add new result class to game_update imports
 				- TBD: update Result obj name if appropriate
 				- TBD: update game_update result obj classes, attribs, and post-assignment updates
 				- TBD: set mach_state appropriately
-				- TBD: add result obj to mach_run() exception list
 				- TBD: update post-attrib assignment if needed
+				- TBD: add result name to mach_run() exception list
 				- TBD: comment out old result class and remove from import (in nnew name)
 			- TBD: test & clean-up
+				- TBD: test
 				- TBD: clean-up game_update(), result_class(), mach_class() [??]
 		- TBD: git branch merge with master
 			- TBD: 'git checkout master' to switch focus to master

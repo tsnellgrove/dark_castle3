@@ -17,29 +17,30 @@
 # EndResult :				BaseResult :		base + set ending val, set is_end = True
 # ChgDescriptResult	:		BaseResult :		base + change obj descript_key
 # GiveItemResult : 			BaseResult :		base + give item_obj to tgt_creature
+# TakeItemResult :			BaseResult :		base + creature_obj takes item_obj
 
 # *** legacy ***
 # BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
 
 # *** simple cases ***
-# PutItemInHandResult :		BufferOnlyResult :	buff, put item in creature hand, remove item from creature bkpk [REFACT w/ take?]
+# AddObjToRoomResult :		BufferOnlyResult :	buff, obj => hero_rm.floor_lst; sets mach_state = True [get mach rm? atttrib name => obj not item?][not called]
 # TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir [not called]
 # StartTimerResult :		BufferOnlyResult :	buff, starts timer [not called]
-# AddObjToRoomResult :		BufferOnlyResult :	buff, obj => hero_rm.floor_lst; sets mach_state = True [get mach rm? atttrib name => obj not item?][not called]
+
+# *** refactor cases ***
+# AttackBurtResult :		BufferOnlyResult :	buff, creature attacks burt [REFACT?] [address in_hand in creature.attack()?]
+# DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
 
 # *** combo cases ***
 # AddObjChgDescriptResult : BufferOnlyResult :	AddObjToRoomResult + chg obj descript key + mach_state = True [COMBO]
 # AddObjToRoomAndDescriptResult : BOResult :	similar to AddObjChgDescriptResult; chg rm descript [COMBO] [DEDUP]
 # TimerAndCreatureItemResult StartTimerResult :	buff, starts timer and removes obj from creature hand [REFACT w/ eat???] [COMBO]
 
-# *** refactor cases ***
-# AttackBurtResult :		BufferOnlyResult :	buff, creature attacks burt [REFACT?] [address in_hand in creature.attack()?]
-# DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
-
 # deleted
 # BufferAndEndResult :		BufferOnlyResult :	buffer, set ending val, set is_end = True
 # ChgCreatureDescAndStateResult BufferOnlyResult : buff, change creature descript, set mach_state = True
 # BufferAndGiveResult :		BufferOnlyResult :	buff, obj => hero hand; sets mach_state = True [need creature attrib]
+# PutItemInHandResult :		BufferOnlyResult :	buff, put item in creature hand, remove item from creature bkpk [REFACT w/ take?]
 
 ### classes
 
@@ -151,6 +152,30 @@ class GiveItemResult(BaseResult):
 			# and then return super()mach_state, super().cmd_override
 
 
+class TakeItemResult(BaseResult):
+	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override, creature_obj, item_obj):
+		super().__init__(name, is_mach_state_set, mach_state_val, cmd_override)
+		self._creature_obj = creature_obj # creature that will take obj
+		self._item_obj = item_obj # obj to be taken
+
+	@property
+	def creature_obj(self):
+		return self._creature_obj
+
+	@creature_obj.setter
+	def creature_obj(self, new_val):
+		self._creature_obj = new_val
+
+	@property
+	def item_obj(self):
+		return self._item_obj
+
+	def result_exe(self, gs, mach_state, alert_anchor):
+		gs.map.get_obj_room(self.creature_obj, gs).remove_item(self.item_obj, gs)
+		self.creature_obj.put_in_hand(self.item_obj, gs)
+		return super(TakeItemResult, self).result_exe(gs, mach_state, alert_anchor) 
+
+
 ### *** NEW RESULT CLASSES ***
 
 
@@ -237,6 +262,33 @@ class BufferOnlyResult(object):
 #		creature = gs.core.hero
 #		creature.put_in_hand(self.give_item, gs)
 #		mach_state = True
+#		return mach_state, self.cmd_override
+
+
+# class PutItemInHandResult(BufferOnlyResult):
+#	def __init__(self, name, cmd_override, creature_obj, item_obj):
+#		super().__init__(name, cmd_override)
+#		self._creature_obj = creature_obj
+#		self._item_obj = item_obj
+
+#	@property
+#	def creature_obj(self):
+#		return self._creature_obj
+
+#	@creature_obj.setter
+#	def creature_obj(self, new_val):
+#		self._creature_obj = new_val
+
+#	@property
+#	def item_obj(self):
+#		return self._item_obj
+
+#	def result_exe(self, gs, mach_state):
+#		gs.io.buff_s(self.name)
+## need to eventually change this to 'creature.take' when this is enabled
+#		self.creature_obj.put_in_hand(self.item_obj, gs)
+#		if self.item_obj in self.creature_obj.bkpk_lst:
+#			self.creature_obj.bkpk_lst_remove(self.item_obj)
 #		return mach_state, self.cmd_override
 
 
@@ -414,33 +466,6 @@ class TimerAndCreatureItemResult(StartTimerResult):
 		gs.io.buff_s(self.name)
 		self.timer_obj.start()
 		self.creature_obj.hand_lst_remove(self.ceature_item_obj)
-		return mach_state, self.cmd_override
-
-
-class PutItemInHandResult(BufferOnlyResult):
-	def __init__(self, name, cmd_override, creature_obj, item_obj):
-		super().__init__(name, cmd_override)
-		self._creature_obj = creature_obj
-		self._item_obj = item_obj
-
-	@property
-	def creature_obj(self):
-		return self._creature_obj
-
-	@creature_obj.setter
-	def creature_obj(self, new_val):
-		self._creature_obj = new_val
-
-	@property
-	def item_obj(self):
-		return self._item_obj
-
-	def result_exe(self, gs, mach_state):
-		gs.io.buff_s(self.name)
-# need to eventually change this to 'creature.take' when this is enabled
-		self.creature_obj.put_in_hand(self.item_obj, gs)
-		if self.item_obj in self.creature_obj.bkpk_lst:
-			self.creature_obj.bkpk_lst_remove(self.item_obj)
 		return mach_state, self.cmd_override
 
 

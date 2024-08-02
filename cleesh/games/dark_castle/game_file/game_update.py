@@ -21,9 +21,10 @@ from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButt
 from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond, ObjInRmCond, ObjInWorldCond, 
 		ItemInHandCond, WeaponInHandCond, MachStateCond, TimerActiveCond, SwitchStateCond, LeverArrayCond)
 from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, GiveItemResult, 
+		TakeItemResult, 
 		BufferOnlyResult, 
 		AddObjToRoomResult, DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
-		TimerAndCreatureItemResult, PutItemInHandResult, TravelResult, AddObjToRoomAndDescriptResult)
+		TimerAndCreatureItemResult, TravelResult, AddObjToRoomAndDescriptResult)
 from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from cleesh.class_std.creature_class_def import Creature
 from cleesh.class_gs.gs_class_def import GameState
@@ -159,8 +160,8 @@ scroll_win_game_result = EndResult('scroll_win_game_result', False, None, False,
 fed_hedgehog_keeps_sword_result = ChgDescriptResult('fed_hedgehog_keeps_sword_result', True, True, False, 'royal_hedgehog_temp', 'hedgehog_desc_smug')
 fed_hedgehog_loses_sword_result = ChgDescriptResult('fed_hedgehog_loses_sword_result', True, True, False, 'royal_hedgehog_temp', 'hedgehog_desc_yearn')
 moat_get_crown_result = GiveItemResult('moat_get_crown_result', True, True, True, royal_crown, 'temp_burt')
+goblin_take_axe_result = TakeItemResult('goblin_take_axe_result', False, None, False, 'guard_goblin_temp', grimy_axe)
 
-axe_in_goblin_hand_result = PutItemInHandResult('axe_in_goblin_hand_result', False, 'guard_goblin_temp', grimy_axe)
 throne_pull_result = AddObjChgDescriptResult('throne_pull_result', hedgehog_broach, throne, 'throne_post_broach', False)
 dispense_panel_result = AddObjToRoomAndDescriptResult('dispense_panel_result', 'temp_control_panel', False)
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
@@ -225,7 +226,7 @@ goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None,
 		'guard_goblin_temp', True)
 
 re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None,
-		[axe_not_in_goblin_hand_cond], [axe_in_goblin_hand_result],
+		[axe_not_in_goblin_hand_cond], [goblin_take_axe_result],
 		'guard_goblin_temp', True)
 
 kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', 
@@ -380,11 +381,11 @@ kinging_scroll.alert_anchor = kinging_scroll
 fed_hedgehog_keeps_sword_result.obj = royal_hedgehog
 fed_hedgehog_loses_sword_result.obj = royal_hedgehog
 moat_get_crown_result.tgt_creature = burt
+goblin_take_axe_result.creature_obj = guard_goblin
 
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog
 start_hedgehog_timer_results.creature_obj = royal_hedgehog
-axe_in_goblin_hand_result.creature_obj = guard_goblin
 dispense_panel_result.room_item = control_panel
 
 hedgehog_eats_timer.alert_anchor = royal_hedgehog
