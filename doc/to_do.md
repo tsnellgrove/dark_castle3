@@ -471,7 +471,7 @@ Version 3.87.0 Goals:
 			- DONE: 'git push origin --delete BufferAndGiveResult_feature' to clean up origin
 			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
-	- INPROC: PutItemInHandResult => TakeItemResult
+	- DONE: PutItemInHandResult => TakeItemResult
 		- DONE: create new PutItemInHandResult_feature git branch
 			- DONE: 'git branch' to confirm *master
 			- DONE: 'git branch PutItemInHandResult_feature' to create new branch
@@ -486,7 +486,7 @@ Version 3.87.0 Goals:
 			- DONE: 'git commit -m "doc updates"
 			- DONE: 'git push" to push updates to origin (GitHub)
 			- DONE: confirm new branch on GitHub is  now ahead of master
-		- INPROC: refactor PutItemInHandResult => TakeItemResult
+		- DONE: refactor PutItemInHandResult => TakeItemResult
 			- DONE: result class updates
 				- DONE: copy existing class; change parent to BaseResult and update class name
 				- DONE: update attribs and setters and getters
@@ -506,17 +506,17 @@ Version 3.87.0 Goals:
 			- DONE: test & clean-up
 				- DONE: test
 				- DONE: clean-up game_update(), result_class(), mach_class() [??]
-		- INPROC: git branch merge with master
+		- DONE: git branch merge with master
 			- DONE: 'git checkout master' to switch focus to master
 			- DONE: 'git branch: to confirm focus
 			- DONE: 'git merge PutItemInHandResult_feature -m "branch PutItemInHandResult_feature merge"'
 			- DONE: 'git push' to push merge to origin (GitHub)
 			- DONE: confirm that origin is updated
 			- DONE: confirm that code is updated and still runs
-			- TBD: 'git branch -d PutItemInHandResult_feature' to clean-up local branch
-			- TBD: 'git push origin --delete PutItemInHandResult_feature' to clean up origin
-			- TBD: confirm origin is cleaned up
-			- TBD: post-branch-delete run test
+			- DONE: 'git branch -d PutItemInHandResult_feature' to clean-up local branch
+			- DONE: 'git push origin --delete PutItemInHandResult_feature' to clean up origin
+			- DONE: confirm origin is cleaned up
+			- DONE: post-branch-delete run test
 
 	- TBD: <TEMPLATE>
 		- TBD: create new <FEATURE_NAME>_feature git branch
