@@ -518,7 +518,7 @@ Version 3.87.0 Goals:
 			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
 	- INPROC: AddObjToRoomResult Update
-		- INPROC: create new AddObjToRoomResult_feature git branch
+		- DONE: create new AddObjToRoomResult_feature git branch
 			- DONE: 'git branch' to confirm *master
 			- DONE: 'git branch AddObjToRoomResult_feature' to create new branch
 			- DONE: 'git branch' to confirm new branch exists but that master is still checked out
@@ -527,11 +527,11 @@ Version 3.87.0 Goals:
 			- DONE: Publish Branch via VS Code button
 			- DONE: confirm new branch on GitHub
 			- DONE: update doc TBDs to DONEs
-			- TBD: <CMD><OPT>S (to save all files)
-			- TBD: 'git add .' to add files to be committed
-			- TBD: 'git commit -m "doc updates"
-			- TBD: 'git push" to push updates to origin (GitHub)
-			- TBD: confirm new branch on GitHub is now ahead of master
+			- DONE: <CMD><OPT>S (to save all files)
+			- DONE: 'git add .' to add files to be committed
+			- DONE: 'git commit -m "doc updates"
+			- DONE: 'git push" to push updates to origin (GitHub)
+			- DONE: confirm new branch on GitHub is now ahead of master
 		- TBD: refactor AddObjToRoomResult
 			- TBD: result class updates
 				- TBD: copy existing class; change parent to BaseResult and update class name
