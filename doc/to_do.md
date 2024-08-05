@@ -517,16 +517,16 @@ Version 3.87.0 Goals:
 			- DONE: 'git push origin --delete PutItemInHandResult_feature' to clean up origin
 			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
-	- TBD: AddObjToRoomResult Update
-		- TBD: create new AddObjToRoomResult_feature git branch
-			- TBD: 'git branch' to confirm *master
-			- TBD: 'git branch AddObjToRoomResult_feature' to create new branch
-			- TBD: 'git branch' to confirm new branch exists but that master is still checked out
-			- TBD: 'git checkout AddObjToRoomResult_feature' to switch focus to branching_test branch
-			- TBD: 'git branch' to confirm new branch is now in focus
-			- TBD: Publish Branch via VS Code button
-			- TBD: confirm new branch on GitHub
-			- TBD: update doc TBDs to DONEs
+	- INPROC: AddObjToRoomResult Update
+		- INPROC: create new AddObjToRoomResult_feature git branch
+			- DONE: 'git branch' to confirm *master
+			- DONE: 'git branch AddObjToRoomResult_feature' to create new branch
+			- DONE: 'git branch' to confirm new branch exists but that master is still checked out
+			- DONE: 'git checkout AddObjToRoomResult_feature' to switch focus to branching_test branch
+			- DONE: 'git branch' to confirm new branch is now in focus
+			- DONE: Publish Branch via VS Code button
+			- DONE: confirm new branch on GitHub
+			- DONE: update doc TBDs to DONEs
 			- TBD: <CMD><OPT>S (to save all files)
 			- TBD: 'git add .' to add files to be committed
 			- TBD: 'git commit -m "doc updates"
