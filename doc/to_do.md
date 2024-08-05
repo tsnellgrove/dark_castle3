@@ -517,6 +517,51 @@ Version 3.87.0 Goals:
 			- DONE: 'git push origin --delete PutItemInHandResult_feature' to clean up origin
 			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
+	- TBD: AddObjToRoomResult Update
+		- TBD: create new AddObjToRoomResult_feature git branch
+			- TBD: 'git branch' to confirm *master
+			- TBD: 'git branch AddObjToRoomResult_feature' to create new branch
+			- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+			- TBD: 'git checkout AddObjToRoomResult_feature' to switch focus to branching_test branch
+			- TBD: 'git branch' to confirm new branch is now in focus
+			- TBD: Publish Branch via VS Code button
+			- TBD: confirm new branch on GitHub
+			- TBD: update doc TBDs to DONEs
+			- TBD: <CMD><OPT>S (to save all files)
+			- TBD: 'git add .' to add files to be committed
+			- TBD: 'git commit -m "doc updates"
+			- TBD: 'git push" to push updates to origin (GitHub)
+			- TBD: confirm new branch on GitHub is now ahead of master
+		- TBD: refactor AddObjToRoomResult
+			- TBD: result class updates
+				- TBD: copy existing class; change parent to BaseResult and update class name
+				- TBD: update attribs and setters and getters
+				- TBD: update result_exe() attribs
+				- TBD: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
+				- TBD: specific class changes: room_item => obj
+			- TBD: update game files
+				- TBD: add new result class to game_update imports
+				- TBD: update Result obj name if appropriate
+				- TBD: update game_update result obj classes, attribs, and post-assignment updates
+				- TBD: set mach_state appropriately
+				- TBD: update post-attrib assignment if needed
+				- TBD: add result name to mach_run() exception list
+				- TBD: comment out old result class and remove from import (in nnew name)
+			- TBD: test & clean-up
+				- TBD: test
+				- TBD: clean-up game_update(), result_class(), mach_class() [??]
+		- TBD: git branch merge with master
+			- TBD: 'git checkout master' to switch focus to master
+			- TBD: 'git branch: to confirm focus
+			- TBD: 'git merge AddObjToRoomResult_feature -m "branch AddObjToRoomResult_feature merge"'
+			- TBD: 'git push' to push merge to origin (GitHub)
+			- TBD: confirm that origin is updated
+			- TBD: confirm that code is updated and still runs
+			- TBD: 'git branch -d AddObjToRoomResult_feature' to clean-up local branch
+			- TBD: 'git push origin --delete AddObjToRoomResult_feature' to clean up origin
+			- TBD: confirm origin is cleaned up
+			- TBD: post-branch-delete run test
+
 
 	- TBD: <TEMPLATE>
 		- TBD: create new <FEATURE_NAME>_feature git branch
