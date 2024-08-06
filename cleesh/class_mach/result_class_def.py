@@ -18,12 +18,12 @@
 # ChgDescriptResult	:		BaseResult :		base + change obj descript_key
 # GiveItemResult : 			BaseResult :		base + give item_obj to tgt_creature
 # TakeItemResult :			BaseResult :		base + creature_obj takes item_obj
+# DispenseObjResult :		BaseResult :		base + dispense obj to room
 
 # *** legacy ***
 # BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
 
 # *** simple cases ***
-# AddObjToRoomResult :		BufferOnlyResult :	buff, obj => hero_rm.floor_lst; sets mach_state = True [get mach rm? atttrib name => obj not item?][not called]
 # TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir [not called]
 # StartTimerResult :		BufferOnlyResult :	buff, starts timer [not called]
 
@@ -41,6 +41,7 @@
 # ChgCreatureDescAndStateResult BufferOnlyResult : buff, change creature descript, set mach_state = True
 # BufferAndGiveResult :		BufferOnlyResult :	buff, obj => hero hand; sets mach_state = True [need creature attrib]
 # PutItemInHandResult :		BufferOnlyResult :	buff, put item in creature hand, remove item from creature bkpk [REFACT w/ take?]
+# AddObjToRoomResult :		BufferOnlyResult :	buff, obj => hero_rm.floor_lst; sets mach_state = True [get mach rm? atttrib name => obj not item?][not called]
 
 ### classes
 
@@ -173,7 +174,40 @@ class TakeItemResult(BaseResult):
 	def result_exe(self, gs, mach_state, alert_anchor):
 		gs.map.get_obj_room(self.creature_obj, gs).remove_item(self.item_obj, gs)
 		self.creature_obj.put_in_hand(self.item_obj, gs)
-		return super(TakeItemResult, self).result_exe(gs, mach_state, alert_anchor) 
+		return super(TakeItemResult, self).result_exe(gs, mach_state, alert_anchor)
+
+
+class DispenseObjResult(BaseResult):
+	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override, dispense_obj, room_obj):
+		super().__init__(name, is_mach_state_set, mach_state_val, cmd_override)
+		self._dispense_obj = dispense_obj # obj to be dispensed to room.floor_lst
+		self._room_obj = room_obj # room that obj will be dispensed to
+
+	@property
+	def dispense_obj(self):
+		return self._dispense_obj
+
+	@dispense_obj.setter
+	def dispense_obj(self, new_val):
+		self._dispense_obj = new_val
+
+	@property
+	def room_obj(self):
+		return self._room_obj
+
+	@room_obj.setter
+	def room_obj(self, new_val):
+		self._room_obj = new_val
+
+#	def result_exe(self, gs, mach_state):
+	def result_exe(self, gs, mach_state, alert_anchor):
+#		gs.io.buff_s(self.name)
+#		gs.map.hero_rm.floor_lst_append(self.room_item)
+		self.room_obj.floor_lst_append(self.dispense_obj)
+#		mach_state = True
+#		return mach_state, self.cmd_override
+		return super(DispenseObjResult, self).result_exe(gs, mach_state, alert_anchor)
+
 
 
 ### *** NEW RESULT CLASSES ***
@@ -292,29 +326,29 @@ class BufferOnlyResult(object):
 #		return mach_state, self.cmd_override
 
 
+# class AddObjToRoomResult(BufferOnlyResult):
+#	def __init__(self, name, room_item, cmd_override):
+#		super().__init__(name, cmd_override)
+#		self._room_item = room_item # item to be added to floor_lst
+
+#	@property
+#	def room_item(self):
+#		return self._room_item
+
+#	@room_item.setter
+#	def room_item(self, new_val):
+#		self._room_item = new_val
+
+#	def result_exe(self, gs, mach_state):
+#		gs.io.buff_s(self.name)
+#		gs.map.hero_rm.floor_lst_append(self.room_item)
+#		mach_state = True
+#		return mach_state, self.cmd_override
+
+
 ### *** OLD RESULT CLASSES TO REVIEW ***
 
 ### *** TO BE REVIEWED ***
-
-
-class AddObjToRoomResult(BufferOnlyResult):
-	def __init__(self, name, room_item, cmd_override):
-		super().__init__(name, cmd_override)
-		self._room_item = room_item # item to be added to floor_lst
-
-	@property
-	def room_item(self):
-		return self._room_item
-
-	@room_item.setter
-	def room_item(self, new_val):
-		self._room_item = new_val
-
-	def result_exe(self, gs, mach_state):
-		gs.io.buff_s(self.name)
-		gs.map.hero_rm.floor_lst_append(self.room_item)
-		mach_state = True
-		return mach_state, self.cmd_override
 
 
 class AddObjChgDescriptResult(BufferOnlyResult):

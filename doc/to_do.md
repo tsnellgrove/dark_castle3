@@ -517,7 +517,7 @@ Version 3.87.0 Goals:
 			- DONE: 'git push origin --delete PutItemInHandResult_feature' to clean up origin
 			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
-	- INPROC: AddObjToRoomResult Update
+	- INPROC: AddObjToRoomResult => DispenseObjResult Update
 		- DONE: create new AddObjToRoomResult_feature git branch
 			- DONE: 'git branch' to confirm *master
 			- DONE: 'git branch AddObjToRoomResult_feature' to create new branch
@@ -532,23 +532,23 @@ Version 3.87.0 Goals:
 			- DONE: 'git commit -m "doc updates"
 			- DONE: 'git push" to push updates to origin (GitHub)
 			- DONE: confirm new branch on GitHub is now ahead of master
-		- TBD: refactor AddObjToRoomResult
-			- TBD: result class updates
-				- TBD: copy existing class; change parent to BaseResult and update class name
-				- TBD: update attribs and setters and getters
-				- TBD: update result_exe() attribs
-				- TBD: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
-				- TBD: specific class changes: room_item => obj
-			- TBD: update game files
-				- TBD: add new result class to game_update imports
-				- TBD: update Result obj name if appropriate
-				- TBD: update game_update result obj classes, attribs, and post-assignment updates
-				- TBD: set mach_state appropriately
-				- TBD: update post-attrib assignment if needed
-				- TBD: add result name to mach_run() exception list
-				- TBD: comment out old result class and remove from import (in nnew name)
-			- TBD: test & clean-up
-				- TBD: test
+		- INPROC: refactor AddObjToRoomResult => DispenseObjResult
+			- DONE: result class updates
+				- DONE: copy existing class; change parent to BaseResult and update class name
+				- DONE: update attribs and setters and getters
+				- DONE: update result_exe() attribs
+				- DONE: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
+				- DONE: specific class changes: room_item => dispense_obj; include room_obj as class attrib
+			- DONE: update game files
+				- DONE: add new result class to game_update imports
+				- N/A: update Result obj name if appropriate
+				- N/A: update game_update result obj classes, attribs, and post-assignment updates
+				- N/A: set mach_state appropriately
+				- N/A: update post-attrib assignment if needed
+				- N/A: add result name to mach_run() exception list
+				- DONE: comment out old result class and remove from import (in new name)
+			- INPROC: test & clean-up
+				- DONE: test
 				- TBD: clean-up game_update(), result_class(), mach_class() [??]
 		- TBD: git branch merge with master
 			- TBD: 'git checkout master' to switch focus to master
@@ -592,7 +592,7 @@ Version 3.87.0 Goals:
 				- TBD: set mach_state appropriately
 				- TBD: update post-attrib assignment if needed
 				- TBD: add result name to mach_run() exception list
-				- TBD: comment out old result class and remove from import (in nnew name)
+				- TBD: comment out old result class and remove from import (in new name)
 			- TBD: test & clean-up
 				- TBD: test
 				- TBD: clean-up game_update(), result_class(), mach_class() [??]
