@@ -532,7 +532,7 @@ Version 3.87.0 Goals:
 			- DONE: 'git commit -m "doc updates"
 			- DONE: 'git push" to push updates to origin (GitHub)
 			- DONE: confirm new branch on GitHub is now ahead of master
-		- INPROC: refactor AddObjToRoomResult => DispenseObjResult
+		- DONE: refactor AddObjToRoomResult => DispenseObjResult
 			- DONE: result class updates
 				- DONE: copy existing class; change parent to BaseResult and update class name
 				- DONE: update attribs and setters and getters
@@ -547,9 +547,9 @@ Version 3.87.0 Goals:
 				- N/A: update post-attrib assignment if needed
 				- N/A: add result name to mach_run() exception list
 				- DONE: comment out old result class and remove from import (in new name)
-			- INPROC: test & clean-up
+			- DONE: test & clean-up
 				- DONE: test
-				- TBD: clean-up game_update(), result_class(), mach_class() [??]
+				- DONE: clean-up game_update(), result_class(), mach_class() [??]
 		- TBD: git branch merge with master
 			- TBD: 'git checkout master' to switch focus to master
 			- TBD: 'git branch: to confirm focus

@@ -199,13 +199,8 @@ class DispenseObjResult(BaseResult):
 	def room_obj(self, new_val):
 		self._room_obj = new_val
 
-#	def result_exe(self, gs, mach_state):
 	def result_exe(self, gs, mach_state, alert_anchor):
-#		gs.io.buff_s(self.name)
-#		gs.map.hero_rm.floor_lst_append(self.room_item)
 		self.room_obj.floor_lst_append(self.dispense_obj)
-#		mach_state = True
-#		return mach_state, self.cmd_override
 		return super(DispenseObjResult, self).result_exe(gs, mach_state, alert_anchor)
 
 
