@@ -517,7 +517,7 @@ Version 3.87.0 Goals:
 			- DONE: 'git push origin --delete PutItemInHandResult_feature' to clean up origin
 			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
-	- INPROC: AddObjToRoomResult => DispenseObjResult Update
+	- DONE: AddObjToRoomResult => DispenseObjResult Update
 		- DONE: create new AddObjToRoomResult_feature git branch
 			- DONE: 'git branch' to confirm *master
 			- DONE: 'git branch AddObjToRoomResult_feature' to create new branch
@@ -550,17 +550,29 @@ Version 3.87.0 Goals:
 			- DONE: test & clean-up
 				- DONE: test
 				- DONE: clean-up game_update(), result_class(), mach_class() [??]
-		- INPROC: git branch merge with master
+		- DONE: git branch merge with master
 			- DONE: 'git checkout master' to switch focus to master
 			- DONE: 'git branch: to confirm focus
 			- DONE: 'git merge AddObjToRoomResult_feature -m "branch AddObjToRoomResult_feature merge"'
 			- DONE: 'git push' to push merge to origin (GitHub)
 			- DONE: confirm that origin is updated
 			- DONE: confirm that code is updated and still runs
-			- TBD: 'git branch -d AddObjToRoomResult_feature' to clean-up local branch
-			- TBD: 'git push origin --delete AddObjToRoomResult_feature' to clean up origin
-			- TBD: confirm origin is cleaned up
-			- TBD: post-branch-delete run test
+			- DONE: 'git branch -d AddObjToRoomResult_feature' to clean-up local branch
+			- DONE: 'git push origin --delete AddObjToRoomResult_feature' to clean up origin
+			- DONE: confirm origin is cleaned up
+			- DONE: post-branch-delete run test
+
+
+	- IDEA: next to dos
+		- IDEA: build update
+		- IDEA: new build for combos: 
+			- IDEA: AddObjChgDescriptResult => ChgDescriptResult + DispenseObjResult
+			- IDEA: AddObjToRoomAndDescriptResult => ChgDescriptResult + DispenseObjResult
+		- IDEA: timer result class
+			- IDEA: simple timer class
+			- IDEA: combo timer class
+		- IDEA: build update for combo cases
+		- IDEA: final result class build for refactor cases (including travel)
 
 
 	- TBD: <TEMPLATE>
