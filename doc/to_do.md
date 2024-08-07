@@ -268,7 +268,7 @@ Version 3.87.0 Goals:
 				- FINDING: also, needed to put switch option first in 'or' logic - to avoid is_enabled() eval
 	- DONE: clean up comments in mach_class(), room_class(), post_action()
 
-- INPROC: result review + simple cases (build 0007) []
+- DONE: result review + simple cases (build 0007) [Aug 7, 2024]
 	- DONE: review and categorize existing results
 	- DONE: initial result decision-making
 		- DONE: decide if I should attempt to use super() on inherited results
@@ -563,17 +563,19 @@ Version 3.87.0 Goals:
 			- DONE: post-branch-delete run test
 
 
-	- IDEA: next to dos
-		- IDEA: build update
-		- IDEA: new build for combos: 
-			- IDEA: AddObjChgDescriptResult => ChgDescriptResult + DispenseObjResult
-			- IDEA: AddObjToRoomAndDescriptResult => ChgDescriptResult + DispenseObjResult
-		- IDEA: timer result class
-			- IDEA: simple timer class
-			- IDEA: combo timer class
-		- IDEA: build update for combo cases
-		- IDEA: final result class build for refactor cases (including travel)
+- TBD: combo Result cases (build 0008) []
+	- TBD: ChgDescriptResult + DispenseObjResult
+		- TBD: AddObjChgDescriptResult => ChgDescriptResult + DispenseObjResult
+		- TBD: AddObjToRoomAndDescriptResult => ChgDescriptResult + DispenseObjResult
+	- TBD: timer result class
+		- TBD: simple timer class
+		- TBD: combo timer class
 
+
+- IDEA: final result class build for refactor cases (including travel)
+
+
+- TBD: update call from run_mach(); self.mach_state => self.alert_anchor
 
 	- TBD: <TEMPLATE>
 		- TBD: create new <FEATURE_NAME>_feature git branch
@@ -619,7 +621,6 @@ Version 3.87.0 Goals:
 			- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
 			- TBD: confirm origin is cleaned up
 			- TBD: post-branch-delete run test
-	- TBD: update call from run_mach(); self.mach_state => self.alert_anchor
 
 
 - TBD: mach review
