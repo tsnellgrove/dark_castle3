@@ -579,8 +579,20 @@ Version 3.87.0 Goals:
 		- DONE: 'git commit -m "doc updates"
 		- DONE: 'git push" to push updates to origin (GitHub)
 		- DONE: confirm new branch on GitHub is now ahead of master
-	- TBD: ChgDescriptResult + DispenseObjResult
-		- TBD: AddObjChgDescriptResult => ChgDescriptResult + DispenseObjResult
+	- INPROC: AddObjChgDescriptResult => ChgDescriptResult + DispenseObjResult
+		- DONE: create ChgDescriptResult obj game_update
+		- DONE: create DispenseObjResult obj game_update
+		- DONE: comment out old AddObjChgDescriptResult obj in game_update
+		- DONE: set mach_state appropriately
+		- DONE: update post-attrib assignment if needed
+		- DONE: add result name to mach_run() exception list
+		- DONE: test
+		- DONE: comment out old result class and remove from import (in new name)
+		- TBD: clean up  comments in result_class, game_update
+
+
+
+
 		- TBD: AddObjToRoomAndDescriptResult => ChgDescriptResult + DispenseObjResult
 	- TBD: timer result class
 		- TBD: simple timer class
@@ -848,6 +860,8 @@ Version 3.87.0 Goals:
 - TBD: instantiate obj in hero inventory
 
 *** story-driven updates ***
+
+- TBD: fix case where sword is in Burt's inventory and tries to take in Entrance but royal_hedgehog stops him
 
 - TBD: sort out double print of score after win
 

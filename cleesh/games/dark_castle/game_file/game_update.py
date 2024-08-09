@@ -23,7 +23,7 @@ from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond
 from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, GiveItemResult, 
 		TakeItemResult, DispenseObjResult, 
 		BufferOnlyResult, 
-		DoorToggleResult, AttackBurtResult, StartTimerResult, AddObjChgDescriptResult,
+		DoorToggleResult, AttackBurtResult, StartTimerResult,
 		TimerAndCreatureItemResult, TravelResult, AddObjToRoomAndDescriptResult)
 from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from cleesh.class_std.creature_class_def import Creature
@@ -161,8 +161,10 @@ fed_hedgehog_keeps_sword_result = ChgDescriptResult('fed_hedgehog_keeps_sword_re
 fed_hedgehog_loses_sword_result = ChgDescriptResult('fed_hedgehog_loses_sword_result', True, True, False, 'royal_hedgehog_temp', 'hedgehog_desc_yearn')
 moat_get_crown_result = GiveItemResult('moat_get_crown_result', True, True, True, royal_crown, 'temp_burt')
 goblin_take_axe_result = TakeItemResult('goblin_take_axe_result', False, None, False, 'guard_goblin_temp', grimy_axe)
+throne_pull_result1 = ChgDescriptResult('throne_pull_result1', False, None, False, throne, 'throne_post_broach')
+throne_pull_result2 = DispenseObjResult('throne_pull_result2', True, True, False, hedgehog_broach, 'throne_room_temp')
 
-throne_pull_result = AddObjChgDescriptResult('throne_pull_result', hedgehog_broach, throne, 'throne_post_broach', False)
+# throne_pull_result = AddObjChgDescriptResult('throne_pull_result', hedgehog_broach, throne, 'throne_post_broach', False)
 dispense_panel_result = AddObjToRoomAndDescriptResult('dispense_panel_result', 'temp_control_panel', False)
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
 goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'guard_goblin_temp', True)
@@ -184,7 +186,7 @@ entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None,
 
 broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 'post_act_switch', throne, ['pushed', 'pulled'],
 		[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
-		[nothing_happens_result, throne_push_result, throne_pull_result],
+		[nothing_happens_result, throne_push_result, [throne_pull_result1, throne_pull_result2]],
 		'throne_room_temp', True) # mach_state == broach_dispensed
 
 dispense_panel_mach = InvisMach('dispense_panel_mach', False, 'auto_act', None, None, None, 
@@ -382,6 +384,7 @@ fed_hedgehog_keeps_sword_result.obj = royal_hedgehog
 fed_hedgehog_loses_sword_result.obj = royal_hedgehog
 moat_get_crown_result.tgt_creature = burt
 goblin_take_axe_result.creature_obj = guard_goblin
+throne_pull_result2.room_obj = throne_room
 
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog

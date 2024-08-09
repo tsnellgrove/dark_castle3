@@ -32,7 +32,6 @@
 # DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
 
 # *** combo cases ***
-# AddObjChgDescriptResult : BufferOnlyResult :	AddObjToRoomResult + chg obj descript key + mach_state = True [COMBO]
 # AddObjToRoomAndDescriptResult : BOResult :	similar to AddObjChgDescriptResult; chg rm descript [COMBO] [DEDUP]
 # TimerAndCreatureItemResult StartTimerResult :	buff, starts timer and removes obj from creature hand [REFACT w/ eat???] [COMBO]
 
@@ -42,6 +41,8 @@
 # BufferAndGiveResult :		BufferOnlyResult :	buff, obj => hero hand; sets mach_state = True [need creature attrib]
 # PutItemInHandResult :		BufferOnlyResult :	buff, put item in creature hand, remove item from creature bkpk [REFACT w/ take?]
 # AddObjToRoomResult :		BufferOnlyResult :	buff, obj => hero_rm.floor_lst; sets mach_state = True [get mach rm? atttrib name => obj not item?][not called]
+# AddObjChgDescriptResult : BufferOnlyResult :	AddObjToRoomResult + chg obj descript key + mach_state = True [COMBO]
+
 
 ### classes
 
@@ -341,40 +342,43 @@ class BufferOnlyResult(object):
 #		return mach_state, self.cmd_override
 
 
+# class AddObjChgDescriptResult(BufferOnlyResult):
+#	def __init__(self, name, room_item, descript_obj, new_descript, cmd_override):
+#		super().__init__(name, cmd_override)
+#		self._room_item = room_item # item to be added to floor_lst
+#		self._descript_obj = descript_obj # object for which descript_key will be changed
+#		self._new_descript = new_descript # new descript_key
+
+#	@property
+#	def room_item(self):
+#		return self._room_item
+
+#	@room_item.setter
+#	def room_item(self, new_val):
+#		self._room_item = new_val
+
+#	@property
+#	def descript_obj(self):
+#		return self._descript_obj
+
+#	@property
+#	def new_descript(self):
+#		return self._new_descript
+
+#	def result_exe(self, gs, mach_state):
+#		gs.io.buff_s(self.name)
+#		gs.map.hero_rm.floor_lst_append(self.room_item)
+#		mach_state = True
+#		self.descript_obj.descript_key = self.new_descript
+#		return mach_state, self.cmd_override
+
+
 ### *** OLD RESULT CLASSES TO REVIEW ***
 
 ### *** TO BE REVIEWED ***
 
 
-class AddObjChgDescriptResult(BufferOnlyResult):
-	def __init__(self, name, room_item, descript_obj, new_descript, cmd_override):
-		super().__init__(name, cmd_override)
-		self._room_item = room_item # item to be added to floor_lst
-		self._descript_obj = descript_obj # object for which descript_key will be changed
-		self._new_descript = new_descript # new descript_key
 
-	@property
-	def room_item(self):
-		return self._room_item
-
-	@room_item.setter
-	def room_item(self, new_val):
-		self._room_item = new_val
-
-	@property
-	def descript_obj(self):
-		return self._descript_obj
-
-	@property
-	def new_descript(self):
-		return self._new_descript
-
-	def result_exe(self, gs, mach_state):
-		gs.io.buff_s(self.name)
-		gs.map.hero_rm.floor_lst_append(self.room_item)
-		mach_state = True
-		self.descript_obj.descript_key = self.new_descript
-		return mach_state, self.cmd_override
 
 
 class AddObjToRoomAndDescriptResult(BufferOnlyResult):
