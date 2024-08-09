@@ -565,7 +565,7 @@ Version 3.87.0 Goals:
 
 - INPROC: combo Result cases (build 0008) []
 	- DONE: update Mach class to accept a list of results and run all results in the list
-	- INPROC: create new git branch for AddObjChgDescriptResult_feature
+	- DONE: create new git branch for AddObjChgDescriptResult_feature
 		- DONE: 'git branch' to confirm *master
 		- DONE: 'git branch AddObjChgDescriptResult_feature' to create new branch
 		- DONE: 'git branch' to confirm new branch exists but that master is still checked out
@@ -574,11 +574,11 @@ Version 3.87.0 Goals:
 		- DONE: Publish Branch via VS Code button
 		- DONE: confirm new branch on GitHub
 		- DONE: update doc TBDs to DONEs
-		- TBD: <CMD><OPT>S (to save all files)
-		- TBD: 'git add .' to add files to be committed
-		- TBD: 'git commit -m "doc updates"
-		- TBD: 'git push" to push updates to origin (GitHub)
-		- TBD: confirm new branch on GitHub is now ahead of master
+		- DONE: <CMD><OPT>S (to save all files)
+		- DONE: 'git add .' to add files to be committed
+		- DONE: 'git commit -m "doc updates"
+		- DONE: 'git push" to push updates to origin (GitHub)
+		- DONE: confirm new branch on GitHub is now ahead of master
 	- TBD: ChgDescriptResult + DispenseObjResult
 		- TBD: AddObjChgDescriptResult => ChgDescriptResult + DispenseObjResult
 		- TBD: AddObjToRoomAndDescriptResult => ChgDescriptResult + DispenseObjResult
