@@ -563,7 +563,9 @@ Version 3.87.0 Goals:
 			- DONE: post-branch-delete run test
 
 
-- TBD: combo Result cases (build 0008) []
+- INPROC: combo Result cases (build 0008) []
+	- DONE: update Mach class to accept a list of results and run all results in the list
+	- TBD: create new git branch for result_lst feature 
 	- TBD: ChgDescriptResult + DispenseObjResult
 		- TBD: AddObjChgDescriptResult => ChgDescriptResult + DispenseObjResult
 		- TBD: AddObjToRoomAndDescriptResult => ChgDescriptResult + DispenseObjResult
@@ -779,6 +781,7 @@ Version 3.87.0 Goals:
 
 - TBD: update modular machine doc!
 
+
 *** Eliminated Code ***
 	def run_mach(self, gs):
 		cond_return_lst = []
@@ -790,6 +793,35 @@ Version 3.87.0 Goals:
 		temp_mach_state, cmd_override = result.result_exe(gs, self.mach_state)
 		self.mach_state = temp_mach_state
 		return cmd_override, result.name
+
+# *** start unused code for combo conditions ***
+
+# *** sample input = [['and', cond_1, cond_2]['or', cond_3, cond_4], cond_5] ***
+
+#	def run_mach(self, gs):
+##		print(f"mach running; mach_name = {self.name}") # for troubleshooting
+#		for idx, cond in enumerate(self.cond_lst):
+#			if isinstance(cond, list):
+#				term_1 = cond[1].cond_check(gs, self.mach_state, self.cond_swicth_lst)
+#				for condition in cond[2:]:
+#					term_2 = condition.cond_check(gs, self.mach_state, self.cond_swicth_lst)
+#					if cond[0] == 'and':
+#						combo = term_1 and term_2
+#					elif cond[0] == 'or':
+#						combo = term_1 and term_2
+#					term_1 = combo
+#				if combo:
+#					result = self.result_lst[idx]
+#					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
+#					return cmd_override, result.name
+#			else:
+#				if cond.cond_check(gs, self.mach_state, self.cond_swicth_lst):
+#					result = self.result_lst[idx]
+#					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
+#					return cmd_override, result.name
+
+# *** end unused code for combo conditions ***
+
 
 *** already done ***
 - DONE: How to enable switches and machines to self register for universal scope

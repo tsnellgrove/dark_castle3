@@ -106,40 +106,19 @@ class MachineMixIn(object):
 							'tea_drunk_win_result', 'die_in_moat_result', 'scroll_win_game_result', 
 							'fed_hedgehog_keeps_sword_result', 'fed_hedgehog_loses_sword_result', 'moat_get_crown_result',
 							'goblin_take_axe_result']):
-					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state, self.alert_anchor)
+					if isinstance(result, list):
+							for result_element in result:
+								element_mach_state, element_cmd_override = result_element.result_exe(gs, self.mach_state, self.alert_anchor)		
+								if element_cmd_override == True:
+									cmd_override = True
+								if element_mach_state != None:
+									self.mach_state = element_mach_state
+					else:
+						self.mach_state, cmd_override = result.result_exe(gs, self.mach_state, self.alert_anchor)
 				else:
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
 				return cmd_override, result.name
 		return False, 'pass_result'
-
-
-# *** start unused code for combo conditions ***
-
-# sample input = [['and', cond_1, cond_2]['or', cond_3, cond_4], cond_5]
-
-#	def run_mach(self, gs):
-##		print(f"mach running; mach_name = {self.name}") # for troubleshooting
-#		for idx, cond in enumerate(self.cond_lst):
-#			if isinstance(cond, list):
-#				term_1 = cond[1].cond_check(gs, self.mach_state, self.cond_swicth_lst)
-#				for condition in cond[2:]:
-#					term_2 = condition.cond_check(gs, self.mach_state, self.cond_swicth_lst)
-#					if cond[0] == 'and':
-#						combo = term_1 and term_2
-#					elif cond[0] == 'or':
-#						combo = term_1 and term_2
-#					term_1 = combo
-#				if combo:
-#					result = self.result_lst[idx]
-#					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
-#					return cmd_override, result.name
-#			else:
-#				if cond.cond_check(gs, self.mach_state, self.cond_swicth_lst):
-#					result = self.result_lst[idx]
-#					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
-#					return cmd_override, result.name
-
-# *** end unused code for combo conditions ***
 
 
 class InvisMach(MachineMixIn, Invisible):
