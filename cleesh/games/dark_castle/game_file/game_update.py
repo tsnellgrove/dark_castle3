@@ -164,7 +164,6 @@ goblin_take_axe_result = TakeItemResult('goblin_take_axe_result', False, None, F
 throne_pull_result1 = ChgDescriptResult('throne_pull_result1', False, None, False, throne, 'throne_post_broach')
 throne_pull_result2 = DispenseObjResult('throne_pull_result2', True, True, False, hedgehog_broach, 'throne_room_temp')
 
-# throne_pull_result = AddObjChgDescriptResult('throne_pull_result', hedgehog_broach, throne, 'throne_post_broach', False)
 dispense_panel_result = AddObjToRoomAndDescriptResult('dispense_panel_result', 'temp_control_panel', False)
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
 goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'guard_goblin_temp', True)

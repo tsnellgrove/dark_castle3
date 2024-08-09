@@ -579,7 +579,7 @@ Version 3.87.0 Goals:
 		- DONE: 'git commit -m "doc updates"
 		- DONE: 'git push" to push updates to origin (GitHub)
 		- DONE: confirm new branch on GitHub is now ahead of master
-	- INPROC: AddObjChgDescriptResult => ChgDescriptResult + DispenseObjResult
+	- DONE: AddObjChgDescriptResult => ChgDescriptResult + DispenseObjResult
 		- DONE: create ChgDescriptResult obj game_update
 		- DONE: create DispenseObjResult obj game_update
 		- DONE: comment out old AddObjChgDescriptResult obj in game_update
@@ -588,7 +588,7 @@ Version 3.87.0 Goals:
 		- DONE: add result name to mach_run() exception list
 		- DONE: test
 		- DONE: comment out old result class and remove from import (in new name)
-		- TBD: clean up  comments in result_class, game_update
+		- DONE: clean up  comments in result_class, game_update
 
 
 

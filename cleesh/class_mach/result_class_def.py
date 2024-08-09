@@ -378,9 +378,6 @@ class BufferOnlyResult(object):
 ### *** TO BE REVIEWED ***
 
 
-
-
-
 class AddObjToRoomAndDescriptResult(BufferOnlyResult):
 	def __init__(self, name, room_item, cmd_override):
 		super().__init__(name, cmd_override)
