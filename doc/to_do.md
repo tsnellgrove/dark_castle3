@@ -599,7 +599,17 @@ Version 3.87.0 Goals:
 		- DONE: test
 		- DONE: comment out old result class and remove from import (in new name)
 		- DONE: clean up  comments in result_class(), game_update(), game_static_gbl()
-
+	- INPROC: git branch merge with master
+		- DONE: 'git checkout master' to switch focus to master
+		- DONE: 'git branch: to confirm focus
+		- DONE: 'git merge AddObjChgDescriptResult_feature -m "branch AddObjChgDescriptResult_feature merge"'
+		- DONE: 'git push' to push merge to origin (GitHub)
+		- DONE: confirm that origin is updated
+		- DONE: confirm that code is updated and still runs
+		- TBD: 'git branch -d AddObjChgDescriptResult_feature' to clean-up local branch
+		- TBD: 'git push origin --delete AddObjChgDescriptResult_feature' to clean up origin
+		- TBD: confirm origin is cleaned up
+		- TBD: post-branch-delete run test
 
 
 		- TBD: AddObjToRoomAndDescriptResult => ChgDescriptResult + DispenseObjResult
