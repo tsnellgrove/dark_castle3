@@ -565,62 +565,60 @@ Version 3.87.0 Goals:
 
 - INPROC: combo Result cases (build 0008) []
 	- DONE: update Mach class to accept a list of results and run all results in the list
-	- DONE: create new git branch for AddObjChgDescriptResult_feature
-		- DONE: 'git branch' to confirm *master
-		- DONE: 'git branch AddObjChgDescriptResult_feature' to create new branch
-		- DONE: 'git branch' to confirm new branch exists but that master is still checked out
-		- DONE: 'git checkout AddObjChgDescriptResult_feature' to switch focus to branching_test branch
-		- DONE: 'git branch' to confirm new branch is now in focus
-		- DONE: Publish Branch via VS Code button
-		- DONE: confirm new branch on GitHub
-		- DONE: update doc TBDs to DONEs
-		- DONE: <CMD><OPT>S (to save all files)
-		- DONE: 'git add .' to add files to be committed
-		- DONE: 'git commit -m "doc updates"
-		- DONE: 'git push" to push updates to origin (GitHub)
-		- DONE: confirm new branch on GitHub is now ahead of master
-	- DONE: AddObjChgDescriptResult => ChgDescriptResult + DispenseObjResult
-		- DONE: create ChgDescriptResult obj game_update
-		- DONE: create DispenseObjResult obj game_update
-		- DONE: comment out old AddObjChgDescriptResult obj in game_update
-		- DONE: set mach_state appropriately
-		- DONE: update post-attrib assignment if needed
-		- DONE: add result name to mach_run() exception list
-		- DONE: test
-		- DONE: comment out old result class and remove from import (in new name)
-		- DONE: clean up  comments in result_class, game_update
-	- DONE: AddObjToRoomAndDescriptResult => ChgDescriptResult + DispenseObjResult
-		- DONE: create ChgDescriptResult obj game_update
-		- DONE: create DispenseObjResult obj game_update
-		- DONE: comment out old AddObjToRoomAndDescriptResult obj in game_update
-		- DONE: set mach_state appropriately
-		- DONE: update post-attrib assignment if needed
-		- DONE: add result name to mach_run() exception list
-		- DONE: test
-		- DONE: comment out old result class and remove from import (in new name)
-		- DONE: clean up  comments in result_class(), game_update(), game_static_gbl()
-	- INPROC: git branch merge with master
-		- DONE: 'git checkout master' to switch focus to master
-		- DONE: 'git branch: to confirm focus
-		- DONE: 'git merge AddObjChgDescriptResult_feature -m "branch AddObjChgDescriptResult_feature merge"'
-		- DONE: 'git push' to push merge to origin (GitHub)
-		- DONE: confirm that origin is updated
-		- DONE: confirm that code is updated and still runs
-		- TBD: 'git branch -d AddObjChgDescriptResult_feature' to clean-up local branch
-		- TBD: 'git push origin --delete AddObjChgDescriptResult_feature' to clean up origin
-		- TBD: confirm origin is cleaned up
-		- TBD: post-branch-delete run test
+	- DONE: sort out AddObjChgDescriptResult and AddObjToRoomAndDescriptResult combos
+		- DONE: create new git branch for AddObjChgDescriptResult_feature
+			- DONE: 'git branch' to confirm *master
+			- DONE: 'git branch AddObjChgDescriptResult_feature' to create new branch
+			- DONE: 'git branch' to confirm new branch exists but that master is still checked out
+			- DONE: 'git checkout AddObjChgDescriptResult_feature' to switch focus to branching_test branch
+			- DONE: 'git branch' to confirm new branch is now in focus
+			- DONE: Publish Branch via VS Code button
+			- DONE: confirm new branch on GitHub
+			- DONE: update doc TBDs to DONEs
+			- DONE: <CMD><OPT>S (to save all files)
+			- DONE: 'git add .' to add files to be committed
+			- DONE: 'git commit -m "doc updates"
+			- DONE: 'git push" to push updates to origin (GitHub)
+			- DONE: confirm new branch on GitHub is now ahead of master
+		- DONE: AddObjChgDescriptResult => ChgDescriptResult + DispenseObjResult
+			- DONE: create ChgDescriptResult obj game_update
+			- DONE: create DispenseObjResult obj game_update
+			- DONE: comment out old AddObjChgDescriptResult obj in game_update
+			- DONE: set mach_state appropriately
+			- DONE: update post-attrib assignment if needed
+			- DONE: add result name to mach_run() exception list
+			- DONE: test
+			- DONE: comment out old result class and remove from import (in new name)
+			- DONE: clean up  comments in result_class, game_update
+		- DONE: AddObjToRoomAndDescriptResult => ChgDescriptResult + DispenseObjResult
+			- DONE: create ChgDescriptResult obj game_update
+			- DONE: create DispenseObjResult obj game_update
+			- DONE: comment out old AddObjToRoomAndDescriptResult obj in game_update
+			- DONE: set mach_state appropriately
+			- DONE: update post-attrib assignment if needed
+			- DONE: add result name to mach_run() exception list
+			- DONE: test
+			- DONE: comment out old result class and remove from import (in new name)
+			- DONE: clean up  comments in result_class(), game_update(), game_static_gbl()
+		- DONE: git branch merge with master
+			- DONE: 'git checkout master' to switch focus to master
+			- DONE: 'git branch: to confirm focus
+			- DONE: 'git merge AddObjChgDescriptResult_feature -m "branch AddObjChgDescriptResult_feature merge"'
+			- DONE: 'git push' to push merge to origin (GitHub)
+			- DONE: confirm that origin is updated
+			- DONE: confirm that code is updated and still runs
+			- DONE: 'git branch -d AddObjChgDescriptResult_feature' to clean-up local branch
+			- DONE: 'git push origin --delete AddObjChgDescriptResult_feature' to clean up origin
+			- DONE: confirm origin is cleaned up
+			- DONE: post-branch-delete run test
+	- TBD: sort out TimerAndCreatureItemResult combo result
+		- TBD: git branch for TimerAndCreatureItemResult
+		- TBD: refactor StartTimerResult
+		- TBD: create RemoveObjResult
+		- TBD: TimerAndCreatureItemResult => StartTimerResult + RemoveObjResult
+		- TBD: merge git branch for TimerAndCreatureItemResult
 
-
-		- TBD: AddObjToRoomAndDescriptResult => ChgDescriptResult + DispenseObjResult
-	- TBD: timer result class
-		- TBD: simple timer class
-		- TBD: combo timer class
-
-
-- IDEA: final result class build for refactor cases (including travel)
-
-
+- TBD: final result class build for refactor cases (including travel)
 - TBD: update call from run_mach(); self.mach_state => self.alert_anchor
 
 	- TBD: <TEMPLATE>
