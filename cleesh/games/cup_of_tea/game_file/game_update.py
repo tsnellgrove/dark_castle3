@@ -24,7 +24,7 @@ from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescri
 		TakeItemResult, DispenseObjResult, 
 		BufferOnlyResult, 
 		DoorToggleResult, AttackBurtResult, StartTimerResult,
-		TimerAndCreatureItemResult, TravelResult, AddObjToRoomAndDescriptResult)
+		TimerAndCreatureItemResult, TravelResult)
 from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from cleesh.class_std.creature_class_def import Creature
 from cleesh.class_gs.gs_class_def import GameState

@@ -24,15 +24,15 @@
 # BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
 
 # *** simple cases ***
-# TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir [not called]
 # StartTimerResult :		BufferOnlyResult :	buff, starts timer [not called]
+# RemoveObjResult :			<TBD> :				remove obj from game [new result for timer combo]
+# TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir [not called]
 
 # *** refactor cases ***
 # AttackBurtResult :		BufferOnlyResult :	buff, creature attacks burt [REFACT?] [address in_hand in creature.attack()?]
 # DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
 
 # *** combo cases ***
-# AddObjToRoomAndDescriptResult : BOResult :	similar to AddObjChgDescriptResult; chg rm descript [COMBO] [DEDUP]
 # TimerAndCreatureItemResult StartTimerResult :	buff, starts timer and removes obj from creature hand [REFACT w/ eat???] [COMBO]
 
 # deleted
@@ -42,7 +42,7 @@
 # PutItemInHandResult :		BufferOnlyResult :	buff, put item in creature hand, remove item from creature bkpk [REFACT w/ take?]
 # AddObjToRoomResult :		BufferOnlyResult :	buff, obj => hero_rm.floor_lst; sets mach_state = True [get mach rm? atttrib name => obj not item?][not called]
 # AddObjChgDescriptResult : BufferOnlyResult :	AddObjToRoomResult + chg obj descript key + mach_state = True [COMBO]
-
+# AddObjToRoomAndDescriptResult : BOResult :	similar to AddObjChgDescriptResult; chg rm descript [COMBO] [DEDUP]
 
 ### classes
 
@@ -373,35 +373,35 @@ class BufferOnlyResult(object):
 #		return mach_state, self.cmd_override
 
 
+# class AddObjToRoomAndDescriptResult(BufferOnlyResult):
+#	def __init__(self, name, room_item, cmd_override):
+#		super().__init__(name, cmd_override)
+#		self._room_item = room_item # item to be added to floor_lst
+
+#	@property
+#	def room_item(self):
+#		return self._room_item
+
+#	@room_item.setter
+#	def room_item(self, new_val):
+#		self._room_item = new_val
+
+#	def result_exe(self, gs, mach_state):
+#		gs.io.buff_s(self.name)
+#		room_obj = gs.map.hero_rm
+#		room_obj.floor_lst_append(self.room_item)
+
+#		new_descript_key = f"{room_obj.name}_{self.name}"
+#		if gs.io.chk_str_exist(new_descript_key):
+#			room_obj.descript_key = new_descript_key
+
+#		mach_state = True
+#		return mach_state, self.cmd_override
+
+
 ### *** OLD RESULT CLASSES TO REVIEW ***
 
 ### *** TO BE REVIEWED ***
-
-
-class AddObjToRoomAndDescriptResult(BufferOnlyResult):
-	def __init__(self, name, room_item, cmd_override):
-		super().__init__(name, cmd_override)
-		self._room_item = room_item # item to be added to floor_lst
-
-	@property
-	def room_item(self):
-		return self._room_item
-
-	@room_item.setter
-	def room_item(self, new_val):
-		self._room_item = new_val
-
-	def result_exe(self, gs, mach_state):
-		gs.io.buff_s(self.name)
-		room_obj = gs.map.hero_rm
-		room_obj.floor_lst_append(self.room_item)
-
-		new_descript_key = f"{room_obj.name}_{self.name}"
-		if gs.io.chk_str_exist(new_descript_key):
-			room_obj.descript_key = new_descript_key
-
-		mach_state = True
-		return mach_state, self.cmd_override
 
 
 class DoorToggleResult(BufferOnlyResult):

@@ -213,6 +213,8 @@ game_static_dict = {
 	'toggle_portcullis_result' : "You hear a loud clank, a whirring of gears, and the Iron Portcullis suddenly ",		
 	'portcullis_doesnt_open_result' : "You press the button and hear a whirring of gears but nothing happens.",
 
+	'antechamber_with_panel' :"You are standing in a what feels more like a wide, tall-ceilinged corridor than a room. Apparently this is the room-before-the-room, the pre-room before the really, really grand room that comes after it. If so, the next room must be quite something because back in it's day this spot was clearly impressive. Alas, like all of the castle it has fallen on dark times and now feels more sinister than grand. The east and west walls are bare stone. To the south is an open passageway leading to the Main Hall and to the north there is an Iron Portcullis that guards the path to the grand chamber beyond. Near the Iron Portcullis on the west wall there is a small Alcove. It appears to have a Control Panel with some levers and a button on it.",
+
 #		'hedgehog_guard_result' : "The moment you approach the Shiny Sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's Fierce Teeth.",
 	'fed_hedgehog_keeps_sword_result' : "The Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.",
 	'fed_hedgehog_loses_sword_result' : "The Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.",
@@ -228,9 +230,6 @@ game_static_dict = {
 
 
 	#### AUTO-DISP ####
-
-	### updated room descriptions ###
-	'antechamber_dispense_panel_result' :"You are standing in a what feels more like a wide, tall-ceilinged corridor than a room. Apparently this is the room-before-the-room, the pre-room before the really, really grand room that comes after it. If so, the next room must be quite something because back in it's day this spot was clearly impressive. Alas, like all of the castle it has fallen on dark times and now feels more sinister than grand. The east and west walls are bare stone. To the south is an open passageway leading to the Main Hall and to the north there is an Iron Portcullis that guards the path to the grand chamber beyond. Near the Iron Portcullis on the west wall there is a small Alcove. It appears to have a Control Panel with some levers and a button on it.",
 
 	### enter descriptions ###
 	'burt_enter_throne_pre_broach' : "Sitting in the throne, it feels slightly out of kilter - as if it's been pushed or pulled out of alignment by something...",

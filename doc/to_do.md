@@ -589,7 +589,16 @@ Version 3.87.0 Goals:
 		- DONE: test
 		- DONE: comment out old result class and remove from import (in new name)
 		- DONE: clean up  comments in result_class, game_update
-
+	- DONE: AddObjToRoomAndDescriptResult => ChgDescriptResult + DispenseObjResult
+		- DONE: create ChgDescriptResult obj game_update
+		- DONE: create DispenseObjResult obj game_update
+		- DONE: comment out old AddObjToRoomAndDescriptResult obj in game_update
+		- DONE: set mach_state appropriately
+		- DONE: update post-attrib assignment if needed
+		- DONE: add result name to mach_run() exception list
+		- DONE: test
+		- DONE: comment out old result class and remove from import (in new name)
+		- DONE: clean up  comments in result_class(), game_update(), game_static_gbl()
 
 
 

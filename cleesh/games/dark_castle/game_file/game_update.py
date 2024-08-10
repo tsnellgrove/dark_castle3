@@ -24,7 +24,7 @@ from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescri
 		TakeItemResult, DispenseObjResult, 
 		BufferOnlyResult, 
 		DoorToggleResult, AttackBurtResult, StartTimerResult,
-		TimerAndCreatureItemResult, TravelResult, AddObjToRoomAndDescriptResult)
+		TimerAndCreatureItemResult, TravelResult)
 from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from cleesh.class_std.creature_class_def import Creature
 from cleesh.class_gs.gs_class_def import GameState
@@ -163,8 +163,9 @@ moat_get_crown_result = GiveItemResult('moat_get_crown_result', True, True, True
 goblin_take_axe_result = TakeItemResult('goblin_take_axe_result', False, None, False, 'guard_goblin_temp', grimy_axe)
 throne_pull_result1 = ChgDescriptResult('throne_pull_result1', False, None, False, throne, 'throne_post_broach')
 throne_pull_result2 = DispenseObjResult('throne_pull_result2', True, True, False, hedgehog_broach, 'throne_room_temp')
+dispense_panel_result1 = ChgDescriptResult('dispense_panel_result1', False, None, False, 'antechamber_temp', 'antechamber_with_panel')
+dispense_panel_result2 = DispenseObjResult('dispense_panel_result2', True, True, False, 'control_panel_temp', 'antechamber_temp')
 
-dispense_panel_result = AddObjToRoomAndDescriptResult('dispense_panel_result', 'temp_control_panel', False)
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
 goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'guard_goblin_temp', True)
 hedgehog_attacks_result = AttackBurtResult('hedgehog_attacks_result', 'royal_hedgehog_temp', True)
@@ -190,7 +191,7 @@ broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 'post_act_swit
 
 dispense_panel_mach = InvisMach('dispense_panel_mach', False, 'auto_act', None, None, None, 
 		[goblin_in_world_cond, panel_not_dispensed_cond], 
-		[pass_result, dispense_panel_result],
+		[pass_result, [dispense_panel_result1, dispense_panel_result2]],
 		'antechamber_temp', True) # mach_state = has panel been dispensed
 
 control_panel = ContainerFixedSimpleMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, 
@@ -384,11 +385,14 @@ fed_hedgehog_loses_sword_result.obj = royal_hedgehog
 moat_get_crown_result.tgt_creature = burt
 goblin_take_axe_result.creature_obj = guard_goblin
 throne_pull_result2.room_obj = throne_room
+dispense_panel_result1.obj = antechamber
+dispense_panel_result2.dispense_obj = control_panel
+dispense_panel_result2.room_obj = antechamber
 
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog
 start_hedgehog_timer_results.creature_obj = royal_hedgehog
-dispense_panel_result.room_item = control_panel
+# dispense_panel_result.room_item = control_panel
 
 hedgehog_eats_timer.alert_anchor = royal_hedgehog
 crystal_box.contain_lst = [kinging_scroll]
