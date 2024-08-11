@@ -626,26 +626,31 @@ Version 3.87.0 Goals:
 			- DONE: 'git commit -m "doc updates"
 			- DONE: 'git push" to push updates to origin (GitHub)
 			- DONE: confirm new branch on GitHub is now ahead of master
-		- TBD: refactor StartTimerResult
-			- TBD: result class updates
-				- TBD: copy existing class; change parent to BaseResult and update class name
-				- TBD: update attribs and setters and getters
-				- TBD: update result_exe() attribs
-				- TBD: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
-				- TBD: specific class changes: <list here>
-			- TBD: update game files
-				- TBD: add new result class to game_update imports
-				- TBD: update Result obj name if appropriate
-				- TBD: update game_update result obj classes, attribs, and post-assignment updates
-				- TBD: set mach_state appropriately
-				- TBD: update post-attrib assignment if needed
-				- TBD: add result name to mach_run() exception list
-				- TBD: comment out old result class and remove from import (in new name)
-			- TBD: test & clean-up
-				- TBD: test
-				- TBD: clean-up game_update(), result_class(), mach_class() [??]
+		- DONE: refactor StartTimerResult
+			- DONE: result class updates
+				- DONE: copy existing class; change parent to BaseResult and update class name
+				- DONE: update attribs and setters and getters
+				- DONE: update result_exe() attribs
+				- DONE: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
+				- N/A: specific class changes: <list here>
+			- DONE: update game files
+				- N/A: add new result class to game_update imports (same name)
+				- DONE: update Result obj name if appropriate
+				- DONE: update game_update result obj classes, attribs, and post-assignment updates
+				- N/A: set mach_state appropriately
+				- N/A: update post-attrib assignment if needed
+				- DONE: add result name to mach_run() exception list			
+			- DONE: test & clean-up
+				- DONE: test
+				- DONE: clean-up game_update(), result_class(), mach_class() [??]
 		- TBD: create RemoveObjResult
+			- TBD: base of of StartTimerResult
+			- TBD: key attribute is obj
+			- TBD: include setter in case obj is mach or creature
+			- TBD: find obj room using Map method and then remove obj using Room remove method
 		- TBD: TimerAndCreatureItemResult => StartTimerResult + RemoveObjResult
+			- TBD: comment out old result class and remove from import (in new name)
+			- TBD: replace old combo result obj with list of primitive result obj
 		- TBD: merge git branch for TimerAndCreatureItemResult
 			- TBD: 'git checkout master' to switch focus to master
 			- TBD: 'git branch: to confirm focus

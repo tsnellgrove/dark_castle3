@@ -19,12 +19,12 @@
 # GiveItemResult : 			BaseResult :		base + give item_obj to tgt_creature
 # TakeItemResult :			BaseResult :		base + creature_obj takes item_obj
 # DispenseObjResult :		BaseResult :		base + dispense obj to room
+# StartTimerResult :		BaseResult :		base + starts timer
 
 # *** legacy ***
 # BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
 
 # *** simple cases ***
-# StartTimerResult :		BufferOnlyResult :	buff, starts timer [not called]
 # RemoveObjResult :			<TBD> :				remove obj from game [new result for timer combo]
 # TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir [not called]
 
@@ -204,6 +204,19 @@ class DispenseObjResult(BaseResult):
 		self.room_obj.floor_lst_append(self.dispense_obj)
 		return super(DispenseObjResult, self).result_exe(gs, mach_state, alert_anchor)
 
+
+class StartTimerResult(BaseResult):
+	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override, timer_obj):
+		super().__init__(name, is_mach_state_set, mach_state_val, cmd_override)
+		self._timer_obj = timer_obj # timer to be started
+
+	@property
+	def timer_obj(self):
+		return self._timer_obj
+
+	def result_exe(self, gs, mach_state, alert_anchor):
+		self.timer_obj.start()
+		return super(StartTimerResult, self).result_exe(gs, mach_state, alert_anchor)
 
 
 ### *** NEW RESULT CLASSES ***
@@ -399,6 +412,21 @@ class BufferOnlyResult(object):
 #		return mach_state, self.cmd_override
 
 
+class StartTimerResult(BufferOnlyResult):
+	def __init__(self, name, timer_obj, cmd_override):
+		super().__init__(name, cmd_override)
+		self._timer_obj = timer_obj
+
+	@property
+	def timer_obj(self):
+		return self._timer_obj
+
+	def result_exe(self, gs, mach_state):
+		gs.io.buff_s(self.name)
+		self.timer_obj.start()
+		return mach_state, self.cmd_override
+
+
 ### *** OLD RESULT CLASSES TO REVIEW ***
 
 ### *** TO BE REVIEWED ***
@@ -456,21 +484,6 @@ class AttackBurtResult(BufferOnlyResult):
 #		tgt_creature.attack_b(hand_obj, gs, self.creature_obj)
 		tgt_creature.attack(hand_obj, gs, self.creature_obj)
 #		room.go(self.dir, gs, self.creature)
-		return mach_state, self.cmd_override
-
-
-class StartTimerResult(BufferOnlyResult):
-	def __init__(self, name, timer_obj, cmd_override):
-		super().__init__(name, cmd_override)
-		self._timer_obj = timer_obj
-
-	@property
-	def timer_obj(self):
-		return self._timer_obj
-
-	def result_exe(self, gs, mach_state):
-		gs.io.buff_s(self.name)
-		self.timer_obj.start()
 		return mach_state, self.cmd_override
 
 
