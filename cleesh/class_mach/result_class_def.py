@@ -219,6 +219,25 @@ class StartTimerResult(BaseResult):
 		return super(StartTimerResult, self).result_exe(gs, mach_state, alert_anchor)
 
 
+class RemoveObjResult(BaseResult):
+	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override, obj):
+		super().__init__(name, is_mach_state_set, mach_state_val, cmd_override)
+		self._obj = obj # the obj to be removed
+
+	@property
+	def obj(self):
+		return self._obj
+
+	@obj.setter
+	def obj(self, new_val):
+		self._obj = new_val
+
+	def result_exe(self, gs, mach_state, alert_anchor):
+		room = gs.map.get_obj_room(self.obj, gs)
+		room.remove_item(self.obj, gs)
+		return super(RemoveObjResult, self).result_exe(gs, mach_state, alert_anchor)
+
+
 ### *** NEW RESULT CLASSES ***
 
 

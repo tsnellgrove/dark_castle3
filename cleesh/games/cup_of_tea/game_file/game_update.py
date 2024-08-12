@@ -21,7 +21,7 @@ from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButt
 from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond, ObjInRmCond, ObjInWorldCond, 
 		ItemInHandCond, WeaponInHandCond, MachStateCond, TimerActiveCond, SwitchStateCond, LeverArrayCond)
 from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, GiveItemResult, 
-		TakeItemResult, DispenseObjResult, StartTimerResult,
+		TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, 
 		BufferOnlyResult, 
 		DoorToggleResult, AttackBurtResult, 
 		TimerAndCreatureItemResult, TravelResult)

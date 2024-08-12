@@ -21,7 +21,7 @@ from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButt
 from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond, ObjInRmCond, ObjInWorldCond, 
 		ItemInHandCond, WeaponInHandCond, MachStateCond, TimerActiveCond, SwitchStateCond, LeverArrayCond)
 from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, GiveItemResult, 
-		TakeItemResult, DispenseObjResult, StartTimerResult,
+		TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, 
 		BufferOnlyResult, 
 		DoorToggleResult, AttackBurtResult, 
 		TimerAndCreatureItemResult, TravelResult)
@@ -167,6 +167,7 @@ dispense_panel_result1 = ChgDescriptResult('dispense_panel_result1', False, None
 dispense_panel_result2 = DispenseObjResult('dispense_panel_result2', True, True, False, 'control_panel_temp', 'antechamber_temp')
 
 hedgehog_eats_result1 = StartTimerResult('hedgehog_eats_result1', False, None, False, hedgehog_eats_timer)
+hedgehog_eats_result2 = RemoveObjResult('hedgehog_eats_result2', False, None, False, stale_biscuits)
 
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
 goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'guard_goblin_temp', True)

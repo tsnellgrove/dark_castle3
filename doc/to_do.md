@@ -643,14 +643,19 @@ Version 3.87.0 Goals:
 			- DONE: test & clean-up
 				- DONE: test
 				- DONE: clean-up game_update(), result_class(), mach_class() [??]
-		- TBD: create RemoveObjResult
-			- TBD: base of of StartTimerResult
-			- TBD: key attribute is obj
-			- TBD: include setter in case obj is mach or creature
-			- TBD: find obj room using Map method and then remove obj using Room remove method
-		- TBD: TimerAndCreatureItemResult => StartTimerResult + RemoveObjResult
+		- DONE: create RemoveObjResult
+			- DONE: base off of StartTimerResult
+			- DONE: key attribute is obj
+			- DONE: include setter in case obj is mach or creature
+			- DONE: find obj room using Map method and then remove obj using Room remove method
+		- INPROC: TimerAndCreatureItemResult => StartTimerResult + RemoveObjResult
+			- DONE: add new RemoveObjResult class to game_update imports
+			- DONE: create result obj based on RemoveObjResult class
+			- DONE: add names of new result objs to run_mach()
 			- TBD: comment out old result class and remove from import (in new name)
 			- TBD: replace old combo result obj with list of primitive result obj
+			- TBD: test
+			- TBD: clean up clean-up game_update(), result_class(), mach_class() [??]
 		- TBD: merge git branch for TimerAndCreatureItemResult
 			- TBD: 'git checkout master' to switch focus to master
 			- TBD: 'git branch: to confirm focus

@@ -115,7 +115,8 @@ class MachineMixIn(object):
 							'tea_drunk_win_result', 'die_in_moat_result', 'scroll_win_game_result', 
 							'fed_hedgehog_keeps_sword_result', 'fed_hedgehog_loses_sword_result', 'moat_get_crown_result',
 							'goblin_take_axe_result', 'throne_pull_result1', 'throne_pull_result2',
-							'dispense_panel_result1', 'dispense_panel_result2', 'hedgehog_eats_result1']):
+							'dispense_panel_result1', 'dispense_panel_result2', 
+							'hedgehog_eats_result1', 'hedgehog_eats_result2']):
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state, self.alert_anchor)
 				else:
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
