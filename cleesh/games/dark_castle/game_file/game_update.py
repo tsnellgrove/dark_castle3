@@ -23,8 +23,7 @@ from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond
 from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, GiveItemResult, 
 		TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, 
 		BufferOnlyResult, 
-		DoorToggleResult, AttackBurtResult, 
-		TimerAndCreatureItemResult, TravelResult)
+		DoorToggleResult, AttackBurtResult, TravelResult)
 from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from cleesh.class_std.creature_class_def import Creature
 from cleesh.class_gs.gs_class_def import GameState
@@ -172,7 +171,8 @@ hedgehog_eats_result2 = RemoveObjResult('hedgehog_eats_result2', False, None, Fa
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
 goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'guard_goblin_temp', True)
 hedgehog_attacks_result = AttackBurtResult('hedgehog_attacks_result', 'royal_hedgehog_temp', True)
-start_hedgehog_timer_results = TimerAndCreatureItemResult('start_hedgehog_timer_results', hedgehog_eats_timer, False, 'royal_hedgehog', stale_biscuits)
+
+# start_hedgehog_timer_results = TimerAndCreatureItemResult('start_hedgehog_timer_results', hedgehog_eats_timer, False, 'royal_hedgehog', stale_biscuits)
 
 
 # *** warnings ***
@@ -206,7 +206,7 @@ control_panel = ContainerFixedSimpleMach('control_panel', 'Control Panel', 'pane
 
 hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None, 
 		[['give', 'stale_biscuits', 'royal_hedgehog']], None, 
-		[biscuits_in_hedgehog_hand_cond], [start_hedgehog_timer_results],
+		[biscuits_in_hedgehog_hand_cond], [[hedgehog_eats_result1, hedgehog_eats_result2]],
 		'royal_hedgehog_temp', True)
 
 hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None, [['take', 'shiny_sword']], None, 
@@ -394,7 +394,7 @@ dispense_panel_result2.room_obj = antechamber
 
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog
-start_hedgehog_timer_results.creature_obj = royal_hedgehog
+# start_hedgehog_timer_results.creature_obj = royal_hedgehog
 # dispense_panel_result.room_item = control_panel
 
 hedgehog_eats_timer.alert_anchor = royal_hedgehog

@@ -20,12 +20,12 @@
 # TakeItemResult :			BaseResult :		base + creature_obj takes item_obj
 # DispenseObjResult :		BaseResult :		base + dispense obj to room
 # StartTimerResult :		BaseResult :		base + starts timer
+# RemoveObjResult :			BaseResult :		base + remove obj from game [new result for timer combo]
 
 # *** legacy ***
 # BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
 
 # *** simple cases ***
-# RemoveObjResult :			<TBD> :				remove obj from game [new result for timer combo]
 # TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir [not called]
 
 # *** refactor cases ***
@@ -33,7 +33,6 @@
 # DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
 
 # *** combo cases ***
-# TimerAndCreatureItemResult StartTimerResult :	buff, starts timer and removes obj from creature hand [REFACT w/ eat???] [COMBO]
 
 # deleted
 # BufferAndEndResult :		BufferOnlyResult :	buffer, set ending val, set is_end = True
@@ -43,6 +42,7 @@
 # AddObjToRoomResult :		BufferOnlyResult :	buff, obj => hero_rm.floor_lst; sets mach_state = True [get mach rm? atttrib name => obj not item?][not called]
 # AddObjChgDescriptResult : BufferOnlyResult :	AddObjToRoomResult + chg obj descript key + mach_state = True [COMBO]
 # AddObjToRoomAndDescriptResult : BOResult :	similar to AddObjChgDescriptResult; chg rm descript [COMBO] [DEDUP]
+# TimerAndCreatureItemResult StartTimerResult :	buff, starts timer and removes obj from creature hand [REFACT w/ eat???] [COMBO]
 
 ### classes
 
@@ -431,19 +431,44 @@ class BufferOnlyResult(object):
 #		return mach_state, self.cmd_override
 
 
-class StartTimerResult(BufferOnlyResult):
-	def __init__(self, name, timer_obj, cmd_override):
-		super().__init__(name, cmd_override)
-		self._timer_obj = timer_obj
+# class StartTimerResult(BufferOnlyResult):
+#	def __init__(self, name, timer_obj, cmd_override):
+#		super().__init__(name, cmd_override)
+#		self._timer_obj = timer_obj
 
-	@property
-	def timer_obj(self):
-		return self._timer_obj
+#	@property
+#	def timer_obj(self):
+#		return self._timer_obj
 
-	def result_exe(self, gs, mach_state):
-		gs.io.buff_s(self.name)
-		self.timer_obj.start()
-		return mach_state, self.cmd_override
+#	def result_exe(self, gs, mach_state):
+#		gs.io.buff_s(self.name)
+#		self.timer_obj.start()
+#		return mach_state, self.cmd_override
+
+
+# class TimerAndCreatureItemResult(StartTimerResult):
+#	def __init__(self, name, timer_obj, cmd_override, creature_obj, ceature_item_obj):
+#		super().__init__(name, timer_obj, cmd_override)
+#		self._creature_obj = creature_obj
+#		self._ceature_item_obj = ceature_item_obj
+
+#	@property
+#	def creature_obj(self):
+#		return self._creature_obj
+
+#	@creature_obj.setter
+#	def creature_obj(self, new_val):
+#		self._creature_obj = new_val
+
+#	@property
+#	def ceature_item_obj(self):
+#		return self._ceature_item_obj
+
+#	def result_exe(self, gs, mach_state):
+#		gs.io.buff_s(self.name)
+#		self.timer_obj.start()
+#		self.creature_obj.hand_lst_remove(self.ceature_item_obj)
+#		return mach_state, self.cmd_override
 
 
 ### *** OLD RESULT CLASSES TO REVIEW ***
@@ -503,31 +528,6 @@ class AttackBurtResult(BufferOnlyResult):
 #		tgt_creature.attack_b(hand_obj, gs, self.creature_obj)
 		tgt_creature.attack(hand_obj, gs, self.creature_obj)
 #		room.go(self.dir, gs, self.creature)
-		return mach_state, self.cmd_override
-
-
-class TimerAndCreatureItemResult(StartTimerResult):
-	def __init__(self, name, timer_obj, cmd_override, creature_obj, ceature_item_obj):
-		super().__init__(name, timer_obj, cmd_override)
-		self._creature_obj = creature_obj
-		self._ceature_item_obj = ceature_item_obj
-
-	@property
-	def creature_obj(self):
-		return self._creature_obj
-
-	@creature_obj.setter
-	def creature_obj(self, new_val):
-		self._creature_obj = new_val
-
-	@property
-	def ceature_item_obj(self):
-		return self._ceature_item_obj
-
-	def result_exe(self, gs, mach_state):
-		gs.io.buff_s(self.name)
-		self.timer_obj.start()
-		self.creature_obj.hand_lst_remove(self.ceature_item_obj)
 		return mach_state, self.cmd_override
 
 
