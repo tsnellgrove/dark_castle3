@@ -648,7 +648,7 @@ Version 3.87.0 Goals:
 			- DONE: key attribute is obj
 			- DONE: include setter in case obj is mach or creature
 			- DONE: find obj room using Map method and then remove obj using Room remove method
-		- INPROC: TimerAndCreatureItemResult => StartTimerResult + RemoveObjResult
+		- DONE: TimerAndCreatureItemResult => StartTimerResult + RemoveObjResult
 			- DONE: add new RemoveObjResult class to game_update imports
 			- DONE: create result obj based on RemoveObjResult class
 			- DONE: add names of new result objs to run_mach()
@@ -656,7 +656,7 @@ Version 3.87.0 Goals:
 			- DONE: comment out old combo result class and remove from import
 			- DONE: replace old combo result obj with list of primitive result obj
 			- DONE: test [first try!]
-			- TBD: clean up clean-up game_update(), result_class(), mach_class() [??]
+			- DONE: clean up clean-up game_update(), result_class(), mach_class() [??]
 		- TBD: merge git branch for TimerAndCreatureItemResult
 			- TBD: 'git checkout master' to switch focus to master
 			- TBD: 'git branch: to confirm focus
@@ -928,6 +928,8 @@ Version 3.87.0 Goals:
 - TBD: instantiate obj in hero inventory
 
 *** story-driven updates ***
+
+- TBD: find a good use for TravelResult !!
 
 - TBD: fix case where sword is in Burt's inventory and tries to take in Entrance but royal_hedgehog stops him
 
