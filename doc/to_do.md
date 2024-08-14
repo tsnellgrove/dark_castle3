@@ -563,7 +563,7 @@ Version 3.87.0 Goals:
 			- DONE: post-branch-delete run test
 
 
-- INPROC: combo Result cases (build 0008) [8/14/2024]
+- DONE: combo Result cases (build 0008) [8/14/2024]
 	- DONE: update Mach class to accept a list of results and run all results in the list
 	- DONE: sort out AddObjChgDescriptResult and AddObjToRoomAndDescriptResult combos
 		- DONE: create new git branch for AddObjChgDescriptResult_feature
@@ -611,7 +611,7 @@ Version 3.87.0 Goals:
 			- DONE: 'git push origin --delete AddObjChgDescriptResult_feature' to clean up origin
 			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
-	- TBD: sort out TimerAndCreatureItemResult combo result
+	- DONE: sort out TimerAndCreatureItemResult combo result
 		- DONE: git branch for TimerAndCreatureItemResult_feature
 			- DONE: 'git branch' to confirm *master
 			- DONE: 'git branch TimerAndCreatureItemResult_feature' to create new branch
@@ -657,18 +657,18 @@ Version 3.87.0 Goals:
 			- DONE: replace old combo result obj with list of primitive result obj
 			- DONE: test [first try!]
 			- DONE: clean up clean-up game_update(), result_class(), mach_class() [??]
-		- INPROC: merge git branch for TimerAndCreatureItemResult
+		- DONE: merge git branch for TimerAndCreatureItemResult
 			- DONE: 'git checkout master' to switch focus to master
 			- DONE: 'git branch: to confirm focus
 			- DONE: 'git merge TimerAndCreatureItemResult_feature -m "branch <FEATURE_NAME> merge"'
 			- DONE: 'git push' to push merge to origin (GitHub)
 			- DONE: confirm that origin is updated
 			- DONE: confirm that code is updated and still runs
-			- TBD: 'git branch -d TimerAndCreatureItemResult_feature' to clean-up local branch
-			- TBD: 'git push origin --delete TimerAndCreatureItemResult_feature' to clean up origin
-			- TBD: confirm origin is cleaned up
-			- TBD: post-branch-delete run test
-	- TBD: update version and complete build
+			- DONE: 'git branch -d TimerAndCreatureItemResult_feature' to clean-up local branch
+			- DONE: 'git push origin --delete TimerAndCreatureItemResult_feature' to clean up origin
+			- DONE: confirm origin is cleaned up
+			- DONE: post-branch-delete run test
+	- DONE: update version and complete build
 
 - TBD: final result class build for refactor cases (including travel)
 - TBD: update call from run_mach(); self.mach_state => self.alert_anchor
