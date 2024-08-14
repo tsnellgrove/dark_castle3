@@ -423,7 +423,7 @@ Version 3.87.0 Goals:
 			- DONE: 'git push origin --delete ChgDescriptResult_feature' to clean up origin
 			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
-	- INPROC: BufferAndGiveResult => GiveItemResult
+	- DONE: BufferAndGiveResult => GiveItemResult
 		- DONE: create new BufferAndGiveResult_feature git branch
 			- DONE: 'git branch' to confirm *master
 			- DONE: 'git branch BufferAndGiveResult_feature' to create new branch
@@ -563,7 +563,7 @@ Version 3.87.0 Goals:
 			- DONE: post-branch-delete run test
 
 
-- INPROC: combo Result cases (build 0008) []
+- INPROC: combo Result cases (build 0008) [8/14/2024]
 	- DONE: update Mach class to accept a list of results and run all results in the list
 	- DONE: sort out AddObjChgDescriptResult and AddObjToRoomAndDescriptResult combos
 		- DONE: create new git branch for AddObjChgDescriptResult_feature
@@ -668,6 +668,7 @@ Version 3.87.0 Goals:
 			- TBD: 'git push origin --delete TimerAndCreatureItemResult_feature' to clean up origin
 			- TBD: confirm origin is cleaned up
 			- TBD: post-branch-delete run test
+	- TBD: update version and complete build
 
 - TBD: final result class build for refactor cases (including travel)
 - TBD: update call from run_mach(); self.mach_state => self.alert_anchor
