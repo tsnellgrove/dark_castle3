@@ -657,13 +657,13 @@ Version 3.87.0 Goals:
 			- DONE: replace old combo result obj with list of primitive result obj
 			- DONE: test [first try!]
 			- DONE: clean up clean-up game_update(), result_class(), mach_class() [??]
-		- TBD: merge git branch for TimerAndCreatureItemResult
-			- TBD: 'git checkout master' to switch focus to master
-			- TBD: 'git branch: to confirm focus
-			- TBD: 'git merge TimerAndCreatureItemResult_feature -m "branch <FEATURE_NAME> merge"'
-			- TBD: 'git push' to push merge to origin (GitHub)
-			- TBD: confirm that origin is updated
-			- TBD: confirm that code is updated and still runs
+		- INPROC: merge git branch for TimerAndCreatureItemResult
+			- DONE: 'git checkout master' to switch focus to master
+			- DONE: 'git branch: to confirm focus
+			- DONE: 'git merge TimerAndCreatureItemResult_feature -m "branch <FEATURE_NAME> merge"'
+			- DONE: 'git push' to push merge to origin (GitHub)
+			- DONE: confirm that origin is updated
+			- DONE: confirm that code is updated and still runs
 			- TBD: 'git branch -d TimerAndCreatureItemResult_feature' to clean-up local branch
 			- TBD: 'git push origin --delete TimerAndCreatureItemResult_feature' to clean up origin
 			- TBD: confirm origin is cleaned up
