@@ -690,7 +690,7 @@ Version 3.87.0 Goals:
 			- TBD: update attribs and setters and getters
 			- TBD: update result_exe() attribs
 			- TBD: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
-			- TBD: specific class changes: <list here>
+			- TBD: specific class changes: <make hand_obj an explicit attrib ?>
 		- TBD: update game files
 			- TBD: add new result class to game_update imports
 			- TBD: update Result obj name if appropriate
@@ -708,7 +708,7 @@ Version 3.87.0 Goals:
 			- TBD: update attribs and setters and getters
 			- TBD: update result_exe() attribs
 			- TBD: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
-			- TBD: specific class changes: <list here>
+			- TBD: specific class changes: <move toggle() method into door class?; return display str?>
 		- TBD: update game files
 			- TBD: add new result class to game_update imports
 			- TBD: update Result obj name if appropriate
