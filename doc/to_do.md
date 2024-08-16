@@ -669,21 +669,21 @@ Version 3.87.0 Goals:
 			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
 	- DONE: update version and complete build
-- TBD: final result class build for refactor cases including travel (build 0009 [])
-	- TBD: create new git branch for result_refator_feature
-		- TBD: 'git branch' to confirm *master
-		- TBD: 'git branch result_refator_feature' to create new branch
-		- TBD: 'git branch' to confirm new branch exists but that master is still checked out
-		- TBD: 'git checkout result_refator_feature' to switch focus to branching_test branch
-		- TBD: 'git branch' to confirm new branch is now in focus
-		- TBD: Publish Branch via VS Code button
-		- TBD: confirm new branch on GitHub
-		- TBD: update doc TBDs to DONEs
-		- TBD: <CMD><OPT>S (to save all files)
-		- TBD: 'git add .' to add files to be committed
-		- TBD: 'git commit -m "doc updates"
-		- TBD: 'git push" to push updates to origin (GitHub)
-		- TBD: confirm new branch on GitHub is now ahead of master
+- INPROC: final result class build for refactor cases including travel (build 0009 [])
+	- DONE: create new git branch for result_refactor_feature
+		- DONE: 'git branch' to confirm *master
+		- DONE: 'git branch result_refactor_feature' to create new branch
+		- DONE: 'git branch' to confirm new branch exists but that master is still checked out
+		- DONE: 'git checkout result_refactor_feature' to switch focus to branching_test branch
+		- DONE: 'git branch' to confirm new branch is now in focus
+		- DONE: Publish Branch via VS Code button
+		- DONE: confirm new branch on GitHub
+		- DONE: update doc TBDs to DONEs
+		- DONE: <CMD><OPT>S (to save all files)
+		- DONE: 'git add .' to add files to be committed
+		- DONE: 'git commit -m "doc updates"
+		- DONE: 'git push" to push updates to origin (GitHub)
+		- DONE: confirm new branch on GitHub is now ahead of master
 	- TBD: refactor AttackBurtResult
 		- TBD: result class updates
 			- TBD: copy existing class; change parent to BaseResult and update class name
@@ -738,15 +738,15 @@ Version 3.87.0 Goals:
 		- TBD: test & clean-up
 			- TBD: test
 			- TBD: clean-up game_update(), result_class(), mach_class() [??]
-	- TBD: merge result_refator_feature git branch
+	- TBD: merge result_refactor_feature git branch
 		- TBD: 'git checkout master' to switch focus to master
 		- TBD: 'git branch: to confirm focus
-		- TBD: 'git merge result_refator_feature -m "branch result_refator_feature merge"'
+		- TBD: 'git merge result_refactor_feature -m "branch result_refator_feature merge"'
 		- TBD: 'git push' to push merge to origin (GitHub)
 		- TBD: confirm that origin is updated
 		- TBD: confirm that code is updated and still runs
-		- TBD: 'git branch -d result_refator_feature' to clean-up local branch
-		- TBD: 'git push origin --delete result_refator_feature' to clean up origin
+		- TBD: 'git branch -d result_refactor_feature' to clean-up local branch
+		- TBD: 'git push origin --delete result_refactor_feature' to clean up origin
 		- TBD: confirm origin is cleaned up
 		- TBD: post-branch-delete run test
 
