@@ -684,15 +684,15 @@ Version 3.87.0 Goals:
 		- DONE: 'git commit -m "doc updates"
 		- DONE: 'git push" to push updates to origin (GitHub)
 		- DONE: confirm new branch on GitHub is now ahead of master
-	- TBD: refactor AttackBurtResult
-		- TBD: result class updates
-			- TBD: copy existing class; change parent to BaseResult and update class name
-			- TBD: update attribs and setters and getters
-			- TBD: update result_exe() attribs
-			- TBD: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
-			- TBD: specific class changes: <make hand_obj an explicit attrib ?>
-		- TBD: update game files
-			- TBD: add new result class to game_update imports
+	- INPROC: refactor AttackBurtResult => AttackHeroResult
+		- DONE: result class updates
+			- DONE: copy existing class; change parent to BaseResult and update class name <AttackHeroResult>
+			- DONE: update attribs and setters and getters
+			- DONE: update result_exe() attribs
+			- DONE: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
+			- DONE: specific class changes: <make hand_obj an explicit attrib>
+		- INPROC: update game files
+			- DONE: add new result class to game_update imports
 			- TBD: update Result obj name if appropriate
 			- TBD: update game_update result obj classes, attribs, and post-assignment updates
 			- TBD: set mach_state appropriately
