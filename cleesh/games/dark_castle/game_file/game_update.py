@@ -166,15 +166,10 @@ dispense_panel_result1 = ChgDescriptResult('dispense_panel_result1', False, None
 dispense_panel_result2 = DispenseObjResult('dispense_panel_result2', True, True, False, 'control_panel_temp', 'antechamber_temp')
 hedgehog_eats_result1 = StartTimerResult('hedgehog_eats_result1', False, None, False, hedgehog_eats_timer)
 hedgehog_eats_result2 = RemoveObjResult('hedgehog_eats_result2', False, None, False, stale_biscuits)
-
-# goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'guard_goblin_temp', True)
 goblin_attacks_result = AttackHeroResult('goblin_attacks_result', False, None, True, 'guard_goblin_temp', grimy_axe)
-
-# hedgehog_attacks_result = AttackBurtResult('hedgehog_attacks_result', 'royal_hedgehog_temp', True)
 hedgehog_attacks_result = AttackHeroResult('hedgehog_attacks_result', False, None, True, 'royal_hedgehog_temp', fierce_teeth)
 
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
-
 
 # *** warnings ***
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0, True)

@@ -258,18 +258,8 @@ class AttackHeroResult(BaseResult):
 		return self._hand_obj
 
 	def result_exe(self, gs, mach_state, alert_anchor):
-		gs.io.buff_s(self.name + "_loc")
-###			cmd_execute(gs, '2word', [self.creature_obj, 'attack_burt'])
-#		if self.creature_obj.hand_is_empty():
-#			hand_obj = self.creature_obj.feature_lst[0]
-##			hand_obj = None
-#		else:
-#			hand_obj = self.creature_obj.get_hand_item()
-#		tgt_creature = gs.core.hero
-##		self.creature_obj.attack_b(hand_obj, gs, tgt_creature)
-##		tgt_creature.attack_b(hand_obj, gs, self.creature_obj)
+		gs.io.buff_s(self.name + "_pre-buff")
 		gs.core.hero.attack(self.hand_obj, gs, self.creature_obj)
-##		room.go(self.dir, gs, self.creature)
 		return super(AttackHeroResult, self).result_exe(gs, mach_state, alert_anchor)
 
 
