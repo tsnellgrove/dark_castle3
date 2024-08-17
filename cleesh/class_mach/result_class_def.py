@@ -21,6 +21,7 @@
 # DispenseObjResult :		BaseResult :		base + dispense obj to room
 # StartTimerResult :		BaseResult :		base + starts timer
 # RemoveObjResult :			BaseResult :		base + remove obj from game [new result for timer combo]
+# AttackHeroResult :		BaseResult :		base + loc_buff, creature_obj attacks hero w/ hand_obj
 
 # *** legacy ***
 # BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
@@ -29,7 +30,6 @@
 # TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir [not called]
 
 # *** refactor cases ***
-# AttackBurtResult :		BufferOnlyResult :	buff, creature attacks burt [REFACT?] [address in_hand in creature.attack()?]
 # DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
 
 # *** combo cases ***
@@ -43,6 +43,7 @@
 # AddObjChgDescriptResult : BufferOnlyResult :	AddObjToRoomResult + chg obj descript key + mach_state = True [COMBO]
 # AddObjToRoomAndDescriptResult : BOResult :	similar to AddObjChgDescriptResult; chg rm descript [COMBO] [DEDUP]
 # TimerAndCreatureItemResult StartTimerResult :	buff, starts timer and removes obj from creature hand [REFACT w/ eat???] [COMBO]
+# AttackBurtResult :		BufferOnlyResult :	buff, creature attacks burt [REFACT?] [address in_hand in creature.attack()?]
 
 ### classes
 
@@ -257,7 +258,7 @@ class AttackHeroResult(BaseResult):
 		return self._hand_obj
 
 	def result_exe(self, gs, mach_state, alert_anchor):
-#		gs.io.buff_s(self.name)
+		gs.io.buff_s(self.name + "_loc")
 ###			cmd_execute(gs, '2word', [self.creature_obj, 'attack_burt'])
 #		if self.creature_obj.hand_is_empty():
 #			hand_obj = self.creature_obj.feature_lst[0]
@@ -505,33 +506,33 @@ class BufferOnlyResult(object):
 #		return mach_state, self.cmd_override
 
 
-class AttackBurtResult(BufferOnlyResult):
-	def __init__(self, name, creature_obj, cmd_override):
-		super().__init__(name, cmd_override)
-		self._creature_obj = creature_obj # creature to attack burt
+# class AttackBurtResult(BufferOnlyResult):
+#	def __init__(self, name, creature_obj, cmd_override):
+#		super().__init__(name, cmd_override)
+#		self._creature_obj = creature_obj # creature to attack burt
 
-	@property
-	def creature_obj(self):
-		return self._creature_obj
+#	@property
+#	def creature_obj(self):
+#		return self._creature_obj
 
-	@creature_obj.setter
-	def creature_obj(self, new_val):
-		self._creature_obj = new_val
+#	@creature_obj.setter
+#	def creature_obj(self, new_val):
+#		self._creature_obj = new_val
 
-	def result_exe(self, gs, mach_state):
-		gs.io.buff_s(self.name)
-##			cmd_execute(gs, '2word', [self.creature_obj, 'attack_burt'])
-		if self.creature_obj.hand_is_empty():
-			hand_obj = self.creature_obj.feature_lst[0]
-#			hand_obj = None
-		else:
-			hand_obj = self.creature_obj.get_hand_item()
-		tgt_creature = gs.core.hero
-#		self.creature_obj.attack_b(hand_obj, gs, tgt_creature)
-#		tgt_creature.attack_b(hand_obj, gs, self.creature_obj)
-		tgt_creature.attack(hand_obj, gs, self.creature_obj)
-#		room.go(self.dir, gs, self.creature)
-		return mach_state, self.cmd_override
+#	def result_exe(self, gs, mach_state):
+#		gs.io.buff_s(self.name)
+###			cmd_execute(gs, '2word', [self.creature_obj, 'attack_burt'])
+#		if self.creature_obj.hand_is_empty():
+#			hand_obj = self.creature_obj.feature_lst[0]
+##			hand_obj = None
+#		else:
+#			hand_obj = self.creature_obj.get_hand_item()
+#		tgt_creature = gs.core.hero
+##		self.creature_obj.attack_b(hand_obj, gs, tgt_creature)
+##		tgt_creature.attack_b(hand_obj, gs, self.creature_obj)
+#		tgt_creature.attack(hand_obj, gs, self.creature_obj)
+##		room.go(self.dir, gs, self.creature)
+#		return mach_state, self.cmd_override
 
 
 ### *** OLD RESULT CLASSES TO REVIEW ***

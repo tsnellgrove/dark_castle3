@@ -23,7 +23,7 @@ from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond
 from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, GiveItemResult, 
 		TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, AttackHeroResult, 
 		BufferOnlyResult, 
-		DoorToggleResult, AttackBurtResult, TravelResult)
+		DoorToggleResult, TravelResult)
 from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from cleesh.class_std.creature_class_def import Creature
 from cleesh.class_gs.gs_class_def import GameState
@@ -167,9 +167,13 @@ dispense_panel_result2 = DispenseObjResult('dispense_panel_result2', True, True,
 hedgehog_eats_result1 = StartTimerResult('hedgehog_eats_result1', False, None, False, hedgehog_eats_timer)
 hedgehog_eats_result2 = RemoveObjResult('hedgehog_eats_result2', False, None, False, stale_biscuits)
 
+# goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'guard_goblin_temp', True)
+goblin_attacks_result = AttackHeroResult('goblin_attacks_result', False, None, True, 'guard_goblin_temp', grimy_axe)
+
+# hedgehog_attacks_result = AttackBurtResult('hedgehog_attacks_result', 'royal_hedgehog_temp', True)
+hedgehog_attacks_result = AttackHeroResult('hedgehog_attacks_result', False, None, True, 'royal_hedgehog_temp', fierce_teeth)
+
 toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
-goblin_attacks_result = AttackBurtResult('goblin_attacks_result', 'guard_goblin_temp', True)
-hedgehog_attacks_result = AttackBurtResult('hedgehog_attacks_result', 'royal_hedgehog_temp', True)
 
 
 # *** warnings ***

@@ -691,16 +691,16 @@ Version 3.87.0 Goals:
 			- DONE: update result_exe() attribs
 			- DONE: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
 			- DONE: specific class changes: <make hand_obj an explicit attrib>
-		- INPROC: update game files
+		- DONE: update game files
 			- DONE: add new result class to game_update imports
-			- TBD: update Result obj name if appropriate
-			- TBD: update game_update result obj classes, attribs, and post-assignment updates
-			- TBD: set mach_state appropriately
-			- TBD: update post-attrib assignment if needed
-			- TBD: add result name to mach_run() exception list
-			- TBD: comment out old result class and remove from import (in new name)
+			- N/A: update Result obj name if appropriate
+			- DONE: update game_update result obj classes, attribs, and post-assignment updates
+			- N/A: set mach_state appropriately
+			- N/A: update post-attrib assignment if needed
+			- DONE: add result name to mach_run() exception list
+			- DONE: comment out old result class and remove from import (in new name)
 		- TBD: test & clean-up
-			- TBD: test
+			- DONE: test
 			- TBD: clean-up game_update(), result_class(), mach_class() [??]
 	- TBD: refactor DoorToggleResult
 		- TBD: result class updates
@@ -749,7 +749,7 @@ Version 3.87.0 Goals:
 		- TBD: 'git push origin --delete result_refactor_feature' to clean up origin
 		- TBD: confirm origin is cleaned up
 		- TBD: post-branch-delete run test
-
+- TBD: elegant solution to buffer first rather than last? (e.g. AttackHeroResult)
 - TBD: update call from run_mach(); self.mach_state => self.alert_anchor
 
 	- TBD: <TEMPLATE>

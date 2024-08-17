@@ -227,7 +227,7 @@ game_static_dict = {
 	'scroll_crown_not_worn_result' : "Upon reading the Kinging Scroll aloud, the clouds outside part, the sun shines, there is a booming sound... but then it fades away abruptly. There's one missing ingredient that's keeping the Kinging Scroll from performing its magic... if only there was some token of royal lineage... perhaps some form of headpiece you could wear.. that would proclaim your birthright...",
 	'scroll_win_game_result' : "Upon reading the Kinging Scroll aloud the clouds outside part, the sun shines, there is a booming sound like a great and thunderous gong that echoes and rebounds across the land! By the scroll's power the castle is scourgafied and all that was once dark is now glimmering with color and ligtht. Where Dark Castle once lurked, now gleams Bright Castle! The Stone Coffer magically fills with gold (and also a conveniently provided and legally complete deed to Bright Castle). And suddenly Burt, you find your own somewhat threadbare Baker's clothing replaced by garments of rich velvet and silk. Moments later, the Royal Hedgehog scampers into the Throne Room, places the Silver Sword at your feet, and kneels in fealty. Well done Burt! To the amazement of your family and friends - and the eternal pride of your great grandmother, Nana - you are now the Baron of Bright Castle!!",
 
-
+	'goblin_attacks_result_loc' : "It seems that by entering the north side of the room you have violated a minor castle ordinance. The Guard Goblin is incensed and will not tolerate this flagrant defiance of orthodoxy!",
 
 	#### AUTO-DISP ####
 
