@@ -702,13 +702,15 @@ Version 3.87.0 Goals:
 		- DONE: test & clean-up
 			- DONE: test
 			- DONE: clean-up game_update(), result_class(), mach_class() [??]
-	- TBD: refactor DoorToggleResult
-		- TBD: result class updates
-			- TBD: copy existing class; change parent to BaseResult and update class name
-			- TBD: update attribs and setters and getters
-			- TBD: update result_exe() attribs
-			- TBD: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
+	- INPROC: refactor DoorToggleResult => OpenableToggleResult
+		- INPROC: result class updates
+			- DONE: copy existing class; change parent to BaseResult and update class name
+			- DONE: update attribs and setters and getters
+			- DONE: update result_exe() attribs
+			- DONE: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
 			- TBD: specific class changes: <move toggle() method into door class?; return display str?>
+				- TBD: create door.toggle() method that returns is_open [True or False]
+				- TBD: DoorToggleResult sets and buffs display str based on door.toggle() return
 		- TBD: update game files
 			- TBD: add new result class to game_update imports
 			- TBD: update Result obj name if appropriate
@@ -750,6 +752,8 @@ Version 3.87.0 Goals:
 		- TBD: confirm origin is cleaned up
 		- TBD: post-branch-delete run test
 - TBD: elegant solution to buffer first rather than last? (e.g. AttackHeroResult)
+	- TBD: also need to sort out variable buff (e.g. DoorToggleResult)
+	- IDEA: add buff_key attrib? But how to controle *when* buff occurs?
 - TBD: update call from run_mach(); self.mach_state => self.alert_anchor
 
 	- TBD: <TEMPLATE>

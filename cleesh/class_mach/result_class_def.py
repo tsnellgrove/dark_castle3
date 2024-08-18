@@ -263,6 +263,33 @@ class AttackHeroResult(BaseResult):
 		return super(AttackHeroResult, self).result_exe(gs, mach_state, alert_anchor)
 
 
+class OpenableToggleResult(BaseResult):
+	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override, door_obj):
+		super().__init__(name, is_mach_state_set, mach_state_val, cmd_override)
+		self._door_obj = door_obj # door to be openned or closed
+
+	@property
+	def door_obj(self):
+		return self._door_obj
+
+	def result_exe(self, gs, mach_state, alert_anchor):
+		if self.door_obj.is_open == True:
+			self.door_obj.is_open = False
+			descript_ending = "closes."
+		else:
+			self.door_obj.is_open = True
+			descript_ending = "opens."
+		try:
+			descript_start = gs.io.get_str_nr(self.name)
+			descript = descript_start + descript_ending
+			gs.io.buffer(descript)
+		except:
+			pass
+
+		return super(DoorToggleResult, self).result_exe(gs, mach_state, alert_anchor)
+
+
+
 ### *** NEW RESULT CLASSES ***
 
 
@@ -525,11 +552,6 @@ class BufferOnlyResult(object):
 #		return mach_state, self.cmd_override
 
 
-### *** OLD RESULT CLASSES TO REVIEW ***
-
-### *** TO BE REVIEWED ***
-
-
 class DoorToggleResult(BufferOnlyResult):
 	def __init__(self, name, door_obj, cmd_override):
 		super().__init__(name, cmd_override)
@@ -554,6 +576,11 @@ class DoorToggleResult(BufferOnlyResult):
 			pass
 
 		return mach_state, self.cmd_override
+
+
+### *** OLD RESULT CLASSES TO REVIEW ***
+
+### *** TO BE REVIEWED ***
 
 
 class TravelResult(BufferOnlyResult):
