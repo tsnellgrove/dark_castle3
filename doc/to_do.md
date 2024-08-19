@@ -703,14 +703,14 @@ Version 3.87.0 Goals:
 			- DONE: test
 			- DONE: clean-up game_update(), result_class(), mach_class() [??]
 	- INPROC: refactor DoorToggleResult => OpenableToggleResult
-		- INPROC: result class updates
+		- DONE: result class updates
 			- DONE: copy existing class; change parent to BaseResult and update class name
 			- DONE: update attribs and setters and getters
 			- DONE: update result_exe() attribs
 			- DONE: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
-			- TBD: specific class changes: <move toggle() method into door class?; return display str?>
-				- TBD: create door.toggle() method that returns is_open [True or False]
-				- TBD: DoorToggleResult sets and buffs display str based on door.toggle() return
+			- DONE: specific class changes: <move toggle() method into door class?; return display str?>
+				- DONE: create door.toggle() method that returns is_open [True or False]
+				- DONE: DoorToggleResult sets and buffs display str based on door.toggle() return
 		- TBD: update game files
 			- TBD: add new result class to game_update imports
 			- TBD: update Result obj name if appropriate

@@ -273,14 +273,19 @@ class OpenableToggleResult(BaseResult):
 		return self._door_obj
 
 	def result_exe(self, gs, mach_state, alert_anchor):
-		if self.door_obj.is_open == True:
-			self.door_obj.is_open = False
-			descript_ending = "closes."
-		else:
-			self.door_obj.is_open = True
+		if self.door_obj.toggle(gs):
 			descript_ending = "opens."
+		else:
+			descript_ending = "closes."
+
+#		if self.door_obj.is_open == True:
+#			self.door_obj.is_open = False
+#			descript_ending = "closes."
+#		else:
+#			self.door_obj.is_open = True
+#			descript_ending = "opens."
 		try:
-			descript_start = gs.io.get_str_nr(self.name)
+			descript_start = gs.io.get_str_nr(self.name + "_pre-buff")
 			descript = descript_start + descript_ending
 			gs.io.buffer(descript)
 		except:

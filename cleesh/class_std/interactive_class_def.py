@@ -26,6 +26,15 @@ class OpenableMixIn(object):
 	def	is_openable(self):
 		return True
 
+	# *** simple methods ***
+
+	def toggle(self, gs):
+		if self.is_open == True:
+			self.is_open = False
+		else:
+			self.is_open = True
+		return self.is_open
+
 	# *** display methods ***
 	def has_cond(self, gs):
 		return True
