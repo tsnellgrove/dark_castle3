@@ -169,10 +169,8 @@ hedgehog_eats_result1 = StartTimerResult('hedgehog_eats_result1', False, None, F
 hedgehog_eats_result2 = RemoveObjResult('hedgehog_eats_result2', False, None, False, stale_biscuits)
 goblin_attacks_result = AttackHeroResult('goblin_attacks_result', False, None, True, 'guard_goblin_temp', grimy_axe)
 hedgehog_attacks_result = AttackHeroResult('hedgehog_attacks_result', False, None, True, 'royal_hedgehog_temp', fierce_teeth)
-
-
-# toggle_portcullis_result = DoorToggleResult('toggle_portcullis_result', iron_portcullis, False)
 toggle_portcullis_result = OpenableToggleResult('toggle_portcullis_result', False, None, False, iron_portcullis)
+
 
 # *** warnings ***
 entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0, True)

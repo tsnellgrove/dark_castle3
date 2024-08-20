@@ -702,7 +702,7 @@ Version 3.87.0 Goals:
 		- DONE: test & clean-up
 			- DONE: test
 			- DONE: clean-up game_update(), result_class(), mach_class() [??]
-	- INPROC: refactor DoorToggleResult => OpenableToggleResult
+	- DONE: refactor DoorToggleResult => OpenableToggleResult
 		- DONE: result class updates
 			- DONE: copy existing class; change parent to BaseResult and update class name
 			- DONE: update attribs and setters and getters
@@ -719,9 +719,9 @@ Version 3.87.0 Goals:
 			- N/A: update post-attrib assignment if needed
 			- DONE: add result name to mach_run() exception list
 			- DONE: comment out old result class and remove from import (in new name)
-		- TBD: test & clean-up
-			- TBD: test
-			- TBD: clean-up game_update(), result_class(), mach_class() [??]
+		- DONE: test & clean-up
+			- DONE: test
+			- DONE: clean-up game_update(), result_class(), mach_class() [??]
 	- TBD: refactor TravelResult
 		- TBD: result class updates
 			- TBD: copy existing class; change parent to BaseResult and update class name
