@@ -22,6 +22,7 @@
 # StartTimerResult :		BaseResult :		base + starts timer
 # RemoveObjResult :			BaseResult :		base + remove obj from game [new result for timer combo]
 # AttackHeroResult :		BaseResult :		base + loc_buff, creature_obj attacks hero w/ hand_obj
+# OpenableToggleResult :	BaseResult :		base + loc_buff, toggles door state
 
 # *** legacy ***
 # BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
@@ -30,7 +31,6 @@
 # TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir [not called]
 
 # *** refactor cases ***
-# DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
 
 # *** combo cases ***
 
@@ -44,6 +44,7 @@
 # AddObjToRoomAndDescriptResult : BOResult :	similar to AddObjChgDescriptResult; chg rm descript [COMBO] [DEDUP]
 # TimerAndCreatureItemResult StartTimerResult :	buff, starts timer and removes obj from creature hand [REFACT w/ eat???] [COMBO]
 # AttackBurtResult :		BufferOnlyResult :	buff, creature attacks burt [REFACT?] [address in_hand in creature.attack()?]
+# DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
 
 ### classes
 
@@ -264,16 +265,16 @@ class AttackHeroResult(BaseResult):
 
 
 class OpenableToggleResult(BaseResult):
-	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override, door_obj):
+	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override, openable_obj):
 		super().__init__(name, is_mach_state_set, mach_state_val, cmd_override)
-		self._door_obj = door_obj # door to be openned or closed
+		self._openable_obj = openable_obj # door-like obj to be openned or closed
 
 	@property
-	def door_obj(self):
-		return self._door_obj
+	def openable_obj(self):
+		return self._openable_obj
 
 	def result_exe(self, gs, mach_state, alert_anchor):
-		if self.door_obj.toggle(gs):
+		if self.openable_obj.toggle(gs):
 			descript_ending = "opens."
 		else:
 			descript_ending = "closes."
@@ -291,7 +292,7 @@ class OpenableToggleResult(BaseResult):
 		except:
 			pass
 
-		return super(DoorToggleResult, self).result_exe(gs, mach_state, alert_anchor)
+		return super(OpenableToggleResult, self).result_exe(gs, mach_state, alert_anchor)
 
 
 
@@ -557,30 +558,30 @@ class BufferOnlyResult(object):
 #		return mach_state, self.cmd_override
 
 
-class DoorToggleResult(BufferOnlyResult):
-	def __init__(self, name, door_obj, cmd_override):
-		super().__init__(name, cmd_override)
-		self._door_obj = door_obj # door to be openned or closed
+# class DoorToggleResult(BufferOnlyResult):
+#	def __init__(self, name, door_obj, cmd_override):
+#		super().__init__(name, cmd_override)
+#		self._door_obj = door_obj # door to be openned or closed
 
-	@property
-	def door_obj(self):
-		return self._door_obj
+#	@property
+#	def door_obj(self):
+#		return self._door_obj
 
-	def result_exe(self, gs, mach_state):
-		if self.door_obj.is_open == True:
-			self.door_obj.is_open = False
-			descript_ending = "closes."
-		else:
-			self.door_obj.is_open = True
-			descript_ending = "opens."
-		try:
-			descript_start = gs.io.get_str_nr(self.name)
-			descript = descript_start + descript_ending
-			gs.io.buffer(descript)
-		except:
-			pass
+#	def result_exe(self, gs, mach_state):
+#		if self.door_obj.is_open == True:
+#			self.door_obj.is_open = False
+#			descript_ending = "closes."
+#		else:
+#			self.door_obj.is_open = True
+#			descript_ending = "opens."
+#		try:
+#			descript_start = gs.io.get_str_nr(self.name)
+#			descript = descript_start + descript_ending
+#			gs.io.buffer(descript)
+#		except:
+#			pass
 
-		return mach_state, self.cmd_override
+#		return mach_state, self.cmd_override
 
 
 ### *** OLD RESULT CLASSES TO REVIEW ***

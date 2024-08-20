@@ -711,14 +711,14 @@ Version 3.87.0 Goals:
 			- DONE: specific class changes: <move toggle() method into door class?; return display str?>
 				- DONE: create door.toggle() method that returns is_open [True or False]
 				- DONE: DoorToggleResult sets and buffs display str based on door.toggle() return
-		- TBD: update game files
-			- TBD: add new result class to game_update imports
-			- TBD: update Result obj name if appropriate
-			- TBD: update game_update result obj classes, attribs, and post-assignment updates
-			- TBD: set mach_state appropriately
-			- TBD: update post-attrib assignment if needed
-			- TBD: add result name to mach_run() exception list
-			- TBD: comment out old result class and remove from import (in new name)
+		- DONE: update game files
+			- DONE: add new result class to game_update imports
+			- DONE: update Result obj name if appropriate
+			- DONE: update game_update result obj classes, attribs, and post-assignment updates
+			- N/A: set mach_state appropriately
+			- N/A: update post-attrib assignment if needed
+			- DONE: add result name to mach_run() exception list
+			- DONE: comment out old result class and remove from import (in new name)
 		- TBD: test & clean-up
 			- TBD: test
 			- TBD: clean-up game_update(), result_class(), mach_class() [??]

@@ -117,7 +117,7 @@ class MachineMixIn(object):
 							'goblin_take_axe_result', 'throne_pull_result1', 'throne_pull_result2',
 							'dispense_panel_result1', 'dispense_panel_result2', 
 							'hedgehog_eats_result1', 'hedgehog_eats_result2'], 
-							'goblin_attacks_result', 'hedgehog_attacks_result'):
+							'goblin_attacks_result', 'hedgehog_attacks_result', 'toggle_portcullis_result'):
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state, self.alert_anchor)
 				else:
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
