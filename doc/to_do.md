@@ -722,24 +722,24 @@ Version 3.87.0 Goals:
 		- DONE: test & clean-up
 			- DONE: test
 			- DONE: clean-up game_update(), result_class(), mach_class() [??]
-	- TBD: refactor TravelResult
-		- TBD: result class updates
-			- TBD: copy existing class; change parent to BaseResult and update class name
-			- TBD: update attribs and setters and getters
-			- TBD: update result_exe() attribs
-			- TBD: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
-			- TBD: specific class changes: <list here>
-		- TBD: update game files
-			- TBD: add new result class to game_update imports
-			- TBD: update Result obj name if appropriate
-			- TBD: update game_update result obj classes, attribs, and post-assignment updates
-			- TBD: set mach_state appropriately
-			- TBD: update post-attrib assignment if needed
-			- TBD: add result name to mach_run() exception list
-			- TBD: comment out old result class and remove from import (in new name)
-		- TBD: test & clean-up
-			- TBD: test
-			- TBD: clean-up game_update(), result_class(), mach_class() [??]
+	- DONE: refactor TravelResult => CreatureTravelResult
+		- DONE: result class updates
+			- DONE: copy existing class; change parent to BaseResult and update class name
+			- DONE: update attribs and setters and getters
+			- DONE: update result_exe() attribs
+			- DONE: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
+			- N/A: specific class changes: <list here>
+		- DONE: update game files
+			- DONE: add new result class to game_update imports
+			- N/A: update Result obj name if appropriate
+			- N/A: update game_update result obj classes, attribs, and post-assignment updates
+			- N/A: set mach_state appropriately
+			- N/A: update post-attrib assignment if needed
+			- N/A: add result name to mach_run() exception list
+			- DONE: comment out old result class and remove from import (in new name)
+		- DONE: test & clean-up
+			- N/A: test
+			- DONE: clean-up game_update(), result_class(), mach_class() [??]
 	- TBD: merge result_refactor_feature git branch
 		- TBD: 'git checkout master' to switch focus to master
 		- TBD: 'git branch: to confirm focus
@@ -751,10 +751,12 @@ Version 3.87.0 Goals:
 		- TBD: 'git push origin --delete result_refactor_feature' to clean up origin
 		- TBD: confirm origin is cleaned up
 		- TBD: post-branch-delete run test
+
 - TBD: elegant solution to buffer first rather than last? (e.g. AttackHeroResult)
 	- TBD: also need to sort out variable buff (e.g. DoorToggleResult)
 	- IDEA: add buff_key attrib? But how to controle *when* buff occurs?
 - TBD: update call from run_mach(); self.mach_state => self.alert_anchor
+- TBD: clean-up all the result_class() module comments
 
 	- TBD: <TEMPLATE>
 		- TBD: create new <FEATURE_NAME>_feature git branch

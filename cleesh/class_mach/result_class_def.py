@@ -23,12 +23,11 @@
 # RemoveObjResult :			BaseResult :		base + remove obj from game [new result for timer combo]
 # AttackHeroResult :		BaseResult :		base + loc_buff, creature_obj attacks hero w/ hand_obj
 # OpenableToggleResult :	BaseResult :		base + loc_buff, toggles door state
+# CreatureTravelResult :	BaseResult :		base + creature attempts to go dir [not called]
 
 # *** legacy ***
-# BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
 
 # *** simple cases ***
-# TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir [not called]
 
 # *** refactor cases ***
 
@@ -45,6 +44,8 @@
 # TimerAndCreatureItemResult StartTimerResult :	buff, starts timer and removes obj from creature hand [REFACT w/ eat???] [COMBO]
 # AttackBurtResult :		BufferOnlyResult :	buff, creature attacks burt [REFACT?] [address in_hand in creature.attack()?]
 # DoorToggleResult :		BufferOnlyResult :	toggles door state; buff output [REFACT?]
+# TravelResult :			BufferOnlyResult :	buff, creature attempts to go dir [not called]
+# BufferOnlyResult :		N/A (is parent) :	buffer value assiciated w/ result_name key
 
 ### classes
 
@@ -289,6 +290,29 @@ class OpenableToggleResult(BaseResult):
 		return super(OpenableToggleResult, self).result_exe(gs, mach_state, alert_anchor)
 
 
+class CreatureTravelResult(BaseResult): # note: never tested; not 'known good'
+	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override, creature_obj, dir_str):
+		super().__init__(name, is_mach_state_set, mach_state_val, cmd_override)
+		self._creature_obj = creature_obj # the creature that is traveling
+		self._dir_str = dir_str # direction of travle (i.e. "north", "south", "east", or "west")
+
+	@property
+	def creature_obj(self):
+		return self._creature_obj
+
+	@creature_obj.setter
+	def creature_obj(self, new_val):
+		self._creature_obj = new_val
+
+	@property
+	def dir_str(self):
+		return self._dir_str
+
+	def result_exe(self, gs, mach_state, alert_anchor):
+		room = gs.map.get_obj_room(self.creature_obj, gs)
+		room.go(self.dir_str, gs, self.creature_obj)
+		return super(CreatureTravelResult, self).result_exe(gs, mach_state, alert_anchor)
+
 
 ### *** NEW RESULT CLASSES ***
 
@@ -296,25 +320,25 @@ class OpenableToggleResult(BaseResult):
 
 ### *** OLD RESULT CLASSES TO REVIEW ***
 
-class BufferOnlyResult(object):
-	def __init__(self, name, cmd_override):
-		self._name = name
-		self._cmd_override = cmd_override # does the triggered pre-action over-ride the 'standard' response to player command?
+# class BufferOnlyResult(object):
+#	def __init__(self, name, cmd_override):
+#		self._name = name
+#		self._cmd_override = cmd_override # does the triggered pre-action over-ride the 'standard' response to player command?
 
-	@property
-	def name(self):
-		return self._name
+#	@property
+#	def name(self):
+#		return self._name
 
-	@property
-	def cmd_override(self):
-		return self._cmd_override
+#	@property
+#	def cmd_override(self):
+#		return self._cmd_override
 
-	def result_exe(self, gs, mach_state):
-		gs.io.buff_s(self.name)
-		return mach_state, self.cmd_override
+#	def result_exe(self, gs, mach_state):
+#		gs.io.buff_s(self.name)
+#		return mach_state, self.cmd_override
 
-	def __repr__(self):
-		return f'Object { self.name } is of class { type(self).__name__ } '
+#	def __repr__(self):
+#		return f'Object { self.name } is of class { type(self).__name__ } '
 
 
 # class BufferAndEndResult(BufferOnlyResult):
@@ -578,33 +602,34 @@ class BufferOnlyResult(object):
 #		return mach_state, self.cmd_override
 
 
+# class TravelResult(BufferOnlyResult):
+#	def __init__(self, name, cmd_override, creature, dir):
+#		super().__init__(name, cmd_override)
+#		self._creature = creature
+#		self._dir = dir
+
+#	@property
+#	def creature(self):
+#		return self._creature
+
+#	@creature.setter
+#	def creature(self, new_val):
+#		self._creature = new_val
+
+#	@property
+#	def dir(self):
+#		return self._dir
+
+#	def result_exe(self, gs, mach_state):
+#		gs.io.buff_s(self.name)
+#		room = gs.map.get_obj_room(self.creature, gs)
+#		room.go(self.dir, gs, self.creature)
+#		return mach_state, self.cmd_override
+
+
 ### *** OLD RESULT CLASSES TO REVIEW ***
 
 ### *** TO BE REVIEWED ***
 
-
-class TravelResult(BufferOnlyResult):
-	def __init__(self, name, cmd_override, creature, dir):
-		super().__init__(name, cmd_override)
-		self._creature = creature
-		self._dir = dir
-
-	@property
-	def creature(self):
-		return self._creature
-
-	@creature.setter
-	def creature(self, new_val):
-		self._creature = new_val
-
-	@property
-	def dir(self):
-		return self._dir
-
-	def result_exe(self, gs, mach_state):
-		gs.io.buff_s(self.name)
-		room = gs.map.get_obj_room(self.creature, gs)
-		room.go(self.dir, gs, self.creature)
-		return mach_state, self.cmd_override
 
 ### *** OLD RESULT CLASSES TO REVIEW ***
