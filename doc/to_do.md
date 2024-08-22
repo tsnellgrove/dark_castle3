@@ -669,7 +669,7 @@ Version 3.87.0 Goals:
 			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
 	- DONE: update version and complete build
-- INPROC: final result class build for refactor cases including travel (build 0009 [])
+- DONE: final result class build for refactor cases including travel (build 0009 [8/22/2024])
 	- DONE: create new git branch for result_refactor_feature
 		- DONE: 'git branch' to confirm *master
 		- DONE: 'git branch result_refactor_feature' to create new branch
@@ -740,17 +740,20 @@ Version 3.87.0 Goals:
 		- DONE: test & clean-up
 			- N/A: test
 			- DONE: clean-up game_update(), result_class(), mach_class() [??]
-	- INPROC: merge result_refactor_feature git branch
+	- DONE: merge result_refactor_feature git branch
 		- DONE: 'git checkout master' to switch focus to master
 		- DONE: 'git branch: to confirm focus
 		- DONE: 'git merge result_refactor_feature -m "branch result_refator_feature merge"'
 		- DONE: 'git push' to push merge to origin (GitHub)
 		- DONE: confirm that origin is updated
 		- DONE: confirm that code is updated and still runs
-		- TBD: 'git branch -d result_refactor_feature' to clean-up local branch
-		- TBD: 'git push origin --delete result_refactor_feature' to clean up origin
-		- TBD: confirm origin is cleaned up
-		- TBD: post-branch-delete run test
+		- DONE: 'git branch -d result_refactor_feature' to clean-up local branch
+		- DONE: 'git push origin --delete result_refactor_feature' to clean up origin
+		- DONE: confirm origin is cleaned up
+		- DONE: post-branch-delete run test
+	- DONE: update cleesh engine version build
+		- DONE: web_main.py
+		- DONE: static_gbl.py
 
 - TBD: final result class updates (build 0010 [])
 	- TBD: create new result_class_feature git branch
@@ -787,6 +790,9 @@ Version 3.87.0 Goals:
 		- TBD: 'git push origin --delete result_class_feature' to clean up origin
 		- TBD: confirm origin is cleaned up
 		- TBD: post-branch-delete run test
+	- TBD: update cleesh engine version build
+		- TBD: web_main.py
+		- TBD: static_gbl.py
 
 	- TBD: <TEMPLATE>
 		- TBD: create new <FEATURE_NAME>_feature git branch
