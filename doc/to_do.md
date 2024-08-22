@@ -752,11 +752,41 @@ Version 3.87.0 Goals:
 		- TBD: confirm origin is cleaned up
 		- TBD: post-branch-delete run test
 
-- TBD: elegant solution to buffer first rather than last? (e.g. AttackHeroResult)
-	- TBD: also need to sort out variable buff (e.g. DoorToggleResult)
-	- IDEA: add buff_key attrib? But how to controle *when* buff occurs?
-- TBD: update call from run_mach(); self.mach_state => self.alert_anchor
-- TBD: clean-up all the result_class() module comments
+- TBD: final result class updates (build 0010 [])
+	- TBD: create new result_class_feature git branch
+		- TBD: 'git branch' to confirm *master
+		- TBD: 'git branch result_class_feature' to create new branch
+		- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+		- TBD: 'git checkout result_class_feature' to switch focus to branching_test branch
+		- TBD: 'git branch' to confirm new branch is now in focus
+		- TBD: Publish Branch via VS Code button
+		- TBD: confirm new branch on GitHub
+		- TBD: update doc TBDs to DONEs
+		- TBD: <CMD><OPT>S (to save all files)
+		- TBD: 'git add .' to add files to be committed
+		- TBD: 'git commit -m "doc updates"
+		- TBD: 'git push" to push updates to origin (GitHub)
+		- TBD: confirm new branch on GitHub is now ahead of master
+	- TBD: refactor result class
+		- TBD: update call from run_mach(); self.mach_state => self.alert_anchor
+		- TBD: solve buffer issues:
+			- IDEA: need to sort out variable buff (e.g. DoorToggleResult)
+				- TBD: pass buff_key as attrib to result_exe() in BaseResult
+				- TBD: update result_exe() return call in all child classes
+			- IDEA: How to buffer first rather than last? (e.g. AttackHeroResult)
+				- DONE: gs.io.buff_s(self.name + "_pre-buff")
+		- TBD: clean-up all the result_class() module comments
+	- TBD: git branch merge with master
+		- TBD: 'git checkout master' to switch focus to master
+		- TBD: 'git branch: to confirm focus
+		- TBD: 'git merge result_class_feature -m "branch result_class_feature merge"'
+		- TBD: 'git push' to push merge to origin (GitHub)
+		- TBD: confirm that origin is updated
+		- TBD: confirm that code is updated and still runs
+		- TBD: 'git branch -d result_class_feature' to clean-up local branch
+		- TBD: 'git push origin --delete result_class_feature' to clean up origin
+		- TBD: confirm origin is cleaned up
+		- TBD: post-branch-delete run test
 
 	- TBD: <TEMPLATE>
 		- TBD: create new <FEATURE_NAME>_feature git branch
