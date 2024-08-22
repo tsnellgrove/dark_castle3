@@ -740,13 +740,13 @@ Version 3.87.0 Goals:
 		- DONE: test & clean-up
 			- N/A: test
 			- DONE: clean-up game_update(), result_class(), mach_class() [??]
-	- TBD: merge result_refactor_feature git branch
-		- TBD: 'git checkout master' to switch focus to master
-		- TBD: 'git branch: to confirm focus
-		- TBD: 'git merge result_refactor_feature -m "branch result_refator_feature merge"'
-		- TBD: 'git push' to push merge to origin (GitHub)
-		- TBD: confirm that origin is updated
-		- TBD: confirm that code is updated and still runs
+	- INPROC: merge result_refactor_feature git branch
+		- DONE: 'git checkout master' to switch focus to master
+		- DONE: 'git branch: to confirm focus
+		- DONE: 'git merge result_refactor_feature -m "branch result_refator_feature merge"'
+		- DONE: 'git push' to push merge to origin (GitHub)
+		- DONE: confirm that origin is updated
+		- DONE: confirm that code is updated and still runs
 		- TBD: 'git branch -d result_refactor_feature' to clean-up local branch
 		- TBD: 'git push origin --delete result_refactor_feature' to clean up origin
 		- TBD: confirm origin is cleaned up
