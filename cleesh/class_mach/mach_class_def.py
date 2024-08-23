@@ -99,7 +99,6 @@ class MachineMixIn(object):
 		for idx, cond in enumerate(self.cond_lst):
 			if cond.cond_check(gs, self.mach_state, self.cond_swicth_lst):
 				result = self.result_lst[idx]
-# CLEAN UP ONCE RESULT MIGRATION COMPLETE!
 				if isinstance(result, list):
 					cmd_override = False
 					for result_element in result:
@@ -109,18 +108,8 @@ class MachineMixIn(object):
 						if element_mach_state != None:
 							self.mach_state = element_mach_state # if element_mach_state set for *any* result, mach_state is set
 					return cmd_override, result_element.name
-				elif (result.name in ['pass_result', 'moat_croc_scared_result', 'nothing_happens_result', 
-							'throne_push_result', 'portcullis_doesnt_open_result', 'hedgehog_distracted_result',
-							'scroll_wrong_room_result', 'scroll_no_hedgehog_result', 'scroll_crown_not_worn_result',
-							'tea_drunk_win_result', 'die_in_moat_result', 'scroll_win_game_result', 
-							'fed_hedgehog_keeps_sword_result', 'fed_hedgehog_loses_sword_result', 'moat_get_crown_result',
-							'goblin_take_axe_result', 'throne_pull_result1', 'throne_pull_result2',
-							'dispense_panel_result1', 'dispense_panel_result2', 
-							'hedgehog_eats_result1', 'hedgehog_eats_result2'], 
-							'goblin_attacks_result', 'hedgehog_attacks_result', 'toggle_portcullis_result'):
-					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state, self.alert_anchor)
 				else:
-					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state)
+					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state, self.alert_anchor)
 				return cmd_override, result.name
 		return False, 'pass_result'
 

@@ -770,8 +770,11 @@ Version 3.87.0 Goals:
 		- DONE: 'git commit -m "doc updates"
 		- DONE: 'git push" to push updates to origin (GitHub)
 		- DONE: confirm new branch on GitHub is now ahead of master
-	- TBD: refactor result class
-		- TBD: update call from run_mach(); self.mach_state => self.alert_anchor
+	- INPROC: refactor result class
+		- DONE: update call from run_mach(); self.mach_state => self.alert_anchor
+			- DONE: comment out elif
+			- DONE: test
+			- DONE: clean-up comments
 		- TBD: solve buffer issues:
 			- IDEA: need to sort out variable buff (e.g. DoorToggleResult)
 				- TBD: pass buff_key as attrib to result_exe() in BaseResult
