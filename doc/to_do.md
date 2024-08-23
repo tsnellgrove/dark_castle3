@@ -755,8 +755,8 @@ Version 3.87.0 Goals:
 		- DONE: web_main.py
 		- DONE: static_gbl.py
 
-- TBD: final result class updates (build 0010 [])
-	- TBD: create new result_class_feature git branch
+- INPROC: final result class updates (build 0010 [])
+	- INPROC: create new result_class_feature git branch
 		- TBD: 'git branch' to confirm *master
 		- TBD: 'git branch result_class_feature' to create new branch
 		- TBD: 'git branch' to confirm new branch exists but that master is still checked out
