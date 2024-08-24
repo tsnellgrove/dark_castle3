@@ -775,8 +775,8 @@ Version 3.87.0 Goals:
 			- DONE: comment out elif
 			- DONE: test
 			- DONE: clean-up comments
-		- INPROC: solve buffer issues:
-			- INPROC: need to sort out variable buff (e.g. DoorToggleResult)
+		- DONE: solve buffer issues:
+			- DONE: need to sort out variable buff (e.g. DoorToggleResult)
 				- DONE: pass buff_key as attrib to result_exe() in BaseResult
 				- DONE: update BaseResult buff_s(buff_key)
 				- DONE: update result_exe() return call in all child classes
@@ -785,7 +785,7 @@ Version 3.87.0 Goals:
 				- DONE: update OpenableToggleResult to modify buff_key
 				- DONE: update game_static_gbl to provide two different buff_key entries
 				- DONE: test
-				- TBD: clean up comments in result_class(), mach_class(), game_static_gbl()
+				- DONE: clean up comments in result_class(), mach_class(), game_static_gbl()
 			- DONE: How to buffer first rather than last? (e.g. AttackHeroResult)
 				- DONE: gs.io.buff_s(self.name + "_pre-buff")
 		- TBD: clean-up all the result_class() module comments

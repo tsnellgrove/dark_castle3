@@ -210,7 +210,6 @@ game_static_dict = {
 	'throne_pull_result2' : "Hoping to find some sort of secret compartment filled with gold - or at least a good souvenir to show to the lads back at the pub - you pull and prod the Throne. As you are pulling the throne forward you hear a metallic 'clank' and something rolls out from beneath the Throne.. it appears to be a Hedgehog Broach. It must have been wedged between the Throne and the castle wall all these years... since the days of the last King! The sight of it brings back old memories... \n\nYou have a strong urge to examine the Hedgehog Broach more closely.",
 	
 	'nothing_happens_result' : "Nothing happens.",
-#	'toggle_portcullis_result_pre-buff' : "You hear a loud clank, a whirring of gears, and the Iron Portcullis suddenly ",
     'toggle_portcullis_result_open' : "You hear a loud clank, a whirring of gears, and the Iron Portcullis suddenly opens.",
 	'toggle_portcullis_result_close' : "You hear a loud clank, a whirring of gears, and the Iron Portcullis suddenly closes.",   
 	'portcullis_doesnt_open_result' : "You press the button and hear a whirring of gears but nothing happens.",

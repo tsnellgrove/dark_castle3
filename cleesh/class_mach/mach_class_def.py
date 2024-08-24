@@ -102,7 +102,6 @@ class MachineMixIn(object):
 				if isinstance(result, list):
 					cmd_override = False
 					for result_element in result:
-#						element_mach_state, element_cmd_override = result_element.result_exe(gs, self.mach_state, self.alert_anchor)
 						element_mach_state, element_cmd_override = result_element.result_exe(gs, self.mach_state, result_element.name, self.alert_anchor)
 						if element_cmd_override == True:
 							cmd_override = True # if element_cmd_override == True for *any* result, cmd_override = True
@@ -110,7 +109,6 @@ class MachineMixIn(object):
 							self.mach_state = element_mach_state # if element_mach_state set for *any* result, mach_state is set
 					return cmd_override, result_element.name
 				else:
-#					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state, self.alert_anchor)
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state, result.name, self.alert_anchor)
 				return cmd_override, result.name
 		return False, 'pass_result'
