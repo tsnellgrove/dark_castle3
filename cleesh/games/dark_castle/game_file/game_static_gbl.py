@@ -210,7 +210,9 @@ game_static_dict = {
 	'throne_pull_result2' : "Hoping to find some sort of secret compartment filled with gold - or at least a good souvenir to show to the lads back at the pub - you pull and prod the Throne. As you are pulling the throne forward you hear a metallic 'clank' and something rolls out from beneath the Throne.. it appears to be a Hedgehog Broach. It must have been wedged between the Throne and the castle wall all these years... since the days of the last King! The sight of it brings back old memories... \n\nYou have a strong urge to examine the Hedgehog Broach more closely.",
 	
 	'nothing_happens_result' : "Nothing happens.",
-	'toggle_portcullis_result_pre-buff' : "You hear a loud clank, a whirring of gears, and the Iron Portcullis suddenly ",		
+#	'toggle_portcullis_result_pre-buff' : "You hear a loud clank, a whirring of gears, and the Iron Portcullis suddenly ",
+    'toggle_portcullis_result_open' : "You hear a loud clank, a whirring of gears, and the Iron Portcullis suddenly opens.",
+	'toggle_portcullis_result_close' : "You hear a loud clank, a whirring of gears, and the Iron Portcullis suddenly closes.",   
 	'portcullis_doesnt_open_result' : "You press the button and hear a whirring of gears but nothing happens.",
 
 	'antechamber_with_panel' :"You are standing in a what feels more like a wide, tall-ceilinged corridor than a room. Apparently this is the room-before-the-room, the pre-room before the really, really grand room that comes after it. If so, the next room must be quite something because back in it's day this spot was clearly impressive. Alas, like all of the castle it has fallen on dark times and now feels more sinister than grand. The east and west walls are bare stone. To the south is an open passageway leading to the Main Hall and to the north there is an Iron Portcullis that guards the path to the grand chamber beyond. Near the Iron Portcullis on the west wall there is a small Alcove. It appears to have a Control Panel with some levers and a button on it.",
