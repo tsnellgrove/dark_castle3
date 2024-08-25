@@ -669,6 +669,7 @@ Version 3.87.0 Goals:
 			- DONE: confirm origin is cleaned up
 			- DONE: post-branch-delete run test
 	- DONE: update version and complete build
+
 - DONE: final result class build for refactor cases including travel (build 0009 [8/22/2024])
 	- DONE: create new git branch for result_refactor_feature
 		- DONE: 'git branch' to confirm *master
@@ -755,7 +756,7 @@ Version 3.87.0 Goals:
 		- DONE: web_main.py
 		- DONE: static_gbl.py
 
-- INPROC: final result class updates (build 0010 [])
+- DONE: final result class updates (build 0010 [8/25/2024])
 	- DONE: create new result_class_feature git branch
 		- DONE: 'git branch' to confirm *master
 		- DONE: 'git branch result_class_feature' to create new branch
@@ -789,20 +790,20 @@ Version 3.87.0 Goals:
 			- DONE: How to buffer first rather than last? (e.g. AttackHeroResult)
 				- DONE: gs.io.buff_s(self.name + "_pre-buff")
 		- DONE: clean-up all the result_class() module comments
-	- INPROC: git branch merge with master
+	- DONE: git branch merge with master
 		- DONE: 'git checkout master' to switch focus to master
 		- DONE: 'git branch: to confirm focus
 		- DONE: 'git merge result_class_feature -m "branch result_class_feature merge"'
 		- DONE: 'git push' to push merge to origin (GitHub)
 		- DONE: confirm that origin is updated
 		- DONE: confirm that code is updated and still runs
-		- TBD: 'git branch -d result_class_feature' to clean-up local branch
-		- TBD: 'git push origin --delete result_class_feature' to clean up origin
-		- TBD: confirm origin is cleaned up
-		- TBD: post-branch-delete run test
-	- TBD: update cleesh engine version build
-		- TBD: web_main.py
-		- TBD: static_gbl.py
+		- DONE: 'git branch -d result_class_feature' to clean-up local branch
+		- DONE: 'git push origin --delete result_class_feature' to clean up origin
+		- DONE: confirm origin is cleaned up
+		- DONE: post-branch-delete run test
+	- DONE: update cleesh engine version build
+		- DONE: web_main.py
+		- DONE: static_gbl.py
 
 	- TBD: <TEMPLATE>
 		- TBD: create new <FEATURE_NAME>_feature git branch
