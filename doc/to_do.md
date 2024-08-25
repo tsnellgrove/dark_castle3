@@ -788,7 +788,7 @@ Version 3.87.0 Goals:
 				- DONE: clean up comments in result_class(), mach_class(), game_static_gbl()
 			- DONE: How to buffer first rather than last? (e.g. AttackHeroResult)
 				- DONE: gs.io.buff_s(self.name + "_pre-buff")
-		- TBD: clean-up all the result_class() module comments
+		- DONE: clean-up all the result_class() module comments
 	- TBD: git branch merge with master
 		- TBD: 'git checkout master' to switch focus to master
 		- TBD: 'git branch: to confirm focus

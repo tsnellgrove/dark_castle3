@@ -1,4 +1,4 @@
-# program: dark castle
+# program: cleesh engine
 # author: Tom Snellgrove
 # module description: class deffinition module for Conditions
 
