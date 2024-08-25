@@ -770,7 +770,7 @@ Version 3.87.0 Goals:
 		- DONE: 'git commit -m "doc updates"
 		- DONE: 'git push" to push updates to origin (GitHub)
 		- DONE: confirm new branch on GitHub is now ahead of master
-	- INPROC: refactor result class
+	- DONE: refactor result class
 		- DONE: update call from run_mach(); self.mach_state => self.alert_anchor
 			- DONE: comment out elif
 			- DONE: test
@@ -789,13 +789,13 @@ Version 3.87.0 Goals:
 			- DONE: How to buffer first rather than last? (e.g. AttackHeroResult)
 				- DONE: gs.io.buff_s(self.name + "_pre-buff")
 		- DONE: clean-up all the result_class() module comments
-	- TBD: git branch merge with master
-		- TBD: 'git checkout master' to switch focus to master
-		- TBD: 'git branch: to confirm focus
-		- TBD: 'git merge result_class_feature -m "branch result_class_feature merge"'
-		- TBD: 'git push' to push merge to origin (GitHub)
-		- TBD: confirm that origin is updated
-		- TBD: confirm that code is updated and still runs
+	- INPROC: git branch merge with master
+		- DONE: 'git checkout master' to switch focus to master
+		- DONE: 'git branch: to confirm focus
+		- DONE: 'git merge result_class_feature -m "branch result_class_feature merge"'
+		- DONE: 'git push' to push merge to origin (GitHub)
+		- DONE: confirm that origin is updated
+		- DONE: confirm that code is updated and still runs
 		- TBD: 'git branch -d result_class_feature' to clean-up local branch
 		- TBD: 'git push origin --delete result_class_feature' to clean up origin
 		- TBD: confirm origin is cleaned up
