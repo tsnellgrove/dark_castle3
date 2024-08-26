@@ -805,6 +805,30 @@ Version 3.87.0 Goals:
 		- DONE: web_main.py
 		- DONE: static_gbl.py
 
+
+- INPROC: mach review (build 0011 [])
+	- DONE: for Mach class, create an 'is_enabled' attribute
+	- TBD: general Mach class review
+		- TBD: analyze dark_castle machs
+		- TBD: analyze dark_castle warnings
+		- TBD: analyze timers
+	- TBD: re-read all remaining mach ideas and incorporate as appropriate
+	- TBD: reconsider parent / child mach classes / MixIns
+	- IDEA: room should have show_machs() method that lists all local mod-machs
+	- IDEA: triggers
+		- IDEA: 'trigger_type' => 'trig_type' ??
+		- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
+		- IDEA: Establish switch triggers such that timer as trigger is more natural
+	- TBD: update version build #
+
+- TBD: review existing Warning class - refactor / integrate with Mach class
+	- TBD: refactor app_turn modules (warning & timer code)
+	- TBD: update version build #
+
+- TBD: review existing Timer class - refactor / integrate with Mach class
+	- TBD: update version build #
+
+
 	- TBD: <TEMPLATE>
 		- TBD: create new <FEATURE_NAME>_feature git branch
 			- TBD: 'git branch' to confirm *master
@@ -849,28 +873,6 @@ Version 3.87.0 Goals:
 			- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
 			- TBD: confirm origin is cleaned up
 			- TBD: post-branch-delete run test
-
-
-- TBD: mach review
-	- TBD: general Mach class review
-	- TBD: for Mach class, create an 'active' attribute
-	- IDEA: room should have show_machs() method that lists all local mod-machs
-	- TBD: review of Mach class obj
-	- IDEA: triggers
-		- IDEA: 'trigger_type' => 'trig_type' ??
-		- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
-		- IDEA: Establish switch triggers such that timer as trigger is more natural
-	- TBD: update version build #
-
-- TBD: review existing Warning class - refactor / integrate with Mach class
-	- TBD: refactor app_turn modules (warning & timer code)
-	- TBD: update version build #
-
-- TBD: review existing Timer class - refactor / integrate with Mach class
-	- TBD: update version build #
-
-- TBD: results and conditions 
-
 
 
 - TBD: review mod-mach improvement ideas:

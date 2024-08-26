@@ -176,64 +176,105 @@ attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd',
 eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','stale_biscuits']], 3, 0, True)
 
 # *** machines ***
-entrance_moat_mach = InvisMach('entrance_moat_mach', False, 'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
+
+
+## auto_act : trig_switch, trig_vals_lst, cond_switch_lst => None
+
+dispense_panel_mach = InvisMach('dispense_panel_mach', False, 
+		'auto_act', None, None, 
+		None, [goblin_in_world_cond, panel_not_dispensed_cond], 
+		[pass_result, [dispense_panel_result1, dispense_panel_result2]],
+		'antechamber_temp', True) 
+		# mach_state == has panel been dispensed
+
+re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 
+		'auto_act', None, None, 
+		None, [axe_not_in_goblin_hand_cond], 
+		[goblin_take_axe_result],
+		'guard_goblin_temp', True) 
+		# mach_state == None
+
+
+## pre_act_cmd & post_act_cmd : trig_switch, cond_switch_lst => None
+
+hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 
+		'pre_act_cmd', None, [['take', 'shiny_sword']], 
+		None, [hedgehog_eats_timer_not_active_cond], 
+		[hedgehog_attacks_result],
+		'royal_hedgehog_temp', True) 
+		# mach_state == None
+
+hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 
+		'pre_act_cmd', None, [['give', '*', 'royal_hedgehog'], ['show', '*', 'royal_hedgehog']], 
+		None, [hedgehog_eats_timer_active_cond], 
+		[hedgehog_distracted_result],
+		'royal_hedgehog_temp', True) 
+		# mach_state == None
+
+goblin_attack_mach = InvisMach('goblin_attack_mach', None, 
+		'pre_act_cmd', None, 
+		[['examine', 'iron_portcullis'], ['examine', 'alcove'], ['examine', 'grimy_axe'], 
+   		['take', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north']], 
+		None, [true_cond], 
+		[goblin_attacks_result],
+		'guard_goblin_temp', True) 
+		# mach_state == None
+
+entrance_moat_mach = InvisMach('entrance_moat_mach', False, 
+		'pre_act_cmd', None, [['go', 'east'], ['go', 'west']],
 		None, [no_weap_in_hand_cond, crown_not_dispensed_cond, crown_dispensed_cond],
 		[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result],
-		'entrance_temp', True) # mach_state == got_crown
+		'entrance_temp', True) 
+		# mach_state == got_crown
 
-broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 'post_act_switch', throne, ['pushed', 'pulled'],
+hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 
+		'post_act_cmd', None, [['give', 'stale_biscuits', 'royal_hedgehog']], 
+		None, [biscuits_in_hedgehog_hand_cond], 
+		[[hedgehog_eats_result1, hedgehog_eats_result2]],
+		'royal_hedgehog_temp', True) 
+		# mach_state == None
+
+kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', 
+		illuminated_letters, 1, None, 
+		'post_act_cmd', None, 
+		[['read', 'illuminated_letters'],['read', 'kinging_scroll'], ['examine', 'illuminated_letters']], 
+		None, [not_in_throne_room_cond, hedgehog_not_in_world_cond, crown_not_worn_cond, true_cond],
+		[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result],
+		'kinging_scroll_temp', True)
+		# mach_state == None
+
+
+## TO BE ANALYZED
+
+broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 
+		'post_act_switch', throne, ['pushed', 'pulled'],
 		[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
 		[nothing_happens_result, throne_push_result, [throne_pull_result1, throne_pull_result2]],
-		'throne_room_temp', True) # mach_state == broach_dispensed
+		'throne_room_temp', True) 
+		# mach_state == broach_dispensed
 
-dispense_panel_mach = InvisMach('dispense_panel_mach', False, 'auto_act', None, None, None, 
-		[goblin_in_world_cond, panel_not_dispensed_cond], 
-		[pass_result, [dispense_panel_result1, dispense_panel_result2]],
-		'antechamber_temp', True) # mach_state = has panel been dispensed
 
 control_panel = ContainerFixedSimpleMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, 
 		[left_lever, middle_lever, right_lever, red_button], 999, 4, 'on',
 		0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever], 
 		[lever_array_matches_mach_state_cond, true_cond], 
 		[toggle_portcullis_result, portcullis_doesnt_open_result],
-		'antechamber_temp', True) # mach_state == lever_array_value
+		'antechamber_temp', True) 
+		# mach_state == lever_array_value
 
-hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None, 'post_act_cmd', None, 
-		[['give', 'stale_biscuits', 'royal_hedgehog']], None, 
-		[biscuits_in_hedgehog_hand_cond], [[hedgehog_eats_result1, hedgehog_eats_result2]],
-		'royal_hedgehog_temp', True)
-
-hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 'pre_act_cmd', None, [['take', 'shiny_sword']], None, 
-		[hedgehog_eats_timer_not_active_cond], [hedgehog_attacks_result],
-		'royal_hedgehog_temp', True)
 
 hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', False, 
-		'pre_act_timer', hedgehog_eats_timer, [True], None,									  
-		[hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
+		'pre_act_timer', hedgehog_eats_timer, [True], 
+		None, [hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
 		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result],
-		'royal_hedgehog_temp', True) # mach_state == has the machine run? (ie. has the hedgehog's description been updated already?)
+		'royal_hedgehog_temp', True) 
+		# mach_state == has the machine run? (ie. has the hedgehog's description been updated already?)
 
-hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 'pre_act_cmd', None,
-		[['give', '*', 'royal_hedgehog'], ['show', '*', 'royal_hedgehog']], None, 
-		[hedgehog_eats_timer_active_cond], [hedgehog_distracted_result],
-		'royal_hedgehog_temp', True)
 
-goblin_attack_mach = InvisMach('goblin_attack_mach', None, 'pre_act_cmd', None, 
-		[['examine', 'iron_portcullis'], ['examine', 'alcove'], ['examine', 'grimy_axe'], 
-   		['take', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north']], None, 
-		[true_cond], [goblin_attacks_result],
-		'guard_goblin_temp', True)
 
-re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 'auto_act', None, None, None,
-		[axe_not_in_goblin_hand_cond], [goblin_take_axe_result],
-		'guard_goblin_temp', True)
 
-kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', 
-		illuminated_letters, 1, None, 'post_act_cmd', None, 
-		[['read', 'illuminated_letters'],['read', 'kinging_scroll'], ['examine', 'illuminated_letters']], None,
-		[not_in_throne_room_cond, hedgehog_not_in_world_cond, crown_not_worn_cond, true_cond],
-		[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result],
-		'kinging_scroll_temp', True)
+
+
 
 # *** creatures	***
 
