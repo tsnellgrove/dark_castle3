@@ -178,7 +178,7 @@ eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','s
 # *** machines ***
 
 
-## auto_act : trig_switch, trig_vals_lst, cond_switch_lst => None
+## auto_act : trig_switch, cond_switch_lst => None ; trig_vals_lst == None
 
 dispense_panel_mach = InvisMach('dispense_panel_mach', False, 
 		'auto_act', None, None, 
@@ -195,7 +195,7 @@ re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None,
 		# mach_state == None
 
 
-## pre_act_cmd & post_act_cmd : trig_switch, cond_switch_lst => None
+## pre_act_cmd & post_act_cmd : trig_switch, cond_switch_lst => None; trig_vals_lst == [player commands]
 
 hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 
 		'pre_act_cmd', None, [['take', 'shiny_sword']], 
@@ -236,15 +236,14 @@ hedgehog_eats_mach = InvisMach('hedgehog_eats_mach', None,
 
 kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', 
 		illuminated_letters, 1, None, 
-		'post_act_cmd', None, 
-		[['read', 'illuminated_letters'],['read', 'kinging_scroll'], ['examine', 'illuminated_letters']], 
+		'post_act_cmd', None, [['read', 'illuminated_letters'],['read', 'kinging_scroll'], ['examine', 'illuminated_letters']], 
 		None, [not_in_throne_room_cond, hedgehog_not_in_world_cond, crown_not_worn_cond, true_cond],
 		[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result],
 		'kinging_scroll_temp', True)
 		# mach_state == None
 
 
-## TO BE ANALYZED
+## post_act_switch : all attribs used; trig_vals_lst == [switch states]
 
 broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 
 		'post_act_switch', throne, ['pushed', 'pulled'],
@@ -255,13 +254,16 @@ broach_dispenser_mach = InvisMach('broach_dispenser_mach', False,
 
 
 control_panel = ContainerFixedSimpleMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, 
-		[left_lever, middle_lever, right_lever, red_button], 999, 4, 'on',
-		0, 'post_act_switch', red_button, ['pushed'], [left_lever, middle_lever, right_lever], 
-		[lever_array_matches_mach_state_cond, true_cond], 
+		[left_lever, middle_lever, right_lever, red_button], 999, 4, 'on', 0, 
+		'post_act_switch', red_button, ['pushed'], 
+		[left_lever, middle_lever, right_lever], [lever_array_matches_mach_state_cond, true_cond], 
 		[toggle_portcullis_result, portcullis_doesnt_open_result],
 		'antechamber_temp', True) 
 		# mach_state == lever_array_value
 
+
+## post_act_switch : trig_switch == Timer; cond_switch_lst == None; trig_vals_lst == [timer_done state]
+## 		Note: similar to post_act_switch; could do cond_switch_lst == timer => pass timer_count => cond_check()
 
 hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', False, 
 		'pre_act_timer', hedgehog_eats_timer, [True], 
@@ -269,11 +271,6 @@ hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', False,
 		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result],
 		'royal_hedgehog_temp', True) 
 		# mach_state == has the machine run? (ie. has the hedgehog's description been updated already?)
-
-
-
-
-
 
 
 # *** creatures	***

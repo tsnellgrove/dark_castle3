@@ -808,12 +808,16 @@ Version 3.87.0 Goals:
 
 - INPROC: mach review (build 0011 [])
 	- DONE: for Mach class, create an 'is_enabled' attribute
-	- TBD: general Mach class review
-		- TBD: analyze dark_castle machs
+	- INPROC: general Mach class review
+		- DONE: analyze dark_castle machs
 		- TBD: analyze dark_castle warnings
 		- TBD: analyze timers
 	- TBD: re-read all remaining mach ideas and incorporate as appropriate
 	- TBD: reconsider parent / child mach classes / MixIns
+		- IDEA: can Warning be a parent of Mach?
+		- IDEA: is Timer truly an independent class?
+		- IDEA: do I want different types of Mach based on trigger_type = auto vs. cmd vs. switch
+		- IDEA: but if so, then how many MixIn varients do I end up with? Too many?
 	- IDEA: room should have show_machs() method that lists all local mod-machs
 	- IDEA: triggers
 		- IDEA: 'trigger_type' => 'trig_type' ??
