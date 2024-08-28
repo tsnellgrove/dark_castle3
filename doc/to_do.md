@@ -810,13 +810,31 @@ Version 3.87.0 Goals:
 	- DONE: for Mach class, create an 'is_enabled' attribute
 	- INPROC: general Mach class review
 		- DONE: analyze dark_castle machs
-		- TBD: analyze dark_castle warnings
-		- TBD: analyze timers
+			- FINDING: auto could be parent of cmd which could be parent of switch
+		- DONE: analyze dark_castle warnings 
+			- FINDING: Warning could be 'proto' class for Mach
+			- FINDING: Warning run_mach() needs re-factor
+			- FINDING: warning_count has some similarities to mach_state
+		- DONE: analyze timers
+			- FINDING: Timer needs a reset_timer() method
+			- FINDING: existing Timer run_mach() auto-resets at count == max_count... is this desired?
+			- FINDING: Timer is harder to incorporate into parent-child relationship with Mach and Warning
+			- FINDING: timer_count has some similarities to mach_state
+		- TBD: summarize attribs and methods for each type:
+			- TBD: proto = ???
+			- TBD: Warning = 
+			- TBD: auto Mach = 
+			- TBD: cmd Mach = 
+			- TBD: switch Mach = 
+			- TBD: Timer = 
 	- TBD: re-read all remaining mach ideas and incorporate as appropriate
+	- TBD: debug ideas:
+		- TBD: mach visible command (include switchs, warnings, and timers too)
+		- TBD: machine purpose and state command (include warnings and timers too)
 	- TBD: reconsider parent / child mach classes / MixIns
 		- IDEA: can Warning be a parent of Mach?
 		- IDEA: is Timer truly an independent class?
-		- IDEA: do I want different types of Mach based on trigger_type = auto vs. cmd vs. switch
+		- IDEA: do I want different types of Mach based on trigger_type = proto vs. auto vs. cmd vs. switch
 		- IDEA: but if so, then how many MixIn varients do I end up with? Too many?
 	- IDEA: room should have show_machs() method that lists all local mod-machs
 	- IDEA: triggers
