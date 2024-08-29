@@ -820,13 +820,51 @@ Version 3.87.0 Goals:
 			- FINDING: existing Timer run_mach() auto-resets at count == max_count... is this desired?
 			- FINDING: Timer is harder to incorporate into parent-child relationship with Mach and Warning
 			- FINDING: timer_count has some similarities to mach_state
-		- TBD: summarize attribs and methods for each type:
-			- TBD: proto = ???
-			- TBD: Warning = 
-			- TBD: auto Mach = 
-			- TBD: cmd Mach = 
-			- TBD: switch Mach = 
-			- TBD: Timer = 
+		- INPROC: summarize attribs and methods for each type; propose unifying Proto class
+			- IDEA: Proto:
+				- STD: name, mach_state, trigger_type, trig_vals_lst, alert_anchor, is_enabled
+				- METH: run_mach(), trigger_check()
+			- IDEA: Timer(Proto)
+				- From Proto:
+					- ATTRIB: name, mach_state, trigger_type, alert_anchor, is_enabled
+					- MAP: timer_count => mach_state
+					- METH: run_mach()
+				- Proto Unused:
+					- ATTRIB: trig_vals_lst
+					- METH: trigger_check()
+				- Timer Unique: 
+					- ATTRIB: active, timer_count, timer_max, message_type, timer_done
+					- METH: over-load run_mach()
+			- IDEA: Warning(Proto)
+				- From Proto:
+					- ATTRIB: name, mach_state, trigger_type, trig_vals_lst, is_enabled
+					- MAP: warn_count => mach_state
+					- METH: run_mach(), trigger_check()
+				- Proto Unused: 
+					- ATTRIB: alert_anchor
+				- Warning Unique: 
+					- ATTRIB: warn_max, warn_count
+					- METH: over-load run_mach()
+			- TBD: Mach_auto(Proto)
+			- TBD: Mach_cmd(Proto)
+			- TBD: Mach_switch(Mach)
+
+				
+			- TBD: auto Mach:
+				- STD: name, mach_state, trigger_type, <trig_switch>, <trig_vals_lst>, <cond_swicth_lst>,
+					cond_lst, result_lst, alert_anchor, is_enabled
+				- NEW: mach_state, cond_lst, result_lst, alert_anchor 
+				- METH: trig_check(), run_mach()
+			- TBD: cmd Mach:
+				- STD: name, mach_state, trigger_type, <trig_switch>, trig_vals_lst, <cond_swicth_lst>, 
+					cond_lst, result_lst, alert_anchor, is_enabled
+				- NEW: trig_vals_lst
+				- METH: trig_check(), run_mach()
+			- TBD: switch Mach:
+				- STD: name, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, 
+					result_lst, alert_anchor, is_enabled
+				- NEW: trig_switch, cond_switch_lst
+				- METH: trig_check(), run_mach()
 	- TBD: re-read all remaining mach ideas and incorporate as appropriate
 	- TBD: debug ideas:
 		- TBD: mach visible command (include switchs, warnings, and timers too)
