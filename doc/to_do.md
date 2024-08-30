@@ -815,16 +815,23 @@ Version 3.87.0 Goals:
 			- FINDING: Warning could be 'proto' class for Mach
 			- FINDING: Warning run_mach() needs re-factor
 			- FINDING: warning_count has some similarities to mach_state
+			- FINDING: warn_max is similar to timer_max
 		- DONE: analyze timers
 			- FINDING: Timer needs a reset_timer() method
 			- FINDING: existing Timer run_mach() auto-resets at count == max_count... is this desired?
 			- FINDING: Timer is harder to incorporate into parent-child relationship with Mach and Warning
 			- FINDING: timer_count has some similarities to mach_state
-		- INPROC: summarize attribs and methods for each type; propose unifying Proto class
-			- IDEA: Proto:
-				- STD: name, mach_state, trigger_type, trig_vals_lst, alert_anchor, is_enabled
+			- FINDING: active could likely be a method (not an attribute)
+*			- TBD: timer_max is similar to warn_max
+*			- TBD: timer_done could be replaced by run_count ... which might be useful elsewhere too...
+*			- TBD: feels like message type (constant vs. variable) coudl be inferred?
+		- IDEA: inheritance big picture
+			IDEA: MachProtoMixIn => (Timer, Warning, MachCmdMixIn), MachCmdMixIn => MachSwitchMixIn
+		- DONE: summarize attribs and methods for each type; propose unifying Proto class
+			- IDEA: MachProtoMixIn:
+				- STD: mach_state, trigger_type, trig_vals_lst, alert_anchor, is_enabled
 				- METH: run_mach(), trigger_check()
-			- IDEA: Timer(Proto)
+			- IDEA: Timer(MachProtoMixIn)
 				- From Proto:
 					- ATTRIB: name, mach_state, trigger_type, alert_anchor, is_enabled
 					- MAP: timer_count => mach_state
@@ -833,9 +840,9 @@ Version 3.87.0 Goals:
 					- ATTRIB: trig_vals_lst
 					- METH: trigger_check()
 				- Timer Unique: 
-					- ATTRIB: active, timer_count, timer_max, message_type, timer_done
+					- ATTRIB: name, active, timer_max, message_type, timer_done
 					- METH: over-load run_mach()
-			- IDEA: Warning(Proto)
+			- IDEA: Warning(MachProtoMixIn)
 				- From Proto:
 					- ATTRIB: name, mach_state, trigger_type, trig_vals_lst, is_enabled
 					- MAP: warn_count => mach_state
@@ -843,28 +850,41 @@ Version 3.87.0 Goals:
 				- Proto Unused: 
 					- ATTRIB: alert_anchor
 				- Warning Unique: 
-					- ATTRIB: warn_max, warn_count
+					- ATTRIB: name, warn_max
 					- METH: over-load run_mach()
-			- TBD: Mach_auto(Proto)
-			- TBD: Mach_cmd(Proto)
-			- TBD: Mach_switch(Mach)
+			- IDEA: Mach_auto(MachProtoMixIn)
+				- From Proto:
+					- ATTRIB: mach_state, trigger_type, alert_anchor, is_enabled
+					- MAP: None
+					- METH: run_mach(), trigger_check()
+				- Proto Unused: 
+					- ATTRIB: trig_vals_lst
+				- Mach_auto Unique: 
+					- ATTRIB: cond_lst, result_lst
+					- METH: over-load run_mach()
+			- IDEA: Mach_cmd(MachProtoMixIn)
+				- From Proto:
+					- ATTRIB: mach_state, trigger_type, trig_vals_lst, alert_anchor, is_enabled
+					- MAP: None
+					- METH: run_mach(), trigger_check()
+				- Proto Unused: 
+					- ATTRIB: None
+				- Mach_cmd Unique: 
+					- ATTRIB: cond_lst, result_lst
+					- METH: over-load run_mach()
+			- IDEA: Mach_switch(MachCmdMixIn)
+				- From Proto:
+					- ATTRIB: mach_state, trigger_type, trig_vals_lst, cond_lst, result_lst, 
+						alert_anchor, is_enabled
+					- MAP: None
+					- METH: run_mach(), trigger_check()
+				- Proto Unused: 
+					- ATTRIB: None
+				- Mach_cmd Unique: 
+					- ATTRIB: trig_switch, cond_switch_lst
+					- METH: None
 
-				
-			- TBD: auto Mach:
-				- STD: name, mach_state, trigger_type, <trig_switch>, <trig_vals_lst>, <cond_swicth_lst>,
-					cond_lst, result_lst, alert_anchor, is_enabled
-				- NEW: mach_state, cond_lst, result_lst, alert_anchor 
-				- METH: trig_check(), run_mach()
-			- TBD: cmd Mach:
-				- STD: name, mach_state, trigger_type, <trig_switch>, trig_vals_lst, <cond_swicth_lst>, 
-					cond_lst, result_lst, alert_anchor, is_enabled
-				- NEW: trig_vals_lst
-				- METH: trig_check(), run_mach()
-			- TBD: switch Mach:
-				- STD: name, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, 
-					result_lst, alert_anchor, is_enabled
-				- NEW: trig_switch, cond_switch_lst
-				- METH: trig_check(), run_mach()
+
 	- TBD: re-read all remaining mach ideas and incorporate as appropriate
 	- TBD: debug ideas:
 		- TBD: mach visible command (include switchs, warnings, and timers too)
