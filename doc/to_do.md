@@ -822,9 +822,13 @@ Version 3.87.0 Goals:
 			- FINDING: Timer is harder to incorporate into parent-child relationship with Mach and Warning
 			- FINDING: timer_count has some similarities to mach_state
 			- FINDING: active could likely be a method (not an attribute)
-*			- TBD: timer_max is similar to warn_max
-*			- TBD: timer_done could be replaced by run_count ... which might be useful elsewhere too...
-*			- TBD: feels like message type (constant vs. variable) coudl be inferred?
+			- FINDING: timer_max is similar to warn_max
+			- FINDING: timer_done could be replaced by run_count ... which might be useful elsewhere too...
+				- IDEA: but this is only useful if we pass run_count to cond_check()
+				- IDEA: if timer_count == mach_state, there is no way to pass info about multiple timer runs
+				- IDEA: but how far ahead of real use-case do I want to get? Can add as a new feature when needed
+			- FINDING: feels like message type (constant vs. variable) coudl be inferred?
+				- IDEA: if message_0 exists => constant message
 		- IDEA: inheritance big picture
 			IDEA: MachProtoMixIn => (Timer, Warning, MachCmdMixIn), MachCmdMixIn => MachSwitchMixIn
 		- DONE: summarize attribs and methods for each type; propose unifying Proto class
@@ -889,6 +893,7 @@ Version 3.87.0 Goals:
 	- TBD: debug ideas:
 		- TBD: mach visible command (include switchs, warnings, and timers too)
 		- TBD: machine purpose and state command (include warnings and timers too)
+	- TBD: plan out which mach ideas to act on and which order to perform them in (inheritance first)
 	- TBD: reconsider parent / child mach classes / MixIns
 		- IDEA: can Warning be a parent of Mach?
 		- IDEA: is Timer truly an independent class?
