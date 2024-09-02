@@ -888,30 +888,100 @@ Version 3.87.0 Goals:
 					- ATTRIB: trig_switch, cond_switch_lst
 					- METH: None
 
-
-	- TBD: re-read all remaining mach ideas and incorporate as appropriate
-	- TBD: debug ideas:
-		- TBD: mach visible command (include switchs, warnings, and timers too)
-		- TBD: machine purpose and state command (include warnings and timers too)
-	- TBD: plan out which mach ideas to act on and which order to perform them in (inheritance first)
-	- TBD: reconsider parent / child mach classes / MixIns
-		- IDEA: can Warning be a parent of Mach?
-		- IDEA: is Timer truly an independent class?
-		- IDEA: do I want different types of Mach based on trigger_type = proto vs. auto vs. cmd vs. switch
-		- IDEA: but if so, then how many MixIn varients do I end up with? Too many?
-	- IDEA: room should have show_machs() method that lists all local mod-machs
+- INPROC: plan out which mach ideas to act on and which order to perform them in (inheritance first)
+	- DONE: re-read all remaining mach ideas and incorporate as appropriate
+	- TBD: org mach to-dos
 	- IDEA: triggers
 		- IDEA: 'trigger_type' => 'trig_type' ??
 		- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
 		- IDEA: Establish switch triggers such that timer as trigger is more natural
+	- TBD: Sort out parrent-child inheritance
+		- TBD: review existing Warning class - refactor / integrate with Mach class
+			- TBD: refactor app_turn modules (warning & timer code)
+			- IDEA: move switch_reset to auto_action() ???
+			- TBD: review existing Timer class - refactor / integrate with Mach class
+			- TBD: update version build #
+		- TBD: reconsider parent / child mach classes / MixIns
+			- IDEA: can Warning be a parent of Mach?
+			- IDEA: is Timer truly an independent class?
+			- IDEA: do I want different types of Mach based on trigger_type = proto vs. auto vs. cmd vs. switch
+			- IDEA: but if so, then how many MixIn varients do I end up with? Too many?	
+			- TBD: de-dup warning and timer classes
+		- IDEA: it appears that "selective inheritance" just isn't a thing. What now?
+			- IDEA: makes sense... in all other cases I inherit from simple parents to more complex children
+			- IDEA: WarnClass is simpler... so it should be the parent
+			- IDEA: TrigDetectMixIn - inherited by both WarnClass and MachineMixIn w/ only trig_check method?
+			- IDEA: A MixIn of a MixIn seems over-complicated... 
+			- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
+			- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
+	- TBD: Cases where I want a modular machine to run despite an error standard
+		- IDEA: perhaps move to separate 'Errors' section
+			- IDEA: new Errors class inherits from Invisible; now also returns is_attemptable
+		- IDEA: problem description
+			- IDEA: e.g. 'go north' in antechamber triggers goblin
+			- IDEA: i.e. should it ever be possible to override an error? If so, then how?
+			- IDEA: the 'open portcullis' case is a special problem here - it will tell Burt it's locked...
+				- IDEA: but the Goblin should attack before Burt can touch the Portcullis
+		- IDEA: general thinking / philosophy
+			- IDEA: narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
+			- DECISION: use fake_door for now and swap on goblin death
+			- RECONSIDER: 'take axe' case is hard to fake out... maybe I do need an interupt() module after all??
+		- IDEA: possible solution 1
+			- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
+			- IDEA: modular machines should be designed so that it is easy to trigger & run them from interupt()
+		- IDEA: possible solutions 2
+			- IDEA: what we really need to do is differentiate between "attemptable" failure vs. "impossible"
+			- IDEA: attempting to open a locked door is the poster child for this
+				- IDEA: it is reasonable for the player to attempt a new door they find
+				- IDEA: in fact, they can only learn that it is locked by making the attempt
+				- IDEA: further, if there is a guard in the room, it is reasonably that they take action
+				- IDEA: against a player that is rattling the locked door they are guarding
+			- IDEA: by contrast: 'eat horseshoe' (when there is no nearby horseshoe) is NOT attemptable
+				- IDEA: and should not be dignified by a pre_action() response
+			- TBD: in errors, return is_attemptable
+				- TBD: if is_attemptable == True, time passes, and both pre_act() and auto_act() run
+				- IDEA: all errors that return useful info (e.g. 'locked door') are attemptable
+				- IDEA: is_attemptable = False for all cases where the obj is not in room
+				- IDEA: in between is tricky... 
+				- IDEA: go <direction w/ no exit> and take <obj held by creature> are good attemptable candidates
+		- IDEA: alternative work-arounds:
+			- TBD: Maybe just 'x axe' case?
+			- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
+	- TBD: state machine for hedgehog
+		- IDEA: need to implement hedgehog state machine based on creature state
+			- IDEA: Both hedgehog and throne_broach_dispenser would be better implemented as state machines
+			- TBD: state machines and other general purpose mod-machs
+	- IDEA: event bus for goblin dies => dispense panel	
+	- TBD: mod-mach bug fixes
+		- TBD: fix hedgehog description after sword is returned (before goblin killed)
+		- TBD: auto_static_behavior for goblin? each turn - maybe should be a standard function??
+			EXAMPLE: "the goblin is eyeing you coldly"
+		- TBD: fix eat_biscuits_warning 
+			- TBD so that it no longer lives in just entrance and main_hall 
+			- TBD: and no longer triggers when biscuits not in hand
+			- IDEA:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+		- TBD: Do we really need to test for goblin in antechamber??? (will the goblin ever move)
+		- TBD: should hedgehog_distracted_mach just be replaced by a Creature class attribute?
+		- IDEA: Can we create a general purpose Dispenser machine - for use with Crown and Broach?
+			- IDEA: would also be useful for control_panel
+		- TBD: broaden hedgehog response to interacting with sword (e.g. "pull sword" should trigger)
+	- TBD: debug ideas:
+		- IDEA: room should have show_machs() method that lists all local mod-machs
+		- TBD: mach visible command (include switchs, warnings, and timers too)
+		- TBD: machine purpose and state command (include warnings and timers too)
+		- IDEA: machine mix-in should have a dbg_describe() method that describes the machine (like K8s)
+		- IDEA: dbg_describe and debug_show_mach commands
+			- IDEA: to keep obj names short, just use abreviations <mach_name>_r1_m1
+			- IDEA: to understant what mod-mach does, have attribute that explains each module
+			- IDEA: also explains each result and condition
+			- IDEA: then have debug-only command that describes mod-mach based on that attribute
+			- IDEA: would also presumably need debug_show_mach command
 	- TBD: update version build #
-
-- TBD: review existing Warning class - refactor / integrate with Mach class
-	- TBD: refactor app_turn modules (warning & timer code)
-	- TBD: update version build #
-
-- TBD: review existing Timer class - refactor / integrate with Mach class
-	- TBD: update version build #
+	- TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj
+		- EXAMPLE: re-assigning goblin to goblin_mach after goblin Creature instantiation
+		- ANALYSIS: basic problem pattern = obj => obj_mach => obj_cond / obj_result => obj
+		- IDEA: pass/link obj to obj_con/obj_result innately (not explicitly) as part of call/assignment?
+	- TBD: update modular machine doc!
 
 
 	- TBD: <TEMPLATE>
@@ -960,141 +1030,6 @@ Version 3.87.0 Goals:
 			- TBD: post-branch-delete run test
 
 
-- TBD: review mod-mach improvement ideas:
-	- IDEA: initial ideas
-		- IDEA: goal is a single method for conditions and a single method for results (???)
-		- IDEA: for conditions, attributes = modules + logic_str + descript_str
-		- IDEA: use attribute packing / kwargs to pack conditions / results with variable # of attributes
-		- IDEA: machine mix-in should have a dbg_describe() method that describes the machine (like K8s)
-	- IDEA: naming
-		- IDEA: Shorter cond & result names!!
-		- IDEA: Compound Results and Conditions named after intent
-		- IDEA: naming conventions: need to avoid confusion between match_state and mach_state
-		- IDEA: naming conventions: cond & result name should be same except post-fix
-		- IDEA: address long naming issue with describe() ability
-	- IDEA: general org ideas
-		- IDEA: BaseCond => always check state
-		- IDEA: BaseResult => always do a buff_try()
-		- IDEA: All results capable of Buffering (rename Result classes appropriately)
-		- IDEA: if no conditions == True then default_result = nothing happens (no need for pass_result)
-		- IDEA: in machines, should conditions and results just be key-value pairs in a dictionary?
-			- IDEA: As opposed to needing 2 separate lists with identical indexes?
-		- IDEA: move switch_reset to auto_action() ???
-	- IDEA: primative conditions & results modules
-		- IDEA: goal of primative & compound structure is to increase re-use of Cond & Result classes 
-			- IDEA: currently too many class-per-var cases
-		- IDEA: Primative Conditions (named after condition) [always include single attribute & value] 
-		- IDEA: Compound Conditions (and / or) 
-			- IDEA: named after intent; match mach, result, & trig 
-			- IDEA: {trig_check() method links primatives}
-		- IDEA: Primative Results (named after result) [always include single attribute & value] 
-		- IDEA: Compound Results (named after intent
-			- IDEA: match cond, trig, & mach) 
-			- IDEA: {trig_check() method links primatives}
-	- IDEA: Composed Conditions & Results: comp_cond / comp_result == AND / OR of multiple primatives
-		- IDEA: like the idea of AND vs. OR option
-		- IDEA: NOT option for each cond module is vital
-			- EXMP: Generalize in-hand vs. not-in-hand Condition (single primative)
-			- EXMP: Generalize creature-has-item vs. creature-does-not-have-item Cond (single primative)
-		- IDEA: each 'primitive' cond tests for *one* thing (but state of thing is attrib to be matched)
-	- IDEA: Have simple, 1-test/ 1-action 'Primative' Conditions and Results: prim_cond and prim_result
-		- IDEA: would we really want each primative cond & rslt linked?
-		- IDEA: lean towards composing result_1 from r1_m1, r1_m2, & r1_m3 => linked to comp cond
-	- IDEA: Wildcard clean-ups
-		- IDEA: Extend trig_check wildcards to 'post_act_cmd' & 'auto_act_cmd'
-		- IDEA: Extend trig_check wildcards to work with Warnings (or de-dup Warning's trig_check)
-		- IDEA: guard against multiple wildcaards per list
-	- IDEA: Results
-		- IDEA: extend BufferOnlyResult result_exe method in BufferAndEndResult and BufferAndGiveResult
-		- IDEA: extend child methods in results_class_def ?
-	- IDEA: dbg_describe and debug_show_mach commands
-		- IDEA: to dep obj names short, just use abreviations <mach_name>_r1_m1
-		- IDEA: to understant what mod-mach does, have attribute that explains each module
-		- IDEA: also explains each result and condition
-		- IDEA: then have debug-only command that describes mod-mach based on that attribute
-		- IDEA: would also presumably need debug_show_mach command
-
-- IDEA: list of 'contained' internal_switches in MachMixIn attributes?
-	- IDEA: (i.e. add to scope and remove levers & button from features?)
-	- IDEA: [hold off until at least one more control_panel type machine gets created]
-
-- TBD: advanced ideas:
-	- IDEA: state machine for hedgehog
-	- IDEA: event bus for goblin dies => dispense panel
-
-- TBD: Cases where I want a modular machine to run despite an error standard
-	- IDEA: perhaps move to separate 'Errors' section
-		- IDEA: new Errors class inherits from Invisible; now also returns is_attemptable
-	- IDEA: problem description
-		- IDEA: e.g. 'go north' in antechamber triggers goblin
-		- IDEA: i.e. should it ever be possible to override an error? If so, then how?
-		- IDEA: the 'open portcullis' case is a special problem here - it will tell Burt it's locked...
-			- IDEA: but the Goblin should attack before Burt can touch the Portcullis
-	- IDEA: general thinking / philosophy
-		- IDEA: narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
-		- DECISION: use fake_door for now and swap on goblin death
-		- RECONSIDER: 'take axe' case is hard to fake out... maybe I do need an interupt() module after all??
-	- IDEA: possible solution 1
-		- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
-		- IDEA: modular machines should be designed so that it is easy to trigger & run them from interupt()
-	- IDEA: possible solutions 2
-		- IDEA: what we really need to do is differentiate between "attemptable" failure vs. "impossible"
-		- IDEA: attempting to open a locked door is the poster child for this
-			- IDEA: it is reasonable for the player to attempt a new door they find
-			- IDEA: in fact, they can only learn that it is locked by making the attempt
-			- IDEA: further, if there is a guard in the room, it is reasonably that they take action
-			- IDEA: against a player that is rattling the locked door they are guarding
-		- IDEA: by contrast: 'eat horseshoe' (when there is no nearby horseshoe) is NOT attemptable
-			- IDEA: and should not be dignified by a pre_action() response
-		- TBD: in errors, return is_attemptable
-			- TBD: if is_attemptable == True, time passes, and both pre_act() and auto_act() run
-			- IDEA: all errors that return useful info (e.g. 'locked door') are attemptable
-			- IDEA: is_attemptable = False for all cases where the obj is not in room
-			- IDEA: in between is tricky... 
-			- IDEA: go <direction w/ no exit> and take <obj held by creature> are good attemptable candidates
-	- IDEA: alternative work-arounds:
-		- TBD: Maybe just 'x axe' case?
-		- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
-
-
-- TBD: de-dup warning and timer classes
-	- IDEA: it appears that "selective inheritance" just isn't a thing. What now?
-	- IDEA: makes sense... in all other cases I inherit from simple parents to more complex children
-	- IDEA: WarnClass is simpler... so it should be the parent
-	- IDEA: TrigDetectMixIn - inherited by both WarnClass and MachineMixIn w/ only trig_check method?
-	- IDEA: A MixIn of a MixIn seems over-complicated... 
-	- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
-	- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
-
-- TBD: mod-mach bug fixes
-	- TBD: fix hedgehog description after sword is returned (before goblin killed)
-	- TBD: auto_static_behavior for goblin? each turn - maybe should be a standard function??
-		EXAMPLE: "the goblin is eyeing you coldly"
-	- TBD: fix eat_biscuits_warning 
-		- TBD so that it no longer lives in just entrance and main_hall 
-		- TBD: and no longer triggers when biscuits not in hand
-		- IDEA:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
-	- TBD: Do we really need to test for goblin in antechamber??? (will the goblin ever move)
-	- TBD: should hedgehog_distracted_mach just be replaced by a Creature class attribute?
-
-- TBD: additional problems to solve
-	- TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj
-		- EXAMPLE: re-assigning goblin to goblin_mach after goblin Creature instantiation
-		- ANALYSIS: basic problem pattern = obj => obj_mach => obj_cond / obj_result => obj
-		- IDEA: pass/link obj to obj_con/obj_result innately (not explicitly) as part of call/assignment?
-		- TBD: Establish clearer nomenclature for temp variables that will be fully assigned at end
-			- EXMP: 'royal_hedgehog-*temp*'
-	- TBD: broaden hedgehog response to interacting with sword (e.g. "pull sword" should trigger)
-	- IDEA: sort out ability to push button / pull levers while goblin is guarding
-	- IDEA: need to implement hedgehog state machine based on creature state
-		- IDEA: Both hedgehog and throne_broach_dispenser would be better implemented as state machines
-	- TBD: state machines and other general purpose mod-machs
-	- IDEA: Can we create a general purpose Dispenser machine - for use with Crown and Broach?
-		- IDEA: would also be useful for control_panel
-
-- TBD: update modular machine doc!
-
-
 *** Eliminated Code ***
 	def run_mach(self, gs):
 		cond_return_lst = []
@@ -1140,6 +1075,63 @@ Version 3.87.0 Goals:
 - DONE: How to enable switches and machines to self register for universal scope
 	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
 	- DONE: eliminate universal_scope => just add these to Burt's invis_lst
+
+- DONE: review mod-mach improvement ideas:
+	- CANCEL: initial ideas
+		- IDEA: goal is a single method for conditions and a single method for results (???)
+		- IDEA: for conditions, attributes = modules + logic_str + descript_str
+		- IDEA: use attribute packing / kwargs to pack conditions / results with variable # of attributes
+	- CANCEL: naming
+		- IDEA: Shorter cond & result names!!
+		- IDEA: Compound Results and Conditions named after intent
+		- IDEA: naming conventions: need to avoid confusion between match_state and mach_state
+		- IDEA: naming conventions: cond & result name should be same except post-fix
+		- IDEA: address long naming issue with describe() ability
+	- DONE: general org ideas
+		- DONE: BaseCond => always check state
+		- DONE: BaseResult => always do a buff_try()
+		- DONE: All results capable of Buffering (rename Result classes appropriately)
+		- DONE: if no conditions == True then default_result = nothing happens (no need for pass_result)
+		- CANCEL: in machines, should conditions and results just be key-value pairs in a dictionary?
+			- IDEA: As opposed to needing 2 separate lists with identical indexes?
+	- DONE: primative conditions & results modules
+		- DONE: goal of primative & compound structure is to increase re-use of Cond & Result classes 
+			- IDEA: currently too many class-per-var cases
+		- DONE: Primative Conditions (named after condition) [always include single attribute & value] 
+		- CANCEL: Compound Conditions (and / or) 
+			- IDEA: named after intent; match mach, result, & trig 
+			- IDEA: {trig_check() method links primatives}
+		- DONE: Primative Results (named after result) [always include single attribute & value] 
+		- DONE: Compound Results (named after intent
+			- IDEA: match cond, trig, & mach) 
+			- IDEA: {trig_check() method links primatives}
+	- DONE: Composed Conditions & Results: comp_cond / comp_result == AND / OR of multiple primatives
+		- CANCEL: like the idea of AND vs. OR option
+		- DONE: NOT option for each cond module is vital (achieved via 'match')
+			- EXMP: Generalize in-hand vs. not-in-hand Condition (single primative)
+			- EXMP: Generalize creature-has-item vs. creature-does-not-have-item Cond (single primative)
+		- IDEA: each 'primitive' cond tests for *one* thing (but state of thing is attrib to be matched)
+	- DONE: Have simple, 1-test/ 1-action 'Primative' Conditions and Results: prim_cond and prim_result
+		- IDEA: would we really want each primative cond & rslt linked?
+		- IDEA: lean towards composing result_1 from r1_m1, r1_m2, & r1_m3 => linked to comp cond
+	- DONE: Wildcard clean-ups
+		- IDEA: Extend trig_check wildcards to 'post_act_cmd' & 'auto_act_cmd'
+		- IDEA: Extend trig_check wildcards to work with Warnings (or de-dup Warning's trig_check)
+		- IDEA: guard against multiple wildcaards per list
+	- DONE: Results
+		- IDEA: extend BufferOnlyResult result_exe method in BufferAndEndResult and BufferAndGiveResult
+		- IDEA: extend child methods in results_class_def ?
+
+- DONE: list of 'contained' internal_switches in MachMixIn attributes?
+	- IDEA: (i.e. add to scope and remove levers & button from features?)
+	- IDEA: [hold off until at least one more control_panel type machine gets created]
+
+- DONE: sort out ability to push button / pull levers while goblin is guarding
+
+- DONE: Establish clearer nomenclature for temp variables that will be fully assigned at end
+	- EXMP: 'royal_hedgehog-*temp*'
+
+
 
 
 # *** FUTURE TO DO *** #
