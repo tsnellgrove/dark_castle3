@@ -805,10 +805,9 @@ Version 3.87.0 Goals:
 		- DONE: web_main.py
 		- DONE: static_gbl.py
 
-
-- INPROC: mach review (build 0011 [])
+- DONE: mach review 
 	- DONE: for Mach class, create an 'is_enabled' attribute
-	- INPROC: general Mach class review
+	- DONE: general Mach class review
 		- DONE: analyze dark_castle machs
 			- FINDING: auto could be parent of cmd which could be parent of switch
 		- DONE: analyze dark_castle warnings 
@@ -888,14 +887,47 @@ Version 3.87.0 Goals:
 					- ATTRIB: trig_switch, cond_switch_lst
 					- METH: None
 
-- INPROC: plan out which mach ideas to act on and which order to perform them in (inheritance first)
+- DONE: plan out which mach ideas to act on and which order to perform them in (inheritance first)
 	- DONE: re-read all remaining mach ideas and incorporate as appropriate
-	- TBD: org mach to-dos
-	- IDEA: triggers
-		- IDEA: 'trigger_type' => 'trig_type' ??
-		- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
-		- IDEA: Establish switch triggers such that timer as trigger is more natural
-	- TBD: Sort out parrent-child inheritance
+		- IDEA: org mach to-dos
+		- IDEA: Sort out parrent-child inheritance
+		- IDEA: triggers
+		- IDEA: Cases where I want a modular machine to run despite an error standard
+		- IDEA: state machine for hedgehog
+		- IDEA: event bus for goblin dies => dispense panel	
+		- IDEA: mod-mach bug fixes
+		- IDEA: debug ideas:
+		- IDEA: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj
+		- IDEA: update modular machine doc!
+
+- TBD: Sort out parrent-child inheritance (build 0011 [])
+	- TBD: create new <FEATURE_NAME>_feature git branch
+		- TBD: 'git branch' to confirm *master
+		- TBD: 'git branch <FEATURE_NAME>' to create new branch
+		- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+		- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
+		- TBD: 'git branch' to confirm new branch is now in focus
+		- TBD: Publish Branch via VS Code button
+		- TBD: confirm new branch on GitHub
+		- TBD: update doc TBDs to DONEs
+		- TBD: <CMD><OPT>S (to save all files)
+		- TBD: 'git add .' to add files to be committed
+		- TBD: 'git commit -m "doc updates"
+		- TBD: 'git push" to push updates to origin (GitHub)
+		- TBD: confirm new branch on GitHub is now ahead of master
+	- TBD: decide on TrigMixIn
+		- IDEA: TrigMixIn - inherited by both Warning and CmdMachMixIn
+			IDEA: contains just trig_vals_lst attrib and trigger_check() method
+		- IDEA: but multiple MixIn sources seems complicated... 
+	- TBD: create ProtoMachMixIn class
+		- TBD: attribs = mach_state, trigger_type, trig_vals_lst, alert_anchor, is_enabled
+			- IDEA: 'trigger_type' => 'trig_type' ??
+		- TBD: methods = run_mach(), trigger_check()
+	- TBD: create Timer class (inherits from ProtoMachMixIn + Invisible)
+	- TBD: create Warning class (inherits from ProtoMachMixIn + TrigMixIn + Invisible)
+	- TBD: ceate CmdMachMixIn (inherits from ProtoMachMixIn + TrigMixIn)
+	- TBD: create SwitchMachMixIn (inherits from CmdMachMixIn + switch attribs)
+	- TBD: review other inheritance ideaas
 		- TBD: review existing Warning class - refactor / integrate with Mach class
 			- TBD: refactor app_turn modules (warning & timer code)
 			- IDEA: move switch_reset to auto_action() ???
@@ -910,79 +942,102 @@ Version 3.87.0 Goals:
 		- IDEA: it appears that "selective inheritance" just isn't a thing. What now?
 			- IDEA: makes sense... in all other cases I inherit from simple parents to more complex children
 			- IDEA: WarnClass is simpler... so it should be the parent
-			- IDEA: TrigDetectMixIn - inherited by both WarnClass and MachineMixIn w/ only trig_check method?
-			- IDEA: A MixIn of a MixIn seems over-complicated... 
 			- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
 			- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
-	- TBD: Cases where I want a modular machine to run despite an error standard
-		- IDEA: perhaps move to separate 'Errors' section
-			- IDEA: new Errors class inherits from Invisible; now also returns is_attemptable
-		- IDEA: problem description
-			- IDEA: e.g. 'go north' in antechamber triggers goblin
-			- IDEA: i.e. should it ever be possible to override an error? If so, then how?
-			- IDEA: the 'open portcullis' case is a special problem here - it will tell Burt it's locked...
-				- IDEA: but the Goblin should attack before Burt can touch the Portcullis
-		- IDEA: general thinking / philosophy
-			- IDEA: narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
-			- DECISION: use fake_door for now and swap on goblin death
-			- RECONSIDER: 'take axe' case is hard to fake out... maybe I do need an interupt() module after all??
-		- IDEA: possible solution 1
-			- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
-			- IDEA: modular machines should be designed so that it is easy to trigger & run them from interupt()
-		- IDEA: possible solutions 2
-			- IDEA: what we really need to do is differentiate between "attemptable" failure vs. "impossible"
-			- IDEA: attempting to open a locked door is the poster child for this
-				- IDEA: it is reasonable for the player to attempt a new door they find
-				- IDEA: in fact, they can only learn that it is locked by making the attempt
-				- IDEA: further, if there is a guard in the room, it is reasonably that they take action
-				- IDEA: against a player that is rattling the locked door they are guarding
-			- IDEA: by contrast: 'eat horseshoe' (when there is no nearby horseshoe) is NOT attemptable
-				- IDEA: and should not be dignified by a pre_action() response
-			- TBD: in errors, return is_attemptable
-				- TBD: if is_attemptable == True, time passes, and both pre_act() and auto_act() run
-				- IDEA: all errors that return useful info (e.g. 'locked door') are attemptable
-				- IDEA: is_attemptable = False for all cases where the obj is not in room
-				- IDEA: in between is tricky... 
-				- IDEA: go <direction w/ no exit> and take <obj held by creature> are good attemptable candidates
-		- IDEA: alternative work-arounds:
-			- TBD: Maybe just 'x axe' case?
-			- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
-	- TBD: state machine for hedgehog
-		- IDEA: need to implement hedgehog state machine based on creature state
-			- IDEA: Both hedgehog and throne_broach_dispenser would be better implemented as state machines
-			- TBD: state machines and other general purpose mod-machs
-	- IDEA: event bus for goblin dies => dispense panel	
-	- TBD: mod-mach bug fixes
-		- TBD: fix hedgehog description after sword is returned (before goblin killed)
-		- TBD: auto_static_behavior for goblin? each turn - maybe should be a standard function??
-			EXAMPLE: "the goblin is eyeing you coldly"
-		- TBD: fix eat_biscuits_warning 
-			- TBD so that it no longer lives in just entrance and main_hall 
-			- TBD: and no longer triggers when biscuits not in hand
-			- IDEA:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
-		- TBD: Do we really need to test for goblin in antechamber??? (will the goblin ever move)
-		- TBD: should hedgehog_distracted_mach just be replaced by a Creature class attribute?
-		- IDEA: Can we create a general purpose Dispenser machine - for use with Crown and Broach?
-			- IDEA: would also be useful for control_panel
-		- TBD: broaden hedgehog response to interacting with sword (e.g. "pull sword" should trigger)
-	- TBD: debug ideas:
-		- IDEA: room should have show_machs() method that lists all local mod-machs
-		- TBD: mach visible command (include switchs, warnings, and timers too)
-		- TBD: machine purpose and state command (include warnings and timers too)
-		- IDEA: machine mix-in should have a dbg_describe() method that describes the machine (like K8s)
-		- IDEA: dbg_describe and debug_show_mach commands
-			- IDEA: to keep obj names short, just use abreviations <mach_name>_r1_m1
-			- IDEA: to understant what mod-mach does, have attribute that explains each module
-			- IDEA: also explains each result and condition
-			- IDEA: then have debug-only command that describes mod-mach based on that attribute
-			- IDEA: would also presumably need debug_show_mach command
-	- TBD: update version build #
-	- TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj
-		- EXAMPLE: re-assigning goblin to goblin_mach after goblin Creature instantiation
-		- ANALYSIS: basic problem pattern = obj => obj_mach => obj_cond / obj_result => obj
-		- IDEA: pass/link obj to obj_con/obj_result innately (not explicitly) as part of call/assignment?
-	- TBD: update modular machine doc!
+	- TBD: git branch merge with master
+		- TBD: 'git checkout master' to switch focus to master
+		- TBD: 'git branch: to confirm focus
+		- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+		- TBD: 'git push' to push merge to origin (GitHub)
+		- TBD: confirm that origin is updated
+		- TBD: confirm that code is updated and still runs
+		- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+		- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+		- TBD: confirm origin is cleaned up
+		- TBD: post-branch-delete run test
+	- TBD: update cleesh engine version build
 
+- IDEA: triggers
+	- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
+	- IDEA: Establish switch triggers such that timer as trigger is more natural
+	- TBD: update cleesh engine version build
+
+- TBD: Cases where I want a modular machine to run despite an error standard
+	- IDEA: perhaps move to separate 'Errors' section
+		- IDEA: new Errors class inherits from Invisible; now also returns is_attemptable
+	- IDEA: problem description
+		- IDEA: e.g. 'go north' in antechamber triggers goblin
+		- IDEA: i.e. should it ever be possible to override an error? If so, then how?
+		- IDEA: the 'open portcullis' case is a special problem here - it will tell Burt it's locked...
+			- IDEA: but the Goblin should attack before Burt can touch the Portcullis
+	- IDEA: general thinking / philosophy
+		- IDEA: narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
+		- DECISION: use fake_door for now and swap on goblin death
+		- RECONSIDER: 'take axe' case is hard to fake out... maybe I do need an interupt() module after all??
+	- IDEA: possible solution 1
+		- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
+		- IDEA: modular machines should be designed so that it is easy to trigger & run them from interupt()
+	- IDEA: possible solutions 2
+		- IDEA: what we really need to do is differentiate between "attemptable" failure vs. "impossible"
+		- IDEA: attempting to open a locked door is the poster child for this
+			- IDEA: it is reasonable for the player to attempt a new door they find
+			- IDEA: in fact, they can only learn that it is locked by making the attempt
+			- IDEA: further, if there is a guard in the room, it is reasonably that they take action
+			- IDEA: against a player that is rattling the locked door they are guarding
+		- IDEA: by contrast: 'eat horseshoe' (when there is no nearby horseshoe) is NOT attemptable
+			- IDEA: and should not be dignified by a pre_action() response
+		- TBD: in errors, return is_attemptable
+			- TBD: if is_attemptable == True, time passes, and both pre_act() and auto_act() run
+			- IDEA: all errors that return useful info (e.g. 'locked door') are attemptable
+			- IDEA: is_attemptable = False for all cases where the obj is not in room
+			- IDEA: in between is tricky... 
+			- IDEA: go <direction w/ no exit> and take <obj held by creature> are good attemptable candidates
+	- IDEA: alternative work-arounds:
+		- TBD: Maybe just 'x axe' case?
+		- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
+	- TBD: update cleesh engine version build
+
+- TBD: state machine for hedgehog
+	- IDEA: need to implement hedgehog state machine based on creature state
+		- IDEA: Both hedgehog and throne_broach_dispenser would be better implemented as state machines
+		- TBD: state machines and other general purpose mod-machs
+	- TBD: update cleesh engine version build
+
+- TBD: mod-mach bug fixes
+	- TBD: fix hedgehog description after sword is returned (before goblin killed)
+	- TBD: auto_static_behavior for goblin? each turn - maybe should be a standard function??
+		EXAMPLE: "the goblin is eyeing you coldly"
+	- TBD: fix eat_biscuits_warning 
+		- TBD so that it no longer lives in just entrance and main_hall 
+		- TBD: and no longer triggers when biscuits not in hand
+		- IDEA:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+	- TBD: Do we really need to test for goblin in antechamber??? (will the goblin ever move)
+	- TBD: should hedgehog_distracted_mach just be replaced by a Creature class attribute?
+	- IDEA: Can we create a general purpose Dispenser machine - for use with Crown and Broach?
+		- IDEA: would also be useful for control_panel
+	- TBD: broaden hedgehog response to interacting with sword (e.g. "pull sword" should trigger)
+- TBD: update cleesh engine version build
+
+- TBD: debug ideas:
+	- IDEA: room should have show_machs() method that lists all local mod-machs
+	- TBD: mach visible command (include switchs, warnings, and timers too)
+	- TBD: machine purpose and state command (include warnings and timers too)
+	- IDEA: machine mix-in should have a dbg_describe() method that describes the machine (like K8s)
+	- IDEA: dbg_describe and debug_show_mach commands
+		- IDEA: to keep obj names short, just use abreviations <mach_name>_r1_m1
+		- IDEA: to understant what mod-mach does, have attribute that explains each module
+		- IDEA: also explains each result and condition
+		- IDEA: then have debug-only command that describes mod-mach based on that attribute
+		- IDEA: would also presumably need debug_show_mach command
+	- TBD: update cleesh engine version build
+
+- TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj
+	- EXAMPLE: re-assigning goblin to goblin_mach after goblin Creature instantiation
+	- ANALYSIS: basic problem pattern = obj => obj_mach => obj_cond / obj_result => obj
+	- IDEA: pass/link obj to obj_con/obj_result innately (not explicitly) as part of call/assignment?
+	- TBD: update cleesh engine version build
+
+- TBD: update modular machine doc!
 
 	- TBD: <TEMPLATE>
 		- TBD: create new <FEATURE_NAME>_feature git branch
@@ -1140,6 +1195,8 @@ Version 3.87.0 Goals:
 - TBD: instantiate obj in hero inventory
 
 *** story-driven updates ***
+
+- TBD: hedgehog will trade sword for silver_key (update show() and give() )
 
 - TBD: find a good use for TravelResult !!
 
