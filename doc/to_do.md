@@ -900,12 +900,12 @@ Version 3.87.0 Goals:
 		- IDEA: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj
 		- IDEA: update modular machine doc!
 
-- TBD: Sort out parrent-child inheritance (build 0011 [])
-	- TBD: create new <FEATURE_NAME>_feature git branch
+- INPROC: Sort out parrent-child inheritance (build 0011 [])
+	- INPROC: create new mach_inherit_feature git branch
 		- TBD: 'git branch' to confirm *master
-		- TBD: 'git branch <FEATURE_NAME>' to create new branch
+		- TBD: 'git branch mach_inherit_feature' to create new branch
 		- TBD: 'git branch' to confirm new branch exists but that master is still checked out
-		- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
+		- TBD: 'git checkout mach_inherit_feature' to switch focus to branching_test branch
 		- TBD: 'git branch' to confirm new branch is now in focus
 		- TBD: Publish Branch via VS Code button
 		- TBD: confirm new branch on GitHub
