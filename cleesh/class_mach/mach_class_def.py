@@ -3,13 +3,65 @@
 # module description: class deffinition module for Machines
 
 ### import
-import copy
+# import copy
 from cleesh.class_std.item_class_def import Item
 from cleesh.class_std.invisible_class_def import Invisible
 from cleesh.class_std.base_class_def import ViewOnly
-from cleesh.class_std.interactive_class_def import ContainerFixedSimple, Seat
+# from cleesh.class_std.interactive_class_def import ContainerFixedSimple, Seat
+from cleesh.class_std.interactive_class_def import ContainerFixedSimple
 
 ### classes
+class ProtoMachMixIn(object):
+	def __init__(self, mach_state, trig_type, alert_anchor, is_enabled):
+		self._mach_state = mach_state # machine state variable; can be bool or int 
+		self._trig_type = trig_type # pre_act_cmd, pre_act_timer, post_act_cmd, post_act_switch, auto_act, auto_switch_reset
+		self._alert_anchor = alert_anchor # hero must be in same room as alert_anchor to get mach updates
+		self._is_enabled = is_enabled # bool indicating whether mach is enabled to run
+
+	# getters & setters
+	@property
+	def mach_state(self):
+		return self._mach_state
+
+	@mach_state.setter
+	def mach_state(self, new_state):
+		self._mach_state = new_state
+
+	@property
+	def trig_type(self):
+		return self._trig_type
+
+	@property
+	def alert_anchor(self):
+		return self._alert_anchor
+
+	@alert_anchor.setter
+	def alert_anchor(self, new_val):
+		self._alert_anchor = new_val
+
+	@property
+	def is_enabled(self):
+		return self._is_enabled
+
+	@is_enabled.setter
+	def is_enabled(self, new_val):
+		self._is_enabled = new_val
+
+	# *** class identity methods ***
+	def is_mach(self):
+		return True
+
+	# complex methods
+def run_mach(self, gs):
+	pass
+	return False, False
+
+
+
+
+
+
+
 class MachineMixIn(object):
 	def __init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled):
 		self._mach_state = mach_state # machine state variable; boolean for simple machines; Int for complex

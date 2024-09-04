@@ -816,7 +816,8 @@ Version 3.87.0 Goals:
 			- FINDING: warning_count has some similarities to mach_state
 			- FINDING: warn_max is similar to timer_max
 		- DONE: analyze timers
-			- FINDING: Timer needs a reset_timer() method
+			- CANCEL: Timer needs a reset_timer() method
+				- FINDING: exists
 			- FINDING: existing Timer run_mach() auto-resets at count == max_count... is this desired?
 			- FINDING: Timer is harder to incorporate into parent-child relationship with Mach and Warning
 			- FINDING: timer_count has some similarities to mach_state
@@ -826,7 +827,7 @@ Version 3.87.0 Goals:
 				- IDEA: but this is only useful if we pass run_count to cond_check()
 				- IDEA: if timer_count == mach_state, there is no way to pass info about multiple timer runs
 				- IDEA: but how far ahead of real use-case do I want to get? Can add as a new feature when needed
-			- FINDING: feels like message type (constant vs. variable) coudl be inferred?
+			- FINDING: feels like message type (constant vs. variable) could be inferred?
 				- IDEA: if message_0 exists => constant message
 		- IDEA: inheritance big picture
 			IDEA: MachProtoMixIn => (Timer, Warning, MachCmdMixIn), MachCmdMixIn => MachSwitchMixIn
@@ -915,22 +916,35 @@ Version 3.87.0 Goals:
 		- DONE: 'git commit -m "doc updates"
 		- DONE: 'git push" to push updates to origin (GitHub)
 		- DONE: confirm new branch on GitHub is now ahead of master
+	- DONE: create ProtoMachMixIn class
+		- DONE: attribs = mach_state, trig_type, alert_anchor, is_enabled
+			- IDEA: 'trigger_type' => 'trig_type' ??
+			- IDEA: hold off on trig_vals_lst for now
+		- DONE: methods = run_mach()
+			- IDEA hold off on trigger_check() => trig_chk() for now
+	- TBD: create Timer class (inherits from ProtoMachMixIn + Invisible)
+		- IDEA: move switch_reset and timer into auto_action() ???
+		- FINDING: existing Timer run_mach() auto-resets at count == max_count... is this desired?
+		- FINDING: Timer is harder to incorporate into parent-child relationship with Mach and Warning
+		- FINDING: timer_count has some similarities to mach_state
+		- FINDING: active could likely be a method (not an attribute)
+		- FINDING: timer_max is similar to warn_max
+		- FINDING: timer_done could be replaced by run_count ... which might be useful elsewhere too...
+			- IDEA: but this is only useful if we pass run_count to cond_check()
+			- IDEA: if timer_count == mach_state, there is no way to pass info about multiple timer runs
+			- IDEA: but how far ahead of real use-case do I want to get? Can add as a new feature when needed
+		- FINDING: feels like message type (constant vs. variable) could be inferred?
+			- IDEA: if message_0 exists => constant message
 	- TBD: decide on TrigMixIn
 		- IDEA: TrigMixIn - inherited by both Warning and CmdMachMixIn
 			IDEA: contains just trig_vals_lst attrib and trigger_check() method
 		- IDEA: but multiple MixIn sources seems complicated... 
-	- TBD: create ProtoMachMixIn class
-		- TBD: attribs = mach_state, trigger_type, trig_vals_lst, alert_anchor, is_enabled
-			- IDEA: 'trigger_type' => 'trig_type' ??
-		- TBD: methods = run_mach(), trigger_check()
-	- TBD: create Timer class (inherits from ProtoMachMixIn + Invisible)
 	- TBD: create Warning class (inherits from ProtoMachMixIn + TrigMixIn + Invisible)
 	- TBD: ceate CmdMachMixIn (inherits from ProtoMachMixIn + TrigMixIn)
 	- TBD: create SwitchMachMixIn (inherits from CmdMachMixIn + switch attribs)
 	- TBD: review other inheritance ideaas
 		- TBD: review existing Warning class - refactor / integrate with Mach class
 			- TBD: refactor app_turn modules (warning & timer code)
-			- IDEA: move switch_reset to auto_action() ???
 			- TBD: review existing Timer class - refactor / integrate with Mach class
 			- TBD: update version build #
 		- TBD: reconsider parent / child mach classes / MixIns
