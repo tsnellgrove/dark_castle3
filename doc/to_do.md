@@ -901,20 +901,20 @@ Version 3.87.0 Goals:
 		- IDEA: update modular machine doc!
 
 - INPROC: Sort out parrent-child inheritance (build 0011 [])
-	- INPROC: create new mach_inherit_feature git branch
-		- TBD: 'git branch' to confirm *master
-		- TBD: 'git branch mach_inherit_feature' to create new branch
-		- TBD: 'git branch' to confirm new branch exists but that master is still checked out
-		- TBD: 'git checkout mach_inherit_feature' to switch focus to branching_test branch
-		- TBD: 'git branch' to confirm new branch is now in focus
-		- TBD: Publish Branch via VS Code button
-		- TBD: confirm new branch on GitHub
-		- TBD: update doc TBDs to DONEs
-		- TBD: <CMD><OPT>S (to save all files)
-		- TBD: 'git add .' to add files to be committed
-		- TBD: 'git commit -m "doc updates"
-		- TBD: 'git push" to push updates to origin (GitHub)
-		- TBD: confirm new branch on GitHub is now ahead of master
+	- DONE: create new mach_inherit_feature git branch
+		- DONE: 'git branch' to confirm *master
+		- DONE: 'git branch mach_inherit_feature' to create new branch
+		- DONE: 'git branch' to confirm new branch exists but that master is still checked out
+		- DONE: 'git checkout mach_inherit_feature' to switch focus to branching_test branch
+		- DONE: 'git branch' to confirm new branch is now in focus
+		- DONE: Publish Branch via VS Code button
+		- DONE: confirm new branch on GitHub
+		- DONE: update doc TBDs to DONEs
+		- DONE: <CMD><OPT>S (to save all files)
+		- DONE: 'git add .' to add files to be committed
+		- DONE: 'git commit -m "doc updates"
+		- DONE: 'git push" to push updates to origin (GitHub)
+		- DONE: confirm new branch on GitHub is now ahead of master
 	- TBD: decide on TrigMixIn
 		- IDEA: TrigMixIn - inherited by both Warning and CmdMachMixIn
 			IDEA: contains just trig_vals_lst attrib and trigger_check() method
