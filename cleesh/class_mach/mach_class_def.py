@@ -52,13 +52,80 @@ class ProtoMachMixIn(object):
 		return True
 
 	# complex methods
-def run_mach(self, gs):
-	pass
-	return False, False
+	def run_mach(self, gs):
+		pass
+		return False, False
 
 
+class TimerX(ProtoMachMixIn, Invisible):
+	def __init__(self, name, trig_type, active, mach_state, timer_max, message_type, timer_done, alert_anchor, is_enabled):
+		Invisible.__init__(self, name)
+		MachineMixIn.__init__(self, mach_state, trig_type, alert_anchor, is_enabled)
+		# mach_state = timer_count
+		self._active = active # bool that indicates whether Timer obj is active [replace w/ mehthod]
+		self._timer_max = timer_max # int; number that timer counts up to
+		self._message_type = message_type # str; can be 'constant' or 'variable' [replace w/ method]
+		self._timer_done = timer_done
 
+	@property
+	def active(self):
+		return self._active
 
+	@active.setter
+	def active(self, new_val):
+		self._active = new_val
+
+	@property
+	def timer_max(self):
+		return self._timer_max
+
+	@property
+	def message_type(self):
+		return self._message_type
+
+	@property
+	def timer_done(self):
+		return self._timer_done
+
+	@timer_done.setter
+	def timer_done(self, new_val):
+		self._timer_done = new_val
+
+	# class identity methods
+	def is_timer(self):
+		return True
+
+	# complex methods
+	def run_mach(self, gs):
+		cmd_override = False
+		self.mach_state += 1				
+		timer_key = self.name + "_" + str(self.mach_state)
+		timer_key_constant = self.name + "_1"
+
+		if gs.map.hero_rm.chk_is_vis(self.alert_anchor, gs):
+			if self.message_type == 'variable':
+				try:
+					gs.io.buff_f(timer_key)
+				except:
+					gs.io.buffer("Beep!")
+			elif self.message_type == 'constant':
+				try:
+					gs.io.buff_f(timer_key_constant)
+				except:
+					gs.io.buffer("Beep!")
+
+		if self.mach_state == self.timer_max:
+			self.active = False
+			self.mach_state = 0
+			self.timer_done = True
+
+		return cmd_override, cmd_override
+
+	def start(self):
+		self.active = True
+
+	def reset(self):
+		self.mach_state = 0
 
 
 

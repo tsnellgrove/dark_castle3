@@ -922,24 +922,38 @@ Version 3.87.0 Goals:
 			- IDEA: hold off on trig_vals_lst for now
 		- DONE: methods = run_mach()
 			- IDEA hold off on trigger_check() => trig_chk() for now
-	- TBD: create Timer class (inherits from ProtoMachMixIn + Invisible)
-		- IDEA: move switch_reset and timer into auto_action() ???
-		- FINDING: existing Timer run_mach() auto-resets at count == max_count... is this desired?
-		- FINDING: Timer is harder to incorporate into parent-child relationship with Mach and Warning
-		- FINDING: timer_count has some similarities to mach_state
-		- FINDING: active could likely be a method (not an attribute)
-		- FINDING: timer_max is similar to warn_max
-		- FINDING: timer_done could be replaced by run_count ... which might be useful elsewhere too...
-			- IDEA: but this is only useful if we pass run_count to cond_check()
-			- IDEA: if timer_count == mach_state, there is no way to pass info about multiple timer runs
-			- IDEA: but how far ahead of real use-case do I want to get? Can add as a new feature when needed
-		- FINDING: feels like message type (constant vs. variable) could be inferred?
-			- IDEA: if message_0 exists => constant message
+	- INPROC: create TimerX class (inherits from ProtoMachMixIn + Invisible)
+		- IDEAS: TimerX class
+			- IDEA: existing Timer run_mach() auto-resets at count == max_count... is this desired?
+			- IDEA: Timer is harder to incorporate into parent-child relationship with Mach and Warning
+			- FINDING: timer_count => mach_state
+			- FINDING: active could likely be a method (not an attribute)
+			- FINDING: timer_max is similar to warn_max
+			- FINDING: timer_done could be replaced by run_count ... which might be useful elsewhere too...
+				- IDEA: but this is only useful if we pass run_count to cond_check()
+				- IDEA: if timer_count == mach_state, there is no way to pass info about multiple timer runs
+				- IDEA: but how far ahead of real use-case do I want to get? Can add as a new feature when needed
+			- FINDING: feels like message type (constant vs. variable) could be inferred?
+				- IDEA: if message_0 exists => constant message
+		- INPROC: create TimerX class
+			- DONE: class + setters & getters
+			- TBD: refactor mach_run() method
+				- TBD: base refactor
+				- TBD: elim active attrib
+				- TBD: elim message_type attrib
+			- TBD: move switch_reset and timer into auto_action() ???
+			- TBD: update dark_castle timers
+				- TBD:
+		- TBD: clean-up
+			- TBD: comment out old Timer class
+			- TBD: update TimerX => Timer
+			- TBD: update timer doc
 	- TBD: decide on TrigMixIn
 		- IDEA: TrigMixIn - inherited by both Warning and CmdMachMixIn
 			IDEA: contains just trig_vals_lst attrib and trigger_check() method
 		- IDEA: but multiple MixIn sources seems complicated... 
 	- TBD: create Warning class (inherits from ProtoMachMixIn + TrigMixIn + Invisible)
+	- TBD: create AutoMachMixIn (inherits from ProtoMachMixIn)
 	- TBD: ceate CmdMachMixIn (inherits from ProtoMachMixIn + TrigMixIn)
 	- TBD: create SwitchMachMixIn (inherits from CmdMachMixIn + switch attribs)
 	- TBD: review other inheritance ideaas
