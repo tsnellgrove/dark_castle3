@@ -957,8 +957,9 @@ Version 3.87.0 Goals:
 				- DONE: refactor auto_action() and update to enable is_enabled()
 				- DONE: enable trig_type = 'pre_act_timer' in auto_action()
 			- TBD: update dark_castle timers
-				- TBD: first test / doc exact timing of existing Timer obj
+				- DONE: first test / doc exact timing of existing Timer obj
 				- TBD: update class and attribs and pre_act_timer mach
+				- TBD: update TimerActiveCond: active => is_active
 				- TBD: test
 		- TBD: clean-up
 			- TBD: comment out old Timer class, clean up auto_act, clean up game_update
