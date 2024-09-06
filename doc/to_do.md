@@ -940,12 +940,18 @@ Version 3.87.0 Goals:
 			- DONE: class + setters & getters
 			- DONE: update chk_str_exist() in IO class to check game_static_gbl
 			- TBD: refactor mach_run() method
-				- TBD: base refactor
-				- TBD: elim active attrib
-				- TBD: elim message_type attrib
+				- DONE: elim "Beep!" default
+				- DONE: elim message_type attrib
+				- DONE: base refactor
+				- TBD: create set(num) method
+			- TBD: refactor auto_action() and update to enable is_enabled()
 			- TBD: move switch_reset and timer into auto_action() ???
+			- TBD: trig_type = 'pre_act_timer'
+				- TBD: consider 
 			- TBD: update dark_castle timers
-				- TBD:
+				- TBD: timer_done => run_count
+				- TBD: move pre_act_timer eval to auto_act?
+				- TBD: can this be sorted out better? Maybe need trig method to reset timer_done??
 		- TBD: clean-up
 			- TBD: comment out old Timer class
 			- TBD: update TimerX => Timer
