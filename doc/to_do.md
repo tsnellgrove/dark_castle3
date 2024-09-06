@@ -956,12 +956,12 @@ Version 3.87.0 Goals:
 			- TBD: comment out old Timer class
 			- TBD: update TimerX => Timer
 			- TBD: update timer doc
+	- TBD: create AutoMachMixIn (inherits from ProtoMachMixIn)
 	- TBD: decide on TrigMixIn
 		- IDEA: TrigMixIn - inherited by both Warning and CmdMachMixIn
 			IDEA: contains just trig_vals_lst attrib and trigger_check() method
 		- IDEA: but multiple MixIn sources seems complicated... 
 	- TBD: create Warning class (inherits from ProtoMachMixIn + TrigMixIn + Invisible)
-	- TBD: create AutoMachMixIn (inherits from ProtoMachMixIn)
 	- TBD: ceate CmdMachMixIn (inherits from ProtoMachMixIn + TrigMixIn)
 	- TBD: create SwitchMachMixIn (inherits from CmdMachMixIn + switch attribs)
 	- TBD: review other inheritance ideaas
