@@ -956,6 +956,7 @@ Version 3.87.0 Goals:
 				- DONE: at start of run_mach(), if self.is_dinging(), self.reset and then return
 				- DONE: refactor auto_action() and update to enable is_enabled()
 				- DONE: enable trig_type = 'pre_act_timer' in auto_action()
+				- DONE: create timer.is_active() method (to be used by TimerActiveCond)
 			- TBD: update dark_castle timers
 				- DONE: first test / doc exact timing of existing Timer obj
 				- TBD: update class and attribs and pre_act_timer mach
