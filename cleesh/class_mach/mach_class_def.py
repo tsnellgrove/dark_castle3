@@ -59,41 +59,41 @@ class ProtoMachMixIn(object):
 
 class TimerX(ProtoMachMixIn, Invisible):
 #	def __init__(self, name, trig_type, active, mach_state, timer_max, message_type, timer_done, alert_anchor, is_enabled):
-	def __init__(self, name, trig_type, mach_state, alert_anchor, is_enabled, active, timer_max, timer_done):
+	def __init__(self, name, trig_type, mach_state, alert_anchor, is_enabled, is_active, timer_max):
 		Invisible.__init__(self, name)
 		ProtoMachMixIn.__init__(self, mach_state, trig_type, alert_anchor, is_enabled) # mach_state = timer_count		
-		self._active = active # bool that indicates whether Timer obj is active [replace w/ mehthod]
+		self._is_active = is_active # bool that indicates whether Timer obj is active [replace w/ mehthod]
 		self._timer_max = timer_max # int; number that timer counts up to
 #		self._message_type = message_type # str; can be 'constant' or 'variable' [replace w/ method]
-		self._timer_done = timer_done
+#		self._timer_done = timer_done
 
 	@property
-	def active(self):
-		return self._active
+	def is_active(self):
+		return self._is_active
 
-	@active.setter
-	def active(self, new_val):
-		self._active = new_val
+	@is_active.setter
+	def is_active(self, new_val):
+		self._is_active = new_val
 
 	@property
 	def timer_max(self):
 		return self._timer_max
 
 	@timer_max.setter
-	def timer_max(self, new_val)
+	def timer_max(self, new_val):
 		self._timer_max = new_val
 
 #	@property
 #	def message_type(self):
 #		return self._message_type
 
-	@property
-	def timer_done(self):
-		return self._timer_done
+#	@property
+#	def timer_done(self):
+#		return self._timer_done
 
-	@timer_done.setter
-	def timer_done(self, new_val):
-		self._timer_done = new_val
+#	@timer_done.setter
+#	def timer_done(self, new_val):
+#		self._timer_done = new_val
 
 	# class identity methods
 	def is_timer(self):
@@ -102,6 +102,10 @@ class TimerX(ProtoMachMixIn, Invisible):
 	# complex methods
 	def run_mach(self, gs):
 #		cmd_override = False
+		if self.is_dinging():
+			self.reset()
+			return False, False
+
 		self.mach_state += 1				
 #		timer_key = self.name + "_" + str(self.mach_state)
 #		timer_key_constant = self.name + "_1"
@@ -123,31 +127,34 @@ class TimerX(ProtoMachMixIn, Invisible):
 #				except:
 #					gs.io.buffer("Beep!")
 
-		if self.mach_state == self.timer_max:
-			self.reset()
+##		if self.mach_state == self.timer_max:
+##			self.reset()
 #			self.active = False
 #			self.mach_state = 0
-			self.timer_done = True
+##			self.timer_done = True
 
 #		return cmd_override, cmd_override
 		return False, False
 
 	def start(self):
-		self.active = True
+		self.is_active = True
 		return
 
 	def stop(self):
-		self.active = False
+		self.is_active = False
 		return
 
 	def reset(self):
 		self.mach_state = 0
-		self.active = False
+		self.is_active = False
 		return
 
 	def set_timer(self, new_max):
 		self.timer_max = new_max
 		return
+
+	def is_dinging(self):
+		return self.is_active and (self.mach_state == self.timer_max)
 
 class MachineMixIn(object):
 	def __init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled):

@@ -951,15 +951,18 @@ Version 3.87.0 Goals:
 				- IDEA: then, in auto_act, at top of timer mach_run, if 'ding' == True; reset and turn 'ding' off
 				- IDEA: tricky part is that would be nice to start timer and react to ding both in auto_act
 				- IDEA: maybe new 'auto_act_timer_trig' mach trigger that always goes after auto_act ???
-			- TBD: sort out 'ding' idea
-			- TBD: refactor auto_action() and update to enable is_enabled()
-			- TBD: move switch_reset and timer into auto_action() ???
-			- TBD: trig_type = 'pre_act_timer'
-				- TBD: consider 
+			- INPROC: sort out 'ding' idea
+				- DONE: create is_dinging()
+				- DONE: at start of run_mach(), if self.is_dinging(), self.reset and then return
+				- TBD: refactor auto_action() and update to enable is_enabled()
+				- TBD: move switch_reset and timer into auto_action() ???
+					- TBD: trig_type = 'pre_act_timer'
+					- TBD: move pre_act_timer eval to auto_act?
+					- TBD: elim timer_done ref => is_dinging()
 			- TBD: update dark_castle timers
-				- TBD: timer_done => run_count
-				- TBD: move pre_act_timer eval to auto_act?
-				- TBD: can this be sorted out better? Maybe need trig method to reset timer_done??
+				- TBD: first test / doc exact timing of existing Timer obj
+				- TBD: update class and attribs
+				- TBD: test
 		- TBD: clean-up
 			- TBD: comment out old Timer class
 			- TBD: update TimerX => Timer
