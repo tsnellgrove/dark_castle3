@@ -939,11 +939,11 @@ Version 3.87.0 Goals:
 		- INPROC: create TimerX class
 			- DONE: class + setters & getters
 			- DONE: update chk_str_exist() in IO class to check game_static_gbl
-			- TBD: refactor mach_run() method
+			- DONE: refactor mach_run() method
 				- DONE: elim "Beep!" default
 				- DONE: elim message_type attrib
 				- DONE: base refactor
-				- TBD: create set(num) method
+				- DONE: create set(num) method
 			- TBD: refactor auto_action() and update to enable is_enabled()
 			- TBD: move switch_reset and timer into auto_action() ???
 			- TBD: trig_type = 'pre_act_timer'

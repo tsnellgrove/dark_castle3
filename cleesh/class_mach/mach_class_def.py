@@ -59,10 +59,9 @@ class ProtoMachMixIn(object):
 
 class TimerX(ProtoMachMixIn, Invisible):
 #	def __init__(self, name, trig_type, active, mach_state, timer_max, message_type, timer_done, alert_anchor, is_enabled):
-	def __init__(self, name, trig_type, active, mach_state, timer_max, timer_done, alert_anchor, is_enabled):
+	def __init__(self, name, trig_type, mach_state, alert_anchor, is_enabled, active, timer_max, timer_done):
 		Invisible.__init__(self, name)
-		MachineMixIn.__init__(self, mach_state, trig_type, alert_anchor, is_enabled)
-		# mach_state = timer_count
+		ProtoMachMixIn.__init__(self, mach_state, trig_type, alert_anchor, is_enabled) # mach_state = timer_count		
 		self._active = active # bool that indicates whether Timer obj is active [replace w/ mehthod]
 		self._timer_max = timer_max # int; number that timer counts up to
 #		self._message_type = message_type # str; can be 'constant' or 'variable' [replace w/ method]
@@ -79,6 +78,10 @@ class TimerX(ProtoMachMixIn, Invisible):
 	@property
 	def timer_max(self):
 		return self._timer_max
+
+	@timer_max.setter
+	def timer_max(self, new_val)
+		self._timer_max = new_val
 
 #	@property
 #	def message_type(self):
@@ -131,11 +134,16 @@ class TimerX(ProtoMachMixIn, Invisible):
 
 	def start(self):
 		self.active = True
+		return
 
 	def reset(self):
 		self.mach_state = 0
 		self.active = False
+		return
 
+	def set_timer(self, new_max):
+		self.timer_max = new_max
+		return
 
 class MachineMixIn(object):
 	def __init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled):
