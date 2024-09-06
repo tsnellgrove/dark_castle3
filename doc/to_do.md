@@ -928,6 +928,7 @@ Version 3.87.0 Goals:
 			- IDEA: Timer is harder to incorporate into parent-child relationship with Mach and Warning
 			- FINDING: timer_count => mach_state
 			- FINDING: active could likely be a method (not an attribute)
+				- IDEA: Do I want timers to be stoppable? [w/ stop() method]. If so, need 'active' attirb
 			- FINDING: timer_max is similar to warn_max
 			- FINDING: timer_done could be replaced by run_count ... which might be useful elsewhere too...
 				- IDEA: but this is only useful if we pass run_count to cond_check()
