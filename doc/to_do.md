@@ -943,7 +943,8 @@ Version 3.87.0 Goals:
 				- DONE: elim "Beep!" default
 				- DONE: elim message_type attrib
 				- DONE: base refactor
-				- DONE: create set(num) method
+				- DONE: create set_timer(num) method
+				- DONE: create stop() method
 			- TBD: refactor auto_action() and update to enable is_enabled()
 			- TBD: move switch_reset and timer into auto_action() ???
 			- TBD: trig_type = 'pre_act_timer'

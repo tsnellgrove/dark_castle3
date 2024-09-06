@@ -136,6 +136,10 @@ class TimerX(ProtoMachMixIn, Invisible):
 		self.active = True
 		return
 
+	def stop(self):
+		self.active = False
+		return
+
 	def reset(self):
 		self.mach_state = 0
 		self.active = False
