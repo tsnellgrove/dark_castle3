@@ -945,6 +945,13 @@ Version 3.87.0 Goals:
 				- DONE: base refactor
 				- DONE: create set_timer(num) method
 				- DONE: create stop() method
+			- IDEA: timer 'ding'
+				- IDEA: basically, in auto_act() , when the timer is done counting to timer_max, it should 'ding'
+				- IDEA: it should stay in 'ding' state for 1 turn so that any mach listening for ding can hear it
+				- IDEA: then, in auto_act, at top of timer mach_run, if 'ding' == True; reset and turn 'ding' off
+				- IDEA: tricky part is that would be nice to start timer and react to ding both in auto_act
+				- IDEA: maybe new 'auto_act_timer_trig' mach trigger that always goes after auto_act ???
+			- TBD: sort out 'ding' idea
 			- TBD: refactor auto_action() and update to enable is_enabled()
 			- TBD: move switch_reset and timer into auto_action() ???
 			- TBD: trig_type = 'pre_act_timer'
