@@ -937,6 +937,7 @@ Version 3.87.0 Goals:
 				- IDEA: if message_0 exists => constant message
 		- INPROC: create TimerX class
 			- DONE: class + setters & getters
+			- DONE: update chk_str_exist() in IO class to check game_static_gbl
 			- TBD: refactor mach_run() method
 				- TBD: base refactor
 				- TBD: elim active attrib
