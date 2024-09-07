@@ -961,9 +961,10 @@ Version 3.87.0 Goals:
 				- DONE: first test / doc exact timing of existing Timer obj
 				- DONE: update class and attribs and pre_act_timer mach
 				- DONE: update TimerActiveCond: active => is_active
-				- INPROC: test
+				- DONE: test
 					- FINDING: Description updates are foobarred
-					- TBD: 
+					- FINDING: game starting with hedgehog_eats_timer evaluating to is_active == True
+					- DONE: duplicate name for is_active attrib and method causing issues; elim method
 				- TBD: try moving pre_act_timer to auto_act_timer
 		- TBD: clean-up
 			- TBD: comment out old Timer class

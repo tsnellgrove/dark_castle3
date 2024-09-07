@@ -153,8 +153,8 @@ class TimerX(ProtoMachMixIn, Invisible):
 		self.timer_max = new_max
 		return
 
-	def is_active(self):
-		return self.is_active
+# 	def is_active(self):
+#		return self.is_active
 
 	def is_dinging(self):
 		return self.is_active and (self.mach_state == self.timer_max)

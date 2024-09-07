@@ -121,7 +121,7 @@ test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 9
 # *** timers ***
 hedgehog_eats_timer = TimerX('hedgehog_eats_timer', 'auto_act', 0, 'temp_royal_hedgehog', True, False, 4)
 # hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, 'temp_royal_hedgehog', True)
-## name, trig_type, mach_state, alert_anchor, is_enabled, is_active, timer_max
+### name, trigger_type, mach_state, alert_anchor, is_enabled, is_active, timer_max
 
 # *** conditions ***
 true_cond = TrueCond('true_cond')
