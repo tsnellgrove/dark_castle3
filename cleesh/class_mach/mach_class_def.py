@@ -12,9 +12,9 @@ from cleesh.class_std.interactive_class_def import ContainerFixedSimple
 
 ### classes
 class ProtoMachMixIn(object):
-	def __init__(self, mach_state, trig_type, alert_anchor, is_enabled):
+	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled):
 		self._mach_state = mach_state # machine state variable; can be bool or int 
-		self._trig_type = trig_type # pre_act_cmd, pre_act_timer, post_act_cmd, post_act_switch, auto_act, auto_switch_reset
+		self._trigger_type = trigger_type # pre_act_cmd, pre_act_timer, post_act_cmd, post_act_switch, auto_act, auto_switch_reset
 		self._alert_anchor = alert_anchor # hero must be in same room as alert_anchor to get mach updates
 		self._is_enabled = is_enabled # bool indicating whether mach is enabled to run
 
@@ -28,8 +28,8 @@ class ProtoMachMixIn(object):
 		self._mach_state = new_state
 
 	@property
-	def trig_type(self):
-		return self._trig_type
+	def trigger_type(self):
+		return self._trigger_type
 
 	@property
 	def alert_anchor(self):
@@ -59,9 +59,9 @@ class ProtoMachMixIn(object):
 
 class TimerX(ProtoMachMixIn, Invisible):
 #	def __init__(self, name, trig_type, active, mach_state, timer_max, message_type, timer_done, alert_anchor, is_enabled):
-	def __init__(self, name, trig_type, mach_state, alert_anchor, is_enabled, is_active, timer_max):
+	def __init__(self, name, trigger_type, mach_state, alert_anchor, is_enabled, is_active, timer_max):
 		Invisible.__init__(self, name)
-		ProtoMachMixIn.__init__(self, mach_state, trig_type, alert_anchor, is_enabled) # mach_state = timer_count		
+		ProtoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled) # mach_state = timer_count		
 		self._is_active = is_active # bool that indicates whether Timer obj is active [replace w/ mehthod]
 		self._timer_max = timer_max # int; number that timer counts up to
 #		self._message_type = message_type # str; can be 'constant' or 'variable' [replace w/ method]

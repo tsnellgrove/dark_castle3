@@ -224,7 +224,8 @@ class TimerActiveCond(TrueCond):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		return (self.timer_obj.active == self.match_cond)
+#		return (self.timer_obj.active == self.match_cond)
+		return (self.timer_obj.is_active == self.match_cond)
 
 
 class SwitchStateCond(TrueCond):

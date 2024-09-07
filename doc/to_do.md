@@ -957,13 +957,17 @@ Version 3.87.0 Goals:
 				- DONE: refactor auto_action() and update to enable is_enabled()
 				- DONE: enable trig_type = 'pre_act_timer' in auto_action()
 				- DONE: create timer.is_active() method (to be used by TimerActiveCond)
-			- TBD: update dark_castle timers
+			- INPROC: update dark_castle timers
 				- DONE: first test / doc exact timing of existing Timer obj
-				- TBD: update class and attribs and pre_act_timer mach
-				- TBD: update TimerActiveCond: active => is_active
-				- TBD: test
+				- DONE: update class and attribs and pre_act_timer mach
+				- DONE: update TimerActiveCond: active => is_active
+				- INPROC: test
+					- FINDING: Description updates are foobarred
+					- TBD: 
+				- TBD: try moving pre_act_timer to auto_act_timer
 		- TBD: clean-up
-			- TBD: comment out old Timer class, clean up auto_act, clean up game_update
+			- TBD: comment out old Timer class
+			- TBD: clean up auto_act(), game_update(), pre_act(), cond_class(), mach_class() 
 			- TBD: update TimerX => Timer
 			- TBD: update timer doc
 	- TBD: create AutoMachMixIn (inherits from ProtoMachMixIn)
