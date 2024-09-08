@@ -957,7 +957,7 @@ Version 3.87.0 Goals:
 				- DONE: refactor auto_action() and update to enable is_enabled()
 				- DONE: enable trig_type = 'pre_act_timer' in auto_action()
 				- DONE: create timer.is_active() method (to be used by TimerActiveCond)
-			- INPROC: update dark_castle timers
+			- DONE: update dark_castle timers
 				- DONE: first test / doc exact timing of existing Timer obj
 				- DONE: update class and attribs and pre_act_timer mach
 				- DONE: update TimerActiveCond: active => is_active
@@ -965,7 +965,7 @@ Version 3.87.0 Goals:
 					- FINDING: Description updates are foobarred
 					- FINDING: game starting with hedgehog_eats_timer evaluating to is_active == True
 					- DONE: duplicate name for is_active attrib and method causing issues; elim method
-				- TBD: try moving pre_act_timer to auto_act_timer
+				- DONE: try moving pre_act_timer to auto_act_timer
 		- TBD: clean-up
 			- TBD: comment out old Timer class
 			- TBD: clean up auto_act(), game_update(), pre_act(), cond_class(), mach_class() 

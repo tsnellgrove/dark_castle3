@@ -22,6 +22,7 @@ def auto_action(gs):
 #			_unused1, _unused2 = obj.run_mach(gs)
 #		elif obj.trigger_type == 'auto_act' and not obj.is_timer():
 #			_unused1, _unused2 = obj.run_mach(gs)
-		elif obj.trigger_type == 'auto_act_timer' and obj.is_enabled:
+	for obj in mach_obj_lst:
+		if obj.trigger_type == 'auto_act_timer' and obj.is_enabled and obj.trig_switch.is_dinging():
 			_unused1, _unused2 = obj.run_mach(gs)
 	return

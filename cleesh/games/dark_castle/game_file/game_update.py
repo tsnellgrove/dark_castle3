@@ -268,7 +268,8 @@ control_panel = ContainerFixedSimpleMach('control_panel', 'Control Panel', 'pane
 ## 		Note: similar to post_act_switch; could do cond_switch_lst == timer => pass timer_count => cond_check()
 
 hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', False, 
-		'pre_act_timer', hedgehog_eats_timer, [True], 
+#		'pre_act_timer', hedgehog_eats_timer, [True], 
+		'auto_act_timer', hedgehog_eats_timer, [True], 
 		None, [hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
 		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result],
 		'royal_hedgehog_temp', True) 
