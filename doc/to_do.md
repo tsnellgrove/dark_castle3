@@ -966,18 +966,18 @@ Version 3.87.0 Goals:
 					- FINDING: game starting with hedgehog_eats_timer evaluating to is_active == True
 					- DONE: duplicate name for is_active attrib and method causing issues; elim method
 				- DONE: try moving pre_act_timer to auto_act_timer
-		- INPROC: clean-up
+		- DONE: clean-up
 			- DONE: comment out old Timer class
 			- DONE: update TimerX => Timer
-			- TBD: clean up auto_act(), game_update(), pre_act(), cond_class(), mach_class() 
-			- TBD: update timer doc
-	- TBD: create AutoMachMixIn (inherits from ProtoMachMixIn)
+			- DONE: clean up auto_act(), game_update(), pre_act(), cond_class(), mach_class() 
+		- TBD: update timer doc
 	- TBD: decide on TrigMixIn
 		- IDEA: TrigMixIn - inherited by both Warning and CmdMachMixIn
 			IDEA: contains just trig_vals_lst attrib and trigger_check() method
 		- IDEA: but multiple MixIn sources seems complicated... 
 	- TBD: create Warning class (inherits from ProtoMachMixIn + TrigMixIn + Invisible)
-	- TBD: ceate CmdMachMixIn (inherits from ProtoMachMixIn + TrigMixIn)
+	- TBD: create AutoMachMixIn (inherits from ProtoMachMixIn but adds cond_lst & result_lst)
+	- TBD: ceate CmdMachMixIn (inherits from AutoMachMixIn + TrigMixIn)
 	- TBD: create SwitchMachMixIn (inherits from CmdMachMixIn + switch attribs)
 	- TBD: review other inheritance ideaas
 		- TBD: review existing Warning class - refactor / integrate with Mach class

@@ -120,8 +120,6 @@ test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 9
 
 # *** timers ***
 hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', 0, 'temp_royal_hedgehog', True, False, 4)
-# hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, 'temp_royal_hedgehog', True)
-### name, trigger_type, mach_state, alert_anchor, is_enabled, is_active, timer_max
 
 # *** conditions ***
 true_cond = TrueCond('true_cond')
@@ -245,6 +243,19 @@ kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging
 		# mach_state == None
 
 
+## auto_act_timer : 
+# needs refactor:
+#	elim [True] value for trig_vals_lst ?
+# 	move timer to trig_vals_lst and elim trig_switch, cond_switch_lst ?
+
+hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', False, 
+		'auto_act_timer', hedgehog_eats_timer, [True], 
+		None, [hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
+		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result],
+		'royal_hedgehog_temp', True) 
+		# mach_state == timer_count
+
+
 ## post_act_switch : all attribs used; trig_vals_lst == [switch states]
 
 broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 
@@ -264,16 +275,7 @@ control_panel = ContainerFixedSimpleMach('control_panel', 'Control Panel', 'pane
 		# mach_state == lever_array_value
 
 
-## post_act_switch : trig_switch == Timer; cond_switch_lst == None; trig_vals_lst == [timer_done state]
-## 		Note: similar to post_act_switch; could do cond_switch_lst == timer => pass timer_count => cond_check()
 
-hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', False, 
-#		'pre_act_timer', hedgehog_eats_timer, [True], 
-		'auto_act_timer', hedgehog_eats_timer, [True], 
-		None, [hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
-		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result],
-		'royal_hedgehog_temp', True) 
-		# mach_state == has the machine run? (ie. has the hedgehog's description been updated already?)
 
 
 # *** creatures	***

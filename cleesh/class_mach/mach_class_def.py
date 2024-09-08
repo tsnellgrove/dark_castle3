@@ -3,11 +3,9 @@
 # module description: class deffinition module for Machines
 
 ### import
-# import copy
 from cleesh.class_std.item_class_def import Item
 from cleesh.class_std.invisible_class_def import Invisible
 from cleesh.class_std.base_class_def import ViewOnly
-# from cleesh.class_std.interactive_class_def import ContainerFixedSimple, Seat
 from cleesh.class_std.interactive_class_def import ContainerFixedSimple
 
 ### classes
@@ -58,15 +56,13 @@ class ProtoMachMixIn(object):
 
 
 class Timer(ProtoMachMixIn, Invisible):
-#	def __init__(self, name, trig_type, active, mach_state, timer_max, message_type, timer_done, alert_anchor, is_enabled):
 	def __init__(self, name, trigger_type, mach_state, alert_anchor, is_enabled, is_active, timer_max):
 		Invisible.__init__(self, name)
 		ProtoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled) # mach_state = timer_count		
 		self._is_active = is_active # bool that indicates whether Timer obj is active [replace w/ mehthod]
 		self._timer_max = timer_max # int; number that timer counts up to
-#		self._message_type = message_type # str; can be 'constant' or 'variable' [replace w/ method]
-#		self._timer_done = timer_done
 
+	# getters & setters
 	@property
 	def is_active(self):
 		return self._is_active
@@ -83,59 +79,11 @@ class Timer(ProtoMachMixIn, Invisible):
 	def timer_max(self, new_val):
 		self._timer_max = new_val
 
-#	@property
-#	def message_type(self):
-#		return self._message_type
-
-#	@property
-#	def timer_done(self):
-#		return self._timer_done
-
-#	@timer_done.setter
-#	def timer_done(self, new_val):
-#		self._timer_done = new_val
-
 	# class identity methods
 	def is_timer(self):
 		return True
 
-	# complex methods
-	def run_mach(self, gs):
-#		cmd_override = False
-		if self.is_dinging():
-			self.reset()
-			return False, False
-
-		self.mach_state += 1				
-#		timer_key = self.name + "_" + str(self.mach_state)
-#		timer_key_constant = self.name + "_1"
-
-		if gs.map.hero_rm.chk_is_vis(self.alert_anchor, gs):
-			try:
-				gs.io.buff_f(f"{self.name}_0") # constant message type
-			except:
-				gs.io.buff_f(f"{self.name}_{str(self.mach_state)}") # variable message type
-
-#			if self.message_type == 'variable':
-#				try:
-#					gs.io.buff_f(timer_key)
-#				except:
-#					gs.io.buffer("Beep!")
-#			elif self.message_type == 'constant':
-#				try:
-#					gs.io.buff_f(timer_key_constant)
-#				except:
-#					gs.io.buffer("Beep!")
-
-##		if self.mach_state == self.timer_max:
-##			self.reset()
-#			self.active = False
-#			self.mach_state = 0
-##			self.timer_done = True
-
-#		return cmd_override, cmd_override
-		return False, False
-
+	# simple methods
 	def start(self):
 		self.is_active = True
 		return
@@ -153,11 +101,23 @@ class Timer(ProtoMachMixIn, Invisible):
 		self.timer_max = new_max
 		return
 
-# 	def is_active(self):
-#		return self.is_active
-
 	def is_dinging(self):
 		return self.is_active and (self.mach_state == self.timer_max)
+
+	# complex methods
+	def run_mach(self, gs):
+		if self.is_dinging():
+			self.reset()
+			return False, False
+
+		self.mach_state += 1
+		if gs.map.hero_rm.chk_is_vis(self.alert_anchor, gs):
+			try:
+				gs.io.buff_f(f"{self.name}_0") # constant message type
+			except:
+				gs.io.buff_f(f"{self.name}_{str(self.mach_state)}") # variable message type
+		return False, False
+
 
 class MachineMixIn(object):
 	def __init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled):
