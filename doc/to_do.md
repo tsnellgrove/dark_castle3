@@ -922,7 +922,7 @@ Version 3.87.0 Goals:
 			- IDEA: hold off on trig_vals_lst for now
 		- DONE: methods = run_mach()
 			- IDEA hold off on trigger_check() => trig_chk() for now
-	- INPROC: create TimerX class (inherits from ProtoMachMixIn + Invisible)
+	- DONE: create TimerX class (inherits from ProtoMachMixIn + Invisible)
 		- IDEAS: TimerX class
 			- IDEA: existing Timer run_mach() auto-resets at count == max_count... is this desired?
 			- IDEA: Timer is harder to incorporate into parent-child relationship with Mach and Warning
@@ -970,7 +970,7 @@ Version 3.87.0 Goals:
 			- DONE: comment out old Timer class
 			- DONE: update TimerX => Timer
 			- DONE: clean up auto_act(), game_update(), pre_act(), cond_class(), mach_class() 
-		- TBD: update timer doc
+		- DONE: update timer doc
 	- TBD: decide on TrigMixIn
 		- IDEA: TrigMixIn - inherited by both Warning and CmdMachMixIn
 			IDEA: contains just trig_vals_lst attrib and trigger_check() method

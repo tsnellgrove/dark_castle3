@@ -12,6 +12,7 @@ def pre_action(gs, case, word_lst):
 		local_override = False
 		if obj.trigger_type == 'pre_act_cmd' and obj.trig_check(gs, case, word_lst):
 			local_override, _unused = obj.run_mach(gs)
+# elim pre_act_timer as a trigger_type ???
 		elif obj.trigger_type == 'pre_act_timer' and obj.trig_switch.is_dinging():
 			local_override, _unused = obj.run_mach(gs)
 		if local_override:
