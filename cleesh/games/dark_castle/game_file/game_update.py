@@ -23,7 +23,7 @@ from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond
 from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, GiveItemResult, 
 		TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, AttackHeroResult, 
 		OpenableToggleResult, CreatureTravelResult)
-from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach, TimerX
+from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from cleesh.class_std.creature_class_def import Creature
 from cleesh.class_gs.gs_class_def import GameState
 from cleesh.class_gs.map_class_def import Map
@@ -119,7 +119,7 @@ test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 9
 # TBD
 
 # *** timers ***
-hedgehog_eats_timer = TimerX('hedgehog_eats_timer', 'auto_act', 0, 'temp_royal_hedgehog', True, False, 4)
+hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', 0, 'temp_royal_hedgehog', True, False, 4)
 # hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', False, 0, 4, 'variable', False, 'temp_royal_hedgehog', True)
 ### name, trigger_type, mach_state, alert_anchor, is_enabled, is_active, timer_max
 

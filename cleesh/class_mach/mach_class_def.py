@@ -57,7 +57,7 @@ class ProtoMachMixIn(object):
 		return False, False
 
 
-class TimerX(ProtoMachMixIn, Invisible):
+class Timer(ProtoMachMixIn, Invisible):
 #	def __init__(self, name, trig_type, active, mach_state, timer_max, message_type, timer_done, alert_anchor, is_enabled):
 	def __init__(self, name, trigger_type, mach_state, alert_anchor, is_enabled, is_active, timer_max):
 		Invisible.__init__(self, name)
@@ -376,8 +376,8 @@ class Warning(Invisible):
 			gs.io.buffer("Don't say I didn't warn you Burt...")
 		return cmd_override, cmd_override
 
-
-class Timer(Invisible):
+""""
+ class Timer(Invisible):
 	def __init__(self, name, trigger_type, active, timer_count, timer_max, message_type, timer_done, alert_anchor, is_enabled):
 		super().__init__(name)
 
@@ -486,3 +486,4 @@ class Timer(Invisible):
 	def reset(self):
 		self.timer_count = 0
 
+"""

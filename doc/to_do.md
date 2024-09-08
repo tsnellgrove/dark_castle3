@@ -966,10 +966,10 @@ Version 3.87.0 Goals:
 					- FINDING: game starting with hedgehog_eats_timer evaluating to is_active == True
 					- DONE: duplicate name for is_active attrib and method causing issues; elim method
 				- DONE: try moving pre_act_timer to auto_act_timer
-		- TBD: clean-up
-			- TBD: comment out old Timer class
+		- INPROC: clean-up
+			- DONE: comment out old Timer class
+			- DONE: update TimerX => Timer
 			- TBD: clean up auto_act(), game_update(), pre_act(), cond_class(), mach_class() 
-			- TBD: update TimerX => Timer
 			- TBD: update timer doc
 	- TBD: create AutoMachMixIn (inherits from ProtoMachMixIn)
 	- TBD: decide on TrigMixIn
