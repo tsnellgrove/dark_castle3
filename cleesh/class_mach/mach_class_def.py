@@ -54,6 +54,33 @@ class ProtoMachMixIn(object):
 		pass
 		return False, False
 
+class TrigMixIn(object):
+	def __init__(self, trig_vals_lst):
+		self._trig_vals_lst = trig_vals_lst # tirgger values that will start the machine (cmd / switches)
+
+	# getters & setters
+	@property
+	def trig_vals_lst(self):
+		return self._trig_vals_lst
+
+	# complex methods
+	def trig_check(self, gs, case, word_lst):
+		trig_key_lst = ['not_valid']
+		trig_wc_lst = ['not_valid'] # wildcards are only supported for nouns
+		if case == 'go':
+			trig_key_lst = [word_lst[1], word_lst[2]]
+		elif case == '2word':
+			trig_key_lst = [word_lst[1], word_lst[0].name]
+			trig_wc_lst = [word_lst[1], '*']
+		elif  case == 'tru_1word':
+			trig_key_lst = word_lst
+		elif  case == 'prep':
+			trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
+			trig_wc_lst = [word_lst[1], '*', word_lst[0].name]
+		elif case == 'switch':
+			trig_key_lst = word_lst[0]
+		return (trig_key_lst in self.trig_vals_lst) or (trig_wc_lst in self.trig_vals_lst)
+
 
 class Timer(ProtoMachMixIn, Invisible):
 	def __init__(self, name, trigger_type, mach_state, alert_anchor, is_enabled, is_active, timer_max):
@@ -109,7 +136,6 @@ class Timer(ProtoMachMixIn, Invisible):
 		if self.is_dinging():
 			self.reset()
 			return False, False
-
 		self.mach_state += 1
 		if gs.map.hero_rm.chk_is_vis(self.alert_anchor, gs):
 			try:

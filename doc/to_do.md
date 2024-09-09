@@ -971,15 +971,19 @@ Version 3.87.0 Goals:
 			- DONE: update TimerX => Timer
 			- DONE: clean up auto_act(), game_update(), pre_act(), cond_class(), mach_class() 
 		- DONE: update timer doc
-	- TBD: decide on TrigMixIn
-		- IDEA: TrigMixIn - inherited by both Warning and CmdMachMixIn
-			IDEA: contains just trig_vals_lst attrib and trigger_check() method
-		- IDEA: but multiple MixIn sources seems complicated... 
-	- TBD: create Warning class (inherits from ProtoMachMixIn + TrigMixIn + Invisible)
+	- DONE: TrigMixIn
+		- IDEA: TrigMixIn idea
+			- IDEA: inherited by both Warning and CmdMachMixIn
+			- IDEA: contains just trig_vals_lst attrib and trigger_check() method
+			- IDEA: multiple MixIn sources seems complicated but appears to be best approach
+		- DONE: create TrigMixIn class with setters & getters and methods
+		- DONE: eliminate 'timer' option from trig_check()
+	- TBD: create Warning class (inherits from ProtoMachMixIn + TrigMixIn + Invisible; update mach_run() )
 	- TBD: create AutoMachMixIn (inherits from ProtoMachMixIn but adds cond_lst & result_lst)
 	- TBD: ceate CmdMachMixIn (inherits from AutoMachMixIn + TrigMixIn)
 	- TBD: create SwitchMachMixIn (inherits from CmdMachMixIn + switch attribs)
-	- TBD: review other inheritance ideaas
+		- IDEA: why pass switch_cond_lst vs. regular conditions?
+	- TBD: review other inheritance ideas
 		- TBD: review existing Warning class - refactor / integrate with Mach class
 			- TBD: refactor app_turn modules (warning & timer code)
 			- TBD: review existing Timer class - refactor / integrate with Mach class
@@ -1053,6 +1057,11 @@ Version 3.87.0 Goals:
 		- IDEA: Both hedgehog and throne_broach_dispenser would be better implemented as state machines
 		- TBD: state machines and other general purpose mod-machs
 	- TBD: update cleesh engine version build
+
+- TBD: consider introducing an event bus
+	- IDEA: event bus idea
+		- IDEA: would hold all commands, timer 'ticks', and state changes (e.g. switches)
+		- IDEA: for event bus, consider moving auto_action() to front of app_main() run order
 
 - TBD: mod-mach bug fixes
 	- TBD: fix hedgehog description after sword is returned (before goblin killed)
