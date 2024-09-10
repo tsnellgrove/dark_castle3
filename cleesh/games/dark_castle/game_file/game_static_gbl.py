@@ -177,7 +177,8 @@ game_static_dict = {
 	#### MACH OBJ & DISP ####
 
 	### warnings ###
-	'entrance_south_warn_1' : "Don't be ridiculous Burt. You just swore to the whole pub that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",
+#	'entrance_south_warn_1' : "Don't be ridiculous Burt. You just swore to the whole pub that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",
+	'entrance_south_warn_0' : "Don't be ridiculous Burt. You just swore to the whole pub that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",
 	'eat_biscuits_warning_1' : "You'd really rather not. You've been rooming in your Mom's basement and living off the Stale Biscuits in her pantry ever since you finished school - mostly so that you could spend whatever money you had at the pub. You don't mind sleeping in the basement but the Stale Biscuits are really getting to you.. you'll need to be a lot hungrier than you are now before you'll be able to keep another of those down!",
 	'eat_biscuits_warning_2' : "Don't do it Burt. You know they'll only give you indigestion... and to some poor creature out there they might be a rare and wonderous delicacy.",
 	'attack_hedgehog_warning_1' : "BURT! What has gotten into you?? We have an evil castle to conquer. Stop trying to slay defenseless woodland creatures!", # old text: "You take a wild swipe at the Royal Hedgehog but it nimbly leaps aside."
