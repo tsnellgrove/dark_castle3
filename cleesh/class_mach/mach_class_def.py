@@ -145,6 +145,41 @@ class Timer(ProtoMachMixIn, Invisible):
 		return False, False
 
 
+class WarningX(ProtoMachMixIn, TrigMixIn, Invisible):
+	def __init__(self, name, trigger_type, mach_state, alert_anchor, is_enabled, trig_vals_lst, warn_max):
+		Invisible.__init__(self, name)
+		TrigMixIn.__init__(self, trig_vals_lst)
+		ProtoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled) # mach_state = warn_count		
+		self._warn_max = warn_max # int; number that warning counts up to
+
+	# getters & setters
+	@property
+	def warn_max(self):
+		return self._warn_max
+
+	# complex methods
+	def run_mach(self, gs):
+		cmd_override = False
+		self.mach_state += 1
+		warn_key = self.name + "_" + str(self.mach_state)
+		warn_key_recur = self.name + "_1"
+		if self.warn_max == 0:
+			cmd_override = True
+			try:
+				gs.io.buff_f(warn_key_recur)
+			except:
+				gs.io.buffer("I'm not sure that's a good idea Burt...")
+		elif self.mach_state < self.warn_max:
+			cmd_override = True
+			try:
+				gs.io.buff_f(warn_key)
+			except:
+				gs.io.buffer("I'm not sure that's a good idea Burt...")
+		elif self.mach_state == self.warn_max:
+			gs.io.buffer("Don't say I didn't warn you Burt...")
+		return cmd_override, cmd_override
+
+
 class MachineMixIn(object):
 	def __init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled):
 		self._mach_state = mach_state # machine state variable; boolean for simple machines; Int for complex

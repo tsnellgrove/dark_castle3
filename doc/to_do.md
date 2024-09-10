@@ -978,7 +978,11 @@ Version 3.87.0 Goals:
 			- IDEA: multiple MixIn sources seems complicated but appears to be best approach
 		- DONE: create TrigMixIn class with setters & getters and methods
 		- DONE: eliminate 'timer' option from trig_check()
-	- TBD: create Warning class (inherits from ProtoMachMixIn + TrigMixIn + Invisible; update mach_run() )
+	- INPROC: create WarningX class 
+		- DONE: create WarningX class (inherits from ProtoMachMixIn + TrigMixIn + Invisible
+		- DONE: setters & getters
+		- DONE: update mach_run() to use mach-state
+		- TBD: refactor mach_run()
 	- TBD: create AutoMachMixIn (inherits from ProtoMachMixIn but adds cond_lst & result_lst)
 	- TBD: ceate CmdMachMixIn (inherits from AutoMachMixIn + TrigMixIn)
 	- TBD: create SwitchMachMixIn (inherits from CmdMachMixIn + switch attribs)
