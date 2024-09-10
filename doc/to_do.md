@@ -983,6 +983,12 @@ Version 3.87.0 Goals:
 		- DONE: setters & getters
 		- DONE: update mach_run() to use mach-state
 		- TBD: refactor mach_run()
+			- TBD: custom hero name (vs. "Burt")
+			- TBD: elim str-creation variables
+			- TBD: cmd_override as default
+			- TBD: try / except w/ default for all 3 cases (0, < max, == max) => freedom on last command
+			- TBD: consider warning reset options
+		- TBD: as a test case, extend with cursing case (??)
 	- TBD: create AutoMachMixIn (inherits from ProtoMachMixIn but adds cond_lst & result_lst)
 	- TBD: ceate CmdMachMixIn (inherits from AutoMachMixIn + TrigMixIn)
 	- TBD: create SwitchMachMixIn (inherits from CmdMachMixIn + switch attribs)
