@@ -183,7 +183,10 @@ attack_hedgehog_warning = WarningX('attack_hedgehog_warning',
 		'pre_act_cmd', 0, 'royal_hedgehog_temp', True, 
 		[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3)
 
-eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','stale_biscuits']], 3, 0, True)
+# eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','stale_biscuits']], 3, 0, True)
+eat_biscuits_warning = WarningX('eat_biscuits_warning',
+		'pre_act_cmd', 0, stale_biscuits, True, 
+		[['eat','stale_biscuits']], 3)
 
 #  name, trigger_type, mach_state, alert_anchor, is_enabled, trig_vals_lst, warn_max
 

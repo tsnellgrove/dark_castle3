@@ -990,7 +990,7 @@ Version 3.87.0 Goals:
 			- CANCEL: consider warning reset options
 				- DECISION: if resets end up being needed I can add them
 				- FINDING: the main goal of Warnings is just to *avoid* a consequence on the first few incidents
-		- INRPOC: update each existing warning
+		- DONE: update each existing warning
 			- DONE: import WarningX
 			- DONE: entrance_south_warn 
 				- DONE: update attribs
@@ -1000,14 +1000,16 @@ Version 3.87.0 Goals:
 				- DONE: update attribs
 				- DONE: post-assign alert_anchor
 				- DONE: test
-			- TBD: eat_biscuits_warning
-				- TBD: update attribs
-				- TBD: post-assign alert_anchor
-				- TBD: test
-		- TBD: comment out old Warning class and swap WarningX => Warning
-		- TBD: final test
-		- TBD: clean up mach_class(), game_static_gbl(), game_update()
+			- DONE: eat_biscuits_warning
+				- DONE: update attribs
+				- N/A: post-assign alert_anchor
+				- DONE: test
+		- TBD: final Warning class updates
+			- TBD: comment out old Warning class and swap WarningX => Warning
+			- TBD: final test
+			- TBD: clean up mach_class(), game_static_gbl(), game_update()
 		- TBD: implement curse warning?
+		- TBD: update warning doc
 	- TBD: create AutoMachMixIn (inherits from ProtoMachMixIn but adds cond_lst & result_lst)
 	- TBD: ceate CmdMachMixIn (inherits from AutoMachMixIn + TrigMixIn)
 	- TBD: create SwitchMachMixIn (inherits from CmdMachMixIn + switch attribs)
