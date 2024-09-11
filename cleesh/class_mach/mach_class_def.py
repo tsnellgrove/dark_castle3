@@ -145,7 +145,7 @@ class Timer(ProtoMachMixIn, Invisible):
 		return False, False
 
 
-class WarningX(ProtoMachMixIn, TrigMixIn, Invisible):
+class Warning(ProtoMachMixIn, TrigMixIn, Invisible):
 	def __init__(self, name, trigger_type, mach_state, alert_anchor, is_enabled, trig_vals_lst, warn_max):
 		Invisible.__init__(self, name)
 		TrigMixIn.__init__(self, trig_vals_lst)
@@ -318,6 +318,7 @@ class ContainerFixedSimpleMach(MachineMixIn, ContainerFixedSimple):
 #				Seat.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, in_reach_lst)
 #				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
 
+"""
 class Warning(Invisible):
 	def __init__(self, name, trigger_type, trig_vals_lst, warn_max, warn_count, is_enabled):
 		super().__init__(name)
@@ -405,6 +406,8 @@ class Warning(Invisible):
 		elif self.warn_count == self.warn_max:
 			gs.io.buffer("Don't say I didn't warn you Burt...")
 		return cmd_override, cmd_override
+"""
+
 
 """"
  class Timer(Invisible):

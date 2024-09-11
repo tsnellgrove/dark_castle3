@@ -23,7 +23,7 @@ from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond
 from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, GiveItemResult, 
 		TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, AttackHeroResult, 
 		OpenableToggleResult, CreatureTravelResult)
-from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach, WarningX
+from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from cleesh.class_std.creature_class_def import Creature
 from cleesh.class_gs.gs_class_def import GameState
 from cleesh.class_gs.map_class_def import Map
@@ -173,18 +173,18 @@ toggle_portcullis_result = OpenableToggleResult('toggle_portcullis_result', Fals
 
 # entrance_south_warn = WarningX('entrance_south_warn', 
 #		'pre_act_cmd', [['go', 'south']], 0, 0, True)
-entrance_south_warn = WarningX('entrance_south_warn', 
+entrance_south_warn = Warning('entrance_south_warn', 
 		'pre_act_cmd', 0, 'entrance_temp', True, 
 		[['go', 'south']], 0)
 
 # attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd',
 #		[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3, 0, True)
-attack_hedgehog_warning = WarningX('attack_hedgehog_warning', 
+attack_hedgehog_warning = Warning('attack_hedgehog_warning', 
 		'pre_act_cmd', 0, 'royal_hedgehog_temp', True, 
 		[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3)
 
 # eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','stale_biscuits']], 3, 0, True)
-eat_biscuits_warning = WarningX('eat_biscuits_warning',
+eat_biscuits_warning = Warning('eat_biscuits_warning',
 		'pre_act_cmd', 0, stale_biscuits, True, 
 		[['eat','stale_biscuits']], 3)
 

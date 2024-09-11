@@ -1004,10 +1004,12 @@ Version 3.87.0 Goals:
 				- DONE: update attribs
 				- N/A: post-assign alert_anchor
 				- DONE: test
-		- TBD: final Warning class updates
-			- TBD: comment out old Warning class and swap WarningX => Warning
-			- TBD: final test
-			- TBD: clean up mach_class(), game_static_gbl(), game_update()
+		- DONE: final Warning class updates
+			- DONE: comment out old Warning class and swap WarningX => Warning
+			- DONE: in mach_class() , WarningX => Warning
+			- DONE: in game_update() , WarningX => Warning , elim WarningX import
+			- DONE: final test
+		- TBD: clean up mach_class(), game_static_gbl(), game_update()
 		- TBD: implement curse warning?
 		- TBD: update warning doc
 	- TBD: create AutoMachMixIn (inherits from ProtoMachMixIn but adds cond_lst & result_lst)
