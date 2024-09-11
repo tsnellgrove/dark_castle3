@@ -1010,7 +1010,6 @@ Version 3.87.0 Goals:
 			- DONE: in game_update() , WarningX => Warning , elim WarningX import
 			- DONE: final test
 		- DONE: clean up mach_class(), game_static_gbl(), game_update()
-		- TBD: implement curse warning?
 		- TBD: update warning doc
 	- TBD: create AutoMachMixIn (inherits from ProtoMachMixIn but adds cond_lst & result_lst)
 	- TBD: ceate CmdMachMixIn (inherits from AutoMachMixIn + TrigMixIn)
@@ -1443,6 +1442,7 @@ Version 3.87.0 Goals:
 	- Curse
 	- Sing
 
+- TBD: implement curse warning / ending at Interpreter() level
 
 - TBD: read for DCv3 parser ideas: https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
 
