@@ -982,16 +982,28 @@ Version 3.87.0 Goals:
 		- DONE: create WarningX class (inherits from ProtoMachMixIn + TrigMixIn + Invisible
 		- DONE: setters & getters
 		- DONE: update mach_run() to use mach-state
-		- INPROC: refactor mach_run()
+		- DONE: refactor mach_run()
 			- DONE: custom hero name (vs. "Burt")
 			- DONE: elim str-creation variables
 			- DONE: cmd_override as default
 			- DONE: try / except w/ default for all 3 cases (0, < max, == max) => freedom on last command
-			- TBD: consider warning reset options
-		- TBD: update each existing warning
-			- TBD: import WarningX
-			- TBD: 
-			- TBD: test
+			- CANCEL: consider warning reset options
+				- DECISION: if resets end up being needed I can add them
+				- FINDING: the main goal of Warnings is just to *avoid* a consequence on the first few incidents
+		- INRPOC: update each existing warning
+			- DONE: import WarningX
+			- DONE: entrance_south_warn 
+				- DONE: update attribs
+				- DONE: post-assign alert_anchor
+				- DONE: test
+			- DONE: attack_hedgehog_warning
+				- DONE: update attribs
+				- DONE: post-assign alert_anchor
+				- DONE: test
+			- TBD: eat_biscuits_warning
+				- TBD: update attribs
+				- TBD: post-assign alert_anchor
+				- TBD: test
 		- TBD: comment out old Warning class and swap WarningX => Warning
 		- TBD: final test
 		- TBD: clean up mach_class(), game_static_gbl(), game_update()

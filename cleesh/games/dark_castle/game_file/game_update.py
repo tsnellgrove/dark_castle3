@@ -23,7 +23,7 @@ from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond
 from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, GiveItemResult, 
 		TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, AttackHeroResult, 
 		OpenableToggleResult, CreatureTravelResult)
-from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
+from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach, WarningX
 from cleesh.class_std.creature_class_def import Creature
 from cleesh.class_gs.gs_class_def import GameState
 from cleesh.class_gs.map_class_def import Map
@@ -170,10 +170,22 @@ hedgehog_attacks_result = AttackHeroResult('hedgehog_attacks_result', False, Non
 toggle_portcullis_result = OpenableToggleResult('toggle_portcullis_result', False, None, False, iron_portcullis)
 
 # *** warnings ***
-entrance_south_warn = Warning('entrance_south_warn', 'pre_act_cmd', [['go', 'south']], 0, 0, True)
-attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd',
-		[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3, 0, True)
+
+# entrance_south_warn = WarningX('entrance_south_warn', 
+#		'pre_act_cmd', [['go', 'south']], 0, 0, True)
+entrance_south_warn = WarningX('entrance_south_warn', 
+		'pre_act_cmd', 0, 'entrance_temp', True, 
+		[['go', 'south']], 0)
+
+# attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd',
+#		[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3, 0, True)
+attack_hedgehog_warning = WarningX('attack_hedgehog_warning', 
+		'pre_act_cmd', 0, 'royal_hedgehog_temp', True, 
+		[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3)
+
 eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','stale_biscuits']], 3, 0, True)
+
+#  name, trigger_type, mach_state, alert_anchor, is_enabled, trig_vals_lst, warn_max
 
 # *** machines ***
 
@@ -419,6 +431,8 @@ hedgehog_distracted_mach.alert_anchor = royal_hedgehog
 goblin_attack_mach.alert_anchor = guard_goblin
 re_arm_goblin_mach.alert_anchor = guard_goblin
 kinging_scroll.alert_anchor = kinging_scroll
+entrance_south_warn.alert_anchor = entrance
+attack_hedgehog_warning.alert_anchor = royal_hedgehog
 
 fed_hedgehog_keeps_sword_result.obj = royal_hedgehog
 fed_hedgehog_loses_sword_result.obj = royal_hedgehog
