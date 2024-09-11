@@ -119,7 +119,23 @@ test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 9
 # TBD
 
 # *** timers ***
-hedgehog_eats_timer = Timer('hedgehog_eats_timer', 'auto_act', 0, 'temp_royal_hedgehog', True, False, 4)
+hedgehog_eats_timer = Timer('hedgehog_eats_timer', 
+		'auto_act', 0, 'temp_royal_hedgehog', True, False, 4)
+
+
+# *** warnings ***
+entrance_south_warn = Warning('entrance_south_warn', 
+		'pre_act_cmd', 0, 'entrance_temp', True, 
+		[['go', 'south']], 0)
+
+attack_hedgehog_warning = Warning('attack_hedgehog_warning', 
+		'pre_act_cmd', 0, 'royal_hedgehog_temp', True, 
+		[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3)
+
+eat_biscuits_warning = Warning('eat_biscuits_warning',
+		'pre_act_cmd', 0, stale_biscuits, True, 
+		[['eat','stale_biscuits']], 3)
+
 
 # *** conditions ***
 true_cond = TrueCond('true_cond')
@@ -169,29 +185,9 @@ goblin_attacks_result = AttackHeroResult('goblin_attacks_result', False, None, T
 hedgehog_attacks_result = AttackHeroResult('hedgehog_attacks_result', False, None, True, 'royal_hedgehog_temp', fierce_teeth)
 toggle_portcullis_result = OpenableToggleResult('toggle_portcullis_result', False, None, False, iron_portcullis)
 
-# *** warnings ***
 
-# entrance_south_warn = WarningX('entrance_south_warn', 
-#		'pre_act_cmd', [['go', 'south']], 0, 0, True)
-entrance_south_warn = Warning('entrance_south_warn', 
-		'pre_act_cmd', 0, 'entrance_temp', True, 
-		[['go', 'south']], 0)
-
-# attack_hedgehog_warning = Warning('attack_hedgehog_warning', 'pre_act_cmd',
-#		[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3, 0, True)
-attack_hedgehog_warning = Warning('attack_hedgehog_warning', 
-		'pre_act_cmd', 0, 'royal_hedgehog_temp', True, 
-		[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3)
-
-# eat_biscuits_warning = Warning('eat_biscuits_warning', 'pre_act_cmd', [['eat','stale_biscuits']], 3, 0, True)
-eat_biscuits_warning = Warning('eat_biscuits_warning',
-		'pre_act_cmd', 0, stale_biscuits, True, 
-		[['eat','stale_biscuits']], 3)
-
-#  name, trigger_type, mach_state, alert_anchor, is_enabled, trig_vals_lst, warn_max
 
 # *** machines ***
-
 
 ## auto_act : trig_switch, cond_switch_lst => None ; trig_vals_lst == None
 

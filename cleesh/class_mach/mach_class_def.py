@@ -161,30 +161,21 @@ class Warning(ProtoMachMixIn, TrigMixIn, Invisible):
 	def run_mach(self, gs):
 		cmd_override = True
 		self.mach_state += 1
-#		warn_key = self.name + "_" + str(self.mach_state)
-#		warn_key_recur = self.name + "_1"
 		if self.warn_max == 0:
-#			cmd_override = True
 			try:
-#				gs.io.buff_f(warn_key_recur)
 				gs.io.buff_f(f"{self.name}_0")
 			except:
-#				gs.io.buffer("I'm not sure that's a good idea Burt...")
 				gs.io.buffer(f"I'm not sure that's a good idea {gs.core.hero.name}...")
 		elif self.mach_state < self.warn_max:
-#			cmd_override = True
 			try:
 				gs.io.buff_f(f"{self.name}_{str(self.mach_state)}")
-#				gs.io.buff_f(warn_key)
 			except:
-#				gs.io.buffer("I'm not sure that's a good idea Burt...")
 				gs.io.buffer(f"I'm not sure that's a good idea {gs.core.hero.name}...")
 		elif self.mach_state == self.warn_max:
 			cmd_override = False
 			try:
 				gs.io.buff_f(f"{self.name}_{str(self.mach_state)}")
 			except:
-#				gs.io.buffer("Don't say I didn't warn you Burt...")
 				gs.io.buffer(f"Don't say I didn't warn you {gs.core.hero.name}...")
 		return cmd_override, cmd_override
 
