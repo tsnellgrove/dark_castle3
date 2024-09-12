@@ -978,7 +978,7 @@ Version 3.87.0 Goals:
 			- IDEA: multiple MixIn sources seems complicated but appears to be best approach
 		- DONE: create TrigMixIn class with setters & getters and methods
 		- DONE: eliminate 'timer' option from trig_check()
-	- INPROC: create WarningX class 
+	- DONE: create WarningX class 
 		- DONE: create WarningX class (inherits from ProtoMachMixIn + TrigMixIn + Invisible
 		- DONE: setters & getters
 		- DONE: update mach_run() to use mach-state
@@ -1010,7 +1010,9 @@ Version 3.87.0 Goals:
 			- DONE: in game_update() , WarningX => Warning , elim WarningX import
 			- DONE: final test
 		- DONE: clean up mach_class(), game_static_gbl(), game_update()
-		- TBD: update warning doc
+		- DONE: for trigger_type == 'pre_act_cmd' , check for warning.is_enabled in pre_action()
+		- DONE: in run_mach(), set is_enabled = False after mach_state == warn_max
+		- DONE: update warning doc
 	- TBD: create AutoMachMixIn (inherits from ProtoMachMixIn but adds cond_lst & result_lst)
 	- TBD: ceate CmdMachMixIn (inherits from AutoMachMixIn + TrigMixIn)
 	- TBD: create SwitchMachMixIn (inherits from CmdMachMixIn + switch attribs)

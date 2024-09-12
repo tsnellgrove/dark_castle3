@@ -173,6 +173,7 @@ class Warning(ProtoMachMixIn, TrigMixIn, Invisible):
 				gs.io.buffer(f"I'm not sure that's a good idea {gs.core.hero.name}...")
 		elif self.mach_state == self.warn_max:
 			cmd_override = False
+			self.is_enabled = False
 			try:
 				gs.io.buff_f(f"{self.name}_{str(self.mach_state)}")
 			except:
