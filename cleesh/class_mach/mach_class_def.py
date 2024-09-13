@@ -181,6 +181,41 @@ class Warning(ProtoMachMixIn, TrigMixIn, Invisible):
 		return cmd_override, cmd_override
 
 
+class AutoMachMixIn(ProtoMachMixIn):
+	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst):
+		self._cond_lst = cond_lst # list of condition obj to test for; should cover all cases
+		self._result_lst = result_lst # list of possible result obj ordered by assciated condition
+
+	# getters & setters
+	@property
+	def cond_lst(self):
+		return self._cond_lst
+
+	@property
+	def result_lst(self):
+		return self._result_lst
+
+	# complex methods
+	def run_mach(self, gs):
+##		print(f"mach running; mach_name = {self.name}") # for troubleshooting
+		for idx, cond in enumerate(self.cond_lst):
+			if cond.cond_check(gs, self.mach_state, self.cond_swicth_lst):
+				result = self.result_lst[idx]
+				if isinstance(result, list):
+					cmd_override = False
+					for result_element in result:
+						element_mach_state, element_cmd_override = result_element.result_exe(gs, self.mach_state, result_element.name, self.alert_anchor)
+						if element_cmd_override == True:
+							cmd_override = True # if element_cmd_override == True for *any* result, cmd_override = True
+						if element_mach_state != None:
+							self.mach_state = element_mach_state # if element_mach_state set for *any* result, mach_state is set
+					return cmd_override, result_element.name
+				else:
+					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state, result.name, self.alert_anchor)
+				return cmd_override, result.name
+		return False, 'pass_result'
+
+
 class MachineMixIn(object):
 	def __init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled):
 		self._mach_state = mach_state # machine state variable; boolean for simple machines; Int for complex

@@ -1013,7 +1013,21 @@ Version 3.87.0 Goals:
 		- DONE: for trigger_type == 'pre_act_cmd' , check for warning.is_enabled in pre_action()
 		- DONE: in run_mach(), set is_enabled = False after mach_state == warn_max
 		- DONE: update warning doc
-	- TBD: create AutoMachMixIn (inherits from ProtoMachMixIn but adds cond_lst & result_lst)
+	- INPROC: create AutoMachMixIn (inherits from ProtoMachMixIn but adds cond_lst & result_lst)
+		- DONE: create AutoMachMixIn class w/ setters & getters
+		- DONE: update run_mach()
+		- TBD: refactor run_mach ()
+		- TBD: creaate InvisAutoMach
+		- TBD: migrate existing AutoMachs
+			- TBD: import new class
+			- TBD: dispense_panel_mach
+				- TBD: migrate mach obj / attribs
+				- TBD: test
+			- TBD: re_arm_goblin_mach
+				- TBD: migrate mach obj / attribs
+				- TBD: test
+		- TBD: comment out old class and remove from imports
+		- TBD: update mach doc
 	- TBD: ceate CmdMachMixIn (inherits from AutoMachMixIn + TrigMixIn)
 	- TBD: create SwitchMachMixIn (inherits from CmdMachMixIn + switch attribs)
 		- IDEA: why pass switch_cond_lst vs. regular conditions?
