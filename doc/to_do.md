@@ -1016,21 +1016,27 @@ Version 3.87.0 Goals:
 	- INPROC: create AutoMachMixIn (inherits from ProtoMachMixIn but adds cond_lst & result_lst)
 		- DONE: create AutoMachMixIn class w/ setters & getters
 		- DONE: update run_mach()
-		- TBD: refactor run_mach ()
-		- TBD: creaate InvisAutoMach
-		- TBD: migrate existing AutoMachs
-			- TBD: import new class
-			- TBD: dispense_panel_mach
-				- TBD: migrate mach obj / attribs
-				- TBD: test
+		- DONE: refactor run_mach ()
+		- DONE: creaate InvisAutoMach
+		- INPROC: migrate existing AutoMachs
+			- DONE: import new class
+			- DONE: dispense_panel_mach
+				- DONE: migrate mach obj / attribs
+				- DONE: test
 			- TBD: re_arm_goblin_mach
 				- TBD: migrate mach obj / attribs
 				- TBD: test
 		- TBD: comment out old class and remove from imports
-		- TBD: update mach doc
+		- TBD: clean up mach_class(), game_update()
+	- TBD: fix VS Code error checking / pylance or whatever is wrong
+	- IDEA: can I combine CmdMachMixIn and SwitchMachMixIn into TrigMachMixIn ?
+		- TBD: investigate TrigMachMixIn
+		- TBD: investigate elim of switch_cond_lst as attrib ( vs. regular conditions )
+		- TBD: can trig_switch + trig_vals_lst be combined for case = 'switch' ?
 	- TBD: ceate CmdMachMixIn (inherits from AutoMachMixIn + TrigMixIn)
 	- TBD: create SwitchMachMixIn (inherits from CmdMachMixIn + switch attribs)
-		- IDEA: why pass switch_cond_lst vs. regular conditions?
+		- TBD: elim cond_switch_lst from AutoMachMixIn cond_check() call
+		- TBD: update mach doc (for both AutoMachMixIn and TrigMachMixIn)
 	- TBD: review other inheritance ideas
 		- TBD: review existing Warning class - refactor / integrate with Mach class
 			- TBD: refactor app_turn modules (warning & timer code)

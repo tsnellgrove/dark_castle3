@@ -149,7 +149,7 @@ class Warning(ProtoMachMixIn, TrigMixIn, Invisible):
 	def __init__(self, name, trigger_type, mach_state, alert_anchor, is_enabled, trig_vals_lst, warn_max):
 		Invisible.__init__(self, name)
 		TrigMixIn.__init__(self, trig_vals_lst)
-		ProtoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled) # mach_state = warn_count		
+		ProtoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled) # mach_state = warn_count
 		self._warn_max = warn_max # int; number that warning counts up to
 
 	# getters & setters
@@ -183,6 +183,7 @@ class Warning(ProtoMachMixIn, TrigMixIn, Invisible):
 
 class AutoMachMixIn(ProtoMachMixIn):
 	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst):
+		ProtoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled)
 		self._cond_lst = cond_lst # list of condition obj to test for; should cover all cases
 		self._result_lst = result_lst # list of possible result obj ordered by assciated condition
 
@@ -199,7 +200,8 @@ class AutoMachMixIn(ProtoMachMixIn):
 	def run_mach(self, gs):
 ##		print(f"mach running; mach_name = {self.name}") # for troubleshooting
 		for idx, cond in enumerate(self.cond_lst):
-			if cond.cond_check(gs, self.mach_state, self.cond_swicth_lst):
+#			if cond.cond_check(gs, self.mach_state, self.cond_swicth_lst):
+			if cond.cond_check(gs, self.mach_state, None):
 				result = self.result_lst[idx]
 				if isinstance(result, list):
 					cmd_override = False
@@ -214,6 +216,11 @@ class AutoMachMixIn(ProtoMachMixIn):
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state, result.name, self.alert_anchor)
 				return cmd_override, result.name
 		return False, 'pass_result'
+
+class InvisAutoMach(AutoMachMixIn, Invisible):
+	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst):
+		Invisible.__init__(self, name)
+		AutoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst)
 
 
 class MachineMixIn(object):

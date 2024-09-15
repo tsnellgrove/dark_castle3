@@ -23,7 +23,9 @@ from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond
 from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, GiveItemResult, 
 		TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, AttackHeroResult, 
 		OpenableToggleResult, CreatureTravelResult)
-from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
+from cleesh.class_mach.mach_class_def import (Timer, Warning, InvisAutoMach, InvisMach, ViewOnlyMach, ItemMach, 
+		ContainerFixedSimpleMach)
+# from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from cleesh.class_std.creature_class_def import Creature
 from cleesh.class_gs.gs_class_def import GameState
 from cleesh.class_gs.map_class_def import Map
@@ -191,12 +193,19 @@ toggle_portcullis_result = OpenableToggleResult('toggle_portcullis_result', Fals
 
 ## auto_act : trig_switch, cond_switch_lst => None ; trig_vals_lst == None
 
-dispense_panel_mach = InvisMach('dispense_panel_mach', False, 
-		'auto_act', None, None, 
-		None, [goblin_in_world_cond, panel_not_dispensed_cond], 
-		[pass_result, [dispense_panel_result1, dispense_panel_result2]],
-		'antechamber_temp', True) 
+# dispense_panel_mach = InvisMach('dispense_panel_mach', False, 
+#		'auto_act', None, None, 
+#		None, [goblin_in_world_cond, panel_not_dispensed_cond], 
+#		[pass_result, [dispense_panel_result1, dispense_panel_result2]],
+#		'antechamber_temp', True) 
+#		# mach_state == has panel been dispensed
+
+dispense_panel_mach = InvisAutoMach('dispense_panel_mach', False,
+		'auto_act', 'antechamber_temp', True,
+		[goblin_in_world_cond, panel_not_dispensed_cond],
+		[pass_result, [dispense_panel_result1, dispense_panel_result2]])
 		# mach_state == has panel been dispensed
+
 
 re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 
 		'auto_act', None, None, 
@@ -204,6 +213,11 @@ re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None,
 		[goblin_take_axe_result],
 		'guard_goblin_temp', True) 
 		# mach_state == None
+
+
+# InvisAutoMach
+# name, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst
+
 
 
 ## pre_act_cmd & post_act_cmd : trig_switch, cond_switch_lst => None; trig_vals_lst == [player commands]
