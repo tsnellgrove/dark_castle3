@@ -206,14 +206,18 @@ dispense_panel_mach = InvisAutoMach('dispense_panel_mach', False,
 		[pass_result, [dispense_panel_result1, dispense_panel_result2]])
 		# mach_state == has panel been dispensed
 
+# re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 
+#		'auto_act', None, None, 
+#		None, [axe_not_in_goblin_hand_cond], 
+#		[goblin_take_axe_result],
+#		'guard_goblin_temp', True) 
+#		# mach_state == None
 
-re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 
-		'auto_act', None, None, 
-		None, [axe_not_in_goblin_hand_cond], 
-		[goblin_take_axe_result],
-		'guard_goblin_temp', True) 
+re_arm_goblin_mach = InvisAutoMach('re_arm_goblin_mach', None, 
+		'auto_act', 'guard_goblin_temp', True, 
+		[axe_not_in_goblin_hand_cond], 
+		[goblin_take_axe_result])
 		# mach_state == None
-
 
 # InvisAutoMach
 # name, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst

@@ -1018,14 +1018,14 @@ Version 3.87.0 Goals:
 		- DONE: update run_mach()
 		- DONE: refactor run_mach ()
 		- DONE: creaate InvisAutoMach
-		- INPROC: migrate existing AutoMachs
+		- DONE: migrate existing AutoMachs
 			- DONE: import new class
 			- DONE: dispense_panel_mach
 				- DONE: migrate mach obj / attribs
 				- DONE: test
-			- TBD: re_arm_goblin_mach
-				- TBD: migrate mach obj / attribs
-				- TBD: test
+			- DONE: re_arm_goblin_mach
+				- DONE: migrate mach obj / attribs
+				- DONE: test
 		- TBD: comment out old class and remove from imports
 		- TBD: clean up mach_class(), game_update()
 	- TBD: fix VS Code error checking / pylance or whatever is wrong
