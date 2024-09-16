@@ -1013,7 +1013,7 @@ Version 3.87.0 Goals:
 		- DONE: for trigger_type == 'pre_act_cmd' , check for warning.is_enabled in pre_action()
 		- DONE: in run_mach(), set is_enabled = False after mach_state == warn_max
 		- DONE: update warning doc
-	- INPROC: create AutoMachMixIn (inherits from ProtoMachMixIn but adds cond_lst & result_lst)
+	- DONE: create AutoMachMixIn (inherits from ProtoMachMixIn but adds cond_lst & result_lst)
 		- DONE: create AutoMachMixIn class w/ setters & getters
 		- DONE: update run_mach()
 		- DONE: refactor run_mach ()
@@ -1026,8 +1026,8 @@ Version 3.87.0 Goals:
 			- DONE: re_arm_goblin_mach
 				- DONE: migrate mach obj / attribs
 				- DONE: test
-		- TBD: comment out old class and remove from imports
-		- TBD: clean up mach_class(), game_update()
+		- CANCEL: comment out old class and remove from imports
+		- DONE: clean up mach_class(), game_update()
 	- TBD: fix VS Code error checking / pylance or whatever is wrong
 	- IDEA: can I combine CmdMachMixIn and SwitchMachMixIn into TrigMachMixIn ?
 		- TBD: investigate TrigMachMixIn

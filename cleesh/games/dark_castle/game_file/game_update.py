@@ -193,35 +193,17 @@ toggle_portcullis_result = OpenableToggleResult('toggle_portcullis_result', Fals
 
 ## auto_act : trig_switch, cond_switch_lst => None ; trig_vals_lst == None
 
-# dispense_panel_mach = InvisMach('dispense_panel_mach', False, 
-#		'auto_act', None, None, 
-#		None, [goblin_in_world_cond, panel_not_dispensed_cond], 
-#		[pass_result, [dispense_panel_result1, dispense_panel_result2]],
-#		'antechamber_temp', True) 
-#		# mach_state == has panel been dispensed
-
 dispense_panel_mach = InvisAutoMach('dispense_panel_mach', False,
 		'auto_act', 'antechamber_temp', True,
 		[goblin_in_world_cond, panel_not_dispensed_cond],
 		[pass_result, [dispense_panel_result1, dispense_panel_result2]])
 		# mach_state == has panel been dispensed
 
-# re_arm_goblin_mach = InvisMach('re_arm_goblin_mach', None, 
-#		'auto_act', None, None, 
-#		None, [axe_not_in_goblin_hand_cond], 
-#		[goblin_take_axe_result],
-#		'guard_goblin_temp', True) 
-#		# mach_state == None
-
 re_arm_goblin_mach = InvisAutoMach('re_arm_goblin_mach', None, 
 		'auto_act', 'guard_goblin_temp', True, 
 		[axe_not_in_goblin_hand_cond], 
 		[goblin_take_axe_result])
 		# mach_state == None
-
-# InvisAutoMach
-# name, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst
-
 
 
 ## pre_act_cmd & post_act_cmd : trig_switch, cond_switch_lst => None; trig_vals_lst == [player commands]

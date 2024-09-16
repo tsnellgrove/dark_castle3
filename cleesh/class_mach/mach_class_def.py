@@ -198,9 +198,7 @@ class AutoMachMixIn(ProtoMachMixIn):
 
 	# complex methods
 	def run_mach(self, gs):
-##		print(f"mach running; mach_name = {self.name}") # for troubleshooting
 		for idx, cond in enumerate(self.cond_lst):
-#			if cond.cond_check(gs, self.mach_state, self.cond_swicth_lst):
 			if cond.cond_check(gs, self.mach_state, None):
 				result = self.result_lst[idx]
 				if isinstance(result, list):
