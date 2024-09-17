@@ -1028,15 +1028,22 @@ Version 3.87.0 Goals:
 				- DONE: test
 		- CANCEL: comment out old class and remove from imports
 		- DONE: clean up mach_class(), game_update()
-	- TBD: fix VS Code error checking / pylance or whatever is wrong
-	- IDEA: can I combine CmdMachMixIn and SwitchMachMixIn into TrigMachMixIn ?
-		- TBD: investigate TrigMachMixIn
-		- TBD: investigate elim of switch_cond_lst as attrib ( vs. regular conditions )
-		- TBD: can trig_switch + trig_vals_lst be combined for case = 'switch' ?
-	- TBD: ceate CmdMachMixIn (inherits from AutoMachMixIn + TrigMixIn)
-	- TBD: create SwitchMachMixIn (inherits from CmdMachMixIn + switch attribs)
+	- DONE: can I combine CmdMachMixIn and SwitchMachMixIn into TrigMachMixIn ?
+		- DONE: investigate elim of switch_cond_lst as attrib ( vs. regular conditions )
+			- FINDING: possible
+		- DONE: can trig_switch + trig_vals_lst be combined for case = 'switch' ?
+			- FINDING: will complicated trig_vals_switch usage in check_cond() but is possible
+	- TBD: ceate TrigMachMixIn (inherits from AutoMachMixIn + TrigMixIn
+		- TBD: create MixIn class
+		- TBD: create "noun" classes
+		- TBD: migrate existing "cmd" mach obj
+		- TBD: migrate existing "switch" mach obj
+			- TBD: update post_action() trig_check() call as needed
+			- TBD: update TrigMixIn trig_check() as needed
 		- TBD: elim cond_switch_lst from AutoMachMixIn cond_check() call
 		- TBD: update mach doc (for both AutoMachMixIn and TrigMachMixIn)
+	- INPROC: fix VS Code error checking / pylance or whatever is wrong
+		- DONE: tried un-installing and re-installing python extension & pylance (Sept 17)
 	- TBD: review other inheritance ideas
 		- TBD: review existing Warning class - refactor / integrate with Mach class
 			- TBD: refactor app_turn modules (warning & timer code)
