@@ -1034,9 +1034,11 @@ Version 3.87.0 Goals:
 		- DONE: can trig_switch + trig_vals_lst be combined for case = 'switch' ?
 			- FINDING: will complicated trig_vals_switch usage in check_cond() but is possible
 	- TBD: ceate TrigMachMixIn (inherits from AutoMachMixIn + TrigMixIn
-		- TBD: create MixIn class
-		- TBD: create "noun" classes
-		- TBD: migrate existing "cmd" mach obj
+		- DONE: create MixIn class
+		- DONE: create InvisTrigMach class
+		- TBD: migrate existing InvisMach cmd obj
+		- TBD: create ItemTrigMach class
+		- TBD: migrate existing "ItemMach" "cmd" obj
 		- TBD: migrate existing "switch" mach obj
 			- TBD: update post_action() trig_check() call as needed
 			- TBD: update TrigMixIn trig_check() as needed

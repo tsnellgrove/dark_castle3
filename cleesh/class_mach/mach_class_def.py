@@ -221,6 +221,21 @@ class InvisAutoMach(AutoMachMixIn, Invisible):
 		AutoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst)
 
 
+class TrigMachMixIn(AutoMachMixIn, TrigMixIn):
+	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst, trig_vals_lst):
+		AutoMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst)
+		TrigMixIn.__init__(self, trig_vals_lst)
+
+
+class InvisTrigMach(TrigMachMixIn, Invisible):
+	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst, trig_vals_lst):
+			Invisible.__init__(self, name)
+			TrigMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst, trig_vals_lst)
+
+
+
+
+
 class MachineMixIn(object):
 	def __init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled):
 		self._mach_state = mach_state # machine state variable; boolean for simple machines; Int for complex
