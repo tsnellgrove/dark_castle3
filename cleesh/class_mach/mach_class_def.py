@@ -79,6 +79,8 @@ class TrigMixIn(object):
 			trig_wc_lst = [word_lst[1], '*', word_lst[0].name]
 		elif case == 'switch':
 			trig_key_lst = word_lst[0]
+		print(f"trig_key_lst = {trig_key_lst}")
+		print(f"trig_vals_lst = {self.trig_vals_lst}")
 		return (trig_key_lst in self.trig_vals_lst) or (trig_wc_lst in self.trig_vals_lst)
 
 
@@ -222,15 +224,15 @@ class InvisAutoMach(AutoMachMixIn, Invisible):
 
 
 class TrigMachMixIn(AutoMachMixIn, TrigMixIn):
-	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst, trig_vals_lst):
+	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst):
 		AutoMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst)
 		TrigMixIn.__init__(self, trig_vals_lst)
 
 
 class InvisTrigMach(TrigMachMixIn, Invisible):
-	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst, trig_vals_lst):
+	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst):
 			Invisible.__init__(self, name)
-			TrigMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst, trig_vals_lst)
+			TrigMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst)
 
 
 

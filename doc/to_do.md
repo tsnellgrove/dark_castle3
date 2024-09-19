@@ -1036,7 +1036,10 @@ Version 3.87.0 Goals:
 	- TBD: ceate TrigMachMixIn (inherits from AutoMachMixIn + TrigMixIn
 		- DONE: create MixIn class
 		- DONE: create InvisTrigMach class
-		- TBD: migrate existing InvisMach cmd obj
+		- DONE: import InvisTrigMach
+		- INPROC: migrate existing InvisMach cmd obj
+			- DONE: hedgehog_guard_mach
+			- INPROC: test (trig_vals_lst == [timer_cond]... due to attrib order???)
 		- TBD: create ItemTrigMach class
 		- TBD: migrate existing "ItemMach" "cmd" obj
 		- TBD: migrate existing "switch" mach obj

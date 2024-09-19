@@ -23,8 +23,8 @@ from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond
 from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, GiveItemResult, 
 		TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, AttackHeroResult, 
 		OpenableToggleResult, CreatureTravelResult)
-from cleesh.class_mach.mach_class_def import (Timer, Warning, InvisAutoMach, InvisMach, ViewOnlyMach, ItemMach, 
-		ContainerFixedSimpleMach)
+from cleesh.class_mach.mach_class_def import (Timer, Warning, InvisAutoMach, InvisTrigMach,
+		InvisMach, ViewOnlyMach, ItemMach, ContainerFixedSimpleMach)
 from cleesh.class_std.creature_class_def import Creature
 from cleesh.class_gs.gs_class_def import GameState
 from cleesh.class_gs.map_class_def import Map

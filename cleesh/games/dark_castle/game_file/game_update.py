@@ -23,8 +23,8 @@ from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond
 from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, GiveItemResult, 
 		TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, AttackHeroResult, 
 		OpenableToggleResult, CreatureTravelResult)
-from cleesh.class_mach.mach_class_def import (Timer, Warning, InvisAutoMach, InvisMach, ViewOnlyMach, ItemMach, 
-		ContainerFixedSimpleMach)
+from cleesh.class_mach.mach_class_def import (Timer, Warning, InvisAutoMach, InvisTrigMach,
+		InvisMach, ViewOnlyMach, ItemMach, ContainerFixedSimpleMach)
 # from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from cleesh.class_std.creature_class_def import Creature
 from cleesh.class_gs.gs_class_def import GameState
@@ -208,12 +208,22 @@ re_arm_goblin_mach = InvisAutoMach('re_arm_goblin_mach', None,
 
 ## pre_act_cmd & post_act_cmd : trig_switch, cond_switch_lst => None; trig_vals_lst == [player commands]
 
-hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 
-		'pre_act_cmd', None, [['take', 'shiny_sword']], 
-		None, [hedgehog_eats_timer_not_active_cond], 
-		[hedgehog_attacks_result],
-		'royal_hedgehog_temp', True) 
-		# mach_state == None
+# hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 
+#		'pre_act_cmd', None, [['take', 'shiny_sword']], 
+#		None, [hedgehog_eats_timer_not_active_cond], 
+#		[hedgehog_attacks_result],
+#		'royal_hedgehog_temp', True) 
+#		# mach_state == None
+
+hedgehog_guard_mach = InvisTrigMach('hedgehog_guard_mach', None, 
+		'pre_act_cmd', 'royal_hedgehog_temp', True, 
+		[['take', 'shiny_sword']],
+		[hedgehog_eats_timer_not_active_cond], 
+		[hedgehog_attacks_result]
+		) # mach_state == None
+
+
+# name, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst
 
 hedgehog_distracted_mach = InvisMach('hedgehog_distracted_mach', None, 
 		'pre_act_cmd', None, [['give', '*', 'royal_hedgehog'], ['show', '*', 'royal_hedgehog']], 
