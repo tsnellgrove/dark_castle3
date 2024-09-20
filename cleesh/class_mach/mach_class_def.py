@@ -63,6 +63,10 @@ class TrigMixIn(object):
 	def trig_vals_lst(self):
 		return self._trig_vals_lst
 
+	# class identity methods
+	def has_trigger(self):
+		return True
+
 	# complex methods
 	def trig_check(self, gs, case, word_lst):
 		trig_key_lst = ['not_valid']
@@ -159,6 +163,10 @@ class Warning(ProtoMachMixIn, TrigMixIn, Invisible):
 	def warn_max(self):
 		return self._warn_max
 
+	# class identity methods
+	def is_warning(self):
+		return True
+
 	# complex methods
 	def run_mach(self, gs):
 		cmd_override = True
@@ -197,6 +205,10 @@ class AutoMachMixIn(ProtoMachMixIn):
 	@property
 	def result_lst(self):
 		return self._result_lst
+
+	# class identity methods
+	def has_cond(self):
+		return True
 
 	# complex methods
 	def run_mach(self, gs):

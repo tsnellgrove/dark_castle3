@@ -88,6 +88,15 @@ class Invisible(object):
 	def is_mach(self):
 		return False
 
+	def is_warning(self):
+		return False
+
+	def has_trigger(self):
+		return False
+
+	def has_cond(self):
+		return False
+
 	def is_garment(self):
 		return False
 
