@@ -1060,7 +1060,6 @@ Version 3.87.0 Goals:
 			- TBD: update TrigMixIn trig_check() as needed
 		- TBD: sort out cup_of_tea game_update
 		- TBD: elim cond_switch_lst from AutoMachMixIn cond_check() call
-		- IDEA: invisible triggers / switches: in hedgehog_eats_mach, give() command should set trigger (not cmd)
 		- TBD: clean up game_update, mach_class(), pre_action(), post_action()
 		- TBD: update mach doc (for both AutoMachMixIn and TrigMachMixIn)
 	- INPROC: fix VS Code error checking / pylance or whatever is wrong
@@ -1100,6 +1099,8 @@ Version 3.87.0 Goals:
 	- TBD: update cleesh engine version build
 
 - TBD: Cases where I want a modular machine to run despite an error standard
+	- IDEA: perhaps re-org app_main()
+	- IDEA: interp() => val_non-attempt() => auto_act() => pre_act() => attempt_err() => cmd_exe() => post_acct()
 	- IDEA: perhaps move to separate 'Errors' section
 		- IDEA: new Errors class inherits from Invisible; now also returns is_attemptable
 	- IDEA: problem description
@@ -1141,6 +1142,12 @@ Version 3.87.0 Goals:
 	- TBD: update cleesh engine version build
 
 - TBD: consider introducing an event bus
+	- IDEA: if cmd passes validate => event bus
+	- IDEA: invisible triggers / switches: in hedgehog_eats_mach, give() command should set trigger (not cmd)
+		- FINDING: Invis Trigger Idea = Event Bus Idea => 'burt-give-stale_biscuits-royal_hedgehog'
+	- IDEA: does Event Bus work well cmd_exe() ?
+		- CONCERN: need to process commands... is it easy to process commands from events???
+	- IDEA: need to learn more about event busses, topics, message formats
 	- IDEA: event bus idea
 		- IDEA: would hold all commands, timer 'ticks', and state changes (e.g. switches)
 		- IDEA: for event bus, consider moving auto_action() to front of app_main() run order
