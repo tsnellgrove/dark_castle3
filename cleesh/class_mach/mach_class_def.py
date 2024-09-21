@@ -83,8 +83,8 @@ class TrigMixIn(object):
 			trig_wc_lst = [word_lst[1], '*', word_lst[0].name]
 		elif case == 'switch':
 			trig_key_lst = word_lst[0]
-		print(f"trig_key_lst = {trig_key_lst}")
-		print(f"trig_vals_lst = {self.trig_vals_lst}")
+#		print(f"trig_key_lst = {trig_key_lst}")
+#		print(f"trig_vals_lst = {self.trig_vals_lst}")
 		return (trig_key_lst in self.trig_vals_lst) or (trig_wc_lst in self.trig_vals_lst)
 
 

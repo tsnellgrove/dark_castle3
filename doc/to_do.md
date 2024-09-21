@@ -1033,19 +1033,35 @@ Version 3.87.0 Goals:
 			- FINDING: possible
 		- DONE: can trig_switch + trig_vals_lst be combined for case = 'switch' ?
 			- FINDING: will complicated trig_vals_switch usage in check_cond() but is possible
-	- TBD: ceate TrigMachMixIn (inherits from AutoMachMixIn + TrigMixIn
+	- INPROC: ceate TrigMachMixIn (inherits from AutoMachMixIn + TrigMixIn
 		- DONE: create MixIn class
 		- DONE: create InvisTrigMach class
 		- DONE: import InvisTrigMach
-		- INPROC: migrate existing InvisMach cmd obj
+		- DONE: migrate existing InvisMach cmd obj
 			- DONE: hedgehog_guard_mach
-			- INPROC: test (trig_vals_lst == [timer_cond]... due to attrib order???)
-		- TBD: create ItemTrigMach class
-		- TBD: migrate existing "ItemMach" "cmd" obj
+				- DONE: test (trig_vals_lst == [timer_cond]... due to attrib order???)
+				- FINDING: I think maybe I just forgot to run the game_update after swapping attrib order
+			- DONE: hedgehog_distracted_mach
+				- DONE: test
+			- DONE: goblin_attack_mach
+				- DONE: test
+			- DONE: entrance_moat_mach
+				- DONE: test
+			- DONE: hedgehog_eats_mach
+				- DONE: update post_action()
+				- DONE: test
+		- TBD: migrate existing "ItemMach" obj
+			- TBD: create ItemTrigMach class
+			- TBD: import ItemTrigMach class
+			- TBD: migrate existing ItemMach obj
+		- TBD: migrate "timer" mach obj
 		- TBD: migrate existing "switch" mach obj
 			- TBD: update post_action() trig_check() call as needed
 			- TBD: update TrigMixIn trig_check() as needed
+		- TBD: sort out cup_of_tea game_update
 		- TBD: elim cond_switch_lst from AutoMachMixIn cond_check() call
+		- IDEA: invisible triggers / switches: in hedgehog_eats_mach, give() command should set trigger (not cmd)
+		- TBD: clean up game_update, mach_class(), pre_action(), post_action()
 		- TBD: update mach doc (for both AutoMachMixIn and TrigMachMixIn)
 	- INPROC: fix VS Code error checking / pylance or whatever is wrong
 		- DONE: tried un-installing and re-installing python extension & pylance (Sept 17)
@@ -1321,6 +1337,10 @@ Version 3.87.0 Goals:
 - TBD: instantiate obj in hero inventory
 
 *** story-driven updates ***
+
+- IDEA: maybe the hedgehog should act differently once you get & wear the crown?
+
+- TBD: sort out hedgehog description post biscuits if Burt leaves rm
 
 - TBD: hedgehog will trade sword for silver_key (update show() and give() )
 
