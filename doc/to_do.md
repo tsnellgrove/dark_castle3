@@ -1050,11 +1050,24 @@ Version 3.87.0 Goals:
 			- DONE: hedgehog_eats_mach
 				- DONE: update post_action()
 				- DONE: test
-		- TBD: migrate existing "ItemMach" obj
-			- TBD: create ItemTrigMach class
-			- TBD: import ItemTrigMach class
-			- TBD: migrate existing ItemMach obj
+		- DONE: migrate existing "ItemMach" obj to ItemTrigMach
+			- DONE: create ItemTrigMach class
+			- DONE: import ItemTrigMach class
+			- DONE: migrate existing ItemMach obj
 		- TBD: migrate "timer" mach obj
+			- DECISION: use InvisTrigMach
+				- IDEA: timer_obj.is_dinging() is really a trigger and should be treated as such
+				- IDEA: also, we want the freedom to match on NOT is_dinging()
+			- TBD: update auto_action:
+				- TBD: for trigger_type == 'auto_act_timer' and mach_obj.is_enabled == True:
+					- TBD: from mach_obj.trig_vals_lst, unpack timer_obj (trig_vals_lst[0])
+					- TBD: call timer_obj.trig_check() w/ case = 'timer' ; word_lst = [timer_obj]
+			- TBD: update trig_check()
+				- TBD: for case = 'timer', trig_key_lst = [timer_obj.is_dinging()]
+			- TBD: migrate existing auto_act_timer => InvisTrigMach
+				- TBD: trig_vals_lst = [timer_obj, <is_dinging_bool>]
+			- TBD: test
+			- TBD: document format for trig_vals_lst in comments ( auto_action() and game_update() )
 		- TBD: migrate existing "switch" mach obj
 			- TBD: update post_action() trig_check() call as needed
 			- TBD: update TrigMixIn trig_check() as needed
@@ -1135,19 +1148,20 @@ Version 3.87.0 Goals:
 		- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
 	- TBD: update cleesh engine version build
 
-- TBD: state machine for hedgehog
+- TBD: state machine for hedgehog [FUTURE]
 	- IDEA: need to implement hedgehog state machine based on creature state
 		- IDEA: Both hedgehog and throne_broach_dispenser would be better implemented as state machines
 		- TBD: state machines and other general purpose mod-machs
 	- TBD: update cleesh engine version build
 
-- TBD: consider introducing an event bus
+- TBD: consider introducing an event bus [FUTURE]
 	- IDEA: if cmd passes validate => event bus
 	- IDEA: invisible triggers / switches: in hedgehog_eats_mach, give() command should set trigger (not cmd)
 		- FINDING: Invis Trigger Idea = Event Bus Idea => 'burt-give-stale_biscuits-royal_hedgehog'
 	- IDEA: does Event Bus work well cmd_exe() ?
 		- CONCERN: need to process commands... is it easy to process commands from events???
 	- IDEA: need to learn more about event busses, topics, message formats
+	- IDEA: message field => type (e.g. 'cmd'), event_key, cmd_terms ('case' and word_lst)
 	- IDEA: event bus idea
 		- IDEA: would hold all commands, timer 'ticks', and state changes (e.g. switches)
 		- IDEA: for event bus, consider moving auto_action() to front of app_main() run order

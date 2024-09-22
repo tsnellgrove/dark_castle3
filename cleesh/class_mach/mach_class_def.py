@@ -246,7 +246,10 @@ class InvisTrigMach(TrigMachMixIn, Invisible):
 			Invisible.__init__(self, name)
 			TrigMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst)
 
-
+class ItemTrigMach(TrigMachMixIn, Item):
+	def __init__(self, name, full_name, root_name, descript_key, writing, weight, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst):
+			Item.__init__(self, name, full_name, root_name, descript_key, writing, weight)
+			TrigMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst)
 
 
 

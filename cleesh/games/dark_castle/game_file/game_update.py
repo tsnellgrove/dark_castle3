@@ -23,7 +23,7 @@ from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond
 from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, GiveItemResult, 
 		TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, AttackHeroResult, 
 		OpenableToggleResult, CreatureTravelResult)
-from cleesh.class_mach.mach_class_def import (Timer, Warning, InvisAutoMach, InvisTrigMach,
+from cleesh.class_mach.mach_class_def import (Timer, Warning, InvisAutoMach, InvisTrigMach, ItemTrigMach,
 		InvisMach, ViewOnlyMach, ItemMach, ContainerFixedSimpleMach)
 # from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from cleesh.class_std.creature_class_def import Creature
@@ -208,6 +208,8 @@ re_arm_goblin_mach = InvisAutoMach('re_arm_goblin_mach', None,
 
 ## pre_act_cmd & post_act_cmd : trig_switch, cond_switch_lst => None; trig_vals_lst == [player commands]
 
+# name, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst
+
 # hedgehog_guard_mach = InvisMach('hedgehog_guard_mach', None, 
 #		'pre_act_cmd', None, [['take', 'shiny_sword']], 
 #		None, [hedgehog_eats_timer_not_active_cond], 
@@ -246,6 +248,17 @@ re_arm_goblin_mach = InvisAutoMach('re_arm_goblin_mach', None,
 #		# mach_state == None
 
 
+# kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', 
+#		illuminated_letters, 1, None, 
+#		'post_act_cmd', None, [['read', 'illuminated_letters'],['read', 'kinging_scroll'], ['examine', 'illuminated_letters']], 
+#		None, [not_in_throne_room_cond, hedgehog_not_in_world_cond, crown_not_worn_cond, true_cond],
+#		[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result],
+#		'kinging_scroll_temp', True)
+#		# mach_state == None
+
+# name, full_name, root_name, descript_key, writing, weight, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst
+
+
 hedgehog_guard_mach = InvisTrigMach('hedgehog_guard_mach', None, 
 		'pre_act_cmd', 'royal_hedgehog_temp', True, 
 		[['take', 'shiny_sword']],
@@ -282,17 +295,14 @@ hedgehog_eats_mach = InvisTrigMach('hedgehog_eats_mach', None,
 		[[hedgehog_eats_result1, hedgehog_eats_result2]]
 		) # mach_state == None
 
-
-# name, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst
-
-
-kinging_scroll = ItemMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', 
+kinging_scroll = ItemTrigMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kinging_scroll', 
 		illuminated_letters, 1, None, 
-		'post_act_cmd', None, [['read', 'illuminated_letters'],['read', 'kinging_scroll'], ['examine', 'illuminated_letters']], 
-		None, [not_in_throne_room_cond, hedgehog_not_in_world_cond, crown_not_worn_cond, true_cond],
-		[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result],
-		'kinging_scroll_temp', True)
-		# mach_state == None
+		'post_act_cmd', 'kinging_scroll_temp', True,
+		[['read', 'illuminated_letters'],['read', 'kinging_scroll'], ['examine', 'illuminated_letters']], 
+		[not_in_throne_room_cond, hedgehog_not_in_world_cond, crown_not_worn_cond, true_cond],
+		[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result]
+		) # mach_state == None
+
 
 
 ## auto_act_timer : 
