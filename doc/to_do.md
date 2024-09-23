@@ -1065,8 +1065,9 @@ Version 3.87.0 Goals:
 					- DONE: call timer_obj.trig_check() w/ case = 'timer' ; word_lst = [timer_obj]
 			- DONE: update trig_check()
 				- DONE: for case = 'timer', trig_key_lst = [timer_obj.is_dinging()]
-			- TBD: create SwitchMachMixIn class (inherit from TrigMachMixIn = switch attrib)
-			- TBD: create InvisSwitchMach class (inherit from SwitchMachMixIn + Invisible)
+			- DONE: create SwitchMachMixIn class (inherit from TrigMachMixIn = trig_switch attrib)
+			- DONE: create InvisSwitchMach class (inherit from SwitchMachMixIn + Invisible)
+			- DONE: import InvisSwitchMach
 			- TBD: update auto_action() : word_lst = [switch.is_dinging()]
 			- TBD: update trig_check() : elim loc_trig_vals_lst ; trig_vals_lst => [True] or [False]
 			- TBD: migrate existing auto_act_timer => InvisTrigMach
