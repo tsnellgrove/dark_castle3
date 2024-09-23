@@ -69,6 +69,7 @@ class TrigMixIn(object):
 
 	# complex methods
 	def trig_check(self, gs, case, word_lst):
+		loc_trig_vals_lst = self.trig_vals_lst # temp
 		trig_key_lst = ['not_valid']
 		trig_wc_lst = ['not_valid'] # wildcards are only supported for nouns
 		if case == 'go':
@@ -81,11 +82,19 @@ class TrigMixIn(object):
 		elif  case == 'prep':
 			trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
 			trig_wc_lst = [word_lst[1], '*', word_lst[0].name]
+		elif case == 'timer':
+			trig_key_lst = [self.trig_vals_lst[0].is_dinging()]
+			loc_trig_vals_lst = self.trig_vals_lst[1]
 		elif case == 'switch':
 			trig_key_lst = word_lst[0]
 #		print(f"trig_key_lst = {trig_key_lst}")
 #		print(f"trig_vals_lst = {self.trig_vals_lst}")
-		return (trig_key_lst in self.trig_vals_lst) or (trig_wc_lst in self.trig_vals_lst)
+#		return (trig_key_lst in self.trig_vals_lst) or (trig_wc_lst in self.trig_vals_lst)
+		return (trig_key_lst in loc_trig_vals_lst) or (trig_wc_lst in loc_trig_vals_lst) # temp
+
+#			- TBD: update trig_check()
+#				- TBD: for case = 'timer', trig_key_lst = [timer_obj.is_dinging()]
+
 
 
 class Timer(ProtoMachMixIn, Invisible):

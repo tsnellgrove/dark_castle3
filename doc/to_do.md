@@ -1054,18 +1054,23 @@ Version 3.87.0 Goals:
 			- DONE: create ItemTrigMach class
 			- DONE: import ItemTrigMach class
 			- DONE: migrate existing ItemMach obj
-		- TBD: migrate "timer" mach obj
-			- DECISION: use InvisTrigMach
+		- INPROC: migrate "timer" mach obj
+			- DECISION: InvisTrigMach => InvisSwitchMach
 				- IDEA: timer_obj.is_dinging() is really a trigger and should be treated as such
 				- IDEA: also, we want the freedom to match on NOT is_dinging()
-			- TBD: update auto_action:
-				- TBD: for trigger_type == 'auto_act_timer' and mach_obj.is_enabled == True:
-					- TBD: from mach_obj.trig_vals_lst, unpack timer_obj (trig_vals_lst[0])
-					- TBD: call timer_obj.trig_check() w/ case = 'timer' ; word_lst = [timer_obj]
-			- TBD: update trig_check()
-				- TBD: for case = 'timer', trig_key_lst = [timer_obj.is_dinging()]
+				- DECISION: do need a 'switch' variant of MachMixIn after all => un-natural to pack trig_vals_lst
+			- DONE: update auto_action:
+				- DONE: for trigger_type == 'auto_act_timer' and mach_obj.is_enabled == True:
+					- DONE: from mach_obj.trig_vals_lst, unpack timer_obj (trig_vals_lst[0])
+					- DONE: call timer_obj.trig_check() w/ case = 'timer' ; word_lst = [timer_obj]
+			- DONE: update trig_check()
+				- DONE: for case = 'timer', trig_key_lst = [timer_obj.is_dinging()]
+			- TBD: create SwitchMachMixIn class (inherit from TrigMachMixIn = switch attrib)
+			- TBD: create InvisSwitchMach class (inherit from SwitchMachMixIn + Invisible)
+			- TBD: update auto_action() : word_lst = [switch.is_dinging()]
+			- TBD: update trig_check() : elim loc_trig_vals_lst ; trig_vals_lst => [True] or [False]
 			- TBD: migrate existing auto_act_timer => InvisTrigMach
-				- TBD: trig_vals_lst = [timer_obj, <is_dinging_bool>]
+				- CANCEL: trig_vals_lst = [timer_obj, <is_dinging_bool>]
 			- TBD: test
 			- TBD: document format for trig_vals_lst in comments ( auto_action() and game_update() )
 		- TBD: migrate existing "switch" mach obj
@@ -1073,7 +1078,7 @@ Version 3.87.0 Goals:
 			- TBD: update TrigMixIn trig_check() as needed
 		- TBD: sort out cup_of_tea game_update
 		- TBD: elim cond_switch_lst from AutoMachMixIn cond_check() call
-		- TBD: clean up game_update, mach_class(), pre_action(), post_action()
+		- TBD: clean up game_update, mach_class(), pre_action(), post_action(), auto_action()
 		- TBD: update mach doc (for both AutoMachMixIn and TrigMachMixIn)
 	- INPROC: fix VS Code error checking / pylance or whatever is wrong
 		- DONE: tried un-installing and re-installing python extension & pylance (Sept 17)
