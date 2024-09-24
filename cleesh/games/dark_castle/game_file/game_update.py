@@ -259,6 +259,12 @@ re_arm_goblin_mach = InvisAutoMach('re_arm_goblin_mach', None,
 
 # name, full_name, root_name, descript_key, writing, weight, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst
 
+# hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', False, 
+#		'auto_act_timer', hedgehog_eats_timer, [True], 
+#		None, [hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
+#		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result],
+#		'royal_hedgehog_temp', True) 
+#		# mach_state == timer_count
 
 hedgehog_guard_mach = InvisTrigMach('hedgehog_guard_mach', None, 
 		'pre_act_cmd', 'royal_hedgehog_temp', True, 
@@ -311,12 +317,14 @@ kinging_scroll = ItemTrigMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kin
 #	elim [True] value for trig_vals_lst ?
 # 	move timer to trig_vals_lst and elim trig_switch, cond_switch_lst ?
 
-hedgehog_done_eating_mach = InvisMach('hedgehog_done_eating_mach', False, 
-		'auto_act_timer', hedgehog_eats_timer, [True], 
-		None, [hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
-		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result],
-		'royal_hedgehog_temp', True) 
-		# mach_state == timer_count
+hedgehog_done_eating_mach = InvisTrigMach('hedgehog_done_eating_mach', False, 
+		'auto_act_timer', 'royal_hedgehog_temp', True, 
+		hedgehog_eats_timer, [True], 
+		[hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
+		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result]
+		) # mach_state == mach has run once
+
+# name, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst
 
 
 ## post_act_switch : all attribs used; trig_vals_lst == [switch states]

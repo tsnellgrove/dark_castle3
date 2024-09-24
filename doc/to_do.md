@@ -1068,10 +1068,11 @@ Version 3.87.0 Goals:
 			- DONE: create SwitchMachMixIn class (inherit from TrigMachMixIn = trig_switch attrib)
 			- DONE: create InvisSwitchMach class (inherit from SwitchMachMixIn + Invisible)
 			- DONE: import InvisSwitchMach
-			- TBD: update auto_action() : word_lst = [switch.is_dinging()]
-			- TBD: update trig_check() : elim loc_trig_vals_lst ; trig_vals_lst => [True] or [False]
-			- TBD: migrate existing auto_act_timer => InvisTrigMach
+			- DONE: update auto_action() : word_lst = [switch.is_dinging()]
+			- DONE: update trig_check() : elim loc_trig_vals_lst ; trig_vals_lst => [True] or [False]
+			- INPROC: migrate existing auto_act_timer => InvisTrigMach
 				- CANCEL: trig_vals_lst = [timer_obj, <is_dinging_bool>]
+				- TBD: solve attrib count error
 			- TBD: test
 			- TBD: document format for trig_vals_lst in comments ( auto_action() and game_update() )
 		- TBD: migrate existing "switch" mach obj

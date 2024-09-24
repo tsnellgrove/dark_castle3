@@ -69,7 +69,7 @@ class TrigMixIn(object):
 
 	# complex methods
 	def trig_check(self, gs, case, word_lst):
-		loc_trig_vals_lst = self.trig_vals_lst # temp
+#		loc_trig_vals_lst = self.trig_vals_lst # temp
 		trig_key_lst = ['not_valid']
 		trig_wc_lst = ['not_valid'] # wildcards are only supported for nouns
 		if case == 'go':
@@ -83,14 +83,15 @@ class TrigMixIn(object):
 			trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
 			trig_wc_lst = [word_lst[1], '*', word_lst[0].name]
 		elif case == 'timer':
-			trig_key_lst = [self.trig_vals_lst[0].is_dinging()]
-			loc_trig_vals_lst = self.trig_vals_lst[1]
+			trig_key_lst = word_lst
+#			trig_key_lst = [self.trig_vals_lst[0].is_dinging()]
+#			loc_trig_vals_lst = self.trig_vals_lst[1]
 		elif case == 'switch':
 			trig_key_lst = word_lst[0]
 #		print(f"trig_key_lst = {trig_key_lst}")
 #		print(f"trig_vals_lst = {self.trig_vals_lst}")
-#		return (trig_key_lst in self.trig_vals_lst) or (trig_wc_lst in self.trig_vals_lst)
-		return (trig_key_lst in loc_trig_vals_lst) or (trig_wc_lst in loc_trig_vals_lst) # temp
+		return (trig_key_lst in self.trig_vals_lst) or (trig_wc_lst in self.trig_vals_lst)
+#		return (trig_key_lst in loc_trig_vals_lst) or (trig_wc_lst in loc_trig_vals_lst) # temp
 
 #			- TBD: update trig_check()
 #				- TBD: for case = 'timer', trig_key_lst = [timer_obj.is_dinging()]
@@ -261,7 +262,7 @@ class ItemTrigMach(TrigMachMixIn, Item):
 		TrigMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst)
 
 class SwitchMachMixIn(TrigMachMixIn):
-	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst, trig_switch):
+	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst):
 		AutoMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst)
 		self._trig_switch = trig_switch # switch obj that triggers the machine
 
@@ -271,7 +272,7 @@ class SwitchMachMixIn(TrigMachMixIn):
 		return self._trig_switch
 
 class InvisSwitchMach(SwitchMachMixIn, Invisible):
-	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst, trig_switch):
+	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst):
 		Invisible.__init__(self, name)
 		AutoMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst, trig_switch)
 
