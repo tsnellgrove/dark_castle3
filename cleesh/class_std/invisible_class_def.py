@@ -97,6 +97,9 @@ class Invisible(object):
 	def has_cond(self):
 		return False
 
+	def has_switch(self):
+		return False
+
 	def is_garment(self):
 		return False
 
