@@ -263,7 +263,7 @@ class ItemTrigMach(TrigMachMixIn, Item):
 
 class SwitchMachMixIn(TrigMachMixIn):
 	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst):
-		AutoMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst)
+		TrigMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst)
 		self._trig_switch = trig_switch # switch obj that triggers the machine
 
 	# getters & setters
@@ -274,7 +274,7 @@ class SwitchMachMixIn(TrigMachMixIn):
 class InvisSwitchMach(SwitchMachMixIn, Invisible):
 	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst):
 		Invisible.__init__(self, name)
-		AutoMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst, trig_switch)
+		SwitchMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst, trig_switch)
 
 
 

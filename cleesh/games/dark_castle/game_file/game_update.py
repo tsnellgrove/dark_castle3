@@ -317,7 +317,7 @@ kinging_scroll = ItemTrigMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kin
 #	elim [True] value for trig_vals_lst ?
 # 	move timer to trig_vals_lst and elim trig_switch, cond_switch_lst ?
 
-hedgehog_done_eating_mach = InvisTrigMach('hedgehog_done_eating_mach', False, 
+hedgehog_done_eating_mach = InvisSwitchMach('hedgehog_done_eating_mach', False, 
 		'auto_act_timer', 'royal_hedgehog_temp', True, 
 		hedgehog_eats_timer, [True], 
 		[hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
