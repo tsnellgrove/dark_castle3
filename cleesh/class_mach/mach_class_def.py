@@ -278,7 +278,7 @@ class SwitchMachMixIn(TrigMachMixIn):
 class InvisSwitchMach(SwitchMachMixIn, Invisible):
 	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst):
 		Invisible.__init__(self, name)
-		SwitchMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst, trig_switch)
+		SwitchMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst)
 
 
 
