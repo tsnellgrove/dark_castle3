@@ -9,7 +9,7 @@
 ### import statements
 import sys, os
 root_path_str = os.path.realpath(__file__).replace('/cleesh/web_main.py','')
-print(root_path_str)
+# print(root_path_str)
 sys.path.append(root_path_str)
 from cleesh.app_main.app_main import app_main
 from cleesh.app_main.start_up import start_me_up

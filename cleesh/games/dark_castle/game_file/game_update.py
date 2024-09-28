@@ -319,7 +319,7 @@ kinging_scroll = ItemTrigMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kin
 
 hedgehog_done_eating_mach = InvisSwitchMach('hedgehog_done_eating_mach', False, 
 		'auto_act_timer', 'royal_hedgehog_temp', True, 
-		hedgehog_eats_timer, [True], 
+		hedgehog_eats_timer, [[True]], 
 		[hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
 		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result]
 		) # mach_state == mach has run once

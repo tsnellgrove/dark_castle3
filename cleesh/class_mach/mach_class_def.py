@@ -90,6 +90,9 @@ class TrigMixIn(object):
 			trig_key_lst = word_lst[0]
 #		print(f"trig_key_lst = {trig_key_lst}")
 #		print(f"trig_vals_lst = {self.trig_vals_lst}")
+##		print(f"trig_key_lst = {trig_key_lst}")
+##		print(f"trig_vals_lst = {self.trig_vals_lst}")
+##		print(f"trig_key_lst in trig_vals_lst = {trig_key_lst in self.trig_vals_lst}")
 		return (trig_key_lst in self.trig_vals_lst) or (trig_wc_lst in self.trig_vals_lst)
 #		return (trig_key_lst in loc_trig_vals_lst) or (trig_wc_lst in loc_trig_vals_lst) # temp
 
@@ -224,6 +227,7 @@ class AutoMachMixIn(ProtoMachMixIn):
 	def run_mach(self, gs):
 		for idx, cond in enumerate(self.cond_lst):
 			if cond.cond_check(gs, self.mach_state, None):
+#				print(f"condition {cond.name} is True")
 				result = self.result_lst[idx]
 				if isinstance(result, list):
 					cmd_override = False

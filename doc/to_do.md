@@ -1070,17 +1070,17 @@ Version 3.87.0 Goals:
 			- DONE: import InvisSwitchMach
 			- DONE: update auto_action() : word_lst = [switch.is_dinging()]
 			- DONE: update trig_check() : elim loc_trig_vals_lst ; trig_vals_lst => [True] or [False]
-			- INPROC: migrate existing auto_act_timer => InvisTrigMach
+			- DONE: migrate existing auto_act_timer => InvisTrigMach
 				- CANCEL: trig_vals_lst = [timer_obj, <is_dinging_bool>]
-				- TBD: solve attrib count error
-			- TBD: test
+				- DONE: solve attrib count error
+			- DONE: test
 			- TBD: document format for trig_vals_lst in comments ( auto_action() and game_update() )
 		- TBD: migrate existing "switch" mach obj
 			- TBD: update post_action() trig_check() call as needed
 			- TBD: update TrigMixIn trig_check() as needed
 		- TBD: sort out cup_of_tea game_update
 		- TBD: elim cond_switch_lst from AutoMachMixIn cond_check() call
-		- TBD: clean up game_update, mach_class(), pre_action(), post_action(), auto_action()
+		- TBD: clean up web_main(), game_update, mach_class(), pre_action(), post_action(), auto_action()
 		- TBD: update mach doc (for both AutoMachMixIn and TrigMachMixIn)
 	- INPROC: fix VS Code error checking / pylance or whatever is wrong
 		- DONE: tried un-installing and re-installing python extension & pylance (Sept 17)
