@@ -322,7 +322,7 @@ hedgehog_done_eating_mach = InvisSwitchMach('hedgehog_done_eating_mach', False,
 		hedgehog_eats_timer, [[True]], 
 		[hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
 		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result]
-		) # mach_state == mach has run once
+		) # mach_state == mach has run once; trig_vals_lst = list-of-list of desired value for timer.is_dinging()
 
 # name, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst
 

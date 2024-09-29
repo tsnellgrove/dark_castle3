@@ -1054,7 +1054,7 @@ Version 3.87.0 Goals:
 			- DONE: create ItemTrigMach class
 			- DONE: import ItemTrigMach class
 			- DONE: migrate existing ItemMach obj
-		- INPROC: migrate "timer" mach obj
+		- DONE: migrate "timer" mach obj
 			- DECISION: InvisTrigMach => InvisSwitchMach
 				- IDEA: timer_obj.is_dinging() is really a trigger and should be treated as such
 				- IDEA: also, we want the freedom to match on NOT is_dinging()
@@ -1074,13 +1074,20 @@ Version 3.87.0 Goals:
 				- CANCEL: trig_vals_lst = [timer_obj, <is_dinging_bool>]
 				- DONE: solve attrib count error
 			- DONE: test
-			- TBD: document format for trig_vals_lst in comments ( auto_action() and game_update() )
-		- TBD: migrate existing "switch" mach obj
-			- TBD: update post_action() trig_check() call as needed
-			- TBD: update TrigMixIn trig_check() as needed
+			- DONE: document format for trig_vals_lst in comments ( auto_action() )
+	- TBD: migrate existing "switch" mach obj
+		- INPROC: investigate existing 'switch' case
+			- DONE: update post_action()
+			- DONE: Test
+			- TBD: invstigate 'switch' case in trig_check()
+		- DECISION: harmonize 'timer' & 'switch' cases in trig_check() ?
+		- TBD: update post_action() trig_check() call as needed
+		- TBD: update TrigMixIn trig_check() as needed
+		- TBD: document format for trig_vals_lst in comments ( auto_action() and game_update() )
 		- TBD: sort out cup_of_tea game_update
 		- TBD: elim cond_switch_lst from AutoMachMixIn cond_check() call
 		- TBD: clean up web_main(), game_update, mach_class(), pre_action(), post_action(), auto_action()
+		- TBD: review and standardize pre_action(), post_action() and auto_action()
 		- TBD: update mach doc (for both AutoMachMixIn and TrigMachMixIn)
 	- INPROC: fix VS Code error checking / pylance or whatever is wrong
 		- DONE: tried un-installing and re-installing python extension & pylance (Sept 17)

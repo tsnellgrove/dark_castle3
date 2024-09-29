@@ -18,7 +18,8 @@ def auto_action(gs):
 #		if obj.trigger_type == 'auto_act_timer' and obj.is_enabled and obj.trig_switch.is_dinging():
 ##		if obj.trigger_type == 'auto_act_timer':
 ##			print(f"auto_act_timer mach name = {obj.name} and is_dinging() = {obj.trig_switch.is_dinging()} and is_enabled = {obj.is_enabled}")
-		if obj.trigger_type == 'auto_act_timer' and obj.is_enabled and obj.trig_check(gs, 'timer', [obj.trig_switch.is_dinging()]):
+		if (obj.trigger_type == 'auto_act_timer' and obj.is_enabled 
+				and obj.trig_check(gs, 'timer', [obj.trig_switch.is_dinging()])):
 			_unused1, _unused2 = obj.run_mach(gs)
 	return
 
