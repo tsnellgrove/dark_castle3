@@ -1079,7 +1079,12 @@ Version 3.87.0 Goals:
 		- INPROC: investigate existing 'switch' case
 			- DONE: update post_action()
 			- DONE: Test
-			- TBD: invstigate 'switch' case in trig_check()
+			- INPROC: invstigate 'switch' case in trig_check()
+				- DECISION: make trig_vals_lst a list-of-lists
+				- TBD: update game_update
+				- TBD: update trig_check()
+				- TBD: test
+					- TBD: fix lever puzzle
 		- DECISION: harmonize 'timer' & 'switch' cases in trig_check() ?
 		- TBD: update post_action() trig_check() call as needed
 		- TBD: update TrigMixIn trig_check() as needed

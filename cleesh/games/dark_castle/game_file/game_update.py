@@ -330,7 +330,7 @@ hedgehog_done_eating_mach = InvisSwitchMach('hedgehog_done_eating_mach', False,
 ## post_act_switch : all attribs used; trig_vals_lst == [switch states]
 
 broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 
-		'post_act_switch', throne, ['pushed', 'pulled'],
+		'post_act_switch', throne, [['pushed', 'pulled']],
 		[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
 		[nothing_happens_result, throne_push_result, [throne_pull_result1, throne_pull_result2]],
 		'throne_room_temp', True) 
@@ -339,7 +339,7 @@ broach_dispenser_mach = InvisMach('broach_dispenser_mach', False,
 
 control_panel = ContainerFixedSimpleMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, 
 		[left_lever, middle_lever, right_lever, red_button], 999, 4, 'on', 0, 
-		'post_act_switch', red_button, ['pushed'], 
+		'post_act_switch', red_button, [['pushed']],
 		[left_lever, middle_lever, right_lever], [lever_array_matches_mach_state_cond, true_cond], 
 		[toggle_portcullis_result, portcullis_doesnt_open_result],
 		'antechamber_temp', True) 

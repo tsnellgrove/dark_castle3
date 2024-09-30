@@ -87,7 +87,8 @@ class TrigMixIn(object):
 #			trig_key_lst = [self.trig_vals_lst[0].is_dinging()]
 #			loc_trig_vals_lst = self.trig_vals_lst[1]
 		elif case == 'switch':
-			trig_key_lst = word_lst[0]
+#			trig_key_lst = word_lst[0]
+			trig_key_lst = word_lst
 #		print(f"trig_key_lst = {trig_key_lst}")
 #		print(f"trig_vals_lst = {self.trig_vals_lst}")
 ##		print(f"trig_key_lst = {trig_key_lst}")
