@@ -8,6 +8,8 @@ def post_action(gs, case, word_lst):
 	for obj in mach_obj_lst:
 
 ##		if obj.trigger_type == 'post_act_switch' and obj.is_enabled:
+###		if obj.trigger_type == 'post_act_switch':
+###			print(f"name = {obj.name}, trig_switch = {obj.trig_switch}")
 		if (obj.trigger_type == 'post_act_switch' and obj.is_enabled 
 				and obj.trig_check(gs, 'switch', [obj.trig_switch.switch_state])):
 #		and obj.trig_check(gs, case, word_lst):

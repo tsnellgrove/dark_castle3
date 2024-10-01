@@ -283,6 +283,12 @@ class InvisSwitchMach(SwitchMachMixIn, Invisible):
 		Invisible.__init__(self, name)
 		SwitchMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst)
 
+class ContainerFixedSimpleSwitchMach(SwitchMachMixIn, ContainerFixedSimple):
+	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst):
+		ContainerFixedSimple.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep)
+		SwitchMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst)
+
+
 
 
 class MachineMixIn(object):

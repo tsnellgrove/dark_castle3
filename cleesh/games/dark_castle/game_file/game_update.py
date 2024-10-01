@@ -24,7 +24,7 @@ from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescri
 		TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, AttackHeroResult, 
 		OpenableToggleResult, CreatureTravelResult)
 from cleesh.class_mach.mach_class_def import (Timer, Warning, InvisAutoMach, InvisTrigMach, ItemTrigMach,
-		InvisSwitchMach, 
+		InvisSwitchMach, ContainerFixedSimpleSwitchMach,
 		InvisMach, ViewOnlyMach, ItemMach, ContainerFixedSimpleMach)
 # from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from cleesh.class_std.creature_class_def import Creature
@@ -266,6 +266,15 @@ re_arm_goblin_mach = InvisAutoMach('re_arm_goblin_mach', None,
 #		'royal_hedgehog_temp', True) 
 #		# mach_state == timer_count
 
+# control_panel = ContainerFixedSimpleMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, 
+#		[left_lever, middle_lever, right_lever, red_button], 999, 4, 'on', 0, 
+#		'post_act_switch', red_button, [['pushed']],
+#		[left_lever, middle_lever, right_lever], [lever_array_matches_mach_state_cond, true_cond], 
+#		[toggle_portcullis_result, portcullis_doesnt_open_result],
+#		'antechamber_temp', True) 
+#		# mach_state == lever_array_value
+
+
 hedgehog_guard_mach = InvisTrigMach('hedgehog_guard_mach', None, 
 		'pre_act_cmd', 'royal_hedgehog_temp', True, 
 		[['take', 'shiny_sword']],
@@ -311,7 +320,6 @@ kinging_scroll = ItemTrigMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kin
 		) # mach_state == None
 
 
-
 ## auto_act_timer : 
 # needs refactor:
 #	elim [True] value for trig_vals_lst ?
@@ -324,10 +332,26 @@ hedgehog_done_eating_mach = InvisSwitchMach('hedgehog_done_eating_mach', False,
 		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result]
 		) # mach_state == mach has run once; trig_vals_lst = list-of-list of desired value for timer.is_dinging()
 
-# name, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst
-
 
 ## post_act_switch : all attribs used; trig_vals_lst == [switch states]
+
+control_panel = ContainerFixedSimpleSwitchMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, 
+		[left_lever, middle_lever, right_lever, red_button], 999, 4, 'on', 0, 
+		'post_act_switch', 'antechamber_temp', True, 
+		red_button, [['pushed']],
+		[lever_array_matches_mach_state_cond, true_cond], 
+		[toggle_portcullis_result, portcullis_doesnt_open_result]
+		) # mach_state == lever_array_value
+
+# name, full_name, root_name, descript_key, writing, 
+# contain_lst, max_weight, max_obj, prep, mach_state, 
+# trigger_type, alert_anchor, is_enabled, 
+# trig_switch, trig_vals_lst, 
+# cond_lst, 
+# result_lst
+
+
+
 
 broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 
 		'post_act_switch', throne, [['pushed', 'pulled']],
@@ -336,14 +360,9 @@ broach_dispenser_mach = InvisMach('broach_dispenser_mach', False,
 		'throne_room_temp', True) 
 		# mach_state == broach_dispensed
 
+# name, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst
 
-control_panel = ContainerFixedSimpleMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, 
-		[left_lever, middle_lever, right_lever, red_button], 999, 4, 'on', 0, 
-		'post_act_switch', red_button, [['pushed']],
-		[left_lever, middle_lever, right_lever], [lever_array_matches_mach_state_cond, true_cond], 
-		[toggle_portcullis_result, portcullis_doesnt_open_result],
-		'antechamber_temp', True) 
-		# mach_state == lever_array_value
+
 
 
 

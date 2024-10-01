@@ -1075,16 +1075,17 @@ Version 3.87.0 Goals:
 				- DONE: solve attrib count error
 			- DONE: test
 			- DONE: document format for trig_vals_lst in comments ( auto_action() )
-	- TBD: migrate existing "switch" mach obj
+	- INPROC: migrate existing "switch" mach obj
 		- INPROC: investigate existing 'switch' case
 			- DONE: update post_action()
 			- DONE: Test
 			- INPROC: invstigate 'switch' case in trig_check()
 				- DECISION: make trig_vals_lst a list-of-lists
-				- TBD: update game_update
-				- TBD: update trig_check()
-				- TBD: test
-					- TBD: fix lever puzzle
+				- DONE*: update game_update
+				- DONE*: update trig_check()
+			- DONE: create ContainerFixedSimpleTrigMach
+			- DONE: update control_panel mach obj
+			- INPROC: test
 		- DECISION: harmonize 'timer' & 'switch' cases in trig_check() ?
 		- TBD: update post_action() trig_check() call as needed
 		- TBD: update TrigMixIn trig_check() as needed
