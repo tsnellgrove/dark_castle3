@@ -1085,7 +1085,16 @@ Version 3.87.0 Goals:
 				- DONE*: update trig_check()
 			- DONE: create ContainerFixedSimpleTrigMach
 			- DONE: update control_panel mach obj
-			- INPROC: test (fix lever_array cond)
+			- DONE: update mach_run to elim cond_switch_lst attrib passed to cond_check()
+			- DONE: in cond_check(), update LeverArrayCond to pass it's own cond_switch_list attrib
+			- DONE: in cond_class, elim cond_check() cond_switch_lst attrib
+			- DONE: update game_update LeverArrayCond call with local cond_switch_list
+			- TBD: add setters & getters to LeverArrayCond
+			- INPROC: test => fix lever_array cond
+			- TBD: in cond_check(), update SwitchStateCond to pass it's own cond_switch_list attrib
+			- TBD: update game_update SwitchStateCond call with local cond_switch_list
+			- TBD: add setters & getters to SwitchStateCond
+			- TBD: 
 		- DECISION: harmonize 'timer' & 'switch' cases in trig_check() ?
 		- TBD: update post_action() trig_check() call as needed
 		- TBD: update TrigMixIn trig_check() as needed

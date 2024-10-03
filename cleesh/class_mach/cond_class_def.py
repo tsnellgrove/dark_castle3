@@ -29,7 +29,8 @@ class TrueCond(object): # NEW COND
 	def name(self):
 		return self._name
 
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state):
 		return True
 
 	def __repr__(self):
@@ -59,7 +60,8 @@ class WornCond(TrueCond):
 	def match_cond(self):
 		return self._match_cond
 
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state):
 		return (self.worn_garment in self.creature_obj.worn_lst) == self.match_cond
 
 
@@ -90,7 +92,8 @@ class ObjOnRmFlrCond(TrueCond):
 	def match_cond(self):
 		return self._match_cond
 
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state):
 		return (self.match_room.is_obj_on_floor(self.obj) == self.match_cond)
 
 
@@ -121,7 +124,8 @@ class ObjInRmCond(TrueCond):
 	def match_cond(self):
 		return self._match_cond
 
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state):
 		return (gs.map.get_obj_room(self.obj, gs) is self.match_room) == self.match_cond
 
 
@@ -143,7 +147,8 @@ class ObjInWorldCond(TrueCond):
 	def match_cond(self):
 		return self._match_cond
 
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state):
 		return (gs.map.chk_obj_exist(self.obj, gs) == self.match_cond)
 
 
@@ -170,7 +175,8 @@ class ItemInHandCond(TrueCond):
 	def match_cond(self):
 		return self._match_cond
 
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state):
 		return (self.item_obj in self.creature_obj.hand_lst) == self.match_cond
 
 
@@ -192,7 +198,8 @@ class WeaponInHandCond(TrueCond):
 	def match_cond(self):
 		return self._match_cond
 
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state):
 		return (self.creature_obj.in_hand_is_weapon() == self.match_cond)
 
 
@@ -205,7 +212,8 @@ class MachStateCond(TrueCond):
 	def match_cond(self):
 		return self._match_cond
 
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state):
 		return (mach_state == self.match_cond)
 
 
@@ -223,38 +231,45 @@ class TimerActiveCond(TrueCond):
 	def match_cond(self):
 		return self._match_cond
 
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state):
 		return (self.timer_obj.is_active == self.match_cond)
 
 
 class SwitchStateCond(TrueCond):
 	def __init__(self, name, match_cond_lst):
 		super().__init__(name)
+		self._cond_switch_lst = cond_switch_lst # list of switches that impact condition
 		self._match_cond_lst = match_cond_lst # list of switch state values to meet condition
 
 	@property
 	def match_cond_lst(self):
 		return self._match_cond_lst
 
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
-		for idx, switch in enumerate(cond_swicth_lst):
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state):
+		for idx, switch in enumerate(self.cond_switch_lst):
 			if switch.switch_state != self.match_cond_lst[idx]:
 				return False
 		return True
 
 
 class LeverArrayCond(TrueCond):
-	def __init__(self, name, lever_val_lst): # target value lives in mach_state as a machine attribute
+#	def __init__(self, name, lever_val_lst): # target value lives in mach_state as a machine attribute
+	def __init__(self, name, cond_switch_lst, lever_val_lst): # target value lives in mach_state as a machine attribute
 		super().__init__(name)
+		self._cond_switch_lst = cond_switch_lst # list of levers in the array
 		self._lever_val_lst = lever_val_lst # list of values for levers that are up; same len as cond_swtch_lst
 
 	@property
 	def lever_val_lst(self):
 		return self._lever_val_lst
 
-	def cond_check(self, gs, mach_state, cond_swicth_lst):
+#	def cond_check(self, gs, mach_state, cond_swicth_lst):
+	def cond_check(self, gs, mach_state):
 		array_val = 0
-		for idx, lever in enumerate(cond_swicth_lst):
+#		for idx, lever in enumerate(cond_swicth_lst):
+		for idx, lever in enumerate(self.cond_switch_lst):
 			if lever.switch_state == 'up':
 				array_val += self.lever_val_lst[idx]
 		return (array_val == mach_state)

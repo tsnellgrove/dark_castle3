@@ -160,7 +160,8 @@ hedgehog_eats_timer_active_cond = TimerActiveCond('hedgehog_eats_timer_active_co
 hedgehog_eats_timer_not_active_cond = TimerActiveCond('hedgehog_eats_timer_not_active_cond', hedgehog_eats_timer, False) # hedgehog is not eating
 throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
-lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [4,2,1])
+# lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [4,2,1])
+lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [left_lever, middle_lever, right_lever], [4,2,1])
 
 # *** results ***
 pass_result = BaseResult('pass_result', False, None, False)

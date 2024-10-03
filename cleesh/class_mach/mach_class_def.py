@@ -227,7 +227,8 @@ class AutoMachMixIn(ProtoMachMixIn):
 	# complex methods
 	def run_mach(self, gs):
 		for idx, cond in enumerate(self.cond_lst):
-			if cond.cond_check(gs, self.mach_state, None):
+			if cond.cond_check(gs, self.mach_state):
+#			if cond.cond_check(gs, self.mach_state, None):
 #				print(f"condition {cond.name} is True")
 				result = self.result_lst[idx]
 				if isinstance(result, list):
