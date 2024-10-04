@@ -243,6 +243,10 @@ class SwitchStateCond(TrueCond):
 		self._match_cond_lst = match_cond_lst # list of switch state values to meet condition
 
 	@property
+	def cond_switch_lst(self):
+		return self._cond_switch_lst
+
+	@property
 	def match_cond_lst(self):
 		return self._match_cond_lst
 
@@ -260,6 +264,10 @@ class LeverArrayCond(TrueCond):
 		super().__init__(name)
 		self._cond_switch_lst = cond_switch_lst # list of levers in the array
 		self._lever_val_lst = lever_val_lst # list of values for levers that are up; same len as cond_swtch_lst
+
+	@property
+	def cond_switch_lst(self):
+		return self._cond_switch_lst
 
 	@property
 	def lever_val_lst(self):

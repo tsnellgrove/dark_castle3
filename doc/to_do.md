@@ -1094,7 +1094,7 @@ Version 3.87.0 Goals:
 			- TBD: in cond_check(), update SwitchStateCond to pass it's own cond_switch_list attrib
 			- TBD: update game_update SwitchStateCond call with local cond_switch_list
 			- TBD: add setters & getters to SwitchStateCond
-			- TBD: 
+			- TBD: in cond_class(), update LeverArrayCond to inherit from SwitchStateCond
 		- DECISION: harmonize 'timer' & 'switch' cases in trig_check() ?
 		- TBD: update post_action() trig_check() call as needed
 		- TBD: update TrigMixIn trig_check() as needed
