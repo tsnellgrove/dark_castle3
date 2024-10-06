@@ -237,7 +237,7 @@ class TimerActiveCond(TrueCond):
 
 
 class SwitchStateCond(TrueCond):
-	def __init__(self, name, match_cond_lst):
+	def __init__(self, name, cond_switch_lst, match_cond_lst):
 		super().__init__(name)
 		self._cond_switch_lst = cond_switch_lst # list of switches that impact condition
 		self._match_cond_lst = match_cond_lst # list of switch state values to meet condition

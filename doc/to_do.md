@@ -1089,8 +1089,8 @@ Version 3.87.0 Goals:
 			- DONE: in cond_check(), update LeverArrayCond to pass it's own cond_switch_list attrib
 			- DONE: in cond_class, elim cond_check() cond_switch_lst attrib
 			- DONE: update game_update LeverArrayCond call with local cond_switch_list
-			- TBD: add setters & getters to LeverArrayCond
-			- INPROC: test => fix lever_array cond
+			- DONE: add setters & getters to LeverArrayCond
+			- DONE: test => fix lever_array cond
 			- TBD: in cond_check(), update SwitchStateCond to pass it's own cond_switch_list attrib
 			- TBD: update game_update SwitchStateCond call with local cond_switch_list
 			- TBD: add setters & getters to SwitchStateCond

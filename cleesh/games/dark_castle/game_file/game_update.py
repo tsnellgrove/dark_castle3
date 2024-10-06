@@ -158,8 +158,10 @@ panel_not_dispensed_cond = MachStateCond('panel_not_dispensed_cond', False)
 hedgehog_descript_updated_cond = MachStateCond('hedgehog_descript_updated_cond', True)
 hedgehog_eats_timer_active_cond = TimerActiveCond('hedgehog_eats_timer_active_cond', hedgehog_eats_timer, True) # hedgehog is distracted
 hedgehog_eats_timer_not_active_cond = TimerActiveCond('hedgehog_eats_timer_not_active_cond', hedgehog_eats_timer, False) # hedgehog is not eating
-throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
-throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
+# throne_push_cond = SwitchStateCond('throne_push_cond', ['pushed'])
+throne_push_cond = SwitchStateCond('throne_push_cond', [throne], ['pushed'])
+# throne_pull_cond = SwitchStateCond('throne_pull_cond', ['pulled'])
+throne_pull_cond = SwitchStateCond('throne_pull_cond', [throne], ['pulled'])
 # lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [4,2,1])
 lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [left_lever, middle_lever, right_lever], [4,2,1])
 
