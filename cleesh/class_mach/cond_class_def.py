@@ -253,9 +253,10 @@ class SwitchStateCond(TrueCond):
 #	def cond_check(self, gs, mach_state, cond_swicth_lst):
 	def cond_check(self, gs, mach_state):
 		for idx, switch in enumerate(self.cond_switch_lst):
+			print(f"switch {switch.name} has value {switch.switch_state}; match value = {self.match_cond_lst[idx]}")
 			if switch.switch_state != self.match_cond_lst[idx]:
 				return False
-		return True
+		return True # if any switches in list are wrong value return Flase, else return True
 
 
 class LeverArrayCond(TrueCond):

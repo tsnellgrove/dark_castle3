@@ -1091,9 +1091,12 @@ Version 3.87.0 Goals:
 			- DONE: update game_update LeverArrayCond call with local cond_switch_list
 			- DONE: add setters & getters to LeverArrayCond
 			- DONE: test => fix lever_array cond
-			- TBD: in cond_check(), update SwitchStateCond to pass it's own cond_switch_list attrib
-			- TBD: update game_update SwitchStateCond call with local cond_switch_list
-			- TBD: add setters & getters to SwitchStateCond
+			- DONE: in cond_check(), update SwitchStateCond to pass it's own cond_switch_list attrib
+			- DONE: add setters & getters to SwitchStateCond
+			- DONE: update game_update SwitchStateCond call with local cond_switch_list
+			- CANCEL: rework SwitchStateCond cond_check() to allow for all False values => default (if on True)
+				- FINDING: I was right the first time ;-D
+			- INPROC: test (never getting to cond_check() - need to look at trig_check() )
 			- TBD: in cond_class(), update LeverArrayCond to inherit from SwitchStateCond
 		- DECISION: harmonize 'timer' & 'switch' cases in trig_check() ?
 		- TBD: update post_action() trig_check() call as needed

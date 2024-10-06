@@ -277,6 +277,13 @@ re_arm_goblin_mach = InvisAutoMach('re_arm_goblin_mach', None,
 #		'antechamber_temp', True) 
 #		# mach_state == lever_array_value
 
+# broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 
+#		'post_act_switch', throne, [['pushed', 'pulled']],
+#		[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
+#		[nothing_happens_result, throne_push_result, [throne_pull_result1, throne_pull_result2]],
+#		'throne_room_temp', True) 
+#		# mach_state == broach_dispensed
+
 
 hedgehog_guard_mach = InvisTrigMach('hedgehog_guard_mach', None, 
 		'pre_act_cmd', 'royal_hedgehog_temp', True, 
@@ -353,17 +360,18 @@ control_panel = ContainerFixedSimpleSwitchMach('control_panel', 'Control Panel',
 # cond_lst, 
 # result_lst
 
-
-
-
-broach_dispenser_mach = InvisMach('broach_dispenser_mach', False, 
-		'post_act_switch', throne, [['pushed', 'pulled']],
-		[throne], [broach_dispensed_cond, throne_push_cond, throne_pull_cond],
+broach_dispenser_mach = InvisSwitchMach('broach_dispenser_mach', False, 
+		'post_act_switch', 'throne_room_temp', True, 
+		throne, [['pushed', 'pulled']],
+		[broach_dispensed_cond, throne_push_cond, throne_pull_cond],
 		[nothing_happens_result, throne_push_result, [throne_pull_result1, throne_pull_result2]],
-		'throne_room_temp', True) 
-		# mach_state == broach_dispensed
+		) # mach_state == broach_dispensed
 
-# name, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst
+# name, mach_state, 
+# trigger_type, alert_anchor, is_enabled, 
+# trig_switch, trig_vals_lst, 
+# cond_lst, 
+# result_lst
 
 
 
