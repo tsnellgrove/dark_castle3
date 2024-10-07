@@ -936,7 +936,7 @@ Version 3.87.0 Goals:
 				- IDEA: but how far ahead of real use-case do I want to get? Can add as a new feature when needed
 			- FINDING: feels like message type (constant vs. variable) could be inferred?
 				- IDEA: if message_0 exists => constant message
-		- INPROC: create TimerX class
+		- DONE: create TimerX class
 			- DONE: class + setters & getters
 			- DONE: update chk_str_exist() in IO class to check game_static_gbl
 			- DONE: refactor mach_run() method
@@ -1033,7 +1033,7 @@ Version 3.87.0 Goals:
 			- FINDING: possible
 		- DONE: can trig_switch + trig_vals_lst be combined for case = 'switch' ?
 			- FINDING: will complicated trig_vals_switch usage in check_cond() but is possible
-	- INPROC: ceate TrigMachMixIn (inherits from AutoMachMixIn + TrigMixIn
+	- DONE: ceate TrigMachMixIn (inherits from AutoMachMixIn + TrigMixIn
 		- DONE: create MixIn class
 		- DONE: create InvisTrigMach class
 		- DONE: import InvisTrigMach
@@ -1076,7 +1076,7 @@ Version 3.87.0 Goals:
 			- DONE: test
 			- DONE: document format for trig_vals_lst in comments ( auto_action() )
 	- INPROC: migrate existing "switch" mach obj
-		- INPROC: investigate existing 'switch' case
+		- DONE: investigate existing 'switch' case
 			- DONE: update post_action()
 			- DONE: Test
 			- DONE*: invstigate 'switch' case in trig_check()
@@ -1096,46 +1096,51 @@ Version 3.87.0 Goals:
 			- DONE: update game_update SwitchStateCond call with local cond_switch_list
 			- CANCEL: rework SwitchStateCond cond_check() to allow for all False values => default (if on True)
 				- FINDING: I was right the first time ;-D
-			- INPROC: test (never getting to cond_check() - need to look at trig_check() )
+			- DONE: test (never getting to cond_check() - need to look at trig_check() )
+		- TBD: clean up and optimize
+			- TBD: sort out cup_of_tea game_update
+			- TBD: elim cond_switch_lst from AutoMachMixIn cond_check() call			
+			- TBD: clean up web_main, game_update, mach_class, pre_action, post_action, auto_action, cond_class
+			- TBD: rethink keeping individual lists in trig_vals_lst
 			- TBD: in cond_class(), update LeverArrayCond to inherit from SwitchStateCond
-		- DECISION: harmonize 'timer' & 'switch' cases in trig_check() ?
-		- TBD: update post_action() trig_check() call as needed
-		- TBD: update TrigMixIn trig_check() as needed
-		- TBD: document format for trig_vals_lst in comments ( auto_action() and game_update() )
-		- TBD: sort out cup_of_tea game_update
-		- TBD: elim cond_switch_lst from AutoMachMixIn cond_check() call
-		- TBD: clean up web_main(), game_update, mach_class(), pre_action(), post_action(), auto_action()
-		- TBD: review and standardize pre_action(), post_action() and auto_action()
-		- TBD: update mach doc (for both AutoMachMixIn and TrigMachMixIn)
-	- INPROC: fix VS Code error checking / pylance or whatever is wrong
-		- DONE: tried un-installing and re-installing python extension & pylance (Sept 17)
-	- TBD: review other inheritance ideas
-		- TBD: review existing Warning class - refactor / integrate with Mach class
-			- TBD: refactor app_turn modules (warning & timer code)
-			- TBD: review existing Timer class - refactor / integrate with Mach class
-			- TBD: update version build #
-		- TBD: reconsider parent / child mach classes / MixIns
-			- IDEA: can Warning be a parent of Mach?
-			- IDEA: is Timer truly an independent class?
-			- IDEA: do I want different types of Mach based on trigger_type = proto vs. auto vs. cmd vs. switch
-			- IDEA: but if so, then how many MixIn varients do I end up with? Too many?	
-			- TBD: de-dup warning and timer classes
-		- IDEA: it appears that "selective inheritance" just isn't a thing. What now?
-			- IDEA: makes sense... in all other cases I inherit from simple parents to more complex children
-			- IDEA: WarnClass is simpler... so it should be the parent
-			- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
-			- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
-	- TBD: git branch merge with master
-		- TBD: 'git checkout master' to switch focus to master
-		- TBD: 'git branch: to confirm focus
-		- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
-		- TBD: 'git push' to push merge to origin (GitHub)
-		- TBD: confirm that origin is updated
-		- TBD: confirm that code is updated and still runs
-		- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
-		- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
-		- TBD: confirm origin is cleaned up
-		- TBD: post-branch-delete run test
+			- DECISION: harmonize 'timer' & 'switch' cases in trig_check() ?
+			- TBD: update post_action() trig_check() call as needed
+			- TBD: update TrigMixIn trig_check() as needed
+			- TBD: review and standardize pre_action(), post_action() and auto_action()
+			- TBD: document format for trig_vals_lst in comments ( auto_action() and game_update() )
+			- TBD: update mach doc (for both AutoMachMixIn and TrigMachMixIn)
+
+- TBD: review other inheritance ideas
+	- TBD: review existing Warning class - refactor / integrate with Mach class
+		- TBD: refactor app_turn modules (warning & timer code)
+		- TBD: review existing Timer class - refactor / integrate with Mach class
+		- TBD: update version build #
+	- TBD: reconsider parent / child mach classes / MixIns
+		- IDEA: can Warning be a parent of Mach?
+		- IDEA: is Timer truly an independent class?
+		- IDEA: do I want different types of Mach based on trigger_type = proto vs. auto vs. cmd vs. switch
+		- IDEA: but if so, then how many MixIn varients do I end up with? Too many?	
+		- TBD: de-dup warning and timer classes
+	- IDEA: it appears that "selective inheritance" just isn't a thing. What now?
+		- IDEA: makes sense... in all other cases I inherit from simple parents to more complex children
+		- IDEA: WarnClass is simpler... so it should be the parent
+		- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
+		- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
+
+- INPROC: fix VS Code error checking / pylance or whatever is wrong
+	- DONE: tried un-installing and re-installing python extension & pylance (Sept 17)
+
+- TBD: git branch merge with master
+	- TBD: 'git checkout master' to switch focus to master
+	- TBD: 'git branch: to confirm focus
+	- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+	- TBD: 'git push' to push merge to origin (GitHub)
+	- TBD: confirm that origin is updated
+	- TBD: confirm that code is updated and still runs
+	- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+	- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+	- TBD: confirm origin is cleaned up
+	- TBD: post-branch-delete run test
 	- TBD: update cleesh engine version build
 
 - IDEA: triggers

@@ -91,9 +91,9 @@ class TrigMixIn(object):
 			trig_key_lst = word_lst
 #		print(f"trig_key_lst = {trig_key_lst}")
 #		print(f"trig_vals_lst = {self.trig_vals_lst}")
-##		print(f"trig_key_lst = {trig_key_lst}")
-##		print(f"trig_vals_lst = {self.trig_vals_lst}")
-##		print(f"trig_key_lst in trig_vals_lst = {trig_key_lst in self.trig_vals_lst}")
+###		print(f"trig_key_lst = {trig_key_lst}")
+###		print(f"trig_vals_lst = {self.trig_vals_lst}")
+###		print(f"trig_key_lst in trig_vals_lst = {trig_key_lst in self.trig_vals_lst}")
 		return (trig_key_lst in self.trig_vals_lst) or (trig_wc_lst in self.trig_vals_lst)
 #		return (trig_key_lst in loc_trig_vals_lst) or (trig_wc_lst in loc_trig_vals_lst) # temp
 

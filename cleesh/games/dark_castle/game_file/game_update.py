@@ -362,7 +362,8 @@ control_panel = ContainerFixedSimpleSwitchMach('control_panel', 'Control Panel',
 
 broach_dispenser_mach = InvisSwitchMach('broach_dispenser_mach', False, 
 		'post_act_switch', 'throne_room_temp', True, 
-		throne, [['pushed', 'pulled']],
+#		throne, [['pushed', 'pulled']],
+		throne, [['pushed'], ['pulled']],
 		[broach_dispensed_cond, throne_push_cond, throne_pull_cond],
 		[nothing_happens_result, throne_push_result, [throne_pull_result1, throne_pull_result2]],
 		) # mach_state == broach_dispensed
