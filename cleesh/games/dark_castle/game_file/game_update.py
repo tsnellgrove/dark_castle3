@@ -24,8 +24,9 @@ from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescri
 		TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, AttackHeroResult, 
 		OpenableToggleResult, CreatureTravelResult)
 from cleesh.class_mach.mach_class_def import (Timer, Warning, InvisAutoMach, InvisTrigMach, ItemTrigMach,
-		InvisSwitchMach, ContainerFixedSimpleSwitchMach,
-		InvisMach, ViewOnlyMach, ItemMach, ContainerFixedSimpleMach)
+		InvisSwitchMach, ContainerFixedSimpleSwitchMach
+#		, InvisMach, ViewOnlyMach, ItemMach, ContainerFixedSimpleMach
+		)
 # from cleesh.class_mach.mach_class_def import InvisMach, ViewOnlyMach, ItemMach, Warning, Timer, ContainerFixedSimpleMach
 from cleesh.class_std.creature_class_def import Creature
 from cleesh.class_gs.gs_class_def import GameState

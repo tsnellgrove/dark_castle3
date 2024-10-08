@@ -24,8 +24,9 @@ from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescri
 		TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, AttackHeroResult, 
 		OpenableToggleResult, CreatureTravelResult)
 from cleesh.class_mach.mach_class_def import (Timer, Warning, InvisAutoMach, InvisTrigMach, ItemTrigMach, 
-		InvisSwitchMach, 
-		InvisMach, ViewOnlyMach, ItemMach, ContainerFixedSimpleMach)
+		InvisSwitchMach, ContainerFixedSimpleSwitchMach
+#		, InvisMach, ViewOnlyMach, ItemMach, ContainerFixedSimpleMach
+		)
 from cleesh.class_std.creature_class_def import Creature
 from cleesh.class_gs.gs_class_def import GameState
 from cleesh.class_gs.map_class_def import Map
@@ -82,10 +83,25 @@ tea_drunk_win_result = EndResult('tea_drunk_win_result', False, None, False, 'wo
 # *** warnings ***
 
 # *** machines ***
-tea_drunk_mach = InvisMach('tea_drunk_mach', None, 'post_act_cmd', None, 
-				[['drink', 'tea_cup', 'tea']], None, 
-				[true_cond], [tea_drunk_win_result],
-				'pub_temp', True)
+# tea_drunk_mach = InvisMach('tea_drunk_mach', None, 'post_act_cmd', None, 
+#				[['drink', 'tea_cup', 'tea']], None, 
+#				[true_cond], [tea_drunk_win_result],
+#				'pub_temp', True)
+
+
+tea_drunk_mach = InvisTrigMach('tea_drunk_mach', None, 
+				'post_act_cmd', 'pub_temp', True, 
+				[['drink', 'tea_cup', 'tea']],  
+				[true_cond], 
+				[tea_drunk_win_result],
+				) # mach_state = None
+
+# name, mach_state, 
+# trigger_type, alert_anchor, is_enabled, 
+# trig_vals_lst, 
+# cond_lst, 
+# result_lst
+
 
 # Creatures
 cecily = Creature('cecily', 'Cecily', 'cecily', 'cecily', None,

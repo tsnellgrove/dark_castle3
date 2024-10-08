@@ -291,7 +291,7 @@ class ContainerFixedSimpleSwitchMach(SwitchMachMixIn, ContainerFixedSimple):
 
 
 
-
+"""
 class MachineMixIn(object):
 	def __init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst, alert_anchor, is_enabled):
 		self._mach_state = mach_state # machine state variable; boolean for simple machines; Int for complex
@@ -420,6 +420,8 @@ class ContainerFixedSimpleMach(MachineMixIn, ContainerFixedSimple):
 #		def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, in_reach_lst, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst):
 #				Seat.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, in_reach_lst)
 #				MachineMixIn.__init__(self, mach_state, trigger_type, trig_switch, trig_vals_lst, cond_swicth_lst, cond_lst, result_lst)
+
+"""
 
 """
 class Warning(Invisible):

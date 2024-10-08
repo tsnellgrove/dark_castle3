@@ -1097,14 +1097,19 @@ Version 3.87.0 Goals:
 			- CANCEL: rework SwitchStateCond cond_check() to allow for all False values => default (if on True)
 				- FINDING: I was right the first time ;-D
 			- DONE: test (never getting to cond_check() - need to look at trig_check() )
-		- TBD: clean up and optimize
-			- TBD: sort out cup_of_tea game_update
-			- TBD: elim cond_switch_lst from AutoMachMixIn cond_check() call			
-			- TBD: clean up web_main, game_update, mach_class, pre_action, post_action, auto_action, cond_class
+		- INPROC: clean up and optimize
+			- DONE: sort out cup_of_tea game_update
+			- DONE: comment out old Mach code
+			- DONE: comment out old imports in game_updates
+			- DONE: test dark castle
+			- DONE: test cup_of_tea
+			- DONE: elim cond_switch_lst from AutoMachMixIn cond_check() call			
+			- TBD: clean up web_main, game_update (both), mach_class, pre_act, post_act, auto_act, cond_class
 			- TBD: rethink keeping individual lists in trig_vals_lst
 			- TBD: in cond_class(), update LeverArrayCond to inherit from SwitchStateCond
 			- DECISION: harmonize 'timer' & 'switch' cases in trig_check() ?
 			- TBD: update post_action() trig_check() call as needed
+			- TBD: check to see if 'Warning' is reserved word in python
 			- TBD: update TrigMixIn trig_check() as needed
 			- TBD: review and standardize pre_action(), post_action() and auto_action()
 			- TBD: document format for trig_vals_lst in comments ( auto_action() and game_update() )
