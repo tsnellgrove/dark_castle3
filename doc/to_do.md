@@ -1104,7 +1104,8 @@ Version 3.87.0 Goals:
 			- DONE: test dark castle
 			- DONE: test cup_of_tea
 			- DONE: elim cond_switch_lst from AutoMachMixIn cond_check() call			
-			- TBD: clean up web_main, game_update (both), mach_class, pre_act, post_act, auto_act, cond_class
+			- DONE: clean up web_main, game_update (both)
+			- TBD: mach_class, pre_act, post_act, auto_act, cond_class
 			- TBD: rethink keeping individual lists in trig_vals_lst
 			- TBD: in cond_class(), update LeverArrayCond to inherit from SwitchStateCond
 			- DECISION: harmonize 'timer' & 'switch' cases in trig_check() ?
