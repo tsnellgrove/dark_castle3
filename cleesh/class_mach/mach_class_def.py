@@ -76,14 +76,16 @@ class TrigMixIn(object):
 		elif case == '2word':
 			trig_key_lst = [word_lst[1], word_lst[0].name]
 			trig_wc_lst = [word_lst[1], '*']
-		elif  case == 'tru_1word':
-			trig_key_lst = word_lst
 		elif  case == 'prep':
 			trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
 			trig_wc_lst = [word_lst[1], '*', word_lst[0].name]
-		elif case == 'timer':
-			trig_key_lst = word_lst
-		elif case == 'switch':
+#		elif  case == 'tru_1word':
+#			trig_key_lst = word_lst
+#		elif case == 'timer':
+#			trig_key_lst = word_lst
+#		elif case == 'switch':
+#			trig_key_lst = word_lst
+		elif case in['tru_1word', 'timer', 'switch']:
 			trig_key_lst = word_lst
 		return (trig_key_lst in self.trig_vals_lst) or (trig_wc_lst in self.trig_vals_lst)
 

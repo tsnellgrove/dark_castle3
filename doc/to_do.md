@@ -1106,13 +1106,14 @@ Version 3.87.0 Goals:
 			- DONE: elim cond_switch_lst from AutoMachMixIn cond_check() call			
 			- DONE: clean up web_main, game_update (both)
 			- DONE: clean up mach_class, pre_act, post_act, auto_act, cond_class
-			- TBD: rethink keeping individual lists in trig_vals_lst
-			- TBD: in cond_class(), update LeverArrayCond to inherit from SwitchStateCond
-			- DECISION: harmonize 'timer' & 'switch' cases in trig_check() ?
-			- TBD: update post_action() trig_check() call as needed
-			- TBD: check to see if 'Warning' is reserved word in python
-			- TBD: update TrigMixIn trig_check() as needed
+			- N/A: update post_action() trig_check() call as needed
+			- DONE: update TrigMixIn trig_check() as needed
+			- DONE: check to see if 'Warning' is reserved word in python => it's not
 			- TBD: review and standardize pre_action(), post_action() and auto_action()
+			- TBD: in cond_class(), update LeverArrayCond to inherit from SwitchStateCond
+			- TBD: decide whether to harmonize 'timer' & 'switch' cases in trig_check() ?
+			- TBD: rethink keeping individual lists in trig_vals_lst
+			- TBD: comment clean-up TrigMixIn in mach_class()
 			- TBD: document format for trig_vals_lst in comments ( auto_action() and game_update() )
 			- TBD: update mach doc (for both AutoMachMixIn and TrigMachMixIn)
 
