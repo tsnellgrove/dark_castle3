@@ -248,24 +248,29 @@ class SwitchStateCond(TrueCond):
 		return True # if any switches in list are wrong value return Flase, else return True
 
 
-class LeverArrayCond(TrueCond):
-	def __init__(self, name, cond_switch_lst, lever_val_lst): # target value lives in mach_state as a machine attribute
-		super().__init__(name)
-		self._cond_switch_lst = cond_switch_lst # list of levers in the array
-		self._lever_val_lst = lever_val_lst # list of values for levers that are up; same len as cond_swtch_lst
+# class LeverArrayCond(TrueCond):
+class LeverArrayCond(SwitchStateCond):
+#	def __init__(self, name, cond_switch_lst, lever_val_lst): # target value lives in mach_state as a machine attribute
+	def __init__(self, name, cond_switch_lst, match_cond_lst): # target value lives in mach_state as a machine attribute
+#		super().__init__(name)
+		super().__init__(name, cond_switch_lst, match_cond_lst)
+#		self._cond_switch_lst = cond_switch_lst # list of levers in the array
+#		self._lever_val_lst = lever_val_lst # list of values for levers that are up; same len as cond_swtch_lst
+		# match_cond_lst == list of values for levers that are up; same len as cond_swtch_lst
 
-	@property
-	def cond_switch_lst(self):
-		return self._cond_switch_lst
+#	@property
+#	def cond_switch_lst(self):
+#		return self._cond_switch_lst
 
-	@property
-	def lever_val_lst(self):
-		return self._lever_val_lst
+#	@property
+#	def lever_val_lst(self):
+#		return self._lever_val_lst
 
 	def cond_check(self, gs, mach_state):
 		array_val = 0
 		for idx, lever in enumerate(self.cond_switch_lst):
 			if lever.switch_state == 'up':
-				array_val += self.lever_val_lst[idx]
+#				array_val += self.lever_val_lst[idx]
+				array_val += self.match_cond_lst[idx]
 		return (array_val == mach_state)
 
