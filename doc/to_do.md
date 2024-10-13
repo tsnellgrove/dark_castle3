@@ -1112,9 +1112,18 @@ Version 3.87.0 Goals:
 			- DONE: review and standardize pre_action(), post_action() and auto_action()
 			- DONE: in cond_class(), update LeverArrayCond to inherit from SwitchStateCond
 			- DONE: test
-			- TBD: decide whether to harmonize 'timer' & 'switch' cases in trig_check() ?
-			- TBD: rethink keeping individual lists in trig_vals_lst
-			- TBD: comment clean-up mach_class(), pre_action(), cond_class()
+			- DONE: decide whether to harmonize 'timer' & 'switch' cases in trig_check() ?
+				- DEC: no change
+			- DONE: rethink keeping individual lists in trig_vals_lst
+				- IDEA: it is tempting to have a list of lists for SwitchMachMixIn trig_vals_list...
+				- IDEA: because we have this for cmd cases (i.e. a list per commands, multiple triggering cmds)
+				- IDEA: but, there is only one switch (trig_switch) passed to SwitchMachMixIn... 
+				- IDEA: it can have diff vals but only 1 at time
+				- IDEA: therefore, there is no value to having a list of list... it only serves to confuse
+				- DEC: eliminate nested list-of-lists for SwitchMachMixIn trig_vals_lst
+				- DONE: update game_update, auto_act(), post_act()
+			- DONE: test
+			- TBD: comment clean-up mach_class(), pre_act(), cond_class(), game_update, post_act(), auto_act()
 			- TBD: document format for trig_vals_lst in comments ( auto_action() and game_update() )
 			- TBD: update mach doc (for both AutoMachMixIn and TrigMachMixIn)
 
