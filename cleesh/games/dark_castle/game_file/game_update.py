@@ -257,7 +257,6 @@ kinging_scroll = ItemTrigMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kin
 
 hedgehog_done_eating_mach = InvisSwitchMach('hedgehog_done_eating_mach', False, 
 		'auto_act_timer', 'royal_hedgehog_temp', True, 
-#		hedgehog_eats_timer, [[True]], 
 		hedgehog_eats_timer, [True], 
 		[hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
 		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result]
@@ -266,7 +265,6 @@ hedgehog_done_eating_mach = InvisSwitchMach('hedgehog_done_eating_mach', False,
 control_panel = ContainerFixedSimpleSwitchMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, 
 		[left_lever, middle_lever, right_lever, red_button], 999, 4, 'on', 0, 
 		'post_act_switch', 'antechamber_temp', True, 
-#		red_button, [['pushed']],
 		red_button, ['pushed'],
 		[lever_array_matches_mach_state_cond, true_cond], 
 		[toggle_portcullis_result, portcullis_doesnt_open_result]
@@ -274,7 +272,6 @@ control_panel = ContainerFixedSimpleSwitchMach('control_panel', 'Control Panel',
 
 broach_dispenser_mach = InvisSwitchMach('broach_dispenser_mach', False, 
 		'post_act_switch', 'throne_room_temp', True, 
-#		throne, [['pushed'], ['pulled']],
 		throne, ['pushed', 'pulled'],
 		[broach_dispensed_cond, throne_push_cond, throne_pull_cond],
 		[nothing_happens_result, throne_push_result, [throne_pull_result1, throne_pull_result2]],
