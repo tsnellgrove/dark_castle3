@@ -1027,6 +1027,8 @@ The key take-away from the app_main flow is that, both before and after the play
 
 Note: in version 3.83, app_main() was significantly refactored. By this time, new special cases had been added ('restart', 'again', and 'wait') and the code had become opaque. I had taken the if-then-shield approach and had no fewer than eight return statements in the function and it was far from clear - even to me - how the over-arching code flow was supposed to work. In refactoring, I kept the early return for is_start == True (after calling start_me_up() ) but created a consistent flow, goverened by some core primative booleans (is_stateful, is_interp_cmd, is_interp_valid) for all remaining cases. For me the result is much more readable - and should make adding additional special cases much easier. Despite these changes, the description above (written before refactoring) is still a good overview of app_main()'s core functionality.
 
+Note 2: in Cleesh version 3.8.0 (build 0011), the Machine class was fully overhauled. There were two main goals to the refactoring: 1. enable inheritance between Machines, Timers, and Warnings, and 2. to reduce the number of attributes in machine obj with value == None. The latter was caused by the diversity of machine types: auto_act had no use for the trig_check() method or attributes... pre_act_cmd and post_act_cmd machines needed both... and post_act_switch machines also needed an additional cond_switch attribute. The solution to all of these challenges was to create an inheritance tree that linked Warnings, Timers, and all three types of machines. As in the original implmentation, Warnings and Timers always inherit from Invisible - but machines are implemented as MixIns so that various obj of different classes (e.g. the kinging_scroll of class Item) can be machines. Despite the refactoring, the concepts presented below remain essentially correct but the details of implementation have been altered. This is particularly noticable in the example code walk-through. 
+
 The Modular Machine Components:
 Michines are composed of Triggers, Switches, Conditions, Results, and the framework of the Machine itself which orchestrates all of these. I'll detail each of these below.
 
@@ -1035,7 +1037,7 @@ Triggers are the Player Commands or Switches that can start Machines. The inform
 
 The Machine class has the following Trigger attributes: trigger_type, trig_switch, trig_vals_lst
 
-trigger_type: a string that identifies when the Trigger takes effect and what type of Trigger it is. Examples: 'pre_act_cmd', 'post_act_switch', 'pre_act_auto'
+trigger_type: a string that identifies when the Trigger takes effect and what type of Trigger it is. Examples: 'pre_act_cmd', 'post_act_switch', 'auto_act'
 
 trig_switch: for Switch-based Triggers this is the Switch object that Triggers the Machine. For Player Command-based Triggers the value is None. At present, all Machines have at most one Switch Trigger. I may make trig_switch a list in the future if I end up making Machines with multiple triggers.
 
@@ -1125,7 +1127,7 @@ So we end up with cond_return_lst == [False, True] => result_index == 1 (the ind
 
 control_panel.run_mach() is nearly done. It updates it's mach_state based on the return from portcullis_doesnt_open_result.result_exe() (which is the same as the existing mach_state) and then returns cmd_override (which by definition will always be False for tirgger_type == 'post_act_switch').
 
-The Machine has done its job! sore() and end() will be called next by app_main() as needed but the machine coding itself is fini!
+The Machine has done its job! score() and end() will be called next by app_main() as needed but the machine coding itself is fini!
 
 Naming Convention:
 All machines of class InvisMach have names ending in "_mach". For machines of class ViewOnlyMach or ItemMach this convention colides with the interpreter-based convention of object name = 'noun_verb'. The interpreter-based convention wins here and the '_mach' postfix is dropped for these machines (e.g. control_panel).

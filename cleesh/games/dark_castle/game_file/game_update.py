@@ -192,6 +192,7 @@ toggle_portcullis_result = OpenableToggleResult('toggle_portcullis_result', Fals
 # *** machines ***
 
 ## AutoMach ##
+## auto_act runs every move if mach is in scope - there is no trigger
 
 dispense_panel_mach = InvisAutoMach('dispense_panel_mach', False,
 		'auto_act', 'antechamber_temp', True,
@@ -207,6 +208,7 @@ re_arm_goblin_mach = InvisAutoMach('re_arm_goblin_mach', None,
 
 
 ## TrigMach ##
+## for pre_act_cmd or post_act_cmd: trig_vals_lst = list-of-list of word_lst values that will trigger mach
 
 hedgehog_guard_mach = InvisTrigMach('hedgehog_guard_mach', None, 
 		'pre_act_cmd', 'royal_hedgehog_temp', True, 
@@ -254,13 +256,15 @@ kinging_scroll = ItemTrigMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kin
 
 
 ## SwitchMach ##
+## for auto_act_timer: trig_vals_lst = list of trigger values for timer.is_dinging()
+## for post_act_switch: trig_vals_lst = list of trigger values for cond_switch
 
 hedgehog_done_eating_mach = InvisSwitchMach('hedgehog_done_eating_mach', False, 
 		'auto_act_timer', 'royal_hedgehog_temp', True, 
 		hedgehog_eats_timer, [True], 
 		[hedgehog_descript_updated_cond, sword_on_floor, sword_not_on_floor],
 		[pass_result, fed_hedgehog_keeps_sword_result, fed_hedgehog_loses_sword_result]
-		) # mach_state == mach has run once; trig_vals_lst = list-of-list of desired value for timer.is_dinging()
+		) # mach_state == mach has run once
 
 control_panel = ContainerFixedSimpleSwitchMach('control_panel', 'Control Panel', 'panel', 'control_panel', None, 
 		[left_lever, middle_lever, right_lever, red_button], 999, 4, 'on', 0, 

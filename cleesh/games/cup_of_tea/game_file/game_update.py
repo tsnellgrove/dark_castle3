@@ -85,6 +85,7 @@ tea_drunk_win_result = EndResult('tea_drunk_win_result', False, None, False, 'wo
 
 
 ## TrigMach ##
+## for pre_act_cmd or post_act_cmd: trig_vals_lst = list-of-list of word_lst values that will trigger mach
 
 tea_drunk_mach = InvisTrigMach('tea_drunk_mach', None, 
 				'post_act_cmd', 'pub_temp', True, 

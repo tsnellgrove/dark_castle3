@@ -805,7 +805,7 @@ Version 3.87.0 Goals:
 		- DONE: web_main.py
 		- DONE: static_gbl.py
 
-- DONE: mach review 
+- DONE: mach inheritance refactor (build 0011 [])
 	- DONE: for Mach class, create an 'is_enabled' attribute
 	- DONE: general Mach class review
 		- DONE: analyze dark_castle machs
@@ -901,7 +901,7 @@ Version 3.87.0 Goals:
 		- IDEA: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj
 		- IDEA: update modular machine doc!
 
-- INPROC: Sort out parrent-child inheritance (build 0011 [])
+- DONE: Sort out parrent-child inheritance
 	- DONE: create new mach_inherit_feature git branch
 		- DONE: 'git branch' to confirm *master
 		- DONE: 'git branch mach_inherit_feature' to create new branch
@@ -1075,7 +1075,7 @@ Version 3.87.0 Goals:
 				- DONE: solve attrib count error
 			- DONE: test
 			- DONE: document format for trig_vals_lst in comments ( auto_action() )
-	- INPROC: migrate existing "switch" mach obj
+	- DONE: migrate existing "switch" mach obj
 		- DONE: investigate existing 'switch' case
 			- DONE: update post_action()
 			- DONE: Test
@@ -1097,7 +1097,7 @@ Version 3.87.0 Goals:
 			- CANCEL: rework SwitchStateCond cond_check() to allow for all False values => default (if on True)
 				- FINDING: I was right the first time ;-D
 			- DONE: test (never getting to cond_check() - need to look at trig_check() )
-		- INPROC: clean up and optimize
+		- DONE: clean up and optimize
 			- DONE: sort out cup_of_tea game_update
 			- DONE: comment out old Mach code
 			- DONE: comment out old imports in game_updates
@@ -1124,8 +1124,8 @@ Version 3.87.0 Goals:
 				- DONE: update game_update, auto_act(), post_act()
 			- DONE: test
 			- DONE: comment clean-up mach_class(), pre_act(), cond_class(), game_update, post_act(), auto_act()
-			- TBD: document format for trig_vals_lst in comments ( auto_action() and game_update() )
-			- TBD: update mach doc (for both AutoMachMixIn and TrigMachMixIn)
+			- DONE: document format for trig_vals_lst in comments ( auto_action() and game_update() )
+			- DONE: update mach doc for AutoMachMixIn, TrigMachMixIn, and SwitchMachMixIn
 
 - TBD: review other inheritance ideas
 	- TBD: review existing Warning class - refactor / integrate with Mach class
