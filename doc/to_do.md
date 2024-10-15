@@ -1127,27 +1127,26 @@ Version 3.87.0 Goals:
 			- DONE: document format for trig_vals_lst in comments ( auto_action() and game_update() )
 			- DONE: update mach doc for AutoMachMixIn, TrigMachMixIn, and SwitchMachMixIn
 
-- TBD: review other inheritance ideas
-	- TBD: review existing Warning class - refactor / integrate with Mach class
-		- TBD: refactor app_turn modules (warning & timer code)
-		- TBD: review existing Timer class - refactor / integrate with Mach class
-		- TBD: update version build #
-	- TBD: reconsider parent / child mach classes / MixIns
+- DONE: review other inheritance ideas
+	- DONE: review existing Warning class - refactor / integrate with Mach class
+		- DONE: refactor app_turn modules (warning & timer code)
+		- DONE: review existing Timer class - refactor / integrate with Mach class
+		- N/A: update version build #
+	- DONE: reconsider parent / child mach classes / MixIns
 		- IDEA: can Warning be a parent of Mach?
 		- IDEA: is Timer truly an independent class?
 		- IDEA: do I want different types of Mach based on trigger_type = proto vs. auto vs. cmd vs. switch
 		- IDEA: but if so, then how many MixIn varients do I end up with? Too many?	
-		- TBD: de-dup warning and timer classes
-	- IDEA: it appears that "selective inheritance" just isn't a thing. What now?
+		- DONE: de-dup warning and timer classes
+	- DONE: it appears that "selective inheritance" just isn't a thing. What now?
 		- IDEA: makes sense... in all other cases I inherit from simple parents to more complex children
 		- IDEA: WarnClass is simpler... so it should be the parent
 		- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
 		- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
 
-- INPROC: fix VS Code error checking / pylance or whatever is wrong
-	- DONE: tried un-installing and re-installing python extension & pylance (Sept 17)
+- DONE: full test play
 
-- TBD: git branch merge with master
+- INPROC: git branch merge with master
 	- TBD: 'git checkout master' to switch focus to master
 	- TBD: 'git branch: to confirm focus
 	- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
@@ -1160,10 +1159,10 @@ Version 3.87.0 Goals:
 	- TBD: post-branch-delete run test
 	- TBD: update cleesh engine version build
 
-- IDEA: triggers
-	- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
-	- IDEA: Establish switch triggers such that timer as trigger is more natural
-	- TBD: update cleesh engine version build
+
+
+- INPROC: fix VS Code error checking / pylance or whatever is wrong
+	- DONE: tried un-installing and re-installing python extension & pylance (Sept 17)
 
 - TBD: Cases where I want a modular machine to run despite an error standard
 	- IDEA: perhaps re-org app_main()
@@ -1219,6 +1218,12 @@ Version 3.87.0 Goals:
 	- IDEA: event bus idea
 		- IDEA: would hold all commands, timer 'ticks', and state changes (e.g. switches)
 		- IDEA: for event bus, consider moving auto_action() to front of app_main() run order
+
+- IDEA: triggers [FUTURE / MAYBE]
+	- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
+	- IDEA: Establish switch triggers such that timer as trigger is more natural
+	- TBD: update cleesh engine version build
+
 
 - TBD: mod-mach bug fixes
 	- TBD: fix hedgehog description after sword is returned (before goblin killed)
