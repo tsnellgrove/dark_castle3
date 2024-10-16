@@ -1143,9 +1143,7 @@ Version 3.87.0 Goals:
 		- IDEA: WarnClass is simpler... so it should be the parent
 		- IDEA: perhaps right now I'll just make an independent class with duplicate trig_check code base
 		- IDEA: as a future activity, I can look to de-dup in a more elegant fashion
-
 - DONE: full test play
-
 - DONE: git branch merge with master
 	- DONE: 'git checkout master' to switch focus to master
 	- DONE: 'git branch: to confirm focus
@@ -1160,15 +1158,12 @@ Version 3.87.0 Goals:
 	- DONE: update cleesh engine version build
 
 
-
-- INPROC: fix VS Code error checking / pylance or whatever is wrong
+- DONE: fix VS Code error checking / pylance or whatever is wrong
 	- DONE: tried un-installing and re-installing python extension & pylance (Sept 17)
+	- DONE: moved vscode.exe from Downloads to Applications and was then able to upgrade => Pylance works!
+		- LINK: https://github.com/microsoft/vscode/issues/7426#issuecomment-425093469
 
-- TBD: Cases where I want a modular machine to run despite an error standard
-	- IDEA: perhaps re-org app_main()
-	- IDEA: interp() => val_non-attempt() => auto_act() => pre_act() => attempt_err() => cmd_exe() => post_acct()
-	- IDEA: perhaps move to separate 'Errors' section
-		- IDEA: new Errors class inherits from Invisible; now also returns is_attemptable
+- TBD: Cases where I want a modular machine to run despite an error standard (build 0011 [])
 	- IDEA: problem description
 		- IDEA: e.g. 'go north' in antechamber triggers goblin
 		- IDEA: i.e. should it ever be possible to override an error? If so, then how?
@@ -1176,12 +1171,9 @@ Version 3.87.0 Goals:
 			- IDEA: but the Goblin should attack before Burt can touch the Portcullis
 	- IDEA: general thinking / philosophy
 		- IDEA: narrative shoudld be able to trump simulation rules if desired (but it may take extra work)
-		- DECISION: use fake_door for now and swap on goblin death
-		- RECONSIDER: 'take axe' case is hard to fake out... maybe I do need an interupt() module after all??
-	- IDEA: possible solution 1
-		- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
-		- IDEA: modular machines should be designed so that it is easy to trigger & run them from interupt()
-	- IDEA: possible solutions 2
+		- IDEA: use fake_door for now and swap on goblin death ?
+		- DEC: 'take axe' case is hard to fake out... I think I do need a systemic soluiton after-all
+	- IDEA: basic approach
 		- IDEA: what we really need to do is differentiate between "attemptable" failure vs. "impossible"
 		- IDEA: attempting to open a locked door is the poster child for this
 			- IDEA: it is reasonable for the player to attempt a new door they find
@@ -1190,16 +1182,52 @@ Version 3.87.0 Goals:
 			- IDEA: against a player that is rattling the locked door they are guarding
 		- IDEA: by contrast: 'eat horseshoe' (when there is no nearby horseshoe) is NOT attemptable
 			- IDEA: and should not be dignified by a pre_action() response
-		- TBD: in errors, return is_attemptable
-			- TBD: if is_attemptable == True, time passes, and both pre_act() and auto_act() run
-			- IDEA: all errors that return useful info (e.g. 'locked door') are attemptable
+	- IDEA: possible "attemptable" implementation
+		- IDEA: perhaps re-org app_main()
+			- IDEA: interp => val_err => auto_act => pre_act => val_att => cmd_exe => post_acct
+		- IDEA: in Invisible, create separate <verb>_att method right after each <verb>_err method
+			- IDEA: validated_att() checks for attemptable errors and returns if they are found
+		- IDEA: alternatively, maybe new Errors class inherits from Invisible ?
+			- IDEA: appears that only Writing inherits directly from Invisible?
+		- IDEA: in errors, return is_attemptable
+			- IDEA: if is_attemptable == True, time passes, and both pre_act() and auto_act() run
+		- IDEA: all errors that return useful info (e.g. 'locked door') are attemptable
 			- IDEA: is_attemptable = False for all cases where the obj is not in room
 			- IDEA: in between is tricky... 
 			- IDEA: go <direction w/ no exit> and take <obj held by creature> are good attemptable candidates
-	- IDEA: alternative work-arounds:
-		- TBD: Maybe just 'x axe' case?
-		- TBD: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
+	- DONE: alternative work-arounds:
+		- CANCEL: Maybe just 'x axe' case?
+			- NA: update take_err() creature check - allow hostile reaction if burt attempts to take goblin axe?
+		- CANCEL: possible solution 1
+			- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
+			- IDEA: modular machines should be designed so that it is easy to trigger & run them from interupt()
+		- DEC: want a more consistent approach
+	- TBD: sort out Error class idea
+		- TBD: create fresh map of class inheritance
+		- TBD: if appears viable:
+			- TBD: create error() module
+			- TBD: create Error class in error() which inherits from Invisible
+			- TBD: updated Writing to inherit from Error
+			- TBD: test
+			- TBD: copy all err methods to Error
+			- TBD: tripple-quote elim all err from Invisible
+			- TBD: test
+			- TBD: clean up invisible() and Writing in base()
+	- TBD: re-order auto_act to start of app-main loop
+		- TBD:
+	- TBD: create attempt_err()
+		- TBD: create attempt_err() module
+		- TBD: create attmept_err() function
+		- TBD: similar code to validate but call <verb>_att
+		- TBD: add attempt_err() to app_main loop after pre_action() and before cmd_exe()
+	- TBD: create <verb>_att methods in Error
+	- TBD: document Error updates and categories in doc
 	- TBD: update cleesh engine version build
+
+
+- TBD: would be nice to have an Error class that inherits from Invisible [FUTURE]
+	- IDEA: but this would break in heritance?
+	- IDEA: or maybe Writing just needs to inherit from Error ?
 
 - TBD: state machine for hedgehog [FUTURE]
 	- IDEA: need to implement hedgehog state machine based on creature state
@@ -1219,7 +1247,7 @@ Version 3.87.0 Goals:
 		- IDEA: would hold all commands, timer 'ticks', and state changes (e.g. switches)
 		- IDEA: for event bus, consider moving auto_action() to front of app_main() run order
 
-- IDEA: triggers [FUTURE / MAYBE]
+- IDEA: triggers [FUTURE]
 	- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
 	- IDEA: Establish switch triggers such that timer as trigger is more natural
 	- TBD: update cleesh engine version build
