@@ -1202,10 +1202,29 @@ Version 3.87.0 Goals:
 			- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
 			- IDEA: modular machines should be designed so that it is easy to trigger & run them from interupt()
 		- DEC: want a more consistent approach
-	- TBD: sort out Error class idea
-		- TBD: create fresh map of class inheritance
-		- TBD: if appears viable:
-			- TBD: create error() module
+	- INPROC: sort out Error class idea
+		- INPROC: create fresh map of class inheritance
+			- DONE: map class_std classes
+			- TBD: map class_gs classes
+			- TBD: map class_mach classes
+
+		- TBD: create new <FEATURE_NAME>_feature git branch
+			- TBD: 'git branch' to confirm *master
+			- TBD: 'git branch <FEATURE_NAME>' to create new branch
+			- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+			- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
+			- TBD: 'git branch' to confirm new branch is now in focus
+			- TBD: Publish Branch via VS Code button
+			- TBD: confirm new branch on GitHub
+			- TBD: update doc TBDs to DONEs
+			- TBD: <CMD><OPT>S (to save all files)
+			- TBD: 'git add .' to add files to be committed
+			- TBD: 'git commit -m "doc updates"
+			- TBD: 'git push" to push updates to origin (GitHub)
+			- TBD: confirm new branch on GitHub is now ahead of master
+
+		- TBD: create Error class and error_class() module in class_std
+			- TBD: create error)_class() module in class_std
 			- TBD: create Error class in error() which inherits from Invisible
 			- TBD: updated Writing to inherit from Error
 			- TBD: test
@@ -1214,6 +1233,7 @@ Version 3.87.0 Goals:
 			- TBD: test
 			- TBD: clean up invisible() and Writing in base()
 	- TBD: re-order auto_act to start of app-main loop
+		- IDEA: interp => val_err => auto_act => pre_act => val_att => cmd_exe => post_acct
 		- TBD:
 	- TBD: create attempt_err()
 		- TBD: create attempt_err() module
@@ -1222,6 +1242,20 @@ Version 3.87.0 Goals:
 		- TBD: add attempt_err() to app_main loop after pre_action() and before cmd_exe()
 	- TBD: create <verb>_att methods in Error
 	- TBD: document Error updates and categories in doc
+	- TBD: consider whether hidden rooms s, e, & w of Entrance can be eliminated (needed for paths?)
+
+	- TBD: git branch merge with master
+		- TBD: 'git checkout master' to switch focus to master
+		- TBD: 'git branch: to confirm focus
+		- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+		- TBD: 'git push' to push merge to origin (GitHub)
+		- TBD: confirm that origin is updated
+		- TBD: confirm that code is updated and still runs
+		- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+		- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+		- TBD: confirm origin is cleaned up
+		- TBD: post-branch-delete run test
+
 	- TBD: update cleesh engine version build
 
 
