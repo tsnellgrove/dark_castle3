@@ -1224,15 +1224,26 @@ Version 3.87.0 Goals:
 			- TBD: 'git push" to push updates to origin (GitHub)
 			- TBD: confirm new branch on GitHub is now ahead of master
 
-		- TBD: create Error class and error_class() module in class_std
-			- TBD: create error)_class() module in class_std
-			- TBD: create Error class in error() which inherits from Invisible
-			- TBD: updated Writing to inherit from Error
-			- TBD: test
-			- TBD: copy all err methods to Error
-			- TBD: tripple-quote elim all err from Invisible
-			- TBD: test
-			- TBD: clean up invisible() and Writing in base()
+		- TBD: sort out Invisible, Identity, and Error classes
+			- IDEA: all non-MixIn classes should inherit from Invisible
+			- IDEA: Invisible itself should only hold the 'name' attrib and print footer
+			- TBD: gs_class classes inherit from Invisible
+				- TBD: test
+			- TBD: base condition and result classes inherit from Invisible
+				- TBD: test
+			- TBD: Identity class
+				- TBD: create Identity (inherits from Invisible) in identity_class module in class_std pkg
+				- TBD: Writing inherits from Identity
+				- TBD: migrate all identity functions to Identity
+				- TBD: test
+			- TBD: Error class
+				- TBD: create error_class() module in class_std
+				- TBD: create Error class in error() which inherits from Invisible
+				- TBD: updated Writing to inherit from Error	
+				- TBD: copy all err methods to Error
+				- TBD: tripple-quote elim all err from Invisible
+				- TBD: test
+		- TBD: clean up invisible_class() and Writing in base_class()
 	- TBD: re-order auto_act to start of app-main loop
 		- IDEA: interp => val_err => auto_act => pre_act => val_att => cmd_exe => post_acct
 		- TBD:
