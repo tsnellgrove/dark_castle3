@@ -1163,6 +1163,7 @@ Version 3.87.0 Goals:
 	- DONE: moved vscode.exe from Downloads to Applications and was then able to upgrade => Pylance works!
 		- LINK: https://github.com/microsoft/vscode/issues/7426#issuecomment-425093469
 
+
 - TBD: Cases where I want a modular machine to run despite an error standard (build 0011 [])
 	- IDEA: problem description
 		- IDEA: e.g. 'go north' in antechamber triggers goblin
@@ -1205,7 +1206,7 @@ Version 3.87.0 Goals:
 	- INPROC: sort out Error class idea
 		- INPROC: create fresh map of class inheritance
 			- DONE: map class_std classes
-			- TBD: map class_gs classes
+			- DONE: map class_gs classes
 			- TBD: map class_mach classes
 
 		- TBD: create new <FEATURE_NAME>_feature git branch
