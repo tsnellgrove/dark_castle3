@@ -114,7 +114,7 @@ class Invisible(object):
 
 	# *** debug methods ###
 	def where_is(self, gs, mode=None):
-		""" Reports the weight of an Item. Only usable in debug mode.
+		""" Reports the location of an obj. Only usable in debug mode.
 		"""
 		if mode is None:
 			mode = 'std'

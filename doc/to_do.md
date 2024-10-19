@@ -1204,10 +1204,10 @@ Version 3.87.0 Goals:
 			- IDEA: modular machines should be designed so that it is easy to trigger & run them from interupt()
 		- DEC: want a more consistent approach
 	- INPROC: sort out Error class idea
-		- INPROC: create fresh map of class inheritance
+		- DONE: create fresh map of class inheritance
 			- DONE: map class_std classes
 			- DONE: map class_gs classes
-			- TBD: map class_mach classes
+			- DONE: map class_mach classes
 
 		- TBD: create new <FEATURE_NAME>_feature git branch
 			- TBD: 'git branch' to confirm *master
@@ -1224,23 +1224,27 @@ Version 3.87.0 Goals:
 			- TBD: 'git push" to push updates to origin (GitHub)
 			- TBD: confirm new branch on GitHub is now ahead of master
 
-		- TBD: sort out Invisible, Identity, and Error classes
+		- TBD: sort out Invisible and Error classes
 			- IDEA: all non-MixIn classes should inherit from Invisible
 			- IDEA: Invisible itself should only hold the 'name' attrib and print footer
 			- TBD: gs_class classes inherit from Invisible
 				- TBD: test
 			- TBD: base condition and result classes inherit from Invisible
 				- TBD: test
-			- TBD: Identity class
+			- TBD: TangIdentity class
+				- TBD: fix / elim has_cond() identity in AutoMachMixIn [=> has_cond_result() ??]
+				- TBD: elim has_switch and has_trigger identities ??
 				- TBD: create Identity (inherits from Invisible) in identity_class module in class_std pkg
 				- TBD: Writing inherits from Identity
-				- TBD: migrate all identity functions to Identity
+				- TBD: migrate all tangible identity func to Identity but keep abstract identity in Invisible
+					- EXAMPLE: abstract == is_timer, is_mach, is_warning, and maybe is_switch (???)
 				- TBD: test
+			- TBD: move where_is() debug method to ViewOnly
 			- TBD: Error class
 				- TBD: create error_class() module in class_std
-				- TBD: create Error class in error() which inherits from Invisible
-				- TBD: updated Writing to inherit from Error	
-				- TBD: copy all err methods to Error
+				- TBD: create Error class in error() which inherits from Identity
+				- TBD: updated Writing to inherit from Error
+				- TBD: copy all err methods to Error (and global debug methods too)
 				- TBD: tripple-quote elim all err from Invisible
 				- TBD: test
 		- TBD: clean up invisible_class() and Writing in base_class()

@@ -16,7 +16,7 @@
 # MachStateCond : 		TrueCond :		  	match mach_state
 # TimerActiveCond :		TrueCond :			match timer_obj.active
 # SwitchStateCond : 	TrueCond :		 	match switch_state_lst
-# LeverArrayCond : 		TrueCond :			sum of lever_val_lst == mach_state
+# LeverArrayCond : 		SwitchStateCond :	sum of lever_val_lst == mach_state
 
 
 ### classes
