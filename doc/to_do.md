@@ -1209,7 +1209,7 @@ Version 3.87.0 Goals:
 			- DONE: map class_gs classes
 			- DONE: map class_mach classes
 
-		- TBD: create new <FEATURE_NAME>_feature git branch
+		- TBD: create new <FEATURE_NAME>_feature git branch [attemptable_error]
 			- TBD: 'git branch' to confirm *master
 			- TBD: 'git branch <FEATURE_NAME>' to create new branch
 			- TBD: 'git branch' to confirm new branch exists but that master is still checked out
@@ -1231,7 +1231,7 @@ Version 3.87.0 Goals:
 				- TBD: test
 			- TBD: base condition and result classes inherit from Invisible
 				- TBD: test
-			- TBD: TangIdentity class
+			- TBD: TangibleIdentity class
 				- TBD: fix / elim has_cond() identity in AutoMachMixIn [=> has_cond_result() ??]
 				- TBD: elim has_switch and has_trigger identities ??
 				- TBD: create Identity (inherits from Invisible) in identity_class module in class_std pkg
