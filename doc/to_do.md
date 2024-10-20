@@ -1209,20 +1209,20 @@ Version 3.87.0 Goals:
 			- DONE: map class_gs classes
 			- DONE: map class_mach classes
 
-		- TBD: create new <FEATURE_NAME>_feature git branch [attemptable_error]
-			- TBD: 'git branch' to confirm *master
-			- TBD: 'git branch <FEATURE_NAME>' to create new branch
-			- TBD: 'git branch' to confirm new branch exists but that master is still checked out
-			- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
-			- TBD: 'git branch' to confirm new branch is now in focus
-			- TBD: Publish Branch via VS Code button
-			- TBD: confirm new branch on GitHub
-			- TBD: update doc TBDs to DONEs
-			- TBD: <CMD><OPT>S (to save all files)
-			- TBD: 'git add .' to add files to be committed
-			- TBD: 'git commit -m "doc updates"
-			- TBD: 'git push" to push updates to origin (GitHub)
-			- TBD: confirm new branch on GitHub is now ahead of master
+		- DONE: create new <FEATURE_NAME>_feature git branch [attemptable_error]
+			- DONE: 'git branch' to confirm *master
+			- DONE: 'git branch <FEATURE_NAME>' to create new branch
+			- DONE: 'git branch' to confirm new branch exists but that master is still checked out
+			- DONE: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
+			- DONE: 'git branch' to confirm new branch is now in focus
+			- DONE: Publish Branch via VS Code button
+			- DONE: confirm new branch on GitHub
+			- DONE: update doc TBDs to DONEs
+			- DONE: <CMD><OPT>S (to save all files)
+			- DONE: 'git add .' to add files to be committed
+			- DONE: 'git commit -m "doc updates"
+			- DONE: 'git push" to push updates to origin (GitHub)
+			- DONE: confirm new branch on GitHub is now ahead of master
 
 		- TBD: sort out Invisible and Error classes
 			- IDEA: all non-MixIn classes should inherit from Invisible
