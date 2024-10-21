@@ -4,13 +4,16 @@
 
 ### import
 import random
+from cleesh.class_std.invisible_class_def import Invisible
 
 
 ### classes
-class Invisible(object):
+# class Invisible(object):
+class Identity(Invisible):
 	def __init__(self, name):
-		self._name = name # text str of each obj's canonical name; should be unique and immutable
-		""" Invisible is the root object class. There are no instantiated objects of class Invisible but all objects in the game inherit the name attribute, class identity methods, and error sub-system from Invisible. 
+		super().__init__(name)
+#		self._name = name # text str of each obj's canonical name; should be unique and immutable
+		""" Identity class inherits from Invisible. All tangible class identity methods live in Identity. 
 		"""
 
 	# *** getters & setters ***
@@ -18,38 +21,6 @@ class Invisible(object):
 	def name(self):
 		return self._name
 
-	# *** tangible identity methods needed for room.get_mach_lst() ***
-	def is_creature(self):
-		return False
-
-	def is_switch(self):
-		return False
-
-	# *** abstract identity methods ***
-	def is_timer(self):
-		return False
-
-	def is_mach(self):
-		return False
-
-	def is_warning(self):
-		return False
-
-	def has_trigger(self):
-		return False
-
-	def has_cond(self):
-		return False
-
-	def has_switch(self):
-		return False
-
-	# *** obj representation def ***
-	def __repr__(self):
-		return f"Object {self.name} is of class {type(self).__name__}"
-
-
-"""
 
 	# *** universal scope methods ***
 	def get_contain_lst(self, gs):
@@ -146,8 +117,8 @@ class Invisible(object):
 
 	# *** debug methods ###
 	def where_is(self, gs, mode=None):
-#		Reports the location of an obj. Only usable in debug mode.
-
+		""" Reports the location of an obj. Only usable in debug mode.
+		"""
 		if mode is None:
 			mode = 'std'
 		creature = gs.core.hero
@@ -703,10 +674,6 @@ class Invisible(object):
 		return False
 
 
-
 	# *** obj representation def ***
-	def __repr__(self):
-		return f"Object {self.name} is of class {type(self).__name__}"
-
-
-"""
+#	def __repr__(self):
+#		return f"Object {self.name} is of class {type(self).__name__}"

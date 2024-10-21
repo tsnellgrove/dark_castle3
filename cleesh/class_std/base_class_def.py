@@ -4,10 +4,12 @@
 
 
 ### import
-from cleesh.class_std.invisible_class_def import Invisible
+from cleesh.class_std.identity_class_def import Identity
+# from cleesh.class_std.invisible_class_def import Invisible
 
 
-class Writing(Invisible):
+class Writing(Identity):
+# class Writing(Invisible):
 	def __init__(self, name, full_name, root_name, descript_key):
 		super().__init__(name)
 		self._full_name = full_name # the object name presented to the player. Typical format = "Adj Noun". First character capitalized

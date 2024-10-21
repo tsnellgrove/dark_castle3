@@ -1224,22 +1224,28 @@ Version 3.87.0 Goals:
 			- DONE: 'git push" to push updates to origin (GitHub)
 			- DONE: confirm new branch on GitHub is now ahead of master
 
-		- TBD: sort out Invisible and Error classes
+		- INPROC: sort out Invisible and Error classes
 			- IDEA: all non-MixIn classes should inherit from Invisible
 			- IDEA: Invisible itself should only hold the 'name' attrib and print footer
+			- DONE: simplify Identity class
+				- DONE: create identity_class_def.py in class_std pkg directory
+				- DONE: copy all of Invisible class to identity_class_def.py
+				- DONE: create Identity class which inherits from Invisible
+				- DONE: update tipple quote doc line
+				- DONE: comment out print
+				- DONE: have Writing inherity from Identity; update base_class() import to Identity
+				- DONE: comment out all in Invisible except name, print, and abstract identities
+				- DONE: test
 			- TBD: gs_class classes inherit from Invisible
 				- TBD: test
 			- TBD: base condition and result classes inherit from Invisible
 				- TBD: test
-			- TBD: TangibleIdentity class
+			- TBD: fix tactical issues
+				- TBD: move where_is() debug method to ViewOnly
 				- TBD: fix / elim has_cond() identity in AutoMachMixIn [=> has_cond_result() ??]
-				- TBD: elim has_switch and has_trigger identities ??
-				- TBD: create Identity (inherits from Invisible) in identity_class module in class_std pkg
-				- TBD: Writing inherits from Identity
-				- TBD: migrate all tangible identity func to Identity but keep abstract identity in Invisible
-					- EXAMPLE: abstract == is_timer, is_mach, is_warning, and maybe is_switch (???)
-				- TBD: test
-			- TBD: move where_is() debug method to ViewOnly
+				- TBD: elim has_switch and has_trigger identities ?? (at least diff is_switch and has_switch)
+				- TBD: fix room.get_mach_lst() to not require invisible obj to have is_switch() or is_creature()
+				- TBD: de-dup Invisible vs. Identity identity methods			
 			- TBD: Error class
 				- TBD: create error_class() module in class_std
 				- TBD: create Error class in error() which inherits from Identity
