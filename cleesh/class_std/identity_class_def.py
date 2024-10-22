@@ -85,23 +85,23 @@ class Identity(Invisible):
 	def is_leverswitch(self):
 		return False
 
-	def is_timer(self):
-		return False
+#	def is_timer(self):
+#		return False
 
-	def is_mach(self):
-		return False
+#	def is_mach(self):
+#		return False
 
-	def is_warning(self):
-		return False
+#	def is_warning(self):
+#		return False
 
-	def has_trigger(self):
-		return False
+#	def has_trigger(self):
+#		return False
 
 	def has_cond(self):
 		return False
 
-	def has_switch(self):
-		return False
+#	def has_switch(self):
+#		return False
 
 	def is_garment(self):
 		return False
@@ -116,27 +116,27 @@ class Identity(Invisible):
 		return False
 
 	# *** debug methods ###
-	def where_is(self, gs, mode=None):
-		""" Reports the location of an obj. Only usable in debug mode.
-		"""
-		if mode is None:
-			mode = 'std'
-		creature = gs.core.hero
+#	def where_is(self, gs, mode=None):
+#		""" Reports the location of an obj. Only usable in debug mode.
+#		"""
+#		if mode is None:
+#			mode = 'std'
+#		creature = gs.core.hero
 		
-		if not gs.map.chk_obj_exist(self, gs):
-			gs.io.buffer(f"The {self.full_name} does not currently exist in the game.")
-			return
-		room = gs.map.get_obj_room(creature, gs)
-		if room.chk_is_vis(self, gs):
-			gs.io.buffer(f"The {self.full_name} is visible in the {room.full_name}, where you are presently.")
-		elif gs.map.get_obj_room(self, gs) == room:
-			gs.io.buffer(f"The {self.full_name} is not visible to you but is in the {room.full_name}, where you are presently.")
-		else:
-			gs.io.buffer(f"The {self.full_name} is in the {gs.map.get_obj_room(self, gs).full_name}.")
-		in_inv, inv_creature = gs.map.chk_obj_in_creature_inv(self, gs)
-		if in_inv:
-			gs.io.buffer(f"The {self.full_name} is in the inventory of the {inv_creature.full_name}.")
-		return
+#		if not gs.map.chk_obj_exist(self, gs):
+#			gs.io.buffer(f"The {self.full_name} does not currently exist in the game.")
+#			return
+#		room = gs.map.get_obj_room(creature, gs)
+#		if room.chk_is_vis(self, gs):
+#			gs.io.buffer(f"The {self.full_name} is visible in the {room.full_name}, where you are presently.")
+#		elif gs.map.get_obj_room(self, gs) == room:
+#			gs.io.buffer(f"The {self.full_name} is not visible to you but is in the {room.full_name}, where you are presently.")
+#		else:
+#			gs.io.buffer(f"The {self.full_name} is in the {gs.map.get_obj_room(self, gs).full_name}.")
+#		in_inv, inv_creature = gs.map.chk_obj_in_creature_inv(self, gs)
+#		if in_inv:
+#			gs.io.buffer(f"The {self.full_name} is in the inventory of the {inv_creature.full_name}.")
+#		return
 
 
 	# *** standard errors ###	

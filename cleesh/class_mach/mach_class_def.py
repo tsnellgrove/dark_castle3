@@ -64,8 +64,8 @@ class TrigMixIn(object):
 		return self._trig_vals_lst
 
 	# class identity methods
-	def has_trigger(self):
-		return True
+#	def has_trigger(self):
+#		return True
 
 	# complex methods
 	def trig_check(self, gs, case, word_lst):
@@ -203,8 +203,8 @@ class AutoMachMixIn(ProtoMachMixIn):
 		return self._result_lst
 
 	# class identity methods
-	def has_cond(self):
-		return True
+#	def has_cond(self):
+#		return True
 
 	# complex methods
 	def run_mach(self, gs):
@@ -256,8 +256,8 @@ class SwitchMachMixIn(TrigMachMixIn):
 		return self._trig_switch
 
 	# class identity methods
-	def has_switch(self):
-		return True
+#	def has_switch(self):
+#		return True
 
 class InvisSwitchMach(SwitchMachMixIn, Invisible):
 	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst):

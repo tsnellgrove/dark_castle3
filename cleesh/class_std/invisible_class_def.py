@@ -35,14 +35,14 @@ class Invisible(object):
 	def is_warning(self):
 		return False
 
-	def has_trigger(self):
-		return False
+#	def has_trigger(self):
+#		return False
 
-	def has_cond(self):
-		return False
+#	def has_cond(self):
+#		return False
 
-	def has_switch(self):
-		return False
+#	def has_switch(self):
+#		return False
 
 	# *** obj representation def ***
 	def __repr__(self):

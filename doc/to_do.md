@@ -1236,16 +1236,16 @@ Version 3.87.0 Goals:
 				- DONE: have Writing inherity from Identity; update base_class() import to Identity
 				- DONE: comment out all in Invisible except name, print, and abstract identities
 				- DONE: test
+			- INPROC: fix tactical issues
+				- DONE: move where_is() debug method to ViewOnly
+				- DONE: elim has_cond() identity in AutoMachMixIn / abastract identity section of Invisible
+				- DONE: elim has_switch and has_trigger identities
+				- DONE: de-dup Invisible vs. Identity identity methods
+				- TBD: fix room.get_mach_lst() to not require invisible obj to have is_switch() or is_creature()
 			- TBD: gs_class classes inherit from Invisible
 				- TBD: test
 			- TBD: base condition and result classes inherit from Invisible
 				- TBD: test
-			- TBD: fix tactical issues
-				- TBD: move where_is() debug method to ViewOnly
-				- TBD: fix / elim has_cond() identity in AutoMachMixIn [=> has_cond_result() ??]
-				- TBD: elim has_switch and has_trigger identities ?? (at least diff is_switch and has_switch)
-				- TBD: fix room.get_mach_lst() to not require invisible obj to have is_switch() or is_creature()
-				- TBD: de-dup Invisible vs. Identity identity methods			
 			- TBD: Error class
 				- TBD: create error_class() module in class_std
 				- TBD: create Error class in error() which inherits from Identity
@@ -1253,7 +1253,7 @@ Version 3.87.0 Goals:
 				- TBD: copy all err methods to Error (and global debug methods too)
 				- TBD: tripple-quote elim all err from Invisible
 				- TBD: test
-		- TBD: clean up invisible_class() and Writing in base_class()
+		- TBD: clean up invisible_class(), base_class(), identity_class(), mach_class(), 
 	- TBD: re-order auto_act to start of app-main loop
 		- IDEA: interp => val_err => auto_act => pre_act => val_att => cmd_exe => post_acct
 		- TBD:
