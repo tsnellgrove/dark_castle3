@@ -1240,7 +1240,7 @@ Version 3.87.0 Goals:
 				- DONE: move where_is() debug method to ViewOnly
 				- DONE: elim has_cond() identity in AutoMachMixIn / abastract identity section of Invisible
 				- DONE: elim has_switch and has_trigger identities
-				- DONE: de-dup Invisible vs. Identity identity methods
+				- INPROC: de-dup Invisible vs. Identity identity methods
 				- TBD: fix room.get_mach_lst() to not require invisible obj to have is_switch() or is_creature()
 			- TBD: gs_class classes inherit from Invisible
 				- TBD: test
