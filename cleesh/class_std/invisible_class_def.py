@@ -19,11 +19,11 @@ class Invisible(object):
 		return self._name
 
 	# *** tangible identity methods needed for room.get_mach_lst() ***
-	def is_creature(self):
-		return False
+#	def is_creature(self):
+#		return False
 
-	def is_switch(self):
-		return False
+#	def is_switch(self):
+#		return False
 
 	# *** abstract identity methods ***
 	def is_timer(self):
@@ -32,8 +32,8 @@ class Invisible(object):
 	def is_mach(self):
 		return False
 
-	def is_warning(self):
-		return False
+#	def is_warning(self):
+#		return False
 
 #	def has_trigger(self):
 #		return False

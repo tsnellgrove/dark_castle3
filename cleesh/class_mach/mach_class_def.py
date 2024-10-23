@@ -160,8 +160,8 @@ class Warning(ProtoMachMixIn, TrigMixIn, Invisible):
 		return self._warn_max
 
 	# class identity methods
-	def is_warning(self):
-		return True
+#	def is_warning(self):
+#		return True
 
 	# complex methods
 	def run_mach(self, gs):
