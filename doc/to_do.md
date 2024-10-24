@@ -1203,6 +1203,7 @@ Version 3.87.0 Goals:
 			- IDEA: creation of a pre-validate() module called interupt() that can over-ride errors
 			- IDEA: modular machines should be designed so that it is easy to trigger & run them from interupt()
 		- DEC: want a more consistent approach
+
 	- INPROC: sort out Error class idea
 		- DONE: create fresh map of class inheritance
 			- DONE: map class_std classes
@@ -1244,10 +1245,18 @@ Version 3.87.0 Goals:
 				- DONE: de-dup Invisible vs. Identity identity methods
 				- DONE: fix room.get_mach_lst() to not require invisible obj to have is_switch() or is_creature()
 				- DONE: test
-			- TBD: base condition and result classes inherit from Invisible
-				- TBD: test
+			- DONE: base condition and result classes inherit from Invisible
+				- DONE: TrueCond in condition_class()
+				- DONE: test
+				- DONE: BaseResult in result_class()
+				- DONE: test
+			- TBD: clean up invisible(), base(), identity(), mach(), room(), cond(), result()
 			- TBD: gs_class classes inherit from Invisible
 				- TBD: test
+				- TBD: clean up gs_class classes
+		- TBD: re-order auto_act to start of app-main loop
+			- IDEA: interp => val_err => auto_act => pre_act => val_att => cmd_exe => post_acct
+		- TBD:
 			- TBD: Error class
 				- TBD: create error_class() module in class_std
 				- TBD: create Error class in error() which inherits from Identity
@@ -1255,32 +1264,28 @@ Version 3.87.0 Goals:
 				- TBD: copy all err methods to Error (and global debug methods too)
 				- TBD: tripple-quote elim all err from Invisible
 				- TBD: test
-		- TBD: clean up invisible_class(), base_class(), identity_class(), mach_class(), room_class()
-	- TBD: re-order auto_act to start of app-main loop
-		- IDEA: interp => val_err => auto_act => pre_act => val_att => cmd_exe => post_acct
-		- TBD:
-	- TBD: create attempt_err()
-		- TBD: create attempt_err() module
-		- TBD: create attmept_err() function
-		- TBD: similar code to validate but call <verb>_att
-		- TBD: add attempt_err() to app_main loop after pre_action() and before cmd_exe()
-	- TBD: create <verb>_att methods in Error
-	- TBD: document Error updates and categories in doc
-	- TBD: consider whether hidden rooms s, e, & w of Entrance can be eliminated (needed for paths?)
+		- TBD: create attempt_err()
+			- TBD: create attempt_err() module
+			- TBD: create attmept_err() function
+			- TBD: similar code to validate but call <verb>_att
+			- TBD: add attempt_err() to app_main loop after pre_action() and before cmd_exe()
+		- TBD: create <verb>_att methods in Error
+		- TBD: document Error updates and categories in doc
+		- TBD: consider whether hidden rooms s, e, & w of Entrance can be eliminated (needed for paths?)
 
-	- TBD: git branch merge with master
-		- TBD: 'git checkout master' to switch focus to master
-		- TBD: 'git branch: to confirm focus
-		- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
-		- TBD: 'git push' to push merge to origin (GitHub)
-		- TBD: confirm that origin is updated
-		- TBD: confirm that code is updated and still runs
-		- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
-		- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
-		- TBD: confirm origin is cleaned up
-		- TBD: post-branch-delete run test
+		- TBD: git branch merge with master
+			- TBD: 'git checkout master' to switch focus to master
+			- TBD: 'git branch: to confirm focus
+			- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+			- TBD: 'git push' to push merge to origin (GitHub)
+			- TBD: confirm that origin is updated
+			- TBD: confirm that code is updated and still runs
+			- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+			- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+			- TBD: confirm origin is cleaned up
+			- TBD: post-branch-delete run test
 
-	- TBD: update cleesh engine version build
+		- TBD: update cleesh engine version build
 
 
 - TBD: would be nice to have an Error class that inherits from Invisible [FUTURE]

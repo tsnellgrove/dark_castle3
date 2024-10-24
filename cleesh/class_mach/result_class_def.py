@@ -8,7 +8,7 @@
 #-------------------    	-------------       ---------------------------------
 
 # *** new ***
-# BaseResult :				N/A (is parent) :	buffer using result.name as key if event in rm; set mach_state
+# BaseResult :				Invisible :	buffer using result.name as key if event in rm; set mach_state
 # EndResult :				BaseResult :		base + set ending val, set is_end = True
 # ChgDescriptResult	:		BaseResult :		base + change obj descript_key
 # GiveItemResult : 			BaseResult :		base + give item_obj to tgt_creature
@@ -20,26 +20,34 @@
 # OpenableToggleResult :	BaseResult :		base + loc_buff, toggles door state
 # CreatureTravelResult :	BaseResult :		base + creature attempts to go dir [not called]
 
-### classes
 
-class BaseResult(object):
+### imports ###
+from cleesh.class_std.invisible_class_def import Invisible
+
+### classes ###
+
+# class BaseResult(object):
+class BaseResult(Invisible):
 	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override):
-		self._name = name
+#		self._name = name
+		super().__init__(name)
 		self._cmd_override = cmd_override # does the triggered pre-action over-ride the 'standard' response to player command?
 		self._is_mach_state_set = is_mach_state_set # bool where True indicates that mach_state will be set
 		self._mach_state_val = mach_state_val # value mach_state should be set to if is_mach_state_set is True; None if not set
+		""" BaseResult class inherits from Invisible. All other result classes inherit from BaseResult. 
+		"""
 
-	@property
-	def name(self):
-		return self._name
+#	@property
+#	def name(self):
+#		return self._name
 
 	@property
 	def cmd_override(self):
 		return self._cmd_override
 
-	@property
-	def is_mach_state_set(self):
-		return self._is_mach_state_set
+#	@property
+#	def is_mach_state_set(self):
+#		return self._is_mach_state_set
 
 	@property
 	def is_mach_state_set(self):
@@ -60,8 +68,8 @@ class BaseResult(object):
 			mach_state = self.mach_state_val
 		return mach_state, self.cmd_override
 
-	def __repr__(self):
-		return f'Object { self.name } is of class { type(self).__name__ } '
+#	def __repr__(self):
+#		return f'Object { self.name } is of class { type(self).__name__ } '
 
 
 class EndResult(BaseResult):

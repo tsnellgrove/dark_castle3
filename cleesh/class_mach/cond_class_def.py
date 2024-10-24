@@ -6,7 +6,7 @@
 
 # Condition class (x) : inherits from (Y) : cond_check() method returns (Z)
 #-------------------    -------------       ---------------------------------
-# TrueCond :			N/A (is parent) :	True (parent class)
+# TrueCond :			Invisible :			True
 # WornCond :			TrueCond :			match garment is worn
 # ObjOnRmFlrCond:		TrueCond :			match obj on rm floor
 # ObjInRmCond :			TrueCond :			match obj room to match_rm
@@ -19,21 +19,28 @@
 # LeverArrayCond : 		SwitchStateCond :	sum of lever_val_lst == mach_state
 
 
-### classes
+### imports ###
+from cleesh.class_std.invisible_class_def import Invisible
 
-class TrueCond(object): # NEW COND
+### classes ###
+
+# class TrueCond(object): # NEW COND
+class TrueCond(Invisible):
 	def __init__(self, name):
-		self._name = name
+#		self._name = name
+		super().__init__(name)
+		""" TrueCond class inherits from Invisible. All other condition classes inherit from TrueCond. 
+		"""
 
-	@property
-	def name(self):
-		return self._name
+#	@property
+#	def name(self):
+#		return self._name
 
 	def cond_check(self, gs, mach_state):
 		return True
 
-	def __repr__(self):
-		return f'Object { self.name } is of class { type(self).__name__ } '
+#	def __repr__(self):
+#		return f'Object { self.name } is of class { type(self).__name__ } '
 
 
 class WornCond(TrueCond):
