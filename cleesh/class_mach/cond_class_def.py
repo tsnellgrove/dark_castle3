@@ -22,25 +22,16 @@
 ### imports ###
 from cleesh.class_std.invisible_class_def import Invisible
 
-### classes ###
 
-# class TrueCond(object): # NEW COND
+### classes ###
 class TrueCond(Invisible):
 	def __init__(self, name):
-#		self._name = name
 		super().__init__(name)
 		""" TrueCond class inherits from Invisible. All other condition classes inherit from TrueCond. 
 		"""
 
-#	@property
-#	def name(self):
-#		return self._name
-
 	def cond_check(self, gs, mach_state):
 		return True
-
-#	def __repr__(self):
-#		return f'Object { self.name } is of class { type(self).__name__ } '
 
 
 class WornCond(TrueCond):
@@ -255,7 +246,6 @@ class SwitchStateCond(TrueCond):
 		return True # if any switches in list are wrong value return Flase, else return True
 
 
-# class LeverArrayCond(TrueCond):
 class LeverArrayCond(SwitchStateCond):
 	def __init__(self, name, cond_switch_lst, match_cond_lst): # target value lives in mach_state as a machine attribute
 		super().__init__(name, cond_switch_lst, match_cond_lst) # match_cond_lst == list of values for levers that are up; same len as cond_swtch_lst

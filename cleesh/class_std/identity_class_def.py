@@ -8,19 +8,12 @@ from cleesh.class_std.invisible_class_def import Invisible
 
 
 ### classes
-# class Invisible(object):
 class Identity(Invisible):
 	def __init__(self, name):
 		super().__init__(name)
-#		self._name = name # text str of each obj's canonical name; should be unique and immutable
-		""" Identity class inherits from Invisible. All tangible class identity methods live in Identity. 
+		""" Identity class inherits from Invisible. All tangible classes inherit their 
+		class identity methods and error sub-system from Identity. 
 		"""
-
-	# *** getters & setters ***
-	@property
-	def name(self):
-		return self._name
-
 
 	# *** universal scope methods ***
 	def get_contain_lst(self, gs):
@@ -85,23 +78,8 @@ class Identity(Invisible):
 	def is_leverswitch(self):
 		return False
 
-#	def is_timer(self):
-#		return False
-
-#	def is_mach(self):
-#		return False
-
-#	def is_warning(self):
-#		return False
-
-#	def has_trigger(self):
-#		return False
-
 	def has_cond(self):
 		return False
-
-#	def has_switch(self):
-#		return False
 
 	def is_garment(self):
 		return False
@@ -114,29 +92,6 @@ class Identity(Invisible):
 	
 	def has_writing(self):
 		return False
-
-	# *** debug methods ###
-#	def where_is(self, gs, mode=None):
-#		""" Reports the location of an obj. Only usable in debug mode.
-#		"""
-#		if mode is None:
-#			mode = 'std'
-#		creature = gs.core.hero
-		
-#		if not gs.map.chk_obj_exist(self, gs):
-#			gs.io.buffer(f"The {self.full_name} does not currently exist in the game.")
-#			return
-#		room = gs.map.get_obj_room(creature, gs)
-#		if room.chk_is_vis(self, gs):
-#			gs.io.buffer(f"The {self.full_name} is visible in the {room.full_name}, where you are presently.")
-#		elif gs.map.get_obj_room(self, gs) == room:
-#			gs.io.buffer(f"The {self.full_name} is not visible to you but is in the {room.full_name}, where you are presently.")
-#		else:
-#			gs.io.buffer(f"The {self.full_name} is in the {gs.map.get_obj_room(self, gs).full_name}.")
-#		in_inv, inv_creature = gs.map.chk_obj_in_creature_inv(self, gs)
-#		if in_inv:
-#			gs.io.buffer(f"The {self.full_name} is in the inventory of the {inv_creature.full_name}.")
-#		return
 
 
 	# *** standard errors ###	
@@ -672,8 +627,3 @@ class Identity(Invisible):
 			gs.io.buffer(f"The {door.full_name} is closed.")
 			return True
 		return False
-
-
-	# *** obj representation def ***
-#	def __repr__(self):
-#		return f"Object {self.name} is of class {type(self).__name__}"

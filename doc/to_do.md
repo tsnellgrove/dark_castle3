@@ -1250,12 +1250,11 @@ Version 3.87.0 Goals:
 				- DONE: test
 				- DONE: BaseResult in result_class()
 				- DONE: test
-			- TBD: clean up invisible(), base(), identity(), mach(), room(), cond(), result()
+			- DONE: clean up invisible(), identity(), up base(), room(), mach(), cond(), result()
+			- TBD: post clean-up test
 			- TBD: gs_class classes inherit from Invisible
 				- TBD: test
 				- TBD: clean up gs_class classes
-		- TBD: re-order auto_act to start of app-main loop
-			- IDEA: interp => val_err => auto_act => pre_act => val_att => cmd_exe => post_acct
 		- TBD:
 			- TBD: Error class
 				- TBD: create error_class() module in class_std
@@ -1264,6 +1263,10 @@ Version 3.87.0 Goals:
 				- TBD: copy all err methods to Error (and global debug methods too)
 				- TBD: tripple-quote elim all err from Invisible
 				- TBD: test
+				- TBD: clean up identity(), base()
+		- TBD: update doc for classes
+		- TBD: re-order auto_act to start of app-main loop
+			- IDEA: interp => val_err => auto_act => pre_act => val_att => cmd_exe => post_acct
 		- TBD: create attempt_err()
 			- TBD: create attempt_err() module
 			- TBD: create attmept_err() function

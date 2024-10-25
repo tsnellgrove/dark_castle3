@@ -106,8 +106,6 @@ class Room(ViewOnly):
 		""" Returns the list of Machine objects contained in the method-calling object. In Room, provides the Machine object scope.
 		"""
 		mach_lst = []
-#		scope_lst = self.get_vis_contain_lst(gs) + self.invis_lst
-#		for obj in scope_lst:
 		for obj in self.get_vis_contain_lst(gs):
 			if (obj.is_switch()) or (obj.is_mach() and obj.is_enabled): # in future, may add is_enabled attrib to Switch class
 				mach_lst.append(obj)
