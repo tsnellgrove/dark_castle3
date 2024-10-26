@@ -1251,7 +1251,7 @@ Version 3.87.0 Goals:
 				- DONE: BaseResult in result_class()
 				- DONE: test
 			- DONE: clean up invisible(), identity(), up base(), room(), mach(), cond(), result()
-			- TBD: post clean-up test
+			- DONE: post clean-up test
 			- TBD: gs_class classes inherit from Invisible
 				- TBD: test
 				- TBD: clean up gs_class classes
