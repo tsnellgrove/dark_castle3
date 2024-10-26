@@ -3,22 +3,27 @@
 # module description: class deffinition module for core sub-class
 
 ### import
+from cleesh.class_std.invisible_class_def import Invisible
 
 
 ### classes
-class Core(object):
+# class Core(object):
+class Core(Invisible):
     def __init__(self, name, hero, move_count, is_debug, str_to_obj_dict, has_session_vars):
-        self._name = name
+        super().__init__(name)
+#        self._name = name
         self._hero = hero # the Creature class object that is the hero of the game
         self._move_count = move_count # tracks the number of valid moves made by the player
         self._is_debug = is_debug # a boolean that defines whether the game is in debug mode (default = False)
         self._str_to_obj_dict = str_to_obj_dict # dict that enables look-up of game obj via name str keys
         self._has_session_vars = has_session_vars # bool indicating whether session vars needed at start_up
+        """ Core class inherits from Invisible. It holds a small number of essential attributes. 
+        """
 
 	### setters & getters ###
-    @property
-    def name(self):
-        return self._name
+#    @property
+#    def name(self):
+#        return self._name
 
     @property
     def hero(self):

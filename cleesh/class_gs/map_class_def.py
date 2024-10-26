@@ -3,21 +3,31 @@
 # module description: class deffinition module for Map
 
 
+### import
+from cleesh.class_std.invisible_class_def import Invisible
+
+
 ### module vars
 room_key_lst = [['room_x', 'dir_x', 'room_y'], ['room_y', 'dir_y', 'room_x']] # list of key_lst for a given room_pair
 
+
 ### classes
-class Map(object):
+# class Map(object):
+class Map(Invisible):
 	def __init__(self, name, hero_rm, map_lst):
-		self._name = name
+		super().__init__(name)
+#		self._name = name
 		self._hero_rm = hero_rm # the current location of the player's character (previously searched for)
-		self._map_lst = map_lst # list of room_pair dicts; 
-				# format == [{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall}]
+		self._map_lst = map_lst # list of room_pair dicts
+		""" Map class inherits from Invisible and is responsible for all game interactions that span multiple
+		rooms. It provides the hero_rm and map_lst attribs. map_lst holds the game map and use the format: 
+		[{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall}]
+        """
 
 	# *** getters & setters ***
-	@property
-	def name(self):
-		return self._name
+#	@property
+#	def name(self):
+#		return self._name
 	
 	@property
 	def hero_rm(self):
@@ -31,9 +41,9 @@ class Map(object):
 	def map_lst(self):
 		return self._map_lst
 
-	# *** simple obj methods ***
-	def __repr__(self):
-		return f"Object {self.name} is of class {type(self).__name__}"
+#	# *** simple obj methods ***
+#	def __repr__(self):
+#		return f"Object {self.name} is of class {type(self).__name__}"
 
 	# *** complex obj methods ***
 	def get_room_lst(self):
@@ -188,5 +198,3 @@ class Map(object):
 				if room_pair[room_dir[0]] == room and room_pair[room_dir[1]] == dir:
 					return room_pair[room_dir[2]]
 		raise ValueError(f"There is no 'room_y' value associated with going {dir} from room {room}. This must not be a valid route.")
-
-	

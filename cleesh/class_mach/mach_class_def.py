@@ -15,6 +15,8 @@ class ProtoMachMixIn(object):
 		self._trigger_type = trigger_type # pre_act_cmd, pre_act_timer, post_act_cmd, post_act_switch, auto_act, auto_switch_reset
 		self._alert_anchor = alert_anchor # hero must be in same room as alert_anchor to get mach updates
 		self._is_enabled = is_enabled # bool indicating whether mach is enabled to run
+		""" ProtoMachMixIn provides the core machine attributes. All other machine classes inherit from it. 
+		"""
 
 	# getters & setters
 	@property
@@ -57,6 +59,9 @@ class ProtoMachMixIn(object):
 class TrigMixIn(object):
 	def __init__(self, trig_vals_lst):
 		self._trig_vals_lst = trig_vals_lst # tirgger values that will start the machine (cmd / switches)
+		""" TrighMixIn provides the trig_vals_lst attribute and the trig_check method.
+		All non-auto machine classes inherit from TrigMixIn. 
+		"""
 
 	# getters & setters
 	@property
@@ -86,6 +91,9 @@ class Timer(ProtoMachMixIn, Invisible):
 		ProtoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled) # mach_state = timer_count		
 		self._is_active = is_active # bool that indicates whether Timer obj is active [replace w/ mehthod]
 		self._timer_max = timer_max # int; number that timer counts up to
+		""" Timer is the most primitive non-MixIn machine class - inheriting from ProtoMachMixIn and Invisible.
+		It has a number of simple methods and overrides the ProtoMachMixIn run_mach method. 
+		"""
 
 	# getters & setters
 	@property
