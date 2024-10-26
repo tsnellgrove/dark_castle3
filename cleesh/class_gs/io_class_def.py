@@ -2,31 +2,39 @@
 # author: Tom Snellgrove
 # module description: class deffinition module for io
 
-### import
+### import ###
 import random
 from importlib import import_module
 from cleesh.data.static_gbl import engine_static_dict
+from cleesh.class_std.invisible_class_def import Invisible
 
-### local functions
+
+### local functions ###
 def get_game_dict(game_name):
 	""" imports game_static_gbl() for game_name and returns game_static_dict"""
 	import_str = f"cleesh.games.{game_name}.game_file.game_static_gbl"
 	game_static_gbl = import_module(import_str)
 	return game_static_gbl.game_static_dict
 
-### classes
-class IO(object):
+### classes ###
+# class IO(object):
+class IO(Invisible):
 	def __init__(self, name, dyn_dict, buff_str, last_input_str, game_name):
-		self._name = name # name of obj
+		super().__init__(name)
+#		self._name = name # name of obj
 		self._dyn_dict = dyn_dict # dict of non-static values that persist during game
 		self._buff_str = buff_str # holds buffered output
 		self._last_input_str = last_input_str # holds previous turn's input
 		self._game_name = game_name # name of the current game (also the path to the game)
+		""" IO class inherits from Invisible. It abstracts all of the string calls to the games 
+		various dictionaries (dynamic, engine, and game) and provides a raft of buffer funcions
+		for game output. 
+		"""
 
 	### setters & getters ###
-	@property
-	def name(self):
-		return self._name
+#	@property
+#	def name(self):
+#		return self._name
 
 	@property
 	def dyn_dict(self):

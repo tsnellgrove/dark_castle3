@@ -1259,6 +1259,8 @@ Version 3.87.0 Goals:
 				- DONE: test
 				- DONE: update map_class()
 				- DONE: test
+				- DONE: update io_class()
+				- DONE: test
 				- TBD: 
 				- TBD: clean up gs_class classes
 		- TBD: tripple quote descriptions for all mach classes
