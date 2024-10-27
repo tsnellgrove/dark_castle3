@@ -2,21 +2,22 @@
 # author: Tom Snellgrove
 # module description: class deffinition module for score sub-class
 
-### import
+### import ###
+from cleesh.class_std.invisible_class_def import Invisible
 
 
-### classes
-class Score(object):
+### classes ###
+class Score(Invisible):
     def __init__(self, name, score, pts_earned_lst):
-        self._name = name # name of obj
+        super().__init__(name)
         self._score = score # current player score
         self._pts_earned_lst = pts_earned_lst # which points has the player already earned?
+        """ Score class inherits from Invisible. It contains the attribs to track the player's current
+        score and which scoring events the player has already achieved. And the disp_score() method 
+        which calculates and displays score updates.
+		"""
 
 	### setters & getters ###
-    @property
-    def name(self):
-        return self._name
-
     @property
     def score(self):
         return self._score

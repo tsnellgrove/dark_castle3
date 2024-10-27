@@ -2,21 +2,22 @@
 # author: Tom Snellgrove
 # module description: class deffinition module for end sub-class
 
-### import
+### import ###
 import math
+from cleesh.class_std.invisible_class_def import Invisible
 
-### classes
-class End(object):
+
+### classes ###
+class End(Invisible):
     def __init__(self, name, is_end, game_ending):
-        self._name = name # name of obj
+        super().__init__(name)
         self._is_end = is_end # bool indicating whether or not the game has ended
         self._game_ending = game_ending # type of ending; includes punct ('won!', 'quit.', 'died', or 'restarted.')
+        """ The End class inherits from Invisible. It holds the is_end and game_ending attribs to determine
+        if and how the game has ended. And the disp_end() method to display the end state to the player.
+		"""
 
 	### setters & getters ###
-    @property
-    def name(self):
-        return self._name
-
     @property
     def is_end(self):
         return self._is_end

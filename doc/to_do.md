@@ -1252,7 +1252,7 @@ Version 3.87.0 Goals:
 				- DONE: test
 			- DONE: clean up invisible(), identity(), up base(), room(), mach(), cond(), result()
 			- DONE: post clean-up test
-			- INPROC: gs_class classes inherit from Invisible
+			- DONE: gs_class classes inherit from Invisible
 				- DONE: update gs_class()
 				- DONE: test
 				- DONE: update core_class()
@@ -1261,10 +1261,15 @@ Version 3.87.0 Goals:
 				- DONE: test
 				- DONE: update io_class()
 				- DONE: test
-				- TBD: 
-				- TBD: clean up gs_class classes
-		- TBD: tripple quote descriptions for all mach classes
-		- TBD:
+				- DONE: update score_class()
+				- DONE: test
+				- DONE: update end_class()
+				- DONE: test
+				- DONE: clean up gs_class classes
+				- DONE: test
+			- TBD: misc fixes
+				- TBD: tripple quote descriptions for all mach classes
+				- TBD: examine usage of gs.map.get_obj_from_name()
 			- TBD: Error class
 				- TBD: create error_class() module in class_std
 				- TBD: create Error class in error() which inherits from Identity

@@ -17,11 +17,9 @@ def get_game_dict(game_name):
 	return game_static_gbl.game_static_dict
 
 ### classes ###
-# class IO(object):
 class IO(Invisible):
 	def __init__(self, name, dyn_dict, buff_str, last_input_str, game_name):
 		super().__init__(name)
-#		self._name = name # name of obj
 		self._dyn_dict = dyn_dict # dict of non-static values that persist during game
 		self._buff_str = buff_str # holds buffered output
 		self._last_input_str = last_input_str # holds previous turn's input
@@ -32,10 +30,6 @@ class IO(Invisible):
 		"""
 
 	### setters & getters ###
-#	@property
-#	def name(self):
-#		return self._name
-
 	@property
 	def dyn_dict(self):
 		return self._dyn_dict

@@ -3,20 +3,18 @@
 # module description: class deffinition module for Map
 
 
-### import
+### import ###
 from cleesh.class_std.invisible_class_def import Invisible
 
 
-### module vars
+### module vars ###
 room_key_lst = [['room_x', 'dir_x', 'room_y'], ['room_y', 'dir_y', 'room_x']] # list of key_lst for a given room_pair
 
 
-### classes
-# class Map(object):
+### classes ###
 class Map(Invisible):
 	def __init__(self, name, hero_rm, map_lst):
 		super().__init__(name)
-#		self._name = name
 		self._hero_rm = hero_rm # the current location of the player's character (previously searched for)
 		self._map_lst = map_lst # list of room_pair dicts
 		""" Map class inherits from Invisible and is responsible for all game interactions that span multiple
@@ -25,10 +23,6 @@ class Map(Invisible):
         """
 
 	# *** getters & setters ***
-#	@property
-#	def name(self):
-#		return self._name
-	
 	@property
 	def hero_rm(self):
 		return self._hero_rm
@@ -40,10 +34,6 @@ class Map(Invisible):
 	@property
 	def map_lst(self):
 		return self._map_lst
-
-#	# *** simple obj methods ***
-#	def __repr__(self):
-#		return f"Object {self.name} is of class {type(self).__name__}"
 
 	# *** complex obj methods ***
 	def get_room_lst(self):
@@ -147,9 +137,13 @@ class Map(Invisible):
 		return neighbor_count
 
 	def get_door_str(self, room):
-		""" Returns a string describing a room's doors and passages. This in turn will be reported by room.examine as the room condition.
+		""" Returns a string describing a room's doors and passages. This in turn 
+		will be reported by room.examine as the room condition.
 		
-		Over 30 years ago, my engineering professor for C (before the ++) declared to the class: "No matter what you code, and no moatter what language you code it in, you will always spend 90% of your time and effort on user interface". You would think that in the case of a text adventure he'd be wrong...  but he wasn't.
+		Over 30 years ago, my engineering professor for C (before the ++) declared 
+		to the class: "No matter what you code, and no moatter what language you code it in, 
+		you will always spend 90% of your time and effort on user interface". 
+		You would think that in the case of a text adventure he'd be wrong...  but he wasn't.
 		"""
 		room_door_str = "There is "
 		room_count = self.get_neighbor_count(room)
