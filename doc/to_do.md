@@ -1267,15 +1267,15 @@ Version 3.87.0 Goals:
 				- DONE: test
 				- DONE: clean up gs_class classes
 				- DONE: test
-			- TBD: misc fixes
-				- TBD: tripple quote descriptions for all mach classes
-				- TBD: examine usage of gs.map.get_obj_from_name()
+			- DONE: misc fixes
+				- DONE: tripple quote descriptions for all mach classes
 			- TBD: Error class
 				- TBD: create error_class() module in class_std
+				- TBD: import from Identity
 				- TBD: create Error class in error() which inherits from Identity
-				- TBD: updated Writing to inherit from Error
+				- TBD: update Writing to inherit from Error
 				- TBD: copy all err methods to Error (and global debug methods too)
-				- TBD: tripple-quote elim all err from Invisible
+				- TBD: tripple-quote elim all err from Identity
 				- TBD: test
 				- TBD: clean up identity(), base()
 		- TBD: update doc for classes
@@ -1520,6 +1520,10 @@ Version 3.87.0 Goals:
 
 
 # *** FUTURE TO DO *** #
+
+
+*** minor fixes ***
+- TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
 
 *** debug ideas ***
 - TBD: instantiate obj in hero inventory

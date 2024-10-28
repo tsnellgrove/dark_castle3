@@ -59,7 +59,7 @@ class ProtoMachMixIn(object):
 class TrigMixIn(object):
 	def __init__(self, trig_vals_lst):
 		self._trig_vals_lst = trig_vals_lst # tirgger values that will start the machine (cmd / switches)
-		""" TrighMixIn provides the trig_vals_lst attribute and the trig_check method.
+		""" TrigMixIn provides the trig_vals_lst attribute and the trig_check method.
 		All non-auto machine classes inherit from TrigMixIn. 
 		"""
 
@@ -157,6 +157,9 @@ class Warning(ProtoMachMixIn, TrigMixIn, Invisible):
 		TrigMixIn.__init__(self, trig_vals_lst)
 		ProtoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled) # mach_state = warn_count
 		self._warn_max = warn_max # int; number that warning counts up to
+		""" Warning is a primitive non-MixIn machine class - inheriting from ProtoMachMixIn, TrigMixIn, 
+		and Invisible. It has one attribute (warn_max) and overrides run_mach(). 
+		"""
 
 	# getters & setters
 	@property
@@ -192,6 +195,10 @@ class AutoMachMixIn(ProtoMachMixIn):
 		ProtoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled)
 		self._cond_lst = cond_lst # list of condition obj to test for; should cover all cases
 		self._result_lst = result_lst # list of possible result obj ordered by assciated condition
+		""" AutoMachMixIn inherits from ProtoMachMixIn and adds attributes for conditions and results. 
+		It provides the version of run_mach() that will be used by all inheriting machines. 
+		All machines that auto-run each turn inherit directly from AutoMachMixIn.
+		"""
 
 	# getters & setters
 	@property
@@ -230,6 +237,9 @@ class TrigMachMixIn(AutoMachMixIn, TrigMixIn):
 	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst):
 		AutoMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst)
 		TrigMixIn.__init__(self, trig_vals_lst)
+		""" TrigMachMixIn inherits from AutoMachMixIn and TrigMixIn. All command-triggered machines inherit 
+		from it.
+		"""
 
 class InvisTrigMach(TrigMachMixIn, Invisible):
 	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst):
@@ -245,6 +255,9 @@ class SwitchMachMixIn(TrigMachMixIn):
 	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst):
 		TrigMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst)
 		self._trig_switch = trig_switch # switch obj that triggers the machine
+		""" SwitchMachMixIn inherits from TrigMachMixIn and adds an attribute for the switch obj that
+		acts as a trigger. All switch-triggered machines inherit from it.
+		"""
 
 	# getters & setters
 	@property
