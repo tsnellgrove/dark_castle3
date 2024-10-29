@@ -3,11 +3,12 @@
 # module description: base class deffinition module
 
 
-### import
-from cleesh.class_std.identity_class_def import Identity
+### import ###
+from cleesh.class_std.error_class_def import Error
 
 
-class Writing(Identity):
+### classes ###
+class Writing(Error):
 	def __init__(self, name, full_name, root_name, descript_key):
 		super().__init__(name)
 		self._full_name = full_name # the object name presented to the player. Typical format = "Adj Noun". First character capitalized

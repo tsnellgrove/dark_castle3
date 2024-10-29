@@ -1164,7 +1164,7 @@ Version 3.87.0 Goals:
 		- LINK: https://github.com/microsoft/vscode/issues/7426#issuecomment-425093469
 
 
-- TBD: Cases where I want a modular machine to run despite an error standard (build 0011 [])
+- TBD: Cases where I want a modular machine to run despite an error standard (build 0012 [])
 	- IDEA: problem description
 		- IDEA: e.g. 'go north' in antechamber triggers goblin
 		- IDEA: i.e. should it ever be possible to override an error? If so, then how?
@@ -1269,24 +1269,24 @@ Version 3.87.0 Goals:
 				- DONE: test
 			- DONE: misc fixes
 				- DONE: tripple quote descriptions for all mach classes
-			- TBD: Error class
-				- TBD: create error_class() module in class_std
-				- TBD: import from Identity
-				- TBD: create Error class in error() which inherits from Identity
-				- TBD: update Writing to inherit from Error
-				- TBD: copy all err methods to Error (and global debug methods too)
-				- TBD: tripple-quote elim all err from Identity
-				- TBD: test
-				- TBD: clean up identity(), base()
-		- TBD: update doc for classes
+			- DONE: Error class
+				- DONE: create error_class() module in class_std
+				- DONE: import from Identity
+				- DONE: create Error class in error() which inherits from Identity
+				- DONE: update Writing to inherit from Error
+				- DONE: copy all err methods to Error
+				- DONE: tripple-quote elim all err from Identity
+				- DONE: test
+				- DONE: clean up identity(), base(), error()
+		- DONE: update doc for classes
 		- TBD: re-order auto_act to start of app-main loop
 			- IDEA: interp => val_err => auto_act => pre_act => val_att => cmd_exe => post_acct
 		- TBD: create attempt_err()
 			- TBD: create attempt_err() module
 			- TBD: create attmept_err() function
-			- TBD: similar code to validate but call <verb>_att
+			- TBD: similar code to validate but call <verb>_att ; use try... except...
 			- TBD: add attempt_err() to app_main loop after pre_action() and before cmd_exe()
-		- TBD: create <verb>_att methods in Error
+		- TBD: create <verb>_att methods in Error (create in Error or in std class ? Error more flexible)
 		- TBD: document Error updates and categories in doc
 		- TBD: consider whether hidden rooms s, e, & w of Entrance can be eliminated (needed for paths?)
 
