@@ -1279,8 +1279,16 @@ Version 3.87.0 Goals:
 				- DONE: test
 				- DONE: clean up identity(), base(), error()
 		- DONE: update doc for classes
-		- TBD: re-order auto_act to start of app-main loop
+		- INPROC: re-order auto_act to start of app-main loop
+			- DONE: review / minor updates for web_main()
+			- TBD: test
 			- IDEA: interp => val_err => auto_act => pre_act => val_att => cmd_exe => post_acct
+				- TBD: minor input refactor (if input = x or input = y ==> if input in [x, y])
+				- TBD: is_stateful => is_wait ??
+				- TBD: copy / paste of existing command flow
+				- TBD: comment out end of app_main auto_act()
+				- TBD: move auto_act() to start of app_main on is_wait or is_interp_cmd
+			- TBD: test & compare new command flow (should be the same)
 		- TBD: create attempt_err()
 			- TBD: create attempt_err() module
 			- TBD: create attmept_err() function

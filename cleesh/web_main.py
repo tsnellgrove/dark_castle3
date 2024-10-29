@@ -33,7 +33,7 @@ user_num = 0
 while True:
 	max_num, game_lst = print_game_menu()
 	user_choice = input("Type the number of the game you want to play or type 'Q' to quit: ")
-	if user_choice.strip() == 'q' or user_choice.strip() == 'Q':
+	if user_choice.strip() in ['q', 'Q']:
 		break
 	try:
 		user_num = int(user_choice)
