@@ -1280,8 +1280,9 @@ Version 3.87.0 Goals:
 				- DONE: clean up identity(), base(), error()
 		- DONE: update doc for classes
 		- INPROC: re-order auto_act to start of app-main loop
-			- DONE: review / minor updates for web_main()
-			- TBD: test
+			- DONE: review web_main()
+				- DONE: minor updates for web_main()
+				- DONE: test
 			- IDEA: interp => val_err => auto_act => pre_act => val_att => cmd_exe => post_acct
 				- TBD: minor input refactor (if input = x or input = y ==> if input in [x, y])
 				- TBD: is_stateful => is_wait ??
@@ -1289,6 +1290,7 @@ Version 3.87.0 Goals:
 				- TBD: comment out end of app_main auto_act()
 				- TBD: move auto_act() to start of app_main on is_wait or is_interp_cmd
 			- TBD: test & compare new command flow (should be the same)
+			- TBD: doc updated app_main() flow
 		- TBD: create attempt_err()
 			- TBD: create attempt_err() module
 			- TBD: create attmept_err() function
@@ -1297,6 +1299,7 @@ Version 3.87.0 Goals:
 		- TBD: create <verb>_att methods in Error (create in Error or in std class ? Error more flexible)
 		- TBD: document Error updates and categories in doc
 		- TBD: consider whether hidden rooms s, e, & w of Entrance can be eliminated (needed for paths?)
+			- IDEA: enable passing in custom paths?
 
 		- TBD: git branch merge with master
 			- TBD: 'git checkout master' to switch focus to master
@@ -1311,11 +1314,6 @@ Version 3.87.0 Goals:
 			- TBD: post-branch-delete run test
 
 		- TBD: update cleesh engine version build
-
-
-- TBD: would be nice to have an Error class that inherits from Invisible [FUTURE]
-	- IDEA: but this would break in heritance?
-	- IDEA: or maybe Writing just needs to inherit from Error ?
 
 - TBD: state machine for hedgehog [FUTURE]
 	- IDEA: need to implement hedgehog state machine based on creature state
@@ -1465,6 +1463,10 @@ Version 3.87.0 Goals:
 
 
 *** already done ***
+- DONE: would be nice to have an Error class that inherits from Invisible [FUTURE]
+	- IDEA: but this would break in heritance?
+	- IDEA: or maybe Writing just needs to inherit from Error ?
+
 - DONE: How to enable switches and machines to self register for universal scope
 	- EXAMPE: battery powered lamp must track usage even if Burt has dropped it and walked away
 	- DONE: eliminate universal_scope => just add these to Burt's invis_lst
@@ -1590,6 +1592,15 @@ Version 3.87.0 Goals:
 - valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
 - shiny sword glows near enemies?
 - meet the wizard from Enchanter who is searching for a scroll
+
+
+*** Unit Testing ***
+- IDEA: get serious about creating a "test harness" that can run automated test cases
+- TBD: enable mode to write all input and last 80 char of output to CSV file
+- TBD: enable passing file of commands and comparing with file of outputs ("get key")
+- TBD: Stack Overflow: "how to implement command line switches to my script"
+- TBD: in test mode, manually set random switch to value = 7
+- TBD: eventually need to be able to run a suite of tests built up over time
 
 
 *** Refactor app_main() modules ***
