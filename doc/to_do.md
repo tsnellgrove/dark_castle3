@@ -1293,7 +1293,7 @@ Version 3.87.0 Goals:
 				- CANCEL: move auto_act() to start of app_main on is_wait or is_interp_cmd
 				- DONE: test & compare new command flow (should be the same)
 			- FINDING: determined that best game flow was 1) input, 2) response, 3) end or auto_act
-			- CANCEL: doc updated app_main() flow
+			- DONE: doc updated app_main() flow with findings
 		- TBD: create attempt_err()
 			- TBD: create attempt_err() module
 			- TBD: create attmept_err() function
