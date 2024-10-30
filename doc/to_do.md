@@ -1279,7 +1279,7 @@ Version 3.87.0 Goals:
 				- DONE: test
 				- DONE: clean up identity(), base(), error()
 		- DONE: update doc for classes
-		- INPROC: re-order auto_act to start of app-main loop
+		- CANCEL: re-order auto_act to start of app-main loop
 			- DONE: review web_main()
 				- DONE: minor updates for web_main()
 				- DONE: test
@@ -1287,17 +1287,19 @@ Version 3.87.0 Goals:
 				- DONE: app_main() minor input refactor (if input = x or input = y ==> if input in [x, y])
 				- DONE: is_stateful => is_wait
 				- DONE: test
-				- TBD: clean-up
-				- TBD: copy / paste of existing command flow
-				- TBD: comment out end of app_main auto_act()
-				- TBD: move auto_act() to start of app_main on is_wait or is_interp_cmd
-			- TBD: test & compare new command flow (should be the same)
-			- TBD: doc updated app_main() flow
+				- DONE: clean-up
+				- DONE: copy / paste of existing command flow
+				- CANCEL: comment out end of app_main auto_act()
+				- CANCEL: move auto_act() to start of app_main on is_wait or is_interp_cmd
+				- DONE: test & compare new command flow (should be the same)
+			- FINDING: determined that best game flow was 1) input, 2) response, 3) end or auto_act
+			- CANCEL: doc updated app_main() flow
 		- TBD: create attempt_err()
 			- TBD: create attempt_err() module
 			- TBD: create attmept_err() function
 			- TBD: similar code to validate but call <verb>_att ; use try... except...
 			- TBD: add attempt_err() to app_main loop after pre_action() and before cmd_exe()
+		- TBD: in app_main, create is_attempt_err bool
 		- TBD: create <verb>_att methods in Error (create in Error or in std class ? Error more flexible)
 		- TBD: document Error updates and categories in doc
 		- TBD: consider whether hidden rooms s, e, & w of Entrance can be eliminated (needed for paths?)
