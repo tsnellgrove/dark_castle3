@@ -23,12 +23,14 @@ def app_main(user_input, game_name, root_path_str):
 
 	# local var declarations 
 	is_start = False
-	is_stateful = False
+#	is_stateful = False
+	is_wait = False
 	is_interp_cmd = True
 	is_interp_valid = False
 
 	# mutually exclusive non-interp command cases
-	if user_input.lower() == 'quit' or user_input.lower() == 'q':
+	if user_input.lower() in ['quit', 'q']:
+#	if user_input.lower() == 'quit' or user_input.lower() == 'q':
 		gs.end.game_ending = 'quit.'
 		gs.end.is_end = True
 		is_interp_cmd = False
@@ -36,12 +38,15 @@ def app_main(user_input, game_name, root_path_str):
 		gs.end.game_ending = 'restarted.'
 		is_start = True
 		is_interp_cmd = False
-	elif user_input.lower() == 'again' or user_input.lower() == 'g':
+	elif user_input.lower() in ['again', 'g']:
+#	elif user_input.lower() == 'again' or user_input.lower() == 'g':
 		user_input = gs.io.last_input_str
 
 	# post-'again', non-interp command cases (must be independent 'if' in case of 'again')
-	if user_input.lower() == 'wait' or user_input.lower() == 'z':
-		is_stateful = True
+	if user_input.lower() in ['wait', 'z']:
+#	if user_input.lower() == 'wait' or user_input.lower() == 'z':
+#		is_stateful = True
+		is_wait = True
 		gs.io.buffer("Waiting...")
 		is_interp_cmd = False
 
@@ -50,13 +55,15 @@ def app_main(user_input, game_name, root_path_str):
 		case, word_lst = interpreter(user_input, master_obj_lst)
 		is_interp_valid = validate(gs, case, word_lst)
 
-	# if command is valid or is_stateful (captures 'wait' case), increment move
-	if is_interp_valid or is_stateful:
+#	# if command is valid or is_stateful (captures 'wait' case), increment move
+	# if command is valid or is_wait, increment move
+	if is_interp_valid or is_wait:
+#	if is_interp_valid or is_stateful:
 		gs.core.move_inc()
 
 	# for valid interp commands, process in-turn game response
 	if is_interp_valid:
-		is_stateful = True
+#		is_stateful = True
 		cmd_override = pre_action(gs, case, word_lst)
 		if not cmd_override:
 			cmd_execute(gs, case, word_lst)
@@ -65,13 +72,15 @@ def app_main(user_input, game_name, root_path_str):
 	# post-turn output (nominally, the turn ends on post_act()); auto_action() essentially occurs at the *start* of the *next* turn)
 	if gs.end.is_end or is_start: 
 		gs.end.disp_end(gs)
-	elif is_stateful: # need to avoid case where auto_act() runs after player dies from is_valid_interp command (in which case is_stateful = True)
+#	elif is_stateful: # need to avoid case where auto_act() runs after player dies from is_valid_interp command (in which case is_stateful = True)
+	elif is_wait or is_interp_valid: # need to avoid case where auto_act() runs after player dies from is_valid_interp command (in which case is_stateful = True)
 		auto_action(gs)
 	if is_start:
 		gs.io.buffer("Restarting...") # should appear after the 'you have restarted' end text and before the 'welcome' text
 
 	# close out turn - save state and last inupt (for 'again' case) and then return
-	# note: need to save state even if is_stateful == False else 'again' won't work on error cases
+#	# note: need to save state even if is_stateful == False else 'again' won't work on error cases
+	# note: need to save state even if is_interp_valid == False else 'again' won't work on error cases
 	gs.io.last_input_str = user_input
 	with open(pkl_str, 'wb') as f:
 		pickle.dump(master_obj_lst, f)

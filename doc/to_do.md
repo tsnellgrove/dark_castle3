@@ -1284,8 +1284,10 @@ Version 3.87.0 Goals:
 				- DONE: minor updates for web_main()
 				- DONE: test
 			- IDEA: interp => val_err => auto_act => pre_act => val_att => cmd_exe => post_acct
-				- TBD: minor input refactor (if input = x or input = y ==> if input in [x, y])
-				- TBD: is_stateful => is_wait ??
+				- DONE: app_main() minor input refactor (if input = x or input = y ==> if input in [x, y])
+				- DONE: is_stateful => is_wait
+				- TBD: test
+				- TBD: clean-up
 				- TBD: copy / paste of existing command flow
 				- TBD: comment out end of app_main auto_act()
 				- TBD: move auto_act() to start of app_main on is_wait or is_interp_cmd
