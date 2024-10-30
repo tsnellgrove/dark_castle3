@@ -1286,7 +1286,7 @@ Version 3.87.0 Goals:
 			- IDEA: interp => val_err => auto_act => pre_act => val_att => cmd_exe => post_acct
 				- DONE: app_main() minor input refactor (if input = x or input = y ==> if input in [x, y])
 				- DONE: is_stateful => is_wait
-				- TBD: test
+				- DONE: test
 				- TBD: clean-up
 				- TBD: copy / paste of existing command flow
 				- TBD: comment out end of app_main auto_act()
