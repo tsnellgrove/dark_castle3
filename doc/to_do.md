@@ -1294,13 +1294,24 @@ Version 3.87.0 Goals:
 				- DONE: test & compare new command flow (should be the same)
 			- FINDING: determined that best game flow was 1) input, 2) response, 3) end or auto_act
 			- DONE: doc updated app_main() flow with findings
-		- TBD: create attempt_err()
-			- TBD: create attempt_err() module
-			- TBD: create attmept_err() function
-			- TBD: similar code to validate but call <verb>_att ; use try... except...
-			- TBD: add attempt_err() to app_main loop after pre_action() and before cmd_exe()
-		- TBD: in app_main, create is_attempt_err bool
-		- TBD: create <verb>_att methods in Error (create in Error or in std class ? Error more flexible)
+		- DONE: create attempt_err()
+			- DONE: create attempt_err() module
+			- DONE: create attmept_err() function
+			- DONE: similar code to validate but call <verb>_att ; use try... except...
+		- DONE: update app_main()
+			- DONE: import attempt_err()
+			- DONE: add attempt_err() to app_main loop after pre_action() and before cmd_exe()
+		- TBD: create attemptable error code in Error class
+			- TBD: test existing (empty) calls to attempt_err()
+			- TBD: create <verb>_att methods in Error (create in Error or in std class ? Error more flexible)
+			- TBD: door.open
+			- TBD: door.close
+			- TBD: door.unlock
+			- TBD: door.lock
+			- TBD: item.take <from creature>
+			- TBD: go.<invalid direction>
+			- TBD: any others??
+			- TBD: test
 		- TBD: document Error updates and categories in doc
 		- TBD: consider whether hidden rooms s, e, & w of Entrance can be eliminated (needed for paths?)
 			- IDEA: enable passing in custom paths?
