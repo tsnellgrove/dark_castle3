@@ -142,7 +142,7 @@ class Error(Identity):
 			if obj.is_creature() and obj is not gs.core.hero and self in obj.get_vis_contain_lst(gs):
 				gs.io.buffer(f"You can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 				return True
-		if  not creature.chk_contain_item(self) and (creature.weight + self.weight) > creature.max_weight:
+		if not creature.chk_contain_item(self) and (creature.weight + self.weight) > creature.max_weight:
 			gs.io.buffer(f"You don't have enough capacity to take the {self.full_name} along with everything else you are carrying.")
 			return True
 		return False

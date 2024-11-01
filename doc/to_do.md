@@ -1301,14 +1301,18 @@ Version 3.87.0 Goals:
 		- DONE: update app_main()
 			- DONE: import attempt_err()
 			- DONE: add attempt_err() to app_main loop after pre_action() and before cmd_exe()
+		- TBD: fix hedgehog_guard_mach
+			- TBD: create sword_not_on_flr_cond
+			- TBD: add sword_not_on_flr_cond and pass_result to hedgehog_guard_mach
+			- TBD: test
 		- TBD: create attemptable error code in Error class
 			- TBD: test existing (empty) calls to attempt_err()
 			- TBD: create <verb>_att methods in Error (create in Error or in std class ? Error more flexible)
+			- TBD: item.take <from creature>
 			- TBD: door.open
 			- TBD: door.close
 			- TBD: door.unlock
 			- TBD: door.lock
-			- TBD: item.take <from creature>
 			- TBD: go.<invalid direction>
 			- TBD: any others??
 			- TBD: test
