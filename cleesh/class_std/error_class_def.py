@@ -132,12 +132,26 @@ class Error(Identity):
 		if self.is_liquid():
 			gs.io.buffer("You can't 'take' a liquid but you can 'drink' a liquid or you can 'take' a container that holds a liquid.")
 			return True
-		if not self.is_item():
-			gs.io.buffer(f"Just how do you intend to pick up a {self.full_name}?")
-			return True
+#		if not self.is_item():
+#			gs.io.buffer(f"Just how do you intend to pick up a {self.full_name}?")
+#			return True
 		if creature.chk_in_hand(self):
 			gs.io.buffer("You're already holding the " + self.full_name)
 			return True
+#		for obj in gs.map.hero_rm.floor_lst:
+#			if obj.is_creature() and obj is not gs.core.hero and self in obj.get_vis_contain_lst(gs):
+#				gs.io.buffer(f"You can't take the {self.full_name}. It belongs to the {obj.full_name}!")
+#				return True
+#		if not creature.chk_contain_item(self) and (creature.weight + self.weight) > creature.max_weight:
+#			gs.io.buffer(f"You don't have enough capacity to take the {self.full_name} along with everything else you are carrying.")
+#			return True
+		return False
+
+	def take_att(self, gs):
+		creature = gs.core.hero
+		if not self.is_item(): # a non-item might look takeable - is reasonable to attempt - player gets info
+			gs.io.buffer(f"Just how do you intend to pick up a {self.full_name}?")
+			return True		
 		for obj in gs.map.hero_rm.floor_lst:
 			if obj.is_creature() and obj is not gs.core.hero and self in obj.get_vis_contain_lst(gs):
 				gs.io.buffer(f"You can't take the {self.full_name}. It belongs to the {obj.full_name}!")
@@ -154,12 +168,19 @@ class Error(Identity):
 		if self == creature.feature_lst[0]:
 			gs.io.buffer(f"You can't drop your {creature.feature_lst[0].full_name} - you're quite attached to it.")
 			return True
-		if not self.is_item():
-			gs.io.buffer(f"You can't even pick up the {self.full_name}... how could you possibly drop it??")
-			return True
+##		if not self.is_item(): # if you're not holding something, you can't attempt to drop it
+##			gs.io.buffer(f"You can't even pick up the {self.full_name}... how could you possibly drop it??")
+##			return True
 		if self.err_not_in_hand(creature, gs):
 			return True
-		if creature.is_contained(gs) and not creature.get_contained_by(gs).chk_has_capacity():
+#		if creature.is_contained(gs) and not creature.get_contained_by(gs).chk_has_capacity():
+#			gs.io.buffer(f"There's no room on the {creature.get_contained_by(gs).full_name} for another item.")
+#			return True
+		return False
+
+	def drop_att(self, gs):
+		creature = gs.core.hero
+		if creature.is_contained(gs) and not creature.get_contained_by(gs).chk_has_capacity(): # player gets info
 			gs.io.buffer(f"There's no room on the {creature.get_contained_by(gs).full_name} for another item.")
 			return True
 		return False
@@ -168,19 +189,18 @@ class Error(Identity):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True
-		if creature.hand_is_empty():
-			gs.io.buffer(f"{creature.full_name}, your hand is empty!")
-			return True
+##		if creature.hand_is_empty():
+##			gs.io.buffer(f"{creature.full_name}, your hand is empty!")
+##			return True
 		if self == creature.feature_lst[0]:
 			gs.io.buffer(f"{creature.full_name}, you can't stowe your {creature.feature_lst[0].full_name} - you're quite attached to it.")
 			return True
-		if not self.is_item():
-			gs.io.buffer(f"You can't even pick up the {self.full_name}... how could you possibly put it in your backpack??")
-			return True
+##		if not self.is_item():
+##			gs.io.buffer(f"You can't even pick up the {self.full_name}... how could you possibly put it in your backpack??")
+##			return True
 		if self.err_not_in_hand(creature, gs):
 			return True		
 		return False
-
 
 	def open_err(self, gs):
 		creature = gs.core.hero

@@ -1294,6 +1294,10 @@ Version 3.87.0 Goals:
 				- DONE: test & compare new command flow (should be the same)
 			- FINDING: determined that best game flow was 1) input, 2) response, 3) end or auto_act
 			- DONE: doc updated app_main() flow with findings
+		- DONE: define NON-attemptable
+			- IDEA: all interp() errors
+			- IDEA: noun or direct obj not in scope or not in reach
+			- IDEA: violates game phyiscis (e.g. obj not in hand, can't close locked door)
 		- DONE: create attempt_err()
 			- DONE: create attempt_err() module
 			- DONE: create attmept_err() function
@@ -1301,21 +1305,25 @@ Version 3.87.0 Goals:
 		- DONE: update app_main()
 			- DONE: import attempt_err()
 			- DONE: add attempt_err() to app_main loop after pre_action() and before cmd_exe()
-		- TBD: fix hedgehog_guard_mach
-			- TBD: create sword_not_on_flr_cond
-			- TBD: add sword_not_on_flr_cond and pass_result to hedgehog_guard_mach
-			- TBD: test
-		- TBD: create attemptable error code in Error class
-			- TBD: test existing (empty) calls to attempt_err()
-			- TBD: create <verb>_att methods in Error (create in Error or in std class ? Error more flexible)
-			- TBD: item.take <from creature>
-			- TBD: door.open
-			- TBD: door.close
-			- TBD: door.unlock
-			- TBD: door.lock
-			- TBD: go.<invalid direction>
-			- TBD: any others??
-			- TBD: test
+		- DONE: fix hedgehog_guard_mach
+			- DONE: create sword_not_on_flr_cond
+			- DONE: add sword_not_on_flr_cond and pass_result to hedgehog_guard_mach
+			- DONE: test
+		- INPROC: create attemptable error code in Error class
+			- DONE: test existing (empty) calls to attempt_err()
+			- INPROC: create <verb>_att methods in Error and clean up redundant errors as I go
+				- DONE: take <from creature>, <non-item>, <too heavy>
+				- DONE: drop <no room in container (e.g. throne)>
+				- DONE: stowe <None>
+				- TBD: open
+				- TBD: close
+				- TBD: unlock
+				- TBD: lock
+				- TBD: 
+				- TBD: go.<invalid direction>
+				- TBD: any others??
+				- TBD: test
+				- TBD: clean up single comment <verb>_err
 		- TBD: document Error updates and categories in doc
 		- TBD: consider whether hidden rooms s, e, & w of Entrance can be eliminated (needed for paths?)
 			- IDEA: enable passing in custom paths?
@@ -1558,6 +1566,24 @@ Version 3.87.0 Goals:
 - TBD: instantiate obj in hero inventory
 
 *** story-driven updates ***
+
+- TBD: at end of story-driven updates, elim "##" error messages
+
+- TBD: varry inventory intro text
+
+- TBD: introduce verbose and brief commands
+
+- TBD: eliminate plural nouns (e.g. biscuits => single biscuit)
+
+- TBD: change biscuit trademark to sword and key
+- TBD: Have lone biscuit in cardboard box
+- TBD: make biscuit yummy; Nana's famous recipie
+
+- IDEA: for hedgehog guarding sword:
+	- 1: on get key, disable guard
+	- 2: set hedgehog to trade sword for key
+
+- TBD: on 'x goblin' descript, emphasize that Burt is peering from S side of room
 
 - IDEA: maybe the hedgehog should act differently once you get & wear the crown?
 

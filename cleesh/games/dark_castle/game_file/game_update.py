@@ -145,8 +145,8 @@ crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', 
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', stale_biscuits, 'royal_hedgehog_temp', True)
 axe_not_in_goblin_hand_cond = ItemInHandCond('axe_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
 no_weap_in_hand_cond = WeaponInHandCond('hand_no_weap_cond', 'burt_temp', False)
-sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_haal_temp', shiny_sword, True)
-sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_haal_temp', shiny_sword, False)
+sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_hall_temp', shiny_sword, True)
+sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_hall_temp', shiny_sword, False)
 not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
 hedgehog_not_in_world_cond = ObjInWorldCond('hedgehog_not_in_world_cond', 'royal_hedgehog_temp', False)
 goblin_in_world_cond = ObjInWorldCond('goblin_in_world_cond', 'guard_goblin_temp', True)
@@ -213,8 +213,8 @@ re_arm_goblin_mach = InvisAutoMach('re_arm_goblin_mach', None,
 hedgehog_guard_mach = InvisTrigMach('hedgehog_guard_mach', None, 
 		'pre_act_cmd', 'royal_hedgehog_temp', True, 
 		[['take', 'shiny_sword']],
-		[hedgehog_eats_timer_not_active_cond], 
-		[hedgehog_attacks_result]
+		[sword_not_on_floor, hedgehog_eats_timer_not_active_cond], 
+		[pass_result, hedgehog_attacks_result]
 		) # mach_state == None
 
 hedgehog_distracted_mach = InvisTrigMach('hedgehog_distracted_mach', None, 

@@ -58,7 +58,8 @@ def app_main(user_input, game_name, root_path_str):
 	# for valid interp commands, process in-turn game response
 	if is_interp_valid:
 		cmd_override = pre_action(gs, case, word_lst)
-		err_on_attempt = attempt_err(gs, case, word_lst)
+		if not cmd_override:
+			err_on_attempt = attempt_err(gs, case, word_lst)
 		if not (cmd_override or err_on_attempt):
 			cmd_execute(gs, case, word_lst)
 		post_action(gs, case, word_lst) # excluding psot_act() from cmd "if" allows creatures to opperate machs
