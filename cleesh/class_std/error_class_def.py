@@ -202,50 +202,24 @@ class Error(Identity):
 			return True		
 		return False
 
-	def open_err(self, gs):
-		creature = gs.core.hero
-		if self.err_std(creature, gs):
-			return True
-		if not self.is_openable() and not self.is_container():
-			gs.io.buffer(f"The {self.full_name} cannot be openned.")
-			return True
-		if not self.is_openable() and self.is_container():
-			gs.io.buffer(f"The {self.full_name} has no closure. It is always open.")
-			return True
-		if self.is_open:
-			gs.io.buffer(f"The {self.full_name} is already open.")
-			return True
-		if self.is_lockable() and self.is_unlocked == False:
-			gs.io.buffer(f"The {self.full_name} is locked.")
-			return True
-		return False
-	
-	def close_err(self, gs):
-		creature = gs.core.hero
-		if self.err_std(creature, gs):
-			return True
-		if not self.is_openable() and not self.is_container():
-			gs.io.buffer(f"The {self.full_name} cannot be closed.")
-			return True
-		if not self.is_openable() and self.is_container():
-			gs.io.buffer(f"The {self.full_name} has no closure. It is always open.")
-			return True
-		if self.is_open == False:
-			gs.io.buffer(f"The {self.full_name} is already closed.")
-			return True
-		if self.is_lockable() and self.is_unlocked == False:
-			gs.io.buffer(f"The {self.full_name} is locked open.") # for Iron Portcullis
-			return True
+	def stowe_att(self, gs):
 		return False
 
 	def eat_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True
+#		if not self.is_food():
+#			gs.io.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? If you keep this up you're going to give Adventurers a bad name!")
+#			return True
+		if self.err_not_in_hand(creature, gs):
+			return True
+		return False
+
+	def eat_att(self, gs):
+		creature = gs.core.hero
 		if not self.is_food():
 			gs.io.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? If you keep this up you're going to give Adventurers a bad name!")
-			return True
-		if self.err_not_in_hand(creature, gs):
 			return True
 		return False
 
@@ -253,9 +227,9 @@ class Error(Identity):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True
-		if not self.is_garment():
-			gs.io.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
-			return True
+#		if not self.is_garment():
+#			gs.io.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
+#			return True
 		if self in creature.worn_lst:
 			gs.io.buffer(f"You're already wearing the {self.full_name}!")
 			return True
@@ -265,6 +239,77 @@ class Error(Identity):
 			gs.io.buffer(f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
 			return True
 		return False
+
+	def wear_att(self, gs):
+#		creature = gs.core.hero
+		if not self.is_garment():
+			gs.io.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
+			return True
+		return False
+
+	def open_err(self, gs):
+		creature = gs.core.hero
+		if self.err_std(creature, gs):
+			return True
+#		if not self.is_openable() and not self.is_container():
+#			gs.io.buffer(f"The {self.full_name} cannot be openned.")
+#			return True
+		if not self.is_openable() and self.is_container():
+			gs.io.buffer(f"The {self.full_name} has no closure. It is always open.")
+			return True
+#		if self.is_open:
+#			gs.io.buffer(f"The {self.full_name} is already open.")
+#			return True
+#		if self.is_lockable() and self.is_unlocked == False:
+#			gs.io.buffer(f"The {self.full_name} is locked.")
+#			return True
+		return False
+
+	def open_att(self, gs):
+#		creature = gs.core.hero
+		if not self.is_openable() and not self.is_container():
+			gs.io.buffer(f"The {self.full_name} cannot be openned.")
+			return True
+		if self.is_open:
+			gs.io.buffer(f"The {self.full_name} is already open.")
+			return True
+		if self.is_lockable() and self.is_unlocked == False:
+			gs.io.buffer(f"The {self.full_name} is locked.")
+			return True
+		return False
+
+	def close_err(self, gs):
+		creature = gs.core.hero
+		if self.err_std(creature, gs):
+			return True
+#		if not self.is_openable() and not self.is_container():
+#			gs.io.buffer(f"The {self.full_name} cannot be closed.")
+#			return True
+		if not self.is_openable() and self.is_container():
+			gs.io.buffer(f"The {self.full_name} has no closure. It is always open.")
+			return True
+#		if self.is_open == False:
+#			gs.io.buffer(f"The {self.full_name} is already closed.")
+#			return True
+#		if self.is_lockable() and self.is_unlocked == False:
+#			gs.io.buffer(f"The {self.full_name} is locked open.") # for Iron Portcullis
+#			return True
+		return False
+
+	def close_att(self, gs):
+#		creature = gs.core.hero
+		if not self.is_openable() and not self.is_container():
+			gs.io.buffer(f"The {self.full_name} cannot be closed.")
+			return True
+		if self.is_open == False:
+			gs.io.buffer(f"The {self.full_name} is already closed.")
+			return True
+		if self.is_lockable() and self.is_unlocked == False:
+			gs.io.buffer(f"The {self.full_name} is locked open.") # for Iron Portcullis
+			return True
+		return False
+
+
 
 	def push_err(self, gs):
 		creature = gs.core.hero

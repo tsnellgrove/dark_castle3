@@ -1315,14 +1315,16 @@ Version 3.87.0 Goals:
 				- DONE: take <from creature>, <non-item>, <too heavy>
 				- DONE: drop <no room in container (e.g. throne)>
 				- DONE: stowe <None>
-				- TBD: open
-				- TBD: close
-				- TBD: unlock
-				- TBD: lock
-				- TBD: 
+				- DONE: eat <not_food>
+				- DONE: wear <not_garment>
+				- DONE: open <not openable>, <locked>, <already open>
+				- DONE: close <not openable>, <locked open>, <already closed>
+				- TBD:
+				- TBD: drink <>
+				- TBD: unlock <>
+				- TBD: lock <>
+				- TBD:
 				- TBD: go.<invalid direction>
-				- TBD: any others??
-				- TBD: test
 				- TBD: clean up single comment <verb>_err
 		- TBD: document Error updates and categories in doc
 		- TBD: consider whether hidden rooms s, e, & w of Entrance can be eliminated (needed for paths?)
