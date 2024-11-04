@@ -1298,6 +1298,9 @@ Version 3.87.0 Goals:
 			- IDEA: all interp() errors
 			- IDEA: noun or direct obj not in scope or not in reach
 			- IDEA: violates game phyiscis (e.g. obj not in hand, can't close locked door)
+			- IDEA: we want the designer to have confidence in what has happened
+			- IDEA: the line behind what is attemptable and what viloates game physics is blurry!
+			- IDEA: error order of operations also comes into play (e.g. "exit"); att always after err
 		- DONE: create attempt_err()
 			- DONE: create attempt_err() module
 			- DONE: create attmept_err() function
@@ -1313,13 +1316,17 @@ Version 3.87.0 Goals:
 			- DONE: test existing (empty) calls to attempt_err()
 			- INPROC: create <verb>_att methods in Error and clean up redundant errors as I go
 				- DONE: take <from creature>, <non-item>, <too heavy>
-				- DONE: drop <no room in container (e.g. throne)>
-				- DONE: stowe <None>
+				- DONE: drop <none>
+				- DONE: stowe <none>
 				- DONE: eat <not_food>
 				- DONE: wear <not_garment>
 				- DONE: open <not openable>, <locked>, <already open>
 				- DONE: close <not openable>, <locked open>, <already closed>
-				- TBD:
+				- DONE: push <not buttonswitch>
+				- DONE: pull <not springsliderswitch or leverswitch>
+				- DONE: stand <none>
+				- DONE: enter <item>, <not seat>
+				- DONE: exit <none>
 				- TBD: drink <>
 				- TBD: unlock <>
 				- TBD: lock <>
@@ -1753,6 +1760,8 @@ Version 3.87.0 Goals:
 	- Pray
 	- Curse
 	- Sing
+
+- TBD: gracefully deal with unneeded preposition usage (e.g. "push on button")
 
 - TBD: implement curse warning / ending at Interpreter() level
 
