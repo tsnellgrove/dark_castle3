@@ -26,6 +26,9 @@ game_static_dict = {
 	### universal constants ###
 	'game_version' : '0.1.0', # was '0.15 (5/22/2024)' up untill 6/12/2024; no build # between releases
 
+	### bodies of liquid the player cannot drink from ###
+	'reservoir_lst' : [],
+
 	### title and score dicts ###
     'title_factor' : 10,
 

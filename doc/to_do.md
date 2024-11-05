@@ -1301,6 +1301,11 @@ Version 3.87.0 Goals:
 			- IDEA: we want the designer to have confidence in what has happened
 			- IDEA: the line behind what is attemptable and what viloates game physics is blurry!
 			- IDEA: error order of operations also comes into play (e.g. "exit"); att always after err
+			- IDEA: need to think through what attempt would look like... what could it trigger?
+			- IDEA: balancing the freedom to trigger on anything vs. the cost of double checking w/ cond
+			- IDEA: there is no value in having attempt errors for debug commands
+			- IDEA: prep verbs - which have complex order of operations - get messy!!
+			- IDEA: for now, when in doubt, make an error unattemptable
 		- DONE: create attempt_err()
 			- DONE: create attempt_err() module
 			- DONE: create attmept_err() function
@@ -1325,13 +1330,13 @@ Version 3.87.0 Goals:
 				- DONE: push <not buttonswitch>
 				- DONE: pull <not springsliderswitch or leverswitch>
 				- DONE: stand <none>
-				- DONE: enter <item>, <not seat>
-				- DONE: exit <none>
-				- TBD: drink <>
+				- DONE: enter <not seat>
+				- DONE: exit <not seat>, <creature not contained>
+				- DONE: drink <none>
 				- TBD: unlock <>
 				- TBD: lock <>
 				- TBD:
-				- TBD: go.<invalid direction>
+				- TBD: go <invalid direction>
 				- TBD: clean up single comment <verb>_err
 		- TBD: document Error updates and categories in doc
 		- TBD: consider whether hidden rooms s, e, & w of Entrance can be eliminated (needed for paths?)
