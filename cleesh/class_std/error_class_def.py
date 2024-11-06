@@ -487,6 +487,9 @@ class Error(Identity):
 			return True
 		return False
 
+	def drink_att(self, obj, gs):
+		return False
+
 	def lock_err(self, key_obj, gs):
 		creature = gs.core.hero
 		if self.err_prep_std(key_obj, creature, gs):

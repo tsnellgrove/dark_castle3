@@ -1305,7 +1305,8 @@ Version 3.87.0 Goals:
 			- IDEA: balancing the freedom to trigger on anything vs. the cost of double checking w/ cond
 			- IDEA: there is no value in having attempt errors for debug commands
 			- IDEA: prep verbs - which have complex order of operations - get messy!!
-			- IDEA: for now, when in doubt, make an error unattemptable
+			- IDEA: when in doubt, make an error unattemptable
+			- IDEA: for now, all prep methods are unattemptable
 		- DONE: create attempt_err()
 			- DONE: create attempt_err() module
 			- DONE: create attmept_err() function
