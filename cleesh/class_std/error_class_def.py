@@ -525,6 +525,9 @@ class Error(Identity):
 			return True
 		return False
 
+	def lock_att(self, key_obj, gs):
+		return False
+
 	def unlock_err(self, key_obj, gs):
 		creature = gs.core.hero
 		if self.err_prep_std(key_obj, creature, gs):
@@ -563,6 +566,9 @@ class Error(Identity):
 			return True
 		return False
 
+	def unlock_att(self, key_obj, gs):
+		return False
+
 	def put_err(self, obj, gs):
 		creature = gs.core.hero
 		if self.err_prep_std(obj, creature, gs):
@@ -592,6 +598,9 @@ class Error(Identity):
 			return True
 		return False
 
+	def put_att(self, obj, gs):
+		return False
+
 	def show_err(self, obj, gs):
 		creature = gs.core.hero
 		if self.err_prep_std(obj, creature, gs):
@@ -601,6 +610,9 @@ class Error(Identity):
 			return True
 		if obj.err_not_in_hand(creature, gs):
 			return True
+		return False
+
+	def show_att(self, obj, gs):
 		return False
 
 	def give_err(self, obj, gs):
@@ -621,6 +633,9 @@ class Error(Identity):
 		if self.weight + obj.weight > self.max_weight:
 			gs.io.buffer(f"With a glum shake of their head, the {self.full_name} refuses the {obj.full_name}. You notice that the {self.full_name} appears to be overburdened already.")
 			return True
+		return False
+
+	def give_att(self, obj, gs):
 		return False
 
 	def attack_err(self, src_obj, gs):
@@ -648,6 +663,8 @@ class Error(Identity):
 			return True
 		return False
 
+	def attack_att(self, src_obj, gs):
+		return False
 
 	# *** go_case error ***
 	def go_err(self, dir, gs):

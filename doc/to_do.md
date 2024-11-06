@@ -1333,9 +1333,12 @@ Version 3.87.0 Goals:
 				- DONE: enter <not seat>
 				- DONE: exit <not seat>, <creature not contained>
 				- DONE: drink <none>
-				- TBD: unlock <>
-				- TBD: lock <>
-				- TBD:
+				- DONE: unlock <none>
+				- DONE: lock <none>
+				- DONE: put <none>
+				- DONE: show <none>
+				- DONE: give <none>
+				- DONE: attack <none>
 				- TBD: go <invalid direction>
 				- TBD: clean up single comment <verb>_err
 		- TBD: document Error updates and categories in doc
