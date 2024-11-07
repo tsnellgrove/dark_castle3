@@ -1340,11 +1340,12 @@ Version 3.87.0 Goals:
 				- DONE: show <none>
 				- DONE: give <none>
 				- DONE: attack <none>
-				- TBD: go <invalid direction>
+				- DONE: go <invalid direction>, <door closed>
+				- IDEA: consider whether hidden rooms s, e, & w of Entrance can be eliminated
+					- TBD: investigate enable passing in custom paths?
 				- TBD: clean up single comment <verb>_err
 		- TBD: document Error updates and categories in doc
-		- TBD: consider whether hidden rooms s, e, & w of Entrance can be eliminated (needed for paths?)
-			- IDEA: enable passing in custom paths?
+
 
 		- TBD: git branch merge with master
 			- TBD: 'git checkout master' to switch focus to master

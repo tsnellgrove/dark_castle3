@@ -678,6 +678,16 @@ class Error(Identity):
 		if creature.is_contained(gs):
 			gs.io.buffer(f"You'll have to exit the {creature.get_contained_by(gs).full_name} to attempt that.")
 			return True
+#		if not gs.map.chk_valid_dir(self, dir):
+#			gs.io.buff_e(f"dir_err_{random.randint(0, 4)}")
+#			return True
+#		door = gs.map.get_door(self, dir)
+#		if not isinstance(door, str) and door.is_open == False:
+#			gs.io.buffer(f"The {door.full_name} is closed.")
+#			return True
+		return False
+
+	def go_att(self, dir, gs):
 		if not gs.map.chk_valid_dir(self, dir):
 			gs.io.buff_e(f"dir_err_{random.randint(0, 4)}")
 			return True
