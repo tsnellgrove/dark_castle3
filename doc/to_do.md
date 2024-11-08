@@ -1320,7 +1320,7 @@ Version 3.87.0 Goals:
 			- DONE: test
 		- INPROC: create attemptable error code in Error class
 			- DONE: test existing (empty) calls to attempt_err()
-			- INPROC: create <verb>_att methods in Error and clean up redundant errors as I go
+			- DONE: create <verb>_att methods in Error and clean up redundant errors as I go
 				- DONE: take <from creature>, <non-item>, <too heavy>
 				- DONE: drop <none>
 				- DONE: stowe <none>
@@ -1341,9 +1341,7 @@ Version 3.87.0 Goals:
 				- DONE: give <none>
 				- DONE: attack <none>
 				- DONE: go <invalid direction>, <door closed>
-				- IDEA: consider whether hidden rooms s, e, & w of Entrance can be eliminated
-					- TBD: investigate enable passing in custom paths?
-				- TBD: clean up single comment <verb>_err
+			- INPROC: clean up single comment <verb>_err (up to but not including stand() )
 		- TBD: document Error updates and categories in doc
 
 
@@ -1360,6 +1358,12 @@ Version 3.87.0 Goals:
 			- TBD: post-branch-delete run test
 
 		- TBD: update cleesh engine version build
+
+
+- TBD: eliminate hidden rooms [FUTURE]
+	- EXAMPE: s, e, & w of Entrance 
+	- TBD: Room class would need a custom_path_lst attribe
+	- TBD: custom_path_lst called from room.disp_cond()
 
 - TBD: state machine for hedgehog [FUTURE]
 	- IDEA: need to implement hedgehog state machine based on creature state
@@ -1379,7 +1383,7 @@ Version 3.87.0 Goals:
 		- IDEA: would hold all commands, timer 'ticks', and state changes (e.g. switches)
 		- IDEA: for event bus, consider moving auto_action() to front of app_main() run order
 
-- IDEA: triggers [FUTURE]
+- IDEA: module triggers [FUTURE]
 	- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
 	- IDEA: Establish switch triggers such that timer as trigger is more natural
 	- TBD: update cleesh engine version build
