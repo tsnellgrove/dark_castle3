@@ -1317,7 +1317,9 @@ Version 3.87.0 Goals:
 			- IDEA: error order of operations also comes into play (e.g. "exit"); att always after err
 				- IDEA: prep verbs - which have complex order of operations - get messy!!
 				- IDEA: for now, all prep methods are unattemptable
-			- IDEA: when in doubt, make an error unattemptable (<verb>_err() )
+			- IDEA: high-level principals
+				- IDEA: think in terms of DBs... first normalize for consistency then de-normalize for perf/flex
+				- IDEA: when in doubt, make an error unattemptable (<verb>_err() )
 		- DONE: create attempt_err()
 			- DONE: create attempt_err() module
 			- DONE: create attmept_err() function
@@ -1329,16 +1331,16 @@ Version 3.87.0 Goals:
 			- DONE: create sword_not_on_flr_cond
 			- DONE: add sword_not_on_flr_cond and pass_result to hedgehog_guard_mach
 			- DONE: test
-		- INPROC: create attemptable error code in Error class
+		- DONE: create attemptable error code in Error class
 			- DONE: test existing (empty) calls to attempt_err()
 			- DONE: create <verb>_att methods in Error and clean up redundant errors as I go
-				- DONE: take <from creature>, <non-item>, <too heavy>
+				- DONE: take <from creature>, <non-item>
 				- DONE: drop <none>
 				- DONE: stowe <none>
 				- DONE: eat <not_food>
 				- DONE: wear <not_garment>
-				- DONE: open <not openable>, <locked>, <already open>
-				- DONE: close <not openable>, <locked open>, <already closed>
+				- DONE: open <not openable>, <*** locked ***>
+				- DONE: close <not openable>
 				- DONE: push <not buttonswitch>
 				- DONE: pull <not springsliderswitch or leverswitch>
 				- DONE: stand <none>
@@ -1351,12 +1353,14 @@ Version 3.87.0 Goals:
 				- DONE: show <none>
 				- DONE: give <none>
 				- DONE: attack <none>
-				- DONE: go <invalid direction>, <door closed>
+				- DONE: go <invalid direction>, <*** door closed ***>
 			- DONE: clean up single comment <verb>_err
+		- TBD: find way to signal special case of <open locked> and <direction door closed>
+			- TBD: document special cases in game_update comments near mach
 		- TBD: document Error updates and categories in doc
 		- TBD: refactor attack_err() method
 		- TBD: set time to clean up "##" comments in Error class
-		- TBD: need alert for when hero's load is getting heavy
+		- TBD: need early alert for when hero's load is getting heavy (i.e. approaching limit)
 
 
 		- TBD: git branch merge with master

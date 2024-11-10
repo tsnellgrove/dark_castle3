@@ -263,17 +263,14 @@ class Error(Identity):
 		if self.is_open == False:
 			gs.io.buffer(f"The {self.full_name} is already closed.")
 			return True
-##		if self.is_lockable() and self.is_unlocked == False:
-##			gs.io.buffer(f"The {self.full_name} is locked open.") # for Iron Portcullis
-##			return True
+		if self.is_lockable() and self.is_unlocked == False:
+			gs.io.buffer(f"The {self.full_name} is locked open.") # for Iron Portcullis
+			return True
 		return False
 
 	def close_att(self, gs):
 		if not self.is_openable() and not self.is_container():
 			gs.io.buffer(f"The {self.full_name} cannot be closed.")
-			return True
-		if self.is_lockable() and self.is_unlocked == False:
-			gs.io.buffer(f"The {self.full_name} is locked open.") # for Iron Portcullis
 			return True
 		return False
 
