@@ -1295,18 +1295,29 @@ Version 3.87.0 Goals:
 			- FINDING: determined that best game flow was 1) input, 2) response, 3) end or auto_act
 			- DONE: doc updated app_main() flow with findings
 		- DONE: define NON-attemptable
+			- IDEA: non-attemptable (i.e. <verb>_err() ) errors include:
 			- IDEA: all interp() errors
-			- IDEA: noun or direct obj not in scope or not in reach
-			- IDEA: violates game phyiscis (e.g. obj not in hand, can't close locked door)
-			- IDEA: we want the designer to have confidence in what has happened
-			- IDEA: the line behind what is attemptable and what viloates game physics is blurry!
+				- IDEA: noun or direct obj not in scope or not in reach
+				- IDEA: violates game phyiscis (e.g. obj not in hand, can't close locked door)
+				- IDEA: there is no value in having attempt errors for debug commands
+			- IDEA: challenges 
+				- IDEA: the line behind what is attemptable and what viloates game physics is blurry!
+				- IDEA: we want the designer to have confidence in what has happened
+				- IDEA: need to think through what attempt would look like... what could it trigger?
+			- IDEA: tricky case is where _att() error could work if a 2ndary condition were changed
+				- EXAMPLE: if not obj.is_openable then there is no case in which obj *could* be openned
+				- IDEA: so no complexity is created by moving this test to open_att()
+				- IDEA: because we will *never* be testing for obj to be successfully openned
+				- IDEA: compare this to the case where obj.is_openable and obj.is_locked
+				- IDEA: here, obj *could* be openned if only it wasn't locked
+				- IDEA: and if we wanted to create a cond for when obj *is* openned,
+				- IDEA: we have now made that cond more complicated if we move the is_locked test to open_att()
+				- IDEA: we are balancing the freedom to trigger vs. the cost of double checking in cond
+				- IDEA: <verb>_att() cases like this include open (but locked) and go (but closed door)
 			- IDEA: error order of operations also comes into play (e.g. "exit"); att always after err
-			- IDEA: need to think through what attempt would look like... what could it trigger?
-			- IDEA: balancing the freedom to trigger on anything vs. the cost of double checking w/ cond
-			- IDEA: there is no value in having attempt errors for debug commands
-			- IDEA: prep verbs - which have complex order of operations - get messy!!
-			- IDEA: when in doubt, make an error unattemptable
-			- IDEA: for now, all prep methods are unattemptable
+				- IDEA: prep verbs - which have complex order of operations - get messy!!
+				- IDEA: for now, all prep methods are unattemptable
+			- IDEA: when in doubt, make an error unattemptable (<verb>_err() )
 		- DONE: create attempt_err()
 			- DONE: create attempt_err() module
 			- DONE: create attmept_err() function
@@ -1341,8 +1352,11 @@ Version 3.87.0 Goals:
 				- DONE: give <none>
 				- DONE: attack <none>
 				- DONE: go <invalid direction>, <door closed>
-			- INPROC: clean up single comment <verb>_err (up to but not including stand() )
+			- DONE: clean up single comment <verb>_err
 		- TBD: document Error updates and categories in doc
+		- TBD: refactor attack_err() method
+		- TBD: set time to clean up "##" comments in Error class
+		- TBD: need alert for when hero's load is getting heavy
 
 
 		- TBD: git branch merge with master

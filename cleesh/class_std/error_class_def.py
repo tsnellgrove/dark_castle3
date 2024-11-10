@@ -135,9 +135,9 @@ class Error(Identity):
 		if creature.chk_in_hand(self):
 			gs.io.buffer("You're already holding the " + self.full_name)
 			return True
-##		if not creature.chk_contain_item(self) and (creature.weight + self.weight) > creature.max_weight:
-##			gs.io.buffer(f"You don't have enough capacity to take the {self.full_name} along with everything else you are carrying.")
-##			return True
+		if not creature.chk_contain_item(self) and (creature.weight + self.weight) > creature.max_weight:
+			gs.io.buffer(f"You don't have enough capacity to take the {self.full_name} along with everything else you are carrying.")
+			return True
 		return False
 
 	def take_att(self, gs):
@@ -149,9 +149,9 @@ class Error(Identity):
 			if obj.is_creature() and obj is not gs.core.hero and self in obj.get_vis_contain_lst(gs):
 				gs.io.buffer(f"You can't take the {self.full_name}. It belongs to the {obj.full_name}!")
 				return True
-		if not creature.chk_contain_item(self) and (creature.weight + self.weight) > creature.max_weight:
-			gs.io.buffer(f"You don't have enough capacity to take the {self.full_name} along with everything else you are carrying.")
-			return True # use case needs testing post move to take_att()
+##		if not creature.chk_contain_item(self) and (creature.weight + self.weight) > creature.max_weight:
+##			gs.io.buffer(f"You don't have enough capacity to take the {self.full_name} along with everything else you are carrying.")
+##			return True # use case needs testing post move to take_att()
 		return False
 
 	def drop_err(self, gs):
@@ -326,24 +326,15 @@ class Error(Identity):
 		if self.is_item():
 			gs.io.buffer(f"Despite twisting yourself into a pretzel you still can't manage to enter the {self.full_name}.")
 			return True
-#		if not self.is_seat():
-#			gs.io.buffer(f"You can't use the 'enter' command on the {self.full_name}.")
-#			return True
 		if self.is_seat() and len(self.contain_lst) >= self.max_obj:
 			gs.io.buffer(f"There's no room on the {self.full_name} to sit.")
 			return True
 		return False
 
 	def enter_att(self, gs):
-#		if self.is_item():
-#			gs.io.buffer(f"Despite twisting yourself into a pretzel you still can't manage to enter the {self.full_name}.")
-#			return True
 		if not self.is_seat():
 			gs.io.buffer(f"You can't use the 'enter' command on the {self.full_name}.")
 			return True
-#		if self.is_seat() and len(self.contain_lst) >= self.max_obj:
-#			gs.io.buffer(f"There's no room on the {self.full_name} to sit.")
-#			return True
 		return False
 
 	def exit_err(self, gs):
@@ -361,22 +352,10 @@ class Error(Identity):
 		if self.is_item():
 			gs.io.buffer(f"Despite twisting yourself into a pretzel you still can't manage to exit the {self.full_name}.")
 			return True
-#		if not self.is_seat():
-#			gs.io.buffer(f"You can't use the 'exit' command on the {self.full_name}.")
-#			return True
-#		if not creature.is_contained(gs):
-#			gs.io.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
-#			return True
-#		if creature.is_contained(gs) and creature.get_contained_by(gs) != self:
-#			gs.io.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
-#			return True
 		return False
 
 	def exit_att(self, gs):
 		creature = gs.core.hero
-#		if self.is_item():
-#			gs.io.buffer(f"Despite twisting yourself into a pretzel you still can't manage to exit the {self.full_name}.")
-#			return True
 		if not self.is_seat():
 			gs.io.buffer(f"You can't use the 'exit' command on the {self.full_name}.")
 			return True
@@ -433,9 +412,9 @@ class Error(Identity):
 		if not self.is_liquid():
 			gs.io.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")
 			return True
-#		if obj.name in ['moat']:
+##		if obj.name in ['moat']:
 		if obj.name in gs.io.get_lst('reservoir_lst'):
-#			gs.io.buffer(f"The very thought of drinking from the fetid {obj.full_name} makes you gag.")
+##			gs.io.buffer(f"The very thought of drinking from the fetid {obj.full_name} makes you gag.")
 			gs.io.buffer(f"You are about to take a big gulp from the {obj.full_name} but then think better of it.")
 			return True
 		if not obj.is_container():
@@ -640,13 +619,10 @@ class Error(Identity):
 		if creature.is_contained(gs):
 			gs.io.buffer(f"You'll have to exit the {creature.get_contained_by(gs).full_name} to attempt that.")
 			return True
-#		if not gs.map.chk_valid_dir(self, dir):
-#			gs.io.buff_e(f"dir_err_{random.randint(0, 4)}")
-#			return True
-#		door = gs.map.get_door(self, dir)
-#		if not isinstance(door, str) and door.is_open == False:
-#			gs.io.buffer(f"The {door.full_name} is closed.")
-#			return True
+##		door = gs.map.get_door(self, dir)
+##		if not isinstance(door, str) and door.is_open == False:
+##			gs.io.buffer(f"The {door.full_name} is closed.")
+##			return True
 		return False
 
 	def go_att(self, dir, gs):
