@@ -310,12 +310,15 @@ I also took the refactor opportunity to put a conditional in front of auto_act i
 
 			2) The Error Sub-System. This is where Method Mis-Match errors are handled for all verb methods. The Error Sub-System spans the whole of Dark Castle but the foundation is laid in Invisible so this is a good place to discuss how it works. It's covered in more detail than anyone but myself could possibly desire in a section of its own.
 
-UPDATE:
+UPDATE 1 - The Error Class:
 	During the 3.8.0 (build 0012) refactoring I decided that it made sense to have *all* non-MixIn classes - including TrueCond, BaseResult, and gs_class classes - inherit from invisible. This enabled reuse of the name attribute and the class print definition - and allowed for future consistency. However, it also meant a lot of classes inheriting a ton of identity and error methods they had no use for. Also, Invisible was just getting so full of said identity and error methods that it was getting hard to stay organized. 
 	
 	To address this, I broke Invisible into three classes: Invisible, Identity, and Error. Invisible holds as little as possible - just the name attribute, print definition, and a couple abstract identity methods needed for machines (is_mach() and is_timer() ). Identity holds all of the tangible class identity methods. And Error holds all of the error methods. Inheritance-wise, all tangible classes inherit as follows: Invisible => Identity => Error => Writing => ViewOnly => <all others>. All intangible classes inherit just from Invisible: Invisible => <machine, cond, result, or gs_class>. 
 
 	With this change noted, the rest of the identiy and error sub-systems still work as described below.
+
+UPDATE 2 - Attemptable Errors:
+	Also during the 3.8.0 (build 0012) refactoring I took on the issue of attemptable errors. This was a subtle but frustrating problem that takes some explaining. Let's start by reviewing how we arrived at the current error sub-system. Once upon a time, errors were  checked for in cmd_exe() with the player's command actually be performmed if none of the error cases held. This meant that time passed during all non-Interpreter error turns. The bigger challenge was that pre-action modular machines could not benefit from the error code... so to avoid triggering a command-based machine on an invalid command (e.g. the hedgehog from attacking on "take sword" when the shiny_sword is not even present) validate() was introduced. validate() error checked all commands before [TBD]
 
 * Error Sub-System
 	- Overview:

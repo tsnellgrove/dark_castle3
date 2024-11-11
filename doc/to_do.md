@@ -1355,9 +1355,9 @@ Version 3.87.0 Goals:
 				- DONE: attack <none>
 				- DONE: go <invalid direction>, <*** door closed ***>
 			- DONE: clean up single comment <verb>_err
+		- INPROC: document Error updates and categories in doc
 		- TBD: find way to signal special case of <open locked> and <direction door closed>
 			- TBD: document special cases in game_update comments near mach
-		- TBD: document Error updates and categories in doc
 		- TBD: refactor attack_err() method
 		- TBD: set time to clean up "##" comments in Error class
 		- TBD: need early alert for when hero's load is getting heavy (i.e. approaching limit)
