@@ -322,7 +322,37 @@ UPDATE 2 - Attemptable Errors:
 
 	However, this solution also had a limiting side effect. Even if the designer really wants to provide a response in place of a typical error, they simply can't. The goblin in the Antechamber provides a good example of this problem. The guard_goblin was originally set to attack burt if he did anything at all suspicious - including trying to go north, trying to open the portcullis, or trying to take the grimy_axe. However, all of these throw errors so the modular machine cannot run. At first I simply thought of this as a trade-off between error subsystem consistency and design freedom. But over time I came to see that there are arguably two types of errors: "impossible errors" (e.g. 'take castle') and "attemptable errors" (e.g. 'open locked door). 'take castle' is not reasonable to attempt - so there's no need to trigger a modular machine off of it. But 'open (locked) door' is a very different case. Much as in real life, the player generally can't know that a door is locked until they attempt to open it. So the action is reasonable to attempt - and in doing so the player recieves information. However, by the same token, if a creature is guarding the door and burt comes up and rattles it - it also seems perfectly reasonable that the guard creature will respond to burt's actions. With this scenario in mind, I decided to divide errors into 'attemptable' and 'non-attemptable' types to and enable turn_inc(), pre_act(), and auto_act() for 'attemptable' errors.
 
-	
+	So, how to distinguish attemptable from non-attemptable errors? We have some simple starting principles:
+		- All interpeter 'error' cases are non-attamptable
+		- Any error involving a noun or direct object that is not in scope or not in reach is non-attemptable
+		- Errors that violate game physics (e.g. obj not in hand, can't lock an open door) are non-attemptable 
+		- All debug errors are non-attemptable
+
+	After this, the lines of demarcation get a bit blurry. Language is massively varried and complex so guessing in advance what commands a player will issue is a fools errand. Instead, we examine the problem first, from an code architecture point of view, and second from a game-writer design perspective.
+
+		- Architecturally, it's important to note that the first attemptable error will always be processed after the last nonattemptable error. Since many errors have a carefully arranged order of operation, this places constraints on which errors can be 'attemptable' (without making all non-std errors attemptable)
+
+		- Design is where the decision-making gets genuinely tricky. 
+
+
+			- IDEA: tricky case is where _att() error could work if a 2ndary condition were changed
+				- EXAMPLE: if not obj.is_openable then there is no case in which obj *could* be openned
+				- IDEA: so no complexity is created by moving this test to open_att()
+				- IDEA: because we will *never* be testing for obj to be successfully openned
+				- IDEA: compare this to the case where obj.is_openable and obj.is_locked
+				- IDEA: here, obj *could* be openned if only it wasn't locked
+				- IDEA: and if we wanted to create a cond for when obj *is* openned,
+				- IDEA: we have now made that cond more complicated if we move the is_locked test to open_att()
+				- IDEA: we are balancing the freedom to trigger vs. the cost of double checking in cond
+				- IDEA: <verb>_att() cases like this include open (but locked) and go (but closed door)
+			- IDEA: error order of operations also comes into play (e.g. "exit"); att always after err
+				- IDEA: prep verbs - which have complex order of operations - get messy!!
+				- IDEA: for now, all prep methods are unattemptable
+			- IDEA: high-level principals
+				- IDEA: need to think through what attempt would look like... what could it trigger?
+				- IDEA: think in terms of DBs... first normalize for consistency then de-normalize for perf/flex
+				- IDEA: when in doubt, make an error unattemptable (<verb>_err() )
+
 
 * Error Sub-System
 	- Overview:
