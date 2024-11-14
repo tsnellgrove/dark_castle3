@@ -343,7 +343,10 @@ UPDATE 2 - Attemptable Errors:
 				- IDEA: think in terms of DBs... first normalize for consistency then de-normalize for perf/flex
 				- IDEA: when in doubt, make an error unattemptable (<verb>_err() )
 				- IDEA: <verb>_att() cases like this include open (but locked) and go (but closed door)
-				- IDEA: next-gen error solution - one error set returns is_valid and is_attemptable to app_main() which in turn incorporates these into conditional decision-making
+				- IDEA: next-gen error idea:
+					- One error set returns is_valid and is_attemptable to app_main() 
+					- app_main() in turn passes these to the machine condition 
+					- is_valid attrib and cond_check() test is baked into the base Condition class
 
 
 * Error Sub-System
