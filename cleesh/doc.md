@@ -332,26 +332,18 @@ UPDATE 2 - Attemptable Errors:
 
 		- Architecturally, it's important to note that the first attemptable error will always be processed after the last nonattemptable error. Since many errors have a carefully arranged order of operation, this places constraints on which errors can be 'attemptable' (without making all non-std errors attemptable)
 
-		- Design is where the decision-making gets genuinely tricky. 
+		- Game Design is where the decision-making gets genuinely tricky. 
+			Let's start with the straight forward error case of the player trying to open an obj for which is_openable == False (for example object,  big_rock). From a condition testing perspective, making this error attemptable has no reprecussions. If there is a machaine triggered by the 'open big_rock' command then it will run. Otherwise, the error will display. 
+		
+			By contrast, consider the case of Burt trying to open a locked door where this case is treated as an attemptable error. We can now trigger a machine off of the attempt. But what if we want to trigger a machine off of Burt successfully opening the door? If 'open locked door' was not an attemptable error then we could just trigger off of the command and the machine would only run if the command was successful. But, as an attemptable error, we now need to add a condition to our machine to eliminate the case where the door is locked. A generalized statement of the situation is: "there is no adverse effect from an attemptable error that can never succeed, but making a conditional error attemptable adds complexity to testing for success". Essentially, by enabling greater flexibility, we have also added game design complexity. We are balancing the freedom to trigger vs. the cost of double checking success in the machine's condition.
 
 
-			- IDEA: tricky case is where _att() error could work if a 2ndary condition were changed
-				- EXAMPLE: if not obj.is_openable then there is no case in which obj *could* be openned
-				- IDEA: so no complexity is created by moving this test to open_att()
-				- IDEA: because we will *never* be testing for obj to be successfully openned
-				- IDEA: compare this to the case where obj.is_openable and obj.is_locked
-				- IDEA: here, obj *could* be openned if only it wasn't locked
-				- IDEA: and if we wanted to create a cond for when obj *is* openned,
-				- IDEA: we have now made that cond more complicated if we move the is_locked test to open_att()
-				- IDEA: we are balancing the freedom to trigger vs. the cost of double checking in cond
-				- IDEA: <verb>_att() cases like this include open (but locked) and go (but closed door)
-			- IDEA: error order of operations also comes into play (e.g. "exit"); att always after err
-				- IDEA: prep verbs - which have complex order of operations - get messy!!
-				- IDEA: for now, all prep methods are unattemptable
 			- IDEA: high-level principals
 				- IDEA: need to think through what attempt would look like... what could it trigger?
 				- IDEA: think in terms of DBs... first normalize for consistency then de-normalize for perf/flex
 				- IDEA: when in doubt, make an error unattemptable (<verb>_err() )
+				- IDEA: <verb>_att() cases like this include open (but locked) and go (but closed door)
+				- IDEA: next-gen error solution - one error set returns is_valid and is_attemptable to app_main() which in turn incorporates these into conditional decision-making
 
 
 * Error Sub-System
