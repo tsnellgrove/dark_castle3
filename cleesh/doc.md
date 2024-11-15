@@ -337,17 +337,29 @@ UPDATE 2 - Attemptable Errors:
 		
 			By contrast, consider the case of Burt trying to open a locked door where this case is treated as an attemptable error. We can now trigger a machine off of the attempt. But what if we want to trigger a machine off of Burt successfully opening the door? If 'open locked door' was not an attemptable error then we could just trigger off of the command and the machine would only run if the command was successful. But, as an attemptable error, we now need to add a condition to our machine to eliminate the case where the door is locked. A generalized statement of the situation is: "there is no adverse effect from an attemptable error that can never succeed, but making a conditional error attemptable adds complexity to testing for success". Essentially, by enabling greater flexibility, we have also added game design complexity. We are balancing the freedom to trigger vs. the cost of double checking success in the machine's condition.
 
-
-			- IDEA: high-level principals
-				- IDEA: need to think through what attempt would look like... what could it trigger?
-				- IDEA: think in terms of DBs... first normalize for consistency then de-normalize for perf/flex
-				- IDEA: when in doubt, make an error unattemptable (<verb>_err() )
-				- IDEA: <verb>_att() cases like this include open (but locked) and go (but closed door)
-				- IDEA: next-gen error idea:
-					- One error set returns is_valid and is_attemptable to app_main() 
-					- app_main() in turn passes these to the machine condition 
-					- is_valid attrib and cond_check() test is baked into the base Condition class
-
+	So, taking this all into account, how do we proceed?
+		1. At a high level I think of fixing the error subsystem the same way I'd think of tuning a DB. First you fully normalize for logical consistency. Then you de-normalize for performance (or in this case, flexibility).
+		2. At least at the start, I'm not implementing any attemptable errors for prep verbs. Order of operations just gets too complicated!
+		3. When deciding which 2-word verb errors to make attemptable I ask myself:
+			A. Is the error conditional?
+			B. Is there an order of operations dependency?
+			C. If A & B are both "no" then making the verb attemptable is harmless
+			D. Else, how likely is this to happen? Is it a common use case?
+			E. What would an attempt actually look like? Visualize it. What could it trigger?
+			F. When in doubt, make conditional errors non-attemptable
+		4. With point 3. above in mind, the two conditional 2-word verbs I've made attemptable are:
+			A. open object (which is locked)
+			B. go direction (which has a closed door barring the way)
+		5. Cunning Plans - how should the next generation error sub-system solve this?
+			A. One error command (<verb>_err) returns is_valid and is_attemptable to app_main()
+			B. for is_valid == Flase and is_att == False:
+				a. buffer error, no turn time passes (similar to validate() today) 
+			C. for is_valid == False and is_att == True:
+				a. cache error text
+				a. app_main() increments turn and runs pre_act() and auto_act()
+					1. app_main() passes is_valid to pre_act() which passes it to cond_check
+					2. The base Condition class includes attrib and test for is_valid match
+				c. if not cmd_override, buffer cached error
 
 * Error Sub-System
 	- Overview:

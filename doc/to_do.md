@@ -1355,7 +1355,7 @@ Version 3.87.0 Goals:
 				- DONE: attack <none>
 				- DONE: go <invalid direction>, <*** door closed ***>
 			- DONE: clean up single comment <verb>_err
-		- INPROC: document Error updates and categories in doc
+		- DONE: document Error updates and categories in doc
 		- TBD: find way to signal special case of <open locked> and <direction door closed>
 			- TBD: document special cases in game_update comments near mach
 		- TBD: refactor attack_err() method
@@ -1406,6 +1406,16 @@ Version 3.87.0 Goals:
 	- IDEA: Establish switch triggers such that timer as trigger is more natural
 	- TBD: update cleesh engine version build
 
+- IDEA: next generation error sub-system ideas (solving the attemptable error compromise) [FUTURE]
+	A. One error command (<verb>_err) returns is_valid and is_attemptable to app_main()
+	B. for is_valid == Flase and is_att == False:
+		a. buffer error, no turn time passes (similar to validate() today) 
+	C. for is_valid == False and is_att == True:
+		a. cache error text
+		a. app_main() increments turn and runs pre_act() and auto_act()
+			1. app_main() passes is_valid to pre_act() which passes it to cond_check
+			2. The base Condition class includes attrib and test for is_valid match
+		c. if not cmd_override, buffer cached error
 
 - TBD: mod-mach bug fixes
 	- TBD: fix hedgehog description after sword is returned (before goblin killed)
