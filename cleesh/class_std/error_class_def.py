@@ -141,7 +141,7 @@ class Error(Identity):
 		return False
 
 	def take_att(self, gs):
-		creature = gs.core.hero
+#		creature = gs.core.hero
 		if not self.is_item(): # a non-item might look takeable - is reasonable to attempt - player gets info
 			gs.io.buffer(f"Just how do you intend to pick up a {self.full_name}?")
 			return True		
@@ -587,7 +587,7 @@ class Error(Identity):
 		if not self.is_creature():
 			gs.io.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
 			return True
-		if not tgt_creature.is_attackable: # consider re-homing 'not_attackable' txt to creature obj
+		if not tgt_creature.is_attackable:
 			try:
 				gs.io.buff_f(f"not_attackable_{src_creature.name}_{tgt_creature.name}")
 			except:

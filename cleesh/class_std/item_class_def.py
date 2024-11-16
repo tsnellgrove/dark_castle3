@@ -53,9 +53,13 @@ class Item(ViewOnly):
 		if creature.chk_is_worn(self):
 			gs.io.buffer(f"You are no longer wearing the {self.full_name}.")
 			gs.io.buff_s(f"{creature.name}_remove_{self.descript_key}")
+		if not creature.chk_contain_item(self) and (creature.weight + self.weight + 5) > creature.max_weight:
+			gs.io.buffer(f"Your load is getting heavy.")
 		
 		gs.map.hero_rm.remove_item(self, gs)
 		creature.put_in_hand(self, gs)
+
+
 		return
 
 	def drop(self, gs, mode=None):

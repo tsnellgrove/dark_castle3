@@ -140,6 +140,7 @@ eat_biscuits_warning = Warning('eat_biscuits_warning',
 
 
 # *** conditions ***
+# *** note: obj.open (if locked) and room.go (w/ closed door in way) must be tested for success ***
 true_cond = TrueCond('true_cond')
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', stale_biscuits, 'royal_hedgehog_temp', True)

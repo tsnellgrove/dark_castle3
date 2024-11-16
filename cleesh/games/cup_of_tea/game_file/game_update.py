@@ -74,6 +74,7 @@ creaky_door = DoorLockable('creaky_door', 'Creaky Door', "door", 'creaky_door', 
 # timers
 
 # *** conditions ***
+# *** note: obj.open (if locked) and room.go (w/ closed door in way) must be tested for success ***
 true_cond = TrueCond('true_cond')
 
 # *** results ***

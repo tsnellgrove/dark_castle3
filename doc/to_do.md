@@ -1356,11 +1356,11 @@ Version 3.87.0 Goals:
 				- DONE: go <invalid direction>, <*** door closed ***>
 			- DONE: clean up single comment <verb>_err
 		- DONE: document Error updates and categories in doc
-		- TBD: find way to signal special case of <open locked> and <direction door closed>
-			- TBD: document special cases in game_update comments near mach
-		- TBD: refactor attack_err() method
-		- TBD: set time to clean up "##" comments in Error class
-		- TBD: need early alert for when hero's load is getting heavy (i.e. approaching limit)
+		- DONE: find way to signal special case of <open locked> and <direction door closed>
+			- DONE: document special cases in game_update comments near mach
+		- DONE: set time to clean up "##" comments in Error class
+		- DONE: refactor attack_err() method
+		- DONE: need early alert for when hero's load is getting heavy (i.e. approaching limit)
 
 
 		- TBD: git branch merge with master
@@ -1416,6 +1416,7 @@ Version 3.87.0 Goals:
 			1. app_main() passes is_valid to pre_act() which passes it to cond_check
 			2. The base Condition class includes attrib and test for is_valid match
 		c. if not cmd_override, buffer cached error
+	- clean up "##" comments in Error class
 
 - TBD: mod-mach bug fixes
 	- TBD: fix hedgehog description after sword is returned (before goblin killed)
@@ -1629,6 +1630,8 @@ Version 3.87.0 Goals:
 - TBD: change biscuit trademark to sword and key
 - TBD: Have lone biscuit in cardboard box
 - TBD: make biscuit yummy; Nana's famous recipie
+
+- TBD: consider how to surface 'not_attackable' txt in game_static_gbl
 
 - IDEA: for hedgehog guarding sword:
 	- 1: on get key, disable guard
