@@ -1164,7 +1164,7 @@ Version 3.87.0 Goals:
 		- LINK: https://github.com/microsoft/vscode/issues/7426#issuecomment-425093469
 
 
-- TBD: Cases where I want a modular machine to run despite an error standard (build 0012 [])
+- DONE: Cases where I want a modular machine to run despite an error standard (build 0012 [])
 	- IDEA: problem description
 		- IDEA: e.g. 'go north' in antechamber triggers goblin
 		- IDEA: i.e. should it ever be possible to override an error? If so, then how?
@@ -1204,7 +1204,7 @@ Version 3.87.0 Goals:
 			- IDEA: modular machines should be designed so that it is easy to trigger & run them from interupt()
 		- DEC: want a more consistent approach
 
-	- INPROC: sort out Error class idea
+	- DONE: sort out Error class idea
 		- DONE: create fresh map of class inheritance
 			- DONE: map class_std classes
 			- DONE: map class_gs classes
@@ -1361,21 +1361,21 @@ Version 3.87.0 Goals:
 		- DONE: set time to clean up "##" comments in Error class
 		- DONE: refactor attack_err() method
 		- DONE: need early alert for when hero's load is getting heavy (i.e. approaching limit)
+	- DONE: test
 
+	- TBD: git branch merge with master
+		- TBD: 'git checkout master' to switch focus to master
+		- TBD: 'git branch: to confirm focus
+		- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+		- TBD: 'git push' to push merge to origin (GitHub)
+		- TBD: confirm that origin is updated
+		- TBD: confirm that code is updated and still runs
+		- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+		- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+		- TBD: confirm origin is cleaned up
+		- TBD: post-branch-delete run test
 
-		- TBD: git branch merge with master
-			- TBD: 'git checkout master' to switch focus to master
-			- TBD: 'git branch: to confirm focus
-			- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
-			- TBD: 'git push' to push merge to origin (GitHub)
-			- TBD: confirm that origin is updated
-			- TBD: confirm that code is updated and still runs
-			- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
-			- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
-			- TBD: confirm origin is cleaned up
-			- TBD: post-branch-delete run test
-
-		- TBD: update cleesh engine version build
+	- TBD: update cleesh engine version build (build 0012 [])
 
 
 - TBD: eliminate hidden rooms [FUTURE]
