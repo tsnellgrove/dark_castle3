@@ -1,5 +1,5 @@
 # program: cleesh game engine
-# version: 3.8.0 (build 0011 [10/15/2024])
+# version: 3.8.0 (build 0012 [11/17/2024])
 # author: Tom Snellgrove
 # date: Jun 28, 2024
 # description: web main module for a zork-like text adventure game.

@@ -1363,142 +1363,42 @@ Version 3.87.0 Goals:
 		- DONE: need early alert for when hero's load is getting heavy (i.e. approaching limit)
 	- DONE: test
 
-	- TBD: git branch merge with master
-		- TBD: 'git checkout master' to switch focus to master
-		- TBD: 'git branch: to confirm focus
-		- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
-		- TBD: 'git push' to push merge to origin (GitHub)
-		- TBD: confirm that origin is updated
-		- TBD: confirm that code is updated and still runs
-		- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
-		- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
-		- TBD: confirm origin is cleaned up
-		- TBD: post-branch-delete run test
+	- DONE: git branch merge with master
+		- DONE: 'git checkout master' to switch focus to master
+		- DONE: 'git branch: to confirm focus
+		- DONE: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+		- DONE: 'git push' to push merge to origin (GitHub)
+		- DONE: confirm that origin is updated
+		- DONE: confirm that code is updated and still runs
+		- DONE: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+		- DONE: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+		- DONE: confirm origin is cleaned up
+		- DONE: post-branch-delete run test
 
-	- TBD: update cleesh engine version build (build 0012 [])
+	- DONE: update cleesh engine version build (build 0012 [11/17/2024])
 
-
-- TBD: eliminate hidden rooms [FUTURE]
-	- EXAMPE: s, e, & w of Entrance 
-	- TBD: Room class would need a custom_path_lst attribe
-	- TBD: custom_path_lst called from room.disp_cond()
-
-- TBD: state machine for hedgehog [FUTURE]
-	- IDEA: need to implement hedgehog state machine based on creature state
-		- IDEA: Both hedgehog and throne_broach_dispenser would be better implemented as state machines
-		- TBD: state machines and other general purpose mod-machs
-	- TBD: update cleesh engine version build
-
-- TBD: consider introducing an event bus [FUTURE]
-	- IDEA: if cmd passes validate => event bus
-	- IDEA: invisible triggers / switches: in hedgehog_eats_mach, give() command should set trigger (not cmd)
-		- FINDING: Invis Trigger Idea = Event Bus Idea => 'burt-give-stale_biscuits-royal_hedgehog'
-	- IDEA: does Event Bus work well cmd_exe() ?
-		- CONCERN: need to process commands... is it easy to process commands from events???
-	- IDEA: need to learn more about event busses, topics, message formats
-	- IDEA: message field => type (e.g. 'cmd'), event_key, cmd_terms ('case' and word_lst)
-	- IDEA: event bus idea
-		- IDEA: would hold all commands, timer 'ticks', and state changes (e.g. switches)
-		- IDEA: for event bus, consider moving auto_action() to front of app_main() run order
-
-- IDEA: module triggers [FUTURE]
-	- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
-	- IDEA: Establish switch triggers such that timer as trigger is more natural
-	- TBD: update cleesh engine version build
-
-- IDEA: next generation error sub-system ideas (solving the attemptable error compromise) [FUTURE]
-	A. One error command (<verb>_err) returns is_valid and is_attemptable to app_main()
-	B. for is_valid == Flase and is_att == False:
-		a. buffer error, no turn time passes (similar to validate() today) 
-	C. for is_valid == False and is_att == True:
-		a. cache error text
-		a. app_main() increments turn and runs pre_act() and auto_act()
-			1. app_main() passes is_valid to pre_act() which passes it to cond_check
-			2. The base Condition class includes attrib and test for is_valid match
-		c. if not cmd_override, buffer cached error
-	- clean up "##" comments in Error class
-
-- TBD: mod-mach bug fixes
-	- TBD: fix hedgehog description after sword is returned (before goblin killed)
-	- TBD: auto_static_behavior for goblin? each turn - maybe should be a standard function??
-		EXAMPLE: "the goblin is eyeing you coldly"
-	- TBD: fix eat_biscuits_warning 
-		- TBD so that it no longer lives in just entrance and main_hall 
-		- TBD: and no longer triggers when biscuits not in hand
-		- IDEA:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
-	- TBD: Do we really need to test for goblin in antechamber??? (will the goblin ever move)
-	- TBD: should hedgehog_distracted_mach just be replaced by a Creature class attribute?
-	- IDEA: Can we create a general purpose Dispenser machine - for use with Crown and Broach?
-		- IDEA: would also be useful for control_panel
-	- TBD: broaden hedgehog response to interacting with sword (e.g. "pull sword" should trigger)
-- TBD: update cleesh engine version build
-
-- TBD: debug ideas:
-	- IDEA: room should have show_machs() method that lists all local mod-machs
-	- TBD: mach visible command (include switchs, warnings, and timers too)
-	- TBD: machine purpose and state command (include warnings and timers too)
-	- IDEA: machine mix-in should have a dbg_describe() method that describes the machine (like K8s)
-	- IDEA: dbg_describe and debug_show_mach commands
-		- IDEA: to keep obj names short, just use abreviations <mach_name>_r1_m1
-		- IDEA: to understant what mod-mach does, have attribute that explains each module
-		- IDEA: also explains each result and condition
-		- IDEA: then have debug-only command that describes mod-mach based on that attribute
-		- IDEA: would also presumably need debug_show_mach command
-	- TBD: update cleesh engine version build
-
-- TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj
-	- EXAMPLE: re-assigning goblin to goblin_mach after goblin Creature instantiation
-	- ANALYSIS: basic problem pattern = obj => obj_mach => obj_cond / obj_result => obj
-	- IDEA: pass/link obj to obj_con/obj_result innately (not explicitly) as part of call/assignment?
-	- TBD: update cleesh engine version build
-
-- TBD: update modular machine doc!
-
-	- TBD: <TEMPLATE>
-		- TBD: create new <FEATURE_NAME>_feature git branch
-			- TBD: 'git branch' to confirm *master
-			- TBD: 'git branch <FEATURE_NAME>' to create new branch
-			- TBD: 'git branch' to confirm new branch exists but that master is still checked out
-			- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
-			- TBD: 'git branch' to confirm new branch is now in focus
-			- TBD: Publish Branch via VS Code button
-			- TBD: confirm new branch on GitHub
-			- TBD: update doc TBDs to DONEs
-			- TBD: <CMD><OPT>S (to save all files)
-			- TBD: 'git add .' to add files to be committed
-			- TBD: 'git commit -m "doc updates"
-			- TBD: 'git push" to push updates to origin (GitHub)
-			- TBD: confirm new branch on GitHub is now ahead of master
-		- TBD: refactor <CODE CHANGES>
-			- TBD: result class updates
-				- TBD: copy existing class; change parent to BaseResult and update class name
-				- TBD: update attribs and setters and getters
-				- TBD: update result_exe() attribs
-				- TBD: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
-				- TBD: specific class changes: <list here>
-			- TBD: update game files
-				- TBD: add new result class to game_update imports
-				- TBD: update Result obj name if appropriate
-				- TBD: update game_update result obj classes, attribs, and post-assignment updates
-				- TBD: set mach_state appropriately
-				- TBD: update post-attrib assignment if needed
-				- TBD: add result name to mach_run() exception list
-				- TBD: comment out old result class and remove from import (in new name)
-			- TBD: test & clean-up
-				- TBD: test
-				- TBD: clean-up game_update(), result_class(), mach_class() [??]
-		- TBD: git branch merge with master
-			- TBD: 'git checkout master' to switch focus to master
-			- TBD: 'git branch: to confirm focus
-			- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
-			- TBD: 'git push' to push merge to origin (GitHub)
-			- TBD: confirm that origin is updated
-			- TBD: confirm that code is updated and still runs
-			- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
-			- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
-			- TBD: confirm origin is cleaned up
-			- TBD: post-branch-delete run test
-
+- TBD: next gen error sub-system (build 0013 [])
+	- IDEA: problems to solve
+		- IDEA: need to eliminate order of operations dependency between error() and attempt()
+		- IDEA: need to eliminate special cond desing for conditional att errors
+		- IDEA: ideally, consolidate back to one set of error code per verb
+	- IDEA: next generation error sub-system ideas (solving the attemptable error compromise) [IN-VER]
+		A. One error command (<verb>_err) returns is_valid and is_attemptable to app_main()
+		B. for is_valid == Flase and is_att == False:
+			a. buffer error, no turn time passes (similar to validate() today) 
+		C. for is_valid == False and is_att == True:
+			a. cache error text
+			a. app_main() increments turn and runs pre_act() and auto_act()
+				1. app_main() passes is_valid to pre_act() which passes it to cond_check
+				2. The base Condition class includes attrib and test for is_valid match
+			c. if not cmd_override, buffer cached error
+		- clean up "##" comments in Error class
+	- TBD: deployment plan
+		- TBD: <start_here>
+	- TBD: eliminate hidden rooms [IN-VER]
+		- EXAMPE: s, e, & w of Entrance 
+		- TBD: Room class would need a custom_path_lst attribe
+		- TBD: custom_path_lst called from room.disp_cond()
 
 *** Eliminated Code ***
 	def run_mach(self, gs):
@@ -1539,7 +1439,6 @@ Version 3.87.0 Goals:
 #					return cmd_override, result.name
 
 # *** end unused code for combo conditions ***
-
 
 *** already done ***
 - DONE: would be nice to have an Error class that inherits from Invisible [FUTURE]
@@ -1606,10 +1505,62 @@ Version 3.87.0 Goals:
 	- EXMP: 'royal_hedgehog-*temp*'
 
 
+# *** GIT BRANCH TEMPLATE *** #
 
+	- TBD: <TEMPLATE>
+		- TBD: create new <FEATURE_NAME>_feature git branch
+			- TBD: 'git branch' to confirm *master
+			- TBD: 'git branch <FEATURE_NAME>' to create new branch
+			- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+			- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
+			- TBD: 'git branch' to confirm new branch is now in focus
+			- TBD: Publish Branch via VS Code button
+			- TBD: confirm new branch on GitHub
+			- TBD: update doc TBDs to DONEs
+			- TBD: <CMD><OPT>S (to save all files)
+			- TBD: 'git add .' to add files to be committed
+			- TBD: 'git commit -m "doc updates"
+			- TBD: 'git push" to push updates to origin (GitHub)
+			- TBD: confirm new branch on GitHub is now ahead of master
+		- TBD: refactor <CODE CHANGES>
+			- TBD: result class updates
+				- TBD: copy existing class; change parent to BaseResult and update class name
+				- TBD: update attribs and setters and getters
+				- TBD: update result_exe() attribs
+				- TBD: use return super().result_exe() to return BaseResult buffer and mach_state (update class)
+				- TBD: specific class changes: <list here>
+			- TBD: update game files
+				- TBD: add new result class to game_update imports
+				- TBD: update Result obj name if appropriate
+				- TBD: update game_update result obj classes, attribs, and post-assignment updates
+				- TBD: set mach_state appropriately
+				- TBD: update post-attrib assignment if needed
+				- TBD: add result name to mach_run() exception list
+				- TBD: comment out old result class and remove from import (in new name)
+			- TBD: test & clean-up
+				- TBD: test
+				- TBD: clean-up game_update(), result_class(), mach_class() [??]
+		- TBD: git branch merge with master
+			- TBD: 'git checkout master' to switch focus to master
+			- TBD: 'git branch: to confirm focus
+			- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+			- TBD: 'git push' to push merge to origin (GitHub)
+			- TBD: confirm that origin is updated
+			- TBD: confirm that code is updated and still runs
+			- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+			- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+			- TBD: confirm origin is cleaned up
+			- TBD: post-branch-delete run test
 
 # *** FUTURE TO DO *** #
 
+
+*** misc ideas ***
+- TBD: fix hedgehog description after sword is returned (before goblin killed)
+- TBD: fix eat_biscuits_warning 
+	- TBD so that it no longer lives in just entrance and main_hall 
+	- TBD: and no longer triggers when biscuits not in hand
+	- IDEA:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
 
 *** minor fixes ***
 - TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
@@ -1693,7 +1644,62 @@ Version 3.87.0 Goals:
 - meet the wizard from Enchanter who is searching for a scroll
 
 
+*** Future to dos ***
+- TBD: state machine for hedgehog [FUTURE]
+	- IDEA: need to implement hedgehog state machine based on creature state
+		- IDEA: Both hedgehog and throne_broach_dispenser would be better implemented as state machines
+		- TBD: state machines and other general purpose mod-machs
+	- TBD: update cleesh engine version build
+
+- TBD: consider introducing an event bus [FUTURE]
+	- IDEA: if cmd passes validate => event bus
+	- IDEA: invisible triggers / switches: in hedgehog_eats_mach, give() command should set trigger (not cmd)
+		- FINDING: Invis Trigger Idea = Event Bus Idea => 'burt-give-stale_biscuits-royal_hedgehog'
+	- IDEA: does Event Bus work well cmd_exe() ?
+		- CONCERN: need to process commands... is it easy to process commands from events???
+	- IDEA: need to learn more about event busses, topics, message formats
+	- IDEA: message field => type (e.g. 'cmd'), event_key, cmd_terms ('case' and word_lst)
+	- IDEA: event bus idea
+		- IDEA: would hold all commands, timer 'ticks', and state changes (e.g. switches)
+		- IDEA: for event bus, consider moving auto_action() to front of app_main() run order
+
+- IDEA: module triggers [FUTURE]
+	- IDEA: Modular Triggers? (named after intent; match cond, result, & mach)
+	- IDEA: Establish switch triggers such that timer as trigger is more natural
+	- TBD: update cleesh engine version build
+
+- TBD: mod-mach bug ideas [FUTURE]
+	- TBD: auto_static_behavior for goblin? each turn - maybe should be a standard function??
+		EXAMPLE: "the goblin is eyeing you coldly"
+	- TBD: Do we really need to test for goblin in antechamber??? (will the goblin ever move)
+	- TBD: should hedgehog_distracted_mach just be replaced by a Creature class attribute?
+	- IDEA: Can we create a general purpose Dispenser machine - for use with Crown and Broach?
+		- IDEA: would also be useful for control_panel
+	- TBD: broaden hedgehog response to interacting with sword (e.g. "pull sword" should trigger)
+- TBD: update cleesh engine version build
+
+- TBD: debug ideas: [FUTURE]
+	- IDEA: room should have show_machs() method that lists all local mod-machs
+	- TBD: mach visible command (include switchs, warnings, and timers too)
+	- TBD: machine purpose and state command (include warnings and timers too)
+	- IDEA: machine mix-in should have a dbg_describe() method that describes the machine (like K8s)
+	- IDEA: dbg_describe and debug_show_mach commands
+		- IDEA: to keep obj names short, just use abreviations <mach_name>_r1_m1
+		- IDEA: to understant what mod-mach does, have attribute that explains each module
+		- IDEA: also explains each result and condition
+		- IDEA: then have debug-only command that describes mod-mach based on that attribute
+		- IDEA: would also presumably need debug_show_mach command
+	- TBD: update cleesh engine version build
+
+- TBD: in mk_def_pkl(), sort out more elegant assignment process for self referenced obj [FUTURE]
+	- EXAMPLE: re-assigning goblin to goblin_mach after goblin Creature instantiation
+	- ANALYSIS: basic problem pattern = obj => obj_mach => obj_cond / obj_result => obj
+	- IDEA: pass/link obj to obj_con/obj_result innately (not explicitly) as part of call/assignment?
+	- TBD: update cleesh engine version build
+
+
 *** Unit Testing ***
+- IDEA: build a framework based on mock GameState class
 - IDEA: get serious about creating a "test harness" that can run automated test cases
 - TBD: enable mode to write all input and last 80 char of output to CSV file
 - TBD: enable passing file of commands and comparing with file of outputs ("get key")
@@ -1730,6 +1736,7 @@ Version 3.87.0 Goals:
 - IDEA: Creature state is linked to descript; e.g. hedgehog_descript_1
 - IDEAD: machine result changes Creature State; State machine itself changes creature attributes based on state
 	- e.g. start timer, description, machine active, distracted attribute, etc
+
 
 *** refactor Interactive ***
 - TBD: clean up and make more efficient
