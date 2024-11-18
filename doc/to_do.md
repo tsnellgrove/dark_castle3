@@ -1389,7 +1389,7 @@ Version 3.87.0 Goals:
 		C. for is_valid == False and is_att == True:
 			a. cache error text
 			a. app_main() increments turn and runs pre_act() and auto_act()
-				1. app_main() passes is_valid to pre_act() which passes it to cond_check
+				1. app_main() passes is_valid to pre_act() which passes it to cond_chk (default == True)
 				2. The base Condition class includes attrib and test for is_valid match
 			c. if not cmd_override, buffer cached error
 		- clean up "##" comments in Error class
