@@ -1377,7 +1377,7 @@ Version 3.87.0 Goals:
 
 	- DONE: update cleesh engine version build (build 0012 [11/17/2024])
 
-- TBD: next gen error sub-system (build 0013 [])
+- INPROC: next gen error sub-system (build 0013 [])
 	- IDEA: problems to solve
 		- IDEA: need to eliminate order of operations dependency between error() and attempt()
 		- IDEA: need to eliminate special cond desing for conditional att errors
@@ -1393,12 +1393,67 @@ Version 3.87.0 Goals:
 				2. The base Condition class includes attrib and test for is_valid match
 			c. if not cmd_override, buffer cached error
 		- clean up "##" comments in Error class
-	- TBD: deployment plan
-		- TBD: <start_here>
-	- TBD: eliminate hidden rooms [IN-VER]
-		- EXAMPE: s, e, & w of Entrance 
-		- TBD: Room class would need a custom_path_lst attribe
-		- TBD: custom_path_lst called from room.disp_cond()
+	- DONE: create deployment plan
+
+	- TBD: create new <FEATURE_NAME>_feature git branch
+		- TBD: 'git branch' to confirm *master
+		- TBD: 'git branch <FEATURE_NAME>' to create new branch
+		- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+		- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
+		- TBD: 'git branch' to confirm new branch is now in focus
+		- TBD: Publish Branch via VS Code button
+		- TBD: confirm new branch on GitHub
+		- TBD: update doc TBDs to DONEs
+		- TBD: <CMD><OPT>S (to save all files)
+		- TBD: 'git add .' to add files to be committed
+		- TBD: 'git commit -m "doc updates"
+		- TBD: 'git push" to push updates to origin (GitHub)
+		- TBD: confirm new branch on GitHub is now ahead of master
+
+	- TBD: deployment plan steps
+		- TBD: update app_main() and validate()
+			- TBD: in app_main, is_interp_valid => is_valid
+			- TBD: from validate() return cmd_err, is_att, and err_txt
+			- TBD: default values of is_att = False and err_txt = ""
+			- TBD: update app_main() to accept is_att & err_txt from validate()
+			- TBD: in app_main() "if is_valid or is_wait:" => "if is_valid or is_att or is_wait:"
+			- TBD: in app_main() "if is_valid:" => "if is_valid or is_att:"
+			- TBD: in app_main(), after "err_on_attempt" line, 2nd "if" cmd = gs.io.buffer(err_txt)
+			- TBD: test game (especially 3x attemptable errors)
+		- TBD: update error methods (all errors to method, return is_att and err_txt for each "if"):
+			- TBD: case = go
+				- TBD: <tbd>
+			- TBD: case = 2word
+				- TBD: <tbd>
+			- TBD: case = prep
+				- TBD: <tbd>
+		- TBD: eliminate legacy code
+			- TBD: in app_main, eliminate refs to attempt_err() including import
+			- TBD: test
+			- TBD: eliminate attempt_err()
+			- TBD: test
+		- TBD: doc update
+
+	- TBD: git branch merge with master
+		- TBD: 'git checkout master' to switch focus to master
+		- TBD: 'git branch: to confirm focus
+		- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+		- TBD: 'git push' to push merge to origin (GitHub)
+		- TBD: confirm that origin is updated
+		- TBD: confirm that code is updated and still runs
+		- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+		- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+		- TBD: confirm origin is cleaned up
+		- TBD: post-branch-delete run test
+
+	- TBD: update cleesh engine version build (build 0013 [])
+
+
+- TBD: eliminate hidden rooms [IN-VER]
+	- EXAMPE: s, e, & w of Entrance 
+	- TBD: Room class would need a custom_path_lst attribe
+	- TBD: custom_path_lst called from room.disp_cond()
+
 
 *** Eliminated Code ***
 	def run_mach(self, gs):
