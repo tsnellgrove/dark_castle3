@@ -1433,6 +1433,7 @@ Version 3.87.0 Goals:
 			- TBD: eliminate attempt_err()
 			- TBD: test
 		- TBD: doc update
+		- TBD: update is_att cases based on new system
 
 	- TBD: git branch merge with master
 		- TBD: 'git checkout master' to switch focus to master
