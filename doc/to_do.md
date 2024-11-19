@@ -1393,9 +1393,9 @@ Version 3.87.0 Goals:
 				2. The base Condition class includes attrib and test for is_valid match
 			c. if not cmd_override, buffer cached error
 		- clean up "##" comments in Error class
-	- DONE: create deployment plan
 
-	- TBD: create new <FEATURE_NAME>_feature git branch
+	- DONE: create deployment plan
+	- TBD: create new <FEATURE_NAME>_feature git branch [nxt_gen_err_branch]
 		- TBD: 'git branch' to confirm *master
 		- TBD: 'git branch <FEATURE_NAME>' to create new branch
 		- TBD: 'git branch' to confirm new branch exists but that master is still checked out
