@@ -1410,16 +1410,17 @@ Version 3.87.0 Goals:
 		- DONE: 'git push" to push updates to origin (GitHub)
 		- DONE: confirm new branch on GitHub is now ahead of master
 
-	- TBD: deployment plan steps
-		- TBD: update app_main() and validate()
-			- TBD: in app_main, is_interp_valid => is_valid
-			- TBD: from validate() return cmd_err, is_att, and err_txt
-			- TBD: default values of is_att = False and err_txt = ""
-			- TBD: update app_main() to accept is_att & err_txt from validate()
+	- INPROC: deployment plan steps
+		- INPROC: update app_main() and validate()
+			- DONE: in app_main, is_interp_valid => is_valid
+			- DONE: from validate() return cmd_err, is_att, and err_txt
+			- DONE: default values of is_att = False and err_txt = ""
+			- DONE: update app_main() to accept is_att & err_txt from validate()
 			- TBD: in app_main() "if is_valid or is_wait:" => "if is_valid or is_att or is_wait:"
 			- TBD: in app_main() "if is_valid:" => "if is_valid or is_att:"
 			- TBD: in app_main(), after "err_on_attempt" line, 2nd "if" cmd = gs.io.buffer(err_txt)
 			- TBD: test game (especially 3x attemptable errors)
+			- TBD: clean up comments in app_main(), validate()
 		- TBD: update error methods (all errors to method, return is_att and err_txt for each "if"):
 			- TBD: case = go
 				- TBD: <tbd>
