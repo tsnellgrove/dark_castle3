@@ -1423,6 +1423,10 @@ Version 3.87.0 Goals:
 			- DONE: test game (especially 3x attemptable errors)
 			- TBD: clean up comments in app_main(), validate()
 			- TBD: reconsider if auto_act() should run when is_att == True
+		- TBD: sort out Condition code
+			- TBD: app_main() pass is_valid => pre_act() => cond_chk()
+			- TBD: update cond_chk() w/ default is_valid == True case
+			- TBD:
 		- TBD: update error methods (all errors to method, return is_att and err_txt for each "if"):
 			- TBD: case = go
 				- TBD: <tbd>
