@@ -55,17 +55,22 @@ def app_main(user_input, game_name, root_path_str):
 #		is_valid = validate(gs, case, word_lst)
 
 	# if command is valid or is_wait, increment move
-	if is_valid or is_wait:
+#	if is_valid or is_wait:
+	if is_valid or is_att or is_wait:
 #	if is_interp_valid or is_wait:
 		gs.core.move_inc()
 
 	# for valid interp commands, process in-turn game response
-	if is_valid:
+#	if is_valid:
+	if is_valid or is_att:
 #	if is_interp_valid:
 		cmd_override = pre_action(gs, case, word_lst)
 		if not cmd_override:
 			err_on_attempt = attempt_err(gs, case, word_lst)
-		if not (cmd_override or err_on_attempt):
+			if is_att:
+				gs.io.buffer(err_txt)
+#		if not (cmd_override or err_on_attempt):
+		if not (cmd_override or err_on_attempt or is_att):
 			cmd_execute(gs, case, word_lst)
 		post_action(gs, case, word_lst) # excluding psot_act() from cmd "if" allows creatures to opperate machs
 
@@ -87,4 +92,7 @@ def app_main(user_input, game_name, root_path_str):
 	with open(pkl_str, 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 	return is_start, gs.end.is_end, gs.io.get_buff()
-	
+
+#	- TBD: in app_main() "if is_valid or is_wait:" => "if is_valid or is_att or is_wait:"
+#	- TBD: in app_main() "if is_valid:" => "if is_valid or is_att:"
+#	- TBD: in app_main(), after "err_on_attempt" line, 2nd "if" cmd = gs.io.buffer(err_txt)
