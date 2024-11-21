@@ -1623,6 +1623,16 @@ Version 3.87.0 Goals:
 
 # *** FUTURE TO DO *** #
 
+# *** BIG PICTURE ***
+- TBD: machinces / classes / error subsystem
+- TBD: story updates
+- TBD: interpreter updates
+- TBD: test harness
+- TBD: db back end (sqlalchemy)
+- TBD: web site
+- TBD: CI/CD
+- TBD: remaining foundation features: light, food, drink, sleep, etc
+- TBD: expand adventure!
 
 *** misc ideas ***
 - TBD: fix hedgehog description after sword is returned (before goblin killed)
