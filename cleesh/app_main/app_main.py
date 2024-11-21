@@ -26,7 +26,6 @@ def app_main(user_input, game_name, root_path_str):
 	is_start = False
 	is_wait = False
 	is_interp_cmd = True
-#	is_interp_valid = False
 	is_valid = False
 
 	# mutually exclusive special command cases
@@ -50,26 +49,19 @@ def app_main(user_input, game_name, root_path_str):
 	# for interp commands, interp user_input and validate command
 	if is_interp_cmd:
 		case, word_lst = interpreter(user_input, master_obj_lst)
-#		is_interp_valid = validate(gs, case, word_lst)
 		is_valid, is_att, err_txt = validate(gs, case, word_lst)
-#		is_valid = validate(gs, case, word_lst)
 
 	# if command is valid or is_wait, increment move
-#	if is_valid or is_wait:
 	if is_valid or is_att or is_wait:
-#	if is_interp_valid or is_wait:
 		gs.core.move_inc()
 
 	# for valid interp commands, process in-turn game response
-#	if is_valid:
 	if is_valid or is_att:
-#	if is_interp_valid:
 		cmd_override = pre_action(gs, case, word_lst)
 		if not cmd_override:
 			err_on_attempt = attempt_err(gs, case, word_lst)
 			if is_att:
 				gs.io.buffer(err_txt)
-#		if not (cmd_override or err_on_attempt):
 		if not (cmd_override or err_on_attempt or is_att):
 			cmd_execute(gs, case, word_lst)
 		post_action(gs, case, word_lst) # excluding psot_act() from cmd "if" allows creatures to opperate machs
@@ -79,20 +71,14 @@ def app_main(user_input, game_name, root_path_str):
 	# action order 1), 3), 2) is confusing because the cause and effect link between 1) & 2) is broken
 	if gs.end.is_end or is_start: 
 		gs.end.disp_end(gs)
-	elif is_wait or is_valid: # elif to avoid case of auto_act() run after ending from cmd
-#	elif is_wait or is_interp_valid: # elif to avoid case of auto_act() run after ending from cmd
+	elif is_wait or is_valid or is_att: # elif to avoid case of auto_act() run after ending from cmd
 		auto_action(gs)
 	if is_start:
 		gs.io.buffer("Restarting...") # appears post 'you have restarted' end text and pre 'welcome' text
 
 	# close out turn - save state and last inupt (for 'again' case) and then return
-#	# note: need to save state even if is_interp_valid == False else 'again' won't work on error cases
 	# note: need to save state even if is_valid == False else 'again' won't work on error cases
 	gs.io.last_input_str = user_input
 	with open(pkl_str, 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 	return is_start, gs.end.is_end, gs.io.get_buff()
-
-#	- TBD: in app_main() "if is_valid or is_wait:" => "if is_valid or is_att or is_wait:"
-#	- TBD: in app_main() "if is_valid:" => "if is_valid or is_att:"
-#	- TBD: in app_main(), after "err_on_attempt" line, 2nd "if" cmd = gs.io.buffer(err_txt)

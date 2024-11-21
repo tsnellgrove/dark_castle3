@@ -9,7 +9,6 @@ import traceback
 def validate(gs, case, word_lst):
 	"""Validates user_input.
 	"""
-#	cmd_err = False
 	is_att = False
 	err_txt= ""
 
@@ -20,7 +19,6 @@ def validate(gs, case, word_lst):
 			gs.io.buffer(f"[INTERP] {output}")
 		else:
 			gs.io.buffer(f"{output}")
-#		return False
 		return False, False, ""
 
 	# *** command errors ***
@@ -42,7 +40,4 @@ def validate(gs, case, word_lst):
 			debug_str = f"[VAL] {traceback.format_exc()}\nDid you possibly forget to add the noun obj to the pickle in game_update() ?"
 			gs.io.buff_dbg(debug_str, gs)
 		return not cmd_err, is_att, err_txt
-#	return True
 	return True, None, ""
-
-#	cmd_err, is_att, and err_txt

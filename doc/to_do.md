@@ -1411,7 +1411,7 @@ Version 3.87.0 Goals:
 		- DONE: confirm new branch on GitHub is now ahead of master
 
 	- INPROC: deployment plan steps
-		- INPROC: update app_main() and validate()
+		- DONE: update app_main() and validate()
 			- DONE: in app_main, is_interp_valid => is_valid
 			- DONE: from validate() return cmd_err, is_att, and err_txt
 			- DONE: default values of is_att = False and err_txt = ""
@@ -1421,12 +1421,18 @@ Version 3.87.0 Goals:
 			- DONE: in app_main(), after "err_on_attempt" line, 2nd "if" cmd = gs.io.buffer(err_txt)
 			- DONE: in app_main(), add "not is_att" to if for cmd_exe()
 			- DONE: test game (especially 3x attemptable errors)
-			- TBD: clean up comments in app_main(), validate()
-			- TBD: reconsider if auto_act() should run when is_att == True
-		- TBD: sort out Condition code
-			- TBD: app_main() pass is_valid => pre_act() => cond_chk()
-			- TBD: update cond_chk() w/ default is_valid == True case
-			- TBD:
+			- DONE: clean up comments in app_main(), validate()
+			- DONE: reconsider if auto_act() should run when is_att == True; => added is_att to 'if' 
+		- INPROC: sort out Condition code
+			- IDEA: app_main() pass is_valid => pre_act() => run_mach() => cond_check()
+			- TBD: research attrib packing w/ **kwargs and defaulting to True
+			- TBD: update app_main() to pass is_valid to pre_action()
+			- TBD: update pre_action() to recieve is_valid and pass it to run_mach()
+			- TBD: update all variants of run_mach() to recieve is_valid
+				- TBD: for non-AutoMachMixIn, dump is_valid
+				- TBD: for AutoMachMixIn, pass to cond_check()
+			- TBD: update cond_check() in TrueCond to test is_valid vs. self.must_be_valid
+			- TBD: update all Cond obj to include must_be_valid attrib (bool; default = True)
 		- TBD: update error methods (all errors to method, return is_att and err_txt for each "if"):
 			- TBD: case = go
 				- TBD: <tbd>
