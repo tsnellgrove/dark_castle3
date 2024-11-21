@@ -52,7 +52,7 @@ class ProtoMachMixIn(object):
 		return True
 
 	# complex methods
-	def run_mach(self, gs):
+	def run_mach(self, gs, is_valid):
 		pass
 		return False, False
 
@@ -138,7 +138,7 @@ class Timer(ProtoMachMixIn, Invisible):
 		return self.is_active and (self.mach_state == self.timer_max)
 
 	# complex methods
-	def run_mach(self, gs):
+	def run_mach(self, gs, is_valid):
 		if self.is_dinging():
 			self.reset()
 			return False, False
@@ -167,7 +167,7 @@ class Warning(ProtoMachMixIn, TrigMixIn, Invisible):
 		return self._warn_max
 
 	# complex methods
-	def run_mach(self, gs):
+	def run_mach(self, gs, is_valid):
 		cmd_override = True
 		self.mach_state += 1
 		if self.warn_max == 0:
@@ -210,7 +210,7 @@ class AutoMachMixIn(ProtoMachMixIn):
 		return self._result_lst
 
 	# complex methods
-	def run_mach(self, gs):
+	def run_mach(self, gs, is_valid):
 		for idx, cond in enumerate(self.cond_lst):
 			if cond.cond_check(gs, self.mach_state):
 				result = self.result_lst[idx]

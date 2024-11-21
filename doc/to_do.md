@@ -1423,16 +1423,23 @@ Version 3.87.0 Goals:
 			- DONE: test game (especially 3x attemptable errors)
 			- DONE: clean up comments in app_main(), validate()
 			- DONE: reconsider if auto_act() should run when is_att == True; => added is_att to 'if' 
-		- INPROC: sort out Condition code
+		- DONE: pass is_valid all the way to cond_check()
 			- IDEA: app_main() pass is_valid => pre_act() => run_mach() => cond_check()
+			- DONE: update app_main() to pass is_valid to pre_action()
+			- DONE: update pre_action() to recieve is_valid
+			- DONE: pass is_valid to run_mach() in pre_action()
+			- DONE: pass True to run_mach() in auto_action()
+			- DONE: pass True to run_mach() in post_action()
+			- DONE: update all variants of run_mach() to recieve is_valid
+				- IDEA: for non-AutoMachMixIn, no use for is_valid
+				- IDEA: for AutoMachMixIn, will pass to cond_check()
+			- DONE: full game test
+		- TBD: sort out Condition code
 			- TBD: research attrib packing w/ **kwargs and defaulting to True
-			- TBD: update app_main() to pass is_valid to pre_action()
-			- TBD: update pre_action() to recieve is_valid and pass it to run_mach()
-			- TBD: update all variants of run_mach() to recieve is_valid
-				- TBD: for non-AutoMachMixIn, dump is_valid
-				- TBD: for AutoMachMixIn, pass to cond_check()
+			- TBD: update TrueCond class to include **kwargs and must_be_valid attrib w/ default == True
+			- TBD: update special condition obj cases for must_be_valid = False
 			- TBD: update cond_check() in TrueCond to test is_valid vs. self.must_be_valid
-			- TBD: update all Cond obj to include must_be_valid attrib (bool; default = True)
+			
 		- TBD: update error methods (all errors to method, return is_att and err_txt for each "if"):
 			- TBD: case = go
 				- TBD: <tbd>
