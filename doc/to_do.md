@@ -1449,24 +1449,40 @@ Version 3.87.0 Goals:
 			- DONE: test
 		- INPROC: update error methods (all errors to method, return is_att and err_txt for each "if"):
 			- INPROC: case = go
-				- DONE: in validate(), update getattr() to recieve is_att and err_txt
-				- DONE: if (cmd_err and not is_att): buffer(err_txt)
-				- DONE: move go_att => go_err 
-				- DONE: update return to send pass is_att (True for moved cases) and err_txt()
-				- DONE: comment out local buffer
-				- DONE: for case == 'go', elim attempt_err() call
-				- DONE: test all go_err cases (antechamber 'n' should not run mach)
-				- DONE: set cond attrib to is_valid_reqd = False
-				- DONE: test antechamber 'n' again (mach should run now)
+				- DONE: in validate()
+					- DONE: for case = 'go', update getattr() to recieve is_att and err_txt
+					- DONE: if (cmd_err and not is_att): buffer(err_txt)
+				- DONE: in error()
+					- DONE: move go_att => go_err 
+					- DONE: set err_txt = (f"")
+					- DONE: comment out buffer(f"")
+					- DONE: update return to pass is_att (True for moved cases) and err_txt()
+				- DONE: in app_main()
+					- DONE: for case == 'go', elim attempt_err() call
+					- DONE: test all go_err cases (antechamber 'n' should not run mach)
+				- DONE: in game_update:
+					- DONE: set cond attrib to is_valid_reqd = False
+					- DONE: test antechamber 'n' again (mach should run now)
 				- TBD: thurough testing of all go_err cases
 				- TBD: clean up game_update(), error(), cond(), mach(), validate(), app_main()
 			- TBD: case = 2word
-				- TBD: <tbd>
+				- TBD: in validate()
+					- TBD: for (case = '2word' and word1 in [<verb_lst>]
+					- TBD: update getattr() to recieve is_att and err_txt
+					- TBD: if (cmd_err and not is_att): buffer(err_txt)
+					- TBD: test
+				- TBD: per <verb>
+					- TBD: read
+						- TBD: error()
+							- TBD: <tbd>
+						- TBD: app_main()
+						- TBD: game_update()
 			- TBD: case = prep
 				- TBD: <tbd>
 				- TBD: update is_att cases based on new system
 		- TBD: eliminate legacy code
 			- TBD: in app_main, eliminate refs to attempt_err() including import
+			- TBD: in validate(), elim <verb_lst> ref
 			- TBD: test
 			- TBD: eliminate attempt_err()
 			- TBD: test
