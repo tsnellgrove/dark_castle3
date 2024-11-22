@@ -25,8 +25,10 @@ from cleesh.class_std.invisible_class_def import Invisible
 
 ### classes ###
 class TrueCond(Invisible):
-	def __init__(self, name):
+#	def __init__(self, name):
+	def __init__(self, name, **kwargs):
 		super().__init__(name)
+		self.is_valid_reqd = kwargs.get('is_valid_reqd', True)
 		""" TrueCond class inherits from Invisible. All other condition classes inherit from TrueCond. 
 		"""
 

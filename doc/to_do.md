@@ -1434,11 +1434,15 @@ Version 3.87.0 Goals:
 				- IDEA: for non-AutoMachMixIn, no use for is_valid
 				- IDEA: for AutoMachMixIn, will pass to cond_check()
 			- DONE: full game test
-		- TBD: sort out Condition code
-			- TBD: research attrib packing w/ **kwargs and defaulting to True
-			- TBD: update TrueCond class to include **kwargs and must_be_valid attrib w/ default == True
-			- TBD: update special condition obj cases for must_be_valid = False
+		- INPROC: sort out Condition code
+			- DONE: research attrib packing w/ **kwargs and defaulting to True
+			- DONE: update TrueCond class to include **kwargs and is_valid_reqd attrib w/ default == True
+			- TBD: in AutoMachMixIn run_mach() , pass self.is_valid to cond_check()
+			- TBD: update all cond_check to recieve is_valid
 			- TBD: update cond_check() in TrueCond to test is_valid vs. self.must_be_valid
+			- TBD: test (should not run_mach)
+			- TBD: update special condition obj cases for is_valid_reqd = False
+			- TBD: test again (should work now)
 			
 		- TBD: update error methods (all errors to method, return is_att and err_txt for each "if"):
 			- TBD: case = go
