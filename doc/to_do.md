@@ -1378,6 +1378,11 @@ Version 3.87.0 Goals:
 	- DONE: update cleesh engine version build (build 0012 [11/17/2024])
 
 - INPROC: next gen error sub-system (build 0013 [])
+	- POV: I really don't want to do this now... but machs and errors have a natural tension...
+		- POV: and right now they are both in my head... 
+		- POV: so there will never be a better time to fix this...
+		- POV: major lesson learned: whenever reasonably possible, pass results to central orchestrator...
+		- POV: provides much more flexibility down the road
 	- IDEA: problems to solve
 		- IDEA: need to eliminate order of operations dependency between error() and attempt()
 		- IDEA: need to eliminate special cond desing for conditional att errors
@@ -1434,30 +1439,40 @@ Version 3.87.0 Goals:
 				- IDEA: for non-AutoMachMixIn, no use for is_valid
 				- IDEA: for AutoMachMixIn, will pass to cond_check()
 			- DONE: full game test
-		- INPROC: sort out Condition code
+		- DONE: sort out Condition code
 			- DONE: research attrib packing w/ **kwargs and defaulting to True
 			- DONE: update TrueCond class to include **kwargs and is_valid_reqd attrib w/ default == True
-			- TBD: in AutoMachMixIn run_mach() , pass self.is_valid to cond_check()
-			- TBD: update all cond_check to recieve is_valid
-			- TBD: update cond_check() in TrueCond to test is_valid vs. self.must_be_valid
-			- TBD: test (should not run_mach)
-			- TBD: update special condition obj cases for is_valid_reqd = False
-			- TBD: test again (should work now)
-			
-		- TBD: update error methods (all errors to method, return is_att and err_txt for each "if"):
-			- TBD: case = go
-				- TBD: <tbd>
+			- DONE: in AutoMachMixIn run_mach() , pass is_valid to cond_check()
+			- DONE: update all cond_check to recieve is_valid
+			- DONE: test
+			- DONE: update cond_check() in TrueCond to test is_valid vs. self.is_valid_reqd
+			- DONE: test
+		- INPROC: update error methods (all errors to method, return is_att and err_txt for each "if"):
+			- INPROC: case = go
+				- DONE: in validate(), update getattr() to recieve is_att and err_txt
+				- DONE: if (cmd_err and not is_att): buffer(err_txt)
+				- DONE: move go_att => go_err 
+				- DONE: update return to send pass is_att (True for moved cases) and err_txt()
+				- DONE: comment out local buffer
+				- DONE: for case == 'go', elim attempt_err() call
+				- DONE: test all go_err cases (antechamber 'n' should not run mach)
+				- DONE: set cond attrib to is_valid_reqd = False
+				- DONE: test antechamber 'n' again (mach should run now)
+				- TBD: thurough testing of all go_err cases
+				- TBD: clean up game_update(), error(), cond(), mach(), validate(), app_main()
 			- TBD: case = 2word
 				- TBD: <tbd>
 			- TBD: case = prep
 				- TBD: <tbd>
+				- TBD: update is_att cases based on new system
 		- TBD: eliminate legacy code
 			- TBD: in app_main, eliminate refs to attempt_err() including import
 			- TBD: test
 			- TBD: eliminate attempt_err()
 			- TBD: test
 		- TBD: doc update
-		- TBD: update is_att cases based on new system
+		- TBD: consider other possible uses for **kwargs
+
 
 	- TBD: git branch merge with master
 		- TBD: 'git checkout master' to switch focus to master

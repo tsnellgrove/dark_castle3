@@ -32,7 +32,10 @@ def validate(gs, case, word_lst):
 				cmd_err = getattr(dirobj_obj, word1 + '_err')(noun_obj, gs)
 			elif case == 'go':
 				room_obj, word1, word2 = word_lst
-				cmd_err = getattr(room_obj, word1 + '_err')(word2, gs)
+#				cmd_err = getattr(room_obj, word1 + '_err')(word2, gs)
+				cmd_err, is_att, err_txt = getattr(room_obj, word1 + '_err')(word2, gs)
+				if (cmd_err and not is_att):
+					gs.io.buffer(err_txt)
 			if cmd_err and gs.core.is_debug:
 				gs.io.buff_no_cr("[INVIS error postfix]")
 		except:

@@ -27,6 +27,7 @@ def app_main(user_input, game_name, root_path_str):
 	is_wait = False
 	is_interp_cmd = True
 	is_valid = False
+	is_att = False
 
 	# mutually exclusive special command cases
 	if user_input.lower() in ['quit', 'q']:
@@ -59,12 +60,15 @@ def app_main(user_input, game_name, root_path_str):
 	if is_valid or is_att:
 		cmd_override = pre_action(gs, case, word_lst, is_valid)
 		if not cmd_override:
-			err_on_attempt = attempt_err(gs, case, word_lst)
+			if case != 'go':
+				err_on_attempt = attempt_err(gs, case, word_lst)
 			if is_att:
 				gs.io.buffer(err_txt)
-		if not (cmd_override or err_on_attempt or is_att):
+#		if not (cmd_override or err_on_attempt or is_att):
+#		if not (cmd_override or (case != 'go' and err_on_attempt) or is_att):
+		if (is_valid and not cmd_override):
 			cmd_execute(gs, case, word_lst)
-		post_action(gs, case, word_lst) # excluding psot_act() from cmd "if" allows creatures to opperate machs
+		post_action(gs, case, word_lst) # excluding pots_act() from cmd "if" allows creatures to opperate machs
 
 	# post-cmd-response output
 	# action order = 1) cmd input, 2) Game response to cmd, 3) Game end / restart OR Game independent actions

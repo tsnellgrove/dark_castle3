@@ -142,6 +142,7 @@ eat_biscuits_warning = Warning('eat_biscuits_warning',
 # *** conditions ***
 # *** note: obj.open (if locked) and room.go (w/ closed door in way) must be tested for success ***
 true_cond = TrueCond('true_cond')
+true_cond_valid_not_reqd = TrueCond('true_cond', is_valid_reqd = False)
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', stale_biscuits, 'royal_hedgehog_temp', True)
 axe_not_in_goblin_hand_cond = ItemInHandCond('axe_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
@@ -229,7 +230,8 @@ goblin_attack_mach = InvisTrigMach('goblin_attack_mach', None,
 		'pre_act_cmd', 'guard_goblin_temp', True,
 		[['examine', 'iron_portcullis'], ['examine', 'alcove'], ['examine', 'grimy_axe'], 
    		['take', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north']], 
-		[true_cond], 
+#		[true_cond], 
+		[true_cond_valid_not_reqd], 
 		[goblin_attacks_result]
 		) # mach_state == None
 

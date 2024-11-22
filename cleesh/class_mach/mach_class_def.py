@@ -212,7 +212,7 @@ class AutoMachMixIn(ProtoMachMixIn):
 	# complex methods
 	def run_mach(self, gs, is_valid):
 		for idx, cond in enumerate(self.cond_lst):
-			if cond.cond_check(gs, self.mach_state):
+			if cond.cond_check(gs, self.mach_state, is_valid):
 				result = self.result_lst[idx]
 				if isinstance(result, list):
 					cmd_override = False
