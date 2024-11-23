@@ -98,17 +98,23 @@ class Error(Identity):
 	def read_err(self, gs):
 		creature = gs.core.hero
 		if self.err_wrt_not_vis(creature, gs):
-			return True
+			return True, False, ""
 		if self.err_wrt_not_in_reach(creature, gs):
-			return True
+			return True, False, ""
 		if self.err_not_vis(creature, gs):
-			return True
+			return True, False, ""
 		if self.err_not_in_reach(creature, gs):
-			return True
+			return True, False, ""
 		if not self.is_writing() and not self.has_writing():
-			gs.io.buffer(f"The {self.full_name} has nothing written on it.")
-			return True
-		return False
+#			gs.io.buffer(f"The {self.full_name} has nothing written on it.")
+			err_txt = (f"The {self.full_name} has nothing written on it.")
+			return True, False, err_txt
+		return False, False, ""
+
+#					- DONE: return is_att (True for moved cases) and err_txt()
+#					- DONE: move go_att => go_err 
+#					- DONE: set err_txt = (f"")
+#					- DONE: comment out buffer(f"")
 
 	def examine_err(self, gs):
 		creature = gs.core.hero

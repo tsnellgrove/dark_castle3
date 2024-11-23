@@ -1456,7 +1456,7 @@ Version 3.87.0 Goals:
 					- DONE: move go_att => go_err 
 					- DONE: set err_txt = (f"")
 					- DONE: comment out buffer(f"")
-					- DONE: update return to pass is_att (True for moved cases) and err_txt()
+					- DONE: return is_att (True for moved cases) and err_txt()
 				- DONE: in app_main()
 					- DONE: for case == 'go', elim attempt_err() call
 					- DONE: test all go_err cases (antechamber 'n' should not run mach)
@@ -1465,20 +1465,27 @@ Version 3.87.0 Goals:
 					- DONE: test antechamber 'n' again (mach should run now)
 				- DONE: thurough testing of all go_err cases
 				- DONE: clean up game_update(), error(), cond(), mach(), validate(), app_main()
-			- TBD: case = 2word
-				- TBD: in validate()
-					- TBD: for (case = '2word' and word1 in [<verb_lst>]
-					- TBD: update getattr() to recieve is_att and err_txt
-					- TBD: if (cmd_err and not is_att): buffer(err_txt)
-					- TBD: test
-				- TBD: per <verb>
-					- TBD: read
-						- TBD: error()
-						- TBD: app_main()
-						- TBD: game_update()
+			- INPROC: case = 2word
+				- DONE: in validate()
+					- DONE: for (case = '2word' and word1 in [<verb_lst>]
+					- DONE: update getattr() to recieve is_att and err_txt
+					- DONE: if (cmd_err and not is_att): buffer(err_txt)
+				- INRPOC: per <verb> updates
+					- DONE: read
+						- DONE: validate(): <update verb_lst>
+						- DONE: error(): <verb_att> => <err>, return is_att, err_txt, buffer => err_txt
+						- DONE: app_main(): <update verb_lst>
+						- DONE: game_update(): set is_valid_reqd = True for an7 is_att cond objs
+						- DONE: test
+					- TBD: examine
+					- TBD: take
+					- TBD: drop
+					- TBD: stowe
+					- TBD: <tbd>
 			- TBD: case = prep
 				- TBD: <tbd>
 				- TBD: update is_att cases based on new system
+		- TBD: sort out local buffering in standard errors?
 		- TBD: eliminate legacy code
 			- TBD: in app_main, eliminate refs to attempt_err() including import
 			- TBD: in validate(), elim <verb_lst> ref

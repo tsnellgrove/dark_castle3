@@ -28,6 +28,8 @@ def app_main(user_input, game_name, root_path_str):
 	is_interp_cmd = True
 	is_valid = False
 	is_att = False
+	err_on_attempt = False
+# elim err_on_attempt post re-factor
 
 	# mutually exclusive special command cases
 	if user_input.lower() in ['quit', 'q']:
@@ -60,7 +62,8 @@ def app_main(user_input, game_name, root_path_str):
 	if is_valid or is_att:
 		cmd_override = pre_action(gs, case, word_lst, is_valid)
 		if not cmd_override:
-			if case != 'go':
+#			if case != 'go':
+			if case == 'prep' or (case == '2word' and word_lst[0] != 'read'):
 				err_on_attempt = attempt_err(gs, case, word_lst)
 			if is_att:
 				gs.io.buffer(err_txt)
@@ -73,7 +76,7 @@ def app_main(user_input, game_name, root_path_str):
 	# action order 1), 3), 2) is confusing because the cause and effect link between 1) & 2) is broken
 	if gs.end.is_end or is_start: 
 		gs.end.disp_end(gs)
-	elif is_wait or is_valid or is_att: # elif to avoid case of auto_act() run after ending from cmd
+	elif is_wait or is_valid or is_att or err_on_attempt: # elif to avoid case of auto_act() run after ending from cmd
 		auto_action(gs)
 	if is_start:
 		gs.io.buffer("Restarting...") # appears post 'you have restarted' end text and pre 'welcome' text
