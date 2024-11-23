@@ -230,7 +230,6 @@ goblin_attack_mach = InvisTrigMach('goblin_attack_mach', None,
 		'pre_act_cmd', 'guard_goblin_temp', True,
 		[['examine', 'iron_portcullis'], ['examine', 'alcove'], ['examine', 'grimy_axe'], 
    		['take', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north']], 
-#		[true_cond], 
 		[true_cond_valid_not_reqd], 
 		[goblin_attacks_result]
 		) # mach_state == None

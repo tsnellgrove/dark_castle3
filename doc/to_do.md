@@ -1448,7 +1448,7 @@ Version 3.87.0 Goals:
 			- DONE: update cond_check() in TrueCond to test is_valid vs. self.is_valid_reqd
 			- DONE: test
 		- INPROC: update error methods (all errors to method, return is_att and err_txt for each "if"):
-			- INPROC: case = go
+			- DONE: case = go
 				- DONE: in validate()
 					- DONE: for case = 'go', update getattr() to recieve is_att and err_txt
 					- DONE: if (cmd_err and not is_att): buffer(err_txt)
@@ -1463,8 +1463,8 @@ Version 3.87.0 Goals:
 				- DONE: in game_update:
 					- DONE: set cond attrib to is_valid_reqd = False
 					- DONE: test antechamber 'n' again (mach should run now)
-				- TBD: thurough testing of all go_err cases
-				- TBD: clean up game_update(), error(), cond(), mach(), validate(), app_main()
+				- DONE: thurough testing of all go_err cases
+				- DONE: clean up game_update(), error(), cond(), mach(), validate(), app_main()
 			- TBD: case = 2word
 				- TBD: in validate()
 					- TBD: for (case = '2word' and word1 in [<verb_lst>]
@@ -1474,7 +1474,6 @@ Version 3.87.0 Goals:
 				- TBD: per <verb>
 					- TBD: read
 						- TBD: error()
-							- TBD: <tbd>
 						- TBD: app_main()
 						- TBD: game_update()
 			- TBD: case = prep

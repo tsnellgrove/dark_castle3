@@ -611,41 +611,16 @@ class Error(Identity):
 	def go_err(self, dir, gs):
 		creature = gs.core.hero
 		if dir not in ['north', 'south', 'east', 'west']:
-#			gs.io.buffer(f"'{dir}' is not a valid direction that you can go in.")
 			err_txt = (f"'{dir}' is not a valid direction that you can go in.")
-#			return True
 			return True, False, err_txt
 		if creature.is_contained(gs):
-#			gs.io.buffer(f"You'll have to exit the {creature.get_contained_by(gs).full_name} to attempt that.")
 			err_txt = (f"You'll have to exit the {creature.get_contained_by(gs).full_name} to attempt that.")
-#			return True
 			return True, False, err_txt
 		if not gs.map.chk_valid_dir(self, dir):
-#			gs.io.buff_e(f"dir_err_{random.randint(0, 4)}")
-#			err_txt = (f"dir_err_{random.randint(0, 4)}")
 			err_txt = gs.io.get_str(f"dir_err_{random.randint(0, 4)}", 'experience')
-#			get_str(key, 'experience')
 			return True, True, err_txt
-#			return True
 		door = gs.map.get_door(self, dir)
 		if not isinstance(door, str) and door.is_open == False:
-#			gs.io.buffer(f"The {door.full_name} is closed.")
 			err_txt = (f"The {door.full_name} is closed.")
-#			return True
 			return True, True, err_txt
-#		return False
 		return False, False, ""
-
-#	def go_att(self, dir, gs):
-#		if not gs.map.chk_valid_dir(self, dir):
-#			gs.io.buff_e(f"dir_err_{random.randint(0, 4)}")
-#			return True
-#		door = gs.map.get_door(self, dir)
-#		if not isinstance(door, str) and door.is_open == False:
-#			gs.io.buffer(f"The {door.full_name} is closed.")
-#			return True
-#		return False
-
-#				- TBD: move go_att => go_err 
-#				- TBD: update return to send pass is_att (True for moved cases) and err_txt()
-#				- TBD: comment out local buffer
