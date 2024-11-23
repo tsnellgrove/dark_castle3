@@ -1485,6 +1485,7 @@ Version 3.87.0 Goals:
 			- TBD: case = prep
 				- TBD: <tbd>
 				- TBD: update is_att cases based on new system
+		- TBD: clean up comments in validate(), error(), app_main(), game_update()
 		- TBD: sort out local buffering in standard errors?
 		- TBD: eliminate legacy code
 			- TBD: in app_main, eliminate refs to attempt_err() including import
