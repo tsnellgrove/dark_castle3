@@ -1477,7 +1477,7 @@ Version 3.87.0 Goals:
 						- DONE: app_main(): <update verb_lst>
 						- DONE: game_update(): set is_valid_reqd = True for an7 is_att cond objs
 						- DONE: test
-					- TBD: examine
+					- DONE: examine
 					- TBD: take
 					- TBD: drop
 					- TBD: stowe
@@ -1486,6 +1486,7 @@ Version 3.87.0 Goals:
 				- TBD: <tbd>
 				- TBD: update is_att cases based on new system
 		- TBD: clean up comments in validate(), error(), app_main(), game_update()
+		- TBD: remove test_chair from main_hall
 		- TBD: sort out local buffering in standard errors?
 		- TBD: eliminate legacy code
 			- TBD: in app_main, eliminate refs to attempt_err() including import

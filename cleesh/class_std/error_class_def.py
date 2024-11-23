@@ -111,25 +111,27 @@ class Error(Identity):
 			return True, False, err_txt
 		return False, False, ""
 
+	def examine_err(self, gs):
+		creature = gs.core.hero
+		if self.err_not_vis(creature, gs):
+			return True, False, ""
+		if self.err_wrt_not_vis(creature, gs):
+			return True, False, ""
+		if self.err_not_in_reach(creature, gs):
+			return True, False, ""
+		if self.err_wrt_not_in_reach(creature, gs):
+			return True, False, ""
+		if not self.is_writing() and not self.is_viewonly():
+#			gs.io.buffer(f"Your mind grapples with the ineffable... it is almost in your grasp when suddenly, unbidden, your favorite 'You Mama' joke from the pub tramples like a raging rhino across the delicate neural fibers that comprise your working memory. The vision is lost - the {self.full_name} is simply beyond your ken.")
+			err_txt = (f"Your mind grapples with the ineffable... it is almost in your grasp when suddenly, unbidden, your favorite 'You Mama' joke from the pub tramples like a raging rhino across the delicate neural fibers that comprise your working memory. The vision is lost - the {self.full_name} is simply beyond your ken.")
+			return True, False, err_txt
+		return False, False, ""
+
 #					- DONE: return is_att (True for moved cases) and err_txt()
 #					- DONE: move go_att => go_err 
 #					- DONE: set err_txt = (f"")
 #					- DONE: comment out buffer(f"")
 
-	def examine_err(self, gs):
-		creature = gs.core.hero
-		if self.err_not_vis(creature, gs):
-			return True
-		if self.err_wrt_not_vis(creature, gs):
-			return True
-		if self.err_not_in_reach(creature, gs):
-			return True
-		if self.err_wrt_not_in_reach(creature, gs):
-			return True
-		if not self.is_writing() and not self.is_viewonly():
-			gs.io.buffer(f"Your mind grapples with the ineffable... it is almost in your grasp when suddenly, unbidden, your favorite 'You Mama' joke from the pub tramples like a raging rhino across the delicate neural fibers that comprise your working memory. The vision is lost - the {self.full_name} is simply beyond your ken.")
-			return True
-		return False
 
 	def take_err(self, gs):
 		creature = gs.core.hero

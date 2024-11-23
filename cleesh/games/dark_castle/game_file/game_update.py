@@ -332,7 +332,7 @@ entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_cast
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
-		[shiny_sword, royal_hedgehog, wooden_shelf], [eat_biscuits_warning])
+		[shiny_sword, royal_hedgehog, wooden_shelf, test_chair], [eat_biscuits_warning])
 		# note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
 
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,

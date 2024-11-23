@@ -63,7 +63,7 @@ def app_main(user_input, game_name, root_path_str):
 		cmd_override = pre_action(gs, case, word_lst, is_valid)
 		if not cmd_override:
 #			if case != 'go':
-			if case == 'prep' or (case == '2word' and word_lst[0] != 'read'):
+			if case == 'prep' or (case == '2word' and word_lst[0] != 'read', 'examine'):
 				err_on_attempt = attempt_err(gs, case, word_lst)
 			if is_att:
 				gs.io.buffer(err_txt)
