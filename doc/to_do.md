@@ -1473,15 +1473,15 @@ Version 3.87.0 Goals:
 				- INRPOC: per <verb> updates
 					- DONE: read
 						- DONE: validate(): <update verb_lst>
-						- DONE: error(): <verb_att> => <err>, return is_att, err_txt, buffer => err_txt
 						- DONE: app_main(): <update verb_lst>
+						- DONE: error(): <verb_att> => <err>, return is_att, err_txt, buffer => err_txt
 						- DONE: game_update(): set is_valid_reqd = True for an7 is_att cond objs
 						- DONE: test
 					- DONE: examine
 					- DONE: take
 					- DONE: drop
 					- DONE: stowe
-					- TBD: clean up comments in error()
+					- DONE: clean up comments in error()
 					- TBD: eat
 					- TBD: wear
 					- TBD: <tbd>
@@ -1688,6 +1688,7 @@ Version 3.87.0 Goals:
 - TBD: expand adventure!
 
 *** misc ideas ***
+- TBD: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
 - TBD: fix hedgehog description after sword is returned (before goblin killed)
 - TBD: fix eat_biscuits_warning 
 	- TBD so that it no longer lives in just entrance and main_hall 
