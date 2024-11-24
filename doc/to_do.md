@@ -1478,9 +1478,12 @@ Version 3.87.0 Goals:
 						- DONE: game_update(): set is_valid_reqd = True for an7 is_att cond objs
 						- DONE: test
 					- DONE: examine
-					- TBD: take
-					- TBD: drop
-					- TBD: stowe
+					- DONE: take
+					- DONE: drop
+					- DONE: stowe
+					- TBD: clean up comments in error()
+					- TBD: eat
+					- TBD: wear
 					- TBD: <tbd>
 			- TBD: case = prep
 				- TBD: <tbd>

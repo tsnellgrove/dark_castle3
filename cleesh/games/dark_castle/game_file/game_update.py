@@ -108,7 +108,7 @@ throne = SeatSpringSliderSwitch('throne', 'Throne', 'throne', 'throne_pre_broach
 brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None, 1) # test object
 bubbly_potion = Item('bubbly_potion', 'bubbly potion', "potion", 'bubbly_potion', None, 2) # test object
 random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random_mcguffin', None, 5) # test object
-heavy_rock = Item('heavy_rock', 'Heavy Rock', 'rock', 'heavy_rock', None, 40)
+heavy_rock = Item('heavy_rock', 'Heavy Rock', 'rock', 'heavy_rock', None, 50)
 baseball_cap = Garment('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, 1, 'hat')
 cardboard_box = ContainerFixedLidded('cardboard_box', 'Cardboard Box', 'box', 'cardboard_box', None, [], 999, 2, 'in', False)
 small_barrel = ContainerPortableSimple('small_barrel', 'Small Barrel', 'barrel', 'small_barrel', None, 2, [], 5, 999, 'in')
@@ -231,6 +231,7 @@ goblin_attack_mach = InvisTrigMach('goblin_attack_mach', None,
 		[['examine', 'iron_portcullis'], ['examine', 'alcove'], ['examine', 'grimy_axe'], 
    		['take', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north']], 
 		[true_cond_valid_not_reqd], 
+#		[true_cond], 
 		[goblin_attacks_result]
 		) # mach_state == None
 
@@ -328,7 +329,7 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-		[burt], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
+		[burt, heavy_rock], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
