@@ -1482,8 +1482,10 @@ Version 3.87.0 Goals:
 					- DONE: drop
 					- DONE: stowe
 					- DONE: clean up comments in error()
-					- TBD: eat
-					- TBD: wear
+					- DONE: eat
+					- DONE: wear
+					- TBD: open
+					- TBD: close
 					- TBD: <tbd>
 			- TBD: case = prep
 				- TBD: <tbd>

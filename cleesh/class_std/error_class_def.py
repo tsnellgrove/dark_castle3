@@ -187,42 +187,48 @@ class Error(Identity):
 	def eat_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
-			return True
+			return True, False, ""
 		if self.err_not_in_hand(creature, gs):
-			return True
-		return False
-
-#	- TBD: return is_att (True for moved cases) and err_txt()
-#	- TBD: move go_att => go_err 
-#	- TBD: set err_txt = (f"") and comment out buffer(f"")
-#	- TBD: comment reason for any attemptable
-
-	def eat_att(self, gs):
-		creature = gs.core.hero
+			return True, False, ""
 		if not self.is_food():
-			gs.io.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? If you keep this up you're going to give Adventurers a bad name!")
-			return True
-		return False
+#			gs.io.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? If you keep this up you're going to give Adventurers a bad name!")
+			# attemptable error: something might look edible - is reasonable to attempt - player gets info
+			err_txt =(f"What kind of desperate individual tries to eat a {self.full_name}? If you keep this up you're going to give Adventurers a bad name!")
+			return True, True, err_txt
+		return False, False, ""
+
+#	def eat_att(self, gs):
+#		creature = gs.core.hero
+#		if not self.is_food():
+#			gs.io.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? If you keep this up you're going to give Adventurers a bad name!")
+#			return True
+#		return False
 
 	def wear_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
-			return True
-		if self.err_not_in_hand(creature, gs):
-			return True
+			return True, False, ""
 		if self in creature.worn_lst:
-			gs.io.buffer(f"You're already wearing the {self.full_name}!")
-			return True
+#			gs.io.buffer(f"You're already wearing the {self.full_name}!")
+			err_txt = (f"You're already wearing the {self.full_name}!")
+			return True, False, err_txt
+		if self.err_not_in_hand(creature, gs):
+			return True, False, ""
 		if creature.chk_type_worn(self):
-			gs.io.buffer(f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
-			return True
-		return False
-
-	def wear_att(self, gs):
+#			gs.io.buffer(f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
+			err_txt = (f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
+			return True, False, err_txt
 		if not self.is_garment():
-			gs.io.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
-			return True
-		return False
+#			gs.io.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
+			err_txt = (f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
+			return True, True, err_txt
+		return False, False, ""
+
+#	def wear_att(self, gs):
+#		if not self.is_garment():
+#			gs.io.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
+#			return True
+#		return False
 
 	def open_err(self, gs):
 		creature = gs.core.hero
@@ -247,6 +253,11 @@ class Error(Identity):
 			gs.io.buffer(f"The {self.full_name} is locked.")
 			return True
 		return False
+
+#	- TBD: sort out <verb>_att code
+#	- TBD: return is_att (True for moved cases) and err_txt()
+#	- TBD: set err_txt = (f"") and comment out buffer(f"")
+#	- TBD: comment reason for any attemptable
 
 	def close_err(self, gs):
 		creature = gs.core.hero
