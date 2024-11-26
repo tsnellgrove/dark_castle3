@@ -1484,7 +1484,7 @@ Version 3.87.0 Goals:
 					- DONE: clean up comments in error()
 					- DONE: eat
 					- DONE: wear
-					- TBD: open
+					- DONE: open
 					- TBD: close
 					- TBD: <tbd>
 			- TBD: case = prep
