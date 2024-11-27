@@ -267,28 +267,35 @@ class Error(Identity):
 	def close_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
-			return True
+			return True, False, ""
 		if not self.is_openable() and self.is_container():
-			gs.io.buffer(f"The {self.full_name} has no closure. It is always open.")
-			return True
-		if self.is_open == False:
-			gs.io.buffer(f"The {self.full_name} is already closed.")
-			return True
-		if self.is_lockable() and self.is_unlocked == False:
-			gs.io.buffer(f"The {self.full_name} is locked open.") # for Iron Portcullis
-			return True
-		return False
-
-	def close_att(self, gs):
+#			gs.io.buffer(f"The {self.full_name} has no closure. It is always open.")
+			err_txt = (f"The {self.full_name} has no closure. It is always open.")
+			return True, False, err_txt
 		if not self.is_openable() and not self.is_container():
-			gs.io.buffer(f"The {self.full_name} cannot be closed.")
-			return True
-		return False
+#			gs.io.buffer(f"The {self.full_name} cannot be closed.")
+			# attemptable error: a non-closable item might look closable; player gets info
+			err_txt = (f"The {self.full_name} cannot be closed.")
+			return True, True, err_txt
+		if self.is_open == False:
+#			gs.io.buffer(f"The {self.full_name} is already closed.")
+			# NOT attemptable: it should be visually evident that the door is already closed
+			err_txt = (f"The {self.full_name} is already closed.")
+			return True, False, err_txt
+		if self.is_lockable() and self.is_unlocked == False:
+#			gs.io.buffer(f"The {self.full_name} is locked open.") # for Iron Portcullis
+			# attemptable error: door likely appears closeable; player learns that it is not in attempt
+			err_txt = (f"The {self.full_name} is locked open.") # for Iron Portcullis
+			return True, True, err_txt
+		return False, False, ""
 
-#	- TBD: sort out <verb>_att code
-#	- TBD: return is_att (True for moved cases) and err_txt()
-#	- TBD: set err_txt = (f"") and comment out buffer(f"")
-#	- TBD: comment reason for any attemptable
+#	def close_att(self, gs):
+#		if not self.is_openable() and not self.is_container():
+#			gs.io.buffer(f"The {self.full_name} cannot be closed.")
+#			return True
+#		return False
+
+
 
 	def push_err(self, gs):
 		creature = gs.core.hero
@@ -301,6 +308,11 @@ class Error(Identity):
 			gs.io.buffer(f"Pushing on the {self.full_name} has no effect.")
 			return True
 		return False
+
+#	- TBD: sort out <verb>_att code
+#	- TBD: return is_att (True for moved cases) and err_txt()
+#	- TBD: set err_txt = (f"") and comment out buffer(f"")
+#	- TBD: comment reason for any attemptable
 
 	def pull_err(self, gs):
 		creature = gs.core.hero
