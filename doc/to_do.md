@@ -1486,8 +1486,8 @@ Version 3.87.0 Goals:
 					- DONE: wear
 					- DONE: open
 					- DONE: close
-					- TBD: clean up comments in error()
-					- TBD: push
+					- DONE: clean up comments in error()
+					- DONE: push
 					- TBD: pull
 					- TBD: stand
 					- TBD: enter

@@ -191,123 +191,86 @@ class Error(Identity):
 		if self.err_not_in_hand(creature, gs):
 			return True, False, ""
 		if not self.is_food():
-#			gs.io.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? If you keep this up you're going to give Adventurers a bad name!")
 			# attemptable error: something might look edible - is reasonable to attempt - player gets info
 			err_txt =(f"What kind of desperate individual tries to eat a {self.full_name}? If you keep this up you're going to give Adventurers a bad name!")
 			return True, True, err_txt
 		return False, False, ""
-
-#	def eat_att(self, gs):
-#		creature = gs.core.hero
-#		if not self.is_food():
-#			gs.io.buffer(f"What kind of desperate individual tries to eat a {self.full_name}? If you keep this up you're going to give Adventurers a bad name!")
-#			return True
-#		return False
 
 	def wear_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True, False, ""
 		if self in creature.worn_lst:
-#			gs.io.buffer(f"You're already wearing the {self.full_name}!")
 			err_txt = (f"You're already wearing the {self.full_name}!")
 			return True, False, err_txt
 		if self.err_not_in_hand(creature, gs):
 			return True, False, ""
 		if creature.chk_type_worn(self):
-#			gs.io.buffer(f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
 			err_txt = (f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
 			return True, False, err_txt
 		if not self.is_garment():
-#			gs.io.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
 			# attemptable error: palyer can attempt to wear a non-wearable obj
 			err_txt = (f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
 			return True, True, err_txt
 		return False, False, ""
-
-#	def wear_att(self, gs):
-#		if not self.is_garment():
-#			gs.io.buffer(f"With a keen eye for high fashion, you boldly attempt to accoutre yourself in the {self.full_name}... it doesn't really work out... but nothing is harmed... except maybe your ego...")
-#			return True
-#		return False
 
 	def open_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True, False, ""
 		if not self.is_openable() and self.is_container():
-#			gs.io.buffer(f"The {self.full_name} has no closure. It is always open.")
 			err_txt = (f"The {self.full_name} has no closure. It is always open.")
 			return True, False, err_txt
 		if not self.is_openable() and not self.is_container():
-#			gs.io.buffer(f"The {self.full_name} cannot be openned.")
 			# attemptable error: many possible cases; e.g. "open castle"
 			err_txt = (f"The {self.full_name} cannot be openned.")
 			return True, True, err_txt
 		if self.is_open:
-#			gs.io.buffer(f"The {self.full_name} is already open.")
 			err_txt = (f"The {self.full_name} is already open.")
 			return True, False, err_txt
 		if self.is_lockable() and self.is_unlocked == False:
-#			gs.io.buffer(f"The {self.full_name} is locked.")
 			# attemptable error: player can typically only learn that a door is locked by trying to open it
 			err_txt = (f"The {self.full_name} is locked.")
 			return True, True, err_txt
 		return False, False, ""
-
-#	def open_att(self, gs):
-#		if not self.is_openable() and not self.is_container():
-#			gs.io.buffer(f"The {self.full_name} cannot be openned.")
-#			return True
-#		if self.is_lockable() and self.is_unlocked == False:
-#			gs.io.buffer(f"The {self.full_name} is locked.")
-#			return True
-#		return False
 
 	def close_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True, False, ""
 		if not self.is_openable() and self.is_container():
-#			gs.io.buffer(f"The {self.full_name} has no closure. It is always open.")
 			err_txt = (f"The {self.full_name} has no closure. It is always open.")
 			return True, False, err_txt
 		if not self.is_openable() and not self.is_container():
-#			gs.io.buffer(f"The {self.full_name} cannot be closed.")
 			# attemptable error: a non-closable item might look closable; player gets info
 			err_txt = (f"The {self.full_name} cannot be closed.")
 			return True, True, err_txt
 		if self.is_open == False:
-#			gs.io.buffer(f"The {self.full_name} is already closed.")
 			# NOT attemptable: it should be visually evident that the door is already closed
 			err_txt = (f"The {self.full_name} is already closed.")
 			return True, False, err_txt
 		if self.is_lockable() and self.is_unlocked == False:
-#			gs.io.buffer(f"The {self.full_name} is locked open.") # for Iron Portcullis
 			# attemptable error: door likely appears closeable; player learns that it is not in attempt
 			err_txt = (f"The {self.full_name} is locked open.") # for Iron Portcullis
 			return True, True, err_txt
 		return False, False, ""
 
-#	def close_att(self, gs):
-#		if not self.is_openable() and not self.is_container():
-#			gs.io.buffer(f"The {self.full_name} cannot be closed.")
-#			return True
-#		return False
-
-
-
 	def push_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
-			return True
-		return False
-
-	def push_att(self, gs):
+			return True, False, ""
 		if not self.is_buttonswitch():
-			gs.io.buffer(f"Pushing on the {self.full_name} has no effect.")
-			return True
-		return False
+#			gs.io.buffer(f"Pushing on the {self.full_name} has no effect.")
+			# attempatable error: many non-pushable items could, in theory, be pushed
+			err_txt = (f"Pushing on the {self.full_name} has no effect.")
+			return True, True, err_txt
+		return False, False, ""
+
+#	def push_att(self, gs):
+#		if not self.is_buttonswitch():
+#			gs.io.buffer(f"Pushing on the {self.full_name} has no effect.")
+#			return True
+#		return False
 
 #	- TBD: sort out <verb>_att code
 #	- TBD: return is_att (True for moved cases) and err_txt()
