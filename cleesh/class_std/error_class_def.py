@@ -261,7 +261,7 @@ class Error(Identity):
 			return True, False, ""
 		if not self.is_buttonswitch():
 #			gs.io.buffer(f"Pushing on the {self.full_name} has no effect.")
-			# attempatable error: many non-pushable items could, in theory, be pushed
+			# attempatable error: many non-pushable obj could, in theory, be pushed
 			err_txt = (f"Pushing on the {self.full_name} has no effect.")
 			return True, True, err_txt
 		return False, False, ""
@@ -272,40 +272,41 @@ class Error(Identity):
 #			return True
 #		return False
 
-#	- TBD: sort out <verb>_att code
-#	- TBD: return is_att (True for moved cases) and err_txt()
-#	- TBD: set err_txt = (f"") and comment out buffer(f"")
-#	- TBD: comment reason for any attemptable
-
 	def pull_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
-			return True
-		return False
-
-	def pull_att(self, gs):
+			return True, False, ""
 		if not self.is_springsliderswitch() and not self.is_leverswitch():
-			gs.io.buffer(f"Pulling on the {self.full_name} has no effect.")
-			return True
-		return False
-	
+#			gs.io.buffer(f"Pulling on the {self.full_name} has no effect.")
+			# attemptable error: many non-pullable obj likely appear pullable
+			err_txt = (f"Pulling on the {self.full_name} has no effect.")
+			return True, True, err_txt
+		return False, False, ""
+
+#	def pull_att(self, gs):
+#		if not self.is_springsliderswitch() and not self.is_leverswitch():
+#			gs.io.buffer(f"Pulling on the {self.full_name} has no effect.")
+#			return True
+#		return False
+
 	def stand_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
-			return True
-##		if not self.is_creature():
-##			gs.io.buffer(f"And yet the {self.full_name} continues to just sit there...")
-##			return True
-##		if self != creature:
-##			gs.io.buffer(f"In your most bracing voice you declare: 'If you stand for nothing, what'll you fall for?' - but the {self.full_name} appears to be immune to your exhortations.")
-##			return True
+			return True, False, ""
+#		if not self.is_creature():
+#			gs.io.buffer(f"And yet the {self.full_name} continues to just sit there...")
+#			return True
+#		if self != creature:
+#			gs.io.buffer(f"In your most bracing voice you declare: 'If you stand for nothing, what'll you fall for?' - but the {self.full_name} appears to be immune to your exhortations.")
+#			return True
 		if self in gs.map.hero_rm.floor_lst:
-			gs.io.buffer(f"You're already standing in the {gs.map.hero_rm.full_name}!")
-			return True
-		return False
+#			gs.io.buffer(f"You're already standing in the {gs.map.hero_rm.full_name}!")
+			err_txt = (f"You're already standing in the {gs.map.hero_rm.full_name}!")
+			return True, False, err_txt
+		return False, False, ""
 
-	def stand_att(self, gs):
-		return False
+#	def stand_att(self, gs):
+#		return False
 
 	def enter_err(self, gs):
 		creature = gs.core.hero
@@ -324,6 +325,11 @@ class Error(Identity):
 			gs.io.buffer(f"You can't use the 'enter' command on the {self.full_name}.")
 			return True
 		return False
+
+#	- TBD: sort out <verb>_att code
+#	- TBD: return is_att (True for moved cases) and err_txt()
+#	- TBD: set err_txt = (f"") and comment out buffer(f"")
+#	- TBD: comment reason for any attemptable
 
 	def exit_err(self, gs):
 		creature = gs.core.hero

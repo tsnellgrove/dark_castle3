@@ -59,7 +59,8 @@ def noun_handling(master_obj_lst, user_input_lst):
 
 	# error out commands that are still longer than two words
 	if len(user_input_lst) > 2:
-		error_msg = "Can you state that more simply? Burt's a man of few words!"
+#		error_msg = "Can you state that more simply? Burt's a man of few words!"
+		error_msg = f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"
 		error_state = True
 		return error_state, error_msg, word2_obj
 

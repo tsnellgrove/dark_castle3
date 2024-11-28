@@ -1488,10 +1488,13 @@ Version 3.87.0 Goals:
 					- DONE: close
 					- DONE: clean up comments in error()
 					- DONE: push
-					- TBD: pull
-					- TBD: stand
+					- DONE: pull
+					- DONE: stand
 					- TBD: enter
 					- TBD: exit
+					- TBD: get_weight
+					- TBD: capacity
+					- TBD: where_is
 					- TBD: <tbd>
 			- TBD: case = prep
 				- TBD: <tbd>
