@@ -1700,6 +1700,7 @@ Version 3.87.0 Goals:
 - TBD: expand adventure!
 
 *** misc ideas ***
+- TBD: update 'exit' to assume seat that player is contained in (i.e. to default to 'stand' if 'seat' not given)
 - TBD: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
 - TBD: fix hedgehog description after sword is returned (before goblin killed)
 - TBD: fix eat_biscuits_warning 

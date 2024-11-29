@@ -260,79 +260,46 @@ class Error(Identity):
 		if self.err_std(creature, gs):
 			return True, False, ""
 		if not self.is_buttonswitch():
-#			gs.io.buffer(f"Pushing on the {self.full_name} has no effect.")
 			# attempatable error: many non-pushable obj could, in theory, be pushed
 			err_txt = (f"Pushing on the {self.full_name} has no effect.")
 			return True, True, err_txt
 		return False, False, ""
-
-#	def push_att(self, gs):
-#		if not self.is_buttonswitch():
-#			gs.io.buffer(f"Pushing on the {self.full_name} has no effect.")
-#			return True
-#		return False
 
 	def pull_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True, False, ""
 		if not self.is_springsliderswitch() and not self.is_leverswitch():
-#			gs.io.buffer(f"Pulling on the {self.full_name} has no effect.")
 			# attemptable error: many non-pullable obj likely appear pullable
 			err_txt = (f"Pulling on the {self.full_name} has no effect.")
 			return True, True, err_txt
 		return False, False, ""
 
-#	def pull_att(self, gs):
-#		if not self.is_springsliderswitch() and not self.is_leverswitch():
-#			gs.io.buffer(f"Pulling on the {self.full_name} has no effect.")
-#			return True
-#		return False
-
 	def stand_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True, False, ""
-#		if not self.is_creature():
-#			gs.io.buffer(f"And yet the {self.full_name} continues to just sit there...")
-#			return True
-#		if self != creature:
-#			gs.io.buffer(f"In your most bracing voice you declare: 'If you stand for nothing, what'll you fall for?' - but the {self.full_name} appears to be immune to your exhortations.")
-#			return True
 		if self in gs.map.hero_rm.floor_lst:
-#			gs.io.buffer(f"You're already standing in the {gs.map.hero_rm.full_name}!")
 			err_txt = (f"You're already standing in the {gs.map.hero_rm.full_name}!")
 			return True, False, err_txt
 		return False, False, ""
-
-#	def stand_att(self, gs):
-#		return False
 
 	def enter_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True, False, ""
 		if self.is_item():
-#			gs.io.buffer(f"Despite twisting yourself into a pretzel you still can't manage to enter the {self.full_name}.")
 			err_txt = (f"Despite twisting yourself into a pretzel you still can't manage to enter the {self.full_name}.")
 			return True, False, err_txt
 		if not self.is_seat():
-#			gs.io.buffer(f"You can't use the 'enter' command on the {self.full_name}.")
 			# attemptable error: there are many common uses of 'enter' that won't work in DC (e.g. "enter castle")
 			err_txt = (f"You can't use the 'enter' command on the {self.full_name}.")
 			return True, True, err_txt
 		if self.is_seat() and len(self.contain_lst) >= self.max_obj:
-#			gs.io.buffer(f"There's no room on the {self.full_name} to sit.")
 			# NOT attemptable error: the capacity of the seat should be visually obvious
 			err_txt = (f"There's no room on the {self.full_name} to sit.")
 			return True, False, err_txt
 		return False, False, ""
-
-#	def enter_att(self, gs):
-#		if not self.is_seat():
-#			gs.io.buffer(f"You can't use the 'enter' command on the {self.full_name}.")
-#			return True
-#		return False
 
 	def exit_err(self, gs):
 		creature = gs.core.hero
@@ -347,36 +314,19 @@ class Error(Identity):
 		if not self.is_seat() and self.err_not_in_reach(creature, gs):
 			return True, False, ""
 		if self.is_item():
-#			gs.io.buffer(f"Despite twisting yourself into a pretzel you still can't manage to exit the {self.full_name}.")
 			err_txt = (f"Despite twisting yourself into a pretzel you still can't manage to exit the {self.full_name}.")
 			return True, False, err_txt
 		if not self.is_seat():
-#			gs.io.buffer(f"You can't use the 'exit' command on the {self.full_name}.")
 			# attemptable error: there are many colloquial uses of 'exit' that won't work in DC
 			err_txt = (f"You can't use the 'exit' command on the {self.full_name}.")
 			return True, True, err_txt
 		if not creature.is_contained(gs):
-#			gs.io.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
 			err_txt = (f"You can't exit the {self.full_name} - you're not presently in it!")
 			return True, False, err_txt
 		if creature.is_contained(gs) and creature.get_contained_by(gs) != self:
-#			gs.io.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
 			err_txt = (f"You can't exit the {self.full_name} - you're not presently in it!")
 			return True, False, err_txt
 		return False, False, ""
-
-#	def exit_att(self, gs):
-#		creature = gs.core.hero
-#		if not self.is_seat():
-#			gs.io.buffer(f"You can't use the 'exit' command on the {self.full_name}.")
-#			return True
-#		if not creature.is_contained(gs):
-#			gs.io.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
-#			return True
-#		if creature.is_contained(gs) and creature.get_contained_by(gs) != self:
-#			gs.io.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
-#			return True
-#		return False
 
 	def get_weight_err(self, gs):
 		if not gs.core.is_debug:
