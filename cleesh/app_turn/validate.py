@@ -27,7 +27,7 @@ def validate(gs, case, word_lst):
 			if case == '2word':
 				word2_obj, word1 = word_lst
 				if (word1 in ['read', 'examine', 'take', 'drop', 'stowe', 'eat', 'wear', 'open', 'close', 
-						'push', 'pull', 'stand']):
+						'push', 'pull', 'stand', 'enter', 'exit']):
 					cmd_err, is_att, err_txt = getattr(word2_obj, word1 + '_err')(gs)
 					if (cmd_err and not is_att and err_txt != ""):
 						gs.io.buffer(err_txt)

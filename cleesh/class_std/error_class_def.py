@@ -311,56 +311,72 @@ class Error(Identity):
 	def enter_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
-			return True
+			return True, False, ""
 		if self.is_item():
-			gs.io.buffer(f"Despite twisting yourself into a pretzel you still can't manage to enter the {self.full_name}.")
-			return True
-		if self.is_seat() and len(self.contain_lst) >= self.max_obj:
-			gs.io.buffer(f"There's no room on the {self.full_name} to sit.")
-			return True
-		return False
-
-	def enter_att(self, gs):
+#			gs.io.buffer(f"Despite twisting yourself into a pretzel you still can't manage to enter the {self.full_name}.")
+			err_txt = (f"Despite twisting yourself into a pretzel you still can't manage to enter the {self.full_name}.")
+			return True, False, err_txt
 		if not self.is_seat():
-			gs.io.buffer(f"You can't use the 'enter' command on the {self.full_name}.")
-			return True
-		return False
+#			gs.io.buffer(f"You can't use the 'enter' command on the {self.full_name}.")
+			# attemptable error: there are many common uses of 'enter' that won't work in DC (e.g. "enter castle")
+			err_txt = (f"You can't use the 'enter' command on the {self.full_name}.")
+			return True, True, err_txt
+		if self.is_seat() and len(self.contain_lst) >= self.max_obj:
+#			gs.io.buffer(f"There's no room on the {self.full_name} to sit.")
+			# NOT attemptable error: the capacity of the seat should be visually obvious
+			err_txt = (f"There's no room on the {self.full_name} to sit.")
+			return True, False, err_txt
+		return False, False, ""
 
-#	- TBD: sort out <verb>_att code
-#	- TBD: return is_att (True for moved cases) and err_txt()
-#	- TBD: set err_txt = (f"") and comment out buffer(f"")
-#	- TBD: comment reason for any attemptable
+#	def enter_att(self, gs):
+#		if not self.is_seat():
+#			gs.io.buffer(f"You can't use the 'enter' command on the {self.full_name}.")
+#			return True
+#		return False
 
 	def exit_err(self, gs):
 		creature = gs.core.hero
 		if self.err_not_vis(creature, gs):
-			return True
+			return True, False, ""
 		if self.err_wrt_not_vis(creature, gs):
-			return True
+			return True, False, ""
 		if self.err_wrt_class(creature, gs):
-			return True
+			return True, False, ""
 		if self.err_wrt_not_in_reach(creature, gs):
-			return True
+			return True, False, ""
 		if not self.is_seat() and self.err_not_in_reach(creature, gs):
-			return True
+			return True, False, ""
 		if self.is_item():
-			gs.io.buffer(f"Despite twisting yourself into a pretzel you still can't manage to exit the {self.full_name}.")
-			return True
-		return False
-
-	def exit_att(self, gs):
-		creature = gs.core.hero
+#			gs.io.buffer(f"Despite twisting yourself into a pretzel you still can't manage to exit the {self.full_name}.")
+			err_txt = (f"Despite twisting yourself into a pretzel you still can't manage to exit the {self.full_name}.")
+			return True, False, err_txt
 		if not self.is_seat():
-			gs.io.buffer(f"You can't use the 'exit' command on the {self.full_name}.")
-			return True
+#			gs.io.buffer(f"You can't use the 'exit' command on the {self.full_name}.")
+			# attemptable error: there are many colloquial uses of 'exit' that won't work in DC
+			err_txt = (f"You can't use the 'exit' command on the {self.full_name}.")
+			return True, True, err_txt
 		if not creature.is_contained(gs):
-			gs.io.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
-			return True
+#			gs.io.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
+			err_txt = (f"You can't exit the {self.full_name} - you're not presently in it!")
+			return True, False, err_txt
 		if creature.is_contained(gs) and creature.get_contained_by(gs) != self:
-			gs.io.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
-			return True
-		return False
+#			gs.io.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
+			err_txt = (f"You can't exit the {self.full_name} - you're not presently in it!")
+			return True, False, err_txt
+		return False, False, ""
 
+#	def exit_att(self, gs):
+#		creature = gs.core.hero
+#		if not self.is_seat():
+#			gs.io.buffer(f"You can't use the 'exit' command on the {self.full_name}.")
+#			return True
+#		if not creature.is_contained(gs):
+#			gs.io.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
+#			return True
+#		if creature.is_contained(gs) and creature.get_contained_by(gs) != self:
+#			gs.io.buffer(f"You can't exit the {self.full_name} - you're not presently in it!")
+#			return True
+#		return False
 
 	def get_weight_err(self, gs):
 		if not gs.core.is_debug:
@@ -373,6 +389,11 @@ class Error(Identity):
 
 	def get_weight_att(self, gs):
 			return False
+
+##	- TBD: sort out <verb>_att code
+##	- TBD: return is_att (True for moved cases) and err_txt()
+##	- TBD: set err_txt = (f"") and comment out buffer(f"")
+##	- TBD: comment reason for any attemptable
 
 	def capacity_err(self, gs):
 		if not gs.core.is_debug:
