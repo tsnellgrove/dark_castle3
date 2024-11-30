@@ -330,44 +330,31 @@ class Error(Identity):
 
 	def get_weight_err(self, gs):
 		if not gs.core.is_debug:
-			gs.io.buffer("Please start your sentence with a known verb!")
-			return True
+			err_txt = ("Please start your sentence with a known verb!")
+			return True, False, err_txt
 		if not (self.is_item() or self.is_creature()):
-			gs.io.buffer("Only Items and Creatures have weight.")
-			return True
-		return False
-
-	def get_weight_att(self, gs):
-			return False
-
-##	- TBD: sort out <verb>_att code
-##	- TBD: return is_att (True for moved cases) and err_txt()
-##	- TBD: set err_txt = (f"") and comment out buffer(f"")
-##	- TBD: comment reason for any attemptable
+			err_txt = ("Only Items and Creatures have weight.")
+			return True, False, err_txt
+		return False, False, ""
 
 	def capacity_err(self, gs):
 		if not gs.core.is_debug:
-			gs.io.buffer("Please start your sentence with a known verb!")
-			return True
+			err_txt = ("Please start your sentence with a known verb!")
+			return True, False, err_txt
 		if not self.is_container() and not self.is_creature():
-			gs.io.buffer("Only Containers and Creatures have capacity.")
-			return True
-		return False
-
-	def capacity_att(self, gs):
-		return False
+			err_txt = ("Only Containers and Creatures have capacity.")
+			return True, False, err_txt
+		return False, False, ""
 
 	def where_is_err(self, gs):
 		if not gs.core.is_debug:
-			gs.io.buffer("Please start your sentence with a known verb!")
-			return True
+			err_txt = ("Please start your sentence with a known verb!")
+			return True, False, err_txt
 		if self.is_writing():
-			gs.io.buffer(f"The where_is command does not work for objects of Writing class")
-			return True
-		return False
+			err_txt = (f"The where_is command does not work for objects of Writing class")
+			return True, False, err_txt
+		return False, False, ""
 
-	def where_is_att(self, gs):
-		return False
 
 	# *** prep errors ***
 	def drink_err(self, obj, gs):
@@ -395,6 +382,11 @@ class Error(Identity):
 
 	def drink_att(self, obj, gs):
 		return False
+
+##	- TBD: sort out <verb>_att code
+##	- TBD: return is_att (True for moved cases) and err_txt()
+##	- TBD: set err_txt = (f"") and comment out buffer(f"")
+##	- TBD: comment reason for any attemptable
 
 	def lock_err(self, key_obj, gs):
 		creature = gs.core.hero

@@ -1470,7 +1470,7 @@ Version 3.87.0 Goals:
 					- DONE: for (case = '2word' and word1 in [<verb_lst>]
 					- DONE: update getattr() to recieve is_att and err_txt
 					- DONE: if (cmd_err and not is_att): buffer(err_txt)
-				- INRPOC: per <verb> updates
+				- DONE: per <verb> updates
 					- DONE: read
 						- DONE: validate(): <update verb_lst>
 						- DONE: app_main(): <update verb_lst>
@@ -1492,15 +1492,19 @@ Version 3.87.0 Goals:
 					- DONE: stand
 					- DONE: enter
 					- DONE: exit
-					- TBD: clean up comments in error()
-					- TBD: get_weight
-					- TBD: capacity
-					- TBD: where_is
-					- TBD: <tbd>
+					- DONE: clean up comments in error()
+					- DONE: get_weight
+					- DONE: capacity
+					- DONE: where_is
+					- DONE: clean up comments in error()
+					- DONE: elim individual verb test in validate()
 			- TBD: case = prep
+				- TBD: individual verb test in validate()
 				- TBD: <tbd>
+				- TBD: clean up comments in error()
 				- TBD: update is_att cases based on new system
 		- TBD: clean up comments in validate(), error(), app_main(), game_update()
+		- TBD: update validate() to move debug error indicators to pre rather than post
 		- TBD: remove test_chair from main_hall
 		- TBD: sort out local buffering in standard errors?
 		- TBD: eliminate legacy code
