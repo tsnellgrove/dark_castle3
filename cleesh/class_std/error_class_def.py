@@ -360,28 +360,35 @@ class Error(Identity):
 	def drink_err(self, obj, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
-			return True
+			return True, False, ""
 		if not self.is_liquid():
-			gs.io.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")
-			return True
+#			gs.io.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")
+			# attemptable error: non-liquids may appear to be drinkable
+			err_txt = (f"Your attempts to quaff the {self.full_name} do not meet with success.")
+			return True, True, err_txt
 ##		if obj.name in ['moat']:
 		if obj.name in gs.io.get_lst('reservoir_lst'):
 ##			gs.io.buffer(f"The very thought of drinking from the fetid {obj.full_name} makes you gag.")
-			gs.io.buffer(f"You are about to take a big gulp from the {obj.full_name} but then think better of it.")
-			return True
+#			gs.io.buffer(f"You are about to take a big gulp from the {obj.full_name} but then think better of it.")
+			# attemptable errore: it may be that in some cases the drinking from a resevoir should enable a mach
+			err_txt = (f"You are about to take a big gulp from the {obj.full_name} but then think better of it.")
+			return True, True, err_txt
 		if not obj.is_container():
-			gs.io.buffer(f"How could you possibly drink {self.full_name} from a {obj.full_name}?")
-			return True
+#			gs.io.buffer(f"How could you possibly drink {self.full_name} from a {obj.full_name}?")
+			err_txt = (f"How could you possibly drink {self.full_name} from a {obj.full_name}?")
+			return True, False, err_txt
 		if creature.hand_is_empty() or creature.get_hand_item() != obj:
-			gs.io.buffer(f"You need to be holding the {obj.full_name} to drink from it.")
-			return True
+#			gs.io.buffer(f"You need to be holding the {obj.full_name} to drink from it.")
+			err_txt = (f"You need to be holding the {obj.full_name} to drink from it.")
+			return True, False, err_txt
 		if self not in obj.contain_lst:
-			gs.io.buffer(f"The {obj.full_name} doesn't contain {self.full_name}.")
-			return True
-		return False
+#			gs.io.buffer(f"The {obj.full_name} doesn't contain {self.full_name}.")
+			err_txt = (f"The {obj.full_name} doesn't contain {self.full_name}.")
+			return True, False, err_txt
+		return False, False, ""
 
-	def drink_att(self, obj, gs):
-		return False
+#	def drink_att(self, obj, gs):
+#		return False
 
 ##	- TBD: sort out <verb>_att code
 ##	- TBD: return is_att (True for moved cases) and err_txt()

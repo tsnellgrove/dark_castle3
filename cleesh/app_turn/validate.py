@@ -40,7 +40,14 @@ def validate(gs, case, word_lst):
 
 			elif case == 'prep':
 				dirobj_obj, word1, noun_obj = word_lst
-				cmd_err = getattr(dirobj_obj, word1 + '_err')(noun_obj, gs)
+
+				if (word1 in ['drink']):
+					cmd_err, is_att, err_txt = getattr(dirobj_obj, word1 + '_err')(noun_obj, gs)
+					if (cmd_err and not is_att and err_txt != ""):
+						gs.io.buffer(err_txt)
+				else:
+					cmd_err = getattr(dirobj_obj, word1 + '_err')(noun_obj, gs)
+
 			elif case == 'go':
 				room_obj, word1, word2 = word_lst
 				cmd_err, is_att, err_txt = getattr(room_obj, word1 + '_err')(word2, gs)

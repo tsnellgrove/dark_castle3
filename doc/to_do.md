@@ -1498,8 +1498,12 @@ Version 3.87.0 Goals:
 					- DONE: where_is
 					- DONE: clean up comments in error()
 					- DONE: elim individual verb test in validate()
-			- TBD: case = prep
-				- TBD: individual verb test in validate()
+			- INPROC: case = prep
+				- DONE: individual verb test in validate()
+				- DONE: update app_main()
+				- DONE: drink
+				- TBD: lock
+				- TBD: unlock
 				- TBD: <tbd>
 				- TBD: clean up comments in error()
 				- TBD: update is_att cases based on new system
@@ -1704,6 +1708,7 @@ Version 3.87.0 Goals:
 - TBD: expand adventure!
 
 *** misc ideas ***
+- TBD: improve drink verb resevoir_lst error via undrinkable_dict error (custom error for each non-liquid)
 - TBD: update 'exit' to assume seat that player is contained in (i.e. to default to 'stand' if 'seat' not given)
 - TBD: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
 - TBD: fix hedgehog description after sword is returned (before goblin killed)
