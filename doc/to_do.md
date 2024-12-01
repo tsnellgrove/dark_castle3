@@ -1502,8 +1502,9 @@ Version 3.87.0 Goals:
 				- DONE: individual verb test in validate()
 				- DONE: update app_main()
 				- DONE: drink
-				- TBD: lock
+				- DONE: lock
 				- TBD: unlock
+				- TBD: clean up comments in error()
 				- TBD: <tbd>
 				- TBD: clean up comments in error()
 				- TBD: update is_att cases based on new system
