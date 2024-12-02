@@ -1503,7 +1503,7 @@ Version 3.87.0 Goals:
 				- DONE: update app_main()
 				- DONE: drink
 				- DONE: lock
-				- TBD: unlock
+				- INPROC: unlock (validate(), app_main(), and error() == DONE; testing == TBD)
 				- TBD: clean up comments in error()
 				- TBD: <tbd>
 				- TBD: clean up comments in error()
