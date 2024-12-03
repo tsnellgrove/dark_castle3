@@ -423,6 +423,11 @@ class Error(Identity):
 			return True, False, err_txt
 		if key_obj.err_not_in_hand(creature, gs):
 			return True, False, ""
+		if self.key is None:
+#			gs.io.buffer(f"You don't see a keyhole in the {self.full_name}.")
+			# attemptable error: player can only learn there is no lock by trying
+			err_txt = (f"You don't see a keyhole in the {self.full_name}.")
+			return True, True, err_txt
 		if key_obj != self.key and key_obj.root_name != 'key':
 #			gs.io.buffer(f"You can't lock the {self.full_name} with the {key_obj.full_name}.")
 #			gs.io.buffer(f"You attempt to lock the {self.full_name} with the {key_obj.full_name} without success.")
@@ -434,11 +439,6 @@ class Error(Identity):
 #			# attemptable error: player can only learn that obj cannot be locked by attempting
 #			err_txt = (f"The {self.full_name} does not appear to have a lock.")
 #			return True, True, err_txt
-		if self.key is None:
-#			gs.io.buffer(f"You don't see a keyhole in the {self.full_name}.")
-			# attemptable error: player can only learn there is no lock by trying
-			err_txt = (f"You don't see a keyhole in the {self.full_name}.")
-			return True, True, err_txt
 #		if self.is_open == True:
 ##			gs.io.buffer("You can't lock or unlock something that's open.")
 #			err_txt = ("You can't lock or unlock something that's open.")
@@ -492,6 +492,11 @@ class Error(Identity):
 			return True, False, err_txt
 		if key_obj.err_not_in_hand(creature, gs):
 			return True, False, ""
+		if self.key is None:
+#			gs.io.buffer(f"You don't see a keyhole in the {self.full_name}.")
+			# attemptable error: player can only learn there is no lock by trying
+			err_txt = (f"You don't see a keyhole in the {self.full_name}.")
+			return True, True, err_txt
 		if key_obj != self.key and key_obj.root_name != 'key':
 #			gs.io.buffer(f"You can't unlock the {self.full_name} with the {key_obj.full_name}.")
 #			err_txt = (f"You can't unlock the {self.full_name} with the {key_obj.full_name}.")
@@ -502,11 +507,6 @@ class Error(Identity):
 ##			gs.io.buffer(f"The {self.full_name} does not appear to have a lock.")
 #			err_txt = (f"The {self.full_name} does not appear to have a lock.")
 #			return True, False, err_txt
-		if self.key is None:
-#			gs.io.buffer(f"You don't see a keyhole in the {self.full_name}.")
-			# attemptable error: player can only learn there is no lock by trying
-			err_txt = (f"You don't see a keyhole in the {self.full_name}.")
-			return True, True, err_txt
 #		if self.is_open:
 ##			gs.io.buffer("You can't lock or unlock something that's open.")
 #			err_txt = ("You can't lock or unlock something that's open.")
