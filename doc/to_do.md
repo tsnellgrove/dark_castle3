@@ -1504,6 +1504,7 @@ Version 3.87.0 Goals:
 				- DONE: drink
 				- DONE: lock
 				- DONE: unlock
+				- INPROC: put (testing TBD)
 				- TBD: clean up comments in error()
 				- TBD: <tbd>
 				- TBD: clean up comments in error()

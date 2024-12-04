@@ -527,42 +527,53 @@ class Error(Identity):
 #	def unlock_att(self, key_obj, gs):
 #		return False
 
+	def put_err(self, obj, gs):
+		creature = gs.core.hero
+		if self.err_prep_std(obj, creature, gs):
+			return True, False, ""
+		if not obj.is_item():
+#			gs.io.buffer(f"You can't even pick up the {obj.full_name}... how could you possibly put it somewhere?")
+			err_txt = (f"You can't even pick up the {obj.full_name}... how could you possibly put it somewhere?")
+			return True, False, err_txt
+		if not self.is_container():
+#			gs.io.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
+			# attemptable error: non-container could be mistaken for container
+			err_txt = (f"You can't put the {obj.full_name} in or on the {self.full_name}.")
+			return True, True, err_txt
+		if self == obj:
+#			gs.io.buffer(f"With all your might you attempt to bend the laws of time, space, and topology to your will... and in response you hear the ancient background radiation of the big bang itself respond: 'Nope, not gonna happen.'")
+			err_txt = (f"With all your might you attempt to bend the laws of time, space, and topology to your will... and in response you hear the ancient background radiation of the big bang itself respond: 'Nope, not gonna happen.'")
+			return True, False, err_txt
+		if obj.err_not_in_hand(creature, gs):
+			return True, False, ""
+		if self.is_openable() and self.is_open == False:
+#			gs.io.buffer(f"The {self.full_name} is closed.")
+			err_txt = (f"The {self.full_name} is closed.")
+			return True, False, err_txt
+		if self.chk_content_prohibited(obj):
+#			gs.io.buffer(f"You can't put the {obj.full_name} {self.prep} the {self.full_name}.")
+			err_txt = (f"You can't put the {obj.full_name} {self.prep} the {self.full_name}.")
+			return True, False, err_txt
+		if self.is_container() and not self.chk_has_capacity():
+#			gs.io.buffer(f"There's no room {self.prep} the {self.full_name} for another item.")
+			# attemptable error: player gets info
+			err_txt = (f"There's no room {self.prep} the {self.full_name} for another item.")
+			return True, True, err_txt
+		if self.max_weight - self.get_contained_weight() - obj.weight < 0:
+#			gs.io.buffer(f"The {self.full_name} doesn't have enough capacity to hold the {obj.full_name}.")
+			# attemptable error: player gets info
+			err_txt = (f"The {self.full_name} doesn't have enough capacity to hold the {obj.full_name}.")
+			return True, True, err_txt
+		return False, False, ""
+
+#	def put_att(self, obj, gs):
+#		return False
+
 ##	- TBD: sort out <verb>_att code
 ##	- TBD: return is_att (True for moved cases) and err_txt()
 ##	- TBD: set err_txt = (f"") and comment out buffer(f"")
 ##	- TBD: comment reason for any attemptable
 
-	def put_err(self, obj, gs):
-		creature = gs.core.hero
-		if self.err_prep_std(obj, creature, gs):
-			return True
-		if not obj.is_item():
-			gs.io.buffer(f"You can't even pick up the {obj.full_name}... how could you possibly put it somewhere?")
-			return True
-		if not self.is_container():
-			gs.io.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
-			return True
-		if self == obj:
-			gs.io.buffer(f"With all your might you attempt to bend the laws of time, space, and topology to your will... and in response you hear the ancient background radiation of the big bang itself respond: 'Nope, not gonna happen.'")
-			return True
-		if obj.err_not_in_hand(creature, gs):
-			return True
-		if self.is_openable() and self.is_open == False:
-			gs.io.buffer(f"The {self.full_name} is closed.")
-			return True
-		if self.chk_content_prohibited(obj):
-			gs.io.buffer(f"You can't put the {obj.full_name} {self.prep} the {self.full_name}.")
-			return True
-		if self.is_container() and not self.chk_has_capacity():
-			gs.io.buffer(f"There's no room {self.prep} the {self.full_name} for another item.")
-			return True
-		if self.max_weight - self.get_contained_weight() - obj.weight < 0:
-			gs.io.buffer(f"The {self.full_name} doesn't have enough capacity to hold the {obj.full_name}.")
-			return True
-		return False
-
-	def put_att(self, obj, gs):
-		return False
 
 	def show_err(self, obj, gs):
 		creature = gs.core.hero
