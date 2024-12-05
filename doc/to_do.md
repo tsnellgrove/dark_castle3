@@ -1510,7 +1510,7 @@ Version 3.87.0 Goals:
 				- TBD: give
 				- TBD: attack
 				- TBD: clean up comments in error()
-				- TBD: update is_att cases based on new system
+				- TBD: update is_att cases based on new system (already done?)
 		- TBD: clean up comments in validate(), error(), app_main(), game_update()
 		- TBD: update validate() to move debug error indicators to pre rather than post
 		- TBD: remove test_chair from main_hall and box + rock from entrance
