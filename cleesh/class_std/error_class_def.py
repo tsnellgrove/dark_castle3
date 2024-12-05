@@ -328,6 +328,8 @@ class Error(Identity):
 			return True, False, err_txt
 		return False, False, ""
 
+
+	# *** two_word debug errors ***
 	def get_weight_err(self, gs):
 		if not gs.core.is_debug:
 			err_txt = ("Please start your sentence with a known verb!")
@@ -362,218 +364,145 @@ class Error(Identity):
 		if self.err_std(creature, gs):
 			return True, False, ""
 		if not self.is_liquid():
-#			gs.io.buffer(f"Your attempts to quaff the {self.full_name} do not meet with success.")
 			# attemptable error: non-liquids may appear to be drinkable
 			err_txt = (f"Your attempts to quaff the {self.full_name} do not meet with success.")
 			return True, True, err_txt
 ##		if obj.name in ['moat']:
 		if obj.name in gs.io.get_lst('reservoir_lst'):
 ##			gs.io.buffer(f"The very thought of drinking from the fetid {obj.full_name} makes you gag.")
-#			gs.io.buffer(f"You are about to take a big gulp from the {obj.full_name} but then think better of it.")
-			# attemptable errore: it may be that in some cases the drinking from a resevoir should enable a mach
+			# attemptable errore: in some cases, drinking from a resevoir should enable a machine
 			err_txt = (f"You are about to take a big gulp from the {obj.full_name} but then think better of it.")
 			return True, True, err_txt
 		if not obj.is_container():
-#			gs.io.buffer(f"How could you possibly drink {self.full_name} from a {obj.full_name}?")
 			err_txt = (f"How could you possibly drink {self.full_name} from a {obj.full_name}?")
 			return True, False, err_txt
 		if creature.hand_is_empty() or creature.get_hand_item() != obj:
-#			gs.io.buffer(f"You need to be holding the {obj.full_name} to drink from it.")
 			err_txt = (f"You need to be holding the {obj.full_name} to drink from it.")
 			return True, False, err_txt
 		if self not in obj.contain_lst:
-#			gs.io.buffer(f"The {obj.full_name} doesn't contain {self.full_name}.")
 			err_txt = (f"The {obj.full_name} doesn't contain {self.full_name}.")
 			return True, False, err_txt
 		return False, False, ""
-
-#	def drink_att(self, obj, gs):
-#		return False
 
 	def lock_err(self, key_obj, gs):
 		creature = gs.core.hero
 		if self.err_prep_std(key_obj, creature, gs):
 			return True, False, ""
 		if self.is_container() and not self.is_openable():
-#			gs.io.buffer(f"There's nothing to lock. The {self.full_name} is always open.")
 			err_txt = (f"There's nothing to lock. The {self.full_name} is always open.")
 			return True, False, err_txt
-#		if self.is_unlocked is None or (self.is_openable() and not self.is_lockable()):
 		if (self.is_openable() and not self.is_lockable()):
-#			gs.io.buffer(f"The {self.full_name} does not appear to have a lock.")
 			# attemptable error: player can only learn that obj cannot be locked by attempting
 			err_txt = (f"The {self.full_name} does not appear to have a lock.")
 			return True, True, err_txt
 		if not self.is_lockable():
-#			gs.io.buffer(f"The {self.full_name} cannot be locked.")
 			# attemptable error: in some cases, player can only learn something is not lockable by attempting
 			err_txt = (f"The {self.full_name} cannot be locked.")
 			return True, True, err_txt
 		if self.is_open == True:
-#			gs.io.buffer("You can't lock or unlock something that's open.")
 			err_txt = ("You can't lock or unlock something that's open.")
 			return True, False, err_txt
 		if key_obj.is_switch():
-#			gs.io.buffer(f"You'll need to be more specific about what you want to do with the {key_obj.full_name}.")
 			err_txt = (f"You'll need to be more specific about what you want to do with the {key_obj.full_name}.")
 			return True, False, err_txt
 		if not key_obj.is_item():
-#			gs.io.buffer(f"And just how do you intend to lock a {self.full_name} with a {key_obj.full_name}??")
 			err_txt = (f"And just how do you intend to lock a {self.full_name} with a {key_obj.full_name}??")
 			return True, False, err_txt
 		if key_obj.err_not_in_hand(creature, gs):
 			return True, False, ""
 		if self.key is None:
-#			gs.io.buffer(f"You don't see a keyhole in the {self.full_name}.")
 			# attemptable error: player can only learn there is no lock by trying
 			err_txt = (f"You don't see a keyhole in the {self.full_name}.")
 			return True, True, err_txt
 		if key_obj != self.key and key_obj.root_name != 'key':
-#			gs.io.buffer(f"You can't lock the {self.full_name} with the {key_obj.full_name}.")
-#			gs.io.buffer(f"You attempt to lock the {self.full_name} with the {key_obj.full_name} without success.")
 			#attemptable error: player only learns obj is not key by attempting
 			err_txt = (f"You attempt to lock the {self.full_name} with the {key_obj.full_name} without success.")
 			return True, True, err_txt
-#		if self.is_unlocked is None or (self.is_openable() and not self.is_lockable()):
-##			gs.io.buffer(f"The {self.full_name} does not appear to have a lock.")
-#			# attemptable error: player can only learn that obj cannot be locked by attempting
-#			err_txt = (f"The {self.full_name} does not appear to have a lock.")
-#			return True, True, err_txt
-#		if self.is_open == True:
-##			gs.io.buffer("You can't lock or unlock something that's open.")
-#			err_txt = ("You can't lock or unlock something that's open.")
-#			return True, False, err_txt
 		if key_obj != self.key and key_obj.root_name == 'key':
-#			gs.io.buffer("You aren't holding the correct key.")
 			# attemptable error: player must try with wrong key to learn it is wrong
-#			err_txt = ("You aren't holding the correct key.")
 			err_txt = (f"You attempt to lock the {self.full_name} but the {key_obj.full_name} appears to be the wrong key.")
 			return True, True, err_txt
 		if self.is_unlocked == False:
-#			gs.io.buffer(f"The {self.full_name} is already locked.")
 			# attemptable error: player can only learn that the obj is locked by attempting an action on it
 			err_txt = (f"The {self.full_name} is already locked.")
 			return True, True, err_txt
 		return False, False, ""
-
-#	def lock_att(self, key_obj, gs):
-#		return False
 
 	def unlock_err(self, key_obj, gs):
 		creature = gs.core.hero
 		if self.err_prep_std(key_obj, creature, gs):
 			return True, False, ""
 		if self.is_container() and not self.is_openable():
-#			gs.io.buffer(f"There's nothing to unlock. The {self.full_name} is always open.")
 			err_txt = (f"There's nothing to unlock. The {self.full_name} is always open.")
 			return True, False, err_txt
-#		if self.is_unlocked is None or (self.is_openable() and not self.is_lockable()):
 		if (self.is_openable() and not self.is_lockable()):
-#			gs.io.buffer(f"The {self.full_name} does not appear to have a lock.")
 			# attemptable error: player can only learn that obj cannot be unlocked by attempting
 			err_txt = (f"The {self.full_name} does not appear to have a lock.")
 			return True, True, err_txt
 		if not self.is_lockable():
-#			gs.io.buffer(f"The {self.full_name} cannot be unlocked.")
 			# attemptable error: in some cases, player can only learn something is not lockable by attempting
 			err_txt = (f"The {self.full_name} cannot be unlocked.")
 			return True, True, err_txt
 		if self.is_open:
-#			gs.io.buffer("You can't lock or unlock something that's open.")
 			err_txt = ("You can't lock or unlock something that's open.")
 			return True, False, err_txt
 		if key_obj.is_switch():
-#			gs.io.buffer(f"You'll need to be more specific about what you want to do with the {key_obj.full_name}.")
 			err_txt = (f"You'll need to be more specific about what you want to do with the {key_obj.full_name}.")
 			return True, False, err_txt
 		if not key_obj.is_item():
-#			gs.io.buffer(f"And just how do you intend to unlock a {self.full_name} with a {key_obj.full_name}??")
 			err_txt = (f"And just how do you intend to unlock a {self.full_name} with a {key_obj.full_name}??")
 			return True, False, err_txt
 		if key_obj.err_not_in_hand(creature, gs):
 			return True, False, ""
 		if self.key is None:
-#			gs.io.buffer(f"You don't see a keyhole in the {self.full_name}.")
 			# attemptable error: player can only learn there is no lock by trying
 			err_txt = (f"You don't see a keyhole in the {self.full_name}.")
 			return True, True, err_txt
 		if key_obj != self.key and key_obj.root_name != 'key':
-#			gs.io.buffer(f"You can't unlock the {self.full_name} with the {key_obj.full_name}.")
-#			err_txt = (f"You can't unlock the {self.full_name} with the {key_obj.full_name}.")
 			#attemptable error: player only learns obj is not key by attempting
 			err_txt = (f"You attempt to unlock the {self.full_name} with the {key_obj.full_name} without success.")
 			return True, True, err_txt
-#		if self.is_unlocked is None or (self.is_openable() and not self.is_lockable()):
-##			gs.io.buffer(f"The {self.full_name} does not appear to have a lock.")
-#			err_txt = (f"The {self.full_name} does not appear to have a lock.")
-#			return True, False, err_txt
-#		if self.is_open:
-##			gs.io.buffer("You can't lock or unlock something that's open.")
-#			err_txt = ("You can't lock or unlock something that's open.")
-#			return True, False, err_txt
 		if key_obj != self.key and key_obj.root_name == 'key':
-#			gs.io.buffer("You aren't holding the correct key.")
-#			err_txt = ("You aren't holding the correct key.")
 			# attemptable error: player must try with wrong key to learn it is wrong
 			err_txt = (f"You attempt to unlock the {self.full_name} but the {key_obj.full_name} appears to be the wrong key.")
 			return True, True, err_txt
 		if self.is_unlocked:
-#			gs.io.buffer(f"The {self.full_name} is already unlocked.")
 			# attemptable error: player can only learn that the obj is unlocked by attempting an action on it
 			err_txt = (f"The {self.full_name} is already unlocked.")
 			return True, True, err_txt
 		return False, False, ""
-
-#	def unlock_att(self, key_obj, gs):
-#		return False
 
 	def put_err(self, obj, gs):
 		creature = gs.core.hero
 		if self.err_prep_std(obj, creature, gs):
 			return True, False, ""
 		if not obj.is_item():
-#			gs.io.buffer(f"You can't even pick up the {obj.full_name}... how could you possibly put it somewhere?")
 			err_txt = (f"You can't even pick up the {obj.full_name}... how could you possibly put it somewhere?")
 			return True, False, err_txt
 		if not self.is_container():
-#			gs.io.buffer(f"You can't put the {obj.full_name} in or on the {self.full_name}.")
 			# attemptable error: non-container could be mistaken for container
 			err_txt = (f"You can't put the {obj.full_name} in or on the {self.full_name}.")
 			return True, True, err_txt
 		if self == obj:
-#			gs.io.buffer(f"With all your might you attempt to bend the laws of time, space, and topology to your will... and in response you hear the ancient background radiation of the big bang itself respond: 'Nope, not gonna happen.'")
 			err_txt = (f"With all your might you attempt to bend the laws of time, space, and topology to your will... and in response you hear the ancient background radiation of the big bang itself respond: 'Nope, not gonna happen.'")
 			return True, False, err_txt
 		if obj.err_not_in_hand(creature, gs):
 			return True, False, ""
 		if self.is_openable() and self.is_open == False:
-#			gs.io.buffer(f"The {self.full_name} is closed.")
 			err_txt = (f"The {self.full_name} is closed.")
 			return True, False, err_txt
 		if self.chk_content_prohibited(obj):
-#			gs.io.buffer(f"You can't put the {obj.full_name} {self.prep} the {self.full_name}.")
 			err_txt = (f"You can't put the {obj.full_name} {self.prep} the {self.full_name}.")
 			return True, False, err_txt
 		if self.is_container() and not self.chk_has_capacity():
-#			gs.io.buffer(f"There's no room {self.prep} the {self.full_name} for another item.")
 			# attemptable error: player gets info
 			err_txt = (f"There's no room {self.prep} the {self.full_name} for another item.")
 			return True, True, err_txt
 		if self.max_weight - self.get_contained_weight() - obj.weight < 0:
-#			gs.io.buffer(f"The {self.full_name} doesn't have enough capacity to hold the {obj.full_name}.")
 			# attemptable error: player gets info
 			err_txt = (f"The {self.full_name} doesn't have enough capacity to hold the {obj.full_name}.")
 			return True, True, err_txt
 		return False, False, ""
-
-#	def put_att(self, obj, gs):
-#		return False
-
-##	- TBD: sort out <verb>_att code
-##	- TBD: return is_att (True for moved cases) and err_txt()
-##	- TBD: set err_txt = (f"") and comment out buffer(f"")
-##	- TBD: comment reason for any attemptable
-
 
 	def show_err(self, obj, gs):
 		creature = gs.core.hero
@@ -588,6 +517,11 @@ class Error(Identity):
 
 	def show_att(self, obj, gs):
 		return False
+
+##	- TBD: sort out <verb>_att code
+##	- TBD: return is_att (True for moved cases) and err_txt()
+##	- TBD: set err_txt = (f"") and comment out buffer(f"")
+##	- TBD: comment reason for any attemptable
 
 	def give_err(self, obj, gs):
 		creature = gs.core.hero

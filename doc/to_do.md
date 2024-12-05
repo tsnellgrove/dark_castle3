@@ -1505,8 +1505,10 @@ Version 3.87.0 Goals:
 				- DONE: lock
 				- DONE: unlock
 				- DONE: put
-				- TBD: clean up comments in error()
-				- TBD: <tbd>
+				- DONE: clean up comments in error()
+				- TBD: show
+				- TBD: give
+				- TBD: attack
 				- TBD: clean up comments in error()
 				- TBD: update is_att cases based on new system
 		- TBD: clean up comments in validate(), error(), app_main(), game_update()
