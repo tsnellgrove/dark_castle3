@@ -507,21 +507,18 @@ class Error(Identity):
 	def show_err(self, obj, gs):
 		creature = gs.core.hero
 		if self.err_prep_std(obj, creature, gs):
-			return True
+			return True, False, ""
 		if not self.is_creature():
-			gs.io.buffer(f"Exactly how would you expect the {self.full_name} to respond to the {obj.full_name}?")
-			return True
+#			gs.io.buffer(f"Exactly how would you expect the {self.full_name} to respond to the {obj.full_name}?")
+			# attemptable error: is certainly possible to attempt (e.g. 'show tablet to statue')
+			err_txt = (f"Exactly how would you expect the {self.full_name} to respond to the {obj.full_name}?")
+			return True, True, err_txt
 		if obj.err_not_in_hand(creature, gs):
-			return True
-		return False
+			return True, False, ""
+		return False, False, ""
 
-	def show_att(self, obj, gs):
-		return False
-
-##	- TBD: sort out <verb>_att code
-##	- TBD: return is_att (True for moved cases) and err_txt()
-##	- TBD: set err_txt = (f"") and comment out buffer(f"")
-##	- TBD: comment reason for any attemptable
+#	def show_att(self, obj, gs):
+#		return False
 
 	def give_err(self, obj, gs):
 		creature = gs.core.hero
@@ -545,6 +542,11 @@ class Error(Identity):
 
 	def give_att(self, obj, gs):
 		return False
+
+##	- TBD: sort out <verb>_att code
+##	- TBD: return is_att (True for moved cases) and err_txt()
+##	- TBD: set err_txt = (f"") and comment out buffer(f"")
+##	- TBD: comment reason for any attemptable
 
 	def attack_err(self, src_obj, gs):
 		src_creature = gs.core.hero

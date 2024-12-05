@@ -1506,14 +1506,14 @@ Version 3.87.0 Goals:
 				- DONE: unlock
 				- DONE: put
 				- DONE: clean up comments in error()
-				- TBD: show
+				- DONE: show
 				- TBD: give
 				- TBD: attack
 				- TBD: clean up comments in error()
 				- TBD: update is_att cases based on new system
 		- TBD: clean up comments in validate(), error(), app_main(), game_update()
 		- TBD: update validate() to move debug error indicators to pre rather than post
-		- TBD: remove test_chair from main_hall
+		- TBD: remove test_chair from main_hall and box + rock from entrance
 		- TBD: sort out local buffering in standard errors?
 		- TBD: eliminate legacy code
 			- TBD: in app_main, eliminate refs to attempt_err() including import
