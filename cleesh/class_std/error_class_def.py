@@ -523,25 +523,31 @@ class Error(Identity):
 	def give_err(self, obj, gs):
 		creature = gs.core.hero
 		if self.err_prep_std(obj, creature, gs):
-			return True
+			return True, False, ""
 		if not obj.is_item():
-			gs.io.buffer(f"You can't even pick up the {obj.full_name}... how could you possibly 'give' it?")
-			return True
+#			gs.io.buffer(f"You can't even pick up the {obj.full_name}... how could you possibly 'give' it?")
+			err_txt = (f"You can't even pick up the {obj.full_name}... how could you possibly 'give' it?")
+			return True, False, err_txt
 		if not self.is_creature():
-			gs.io.buffer(f"And what do you expect the {self.full_name} to do with the {obj.full_name}?")
-			return True
+#			gs.io.buffer(f"And what do you expect the {self.full_name} to do with the {obj.full_name}?")
+			# attemptable error: concievable that 'giving' and obj to a non creature would seem reasonable
+			err_txt = (f"And what do you expect the {self.full_name} to do with the {obj.full_name}?")
+			return True, True, err_txt
 		if obj.err_not_in_hand(creature, gs):
-			return True
+			return True, False, ""
 		if self == creature:
-			gs.io.buffer(f"With great formality and many words of thanks, you hand the {obj.full_name} to yourself.")
-			return True
+#			gs.io.buffer(f"With great formality and many words of thanks, you hand the {obj.full_name} to yourself.")
+			err_txt = (f"With great formality and many words of thanks, you hand the {obj.full_name} to yourself.")
+			return True, False, err_txt
 		if self.weight + obj.weight > self.max_weight:
-			gs.io.buffer(f"With a glum shake of their head, the {self.full_name} refuses the {obj.full_name}. You notice that the {self.full_name} appears to be overburdened already.")
-			return True
-		return False
+#			gs.io.buffer(f"With a glum shake of their head, the {self.full_name} refuses the {obj.full_name}. You notice that the {self.full_name} appears to be overburdened already.")
+			# attemptable error: player gets info
+			err_txt = (f"With a glum shake of their head, the {self.full_name} refuses the {obj.full_name}. You notice that the {self.full_name} appears to be overburdened already.")
+			return True, True, err_txt
+		return False, False, ""
 
-	def give_att(self, obj, gs):
-		return False
+#	def give_att(self, obj, gs):
+#		return False
 
 ##	- TBD: sort out <verb>_att code
 ##	- TBD: return is_att (True for moved cases) and err_txt()

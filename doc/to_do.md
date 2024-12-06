@@ -1507,7 +1507,7 @@ Version 3.87.0 Goals:
 				- DONE: put
 				- DONE: clean up comments in error()
 				- DONE: show
-				- TBD: give
+				- DONE: give
 				- TBD: attack
 				- TBD: clean up comments in error()
 				- TBD: update is_att cases based on new system (already done?)
