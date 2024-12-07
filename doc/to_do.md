@@ -1465,7 +1465,7 @@ Version 3.87.0 Goals:
 					- DONE: test antechamber 'n' again (mach should run now)
 				- DONE: thurough testing of all go_err cases
 				- DONE: clean up game_update(), error(), cond(), mach(), validate(), app_main()
-			- INPROC: case = 2word
+			- DONE: case = 2word
 				- DONE: in validate()
 					- DONE: for (case = '2word' and word1 in [<verb_lst>]
 					- DONE: update getattr() to recieve is_att and err_txt
@@ -1508,22 +1508,21 @@ Version 3.87.0 Goals:
 				- DONE: clean up comments in error()
 				- DONE: show
 				- DONE: give
-				- TBD: attack
+				- DONE: attack
 				- TBD: clean up comments in error()
-				- TBD: update is_att cases based on new system (already done?)
-		- TBD: clean up comments in validate(), error(), app_main(), game_update()
-		- TBD: update validate() to move debug error indicators to pre rather than post
-		- TBD: remove test_chair from main_hall and box + rock from entrance
-		- TBD: sort out local buffering in standard errors?
+				- TBD: remove test_chair from main_hall and box + rock from entrance
 		- TBD: eliminate legacy code
-			- TBD: in app_main, eliminate refs to attempt_err() including import
-			- TBD: in validate(), elim <verb_lst> ref
-			- TBD: test
-			- TBD: eliminate attempt_err()
-			- TBD: test
+			- TBD: clean up comments in validate(), error(), app_main(), game_update()
+			- TBD: update validate() to move debug error indicators to pre rather than post			
+			- TBD: clean up att_err() structures
+				- TBD: in app_main, eliminate refs to attempt_err() including import
+				- TBD: in validate(), elim <verb_lst> ref
+				- TBD: test
+				- TBD: eliminate attempt_err()
+				- TBD: test
+		- TBD: sort out local buffering in standard errors?
 		- TBD: doc update
 		- TBD: consider other possible uses for **kwargs
-
 
 	- TBD: git branch merge with master
 		- TBD: 'git checkout master' to switch focus to master

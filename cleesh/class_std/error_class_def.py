@@ -549,38 +549,49 @@ class Error(Identity):
 #	def give_att(self, obj, gs):
 #		return False
 
-##	- TBD: sort out <verb>_att code
-##	- TBD: return is_att (True for moved cases) and err_txt()
-##	- TBD: set err_txt = (f"") and comment out buffer(f"")
-##	- TBD: comment reason for any attemptable
-
 	def attack_err(self, src_obj, gs):
 		src_creature = gs.core.hero
 		tgt_creature = self
 		if self.err_prep_std(src_obj, src_creature, gs):
-			return True
+			return True, False, ""
 		if not self.is_creature():
-			gs.io.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
-			return True
+#			gs.io.buffer(f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
+			# attemptable error: could appear reasonable to attack a non-creature
+			err_txt = (f"What kind of deranged person attacks a {self.full_name} with a {src_obj.full_name}?!?")
+			return True, True, err_txt
 		if not tgt_creature.is_attackable:
+			# attemptable error: clearly attemptable, player gets info, may trigger complex events
 			try:
-				gs.io.buff_f(f"not_attackable_{src_creature.name}_{tgt_creature.name}")
+#				gs.io.buff_f(f"not_attackable_{src_creature.name}_{tgt_creature.name}")
+#				err_txt = gs.io.get_str_nr(self, f"not_attackable_{src_creature.name}_{tgt_creature.name}", mode=None)
+				err_txt = gs.io.get_str_nr(f"not_attackable_{src_creature.name}_{tgt_creature.name}")
 			except:
-				gs.io.buffer("You consider attacking but then think better of it. There must be another path to victory.")
-			return True
+#				gs.io.buffer("You consider attacking but then think better of it. There must be another path to victory.")
+				err_txt = ("You consider attacking but then think better of it. There must be another path to victory.")
+			return True, True, err_txt
 		if (not src_obj in src_creature.feature_lst) and (not src_creature.chk_in_hand(src_obj)):
-			gs.io.buffer(f"You are not holding the {src_obj.full_name} in your hand.")
-			return True
+#			gs.io.buffer(f"You are not holding the {src_obj.full_name} in your hand.")
+			err_txt = (f"You are not holding the {src_obj.full_name} in your hand.")
+			return True, False, err_txt
 		if (src_obj in src_creature.feature_lst) and (not src_creature.hand_is_empty()):
-			gs.io.buffer(f"You can't attack with your {src_obj.full_name} while you're holding the {src_creature.get_hand_item().full_name}.")
-			return True
+#			gs.io.buffer(f"You can't attack with your {src_obj.full_name} while you're holding the {src_creature.get_hand_item().full_name}.")
+			err_txt = (f"You can't attack with your {src_obj.full_name} while you're holding the {src_creature.get_hand_item().full_name}.")
+			return True, False, err_txt
 		if src_creature == tgt_creature:
-			gs.io.buffer("You can't attack yourself!")
-			return True
-		return False
+#			gs.io.buffer("You can't attack yourself!")
+			err_txt = ("You can't attack yourself!")
+			return True, False, err_txt
+		return False, False, ""
 
-	def attack_att(self, src_obj, gs):
-		return False
+#	def attack_att(self, src_obj, gs):
+#		return False
+
+#	get_str_nr(self, key, mode=None)
+
+##	- TBD: sort out <verb>_att code
+##	- TBD: return is_att (True for moved cases) and err_txt()
+##	- TBD: set err_txt = (f"") and comment out buffer(f"")
+##	- TBD: comment reason for any attemptable
 
 	# *** go_case error ***
 	def go_err(self, dir, gs):

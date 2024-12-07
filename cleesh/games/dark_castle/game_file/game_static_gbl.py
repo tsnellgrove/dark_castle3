@@ -286,6 +286,7 @@ game_static_dict = {
 
 	### test descriptions ###
 	'burt_enter_test_chair' : "The chair feels cozy and nice.",
+    'not_attackable_burt_royal_hedgehog' : "You can't attack the royal hedgehog",
 
 	# items #
 	'brass_key' : "The key is brass.",
