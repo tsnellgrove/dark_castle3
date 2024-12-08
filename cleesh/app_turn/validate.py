@@ -29,25 +29,11 @@ def validate(gs, case, word_lst):
 				cmd_err, is_att, err_txt = getattr(word2_obj, word1 + '_err')(gs)
 				if (cmd_err and not is_att and err_txt != ""):
 					gs.io.buffer(err_txt)
-
-#				if (word1 in ['read', 'examine', 'take', 'drop', 'stowe', 'eat', 'wear', 'open', 'close', 
-#						'push', 'pull', 'stand', 'enter', 'exit', 'get_weight', 'capacity', 'where_is']):
-#					cmd_err, is_att, err_txt = getattr(word2_obj, word1 + '_err')(gs)
-#					if (cmd_err and not is_att and err_txt != ""):
-#						gs.io.buffer(err_txt)
-#				else:
-#					cmd_err = getattr(word2_obj, word1 + '_err')(gs)
-
 			elif case == 'prep':
 				dirobj_obj, word1, noun_obj = word_lst
-
-				if (word1 in ['drink', 'lock', 'unlock', 'put', 'show', 'give', 'attack']):
-					cmd_err, is_att, err_txt = getattr(dirobj_obj, word1 + '_err')(noun_obj, gs)
-					if (cmd_err and not is_att and err_txt != ""):
-						gs.io.buffer(err_txt)
-				else:
-					cmd_err = getattr(dirobj_obj, word1 + '_err')(noun_obj, gs)
-
+				cmd_err, is_att, err_txt = getattr(dirobj_obj, word1 + '_err')(noun_obj, gs)
+				if (cmd_err and not is_att and err_txt != ""):
+					gs.io.buffer(err_txt)
 			elif case == 'go':
 				room_obj, word1, word2 = word_lst
 				cmd_err, is_att, err_txt = getattr(room_obj, word1 + '_err')(word2, gs)

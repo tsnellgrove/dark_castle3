@@ -1447,7 +1447,7 @@ Version 3.87.0 Goals:
 			- DONE: test
 			- DONE: update cond_check() in TrueCond to test is_valid vs. self.is_valid_reqd
 			- DONE: test
-		- INPROC: update error methods (all errors to method, return is_att and err_txt for each "if"):
+		- DONE: update error methods (all errors to method, return is_att and err_txt for each "if"):
 			- DONE: case = go
 				- DONE: in validate()
 					- DONE: for case = 'go', update getattr() to recieve is_att and err_txt
@@ -1498,7 +1498,7 @@ Version 3.87.0 Goals:
 					- DONE: where_is
 					- DONE: clean up comments in error()
 					- DONE: elim individual verb test in validate()
-			- INPROC: case = prep
+			- DONE: case = prep
 				- DONE: individual verb test in validate()
 				- DONE: update app_main()
 				- DONE: drink
@@ -1509,18 +1509,19 @@ Version 3.87.0 Goals:
 				- DONE: show
 				- DONE: give
 				- DONE: attack
-				- TBD: clean up comments in error()
-				- TBD: remove test_chair from main_hall and box + rock from entrance
-		- TBD: eliminate legacy code
-			- TBD: clean up comments in validate(), error(), app_main(), game_update()
+				- DONE: clean up comments in error()
+				- DONE: remove test_chair from main_hall and box + rock from entrance
+		- DONE: clean-up legacy code	
+			- DONE: in app_main, eliminate refs to attempt_err() including import and <verb_lst>
+			- DONE: in validate(), elim <verb_lst> ref
+			- DONE: test
+			- DONE: clean up comments in validate(), app_main(), game_update()
+			- DONE: test
+			- DONE: eliminate attempt_err()
+			- DONE: final test (including cup_of_tea)
+		- TBD: additional features?
 			- TBD: update validate() to move debug error indicators to pre rather than post			
-			- TBD: clean up att_err() structures
-				- TBD: in app_main, eliminate refs to attempt_err() including import
-				- TBD: in validate(), elim <verb_lst> ref
-				- TBD: test
-				- TBD: eliminate attempt_err()
-				- TBD: test
-		- TBD: sort out local buffering in standard errors?
+			- TBD: sort out local buffering in standard errors?
 		- TBD: doc update
 		- TBD: consider other possible uses for **kwargs
 
