@@ -1519,10 +1519,7 @@ Version 3.87.0 Goals:
 			- DONE: test
 			- DONE: eliminate attempt_err()
 			- DONE: final test (including cup_of_tea)
-		- TBD: additional features?
-			- TBD: update validate() to move debug error indicators to pre rather than post			
-			- TBD: sort out local buffering in standard errors?
-		- TBD: doc update
+		- INPROC: doc update (kwargs, pros == order of ops & default, base errors still buffer directly)
 		- TBD: consider other possible uses for **kwargs
 
 	- TBD: git branch merge with master
@@ -1856,6 +1853,11 @@ Version 3.87.0 Goals:
 	- ANALYSIS: basic problem pattern = obj => obj_mach => obj_cond / obj_result => obj
 	- IDEA: pass/link obj to obj_con/obj_result innately (not explicitly) as part of call/assignment?
 	- TBD: update cleesh engine version build
+
+
+*** base error updates ***
+- TBD: sort out local buffering in standard errors?
+- TBD: update validate() to move debug error indicators to pre rather than post			
 
 
 *** Unit Testing ***

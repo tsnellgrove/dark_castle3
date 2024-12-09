@@ -361,6 +361,12 @@ UPDATE 2 - Attemptable Errors:
 					2. The base Condition class includes attrib and test for is_valid match
 				c. if not cmd_override, buffer cached error
 
+UPDATE 3 - Next Gen Errors:
+	Realizing that errors and machines have - and will likely always have - a healthy tension between them, and acknolwedging that right now I know both of these subsystems better than I have in ages, I went about implementing "5. Cunning Plans" above immediately even though it was pretty much the last think I wanted to work on.
+
+	TBD pass is_valid_reqd
+
+
 * Error Sub-System
 	- Overview:
 		Handling incorrect commands is an innate requirement of any text adventure. The error subsystem performs this duty.

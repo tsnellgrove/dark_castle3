@@ -16,7 +16,7 @@ def validate(gs, case, word_lst):
 	if case == 'error':
 		output = word_lst[0]
 		if gs.core.is_debug:
-			gs.io.buffer(f"[INTERP] {output}")
+			gs.io.buffer(f"[INTERP error] {output}")
 		else:
 			gs.io.buffer(f"{output}")
 		return False, False, ""
@@ -40,10 +40,10 @@ def validate(gs, case, word_lst):
 				if (cmd_err and not is_att):
 					gs.io.buffer(err_txt)
 			if cmd_err and gs.core.is_debug:
-				gs.io.buff_no_cr("[INVIS error postfix]")
+				gs.io.buff_no_cr(" [ERROR error postfix]")
 		except:
 			cmd_err = True
-			debug_str = f"[VAL] {traceback.format_exc()}\nDid you possibly forget to add the noun obj to the pickle in game_update() ?"
+			debug_str = f" [VALIDATE error] {traceback.format_exc()}\nDid you possibly forget to add the noun obj to the pickle in game_update() ?"
 			gs.io.buff_dbg(debug_str, gs)
 		return not cmd_err, is_att, err_txt
 	return True, None, ""
