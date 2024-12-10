@@ -1519,8 +1519,7 @@ Version 3.87.0 Goals:
 			- DONE: test
 			- DONE: eliminate attempt_err()
 			- DONE: final test (including cup_of_tea)
-		- INPROC: doc update (kwargs, pros == order of ops & default, base errors still buffer directly)
-		- TBD: consider other possible uses for **kwargs
+		- DONE: doc update (kwargs, pros == order of ops & default, base errors still buffer directly)
 
 	- TBD: git branch merge with master
 		- TBD: 'git checkout master' to switch focus to master
@@ -1718,6 +1717,8 @@ Version 3.87.0 Goals:
 	- TBD so that it no longer lives in just entrance and main_hall 
 	- TBD: and no longer triggers when biscuits not in hand
 	- IDEA:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+
+- TBD: consider other possible uses for **kwargs; google "when to use kwargs in python"
 
 *** minor fixes ***
 - TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
