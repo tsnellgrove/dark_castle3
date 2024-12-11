@@ -43,6 +43,12 @@ Feb 11, 2024
 - pseudo code for recursion: https://stackoverflow.com/questions/65604019/how-to-return-true-or-false-using-recursive-function
 
 
+Versioning:
+	- IDEA: start using std versioning format: x.y.z (build #) => api.features.bug-fix (internal)
+		- REF: https://softwareengineering.stackexchange.com/questions/368643/should-we-assign-version-numbers-for-internal-releases
+	- IDEA: version cleesh engine separately from each game version
+
+
 *** Var and Method Naming Conventions ***
 - general:
 	- use singular, not the pluaral form of words in variable names (e.g. use 'object_lst', not "objects_lst')
