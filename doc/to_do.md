@@ -1377,7 +1377,7 @@ Version 3.87.0 Goals:
 
 	- DONE: update cleesh engine version build (build 0012 [11/17/2024])
 
-- INPROC: next gen error sub-system (build 0013 [])
+- DONE: next gen error sub-system (build 0013 [12/11/2024])
 	- POV: I really don't want to do this now... but machs and errors have a natural tension...
 		- POV: and right now they are both in my head... 
 		- POV: so there will never be a better time to fix this...
@@ -1415,7 +1415,7 @@ Version 3.87.0 Goals:
 		- DONE: 'git push" to push updates to origin (GitHub)
 		- DONE: confirm new branch on GitHub is now ahead of master
 
-	- INPROC: deployment plan steps
+	- DONE: deployment plan steps
 		- DONE: update app_main() and validate()
 			- DONE: in app_main, is_interp_valid => is_valid
 			- DONE: from validate() return cmd_err, is_att, and err_txt
@@ -1536,11 +1536,7 @@ Version 3.87.0 Goals:
 	- TBD: update cleesh engine version build (build 0013 [])
 
 
-- TBD: eliminate hidden rooms [IN-VER]
-	- EXAMPE: s, e, & w of Entrance 
-	- TBD: Room class would need a custom_path_lst attribe
-	- TBD: custom_path_lst called from room.disp_cond()
-
+# *** start unused code for combo conditions ***
 
 *** Eliminated Code ***
 	def run_mach(self, gs):
@@ -1553,8 +1549,6 @@ Version 3.87.0 Goals:
 		temp_mach_state, cmd_override = result.result_exe(gs, self.mach_state)
 		self.mach_state = temp_mach_state
 		return cmd_override, result.name
-
-# *** start unused code for combo conditions ***
 
 # *** sample input = [['and', cond_1, cond_2]['or', cond_3, cond_4], cond_5] ***
 
@@ -1719,6 +1713,11 @@ Version 3.87.0 Goals:
 	- IDEA:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
 
 - TBD: consider other possible uses for **kwargs; google "when to use kwargs in python"
+
+- TBD: eliminate hidden rooms [IN-VER]
+	- EXAMPE: s, e, & w of Entrance 
+	- TBD: Room class would need a custom_path_lst attribe
+	- TBD: custom_path_lst called from room.disp_cond()
 
 *** minor fixes ***
 - TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
