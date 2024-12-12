@@ -68,68 +68,58 @@ Start Date: Dec 11, 2024
 End Date: 
 
 *** getting started ***
-- TBD: establish new versions and builds
-- TBD: review project list and decide on scope
+- DONE: establish new versions and builds
+- INPROC: review project list and decide on scope
 - TBD: organize scope by cleesh vs. dark castle work where possible
 
-*** misc ideas ***
+*** known dark castle tech issues ***
 - TBD: fix goblin attack on attempt to unlock portcullis
-- TBD: improve drink verb resevoir_lst error via undrinkable_dict error (custom error for each non-liquid)
-- TBD: update 'exit' to assume seat that player is contained in (i.e. to default to 'stand' if 'seat' not given)
-- TBD: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
 - TBD: fix hedgehog description after sword is returned (before goblin killed)
+	- TBD: sort out hedgehog description post biscuits if Burt leaves rm
 - TBD: fix eat_biscuits_warning 
 	- TBD so that it no longer lives in just entrance and main_hall 
 	- TBD: and no longer triggers when biscuits not in hand
 	- IDEA:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+- TBD: at end of story-driven updates, elim "##" error messages
+- TBD: consider how to surface 'not_attackable' txt in game_static_gbl
+- TBD: hedgehog will trade sword for silver_key (update show() and give() )
+	- IDEA: for hedgehog guarding sword:
+	- 1: on get key, disable guard
+	- 2: set hedgehog to trade sword for key
 
-- TBD: consider other possible uses for **kwargs; google "when to use kwargs in python"
 
+*** known dark castle narrative issues ***
+- TBD: change biscuit trademark to sword and key
+- TBD: Have lone biscuit in cardboard box
+- TBD: make biscuit yummy; Nana's famous recipie
+- TBD: eliminate plural nouns (e.g. biscuits => single biscuit)
+- TBD: on 'x goblin' descript, emphasize that Burt is peering from S side of room
+- IDEA: maybe the hedgehog should act differently once you get & wear the crown?
+
+
+*** known cleesh tech issues ***
+- TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
+- TBD: improve drink verb resevoir_lst error via undrinkable_dict error (custom error for each non-liquid)
+- TBD: update 'exit' to assume seat that player is contained in (i.e. to default to 'stand' if 'seat' not given)
+- TBD: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
 - TBD: eliminate hidden rooms [IN-VER]
 	- EXAMPE: s, e, & w of Entrance 
 	- TBD: Room class would need a custom_path_lst attribe
 	- TBD: custom_path_lst called from room.disp_cond()
-
-*** minor fixes ***
-- TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
-
-*** debug ideas ***
-- TBD: instantiate obj in hero inventory
-
-*** story-driven updates ***
-
-- TBD: at end of story-driven updates, elim "##" error messages
-
 - TBD: varry inventory intro text
 
+*** misc ideas ***
+- TBD: consider other possible uses for **kwargs; google "when to use kwargs in python"
+- TBD: instantiate obj in hero inventory
 - TBD: introduce verbose and brief commands
-
-- TBD: eliminate plural nouns (e.g. biscuits => single biscuit)
-
-- TBD: change biscuit trademark to sword and key
-- TBD: Have lone biscuit in cardboard box
-- TBD: make biscuit yummy; Nana's famous recipie
-
-- TBD: consider how to surface 'not_attackable' txt in game_static_gbl
-
-- IDEA: for hedgehog guarding sword:
-	- 1: on get key, disable guard
-	- 2: set hedgehog to trade sword for key
-
-- TBD: on 'x goblin' descript, emphasize that Burt is peering from S side of room
-
-- IDEA: maybe the hedgehog should act differently once you get & wear the crown?
-
-- TBD: sort out hedgehog description post biscuits if Burt leaves rm
-
-- TBD: hedgehog will trade sword for silver_key (update show() and give() )
-
 - TBD: find a good use for TravelResult !!
 
+
+
+
+*** review ***
 - TBD: fix case where sword is in Burt's inventory and tries to take in Entrance but royal_hedgehog stops him
-
 - TBD: sort out double print of score after win
-
 - TBD: case where player drops sword in same room as hedgehog after using it... 
 	- TBD: need to update description / situation; perhaps should give key and change to adoring description?
 
