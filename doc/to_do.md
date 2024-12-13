@@ -73,6 +73,8 @@ End Date:
 - TBD: organize scope by cleesh vs. dark castle work where possible
 
 *** known dark castle tech issues ***
+- TBD: hedgehog description should change when distracted by food (done?)
+- Fix Antechamber description sill mentions goblin after death (done?)
 - TBD: fix goblin attack on attempt to unlock portcullis
 - TBD: fix hedgehog description after sword is returned (before goblin killed)
 	- TBD: sort out hedgehog description post biscuits if Burt leaves rm
@@ -82,10 +84,13 @@ End Date:
 	- IDEA:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
 - TBD: at end of story-driven updates, elim "##" error messages
 - TBD: consider how to surface 'not_attackable' txt in game_static_gbl
-- TBD: hedgehog will trade sword for silver_key (update show() and give() )
-	- IDEA: for hedgehog guarding sword:
-	- 1: on get key, disable guard
-	- 2: set hedgehog to trade sword for key
+- TBD: fix case where sword is in Burt's inventory and tries to take in Entrance but royal_hedgehog stops him
+- TBD: case where player drops sword in same room as hedgehog after using it... 
+	- TBD: need to update description / situation; perhaps should give key and change to adoring description?
+	- TBD: hedgehog will trade sword for silver_key (update show() and give() )
+		- IDEA: for hedgehog guarding sword:
+		- 1: on get key, disable guard
+		- 2: set hedgehog to trade sword for key
 
 
 *** known dark castle narrative issues ***
@@ -95,6 +100,7 @@ End Date:
 - TBD: eliminate plural nouns (e.g. biscuits => single biscuit)
 - TBD: on 'x goblin' descript, emphasize that Burt is peering from S side of room
 - IDEA: maybe the hedgehog should act differently once you get & wear the crown?
+- Fix: 'officious' == offering unwanted advice => NOT hidebound or miro-managerial
 
 
 *** known cleesh tech issues ***
@@ -107,6 +113,9 @@ End Date:
 	- TBD: Room class would need a custom_path_lst attribe
 	- TBD: custom_path_lst called from room.disp_cond()
 - TBD: varry inventory intro text
+- TBD: sort out double print of score after win
+- search for 'Nana'-based errors
+
 
 *** misc ideas ***
 - TBD: consider other possible uses for **kwargs; google "when to use kwargs in python"
@@ -116,18 +125,7 @@ End Date:
 
 
 
-
 *** review ***
-- TBD: fix case where sword is in Burt's inventory and tries to take in Entrance but royal_hedgehog stops him
-- TBD: sort out double print of score after win
-- TBD: case where player drops sword in same room as hedgehog after using it... 
-	- TBD: need to update description / situation; perhaps should give key and change to adoring description?
-
-- TBD: hedgehog description should change when distracted by food
-- Fix Antechamber description sill mentions goblin after death
-- search for 'Nana'-based errors
-- Fix: 'officious' == offering unwanted advice => NOT hidebound or miro-managerial
-
 - maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
 - update 'eat biscuit' warning text... should ref baker job and Nana
 - update hedgehog description while eating to "The RH is ravenously eating"
