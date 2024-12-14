@@ -69,8 +69,9 @@ End Date:
 
 *** getting started ***
 - DONE: establish new versions and builds
-- INPROC: review project list and decide on scope
-- TBD: organize scope by cleesh vs. dark castle work where possible
+- DONE: review project list and decide on scope
+- DONE: organize scope by cleesh vs. dark castle work where possible
+- TBD: fine-grained to-do review and ordering
 
 *** known dark castle tech issues ***
 - TBD: hedgehog description should change when distracted by food (done?)
@@ -91,6 +92,9 @@ End Date:
 		- IDEA: for hedgehog guarding sword:
 		- 1: on get key, disable guard
 		- 2: set hedgehog to trade sword for key
+- TBD: update winning condition to reading scroll while sitting on throne?
+	- TBD: update win condition to must be sitting on throne
+- TBD: Stone Coffer => no-lid box ?
 
 
 *** known dark castle narrative issues ***
@@ -101,6 +105,29 @@ End Date:
 - TBD: on 'x goblin' descript, emphasize that Burt is peering from S side of room
 - IDEA: maybe the hedgehog should act differently once you get & wear the crown?
 - Fix: 'officious' == offering unwanted advice => NOT hidebound or miro-managerial
+- update 'eat biscuit' warning text... should ref baker job and Nana
+- update hedgehog description while eating to "The RH is ravenously eating" (done?)
+- TBD: fix Goblin description to no longer mention Control Panel
+- TBD: "what would your mothter say" error to "What would your Nana say?"
+- TBD: fix post-goblin-slain Antechamber description
+- TBD: Description updates:
+	- TBD: hedgehog updates
+		- describe as "stallwart"
+		- Have the hedgehog think burt is playing if he attacks with a non-weapon; starts making wax-on, wax-off motions with paws
+		- Upate water_bottle to Enchanter jug
+		- Update shiny_sword to Zork I elven sword
+	- TBD: Updatate the trademark on the stale_biscuits... 
+		- perhaps the biscuits say "Nana's" - or better yet, have a sword-and-key emblam on them?
+		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
+- TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
+- link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
+- RH: valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
+- shiny sword glows near enemies?
+
+
+*** dark castle exploration ***
+- TBD: play & note obvious nouns with no description; provide description (e.g. 'keyhole')
+- TBD: search on obj nouns and ensure always capitalized
 
 
 *** known cleesh tech issues ***
@@ -115,6 +142,8 @@ End Date:
 - TBD: varry inventory intro text
 - TBD: sort out double print of score after win
 - search for 'Nana'-based errors
+- maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
+- TBD: make path names (provided via 'look') examinable nouns ('path' => Winding Path)
 
 
 *** misc ideas ***
@@ -124,40 +153,9 @@ End Date:
 - TBD: find a good use for TravelResult !!
 
 
-
-*** review ***
-- maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
-- update 'eat biscuit' warning text... should ref baker job and Nana
-- update hedgehog description while eating to "The RH is ravenously eating"
-
-- TBD: fix Goblin description to no longer mention Control Panel
-- TBD: "what would your mothter say" error to "What would your Nana say?"
-- TBD: update winning condition to reading scroll while sitting on throne?
-- TBD: Stone Coffer => no-lid box ?
-
-- TBD: play & note obvious nouns with no description; provide description (e.g. 'keyhole')
-- TBD: search on obj nouns and ensure always capitalized
-- TBD: make path names (provided via 'l') examinable nouns ('path' => Winding Path)
-- TBD: fix post-goblin-slain Antechamber description
-- TBD: update win condition to must be sitting on throne
-
-- TBD: Description updates:
-	- TBD: hedgehog updates
-		- describe as "stallwart"
-		- Have the hedgehog think burt is playing if he attacks with a non-weapon; starts making wax-on, wax-off motions with paws
-		- Upate water_bottle to Enchanter jug
-		- Update shiny_sword to Zork I elven sword
-	- TBD: Updatate the trademark on the stale_biscuits... 
-		- perhaps the biscuits say "Nana's" - or better yet, have a sword-and-key emblam on them?
-		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
-
-- TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
-
-*-- STORY IDEAS --*
-- link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
-- valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
-- shiny sword glows near enemies?
+*** future story / puzzle ideas ***
 - meet the wizard from Enchanter who is searching for a scroll
+- puzzle based on 4 weights to weigh 40 lbs math puzzle
 
 ############################
 ### CLEESH VERSION 3.8.1 / DARK CASTLE VERSION 3.2.0 END ###
