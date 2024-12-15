@@ -56,8 +56,10 @@ To Do List - Dark Castle v3
 - TBD: test harness
 - TBD: db back end (sqlalchemy)
 - TBD: web site
+- TBD: ECS
 - TBD: CI/CD
 - TBD: remaining foundation features: light, food, drink, sleep, etc
+- TBD: get test player feedback
 - TBD: expand adventure!
 
 ############################
@@ -71,20 +73,27 @@ End Date:
 - DONE: establish new versions and builds
 - DONE: review project list and decide on scope
 - DONE: organize scope by cleesh vs. dark castle work where possible
-- TBD: fine-grained to-do review and ordering
+- DONE: fine-grained to-do review and ordering for DC tech issues
 
 *** known dark castle tech issues ***
-- TBD: hedgehog description should change when distracted by food (done?)
-- Fix Antechamber description sill mentions goblin after death (done?)
-- TBD: fix goblin attack on attempt to unlock portcullis
+- DONE: hedgehog description should change when distracted by food (ALREADY DONE)
+- INPROC: use case = burt leaves room before RH finishes eating => description update never triggered
+	- PROB: hedgehog_done_eating_mach is in RH; never triggers if RH out of scope at timer end
+	- IDEA: need a universal_invis_<holder?> that is added to room.get_mach_lst() scope
+	- IDEA: tempted to make this a room... but want it to be universal across games...
+	- IDEA: maybe a list in gs.core ? "universal_invis_lst" = invist obj always in scope ?
+	- TBD: git branch story_update_branch
+	- TBD: add universal_invis_lst attrib to gs.core
+	- TBD: ref universal_invis_lst in room.get_mach_lst()
+	- TBD: add hedgehog_done_eating_mach to universal_invis_lst
+	- TBD: test
+- Fix Antechamber description still mentions goblin after death (done?)
 - TBD: fix hedgehog description after sword is returned (before goblin killed)
 	- TBD: sort out hedgehog description post biscuits if Burt leaves rm
 - TBD: fix eat_biscuits_warning 
 	- TBD so that it no longer lives in just entrance and main_hall 
 	- TBD: and no longer triggers when biscuits not in hand
 	- IDEA:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
-- TBD: at end of story-driven updates, elim "##" error messages
-- TBD: consider how to surface 'not_attackable' txt in game_static_gbl
 - TBD: fix case where sword is in Burt's inventory and tries to take in Entrance but royal_hedgehog stops him
 - TBD: case where player drops sword in same room as hedgehog after using it... 
 	- TBD: need to update description / situation; perhaps should give key and change to adoring description?
@@ -94,6 +103,8 @@ End Date:
 		- 2: set hedgehog to trade sword for key
 - TBD: update winning condition to reading scroll while sitting on throne?
 	- TBD: update win condition to must be sitting on throne
+- TBD: fix goblin attack on attempt to unlock portcullis
+- TBD: consider how to surface 'not_attackable' txt in game_static_gbl
 - TBD: Stone Coffer => no-lid box ?
 
 
@@ -151,6 +162,7 @@ End Date:
 - TBD: instantiate obj in hero inventory
 - TBD: introduce verbose and brief commands
 - TBD: find a good use for TravelResult !!
+- TBD: at end of story-driven updates, elim "##" error messages in error()
 
 
 *** future story / puzzle ideas ***
