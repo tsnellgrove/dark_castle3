@@ -105,6 +105,7 @@ End Date:
 	- DONE: test
 	- DONE: clean-up room(), game_update()
 	- TBD: check for any other auto-actions that should be in uni_invis_lst (could I have just added to burt?)
+	- TBD: update mach doc with univ_invis_lst
 - Fix Antechamber description still mentions goblin after death (done?)
 - TBD: fix hedgehog description after sword is returned (before goblin killed)
 	- TBD: sort out hedgehog description post biscuits if Burt leaves rm
