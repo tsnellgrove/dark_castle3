@@ -97,11 +97,14 @@ End Date:
 	- IDEA: need a universal_invis_<holder?> that is added to room.get_mach_lst() scope
 	- IDEA: tempted to make this a room... but want it to be universal across games...
 	- IDEA: maybe a list in gs.core ? "universal_invis_lst" = invist obj always in scope ?
-	- INPROC: git branch story_update_feature
-	- DONE: add universal_invis_lst attrib to gs.core
-	- TBD: ref universal_invis_lst in room.get_mach_lst()
-	- TBD: add hedgehog_done_eating_mach to universal_invis_lst
-	- TBD: test
+	- DONE: git branch story_update_feature
+	- DONE: add univ_invis_lst attrib to gs.core
+	- DONE: update univ_invis_lst attrib in game_update() (DC & cup_of_tea)
+	- DONE: ref univ_invis_lst in room.get_mach_lst() (use copy() to create independent copy)
+	- DONE: add hedgehog_done_eating_mach to uni_invis_lst in game_update()
+	- DONE: test
+	- DONE: clean-up room(), game_update()
+	- TBD: check for any other auto-actions that should be in uni_invis_lst (could I have just added to burt?)
 - Fix Antechamber description still mentions goblin after death (done?)
 - TBD: fix hedgehog description after sword is returned (before goblin killed)
 	- TBD: sort out hedgehog description post biscuits if Burt leaves rm

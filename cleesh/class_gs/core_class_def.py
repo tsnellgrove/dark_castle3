@@ -8,13 +8,14 @@ from cleesh.class_std.invisible_class_def import Invisible
 
 ### classes ###
 class Core(Invisible):
-    def __init__(self, name, hero, move_count, is_debug, str_to_obj_dict, has_session_vars):
+    def __init__(self, name, hero, move_count, is_debug, str_to_obj_dict, has_session_vars, univ_invis_lst):
         super().__init__(name)
         self._hero = hero # the Creature class object that is the hero of the game
         self._move_count = move_count # tracks the number of valid moves made by the player
         self._is_debug = is_debug # a boolean that defines whether the game is in debug mode (default = False)
         self._str_to_obj_dict = str_to_obj_dict # dict that enables look-up of game obj via name str keys
         self._has_session_vars = has_session_vars # bool indicating whether session vars needed at start_up
+        self._univ_invis_lst = univ_invis_lst # list of invisible obj always in scope; used for machines
         """ Core class inherits from Invisible. It holds a small number of essential attributes. 
         """
 
@@ -48,6 +49,10 @@ class Core(Invisible):
     @property
     def has_session_vars(self):
         return self._has_session_vars
+
+    @property
+    def univ_invis_lst(self):
+        return self._univ_invis_lst
 
 	### methods ###
     def move_inc(self):

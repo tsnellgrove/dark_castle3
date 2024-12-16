@@ -304,7 +304,7 @@ guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None,
 		None, [], [silver_key], [red_bandana], [fierce_teeth, loyalty],
-		[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_done_eating_mach, hedgehog_distracted_mach],
+		[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_distracted_mach],
 		{
 			shiny_sword : {'accept' : True, 'give' : silver_key},
 			stale_biscuits : {'accept' : True, 'give' : None}
@@ -357,7 +357,8 @@ core = Core(
         0, # move_count
         False, # is_debug
 		{}, # str_to_obj_dict
-		True # has_session_vars
+		True, # has_session_vars
+		[hedgehog_done_eating_mach] # univ_invis_lst
 		)
 
 map = Map(

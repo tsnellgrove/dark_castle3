@@ -119,7 +119,8 @@ core = Core(
         0, # move_count
         False, # is_debug
 		{}, # str_to_obj_dict
-		False # has_session_vars
+		False, # has_session_vars
+		[] # univ_invis_lst
 		)
 
 map = Map(

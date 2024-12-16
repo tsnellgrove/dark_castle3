@@ -105,7 +105,7 @@ class Room(ViewOnly):
 	def get_mach_lst(self, gs):
 		""" Returns the list of Machine objects contained in the method-calling object. In Room, provides the Machine object scope.
 		"""
-		mach_lst = []
+		mach_lst = gs.core.univ_invis_lst.copy()
 		for obj in self.get_vis_contain_lst(gs):
 			if (obj.is_switch()) or (obj.is_mach() and obj.is_enabled): # in future, may add is_enabled attrib to Switch class
 				mach_lst.append(obj)
