@@ -75,20 +75,20 @@ End Date:
 - DONE: organize scope by cleesh vs. dark castle work where possible
 - DONE: fine-grained to-do review and ordering for DC tech issues
 
-	- TBD: create new story_update_feature git branch
-		- TBD: 'git branch' to confirm *master
-		- TBD: 'git branch story_update_feature' to create new branch
-		- TBD: 'git branch' to confirm new branch exists but that master is still checked out
-		- TBD: 'git checkout story_update_feature' to switch focus to branching_test branch
+	- DONE: create new story_update_feature git branch
+		- DONE: 'git branch' to confirm *master
+		- DONE: 'git branch story_update_feature' to create new branch
+		- DONE: 'git branch' to confirm new branch exists but that master is still checked out
+		- DONE: 'git checkout story_update_feature' to switch focus to branching_test branch
 		- TBD: 'git branch' to confirm new branch is now in focus
-		- TBD: Publish Branch via VS Code button
-		- TBD: confirm new branch on GitHub
-		- TBD: update doc TBDs to DONEs
-		- TBD: <CMD><OPT>S (to save all files)
-		- TBD: 'git add .' to add files to be committed
-		- TBD: 'git commit -m "doc updates"
-		- TBD: 'git push" to push updates to origin (GitHub)
-		- TBD: confirm new branch on GitHub is now ahead of master
+		- DONE: Publish Branch via VS Code button
+		- DONE: confirm new branch on GitHub
+		- DONE: update doc TBDs to DONEs
+		- DONE: <CMD><OPT>S (to save all files)
+		- DONE: 'git add .' to add files to be committed
+		- DONE: 'git commit -m "doc updates"
+		- DONE: 'git push" to push updates to origin (GitHub)
+		- DONE: confirm new branch on GitHub is now ahead of master
 
 *** known dark castle tech issues ***
 - DONE: hedgehog description should change when distracted by food (ALREADY DONE)
@@ -98,7 +98,7 @@ End Date:
 	- IDEA: tempted to make this a room... but want it to be universal across games...
 	- IDEA: maybe a list in gs.core ? "universal_invis_lst" = invist obj always in scope ?
 	- INPROC: git branch story_update_feature
-	- TBD: add universal_invis_lst attrib to gs.core
+	- DONE: add universal_invis_lst attrib to gs.core
 	- TBD: ref universal_invis_lst in room.get_mach_lst()
 	- TBD: add hedgehog_done_eating_mach to universal_invis_lst
 	- TBD: test
