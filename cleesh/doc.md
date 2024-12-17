@@ -1197,6 +1197,16 @@ The Machine has done its job! score() and end() will be called next by app_main(
 Naming Convention:
 All machines of class InvisMach have names ending in "_mach". For machines of class ViewOnlyMach or ItemMach this convention colides with the interpreter-based convention of object name = 'noun_verb'. The interpreter-based convention wins here and the '_mach' postfix is dropped for these machines (e.g. control_panel).
 
+Where do Invisible Machines Live:
+A machine will only run if it is in scope as determined by room.get_mach_lst(). get_mach_lst() identifies ViewOnly, Item, and Switch class machines in a room based on their identity methoed (is_mach() or is_switch() == True) - but where does get_mach_lst() look for invisible machines?
+
+Many machines are associate with a given room (i.e. they are associated with a feature of that room and should never run outside that room; e.g. entrance_south_warn in Entrance). For these cases, each Room has a room.invis_lst attribute to hold them.
+
+Creatures are often the focus of a machine and the machine should never run except in their presence (e.g. goblin_attack_mach). For this reason, Creature also has an invis_lst attribute.
+
+However, timers, and machines triggered by timers, present a special problem. Once started, these should keep running even if our Hero walks out of the room or away from the creature they are associated with (e.g. if Burt feeds the royal_hedgehog but then walks south, the RH should still keep eating and its description should still be updated). My original solution for this was to just put all "universal" machines in Burt's invis_lst (since whereever we are, Burt is there!). But over time this began to feel too "clever" and not very intuitive. The machines attached to a creature should, ideally, be associated with it. So, during the Cleesh 3.8.1 story / bug-fix update I created a gs.core.univ_invis_lst attribute specifically to hold machines that should always be in scope (e.g. hedgehog_eats_timer, hedgehog_done_eating_mach)
+
+
 Closing Thoughts:
 I'm conflicted about Machines. On the plus side, they work and they meet all my goals - they are in-game, transparent, scalable, and reusable. But they are also *vastly* more work and code and, in many ways, complexity than a simple series if-then-elses. Is this good coding or am I making mountains out of molehills by clinging over-tightly to idealogical purity? I'm really not sure... but I've learned a lot and that's the ultimate goal - so I'm going to keep using them. I also suspect that the "goodness" of the Machine structure has everything to do with the scale of Dark Castle. For a four-room dungeon, MOdular Machines are vastly over-engineered. But for a larger dungeon - or a construction set - perhaps Machines (as I've dsigned them) make sense. Time will tell.
 

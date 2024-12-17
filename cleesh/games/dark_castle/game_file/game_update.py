@@ -318,7 +318,7 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 
 burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 		None, [], [rusty_key, cheese_wedge, stale_biscuits, earthen_jug], [], [fist, backpack, conscience, brass_lantern],
-		[hedgehog_eats_timer],
+		[],
 		{},
 		True,
 		{
@@ -358,7 +358,7 @@ core = Core(
         False, # is_debug
 		{}, # str_to_obj_dict
 		True, # has_session_vars
-		[hedgehog_done_eating_mach] # univ_invis_lst
+		[hedgehog_eats_timer, hedgehog_done_eating_mach] # univ_invis_lst
 		)
 
 map = Map(

@@ -92,7 +92,7 @@ End Date:
 
 *** known dark castle tech issues ***
 - DONE: hedgehog description should change when distracted by food (ALREADY DONE)
-- INPROC: use case = burt leaves room before RH finishes eating => description update never triggered
+- DONE: use case = burt leaves room before RH finishes eating => description update never triggered
 	- PROB: hedgehog_done_eating_mach is in RH; never triggers if RH out of scope at timer end
 	- IDEA: need a universal_invis_<holder?> that is added to room.get_mach_lst() scope
 	- IDEA: tempted to make this a room... but want it to be universal across games...
@@ -104,8 +104,10 @@ End Date:
 	- DONE: add hedgehog_done_eating_mach to uni_invis_lst in game_update()
 	- DONE: test
 	- DONE: clean-up room(), game_update()
-	- TBD: check for any other auto-actions that should be in uni_invis_lst (could I have just added to burt?)
-	- TBD: update mach doc with univ_invis_lst
+	- DONE: check for any other auto-actions that should be in univ_invis_lst (could I have just added to burt?)
+		- DONE: moved hedgehog_eats_timer to univ_invis_lst
+		- DONE: test
+	- DONE: update mach doc with univ_invis_lst
 - Fix Antechamber description still mentions goblin after death (done?)
 - TBD: fix hedgehog description after sword is returned (before goblin killed)
 	- TBD: sort out hedgehog description post biscuits if Burt leaves rm
