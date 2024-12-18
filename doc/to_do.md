@@ -56,7 +56,7 @@ To Do List - Dark Castle v3
 - TBD: test harness
 - TBD: db back end (sqlalchemy)
 - TBD: web site
-- TBD: ECS
+- TBD: ECS (UI & App tasks w/ DynamoDB back end)
 - TBD: CI/CD
 - TBD: remaining foundation features: light, food, drink, sleep, etc
 - TBD: get test player feedback
@@ -92,7 +92,8 @@ End Date:
 
 *** known dark castle tech issues ***
 - DONE: hedgehog description should change when distracted by food (ALREADY DONE)
-- DONE: use case = burt leaves room before RH finishes eating => description update never triggered
+- DONE: sort out hedgehog description post biscuits if Burt leaves rm
+	- IDEA: burt leaves room before RH finishes eating => description update never triggered
 	- PROB: hedgehog_done_eating_mach is in RH; never triggers if RH out of scope at timer end
 	- IDEA: need a universal_invis_<holder?> that is added to room.get_mach_lst() scope
 	- IDEA: tempted to make this a room... but want it to be universal across games...
@@ -108,9 +109,8 @@ End Date:
 		- DONE: moved hedgehog_eats_timer to univ_invis_lst
 		- DONE: test
 	- DONE: update mach doc with univ_invis_lst
-- Fix Antechamber description still mentions goblin after death (done?)
+- DONE: fix Antechamber description still mentions goblin after death (ALREADY DONE)
 - TBD: fix hedgehog description after sword is returned (before goblin killed)
-	- TBD: sort out hedgehog description post biscuits if Burt leaves rm
 - TBD: fix eat_biscuits_warning 
 	- TBD so that it no longer lives in just entrance and main_hall 
 	- TBD: and no longer triggers when biscuits not in hand
