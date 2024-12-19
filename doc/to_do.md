@@ -110,13 +110,14 @@ End Date:
 		- DONE: test
 	- DONE: update mach doc with univ_invis_lst
 - DONE: fix Antechamber description still mentions goblin after death (ALREADY DONE)
-- TBD: fix hedgehog description after sword is returned (before goblin killed)
-- TBD: fix eat_biscuits_warning 
-	- TBD so that it no longer lives in just entrance and main_hall 
-	- TBD: and no longer triggers when biscuits not in hand
-	- IDEA:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+- DONE: fix hedgehog description after sword is returned (before goblin killed)
+	- FINDING: RH response is fins (thankfull and gives key); but need to enable key-for-sword swap
+- DONE: fix eat_biscuits_warning 
+	- DONE: so that it no longer lives in just entrance and main_hall 
+	- DONE: and no longer triggers when biscuits not in hand
+	- DONE:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
 - TBD: fix case where sword is in Burt's inventory and tries to take in Entrance but royal_hedgehog stops him
-- TBD: case where player drops sword in same room as hedgehog after using it... 
+	- TBD: case where player drops sword in same room as hedgehog after using it... 
 	- TBD: need to update description / situation; perhaps should give key and change to adoring description?
 	- TBD: hedgehog will trade sword for silver_key (update show() and give() )
 		- IDEA: for hedgehog guarding sword:

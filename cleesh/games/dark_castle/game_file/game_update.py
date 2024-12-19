@@ -329,11 +329,11 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-		[burt], [entrance_moat_mach, entrance_south_warn, eat_biscuits_warning])
+		[burt], [entrance_moat_mach, entrance_south_warn])
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
-		[shiny_sword, royal_hedgehog, wooden_shelf], [eat_biscuits_warning])
+		[shiny_sword, royal_hedgehog, wooden_shelf], [])
 		# note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
 
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
@@ -358,7 +358,7 @@ core = Core(
         False, # is_debug
 		{}, # str_to_obj_dict
 		True, # has_session_vars
-		[hedgehog_eats_timer, hedgehog_done_eating_mach] # univ_invis_lst
+		[eat_biscuits_warning, hedgehog_eats_timer, hedgehog_done_eating_mach] # univ_invis_lst
 		)
 
 map = Map(
