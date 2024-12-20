@@ -116,8 +116,8 @@ End Date:
 	- DONE: so that it no longer lives in just entrance and main_hall 
 	- DONE: and no longer triggers when biscuits not in hand
 	- DONE:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
-- TBD: fix case where sword is in Burt's inventory and tries to take in Entrance but royal_hedgehog stops him
-	- TBD: case where player drops sword in same room as hedgehog after using it... 
+- DONE: fix case where sword is in Burt's inventory and tries to take in Entrance but royal_hedgehog stops him
+- TBD: case where player drops sword in same room as hedgehog after using it... 
 	- TBD: need to update description / situation; perhaps should give key and change to adoring description?
 	- TBD: hedgehog will trade sword for silver_key (update show() and give() )
 		- IDEA: for hedgehog guarding sword:
