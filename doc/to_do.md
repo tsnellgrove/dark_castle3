@@ -117,41 +117,38 @@ End Date:
 	- DONE: and no longer triggers when biscuits not in hand
 	- DONE:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
 - DONE: fix case where sword is in Burt's inventory and tries to take in Entrance but royal_hedgehog stops him
-- TBD: case where player drops sword in same room as hedgehog after using it... 
-	- TBD: need to update description / situation; perhaps should give key and change to adoring description?
-	- TBD: hedgehog will trade sword for silver_key (update show() and give() )
-		- IDEA: for hedgehog guarding sword:
-		- 1: on get key, disable guard
-		- 2: set hedgehog to trade sword for key
+- DONE: enable player to give silver_key to RH in return for shiny_sword
+- TBD: update show silver_key for RH
+- TBD: address case where player drops sword in same room as hedgehog after using it; on get key, disable guard
+- TBD: make stale_biscuits singluar (just one biscuits in a paper bag)
+	- TBD: change biscuit trademark to sword and key
+	- TBD: Have lone biscuit in cardboard box
+	- TBD: make biscuit yummy; Nana's famous recipie
+	- TBD: eliminate plural nouns (e.g. biscuits => single biscuit)
+	- TBD: Updatate the trademark on the stale_biscuits... 
+		- perhaps the biscuits say "Nana's" - or better yet, have a sword-and-key emblam on them?
+		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
+	- TBD: update 'eat biscuit' warning text... should ref baker job and Nana
 - TBD: update winning condition to reading scroll while sitting on throne?
 	- TBD: update win condition to must be sitting on throne
 - TBD: fix goblin attack on attempt to unlock portcullis
 - TBD: consider how to surface 'not_attackable' txt in game_static_gbl
 - TBD: Stone Coffer => no-lid box ?
 
-
 *** known dark castle narrative issues ***
-- TBD: change biscuit trademark to sword and key
-- TBD: Have lone biscuit in cardboard box
-- TBD: make biscuit yummy; Nana's famous recipie
-- TBD: eliminate plural nouns (e.g. biscuits => single biscuit)
 - TBD: on 'x goblin' descript, emphasize that Burt is peering from S side of room
 - IDEA: maybe the hedgehog should act differently once you get & wear the crown?
 - Fix: 'officious' == offering unwanted advice => NOT hidebound or miro-managerial
-- update 'eat biscuit' warning text... should ref baker job and Nana
 - update hedgehog description while eating to "The RH is ravenously eating" (done?)
 - TBD: fix Goblin description to no longer mention Control Panel
 - TBD: "what would your mothter say" error to "What would your Nana say?"
 - TBD: fix post-goblin-slain Antechamber description
 - TBD: Description updates:
 	- TBD: hedgehog updates
-		- describe as "stallwart"
+		- describe as "stalwart" [ALREADY DONE]
 		- Have the hedgehog think burt is playing if he attacks with a non-weapon; starts making wax-on, wax-off motions with paws
 		- Upate water_bottle to Enchanter jug
 		- Update shiny_sword to Zork I elven sword
-	- TBD: Updatate the trademark on the stale_biscuits... 
-		- perhaps the biscuits say "Nana's" - or better yet, have a sword-and-key emblam on them?
-		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
 - TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
 - link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
 - RH: valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
@@ -188,6 +185,7 @@ End Date:
 
 
 *** future story / puzzle ideas ***
+- at some point, perhaps Burt must knight the loyal hedgehog ?
 - meet the wizard from Enchanter who is searching for a scroll
 - puzzle based on 4 weights to weigh 40 lbs math puzzle
 

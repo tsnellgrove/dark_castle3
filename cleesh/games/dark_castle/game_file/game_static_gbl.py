@@ -266,10 +266,12 @@ game_static_dict = {
 	'burt_give_guard_goblin_shiny_sword' : "The Guard Goblin blanches and backs away, terrified at the thought of even touching the Shiny Sword.",
 	'burt_give_royal_hedgehog_stale_biscuits' : "With a yelp of grateful delight the starving hedgehog leaps upon the Stale Biscuits and begins to devour them.",
 	'burt_give_royal_hedgehog_shiny_sword' : "The hedgehog beams at you with gratitude and Loyalty for returning the Shiny Sword. From a hidden fold of its fur it takes out a Silver Key and, bowing, places it in your hand.",
+	'burt_give_royal_hedgehog_silver_key' : "The Royal Hedgehog accetps the key, drops to one knee to proffer the Shiny Sword to you, hilt-first. And then, once you accept it, rises and salutes smartly.",
 
-	### description resulting from give ###
+	### creature description updates resulting from give ###
 	'burt_give_royal_hedgehog_stale_biscuits_descript' : "The hedgehog is eating ravenously.",
 	'burt_give_royal_hedgehog_shiny_sword_descript' : "This hedgehog is on top of the world! It has recently devoured a meal of Stale Biscuits (a rare delicacy among hedgehogs) and now has it's favorite shiny object back. It looks upon you with gratitude and loyal devotion. It sees within you a nobility, compassion, and destiny beyond anything you've hitherto imagined possessing.",
+    'burt_give_royal_hedgehog_silver_key_descript' : "Despite its rag-tag appearnace, the Royal Hedgehog looks upon you a gaze of stalwart devotion. It stands ready to serve in your quest to free the castle from drakness!",
 
 	### attack descriptions ###
 	'royal_hedgehog_weapon_burt_*' : "The Royal Hedgehog squeeks in dismay as it dodges your malevolent agression. It's loyal gaze changes to one of bewilderment and hearbreak. 'Et tu Burtus?' Even as the loyal little creature gives way, you know in your heart that you will come to regret this unkingly deed.",

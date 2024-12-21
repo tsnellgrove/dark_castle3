@@ -307,6 +307,7 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 		[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_distracted_mach],
 		{
 			shiny_sword : {'accept' : True, 'give' : silver_key},
+			silver_key : {'accept' : True, 'give' : shiny_sword},
 			stale_biscuits : {'accept' : True, 'give' : None}
 		},
 		True,
