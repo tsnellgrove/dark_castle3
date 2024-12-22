@@ -118,19 +118,15 @@ End Date:
 	- DONE:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
 - DONE: fix case where sword is in Burt's inventory and tries to take in Entrance but royal_hedgehog stops him
 - DONE: enable player to give silver_key to RH in return for shiny_sword
-- TBD: update show silver_key for RH
+- DONE: update show silver_key for RH
 - TBD: address case where player drops sword in same room as hedgehog after using it; on get key, disable guard
-- TBD: make stale_biscuits singluar (just one biscuits in a paper bag)
-	- TBD: change biscuit trademark to sword and key
-	- TBD: Have lone biscuit in cardboard box
+- TBD: stale_biscuits => biscuit
+	- TBD: make stale_biscuits singluar (just one biscuits in a paper bag)
+	- TBD: change biscuit trademark to sword and key emblem
 	- TBD: make biscuit yummy; Nana's famous recipie
-	- TBD: eliminate plural nouns (e.g. biscuits => single biscuit)
-	- TBD: Updatate the trademark on the stale_biscuits... 
-		- perhaps the biscuits say "Nana's" - or better yet, have a sword-and-key emblam on them?
-		- backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
+	- TBD: backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
 	- TBD: update 'eat biscuit' warning text... should ref baker job and Nana
 - TBD: update winning condition to reading scroll while sitting on throne?
-	- TBD: update win condition to must be sitting on throne
 - TBD: fix goblin attack on attempt to unlock portcullis
 - TBD: consider how to surface 'not_attackable' txt in game_static_gbl
 - TBD: Stone Coffer => no-lid box ?

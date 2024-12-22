@@ -367,7 +367,7 @@ class Creature(ViewOnly):
 
 	# *** verb methods ***
 	def show(self, obj, gs, mode=None):
-		""" Extends Writing.show(). Shows an item in your hand to another creature.
+		""" Shows an item in your hand to another creature.
 		"""
 		if mode is None:
 			mode = 'std'

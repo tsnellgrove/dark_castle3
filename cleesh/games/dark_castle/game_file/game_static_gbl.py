@@ -259,6 +259,7 @@ game_static_dict = {
 	'burt_show_guard_goblin_stale_biscuits' : "The Guard Goblin scowels at the Stale Biscuits, wrinkles its nose, and then mutters something about 'gauche and impertinent' under its breath. You get the distinct impression that the officious Guard Goblin doesn't think much of biscuits - or of biscuit bakers either for that matter.",
 	'burt_show_royal_hedgehog_stale_biscuits' : "The Royal Hedgehog's eyes light up with excitement! Apparently, Stale Biscuits are a favorite hedgehog delacacy. The Royal Hedgehog gives you a look half way between hopeful and pleading.",
 	'burt_show_royal_hedgehog_shiny_sword' : "The Royal Hedgehog gives a small squeek of excitement and a yearning look - clearly hoping that you will return its long-time favorite object.",
+    'burt_show_royal_hedgehog_silver_key' : "The Royal Hedgehog gives a vigorous nod of recognition and looks at you expectantly.",
 
 	### give descriptions ###
 	'burt_give_guard_goblin_default' : "The Guard Goblin pockets the item and mutters something about castle regulations that require the confiscation articles of dubious provenance from ill-favored vagrants.",
@@ -266,7 +267,7 @@ game_static_dict = {
 	'burt_give_guard_goblin_shiny_sword' : "The Guard Goblin blanches and backs away, terrified at the thought of even touching the Shiny Sword.",
 	'burt_give_royal_hedgehog_stale_biscuits' : "With a yelp of grateful delight the starving hedgehog leaps upon the Stale Biscuits and begins to devour them.",
 	'burt_give_royal_hedgehog_shiny_sword' : "The hedgehog beams at you with gratitude and Loyalty for returning the Shiny Sword. From a hidden fold of its fur it takes out a Silver Key and, bowing, places it in your hand.",
-	'burt_give_royal_hedgehog_silver_key' : "The Royal Hedgehog accetps the key, drops to one knee to proffer the Shiny Sword to you, hilt-first. And then, once you accept it, rises and salutes smartly.",
+	'burt_give_royal_hedgehog_silver_key' : "The Royal Hedgehog accepts the key, drops to one knee to proffer the Shiny Sword to you, hilt-first. And then, once you accept it, rises and salutes smartly.",
 
 	### creature description updates resulting from give ###
 	'burt_give_royal_hedgehog_stale_biscuits_descript' : "The hedgehog is eating ravenously.",
