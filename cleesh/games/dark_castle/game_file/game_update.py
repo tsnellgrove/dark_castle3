@@ -19,9 +19,10 @@ from cleesh.class_std.interactive_class_def import ContainerFixedSimple, Contain
 from cleesh.class_std.interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
 from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond, ObjInRmCond, ObjInWorldCond, 
-		ItemInHandCond, WeaponInHandCond, MachStateCond, TimerActiveCond, SwitchStateCond, LeverArrayCond)
-from cleesh.class_mach.result_class_def import (BaseResult, EndResult, ChgDescriptResult, GiveItemResult, 
-		TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, AttackHeroResult, 
+		ItemInHandCond, ObjInInvCond, WeaponInHandCond, MachStateCond, TimerActiveCond, 
+		SwitchStateCond, LeverArrayCond)
+from cleesh.class_mach.result_class_def import (BaseResult, DisableMach, EndResult, ChgDescriptResult, 
+		GiveItemResult, TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, AttackHeroResult, 
 		OpenableToggleResult, CreatureTravelResult)
 from cleesh.class_mach.mach_class_def import (Timer, Warning, InvisAutoMach, InvisTrigMach, ItemTrigMach,
 		InvisSwitchMach, ContainerFixedSimpleSwitchMach
@@ -146,7 +147,8 @@ true_cond_valid_not_reqd = TrueCond('true_cond', is_valid_reqd = False)
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', stale_biscuits, 'royal_hedgehog_temp', True)
 axe_not_in_goblin_hand_cond = ItemInHandCond('axe_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
-no_weap_in_hand_cond = WeaponInHandCond('hand_no_weap_cond', 'burt_temp', False)
+silver_key_given_cond = ObjInInvCond('silver_key_given_cond', silver_key, 'royal_hedgehog_temp', False)
+no_weap_in_hand_cond = WeaponInHandCond('silver_key_given', 'burt_temp', False)
 sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_hall_temp', shiny_sword, True)
 sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_hall_temp', shiny_sword, False)
 not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
@@ -188,7 +190,8 @@ hedgehog_eats_result2 = RemoveObjResult('hedgehog_eats_result2', False, None, Fa
 goblin_attacks_result = AttackHeroResult('goblin_attacks_result', False, None, True, 'guard_goblin_temp', grimy_axe)
 hedgehog_attacks_result = AttackHeroResult('hedgehog_attacks_result', False, None, True, 'royal_hedgehog_temp', fierce_teeth)
 toggle_portcullis_result = OpenableToggleResult('toggle_portcullis_result', False, None, False, iron_portcullis)
-
+disable_rh_guard_result1 = DisableMach('disable_rh_guard_result1', False, None, False, 'hedgehog_guard_mach_temp')
+disable_rh_guard_result2 = DisableMach('disable_rh_guard_result2', False, None, False, 'disable_rh_guard_mach_temp')
 
 
 # *** machines ***
@@ -208,6 +211,11 @@ re_arm_goblin_mach = InvisAutoMach('re_arm_goblin_mach', None,
 		[goblin_take_axe_result])
 		# mach_state == None
 
+disable_rh_guard_mach = InvisAutoMach('disable_rh_guard_mach', None, 
+		'auto_act', 'royal_hedgehog_temp', True, 
+		[silver_key_given_cond], 
+		[[disable_rh_guard_result1, disable_rh_guard_result2]])
+		# mach_state == None
 
 ## TrigMach ##
 ## for pre_act_cmd or post_act_cmd: trig_vals_lst = list-of-list of word_lst values that will trigger mach
@@ -304,7 +312,10 @@ guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 
 royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungry_hedgehog', None,
 		None, [], [silver_key], [red_bandana], [fierce_teeth, loyalty],
-		[attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_distracted_mach],
+		[
+			attack_hedgehog_warning, hedgehog_eats_mach, hedgehog_guard_mach, hedgehog_distracted_mach, 
+   			disable_rh_guard_mach
+		],
 		{
 			shiny_sword : {'accept' : True, 'give' : silver_key},
 			silver_key : {'accept' : True, 'give' : shiny_sword},
@@ -411,6 +422,7 @@ not_in_throne_room_cond.obj = burt
 hedgehog_not_in_world_cond.obj = royal_hedgehog
 biscuits_in_hedgehog_hand_cond.creature_obj = royal_hedgehog
 axe_not_in_goblin_hand_cond.creature_obj = guard_goblin
+silver_key_given_cond.creature_obj = royal_hedgehog
 no_weap_in_hand_cond.creature_obj = burt
 goblin_in_world_cond.obj = guard_goblin
 sword_not_on_floor.match_room = main_hall
@@ -429,6 +441,7 @@ re_arm_goblin_mach.alert_anchor = guard_goblin
 kinging_scroll.alert_anchor = kinging_scroll
 entrance_south_warn.alert_anchor = entrance
 attack_hedgehog_warning.alert_anchor = royal_hedgehog
+disable_rh_guard_mach.alert_anchor = royal_hedgehog
 
 fed_hedgehog_keeps_sword_result.obj = royal_hedgehog
 fed_hedgehog_loses_sword_result.obj = royal_hedgehog
@@ -438,6 +451,8 @@ throne_pull_result2.room_obj = throne_room
 dispense_panel_result1.obj = antechamber
 dispense_panel_result2.dispense_obj = control_panel
 dispense_panel_result2.room_obj = antechamber
+disable_rh_guard_result1.mach = hedgehog_guard_mach
+disable_rh_guard_result2.mach = disable_rh_guard_mach
 
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog

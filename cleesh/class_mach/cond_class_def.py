@@ -12,6 +12,7 @@
 # ObjInRmCond :			TrueCond :			match obj room to match_rm
 # ObjInWorldCond :		TrueCond :			match obj in world
 # ItemInHandCond :		TrueCond :			match obj in hand to match_cond
+# ObjInInvCond :		ItemInHandCond:		match obj in creature inventory
 # WeaponInHandCond : 	TrueCond :			match on craeture holding weapon
 # MachStateCond : 		TrueCond :		  	match mach_state
 # TimerActiveCond :		TrueCond :			match timer_obj.active
@@ -174,6 +175,12 @@ class ItemInHandCond(TrueCond):
 	def cond_check(self, gs, mach_state, is_valid):
 		return (self.item_obj in self.creature_obj.hand_lst) == self.match_cond
 
+class ObjInInvCond(ItemInHandCond):
+	def __init__(self, name, item_obj, creature_obj, match_cond):
+		super().__init__(name, item_obj, creature_obj, match_cond)
+
+	def cond_check(self, gs, mach_state, is_valid):
+		return (self.creature_obj.chk_contain_item(self.item_obj) == self.match_cond)
 
 class WeaponInHandCond(TrueCond):
 	def __init__(self, name, creature_obj, match_cond):

@@ -7,6 +7,7 @@
 # Result class (x) : 		inherits from (Y) : result_exe() method performs (Z)
 #-------------------    	-------------       ---------------------------------
 # BaseResult :				Invisible :			buffer using result.name as key if event in rm; set mach_state
+# DisableMach :				BaseResult :		base + set is_enabled == False for self.mach
 # EndResult :				BaseResult :		base + set ending val, set is_end = True
 # ChgDescriptResult	:		BaseResult :		base + change obj descript_key
 # GiveItemResult : 			BaseResult :		base + give item_obj to tgt_creature
@@ -56,6 +57,22 @@ class BaseResult(Invisible):
 			mach_state = self.mach_state_val
 		return mach_state, self.cmd_override
 
+class DisableMach(BaseResult):
+	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override, mach):
+		super().__init__(name, is_mach_state_set, mach_state_val, cmd_override)
+		self._mach = mach # modular machine to be disabled
+
+	@property
+	def mach(self):
+		return self._mach
+
+	@mach.setter
+	def mach(self, new_val):
+		self._mach = new_val
+		
+	def result_exe(self, gs, mach_state, buff_key, alert_anchor):
+		self.mach.is_enabled = False
+		return super(DisableMach, self).result_exe(gs, mach_state, buff_key, alert_anchor)
 
 class EndResult(BaseResult):
 	def __init__(self, name, is_mach_state_set, mach_state_val, cmd_override, ending):

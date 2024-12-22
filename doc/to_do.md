@@ -119,7 +119,21 @@ End Date:
 - DONE: fix case where sword is in Burt's inventory and tries to take in Entrance but royal_hedgehog stops him
 - DONE: enable player to give silver_key to RH in return for shiny_sword
 - DONE: update show silver_key for RH
-- TBD: address case where player drops sword in same room as hedgehog after using it; on get key, disable guard
+- DONE: solve case where player drops sword in same room as hedgehog after using it; on get key, disable guard
+	- IDEA: create a modular machine that disables hedgehog_guard after silver_key is given
+	- DONE: create new Cond class to check creature inventory
+	- DONE: import Cond class in game_updates
+	- DONE: instantiate new Cond obj for RH has silver_key == False
+	- DONE: create new Result class to disable mach
+	- DONE: import Result class into game_updates
+	- DONE: instantiate new Result obj
+	- DONE: create auto_mach in DC game_update
+	- DONE: pre-test to confirm as-is behavior
+	- DONE: add auto_mach to game (in RH invis_lst)
+	- DONE: test
+	- DONE: set disable_rh_guard_result_2 to disable guard_disable_mach (don't need auto_action once run)
+	- DONE: test
+	- DONE: clean-up: cond(), DC game_update()
 - TBD: stale_biscuits => biscuit
 	- TBD: make stale_biscuits singluar (just one biscuits in a paper bag)
 	- TBD: change biscuit trademark to sword and key emblem
@@ -170,6 +184,8 @@ End Date:
 - search for 'Nana'-based errors
 - maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
 - TBD: make path names (provided via 'look') examinable nouns ('path' => Winding Path)
+- TBD: disable control_panel dispenser mach once it has run (as final result)
+- TBD: sort out whole 'fist' / 'sharp_teeth' un-armed attack issue in Creature class
 
 
 *** misc ideas ***
