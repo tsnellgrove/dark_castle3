@@ -136,10 +136,31 @@ End Date:
 	- DONE: clean-up: cond(), DC game_update()
 - TBD: stale_biscuits => biscuit
 	- TBD: make stale_biscuits singluar (just one biscuits in a paper bag)
-	- TBD: change biscuit trademark to sword and key emblem
-	- TBD: make biscuit yummy; Nana's famous recipie
-	- TBD: backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
-	- TBD: update 'eat biscuit' warning text... should ref baker job and Nana
+		- IDEA: change biscuit trademark to sword and key emblem
+		- IDEA: make biscuit yummy; Nana's famous recipie
+		- IDEA: backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
+		- IDEA: update 'eat biscuit' warning text... should ref baker job and Nana
+		- IDEA: maybe Burt is the first Baker in his family; perhaps not a highly regarded profession
+		- INPROC: implement
+			- DONE: re-read Nana broach text
+			- DONE: create paper bag (openable but no lock)
+			- DONE: add paper bag to Burt's inventory
+			- TBD: decide on Burt's backstory / baking heritage... 
+				- IDEA: is Burt a true baker following in the footsteps of Nana? (lean this way)
+				- IDEA: or is baking something he's not really cut out for?
+				- IDEA: maybe Willy's middle name was Herbert?
+				- TBD: formally document Burt's backstory
+				- TBD: Update Nana borach text to match Burt's backstory
+			- TBD: create fresh-baked biscuit (class = food)
+			- TBD: add biscuit to paper bag
+			- TBD: create decoration (Writing)
+			- TBD: add decoration to biscuit
+			- TBD: update warning to reference biscuit
+			- TBD: update warning text
+			- TBD: test
+			- TBD: remove stale_biscuits
+			- TBD: sort out Burt cary weight post biscuits swap
+- TBD: vary Burt description during inventory (inject some backstory here; include Nana and pub crush)
 - TBD: update winning condition to reading scroll while sitting on throne?
 - TBD: fix goblin attack on attempt to unlock portcullis
 - TBD: consider how to surface 'not_attackable' txt in game_static_gbl

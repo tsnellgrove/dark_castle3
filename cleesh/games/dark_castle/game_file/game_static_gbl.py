@@ -120,13 +120,11 @@ game_static_dict = {
 
 	### PortableLiquidContainer objects ###
 	'earthen_jug' : "A battered Earthen Jug. According to your Nana, it once belonged to a shifty wizardy fellow who showed up in town and started prying into everyone's cupboards and asking folks if they'd seen any 'loose scrolls'. Nana ran him off with a bread paddle and he scampered so fast he dropped his water jug.", #  For ages it gave off a faint glow and your mum wouldn't have it in the house. You snagged it from the shed for this little adventure. Alas, it no longer appears to glow.
-	'glass_bottle' : "A clear glass bottle suitable for carrying a liquid. Alas, if only it was filled with ale...",
-	
+	'paper_bag' : "A smartly-creased paper bag. The wonderful smell of fresh-baked biscuts still wafts from it and you wonder if there might be any left?",
+
 	### door objects ###
 	'front_gate' : "The Front Gate is just north of the Dark Castle's drawbridge. It is 10 feet tall and reenforced with steel bands. Imposing indeed! There is Rusty Lettering across the top of the gate and a rusty keyhole next to a handle.",
 	'iron_portcullis' : "Beyond the iron portcullis you can dimly make out the next room.",
-	'screen_door' : "This appears to be a test Screen Door.",
-
 
 	### creatures ###
 	
@@ -294,6 +292,10 @@ game_static_dict = {
 	# items #
 	'brass_key' : "The key is brass.",
 	'random_mcguffin' : "It's a radom test McGuffin - just what you've always wanted!!",
+	'glass_bottle' : "A clear glass bottle suitable for carrying a liquid. Alas, if only it was filled with ale...",
+
+	# doors #
+	'screen_door' : "This appears to be a test Screen Door.",
 
 	# containers #
 	'bubbly_potion' : "The cork-stopperd glass vial contains a bubbly green potion.",
@@ -336,6 +338,7 @@ game_static_dict = {
 #		'goblin_slain' : "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. you know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle.",
 #		'goblin_attacks_result' : "It seems that by entering the north side of the room you have violated a minor castle ordinance. The Guard Goblin is incensed and will not tolerate this flagrant defiance of orthodoxy!",
 #		'hedgehog_flees' : "The Royal Hedgehog squeeks in dismay as it dodges your malevolent agression. Even as the loyal little creature gives way, you know in your heart that you will come to regret this unkingly deed.", # consternation alternatives: fright, dismay, alarm
+
 
 
 # *** Not Game ***
