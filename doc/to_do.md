@@ -145,12 +145,14 @@ End Date:
 			- DONE: re-read Nana broach text
 			- DONE: create paper bag (openable but no lock)
 			- DONE: add paper bag to Burt's inventory
-			- TBD: decide on Burt's backstory / baking heritage... 
+			- INPROC: decide on Burt's backstory / baking heritage... 
 				- IDEA: is Burt a true baker following in the footsteps of Nana? (lean this way)
 				- IDEA: or is baking something he's not really cut out for?
 				- IDEA: maybe Willy's middle name was Herbert?
-				- TBD: formally document Burt's backstory
+				- DONE: create story.md in doc folder to document the story of Dark Castle
+				- INPROC: formally document Burt's backstory
 				- TBD: Update Nana borach text to match Burt's backstory
+				- TBD: update family tree if needed
 			- TBD: create fresh-baked biscuit (class = food)
 			- TBD: add biscuit to paper bag
 			- TBD: create decoration (Writing)
