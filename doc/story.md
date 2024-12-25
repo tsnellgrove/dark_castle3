@@ -86,6 +86,7 @@ Timeline Links:
     - Detailed Timeline: http://quendor.robinlionheart.com/chronology
     - High level Timeline: https://academickids.com/encyclopedia/index.php/Zork_timeline
     - Spellbreaker Review: https://www.filfre.net/2014/05/spellbreaker/
+    - "The History of Zork" (300 pg pdf)
 
 To Do:
     - I like the story of Burt, born to bake and adventure but trapped in coppiest expectations
@@ -95,3 +96,33 @@ To Do:
     - I need a bit more info on Tabitha's kingdom... how related to the kingdom of Bright Castle
     - I need to finalize on Cecily's name and personality - and also her sister's name
         - have Cecily and Nana be occasional voices in Burt's head?
+
+Rough Notes / Ideas:
+- The Family Tree insignia and the biscuit insignia are the same (except the biscuits are missing the RH)
+- Krill (the evil Warlock from Enchanter) is the ultimate source of Dark Castle's ruin
+- Willie is the Adventure from Zork I! 
+- The Elven Sword and the Brass Lantern (found on the wooden shelf) are relics from his adventuring days
+- They are handed down to Burt over the course of the adventure
+- Tabitha is a member of the Enchanter's Circle and the real brains behind it (not Belboz)
+- Burt's Earthen Jug and Loaf of Bread are given to Tabitha at the end of DC2 and become the tools of Enchanter
+- This is why Tabitha must leave - she knows the Prophesy and must warn the circle of Krill
+- (the idea being that Krill's evil plans are revealed in DC2)
+- Alas, magic ends just when Tabitha, at long last, returns to right the darkness of Dark Castle
+
+Rough Timeline:
+- Wurb Flathead becomes king [881 GUE]
+- {X Flathead born to servant and whisked away during prelude to fall} [882 GUE]
+- Fall of the Great Underground Empire [883 GUE]
+- {X gives birth to Willie and raises quietly in a small village} [928 GUE]
+- Zork I Adventure {Willie} [948 GUE]
+- {Willie becomes King of Bright Castle; Brief Golden Era of Bright Castle begins} [948 GUE]
+- {Willie and Nana meet and fall in love} [951 GUE]
+- Events of Enchanter {Willie dies falling in to the moat; Fall of DC / Events of DC2} [952 GUE]
+- Events of Spellbreaker; End of Magic spells {just as Tabitha arrives to magically lift darkness} [966 GUE]
+- {Burt born} [~1032 GUE]
+- {Events of DC1} [~1052 GUE]
+
+Timeline TBD:
+- Willie events & ages
+- Nana events & ages
+- Burt events and ages
