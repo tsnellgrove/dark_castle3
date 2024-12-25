@@ -82,6 +82,11 @@ Updated Backstory Outline:
         brass_lantern (but maybe not battery powered? That's always bothered me)
     Minion opponents in Dark Castle - who and why?
 
+Timeline Links:
+    - Detailed Timeline: http://quendor.robinlionheart.com/chronology
+    - High level Timeline: https://academickids.com/encyclopedia/index.php/Zork_timeline
+    - Spellbreaker Review: https://www.filfre.net/2014/05/spellbreaker/
+
 To Do:
     - I like the story of Burt, born to bake and adventure but trapped in coppiest expectations
     - I like the idea of Burt needing to learn some lessons in love (a-la Tiffany Aching / Harry & Cho Chang)
