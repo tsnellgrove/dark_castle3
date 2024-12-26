@@ -1,3 +1,5 @@
+*** Old Ref Text ***
+
 'hedgehog_broach':
     "The silver Hedgehog Broach is about an inch in diameter and is carved with the crest of a hedgehog bearing a sword and a key. It's strangely familiar... you've seen one just like it... long ago... examining the Hedgehog Broach up close triggers a long forgotten memory...
     
@@ -82,11 +84,13 @@ Updated Backstory Outline:
         brass_lantern (but maybe not battery powered? That's always bothered me)
     Minion opponents in Dark Castle - who and why?
 
+
 Timeline Links:
     - Detailed Timeline: http://quendor.robinlionheart.com/chronology
     - High level Timeline: https://academickids.com/encyclopedia/index.php/Zork_timeline
     - Spellbreaker Review: https://www.filfre.net/2014/05/spellbreaker/
     - "The History of Zork" (300 pg pdf)
+
 
 To Do:
     - I like the story of Burt, born to bake and adventure but trapped in coppiest expectations
@@ -97,32 +101,67 @@ To Do:
     - I need to finalize on Cecily's name and personality - and also her sister's name
         - have Cecily and Nana be occasional voices in Burt's head?
 
+
 Rough Notes / Ideas:
-- The Family Tree insignia and the biscuit insignia are the same (except the biscuits are missing the RH)
 - Krill (the evil Warlock from Enchanter) is the ultimate source of Dark Castle's ruin
 - Willie is the Adventure from Zork I! 
-- The Elven Sword and the Brass Lantern (found on the wooden shelf) are relics from his adventuring days
-- They are handed down to Burt over the course of the adventure
-- Tabitha is a member of the Enchanter's Circle and the real brains behind it (not Belboz)
-- Burt's Earthen Jug and Loaf of Bread are given to Tabitha at the end of DC2 and become the tools of Enchanter
-- This is why Tabitha must leave - she knows the Prophesy and must warn the circle of Krill
+- Tabitha is a member of the Enchanter's Circle and the real brains / pragmatist behind it (not Belboz)
+- This is why Tabitha must leave - she knows the Prophesy and must warn the circle about Krill
 - (the idea being that Krill's evil plans are revealed in DC2)
 - Alas, magic ends just when Tabitha, at long last, returns to right the darkness of Dark Castle
 
-Rough Timeline:
-- Wurb Flathead becomes king [881 GUE]
-- {X Flathead born to servant and whisked away during prelude to fall} [882 GUE]
-- Fall of the Great Underground Empire [883 GUE]
-- {X gives birth to Willie and raises quietly in a small village} [928 GUE]
-- Zork I Adventure {Willie} [948 GUE]
-- {Willie becomes King of Bright Castle; Brief Golden Era of Bright Castle begins} [948 GUE]
-- {Willie and Nana meet and fall in love} [951 GUE]
-- Events of Enchanter {Willie dies falling in to the moat; Fall of DC / Events of DC2} [952 GUE]
-- Events of Spellbreaker; End of Magic spells {just as Tabitha arrives to magically lift darkness} [966 GUE]
-- {Burt born} [~1032 GUE]
-- {Events of DC1} [~1052 GUE]
 
-Timeline TBD:
-- Willie events & ages
-- Nana events & ages
-- Burt events and ages
+Key Prop Ideas:
+- Should intro game with a bit of backstory on Burt
+- Biscuits:
+    - The Family Tree insignia and the biscuit insignia are the same (except the biscuits are missing the RH)
+    - Key opportunity to provide some early backstory
+- The Elven Sword and the Brass Lantern (found on the wooden shelf) are relics from his adventuring days
+    - They are handed down to Burt over the course of the adventure
+    - Runes on sword should be eleven
+    - Description should match Zork for both (except for battery power on Lantern)
+    - Sword should glow in presence of danger
+- Burt's Earthen Jug and Loaf of Bread are given to Tabitha at the end of DC2 and become the tools of Enchanter
+    - Should match description in Enchanter
+
+
+Rough Timeline:
+- [881 GUE] Wurb Flathead becomes king
+- [882 GUE] {Liam Flathead born to servant and whisked away during prelude to fall}
+- [883 GUE] Fall of the Great Underground Empire
+- [918 GUE] {Willie, youngest of 7, born to Liam and raised quietly in a small village}
+- [933 GUE] {Nana born 50 years after the fall of the GUE}
+- [948 GUE]
+    - Zork I Adventure {Willie, age 30, gets the 20 Treasures of Zork}
+    - {Based on treasure and birthright, Willie becomes King of BC; brief Golden Era of begins}
+- [951 GUE] {Willie, age 33, and Nana, 18, meet and fall in love}
+- [952 GUE]
+    - {Willie, age 34, dies falling into the moat; Nana is 19; Fall of BC / Events of DC2}
+    - {Nana, 19, marries Thomas the Coppiest to avoid ruin}
+    - {Nana & Thomas settle in a small village where Nane hides her baking skills to avoid being recognized}
+    - {Thomas the II, the offspring of Willie and Nana, is born}
+    - Events of Enchanter
+- [966 GUE]
+    - {just as Tabitha arrives to magically lift darkness at DC...}
+    - Events of Spellbreaker; End of Magic spells 
+- [989 GUE] {Billy is born as youngest of 7 to Thomas II and Tiffany}
+- [1026 GUE] {Burt born as youngest of 7 to Billy and Esme}
+- [1035 GUE] {Nana, age 102, passes; Burt is 9}
+- [1048 GUE] {Burt is 22; Events of DC1}
+
+
+To Do: Details on Krill's evil plans
+- Starting Ideas:
+    - Willie dies via genunie accident but the power vacuum tempts Krill, previously in hiding, into acquisition
+    - Some incompetent minion is tempted by jealousy / desire / averice / venality and, behind the scenes, is corrupted by Krill
+    - The minion uses dark magic (provided by Krill) to corrupt the castle and transform inhabitants into animals
+    - Durring DC2, Krill is revealed as the source of the corruption and the minion is deposed...,
+    - But the curse is not reversed (due to Krill still being in power, etc)
+- TBD: Need a poetic tragedy; character details; guard goblin as ultimate "local" villain?
+
+
+To Do: Detail on Nana's and Thomas' flight from Dark Castle:
+    - To Do: name of village? Details of events?
+
+
+*** New Ref Text ***
