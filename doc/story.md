@@ -157,6 +157,8 @@ To Do: Details on Krill's evil plans
     - The minion uses dark magic (provided by Krill) to corrupt the castle and transform inhabitants into animals
     - Durring DC2, Krill is revealed as the source of the corruption and the minion is deposed...,
     - But the curse is not reversed (due to Krill still being in power, etc)
+    - Goblin as broad satire of small-minded, provincial conservatism: tradition, xenophobia, ignorance, "research"
+    - Krill as satire of Trump (orange skin, fake hair, upside down holly book, "Goblins First")
 - TBD: Need a poetic tragedy; character details; guard goblin as ultimate "local" villain?
 
 
