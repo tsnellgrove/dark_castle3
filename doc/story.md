@@ -150,8 +150,22 @@ Rough Timeline:
 - [1048 GUE] {Burt is 22; Events of DC1}
 
 
-To Do: Details on Krill's evil plans
 - Starting Ideas:
+    - Need a poetic tragedy; character details; guard goblin as ultimate "local" villain?
+
+
+*** Detailed Narrative ***
+
+Willie's Reign:
+    Willie arrived at "High Castle" soon after gaining the 20 Treasures of Zork. At the time, High Castle was an outpost of the GUE and had been under stewardship ever since the empire's fall 65 years earlier. The Steward, the eldest son of High Castle's first steward and equal measures entitled and insecure in his reign, would doubtless have been intimidated by Willie's prowers and fame alone. But when Willie visited the castle courtyard - with the withered tree and waterless fountain - both destined to be barren until the return of the Flathead line - the Fountain errupted in a gyzer of water and the Tree burst forth in leaf and fruit. Thus Willie's heritage was revealed and (to his great surprise) he was proclaimed King on the spot by the acclimation of the populace. The Steward could only look on, stripped of his station, glowering with impotent rage and envy. And while the people loved Willie from the start, the Steward was not alone in his displeasure. The High Priest was also in a state of silent, vindictive furry.
+
+    Willie was an open-hearted man of the people. He came from the streets himself and felt a bond with the less fortunate. He saw that the Steward's taxes - and the High Priets tithes - on the poor were far too high - and that the nobility were nearly untaxed - and uncaring of the tax impact on himself (he was likely the richest man of the land at the time) he rewrote the tax code to shift the burden. He was also a huge believer in education and the notion that any man - or woman - could "pull themselves up by thar bootstraps".He noted that the treasury was already healthy (though not as healthy as it should have been given the tax rates) and spent liberally to provide education and opportunity for all. He was also a fair handed man by nature and thus put a stop to curruption wherever he came across it. Perhaps most distressing to the Steward and the High Priest, Willie was not just a man of the people - he was a man of *all* people. He renamed "High Castle" to "Bright Castle" and threw open the gates to all. He embraced Elven minstrals and Dwarven craftsmen as full citizens and supported the arts generously. It was the golden era of Bright Castle. There was music and joy in the streets and it was said that every day felt like festival day. And yet, like so many golden ages, it was to last just a briefly.
+
+    Willie was at least mildly aware that he was up-ending the order of things and therefore likely upsetting the previous standard bearers. He did his best to maintain at least civil relations with the Steward (who he made the new Sherif) and the High Priest (who he shared power as best he could under the notion of separation of church and state) - but to no avail. In truth, he - and the land - might have been better off had Willie simply thrown them both in the dungeons - but then he likely could not have been the beacon of light that he was had that been his practice. Both the Steward and High Priest were deeply offended by Willie's liberal ways and incensed that their own corrupt sources of income and power had been circumscribed. Beyond policy and ideology, the Steward would be forever vengeful about his loss of office. He was a vain and small minded man, defensive of his position and accutely sensitive to any slight - and ever after viewed Willie as a fraudulent usurper. And the High Priest had his own dark reasons for wrath. For some years he'd had his lustufl and letcherous eye on the beautiful young baker who sang so sweetly, in such pure notes, in the church choir. Within a couple months it was clear that Willie and the lass were meant for each other. And less than a year later, Willie informed the High Priest that, in total disregard of church tradition, that he planned to wed her publically. The High Priest's jealousy knew no bounds and secretly, nightly, the he and the Steward prayed at the church's alter for Willie's demise.
+
+Willie and Nana's Courtship:
+
+Krill's Evil Plans:
     - Willie dies via genunie accident but the power vacuum tempts Krill, previously in hiding, into acquisition
     - Some incompetent minion is tempted by jealousy / desire / averice / venality and, behind the scenes, is corrupted by Krill
     - The minion uses dark magic (provided by Krill) to corrupt the castle and transform inhabitants into animals
@@ -159,11 +173,18 @@ To Do: Details on Krill's evil plans
     - But the curse is not reversed (due to Krill still being in power, etc)
     - Goblin as broad satire of small-minded, provincial conservatism: tradition, xenophobia, ignorance, "research"
     - Krill as satire of Trump (orange skin, fake hair, upside down holly book, "Goblins First")
-- TBD: Need a poetic tragedy; character details; guard goblin as ultimate "local" villain?
+    - But need to avoid getting too serious; keep the silly and quirky vibe
 
 
-To Do: Detail on Nana's and Thomas' flight from Dark Castle:
-    - To Do: name of village? Details of events?
+The Fall of Bright Castle:
+
+
+Nana's Flight and the Legacy of Dark Castle:
+
+
+Burt's Childhood
+
+
 
 
 *** New Ref Text ***
