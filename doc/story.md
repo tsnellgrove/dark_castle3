@@ -130,23 +130,23 @@ Rough Timeline:
 - [882 GUE] {Liam Flathead born to servant and whisked away during prelude to fall}
 - [883 GUE] Fall of the Great Underground Empire
 - [918 GUE] {Willie, youngest of 7, born to Liam and raised quietly in a small village}
-- [933 GUE] {Nana born 50 years after the fall of the GUE}
+- [930 GUE] {Nana born 47 years after the fall of the GUE}
 - [948 GUE]
     - Zork I Adventure {Willie, age 30, gets the 20 Treasures of Zork}
     - {Based on treasure and birthright, Willie becomes King of BC; brief Golden Era of begins}
-- [951 GUE] {Willie, age 33, and Nana, 18, meet and fall in love}
+- [951 GUE] {Willie, age 33, and Nana, 21, meet and fall in love}
 - [952 GUE]
-    - {Willie, age 34, dies falling into the moat; Nana is 19; Fall of BC / Events of DC2}
-    - {Nana, 19, marries Thomas the Coppiest to avoid ruin}
+    - {Willie, age 34, dies falling into the moat; Nana is 22; Fall of BC / Events of DC2}
+    - {Nana, 22, marries Thomas the Coppiest, aged 51, to avoid ruin}
     - {Nana & Thomas settle in a small village where Nane hides her baking skills to avoid being recognized}
     - {Thomas the II, the offspring of Willie and Nana, is born}
     - Events of Enchanter
 - [966 GUE]
     - {just as Tabitha arrives to magically lift darkness at DC...}
     - Events of Spellbreaker; End of Magic spells 
-- [989 GUE] {Billy is born as youngest of 7 to Thomas II and Tiffany}
+- [989 GUE] {Billy is born as youngest of 7 to Thomas II and Anna}
 - [1026 GUE] {Burt born as youngest of 7 to Billy and Esme}
-- [1035 GUE] {Nana, age 102, passes; Burt is 9}
+- [1035 GUE] {Nana, age 105, passes; Burt is 9}
 - [1048 GUE] {Burt is 22; Events of DC1}
 
 
@@ -161,9 +161,16 @@ Willie's Reign:
 
     Willie was an open-hearted man of the people. He came from the streets himself and felt a bond with the less fortunate. He saw that the Steward's taxes - and the High Priets tithes - on the poor were far too high - and that the nobility were nearly untaxed - and uncaring of the tax impact on himself (he was likely the richest man of the land at the time) he rewrote the tax code to shift the burden. He was also a huge believer in education and the notion that any man - or woman - could "pull themselves up by thar bootstraps".He noted that the treasury was already healthy (though not as healthy as it should have been given the tax rates) and spent liberally to provide education and opportunity for all. He was also a fair handed man by nature and thus put a stop to curruption wherever he came across it. Perhaps most distressing to the Steward and the High Priest, Willie was not just a man of the people - he was a man of *all* people. He renamed "High Castle" to "Bright Castle" and threw open the gates to all. He embraced Elven minstrals and Dwarven craftsmen as full citizens and supported the arts generously. It was the golden era of Bright Castle. There was music and joy in the streets and it was said that every day felt like festival day. And yet, like so many golden ages, it was to last just a briefly.
 
-    Willie was at least mildly aware that he was up-ending the order of things and therefore likely upsetting the previous standard bearers. He did his best to maintain at least civil relations with the Steward (who he made the new Sherif) and the High Priest (who he shared power as best he could under the notion of separation of church and state) - but to no avail. In truth, he - and the land - might have been better off had Willie simply thrown them both in the dungeons - but then he likely could not have been the beacon of light that he was had that been his practice. Both the Steward and High Priest were deeply offended by Willie's liberal ways and incensed that their own corrupt sources of income and power had been circumscribed. Beyond policy and ideology, the Steward would be forever vengeful about his loss of office. He was a vain and small minded man, defensive of his position and accutely sensitive to any slight - and ever after viewed Willie as a fraudulent usurper. And the High Priest had his own dark reasons for wrath. For some years he'd had his lustufl and letcherous eye on the beautiful young baker who sang so sweetly, in such pure notes, in the church choir. Within a couple months it was clear that Willie and the lass were meant for each other. And less than a year later, Willie informed the High Priest that, in total disregard of church tradition, that he planned to wed her publically. The High Priest's jealousy knew no bounds and secretly, nightly, the he and the Steward prayed at the church's alter for Willie's demise.
+    Willie was at least mildly aware that he was up-ending the order of things and therefore likely upsetting the previous standard bearers. He did his best to maintain at least civil relations with the Steward (who he made the new Sherif) and the High Priest (who he shared power as best he could under the notion of separation of church and state) - but to no avail. In truth, he - and the land - might have been better off had Willie simply thrown them both in the dungeons - but then he likely could not have been the beacon of light that he was had that been his practice. 
+    
+    The Steward and High Priest were deeply offended by Willie's liberal ways and incensed that their own powers had been circumscribed. But beyond policy and ideology, for both men, it was personal. The Steward, a vain and small minded man who, even when in power, had been defensive of his position and accutely sensitive to any slight, would be forever vengeful for his loss of office. In taught whispered tones he spoke of Willie as a fraudulent usurper. And the High Priest had his own dark reasons for wrath. For some years he'd had his lustful and letcherous eye on the beautiful young baker who sang so sweetly, in such pure notes, in the church choir. But she was wilful and stuborn and swore that no man would rule her. The High Priest searched daily for a means of entrapment but under Willie's rule, his means were limited. Three years into Willie's rule, it became clear that Willie and the lass were meant for each other. And less than a year later, Willie informed the High Priest that, in total disregard of church tradition, he planned to wed her publically. The High Priest's jealousy knew no bounds. Secretly, nightly, the he and the Steward prayed at the church's alter for Willie's demise.
 
 Willie and Nana's Courtship:
+    Depsite their considerable age gap, Willie and Nana, known then as Miss Tiffany Baker, were simply made for each other. He was decisive, gruff, open-hearted, and pragmatic. She was kind, idealistic, empathic, and, fearless. Where Willie made right by the sword, Nana made right through her baking. They met at the Spring Festival which happened to also be Nana's 21st birthday. What started as good natured bartering over the price of baked goods (where Willie was immediately taken to meet the only stallkeeper willing to demand full price from the King) turned into a wide-ranging, evening-long discussion on favorite books, economic policy, and the correct way in which to eat jumble crab pie (Nana was incredulous that Willie would use a new-fangled fork rather than a spoon). Their first conversation was, for the most part, an extended debate. Anyone watching (and many were) would have anticipated the evening ending with either Willie being slapped or Nana being tossed into the dungeons. But in truth, each of them came away from the night intrigued - they were each forces of nature who had not before then met their match. 
+    
+    Willie tracked down Nana's baking shop the next day. He claimed to have developed an addiction to her biscuits (which were, indeed, renowned throughout the land) but also declared that he wanted to clarify a few of his points from the the night before... and so the conversation continued. What began as mutual curiousity soon turned into mutual enchantment and before long a deep and abiding love. Willie, who had intended to depart Brigh Castle within a year, suddenly found himself ready to settle down if Bright Castle was where Nana wanted to stay. And Nana, who had never included a man in any of her life plans, found that she was ready to reshape those plans to make room for Willie.
+
+    Some months later, Nana came to Willie's chambers and told him in a fierce but vulnerable voice, that she was pregnant and prepared to depart Bright Castle and make her way in the outlands, annonymously and on her own. Instead, he burst into tears of joy, embraced her, and then dropped to one knee to propose marriage. Shyly, and with tears of her own, she accpeted. Willie announced the engagement publically the very next morning (not thinking to mention it to the High Priest till several days later) and the kingdom celebrated the news with joy (in truth, Willie and Nana were the last to learn that they were to be wed - the rest of the land had already known for some time).
 
 Krill's Evil Plans:
     - Willie dies via genunie accident but the power vacuum tempts Krill, previously in hiding, into acquisition
