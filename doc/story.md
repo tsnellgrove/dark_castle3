@@ -103,12 +103,25 @@ To Do:
 
 
 Rough Notes / Ideas:
+- Willie is the Adventure from Zork I!
+- Willie dies via genunie accident but the power vacuum tempts Krill, out of hiding
 - Krill (the evil Warlock from Enchanter) is the ultimate source of Dark Castle's ruin
-- Willie is the Adventure from Zork I! 
+- Incompetent minions tempted by jealousy / desire / averice / venality; behind the scenes, corrupted by Krill
+- The former (evil) Steward becomes the Guard Goblin
+- Goblin as broad satire of small-minded, provincial conservatism: tradition, xenophobia, ignorance, "research"
+- The former (evil) High Priest becomes a Vampire
+- Krill as satire of Trump (orange skin, fake hair, upside down holly book, "Goblins First")
+- But need to avoid getting too serious; keep the silly and quirky vibe
+
+
+CD2 Ideas:
+- Princess Saffron is actually Tabitha, senior member of the Circle of Enchanters, in disguise
 - Tabitha is a member of the Enchanter's Circle and the real brains / pragmatist behind it (not Belboz)
 - This is why Tabitha must leave - she knows the Prophesy and must warn the circle about Krill
 - (the idea being that Krill's evil plans are revealed in DC2)
 - Alas, magic ends just when Tabitha, at long last, returns to right the darkness of Dark Castle
+- The novice enchanter who saves the day in Enchanter is a character in DC2
+- At the end of DC2, Burt suggests the novice to Tabitha and offers up the jug and bread to help them
 
 
 Key Prop Ideas:
@@ -157,7 +170,7 @@ Rough Timeline:
 *** Detailed Narrative ***
 
 Willie's Reign:
-    Willie arrived at "High Castle" soon after gaining the 20 Treasures of Zork. At the time, High Castle was an outpost of the GUE and had been under stewardship ever since the empire's fall 65 years earlier. The Steward, the eldest son of High Castle's first steward and equal measures entitled and insecure in his reign, would doubtless have been intimidated by Willie's prowers and fame alone. But when Willie visited the castle courtyard - with the withered tree and waterless fountain - both destined to be barren until the return of the Flathead line - the Fountain errupted in a gyzer of water and the Tree burst forth in leaf and fruit. Thus Willie's heritage was revealed and (to his great surprise) he was proclaimed King on the spot by the acclimation of the populace. The Steward could only look on, stripped of his station, glowering with impotent rage and envy. And while the people loved Willie from the start, the Steward was not alone in his displeasure. The High Priest was also in a state of silent, vindictive furry.
+    Willie arrived at "High Castle" soon after gaining the Twenty Treasures of Zork. At the time, High Castle was an outpost of the GUE and had been under stewardship ever since the empire's fall 65 years earlier. The Steward, the eldest son of High Castle's first steward and equal measures entitled and insecure in his reign, would doubtless have been intimidated by Willie's prowers and fame alone. But when Willie visited the castle courtyard - with the withered tree and waterless fountain - both destined to be barren until the return of the Flathead line - the Fountain errupted in a gyzer of water and the Tree burst forth in leaf and fruit. Thus Willie's heritage was revealed and (to his great surprise) he was proclaimed King on the spot by the acclimation of the populace. The Steward could only look on, stripped of his station, glowering with impotent rage and envy. And while the people loved Willie from the start, the Steward was not alone in his displeasure. The High Priest was also in a state of silent, vindictive furry.
 
     Willie was an open-hearted man of the people. He came from the streets himself and felt a bond with the less fortunate. He saw that the Steward's taxes - and the High Priets tithes - on the poor were far too high - and that the nobility were nearly untaxed - and uncaring of the tax impact on himself (he was likely the richest man of the land at the time) he rewrote the tax code to shift the burden. He was also a huge believer in education and the notion that any man - or woman - could "pull themselves up by thar bootstraps".He noted that the treasury was already healthy (though not as healthy as it should have been given the tax rates) and spent liberally to provide education and opportunity for all. He was also a fair handed man by nature and thus put a stop to curruption wherever he came across it. Perhaps most distressing to the Steward and the High Priest, Willie was not just a man of the people - he was a man of *all* people. He renamed "High Castle" to "Bright Castle" and threw open the gates to all. He embraced Elven minstrals and Dwarven craftsmen as full citizens and supported the arts generously. It was the golden era of Bright Castle. There was music and joy in the streets and it was said that every day felt like festival day. And yet, like so many golden ages, it was to last just a briefly.
 
@@ -173,17 +186,22 @@ Willie and Nana's Courtship:
     Some months later, Nana came to Willie's chambers and told him in a fierce but vulnerable voice, that she was pregnant and prepared to depart Bright Castle and make her way in the outlands, annonymously and on her own. Instead, he burst into tears of joy, embraced her, and then dropped to one knee to propose marriage. Shyly, and with tears of her own, she accpeted. Willie announced the engagement publically the very next morning (not thinking to mention it to the High Priest till several days later) and the kingdom celebrated the news with joy (in truth, Willie and Nana were the last to learn that they were to be wed - the rest of the land had already known for some time).
 
 Krill's Evil Plans:
-    - Willie dies via genunie accident but the power vacuum tempts Krill, previously in hiding, into acquisition
-    - Some incompetent minion is tempted by jealousy / desire / averice / venality and, behind the scenes, is corrupted by Krill
+    Alas, Willie's reign - and the happiness of Nana and all the land - was cut tragically short by a random accident involving a mis-step off the drawbridge while unarmed (Willie had been meaning to see about the moat crocodiles but had never gotten around to it). Ever since, there have been attempts to attribute his death to foul play but none of these theories has ever stood up to scrutiny. By all appearances, he simply, regretably, slipped.
+
+    But while Willie's death itself may have been a genuine accident, what followed in its wake was evil of the first degree. The Steward and High Priest were delighted by their good fortune. At long last, their nightly prayers were answered and they were freed from Willie's "tyrany". Surely, if left to their own devices, they would have returned to their old ways and likely thought up a few new minor injustices to boot. But things were to take a dark turn. The very night of Willie's death, as the Steward and the High Priest were drinking brandy and cackling over thier good fortune in the empty chappel, the dark warlock Krill himself appeared before them - radiating with power and might - and blocking their path to the chappel's double doors. The Steward and High Priest were terrified and scanned the room frantically for an exit or hiding spot. To their amazement, Krill meekly knelt before them, and with open arms and humble tones implored them "Your magesties, I come to beseach of you a boon." At this time, Krill was still young and handsome of appearance and spoke with an echoing voice that was hard indeed to say no to. It is doubtful that mere mortals such as the Steward and High Priest could have denied his wishes had they tried - but the test was not made. Krill had only to stroke their bruised egos and without hesitation they readily acquiesced.
+
+    Then it was that Krill unfolded a plan of deepest darkness to the weak and wretched mortals. He suggested clever means by which their heart's desires could be theirs. And in return, he asked only that they conduct "a small and simple ritual" - which he promised would assure them of the respect and position they were rightly due. The passage of history would prove this moment to be Krill's undoing. He was not yet at full strength and was unwise to unviel his presence to the Circle so soon - yet the power vacuum presented an unexpected opportunity. Bright Castle stood well distant from the remote castle of Lonely Mountain where Krill had begun to amass his forces. If he could corrupt Bright Castle and make it a second seat of power, he could assult the Circle on two fronts - and perhaps smash through their defenses before they knew he was upon them. Krill, never one to doubt his own cleverness, gave in to the temptation - and this would prove to be his undoing. But though his gamble would prove to be his folly, so to was it the ruin of Bright Castle. The Steward and High Priest never thought twice about granting Krill's requests. They thanked him profusely for his wise and cunning counsil and followed his instructions to the letter.
+
+    The next day the Steward announced publically that he had incontrovertable evidence that Nana was Willie's assasin. He re-siezed his full Steward powers and declared martial law. His first action was to have to have Nana thrown into the dungeons, still dressed in black and in deep mourning - with a trial to follow "when time and prudence allowed". His second action was to have Bright Castle renamed back to it's "proper and respected" title of High Castle. Last but not least, he sent a speedy messenger to his nearest neighbor and sought an immediate bond of marriage with their youngest daughter - the Princess Saffron - known to be sickly in her youth and little seen since - but said now to be both beautiful and obedient. The missive was blunt - the Steward was pursuing High Castle's interests first and was placing a premium on loyalty. Send the Princess or expect a seige. The little nation had hitherto looked on Bright Castle as an ally and a  protector. They had no means to resist assult - and so rather than have her ripped from the castle by force of arms, they submitted and sent the Princess Saffron speedily back with the messenger (on a fresh horse) that very same day.
+
+    Later the same day, the High Priest, seated on the chappel throne, dressed in his most radient robes, and clutching his bejeweled golden scepter, had Nana brough before him upon her knees. He told her that he had an understanding with the Steward and was willing to open his heart and absolve her of her many sins if she would swear a life-long vow of service to the church and willingly perform regular acts of penance to his satisfaction. Here the narrative takes a turn. Exactly what followed is uncertain but the High Priest seems to have miscalculated. Perhaps he was a somewhat too smug. Perhpas he was naive in having Nana's shackles removed and the guards dismissed. In any case, all that is known for sure is that Nana did not join the oder, the guards standing at the door were wholly unprepared to halt the lithe figure that lept through the chappel's stained glass window, and in any case, they were far too busy rushing to the aid of the High Priest who was bent double, yelping in considerable distress, and cursing in a most un-priestly fashion regarding exactly where the golden scepter had struck him.
+
+A Summoning Gone Wrong and the Fall of Bright Castle:
+
     - The minion uses dark magic (provided by Krill) to corrupt the castle and transform inhabitants into animals
     - Durring DC2, Krill is revealed as the source of the corruption and the minion is deposed...,
     - But the curse is not reversed (due to Krill still being in power, etc)
-    - Goblin as broad satire of small-minded, provincial conservatism: tradition, xenophobia, ignorance, "research"
-    - Krill as satire of Trump (orange skin, fake hair, upside down holly book, "Goblins First")
-    - But need to avoid getting too serious; keep the silly and quirky vibe
 
-
-The Fall of Bright Castle:
 
 
 Nana's Flight and the Legacy of Dark Castle:
