@@ -93,14 +93,13 @@ Timeline Links:
 
 
 To Do:
-    - I like the story of Burt, born to bake and adventure but trapped in coppiest expectations
-    - I like the idea of Burt needing to learn some lessons in love (a-la Tiffany Aching / Harry & Cho Chang)
-    - I need to fill out the Dark Castle disaster - what sort of human frailty / dire betrayal led to this?
-    - I need to fill out Nana's tale
-    - I need a bit more info on Tabitha's kingdom... how related to the kingdom of Bright Castle
-    - I need to finalize on Cecily's name and personality - and also her sister's name
-        - have Cecily and Nana be occasional voices in Burt's head?
-
+    - [DONE] story of Burt, born to bake and adventure but trapped in coppiest expectations
+    - [DONE] idea of Burt needing to learn some lessons in love (a-la Tiffany Aching / Harry & Cho Chang)
+    - [DONE] fill out the Dark Castle disaster - what sort of human frailty / dire betrayal led to this?
+    - [DONE] a bit more info on Tabitha's kingdom... how related to the kingdom of Bright Castle
+    - [INPROC] to fill out Nana's tale
+    - [TBD] to finalize on Cecily's name and personality - and also her sister's name
+ 
 
 Rough Notes / Ideas:
 - Willie is the Adventure from Zork I!
@@ -112,12 +111,20 @@ Rough Notes / Ideas:
 - The former (evil) High Priest becomes a Vampire
 - Krill as satire of Trump (orange skin, fake hair, upside down holly book, "Goblins First")
 - But need to avoid getting too serious; keep the silly and quirky vibe
+- The minions uses dark magic (provided by Krill) to corrupt the castle and transform inhabitants into animals
+- Durring DC2, Krill is revealed as the source of the corruption and the minions are transformmed...,
+- But the curse is not reversed (due to Krill still being in power, etc)
 
 
-CD2 Ideas:
+DC2 Ideas:
 - Princess Saffron is actually Tabitha, senior member of the Circle of Enchanters, in disguise
 - Tabitha is a member of the Enchanter's Circle and the real brains / pragmatist behind it (not Belboz)
-- This is why Tabitha must leave - she knows the Prophesy and must warn the circle about Krill
+- The real Princess Tabitha died from illness in childhood but her heartbroken parents couldn't face announcing
+- Tabitha was visiting when the Steward's messenger arrived and substitued herself for the Princess
+- Burt travels back in time to save Princess Saffron (and hopes to get a date with her)
+- But Burt is really destined for Cecily - but he needs some lessons in romance first
+- These he'll get from Saffron - who ends up liking Burt - but isn't a perfect match - and has obligations
+- After failed summons Tabitha must leave - she knows the Enchanter Prophesy and must warn the circle about Krill
 - (the idea being that Krill's evil plans are revealed in DC2)
 - Alas, magic ends just when Tabitha, at long last, returns to right the darkness of Dark Castle
 - The novice enchanter who saves the day in Enchanter is a minor non-descript character in DC2
@@ -125,7 +132,7 @@ CD2 Ideas:
 - Burt: "Also, won't they need a way to get in the front gate?"; Tabitha "<curses> - I'll see to it"
 
 
-Key Prop Ideas:
+Key Prop / Backstory Ideas:
 - Should intro game with a bit of backstory on Burt
 - Biscuits:
     - The Family Tree insignia and the biscuit insignia are the same (except the biscuits are missing the RH)
@@ -137,6 +144,7 @@ Key Prop Ideas:
     - Sword should glow in presence of danger
 - Burt's Earthen Jug and Loaf of Bread are given to Tabitha at the end of DC2 and become the tools of Enchanter
     - Should match description in Enchanter
+- have Cecily and Nana be occasional voices in Burt's head?
 
 
 Rough Timeline:
@@ -164,8 +172,10 @@ Rough Timeline:
 - [1048 GUE] {Burt is 22; Events of DC1}
 
 
-- Starting Ideas:
-    - Need a poetic tragedy; character details; guard goblin as ultimate "local" villain?
+Narrative Ideas:
+- Need a poetic tragedy
+- Need character details
+- How does guard goblin become the ultimate "local" villain?
 
 
 *** Detailed Narrative ***
@@ -198,17 +208,25 @@ Krill's Evil Plans:
     Later the same day, the High Priest, seated on the chappel throne, dressed in his most radient robes, and clutching his bejeweled golden scepter, had Nana brough before him upon her knees. He told her that he had an understanding with the Steward and was willing to open his heart and absolve her of her many sins if she would swear a life-long vow of service to the church and willingly perform regular acts of penance to his satisfaction. Here the narrative takes a turn. Exactly what followed is uncertain but the High Priest seems to have miscalculated. Perhaps he was a somewhat too smug. Perhpas he was naive in having Nana's shackles removed and the guards dismissed. All that is known for sure is that Nana did not join the oder and the guards standing at the door were wholly unprepared to halt the lithe figure that lept through the chappel's stained glass window. And in any case, they were far too busy rushing to the aid of the High Priest who was bent double and yelping, whimpering, and cursing in a most un-priestly fashion regarding exactly where and how hard he'd been struck by the golden scepter.
 
 A Summoning Gone Wrong and the Fall of Bright Castle:
+    Krill's intentions are well understood. He sought to Summon a deamon and sacrifice Princess Saffron to it as part of a dark bargain to secretly convert Bright Castle into hist second seat of his power. This did indeed nearly came to pass - the demon was summoned - and Princess Saffron vanished completely, never to be seen or heard from again - but somewhere along the way, Krill's plan went dreadfully awry. 
+    
+    For reasons unknown, the ritual was disruptied, the bargain was not sealed, and the demon was forced to return from whence it came. But in its brief moment on this plane - furious at the promise that was made but not kept - the demon spat out a horrible spell: it cursed all in Bright Castle to have their darkest traits revealed in their very being for ever after.
 
-    - The minion uses dark magic (provided by Krill) to corrupt the castle and transform inhabitants into animals
-    - Durring DC2, Krill is revealed as the source of the corruption and the minion is deposed...,
-    - But the curse is not reversed (due to Krill still being in power, etc)
+    Thankfully, the vast majority of the castle's inhabitants were out of the castle at the time assisting in puting out a barn fire. But those that remained, the Steward, the High Priest, and a number of others, were transformed into monsterous countanences of thier worst natures. It is said that Krill himself, who had been leading the ritual, was the most horribly transformed - his previously handsome features turned hideous - his skin made orange and his hair turned unnatural and wretched to look upon. The very castle itself was corrupted and took on a grim and foreboding aspect. All who could fled Dark Castle's shadow and settled in the small village nestled behind a hill and across the stream some miles away. 
 
+    But the demise of Dark Castle was to be the salvation of the surrounding lands. By means still not fully understood, Enchantress Tabitha was made immediately aware of Krill's attempted summoning. Tabitha was  one of the leading lights of the Circle of Enchanters and, according to some, the true force behind Belboz's long and illustrious legacy. Within the hour of Dark Castle's fall she summoned the Circle to annunce Krill's return and his evil intentions. Belboz himself has long been credited with the unconventional (though in hindsight, brilliant) plan to send a little-known novice to conforont Krill within the dark warlock's Lonely Mountain castle. Yet a number of those present in the Circle privately attest that it was Tabitha who, citing an ancient and little-known prophesy, proposed this plan and then, on the spot, chose and called forth the humble novice. Whomever the driving force within the Circle may have been, the strategem worked brilliantly and the Krill was routed in full.
+
+    It is also, perhaps, notable that Enchantress Tabitha ever after took a keen interest in the revival of Dark Castle. Indeed, it is beleived that after years of research she had finally found a way to lift the curse and was, in fact, on the verge of doing so when the tumultuous events of the Spellbreaker saga came to pass and the era of magic - and mgaic itself - was ended. Defeated, in her intentions, with what power remained to her, the great Enchantress made one last prophesy: that someday a scion of Willie the Wanderer would rise and free Dark Castle from the curse, whence Bright Castle would again shine forth as a beacon of goodness across the land.
 
 
 Nana's Flight and the Legacy of Dark Castle:
 
+    - In glow of extinguished barn fire, Nana takes hand of Thomas the Coppiest (kindly widower)
+    - Nana ever after hides identity / baking (?)
 
 Burt's Childhood
+
+    - Nana takes Burt under her wing at a young age; baking lessons
 
 
 
