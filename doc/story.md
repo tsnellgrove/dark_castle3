@@ -220,11 +220,27 @@ A Summoning Gone Wrong and the Fall of Bright Castle:
 
 
 Nana's Flight and the Legacy of Dark Castle:
+    The demon's curse was of such power that it's coming was visible to all. The sky went black and roiled. The heavens rumbled. And then forks of lightening barelled down from the heavens - striking the chappel steeple and the brilliant stained glass windows of the the castle's once-glorious throne room. 
 
-    - In glow of extinguished barn fire, Nana takes hand of Thomas the Coppiest (kindly widower)
-    - Nana ever after hides identity / baking (?)
+    All present threw themselves to the ground in terror. And when the sky had ceased to roil (for it never again fully cleared right above Dark Castle) the castle's very stones had blackened - as if coated in soot - and the vile smell of brimstone wafted from the once-welcoming front gate.
+ 
+    The populace stared in mute, stunned horror. Willie's death just the day before had been a mighty blow to many - but it had at least been a comprehenible loss - and after words of grief, talk turned to how the kingdom would move on. These events were beyond ken and past common understanding. For a time the populace simply stood rooted - awaiting the next blow to finish them all.
+    
+    Nana was, perhaps, the first to recover. In the minutes after the curse she seemed to have aged at least a decade. And though she herself never spoke of that day again, it was said in later years that that was the day she "got wise". 
+    
+    There in the afterglow of the just extinguished barn, she turned to Thomas the Coppiest besides her - who was still holding a full bucket of water and staring open-mouthed at the chappel's cracked steeple - and said "Mr. Coppiest, I don't love ya but I like ya - and if you'll have me, I'll be yours. And together we'll find a way to make a life." She spoke softly and earnestly, for Thomas' ears alone, but the murmor of her voice broke the oppresive silence and slowly the towns folk regained themselves.
 
-Burt's Childhood
+    Thomas was a widower in his early fifties - an advanced age back then for those neither royal or holly. Since her late teen years he'd often had a shy glance and a kind word for her - but not such as to give alarm.  He was not the sullen, angry sort that stalked his obsesions with lust and dreams of owning them. Rather, he was an open book - inescablably aware of young Nana's spirit and beauty - and also self-aware of and half-amused by his own happles doting. He was able to enjoy his time in her presence without seeking to rule it.
+
+    Hearing Nans's words, Thomas came to his senses, closed his mouth, put down his bucket, took her hand, and dropped to one knee. "I would have ye, Miss Baker, and I count myself a lucky man. I'll do all I can to treat ya right and make our days sunny and long." And so their lives were joined. Nana smiled, pulled him to his feet, kissed him gently, and said "Then let's go make us a life." 
+
+    And so they did. It was Nana, with Thomas in tow, who gathered up the leading craftsmen of the village - the miller, the blacksmith, the weaver, and others - and exhorted them all to get marching to the nearby village before night took fell. Her voice was kind but firm and one by one they came to grips with their new existence and rallied their fellow townsfolk to pick up what they could carry and march towards a new future. 
+    
+    For Nana it was not to be the life she had imagined - but it was not a bad life either - as she would often say herself. For one thing, Nana's talents were in great demand as there was a mighty need for baking in the newly, much expanded village. Thomas, for his part, was not just a good man, but a good partner too. He often minded the ovens through the night (baking being more needed in those early days than coppying) and learned the trade as best he could. In turn, Nana set to schooling on the strange art of coppying. This was her first time being exposed to reading - real reading of words bigger than four letters and writ longer than a cryer's plank - and she took to it like a bee to a bloom. There were still many then not fond of seeing a woman with a page but Thomas took delight in her love of words, taught her all he could, and brought to her a steady stream of text from anywhere he could lay hold of it. 
+    
+    Soon enough, Nana became the note taker at the weekly town council. And though she had no official voice of her own in the meeting, she understood that the pen-holder wields a mighty power of their own. The history she took down was generally the wisest version of what had been said in the room and often steered the ship of state: "Now I'm sorry your honors - everyone was speaking at once and Mr. Blacksmith was a banging on the meeting table and I couldn't quite get it all - now what exactly was it that Mr. Weaver was saying before it got so loud?". Initially, some of those in the meeting with the most booming voices were dour about Nana's "interfeering ways"... but the meetings did go a great deal more smoothly with her taking notes... and also, Nana always brought a plate of her famous biscuits - and no one coudld gainsay those. Soon enough, the council found excuses to not meet whenever Nana was sick our absent with child. After a generation, it was simply called "Town Meeting with Nana" and it was assumed she'd run it from the start. And so, not from a grand hall as she had once imagined, but in a humble thatch village, word-by-word, biscuit-by-biscuit, Nana led the town to a brighter future.
+
+Burt's Childhood:
 
     - Nana takes Burt under her wing at a young age; baking lessons
 
