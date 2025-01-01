@@ -32,6 +32,9 @@
 'moat_get_crown_result':
     "With courage and boldness to spare you leap from the drawbridge into the murky waters of the Moat. A less resolute adventurer might have turned tail at the sight of the oncoming giant crocodile but not you Burt. Treading water with your feet you take a two-handed grip on your weapon and get ready to face your destiny. Just before reaching you the primitive reptile realizes that you are armed and ready to fight (crocs are famously near-sighted). In surprise and fear it belches up the contents of it's stomach - including the Royal Crown - and flees in fear. With a deft athleticism unlike anything you've ever displayed before today you stow your weapon, snag the Royal Crown before it sinkes, and in one smooth motion adroitly hoist yourself back onto the drawbridge one handed. The lads at the pub would fall over at the sight of your skill and courage! (though mind you, they fall over on a regular basis as it is)"
 
+
+*** How I got Here ***
+
 Story History:
     Originally, there was no backstory. Just an unlikely hero named Burt, who was a bit of an oaf but a likable one. Evntually, as I got to the final puzzle, I felt a need to explain why Burt was in any way destined to be king. Also, I needed to give a hint as to how players could get the royal_crown - and thus was born the extensive hedgehog_broach monlouge - which I ended up quite liking. 
 
@@ -41,11 +44,14 @@ Story History:
 
     Also, over time, the backstory has evolved. Originally, as can be seen from the hedgehog_broach passage, I had intended Burt to be a reluctant Baker. Sort of cut out for bigger things but baking because he was born to it. But over time, I've come to have a real affection for Burt's baking background. So now I have the idea knocking around in my head that he got his baking skills from Nana (who actually taught him some baking as well) and his adverntureous streak from Willie.
     
-    Also, unbidden, the idea for a seqel came to me (daunting, given how far I am from finishing the main work!) in which Burt goes back in time to save a princess (perhaps named Tabitha) from a foreign land who has somehow become imprissoned in Bright Castle after Willie's death and just before it's fall into Dark Castle (enabling a brief face-to-face with a much younger Nana who recognizes Burt from his biscuit insignia). The idea is that perhaps Burt has a bit of a crush on the princess - who in turn teaches Burt some important lessons and also by the by has the ability to change into a cat - but likely needs to go home to help her father to avoid any sort of fascile rescue-the-princess-to-get-marriage-reward ending.
+    Also, unbidden, the idea for a seqel came to me (daunting, given how far I am from finishing the main work!) in which Burt goes back in time to save a princess (perhaps named Tabitha) from a foreign land who has somehow become imprissoned in Bright Castle after Willie's death and just before it's fall into Dark Castle (enabling a brief face-to-face with a much younger Nana who recognizes Burt from his biscuit insignia). The idea is that perhaps Burt has a bit of a crush on the princess - who in turn teaches Burt some important lessons and also by the by has the ability to change into a cat - but likely needs to deal with some local issues (initially, she had to go home to help her father who was in ill health) to avoid any sort of fascile rescue-the-princess-to-get-marriage-reward ending.
 
-    And finally, when building out a second mini-adventure to test the Cleesh Engine with, I invented Cecily (who maybe I will rename Tiffany after the heroine of Wee Free Men - or perhaps Catherine - after my youngest?), the bookish youngest daughter of the village pub owner - who was destined to be Burt's true love (after he learned some important life lessons from princess Tabitha). 
+    And finally, when building out a second mini-adventure to test the Cleesh Engine with, I invented Cecily (who maybe I will rename Tiffany after the heroine of Wee Free Men? Or perhaps Catherine - after my youngest?), the bookish youngest daughter of the village pub owner - who was destined to be Burt's true love (after he's learned some important life lessons from princess Tabitha). 
     
-    So now there's a bit of a backstory - but it's rather sprawling and patchwork. And I have a lot of quiestions to answer. What local village profession / expectation is this supposed to be in contrast to? And for that matter, what exactly did happen to Bright Castle that brought it crashing into the disrepair of Dark Castle? And who exactly is Burt and what does he want? And if Nana really passed when Burt was 5 or 6, how much baking could she have taught him (maybe he was 8 or 9 instead?)?
+    So now there's a bit of a backstory - but it's rather sprawling and patchwork. And I have a lot of quiestions to answer. What local village profession / expectation is baking supposed to be in contrast to? And for that matter, what exactly did happen to Bright Castle that brought it crashing into the disrepair of Dark Castle? And who exactly is Burt and what does he want? And if Nana really passed when Burt was 5 or 6, how much baking could she have taught him (maybe he was 8 or 9 instead?)?
+
+
+*** Rough Notes on Narrative Ideas ***
 
 Tactical Ideas:
     - IDEA: is Burt a true baker following in the footsteps of Nana? (lean this way)
@@ -57,6 +63,7 @@ Tactical Ideas:
 Updated Backstory Outline:
     Willie & Nana:
         An adventureous spirit and a beautiful, cozy-making baker born for each other
+        Inspiration for Nana includes the love interst from "Stranger than Fiction"
         Update Willie's middle name to Herbert (Burt's namesake)
         After Willie's passing, Nana took the hand of the castle copiest to avoid ruin
         Both escaped to the local village before the fall; Nana hid her baking skills to avoid recognition
@@ -84,23 +91,6 @@ Updated Backstory Outline:
         brass_lantern (but maybe not battery powered? That's always bothered me)
     Minion opponents in Dark Castle - who and why?
 
-
-Timeline Links:
-    - Detailed Timeline: http://quendor.robinlionheart.com/chronology
-    - High level Timeline: https://academickids.com/encyclopedia/index.php/Zork_timeline
-    - Spellbreaker Review: https://www.filfre.net/2014/05/spellbreaker/
-    - "The History of Zork" (300 pg pdf)
-
-
-To Do:
-    - [DONE] story of Burt, born to bake and adventure but trapped in coppiest expectations
-    - [DONE] idea of Burt needing to learn some lessons in love (a-la Tiffany Aching / Harry & Cho Chang)
-    - [DONE] fill out the Dark Castle disaster - what sort of human frailty / dire betrayal led to this?
-    - [DONE] a bit more info on Tabitha's kingdom... how related to the kingdom of Bright Castle
-    - [INPROC] to fill out Nana's tale
-    - [TBD] to finalize on Cecily's name and personality - and also her sister's name
- 
-
 Rough Notes / Ideas:
 - Willie is the Adventure from Zork I!
 - Willie dies via genunie accident but the power vacuum tempts Krill, out of hiding
@@ -115,37 +105,19 @@ Rough Notes / Ideas:
 - Durring DC2, Krill is revealed as the source of the corruption and the minions are transformmed...,
 - But the curse is not reversed (due to Krill still being in power, etc)
 
-
-DC2 Ideas:
-- Princess Saffron is actually Tabitha, senior member of the Circle of Enchanters, in disguise
-- Tabitha is a member of the Enchanter's Circle and the real brains / pragmatist behind it (not Belboz)
-- The real Princess Tabitha died from illness in childhood but her heartbroken parents couldn't face announcing
-- Tabitha was visiting when the Steward's messenger arrived and substitued herself for the Princess
-- Burt travels back in time to save Princess Saffron (and hopes to get a date with her)
-- But Burt is really destined for Cecily - but he needs some lessons in romance first
-- These he'll get from Saffron - who ends up liking Burt - but isn't a perfect match - and has obligations
-- After failed summons Tabitha must leave - she knows the Enchanter Prophesy and must warn the circle about Krill
-- (the idea being that Krill's evil plans are revealed in DC2)
-- Alas, magic ends just when Tabitha, at long last, returns to right the darkness of Dark Castle
-- The novice enchanter who saves the day in Enchanter is a minor non-descript character in DC2
-- At the end of DC2, Burt suggests the novice to Tabitha and offers up the jug and bread to help them
-- Burt: "Also, won't they need a way to get in the front gate?"; Tabitha "<curses> - I'll see to it"
+Narrative Goals:
+- Need a poetic tragedy
+- Need to flesh out characters
+- How does guard goblin become the ultimate "local" villain?
 
 
-Key Prop / Backstory Ideas:
-- Should intro game with a bit of backstory on Burt
-- Biscuits:
-    - The Family Tree insignia and the biscuit insignia are the same (except the biscuits are missing the RH)
-    - Key opportunity to provide some early backstory
-- The Elven Sword and the Brass Lantern (found on the wooden shelf) are relics from his adventuring days
-    - They are handed down to Burt over the course of the adventure
-    - Runes on sword should be eleven
-    - Description should match Zork for both (except for battery power on Lantern)
-    - Sword should glow in presence of danger
-- Burt's Earthen Jug and Loaf of Bread are given to Tabitha at the end of DC2 and become the tools of Enchanter
-    - Should match description in Enchanter
-- have Cecily and Nana be occasional voices in Burt's head?
+*** Initial Timeline ***
 
+Timeline Links:
+    - Detailed Timeline: http://quendor.robinlionheart.com/chronology
+    - High level Timeline: https://academickids.com/encyclopedia/index.php/Zork_timeline
+    - Spellbreaker Review: https://www.filfre.net/2014/05/spellbreaker/
+    - "The History of Zork" (300 pg pdf)
 
 Rough Timeline:
 - [881 GUE] Wurb Flathead becomes king
@@ -172,22 +144,36 @@ Rough Timeline:
 - [1048 GUE] {Burt is 22; Events of DC1}
 
 
-Narrative Ideas:
-- Need a poetic tragedy
-- Need character details
-- How does guard goblin become the ultimate "local" villain?
+*** To Do List ***
+
+To Do:
+    - [DONE] capture key existing story text from game
+    - [DONE] capture general notes and ideas on Narrative
+    - [DONE] create initial timeline
+    - [DONE] how did Willie come to rule Bright Castle?
+    - [DONE] fill out the Dark Castle disaster - what sort of human frailty / dire betrayal led to this?
+    - [DONE] a bit more info on Tabitha's kingdom... how related to the kingdom of Bright Castle
+    - [DONE] fill out Nana's tale
+    - [TBD] briefly tell Willie's backstory
+    - [TBD] tell Burt's tale and how he was partly raised by Nana
+    - [TBD] full end-to-end story Review / timeline true-up
+    - [TBD] compose updated story text based on new backstory
+    - [TBD] compose game intro / inventory / biscuit description / trademark inscription based on story
 
 
 *** Detailed Narrative ***
 
+The Last of the Flatheads:
+    William Herbert Flathead (also known as "Willie the Wanderer") was born... 
+
 Willie's Reign:
     Willie arrived at "High Castle" soon after gaining the Twenty Treasures of Zork. At the time, High Castle was an outpost of the GUE and had been under stewardship ever since the empire's fall 65 years earlier. The Steward, the eldest son of High Castle's first steward and equal measures entitled and insecure in his reign, would doubtless have been intimidated by Willie's prowers and fame alone. But when Willie visited the castle courtyard - with the withered tree and waterless fountain - both destined to be barren until the return of the Flathead line - the Fountain errupted in a gyzer of water and the Tree burst forth in leaf and fruit. Thus Willie's heritage was revealed and (to his great surprise) he was proclaimed King on the spot by the acclimation of the populace. The Steward could only look on, stripped of his station, glowering with impotent rage and envy. And while the people loved Willie from the start, the Steward was not alone in his displeasure. The High Priest was also in a state of silent, vindictive furry.
 
-    Willie was an open-hearted man of the people. He came from the streets himself and felt a bond with the less fortunate. He saw that the Steward's taxes - and the High Priets tithes - on the poor were far too high - and that the nobility were nearly untaxed - and uncaring of the tax impact on himself (he was likely the richest man of the land at the time) he rewrote the tax code to shift the burden. He was also a huge believer in education and the notion that any man - or woman - could "pull themselves up by thar bootstraps".He noted that the treasury was already healthy (though not as healthy as it should have been given the tax rates) and spent liberally to provide education and opportunity for all. He was also a fair handed man by nature and thus put a stop to curruption wherever he came across it. Perhaps most distressing to the Steward and the High Priest, Willie was not just a man of the people - he was a man of *all* people. He renamed "High Castle" to "Bright Castle" and threw open the gates to all. He embraced Elven minstrals and Dwarven craftsmen as full citizens and supported the arts generously. It was the golden era of Bright Castle. There was music and joy in the streets and it was said that every day felt like festival day. And yet, like so many golden ages, it was to last just a briefly.
+    Willie was an open-hearted man of the people. He came from the streets himself and felt a bond with the less fortunate. He saw that the Steward's taxes - and the High Priets tithes - on the poor were far too high - and that the nobility were nearly untaxed. Uncaring of the tax impact on himself (he was likely the richest man of the land at the time) he rewrote the tax code to shift the burden. He was also a huge believer in education and the notion that any man - or woman - could "pull themselves up by thar bootstraps". He noted that the treasury was already healthy (though not as healthy as it should have been given the tax rates) and spent liberally to provide education and opportunity for all. He was also a fair handed man by nature and thus put a stop to curruption wherever he came across it. Perhaps most distressing to the Steward and the High Priest, Willie was not just a man of the people - he was a man of *all* people. He renamed "High Castle" to "Bright Castle" and threw open the gates to all. He embraced Elven minstrals and Dwarven craftsmen alike as full citizens and supported the arts generously. It was the golden era of Bright Castle. There was music and joy in the streets and it was said that every day felt like festival day. And yet, like so many golden ages, it was to last just a briefly.
 
-    Willie was at least mildly aware that he was up-ending the order of things and therefore likely upsetting the previous standard bearers. He did his best to maintain at least civil relations with the Steward (who he made the new Sherif) and the High Priest (who he shared power as best he could under the notion of separation of church and state) - but to no avail. In truth, he - and the land - might have been better off had Willie simply thrown them both in the dungeons - but then he likely could not have been the beacon of light that he was had that been his practice. 
+    Willie was at least mildly aware that he was up-ending the order of things and therefore likely upsetting the previous standard bearers. He did his best to maintain at least civil relations with the Steward (who he made the new Sherif) and the High Priest (with whom he shared power as best he could under the notion of separation of church and state) - but to no avail. In truth, he - and the kingdom - might have been better off had Willie simply thrown them both in the dungeons - but then he likely could not have been the beacon of light that he was had that been his practice. 
     
-    The Steward and High Priest were deeply offended by Willie's liberal ways and incensed that their own powers had been circumscribed. But beyond policy and ideology, for both men, it was personal. The Steward, a vain and small minded man who, even when in power, had been defensive of his position and accutely sensitive to any slight, would be forever vengeful for his loss of office. In taught whispered tones he spoke of Willie as a fraudulent usurper. And the High Priest had his own dark reasons for wrath. For some years he'd had his lustful and letcherous eye on the beautiful young baker who sang so sweetly, in such pure notes, in the church choir. But she was wilful and stuborn and swore that no man would rule her. The High Priest searched daily for a means of entrapment but under Willie's rule, his means were limited. Three years into Willie's rule, it became clear that Willie and the lass were meant for each other. And less than a year later, Willie informed the High Priest that, in total disregard of church tradition, he planned to wed her publically. The High Priest's jealousy knew no bounds. Secretly, nightly, the he and the Steward prayed at the church's alter for Willie's demise.
+    The Steward and High Priest were deeply offended by Willie's liberal ways and incensed that their own powers had been circumscribed. But beyond policy and ideology, for both men, it was personal. The Steward, a vain and small minded man who, even when in power, had been defensive of his position and accutely sensitive to any slight, would be forever vengeful for his loss of office. In taut whispered tones he spoke of Willie as a fraudulent usurper to those he trusted. And the High Priest had his own dark reasons for wrath. For some years he'd had his lustful and letcherous eye on the beautiful young baker who sang so sweetly, in such pure notes, in the church choir. But she was wilful and stuborn and swore that no man would rule her. The High Priest searched daily for a means of entrapment but under Willie's rule, his means were limited. Three years into Willie's rule, it became clear that Willie and the young woman were meant for each other. And less than a year later, Willie informed the High Priest that, in total disregard of church tradition, he planned to wed her publically. The High Priest's jealousy knew no bounds. Secretly, nightly, the he and the Steward prayed at the church's alter for Willie's demise.
 
 Willie and Nana's Courtship:
     Depsite their considerable age gap, Willie and Nana, known then as Miss Tiffany Baker, were simply made for each other. He was decisive, gruff, open-hearted, and pragmatic. She was kind, idealistic, empathic, and, fearless. Where Willie made right by the sword, Nana made right through her baking. They met at the Spring Festival which happened to also be Nana's 21st birthday. What started as good natured bartering over the price of baked goods (where Willie was immediately taken to meet the only stallkeeper willing to demand full price from the King) turned into a wide-ranging, evening-long discussion on favorite books, economic policy, and the correct way in which to eat jumble crab pie (Nana was incredulous that Willie would use a new-fangled fork rather than a spoon). Their first conversation was, for the most part, an extended debate. Anyone watching (and many were) would have anticipated the evening ending with either Willie being slapped or Nana being tossed into the dungeons. But in truth, each of them came away from the night intrigued - they were each forces of nature who had not before then met their match. 
@@ -218,7 +204,6 @@ A Summoning Gone Wrong and the Fall of Bright Castle:
 
     It is also, perhaps, notable that Enchantress Tabitha ever after took a keen interest in the revival of Dark Castle. Indeed, it is beleived that after years of research she had finally found a way to lift the curse and was, in fact, on the verge of doing so when the tumultuous events of the Spellbreaker saga came to pass and the era of magic - and mgaic itself - was ended. Defeated, in her intentions, with what power remained to her, the great Enchantress made one last prophesy: that someday a scion of Willie the Wanderer would rise and free Dark Castle from the curse, whence Bright Castle would again shine forth as a beacon of goodness across the land.
 
-
 Nana's Flight and the Legacy of Dark Castle:
     The demon's curse was of such power that it's coming was visible to all. The sky went black and roiled. The heavens rumbled. And then forks of lightening barelled down from the heavens - striking the chappel steeple and the brilliant stained glass windows of the the castle's once-glorious throne room. 
 
@@ -240,11 +225,70 @@ Nana's Flight and the Legacy of Dark Castle:
     
     Soon enough, Nana became the note taker at the weekly town council. And though she had no official voice of her own in the meeting, she understood that the pen-holder wields a mighty power of their own. The history she took down was generally the wisest version of what had been said in the room and often steered the ship of state: "Now I'm sorry your honors - everyone was speaking at once and Mr. Blacksmith was a banging on the meeting table and I couldn't quite get it all - now what exactly was it that Mr. Weaver was saying before it got so loud?". Initially, some of those in the meeting with the most booming voices were dour about Nana's "interfeering ways"... but the meetings did go a great deal more smoothly with her taking notes... and also, Nana always brought a plate of her famous biscuits - and no one coudld gainsay those. Soon enough, the council found excuses to not meet whenever Nana was sick our absent with child. After a generation, it was simply called "Town Meeting with Nana" and it was assumed she'd run it from the start. And so, not from a grand hall as she had once imagined, but in a humble thatch village, word-by-word, biscuit-by-biscuit, Nana led the town to a brighter future.
 
-Burt's Childhood:
+Burt the Baker:
 
-    - Nana takes Burt under her wing at a young age; baking lessons
+- [IDEA] story of Burt, born to bake and adventure but trapped in coppiest expectations
+- [IDEA] to finalize on Cecily's name and personality - and also her sister's name
+- [IDEA] idea of Burt needing to learn some lessons in love (a-la Tiffany Aching / Harry & Cho Chang)
+
+- Nana looks for signs of Willie in her first child and then in her grandchild but not till Willie
+- Burt's mother passes soon after giving birth to him
+- Burt's father perhaps never forgives this - and is also a bit ambitious
+- Is short with Burt (dyslexia and left-handed)
+- Nana takes Burt under her wing at a young age; baking lessons
+- Nana passes when Burt is 9; he is inconsolable for weeks
+- Burt has a happy-go-lucky baker at age 22
+- Mad crush on Cecily's sister - but seems to think about Cecily a lot more (though not aware)
+- Needs to find his way and do some growing up
+
+    Nana & Burt:
+        Nana recognized Burt's true heritage from a very young age
+        Burt was dyslexic and never took to coppying. 
+        Over his parent's objections, Nana supported Burt's inclination to bake and taught him skills
+    Burt Today (goals and love interests and such):
+        Burt is a lovable mess of unfulfilled potential
+        He has a starry-eyed crush on Cecily's pretty older sister but in reality relates much better to Cecily
+        He has a low opinion of himself due to his bad handwriting and not meeting parent's expectations
+        He will need to learn more from the princess on both these fronts
+        Burt is naturally good with his hands and loves the outdoors (vs. the confines of the coppiest chamber)
+        Burt (when not brawling) gets along well with others and is affible and easy going; not stuck up
+        Burt's father (Thomas) is a 3rd generation coppiest and dreams that in 1 or 2 more gens one of his offspring will achieve the title of scribe! And perhaps in many years to come, a scrivener!! (/sarcasm)
 
 
+*** DC2 Ideas ***
+
+DC2 Ideas I'm not Ready to Reveal / Commit To:
+- Princess Saffron is actually Tabitha, senior member of the Circle of Enchanters, in disguise
+- Tabitha is a member of the Enchanter's Circle and the real brains / pragmatist behind it (not Belboz)
+- The real Princess Tabitha died from illness in childhood but her heartbroken parents couldn't face announcing
+- Tabitha was visiting when the Steward's messenger arrived and substitued herself for the Princess
+- Burt travels back in time to save Princess Saffron (and hopes to get a date with her)
+- In truth, Burt is really destined for Cecily - but he needs some lessons in romance first
+- These he'll get from Tabitha - who ends up liking Burt - but isn't a perfect match - and has obligations
+- After failed summons Tabitha must leave - she knows the Enchanter Prophesy and must warn the circle about Krill
+- (the idea being that Krill's evil plans are revealed in DC2)
+- Alas, magic ends just when Tabitha, at long last, returns to right the darkness of Dark Castle
+- The novice enchanter who saves the day in Enchanter is a minor non-descript character in DC2
+- At the end of DC2, Burt suggests the novice to Tabitha and offers up the jug and bread to help them
+- Burt: "Also, won't they need a way to get in the front gate?"; Tabitha "<curses> - I'll see to it"
+
+
+*** Game Update Ideas ***
+
+Key Prop / Backstory Ideas:
+- Should intro game with a bit of backstory on Burt
+- Biscuits:
+    - The Family Tree insignia and the biscuit insignia are the same (except the biscuits are missing the RH)
+    - Key opportunity to provide some early backstory
+- The Elven Sword and the Brass Lantern (found on the wooden shelf) are relics from his adventuring days
+    - They are handed down to Burt over the course of the adventure
+    - Runes on sword should be eleven
+    - Description should match Zork for both (except for battery power on Lantern)
+    - Sword should glow in presence of danger
+- Burt's Earthen Jug and Loaf of Bread are given to Tabitha at the end of DC2 and become the tools of Enchanter
+    - Should match description in Enchanter
+    - There's nothing at all special about this Earthen Jug. It's not at all like any other jug you may have come across anywhere else...
+- have Cecily and Nana be occasional voices in Burt's head?
 
 
 *** New Ref Text ***
