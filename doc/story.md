@@ -1,5 +1,7 @@
 *** Old Ref Text ***
 
+[Dark Castle]
+
 'hedgehog_broach':
     "The silver Hedgehog Broach is about an inch in diameter and is carved with the crest of a hedgehog bearing a sword and a key. It's strangely familiar... you've seen one just like it... long ago... examining the Hedgehog Broach up close triggers a long forgotten memory...
     
@@ -31,6 +33,11 @@
 
 'moat_get_crown_result':
     "With courage and boldness to spare you leap from the drawbridge into the murky waters of the Moat. A less resolute adventurer might have turned tail at the sight of the oncoming giant crocodile but not you Burt. Treading water with your feet you take a two-handed grip on your weapon and get ready to face your destiny. Just before reaching you the primitive reptile realizes that you are armed and ready to fight (crocs are famously near-sighted). In surprise and fear it belches up the contents of it's stomach - including the Royal Crown - and flees in fear. With a deft athleticism unlike anything you've ever displayed before today you stow your weapon, snag the Royal Crown before it sinkes, and in one smooth motion adroitly hoist yourself back onto the drawbridge one handed. The lads at the pub would fall over at the sight of your skill and courage! (though mind you, they fall over on a regular basis as it is)"
+
+[A Cup of Tea]
+
+'cecily':
+    "You give yourself a self-concious once-over: at age 19 and the youngest daughter of Ethan McGiggin, the prosperous owner of the town's only pub, you should be well on your way towards matrimony - but to your mother's dismay and your own deep gratitude, it appears to be nowhere on the horrizon. Of course you're also the more homely and introverted daughter - more fond of books than boys they say. Your older sister, Chrissy, the queen of the viallage, has always had a dozzen men at a time circling her in eratic orbits, moths to the flame - so who would ever notice you?",
 
 
 *** How I got Here ***
@@ -121,7 +128,7 @@ Timeline Links:
 
 Rough Timeline:
 - [881 GUE] Wurb Flathead becomes king
-- [882 GUE] {Liam Flathead born to servant and whisked away during prelude to fall}
+- [882 GUE] {Herbert Flathead born to servant and whisked away during prelude to fall}
 - [883 GUE] Fall of the Great Underground Empire
 - [918 GUE] {Willie, youngest of 7, born to Liam and raised quietly in a small village}
 - [930 GUE] {Nana born 47 years after the fall of the GUE}
@@ -133,12 +140,12 @@ Rough Timeline:
     - {Willie, age 34, dies falling into the moat; Nana is 22; Fall of BC / Events of DC2}
     - {Nana, 22, marries Thomas the Coppiest, aged 51, to avoid ruin}
     - {Nana & Thomas settle in a small village where Nane hides her baking skills to avoid being recognized}
-    - {Thomas the II, the offspring of Willie and Nana, is born}
+    - {Liam, the offspring of Willie and Nana, is born}
     - Events of Enchanter
 - [966 GUE]
     - {just as Tabitha arrives to magically lift darkness at DC...}
     - Events of Spellbreaker; End of Magic spells 
-- [989 GUE] {Billy is born as youngest of 7 to Thomas II and Anna}
+- [989 GUE] {Billy is born as youngest of 7 to Liam and Anna}
 - [1026 GUE] {Burt born as youngest of 7 to Billy and Esme}
 - [1035 GUE] {Nana, age 105, passes; Burt is 9}
 - [1048 GUE] {Burt is 22; Events of DC1}
@@ -154,8 +161,10 @@ To Do:
     - [DONE] fill out the Dark Castle disaster - what sort of human frailty / dire betrayal led to this?
     - [DONE] a bit more info on Tabitha's kingdom... how related to the kingdom of Bright Castle
     - [DONE] fill out Nana's tale
-    - [TBD] briefly tell Willie's backstory
+    - [DONE] time passes section to get to Burt
     - [TBD] tell Burt's tale and how he was partly raised by Nana
+    - [TBD] briefly describe burt as a young man - his crush on Chrissy and friendship with Cecily
+    - [TBD] jump back to start and tell about Herbert / Willie's backstory 
     - [TBD] full end-to-end story Review / timeline true-up
     - [TBD] compose updated story text based on new backstory
     - [TBD] compose game intro / inventory / biscuit description / trademark inscription based on story
@@ -225,17 +234,36 @@ Nana's Flight and the Legacy of Dark Castle:
     
     Soon enough, Nana became the note taker at the weekly town council. And though she had no official voice of her own in the meeting, she understood that the pen-holder wields a mighty power of their own. The history she took down was generally the wisest version of what had been said in the room and often steered the ship of state: "Now I'm sorry your honors - everyone was speaking at once and Mr. Blacksmith was a banging on the meeting table and I couldn't quite get it all - now what exactly was it that Mr. Weaver was saying before it got so loud?". Initially, some of those in the meeting with the most booming voices were dour about Nana's "interfeering ways"... but the meetings did go a great deal more smoothly with her taking notes... and also, Nana always brought a plate of her famous biscuits - and no one coudld gainsay those. Soon enough, the council found excuses to not meet whenever Nana was sick our absent with child. After a generation, it was simply called "Town Meeting with Nana" and it was assumed she'd run it from the start. And so, not from a grand hall as she had once imagined, but in a humble thatch village, word-by-word, biscuit-by-biscuit, Nana led the town to a brighter future.
 
-Burt the Baker:
+Time Passes:
+    Busy as those early times were, Nana looked for signs of Willie in her firstborn, Liam (named, she swore, after a beloved uncle) but none were to be found. Liam was a cheerful and helpful tyke who learned his letters early and was happy to spend all day in the coppiest chamber mixing and refilling ink pots with his father. Despite Thomas' age, Nana bore him three children, all girls who were apt and pretty and made good matches for themselves in the now growing village. 
+    
+    Liam eventually married his childhood sweetheart, Anna, and soon they too started a family. Thomas lived just long enough to see the first of his grandchildren arrive and died with love in his heart and gratitude for the life he'd been given. Nana, though burdened with grief (over time Nana had come to care for Thomas and his gentle, kind ways quite deeply) kept a watchfull eye on her grandchildren any signs of Willie's temperment but to no avail. She adored them all but but it was a family of six young coppiests - all of them girls - who also did quite well for themselves - four marrying well and two teaming up to start their own coppiest shop in the village - the first woman owned and run shop in town. Then late in life, later than anyone expected, a seventh child arrived, a boy. He too seemed a born coppiest but again, for the sake of her "uncle" Nana gently put her finger on the scales and the boy was named Billy. 
+
+    Years passed, and Nana quietly oversaw the workings of the village - as it grew to be a thriving little hamlet and, eventually, a full-fledged town. When she'd been married to Thomas she'd been known as Mrs. Coppiest-Baker - but now she was simply known to all as Nana. She was the heart of the town - watching over the comings and goings like a mother hen, quietly taking notes in the weekly town meetings for more than forty years. She still baked biscuits, smiled often, and listend with care - but she was beginning to worry that time would not grant her a chance to look upon Willie's successor.
+
+    Eventually young Billy grew up and married a bright young woman named Esme from afar. She was an immagrent from the southlands with long hair and eyes so bright they startled. Some muttered unkindly that she must have some Elf in her but Nana embraced her new granddaughter-in-law with open arms and those who cast aspersions were quick to learn that kindly old Nana still had a sharp tongue in her head when she had a mind to use it. Soon Billy and Esme began their own family and, once agin, it was daughter after daughter - most of them drawn to coppiest work like their father but all of them also bearing their mother's startlingly bright eyes.
+
+    Nana was delighted if a bit bewildered by this generation. They were bold and fearless - only two seemed keen to follow in their father's footsteps as coppiests and none were in a rush to marry. More than once - as she was about to speak up and suggest that Billy impose a smidgen of order on his brood - she recalled that she herself had once been all these things - and so she smiled and held her tongue, hugged more, baked more, and scolded less.
+
+    And then, again late in life, a seventh child arrived. Sadly Esme was not well. A dark illness had taken her late in her term and where once she had been the light and beating heart of the family, she now struggled through each day. For the sake of the babe in her womb, Esme clung to life as a mountineer clings to a rocky cliff - second-by-second, minute-by-minute, grim but unyielding. By sheer will she made it, and the child, a boy, was born healthy and strong - but childbirth took the very last of Esme's strength and she passed the next day. Billy was inconsolable with grief. Even had he known how to raise a child - an art he'd left fully in Esme's hands - he'd have been in no state. So Nana, for the first time in nearly 70 years, closed up her baking shop - and took the task of raising young Burt into her own aged but loving hands.
+
+Burt's Childhood:
+    From an early age Nana spotted in 
+
+
+Burt as a Young Man:
+
 
 - [IDEA] story of Burt, born to bake and adventure but trapped in coppiest expectations
-- [IDEA] to finalize on Cecily's name and personality - and also her sister's name
+- [IDEA] finalize on Cecily's name and personality - and also her sister's name
+    - Mabye last name is Brewer?
 - [IDEA] idea of Burt needing to learn some lessons in love (a-la Tiffany Aching / Harry & Cho Chang)
 
-- Nana looks for signs of Willie in her first child and then in her grandchild but not till Willie
+- Nana looks for signs of Willie in her first child and then in her grandchild but not till Burt
 - Burt's mother passes soon after giving birth to him
 - Burt's father perhaps never forgives this - and is also a bit ambitious
 - Is short with Burt (dyslexia and left-handed)
-- Nana takes Burt under her wing at a young age; baking lessons
+- Nana takes Burt under her wing at a young age; reading & baking lessons
 - Nana passes when Burt is 9; he is inconsolable for weeks
 - Burt has a happy-go-lucky baker at age 22
 - Mad crush on Cecily's sister - but seems to think about Cecily a lot more (though not aware)

@@ -76,7 +76,7 @@ game_static_dict = {
 	'dingy_shelf' : "The Dingy Shelf is in urgent need of dusting - but it's a pretty high shelf so you haven't gotten to it lately.",
 
 	### PortableLiquidContainer objects ###
-	'tea_cup' : "Hand cast from river-side clay by your mother and perfectly proportioned, this is your favorit Tea Cup.", 
+	'tea_cup' : "Hand cast from river-side clay by your mother and perfectly proportioned, this is your favorite Tea Cup.", 
 	
 	### door objects ###
 	'creaky_door' : "The front door to your familie's pub (and home, since you live on the second floor). It's always had a ferocious creak to it.",
