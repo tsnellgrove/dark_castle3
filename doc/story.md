@@ -248,7 +248,12 @@ Time Passes:
     And then, again late in life, a seventh child arrived. Sadly Esme was not well. A dark illness had taken her late in her term and where once she had been the light and beating heart of the family, she now struggled through each day. For the sake of the babe in her womb, Esme clung to life as a mountineer clings to a rocky cliff - second-by-second, minute-by-minute, grim but unyielding. By sheer will she made it, and the child, a boy, was born healthy and strong - but childbirth took the very last of Esme's strength and she passed the next day. Billy was inconsolable with grief. Even had he known how to raise a child - an art he'd left fully in Esme's hands - he'd have been in no state. So Nana, for the first time in nearly 70 years, closed up her baking shop - and took the task of raising young Burt into her own aged but loving hands.
 
 Burt's Childhood:
-    From an early age Nana spotted in 
+    From an early age Nana spotted an adventuresome streak in young Burt. He hated the coppiest chamber and would run outdoors the moment his father took his eyes off him. And he loved working with his hands. He would dig in mud, climb trees, and build "castles" out of rocks all day if allowed, in all weather too. Young Burty, as Nana called him, reveled in conditions that made hardened farmers bolt the shutters fast. 
+    
+    His Father, Billy, was apt to be hard on Burt. First there was the matter of Esme's death - which Billy could never quite separate in his mind from Burt's arrival. Also, Billy was ambitious in a small way. Billy had had great expectations when at last a son had come along. Having come from five generations of coppiests he dreamed that Burt might become a church or even royal scribe. As time passed, it became clear that this would not come to pass. Not only was it impossible to keep the child at the task, but when he was firmly set down to the work and watched, Burt was awful at it. He always reached for the quill with his left hand - no matter how many times his Father scolded him on the matter - and when he did finally get to coppying, the rerults were mis-spelled and illegible. In a different time and place, a kind hearted teacher might have recognized in Burt some common learning disabilities. But in a small village where your family profesion was your future and your name, Burt's lack of penmanship was no small practical matter. And to his father, it was simply disasterous.
+
+    
+
 
 
 Burt as a Young Man:
