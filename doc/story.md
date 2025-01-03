@@ -250,7 +250,18 @@ Time Passes:
 Burt's Childhood:
     From an early age Nana spotted an adventuresome streak in young Burt. He hated the coppiest chamber and would run outdoors the moment his father took his eyes off him. And he loved working with his hands. He would dig in mud, climb trees, and build "castles" out of rocks all day if allowed, in all weather too. Young Burty, as Nana called him, reveled in conditions that made hardened farmers bolt the shutters fast. 
     
-    His Father, Billy, was apt to be hard on Burt. First there was the matter of Esme's death - which Billy could never quite separate in his mind from Burt's arrival. Also, Billy was ambitious in a small way. Billy had had great expectations when at last a son had come along. Having come from five generations of coppiests he dreamed that Burt might become a church or even royal scribe. As time passed, it became clear that this would not come to pass. Not only was it impossible to keep the child at the task, but when he was firmly set down to the work and watched, Burt was awful at it. He always reached for the quill with his left hand - no matter how many times his Father scolded him on the matter - and when he did finally get to coppying, the rerults were mis-spelled and illegible. In a different time and place, a kind hearted teacher might have recognized in Burt some common learning disabilities. But in a small village where your family profesion was your future and your name, Burt's lack of penmanship was no small practical matter. And to his father, it was simply disasterous.
+    His Father, Billy, was apt to be hard on Burt. First there was the matter of Esme's death - which Billy could never quite separate in his mind from Burt's arrival. Also, Billy was ambitious in a small way. Billy had had great expectations when at last a son had come along. Having come from five generations of coppiests he dreamed that Burt might become a church or even royal scribe. As time passed, it became clear that this would not come to pass. Not only was it impossible to keep the child at the task, but when he was firmly set down to the work and watched, Burt was awful at it. He always reached for the quill with his left hand - no matter how many times his Father scolded him on the matter - and when he did finally get to coppying, the rerults were mis-spelled and illegible. In a different time and place, a kind hearted teacher might have recognized in Burt some common learning disabilities and offered some work-arounds. But in a small village where your family profesion was your future and your name, Burt's lack of penmanship was no small practical matter. And to his father, it was simply disasterous.
+
+    But Nana's eyes could see little Burtie's streths as well as his flaws - and her heart saw the sterak of her beloved Willie within him - and so she took him under her protective wing. 
+    
+    One afternoon when Burt was about five and had run off from his coppying work (again) Billy fumed to Nana "That boy will never amount to the least of coppyiest - I can't even trust him to refill an ink pot!"
+
+    "Billy, you're right - it's not his calling - but he'd make a fine baker."
+
+    "Bah - we've three baker's in town already and it's low manual work - barely even a craft. And besides, craft that it is, whose going to teach it to him, I'll ask you?!" declaraed Billy in frustration (Nana had closed up shop in her seventies, when Billy was not yet ten, so the memory was distant for him).
+
+    "I will." said Nana. She rose and called Burt from his play in the woods and showed him to the back room where the old ovens stood dormant. And from that day forward, Nana was both mother and master.
+
 
     
 
@@ -268,6 +279,7 @@ Burt as a Young Man:
 - Burt's mother passes soon after giving birth to him
 - Burt's father perhaps never forgives this - and is also a bit ambitious
 - Is short with Burt (dyslexia and left-handed)
+
 - Nana takes Burt under her wing at a young age; reading & baking lessons
 - Nana passes when Burt is 9; he is inconsolable for weeks
 - Burt has a happy-go-lucky baker at age 22
