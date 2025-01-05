@@ -272,35 +272,60 @@ Burt's Childhood:
 
 Burt as a Young Man:
 
-
-- [IDEA] story of Burt, born to bake and adventure but trapped in coppiest expectations
-- [IDEA] finalize on Cecily's name and personality - and also her sister's name
-    - Mabye last name is Brewer?
-- [IDEA] idea of Burt needing to learn some lessons in love (a-la Tiffany Aching / Harry & Cho Chang)
-
+The story of Burt, born to bake and adventure but trapped in coppiest expectations:
 - Nana looks for signs of Willie in her first child and then in her grandchild but not till Burt
+- Nana recognized Burt's true heritage from a very young age
 - Burt's mother passes soon after giving birth to him
 - Burt's father perhaps never forgives this - and is also a bit ambitious
-- Is short with Burt (dyslexia and left-handed)
-
+    - Burt's father dreams that one of his offspring will achieve the title of scribe! 
+    - And perhaps in many years to come, a scrivener!! (/sarcasm)
+- Burt was dyslexic and never took to copying. 
+- Father Is short with Burt (mother's death, dyslexia and left-handed)
+- Over his parent's objections, Nana supported Burt's inclination to bake and taught him skills
 - Nana takes Burt under her wing at a young age; reading & baking lessons
 - Nana passes when Burt is 9; he is inconsolable for weeks
-- Burt has a happy-go-lucky baker at age 22
-- Mad crush on Cecily's sister - but seems to think about Cecily a lot more (though not aware)
-- Needs to find his way and do some growing up
 
-    Nana & Burt:
-        Nana recognized Burt's true heritage from a very young age
-        Burt was dyslexic and never took to copying. 
-        Over his parent's objections, Nana supported Burt's inclination to bake and taught him skills
-    Burt Today (goals and love interests and such):
-        Burt is a lovable mess of unfulfilled potential
-        He has a starry-eyed crush on Cecily's pretty older sister but in reality relates much better to Cecily
-        He has a low opinion of himself due to his bad handwriting and not meeting parent's expectations
-        He will need to learn more from the princess on both these fronts
-        Burt is naturally good with his hands and loves the outdoors (vs. the confines of the coppiest chamber)
-        Burt (when not brawling) gets along well with others and is affible and easy going; not stuck up
-        Burt's father (Thomas) is a 3rd generation coppiest and dreams that in 1 or 2 more gens one of his offspring will achieve the title of scribe! And perhaps in many years to come, a scrivener!! (/sarcasm)
+Burt Today (goals and love interests and such):
+- Burt is a lovable mess of unfulfilled potential
+    - Burt has a happy-go-lucky baker at age 22
+    - Burt is naturally good with his hands and loves the outdoors (vs. the confines of the coppiest chamber)
+    - Burt (when not brawling) gets along well with others and is affible and easy going; not stuck up
+- Needs to find his way and do some growing up
+    - He has a low opinion of himself due to his bad handwriting and not meeting parent's expectations
+    - He has a starry-eyed crush on Cecily's pretty older sister but in reality relates much better to Cecily
+        - Mad crush on Cecily's sister - but seems to think about Cecily a lot more (though not aware)
+        - finalize on Cecily's name (mabye last name is Brewer) and personality - and also her sister's name
+    - He will need to learn more from Tabitha on both these fronts
+- idea of Burt needing to learn some lessons in love (a-la Tiffany Aching / Harry & Cho Chang)
+
+Burt & Cecily Brewer:
+- Post DC2, Burt will need to woo Cecily (not just swoop in and "win" her as king)
+- Cecily is a young woman with dreams and plans who does not spend much time thinking of men (much like Nana)
+    - Perhaps she seeks to be a town meeting speaker (would be the first woman in this role)
+- Perhaps in epilogue, Burt comes to her for help:
+    - Needs good advice (since his advisors may be wise but always agree with him); too many people say "yes"
+    - Also, has decided maybe he's not looking for "pretty & coy" - maybe looking for "beautiful & thoughtful"
+        - so he needs some romantic advice
+- Perhaps in return, he offers Cecily access to the royal library
+    - Also offers up 40+ years of Nana's meeting minutes 
+        - (which Burt learned to read on and discussed at length with Nana while baking)
+- Cecily agrees and the pair can often be seen in animated conversation while walking in the courtyard by tree
+- Perhaps tale ends with Burt helping the fellow meeting speakers see their way past objections
+    - "Which law would need to change?" asked Burt good naturedly
+    - "Well it's not so much a law - it's a tradition, you see?"
+    - "Ah," said Burt, nodding with understanding, "I had been meaning to review some of the town traditions... in fact someone was just telling me that there's an unwritten rule about speaker's being tax exempt?"
+    - "Well, now sire - there's no need to waste precious time of yours on a little matter like that!"
+    - "I have been a bit busy lately... perhaps it's the sort of thing Cecily Brewer could look into if she were a town speaker?"
+    - "Brilliant idea sire, brilliant idea... why don't we adjourn and I'll ask go ask her right this moment if she'd be willing to serve?"
+    - Burt agreed that the idea seemed wise and thanked the Chair Speaker profusely for his help. 
+
+New Ideas to Incorportate:
+- Burt is much like Willie but, thanks to being raised by Nana, more canny about change management and smoothing things over; maybe go back and make Willie a bit more reckless?
+- Who should the advisors be? What creatures to they become and what puzzle (logic puzzle?) are they linked to?
+
+
+
+
 
 
 *** DC2 Ideas ***
