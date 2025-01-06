@@ -117,6 +117,19 @@ Narrative Goals:
 - Need to flesh out characters
 - How does guard goblin become the ultimate "local" villain?
 
+The story of young Burtie, born to bake and adventure but trapped in coppiest expectations:
+- Nana looks for signs of Willie in her first child and then in her grandchild but not till Burt
+- Nana recognized Burt's true heritage from a very young age
+- Burt's mother passes soon after giving birth to him
+- Burt's father perhaps never forgives this - and is also a bit ambitious
+    - Burt's father dreams that one of his offspring will achieve the title of scribe! 
+    - And perhaps in many years to come, a scrivener!! (/sarcasm)
+- Burt was dyslexic and never took to copying. 
+- Father Is short with Burt (mother's death, dyslexia and left-handed)
+- Over his parent's objections, Nana supported Burt's inclination to bake and taught him skills
+- Nana takes Burt under her wing at a young age; reading & baking lessons
+- Nana passes when Burt is 9; he is inconsolable for weeks
+
 
 *** Initial Timeline ***
 
@@ -271,25 +284,16 @@ Burt's Childhood:
     After a fortnight, Billy sat Burt down, gave him the best pep talk he could muster, and told him it was time to put the past behind him and return to the coppiest's chamber. Burt looked his Father in the eye, took his grown up hand in both of his own small paws, and said "Pa, I'm a Baker. So baking's a what I'm going to go an' do." And after wiping a final tear from one eye, that what he did.
 
 Burt as a Young Man:
+    In the span of thirteen short years, with the hoisting of many trays of bread and the cauising of not just a small bit of mischief, little Burtie grew to be a strapping young man of twenty two and the most successful baker in town. He was a happy-go-lucky fellow, carefree and equally at ease telling tales to a crowded bar, striding through the forest alone, or applying the finishing touches to a child's birthday cake. Affable, and easy-going, he was prone to thinking the best of everyone he met - but had a reckless streak and a left hook more than capable of sorting out anyone who thought to take advantage of his good nature. He was successful at work, a personality at the pub, and a lovable mess of a project in the realm of romance. 
 
-The story of Burt, born to bake and adventure but trapped in coppiest expectations:
-- Nana looks for signs of Willie in her first child and then in her grandchild but not till Burt
-- Nana recognized Burt's true heritage from a very young age
-- Burt's mother passes soon after giving birth to him
-- Burt's father perhaps never forgives this - and is also a bit ambitious
-    - Burt's father dreams that one of his offspring will achieve the title of scribe! 
-    - And perhaps in many years to come, a scrivener!! (/sarcasm)
-- Burt was dyslexic and never took to copying. 
-- Father Is short with Burt (mother's death, dyslexia and left-handed)
-- Over his parent's objections, Nana supported Burt's inclination to bake and taught him skills
-- Nana takes Burt under her wing at a young age; reading & baking lessons
-- Nana passes when Burt is 9; he is inconsolable for weeks
+
 
 Burt Today (goals and love interests and such):
 - Burt is a lovable mess of unfulfilled potential
     - Burt has a happy-go-lucky baker at age 22
     - Burt is naturally good with his hands and loves the outdoors (vs. the confines of the coppiest chamber)
     - Burt (when not brawling) gets along well with others and is affible and easy going; not stuck up
+    
 - Needs to find his way and do some growing up
     - He has a low opinion of himself due to his bad handwriting and not meeting parent's expectations
     - He has a starry-eyed crush on Cecily's pretty older sister but in reality relates much better to Cecily
@@ -319,8 +323,11 @@ Burt & Cecily Brewer:
     - "Brilliant idea sire, brilliant idea... why don't we adjourn and I'll ask go ask her right this moment if she'd be willing to serve?"
     - Burt agreed that the idea seemed wise and thanked the Chair Speaker profusely for his help. 
 
-New Ideas to Incorportate:
+
+*** New Ideas to Incorportate ***
+
 - Burt is much like Willie but, thanks to being raised by Nana, more canny about change management and smoothing things over; maybe go back and make Willie a bit more reckless?
+- Perhaps throw in a baking metaphor for Burt - learns from Nana mix / stir change & tradition?
 - Who should the advisors be? What creatures to they become and what puzzle (logic puzzle?) are they linked to?
 
 
