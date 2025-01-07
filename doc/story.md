@@ -130,6 +130,20 @@ The story of young Burtie, born to bake and adventure but trapped in coppiest ex
 - Nana takes Burt under her wing at a young age; reading & baking lessons
 - Nana passes when Burt is 9; he is inconsolable for weeks
 
+Burt Today (goals and love interests and such):
+- Burt is a lovable mess of unfulfilled potential
+    - Burt has a happy-go-lucky baker at age 22
+    - Burt is naturally good with his hands and loves the outdoors (vs. the confines of the coppiest chamber)
+    - Burt (when not brawling) gets along well with others and is affible and easy going; not stuck up
+    
+- Needs to find his way and do some growing up
+    - He has a low opinion of himself due to his bad handwriting and not meeting parent's expectations
+    - He has a starry-eyed crush on Cecily's pretty older sister but in reality relates much better to Cecily
+        - Mad crush on Cecily's sister - but seems to think about Cecily a lot more (though not aware)
+        - finalize on Cecily's name (mabye last name is Brewer) and personality - and also her sister's name
+    - He will need to learn more from Tabitha on both these fronts
+- idea of Burt needing to learn some lessons in love (a-la Tiffany Aching / Harry & Cho Chang)
+
 
 *** Initial Timeline ***
 
@@ -175,8 +189,8 @@ To Do:
     - [DONE] a bit more info on Tabitha's kingdom... how related to the kingdom of Bright Castle
     - [DONE] fill out Nana's tale
     - [DONE] time passes section to get to Burt
-    - [TBD] tell Burt's tale and how he was partly raised by Nana
-    - [TBD] briefly describe burt as a young man - his crush on Chrissy and friendship with Cecily
+    - [DONE] tell Burt's tale and how he was partly raised by Nana
+    - [DONE] briefly describe burt as a young man - his crush on Chrissy and friendship with Cecily
     - [TBD] jump back to start and tell about Herbert / Willie's backstory 
     - [TBD] full end-to-end story Review / timeline true-up
     - [TBD] compose updated story text based on new backstory
@@ -284,44 +298,12 @@ Burt's Childhood:
     After a fortnight, Billy sat Burt down, gave him the best pep talk he could muster, and told him it was time to put the past behind him and return to the coppiest's chamber. Burt looked his Father in the eye, took his grown up hand in both of his own small paws, and said "Pa, I'm a Baker. So baking's a what I'm going to go an' do." And after wiping a final tear from one eye, that what he did.
 
 Burt as a Young Man:
-    In the span of thirteen short years, with the hoisting of many trays of bread and the cauising of not just a small bit of mischief, little Burtie grew to be a strapping young man of twenty two and the most successful baker in town. He was a happy-go-lucky fellow, carefree and equally at ease telling tales to a crowded bar, striding through the forest alone, or applying the finishing touches to a child's birthday cake. Affable, and easy-going, he was prone to thinking the best of everyone he met - but had a reckless streak and a left hook more than capable of sorting out anyone who thought to take advantage of his good nature. He was successful at work, a personality at the pub, and a lovable mess of a project in the realm of romance. 
+    In the span of thirteen short years, with the hoisting of many trays of bread and the causing of not just a small bit of mischief, little Burty grew to be a strapping young man of twenty two and the most successful baker in town. It's true, there was still some lingering tension with his father, but in general, Burt was a happy-go-lucky fellow, carefree and equally at ease telling tales to a crowded bar, striding through the forest alone, or applying the finishing touches to a child's birthday cake. Affable, and easy-going, he was prone to thinking the best of everyone he met - but had a reckless streak and a left hook more than capable of sorting out anyone who thought to take advantage of his good nature. He was successful at work, a personality at the pub, and a lovable mess of a project in the realm of romance. 
 
+    At present, Burt had a starry-eyed crush on Chrissy Brewer, widely regarded as the prettiest and craziest girl in town. Burt was actually good friends with Chrissy's younger sister Cecily. They had met each other as youngsters via a mutual love for books. Back in these days, even a thriving town had limited reading matter and they bonded as they searched together for anything new and written down. Cecily was more than a bit sour about Burt's infatuation with Chrissy - warning him bluntly that he was just one more moth to the flame - but Burt was not one to let competition - or good advice - sway him from a pursuit. 
 
+    And so it was, that one boisterous Friday night at the pub, perhaps after a pint more than usual, and just after Chrissy had declared it to be "the most fearful place in all the wide land", Burt swore boldly to all assembled that he would march up to Dark Castle the very next day - and if there was treasure in it, he aimed haul it out and buy a round for everyone!
 
-Burt Today (goals and love interests and such):
-- Burt is a lovable mess of unfulfilled potential
-    - Burt has a happy-go-lucky baker at age 22
-    - Burt is naturally good with his hands and loves the outdoors (vs. the confines of the coppiest chamber)
-    - Burt (when not brawling) gets along well with others and is affible and easy going; not stuck up
-    
-- Needs to find his way and do some growing up
-    - He has a low opinion of himself due to his bad handwriting and not meeting parent's expectations
-    - He has a starry-eyed crush on Cecily's pretty older sister but in reality relates much better to Cecily
-        - Mad crush on Cecily's sister - but seems to think about Cecily a lot more (though not aware)
-        - finalize on Cecily's name (mabye last name is Brewer) and personality - and also her sister's name
-    - He will need to learn more from Tabitha on both these fronts
-- idea of Burt needing to learn some lessons in love (a-la Tiffany Aching / Harry & Cho Chang)
-
-Burt & Cecily Brewer:
-- Post DC2, Burt will need to woo Cecily (not just swoop in and "win" her as king)
-- Cecily is a young woman with dreams and plans who does not spend much time thinking of men (much like Nana)
-    - Perhaps she seeks to be a town meeting speaker (would be the first woman in this role)
-- Perhaps in epilogue, Burt comes to her for help:
-    - Needs good advice (since his advisors may be wise but always agree with him); too many people say "yes"
-    - Also, has decided maybe he's not looking for "pretty & coy" - maybe looking for "beautiful & thoughtful"
-        - so he needs some romantic advice
-- Perhaps in return, he offers Cecily access to the royal library
-    - Also offers up 40+ years of Nana's meeting minutes 
-        - (which Burt learned to read on and discussed at length with Nana while baking)
-- Cecily agrees and the pair can often be seen in animated conversation while walking in the courtyard by tree
-- Perhaps tale ends with Burt helping the fellow meeting speakers see their way past objections
-    - "Which law would need to change?" asked Burt good naturedly
-    - "Well it's not so much a law - it's a tradition, you see?"
-    - "Ah," said Burt, nodding with understanding, "I had been meaning to review some of the town traditions... in fact someone was just telling me that there's an unwritten rule about speaker's being tax exempt?"
-    - "Well, now sire - there's no need to waste precious time of yours on a little matter like that!"
-    - "I have been a bit busy lately... perhaps it's the sort of thing Cecily Brewer could look into if she were a town speaker?"
-    - "Brilliant idea sire, brilliant idea... why don't we adjourn and I'll ask go ask her right this moment if she'd be willing to serve?"
-    - Burt agreed that the idea seemed wise and thanked the Chair Speaker profusely for his help. 
 
 
 *** New Ideas to Incorportate ***
@@ -329,10 +311,27 @@ Burt & Cecily Brewer:
 - Burt is much like Willie but, thanks to being raised by Nana, more canny about change management and smoothing things over; maybe go back and make Willie a bit more reckless?
 - Perhaps throw in a baking metaphor for Burt - learns from Nana mix / stir change & tradition?
 - Who should the advisors be? What creatures to they become and what puzzle (logic puzzle?) are they linked to?
-
-
-
-
+- Perhaps leave Burt's relationship with father unresolved - gives him a bit of an insecurity about copying; gets resolved when he becomes king and hires his father as lead scrivener
+- Burt & Cecily Brewer:
+    - Post DC2, Burt will need to woo Cecily (not just swoop in and "win" her as king)
+    - Cecily is a young woman with dreams and plans who does not spend much time thinking of men (much like Nana)
+        - Perhaps she seeks to be a town meeting speaker (would be the first woman in this role)
+    - Perhaps in epilogue, Burt comes to her for help:
+        - Needs good advice (since his advisors may be wise but always agree with him); too many people say "yes"
+        - Also, has decided maybe he's not looking for "pretty & coy" - maybe looking for "beautiful & thoughtful"
+            - so he needs some romantic advice
+    - Perhaps in return, he offers Cecily access to the royal library
+        - Also offers up 40+ years of Nana's meeting minutes 
+            - (which Burt learned to read on and discussed at length with Nana while baking)
+    - Cecily agrees and the pair often be seen in animated conversation while walking in the courtyard by tree
+    - Perhaps tale ends with Burt helping the fellow meeting speakers see their way past objections
+        - "Which law would need to change?" asked Burt good naturedly
+        - "Well it's not so much a law - it's a tradition, you see?"
+        - "Ah," said Burt, nodding with understanding, "I had been meaning to review some of the town traditions... in fact someone was just telling me that there's an unwritten rule about speaker's being tax exempt?"
+        - "Well, now sire - there's no need to waste precious time of yours on a little matter like that!"
+        - "I have been a bit busy lately... perhaps it's the sort of thing Cecily Brewer could look into if she were a town speaker?"
+        - "Brilliant idea sire, brilliant idea... why don't we adjourn and I'll ask go ask her right this moment if she'd be willing to serve?"
+        - Burt agreed that the idea seemed wise and thanked the Chair Speaker profusely for his help. 
 
 
 *** DC2 Ideas ***
