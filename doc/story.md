@@ -200,7 +200,13 @@ To Do:
 *** Detailed Narrative ***
 
 The Last of the Flatheads:
-    William Herbert Flathead (also known as "Willie the Wanderer") was born... 
+     Herbert was the the secret and illigitamate heir of Wurb Flathead. The result of a short-lived affair between Wurb Flathead (commonly considered to be the last of the Flathead dynasty - and known for litteraly nothing else), and a young scullery maid named Thessaly. 
+     
+     Thessaly wasn't your typical maid - she was a self taught street mage from the wrong side of the Frigid River and her main goal in working for the Great Underground Empire court was to get access to its grand library. Her interest in Wurb could be better described as "lurid facination" (he had this effect on many) rather than true love and she was releived to end things when he lost interest.
+
+     When she realized...
+
+    ... William Herbert Flathead (also known as "Willie the Wanderer") was
 
 Willie's Reign:
     Willie arrived at "High Castle" soon after gaining the Twenty Treasures of Zork. At the time, High Castle was an outpost of the GUE and had been under stewardship ever since the empire's fall 65 years earlier. The Steward, the eldest son of High Castle's first steward and equal measures entitled and insecure in his reign, would doubtless have been intimidated by Willie's prowers and fame alone. But when Willie visited the castle courtyard - with the withered tree and waterless fountain - both destined to be barren until the return of the Flathead line - the Fountain errupted in a gyzer of water and the Tree burst forth in leaf and fruit. Thus Willie's heritage was revealed and (to his great surprise) he was proclaimed King on the spot by the acclimation of the populace. The Steward could only look on, stripped of his station, glowering with impotent rage and envy. And while the people loved Willie from the start, the Steward was not alone in his displeasure. The High Priest was also in a state of silent, vindictive furry.
