@@ -180,10 +180,11 @@ Rough Timeline:
 
 *** To Do List ***
 
-To Do:
+Backstory Planning:
     - [DONE] capture key existing story text from game
     - [DONE] capture general notes and ideas on Narrative
     - [DONE] create initial timeline
+Backstory Writing:
     - [DONE] how did Willie come to rule Bright Castle?
     - [DONE] fill out the Dark Castle disaster - what sort of human frailty / dire betrayal led to this?
     - [DONE] a bit more info on Tabitha's kingdom... how related to the kingdom of Bright Castle
@@ -191,10 +192,14 @@ To Do:
     - [DONE] time passes section to get to Burt
     - [DONE] tell Burt's tale and how he was partly raised by Nana
     - [DONE] briefly describe burt as a young man - his crush on Chrissy and friendship with Cecily
-    - [TBD] jump back to start and tell about Herbert / Willie's backstory 
+    - [DONE] jump back to start and tell about Herbert / Willie's backstory 
     - [TBD] full end-to-end story Review / timeline true-up
+Game Text to Updaate:
     - [TBD] compose updated story text based on new backstory
-    - [TBD] compose game intro / inventory / biscuit description / trademark inscription based on story
+    - [TBD] compose game intro based on story
+    = [TBD] compose inventory text (multiple) based on story
+    - [TBD] compose biscuit description based on story
+    - [TBD] compose trademark inscription based on story
 
 
 *** Detailed Narrative ***
@@ -208,14 +213,14 @@ The Last of the Flatheads:
 
      By this time, Thessaly was once agin living on wrong side of the Frigid River, raising newborn she had named Herbert so as to be as different from Wurb as possible. Her name would never appear on the roles of the Circle of Enchanters - and she likely wouldn't have had the patience for the guilds even if they'd have had her - but she had learned enough from her late night excursions to the royal library to concoct working healing and love potions (and a couple of nasty poisons she made a point of not talking about) - and that was enough to earn her a comfortable, if idosyncratic, living in the a small village.
 
-    Herbert lived a quiet, if slightly odd, life as the only son of the village herbalist. No portents of destiny wafted about him and, if asked, his mother, Thessaly, stated flatly that the less said about Herbert's father the better. Little is known about Herbert's life but he did eventually meet and marry a young lady, Clara, the warior woman of the little outpost. It's unknown what Clara, said to be boistorous and a bit crude, saw in the introverted Herbert opposites really did attract in this case. Sadly, Clara passed from wounds incurred from successfully defefing the village from a goblin raid (even Thessaly's potions were not enough to save her). Worse yet, Thessaly herself died just a year later from the disasterous results of an unwise potions experiment (fortunately, she did all her potion-craft in a remote shed so there were no other casualties from the blast) - leaving Herbert to raise young William on his own.
+    Herbert lived a quiet, if slightly odd life as the only son of the village herbalist. No portents of destiny wafted about him and, if asked, his mother, Thessaly, stated flatly that the less said about Herbert's father the better. Little is known about Herbert's early existence but he did eventually meet and marry a young lady, Clara, the warior woman of the village. It's hard to imagine what Clara, said to be boistorous and a bit crude, saw in the introverted Herbert but perhaps in this case opposites really did attract. Sadly, Clara passed from wounds incurred from successfully defending the village from a goblin raid (even Thessaly's potions were not enough to save her). Worse yet, Thessaly herself died just a year later from the disasterous results of an unwise potions experiment (fortunately, she did all her potion-craft in a remote shed so there were no other casualties from the blast) - leaving Herbert to raise young William on his own.
     
-
-    William Herbert Flathead (also known as "Willie the Wanderer") was [no trade to follow in; feral]....
-
+    Young William Herbert Flathead (who would come to be known as "Willie the Wanderer") had no trade to follow in and little if any actual parenting. In fact, if the tales are to be believed, he grew up practically ferral. Certainly he was a child of mighty contrasts.  He was a robust and vigorous lad who roamed the surrounding forest fearlessly from a young age, more often than not returning home with a tale of adventure and a severed goblin head to prove it. And yet, he had a natural bent towards his father's bookishness. As he grew into manhood is was said of Willie that if you needed to find him urgently you should either start by searching the darkest caves of the northern frontier or else begin with the quiet reading room of the royal archives. And then there was his grandparent's influence... Willie had a knack for minor magic and was known to dabble in potions in a hobbiest way. He was also immune to the influences of power and prestiege - as much at ease in the halls of the high court as on the rocky trail. 
+    
+    Socially, Willie was an open book. He had a natural love for his fellow man, woman, dwarf, and elf - regardless of station - and embraced all he met with candor and the expectation of goodness. Accordingly, he struggled to comprehend the petty follies and vanities of those around him and often, unintentionally, ran roughshod over their insecurities. These traits endeared him to the populace - but were perhaps also the seeds of his downfall. Willie was born for greatness - but the world was not born for Willie.
 
 Willie's Reign:
-    Willie arrived at "High Castle" soon after gaining the Twenty Treasures of Zork. At the time, High Castle was an outpost of the GUE and had been under stewardship ever since the empire's fall 65 years earlier. The Steward, the eldest son of High Castle's first steward and equal measures entitled and insecure in his reign, would doubtless have been intimidated by Willie's prowers and fame alone. But when Willie visited the castle courtyard - with the withered tree and waterless fountain - both destined to be barren until the return of the Flathead line - the Fountain errupted in a gyzer of water and the Tree burst forth in leaf and fruit. Thus Willie's heritage was revealed and (to his great surprise) he was proclaimed King on the spot by the acclimation of the populace. The Steward could only look on, stripped of his station, glowering with impotent rage and envy. And while the people loved Willie from the start, the Steward was not alone in his displeasure. The High Priest was also in a state of silent, vindictive furry.
+    Willie arrived at "High Castle" at the age of 30, soon after gaining the Twenty Treasures of Zork - and great wealth and renown with them. At the time, High Castle was an outpost of the GUE and had been under stewardship ever since the empire's fall 65 years earlier. The Steward, the eldest son of High Castle's first steward and equal measures entitled and insecure in his reign, would doubtless have been intimidated by Willie's prowers and fame alone. But when Willie visited the castle courtyard - with the withered tree and waterless fountain - both destined to be barren until the return of the Flathead line - the Fountain errupted in a gyzer of water and the Tree burst forth in leaf and fruit. Thus Willie's heritage was revealed and (to his great surprise) he was proclaimed King on the spot by the acclimation of the populace. The Steward could only look on, stripped of his station, glowering with impotent rage and envy. And while the people loved Willie from the start, the Steward was not alone in his displeasure. The High Priest was also in a state of silent, vindictive furry.
 
     Willie was an open-hearted man of the people. He came from the streets himself and felt a bond with the less fortunate. He saw that the Steward's taxes - and the High Priets tithes - on the poor were far too high - and that the nobility were nearly untaxed. Uncaring of the tax impact on himself (he was likely the richest man of the land at the time) he rewrote the tax code to shift the burden. He was also a huge believer in education and the notion that any man - or woman - could "pull themselves up by thar bootstraps". He noted that the treasury was already healthy (though not as healthy as it should have been given the tax rates) and spent liberally to provide education and opportunity for all. He was also a fair handed man by nature and thus put a stop to curruption wherever he came across it. Perhaps most distressing to the Steward and the High Priest, Willie was not just a man of the people - he was a man of *all* people. He renamed "High Castle" to "Bright Castle" and threw open the gates to all. He embraced Elven minstrals and Dwarven craftsmen alike as full citizens and supported the arts generously. It was the golden era of Bright Castle. There was music and joy in the streets and it was said that every day felt like festival day. And yet, like so many golden ages, it was to last just a briefly.
 
