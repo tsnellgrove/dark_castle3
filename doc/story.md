@@ -197,7 +197,7 @@ Backstory Writing:
 Game Text to Updaate:
     - [INPROC] compose updated story text based on new backstory
         - [DONE] 'hedgehog broach'
-        - [TBD] 'family_tree'
+        - [DONE] 'family_tree'
         - [TBD] 'guard_goblin_shiny_sword_burt_*'
         - [TBD] 'moat_get_crown_result'
         - [TBD] 'cecily'
@@ -327,13 +327,25 @@ Burt as a Young Man:
     And so it was, that one boisterous Friday night at the pub, perhaps after a pint more than usual, and just after Chrissy had declared it to be "the most terrible and fearful place in all the wide land", Burt swore boldly to all assembled that he would march up to Dark Castle the very next day - and if there was treasure in it, he aimed haul it out and buy a round for everyone!
 
 
+*** DC1 Ideas ***
+- General:
+    - Who should the advisors be? What creatures do they become; what puzzle (logic puzzle?) are they linked to?
+    - Perhaps leave Burt's relationship with father unresolved - gives him a bit of an insecurity about copying; gets resolved when he becomes king and hires his father as lead scrivener
+    - Burt is much like Willie but, thanks to being raised by Nana, more canny about change management and smoothing things over; maybe go back and make Willie a bit more reckless?
+    - Perhaps throw in a baking metaphor for Burt - learns from Nana mix / stir change & tradition?
+- Steward => Goblin
+- High Priest => Vampire
+- Librarian => Dragon
+- [TBD] Advisors => Monkeys (???)
+- [TBD] ??? => Mice in maze => (union workmen?)
+- [TBD] ??? => Ferret (local thief?)
+- [TBD] Why are sword & key so important?
+- [TBD] Why is goblin afraid of sword (presumably is a symbol of the true king?)
+- [TBD] What is with the RH??
+- [TBD] have Burt think in baking metaphors? Routinely hear words of Nana and Cecily? Also criicism of father?
 
-*** New Ideas to Incorportate ***
 
-- Burt is much like Willie but, thanks to being raised by Nana, more canny about change management and smoothing things over; maybe go back and make Willie a bit more reckless?
-- Perhaps throw in a baking metaphor for Burt - learns from Nana mix / stir change & tradition?
-- Who should the advisors be? What creatures to they become and what puzzle (logic puzzle?) are they linked to?
-- Perhaps leave Burt's relationship with father unresolved - gives him a bit of an insecurity about copying; gets resolved when he becomes king and hires his father as lead scrivener
+*** Epilogue Ideas ***
 - Burt & Cecily Brewer:
     - Post DC2, Burt will need to woo Cecily (not just swoop in and "win" her as king)
     - Cecily is a young woman with dreams and plans who does not spend much time thinking of men (much like Nana)
@@ -357,7 +369,6 @@ Burt as a Young Man:
 
 
 *** DC2 Ideas ***
-
 DC2 Ideas I'm not Ready to Reveal / Commit To:
 - Princess Saffron is actually Tabitha, senior member of the Circle of Enchanters, in disguise
 - Tabitha is a member of the Enchanter's Circle and the real brains / pragmatist behind it (not Belboz)
@@ -379,7 +390,7 @@ DC2 Ideas I'm not Ready to Reveal / Commit To:
 Key Prop / Backstory Ideas:
 - Should intro game with a bit of backstory on Burt
 - Biscuits:
-    - The Family Tree insignia and the biscuit insignia are the same (except the biscuits are missing the RH)
+    - [DONE]: Family Tree insignia and the biscuit insignia are the same (except the biscuits are missing the RH)
     - Key opportunity to provide some early backstory
 - The Elven Sword and the Brass Lantern (found on the wooden shelf) are relics from his adventuring days
     - They are handed down to Burt over the course of the adventure
@@ -390,6 +401,9 @@ Key Prop / Backstory Ideas:
     - Should match description in Enchanter
     - There's nothing at all special about this Earthen Jug. It's not at all like any other jug you may have come across anywhere else...
 - have Cecily and Nana be occasional voices in Burt's head?
+
+
+
 
 
 *** New Ref Text ***
@@ -416,3 +430,6 @@ Key Prop / Backstory Ideas:
     Stunned by this strange tale you began to stammer an answer but just then your Father returned with the hot tea. With a wink just for you, Nana's eyes closed again and she sank back into the bed. Minutes later she was gone.
     
     For years and years you wondered what she was talking about and eventually you began to doubt the conversation had ever even happened. Over time it had faded completely... but here in Dark Castle, with the Hedgehog Broach before you, the memory is clear and real. Nana was buried with her beloved broach - she had insisted on it. This must have been a matching mate - presumably worn by Willy himself."
+
+'family_tree':
+    "It appears to show the family tree of the Flathead dynasty. Though generally agreed to have peaked (nadired?) during the reign of Dimwit Flathead and petered out shortly there-after during the inglorious and flacid rulership of Wurb Flathead, this Family Tree tells a different story. It claims that an illigitimate child of Wurb, secreted away kept in hiding during the Empire's fall, continued the line for another generation from whence arose William 'The Wanderer' Flathead only a little over 100 years ago. The area below William is indistinct and feels incomplete.. as if there are details still waiting to be filled in.\n\nAt the very top of the Family Tree you see a royal crest. Oddly enough, it appears to be a Hedgehog bearing a Shiny Sword and a Silver Key. To your astonishment, the insignia looks familiar! The sword and the key - their shape, proportions, and position - look exactly the same as decorative insignia on the biscuits your great grandmother taught you to bake as a child. The resemblance is uncanny!"
