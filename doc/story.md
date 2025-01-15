@@ -34,6 +34,11 @@
 'moat_get_crown_result':
     "With courage and boldness to spare you leap from the drawbridge into the murky waters of the Moat. A less resolute adventurer might have turned tail at the sight of the oncoming giant crocodile but not you Burt. Treading water with your feet you take a two-handed grip on your weapon and get ready to face your destiny. Just before reaching you the primitive reptile realizes that you are armed and ready to fight (crocs are famously near-sighted). In surprise and fear it belches up the contents of it's stomach - including the Royal Crown - and flees in fear. With a deft athleticism unlike anything you've ever displayed before today you stow your weapon, snag the Royal Crown before it sinkes, and in one smooth motion adroitly hoist yourself back onto the drawbridge one handed. The lads at the pub would fall over at the sight of your skill and courage! (though mind you, they fall over on a regular basis as it is)"
 
+'burt_show_guard_goblin_shiny_sword':
+    "The Guard Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
+
+
+
 [A Cup of Tea]
 
 'cecily':
@@ -195,12 +200,12 @@ Backstory Writing:
     - [DONE] jump back to start and tell about Herbert / Willie's backstory 
     - [DONE] full end-to-end story Review / timeline true-up
 Game Text to Updaate:
-    - [INPROC] compose updated story text based on new backstory
+    - [DONE] compose updated story text based on new backstory
         - [DONE] 'hedgehog broach'
         - [DONE] 'family_tree'
-        - [TBD] 'guard_goblin_shiny_sword_burt_*'
-        - [TBD] 'moat_get_crown_result'
-        - [TBD] 'cecily'
+        - [DONE] 'guard_goblin_shiny_sword_burt_*'
+        - [DONE] 'moat_get_crown_result'
+        - [DONE] 'cecily'
     - [TBD] compose game intro based on story
     = [TBD] compose inventory text (multiple) based on story
     - [TBD] compose biscuit description based on story
@@ -343,7 +348,7 @@ Burt as a Young Man:
 - [TBD] Why is goblin afraid of sword (presumably is a symbol of the true king?)
 - [TBD] What is with the RH??
 - [TBD] have Burt think in baking metaphors? Routinely hear words of Nana and Cecily? Also criicism of father?
-
+- [TBD] how do RH and goblin change behavior when Burt is wearing crown?
 
 *** Epilogue Ideas ***
 - Burt & Cecily Brewer:
@@ -433,3 +438,20 @@ Key Prop / Backstory Ideas:
 
 'family_tree':
     "It appears to show the family tree of the Flathead dynasty. Though generally agreed to have peaked (nadired?) during the reign of Dimwit Flathead and petered out shortly there-after during the inglorious and flacid rulership of Wurb Flathead, this Family Tree tells a different story. It claims that an illigitimate child of Wurb, secreted away kept in hiding during the Empire's fall, continued the line for another generation from whence arose William 'The Wanderer' Flathead only a little over 100 years ago. The area below William is indistinct and feels incomplete.. as if there are details still waiting to be filled in.\n\nAt the very top of the Family Tree you see a royal crest. Oddly enough, it appears to be a Hedgehog bearing a Shiny Sword and a Silver Key. To your astonishment, the insignia looks familiar! The sword and the key - their shape, proportions, and position - look exactly the same as decorative insignia on the biscuits your great grandmother taught you to bake as a child. The resemblance is uncanny!"
+
+'guard_goblin_shiny_sword_burt_*':
+    "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. You know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle."
+
+'moat_get_crown_result':
+    "With courage and boldness to spare you leap from the drawbridge into the murky waters of the Moat. A less resolute adventurer might have turned tail at the sight of the oncoming giant crocodile but not you Burt. Treading water with your feet you take a two-handed grip on your weapon and get ready to face your destiny. Just before reaching you the primitive reptile realizes that you are armed and ready to fight (crocs are famously near-sighted). In surprise and fear it belches up the contents of it's stomach - including the Royal Crown - and flees in fear. With a deft athleticism unlike anything you've ever displayed before today you stow your weapon, snag the Royal Crown before it sinkes, and in one smooth motion adroitly hoist yourself back onto the drawbridge one handed. The lads at the pub would fall over at the sight of your skill and courage! (though mind you, they fall over on a regular basis as it is)"
+
+'burt_show_guard_goblin_shiny_sword':
+    "The Guard Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
+
+'cecily':
+    "You give yourself a self-concious once-over: at age 19 and the youngest daughter of Ethan Brewer, the prosperous owner of the town's only pub, you should be well on your way towards matrimony - but to your mother's dismay and your own deep gratitude, it appears to be nowhere on the horrizon. Of course you're also the more homely and introverted daughter - more fond of books than boys they say. Your older sister, Chrissy, the queen of the viallage, has always had a dozzen men at a time circling her in eratic orbits, moths to the flame - so who would ever notice you?",
+
+- [TBD] compose game intro based on story
+- [TBD] compose inventory text (multiple) based on story
+- [TBD] compose biscuit description based on story
+- [TBD] compose trademark inscription based on story
