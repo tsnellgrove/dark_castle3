@@ -37,6 +37,14 @@
 'burt_show_guard_goblin_shiny_sword':
     "The Guard Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
 
+'introduction':
+    "Greetings brave adventurer!\n\nYou are Burt-the-Baker, the only adventurer brave - or foolish - enough to enter the Dark Castle in search of treasure.\n\nType 'help' for help.",
+
+'dark_castle':
+    "Dark Castle looms over you. Its facade of blackened turrets and cracked walls is dour and singlularly univiting. It's hard to imagine but your great grandma Nana used to tell wonderous stories of the old days when the castle gleamed brightly on its hill and was a beacon of order and goodness for the land. Maybe it's because of the stories, but you've always had a bit of an itch to venture inside. The place has somehow called to you - almost daring you to enter - and now that a round of beer and your alehouse repuation as a fearless ruffian are on the line, you intend to answer the call!",		
+
+'entrance_south_warn_0':
+    "Don't be ridiculous Burt. You just swore to the whole pub that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",
 
 
 [A Cup of Tea]
@@ -181,35 +189,6 @@ Rough Timeline:
 - [1026 GUE] {Burt born as youngest of 7 to Billy and Esme}
 - [1035 GUE] {Nana, age 105, passes; Burt is 9}
 - [1048 GUE] {Burt is 22; Events of DC1}
-
-
-*** To Do List ***
-
-Backstory Planning:
-    - [DONE] capture key existing story text from game
-    - [DONE] capture general notes and ideas on Narrative
-    - [DONE] create initial timeline
-Backstory Writing:
-    - [DONE] how did Willie come to rule Bright Castle?
-    - [DONE] fill out the Dark Castle disaster - what sort of human frailty / dire betrayal led to this?
-    - [DONE] a bit more info on Tabitha's kingdom... how related to the kingdom of Bright Castle
-    - [DONE] fill out Nana's tale
-    - [DONE] time passes section to get to Burt
-    - [DONE] tell Burt's tale and how he was partly raised by Nana
-    - [DONE] briefly describe burt as a young man - his crush on Chrissy and friendship with Cecily
-    - [DONE] jump back to start and tell about Herbert / Willie's backstory 
-    - [DONE] full end-to-end story Review / timeline true-up
-Game Text to Updaate:
-    - [DONE] compose updated story text based on new backstory
-        - [DONE] 'hedgehog broach'
-        - [DONE] 'family_tree'
-        - [DONE] 'guard_goblin_shiny_sword_burt_*'
-        - [DONE] 'moat_get_crown_result'
-        - [DONE] 'cecily'
-    - [TBD] compose game intro based on story
-    = [TBD] compose inventory text (multiple) based on story
-    - [TBD] compose biscuit description based on story
-    - [TBD] compose trademark inscription based on story
 
 
 *** Detailed Narrative ***
@@ -448,10 +427,50 @@ Key Prop / Backstory Ideas:
 'burt_show_guard_goblin_shiny_sword':
     "The Guard Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
 
+'introduction':
+    "Greetings brave adventurer!\n\nYou are Burt-the-Baker, the only adventurer brave - or foolish - enough to enter the Dark Castle in search of treasure.\n\nType 'help' for help.",
+
+'dark_castle':
+    "Dark Castle looms over you. Its facade of blackened turrets and cracked walls is dour and singlularly univiting. It's hard to imagine but your great grandma Nana used to tell wonderous stories of the old days when the castle gleamed brightly on its hill and was a beacon of order and goodness for the land. Maybe it's because of the stories, but you've always had a bit of an itch to venture inside. The place has somehow called to you - almost daring you to enter - and now that a round of beer and your alehouse repuation as a fearless ruffian are on the line, you intend to answer the call!",		
+
+'entrance_south_warn_0':
+    "Don't be ridiculous Burt. You just swore to Chrissy Brewer (the girl of your dreams!) and the whole rest of the pub that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",
+
 'cecily':
     "You give yourself a self-concious once-over: at age 19 and the youngest daughter of Ethan Brewer, the prosperous owner of the town's only pub, you should be well on your way towards matrimony - but to your mother's dismay and your own deep gratitude, it appears to be nowhere on the horrizon. Of course you're also the more homely and introverted daughter - more fond of books than boys they say. Your older sister, Chrissy, the queen of the viallage, has always had a dozzen men at a time circling her in eratic orbits, moths to the flame - so who would ever notice you?",
 
-- [TBD] compose game intro based on story
-- [TBD] compose inventory text (multiple) based on story
-- [TBD] compose biscuit description based on story
-- [TBD] compose trademark inscription based on story
+
+
+
+*** To Do List ***
+
+- [DONE] Backstory Planning:
+    - [DONE] capture key existing story text from game
+    - [DONE] capture general notes and ideas on Narrative
+    - [DONE] create initial timeline
+- [DONE] Backstory Writing:
+    - [DONE] how did Willie come to rule Bright Castle?
+    - [DONE] fill out the Dark Castle disaster - what sort of human frailty / dire betrayal led to this?
+    - [DONE] a bit more info on Tabitha's kingdom... how related to the kingdom of Bright Castle
+    - [DONE] fill out Nana's tale
+    - [DONE] time passes section to get to Burt
+    - [DONE] tell Burt's tale and how he was partly raised by Nana
+    - [DONE] briefly describe burt as a young man - his crush on Chrissy and friendship with Cecily
+    - [DONE] jump back to start and tell about Herbert / Willie's backstory 
+    - [DONE] full end-to-end story Review / timeline true-up
+- [INPROC] compose updated story text based on new backstory
+    - [DONE] 'hedgehog broach'
+    - [DONE] 'family_tree'
+    - [DONE] 'guard_goblin_shiny_sword_burt_*'
+    - [DONE] 'moat_get_crown_result'
+    - [DONE] 'cecily'
+    - [DONE] compose game intro based on story
+    - [DONE] dark_castle
+    - [DONE] go_south
+    - [TBD] rusty_key 
+    - [TBD] inventory text (multiple) based on story
+    - [TBD] biscuit description based on story
+    - [TBD] trademark inscription => insignia based on story
+
+
+
