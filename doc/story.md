@@ -46,6 +46,9 @@
 'entrance_south_warn_0':
     "Don't be ridiculous Burt. You just swore to the whole pub that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",
 
+'rusty_key':
+    "An old Rusty Key... the one they gave you at the pub when you swore to pillage the Dark Castle. What could you possibly do with it?",
+
 
 [A Cup of Tea]
 
@@ -413,7 +416,7 @@ Key Prop / Backstory Ideas:
     
     Stunned by this strange tale you began to stammer an answer but just then your Father returned with the hot tea. With a wink just for you, Nana's eyes closed again and she sank back into the bed. Minutes later she was gone.
     
-    For years and years you wondered what she was talking about and eventually you began to doubt the conversation had ever even happened. Over time it had faded completely... but here in Dark Castle, with the Hedgehog Broach before you, the memory is clear and real. Nana was buried with her beloved broach - she had insisted on it. This must have been a matching mate - presumably worn by Willy himself."
+    For years and years you wondered what she was talking about and eventually you began to doubt the conversation had ever even happened. Over time and surpress by grief, it had faded completely... but here in Dark Castle, with the Hedgehog Broach before you, the memory is clear and real. Nana was buried with her beloved broach - she had insisted on it. This must have been a matching mate - presumably worn by Willy himself."
 
 'family_tree':
     "It appears to show the family tree of the Flathead dynasty. Though generally agreed to have peaked (nadired?) during the reign of Dimwit Flathead and petered out shortly there-after during the inglorious and flacid rulership of Wurb Flathead, this Family Tree tells a different story. It claims that an illigitimate child of Wurb, secreted away kept in hiding during the Empire's fall, continued the line for another generation from whence arose William 'The Wanderer' Flathead only a little over 100 years ago. The area below William is indistinct and feels incomplete.. as if there are details still waiting to be filled in.\n\nAt the very top of the Family Tree you see a royal crest. Oddly enough, it appears to be a Hedgehog bearing a Shiny Sword and a Silver Key. To your astonishment, the insignia looks familiar! The sword and the key - their shape, proportions, and position - look exactly the same as decorative insignia on the biscuits your great grandmother taught you to bake as a child. The resemblance is uncanny!"
@@ -434,7 +437,10 @@ Key Prop / Backstory Ideas:
     "Dark Castle looms over you. Its facade of blackened turrets and cracked walls is dour and singlularly univiting. It's hard to imagine but your great grandma Nana used to tell wonderous stories of the old days when the castle gleamed brightly on its hill and was a beacon of order and goodness for the land. Maybe it's because of the stories, but you've always had a bit of an itch to venture inside. The place has somehow called to you - almost daring you to enter - and now that a round of beer and your alehouse repuation as a fearless ruffian are on the line, you intend to answer the call!",		
 
 'entrance_south_warn_0':
-    "Don't be ridiculous Burt. You just swore to Chrissy Brewer (the girl of your dreams!) and the whole rest of the pub that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",
+    "Don't be ridiculous Burt. You just swore to Chrissy Brewer (the prettiest girl in town!) and the whole rest of the pub that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",
+
+'rusty_key':
+    "An old Rusty Key... the one you swore to the whole pub (and Miss Chrissy Brewer!) that you'd use to pillage the Dark Castle... What could you possibly do with it?",
 
 'cecily':
     "You give yourself a self-concious once-over: at age 19 and the youngest daughter of Ethan Brewer, the prosperous owner of the town's only pub, you should be well on your way towards matrimony - but to your mother's dismay and your own deep gratitude, it appears to be nowhere on the horrizon. Of course you're also the more homely and introverted daughter - more fond of books than boys they say. Your older sister, Chrissy, the queen of the viallage, has always had a dozzen men at a time circling her in eratic orbits, moths to the flame - so who would ever notice you?",
@@ -467,10 +473,11 @@ Key Prop / Backstory Ideas:
     - [DONE] compose game intro based on story
     - [DONE] dark_castle
     - [DONE] go_south
-    - [TBD] rusty_key 
-    - [TBD] inventory text (multiple) based on story
+    - [DONE] rusty_key 
     - [TBD] biscuit description based on story
     - [TBD] trademark inscription => insignia based on story
+    - [TBD] inventory text (multiple) based on story
+
 
 
 
