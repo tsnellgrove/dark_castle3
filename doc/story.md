@@ -52,6 +52,8 @@
 'stale_biscuits':
     "The Stale Biscuits are rather unappetizing. There is a Trademark baked into the biscuits.",
 
+'trademark':
+    "'McVities'",
 
 [A Cup of Tea]
 
@@ -448,6 +450,9 @@ Key Prop / Backstory Ideas:
 'stale_biscuits' => baked_biscuit:
     "This Baked Biscuit came fresh out of the oven just this morning. You ate the rest of the batch on the hike over to Dark Castle and this last biscuits is all that's left. It smells mouth-wateringly delicious. There is an Insignia imprinted on the Baked Biscuit."
 
+'trademark' => 'insignia':
+    "Baked into the biscuit are the symbols of a key and sword. As a child you remember asking your great grandmother Nana why she stamped these onto the front of every biscuit. 'It's a reminder of the past Burty,', she declared, 'and maybe someday even, of the future.' You were never clear what she meant - but you've loyaly used Nana's original key and sword stamp on every biscuit you've ever baked.",
+
 'cecily':
     "You give yourself a self-concious once-over: at age 19 and the youngest daughter of Ethan Brewer, the prosperous owner of the town's only pub, you should be well on your way towards matrimony - but to your mother's dismay and your own deep gratitude, it appears to be nowhere on the horrizon. Of course you're also the more homely and introverted daughter - more fond of books than boys they say. Your older sister, Chrissy, the queen of the viallage, has always had a dozzen men at a time circling her in eratic orbits, moths to the flame - so who would ever notice you?",
 
@@ -481,7 +486,7 @@ Key Prop / Backstory Ideas:
     - [DONE] go_south
     - [DONE] rusty_key 
     - [DONE] biscuit description based on story
-    - [TBD] trademark inscription => insignia based on story
+    - [DONE] trademark inscription => insignia based on story
     - [TBD] biscuit warnings
     - [TBD] inventory text (multiple) based on story
 
