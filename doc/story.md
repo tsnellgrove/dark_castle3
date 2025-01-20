@@ -55,6 +55,13 @@
 'trademark':
     "'McVities'",
 
+'eat_biscuits_warning_1':
+    "You'd really rather not. You've been rooming in your Mom's basement and living off the Stale Biscuits in her pantry ever since you finished school - mostly so that you could spend whatever money you had at the pub. You don't mind sleeping in the basement but the Stale Biscuits are really getting to you.. you'll need to be a lot hungrier than you are now before you'll be able to keep another of those down!",
+
+'eat_biscuits_warning_2':
+    "Don't do it Burt. You know they'll only give you indigestion... and to some poor creature out there they might be a rare and wonderous delicacy.",
+
+
 [A Cup of Tea]
 
 'cecily':
@@ -424,7 +431,7 @@ Key Prop / Backstory Ideas:
     For years and years you wondered what she was talking about and eventually you began to doubt the conversation had ever even happened. Over time and surpress by grief, it had faded completely... but here in Dark Castle, with the Hedgehog Broach before you, the memory is clear and real. Nana was buried with her beloved broach - she had insisted on it. This must have been a matching mate - presumably worn by Willy himself."
 
 'family_tree':
-    "It appears to show the family tree of the Flathead dynasty. Though generally agreed to have peaked (nadired?) during the reign of Dimwit Flathead and petered out shortly there-after during the inglorious and flacid rulership of Wurb Flathead, this Family Tree tells a different story. It claims that an illigitimate child of Wurb, secreted away kept in hiding during the Empire's fall, continued the line for another generation from whence arose William 'The Wanderer' Flathead only a little over 100 years ago. The area below William is indistinct and feels incomplete.. as if there are details still waiting to be filled in.\n\nAt the very top of the Family Tree you see a royal crest. Oddly enough, it appears to be a Hedgehog bearing a Shiny Sword and a Silver Key. To your astonishment, the insignia looks familiar! The sword and the key - their shape, proportions, and position - look exactly the same as decorative insignia on the biscuits your great grandmother taught you to bake as a child. The resemblance is uncanny!"
+    "It appears to show the family tree of the Flathead dynasty. Though generally agreed to have peaked (nadired?) during the reign of Dimwit Flathead and petered out shortly there-after during the inglorious and flacid rulership of Wurb Flathead, this Family Tree tells a different story. It claims that an illigitimate child of Wurb, secreted away kept in hiding during the Empire's fall, continued the line for another generation from whence arose William 'The Wanderer' Flathead only a little over 100 years ago. The area below William is indistinct and feels incomplete.. as if there are details still waiting to be filled in.\n\nAt the very top of the Family Tree you see a royal crest. Oddly enough, it appears to be a Hedgehog bearing a Shiny Sword and a Silver Key. To your astonishment, the insignia looks familiar! The sword and the key - their shape, proportions, and position - look exactly the same as decorative insignia on the biscuits your great grandmother Nana taught you to bake as a child. The resemblance is uncanny!"
 
 'guard_goblin_shiny_sword_burt_*':
     "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. You know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle."
@@ -448,10 +455,16 @@ Key Prop / Backstory Ideas:
     "An old Rusty Key... the one you swore to the whole pub (and Miss Chrissy Brewer!) that you'd use to pillage the Dark Castle... What could you possibly do with it?",
 
 'stale_biscuits' => baked_biscuit:
-    "This Baked Biscuit came fresh out of the oven just this morning. You ate the rest of the batch on the hike over to Dark Castle and this last biscuits is all that's left. It smells mouth-wateringly delicious. There is an Insignia imprinted on the Baked Biscuit."
+    "Every time you look at one of these biscuits you think of your great grandmother Nana, who raised you and taught you how to bake. This Baked Biscuit in particular came fresh out of the oven just this morning. You ate the rest of the batch on the hike over to Dark Castle and this last biscuits is all that's left. It smells mouth-wateringly delicious. There is an Insignia imprinted on the Baked Biscuit."
 
 'trademark' => 'insignia':
-    "Baked into the biscuit are the symbols of a key and sword. As a child you remember asking your great grandmother Nana why she stamped these onto the front of every biscuit. 'It's a reminder of the past Burty,', she declared, 'and maybe someday even, of the future.' You were never clear what she meant - but you've loyaly used Nana's original key and sword stamp on every biscuit you've ever baked.",
+    "Baked into the biscuit are the symbols of a key and sword. As a child you remember asking your great grandmother Nana why she stamped these onto the front of every biscuit. 'It's a reminder of the past Burty,', she declared, 'and maybe someday, even, of the future.' You were never clear what she meant - but you've loyaly used Nana's original key and sword stamp on every biscuit you've ever baked.",
+
+'eat_biscuits_warning_1':
+    "You're tempted - this last biscuit smells delicious - but your great grandmother, Nana, who taught you her secret biscuit recipie in the first place, wouldn't abide by it. Nana always insisted that the last biscuit in a batch be given away. As a toddler you would howl that you wanted it more than anyone else but Nana was firm. 'Charity and kindness are the secrect ingredients Burty' she would say. And she meant it. If there was no one handy to give the last biscuit to, she would place it out on the back step 'for a wee good-hearted animal'. But a Baker, she said, should never ever eat the last biscuit in a batch.",
+
+'eat_biscuits_warning_2':
+    "Don't do it Burt! What would Nana say? There might be some poor soul out there wasting away and just yearning for a Baked Biscuit.",
 
 'cecily':
     "You give yourself a self-concious once-over: at age 19 and the youngest daughter of Ethan Brewer, the prosperous owner of the town's only pub, you should be well on your way towards matrimony - but to your mother's dismay and your own deep gratitude, it appears to be nowhere on the horrizon. Of course you're also the more homely and introverted daughter - more fond of books than boys they say. Your older sister, Chrissy, the queen of the viallage, has always had a dozzen men at a time circling her in eratic orbits, moths to the flame - so who would ever notice you?",
@@ -487,7 +500,8 @@ Key Prop / Backstory Ideas:
     - [DONE] rusty_key 
     - [DONE] biscuit description based on story
     - [DONE] trademark inscription => insignia based on story
-    - [TBD] biscuit warnings
+    - [DONE] biscuit warnings
+    - [TBD] eat biscuit
     - [TBD] inventory text (multiple) based on story
 
 
