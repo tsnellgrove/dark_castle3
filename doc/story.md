@@ -61,6 +61,8 @@
 'eat_biscuits_warning_2':
     "Don't do it Burt. You know they'll only give you indigestion... and to some poor creature out there they might be a rare and wonderous delicacy.",
 
+'burt_eat_stale_biscuits':
+    "The Stale Biscuits taste like damp cardboard that's been run over by a cart. You already regret eating them.",
 
 [A Cup of Tea]
 
@@ -466,10 +468,11 @@ Key Prop / Backstory Ideas:
 'eat_biscuits_warning_2':
     "Don't do it Burt! What would Nana say? There might be some poor soul out there wasting away and just yearning for a Baked Biscuit.",
 
+'burt_eat_stale_biscuits' => 'burt_eat_baked_biscuits':
+    "Somehow the Baked Biscuits don't taste nearly as good as they usually do. You imagine Nana's disapointed expression and you regret eating them already.",
+
 'cecily':
     "You give yourself a self-concious once-over: at age 19 and the youngest daughter of Ethan Brewer, the prosperous owner of the town's only pub, you should be well on your way towards matrimony - but to your mother's dismay and your own deep gratitude, it appears to be nowhere on the horrizon. Of course you're also the more homely and introverted daughter - more fond of books than boys they say. Your older sister, Chrissy, the queen of the viallage, has always had a dozzen men at a time circling her in eratic orbits, moths to the flame - so who would ever notice you?",
-
-
 
 
 *** To Do List ***
@@ -488,7 +491,7 @@ Key Prop / Backstory Ideas:
     - [DONE] briefly describe burt as a young man - his crush on Chrissy and friendship with Cecily
     - [DONE] jump back to start and tell about Herbert / Willie's backstory 
     - [DONE] full end-to-end story Review / timeline true-up
-- [INPROC] compose updated story text based on new backstory
+- [DONE] compose updated story text based on new backstory
     - [DONE] 'hedgehog broach'
     - [DONE] 'family_tree'
     - [DONE] 'guard_goblin_shiny_sword_burt_*'
@@ -501,9 +504,13 @@ Key Prop / Backstory Ideas:
     - [DONE] biscuit description based on story
     - [DONE] trademark inscription => insignia based on story
     - [DONE] biscuit warnings
-    - [TBD] eat biscuit
-    - [TBD] inventory text (multiple) based on story
-
+    - [DONE] eat biscuit
+- [TBD] updated inventory text
+    - [TBD] inventory text 1 based on story
+    - [TBD] inventory text 2 based on story
+    - [TBD] inventory text 3 based on story
+    - [TBD] inventory text 4 based on story
+    - [TBD] inventory text 5 based on story
 
 
 
