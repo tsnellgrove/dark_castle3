@@ -64,6 +64,10 @@
 'burt_eat_stale_biscuits':
     "The Stale Biscuits taste like damp cardboard that's been run over by a cart. You already regret eating them.",
 
+'burt':
+    "You cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching and the farting I don't know how you'd fend off the ladies!",
+
+
 [A Cup of Tea]
 
 'cecily':
@@ -474,6 +478,8 @@ Key Prop / Backstory Ideas:
 'cecily':
     "You give yourself a self-concious once-over: at age 19 and the youngest daughter of Ethan Brewer, the prosperous owner of the town's only pub, you should be well on your way towards matrimony - but to your mother's dismay and your own deep gratitude, it appears to be nowhere on the horrizon. Of course you're also the more homely and introverted daughter - more fond of books than boys they say. Your older sister, Chrissy, the queen of the viallage, has always had a dozzen men at a time circling her in eratic orbits, moths to the flame - so who would ever notice you?",
 
+'burt' => 'burt_01':
+    "You cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching, farting, and cussing I don't know how you'd ever manage to fend off the ladies!",
 
 *** To Do List ***
 
@@ -505,8 +511,8 @@ Key Prop / Backstory Ideas:
     - [DONE] trademark inscription => insignia based on story
     - [DONE] biscuit warnings
     - [DONE] eat biscuit
-- [TBD] updated inventory text
-    - [TBD] inventory text 1 based on story
+- [iNPROC] updated inventory text
+    - [DONE] inventory text 1 based on story
     - [TBD] inventory text 2 based on story
     - [TBD] inventory text 3 based on story
     - [TBD] inventory text 4 based on story
