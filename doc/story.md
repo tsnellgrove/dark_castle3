@@ -481,6 +481,10 @@ Key Prop / Backstory Ideas:
 'burt' => 'burt_01':
     "You cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching, farting, and cussing I don't know how you'd ever manage to fend off the ladies!",
 
+'burt' => 'burt_02':
+    "'Well Burty, let's take a look at you.' - that's what your great grandmother, Nana, who raised you until you were nine, would say. And Nana always found the good side of what she saw. When you didn't like the coppiest work you were born to she taught you to bake. When you couldn't sit still she put you to work doing chores for your elderly neighbors. When people whispered that you were a bit odd, Nana hugged you close and called you special. It's been 13 years since Nana left this earth - you wonder what she wouold see in you now?",
+
+
 *** To Do List ***
 
 - [DONE] Backstory Planning:
@@ -512,11 +516,11 @@ Key Prop / Backstory Ideas:
     - [DONE] biscuit warnings
     - [DONE] eat biscuit
 - [iNPROC] updated inventory text
-    - [DONE] inventory text 1 based on story
-    - [TBD] inventory text 2 based on story
-    - [TBD] inventory text 3 based on story
-    - [TBD] inventory text 4 based on story
-    - [TBD] inventory text 5 based on story
+    - [DONE] inventory text 1 based on story (original)
+    - [DONE] inventory text 2 based on story (Nana)
+    - [TBD] inventory text 3 based on story (Chrissy)
+    - [TBD] inventory text 4 based on story (Cecily)
+    - [TBD] inventory text 5 based on story (Father)
 
 
 
