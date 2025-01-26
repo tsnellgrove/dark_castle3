@@ -484,6 +484,9 @@ Key Prop / Backstory Ideas:
 'burt' => 'burt_02':
     "'Well Burty, let's take a look at you.' - that's what your great grandmother, Nana, who raised you until you were nine, would say. And Nana always found the good side of what she saw. When you didn't like the coppiest work you were born to she taught you to bake. When you couldn't sit still she put you to work doing chores for your elderly neighbors. When people whispered that you were a bit odd, Nana hugged you close and called you special. It's been 13 years since Nana left this earth - you wonder what she wouold see in you now?",
 
+'burt' => 'burt_03':
+    "You pause and ponder for a moment - what on earth are you doing here in the gloom of Dark Castle? To be honest, your life has been a bit short on purpose lately. Baking's a fine profession, but you can only bake so many batches of biscuits before you start wondering what it's all about... so maybe Dark Castle is something bigger? And then there's Chrissy Brewer - the prettiest miss in town - she seemed mighty impressed when you declared you'd march in here - and who wouldn't want her attention? In your head you hear your friend Cecily's voice: 'Burt, your just chansing after shiny baubles' - and she's probably right - but something about this place calls to you - to do *something* - but what?",
+
 
 *** To Do List ***
 
@@ -518,7 +521,7 @@ Key Prop / Backstory Ideas:
 - [iNPROC] updated inventory text
     - [DONE] inventory text 1 based on story (original)
     - [DONE] inventory text 2 based on story (Nana)
-    - [TBD] inventory text 3 based on story (Chrissy)
+    - [DONE] inventory text 3 based on story (Chrissy)
     - [TBD] inventory text 4 based on story (Cecily)
     - [TBD] inventory text 5 based on story (Father)
 
