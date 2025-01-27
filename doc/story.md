@@ -487,6 +487,8 @@ Key Prop / Backstory Ideas:
 'burt' => 'burt_03':
     "You pause and ponder for a moment - what on earth are you doing here in the gloom of Dark Castle? To be honest, your life has been a bit short on purpose lately. Baking's a fine profession, but you can only bake so many batches of biscuits before you start wondering what it's all about... so maybe Dark Castle is something bigger? And then there's Chrissy Brewer - the prettiest miss in town - she seemed mighty impressed when you declared you'd march in here - and who wouldn't want her attention? In your head you hear your friend Cecily's voice: 'Burt, your just chansing after shiny baubles' - and she's probably right - but something about this place calls to you - to do *something* - but what?",
 
+'burt' => 'burt_04':
+    "You take an introspective inventory of self: What are your hopes and aspirations beyond the next night of carousing at the pub and possibly, someday, a kiss from Chrissy Brewer? It's like hollering into a well - nothing comes back but the question itself. Most of the lads at the pub don't seem to be asking fool questions like this - or if they are, their answer is as simple as 'Find a lass that'l have you and start a family'. You're looking for a... 'destiny' seems too big... but something more than the next batch of biscuits... You wish Cecily were here... she's the one person in town who knows you well enough to tell you what you're thinking... even if she does make fun of you for having a crush on her sister every chance she gets.",
 
 *** To Do List ***
 
@@ -522,7 +524,7 @@ Key Prop / Backstory Ideas:
     - [DONE] inventory text 1 based on story (original)
     - [DONE] inventory text 2 based on story (Nana)
     - [DONE] inventory text 3 based on story (Chrissy)
-    - [TBD] inventory text 4 based on story (Cecily)
+    - [DONE] inventory text 4 based on story (Cecily)
     - [TBD] inventory text 5 based on story (Father)
 
 
