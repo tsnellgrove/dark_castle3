@@ -490,6 +490,9 @@ Key Prop / Backstory Ideas:
 'burt' => 'burt_04':
     "You take an introspective inventory of self: What are your hopes and aspirations beyond the next night of carousing at the pub and possibly, someday, a kiss from Chrissy Brewer? It's like hollering into a well - nothing comes back but the question itself. Most of the lads at the pub don't seem to be asking fool questions like this - or if they are, their answer is as simple as 'Find a lass that'l have you and start a family'. You're looking for a... 'destiny' seems too big... but something more than the next batch of biscuits... You wish Cecily were here... she's the one person in town who knows you well enough to tell you what you're thinking... even if she does make fun of you for having a crush on her sister every chance she gets.",
 
+'burt' => 'burt_05':
+    "'Take a moment to contemplate your condition.' you hear your Father say. He was a big fan of self examination - still is you suspect - though you haven't had a propper sit down with him for ages. He's getting on - word is he might even retire soon - you should make the time - but it's always awkward. He's never quite forgiven you for not following him in the Coppiest trade. After six girls he'd given up on having a son to carry on the name - and then, you'd arrived and he'd been sure you'd become the famly's first scribe. But no, you were just awful at it. Always trying to write with your left hand. Couldn't spell. And what you wrote was inveitably illegible... and of course you hated it to boot... ran off from the copy chamber the first moment you could no matter what you were told. Broke Pa's heart. Nana understood - she said you were born for different things. She taught you to bake and was the mother you never had... but you wish there was something you could do to make Pa proud. Who knows - Maybe that's partly why you're here, wandering around the ruins of Dark Castle - trying to do something worth doing?",
+
 *** To Do List ***
 
 - [DONE] Backstory Planning:
@@ -520,12 +523,13 @@ Key Prop / Backstory Ideas:
     - [DONE] trademark inscription => insignia based on story
     - [DONE] biscuit warnings
     - [DONE] eat biscuit
-- [iNPROC] updated inventory text
+- [DONE] updated inventory text
     - [DONE] inventory text 1 based on story (original)
     - [DONE] inventory text 2 based on story (Nana)
     - [DONE] inventory text 3 based on story (Chrissy)
     - [DONE] inventory text 4 based on story (Cecily)
-    - [TBD] inventory text 5 based on story (Father)
-
+    - [DONE] inventory text 5 based on story (Father)
+- [TBD] update game with new text
+    - [TBD]
 
 
