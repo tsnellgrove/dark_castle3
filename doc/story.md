@@ -519,6 +519,7 @@ Key Prop / Backstory Ideas:
     - [DONE] dark_castle
     - [DONE] go_south
     - [DONE] rusty_key 
+- [DONE] name change
     - [DONE] biscuit description based on story
     - [DONE] trademark inscription => insignia based on story
     - [DONE] biscuit warnings
@@ -530,6 +531,10 @@ Key Prop / Backstory Ideas:
     - [DONE] inventory text 4 based on story (Cecily)
     - [DONE] inventory text 5 based on story (Father)
 - [TBD] update game with new text
-    - [TBD]
+    - [TBD] identify no change
+    - [TBD] descript updates (DC)
+    - [TBD] descript updaates (Tea)
+    - [TBD] name & descript updates
+    - [TBD] burt multi inv
 
 
