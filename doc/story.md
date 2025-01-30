@@ -413,7 +413,45 @@ Key Prop / Backstory Ideas:
 
 *** New Ref Text ***
 
-'hedgehog_broach':
+- [NO CHANGE]
+
+'guard_goblin_shiny_sword_burt_*':
+    "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. You know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle."
+
+'moat_get_crown_result':
+    "With courage and boldness to spare you leap from the drawbridge into the murky waters of the Moat. A less resolute adventurer might have turned tail at the sight of the oncoming giant crocodile but not you Burt. Treading water with your feet you take a two-handed grip on your weapon and get ready to face your destiny. Just before reaching you the primitive reptile realizes that you are armed and ready to fight (crocs are famously near-sighted). In surprise and fear it belches up the contents of it's stomach - including the Royal Crown - and flees in fear. With a deft athleticism unlike anything you've ever displayed before today you stow your weapon, snag the Royal Crown before it sinkes, and in one smooth motion adroitly hoist yourself back onto the drawbridge one handed. The lads at the pub would fall over at the sight of your skill and courage! (though mind you, they fall over on a regular basis as it is)"
+
+'burt_show_guard_goblin_shiny_sword':
+    "The Guard Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
+
+'introduction':
+    "Greetings brave adventurer!\n\nYou are Burt-the-Baker, the only adventurer brave - or foolish - enough to enter the Dark Castle in search of treasure.\n\nType 'help' for help.",
+
+'dark_castle':
+    "Dark Castle looms over you. Its facade of blackened turrets and cracked walls is dour and singlularly univiting. It's hard to imagine but your great grandma Nana used to tell wonderous stories of the old days when the castle gleamed brightly on its hill and was a beacon of order and goodness for the land. Maybe it's because of the stories, but you've always had a bit of an itch to venture inside. The place has somehow called to you - almost daring you to enter - and now that a round of beer and your alehouse repuation as a fearless ruffian are on the line, you intend to answer the call!",
+
+
+- [NEW DESCRIPTION - TEA]
+
+'cecily':
+    "You give yourself a self-concious once-over: at age 19 and the youngest daughter of Ethan Brewer, the prosperous owner of the town's busiest pub, you should be well on your way towards matrimony - but to your mother's dismay and your own deep gratitude, it appears to be nowhere on the horrizon. Of course you're also the more homely and introverted daughter - more fond of books than boys they say. Your older sister, Chrissy, the queen of the viallage, has always had a dozzen men at a time circling her in eratic orbits, moths to the flame - so who would ever notice you?",
+
+
+- [NEW DESCRIPTION - DC]
+
+'family_tree' :
+    "It appears to show the family tree of the Flathead dynasty. Though generally agreed to have peaked (nadired?) during the reign of Dimwit Flathead and petered out shortly there-after during the inglorious and flacid rulership of Wurb Flathead, this Family Tree tells a different story. It claims that an illigitimate child of Wurb, secreted away kept in hiding during the Empire's fall, continued the line for another generation from whence arose William 'The Wanderer' Flathead only a little over 100 years ago. The area below William is indistinct and feels incomplete.. as if there are details still waiting to be filled in.\n\nAt the very top of the Family Tree you see a royal crest. Oddly enough, it appears to be a Hedgehog bearing a Shiny Sword and a Silver Key. To your astonishment, the insignia looks familiar! The sword and the key - their shape, proportions, and positioning - look exactly the same as decorative insignia on the biscuits your great grandmother Nana taught you to bake as a child. The resemblance is uncanny!",
+
+'entrance_south_warn_0':
+    "Don't be ridiculous Burt. You just swore to the whole pub (and to miss Chrissy Brewer, the prettiest lass in town!) that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",
+
+'rusty_key':
+    "An old Rusty Key... the one you swore to the whole pub (and miss Chrissy Brewer!) that you'd use to pillage the Dark Castle... What could you possibly do with it?",
+
+
+- [FIX NEWLINES]
+
+'hedgehog_broach' :
     "The silver Hedgehog Broach is about an inch in diameter and is carved with the crest of a hedgehog bearing a sword and a key. It's strangely familiar... you've seen one just like it... long ago... examining the Hedgehog Broach up close triggers a long forgotten memory...
     
     you were only nine years old... it was the evening of the Spring Festival but you and all your family were gathered inside, at the bedside of your great grandmother, Nana Baker. She was old - very, very old - so old no even was sure how old - not even Nana. She'd been unable to eat or get out of bed for the past week and the village healer had given his solemn verdict that at long last her time had come. The whole village had come round to pay their last respects but now it was just family left. She looked very tired and her eyes were closed.
@@ -434,31 +472,10 @@ Key Prop / Backstory Ideas:
     
     Stunned by this strange tale you began to stammer an answer but just then your Father returned with the hot tea. With a wink just for you, Nana's eyes closed again and she sank back into the bed. Minutes later she was gone.
     
-    For years and years you wondered what she was talking about and eventually you began to doubt the conversation had ever even happened. Over time and surpress by grief, it had faded completely... but here in Dark Castle, with the Hedgehog Broach before you, the memory is clear and real. Nana was buried with her beloved broach - she had insisted on it. This must have been a matching mate - presumably worn by Willy himself."
+    For years and years you wondered what she was talking about and eventually you began to doubt the conversation had ever even happened. Over time and surpress by grief, it had faded completely... but here in Dark Castle, with the Hedgehog Broach before you, the memory is clear and real. Nana was buried with her beloved broach - she had insisted on it. This must have been a matching mate - presumably worn by Willy himself.",
 
-'family_tree':
-    "It appears to show the family tree of the Flathead dynasty. Though generally agreed to have peaked (nadired?) during the reign of Dimwit Flathead and petered out shortly there-after during the inglorious and flacid rulership of Wurb Flathead, this Family Tree tells a different story. It claims that an illigitimate child of Wurb, secreted away kept in hiding during the Empire's fall, continued the line for another generation from whence arose William 'The Wanderer' Flathead only a little over 100 years ago. The area below William is indistinct and feels incomplete.. as if there are details still waiting to be filled in.\n\nAt the very top of the Family Tree you see a royal crest. Oddly enough, it appears to be a Hedgehog bearing a Shiny Sword and a Silver Key. To your astonishment, the insignia looks familiar! The sword and the key - their shape, proportions, and position - look exactly the same as decorative insignia on the biscuits your great grandmother Nana taught you to bake as a child. The resemblance is uncanny!"
 
-'guard_goblin_shiny_sword_burt_*':
-    "The Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. You know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle."
-
-'moat_get_crown_result':
-    "With courage and boldness to spare you leap from the drawbridge into the murky waters of the Moat. A less resolute adventurer might have turned tail at the sight of the oncoming giant crocodile but not you Burt. Treading water with your feet you take a two-handed grip on your weapon and get ready to face your destiny. Just before reaching you the primitive reptile realizes that you are armed and ready to fight (crocs are famously near-sighted). In surprise and fear it belches up the contents of it's stomach - including the Royal Crown - and flees in fear. With a deft athleticism unlike anything you've ever displayed before today you stow your weapon, snag the Royal Crown before it sinkes, and in one smooth motion adroitly hoist yourself back onto the drawbridge one handed. The lads at the pub would fall over at the sight of your skill and courage! (though mind you, they fall over on a regular basis as it is)"
-
-'burt_show_guard_goblin_shiny_sword':
-    "The Guard Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
-
-'introduction':
-    "Greetings brave adventurer!\n\nYou are Burt-the-Baker, the only adventurer brave - or foolish - enough to enter the Dark Castle in search of treasure.\n\nType 'help' for help.",
-
-'dark_castle':
-    "Dark Castle looms over you. Its facade of blackened turrets and cracked walls is dour and singlularly univiting. It's hard to imagine but your great grandma Nana used to tell wonderous stories of the old days when the castle gleamed brightly on its hill and was a beacon of order and goodness for the land. Maybe it's because of the stories, but you've always had a bit of an itch to venture inside. The place has somehow called to you - almost daring you to enter - and now that a round of beer and your alehouse repuation as a fearless ruffian are on the line, you intend to answer the call!",		
-
-'entrance_south_warn_0':
-    "Don't be ridiculous Burt. You just swore to Chrissy Brewer (the prettiest girl in town!) and the whole rest of the pub that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",
-
-'rusty_key':
-    "An old Rusty Key... the one you swore to the whole pub (and Miss Chrissy Brewer!) that you'd use to pillage the Dark Castle... What could you possibly do with it?",
+- [NEW NAME]
 
 'stale_biscuits' => baked_biscuit:
     "Every time you look at one of these biscuits you think of your great grandmother Nana, who raised you and taught you how to bake. This Baked Biscuit in particular came fresh out of the oven just this morning. You ate the rest of the batch on the hike over to Dark Castle and this last biscuits is all that's left. It smells mouth-wateringly delicious. There is an Insignia imprinted on the Baked Biscuit."
@@ -475,8 +492,8 @@ Key Prop / Backstory Ideas:
 'burt_eat_stale_biscuits' => 'burt_eat_baked_biscuits':
     "Somehow the Baked Biscuits don't taste nearly as good as they usually do. You imagine Nana's disapointed expression and you regret eating them already.",
 
-'cecily':
-    "You give yourself a self-concious once-over: at age 19 and the youngest daughter of Ethan Brewer, the prosperous owner of the town's only pub, you should be well on your way towards matrimony - but to your mother's dismay and your own deep gratitude, it appears to be nowhere on the horrizon. Of course you're also the more homely and introverted daughter - more fond of books than boys they say. Your older sister, Chrissy, the queen of the viallage, has always had a dozzen men at a time circling her in eratic orbits, moths to the flame - so who would ever notice you?",
+
+- [BURT MULTI-DESCRIPT]
 
 'burt' => 'burt_01':
     "You cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching, farting, and cussing I don't know how you'd ever manage to fend off the ladies!",
@@ -530,10 +547,12 @@ Key Prop / Backstory Ideas:
     - [DONE] inventory text 3 based on story (Chrissy)
     - [DONE] inventory text 4 based on story (Cecily)
     - [DONE] inventory text 5 based on story (Father)
-- [TBD] update game with new text
-    - [TBD] identify no change
-    - [TBD] descript updates (DC)
-    - [TBD] descript updaates (Tea)
+- [INPROC] update game with new text
+    - [DONE] organize txt updates
+    - [DONE] identify no change
+    - [DONE] descript updaates (Tea)
+    - [DONE] descript updates (DC)
+    - [TBD] fix newlines and update hedgehog_broach
     - [TBD] name & descript updates
     - [TBD] burt multi inv
 
