@@ -478,11 +478,12 @@ Key Prop / Backstory Ideas:
 	'hedgehog_broach' : "The silver Hedgehog Broach is about an inch in diameter and is carved with the crest of a hedgehog bearing a sword and a key. It's strangely familiar... you've seen one just like it... long ago... examining the Hedgehog Broach up close triggers a long forgotten memory...\n\nyou were only nine years old... it was the evening of the Spring Festival but you and all your family were gathered inside, at the bedside of your great grandmother, Nana Baker. She was old - very, very old - so old no even was sure how old - not even Nana. She'd been unable to eat or get out of bed for the past week and the village healer had given his solemn verdict that at long last her time had come. The whole village had come round to pay their last respects but now it was just family left. She looked very tired and her eyes were closed.\n\n'Billy', said Nana, meaning your father, 'I'm weary... be a good lad and go heat me some tea... Nice and hot please.'. Next she sent your aunt off for a special pillow she'd loaned to a friend. Soon every member of the family was off on an errand and it was just you and Nana.\n\nQuite suddenly, Nana's eyes opened, bright blue and wide awake. 'Well, Burty, finally we can have a little chat. I wish you were a bit older but now will have to do. Tell me Burty, how did ya feel about copying lines?'\n\n'It wasn' so bad' you'd stammered back.n\nNana laughed and gave you a warm smile. 'Don't feel bad Burty, I wasn't much of a Coppiest myself - I was born a Baker and had a bit of a rebellious streak in me - just like you. You remind me so much of my Willy... and that's not entirely an accident mind you. Thought I might see a resemblance in your grandfather or father but they were mindful lads and happy enough to be Coppiests. I guess it's waited for you to show itself. Probably just as well.'\n\n'Ah Willy... now don't get me wrong, Papa Coppiest was a good man - hard working and with a kind heart - took me hand when many others wouldn't have and always treated me kind. But you're from different stock Burty, very different. And that comes with some responsibilities... you've got a destiny 'afore you and that can be hard on young man with no expecting of it. That's why I'm telling you this now.'\n\n'Your real great grandpa was Willy... William Herbert... last of the line of Flatheads... or so everyone's been told. He was a handsome man... like you Burty. And, unlike the rest of his family - full of romance and laughter and travel and adventure. Could be a bit reckless at times but he had a good heart. He proposed to me right proper he did... didn't really have to... he was so high up in society... and so much older too... but the moment I told him he dropped right to one knee and popped the question. Didn't care the least what people said! Swore we'd elope if the high priest wouldn't marry us... and he would have too!'\n\n'Alas, that crazy man... four months before the big day he was wandering about the castle entrance, wearing his bathrobe and Royal Crown, smoking his pipe and reading a book as he walked, as usual, and boom, he trips on the drawbridge and falls right into the Moat! Eaten right up in one big bite by one of those mean old crocodiles that have swum in it forever. Oh the day I heard the news...' And with these words she touched the Hedgehog Broach she always wore over her heart. 'It was a dark day Burty, a dark day for me an' for the castle and all the lands around.'\n\n'Someday Burty William Baker, someday you'll be King. And when you is, you be a good King... a kind and courageous and bold king... and when you is King don't ya be going walking off the edge of the drawbridge with no weapon in your hands and breaking young girl's hearts - you hear me?'\n\nStunned by this strange tale you began to stammer an answer but just then your Father returned with the hot tea. With a wink just for you, Nana's eyes closed again and she sank back into the bed. Minutes later she was gone.\n\n    For years and years you wondered what she was talking about and eventually you began to doubt the conversation had ever even happened. Over time and surpressed by grief, it had faded completely... but here in Dark Castle, with the Hedgehog Broach before you, the memory is clear and real. Nana was buried with her beloved broach - she had insisted on it. This must have been a matching mate - presumably worn by Willy himself.",
 		
 
+- [NEW OBJ]
 
-- [NEW NAME]
+'paper_bag'
 
-'stale_biscuits' => baked_biscuit:
-    "Every time you look at one of these biscuits you think of your great grandmother Nana, who raised you and taught you how to bake. This Baked Biscuit in particular came fresh out of the oven just this morning. You ate the rest of the batch on the hike over to Dark Castle and this last biscuits is all that's left. It smells mouth-wateringly delicious. There is an Insignia imprinted on the Baked Biscuit."
+'stale_biscuits' => 'baked_biscuit':
+    "Every time you look at one of these biscuits you think of your great grandmother Nana, who raised you and taught you how to bake. This Baked Biscuit in particular came fresh out of the oven just this morning. You ate the rest of the batch on the hike over to Dark Castle and this last biscuits is all that's left. It smells mouth-wateringly delicious. There is an Insignia imprinted on the Baked Biscuit.",
 
 'trademark' => 'insignia':
     "Baked into the biscuit are the symbols of a key and sword. As a child you remember asking your great grandmother Nana why she stamped these onto the front of every biscuit. 'It's a reminder of the past Burty,', she declared, 'and maybe someday, even, of the future.' You were never clear what she meant - but you've loyaly used Nana's original key and sword stamp on every biscuit you've ever baked.",
@@ -551,13 +552,20 @@ Key Prop / Backstory Ideas:
     - [DONE] inventory text 3 based on story (Chrissy)
     - [DONE] inventory text 4 based on story (Cecily)
     - [DONE] inventory text 5 based on story (Father)
-- [INPROC] update game with new text
+- [DONE] update game with new text
     - [DONE] organize txt updates
     - [DONE] identify no change
     - [DONE] descript updaates (Tea)
     - [DONE] descript updates (DC)
     - [DONE] fix newlines and update hedgehog_broach
-    - [TBD] name & descript updates
-    - [TBD] burt multi inv
+- [INPROC] name obj & descript updates
+    [DONE] instantiate paper_bag, baked_biscuit, insignia
+    [DONE] test paper_bag, baked_biscuit, insignia
+    [TBD] check for text and obj links to stale_biscuits
+    [TBD] migrate links to baked_biscuit
+    [TBD] elim stale_biscuits & trademark
+    [TBD] update the eat biscuits warnings / response
+    [TBD] sort out burt carry capacity
+- [TBD] burt multi inv
 
 

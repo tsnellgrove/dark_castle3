@@ -45,6 +45,7 @@ small_printing = Writing('small_printing', 'Small Printing', 'printing', 'small_
 illuminated_letters = Writing('illuminated_letters', 'Illuminated Letters', 'letters', 'illuminated_letters')
 calligraphy = Writing('calligraphy', 'Calligraphy', 'calligraphy', 'calligraphy')
 trademark = Writing('trademark', 'Trademark', 'trademark', 'trademark')
+insignia = Writing('insignia', 'Insignia', 'insignia', 'insignia')
 gold_capitals = Writing('gold_capitals', 'Gold Capitals', 'capitals', 'gold_capitals')
 
 # ViewOnly
@@ -73,6 +74,7 @@ silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None, 1)
 # Food
 cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 1)
 stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 3)
+baked_biscuit = Food('baked_biscuit', 'Baked Biscuit', 'biscuit', 'baked_biscuit', insignia, 2.5)
 
 # Liquid
 well_water = Liquid('well_water', 'Well Water', 'water', 'well_water', None, 0.5)
@@ -93,7 +95,7 @@ shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarv
 wooden_shelf = ContainerFixedSimple('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None, [], 999, 20, 'on')
 crystal_box = ContainerFixedLockable('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy, ['kinging_scroll_temp'], 1, 999, 'in', False, False, silver_key)
 earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'earthen_jug', None, 1.5, [well_water], 0.5, 5, 'in')
-paper_bag = ContainerPortableLidded('paper_bag', 'Paper Bag', 'bag', 'paper_bag', None, 0.5, [], 1.5, 3, 'in', False)
+paper_bag = ContainerPortableLidded('paper_bag', 'Paper Bag', 'bag', 'paper_bag', None, 0.5, [baked_biscuit], 1.5, 3, 'in', False)
 
 # 	def __init__(self, name, full_name, root_name, descript_key, writing, weight, contain_lst, max_weight, max_obj, prep, is_open):
 
@@ -478,7 +480,7 @@ master_obj_lst = [
 		left_lever, middle_lever, right_lever, red_button, royal_hedgehog, guard_goblin, entrance, main_hall,
 		antechamber, throne_room, loyalty, officiousness, gold_capitals, red_bandana, big_medal, burt, 
 		brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, test_chair, screen_door, cardboard_box, 
-		small_barrel, red_shoebox, black_suitcase, earthen_jug, heavy_rock, paper_bag
+		small_barrel, red_shoebox, black_suitcase, earthen_jug, heavy_rock, paper_bag, insignia, baked_biscuit
 	] # note: big_bomb & test_frog removed; glass_bottle removed
 
 # list written to pickle
