@@ -305,7 +305,8 @@ guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 		[goblin_attack_mach, re_arm_goblin_mach],
 		{
 			shiny_sword : {'accept' : False, 'give' : None},
-			stale_biscuits : {'accept' : False, 'give' : None},
+#			stale_biscuits : {'accept' : False, 'give' : None},
+			baked_biscuit : {'accept' : False, 'give' : None},
 			'def_give' : {'accept' : True, 'give' : None}
 		},
 		True,
@@ -324,7 +325,8 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 		{
 			shiny_sword : {'accept' : True, 'give' : silver_key},
 			silver_key : {'accept' : True, 'give' : shiny_sword},
-			stale_biscuits : {'accept' : True, 'give' : None}
+#			stale_biscuits : {'accept' : True, 'give' : None}
+			baked_biscuit : {'accept' : True, 'give' : None}
 		},
 		True,
 		{

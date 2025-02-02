@@ -79,7 +79,6 @@ game_static_dict = {
 	'small_printing' : "'ACME AXE: Effective at dispatching small dragons, large crocodiles, and even the most agressive of trees.'",
 	'illuminated_letters' : "First with great effort and then, surprisingly, with surety and confidence, you read out loud the text on the scroll. Your voice booms forth of its own accord - as if some part of your brain has been getting ready to say these words all your life. The rest of brain is struggling just to make sense of what you're saying with such confidence... it seems to be something along the lines of a recipe with ingredients... so if the 'heir to the true king' (whoever that might be)... reads 'this precious parchment'(you're pretty sure that means the scroll you're holding)... in the Throne Room (you've been there!)... while 'adorned with the gleaming headpiece of state' (whatever that means)... and also requiring that 'so long as the castle remains invested with a representative of our most noble heraldic charge seen ever upon our crest, seal, and glorious coat of arms' (even Ms. Lusk would have no clue what this means but she would notice that an awful lot of the Illuminated Letters in this sentence include a hedgehog with a sword and a key)... and then it finishes on a rather dramatic high note with the words 'upon the hour these conditions be met, a new King of Bright Castle shall shine forth and be proclaimed!'",
 	'calligraphy' : "'The Kinging Scroll'",
-	'trademark' : "'McVities'",
     'insignia' : "Baked into the biscuit are the symbols of a key and sword. As a child you remember asking your great grandmother Nana why she stamped these onto the front of every biscuit. 'It's a reminder of the past Burty,', she declared, 'and maybe someday, even, of the future.' You were never clear what she meant - but you've loyaly used Nana's original key and sword stamp on every biscuit you've ever baked.",
 	'gold_capitals' : "'GUARD GOBLIN OF THE FORTNIGHT: FOR MERITORIOUS MEMORANDUMS AND THE VIOLENT SUPPRESSION OF MINOR INFRACTIONS'",
 
@@ -103,7 +102,6 @@ game_static_dict = {
 
 	### food objects ###
 	'cheese_wedge' : "A small wedge of cheese you absconded with from the larder. It's very small - so small that a lone mouse could probably make off with the whole thing - but your mother was saving it for company so you suspect it's quite delicious.",
-	'stale_biscuits' : "The Stale Biscuits are rather unappetizing. There is a Trademark baked into the biscuits.",
 	'baked_biscuit' : "Every time you look at one of these biscuits you think of your great grandmother Nana, who raised you and taught you how to bake. This Baked Biscuit in particular came fresh out of the oven just this morning. You ate the rest of the batch on the hike over to Dark Castle and this last biscuits is all that's left. It smells mouth-wateringly delicious. There is an Insignia imprinted on the Baked Biscuit.",
 
 	### liquid objects ###
@@ -249,7 +247,7 @@ game_static_dict = {
 
 	### eat descriptions ###
 	'burt_eat_cheese_wedge' : "The Cheese Wedge tastes delicious!",
-	'burt_eat_stale_biscuits' : "The Stale Biscuits taste like damp cardboard that's been run over by a cart. You already regret eating them.",
+	'burt_eat_baked_biscuit' : "Somehow the Baked Biscuit doesn't taste nearly as good as it usually would. You imagine Nana's disapointed expression and you regret eating it already.",
 
 	### drink descriptions ###
 	'burt_drink_well_water' : "That was refreshing!",
@@ -257,21 +255,21 @@ game_static_dict = {
 	### show descriptions ###
 	'burt_show_guard_goblin_shiny_sword' : "The Guard Goblin's face turns ashen at the sight of the Shiny Sword. It trembles and takes a step back.",
 	'burt_show_guard_goblin_default' : "The Guard Goblin glares at you with an officious expression of disdain and then imperiously motions for you to hand the item over for further inspection.",
-	'burt_show_guard_goblin_stale_biscuits' : "The Guard Goblin scowels at the Stale Biscuits, wrinkles its nose, and then mutters something about 'gauche and impertinent' under its breath. You get the distinct impression that the officious Guard Goblin doesn't think much of biscuits - or of biscuit bakers either for that matter.",
-	'burt_show_royal_hedgehog_stale_biscuits' : "The Royal Hedgehog's eyes light up with excitement! Apparently, Stale Biscuits are a favorite hedgehog delacacy. The Royal Hedgehog gives you a look half way between hopeful and pleading.",
+	'burt_show_guard_goblin_baked_biscuit' : "The Guard Goblin scowels at the Baked Biscuit, wrinkles its nose, and then mutters something about 'gauche and impertinent' under its breath. You get the distinct impression that the officious Guard Goblin doesn't think much of biscuits - or of biscuit bakers either for that matter.",
+	'burt_show_royal_hedgehog_baked_biscuit' : "The Royal Hedgehog's eyes light up with excitement! Apparently, the Baked Biscuit is a favorite hedgehog delacacy. The Royal Hedgehog gives you a look half way between hopeful and pleading.",
 	'burt_show_royal_hedgehog_shiny_sword' : "The Royal Hedgehog gives a small squeek of excitement and a yearning look - clearly hoping that you will return its long-time favorite object.",
     'burt_show_royal_hedgehog_silver_key' : "The Royal Hedgehog gives a vigorous nod of recognition and looks at you expectantly.",
 
 	### give descriptions ###
 	'burt_give_guard_goblin_default' : "The Guard Goblin pockets the item and mutters something about castle regulations that require the confiscation articles of dubious provenance from ill-favored vagrants.",
-	'burt_give_guard_goblin_stale_biscuits' : "The Guard Goblin waves its hand dismissively at the suggestion that it take reciept of the Stale Biscuits and makes an expression indicating that it would be best if we all just pretended that this had never happened.",
+	'burt_give_guard_goblin_baked_biscuit' : "The Guard Goblin waves its hand dismissively at the suggestion that it take reciept of the Baked Biscuit and makes an expression indicating that it would be best if we all just pretended that this had never happened.",
 	'burt_give_guard_goblin_shiny_sword' : "The Guard Goblin blanches and backs away, terrified at the thought of even touching the Shiny Sword.",
-	'burt_give_royal_hedgehog_stale_biscuits' : "With a yelp of grateful delight the starving hedgehog leaps upon the Stale Biscuits and begins to devour them.",
+	'burt_give_royal_hedgehog_baked_biscuit' : "With a yelp of grateful delight the starving hedgehog leaps upon the Baked Biscuit and begins to devour them.",
 	'burt_give_royal_hedgehog_shiny_sword' : "The hedgehog beams at you with gratitude and Loyalty for returning the Shiny Sword. From a hidden fold of its fur it takes out a Silver Key and, bowing, places it in your hand.",
 	'burt_give_royal_hedgehog_silver_key' : "The Royal Hedgehog accepts the key, drops to one knee to proffer the Shiny Sword to you, hilt-first. And then, once you accept it, rises and salutes smartly.",
 
 	### creature description updates resulting from give ###
-	'burt_give_royal_hedgehog_stale_biscuits_descript' : "The hedgehog is eating ravenously.",
+	'burt_give_royal_hedgehog_baked_biscuit_descript' : "The hedgehog is eating ravenously.",
 	'burt_give_royal_hedgehog_shiny_sword_descript' : "This hedgehog is on top of the world! It has recently devoured a meal of Stale Biscuits (a rare delicacy among hedgehogs) and now has it's favorite shiny object back. It looks upon you with gratitude and loyal devotion. It sees within you a nobility, compassion, and destiny beyond anything you've hitherto imagined possessing.",
     'burt_give_royal_hedgehog_silver_key_descript' : "Despite its rag-tag appearnace, the Royal Hedgehog looks upon you a gaze of stalwart devotion. It stands ready to serve in your quest to free the castle from drakness!",
 
@@ -287,6 +285,11 @@ game_static_dict = {
 
 
 	#### TEST OBJ ####
+
+	### legacy descriptions ###
+	'stale_biscuits' : "The Stale Biscuits are rather unappetizing. There is a Trademark baked into the biscuits.",
+    'burt_eat_stale_biscuits' : "The Stale Biscuits taste like damp cardboard that's been run over by a cart. You already regret eating them.",
+	'trademark' : "'McVities'",
 
 	### test descriptions ###
 	'burt_enter_test_chair' : "The chair feels cozy and nice.",

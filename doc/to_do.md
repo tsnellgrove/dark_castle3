@@ -182,7 +182,7 @@ End Date:
 		- Have the hedgehog think burt is playing if he attacks with a non-weapon; starts making wax-on, wax-off motions with paws
 		- Upate water_bottle to Enchanter jug
 		- Update shiny_sword to Zork I elven sword
-- TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonale regulations to the antechamber wall?
+- TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonable regulations to the antechamber wall?
 - link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
 - RH: valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
 - shiny sword glows near enemies?
@@ -322,10 +322,10 @@ End Date:
 	- TBD: same idea for 'can't attack error' for attack() in invisible(); should be creature() meth
 
 - IDEA: Distracted state & description as creature attribute; inhibits 'show', 'give', attack 'commands'
-	- "The create to distracted to notice what you are showing them"
+	- "The creature too distracted to notice what you are showing them"
 	- "You think better of attacking the distracted creature"
 - IDEA: Creature state is linked to descript; e.g. hedgehog_descript_1
-- IDEAD: machine result changes Creature State; State machine itself changes creature attributes based on state
+- IDEA: machine result changes Creature State; State machine itself changes creature attributes based on state
 	- e.g. start timer, description, machine active, distracted attribute, etc
 
 

@@ -561,10 +561,17 @@ Key Prop / Backstory Ideas:
 - [INPROC] name obj & descript updates
     [DONE] instantiate paper_bag, baked_biscuit, insignia
     [DONE] test paper_bag, baked_biscuit, insignia
-    [TBD] check for text and obj links to stale_biscuits
-    [TBD] migrate links to baked_biscuit
-    [TBD] elim stale_biscuits & trademark
-    [TBD] update the eat biscuits warnings / response
+    [DONE] check for text and obj links to stale_biscuits
+    [DONE] add burt_eat_baked_biscuits
+    [DONE] migrate show, give, and post-give descript links to baked_biscuit
+    [DONE] update goblin and RH give_dicts
+    [DONE] test eat, show, give, post-give descript (RH)
+    [TBD] update the eat biscuits warnings
+    [TBD] test
+    [TBD] sort out hedgehog_eats_mach
+    [TBD] test
+    [TBD] elim stale_biscuits & trademark obj assignments; move to test / legacy obj
+    [TBD] clean up creature_dicts
     [TBD] sort out burt carry capacity
 - [TBD] burt multi inv
 
