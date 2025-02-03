@@ -180,8 +180,8 @@ game_static_dict = {
 
 	### warnings ###
     'entrance_south_warn_0' : "Don't be ridiculous Burt. You just swore to the whole pub (and to miss Chrissy Brewer, the prettiest lass in town!) that you'd march into the Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the Rusty Key. You can't turn back now!",
-	'eat_biscuits_warning_1' : "You'd really rather not. You've been rooming in your Mom's basement and living off the Stale Biscuits in her pantry ever since you finished school - mostly so that you could spend whatever money you had at the pub. You don't mind sleeping in the basement but the Stale Biscuits are really getting to you.. you'll need to be a lot hungrier than you are now before you'll be able to keep another of those down!",
-	'eat_biscuits_warning_2' : "Don't do it Burt. You know they'll only give you indigestion... and to some poor creature out there they might be a rare and wonderous delicacy.",
+	'eat_biscuits_warning_1' : "You're tempted - this last biscuit smells delicious - but your great grandmother, Nana, who taught you her secret biscuit recipie in the first place, wouldn't abide by it. Nana always insisted that the last biscuit in a batch be given away. As a toddler you would howl that you wanted it more than anyone else but Nana was firm. 'Charity and kindness are the secrect ingredients Burty' she would say. And she meant it. If there was no one handy to give the last biscuit to, she would place it out on the back step 'for a wee good-hearted animal'. But a Baker, she said, should never ever eat the last biscuit in a batch.",
+	'eat_biscuits_warning_2' : "Don't do it Burt! What would Nana say? There might be some poor soul out there wasting away and just yearning for a Baked Biscuit.",
 	'attack_hedgehog_warning_1' : "BURT! What has gotten into you?? We have an evil castle to conquer. Stop trying to slay defenseless woodland creatures!", # old text: "You take a wild swipe at the Royal Hedgehog but it nimbly leaps aside."
 	'attack_hedgehog_warning_2' : "Burt, I mean it - leave the poor little Hedgehog alone!",
 
@@ -290,6 +290,9 @@ game_static_dict = {
 	'stale_biscuits' : "The Stale Biscuits are rather unappetizing. There is a Trademark baked into the biscuits.",
     'burt_eat_stale_biscuits' : "The Stale Biscuits taste like damp cardboard that's been run over by a cart. You already regret eating them.",
 	'trademark' : "'McVities'",
+	'eat_biscuits_warning_1*OLD' : "You'd really rather not. You've been rooming in your Mom's basement and living off the Stale Biscuits in her pantry ever since you finished school - mostly so that you could spend whatever money you had at the pub. You don't mind sleeping in the basement but the Stale Biscuits are really getting to you.. you'll need to be a lot hungrier than you are now before you'll be able to keep another of those down!",
+	'eat_biscuits_warning_2*OLD' : "Don't do it Burt. You know they'll only give you indigestion... and to some poor creature out there they might be a rare and wonderous delicacy.",
+
 
 	### test descriptions ###
 	'burt_enter_test_chair' : "The chair feels cozy and nice.",

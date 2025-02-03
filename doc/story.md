@@ -566,12 +566,12 @@ Key Prop / Backstory Ideas:
     [DONE] migrate show, give, and post-give descript links to baked_biscuit
     [DONE] update goblin and RH give_dicts
     [DONE] test eat, show, give, post-give descript (RH)
-    [TBD] update the eat biscuits warnings
-    [TBD] test
+    [DONE] update the eat biscuits warnings
+    [DONE] test
     [TBD] sort out hedgehog_eats_mach
     [TBD] test
-    [TBD] elim stale_biscuits & trademark obj assignments; move to test / legacy obj
-    [TBD] clean up creature_dicts
+    [TBD] elim stale_biscuits & trademark obj placements
+    [TBD] clean up creature_dicts in game_update
     [TBD] sort out burt carry capacity
 - [TBD] burt multi inv
 

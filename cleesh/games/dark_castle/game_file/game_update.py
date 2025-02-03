@@ -44,7 +44,6 @@ messy_handwriting = Writing('messy_handwriting', 'Messy Handwriting', 'handwriti
 small_printing = Writing('small_printing', 'Small Printing', 'printing', 'small_printing')
 illuminated_letters = Writing('illuminated_letters', 'Illuminated Letters', 'letters', 'illuminated_letters')
 calligraphy = Writing('calligraphy', 'Calligraphy', 'calligraphy', 'calligraphy')
-trademark = Writing('trademark', 'Trademark', 'trademark', 'trademark')
 insignia = Writing('insignia', 'Insignia', 'insignia', 'insignia')
 gold_capitals = Writing('gold_capitals', 'Gold Capitals', 'capitals', 'gold_capitals')
 
@@ -73,7 +72,6 @@ silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None, 1)
 
 # Food
 cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 1)
-stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 3)
 baked_biscuit = Food('baked_biscuit', 'Baked Biscuit', 'biscuit', 'baked_biscuit', insignia, 2.5)
 
 # Liquid
@@ -110,7 +108,7 @@ right_lever = ViewOnlyLeverSwitch('right_lever', 'Right Lever', 'lever', 'right_
 red_button = ViewOnlyButtonSwitch('red_button', 'Red Button', 'button', 'red_button', None, 'neutral', 'neutral', 'auto_switch_reset')
 throne = SeatSpringSliderSwitch('throne', 'Throne', 'throne', 'throne_pre_broach', None, [], 999, 2, 'on', [crystal_box], 'neutral', 'neutral', 'auto_switch_reset')
 
-# test obj - not currently in use
+# test / legacy obj - not currently in use
 brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None, 1) # test object
 bubbly_potion = Item('bubbly_potion', 'bubbly potion', "potion", 'bubbly_potion', None, 2) # test object
 random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random_mcguffin', None, 5) # test object
@@ -122,6 +120,12 @@ red_shoebox = ContainerPortableLidded('red_shoebox', 'Red Shoebox', 'shoebox', '
 black_suitcase = ContainerPortableLockable('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None, 3, [], 7, 999, 'in', False, False, rusty_key)
 screen_door = DoorSimple('screen_door', 'Screen Door', 'door', 'screen_door', None, False)
 test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 999, 2, 'on', [wooden_shelf])
+trademark = Writing('trademark', 'Trademark', 'trademark', 'trademark')
+stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 3)
+eat_biscuits_warning = Warning('eat_biscuits_warning',
+		'pre_act_cmd', 0, stale_biscuits, True, 
+		[['eat','stale_biscuits']], 3)
+
 
 # test obj - currently in use
 # TBD
@@ -141,8 +145,8 @@ attack_hedgehog_warning = Warning('attack_hedgehog_warning',
 		[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3)
 
 eat_biscuits_warning = Warning('eat_biscuits_warning',
-		'pre_act_cmd', 0, stale_biscuits, True, 
-		[['eat','stale_biscuits']], 3)
+		'pre_act_cmd', 0, baked_biscuit, True, 
+		[['eat','baked_biscuit']], 3)
 
 
 # *** conditions ***
