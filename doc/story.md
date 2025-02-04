@@ -568,9 +568,9 @@ Key Prop / Backstory Ideas:
     [DONE] test eat, show, give, post-give descript (RH)
     [DONE] update the eat biscuits warnings
     [DONE] test
-    [TBD] sort out hedgehog_eats_mach
-    [TBD] test
-    [TBD] elim stale_biscuits & trademark obj placements
+    [DONE] sort out hedgehog_eats_mach
+    [DONE] test
+    [DONE] elim stale_biscuits & trademark obj placements
     [TBD] clean up creature_dicts in game_update
     [TBD] sort out burt carry capacity
 - [TBD] burt multi inv

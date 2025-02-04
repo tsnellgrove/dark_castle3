@@ -157,10 +157,10 @@ End Date:
 			- DONE: add biscuit to paper bag
 			- DONE: create insignia (Writing)
 			- DONE: add insignia to biscuit
-			- TBD: update warning to reference biscuit
-			- TBD: update warning text
-			- TBD: test
-			- TBD: remove stale_biscuits
+			- DONE: update warning to reference biscuit
+			- DONE: update warning text
+			- DONE: test
+			- DONE: remove stale_biscuits
 			- TBD: sort out Burt cary weight post biscuits swap
 - TBD: vary Burt description during inventory (inject some backstory here; include Nana and pub crush)
 - TBD: update winning condition to reading scroll while sitting on throne?
