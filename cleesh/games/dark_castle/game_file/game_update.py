@@ -154,7 +154,6 @@ eat_biscuits_warning = Warning('eat_biscuits_warning',
 true_cond = TrueCond('true_cond')
 true_cond_valid_not_reqd = TrueCond('true_cond', is_valid_reqd = False)
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
-# biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', stale_biscuits, 'royal_hedgehog_temp', True)
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', baked_biscuit, 'royal_hedgehog_temp', True)
 axe_not_in_goblin_hand_cond = ItemInHandCond('axe_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
 silver_key_given_cond = ObjInInvCond('silver_key_given_cond', silver_key, 'royal_hedgehog_temp', False)
@@ -196,7 +195,6 @@ throne_pull_result2 = DispenseObjResult('throne_pull_result2', True, True, False
 dispense_panel_result1 = ChgDescriptResult('dispense_panel_result1', False, None, False, 'antechamber_temp', 'antechamber_with_panel')
 dispense_panel_result2 = DispenseObjResult('dispense_panel_result2', True, True, False, 'control_panel_temp', 'antechamber_temp')
 hedgehog_eats_result1 = StartTimerResult('hedgehog_eats_result1', False, None, False, hedgehog_eats_timer)
-# hedgehog_eats_result2 = RemoveObjResult('hedgehog_eats_result2', False, None, False, stale_biscuits)
 hedgehog_eats_result2 = RemoveObjResult('hedgehog_eats_result2', False, None, False, baked_biscuit)
 goblin_attacks_result = AttackHeroResult('goblin_attacks_result', False, None, True, 'guard_goblin_temp', grimy_axe)
 hedgehog_attacks_result = AttackHeroResult('hedgehog_attacks_result', False, None, True, 'royal_hedgehog_temp', fierce_teeth)
@@ -263,7 +261,6 @@ entrance_moat_mach = InvisTrigMach('entrance_moat_mach', False,
 
 hedgehog_eats_mach = InvisTrigMach('hedgehog_eats_mach', None, 
 		'post_act_cmd', 'royal_hedgehog_temp', True,
-#		[['give', 'stale_biscuits', 'royal_hedgehog']], 
 		[['give', 'baked_biscuit', 'royal_hedgehog']], 
 		[biscuits_in_hedgehog_hand_cond],
 		[[hedgehog_eats_result1, hedgehog_eats_result2]]
@@ -312,7 +309,6 @@ guard_goblin = Creature('guard_goblin', 'Guard Goblin', 'goblin', 'guard_goblin'
 		[goblin_attack_mach, re_arm_goblin_mach],
 		{
 			shiny_sword : {'accept' : False, 'give' : None},
-#			stale_biscuits : {'accept' : False, 'give' : None},
 			baked_biscuit : {'accept' : False, 'give' : None},
 			'def_give' : {'accept' : True, 'give' : None}
 		},
@@ -332,7 +328,6 @@ royal_hedgehog = Creature('royal_hedgehog', 'Royal Hedgehog', 'hedgehog', 'hungr
 		{
 			shiny_sword : {'accept' : True, 'give' : silver_key},
 			silver_key : {'accept' : True, 'give' : shiny_sword},
-#			stale_biscuits : {'accept' : True, 'give' : None}
 			baked_biscuit : {'accept' : True, 'give' : None}
 		},
 		True,

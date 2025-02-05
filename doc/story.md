@@ -571,7 +571,7 @@ Key Prop / Backstory Ideas:
     [DONE] sort out hedgehog_eats_mach
     [DONE] test
     [DONE] elim stale_biscuits & trademark obj placements
-    [TBD] clean up creature_dicts in game_update
+    [DONE] clean up creature_dicts in game_update
     [TBD] sort out burt carry capacity
 - [TBD] burt multi inv
 
