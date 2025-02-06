@@ -145,8 +145,20 @@ game_static_dict = {
 
 
 	# burt #
-	'burt' : "You cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching and the farting I don't know how you'd fend off the ladies!",
-	
+    
+#	'burt' : "You cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching and the farting I don't know how you'd fend off the ladies!",
+
+	'burt_0' : "You cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching, farting, and cussing I don't know how you'd ever manage to fend off the ladies!",
+
+	'burt_1' : "'Well Burty, let's take a look at you.' - that's what your great grandmother, Nana, who raised you until you were nine, would say. And Nana always found the good side of what she saw. When you didn't like the coppiest work you were born to she taught you to bake. When you couldn't sit still she put you to work doing chores for your elderly neighbors. When people whispered that you were a bit odd, Nana hugged you close and called you special. It's been 13 years since Nana left this earth - you wonder what she wouold see in you now?",
+
+	'burt_2' : "You pause and ponder for a moment - what on earth are you doing here in the gloom of Dark Castle? To be honest, your life has been a bit short on purpose lately. Baking's a fine profession, but you can only bake so many batches of biscuits before you start wondering what it's all about... so maybe Dark Castle is something bigger? And then there's Chrissy Brewer - the prettiest miss in town - she seemed mighty impressed when you declared you'd march in here - and who wouldn't want her attention? In your head you hear your friend Cecily's voice: 'Burt, your just chansing after shiny baubles' - and she's probably right - but something about this place calls to you - to do *something* - but what?",
+
+	'burt_3' : "You take an introspective inventory of self: What are your hopes and aspirations beyond the next night of carousing at the pub and possibly, someday, a kiss from Chrissy Brewer? It's like hollering into a well - nothing comes back but the question itself. Most of the lads at the pub don't seem to be asking fool questions like this - or if they are, their answer is as simple as 'Find a lass that'l have you and start a family'. You're looking for a... 'destiny' seems too big... but something more than the next batch of biscuits... You wish Cecily were here... she's the one person in town who knows you well enough to tell you what you're thinking... even if she does make fun of you for having a crush on her sister every chance she gets.",
+
+	'burt_4' : "'Take a moment to contemplate your condition.' you hear your Father say. He was a big fan of self examination - still is you suspect - though you haven't had a propper sit down with him for ages. He's getting on - word is he might even retire soon - you should make the time - but it's always awkward. He's never quite forgiven you for not following him in the Coppiest trade. After six girls he'd given up on having a son to carry on the name - and then, you'd arrived and he'd been sure you'd become the famly's first scribe. But no, you were just awful at it. Always trying to write with your left hand. Couldn't spell. And what you wrote was inveitably illegible... and of course you hated it to boot... ran off from the copy chamber the first moment you could no matter what you were told. Broke Pa's heart. Nana understood - she said you were born for different things. She taught you to bake and was the mother you never had... but you wish there was something you could do to make Pa proud. Who knows - Maybe that's partly why you're here, wandering around the ruins of Dark Castle - trying to do something worth doing?",
+
+
 	# feature_lst # 
 	'fist' : "Yep, that's your fist. Still bruised from the last time you swung and missed and hit a wall...", 
 	'backpack' : "Your trusty, well-worn leather backpack",

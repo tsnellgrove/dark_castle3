@@ -134,14 +134,14 @@ End Date:
 	- DONE: set disable_rh_guard_result_2 to disable guard_disable_mach (don't need auto_action once run)
 	- DONE: test
 	- DONE: clean-up: cond(), DC game_update()
-- TBD: stale_biscuits => biscuit
-	- TBD: make stale_biscuits singluar (just one biscuits in a paper bag)
+- DONE: stale_biscuits => biscuit
+	- DONE: make stale_biscuits singluar (just one biscuits in a paper bag)
 		- IDEA: change biscuit trademark to sword and key emblem
 		- IDEA: make biscuit yummy; Nana's famous recipie
 		- IDEA: backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
 		- IDEA: update 'eat biscuit' warning text... should ref baker job and Nana
 		- IDEA: maybe Burt is the first Baker in his family; perhaps not a highly regarded profession
-		- INPROC: implement
+		- DONE: implement
 			- DONE: re-read Nana broach text
 			- DONE: create paper bag (openable but no lock)
 			- DONE: add paper bag to Burt's inventory
@@ -161,8 +161,10 @@ End Date:
 			- DONE: update warning text
 			- DONE: test
 			- DONE: remove stale_biscuits
-			- TBD: sort out Burt cary weight post biscuits swap
-- TBD: vary Burt description during inventory (inject some backstory here; include Nana and pub crush)
+- INPROC: vary Burt description during inventory (inject some backstory here; include Nana and pub crush)
+	- DONE: implement just for DC
+	- TBD: generalize to work for all games (test w/ Tea) [option to varry descript count]
+- TBD: sort out Burt cary weight post biscuits swap
 - TBD: update winning condition to reading scroll while sitting on throne?
 - TBD: fix goblin attack on attempt to unlock portcullis
 - TBD: consider how to surface 'not_attackable' txt in game_static_gbl

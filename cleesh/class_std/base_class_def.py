@@ -4,6 +4,7 @@
 
 
 ### import ###
+import random
 from cleesh.class_std.error_class_def import Error
 
 
@@ -126,7 +127,10 @@ class ViewOnly(Writing):
 
 		if self.get_title_str(gs) is not None:
 			gs.io.buffer(self.get_title_str(gs))
-		gs.io.buff_d(self.descript_key, self.full_name)
+		if self == gs.core.hero:
+			gs.io.buff_d(f"{self.descript_key}_{random.randint(0, 4)}", self.full_name)
+		else:
+			gs.io.buff_d(self.descript_key, self.full_name)
 		if self.has_writing() or self.has_cond(gs) or self.has_contain(gs):
 			gs.io.buff_cr()
 			self.disp_cond(gs)
