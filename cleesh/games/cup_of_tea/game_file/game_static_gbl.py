@@ -87,7 +87,7 @@ game_static_dict = {
 	# feature_lst #
 
 	# creatures #
-	'cecily': "You give yourself a self-concious once-over: at age 19 and the youngest daughter of Ethan Brewer, the prosperous owner of the town's busiest pub, you should be well on your way towards matrimony - but to your mother's dismay and your own deep gratitude, it appears to be nowhere on the horrizon. Of course you're also the more homely and introverted daughter - more fond of books than boys they say. Your older sister, Chrissy, the queen of the viallage, has always had a dozzen men at a time circling her in eratic orbits, moths to the flame - so who would ever notice you?",
+	'cecily_0': "You give yourself a self-concious once-over: at age 19 and the youngest daughter of Ethan Brewer, the prosperous owner of the town's busiest pub, you should be well on your way towards matrimony - but to your mother's dismay and your own deep gratitude, it appears to be nowhere on the horrizon. Of course you're also the more homely and introverted daughter - more fond of books than boys they say. Your older sister, Chrissy, the queen of the viallage, has always had a dozzen men at a time circling her in eratic orbits, moths to the flame - so who would ever notice you?",
 
 	# creature feature_lst # 
 	'hand' : "Yes, that's your Hand. Small, like the rest of you, with long dexterous fingers with a knack for sewing but a few calouses from serving and daily chores. Your favorit Tea Cup is just the right size for this hand...", 

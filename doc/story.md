@@ -572,7 +572,7 @@ Key Prop / Backstory Ideas:
     [DONE] test
     [DONE] elim stale_biscuits & trademark obj placements
     [DONE] clean up creature_dicts in game_update
-- [INPROC] burt multi inv
+- [DONE] burt multi inv
 - [TBD] sort out burt carry capacity
 
 

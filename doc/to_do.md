@@ -161,9 +161,10 @@ End Date:
 			- DONE: update warning text
 			- DONE: test
 			- DONE: remove stale_biscuits
-- INPROC: vary Burt description during inventory (inject some backstory here; include Nana and pub crush)
+- DONE: vary Burt description during inventory (inject some backstory here; include Nana and pub crush)
 	- DONE: implement just for DC
-	- TBD: generalize to work for all games (test w/ Tea) [option to varry descript count]
+	- DONE: generalize to work for all games (test w/ Tea) [hero_descript_count attrib in gs.core]
+	- DONE: test for DC and Tea
 - TBD: sort out Burt cary weight post biscuits swap
 - TBD: update winning condition to reading scroll while sitting on throne?
 - TBD: fix goblin attack on attempt to unlock portcullis

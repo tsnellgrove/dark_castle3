@@ -117,6 +117,7 @@ unreachable_1 = Room('unreachable_1', 'Unreachable', 'unreachable_1', 'unreachab
 core = Core(
 		'core', # name
 		cecily, # hero
+		1, # hero_descript_count
         0, # move_count
         False, # is_debug
 		{}, # str_to_obj_dict
