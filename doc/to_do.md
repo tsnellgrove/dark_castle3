@@ -165,11 +165,20 @@ End Date:
 	- DONE: implement just for DC
 	- DONE: generalize to work for all games (test w/ Tea) [hero_descript_count attrib in gs.core]
 	- DONE: test for DC and Tea
-- TBD: sort out Burt cary weight post biscuits swap
+- DONE: sort out Burt cary weight post biscuits swap
+	- DONE: test (does not pass - not removing weight of portable container contents when item dropped)
+	- DONE: sorted - needed to include weight of biscuit in starting weight of  bag
+	- DONE: biscuit weight from 2.5 lb => 1 lb (subtract 1.5 lbs)
+		- DONE: burt from 106.5 => 105 lb
+		- DONE: bag from 3 lbs => 1.5 lbs
+		- DONE: biscuit from 2.5 lbs => 1 lbs
+		- DONE: test
 - TBD: update winning condition to reading scroll while sitting on throne?
+- TBD: add option to win condition to read back story 
 - TBD: fix goblin attack on attempt to unlock portcullis
 - TBD: consider how to surface 'not_attackable' txt in game_static_gbl
 - TBD: Stone Coffer => no-lid box ?
+
 
 *** known dark castle narrative issues ***
 - TBD: on 'x goblin' descript, emphasize that Burt is peering from S side of room
@@ -226,6 +235,8 @@ End Date:
 - at some point, perhaps Burt must knight the loyal hedgehog ?
 - meet the wizard from Enchanter who is searching for a scroll
 - puzzle based on 4 weights to weigh 40 lbs math puzzle
+- perhaps after winning the game Burt can wander around the castle and see everone turned back to human?
+- In the Library there is a locked magical book ('The Future and Once King') that is "still being writtin" according to the dragon librarian. After winning the game, Burt can come back, find it unlocked, and read it (it's the back story for DC I)
 
 ############################
 ### CLEESH VERSION 3.8.1 / DARK CASTLE VERSION 3.2.0 END ###

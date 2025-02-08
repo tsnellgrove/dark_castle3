@@ -72,7 +72,7 @@ silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None, 1)
 
 # Food
 cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 1)
-baked_biscuit = Food('baked_biscuit', 'Baked Biscuit', 'biscuit', 'baked_biscuit', insignia, 2.5)
+baked_biscuit = Food('baked_biscuit', 'Baked Biscuit', 'biscuit', 'baked_biscuit', insignia, 1)
 
 # Liquid
 well_water = Liquid('well_water', 'Well Water', 'water', 'well_water', None, 0.5)
@@ -93,7 +93,7 @@ shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarv
 wooden_shelf = ContainerFixedSimple('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None, [], 999, 20, 'on')
 crystal_box = ContainerFixedLockable('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy, ['kinging_scroll_temp'], 1, 999, 'in', False, False, silver_key)
 earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'earthen_jug', None, 1.5, [well_water], 0.5, 5, 'in')
-paper_bag = ContainerPortableLidded('paper_bag', 'Paper Bag', 'bag', 'paper_bag', None, 0.5, [baked_biscuit], 1.5, 3, 'in', False)
+paper_bag = ContainerPortableLidded('paper_bag', 'Paper Bag', 'bag', 'paper_bag', None, 1.5, [baked_biscuit], 1.5, 3, 'in', False)
 
 # 	def __init__(self, name, full_name, root_name, descript_key, writing, weight, contain_lst, max_weight, max_obj, prep, is_open):
 
@@ -346,7 +346,7 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 			'grimy_axe_guard_goblin_weapon' : 'hard_parry', # parry
 			'grimy_axe_guard_goblin_*' : 'tgt_death',
 			'fierce_teeth_royal_hedgehog_*' : 'jump_back'
-		}, 106.5, 150) # note: for non-burt-creature testing frog_travel_mach was in burt.invis_lstj
+		}, 105, 150) # note: for non-burt-creature testing frog_travel_mach was in burt.invis_lstj
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],

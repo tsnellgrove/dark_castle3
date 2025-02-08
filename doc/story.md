@@ -273,14 +273,14 @@ Nana's Flight and the Legacy of Dark Castle:
     All present threw themselves to the ground in terror. And when the sky had ceased to roil (for it would never again fully cleared right above Dark Castle) the castle's very stones had blackened - as if coated in soot - and the vile smell of brimstone wafted from the once-welcoming front gate.
  
     The populace stared in mute, stunned horror. Willie's death just the day before had been a mighty blow to many - but it had at least been a comprehenible loss - and after words of grief, talk turned to how the kingdom would move on. These events were beyond ken, past common understanding. For a time the populace simply stood rooted - awaiting the next blow to finish them all.
-    
-    Nana was, perhaps, the first to recover. In the minutes after the curse she seemed to have aged at least a decade. And though she herself never spoke of that day again, it was said in later years that that was the day she "got wise". 
-    
+
+    Somehow, despite the loss of Willie just the day before, Nana was the first to recover. In the moments after the curse she seemed to have aged at least a decade. As if she had heard the events foretold, she beheld the scene of destruction before her and knew what needed to be done to sustain the people and the land. And though she herself never spoke of that day again, it was said in later years that that was the day Nana "got wise". 
+
     There in the afterglow of the just extinguished barn, she turned to Thomas the Coppiest besides her - who was still holding a full bucket of water and staring open-mouthed at the chappel's cracked steeple - and said "Mr. Coppiest, I don't love ya but I like ya - and if you'll have me, I'll be yours. And together we'll find a way to make a life." She spoke softly and earnestly, for Thomas' ears alone, but the murmor of her voice broke the oppresive silence and slowly the towns folk regained themselves.
 
-    Thomas was a widower in his early fifties - an advanced age back then for those neither royal or holly. Since Nana's late teen years he'd often had a shy glance and a kind word for her - but not such as to give alarm.  He was not the sullen, angry sort that stalked his obsesions with lust and dreams of owning them. Rather, he was an open book - inescablably aware of young Nana's spirit and beauty - and also self-aware of and half-amused by his own happles doting. He was able to enjoy his time in her presence without seeking to rule it.
+    Thomas was a widower in his early fifties - an advanced age back then for those neither royal or holy. Since Nana's late teen years he'd often had a shy glance and a kind word for her - but not such as to give alarm.  He was not the sullen, angry sort that stalked his obsesions with lust and dreams of owning them. Rather, he was an open book - inescablably aware of young Nana's spirit and beauty - and also self-aware of and half-amused by his own happless doting. He was able to enjoy his time in her presence without seeking to rule it.
 
-    Hearing Nans's words, Thomas came to his senses, closed his mouth, put down his bucket, took her hand, and dropped to one knee. "I would have ye, Miss Baker, and I count myself a lucky man. I'll do all I can to treat ya right and make our days sunny and long." And so their lives were joined. Nana smiled, pulled him to his feet, kissed him gently, and said "Then let's go make us a life." 
+    Hearing Nans's words, Thomas came to his senses, closed his mouth, put down his bucket, took her hand, and dropped to one knee. "I would have ye, Miss Baker, and I count myself a lucky man. I'll do all I can to treat ya right and make our days sunny and long." And so their lives were joined. Nana smiled, pulled him to his feet, kissed him gently, and said "Then let's go make us all a life." 
 
     And so they did. It was Nana, with Thomas in tow, who gathered up the leading craftsmen of the village - the miller, the blacksmith, the weaver, and others - and exhorted them all to get marching to the nearby village before night fell. Her voice was kind but firm and one by one they came to grips with their new existence and rallied their fellow townsfolk to pick up what they could carry and march towards a new future. 
     
@@ -388,6 +388,7 @@ DC2 Ideas I'm not Ready to Reveal / Commit To:
 - The novice enchanter who saves the day in Enchanter is a minor non-descript character in DC2
 - At the end of DC2, Burt suggests the novice to Tabitha and offers up the jug and bread to help them
 - Burt: "Also, won't they need a way to get in the front gate?"; Tabitha "<curses> - I'll see to it"
+- Perhaps Nana was recovered so fast and pragmatically from her loss because of a conversation with Burt in DC II
 
 
 *** Game Update Ideas ***
@@ -406,9 +407,6 @@ Key Prop / Backstory Ideas:
     - Should match description in Enchanter
     - There's nothing at all special about this Earthen Jug. It's not at all like any other jug you may have come across anywhere else...
 - have Cecily and Nana be occasional voices in Burt's head?
-
-
-
 
 
 *** New Ref Text ***
@@ -573,6 +571,6 @@ Key Prop / Backstory Ideas:
     [DONE] elim stale_biscuits & trademark obj placements
     [DONE] clean up creature_dicts in game_update
 - [DONE] burt multi inv
-- [TBD] sort out burt carry capacity
+- [DONE] sort out burt carry capacity
 
 
