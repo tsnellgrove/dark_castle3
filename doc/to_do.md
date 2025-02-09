@@ -173,7 +173,16 @@ End Date:
 		- DONE: bag from 3 lbs => 1.5 lbs
 		- DONE: biscuit from 2.5 lbs => 1 lbs
 		- DONE: test
-- TBD: update winning condition to reading scroll while sitting on throne?
+- INPROC: update winning condition to reading scroll while sitting on throne?
+	- DONE: update Illuminated Letters text to ref throne
+	- DONE: creaate CreatureContainedCond class in cond module
+	- TBD: import CreatureContainedCond and instantiate not_in_throne_cond obj
+	- TBD: create Result class
+	- TBD: import Result class and instantiate scroll_not_in_throne_result obj
+	- TBD: add cond & result to kinging_scroll mach
+	- TBD: write text for scroll_not_in_throne_result
+	- TBD: test
+	- TBD: clean up cond(), 
 - TBD: add option to win condition to read back story 
 - TBD: fix goblin attack on attempt to unlock portcullis
 - TBD: consider how to surface 'not_attackable' txt in game_static_gbl

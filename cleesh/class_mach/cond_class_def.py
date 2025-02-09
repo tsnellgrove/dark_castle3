@@ -8,6 +8,7 @@
 #-------------------    -------------       ---------------------------------
 # TrueCond :			Invisible :			True
 # WornCond :			TrueCond :			match garment is worn
+# CreatureContainedCond:TrueCond :			match creature contained in obj
 # ObjOnRmFlrCond:		TrueCond :			match obj on rm floor
 # ObjInRmCond :			TrueCond :			match obj room to match_rm
 # ObjInWorldCond :		TrueCond :			match obj in world
@@ -63,6 +64,34 @@ class WornCond(TrueCond):
 
 	def cond_check(self, gs, mach_state, is_valid):
 		return (self.worn_garment in self.creature_obj.worn_lst) == self.match_cond
+
+
+class CreatureContainedCond(TrueCond):
+	def __init__(self, name, seat_obj, creature_obj, match_cond):
+		super().__init__(name)
+		self._seat_obj = seat_obj
+		self._creature_obj = creature_obj
+		self._match_cond = match_cond
+
+	@property
+	def seat_obj(self):
+		return self._seat_obj
+
+	@property
+	def creature_obj(self):
+		return self._creature_obj
+
+	@creature_obj.setter
+	def creature_obj(self, new_obj):
+		self._creature_obj = new_obj
+
+	@property
+	def match_cond(self):
+		return self._match_cond
+
+	def cond_check(self, gs, mach_state, is_valid):
+		return (self.creature_obj.is_contained(gs) and (self.creature_obj.get_contained_by(gs) == self.seat_obj)) == self.match_cond
+#		return (self.seat_obj in self.creature_obj.worn_lst) == self.match_cond
 
 
 class ObjOnRmFlrCond(TrueCond):
