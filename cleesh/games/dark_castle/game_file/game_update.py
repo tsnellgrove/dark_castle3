@@ -18,9 +18,10 @@ from cleesh.class_std.interactive_class_def import DoorSimple, DoorLockable
 from cleesh.class_std.interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
 from cleesh.class_std.interactive_class_def import ContainerPortableSimple, ContainerPortableLidded, ContainerPortableLockable
 from cleesh.class_mach.switch_class_def import ViewOnlyLeverSwitch, ViewOnlyButtonSwitch, SeatSpringSliderSwitch
-from cleesh.class_mach.cond_class_def import (TrueCond, WornCond, ObjOnRmFlrCond, ObjInRmCond, ObjInWorldCond, 
-		ItemInHandCond, ObjInInvCond, WeaponInHandCond, MachStateCond, TimerActiveCond, 
-		SwitchStateCond, LeverArrayCond)
+from cleesh.class_mach.cond_class_def import (TrueCond, 
+		WornCond, CreatureContainedCond, ObjOnRmFlrCond, ObjInRmCond, ObjInWorldCond, 
+		ItemInHandCond, ObjInInvCond, WeaponInHandCond, 
+		MachStateCond, TimerActiveCond, SwitchStateCond, LeverArrayCond)
 from cleesh.class_mach.result_class_def import (BaseResult, DisableMach, EndResult, ChgDescriptResult, 
 		GiveItemResult, TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, AttackHeroResult, 
 		OpenableToggleResult, CreatureTravelResult)
@@ -171,6 +172,7 @@ hedgehog_eats_timer_not_active_cond = TimerActiveCond('hedgehog_eats_timer_not_a
 throne_push_cond = SwitchStateCond('throne_push_cond', [throne], ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', [throne], ['pulled'])
 lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [left_lever, middle_lever, right_lever], [4,2,1])
+not_in_throne_cond = CreatureContainedCond('not_in_throne_cond', throne, 'burt_temp', False)
 
 # *** results ***
 pass_result = BaseResult('pass_result', False, None, False)
@@ -435,6 +437,7 @@ no_weap_in_hand_cond.creature_obj = burt
 goblin_in_world_cond.obj = guard_goblin
 sword_not_on_floor.match_room = main_hall
 sword_on_floor.match_room = main_hall
+not_in_throne_cond.creature_obj = burt
 
 entrance_moat_mach.alert_anchor = entrance
 broach_dispenser_mach.alert_anchor = throne_room

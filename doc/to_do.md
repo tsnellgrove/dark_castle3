@@ -176,7 +176,7 @@ End Date:
 - INPROC: update winning condition to reading scroll while sitting on throne?
 	- DONE: update Illuminated Letters text to ref throne
 	- DONE: creaate CreatureContainedCond class in cond module
-	- TBD: import CreatureContainedCond and instantiate not_in_throne_cond obj
+	- DONE: import CreatureContainedCond and instantiate not_in_throne_cond obj
 	- TBD: create Result class
 	- TBD: import Result class and instantiate scroll_not_in_throne_result obj
 	- TBD: add cond & result to kinging_scroll mach
