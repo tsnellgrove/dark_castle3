@@ -184,6 +184,7 @@ hedgehog_distracted_result = BaseResult('hedgehog_distracted_result', False, Non
 scroll_wrong_room_result = BaseResult('scroll_wrong_room_result', False, None, False)
 scroll_no_hedgehog_result = BaseResult('scroll_no_hedgehog_result', False, None, False)
 scroll_crown_not_worn_result = BaseResult('scroll_crown_not_worn_result', False, None, False)
+scroll_not_in_throne_result = BaseResult('scroll_not_in_throne_result', False, None, False)
 die_in_moat_result = EndResult('die_in_moat_result', False, None, True, 'died.')
 scroll_win_game_result = EndResult('scroll_win_game_result', False, None, False, 'won!')
 fed_hedgehog_keeps_sword_result = ChgDescriptResult('fed_hedgehog_keeps_sword_result', True, True, False, 'royal_hedgehog_temp', 'hedgehog_desc_smug')
@@ -270,8 +271,11 @@ kinging_scroll = ItemTrigMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kin
 		illuminated_letters, 1, None, 
 		'post_act_cmd', 'kinging_scroll_temp', True,
 		[['read', 'illuminated_letters'],['read', 'kinging_scroll'], ['examine', 'illuminated_letters']], 
-		[not_in_throne_room_cond, hedgehog_not_in_world_cond, crown_not_worn_cond, true_cond],
-		[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_win_game_result]
+#		[not_in_throne_room_cond, hedgehog_not_in_world_cond, crown_not_worn_cond, true_cond],
+		[not_in_throne_room_cond, hedgehog_not_in_world_cond, crown_not_worn_cond, not_in_throne_cond, 
+   				true_cond],
+		[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_not_in_throne_result, 
+				scroll_win_game_result]
 		) # mach_state == None
 
 

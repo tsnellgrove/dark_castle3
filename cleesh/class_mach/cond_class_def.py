@@ -91,7 +91,6 @@ class CreatureContainedCond(TrueCond):
 
 	def cond_check(self, gs, mach_state, is_valid):
 		return (self.creature_obj.is_contained(gs) and (self.creature_obj.get_contained_by(gs) == self.seat_obj)) == self.match_cond
-#		return (self.seat_obj in self.creature_obj.worn_lst) == self.match_cond
 
 
 class ObjOnRmFlrCond(TrueCond):
