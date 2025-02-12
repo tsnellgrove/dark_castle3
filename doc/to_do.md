@@ -183,6 +183,11 @@ End Date:
 	- DONE: test
 	- DONE: clean up cond()
 - TBD: add option to win condition to read back story 
+	- TBD: return gs.end.game_ending as game_ending from app_main() to web_main()
+	- TBD: in web_main(), between "THANKS" and "Press Enter", if game_ending = 'win!', offer history scroll
+	- TBD: call web_main() local func confirm_choice()
+	- TBD: add back-story to game_static() w/ /n/n breaks
+	- TBD: test
 - TBD: fix goblin attack on attempt to unlock portcullis
 - TBD: consider how to surface 'not_attackable' txt in game_static_gbl
 - TBD: Stone Coffer => no-lid box ?
