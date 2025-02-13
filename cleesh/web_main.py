@@ -43,6 +43,7 @@ while True:
 		# initialize game variables
 		game_name = game_lst[user_num - 1]
 		is_end = False
+		game_ending = ""
 		is_start = True
 		call_app_main = True
 
@@ -74,10 +75,16 @@ while True:
 					user_output = restore_game(game_name, root_path_str)
 				call_app_main = False
 			if call_app_main:
-				is_start, is_end, user_output = app_main(user_input, game_name, root_path_str)
+				is_start, is_end, game_ending, user_output = app_main(user_input, game_name, root_path_str)
 			print(user_output)
 			if user_input.lower() == 'restart'and is_confirm:
 				any_key = input("Press Enter to continue: ")
+		if game_ending == 'won!':
+			print("An aged scroll of parchment - much of the ink upon it long dried but some of it quite fresh - appears before you. It is entitled 'The Future and Once King of Dark Castle'.")
+			user_output, is_confirm = confirm_choice('read scroll', 'Do you read it?')
+			if is_confirm:
+				print('read scroll chosen')
+		print()
 		print("THANKS FOR PLAYING!!")
 		print()
 		any_key = input("Press Enter To Return To The Game Menu: ")

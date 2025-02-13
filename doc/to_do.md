@@ -182,10 +182,11 @@ End Date:
 	- DONE: add cond & result to kinging_scroll mach
 	- DONE: test
 	- DONE: clean up cond()
-- TBD: add option to win condition to read back story 
-	- TBD: return gs.end.game_ending as game_ending from app_main() to web_main()
-	- TBD: in web_main(), between "THANKS" and "Press Enter", if game_ending = 'win!', offer history scroll
-	- TBD: call web_main() local func confirm_choice()
+- INPROC: add option to win condition to read back story 
+	- DONE: return gs.end.game_ending as game_ending from app_main() to web_main()
+	- DONE: in web_main(), just before "THANKS" & "Press Enter", if game_ending = 'win!', offer history scroll
+	- DONE: call web_main() local func confirm_choice()
+	- TBD: test
 	- TBD: add back-story to game_static() w/ /n/n breaks
 	- TBD: test
 - TBD: fix goblin attack on attempt to unlock portcullis
