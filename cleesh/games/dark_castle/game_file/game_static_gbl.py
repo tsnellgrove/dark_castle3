@@ -23,6 +23,12 @@ game_static_dict = {
     
 	'game_descript' : "A classic Zork-like adventure of bravery and baking!",
 
+	### end info ###
+
+	'read_bkstry_str' : "An aged scroll of parchment - much of the ink upon it long dried but some of it quite fresh - appears before you. It is entitled 'The Future and Once King of Dark Castle'. Do you read it ",
+    
+	'backstory' : "backstory read",
+
 	### universal constants ###
 	'game_version' : '3.1.0', # was '3.86 (6/9/2024)' until 6/12/2024 ; no build # between releases if no changes
 

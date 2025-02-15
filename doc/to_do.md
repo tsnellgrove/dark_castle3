@@ -187,8 +187,25 @@ End Date:
 	- DONE: in web_main(), just before "THANKS" & "Press Enter", if game_ending = 'win!', offer history scroll
 	- DONE: call web_main() local func confirm_choice()
 	- DONE: test
+	- IDEA: need to reconsider how to present backstory...
+	- IDEA: web_main is framework for all games - so "floating scroll" won't work
+	- IDEA: should be in gs.end
+	- DONE: comment out web_main() backstory option
+	- DONE: add is_bkstry to gs.end
+	- DONE: add is_bkstry to game_update() for DC & Tea
+	- DONE: in static_gbl, keys 'read_bkstry_str' and 'backstory' are standard defined
+	- DONE: add backstory read option to gs.end
+	- IDEA: ARGH!!!! I just realized I CAN'T do this in gs.end ....
+	- IDEA: except for in web_main(), there is no interactive option
+	- IDEA: everything is bukl beffered and then presented to the player for input back in web_main()
+	- IDEA: input is ONLY collected in web_main() ... which is a *HUGE* pain for interaction like backstory
+	- IDEA: so, I need to move the backsotry interaction back to web_main() and pass is_bkstry with it
+	- IDEA: then I need to pull 'read_bkstry_str' and 'backstory' from static_gbl() using game_name & path
+	- IDEA: maybe need a function in file_io() to pull descriptions from static_gbl() ? this would be re-usable
+	- TBD: move backstory inquiry back to web_main() [ARGH!!!]
 	- TBD: add back-story to game_static() w/ /n/n breaks
 	- TBD: test
+	- TBD: clean up web_main(), gs.end(), 
 - TBD: fix goblin attack on attempt to unlock portcullis
 - TBD: consider how to surface 'not_attackable' txt in game_static_gbl
 - TBD: Stone Coffer => no-lid box ?

@@ -23,6 +23,12 @@ game_static_dict = {
     
 	'game_descript' : "A very simple game that proves out the multi-game ability of the Cleesh engine.",
 
+	### end info ###
+
+	'read_bkstry_str' : "Would you like to know the game's backstory ", # default string
+    
+	'backstory' : "This space intentionally left blank.", # default string
+
 	### universal constants ###
 	'game_version' : '0.1.0', # was '0.15 (5/22/2024)' up untill 6/12/2024; no build # between releases
 

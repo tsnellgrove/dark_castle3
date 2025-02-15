@@ -9,10 +9,13 @@ from cleesh.class_std.invisible_class_def import Invisible
 
 ### classes ###
 class End(Invisible):
-    def __init__(self, name, is_end, game_ending):
+#    def __init__(self, name, is_end, game_ending, is_bkstry, read_bkstry_str):
+    def __init__(self, name, is_end, game_ending, is_bkstry):
         super().__init__(name)
         self._is_end = is_end # bool indicating whether or not the game has ended
-        self._game_ending = game_ending # type of ending; includes punct ('won!', 'quit.', 'died', or 'restarted.')
+        self._game_ending = game_ending # ending type w/ punct ('won!', 'quit.', 'died', or 'restarted.')
+        self._is_bkstry = is_bkstry # bool indicating whether or not the game has a backstory
+#        self._read_bkstry_str = read_bkstry_str # dict key for text to presents the read backstory option
         """ The End class inherits from Invisible. It holds the is_end and game_ending attribs to determine
         if and how the game has ended. And the disp_end() method to display the end state to the player.
 		"""
@@ -34,6 +37,14 @@ class End(Invisible):
     def game_ending(self, new_val):
         self._game_ending = new_val
 
+    @property
+    def is_bkstry(self):
+        return self._is_bkstry
+    
+#    @property
+#    def read_bkstry_str(self):
+#        return self._read_bkstry_str
+
     ### end methods ###
     def disp_end(self, gs):
         title_factor = gs.io.get_str_nr('title_factor')
@@ -51,5 +62,9 @@ class End(Invisible):
         gs.io.buffer("Your title is: " + title)
         if self.game_ending == 'won!':
             gs.io.buff_e('credits')
-
+            if self.is_bkstry:
+                gs.io.buff_no_cr(gs.ioget_str_nr(self, 'read_bkstry_str', mode=None))
+                confirm_input = input(' (Y / N)?: ')
+                if confirm_input.lower() in ['y', 'yes']:
+                    gs.io.buff_e('backstory')
         return

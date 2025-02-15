@@ -416,7 +416,8 @@ score = Score(
 end = End(
 		'end', # name
 		False, # is_end
-		None # game_ending
+		None, # game_ending
+		True # is_bkstry
 		)
 
 ### gs is the central store of game info ###
