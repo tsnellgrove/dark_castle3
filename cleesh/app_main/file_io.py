@@ -6,6 +6,7 @@
 ### import statements
 import shutil
 from pathlib import Path
+from importlib import import_module
 
 
 ### main routine
@@ -26,3 +27,8 @@ def restore_game(game_name, root_path_str):
     else:
         user_output = "\nThere is no saved game to restore.\n"
     return user_output
+
+def print_game(game_name, str_key):
+        import_str = f"cleesh.games.{game_name}.game_file.game_static_gbl"
+        game_static_gbl = import_module(import_str)
+        print(game_static_gbl.game_static_dict[str_key])

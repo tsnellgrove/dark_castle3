@@ -184,7 +184,9 @@ End Date:
 	- DONE: clean up cond()
 - INPROC: add option to win condition to read back story 
 	- DONE: return gs.end.game_ending as game_ending from app_main() to web_main()
-	- DONE: in web_main(), just before "THANKS" & "Press Enter", if game_ending = 'win!', offer history scroll
+	- IDEA: in web_main(), just before "THANKS" & "Press Enter", if game_ending = 'win!', offer backstory
+
+
 	- DONE: call web_main() local func confirm_choice()
 	- DONE: test
 	- IDEA: need to reconsider how to present backstory...
@@ -211,10 +213,18 @@ End Date:
 	- TBD: from app_main, if gs.end.is_bkstry: return True for is_interact and interact_str
 	- TBD: in app_main(), update while loop for is_interact
 	- TBD: in app_main(), if is_interact, present interact_str and, if yes, print backstory
-	- ???
+
+
+	- DONE: create print_game() in file_io()
+	- DONE: import print_game() into web_main()
+	- DONE: in web_main(), if end == 'won!': print_game('read_bkstry_str')
+	- DONE: call confirm_choice() function
+	- DONE: if confirm: print_game('backstory')
+	- DONE: test
+	- TBD: clean up web_main(), gs.end(), to-do-list
 	- TBD: add back-story to game_static() w/ /n/n breaks
 	- TBD: test
-	- TBD: clean up web_main(), gs.end(), 
+	
 - TBD: fix goblin attack on attempt to unlock portcullis
 - TBD: consider how to surface 'not_attackable' txt in game_static_gbl
 - TBD: Stone Coffer => no-lid box ?

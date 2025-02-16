@@ -25,7 +25,7 @@ game_static_dict = {
 
 	### end info ###
 
-	'read_bkstry_str' : "An aged scroll of parchment - much of the ink upon it long dried but some of it quite fresh - appears before you. It is entitled 'The Future and Once King of Dark Castle'. Do you read it ",
+	'read_bkstry_str' : "An aged scroll of parchment - much of the ink upon it long dried but some of it quite fresh - appears before you. It is entitled 'The Future and Once King of Bright Castle'.",
     
 	'backstory' : "backstory read",
 

@@ -12,7 +12,7 @@ sys.path.append(root_path_str)
 from cleesh.app_main.app_main import app_main
 from cleesh.app_main.start_up import start_me_up
 from cleesh.app_main.game_menu import print_game_menu
-from cleesh.app_main.file_io import save_game, restore_game
+from cleesh.app_main.file_io import save_game, restore_game, print_game
 
 #local functions
 def confirm_choice(user_input, warn_str):
@@ -75,16 +75,18 @@ while True:
 					user_output = restore_game(game_name, root_path_str)
 				call_app_main = False
 			if call_app_main:
-				is_start, is_end, game_ending, user_output = app_main(user_input, game_name, root_path_str)
+				is_start, is_end, game_ending, is_bkstry, user_output = app_main(user_input, game_name, root_path_str)
 			print(user_output)
 			if user_input.lower() == 'restart'and is_confirm:
 				any_key = input("Press Enter to continue: ")
-#		if game_ending == 'won!':
-#			print("An aged scroll of parchment - much of the ink upon it long dried but some of it quite fresh - appears before you. It is entitled 'The Future and Once King of Dark Castle'.")
-#			user_output, is_confirm = confirm_choice('read scroll', 'Do you read it?')
-#			if is_confirm:
+		if game_ending == 'won!' and is_bkstry:
+			print_game(game_name, 'read_bkstry_str')
+#			print("An aged scroll of parchment - much of the ink upon it long dried but some of it quite fresh - appears before you. It is entitled 'The Future and Once King of Bright Castle'.")
+			user_output, is_confirm = confirm_choice('read backstory', 'Do you read it?')
+			if is_confirm:
 #				print('read scroll chosen')
-#		print()
+				print_game(game_name, 'backstory')
+		print()
 		print("THANKS FOR PLAYING!!")
 		print()
 		any_key = input("Press Enter To Return To The Game Menu: ")

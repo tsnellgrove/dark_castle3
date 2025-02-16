@@ -79,4 +79,4 @@ def app_main(user_input, game_name, root_path_str):
 	gs.io.last_input_str = user_input
 	with open(pkl_str, 'wb') as f:
 		pickle.dump(master_obj_lst, f)
-	return is_start, gs.end.is_end, gs.end.game_ending, gs.io.get_buff()
+	return is_start, gs.end.is_end, gs.end.game_ending, gs.end.is_bkstry, gs.io.get_buff()

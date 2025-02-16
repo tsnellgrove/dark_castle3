@@ -62,9 +62,9 @@ class End(Invisible):
         gs.io.buffer("Your title is: " + title)
         if self.game_ending == 'won!':
             gs.io.buff_e('credits')
-            if self.is_bkstry:
-                gs.io.buff_no_cr(gs.ioget_str_nr(self, 'read_bkstry_str', mode=None))
-                confirm_input = input(' (Y / N)?: ')
-                if confirm_input.lower() in ['y', 'yes']:
-                    gs.io.buff_e('backstory')
+#            if self.is_bkstry:
+#                gs.io.buff_no_cr(gs.ioget_str_nr(self, 'read_bkstry_str', mode=None))
+#                confirm_input = input(' (Y / N)?: ')
+#                if confirm_input.lower() in ['y', 'yes']:
+#                    gs.io.buff_e('backstory')
         return
