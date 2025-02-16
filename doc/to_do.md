@@ -197,12 +197,21 @@ End Date:
 	- DONE: add backstory read option to gs.end
 	- IDEA: ARGH!!!! I just realized I CAN'T do this in gs.end ....
 	- IDEA: except for in web_main(), there is no interactive option
-	- IDEA: everything is bukl beffered and then presented to the player for input back in web_main()
+	- IDEA: everything is bulk beffered and then presented to the player for input back in web_main()
 	- IDEA: input is ONLY collected in web_main() ... which is a *HUGE* pain for interaction like backstory
 	- IDEA: so, I need to move the backsotry interaction back to web_main() and pass is_bkstry with it
 	- IDEA: then I need to pull 'read_bkstry_str' and 'backstory' from static_gbl() using game_name & path
 	- IDEA: maybe need a function in file_io() to pull descriptions from static_gbl() ? this would be re-usable
+	- TBD: create player_interact() in /app_main
+	- TBD: player_interact() containes 3 funcitons get_player_confirm(), [get_player_int(), get_player_str()]
+	- TBD: create is_interact attrib in gs.core (default = False)
+	- TBD: from gs.end() set core.is_interact = True, return interact_str, interact_type to app_main()
 	- TBD: move backstory inquiry back to web_main() [ARGH!!!]
+	- IDEA: general solution = TBD; for now, focus on backstory
+	- TBD: from app_main, if gs.end.is_bkstry: return True for is_interact and interact_str
+	- TBD: in app_main(), update while loop for is_interact
+	- TBD: in app_main(), if is_interact, present interact_str and, if yes, print backstory
+	- ???
 	- TBD: add back-story to game_static() w/ /n/n breaks
 	- TBD: test
 	- TBD: clean up web_main(), gs.end(), 
