@@ -185,46 +185,15 @@ End Date:
 - INPROC: add option to win condition to read back story 
 	- DONE: return gs.end.game_ending as game_ending from app_main() to web_main()
 	- IDEA: in web_main(), just before "THANKS" & "Press Enter", if game_ending = 'win!', offer backstory
-
-
-	- DONE: call web_main() local func confirm_choice()
-	- DONE: test
-	- IDEA: need to reconsider how to present backstory...
-	- IDEA: web_main is framework for all games - so "floating scroll" won't work
-	- IDEA: should be in gs.end
-	- DONE: comment out web_main() backstory option
-	- DONE: add is_bkstry to gs.end
-	- DONE: add is_bkstry to game_update() for DC & Tea
-	- DONE: in static_gbl, keys 'read_bkstry_str' and 'backstory' are standard defined
-	- DONE: add backstory read option to gs.end
-	- IDEA: ARGH!!!! I just realized I CAN'T do this in gs.end ....
-	- IDEA: except for in web_main(), there is no interactive option
-	- IDEA: everything is bulk beffered and then presented to the player for input back in web_main()
-	- IDEA: input is ONLY collected in web_main() ... which is a *HUGE* pain for interaction like backstory
-	- IDEA: so, I need to move the backsotry interaction back to web_main() and pass is_bkstry with it
-	- IDEA: then I need to pull 'read_bkstry_str' and 'backstory' from static_gbl() using game_name & path
-	- IDEA: maybe need a function in file_io() to pull descriptions from static_gbl() ? this would be re-usable
-	- TBD: create player_interact() in /app_main
-	- TBD: player_interact() containes 3 funcitons get_player_confirm(), [get_player_int(), get_player_str()]
-	- TBD: create is_interact attrib in gs.core (default = False)
-	- TBD: from gs.end() set core.is_interact = True, return interact_str, interact_type to app_main()
-	- TBD: move backstory inquiry back to web_main() [ARGH!!!]
-	- IDEA: general solution = TBD; for now, focus on backstory
-	- TBD: from app_main, if gs.end.is_bkstry: return True for is_interact and interact_str
-	- TBD: in app_main(), update while loop for is_interact
-	- TBD: in app_main(), if is_interact, present interact_str and, if yes, print backstory
-
-
 	- DONE: create print_game() in file_io()
 	- DONE: import print_game() into web_main()
 	- DONE: in web_main(), if end == 'won!': print_game('read_bkstry_str')
 	- DONE: call confirm_choice() function
 	- DONE: if confirm: print_game('backstory')
 	- DONE: test
-	- TBD: clean up web_main(), gs.end(), to-do-list
+	- DONE: clean up web_main(), gs.end(), to-do-list
 	- TBD: add back-story to game_static() w/ /n/n breaks
 	- TBD: test
-	
 - TBD: fix goblin attack on attempt to unlock portcullis
 - TBD: consider how to surface 'not_attackable' txt in game_static_gbl
 - TBD: Stone Coffer => no-lid box ?
@@ -346,6 +315,21 @@ End Date:
 	- ANALYSIS: basic problem pattern = obj => obj_mach => obj_cond / obj_result => obj
 	- IDEA: pass/link obj to obj_con/obj_result innately (not explicitly) as part of call/assignment?
 	- TBD: update cleesh engine version build
+
+- TBD: enable general case of player interaction in-game, from web_main() [e.g. "what is your name?"]
+	- IDEA: need to reconsider how to present backstory...
+	- IDEA: web_main is framework for all games - so "floating scroll" won't work (think of space game)
+		- IDEA: ARGH!!!! I just realized I CAN'T do this in gs.end ....
+	- IDEA: except for in web_main(), there is no interactive option
+		- IDEA: everything is bulk beffered and then presented to the player for input back in web_main()
+		- IDEA: input is ONLY collected in web_main() ... which is a *HUGE* pain for interaction like backstory
+		- IDEA: so, I need to move the backsotry interaction back to web_main() and pass is_bkstry with it
+		- IDEA: then I need to pull 'read_bkstry_str' and 'backstory' from static_gbl() using game_name & path
+		- IDEA: maybe need a function in file_io() to pull descriptions from static_gbl() would be re-usable
+	- TBD: create player_interact() in /app_main
+		- TBD: player_interact() containes 3 funcitons get_player_confirm(), [get_player_int(), get_player_str()]
+		- TBD: create is_interact attrib in gs.core (default = False)
+		- TBD: from gs.end() set core.is_interact = True, return interact_str, interact_type to app_main()
 
 
 *** base error updates ***

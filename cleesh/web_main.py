@@ -81,10 +81,8 @@ while True:
 				any_key = input("Press Enter to continue: ")
 		if game_ending == 'won!' and is_bkstry:
 			print_game(game_name, 'read_bkstry_str')
-#			print("An aged scroll of parchment - much of the ink upon it long dried but some of it quite fresh - appears before you. It is entitled 'The Future and Once King of Bright Castle'.")
 			user_output, is_confirm = confirm_choice('read backstory', 'Do you read it?')
 			if is_confirm:
-#				print('read scroll chosen')
 				print_game(game_name, 'backstory')
 		print()
 		print("THANKS FOR PLAYING!!")
