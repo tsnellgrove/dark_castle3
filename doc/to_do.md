@@ -182,7 +182,7 @@ End Date:
 	- DONE: add cond & result to kinging_scroll mach
 	- DONE: test
 	- DONE: clean up cond()
-- INPROC: add option to win condition to read back story 
+- DONE: add option to win condition to read back story 
 	- DONE: return gs.end.game_ending as game_ending from app_main() to web_main()
 	- IDEA: in web_main(), just before "THANKS" & "Press Enter", if game_ending = 'win!', offer backstory
 	- DONE: create print_game() in file_io()
@@ -192,8 +192,8 @@ End Date:
 	- DONE: if confirm: print_game('backstory')
 	- DONE: test
 	- DONE: clean up web_main(), gs.end(), to-do-list
-	- TBD: add back-story to game_static() w/ /n/n breaks
-	- TBD: test
+	- DONE: add back-story to game_static() w/ /n/n breaks
+	- DONE: test
 - TBD: fix goblin attack on attempt to unlock portcullis
 - TBD: consider how to surface 'not_attackable' txt in game_static_gbl
 - TBD: Stone Coffer => no-lid box ?
