@@ -49,7 +49,9 @@ def app_main(user_input, game_name, root_path_str):
 	# for interp commands, interp user_input and validate command
 	if is_interp_cmd:
 		case, word_lst = interpreter(user_input, master_obj_lst)
+#		print(word_lst)
 		is_valid, is_att, err_txt = validate(gs, case, word_lst)
+#		print(is_valid, is_att, err_txt)
 
 	# if command is valid or is_wait, increment move
 	if is_valid or is_att or is_wait:

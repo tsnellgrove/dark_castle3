@@ -194,7 +194,13 @@ End Date:
 	- DONE: clean up web_main(), gs.end(), to-do-list
 	- DONE: add back-story to game_static() w/ /n/n breaks
 	- DONE: test
-- TBD: fix goblin attack on attempt to unlock portcullis
+- INPROC: fix goblin attack on attempt to unlock portcullis
+	- DONE: fix prep order in mach
+	- DONE: test
+	- TBD: clean up game_update, app_main
+	- TBD: investigate wild-card option (works for portcullis or key? use if key)
+	- TBD: document prep case trigger order somewhere I will see it
+	- TBD: create TBD in Interpreter section to sort out whole dir-obj prep-case word order / re-order issue
 - TBD: consider how to surface 'not_attackable' txt in game_static_gbl
 - TBD: Stone Coffer => no-lid box ?
 
