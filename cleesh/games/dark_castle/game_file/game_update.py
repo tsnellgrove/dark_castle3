@@ -229,6 +229,7 @@ disable_rh_guard_mach = InvisAutoMach('disable_rh_guard_mach', None,
 
 ## TrigMach ##
 ## for pre_act_cmd or post_act_cmd: trig_vals_lst = list-of-list of word_lst values that will trigger mach
+## prep case word_lst => trig_vals_lst is erratic. see interp() ln 201, validate() ln 32, & mach_class() ln 72
 
 hedgehog_guard_mach = InvisTrigMach('hedgehog_guard_mach', None, 
 		'pre_act_cmd', 'royal_hedgehog_temp', True, 
@@ -248,8 +249,7 @@ goblin_attack_mach = InvisTrigMach('goblin_attack_mach', None,
 		'pre_act_cmd', 'guard_goblin_temp', True,
 		[['examine', 'iron_portcullis'], ['examine', 'alcove'], ['examine', 'grimy_axe'], 
    		['take', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north'],
-#		['iron_portcullis', 'unlock', 'rusty_key']], 
-		['unlock', 'rusty_key', 'iron_portcullis']], 
+		['unlock', '*', 'iron_portcullis']], 
 		[true_cond_valid_not_reqd], 
 		[goblin_attacks_result]
 		) # mach_state == None
@@ -272,7 +272,6 @@ kinging_scroll = ItemTrigMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kin
 		illuminated_letters, 1, None, 
 		'post_act_cmd', 'kinging_scroll_temp', True,
 		[['read', 'illuminated_letters'],['read', 'kinging_scroll'], ['examine', 'illuminated_letters']], 
-#		[not_in_throne_room_cond, hedgehog_not_in_world_cond, crown_not_worn_cond, true_cond],
 		[not_in_throne_room_cond, hedgehog_not_in_world_cond, crown_not_worn_cond, not_in_throne_cond, 
    				true_cond],
 		[scroll_wrong_room_result, scroll_no_hedgehog_result, scroll_crown_not_worn_result, scroll_not_in_throne_result, 

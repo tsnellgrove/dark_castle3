@@ -194,13 +194,16 @@ End Date:
 	- DONE: clean up web_main(), gs.end(), to-do-list
 	- DONE: add back-story to game_static() w/ /n/n breaks
 	- DONE: test
-- INPROC: fix goblin attack on attempt to unlock portcullis
+- DONE: fix goblin attack on attempt to unlock portcullis
 	- DONE: fix prep order in mach
 	- DONE: test
-	- TBD: clean up game_update, app_main
-	- TBD: investigate wild-card option (works for portcullis or key? use if key)
-	- TBD: document prep case trigger order somewhere I will see it
-	- TBD: create TBD in Interpreter section to sort out whole dir-obj prep-case word order / re-order issue
+	- DONE: clean up game_update, app_main
+	- DONE: investigate wild-card option (works for portcullis or key? use if key)
+		- DONE: in game_update(), replace 'rusty_key' with '*'
+		- DONE: test => worked!
+		- DONE: clean-up game_update()
+	- DONE: document prep case trigger order somewhere I will see it (ref to interp / validate / trig_check)
+	- DONE: create TBD in Interpreter section to sort out whole dir-obj prep-case word order / re-order issue
 - TBD: consider how to surface 'not_attackable' txt in game_static_gbl
 - TBD: Stone Coffer => no-lid box ?
 
@@ -423,6 +426,9 @@ End Date:
 
 
 *** Roll up sleaves and fix Interpreter ***
+
+word_lst assignment:
+- prep case word_lst => trig_vals_lst is erratic. see interp() ln 201, validate() ln 32, & mach_class() ln 72
 
 *** Commands List ***
 - if you meet a person:
