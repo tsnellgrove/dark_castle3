@@ -204,7 +204,6 @@ End Date:
 		- DONE: clean-up game_update()
 	- DONE: document prep case trigger order somewhere I will see it (ref to interp / validate / trig_check)
 	- DONE: create TBD in Interpreter section to sort out whole dir-obj prep-case word order / re-order issue
-- TBD: consider how to surface 'not_attackable' txt in game_static_gbl
 - TBD: Stone Coffer => no-lid box ?
 
 
@@ -366,7 +365,8 @@ End Date:
 
 *** refactor Creature ***
 - Sort out the wierd thing where unarmed attack is represented by first item in feature_lst
-
+- TBD: consider how to surface 'not_attackable' txt in game_static_gbl
+	- UPDATE: is_attackable checked in error() - maybe good enough?
 - TBD: does creature_state really have any value? Maybe build hedgehog state machine before pulling the plug on this one
 - TBD: Could simplify 'give', remove description updates from give, and instead implement them as part of state machine?
 

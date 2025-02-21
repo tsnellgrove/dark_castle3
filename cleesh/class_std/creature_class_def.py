@@ -28,7 +28,7 @@ class Creature(ViewOnly):
 		self._feature_lst = feature_lst # not vis via i or l; e.g. 'loyalty'; 1st = unarmed attack 
 		self._invis_lst = invis_lst # invisible obj associated w creature; used for Modular Machines
 		self._give_dict = give_dict # dict of creature reactions to gifts
-		self._is_attackable = is_attackable # bool indicating weather Burt can attack the creature
+		self._is_attackable = is_attackable # bool indicating weather the creature can be attacked
 		self._attacked_dict = attacked_dict # dict of creature reactions to being attacked
 		self._weight = weight # represents the weight of the creature
 		self._max_weight = max_weight # maximum weight for the creature + all items
