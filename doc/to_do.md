@@ -204,10 +204,10 @@ End Date:
 		- DONE: clean-up game_update()
 	- DONE: document prep case trigger order somewhere I will see it (ref to interp / validate / trig_check)
 	- DONE: create TBD in Interpreter section to sort out whole dir-obj prep-case word order / re-order issue
-- INPROC: Stone Coffer => no-lid box
+- DONE: Stone Coffer => no-lid box
 	- DONE: convert stone_coffer to ContainerFixedSimple
 	- DONE: test
-	- TBD: clean up game_update()
+	- DONE: clean up game_update()
 
 
 *** known dark castle narrative issues ***
