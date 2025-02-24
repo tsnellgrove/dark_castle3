@@ -204,7 +204,10 @@ End Date:
 		- DONE: clean-up game_update()
 	- DONE: document prep case trigger order somewhere I will see it (ref to interp / validate / trig_check)
 	- DONE: create TBD in Interpreter section to sort out whole dir-obj prep-case word order / re-order issue
-- TBD: Stone Coffer => no-lid box ?
+- INPROC: Stone Coffer => no-lid box
+	- DONE: convert stone_coffer to ContainerFixedSimple
+	- DONE: test
+	- TBD: clean up game_update()
 
 
 *** known dark castle narrative issues ***
@@ -226,6 +229,8 @@ End Date:
 - RH: valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
 - shiny sword glows near enemies?
 
+*** decision about UI ***
+- TBD: should I leave 3D obj like stone_coffer in view_only if they are minor; with only key obj called out??
 
 *** dark castle exploration ***
 - TBD: play & note obvious nouns with no description; provide description (e.g. 'keyhole')
