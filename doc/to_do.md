@@ -80,7 +80,7 @@ End Date:
 		- DONE: 'git branch story_update_feature' to create new branch
 		- DONE: 'git branch' to confirm new branch exists but that master is still checked out
 		- DONE: 'git checkout story_update_feature' to switch focus to branching_test branch
-		- TBD: 'git branch' to confirm new branch is now in focus
+		- DONE: 'git branch' to confirm new branch is now in focus
 		- DONE: Publish Branch via VS Code button
 		- DONE: confirm new branch on GitHub
 		- DONE: update doc TBDs to DONEs
@@ -211,9 +211,10 @@ End Date:
 
 
 *** known dark castle narrative issues ***
-- TBD: on 'x goblin' descript, emphasize that Burt is peering from S side of room
+- DONE: on 'x goblin' descript, emphasize that Burt is peering from S side of room
+- TBD: 'officious' == offering unwanted advice => NOT hidebound or miro-managerial
+	- Or perhaps update to implay new definition: "assertive of authority in an annoyingly domineering way, especially with regard to petty or trivial matters." rather than classic
 - IDEA: maybe the hedgehog should act differently once you get & wear the crown?
-- Fix: 'officious' == offering unwanted advice => NOT hidebound or miro-managerial
 - update hedgehog description while eating to "The RH is ravenously eating" (done?)
 - TBD: fix Goblin description to no longer mention Control Panel
 - TBD: "what would your mothter say" error to "What would your Nana say?"

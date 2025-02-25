@@ -130,7 +130,7 @@ game_static_dict = {
 	### creatures ###
 	
 	## guard_goblin ##
-	'guard_goblin' : "The Guard Goblin stands in the Alcove guarding the Control Panel. It wears a crisply ironed uniform and gives off an air of hauty, even vicious, Officiousness. The Guard Goblin is armed and dangerous. It wields a Grimy Axe and observes you with watchful malice. This goblin clearly takes its guard duties very seriously. It would not be wise to approach the Iron Portcullis or the Control Panel (or the Guard Goblin!) un-armed.",
+	'guard_goblin' : "The Guard Goblin peers at you with malace from the north end of the room. It stands in the Alcove guarding a mysterious aperatus of some sort. It wears a crisply ironed uniform and gives off an air of hauty, even vicious, Officiousness. The Guard Goblin is armed and dangerous and clearly takes its guard duties very seriously. It would not be wise to approach the Iron Portcullis or the Alcove (or the Guard Goblin!) un-armed.",
 
 	# feature_lst #
 	'chewed_fingernails' : "Despite its officious demeanor and starched uniform, the Guard Goblin clearly has a terrible fingernail chewing habit. Its nailes are sharp, ragged, and icky!",
