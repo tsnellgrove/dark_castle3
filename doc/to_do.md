@@ -212,9 +212,9 @@ End Date:
 
 *** known dark castle narrative issues ***
 - DONE: on 'x goblin' descript, emphasize that Burt is peering from S side of room
-- TBD: 'officious' == offering unwanted advice => NOT hidebound or miro-managerial
-	- Or perhaps update to implay new definition: "assertive of authority in an annoyingly domineering way, especially with regard to petty or trivial matters." rather than classic
-- IDEA: maybe the hedgehog should act differently once you get & wear the crown?
+- DONE: 'officious' == offering unwanted advice => NOT hidebound or miro-managerial
+	- IDEA: Perhaps update to implay new definition: "assertive of authority in an annoyingly domineering way, especially with regard to petty or trivial matters." rather than classic
+- TBD: maybe the hedgehog should act differently once you get & wear the crown?
 - update hedgehog description while eating to "The RH is ravenously eating" (done?)
 - TBD: fix Goblin description to no longer mention Control Panel
 - TBD: "what would your mothter say" error to "What would your Nana say?"

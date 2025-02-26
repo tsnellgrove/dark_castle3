@@ -134,8 +134,7 @@ game_static_dict = {
 
 	# feature_lst #
 	'chewed_fingernails' : "Despite its officious demeanor and starched uniform, the Guard Goblin clearly has a terrible fingernail chewing habit. Its nailes are sharp, ragged, and icky!",
-	'officiousness' : "They say that a foolish consistency is the hobgoblin of little minds - and the Guard Goblin wears its petty officiousness like a shiny badge of honor. It scrutinizes you with a displeased frown of disaproval and a captious shake of the head. At any moment the Guard Goblin looks likely to ask you whether you've recieved the memo about the new cover sheet for the Treaspassing Permit Suspension reports.",
-
+	'officiousness' : "It should be emphasized that the sort of officiousness that the Guard Goblin displays is not of the kind that involves being overly helpful. Rather, it is the sort of officiousness that is assertive of authority in an annoyingly domineering way, especially with regard to petty or trivial rules and regulations. \n\nIt is said that a foolish consistency is the hobgoblin of little minds - and the Guard Goblin wears its astringent officiousness like a shiny badge of honor. It scrutinizes you with a displeased frown of disaproval and a captious shake of the head. At any moment the Guard Goblin looks likely to ask you whether you've recieved the memo about the new cover sheet for the Treaspassing Permit Suspension reports.",
 
 	## royal_hedgehog ##
 	'hungry_hedgehog' : "This poor little Royal Hedgehog has seen better days. It looks gaunt and like it skipped breakfast - and maybe lunch and dinner too. But despite a somewhat bedraggled appearance, the Royal Hedgehog has an air of fierce Loyalty about it. It may be in need of a good meal, but the Royal Hedgehog's eyes shine with the bright gleam of devoted guardian. It also appears to have quite a preference for shiny things. You don't know why but you feel an innate fondness for this small but faithful creature.",
