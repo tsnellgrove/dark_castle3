@@ -211,24 +211,28 @@ End Date:
 
 
 *** known dark castle narrative issues ***
-- DONE: on 'x goblin' descript, emphasize that Burt is peering from S side of room
-- DONE: 'officious' == offering unwanted advice => NOT hidebound or miro-managerial
-	- IDEA: Perhaps update to implay new definition: "assertive of authority in an annoyingly domineering way, especially with regard to petty or trivial matters." rather than classic
-- TBD: maybe the hedgehog should act differently once you get & wear the crown?
-- update hedgehog description while eating to "The RH is ravenously eating" (done?)
-- TBD: fix Goblin description to no longer mention Control Panel
-- TBD: "what would your mothter say" error to "What would your Nana say?"
-- TBD: fix post-goblin-slain Antechamber description
-- TBD: Description updates:
-	- TBD: hedgehog updates
-		- describe as "stalwart" [ALREADY DONE]
-		- Have the hedgehog think burt is playing if he attacks with a non-weapon; starts making wax-on, wax-off motions with paws
-		- Upate water_bottle to Enchanter jug
-		- Update shiny_sword to Zork I elven sword
-- TBD: tune goblin and hedgehog text; maybe add a faded poster of ancient and unreasonable regulations to the antechamber wall?
-- link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
-- RH: valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
-- shiny sword glows near enemies?
+- DONE: misc specific description updates
+	- DONE: on 'x goblin' descript, emphasize that Burt is peering from S side of room
+	- DONE: 'officious' == offering unwanted advice => NOT hidebound or miro-managerial
+		- IDEA: Perhaps update to implay new definition rather than classic: "assertive of authority in an annoyingly domineering way, especially with regard to petty or trivial matters." 
+	- DONE: update hedgehog description while eating to "The RH is ravenously eating" (done?)
+	- DONE: fix Goblin description to no longer mention Control Panel
+	- CANCEL: "what would your mothter say" error to "What would your Nana say?"
+		- FINDING: this error belongs to the clessh engine and should stay generic
+	- DONE: fix post-goblin-slain Antechamber description
+- TBD: more description updates:
+	- TBD: RH
+		- TBD: describe RH as "stalwart" [ALREADY DONE]
+		- TBD: Have the hedgehog think burt is playing if he attacks with a non-weapon; starts making wax-on, wax-off motions with paws
+		- TBD: valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
+	- TBD: link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
+		- TBD: lantern description (but no battery)
+		- TBD: Upate water_bottle to Enchanter jug description
+		- TBD: Update shiny_sword to Zork I elven sword description (elven runes)
+		- TBD: shiny sword glows near enemies?
+	- TBD: tune goblin text
+		- TBD: maybe add a faded poster of ancient and unreasonable regulations to the antechamber wall?
+
 
 *** decision about UI ***
 - TBD: should I leave 3D obj like stone_coffer in view_only if they are minor; with only key obj called out??
@@ -262,6 +266,7 @@ End Date:
 - TBD: introduce verbose and brief commands
 - TBD: find a good use for TravelResult !!
 - TBD: at end of story-driven updates, elim "##" error messages in error()
+- IDEA: maybe the hedgehog should act differently once you get & wear the crown?
 
 
 *** future story / puzzle ideas ***
