@@ -220,11 +220,12 @@ End Date:
 	- CANCEL: "what would your mothter say" error to "What would your Nana say?"
 		- FINDING: this error belongs to the clessh engine and should stay generic
 	- DONE: fix post-goblin-slain Antechamber description
-- TBD: more description updates:
-	- TBD: RH
-		- TBD: describe RH as "stalwart" [ALREADY DONE]
-		- TBD: Have the hedgehog think burt is playing if he attacks with a non-weapon; starts making wax-on, wax-off motions with paws
-		- TBD: valor; caprecious and messy sort of valor - sort of show up three sheets to the wind but ready to save the day
+- INPROC: more description updates:
+	- INPROC: RH
+		- DONE: describe RH as "stalwart"
+		- DONE: Have the hedgehog think burt is playing if he attacks with a non-weapon
+			- DONE: starts making wax-on, wax-off motions with paws
+		- TBD: valor; caprecious and messy sort of valor - sort that shows up two hours late and three sheets to the wind but is ready and willing to save the day
 	- TBD: link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
 		- TBD: lantern description (but no battery)
 		- TBD: Upate water_bottle to Enchanter jug description
