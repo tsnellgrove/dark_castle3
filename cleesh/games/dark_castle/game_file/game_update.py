@@ -40,7 +40,7 @@ from cleesh.class_gs.core_class_def import Core
 
 # Writing obj
 rusty_lettering = Writing('rusty_lettering', 'Rusty Lettering', "lettering", 'rusty_lettering')
-dwarven_runes = Writing('dwarven_runes', 'Dwarven Runes', "runes", 'dwarven_runes')
+elven_runes = Writing('elven_runes', 'Elven Runes', "runes", 'elven_runes')
 messy_handwriting = Writing('messy_handwriting', 'Messy Handwriting', 'handwriting', 'messy_handwriting')
 small_printing = Writing('small_printing', 'Small Printing', 'printing', 'small_printing')
 illuminated_letters = Writing('illuminated_letters', 'Illuminated Letters', 'letters', 'illuminated_letters')
@@ -86,7 +86,7 @@ big_medal = Garment('big_medal', 'Big Medal', 'medal', 'big_medal', gold_capital
 # Weapon
 grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing, 10, 
 				[['arcs', 'lightening-fast stroke'],['cleaves', 'violent swing'],['hacks', 'deadly intent']])
-shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', dwarven_runes, 10, 
+shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', elven_runes, 10, 
 				[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']])
 
 # Containers (NOTE for PORTABLE containers, weight of starting contents MUST be included in container weight!!!)
@@ -108,6 +108,7 @@ red_button = ViewOnlyButtonSwitch('red_button', 'Red Button', 'button', 'red_but
 throne = SeatSpringSliderSwitch('throne', 'Throne', 'throne', 'throne_pre_broach', None, [], 999, 2, 'on', [crystal_box], 'neutral', 'neutral', 'auto_switch_reset')
 
 # test / legacy obj - not currently in use
+dwarven_runes = Writing('dwarven_runes', 'Dwarven Runes', "runes", 'dwarven_runes')
 brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None, 1) # test object
 bubbly_potion = Item('bubbly_potion', 'bubbly potion', "potion", 'bubbly_potion', None, 2) # test object
 random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random_mcguffin', None, 5) # test object
@@ -483,15 +484,17 @@ crystal_box.contain_lst = [kinging_scroll]
 ### Used as an obj index in Interp() - must include all non-invisible obj ###
 ### invisible objects need not be listed ###
 master_obj_lst = [
-		gs, rusty_lettering, dwarven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, 
-		trademark, dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, 
-		family_tree, dead_goblin, rusty_key, shiny_sword, brass_key, bubbly_potion, torn_note, grimy_axe, 
-		silver_key, kinging_scroll, random_mcguffin, cheese_wedge, stale_biscuits, well_water, royal_crown, 
-		baseball_cap, hedgehog_broach, crystal_box, front_gate, iron_portcullis, control_panel, throne, 
-		left_lever, middle_lever, right_lever, red_button, royal_hedgehog, guard_goblin, entrance, main_hall,
-		antechamber, throne_room, loyalty, officiousness, gold_capitals, red_bandana, big_medal, burt, 
-		brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, test_chair, screen_door, cardboard_box, 
-		small_barrel, red_shoebox, black_suitcase, earthen_jug, heavy_rock, paper_bag, insignia, baked_biscuit
+		gs, rusty_lettering, elven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, 
+		dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, 
+		family_tree, dead_goblin, rusty_key, shiny_sword, torn_note, grimy_axe, silver_key, kinging_scroll, 
+		cheese_wedge, well_water, royal_crown, hedgehog_broach, crystal_box, front_gate, iron_portcullis, 
+		control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, guard_goblin, 
+		entrance, main_hall, antechamber, throne_room, loyalty, officiousness, gold_capitals, red_bandana, 
+		big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, earthen_jug, paper_bag, 
+		insignia, baked_biscuit,
+
+		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 
+		test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, heavy_rock 
 	] # note: big_bomb & test_frog removed; glass_bottle removed
 
 # list written to pickle

@@ -74,7 +74,7 @@ game_static_dict = {
 
 	### writing objects ###
 	'rusty_lettering' : "'ABANDON HOPE ALL YE WHO EVEN THINK ABOUT IT'",
-	'dwarven_runes' : "'Goblin Wallopper'",
+	'elven_runes' : "'Goblin Wallopper'",
 	'messy_handwriting' : "...ode is X. Don't tell anyo..",
 	'small_printing' : "'ACME AXE: Effective at dispatching small dragons, large crocodiles, and even the most agressive of trees.'",
 	'illuminated_letters' : "First with great effort and then, surprisingly, with surety and confidence, you read out loud the text on the scroll. Your voice booms forth of its own accord - as if some part of your brain has been getting ready to say these words all your life. The rest of brain is struggling just to make sense of what you're saying with such confidence... it seems to be something along the lines of a recipe with ingredients... so if the 'heir to the true king' (whoever that might be)... reads 'this precious parchment'(you're pretty sure that means the scroll you're holding)... in the Throne Room (you've been there!)... while 'adorned with the gleaming headpiece of state and seated upon our royal cathedra' (whatever that means)... and also requiring that 'so long as the castle remains invested with a representative of our most noble heraldic charge seen ever upon our crest, seal, and glorious coat of arms' (even Ms. Lusk would have no clue what this means but she would notice that an awful lot of the Illuminated Letters in this sentence include a hedgehog with a sword and a key)... and then it finishes on a rather dramatic high note with the words 'upon the hour these conditions be met, a new King of Bright Castle shall shine forth and be proclaimed!'",
@@ -94,7 +94,7 @@ game_static_dict = {
 	
 	### item objects ###
 	'rusty_key' : "An old Rusty Key... the one you swore to the whole pub (and miss Chrissy Brewer!) that you'd use to pillage the Dark Castle... What could you possibly do with it?",
-	'shiny_sword' : "The Shiny Sword glitters even in the dim light. Despite its age, the edge is keen and looks ready for action. There are Dwarven Runes engraved upon the blade.",
+	'shiny_sword' : "This is an elven sword of great antiquity. The Shiny Sword glitters even in the dim light. Despite its age, the edge is keen and looks ready for action. There are Elven Runes engraved upon the blade.",
 	'torn_note' : "This must have dropped from the Goblin's hand when you slew it. The Torn Note is ragged and only barely readable.", 
 	'grimy_axe' : "A nasty looking weapon - and poorly maintained too. If you ever get out of this castle you should set aside some time to polish it. You notice uppon inspection that there is some Small Printing on the handle.",
 	'silver_key' : "The small silver_key glitters in the dim light. It certainly stands out in the otherwise dreary Dark Castle. If you find a glittering silver keyhole somewhere this is definitely the key for it!",
@@ -120,7 +120,7 @@ game_static_dict = {
 	'wooden_shelf' : "The Wooden Shelf looks sturdy and reliable - like it would be a good, safe place to store your stuff.",
 
 	### PortableLiquidContainer objects ###
-	'earthen_jug' : "A battered Earthen Jug. According to your Nana, it once belonged to a shifty wizardy fellow who showed up in town and started prying into everyone's cupboards and asking folks if they'd seen any 'loose scrolls'. Nana ran him off with a bread paddle and he scampered so fast he dropped his water jug.", #  For ages it gave off a faint glow and your mum wouldn't have it in the house. You snagged it from the shed for this little adventure. Alas, it no longer appears to glow.
+	'earthen_jug' : "An old Earthen Jug. According to your Nana, it once belonged to a shifty wizardy fellow who showed up in town and started prying into everyone's cupboards and asking folks if they'd seen any 'loose scrolls'. Nana ran him off with a bread paddle and he scampered so fast he dropped his water jug.", #  For ages it gave off a faint glow and your mum wouldn't have it in the house. You snagged it from the shed for this little adventure. Alas, it no longer appears to glow.
 	'paper_bag' : "A smartly-creased paper bag. The wonderful smell of fresh-baked biscuts still wafts from it and you wonder if there might be any left?",
 
 	### door objects ###
@@ -160,7 +160,7 @@ game_static_dict = {
 	'fist' : "Yep, that's your fist. Still bruised from the last time you swung and missed and hit a wall...", 
 	'backpack' : "Your trusty, well-worn leather backpack",
 	'conscience' : "Burt, Dark Castle is quite murky enough without pondering your prodigal and Hal-esque misspent youth!",
-	'brass_lantern' : "Your trusty, battered-but-still-working, battery-powered light source. It's been in your household for ages; the family furphy is that your great grandmother, Nana, seized it from a maurauding 'adventurer' ages ago after giving him what-for with a broom. You sure wouldn't want your light source to go out - Dark Castle must be home to hundreds of Grues!",
+	'brass_lantern' : "Your trusty, battered-but-still-working light source. It's been in your household for ages; the family furphy is that your great grandmother, Nana, seized it from a maurauding 'adventurer' ages ago after giving him what-for with a broom. You sure wouldn't want your light source to go out - Dark Castle must be home to hundreds of Grues!", # eleiminate battery-powered 
 
 
 	## attack result display ##

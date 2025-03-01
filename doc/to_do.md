@@ -221,27 +221,39 @@ End Date:
 		- FINDING: this error belongs to the clessh engine and should stay generic
 	- DONE: fix post-goblin-slain Antechamber description
 - INPROC: more description updates:
-	- INPROC: RH
+	- DONE: RH
 		- DONE: describe RH as "stalwart"
 		- DONE: Have the hedgehog think burt is playing if he attacks with a non-weapon
 			- DONE: starts making wax-on, wax-off motions with paws
-		- TBD: valor; caprecious and messy sort of valor - sort that shows up two hours late and three sheets to the wind but is ready and willing to save the day
-	- TBD: link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
-		- TBD: lantern description (but no battery)
-		- TBD: Upate water_bottle to Enchanter jug description
-		- TBD: Update shiny_sword to Zork I elven sword description (elven runes)
+	- INPROC: link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
+		- DONE: lantern description (but no battery)
+		- DONE: Upate water_bottle to Enchanter jug description
+		- DONE: Update shiny_sword to Zork I elven sword description (elven runes)
 		- TBD: shiny sword glows near enemies?
+			- IDEA: Zork options
+				- IDEA: 1 rm away: "Your sword is glowing with a faint blue glow"
+				- IDEA: 2 rm away: "Your sword is no longer glowing"
+				- IDEA: same rm: "Your sword has begun to glow very brightly"
+				- IDEA: enemy dead: "Your sword is no longer glowing"
+			- IDEA: create ItemAutoMach
+				- IDEA: 0th cond = sword not in hand => nothing happens
+				- IDEA: 1st cond = goblin_dead => result = "no longer glow", disable mach
+				- IDEA: 2nd cond = room is Main Hall => buffer "faint glow", set state
+				- IDEA: 3rd cond = room is Antechamber => buffer "very bright glow"
+				- IDEA: 4th cond = state set (must be Entrance) => buff "no longer glowing"
+	- TBD: turn lantern into actual light (???)
 	- TBD: tune goblin text
 		- TBD: maybe add a faded poster of ancient and unreasonable regulations to the antechamber wall?
-
-
-*** decision about UI ***
-- TBD: should I leave 3D obj like stone_coffer in view_only if they are minor; with only key obj called out??
 
 *** dark castle exploration ***
 - TBD: play & note obvious nouns with no description; provide description (e.g. 'keyhole')
 - TBD: search on obj nouns and ensure always capitalized
 
+*** content to use somewhere ***
+- IDEA: RH valorcaprecious and messy sort of valor - sort that shows up two hours late and three sheets to the wind but is ready and willing to save the day
+
+*** decision about UI ***
+- TBD: should I leave 3D obj like stone_coffer in view_only if they are minor; with only key obj called out??
 
 *** known cleesh tech issues ***
 - TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
@@ -252,7 +264,7 @@ End Date:
 	- EXAMPE: s, e, & w of Entrance 
 	- TBD: Room class would need a custom_path_lst attribe
 	- TBD: custom_path_lst called from room.disp_cond()
-- TBD: varry inventory intro text
+- TBD: varry inventory intro text (?)
 - TBD: sort out double print of score after win
 - search for 'Nana'-based errors
 - maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
