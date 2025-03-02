@@ -3,7 +3,7 @@
 # module description: class deffinition module for Machines
 
 ### import
-from cleesh.class_std.item_class_def import Item
+from cleesh.class_std.item_class_def import Item, Weapon
 from cleesh.class_std.invisible_class_def import Invisible
 from cleesh.class_std.base_class_def import ViewOnly
 from cleesh.class_std.interactive_class_def import ContainerFixedSimple
@@ -231,6 +231,11 @@ class AutoMachMixIn(ProtoMachMixIn):
 class InvisAutoMach(AutoMachMixIn, Invisible):
 	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst):
 		Invisible.__init__(self, name)
+		AutoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst)
+
+class WeaponAutoMach(AutoMachMixIn, Weapon):
+	def __init__(self, name, full_name, root_name, descript_key, writing, weight, desc_lst, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst):
+		Weapon.__init__(self, name, full_name, root_name, descript_key, writing, weight, desc_lst)
 		AutoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst)
 
 class TrigMachMixIn(AutoMachMixIn, TrigMixIn):

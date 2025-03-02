@@ -229,18 +229,22 @@ End Date:
 		- DONE: lantern description (but no battery)
 		- DONE: Upate water_bottle to Enchanter jug description
 		- DONE: Update shiny_sword to Zork I elven sword description (elven runes)
-		- TBD: shiny sword glows near enemies?
-			- IDEA: Zork options
-				- IDEA: 1 rm away: "Your sword is glowing with a faint blue glow"
-				- IDEA: 2 rm away: "Your sword is no longer glowing"
-				- IDEA: same rm: "Your sword has begun to glow very brightly"
-				- IDEA: enemy dead: "Your sword is no longer glowing"
-			- IDEA: create ItemAutoMach
-				- IDEA: 0th cond = sword not in hand => nothing happens
-				- IDEA: 1st cond = goblin_dead => result = "no longer glow", disable mach
-				- IDEA: 2nd cond = room is Main Hall => buffer "faint glow", set state
-				- IDEA: 3rd cond = room is Antechamber => buffer "very bright glow"
-				- IDEA: 4th cond = state set (must be Entrance) => buff "no longer glowing"
+		- INPROC: shiny sword glows near enemies?
+			- DONE: research Zork options
+				- FINDING: 1 rm away: "Your sword is glowing with a faint blue glow"
+				- FINDING: 2 rm away: "Your sword is no longer glowing"
+				- FINDING: same rm: "Your sword has begun to glow very brightly"
+				- FINDING: enemy dead: "Your sword is no longer glowing"
+			- DONE: create WeaponAutoMach
+				- DONE: create mach class
+				- DONE: import mach class to both game_updates
+				- DONE: instantiate starting shiny_sword_new based on WeaponAutoMach
+			- TBD: cond & results
+				- TBD: 0th cond = sword not in hand => nothing happens
+				- TBD: 1st cond = goblin_dead => result = "no longer glow", disable mach
+				- TBD: 2nd cond = room is Main Hall => buffer "faint glow", set state
+				- TBD: 3rd cond = room is Antechamber => buffer "very bright glow"
+				- TBD: 4th cond = state set (must be Entrance) => buff "no longer glowing"
 	- TBD: turn lantern into actual light (???)
 	- TBD: tune goblin text
 		- TBD: maybe add a faded poster of ancient and unreasonable regulations to the antechamber wall?

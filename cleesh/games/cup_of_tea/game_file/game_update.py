@@ -25,7 +25,7 @@ from cleesh.class_mach.cond_class_def import (TrueCond,
 from cleesh.class_mach.result_class_def import (BaseResult, DisableMach, EndResult, ChgDescriptResult, 
 		GiveItemResult, TakeItemResult, DispenseObjResult, StartTimerResult, RemoveObjResult, AttackHeroResult, 
 		OpenableToggleResult, CreatureTravelResult)
-from cleesh.class_mach.mach_class_def import (Timer, Warning, InvisAutoMach, InvisTrigMach, ItemTrigMach, 
+from cleesh.class_mach.mach_class_def import (Timer, Warning, InvisAutoMach, InvisTrigMach, WeaponAutoMach, ItemTrigMach, 
 		InvisSwitchMach, ContainerFixedSimpleSwitchMach
 		)
 from cleesh.class_std.creature_class_def import Creature
