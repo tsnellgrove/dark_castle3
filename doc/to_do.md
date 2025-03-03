@@ -239,8 +239,8 @@ End Date:
 				- DONE: create mach class
 				- DONE: import mach class to both game_updates
 				- DONE: instantiate starting shiny_sword_new based on WeaponAutoMach
-			- TBD: cond & results
-				- TBD: 0th cond = sword not in hand => nothing happens
+			- INPROC: cond & results
+				- DONE: 0th cond = sword not in hand => nothing happens
 				- TBD: 1st cond = goblin_dead => result = "no longer glow", disable mach
 				- TBD: 2nd cond = room is Main Hall => buffer "faint glow", set state
 				- TBD: 3rd cond = room is Antechamber => buffer "very bright glow"

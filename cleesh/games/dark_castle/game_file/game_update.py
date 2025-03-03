@@ -155,7 +155,8 @@ true_cond = TrueCond('true_cond')
 true_cond_valid_not_reqd = TrueCond('true_cond', is_valid_reqd = False)
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', baked_biscuit, 'royal_hedgehog_temp', True)
-axe_not_in_goblin_hand_cond = ItemInHandCond('axe_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
+axe_not_in_goblin_hand_cond = ItemInHandCond('axe_not_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
+sword_not_in_burt_hand_cond = ItemInHandCond('sword_not_in_burt_hand_cond', 'shiny_swordnew_temp', 'burt_temp', False)
 silver_key_given_cond = ObjInInvCond('silver_key_given_cond', silver_key, 'royal_hedgehog_temp', False)
 no_weap_in_hand_cond = WeaponInHandCond('silver_key_given', 'burt_temp', False)
 sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_hall_temp', shiny_sword, True)
@@ -229,10 +230,10 @@ disable_rh_guard_mach = InvisAutoMach('disable_rh_guard_mach', None,
 		# mach_state == None
 
 shiny_swordnew = WeaponAutoMach('shiny_swordnew', 'Shiny SwordNew', 'swordnew', 'shiny_sword', elven_runes, 10,
-		[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']], 0, None,
+		[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']], 0, 
 		'auto_act', 'shiny_swordnew_temp', True,
-		[],
-		[]
+		[sword_not_in_burt_hand_cond],
+		[pass_result]
 		) # mach_state == is sword glowing; 0 = not glowing, 1 = glowing
 
 
@@ -452,6 +453,8 @@ goblin_in_world_cond.obj = guard_goblin
 sword_not_on_floor.match_room = main_hall
 sword_on_floor.match_room = main_hall
 not_in_throne_cond.creature_obj = burt
+sword_not_in_burt_hand_cond.creature_obj = burt
+sword_not_in_burt_hand_cond.item_obj = shiny_swordnew
 
 entrance_moat_mach.alert_anchor = entrance
 broach_dispenser_mach.alert_anchor = throne_room
@@ -467,6 +470,7 @@ kinging_scroll.alert_anchor = kinging_scroll
 entrance_south_warn.alert_anchor = entrance
 attack_hedgehog_warning.alert_anchor = royal_hedgehog
 disable_rh_guard_mach.alert_anchor = royal_hedgehog
+shiny_swordnew.alert_anchor = shiny_swordnew
 
 fed_hedgehog_keeps_sword_result.obj = royal_hedgehog
 fed_hedgehog_loses_sword_result.obj = royal_hedgehog

@@ -188,6 +188,10 @@ class ItemInHandCond(TrueCond):
 	def item_obj(self):
 		return self._item_obj
 
+	@item_obj.setter
+	def item_obj(self, new_obj):
+		self._item_obj = new_obj
+
 	@property
 	def creature_obj(self):
 		return self._creature_obj
