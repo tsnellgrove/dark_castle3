@@ -14,7 +14,7 @@
 # ObjInWorldCond :		TrueCond :			match obj in world
 # ItemInHandCond :		TrueCond :			match obj in hand to match_cond
 # ObjInInvCond :		ItemInHandCond:		match obj in creature inventory
-# WeaponInHandCond : 	TrueCond :			match on craeture holding weapon
+# WeaponInHandCond : 	TrueCond :			match on creature holding weapon
 # MachStateCond : 		TrueCond :		  	match mach_state
 # TimerActiveCond :		TrueCond :			match timer_obj.active
 # SwitchStateCond : 	TrueCond :		 	match switch_state_lst

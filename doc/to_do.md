@@ -241,10 +241,11 @@ End Date:
 				- DONE: instantiate starting shiny_sword_new based on WeaponAutoMach
 			- INPROC: cond & results
 				- DONE: 0th cond = sword not in hand => nothing happens
-				- TBD: 1st cond = goblin_dead => result = "no longer glow", disable mach
+				- DONE: 1st cond = goblin_dead => result = "no longer glow", disable mach
 				- TBD: 2nd cond = room is Main Hall => buffer "faint glow", set state
 				- TBD: 3rd cond = room is Antechamber => buffer "very bright glow"
 				- TBD: 4th cond = state set (must be Entrance) => buff "no longer glowing"
+	- TBD: have shiny sword be hanging on wall (like Zork I)?
 	- TBD: turn lantern into actual light (???)
 	- TBD: tune goblin text
 		- TBD: maybe add a faded poster of ancient and unreasonable regulations to the antechamber wall?

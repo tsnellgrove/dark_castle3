@@ -164,6 +164,7 @@ sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_hall_temp', shin
 not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
 hedgehog_not_in_world_cond = ObjInWorldCond('hedgehog_not_in_world_cond', 'royal_hedgehog_temp', False)
 goblin_in_world_cond = ObjInWorldCond('goblin_in_world_cond', 'guard_goblin_temp', True)
+goblin_not_in_world_cond = ObjInWorldCond('goblin_not_in_world_cond', 'guard_goblin_temp', False)
 broach_dispensed_cond = MachStateCond('broach_dispensed_cond', True)
 crown_not_dispensed_cond = MachStateCond('crown_not_dispensed_cond', False)
 crown_dispensed_cond = MachStateCond('crown_dispensed_cond', True)
@@ -204,7 +205,8 @@ hedgehog_attacks_result = AttackHeroResult('hedgehog_attacks_result', False, Non
 toggle_portcullis_result = OpenableToggleResult('toggle_portcullis_result', False, None, False, iron_portcullis)
 disable_rh_guard_result1 = DisableMach('disable_rh_guard_result1', False, None, False, 'hedgehog_guard_mach_temp')
 disable_rh_guard_result2 = DisableMach('disable_rh_guard_result2', False, None, False, 'disable_rh_guard_mach_temp')
-
+sword_stops_glowing_result = BaseResult('sword_stops_glowing_result', True, 0, False)
+disable_shiny_sword_result = DisableMach('disable_shiny_sword_result', False, None, False, 'shiny_swordnew_temp')
 
 # *** machines ***
 
@@ -232,8 +234,8 @@ disable_rh_guard_mach = InvisAutoMach('disable_rh_guard_mach', None,
 shiny_swordnew = WeaponAutoMach('shiny_swordnew', 'Shiny SwordNew', 'swordnew', 'shiny_sword', elven_runes, 10,
 		[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']], 0, 
 		'auto_act', 'shiny_swordnew_temp', True,
-		[sword_not_in_burt_hand_cond],
-		[pass_result]
+		[sword_not_in_burt_hand_cond, goblin_not_in_world_cond],
+		[pass_result,[sword_stops_glowing_result, disable_shiny_sword_result]]
 		) # mach_state == is sword glowing; 0 = not glowing, 1 = glowing
 
 
@@ -455,6 +457,7 @@ sword_on_floor.match_room = main_hall
 not_in_throne_cond.creature_obj = burt
 sword_not_in_burt_hand_cond.creature_obj = burt
 sword_not_in_burt_hand_cond.item_obj = shiny_swordnew
+goblin_not_in_world_cond.obj = guard_goblin
 
 entrance_moat_mach.alert_anchor = entrance
 broach_dispenser_mach.alert_anchor = throne_room
@@ -482,6 +485,7 @@ dispense_panel_result2.dispense_obj = control_panel
 dispense_panel_result2.room_obj = antechamber
 disable_rh_guard_result1.mach = hedgehog_guard_mach
 disable_rh_guard_result2.mach = disable_rh_guard_mach
+disable_shiny_sword_result.mach = shiny_swordnew
 
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog
