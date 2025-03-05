@@ -176,6 +176,7 @@ throne_push_cond = SwitchStateCond('throne_push_cond', [throne], ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', [throne], ['pulled'])
 lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [left_lever, middle_lever, right_lever], [4,2,1])
 not_in_throne_cond = CreatureContainedCond('not_in_throne_cond', throne, 'burt_temp', False)
+burt_in_hall_cond = ObjInRmCond('burt_in_hall_cond', 'main_hall_temp', 'burt_temp', True)
 
 # *** results ***
 pass_result = BaseResult('pass_result', False, None, False)
@@ -207,6 +208,7 @@ disable_rh_guard_result1 = DisableMach('disable_rh_guard_result1', False, None, 
 disable_rh_guard_result2 = DisableMach('disable_rh_guard_result2', False, None, False, 'disable_rh_guard_mach_temp')
 sword_stops_glowing_result = BaseResult('sword_stops_glowing_result', True, 0, False)
 disable_shiny_sword_result = DisableMach('disable_shiny_sword_result', False, None, False, 'shiny_swordnew_temp')
+sword_starts_glowing_result = BaseResult('sword_starts_glowing_result', True, 0, False)
 
 # *** machines ***
 
@@ -234,8 +236,8 @@ disable_rh_guard_mach = InvisAutoMach('disable_rh_guard_mach', None,
 shiny_swordnew = WeaponAutoMach('shiny_swordnew', 'Shiny SwordNew', 'swordnew', 'shiny_sword', elven_runes, 10,
 		[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']], 0, 
 		'auto_act', 'shiny_swordnew_temp', True,
-		[sword_not_in_burt_hand_cond, goblin_not_in_world_cond],
-		[pass_result,[sword_stops_glowing_result, disable_shiny_sword_result]]
+		[sword_not_in_burt_hand_cond, goblin_not_in_world_cond, burt_in_hall_cond],
+		[pass_result,[sword_stops_glowing_result, disable_shiny_sword_result], sword_starts_glowing_result]
 		) # mach_state == is sword glowing; 0 = not glowing, 1 = glowing
 
 
@@ -458,6 +460,8 @@ not_in_throne_cond.creature_obj = burt
 sword_not_in_burt_hand_cond.creature_obj = burt
 sword_not_in_burt_hand_cond.item_obj = shiny_swordnew
 goblin_not_in_world_cond.obj = guard_goblin
+burt_in_hall_cond.obj = burt
+burt_in_hall_cond.match_room = main_hall
 
 entrance_moat_mach.alert_anchor = entrance
 broach_dispenser_mach.alert_anchor = throne_room

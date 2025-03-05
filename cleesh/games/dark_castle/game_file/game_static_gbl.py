@@ -242,7 +242,8 @@ game_static_dict = {
 
 	'goblin_attacks_result_pre-buff' : "It seems that by entering the north side of the room you have violated a minor castle ordinance. The Guard Goblin is incensed and will not tolerate this flagrant defiance of orthodoxy!",
 
-	'sword_stops_glowing_result' : "Your sword is no longer glowing",
+	'sword_stops_glowing_result' : "Your sword is no longer glowing.",
+    'sword_starts_glowing_result' : "Your sword is glowing with a faint blue glow.",
 
 	#### AUTO-DISP ####
 
