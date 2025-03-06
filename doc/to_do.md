@@ -239,10 +239,18 @@ End Date:
 				- DONE: create mach class
 				- DONE: import mach class to both game_updates
 				- DONE: instantiate starting shiny_sword_new based on WeaponAutoMach
+			- TBD: re-think cond & results
+					- TBD: sword state needs 3 values: 0 = off, 1 = glow, 2 = bright glow
+					- TBD: sword description only mentioned on state change (or 'x')
+					- TBD: state only changes on pick-up, rm chg, death of enemy
+					- TBD: need to change mach to check for state change
+					- TBD: need to create disp_cond() for shiny_swordnew and base cond on state for 'x'
+					- TBD: does sword state pass to room state?
 			- INPROC: cond & results
 				- DONE: 0th cond = sword not in hand => nothing happens
 				- DONE: 1st cond = goblin_dead => result = "no longer glow", disable mach
-				- TBD: 2nd cond = room is Main Hall => buffer "faint glow", set state
+				- INPROC: 2nd cond = room is Main Hall => buffer "faint glow", set state
+					- TBD: still need to set state
 				- TBD: 3rd cond = room is Antechamber => buffer "very bright glow"
 				- TBD: 4th cond = state set (must be Entrance) => buff "no longer glowing"
 	- TBD: have shiny sword be hanging on wall (like Zork I)?
