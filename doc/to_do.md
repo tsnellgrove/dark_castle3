@@ -246,6 +246,13 @@ End Date:
 					- TBD: need to change mach to check for state change
 					- TBD: need to create disp_cond() for shiny_swordnew and base cond on state for 'x'
 					- TBD: does sword state pass to room state?
+					- IDEA: states part 2:
+						- IDEA: disp_cond => buff(f'sword_disp_{sword_state}')
+						- IDEA: sword not in hand => buff('stopped glowing') / sword_state => 0
+						- IDEA: goblin dead => buff('stopped glowing') / sword_state => 0 ; disable mach
+						- IDEA: (room = Entrance) && (sword_state = 1) => buff('stopped glowing') / sword_state => 0
+						- IDEA: (room = main_hall) && (sword_state = 0 or 2) => buff('blue glow') / sword_sate => 1
+						- IDEA: (room = antechamber) && (sword_state = 1) => buff('bright glow) / sword_state => 2
 			- INPROC: cond & results
 				- DONE: 0th cond = sword not in hand => nothing happens
 				- DONE: 1st cond = goblin_dead => result = "no longer glow", disable mach
