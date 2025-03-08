@@ -239,27 +239,31 @@ End Date:
 				- DONE: create mach class
 				- DONE: import mach class to both game_updates
 				- DONE: instantiate starting shiny_sword_new based on WeaponAutoMach
-			- TBD: re-think cond & results
-					- TBD: sword state needs 3 values: 0 = off, 1 = glow, 2 = bright glow
-					- TBD: sword description only mentioned on state change (or 'x')
-					- TBD: state only changes on pick-up, rm chg, death of enemy
-					- TBD: need to change mach to check for state change
-					- TBD: need to create disp_cond() for shiny_swordnew and base cond on state for 'x'
-					- TBD: does sword state pass to room state?
-					- IDEA: states part 2:
-						- IDEA: disp_cond => buff(f'sword_disp_{sword_state}')
-						- IDEA: sword not in hand => buff('stopped glowing') / sword_state => 0
-						- IDEA: goblin dead => buff('stopped glowing') / sword_state => 0 ; disable mach
-						- IDEA: (room = Entrance) && (sword_state = 1) => buff('stopped glowing') / sword_state => 0
-						- IDEA: (room = main_hall) && (sword_state = 0 or 2) => buff('blue glow') / sword_sate => 1
-						- IDEA: (room = antechamber) && (sword_state = 1) => buff('bright glow) / sword_state => 2
-			- INPROC: cond & results
+			- CANCEL: cond & results - first try
 				- DONE: 0th cond = sword not in hand => nothing happens
 				- DONE: 1st cond = goblin_dead => result = "no longer glow", disable mach
-				- INPROC: 2nd cond = room is Main Hall => buffer "faint glow", set state
+				- PAUSE: 2nd cond = room is Main Hall => buffer "faint glow", set state
 					- TBD: still need to set state
-				- TBD: 3rd cond = room is Antechamber => buffer "very bright glow"
-				- TBD: 4th cond = state set (must be Entrance) => buff "no longer glowing"
+				- CANCEL: 3rd cond = room is Antechamber => buffer "very bright glow"
+				- CANCEL: 4th cond = state set (must be Entrance) => buff "no longer glowing"			
+			- INPROC: re-think cond & results
+				- IDEA: sword state needs 3 values: 0 = off, 1 = glow, 2 = bright glow
+				- IDEA: sword description only mentioned on state change (or 'x')
+				- IDEA: state only changes on pick-up, drop, rm chg, death of enemy
+				- DONE: need to create disp_cond() for shiny_swordnew and base cond on state for 'x'
+				- DONE: create descriptions linked to shiny_sword state
+				- CANCEL: does sword state pass to room state?
+				- TBD: need to update mach module to deal with compound cond??
+				- TBD: need to change mach to check for state change
+				- IDEA: states part 2:
+					- IDEA: disp_cond => buff(f'sword_disp_{sword_state}')
+					- IDEA: sword not in hand => buff('stopped glowing') / sword_state => 0
+					- IDEA: goblin dead => buff('stopped glowing') / sword_state => 0 ; disable mach
+					- IDEA: (rm = Entrance) & (sword_state != 0) => buff('stopped glowing') / sword_state=> 0
+					- IDEA: (rm = main_hall) && (sword_state != 1) => buff('blue glow') / sword_sate => 1
+					- IDEA: (rm = antechamber) && (sword_state != 2) => buff('bright glow) / sword_state => 2
+			- TBD: test
+			- TBD: shiny_swordnew => shiny_sword
 	- TBD: have shiny sword be hanging on wall (like Zork I)?
 	- TBD: turn lantern into actual light (???)
 	- TBD: tune goblin text

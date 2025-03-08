@@ -238,6 +238,15 @@ class WeaponAutoMach(AutoMachMixIn, Weapon):
 		Weapon.__init__(self, name, full_name, root_name, descript_key, writing, weight, desc_lst)
 		AutoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst)
 
+	def disp_cond(self, gs):
+		""" Displays object-specific conditions. Used in examine().
+		"""
+		if self.mach_state is None:
+			return
+		else:
+			gs.io.buff_d(f"{self.name}_{self.mach_state}", self.full_name)
+			return
+
 class TrigMachMixIn(AutoMachMixIn, TrigMixIn):
 	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst):
 		AutoMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst)
