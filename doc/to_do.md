@@ -253,6 +253,7 @@ End Date:
 				- DONE: need to create disp_cond() for shiny_swordnew and base cond on state for 'x'
 				- DONE: create descriptions linked to shiny_sword state
 				- CANCEL: does sword state pass to room state?
+				- TBD: update descriptions / disp_cond() to make sense for examine (skip on 0 or None)
 				- TBD: need to update mach module to deal with compound cond??
 				- TBD: need to change mach to check for state change
 				- IDEA: states part 2:
