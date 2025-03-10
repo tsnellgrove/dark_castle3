@@ -297,9 +297,8 @@ game_static_dict = {
 	'burt_fierce_teeth_royal_hedgehog_*' : "The moment you approach the Shiny Sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's Fierce Teeth.",
 
 	### sword glow descriptions ###
-    'shiny_swordnew_0' : "Your sword is no longer glowing.",
     'shiny_swordnew_1' : "Your sword is glowing with a faint blue glow.",
-    'shiny_swordnew_2' : "Your sword has begun to glow very brightly.",
+    'shiny_swordnew_2' : "Your sword is glowing very brightly.",
 
 
 	#### TEST OBJ ####

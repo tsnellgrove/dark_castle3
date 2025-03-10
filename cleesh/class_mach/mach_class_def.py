@@ -211,7 +211,7 @@ class AutoMachMixIn(ProtoMachMixIn):
 
 	# complex methods
 	def run_mach(self, gs, is_valid):
-		for idx, cond in enumerate(self.cond_lst):
+		for idx, cond in enumerate(self.cond_lst): # see 'unused code' in done() for full compound cond code
 			if cond.cond_check(gs, self.mach_state, is_valid):
 				result = self.result_lst[idx]
 				if isinstance(result, list):
@@ -241,7 +241,7 @@ class WeaponAutoMach(AutoMachMixIn, Weapon):
 	def disp_cond(self, gs):
 		""" Displays object-specific conditions. Used in examine().
 		"""
-		if self.mach_state is None:
+		if (self.mach_state is None) or (self.mach_state == 0):
 			return
 		else:
 			gs.io.buff_d(f"{self.name}_{self.mach_state}", self.full_name)
