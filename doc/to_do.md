@@ -229,44 +229,46 @@ End Date:
 		- DONE: lantern description (but no battery)
 		- DONE: Upate water_bottle to Enchanter jug description
 		- DONE: Update shiny_sword to Zork I elven sword description (elven runes)
-		- INPROC: shiny sword glows near enemies?
-			- DONE: research Zork options
-				- FINDING: 1 rm away: "Your sword is glowing with a faint blue glow"
-				- FINDING: 2 rm away: "Your sword is no longer glowing"
-				- FINDING: same rm: "Your sword has begun to glow very brightly"
-				- FINDING: enemy dead: "Your sword is no longer glowing"
-			- DONE: create WeaponAutoMach
-				- DONE: create mach class
-				- DONE: import mach class to both game_updates
-				- DONE: instantiate starting shiny_sword_new based on WeaponAutoMach
-			- CANCEL: cond & results - first try
-				- DONE: 0th cond = sword not in hand => nothing happens
-				- DONE: 1st cond = goblin_dead => result = "no longer glow", disable mach
-				- PAUSE: 2nd cond = room is Main Hall => buffer "faint glow", set state
-					- TBD: still need to set state
-				- CANCEL: 3rd cond = room is Antechamber => buffer "very bright glow"
-				- CANCEL: 4th cond = state set (must be Entrance) => buff "no longer glowing"			
-			- INPROC: re-think cond & results
-				- IDEA: sword state needs 3 values: 0 = off, 1 = glow, 2 = bright glow
-				- IDEA: sword description only mentioned on state change (or 'x')
-				- IDEA: state only changes on pick-up, drop, rm chg, death of enemy
-				- DONE: need to create disp_cond() for shiny_swordnew and base cond on state for 'x'
-				- DONE: create descriptions linked to shiny_sword state
-				- CANCEL: does sword state pass to room state?
-				- DONE: update descriptions / disp_cond() to make sense for examine (skip on 0 or None)
-				- INPROC: need to update mach module to deal with compound cond
-					- DONE: review 'full' compound cond code in 'unused code' in done()
-					- DECISION: just implement simple 'and' case that mirrors result implementation
-					- TBD: implement simple 'and' case for compound cond
-				- IDEA: update mach to check for state change (states part 2):
-					- IDEA: disp_cond => buff(f'sword_disp_{sword_state}')
-					- IDEA: sword not in hand => buff('stopped glowing') / sword_state => 0
-					- IDEA: goblin dead => buff('stopped glowing') / sword_state => 0 ; disable mach
-					- IDEA: (rm = Entrance) & (sword_state != 0) => buff('stopped glowing') / sword_state=> 0
-					- IDEA: (rm = main_hall) && (sword_state != 1) => buff('blue glow') / sword_sate => 1
-					- IDEA: (rm = antechamber) && (sword_state != 2) => buff('bright glow) / sword_state => 2
-			- TBD: test
-			- TBD: shiny_swordnew => shiny_sword
+	- INPROC: shiny sword glows near enemies?
+		- DONE: research Zork options
+			- FINDING: 1 rm away: "Your sword is glowing with a faint blue glow"
+			- FINDING: 2 rm away: "Your sword is no longer glowing"
+			- FINDING: same rm: "Your sword has begun to glow very brightly"
+			- FINDING: enemy dead: "Your sword is no longer glowing"
+		- DONE: create WeaponAutoMach
+			- DONE: create mach class
+			- DONE: import mach class to both game_updates
+			- DONE: instantiate starting shiny_sword_new based on WeaponAutoMach
+		- CANCEL: cond & results - first try
+			- DONE: 0th cond = sword not in hand => nothing happens
+			- DONE: 1st cond = goblin_dead => result = "no longer glow", disable mach
+			- PAUSE: 2nd cond = room is Main Hall => buffer "faint glow", set state
+				- TBD: still need to set state
+			- CANCEL: 3rd cond = room is Antechamber => buffer "very bright glow"
+			- CANCEL: 4th cond = state set (must be Entrance) => buff "no longer glowing"			
+		- DONE: re-think cond & results
+			- IDEA: sword state needs 3 values: 0 = off, 1 = glow, 2 = bright glow
+			- IDEA: sword description only mentioned on state change (or 'x')
+			- IDEA: state only changes on pick-up, drop, rm chg, death of enemy
+			- DONE: need to create disp_cond() for shiny_swordnew and base cond on state for 'x'
+			- DONE: create descriptions linked to shiny_sword state
+			- CANCEL: does sword state pass to room state?
+			- DONE: update descriptions / disp_cond() to make sense for examine (skip on 0 or None)
+			- DONE: need to update mach module to deal with compound cond
+				- DONE: review 'full' compound cond code in 'unused code' in done()
+				- DECISION: just implement simple 'and' case that mirrors result implementation
+				- DONE: implement simple 'and' case for compound cond
+				- DONE: test (existing single-cond code)
+			- TBD: update mach to check for state change (states part 2):
+				- TBD: review / update / clean-up existing cond & results
+				- TBD: disp_cond => buff(f'sword_disp_{sword_state}')
+				- TBD: sword not in hand => buff('stopped glowing') / sword_state => 0
+				- TBD: goblin dead => buff('stopped glowing') / sword_state => 0 ; disable mach
+				- TBD: (rm = Entrance) & (sword_state != 0) => buff('stopped glowing') / sword_state=> 0
+				- TBD: (rm = main_hall) && (sword_state != 1) => buff('blue glow') / sword_sate => 1
+				- TBD: (rm = antechamber) && (sword_state != 2) => buff('bright glow) / sword_state => 2
+		- TBD: test
+		- TBD: shiny_swordnew => shiny_sword
 	- TBD: have shiny sword be hanging on wall (like Zork I)?
 	- TBD: turn lantern into actual light (???)
 	- TBD: tune goblin text
@@ -277,7 +279,7 @@ End Date:
 - TBD: search on obj nouns and ensure always capitalized
 
 *** content to use somewhere ***
-- IDEA: RH valorcaprecious and messy sort of valor - sort that shows up two hours late and three sheets to the wind but is ready and willing to save the day
+- IDEA: RH valor = caprecious and messy sort of valor - sort that shows up two hours late and three sheets to the wind but is ready and willing to save the day
 
 *** decision about UI ***
 - TBD: should I leave 3D obj like stone_coffer in view_only if they are minor; with only key obj called out??
