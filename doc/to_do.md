@@ -251,6 +251,7 @@ End Date:
 			- IDEA: sword description only mentioned on state change (or 'x')
 			- IDEA: state only changes on pick-up, drop, rm chg, death of enemy
 			- DONE: need to create disp_cond() for shiny_swordnew and base cond on state for 'x'
+			- DONE: disp_cond => buff(f'sword_disp_{sword_state}')
 			- DONE: create descriptions linked to shiny_sword state
 			- CANCEL: does sword state pass to room state?
 			- DONE: update descriptions / disp_cond() to make sense for examine (skip on 0 or None)
@@ -259,14 +260,13 @@ End Date:
 				- DECISION: just implement simple 'and' case that mirrors result implementation
 				- DONE: implement simple 'and' case for compound cond
 				- DONE: test (existing single-cond code)
+			- DONE: review & update cond & results plan
 			- TBD: update mach to check for state change (states part 2):
-				- TBD: review / update / clean-up existing cond & results
-				- TBD: disp_cond => buff(f'sword_disp_{sword_state}')
-				- TBD: sword not in hand => buff('stopped glowing') / sword_state => 0
-				- TBD: goblin dead => buff('stopped glowing') / sword_state => 0 ; disable mach
-				- TBD: (rm = Entrance) & (sword_state != 0) => buff('stopped glowing') / sword_state=> 0
-				- TBD: (rm = main_hall) && (sword_state != 1) => buff('blue glow') / sword_sate => 1
-				- TBD: (rm = antechamber) && (sword_state != 2) => buff('bright glow) / sword_state => 2
+				- TBD: (sword not in hand) & (s_s == !0) => (buff('stopped glowing')) & (sword_state => 0)
+				- TBD: goblin dead => (buff('stopped glowing')) & (sword_state => 0) & (disable mach)
+				- TBD: (rm = Entrance) & (sword_state != 0) => buff('stopped glowing') & (sword_state=> 0)
+				- TBD: (rm = main_hall) & (sword_state != 1) => buff('blue glow') / sword_sate => 1
+				- TBD: (rm = antechamber) & (sword_state != 2) => buff('bright glow) / sword_state => 2
 		- TBD: test
 		- TBD: shiny_swordnew => shiny_sword
 	- TBD: have shiny sword be hanging on wall (like Zork I)?

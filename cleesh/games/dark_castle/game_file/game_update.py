@@ -238,7 +238,7 @@ shiny_swordnew = WeaponAutoMach('shiny_swordnew', 'Shiny SwordNew', 'swordnew', 
 		'auto_act', 'shiny_swordnew_temp', True,
 		[sword_not_in_burt_hand_cond, goblin_not_in_world_cond, burt_in_hall_cond],
 		[pass_result,[sword_stops_glowing_result, disable_shiny_sword_result], sword_starts_glowing_result]
-		) # mach_state == is sword glowing; 0 = not glowing, 1 = glowing
+		) # mach_state == sword brightness; 0 = not glowing, 1 = glowing, 2 = glowing brightly
 
 
 ## TrigMach ##
