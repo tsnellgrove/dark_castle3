@@ -237,16 +237,23 @@ class WeaponInHandCond(TrueCond):
 
 
 class MachStateCond(TrueCond):
-	def __init__(self, name, match_cond):
+	def __init__(self, name, tgt_state, match_cond):
 		super().__init__(name)
-		self._match_cond = match_cond # condition value to test for match
+		self._tgt_state = tgt_state # target mach state value to test for match
+		self._match_cond = match_cond # bool indicatting whether state should match or not macth
 
 	@property
 	def match_cond(self):
 		return self._match_cond
 
+	@property
+	def tgt_state(self):
+		return self._tgt_state
+
 	def cond_check(self, gs, mach_state, is_valid):
-		return (mach_state == self.match_cond)
+		state_match = (mach_state == self.tgt_state)
+#		return (mach_state == self.match_cond)
+		return (state_match == self.match_cond)
 
 
 class TimerActiveCond(TrueCond):

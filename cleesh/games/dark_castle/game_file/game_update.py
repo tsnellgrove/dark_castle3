@@ -165,11 +165,11 @@ not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_te
 hedgehog_not_in_world_cond = ObjInWorldCond('hedgehog_not_in_world_cond', 'royal_hedgehog_temp', False)
 goblin_in_world_cond = ObjInWorldCond('goblin_in_world_cond', 'guard_goblin_temp', True)
 goblin_not_in_world_cond = ObjInWorldCond('goblin_not_in_world_cond', 'guard_goblin_temp', False)
-broach_dispensed_cond = MachStateCond('broach_dispensed_cond', True)
-crown_not_dispensed_cond = MachStateCond('crown_not_dispensed_cond', False)
-crown_dispensed_cond = MachStateCond('crown_dispensed_cond', True)
-panel_not_dispensed_cond = MachStateCond('panel_not_dispensed_cond', False)
-hedgehog_descript_updated_cond = MachStateCond('hedgehog_descript_updated_cond', True)
+broach_dispensed_cond = MachStateCond('broach_dispensed_cond', True, True)
+crown_not_dispensed_cond = MachStateCond('crown_not_dispensed_cond', False, True)
+crown_dispensed_cond = MachStateCond('crown_dispensed_cond', True, True)
+panel_not_dispensed_cond = MachStateCond('panel_not_dispensed_cond', False, True)
+hedgehog_descript_updated_cond = MachStateCond('hedgehog_descript_updated_cond', True, True)
 hedgehog_eats_timer_active_cond = TimerActiveCond('hedgehog_eats_timer_active_cond', hedgehog_eats_timer, True) # hedgehog is distracted
 hedgehog_eats_timer_not_active_cond = TimerActiveCond('hedgehog_eats_timer_not_active_cond', hedgehog_eats_timer, False) # hedgehog is not eating
 throne_push_cond = SwitchStateCond('throne_push_cond', [throne], ['pushed'])
@@ -177,6 +177,7 @@ throne_pull_cond = SwitchStateCond('throne_pull_cond', [throne], ['pulled'])
 lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [left_lever, middle_lever, right_lever], [4,2,1])
 not_in_throne_cond = CreatureContainedCond('not_in_throne_cond', throne, 'burt_temp', False)
 burt_in_hall_cond = ObjInRmCond('burt_in_hall_cond', 'main_hall_temp', 'burt_temp', True)
+sword_state_not_0_cond = MachStateCond('sword_state_not_0_cond', 0, False)
 
 # *** results ***
 pass_result = BaseResult('pass_result', False, None, False)
