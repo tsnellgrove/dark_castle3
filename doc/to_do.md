@@ -261,16 +261,17 @@ End Date:
 				- DONE: implement simple 'and' case for compound cond
 				- DONE: test (existing single-cond code)
 			- DONE: review & update cond & results plan
-			- INPROC: modify / create needed cond and result classes:
+			- DONE: modify / create needed cond and result classes:
 				- DONE: update MachStateCond to include tgt_state attrib
 					- DONE: update MachStateCond
 					- DONE: update existing MachStateCond conditions
 					- DONE: test existing MachStateCond conditions
 				- DONE: create sword_state_not_0_cond of class MachStateCond
-				- TBD: create SetStateResult SetStateResult
-				- TBD: instantiate sword_state_0_result of class 
+				- CANCEL: create SetStateResult SetStateResult => can set mach_state in BaseResult
+				- CANCEL: make sword_state_0_result class BaseResult => already exist: sword_stops_glowing_result
+				- DONE: clean up old SetStateResult in result_class()
 			- TBD: Update mach combo conditions and results to check for state change (states part 2)
-				- TBD: (sword not in hand) & (s_s == !0) => (buff('stopped glowing')) & (sword_state => 0)
+				- TBD: (sword not in hand) & (s_s == !0) => (buff('stopped glowing'; sword_state => 0)
 				- TBD: goblin dead => (buff('stopped glowing')) & (sword_state => 0) & (disable mach)
 				- TBD: (rm = Entrance) & (sword_state != 0) => buff('stopped glowing') & (sword_state=> 0)
 				- TBD: (rm = main_hall) & (sword_state != 1) => buff('blue glow') / sword_sate => 1

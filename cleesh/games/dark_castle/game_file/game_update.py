@@ -209,7 +209,7 @@ disable_rh_guard_result1 = DisableMach('disable_rh_guard_result1', False, None, 
 disable_rh_guard_result2 = DisableMach('disable_rh_guard_result2', False, None, False, 'disable_rh_guard_mach_temp')
 sword_stops_glowing_result = BaseResult('sword_stops_glowing_result', True, 0, False)
 disable_shiny_sword_result = DisableMach('disable_shiny_sword_result', False, None, False, 'shiny_swordnew_temp')
-sword_starts_glowing_result = BaseResult('sword_starts_glowing_result', True, 0, False)
+sword_starts_glowing_result = BaseResult('sword_starts_glowing_result', True, 1, False)
 
 # *** machines ***
 
