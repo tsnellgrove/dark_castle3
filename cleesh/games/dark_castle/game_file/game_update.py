@@ -156,7 +156,6 @@ true_cond_valid_not_reqd = TrueCond('true_cond', is_valid_reqd = False)
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', baked_biscuit, 'royal_hedgehog_temp', True)
 axe_not_in_goblin_hand_cond = ItemInHandCond('axe_not_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
-sword_not_in_burt_hand_cond = ItemInHandCond('sword_not_in_burt_hand_cond', 'shiny_swordnew_temp', 'burt_temp', False)
 silver_key_given_cond = ObjInInvCond('silver_key_given_cond', silver_key, 'royal_hedgehog_temp', False)
 no_weap_in_hand_cond = WeaponInHandCond('silver_key_given', 'burt_temp', False)
 sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_hall_temp', shiny_sword, True)
@@ -176,8 +175,15 @@ throne_push_cond = SwitchStateCond('throne_push_cond', [throne], ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', [throne], ['pulled'])
 lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [left_lever, middle_lever, right_lever], [4,2,1])
 not_in_throne_cond = CreatureContainedCond('not_in_throne_cond', throne, 'burt_temp', False)
+# sword_not_in_burt_hand_cond = ItemInHandCond('sword_not_in_burt_hand_cond', 'shiny_swordnew_temp', 'burt_temp', False)
+sword_not_in_burt_inv_cond = ObjInInvCond('sword_not_in_burt_inv_cond', 'shiny_swordnew_temp', 'burt_temp', False)
 burt_in_hall_cond = ObjInRmCond('burt_in_hall_cond', 'main_hall_temp', 'burt_temp', True)
+burt_in_entrance_cond = ObjInRmCond('burt_in_entrance_cond', 'entrance_temp', 'burt_temp', True)
+burt_in_antechamber_cond = ObjInRmCond('burt_in_antechamber_cond', 'antechamber_temp', 'burt_temp', True)
+sword_state_is_0_cond = MachStateCond('sword_state_not_0_cond', 0, True)
 sword_state_not_0_cond = MachStateCond('sword_state_not_0_cond', 0, False)
+sword_state_not_1_cond = MachStateCond('sword_state_not_1_cond', 1, False)
+sword_state_not_2_cond = MachStateCond('sword_state_not_2_cond', 2, False)
 
 # *** results ***
 pass_result = BaseResult('pass_result', False, None, False)
@@ -210,6 +216,7 @@ disable_rh_guard_result2 = DisableMach('disable_rh_guard_result2', False, None, 
 sword_stops_glowing_result = BaseResult('sword_stops_glowing_result', True, 0, False)
 disable_shiny_sword_result = DisableMach('disable_shiny_sword_result', False, None, False, 'shiny_swordnew_temp')
 sword_starts_glowing_result = BaseResult('sword_starts_glowing_result', True, 1, False)
+sword_glows_bright_result = BaseResult('sword_glows_bright_result', True, 2, False)
 
 # *** machines ***
 
@@ -237,8 +244,23 @@ disable_rh_guard_mach = InvisAutoMach('disable_rh_guard_mach', None,
 shiny_swordnew = WeaponAutoMach('shiny_swordnew', 'Shiny SwordNew', 'swordnew', 'shiny_sword', elven_runes, 10,
 		[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']], 0, 
 		'auto_act', 'shiny_swordnew_temp', True,
-		[sword_not_in_burt_hand_cond, goblin_not_in_world_cond, burt_in_hall_cond],
-		[pass_result,[sword_stops_glowing_result, disable_shiny_sword_result], sword_starts_glowing_result]
+		[
+#			[sword_not_in_burt_hand_cond, sword_state_not_0_cond], 
+			[sword_not_in_burt_inv_cond, sword_state_is_0_cond],
+			[sword_not_in_burt_inv_cond, sword_state_not_0_cond], 
+			goblin_not_in_world_cond, 
+			[burt_in_entrance_cond, sword_state_not_0_cond],
+			[burt_in_hall_cond, sword_state_not_1_cond],
+			[burt_in_antechamber_cond, sword_state_not_2_cond]
+		],
+		[
+			pass_result,
+			sword_stops_glowing_result,
+			[sword_stops_glowing_result, disable_shiny_sword_result], 
+			sword_stops_glowing_result,
+			sword_starts_glowing_result,
+			sword_glows_bright_result
+		]
 		) # mach_state == sword brightness; 0 = not glowing, 1 = glowing, 2 = glowing brightly
 
 
@@ -373,7 +395,7 @@ entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_cast
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
-		[shiny_sword, royal_hedgehog, wooden_shelf], [])
+		[shiny_sword, royal_hedgehog, wooden_shelf, shiny_swordnew], [])
 		# note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
 
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
@@ -458,11 +480,17 @@ goblin_in_world_cond.obj = guard_goblin
 sword_not_on_floor.match_room = main_hall
 sword_on_floor.match_room = main_hall
 not_in_throne_cond.creature_obj = burt
-sword_not_in_burt_hand_cond.creature_obj = burt
-sword_not_in_burt_hand_cond.item_obj = shiny_swordnew
+sword_not_in_burt_inv_cond.creature_obj = burt
+sword_not_in_burt_inv_cond.item_obj = shiny_swordnew
+# sword_not_in_burt_hand_cond.creature_obj = burt
+# sword_not_in_burt_hand_cond.item_obj = shiny_swordnew
 goblin_not_in_world_cond.obj = guard_goblin
 burt_in_hall_cond.obj = burt
 burt_in_hall_cond.match_room = main_hall
+burt_in_entrance_cond.obj = burt
+burt_in_entrance_cond.match_room = entrance
+burt_in_antechamber_cond.obj = burt
+burt_in_antechamber_cond.match_room = antechamber
 
 entrance_moat_mach.alert_anchor = entrance
 broach_dispenser_mach.alert_anchor = throne_room
@@ -515,7 +543,9 @@ master_obj_lst = [
 		insignia, baked_biscuit,
 
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 
-		test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, heavy_rock 
+		test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, heavy_rock,
+
+		shiny_swordnew 
 	] # note: big_bomb & test_frog removed; glass_bottle removed
 
 # list written to pickle

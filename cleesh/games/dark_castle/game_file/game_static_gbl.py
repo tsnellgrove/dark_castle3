@@ -244,6 +244,7 @@ game_static_dict = {
 
 	'sword_stops_glowing_result' : "Your sword is no longer glowing.",
     'sword_starts_glowing_result' : "Your sword is glowing with a faint blue glow.",
+    'sword_glows_bright_result' : "Your sword has begun to glow very brightly",
 
 	#### AUTO-DISP ####
 

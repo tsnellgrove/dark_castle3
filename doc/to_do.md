@@ -270,20 +270,27 @@ End Date:
 				- CANCEL: create SetStateResult SetStateResult => can set mach_state in BaseResult
 				- CANCEL: make sword_state_0_result class BaseResult => already exist: sword_stops_glowing_result
 				- DONE: clean up old SetStateResult in result_class()
-			- TBD: Update mach combo conditions and results to check for state change (states part 2)
-				- TBD: (sword not in hand) & (s_s == !0) => (buff('stopped glowing'; sword_state => 0)
-				- TBD: goblin dead => (buff('stopped glowing')) & (sword_state => 0) & (disable mach)
-				- TBD: (rm = Entrance) & (sword_state != 0) => buff('stopped glowing') & (sword_state=> 0)
-				- TBD: (rm = main_hall) & (sword_state != 1) => buff('blue glow') / sword_sate => 1
-				- TBD: (rm = antechamber) & (sword_state != 2) => buff('bright glow) / sword_state => 2
-		- TBD: test
+			- DONE: Update mach combo conditions and results to check for state change (states part 2)
+				- DONE: (sword not in hand) && (s_s == !0) => (buff('stopped glowing'; sword_state => 0)
+				- DONE: goblin dead => (buff('stopped glowing'); sword_state => 0) && (disable mach)
+				- DONE: (rm = Entrance) && (sword_state != 0) => (buff('stopped glowing'); sword_state=> 0)
+				- DONE: (rm = main_hall) && (sword_state != 1) => (buff('blue glow'); sword_sate => 1)
+				- DONE: (rm = antechamber) & (sword_state != 2) => buff('bright glow) / sword_state => 2
+		- INPROC: test
+			- DONE: place shiny_swordnew in main_hall
+			- INPROC: test shiny_swordnew behavior
+				- DONE: fix stops glowing if in backpack (in_hand => in_inv)
+				- DONE: fix glowing on enter main_hall (pass_result if not_in_inv and is_0)\
+				- TBD: sort out 'x swordnew'
 		- TBD: shiny_swordnew => shiny_sword
+		- TBD: clean up game_update()
 	- TBD: have shiny sword be hanging on wall (like Zork I)?
+
+*** dark castle exploration ***
 	- TBD: turn lantern into actual light (???)
 	- TBD: tune goblin text
 		- TBD: maybe add a faded poster of ancient and unreasonable regulations to the antechamber wall?
 
-*** dark castle exploration ***
 - TBD: play & note obvious nouns with no description; provide description (e.g. 'keyhole')
 - TBD: search on obj nouns and ensure always capitalized
 
