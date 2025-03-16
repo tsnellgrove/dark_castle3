@@ -276,12 +276,12 @@ End Date:
 				- DONE: (rm = Entrance) && (sword_state != 0) => (buff('stopped glowing'); sword_state=> 0)
 				- DONE: (rm = main_hall) && (sword_state != 1) => (buff('blue glow'); sword_sate => 1)
 				- DONE: (rm = antechamber) & (sword_state != 2) => buff('bright glow) / sword_state => 2
-		- INPROC: test
+		- DONE: test
 			- DONE: place shiny_swordnew in main_hall
-			- INPROC: test shiny_swordnew behavior
+			- DONE: test shiny_swordnew behavior
 				- DONE: fix stops glowing if in backpack (in_hand => in_inv)
 				- DONE: fix glowing on enter main_hall (pass_result if not_in_inv and is_0)\
-				- TBD: sort out 'x swordnew'
+				- DONE: sort out 'x swordnew' => all good now
 		- TBD: shiny_swordnew => shiny_sword
 		- TBD: clean up game_update()
 	- TBD: have shiny sword be hanging on wall (like Zork I)?
