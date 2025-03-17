@@ -282,8 +282,8 @@ End Date:
 				- DONE: fix stops glowing if in backpack (in_hand => in_inv)
 				- DONE: fix glowing on enter main_hall (pass_result if not_in_inv and is_0)\
 				- DONE: sort out 'x swordnew' => all good now
-		- TBD: shiny_swordnew => shiny_sword
-		- TBD: clean up game_update()
+		- DONE: shiny_swordnew => shiny_sword
+		- TBD: clean up game_update(), game_static()
 	- TBD: have shiny sword be hanging on wall (like Zork I)?
 
 *** dark castle exploration ***
