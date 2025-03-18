@@ -86,8 +86,6 @@ big_medal = Garment('big_medal', 'Big Medal', 'medal', 'big_medal', gold_capital
 # Weapon
 grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing, 10, 
 				[['arcs', 'lightening-fast stroke'],['cleaves', 'violent swing'],['hacks', 'deadly intent']])
-# shiny_sword = Weapon('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', elven_runes, 10, 
-#				[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']])
 
 # Containers (NOTE for PORTABLE containers, weight of starting contents MUST be included in container weight!!!)
 wooden_shelf = ContainerFixedSimple('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None, [], 999, 20, 'on')
@@ -158,9 +156,7 @@ biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond'
 axe_not_in_goblin_hand_cond = ItemInHandCond('axe_not_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
 silver_key_given_cond = ObjInInvCond('silver_key_given_cond', silver_key, 'royal_hedgehog_temp', False)
 no_weap_in_hand_cond = WeaponInHandCond('silver_key_given', 'burt_temp', False)
-# sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_hall_temp', shiny_sword, True)
-sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_hall_temp', 'shiny_sword_temp', True)
-# sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_hall_temp', shiny_sword, False)
+sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_hall_temp', 'shiny_sword_temp', True)# sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_hall_temp', shiny_sword, False)
 sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_hall_temp', 'shiny_sword_temp', False)
 not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
 hedgehog_not_in_world_cond = ObjInWorldCond('hedgehog_not_in_world_cond', 'royal_hedgehog_temp', False)
@@ -177,8 +173,6 @@ throne_push_cond = SwitchStateCond('throne_push_cond', [throne], ['pushed'])
 throne_pull_cond = SwitchStateCond('throne_pull_cond', [throne], ['pulled'])
 lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [left_lever, middle_lever, right_lever], [4,2,1])
 not_in_throne_cond = CreatureContainedCond('not_in_throne_cond', throne, 'burt_temp', False)
-# sword_not_in_burt_hand_cond = ItemInHandCond('sword_not_in_burt_hand_cond', 'shiny_swordnew_temp', 'burt_temp', False)
-# sword_not_in_burt_inv_cond = ObjInInvCond('sword_not_in_burt_inv_cond', 'shiny_swordnew_temp', 'burt_temp', False)
 sword_not_in_burt_inv_cond = ObjInInvCond('sword_not_in_burt_inv_cond', 'shiny_sword_temp', 'burt_temp', False)
 burt_in_hall_cond = ObjInRmCond('burt_in_hall_cond', 'main_hall_temp', 'burt_temp', True)
 burt_in_entrance_cond = ObjInRmCond('burt_in_entrance_cond', 'entrance_temp', 'burt_temp', True)
@@ -217,7 +211,6 @@ toggle_portcullis_result = OpenableToggleResult('toggle_portcullis_result', Fals
 disable_rh_guard_result1 = DisableMach('disable_rh_guard_result1', False, None, False, 'hedgehog_guard_mach_temp')
 disable_rh_guard_result2 = DisableMach('disable_rh_guard_result2', False, None, False, 'disable_rh_guard_mach_temp')
 sword_stops_glowing_result = BaseResult('sword_stops_glowing_result', True, 0, False)
-# disable_shiny_sword_result = DisableMach('disable_shiny_sword_result', False, None, False, 'shiny_swordnew_temp')
 disable_shiny_sword_result = DisableMach('disable_shiny_sword_result', False, None, False, 'shiny_sword_temp')
 sword_starts_glowing_result = BaseResult('sword_starts_glowing_result', True, 1, False)
 sword_glows_bright_result = BaseResult('sword_glows_bright_result', True, 2, False)
@@ -248,10 +241,8 @@ disable_rh_guard_mach = InvisAutoMach('disable_rh_guard_mach', None,
 # shiny_swordnew = WeaponAutoMach('shiny_swordnew', 'Shiny SwordNew', 'swordnew', 'shiny_sword', elven_runes, 10,
 shiny_sword = WeaponAutoMach('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', elven_runes, 10,
 		[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']], 0, 
-#		'auto_act', 'shiny_swordnew_temp', True,
 		'auto_act', 'shiny_sword_temp', True,
 		[
-#			[sword_not_in_burt_hand_cond, sword_state_not_0_cond], 
 			[sword_not_in_burt_inv_cond, sword_state_is_0_cond],
 			[sword_not_in_burt_inv_cond, sword_state_not_0_cond], 
 			goblin_not_in_world_cond, 
@@ -401,7 +392,6 @@ entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_cast
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
-#		[shiny_sword, royal_hedgehog, wooden_shelf, shiny_swordnew], [])
 		[shiny_sword, royal_hedgehog, wooden_shelf], [])
 		# note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
 
@@ -488,10 +478,7 @@ sword_not_on_floor.match_room = main_hall
 sword_on_floor.match_room = main_hall
 not_in_throne_cond.creature_obj = burt
 sword_not_in_burt_inv_cond.creature_obj = burt
-# sword_not_in_burt_inv_cond.item_obj = shiny_swordnew
 sword_not_in_burt_inv_cond.item_obj = shiny_sword
-# sword_not_in_burt_hand_cond.creature_obj = burt
-# sword_not_in_burt_hand_cond.item_obj = shiny_swordnew
 goblin_not_in_world_cond.obj = guard_goblin
 burt_in_hall_cond.obj = burt
 burt_in_hall_cond.match_room = main_hall
@@ -516,7 +503,6 @@ kinging_scroll.alert_anchor = kinging_scroll
 entrance_south_warn.alert_anchor = entrance
 attack_hedgehog_warning.alert_anchor = royal_hedgehog
 disable_rh_guard_mach.alert_anchor = royal_hedgehog
-# shiny_swordnew.alert_anchor = shiny_swordnew
 shiny_sword.alert_anchor = shiny_sword
 
 fed_hedgehog_keeps_sword_result.obj = royal_hedgehog
@@ -529,7 +515,6 @@ dispense_panel_result2.dispense_obj = control_panel
 dispense_panel_result2.room_obj = antechamber
 disable_rh_guard_result1.mach = hedgehog_guard_mach
 disable_rh_guard_result2.mach = disable_rh_guard_mach
-# disable_shiny_sword_result.mach = shiny_swordnew
 disable_shiny_sword_result.mach = shiny_sword
 
 goblin_attacks_result.creature_obj = guard_goblin
@@ -556,8 +541,6 @@ master_obj_lst = [
 
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 
 		test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, heavy_rock,
-
-#		shiny_swordnew 
 	] # note: big_bomb & test_frog removed; glass_bottle removed
 
 # list written to pickle

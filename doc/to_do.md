@@ -220,7 +220,7 @@ End Date:
 	- CANCEL: "what would your mothter say" error to "What would your Nana say?"
 		- FINDING: this error belongs to the clessh engine and should stay generic
 	- DONE: fix post-goblin-slain Antechamber description
-- INPROC: more description updates:
+- DONE: more description updates:
 	- DONE: RH
 		- DONE: describe RH as "stalwart"
 		- DONE: Have the hedgehog think burt is playing if he attacks with a non-weapon
@@ -283,8 +283,9 @@ End Date:
 				- DONE: fix glowing on enter main_hall (pass_result if not_in_inv and is_0)\
 				- DONE: sort out 'x swordnew' => all good now
 		- DONE: shiny_swordnew => shiny_sword
-		- TBD: clean up game_update(), game_static()
-	- TBD: have shiny sword be hanging on wall (like Zork I)?
+		- DONE: clean up game_update(), game_static()
+	- TBD: one final full test
+- TBD: git merge
 
 *** dark castle exploration ***
 	- TBD: turn lantern into actual light (???)
@@ -325,6 +326,13 @@ End Date:
 - TBD: find a good use for TravelResult !!
 - TBD: at end of story-driven updates, elim "##" error messages in error()
 - IDEA: maybe the hedgehog should act differently once you get & wear the crown?
+- TBD: have shiny sword be hanging on wall (like Zork I)?
+	- IDEA: In TADS, this is accomplished for obj and rooms by giving them two attribs:
+	- IDEA: isInInitState attrib (bool) and initDesc (string) [or roomFirstDesc]
+	- IDEA: by default, IsInInitState starts as True and becomes False as soon as obj is moved
+	- IDEA: this would require updating base obj and also core methods like take()
+	- IDEA: But, it would allow object to be easily given more placement description on initial contact
+	- IDEA: in the room display method, obj w/ initDesc and isInInitState could be handled separately
 
 
 *** future story / puzzle ideas ***
