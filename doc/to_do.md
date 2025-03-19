@@ -285,6 +285,40 @@ End Date:
 		- DONE: shiny_swordnew => shiny_sword
 		- DONE: clean up game_update(), game_static()
 	- TBD: one final full test
+- TBD: have shiny sword be hanging on wall (like Zork I)?
+	- IDEA: how does this work in Zork?
+		- IDEA: In TADS, this is accomplished for obj and rooms by giving them two attribs:
+		- IDEA: isInInitState attrib (bool) and initDesc (string) [or roomFirstDesc]
+		- IDEA: by default, IsInInitState starts as True and becomes False as soon as obj is moved
+		- IDEA: this would require updating base obj and also core methods like take()
+		- IDEA: But, it would allow object to be easily given more placement description on initial contact
+		- IDEA: in the room display method, obj w/ initDesc and isInInitState could be handled separately
+	- IDEA: how do I want to accomplish it?
+		- IDEA: how about associating init_desc with the room rather than the obj?
+		- IDEA: there are fewer room obj to update - and init_desc is really about initial placement in rm
+		- IDEA: add init_desc_lst attrib to room class
+		- IDEA: create init_desc class with attribs for name, linked obj, and desc_key
+		- IDEA: for obj w/ initial descriptions, instantiate init_desc and add to rm init_desc_lst
+		- IDEA: in rm display, provide init_desc first and add associated obj to skip_lst
+		- IDEA: later in dispaly, skip std obj desc if obj is on skip_lst
+		- IDEA: in take() method chk to see if obj has init_desc and, if so, remove it from init_desc_lst
+			- IDEA: how to link from obj back to init_desc ?
+			- IDEA: propose strict naming convention for init_desc (e.g. '<obj_name>_init_desc')
+			- IDEA: include init_desc obj in obj pickle so they can be reverse looked up via text
+	- TBD: implement
+		- TBD: create init_desc class
+		- TBD: instantiate shiny_sword_init_desc obj
+		- TBD: create desc value in static_gbl() 
+		- TBD: add init_desc_lst attrib to room class
+		- TBD: update existing room obj
+		- TBD: update room display code to handle init_desc first
+		- TBD: update room display code to not display same obj in std descript
+		- TBD: update take() to identify linked init_desc and remove them from room's init_desc_lst
+		- TBD: test
+		- TBD: update shiny_sword regular desc is appropriate
+
+
+
 - TBD: git merge
 
 *** dark castle exploration ***
@@ -326,13 +360,7 @@ End Date:
 - TBD: find a good use for TravelResult !!
 - TBD: at end of story-driven updates, elim "##" error messages in error()
 - IDEA: maybe the hedgehog should act differently once you get & wear the crown?
-- TBD: have shiny sword be hanging on wall (like Zork I)?
-	- IDEA: In TADS, this is accomplished for obj and rooms by giving them two attribs:
-	- IDEA: isInInitState attrib (bool) and initDesc (string) [or roomFirstDesc]
-	- IDEA: by default, IsInInitState starts as True and becomes False as soon as obj is moved
-	- IDEA: this would require updating base obj and also core methods like take()
-	- IDEA: But, it would allow object to be easily given more placement description on initial contact
-	- IDEA: in the room display method, obj w/ initDesc and isInInitState could be handled separately
+
 
 
 *** future story / puzzle ideas ***
