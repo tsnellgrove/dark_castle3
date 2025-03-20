@@ -12,7 +12,7 @@ sys.path.append(root_path_str)
 import pickle
 from cleesh.class_std.invisible_class_def import Invisible
 from cleesh.class_std.base_class_def import Writing, ViewOnly
-from cleesh.class_std.room_class_def import Room
+from cleesh.class_std.room_class_def import Room, InitDesc
 from cleesh.class_std.item_class_def import Item, Food, Liquid, Garment, Weapon
 from cleesh.class_std.interactive_class_def import DoorSimple, DoorLockable
 from cleesh.class_std.interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
@@ -385,6 +385,9 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 			'grimy_axe_guard_goblin_*' : 'tgt_death',
 			'fierce_teeth_royal_hedgehog_*' : 'jump_back'
 		}, 105, 150) # note: for non-burt-creature testing frog_travel_mach was in burt.invis_lstj
+
+# *** Initial Descriptions ***
+shiny_sword_init_desc = InitDesc('shiny_sword_init_desc', shiny_sword, 'shiny_sword_init_desc')
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],

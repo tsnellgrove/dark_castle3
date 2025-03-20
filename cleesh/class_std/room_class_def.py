@@ -4,6 +4,7 @@
 
 
 ### import
+from cleesh.class_std.invisible_class_def import Invisible
 from cleesh.class_std.base_class_def import ViewOnly
 
 
@@ -184,3 +185,29 @@ class Room(ViewOnly):
 		if self == gs.map.hero_rm:
 			gs.io.buffer(f"The {creature.full_name} goes {dir}")
 		return 
+
+
+class InitDesc(Invisible):
+	def __init__(self, name, linked_obj, init_desc_key):
+		super().__init__(name)
+		self._linked_obj = linked_obj # obj the init_desc is associated with
+		self._init_desc_key = init_desc_key # dict key for the initial description
+		""" InitDesc class inherits from Invisible. It is used to provide the initial description of an obj in a room. 
+		"""
+
+	# *** getters & setters ***
+	@property
+	def linked_obj(self):
+		return self._linked_obj
+	
+	@linked_obj.setter
+	def linked_obj(self, new_obj):
+		self._linked_obj = new_obj
+
+	@property
+	def init_desc_key(self):
+		return self._init_desc_key
+
+
+
+

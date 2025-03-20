@@ -306,9 +306,9 @@ End Date:
 			- IDEA: propose strict naming convention for init_desc (e.g. '<obj_name>_init_desc')
 			- IDEA: include init_desc obj in obj pickle so they can be reverse looked up via text
 	- TBD: implement
-		- TBD: create init_desc class
-		- TBD: instantiate shiny_sword_init_desc obj
-		- TBD: create desc value in static_gbl() 
+		- DONE: create init_desc class
+		- DONE: instantiate shiny_sword_init_desc obj
+		- DONE: create desc value in static_gbl() 
 		- TBD: add init_desc_lst attrib to room class
 		- TBD: update existing room obj
 		- TBD: update room display code to handle init_desc first

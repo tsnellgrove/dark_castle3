@@ -12,7 +12,7 @@ sys.path.append(root_path_str)
 import pickle
 from cleesh.class_std.invisible_class_def import Invisible
 from cleesh.class_std.base_class_def import Writing, ViewOnly
-from cleesh.class_std.room_class_def import Room
+from cleesh.class_std.room_class_def import Room, InitDesc
 from cleesh.class_std.item_class_def import Item, Food, Liquid, Garment, Weapon
 from cleesh.class_std.interactive_class_def import DoorSimple, DoorLockable
 from cleesh.class_std.interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat

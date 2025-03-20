@@ -175,6 +175,11 @@ game_static_dict = {
 	'hard_parry' : "only barely able to parry the assult!",
 	'jump_back' : "startled and compelled to leap back in surprise.",
 
+	### initial descriptions ###
+    'shiny_sword_init_desc' : "Upon the wall hangs a Shiny Sword of great antinquity.",
+
+
+
 	### room objects ###
 	'entrance' : "You are atop the drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south, the way back home. To the east and west of your precarious perch on the drawbridge - and about three feet below you - is the Moat.",
 	
