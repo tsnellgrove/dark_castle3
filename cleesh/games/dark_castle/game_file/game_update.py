@@ -391,24 +391,24 @@ shiny_sword_init_desc = InitDesc('shiny_sword_init_desc', shiny_sword, 'shiny_sw
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
-		[burt], [entrance_moat_mach, entrance_south_warn])
+		[burt], [entrance_moat_mach, entrance_south_warn], [])
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
-		[shiny_sword, royal_hedgehog, wooden_shelf], [])
+		[shiny_sword, royal_hedgehog, wooden_shelf], [], [shiny_sword_init_desc])
 		# note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
 
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
-		[alcove], [guard_goblin], [dispense_panel_mach])
+		[alcove], [guard_goblin], [dispense_panel_mach], [])
 
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
-		[throne, crystal_box], [broach_dispenser_mach])
+		[throne, crystal_box], [broach_dispenser_mach], [])
 
-unreachable_1 = Room('unreachable_1', 'Unreachable', 'unreachable_1', 'unreachable_1', None, [], [], [])
+unreachable_1 = Room('unreachable_1', 'Unreachable', 'unreachable_1', 'unreachable_1', None, [], [], [], [])
 
-unreachable_2 = Room('unreachable_2', 'Unreachable', 'unreachable_2', 'unreachable_2', None, [], [], [])
+unreachable_2 = Room('unreachable_2', 'Unreachable', 'unreachable_2', 'unreachable_2', None, [], [], [], [])
 
-unreachable_3 = Room('unreachable_3', 'Unreachable', 'unreachable_3', 'unreachable_3', None, [], [], [])
+unreachable_3 = Room('unreachable_3', 'Unreachable', 'unreachable_3', 'unreachable_3', None, [], [], [], [])
 
 
 # *** gs class modules ***

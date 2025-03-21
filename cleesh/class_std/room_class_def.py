@@ -10,11 +10,13 @@ from cleesh.class_std.base_class_def import ViewOnly
 
 ### classes
 class Room(ViewOnly):
-	def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst):
+	def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst, init_desc_lst):
+#	def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst):
 		super().__init__(name, full_name, root_name, descript_key, writing)
 		self._feature_lst = feature_lst # list of descriptive obj in the room (can be examined but not interacted with)
 		self._floor_lst = floor_lst # list of obj on the floor of the room that the player can interact with
 		self._invis_lst = invis_lst # list of invisible obj in room
+		self._init_desc_lst = init_desc_lst # list of InitDesc objects that provide the initial description of obj in the room
 		""" Rooms are where everything happens in Dark Castle.
 		"""
 
@@ -30,6 +32,10 @@ class Room(ViewOnly):
 	@property
 	def invis_lst(self):
 		return self._invis_lst
+
+	@property
+	def init_desc_lst(self):
+		return self._init_desc_lst
 
 	# *** attrib methods ***
 	def floor_lst_append(self, item):
@@ -141,6 +147,11 @@ class Room(ViewOnly):
 	def disp_contain(self, gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
 		"""
+		if self.init_desc_lst:
+			gs.io.buff_cr()
+			for init_desc in self.init_desc_lst:
+					gs.io.buff_d(init_desc.init_desc_key, init_desc.linked_obj.full_name)
+# updated code above
 		room_item_lst = []
 		for obj in self.floor_lst:
 			if obj == gs.core.hero:
