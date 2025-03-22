@@ -149,9 +149,9 @@ class Room(ViewOnly):
 		"""
 		if self.init_desc_lst:
 			gs.io.buff_cr()
+			gs.io.buff_cr()
 			for init_desc in self.init_desc_lst:
-					gs.io.buff_d(init_desc.init_desc_key, init_desc.linked_obj.full_name)
-# updated code above
+				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_obj.full_name)
 		room_item_lst = []
 		for obj in self.floor_lst:
 			if obj == gs.core.hero:

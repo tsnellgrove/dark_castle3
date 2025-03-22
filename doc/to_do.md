@@ -310,15 +310,14 @@ End Date:
 		- DONE: instantiate shiny_sword_init_desc obj
 		- DONE: create desc value in static_gbl() 
 		- DONE: add init_desc_lst attrib to room class
-		- TBD: update room display code to handle init_desc first
+		- DONE: update room display code to handle init_desc first
+		- DONE: sort out UI / spacing
 		- TBD: update room display code to not display same obj in std descript
 		- TBD: update take() to identify linked init_desc and remove them from room's init_desc_lst
 		- TBD: test
-		- TBD: sort out UI / spacing
 		- TBD: update shiny_sword regular desc is appropriate
 		- TBD: update existing room obj (if desired)
 		- TBD: clean up room_class(), 
-
 
 
 - TBD: git merge

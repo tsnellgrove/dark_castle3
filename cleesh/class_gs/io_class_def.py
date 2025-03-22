@@ -183,6 +183,14 @@ class IO(Invisible):
 		self.buffer(self.get_str(key, ref))
 		return
 
+
+	def buff_d_no_cr(self, key, ref):
+		"""Buffer Description. Buffers the description (usually of an object) associated with the key attribute. The ref attribute is used to create a default description if none has been defined in engine_static_dict. Provides no carriage return.
+		"""
+		self.buff_no_cr(self.get_str(key, ref))
+		return
+
+
 	def buff_e(self, key):
 		"""Buffer Event. Buffers the event description associated with the key attribute. Unlike buff_d(), there is no ref attribute for the default description.
 		"""
