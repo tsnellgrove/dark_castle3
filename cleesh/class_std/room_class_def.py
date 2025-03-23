@@ -147,11 +147,13 @@ class Room(ViewOnly):
 	def disp_contain(self, gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
 		"""
-		if self.init_desc_lst:
-			gs.io.buff_cr()
-			gs.io.buff_cr()
-			for init_desc in self.init_desc_lst:
-				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_obj.full_name)
+#		skip_lst = []
+#		if self.init_desc_lst:
+#			gs.io.buff_cr()
+#			gs.io.buff_cr()
+#			for init_desc in self.init_desc_lst:
+#				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_obj.full_name)
+#				skip_lst.append(init_desc.linked_obj)
 		room_item_lst = []
 		for obj in self.floor_lst:
 			if obj == gs.core.hero:
@@ -166,6 +168,15 @@ class Room(ViewOnly):
 				obj.disp_contain(gs)
 			else:
 				room_item_lst.append(obj)
+		for init_desc in self.init_desc_lst:
+			if init_desc.linked_obj in room_item_lst:
+				gs.io.buff_cr()
+				gs.io.buff_cr()
+				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_obj.full_name)
+				room_item_lst.remove(init_desc.linked_obj)
+#		for item in room_item_lst:
+#			if item in skip_lst:
+#				room_item_lst.remove(item)
 		if room_item_lst:
 			gs.io.buff_cr()
 			gs.io.buff_cr()
@@ -203,7 +214,7 @@ class InitDesc(Invisible):
 		super().__init__(name)
 		self._linked_obj = linked_obj # obj the init_desc is associated with
 		self._init_desc_key = init_desc_key # dict key for the initial description
-		""" InitDesc class inherits from Invisible. It is used to provide the initial description of an obj in a room. 
+		""" InitDesc class inherits from Invisible. It is used to provide the initial description of an item in a room. 
 		"""
 
 	# *** getters & setters ***

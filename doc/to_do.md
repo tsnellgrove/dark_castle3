@@ -312,11 +312,15 @@ End Date:
 		- DONE: add init_desc_lst attrib to room class
 		- DONE: update room display code to handle init_desc first
 		- DONE: sort out UI / spacing
-		- TBD: update room display code to not display same obj in std descript
+		- DONE: update room display code to not display same obj in std descript vis skip_lst
+		- TBD: don't display init_desc if obj not in rm
 		- TBD: update take() to identify linked init_desc and remove them from room's init_desc_lst
-		- TBD: test
+		- TBD: test - gen
+		- TBD: test - multiple obj w/ init_desc
+		- TBD: decide if init_des() should truly only be for items; if so, linked_obj => linked_item
 		- TBD: update shiny_sword regular desc is appropriate
 		- TBD: update existing room obj (if desired)
+		- TBD: update room display: 1) title, 2) rm desc, 3) passages, 4) viewonly, 5) init, 6) item, 7) creat
 		- TBD: clean up room_class(), 
 
 
@@ -335,6 +339,7 @@ End Date:
 
 *** decision about UI ***
 - TBD: should I leave 3D obj like stone_coffer in view_only if they are minor; with only key obj called out??
+- TBD: for room display, separate creatures from ViewOnly and list creatures 2nd
 
 *** known cleesh tech issues ***
 - TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
