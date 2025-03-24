@@ -84,6 +84,11 @@ class Room(ViewOnly):
 		""" Removes the passed object from the methed-calling object. In Room, is used to enable the take() method.
 		"""
 		if item in self.floor_lst:
+#			self.floor_lst_remove(item)
+			if self.init_desc_lst:
+				for init_desc in self.init_desc_lst:
+					if init_desc.linked_obj == item:
+						self.init_desc_lst.remove(init_desc)
 			self.floor_lst_remove(item)
 			return 
 		for obj in self.floor_lst:

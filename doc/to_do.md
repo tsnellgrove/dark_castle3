@@ -305,7 +305,7 @@ End Date:
 			- IDEA: how to link from obj back to init_desc ?
 			- IDEA: propose strict naming convention for init_desc (e.g. '<obj_name>_init_desc')
 			- IDEA: include init_desc obj in obj pickle so they can be reverse looked up via text
-	- TBD: implement
+	- INPROC: implement
 		- DONE: create init_desc class
 		- DONE: instantiate shiny_sword_init_desc obj
 		- DONE: create desc value in static_gbl() 
@@ -313,13 +313,13 @@ End Date:
 		- DONE: update room display code to handle init_desc first
 		- DONE: sort out UI / spacing
 		- DONE: update room display code to not display same obj in std descript vis skip_lst
-		- TBD: don't display init_desc if obj not in rm
-		- TBD: update take() to identify linked init_desc and remove them from room's init_desc_lst
-		- TBD: test - gen
+		- DONE: don't display init_desc if obj taken and elim init_desc
+			- DONE: update room.remove_item to remove init_desc from init_desc_lst
+		- DONE: test - gen
 		- TBD: test - multiple obj w/ init_desc
-		- TBD: decide if init_des() should truly only be for items; if so, linked_obj => linked_item
-		- TBD: update shiny_sword regular desc is appropriate
-		- TBD: update existing room obj (if desired)
+	- TBD: fine tune room display
+		- TBD: decide if init_des() should truly only be for items on rm floor; if so, linked_obj => linked_item
+		- TBD: update shiny_sword regular desc if appropriate
 		- TBD: update room display: 1) title, 2) rm desc, 3) passages, 4) viewonly, 5) init, 6) item, 7) creat
 		- TBD: clean up room_class(), 
 
