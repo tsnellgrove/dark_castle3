@@ -305,7 +305,7 @@ End Date:
 			- IDEA: how to link from obj back to init_desc ?
 			- IDEA: propose strict naming convention for init_desc (e.g. '<obj_name>_init_desc')
 			- IDEA: include init_desc obj in obj pickle so they can be reverse looked up via text
-	- INPROC: implement
+	- DONE: implement
 		- DONE: create init_desc class
 		- DONE: instantiate shiny_sword_init_desc obj
 		- DONE: create desc value in static_gbl() 
@@ -316,11 +316,20 @@ End Date:
 		- DONE: don't display init_desc if obj taken and elim init_desc
 			- DONE: update room.remove_item to remove init_desc from init_desc_lst
 		- DONE: test - gen
-		- TBD: test - multiple obj w/ init_desc
-	- TBD: fine tune room display
-		- TBD: decide if init_des() should truly only be for items on rm floor; if so, linked_obj => linked_item
-		- TBD: update shiny_sword regular desc if appropriate
+	- DONE: fine tune room display
+		- DONE: decide if init_desc() should truly only be for items on rm floor
+			- IDEA: excluded obj include view-only and obj in / on containers
+			- IDEA: a ViewOnly obj could be described in detail in the regular room description...
+			- IDEA: unless it is somehow manipulated... but these cases are currently rare
+			- IDEA: could be used for non-portable containers before open... but would I want to?
+			- IDEA: an obj in a container could have it's state described in more detail
+			- IDEA: e.g. "the teddy bear is sweetly tucked in under the covers"... but again, rare
+			- DECISION: follow the "don't build it if you don't need it yet" rule
+			- DONE: linked_obj => linked_item
+			- DONE: test
+		- CANCEL: update shiny_sword regular desc if appropriate
 		- TBD: update room display: 1) title, 2) rm desc, 3) passages, 4) viewonly, 5) init, 6) item, 7) creat
+		- TBD: test - multiple obj w/ init_desc
 		- TBD: clean up room_class(), 
 
 

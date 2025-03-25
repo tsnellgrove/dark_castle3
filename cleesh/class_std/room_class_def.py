@@ -87,7 +87,8 @@ class Room(ViewOnly):
 #			self.floor_lst_remove(item)
 			if self.init_desc_lst:
 				for init_desc in self.init_desc_lst:
-					if init_desc.linked_obj == item:
+					if init_desc.linked_item == item:
+#					if init_desc.linked_obj == item:
 						self.init_desc_lst.remove(init_desc)
 			self.floor_lst_remove(item)
 			return 
@@ -174,11 +175,14 @@ class Room(ViewOnly):
 			else:
 				room_item_lst.append(obj)
 		for init_desc in self.init_desc_lst:
-			if init_desc.linked_obj in room_item_lst:
+#			if init_desc.linked_obj in room_item_lst:
+			if init_desc.linked_item in room_item_lst:
 				gs.io.buff_cr()
 				gs.io.buff_cr()
-				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_obj.full_name)
-				room_item_lst.remove(init_desc.linked_obj)
+				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_item.full_name)
+#				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_obj.full_name)
+				room_item_lst.remove(init_desc.linked_item)
+#				room_item_lst.remove(init_desc.linked_obj)
 #		for item in room_item_lst:
 #			if item in skip_lst:
 #				room_item_lst.remove(item)
@@ -215,21 +219,28 @@ class Room(ViewOnly):
 
 
 class InitDesc(Invisible):
-	def __init__(self, name, linked_obj, init_desc_key):
+#	def __init__(self, name, linked_obj, init_desc_key):
+	def __init__(self, name, linked_item, init_desc_key):
 		super().__init__(name)
-		self._linked_obj = linked_obj # obj the init_desc is associated with
+#		self._linked_obj = linked_obj # obj the init_desc is associated with
+		self._linked_item = linked_item # item the init_desc is associated with
 		self._init_desc_key = init_desc_key # dict key for the initial description
 		""" InitDesc class inherits from Invisible. It is used to provide the initial description of an item in a room. 
 		"""
 
 	# *** getters & setters ***
 	@property
-	def linked_obj(self):
-		return self._linked_obj
+	def linked_item(self):
+#	def linked_obj(self):
+		return self._linked_item
+#		return self._linked_obj
 	
-	@linked_obj.setter
-	def linked_obj(self, new_obj):
-		self._linked_obj = new_obj
+#	@linked_obj.setter
+	@linked_item.setter
+#	def linked_obj(self, new_obj):
+	def linked_item(self, new_item):
+#		self._linked_obj = new_obj
+		self._linked_item = new_item
 
 	@property
 	def init_desc_key(self):
