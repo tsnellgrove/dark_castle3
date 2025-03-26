@@ -161,9 +161,12 @@ class Room(ViewOnly):
 #				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_obj.full_name)
 #				skip_lst.append(init_desc.linked_obj)
 		room_item_lst = []
+		rm_creature_lst = []
 		for obj in self.floor_lst:
 			if obj == gs.core.hero:
 					pass
+			elif obj.is_creature():
+				rm_creature_lst.append(obj)
 			elif not obj.is_item():
 				gs.io.buff_cr()
 				gs.io.buff_cr()
@@ -194,6 +197,12 @@ class Room(ViewOnly):
 			gs.io.buff_no_cr(f"The following items are here: {room_item_str}. ")
 			for obj in room_item_lst:
 				obj.disp_contain(gs)
+		if rm_creature_lst:
+			for creature in rm_creature_lst:
+				gs.io.buff_cr()
+				gs.io.buff_cr()
+				gs.io.buff_no_cr(f"The {creature.full_name} is here. ")
+				creature.disp_contain(gs)
 		return
 
 	# *** verb methods ***

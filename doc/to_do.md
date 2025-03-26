@@ -328,7 +328,7 @@ End Date:
 			- DONE: linked_obj => linked_item
 			- DONE: test
 		- CANCEL: update shiny_sword regular desc if appropriate
-		- TBD: update room display: 1) title, 2) rm desc, 3) passages, 4) viewonly, 5) init, 6) item, 7) creat
+		- DONE: update room display: 1) title, 2) rm desc, 3) passages, 4) viewonly, 5) init, 6) item, 7) creat
 		- TBD: test - multiple obj w/ init_desc
 		- TBD: clean up room_class(), 
 
