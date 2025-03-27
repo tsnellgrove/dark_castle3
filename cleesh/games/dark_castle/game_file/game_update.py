@@ -123,6 +123,7 @@ stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_bis
 eat_biscuits_warning = Warning('eat_biscuits_warning',
 		'pre_act_cmd', 0, stale_biscuits, True, 
 		[['eat','stale_biscuits']], 3)
+random_mcguffin_init_desc = InitDesc('random_mcguffin_init_desc', random_mcguffin, 'random_mcguffin_init_desc')
 
 
 # test obj - currently in use
@@ -388,6 +389,7 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 
 # *** Initial Descriptions ***
 shiny_sword_init_desc = InitDesc('shiny_sword_init_desc', shiny_sword, 'shiny_sword_init_desc')
+
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],

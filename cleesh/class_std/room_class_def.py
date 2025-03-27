@@ -11,7 +11,6 @@ from cleesh.class_std.base_class_def import ViewOnly
 ### classes
 class Room(ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst, init_desc_lst):
-#	def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst):
 		super().__init__(name, full_name, root_name, descript_key, writing)
 		self._feature_lst = feature_lst # list of descriptive obj in the room (can be examined but not interacted with)
 		self._floor_lst = floor_lst # list of obj on the floor of the room that the player can interact with
@@ -84,11 +83,9 @@ class Room(ViewOnly):
 		""" Removes the passed object from the methed-calling object. In Room, is used to enable the take() method.
 		"""
 		if item in self.floor_lst:
-#			self.floor_lst_remove(item)
 			if self.init_desc_lst:
 				for init_desc in self.init_desc_lst:
 					if init_desc.linked_item == item:
-#					if init_desc.linked_obj == item:
 						self.init_desc_lst.remove(init_desc)
 			self.floor_lst_remove(item)
 			return 
@@ -152,15 +149,13 @@ class Room(ViewOnly):
 
 	def disp_contain(self, gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
+		Order of display is from most to least static: 
+			1. ViewOnly (i.e. imovable furniture)
+			2. Initial Descriptions for Items (may relate to furniture or rm descript; not yet moved)
+			3. Items (which are movable and may have already been moved)
+			4. Creatures (which may move of their own volition)
 		"""
-#		skip_lst = []
-#		if self.init_desc_lst:
-#			gs.io.buff_cr()
-#			gs.io.buff_cr()
-#			for init_desc in self.init_desc_lst:
-#				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_obj.full_name)
-#				skip_lst.append(init_desc.linked_obj)
-		room_item_lst = []
+		rm_item_lst = []
 		rm_creature_lst = []
 		for obj in self.floor_lst:
 			if obj == gs.core.hero:
@@ -176,26 +171,20 @@ class Room(ViewOnly):
 				gs.io.buff_no_cr(". ")
 				obj.disp_contain(gs)
 			else:
-				room_item_lst.append(obj)
+				rm_item_lst.append(obj)
 		for init_desc in self.init_desc_lst:
-#			if init_desc.linked_obj in room_item_lst:
-			if init_desc.linked_item in room_item_lst:
+			if init_desc.linked_item in rm_item_lst:
 				gs.io.buff_cr()
 				gs.io.buff_cr()
 				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_item.full_name)
-#				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_obj.full_name)
-				room_item_lst.remove(init_desc.linked_item)
-#				room_item_lst.remove(init_desc.linked_obj)
-#		for item in room_item_lst:
-#			if item in skip_lst:
-#				room_item_lst.remove(item)
-		if room_item_lst:
+				rm_item_lst.remove(init_desc.linked_item)
+		if rm_item_lst:
 			gs.io.buff_cr()
 			gs.io.buff_cr()
-			room_txt_lst = [obj.full_name for obj in room_item_lst]
+			room_txt_lst = [obj.full_name for obj in rm_item_lst]
 			room_item_str = ", ".join(room_txt_lst)
 			gs.io.buff_no_cr(f"The following items are here: {room_item_str}. ")
-			for obj in room_item_lst:
+			for obj in rm_item_lst:
 				obj.disp_contain(gs)
 		if rm_creature_lst:
 			for creature in rm_creature_lst:
@@ -228,10 +217,8 @@ class Room(ViewOnly):
 
 
 class InitDesc(Invisible):
-#	def __init__(self, name, linked_obj, init_desc_key):
 	def __init__(self, name, linked_item, init_desc_key):
 		super().__init__(name)
-#		self._linked_obj = linked_obj # obj the init_desc is associated with
 		self._linked_item = linked_item # item the init_desc is associated with
 		self._init_desc_key = init_desc_key # dict key for the initial description
 		""" InitDesc class inherits from Invisible. It is used to provide the initial description of an item in a room. 
@@ -240,15 +227,10 @@ class InitDesc(Invisible):
 	# *** getters & setters ***
 	@property
 	def linked_item(self):
-#	def linked_obj(self):
 		return self._linked_item
-#		return self._linked_obj
 	
-#	@linked_obj.setter
 	@linked_item.setter
-#	def linked_obj(self, new_obj):
 	def linked_item(self, new_item):
-#		self._linked_obj = new_obj
 		self._linked_item = new_item
 
 	@property

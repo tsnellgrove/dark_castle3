@@ -179,7 +179,6 @@ game_static_dict = {
     'shiny_sword_init_desc' : "Upon the wall hangs a Shiny Sword of great antinquity.",
 
 
-
 	### room objects ###
 	'entrance' : "You are atop the drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south, the way back home. To the east and west of your precarious perch on the drawbridge - and about three feet below you - is the Moat.",
 	
@@ -325,6 +324,9 @@ game_static_dict = {
 	'brass_key' : "The key is brass.",
 	'random_mcguffin' : "It's a radom test McGuffin - just what you've always wanted!!",
 	'glass_bottle' : "A clear glass bottle suitable for carrying a liquid. Alas, if only it was filled with ale...",
+
+	# init_desc #    
+	'random_mcguffin_init_desc' : "And here, where you least expected it, is a Random McGuffin. It's a McGuffin of the highest order - a McGuffin that will change your life forever. You can tell because it's got a big shiny sign on it that says 'Random McGuffin'.",
 
 	# doors #
 	'screen_door' : "This appears to be a test Screen Door.",

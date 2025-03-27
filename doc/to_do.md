@@ -225,11 +225,11 @@ End Date:
 		- DONE: describe RH as "stalwart"
 		- DONE: Have the hedgehog think burt is playing if he attacks with a non-weapon
 			- DONE: starts making wax-on, wax-off motions with paws
-	- INPROC: link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
+	- DONE: link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
 		- DONE: lantern description (but no battery)
 		- DONE: Upate water_bottle to Enchanter jug description
 		- DONE: Update shiny_sword to Zork I elven sword description (elven runes)
-	- INPROC: shiny sword glows near enemies?
+	- DONE: shiny sword glows near enemies?
 		- DONE: research Zork options
 			- FINDING: 1 rm away: "Your sword is glowing with a faint blue glow"
 			- FINDING: 2 rm away: "Your sword is no longer glowing"
@@ -284,8 +284,8 @@ End Date:
 				- DONE: sort out 'x swordnew' => all good now
 		- DONE: shiny_swordnew => shiny_sword
 		- DONE: clean up game_update(), game_static()
-	- TBD: one final full test
-- TBD: have shiny sword be hanging on wall (like Zork I)?
+	- DONE: one final full test
+- DONE: have shiny sword be hanging on wall (like Zork I)?
 	- IDEA: how does this work in Zork?
 		- IDEA: In TADS, this is accomplished for obj and rooms by giving them two attribs:
 		- IDEA: isInInitState attrib (bool) and initDesc (string) [or roomFirstDesc]
@@ -329,22 +329,14 @@ End Date:
 			- DONE: test
 		- CANCEL: update shiny_sword regular desc if appropriate
 		- DONE: update room display: 1) title, 2) rm desc, 3) passages, 4) viewonly, 5) init, 6) item, 7) creat
-		- TBD: test - multiple obj w/ init_desc
-		- TBD: clean up room_class(), 
-
-
-- TBD: git merge
-
-*** dark castle exploration ***
-	- TBD: turn lantern into actual light (???)
-	- TBD: tune goblin text
-		- TBD: maybe add a faded poster of ancient and unreasonable regulations to the antechamber wall?
-
+		- DONE: test - multiple obj w/ init_desc
+		- DONE doc rm display_contain order
+		- DONE: clean up room_class()
+		- DONE: room_itme_lst => rm_item_lst
 - TBD: play & note obvious nouns with no description; provide description (e.g. 'keyhole')
 - TBD: search on obj nouns and ensure always capitalized
-
-*** content to use somewhere ***
-- IDEA: RH valor = caprecious and messy sort of valor - sort that shows up two hours late and three sheets to the wind but is ready and willing to save the day
+- TBD: turn lantern into actual light
+- TBD: git merge
 
 *** decision about UI ***
 - TBD: should I leave 3D obj like stone_coffer in view_only if they are minor; with only key obj called out??
@@ -367,6 +359,13 @@ End Date:
 - TBD: disable control_panel dispenser mach once it has run (as final result)
 - TBD: sort out whole 'fist' / 'sharp_teeth' un-armed attack issue in Creature class
 
+*** create lighting system ***
+- IDEA: see full section below; lean in on TADS approach
+
+*** content to use somewhere ***
+- IDEA: RH valor = caprecious and messy sort of valor - sort that shows up two hours late and three sheets to the wind but is ready and willing to save the day
+- TBD: tune goblin text
+	- TBD: maybe add a faded poster of ancient and unreasonable regulations to the antechamber wall?
 
 *** misc ideas ***
 - TBD: consider other possible uses for **kwargs; google "when to use kwargs in python"
@@ -375,8 +374,6 @@ End Date:
 - TBD: find a good use for TravelResult !!
 - TBD: at end of story-driven updates, elim "##" error messages in error()
 - IDEA: maybe the hedgehog should act differently once you get & wear the crown?
-
-
 
 *** future story / puzzle ideas ***
 - at some point, perhaps Burt must knight the loyal hedgehog ?
