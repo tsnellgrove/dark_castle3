@@ -334,6 +334,12 @@ End Date:
 		- DONE: clean up room_class()
 		- DONE: room_itme_lst => rm_item_lst
 - TBD: play & note obvious nouns with no description; provide description (e.g. 'keyhole')
+	- TBD: room 1
+		- TBD: entrance => gatehouse
+		- TBD: viewonly drawbridge
+		- TBD: update passages; consolidate description to passages
+		- TBD: "entrance" in desc => Front Gate
+		- TBD: there should be at least one itme here (like the mailbox & leaflet)
 - TBD: search on obj nouns and ensure always capitalized
 - TBD: turn lantern into actual light
 - TBD: git merge
