@@ -64,6 +64,7 @@ family_tree = ViewOnly('family_tree', 'Family Tree', 'tree', 'family_tree', None
 dead_goblin = ViewOnly('dead_goblin', 'Dead Goblin', 'goblin', 'dead_goblin', None)
 officiousness = ViewOnly('officiousness', 'Officiousness', 'officiousness', 'officiousness', None)
 loyalty = ViewOnly('loyalty', 'Loyalty', 'loyalty', 'loyalty', None)
+drawbridge = ViewOnly('drawbridge', 'Drawbridge', 'drawbridge', 'drawbridge', None)
 
 # Item
 rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
@@ -392,11 +393,11 @@ shiny_sword_init_desc = InitDesc('shiny_sword_init_desc', shiny_sword, 'shiny_sw
 
 
 # *** Rooms ***
-gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, [dark_castle, moat],
+gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, [dark_castle, moat, drawbridge],
 		[burt], [entrance_moat_mach, entrance_south_warn], [])
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
-entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat],
+entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, [dark_castle, moat, drawbridge],
 		[burt], [entrance_moat_mach, entrance_south_warn], [])
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
@@ -546,7 +547,7 @@ master_obj_lst = [
 		control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, guard_goblin, 
 		entrance, main_hall, antechamber, throne_room, loyalty, officiousness, gold_capitals, red_bandana, 
 		big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, earthen_jug, paper_bag, 
-		insignia, baked_biscuit,
+		insignia, baked_biscuit, drawbridge,
 
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 
 		test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, heavy_rock,

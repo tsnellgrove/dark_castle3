@@ -335,11 +335,24 @@ End Date:
 		- DONE: room_itme_lst => rm_item_lst
 - TBD: play & note obvious nouns with no description; provide description (e.g. 'keyhole')
 	- TBD: room 1
-		- TBD: entrance => gatehouse
-		- TBD: viewonly drawbridge
+		- DONE: add viewonly drawbridge
+		- DONE: read and update Moat & Dark Castle
+		- TBD: UI decision - if all nouns will have a description, do I need to capitalize?
+		- TBD: room description
 		- TBD: update passages; consolidate description to passages
 		- TBD: "entrance" in desc => Front Gate
+		- TBD: big_rock here (use init_desc) with a zorkmid (key to weight puzzle) under it
 		- TBD: there should be at least one itme here (like the mailbox & leaflet)
+			- IDEA: WR postbox w/ ancient scroll certifying bright castle to be Grue-Free
+			- IDEA: (not very convincing - cert largely lists all the dark and dangerous places not explored)		- INPROC: entrance => gatehouse
+			- TBD: replace all instances in game_update()
+			- TBD: replace all instances in game_static_gbl()
+		- clean up cleesh static_gbl
+	- TBD: room 2
+		- IDEA: this is a safe room for Burt to rest in - sort of a home base
+		- TBD: main_hall => entrance
+	- TBD: room 3
+	- TBD: room 4
 - TBD: search on obj nouns and ensure always capitalized
 - TBD: turn lantern into actual light
 - TBD: git merge
