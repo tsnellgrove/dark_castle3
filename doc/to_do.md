@@ -335,19 +335,25 @@ End Date:
 		- DONE: room_itme_lst => rm_item_lst
 - TBD: play & note obvious nouns with no description; provide description (e.g. 'keyhole')
 	- TBD: room 1
+		- IDEA: should start out looking very foreboding but then get a bit silly as front_gate is examined
 		- DONE: add viewonly drawbridge
 		- DONE: read and update Moat & Dark Castle
+		- DONE: update passages to include all info in description
+		- DONE: update room description; eliminate duplication with passages; "entrance" desc=> "front gate"
+		- INPROC: review existing nouns:
+			- DONE: drawbridge
+			- DONE: moat
+			- DONE: dark_castle
+			- TBD: front_gate
 		- TBD: UI decision - if all nouns will have a description, do I need to capitalize?
-		- TBD: room description
-		- TBD: update passages; consolidate description to passages
-		- TBD: "entrance" in desc => Front Gate
 		- TBD: big_rock here (use init_desc) with a zorkmid (key to weight puzzle) under it
 		- TBD: there should be at least one itme here (like the mailbox & leaflet)
-			- IDEA: WR postbox w/ ancient scroll certifying bright castle to be Grue-Free
-			- IDEA: (not very convincing - cert largely lists all the dark and dangerous places not explored)		- INPROC: entrance => gatehouse
+			- IDEA: WR postbox / mail slot w/ ancient scroll certifying bright castle to be Grue-Free
+			- IDEA: (not very convincing - cert largely tells dark and dangerous places not explored)
+		- INPROC: entrance => gatehouse
 			- TBD: replace all instances in game_update()
 			- TBD: replace all instances in game_static_gbl()
-		- clean up cleesh static_gbl
+		- clean up cleesh static_gbl, clean-up game_static_gbl
 	- TBD: room 2
 		- IDEA: this is a safe room for Burt to rest in - sort of a home base
 		- TBD: main_hall => entrance
