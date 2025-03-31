@@ -344,8 +344,15 @@ End Date:
 			- DONE: drawbridge
 			- DONE: moat
 			- DONE: dark_castle
-			- TBD: front_gate
+			- DONE: front_gate
+			- DONE: rusty_lettering
+			- DONE: add key_hole
+			- TBD: add handle
 		- TBD: UI decision - if all nouns will have a description, do I need to capitalize?
+			- TBD: how to handle obj.full_name ??
+		- TBD: test go south
+		- TBD: test east & west (no weapon)
+		- TBD: test 'eat biscuits'
 		- TBD: big_rock here (use init_desc) with a zorkmid (key to weight puzzle) under it
 		- TBD: there should be at least one itme here (like the mailbox & leaflet)
 			- IDEA: WR postbox / mail slot w/ ancient scroll certifying bright castle to be Grue-Free
