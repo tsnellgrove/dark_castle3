@@ -83,10 +83,10 @@ game_static_dict = {
 	'gold_capitals' : "'GUARD GOBLIN OF THE FORTNIGHT: FOR MERITORIOUS MEMORANDUMS AND THE VIOLENT SUPPRESSION OF MINOR INFRACTIONS'",
 
 	### ViewOnly objects ###
-	'dark_castle' : "Dark Castle looms over you. Its facade of blackened turrets and cracked battlements is dour and singlularly univiting. It's hard to imagine but your great grandma Nana used to tell wonderous stories of the old days when the castle gleamed brightly on its hill and was a beacon of order and goodness for the land. Maybe it's because of the stories, but you've always had a bit of an itch to venture inside. The place has somehow called to you - almost daring you to enter - and now that a round of beer and your alehouse repuation as a fearless ruffian (and perhaps even the attentions of young miss Chrissy Brewer!) are on the line, you intend to answer the call!",		
+	'dark_castle' : "Dark Castle looms over you. Its facade of blackened turrets and cracked battlements is dour and singlularly univiting. It's hard to imagine but your great grandma Nana used to tell wonderous stories of the old days when the castle gleamed brightly on its hill and was a beacon of order and goodness for the land. Maybe it's because of the stories, but you've always had a bit of an itch to venture inside. The place has somehow called to you - almost daring you to enter... And now that a round of beer and your alehouse repuation as a fearless ruffian (and perhaps even the attentions of young miss Chrissy Brewer!) are on the line, you intend to answer the call!",		
 	'moat' : "You know Burt, you've never heard anyone say 'It's a hot out - I think I'll go for a swim in the Dark Castle Moat'... and now you know why. The dark and muddy water just three feet below you swirls in a way that makes you suspect there's something down there you'd rather not meet.",
 	'drawbridge' : "The drawbridge is worn with time. It creaks as you walk across it and, disconcertingly, there are a series of large, toothy bites taken out of its edges by something big, mean, and nasty.",
-	'rusty_keyhole' : "You attempt to peek through but see nothing but dim shadows beyond. Depsite Nana's word's to the contrary, you can't help but suspect that there are Grues lurking within. You shudder at the thought and quickly step back.",
+	'rusty_keyhole' : "You attempt to peek through but see nothing but dim shadows beyond. Depsite your great grandmother Nana's assurances to the contrary, you can't help but suspect that there are Grues lurking within. You shudder at the thought and quickly step back.",
 	'alcove' : "A small indentation in the west wall near the Iron Portcullis. It is just deep enough to hold a Guard Goblin and a mysterious apperatus.",
 	'faded_tapestries' : "The Main Hall Faded Tapestries are vast and elaborate, covering both the east and the west walls. They appear to depict an unkempt figure breaking into a solitary white house and from there pillaging a Great Underground Empire. Strangely, there is a looming figure near the top of the west tapestry who appears to be tapping with his fingers on a many-buttoned plank and staring intently into a window filled with text. For some reason the figure disconcerts you.. his presence in the Faded Tapestries fills you with existential dread and forces you to question your agency and the very nature of your being... BURT!! Get hold of yourself man! You're a mangey, pub-crawling adventurer who lives in his mom's basement. You don't even know what half those words mean. Stop staring at tapestries and get out there and find the treasure you fool!!",
 	'stone_coffer' : "This is the sort of coffer that, in better days, was no doubt filled to the brim will brightly shining gold pieces. Unfortunately, as you'd begun to fear, those days are long past and now the coffer is filled only with a deep layer of dust.",
@@ -95,19 +95,19 @@ game_static_dict = {
 	'dead_goblin' : "Even in its demise, the Dead Goblin looks fierce and resolute. Whoever dispatched this enemy must be an adventurer of some renown!",
 	
 	### item objects ###
-	'rusty_key' : "An old Rusty Key... the one you swore to the whole pub (and miss Chrissy Brewer!) that you'd use to pillage the Dark Castle... What could you possibly do with it?",
-	'shiny_sword' : "This is an elven sword of great antiquity. The Shiny Sword glitters even in the dim light. Despite its age, the edge is keen and looks ready for action. There are Elven Runes engraved upon the blade.",
+	'rusty_key' : "An old rusty key... the one you swore to the whole pub (and miss Chrissy Brewer!) that you'd use to pillage the Dark Castle... What could you possibly do with it?",
+	'shiny_sword' : "This is an elven sword of great antiquity. The shiny sword glitters even in the dim light. Despite its age, the edge is keen and looks ready for action. There are elven runes engraved upon the blade.",
 	'torn_note' : "This must have dropped from the Goblin's hand when you slew it. The Torn Note is ragged and only barely readable.", 
 	'grimy_axe' : "A nasty looking weapon - and poorly maintained too. If you ever get out of this castle you should set aside some time to polish it. You notice uppon inspection that there is some Small Printing on the handle.",
 	'silver_key' : "The small silver_key glitters in the dim light. It certainly stands out in the otherwise dreary Dark Castle. If you find a glittering silver keyhole somewhere this is definitely the key for it!",
 	'kinging_scroll' : "Wow this thing is fancy! Huge letters with little pictures inside them and all sorts of curvy flourish at the end of each and every letter. Burt, your humble biscuit-baking, pub-crawling brain doesn't even know what to call this thing but if it did you would call it an illuminated manuscript composed (of course) of Illuminated Letters. Thanks to the hard and thankless work of your first grade teacher, Ms. Lusk, you could probably just manage to read the Illuminated Letters.",
 
 	### food objects ###
-	'cheese_wedge' : "A small wedge of cheese you absconded with from the larder. It's very small - so small that a lone mouse could probably make off with the whole thing - but your mother was saving it for company so you suspect it's quite delicious.",
-	'baked_biscuit' : "Every time you look at one of these biscuits you think of your great grandmother Nana, who raised you and taught you how to bake. This Baked Biscuit in particular came fresh out of the oven just this morning. You ate the rest of the batch on the hike over to Dark Castle and this last biscuits is all that's left. It smells mouth-wateringly delicious. There is an Insignia imprinted on the Baked Biscuit.",
+	'cheese_wedge' : "A small wedge of cheese you absconded with from the larder. It's very small - so small that a lone mouse could probably make off with the whole thing - but but it was recommended by your friend Cecily from the pub - so you suspect it's quite delicious.",
+	'baked_biscuit' : "Every time you look at one of these biscuits you think of your great grandmother Nana, who raised you and taught you how to bake. This baked biscuit in particular came fresh out of the oven just this morning. You ate the rest of the batch on the hike over to Dark Castle and this last biscuits is all that's left. It smells mouth-wateringly delicious. There is an insignia imprinted on the baked biscuit.",
 
 	### liquid objects ###
-	'well_water' : "After your trudge up the hill to Dark Castle the Well Water looks invitingly refreshing.",
+	'well_water' : "After your trudge up the hill to Dark Castle the well water looks invitingly refreshing.",
 
 	### clothes objects ###
 	'royal_crown' : "Giant rubies: check. Dozens of glittering jewels: check. Gleaming gold and precious metals: check. Yep, this is a *seriously royal* crown you've got here Burt!",
@@ -122,11 +122,11 @@ game_static_dict = {
 	'wooden_shelf' : "The Wooden Shelf looks sturdy and reliable - like it would be a good, safe place to store your stuff.",
 
 	### PortableLiquidContainer objects ###
-	'earthen_jug' : "An old Earthen Jug. According to your Nana, it once belonged to a shifty wizardy fellow who showed up in town and started prying into everyone's cupboards and asking folks if they'd seen any 'loose scrolls'. Nana ran him off with a bread paddle and he scampered so fast he dropped his water jug.", #  For ages it gave off a faint glow and your mum wouldn't have it in the house. You snagged it from the shed for this little adventure. Alas, it no longer appears to glow.
+	'earthen_jug' : "An old earthen jug. According to your Nana, it once belonged to a shifty wizardy fellow who showed up in town and started prying into everyone's cupboards and asking folks if they'd seen any 'loose scrolls'. Nana ran him off with a bread paddle and he scampered so fast he dropped his water jug.", #  For ages it gave off a faint glow and your mum wouldn't have it in the house. You snagged it from the shed for this little adventure. Alas, it no longer appears to glow.
 	'paper_bag' : "A smartly-creased paper bag. The wonderful smell of fresh-baked biscuts still wafts from it and you wonder if there might be any left?",
 
 	### door objects ###
-	'front_gate' : "The front gate is 12 feet tall, six feet wide, and is reenforced with mighty steel bands. There is Rusty Lettering, spelled out in hand-forged nails, across the top of the gate and a rusty keyhole next to a handle.",
+	'front_gate' : "The front gate is 12 feet tall, six feet wide, and is reenforced with mighty steel bands. There is rusty lettering, composed of crudely hammered nails, across the top of the gate and a rusty keyhole at chest height.",
 #	'front_gate' : "The Front Gate is just north of the Dark Castle's drawbridge. It is 10 feet tall and reenforced with steel bands. Imposing indeed! There is Rusty Lettering across the top of the gate and a rusty keyhole next to a handle.",
 	'iron_portcullis' : "Beyond the iron portcullis you can dimly make out the next room.",
 
@@ -163,7 +163,7 @@ game_static_dict = {
 	'fist' : "Yep, that's your fist. Still bruised from the last time you swung and missed and hit a wall...", 
 	'backpack' : "Your trusty, well-worn leather backpack",
 	'conscience' : "Burt, Dark Castle is quite murky enough without pondering your prodigal and Hal-esque misspent youth!",
-	'brass_lantern' : "Your trusty, battered-but-still-working light source. It's been in your household for ages; the family furphy is that your great grandmother, Nana, seized it from a maurauding 'adventurer' ages ago after giving him what-for with a broom. You sure wouldn't want your light source to go out - Dark Castle must be home to hundreds of Grues!", # eleiminate battery-powered 
+	'brass_lantern' : "Your trusty, battered-but-still-working light source. It's been in your household for ages; the family furphy is that your great grandmother, Nana, seized it from a maurauding 'adventurer' ages ago after giving him what-for with a broom. You sure wouldn't want your light source to go out - rumor has it that Dark Castle is home to hundreds of Grues!", # eleiminate battery-powered 
 
 
 	## attack result display ##

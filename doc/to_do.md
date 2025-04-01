@@ -340,16 +340,22 @@ End Date:
 		- DONE: read and update Moat & Dark Castle
 		- DONE: update passages to include all info in description
 		- DONE: update room description; eliminate duplication with passages; "entrance" desc=> "front gate"
-		- INPROC: review existing nouns:
+		- DONE: review existing nouns:
 			- DONE: drawbridge
 			- DONE: moat
 			- DONE: dark_castle
 			- DONE: front_gate
 			- DONE: rusty_lettering
 			- DONE: add key_hole
-			- TBD: add handle
-		- TBD: UI decision - if all nouns will have a description, do I need to capitalize?
-			- TBD: how to handle obj.full_name ??
+			- CANCEL: add handle
+			- DONE: rusty key
+			- DONE: cheese wedge
+			- DONE paper bag
+			- DONE: baked biscuit
+			- DONE: earthen jug
+			- DONE: well water
+		- DONE: UI decision - if all nouns will have a description, do I need to capitalize?
+			- DECISION: Dark Castle stays in caps. Everything else in regular text becomes regular case.
 		- TBD: test go south
 		- TBD: test east & west (no weapon)
 		- TBD: test 'eat biscuits'
@@ -366,13 +372,16 @@ End Date:
 		- TBD: main_hall => entrance
 	- TBD: room 3
 	- TBD: room 4
+- TBD: how to handle obj.full_name capital cases?
 - TBD: search on obj nouns and ensure always capitalized
 - TBD: turn lantern into actual light
+	- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
 - TBD: git merge
 
 *** decision about UI ***
 - TBD: should I leave 3D obj like stone_coffer in view_only if they are minor; with only key obj called out??
 - TBD: for room display, separate creatures from ViewOnly and list creatures 2nd
+- TBD: should I add handle as an attrib of door? Could pull handle to open? door would have open direction
 
 *** known cleesh tech issues ***
 - TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
