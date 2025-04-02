@@ -356,11 +356,11 @@ End Date:
 			- DONE: well water
 		- DONE: UI decision - if all nouns will have a description, do I need to capitalize?
 			- DECISION: Dark Castle stays in caps. Everything else in regular text becomes regular case.
-		- TBD: test go south
-		- TBD: test east & west (no weapon)
-		- TBD: test 'eat biscuits'
+		- DONE: test go south
+		- DONE: test east & west (no weapon)
+		- DONE: test 'eat biscuits'
 		- TBD: big_rock here (use init_desc) with a zorkmid (key to weight puzzle) under it
-		- TBD: there should be at least one itme here (like the mailbox & leaflet)
+		- TBD: there should be at least one item here (like the mailbox & leaflet)
 			- IDEA: WR postbox / mail slot w/ ancient scroll certifying bright castle to be Grue-Free
 			- IDEA: (not very convincing - cert largely tells dark and dangerous places not explored)
 		- INPROC: entrance => gatehouse
