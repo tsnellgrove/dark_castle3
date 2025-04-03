@@ -397,13 +397,13 @@ shiny_sword_init_desc = InitDesc('shiny_sword_init_desc', shiny_sword, 'shiny_sw
 
 # *** Rooms ***
 gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, 
-		[dark_castle, moat, drawbridge, rusty_keyhole],
-		[burt, postbox], [entrance_moat_mach, entrance_south_warn], [])
+		[dark_castle, moat, drawbridge, rusty_keyhole, postbox],
+		[burt], [entrance_moat_mach, entrance_south_warn], [])
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
-		[dark_castle, moat, drawbridge, rusty_keyhole],
-		[burt, postbox], [entrance_moat_mach, entrance_south_warn], [])
+		[dark_castle, moat, drawbridge, rusty_keyhole, postbox],
+		[burt], [entrance_moat_mach, entrance_south_warn], [])
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
