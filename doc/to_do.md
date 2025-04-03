@@ -359,10 +359,17 @@ End Date:
 		- DONE: test go south
 		- DONE: test east & west (no weapon)
 		- DONE: test 'eat biscuits'
-		- TBD: big_rock here (use init_desc) with a zorkmid (key to weight puzzle) under it
-		- TBD: there should be at least one item here (like the mailbox & leaflet)
+		- INPROC: there should be at least one item here (like the mailbox & leaflet)
 			- IDEA: WR postbox / mail slot w/ ancient scroll certifying bright castle to be Grue-Free
+				- IDEA: lock has only just recently crumbled from rust and neglect
+				- DONE: create royal_cypher
+				- DONE: create postbox obj
+				- DONE: update room description
+				- DONE: add postbox to room
+				- TBD: create elaborate_script
+				- TBD: create ancient_certificate
 			- IDEA: (not very convincing - cert largely tells dark and dangerous places not explored)
+		- TBD: big_rock here (use init_desc) with a zorkmid (key to weight puzzle) under it
 		- INPROC: entrance => gatehouse
 			- TBD: replace all instances in game_update()
 			- TBD: replace all instances in game_static_gbl()

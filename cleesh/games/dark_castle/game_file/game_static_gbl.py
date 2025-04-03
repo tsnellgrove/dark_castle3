@@ -81,12 +81,16 @@ game_static_dict = {
 	'calligraphy' : "'The Kinging Scroll'",
     'insignia' : "Baked into the biscuit are the symbols of a key and sword. As a child you remember asking your great grandmother Nana why she stamped these onto the front of every biscuit. 'It's a reminder of the past Burty,', she declared, 'and maybe someday, even, of the future.' You were never clear what she meant - but you've loyaly used Nana's original key and sword stamp on every biscuit you've ever baked.",
 	'gold_capitals' : "'GUARD GOBLIN OF THE FORTNIGHT: FOR MERITORIOUS MEMORANDUMS AND THE VIOLENT SUPPRESSION OF MINOR INFRACTIONS'",
+	'royal_cypher' : "'WR'",
 
 	### ViewOnly objects ###
 	'dark_castle' : "Dark Castle looms over you. Its facade of blackened turrets and cracked battlements is dour and singlularly univiting. It's hard to imagine but your great grandma Nana used to tell wonderous stories of the old days when the castle gleamed brightly on its hill and was a beacon of order and goodness for the land. Maybe it's because of the stories, but you've always had a bit of an itch to venture inside. The place has somehow called to you - almost daring you to enter... And now that a round of beer and your alehouse repuation as a fearless ruffian (and perhaps even the attentions of young miss Chrissy Brewer!) are on the line, you intend to answer the call!",		
 	'moat' : "You know Burt, you've never heard anyone say 'It's a hot out - I think I'll go for a swim in the Dark Castle Moat'... and now you know why. The dark and muddy water just three feet below you swirls in a way that makes you suspect there's something down there you'd rather not meet.",
 	'drawbridge' : "The drawbridge is worn with time. It creaks as you walk across it and, disconcertingly, there are a series of large, toothy bites taken out of its edges by something big, mean, and nasty.",
 	'rusty_keyhole' : "You attempt to peek through but see nothing but dim shadows beyond. Depsite your great grandmother Nana's assurances to the contrary, you can't help but suspect that there are Grues lurking within. You shudder at the thought and quickly step back.",
+	'postbox' : "The postbox was presumably once bright red and shiny but now it is covered in rust and grime. You notice that the once-sturdy lock keeping it secure appears to have recently surendered to the forces of time and decay. The postbox is now ajar.",
+#	'postbox' : "The Postbox is a small, rusty box with a slot for letters. It is covered in cobwebs and appears to have been unused for many years. You wonder if the Guard Goblin has any idea what it is doing here.",
+	
 	'alcove' : "A small indentation in the west wall near the Iron Portcullis. It is just deep enough to hold a Guard Goblin and a mysterious apperatus.",
 	'faded_tapestries' : "The Main Hall Faded Tapestries are vast and elaborate, covering both the east and the west walls. They appear to depict an unkempt figure breaking into a solitary white house and from there pillaging a Great Underground Empire. Strangely, there is a looming figure near the top of the west tapestry who appears to be tapping with his fingers on a many-buttoned plank and staring intently into a window filled with text. For some reason the figure disconcerts you.. his presence in the Faded Tapestries fills you with existential dread and forces you to question your agency and the very nature of your being... BURT!! Get hold of yourself man! You're a mangey, pub-crawling adventurer who lives in his mom's basement. You don't even know what half those words mean. Stop staring at tapestries and get out there and find the treasure you fool!!",
 	'stone_coffer' : "This is the sort of coffer that, in better days, was no doubt filled to the brim will brightly shining gold pieces. Unfortunately, as you'd begun to fear, those days are long past and now the coffer is filled only with a deep layer of dust.",
@@ -183,7 +187,7 @@ game_static_dict = {
 
 
 	### room objects ###
-	'entrance' : "You stand upon the ancient drawbridge of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.",
+	'entrance' : "You stand upon the ancient drawbridge of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate. Behind you, just beyond the drawbridge, is an extremely old and rusty postbox.",
 
 #	'entrance' : "You are atop the Drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south, the way back home. To the east and west of your precarious perch on the Drawbridge - and about three feet below you - is the Moat.",
 
