@@ -368,7 +368,7 @@ End Date:
 				- DONE: update room description
 				- DONE: add postbox to room
 				- DONE: create ancient_certificate
-				- INPROC: create bold_script
+				- DONE: create bold_script
 				- TBD: investigate adding room.feature_lst to item scope (enable interaction w/ postbox)
 				- TBD: investigate enabling init_desc attrib for items in containers (e.g. certificate)
 		- TBD: big_rock here (use init_desc) with a zorkmid (key to weight puzzle) under it
