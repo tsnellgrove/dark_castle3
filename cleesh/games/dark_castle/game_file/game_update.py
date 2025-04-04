@@ -48,6 +48,7 @@ calligraphy = Writing('calligraphy', 'Calligraphy', 'calligraphy', 'calligraphy'
 insignia = Writing('insignia', 'Insignia', 'insignia', 'insignia')
 gold_capitals = Writing('gold_capitals', 'Gold Capitals', 'capitals', 'gold_capitals')
 royal_cypher = Writing('royal_cypher', 'Royal Cypher', 'cypher', 'royal_cypher')
+bold_script = Writing('bold_script', 'Bold Script', 'script', 'bold_script')
 
 # ViewOnly
 dark_castle = ViewOnly('dark_castle', "Dark Castle", "castle", 'dark_castle', None)
@@ -72,6 +73,7 @@ rusty_keyhole = ViewOnly('rusty_keyhole', 'Rusty Keyhole', 'keyhole', 'rusty_key
 rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
 torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwriting, 1)
 silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None, 1)
+ancient_certificate = Item('ancient_certificate', 'Ancient Certificate', 'certificate', 'ancient_certificate', bold_script, 1)
 
 # Food
 cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 1)
@@ -96,7 +98,7 @@ crystal_box = ContainerFixedLockable('crystal_box', 'Crystal Box', 'box', 'cryst
 earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'earthen_jug', None, 1.5, [well_water], 0.5, 5, 'in')
 paper_bag = ContainerPortableLidded('paper_bag', 'Paper Bag', 'bag', 'paper_bag', None, 1.5, [baked_biscuit], 1.5, 3, 'in', False)
 stone_coffer = ContainerFixedSimple('stone_coffer', 'Stone Coffer', 'coffer', 'stone_coffer', None, [], 100, 999, 'in')
-postbox = ContainerFixedLidded('postbox', 'Postbox', 'postbox', 'postbox', royal_cypher, [], 999, 5, 'in', False)
+postbox = ContainerFixedLidded('postbox', 'Postbox', 'postbox', 'postbox', royal_cypher, [ancient_certificate], 999, 5, 'in', False)
 
 # Door
 front_gate = DoorLockable('front_gate', 'Front Gate', "gate", 'front_gate', rusty_lettering, False, False, rusty_key)
@@ -397,13 +399,13 @@ shiny_sword_init_desc = InitDesc('shiny_sword_init_desc', shiny_sword, 'shiny_sw
 
 # *** Rooms ***
 gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, 
-		[dark_castle, moat, drawbridge, rusty_keyhole, postbox],
-		[burt], [entrance_moat_mach, entrance_south_warn], [])
+		[dark_castle, moat, drawbridge, rusty_keyhole],
+		[burt, postbox], [entrance_moat_mach, entrance_south_warn], [])
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
-		[dark_castle, moat, drawbridge, rusty_keyhole, postbox],
-		[burt], [entrance_moat_mach, entrance_south_warn], [])
+		[dark_castle, moat, drawbridge, rusty_keyhole],
+		[burt, postbox], [entrance_moat_mach, entrance_south_warn], [])
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
@@ -552,7 +554,8 @@ master_obj_lst = [
 		control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, guard_goblin, 
 		entrance, main_hall, antechamber, throne_room, loyalty, officiousness, gold_capitals, red_bandana, 
 		big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, earthen_jug, paper_bag, 
-		insignia, baked_biscuit, drawbridge, rusty_keyhole, royal_cypher, postbox, 
+		insignia, baked_biscuit, drawbridge, rusty_keyhole, royal_cypher, postbox, ancient_certificate, 
+		bold_script,
 
 		# test objects
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 

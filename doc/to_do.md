@@ -361,14 +361,16 @@ End Date:
 		- DONE: test 'eat biscuits'
 		- INPROC: there should be at least one item here (like the mailbox & leaflet)
 			- IDEA: WR postbox / mail slot w/ ancient scroll certifying bright castle to be Grue-Free
+			- IDEA: (not very convincing - cert largely tells dark and dangerous places not explored)
 				- IDEA: lock has only just recently crumbled from rust and neglect
 				- DONE: create royal_cypher
 				- DONE: create postbox obj
 				- DONE: update room description
 				- DONE: add postbox to room
-				- TBD: create elaborate_script
-				- TBD: create ancient_certificate
-			- IDEA: (not very convincing - cert largely tells dark and dangerous places not explored)
+				- DONE: create ancient_certificate
+				- INPROC: create bold_script
+				- TBD: investigate adding room.feature_lst to item scope (enable interaction w/ postbox)
+				- TBD: investigate enabling init_desc attrib for items in containers (e.g. certificate)
 		- TBD: big_rock here (use init_desc) with a zorkmid (key to weight puzzle) under it
 		- INPROC: entrance => gatehouse
 			- TBD: replace all instances in game_update()
