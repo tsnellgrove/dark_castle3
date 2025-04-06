@@ -156,6 +156,7 @@ class Room(ViewOnly):
 			4. Creatures (which may move of their own volition)
 		"""
 		rm_item_lst = []
+		rm_viewonly_lst = []
 		rm_creature_lst = []
 		for obj in self.floor_lst:
 			if obj == gs.core.hero:
@@ -163,6 +164,35 @@ class Room(ViewOnly):
 			elif obj.is_creature():
 				rm_creature_lst.append(obj)
 			elif not obj.is_item():
+				rm_viewonly_lst.append(obj) # new
+
+#				gs.io.buff_cr()
+#				gs.io.buff_cr()
+#				gs.io.buff_no_cr(f"There is a {obj.full_name} here")
+#				if gs.core.hero.is_contained(gs) and gs.core.hero.get_contained_by(gs) == obj:
+#					gs.io.buff_no_cr(" (which you are presently occupying)")
+#				gs.io.buff_no_cr(". ")
+#				obj.disp_contain(gs)
+
+			else:
+				rm_item_lst.append(obj)
+		for init_desc in self.init_desc_lst:
+			if init_desc.linked_item in rm_item_lst or rm_viewonly_lst: # new
+				gs.io.buff_cr() # new
+				gs.io.buff_cr() # new
+				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_item.full_name) # new
+				if init_desc.linked_item in rm_item_lst: # new
+					rm_item_lst.remove(init_desc.linked_item) # new
+				else:
+					rm_viewonly_lst.remove(init_desc.linked_item)
+#				rm_viewonly_lst.remove(init_desc.linked_item) # new
+#			if init_desc.linked_item in rm_item_lst:
+#				gs.io.buff_cr()
+#				gs.io.buff_cr()
+#				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_item.full_name)
+#				rm_item_lst.remove(init_desc.linked_item)
+		if rm_viewonly_lst:
+			for obj in rm_viewonly_lst:
 				gs.io.buff_cr()
 				gs.io.buff_cr()
 				gs.io.buff_no_cr(f"There is a {obj.full_name} here")
@@ -170,14 +200,6 @@ class Room(ViewOnly):
 					gs.io.buff_no_cr(" (which you are presently occupying)")
 				gs.io.buff_no_cr(". ")
 				obj.disp_contain(gs)
-			else:
-				rm_item_lst.append(obj)
-		for init_desc in self.init_desc_lst:
-			if init_desc.linked_item in rm_item_lst:
-				gs.io.buff_cr()
-				gs.io.buff_cr()
-				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_item.full_name)
-				rm_item_lst.remove(init_desc.linked_item)
 		if rm_item_lst:
 			gs.io.buff_cr()
 			gs.io.buff_cr()

@@ -187,11 +187,14 @@ game_static_dict = {
 	'jump_back' : "startled and compelled to leap back in surprise.",
 
 	### initial descriptions ###
+    'postbox_init_desc' : "Behind you, just beyond the drawbridge, is an extremely old and rusty postbox.",
     'shiny_sword_init_desc' : "Upon the wall hangs a Shiny Sword of great antinquity.",
 
 
 	### room objects ###
-	'entrance' : "You stand upon the ancient drawbridge of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate. Behind you, just beyond the drawbridge, is an extremely old and rusty postbox.",
+	'entrance' : "You stand upon the ancient drawbridge of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.",
+
+#	'entrance' : "You stand upon the ancient drawbridge of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate. Behind you, just beyond the drawbridge, is an extremely old and rusty postbox.",
 
 #	'entrance' : "You are atop the Drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south, the way back home. To the east and west of your precarious perch on the Drawbridge - and about three feet below you - is the Moat.",
 

@@ -369,7 +369,16 @@ End Date:
 				- DONE: add postbox to room
 				- DONE: create ancient_certificate
 				- DONE: create bold_script
-				- TBD: investigate adding room.feature_lst to item scope (enable interaction w/ postbox)
+				- CANCEL: investigate adding room.feature_lst to item scope (enable interaction w/ postbox)
+					- IDEA: this code is pretty deep - not sure I want to mess with it right now
+				- TBD: investigate enabling init_desc attrib for viewonly (e.g. postbox)
+					- IDEA: in some cases, will want non-init_desc - for key / interactive obj (like throne)
+					- DONE: update room.disp_contain to check for init_desc for non-items, non-creatures
+					- DONE: test
+					- DONE: create init_desc obj for postbox
+					- DONE: test
+					- TBD: clean up room_class()
+					- TBD: comment room_class() / game_update with init_desc order implications
 				- TBD: investigate enabling init_desc attrib for items in containers (e.g. certificate)
 		- TBD: big_rock here (use init_desc) with a zorkmid (key to weight puzzle) under it
 		- INPROC: entrance => gatehouse

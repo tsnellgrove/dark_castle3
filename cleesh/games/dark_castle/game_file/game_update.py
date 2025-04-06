@@ -394,18 +394,19 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 		}, 105, 150) # note: for non-burt-creature testing frog_travel_mach was in burt.invis_lstj
 
 # *** Initial Descriptions ***
+postbox_init_desc = InitDesc('postbox_init_desc', postbox, 'postbox_init_desc')
 shiny_sword_init_desc = InitDesc('shiny_sword_init_desc', shiny_sword, 'shiny_sword_init_desc')
 
 
 # *** Rooms ***
 gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, 
 		[dark_castle, moat, drawbridge, rusty_keyhole],
-		[burt, postbox], [entrance_moat_mach, entrance_south_warn], [])
+		[burt, postbox], [entrance_moat_mach, entrance_south_warn], [postbox_init_desc])
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
 		[dark_castle, moat, drawbridge, rusty_keyhole],
-		[burt, postbox], [entrance_moat_mach, entrance_south_warn], [])
+		[burt, postbox], [entrance_moat_mach, entrance_south_warn], [postbox_init_desc])
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
