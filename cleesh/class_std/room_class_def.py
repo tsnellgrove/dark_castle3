@@ -150,11 +150,13 @@ class Room(ViewOnly):
 	def disp_contain(self, gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
 		Order of display is from most to least static: 
-			1. ViewOnly (i.e. imovable furniture)
-			2. Initial Descriptions for Items (may relate to furniture or rm descript; not yet moved)
+			1. Initial Descriptions for viewonly & items (in order listed in init_desc_lst)
+			2. ViewOnly (i.e. imovable furniture)
 			3. Items (which are movable and may have already been moved)
 			4. Creatures (which may move of their own volition)
 		"""
+
+		### organize floor_lst by type
 		rm_item_lst = []
 		rm_viewonly_lst = []
 		rm_creature_lst = []
@@ -165,41 +167,27 @@ class Room(ViewOnly):
 				rm_creature_lst.append(obj)
 			elif not obj.is_item():
 				rm_viewonly_lst.append(obj) # new
-
-#				gs.io.buff_cr()
-#				gs.io.buff_cr()
-#				gs.io.buff_no_cr(f"There is a {obj.full_name} here")
-#				if gs.core.hero.is_contained(gs) and gs.core.hero.get_contained_by(gs) == obj:
-#					gs.io.buff_no_cr(" (which you are presently occupying)")
-#				gs.io.buff_no_cr(". ")
-#				obj.disp_contain(gs)
-
 			else:
 				rm_item_lst.append(obj)
+
+		### buffer descriptions by type
 		for init_desc in self.init_desc_lst:
-			if init_desc.linked_item in rm_item_lst or rm_viewonly_lst: # new
-				gs.io.buff_cr() # new
-				gs.io.buff_cr() # new
-				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_item.full_name) # new
-				if init_desc.linked_item in rm_item_lst: # new
-					rm_item_lst.remove(init_desc.linked_item) # new
+			if init_desc.linked_item in rm_item_lst or rm_viewonly_lst:
+				gs.io.buff_cr()
+				gs.io.buff_cr()
+				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_item.full_name)
+				if init_desc.linked_item in rm_item_lst:
+					rm_item_lst.remove(init_desc.linked_item)
 				else:
 					rm_viewonly_lst.remove(init_desc.linked_item)
-#				rm_viewonly_lst.remove(init_desc.linked_item) # new
-#			if init_desc.linked_item in rm_item_lst:
-#				gs.io.buff_cr()
-#				gs.io.buff_cr()
-#				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_item.full_name)
-#				rm_item_lst.remove(init_desc.linked_item)
-		if rm_viewonly_lst:
-			for obj in rm_viewonly_lst:
-				gs.io.buff_cr()
-				gs.io.buff_cr()
-				gs.io.buff_no_cr(f"There is a {obj.full_name} here")
-				if gs.core.hero.is_contained(gs) and gs.core.hero.get_contained_by(gs) == obj:
-					gs.io.buff_no_cr(" (which you are presently occupying)")
-				gs.io.buff_no_cr(". ")
-				obj.disp_contain(gs)
+		for obj in rm_viewonly_lst:
+			gs.io.buff_cr()
+			gs.io.buff_cr()
+			gs.io.buff_no_cr(f"There is a {obj.full_name} here")
+			if gs.core.hero.is_contained(gs) and gs.core.hero.get_contained_by(gs) == obj:
+				gs.io.buff_no_cr(" (which you are presently occupying)")
+			gs.io.buff_no_cr(". ")
+			obj.disp_contain(gs)
 		if rm_item_lst:
 			gs.io.buff_cr()
 			gs.io.buff_cr()
@@ -208,12 +196,11 @@ class Room(ViewOnly):
 			gs.io.buff_no_cr(f"The following items are here: {room_item_str}. ")
 			for obj in rm_item_lst:
 				obj.disp_contain(gs)
-		if rm_creature_lst:
-			for creature in rm_creature_lst:
-				gs.io.buff_cr()
-				gs.io.buff_cr()
-				gs.io.buff_no_cr(f"The {creature.full_name} is here. ")
-				creature.disp_contain(gs)
+		for creature in rm_creature_lst:
+			gs.io.buff_cr()
+			gs.io.buff_cr()
+			gs.io.buff_no_cr(f"The {creature.full_name} is here. ")
+			creature.disp_contain(gs)
 		return
 
 	# *** verb methods ***

@@ -328,7 +328,7 @@ End Date:
 			- DONE: linked_obj => linked_item
 			- DONE: test
 		- CANCEL: update shiny_sword regular desc if appropriate
-		- DONE: update room display: 1) title, 2) rm desc, 3) passages, 4) viewonly, 5) init, 6) item, 7) creat
+		- DONE: update rm disp: 1) title, 2) rm desc, 3) passages, 4) viewonly, 5) init, 6) item, 7) creat
 		- DONE: test - multiple obj w/ init_desc
 		- DONE doc rm display_contain order
 		- DONE: clean up room_class()
@@ -359,7 +359,7 @@ End Date:
 		- DONE: test go south
 		- DONE: test east & west (no weapon)
 		- DONE: test 'eat biscuits'
-		- INPROC: there should be at least one item here (like the mailbox & leaflet)
+		- DONE: there should be at least one item here (like the mailbox & leaflet)
 			- IDEA: WR postbox / mail slot w/ ancient scroll certifying bright castle to be Grue-Free
 			- IDEA: (not very convincing - cert largely tells dark and dangerous places not explored)
 				- IDEA: lock has only just recently crumbled from rust and neglect
@@ -371,35 +371,35 @@ End Date:
 				- DONE: create bold_script
 				- CANCEL: investigate adding room.feature_lst to item scope (enable interaction w/ postbox)
 					- IDEA: this code is pretty deep - not sure I want to mess with it right now
-				- TBD: investigate enabling init_desc attrib for viewonly (e.g. postbox)
+				- DONE: investigate enabling init_desc attrib for viewonly (e.g. postbox)
 					- IDEA: in some cases, will want non-init_desc - for key / interactive obj (like throne)
 					- DONE: update room.disp_contain to check for init_desc for non-items, non-creatures
 					- DONE: test
 					- DONE: create init_desc obj for postbox
 					- DONE: test
-					- TBD: clean up room_class()
-					- TBD: comment room_class() / game_update with init_desc order implications
-				- TBD: investigate enabling init_desc attrib for items in containers (e.g. certificate)
+					- DONE: clean up room_class()
+					- DONE: comment room_class() / game_update with init_desc order implications
 		- TBD: big_rock here (use init_desc) with a zorkmid (key to weight puzzle) under it
 		- INPROC: entrance => gatehouse
 			- TBD: replace all instances in game_update()
 			- TBD: replace all instances in game_static_gbl()
-		- clean up cleesh static_gbl, clean-up game_static_gbl
+		- TBD: clean up cleesh static_gbl, clean-up game_static_gbl
 	- TBD: room 2
 		- IDEA: this is a safe room for Burt to rest in - sort of a home base
 		- TBD: main_hall => entrance
 	- TBD: room 3
 	- TBD: room 4
-- TBD: how to handle obj.full_name capital cases?
-- TBD: search on obj nouns and ensure always capitalized
+- Cancel: search on obj nouns and ensure always capitalized
 - TBD: turn lantern into actual light
 	- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
 - TBD: git merge
 
 *** decision about UI ***
-- TBD: should I leave 3D obj like stone_coffer in view_only if they are minor; with only key obj called out??
+- TBD: how to handle obj.full_name capital cases?
+- TBD: should complex obj (stone_coffer) > feature_lst if minor; with only key obj called out??
 - TBD: for room display, separate creatures from ViewOnly and list creatures 2nd
 - TBD: should I add handle as an attrib of door? Could pull handle to open? door would have open direction
+- TBD: investigate enabling init_desc attrib for items in containers (e.g. certificate)
 
 *** known cleesh tech issues ***
 - TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
