@@ -74,6 +74,7 @@ rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
 torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwriting, 1)
 silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None, 1)
 ancient_certificate = Item('ancient_certificate', 'Ancient Certificate', 'certificate', 'ancient_certificate', bold_script, 1)
+big_rock = Item('big_rock', 'Big Rock', 'rock', 'big_rock', None, 50)
 
 # Food
 cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 1)
@@ -116,7 +117,6 @@ dwarven_runes = Writing('dwarven_runes', 'Dwarven Runes', "runes", 'dwarven_rune
 brass_key = Item('brass_key', 'brass key', "key", 'brass_key', None, 1) # test object
 bubbly_potion = Item('bubbly_potion', 'bubbly potion', "potion", 'bubbly_potion', None, 2) # test object
 random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random_mcguffin', None, 5) # test object
-heavy_rock = Item('heavy_rock', 'Heavy Rock', 'rock', 'heavy_rock', None, 50)
 baseball_cap = Garment('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, 1, 'hat')
 cardboard_box = ContainerFixedLidded('cardboard_box', 'Cardboard Box', 'box', 'cardboard_box', None, [], 999, 2, 'in', False)
 small_barrel = ContainerPortableSimple('small_barrel', 'Small Barrel', 'barrel', 'small_barrel', None, 2, [], 5, 999, 'in')
@@ -401,12 +401,12 @@ shiny_sword_init_desc = InitDesc('shiny_sword_init_desc', shiny_sword, 'shiny_sw
 # *** Rooms ***
 gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, 
 		[dark_castle, moat, drawbridge, rusty_keyhole],
-		[burt, postbox], [entrance_moat_mach, entrance_south_warn], [postbox_init_desc])
+		[burt, postbox, big_rock], [entrance_moat_mach, entrance_south_warn], [postbox_init_desc])
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
 		[dark_castle, moat, drawbridge, rusty_keyhole],
-		[burt, postbox], [entrance_moat_mach, entrance_south_warn], [postbox_init_desc])
+		[burt, postbox, big_rock], [entrance_moat_mach, entrance_south_warn], [postbox_init_desc])
 		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
@@ -556,11 +556,11 @@ master_obj_lst = [
 		entrance, main_hall, antechamber, throne_room, loyalty, officiousness, gold_capitals, red_bandana, 
 		big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, earthen_jug, paper_bag, 
 		insignia, baked_biscuit, drawbridge, rusty_keyhole, royal_cypher, postbox, ancient_certificate, 
-		bold_script,
+		bold_script, big_rock,
 
 		# test objects
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 
-		test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, heavy_rock,
+		test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, 
 	] # note: big_bomb & test_frog removed; glass_bottle removed
 
 # list written to pickle

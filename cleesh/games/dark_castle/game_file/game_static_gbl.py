@@ -108,7 +108,7 @@ game_static_dict = {
 	'kinging_scroll' : "Wow this thing is fancy! Huge letters with little pictures inside them and all sorts of curvy flourish at the end of each and every letter. Burt, your humble biscuit-baking, pub-crawling brain doesn't even know what to call this thing but if it did you would call it an illuminated manuscript composed (of course) of Illuminated Letters. Thanks to the hard and thankless work of your first grade teacher, Ms. Lusk, you could probably just manage to read the Illuminated Letters.",
 #    'ancient_certificate' : "The ancient certificate is a bit tattered and torn but you can still make out the words 'Royal Hedgehog' and 'King of Bright Castle'. It appears to be a certificate of authenticity for the Royal Hedgehog. You wonder if it might be worth something?",
 	'ancient_certificate' : "The ancient certificate is brown and crinkly with age. Most of the document is comprised of a large, ornate seal and a boldly penned declaration... however you also notice quite a bit of very small print near the bottom of the page...",
-
+	'big_rock'	: "This is, indeed, a big rock. It looks like you might just barely be able to lift it.",
 
 	### food objects ###
 	'cheese_wedge' : "A small wedge of cheese you absconded with from the larder. It's very small - so small that a lone mouse could probably make off with the whole thing - but but it was recommended by your friend Cecily from the pub - so you suspect it's quite delicious.",

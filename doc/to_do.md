@@ -335,6 +335,13 @@ End Date:
 		- DONE: room_itme_lst => rm_item_lst
 - TBD: play & note obvious nouns with no description; provide description (e.g. 'keyhole')
 	- TBD: room 1
+		- IDEA: goals for room 1
+			- IDEA: room 1 is mostly about learning the rules of the Dark Castle world
+			- IDEA: lesson 1: pay attentinn - the world is dangerous (e or w off drawbridge)
+			- IDEA: lesson 2: learn to open / close (postbox)
+			- IDEA: lesson 3: learn to lock / unlock (front_gate)
+			- IDEA: lesson 4: learn how weight works (big_rock)
+			- IDEA: lesson 5: learn that we are in the Zork / Enchanter universe (zorkmid / certficate)
 		- IDEA: should start out looking very foreboding but then get a bit silly as front_gate is examined
 		- DONE: add viewonly drawbridge
 		- DONE: read and update Moat & Dark Castle
@@ -379,7 +386,18 @@ End Date:
 					- DONE: test
 					- DONE: clean up room_class()
 					- DONE: comment room_class() / game_update with init_desc order implications
-		- TBD: big_rock here (use init_desc) with a zorkmid (key to weight puzzle) under it
+		- INPROC: big_rock here (use init_desc) with a zorkmid (key to weight puzzle) under it
+			- DONE: check burt's weight capacity; set big_rock weight so burt can only take it w no inv
+			- DONE: add big_rock to Room 1
+			- DONE: create desc for big rock
+			- DONE: adjust creature.put_in_hand() to test for weight > max_weight (NOT >= )
+			- DONE: test
+			- TBD: create an init_desc for bog_rock
+			- TBD: instantiate zorkmid as item
+			- TBD: create machine to vend zorkmid (once) when rock is first taken
+			- TBD: enable drop to work on backpack items (e.g. "you toss the X from your pack")
+			- TBD: enable 'take all'
+			- TBD: enable 'drop all'
 		- INPROC: entrance => gatehouse
 			- TBD: replace all instances in game_update()
 			- TBD: replace all instances in game_static_gbl()
