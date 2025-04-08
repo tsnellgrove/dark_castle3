@@ -91,7 +91,6 @@ game_static_dict = {
 	'rusty_keyhole' : "You attempt to peek through but see nothing but dim shadows beyond. Depsite your great grandmother Nana's assurances to the contrary, you can't help but suspect that there are Grues lurking within. You shudder at the thought and quickly step back.",
 	'postbox' : "The postbox was presumably once bright red and shiny but now it is covered in rust and grime. You notice that the once-sturdy lock keeping it secure appears to have recently surendered to the forces of time and decay. The postbox is now ajar.",
 #	'postbox' : "The Postbox is a small, rusty box with a slot for letters. It is covered in cobwebs and appears to have been unused for many years. You wonder if the Guard Goblin has any idea what it is doing here.",
-	
 	'alcove' : "A small indentation in the west wall near the Iron Portcullis. It is just deep enough to hold a Guard Goblin and a mysterious apperatus.",
 	'faded_tapestries' : "The Main Hall Faded Tapestries are vast and elaborate, covering both the east and the west walls. They appear to depict an unkempt figure breaking into a solitary white house and from there pillaging a Great Underground Empire. Strangely, there is a looming figure near the top of the west tapestry who appears to be tapping with his fingers on a many-buttoned plank and staring intently into a window filled with text. For some reason the figure disconcerts you.. his presence in the Faded Tapestries fills you with existential dread and forces you to question your agency and the very nature of your being... BURT!! Get hold of yourself man! You're a mangey, pub-crawling adventurer who lives in his mom's basement. You don't even know what half those words mean. Stop staring at tapestries and get out there and find the treasure you fool!!",
 	'stone_coffer' : "This is the sort of coffer that, in better days, was no doubt filled to the brim will brightly shining gold pieces. Unfortunately, as you'd begun to fear, those days are long past and now the coffer is filled only with a deep layer of dust.",
@@ -188,6 +187,7 @@ game_static_dict = {
 
 	### initial descriptions ###
     'postbox_init_desc' : "Behind you, just beyond the drawbridge, is an extremely old and rusty postbox.",
+    'big_rock_init_desc' : "Across the way from the postbox is a big rock covered in moss and lichen.",
     'shiny_sword_init_desc' : "Upon the wall hangs a Shiny Sword of great antinquity.",
 
 

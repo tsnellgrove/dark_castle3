@@ -392,7 +392,8 @@ End Date:
 			- DONE: create desc for big rock
 			- DONE: adjust creature.put_in_hand() to test for weight > max_weight (NOT >= )
 			- DONE: test
-			- TBD: create an init_desc for bog_rock
+			- DONE: create an init_desc for bog_rock
+			- DONE: test
 			- TBD: instantiate zorkmid as item
 			- TBD: create machine to vend zorkmid (once) when rock is first taken
 			- TBD: enable drop to work on backpack items (e.g. "you toss the X from your pack")
