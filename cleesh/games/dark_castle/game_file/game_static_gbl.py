@@ -108,6 +108,8 @@ game_static_dict = {
 #    'ancient_certificate' : "The ancient certificate is a bit tattered and torn but you can still make out the words 'Royal Hedgehog' and 'King of Bright Castle'. It appears to be a certificate of authenticity for the Royal Hedgehog. You wonder if it might be worth something?",
 	'ancient_certificate' : "The ancient certificate is brown and crinkly with age. Most of the document is comprised of a large, ornate seal and a boldly penned declaration... however you also notice quite a bit of very small print near the bottom of the page...",
 	'big_rock'	: "This is, indeed, a big rock. It looks like you might just barely be able to lift it.",
+#	'zorkmid' : "A Zorkmid is a small, round coin with a hole in the middle. It is made of a shiny metal and has a picture of a hedgehog on one side and the words 'Zorkmid' on the other. You have no idea how much it's worth but it looks like it might be worth something.",
+	'zorkmid' : "TREASURE! well, not much of it - but it's a start. On the front of the coin is the portrait of an incredibly flat-headed man with the words WURB FLATHEAD embossed beneath it. On the obverse, is the date (882 GUE) and the words 'IN FROBS WE TRUST'.",
 
 	### food objects ###
 	'cheese_wedge' : "A small wedge of cheese you absconded with from the larder. It's very small - so small that a lone mouse could probably make off with the whole thing - but but it was recommended by your friend Cecily from the pub - so you suspect it's quite delicious.",

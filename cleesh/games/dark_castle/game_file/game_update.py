@@ -75,6 +75,7 @@ torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwritin
 silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None, 1)
 ancient_certificate = Item('ancient_certificate', 'Ancient Certificate', 'certificate', 'ancient_certificate', bold_script, 1)
 big_rock = Item('big_rock', 'Big Rock', 'rock', 'big_rock', None, 50)
+zorkmid = Item('zorkmid', 'Zorkmid', 'coin', 'zorkmid', None, 0.5)
 
 # Food
 cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 1)
@@ -557,7 +558,7 @@ master_obj_lst = [
 		entrance, main_hall, antechamber, throne_room, loyalty, officiousness, gold_capitals, red_bandana, 
 		big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, earthen_jug, paper_bag, 
 		insignia, baked_biscuit, drawbridge, rusty_keyhole, royal_cypher, postbox, ancient_certificate, 
-		bold_script, big_rock,
+		bold_script, big_rock, zorkmid,
 
 		# test objects
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 

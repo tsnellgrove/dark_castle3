@@ -394,8 +394,10 @@ End Date:
 			- DONE: test
 			- DONE: create an init_desc for bog_rock
 			- DONE: test
-			- TBD: instantiate zorkmid as item
+			- DONE: instantiate zorkmid as item
 			- TBD: create machine to vend zorkmid (once) when rock is first taken
+				- IDEA: make zorkmid_dispenser an invisible mach? Turn off after one run
+			- TBD: adjust item weights to make zorkmid the only half-pound weight
 			- TBD: enable drop to work on backpack items (e.g. "you toss the X from your pack")
 			- TBD: enable 'take all'
 			- TBD: enable 'drop all'
