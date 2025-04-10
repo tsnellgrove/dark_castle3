@@ -268,6 +268,8 @@ game_static_dict = {
     'sword_starts_glowing_result' : "Your sword is glowing with a faint blue glow.",
     'sword_glows_bright_result' : "Your sword has begun to glow very brightly",
 
+	'big_rock_take_result2' : "Low and behod, when you lift the big rock a gleaming brass zorkmid is revealed! It must have been buried there for ages.",
+
 	#### AUTO-DISP ####
 
 	### enter descriptions ###

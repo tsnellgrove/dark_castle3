@@ -74,7 +74,7 @@ rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
 torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwriting, 1)
 silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None, 1)
 ancient_certificate = Item('ancient_certificate', 'Ancient Certificate', 'certificate', 'ancient_certificate', bold_script, 1)
-big_rock = Item('big_rock', 'Big Rock', 'rock', 'big_rock', None, 50)
+# big_rock = Item('big_rock', 'Big Rock', 'rock', 'big_rock', None, 50)
 zorkmid = Item('zorkmid', 'Zorkmid', 'coin', 'zorkmid', None, 0.5)
 
 # Food
@@ -189,6 +189,8 @@ sword_state_is_0_cond = MachStateCond('sword_state_not_0_cond', 0, True)
 sword_state_not_0_cond = MachStateCond('sword_state_not_0_cond', 0, False)
 sword_state_not_1_cond = MachStateCond('sword_state_not_1_cond', 1, False)
 sword_state_not_2_cond = MachStateCond('sword_state_not_2_cond', 2, False)
+mach_state_false = MachStateCond('mach_state_false', False, True)
+mach_state_true = MachStateCond('mach_state_true', True, True)
 
 # *** results ***
 pass_result = BaseResult('pass_result', False, None, False)
@@ -222,6 +224,8 @@ sword_stops_glowing_result = BaseResult('sword_stops_glowing_result', True, 0, F
 disable_shiny_sword_result = DisableMach('disable_shiny_sword_result', False, None, False, 'shiny_sword_temp')
 sword_starts_glowing_result = BaseResult('sword_starts_glowing_result', True, 1, False)
 sword_glows_bright_result = BaseResult('sword_glows_bright_result', True, 2, False)
+big_rock_take_result1 = DispenseObjResult('big_rock_take_result1', True, True, False, zorkmid, 'entrance_temp')
+big_rock_take_result2 = DisableMach('big_rock_take_result2', False, None, False, 'big_rock_temp')
 
 # *** machines ***
 
@@ -320,6 +324,13 @@ kinging_scroll = ItemTrigMach('kinging_scroll', 'Kinging Scroll', 'scroll', 'kin
 				scroll_win_game_result]
 		) # mach_state == None
 
+big_rock = ItemTrigMach('big_rock', 'Big Rock', 'rock', 'big_rock',
+		None, 50, False,
+		'post_act_cmd', 'entrance_temp', True,
+		[['take', 'big_rock']],
+		[mach_state_true, mach_state_false],
+		[pass_result, [big_rock_take_result1, big_rock_take_result2]]
+		) # mach_state == has zorkmid been dispensed
 
 ## SwitchMach ##
 ## for auto_act_timer: trig_vals_lst = list of trigger values for timer.is_dinging()
@@ -508,6 +519,7 @@ burt_in_antechamber_cond.obj = burt
 burt_in_antechamber_cond.match_room = antechamber
 sword_on_floor.obj = shiny_sword
 sword_not_on_floor.obj = shiny_sword
+big_rock_take_result1.room_obj = entrance
 
 entrance_moat_mach.alert_anchor = entrance
 broach_dispenser_mach.alert_anchor = throne_room
@@ -524,6 +536,7 @@ entrance_south_warn.alert_anchor = entrance
 attack_hedgehog_warning.alert_anchor = royal_hedgehog
 disable_rh_guard_mach.alert_anchor = royal_hedgehog
 shiny_sword.alert_anchor = shiny_sword
+big_rock.alert_anchor = entrance
 
 fed_hedgehog_keeps_sword_result.obj = royal_hedgehog
 fed_hedgehog_loses_sword_result.obj = royal_hedgehog
@@ -536,6 +549,7 @@ dispense_panel_result2.room_obj = antechamber
 disable_rh_guard_result1.mach = hedgehog_guard_mach
 disable_rh_guard_result2.mach = disable_rh_guard_mach
 disable_shiny_sword_result.mach = shiny_sword
+big_rock_take_result2.mach = big_rock
 
 goblin_attacks_result.creature_obj = guard_goblin
 hedgehog_attacks_result.creature_obj = royal_hedgehog
