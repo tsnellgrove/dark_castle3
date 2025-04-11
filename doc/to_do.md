@@ -397,14 +397,15 @@ End Date:
 			- DONE: instantiate zorkmid as item
 			- DONE: create machine to vend zorkmid (once) when rock is first taken
 				- IDEA: make big_rock the zorkmid_dispenser? Turn off after one run
-			- TBD: adjust item weights to make zorkmid the only half-pound weight
+			- DONE: adjust item weights to make zorkmid the only half-pound weight
 			- TBD: enable drop to work on backpack items (e.g. "you toss the X from your pack")
 			- TBD: enable 'take all'
+				- TBD: in order of weight ?
 			- TBD: enable 'drop all'
 		- INPROC: entrance => gatehouse
 			- TBD: replace all instances in game_update()
 			- TBD: replace all instances in game_static_gbl()
-		- TBD: clean up cleesh static_gbl, clean-up game_static_gbl
+		- TBD: clean up cleesh static_gbl, clean-up game_static_gbl, game_update()
 	- TBD: room 2
 		- IDEA: this is a safe room for Burt to rest in - sort of a home base
 		- TBD: main_hall => entrance

@@ -82,7 +82,8 @@ cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', No
 baked_biscuit = Food('baked_biscuit', 'Baked Biscuit', 'biscuit', 'baked_biscuit', insignia, 1)
 
 # Liquid
-well_water = Liquid('well_water', 'Well Water', 'water', 'well_water', None, 0.5)
+well_water = Liquid('well_water', 'Well Water', 'water', 'well_water', None, 1)
+# well_water = Liquid('well_water', 'Well Water', 'water', 'well_water', None, 0.5)
 
 # Garment
 royal_crown = Garment('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 5, 'hat')
@@ -97,8 +98,10 @@ grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing,
 # Containers (NOTE for PORTABLE containers, weight of starting contents MUST be included in container weight!!!)
 wooden_shelf = ContainerFixedSimple('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None, [], 999, 20, 'on')
 crystal_box = ContainerFixedLockable('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy, ['kinging_scroll_temp'], 1, 999, 'in', False, False, silver_key)
-earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'earthen_jug', None, 1.5, [well_water], 0.5, 5, 'in')
-paper_bag = ContainerPortableLidded('paper_bag', 'Paper Bag', 'bag', 'paper_bag', None, 1.5, [baked_biscuit], 1.5, 3, 'in', False)
+# earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'earthen_jug', None, 1.5, [well_water], 0.5, 5, 'in')
+earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'earthen_jug', None, 2, [well_water], 1, 5, 'in')
+# paper_bag = ContainerPortableLidded('paper_bag', 'Paper Bag', 'bag', 'paper_bag', None, 1.5, [baked_biscuit], 1.5, 3, 'in', False)
+paper_bag = ContainerPortableLidded('paper_bag', 'Paper Bag', 'bag', 'paper_bag', None, 2, [baked_biscuit], 1, 3, 'in', False)
 stone_coffer = ContainerFixedSimple('stone_coffer', 'Stone Coffer', 'coffer', 'stone_coffer', None, [], 100, 999, 'in')
 postbox = ContainerFixedLidded('postbox', 'Postbox', 'postbox', 'postbox', royal_cypher, [ancient_certificate], 999, 5, 'in', False)
 
@@ -403,7 +406,7 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 			'grimy_axe_guard_goblin_weapon' : 'hard_parry', # parry
 			'grimy_axe_guard_goblin_*' : 'tgt_death',
 			'fierce_teeth_royal_hedgehog_*' : 'jump_back'
-		}, 105, 150) # note: for non-burt-creature testing frog_travel_mach was in burt.invis_lstj
+		}, 106, 150) # note: for non-burt-creature testing frog_travel_mach was in burt.invis_lstj
 
 # *** Initial Descriptions ***
 postbox_init_desc = InitDesc('postbox_init_desc', postbox, 'postbox_init_desc')
