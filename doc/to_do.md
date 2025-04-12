@@ -398,7 +398,7 @@ End Date:
 			- DONE: create machine to vend zorkmid (once) when rock is first taken
 				- IDEA: make big_rock the zorkmid_dispenser? Turn off after one run
 			- DONE: adjust item weights to make zorkmid the only half-pound weight
-			- TBD: enable drop to work on backpack items (e.g. "you toss the X from your pack")
+			- DONE: enable drop to work on backpack items (e.g. "you toss the X from your pack")
 			- TBD: enable 'take all'
 				- TBD: in order of weight ?
 			- TBD: enable 'drop all'

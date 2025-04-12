@@ -160,8 +160,11 @@ class Error(Identity):
 ##		if not self.is_item(): # if you're not holding something, you can't attempt to drop it
 ##			gs.io.buffer(f"You can't even pick up the {self.full_name}... how could you possibly drop it??")
 ##			return True
-		if self.err_not_in_hand(creature, gs):
-			return True, False, ""
+		if self not in creature.hand_lst and self not in creature.bkpk_lst: # enable drop from pack
+			err_txt = (f"You're not holding the {self.full_name} in your hand.")
+			return True, False, err_txt
+#		if self.err_not_in_hand(creature, gs):
+#			return True, False, ""
 		if creature.is_contained(gs) and not creature.get_contained_by(gs).chk_has_capacity():
 			err_txt = (f"There's no room on the {creature.get_contained_by(gs).full_name} for another item.")
 			return True, False, err_txt

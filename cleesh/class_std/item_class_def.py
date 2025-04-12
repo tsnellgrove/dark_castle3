@@ -69,13 +69,18 @@ class Item(ViewOnly):
 			mode = 'std'
 		creature = gs.core.hero
 
-		creature.hand_lst_remove(self)
+		if creature.chk_in_hand(self):
+			creature.hand_lst_remove(self)
+			gs.io.buffer("Dropped")
+		else:
+			creature.bkpk_lst_remove(self)
+			gs.io.buffer(f"You toss the {self.full_name} from your backpack.")
 		if creature.is_contained(gs):
 			creature.get_contained_by(gs).contain_lst_append(self, gs)
 		else:
 			gs.map.hero_rm.floor_lst_append(self)
 		
-		gs.io.buffer("Dropped")
+#		gs.io.buffer("Dropped")
 		return 
 
 	def stowe(self, gs, mode=None):
