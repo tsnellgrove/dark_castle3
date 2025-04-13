@@ -399,9 +399,20 @@ End Date:
 				- IDEA: make big_rock the zorkmid_dispenser? Turn off after one run
 			- DONE: adjust item weights to make zorkmid the only half-pound weight
 			- DONE: enable drop to work on backpack items (e.g. "you toss the X from your pack")
+			- INPROC: enable multiple commands to be input at once, separated by commas
+				- DONE: check Zork behavior => multiple entry halts on error or enter dark rm
+				- DONE: in app_main() create cmd_queue, populate it, and read commands from it
+				- DONE: test std cases
+				- DONE: clear cmd_queue on special word cases (e.g. 'quit')
+				- DONE: test special cases
+				- DONE: clear cmd_queue on not is_valid and on comd_override
+				- DONE: test error cases
+				- TBD: leverage cmd_queue for 'again' command ?
+				- TBD: clean-up app_main()
+			- TBD: enable 'drop all'
 			- TBD: enable 'take all'
 				- TBD: in order of weight ?
-			- TBD: enable 'drop all'
+			- TBD: 'except' command ?
 		- INPROC: entrance => gatehouse
 			- TBD: replace all instances in game_update()
 			- TBD: replace all instances in game_static_gbl()

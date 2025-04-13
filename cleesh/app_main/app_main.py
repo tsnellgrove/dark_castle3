@@ -21,62 +21,90 @@ def app_main(user_input, game_name, root_path_str):
 	gs = master_obj_lst[0]
 	gs.io.reset_buff()
 
-	# local var declarations 
-	is_start = False
-	is_wait = False
-	is_interp_cmd = True
-	is_valid = False
-	is_att = False
+	# local var declarations
+#	is_start = False
+#	is_wait = False
+#	is_interp_cmd = True
+#	is_valid = False
+#	is_att = False
+	cmd_queue = []
 
-	# mutually exclusive special command cases
-	if user_input.lower() in ['quit', 'q']:
-		gs.end.game_ending = 'quit.'
-		gs.end.is_end = True
-		is_interp_cmd = False
-	elif user_input.lower() == 'restart':
-		gs.end.game_ending = 'restarted.'
-		is_start = True
-		is_interp_cmd = False
-	elif user_input.lower() in ['again', 'g']:
-		user_input = gs.io.last_input_str
+	# load cmd queue
+	if ',' in user_input:
+		cmd_queue = user_input.split(',')
+	else:
+		cmd_queue = [user_input]
 
-	# post-'again', special command cases (must be independent 'if' in case of 'again')
-	if user_input.lower() in ['wait', 'z']:
-		is_wait = True
-		gs.io.buffer("Waiting...")
-		is_interp_cmd = False
+	# process each command in the queue
+	while cmd_queue:
+		user_input = cmd_queue.pop(0)
 
-	# for interp commands, interp user_input and validate command
-	if is_interp_cmd:
-		case, word_lst = interpreter(user_input, master_obj_lst)
-		is_valid, is_att, err_txt = validate(gs, case, word_lst)
+		# local var declarations
+		is_start = False
+		is_wait = False
+		is_interp_cmd = True
+		is_valid = False
+		is_att = False
 
-	# if command is valid or is_wait, increment move
-	if is_valid or is_att or is_wait:
-		gs.core.move_inc()
+		# mutually exclusive special command cases
+		if user_input.lower().strip() in ['quit', 'q']:
+			gs.end.game_ending = 'quit.'
+			gs.end.is_end = True
+			is_interp_cmd = False
+			cmd_queue = []
+		elif user_input.lower().strip() == 'restart':
+			gs.end.game_ending = 'restarted.'
+			is_start = True
+			is_interp_cmd = False
+			cmd_queue = []
+		elif user_input.lower().strip() in ['again', 'g']:
+			user_input = gs.io.last_input_str
 
-	# for valid interp commands, process in-turn game response
-	if is_valid or is_att:
-		cmd_override = pre_action(gs, case, word_lst, is_valid)
-		if not cmd_override and is_att:
-			gs.io.buffer(err_txt)
-		if (is_valid and not cmd_override):
-			cmd_execute(gs, case, word_lst)
-		post_action(gs, case, word_lst) # excluding pots_act() from cmd "if" allows creatures to opperate machs
+		# post-'again', special command cases (must be independent 'if' in case of 'again')
+		if user_input.lower().strip() in ['wait', 'z']:
+			is_wait = True
+			gs.io.buffer("Waiting...")
+			is_interp_cmd = False
 
-	# post-cmd-response output
-	# action order = 1) cmd input, 2) Game response to cmd, 3) Game end / restart OR Game independent actions
-	# action order 1), 3), 2) is confusing because the cause and effect link between 1) & 2) is broken
-	if gs.end.is_end or is_start: 
-		gs.end.disp_end(gs)
-	elif is_wait or is_valid or is_att: # elif to avoid case of auto_act() run after ending from cmd
-		auto_action(gs)
-	if is_start:
-		gs.io.buffer("Restarting...") # appears post 'you have restarted' end text and pre 'welcome' text
+		# for interp commands, interp user_input and validate command
+		if is_interp_cmd:
+			case, word_lst = interpreter(user_input, master_obj_lst)
+			is_valid, is_att, err_txt = validate(gs, case, word_lst)
 
-	# close out turn - save state and last inupt (for 'again' case) and then return
-	# note: need to save state even if is_valid == False else 'again' won't work on error cases
-	gs.io.last_input_str = user_input
+		# if command is not valid, clear cmd_queue
+		if not is_valid:
+			cmd_queue = []
+
+		# if command is valid or is_wait, increment move
+		if is_valid or is_att or is_wait:
+			gs.core.move_inc()
+
+		# for valid interp commands, process in-turn game response
+		if is_valid or is_att:
+			cmd_override = pre_action(gs, case, word_lst, is_valid)
+			if cmd_override:
+				cmd_queue = []
+			if not cmd_override and is_att:
+				gs.io.buffer(err_txt)
+			if (is_valid and not cmd_override):
+				cmd_execute(gs, case, word_lst)
+			post_action(gs, case, word_lst) # excluding pots_act() from cmd "if" allows creatures to opperate machs
+
+		# post-cmd-response output
+		# action order = 1) cmd input, 2) Game response to cmd, 3) Game end / restart OR Game independent actions
+		# action order 1), 3), 2) is confusing because the cause and effect link between 1) & 2) is broken
+		if gs.end.is_end or is_start: 
+			gs.end.disp_end(gs)
+		elif is_wait or is_valid or is_att: # elif to avoid case of auto_act() run after ending from cmd
+			auto_action(gs)
+		if is_start:
+			gs.io.buffer("Restarting...") # appears post 'you have restarted' end text and pre 'welcome' text
+
+		# save state and last inupt (for 'again' case)
+		# note: need to save state even if is_valid == False else 'again' won't work on error cases
+		gs.io.last_input_str = user_input
+
+	# close out turn with return
 	with open(pkl_str, 'wb') as f:
 		pickle.dump(master_obj_lst, f)
 	return is_start, gs.end.is_end, gs.end.game_ending, gs.end.is_bkstry, gs.io.get_buff()
