@@ -14,19 +14,12 @@ from cleesh.app_turn.auto_action import auto_action
 
 ### loads game obj, calls other modules, and saves game obj ###
 def app_main(user_input, game_name, root_path_str):
-	# initiate app_main() - load obj, declare gs, and reset buffer
+	# initiate app_main() - load obj, declare gs, and reset buffer & cmd_queue
 	pkl_str = f"{root_path_str}/cleesh/games/{game_name}/working/active_pkl"
 	with open(pkl_str, 'rb') as f:
 		master_obj_lst = pickle.load(f)
 	gs = master_obj_lst[0]
 	gs.io.reset_buff()
-
-	# local var declarations
-#	is_start = False
-#	is_wait = False
-#	is_interp_cmd = True
-#	is_valid = False
-#	is_att = False
 	cmd_queue = []
 
 	# load cmd queue
@@ -65,6 +58,15 @@ def app_main(user_input, game_name, root_path_str):
 			is_wait = True
 			gs.io.buffer("Waiting...")
 			is_interp_cmd = False
+
+		# custom handling for 'drop all'
+		if user_input.lower().strip() in ['drop all']:
+			drop_lst = [f'drop {gs.core.hero.get_hand_item().name}']
+			for item in gs.core.hero.bkpk_lst:
+				drop_lst.append(f'drop {item.name}')
+#			drop_lst.reverse()
+			cmd_queue = drop_lst + cmd_queue
+			user_input = cmd_queue.pop(0)
 
 		# for interp commands, interp user_input and validate command
 		if is_interp_cmd:

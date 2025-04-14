@@ -399,7 +399,7 @@ End Date:
 				- IDEA: make big_rock the zorkmid_dispenser? Turn off after one run
 			- DONE: adjust item weights to make zorkmid the only half-pound weight
 			- DONE: enable drop to work on backpack items (e.g. "you toss the X from your pack")
-			- INPROC: enable multiple commands to be input at once, separated by commas
+			- DONE: enable multiple commands to be input at once, separated by commas
 				- DONE: check Zork behavior => multiple entry halts on error or enter dark rm
 				- DONE: in app_main() create cmd_queue, populate it, and read commands from it
 				- DONE: test std cases
@@ -407,12 +407,18 @@ End Date:
 				- DONE: test special cases
 				- DONE: clear cmd_queue on not is_valid and on comd_override
 				- DONE: test error cases
-				- TBD: leverage cmd_queue for 'again' command ?
+				- DONE: clean-up app_main()
+			- INPROC: enable 'drop all'
+				- DECISION: 'drop all' will drop item in hand and all in bkp but not worn
+				- DONE: construct drop all commands in cmd_queue
+				- DONE: initial test
+				- TBD: deep-dive test (use in multi-cmd string)
 				- TBD: clean-up app_main()
-			- TBD: enable 'drop all'
+			- TBD: enable 'except command
+			- TBD: update help menu to explain 'drop all' & 'except'
 			- TBD: enable 'take all'
-				- TBD: in order of weight ?
-			- TBD: 'except' command ?
+				- IDEA: in order of weight ?
+				- TBD: test in Zork to see order / behavior of 'take all'
 		- INPROC: entrance => gatehouse
 			- TBD: replace all instances in game_update()
 			- TBD: replace all instances in game_static_gbl()
@@ -433,6 +439,7 @@ End Date:
 - TBD: for room display, separate creatures from ViewOnly and list creatures 2nd
 - TBD: should I add handle as an attrib of door? Could pull handle to open? door would have open direction
 - TBD: investigate enabling init_desc attrib for items in containers (e.g. certificate)
+- TBD: leverage app_main() cmd_queue for 'again' command ?
 
 *** known cleesh tech issues ***
 - TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
