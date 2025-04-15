@@ -18,12 +18,13 @@ def get_game_dict(game_name):
 
 ### classes ###
 class IO(Invisible):
-	def __init__(self, name, dyn_dict, buff_str, last_input_str, game_name):
+	def __init__(self, name, dyn_dict, buff_str, last_input_str, game_name, multi_count):
 		super().__init__(name)
 		self._dyn_dict = dyn_dict # dict of non-static values that persist during game
 		self._buff_str = buff_str # holds buffered output
 		self._last_input_str = last_input_str # holds previous turn's input
 		self._game_name = game_name # name of the current game (also the path to the game)
+		self._multi_count = multi_count # tracks the number of times a multiples action will run
 		""" IO class inherits from Invisible. It abstracts all of the string calls to the games 
 		various dictionaries (dynamic, engine, and game) and provides a raft of buffer funcions
 		for game output. 
@@ -61,6 +62,14 @@ class IO(Invisible):
 	@game_name.setter
 	def game_name(self, new_val):
 		self._game_name = new_val
+
+	@property
+	def multi_count(self):
+		return self._multi_count
+
+	@multi_count.setter
+	def multi_count(self, new_val):
+		self._multi_count = new_val
 
 	### check dict methods ###
 	def chk_str_exist(self, key):

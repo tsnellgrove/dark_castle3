@@ -408,14 +408,24 @@ End Date:
 				- DONE: clear cmd_queue on not is_valid and on comd_override
 				- DONE: test error cases
 				- DONE: clean-up app_main()
-			- INPROC: enable 'drop all'
+			- DONE: enable 'drop all'
 				- DECISION: 'drop all' will drop item in hand and all in bkp but not worn
 				- DONE: construct drop all commands in cmd_queue
 				- DONE: initial test
-				- TBD: deep-dive test (use in multi-cmd string)
-				- TBD: clean-up app_main()
+				- DONE: deep-dive test (use in multi-cmd string)
+				- DONE: clean-up app_main()
+			- DONE: enable multi UI (e.g. 'Rusty Key: Dropped')
+				- DONE: create multi_count attrib in gs.io
+				- DONE: set multi_count = 0 in game_update()
+				- DONE: in app_main() , if 'drop all', multi_count = len(drop_lst)
+				- DONE: in app_main() , at end of while loop, if multi_count > 0 , decrement
+				- DONE: in item_class() : drop() : if multi_count > 0 use multi_format
+				- DONE: testing
 			- TBD: enable 'except command
+			- TBD: enable use of 'and' ?
+			- TBD: enable use of 'from' ??
 			- TBD: update help menu to explain 'drop all' & 'except'
+			- TBD: update help menu to explain command queue
 			- TBD: enable 'take all'
 				- IDEA: in order of weight ?
 				- TBD: test in Zork to see order / behavior of 'take all'

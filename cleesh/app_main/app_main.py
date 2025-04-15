@@ -64,9 +64,9 @@ def app_main(user_input, game_name, root_path_str):
 			drop_lst = [f'drop {gs.core.hero.get_hand_item().name}']
 			for item in gs.core.hero.bkpk_lst:
 				drop_lst.append(f'drop {item.name}')
-#			drop_lst.reverse()
 			cmd_queue = drop_lst + cmd_queue
 			user_input = cmd_queue.pop(0)
+			gs.io.multi_count = len(drop_lst)
 
 		# for interp commands, interp user_input and validate command
 		if is_interp_cmd:
@@ -105,6 +105,8 @@ def app_main(user_input, game_name, root_path_str):
 		# save state and last inupt (for 'again' case)
 		# note: need to save state even if is_valid == False else 'again' won't work on error cases
 		gs.io.last_input_str = user_input
+		if gs.io.multi_count > 0:
+			gs.io.multi_count -= 1
 
 	# close out turn with return
 	with open(pkl_str, 'wb') as f:

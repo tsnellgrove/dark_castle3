@@ -472,7 +472,8 @@ io = IO(
 		{}, # dyn_dict
 		"", # buff_str
 		"", # last_input_str
-		'dark_castle' # game_name
+		'dark_castle', # game_name
+		0 # multi_count
 		)
 
 score = Score(

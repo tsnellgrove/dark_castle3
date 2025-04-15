@@ -71,16 +71,21 @@ class Item(ViewOnly):
 
 		if creature.chk_in_hand(self):
 			creature.hand_lst_remove(self)
-			gs.io.buffer("Dropped")
+			if gs.io.multi_count > 0:
+				gs.io.buffer(f"{self.full_name}: Dropped")
+			else:
+				gs.io.buffer("Dropped")
 		else:
 			creature.bkpk_lst_remove(self)
-			gs.io.buffer(f"You toss the {self.full_name} from your backpack.")
+			if gs.io.multi_count > 0:
+				gs.io.buffer(f"{self.full_name}: Dropped")
+			else:
+				gs.io.buffer(f"You toss the {self.full_name} from your backpack.")
+
 		if creature.is_contained(gs):
 			creature.get_contained_by(gs).contain_lst_append(self, gs)
 		else:
-			gs.map.hero_rm.floor_lst_append(self)
-		
-#		gs.io.buffer("Dropped")
+			gs.map.hero_rm.floor_lst_append(self)		
 		return 
 
 	def stowe(self, gs, mode=None):
