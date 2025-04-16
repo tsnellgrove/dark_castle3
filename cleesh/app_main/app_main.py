@@ -38,6 +38,7 @@ def app_main(user_input, game_name, root_path_str):
 		is_interp_cmd = True
 		is_valid = False
 		is_att = False
+		except_element = None
 
 		# mutually exclusive special command cases
 		if user_input.lower().strip() in ['quit', 'q']:
@@ -59,11 +60,31 @@ def app_main(user_input, game_name, root_path_str):
 			gs.io.buffer("Waiting...")
 			is_interp_cmd = False
 
+		# custom handling for 'drop all except'
+		if user_input.lower().strip().startswith('drop all except'):
+			statement_lst = user_input.split('except')
+			if len(statement_lst) != 2:
+				gs.io.buffer("You can only use 'except' once in a command.")
+				cmd_queue = []
+				is_interp_cmd = False
+			user_input = statement_lst[0]
+			except_element = statement_lst[1].strip()
+
 		# custom handling for 'drop all'
 		if user_input.lower().strip() in ['drop all']:
-			drop_lst = [f'drop {gs.core.hero.get_hand_item().name}']
+			drop_lst = []
+			if not gs.core.hero.hand_is_empty():
+				drop_lst = [f'drop {gs.core.hero.get_hand_item().name}']
 			for item in gs.core.hero.bkpk_lst:
 				drop_lst.append(f'drop {item.name}')
+			if except_element:
+				try:
+					drop_lst.remove(f'drop {except_element}')
+				except ValueError:
+					gs.io.buffer(f"The {except_element.full_name} is not in your inventory.")
+					cmd_queue = []
+					drop_lst = []
+					is_interp_cmd = False
 			cmd_queue = drop_lst + cmd_queue
 			user_input = cmd_queue.pop(0)
 			gs.io.multi_count = len(drop_lst)

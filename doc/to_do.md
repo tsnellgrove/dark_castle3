@@ -421,7 +421,8 @@ End Date:
 				- DONE: in app_main() , at end of while loop, if multi_count > 0 , decrement
 				- DONE: in item_class() : drop() : if multi_count > 0 use multi_format
 				- DONE: testing
-			- TBD: enable 'except command
+			- INPROC: enable 'except command
+				- TBD: except testing
 			- TBD: enable use of 'and' ?
 			- TBD: enable use of 'from' ??
 			- TBD: update help menu to explain 'drop all' & 'except'
