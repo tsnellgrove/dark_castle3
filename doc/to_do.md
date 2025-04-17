@@ -424,6 +424,10 @@ End Date:
 			- INPROC: enable 'except command
 				- INPROC: except testing
 				- TBD: basic problem = how to evaluate except_element to item name ??
+					TBD: if 2 words after 'except', try word1_word2 in inventory_list by name
+					TBD: elif 1 word after 'except', try word1 in inventory_list by name and
+					TBD: elif 1 word, try word1 inventory_ist by root_name (check for 2 of same => err)
+					TBD: else error: "I don't see an {except phrase} in your inventory"
 			- TBD: enable use of 'and' ?
 			- TBD: enable use of 'from' ??
 			- TBD: update help menu to explain 'drop all' & 'except'
