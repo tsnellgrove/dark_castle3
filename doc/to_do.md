@@ -422,7 +422,8 @@ End Date:
 				- DONE: in item_class() : drop() : if multi_count > 0 use multi_format
 				- DONE: testing
 			- INPROC: enable 'except command
-				- TBD: except testing
+				- INPROC: except testing
+				- TBD: basic problem = how to evaluate except_element to item name ??
 			- TBD: enable use of 'and' ?
 			- TBD: enable use of 'from' ??
 			- TBD: update help menu to explain 'drop all' & 'except'
