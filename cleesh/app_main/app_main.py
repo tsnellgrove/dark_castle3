@@ -62,16 +62,32 @@ def app_main(user_input, game_name, root_path_str):
 
 		# custom handling for 'drop all except'
 		if user_input.lower().strip().startswith('drop all except'):
+			except_element = ""
 			statement_lst = user_input.split('except')
 			print(statement_lst)
-			if len(statement_lst) != 2:
+			if len(statement_lst) > 2:
 				gs.io.buffer("You can only use 'except' once in a command.")
 				cmd_queue = []
 				is_interp_cmd = False
 			user_input = statement_lst[0]
-			except_element = statement_lst[1].strip()
+#			except_element = statement_lst[1].strip()
+			except_element = statement_lst[1]
 			print(user_input)
 			print(except_element)
+
+		# except_element handling
+		if len(except_element.strip()) == 0: # move to 'drop all except' handling?
+			gs.io.buffer("Except what?")
+			cmd_queue = []
+			is_interp_cmd = False
+		ee_lst = except_element.split()
+		if len(ee_lst) > 2:
+			gs.io.buffer("You can only 'except' one item in a multiples action.")
+			cmd_queue = []
+			is_interp_cmd = False
+		if len(ee_lst) == 2:
+			except_element = f"{ee_lst[0]}_{ee_lst[1]}"
+		
 
 		# custom handling for 'drop all'
 		if user_input.lower().strip() in ['drop all']:
