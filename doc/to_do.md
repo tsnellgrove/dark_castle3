@@ -422,11 +422,10 @@ End Date:
 				- DONE: in item_class() : drop() : if multi_count > 0 use multi_format
 				- DONE: testing
 			- INPROC: enable 'except command
-				- INPROC: except testing
-				- INPROC: basic problem = how to evaluate except_element to item name ??
+				- INPROC: except testing - basic problem = how to evaluate except_element to item name ??
 					DONE: test rusty_key
-					INPROC: if 2 words after 'except', try word1_word2 in inventory_list by name
-					TBD: elif 1 word after 'except', try word1 in inventory_list by name and
+					DONE: if 2 words after 'except', try word1_word2 in inventory_list by name
+					DONE: elif 1 word after 'except', try word1 in inventory_list by name and
 					TBD: elif 1 word, try word1 inventory_ist by root_name (check for 2 of same => err)
 					TBD: else error: "I don't see an {except phrase} in your inventory"
 			- TBD: enable use of 'and' ?
