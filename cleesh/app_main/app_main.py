@@ -94,11 +94,15 @@ def app_main(user_input, game_name, root_path_str):
 			if len(ee_lst) == 1:
 				except_element = ee_lst[0]
 				print(except_element)
-			txt_inventory_lst = []
+			name_lst = []
+			root_lst = []
 			for obj in gs.core.hero.hand_lst + gs.core.hero.bkpk_lst:
-				txt_inventory_lst.append(obj.name)
-			print(txt_inventory_lst)
-			if except_element.lower().strip() not in (txt_inventory_lst):
+				name_lst.append(obj.name)
+				root_lst.append(obj.root_name)
+				if except_element == obj.root_name:
+					except_element = obj.name
+			print(name_lst)
+			if except_element.lower().strip() not in (name_lst):
 				print(f"The {except_element} is not in your inventory.")
 				gs.io.buffer(f"The {except_element} is not in your inventory.")
 				cmd_queue = []
