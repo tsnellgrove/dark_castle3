@@ -79,6 +79,7 @@ def app_main(user_input, game_name, root_path_str):
 
 		# except_element handling
 		if has_except:
+			temp_root = ""
 			if len(except_element.strip()) == 0: # move to 'drop all except' handling?
 				gs.io.buffer("Except what?")
 				cmd_queue = []
@@ -100,11 +101,26 @@ def app_main(user_input, game_name, root_path_str):
 				name_lst.append(obj.name)
 				root_lst.append(obj.root_name)
 				if except_element == obj.root_name:
+					temp_root = except_element
 					except_element = obj.name
+#				if root_lst.count(temp_root) > 1:
+#					gs.io.buffer(f"You have more than one {temp_root} in your inventory. Please use the full name.")
+#					cmd_queue = []
+#					drop_lst = []
+#					user_input = ""
+#					is_interp_cmd = False
+#					except_element = ""
 			print(name_lst)
 			if except_element.lower().strip() not in (name_lst):
 				print(f"The {except_element} is not in your inventory.")
 				gs.io.buffer(f"The {except_element} is not in your inventory.")
+				cmd_queue = []
+				drop_lst = []
+				user_input = ""
+				is_interp_cmd = False
+				except_element = ""
+			if root_lst.count(temp_root) > 1:
+				gs.io.buffer(f"You have more than one {temp_root} in your inventory. Please use the full name.")
 				cmd_queue = []
 				drop_lst = []
 				user_input = ""

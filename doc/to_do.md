@@ -427,8 +427,9 @@ End Date:
 					- DONE: if 2 words after 'except', try word1_word2 in inventory_list by name
 					- DONE: elif 1 word after 'except', try word1 in inventory_list by name and
 					- DONE: elif 1 word, try word1 inventory_ist by root_name
-					- TBD: check for 2 of same root => err
+					- DONE: check for 2 of same root => err
 					- TBD: else error: "I don't see an {except phrase} in your inventory"
+					- TBD: tighten code
 					- TBD: test error cases
 			- TBD: enable use of 'and' ?
 			- TBD: enable use of 'from' ??
