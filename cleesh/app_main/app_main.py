@@ -62,105 +62,63 @@ def app_main(user_input, game_name, root_path_str):
 			is_interp_cmd = False
 
 		# custom handling for 'drop all except'
-		except_err = False
 		if user_input.lower().strip().startswith('drop all except'):
+			except_err = False
 			has_except = True
 			except_element = ""
 			statement_lst = user_input.split('except')
-			print(statement_lst)
 			if len(statement_lst) > 2:
 				gs.io.buffer("You can only use 'except' once in a command.")
-				cmd_queue = []
-				is_interp_cmd = False
 				except_err = True
-			user_input = statement_lst[0]
-#			except_element = statement_lst[1].strip()
-			except_element = statement_lst[1]
-			print(user_input)
-			print(except_element)
-
-		# except_element handling
-		if has_except:
-			temp_root = ""
-			if len(except_element.strip()) == 0 and not except_err: # move to 'drop all except' handling?
-				gs.io.buffer("Except what?")
-				cmd_queue = []
-				is_interp_cmd = False
-				except_err = True
-			ee_lst = except_element.split()
-			if len(ee_lst) > 2:
-				gs.io.buffer("You can only 'except' one item in a multiples action.")
-				cmd_queue = []
-				drop_lst = []
-				is_interp_cmd = False
-				except_err = True
-				user_input = ""
-			if len(ee_lst) == 2:
-				except_element = f"{ee_lst[0]}_{ee_lst[1]}"
-				print(except_element)
-			if len(ee_lst) == 1:
-				except_element = ee_lst[0]
-				print(except_element)
-			name_lst = []
-			root_lst = []
-			for obj in gs.core.hero.hand_lst + gs.core.hero.bkpk_lst:
-				name_lst.append(obj.name)
-				root_lst.append(obj.root_name)
-				if except_element == obj.root_name:
-					temp_root = except_element
-					except_element = obj.name
-#				if root_lst.count(temp_root) > 1:
-#					gs.io.buffer(f"You have more than one {temp_root} in your inventory. Please use the full name.")
-#					cmd_queue = []
-#					drop_lst = []
-#					user_input = ""
-#					is_interp_cmd = False
-#					except_element = ""
-			print(name_lst)
-			if except_element.lower().strip() not in (name_lst) and not except_err:
-				print(f"The {except_element} is not in your inventory.")
-				gs.io.buffer(f"The {except_element} is not in your inventory.")
-				except_err = True
+			else:
+				user_input = statement_lst[0]
+				except_element = statement_lst[1]
+				if len(except_element.strip()) == 0 and not except_err: 
+					gs.io.buffer("Except what?")
+					except_err = True
+				else:
+					ee_lst = except_element.split()
+					if len(ee_lst) > 2:
+						gs.io.buffer("You can only 'except' one item in a multiples action.")
+						except_err = True
+					else:
+						if len(ee_lst) == 2:
+							except_element = f"{ee_lst[0]}_{ee_lst[1]}"
+						if len(ee_lst) == 1:
+							except_element = ee_lst[0]
+						name_lst = []
+						root_lst = []
+						temp_root = ""
+						for obj in gs.core.hero.hand_lst + gs.core.hero.bkpk_lst:
+							name_lst.append(obj.name)
+							root_lst.append(obj.root_name)
+							if except_element == obj.root_name:
+								temp_root = except_element
+								except_element = obj.name
+						if except_element.lower().strip() not in (name_lst) and not except_err:
+							print(f"The {except_element} is not in your inventory.")
+							gs.io.buffer(f"The {except_element} is not in your inventory.")
+							except_err = True
+						if root_lst.count(temp_root) > 1:
+							gs.io.buffer(f"You have more than one {temp_root} in your inventory. Please use the full name.")
+							except_err = True
+			if except_err:
 				cmd_queue = []
 				drop_lst = []
 				user_input = ""
 				is_interp_cmd = False
 				except_element = ""
-			if root_lst.count(temp_root) > 1:
-				gs.io.buffer(f"You have more than one {temp_root} in your inventory. Please use the full name.")
-				except_err = True
-				cmd_queue = []
-				drop_lst = []
-				user_input = ""
-				is_interp_cmd = False
-				except_element = ""
-		
 
 		# custom handling for 'drop all'
 		if user_input.lower().strip() in ['drop all']:
 			inventory_lst = gs.core.hero.hand_lst + gs.core.hero.bkpk_lst
 			drop_lst = []
-#			if not gs.core.hero.hand_is_empty():
-#				drop_lst = [f'drop {gs.core.hero.get_hand_item().name}']
-#			for item in gs.core.hero.bkpk_lst:
 			for item in inventory_lst:
 				if (has_except) and (item.name == except_element): # need to fix this
 					has_except = False
 				else:
 					drop_lst.append(f'drop {item.name}')
 			print(drop_lst)
-#				drop_lst.append(f'drop {item.name}')
-#			if except_element:
-#				try:
-#					drop_lst.remove(f'drop {except_element}')
-#				except ValueError:
-##			if except_element:
-##				print(f"The {except_element} is not in your inventory.")
-##				gs.io.buffer(f"The {except_element} is not in your inventory.")
-##				cmd_queue = []
-##				drop_lst = []
-##				is_interp_cmd = False
-##				except_element = None
 			cmd_queue = drop_lst + cmd_queue
 			user_input = cmd_queue.pop(0)
 			gs.io.multi_count = len(drop_lst)

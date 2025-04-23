@@ -414,15 +414,15 @@ End Date:
 				- DONE: initial test
 				- DONE: deep-dive test (use in multi-cmd string)
 				- DONE: clean-up app_main()
-			- DONE: enable multi UI (e.g. 'Rusty Key: Dropped')
+			- DONE: enable multiples UI (e.g. 'Rusty Key: Dropped')
 				- DONE: create multi_count attrib in gs.io
 				- DONE: set multi_count = 0 in game_update()
 				- DONE: in app_main() , if 'drop all', multi_count = len(drop_lst)
 				- DONE: in app_main() , at end of while loop, if multi_count > 0 , decrement
 				- DONE: in item_class() : drop() : if multi_count > 0 use multi_format
 				- DONE: testing
-			- INPROC: enable 'except command
-				- INPROC: except testing - basic problem = how to evaluate except_element to item name ??
+			- DONE: enable 'except command
+				- DONE: except testing - basic problem = how to evaluate except_element to item name ??
 					- DONE: test rusty_key
 					- DONE: if 2 words after 'except', try word1_word2 in inventory_list by name
 					- DONE: elif 1 word after 'except', try word1 in inventory_list by name and
@@ -433,14 +433,16 @@ End Date:
 						- DONE: > 1 except item
 						- DONE: except item not in your inventory
 						- DONE: no except item
-					- TBD: tighten code
-			- TBD: enable use of 'and' with action multiples ?
-			- TBD: enable use of 'from' with action multiples ??
-			- TBD: update help menu to explain 'drop all' & 'except'
-			- TBD: update help menu to explain command queue
+					- DONE: tighten code - first pass
 			- TBD: enable 'take all'
 				- IDEA: in order of weight ?
 				- TBD: test in Zork to see order / behavior of 'take all'
+				- TBD: expand app_main() 'drop all' case to include 'take all'
+				- TBD: expand Item.take() methoed to use multiples UI
+				- TBD: expand 'except' case to include take all
+			- TBD: Full code clean-up - probably need a separate 'except' function
+			- TBD: update help menu to explain 'drop all / take all' & 'except'
+			- TBD: update help menu to explain command queue
 		- INPROC: entrance => gatehouse
 			- TBD: replace all instances in game_update()
 			- TBD: replace all instances in game_static_gbl()
@@ -462,6 +464,9 @@ End Date:
 - TBD: should I add handle as an attrib of door? Could pull handle to open? door would have open direction
 - TBD: investigate enabling init_desc attrib for items in containers (e.g. certificate)
 - TBD: leverage app_main() cmd_queue for 'again' command ?
+- TBD: enable use of 'and' with action multiples ?
+- TBD: enable use of 'from' with action multiples ??
+
 
 *** known cleesh tech issues ***
 - TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
