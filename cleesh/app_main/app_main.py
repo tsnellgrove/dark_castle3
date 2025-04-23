@@ -62,6 +62,7 @@ def app_main(user_input, game_name, root_path_str):
 			is_interp_cmd = False
 
 		# custom handling for 'drop all except'
+		except_err = False
 		if user_input.lower().strip().startswith('drop all except'):
 			has_except = True
 			except_element = ""
@@ -71,6 +72,7 @@ def app_main(user_input, game_name, root_path_str):
 				gs.io.buffer("You can only use 'except' once in a command.")
 				cmd_queue = []
 				is_interp_cmd = False
+				except_err = True
 			user_input = statement_lst[0]
 #			except_element = statement_lst[1].strip()
 			except_element = statement_lst[1]
@@ -80,15 +82,19 @@ def app_main(user_input, game_name, root_path_str):
 		# except_element handling
 		if has_except:
 			temp_root = ""
-			if len(except_element.strip()) == 0: # move to 'drop all except' handling?
+			if len(except_element.strip()) == 0 and not except_err: # move to 'drop all except' handling?
 				gs.io.buffer("Except what?")
 				cmd_queue = []
 				is_interp_cmd = False
+				except_err = True
 			ee_lst = except_element.split()
 			if len(ee_lst) > 2:
 				gs.io.buffer("You can only 'except' one item in a multiples action.")
 				cmd_queue = []
+				drop_lst = []
 				is_interp_cmd = False
+				except_err = True
+				user_input = ""
 			if len(ee_lst) == 2:
 				except_element = f"{ee_lst[0]}_{ee_lst[1]}"
 				print(except_element)
@@ -111,9 +117,10 @@ def app_main(user_input, game_name, root_path_str):
 #					is_interp_cmd = False
 #					except_element = ""
 			print(name_lst)
-			if except_element.lower().strip() not in (name_lst):
+			if except_element.lower().strip() not in (name_lst) and not except_err:
 				print(f"The {except_element} is not in your inventory.")
 				gs.io.buffer(f"The {except_element} is not in your inventory.")
+				except_err = True
 				cmd_queue = []
 				drop_lst = []
 				user_input = ""
@@ -121,6 +128,7 @@ def app_main(user_input, game_name, root_path_str):
 				except_element = ""
 			if root_lst.count(temp_root) > 1:
 				gs.io.buffer(f"You have more than one {temp_root} in your inventory. Please use the full name.")
+				except_err = True
 				cmd_queue = []
 				drop_lst = []
 				user_input = ""

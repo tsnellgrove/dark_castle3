@@ -428,11 +428,14 @@ End Date:
 					- DONE: elif 1 word after 'except', try word1 in inventory_list by name and
 					- DONE: elif 1 word, try word1 inventory_ist by root_name
 					- DONE: check for 2 of same root => err
-					- TBD: else error: "I don't see an {except phrase} in your inventory"
+					- DONE: test error cases
+						- DONE: > 1 use of 'except'
+						- DONE: > 1 except item
+						- DONE: except item not in your inventory
+						- DONE: no except item
 					- TBD: tighten code
-					- TBD: test error cases
-			- TBD: enable use of 'and' ?
-			- TBD: enable use of 'from' ??
+			- TBD: enable use of 'and' with action multiples ?
+			- TBD: enable use of 'from' with action multiples ??
 			- TBD: update help menu to explain 'drop all' & 'except'
 			- TBD: update help menu to explain command queue
 			- TBD: enable 'take all'
