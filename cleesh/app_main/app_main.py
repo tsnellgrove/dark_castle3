@@ -40,6 +40,7 @@ def app_main(user_input, game_name, root_path_str):
 		is_att = False
 		except_element = ""
 		has_except = False
+		is_multiples_action = False
 
 		# mutually exclusive special command cases
 		if user_input.lower().strip() in ['quit', 'q']:
@@ -104,24 +105,30 @@ def app_main(user_input, game_name, root_path_str):
 							except_err = True
 			if except_err:
 				cmd_queue = []
-				drop_lst = []
+				multiples_lst = []
 				user_input = ""
 				is_interp_cmd = False
 				except_element = ""
 
-		# custom handling for 'drop all'
+		# custom handling for multiples action
 		if user_input.lower().strip() in ['drop all']:
+			is_multiples_action = True
+			multiples_action_type = 'drop'
 			inventory_lst = gs.core.hero.hand_lst + gs.core.hero.bkpk_lst
-			drop_lst = []
+		if user_input.lower().strip() in ['take all', 'get all']:
+			is_multiples_action = True
+			multiples_action_type = 'take'
+			inventory_lst = gs.core.hero.hand_lst + gs.core.hero.bkpk_lst # fix
+		if is_multiples_action:
+			multiples_lst = []
 			for item in inventory_lst:
-				if (has_except) and (item.name == except_element): # need to fix this
+				if (has_except) and (item.name == except_element):
 					has_except = False
 				else:
-					drop_lst.append(f'drop {item.name}')
-			print(drop_lst)
-			cmd_queue = drop_lst + cmd_queue
+					multiples_lst.append(f'drop {item.name}')
+			cmd_queue = multiples_lst + cmd_queue
 			user_input = cmd_queue.pop(0)
-			gs.io.multi_count = len(drop_lst)
+			gs.io.multi_count = len(multiples_lst)
 
 		# for interp commands, interp user_input and validate command
 		if is_interp_cmd:

@@ -417,23 +417,38 @@ big_rock_init_desc = InitDesc('big_rock_init_desc', big_rock, 'big_rock_init_des
 # *** Rooms ***
 gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, 
 		[dark_castle, moat, drawbridge, rusty_keyhole],
-		[burt, postbox, big_rock], [entrance_moat_mach, entrance_south_warn], [postbox_init_desc, big_rock_init_desc])
-		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
+		[burt, postbox, big_rock], 
+		[entrance_moat_mach, entrance_south_warn], 
+		[postbox_init_desc, big_rock_init_desc]
+	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
 		[dark_castle, moat, drawbridge, rusty_keyhole],
-		[burt, postbox, big_rock], [entrance_moat_mach, entrance_south_warn], [postbox_init_desc, big_rock_init_desc])
-		# note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
+		[burt, postbox, big_rock], 
+		[entrance_moat_mach, entrance_south_warn], 
+		[postbox_init_desc, big_rock_init_desc]
+	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
-main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, [faded_tapestries],
-		[shiny_sword, royal_hedgehog, wooden_shelf], [], [shiny_sword_init_desc])
-		# note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
+main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, 
+		[faded_tapestries],
+		[shiny_sword, royal_hedgehog, wooden_shelf], 
+		[], 
+		[shiny_sword_init_desc]
+	) # note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
 
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
-		[alcove], [guard_goblin], [dispense_panel_mach], [])
+		[alcove], 
+		[guard_goblin], 
+		[dispense_panel_mach], 
+		[]
+	)
 
-throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, [stone_coffer, family_tree],
-		[throne, crystal_box], [broach_dispenser_mach], [])
+throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, 
+		[stone_coffer, family_tree],
+		[throne, crystal_box], 
+		[broach_dispenser_mach],
+		[]
+	)
 
 unreachable_1 = Room('unreachable_1', 'Unreachable', 'unreachable_1', 'unreachable_1', None, [], [], [], [])
 
