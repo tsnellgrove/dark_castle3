@@ -434,9 +434,10 @@ End Date:
 						- DONE: except item not in your inventory
 						- DONE: no except item
 					- DONE: tighten code - first pass
-			- TBD: enable 'take all'
+			- INPROC: enable 'take all'
 				- IDEA: in order of weight ?
-				- TBD: test in Zork to see order / behavior of 'take all'
+				- DONE: test in Zork to see order / behavior of 'take all'
+				- DECISION: don't re-order for now
 				- TBD: expand app_main() 'drop all' case to include 'take all'
 				- TBD: expand Item.take() methoed to use multiples UI
 				- TBD: expand 'except' case to include take all
