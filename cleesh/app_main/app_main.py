@@ -118,14 +118,16 @@ def app_main(user_input, game_name, root_path_str):
 		if user_input.lower().strip() in ['take all', 'get all']:
 			is_multiples_action = True
 			multiples_action_type = 'take'
-			inventory_lst = gs.core.hero.hand_lst + gs.core.hero.bkpk_lst # fix
+			inventory_lst = gs.map.hero_rm.get_take_all_lst(gs)
 		if is_multiples_action:
 			multiples_lst = []
 			for item in inventory_lst:
 				if (has_except) and (item.name == except_element):
 					has_except = False
-				else:
+				elif multiples_action_type == 'drop':
 					multiples_lst.append(f'drop {item.name}')
+				elif multiples_action_type == 'take':
+					multiples_lst.append(f'take {item.name}')
 			cmd_queue = multiples_lst + cmd_queue
 			user_input = cmd_queue.pop(0)
 			gs.io.multi_count = len(multiples_lst)

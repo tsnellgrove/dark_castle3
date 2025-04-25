@@ -438,10 +438,10 @@ End Date:
 				- IDEA: in order of weight ?
 				- DONE: test in Zork to see order / behavior of 'take all'
 				- DECISION: don't re-order for now
-				- TBD: expand app_main() 'drop all' case to include 'take all'
+				- DONE: expand app_main() 'drop all' case to include 'take all'
 					- DONE: drop_lst => multiples_lst
 					- DONE: add local vars: is_multiples_action and multiples_action_type ('drop', 'take')
-					- TBD: define inventory_lst for multiples_action_type == 'take'
+					- DONE: define inventory_lst for multiples_action_type == 'take'
 						- DONE: define what behaviors do I want for 'take all'?
 							- IDEA: take all taks from room.floor_lst, NOT from room.feature_lst
 							- IDEA: don't try to take non-Item class obj
@@ -449,8 +449,10 @@ End Date:
 							- IDEA: If there's an open ViewOnly container holding an item, take the item
 							- IDEA: if there's a portable container take it
 							- IDEA: if there's a portable container holding an item, don't take the item
-						- TBD: create get_take_all_lst() method in Room class
+						- DONE: create get_take_all_lst() method in Room class
+						- DONE: initial testing
 				- TBD: expand Item.take() methoed to use multiples UI
+				- TBD: full test of take_all behavior
 				- TBD: expand 'except' case to include take all
 			- TBD: Full code clean-up - probably need a separate 'except' function
 			- TBD: update help menu to explain 'drop all / take all' & 'except'

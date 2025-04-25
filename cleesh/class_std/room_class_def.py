@@ -67,6 +67,13 @@ class Room(ViewOnly):
 			return_lst += obj.get_vis_contain_lst(gs)
 		return return_lst
 
+	def get_take_all_lst(self, gs):
+		take_all_lst = []
+		for obj in self.get_vis_contain_lst(gs):
+			if obj.is_item() and not obj.is_liquid():
+				take_all_lst.append(obj)
+		return take_all_lst
+
 	def chk_contain_item(self, item, gs):
 		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item()
 		"""
