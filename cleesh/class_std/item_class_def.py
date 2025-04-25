@@ -49,7 +49,10 @@ class Item(ViewOnly):
 			mode = 'std'
 		creature = gs.core.hero
 		
-		gs.io.buffer("Taken")
+		if gs.io.multi_count > 0:
+			gs.io.buffer(f"{self.full_name}: Taken")
+		else:
+			gs.io.buffer("Taken")
 		if creature.chk_is_worn(self):
 			gs.io.buffer(f"You are no longer wearing the {self.full_name}.")
 			gs.io.buff_s(f"{creature.name}_remove_{self.descript_key}")

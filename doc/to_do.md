@@ -443,17 +443,20 @@ End Date:
 					- DONE: add local vars: is_multiples_action and multiples_action_type ('drop', 'take')
 					- DONE: define inventory_lst for multiples_action_type == 'take'
 						- DONE: define what behaviors do I want for 'take all'?
-							- IDEA: take all taks from room.floor_lst, NOT from room.feature_lst
+							- IDEA: take all taks from room.floor_lst and room.feature_lst
 							- IDEA: don't try to take non-Item class obj
 							- IDEA: don't try to take Liquid class obj
 							- IDEA: If there's an open ViewOnly container holding an item, take the item
 							- IDEA: if there's a portable container take it
-							- IDEA: if there's a portable container holding an item, don't take the item
+							- IDEA: if there's a portable container holding an item, don't take the item (?)
 						- DONE: create get_take_all_lst() method in Room class
 						- DONE: initial testing
-				- TBD: expand Item.take() methoed to use multiples UI
-				- TBD: full test of take_all behavior
+				- DONE: expand Item.take() methoed to use multiples UI
+				- DONE: full test of take_all behavior - especially containers (does take from port contain)
+				- DONE: fix 'take all' / 'drop all' if there is nothing to take / drop
+				- TBD: get "again" working with "drop all" / "take all" cases
 				- TBD: expand 'except' case to include take all
+				- TBD: get 'again' working with except cases
 			- TBD: Full code clean-up - probably need a separate 'except' function
 			- TBD: update help menu to explain 'drop all / take all' & 'except'
 			- TBD: update help menu to explain command queue
