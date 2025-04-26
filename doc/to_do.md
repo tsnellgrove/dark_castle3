@@ -454,13 +454,15 @@ End Date:
 				- DONE: expand Item.take() methoed to use multiples UI
 				- DONE: full test of take_all behavior - especially containers (does take from port contain)
 				- DONE: fix 'take all' / 'drop all' if there is nothing to take / drop
-				- INPROC: get "again" working with "drop all" / "take all" cases
+				- DONE: get "again" working with "drop all" / "take all" cases
 					- DONE: get g working for 'drop all'
-					- TBD: get g working for 'take all'
+					- DONE: get g working for 'take all'
+						- FINDING: finally figured out the problem... by default, I can take from bkpk
+						- DONE: create from-scratch get_take_all_lst() method to exclude gs.core.her0
 				- TBD: expand 'except' case to include take all
 				- TBD: get 'again' working with except cases
 			- TBD: Full code clean-up - probably need a separate 'except' function
-			- TBD: update help menu to explain 'drop all / take all' & 'except'
+			- TBD: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
 			- TBD: update help menu to explain command queue
 		- INPROC: entrance => gatehouse
 			- TBD: replace all instances in game_update()

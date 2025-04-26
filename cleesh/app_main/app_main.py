@@ -115,20 +115,18 @@ def app_main(user_input, game_name, root_path_str):
 			is_multiples_action = True
 			multiples_action_type = 'drop'
 			inventory_lst = gs.core.hero.hand_lst + gs.core.hero.bkpk_lst
-			if inventory_lst == []:
+			if len(inventory_lst) == 0:
 				gs.io.buffer("You have nothing to drop!")
 				is_multiples_action = False
 				is_interp_cmd = False
-#				user_input = ""
 		if user_input.lower().strip() in ['take all', 'get all']:
 			is_multiples_action = True
 			multiples_action_type = 'take'
 			inventory_lst = gs.map.hero_rm.get_take_all_lst(gs)
-			if inventory_lst == []:
+			if len(inventory_lst) == 0:
 				gs.io.buffer("There's nothing to take!")
 				is_multiples_action = False
 				is_interp_cmd = False
-#				user_input = ""
 		if is_multiples_action:
 			if not has_except:
 				gs.io.last_input_str = user_input

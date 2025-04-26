@@ -69,7 +69,11 @@ class Room(ViewOnly):
 
 	def get_take_all_lst(self, gs):
 		take_all_lst = []
-		for obj in self.get_vis_contain_lst(gs):
+		temp_lst = self.floor_lst.copy()
+		for obj in self.floor_lst:
+			if obj is not gs.core.hero:
+				temp_lst += obj.get_vis_contain_lst(gs)
+		for obj in temp_lst:
 			if obj.is_item() and not obj.is_liquid():
 				take_all_lst.append(obj)
 		return take_all_lst
