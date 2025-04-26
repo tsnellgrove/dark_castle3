@@ -454,7 +454,9 @@ End Date:
 				- DONE: expand Item.take() methoed to use multiples UI
 				- DONE: full test of take_all behavior - especially containers (does take from port contain)
 				- DONE: fix 'take all' / 'drop all' if there is nothing to take / drop
-				- TBD: get "again" working with "drop all" / "take all" cases
+				- INPROC: get "again" working with "drop all" / "take all" cases
+					- DONE: get g working for 'drop all'
+					- TBD: get g working for 'take all'
 				- TBD: expand 'except' case to include take all
 				- TBD: get 'again' working with except cases
 			- TBD: Full code clean-up - probably need a separate 'except' function

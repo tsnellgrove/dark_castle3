@@ -119,7 +119,7 @@ def app_main(user_input, game_name, root_path_str):
 				gs.io.buffer("You have nothing to drop!")
 				is_multiples_action = False
 				is_interp_cmd = False
-				user_input = ""
+#				user_input = ""
 		if user_input.lower().strip() in ['take all', 'get all']:
 			is_multiples_action = True
 			multiples_action_type = 'take'
@@ -128,8 +128,10 @@ def app_main(user_input, game_name, root_path_str):
 				gs.io.buffer("There's nothing to take!")
 				is_multiples_action = False
 				is_interp_cmd = False
-				user_input = ""
+#				user_input = ""
 		if is_multiples_action:
+			if not has_except:
+				gs.io.last_input_str = user_input
 			multiples_lst = []
 			for item in inventory_lst:
 				if (has_except) and (item.name == except_element):
@@ -178,7 +180,8 @@ def app_main(user_input, game_name, root_path_str):
 
 		# save state and last inupt (for 'again' case)
 		# note: need to save state even if is_valid == False else 'again' won't work on error cases
-		gs.io.last_input_str = user_input
+		if gs.io.multi_count == 0:
+			gs.io.last_input_str = user_input
 		if gs.io.multi_count > 0:
 			gs.io.multi_count -= 1
 
