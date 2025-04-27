@@ -443,12 +443,14 @@ End Date:
 					- DONE: add local vars: is_multiples_action and multiples_action_type ('drop', 'take')
 					- DONE: define inventory_lst for multiples_action_type == 'take'
 						- DONE: define what behaviors do I want for 'take all'?
-							- IDEA: take all taks from room.floor_lst and room.feature_lst
+							- IDEA: take all taks from room.floor_lst, NOT room.feature_lst
 							- IDEA: don't try to take non-Item class obj
 							- IDEA: don't try to take Liquid class obj
 							- IDEA: If there's an open ViewOnly container holding an item, take the item
 							- IDEA: if there's a portable container take it
-							- IDEA: if there's a portable container holding an item, don't take the item (?)
+							- IDEA: don't attempt to take from player's own inventory
+							- TBD: if there's a portable container holding an item, don't take the item
+							- TBD: if there's a creature, don't attempt to take from the creature
 						- DONE: create get_take_all_lst() method in Room class
 						- DONE: initial testing
 				- DONE: expand Item.take() methoed to use multiples UI
@@ -459,8 +461,10 @@ End Date:
 					- DONE: get g working for 'take all'
 						- FINDING: finally figured out the problem... by default, I can take from bkpk
 						- DONE: create from-scratch get_take_all_lst() method to exclude gs.core.her0
-				- TBD: expand 'except' case to include take all
+				- DONE: expand 'except' case to include take all
+				- TBD: sort out last 2 take-all cases
 				- TBD: get 'again' working with except cases
+				- TBD: mini-in-place code clean-up
 			- TBD: Full code clean-up - probably need a separate 'except' function
 			- TBD: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
 			- TBD: update help menu to explain command queue

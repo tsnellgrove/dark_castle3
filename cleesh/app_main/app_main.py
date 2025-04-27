@@ -41,6 +41,8 @@ def app_main(user_input, game_name, root_path_str):
 		except_element = ""
 		has_except = False
 		is_multiples_action = False
+#		multiples_action_type = ""
+		inventory_lst = []
 
 		# mutually exclusive special command cases
 		if user_input.lower().strip() in ['quit', 'q']:
@@ -62,10 +64,21 @@ def app_main(user_input, game_name, root_path_str):
 			gs.io.buffer("Waiting...")
 			is_interp_cmd = False
 
-		# custom handling for 'drop all except'
+		# custom handling for 'x all except'
 		if user_input.lower().strip().startswith('drop all except'):
-			except_err = False
+#			is_multiples_action = True # new
+#			multiples_action_type = 'drop' # new
+			inventory_lst = gs.core.hero.hand_lst + gs.core.hero.bkpk_lst # new
 			has_except = True
+		if (user_input.lower().strip().startswith('take all except') 
+				or user_input.lower().strip().startswith('get all except')):
+#			is_multiples_action = True # new
+#			multiples_action_type = 'take' # new
+			inventory_lst = gs.map.hero_rm.get_take_all_lst(gs) # new
+			has_except = True		
+		if has_except:
+			except_err = False
+#			has_except = True
 			except_element = ""
 			statement_lst = user_input.split('except')
 			if len(statement_lst) > 2:
@@ -90,18 +103,21 @@ def app_main(user_input, game_name, root_path_str):
 						name_lst = []
 						root_lst = []
 						temp_root = ""
-						for obj in gs.core.hero.hand_lst + gs.core.hero.bkpk_lst:
+#						for obj in gs.core.hero.hand_lst + gs.core.hero.bkpk_lst:
+						for obj in inventory_lst:
 							name_lst.append(obj.name)
 							root_lst.append(obj.root_name)
 							if except_element == obj.root_name:
 								temp_root = except_element
 								except_element = obj.name
 						if except_element.lower().strip() not in (name_lst) and not except_err:
-							print(f"The {except_element} is not in your inventory.")
-							gs.io.buffer(f"The {except_element} is not in your inventory.")
+##							print(f"The {except_element} is not in your inventory.")
+#							gs.io.buffer(f"The {except_element} is not in your inventory.")
+							gs.io.buffer(f"You don't see a {except_element} here.")
 							except_err = True
 						if root_lst.count(temp_root) > 1:
-							gs.io.buffer(f"You have more than one {temp_root} in your inventory. Please use the full name.")
+#							gs.io.buffer(f"You have more than one {temp_root} in your inventory. Please use the full name.")
+							gs.io.buffer(f"There is more than one {temp_root} here. Please use the full name.")
 							except_err = True
 			if except_err:
 				cmd_queue = []
