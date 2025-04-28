@@ -84,6 +84,9 @@ def app_main(user_input, game_name, root_path_str):
 			if len(statement_lst) > 2:
 				gs.io.buffer("You can only use 'except' once in a command.")
 				except_err = True
+#			elif len(inventory_lst) == 0:
+#				gs.io.buffer("With that exception, there's nothing left to act on.")
+#				except_err = True
 			else:
 				user_input = statement_lst[0]
 				except_element = statement_lst[1]
@@ -154,9 +157,15 @@ def app_main(user_input, game_name, root_path_str):
 					multiples_lst.append(f'drop {item.name}')
 				elif multiples_action_type == 'take':
 					multiples_lst.append(f'take {item.name}')
-			cmd_queue = multiples_lst + cmd_queue
-			user_input = cmd_queue.pop(0)
-			gs.io.multi_count = len(multiples_lst)
+			if len(multiples_lst) == 0:
+				gs.io.buffer("With that exception, there's nothing left to act on.")
+				is_multiples_action = False
+				is_interp_cmd = False
+				cmd_queue = []
+			else:
+				cmd_queue = multiples_lst + cmd_queue
+				user_input = cmd_queue.pop(0)
+				gs.io.multi_count = len(multiples_lst)
 
 		# for interp commands, interp user_input and validate command
 		if is_interp_cmd:

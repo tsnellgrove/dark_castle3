@@ -449,8 +449,8 @@ End Date:
 							- IDEA: If there's an open ViewOnly container holding an item, take the item
 							- IDEA: if there's a portable container take it
 							- IDEA: don't attempt to take from player's own inventory
-							- TBD: if there's a portable container holding an item, don't take the item
-							- TBD: if there's a creature, don't attempt to take from the creature
+							- DONE: if there's a portable container holding an item, don't take the item
+							- DONE: if there's a creature, don't attempt to take from the creature
 						- DONE: create get_take_all_lst() method in Room class
 						- DONE: initial testing
 				- DONE: expand Item.take() methoed to use multiples UI
@@ -462,9 +462,10 @@ End Date:
 						- FINDING: finally figured out the problem... by default, I can take from bkpk
 						- DONE: create from-scratch get_take_all_lst() method to exclude gs.core.her0
 				- DONE: expand 'except' case to include take all
-				- TBD: sort out last 2 take-all cases
+				- DONE: sort out last 2 take-all cases
 				- TBD: get 'again' working with except cases
-				- TBD: mini-in-place code clean-up
+				- TBD: mini-in-place code clean-up for app_main()
+				- TBD: sort out odd behavior when referencing an obj excluded from inventory_lst (e.g. 'take all except X' when X is in your inventory)
 			- TBD: Full code clean-up - probably need a separate 'except' function
 			- TBD: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
 			- TBD: update help menu to explain command queue
