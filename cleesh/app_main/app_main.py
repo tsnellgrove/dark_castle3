@@ -77,6 +77,7 @@ def app_main(user_input, game_name, root_path_str):
 			inventory_lst = gs.map.hero_rm.get_take_all_lst(gs) # new
 			has_except = True		
 		if has_except:
+			gs.io.last_input_str = user_input
 			except_err = False
 #			has_except = True
 			except_element = ""
