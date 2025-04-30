@@ -464,8 +464,8 @@ End Date:
 				- DONE: expand 'except' case to include take all
 				- DONE: sort out last 2 take-all cases
 				- DONE: get 'again' working with except cases
-				- TBD: mini-in-place code clean-up for app_main()
-				- TBD: sort out player unexpected behavior when referencing an obj excluded from inventory_lst (e.g. 'take all except X' when X is in your inventory)
+				- DONE: mini-in-place code clean-up for app_main()
+				- TBD: err when ref obj excluded from inventory_lst ('take all except X' when X in inv)
 			- TBD: Full code clean-up - probably need a separate 'except' function
 			- TBD: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
 			- TBD: update help menu to explain command queue

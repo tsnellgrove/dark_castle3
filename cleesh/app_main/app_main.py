@@ -41,7 +41,6 @@ def app_main(user_input, game_name, root_path_str):
 		except_element = ""
 		has_except = False
 		is_multiples_action = False
-#		multiples_action_type = ""
 		inventory_lst = []
 
 		# mutually exclusive special command cases
@@ -66,28 +65,20 @@ def app_main(user_input, game_name, root_path_str):
 
 		# custom handling for 'x all except'
 		if user_input.lower().strip().startswith('drop all except'):
-#			is_multiples_action = True # new
-#			multiples_action_type = 'drop' # new
-			inventory_lst = gs.core.hero.hand_lst + gs.core.hero.bkpk_lst # new
+			inventory_lst = gs.core.hero.hand_lst + gs.core.hero.bkpk_lst
 			has_except = True
 		if (user_input.lower().strip().startswith('take all except') 
 				or user_input.lower().strip().startswith('get all except')):
-#			is_multiples_action = True # new
-#			multiples_action_type = 'take' # new
-			inventory_lst = gs.map.hero_rm.get_take_all_lst(gs) # new
+			inventory_lst = gs.map.hero_rm.get_take_all_lst(gs)
 			has_except = True		
 		if has_except:
 			gs.io.last_input_str = user_input
 			except_err = False
-#			has_except = True
 			except_element = ""
 			statement_lst = user_input.split('except')
 			if len(statement_lst) > 2:
 				gs.io.buffer("You can only use 'except' once in a command.")
 				except_err = True
-#			elif len(inventory_lst) == 0:
-#				gs.io.buffer("With that exception, there's nothing left to act on.")
-#				except_err = True
 			else:
 				user_input = statement_lst[0]
 				except_element = statement_lst[1]
@@ -107,7 +98,6 @@ def app_main(user_input, game_name, root_path_str):
 						name_lst = []
 						root_lst = []
 						temp_root = ""
-#						for obj in gs.core.hero.hand_lst + gs.core.hero.bkpk_lst:
 						for obj in inventory_lst:
 							name_lst.append(obj.name)
 							root_lst.append(obj.root_name)
@@ -115,12 +105,9 @@ def app_main(user_input, game_name, root_path_str):
 								temp_root = except_element
 								except_element = obj.name
 						if except_element.lower().strip() not in (name_lst) and not except_err:
-##							print(f"The {except_element} is not in your inventory.")
-#							gs.io.buffer(f"The {except_element} is not in your inventory.")
 							gs.io.buffer(f"You don't see a {except_element} here.")
 							except_err = True
 						if root_lst.count(temp_root) > 1:
-#							gs.io.buffer(f"You have more than one {temp_root} in your inventory. Please use the full name.")
 							gs.io.buffer(f"There is more than one {temp_root} here. Please use the full name.")
 							except_err = True
 			if except_err:
@@ -130,23 +117,22 @@ def app_main(user_input, game_name, root_path_str):
 				is_interp_cmd = False
 				except_element = ""
 
-		# custom handling for multiples action
+		# custom handling for multiples action ('tak all' or 'drop all')
 		if user_input.lower().strip() in ['drop all']:
 			is_multiples_action = True
 			multiples_action_type = 'drop'
 			inventory_lst = gs.core.hero.hand_lst + gs.core.hero.bkpk_lst
-			if len(inventory_lst) == 0:
-				gs.io.buffer("You have nothing to drop!")
-				is_multiples_action = False
-				is_interp_cmd = False
 		if user_input.lower().strip() in ['take all', 'get all']:
 			is_multiples_action = True
 			multiples_action_type = 'take'
 			inventory_lst = gs.map.hero_rm.get_take_all_lst(gs)
-			if len(inventory_lst) == 0:
+		if is_multiples_action and len(inventory_lst) == 0:
+			if multiples_action_type == 'drop':
+				gs.io.buffer("You have nothing to drop!")
+			if multiples_action_type == 'take':
 				gs.io.buffer("There's nothing to take!")
-				is_multiples_action = False
-				is_interp_cmd = False
+			is_multiples_action = False
+			is_interp_cmd = False
 		if is_multiples_action:
 			if not has_except:
 				gs.io.last_input_str = user_input
@@ -159,8 +145,10 @@ def app_main(user_input, game_name, root_path_str):
 				elif multiples_action_type == 'take':
 					multiples_lst.append(f'take {item.name}')
 			if len(multiples_lst) == 0:
-				gs.io.buffer("With that exception, there's nothing left to act on.")
-				is_multiples_action = False
+				if multiples_action_type == 'drop':
+					gs.io.buffer("With that exception, there's nothing left in your inventory to drop.")
+				if multiples_action_type == 'take':
+					gs.io.buffer("With that exception, there's nothing left on the ground to take.")
 				is_interp_cmd = False
 				cmd_queue = []
 			else:
