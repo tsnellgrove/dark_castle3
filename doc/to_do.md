@@ -465,7 +465,8 @@ End Date:
 				- DONE: sort out last 2 take-all cases
 				- DONE: get 'again' working with except cases
 				- DONE: mini-in-place code clean-up for app_main()
-				- TBD: err when ref obj excluded from inventory_lst ('take all except X' when X in inv)
+				- DONE: err when ref obj excluded from inventory_lst ('take all except X' when X in inv)
+					- DECISION: addressed this via updated error message
 			- TBD: Full code clean-up - probably need a separate 'except' function
 			- TBD: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
 			- TBD: update help menu to explain command queue

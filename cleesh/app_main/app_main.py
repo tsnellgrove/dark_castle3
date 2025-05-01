@@ -105,7 +105,7 @@ def app_main(user_input, game_name, root_path_str):
 								temp_root = except_element
 								except_element = obj.name
 						if except_element.lower().strip() not in (name_lst) and not except_err:
-							gs.io.buffer(f"You don't see a {except_element} here.")
+							gs.io.buffer(f"The {except_element} is not present or cannot be excluded.")
 							except_err = True
 						if root_lst.count(temp_root) > 1:
 							gs.io.buffer(f"There is more than one {temp_root} here. Please use the full name.")
