@@ -64,6 +64,7 @@ def app_main(user_input, game_name, root_path_str):
 			is_interp_cmd = False
 
 		# custom handling for 'x all except'
+		except_err_str = ""
 		if user_input.lower().strip().startswith('drop all except'):
 			inventory_lst = gs.core.hero.hand_lst + gs.core.hero.bkpk_lst
 			has_except = True
@@ -73,23 +74,23 @@ def app_main(user_input, game_name, root_path_str):
 			has_except = True		
 		if has_except:
 			gs.io.last_input_str = user_input
-			except_err = False
+			is_except_err = False
 			except_element = ""
 			statement_lst = user_input.split('except')
 			if len(statement_lst) > 2:
-				gs.io.buffer("You can only use 'except' once in a command.")
-				except_err = True
+				except_err_str = "You can only use 'except' once in a command."
+				is_except_err = True
 			else:
 				user_input = statement_lst[0]
 				except_element = statement_lst[1]
-				if len(except_element.strip()) == 0 and not except_err: 
-					gs.io.buffer("Except what?")
-					except_err = True
+				if len(except_element.strip()) == 0 and not is_except_err: 
+					except_err_str = "Except what?"
+					is_except_err = True
 				else:
 					ee_lst = except_element.split()
 					if len(ee_lst) > 2:
-						gs.io.buffer("You can only 'except' one item in a multiples action.")
-						except_err = True
+						except_err_str = "You can only 'except' one item in a multiples action."
+						is_except_err = True
 					else:
 						if len(ee_lst) == 2:
 							except_element = f"{ee_lst[0]}_{ee_lst[1]}"
@@ -104,18 +105,17 @@ def app_main(user_input, game_name, root_path_str):
 							if except_element == obj.root_name:
 								temp_root = except_element
 								except_element = obj.name
-						if except_element.lower().strip() not in (name_lst) and not except_err:
-							gs.io.buffer(f"The {except_element} is not present or cannot be excluded.")
-							except_err = True
+						if except_element.lower().strip() not in (name_lst) and not is_except_err:
+							except_err_str = f"The {except_element} is not present or cannot be excluded."
+							is_except_err = True
 						if root_lst.count(temp_root) > 1:
-							gs.io.buffer(f"There is more than one {temp_root} here. Please use the full name.")
-							except_err = True
-			if except_err:
+							except_err_str = f"There is more than one {temp_root} here. Please use the full name."
+							is_except_err = True
+			if is_except_err:
 				cmd_queue = []
-				multiples_lst = []
 				user_input = ""
 				is_interp_cmd = False
-				except_element = ""
+				gs.io.buffer(except_err_str)
 
 		# custom handling for multiples action ('tak all' or 'drop all')
 		if user_input.lower().strip() in ['drop all']:

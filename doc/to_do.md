@@ -467,7 +467,10 @@ End Date:
 				- DONE: mini-in-place code clean-up for app_main()
 				- DONE: err when ref obj excluded from inventory_lst ('take all except X' when X in inv)
 					- DECISION: addressed this via updated error message
-			- TBD: Full code clean-up - probably need a separate 'except' function
+			- INPROC: Full code clean-up - probably need a separate 'except' function
+				- DONE: prep for except function creation
+				- TBD: create except function
+				- TBD: decide on multiples function
 			- TBD: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
 			- TBD: update help menu to explain command queue
 		- INPROC: entrance => gatehouse
