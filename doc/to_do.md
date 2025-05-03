@@ -470,7 +470,7 @@ End Date:
 			- INPROC: Full code clean-up - probably need a separate 'except' function
 				- DONE: prep for except function creation
 				- DONE: create except function and refactor
-				- TBD: clean-up
+				- DONE: clean-up
 				- TBD: decide on multiples function
 			- TBD: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
 			- TBD: need a better way to error on 'x'_'y' != obj.name
