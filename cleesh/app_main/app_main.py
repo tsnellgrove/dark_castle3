@@ -12,6 +12,63 @@ from cleesh.app_turn.cmd_exe import cmd_execute
 from cleesh.app_turn.post_action import post_action
 from cleesh.app_turn.auto_action import auto_action
 
+
+### loacl functions
+def except_mini_interpreter(gs, user_input, inventory_lst):
+	""" mini-interpreter for 'except' command in multiples actions """
+	except_err_str = ""
+	gs.io.last_input_str = user_input
+	is_except_err = False
+	except_element = ""
+	statement_lst = user_input.split('except')
+
+	if len(statement_lst) > 2:
+#		except_err_str = "You can only use 'except' once in a command."
+#		is_except_err = True
+#		return user_input, except_element, is_except_err, except_err_str
+		return "", "", True, "You can only use 'except' once in a command."
+#	else:
+	user_input = statement_lst[0]
+	except_element = statement_lst[1]
+	if len(except_element.strip()) == 0 and not is_except_err: 
+#		except_err_str = "Except what?"
+#		is_except_err = True
+#		return user_input, except_element, is_except_err, except_err_str
+		return "", "", True, "Except what?"
+#	else:
+	ee_lst = except_element.split()
+	if len(ee_lst) > 2:
+#		except_err_str = "You can only 'except' one item in a multiples action."
+#		is_except_err = True
+#		return user_input, except_element, is_except_err, except_err_str
+		return "", "", True, "You can only 'except' one item in a multiples action."
+#	else:
+	if len(ee_lst) == 2:
+		except_element = f"{ee_lst[0]}_{ee_lst[1]}"
+	if len(ee_lst) == 1:
+		except_element = ee_lst[0]
+	name_lst = []
+	root_lst = []
+	temp_root = ""
+	for obj in inventory_lst:
+		name_lst.append(obj.name)
+		root_lst.append(obj.root_name)
+		if except_element == obj.root_name:
+			temp_root = except_element
+			except_element = obj.name
+	if except_element.lower().strip() not in (name_lst) and not is_except_err:
+#		except_err_str = f"The {except_element} is not present or cannot be excluded."
+#		is_except_err = True
+#		return user_input, except_element, is_except_err, except_err_str
+		return "", "", True, f"The {except_element} is not present or cannot be excluded."
+	if root_lst.count(temp_root) > 1:
+#		except_err_str = f"There is more than one {temp_root} here. Please use the full name."
+#		is_except_err = True
+#		return user_input, except_element, is_except_err, except_err_str
+		return "", "", True, f"There is more than one {temp_root} here. Please use the full name."
+	return user_input, except_element, is_except_err, except_err_str
+
+
 ### loads game obj, calls other modules, and saves game obj ###
 def app_main(user_input, game_name, root_path_str):
 	# initiate app_main() - load obj, declare gs, and reset buffer & cmd_queue
@@ -38,10 +95,10 @@ def app_main(user_input, game_name, root_path_str):
 		is_interp_cmd = True
 		is_valid = False
 		is_att = False
-		except_element = ""
+##		except_element = ""
 		has_except = False
 		is_multiples_action = False
-		inventory_lst = []
+##		inventory_lst = []
 
 		# mutually exclusive special command cases
 		if user_input.lower().strip() in ['quit', 'q']:
@@ -64,7 +121,7 @@ def app_main(user_input, game_name, root_path_str):
 			is_interp_cmd = False
 
 		# custom handling for 'x all except'
-		except_err_str = ""
+#		except_err_str = ""
 		if user_input.lower().strip().startswith('drop all except'):
 			inventory_lst = gs.core.hero.hand_lst + gs.core.hero.bkpk_lst
 			has_except = True
@@ -73,47 +130,48 @@ def app_main(user_input, game_name, root_path_str):
 			inventory_lst = gs.map.hero_rm.get_take_all_lst(gs)
 			has_except = True		
 		if has_except:
-			gs.io.last_input_str = user_input
-			is_except_err = False
-			except_element = ""
-			statement_lst = user_input.split('except')
-			if len(statement_lst) > 2:
-				except_err_str = "You can only use 'except' once in a command."
-				is_except_err = True
-			else:
-				user_input = statement_lst[0]
-				except_element = statement_lst[1]
-				if len(except_element.strip()) == 0 and not is_except_err: 
-					except_err_str = "Except what?"
-					is_except_err = True
-				else:
-					ee_lst = except_element.split()
-					if len(ee_lst) > 2:
-						except_err_str = "You can only 'except' one item in a multiples action."
-						is_except_err = True
-					else:
-						if len(ee_lst) == 2:
-							except_element = f"{ee_lst[0]}_{ee_lst[1]}"
-						if len(ee_lst) == 1:
-							except_element = ee_lst[0]
-						name_lst = []
-						root_lst = []
-						temp_root = ""
-						for obj in inventory_lst:
-							name_lst.append(obj.name)
-							root_lst.append(obj.root_name)
-							if except_element == obj.root_name:
-								temp_root = except_element
-								except_element = obj.name
-						if except_element.lower().strip() not in (name_lst) and not is_except_err:
-							except_err_str = f"The {except_element} is not present or cannot be excluded."
-							is_except_err = True
-						if root_lst.count(temp_root) > 1:
-							except_err_str = f"There is more than one {temp_root} here. Please use the full name."
-							is_except_err = True
+			user_input, except_element, is_except_err, except_err_str = except_mini_interpreter(gs, user_input, inventory_lst)
+#			gs.io.last_input_str = user_input
+#			is_except_err = False
+#			except_element = ""
+#			statement_lst = user_input.split('except')
+#			if len(statement_lst) > 2:
+#				except_err_str = "You can only use 'except' once in a command."
+#				is_except_err = True
+#			else:
+#				user_input = statement_lst[0]
+#				except_element = statement_lst[1]
+#				if len(except_element.strip()) == 0 and not is_except_err: 
+#					except_err_str = "Except what?"
+#					is_except_err = True
+#				else:
+#					ee_lst = except_element.split()
+#					if len(ee_lst) > 2:
+#						except_err_str = "You can only 'except' one item in a multiples action."
+#						is_except_err = True
+#					else:
+#						if len(ee_lst) == 2:
+#							except_element = f"{ee_lst[0]}_{ee_lst[1]}"
+#						if len(ee_lst) == 1:
+#							except_element = ee_lst[0]
+#						name_lst = []
+#						root_lst = []
+#						temp_root = ""
+#						for obj in inventory_lst:
+#							name_lst.append(obj.name)
+#							root_lst.append(obj.root_name)
+#							if except_element == obj.root_name:
+#								temp_root = except_element
+#								except_element = obj.name
+#						if except_element.lower().strip() not in (name_lst) and not is_except_err:
+#							except_err_str = f"The {except_element} is not present or cannot be excluded."
+#							is_except_err = True
+#						if root_lst.count(temp_root) > 1:
+#							except_err_str = f"There is more than one {temp_root} here. Please use the full name."
+#							is_except_err = True
 			if is_except_err:
 				cmd_queue = []
-				user_input = ""
+#				user_input = ""
 				is_interp_cmd = False
 				gs.io.buffer(except_err_str)
 

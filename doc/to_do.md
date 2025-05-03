@@ -469,9 +469,11 @@ End Date:
 					- DECISION: addressed this via updated error message
 			- INPROC: Full code clean-up - probably need a separate 'except' function
 				- DONE: prep for except function creation
-				- TBD: create except function
+				- DONE: create except function and refactor
+				- TBD: clean-up
 				- TBD: decide on multiples function
 			- TBD: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
+			- TBD: need a better way to error on 'x'_'y' != obj.name
 			- TBD: update help menu to explain command queue
 		- INPROC: entrance => gatehouse
 			- TBD: replace all instances in game_update()
