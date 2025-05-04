@@ -25,10 +25,10 @@ def except_mini_interpreter(gs, user_input, inventory_lst):
 	if len(statement_lst) > 2:
 		return "", "", True, "You can only use 'except' once in a command."
 	user_input = statement_lst[0]
-	except_element = statement_lst[1]
-	if len(except_element.strip()) == 0 and not is_except_err: 
+	except_str = statement_lst[1]
+	if len(except_str.strip()) == 0:
 		return "", "", True, "Except what?"
-	ee_lst = except_element.split()
+	ee_lst = except_str.split()
 	if len(ee_lst) > 2:
 		return "", "", True, "You can only 'except' one item in a multiples action."
 	if len(ee_lst) == 2:
@@ -44,7 +44,7 @@ def except_mini_interpreter(gs, user_input, inventory_lst):
 		if except_element == obj.root_name:
 			temp_root = except_element
 			except_element = obj.name
-	if except_element.lower().strip() not in (name_lst) and not is_except_err:
+	if except_element.lower().strip() not in (name_lst):
 		return "", "", True, f"The {except_element} is not present or cannot be excluded."
 	if root_lst.count(temp_root) > 1:
 		return "", "", True, f"There is more than one {temp_root} here. Please use the full name."
@@ -124,35 +124,28 @@ def app_main(user_input, game_name, root_path_str):
 			is_multiples_action = True
 			multiples_action_type = 'take'
 			inventory_lst = gs.map.hero_rm.get_take_all_lst(gs)
-		if is_multiples_action and len(inventory_lst) == 0:
-			if multiples_action_type == 'drop':
-				gs.io.buffer("You have nothing to drop!")
-			if multiples_action_type == 'take':
-				gs.io.buffer("There's nothing to take!")
-			is_multiples_action = False
-			is_interp_cmd = False
 		if is_multiples_action:
-			if not has_except:
-				gs.io.last_input_str = user_input
-			multiples_lst = []
-			for item in inventory_lst:
-				if (has_except) and (item.name == except_element):
-					has_except = False
-				elif multiples_action_type == 'drop':
-					multiples_lst.append(f'drop {item.name}')
-				elif multiples_action_type == 'take':
-					multiples_lst.append(f'take {item.name}')
-			if len(multiples_lst) == 0:
-				if multiples_action_type == 'drop':
-					gs.io.buffer("With that exception, there's nothing left in your inventory to drop.")
-				if multiples_action_type == 'take':
-					gs.io.buffer("With that exception, there's nothing left on the ground to take.")
+			if len(inventory_lst) == 0:
+				gs.io.buffer(f"There's nothing here you can {multiples_action_type}!")
+				is_multiples_action = False
 				is_interp_cmd = False
-				cmd_queue = []
 			else:
-				cmd_queue = multiples_lst + cmd_queue
-				user_input = cmd_queue.pop(0)
-				gs.io.multi_count = len(multiples_lst)
+				if not has_except:
+					gs.io.last_input_str = user_input
+				multiples_lst = []
+				for item in inventory_lst:
+					if (has_except) and (item.name == except_element):
+						has_except = False
+					else:
+						multiples_lst.append(f"{multiples_action_type} {item.name}")
+				if len(multiples_lst) == 0:
+					gs.io.buffer(f"With that exception, there's nothing you can {multiples_action_type}.")
+					is_interp_cmd = False
+					cmd_queue = []
+				else:
+					cmd_queue = multiples_lst + cmd_queue
+					user_input = cmd_queue.pop(0)
+					gs.io.multi_count = len(multiples_lst)
 
 		# for interp commands, interp user_input and validate command
 		if is_interp_cmd:

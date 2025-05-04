@@ -471,9 +471,11 @@ End Date:
 				- DONE: prep for except function creation
 				- DONE: create except function and refactor
 				- DONE: clean-up
-				- TBD: decide on multiples function
+				- DONE: additional except clean-up
+				- DONE: initial clean-up multiples function
+				- TBD: clarify / make consistent if-then-else outputs
+				- TBD: create multiples mini interp function
 			- TBD: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
-			- TBD: need a better way to error on 'x'_'y' != obj.name
 			- TBD: update help menu to explain command queue
 		- INPROC: entrance => gatehouse
 			- TBD: replace all instances in game_update()
@@ -738,6 +740,8 @@ word_lst assignment:
 	- Pray
 	- Curse
 	- Sing
+
+- TBD: need a better way to error on 'x'_'y' != obj.name ; maybe if '_' in noun, buff: "I don't see that"
 
 - TBD: gracefully deal with unneeded preposition usage (e.g. "push on button")
 
