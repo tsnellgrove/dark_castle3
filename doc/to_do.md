@@ -473,7 +473,9 @@ End Date:
 				- DONE: clean-up
 				- DONE: additional except clean-up
 				- DONE: initial clean-up multiples function
-				- TBD: clarify / make consistent if-then-else outputs
+				- DONE: clarify / make consistent if-then-else outputs
+				- DONE: clean up multiples code to prepare for external function
+				- DONE: clean up comments
 				- TBD: create multiples mini interp function
 			- TBD: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
 			- TBD: update help menu to explain command queue

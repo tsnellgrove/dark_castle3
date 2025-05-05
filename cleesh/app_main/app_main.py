@@ -125,10 +125,11 @@ def app_main(user_input, game_name, root_path_str):
 			multiples_action_type = 'take'
 			inventory_lst = gs.map.hero_rm.get_take_all_lst(gs)
 		if is_multiples_action:
+			is_multiples_err = False
+			multiples_err_str = ""
 			if len(inventory_lst) == 0:
-				gs.io.buffer(f"There's nothing here you can {multiples_action_type}!")
-				is_multiples_action = False
-				is_interp_cmd = False
+				is_multiples_err = True
+				multiples_err_str = f"There's nothing here you can {multiples_action_type}!"
 			else:
 				if not has_except:
 					gs.io.last_input_str = user_input
@@ -139,13 +140,16 @@ def app_main(user_input, game_name, root_path_str):
 					else:
 						multiples_lst.append(f"{multiples_action_type} {item.name}")
 				if len(multiples_lst) == 0:
-					gs.io.buffer(f"With that exception, there's nothing you can {multiples_action_type}.")
-					is_interp_cmd = False
-					cmd_queue = []
-				else:
-					cmd_queue = multiples_lst + cmd_queue
-					user_input = cmd_queue.pop(0)
-					gs.io.multi_count = len(multiples_lst)
+					is_multiples_err = True
+					multiples_err_str = f"With that exception, there's nothing you can {multiples_action_type}."
+			if is_multiples_err:
+				gs.io.buffer(multiples_err_str)
+				is_interp_cmd = False
+				cmd_queue = []
+			else:
+				cmd_queue = multiples_lst + cmd_queue
+				user_input = cmd_queue.pop(0)
+				gs.io.multi_count = len(multiples_lst)
 
 		# for interp commands, interp user_input and validate command
 		if is_interp_cmd:
