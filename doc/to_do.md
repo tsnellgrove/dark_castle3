@@ -476,7 +476,8 @@ End Date:
 				- DONE: clarify / make consistent if-then-else outputs
 				- DONE: clean up multiples code to prepare for external function
 				- DONE: clean up comments
-				- TBD: create multiples mini interp function
+				- DONE: create multiples mini interp function
+				- TBD: fix take_rock_mach for cases where rock can't be taken due to weight
 			- TBD: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
 			- TBD: update help menu to explain command queue
 		- INPROC: entrance => gatehouse

@@ -16,10 +16,7 @@ from cleesh.app_turn.auto_action import auto_action
 ### loacl functions
 def except_mini_interpreter(gs, user_input, inventory_lst):
 	""" mini-interpreter for 'except' command in multiples actions """
-	except_err_str = ""
-	gs.io.last_input_str = user_input
-	is_except_err = False
-	except_element = ""
+	gs.io.last_input_str = user_input # assign 'again' value
 	statement_lst = user_input.split('except')
 
 	if len(statement_lst) > 2:
@@ -37,7 +34,7 @@ def except_mini_interpreter(gs, user_input, inventory_lst):
 		except_element = ee_lst[0]
 	name_lst = []
 	root_lst = []
-	temp_root = ""
+	temp_root = "" # elim var initialization?
 	for obj in inventory_lst:
 		name_lst.append(obj.name)
 		root_lst.append(obj.root_name)
@@ -48,8 +45,23 @@ def except_mini_interpreter(gs, user_input, inventory_lst):
 		return "", "", True, f"The {except_element} is not present or cannot be excluded."
 	if root_lst.count(temp_root) > 1:
 		return "", "", True, f"There is more than one {temp_root} here. Please use the full name."
-	return user_input, except_element, is_except_err, except_err_str
+	return user_input, except_element, False, ""
 
+def multiples_mini_interpreter(gs, user_input, inventory_lst, multiples_action_type, except_element, has_except):
+	""" mini-interpreter for multiples actions ('take all', 'drop all') """
+	if len(inventory_lst) == 0:
+		return [], True, f"There's nothing here you can {multiples_action_type}!"
+	if not has_except:
+		gs.io.last_input_str = user_input
+	multiples_lst = []
+	for item in inventory_lst:
+		if (has_except) and (item.name == except_element):
+			has_except = False
+		else:
+			multiples_lst.append(f"{multiples_action_type} {item.name}")
+	if len(multiples_lst) == 0:
+		return [], True, f"With that exception, there's nothing you can {multiples_action_type}."
+	return multiples_lst, False, ""
 
 ### loads game obj, calls other modules, and saves game obj ###
 def app_main(user_input, game_name, root_path_str):
@@ -125,23 +137,8 @@ def app_main(user_input, game_name, root_path_str):
 			multiples_action_type = 'take'
 			inventory_lst = gs.map.hero_rm.get_take_all_lst(gs)
 		if is_multiples_action:
-			is_multiples_err = False
-			multiples_err_str = ""
-			if len(inventory_lst) == 0:
-				is_multiples_err = True
-				multiples_err_str = f"There's nothing here you can {multiples_action_type}!"
-			else:
-				if not has_except:
-					gs.io.last_input_str = user_input
-				multiples_lst = []
-				for item in inventory_lst:
-					if (has_except) and (item.name == except_element):
-						has_except = False
-					else:
-						multiples_lst.append(f"{multiples_action_type} {item.name}")
-				if len(multiples_lst) == 0:
-					is_multiples_err = True
-					multiples_err_str = f"With that exception, there's nothing you can {multiples_action_type}."
+			except_element = "" if not has_except else except_element
+			multiples_lst, is_multiples_err, multiples_err_str = multiples_mini_interpreter(gs, user_input, inventory_lst, multiples_action_type, except_element, has_except)
 			if is_multiples_err:
 				gs.io.buffer(multiples_err_str)
 				is_interp_cmd = False
