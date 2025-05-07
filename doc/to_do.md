@@ -467,7 +467,7 @@ End Date:
 				- DONE: mini-in-place code clean-up for app_main()
 				- DONE: err when ref obj excluded from inventory_lst ('take all except X' when X in inv)
 					- DECISION: addressed this via updated error message
-			- INPROC: Full code clean-up - probably need a separate 'except' function
+			- DONE: Full code clean-up - probably need a separate 'except' function
 				- DONE: prep for except function creation
 				- DONE: create except function and refactor
 				- DONE: clean-up
@@ -477,7 +477,10 @@ End Date:
 				- DONE: clean up multiples code to prepare for external function
 				- DONE: clean up comments
 				- DONE: create multiples mini interp function
-				- TBD: fix take_rock_mach for cases where rock can't be taken due to weight
+			- INPROC: fix take_rock_mach for cases where rock can't be taken due to weight
+				- DONE: need to pass is_valid to post_act()
+				- TBD: keep investigating is_valid => post_act() => run_mach() => cond_chk() [not printing]
+				- TBD: clean up app_main() and post_act()
 			- TBD: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
 			- TBD: update help menu to explain command queue
 		- INPROC: entrance => gatehouse
