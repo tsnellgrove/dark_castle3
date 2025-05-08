@@ -479,8 +479,10 @@ End Date:
 				- DONE: create multiples mini interp function
 			- INPROC: fix take_rock_mach for cases where rock can't be taken due to weight
 				- DONE: need to pass is_valid to post_act()
-				- TBD: keep investigating is_valid => post_act() => run_mach() => cond_chk() [not printing]
-				- TBD: clean up app_main() and post_act()
+				- DONE: keep investigating is_valid => post_act() => run_mach() => cond_chk() [not printing]
+				- DONE: updated code in each condition class
+				- TBD: full game test
+				- TBD: clean up app_main() and post_act(), cond_check(), run_mach()
 			- TBD: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
 			- TBD: update help menu to explain command queue
 		- INPROC: entrance => gatehouse
