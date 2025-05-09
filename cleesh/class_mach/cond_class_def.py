@@ -37,7 +37,8 @@ class TrueCond(Invisible):
 		if (self.is_valid_reqd and not is_valid):
 			return False
 		return True
-		# want to re-use in child Conds w/ super().cond_check() but how to avoid returning True?
+		# Note 1: can re-use in child Conds w/ super().cond_check() because super() only returns to local scope
+		# Note 2: using super() approach allows for additional checks in TrueCond down the road
 
 
 class WornCond(TrueCond):
@@ -268,11 +269,9 @@ class MachStateCond(TrueCond):
 		return self._tgt_state
 
 	def cond_check(self, gs, mach_state, is_valid):
-#		print(f"cond name == {self.name}, is_valid_reqd == {self.is_valid_reqd}, is_valid == {is_valid}")
-		if (self.is_valid_reqd and not is_valid):
-			return False
+		is_valid_chk = super().cond_check(gs, mach_state, is_valid)
+		if not is_valid_chk: return False
 		state_match = (mach_state == self.tgt_state)
-#		return (mach_state == self.match_cond)
 		return (state_match == self.match_cond)
 
 

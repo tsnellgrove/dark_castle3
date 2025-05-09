@@ -481,8 +481,11 @@ End Date:
 				- DONE: need to pass is_valid to post_act()
 				- DONE: keep investigating is_valid => post_act() => run_mach() => cond_chk() [not printing]
 				- DONE: updated code in each condition class
-				- TBD: full game test
-				- TBD: create ValidCond that all cond (inc TrueCond) inherit from and use super() to call
+				- DONE: full game test
+				- CANCEL: create ValidCond that all cond (inc TrueCond) inherit from and use super() to call
+					- FINDING: not needed. super().method() only returns to local scope. can use TrueCond
+				- DONE: sort out super() call for TrueCond for MachStateCond
+				- TBD: extend super() solution to all other Cond classes
 				- TBD: full game test
 				- TBD: clean up app_main() and post_act(), cond_check(), run_mach()
 			- TBD: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
