@@ -68,10 +68,6 @@ class WornCond(TrueCond):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, is_valid):
-#		if (self.is_valid_reqd and not is_valid):
-#			return False
-#		is_valid_chk = super().cond_check(gs, mach_state, is_valid)
-#		if not is_valid_chk: return False
 		if not super().cond_check(gs, mach_state, is_valid):
 			return False
 		return (self.worn_garment in self.creature_obj.worn_lst) == self.match_cond
@@ -101,8 +97,6 @@ class CreatureContainedCond(TrueCond):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, is_valid):
-#		if (self.is_valid_reqd and not is_valid):
-#			return False
 		if not super().cond_check(gs, mach_state, is_valid):
 			return False
 		return (self.creature_obj.is_contained(gs) and (self.creature_obj.get_contained_by(gs) == self.seat_obj)) == self.match_cond
@@ -136,8 +130,6 @@ class ObjOnRmFlrCond(TrueCond):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, is_valid):
-#		if (self.is_valid_reqd and not is_valid):
-#			return False
 		if not super().cond_check(gs, mach_state, is_valid):
 			return False
 		return (self.match_room.is_obj_on_floor(self.obj) == self.match_cond)
@@ -171,8 +163,6 @@ class ObjInRmCond(TrueCond):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, is_valid):
-#		if (self.is_valid_reqd and not is_valid):
-#			return False
 		if not super().cond_check(gs, mach_state, is_valid):
 			return False
 		return (gs.map.get_obj_room(self.obj, gs) is self.match_room) == self.match_cond
@@ -197,8 +187,6 @@ class ObjInWorldCond(TrueCond):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, is_valid):
-#		if (self.is_valid_reqd and not is_valid):
-#			return False
 		if not super().cond_check(gs, mach_state, is_valid):
 			return False
 		return (gs.map.chk_obj_exist(self.obj, gs) == self.match_cond)
@@ -232,8 +220,6 @@ class ItemInHandCond(TrueCond):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, is_valid):
-#		if (self.is_valid_reqd and not is_valid):
-#			return False
 		if not super().cond_check(gs, mach_state, is_valid):
 			return False
 		return (self.item_obj in self.creature_obj.hand_lst) == self.match_cond
@@ -245,8 +231,6 @@ class ObjInInvCond(ItemInHandCond):
 	def cond_check(self, gs, mach_state, is_valid):
 		if (self.is_valid_reqd and not is_valid):
 			return False
-#		if not super().cond_check(gs, mach_state, is_valid):
-#			return False
 		return (self.creature_obj.chk_contain_item(self.item_obj) == self.match_cond)
 
 class WeaponInHandCond(TrueCond):
@@ -268,8 +252,6 @@ class WeaponInHandCond(TrueCond):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, is_valid):
-#		if (self.is_valid_reqd and not is_valid):
-#			return False
 		if not super().cond_check(gs, mach_state, is_valid):
 			return False
 		return (self.creature_obj.in_hand_is_weapon() == self.match_cond)
@@ -290,12 +272,8 @@ class MachStateCond(TrueCond):
 		return self._tgt_state
 
 	def cond_check(self, gs, mach_state, is_valid):
-#		is_valid_chk = super().cond_check(gs, mach_state, is_valid)
-#		if not is_valid_chk: return False
 		if not super().cond_check(gs, mach_state, is_valid):
 			return False
-#		state_match = (mach_state == self.tgt_state)
-#		return (state_match == self.match_cond)
 		return (mach_state == self.tgt_state) == self.match_cond
 
 
@@ -314,8 +292,6 @@ class TimerActiveCond(TrueCond):
 		return self._match_cond
 
 	def cond_check(self, gs, mach_state, is_valid):
-#		if (self.is_valid_reqd and not is_valid):
-#			return False
 		if not super().cond_check(gs, mach_state, is_valid):
 			return False
 		return (self.timer_obj.is_active == self.match_cond)
@@ -336,8 +312,6 @@ class SwitchStateCond(TrueCond):
 		return self._match_cond_lst
 
 	def cond_check(self, gs, mach_state, is_valid):
-#		if (self.is_valid_reqd and not is_valid):
-#			return False
 		if not super().cond_check(gs, mach_state, is_valid):
 			return False
 		for idx, switch in enumerate(self.cond_switch_lst):
@@ -353,8 +327,6 @@ class LeverArrayCond(SwitchStateCond):
 	def cond_check(self, gs, mach_state, is_valid):
 		if (self.is_valid_reqd and not is_valid):
 			return False
-#		if not super().cond_check(gs, mach_state, is_valid):
-#			return False
 		array_val = 0
 		for idx, lever in enumerate(self.cond_switch_lst):
 			if lever.switch_state == 'up':

@@ -386,7 +386,7 @@ End Date:
 					- DONE: test
 					- DONE: clean up room_class()
 					- DONE: comment room_class() / game_update with init_desc order implications
-		- INPROC: big_rock here (use init_desc) with a zorkmid (key to weight puzzle) under it
+		- DONE: big_rock here (use init_desc) with a zorkmid (key to weight puzzle) under it
 			- DONE: check burt's weight capacity; set big_rock weight so burt can only take it w no inv
 			- DONE: add big_rock to Room 1
 			- DONE: create desc for big rock
@@ -434,7 +434,7 @@ End Date:
 						- DONE: except item not in your inventory
 						- DONE: no except item
 					- DONE: tighten code - first pass
-			- INPROC: enable 'take all'
+			- DONE: enable 'take all'
 				- IDEA: in order of weight ?
 				- DONE: test in Zork to see order / behavior of 'take all'
 				- DECISION: don't re-order for now
@@ -477,7 +477,7 @@ End Date:
 				- DONE: clean up multiples code to prepare for external function
 				- DONE: clean up comments
 				- DONE: create multiples mini interp function
-			- INPROC: fix take_rock_mach for cases where rock can't be taken due to weight
+			- DONE: fix take_rock_mach for cases where rock can't be taken due to weight
 				- DONE: need to pass is_valid to post_act()
 				- DONE: keep investigating is_valid => post_act() => run_mach() => cond_chk() [not printing]
 				- DONE: updated code in each condition class
@@ -487,18 +487,25 @@ End Date:
 				- DONE: sort out super() call for TrueCond for MachStateCond
 				- DONE: extend super() solution to rest of Cond classes (had to exclude non-TrueCond childs)
 				- DONE: full game test
-				- TBD: clean up app_main() and post_act(), cond_check(), run_mach()
+				- DONE: clean up app_main() and post_act(), cond_check(), run_mach()
 			- DONE: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
-			- TBD: update help menu to explain command queue
+			- DONE: update help menu to explain command queue
 		- INPROC: entrance => gatehouse
 			- TBD: replace all instances in game_update()
 			- TBD: replace all instances in game_static_gbl()
 		- TBD: clean up cleesh static_gbl, clean-up game_static_gbl, game_update()
 	- TBD: room 2
 		- IDEA: this is a safe room for Burt to rest in - sort of a home base
+		- TBD: add all referenced nouns
+		- TBD: de-capitalize all nouns
+		- TBD: de-dup passages descriptions
+		- TBD: us init_desc where appropriate
+		- TBD: test all machines
+		- TBD: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
 		- TBD: main_hall => entrance
 	- TBD: room 3
 	- TBD: room 4
+		- TBD: should obj.full_name be de-captialized?
 - Cancel: search on obj nouns and ensure always capitalized
 - TBD: turn lantern into actual light
 	- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
@@ -524,7 +531,7 @@ End Date:
 	- EXAMPE: s, e, & w of Entrance 
 	- TBD: Room class would need a custom_path_lst attribe
 	- TBD: custom_path_lst called from room.disp_cond()
-- TBD: varry inventory intro text (?)
+- DONE: varry inventory intro text (?)
 - TBD: sort out double print of score after win
 - search for 'Nana'-based errors
 - maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
@@ -705,7 +712,7 @@ End Date:
 		- use 'reach in' for 'hol'
 		- need to enter() 'nook' to get contents
 
-- TBD: figure out 'behind' prep for case of control panel in alove behind goblin
+- TBD: figure out 'behind' prep for case of control panel in alcove behind goblin
 
 - non-humanoid monster could be a special weapon description case (fun new puzzle idea)???
 - DONE: Consider having size values for items and capaicty limits on containers & backpack (should the crystal box really hold an axe?)

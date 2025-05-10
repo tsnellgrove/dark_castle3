@@ -212,7 +212,6 @@ class AutoMachMixIn(ProtoMachMixIn):
 	# complex methods
 	def run_mach(self, gs, is_valid):
 		for idx, cond in enumerate(self.cond_lst): # see 'unused code' in done() for full compound cond code
-# start new code
 			if isinstance(cond, list):
 				cond_val = True
 				for cond_element in cond:
@@ -221,7 +220,6 @@ class AutoMachMixIn(ProtoMachMixIn):
 			else:
 				cond_val = cond.cond_check(gs, self.mach_state, is_valid)
 			if cond_val:
-#			if cond.cond_check(gs, self.mach_state, is_valid):
 				result = self.result_lst[idx]
 				if isinstance(result, list):
 					cmd_override = False

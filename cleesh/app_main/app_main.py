@@ -170,7 +170,6 @@ def app_main(user_input, game_name, root_path_str):
 				gs.io.buffer(err_txt)
 			if (is_valid and not cmd_override):
 				cmd_execute(gs, case, word_lst)
-#			post_action(gs, case, word_lst) # excluding poat_act() from cmd "if" allows creatures to opperate machs
 			post_action(gs, case, word_lst, is_valid) # excluding poat_act() from cmd "if" allows creatures to opperate machs
 
 		# post-cmd-response output
