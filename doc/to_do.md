@@ -485,10 +485,10 @@ End Date:
 				- CANCEL: create ValidCond that all cond (inc TrueCond) inherit from and use super() to call
 					- FINDING: not needed. super().method() only returns to local scope. can use TrueCond
 				- DONE: sort out super() call for TrueCond for MachStateCond
-				- TBD: extend super() solution to all other Cond classes
-				- TBD: full game test
+				- DONE: extend super() solution to rest of Cond classes (had to exclude non-TrueCond childs)
+				- DONE: full game test
 				- TBD: clean up app_main() and post_act(), cond_check(), run_mach()
-			- TBD: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
+			- DONE: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
 			- TBD: update help menu to explain command queue
 		- INPROC: entrance => gatehouse
 			- TBD: replace all instances in game_update()
