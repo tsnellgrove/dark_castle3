@@ -95,9 +95,10 @@ game_static_dict = {
 	'faded_tapestries' : "The Main Hall Faded Tapestries are vast and elaborate, covering both the east and the west walls. They appear to depict an unkempt figure breaking into a solitary white house and from there pillaging a Great Underground Empire. Strangely, there is a looming figure near the top of the west tapestry who appears to be tapping with his fingers on a many-buttoned plank and staring intently into a window filled with text. For some reason the figure disconcerts you.. his presence in the Faded Tapestries fills you with existential dread and forces you to question your agency and the very nature of your being... BURT!! Get hold of yourself man! You're a mangey, pub-crawling adventurer who lives in his mom's basement. You don't even know what half those words mean. Stop staring at tapestries and get out there and find the treasure you fool!!",
 	'stone_coffer' : "This is the sort of coffer that, in better days, was no doubt filled to the brim will brightly shining gold pieces. Unfortunately, as you'd begun to fear, those days are long past and now the coffer is filled only with a deep layer of dust.",
     'family_tree' : "It appears to show the family tree of the Flathead dynasty. Though generally agreed to have peaked (nadired?) during the reign of Dimwit Flathead and petered out shortly there-after during the inglorious and flacid rulership of Wurb Flathead, this Family Tree tells a different story. It claims that an illigitimate child of Wurb, secreted away kept in hiding during the Empire's fall, continued the line for another generation from whence arose William 'The Wanderer' Flathead only a little over 100 years ago. The area below William is indistinct and feels incomplete.. as if there are details still waiting to be filled in.\n\nAt the very top of the Family Tree you see a royal crest. Oddly enough, it appears to be a Hedgehog bearing a Shiny Sword and a Silver Key. To your astonishment, the insignia looks familiar! The sword and the key - their shape, proportions, and positioning - look exactly the same as decorative insignia on the biscuits your great grandmother Nana taught you to bake as a child. The resemblance is uncanny!",
-    
 	'dead_goblin' : "Even in its demise, the Dead Goblin looks fierce and resolute. Whoever dispatched this enemy must be an adventurer of some renown!",
-	
+#	'untrodden_path' : "The Untrodden Path is a narrow, winding trail that leads away from the castle and into the woods. It is overgrown with weeds and brambles, and it looks like it hasn't been used in years. You wonder where it leads and if it might be worth exploring.",
+	'untrodden_path' : "The untrodden path is a narrow, winding trail that leads back down the hill and through the woods to the village in the valley below. It is overgrown with weeds and brambles - not a lot of folks dare to make the journey through grimwood forest and up knife ridge any more - but here you are, Burt!",
+
 	### item objects ###
 	'rusty_key' : "An old rusty key... the one you swore to the whole pub (and miss Chrissy Brewer!) that you'd use to pillage the Dark Castle... What could you possibly do with it?",
 	'shiny_sword' : "This is an elven sword of great antiquity. The shiny sword glitters even in the dim light. Despite its age, the edge is keen and looks ready for action. There are elven runes engraved upon the blade.",
@@ -194,7 +195,7 @@ game_static_dict = {
 
 
 	### room objects ###
-	'entrance' : "You stand upon the ancient drawbridge of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.",
+	'entrance' : "You stand upon the ancient drawbridge at the entrance of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.",
 
 #	'entrance' : "You stand upon the ancient drawbridge of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate. Behind you, just beyond the drawbridge, is an extremely old and rusty postbox.",
 

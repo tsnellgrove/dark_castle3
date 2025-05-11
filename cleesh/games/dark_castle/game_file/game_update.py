@@ -68,6 +68,7 @@ officiousness = ViewOnly('officiousness', 'Officiousness', 'officiousness', 'off
 loyalty = ViewOnly('loyalty', 'Loyalty', 'loyalty', 'loyalty', None)
 drawbridge = ViewOnly('drawbridge', 'Drawbridge', 'drawbridge', 'drawbridge', None)
 rusty_keyhole = ViewOnly('rusty_keyhole', 'Rusty Keyhole', 'keyhole', 'rusty_keyhole', None)
+untrodden_path = ViewOnly('untrodden_path', 'Untrodden Path', 'path', 'untrodden_path', None)
 
 # Item
 rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
@@ -415,20 +416,14 @@ big_rock_init_desc = InitDesc('big_rock_init_desc', big_rock, 'big_rock_init_des
 
 
 # *** Rooms ***
-gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, 
-		[dark_castle, moat, drawbridge, rusty_keyhole],
-		[burt, postbox, big_rock], 
-		[entrance_moat_mach, entrance_south_warn], 
-		[postbox_init_desc, big_rock_init_desc]
-	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
-
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
-		[dark_castle, moat, drawbridge, rusty_keyhole],
+		[dark_castle, moat, drawbridge, rusty_keyhole, untrodden_path],
 		[burt, postbox, big_rock], 
 		[entrance_moat_mach, entrance_south_warn], 
 		[postbox_init_desc, big_rock_init_desc]
 	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
+# gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, 
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, 
 		[faded_tapestries],
 		[shiny_sword, royal_hedgehog, wooden_shelf], 
@@ -474,11 +469,11 @@ map = Map(
 		'map', # name
 		entrance, # hero_rm
 		[{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall},
-		{'room_x' : entrance, 'dir_x' : 'south', 'door' : 'path leading back home', 'dir_y' : None, 'room_y' : unreachable_1},
+		{'room_x' : entrance, 'dir_x' : 'south', 'door' : 'untrodden path leading back home', 'dir_y' : None, 'room_y' : unreachable_1},
 		{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
 		{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
 		{'room_x' : main_hall, 'dir_x' : 'north', 'door' : 'passage', 'dir_y' : 'south', 'room_y' : antechamber},
-#		{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
+##		{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
 		{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}] # map_lst
 		)
 
@@ -591,7 +586,7 @@ master_obj_lst = [
 		entrance, main_hall, antechamber, throne_room, loyalty, officiousness, gold_capitals, red_bandana, 
 		big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, earthen_jug, paper_bag, 
 		insignia, baked_biscuit, drawbridge, rusty_keyhole, royal_cypher, postbox, ancient_certificate, 
-		bold_script, big_rock, zorkmid,
+		bold_script, big_rock, zorkmid, untrodden_path,
 
 		# test objects
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 

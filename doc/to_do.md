@@ -334,7 +334,7 @@ End Date:
 		- DONE: clean up room_class()
 		- DONE: room_itme_lst => rm_item_lst
 - TBD: play & note obvious nouns with no description; provide description (e.g. 'keyhole')
-	- TBD: room 1
+	- DONE: room 1
 		- IDEA: goals for room 1
 			- IDEA: room 1 is mostly about learning the rules of the Dark Castle world
 			- IDEA: lesson 1: pay attentinn - the world is dangerous (e or w off drawbridge)
@@ -490,23 +490,32 @@ End Date:
 				- DONE: clean up app_main() and post_act(), cond_check(), run_mach()
 			- DONE: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
 			- DONE: update help menu to explain command queue
-		- INPROC: entrance => gatehouse
-			- TBD: replace all instances in game_update()
-			- TBD: replace all instances in game_static_gbl()
-		- TBD: clean up cleesh static_gbl, clean-up game_static_gbl, game_update()
+		- CANCEL: entrance => gatehouse
+			- FINDING: entrance works fine - the real change is main_hall => gatehouse
+		- DONE: make path south examineable
+			- DONE: 'path' => 'untrodden_path' in game_update() gs.map
+			- DONE: create untrodden_path ViewOnly obj
+			- DONE: add untrodden_path to entrance.features
+			- DONE: add untrodden_path to the object pickle
+			- DONE: test
+		- DONE: clean up game_update()
 	- TBD: room 2
 		- IDEA: this is a safe room for Burt to rest in - sort of a home base
 		- TBD: add all referenced nouns
+		- TBD: make paths examineable
 		- TBD: de-capitalize all nouns
 		- TBD: de-dup passages descriptions
 		- TBD: us init_desc where appropriate
 		- TBD: test all machines
 		- TBD: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
-		- TBD: main_hall => entrance
+		- TBD: main_hall => gatehouse
+			- TBD: replace all instances in game_update()
+			- TBD: replace all instances in game_static_gbl()
 	- TBD: room 3
 	- TBD: room 4
 		- TBD: should obj.full_name be de-captialized?
-- Cancel: search on obj nouns and ensure always capitalized
+- TBD: clean up cleesh static_gbl, clean-up game_static_gbl
+- TBD: search on obj nouns and ensure always capitalized (???)
 - TBD: turn lantern into actual light
 	- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
 - TBD: git merge
@@ -523,6 +532,7 @@ End Date:
 
 
 *** known cleesh tech issues ***
+- TBD: sort out how to deal with 'hand' vs. 'inventory' (just eliminate hand entirely?)
 - TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
 - TBD: improve drink verb resevoir_lst error via undrinkable_dict error (custom error for each non-liquid)
 - TBD: update 'exit' to assume seat that player is contained in (i.e. to default to 'stand' if 'seat' not given)
