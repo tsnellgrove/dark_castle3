@@ -168,8 +168,10 @@ biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond'
 axe_not_in_goblin_hand_cond = ItemInHandCond('axe_not_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
 silver_key_given_cond = ObjInInvCond('silver_key_given_cond', silver_key, 'royal_hedgehog_temp', False)
 no_weap_in_hand_cond = WeaponInHandCond('silver_key_given', 'burt_temp', False)
-sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_hall_temp', 'shiny_sword_temp', True)# sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_hall_temp', shiny_sword, False)
-sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_hall_temp', 'shiny_sword_temp', False)
+# sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_hall_temp', 'shiny_sword_temp', True)# sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_hall_temp', shiny_sword, False)
+sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'gatehouse_temp', 'shiny_sword_temp', True) 
+# sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_hall_temp', 'shiny_sword_temp', False)
+sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'gatehouse_temp', 'shiny_sword_temp', False)
 not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
 hedgehog_not_in_world_cond = ObjInWorldCond('hedgehog_not_in_world_cond', 'royal_hedgehog_temp', False)
 goblin_in_world_cond = ObjInWorldCond('goblin_in_world_cond', 'guard_goblin_temp', True)
@@ -186,7 +188,8 @@ throne_pull_cond = SwitchStateCond('throne_pull_cond', [throne], ['pulled'])
 lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [left_lever, middle_lever, right_lever], [4,2,1])
 not_in_throne_cond = CreatureContainedCond('not_in_throne_cond', throne, 'burt_temp', False)
 sword_not_in_burt_inv_cond = ObjInInvCond('sword_not_in_burt_inv_cond', 'shiny_sword_temp', 'burt_temp', False)
-burt_in_hall_cond = ObjInRmCond('burt_in_hall_cond', 'main_hall_temp', 'burt_temp', True)
+# burt_in_hall_cond = ObjInRmCond('burt_in_hall_cond', 'main_hall_temp', 'burt_temp', True)
+burt_in_hall_cond = ObjInRmCond('burt_in_hall_cond', 'gatehouse_temp', 'burt_temp', True)
 burt_in_entrance_cond = ObjInRmCond('burt_in_entrance_cond', 'entrance_temp', 'burt_temp', True)
 burt_in_antechamber_cond = ObjInRmCond('burt_in_antechamber_cond', 'antechamber_temp', 'burt_temp', True)
 sword_state_is_0_cond = MachStateCond('sword_state_not_0_cond', 0, True)
@@ -423,7 +426,14 @@ entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None,
 		[postbox_init_desc, big_rock_init_desc]
 	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
-# gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, 
+gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, 
+		[],
+#		[faded_tapestries],
+		[shiny_sword, royal_hedgehog, wooden_shelf], 
+		[], 
+		[shiny_sword_init_desc]
+	) 
+
 main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, 
 		[faded_tapestries],
 		[shiny_sword, royal_hedgehog, wooden_shelf], 
@@ -468,13 +478,17 @@ core = Core(
 map = Map(
 		'map', # name
 		entrance, # hero_rm
-		[{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall},
-		{'room_x' : entrance, 'dir_x' : 'south', 'door' : 'untrodden path leading back home', 'dir_y' : None, 'room_y' : unreachable_1},
-		{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
-		{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
-		{'room_x' : main_hall, 'dir_x' : 'north', 'door' : 'passage', 'dir_y' : 'south', 'room_y' : antechamber},
-##		{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
-		{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}] # map_lst
+		[
+#			{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall},
+			{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : gatehouse},
+			{'room_x' : entrance, 'dir_x' : 'south', 'door' : 'untrodden path leading back home', 'dir_y' : None, 'room_y' : unreachable_1},
+			{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
+			{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
+			{'room_x' : gatehouse, 'dir_x' : 'north', 'door' : 'foreboding archway', 'dir_y' : 'south', 'room_y' : antechamber},
+#			{'room_x' : main_hall, 'dir_x' : 'north', 'door' : 'passage', 'dir_y' : 'south', 'room_y' : antechamber},
+##			{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
+			{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}
+		] # map_lst
 		)
 
 io = IO(
@@ -519,14 +533,17 @@ axe_not_in_goblin_hand_cond.creature_obj = guard_goblin
 silver_key_given_cond.creature_obj = royal_hedgehog
 no_weap_in_hand_cond.creature_obj = burt
 goblin_in_world_cond.obj = guard_goblin
-sword_not_on_floor.match_room = main_hall
-sword_on_floor.match_room = main_hall
+# sword_not_on_floor.match_room = main_hall
+sword_not_on_floor.match_room = gatehouse
+# sword_on_floor.match_room = main_hall
+sword_on_floor.match_room = gatehouse
 not_in_throne_cond.creature_obj = burt
 sword_not_in_burt_inv_cond.creature_obj = burt
 sword_not_in_burt_inv_cond.item_obj = shiny_sword
 goblin_not_in_world_cond.obj = guard_goblin
 burt_in_hall_cond.obj = burt
-burt_in_hall_cond.match_room = main_hall
+# burt_in_hall_cond.match_room = main_hall
+burt_in_hall_cond.match_room = gatehouse
 burt_in_entrance_cond.obj = burt
 burt_in_entrance_cond.match_room = entrance
 burt_in_antechamber_cond.obj = burt
@@ -579,18 +596,21 @@ crystal_box.contain_lst = [kinging_scroll]
 ### invisible objects need not be listed ###
 master_obj_lst = [
 		gs, rusty_lettering, elven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, 
-		dark_castle, moat, backpack, burt, fist, conscience, faded_tapestries, alcove, stone_coffer, 
+		dark_castle, moat, backpack, burt, fist, conscience, alcove, stone_coffer, 
 		family_tree, dead_goblin, rusty_key, shiny_sword, torn_note, grimy_axe, silver_key, kinging_scroll, 
 		cheese_wedge, well_water, royal_crown, hedgehog_broach, crystal_box, front_gate, iron_portcullis, 
 		control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, guard_goblin, 
-		entrance, main_hall, antechamber, throne_room, loyalty, officiousness, gold_capitals, red_bandana, 
+		entrance, antechamber, throne_room, loyalty, officiousness, gold_capitals, red_bandana, 
 		big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, earthen_jug, paper_bag, 
 		insignia, baked_biscuit, drawbridge, rusty_keyhole, royal_cypher, postbox, ancient_certificate, 
-		bold_script, big_rock, zorkmid, untrodden_path,
+		bold_script, big_rock, zorkmid, untrodden_path, gatehouse,
 
 		# test objects
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 
 		test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, 
+		
+		# future objects
+		main_hall, faded_tapestries, 
 	] # note: big_bomb & test_frog removed; glass_bottle removed
 
 # list written to pickle

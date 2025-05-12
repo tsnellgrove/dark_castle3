@@ -499,8 +499,18 @@ End Date:
 			- DONE: add untrodden_path to the object pickle
 			- DONE: test
 		- DONE: clean up game_update()
-	- TBD: room 2
+	- INPROC: room 2
 		- IDEA: this is a safe room for Burt to rest in - sort of a home base
+		- INPROC: main_hall => gatehouse
+			- DONE: crete gatehouse room in game_update()
+			- DONE: create gatehouse description in game_static_gbl()
+			- DONE: update map in game_update()
+			- DONE: initial test
+			- DONE: replace all instances in game_update()
+			- DONE: move main_hall & tapestries to test section of pickle load in game_update()
+			- DONE: full test
+			- TBD: re-org main_hall and faded_tapestries in game_static_gbl()
+			- TBD: clean up game_update()
 		- TBD: add all referenced nouns
 		- TBD: make paths examineable
 		- TBD: de-capitalize all nouns
@@ -508,9 +518,6 @@ End Date:
 		- TBD: us init_desc where appropriate
 		- TBD: test all machines
 		- TBD: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
-		- TBD: main_hall => gatehouse
-			- TBD: replace all instances in game_update()
-			- TBD: replace all instances in game_static_gbl()
 	- TBD: room 3
 	- TBD: room 4
 		- TBD: should obj.full_name be de-captialized?

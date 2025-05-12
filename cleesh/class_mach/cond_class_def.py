@@ -34,7 +34,7 @@ class TrueCond(Invisible):
 		"""
 
 	def cond_check(self, gs, mach_state, is_valid):
-		print(f"TrueCond.cond_check() has run: is_valid_req = {self.is_valid_reqd}, is_valid = {is_valid}")
+##		print(f"TrueCond.cond_check() has run: is_valid_req = {self.is_valid_reqd}, is_valid = {is_valid}") # troubleshooting
 		if (self.is_valid_reqd and not is_valid):
 			return False
 		return True
