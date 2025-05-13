@@ -501,7 +501,7 @@ End Date:
 		- DONE: clean up game_update()
 	- INPROC: room 2
 		- IDEA: this is a safe room for Burt to rest in - sort of a home base
-		- INPROC: main_hall => gatehouse
+		- DONE: main_hall => gatehouse
 			- DONE: crete gatehouse room in game_update()
 			- DONE: create gatehouse description in game_static_gbl()
 			- DONE: update map in game_update()
@@ -509,13 +509,20 @@ End Date:
 			- DONE: replace all instances in game_update()
 			- DONE: move main_hall & tapestries to test section of pickle load in game_update()
 			- DONE: full test
-			- TBD: re-org main_hall and faded_tapestries in game_static_gbl()
-			- TBD: clean up game_update()
+			- DONE: re-org main_hall and faded_tapestries in game_static_gbl()
+			- DONE: clean up game_update()
+		- DONE: de-capitalize all nouns
+		- DONE: de-dup passages descriptions vs. base description
+		- DONE: review existing nouns
+			- DONE: update bandana to remmove 80s ref
 		- TBD: add all referenced nouns
+			- DONE: old_furniture
+			- DONE: cobwebs
+			- DONE: musty_smell
+			- DONE: arrow slits
 		- TBD: make paths examineable
-		- TBD: de-capitalize all nouns
-		- TBD: de-dup passages descriptions
-		- TBD: us init_desc where appropriate
+			- TBD: foreboding_archway
+		- DONE: us init_desc where appropriate
 		- TBD: test all machines
 		- TBD: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
 	- TBD: room 3

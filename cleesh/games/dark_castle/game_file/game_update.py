@@ -69,6 +69,10 @@ loyalty = ViewOnly('loyalty', 'Loyalty', 'loyalty', 'loyalty', None)
 drawbridge = ViewOnly('drawbridge', 'Drawbridge', 'drawbridge', 'drawbridge', None)
 rusty_keyhole = ViewOnly('rusty_keyhole', 'Rusty Keyhole', 'keyhole', 'rusty_keyhole', None)
 untrodden_path = ViewOnly('untrodden_path', 'Untrodden Path', 'path', 'untrodden_path', None)
+old_furniture = ViewOnly('old_furniture', 'Old Furniture', 'furniture', 'old_furniture', None)
+cobwebs = ViewOnly('cobwebs', 'Cobwebs', 'cobwebs', 'cobwebs', None)
+musty_smell = ViewOnly('musty_smell', 'Musty Smell', 'smell', 'musty_smell', None)
+arrow_slits = ViewOnly('arrow_slits', 'Arrow Slits', 'slits', 'arrow_slits', None)
 
 # Item
 rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
@@ -168,9 +172,7 @@ biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond'
 axe_not_in_goblin_hand_cond = ItemInHandCond('axe_not_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
 silver_key_given_cond = ObjInInvCond('silver_key_given_cond', silver_key, 'royal_hedgehog_temp', False)
 no_weap_in_hand_cond = WeaponInHandCond('silver_key_given', 'burt_temp', False)
-# sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'main_hall_temp', 'shiny_sword_temp', True)# sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_hall_temp', shiny_sword, False)
 sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'gatehouse_temp', 'shiny_sword_temp', True) 
-# sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'main_hall_temp', 'shiny_sword_temp', False)
 sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'gatehouse_temp', 'shiny_sword_temp', False)
 not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
 hedgehog_not_in_world_cond = ObjInWorldCond('hedgehog_not_in_world_cond', 'royal_hedgehog_temp', False)
@@ -188,7 +190,6 @@ throne_pull_cond = SwitchStateCond('throne_pull_cond', [throne], ['pulled'])
 lever_array_matches_mach_state_cond = LeverArrayCond('lever_array_matches_mach_state_cond', [left_lever, middle_lever, right_lever], [4,2,1])
 not_in_throne_cond = CreatureContainedCond('not_in_throne_cond', throne, 'burt_temp', False)
 sword_not_in_burt_inv_cond = ObjInInvCond('sword_not_in_burt_inv_cond', 'shiny_sword_temp', 'burt_temp', False)
-# burt_in_hall_cond = ObjInRmCond('burt_in_hall_cond', 'main_hall_temp', 'burt_temp', True)
 burt_in_hall_cond = ObjInRmCond('burt_in_hall_cond', 'gatehouse_temp', 'burt_temp', True)
 burt_in_entrance_cond = ObjInRmCond('burt_in_entrance_cond', 'entrance_temp', 'burt_temp', True)
 burt_in_antechamber_cond = ObjInRmCond('burt_in_antechamber_cond', 'antechamber_temp', 'burt_temp', True)
@@ -427,14 +428,13 @@ entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None,
 	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, 
-		[],
-#		[faded_tapestries],
+		[old_furniture, cobwebs, musty_smell, arrow_slits],
 		[shiny_sword, royal_hedgehog, wooden_shelf], 
 		[], 
 		[shiny_sword_init_desc]
 	) 
 
-main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, 
+main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, # future room
 		[faded_tapestries],
 		[shiny_sword, royal_hedgehog, wooden_shelf], 
 		[], 
@@ -479,13 +479,11 @@ map = Map(
 		'map', # name
 		entrance, # hero_rm
 		[
-#			{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall},
 			{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : gatehouse},
 			{'room_x' : entrance, 'dir_x' : 'south', 'door' : 'untrodden path leading back home', 'dir_y' : None, 'room_y' : unreachable_1},
 			{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
 			{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
 			{'room_x' : gatehouse, 'dir_x' : 'north', 'door' : 'foreboding archway', 'dir_y' : 'south', 'room_y' : antechamber},
-#			{'room_x' : main_hall, 'dir_x' : 'north', 'door' : 'passage', 'dir_y' : 'south', 'room_y' : antechamber},
 ##			{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
 			{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}
 		] # map_lst
@@ -533,16 +531,13 @@ axe_not_in_goblin_hand_cond.creature_obj = guard_goblin
 silver_key_given_cond.creature_obj = royal_hedgehog
 no_weap_in_hand_cond.creature_obj = burt
 goblin_in_world_cond.obj = guard_goblin
-# sword_not_on_floor.match_room = main_hall
 sword_not_on_floor.match_room = gatehouse
-# sword_on_floor.match_room = main_hall
 sword_on_floor.match_room = gatehouse
 not_in_throne_cond.creature_obj = burt
 sword_not_in_burt_inv_cond.creature_obj = burt
 sword_not_in_burt_inv_cond.item_obj = shiny_sword
 goblin_not_in_world_cond.obj = guard_goblin
 burt_in_hall_cond.obj = burt
-# burt_in_hall_cond.match_room = main_hall
 burt_in_hall_cond.match_room = gatehouse
 burt_in_entrance_cond.obj = burt
 burt_in_entrance_cond.match_room = entrance
@@ -603,7 +598,8 @@ master_obj_lst = [
 		entrance, antechamber, throne_room, loyalty, officiousness, gold_capitals, red_bandana, 
 		big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, earthen_jug, paper_bag, 
 		insignia, baked_biscuit, drawbridge, rusty_keyhole, royal_cypher, postbox, ancient_certificate, 
-		bold_script, big_rock, zorkmid, untrodden_path, gatehouse,
+		bold_script, big_rock, zorkmid, untrodden_path, gatehouse, old_furniture, cobwebs, musty_smell, 
+		arrow_slits, 
 
 		# test objects
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 
