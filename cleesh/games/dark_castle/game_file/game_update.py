@@ -73,6 +73,7 @@ old_furniture = ViewOnly('old_furniture', 'Old Furniture', 'furniture', 'old_fur
 cobwebs = ViewOnly('cobwebs', 'Cobwebs', 'cobwebs', 'cobwebs', None)
 musty_smell = ViewOnly('musty_smell', 'Musty Smell', 'smell', 'musty_smell', None)
 arrow_slits = ViewOnly('arrow_slits', 'Arrow Slits', 'slits', 'arrow_slits', None)
+foreboding_archway = ViewOnly('foreboding_archway', 'Foreboding Archway', 'archway', 'foreboding_archway', None)
 
 # Item
 rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
@@ -428,7 +429,7 @@ entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None,
 	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, 
-		[old_furniture, cobwebs, musty_smell, arrow_slits],
+		[old_furniture, cobwebs, musty_smell, arrow_slits, foreboding_archway],
 		[shiny_sword, royal_hedgehog, wooden_shelf], 
 		[], 
 		[shiny_sword_init_desc]
@@ -484,6 +485,7 @@ map = Map(
 			{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
 			{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
 			{'room_x' : gatehouse, 'dir_x' : 'north', 'door' : 'foreboding archway', 'dir_y' : 'south', 'room_y' : antechamber},
+#			{'room_x' : antechamber, 'dir_x' : 'south', 'door' : 'half-lit archway', 'dir_y' : 'north', 'room_y' : gatehouse},
 ##			{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
 			{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}
 		] # map_lst
@@ -599,7 +601,7 @@ master_obj_lst = [
 		big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, earthen_jug, paper_bag, 
 		insignia, baked_biscuit, drawbridge, rusty_keyhole, royal_cypher, postbox, ancient_certificate, 
 		bold_script, big_rock, zorkmid, untrodden_path, gatehouse, old_furniture, cobwebs, musty_smell, 
-		arrow_slits, 
+		arrow_slits, foreboding_archway,
 
 		# test objects
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 

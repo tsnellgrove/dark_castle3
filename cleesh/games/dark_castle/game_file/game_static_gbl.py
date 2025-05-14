@@ -101,6 +101,7 @@ game_static_dict = {
     'cobwebs' : "The cobwebs are abundant but mundane. If Nana was here you'd be put to work cleaning and dusting for hours!",
     'musty_smell' : "When you were little, your neighbor, who was getting on, had a small cabin up the river. Each year, on the first sunny day of spring, Nana would send you to help unboard and clean the cabin. When you would open the doors for the first time, the musty smell of the seasons gone by would waft out. The musty smell in the Gatehouse is similar - but somehow older and sadder - almost mournful.",
 	'arrow_slits' : "The arrow slits are high up on the south wall on either side of the Front Gate. Maybe there were once step-stools for the archers to stand on? If not, those archers were mighty tall! Peeking through one of the slits you see the moat and fading sunlight beyond. Will you ever return along that untrodden path to your little village below?",
+    'foreboding_archway' : "The foreboding archway leads away from the half-light of the Gateway and into the gloom and darkness of castle itself. You feel both hesitatn and excited. Your true adventure begins when you step through the archway.",
 
 	### item objects ###
 	'rusty_key' : "An old rusty key... the one you swore to the whole pub (and miss Chrissy Brewer!) that you'd use to pillage the Dark Castle... What could you possibly do with it?",

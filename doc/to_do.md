@@ -515,13 +515,15 @@ End Date:
 		- DONE: de-dup passages descriptions vs. base description
 		- DONE: review existing nouns
 			- DONE: update bandana to remmove 80s ref
-		- TBD: add all referenced nouns
+		- DONE: add all referenced nouns
 			- DONE: old_furniture
 			- DONE: cobwebs
 			- DONE: musty_smell
 			- DONE: arrow slits
-		- TBD: make paths examineable
-			- TBD: foreboding_archway
+		- INPROC: make paths examineable
+			- DONE: foreboding_archway
+			- TBD: can passage obj live in map (rather than room feature?)
+			- TBD: update gs.map.get_door_str() to enable f_archway n => s but lit_archway s => n
 		- DONE: us init_desc where appropriate
 		- TBD: test all machines
 		- TBD: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
