@@ -528,6 +528,7 @@ End Date:
 			- TBD: update gs.map.get_door_str() to enable f_archway n => s but lit_archway s => n
 				- IDEA: door_var = room_pair['door'] ; if door_var is list, read dict in list => door_var
 				- IDEA: existing clauses ref door_var (not room_pair['door'])
+				- TBD: contemplate need to make 'door' val work for get_door_lst() and get_door() too
 			- TBD: elim need for unreachable rooms ?
 			- TBD: clean-up game_update()
 		- DONE: us init_desc where appropriate
