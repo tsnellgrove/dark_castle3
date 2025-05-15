@@ -422,14 +422,16 @@ big_rock_init_desc = InitDesc('big_rock_init_desc', big_rock, 'big_rock_init_des
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
-		[dark_castle, moat, drawbridge, rusty_keyhole, untrodden_path],
+		[dark_castle, moat, drawbridge, rusty_keyhole],
+#		[dark_castle, moat, drawbridge, rusty_keyhole, untrodden_path],
 		[burt, postbox, big_rock], 
 		[entrance_moat_mach, entrance_south_warn], 
 		[postbox_init_desc, big_rock_init_desc]
 	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, 
-		[old_furniture, cobwebs, musty_smell, arrow_slits, foreboding_archway],
+		[old_furniture, cobwebs, musty_smell, arrow_slits],
+#		[old_furniture, cobwebs, musty_smell, arrow_slits, foreboding_archway],
 		[shiny_sword, royal_hedgehog, wooden_shelf], 
 		[], 
 		[shiny_sword_init_desc]
@@ -481,10 +483,12 @@ map = Map(
 		entrance, # hero_rm
 		[
 			{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : gatehouse},
-			{'room_x' : entrance, 'dir_x' : 'south', 'door' : 'untrodden path leading back home', 'dir_y' : None, 'room_y' : unreachable_1},
+			{'room_x' : entrance, 'dir_x' : 'south', 'door' : untrodden_path, 'dir_y' : None, 'room_y' : unreachable_1},
+#			{'room_x' : entrance, 'dir_x' : 'south', 'door' : 'untrodden path leading back home', 'dir_y' : None, 'room_y' : unreachable_1},
 			{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
 			{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
-			{'room_x' : gatehouse, 'dir_x' : 'north', 'door' : 'foreboding archway', 'dir_y' : 'south', 'room_y' : antechamber},
+#			{'room_x' : gatehouse, 'dir_x' : 'north', 'door' : 'foreboding archway', 'dir_y' : 'south', 'room_y' : antechamber},
+			{'room_x' : gatehouse, 'dir_x' : 'north', 'door' : foreboding_archway, 'dir_y' : 'south', 'room_y' : antechamber},
 #			{'room_x' : antechamber, 'dir_x' : 'south', 'door' : 'half-lit archway', 'dir_y' : 'north', 'room_y' : gatehouse},
 ##			{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
 			{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}

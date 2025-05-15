@@ -167,6 +167,17 @@ class Map(Invisible):
 		room_door_str += "."
 		return room_door_str
 
+# room_key_lst = [['room_x', 'dir_x', 'room_y'], ['room_y', 'dir_y', 'room_x']] # list of key_lst for a given room_pair
+
+#{
+#	'room_x' : gatehouse, 
+#	'dir_x' : 'north', 
+#	'door' : foreboding_archway, 
+#	'dir_y' : 'south', 
+#	'room_y' : antechamber
+#},
+
+
 	def chk_valid_dir(self, room, dir):
 		""" Evaluates whether going direction dir from room is viable.
 		"""

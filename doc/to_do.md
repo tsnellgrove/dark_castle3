@@ -329,6 +329,7 @@ End Date:
 			- DONE: test
 		- CANCEL: update shiny_sword regular desc if appropriate
 		- DONE: update rm disp: 1) title, 2) rm desc, 3) passages, 4) viewonly, 5) init, 6) item, 7) creat
+			- DONE: for room display, separate creatures from ViewOnly and list creatures 2nd
 		- DONE: test - multiple obj w/ init_desc
 		- DONE doc rm display_contain order
 		- DONE: clean up room_class()
@@ -521,12 +522,19 @@ End Date:
 			- DONE: musty_smell
 			- DONE: arrow slits
 		- INPROC: make paths examineable
+			- DONE: make path names (provided via 'look') examinable nouns ('path' => Winding Path)
 			- DONE: foreboding_archway
-			- TBD: can passage obj live in map (rather than room feature?)
+			- DONE: can passage obj live in map (rather than room feature?)
 			- TBD: update gs.map.get_door_str() to enable f_archway n => s but lit_archway s => n
+				- IDEA: door_var = room_pair['door'] ; if door_var is list, read dict in list => door_var
+				- IDEA: existing clauses ref door_var (not room_pair['door'])
+			- TBD: elim need for unreachable rooms ?
+			- TBD: clean-up game_update()
 		- DONE: us init_desc where appropriate
 		- TBD: test all machines
 		- TBD: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
+			- TBD: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
+			- TBD: sort out whole 'fist' / 'sharp_teeth' un-armed attack issue in Creature class
 	- TBD: room 3
 	- TBD: room 4
 		- TBD: should obj.full_name be de-captialized?
@@ -539,7 +547,6 @@ End Date:
 *** decision about UI ***
 - TBD: how to handle obj.full_name capital cases?
 - TBD: should complex obj (stone_coffer) > feature_lst if minor; with only key obj called out??
-- TBD: for room display, separate creatures from ViewOnly and list creatures 2nd
 - TBD: should I add handle as an attrib of door? Could pull handle to open? door would have open direction
 - TBD: investigate enabling init_desc attrib for items in containers (e.g. certificate)
 - TBD: leverage app_main() cmd_queue for 'again' command ?
@@ -552,7 +559,6 @@ End Date:
 - TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
 - TBD: improve drink verb resevoir_lst error via undrinkable_dict error (custom error for each non-liquid)
 - TBD: update 'exit' to assume seat that player is contained in (i.e. to default to 'stand' if 'seat' not given)
-- TBD: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
 - TBD: eliminate hidden rooms [IN-VER]
 	- EXAMPE: s, e, & w of Entrance 
 	- TBD: Room class would need a custom_path_lst attribe
@@ -561,9 +567,8 @@ End Date:
 - TBD: sort out double print of score after win
 - search for 'Nana'-based errors
 - maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
-- TBD: make path names (provided via 'look') examinable nouns ('path' => Winding Path)
 - TBD: disable control_panel dispenser mach once it has run (as final result)
-- TBD: sort out whole 'fist' / 'sharp_teeth' un-armed attack issue in Creature class
+
 
 *** create lighting system ***
 - IDEA: see full section below; lean in on TADS approach
