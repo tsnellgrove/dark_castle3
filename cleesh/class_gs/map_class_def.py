@@ -151,10 +151,19 @@ class Map(Invisible):
 		for room_pair in self.map_lst:
 			for room_lst in room_key_lst:
 				if room_pair[room_lst[0]] == room:
-					if isinstance(room_pair['door'], str):
-						room_door_str += f"a {room_pair['door']} to the {room_pair[room_lst[1]]}"
+					if isinstance(room_pair['door'], dict):
+						passage_var = room_pair['door'][room]
 					else:
-						room_door_str += f"a {room_pair['door'].full_name} to the {room_pair[room_lst[1]]}"
+						passage_var = room_pair['door']
+					if isinstance(passage_var, str):
+						passage_str = passage_var
+					else:
+						passage_str = passage_var.full_name
+					room_door_str += f"a {passage_str} to the {room_pair[room_lst[1]]}"
+#					if isinstance(room_pair['door'], str):
+#						room_door_str += f"a {room_pair['door']} to the {room_pair[room_lst[1]]}"
+#					else:
+#						room_door_str += f"a {room_pair['door'].full_name} to the {room_pair[room_lst[1]]}"
 					clause_count +=1
 					if clause_count == room_count:
 						break

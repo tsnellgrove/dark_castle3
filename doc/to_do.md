@@ -528,9 +528,16 @@ End Date:
 			- TBD: update gs.map.get_door_str() to enable f_archway n => s but lit_archway s => n
 				- IDEA: door_var = room_pair['door'] ; if door_var is list, read dict in list => door_var
 				- IDEA: existing clauses ref door_var (not room_pair['door'])
-				- TBD: contemplate need to make 'door' val work for get_door_lst() and get_door() too
-			- TBD: elim need for unreachable rooms ?
-			- TBD: clean-up game_update()
+				- IDEA: contemplate need to make 'door' val work for get_door_lst() and get_door() too
+				- DONE: update go_err() in error_class() to acount for non-door returns from get_door()
+				- DONE: propose multi-value path in game_update()
+				- DONE: update get_door_str() for multi-val path
+				- TBD: update get_door for multi-val path
+				- TBD: update get_door_lst for multi-val path
+				- TBD: test
+				- TBD: clean-up game_update(), error_class(), map_class()
+			- TBD: creat description for lit_archway
+			- TBD: elim need for unreachable rooms ?			
 		- DONE: us init_desc where appropriate
 		- TBD: test all machines
 		- TBD: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist

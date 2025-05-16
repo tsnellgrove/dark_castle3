@@ -582,7 +582,9 @@ class Error(Identity):
 			err_txt = gs.io.get_str(f"dir_err_{random.randint(0, 4)}", 'experience')
 			return True, True, err_txt
 		door = gs.map.get_door(self, dir)
-		if not isinstance(door, str) and door.is_open == False:
+#		if not isinstance(door, str) and door.is_open == False:
+		if not isinstance(door, str) and door.is_openable() and door.is_open == False:
 			err_txt = (f"The {door.full_name} is closed.")
 			return True, True, err_txt
 		return False, False, ""
+

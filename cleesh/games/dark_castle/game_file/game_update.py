@@ -488,7 +488,16 @@ map = Map(
 			{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
 			{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
 #			{'room_x' : gatehouse, 'dir_x' : 'north', 'door' : 'foreboding archway', 'dir_y' : 'south', 'room_y' : antechamber},
-			{'room_x' : gatehouse, 'dir_x' : 'north', 'door' : foreboding_archway, 'dir_y' : 'south', 'room_y' : antechamber},
+###			{'room_x' : gatehouse, 'dir_x' : 'north', 'door' : foreboding_archway, 'dir_y' : 'south', 'room_y' : antechamber},
+			{
+				'room_x' : gatehouse,
+				'dir_x' : 'north',
+				'door' : 
+				{gatehouse : foreboding_archway, antechamber : 'lit_archway'
+				},
+				'dir_y' : 'south',
+				'room_y' : antechamber
+			},
 #			{'room_x' : antechamber, 'dir_x' : 'south', 'door' : 'half-lit archway', 'dir_y' : 'north', 'room_y' : gatehouse},
 ##			{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
 			{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}
