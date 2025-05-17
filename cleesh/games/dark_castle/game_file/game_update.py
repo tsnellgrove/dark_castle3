@@ -74,6 +74,7 @@ cobwebs = ViewOnly('cobwebs', 'Cobwebs', 'cobwebs', 'cobwebs', None)
 musty_smell = ViewOnly('musty_smell', 'Musty Smell', 'smell', 'musty_smell', None)
 arrow_slits = ViewOnly('arrow_slits', 'Arrow Slits', 'slits', 'arrow_slits', None)
 foreboding_archway = ViewOnly('foreboding_archway', 'Foreboding Archway', 'archway', 'foreboding_archway', None)
+lit_archway = ViewOnly('lit_archway', 'Lit Archway', 'archway', 'lit_archway', None)
 
 # Item
 rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
@@ -492,9 +493,7 @@ map = Map(
 			{
 				'room_x' : gatehouse,
 				'dir_x' : 'north',
-				'door' : 
-				{gatehouse : foreboding_archway, antechamber : 'lit_archway'
-				},
+				'door' : {gatehouse : foreboding_archway, antechamber : lit_archway},
 				'dir_y' : 'south',
 				'room_y' : antechamber
 			},
@@ -614,7 +613,7 @@ master_obj_lst = [
 		big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, earthen_jug, paper_bag, 
 		insignia, baked_biscuit, drawbridge, rusty_keyhole, royal_cypher, postbox, ancient_certificate, 
 		bold_script, big_rock, zorkmid, untrodden_path, gatehouse, old_furniture, cobwebs, musty_smell, 
-		arrow_slits, foreboding_archway,
+		arrow_slits, foreboding_archway, lit_archway,
 
 		# test objects
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 

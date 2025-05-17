@@ -521,35 +521,57 @@ End Date:
 			- DONE: cobwebs
 			- DONE: musty_smell
 			- DONE: arrow slits
+		- DONE: use init_desc where appropriate
 		- INPROC: make paths examineable
 			- DONE: make path names (provided via 'look') examinable nouns ('path' => Winding Path)
 			- DONE: foreboding_archway
 			- DONE: can passage obj live in map (rather than room feature?)
-			- TBD: update gs.map.get_door_str() to enable f_archway n => s but lit_archway s => n
+			- INPROC: update gs.map.get_door_str() to enable f_archway n => s but lit_archway s => n
 				- IDEA: door_var = room_pair['door'] ; if door_var is list, read dict in list => door_var
 				- IDEA: existing clauses ref door_var (not room_pair['door'])
 				- IDEA: contemplate need to make 'door' val work for get_door_lst() and get_door() too
 				- DONE: update go_err() in error_class() to acount for non-door returns from get_door()
 				- DONE: propose multi-value path in game_update()
 				- DONE: update get_door_str() for multi-val path
-				- TBD: update get_door for multi-val path
-				- TBD: update get_door_lst for multi-val path
-				- TBD: test
-				- TBD: clean-up game_update(), error_class(), map_class()
-			- TBD: creat description for lit_archway
-			- TBD: elim need for unreachable rooms ?			
-		- DONE: us init_desc where appropriate
+				- DONE: update get_door for multi-val path
+				- DONE: update get_door_lst for multi-val path
+				- DONE: create obj and description for lit_archway
+				- DONE: test
+				- TBD: update to allow string paths in multi-val dict
+				- TBD: clean-up game_update(), error_class(), map_class(), room_class()
+				- TBD: doc dict option in comments and in doc file (also mention paths as obj)
+		- TBD: elim need for unreachable rooms ?
+			- TBD: eliminate hidden rooms [IN-VER]
+				- EXAMPE: s, e, & w of Entrance 
+				- TBD: Room class would need a custom_path_lst attrib
+				- TBD: custom_path_lst called from room.disp_cond()	
 		- TBD: test all machines
 		- TBD: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
 			- TBD: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
 			- TBD: sort out whole 'fist' / 'sharp_teeth' un-armed attack issue in Creature class
 	- TBD: room 3
+		- TBD: de-capitalize all nouns
+		- TBD: de-dup passages descriptions vs. base description
+		- TBD: review existing nouns
+		- TBD: add all referenced nouns
+		- TBD: make paths examineable
+		- TBD: use init_desc where appropriate
+		- TBD: test all machines
+		- TBD: turn lantern into actual light
+			- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
 	- TBD: room 4
-		- TBD: should obj.full_name be de-captialized?
+		- TBD: de-capitalize all nouns
+		- TBD: de-dup passages descriptions vs. base description
+		- TBD: review existing nouns
+		- TBD: add all referenced nouns
+		- TBD: make paths examineable
+		- TBD: use init_desc where appropriate
+		- TBD: test all machines
+		- TBD: additional fixes:
+			- TBD: should obj.full_name be de-captialized?
 - TBD: clean up cleesh static_gbl, clean-up game_static_gbl
 - TBD: search on obj nouns and ensure always capitalized (???)
-- TBD: turn lantern into actual light
-	- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
+
 - TBD: git merge
 
 *** decision about UI ***
@@ -567,10 +589,6 @@ End Date:
 - TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
 - TBD: improve drink verb resevoir_lst error via undrinkable_dict error (custom error for each non-liquid)
 - TBD: update 'exit' to assume seat that player is contained in (i.e. to default to 'stand' if 'seat' not given)
-- TBD: eliminate hidden rooms [IN-VER]
-	- EXAMPE: s, e, & w of Entrance 
-	- TBD: Room class would need a custom_path_lst attribe
-	- TBD: custom_path_lst called from room.disp_cond()
 - DONE: varry inventory intro text (?)
 - TBD: sort out double print of score after win
 - search for 'Nana'-based errors

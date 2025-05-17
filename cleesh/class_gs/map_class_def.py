@@ -121,10 +121,21 @@ class Map(Invisible):
 
 
 	def	get_door_lst(self, room):
-		""" Returns a list of doors adjoining a given room
+		""" Returns a list of door / passage obj adjoining a given room
 		"""
-		return [room_pair['door'] for room_pair in self.map_lst 
-				if (room == room_pair['room_x'] or room == room_pair['room_y']) and not isinstance(room_pair['door'], str)]
+		passage_lst = []
+		for room_pair in self.map_lst:
+			if ((room == room_pair['room_x'] or room == room_pair['room_y']) 
+	   				and (not isinstance(room_pair['door'], str))):
+				if isinstance(room_pair['door'], dict):
+					passage_lst.append(room_pair['door'][room])
+				else:
+					passage_lst.append(room_pair['door'])
+		return passage_lst
+	
+		# old refactored pre-dict version of code
+##		return [room_pair['door'] for room_pair in self.map_lst 
+##				if (room == room_pair['room_x'] or room == room_pair['room_y']) and not isinstance(room_pair['door'], str)]
 
 	def get_neighbor_count(self, room):
 		""" Provide a count of rooms that are connected neighbors of a given room
@@ -201,7 +212,10 @@ class Map(Invisible):
 		for room_pair in self.map_lst:
 			for room_lst in room_key_lst:
 				if room_pair[room_lst[0]] == room and room_pair[room_lst[1]] == dir:
-					return room_pair['door']
+					if isinstance(room_pair['door'], dict): # new
+						return room_pair['door'][room] # new
+					else: # new
+						return room_pair['door']
 		raise ValueError(f"There is no 'door' value associated with going {dir} from room {room}. This must not be a valid route.")
 
 	def get_next_room(self, room, dir):
