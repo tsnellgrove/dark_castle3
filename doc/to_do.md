@@ -540,6 +540,7 @@ End Date:
 				- TBD: update to allow string paths in multi-val dict
 				- TBD: clean-up game_update(), error_class(), map_class(), room_class()
 				- TBD: doc dict option in comments and in doc file (also mention paths as obj)
+		- TBD: maybe update dark_castle description to indicate that there are always dark clouds overhead?
 		- TBD: elim need for unreachable rooms ?
 			- TBD: eliminate hidden rooms [IN-VER]
 				- EXAMPE: s, e, & w of Entrance 
