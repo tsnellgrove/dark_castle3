@@ -654,9 +654,10 @@ End Date:
 	- can see layout of castle from here including weather vane on top of round room
 	- see village as well - cecily maybe? Or pub window at least
 	- possibly even see weather vane well enough to see that it locks and how to get there?
-- south-west of main_hall goes to balista tower
+- south-west of main_hall goes to catapult_tower
 	- stairs to tower have collapsed
-	- baby roc has made it's nest here atop some kind of platform
+	- can get to top and catapult via tree (see tree climbing)
+	- baby roc has made it's nest here atop some kind of platform / scafolding
 	- if player tries to climb platform, roc appears and thwarts
 	- all stolen items go to roc nest
 	- roc really just wants to escape - looks towards west window freq; calls for mama
@@ -667,7 +668,8 @@ End Date:
 	- if drop item => moat and vanish
 	- hollow with some mcguffin half way up
 	- higher up gives access to 2nd floor of tower, roof
-	- from roof can view casatle, weather vane, and fire items past cinch pts w/ help of telescope
+	- from roof can view castle, weather vane, and fire items past cinch pts w/ help of telescope
+	- telescope can give angle. Might need potion of parabolic motion knowledge to solve angle and force?
 	- possibly even see weather vane well enough to see that it locks and how to get there?
 	- player can also go further west on big_branch (hollow height)
 	- if player goes west far enough tree will tip over away from tower
