@@ -537,10 +537,12 @@ End Date:
 				- DONE: update get_door_lst for multi-val path
 				- DONE: create obj and description for lit_archway
 				- DONE: test
-				- TBD: update to allow string paths in multi-val dict
+				- DONE: update to allow string paths in multi-val dict
+				- DONE: test
 				- TBD: clean-up game_update(), error_class(), map_class(), room_class()
 				- TBD: doc dict option in comments and in doc file (also mention paths as obj)
-		- TBD: maybe update dark_castle description to indicate that there are always dark clouds overhead?
+				- TBD: doc that 'door' in map_dict really means 'any passage between rooms'
+		- TBD: update dark_castle description to indicate that there are always dark clouds overhead?
 		- TBD: elim need for unreachable rooms ?
 			- TBD: eliminate hidden rooms [IN-VER]
 				- EXAMPE: s, e, & w of Entrance 
@@ -570,6 +572,8 @@ End Date:
 		- TBD: test all machines
 		- TBD: additional fixes:
 			- TBD: should obj.full_name be de-captialized?
+		- TBD: implement full set of cardinal directions
+		- TBD: implement 'jump'
 - TBD: clean up cleesh static_gbl, clean-up game_static_gbl
 - TBD: search on obj nouns and ensure always capitalized (???)
 
@@ -619,6 +623,90 @@ End Date:
 - puzzle based on 4 weights to weigh 40 lbs math puzzle
 - perhaps after winning the game Burt can wander around the castle and see everone turned back to human?
 - In the Library there is a locked magical book ('The Future and Once King') that is "still being writtin" according to the dragon librarian. After winning the game, Burt can come back, find it unlocked, and read it (it's the back story for DC I)
+
+*** Burst of new adventure / puzzle ideas ***
+- muster room / main_hall antechamber is north of Gatehouse
+	- puzzle TBD
+- east of muster room = storage closet (TBD)
+	- maybe secret passage from here to kitchens to north?
+- west of muster room = passage way to gate and stone bridge over moat w/ path beyond
+	- but bridge is shattered and cannot be crossed
+	- can see lightening-struck tree leaning against tower to north
+- North of muster room = main_hall
+	- as soon as player enters main hall, baby roc swoops down and steals random obj and burt flees south
+	- player must cary big_rock - roc tries to take - collapses - and flees west to nest
+	- player is now free to investigate main hall and se/sw passages (roc no longer steals from burt)
+	- CANCEL: baby roc flies from tower to tower west-east-west continuously
+- cleared main_hall
+	- baby roc now hiding in nest
+	- main_hall has caved in so can only explore south half of room
+	- 5 more passages (2 east, 2 west, 1 north) from main hall (kitchens mid-east door)
+		- kitechens have garlic (for vampire)
+		- workshop is maybe mid-west; has hammer (for vampire); sword sharpened here by badger?
+	- NOTE: for this to work I'll need to embrace the other 4 cardinal dir
+	- CANCLE: north is separately obstructed - player can slip through debris w/ no items?
+- south-east of main_hall goes to wizard's tower / astronomy
+	- Probably weight / pulley problem to solve here (zorkmid is key item)
+	- Wizard himself has been converted into a kindly owl
+	- was in love with gardener (now Otter) but can't get to her because window is closed
+	- Maybe has key to garden shed, love letters, and something else useful (potion ?)
+	- Access to room has useful astronomy-themed tool (telescope ??)
+	- can see layout of castle from here including weather vane on top of round room
+	- see village as well - cecily maybe? Or pub window at least
+	- possibly even see weather vane well enough to see that it locks and how to get there?
+- south-west of main_hall goes to balista tower
+	- stairs to tower have collapsed
+	- baby roc has made it's nest here atop some kind of platform
+	- if player tries to climb platform, roc appears and thwarts
+	- all stolen items go to roc nest
+	- roc really just wants to escape - looks towards west window freq; calls for mama
+	- can't escape because lightening-struck tree is leaning against west window
+- player can climb tree
+	- tree = room with no floor
+	- if jump => moat and die
+	- if drop item => moat and vanish
+	- hollow with some mcguffin half way up
+	- higher up gives access to 2nd floor of tower, roof
+	- from roof can view casatle, weather vane, and fire items past cinch pts w/ help of telescope
+	- possibly even see weather vane well enough to see that it locks and how to get there?
+	- player can also go further west on big_branch (hollow height)
+	- if player goes west far enough tree will tip over away from tower
+	- if player just holds on, they landly softly on the shore across moat and tree crushes them
+	- they need to jump from tree when it is half way over, then run south to dodge
+	- the tree now acts as a bridge across the moat
+	- also, the roc immediately flies out and player can recover items from nest and get new item (?)
+	- (what if player chops tree with axe ??? easter egg? )
+- game_trail leads south along west bank of moat from tree crash and arrives at far end of stone bridge
+	- west from here leads gazebo and sun dial (?)
+- north of gazebo = garden
+	- otter lives here and pines for owl
+	- if palyer frees owl (maybe otter needs to help with this) otter will help player
+	- owl flies to garden and otter embraces him => otter helps player / allows to enter shed
+	- garden_shed is also here
+- in garden_shed 
+	- shed key in wizard tower with love letters
+	- player finds stakes (for vampire)
+- south of gazebo = grave_yard
+	- has time-based puzzles
+	- Mausoleum with writing that only opens at specific time shown by sundial (?)
+	- potion must be made here under full moon
+	- tombstone with useful writing of some sort (again, should be time-based puzzle)
+- North of main_hall is round_room which spins like Zork II
+	- actually, this is where Willy got the idea (since he is the adventurer)
+	- he got sick of people constantly bugging him for answers to problems so he installed the round rm
+	- spin can only be disabled by getting to round room roof (how?) and locking weather vane
+- Beyond round room is whole rest of castle
+	- antechamber holds goblin
+		- entrance to antechamber (or nearby) should be a cinch point
+		- makes it impossible to bring sword
+		- Burt will need to balista sword and other neeeded goods to courtyard
+	- library with book_dragon
+	- courtyard
+		- great tree of bright castle (in decay)
+		- ducklings in courtyard imprint on burt; turn out to be bathin nymphs?
+	- cathedral / oratory holds vampiire
+
+
 
 ############################
 ### CLEESH VERSION 3.8.1 / DARK CASTLE VERSION 3.2.0 END ###

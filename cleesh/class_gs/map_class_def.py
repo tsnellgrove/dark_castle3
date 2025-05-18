@@ -125,12 +125,22 @@ class Map(Invisible):
 		"""
 		passage_lst = []
 		for room_pair in self.map_lst:
-			if ((room == room_pair['room_x'] or room == room_pair['room_y']) 
-	   				and (not isinstance(room_pair['door'], str))):
+			if (room == room_pair['room_x'] or room == room_pair['room_y']):
 				if isinstance(room_pair['door'], dict):
-					passage_lst.append(room_pair['door'][room])
+					passage_var = room_pair['door'][room]
 				else:
-					passage_lst.append(room_pair['door'])
+					passage_var = room_pair['door']
+				if isinstance(passage_var, str):
+					pass
+				else:
+					passage_lst.append(passage_var)
+
+#			if ((room == room_pair['room_x'] or room == room_pair['room_y']) 
+#	   				and (not isinstance(room_pair['door'], str))):
+#				if isinstance(room_pair['door'], dict):
+#					passage_lst.append(room_pair['door'][room])
+#				else:
+#					passage_lst.append(room_pair['door'])
 		return passage_lst
 	
 		# old refactored pre-dict version of code
