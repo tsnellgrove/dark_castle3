@@ -522,11 +522,11 @@ End Date:
 			- DONE: musty_smell
 			- DONE: arrow slits
 		- DONE: use init_desc where appropriate
-		- INPROC: make paths examineable
+		- DONE: make paths examineable
 			- DONE: make path names (provided via 'look') examinable nouns ('path' => Winding Path)
 			- DONE: foreboding_archway
 			- DONE: can passage obj live in map (rather than room feature?)
-			- INPROC: update gs.map.get_door_str() to enable f_archway n => s but lit_archway s => n
+			- DONE: update gs.map.get_door_str() to enable f_archway n => s but lit_archway s => n
 				- IDEA: door_var = room_pair['door'] ; if door_var is list, read dict in list => door_var
 				- IDEA: existing clauses ref door_var (not room_pair['door'])
 				- IDEA: contemplate need to make 'door' val work for get_door_lst() and get_door() too
@@ -539,9 +539,9 @@ End Date:
 				- DONE: test
 				- DONE: update to allow string paths in multi-val dict
 				- DONE: test
-				- TBD: clean-up game_update(), error_class(), map_class(), room_class()
-				- TBD: doc dict option in comments and in doc file (also mention paths as obj)
-				- TBD: doc that 'door' in map_dict really means 'any passage between rooms'
+				- DONE: clean-up game_update(), error_class(), map_class(), room_class()
+				- DONE: doc dict option in comments and in doc file (also mention paths as obj)
+				- DONE: doc that 'door' in map_dict really means 'any passage between rooms'
 		- TBD: update dark_castle description to indicate that there are always dark clouds overhead?
 		- TBD: elim need for unreachable rooms ?
 			- TBD: eliminate hidden rooms [IN-VER]
@@ -562,6 +562,7 @@ End Date:
 		- TBD: test all machines
 		- TBD: turn lantern into actual light
 			- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
+			- IDEA: see thoughts on light in to-do notes below
 	- TBD: room 4
 		- TBD: de-capitalize all nouns
 		- TBD: de-dup passages descriptions vs. base description

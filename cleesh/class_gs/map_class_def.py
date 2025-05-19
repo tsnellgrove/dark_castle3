@@ -17,9 +17,19 @@ class Map(Invisible):
 		super().__init__(name)
 		self._hero_rm = hero_rm # the current location of the player's character (previously searched for)
 		self._map_lst = map_lst # list of room_pair dicts
-		""" Map class inherits from Invisible and is responsible for all game interactions that span multiple
-		rooms. It provides the hero_rm and map_lst attribs. map_lst holds the game map and use the format: 
-		[{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : main_hall}]
+		""" Map class inherits from Invisible and is responsible for all game interactions that span 
+		multiple rooms. It provides the hero_rm and map_lst attribs. 
+		
+		map_lst holds the game map and use the format: 
+		[{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' :  'south', 'room_y' : main_hall}]
+		
+		Note 1: the value associated with the 'door' key can be a door object, a viewonly object 
+		(such as a passage), or a string describing the open passage.
+
+		Note 2: the value of 'door' can be a dict of door objects if the passage between two rooms
+		should appear different when approached from different directions (e.g. foreboding_archway
+		going north, lit_archway going south). In this case, the dict key is the room and the value 
+		is the door object. 
         """
 
 	# *** getters & setters ***
@@ -134,13 +144,6 @@ class Map(Invisible):
 					pass
 				else:
 					passage_lst.append(passage_var)
-
-#			if ((room == room_pair['room_x'] or room == room_pair['room_y']) 
-#	   				and (not isinstance(room_pair['door'], str))):
-#				if isinstance(room_pair['door'], dict):
-#					passage_lst.append(room_pair['door'][room])
-#				else:
-#					passage_lst.append(room_pair['door'])
 		return passage_lst
 	
 		# old refactored pre-dict version of code
@@ -181,10 +184,6 @@ class Map(Invisible):
 					else:
 						passage_str = passage_var.full_name
 					room_door_str += f"a {passage_str} to the {room_pair[room_lst[1]]}"
-#					if isinstance(room_pair['door'], str):
-#						room_door_str += f"a {room_pair['door']} to the {room_pair[room_lst[1]]}"
-#					else:
-#						room_door_str += f"a {room_pair['door'].full_name} to the {room_pair[room_lst[1]]}"
 					clause_count +=1
 					if clause_count == room_count:
 						break
@@ -196,16 +195,6 @@ class Map(Invisible):
 						room_door_str += ", "
 		room_door_str += "."
 		return room_door_str
-
-# room_key_lst = [['room_x', 'dir_x', 'room_y'], ['room_y', 'dir_y', 'room_x']] # list of key_lst for a given room_pair
-
-#{
-#	'room_x' : gatehouse, 
-#	'dir_x' : 'north', 
-#	'door' : foreboding_archway, 
-#	'dir_y' : 'south', 
-#	'room_y' : antechamber
-#},
 
 
 	def chk_valid_dir(self, room, dir):
@@ -222,9 +211,9 @@ class Map(Invisible):
 		for room_pair in self.map_lst:
 			for room_lst in room_key_lst:
 				if room_pair[room_lst[0]] == room and room_pair[room_lst[1]] == dir:
-					if isinstance(room_pair['door'], dict): # new
-						return room_pair['door'][room] # new
-					else: # new
+					if isinstance(room_pair['door'], dict):
+						return room_pair['door'][room]
+					else:
 						return room_pair['door']
 		raise ValueError(f"There is no 'door' value associated with going {dir} from room {room}. This must not be a valid route.")
 

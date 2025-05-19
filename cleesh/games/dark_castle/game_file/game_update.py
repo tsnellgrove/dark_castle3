@@ -81,7 +81,6 @@ rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
 torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwriting, 1)
 silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None, 1)
 ancient_certificate = Item('ancient_certificate', 'Ancient Certificate', 'certificate', 'ancient_certificate', bold_script, 1)
-# big_rock = Item('big_rock', 'Big Rock', 'rock', 'big_rock', None, 50)
 zorkmid = Item('zorkmid', 'Zorkmid', 'coin', 'zorkmid', None, 0.5)
 
 # Food
@@ -90,7 +89,6 @@ baked_biscuit = Food('baked_biscuit', 'Baked Biscuit', 'biscuit', 'baked_biscuit
 
 # Liquid
 well_water = Liquid('well_water', 'Well Water', 'water', 'well_water', None, 1)
-# well_water = Liquid('well_water', 'Well Water', 'water', 'well_water', None, 0.5)
 
 # Garment
 royal_crown = Garment('royal_crown', 'Royal Crown', 'crown', 'royal_crown', None, 5, 'hat')
@@ -105,9 +103,7 @@ grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing,
 # Containers (NOTE for PORTABLE containers, weight of starting contents MUST be included in container weight!!!)
 wooden_shelf = ContainerFixedSimple('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None, [], 999, 20, 'on')
 crystal_box = ContainerFixedLockable('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy, ['kinging_scroll_temp'], 1, 999, 'in', False, False, silver_key)
-# earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'earthen_jug', None, 1.5, [well_water], 0.5, 5, 'in')
 earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'earthen_jug', None, 2, [well_water], 1, 5, 'in')
-# paper_bag = ContainerPortableLidded('paper_bag', 'Paper Bag', 'bag', 'paper_bag', None, 1.5, [baked_biscuit], 1.5, 3, 'in', False)
 paper_bag = ContainerPortableLidded('paper_bag', 'Paper Bag', 'bag', 'paper_bag', None, 2, [baked_biscuit], 1, 3, 'in', False)
 stone_coffer = ContainerFixedSimple('stone_coffer', 'Stone Coffer', 'coffer', 'stone_coffer', None, [], 100, 999, 'in')
 postbox = ContainerFixedLidded('postbox', 'Postbox', 'postbox', 'postbox', royal_cypher, [ancient_certificate], 999, 5, 'in', False)
@@ -424,7 +420,6 @@ big_rock_init_desc = InitDesc('big_rock_init_desc', big_rock, 'big_rock_init_des
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
 		[dark_castle, moat, drawbridge, rusty_keyhole],
-#		[dark_castle, moat, drawbridge, rusty_keyhole, untrodden_path],
 		[burt, postbox, big_rock], 
 		[entrance_moat_mach, entrance_south_warn], 
 		[postbox_init_desc, big_rock_init_desc]
@@ -432,7 +427,6 @@ entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None,
 
 gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, 
 		[old_furniture, cobwebs, musty_smell, arrow_slits],
-#		[old_furniture, cobwebs, musty_smell, arrow_slits, foreboding_archway],
 		[shiny_sword, royal_hedgehog, wooden_shelf], 
 		[], 
 		[shiny_sword_init_desc]
@@ -485,11 +479,8 @@ map = Map(
 		[
 			{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : gatehouse},
 			{'room_x' : entrance, 'dir_x' : 'south', 'door' : untrodden_path, 'dir_y' : None, 'room_y' : unreachable_1},
-#			{'room_x' : entrance, 'dir_x' : 'south', 'door' : 'untrodden path leading back home', 'dir_y' : None, 'room_y' : unreachable_1},
 			{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
 			{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
-#			{'room_x' : gatehouse, 'dir_x' : 'north', 'door' : 'foreboding archway', 'dir_y' : 'south', 'room_y' : antechamber},
-###			{'room_x' : gatehouse, 'dir_x' : 'north', 'door' : foreboding_archway, 'dir_y' : 'south', 'room_y' : antechamber},
 			{
 				'room_x' : gatehouse,
 				'dir_x' : 'north',
@@ -497,8 +488,6 @@ map = Map(
 				'dir_y' : 'south',
 				'room_y' : antechamber
 			},
-#			{'room_x' : antechamber, 'dir_x' : 'south', 'door' : 'half-lit archway', 'dir_y' : 'north', 'room_y' : gatehouse},
-##			{'room_x' : main_hall, 'dir_x' : 'north', 'door' : screen_door, 'dir_y' : 'south', 'room_y' : antechamber},
 			{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}
 		] # map_lst
 		)

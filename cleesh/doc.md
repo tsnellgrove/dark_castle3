@@ -241,6 +241,11 @@ I considered making doors 'smart' and allowing them know about the rooms on eith
 
 The eventual solution was the concept of 'room pairs' - the idea that the whole map is essentially comprised of pairs of rooms that are connected. And that in all but a few exceptional cases, if room_x leads to room_y, then room_y will lead to room_x - and that the door or passage between them will be contained uniquely and consistently within that pair. Based on this thinking I created a custom data structure: a list of room_pair dictionaries (I used a dictionary rather than a list for the sake of making the structure self-documenting). The structure requires a lot of custom methods to access - but this turned out to be a bit of a fun master class in list comprehension. Doors now appear once and only once in map_lst. Of course, now rooms appear multiple times, but for some reason this doesn't bother me. YMMV.
 
+Note: during the 3.8.0 (cleesh) / 3.1.0 (Dark Castle) refactor I revamped gs.map.map_lst as follows:
+
+1: the value associated with the 'door' key can be a door object, a viewonly object (such as a passage), or a string describing the open passage.
+
+2: the value of 'door' can be a dictionary of door objects. This is for cases where the passage between two rooms should appear different when approached from different directions (e.g. foreboding_archway going north, lit_archway going south). In this case, the dict key is the room and the value is the door object. 
 
 ####################
 # score_class_def.py #
