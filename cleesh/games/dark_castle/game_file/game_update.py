@@ -453,11 +453,11 @@ throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', N
 		[]
 	)
 
-unreachable_1 = Room('unreachable_1', 'Unreachable', 'unreachable_1', 'unreachable_1', None, [], [], [], [])
+# unreachable_1 = Room('unreachable_1', 'Unreachable', 'unreachable_1', 'unreachable_1', None, [], [], [], [])
 
-unreachable_2 = Room('unreachable_2', 'Unreachable', 'unreachable_2', 'unreachable_2', None, [], [], [], [])
+# unreachable_2 = Room('unreachable_2', 'Unreachable', 'unreachable_2', 'unreachable_2', None, [], [], [], [])
 
-unreachable_3 = Room('unreachable_3', 'Unreachable', 'unreachable_3', 'unreachable_3', None, [], [], [], [])
+# unreachable_3 = Room('unreachable_3', 'Unreachable', 'unreachable_3', 'unreachable_3', None, [], [], [], [])
 
 
 # *** gs class modules ***
@@ -478,9 +478,12 @@ map = Map(
 		entrance, # hero_rm
 		[
 			{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : gatehouse},
-			{'room_x' : entrance, 'dir_x' : 'south', 'door' : untrodden_path, 'dir_y' : None, 'room_y' : unreachable_1},
-			{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
-			{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
+#			{'room_x' : entrance, 'dir_x' : 'south', 'door' : untrodden_path, 'dir_y' : None, 'room_y' : unreachable_1},
+			{'room_x' : entrance, 'dir_x' : 'south', 'door' : untrodden_path, 'dir_y' : None, 'room_y' : 'unreachable'},
+#			{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
+			{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : 'unreachable'},
+#			{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
+			{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : 'unreachable'},
 			{
 				'room_x' : gatehouse,
 				'dir_x' : 'north',

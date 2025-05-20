@@ -542,12 +542,20 @@ End Date:
 				- DONE: clean-up game_update(), error_class(), map_class(), room_class()
 				- DONE: doc dict option in comments and in doc file (also mention paths as obj)
 				- DONE: doc that 'door' in map_dict really means 'any passage between rooms'
-		- TBD: update dark_castle description to indicate that there are always dark clouds overhead?
-		- TBD: elim need for unreachable rooms ?
-			- TBD: eliminate hidden rooms [IN-VER]
+		- DONE: update dark_castle description to indicate that there are always dark clouds overhead?
+		- INPROC: elim need for unreachable rooms
+			- DONE: update room_lst with special 'unreachable' value
+			- DONE: update gs.map.chk_valid_dir() for 'unreachable'
+			- DONE: update gs.map.get_room_lst() to check for 'unreachable'
+			- DONE: test
+			- DONE: comment out old unreachable rooms
+			- TBD: 2nd full test
+			- TBD: comment special value of 'unreachable'
+			- TBD: clean up gs.map() and game_update()
+			- CANCEL: eliminate hidden rooms [IN-VER]
 				- EXAMPE: s, e, & w of Entrance 
-				- TBD: Room class would need a custom_path_lst attrib
-				- TBD: custom_path_lst called from room.disp_cond()	
+				- CANCEL: Room class would need a custom_path_lst attrib
+				- CANCEL: custom_path_lst called from room.disp_cond()	
 		- TBD: test all machines
 		- TBD: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
 			- TBD: fix "can't unlock door w/ fist" error on unlock door w/ hand empty

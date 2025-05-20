@@ -51,7 +51,8 @@ class Map(Invisible):
 		"""
 		room_lst = []
 		[room_lst.append(room_pair[room[0]]) for room_pair in self.map_lst for room in room_key_lst
-				if room_pair[room[0]] not in room_lst]
+#				if room_pair[room[0]] not in room_lst]
+				if (room_pair[room[0]] != 'unreachable') and (room_pair[room[0]] not in room_lst)]
 		return room_lst
 
 	def chk_obj_exist(self, obj, gs, lst=None):
@@ -200,7 +201,9 @@ class Map(Invisible):
 	def chk_valid_dir(self, room, dir):
 		""" Evaluates whether going direction dir from room is viable.
 		"""
-		return any(room_pair[room_lst[0]] == room and room_pair[room_lst[1]] == dir
+#		return any(room_pair[room_lst[0]] == room and room_pair[room_lst[1]] == dir
+		return (any(room_pair[room_lst[0]] == room and room_pair[room_lst[1]] == dir 
+			  	and room_pair[room_lst[2]] != 'unreachable')
 				for room_pair in self.map_lst for room_lst in room_key_lst)
 
 	def get_door(self, room, dir):
