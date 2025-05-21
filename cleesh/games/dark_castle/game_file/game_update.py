@@ -133,9 +133,9 @@ screen_door = DoorSimple('screen_door', 'Screen Door', 'door', 'screen_door', No
 test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 999, 2, 'on', [wooden_shelf])
 trademark = Writing('trademark', 'Trademark', 'trademark', 'trademark')
 stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 3)
-eat_biscuits_warning = Warning('eat_biscuits_warning',
-		'pre_act_cmd', 0, stale_biscuits, True, 
-		[['eat','stale_biscuits']], 3)
+# eat_biscuits_warning = Warning('eat_biscuits_warning',
+#		'pre_act_cmd', 0, stale_biscuits, True, 
+#		[['eat','stale_biscuits']], 3)
 random_mcguffin_init_desc = InitDesc('random_mcguffin_init_desc', random_mcguffin, 'random_mcguffin_init_desc')
 
 
@@ -256,7 +256,6 @@ disable_rh_guard_mach = InvisAutoMach('disable_rh_guard_mach', None,
 		[[disable_rh_guard_result1, disable_rh_guard_result2]])
 		# mach_state == None
 
-# shiny_swordnew = WeaponAutoMach('shiny_swordnew', 'Shiny SwordNew', 'swordnew', 'shiny_sword', elven_runes, 10,
 shiny_sword = WeaponAutoMach('shiny_sword', 'Shiny Sword', 'sword', 'shiny_sword', elven_runes, 10,
 		[['swings', 'blazing-fast assault'],['stabs', 'cunning unterhau']], 0, 
 		'auto_act', 'shiny_sword_temp', True,
@@ -432,12 +431,12 @@ gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None,
 		[shiny_sword_init_desc]
 	) 
 
-main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, # future room
-		[faded_tapestries],
-		[shiny_sword, royal_hedgehog, wooden_shelf], 
-		[], 
-		[shiny_sword_init_desc]
-	) # note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
+# main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, # future room
+#		[faded_tapestries],
+#		[shiny_sword, royal_hedgehog, wooden_shelf], 
+#		[], 
+#		[shiny_sword_init_desc]
+#	) # note: for non-burt-creature testing, test_frog was in main_hall.floor_lst
 
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
 		[alcove], 
@@ -452,12 +451,6 @@ throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', N
 		[broach_dispenser_mach],
 		[]
 	)
-
-# unreachable_1 = Room('unreachable_1', 'Unreachable', 'unreachable_1', 'unreachable_1', None, [], [], [], [])
-
-# unreachable_2 = Room('unreachable_2', 'Unreachable', 'unreachable_2', 'unreachable_2', None, [], [], [], [])
-
-# unreachable_3 = Room('unreachable_3', 'Unreachable', 'unreachable_3', 'unreachable_3', None, [], [], [], [])
 
 
 # *** gs class modules ***
@@ -477,13 +470,34 @@ map = Map(
 		'map', # name
 		entrance, # hero_rm
 		[
-			{'room_x' : entrance, 'dir_x' : 'north', 'door' : front_gate, 'dir_y' : 'south', 'room_y' : gatehouse},
-#			{'room_x' : entrance, 'dir_x' : 'south', 'door' : untrodden_path, 'dir_y' : None, 'room_y' : unreachable_1},
-			{'room_x' : entrance, 'dir_x' : 'south', 'door' : untrodden_path, 'dir_y' : None, 'room_y' : 'unreachable'},
-#			{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_2},
-			{'room_x' : entrance, 'dir_x' : 'east', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : 'unreachable'},
-#			{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : unreachable_3},
-			{'room_x' : entrance, 'dir_x' : 'west', 'door' : 'leap down to the moat', 'dir_y' : None, 'room_y' : 'unreachable'},
+			{
+				'room_x' : entrance, 
+				'dir_x' : 'north', 
+				'door' : front_gate, 
+				'dir_y' : 'south', 
+				'room_y' : gatehouse
+			},
+			{
+				'room_x' : entrance, 
+				'dir_x' : 'south', 
+				'door' : untrodden_path, 
+				'dir_y' : None, 
+				'room_y' : 'unreachable'
+			},
+			{
+				'room_x' : entrance, 
+				'dir_x' : 'east', 
+				'door' : 'leap down to the moat', 
+				'dir_y' : None, 
+				'room_y' : 'unreachable'
+			},
+			{
+				'room_x' : entrance, 
+				'dir_x' : 'west', 
+				'door' : 'leap down to the moat', 
+				'dir_y' : None, 
+				'room_y' : 'unreachable'
+			},
 			{
 				'room_x' : gatehouse,
 				'dir_x' : 'north',
@@ -491,9 +505,15 @@ map = Map(
 				'dir_y' : 'south',
 				'room_y' : antechamber
 			},
-			{'room_x' : antechamber, 'dir_x' : 'north', 'door' : iron_portcullis, 'dir_y' : 'south', 'room_y' : throne_room}
+			{
+				'room_x' : antechamber, 
+				'dir_x' : 'north', 
+				'door' : iron_portcullis, 
+				'dir_y' : 'south', 
+				'room_y' : throne_room
+			}
 		] # map_lst
-		)
+	)
 
 io = IO(
 		'io', # name
@@ -612,7 +632,7 @@ master_obj_lst = [
 		test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, 
 		
 		# future objects
-		main_hall, faded_tapestries, 
+		faded_tapestries, # main_hall, 
 	] # note: big_bomb & test_frog removed; glass_bottle removed
 
 # list written to pickle

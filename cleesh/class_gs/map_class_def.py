@@ -30,6 +30,10 @@ class Map(Invisible):
 		should appear different when approached from different directions (e.g. foreboding_archway
 		going north, lit_archway going south). In this case, the dict key is the room and the value 
 		is the door object. 
+
+		Note 3: In cases where the player's inetent to go in a direction will trigger a machine, but 
+		no actual room is needed (e.g. e, w, or s from Entrance) 'room_y' can take on the special 
+		value 'unreachable'. 
         """
 
 	# *** getters & setters ***
@@ -51,7 +55,6 @@ class Map(Invisible):
 		"""
 		room_lst = []
 		[room_lst.append(room_pair[room[0]]) for room_pair in self.map_lst for room in room_key_lst
-#				if room_pair[room[0]] not in room_lst]
 				if (room_pair[room[0]] != 'unreachable') and (room_pair[room[0]] not in room_lst)]
 		return room_lst
 
@@ -201,7 +204,6 @@ class Map(Invisible):
 	def chk_valid_dir(self, room, dir):
 		""" Evaluates whether going direction dir from room is viable.
 		"""
-#		return any(room_pair[room_lst[0]] == room and room_pair[room_lst[1]] == dir
 		return (any(room_pair[room_lst[0]] == room and room_pair[room_lst[1]] == dir 
 			  	and room_pair[room_lst[2]] != 'unreachable')
 				for room_pair in self.map_lst for room_lst in room_key_lst)

@@ -247,6 +247,8 @@ Note: during the 3.8.0 (cleesh) / 3.1.0 (Dark Castle) refactor I revamped gs.map
 
 2: the value of 'door' can be a dictionary of door objects. This is for cases where the passage between two rooms should appear different when approached from different directions (e.g. foreboding_archway going north, lit_archway going south). In this case, the dict key is the room and the value is the door object. 
 
+3: In cases where the player's inetent to go in a direction will trigger a machine, but no actual room is needed (e.g. e, w, or s from Entrance) 'room_y' can take on the special value 'unreachable'. This has allowed for the long awaited elimination of place-holder Unreachable_# rooms. gs.map.get_room_lst() and gs.map.chk_valid_dir() were both updated to recoginze the 'unreachable' value.
+
 ####################
 # score_class_def.py #
 ####################

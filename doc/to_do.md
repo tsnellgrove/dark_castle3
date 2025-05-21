@@ -543,23 +543,24 @@ End Date:
 				- DONE: doc dict option in comments and in doc file (also mention paths as obj)
 				- DONE: doc that 'door' in map_dict really means 'any passage between rooms'
 		- DONE: update dark_castle description to indicate that there are always dark clouds overhead?
-		- INPROC: elim need for unreachable rooms
+		- DONE: elim need for unreachable rooms
 			- DONE: update room_lst with special 'unreachable' value
 			- DONE: update gs.map.chk_valid_dir() for 'unreachable'
 			- DONE: update gs.map.get_room_lst() to check for 'unreachable'
 			- DONE: test
 			- DONE: comment out old unreachable rooms
-			- TBD: 2nd full test
-			- TBD: comment special value of 'unreachable'
-			- TBD: clean up gs.map() and game_update()
+			- DONE: 2nd full test
+			- DONE: comment special value of 'unreachable'
+			- DONE: clean up gs.map() and game_update()
 			- CANCEL: eliminate hidden rooms [IN-VER]
 				- EXAMPE: s, e, & w of Entrance 
 				- CANCEL: Room class would need a custom_path_lst attrib
 				- CANCEL: custom_path_lst called from room.disp_cond()	
-		- TBD: test all machines
-		- TBD: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
-			- TBD: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
-			- TBD: sort out whole 'fist' / 'sharp_teeth' un-armed attack issue in Creature class
+		- DONE: test all machines
+		- TBD: final tune up
+			- TBD: extract paths from description
+			- TBD: add '* apparatus' to attack_burt mach
+			- TBD: document desire to make apparatus a synonym for control_panel
 	- TBD: room 3
 		- TBD: de-capitalize all nouns
 		- TBD: de-dup passages descriptions vs. base description
@@ -568,6 +569,9 @@ End Date:
 		- TBD: make paths examineable
 		- TBD: use init_desc where appropriate
 		- TBD: test all machines
+		- TBD: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
+			- TBD: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
+			- TBD: sort out whole 'fist' / 'sharp_teeth' un-armed attack issue in Creature class
 		- TBD: turn lantern into actual light
 			- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
 			- IDEA: see thoughts on light in to-do notes below
