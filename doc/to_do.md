@@ -500,7 +500,7 @@ End Date:
 			- DONE: add untrodden_path to the object pickle
 			- DONE: test
 		- DONE: clean up game_update()
-	- INPROC: room 2
+	- DONE: room 2
 		- IDEA: this is a safe room for Burt to rest in - sort of a home base
 		- DONE: main_hall => gatehouse
 			- DONE: crete gatehouse room in game_update()
@@ -557,13 +557,11 @@ End Date:
 				- CANCEL: Room class would need a custom_path_lst attrib
 				- CANCEL: custom_path_lst called from room.disp_cond()	
 		- DONE: test all machines
-		- TBD: final tune up
-			- TBD: extract paths from description
-			- TBD: add '* apparatus' to attack_burt mach
-			- TBD: document desire to make apparatus a synonym for control_panel
+		- DONE: final tune up
+			- DONE: extract paths from description
 	- TBD: room 3
 		- TBD: de-capitalize all nouns
-		- TBD: de-dup passages descriptions vs. base description
+		- TBD: de-dup passage descriptions vs. base description
 		- TBD: review existing nouns
 		- TBD: add all referenced nouns
 		- TBD: make paths examineable
@@ -577,7 +575,7 @@ End Date:
 			- IDEA: see thoughts on light in to-do notes below
 	- TBD: room 4
 		- TBD: de-capitalize all nouns
-		- TBD: de-dup passages descriptions vs. base description
+		- TBD: de-dup passage descriptions vs. base description
 		- TBD: review existing nouns
 		- TBD: add all referenced nouns
 		- TBD: make paths examineable
@@ -921,6 +919,10 @@ word_lst assignment:
 	- Pray
 	- Curse
 	- Sing
+
+- TBD: need to enable a rich set of game-specific synonyms!
+	- TBD: make 'apparatus' a synonym for control_panel
+	- TBD: add '* apparatus' as trigger to goblin_attack_mach
 
 - TBD: need a better way to error on 'x'_'y' != obj.name ; maybe if '_' in noun, buff: "I don't see that"
 
