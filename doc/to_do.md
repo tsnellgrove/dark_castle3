@@ -559,17 +559,21 @@ End Date:
 		- DONE: test all machines
 		- DONE: final tune up
 			- DONE: extract paths from description
-	- TBD: room 3
-		- TBD: de-capitalize all nouns
-		- TBD: de-dup passage descriptions vs. base description
-		- TBD: review existing nouns
-		- TBD: add all referenced nouns
-		- TBD: make paths examineable
-		- TBD: use init_desc where appropriate
-		- TBD: test all machines
+	- INPROC: room 3
+		- DONE: de-capitalize all nouns
+		- DONE: de-dup passage descriptions vs. base description
+		- DONE: review existing nouns
+		- DONE: add all referenced nouns
+		- DONE: make paths examineable
+		- N/A: use init_desc where appropriate
+		- DONE: test all machines
 		- TBD: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
 			- TBD: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
+				- TBD: start fix at line 167 in interp - separate 'lock', 'unlock' cases from 'attack'
 			- TBD: sort out whole 'fist' / 'sharp_teeth' un-armed attack issue in Creature class
+		- TBD: figure out how creature.hand vs. inventory should work
+			- IDEA: I want the outside world to see what's in creatures hand (e.g. goblin holding axe)
+			- IDEA: but I don't want player to need to think about inventory mgmt
 		- TBD: turn lantern into actual light
 			- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
 			- IDEA: see thoughts on light in to-do notes below
