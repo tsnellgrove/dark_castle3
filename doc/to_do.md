@@ -567,10 +567,10 @@ End Date:
 		- DONE: make paths examineable
 		- N/A: use init_desc where appropriate
 		- DONE: test all machines
-		- TBD: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
-			- TBD: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
-				- TBD: start fix at line 167 in interp - separate 'lock', 'unlock' cases from 'attack'
-			- TBD: sort out whole 'fist' / 'sharp_teeth' un-armed attack issue in Creature class
+		- INPROC: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
+			- DONE: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
+				- DONE: start fix at line 167 in interp - separate 'lock', 'unlock' cases from 'attack'
+			- TBD: clean-up interp(), 
 		- TBD: figure out how creature.hand vs. inventory should work
 			- IDEA: I want the outside world to see what's in creatures hand (e.g. goblin holding axe)
 			- IDEA: but I don't want player to need to think about inventory mgmt
@@ -824,7 +824,8 @@ End Date:
 
 
 *** refactor Creature ***
-- Sort out the wierd thing where unarmed attack is represented by first item in feature_lst
+- TBD: sort out whole 'fist' / 'sharp_teeth' un-armed attack issue in Creature class
+	- Sort out the wierd thing where unarmed attack is represented by first item in feature_lst
 - TBD: consider how to surface 'not_attackable' txt in game_static_gbl
 	- UPDATE: is_attackable checked in error() - maybe good enough?
 - TBD: does creature_state really have any value? Maybe build hedgehog state machine before pulling the plug on this one
