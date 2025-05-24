@@ -567,16 +567,30 @@ End Date:
 		- DONE: make paths examineable
 		- N/A: use init_desc where appropriate
 		- DONE: test all machines
-		- INPROC: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
+		- DONE: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
 			- DONE: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
 				- DONE: start fix at line 167 in interp - separate 'lock', 'unlock' cases from 'attack'
-			- TBD: clean-up interp(), 
-		- TBD: figure out how creature.hand vs. inventory should work
+			- DONE: clean-up interp()
+		- INPROC: figure out how to update creature.hand vs. inventory to reduce un-fun friction
 			- IDEA: I want the outside world to see what's in creatures hand (e.g. goblin holding axe)
 			- IDEA: but I don't want player to need to think about inventory mgmt
-		- TBD: turn lantern into actual light
-			- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
-			- IDEA: see thoughts on light in to-do notes below
+			- IDEA: if the player specifies the obj and it is in inventory but not in hand:
+				- IDEA: auto move the obj to hand and then perform action
+			- TBD: final decision on whenther 2-word ['drop', 'eat', 'wear'] case = one-off or swap hand
+			- TBD: sort out 2-word case
+				- TBD: one-off solution to 'eat' (similar to 'drop')
+					- TBD: update eat() in item()
+					- TBD: update eat_err() in error()
+				- TBD: one-off solution to 'wear' (similar to 'drop')
+					- TBD: update wear() in item()
+					- TBD: update wear_err() in error()
+			- TBD: sort out prep case
+				- TBD: in validate() check for item not in hand but in backpack; if so, put_in_hand()
+				- TBD: deal with special case of 'drink'
+			- TBD: dangerous scenarios
+				- IDEA: burt should attempt to auto-draw a weapon when threatened
+				- TBD: sort out moat
+				- TBD: sort out golin attack
 	- TBD: room 4
 		- TBD: de-capitalize all nouns
 		- TBD: de-dup passage descriptions vs. base description
@@ -589,6 +603,9 @@ End Date:
 			- TBD: should obj.full_name be de-captialized?
 		- TBD: implement full set of cardinal directions
 		- TBD: implement 'jump'
+		- TBD: turn lantern into actual light
+			- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
+			- IDEA: see thoughts on light in to-do notes below
 - TBD: clean up cleesh static_gbl, clean-up game_static_gbl
 - TBD: search on obj nouns and ensure always capitalized (???)
 

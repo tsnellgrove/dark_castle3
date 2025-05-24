@@ -165,15 +165,11 @@ def interpreter(user_input, master_obj_lst):
 		elif word1 in ['show', 'give']:
 			prep = 'to'
 		elif word1 in ['lock', 'unlock']:
-#		elif word1 in ['attack', 'lock', 'unlock']:
 			creature = gs.core.hero
 			prep = 'with'
 			if len(user_input_lst) < 4 and 'with' not in user_input and not creature.hand_is_empty():
 				user_input_lst.extend(['with',creature.get_hand_item().name])
 				gs.io.buffer(f"(with the {creature.get_hand_item().full_name})")
-#			elif len(user_input_lst) == 2 and 'with' not in user_input and creature.hand_is_empty():
-#				user_input_lst.extend(['with',creature.feature_lst[0].name])
-#				gs.io.buffer(f"(with your {creature.feature_lst[0].full_name})")
 		elif word1 in ['attack']:
 			creature = gs.core.hero
 			prep = 'with'
@@ -183,8 +179,6 @@ def interpreter(user_input, master_obj_lst):
 			elif len(user_input_lst) == 2 and 'with' not in user_input and creature.hand_is_empty():
 				user_input_lst.extend(['with',creature.feature_lst[0].name])
 				gs.io.buffer(f"(with your {creature.feature_lst[0].full_name})")
-#				print(user_input_lst)
-#			prep = 'with'
 		elif word1 in ['drink']:
 			creature = gs.core.hero
 			if len(user_input_lst) < 4 and 'from' not in user_input and not creature.hand_is_empty():
