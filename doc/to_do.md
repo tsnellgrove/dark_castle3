@@ -576,17 +576,23 @@ End Date:
 			- IDEA: but I don't want player to need to think about inventory mgmt
 			- IDEA: if the player specifies the obj and it is in inventory but not in hand:
 				- IDEA: auto move the obj to hand and then perform action
-			- TBD: final decision on whenther 2-word ['drop', 'eat', 'wear'] case = one-off or swap hand
-			- TBD: sort out 2-word case
-				- TBD: one-off solution to 'eat' (similar to 'drop')
-					- TBD: update eat() in item()
-					- TBD: update eat_err() in error()
+			- DONE: final decision on whenther 2-word ['drop', 'eat', 'wear'] case = one-off or swap hand
+			- INPROC: sort out 2-word case
+				- DONE: review / refine drop()
+				- DONE: one-off solution to 'eat' (similar to 'drop')
+					- DONE: update eat() in item()
+					- DONE: update eat_err() in error()
+					- DONE: test
 				- TBD: one-off solution to 'wear' (similar to 'drop')
 					- TBD: update wear() in item()
 					- TBD: update wear_err() in error()
+					- TBD: test
+			- TBD: clean-up drop(), eat(), wear(), error()
 			- TBD: sort out prep case
 				- TBD: in validate() check for item not in hand but in backpack; if so, put_in_hand()
 				- TBD: deal with special case of 'drink'
+				- TBD: test
+				- TBD: clean-up validate()
 			- TBD: dangerous scenarios
 				- IDEA: burt should attempt to auto-draw a weapon when threatened
 				- TBD: sort out moat

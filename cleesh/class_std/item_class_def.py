@@ -131,8 +131,17 @@ class Food(Item):
 			mode = 'std'
 		creature = gs.core.hero
 
-		creature.hand_lst_remove(self)
-		
+#		creature.hand_lst_remove(self)
+
+		if creature.chk_in_hand(self):
+			creature.hand_lst_remove(self)
+#			gs.io.buffer("Eaten")
+#			gs.io.buff_s(f"{creature.name}_eat_{self.descript_key}")
+		else:
+			creature.bkpk_lst_remove(self)
+#			gs.io.buffer(f"You pluck the {self.full_name} from your backpack and eat it.")
+#			gs.io.buff_s(f"{creature.name}_eat_{self.descript_key}")
+
 		gs.io.buffer(f"Eaten.")
 		gs.io.buff_s(f"{creature.name}_eat_{self.descript_key}")
 		return 

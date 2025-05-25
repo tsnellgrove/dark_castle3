@@ -161,7 +161,8 @@ class Error(Identity):
 ##			gs.io.buffer(f"You can't even pick up the {self.full_name}... how could you possibly drop it??")
 ##			return True
 		if self not in creature.hand_lst and self not in creature.bkpk_lst: # enable drop from pack
-			err_txt = (f"You're not holding the {self.full_name} in your hand.")
+#			err_txt = (f"You're not holding the {self.full_name} in your hand.")
+			err_txt = (f"You don't possess the {self.full_name}.")
 			return True, False, err_txt
 #		if self.err_not_in_hand(creature, gs):
 #			return True, False, ""
@@ -191,8 +192,13 @@ class Error(Identity):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True, False, ""
-		if self.err_not_in_hand(creature, gs):
-			return True, False, ""
+#		if self.err_not_in_hand(creature, gs):
+#			return True, False, ""
+		if self not in creature.hand_lst and self not in creature.bkpk_lst: # enable drop from pack
+#			err_txt = (f"You're not holding the {self.full_name} in your hand.")
+			err_txt = (f"You don't possess the {self.full_name}.")
+			return True, False, err_txt
+
 		if not self.is_food():
 			# attemptable error: something might look edible - is reasonable to attempt - player gets info
 			err_txt =(f"What kind of desperate individual tries to eat a {self.full_name}? If you keep this up you're going to give Adventurers a bad name!")
