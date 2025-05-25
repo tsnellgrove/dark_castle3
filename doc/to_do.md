@@ -590,8 +590,9 @@ End Date:
 			- TBD: clean-up drop(), eat(), wear(), error()
 			- TBD: sort out prep case
 				- TBD: in validate() check for item not in hand but in backpack; if so, put_in_hand()
+				- TBD: test lock, unlock, unlock, put, show, give, attack
 				- TBD: deal with special case of 'drink'
-				- TBD: test
+				- TBD: test drink
 				- TBD: clean-up validate()
 			- TBD: dangerous scenarios
 				- IDEA: burt should attempt to auto-draw a weapon when threatened
