@@ -197,7 +197,11 @@ class Garment(Item):
 			mode = 'std'
 		creature = gs.core.hero
 		
-		creature.hand_lst_remove(self)
+		if creature.chk_in_hand(self):
+			creature.hand_lst_remove(self)
+		else:
+			creature.bkpk_lst_remove(self)
+#		creature.hand_lst_remove(self)
 		creature.worn_lst_append(self)
 		
 		gs.io.buffer("Worn.")

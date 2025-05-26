@@ -194,7 +194,7 @@ class Error(Identity):
 			return True, False, ""
 #		if self.err_not_in_hand(creature, gs):
 #			return True, False, ""
-		if self not in creature.hand_lst and self not in creature.bkpk_lst: # enable drop from pack
+		if self not in creature.hand_lst and self not in creature.bkpk_lst:
 #			err_txt = (f"You're not holding the {self.full_name} in your hand.")
 			err_txt = (f"You don't possess the {self.full_name}.")
 			return True, False, err_txt
@@ -212,8 +212,11 @@ class Error(Identity):
 		if self in creature.worn_lst:
 			err_txt = (f"You're already wearing the {self.full_name}!")
 			return True, False, err_txt
-		if self.err_not_in_hand(creature, gs):
-			return True, False, ""
+#		if self.err_not_in_hand(creature, gs):
+		if self not in creature.hand_lst and self not in creature.bkpk_lst:
+			err_txt = (f"You don't possess the {self.full_name}.")
+#			return True, False, ""
+			return True, False, err_txt
 		if creature.chk_type_worn(self):
 			err_txt = (f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
 			return True, False, err_txt

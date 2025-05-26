@@ -577,27 +577,28 @@ End Date:
 			- IDEA: if the player specifies the obj and it is in inventory but not in hand:
 				- IDEA: auto move the obj to hand and then perform action
 			- DONE: final decision on whenther 2-word ['drop', 'eat', 'wear'] case = one-off or swap hand
-			- INPROC: sort out 2-word case
+			- DONE: sort out 2-word case
 				- DONE: review / refine drop()
 				- DONE: one-off solution to 'eat' (similar to 'drop')
 					- DONE: update eat() in item()
 					- DONE: update eat_err() in error()
 					- DONE: test
-				- TBD: one-off solution to 'wear' (similar to 'drop')
-					- TBD: update wear() in item()
-					- TBD: update wear_err() in error()
-					- TBD: test
-			- TBD: clean-up drop(), eat(), wear(), error()
+				- DONE: one-off solution to 'wear' (similar to 'drop')
+					- DONE: update wear() in item()
+					- DONE: update wear_err() in error()
+					- DONE: test
 			- TBD: sort out prep case
 				- TBD: in validate() check for item not in hand but in backpack; if so, put_in_hand()
 				- TBD: test lock, unlock, unlock, put, show, give, attack
 				- TBD: deal with special case of 'drink'
 				- TBD: test drink
 				- TBD: clean-up validate()
+			- TBD: sort out obj in portable container in backpack (e.g. biscuit in bag)
 			- TBD: dangerous scenarios
 				- IDEA: burt should attempt to auto-draw a weapon when threatened
 				- TBD: sort out moat
-				- TBD: sort out golin attack
+				- TBD: sort out goblin attack
+			- TBD: clean-up drop(), eat(), wear(), error()
 	- TBD: room 4
 		- TBD: de-capitalize all nouns
 		- TBD: de-dup passage descriptions vs. base description
