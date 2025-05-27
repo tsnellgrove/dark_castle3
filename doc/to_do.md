@@ -587,18 +587,29 @@ End Date:
 					- DONE: update wear() in item()
 					- DONE: update wear_err() in error()
 					- DONE: test
+			- TBD: core troubleshooting
+				- TBD: sort out debug_poke53281,0
+				- TBD: sort out 'unlock gate with key' from entrance w/ empty hand
 			- TBD: sort out prep case
-				- TBD: in validate() check for item not in hand but in backpack; if so, put_in_hand()
+				- CANCEL: in validate() check for item not in hand but in backpack; if so, put_in_hand()
+					- FINDING: this won't work - 'with' assumptions in interp(); try interp()
+				- TBD: in interp() check for item not in hand but in bakp; if so, put_in_hand()
+				- TBD: consider customizing put_in_hand() for bkp case to avoid weight check
 				- TBD: test lock, unlock, unlock, put, show, give, attack
 				- TBD: deal with special case of 'drink'
 				- TBD: test drink
+				- TBD: special case of guessing what player means if they don't specify
+					- TBD: how shoudld this work? Should they need to be aware of what's in their hand?
+					- TBD: default to key-like obj for lock / unlock activity?
+					- TBD: review inform flags used for (Get What I Mean)
+					- TBD: how to implement?
 				- TBD: clean-up validate()
 			- TBD: sort out obj in portable container in backpack (e.g. biscuit in bag)
 			- TBD: dangerous scenarios
 				- IDEA: burt should attempt to auto-draw a weapon when threatened
 				- TBD: sort out moat
 				- TBD: sort out goblin attack
-			- TBD: clean-up drop(), eat(), wear(), error()
+			- TBD: clean-up drop(), eat(), wear(), error(), validate()
 	- TBD: room 4
 		- TBD: de-capitalize all nouns
 		- TBD: de-dup passage descriptions vs. base description

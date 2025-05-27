@@ -31,6 +31,8 @@ def validate(gs, case, word_lst):
 					gs.io.buffer(err_txt)
 			elif case == 'prep':
 				dirobj_obj, word1, noun_obj = word_lst
+#				if word1 in ['unlock'] and not gs.core.hero.chk_in_hand(noun_obj):
+#					gs.core.hero.put_in_hand(noun_obj)
 				cmd_err, is_att, err_txt = getattr(dirobj_obj, word1 + '_err')(noun_obj, gs)
 				if (cmd_err and not is_att and err_txt != ""):
 					gs.io.buffer(err_txt)
