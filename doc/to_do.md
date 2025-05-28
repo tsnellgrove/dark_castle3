@@ -587,12 +587,15 @@ End Date:
 					- DONE: update wear() in item()
 					- DONE: update wear_err() in error()
 					- DONE: test
-			- TBD: core troubleshooting
-				- TBD: sort out debug_poke53281,0
-				- TBD: sort out 'unlock gate with key' from entrance w/ empty hand
+			- DONE: core troubleshooting
+				- DONE: sort out debug_poke53281,0
+					- FINDING: ',' no longer usable due to cmd queue - switched to 'debug_xyzzy'
+				- DONE: sort out 'unlock gate with key' from entrance w/ empty hand
+					- FINDING: was just a remnant from the 'debug_poke53281,0' error
 			- TBD: sort out prep case
 				- CANCEL: in validate() check for item not in hand but in backpack; if so, put_in_hand()
 					- FINDING: this won't work - 'with' assumptions in interp(); try interp()
+				- TBD: step back and think how I want this to work for specified obj not in hand
 				- TBD: in interp() check for item not in hand but in bakp; if so, put_in_hand()
 				- TBD: consider customizing put_in_hand() for bkp case to avoid weight check
 				- TBD: test lock, unlock, unlock, put, show, give, attack

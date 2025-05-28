@@ -56,7 +56,7 @@ def cmd_execute(gs, case, word_lst):
 			if word1 == 'credits':
 				gs.io.buff_e('credits')
 				return
-			if word1 == 'debug_poke53281,0':
+			if word1 == 'debug_xyzzy':
 				gs.core.is_debug = not gs.core.is_debug
 				gs.io.buffer(f"Debug Mode is now set to {str(gs.core.is_debug)}.")
 				return

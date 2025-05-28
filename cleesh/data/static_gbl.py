@@ -26,7 +26,7 @@ engine_static_dict = {
 
 	'pre_interp_word_lst' : ['quit', 'wait', 'again', 'restart', 'save', 'restore'],
     
-	'one_word_secret_lst' : ['debug_poke53281,0'],
+	'one_word_secret_lst' : ['debug_xyzzy'], # was 'debug_poke53281,0' before the cmd queue was implemented
 
     'one_word_only_lst' : ['credits', 'score', 'version'],
 
