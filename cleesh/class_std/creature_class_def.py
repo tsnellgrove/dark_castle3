@@ -155,6 +155,9 @@ class Creature(ViewOnly):
 		return self.get_hand_item().is_weapon()
 
 	# *** attrib methods - bkpk ***
+	def chk_in_bkpk(self, obj):
+		return obj in self.bkpk_lst
+
 	def bkpk_is_empty(self):
 		return not bool(self.bkpk_lst)
 

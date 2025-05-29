@@ -595,21 +595,18 @@ End Date:
 			- TBD: sort out prep case
 				- CANCEL: in validate() check for item not in hand but in backpack; if so, put_in_hand()
 					- FINDING: this won't work - 'with' assumptions in interp(); try interp()
-				- TBD: step back and think how I want this to work for specified obj not in hand
-				- TBD: in interp() check for item not in hand but in bakp; if so, put_in_hand()
-				- TBD: consider customizing put_in_hand() for bkp case to avoid weight check
-				- TBD: test lock, unlock, unlock, put, show, give, attack
-				- TBD: deal with special case of 'drink'
-				- TBD: test drink
-				- TBD: special case of guessing what player means if they don't specify
-					- TBD: how shoudld this work? Should they need to be aware of what's in their hand?
-					- TBD: default to key-like obj for lock / unlock activity?
-					- TBD: review inform flags used for (Get What I Mean)
-					- TBD: how to implement?
+				- DONE: step back and think how I want this to work for specified obj not in hand
+				- DONE: in interp() (pre-return) chk for item not in hand but in bakp; if so, put_in_hand()
+				- DONE: test lock, unlock, unlock, drink, attack
+				- DONE: test put, show, give
+				- TBD: sort out initial 'get key' score (elim and double open gate score?)
+				- TBD: update chk_bkpk() to deal with obj in portable containers (e.g. biscuit in bag)
+				- TBD: customize put_in_hand() for bkpk case to avoid weight check				
 				- TBD: clean-up validate()
-			- TBD: sort out obj in portable container in backpack (e.g. biscuit in bag)
+			- TBD: decide if sword glows in backpack?? (probably yes if 'hand' de-emphasized)
 			- TBD: dangerous scenarios
 				- IDEA: burt should attempt to auto-draw a weapon when threatened
+				- TBD: should be some sort of "you draw your weapon" txt?
 				- TBD: sort out moat
 				- TBD: sort out goblin attack
 			- TBD: clean-up drop(), eat(), wear(), error(), validate()
@@ -963,6 +960,12 @@ word_lst assignment:
 	- Pray
 	- Curse
 	- Sing
+
+- TBD: special case of guessing what player means if they don't specify
+	- TBD: how shoudld this work? Should they need to be aware of what's in their hand?
+	- TBD: default to key-like obj for lock / unlock activity?
+	- TBD: review inform flags used for (Get What I Mean)
+	- TBD: how to implement?
 
 - TBD: need to enable a rich set of game-specific synonyms!
 	- TBD: make 'apparatus' a synonym for control_panel
