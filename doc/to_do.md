@@ -599,17 +599,25 @@ End Date:
 				- DONE: in interp() (pre-return) chk for item not in hand but in bakp; if so, put_in_hand()
 				- DONE: test lock, unlock, unlock, drink, attack
 				- DONE: test put, show, give
-				- TBD: sort out initial 'get key' score (elim and double open gate score?)
+				- DONE: sort out initial 'get key' score (elim and double open gate score?)
+				- DONE: customize put_in_hand() for bkpk case to avoid weight check				
 				- TBD: update chk_bkpk() to deal with obj in portable containers (e.g. biscuit in bag)
-				- TBD: customize put_in_hand() for bkpk case to avoid weight check				
-				- TBD: clean-up validate()
+					- DONE: investigate obj.chk_contain_lst() used in room.chk_contain_item()
+					- FINDING: obj.chk_contain_lst() does not appear to exist
+					- FINDING: get_contain_lst() exists, and chk_contain_itme() exists...
+					- FINDING: but chk_contain_lst() appears to be a masked error
+					- TBD: determine test for 
+				- TBD: clean-up validate() room.chk_contain_item() that fails due to above error
+				- TBD: fix room.chk_contain_item()
+				- TBD: test to confirm fix
+				- TBD: extend room solution to backpack for portable containers
 			- TBD: decide if sword glows in backpack?? (probably yes if 'hand' de-emphasized)
 			- TBD: dangerous scenarios
 				- IDEA: burt should attempt to auto-draw a weapon when threatened
 				- TBD: should be some sort of "you draw your weapon" txt?
 				- TBD: sort out moat
 				- TBD: sort out goblin attack
-			- TBD: clean-up drop(), eat(), wear(), error(), validate()
+			- TBD: clean-up drop(), eat(), wear(), error(), validate(), game_static_gbl()
 	- TBD: room 4
 		- TBD: de-capitalize all nouns
 		- TBD: de-dup passage descriptions vs. base description

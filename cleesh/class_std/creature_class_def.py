@@ -132,7 +132,9 @@ class Creature(ViewOnly):
 
 	def put_in_hand(self, new_item, gs):
 #		if self.weight + new_item.weight >= self.max_weight:
-		if self.weight + new_item.weight > self.max_weight:
+		if ((self.weight + new_item.weight > self.max_weight) and (not self.chk_in_bkpk(new_item)) 
+	  			and (not self.chk_is_worn(new_item))):
+#		if self.weight + new_item.weight > self.max_weight:
 			room = gs.map.get_obj_room(self, gs)
 			room.floor_lst_append(new_item)
 			if self == gs.core.hero:

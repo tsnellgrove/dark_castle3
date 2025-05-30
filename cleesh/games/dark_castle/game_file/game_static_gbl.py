@@ -49,12 +49,13 @@ game_static_dict = {
 
 	'score_dict' : {
         'take' : {
-            	('rusty_key', None) : 5,
+#            	('rusty_key', None) : 5,
         		('shiny_sword', None) : 10,
         		('hedgehog_broach', None) : 5,
         		('kinging_scroll', None) : 5
                 },
-        'open' : {('front_gate', None) : 5},
+        'open' : {('front_gate', None) : 10},
+#        'open' : {('front_gate', None) : 5},
         'toggle_portcullis_result' : {('control_panel', None) : 10},
         'wear' : {('royal_crown', None) : 10},
         'give' : {('royal_hedgehog', 'shiny_sword') : 5},
