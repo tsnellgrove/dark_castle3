@@ -157,21 +157,36 @@ class Creature(ViewOnly):
 		return self.get_hand_item().is_weapon()
 
 	# *** attrib methods - bkpk ***
-	def chk_in_bkpk(self, obj):
-		return obj in self.bkpk_lst
+	def chk_in_bkpk(self, item):
+#		return obj in self.bkpk_lst
+		if item in self.bkpk_lst:
+			return True
+		for obj in self.bkpk_lst:
+			if obj.chk_contain_item(item):
+				return True
+		return False
 
 	def bkpk_is_empty(self):
 		return not bool(self.bkpk_lst)
 
 	def bkpk_lst_append(self, item):
-		self._bkpk_lst.append(item)
+		self.bkpk_lst.append(item)
 		self.increment_weight(item.weight)
 		return
 
-	def bkpk_lst_remove(self, item):
-		self._bkpk_lst.remove(item)
-		self.decrement_weight(item.weight)
-		return
+	def bkpk_lst_remove(self, item, gs):
+		if item in self._bkpk_lst:
+			self.bkpk_lst.remove(item)
+			self.decrement_weight(item.weight)
+			return
+		else:
+			for obj in self.bkpk_lst:
+				if obj.chk_contain_item(item):
+					obj.remove_item(item, gs)
+#					obj.decrement_weight(item.weight)
+#					self.decrement_weight(item.weight)
+					return
+		raise ValueError(f"Can't remove item {item} from creature {self.name}")
 
 	# *** attrib methods - worn ***
 	def worn_lst_append(self, item):
@@ -227,11 +242,16 @@ class Creature(ViewOnly):
 			self.hand_lst_remove(item)
 			return 
 		if item in self.bkpk_lst:
-			self.bkpk_lst_remove(item)
+			self.bkpk_lst_remove(item, gs)
 			return 
 		if item in self.worn_lst:
 			self.worn_lst_remove(item)
 			return 
+#		node1_lst = self.hand_lst + self.bkpk_lst + self.worn_lst
+#		for obj in node1_lst:
+#			if item in obj.get_vis_contain_lst(gs):
+#				obj.remove_item(item, gs)
+#				return
 		raise ValueError(f"Can't remove item {item} from creature {self.name}")
 		return 
 

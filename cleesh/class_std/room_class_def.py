@@ -83,8 +83,11 @@ class Room(ViewOnly):
 		"""
 		if item in self.floor_lst:
 			return True
-		if any(obj.chk_contain_lst(item) for obj in self.floor_lst):
-			return True
+#		for obj in self.floor_lst: # based on how remove works, don't need to check for sub-containers
+#			if obj.chk_contain_item(item):
+#				return True
+#		if any(obj.chk_contain_lst(item) for obj in self.floor_lst): # chk_contain_lst() is not defined in Room, so this will always return False
+#			return True
 		return False
 
 	def get_contain_lst(self, gs):

@@ -207,12 +207,12 @@ def interpreter(user_input, master_obj_lst):
 			elif word1 in ['attack', 'lock', 'unlock', 'drink']:
 				if not gs.core.hero.chk_in_hand(dirobj_obj) and gs.core.hero.chk_in_bkpk(dirobj_obj):
 					gs.core.hero.put_in_hand(dirobj_obj, gs)
-					gs.core.hero.bkpk_lst_remove(dirobj_obj)
+					gs.core.hero.bkpk_lst_remove(dirobj_obj, gs)
 				return 'prep', [noun_obj, word1, dirobj_obj]
 			else:
 				if not gs.core.hero.chk_in_hand(noun_obj) and gs.core.hero.chk_in_bkpk(noun_obj):
 					gs.core.hero.put_in_hand(noun_obj, gs)
-					gs.core.hero.bkpk_lst_remove(noun_obj)
+					gs.core.hero.bkpk_lst_remove(noun_obj, gs)
 				return 'prep', [dirobj_obj, word1, noun_obj]
 	else: # '2word' case
 		error_state, error_msg, word2_obj = noun_handling(master_obj_lst, user_input_lst)
