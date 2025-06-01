@@ -592,7 +592,7 @@ End Date:
 					- FINDING: ',' no longer usable due to cmd queue - switched to 'debug_xyzzy'
 				- DONE: sort out 'unlock gate with key' from entrance w/ empty hand
 					- FINDING: was just a remnant from the 'debug_poke53281,0' error
-			- TBD: sort out prep case
+			- DONE: sort out prep case
 				- CANCEL: in validate() check for item not in hand but in backpack; if so, put_in_hand()
 					- FINDING: this won't work - 'with' assumptions in interp(); try interp()
 				- DONE: step back and think how I want this to work for specified obj not in hand
@@ -601,7 +601,7 @@ End Date:
 				- DONE: test put, show, give
 				- DONE: sort out initial 'get key' score (elim and double open gate score?)
 				- DONE: customize put_in_hand() for bkpk case to avoid weight check				
-				- INPROC: update chk_bkpk() to deal with obj in portable containers (e.g. biscuit in bag)
+				- DONE: update chk_bkpk() to deal with obj in portable containers (e.g. biscuit in bag)
 					- DONE: investigate obj.chk_contain_lst() used in room.chk_contain_item()
 					- FINDING: obj.chk_contain_lst() does not appear to exist
 					- FINDING: get_contain_lst() exists, and chk_contain_item() exists...
@@ -611,12 +611,15 @@ End Date:
 					- CANCEL: clean-up room.chk_contain_item() that fails due to above error
 					- DONE: fix room.chk_contain_item()
 					- DONE: test to confirm fix
-					- INPROC: extend room solution to backpack for portable containers
+					- DONE: extend room solution to backpack for portable containers
 						- DONE: overhaul chk_in_bkpk() and bkpk_lst_remove() to ref sub-containers
 						- DONE: test drop(), eat(), wear()(
-						- TBD: troubleshoot verbs w/ bag & biscuit
-			- TBD: extend hand => bkpk to worn items?
-			- TBD: decide if sword glows in backpack?? (probably yes if 'hand' de-emphasized)
+						- DONE: troubleshoot verbs w/ bag & biscuit
+			- TBD: Additional fixes for moving to general inventory
+				- TBD: end-to-end review of obj & lbs moving between rooms, containers, and creatures
+				- TBD: now prep case works with portable containers but 2-word does not - fix
+				- TBD: extend hand => bkpk to worn items?			
+				- TBD: decide if sword glows in backpack?? (probably yes if 'hand' de-emphasized)
 			- TBD: dangerous scenarios
 				- IDEA: burt should attempt to auto-draw a weapon when threatened
 				- TBD: should be some sort of "you draw your weapon" txt?
