@@ -615,8 +615,18 @@ End Date:
 						- DONE: overhaul chk_in_bkpk() and bkpk_lst_remove() to ref sub-containers
 						- DONE: test drop(), eat(), wear()(
 						- DONE: troubleshoot verbs w/ bag & biscuit
-			- TBD: Additional fixes for moving to general inventory
-				- TBD: end-to-end review of obj & lbs moving between rooms, containers, and creatures
+			- INPROC: Additional fixes for moving to general inventory
+				- INPROC: end-to-end review of obj & lbs moving between rooms, containers, and creatures
+					- DONE: initial identity method review
+					- TBD: deep dive into Room
+					- TBD: deep dive into Interactive
+					- TBD: deep dive into Creature
+					- TBD: next steps to consider
+						- TBD: do we really need get_contain_lst() ?
+						- TBD: better understand Interactive contain_lst_remove()
+						- TBD: make worn_lst_remove() container aware
+						- TBD: make hand_lst_remove() container aware
+						- TBD: enable concept of Creature item_inventory ?
 				- TBD: now prep case works with portable containers but 2-word does not - fix
 				- TBD: extend hand => bkpk to worn items?			
 				- TBD: decide if sword glows in backpack?? (probably yes if 'hand' de-emphasized)
@@ -625,7 +635,8 @@ End Date:
 				- TBD: should be some sort of "you draw your weapon" txt?
 				- TBD: sort out moat
 				- TBD: sort out goblin attack
-			- TBD: clean-up drop(), eat(), wear(), error(), validate(), game_static_gbl(), room()
+			- TBD: clean-up drop(), eat(), wear(), error(), validate(), game_static_gbl()
+			- TBD: clean-up room(), creature()
 	- TBD: room 4
 		- TBD: de-capitalize all nouns
 		- TBD: de-dup passage descriptions vs. base description
