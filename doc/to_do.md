@@ -626,8 +626,14 @@ End Date:
 					- DONE: deep dive into Room
 						- IDEA: get_take_all_lst() & get_mach_lst() stay unique to room
 						- IDEA: extend chk_is_vis() & chk_wrt_is_vis() to all receptacles
-					- TBD: deep dive into Interactive
+						- IDEA: elim is_obj_on_floor() ?
+					- INPROC: deep dive into Interactive
+						- IDEA: sort out weight calc (=> burt wt == sum of inv wt) ??
+						- IDEA: elim is_empty() ?
+						- IDEA: make chk_wrt_is_vis() & chk_is_vis() universal / Identity methods?
+							- IDEA: extend to Creature ?
 					- TBD: deep dive into Creature
+					- TBD: deep dive into Item (including increment_weight() & decrement_weight() )
 					- TBD: next steps to consider
 				- TBD: now prep case works with portable containers but 2-word does not - fix
 				- TBD: extend hand => bkpk to worn items?			

@@ -67,17 +67,6 @@ class Room(ViewOnly):
 			return_lst += obj.get_vis_contain_lst(gs)
 		return return_lst
 
-	def get_take_all_lst(self, gs):
-		take_all_lst = []
-		temp_lst = self.floor_lst.copy()
-		for obj in self.floor_lst:
-			if not obj.is_creature() and not (obj.is_container() and obj.is_item()):
-				temp_lst += obj.get_vis_contain_lst(gs)
-		for obj in temp_lst:
-			if obj.is_item() and not obj.is_liquid():
-				take_all_lst.append(obj)
-		return take_all_lst
-
 	def chk_contain_item(self, item, gs):
 		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item()
 		"""
@@ -142,6 +131,17 @@ class Room(ViewOnly):
 			if (obj.is_mach() and obj.is_enabled):
 				mach_lst.append(obj)
 		return mach_lst
+
+	def get_take_all_lst(self, gs):
+		take_all_lst = []
+		temp_lst = self.floor_lst.copy()
+		for obj in self.floor_lst:
+			if not obj.is_creature() and not (obj.is_container() and obj.is_item()):
+				temp_lst += obj.get_vis_contain_lst(gs)
+		for obj in temp_lst:
+			if obj.is_item() and not obj.is_liquid():
+				take_all_lst.append(obj)
+		return take_all_lst
 
 
 	# *** universal display methods ***
