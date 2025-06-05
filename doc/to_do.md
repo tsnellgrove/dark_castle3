@@ -627,13 +627,20 @@ End Date:
 						- IDEA: get_take_all_lst() & get_mach_lst() stay unique to room
 						- IDEA: extend chk_is_vis() & chk_wrt_is_vis() to all receptacles
 						- IDEA: elim is_obj_on_floor() ?
-					- INPROC: deep dive into Interactive
+					- DONE: deep dive into Interactive
 						- IDEA: sort out weight calc (=> burt wt == sum of inv wt) ??
 						- IDEA: elim is_empty() ?
 						- IDEA: make chk_wrt_is_vis() & chk_is_vis() universal / Identity methods?
 							- IDEA: extend to Creature ?
-					- TBD: deep dive into Creature
+					- INPROC: deep dive into Creature
+						- IDEA: hand_lst_remove => 2 levels?
+						- IDEA: chk_in_hand => extend to 2 levels?
+						- IDEA: put_in_hand => move weight error to error_class? Add worn to weight chk?
+						- IDEA: hand_is_empty() and bkpk_is_empty() => unify w/ Interactive is_empty() ?
+						- IDEA: shift 2_word hand approach to prep / interp method for drop, eat, wear ?
+						- IDEA:
 					- TBD: deep dive into Item (including increment_weight() & decrement_weight() )
+						- IDEA: move increment_weight & decrement_weight to portable container? (prob not)
 					- TBD: next steps to consider
 				- TBD: now prep case works with portable containers but 2-word does not - fix
 				- TBD: extend hand => bkpk to worn items?			

@@ -100,7 +100,7 @@ class Creature(ViewOnly):
 	def max_weight(self):
 		return self._max_weight
 
-	# *** attrib methods - hand ***
+	# *** attrib methods - weight ***
 	def increment_weight(self, increment_by):
 		""" Increments the weight of an Item by a given amount
 		"""
