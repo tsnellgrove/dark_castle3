@@ -632,15 +632,17 @@ End Date:
 						- IDEA: elim is_empty() ?
 						- IDEA: make chk_wrt_is_vis() & chk_is_vis() universal / Identity methods?
 							- IDEA: extend to Creature ?
-					- INPROC: deep dive into Creature
+					- DONE: deep dive into Creature
 						- IDEA: hand_lst_remove => 2 levels?
 						- IDEA: chk_in_hand => extend to 2 levels?
 						- IDEA: put_in_hand => move weight error to error_class? Add worn to weight chk?
 						- IDEA: hand_is_empty() and bkpk_is_empty() => unify w/ Interactive is_empty() ?
 						- IDEA: shift 2_word hand approach to prep / interp method for drop, eat, wear ?
-						- IDEA:
+						- IDEA: chk_is_worn() => increase to 2 lvls deep
+						- IDEA: chk_contain_name() => increase to 2 lvls deep
 					- TBD: deep dive into Item (including increment_weight() & decrement_weight() )
 						- IDEA: move increment_weight & decrement_weight to portable container? (prob not)
+					- TBD: generalize item handling across receptacles and use creature inventory approach
 					- TBD: next steps to consider
 				- TBD: now prep case works with portable containers but 2-word does not - fix
 				- TBD: extend hand => bkpk to worn items?			

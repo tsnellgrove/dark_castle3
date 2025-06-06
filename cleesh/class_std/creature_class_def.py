@@ -263,6 +263,8 @@ class Creature(ViewOnly):
 				return True
 		return False
 
+
+	# *** seat-specific scope methods ***
 	def is_contained(self, gs): # only works for Creature class; not generalized for other obj
 		return self not in gs.map.get_obj_room(self, gs).floor_lst
 
@@ -304,6 +306,7 @@ class Creature(ViewOnly):
 				in_reach_obj_lst = in_reach_obj_lst + [receptacle]
 		wrt_in_reach = any(obj.writing == wrt for obj in in_reach_obj_lst)
 		return wrt_in_seat or wrt_in_reach
+
 
 	# *** universal display methods ***
 	def has_cond(self, gs):
