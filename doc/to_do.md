@@ -640,8 +640,13 @@ End Date:
 						- IDEA: shift 2_word hand approach to prep / interp method for drop, eat, wear ?
 						- IDEA: chk_is_worn() => increase to 2 lvls deep
 						- IDEA: chk_contain_name() => increase to 2 lvls deep
-					- TBD: deep dive into Item (including increment_weight() & decrement_weight() )
+					- INPROC: deep dive into Item
 						- IDEA: move increment_weight & decrement_weight to portable container? (prob not)
+						- IDEA: take()
+							- IDEA: move "worn remove" buff to sep worn_remove_disp method? (stowe, drop)
+							- IDEA: move "heavy load" buff to put_in_hand() ?
+						- IDEA drop()
+							- IDEA:
 					- TBD: generalize item handling across receptacles and use creature inventory approach
 					- TBD: next steps to consider
 				- TBD: now prep case works with portable containers but 2-word does not - fix
