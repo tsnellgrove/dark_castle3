@@ -640,15 +640,31 @@ End Date:
 						- IDEA: shift 2_word hand approach to prep / interp method for drop, eat, wear ?
 						- IDEA: chk_is_worn() => increase to 2 lvls deep
 						- IDEA: chk_contain_name() => increase to 2 lvls deep
-					- INPROC: deep dive into Item
+					- DONE: deep dive into Item
 						- IDEA: move increment_weight & decrement_weight to portable container? (prob not)
 						- IDEA: take()
 							- IDEA: move "worn remove" buff to sep worn_remove_disp method? (stowe, drop)
 							- IDEA: move "heavy load" buff to put_in_hand() ?
 						- IDEA drop()
-							- IDEA:
+							- IDEA: eliminate local bkpk_remove() call / enable auto-hand-trans
+							- IDEA: enable for port_cont
+						- IDEA: stowe()
+							- IDEA: enable for port_cont
+						- IDEA: eat()
+							- IDEA: eliminate local bkpk_remove() call / enable auto-hand-trans
+							- IDEA: enable for port_cont
+						- IDEA: drink()
+							- IDEA: enable auto-hand-trans
+							- IDEA: no concern about port_cont
+						- IDEA: wear()
+							- IDEA: eliminate local bkpk_remove() call / enable auto-hand-trans
+							- IDEA: enable for port_cont
+					- TBD: refine to-be plan
+					- TBD: address minor issues / redundancy / naming
+					- TBD: restructure 2_word cases
 					- TBD: generalize item handling across receptacles and use creature inventory approach
 					- TBD: next steps to consider
+					- TBD: tons of testing!!
 				- TBD: now prep case works with portable containers but 2-word does not - fix
 				- TBD: extend hand => bkpk to worn items?			
 				- TBD: decide if sword glows in backpack?? (probably yes if 'hand' de-emphasized)
