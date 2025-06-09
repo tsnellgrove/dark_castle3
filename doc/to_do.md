@@ -639,7 +639,7 @@ End Date:
 						- IDEA: hand_is_empty() and bkpk_is_empty() => unify w/ Interactive is_empty() ?
 						- IDEA: shift 2_word hand approach to prep / interp method for drop, eat, wear ?
 						- IDEA: chk_is_worn() => increase to 2 lvls deep
-						- IDEA: chk_contain_name() => increase to 2 lvls deep
+						- IDEA: chk_contain_name() => increase to 2 lvls deep ?
 					- DONE: deep dive into Item
 						- IDEA: move increment_weight & decrement_weight to portable container? (prob not)
 						- IDEA: take()
@@ -659,6 +659,18 @@ End Date:
 						- IDEA: wear()
 							- IDEA: eliminate local bkpk_remove() call / enable auto-hand-trans
 							- IDEA: enable for port_cont
+					- INPROC: where to start?
+						- INPROC: chk_in_hand & hand_lst_remove
+							- DONE: test: hold bag in hand, put biscuit
+							- DONE: update chk_in_hand() to be 2-levels deep (like chk_in_bkpk() )
+							- DONE: update hand_lst_remove to be 2-lvls deep (like bkpk_lst_remove )
+							- DONE: test: hold bag in hand, put biscuit
+							- TBD: fix 'help verbs' works but 'help travel' fails
+							- TBD: test weight change
+							- TBD: update doc
+							- TBD: standardize port_cont remove in bkpk_lst_remove to match hand?
+						- TBD: chk_is_worn() & worn_lst_remove()
+
 					- TBD: refine to-be plan
 					- TBD: address minor issues / redundancy / naming
 					- TBD: restructure 2_word cases

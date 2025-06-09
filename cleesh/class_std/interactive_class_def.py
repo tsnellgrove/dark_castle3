@@ -163,7 +163,7 @@ class ContainsMixIn(object):
 
 	# *** attrib methods ***
 	def contain_lst_append(self, item, gs):
-		self._contain_lst.append(item)
+		self.contain_lst.append(item)
 		if self.is_item(): # Increment Portable Container weight if Item is added
 			self.increment_weight(item.weight)
 			in_creature_inv, creature = gs.map.chk_obj_in_creature_inv(self, gs)
@@ -172,7 +172,7 @@ class ContainsMixIn(object):
 		return
 
 	def contain_lst_remove(self, item, gs):
-		self._contain_lst.remove(item)
+		self.contain_lst.remove(item)
 		if self.is_item(): # Decrement Portable Container weight if Item is removed
 			self.decrement_weight(item.weight)
 			in_creature_inv, creature = gs.map.chk_obj_in_creature_inv(self, gs)

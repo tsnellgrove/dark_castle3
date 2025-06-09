@@ -120,9 +120,35 @@ class Creature(ViewOnly):
 		return
 
 	def hand_lst_remove(self, item):
-		self.hand_lst.remove(item)
-		self.decrement_weight(item.weight)
-		return
+		if item in self.hand_lst:
+			self.hand_lst.remove(item)
+			self.decrement_weight(item.weight)
+			return
+		else:
+			for obj in self.hand_lst:
+				if obj.chk_contain_item(item):
+#					obj.remove_item(item)
+					obj.contain_lst.remove(item) # obj = portable container => cannot hold a container
+					obj.decrement_weight(item.weight)
+					self.decrement_weight(item.weight)
+					return
+
+#
+#	def bkpk_lst_remove(self, item, gs):
+#		if item in self._bkpk_lst:
+#			self.bkpk_lst.remove(item)
+#			self.decrement_weight(item.weight)
+#			return
+#		else:
+#			for obj in self.bkpk_lst:
+#				if obj.chk_contain_item(item):
+#					obj.remove_item(item, gs)
+##					obj.decrement_weight(item.weight)
+##					self.decrement_weight(item.weight)
+#					return
+#		raise ValueError(f"Can't remove item {item} from creature {self.name}")
+#
+
 
 	def hand_is_empty(self):
 		return not bool(self.hand_lst)
@@ -148,8 +174,16 @@ class Creature(ViewOnly):
 		self.hand_lst_append(new_item)
 		return
 
-	def chk_in_hand(self, obj):
-		return obj in self.hand_lst
+#	def chk_in_hand(self, obj):
+	def chk_in_hand(self, item):
+#		return obj in self.hand_lst
+		if item in self.hand_lst:
+			return True
+		for obj in self.hand_lst:
+			if obj.chk_contain_item(item):
+				return True
+		return False
+
 
 	def in_hand_is_weapon(self):
 		if self.hand_is_empty():
@@ -175,7 +209,7 @@ class Creature(ViewOnly):
 		return
 
 	def bkpk_lst_remove(self, item, gs):
-		if item in self._bkpk_lst:
+		if item in self.bkpk_lst:
 			self.bkpk_lst.remove(item)
 			self.decrement_weight(item.weight)
 			return
