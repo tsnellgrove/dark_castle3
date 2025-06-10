@@ -139,7 +139,8 @@ io = IO(
 		{}, # dyn_dict
 		"", # buff_str
 		"", # last_input_str
-		'cup_of_tea' # game_name
+		'cup_of_tea', # game_name
+		0 # multi_count
 		)
 
 score = Score(

@@ -633,8 +633,8 @@ End Date:
 						- IDEA: make chk_wrt_is_vis() & chk_is_vis() universal / Identity methods?
 							- IDEA: extend to Creature ?
 					- DONE: deep dive into Creature
-						- IDEA: hand_lst_remove => 2 levels?
-						- IDEA: chk_in_hand => extend to 2 levels?
+						- DONE: hand_lst_remove => 2 levels
+						- DONE: chk_in_hand => extend to 2 levels
 						- IDEA: put_in_hand => move weight error to error_class? Add worn to weight chk?
 						- IDEA: hand_is_empty() and bkpk_is_empty() => unify w/ Interactive is_empty() ?
 						- IDEA: shift 2_word hand approach to prep / interp method for drop, eat, wear ?
@@ -660,15 +660,16 @@ End Date:
 							- IDEA: eliminate local bkpk_remove() call / enable auto-hand-trans
 							- IDEA: enable for port_cont
 					- INPROC: where to start?
-						- INPROC: chk_in_hand & hand_lst_remove
+						- DONE: chk_in_hand & hand_lst_remove
 							- DONE: test: hold bag in hand, put biscuit
 							- DONE: update chk_in_hand() to be 2-levels deep (like chk_in_bkpk() )
 							- DONE: update hand_lst_remove to be 2-lvls deep (like bkpk_lst_remove )
 							- DONE: test: hold bag in hand, put biscuit
-							- TBD: fix 'help verbs' works but 'help travel' fails
-							- TBD: test weight change
-							- TBD: update doc
-							- TBD: standardize port_cont remove in bkpk_lst_remove to match hand?
+							- DONE: fix 'help verbs' works but 'help travel' fails
+							- DONE: test weight change
+							- DONE: update doc
+						- DONE: fix game 1
+						- TBD: standardize port_cont remove in bkpk_lst_remove to match hand
 						- TBD: chk_is_worn() & worn_lst_remove()
 
 					- TBD: refine to-be plan

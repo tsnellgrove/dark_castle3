@@ -13,7 +13,7 @@ def cmd_execute(gs, case, word_lst):
 			option = word_lst[0]
 			if option == 'help':
 				output = gs.io.get_str_nr('help')
-			elif option in ['basics', 'adjectives', 'prepositions', 'read', 'attack', 'creatures', 'save', 'multiples', 'travel', 'debug', 'command-queue']:
+			elif option in ['basics', 'adjectives', 'prepositions', 'read', 'attack', 'creatures', 'save', 'multiples', 'command-queue']:
 				key_str = "help_" + option
 				output = gs.io.get_str_nr(key_str)
 			elif option == 'verbs':
@@ -34,7 +34,7 @@ def cmd_execute(gs, case, word_lst):
 					pre_out = pre_out + key + " = " + abbrev_dict[key] + ", "
 				output = pre_out[:-2]
 			elif option == 'travel':
-				output = gs.io.get_str_nr(f"help_{option}") + ', '.join(gs.io.get_lst('one_word_travel_lst','eng'))
+				output = (gs.io.get_str_nr(f"help_{option}") + ', '.join(gs.io.get_lst('one_word_travel_lst','eng')))
 			elif option == 'debug':
 				if not gs.core.is_debug:
 					output = gs.io.get_str_nr('help_debug_error')
