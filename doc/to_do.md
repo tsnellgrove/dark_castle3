@@ -638,8 +638,8 @@ End Date:
 						- IDEA: put_in_hand => move weight error to error_class? Add worn to weight chk?
 						- IDEA: hand_is_empty() and bkpk_is_empty() => unify w/ Interactive is_empty() ?
 						- IDEA: shift 2_word hand approach to prep / interp method for drop, eat, wear ?
-						- IDEA: chk_is_worn() => increase to 2 lvls deep
-						- IDEA: chk_contain_name() => increase to 2 lvls deep ?
+						- DONE: chk_is_worn() => increase to 2 lvls deep
+						- DONE: chk_contain_name() => increase to 2 lvls deep ?
 					- DONE: deep dive into Item
 						- IDEA: move increment_weight & decrement_weight to portable container? (prob not)
 						- IDEA: take()
@@ -665,13 +665,34 @@ End Date:
 							- DONE: update chk_in_hand() to be 2-levels deep (like chk_in_bkpk() )
 							- DONE: update hand_lst_remove to be 2-lvls deep (like bkpk_lst_remove )
 							- DONE: test: hold bag in hand, put biscuit
-							- DONE: fix 'help verbs' works but 'help travel' fails
 							- DONE: test weight change
 							- DONE: update doc
-						- DONE: fix game 1
-						- TBD: standardize port_cont remove in bkpk_lst_remove to match hand
-						- TBD: chk_is_worn() & worn_lst_remove()
-
+						- DONE: misc fixes
+							- DONE: fix 'help verbs' works but 'help travel' fails
+							- DONE: fix game 1
+						- DONE: standardize port_cont remove in bkpk_lst_remove to match hand
+							- DONE: remove gs attrib
+							- DONE: test put biscuit from bkpk
+						- DONE: chk_is_worn() & worn_lst_remove()
+							- NA: can't test because have no clothes with pockets
+							- DONE: update chk_worn() to be 2-levels deep (like chk_in_bkpk() )
+							- DONE: update worn_lst_remove to be 2-lvls deep (like bkpk_lst_remove )
+						- INPROC: expand prep case to include worn
+							- DONE: add baseball_cap to entrance
+							- DONE: pre-test
+							- TBD: add full 'if' statements for chk / remove worn (both dirobj & noun)
+							- TBD: test gen
+							- TBD: test burt wt
+							- TBD: test put to see if remove disp is triggered
+							- TBD: address remove disp in 'if'
+							- TBD: test put to see if remove disp is triggered
+							- TBD: remove baseball_cap from entrance
+						- TBD: convert relevant 2_word cases to prep strategy
+							- TBD: drop
+							- TBD: stowe
+							- TBD: worn
+							- TBD: eat
+							- TBD: drink
 					- TBD: refine to-be plan
 					- TBD: address minor issues / redundancy / naming
 					- TBD: restructure 2_word cases

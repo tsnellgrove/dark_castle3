@@ -79,7 +79,7 @@ class Item(ViewOnly):
 			else:
 				gs.io.buffer("Dropped")
 		else:
-			creature.bkpk_lst_remove(self, gs)
+			creature.bkpk_lst_remove(self)
 			if gs.io.multi_count > 0:
 				gs.io.buffer(f"{self.full_name}: Dropped")
 			else:
@@ -138,7 +138,7 @@ class Food(Item):
 #			gs.io.buffer("Eaten")
 #			gs.io.buff_s(f"{creature.name}_eat_{self.descript_key}")
 		else:
-			creature.bkpk_lst_remove(self, gs)
+			creature.bkpk_lst_remove(self)
 #			gs.io.buffer(f"You pluck the {self.full_name} from your backpack and eat it.")
 #			gs.io.buff_s(f"{creature.name}_eat_{self.descript_key}")
 
@@ -200,7 +200,7 @@ class Garment(Item):
 		if creature.chk_in_hand(self):
 			creature.hand_lst_remove(self)
 		else:
-			creature.bkpk_lst_remove(self, gs)
+			creature.bkpk_lst_remove(self)
 #		creature.hand_lst_remove(self)
 		creature.worn_lst_append(self)
 		

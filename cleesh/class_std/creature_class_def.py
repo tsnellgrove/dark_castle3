@@ -133,21 +133,6 @@ class Creature(ViewOnly):
 					self.decrement_weight(item.weight)
 					return
 
-#
-#	def bkpk_lst_remove(self, item, gs):
-#		if item in self._bkpk_lst:
-#			self.bkpk_lst.remove(item)
-#			self.decrement_weight(item.weight)
-#			return
-#		else:
-#			for obj in self.bkpk_lst:
-#				if obj.chk_contain_item(item):
-#					obj.remove_item(item, gs)
-##					obj.decrement_weight(item.weight)
-##					self.decrement_weight(item.weight)
-#					return
-#		raise ValueError(f"Can't remove item {item} from creature {self.name}")
-#
 
 
 	def hand_is_empty(self):
@@ -208,7 +193,7 @@ class Creature(ViewOnly):
 		self.increment_weight(item.weight)
 		return
 
-	def bkpk_lst_remove(self, item, gs):
+	def bkpk_lst_remove(self, item):
 		if item in self.bkpk_lst:
 			self.bkpk_lst.remove(item)
 			self.decrement_weight(item.weight)
@@ -216,11 +201,14 @@ class Creature(ViewOnly):
 		else:
 			for obj in self.bkpk_lst:
 				if obj.chk_contain_item(item):
-					obj.remove_item(item, gs)
-#					obj.decrement_weight(item.weight)
-#					self.decrement_weight(item.weight)
+#					obj.remove_item(item, gs)
+					obj.contain_lst.remove(item) # obj = portable container => cannot hold a container
+					obj.decrement_weight(item.weight)
+					self.decrement_weight(item.weight)
 					return
 		raise ValueError(f"Can't remove item {item} from creature {self.name}")
+
+
 
 	# *** attrib methods - worn ***
 	def worn_lst_append(self, item):
@@ -229,9 +217,18 @@ class Creature(ViewOnly):
 		return
 
 	def worn_lst_remove(self, item):
-		self._worn_lst.remove(item)
-		self.decrement_weight(item.weight)
-		return
+		if item in self.worn_lst:
+			self.worn_lst.remove(item)
+			self.decrement_weight(item.weight)
+			return
+		else:
+			for obj in self.worn_lst:
+				if obj.chk_contain_item(item):
+					obj.contain_lst.remove(item) # obj = portable container => cannot hold a container
+					obj.decrement_weight(item.weight)
+					self.decrement_weight(item.weight)
+					return
+		raise ValueError(f"Can't remove item {item} from creature {self.name}")
 
 	def worn_is_empty(self):
 		return not bool(self.worn_lst)
@@ -240,7 +237,14 @@ class Creature(ViewOnly):
 		return any(item.garment_type == garment.garment_type for garment in self.worn_lst)
 
 	def chk_is_worn(self, garment):
-		return(garment in self.worn_lst)
+#		return(garment in self.worn_lst)
+		if garment in self.worn_lst:
+			return True
+		for obj in self.worn_lst:
+			if obj.chk_contain_item(garment):
+				return True
+		return False
+
 
 	# *** class identity methods ***
 	def is_creature(self):
@@ -276,7 +280,7 @@ class Creature(ViewOnly):
 			self.hand_lst_remove(item)
 			return 
 		if item in self.bkpk_lst:
-			self.bkpk_lst_remove(item, gs)
+			self.bkpk_lst_remove(item)
 			return 
 		if item in self.worn_lst:
 			self.worn_lst_remove(item)

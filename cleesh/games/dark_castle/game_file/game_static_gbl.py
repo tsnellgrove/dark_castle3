@@ -388,6 +388,10 @@ game_static_dict = {
 	'test_frog' : "The Test Frog looks testy.",
 
 
+	# test garment disp #
+	'burt_wear_baseball_cap' : "You now feel ready to play.",
+	'burt_remove_baseball_cap' : "You feel less ready to play.",
+
 	#### STANDARD DICT ELEMENTS #### (part 2)
 
 	### end info ###

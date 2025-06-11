@@ -419,7 +419,7 @@ big_rock_init_desc = InitDesc('big_rock_init_desc', big_rock, 'big_rock_init_des
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
 		[dark_castle, moat, drawbridge, rusty_keyhole],
-		[burt, postbox, big_rock], 
+		[burt, postbox, big_rock, baseball_cap], 
 		[entrance_moat_mach, entrance_south_warn], 
 		[postbox_init_desc, big_rock_init_desc]
 	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
