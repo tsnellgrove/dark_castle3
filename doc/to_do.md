@@ -620,8 +620,8 @@ End Date:
 					- DONE: dee dive into Identity
 						- IDEA: do we really need get_contain_lst() ?
 						- IDEA: better understand Interactive contain_lst_remove()
-						- IDEA: make worn_lst_remove() container aware
-						- IDEA: make hand_lst_remove() container aware
+						- DONE: make worn_lst_remove() container aware
+						- DONE: make hand_lst_remove() container aware
 						- IDEA: enable concept of Creature item_inventory ?
 					- DONE: deep dive into Room
 						- IDEA: get_take_all_lst() & get_mach_lst() stay unique to room
@@ -643,7 +643,7 @@ End Date:
 					- DONE: deep dive into Item
 						- IDEA: move increment_weight & decrement_weight to portable container? (prob not)
 						- IDEA: take()
-							- IDEA: move "worn remove" buff to sep worn_remove_disp method? (stowe, drop)
+							- CANCEL: move "worn remove" buff to sep worn_remove_disp method? (stowe, drop)
 							- IDEA: move "heavy load" buff to put_in_hand() ?
 						- IDEA drop()
 							- IDEA: eliminate local bkpk_remove() call / enable auto-hand-trans
@@ -707,7 +707,7 @@ End Date:
 				- TBD: should be some sort of "you draw your weapon" txt?
 				- TBD: sort out moat
 				- TBD: sort out goblin attack
-			- TBD: clean-up drop(), eat(), wear(), error(), validate(), game_static_gbl()
+			- TBD: clean-up drop(), eat(), wear(), error(), validate(), game_static_gbl(), interp(), all
 			- TBD: clean-up room(), creature()
 	- TBD: room 4
 		- TBD: de-capitalize all nouns
