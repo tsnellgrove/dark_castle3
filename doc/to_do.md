@@ -677,22 +677,22 @@ End Date:
 							- NA: can't test because have no clothes with pockets
 							- DONE: update chk_worn() to be 2-levels deep (like chk_in_bkpk() )
 							- DONE: update worn_lst_remove to be 2-lvls deep (like bkpk_lst_remove )
-						- INPROC: expand prep case to include worn
+						- DONE: expand prep case to include worn
 							- DONE: add baseball_cap to entrance
 							- DONE: pre-test
-							- TBD: add full 'if' statements for chk / remove worn (both dirobj & noun)
-							- TBD: test gen
-							- TBD: test burt wt
-							- TBD: test put to see if remove disp is triggered
-							- TBD: address remove disp in 'if'
-							- TBD: test put to see if remove disp is triggered
-							- TBD: remove baseball_cap from entrance
+							- DONE: add full 'if' statements for chk / remove worn (both dirobj & noun)
+							- DONE: test gen
+							- DONE: test burt wt
+							- DONE: test put to see if remove disp is triggered
+							- DONE: address remove disp in 'if'; add "(removing the X first)"
+							- DONE: test put to see if remove disp is triggered
 						- TBD: convert relevant 2_word cases to prep strategy
 							- TBD: drop
 							- TBD: stowe
 							- TBD: worn
 							- TBD: eat
 							- TBD: drink
+							- TBD: remove baseball_cap from entrance
 					- TBD: refine to-be plan
 					- TBD: address minor issues / redundancy / naming
 					- TBD: restructure 2_word cases

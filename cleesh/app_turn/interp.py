@@ -210,11 +210,21 @@ def interpreter(user_input, master_obj_lst):
 #						and (gs.core.hero.chk_in_bkpk(dirobj_obj) or gs.core.hero.chk_worn(dirobj_obj))):
 					gs.core.hero.put_in_hand(dirobj_obj, gs)
 					gs.core.hero.bkpk_lst_remove(dirobj_obj)
+				if not gs.core.hero.chk_in_hand(dirobj_obj) and gs.core.hero.chk_is_worn(dirobj_obj):
+					gs.core.hero.put_in_hand(dirobj_obj, gs)
+					gs.core.hero.worn_lst_remove(dirobj_obj)
+					gs.io.buffer(f"(Removing the {dirobj_obj.full_name} first)")
+					gs.io.buff_s(f"{gs.core.hero.name}_remove_{dirobj_obj.descript_key}")
 				return 'prep', [noun_obj, word1, dirobj_obj]
 			else:
 				if not gs.core.hero.chk_in_hand(noun_obj) and gs.core.hero.chk_in_bkpk(noun_obj):
 					gs.core.hero.put_in_hand(noun_obj, gs)
 					gs.core.hero.bkpk_lst_remove(noun_obj)
+				if not gs.core.hero.chk_in_hand(noun_obj) and gs.core.hero.chk_is_worn(noun_obj):
+					gs.core.hero.put_in_hand(noun_obj, gs)
+					gs.core.hero.worn_lst_remove(noun_obj)
+					gs.io.buffer(f"(Removing the {noun_obj.full_name} first)")
+					gs.io.buff_s(f"{gs.core.hero.name}_remove_{noun_obj.descript_key}")
 				return 'prep', [dirobj_obj, word1, noun_obj]
 	else: # '2word' case
 		error_state, error_msg, word2_obj = noun_handling(master_obj_lst, user_input_lst)
