@@ -686,11 +686,14 @@ End Date:
 							- DONE: test put to see if remove disp is triggered
 							- DONE: address remove disp in 'if'; add "(removing the X first)"
 							- DONE: test put to see if remove disp is triggered
-						- TBD: convert relevant 2_word cases to prep strategy
-							- TBD: drop
-							- TBD: stowe
-							- TBD: worn
+						- INPROC: convert relevant 2_word cases to prep strategy
+							- DONE: drop
+								- DONE: update interp 2_word case
+								- DONE: update drop() method in item()
+								- DONE: test verb and wt
 							- TBD: eat
+							- TBD: stowe (from worn only)
+							- TBD: wear (from bkpk only)
 							- TBD: drink
 							- TBD: remove baseball_cap from entrance
 					- TBD: refine to-be plan

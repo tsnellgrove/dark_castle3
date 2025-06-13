@@ -231,4 +231,12 @@ def interpreter(user_input, master_obj_lst):
 		if error_state:
 			return 'error', [error_msg]
 		else:
+			if word1 in ['drop'] and not creature.chk_in_hand(word2_obj) and gs.core.hero.chk_in_bkpk(word2_obj):
+				gs.core.hero.put_in_hand(word2_obj, gs)
+				gs.core.hero.bkpk_lst_remove(word2_obj)
+			if word1 in ['drop'] and not creature.chk_in_hand(word2_obj) and gs.core.hero.chk_is_worn(word2_obj):
+				gs.core.hero.put_in_hand(word2_obj, gs)
+				gs.core.hero.worn_lst_remove(word2_obj)
+				gs.io.buffer(f"(Removing the {word2_obj.full_name} first)")
+				gs.io.buff_s(f"{gs.core.hero.name}_remove_{word2_obj.descript_key}")
 			return '2word', [word2_obj, word1]

@@ -72,18 +72,24 @@ class Item(ViewOnly):
 			mode = 'std'
 		creature = gs.core.hero
 
-		if creature.chk_in_hand(self):
-			creature.hand_lst_remove(self)
-			if gs.io.multi_count > 0:
-				gs.io.buffer(f"{self.full_name}: Dropped")
-			else:
-				gs.io.buffer("Dropped")
+		creature.hand_lst_remove(self)
+		if gs.io.multi_count > 0:
+			gs.io.buffer(f"{self.full_name}: Dropped")
 		else:
-			creature.bkpk_lst_remove(self)
-			if gs.io.multi_count > 0:
-				gs.io.buffer(f"{self.full_name}: Dropped")
-			else:
-				gs.io.buffer(f"You toss the {self.full_name} from your backpack.")
+			gs.io.buffer("Dropped")
+
+#		if creature.chk_in_hand(self):
+#			creature.hand_lst_remove(self)
+#			if gs.io.multi_count > 0:
+#				gs.io.buffer(f"{self.full_name}: Dropped")
+#			else:
+#				gs.io.buffer("Dropped")
+#		else:
+#			creature.bkpk_lst_remove(self)
+#			if gs.io.multi_count > 0:
+#				gs.io.buffer(f"{self.full_name}: Dropped")
+#			else:
+#				gs.io.buffer(f"You toss the {self.full_name} from your backpack.")
 
 		if creature.is_contained(gs):
 			creature.get_contained_by(gs).contain_lst_append(self, gs)
