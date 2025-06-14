@@ -690,12 +690,19 @@ End Date:
 							- DONE: drop
 								- DONE: update interp 2_word case
 								- DONE: update drop() method in item()
-								- DONE: test verb and wt
+								- DONE: test verb, lvl2, & wt
+							- DONE: stowe (from worn only)
+								- DONE: update interp 2_word case for worn
+								- NA: update stowe() method in item() [bkpk never in scope]
+								- DONE: test verb and wt handling
+							- TBD: wear 
+								- TBD: update interp 2_word case (bkpk only)
+								- TBD: update wear() method in item()
+								- TBD: test verb, lvl2, & wt
 							- TBD: eat
-							- TBD: stowe (from worn only)
-							- TBD: wear (from bkpk only)
 							- TBD: drink
 							- TBD: remove baseball_cap from entrance
+						- TBD: create a wearabel portable container and test lvl 2 with prep & 2_word
 					- TBD: refine to-be plan
 					- TBD: address minor issues / redundancy / naming
 					- TBD: restructure 2_word cases
