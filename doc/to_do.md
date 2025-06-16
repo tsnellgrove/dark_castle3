@@ -699,11 +699,11 @@ End Date:
 								- DONE: update interp 2_word case (bkpk only)
 								- DONE: update wear() method in item()
 								- DONE: test verb, lvl2, & wt
-							- TBD: eat
-								- TBD: update interp 2_word case
+							- DONE: eat
+								- DONE: update interp 2_word case
 								- DONE: update wear() method in item()
-								- TBD: test verb, lvl2, & wt
-							- TBD: drink
+								- DONE: test verb, lvl2, & wt
+							- DONE: re-test drink prep verb
 							- TBD: remove baseball_cap from entrance
 						- TBD: create a wearabel portable container and test lvl 2 with prep & 2_word
 					- TBD: refine to-be plan
