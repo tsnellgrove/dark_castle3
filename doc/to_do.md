@@ -686,7 +686,7 @@ End Date:
 							- DONE: test put to see if remove disp is triggered
 							- DONE: address remove disp in 'if'; add "(removing the X first)"
 							- DONE: test put to see if remove disp is triggered
-						- INPROC: convert relevant 2_word cases to prep strategy
+						- DONE: convert relevant 2_word cases to prep strategy
 							- DONE: drop
 								- DONE: update interp 2_word case
 								- DONE: update drop() method in item()
@@ -704,22 +704,31 @@ End Date:
 								- DONE: update wear() method in item()
 								- DONE: test verb, lvl2, & wt
 							- DONE: re-test drink prep verb
-							- TBD: remove baseball_cap from entrance
-						- TBD: create a wearabel portable container and test lvl 2 with prep & 2_word
-					- TBD: refine to-be plan
-					- TBD: address minor issues / redundancy / naming
-					- TBD: restructure 2_word cases
-					- TBD: generalize item handling across receptacles and use creature inventory approach
-					- TBD: next steps to consider
-					- TBD: tons of testing!!
-				- TBD: now prep case works with portable containers but 2-word does not - fix
-				- TBD: extend hand => bkpk to worn items?			
-				- TBD: decide if sword glows in backpack?? (probably yes if 'hand' de-emphasized)
+							- DONE: remove baseball_cap from entrance
+					- DONE: decide if sword glows in backpack?? (probably yes if 'hand' de-emphasized)
+						- DECISION: yes
 			- TBD: dangerous scenarios
 				- IDEA: burt should attempt to auto-draw a weapon when threatened
 				- TBD: should be some sort of "you draw your weapon" txt?
 				- TBD: sort out moat
 				- TBD: sort out goblin attack
+			- TBD: refine to-be plan
+				- TBD: detailed review of inventory management notes / fix opportunities
+			- TBD: general ideas
+				- DONE: now prep case works with portable containers but 2-word does not - fix
+				- DONE: extend hand => bkpk to worn items?			
+				- TBD: address minor issues / redundancy / naming
+				- TBD: restructure 2_word cases
+				- TBD: generalize item handling across receptacles; use creature inventory approach
+				- TBD: next steps to consider
+				- TBD: tons of testing!!
+			- TBD: create a wearabel portable container and test lvl 2 with prep & 2_word
+				- IDEA: simple wearable portable container would be a "fanny pack"
+				- TBD: create class for wearable portable container
+				- TBD: instantiate "fanny pack"
+				- TBD: test basic functionality
+				- TBD: test functionality with all in-scope 2_word & prep verbs
+				- TBD: test whether game can distinguish between 'pack' and 'pack'
 			- TBD: clean-up drop(), eat(), wear(), error(), validate(), game_static_gbl(), interp(), all
 			- TBD: clean-up room(), creature()
 	- TBD: room 4
@@ -1078,6 +1087,9 @@ word_lst assignment:
 	- TBD: default to key-like obj for lock / unlock activity?
 	- TBD: review inform flags used for (Get What I Mean)
 	- TBD: how to implement?
+- TBD: updates on this theme
+	- TBD: now that hand is de-emphasized, need a better system for guessing what obj player means
+	- TBD: should be mostly based on class
 
 - TBD: need to enable a rich set of game-specific synonyms!
 	- TBD: make 'apparatus' a synonym for control_panel
