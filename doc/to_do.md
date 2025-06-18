@@ -616,7 +616,7 @@ End Date:
 						- DONE: test drop(), eat(), wear()(
 						- DONE: troubleshoot verbs w/ bag & biscuit
 			- INPROC: Additional fixes for moving to general inventory
-				- INPROC: end-to-end review of obj & lbs moving between rooms, containers, and creatures
+				- DONE: end-to-end review of obj & lbs moving between rooms, containers, and creatures
 					- DONE: dee dive into Identity
 						- IDEA: do we really need get_contain_lst() ?
 						- IDEA: better understand Interactive contain_lst_remove()
@@ -659,7 +659,7 @@ End Date:
 						- IDEA: wear()
 							- IDEA: eliminate local bkpk_remove() call / enable auto-hand-trans
 							- IDEA: enable for port_cont
-					- INPROC: where to start?
+					- DONE: where to start?
 						- DONE: chk_in_hand & hand_lst_remove
 							- DONE: test: hold bag in hand, put biscuit
 							- DONE: update chk_in_hand() to be 2-levels deep (like chk_in_bkpk() )
@@ -709,9 +709,17 @@ End Date:
 						- DECISION: yes
 			- TBD: dangerous scenarios
 				- IDEA: burt should attempt to auto-draw a weapon when threatened
-				- TBD: should be some sort of "you draw your weapon" txt?
+				- TBD: update general weapon behavior
+					- IDEA: "whenever player 'take's weapon => "You are armed and dangerous!"
+					- TBD: 
+				- TBD: solve goblin attack / general attack case
+					- IDEA: "(Sensing imminent combat, you draw a weapon)"
+					- CANCEL: bake 'draw_weapon' call into attack()
+					- IDEA: bake draw weapon into interp() (v.s. auto use what's in hand)
+					- IDEA: useful existing methods: in_hand_is_weapon(), is_weapon()
+					- TBD:
 				- TBD: sort out moat
-				- TBD: sort out goblin attack
+					- TBD:
 			- TBD: refine to-be plan
 				- TBD: detailed review of inventory management notes / fix opportunities
 			- TBD: general ideas
