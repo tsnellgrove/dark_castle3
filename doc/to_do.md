@@ -707,12 +707,37 @@ End Date:
 							- DONE: remove baseball_cap from entrance
 					- DONE: decide if sword glows in backpack?? (probably yes if 'hand' de-emphasized)
 						- DECISION: yes
-			- TBD: dangerous scenarios
+			- INPROC: dangerous scenarios
 				- IDEA: burt should attempt to auto-draw a weapon when threatened
-				- TBD: update general weapon behavior
+					- IDEA: also the special nature of weapons in general needs to be highlighted
+					- IDEA: provide disp text any time burt draws or sheaths a weapon
+				- IDEA: do I want weapon-draw disp if sword just passes through burt's hand from bkpk?
+					- IDEA: e.g. sword in bkpk and burt uses 'put' or 'drop' or 'give'
+					- DECISION: No, causes confusion; sword disp only if turn ends w/ sword in hand
+					- IDEA: also, I don't want weapon-sheath disp if sword just passes through hand
+					- IDEA: ony want weapon-sheath disp if weapon was actually 'drawn'
+				- INPROC: update general weapon behavior
 					- IDEA: "whenever player 'take's weapon => "You are armed and dangerous!"
+					- IDEA: "whenever player drops / stowes a weapon => "You look a bit more approachable."
+					- DONE: update 'take' weapon disp
+					- IDEA: I have a weapon-sheath disp problem: how to know if weapon was drawn?
+						- IDEA: maybe need a core value for last_turn hand contents???
+					- IDEA: also, I have a weapon-sheath disp scalability issue
+						- IDEA: there is only one way anything goes into burt's hand ('take')
+						- IDEA: but many ways it could leave ('drop', 'stowe', 'put', 'gvie')
+						- IDEA: and there could be more ways in the future - don't want disp code for all
+						- IDEA: actually, it worse than this because there are now many way to draw weapon
+						- IDEA: what if burt attempts to 'unlock' door with sword and now has it in hand
+						- IDEA: need a way to compare hand contents at end of each turn?
+						- IDEA: where to do this? must run if error or cmd_exe... validate is too soon...
+						- IDEA: yes - I think I need a dedicated call in app_main() to enable
+						- IDEA: weapon_disp() called between cmd_exe() and post_act()
+						- TBD: ????
+					- TBD: update weapon disp for 'drop', 'stowe', 'put', 'give'
+					- TBD: update weapon disp for put_in_hand()
+				- TBD: solve draw-weapon to hand for "attack X with <weapon>" case
 					- TBD: 
-				- TBD: solve goblin attack / general attack case
+				- TBD: solve auto-draw weapon for goblin attack / general attack case
 					- IDEA: "(Sensing imminent combat, you draw a weapon)"
 					- CANCEL: bake 'draw_weapon' call into attack()
 					- IDEA: bake draw weapon into interp() (v.s. auto use what's in hand)
@@ -720,6 +745,7 @@ End Date:
 					- TBD:
 				- TBD: sort out moat
 					- TBD:
+			- TBD: capture weapon disp updates on diagram (especially 'give')
 			- TBD: refine to-be plan
 				- TBD: detailed review of inventory management notes / fix opportunities
 			- TBD: general ideas
