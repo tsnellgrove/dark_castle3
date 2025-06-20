@@ -63,6 +63,21 @@ def multiples_mini_interpreter(gs, user_input, inventory_lst, multiples_action_t
 		return [], True, f"With that exception, there's nothing you can {multiples_action_type}."
 	return multiples_lst, False, ""
 
+def weapon_disp(gs, start_in_hand):
+	"""display weapon draw / sheathe message"""
+	if gs.core.hero.hand_is_empty():
+		end_in_hand = None
+	else:
+		end_in_hand = gs.core.hero.get_hand_item()
+	if start_in_hand == end_in_hand:
+		return
+	if (start_in_hand is not None) and (start_in_hand.is_weapon()):
+		gs.io.buffer(f"With the {start_in_hand.full_name} no longer in hand, you are a bit more approachable.")
+	if (end_in_hand is not None) and (end_in_hand.is_weapon()):
+		gs.io.buffer(f"With the {end_in_hand.full_name} in hand you are now armed and dangerous!")
+	return
+
+
 ### loads game obj, calls other modules, and saves game obj ###
 def app_main(user_input, game_name, root_path_str):
 	# initiate app_main() - load obj, declare gs, and reset buffer & cmd_queue
@@ -150,6 +165,10 @@ def app_main(user_input, game_name, root_path_str):
 
 		# for interp commands, interp user_input and validate command
 		if is_interp_cmd:
+			if gs.core.hero.hand_is_empty():
+				start_in_hand = None
+			else:
+				start_in_hand = gs.core.hero.get_hand_item()
 			case, word_lst = interpreter(user_input, master_obj_lst)
 			is_valid, is_att, err_txt = validate(gs, case, word_lst)
 
@@ -160,6 +179,10 @@ def app_main(user_input, game_name, root_path_str):
 		# if command is valid or is_wait, increment move
 		if is_valid or is_att or is_wait:
 			gs.core.move_inc()
+#			if gs.core.hero.hand_is_empty():
+#				start_in_hand = None
+#			else:
+#				start_in_hand = gs.core.hero.get_hand_item()
 
 		# for valid interp commands, process in-turn game response
 		if is_valid or is_att:
@@ -170,6 +193,7 @@ def app_main(user_input, game_name, root_path_str):
 				gs.io.buffer(err_txt)
 			if (is_valid and not cmd_override):
 				cmd_execute(gs, case, word_lst)
+			weapon_disp(gs, start_in_hand)
 			post_action(gs, case, word_lst, is_valid) # excluding poat_act() from cmd "if" allows creatures to opperate machs
 
 		# post-cmd-response output

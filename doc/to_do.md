@@ -719,7 +719,7 @@ End Date:
 				- INPROC: update general weapon behavior
 					- IDEA: "whenever player 'take's weapon => "You are armed and dangerous!"
 					- IDEA: "whenever player drops / stowes a weapon => "You look a bit more approachable."
-					- DONE: update 'take' weapon disp
+					- CANCEL: update 'take' weapon disp
 					- IDEA: I have a weapon-sheath disp problem: how to know if weapon was drawn?
 						- IDEA: maybe need a core value for last_turn hand contents???
 					- IDEA: also, I have a weapon-sheath disp scalability issue
@@ -732,11 +732,21 @@ End Date:
 						- IDEA: where to do this? must run if error or cmd_exe... validate is too soon...
 						- IDEA: yes - I think I need a dedicated call in app_main() to enable
 						- IDEA: weapon_disp() called between cmd_exe() and post_act()
-						- TBD: ????
-					- TBD: update weapon disp for 'drop', 'stowe', 'put', 'give'
-					- TBD: update weapon disp for put_in_hand()
-				- TBD: solve draw-weapon to hand for "attack X with <weapon>" case
-					- TBD: 
+					- CANCEL: solve weapon disp
+					- CANCEL: update weapon disp for 'drop', 'stowe', 'put', 'give'
+					- CANCEL: update weapon disp for put_in_hand()
+				- DONE: solve draw-weapon to hand for "attack X with <weapon>" case
+					- DONE: in app_main(), get start_in_hand at same time as incrementing move
+					- DONE: create disp_weapon() function in app_main w/ gs & start_in_hand attribs
+					- DONE: call disp_weapon() between cmd_exe() and post_act()
+					- INPROC: test 'take' case for draw
+						- FINDING: score buffers in cmd_exe before draw text
+					- DONE: test 'drop' & 'stowe' case for sheathe
+					- DONE: test unlock, show, give from bkpk case for draw
+						- FINDING: doesn't work because hand is updated in interp()
+						- IDEA: move start_in_hand to before interp()
+					- DONE: test 'take X' for sheathe
+					- DONE: test put from bkpk for no buffer
 				- TBD: solve auto-draw weapon for goblin attack / general attack case
 					- IDEA: "(Sensing imminent combat, you draw a weapon)"
 					- CANCEL: bake 'draw_weapon' call into attack()
@@ -748,6 +758,8 @@ End Date:
 			- TBD: capture weapon disp updates on diagram (especially 'give')
 			- TBD: refine to-be plan
 				- TBD: detailed review of inventory management notes / fix opportunities
+				- TBD: in creature, consolidate if hand_empty() => None else get_hand_item()
+				- TBD: maybe call disp_weapon from within cmd_exe() instead of in app_main() due to score??
 			- TBD: general ideas
 				- DONE: now prep case works with portable containers but 2-word does not - fix
 				- DONE: extend hand => bkpk to worn items?			
@@ -764,7 +776,7 @@ End Date:
 				- TBD: test functionality with all in-scope 2_word & prep verbs
 				- TBD: test whether game can distinguish between 'pack' and 'pack'
 			- TBD: clean-up drop(), eat(), wear(), error(), validate(), game_static_gbl(), interp(), all
-			- TBD: clean-up room(), creature()
+			- TBD: clean-up room(), creature(), app_main()
 	- TBD: room 4
 		- TBD: de-capitalize all nouns
 		- TBD: de-dup passage descriptions vs. base description
