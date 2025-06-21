@@ -763,6 +763,7 @@ End Date:
 					- DONE: test attack 'with sword'
 					- DONE: test attack 'with fist'
 					- DONE: test attach hedgehog while both sword & axe in bkpk
+				- TBE: in interp() attack if statement, can I just use put_in_hand(draw_weapon) ??
 				- TBD: solve auto-draw weapon for goblin attacks burt case
 					- TBD: bake 'draw_weapon' call into attack()
 				- TBD: sort out moat
