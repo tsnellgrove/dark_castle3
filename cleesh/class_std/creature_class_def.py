@@ -134,7 +134,6 @@ class Creature(ViewOnly):
 					return
 
 
-
 	def hand_is_empty(self):
 		return not bool(self.hand_lst)
 
@@ -301,6 +300,18 @@ class Creature(ViewOnly):
 				return True
 		return False
 
+	def has_weapon(self, gs):
+		""" Returns True if the Creature has a weapon in its inventory.
+		"""
+		return any(item.is_weapon() for item in self.get_vis_contain_lst(gs))
+
+	def get_weapon(self, gs):
+		""" Returns the Creature's weapon if it has one. Otherwise, returns None.
+		"""
+		for item in self.get_vis_contain_lst(gs):
+			if item.is_weapon():
+				return item
+		return None
 
 	# *** seat-specific scope methods ***
 	def is_contained(self, gs): # only works for Creature class; not generalized for other obj

@@ -716,7 +716,7 @@ End Date:
 					- DECISION: No, causes confusion; sword disp only if turn ends w/ sword in hand
 					- IDEA: also, I don't want weapon-sheath disp if sword just passes through hand
 					- IDEA: ony want weapon-sheath disp if weapon was actually 'drawn'
-				- INPROC: update general weapon behavior
+				- DONE: update general weapon disp behavior
 					- IDEA: "whenever player 'take's weapon => "You are armed and dangerous!"
 					- IDEA: "whenever player drops / stowes a weapon => "You look a bit more approachable."
 					- CANCEL: update 'take' weapon disp
@@ -739,7 +739,7 @@ End Date:
 					- DONE: in app_main(), get start_in_hand at same time as incrementing move
 					- DONE: create disp_weapon() function in app_main w/ gs & start_in_hand attribs
 					- DONE: call disp_weapon() between cmd_exe() and post_act()
-					- INPROC: test 'take' case for draw
+					- DONE: test 'take' case for draw
 						- FINDING: score buffers in cmd_exe before draw text
 					- DONE: test 'drop' & 'stowe' case for sheathe
 					- DONE: test unlock, show, give from bkpk case for draw
@@ -747,12 +747,24 @@ End Date:
 						- IDEA: move start_in_hand to before interp()
 					- DONE: test 'take X' for sheathe
 					- DONE: test put from bkpk for no buffer
-				- TBD: solve auto-draw weapon for goblin attack / general attack case
+				- DONE: solve auto-draw weapon for burt attacks goblin case
 					- IDEA: "(Sensing imminent combat, you draw a weapon)"
-					- CANCEL: bake 'draw_weapon' call into attack()
 					- IDEA: bake draw weapon into interp() (v.s. auto use what's in hand)
 					- IDEA: useful existing methods: in_hand_is_weapon(), is_weapon()
-					- TBD:
+					- DONE: add as first if statement if 'with' not specified for 'attack'
+					- DONE: test attack hand empty, no sword
+					- DONE: test attack hand full, no sword
+					- DONE: test attack with cheese, key in hand
+					- DONE: test attack with fist, key in hand => stowe key, attack with fist, hand empty
+					- DONE: test attack sword in hand
+					- DONE: test attack hand empty, sword in bkpk
+					- DONE: test attack hand full, sword in bkpk					
+					- DONE: test attack 'with cheese'
+					- DONE: test attack 'with sword'
+					- DONE: test attack 'with fist'
+					- DONE: test attach hedgehog while both sword & axe in bkpk
+				- TBD: solve auto-draw weapon for goblin attacks burt case
+					- TBD: bake 'draw_weapon' call into attack()
 				- TBD: sort out moat
 					- TBD:
 			- TBD: capture weapon disp updates on diagram (especially 'give')
@@ -760,6 +772,7 @@ End Date:
 				- TBD: detailed review of inventory management notes / fix opportunities
 				- TBD: in creature, consolidate if hand_empty() => None else get_hand_item()
 				- TBD: maybe call disp_weapon from within cmd_exe() instead of in app_main() due to score??
+					- EXAMPLE: 1) get sword from hedgehog, 2) attack goblin 'with sword' from bkpk
 			- TBD: general ideas
 				- DONE: now prep case works with portable containers but 2-word does not - fix
 				- DONE: extend hand => bkpk to worn items?			

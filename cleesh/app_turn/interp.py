@@ -173,7 +173,14 @@ def interpreter(user_input, master_obj_lst):
 		elif word1 in ['attack']:
 			creature = gs.core.hero
 			prep = 'with'
-			if len(user_input_lst) < 4 and 'with' not in user_input and not creature.hand_is_empty():
+			if ((len(user_input_lst) < 4) and ('with' not in user_input) 
+	   				and (not creature.in_hand_is_weapon()) and (creature.has_weapon(gs))):
+				drawn_weapon = creature.get_weapon(gs)
+				creature.remove_item(drawn_weapon, gs)
+				creature.put_in_hand(drawn_weapon, gs)
+				user_input_lst.extend(['with', drawn_weapon.name])
+				gs.io.buffer(f"(Sensing imminent combat, you draw the {drawn_weapon.full_name})")			
+			elif len(user_input_lst) < 4 and 'with' not in user_input and not creature.hand_is_empty():
 				user_input_lst.extend(['with',creature.get_hand_item().name])
 				gs.io.buffer(f"(with the {creature.get_hand_item().full_name})")
 			elif len(user_input_lst) == 2 and 'with' not in user_input and creature.hand_is_empty():
