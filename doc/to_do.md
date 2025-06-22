@@ -763,8 +763,8 @@ End Date:
 					- DONE: test attack 'with sword'
 					- DONE: test attack 'with fist'
 					- DONE: test attach hedgehog while both sword & axe in bkpk
-			- TBD: clean-up item handling methods
-				- TBD: capture weapon disp updates on diagram (especially 'give')
+			- INPROC: clean-up item handling methods
+				- DONE: capture weapon disp updates on diagram (especially 'give')
 				- TBD: detailed review of inventory management notes / fix opportunities
 				- TBD: in creature, consolidate if hand_empty() => None else get_hand_item()
 			- TBD: someday / maybe fixes				
