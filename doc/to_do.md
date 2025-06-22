@@ -707,7 +707,7 @@ End Date:
 							- DONE: remove baseball_cap from entrance
 					- DONE: decide if sword glows in backpack?? (probably yes if 'hand' de-emphasized)
 						- DECISION: yes
-			- INPROC: dangerous scenarios
+			- DONE: dangerous scenarios
 				- IDEA: burt should attempt to auto-draw a weapon when threatened
 					- IDEA: also the special nature of weapons in general needs to be highlighted
 					- IDEA: provide disp text any time burt draws or sheaths a weapon
@@ -763,17 +763,24 @@ End Date:
 					- DONE: test attack 'with sword'
 					- DONE: test attack 'with fist'
 					- DONE: test attach hedgehog while both sword & axe in bkpk
-				- TBE: in interp() attack if statement, can I just use put_in_hand(draw_weapon) ??
-				- TBD: solve auto-draw weapon for goblin attacks burt case
-					- TBD: bake 'draw_weapon' call into attack()
-				- TBD: sort out moat
-					- TBD:
-			- TBD: capture weapon disp updates on diagram (especially 'give')
-			- TBD: refine to-be plan
+			- TBD: clean-up item handling methods
+				- TBD: capture weapon disp updates on diagram (especially 'give')
 				- TBD: detailed review of inventory management notes / fix opportunities
 				- TBD: in creature, consolidate if hand_empty() => None else get_hand_item()
+			- TBD: someday / maybe fixes				
 				- TBD: maybe call disp_weapon from within cmd_exe() instead of in app_main() due to score??
 					- EXAMPLE: 1) get sword from hedgehog, 2) attack goblin 'with sword' from bkpk
+				- TBD: should burt auto-draw weapon when attacked (e.g. 'go n' near goblin)?
+					- IDEA: add 'draw_weapon' call into attack()
+				- TBD: should burt auto-draw weapon when for moat case?
+				- TBD: address 'Do What I Mean' in interp() now?
+				- TBD: create a wearabel portable container and test lvl 2 with prep & 2_word
+					- IDEA: simple wearable portable container would be a "fanny pack"
+					- TBD: create class for wearable portable container
+					- TBD: instantiate "fanny pack"
+					- TBD: test basic functionality
+					- TBD: test functionality with all in-scope 2_word & prep verbs
+					- TBD: test whether game can distinguish between 'pack' and 'pack'
 			- TBD: general ideas
 				- DONE: now prep case works with portable containers but 2-word does not - fix
 				- DONE: extend hand => bkpk to worn items?			
@@ -782,15 +789,9 @@ End Date:
 				- TBD: generalize item handling across receptacles; use creature inventory approach
 				- TBD: next steps to consider
 				- TBD: tons of testing!!
-			- TBD: create a wearabel portable container and test lvl 2 with prep & 2_word
-				- IDEA: simple wearable portable container would be a "fanny pack"
-				- TBD: create class for wearable portable container
-				- TBD: instantiate "fanny pack"
-				- TBD: test basic functionality
-				- TBD: test functionality with all in-scope 2_word & prep verbs
-				- TBD: test whether game can distinguish between 'pack' and 'pack'
-			- TBD: clean-up drop(), eat(), wear(), error(), validate(), game_static_gbl(), interp(), all
-			- TBD: clean-up room(), creature(), app_main()
+			- TBD: clean-up
+				- TBD: clean-up drop(), eat(), wear(), error(), validate(), game_static_gbl(), interp(), all
+				- TBD: clean-up room(), creature(), app_main()
 	- TBD: room 4
 		- TBD: de-capitalize all nouns
 		- TBD: de-dup passage descriptions vs. base description
@@ -1147,6 +1148,7 @@ word_lst assignment:
 	- TBD: default to key-like obj for lock / unlock activity?
 	- TBD: review inform flags used for (Get What I Mean)
 	- TBD: how to implement?
+	- TBD: should be based on class => create Key class, is_key() method
 - TBD: updates on this theme
 	- TBD: now that hand is de-emphasized, need a better system for guessing what obj player means
 	- TBD: should be mostly based on class
