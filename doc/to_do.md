@@ -765,7 +765,16 @@ End Date:
 					- DONE: test attach hedgehog while both sword & axe in bkpk
 			- INPROC: clean-up item handling methods
 				- DONE: capture weapon disp updates on diagram (especially 'give')
-				- TBD: detailed review of inventory management notes / fix opportunities
+				- INPROC: detailed review of inventory management notes / fix opportunities
+					- INPROC: Creature class
+						- DONE: remove_item() calls hand_lst_remove, bkpk_lst_remove, & worn_lst_remove
+							- DONE: all 3 now portable container aware
+							- DONE: all 3 are hero_wt and port_c_wt aware
+						- DONE: Creature first pass
+						- TBD: interim game test
+						- TBD: Creature deep-dive
+						- TBD: more testing
+						- TBD: Creature final clean-up
 				- TBD: in creature, consolidate if hand_empty() => None else get_hand_item()
 			- TBD: someday / maybe fixes				
 				- TBD: maybe call disp_weapon from within cmd_exe() instead of in app_main() due to score??
@@ -792,6 +801,7 @@ End Date:
 			- TBD: clean-up
 				- TBD: clean-up drop(), eat(), wear(), error(), validate(), game_static_gbl(), interp(), all
 				- TBD: clean-up room(), creature(), app_main()
+			- TBD: update help doc for inventory and hand
 	- TBD: room 4
 		- TBD: de-capitalize all nouns
 		- TBD: de-dup passage descriptions vs. base description

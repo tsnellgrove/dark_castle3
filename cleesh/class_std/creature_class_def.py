@@ -100,6 +100,7 @@ class Creature(ViewOnly):
 	def max_weight(self):
 		return self._max_weight
 
+
 	# *** attrib methods - weight ***
 	def increment_weight(self, increment_by):
 		""" Increments the weight of an Item by a given amount
@@ -112,6 +113,7 @@ class Creature(ViewOnly):
 		"""
 		self.weight -= decrement_by
 		return
+
 
 	# *** attrib methods - hand ***
 	def hand_lst_append(self, item):
@@ -127,12 +129,10 @@ class Creature(ViewOnly):
 		else:
 			for obj in self.hand_lst:
 				if obj.chk_contain_item(item):
-#					obj.remove_item(item)
 					obj.contain_lst.remove(item) # obj = portable container => cannot hold a container
 					obj.decrement_weight(item.weight)
 					self.decrement_weight(item.weight)
 					return
-
 
 	def hand_is_empty(self):
 		return not bool(self.hand_lst)
@@ -141,10 +141,8 @@ class Creature(ViewOnly):
 		return self.hand_lst[0]
 
 	def put_in_hand(self, new_item, gs):
-#		if self.weight + new_item.weight >= self.max_weight:
 		if ((self.weight + new_item.weight > self.max_weight) and (not self.chk_in_bkpk(new_item)) 
 	  			and (not self.chk_is_worn(new_item))):
-#		if self.weight + new_item.weight > self.max_weight:
 			room = gs.map.get_obj_room(self, gs)
 			room.floor_lst_append(new_item)
 			if self == gs.core.hero:
@@ -153,14 +151,15 @@ class Creature(ViewOnly):
 				gs.io.buffer(f"The {self.full_name} is overburdened and must drop the {new_item.full_name} on the floor.")
 			return
 		if not self.hand_is_empty():
-			self.bkpk_lst_append(self.get_hand_item())
-			self.hand_lst_remove(self.get_hand_item())
+			old_item = self.get_hand_item()
+			self.hand_lst_remove(old_item)
+			self.bkpk_lst_append(old_item)
+#			self.bkpk_lst_append(self.get_hand_item())
+#			self.hand_lst_remove(self.get_hand_item())
 		self.hand_lst_append(new_item)
 		return
 
-#	def chk_in_hand(self, obj):
 	def chk_in_hand(self, item):
-#		return obj in self.hand_lst
 		if item in self.hand_lst:
 			return True
 		for obj in self.hand_lst:
@@ -168,15 +167,14 @@ class Creature(ViewOnly):
 				return True
 		return False
 
-
 	def in_hand_is_weapon(self):
 		if self.hand_is_empty():
 			return False
 		return self.get_hand_item().is_weapon()
 
+
 	# *** attrib methods - bkpk ***
 	def chk_in_bkpk(self, item):
-#		return obj in self.bkpk_lst
 		if item in self.bkpk_lst:
 			return True
 		for obj in self.bkpk_lst:
@@ -200,7 +198,6 @@ class Creature(ViewOnly):
 		else:
 			for obj in self.bkpk_lst:
 				if obj.chk_contain_item(item):
-#					obj.remove_item(item, gs)
 					obj.contain_lst.remove(item) # obj = portable container => cannot hold a container
 					obj.decrement_weight(item.weight)
 					self.decrement_weight(item.weight)
@@ -236,7 +233,6 @@ class Creature(ViewOnly):
 		return any(item.garment_type == garment.garment_type for garment in self.worn_lst)
 
 	def chk_is_worn(self, garment):
-#		return(garment in self.worn_lst)
 		if garment in self.worn_lst:
 			return True
 		for obj in self.worn_lst:
@@ -251,6 +247,7 @@ class Creature(ViewOnly):
 
 	def is_receptacle(self):
 		return True
+
 
 	# *** universal scope methods ***
 	def get_vis_contain_lst(self, gs):
@@ -275,7 +272,7 @@ class Creature(ViewOnly):
 	def remove_item(self, item, gs):
 		""" Removes the passed object from the methed-calling object.
 		"""
-		if item in self.hand_lst:
+		if item in self.hand_lst: # could use chk_in_hand() ??
 			self.hand_lst_remove(item)
 			return 
 		if item in self.bkpk_lst:
@@ -312,6 +309,7 @@ class Creature(ViewOnly):
 			if item.is_weapon():
 				return item
 		return None
+
 
 	# *** seat-specific scope methods ***
 	def is_contained(self, gs): # only works for Creature class; not generalized for other obj
@@ -420,6 +418,7 @@ class Creature(ViewOnly):
 				obj.disp_contain(gs)
 		return 
 
+
 	# *** creature-specific display methods ***
 	def disp_in_reach(self, gs):
 		""" displays in_reach objects for seated creature
@@ -442,6 +441,8 @@ class Creature(ViewOnly):
 			return
 		in_reach_str = ", ".join(in_reach_disp_txt_lst)
 		gs.io.buffer(f"From your position on the {seat_obj.full_name} you can just reach: {in_reach_str}")
+		return
+
 
 	# *** verb methods ***
 	def show(self, obj, gs, mode=None):
