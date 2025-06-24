@@ -272,13 +272,16 @@ class Creature(ViewOnly):
 	def remove_item(self, item, gs):
 		""" Removes the passed object from the methed-calling object.
 		"""
-		if item in self.hand_lst: # could use chk_in_hand() ??
+#		if item in self.hand_lst:
+		if self.chk_in_hand(item):
 			self.hand_lst_remove(item)
 			return 
-		if item in self.bkpk_lst:
+#		if item in self.bkpk_lst:
+		if self.chk_in_bkpk(item):
 			self.bkpk_lst_remove(item)
 			return 
-		if item in self.worn_lst:
+#		if item in self.worn_lst:
+		if self.chk_in_worn(item):
 			self.worn_lst_remove(item)
 			return 
 #		node1_lst = self.hand_lst + self.bkpk_lst + self.worn_lst

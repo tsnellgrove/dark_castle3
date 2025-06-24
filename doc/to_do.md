@@ -771,8 +771,13 @@ End Date:
 							- DONE: all 3 now portable container aware
 							- DONE: all 3 are hero_wt and port_c_wt aware
 						- DONE: Creature first pass
-						- TBD: interim game test
-						- TBD: Creature deep-dive
+						- DONE: interim game test
+						- DONE: Creature deep-dive
+							- DONE: updated creature.remove_item() to be container aware ()
+							- DONE: decided no need creature.is_empty() [similar to container]
+							- DONE: decided not to attempt to integrate hand_is_empty() and get_hand_item()
+								- IDEA: None value for get_hand_item() is often not useful
+								- IDEA: usually want to take an action / buffer only if hand item exists
 						- TBD: more testing
 						- TBD: Creature final clean-up
 				- TBD: in creature, consolidate if hand_empty() => None else get_hand_item()
