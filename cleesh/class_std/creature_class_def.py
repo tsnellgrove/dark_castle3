@@ -154,8 +154,6 @@ class Creature(ViewOnly):
 			old_item = self.get_hand_item()
 			self.hand_lst_remove(old_item)
 			self.bkpk_lst_append(old_item)
-#			self.bkpk_lst_append(self.get_hand_item())
-#			self.hand_lst_remove(self.get_hand_item())
 		self.hand_lst_append(new_item)
 		return
 
@@ -203,7 +201,6 @@ class Creature(ViewOnly):
 					self.decrement_weight(item.weight)
 					return
 		raise ValueError(f"Can't remove item {item} from creature {self.name}")
-
 
 
 	# *** attrib methods - worn ***
@@ -272,23 +269,15 @@ class Creature(ViewOnly):
 	def remove_item(self, item, gs):
 		""" Removes the passed object from the methed-calling object.
 		"""
-#		if item in self.hand_lst:
 		if self.chk_in_hand(item):
 			self.hand_lst_remove(item)
 			return 
-#		if item in self.bkpk_lst:
 		if self.chk_in_bkpk(item):
 			self.bkpk_lst_remove(item)
 			return 
-#		if item in self.worn_lst:
 		if self.chk_in_worn(item):
 			self.worn_lst_remove(item)
 			return 
-#		node1_lst = self.hand_lst + self.bkpk_lst + self.worn_lst
-#		for obj in node1_lst:
-#			if item in obj.get_vis_contain_lst(gs):
-#				obj.remove_item(item, gs)
-#				return
 		raise ValueError(f"Can't remove item {item} from creature {self.name}")
 		return 
 
@@ -377,7 +366,6 @@ class Creature(ViewOnly):
 
 	def has_contain(self, gs):
 		if self == gs.core.hero:
-##			creature_lst = self.hand_lst + self.bkpk_lst + self.worn_lst
 			return True
 		return bool(self.hand_lst + self.worn_lst)
 
@@ -645,9 +633,8 @@ class Creature(ViewOnly):
 			gs.io.buffer(f"The {self.full_name} is now standing.")
 		return
 
+
 	### debug methods ###
-
-
 	def get_weight(self, gs, mode=None):
 		""" Reports the weight of an Item. Only usable in debug mode.
 		"""

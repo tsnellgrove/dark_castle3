@@ -766,7 +766,7 @@ End Date:
 			- INPROC: clean-up item handling methods
 				- DONE: capture weapon disp updates on diagram (especially 'give')
 				- INPROC: detailed review of inventory management notes / fix opportunities
-					- INPROC: Creature class
+					- DONE: Creature class
 						- DONE: remove_item() calls hand_lst_remove, bkpk_lst_remove, & worn_lst_remove
 							- DONE: all 3 now portable container aware
 							- DONE: all 3 are hero_wt and port_c_wt aware
@@ -778,9 +778,11 @@ End Date:
 							- DONE: decided not to attempt to integrate hand_is_empty() and get_hand_item()
 								- IDEA: None value for get_hand_item() is often not useful
 								- IDEA: usually want to take an action / buffer only if hand item exists
-						- TBD: more testing
-						- TBD: Creature final clean-up
-				- TBD: in creature, consolidate if hand_empty() => None else get_hand_item()
+							- CANCEL: in creature, consolidate if hand_empty() => None else get_hand_item()
+						- DONE: more testing
+						- DONE: Creature final clean-up
+					- TBD: Interactive class
+						- TBD: 
 			- TBD: someday / maybe fixes				
 				- TBD: maybe call disp_weapon from within cmd_exe() instead of in app_main() due to score??
 					- EXAMPLE: 1) get sword from hedgehog, 2) attack goblin 'with sword' from bkpk
@@ -805,7 +807,7 @@ End Date:
 				- TBD: tons of testing!!
 			- TBD: clean-up
 				- TBD: clean-up drop(), eat(), wear(), error(), validate(), game_static_gbl(), interp(), all
-				- TBD: clean-up room(), creature(), app_main()
+				- TBD: clean-up room(), app_main()
 			- TBD: update help doc for inventory and hand
 	- TBD: room 4
 		- TBD: de-capitalize all nouns
