@@ -208,7 +208,15 @@ class ContainsMixIn(object):
 		return []
 
 	def remove_item(self, item, gs):
-		self.contain_lst_remove(item, gs)
+		if item in self.contain_lst:
+			self.contain_lst_remove(item, gs)
+			return
+		for obj in self.contain_lst:
+			if obj.is_container() and item in obj.contain_lst:
+				obj.contain_lst_remove(item, gs)
+				return
+		raise ValueError(f"Can't remove item {item} from Container {self.name}")
+
 
 	# *** container-specific scope methods ***
 	def is_empty(self):

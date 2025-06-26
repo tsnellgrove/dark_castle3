@@ -781,7 +781,12 @@ End Date:
 							- CANCEL: in creature, consolidate if hand_empty() => None else get_hand_item()
 						- DONE: more testing
 						- DONE: Creature final clean-up
-					- TBD: Interactive class
+					- DONE: Interactive class
+						- DONE: update Container.remove_item() to be level-2 aware
+						- DONE: decide to keep Container.is_empty() as standard call (even though not used)
+						- DONE: testing
+						- DONE: clean-up Interactive
+					- TBD: Room class
 						- TBD: 
 			- TBD: someday / maybe fixes				
 				- TBD: maybe call disp_weapon from within cmd_exe() instead of in app_main() due to score??
