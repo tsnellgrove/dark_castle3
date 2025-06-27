@@ -132,7 +132,8 @@ class ObjOnRmFlrCond(TrueCond):
 	def cond_check(self, gs, mach_state, is_valid):
 		if not super().cond_check(gs, mach_state, is_valid):
 			return False
-		return (self.match_room.is_obj_on_floor(self.obj) == self.match_cond)
+#		return (self.match_room.is_obj_on_floor(self.obj) == self.match_cond)
+		return (self.match_room.chk_contain_item(self.obj, gs) == self.match_cond)
 
 
 class ObjInRmCond(TrueCond):

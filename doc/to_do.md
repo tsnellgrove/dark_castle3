@@ -786,8 +786,11 @@ End Date:
 						- DONE: decide to keep Container.is_empty() as standard call (even though not used)
 						- DONE: testing
 						- DONE: clean-up Interactive
-					- TBD: Room class
+					- INPROC: Room class
+						- DONE: elim is_obj_on_floor() => chk_contain_item()
+						- DONE: test
 						- TBD: 
+						- TBD: clean-up room & cond
 			- TBD: someday / maybe fixes				
 				- TBD: maybe call disp_weapon from within cmd_exe() instead of in app_main() due to score??
 					- EXAMPLE: 1) get sword from hedgehog, 2) attack goblin 'with sword' from bkpk
