@@ -40,8 +40,8 @@ class Room(ViewOnly):
 	def floor_lst_append(self, item):
 		self.floor_lst.append(item)
 
-	def floor_lst_extend(self, lst):
-		self.floor_lst.extend(lst)
+#	def floor_lst_extend(self, lst):
+#		self.floor_lst.extend(lst)
 
 	def floor_lst_remove(self, item):
 		self.floor_lst.remove(item)

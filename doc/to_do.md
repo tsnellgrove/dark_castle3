@@ -789,9 +789,28 @@ End Date:
 					- INPROC: Room class
 						- DONE: elim is_obj_on_floor() => chk_contain_item()
 						- DONE: test
-						- TBD: 
-						- TBD: clean-up room & cond
-			- TBD: someday / maybe fixes				
+						- DONE: elim floor_lst_extend()
+						- DONE: test
+						- INPROC: sort out room.remove_item()
+							- IDEA: there is a need for a simple, visibility-independent chk_contain_item()
+							- IDEA: but there are also cases where chk_contain_item() is mis-used:
+								- IDEA: in these cases it is treated as deep inventory check:
+									- FINDING: ObjInInvCond(), take_err(), take()
+							- IDEA: also, should pre-fix obj.check_contain_item() w/ obj.is_container()
+							- TBD: document chk_contain_item() as single level
+							- TBD: create chk_item_in_inv() universal method that goes deeep
+								- TBD: probably first need to create universal get_inv_lst() ??
+								- TBD: Identity => False
+								- TBD: Room
+								- TBD: Creature
+								- TBD: Interactive
+							- TBD: review chk_contain_item() & update w/ is_container / chk_item_in_inv()
+							- TBD: also check for mis-use of get_vis_contain_lst() => get_inv_lst()
+							- TBD: update room.remove_item() based on use of chk_item_in_inv()
+						- TBD: test
+						- TBD: clean-up room, cond, creature
+			- TBD: someday / maybe fixes
+				- TBD: make inventory description text rare (20%?)			
 				- TBD: maybe call disp_weapon from within cmd_exe() instead of in app_main() due to score??
 					- EXAMPLE: 1) get sword from hedgehog, 2) attack goblin 'with sword' from bkpk
 				- TBD: should burt auto-draw weapon when attacked (e.g. 'go n' near goblin)?

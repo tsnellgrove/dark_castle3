@@ -551,7 +551,8 @@ class Creature(ViewOnly):
 		else:
 			if result_code in ['src_death', 'tgt_death']:
 				room_obj.floor_lst_remove(lose_creature)
-				room_obj.floor_lst_extend(lose_creature.bkpk_lst + lose_creature.hand_lst + lose_creature.worn_lst)
+#				room_obj.floor_lst_extend(lose_creature.bkpk_lst + lose_creature.hand_lst + lose_creature.worn_lst)
+				room_obj.floor_lst.extend(lose_creature.bkpk_lst + lose_creature.hand_lst + lose_creature.worn_lst)
 			if result_code == 'tgt_flee_dc':
 				room_obj.floor_lst_remove(lose_creature)
 
