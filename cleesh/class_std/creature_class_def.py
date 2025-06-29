@@ -259,7 +259,7 @@ class Creature(ViewOnly):
 		return node1_item_lst + contain_lst + self.feature_lst
 
 	def chk_contain_item(self, item):
-		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item()
+		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item(). Only single level deep - does not check in containers.
 		"""
 		return item in self.hand_lst + self.bkpk_lst + self.worn_lst
 

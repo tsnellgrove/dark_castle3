@@ -68,7 +68,7 @@ class Room(ViewOnly):
 		return return_lst
 
 	def chk_contain_item(self, item, gs):
-		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item()
+		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item(). Only single level deep - does not check in containers.
 		"""
 		return item in self.floor_lst
 ##		if item in self.floor_lst:
@@ -79,6 +79,20 @@ class Room(ViewOnly):
 #		if any(obj.chk_contain_lst(item) for obj in self.floor_lst): # chk_contain_lst() is not defined in Room, so this will always return False
 #			return True
 ##		return False
+
+	def chk_item_in_inv(self, item, gs):
+		""" Evaluates whether the passed object is contained within the methed-calling object. Only checks a single level deep - does not check in containers.
+		"""
+		if item in self.floor_lst:
+			return True
+		for obj in self.floor_lst:
+			if obj.is_container(): # check in fixed containers
+				if obj.chk_contain_item(item): 
+					return True
+				for deep_item in obj.contain_lst: # check in portable containers
+					if deep_item.is_container() and deep_item.chk_contain_item(item):
+						return True
+		return False
 
 	def get_contain_lst(self, gs):
 		return self.floor_lst + self.feature_lst + gs.map.get_door_lst(self)

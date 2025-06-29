@@ -22,6 +22,13 @@ class Identity(Invisible):
 		return []
 
 	def chk_contain_item(self, item):
+		""" Evaluates whether the passed object is contained within the methed-calling object. Only checks a single level deep - does not check in containers.
+		"""
+		return False
+
+	def chk_item_in_inv(self, item, gs):
+		""" Evaluates whether the passed object is contained within the methed-calling object. Performs a deep contain check (i.e. looks in containers). Only called on Room, Creature, and Interactive.
+		"""
 		return False
 
 	def remove_item(self, item, gs):

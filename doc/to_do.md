@@ -797,11 +797,11 @@ End Date:
 								- IDEA: in these cases it is treated as deep inventory check:
 									- FINDING: ObjInInvCond(), take_err(), take()
 							- IDEA: also, should pre-fix obj.check_contain_item() w/ obj.is_container()
-							- TBD: document chk_contain_item() as single level
-							- TBD: create chk_item_in_inv() universal method that goes deeep
-								- TBD: probably first need to create universal get_inv_lst() ??
-								- TBD: Identity => False
-								- TBD: Room
+							- DONE: document chk_contain_item() as single level
+							- INPROC: create chk_item_in_inv() universal method that goes deeep
+								- CANCEL: probably first need to create universal get_inv_lst() ??
+								- DONE: Identity => False
+								- DONE: Room
 								- TBD: Creature
 								- TBD: Interactive
 							- TBD: review chk_contain_item() & update w/ is_container / chk_item_in_inv()
