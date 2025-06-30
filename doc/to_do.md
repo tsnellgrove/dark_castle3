@@ -802,6 +802,8 @@ End Date:
 								- CANCEL: probably first need to create universal get_inv_lst() ??
 								- DONE: Identity => False
 								- DONE: Room
+									- DONE: new mehtod
+									- DONE: second is_container() is not contributing - remove
 								- TBD: Creature
 								- TBD: Interactive
 							- TBD: review chk_contain_item() & update w/ is_container / chk_item_in_inv()
