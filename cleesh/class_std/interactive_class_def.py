@@ -218,6 +218,23 @@ class ContainsMixIn(object):
 		raise ValueError(f"Can't remove item {item} from Container {self.name}")
 
 
+	# *** receptacle inventory methods - for internal item mgmt ***
+	def get_top_lvl_inv_lst(self, gs):
+		""" Returns the list of top-level objects in the inventory of the methed-calling object.
+		"""
+		return self.contain_lst
+
+	def chk_item_in_inv(self, item, gs):
+		""" Evaluates whether the passed object is within the inventory of methed-calling object. Checks two levels deep.
+		"""
+		if self.chk_contain_item(item): # check in container contain_lst
+			return True
+		for obj in self.get_top_lvl_inv_lst(gs): # check in portable containers
+			if obj.chk_contain_item(item): 
+				return True
+		return False
+
+
 	# *** container-specific scope methods ***
 	def is_empty(self):
 		return not self.contain_lst

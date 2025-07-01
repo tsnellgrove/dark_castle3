@@ -282,6 +282,23 @@ class Creature(ViewOnly):
 		return 
 
 
+	# *** receptacle inventory methods - for internal item mgmt ***
+	def get_top_lvl_inv_lst(self, gs):
+		""" Returns the list of top-level objects in the inventory of the methed-calling object.
+		"""
+		return self.hand_lst + self.bkpk_lst + self.worn_lst
+
+	def chk_item_in_inv(self, item, gs):
+		""" Evaluates whether the passed object is within the inventory of methed-calling object. Checks two levels deep.
+		"""
+		if self.chk_contain_item(item): # check in container contain_lst
+			return True
+		for obj in self.get_top_lvl_inv_lst(gs): # check in portable containers
+			if obj.chk_contain_item(item): 
+				return True
+		return False
+
+
 	# *** creature-specific scope methods ***
 	def chk_contain_name(self, name_str): # does NOT check in containers; used in disp_score to validate 'give'
 		for obj in self.hand_lst + self.bkpk_lst + self.worn_lst:

@@ -106,14 +106,19 @@ class Room(ViewOnly):
 		return 
 
 	
-	# *** receptacle methods ***
-	def chk_item_in_inv(self, item, gs):
-		""" Evaluates whether the passed object is contained within the methed-calling object. Only checks a single level deep - does not check in containers.
+	# *** receptacle inventory methods - for internal item mgmt ***
+	def get_top_lvl_inv_lst(self, gs):
+		""" Returns the list of top-level objects in the inventory of the methed-calling object.
 		"""
-		if item in self.floor_lst:
+		return self.floor_lst
+
+	def chk_item_in_inv(self, item, gs):
+		""" Evaluates whether the passed object is within the inventory of methed-calling object. Checks three levels deep.
+		"""
+		if self.chk_contain_item(item): # check in foom floor_lst
 			return True
-		for obj in self.floor_lst:
-			if obj.is_container(): # check in fixed containers
+		for obj in self.get_top_lvl_inv_lst(gs):
+			if obj.is_receptacle(): # check in fixed containers and creatures
 				if obj.chk_contain_item(item): 
 					return True
 				for deep_item in obj.contain_lst: # check in portable containers
