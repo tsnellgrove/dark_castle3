@@ -798,7 +798,7 @@ End Date:
 									- FINDING: ObjInInvCond(), take_err(), take()
 							- IDEA: also, should pre-fix obj.check_contain_item() w/ obj.is_container()
 							- DONE: document chk_contain_item() as single level
-							- INPROC: create chk_item_in_inv() universal method that goes deeep
+							- DONE: create chk_item_in_inv() universal method that goes deeep
 								- DONE: probably first need to create get_top_lvl_inv_lst()
 								- DONE: Identity => False
 								- DONE: Room
@@ -806,9 +806,10 @@ End Date:
 									- DONE: second is_container() is not contributing - remove
 								- DONE: Creature
 								- DONE: Interactive
+							- DONE: update room.remove_item() based on use of chk_item_in_inv()
+							- DONE: test
 							- TBD: review chk_contain_item() & update w/ is_container / chk_item_in_inv()
 							- TBD: also check for mis-use of get_vis_contain_lst() => get_inv_lst()
-							- TBD: update room.remove_item() based on use of chk_item_in_inv()
 						- TBD: test
 						- TBD: clean-up room, cond, creature
 			- TBD: someday / maybe fixes
