@@ -103,6 +103,8 @@ class CreatureContainedCond(TrueCond):
 
 
 class ObjOnRmFlrCond(TrueCond):
+	""" Condition to check whether an object is on the floor of a specified room. Top-level only.
+	"""
 	def __init__(self, name, match_room, obj, match_cond):
 		super().__init__(name)
 		self._match_room = match_room
@@ -137,6 +139,8 @@ class ObjOnRmFlrCond(TrueCond):
 
 
 class ObjInRmCond(TrueCond):
+	""" Uses map.get_obj_room() instead of room.chk_item_in_inv() to be more general.
+	"""
 	def __init__(self, name, match_room, obj, match_cond):
 		super().__init__(name)
 		self._match_room = match_room
@@ -232,7 +236,8 @@ class ObjInInvCond(ItemInHandCond):
 	def cond_check(self, gs, mach_state, is_valid):
 		if (self.is_valid_reqd and not is_valid):
 			return False
-		return (self.creature_obj.chk_contain_item(self.item_obj) == self.match_cond)
+#		return (self.creature_obj.chk_contain_item(self.item_obj) == self.match_cond)
+		return (self.creature_obj.chk_item_in_inv(self.item_obj, gs) == self.match_cond)
 
 class WeaponInHandCond(TrueCond):
 	def __init__(self, name, creature_obj, match_cond):
