@@ -139,7 +139,8 @@ class Error(Identity):
 			# attemptable error: a non-item might look takeable - is reasonable to attempt - player gets info
 			err_txt = (f"Just how do you intend to pick up a {self.full_name}?")
 			return True, True, err_txt
-		if not creature.chk_contain_item(self) and (creature.weight + self.weight) > creature.max_weight:
+#		if not creature.chk_contain_item(self) and (creature.weight + self.weight) > creature.max_weight:
+		if not creature.chk_item_in_inv(self, gs) and (creature.weight + self.weight) > creature.max_weight:
 			# attemptable error: player only learns obj is too heavy by trying to lift it
 			err_txt = (f"You don't have enough capacity to take the {self.full_name} along with everything else you are carrying.")
 			return True, True, err_txt

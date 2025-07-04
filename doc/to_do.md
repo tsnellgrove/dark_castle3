@@ -808,12 +808,16 @@ End Date:
 								- DONE: Interactive
 							- DONE: update room.remove_item() based on use of chk_item_in_inv()
 							- DONE: test
-							- INPROC: review chk_contain_item() & update w/ is_container / chk_item_in_inv()
-								- DONE: cond class
-								- TBD: 
+							- DONE: review chk_contain_item() & update w/ is_container / chk_item_in_inv()
+								- DONE: Cond class
+								- DONE: Creature class
+								- DONE: Error class
+								- DONE: Identity class
+								- DONE: Interactive class
+								- DONE: Item class
+								- DONE: Room class
 							- TBD: also check for mis-use of get_vis_contain_lst() => get_inv_lst()
-								
-
+						
 						- TBD: test
 						- TBD: clean-up room, cond, creature
 			- TBD: someday / maybe fixes

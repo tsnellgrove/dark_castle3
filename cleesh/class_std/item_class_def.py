@@ -58,7 +58,8 @@ class Item(ViewOnly):
 			gs.io.buff_s(f"{creature.name}_remove_{self.descript_key}")
 #		if self.is_weapon():
 #			gs.io.buffer(f"With the {self.full_name} in hand you are now armed and dangerous!")
-		if not creature.chk_contain_item(self) and (creature.weight + self.weight + 5) > creature.max_weight:
+#		if not creature.chk_contain_item(self) and (creature.weight + self.weight + 5) > creature.max_weight:
+		if not creature.chk_item_in_inv(self, gs) and (creature.weight + self.weight + 5) > creature.max_weight:
 			gs.io.buffer(f"Your load is getting heavy.")
 		
 		gs.map.hero_rm.remove_item(self, gs)
