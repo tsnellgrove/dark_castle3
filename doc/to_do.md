@@ -816,7 +816,13 @@ End Date:
 								- DONE: Interactive class
 								- DONE: Item class
 								- DONE: Room class
-							- TBD: also check for mis-use of get_vis_contain_lst() => get_inv_lst()
+							- INPROC: also check for mis-use of get_vis_contain_lst() => get_inv_lst()
+								- DONE: interp() 
+								- INPROC: creature()
+									- DONE: create get_inv_lst() for identity, creature, interactive, room
+									- TBD: review / update chk_item_in_inv() based on get_inv_lst()
+									- TBD: test
+									- TBD: update creature.has_weapon() code w/ get_inv_lst()
 						
 						- TBD: test
 						- TBD: clean-up room, cond, creature

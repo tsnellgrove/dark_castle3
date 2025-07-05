@@ -115,6 +115,15 @@ class Room(ViewOnly):
 		"""
 		return self.floor_lst
 
+	def get_inv_lst(self, gs):
+		""" Returns the list of all objects in the inventory of the methed-calling receptacle.
+		"""
+		inv_lst = self.get_top_lvl_inv_lst(gs)
+		for obj in inv_lst:
+			if obj.is_receptacle():
+				inv_lst.extend(obj.get_inv_lst(gs))
+		return inv_lst
+
 	def chk_item_in_inv(self, item, gs):
 		""" Evaluates whether the passed object is within the inventory of methed-calling object. Checks three levels deep.
 		"""

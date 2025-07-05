@@ -224,6 +224,14 @@ class ContainsMixIn(object):
 		"""
 		return self.contain_lst
 
+	def get_inv_lst(self, gs):
+		""" Returns the list of all objects in the inventory of the methed-calling receptacle.
+		"""
+		inv_lst = self.get_top_lvl_inv_lst(gs)
+		for item in inv_lst:
+			inv_lst.extend(item.get_contain_lst(gs)) # add all contained items
+		return inv_lst
+
 	def chk_item_in_inv(self, item, gs):
 		""" Evaluates whether the passed object is within the inventory of methed-calling object. Checks two levels deep.
 		"""

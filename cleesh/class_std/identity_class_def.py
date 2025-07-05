@@ -26,6 +26,11 @@ class Identity(Invisible):
 		"""
 		return False
 
+	def get_inv_lst(self, gs):
+		""" Returns the list of all objects in the inventory of the methed-calling receptacle.
+		"""
+		return []
+
 	def chk_item_in_inv(self, item, gs):
 		""" Evaluates whether the passed object is contained within the methed-calling object. Performs a deep contain check (i.e. looks in containers). Only called on Room, Creature, and Interactive.
 		"""

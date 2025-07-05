@@ -288,6 +288,14 @@ class Creature(ViewOnly):
 		"""
 		return self.hand_lst + self.bkpk_lst + self.worn_lst
 
+	def get_inv_lst(self, gs):
+		""" Returns the list of all objects in the inventory of the methed-calling receptacle.
+		"""
+		inv_lst = self.get_top_lvl_inv_lst(gs)
+		for item in inv_lst:
+			inv_lst.extend(item.get_contain_lst(gs)) # add all contained items
+		return inv_lst
+
 	def chk_item_in_inv(self, item, gs):
 		""" Evaluates whether the passed object is within the inventory of methed-calling object. Checks two levels deep.
 		"""
@@ -309,6 +317,7 @@ class Creature(ViewOnly):
 	def has_weapon(self, gs):
 		""" Returns True if the Creature has a weapon in its inventory.
 		"""
+#		return any(item.is_weapon() for item in self.get_vis_contain_lst(gs))
 		return any(item.is_weapon() for item in self.get_vis_contain_lst(gs))
 
 	def get_weapon(self, gs):
