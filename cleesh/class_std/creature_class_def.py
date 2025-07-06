@@ -297,7 +297,7 @@ class Creature(ViewOnly):
 		return inv_lst
 
 	def chk_item_in_inv(self, item, gs):
-		""" Evaluates whether the passed object is within the inventory of methed-calling object. Checks two levels deep.
+		""" Evaluates whether the passed object is within the inventory of methed-calling object. Checks two levels deep. Not implemented via 'return item in self.get_inv_lst(gs)' to improve performance.
 		"""
 		if self.chk_contain_item(item): # check in container contain_lst
 			return True
@@ -317,13 +317,14 @@ class Creature(ViewOnly):
 	def has_weapon(self, gs):
 		""" Returns True if the Creature has a weapon in its inventory.
 		"""
-#		return any(item.is_weapon() for item in self.get_vis_contain_lst(gs))
 		return any(item.is_weapon() for item in self.get_vis_contain_lst(gs))
+#		return any(item.is_weapon() for item in self.get_inv_lst(gs))
 
 	def get_weapon(self, gs):
 		""" Returns the Creature's weapon if it has one. Otherwise, returns None.
 		"""
 		for item in self.get_vis_contain_lst(gs):
+#		for item in self.get_inv_lst(gs):
 			if item.is_weapon():
 				return item
 		return None

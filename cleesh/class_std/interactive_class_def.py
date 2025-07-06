@@ -233,7 +233,7 @@ class ContainsMixIn(object):
 		return inv_lst
 
 	def chk_item_in_inv(self, item, gs):
-		""" Evaluates whether the passed object is within the inventory of methed-calling object. Checks two levels deep.
+		""" Evaluates whether the passed object is within the inventory of methed-calling object. Checks two levels deep. Not implemented via 'return item in self.get_inv_lst(gs)' to improve performance.
 		"""
 		if self.chk_contain_item(item): # check in container contain_lst
 			return True

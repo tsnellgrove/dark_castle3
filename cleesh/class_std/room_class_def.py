@@ -125,7 +125,7 @@ class Room(ViewOnly):
 		return inv_lst
 
 	def chk_item_in_inv(self, item, gs):
-		""" Evaluates whether the passed object is within the inventory of methed-calling object. Checks three levels deep.
+		""" Evaluates whether the passed object is within the inventory of methed-calling object. Checks three levels deep. Not implemented via 'return item in self.get_inv_lst(gs)' to improve performance.
 		"""
 		if self.chk_contain_item(item): # check in foom floor_lst
 			return True

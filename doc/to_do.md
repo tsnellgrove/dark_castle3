@@ -818,11 +818,21 @@ End Date:
 								- DONE: Room class
 							- INPROC: also check for mis-use of get_vis_contain_lst() => get_inv_lst()
 								- DONE: interp() 
-								- INPROC: creature()
+								- DONE: creature()
 									- DONE: create get_inv_lst() for identity, creature, interactive, room
-									- TBD: review / update chk_item_in_inv() based on get_inv_lst()
-									- TBD: test
-									- TBD: update creature.has_weapon() code w/ get_inv_lst()
+									- DONE: review / update chk_item_in_inv() based on get_inv_lst()
+									- DONE: update creature.has_weapon() code w/ get_inv_lst()
+									- DONE: update creature.get_weapon() code w/ get_inv_lst()
+									- DONE: test
+									- IDEA: get_vis_contain_lst() more appropriate than get_inv_lst()
+									- IDEA: (for has_weapon / get_weapon)
+									- IDEA: because shouldn't be able to draw weapon in closed container
+									- DONE: revert has_weapon / get_weapon
+								- TBD: (do get_inv_lst and chk_inv_lst enable access to locked containers?)
+								- TBD: need to tune for visible??
+								- TBD: look more closely at has_weapon / get_weapon
+
+
 						
 						- TBD: test
 						- TBD: clean-up room, cond, creature
