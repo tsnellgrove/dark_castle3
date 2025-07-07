@@ -284,12 +284,12 @@ class Creature(ViewOnly):
 
 	# *** receptacle inventory methods - for internal item mgmt ***
 	def get_top_lvl_inv_lst(self, gs):
-		""" Returns the list of top-level objects in the inventory of the methed-calling object.
+		""" Returns the list of top-level items in the inventory of the methed-calling object.
 		"""
 		return self.hand_lst + self.bkpk_lst + self.worn_lst
 
 	def get_inv_lst(self, gs):
-		""" Returns the list of all objects in the inventory of the methed-calling receptacle.
+		""" Returns the list of all accessable items in the inventory of the methed-calling receptacle.
 		"""
 		inv_lst = self.get_top_lvl_inv_lst(gs)
 		for item in inv_lst:

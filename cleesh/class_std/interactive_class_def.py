@@ -220,27 +220,29 @@ class ContainsMixIn(object):
 
 	# *** receptacle inventory methods - for internal item mgmt ***
 	def get_top_lvl_inv_lst(self, gs):
-		""" Returns the list of top-level objects in the inventory of the methed-calling object.
+		""" Returns the list of top-level items in the inventory of the methed-calling object.
 		"""
 		return self.contain_lst
 
 	def get_inv_lst(self, gs):
-		""" Returns the list of all objects in the inventory of the methed-calling receptacle.
+		""" Returns the list of all accessable items in the inventory of the methed-calling receptacle.
 		"""
 		inv_lst = self.get_top_lvl_inv_lst(gs)
 		for item in inv_lst:
-			inv_lst.extend(item.get_contain_lst(gs)) # add all contained items
+			if item.is_container() and ((item.is_openable() and item.is_open) or not item.is_openable()):
+				inv_lst.extend(item.get_contain_lst(gs)) # add all contained items
 		return inv_lst
 
 	def chk_item_in_inv(self, item, gs):
-		""" Evaluates whether the passed object is within the inventory of methed-calling object. Checks two levels deep. Not implemented via 'return item in self.get_inv_lst(gs)' to improve performance.
+		""" Evaluates whether the passed object is within the accessable inventory of methed-calling object. Checks two levels deep.
 		"""
-		if self.chk_contain_item(item): # check in container contain_lst
-			return True
-		for obj in self.get_top_lvl_inv_lst(gs): # check in portable containers
-			if obj.chk_contain_item(item): 
-				return True
-		return False
+		return item in self.get_inv_lst(gs)
+#		if self.chk_contain_item(item): # check in container contain_lst
+#			return True
+#		for obj in self.get_top_lvl_inv_lst(gs): # check in portable containers
+#			if obj.chk_contain_item(item): 
+#				return True
+#		return False
 
 
 	# *** container-specific scope methods ***

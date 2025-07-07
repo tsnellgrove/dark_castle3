@@ -828,8 +828,15 @@ End Date:
 									- IDEA: (for has_weapon / get_weapon)
 									- IDEA: because shouldn't be able to draw weapon in closed container
 									- DONE: revert has_weapon / get_weapon
-								- TBD: (do get_inv_lst and chk_inv_lst enable access to locked containers?)
-								- TBD: need to tune for visible??
+								- IDEA: do get_inv_lst and chk_inv_lst enable access to locked containers?
+								- IDEA: need to tune for visible (i.e. not in closed containers)
+								- TBD: refactor inventory methods:
+									- DONE: interactive.get_inv_lst()
+									- DONE: interactive.chk_inv_lst()
+									- TBD: creature.get_inv_lst()
+									- TBD: creature.chk_inv_lst() [ => in get_inv_lst() ]
+									- TBD: room.get_inv_lst()
+									- TBD: room.chk_inv_lst() [ => in get_inv_lst() ]
 								- TBD: look more closely at has_weapon / get_weapon
 
 
