@@ -125,18 +125,19 @@ class Room(ViewOnly):
 		return inv_lst
 
 	def chk_item_in_inv(self, item, gs):
-		""" Evaluates whether the passed object is within the inventory of methed-calling object. Checks three levels deep. Not implemented via 'return item in self.get_inv_lst(gs)' to improve performance.
+		""" Evaluates whether the passed item is within the accessable inventory of methed-calling object. Checks three levels deep. 
 		"""
-		if self.chk_contain_item(item): # check in foom floor_lst
-			return True
-		for obj in self.get_top_lvl_inv_lst(gs):
-			if obj.is_receptacle(): # check in fixed containers and creatures
-				if obj.chk_contain_item(item): 
-					return True
-				for deep_item in obj.contain_lst: # check in portable containers
-					if deep_item.chk_contain_item(item):
-						return True
-		return False
+		return ((item.is_item()) and (item in self.get_inv_lst(gs)))
+#		if self.chk_contain_item(item): # check in foom floor_lst
+#			return True
+#		for obj in self.get_top_lvl_inv_lst(gs):
+#			if obj.is_receptacle(): # check in fixed containers and creatures
+#				if obj.chk_contain_item(item): 
+#					return True
+#				for deep_item in obj.contain_lst: # check in portable containers
+#					if deep_item.chk_contain_item(item):
+#						return True
+#		return False
 
 
 	# *** room-specific scope methods ***

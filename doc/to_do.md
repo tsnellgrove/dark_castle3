@@ -816,7 +816,7 @@ End Date:
 								- DONE: Interactive class
 								- DONE: Item class
 								- DONE: Room class
-							- INPROC: also check for mis-use of get_vis_contain_lst() => get_inv_lst()
+							- DONE: also check for mis-use of get_vis_contain_lst() => get_inv_lst()
 								- DONE: interp() 
 								- DONE: creature()
 									- DONE: create get_inv_lst() for identity, creature, interactive, room
@@ -830,19 +830,30 @@ End Date:
 									- DONE: revert has_weapon / get_weapon
 								- IDEA: do get_inv_lst and chk_inv_lst enable access to locked containers?
 								- IDEA: need to tune for visible (i.e. not in closed containers)
-								- TBD: refactor inventory methods:
+								- DONE: refactor inventory methods:
 									- DONE: interactive.get_inv_lst()
 									- DONE: interactive.chk_inv_lst()
-									- TBD: creature.get_inv_lst()
-									- TBD: creature.chk_inv_lst() [ => in get_inv_lst() ]
-									- TBD: room.get_inv_lst()
-									- TBD: room.chk_inv_lst() [ => in get_inv_lst() ]
-								- TBD: look more closely at has_weapon / get_weapon
+									- DONE: creature.get_inv_lst()
+									- DONE: creature.chk_inv_lst() [ => in get_inv_lst() ]
+									- DONE: room.get_inv_lst()
+									- DONE: room.chk_inv_lst() [ => in get_inv_lst() ]
+							- TBD: re-do mis-use check on get_vis_contain_lst() => get_inv_lst()
+								- TBD: interp()
+								- TBD: creature() [has_weapon() / get_weapon() ]
+								- TBD: 
 
 
 						
 						- TBD: test
 						- TBD: clean-up room, cond, creature
+			- TBD: document the definition of accessable inventory:
+				- IDEA: with the elimination of 'hand' it's vital to know what items a creature can access
+				- IDEA: this is distinct from obj that are visible in 2 ways:
+					- IDEA: 1) it only relates to items
+					- IDEA: 2) it assumes access to all items (because it is the creature's inventory)
+					- IDEA: the term accessable is also key; an obj in a closed container is not acceessable
+					- IDEA: inventory relates to creatures therefor is needed for Interactive & Creature
+					- IDEA: room.inventory has also been created but may be superfluous???
 			- TBD: someday / maybe fixes
 				- TBD: make inventory description text rare (20%?)			
 				- TBD: maybe call disp_weapon from within cmd_exe() instead of in app_main() due to score??
