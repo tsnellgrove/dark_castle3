@@ -320,14 +320,14 @@ class Creature(ViewOnly):
 	def has_weapon(self, gs):
 		""" Returns True if the Creature has a weapon in its inventory.
 		"""
-		return any(item.is_weapon() for item in self.get_vis_contain_lst(gs))
-#		return any(item.is_weapon() for item in self.get_inv_lst(gs))
+#		return any(item.is_weapon() for item in self.get_vis_contain_lst(gs))
+		return any(item.is_weapon() for item in self.get_inv_lst(gs))
 
 	def get_weapon(self, gs):
 		""" Returns the Creature's weapon if it has one. Otherwise, returns None.
 		"""
-		for item in self.get_vis_contain_lst(gs):
-#		for item in self.get_inv_lst(gs):
+#		for item in self.get_vis_contain_lst(gs):
+		for item in self.get_inv_lst(gs):
 			if item.is_weapon():
 				return item
 		return None
@@ -347,7 +347,8 @@ class Creature(ViewOnly):
 		raise ValueError(f"{obj.full_name} not found.")
 
 	def chk_obj_in_reach(self, obj, gs):
-		seat_item_lst = self.get_contained_by(gs).get_vis_contain_lst(gs)
+#		seat_item_lst = self.get_contained_by(gs).get_vis_contain_lst(gs)
+		seat_item_lst = self.get_contained_by(gs).get_inv_lst(gs)
 		room = gs.map.get_obj_room(self, gs)
 		in_reach_obj_lst = []
 		for receptacle in self.get_contained_by(gs).in_reach_lst:

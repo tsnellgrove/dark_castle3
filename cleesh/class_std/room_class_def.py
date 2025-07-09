@@ -172,7 +172,8 @@ class Room(ViewOnly):
 		temp_lst = self.floor_lst.copy()
 		for obj in self.floor_lst:
 			if not obj.is_creature() and not (obj.is_container() and obj.is_item()):
-				temp_lst += obj.get_vis_contain_lst(gs)
+#				temp_lst += obj.get_vis_contain_lst(gs)
+				temp_lst += obj.get_inv_lst(gs)
 		for obj in temp_lst:
 			if obj.is_item() and not obj.is_liquid():
 				take_all_lst.append(obj)

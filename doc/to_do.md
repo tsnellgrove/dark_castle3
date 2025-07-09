@@ -791,7 +791,7 @@ End Date:
 						- DONE: test
 						- DONE: elim floor_lst_extend()
 						- DONE: test
-						- INPROC: sort out room.remove_item()
+						- DONE: sort out room.remove_item()
 							- IDEA: there is a need for a simple, visibility-independent chk_contain_item()
 							- IDEA: but there are also cases where chk_contain_item() is mis-used:
 								- IDEA: in these cases it is treated as deep inventory check:
@@ -837,13 +837,12 @@ End Date:
 									- DONE: creature.chk_inv_lst() [ => in get_inv_lst() ]
 									- DONE: room.get_inv_lst()
 									- DONE: room.chk_inv_lst() [ => in get_inv_lst() ]
-							- TBD: re-do mis-use check on get_vis_contain_lst() => get_inv_lst()
-								- TBD: interp()
-								- TBD: creature() [has_weapon() / get_weapon() ]
-								- TBD: 
-
-
-						
+							- INPROC: re-do mis-use check on get_vis_contain_lst() => get_inv_lst()
+								- DONE: interp()
+								- DONE: creature() [has_weapon() / get_weapon() ]
+								- DONE: error, identity, interactive, room
+								- TBD: test
+						- TBD: Identity / Universal
 						- TBD: test
 						- TBD: clean-up room, cond, creature
 			- TBD: document the definition of accessable inventory:
