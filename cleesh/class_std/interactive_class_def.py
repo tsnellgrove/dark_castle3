@@ -220,9 +220,11 @@ class ContainsMixIn(object):
 
 	# *** receptacle inventory methods - for internal item mgmt ***
 	def get_top_lvl_inv_lst(self, gs):
-		""" Returns the list of top-level items in the inventory of the methed-calling object.
+		""" Returns the list of accessable top-level items in the inventory of the methed-calling object.
 		"""
-		return self.contain_lst
+		if self.is_container() and ((self.is_openable() and self.is_open) or not self.is_openable()):
+			return self.contain_lst
+		return []
 
 	def get_inv_lst(self, gs):
 		""" Returns the list of all accessable items in the inventory of the methed-calling receptacle.

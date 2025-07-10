@@ -841,7 +841,10 @@ End Date:
 								- DONE: interp()
 								- DONE: creature() [has_weapon() / get_weapon() ]
 								- DONE: error, identity, interactive, room
-								- TBD: test
+								- INPROC: test
+									- DONE: 'get all' with postbox closed => 'can't see cert'
+									- TBD: biscuit in bag in postbox: take biscuit => 2x biscuits
+
 						- TBD: Identity / Universal
 						- TBD: test
 						- TBD: clean-up room, cond, creature
