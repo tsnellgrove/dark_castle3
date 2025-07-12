@@ -95,6 +95,7 @@ class Room(ViewOnly):
 			self.floor_lst_remove(item)
 			return 
 		for obj in self.floor_lst:
+			print(f"chk_item_in_inv == {obj.chk_item_in_inv(item, gs)}")
 			if obj.chk_item_in_inv(item, gs):
 				obj.remove_item(item, gs)
 				return

@@ -214,6 +214,7 @@ class ContainsMixIn(object):
 		for obj in self.contain_lst:
 			if obj.is_container() and item in obj.contain_lst:
 				obj.contain_lst_remove(item, gs)
+				print(f"{item} removed from {obj}")
 				return
 		raise ValueError(f"Can't remove item {item} from Container {self.name}")
 

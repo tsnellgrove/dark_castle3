@@ -843,7 +843,10 @@ End Date:
 								- DONE: error, identity, interactive, room
 								- INPROC: test
 									- DONE: 'get all' with postbox closed => 'can't see cert'
-									- TBD: biscuit in bag in postbox: take biscuit => 2x biscuits
+									- INPROC: biscuit in bag in postbox: take biscuit => 2x biscuits
+										- DONE: print for room.remove() [prints]
+										- DONE: print for interactive.remove() [does not print]
+										- TBD: why doesn't interactive print?
 
 						- TBD: Identity / Universal
 						- TBD: test
