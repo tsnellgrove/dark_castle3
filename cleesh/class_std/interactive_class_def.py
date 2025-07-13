@@ -209,10 +209,16 @@ class ContainsMixIn(object):
 
 	def remove_item(self, item, gs):
 		print (f"trying to remove {item.name} from {self.name}")
+		print (f"self.contain_lst: {self.contain_lst}")
 		if item in self.contain_lst:
+			print ("How did we get here?")
 			self.contain_lst_remove(item, gs)
 			return
+		print (f"{item.name} is not directly contained by {self.name}")
 		for obj in self.contain_lst:
+			print (f"checking {obj.name}")
+			print (f"{obj.name} is a container == {obj.is_container()}")
+			print (f"{item.name} is in {obj.name} == {item in obj.contain_lst}")
 			if (obj.is_container()) and (item in obj.contain_lst):
 				obj.contain_lst_remove(item, gs)
 				print(f"{item} removed from {obj}")

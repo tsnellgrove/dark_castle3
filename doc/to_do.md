@@ -845,9 +845,12 @@ End Date:
 									- DONE: 'get all' with postbox closed => 'can't see cert'
 									- INPROC: biscuit in bag in postbox: take biscuit => 2x biscuits
 										- DONE: print for room.remove() [prints]
-										- DONE: print for interactive.remove() [does not print]
+										- DONE: print for interactive.remove() [does not print??]
 										- DONE: print to prove that interactive.remove_item() is running
-										- TBD: why doesn't interactive print?
+										- FINDING: appears biscuit is in postbox??
+										- TBD: investigate results from put()
+										
+										
 
 						- TBD: Identity / Universal
 						- TBD: test
