@@ -231,13 +231,14 @@ class ContainsMixIn(object):
 		""" Returns the list of accessable top-level items in the inventory of the methed-calling object.
 		"""
 		if self.is_container() and ((self.is_openable() and self.is_open) or not self.is_openable()):
-			return self.contain_lst
+			return self.contain_lst.copy()
 		return []
 
 	def get_inv_lst(self, gs):
 		""" Returns the list of all accessable items in the inventory of the methed-calling receptacle.
 		"""
 		inv_lst = self.get_top_lvl_inv_lst(gs)
+		print(f"get_inv_lst: {inv_lst}")
 		for item in inv_lst:
 			if item.is_container() and ((item.is_openable() and item.is_open) or not item.is_openable()):
 				inv_lst.extend(item.get_contain_lst(gs)) # add all contained items

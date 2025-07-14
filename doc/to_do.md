@@ -848,7 +848,9 @@ End Date:
 										- DONE: print for interactive.remove() [does not print??]
 										- DONE: print to prove that interactive.remove_item() is running
 										- FINDING: appears biscuit is in postbox??
-										- TBD: investigate results from put()
+										- DONE: investigate results from put() => not put() fault ??
+										- DONE: problem appears to be not using copy() in get_inv_lst return
+										- TBD: now I'm getting an error on 'get biscuit' and get fails
 										
 										
 
