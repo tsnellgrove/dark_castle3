@@ -851,6 +851,7 @@ End Date:
 										- DONE: investigate results from put() => not put() fault ??
 										- DONE: problem appears to be not using copy() in get_inv_lst return
 										- TBD: now I'm getting an error on 'get biscuit' and get fails
+										- TBD: search on all uses of list.extend()
 										
 										
 
