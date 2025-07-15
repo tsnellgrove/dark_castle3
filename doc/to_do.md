@@ -850,7 +850,8 @@ End Date:
 										- FINDING: appears biscuit is in postbox??
 										- DONE: investigate results from put() => not put() fault ??
 										- DONE: problem appears to be not using copy() in get_inv_lst return
-										- TBD: now I'm getting an error on 'get biscuit' and get fails
+										- DONE: now I'm getting an error on 'get biscuit' and get fails
+										- TBD: comment out interactive.remove troubleshooting prints
 										- TBD: search on all uses of list.extend()
 										
 										

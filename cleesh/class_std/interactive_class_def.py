@@ -208,20 +208,20 @@ class ContainsMixIn(object):
 		return []
 
 	def remove_item(self, item, gs):
-		print (f"trying to remove {item.name} from {self.name}")
-		print (f"self.contain_lst: {self.contain_lst}")
+#		print (f"trying to remove {item.name} from {self.name}")
+#		print (f"self.contain_lst: {self.contain_lst}")
 		if item in self.contain_lst:
-			print ("How did we get here?")
+#			print ("How did we get here?")
 			self.contain_lst_remove(item, gs)
 			return
-		print (f"{item.name} is not directly contained by {self.name}")
+#		print (f"{item.name} is not directly contained by {self.name}")
 		for obj in self.contain_lst:
-			print (f"checking {obj.name}")
-			print (f"{obj.name} is a container == {obj.is_container()}")
-			print (f"{item.name} is in {obj.name} == {item in obj.contain_lst}")
+#			print (f"checking {obj.name}")
+#			print (f"{obj.name} is a container == {obj.is_container()}")
+#			print (f"{item.name} is in {obj.name} == {item in obj.contain_lst}")
 			if (obj.is_container()) and (item in obj.contain_lst):
 				obj.contain_lst_remove(item, gs)
-				print(f"{item} removed from {obj}")
+#				print(f"{item} removed from {obj}")
 				return
 		raise ValueError(f"Can't remove item {item} from Container {self.name}")
 
@@ -238,7 +238,7 @@ class ContainsMixIn(object):
 		""" Returns the list of all accessable items in the inventory of the methed-calling receptacle.
 		"""
 		inv_lst = self.get_top_lvl_inv_lst(gs)
-		print(f"get_inv_lst: {inv_lst}")
+#		print(f"get_inv_lst: {inv_lst}")
 		for item in inv_lst:
 			if item.is_container() and ((item.is_openable() and item.is_open) or not item.is_openable()):
 				inv_lst.extend(item.get_contain_lst(gs)) # add all contained items
