@@ -843,7 +843,7 @@ End Date:
 								- DONE: error, identity, interactive, room
 								- INPROC: test
 									- DONE: 'get all' with postbox closed => 'can't see cert'
-									- INPROC: biscuit in bag in postbox: take biscuit => 2x biscuits
+									- DONE: biscuit in bag in postbox: take biscuit => 2x biscuits
 										- DONE: print for room.remove() [prints]
 										- DONE: print for interactive.remove() [does not print??]
 										- DONE: print to prove that interactive.remove_item() is running
@@ -851,8 +851,8 @@ End Date:
 										- DONE: investigate results from put() => not put() fault ??
 										- DONE: problem appears to be not using copy() in get_inv_lst return
 										- DONE: now I'm getting an error on 'get biscuit' and get fails
-										- TBD: comment out interactive.remove troubleshooting prints
-										- TBD: search on all uses of list.extend()
+										- DONE: comment out interactive.remove troubleshooting prints
+										- DONE: search on all uses of list.extend()
 										
 										
 
