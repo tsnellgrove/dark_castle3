@@ -853,6 +853,10 @@ End Date:
 										- DONE: now I'm getting an error on 'get biscuit' and get fails
 										- DONE: comment out interactive.remove troubleshooting prints
 										- DONE: search on all uses of list.extend()
+									- DONE: 'drp all','get rck','stowe rck','drp rok','get all except rck'
+									- DONE: get biscuit from bag in postbox
+									- TBD: general test
+										- TBD: fix can't read or examine scroll while seated in throne
 										
 										
 
