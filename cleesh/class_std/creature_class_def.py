@@ -349,6 +349,8 @@ class Creature(ViewOnly):
 	def chk_obj_in_reach(self, obj, gs):
 #		seat_item_lst = self.get_contained_by(gs).get_vis_contain_lst(gs)
 		seat_item_lst = self.get_contained_by(gs).get_inv_lst(gs)
+#		for item in seat_item_lst:
+#			print(item.name)
 		room = gs.map.get_obj_room(self, gs)
 		in_reach_obj_lst = []
 		for receptacle in self.get_contained_by(gs).in_reach_lst:

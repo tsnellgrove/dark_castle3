@@ -239,9 +239,11 @@ class ContainsMixIn(object):
 		"""
 		inv_lst = self.get_top_lvl_inv_lst(gs)
 #		print(f"get_inv_lst: {inv_lst}")
-		for item in inv_lst:
-			if item.is_container() and ((item.is_openable() and item.is_open) or not item.is_openable()):
-				inv_lst.extend(item.get_contain_lst(gs)) # add all contained items
+		for obj in inv_lst:
+			if obj.is_container() and ((obj.is_openable() and obj.is_open) or not obj.is_openable()):
+				inv_lst.extend(obj.get_contain_lst(gs)) # add all contained items
+			if obj.is_creature(): # deals with case of obj of Seat class container a Creature
+				inv_lst.extend(obj.get_inv_lst(gs))
 		return inv_lst
 
 	def chk_item_in_inv(self, item, gs):
