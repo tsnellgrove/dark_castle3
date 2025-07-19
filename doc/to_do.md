@@ -837,11 +837,11 @@ End Date:
 									- DONE: creature.chk_inv_lst() [ => in get_inv_lst() ]
 									- DONE: room.get_inv_lst()
 									- DONE: room.chk_inv_lst() [ => in get_inv_lst() ]
-							- INPROC: re-do mis-use check on get_vis_contain_lst() => get_inv_lst()
+							- DONE: re-do mis-use check on get_vis_contain_lst() => get_inv_lst()
 								- DONE: interp()
 								- DONE: creature() [has_weapon() / get_weapon() ]
 								- DONE: error, identity, interactive, room
-								- INPROC: test
+								- DONE: test
 									- DONE: 'get all' with postbox closed => 'can't see cert'
 									- DONE: biscuit in bag in postbox: take biscuit => 2x biscuits
 										- DONE: print for room.remove() [prints]
@@ -857,48 +857,29 @@ End Date:
 									- DONE: get biscuit from bag in postbox
 									- DONE: general test
 										- DONE: fix can't read or examine scroll while seated in throne
-									- TBD: one final full-game test
-										
-										
-
-						- TBD: Identity / Universal
-						- TBD: test
-						- TBD: clean-up room, cond, creature
-			- TBD: document the definition of accessable inventory:
-				- IDEA: with the elimination of 'hand' it's vital to know what items a creature can access
-				- IDEA: this is distinct from obj that are visible in 2 ways:
-					- IDEA: 1) it only relates to items
-					- IDEA: 2) it assumes access to all items (because it is the creature's inventory)
-					- IDEA: the term accessable is also key; an obj in a closed container is not acceessable
-					- IDEA: inventory relates to creatures therefor is needed for Interactive & Creature
-					- IDEA: room.inventory has also been created but may be superfluous???
-			- TBD: someday / maybe fixes
-				- TBD: make inventory description text rare (20%?)			
-				- TBD: maybe call disp_weapon from within cmd_exe() instead of in app_main() due to score??
-					- EXAMPLE: 1) get sword from hedgehog, 2) attack goblin 'with sword' from bkpk
-				- TBD: should burt auto-draw weapon when attacked (e.g. 'go n' near goblin)?
-					- IDEA: add 'draw_weapon' call into attack()
-				- TBD: should burt auto-draw weapon when for moat case?
-				- TBD: address 'Do What I Mean' in interp() now?
-				- TBD: create a wearabel portable container and test lvl 2 with prep & 2_word
-					- IDEA: simple wearable portable container would be a "fanny pack"
-					- TBD: create class for wearable portable container
-					- TBD: instantiate "fanny pack"
-					- TBD: test basic functionality
-					- TBD: test functionality with all in-scope 2_word & prep verbs
-					- TBD: test whether game can distinguish between 'pack' and 'pack'
-			- TBD: general ideas
-				- DONE: now prep case works with portable containers but 2-word does not - fix
-				- DONE: extend hand => bkpk to worn items?			
-				- TBD: address minor issues / redundancy / naming
-				- TBD: restructure 2_word cases
-				- TBD: generalize item handling across receptacles; use creature inventory approach
-				- TBD: next steps to consider
-				- TBD: tons of testing!!
-			- TBD: clean-up
-				- TBD: clean-up drop(), eat(), wear(), error(), validate(), game_static_gbl(), interp(), all
-				- TBD: clean-up room(), app_main()
-			- TBD: update help doc for inventory and hand
+									- DONE: one final full-game test
+				- TBD: review Identity / Universal ideas
+				- TBD: test
+				- TBD: clean-up all classes and methods!
+				- TBD: document the definition of accessable inventory:
+					- IDEA: with the elimination of 'hand', need to know what items a creature can access
+					- IDEA: this is distinct from obj that are visible in 2 ways:
+						- IDEA: 1) it only relates to items
+						- IDEA: 2) it assumes access to all items (because it is the creature's inventory)
+						- IDEA: an obj in a closed container is not acceessable
+						- IDEA: inventory relates to creatures therefor is needed for Interactive & Creature
+						- IDEA: room.inventory has also been created but may be superfluous???
+				- TBD: update 'help hand' to explain inventory concepts
+				- TBD: update sword glow narrative for crocodile encouters
+				- TBD: clean up
+		- CANCEL: general ideas
+			- DONE: now prep case works with portable containers but 2-word does not - fix
+			- DONE: extend hand => bkpk to worn items?			
+			- CANCEL: address minor issues / redundancy / naming
+			- CANCEL: restructure 2_word cases
+			- CANCEL: generalize item handling across receptacles; use creature inventory approach
+			- CANCEL: next steps to consider
+			- CANCEL: tons of testing!!
 	- TBD: room 4
 		- TBD: de-capitalize all nouns
 		- TBD: de-dup passage descriptions vs. base description
@@ -907,6 +888,8 @@ End Date:
 		- TBD: make paths examineable
 		- TBD: use init_desc where appropriate
 		- TBD: test all machines
+		- TBD: make inventory description text rare (20%?)			
+		- TBD: improve item listings for 'i' and 'x' (use a and an for single items)
 		- TBD: additional fixes:
 			- TBD: should obj.full_name be de-captialized?
 		- TBD: implement full set of cardinal directions
@@ -914,10 +897,27 @@ End Date:
 		- TBD: turn lantern into actual light
 			- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
 			- IDEA: see thoughts on light in to-do notes below
-- TBD: clean up cleesh static_gbl, clean-up game_static_gbl
+		- TBD: clean up cleesh static_gbl, clean-up game_static_gbl
+- TBD: git merge
+
+
+
+*** misc someday / maybe fixes ***
+- TBD: maybe call disp_weapon from within cmd_exe() instead of in app_main() due to score??
+	- EXAMPLE: 1) get sword from hedgehog, 2) attack goblin 'with sword' from bkpk
+- TBD: should burt auto-draw weapon when attacked (e.g. 'go n' near goblin)?
+	- IDEA: add 'draw_weapon' call into attack()
+- TBD: should burt auto-draw weapon when for moat case?
+- TBD: address 'Do What I Mean' in interp() now?
+- TBD: create a wearabel portable container and test lvl 2 with prep & 2_word
+	- IDEA: simple wearable portable container would be a "fanny pack"
+	- TBD: create class for wearable portable container
+	- TBD: instantiate "fanny pack"
+	- TBD: test basic functionality
+	- TBD: test functionality with all in-scope 2_word & prep verbs
+	- TBD: test whether game can distinguish between 'pack' and 'pack'
 - TBD: search on obj nouns and ensure always capitalized (???)
 
-- TBD: git merge
 
 *** decision about UI ***
 - TBD: how to handle obj.full_name capital cases?
