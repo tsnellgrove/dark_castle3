@@ -858,7 +858,8 @@ End Date:
 									- DONE: general test
 										- DONE: fix can't read or examine scroll while seated in throne
 									- DONE: one final full-game test
-				- TBD: review Identity / Universal ideas
+				- INPROC: review Identity / Universal ideas
+					- TBD: elim get_conatin_lst() ??
 				- TBD: test
 				- TBD: clean-up all classes and methods!
 				- TBD: document the definition of accessable inventory:
