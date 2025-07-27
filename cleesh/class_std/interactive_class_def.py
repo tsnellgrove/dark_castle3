@@ -241,7 +241,8 @@ class ContainsMixIn(object):
 #		print(f"get_inv_lst: {inv_lst}")
 		for obj in inv_lst:
 			if obj.is_container() and ((obj.is_openable() and obj.is_open) or not obj.is_openable()):
-				inv_lst.extend(obj.get_contain_lst(gs)) # add all contained items
+#				inv_lst.extend(obj.get_contain_lst(gs)) # add all contained items
+				inv_lst.extend(obj.contain_lst) # add all contained items
 			if obj.is_creature(): # deals with case of obj of Seat class container a Creature
 				inv_lst.extend(obj.get_inv_lst(gs))
 		return inv_lst
