@@ -16,10 +16,17 @@ class Identity(Invisible):
 
 	# *** universal scope methods ***
 	def get_contain_lst(self, gs):
+		""" Returns the list of all objects contained by the the methed-calling object.
+		Allows for full single-level all-object list independent of accessibility.
+		Useful for recursive universal scope searches.
+		"""
 		return []
 
 	def get_vis_contain_lst(self, gs):
 		return []
+		""" Returns the list of all visible objects contained by the methed-calling object.
+		Is 'examine'-centric. Is multi-level - not intended for recursion.
+		"""
 
 	def chk_contain_item(self, item):
 		""" Evaluates whether the passed object is contained within the methed-calling object. Only checks a single level deep - does not check in containers.
@@ -27,7 +34,8 @@ class Identity(Invisible):
 		return False
 
 	def get_inv_lst(self, gs):
-		""" Returns the list of all objects in the inventory of the methed-calling receptacle.
+		""" Returns the list of all accessible objects in the inventory of the methed-calling receptacle.
+		Is item-centric and focussed on inventory management. Is multi-level - not intended for recursion.
 		"""
 		return []
 

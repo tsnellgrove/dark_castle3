@@ -858,13 +858,14 @@ End Date:
 									- DONE: general test
 										- DONE: fix can't read or examine scroll while seated in throne
 									- DONE: one final full-game test
-				- INPROC: review Identity / Universal ideas
-					- INPROC: elim get_conatin_lst() ??
+				- DONE: review Identity / Universal ideas
+					- DONE: review value of elim get_contain_lst()
 						- DONE: interactive()
 							- DONE: update
 							- DONE: test
-						- TBD: map()
-						- TBD: test
+						- CANCEL: map()
+							- FINDING: get_contain_lst() has value of its own; see Identity comments
+						- DONE: test
 				- TBD: test
 				- TBD: clean-up all classes and methods!
 				- TBD: document the definition of accessable inventory:
