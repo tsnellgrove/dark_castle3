@@ -73,7 +73,6 @@ class IO(Invisible):
 
 	### check dict methods ###
 	def chk_str_exist(self, key):
-#		if key not in self.dyn_dict and key not in engine_static_dict:
 		if key not in self.dyn_dict and key not in engine_static_dict and key not in get_game_dict(self.game_name):
 			return False
 		return True

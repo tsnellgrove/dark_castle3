@@ -56,9 +56,6 @@ class Item(ViewOnly):
 		if creature.chk_is_worn(self):
 			gs.io.buffer(f"You are no longer wearing the {self.full_name}.")
 			gs.io.buff_s(f"{creature.name}_remove_{self.descript_key}")
-#		if self.is_weapon():
-#			gs.io.buffer(f"With the {self.full_name} in hand you are now armed and dangerous!")
-#		if not creature.chk_contain_item(self) and (creature.weight + self.weight + 5) > creature.max_weight:
 		if not creature.chk_item_in_inv(self, gs) and (creature.weight + self.weight + 5) > creature.max_weight:
 			gs.io.buffer(f"Your load is getting heavy.")
 		
@@ -80,20 +77,6 @@ class Item(ViewOnly):
 			gs.io.buffer(f"{self.full_name}: Dropped")
 		else:
 			gs.io.buffer("Dropped")
-
-#		if creature.chk_in_hand(self):
-#			creature.hand_lst_remove(self)
-#			if gs.io.multi_count > 0:
-#				gs.io.buffer(f"{self.full_name}: Dropped")
-#			else:
-#				gs.io.buffer("Dropped")
-#		else:
-#			creature.bkpk_lst_remove(self)
-#			if gs.io.multi_count > 0:
-#				gs.io.buffer(f"{self.full_name}: Dropped")
-#			else:
-#				gs.io.buffer(f"You toss the {self.full_name} from your backpack.")
-
 		if creature.is_contained(gs):
 			creature.get_contained_by(gs).contain_lst_append(self, gs)
 		else:
@@ -143,16 +126,6 @@ class Food(Item):
 		creature.hand_lst_remove(self)
 		gs.io.buffer("Eaten")
 		gs.io.buff_s(f"{creature.name}_eat_{self.descript_key}")
-		
-#		if creature.chk_in_hand(self):
-#			creature.hand_lst_remove(self)
-#			gs.io.buffer("Eaten")
-#			gs.io.buff_s(f"{creature.name}_eat_{self.descript_key}")
-#		else:
-#			creature.bkpk_lst_remove(self)
-##			gs.io.buffer(f"You pluck the {self.full_name} from your backpack and eat it.")
-##			gs.io.buff_s(f"{creature.name}_eat_{self.descript_key}")
-
 		gs.io.buffer(f"Eaten.")
 		gs.io.buff_s(f"{creature.name}_eat_{self.descript_key}")
 		return 
@@ -176,9 +149,7 @@ class Liquid(Item):
 			mode = 'std'
 		creature = gs.core.hero
 
-#		obj.contain_lst.remove(self)
 		obj.remove_item(self, gs)
-
 		gs.io.buffer("Drunk.")
 		gs.io.buff_s(f"{creature.name}_drink_{self.descript_key}")
 		return 
@@ -207,11 +178,6 @@ class Garment(Item):
 		if mode is None:
 			mode = 'std'
 		creature = gs.core.hero
-		
-#		if creature.chk_in_hand(self):
-#			creature.hand_lst_remove(self)
-#		else:
-#			creature.bkpk_lst_remove(self)
 		creature.hand_lst_remove(self)
 		creature.worn_lst_append(self)
 		

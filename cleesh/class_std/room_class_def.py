@@ -40,14 +40,9 @@ class Room(ViewOnly):
 	def floor_lst_append(self, item):
 		self.floor_lst.append(item)
 
-#	def floor_lst_extend(self, lst):
-#		self.floor_lst.extend(lst)
-
 	def floor_lst_remove(self, item):
 		self.floor_lst.remove(item)
 
-#	def is_obj_on_floor(self, obj):
-#		return (obj in self.floor_lst)
 
 	# *** identity method ***
 	def is_room(self):
@@ -55,6 +50,7 @@ class Room(ViewOnly):
 
 	def is_receptacle(self):
 		return True
+
 
 	# *** universal scope methods ***
 	def get_vis_contain_lst(self, gs):
@@ -71,15 +67,6 @@ class Room(ViewOnly):
 		""" Evaluates whether the passed object is contained within the methed-calling object. Called by Room.remove_item(). Only single level deep - does not check in containers.
 		"""
 		return item in self.floor_lst
-##		if item in self.floor_lst:
-##			return True
-#		for obj in self.floor_lst: # based on how remove works, don't need to check for sub-containers
-#			if obj.chk_contain_item(item):
-#				return True
-#		if any(obj.chk_contain_lst(item) for obj in self.floor_lst): # chk_contain_lst() is not defined in Room, so this will always return False
-#			return True
-##		return False
-
 
 	def get_contain_lst(self, gs):
 		return self.floor_lst + self.feature_lst + gs.map.get_door_lst(self)
@@ -95,17 +82,9 @@ class Room(ViewOnly):
 			self.floor_lst_remove(item)
 			return 
 		for obj in self.floor_lst:
-#			print(f"chk_item_in_inv == {obj.chk_item_in_inv(item, gs)}")
 			if obj.chk_item_in_inv(item, gs):
 				obj.remove_item(item, gs)
 				return
-##			if obj.chk_contain_item(item):
-##				obj.remove_item(item, gs)
-##				return
-##			for cont_obj in obj.get_vis_contain_lst(gs):
-##				if cont_obj.chk_contain_item(item):
-##					cont_obj.remove_item(item, gs)
-##					return
 		raise ValueError(f"Can't remove item {item} from room {self.name}")
 		return 
 
@@ -129,16 +108,6 @@ class Room(ViewOnly):
 		""" Evaluates whether the passed item is within the accessable inventory of methed-calling object. Checks three levels deep. 
 		"""
 		return ((item.is_item()) and (item in self.get_inv_lst(gs)))
-#		if self.chk_contain_item(item): # check in foom floor_lst
-#			return True
-#		for obj in self.get_top_lvl_inv_lst(gs):
-#			if obj.is_receptacle(): # check in fixed containers and creatures
-#				if obj.chk_contain_item(item): 
-#					return True
-#				for deep_item in obj.contain_lst: # check in portable containers
-#					if deep_item.chk_contain_item(item):
-#						return True
-#		return False
 
 
 	# *** room-specific scope methods ***
@@ -173,7 +142,6 @@ class Room(ViewOnly):
 		temp_lst = self.floor_lst.copy()
 		for obj in self.floor_lst:
 			if not obj.is_creature() and not (obj.is_container() and obj.is_item()):
-#				temp_lst += obj.get_vis_contain_lst(gs)
 				temp_lst += obj.get_inv_lst(gs)
 		for obj in temp_lst:
 			if obj.is_item() and not obj.is_liquid():

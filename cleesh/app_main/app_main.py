@@ -179,10 +179,6 @@ def app_main(user_input, game_name, root_path_str):
 		# if command is valid or is_wait, increment move
 		if is_valid or is_att or is_wait:
 			gs.core.move_inc()
-#			if gs.core.hero.hand_is_empty():
-#				start_in_hand = None
-#			else:
-#				start_in_hand = gs.core.hero.get_hand_item()
 
 		# for valid interp commands, process in-turn game response
 		if is_valid or is_att:

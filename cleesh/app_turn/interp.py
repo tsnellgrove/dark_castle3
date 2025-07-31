@@ -59,7 +59,6 @@ def noun_handling(master_obj_lst, user_input_lst):
 
 	# error out commands that are still longer than two words
 	if len(user_input_lst) > 2:
-#		error_msg = "Can you state that more simply? Burt's a man of few words!"
 		error_msg = f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"
 		error_state = True
 		return error_state, error_msg, word2_obj
@@ -213,8 +212,6 @@ def interpreter(user_input, master_obj_lst):
 				return 'error', [error_msg]
 			elif word1 in ['attack', 'lock', 'unlock', 'drink']:
 				if not gs.core.hero.chk_in_hand(dirobj_obj) and gs.core.hero.chk_in_bkpk(dirobj_obj):
-#				if (not gs.core.hero.chk_in_hand(dirobj_obj) 
-#						and (gs.core.hero.chk_in_bkpk(dirobj_obj) or gs.core.hero.chk_worn(dirobj_obj))):
 					gs.core.hero.put_in_hand(dirobj_obj, gs)
 					gs.core.hero.bkpk_lst_remove(dirobj_obj)
 				if not gs.core.hero.chk_in_hand(dirobj_obj) and gs.core.hero.chk_is_worn(dirobj_obj):

@@ -295,19 +295,12 @@ class Creature(ViewOnly):
 		for item in inv_lst:
 			if item.is_container():
 				inv_lst.extend(item.get_inv_lst(gs)) # add all accessable contained items
-#			inv_lst.extend(item.get_contain_lst(gs)) # add all contained items
 		return inv_lst
 
 	def chk_item_in_inv(self, item, gs):
 		""" Evaluates whether the passed object is within the accessable inventory of methed-calling object. Checks two levels deep. 
 		"""
 		return item in self.get_inv_lst(gs)
-#		if self.chk_contain_item(item): # check in container contain_lst
-#			return True
-#		for obj in self.get_top_lvl_inv_lst(gs): # check in portable containers
-#			if obj.chk_contain_item(item): 
-#				return True
-#		return False
 
 
 	# *** creature-specific scope methods ***
@@ -347,10 +340,7 @@ class Creature(ViewOnly):
 		raise ValueError(f"{obj.full_name} not found.")
 
 	def chk_obj_in_reach(self, obj, gs):
-#		seat_item_lst = self.get_contained_by(gs).get_vis_contain_lst(gs)
 		seat_item_lst = self.get_contained_by(gs).get_inv_lst(gs)
-#		for item in seat_item_lst:
-#			print(item.name)
 		room = gs.map.get_obj_room(self, gs)
 		in_reach_obj_lst = []
 		for receptacle in self.get_contained_by(gs).in_reach_lst:
@@ -584,7 +574,6 @@ class Creature(ViewOnly):
 		else:
 			if result_code in ['src_death', 'tgt_death']:
 				room_obj.floor_lst_remove(lose_creature)
-#				room_obj.floor_lst_extend(lose_creature.bkpk_lst + lose_creature.hand_lst + lose_creature.worn_lst)
 				room_obj.floor_lst.extend(lose_creature.bkpk_lst + lose_creature.hand_lst + lose_creature.worn_lst)
 			if result_code == 'tgt_flee_dc':
 				room_obj.floor_lst_remove(lose_creature)

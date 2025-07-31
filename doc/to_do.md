@@ -866,8 +866,8 @@ End Date:
 						- CANCEL: map()
 							- FINDING: get_contain_lst() has value of its own; see Identity comments
 						- DONE: test
-				- TBD: test
-				- TBD: clean-up all classes and methods!
+				- DONE: clean-up all classes and methods!
+				- TBD: full test
 				- TBD: document the definition of accessable inventory:
 					- IDEA: with the elimination of 'hand', need to know what items a creature can access
 					- IDEA: this is distinct from obj that are visible in 2 ways:

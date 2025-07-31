@@ -72,13 +72,6 @@ class Map(Invisible):
 					return True
 		return False
 
-
-##	def chk_obj_exist(self, obj): # how this method previously worked
-##		""" Evaluates whether object obj exists in floor_lst for any room in map_lst
-##		"""
-##		return any(obj in room.floor_lst for room in self.get_room_lst())
-
-
 	def chk_name_exist(self, name):
 		""" Evaluates whether an obj with obj.name == name exists in floor_lst for any room in map_lst
 		"""
@@ -150,10 +143,6 @@ class Map(Invisible):
 					passage_lst.append(passage_var)
 		return passage_lst
 	
-		# old refactored pre-dict version of code
-##		return [room_pair['door'] for room_pair in self.map_lst 
-##				if (room == room_pair['room_x'] or room == room_pair['room_y']) and not isinstance(room_pair['door'], str)]
-
 	def get_neighbor_count(self, room):
 		""" Provide a count of rooms that are connected neighbors of a given room
 		"""

@@ -34,7 +34,6 @@ class TrueCond(Invisible):
 		"""
 
 	def cond_check(self, gs, mach_state, is_valid):
-##		print(f"TrueCond.cond_check() has run: is_valid_req = {self.is_valid_reqd}, is_valid = {is_valid}") # troubleshooting
 		if (self.is_valid_reqd and not is_valid):
 			return False
 		return True
@@ -134,7 +133,6 @@ class ObjOnRmFlrCond(TrueCond):
 	def cond_check(self, gs, mach_state, is_valid):
 		if not super().cond_check(gs, mach_state, is_valid):
 			return False
-#		return (self.match_room.is_obj_on_floor(self.obj) == self.match_cond)
 		return (self.match_room.chk_contain_item(self.obj, gs) == self.match_cond)
 
 
@@ -236,7 +234,6 @@ class ObjInInvCond(ItemInHandCond):
 	def cond_check(self, gs, mach_state, is_valid):
 		if (self.is_valid_reqd and not is_valid):
 			return False
-#		return (self.creature_obj.chk_contain_item(self.item_obj) == self.match_cond)
 		return (self.creature_obj.chk_item_in_inv(self.item_obj, gs) == self.match_cond)
 
 class WeaponInHandCond(TrueCond):

@@ -208,20 +208,12 @@ class ContainsMixIn(object):
 		return []
 
 	def remove_item(self, item, gs):
-#		print (f"trying to remove {item.name} from {self.name}")
-#		print (f"self.contain_lst: {self.contain_lst}")
 		if item in self.contain_lst:
-#			print ("How did we get here?")
 			self.contain_lst_remove(item, gs)
 			return
-#		print (f"{item.name} is not directly contained by {self.name}")
 		for obj in self.contain_lst:
-#			print (f"checking {obj.name}")
-#			print (f"{obj.name} is a container == {obj.is_container()}")
-#			print (f"{item.name} is in {obj.name} == {item in obj.contain_lst}")
 			if (obj.is_container()) and (item in obj.contain_lst):
 				obj.contain_lst_remove(item, gs)
-#				print(f"{item} removed from {obj}")
 				return
 		raise ValueError(f"Can't remove item {item} from Container {self.name}")
 
@@ -238,10 +230,8 @@ class ContainsMixIn(object):
 		""" Returns the list of all accessable items in the inventory of the methed-calling receptacle.
 		"""
 		inv_lst = self.get_top_lvl_inv_lst(gs)
-#		print(f"get_inv_lst: {inv_lst}")
 		for obj in inv_lst:
 			if obj.is_container() and ((obj.is_openable() and obj.is_open) or not obj.is_openable()):
-#				inv_lst.extend(obj.get_contain_lst(gs)) # add all contained items
 				inv_lst.extend(obj.contain_lst) # add all contained items
 			if obj.is_creature(): # deals with case of obj of Seat class container a Creature
 				inv_lst.extend(obj.get_inv_lst(gs))
@@ -251,12 +241,6 @@ class ContainsMixIn(object):
 		""" Evaluates whether the passed object is within the accessable inventory of methed-calling object. Checks two levels deep.
 		"""
 		return item in self.get_inv_lst(gs)
-#		if self.chk_contain_item(item): # check in container contain_lst
-#			return True
-#		for obj in self.get_top_lvl_inv_lst(gs): # check in portable containers
-#			if obj.chk_contain_item(item): 
-#				return True
-#		return False
 
 
 	# *** container-specific scope methods ***

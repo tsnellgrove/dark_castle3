@@ -139,7 +139,6 @@ class Error(Identity):
 			# attemptable error: a non-item might look takeable - is reasonable to attempt - player gets info
 			err_txt = (f"Just how do you intend to pick up a {self.full_name}?")
 			return True, True, err_txt
-#		if not creature.chk_contain_item(self) and (creature.weight + self.weight) > creature.max_weight:
 		if not creature.chk_item_in_inv(self, gs) and (creature.weight + self.weight) > creature.max_weight:
 			# attemptable error: player only learns obj is too heavy by trying to lift it
 			err_txt = (f"You don't have enough capacity to take the {self.full_name} along with everything else you are carrying.")
@@ -158,15 +157,9 @@ class Error(Identity):
 		if self == creature.feature_lst[0]:
 			err_txt = (f"You can't drop your {creature.feature_lst[0].full_name} - you're quite attached to it.")
 			return True, False, err_txt
-##		if not self.is_item(): # if you're not holding something, you can't attempt to drop it
-##			gs.io.buffer(f"You can't even pick up the {self.full_name}... how could you possibly drop it??")
-##			return True
 		if self not in creature.hand_lst and self not in creature.bkpk_lst: # enable drop from pack
-#			err_txt = (f"You're not holding the {self.full_name} in your hand.")
 			err_txt = (f"You don't possess the {self.full_name}.")
 			return True, False, err_txt
-#		if self.err_not_in_hand(creature, gs):
-#			return True, False, ""
 		if creature.is_contained(gs) and not creature.get_contained_by(gs).chk_has_capacity():
 			err_txt = (f"There's no room on the {creature.get_contained_by(gs).full_name} for another item.")
 			return True, False, err_txt
@@ -179,9 +172,6 @@ class Error(Identity):
 		if self == creature.feature_lst[0]:
 			err_txt = (f"{creature.full_name}, you can't stowe your {creature.feature_lst[0].full_name} - you're quite attached to it.")
 			return True, False, err_txt
-##		if not self.is_item():
-##			gs.io.buffer(f"You can't even pick up the {self.full_name}... how could you possibly put it in your backpack??")
-##			return True
 		if self in creature.bkpk_lst:
 			err_txt = (f"The {self.full_name} is already in your backpack!")
 			return True, False, err_txt
@@ -193,10 +183,7 @@ class Error(Identity):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True, False, ""
-#		if self.err_not_in_hand(creature, gs):
-#			return True, False, ""
 		if self not in creature.hand_lst and self not in creature.bkpk_lst:
-#			err_txt = (f"You're not holding the {self.full_name} in your hand.")
 			err_txt = (f"You don't possess the {self.full_name}.")
 			return True, False, err_txt
 
@@ -213,10 +200,8 @@ class Error(Identity):
 		if self in creature.worn_lst:
 			err_txt = (f"You're already wearing the {self.full_name}!")
 			return True, False, err_txt
-#		if self.err_not_in_hand(creature, gs):
 		if self not in creature.hand_lst and self not in creature.bkpk_lst:
 			err_txt = (f"You don't possess the {self.full_name}.")
-#			return True, False, ""
 			return True, False, err_txt
 		if creature.chk_type_worn(self):
 			err_txt = (f"You are already wearing a {self.garment_type}. You can't wear two garments of the same type at the same time.")
@@ -380,9 +365,7 @@ class Error(Identity):
 			# attemptable error: non-liquids may appear to be drinkable
 			err_txt = (f"Your attempts to quaff the {self.full_name} do not meet with success.")
 			return True, True, err_txt
-##		if obj.name in ['moat']:
 		if obj.name in gs.io.get_lst('reservoir_lst'):
-##			gs.io.buffer(f"The very thought of drinking from the fetid {obj.full_name} makes you gag.")
 			# attemptable errore: in some cases, drinking from a resevoir should enable a machine
 			err_txt = (f"You are about to take a big gulp from the {obj.full_name} but then think better of it.")
 			return True, True, err_txt

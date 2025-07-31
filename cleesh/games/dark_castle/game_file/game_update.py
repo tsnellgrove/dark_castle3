@@ -133,9 +133,6 @@ screen_door = DoorSimple('screen_door', 'Screen Door', 'door', 'screen_door', No
 test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 999, 2, 'on', [wooden_shelf])
 trademark = Writing('trademark', 'Trademark', 'trademark', 'trademark')
 stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 3)
-# eat_biscuits_warning = Warning('eat_biscuits_warning',
-#		'pre_act_cmd', 0, stale_biscuits, True, 
-#		[['eat','stale_biscuits']], 3)
 random_mcguffin_init_desc = InitDesc('random_mcguffin_init_desc', random_mcguffin, 'random_mcguffin_init_desc')
 
 
