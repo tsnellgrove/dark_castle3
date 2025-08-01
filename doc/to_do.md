@@ -786,7 +786,7 @@ End Date:
 						- DONE: decide to keep Container.is_empty() as standard call (even though not used)
 						- DONE: testing
 						- DONE: clean-up Interactive
-					- INPROC: Room class
+					- DONE: Room class
 						- DONE: elim is_obj_on_floor() => chk_contain_item()
 						- DONE: test
 						- DONE: elim floor_lst_extend()
@@ -867,8 +867,8 @@ End Date:
 							- FINDING: get_contain_lst() has value of its own; see Identity comments
 						- DONE: test
 				- DONE: clean-up all classes and methods!
-				- TBD: full test
-				- TBD: document the definition of accessable inventory:
+				- DONE: full test
+				- DONE: document the definition of accessable inventory:
 					- IDEA: with the elimination of 'hand', need to know what items a creature can access
 					- IDEA: this is distinct from obj that are visible in 2 ways:
 						- IDEA: 1) it only relates to items
@@ -878,7 +878,6 @@ End Date:
 						- IDEA: room.inventory has also been created but may be superfluous???
 				- TBD: update 'help hand' to explain inventory concepts
 				- TBD: update sword glow narrative for crocodile encouters
-				- TBD: clean up
 		- CANCEL: general ideas
 			- DONE: now prep case works with portable containers but 2-word does not - fix
 			- DONE: extend hand => bkpk to worn items?			

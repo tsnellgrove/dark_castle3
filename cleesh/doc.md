@@ -586,6 +586,21 @@ UPDATE 3 - Next Gen Errors:
 		
 		Want to intrigue and excite an Adventurer? Show them an out-of-reach Item. Want to infuriate an Adventurer? Pilfer their hard won Items! Want to make a puzzle hard? Require that the Adventurer surrender an Item to solve it. Dark Castle leans in heavily on each of these standard Adventurer manipulation techniques.
 	
+	UI Updates:
+		"Conventions are your friend" is a long-standing piece of UI wisdom that every developer ignores at their peril. And I have proved this maxim yet again with my approach to the concept of 'hand'. In traditional (i.e. Infocom) text adventures, there is no concept of 'hand' - there is often a limit to how much the player can carry - but their whole inventory is equally available. Things get slightly more complex with worn items - but not much. 
+
+		So I knew when I introduced the concept of what Burt was holding in his 'hand' early on in my development process that I was guilty of extreme hubris - but at the time the idea had a lot going for it. First of all, it made my life a lot simpler: Most actions could only be performed on or with the item in Burt's hand... which made error tracking a lot simpler. Also, communication in text adventures is famously difficult - so signaling something about Burt based on what he was holding seemed useful. Lastly, we are often told what other creatures are holding (this is true for the Troll in Zork for example) and I wanted Burt to be of class Creature - so it seemed natural to implement an affordance for what he was holding. But, deep down, I knew I was making trouble for myself down the road, and sure enough, the bill has come due.
+
+		The problem is that the more stuff Burt carrys, the more annoying it is to always have to keep track of what he's holding. The player wants to be able to 'open gate with key' and not worry about whether the key happens to be in Burts hand or his backpack. As I did my Spring / Summer 2025 UI review of the game I finally accepted that it was time to grow up and accept this age-old convention... but by now that the 'hand' concept was baked deep into the game - so how to implement? Also, I still wasn't willing to give up every benefit that the 'hand' concept afforded.
+
+		My solution was to enable an Implicit Put In Hand (IPIH) capability in interpreter(). Essentially, every time the player issued a command that depended on having an item in their hand, if that item wasn't already in their hand I checked to see if it was in their backpack or worn_lst and, if it was, I executed an implicit put_in_hand(). This avoided needing to touch any of the error coding around items not in hand (which run very deep). It also meant that the underlying concept of what was in Burt's hand remained - but the player irritation of having to think about what was in hand was mostly eliminated.
+
+		There was a special case regarding dangerous situations. To avoid the player having to think about attacking with a weapon in hand I had Burt auto-draw a weapon (if he had one in inventory) whenever attacking. I also added text highlighting his weapon weielding any time a weapon entered or left his hand. The idea was that this hopefully gave the player enough reminders so that it was up to them to draw a weapon before going somewhere they might be attacked (e.g. jumping into the moat).
+
+		To enable all of this item management I created a collection of inventory commands. These were intended to run at the receptacle level, were item-specific, and were innately deep. They also had the notion of 'accesable' baked into them. If an item in a receptacle's inventory is in a closed container it is not accesable. Otherwise, it is. Inventory commands perhaps only make sense for Creature class and Interactive class (portable containers in particular) - but I implemented them for Room class as well for the sake of consistency.
+
+		I doubt that the 'hand journey' is done - but this is hopefully a first, pragmatic step.
+
 - take() method [Item class]:
 
 	Implementation Detail:
