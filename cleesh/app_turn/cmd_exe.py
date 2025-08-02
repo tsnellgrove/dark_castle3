@@ -13,7 +13,7 @@ def cmd_execute(gs, case, word_lst):
 			option = word_lst[0]
 			if option == 'help':
 				output = gs.io.get_str_nr('help')
-			elif option in ['basics', 'adjectives', 'prepositions', 'read', 'attack', 'creatures', 'save', 'multiples', 'command-queue']:
+			elif option in ['basics', 'adjectives', 'prepositions', 'read', 'attack', 'creatures', 'save', 'multiples', 'command-queue', 'inventory']:
 				key_str = "help_" + option
 				output = gs.io.get_str_nr(key_str)
 			elif option == 'verbs':

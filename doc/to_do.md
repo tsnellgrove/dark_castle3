@@ -559,7 +559,7 @@ End Date:
 		- DONE: test all machines
 		- DONE: final tune up
 			- DONE: extract paths from description
-	- INPROC: room 3
+	- DONE: room 3
 		- DONE: de-capitalize all nouns
 		- DONE: de-dup passage descriptions vs. base description
 		- DONE: review existing nouns
@@ -615,7 +615,7 @@ End Date:
 						- DONE: overhaul chk_in_bkpk() and bkpk_lst_remove() to ref sub-containers
 						- DONE: test drop(), eat(), wear()(
 						- DONE: troubleshoot verbs w/ bag & biscuit
-			- INPROC: Additional fixes for moving to general inventory
+			- DONE: Additional fixes for moving to general inventory
 				- DONE: end-to-end review of obj & lbs moving between rooms, containers, and creatures
 					- DONE: dee dive into Identity
 						- IDEA: do we really need get_contain_lst() ?
@@ -763,9 +763,9 @@ End Date:
 					- DONE: test attack 'with sword'
 					- DONE: test attack 'with fist'
 					- DONE: test attach hedgehog while both sword & axe in bkpk
-			- INPROC: clean-up item handling methods
+			- DONE: clean-up item handling methods
 				- DONE: capture weapon disp updates on diagram (especially 'give')
-				- INPROC: detailed review of inventory management notes / fix opportunities
+				- DONE: detailed review of inventory management notes / fix opportunities
 					- DONE: Creature class
 						- DONE: remove_item() calls hand_lst_remove, bkpk_lst_remove, & worn_lst_remove
 							- DONE: all 3 now portable container aware
@@ -876,8 +876,10 @@ End Date:
 						- IDEA: an obj in a closed container is not acceessable
 						- IDEA: inventory relates to creatures therefor is needed for Interactive & Creature
 						- IDEA: room.inventory has also been created but may be superfluous???
-				- TBD: update 'help hand' to explain inventory concepts
+				- DONE: update 'help hand' to explain inventory concepts
+				- DONE: test cup of tea
 				- TBD: update sword glow narrative for crocodile encouters
+					- TBD: update condition to determine if shiny_sword is in hand
 		- CANCEL: general ideas
 			- DONE: now prep case works with portable containers but 2-word does not - fix
 			- DONE: extend hand => bkpk to worn items?			

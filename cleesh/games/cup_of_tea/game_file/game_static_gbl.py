@@ -86,7 +86,7 @@ game_static_dict = {
 	
 	### door objects ###
 	'creaky_door' : "The front door to your familie's pub (and home, since you live on the second floor). It's always had a ferocious creak to it.",
-    'comfy_chair' : "The Comfy Chair is a big ragged around the edges but still cozy to curl up in. It's a small oasis of relaxation amidst a sea of ale-fuled raucousness.",
+    'comfy_chair' : "The Comfy Chair is a bit ragged around the edges but still cozy to curl up in. It's a small oasis of relaxation amidst a sea of ale-fuled raucousness.",
 
 	### creatures ###
 	
