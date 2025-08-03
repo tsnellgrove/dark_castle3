@@ -165,6 +165,7 @@ true_cond_valid_not_reqd = TrueCond('true_cond', is_valid_reqd = False)
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', baked_biscuit, 'royal_hedgehog_temp', True)
 axe_not_in_goblin_hand_cond = ItemInHandCond('axe_not_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
+sword_in_hand_cond = ItemInHandCond('sword_in_hand_cond', 'shiny_sword_temp', 'burt_temp', True)
 silver_key_given_cond = ObjInInvCond('silver_key_given_cond', silver_key, 'royal_hedgehog_temp', False)
 no_weap_in_hand_cond = WeaponInHandCond('silver_key_given', 'burt_temp', False)
 sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'gatehouse_temp', 'shiny_sword_temp', True) 
@@ -211,6 +212,7 @@ scroll_win_game_result = EndResult('scroll_win_game_result', False, None, False,
 fed_hedgehog_keeps_sword_result = ChgDescriptResult('fed_hedgehog_keeps_sword_result', True, True, False, 'royal_hedgehog_temp', 'hedgehog_desc_smug')
 fed_hedgehog_loses_sword_result = ChgDescriptResult('fed_hedgehog_loses_sword_result', True, True, False, 'royal_hedgehog_temp', 'hedgehog_desc_yearn')
 moat_get_crown_result = GiveItemResult('moat_get_crown_result', True, True, True, royal_crown, 'temp_burt')
+moat_get_crown_result2 = GiveItemResult('moat_get_crown_result', True, True, True, royal_crown, 'temp_burt')
 goblin_take_axe_result = TakeItemResult('goblin_take_axe_result', False, None, False, 'guard_goblin_temp', grimy_axe)
 throne_pull_result1 = ChgDescriptResult('throne_pull_result1', False, None, False, throne, 'throne_post_broach')
 throne_pull_result2 = DispenseObjResult('throne_pull_result2', True, True, False, hedgehog_broach, 'throne_room_temp')
@@ -305,8 +307,10 @@ goblin_attack_mach = InvisTrigMach('goblin_attack_mach', None,
 entrance_moat_mach = InvisTrigMach('entrance_moat_mach', False, 
 		'pre_act_cmd', 'entrance_temp', True,
 		[['go', 'east'], ['go', 'west']],
-		[no_weap_in_hand_cond, crown_not_dispensed_cond, crown_dispensed_cond],
-		[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]
+#		[no_weap_in_hand_cond, crown_not_dispensed_cond, crown_dispensed_cond],
+#		[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]
+		[no_weap_in_hand_cond, [crown_not_dispensed_cond, sword_in_hand_cond], crown_not_dispensed_cond, crown_dispensed_cond],
+		[die_in_moat_result, moat_get_crown_result2, moat_get_crown_result, moat_croc_scared_result]
 		) # mach_state == got_crown
 
 hedgehog_eats_mach = InvisTrigMach('hedgehog_eats_mach', None, 
@@ -569,6 +573,9 @@ burt_in_antechamber_cond.match_room = antechamber
 sword_on_floor.obj = shiny_sword
 sword_not_on_floor.obj = shiny_sword
 big_rock_take_result1.room_obj = entrance
+sword_in_hand_cond.creature_obj = burt
+sword_in_hand_cond.item_obj = shiny_sword
+moat_get_crown_result2.tgt_creature = burt
 
 entrance_moat_mach.alert_anchor = entrance
 broach_dispenser_mach.alert_anchor = throne_room

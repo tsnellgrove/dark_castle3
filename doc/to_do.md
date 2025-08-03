@@ -878,8 +878,15 @@ End Date:
 						- IDEA: room.inventory has also been created but may be superfluous???
 				- DONE: update 'help hand' to explain inventory concepts
 				- DONE: test cup of tea
-				- TBD: update sword glow narrative for crocodile encouters
-					- TBD: update condition to determine if shiny_sword is in hand
+				- INPROC: update sword glow narrative for crocodile encouters
+					- INPROC: update condition to determine if shiny_sword is in hand
+						- DONE: create sword_in_hand_cond and update temp attribs
+						- DONE: comment out old cond & result
+						- DONE: create new combo cond: [sword_in_hand, crown_not_dispensed]
+						- DONE: create new result: moat_get_crown_result2 and update temp attribs
+						- DONE: create text for get_crown_result2
+						- DONE: run game_update
+						- TBD: test => not running sword result when holding sword; print chk_cond()
 		- CANCEL: general ideas
 			- DONE: now prep case works with portable containers but 2-word does not - fix
 			- DONE: extend hand => bkpk to worn items?			
