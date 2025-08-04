@@ -886,7 +886,8 @@ End Date:
 						- DONE: create new result: moat_get_crown_result2 and update temp attribs
 						- DONE: create text for get_crown_result2
 						- DONE: run game_update
-						- TBD: test => not running sword result when holding sword; print chk_cond()
+						- INPROC: test => not running sword result when holding sword; print chk_cond()
+							- TBD: try printing mach name and full cond & result lists
 		- CANCEL: general ideas
 			- DONE: now prep case works with portable containers but 2-word does not - fix
 			- DONE: extend hand => bkpk to worn items?			

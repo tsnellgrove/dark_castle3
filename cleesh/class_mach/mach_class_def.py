@@ -217,13 +217,16 @@ class AutoMachMixIn(ProtoMachMixIn):
 				for cond_element in cond:
 					if cond_element.cond_check(gs, self.mach_state, is_valid) == False:
 						cond_val = False
+					print(f"cond_element {cond_element.name} has value {cond_val}; index {idx}")
 			else:
 				cond_val = cond.cond_check(gs, self.mach_state, is_valid)
+				print(f"cond {cond.name} has value {cond_val}; index {idx}")
 			if cond_val:
 				result = self.result_lst[idx]
 				if isinstance(result, list):
 					cmd_override = False
 					for result_element in result:
+						print(f"result_element {result_element.name} is being executed; index {idx}")
 						element_mach_state, element_cmd_override = result_element.result_exe(gs, self.mach_state, result_element.name, self.alert_anchor)
 						if element_cmd_override == True:
 							cmd_override = True # if element_cmd_override == True for *any* result, cmd_override = True
@@ -232,6 +235,7 @@ class AutoMachMixIn(ProtoMachMixIn):
 					return cmd_override, result_element.name
 				else:
 					self.mach_state, cmd_override = result.result_exe(gs, self.mach_state, result.name, self.alert_anchor)
+					print(f"result {result.name} is being executed; index {idx}")
 				return cmd_override, result.name
 		return False, 'pass_result'
 
