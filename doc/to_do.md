@@ -886,8 +886,9 @@ End Date:
 						- DONE: create new result: moat_get_crown_result2 and update temp attribs
 						- DONE: create text for get_crown_result2
 						- DONE: run game_update
-						- INPROC: test => not running sword result when holding sword; print chk_cond()
-							- TBD: try printing mach name and full cond & result lists
+						- DONE: test => not running sword result when holding sword; print chk_cond()
+							- DONE: try printing mach name and full cond & result lists
+							- FINDING: wrong cond names caused the problem; I am surprised
 		- CANCEL: general ideas
 			- DONE: now prep case works with portable containers but 2-word does not - fix
 			- DONE: extend hand => bkpk to worn items?			
@@ -897,23 +898,28 @@ End Date:
 			- CANCEL: next steps to consider
 			- CANCEL: tons of testing!!
 	- TBD: room 4
-		- TBD: de-capitalize all nouns
-		- TBD: de-dup passage descriptions vs. base description
-		- TBD: review existing nouns
-		- TBD: add all referenced nouns
-		- TBD: make paths examineable
-		- TBD: use init_desc where appropriate
-		- TBD: test all machines
-		- TBD: make inventory description text rare (20%?)			
-		- TBD: improve item listings for 'i' and 'x' (use a and an for single items)
+		- TBD: immediate fixes:
+			- TBD: correct 'stowe' command to 'stow'
+		- TBD: in-depth walk-through of Throne Room
+			- TBD: de-capitalize all nouns
+			- TBD: de-dup passage descriptions vs. base description
+			- TBD: review existing nouns
+			- TBD: add all referenced nouns
+			- TBD: make paths examineable
+			- TBD: use init_desc where appropriate
+			- TBD: test all machines
 		- TBD: additional fixes:
+			- TBD: make inventory description text rare (20%?)			
+			- TBD: improve item listings for 'i' and 'x' (use a and an for single items)
 			- TBD: should obj.full_name be de-captialized?
-		- TBD: implement full set of cardinal directions
-		- TBD: implement 'jump'
-		- TBD: turn lantern into actual light
-			- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
-			- IDEA: see thoughts on light in to-do notes below
-		- TBD: clean up cleesh static_gbl, clean-up game_static_gbl
+			- TBD: clean up cleesh static_gbl, clean-up game_static_gbl
+		- TBD: minor features:
+			- TBD: implement 'jump' (jump on drawbridge in Entrance = go over side ?)
+		- TBD: major fixes [maybe separate git merges?]
+			- TBD: implement full set of cardinal directions + u & d (?)
+			- TBD: turn lantern into actual light (?)
+				- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
+				- IDEA: see thoughts on light in to-do notes below
 - TBD: git merge
 
 
