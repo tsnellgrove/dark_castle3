@@ -165,12 +165,12 @@ class Error(Identity):
 			return True, False, err_txt
 		return False, False, ""
 
-	def stowe_err(self, gs):
+	def stow_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True, False, ""
 		if self == creature.feature_lst[0]:
-			err_txt = (f"{creature.full_name}, you can't stowe your {creature.feature_lst[0].full_name} - you're quite attached to it.")
+			err_txt = (f"{creature.full_name}, you can't stow your {creature.feature_lst[0].full_name} - you're quite attached to it.")
 			return True, False, err_txt
 		if self in creature.bkpk_lst:
 			err_txt = (f"The {self.full_name} is already in your backpack!")

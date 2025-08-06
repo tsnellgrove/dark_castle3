@@ -444,13 +444,13 @@ game_static_dict = {
         'inventory', 'look', 'stand'
     ],
 
-	'assumed_noun_2word_lst' : ['drop', 'stowe', 'eat', 'wear'],
+	'assumed_noun_2word_lst' : ['drop', 'stow', 'eat', 'wear'],
 
 	'one_or_two_word_lst' : ['help'], 
 
 	'known_verb_lst' : ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 		'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
-		'unlock', 'wear', 'enter', 'exit', 'stand', 'stowe'
+		'unlock', 'wear', 'enter', 'exit', 'stand', 'stow'
 	],
 
 	'prep_verb_lst' : ['put', 'show', 'give', 'attack', 'lock', 'unlock', 'drink'],

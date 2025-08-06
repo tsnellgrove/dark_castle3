@@ -619,10 +619,10 @@ UPDATE 3 - Next Gen Errors:
 	Implementation Details:
 		The obvious inverse of take(). In general, all dropped items go to the room's 'floor'. In the event that Burt is contained in a Seat, dropped items fall into the seat. Seat's can have a limited holding capacity so it is possible that in certain circumstances, Burt will not be able to drop an item.
 
-- stowe() method [Item class]
+- stow() method [Item class]
 
 	Implementation Details:
-		Moves and Item from Burt's hand to his backpack. stowe() is similar to close() for Interactive objects... it is nevere needed in the game but feels like it should logically be possible. It was not introduced until v3.84.
+		Moves and Item from Burt's hand to his backpack. stow() is similar to close() for Interactive objects... it is nevere needed in the game but feels like it should logically be possible. It was not introduced until v3.84.
 
 # Food class:
 

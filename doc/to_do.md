@@ -571,7 +571,7 @@ End Date:
 			- DONE: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
 				- DONE: start fix at line 167 in interp - separate 'lock', 'unlock' cases from 'attack'
 			- DONE: clean-up interp()
-		- INPROC: figure out how to update creature.hand vs. inventory to reduce un-fun friction
+		- DONE: figure out how to update creature.hand vs. inventory to reduce un-fun friction
 			- IDEA: I want the outside world to see what's in creatures hand (e.g. goblin holding axe)
 			- IDEA: but I don't want player to need to think about inventory mgmt
 			- IDEA: if the player specifies the obj and it is in inventory but not in hand:
@@ -878,8 +878,8 @@ End Date:
 						- IDEA: room.inventory has also been created but may be superfluous???
 				- DONE: update 'help hand' to explain inventory concepts
 				- DONE: test cup of tea
-				- INPROC: update sword glow narrative for crocodile encouters
-					- INPROC: update condition to determine if shiny_sword is in hand
+				- DONE: update sword glow narrative for crocodile encouters
+					- DONE: update condition to determine if shiny_sword is in hand
 						- DONE: create sword_in_hand_cond and update temp attribs
 						- DONE: comment out old cond & result
 						- DONE: create new combo cond: [sword_in_hand, crown_not_dispensed]
@@ -897,9 +897,11 @@ End Date:
 			- CANCEL: generalize item handling across receptacles; use creature inventory approach
 			- CANCEL: next steps to consider
 			- CANCEL: tons of testing!!
-	- TBD: room 4
-		- TBD: immediate fixes:
-			- TBD: correct 'stowe' command to 'stow'
+	- INPROC: room 4
+		- DONE: immediate fixes:
+			- DONE: correct 'stowe' command to 'stow'
+				- DONE: search on 'stowe' and replace with 'stow'
+				- DONE: test
 		- TBD: in-depth walk-through of Throne Room
 			- TBD: de-capitalize all nouns
 			- TBD: de-dup passage descriptions vs. base description
@@ -911,6 +913,7 @@ End Date:
 		- TBD: additional fixes:
 			- TBD: make inventory description text rare (20%?)			
 			- TBD: improve item listings for 'i' and 'x' (use a and an for single items)
+			- TBD: for 'i' and 'x', ensure that protable container contents are listed with port con
 			- TBD: should obj.full_name be de-captialized?
 			- TBD: clean up cleesh static_gbl, clean-up game_static_gbl
 		- TBD: minor features:

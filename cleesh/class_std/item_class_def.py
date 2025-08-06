@@ -83,8 +83,8 @@ class Item(ViewOnly):
 			gs.map.hero_rm.floor_lst_append(self)		
 		return 
 
-	def stowe(self, gs, mode=None):
-		""" Stowes the object in a creatures hand in their backpack."""
+	def stow(self, gs, mode=None):
+		""" Stows the object in a creatures hand in their backpack."""
 		if mode is None:
 			mode = 'std'
 		creature = gs.core.hero
