@@ -902,14 +902,25 @@ End Date:
 			- DONE: correct 'stowe' command to 'stow'
 				- DONE: search on 'stowe' and replace with 'stow'
 				- DONE: test
-		- TBD: in-depth walk-through of Throne Room
-			- TBD: de-capitalize all nouns
-			- TBD: de-dup passage descriptions vs. base description
-			- TBD: review existing nouns
+		- INPROC: in-depth walk-through of Throne Room
+			- DONE: de-dup passage descriptions vs. base description
+			- INPROC: de-capitalize all nouns (except rooms)
+				- DONE: throne_room
+				- DONE: throne
+				- DONE: crystal_box
+				- TBD: calligraphy
+				- TBD: family_tree
+				- TBD: stone_coffer
+			- TBD: review existing noun descriptions
 			- TBD: add all referenced nouns
+				- TBD: pedestal (late romantic period)
+				- TBD: windows (ref melted from lightening ?)
 			- TBD: make paths examineable
 			- TBD: use init_desc where appropriate
 			- TBD: test all machines
+		- TBD: general
+			- TBD: search on all room names to ensure consistently capitalized
+			- TBD: review final title => king vs. baron
 		- TBD: additional fixes:
 			- TBD: make inventory description text rare (20%?)			
 			- TBD: improve item listings for 'i' and 'x' (use a and an for single items)
