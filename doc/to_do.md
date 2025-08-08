@@ -904,20 +904,29 @@ End Date:
 				- DONE: test
 		- INPROC: in-depth walk-through of Throne Room
 			- DONE: de-dup passage descriptions vs. base description
-			- INPROC: de-capitalize all nouns (except rooms)
+			- DONE: de-capitalize all nouns (except rooms)
 				- DONE: throne_room
 				- DONE: throne
 				- DONE: crystal_box
-				- TBD: calligraphy
-				- TBD: family_tree
-				- TBD: stone_coffer
-			- TBD: review existing noun descriptions
+				- DONE: calligraphy
+				- DONE: family_tree
+				- DONE: stone_coffer
+				- DONE: kinging_scroll
+				- DONE: silver_key
+				- DONE: illuminated_letters
 			- TBD: add all referenced nouns
 				- TBD: pedestal (late romantic period)
 				- TBD: windows (ref melted from lightening ?)
-			- TBD: make paths examineable
-			- TBD: use init_desc where appropriate
-			- TBD: test all machines
+				- TBD: silver_keyhole => move silver sword hint here
+				- TBD: make paths examineable
+			- TBD: additional review
+				- TBD: use init_desc where appropriate
+				- TBD: test all machines
+			- TBD: problem-solving
+				- TBD: enable "the box is firmly affixed to the pedestal" on attempt to take box
+				- TBD: fix unable to get obj in coffer (use init_desc?)
+			- TBD: review existing noun descriptions
+					- IDEA: make sure it all works together
 		- TBD: general
 			- TBD: search on all room names to ensure consistently capitalized
 			- TBD: review final title => king vs. baron
