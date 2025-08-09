@@ -104,6 +104,7 @@ game_static_dict = {
 	'arrow_slits' : "The arrow slits are high up on the south wall on either side of the Front Gate. Maybe there were once step-stools for the archers to stand on? If not, those archers were mighty tall! Peeking through one of the slits you see the moat and fading sunlight beyond. Will you ever return along that untrodden path to your little village below?",
     'foreboding_archway' : "The foreboding archway leads away from the half-light of the Gateway and into the gloom and darkness of castle itself. You feel both hesitation and excitement. Without a doubt, your true adventure begins when you step through the archway.",
 	'lit_archway' : "The lit archway leads away from the unnatural gloom of Dark Castle and back towards the wholesome light of the outside world.",
+	'elegant_pedestal' : "The elegant pedestal is to the right of the throne. Made of polished marble and with ornate carvings on its surface, it appears to be from the late romantic period. A crystal box has been permenantly attached to the top of it.",
 
 	### item objects ###
 	'rusty_key' : "An old rusty key... the one you swore to the whole pub (and miss Chrissy Brewer!) that you'd use to pillage the Dark Castle... What could you possibly do with it?",
@@ -133,7 +134,7 @@ game_static_dict = {
 	'big_medal' : "This is the biggest, most-highly-polished medal you have ever seen.",
 
 	### container objects ###
-	'crystal_box' : "Atop an ornate pedestal to the left of the throne sits an intricate crystal box. The crystal panels are heavily leaded and skillfully carved such that you're unable to tell what may lie within. There is a silver keyhole on the front of the crystal box that glitters brilliantly - much like the shiny sword in fact - in the otherwise dark and brooding room. The top of the crystal box is engraved with calligraphy.",
+	'crystal_box' : "Atop an ornate pedestal to the right of the throne sits an intricate crystal box. The crystal panels are heavily leaded and skillfully carved such that you're unable to tell what may lie within. There is a silver keyhole on the front of the crystal box that glitters brilliantly - much like the shiny sword in fact - in the otherwise dark and brooding room. The top of the crystal box is engraved with calligraphy. The crystal box is in each reach of anyone sitting upon the throne.",
 
 	### surface objects ###
 	'wooden_shelf' : "The Wooden Shelf looks sturdy and reliable - like it would be a good, safe place to store your stuff.",
@@ -214,7 +215,7 @@ game_static_dict = {
 
 	'antechamber' :"You are in a what feels more like a wide, tall-ceilinged corridor than a room. Apparently this is the room-before-the-room, the pre-room before the really, really grand room that comes after it. If so, the next room must be quite something because, back in it's day, this spot was clearly impressive. Alas, like all of the castle, it has fallen on dark times and now feels more sinister than grand. The east and west walls are bare stone with exits to the north and south. Near the north exit, on the west wall, there is a small alcove. It appears to have some kind of apparatus in it but you can't see it very well due to the dim light and the Guard Goblin standing in front of it, glowering at you. The whole north end of the room is cloaked in shadows that make you uneasy.",
 
-	'throne_room' : "The room you're currently in is vast - almost cavernous. At the far end sits what must have once been a grand and glorious throne. To the right of the throne is a giant stone coffer and to the left an elegant pedestal that holds what appears to be a delicate crystal box. On either wall there are tall windows - now shattered, ruined, and completely choked with thorned vines - but you you remember hearing stories from your great grandmother, Nana, of the beautiful, glowing stained glass that once filled them. And above the room's entrance hangs a vast (though quite dusty) family tree.",
+	'throne_room' : "The room you're currently in is vast - almost cavernous. At the far end sits what must have once been a grand and glorious throne. To the right of the throne is an elegant pedestal that holds what appears to be a delicate crystal box and to the left, a giant stone coffer. On either wall there are tall windows - now shattered, ruined, and completely choked with thorned vines - but you you remember hearing stories from your great grandmother, Nana, of the beautiful, glowing stained glass that once filled them. And above the room's entrance hangs a vast (though quite dusty) family tree.",
 
 
 	### future objects ###

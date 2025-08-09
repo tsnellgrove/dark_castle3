@@ -914,8 +914,8 @@ End Date:
 				- DONE: kinging_scroll
 				- DONE: silver_key
 				- DONE: illuminated_letters
-			- TBD: add all referenced nouns
-				- TBD: pedestal (late romantic period)
+			- INPROC: add all referenced nouns
+				- DONE: pedestal (late romantic period)
 				- TBD: windows (ref melted from lightening ?)
 				- TBD: silver_keyhole => move silver sword hint here
 				- TBD: make paths examineable
@@ -925,6 +925,7 @@ End Date:
 			- TBD: problem-solving
 				- TBD: enable "the box is firmly affixed to the pedestal" on attempt to take box
 				- TBD: fix unable to get obj in coffer (use init_desc?)
+				- TBD: make pedestal into true surface??
 			- TBD: review existing noun descriptions
 					- IDEA: make sure it all works together
 		- TBD: general
