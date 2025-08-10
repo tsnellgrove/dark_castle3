@@ -76,6 +76,7 @@ arrow_slits = ViewOnly('arrow_slits', 'Arrow Slits', 'slits', 'arrow_slits', Non
 foreboding_archway = ViewOnly('foreboding_archway', 'Foreboding Archway', 'archway', 'foreboding_archway', None)
 lit_archway = ViewOnly('lit_archway', 'Lit Archway', 'archway', 'lit_archway', None)
 elegant_pedestal = ViewOnly('elegant_pedestal', 'Elegant Pedestal', 'pedestal', 'elegant_pedestal', None)
+ruined_windows = ViewOnly('ruined_windows', 'Ruined Windows', 'windows', 'ruined_windows', None)
 
 # Item
 rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
@@ -448,7 +449,7 @@ antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', N
 	)
 
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, 
-		[stone_coffer, family_tree, elegant_pedestal],
+		[stone_coffer, family_tree, elegant_pedestal, ruined_windows],
 		[throne, crystal_box], 
 		[broach_dispenser_mach],
 		[]
@@ -630,7 +631,7 @@ master_obj_lst = [
 		big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, earthen_jug, paper_bag, 
 		insignia, baked_biscuit, drawbridge, rusty_keyhole, royal_cypher, postbox, ancient_certificate, 
 		bold_script, big_rock, zorkmid, untrodden_path, gatehouse, old_furniture, cobwebs, musty_smell, 
-		arrow_slits, foreboding_archway, lit_archway, elegant_pedestal,
+		arrow_slits, foreboding_archway, lit_archway, elegant_pedestal, ruined_windows,
 
 		# test objects
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 

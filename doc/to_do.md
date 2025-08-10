@@ -916,8 +916,9 @@ End Date:
 				- DONE: illuminated_letters
 			- INPROC: add all referenced nouns
 				- DONE: pedestal (late romantic period)
-				- TBD: windows (ref melted from lightening ?)
+				- DONE: windows
 				- TBD: silver_keyhole => move silver sword hint here
+				- TBD: stained_glass
 				- TBD: make paths examineable
 			- TBD: additional review
 				- TBD: use init_desc where appropriate
@@ -926,6 +927,7 @@ End Date:
 				- TBD: enable "the box is firmly affixed to the pedestal" on attempt to take box
 				- TBD: fix unable to get obj in coffer (use init_desc?)
 				- TBD: make pedestal into true surface??
+				- TBD: use warning to divert attempts to pick up stained_glass (mention melted)
 			- TBD: review existing noun descriptions
 					- IDEA: make sure it all works together
 		- TBD: general
