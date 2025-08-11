@@ -106,6 +106,7 @@ game_static_dict = {
 	'lit_archway' : "The lit archway leads away from the unnatural gloom of Dark Castle and back towards the wholesome light of the outside world.",
 	'elegant_pedestal' : "The elegant pedestal is to the right of the throne. Made of polished marble and with ornate carvings on its surface, it appears to be from the late romantic period. A crystal box has been permenantly attached to the top of it.",
 	'ruined_windows' : "On the east and west walls there is a row of floor-to-ceiling windows. The window frames themselves are mostly empty of glass and could be exited if not for the thick growth of thorny vines choking them. The beautiful stained glass that once filled the frames is shattered is still strewn about the floor of the room. Nana never spoke about the catastrophe that befell the Dark Castle, but it appears to have been dramatic!",
+	'silver_keyhole' : "The silver keyhold glitters brilliantly in the otherwise dark and brooding throne room. So much so that it reminds you of the polished luster of the shiny sword.",
 
 	### item objects ###
 	'rusty_key' : "An old rusty key... the one you swore to the whole pub (and miss Chrissy Brewer!) that you'd use to pillage the Dark Castle... What could you possibly do with it?",
@@ -135,7 +136,7 @@ game_static_dict = {
 	'big_medal' : "This is the biggest, most-highly-polished medal you have ever seen.",
 
 	### container objects ###
-	'crystal_box' : "Atop an ornate pedestal to the right of the throne sits an intricate crystal box. The crystal panels are heavily leaded and skillfully carved such that you're unable to tell what may lie within. There is a silver keyhole on the front of the crystal box that glitters brilliantly - much like the shiny sword in fact - in the otherwise dark and brooding room. The top of the crystal box is engraved with calligraphy. The crystal box is in each reach of anyone sitting upon the throne.",
+	'crystal_box' : "Atop an ornate pedestal to the right of the throne sits an intricate crystal box. The crystal panels are heavily leaded and skillfully carved such that you're unable to tell what may lie within. There is a silver keyhole on the front of the crystal box that glitters brilliantly in the otherwise dark and brooding room. The top of the crystal box is engraved with calligraphy. The crystal box appears to be permanently affixed to the elegant pedestal but is in easy reach of anyone sitting upon the throne.",
 
 	### surface objects ###
 	'wooden_shelf' : "The Wooden Shelf looks sturdy and reliable - like it would be a good, safe place to store your stuff.",

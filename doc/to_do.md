@@ -917,7 +917,7 @@ End Date:
 			- INPROC: add all referenced nouns
 				- DONE: pedestal (late romantic period)
 				- DONE: windows
-				- TBD: silver_keyhole => move silver sword hint here
+				- DONE: silver_keyhole => move silver sword hint here
 				- TBD: stained_glass
 				- TBD: make paths examineable
 			- TBD: additional review
