@@ -914,14 +914,14 @@ End Date:
 				- DONE: kinging_scroll
 				- DONE: silver_key
 				- DONE: illuminated_letters
-			- INPROC: add all referenced nouns
+			- DONE: add all referenced nouns
 				- DONE: pedestal (late romantic period)
 				- DONE: windows
 				- DONE: silver_keyhole => move silver sword hint here
-				- TBD: stained_glass
-				- TBD: make paths examineable
+				- DONE: stained_glass
+				- DONE: make paths examineable
 			- TBD: additional review
-				- TBD: use init_desc where appropriate
+				- TBD: use init_desc where appropriate => coffers?
 				- TBD: test all machines
 			- TBD: problem-solving
 				- TBD: enable "the box is firmly affixed to the pedestal" on attempt to take box
