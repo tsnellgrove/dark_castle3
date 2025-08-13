@@ -920,15 +920,23 @@ End Date:
 				- DONE: silver_keyhole => move silver sword hint here
 				- DONE: stained_glass
 				- DONE: make paths examineable
-			- TBD: additional review
-				- TBD: use init_desc where appropriate => coffers?
-				- TBD: test all machines
+			- INPROC: additional review
+				- DONE: test all machines
+				- TBD: use init_desc where appropriate
+					- TBD: pedestal to right
+						- TBD: create init_desc obj
+						- TBD: create init_desc description
+						- TBD: add to room
+					- TBD: coffers to left
+						- TBD: create init_desc obj
+						- TBD: create init_desc description
+						- TBD: add to room
+						- TBD: fix unable to get obj in coffer (use init_desc?)
 			- TBD: problem-solving
-				- TBD: enable "the box is firmly affixed to the pedestal" on attempt to take box
-				- TBD: fix unable to get obj in coffer (use init_desc?)
-				- TBD: make pedestal into true surface??
+				- TBD: enable "the box is firmly affixed to the pedestal" warning on attempt to take box
+				- TBD: make pedestal into true surface (enables error on attempt to put obj on it)
 				- TBD: use warning to divert attempts to pick up stained_glass (mention melted)
-			- TBD: review existing noun descriptions
+			- TBD: review / play-through existing noun descriptions
 					- IDEA: make sure it all works together
 		- TBD: general
 			- TBD: search on all room names to ensure consistently capitalized
@@ -936,18 +944,23 @@ End Date:
 		- TBD: additional fixes:
 			- TBD: make inventory description text rare (20%?)			
 			- TBD: improve item listings for 'i' and 'x' (use a and an for single items)
-			- TBD: for 'i' and 'x', ensure that protable container contents are listed with port con
+			- TBD: for 'i' and 'x', ensure that portable container contents are listed with port con
 			- TBD: should obj.full_name be de-captialized?
 			- TBD: clean up cleesh static_gbl, clean-up game_static_gbl
 		- TBD: minor features:
 			- TBD: implement 'jump' (jump on drawbridge in Entrance = go over side ?)
-		- TBD: major fixes [maybe separate git merges?]
-			- TBD: implement full set of cardinal directions + u & d (?)
-			- TBD: turn lantern into actual light (?)
-				- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
-				- IDEA: see thoughts on light in to-do notes below
+
 - TBD: git merge
 
+
+
+
+*** major updates in separate git merges ***
+- TBD: implement full set of cardinal directions + u & d (?)
+- TBD: turn lantern into actual light (?)
+	- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
+	- IDEA: see thoughts on light in to-do notes below
+- TBD: major interpreter update!
 
 
 *** misc someday / maybe fixes ***
