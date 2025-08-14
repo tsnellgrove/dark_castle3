@@ -922,19 +922,20 @@ End Date:
 				- DONE: make paths examineable
 			- INPROC: additional review
 				- DONE: test all machines
-				- TBD: use init_desc where appropriate
-					- TBD: pedestal to right
-						- TBD: create init_desc obj
-						- TBD: create init_desc description
-						- TBD: add to room
-					- TBD: coffers to left
-						- TBD: create init_desc obj
-						- TBD: create init_desc description
-						- TBD: add to room
-						- TBD: fix unable to get obj in coffer (use init_desc?)
+				- INPROC: use init_desc where appropriate
+					- DONE: pedestal to right
+						- DONE: create init_desc obj
+						- DONE: create init_desc description
+						- DONE: add to room
+					- DONE: coffers to left
+						- DONE: create init_desc obj
+						- DONE: create init_desc description
+						- DONE: add to room
+					- DONE: test (fix unable to get obj in coffer? )
+					- TBD: try re-aranging examine order to show init obj before paths
 			- TBD: problem-solving
-				- TBD: enable "the box is firmly affixed to the pedestal" warning on attempt to take box
 				- TBD: make pedestal into true surface (enables error on attempt to put obj on it)
+				- TBD: enable "the box is firmly affixed to the pedestal" warning on attempt to take box
 				- TBD: use warning to divert attempts to pick up stained_glass (mention melted)
 			- TBD: review / play-through existing noun descriptions
 					- IDEA: make sure it all works together

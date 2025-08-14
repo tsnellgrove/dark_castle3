@@ -419,7 +419,8 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 postbox_init_desc = InitDesc('postbox_init_desc', postbox, 'postbox_init_desc')
 shiny_sword_init_desc = InitDesc('shiny_sword_init_desc', shiny_sword, 'shiny_sword_init_desc')
 big_rock_init_desc = InitDesc('big_rock_init_desc', big_rock, 'big_rock_init_desc')
-
+elegant_pedestal_init_desc = InitDesc('elegant_pedestal_init_desc', elegant_pedestal, 'elegant_pedestal_init_desc')
+stone_coffer_init_desc = InitDesc('stone_coffer_init_desc', stone_coffer, 'stone_coffer_init_desc')
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
@@ -451,10 +452,10 @@ antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', N
 	)
 
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, 
-		[stone_coffer, family_tree, elegant_pedestal, ruined_windows, silver_keyhole, stained_glass],
-		[throne, crystal_box], 
+		[family_tree, ruined_windows, silver_keyhole, stained_glass],
+		[throne, crystal_box, elegant_pedestal, stone_coffer], 
 		[broach_dispenser_mach],
-		[]
+		[elegant_pedestal_init_desc, stone_coffer_init_desc]
 	)
 
 

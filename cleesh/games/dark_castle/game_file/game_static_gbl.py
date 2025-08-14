@@ -203,8 +203,9 @@ game_static_dict = {
     'postbox_init_desc' : "Behind you, just beyond the drawbridge, is an extremely old and rusty postbox.",
     'big_rock_init_desc' : "Across the way from the postbox is a big rock covered in moss and lichen.",
     'shiny_sword_init_desc' : "Upon the wall hangs a Shiny Sword of great antinquity.",
-
-
+	'elegant_pedestal_init_desc' : "To the right of the throne is an elegant pedestal that holds what appears to be a delicate crystal box.",
+	'stone_coffer_init_desc' : "To the left of the throne is a giant stone coffer.",
+    
 	### room objects ###
 	'entrance' : "You stand upon the ancient drawbridge at the entrance of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.",
 
@@ -218,8 +219,9 @@ game_static_dict = {
 
 	'antechamber' :"You are in a what feels more like a wide, tall-ceilinged corridor than a room. Apparently this is the room-before-the-room, the pre-room before the really, really grand room that comes after it. If so, the next room must be quite something because, back in it's day, this spot was clearly impressive. Alas, like all of the castle, it has fallen on dark times and now feels more sinister than grand. The east and west walls are bare stone with exits to the north and south. Near the north exit, on the west wall, there is a small alcove. It appears to have some kind of apparatus in it but you can't see it very well due to the dim light and the Guard Goblin standing in front of it, glowering at you. The whole north end of the room is cloaked in shadows that make you uneasy.",
 
-	'throne_room' : "The room you're currently in is vast - almost cavernous. At the far end sits what must have once been a grand and glorious throne. To the right of the throne is an elegant pedestal that holds what appears to be a delicate crystal box and to the left, a giant stone coffer. On either wall there are tall ruined windows - now shattered and completely choked with thorned vines - but you you remember hearing stories from your great grandmother, Nana, of the beautiful, glowing stained glass that once filled them. And above the room's entrance hangs a vast (though quite dusty) family tree.",
+#	'throne_room' : "The room you're currently in is vast - almost cavernous. At the far end sits what must have once been a grand and glorious throne. To the right of the throne is an elegant pedestal that holds what appears to be a delicate crystal box and to the left, a giant stone coffer. On either wall there are tall ruined windows - now shattered and completely choked with thorned vines - but you you remember hearing stories from your great grandmother, Nana, of the beautiful, glowing stained glass that once filled them. And above the room's entrance hangs a vast (though quite dusty) family tree.",
 
+	'throne_room' : "The room you're currently in is vast - almost cavernous. At the far end sits what must have once been a grand and glorious throne.  On either wall there are tall ruined windows - now shattered and completely choked with thorned vines - but you you remember hearing stories from your great grandmother, Nana, of the beautiful, glowing stained glass that once filled them. And above the room's entrance hangs a vast (though quite dusty) family tree.",
 
 	### future objects ###
 	'main_hall' : "You are in what was once the sumptuous main hall of the castle. Faded Tapestries hang on the east and west walls. The Front Gate is to the south. And a foreboding archway leads to the north.",
