@@ -157,7 +157,8 @@ class Room(ViewOnly):
 			return f"*** {self.full_name} ***"
 
 	def has_cond(self, gs):
-		return True
+#		return True
+		return False
 
 	def has_contain(self, gs):
 		return len(self.floor_lst) > 1
@@ -165,15 +166,17 @@ class Room(ViewOnly):
 	def disp_cond(self, gs):
 		""" Displays object-specific conditions. Used in examine().
 		"""
-		gs.io.buff_no_cr(gs.map.get_door_str(self))
+#		gs.io.buff_no_cr(gs.map.get_door_str(self))
+		pass
 
 	def disp_contain(self, gs):
 		""" Displays a description of the visible items held by the obj. Used in examine().
 		Order of display is from most to least static: 
 			1. Initial Descriptions for viewonly & items (in order listed in init_desc_lst)
-			2. ViewOnly (i.e. imovable furniture)
-			3. Items (which are movable and may have already been moved)
-			4. Creatures (which may move of their own volition)
+			2. Paths
+			3. ViewOnly (i.e. imovable furniture)
+			4. Items (which are movable and may have already been moved)
+			5. Creatures (which may move of their own volition)
 		"""
 
 		### organize floor_lst by type
@@ -191,15 +194,28 @@ class Room(ViewOnly):
 				rm_item_lst.append(obj)
 
 		### buffer descriptions by type
+		init_display = False
 		for init_desc in self.init_desc_lst:
 			if init_desc.linked_item in rm_item_lst or rm_viewonly_lst:
-				gs.io.buff_cr()
-				gs.io.buff_cr()
+				init_display = True
+#				gs.io.buff_cr()
+#				gs.io.buff_cr()
 				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_item.full_name)
+				gs.io.buff_no_cr(" ") # add space after init_desc in case of multiple init_descs
 				if init_desc.linked_item in rm_item_lst:
 					rm_item_lst.remove(init_desc.linked_item)
 				else:
 					rm_viewonly_lst.remove(init_desc.linked_item)
+		if init_display:
+			gs.io.buff_cr()
+			gs.io.buff_cr()
+
+
+		# paths
+#		gs.io.buff_cr()
+#		gs.io.buff_cr()
+		gs.io.buff_no_cr(gs.map.get_door_str(self))
+
 		for obj in rm_viewonly_lst:
 			gs.io.buff_cr()
 			gs.io.buff_cr()
