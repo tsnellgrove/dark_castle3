@@ -157,7 +157,6 @@ class Room(ViewOnly):
 			return f"*** {self.full_name} ***"
 
 	def has_cond(self, gs):
-#		return True
 		return False
 
 	def has_contain(self, gs):
@@ -166,7 +165,6 @@ class Room(ViewOnly):
 	def disp_cond(self, gs):
 		""" Displays object-specific conditions. Used in examine().
 		"""
-#		gs.io.buff_no_cr(gs.map.get_door_str(self))
 		pass
 
 	def disp_contain(self, gs):
@@ -194,12 +192,12 @@ class Room(ViewOnly):
 				rm_item_lst.append(obj)
 
 		### buffer descriptions by type
+
+		# init_desc
 		init_display = False
 		for init_desc in self.init_desc_lst:
 			if init_desc.linked_item in rm_item_lst or rm_viewonly_lst:
 				init_display = True
-#				gs.io.buff_cr()
-#				gs.io.buff_cr()
 				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_item.full_name)
 				gs.io.buff_no_cr(" ") # add space after init_desc in case of multiple init_descs
 				if init_desc.linked_item in rm_item_lst:
@@ -212,10 +210,9 @@ class Room(ViewOnly):
 
 
 		# paths
-#		gs.io.buff_cr()
-#		gs.io.buff_cr()
 		gs.io.buff_no_cr(gs.map.get_door_str(self))
 
+		# viewonly objects
 		for obj in rm_viewonly_lst:
 			gs.io.buff_cr()
 			gs.io.buff_cr()
@@ -224,6 +221,8 @@ class Room(ViewOnly):
 				gs.io.buff_no_cr(" (which you are presently occupying)")
 			gs.io.buff_no_cr(". ")
 			obj.disp_contain(gs)
+
+		# items
 		if rm_item_lst:
 			gs.io.buff_cr()
 			gs.io.buff_cr()
@@ -232,6 +231,8 @@ class Room(ViewOnly):
 			gs.io.buff_no_cr(f"The following items are here: {room_item_str}. ")
 			for obj in rm_item_lst:
 				obj.disp_contain(gs)
+
+		# creatures
 		for creature in rm_creature_lst:
 			gs.io.buff_cr()
 			gs.io.buff_cr()

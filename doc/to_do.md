@@ -932,12 +932,13 @@ End Date:
 						- DONE: create init_desc description
 						- DONE: add to room
 					- DONE: test (fix unable to get obj in coffer? )
-					- INPROC: try re-aranging examine order to show init obj before paths
+					- DONE: try re-aranging examine order to show init obj before paths
 						- DONE: move paths from room.cond_disp() to room.contain_disp()
 						- IDEA: this is good prep for linking room.cond to lighting
 						- DONE: testing to get spacing right
-						- TBD: final testing (including cup_of_tea)
-						- TBD: clean up room_class() and fully comment parts of disp_contain()
+						- DONE: final testing (including cup_of_tea)
+						- DONE: clean up room_class() and fully comment parts of disp_contain()
+						- DONE: update antechamber_post_goblin descript w/ control panel in sep line
 			- TBD: problem-solving
 				- TBD: make pedestal into true surface (enables error on attempt to put obj on it)
 				- TBD: enable "the box is firmly affixed to the pedestal" warning on attempt to take box
