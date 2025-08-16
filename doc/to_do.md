@@ -922,7 +922,7 @@ End Date:
 				- DONE: make paths examineable
 			- INPROC: additional review
 				- DONE: test all machines
-				- INPROC: use init_desc where appropriate
+				- DONE: use init_desc where appropriate
 					- DONE: pedestal to right
 						- DONE: create init_desc obj
 						- DONE: create init_desc description
