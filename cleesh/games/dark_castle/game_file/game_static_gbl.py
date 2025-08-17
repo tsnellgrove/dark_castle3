@@ -107,7 +107,7 @@ game_static_dict = {
 	'elegant_pedestal' : "The elegant pedestal is to the right of the throne. Made of polished marble and with ornate carvings on its surface, it appears to be from the late romantic period. A crystal box has been permenantly attached to the top of it.",
 	'ruined_windows' : "On the east and west walls there is a row of floor-to-ceiling windows. The window frames themselves are mostly empty of glass and are now completely choked with a thick growth of thorny vines. The beautiful stained glass that once filled the frames is still strewn about the floor of the room. Nana never spoke about the catastrophe that sundered Bright Castle and rendered it into Dark Castle, but it must have been dramatic!",
 	'silver_keyhole' : "The silver keyhold glitters brilliantly in the otherwise dark and brooding throne room. So much so that it reminds you of the polished luster of the shiny sword.",
-	'stained_glass' : "The shattered stained glass is strewn about the floor of the room. Looking at it more closely, you see that in some places the edges of the glass appear to be badly melted. Whatever dark forces brought about the fall of Bright Castle must have horrifying to behold!",
+	'stained_glass' : "The shattered stained glass is strewn about the floor of the room. Looking at it more closely, you see that in some cases the edges of the glass appear to be badly melted. Whatever dark forces brought about the fall of Bright Castle must have horrifying to behold!",
 
 	### item objects ###
 	'rusty_key' : "An old rusty key... the one you swore to the whole pub (and miss Chrissy Brewer!) that you'd use to pillage the Dark Castle... What could you possibly do with it?",

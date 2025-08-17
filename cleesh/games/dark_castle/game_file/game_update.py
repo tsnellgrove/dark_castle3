@@ -75,7 +75,6 @@ musty_smell = ViewOnly('musty_smell', 'Musty Smell', 'smell', 'musty_smell', Non
 arrow_slits = ViewOnly('arrow_slits', 'Arrow Slits', 'slits', 'arrow_slits', None)
 foreboding_archway = ViewOnly('foreboding_archway', 'Foreboding Archway', 'archway', 'foreboding_archway', None)
 lit_archway = ViewOnly('lit_archway', 'Lit Archway', 'archway', 'lit_archway', None)
-elegant_pedestal = ViewOnly('elegant_pedestal', 'Elegant Pedestal', 'pedestal', 'elegant_pedestal', None)
 ruined_windows = ViewOnly('ruined_windows', 'Ruined Windows', 'windows', 'ruined_windows', None)
 silver_keyhole = ViewOnly('silver_keyhole', 'Silver Keyhole', 'keyhole', 'silver_keyhole', None)
 stained_glass = ViewOnly('stained_glass', 'Stained Glass', 'glass', 'stained_glass', None)
@@ -111,6 +110,7 @@ earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'eart
 paper_bag = ContainerPortableLidded('paper_bag', 'Paper Bag', 'bag', 'paper_bag', None, 2, [baked_biscuit], 1, 3, 'in', False)
 stone_coffer = ContainerFixedSimple('stone_coffer', 'Stone Coffer', 'coffer', 'stone_coffer', None, [], 100, 999, 'in')
 postbox = ContainerFixedLidded('postbox', 'Postbox', 'postbox', 'postbox', royal_cypher, [ancient_certificate], 999, 5, 'in', False)
+elegant_pedestal = ContainerFixedSimple('elegant_pedestal', 'Elegant Pedestal', 'pedestal', 'elegant_pedestal', None, [crystal_box], 999, 1, 'on')
 
 # Door
 front_gate = DoorLockable('front_gate', 'Front Gate', "gate", 'front_gate', rusty_lettering, False, False, rusty_key)
@@ -453,7 +453,7 @@ antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', N
 
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, 
 		[family_tree, ruined_windows, silver_keyhole, stained_glass],
-		[throne, crystal_box, elegant_pedestal, stone_coffer], 
+		[throne, elegant_pedestal, stone_coffer], 
 		[broach_dispenser_mach],
 		[elegant_pedestal_init_desc, stone_coffer_init_desc]
 	)
