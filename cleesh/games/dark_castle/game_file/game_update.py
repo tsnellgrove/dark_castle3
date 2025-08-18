@@ -105,9 +105,10 @@ grimy_axe = Weapon('grimy_axe', 'Grimy Axe', 'axe', 'grimy_axe', small_printing,
 
 # Containers (NOTE for PORTABLE containers, weight of starting contents MUST be included in container weight!!!)
 wooden_shelf = ContainerFixedSimple('wooden_shelf', 'Wooden Shelf', 'shelf', 'wooden_shelf', None, [], 999, 20, 'on')
-crystal_box = ContainerFixedLockable('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy, ['kinging_scroll_temp'], 1, 999, 'in', False, False, silver_key)
+# crystal_box = ContainerFixedLockable('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy, ['kinging_scroll_temp'], 1, 999, 'in', False, False, silver_key)
 earthen_jug = ContainerPortableSimple('earthen_jug', 'Earthen Jug', 'jug', 'earthen_jug', None, 2, [well_water], 1, 5, 'in')
 paper_bag = ContainerPortableLidded('paper_bag', 'Paper Bag', 'bag', 'paper_bag', None, 2, [baked_biscuit], 1, 3, 'in', False)
+crystal_box = ContainerPortableLockable('crystal_box', 'Crystal Box', 'box', 'crystal_box', calligraphy, 5, ['kinging_scroll_temp'], 1, 5, 'in', False, False, silver_key)
 stone_coffer = ContainerFixedSimple('stone_coffer', 'Stone Coffer', 'coffer', 'stone_coffer', None, [], 100, 999, 'in')
 postbox = ContainerFixedLidded('postbox', 'Postbox', 'postbox', 'postbox', royal_cypher, [ancient_certificate], 999, 5, 'in', False)
 elegant_pedestal = ContainerFixedSimple('elegant_pedestal', 'Elegant Pedestal', 'pedestal', 'elegant_pedestal', None, [crystal_box], 999, 1, 'on')
@@ -160,6 +161,10 @@ attack_hedgehog_warning = Warning('attack_hedgehog_warning',
 eat_biscuits_warning = Warning('eat_biscuits_warning',
 		'pre_act_cmd', 0, baked_biscuit, True, 
 		[['eat','baked_biscuit']], 3)
+
+take_box_warning = Warning('take_box_warning',
+		'pre_act_cmd', 0, crystal_box, True, 
+		[['take', 'crystal_box'], ['take', 'box']], 0)
 
 
 # *** conditions ***
@@ -454,7 +459,7 @@ antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', N
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, 
 		[family_tree, ruined_windows, silver_keyhole, stained_glass],
 		[throne, elegant_pedestal, stone_coffer], 
-		[broach_dispenser_mach],
+		[broach_dispenser_mach, take_box_warning],
 		[elegant_pedestal_init_desc, stone_coffer_init_desc]
 	)
 
