@@ -164,8 +164,12 @@ eat_biscuits_warning = Warning('eat_biscuits_warning',
 
 take_box_warning = Warning('take_box_warning',
 		'pre_act_cmd', 0, crystal_box, True, 
-		[['take', 'crystal_box'], ['take', 'box']], 0)
+#		[['take', 'crystal_box'], ['take', 'box']], 0)
+		[['take', 'crystal_box']], 0)
 
+take_glass_warning = Warning('take_glass_warning',
+		'pre_act_cmd', 0, stained_glass, True, 
+		[['take', 'stained_glass']], 0)
 
 # *** conditions ***
 # *** note: obj.open (if locked) and room.go (w/ closed door in way) must be tested for success ***
@@ -459,7 +463,7 @@ antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', N
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, 
 		[family_tree, ruined_windows, silver_keyhole, stained_glass],
 		[throne, elegant_pedestal, stone_coffer], 
-		[broach_dispenser_mach, take_box_warning],
+		[broach_dispenser_mach, take_box_warning, take_glass_warning],
 		[elegant_pedestal_init_desc, stone_coffer_init_desc]
 	)
 

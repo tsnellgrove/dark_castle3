@@ -941,11 +941,15 @@ End Date:
 						- DONE: update antechamber_post_goblin descript w/ control panel in sep line
 			- INPROC: problem-solving
 				- DONE: make pedestal into true surface (enables error on attempt to put obj on it)
-				- INPROC: enable "the box is firmly affixed to the pedestal" warning on attempt to take box
+				- DONE: enable "the box is firmly affixed to the pedestal" warning on attempt to take box
 					- DONE: enable warning
 					- FINDING: now, the crystal_box condition is no longer highlighted... how to fix?
-					- TBD: maybe just put crystal_box in floor_lst & elegant_pedistal max_obj = 0 ??
-				- TBD: use warning to divert attempts to pick up stained_glass (mention melted)
+					- CANCEL: maybe just put crystal_box in floor_lst & elegant_pedistal max_obj = 0
+				- DONE: use warning to divert attempts to pick up stained_glass (mention melted)
+				- TBD: create highlight attrib for init_desc
+					- IDEA: if highlight == True, don't remove from view_only_lst
+					- TBD: implement
+					- TBD: use init_desc w/ control_panel ??
 			- TBD: review / play-through existing noun descriptions
 					- IDEA: make sure it all works together
 		- TBD: general

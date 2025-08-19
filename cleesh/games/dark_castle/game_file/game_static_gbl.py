@@ -238,6 +238,7 @@ game_static_dict = {
 	'attack_hedgehog_warning_1' : "BURT! What has gotten into you?? We have an evil castle to conquer. Stop trying to slay defenseless woodland creatures!", # old text: "You take a wild swipe at the Royal Hedgehog but it nimbly leaps aside."
 	'attack_hedgehog_warning_2' : "Burt, I mean it - leave the poor little Hedgehog alone!",
 	'take_box_warning_0' : "The crystal box is securely affixed to the elegant pedestal.",
+	'take_glass_warning_0' : "You contemplate gathing up some bits of stained glass from the floor but then think better of it and leave them undisturbed.",
 
 	### timers ###
 	'hedgehog_eats_timer_1' : "The Royal Hedgehog is ravenously devouring the Stale Biscuits and is taking no notice of you at all.",
