@@ -946,10 +946,10 @@ End Date:
 					- FINDING: now, the crystal_box condition is no longer highlighted... how to fix?
 					- CANCEL: maybe just put crystal_box in floor_lst & elegant_pedistal max_obj = 0
 				- DONE: use warning to divert attempts to pick up stained_glass (mention melted)
-				- TBD: create highlight attrib for init_desc
+				- DONE: create highlight attrib for init_desc
 					- IDEA: if highlight == True, don't remove from view_only_lst
-					- TBD: implement
-					- TBD: use init_desc w/ control_panel ??
+					- DONE: implement for elegant_pedestal in throne_room
+				- TBD: use init_desc w/ control_panel in antechamber
 			- TBD: review / play-through existing noun descriptions
 					- IDEA: make sure it all works together
 		- TBD: general

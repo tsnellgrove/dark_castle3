@@ -138,7 +138,7 @@ screen_door = DoorSimple('screen_door', 'Screen Door', 'door', 'screen_door', No
 test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 999, 2, 'on', [wooden_shelf])
 trademark = Writing('trademark', 'Trademark', 'trademark', 'trademark')
 stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 3)
-random_mcguffin_init_desc = InitDesc('random_mcguffin_init_desc', random_mcguffin, 'random_mcguffin_init_desc')
+random_mcguffin_init_desc = InitDesc('random_mcguffin_init_desc', random_mcguffin, False, 'random_mcguffin_init_desc')
 
 
 # test obj - currently in use
@@ -425,11 +425,11 @@ burt = Creature('burt', 'Burt', 'burt', 'burt', None,
 		}, 106, 150) # note: for non-burt-creature testing frog_travel_mach was in burt.invis_lstj
 
 # *** Initial Descriptions ***
-postbox_init_desc = InitDesc('postbox_init_desc', postbox, 'postbox_init_desc')
-shiny_sword_init_desc = InitDesc('shiny_sword_init_desc', shiny_sword, 'shiny_sword_init_desc')
-big_rock_init_desc = InitDesc('big_rock_init_desc', big_rock, 'big_rock_init_desc')
-elegant_pedestal_init_desc = InitDesc('elegant_pedestal_init_desc', elegant_pedestal, 'elegant_pedestal_init_desc')
-stone_coffer_init_desc = InitDesc('stone_coffer_init_desc', stone_coffer, 'stone_coffer_init_desc')
+postbox_init_desc = InitDesc('postbox_init_desc', postbox, False, 'postbox_init_desc')
+shiny_sword_init_desc = InitDesc('shiny_sword_init_desc', shiny_sword, False, 'shiny_sword_init_desc')
+big_rock_init_desc = InitDesc('big_rock_init_desc', big_rock, False, 'big_rock_init_desc')
+elegant_pedestal_init_desc = InitDesc('elegant_pedestal_init_desc', elegant_pedestal, True, 'elegant_pedestal_init_desc')
+stone_coffer_init_desc = InitDesc('stone_coffer_init_desc', stone_coffer, False, 'stone_coffer_init_desc')
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 

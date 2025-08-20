@@ -200,9 +200,9 @@ class Room(ViewOnly):
 				init_display = True
 				gs.io.buff_d_no_cr(init_desc.init_desc_key, init_desc.linked_item.full_name)
 				gs.io.buff_no_cr(" ") # add space after init_desc in case of multiple init_descs
-				if init_desc.linked_item in rm_item_lst:
+				if (init_desc.linked_item in rm_item_lst) and (not init_desc.highlight):
 					rm_item_lst.remove(init_desc.linked_item)
-				else:
+				elif not init_desc.highlight:
 					rm_viewonly_lst.remove(init_desc.linked_item)
 		if init_display:
 			gs.io.buff_cr()
@@ -263,14 +263,23 @@ class Room(ViewOnly):
 
 
 class InitDesc(Invisible):
-	def __init__(self, name, linked_item, init_desc_key):
+	def __init__(self, name, linked_item, highlight, init_desc_key):
 		super().__init__(name)
 		self._linked_item = linked_item # item the init_desc is associated with
+		self._highlight = highlight # whether the item is highlighted in the room description
 		self._init_desc_key = init_desc_key # dict key for the initial description
 		""" InitDesc class inherits from Invisible. It is used to provide the initial description of an item in a room. 
 		"""
 
 	# *** getters & setters ***
+	@property
+	def highlight(self):
+		return self._highlight
+
+	@highlight.setter
+	def highlight(self, new_bool):
+		self._highlight = new_bool
+
 	@property
 	def linked_item(self):
 		return self._linked_item
