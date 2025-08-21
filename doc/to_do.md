@@ -939,7 +939,7 @@ End Date:
 						- DONE: final testing (including cup_of_tea)
 						- DONE: clean up room_class() and fully comment parts of disp_contain()
 						- DONE: update antechamber_post_goblin descript w/ control panel in sep line
-			- INPROC: problem-solving
+			- DONE: problem-solving
 				- DONE: make pedestal into true surface (enables error on attempt to put obj on it)
 				- DONE: enable "the box is firmly affixed to the pedestal" warning on attempt to take box
 					- DONE: enable warning
@@ -949,9 +949,11 @@ End Date:
 				- DONE: create highlight attrib for init_desc
 					- IDEA: if highlight == True, don't remove from view_only_lst
 					- DONE: implement for elegant_pedestal in throne_room
-				- TBD: use init_desc w/ control_panel in antechamber
+				- CANCEL: use init_desc w/ control_panel in antechamber ?
+					- DECISION: tempting out of "purity of design" but nt better than current approach
 			- TBD: review / play-through existing noun descriptions
-					- IDEA: make sure it all works together
+				- TBD: fix 'walk into wall' error
+				- IDEA: make sure it all works together
 		- TBD: general
 			- TBD: search on all room names to ensure consistently capitalized
 			- TBD: review final title => king vs. baron
