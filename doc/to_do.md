@@ -951,8 +951,10 @@ End Date:
 					- DONE: implement for elegant_pedestal in throne_room
 				- CANCEL: use init_desc w/ control_panel in antechamber ?
 					- DECISION: tempting out of "purity of design" but nt better than current approach
-			- TBD: review / play-through existing noun descriptions
-				- TBD: fix 'walk into wall' error
+			- INPROC: review / play-through existing noun descriptions
+				- INPROC: fix 'walk into wall' error
+					- FINDING: problem appears to be in map.chk_valid_dir()
+					- TBD: re-write as nested for loop and add print statements to troubleshoot
 				- IDEA: make sure it all works together
 		- TBD: general
 			- TBD: search on all room names to ensure consistently capitalized
