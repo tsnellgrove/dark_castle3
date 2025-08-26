@@ -954,7 +954,12 @@ End Date:
 			- INPROC: review / play-through existing noun descriptions
 				- INPROC: fix 'walk into wall' error
 					- FINDING: problem appears to be in map.chk_valid_dir()
-					- TBD: re-write as nested for loop and add print statements to troubleshoot
+					- DONE: re-write as nested for loop and add print statements to troubleshoot
+					- FINDING: walk-into-wall error is gone but now moat_mach doesn't run??
+					- DONE: try reversing for loop order
+					- FINDING: same exact behavior
+					- DONE: revert to original for loop order
+					- TBD: test orginal return code
 				- IDEA: make sure it all works together
 		- TBD: general
 			- TBD: search on all room names to ensure consistently capitalized
