@@ -959,7 +959,11 @@ End Date:
 					- DONE: try reversing for loop order
 					- FINDING: same exact behavior
 					- DONE: revert to original for loop order
-					- TBD: test orginal return code
+					- DONE: test orginal return code
+					- FINDING: same failure as orignal => poor test; running for loops twice
+					- DONE: confirm that return value is as expected
+					- FINDING: go_err() appears to return is_att == True
+					- TBD: chk app_main() for go special case?
 				- IDEA: make sure it all works together
 		- TBD: general
 			- TBD: search on all room names to ensure consistently capitalized

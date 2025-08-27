@@ -572,6 +572,7 @@ class Error(Identity):
 			err_txt = (f"You'll have to exit the {creature.get_contained_by(gs).full_name} to attempt that.")
 			return True, False, err_txt
 		if not gs.map.chk_valid_dir(self, dir):
+			# attemptable error: player can attempt to go in any direction
 			err_txt = gs.io.get_str(f"dir_err_{random.randint(0, 4)}", 'experience')
 			return True, True, err_txt
 		door = gs.map.get_door(self, dir)
