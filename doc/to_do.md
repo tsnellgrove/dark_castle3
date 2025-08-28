@@ -963,7 +963,10 @@ End Date:
 					- FINDING: same failure as orignal => poor test; running for loops twice
 					- DONE: confirm that return value is as expected
 					- FINDING: go_err() appears to return is_att == True
-					- TBD: chk app_main() for go special case?
+					- DONE: chk app_main() for go special case?
+					- FINDING: no go special case but cmd_override is evaluating to False
+					- TBD: fix cmd_override
+					- TBD: clean-up app_main()
 				- IDEA: make sure it all works together
 		- TBD: general
 			- TBD: search on all room names to ensure consistently capitalized
