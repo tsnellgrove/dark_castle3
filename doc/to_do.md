@@ -964,8 +964,12 @@ End Date:
 					- DONE: confirm that return value is as expected
 					- FINDING: go_err() appears to return is_att == True
 					- DONE: chk app_main() for go special case?
-					- FINDING: no go special case but cmd_override is evaluating to False
+					- FINDING: no go special case but cmd_override is evaluating to False (wrong)
+						- NOTE: is_val == F, is_att = T
 					- TBD: fix cmd_override
+						- FINDING: cmd_override passed by InvisTrigMach.run_mach()
+						- FINDING: die_in_moat_result.cmd_override == True
+						- TBD: review AutoMachMixIn.run_mach => check EndResult.result_exe()
 					- TBD: clean-up app_main()
 				- IDEA: make sure it all works together
 		- TBD: general
