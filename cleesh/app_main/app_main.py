@@ -171,7 +171,7 @@ def app_main(user_input, game_name, root_path_str):
 				start_in_hand = gs.core.hero.get_hand_item()
 			case, word_lst = interpreter(user_input, master_obj_lst)
 			is_valid, is_att, err_txt = validate(gs, case, word_lst)
-			print(f"DEBUG: user_input = {user_input}, is_valid = {is_valid}, is_att = {is_att}, err_txt = {err_txt}")
+	
 
 		# if command is not valid, clear cmd_queue
 		if not is_valid:
@@ -184,7 +184,7 @@ def app_main(user_input, game_name, root_path_str):
 		# for valid interp commands, process in-turn game response
 		if is_valid or is_att:
 			cmd_override = pre_action(gs, case, word_lst, is_valid)
-			print(f"DEBUG: cmd_override = {cmd_override}")
+
 			if cmd_override:
 				cmd_queue = []
 			if not cmd_override and is_att:

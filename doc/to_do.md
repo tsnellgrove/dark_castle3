@@ -966,16 +966,37 @@ End Date:
 					- DONE: chk app_main() for go special case?
 					- FINDING: no go special case but cmd_override is evaluating to False (wrong)
 						- NOTE: is_val == F, is_att = T
-					- TBD: fix cmd_override
+					- DONE: fix cmd_override
 						- FINDING: cmd_override passed by InvisTrigMach.run_mach()
 						- FINDING: die_in_moat_result.cmd_override == True
-						- TBD: review AutoMachMixIn.run_mach => check EndResult.result_exe()
-					- TBD: clean-up app_main()
+						- DONE: review AutoMachMixIn.run_mach => check EndResult.result_exe()
+					- DONE: jump into the world of AI Troubleshooting!
+						- FINDING: today was very different, aws q helped me troubleshoot
+						- NARATIVE: the basic issue was that map.chk_valid_dir() was not really functioning correctly all this time. When I fixed it - suddenly the path not being valid broke the is_valid_req for the WeaponInHandCond class and I could no longer die by going off the drawbridge. After a week of manual troubleshooting, I called in q and they were amazing! They found and fixed the issue in on sitting. 
+						- Q's Explanaation: 	
+							"The code is now clean and the fix is in place:
+
+							Root cause: The no_weap_in_hand_cond was failing because is_valid = False (invalid command) and is_valid_reqd = True (default), so TrueCond.cond_check() returned False before checking the weapon condition.
+
+							Solution: Set is_valid_reqd=False for no_weap_in_hand_cond so it evaluates even when the command is invalid.
+
+							Implementation: Added **kwargs support to WeaponInHandCond constructor to accept the is_valid_reqd parameter and pass it to the parent TrueCond class.
+
+							Now when you go east from the Entrance without a weapon, cmd_override correctly evaluates to True, triggering the death result as intended."
+					- TBD: new fixes
+						- FINDING: now I have the same problem when I go e in Entrance w/ sword
+							- NOTE: probably also the same problem on the 2nd try case too
+							- TBD: use q's fix to solve these cases
+						- FINDING: probably the q fix means I don't need pretend rooms anymore?
+							- NOTE: i think I got rid of these already - double check this
+							- TBD: clean-up if needed
+					- TBD: clean-up app_main() and map_class()
 				- IDEA: make sure it all works together
 		- TBD: general
 			- TBD: search on all room names to ensure consistently capitalized
 			- TBD: review final title => king vs. baron
 		- TBD: additional fixes:
+			- TBD: ask q for help with these
 			- TBD: make inventory description text rare (20%?)			
 			- TBD: improve item listings for 'i' and 'x' (use a and an for single items)
 			- TBD: for 'i' and 'x', ensure that portable container contents are listed with port con

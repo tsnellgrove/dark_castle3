@@ -196,16 +196,16 @@ class Map(Invisible):
 #		for room_pair in self.map_lst:
 		for room_lst in room_key_lst:
 			for room_pair in self.map_lst:
-				print(f"start_room = {room_pair[room_lst[0]]}, dir = {room_pair[room_lst[1]]}, dest_room = {room_pair[room_lst[2]]}")
+#				print(f"start_room = {room_pair[room_lst[0]]}, dir = {room_pair[room_lst[1]]}, dest_room = {room_pair[room_lst[2]]}")
 #				return (any(room_pair[room_lst[0]] == room and room_pair[room_lst[1]] == dir 
 #					  	and room_pair[room_lst[2]] != 'unreachable')
 #						for room_pair in self.map_lst for room_lst in room_key_lst)
 
 				if ((room_pair[room_lst[0]] == room) and (room_pair[room_lst[1]] == dir) and
 						(room_pair[room_lst[2]] != 'unreachable')):
-							print("chk_valid_dir() returning True")
+#							print("chk_valid_dir() returning True")
 							return True
-		print("chk_valid_dir() returning False")
+#		print("chk_valid_dir() returning False")
 		return False
 
 #		return (any(room_pair[room_lst[0]] == room and room_pair[room_lst[1]] == dir 

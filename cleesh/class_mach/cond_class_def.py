@@ -237,8 +237,8 @@ class ObjInInvCond(ItemInHandCond):
 		return (self.creature_obj.chk_item_in_inv(self.item_obj, gs) == self.match_cond)
 
 class WeaponInHandCond(TrueCond):
-	def __init__(self, name, creature_obj, match_cond):
-		super().__init__(name)
+	def __init__(self, name, creature_obj, match_cond, **kwargs):
+		super().__init__(name, **kwargs)
 		self._creature_obj = creature_obj # creature to check for holding weapon
 		self._match_cond = match_cond # Whether is_weapon() should be true or false to match cond
 
