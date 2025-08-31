@@ -983,14 +983,19 @@ End Date:
 							Implementation: Added **kwargs support to WeaponInHandCond constructor to accept the is_valid_reqd parameter and pass it to the parent TrueCond class.
 
 							Now when you go east from the Entrance without a weapon, cmd_override correctly evaluates to True, triggering the death result as intended."
-					- TBD: new fixes
-						- FINDING: now I have the same problem when I go e in Entrance w/ sword
-							- NOTE: probably also the same problem on the 2nd try case too
-							- TBD: use q's fix to solve these cases
-						- FINDING: probably the q fix means I don't need pretend rooms anymore?
+					- INPROC: new fixes
+						- DONE: probably the q fix means I don't need pretend rooms anymore?
 							- NOTE: i think I got rid of these already - double check this
-							- TBD: clean-up if needed
-					- TBD: clean-up app_main() and map_class()
+							- FINDING: confirmmed... I got rid of the fake rooms a while ago
+							- FINDING: this was the double error that got me:
+							- FINDING: rooms removed while map.chk_valid_dir() wasn't working right
+						- INPROC: review existing is_valid_reqd state for iron_portcullis
+							- F: true_cond_valid_not_reqd of class TrueCond has is_valid_reqd = False (me)
+							- F: no_weap_in_hand_cond of class WeaponInHand has is_valid_reqd = False (q)
+							- TBD: add **kwargs (2x) to all Condition classes
+							- TBD: figure out how to pass is_valid_reqd = False for compound cond
+							- TBD: solve last 2 moat cases
+					- TBD: clean-up app_main() and map_class() and others
 				- IDEA: make sure it all works together
 		- TBD: general
 			- TBD: search on all room names to ensure consistently capitalized

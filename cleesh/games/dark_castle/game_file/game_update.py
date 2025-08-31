@@ -180,7 +180,7 @@ biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond'
 axe_not_in_goblin_hand_cond = ItemInHandCond('axe_not_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
 sword_in_hand_cond = ItemInHandCond('sword_in_hand_cond', 'shiny_sword_temp', 'burt_temp', True)
 silver_key_given_cond = ObjInInvCond('silver_key_given_cond', silver_key, 'royal_hedgehog_temp', False)
-no_weap_in_hand_cond = WeaponInHandCond('no_weap_in_hand_cond', 'burt_temp', False, is_valid_reqd=False)
+no_weap_in_hand_cond = WeaponInHandCond('no_weap_in_hand_cond', 'burt_temp', False, is_valid_reqd = False)
 sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'gatehouse_temp', 'shiny_sword_temp', True) 
 sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'gatehouse_temp', 'shiny_sword_temp', False)
 not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
