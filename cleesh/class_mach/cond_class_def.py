@@ -44,8 +44,8 @@ class TrueCond(Invisible):
 
 
 class WornCond(TrueCond):
-	def __init__(self, name, worn_garment, creature_obj, match_cond):
-		super().__init__(name)
+	def __init__(self, name, worn_garment, creature_obj, match_cond, **kwargs):
+		super().__init__(name, **kwargs)
 		self._worn_garment = worn_garment
 		self._creature_obj = creature_obj
 		self._match_cond = match_cond
@@ -73,8 +73,8 @@ class WornCond(TrueCond):
 
 
 class CreatureContainedCond(TrueCond):
-	def __init__(self, name, seat_obj, creature_obj, match_cond):
-		super().__init__(name)
+	def __init__(self, name, seat_obj, creature_obj, match_cond, **kwargs):
+		super().__init__(name, **kwargs)
 		self._seat_obj = seat_obj
 		self._creature_obj = creature_obj
 		self._match_cond = match_cond
@@ -104,8 +104,8 @@ class CreatureContainedCond(TrueCond):
 class ObjOnRmFlrCond(TrueCond):
 	""" Condition to check whether an object is on the floor of a specified room. Top-level only.
 	"""
-	def __init__(self, name, match_room, obj, match_cond):
-		super().__init__(name)
+	def __init__(self, name, match_room, obj, match_cond, **kwargs):
+		super().__init__(name, **kwargs)
 		self._match_room = match_room
 		self._obj = obj
 		self._match_cond = match_cond
@@ -139,8 +139,8 @@ class ObjOnRmFlrCond(TrueCond):
 class ObjInRmCond(TrueCond):
 	""" Uses map.get_obj_room() instead of room.chk_item_in_inv() to be more general.
 	"""
-	def __init__(self, name, match_room, obj, match_cond):
-		super().__init__(name)
+	def __init__(self, name, match_room, obj, match_cond, **kwargs):
+		super().__init__(name, **kwargs)
 		self._match_room = match_room
 		self._obj = obj
 		self._match_cond = match_cond
@@ -172,8 +172,8 @@ class ObjInRmCond(TrueCond):
 
 
 class ObjInWorldCond(TrueCond):
-	def __init__(self, name, obj, match_cond):
-		super().__init__(name)
+	def __init__(self, name, obj, match_cond, **kwargs):
+		super().__init__(name, **kwargs)
 		self._obj = obj
 		self._match_cond = match_cond
 
@@ -196,8 +196,8 @@ class ObjInWorldCond(TrueCond):
 
 
 class ItemInHandCond(TrueCond):
-	def __init__(self, name, item_obj, creature_obj, match_cond):
-		super().__init__(name)
+	def __init__(self, name, item_obj, creature_obj, match_cond, **kwargs):
+		super().__init__(name, **kwargs)
 		self._item_obj = item_obj # item creature must possess for condition to be true
 		self._creature_obj = creature_obj # creature to check for item ownership
 		self._match_cond = match_cond # boolean state to be matched
@@ -228,8 +228,8 @@ class ItemInHandCond(TrueCond):
 		return (self.item_obj in self.creature_obj.hand_lst) == self.match_cond
 
 class ObjInInvCond(ItemInHandCond):
-	def __init__(self, name, item_obj, creature_obj, match_cond):
-		super().__init__(name, item_obj, creature_obj, match_cond)
+	def __init__(self, name, item_obj, creature_obj, match_cond, **kwargs):
+		super().__init__(name, item_obj, creature_obj, match_cond, **kwargs)
 
 	def cond_check(self, gs, mach_state, is_valid):
 		if (self.is_valid_reqd and not is_valid):
@@ -261,8 +261,8 @@ class WeaponInHandCond(TrueCond):
 
 
 class MachStateCond(TrueCond):
-	def __init__(self, name, tgt_state, match_cond):
-		super().__init__(name)
+	def __init__(self, name, tgt_state, match_cond, **kwargs):
+		super().__init__(name, **kwargs)
 		self._tgt_state = tgt_state # target mach state value to test for match
 		self._match_cond = match_cond # bool indicatting whether state should match or not macth
 
@@ -281,8 +281,8 @@ class MachStateCond(TrueCond):
 
 
 class TimerActiveCond(TrueCond):
-	def __init__(self, name, timer_obj, match_cond):
-		super().__init__(name)
+	def __init__(self, name, timer_obj, match_cond, **kwargs):
+		super().__init__(name, **kwargs)
 		self._timer_obj = timer_obj
 		self._match_cond = match_cond
 
@@ -301,8 +301,8 @@ class TimerActiveCond(TrueCond):
 
 
 class SwitchStateCond(TrueCond):
-	def __init__(self, name, cond_switch_lst, match_cond_lst):
-		super().__init__(name)
+	def __init__(self, name, cond_switch_lst, match_cond_lst, **kwargs):
+		super().__init__(name, **kwargs)
 		self._cond_switch_lst = cond_switch_lst # list of switches that impact condition
 		self._match_cond_lst = match_cond_lst # list of switch state values to meet condition
 
@@ -324,8 +324,8 @@ class SwitchStateCond(TrueCond):
 
 
 class LeverArrayCond(SwitchStateCond):
-	def __init__(self, name, cond_switch_lst, match_cond_lst): # target value lives in mach_state as a machine attribute
-		super().__init__(name, cond_switch_lst, match_cond_lst) # match_cond_lst == list of values for levers that are up; same len as cond_swtch_lst
+	def __init__(self, name, cond_switch_lst, match_cond_lst, **kwargs): # target value lives in mach_state as a machine attribute
+		super().__init__(name, cond_switch_lst, match_cond_lst, **kwargs) # match_cond_lst == list of values for levers that are up; same len as cond_swtch_lst
 
 	def cond_check(self, gs, mach_state, is_valid):
 		if (self.is_valid_reqd and not is_valid):

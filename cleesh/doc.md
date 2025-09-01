@@ -373,13 +373,19 @@ UPDATE 3 - Next Gen Errors:
 
 	Step 1) app_main() passes is_valid => pre_act() => run_mach() => cond_check().
 	Step 2) Create a new kwarg, is_valid_reqd, in the TrueCond class (from which all other condition classes inherit). is_valid_reqd indicates whether the command must be valid for the condition to be True. The default value of is_valid_reqd is set to True. Then in TrueCond, is_valid and self.is_valid_reqd are compared and the condition is False if they differ.
-	Step 3) Eliminate the att_err concept and rewrite all errors to pass back three cmd_err (the inverse of is_valid, True if there is an error, already being passed), is_att (i.e. "is attemptable"), and err_txt (the text of the error).
+	Step 3) Eliminate the att_err concept and rewrite all errors to pass back three attribs: cmd_err (the inverse of is_valid, True if there is an error, already being passed), is_att (i.e. "is attemptable"), and err_txt (the text of the error).
 	Step 4) in validate(), if (cmd_err and note is_att), buffer err_txt. Then return is_valid (not cmd_err), is_att, and err_txt to app_main()
 	Step 5) in app_main, if not (is_valid or is_att), no time passes and input is returned to the user. Alternatively, if (is_valid or is_att) then pre_act() and auto_act() run. pre_act() passes back cmd_override. If (not cmd_override and is_att) then err_txt gets buffered. If is_valid, then cmd_exe() runs.
 
 	Whew! That was a lot! But the result is that we now have a default (but over-rideable!) condition that a command must be valid for a condition to be true - and there is no order-of-operations dependency on whether an error is attemptable. The solution is proven out for the guard_goblin case and works well.
 
 	Alas, there remeains one gap in the solution. Not quite all error text is passed out of error(). A deep dive into error() reveals that there are standard errors that apply to nearly every verb method (e.g. is the obj in scope?) and these have functions of their own which are then called by the verb methods. It was already a huge pain to update every verb method to pass back err_txt (rather than buffer it locally) and I'd already decided that standard errors were never attemptable - and there were some solvable buy annoying logistical issues... so I chose not to pass back err_txt for standard errors. Instead, those are all buffered locally. Surely, someday, I will come to regret this and will need to go back and fix it... but for now, the error sub-system is as updated as it's going to be - praise be!
+
+UPDATE 4: Implementation Mistakes & Refinement
+	Philosphically, I still like the is_valid_reqd solution to this issue... but several issues have come up
+	1) I was not actually properly implementing map.chk_valid_dir() [a parenthesis issue] - hence I later learned that eliminating the unreachable rooms made it impossible to run the moat_mach()... which in turn lead to my q-enabled discoverys that every single condition had to pass **kwargs back up to TrueCond for evaluation. I did this and it works but, obviously, the solution feels a lot more heavey-weight now.
+	2) While implementing "is_valid_reqd = False" for all of the moat_mach conditions, it became clear to me that is_valid_reqd is not really associate with the conditions themselves... it is really associated with the machine trigger (e.g. 'go east') - which is hardwired to the machine. So I should move is_valid_reqd to the machine itself and evaluate is_valid_reqd in run_mach. This should greatly simplify condition creation and evaluation. I haven't implemented this change yet - wish me luck!
+
 
 
 * Error Sub-System

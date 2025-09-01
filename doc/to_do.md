@@ -989,12 +989,21 @@ End Date:
 							- FINDING: confirmmed... I got rid of the fake rooms a while ago
 							- FINDING: this was the double error that got me:
 							- FINDING: rooms removed while map.chk_valid_dir() wasn't working right
-						- INPROC: review existing is_valid_reqd state for iron_portcullis
+						- DONE: review existing is_valid_reqd state for iron_portcullis
 							- F: true_cond_valid_not_reqd of class TrueCond has is_valid_reqd = False (me)
 							- F: no_weap_in_hand_cond of class WeaponInHand has is_valid_reqd = False (q)
-							- TBD: add **kwargs (2x) to all Condition classes
-							- TBD: figure out how to pass is_valid_reqd = False for compound cond
-							- TBD: solve last 2 moat cases
+							- DONE: add **kwargs (2x) to all Condition classes
+							- DONE: figure out how to pass is_valid_reqd = False for compound cond
+								- FINDING: in AutoMachMixIn.run_mach() , both cond must just eval True
+							- DONE: solve moat with weapon (first try) case
+							- DONE: solve moat with weapon (repeat) case
+							- DONE: test all moat cases
+						- TBD: mach is_valid_reqd fix-it
+							- FINDING: today, the is_valid_reqd bool lives in machine conditions
+							- FINDING: bool really refers to *triggers* which are hardwared to the mach
+							- IDEA: need to move is_valid_reqd to machine level
+							- IDEA: this will simplify conditions and condition evaluation
+							- TBD: move is_valid_reqd to machine trigger level
 					- TBD: clean-up app_main() and map_class() and others
 				- IDEA: make sure it all works together
 		- TBD: general
@@ -1021,6 +1030,11 @@ End Date:
 	- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
 	- IDEA: see thoughts on light in to-do notes below
 - TBD: major interpreter update!
+
+
+*** major updates in separate git merges ***
+
+
 
 
 *** misc someday / maybe fixes ***
