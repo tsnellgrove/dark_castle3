@@ -1003,6 +1003,9 @@ End Date:
 							- FINDING: bool really refers to *triggers* which are hardwared to the mach
 							- IDEA: need to move is_valid_reqd to machine level
 							- IDEA: this will simplify conditions and condition evaluation
+							- IDEA: make is_valid_reqd a bool attrib of ProtoMachMixIn
+							- IDEA: in pre_act(), pass is_valid_reqd to trig_check() and test there
+							- TBD: ask Q if she agrees with approach
 							- TBD: move is_valid_reqd to machine trigger level
 					- TBD: clean-up app_main() and map_class() and others
 				- IDEA: make sure it all works together
