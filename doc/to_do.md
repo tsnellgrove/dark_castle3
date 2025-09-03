@@ -1005,7 +1005,13 @@ End Date:
 							- IDEA: this will simplify conditions and condition evaluation
 							- IDEA: make is_valid_reqd a bool attrib of ProtoMachMixIn
 							- IDEA: in pre_act(), pass is_valid_reqd to trig_check() and test there
-							- TBD: ask Q if she agrees with approach
+							- DONE: ask Q if she agrees with approach => Q agrees!
+							- Q_REC: The implementation would be:
+								- Add is_valid_reqd to ProtoMachMixIn
+								- Update trig_check() to handle the validation logic
+								- Modify pre_action() to pass is_valid to trig_check()
+								- Clean up all the **kwargs from the condition classes
+								- Update your machine definitions to use the new parameter
 							- TBD: move is_valid_reqd to machine trigger level
 					- TBD: clean-up app_main() and map_class() and others
 				- IDEA: make sure it all works together
