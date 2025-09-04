@@ -10,11 +10,12 @@ from cleesh.class_std.interactive_class_def import ContainerFixedSimple
 
 ### classes
 class ProtoMachMixIn(object):
-	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled):
+	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, **kwargs):
 		self._mach_state = mach_state # machine state variable; can be bool or int 
 		self._trigger_type = trigger_type # pre_act_cmd, pre_act_timer, post_act_cmd, post_act_switch, auto_act, auto_switch_reset
 		self._alert_anchor = alert_anchor # hero must be in same room as alert_anchor to get mach updates
 		self._is_enabled = is_enabled # bool indicating whether mach is enabled to run
+		self._is_valid_reqd = kwargs.get('is_valid_reqd', True) # bool indicating whether machine requires valid command to trigger
 		""" ProtoMachMixIn provides the core machine attributes. All other machine classes inherit from it. 
 		"""
 
@@ -46,6 +47,14 @@ class ProtoMachMixIn(object):
 	@is_enabled.setter
 	def is_enabled(self, new_val):
 		self._is_enabled = new_val
+
+	@property
+	def is_valid_reqd(self):
+		return self._is_valid_reqd
+
+	@is_valid_reqd.setter
+	def is_valid_reqd(self, new_val):
+		self._is_valid_reqd = new_val
 
 	# *** class identity methods ***
 	def is_mach(self):
@@ -86,9 +95,9 @@ class TrigMixIn(object):
 
 
 class Timer(ProtoMachMixIn, Invisible):
-	def __init__(self, name, trigger_type, mach_state, alert_anchor, is_enabled, is_active, timer_max):
+	def __init__(self, name, trigger_type, mach_state, alert_anchor, is_enabled, is_active, timer_max, **kwargs):
 		Invisible.__init__(self, name)
-		ProtoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled) # mach_state = timer_count		
+		ProtoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled, **kwargs) # mach_state = timer_count		
 		self._is_active = is_active # bool that indicates whether Timer obj is active [replace w/ mehthod]
 		self._timer_max = timer_max # int; number that timer counts up to
 		""" Timer is the most primitive non-MixIn machine class - inheriting from ProtoMachMixIn and Invisible.
@@ -152,10 +161,10 @@ class Timer(ProtoMachMixIn, Invisible):
 
 
 class Warning(ProtoMachMixIn, TrigMixIn, Invisible):
-	def __init__(self, name, trigger_type, mach_state, alert_anchor, is_enabled, trig_vals_lst, warn_max):
+	def __init__(self, name, trigger_type, mach_state, alert_anchor, is_enabled, trig_vals_lst, warn_max, **kwargs):
 		Invisible.__init__(self, name)
 		TrigMixIn.__init__(self, trig_vals_lst)
-		ProtoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled) # mach_state = warn_count
+		ProtoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled, **kwargs) # mach_state = warn_count
 		self._warn_max = warn_max # int; number that warning counts up to
 		""" Warning is a primitive non-MixIn machine class - inheriting from ProtoMachMixIn, TrigMixIn, 
 		and Invisible. It has one attribute (warn_max) and overrides run_mach(). 
@@ -191,8 +200,8 @@ class Warning(ProtoMachMixIn, TrigMixIn, Invisible):
 
 
 class AutoMachMixIn(ProtoMachMixIn):
-	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst):
-		ProtoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled)
+	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst, **kwargs):
+		ProtoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled, **kwargs)
 		self._cond_lst = cond_lst # list of condition obj to test for; should cover all cases
 		self._result_lst = result_lst # list of possible result obj ordered by assciated condition
 		""" AutoMachMixIn inherits from ProtoMachMixIn and adds attributes for conditions and results. 
@@ -236,14 +245,14 @@ class AutoMachMixIn(ProtoMachMixIn):
 		return False, 'pass_result'
 
 class InvisAutoMach(AutoMachMixIn, Invisible):
-	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst):
+	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst, **kwargs):
 		Invisible.__init__(self, name)
-		AutoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst)
+		AutoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst, **kwargs)
 
 class WeaponAutoMach(AutoMachMixIn, Weapon):
-	def __init__(self, name, full_name, root_name, descript_key, writing, weight, desc_lst, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst):
+	def __init__(self, name, full_name, root_name, descript_key, writing, weight, desc_lst, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst, **kwargs):
 		Weapon.__init__(self, name, full_name, root_name, descript_key, writing, weight, desc_lst)
-		AutoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst)
+		AutoMachMixIn.__init__(self, mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst, **kwargs)
 
 	def disp_cond(self, gs):
 		""" Displays object-specific conditions. Used in examine().
@@ -255,26 +264,26 @@ class WeaponAutoMach(AutoMachMixIn, Weapon):
 			return
 
 class TrigMachMixIn(AutoMachMixIn, TrigMixIn):
-	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst):
-		AutoMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst)
+	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst, **kwargs):
+		AutoMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, cond_lst, result_lst, **kwargs)
 		TrigMixIn.__init__(self, trig_vals_lst)
 		""" TrigMachMixIn inherits from AutoMachMixIn and TrigMixIn. All command-triggered machines inherit 
 		from it.
 		"""
 
 class InvisTrigMach(TrigMachMixIn, Invisible):
-	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst):
+	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst, **kwargs):
 		Invisible.__init__(self, name)
-		TrigMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst)
+		TrigMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst, **kwargs)
 
 class ItemTrigMach(TrigMachMixIn, Item):
-	def __init__(self, name, full_name, root_name, descript_key, writing, weight, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst):
+	def __init__(self, name, full_name, root_name, descript_key, writing, weight, mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst, **kwargs):
 		Item.__init__(self, name, full_name, root_name, descript_key, writing, weight)
-		TrigMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst)
+		TrigMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst, **kwargs)
 
 class SwitchMachMixIn(TrigMachMixIn):
-	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst):
-		TrigMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst)
+	def __init__(self, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst, **kwargs):
+		TrigMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_vals_lst, cond_lst, result_lst, **kwargs)
 		self._trig_switch = trig_switch # switch obj that triggers the machine
 		""" SwitchMachMixIn inherits from TrigMachMixIn and adds an attribute for the switch obj that
 		acts as a trigger. All switch-triggered machines inherit from it.
@@ -286,11 +295,11 @@ class SwitchMachMixIn(TrigMachMixIn):
 		return self._trig_switch
 
 class InvisSwitchMach(SwitchMachMixIn, Invisible):
-	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst):
+	def __init__(self, name, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst, **kwargs):
 		Invisible.__init__(self, name)
-		SwitchMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst)
+		SwitchMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst, **kwargs)
 
 class ContainerFixedSimpleSwitchMach(SwitchMachMixIn, ContainerFixedSimple):
-	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst):
+	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep, mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst, **kwargs):
 		ContainerFixedSimple.__init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep)
-		SwitchMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst)
+		SwitchMachMixIn.__init__(self,  mach_state, trigger_type, alert_anchor, is_enabled, trig_switch, trig_vals_lst, cond_lst, result_lst, **kwargs)

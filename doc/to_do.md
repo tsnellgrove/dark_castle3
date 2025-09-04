@@ -1012,7 +1012,9 @@ End Date:
 								- Modify pre_action() to pass is_valid to trig_check()
 								- Clean up all the **kwargs from the condition classes
 								- Update your machine definitions to use the new parameter
-							- TBD: move is_valid_reqd to machine trigger level
+							- INPROC: work w/ Q to move is_valid_reqd to machine trigger level
+								- DONE: **kwargs / is_valid_reqd = True added to ProtoMachMixIn
+								- TBD: update trig_check()
 					- TBD: clean-up app_main() and map_class() and others
 				- IDEA: make sure it all works together
 		- TBD: general
