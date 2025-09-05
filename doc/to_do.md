@@ -1014,7 +1014,9 @@ End Date:
 								- Update your machine definitions to use the new parameter
 							- INPROC: work w/ Q to move is_valid_reqd to machine trigger level
 								- DONE: **kwargs / is_valid_reqd = True added to ProtoMachMixIn
-								- TBD: update trig_check()
+								- DONE: update trig_check() and pre_act(), post_act(), auto_act()
+								- TBD:
+								- TBD: elim is_valid from run_mach() and cond_check() ??
 					- TBD: clean-up app_main() and map_class() and others
 				- IDEA: make sure it all works together
 		- TBD: general
