@@ -951,8 +951,8 @@ End Date:
 					- DONE: implement for elegant_pedestal in throne_room
 				- CANCEL: use init_desc w/ control_panel in antechamber ?
 					- DECISION: tempting out of "purity of design" but nt better than current approach
-			- INPROC: review / play-through existing noun descriptions
-				- INPROC: fix 'walk into wall' error
+			- DONE: review / play-through existing noun descriptions
+				- DONE: fix 'walk into wall' error
 					- FINDING: problem appears to be in map.chk_valid_dir()
 					- DONE: re-write as nested for loop and add print statements to troubleshoot
 					- FINDING: walk-into-wall error is gone but now moat_mach doesn't run??
@@ -983,7 +983,7 @@ End Date:
 							Implementation: Added **kwargs support to WeaponInHandCond constructor to accept the is_valid_reqd parameter and pass it to the parent TrueCond class.
 
 							Now when you go east from the Entrance without a weapon, cmd_override correctly evaluates to True, triggering the death result as intended."
-					- INPROC: new fixes
+					- DONE: new fixes
 						- DONE: probably the q fix means I don't need pretend rooms anymore?
 							- NOTE: i think I got rid of these already - double check this
 							- FINDING: confirmmed... I got rid of the fake rooms a while ago
@@ -1012,13 +1012,19 @@ End Date:
 								- Modify pre_action() to pass is_valid to trig_check()
 								- Clean up all the **kwargs from the condition classes
 								- Update your machine definitions to use the new parameter
-							- INPROC: work w/ Q to move is_valid_reqd to machine trigger level
+							- DONE: work w/ Q to move is_valid_reqd to machine trigger level
 								- DONE: **kwargs / is_valid_reqd = True added to ProtoMachMixIn
 								- DONE: update trig_check() and pre_act(), post_act(), auto_act()
-								- TBD:
-								- TBD: elim is_valid from run_mach() and cond_check() ??
-					- TBD: clean-up app_main() and map_class() and others
-				- IDEA: make sure it all works together
+								- DONE: add is_valid_reqd as attrib for moat_mach(), goblin_attack() 
+								- DONE: elim is_valid from run_mach() and cond_check() ??
+								- DONE: goblin_attack_mach() true_cond_no_valid_reqd => true_cond ??
+								- INPROC: testing
+									- FINDING: invalid cmds (entrance go e, antichamb go n) failing
+									- DONE: troubleshoot w/ Q => I had forgotten to run game_update()
+									- DONE: test cup_of_tea()
+					- DONE: clean-up app_main() and map_class() and others
+				- DONE: update is_valid_reqd in doc.md
+		- TBD: final playthrough room 4 to make sure it all works together
 		- TBD: general
 			- TBD: search on all room names to ensure consistently capitalized
 			- TBD: review final title => king vs. baron

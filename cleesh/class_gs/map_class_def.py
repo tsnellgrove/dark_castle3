@@ -193,24 +193,17 @@ class Map(Invisible):
 	def chk_valid_dir(self, room, dir):
 		""" Evaluates whether going direction dir from room is viable.
 		"""
-#		for room_pair in self.map_lst:
 		for room_lst in room_key_lst:
 			for room_pair in self.map_lst:
-#				print(f"start_room = {room_pair[room_lst[0]]}, dir = {room_pair[room_lst[1]]}, dest_room = {room_pair[room_lst[2]]}")
-#				return (any(room_pair[room_lst[0]] == room and room_pair[room_lst[1]] == dir 
-#					  	and room_pair[room_lst[2]] != 'unreachable')
-#						for room_pair in self.map_lst for room_lst in room_key_lst)
-
 				if ((room_pair[room_lst[0]] == room) and (room_pair[room_lst[1]] == dir) and
 						(room_pair[room_lst[2]] != 'unreachable')):
-#							print("chk_valid_dir() returning True")
 							return True
-#		print("chk_valid_dir() returning False")
 		return False
 
-#		return (any(room_pair[room_lst[0]] == room and room_pair[room_lst[1]] == dir 
-#			  	and room_pair[room_lst[2]] != 'unreachable')
-#				for room_pair in self.map_lst for room_lst in room_key_lst)
+##		Old Version
+##		return (any(room_pair[room_lst[0]] == room and room_pair[room_lst[1]] == dir 
+##			  	and room_pair[room_lst[2]] != 'unreachable')
+##				for room_pair in self.map_lst for room_lst in room_key_lst)
 
 	def get_door(self, room, dir):
 		""" Returns room_pair['door'] given a starting room and a direction where room_pair['door'] can be either a door object or a string describing the open passage. Is intended to be run after chk_valid_dir() and will produce an error if run on an invalid route.

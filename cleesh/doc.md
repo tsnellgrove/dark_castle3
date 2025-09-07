@@ -383,8 +383,9 @@ UPDATE 3 - Next Gen Errors:
 
 UPDATE 4: Implementation Mistakes & Refinement
 	Philosphically, I still like the is_valid_reqd solution to this issue... but several issues have come up
-	1) I was not actually properly implementing map.chk_valid_dir() [a parenthesis issue] - hence I later learned that eliminating the unreachable rooms made it impossible to run the moat_mach()... which in turn lead to my q-enabled discoverys that every single condition had to pass **kwargs back up to TrueCond for evaluation. I did this and it works but, obviously, the solution feels a lot more heavey-weight now.
+	1) I was not actually properly implementing map.chk_valid_dir() [a parenthesis issue] - hence I later learned that eliminating the unreachable rooms made it impossible to run the moat_mach()... which in turn lead to my q-enabled discovery that every single condition had to pass **kwargs back up to TrueCond for evaluation. I did this and it works but, obviously, the solution feels a lot more heavey-weight now.
 	2) While implementing "is_valid_reqd = False" for all of the moat_mach conditions, it became clear to me that is_valid_reqd is not really associate with the conditions themselves... it is really associated with the machine trigger (e.g. 'go east') - which is hardwired to the machine. So I should move is_valid_reqd to the machine itself and evaluate is_valid_reqd in run_mach. This should greatly simplify condition creation and evaluation. I haven't implemented this change yet - wish me luck!
+	3) With Q's help, I refactored the is_valid_reqd check from cond_check to trig_check in record time. The new soluiton is working and is a lot cleaner. We now have a clear separation of duties: Triggers are related to player commands and Conditions are related to game state.
 
 
 

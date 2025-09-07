@@ -174,13 +174,13 @@ take_glass_warning = Warning('take_glass_warning',
 # *** conditions ***
 # *** note: obj.open (if locked) and room.go (w/ closed door in way) must be tested for success ***
 true_cond = TrueCond('true_cond')
-true_cond_valid_not_reqd = TrueCond('true_cond', is_valid_reqd = False)
+# true_cond_valid_not_reqd = TrueCond('true_cond')
 crown_not_worn_cond = WornCond('crown_not_worn_cond', royal_crown, 'burt_temp', False)
 biscuits_in_hedgehog_hand_cond = ItemInHandCond('biscuits_in_hedgehog_hand_cond', baked_biscuit, 'royal_hedgehog_temp', True)
 axe_not_in_goblin_hand_cond = ItemInHandCond('axe_not_in_goblin_hand_cond', grimy_axe, 'guard_goblin_temp', False)
-sword_in_hand_cond = ItemInHandCond('sword_in_hand_cond', 'shiny_sword_temp', 'burt_temp', True, is_valid_reqd = False)
+sword_in_hand_cond = ItemInHandCond('sword_in_hand_cond', 'shiny_sword_temp', 'burt_temp', True)
 silver_key_given_cond = ObjInInvCond('silver_key_given_cond', silver_key, 'royal_hedgehog_temp', False)
-no_weap_in_hand_cond = WeaponInHandCond('no_weap_in_hand_cond', 'burt_temp', False, is_valid_reqd = False)
+no_weap_in_hand_cond = WeaponInHandCond('no_weap_in_hand_cond', 'burt_temp', False)
 sword_on_floor = ObjOnRmFlrCond('sword_on_floor', 'gatehouse_temp', 'shiny_sword_temp', True) 
 sword_not_on_floor = ObjOnRmFlrCond('sword_not_on_floor', 'gatehouse_temp', 'shiny_sword_temp', False)
 not_in_throne_room_cond = ObjInRmCond('not_in_throne_room_cond', 'throne_room_temp', 'burt_temp', False)
@@ -188,8 +188,8 @@ hedgehog_not_in_world_cond = ObjInWorldCond('hedgehog_not_in_world_cond', 'royal
 goblin_in_world_cond = ObjInWorldCond('goblin_in_world_cond', 'guard_goblin_temp', True)
 goblin_not_in_world_cond = ObjInWorldCond('goblin_not_in_world_cond', 'guard_goblin_temp', False)
 broach_dispensed_cond = MachStateCond('broach_dispensed_cond', True, True)
-crown_not_dispensed_cond = MachStateCond('crown_not_dispensed_cond', False, True, is_valid_reqd = False)
-crown_dispensed_cond = MachStateCond('crown_dispensed_cond', True, True, is_valid_reqd = False)
+crown_not_dispensed_cond = MachStateCond('crown_not_dispensed_cond', False, True)
+crown_dispensed_cond = MachStateCond('crown_dispensed_cond', True, True)
 panel_not_dispensed_cond = MachStateCond('panel_not_dispensed_cond', False, True)
 hedgehog_descript_updated_cond = MachStateCond('hedgehog_descript_updated_cond', True, True)
 hedgehog_eats_timer_active_cond = TimerActiveCond('hedgehog_eats_timer_active_cond', hedgehog_eats_timer, True) # hedgehog is distracted
@@ -313,8 +313,9 @@ goblin_attack_mach = InvisTrigMach('goblin_attack_mach', None,
 		[['examine', 'iron_portcullis'], ['examine', 'alcove'], ['examine', 'grimy_axe'], 
    		['take', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north'],
 		['unlock', '*', 'iron_portcullis']], 
-		[true_cond_valid_not_reqd], 
-		[goblin_attacks_result]
+		[true_cond], 
+		[goblin_attacks_result],
+		is_valid_reqd=False
 		) # mach_state == None
 
 entrance_moat_mach = InvisTrigMach('entrance_moat_mach', False, 
@@ -323,7 +324,8 @@ entrance_moat_mach = InvisTrigMach('entrance_moat_mach', False,
 #		[no_weap_in_hand_cond, crown_not_dispensed_cond, crown_dispensed_cond],
 #		[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]
 		[no_weap_in_hand_cond, [crown_not_dispensed_cond, sword_in_hand_cond], crown_not_dispensed_cond, crown_dispensed_cond],
-		[die_in_moat_result, moat_get_crown_result2, moat_get_crown_result, moat_croc_scared_result]
+		[die_in_moat_result, moat_get_crown_result2, moat_get_crown_result, moat_croc_scared_result],
+		is_valid_reqd=False
 		) # mach_state == got_crown
 
 hedgehog_eats_mach = InvisTrigMach('hedgehog_eats_mach', None, 

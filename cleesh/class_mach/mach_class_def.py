@@ -226,10 +226,10 @@ class AutoMachMixIn(ProtoMachMixIn):
 			if isinstance(cond, list):
 				cond_val = True
 				for cond_element in cond:
-					if cond_element.cond_check(gs, self.mach_state, is_valid) == False:
+					if cond_element.cond_check(gs, self.mach_state) == False:
 						cond_val = False
 			else:
-				cond_val = cond.cond_check(gs, self.mach_state, is_valid)
+				cond_val = cond.cond_check(gs, self.mach_state)
 			if cond_val:
 				result = self.result_lst[idx]
 				if isinstance(result, list):
