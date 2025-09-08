@@ -998,9 +998,9 @@ End Date:
 							- DONE: solve moat with weapon (first try) case
 							- DONE: solve moat with weapon (repeat) case
 							- DONE: test all moat cases
-						- TBD: mach is_valid_reqd fix-it
+						- DONE: mach is_valid_reqd fix-it
 							- FINDING: today, the is_valid_reqd bool lives in machine conditions
-							- FINDING: bool really refers to *triggers* which are hardwared to the mach
+							- FINDING: bool refers to *triggers* which are hardwared to the mach
 							- IDEA: need to move is_valid_reqd to machine level
 							- IDEA: this will simplify conditions and condition evaluation
 							- IDEA: make is_valid_reqd a bool attrib of ProtoMachMixIn
@@ -1018,25 +1018,25 @@ End Date:
 								- DONE: add is_valid_reqd as attrib for moat_mach(), goblin_attack() 
 								- DONE: elim is_valid from run_mach() and cond_check() ??
 								- DONE: goblin_attack_mach() true_cond_no_valid_reqd => true_cond ??
-								- INPROC: testing
+								- DONE: testing
 									- FINDING: invalid cmds (entrance go e, antichamb go n) failing
 									- DONE: troubleshoot w/ Q => I had forgotten to run game_update()
 									- DONE: test cup_of_tea()
 					- DONE: clean-up app_main() and map_class() and others
 				- DONE: update is_valid_reqd in doc.md
-		- TBD: final playthrough room 4 to make sure it all works together
-		- TBD: general
-			- TBD: search on all room names to ensure consistently capitalized
-			- TBD: review final title => king vs. baron
+		- DONE: general
+			- DONE: search on all room names to ensure consistently capitalized
+			- DONE: review final title => king vs. baron
+			- DECISION: should obj.full_name be de-captialized? => YES
+			- DONE: clean up cleesh static_gbl, clean-up game_static_gbl
 		- TBD: additional fixes:
 			- TBD: ask q for help with these
 			- TBD: make inventory description text rare (20%?)			
 			- TBD: improve item listings for 'i' and 'x' (use a and an for single items)
 			- TBD: for 'i' and 'x', ensure that portable container contents are listed with port con
-			- TBD: should obj.full_name be de-captialized?
-			- TBD: clean up cleesh static_gbl, clean-up game_static_gbl
 		- TBD: minor features:
 			- TBD: implement 'jump' (jump on drawbridge in Entrance = go over side ?)
+		- TBD: final playthrough room 4 to make sure it all works together
 
 - TBD: git merge
 
