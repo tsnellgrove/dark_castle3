@@ -1029,9 +1029,15 @@ End Date:
 			- DONE: review final title => king vs. baron
 			- DECISION: should obj.full_name be de-captialized? => YES
 			- DONE: clean up cleesh static_gbl, clean-up game_static_gbl
-		- TBD: additional fixes:
-			- TBD: ask q for help with these
-			- TBD: make inventory description text rare (20%?)			
+		- INPROC: additional fixes (ask q for help):
+			- INPROC: make inventory description text rare (20%?)
+				- TBD: review 'score' and 'title' to see how to buff dict within dict
+				- TBD: put descriptions in dict in game_static_gbl (key = #, value = txt)
+				- TBD: use len(hero_descript_dict) to get hero_descript_count
+				- TBD: rename core.hero_descript_count => core.hero_descript_pct
+				- TBD: in base_class() rand_max = ((1/hero_descript_pct) * hero_descript_count)
+				- TBD: in base_class() use 'try' with buff_f() to enable default response
+				- TBD: clean up old hero descriptions in game_static_dict
 			- TBD: improve item listings for 'i' and 'x' (use a and an for single items)
 			- TBD: for 'i' and 'x', ensure that portable container contents are listed with port con
 		- TBD: minor features:

@@ -277,7 +277,7 @@ game_static_dict = {
 
 	'antechamber_with_panel' :"You are standing in a what feels more like a wide, tall-ceilinged corridor than a room. Apparently this is the room-before-the-room, the pre-room before the really, really grand room that comes after it. If so, the next room must be quite something because back in it's day this spot was clearly impressive. Alas, like all of the castle it has fallen on dark times and now feels more sinister than grand. The east and west walls are bare stone with exits to the north and south. \n\nNear the north exit on the west wall there is a small alcove which contains a control panel.",
 
-#		'hedgehog_guard_result' : "The moment you approach the Shiny Sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's Fierce Teeth.",
+#	'hedgehog_guard_result' : "The moment you approach the Shiny Sword the territorial Royal Hedgehog springs forward, blocks your path, and bares it's Fierce Teeth.",
 	'fed_hedgehog_keeps_sword_result' : "The Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.",
 	'fed_hedgehog_loses_sword_result' : "The Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.",
 	'hedgehog_desc_smug' : "The Royal Hedgehog is looking svelte and chipper. It has the swagger of a hedgehog that has just scored a meal of Stale Biscuits and still has it's favorite shiny possession.",
