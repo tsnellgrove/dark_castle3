@@ -475,7 +475,8 @@ throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', N
 core = Core(
 		'core', # name
 		burt, # hero
-		5, # hero_descript_count
+#		5, # hero_descript_count
+		0.2, # hero_descript_pct
         0, # move_count
         False, # is_debug
 		{}, # str_to_obj_dict

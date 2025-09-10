@@ -126,7 +126,9 @@ class ViewOnly(Writing):
 		if self.get_title_str(gs) is not None:
 			gs.io.buffer(self.get_title_str(gs))
 		if self == gs.core.hero:
-			rand_max = gs.core.hero_descript_count - 1
+			hero_descript_count = len(gs.io.get_dict('hero_descript_dict'))
+			rand_max = ((1/gs.core.hero_descript_pct) * hero_descript_count) - 1
+#			rand_max = gs.core.hero_descript_count - 1
 			gs.io.buff_d(f"{self.descript_key}_{random.randint(0, rand_max)}", self.full_name)
 		else:
 			gs.io.buff_d(self.descript_key, self.full_name)

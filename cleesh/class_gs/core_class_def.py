@@ -8,10 +8,12 @@ from cleesh.class_std.invisible_class_def import Invisible
 
 ### classes ###
 class Core(Invisible):
-    def __init__(self, name, hero, hero_descript_count, move_count, is_debug, str_to_obj_dict, has_session_vars, univ_invis_lst):
+#    def __init__(self, name, hero, hero_descript_count, move_count, is_debug, str_to_obj_dict, has_session_vars, univ_invis_lst):
+    def __init__(self, name, hero, hero_descript_pct, move_count, is_debug, str_to_obj_dict, has_session_vars, univ_invis_lst):
         super().__init__(name)
         self._hero = hero # the Creature class object that is the hero of the game
-        self._hero_descript_count = hero_descript_count # tracks the number of descriptions available for the hero
+#        self._hero_descript_count = hero_descript_count # tracks the number of descriptions available for the hero
+        self._hero_descript_pct = hero_descript_pct # the percent of occassions a description is showin on inventory and examine
         self._move_count = move_count # tracks the number of valid moves made by the player
         self._is_debug = is_debug # a boolean that defines whether the game is in debug mode (default = False)
         self._str_to_obj_dict = str_to_obj_dict # dict that enables look-up of game obj via name str keys
@@ -25,9 +27,13 @@ class Core(Invisible):
     def hero(self):
         return self._hero
 
+#    @property
+#    def hero_descript_count(self):
+#        return self._hero_descript_count
+
     @property
-    def hero_descript_count(self):
-        return self._hero_descript_count
+    def hero_descript_pct(self):
+        return self._hero_descript_pct
 
     @property
     def move_count(self):
