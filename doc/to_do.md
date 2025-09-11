@@ -1036,9 +1036,10 @@ End Date:
 				- DONE: use len(hero_descript_dict) to get hero_descript_count
 				- DONE: rename core.hero_descript_count => core.hero_descript_pct
 				- DONE: in base_class() rand_max = ((1/hero_descript_pct) * hero_descript_count)
-				- TBD: get dict_val; e.g. title = gs.io.get_dict_val('titles_by_score', title_score)
-				- TBD: in base_class() use 'try' with buff_f() to enable default response
-				- TBD: test
+				- DONE: get dict_val; e.g. title = gs.io.get_dict_val('titles_by_score', title_score)
+				- DONE: in base_class() use 'try' with buff_f() to enable default response
+				- DONE: test
+				- TBD: check in with Q
 				- TBD: clean up old hero descriptions in game_static_dict
 				- TBD: clean up gs.core(), both game_updates(), base()
 			- TBD: improve item listings for 'i' and 'x' (use a and an for single items)
