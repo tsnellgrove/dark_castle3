@@ -1030,7 +1030,7 @@ End Date:
 			- DECISION: should obj.full_name be de-captialized? => YES
 			- DONE: clean up cleesh static_gbl, clean-up game_static_gbl
 		- INPROC: additional fixes (ask q for help):
-			- INPROC: make inventory description text rare (20%?)
+			- DONE: make inventory description text rare (20%?)
 				- DONE: review 'score' and 'title' to see how to buff dict within dict
 				- DONE: put descriptions in dict in game_static_gbl (key = #, value = txt)
 				- DONE: use len(hero_descript_dict) to get hero_descript_count
@@ -1038,10 +1038,11 @@ End Date:
 				- DONE: in base_class() rand_max = ((1/hero_descript_pct) * hero_descript_count)
 				- DONE: get dict_val; e.g. title = gs.io.get_dict_val('titles_by_score', title_score)
 				- DONE: in base_class() use 'try' with buff_f() to enable default response
-				- DONE: test
-				- TBD: check in with Q
-				- TBD: clean up old hero descriptions in game_static_dict
-				- TBD: clean up gs.core(), both game_updates(), base()
+				- DONE: test DC
+				- DONE: Test Cup of Tea
+				- DONE: check in with Q
+				- DONE: clean up old hero descriptions in game_static_dict
+				- DONE: clean up gs.core(), both game_updates(), base()
 			- TBD: improve item listings for 'i' and 'x' (use a and an for single items)
 			- TBD: for 'i' and 'x', ensure that portable container contents are listed with port con
 		- TBD: minor features:

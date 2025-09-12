@@ -52,6 +52,10 @@ game_static_dict = {
 
 #	'give' : {('royal_hedgehog', 'shiny_sword') : 5},
 
+	'hero_descript_dict' : {
+		0 : "You give yourself a self-concious once-over: at age 19 and the youngest daughter of Ethan Brewer, the prosperous owner of the town's busiest pub, you should be well on your way towards matrimony - but to your mother's dismay and your own deep relief, it appears to be nowhere on the horrizon. Of course you're also the more homely and introverted daughter - more fond of books than boys they say. Your older sister, Chrissy, the queen of the viallage, has always had a dozzen men at a time circling her in eratic orbits, moths to the flame - so who would ever notice you?"
+	},
+
 	### one-word commands - non-objeects ###
 	'introduction' : "Hello!\n\nYou are Cecily-the-Serene - or at least you would be - if only you could manage to get a quiet moment to yourself to have a cup of tea. But as the youngest daughter of the family that runs the only pub in the village, quiet moments can be hard to come by!\n\nType 'help' for help.",
 	'credits' : "The A Cup of Tea game was written and programmed by Tom.",
@@ -91,9 +95,6 @@ game_static_dict = {
 	### creatures ###
 	
 	# feature_lst #
-
-	# creatures #
-	'cecily_0': "You give yourself a self-concious once-over: at age 19 and the youngest daughter of Ethan Brewer, the prosperous owner of the town's busiest pub, you should be well on your way towards matrimony - but to your mother's dismay and your own deep relief, it appears to be nowhere on the horrizon. Of course you're also the more homely and introverted daughter - more fond of books than boys they say. Your older sister, Chrissy, the queen of the viallage, has always had a dozzen men at a time circling her in eratic orbits, moths to the flame - so who would ever notice you?",
 
 	# creature feature_lst # 
 	'hand' : "Yes, that's your Hand. Small, like the rest of you, with long dexterous fingers with a knack for sewing but a few calouses from serving and daily chores. Your favorit Tea Cup is just the right size for this hand...", 

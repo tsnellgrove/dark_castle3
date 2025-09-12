@@ -128,18 +128,10 @@ class ViewOnly(Writing):
 		if self == gs.core.hero:
 			hero_descript_count = len(gs.io.get_dict('hero_descript_dict'))
 			rand_max = ((1/gs.core.hero_descript_pct) * hero_descript_count) - 1
-#			rand_max = gs.core.hero_descript_count - 1
-#			print(f"rand_max = {rand_max}, hero_descript_count = {hero_descript_count}, hero_descript_pct = {gs.core.hero_descript_pct}")
-#			print(f"hero_descript_1 = {gs.io.get_dict_val('hero_descript_dict', 1)}")
 			try:
-##				key = random.randint(0, rand_max)
-#				print(f"key = {key}")
-#				print(f"hero_descript for key = {gs.io.get_dict_val('hero_descript_dict', key)}")
-##				gs.io.buffer(gs.io.get_dict_val('hero_descript_dict', key))
 				gs.io.buffer(gs.io.get_dict_val('hero_descript_dict', random.randint(0, rand_max)))
 			except:
 				gs.io.buffer("You currently possess the following items:")
-#			gs.io.buff_d(f"{self.descript_key}_{random.randint(0, rand_max)}", self.full_name)
 		else:
 			gs.io.buff_d(self.descript_key, self.full_name)
 		if self.has_writing() or self.has_cond(gs) or self.has_contain(gs):
