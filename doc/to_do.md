@@ -1043,8 +1043,14 @@ End Date:
 				- DONE: check in with Q
 				- DONE: clean up old hero descriptions in game_static_dict
 				- DONE: clean up gs.core(), both game_updates(), base()
-			- TBD: improve item listings for 'i' and 'x' (use a and an for single items)
-			- TBD: for 'i' and 'x', ensure that portable container contents are listed with port con
+			- DONE: improve item listings for 'l' (with Q!):
+				- DONE: ensure that portable container contents are listed with port container "()"
+				- DONE: use and between 2nd to last and last item
+				- DONE: use a and an for single items
+			- TBD: improve item listings for 'i':
+				- TBD: ensure that portable container contents are listed with port container "()"
+				- TBD: use and between 2nd to last and last item
+				- TBD: use a and an for single items
 		- TBD: minor features:
 			- TBD: implement 'jump' (jump on drawbridge in Entrance = go over side ?)
 		- TBD: final playthrough room 4 to make sure it all works together

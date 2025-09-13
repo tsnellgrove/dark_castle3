@@ -226,11 +226,21 @@ class Room(ViewOnly):
 		if rm_item_lst:
 			gs.io.buff_cr()
 			gs.io.buff_cr()
-			room_txt_lst = [obj.full_name for obj in rm_item_lst]
-			room_item_str = ", ".join(room_txt_lst)
-			gs.io.buff_no_cr(f"The following items are here: {room_item_str}. ")
+			room_txt_lst = []
 			for obj in rm_item_lst:
-				obj.disp_contain(gs)
+				article = "an" if obj.full_name[0].lower() in "aeiou" else "a"
+				item_str = f"{article} {obj.full_name}"
+				if obj.has_contain(gs) and (not obj.is_openable() or obj.is_open):
+					contain_lst = [item.full_name for item in obj.get_top_lvl_inv_lst(gs)]
+					item_str += f" (containing {', '.join(contain_lst)})"
+				room_txt_lst.append(item_str)
+			if len(room_txt_lst) == 1:
+				room_item_str = room_txt_lst[0]
+			elif len(room_txt_lst) == 2:
+				room_item_str = f"{room_txt_lst[0]} and {room_txt_lst[1]}"
+			else:
+				room_item_str = ", ".join(room_txt_lst[:-1]) + f", and {room_txt_lst[-1]}"
+			gs.io.buff_no_cr(f"The following items are here: {room_item_str}. ")
 
 		# creatures
 		for creature in rm_creature_lst:
