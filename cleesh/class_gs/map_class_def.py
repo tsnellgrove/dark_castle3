@@ -176,7 +176,8 @@ class Map(Invisible):
 						passage_str = passage_var
 					else:
 						passage_str = passage_var.full_name
-					room_door_str += f"a {passage_str} to the {room_pair[room_lst[1]]}"
+					article = "an" if passage_str[0].lower() in "aeiou" else "a"
+					room_door_str += f"{article} {passage_str} to the {room_pair[room_lst[1]]}"
 					clause_count +=1
 					if clause_count == room_count:
 						break

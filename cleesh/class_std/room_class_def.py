@@ -216,7 +216,8 @@ class Room(ViewOnly):
 		for obj in rm_viewonly_lst:
 			gs.io.buff_cr()
 			gs.io.buff_cr()
-			gs.io.buff_no_cr(f"There is a {obj.full_name} here")
+			article = "an" if obj.full_name[0].lower() in "aeiou" else "a"
+			gs.io.buff_no_cr(f"There is {article} {obj.full_name} here")
 			if gs.core.hero.is_contained(gs) and gs.core.hero.get_contained_by(gs) == obj:
 				gs.io.buff_no_cr(" (which you are presently occupying)")
 			gs.io.buff_no_cr(". ")

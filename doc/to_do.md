@@ -1047,6 +1047,15 @@ End Date:
 				- DONE: ensure that portable container contents are listed with port container "()"
 				- DONE: use and between 2nd to last and last item
 				- DONE: use a and an for single items
+			- DONE: improve rest of 'l' UI
+				- DONE: fix articles for view_only listings
+				- DONE: fix articles for passages
+				- DONE: test
+				- DONE: clean-up map
+			- TBD: improve 'contain' UI (e.g. bag and coffer)
+				- TBD: articles
+				- TBD: and pattern
+				- TBD: port-contain contents in parenthesis (e.g. bag in coffer)
 			- TBD: improve item listings for 'i':
 				- TBD: ensure that portable container contents are listed with port container "()"
 				- TBD: use and between 2nd to last and last item
