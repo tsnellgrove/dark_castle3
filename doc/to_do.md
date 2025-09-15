@@ -1052,10 +1052,16 @@ End Date:
 				- DONE: fix articles for passages
 				- DONE: test
 				- DONE: clean-up map
-			- TBD: improve 'contain' UI (e.g. bag and coffer)
-				- TBD: articles
-				- TBD: and pattern
-				- TBD: port-contain contents in parenthesis (e.g. bag in coffer)
+			- INPROC: improve 'contain' UI (e.g. bag and coffer)
+				- DONE: articles
+				- DONE: and pattern
+				- DONE: port-contain contents in parenthesis (e.g. bag in coffer)
+				- TBD: testing
+					- TBD: intantiate larger lidded container and port container in Entrance
+					- TBD: detailed testing w/ x and l
+					- TBD: fix pre-list of port containers
+					- TBD: solve articles for innate plurals (e.g water => "qty of water" ???)
+				- TBD: clean-up Interactive
 			- TBD: improve item listings for 'i':
 				- TBD: ensure that portable container contents are listed with port container "()"
 				- TBD: use and between 2nd to last and last item
