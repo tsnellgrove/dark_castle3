@@ -132,7 +132,7 @@ random_mcguffin = Item('random_mcguffin', 'Random McGuffin', 'mcguffin', 'random
 baseball_cap = Garment('baseball_cap', 'Baseball Cap', 'cap', 'baseball_cap', None, 1, 'hat')
 cardboard_box = ContainerFixedLidded('cardboard_box', 'Cardboard Box', 'box', 'cardboard_box', None, [], 999, 2, 'in', False)
 small_barrel = ContainerPortableSimple('small_barrel', 'Small Barrel', 'barrel', 'small_barrel', None, 2, [], 5, 999, 'in')
-red_shoebox = ContainerPortableLidded('red_shoebox', 'Red Shoebox', 'shoebox', 'red_shoebox', None, 1, [], 3, 999, 'in', False)
+red_shoebox = ContainerPortableLidded('red_shoebox', 'Red Shoebox', 'shoebox', 'red_shoebox', None, 1, [], 5, 999, 'in', False)
 black_suitcase = ContainerPortableLockable('black_suitcase', 'Black Suitcase', 'suitcase', 'black_suitcase', None, 3, [], 7, 999, 'in', False, False, rusty_key)
 screen_door = DoorSimple('screen_door', 'Screen Door', 'door', 'screen_door', None, False)
 test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 999, 2, 'on', [wooden_shelf])
@@ -436,7 +436,7 @@ stone_coffer_init_desc = InitDesc('stone_coffer_init_desc', stone_coffer, False,
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
 		[dark_castle, moat, drawbridge, rusty_keyhole],
-		[burt, postbox, big_rock], 
+		[burt, postbox, big_rock, cardboard_box, red_shoebox, test_chair], 
 		[entrance_moat_mach, entrance_south_warn], 
 		[postbox_init_desc, big_rock_init_desc]
 	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst

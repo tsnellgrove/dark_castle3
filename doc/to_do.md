@@ -1056,10 +1056,13 @@ End Date:
 				- DONE: articles
 				- DONE: and pattern
 				- DONE: port-contain contents in parenthesis (e.g. bag in coffer)
-				- TBD: testing
-					- TBD: intantiate larger lidded container and port container in Entrance
-					- TBD: detailed testing w/ x and l
-					- TBD: fix pre-list of port containers
+				- INPROC: testing
+					- DONE: intantiate larger lidded container and port container in Entrance
+					- DONE: detailed testing w/ x and l
+					- DONE: fix pre-list of port containers
+					- TBD: add articles for port_containers (use full for-loop)
+					- TBD: retest l and x of box and shoebox
+					- TBD: fix error on look while in test_chair
 					- TBD: solve articles for innate plurals (e.g water => "qty of water" ???)
 				- TBD: clean-up Interactive
 			- TBD: improve item listings for 'i':
