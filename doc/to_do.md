@@ -1060,7 +1060,8 @@ End Date:
 					- DONE: intantiate larger lidded container and port container in Entrance
 					- DONE: detailed testing w/ x and l
 					- DONE: fix pre-list of port containers
-					- TBD: add articles for port_containers (use full for-loop)
+					- DONE: add articles for port_containers in containers (use full for-loop)
+					- TBD: add articles and 'and' / ',' for portable cont on room floor
 					- TBD: retest l and x of box and shoebox
 					- TBD: fix error on look while in test_chair
 					- TBD: solve articles for innate plurals (e.g water => "qty of water" ???)
