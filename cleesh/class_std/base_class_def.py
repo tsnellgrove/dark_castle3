@@ -115,6 +115,28 @@ class ViewOnly(Writing):
 	def get_title_str(self, gs):
 		return None
 
+
+	# *** verb methods ***
+
+	def get_disp_str(self, disp_lst, gs):
+		""" Returns a string listing the objects in disp_lst, formatted for display.
+		"""
+		txt_lst = []
+		for obj in self.disp_lst:
+			if obj == gs.core.hero:
+				continue
+			article = "an" if obj.full_name[0].lower() in "aeiou" else "a"
+			obj_str = f"{article} {obj.full_name}"
+			txt_lst.append(obj_str)
+		if len(txt_lst) == 1:
+			disp_str = txt_lst[0]
+		elif len(txt_lst) == 2:
+			disp_str = f"{txt_lst[0]} and {txt_lst[1]}"
+		else:
+			disp_str = ", ".join(txt_lst[:-1]) + f", and {txt_lst[-1]}"
+		return disp_str
+
+
 	# *** verb methods ***
 	def examine(self, gs, mode=None):
 		""" Describes an object.

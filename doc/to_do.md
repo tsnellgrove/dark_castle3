@@ -1061,6 +1061,8 @@ End Date:
 					- DONE: detailed testing w/ x and l
 					- DONE: fix pre-list of port containers
 					- DONE: add articles for port_containers in containers (use full for-loop)
+					- DONE: generalize display list w/ view_only.get_disp_str()
+					- TBD: test - l w/ chese in shoebox in box
 					- TBD: add articles and 'and' / ',' for portable cont on room floor
 					- TBD: retest l and x of box and shoebox
 					- TBD: fix error on look while in test_chair
