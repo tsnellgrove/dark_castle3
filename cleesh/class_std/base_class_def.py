@@ -122,7 +122,7 @@ class ViewOnly(Writing):
 		""" Returns a string listing the objects in disp_lst, formatted for display.
 		"""
 		txt_lst = []
-		for obj in self.disp_lst:
+		for obj in disp_lst:
 			if obj == gs.core.hero:
 				continue
 			article = "an" if obj.full_name[0].lower() in "aeiou" else "a"

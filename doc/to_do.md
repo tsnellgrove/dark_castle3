@@ -1062,7 +1062,9 @@ End Date:
 					- DONE: fix pre-list of port containers
 					- DONE: add articles for port_containers in containers (use full for-loop)
 					- DONE: generalize display list w/ view_only.get_disp_str()
-					- TBD: test - l w/ chese in shoebox in box
+					- DONE: fix look w/ cheese in shoebox in box
+					- TBD: fix look w/ empty shoebox in box
+					- TBD: clean-up view_only.get_disp_str()
 					- TBD: once working, create custom method for port_cont vs. seat, etc
 					- TBD: add articles and 'and' / ',' for portable cont on room floor
 					- TBD: retest l and x of box and shoebox

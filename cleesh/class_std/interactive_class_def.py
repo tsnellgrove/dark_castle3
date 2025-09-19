@@ -290,7 +290,7 @@ class ContainsMixIn(object):
 				article = "an" if obj.full_name[0].lower() in "aeiou" else "a"
 				obj_str = f"{article} {obj.full_name}"
 				if obj.has_contain(gs) and (not obj.is_openable() or obj.is_open):
-					obj_str = f"( containing {obj.get_disp_str(obj.get_top_lvl_inv_lst(gs), gs)})"
+					obj_str += f" (containing {obj.get_disp_str(obj.get_top_lvl_inv_lst(gs), gs)})"
 #					port_contain_lst = []
 #					for item in obj.get_top_lvl_inv_lst(gs):
 #						article = "an" if item.full_name[0].lower() in "aeiou" else "a"
