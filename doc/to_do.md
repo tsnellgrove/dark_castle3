@@ -1059,22 +1059,19 @@ End Date:
 				- INPROC: testing
 					- DONE: intantiate larger lidded container and port container in Entrance
 					- DONE: detailed testing w/ x and l
-					- DONE: fix pre-list of port containers
-					- DONE: add articles for port_containers in containers (use full for-loop)
-					- DONE: generalize display list w/ view_only.get_disp_str()
-					- DONE: fix look w/ cheese in shoebox in box
-					- TBD: fix look w/ empty shoebox in box
-					- TBD: clean-up view_only.get_disp_str()
-					- TBD: once working, create custom method for port_cont vs. seat, etc
-					- TBD: add articles and 'and' / ',' for portable cont on room floor
-					- TBD: retest l and x of box and shoebox
-					- TBD: fix error on look while in test_chair
-					- TBD: solve articles for innate plurals (e.g water => "qty of water" ???)
+				- DONE: fix pre-list of port containers
+				- DONE: add articles for port_containers in containers (use full for-loop)
+				- DONE: generalize display list w/ view_only.get_disp_str()
+				- DONE: fix look w/ cheese in shoebox in box
+				- DONE: fix look w/ empty shoebox in box
+				- DONE: clean-up ContainMixIn disp_contain()
+				- TBD: extract get_top_lev_disp_str() from Interactive.disp_contain() to viewonly
+				- TBD: call get_top_lev_disp_str() from Interactive.disp_contain()
+				- TBD: call get_top_lev_disp_str() from room.disp_contain() [view_only & items]
+				- TBD: test on special case of l / x while in seat
+				- TBD: extend to creature.disp_contain
+				- TBD: solve articles for innate plurals (e.g water => "qty of water" ???)
 				- TBD: clean-up Interactive
-			- TBD: improve item listings for 'i':
-				- TBD: ensure that portable container contents are listed with port container "()"
-				- TBD: use and between 2nd to last and last item
-				- TBD: use a and an for single items
 		- TBD: minor features:
 			- TBD: implement 'jump' (jump on drawbridge in Entrance = go over side ?)
 		- TBD: final playthrough room 4 to make sure it all works together

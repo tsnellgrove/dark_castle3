@@ -290,19 +290,10 @@ class ContainsMixIn(object):
 				article = "an" if obj.full_name[0].lower() in "aeiou" else "a"
 				obj_str = f"{article} {obj.full_name}"
 				if obj.has_contain(gs) and (not obj.is_openable() or obj.is_open):
-					obj_str += f" (containing {obj.get_disp_str(obj.get_top_lvl_inv_lst(gs), gs)})"
-#					port_contain_lst = []
-#					for item in obj.get_top_lvl_inv_lst(gs):
-#						article = "an" if item.full_name[0].lower() in "aeiou" else "a"
-#						item_str = f"{article} {item.full_name}"
-#						port_contain_lst.append(item_str)
-##					port_contain_lst = [item.full_name for item in obj.get_top_lvl_inv_lst(gs)]
-#					if len(port_contain_lst) == 1:
-#						obj_str += f" (containing {port_contain_lst[0]})"
-#					elif len(port_contain_lst) == 2:
-#						obj_str += f" (containing {port_contain_lst[0]} and {port_contain_lst[1]})"
-#					elif len(port_contain_lst) > 2:
-#						obj_str += f" (containing {', '.join(port_contain_lst[:-1])}, and {port_contain_lst[-1]})"
+					if obj.is_empty():
+						obj_str += " (empty)"
+					else:
+						obj_str += f" (containing {obj.get_disp_str(obj.get_top_lvl_inv_lst(gs), gs)})"
 				contain_txt_lst.append(obj_str)
 			if len(contain_txt_lst) == 1:
 				contain_obj_str = contain_txt_lst[0]
@@ -311,14 +302,6 @@ class ContainsMixIn(object):
 			else:
 				contain_obj_str = ", ".join(contain_txt_lst[:-1]) + f", and {contain_txt_lst[-1]}"
 			gs.io.buff_no_cr(f"The {self.full_name} contains: {contain_obj_str}. ")
-
-#			contain_txt_lst = [obj.full_name for obj in self.contain_lst if obj != gs.core.hero]
-#			if contain_txt_lst:
-#				contain_str = ", ".join(contain_txt_lst)
-#				gs.io.buff_no_cr(f"The {self.full_name} contains: {contain_str}. ")
-#			for obj in self.contain_lst:
-#				if obj != gs.core.hero:
-#					obj.disp_contain(gs)
 		return 
 
 
