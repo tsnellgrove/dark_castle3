@@ -231,9 +231,17 @@ class Room(ViewOnly):
 			for obj in rm_item_lst:
 				article = "an" if obj.full_name[0].lower() in "aeiou" else "a"
 				item_str = f"{article} {obj.full_name}"
+
 				if obj.has_contain(gs) and (not obj.is_openable() or obj.is_open):
-					contain_lst = [item.full_name for item in obj.get_top_lvl_inv_lst(gs)]
-					item_str += f" (containing {', '.join(contain_lst)})"
+					if obj.is_empty():
+						item_str += " (empty)"
+					else:
+						item_str += f" (containing {obj.get_disp_str(obj.get_top_lvl_inv_lst(gs), gs)})"
+
+##				if obj.has_contain(gs) and (not obj.is_openable() or obj.is_open):
+#					contain_lst = [item.full_name for item in obj.get_top_lvl_inv_lst(gs)]
+#					item_str += f" (containing {', '.join(contain_lst)})"
+##					item_str += f" (containing {obj.get_disp_str(obj.get_top_lvl_inv_lst(gs), gs)})"
 				room_txt_lst.append(item_str)
 			if len(room_txt_lst) == 1:
 				room_item_str = room_txt_lst[0]

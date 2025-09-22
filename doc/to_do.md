@@ -1065,6 +1065,8 @@ End Date:
 				- DONE: fix look w/ cheese in shoebox in box
 				- DONE: fix look w/ empty shoebox in box
 				- DONE: clean-up ContainMixIn disp_contain()
+				- DONE: re-use get_disp_str() in room for items
+				- TBD: re-use get_disp_str() in room for view_only
 				- TBD: extract get_top_lev_disp_str() from Interactive.disp_contain() to viewonly
 				- TBD: call get_top_lev_disp_str() from Interactive.disp_contain()
 				- TBD: call get_top_lev_disp_str() from room.disp_contain() [view_only & items]
