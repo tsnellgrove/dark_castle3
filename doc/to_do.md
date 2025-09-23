@@ -1056,7 +1056,7 @@ End Date:
 				- DONE: articles
 				- DONE: and pattern
 				- DONE: port-contain contents in parenthesis (e.g. bag in coffer)
-				- INPROC: testing
+				- DONE: testing
 					- DONE: intantiate larger lidded container and port container in Entrance
 					- DONE: detailed testing w/ x and l
 				- DONE: fix pre-list of port containers
@@ -1066,12 +1066,12 @@ End Date:
 				- DONE: fix look w/ empty shoebox in box
 				- DONE: clean-up ContainMixIn disp_contain()
 				- DONE: re-use get_disp_str() in room for items
-				- TBD: re-use get_disp_str() in room for view_only
-				- TBD: extract get_top_lev_disp_str() from Interactive.disp_contain() to viewonly
-				- TBD: call get_top_lev_disp_str() from Interactive.disp_contain()
-				- TBD: call get_top_lev_disp_str() from room.disp_contain() [view_only & items]
-				- TBD: test on special case of l / x while in seat
-				- TBD: extend to creature.disp_contain
+				- DONE: re-use get_disp_str() in room for view_only
+				- DONE: test on special case of l / x while in seat
+				- TBD: extend UI to i / creature.disp_contain
+				- TBD: extract get_top_lev_disp_str() from Interactive.disp_contain() to viewonly ?
+				- TBD: call get_top_lev_disp_str() from Interactive.disp_contain() ?
+				- TBD: call get_top_lev_disp_str() from room.disp_contain() [view_only & items] ?
 				- TBD: solve articles for innate plurals (e.g water => "qty of water" ???)
 				- TBD: clean-up Interactive
 		- TBD: minor features:

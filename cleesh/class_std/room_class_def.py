@@ -213,6 +213,7 @@ class Room(ViewOnly):
 		gs.io.buff_no_cr(gs.map.get_door_str(self))
 
 		# viewonly objects
+		does_contain_hero = False
 		for obj in rm_viewonly_lst:
 			gs.io.buff_cr()
 			gs.io.buff_cr()
@@ -220,7 +221,10 @@ class Room(ViewOnly):
 			gs.io.buff_no_cr(f"There is {article} {obj.full_name} here")
 			if gs.core.hero.is_contained(gs) and gs.core.hero.get_contained_by(gs) == obj:
 				gs.io.buff_no_cr(" (which you are presently occupying)")
+				does_contain_hero = True
 			gs.io.buff_no_cr(". ")
+			if does_contain_hero and len(obj.contain_lst) == 1:
+				continue # if hero is in the viewonly and it has no other contents, skip disp_contain()
 			obj.disp_contain(gs)
 
 		# items
@@ -231,17 +235,11 @@ class Room(ViewOnly):
 			for obj in rm_item_lst:
 				article = "an" if obj.full_name[0].lower() in "aeiou" else "a"
 				item_str = f"{article} {obj.full_name}"
-
 				if obj.has_contain(gs) and (not obj.is_openable() or obj.is_open):
 					if obj.is_empty():
 						item_str += " (empty)"
 					else:
 						item_str += f" (containing {obj.get_disp_str(obj.get_top_lvl_inv_lst(gs), gs)})"
-
-##				if obj.has_contain(gs) and (not obj.is_openable() or obj.is_open):
-#					contain_lst = [item.full_name for item in obj.get_top_lvl_inv_lst(gs)]
-#					item_str += f" (containing {', '.join(contain_lst)})"
-##					item_str += f" (containing {obj.get_disp_str(obj.get_top_lvl_inv_lst(gs), gs)})"
 				room_txt_lst.append(item_str)
 			if len(room_txt_lst) == 1:
 				room_item_str = room_txt_lst[0]
