@@ -1068,12 +1068,17 @@ End Date:
 				- DONE: re-use get_disp_str() in room for items
 				- DONE: re-use get_disp_str() in room for view_only
 				- DONE: test on special case of l / x while in seat
+				- DONE: rename viewonly.get_disp_str() => get_disp_sub_str()
+				- DONE: create viewonly.get_disp_str()
+				- DONE: call get_disp_str() from Interactive.disp_contain() ?
+				- DONE: call get_disp_str() from room.disp_contain() [view_only & items] ?
 				- TBD: extend UI to i / creature.disp_contain
-				- TBD: extract get_top_lev_disp_str() from Interactive.disp_contain() to viewonly ?
-				- TBD: call get_top_lev_disp_str() from Interactive.disp_contain() ?
-				- TBD: call get_top_lev_disp_str() from room.disp_contain() [view_only & items] ?
+					- TBD: hand
+					- TBD: backpack
+					- TBD: worn
+					- TBD: test
 				- TBD: solve articles for innate plurals (e.g water => "qty of water" ???)
-				- TBD: clean-up Interactive
+				- TBD: clean-up Interactive, view_only, room
 		- TBD: minor features:
 			- TBD: implement 'jump' (jump on drawbridge in Entrance = go over side ?)
 		- TBD: final playthrough room 4 to make sure it all works together
