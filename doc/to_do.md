@@ -1072,13 +1072,12 @@ End Date:
 				- DONE: create viewonly.get_disp_str()
 				- DONE: call get_disp_str() from Interactive.disp_contain() ?
 				- DONE: call get_disp_str() from room.disp_contain() [view_only & items] ?
-				- TBD: extend UI to i / creature.disp_contain
-					- TBD: hand
-					- TBD: backpack
-					- TBD: worn
-					- TBD: test
-				- TBD: solve articles for innate plurals (e.g water => "qty of water" ???)
-				- TBD: clean-up Interactive, view_only, room
+				- DONE: extend UI to i / creature.disp_contain
+					- DONE: hand
+					- DONE: backpack
+					- DONE: worn
+					- DONE: test
+				- TBD: clean-up Interactive, view_only, room, creature
 		- TBD: minor features:
 			- TBD: implement 'jump' (jump on drawbridge in Entrance = go over side ?)
 		- TBD: final playthrough room 4 to make sure it all works together
@@ -1458,6 +1457,8 @@ word_lst assignment:
 - TBD: updates on this theme
 	- TBD: now that hand is de-emphasized, need a better system for guessing what obj player means
 	- TBD: should be mostly based on class
+- TBD: solve articles for innate plurals (e.g water => "qty of water" ???)
+	- TBD: requires noun-adj strings longer than 2
 
 - TBD: need to enable a rich set of game-specific synonyms!
 	- TBD: make 'apparatus' a synonym for control_panel

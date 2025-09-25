@@ -413,14 +413,20 @@ class Creature(ViewOnly):
 		if self == gs.core.hero and not self.bkpk_is_empty():
 			if not self.hand_is_empty():
 				gs.io.buff_cr()
-			bkpk_str_lst = [obj.full_name for obj in self.bkpk_lst]
-			bkpk_str = ", ".join(bkpk_str_lst)
+#			bkpk_str_lst = [obj.full_name for obj in self.bkpk_lst]
+#			bkpk_str = ", ".join(bkpk_str_lst)
+
+			bkpk_str = self.get_disp_str(self.bkpk_lst, gs)
+
 			gs.io.buff_no_cr(f"In your backpack you have: {bkpk_str}. ")
-			for obj in self.bkpk_lst:
-				obj.disp_contain(gs)
+#			for obj in self.bkpk_lst:
+#				obj.disp_contain(gs)
 		if not self.worn_is_empty():
-			worn_txt_lst = [obj.full_name for obj in self.worn_lst]
-			worn_str = ", ".join(worn_txt_lst)
+
+			worn_str = self.get_disp_str(self.worn_lst, gs)
+
+#			worn_txt_lst = [obj.full_name for obj in self.worn_lst]
+#			worn_str = ", ".join(worn_txt_lst)
 			if self == gs.core.hero:
 				if (not self.bkpk_is_empty()) or (not self.hand_is_empty()):
 					gs.io.buff_cr()
@@ -428,8 +434,8 @@ class Creature(ViewOnly):
 				gs.io.buff_no_cr(f"You are wearing: {worn_str}.")
 			else:
 				gs.io.buff_no_cr(f"The {self.full_name} is wearing: {worn_str}.")
-			for obj in self.worn_lst:
-				obj.disp_contain(gs)
+#			for obj in self.worn_lst:
+#				obj.disp_contain(gs)
 		return 
 
 
