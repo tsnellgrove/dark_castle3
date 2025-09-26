@@ -119,7 +119,7 @@ class ViewOnly(Writing):
 	# *** verb methods ***
 
 	def get_disp_str(self, disp_lst, gs):
-		""" Returns a string listing the objects in disp_lst, formatted for display.
+		""" Returns a string listing the objects in disp_lst, formatted for display. 
 		"""
 		txt_lst = []
 		for obj in disp_lst:
@@ -143,28 +143,8 @@ class ViewOnly(Writing):
 			disp_str = ", ".join(txt_lst[:-1]) + f", and {txt_lst[-1]}"
 		return disp_str
 
-#			contain_txt_lst = []
-#			for obj in self.contain_lst:
-#				if obj == gs.core.hero:
-#					continue
-#				article = "an" if obj.full_name[0].lower() in "aeiou" else "a"
-#				obj_str = f"{article} {obj.full_name}"
-##				if obj.has_contain(gs) and (not obj.is_openable() or obj.is_open):
-##					if obj.is_empty():
-##						obj_str += " (empty)"
-##					else:
-##						obj_str += f" (containing {obj.get_disp_sub_str(obj.get_top_lvl_inv_lst(gs), gs)})"
-#				contain_txt_lst.append(obj_str)
-#			if len(contain_txt_lst) == 1:
-#				contain_obj_str = contain_txt_lst[0]
-#			elif len(contain_txt_lst) == 2:
-#				contain_obj_str = f"{contain_txt_lst[0]} and {contain_txt_lst[1]}"
-#			else:
-#				contain_obj_str = ", ".join(contain_txt_lst[:-1]) + f", and {contain_txt_lst[-1]}"
-
-#	def get_disp_str(self, disp_lst, gs):
 	def get_disp_sub_str(self, disp_lst, gs):
-		""" Returns a string listing the objects in disp_lst, formatted for display.
+		""" Returns a string listing the objects in disp_lst, formatted for display. Generally used for itmes in portable containers
 		"""
 		txt_lst = []
 		for obj in disp_lst:

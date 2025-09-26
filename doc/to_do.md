@@ -1077,11 +1077,15 @@ End Date:
 					- DONE: backpack
 					- DONE: worn
 					- DONE: test
-				- TBD: clean-up Interactive, view_only, room, creature
+				- DONE: clean-up Interactive, view_only, room, creature
+				- DONE: text cup_of_tea
+				- TBD: full test of dc3
+				- TBD: final playthrough room 4 to make sure it all works together
 		- TBD: minor features:
 			- TBD: implement 'jump' (jump on drawbridge in Entrance = go over side ?)
-		- TBD: final playthrough room 4 to make sure it all works together
-
+				- TBD: test play 'jump' cmd in Zork; test at chasim too
+				- TBD: implement standard response for creature.jump() (hero & other)
+				- TBD: implement modular machine to alter jump behavior on drawbridge
 - TBD: git merge
 
 
@@ -1457,7 +1461,7 @@ word_lst assignment:
 - TBD: updates on this theme
 	- TBD: now that hand is de-emphasized, need a better system for guessing what obj player means
 	- TBD: should be mostly based on class
-- TBD: solve articles for innate plurals (e.g water => "qty of water" ???)
+- TBD: solve articles for innate plurals (e.g Water, Tea => "qty of water" ???)
 	- TBD: requires noun-adj strings longer than 2
 
 - TBD: need to enable a rich set of game-specific synonyms!

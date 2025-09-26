@@ -395,6 +395,7 @@ class Creature(ViewOnly):
 	def disp_contain(self, gs):
 		""" Displays a description of the visible items held by the obj. Used in examine(). Variable output for burt vs. other creatures.
 		"""
+		# hand
 		if self == gs.core.hero:
 			gs.io.buff_no_cr(f"In your off hand you hold a Brass Lantern.")
 			if (not self.bkpk_is_empty()) or (not self.hand_is_empty()) or (not self.worn_is_empty()):
@@ -410,23 +411,17 @@ class Creature(ViewOnly):
 				gs.io.buff_no_cr(f"The {self.full_name} is holding a {self.get_hand_item().full_name}. ")
 				for obj in self.hand_lst:
 					obj.disp_contain(gs)
+
+		# backpack
 		if self == gs.core.hero and not self.bkpk_is_empty():
 			if not self.hand_is_empty():
 				gs.io.buff_cr()
-#			bkpk_str_lst = [obj.full_name for obj in self.bkpk_lst]
-#			bkpk_str = ", ".join(bkpk_str_lst)
-
 			bkpk_str = self.get_disp_str(self.bkpk_lst, gs)
-
 			gs.io.buff_no_cr(f"In your backpack you have: {bkpk_str}. ")
-#			for obj in self.bkpk_lst:
-#				obj.disp_contain(gs)
+
+		# worn
 		if not self.worn_is_empty():
-
 			worn_str = self.get_disp_str(self.worn_lst, gs)
-
-#			worn_txt_lst = [obj.full_name for obj in self.worn_lst]
-#			worn_str = ", ".join(worn_txt_lst)
 			if self == gs.core.hero:
 				if (not self.bkpk_is_empty()) or (not self.hand_is_empty()):
 					gs.io.buff_cr()
@@ -434,8 +429,6 @@ class Creature(ViewOnly):
 				gs.io.buff_no_cr(f"You are wearing: {worn_str}.")
 			else:
 				gs.io.buff_no_cr(f"The {self.full_name} is wearing: {worn_str}.")
-#			for obj in self.worn_lst:
-#				obj.disp_contain(gs)
 		return 
 
 
