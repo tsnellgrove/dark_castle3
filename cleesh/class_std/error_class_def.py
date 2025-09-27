@@ -282,6 +282,15 @@ class Error(Identity):
 			return True, False, err_txt
 		return False, False, ""
 
+	def jump_err(self, gs):
+		creature = gs.core.hero
+		if self.err_std(creature, gs):
+			return True, False, ""
+		if creature.is_contained(gs):
+			err_txt = (f"You can't jump while you're in the {creature.get_contained_by(gs).full_name}.")
+			return True, False, err_txt
+		return False, False, ""
+
 	def enter_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):

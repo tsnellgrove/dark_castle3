@@ -648,13 +648,32 @@ class Creature(ViewOnly):
 		# if hero_creature not in current room, exit with no display
 		if room != gs.map.hero_rm:
 			return 
-
+		
 		if self == gs.core.hero:
 			gs.io.buffer(f"You are now standing in the {room.full_name}.")
 		else:
 			gs.io.buffer(f"The {self.full_name} is now standing.")
 		return
 
+
+	def jump(self, gs, mode=None):
+		""" Enables a Creature to jump (similar to Zork)
+		"""
+		if mode is None:
+			mode = 'std'
+
+		room = gs.map.get_obj_room(self, gs)		
+
+		# if hero_creature not in current room, exit with no display
+		if room != gs.map.hero_rm:
+			return 
+		# if hero is jumping, display silly message
+		if self == gs.core.hero:
+			gs.io.buffer("Wheeeeeee!!! (do you do this often?)")
+		# if other creature is jumping, display different silly message
+		else:
+			gs.io.buffer(f"For reasons of its own, the {self.full_name} jumps up and down.")
+		return
 
 	### debug methods ###
 	def get_weight(self, gs, mode=None):

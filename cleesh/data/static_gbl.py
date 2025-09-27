@@ -30,7 +30,7 @@ engine_static_dict = {
 
     'one_word_only_lst' : ['credits', 'score', 'version'],
 
-	'one_word_convert_lst' : ['inventory', 'look', 'stand'],
+	'one_word_convert_lst' : ['inventory', 'look', 'stand', 'jump'],
 
 	'one_word_travel_lst' : ['north', 'south', 'east', 'west'],
 
@@ -40,7 +40,7 @@ engine_static_dict = {
 
 	'known_verb_lst' : ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 		'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
-		'unlock', 'wear', 'enter', 'exit', 'stand', 'stow'
+		'unlock', 'wear', 'enter', 'exit', 'stand', 'stow', 'jump'
 	],
 
 	'prep_verb_lst' : ['put', 'show', 'give', 'attack', 'lock', 'unlock', 'drink'],

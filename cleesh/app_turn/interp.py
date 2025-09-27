@@ -127,6 +127,8 @@ def interpreter(user_input, master_obj_lst):
 			user_input_lst.append(gs.map.hero_rm.name)
 		if word1 == 'stand':
 			user_input_lst.append(creature.name)
+		if word1 == 'jump':
+			user_input_lst.append(creature.name)
 		word1 = user_input_lst[0]
 
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst','eng'):

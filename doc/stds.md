@@ -140,3 +140,14 @@ Notes:
 
 Links:
 - very useful 'how to copy files in python' link: https://stackoverflow.com/questions/123198/how-to-copy-files
+
+
+*** 9/27/2025 - how to add a command ***
+- DONE: implement standard response for creature.jump() (hero & other)
+	- DONE: create creature.jump() [w/ hero and other creature option]
+	- DONE: in staic_gbl(), add 'jump' to 'one_word_convert_lst'
+	- DONE: in staic_gbl(), add 'jump' to 'known_verbs_lst'
+	- DONE: in interp() create routine for 'jump'
+	- DONE: create jump_err() method in error_class()
+	- DONE: test in game (including while seated)
+	- DONE: test 'help one-word-commands'

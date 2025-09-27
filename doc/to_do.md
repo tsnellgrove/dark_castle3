@@ -1081,11 +1081,26 @@ End Date:
 				- DONE: text cup_of_tea
 				- TBD: full test of dc3
 				- TBD: final playthrough room 4 to make sure it all works together
-		- TBD: minor features:
-			- TBD: implement 'jump' (jump on drawbridge in Entrance = go over side ?)
-				- TBD: test play 'jump' cmd in Zork; test at chasim too
-				- TBD: implement standard response for creature.jump() (hero & other)
+		- INPROC: minor features:
+			- INPROC: implement 'jump' (jump on drawbridge in Entrance = go over side ?)
+				- DONE: test play 'jump' cmd in Zork; test at chasim too
+					- FND: non-dangerous responses
+						- FND: "Wheeeeeeeeeee!!!"
+						- FND: "Are you enjoying yourself?"
+						- FND: "Do you expect me to applaud?"
+						- FND: "Very good. Now you can go to the second grade."
+					- FND: dangerous response
+						- FND: "This was not a very safe place to try jumping. Geronimo..."
+				- DONE: implement standard response for creature.jump() (hero & other)
+					- DONE: create creature.jump()
+					- DONE: in staic_gbl(), add 'jump' to 'one_word_convert_lst'
+					- DONE: in staic_gbl(), add 'jump' to 'known_verbs_lst'
+					- DONE: in interp() create routine for 'jump'
+					- DONE: create jump_err() method in error_class()
+					- DONE: test in game (including while seated)
+					- DONE: test 'help one-word-commands'
 				- TBD: implement modular machine to alter jump behavior on drawbridge
+			- TBD: clean up test obj
 - TBD: git merge
 
 
