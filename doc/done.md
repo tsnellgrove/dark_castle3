@@ -7242,3 +7242,1055 @@ Version 3.87.0 Goals:
 
 - DONE: Establish clearer nomenclature for temp variables that will be fully assigned at end
 	- EXMP: 'royal_hedgehog-*temp*'
+
+
+############################
+### CLEESH VERSION 3.8.1 / DARK CASTLE VERSION 3.2.0 START ###
+############################
+
+Start Date: Dec 11, 2024
+End Date: 
+
+*** getting started ***
+- DONE: establish new versions and builds
+- DONE: review project list and decide on scope
+- DONE: organize scope by cleesh vs. dark castle work where possible
+- DONE: fine-grained to-do review and ordering for DC tech issues
+
+	- DONE: create new story_update_feature git branch
+		- DONE: 'git branch' to confirm *master
+		- DONE: 'git branch story_update_feature' to create new branch
+		- DONE: 'git branch' to confirm new branch exists but that master is still checked out
+		- DONE: 'git checkout story_update_feature' to switch focus to branching_test branch
+		- DONE: 'git branch' to confirm new branch is now in focus
+		- DONE: Publish Branch via VS Code button
+		- DONE: confirm new branch on GitHub
+		- DONE: update doc TBDs to DONEs
+		- DONE: <CMD><OPT>S (to save all files)
+		- DONE: 'git add .' to add files to be committed
+		- DONE: 'git commit -m "doc updates"
+		- DONE: 'git push" to push updates to origin (GitHub)
+		- DONE: confirm new branch on GitHub is now ahead of master
+
+*** known dark castle tech issues ***
+- DONE: hedgehog description should change when distracted by food (ALREADY DONE)
+- DONE: sort out hedgehog description post biscuits if Burt leaves rm
+	- IDEA: burt leaves room before RH finishes eating => description update never triggered
+	- PROB: hedgehog_done_eating_mach is in RH; never triggers if RH out of scope at timer end
+	- IDEA: need a universal_invis_<holder?> that is added to room.get_mach_lst() scope
+	- IDEA: tempted to make this a room... but want it to be universal across games...
+	- IDEA: maybe a list in gs.core ? "universal_invis_lst" = invist obj always in scope ?
+	- DONE: git branch story_update_feature
+	- DONE: add univ_invis_lst attrib to gs.core
+	- DONE: update univ_invis_lst attrib in game_update() (DC & cup_of_tea)
+	- DONE: ref univ_invis_lst in room.get_mach_lst() (use copy() to create independent copy)
+	- DONE: add hedgehog_done_eating_mach to uni_invis_lst in game_update()
+	- DONE: test
+	- DONE: clean-up room(), game_update()
+	- DONE: check for any other auto-actions that should be in univ_invis_lst (could I have just added to burt?)
+		- DONE: moved hedgehog_eats_timer to univ_invis_lst
+		- DONE: test
+	- DONE: update mach doc with univ_invis_lst
+- DONE: fix Antechamber description still mentions goblin after death (ALREADY DONE)
+- DONE: fix hedgehog description after sword is returned (before goblin killed)
+	- FINDING: RH response is fins (thankfull and gives key); but need to enable key-for-sword swap
+- DONE: fix eat_biscuits_warning 
+	- DONE: so that it no longer lives in just entrance and main_hall 
+	- DONE: and no longer triggers when biscuits not in hand
+	- DONE:  making eat_biscuits_warning universal and enabling success feedback loop for cmd_exe
+- DONE: fix case where sword is in Burt's inventory and tries to take in Entrance but royal_hedgehog stops him
+- DONE: enable player to give silver_key to RH in return for shiny_sword
+- DONE: update show silver_key for RH
+- DONE: solve case where player drops sword in same room as hedgehog after using it; on get key, disable guard
+	- IDEA: create a modular machine that disables hedgehog_guard after silver_key is given
+	- DONE: create new Cond class to check creature inventory
+	- DONE: import Cond class in game_updates
+	- DONE: instantiate new Cond obj for RH has silver_key == False
+	- DONE: create new Result class to disable mach
+	- DONE: import Result class into game_updates
+	- DONE: instantiate new Result obj
+	- DONE: create auto_mach in DC game_update
+	- DONE: pre-test to confirm as-is behavior
+	- DONE: add auto_mach to game (in RH invis_lst)
+	- DONE: test
+	- DONE: set disable_rh_guard_result_2 to disable guard_disable_mach (don't need auto_action once run)
+	- DONE: test
+	- DONE: clean-up: cond(), DC game_update()
+- DONE: stale_biscuits => biscuit
+	- DONE: make stale_biscuits singluar (just one biscuits in a paper bag)
+		- IDEA: change biscuit trademark to sword and key emblem
+		- IDEA: make biscuit yummy; Nana's famous recipie
+		- IDEA: backstory of Nana fondly feeding hedgehog biscuits back when she was at the castle?
+		- IDEA: update 'eat biscuit' warning text... should ref baker job and Nana
+		- IDEA: maybe Burt is the first Baker in his family; perhaps not a highly regarded profession
+		- DONE: implement
+			- DONE: re-read Nana broach text
+			- DONE: create paper bag (openable but no lock)
+			- DONE: add paper bag to Burt's inventory
+			- DONE: decide on Burt's backstory / baking heritage... 
+				- IDEA: is Burt a true baker following in the footsteps of Nana? (lean this way)
+				- IDEA: or is baking something he's not really cut out for?
+				- IDEA: maybe Willy's middle name was Herbert?
+				- DONE: create story.md in doc folder to document the story of Dark Castle
+				- DONE: formally document Burt's backstory
+				- DONE: Update Nana borach text to match Burt's backstory
+				- DONE: update family tree if needed
+			- DONE: create baked_biscuit (class = food)
+			- DONE: add biscuit to paper bag
+			- DONE: create insignia (Writing)
+			- DONE: add insignia to biscuit
+			- DONE: update warning to reference biscuit
+			- DONE: update warning text
+			- DONE: test
+			- DONE: remove stale_biscuits
+- DONE: vary Burt description during inventory (inject some backstory here; include Nana and pub crush)
+	- DONE: implement just for DC
+	- DONE: generalize to work for all games (test w/ Tea) [hero_descript_count attrib in gs.core]
+	- DONE: test for DC and Tea
+- DONE: sort out Burt cary weight post biscuits swap
+	- DONE: test (does not pass - not removing weight of portable container contents when item dropped)
+	- DONE: sorted - needed to include weight of biscuit in starting weight of  bag
+	- DONE: biscuit weight from 2.5 lb => 1 lb (subtract 1.5 lbs)
+		- DONE: burt from 106.5 => 105 lb
+		- DONE: bag from 3 lbs => 1.5 lbs
+		- DONE: biscuit from 2.5 lbs => 1 lbs
+		- DONE: test
+- DONE: update winning condition to reading scroll while sitting on throne?
+	- DONE: update Illuminated Letters text to ref throne
+	- DONE: creaate CreatureContainedCond class in cond module
+	- DONE: import CreatureContainedCond and instantiate not_in_throne_cond obj
+	- DONE: instantiate scroll_not_in_throne_result obj based on BaseResult
+	- DONE: write text for scroll_not_in_throne_result
+	- DONE: add cond & result to kinging_scroll mach
+	- DONE: test
+	- DONE: clean up cond()
+- DONE: add option to win condition to read back story 
+	- DONE: return gs.end.game_ending as game_ending from app_main() to web_main()
+	- IDEA: in web_main(), just before "THANKS" & "Press Enter", if game_ending = 'win!', offer backstory
+	- DONE: create print_game() in file_io()
+	- DONE: import print_game() into web_main()
+	- DONE: in web_main(), if end == 'won!': print_game('read_bkstry_str')
+	- DONE: call confirm_choice() function
+	- DONE: if confirm: print_game('backstory')
+	- DONE: test
+	- DONE: clean up web_main(), gs.end(), to-do-list
+	- DONE: add back-story to game_static() w/ /n/n breaks
+	- DONE: test
+- DONE: fix goblin attack on attempt to unlock portcullis
+	- DONE: fix prep order in mach
+	- DONE: test
+	- DONE: clean up game_update, app_main
+	- DONE: investigate wild-card option (works for portcullis or key? use if key)
+		- DONE: in game_update(), replace 'rusty_key' with '*'
+		- DONE: test => worked!
+		- DONE: clean-up game_update()
+	- DONE: document prep case trigger order somewhere I will see it (ref to interp / validate / trig_check)
+	- DONE: create TBD in Interpreter section to sort out whole dir-obj prep-case word order / re-order issue
+- DONE: Stone Coffer => no-lid box
+	- DONE: convert stone_coffer to ContainerFixedSimple
+	- DONE: test
+	- DONE: clean up game_update()
+
+
+*** known dark castle narrative issues ***
+- DONE: misc specific description updates
+	- DONE: on 'x goblin' descript, emphasize that Burt is peering from S side of room
+	- DONE: 'officious' == offering unwanted advice => NOT hidebound or miro-managerial
+		- IDEA: Perhaps update to implay new definition rather than classic: "assertive of authority in an annoyingly domineering way, especially with regard to petty or trivial matters." 
+	- DONE: update hedgehog description while eating to "The RH is ravenously eating" (done?)
+	- DONE: fix Goblin description to no longer mention Control Panel
+	- CANCEL: "what would your mothter say" error to "What would your Nana say?"
+		- FINDING: this error belongs to the clessh engine and should stay generic
+	- DONE: fix post-goblin-slain Antechamber description
+- DONE: more description updates:
+	- DONE: RH
+		- DONE: describe RH as "stalwart"
+		- DONE: Have the hedgehog think burt is playing if he attacks with a non-weapon
+			- DONE: starts making wax-on, wax-off motions with paws
+	- DONE: link lantern, sword, and jug to Infocom history but unify with fantasy genre (no battery)
+		- DONE: lantern description (but no battery)
+		- DONE: Upate water_bottle to Enchanter jug description
+		- DONE: Update shiny_sword to Zork I elven sword description (elven runes)
+	- DONE: shiny sword glows near enemies?
+		- DONE: research Zork options
+			- FINDING: 1 rm away: "Your sword is glowing with a faint blue glow"
+			- FINDING: 2 rm away: "Your sword is no longer glowing"
+			- FINDING: same rm: "Your sword has begun to glow very brightly"
+			- FINDING: enemy dead: "Your sword is no longer glowing"
+		- DONE: create WeaponAutoMach
+			- DONE: create mach class
+			- DONE: import mach class to both game_updates
+			- DONE: instantiate starting shiny_sword_new based on WeaponAutoMach
+		- CANCEL: cond & results - first try
+			- DONE: 0th cond = sword not in hand => nothing happens
+			- DONE: 1st cond = goblin_dead => result = "no longer glow", disable mach
+			- PAUSE: 2nd cond = room is Main Hall => buffer "faint glow", set state
+				- TBD: still need to set state
+			- CANCEL: 3rd cond = room is Antechamber => buffer "very bright glow"
+			- CANCEL: 4th cond = state set (must be Entrance) => buff "no longer glowing"			
+		- DONE: re-think cond & results
+			- IDEA: sword state needs 3 values: 0 = off, 1 = glow, 2 = bright glow
+			- IDEA: sword description only mentioned on state change (or 'x')
+			- IDEA: state only changes on pick-up, drop, rm chg, death of enemy
+			- DONE: need to create disp_cond() for shiny_swordnew and base cond on state for 'x'
+			- DONE: disp_cond => buff(f'sword_disp_{sword_state}')
+			- DONE: create descriptions linked to shiny_sword state
+			- CANCEL: does sword state pass to room state?
+			- DONE: update descriptions / disp_cond() to make sense for examine (skip on 0 or None)
+			- DONE: need to update mach module to deal with compound cond
+				- DONE: review 'full' compound cond code in 'unused code' in done()
+				- DECISION: just implement simple 'and' case that mirrors result implementation
+				- DONE: implement simple 'and' case for compound cond
+				- DONE: test (existing single-cond code)
+			- DONE: review & update cond & results plan
+			- DONE: modify / create needed cond and result classes:
+				- DONE: update MachStateCond to include tgt_state attrib
+					- DONE: update MachStateCond
+					- DONE: update existing MachStateCond conditions
+					- DONE: test existing MachStateCond conditions
+				- DONE: create sword_state_not_0_cond of class MachStateCond
+				- CANCEL: create SetStateResult SetStateResult => can set mach_state in BaseResult
+				- CANCEL: make sword_state_0_result class BaseResult => already exist: sword_stops_glowing_result
+				- DONE: clean up old SetStateResult in result_class()
+			- DONE: Update mach combo conditions and results to check for state change (states part 2)
+				- DONE: (sword not in hand) && (s_s == !0) => (buff('stopped glowing'; sword_state => 0)
+				- DONE: goblin dead => (buff('stopped glowing'); sword_state => 0) && (disable mach)
+				- DONE: (rm = Entrance) && (sword_state != 0) => (buff('stopped glowing'); sword_state=> 0)
+				- DONE: (rm = main_hall) && (sword_state != 1) => (buff('blue glow'); sword_sate => 1)
+				- DONE: (rm = antechamber) & (sword_state != 2) => buff('bright glow) / sword_state => 2
+		- DONE: test
+			- DONE: place shiny_swordnew in main_hall
+			- DONE: test shiny_swordnew behavior
+				- DONE: fix stops glowing if in backpack (in_hand => in_inv)
+				- DONE: fix glowing on enter main_hall (pass_result if not_in_inv and is_0)\
+				- DONE: sort out 'x swordnew' => all good now
+		- DONE: shiny_swordnew => shiny_sword
+		- DONE: clean up game_update(), game_static()
+	- DONE: one final full test
+- DONE: have shiny sword be hanging on wall (like Zork I)?
+	- IDEA: how does this work in Zork?
+		- IDEA: In TADS, this is accomplished for obj and rooms by giving them two attribs:
+		- IDEA: isInInitState attrib (bool) and initDesc (string) [or roomFirstDesc]
+		- IDEA: by default, IsInInitState starts as True and becomes False as soon as obj is moved
+		- IDEA: this would require updating base obj and also core methods like take()
+		- IDEA: But, it would allow object to be easily given more placement description on initial contact
+		- IDEA: in the room display method, obj w/ initDesc and isInInitState could be handled separately
+	- IDEA: how do I want to accomplish it?
+		- IDEA: how about associating init_desc with the room rather than the obj?
+		- IDEA: there are fewer room obj to update - and init_desc is really about initial placement in rm
+		- IDEA: add init_desc_lst attrib to room class
+		- IDEA: create init_desc class with attribs for name, linked obj, and desc_key
+		- IDEA: for obj w/ initial descriptions, instantiate init_desc and add to rm init_desc_lst
+		- IDEA: in rm display, provide init_desc first and add associated obj to skip_lst
+		- IDEA: later in dispaly, skip std obj desc if obj is on skip_lst
+		- IDEA: in take() method chk to see if obj has init_desc and, if so, remove it from init_desc_lst
+			- IDEA: how to link from obj back to init_desc ?
+			- IDEA: propose strict naming convention for init_desc (e.g. '<obj_name>_init_desc')
+			- IDEA: include init_desc obj in obj pickle so they can be reverse looked up via text
+	- DONE: implement
+		- DONE: create init_desc class
+		- DONE: instantiate shiny_sword_init_desc obj
+		- DONE: create desc value in static_gbl() 
+		- DONE: add init_desc_lst attrib to room class
+		- DONE: update room display code to handle init_desc first
+		- DONE: sort out UI / spacing
+		- DONE: update room display code to not display same obj in std descript vis skip_lst
+		- DONE: don't display init_desc if obj taken and elim init_desc
+			- DONE: update room.remove_item to remove init_desc from init_desc_lst
+		- DONE: test - gen
+	- DONE: fine tune room display
+		- DONE: decide if init_desc() should truly only be for items on rm floor
+			- IDEA: excluded obj include view-only and obj in / on containers
+			- IDEA: a ViewOnly obj could be described in detail in the regular room description...
+			- IDEA: unless it is somehow manipulated... but these cases are currently rare
+			- IDEA: could be used for non-portable containers before open... but would I want to?
+			- IDEA: an obj in a container could have it's state described in more detail
+			- IDEA: e.g. "the teddy bear is sweetly tucked in under the covers"... but again, rare
+			- DECISION: follow the "don't build it if you don't need it yet" rule
+			- DONE: linked_obj => linked_item
+			- DONE: test
+		- CANCEL: update shiny_sword regular desc if appropriate
+		- DONE: update rm disp: 1) title, 2) rm desc, 3) passages, 4) viewonly, 5) init, 6) item, 7) creat
+			- DONE: for room display, separate creatures from ViewOnly and list creatures 2nd
+		- DONE: test - multiple obj w/ init_desc
+		- DONE doc rm display_contain order
+		- DONE: clean up room_class()
+		- DONE: room_itme_lst => rm_item_lst
+- TBD: play & note obvious nouns with no description; provide description (e.g. 'keyhole')
+	- DONE: room 1
+		- IDEA: goals for room 1
+			- IDEA: room 1 is mostly about learning the rules of the Dark Castle world
+			- IDEA: lesson 1: pay attentinn - the world is dangerous (e or w off drawbridge)
+			- IDEA: lesson 2: learn to open / close (postbox)
+			- IDEA: lesson 3: learn to lock / unlock (front_gate)
+			- IDEA: lesson 4: learn how weight works (big_rock)
+			- IDEA: lesson 5: learn that we are in the Zork / Enchanter universe (zorkmid / certficate)
+		- IDEA: should start out looking very foreboding but then get a bit silly as front_gate is examined
+		- DONE: add viewonly drawbridge
+		- DONE: read and update Moat & Dark Castle
+		- DONE: update passages to include all info in description
+		- DONE: update room description; eliminate duplication with passages; "entrance" desc=> "front gate"
+		- DONE: review existing nouns:
+			- DONE: drawbridge
+			- DONE: moat
+			- DONE: dark_castle
+			- DONE: front_gate
+			- DONE: rusty_lettering
+			- DONE: add key_hole
+			- CANCEL: add handle
+			- DONE: rusty key
+			- DONE: cheese wedge
+			- DONE paper bag
+			- DONE: baked biscuit
+			- DONE: earthen jug
+			- DONE: well water
+		- DONE: UI decision - if all nouns will have a description, do I need to capitalize?
+			- DECISION: Dark Castle stays in caps. Everything else in regular text becomes regular case.
+		- DONE: test go south
+		- DONE: test east & west (no weapon)
+		- DONE: test 'eat biscuits'
+		- DONE: there should be at least one item here (like the mailbox & leaflet)
+			- IDEA: WR postbox / mail slot w/ ancient scroll certifying bright castle to be Grue-Free
+			- IDEA: (not very convincing - cert largely tells dark and dangerous places not explored)
+				- IDEA: lock has only just recently crumbled from rust and neglect
+				- DONE: create royal_cypher
+				- DONE: create postbox obj
+				- DONE: update room description
+				- DONE: add postbox to room
+				- DONE: create ancient_certificate
+				- DONE: create bold_script
+				- CANCEL: investigate adding room.feature_lst to item scope (enable interaction w/ postbox)
+					- IDEA: this code is pretty deep - not sure I want to mess with it right now
+				- DONE: investigate enabling init_desc attrib for viewonly (e.g. postbox)
+					- IDEA: in some cases, will want non-init_desc - for key / interactive obj (like throne)
+					- DONE: update room.disp_contain to check for init_desc for non-items, non-creatures
+					- DONE: test
+					- DONE: create init_desc obj for postbox
+					- DONE: test
+					- DONE: clean up room_class()
+					- DONE: comment room_class() / game_update with init_desc order implications
+		- DONE: big_rock here (use init_desc) with a zorkmid (key to weight puzzle) under it
+			- DONE: check burt's weight capacity; set big_rock weight so burt can only take it w no inv
+			- DONE: add big_rock to Room 1
+			- DONE: create desc for big rock
+			- DONE: adjust creature.put_in_hand() to test for weight > max_weight (NOT >= )
+			- DONE: test
+			- DONE: create an init_desc for bog_rock
+			- DONE: test
+			- DONE: instantiate zorkmid as item
+			- DONE: create machine to vend zorkmid (once) when rock is first taken
+				- IDEA: make big_rock the zorkmid_dispenser? Turn off after one run
+			- DONE: adjust item weights to make zorkmid the only half-pound weight
+			- DONE: enable drop to work on backpack items (e.g. "you toss the X from your pack")
+			- DONE: enable multiple commands to be input at once, separated by commas
+				- DONE: check Zork behavior => multiple entry halts on error or enter dark rm
+				- DONE: in app_main() create cmd_queue, populate it, and read commands from it
+				- DONE: test std cases
+				- DONE: clear cmd_queue on special word cases (e.g. 'quit')
+				- DONE: test special cases
+				- DONE: clear cmd_queue on not is_valid and on comd_override
+				- DONE: test error cases
+				- DONE: clean-up app_main()
+			- DONE: enable 'drop all'
+				- DECISION: 'drop all' will drop item in hand and all in bkp but not worn
+				- DONE: construct drop all commands in cmd_queue
+				- DONE: initial test
+				- DONE: deep-dive test (use in multi-cmd string)
+				- DONE: clean-up app_main()
+			- DONE: enable multiples UI (e.g. 'Rusty Key: Dropped')
+				- DONE: create multi_count attrib in gs.io
+				- DONE: set multi_count = 0 in game_update()
+				- DONE: in app_main() , if 'drop all', multi_count = len(drop_lst)
+				- DONE: in app_main() , at end of while loop, if multi_count > 0 , decrement
+				- DONE: in item_class() : drop() : if multi_count > 0 use multi_format
+				- DONE: testing
+			- DONE: enable 'except command
+				- DONE: except testing - basic problem = how to evaluate except_element to item name ??
+					- DONE: test rusty_key
+					- DONE: if 2 words after 'except', try word1_word2 in inventory_list by name
+					- DONE: elif 1 word after 'except', try word1 in inventory_list by name and
+					- DONE: elif 1 word, try word1 inventory_ist by root_name
+					- DONE: check for 2 of same root => err
+					- DONE: test error cases
+						- DONE: > 1 use of 'except'
+						- DONE: > 1 except item
+						- DONE: except item not in your inventory
+						- DONE: no except item
+					- DONE: tighten code - first pass
+			- DONE: enable 'take all'
+				- IDEA: in order of weight ?
+				- DONE: test in Zork to see order / behavior of 'take all'
+				- DECISION: don't re-order for now
+				- DONE: expand app_main() 'drop all' case to include 'take all'
+					- DONE: drop_lst => multiples_lst
+					- DONE: add local vars: is_multiples_action and multiples_action_type ('drop', 'take')
+					- DONE: define inventory_lst for multiples_action_type == 'take'
+						- DONE: define what behaviors do I want for 'take all'?
+							- IDEA: take all taks from room.floor_lst, NOT room.feature_lst
+							- IDEA: don't try to take non-Item class obj
+							- IDEA: don't try to take Liquid class obj
+							- IDEA: If there's an open ViewOnly container holding an item, take the item
+							- IDEA: if there's a portable container take it
+							- IDEA: don't attempt to take from player's own inventory
+							- DONE: if there's a portable container holding an item, don't take the item
+							- DONE: if there's a creature, don't attempt to take from the creature
+						- DONE: create get_take_all_lst() method in Room class
+						- DONE: initial testing
+				- DONE: expand Item.take() methoed to use multiples UI
+				- DONE: full test of take_all behavior - especially containers (does take from port contain)
+				- DONE: fix 'take all' / 'drop all' if there is nothing to take / drop
+				- DONE: get "again" working with "drop all" / "take all" cases
+					- DONE: get g working for 'drop all'
+					- DONE: get g working for 'take all'
+						- FINDING: finally figured out the problem... by default, I can take from bkpk
+						- DONE: create from-scratch get_take_all_lst() method to exclude gs.core.her0
+				- DONE: expand 'except' case to include take all
+				- DONE: sort out last 2 take-all cases
+				- DONE: get 'again' working with except cases
+				- DONE: mini-in-place code clean-up for app_main()
+				- DONE: err when ref obj excluded from inventory_lst ('take all except X' when X in inv)
+					- DECISION: addressed this via updated error message
+			- DONE: Full code clean-up - probably need a separate 'except' function
+				- DONE: prep for except function creation
+				- DONE: create except function and refactor
+				- DONE: clean-up
+				- DONE: additional except clean-up
+				- DONE: initial clean-up multiples function
+				- DONE: clarify / make consistent if-then-else outputs
+				- DONE: clean up multiples code to prepare for external function
+				- DONE: clean up comments
+				- DONE: create multiples mini interp function
+			- DONE: fix take_rock_mach for cases where rock can't be taken due to weight
+				- DONE: need to pass is_valid to post_act()
+				- DONE: keep investigating is_valid => post_act() => run_mach() => cond_chk() [not printing]
+				- DONE: updated code in each condition class
+				- DONE: full game test
+				- CANCEL: create ValidCond that all cond (inc TrueCond) inherit from and use super() to call
+					- FINDING: not needed. super().method() only returns to local scope. can use TrueCond
+				- DONE: sort out super() call for TrueCond for MachStateCond
+				- DONE: extend super() solution to rest of Cond classes (had to exclude non-TrueCond childs)
+				- DONE: full game test
+				- DONE: clean up app_main() and post_act(), cond_check(), run_mach()
+			- DONE: update help menu to explain 'drop all / take all' (not from bkpk) & 'except'
+			- DONE: update help menu to explain command queue
+		- CANCEL: entrance => gatehouse
+			- FINDING: entrance works fine - the real change is main_hall => gatehouse
+		- DONE: make path south examineable
+			- DONE: 'path' => 'untrodden_path' in game_update() gs.map
+			- DONE: create untrodden_path ViewOnly obj
+			- DONE: add untrodden_path to entrance.features
+			- DONE: add untrodden_path to the object pickle
+			- DONE: test
+		- DONE: clean up game_update()
+	- DONE: room 2
+		- IDEA: this is a safe room for Burt to rest in - sort of a home base
+		- DONE: main_hall => gatehouse
+			- DONE: crete gatehouse room in game_update()
+			- DONE: create gatehouse description in game_static_gbl()
+			- DONE: update map in game_update()
+			- DONE: initial test
+			- DONE: replace all instances in game_update()
+			- DONE: move main_hall & tapestries to test section of pickle load in game_update()
+			- DONE: full test
+			- DONE: re-org main_hall and faded_tapestries in game_static_gbl()
+			- DONE: clean up game_update()
+		- DONE: de-capitalize all nouns
+		- DONE: de-dup passages descriptions vs. base description
+		- DONE: review existing nouns
+			- DONE: update bandana to remmove 80s ref
+		- DONE: add all referenced nouns
+			- DONE: old_furniture
+			- DONE: cobwebs
+			- DONE: musty_smell
+			- DONE: arrow slits
+		- DONE: use init_desc where appropriate
+		- DONE: make paths examineable
+			- DONE: make path names (provided via 'look') examinable nouns ('path' => Winding Path)
+			- DONE: foreboding_archway
+			- DONE: can passage obj live in map (rather than room feature?)
+			- DONE: update gs.map.get_door_str() to enable f_archway n => s but lit_archway s => n
+				- IDEA: door_var = room_pair['door'] ; if door_var is list, read dict in list => door_var
+				- IDEA: existing clauses ref door_var (not room_pair['door'])
+				- IDEA: contemplate need to make 'door' val work for get_door_lst() and get_door() too
+				- DONE: update go_err() in error_class() to acount for non-door returns from get_door()
+				- DONE: propose multi-value path in game_update()
+				- DONE: update get_door_str() for multi-val path
+				- DONE: update get_door for multi-val path
+				- DONE: update get_door_lst for multi-val path
+				- DONE: create obj and description for lit_archway
+				- DONE: test
+				- DONE: update to allow string paths in multi-val dict
+				- DONE: test
+				- DONE: clean-up game_update(), error_class(), map_class(), room_class()
+				- DONE: doc dict option in comments and in doc file (also mention paths as obj)
+				- DONE: doc that 'door' in map_dict really means 'any passage between rooms'
+		- DONE: update dark_castle description to indicate that there are always dark clouds overhead?
+		- DONE: elim need for unreachable rooms
+			- DONE: update room_lst with special 'unreachable' value
+			- DONE: update gs.map.chk_valid_dir() for 'unreachable'
+			- DONE: update gs.map.get_room_lst() to check for 'unreachable'
+			- DONE: test
+			- DONE: comment out old unreachable rooms
+			- DONE: 2nd full test
+			- DONE: comment special value of 'unreachable'
+			- DONE: clean up gs.map() and game_update()
+			- CANCEL: eliminate hidden rooms [IN-VER]
+				- EXAMPE: s, e, & w of Entrance 
+				- CANCEL: Room class would need a custom_path_lst attrib
+				- CANCEL: custom_path_lst called from room.disp_cond()	
+		- DONE: test all machines
+		- DONE: final tune up
+			- DONE: extract paths from description
+	- DONE: room 3
+		- DONE: de-capitalize all nouns
+		- DONE: de-dup passage descriptions vs. base description
+		- DONE: review existing nouns
+		- DONE: add all referenced nouns
+		- DONE: make paths examineable
+		- N/A: use init_desc where appropriate
+		- DONE: test all machines
+		- DONE: sort out unarmed strike obj (e.g. burt == fist); unlock gate empty handed => Fist
+			- DONE: fix "can't unlock door w/ fist" error on unlock door w/ hand empty
+				- DONE: start fix at line 167 in interp - separate 'lock', 'unlock' cases from 'attack'
+			- DONE: clean-up interp()
+		- DONE: figure out how to update creature.hand vs. inventory to reduce un-fun friction
+			- IDEA: I want the outside world to see what's in creatures hand (e.g. goblin holding axe)
+			- IDEA: but I don't want player to need to think about inventory mgmt
+			- IDEA: if the player specifies the obj and it is in inventory but not in hand:
+				- IDEA: auto move the obj to hand and then perform action
+			- DONE: final decision on whenther 2-word ['drop', 'eat', 'wear'] case = one-off or swap hand
+			- DONE: sort out 2-word case
+				- DONE: review / refine drop()
+				- DONE: one-off solution to 'eat' (similar to 'drop')
+					- DONE: update eat() in item()
+					- DONE: update eat_err() in error()
+					- DONE: test
+				- DONE: one-off solution to 'wear' (similar to 'drop')
+					- DONE: update wear() in item()
+					- DONE: update wear_err() in error()
+					- DONE: test
+			- DONE: core troubleshooting
+				- DONE: sort out debug_poke53281,0
+					- FINDING: ',' no longer usable due to cmd queue - switched to 'debug_xyzzy'
+				- DONE: sort out 'unlock gate with key' from entrance w/ empty hand
+					- FINDING: was just a remnant from the 'debug_poke53281,0' error
+			- DONE: sort out prep case
+				- CANCEL: in validate() check for item not in hand but in backpack; if so, put_in_hand()
+					- FINDING: this won't work - 'with' assumptions in interp(); try interp()
+				- DONE: step back and think how I want this to work for specified obj not in hand
+				- DONE: in interp() (pre-return) chk for item not in hand but in bakp; if so, put_in_hand()
+				- DONE: test lock, unlock, unlock, drink, attack
+				- DONE: test put, show, give
+				- DONE: sort out initial 'get key' score (elim and double open gate score?)
+				- DONE: customize put_in_hand() for bkpk case to avoid weight check				
+				- DONE: update chk_bkpk() to deal with obj in portable containers (e.g. biscuit in bag)
+					- DONE: investigate obj.chk_contain_lst() used in room.chk_contain_item()
+					- FINDING: obj.chk_contain_lst() does not appear to exist
+					- FINDING: get_contain_lst() exists, and chk_contain_item() exists...
+					- FINDING: but chk_contain_lst() appears to be a masked error
+					- DONE: determine test for get_contain_lst()
+						- FINDING: no good test - issue is addressed at remove level
+					- CANCEL: clean-up room.chk_contain_item() that fails due to above error
+					- DONE: fix room.chk_contain_item()
+					- DONE: test to confirm fix
+					- DONE: extend room solution to backpack for portable containers
+						- DONE: overhaul chk_in_bkpk() and bkpk_lst_remove() to ref sub-containers
+						- DONE: test drop(), eat(), wear()(
+						- DONE: troubleshoot verbs w/ bag & biscuit
+			- DONE: Additional fixes for moving to general inventory
+				- DONE: end-to-end review of obj & lbs moving between rooms, containers, and creatures
+					- DONE: dee dive into Identity
+						- IDEA: do we really need get_contain_lst() ?
+						- IDEA: better understand Interactive contain_lst_remove()
+						- DONE: make worn_lst_remove() container aware
+						- DONE: make hand_lst_remove() container aware
+						- IDEA: enable concept of Creature item_inventory ?
+					- DONE: deep dive into Room
+						- IDEA: get_take_all_lst() & get_mach_lst() stay unique to room
+						- IDEA: extend chk_is_vis() & chk_wrt_is_vis() to all receptacles
+						- IDEA: elim is_obj_on_floor() ?
+					- DONE: deep dive into Interactive
+						- IDEA: sort out weight calc (=> burt wt == sum of inv wt) ??
+						- IDEA: elim is_empty() ?
+						- IDEA: make chk_wrt_is_vis() & chk_is_vis() universal / Identity methods?
+							- IDEA: extend to Creature ?
+					- DONE: deep dive into Creature
+						- DONE: hand_lst_remove => 2 levels
+						- DONE: chk_in_hand => extend to 2 levels
+						- IDEA: put_in_hand => move weight error to error_class? Add worn to weight chk?
+						- IDEA: hand_is_empty() and bkpk_is_empty() => unify w/ Interactive is_empty() ?
+						- IDEA: shift 2_word hand approach to prep / interp method for drop, eat, wear ?
+						- DONE: chk_is_worn() => increase to 2 lvls deep
+						- DONE: chk_contain_name() => increase to 2 lvls deep ?
+					- DONE: deep dive into Item
+						- IDEA: move increment_weight & decrement_weight to portable container? (prob not)
+						- IDEA: take()
+							- CANCEL: move "worn remove" buff to sep worn_remove_disp method? (stowe, drop)
+							- IDEA: move "heavy load" buff to put_in_hand() ?
+						- IDEA drop()
+							- IDEA: eliminate local bkpk_remove() call / enable auto-hand-trans
+							- IDEA: enable for port_cont
+						- IDEA: stowe()
+							- IDEA: enable for port_cont
+						- IDEA: eat()
+							- IDEA: eliminate local bkpk_remove() call / enable auto-hand-trans
+							- IDEA: enable for port_cont
+						- IDEA: drink()
+							- IDEA: enable auto-hand-trans
+							- IDEA: no concern about port_cont
+						- IDEA: wear()
+							- IDEA: eliminate local bkpk_remove() call / enable auto-hand-trans
+							- IDEA: enable for port_cont
+					- DONE: where to start?
+						- DONE: chk_in_hand & hand_lst_remove
+							- DONE: test: hold bag in hand, put biscuit
+							- DONE: update chk_in_hand() to be 2-levels deep (like chk_in_bkpk() )
+							- DONE: update hand_lst_remove to be 2-lvls deep (like bkpk_lst_remove )
+							- DONE: test: hold bag in hand, put biscuit
+							- DONE: test weight change
+							- DONE: update doc
+						- DONE: misc fixes
+							- DONE: fix 'help verbs' works but 'help travel' fails
+							- DONE: fix game 1
+						- DONE: standardize port_cont remove in bkpk_lst_remove to match hand
+							- DONE: remove gs attrib
+							- DONE: test put biscuit from bkpk
+						- DONE: chk_is_worn() & worn_lst_remove()
+							- NA: can't test because have no clothes with pockets
+							- DONE: update chk_worn() to be 2-levels deep (like chk_in_bkpk() )
+							- DONE: update worn_lst_remove to be 2-lvls deep (like bkpk_lst_remove )
+						- DONE: expand prep case to include worn
+							- DONE: add baseball_cap to entrance
+							- DONE: pre-test
+							- DONE: add full 'if' statements for chk / remove worn (both dirobj & noun)
+							- DONE: test gen
+							- DONE: test burt wt
+							- DONE: test put to see if remove disp is triggered
+							- DONE: address remove disp in 'if'; add "(removing the X first)"
+							- DONE: test put to see if remove disp is triggered
+						- DONE: convert relevant 2_word cases to prep strategy
+							- DONE: drop
+								- DONE: update interp 2_word case
+								- DONE: update drop() method in item()
+								- DONE: test verb, lvl2, & wt
+							- DONE: stowe (from worn only)
+								- DONE: update interp 2_word case for worn
+								- NA: update stowe() method in item() [bkpk never in scope]
+								- DONE: test verb and wt handling
+							- DONE: wear 
+								- DONE: update interp 2_word case (bkpk only)
+								- DONE: update wear() method in item()
+								- DONE: test verb, lvl2, & wt
+							- DONE: eat
+								- DONE: update interp 2_word case
+								- DONE: update wear() method in item()
+								- DONE: test verb, lvl2, & wt
+							- DONE: re-test drink prep verb
+							- DONE: remove baseball_cap from entrance
+					- DONE: decide if sword glows in backpack?? (probably yes if 'hand' de-emphasized)
+						- DECISION: yes
+			- DONE: dangerous scenarios
+				- IDEA: burt should attempt to auto-draw a weapon when threatened
+					- IDEA: also the special nature of weapons in general needs to be highlighted
+					- IDEA: provide disp text any time burt draws or sheaths a weapon
+				- IDEA: do I want weapon-draw disp if sword just passes through burt's hand from bkpk?
+					- IDEA: e.g. sword in bkpk and burt uses 'put' or 'drop' or 'give'
+					- DECISION: No, causes confusion; sword disp only if turn ends w/ sword in hand
+					- IDEA: also, I don't want weapon-sheath disp if sword just passes through hand
+					- IDEA: ony want weapon-sheath disp if weapon was actually 'drawn'
+				- DONE: update general weapon disp behavior
+					- IDEA: "whenever player 'take's weapon => "You are armed and dangerous!"
+					- IDEA: "whenever player drops / stowes a weapon => "You look a bit more approachable."
+					- CANCEL: update 'take' weapon disp
+					- IDEA: I have a weapon-sheath disp problem: how to know if weapon was drawn?
+						- IDEA: maybe need a core value for last_turn hand contents???
+					- IDEA: also, I have a weapon-sheath disp scalability issue
+						- IDEA: there is only one way anything goes into burt's hand ('take')
+						- IDEA: but many ways it could leave ('drop', 'stowe', 'put', 'gvie')
+						- IDEA: and there could be more ways in the future - don't want disp code for all
+						- IDEA: actually, it worse than this because there are now many way to draw weapon
+						- IDEA: what if burt attempts to 'unlock' door with sword and now has it in hand
+						- IDEA: need a way to compare hand contents at end of each turn?
+						- IDEA: where to do this? must run if error or cmd_exe... validate is too soon...
+						- IDEA: yes - I think I need a dedicated call in app_main() to enable
+						- IDEA: weapon_disp() called between cmd_exe() and post_act()
+					- CANCEL: solve weapon disp
+					- CANCEL: update weapon disp for 'drop', 'stowe', 'put', 'give'
+					- CANCEL: update weapon disp for put_in_hand()
+				- DONE: solve draw-weapon to hand for "attack X with <weapon>" case
+					- DONE: in app_main(), get start_in_hand at same time as incrementing move
+					- DONE: create disp_weapon() function in app_main w/ gs & start_in_hand attribs
+					- DONE: call disp_weapon() between cmd_exe() and post_act()
+					- DONE: test 'take' case for draw
+						- FINDING: score buffers in cmd_exe before draw text
+					- DONE: test 'drop' & 'stowe' case for sheathe
+					- DONE: test unlock, show, give from bkpk case for draw
+						- FINDING: doesn't work because hand is updated in interp()
+						- IDEA: move start_in_hand to before interp()
+					- DONE: test 'take X' for sheathe
+					- DONE: test put from bkpk for no buffer
+				- DONE: solve auto-draw weapon for burt attacks goblin case
+					- IDEA: "(Sensing imminent combat, you draw a weapon)"
+					- IDEA: bake draw weapon into interp() (v.s. auto use what's in hand)
+					- IDEA: useful existing methods: in_hand_is_weapon(), is_weapon()
+					- DONE: add as first if statement if 'with' not specified for 'attack'
+					- DONE: test attack hand empty, no sword
+					- DONE: test attack hand full, no sword
+					- DONE: test attack with cheese, key in hand
+					- DONE: test attack with fist, key in hand => stowe key, attack with fist, hand empty
+					- DONE: test attack sword in hand
+					- DONE: test attack hand empty, sword in bkpk
+					- DONE: test attack hand full, sword in bkpk					
+					- DONE: test attack 'with cheese'
+					- DONE: test attack 'with sword'
+					- DONE: test attack 'with fist'
+					- DONE: test attach hedgehog while both sword & axe in bkpk
+			- DONE: clean-up item handling methods
+				- DONE: capture weapon disp updates on diagram (especially 'give')
+				- DONE: detailed review of inventory management notes / fix opportunities
+					- DONE: Creature class
+						- DONE: remove_item() calls hand_lst_remove, bkpk_lst_remove, & worn_lst_remove
+							- DONE: all 3 now portable container aware
+							- DONE: all 3 are hero_wt and port_c_wt aware
+						- DONE: Creature first pass
+						- DONE: interim game test
+						- DONE: Creature deep-dive
+							- DONE: updated creature.remove_item() to be container aware ()
+							- DONE: decided no need creature.is_empty() [similar to container]
+							- DONE: decided not to attempt to integrate hand_is_empty() and get_hand_item()
+								- IDEA: None value for get_hand_item() is often not useful
+								- IDEA: usually want to take an action / buffer only if hand item exists
+							- CANCEL: in creature, consolidate if hand_empty() => None else get_hand_item()
+						- DONE: more testing
+						- DONE: Creature final clean-up
+					- DONE: Interactive class
+						- DONE: update Container.remove_item() to be level-2 aware
+						- DONE: decide to keep Container.is_empty() as standard call (even though not used)
+						- DONE: testing
+						- DONE: clean-up Interactive
+					- DONE: Room class
+						- DONE: elim is_obj_on_floor() => chk_contain_item()
+						- DONE: test
+						- DONE: elim floor_lst_extend()
+						- DONE: test
+						- DONE: sort out room.remove_item()
+							- IDEA: there is a need for a simple, visibility-independent chk_contain_item()
+							- IDEA: but there are also cases where chk_contain_item() is mis-used:
+								- IDEA: in these cases it is treated as deep inventory check:
+									- FINDING: ObjInInvCond(), take_err(), take()
+							- IDEA: also, should pre-fix obj.check_contain_item() w/ obj.is_container()
+							- DONE: document chk_contain_item() as single level
+							- DONE: create chk_item_in_inv() universal method that goes deeep
+								- DONE: probably first need to create get_top_lvl_inv_lst()
+								- DONE: Identity => False
+								- DONE: Room
+									- DONE: new mehtod
+									- DONE: second is_container() is not contributing - remove
+								- DONE: Creature
+								- DONE: Interactive
+							- DONE: update room.remove_item() based on use of chk_item_in_inv()
+							- DONE: test
+							- DONE: review chk_contain_item() & update w/ is_container / chk_item_in_inv()
+								- DONE: Cond class
+								- DONE: Creature class
+								- DONE: Error class
+								- DONE: Identity class
+								- DONE: Interactive class
+								- DONE: Item class
+								- DONE: Room class
+							- DONE: also check for mis-use of get_vis_contain_lst() => get_inv_lst()
+								- DONE: interp() 
+								- DONE: creature()
+									- DONE: create get_inv_lst() for identity, creature, interactive, room
+									- DONE: review / update chk_item_in_inv() based on get_inv_lst()
+									- DONE: update creature.has_weapon() code w/ get_inv_lst()
+									- DONE: update creature.get_weapon() code w/ get_inv_lst()
+									- DONE: test
+									- IDEA: get_vis_contain_lst() more appropriate than get_inv_lst()
+									- IDEA: (for has_weapon / get_weapon)
+									- IDEA: because shouldn't be able to draw weapon in closed container
+									- DONE: revert has_weapon / get_weapon
+								- IDEA: do get_inv_lst and chk_inv_lst enable access to locked containers?
+								- IDEA: need to tune for visible (i.e. not in closed containers)
+								- DONE: refactor inventory methods:
+									- DONE: interactive.get_inv_lst()
+									- DONE: interactive.chk_inv_lst()
+									- DONE: creature.get_inv_lst()
+									- DONE: creature.chk_inv_lst() [ => in get_inv_lst() ]
+									- DONE: room.get_inv_lst()
+									- DONE: room.chk_inv_lst() [ => in get_inv_lst() ]
+							- DONE: re-do mis-use check on get_vis_contain_lst() => get_inv_lst()
+								- DONE: interp()
+								- DONE: creature() [has_weapon() / get_weapon() ]
+								- DONE: error, identity, interactive, room
+								- DONE: test
+									- DONE: 'get all' with postbox closed => 'can't see cert'
+									- DONE: biscuit in bag in postbox: take biscuit => 2x biscuits
+										- DONE: print for room.remove() [prints]
+										- DONE: print for interactive.remove() [does not print??]
+										- DONE: print to prove that interactive.remove_item() is running
+										- FINDING: appears biscuit is in postbox??
+										- DONE: investigate results from put() => not put() fault ??
+										- DONE: problem appears to be not using copy() in get_inv_lst return
+										- DONE: now I'm getting an error on 'get biscuit' and get fails
+										- DONE: comment out interactive.remove troubleshooting prints
+										- DONE: search on all uses of list.extend()
+									- DONE: 'drp all','get rck','stowe rck','drp rok','get all except rck'
+									- DONE: get biscuit from bag in postbox
+									- DONE: general test
+										- DONE: fix can't read or examine scroll while seated in throne
+									- DONE: one final full-game test
+				- DONE: review Identity / Universal ideas
+					- DONE: review value of elim get_contain_lst()
+						- DONE: interactive()
+							- DONE: update
+							- DONE: test
+						- CANCEL: map()
+							- FINDING: get_contain_lst() has value of its own; see Identity comments
+						- DONE: test
+				- DONE: clean-up all classes and methods!
+				- DONE: full test
+				- DONE: document the definition of accessable inventory:
+					- IDEA: with the elimination of 'hand', need to know what items a creature can access
+					- IDEA: this is distinct from obj that are visible in 2 ways:
+						- IDEA: 1) it only relates to items
+						- IDEA: 2) it assumes access to all items (because it is the creature's inventory)
+						- IDEA: an obj in a closed container is not acceessable
+						- IDEA: inventory relates to creatures therefor is needed for Interactive & Creature
+						- IDEA: room.inventory has also been created but may be superfluous???
+				- DONE: update 'help hand' to explain inventory concepts
+				- DONE: test cup of tea
+				- DONE: update sword glow narrative for crocodile encouters
+					- DONE: update condition to determine if shiny_sword is in hand
+						- DONE: create sword_in_hand_cond and update temp attribs
+						- DONE: comment out old cond & result
+						- DONE: create new combo cond: [sword_in_hand, crown_not_dispensed]
+						- DONE: create new result: moat_get_crown_result2 and update temp attribs
+						- DONE: create text for get_crown_result2
+						- DONE: run game_update
+						- DONE: test => not running sword result when holding sword; print chk_cond()
+							- DONE: try printing mach name and full cond & result lists
+							- FINDING: wrong cond names caused the problem; I am surprised
+		- CANCEL: general ideas
+			- DONE: now prep case works with portable containers but 2-word does not - fix
+			- DONE: extend hand => bkpk to worn items?			
+			- CANCEL: address minor issues / redundancy / naming
+			- CANCEL: restructure 2_word cases
+			- CANCEL: generalize item handling across receptacles; use creature inventory approach
+			- CANCEL: next steps to consider
+			- CANCEL: tons of testing!!
+	- INPROC: room 4
+		- DONE: immediate fixes:
+			- DONE: correct 'stowe' command to 'stow'
+				- DONE: search on 'stowe' and replace with 'stow'
+				- DONE: test
+		- INPROC: in-depth walk-through of Throne Room
+			- DONE: de-dup passage descriptions vs. base description
+			- DONE: de-capitalize all nouns (except rooms)
+				- DONE: throne_room
+				- DONE: throne
+				- DONE: crystal_box
+				- DONE: calligraphy
+				- DONE: family_tree
+				- DONE: stone_coffer
+				- DONE: kinging_scroll
+				- DONE: silver_key
+				- DONE: illuminated_letters
+			- DONE: add all referenced nouns
+				- DONE: pedestal (late romantic period)
+				- DONE: windows
+				- DONE: silver_keyhole => move silver sword hint here
+				- DONE: stained_glass
+				- DONE: make paths examineable
+			- INPROC: additional review
+				- DONE: test all machines
+				- DONE: use init_desc where appropriate
+					- DONE: pedestal to right
+						- DONE: create init_desc obj
+						- DONE: create init_desc description
+						- DONE: add to room
+					- DONE: coffers to left
+						- DONE: create init_desc obj
+						- DONE: create init_desc description
+						- DONE: add to room
+					- DONE: test (fix unable to get obj in coffer? )
+					- DONE: try re-aranging examine order to show init obj before paths
+						- DONE: move paths from room.cond_disp() to room.contain_disp()
+						- IDEA: this is good prep for linking room.cond to lighting
+						- DONE: testing to get spacing right
+						- DONE: final testing (including cup_of_tea)
+						- DONE: clean up room_class() and fully comment parts of disp_contain()
+						- DONE: update antechamber_post_goblin descript w/ control panel in sep line
+			- DONE: problem-solving
+				- DONE: make pedestal into true surface (enables error on attempt to put obj on it)
+				- DONE: enable "the box is firmly affixed to the pedestal" warning on attempt to take box
+					- DONE: enable warning
+					- FINDING: now, the crystal_box condition is no longer highlighted... how to fix?
+					- CANCEL: maybe just put crystal_box in floor_lst & elegant_pedistal max_obj = 0
+				- DONE: use warning to divert attempts to pick up stained_glass (mention melted)
+				- DONE: create highlight attrib for init_desc
+					- IDEA: if highlight == True, don't remove from view_only_lst
+					- DONE: implement for elegant_pedestal in throne_room
+				- CANCEL: use init_desc w/ control_panel in antechamber ?
+					- DECISION: tempting out of "purity of design" but nt better than current approach
+			- DONE: review / play-through existing noun descriptions
+				- DONE: fix 'walk into wall' error
+					- FINDING: problem appears to be in map.chk_valid_dir()
+					- DONE: re-write as nested for loop and add print statements to troubleshoot
+					- FINDING: walk-into-wall error is gone but now moat_mach doesn't run??
+					- DONE: try reversing for loop order
+					- FINDING: same exact behavior
+					- DONE: revert to original for loop order
+					- DONE: test orginal return code
+					- FINDING: same failure as orignal => poor test; running for loops twice
+					- DONE: confirm that return value is as expected
+					- FINDING: go_err() appears to return is_att == True
+					- DONE: chk app_main() for go special case?
+					- FINDING: no go special case but cmd_override is evaluating to False (wrong)
+						- NOTE: is_val == F, is_att = T
+					- DONE: fix cmd_override
+						- FINDING: cmd_override passed by InvisTrigMach.run_mach()
+						- FINDING: die_in_moat_result.cmd_override == True
+						- DONE: review AutoMachMixIn.run_mach => check EndResult.result_exe()
+					- DONE: jump into the world of AI Troubleshooting!
+						- FINDING: today was very different, aws q helped me troubleshoot
+						- NARATIVE: the basic issue was that map.chk_valid_dir() was not really functioning correctly all this time. When I fixed it - suddenly the path not being valid broke the is_valid_req for the WeaponInHandCond class and I could no longer die by going off the drawbridge. After a week of manual troubleshooting, I called in q and they were amazing! They found and fixed the issue in on sitting. 
+						- Q's Explanaation: 	
+							"The code is now clean and the fix is in place:
+
+							Root cause: The no_weap_in_hand_cond was failing because is_valid = False (invalid command) and is_valid_reqd = True (default), so TrueCond.cond_check() returned False before checking the weapon condition.
+
+							Solution: Set is_valid_reqd=False for no_weap_in_hand_cond so it evaluates even when the command is invalid.
+
+							Implementation: Added **kwargs support to WeaponInHandCond constructor to accept the is_valid_reqd parameter and pass it to the parent TrueCond class.
+
+							Now when you go east from the Entrance without a weapon, cmd_override correctly evaluates to True, triggering the death result as intended."
+					- DONE: new fixes
+						- DONE: probably the q fix means I don't need pretend rooms anymore?
+							- NOTE: i think I got rid of these already - double check this
+							- FINDING: confirmmed... I got rid of the fake rooms a while ago
+							- FINDING: this was the double error that got me:
+							- FINDING: rooms removed while map.chk_valid_dir() wasn't working right
+						- DONE: review existing is_valid_reqd state for iron_portcullis
+							- F: true_cond_valid_not_reqd of class TrueCond has is_valid_reqd = False (me)
+							- F: no_weap_in_hand_cond of class WeaponInHand has is_valid_reqd = False (q)
+							- DONE: add **kwargs (2x) to all Condition classes
+							- DONE: figure out how to pass is_valid_reqd = False for compound cond
+								- FINDING: in AutoMachMixIn.run_mach() , both cond must just eval True
+							- DONE: solve moat with weapon (first try) case
+							- DONE: solve moat with weapon (repeat) case
+							- DONE: test all moat cases
+						- DONE: mach is_valid_reqd fix-it
+							- FINDING: today, the is_valid_reqd bool lives in machine conditions
+							- FINDING: bool refers to *triggers* which are hardwared to the mach
+							- IDEA: need to move is_valid_reqd to machine level
+							- IDEA: this will simplify conditions and condition evaluation
+							- IDEA: make is_valid_reqd a bool attrib of ProtoMachMixIn
+							- IDEA: in pre_act(), pass is_valid_reqd to trig_check() and test there
+							- DONE: ask Q if she agrees with approach => Q agrees!
+							- Q_REC: The implementation would be:
+								- Add is_valid_reqd to ProtoMachMixIn
+								- Update trig_check() to handle the validation logic
+								- Modify pre_action() to pass is_valid to trig_check()
+								- Clean up all the **kwargs from the condition classes
+								- Update your machine definitions to use the new parameter
+							- DONE: work w/ Q to move is_valid_reqd to machine trigger level
+								- DONE: **kwargs / is_valid_reqd = True added to ProtoMachMixIn
+								- DONE: update trig_check() and pre_act(), post_act(), auto_act()
+								- DONE: add is_valid_reqd as attrib for moat_mach(), goblin_attack() 
+								- DONE: elim is_valid from run_mach() and cond_check() ??
+								- DONE: goblin_attack_mach() true_cond_no_valid_reqd => true_cond ??
+								- DONE: testing
+									- FINDING: invalid cmds (entrance go e, antichamb go n) failing
+									- DONE: troubleshoot w/ Q => I had forgotten to run game_update()
+									- DONE: test cup_of_tea()
+					- DONE: clean-up app_main() and map_class() and others
+				- DONE: update is_valid_reqd in doc.md
+		- DONE: general
+			- DONE: search on all room names to ensure consistently capitalized
+			- DONE: review final title => king vs. baron
+			- DECISION: should obj.full_name be de-captialized? => YES
+			- DONE: clean up cleesh static_gbl, clean-up game_static_gbl
+		- INPROC: additional fixes (ask q for help):
+			- DONE: make inventory description text rare (20%?)
+				- DONE: review 'score' and 'title' to see how to buff dict within dict
+				- DONE: put descriptions in dict in game_static_gbl (key = #, value = txt)
+				- DONE: use len(hero_descript_dict) to get hero_descript_count
+				- DONE: rename core.hero_descript_count => core.hero_descript_pct
+				- DONE: in base_class() rand_max = ((1/hero_descript_pct) * hero_descript_count)
+				- DONE: get dict_val; e.g. title = gs.io.get_dict_val('titles_by_score', title_score)
+				- DONE: in base_class() use 'try' with buff_f() to enable default response
+				- DONE: test DC
+				- DONE: Test Cup of Tea
+				- DONE: check in with Q
+				- DONE: clean up old hero descriptions in game_static_dict
+				- DONE: clean up gs.core(), both game_updates(), base()
+			- DONE: improve item listings for 'l' (with Q!):
+				- DONE: ensure that portable container contents are listed with port container "()"
+				- DONE: use and between 2nd to last and last item
+				- DONE: use a and an for single items
+			- DONE: improve rest of 'l' UI
+				- DONE: fix articles for view_only listings
+				- DONE: fix articles for passages
+				- DONE: test
+				- DONE: clean-up map
+			- INPROC: improve 'contain' UI (e.g. bag and coffer)
+				- DONE: articles
+				- DONE: and pattern
+				- DONE: port-contain contents in parenthesis (e.g. bag in coffer)
+				- DONE: testing
+					- DONE: intantiate larger lidded container and port container in Entrance
+					- DONE: detailed testing w/ x and l
+				- DONE: fix pre-list of port containers
+				- DONE: add articles for port_containers in containers (use full for-loop)
+				- DONE: generalize display list w/ view_only.get_disp_str()
+				- DONE: fix look w/ cheese in shoebox in box
+				- DONE: fix look w/ empty shoebox in box
+				- DONE: clean-up ContainMixIn disp_contain()
+				- DONE: re-use get_disp_str() in room for items
+				- DONE: re-use get_disp_str() in room for view_only
+				- DONE: test on special case of l / x while in seat
+				- DONE: rename viewonly.get_disp_str() => get_disp_sub_str()
+				- DONE: create viewonly.get_disp_str()
+				- DONE: call get_disp_str() from Interactive.disp_contain() ?
+				- DONE: call get_disp_str() from room.disp_contain() [view_only & items] ?
+				- DONE: extend UI to i / creature.disp_contain
+					- DONE: hand
+					- DONE: backpack
+					- DONE: worn
+					- DONE: test
+				- DONE: clean-up Interactive, view_only, room, creature
+				- DONE: text cup_of_tea
+				- TBD: full test of dc3
+				- TBD: final playthrough room 4 to make sure it all works together
+		- INPROC: minor features:
+			- INPROC: implement 'jump' (jump on drawbridge in Entrance = go over side ?)
+				- DONE: test play 'jump' cmd in Zork; test at chasim too
+					- FND: non-dangerous responses
+						- FND: "Wheeeeeeeeeee!!!"
+						- FND: "Are you enjoying yourself?"
+						- FND: "Do you expect me to applaud?"
+						- FND: "Very good. Now you can go to the second grade."
+					- FND: dangerous response
+						- FND: "This was not a very safe place to try jumping. Geronimo..."
+				- DONE: implement standard response for creature.jump() (hero & other)
+					- DONE: create creature.jump()
+					- DONE: in staic_gbl(), add 'jump' to 'one_word_convert_lst'
+					- DONE: in staic_gbl(), add 'jump' to 'known_verbs_lst'
+					- DONE: in interp() create routine for 'jump'
+					- DONE: create jump_err() method in error_class()
+					- DONE: test in game (including while seated)
+					- DONE: test 'help one-word-commands'
+				- DONE: implement modular machine to alter jump behavior on drawbridge
+			- DONE: clean up test obj
+- DONE: git merge
+	- DONE: 'git checkout master' to switch focus to master
+	- DONE: 'git branch: to confirm focus
+	- DONE: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+	- DONE: 'git push' to push merge to origin (GitHub)
+	- DONE: confirm that origin is updated
+	- DONE: confirm that code is updated and still runs
+	- DONE: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+	- DONE: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+	- DONE: confirm origin is cleaned up
+	- DONE: post-branch-delete run test
