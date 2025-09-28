@@ -51,7 +51,7 @@ To Do List - Dark Castle v3
 
 # *** BIG PICTURE ***
 - DONE: machinces / classes / error subsystem
-- TBD: story updates
+- DONE: story updates
 - TBD: interpreter updates
 - TBD: test harness
 - TBD: db back end (sqlalchemy)
@@ -1099,10 +1099,19 @@ End Date:
 					- DONE: create jump_err() method in error_class()
 					- DONE: test in game (including while seated)
 					- DONE: test 'help one-word-commands'
-				- TBD: implement modular machine to alter jump behavior on drawbridge
-			- TBD: clean up test obj
+				- DONE: implement modular machine to alter jump behavior on drawbridge
+			- DONE: clean up test obj
 - TBD: git merge
-
+	- TBD: 'git checkout master' to switch focus to master
+	- TBD: 'git branch: to confirm focus
+	- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+	- TBD: 'git push' to push merge to origin (GitHub)
+	- TBD: confirm that origin is updated
+	- TBD: confirm that code is updated and still runs
+	- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+	- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+	- TBD: confirm origin is cleaned up
+	- TBD: post-branch-delete run test
 
 
 

@@ -320,7 +320,7 @@ goblin_attack_mach = InvisTrigMach('goblin_attack_mach', None,
 
 entrance_moat_mach = InvisTrigMach('entrance_moat_mach', False, 
 		'pre_act_cmd', 'entrance_temp', True,
-		[['go', 'east'], ['go', 'west']],
+		[['go', 'east'], ['go', 'west'], ['jump', 'burt']],
 #		[no_weap_in_hand_cond, crown_not_dispensed_cond, crown_dispensed_cond],
 #		[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]
 		[no_weap_in_hand_cond, [crown_not_dispensed_cond, sword_in_hand_cond], crown_not_dispensed_cond, crown_dispensed_cond],
@@ -436,7 +436,7 @@ stone_coffer_init_desc = InitDesc('stone_coffer_init_desc', stone_coffer, False,
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
 		[dark_castle, moat, drawbridge, rusty_keyhole],
-		[burt, postbox, big_rock, cardboard_box, red_shoebox, test_chair], 
+		[burt, postbox, big_rock], 
 		[entrance_moat_mach, entrance_south_warn], 
 		[postbox_init_desc, big_rock_init_desc]
 	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
