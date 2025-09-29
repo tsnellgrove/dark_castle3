@@ -124,8 +124,6 @@ class Food(Item):
 		creature = gs.core.hero
 
 		creature.hand_lst_remove(self)
-		gs.io.buffer("Eaten")
-		gs.io.buff_s(f"{creature.name}_eat_{self.descript_key}")
 		gs.io.buffer(f"Eaten.")
 		gs.io.buff_s(f"{creature.name}_eat_{self.descript_key}")
 		return 

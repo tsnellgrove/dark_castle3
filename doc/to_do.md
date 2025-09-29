@@ -69,31 +69,74 @@ To Do List - Dark Castle v3
 - DONE: update game version
 - DONE: update cleesh version
 - DONE: test version updates
-- TBD: quick fix - correct double buffer on 'eat cheese'
-- TBD: review backlog and choose next goal
+- DONE: quick fix - correct double buffer on 'eat cheese'
+- INPROC: review backlog and choose next goal
+- TBD: creat branch
 - TBD: more frequent merges!!
 
 
+############################
+### CLEESH VERSION 3.8.2 / DARK CASTLE VERSION 3.3.0 START ###
+############################
+
+
+
+
+############################
+### CLEESH VERSION 3.8.2 / DARK CASTLE VERSION 3.3.0 END ###
+############################
+
+
 *** major updates in separate git merges ***
+- TBD: mvps
 - TBD: implement full set of cardinal directions + u & d (?)
+- TBD: food
+- TBD: drink
+- TBD: sleep
+- TBD: day / night
+- TBD: webify
+- TBD: live updates with git
 - TBD: turn lantern into actual light (?)
 	- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
-	- IDEA: see thoughts on light in to-do notes below
+	- IDEA: lean in on TADS approach
 - TBD: major interpreter update!
+	- TBD: introduce verbose and brief commands
+	- TBD: address 'Do What I Mean' in interp() now?
+- TBD: extend castle
+
 
 
 *** major updates in separate git merges ***
 
 
+*********************
+*** SOMEDAY MAYBE ***
+*********************
 
+*** mvps ***
+- TBD: tighten up / modularize app_main()
+- TBD: update 'exit' to assume seat player is contained in
+	IDEA: i.e. default to 'stand' if 'seat' not given
+- TBD: sort out double print of score after win
+- TBD: disable control_panel dispenser mach once it has run (as final result)
+- TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
 
-*** misc someday / maybe fixes ***
+*** done ***
+- DONE: sort out how to deal with 'hand' vs. 'inventory' (just eliminate hand entirely?)
+- DONE: varry inventory intro text (?)
+- DONE: search for 'Nana'-based errors
+- DONE: maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
+
+*** cancel ***
+- CANCEL: should complex obj (stone_coffer) > feature_lst if minor; with only key obj called out??
+	- FINDING: no, can't access Interactive class from feature_lst
+
+*** structural ***
 - TBD: maybe call disp_weapon from within cmd_exe() instead of in app_main() due to score??
 	- EXAMPLE: 1) get sword from hedgehog, 2) attack goblin 'with sword' from bkpk
 - TBD: should burt auto-draw weapon when attacked (e.g. 'go n' near goblin)?
 	- IDEA: add 'draw_weapon' call into attack()
 - TBD: should burt auto-draw weapon when for moat case?
-- TBD: address 'Do What I Mean' in interp() now?
 - TBD: create a wearabel portable container and test lvl 2 with prep & 2_word
 	- IDEA: simple wearable portable container would be a "fanny pack"
 	- TBD: create class for wearable portable container
@@ -101,55 +144,42 @@ To Do List - Dark Castle v3
 	- TBD: test basic functionality
 	- TBD: test functionality with all in-scope 2_word & prep verbs
 	- TBD: test whether game can distinguish between 'pack' and 'pack'
-- TBD: search on obj nouns and ensure always capitalized (???)
-
-
-*** decision about UI ***
-- TBD: how to handle obj.full_name capital cases?
-- TBD: should complex obj (stone_coffer) > feature_lst if minor; with only key obj called out??
-- TBD: should I add handle as an attrib of door? Could pull handle to open? door would have open direction
-- TBD: investigate enabling init_desc attrib for items in containers (e.g. certificate)
 - TBD: leverage app_main() cmd_queue for 'again' command ?
 - TBD: enable use of 'and' with action multiples ?
 - TBD: enable use of 'from' with action multiples ??
-
-
-*** known cleesh tech issues ***
-- TBD: sort out how to deal with 'hand' vs. 'inventory' (just eliminate hand entirely?)
-- TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
-- TBD: improve drink verb resevoir_lst error via undrinkable_dict error (custom error for each non-liquid)
-- TBD: update 'exit' to assume seat that player is contained in (i.e. to default to 'stand' if 'seat' not given)
-- DONE: varry inventory intro text (?)
-- TBD: sort out double print of score after win
-- search for 'Nana'-based errors
-- maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
-- TBD: disable control_panel dispenser mach once it has run (as final result)
-
-
-*** create lighting system ***
-- IDEA: see full section below; lean in on TADS approach
-
-*** content to use somewhere ***
-- IDEA: RH valor = caprecious and messy sort of valor - sort that shows up two hours late and three sheets to the wind but is ready and willing to save the day
-- TBD: tune goblin text
-	- TBD: maybe add a faded poster of ancient and unreasonable regulations to the antechamber wall?
-
-*** misc ideas ***
 - TBD: consider other possible uses for **kwargs; google "when to use kwargs in python"
-- TBD: instantiate obj in hero inventory
-- TBD: introduce verbose and brief commands
 - TBD: find a good use for TravelResult !!
 - TBD: at end of story-driven updates, elim "##" error messages in error()
+
+*** decision about UI ***
+- TBD: search on obj nouns and ensure always capitalized (???)
+- TBD: how to handle obj.full_name capital cases?
+- TBD: Add handle as an attrib of door? Could pull handle to open? door would have open direction
+- TBD: investigate enabling init_desc attrib for items in containers (e.g. certificate)
+- TBD: instantiate obj in hero inventory
+
+*** known cleesh tech issues ***
+- TBD: improve drink verb resevoir_lst error via undrinkable_dict error
+	- IDEA: custom error for each non-liquid
+
+*** new content / story ideas ***
+- IDEA: Royal Hedgehog valor:
+	- IDEA: caprecious and messy sort of valor
+	- IDEA: sort that shows up two hours late and three sheets to the wind 
+	- IDEA: (but is ready and willing to save the day)
+- TBD: tune goblin text
+	- TBD: maybe add a faded poster of ancient and unreasonable regulations to the antechamber wall?
 - IDEA: maybe the hedgehog should act differently once you get & wear the crown?
+- IDEA: at some point, perhaps Burt must knight the loyal hedgehog ?
+- IDEA: meet the wizard from Enchanter who is searching for a scroll
+- IDEA: puzzle based on 4 weights to weigh 40 lbs math puzzle
+- IDEA: After winning game Burt can wander around the castle and see everone turned back to human?
+- IDEA: In the Library there is a locked magical book ('The Future and Once King')
+	- IDEA: is "still being writtin" according to the dragon librarian
+	- IDEA: After winning the game, Burt can come back, find it unlocked, and read it
+	- IDEA: (it's the back story for DC I; replaces magic scroll concept)
 
-*** future story / puzzle ideas ***
-- at some point, perhaps Burt must knight the loyal hedgehog ?
-- meet the wizard from Enchanter who is searching for a scroll
-- puzzle based on 4 weights to weigh 40 lbs math puzzle
-- perhaps after winning the game Burt can wander around the castle and see everone turned back to human?
-- In the Library there is a locked magical book ('The Future and Once King') that is "still being writtin" according to the dragon librarian. After winning the game, Burt can come back, find it unlocked, and read it (it's the back story for DC I)
-
-*** Burst of new adventure / puzzle ideas ***
+*** extend adventure / puzzle ideas ***
 - muster room / main_hall antechamber is north of Gatehouse
 	- puzzle TBD
 - east of muster room = storage closet (TBD)
@@ -230,16 +260,13 @@ To Do List - Dark Castle v3
 	- library with book_dragon
 	- courtyard
 		- great tree of bright castle (in decay)
-		- ducklings in courtyard imprint on burt; turn out to be bathin nymphs?
+		- ducklings in courtyard imprint on burt; turn out to be bathing nymphs?
 	- cathedral / oratory holds vampiire
 
 
 
-############################
-### CLEESH VERSION 3.8.1 / DARK CASTLE VERSION 3.2.0 END ###
-############################
 
-# *** FUTURE TO DO *** #
+*** TO REVIEW ***
 
 *** Future to dos ***
 - TBD: state machine for hedgehog [FUTURE]
