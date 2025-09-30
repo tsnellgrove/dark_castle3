@@ -94,8 +94,9 @@ To Do List - Dark Castle v3
 - TBD: drink
 - TBD: sleep
 - TBD: day / night
-- TBD: webify
-- TBD: live updates with git
+- TBD: liquids
+- TBD: transparnecy
+- TBD: fire / heat
 - TBD: turn lantern into actual light (?)
 	- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
 	- IDEA: lean in on TADS approach
@@ -103,6 +104,9 @@ To Do List - Dark Castle v3
 	- TBD: introduce verbose and brief commands
 	- TBD: address 'Do What I Mean' in interp() now?
 - TBD: extend castle
+- TBD: webify
+- TBD: live updates with git
+- TBD: db back end
 
 
 
@@ -150,6 +154,8 @@ To Do List - Dark Castle v3
 - TBD: consider other possible uses for **kwargs; google "when to use kwargs in python"
 - TBD: find a good use for TravelResult !!
 - TBD: at end of story-driven updates, elim "##" error messages in error()
+- TBD: sort out local buffering in standard errors?
+- TBD: update validate() to move debug error indicators to pre rather than post			
 
 *** decision about UI ***
 - TBD: search on obj nouns and ensure always capitalized (???)
@@ -263,12 +269,17 @@ To Do List - Dark Castle v3
 		- ducklings in courtyard imprint on burt; turn out to be bathing nymphs?
 	- cathedral / oratory holds vampiire
 
+TBD: Introduce multi-room puzzle
+- IDEA: trigger in one room, switch in 2nd room, effect in 3rd room
+
+TBD: New Room Update
+- IDEA: convert Moat to actual rooms?
+	- IDEA: Create on_the_moat room that e, w, d lead to 
+	- IDEA: unarmed players get one turn before croc attacks
+	- IDEA: no floor to room (items drop down several rooms)
 
 
-
-*** TO REVIEW ***
-
-*** Future to dos ***
+*** future big structural improvements ***
 - TBD: state machine for hedgehog [FUTURE]
 	- IDEA: need to implement hedgehog state machine based on creature state
 		- IDEA: Both hedgehog and throne_broach_dispenser would be better implemented as state machines
@@ -323,23 +334,33 @@ To Do List - Dark Castle v3
 
 - TBD: enable general case of player interaction in-game, from web_main() [e.g. "what is your name?"]
 	- IDEA: need to reconsider how to present backstory...
-	- IDEA: web_main is framework for all games - so "floating scroll" won't work (think of space game)
+	- IDEA: web_main is framework for all games - "floating scroll" won't work (think of space game)
 		- IDEA: ARGH!!!! I just realized I CAN'T do this in gs.end ....
 	- IDEA: except for in web_main(), there is no interactive option
-		- IDEA: everything is bulk beffered and then presented to the player for input back in web_main()
-		- IDEA: input is ONLY collected in web_main() ... which is a *HUGE* pain for interaction like backstory
-		- IDEA: so, I need to move the backsotry interaction back to web_main() and pass is_bkstry with it
-		- IDEA: then I need to pull 'read_bkstry_str' and 'backstory' from static_gbl() using game_name & path
-		- IDEA: maybe need a function in file_io() to pull descriptions from static_gbl() would be re-usable
+		- IDEA: everything is bulk beffered, then presented to player for input back in web_main()
+		- IDEA: input is ONLY collected in web_main() which is *HUGE* pain for backstory interaction
+		- IDEA: I need to move backsotry interaction back to web_main() and pass is_bkstry with it
+		- IDEA: then pull 'read_bkstry_str' and 'backstory' from static_gbl() using game_name & path
+		- IDEA: need a function in file_io() to pull descriptions from static_gbl(); re-usable
 	- TBD: create player_interact() in /app_main
-		- TBD: player_interact() containes 3 funcitons get_player_confirm(), [get_player_int(), get_player_str()]
+		- TBD: player_interact() = 3 func: get_player_confirm(), [get_player_int(), get_player_str()]
 		- TBD: create is_interact attrib in gs.core (default = False)
-		- TBD: from gs.end() set core.is_interact = True, return interact_str, interact_type to app_main()
+		- TBD: in gs.end() set core.is_interact=True, retrn interact_str, interact_type to app_main()
+
+TBD: Refactor app_main() modules
+- TBD: refactor remaining app_main chain: pre_action, cmd_exe, post_action, auto_action
+- TBD: use __getattr__ and __setattr__ methods to make dict accessible as obj
+- TBD: refactor GameState & dicts in static_gbl() with dunder methods ( __getattr__ and __setattr__ )
+	- LINK: see: https://stackoverflow.com/questions/10761779/when-to-use-getattr
+	- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (and s__setattr__ for future tools)
+
+TBD: Enable Verb Methods for Machines
+- IDEA: enable silent run mode for verb methods so that I can use them in result_exe()
+- IDEA: start with Item.take() => TakeResult
 
 
-*** base error updates ***
-- TBD: sort out local buffering in standard errors?
-- TBD: update validate() to move debug error indicators to pre rather than post			
+
+*** TO REVIEW ***
 
 
 *** Unit Testing ***
@@ -350,14 +371,6 @@ To Do List - Dark Castle v3
 - TBD: Stack Overflow: "how to implement command line switches to my script"
 - TBD: in test mode, manually set random switch to value = 7
 - TBD: eventually need to be able to run a suite of tests built up over time
-
-
-*** Refactor app_main() modules ***
-- TBD: refactor remaining app_main chain: pre_action, cmd_exe, post_action, auto_action
-- TBD: use __getattr__ and __setattr__ methods to make dict accessible as obj
-- TBD: refactor GameState & dicts in static_gbl() with dunder methods ( __getattr__ and __setattr__ )
-	- LINK: see: https://stackoverflow.com/questions/10761779/when-to-use-getattr
-	- TBD: create dict_class_def.py w/ StaticDict and __getattr___ (and s__setattr__ for future tools)
 
 
 *** refactor Creature ***
@@ -592,6 +605,7 @@ interpreter ideas:
 - TBD: link dev tab to prod during manual updates
 - TBD: pull in DB migration to get ready for web
 
+
 *** cup_of_tea enhancements ***
 - IDEA: need to provide default engine mechanisms with option to replace with custom game versions
 	- IDEA: assume a 'lazy game designer' who doesn't create custom values; should work anyhow
@@ -609,18 +623,6 @@ interpreter ideas:
 		- IDEA: led by bearded application developer, heart-string-pulling retirement party at end
 		- IDEA: always saved by IT person at critical moment
 
-*** Enable Verbe Methods for Machines ***
-- IDEA: enable silent run mode for verb methods so that I can use them in result_exe()
-- IDEA: start with Item.take() => TakeResult
-
-*** Introduce multi-room puzzle ***
-- IDEA: trigger in one room, switch in 2nd room, effect in 3rd room
-
-*** New Room Update ***
-- IDEA: convert Moat to actual rooms?
-	- IDEA: Create on_the_moat room that e, w, d lead to 
-	- IDEA: unarmed players get one turn before croc attacks
-	- IDEA: no floor to room (items drop down several rooms)
 
 *** Get light working ***
 - IDEA: what to do on container (or other) loss of light?
