@@ -70,7 +70,8 @@ To Do List - Dark Castle v3
 - DONE: update cleesh version
 - DONE: test version updates
 - DONE: quick fix - correct double buffer on 'eat cheese'
-- INPROC: review backlog and choose next goal
+- DONE: review backlog and choose next goal
+- DONE: decide on next target => mvps / done / cancel
 - TBD: creat branch
 - TBD: more frequent merges!!
 
@@ -90,9 +91,13 @@ To Do List - Dark Castle v3
 *** major updates in separate git merges ***
 - TBD: mvps
 - TBD: implement full set of cardinal directions + u & d (?)
+- TBD: unit tests
 - TBD: food
+- TBD: webify
 - TBD: drink
+- TBD: live updates with git
 - TBD: sleep
+- TBD: db back end
 - TBD: day / night
 - TBD: liquids
 - TBD: transparnecy
@@ -104,9 +109,6 @@ To Do List - Dark Castle v3
 	- TBD: introduce verbose and brief commands
 	- TBD: address 'Do What I Mean' in interp() now?
 - TBD: extend castle
-- TBD: webify
-- TBD: live updates with git
-- TBD: db back end
 
 
 
@@ -277,6 +279,220 @@ TBD: New Room Update
 	- IDEA: Create on_the_moat room that e, w, d lead to 
 	- IDEA: unarmed players get one turn before croc attacks
 	- IDEA: no floor to room (items drop down several rooms)
+
+*** new story ideas ***
+
+*** Awesome Words to Use ***
+- stalwart (hedgehog)
+- griffonage (illegible handwriting)
+- recreancy (shameful cowardice; perfidy)
+- aubade
+- defenistrate
+- consigliere
+- consternation
+- phyisogamy (from 3 Muskateers)
+- Gallivanter
+- Solipsistic
+- Bamboozled
+- Flabbergasted
+- Discombobulated
+- Cattywampus
+- Lollygag
+- Makarkey
+- Kerfluffle
+- Brouhaha
+- Nincompoop
+- Skedaddle
+- Pumpernickel
+- rolly-polly (hedgehog)
+- Coddiwomple
+- Sockdolager (forceful blow)
+- sagaciate (get along)
+- sockdolager
+
+*-- possible new rooms --*
+- upon_drawbridge
+- entrance_hall (home base with well & safe shelf & hedgehog?)
+- chapel (another possible home base?)
+- courtyard
+- library
+- narrow / collapsed passage
+- kitchen
+- smithy
+- maze
+- wizards_tower
+- dungeons
+
+*-- RESEARCH --*
+- read The Craft of Adventure
+- Play at least 5 games
+- Read the Digital Antiquiarian reviews
+
+- PUZZLE: perhaps at some point Burt needs to bake biscuits??
+	- would involve finding and mixing ingredients, right order, starting fire, baking right time / temp
+
+- PUZZLE: Under Water Puzzle:
+	- treasure at bottom of old well - but need a magical way to hold your breath?
+	- old_well as water source in entrance_hall and also passage to... where?
+	- can hold breath for 4 turns, locked grate is 2 moves down, get warning on half air and last turn
+		- TBD: create LiquidContainer class
+			- TBD: create new LiquidContainer class
+			- TBD: instantiate old_well in the main_hall which contains fresh water
+			- TBD: update drink() to allow / error for drinking from the old_well
+	- lantern is water proof
+	- should be like rope puzzle for Zork I... 
+		- you have everything you need in the remote room but can't get out without solving puzzle
+
+*-- DC1 PUZZLE IDEAS --*
+Misc:
+- Randomization feature like the spinning room in Zork 2 ? With way to turn it off
+- Physics puzzles - see-saws, pulleys, and ceterfugal force
+- Dragon is bored because it has read every book in the library - need to find a new book to interest it
+- Ferret is named Bartleby
+- landscape / path changes
+- create vehical puzzle?
+
+Alter Terrain:
+- Use Map room_pair updates to alter a room dramatically after a major change
+	- e.g. Zork I resevoir post-dam opening
+	- could use this after a cave in or rock collapse in the dungeons / mines?
+
+Vehical:
+- Bucket pulley / weight puzzle in wizard's tower
+- need to adjust weight correctly going up and down
+- need to grab staute (?) on way up / down?
+- or else maybe mine cart / parachute??
+
+Zork Thief = Ferret:
+- dextrous, loves colorful objects, likes to fidtet / fiddle with things, clever
+- will steal an object from burt (or that burt has touched) each time it randomly runs into him (some items off limits?)
+- Some item on a high shelf or complexly locked (like the Zork egg) can only be opened by the ferret
+- burt can indefinitely / eternally distract the ferret (*after* it has solved its puzzle) by giving it a rubks cube (described not named)
+- the ferrets treasures can be found in a hole that burt needs to reach his arm into (scary warnings - could be a grue)
+- maybe the shelf in the main hall is the one place safe from the ferret
+- or else the object is in the courtyard and ferret gets it after burt sees it through window?? (seems like less agency?)
+- hedgehog chases ferret away from Entrance Hall any time it randomely attempts to enter (entrance hall has well & shelf too)
+
+hedghog:
+- perhaps the hedgehog greets you every time you walk into the main_hall once you return the sword?
+
+Special Glasses / Dream form:
+- let burt see a room using descriptions from another dict
+
+Carry Cappacity Constraints:
+- item 'size' limits (invent point values) for Containers and Narrow Passages
+- instead of big_rock could have sea_chest in main_hall tht burt can barely lug
+	- maybe it's locked but has no key
+	- can be the solution to the Wumpus_bat puzzle
+	- Also, when the bat drops the chest, it smashes open... maybe revealing the rubiks cube (too soon??)
+- Could have a narrow_passage - perhaps a collapsed passage that connects the north and south halves of the castle?
+	- burt can only squeeze through with a few items (no sword)... perhaps the ruby for the smithy mouse is in the north side?
+
+Writing / engraving:
+- would be nice to have a way to write / engrave on something
+- maybe make a weapon useful against a particular foe by engraving it??
+- or put the dragon to work clearing a passage by making a sign that says 'cheese cake'
+
+Vanishing cabinets:
+- enable limited travel to another part of the dungeon?
+- maybe only work one way (because broken?)
+- or maybe can only bring very little gear?
+
+Window:
+- would be need to have a Window class that allows burt to see what he can't take
+- could allow burt to peer into a courtyard with a tree and fountain
+- maybe 2 guard dogs - one with red hat, one with blue hat - that are constantly paroling a passage
+- if burt observest the window for a few turns he can see when to zip past the patrol
+- (when the blue-hat dog looks up expectantly)
+- perhaps window is in the collapsed_passage ??
+
+Game Ending:
+- Kinging Scroll glows faintly... and can only read when sitting on the Royal Lecturn... which also glows slightly
+	- lecturn found in the Library (Willy's favorite room in the castle)
+	- But only one thing can be _on_ the lecturn at a time... and there is currently a stuborn_snail there
+	- snaill can only be encouraged to move by showing it the salt from the Kitchen
+	- Depends on class Shelf (example obj = table, counter, lecturn - anything with a surface); needs a max_items attribute?
+
+Glum Dragon
+- how about a glum / bored / enui-ladden dragon that is blocking the libary entrance with its bulk
+	- the dragon is too tough to be harmed by - or even to notice - being attacked
+	- instead it just bemoans its misery - misquoting hamlet, and camus ("The underworld is other people")
+	- If given cheesecake (baked in the royal bakery) it can be cheered up - and will go work on its to-do list and read a book and such
+	- note: all other creatures like cheesecake too?
+
+- map
+	- maybe room beyond the Main Hall is the round room with many collapsed / ruined exits
+	- can go east through mouse hole to bakery or smithy
+	- or west to libary - which will then connect player back to cooridor that leads to anti-chamber
+
+
+- Peter Pan puzzle where you catch and make use of your shadow / mirror image?
+
+IDEA: Junk mail puzzle (multi-element solution); all for "chariot warranties"
+
+IDEA: Thief puzzle (can take from backpack)
+
+IDEA: chess puzzle - player first has to figure out that room is chess board ("statuary on a parquet floor" and then mate (probably smoother mate) to get through door. Replay button is broken (so only play once). other side has mate next turn so loose if you make wrong move. Possibly a small, wizzened gnome shows up to scold the player if they make an illegal move?
+
+IDEA: create a jaunty_cap that makes Burt move twice as fast as everything else in the world - maybe essential for escaping the time travel ball?
+
+IDEA: create a fun scenario where TravelEffect take item gets used... maybe a giant brid comes along and takes whatever's in Burts hand and scares him off until he carries a lead weight (or a heavy rock?) - which tires the bird out so much Burt can go in the room and get back his stuff and enter the room? Maybe this could be a room between main hall and antechamber that the maze / mouse hole is off of? Maybe nest is in corner of room of class Box (not open / close or lock / unlock).
+- Make it a Wumpus Bat - a reference to Hunth the Wumpus and Adventure!!
+- Takes an item from Burt's hand and sends him back the way he came to take cover; item is randomly placed in another (reachable) room
+- Solution is to enter room carrying a heavy rock - Bat will take but leaves rock by its nest with a note "Tired out from lugging big rocks - leaving Dark Castle for a while to visit the Wumpus"
+- Heavy Rock allows introduction of carrying capacity... playing can't carry *anything* else while carrying Heavy Rock
+- some useful treasure found in the nest 
+- Nest could be a container with open_state = None and lock_state = None
+
+- Can sharpen and clean sword in mouse hole - maybe only way to get past goblin
+- Until sharpened, sword can only parry goblin?
+- need a non-shrunken ruby to pay for sword sharpening (turns up nose at cheese - says he never touches it because it gives him indigestion)
+- mini Zork maze to get to blacksmith mouse
+- maybe random mouse keeps appearing and if you give it cheese it runs off and can be followed to the blacksmith
+- maybe mouse in maze is from Who Moved my Cheese
+- references to grafitti in maze?? (e.g. "what would you do if you weren't afraid?")
+	- IDEA: grafitti on Room wall = disp_writing()
+- Potion cabinet => maze => sharpen payment; cabinet: Royal Potions Maker: Danni Igotyour , potion: 867-5 => combo
+	- Give clues - mention that you hear a boppy tune in your head on description; give some lyrics after 5th attempt
+- Sign on mousehole mentions royal blacksmith and royal baker
+- Can only find royal baker by NOT taking the signed "exit" route from the blacksmith (easy east)
+- Machine in bakery makes cheese (for mouse) or biscuits (for hedgehog) by adding ingredients and pushing correct button
+	- Need to have "hatch" closed in order to run machine
+	- Takes 3 turns to create food
+	- if start biscuits turn after starting cheese then 5 turns later produces cheesecake! (only once - machine brakes after)
+	- Everyone wants cheesecake! Can be used to solve any creature puzzle (even goblin) and takes 5 turns to eat
+- potion shrinks for set turn count (can only drink twice); toes tingle just before you expand
+	- 3 turns of shrink in Main Hall; 30 turns in mouse hole
+	- maybe 2 potions in cabinet
+	- Need to keep the magic shrink potion from traveling... maybe have it in a basin with a chain-attached cup?
+	- or maybe you shrink for 3 turns or as long as you're in a confined space - whichever comes later??
+		- (don't want to code every room for being mouse sized)
+- maybe 2nd mouse, every once in a while, gets up from his nap at the table near the blacksmith and sneaks off to the bakery
+	- bakery very hard to find... go to a corner of the maze and then go 'up'!!
+- Maybe a magic radio (a machine entity like the baking machine) in the Maine Hall that plays "Danni I've got your numbrer" when tuned correctly? Gives clue for potion chest. Also maybe acts as distraction during time travel puzzel - plays over gentle lilting of harp, violins, and triange - which enables Burt to cut in and dance with princess (evil prince is off gyrating hips wildly)? Perhaps the magic radio used to live in the throne room but got moved to the main hall after the 'incident' (note could indicate this) ;-D
+- Radio damaged during move from throne room (speaker out; etc)
+	- Radio volume goes to 11 (crossed out?)
+	- On time travel need right station & full volume to distract prince (learn songs during future time investigation; maybe "moany moany" or "old time rock and roll"?)
+	- Perhaps wearing Hedgehog brooch (and smiling) are key to winning princess' trust durning time travel?
+
+5.x Additional rooms
+	Have portait of Willie revealed in throne room and give player mouse hole and time travel quest
+	5th room
+		mouse hole - to exercise existing capabilities (e.g. "food" that can be eaten)
+		copper key opens cabinet which holds potion
+		find a use for 'close' verb; maybe potion refill
+		possibly create 'return' verb to put things back (or maybe 'swap')
+		potion shrinks for set turn count (can only drink twice); toes tingle just before you expand
+		enter mouse hole
+		maybe fight mouse?
+		silver key in mouse trap; need to swap with copper key
+		find a use for close command?
+		would be fun to use every verb ;-D
+		maybe a guard mouse that only lets you past if you're wearing the hedgehog_broach
+		Indiana Jones reference for mouse trap and ball chasing you out ;-D
+		make hedgehog_broach wearable
+		link puzzle to total number of moves? Or to score?
+		repeat option like 'again' / 'g' in Zork (JE request)
 
 
 *** future big structural improvements ***
@@ -740,6 +956,13 @@ Food:
 - Window: would be need to have a Window class that allows burt to see what he can't take
 
 
+*** conversational verbs ***
+- IDEA: 'talk to creature' format:
+	- IDEA: 'Ask X about Y'
+	- IDEA: 'Tell X about Y'
+	- IDEA: Say 'Z'
+
+
 *** Implement Symetric Verbs ***
 - TBD: as part of symetric functions reveiw...
 	- re-examine current use of creature = gs.core.hero
@@ -816,13 +1039,6 @@ pipeline & testing:
 
 *** make database-driven! ***
 
-*** New verbs ***
-
-- IDEA: 'talk to creature' format:
-	- IDEA: 'Ask X about Y'
-	- IDEA: 'Tell X about Y'
-	- IDEA: Say 'Z'
-
 
 *** doc_strings ***
 
@@ -844,8 +1060,8 @@ pipeline & testing:
 		- timers are set by machines rather than triggered by player commands
 		- other than providing description text, timers are dumb - they just count -  a machine takes all actions
 
-*** Out of Game Quality of Life Code ***
 
+*** Out of Game Quality of Life Code ***
 - Introduce non-functional requirement code (e.g. saves and pkl clean-up)
 - Integrate with web template
 - webify
@@ -878,7 +1094,6 @@ web features:
 - runs on AWS with API GW, Lambda, and DynamoDB!
 
 *** DB Driven ***
-
 Version X.x Goals:
 	- DB back end
 	- "dungeon builder" web interface (?)
@@ -904,7 +1119,6 @@ TBD: now start working with sqlalchemy again in place of txt files
 
 
 *** Expansion of Dark Castle ***
-
 - Research existing IF languages (TADS & INFORM)
 - Plan out expanded adventure
 - Establish new base code needed for new adventure
@@ -917,77 +1131,8 @@ first: scan puzzle ideas and decide on next puzzles; plan for required features
 -implement new ideas
 - publish new version and get feedback
 
-*-- Awesome Words to Use --*
-- stalwart (hedgehog)
-- griffonage (illegible handwriting)
-- recreancy (shameful cowardice; perfidy)
-- aubade
-- defenistrate
-- consigliere
-- consternation
-- phyisogamy (from 3 Muskateers)
-- Gallivanter
-- Solipsistic
-- Bamboozled
-- Flabbergasted
-- Discombobulated
-- Cattywampus
-- Lollygag
-- Makarkey
-- Kerfluffle
-- Brouhaha
-- Nincompoop
-- Skedaddle
-- Pumpernickel
-- rolly-polly (hedgehog)
-- Coddiwomple
-- Sockdolager (forceful blow)
-- sagaciate (get along)
-- sockdolager
 
-*-- possible new rooms --*
-- upon_drawbridge
-- entrance_hall (home base with well & safe shelf & hedgehog?)
-- chapel (another possible home base?)
-- courtyard
-- library
-- narrow / collapsed passage
-- kitchen
-- smithy
-- maze
-- wizards_tower
-- dungeons
-
-*-- RESEARCH --*
-- read The Craft of Adventure
-- Play at least 5 games
-- Read the Digital Antiquiarian reviews
-
-- PUZZLE: perhaps at some point Burt needs to bake biscuits??
-	- would involve finding and mixing ingredients, right order, starting fire, baking right time / temp
-
-- PUZZLE: Under Water Puzzle:
-	- treasure at bottom of old well - but need a magical way to hold your breath?
-	- old_well as water source in entrance_hall and also passage to... where?
-	- can hold breath for 4 turns, locked grate is 2 moves down, get warning on half air and last turn
-		- TBD: create LiquidContainer class
-			- TBD: create new LiquidContainer class
-			- TBD: instantiate old_well in the main_hall which contains fresh water
-			- TBD: update drink() to allow / error for drinking from the old_well
-	- lantern is water proof
-	- should be like rope puzzle for Zork I... 
-		- you have everything you need in the remote room but can't get out without solving puzzle
-
-*-- DC1 PUZZLE IDEAS --*
-Misc:
-- Randomization feature like the spinning room in Zork 2 ? With way to turn it off
-- Physics puzzles - see-saws, pulleys, and ceterfugal force
-- Dragon is bored because it has read every book in the library - need to find a new book to interest it
-- Ferret is named Bartleby
-- landscape / path changes
-- create vehical puzzle?
-
-*-- DC2 PUZZLE IDEAS --*
+*** DC2 PUZZLE IDEAS ***
 - maybe, in DC2, before the ball, the princess is missing (hiding from evil prince) and is diguised as a black cat that burt needs to befriend?
 - it would be cool to have an invisibility cloak / spell (probably need to keep it short term / contained)
 - Note: gs.core.hero enables player to take on different characters in the game (e.g. Burt could become a mouse)
@@ -1045,148 +1190,6 @@ DCII Time Travel Ideas:
 - In past, burt must convince young_nana to give him Willy's broach in order to drop it behind throne or else timeline is doomed!
 - Perhaps burt first travels fwd in time a week and can pick up an unfinished portrait of burt & princess that gives future status (similar to Back to the Future)
 
-
-Alter Terrain:
-- Use Map room_pair updates to alter a room dramatically after a major change
-	- e.g. Zork I resevoir post-dam opening
-	- could use this after a cave in or rock collapse in the dungeons / mines?
-
-Vehical:
-- Bucket pulley / weight puzzle in wizard's tower
-- need to adjust weight correctly going up and down
-- need to grab staute (?) on way up / down?
-- or else maybe mine cart / parachute??
-
-Zork Thief = Ferret:
-- dextrous, loves colorful objects, likes to fidtet / fiddle with things, clever
-- will steal an object from burt (or that burt has touched) each time it randomly runs into him (some items off limits?)
-- Some item on a high shelf or complexly locked (like the Zork egg) can only be opened by the ferret
-- burt can indefinitely / eternally distract the ferret (*after* it has solved its puzzle) by giving it a rubks cube (described not named)
-- the ferrets treasures can be found in a hole that burt needs to reach his arm into (scary warnings - could be a grue)
-- maybe the shelf in the main hall is the one place safe from the ferret
-- or else the object is in the courtyard and ferret gets it after burt sees it through window?? (seems like less agency?)
-- hedgehog chases ferret away from Entrance Hall any time it randomely attempts to enter (entrance hall has well & shelf too)
-
-hedghog:
-- perhaps the hedgehog greets you every time you walk into the main_hall once you return the sword?
-
-Special Glasses / Dream form:
-- let burt see a room using descriptions from another dict
-
-Carry Cappacity Constraints:
-- item 'size' limits (invent point values) for Containers and Narrow Passages
-- instead of big_rock could have sea_chest in main_hall tht burt can barely lug
-	- maybe it's locked but has no key
-	- can be the solution to the Wumpus_bat puzzle
-	- Also, when the bat drops the chest, it smashes open... maybe revealing the rubiks cube (too soon??)
-- Could have a narrow_passage - perhaps a collapsed passage that connects the north and south halves of the castle?
-	- burt can only squeeze through with a few items (no sword)... perhaps the ruby for the smithy mouse is in the north side?
-
-Writing / engraving:
-- would be nice to have a way to write / engrave on something
-- maybe make a weapon useful against a particular foe by engraving it??
-- or put the dragon to work clearing a passage by making a sign that says 'cheese cake'
-
-Vanishing cabinets:
-- enable limited travel to another part of the dungeon?
-- maybe only work one way (because broken?)
-- or maybe can only bring very little gear?
-
-Window:
-- would be need to have a Window class that allows burt to see what he can't take
-- could allow burt to peer into a courtyard with a tree and fountain
-- maybe 2 guard dogs - one with red hat, one with blue hat - that are constantly paroling a passage
-- if burt observest the window for a few turns he can see when to zip past the patrol
-- (when the blue-hat dog looks up expectantly)
-- perhaps window is in the collapsed_passage ??
-
-Game Ending:
-- Kinging Scroll glows faintly... and can only read when sitting on the Royal Lecturn... which also glows slightly
-	- lecturn found in the Library (Willy's favorite room in the castle)
-	- But only one thing can be _on_ the lecturn at a time... and there is currently a stuborn_snail there
-	- snaill can only be encouraged to move by showing it the salt from the Kitchen
-	- Depends on class Shelf (example obj = table, counter, lecturn - anything with a surface); needs a max_items attribute?
-
-Glum Dragon
-- how about a glum / bored / enui-ladden dragon that is blocking the libary entrance with its bulk
-	- the dragon is too tough to be harmed by - or even to notice - being attacked
-	- instead it just bemoans its misery - misquoting hamlet, and camus ("The underworld is other people")
-	- If given cheesecake (baked in the royal bakery) it can be cheered up - and will go work on its to-do list and read a book and such
-	- note: all other creatures like cheesecake too?
-
-- map
-	- maybe room beyond the Main Hall is the round room with many collapsed / ruined exits
-	- can go east through mouse hole to bakery or smithy
-	- or west to libary - which will then connect player back to cooridor that leads to anti-chamber
-
-
-- Peter Pan puzzle where you catch and make use of your shadow / mirror image?
-
-IDEA: Junk mail puzzle (multi-element solution); all for "chariot warranties"
-
-IDEA: Thief puzzle (can take from backpack)
-
-IDEA: chess puzzle - player first has to figure out that room is chess board ("statuary on a parquet floor" and then mate (probably smoother mate) to get through door. Replay button is broken (so only play once). other side has mate next turn so loose if you make wrong move. Possibly a small, wizzened gnome shows up to scold the player if they make an illegal move?
-
-IDEA: create a jaunty_cap that makes Burt move twice as fast as everything else in the world - maybe essential for escaping the time travel ball?
-
-IDEA: create a fun scenario where TravelEffect take item gets used... maybe a giant brid comes along and takes whatever's in Burts hand and scares him off until he carries a lead weight (or a heavy rock?) - which tires the bird out so much Burt can go in the room and get back his stuff and enter the room? Maybe this could be a room between main hall and antechamber that the maze / mouse hole is off of? Maybe nest is in corner of room of class Box (not open / close or lock / unlock).
-- Make it a Wumpus Bat - a reference to Hunth the Wumpus and Adventure!!
-- Takes an item from Burt's hand and sends him back the way he came to take cover; item is randomly placed in another (reachable) room
-- Solution is to enter room carrying a heavy rock - Bat will take but leaves rock by its nest with a note "Tired out from lugging big rocks - leaving Dark Castle for a while to visit the Wumpus"
-- Heavy Rock allows introduction of carrying capacity... playing can't carry *anything* else while carrying Heavy Rock
-- some useful treasure found in the nest 
-- Nest could be a container with open_state = None and lock_state = None
-
-- Can sharpen and clean sword in mouse hole - maybe only way to get past goblin
-- Until sharpened, sword can only parry goblin?
-- need a non-shrunken ruby to pay for sword sharpening (turns up nose at cheese - says he never touches it because it gives him indigestion)
-- mini Zork maze to get to blacksmith mouse
-- maybe random mouse keeps appearing and if you give it cheese it runs off and can be followed to the blacksmith
-- maybe mouse in maze is from Who Moved my Cheese
-- references to grafitti in maze?? (e.g. "what would you do if you weren't afraid?")
-	- IDEA: grafitti on Room wall = disp_writing()
-- Potion cabinet => maze => sharpen payment; cabinet: Royal Potions Maker: Danni Igotyour , potion: 867-5 => combo
-	- Give clues - mention that you hear a boppy tune in your head on description; give some lyrics after 5th attempt
-- Sign on mousehole mentions royal blacksmith and royal baker
-- Can only find royal baker by NOT taking the signed "exit" route from the blacksmith (easy east)
-- Machine in bakery makes cheese (for mouse) or biscuits (for hedgehog) by adding ingredients and pushing correct button
-	- Need to have "hatch" closed in order to run machine
-	- Takes 3 turns to create food
-	- if start biscuits turn after starting cheese then 5 turns later produces cheesecake! (only once - machine brakes after)
-	- Everyone wants cheesecake! Can be used to solve any creature puzzle (even goblin) and takes 5 turns to eat
-- potion shrinks for set turn count (can only drink twice); toes tingle just before you expand
-	- 3 turns of shrink in Main Hall; 30 turns in mouse hole
-	- maybe 2 potions in cabinet
-	- Need to keep the magic shrink potion from traveling... maybe have it in a basin with a chain-attached cup?
-	- or maybe you shrink for 3 turns or as long as you're in a confined space - whichever comes later??
-		- (don't want to code every room for being mouse sized)
-- maybe 2nd mouse, every once in a while, gets up from his nap at the table near the blacksmith and sneaks off to the bakery
-	- bakery very hard to find... go to a corner of the maze and then go 'up'!!
-- Maybe a magic radio (a machine entity like the baking machine) in the Maine Hall that plays "Danni I've got your numbrer" when tuned correctly? Gives clue for potion chest. Also maybe acts as distraction during time travel puzzel - plays over gentle lilting of harp, violins, and triange - which enables Burt to cut in and dance with princess (evil prince is off gyrating hips wildly)? Perhaps the magic radio used to live in the throne room but got moved to the main hall after the 'incident' (note could indicate this) ;-D
-- Radio damaged during move from throne room (speaker out; etc)
-	- Radio volume goes to 11 (crossed out?)
-	- On time travel need right station & full volume to distract prince (learn songs during future time investigation; maybe "moany moany" or "old time rock and roll"?)
-	- Perhaps wearing Hedgehog brooch (and smiling) are key to winning princess' trust durning time travel?
-
-5.x Additional rooms
-	Have portait of Willie revealed in throne room and give player mouse hole and time travel quest
-	5th room
-		mouse hole - to exercise existing capabilities (e.g. "food" that can be eaten)
-		copper key opens cabinet which holds potion
-		find a use for 'close' verb; maybe potion refill
-		possibly create 'return' verb to put things back (or maybe 'swap')
-		potion shrinks for set turn count (can only drink twice); toes tingle just before you expand
-		enter mouse hole
-		maybe fight mouse?
-		silver key in mouse trap; need to swap with copper key
-		find a use for close command?
-		would be fun to use every verb ;-D
-		maybe a guard mouse that only lets you past if you're wearing the hedgehog_broach
-		Indiana Jones reference for mouse trap and ball chasing you out ;-D
-		make hedgehog_broach wearable
-		link puzzle to total number of moves? Or to score?
-		repeat option like 'again' / 'g' in Zork (JE request)
 	Possibly add a room 6 with time travel??
 		Opportunity to include princess in game - perhaps have Willie give her the hedgehog_broach to time travel
 		Depict future (opportunity but challenges) by painting to portrait
