@@ -80,7 +80,53 @@ To Do List - Dark Castle v3
 ### CLEESH VERSION 3.8.2 / DARK CASTLE VERSION 3.3.0 START ###
 ############################
 
+*** git branch ***
+- DONE: branch name = mvps
+- TBD: create new <FEATURE_NAME>_feature git branch
+	- TBD: 'git branch' to confirm *master
+	- TBD: 'git branch <FEATURE_NAME>' to create new branch
+	- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+	- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
+	- TBD: 'git branch' to confirm new branch is now in focus
+	- TBD: Publish Branch via VS Code button
+	- TBD: confirm new branch on GitHub
+	- TBD: update doc TBDs to DONEs
+	- TBD: <CMD><OPT>S (to save all files)
+	- TBD: 'git add .' to add files to be committed
+	- TBD: 'git commit -m "doc updates"
+	- TBD: 'git push" to push updates to origin (GitHub)
+	- TBD: confirm new branch on GitHub is now ahead of master
 
+*** mvps ***
+- TBD: sort out double print of score after win
+- TBD: tighten up / modularize app_main()
+- TBD: update 'exit' to assume seat player is contained in
+	IDEA: i.e. default to 'stand' if 'seat' not given
+- TBD: disable control_panel dispenser mach once it has run (as final result)
+- TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
+
+*** done ***
+- DONE: sort out how to deal with 'hand' vs. 'inventory' (just eliminate hand entirely?)
+- DONE: varry inventory intro text (?)
+- DONE: search for 'Nana'-based errors
+- DONE: maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
+
+*** cancel ***
+- CANCEL: should complex obj (stone_coffer) > feature_lst if minor; with only key obj called out??
+	- FINDING: no, can't access Interactive class from feature_lst
+
+*** git merge ***
+- TBD: git branch merge with master
+	- TBD: 'git checkout master' to switch focus to master
+	- TBD: 'git branch: to confirm focus
+	- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+	- TBD: 'git push' to push merge to origin (GitHub)
+	- TBD: confirm that origin is updated
+	- TBD: confirm that code is updated and still runs
+	- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+	- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+	- TBD: confirm origin is cleaned up
+	- TBD: post-branch-delete run test
 
 
 ############################
@@ -89,7 +135,7 @@ To Do List - Dark Castle v3
 
 
 *** major updates in separate git merges ***
-- TBD: mvps
+- INPROC: mvps
 - TBD: implement full set of cardinal directions + u & d (?)
 - TBD: unit tests
 - TBD: food
@@ -110,8 +156,6 @@ To Do List - Dark Castle v3
 	- TBD: address 'Do What I Mean' in interp() now?
 - TBD: extend castle
 
-
-
 *** major updates in separate git merges ***
 
 
@@ -119,23 +163,6 @@ To Do List - Dark Castle v3
 *** SOMEDAY MAYBE ***
 *********************
 
-*** mvps ***
-- TBD: tighten up / modularize app_main()
-- TBD: update 'exit' to assume seat player is contained in
-	IDEA: i.e. default to 'stand' if 'seat' not given
-- TBD: sort out double print of score after win
-- TBD: disable control_panel dispenser mach once it has run (as final result)
-- TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
-
-*** done ***
-- DONE: sort out how to deal with 'hand' vs. 'inventory' (just eliminate hand entirely?)
-- DONE: varry inventory intro text (?)
-- DONE: search for 'Nana'-based errors
-- DONE: maybe replace the current debug code (C64 poke) with magic word ('xyzzy') ?
-
-*** cancel ***
-- CANCEL: should complex obj (stone_coffer) > feature_lst if minor; with only key obj called out??
-	- FINDING: no, can't access Interactive class from feature_lst
 
 *** structural ***
 - TBD: maybe call disp_weapon from within cmd_exe() instead of in app_main() due to score??
