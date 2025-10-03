@@ -99,8 +99,23 @@ To Do List - Dark Castle v3
 
 *** mvps ***
 - TBD: sort out double print of score after win
-	- TBD: test to confirm if error still exists
-	- TBD: 
+	- DONE: test to confirm if error still exists
+	- FINDING: no-dup on death
+		- FINDING: death ending from end.disp_end()
+	- FINDING: score is duplicated on win:
+		*** below is from EndGameResult class ***
+		- ...you are now the King of Bright Castle!!
+		*** above is from EndGameResult class ***
+		- Your score is now 75 out of 75   # why this score display??
+		*** below here from end.end_disp() ***
+		- You have won!
+		- Your adventure ended after 28 moves.
+		- Your score is now 75 out of 75
+		- Your title is: Burt the Bold, King of Bright Castle
+		*** above here from end.end_disp() ***
+		- The Dark Castle game was written and programmed by Tom. Thanks to Toby, Joshua, JoyEllen, Milo, Gideon, Franco, Karl, Andy, Ken and Alec for advice and playtesting!!
+		- An aged scroll of parchment...
+	- TBD: determine reason for first display of score on win
 - TBD: tighten up / modularize app_main()
 - TBD: update 'exit' to assume seat player is contained in
 	IDEA: i.e. default to 'stand' if 'seat' not given
