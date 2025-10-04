@@ -98,7 +98,7 @@ To Do List - Dark Castle v3
 	- DONE: confirm new branch on GitHub is now ahead of master
 
 *** mvps ***
-- TBD: sort out double print of score after win
+- DONE: sort out double print of score after win
 	- DONE: test to confirm if error still exists
 	- FINDING: no-dup on death
 		- FINDING: death ending from end.disp_end()
@@ -106,7 +106,7 @@ To Do List - Dark Castle v3
 		*** below is from EndGameResult class ***
 		- ...you are now the King of Bright Castle!!
 		*** above is from EndGameResult class ***
-		- Your score is now 75 out of 75   # why this score display??
+		- Your score is now 75 out of 75   *** from cmd_exe() / post_act() disp_score() call ***
 		*** below here from end.end_disp() ***
 		- You have won!
 		- Your adventure ended after 28 moves.
@@ -115,7 +115,16 @@ To Do List - Dark Castle v3
 		*** above here from end.end_disp() ***
 		- The Dark Castle game was written and programmed by Tom. Thanks to Toby, Joshua, JoyEllen, Milo, Gideon, Franco, Karl, Andy, Ken and Alec for advice and playtesting!!
 		- An aged scroll of parchment...
-	- TBD: determine reason for first display of score on win
+	- DONE: determine reason for first display of score on win
+		- FND: basic issue is that we disp_score() on score event and on end event
+		- FND: so, if score event == end event, we disp_score twice
+		- FND: problem exists for both cmd_exe() [attack() case] and post_act()
+		- IDEA: check for end.is_end before disp_score in cmd_exe() and post_act()
+		- IDEA: not wonderfully gradceful but should work
+	- DONE: check for gs.end.is_end before disp_score() in cmd_exe() and pre_act()
+		- DONE: cmd_exe(): update and test
+		- DONE: pre_act(): update and test
+- TBD: fix south warning from entrance (get help from Q)
 - TBD: tighten up / modularize app_main()
 - TBD: update 'exit' to assume seat player is contained in
 	IDEA: i.e. default to 'stand' if 'seat' not given
@@ -153,8 +162,8 @@ To Do List - Dark Castle v3
 
 *** major updates in separate git merges ***
 - INPROC: mvps
-- TBD: implement full set of cardinal directions + u & d (?)
 - TBD: unit tests
+- TBD: implement full set of cardinal directions + u & d (?)
 - TBD: food
 - TBD: webify
 - TBD: drink

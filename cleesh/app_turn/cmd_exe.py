@@ -65,17 +65,20 @@ def cmd_execute(gs, case, word_lst):
 		if case == 'go':
 			room_obj, word1, word2 = word_lst
 			getattr(room_obj, word1)(word2, gs)
-			gs.score.disp_score(word1, gs.map.hero_rm.name, None, gs)
+			if not gs.end.is_end: # check to avoid double score display on end
+				gs.score.disp_score(word1, gs.map.hero_rm.name, None, gs)
 			return
 		if case == '2word':
 			word2_obj, word1 = word_lst
 			getattr(word2_obj, word1)(gs)
-			gs.score.disp_score(word1, word2_obj.name, None, gs)
+			if not gs.end.is_end: # check to avoid double score display on end
+				gs.score.disp_score(word1, word2_obj.name, None, gs)
 			return
 		if case == 'prep':
 			dirobj_obj, word1, noun_obj = word_lst
 			getattr(dirobj_obj, word1)(noun_obj, gs)
-			gs.score.disp_score(word1, dirobj_obj.name, noun_obj.name, gs)
+			if not gs.end.is_end: # check to avoid double score display on end
+				gs.score.disp_score(word1, dirobj_obj.name, noun_obj.name, gs)
 			return
 		gs.io.buff_dbg("[CMD] command case error", gs)
 		return
