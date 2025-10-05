@@ -124,12 +124,14 @@ To Do List - Dark Castle v3
 	- DONE: check for gs.end.is_end before disp_score() in cmd_exe() and pre_act()
 		- DONE: cmd_exe(): update and test
 		- DONE: pre_act(): update and test
-- TBD: fix south warning from entrance (get help from Q)
-- TBD: tighten up / modularize app_main()
+- DONE: fix south warning from entrance (get help from Q)
+	- NOTE: Q solved it! The issue was needing 'is_valid_reqd=False' (again!)
+- TBD: disable control_panel dispenser mach once it has run (as final result)
 - TBD: update 'exit' to assume seat player is contained in
 	IDEA: i.e. default to 'stand' if 'seat' not given
-- TBD: disable control_panel dispenser mach once it has run (as final result)
 - TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
+- TBD: tighten up / modularize app_main()
+
 
 *** done ***
 - DONE: sort out how to deal with 'hand' vs. 'inventory' (just eliminate hand entirely?)
