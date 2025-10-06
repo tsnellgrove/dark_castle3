@@ -126,7 +126,11 @@ To Do List - Dark Castle v3
 		- DONE: pre_act(): update and test
 - DONE: fix south warning from entrance (get help from Q)
 	- NOTE: Q solved it! The issue was needing 'is_valid_reqd=False' (again!)
-- TBD: disable control_panel dispenser mach once it has run (as final result)
+- DONE: disable control_panel dispenser mach once it has run (as final result)
+	- DONE: create dispnse_panel_result_3 based on DisableMach
+	- DONE: update auto_act() to print active mach
+	- DONE: test
+	- DONE: eliminate print
 - TBD: update 'exit' to assume seat player is contained in
 	IDEA: i.e. default to 'stand' if 'seat' not given
 - TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
@@ -643,6 +647,10 @@ TBD: Enable Verb Methods for Machines
 - TBD: in test mode, manually set random switch to value = 7
 - TBD: eventually need to be able to run a suite of tests built up over time
 
+
+*** modular machine updates ***
+- TBD: make 'disable post run' a standard feature / attrib of modular machines
+	- IDEA: attrib => is_run_once
 
 *** refactor Creature ***
 - TBD: sort out whole 'fist' / 'sharp_teeth' un-armed attack issue in Creature class

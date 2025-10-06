@@ -231,6 +231,7 @@ throne_pull_result1 = ChgDescriptResult('throne_pull_result1', False, None, Fals
 throne_pull_result2 = DispenseObjResult('throne_pull_result2', True, True, False, hedgehog_broach, 'throne_room_temp')
 dispense_panel_result1 = ChgDescriptResult('dispense_panel_result1', False, None, False, 'antechamber_temp', 'antechamber_with_panel')
 dispense_panel_result2 = DispenseObjResult('dispense_panel_result2', True, True, False, 'control_panel_temp', 'antechamber_temp')
+dispense_panel_result3 = DisableMach('dispense_panel_result3', False, None, False, 'dispense_panel_mach_temp')	
 hedgehog_eats_result1 = StartTimerResult('hedgehog_eats_result1', False, None, False, hedgehog_eats_timer)
 hedgehog_eats_result2 = RemoveObjResult('hedgehog_eats_result2', False, None, False, baked_biscuit)
 goblin_attacks_result = AttackHeroResult('goblin_attacks_result', False, None, True, 'guard_goblin_temp', grimy_axe)
@@ -253,7 +254,7 @@ big_rock_take_result2 = DisableMach('big_rock_take_result2', False, None, False,
 dispense_panel_mach = InvisAutoMach('dispense_panel_mach', False,
 		'auto_act', 'antechamber_temp', True,
 		[goblin_in_world_cond, panel_not_dispensed_cond],
-		[pass_result, [dispense_panel_result1, dispense_panel_result2]])
+		[pass_result, [dispense_panel_result1, dispense_panel_result2, dispense_panel_result3]])
 		# mach_state == has panel been dispensed
 
 re_arm_goblin_mach = InvisAutoMach('re_arm_goblin_mach', None, 
@@ -619,6 +620,7 @@ throne_pull_result2.room_obj = throne_room
 dispense_panel_result1.obj = antechamber
 dispense_panel_result2.dispense_obj = control_panel
 dispense_panel_result2.room_obj = antechamber
+dispense_panel_result3.mach = dispense_panel_mach
 disable_rh_guard_result1.mach = hedgehog_guard_mach
 disable_rh_guard_result2.mach = disable_rh_guard_mach
 disable_shiny_sword_result.mach = shiny_sword
