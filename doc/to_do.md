@@ -131,8 +131,13 @@ To Do List - Dark Castle v3
 	- DONE: update auto_act() to print active mach
 	- DONE: test
 	- DONE: eliminate print
-- TBD: update 'exit' to assume seat player is contained in
-	IDEA: i.e. default to 'stand' if 'seat' not given
+- DONE: update 'exit' to assume seat player is contained in
+	- IDEA: i.e. default to 'stand' if 'seat' not given
+	- DONE: prep test - add test_chair & interp() print
+	- DONE: add 'exit' to assumed_noun_2word_lst in cleesh static_gbl()
+	- DONE: add 'exit' case to assumed_2word section of interp()
+	- DONE: test
+	- DONE: clean up test_chair and interp() print
 - TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
 - TBD: tighten up / modularize app_main()
 

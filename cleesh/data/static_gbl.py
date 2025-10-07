@@ -34,7 +34,7 @@ engine_static_dict = {
 
 	'one_word_travel_lst' : ['north', 'south', 'east', 'west'],
 
-	'assumed_noun_2word_lst' : ['drop', 'stow', 'eat', 'wear'],
+	'assumed_noun_2word_lst' : ['exit', 'drop', 'stow', 'eat', 'wear'],
 
 	'one_or_two_word_lst' : ['help'], 
 

@@ -131,8 +131,12 @@ def interpreter(user_input, master_obj_lst):
 			user_input_lst.append(creature.name)
 		word1 = user_input_lst[0]
 
+	# convert one-word commands that are assumed-noun two-word commands
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst','eng'):
-		if not creature.hand_is_empty():
+		if word1 in ['exit']:
+			if creature.is_contained(gs):
+				user_input_lst.append(creature.get_contained_by(gs).name)
+		elif not creature.hand_is_empty():
 			user_input_lst.append(creature.get_hand_item().name)
 			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
 
