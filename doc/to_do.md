@@ -138,7 +138,13 @@ To Do List - Dark Castle v3
 	- DONE: add 'exit' case to assumed_2word section of interp()
 	- DONE: test
 	- DONE: clean up test_chair and interp() print
-- TBD: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
+- INPROC: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
+	- DONE: elim gs.map.chk_name_exist() via gs.core.get_str_to_obj_dict() & gs.map.chk_obj_exist()
+		- DONE: replace
+		- DONE: test
+		- DONE: comment out gs.map.chk_name_exist()
+	- TBD: elim gs.map.get_obj_from_name() via gs.core.get_str_to_obj_dict()
+	- TBD: gs.score(), gs.map()
 - TBD: tighten up / modularize app_main()
 
 

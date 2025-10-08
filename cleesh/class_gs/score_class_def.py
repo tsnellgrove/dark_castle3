@@ -55,7 +55,8 @@ class Score(Invisible):
         if (verb_str, noun_str, dirobj_key) in gs.score.pts_earned_lst:
             return
         # variable outcome verb special cases
-        if verb_str == 'attack' and gs.map.chk_name_exist(noun_str):
+#        if verb_str == 'attack' and gs.map.chk_name_exist(noun_str):
+        if verb_str == 'attack' and gs.map.chk_obj_exist(gs.core.get_str_to_obj_dict(noun_str), gs):
             return
         if verb_str == 'give' and not gs.map.get_obj_from_name(noun_str, gs).chk_contain_name(dirobj_str):
             return
