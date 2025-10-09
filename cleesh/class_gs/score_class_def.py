@@ -58,7 +58,8 @@ class Score(Invisible):
 #        if verb_str == 'attack' and gs.map.chk_name_exist(noun_str):
         if verb_str == 'attack' and gs.map.chk_obj_exist(gs.core.get_str_to_obj_dict(noun_str), gs):
             return
-        if verb_str == 'give' and not gs.map.get_obj_from_name(noun_str, gs).chk_contain_name(dirobj_str):
+#        if verb_str == 'give' and not gs.map.get_obj_from_name(noun_str, gs).chk_contain_name(dirobj_str):
+        if verb_str == 'give' and not gs.map.get_obj_from_name(noun_str, gs).chk_contain_item(gs.core.get_str_to_obj_dict(dirobj_str)):
             return
         # score condition is valid
         self.score += gs.io.get_ddict_val('score_dict', verb_str, subj_key)

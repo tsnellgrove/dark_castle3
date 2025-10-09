@@ -304,11 +304,11 @@ class Creature(ViewOnly):
 
 
 	# *** creature-specific scope methods ***
-	def chk_contain_name(self, name_str): # does NOT check in containers; used in disp_score to validate 'give'
-		for obj in self.hand_lst + self.bkpk_lst + self.worn_lst:
-			if obj.name == name_str:
-				return True
-		return False
+#	def chk_contain_name(self, name_str): # does NOT check in containers; used in disp_score to validate 'give'
+#		for obj in self.hand_lst + self.bkpk_lst + self.worn_lst:
+#			if obj.name == name_str:
+#				return True
+#		return False
 
 	def has_weapon(self, gs):
 		""" Returns True if the Creature has a weapon in its inventory.

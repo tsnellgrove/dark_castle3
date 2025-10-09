@@ -140,11 +140,17 @@ To Do List - Dark Castle v3
 	- DONE: clean up test_chair and interp() print
 - INPROC: fix usage of gs.map.get_obj_from_name() to call name_to_obj_dict from gs.core
 	- DONE: elim gs.map.chk_name_exist() via gs.core.get_str_to_obj_dict() & gs.map.chk_obj_exist()
-		- DONE: replace
+		- DONE: replace call from gs.score()
 		- DONE: test
 		- DONE: comment out gs.map.chk_name_exist()
+	- DONE: elim chk_contain_name()
+		- DONE: replace call from gs.score()
+			- DONE: chk_contain_name() in map w/ core.get_str_to_obj_dict() & chk_contain.item()
+		- DONE: test
+		- DONE: comment out creature.chk_contain_name()
 	- TBD: elim gs.map.get_obj_from_name() via gs.core.get_str_to_obj_dict()
-	- TBD: gs.score(), gs.map()
+		- TBD: 
+	- TBD: gs.score(), gs.map(), creature()
 - TBD: tighten up / modularize app_main()
 
 
