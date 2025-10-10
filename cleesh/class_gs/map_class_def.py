@@ -72,17 +72,6 @@ class Map(Invisible):
 					return True
 		return False
 
-#	def chk_name_exist(self, name):
-#		""" Evaluates whether an obj with obj.name == name exists in floor_lst for any room in map_lst
-#		"""
-#		return any(obj.name == name for room in self.get_room_lst() for obj in room.floor_lst)
-
-	def get_obj_from_name(self, name_str, gs): # room = hero_room ; search limited to room floor
-		for obj in self.hero_rm.floor_lst:
-			if obj.name == name_str:
-				return obj
-		raise ValueError('An obj with name name_str was not found in hero_rm.')
-
 	def get_obj_room(self, obj, gs, lst=None):
 		""" Returns the room that contains obj
 		"""
