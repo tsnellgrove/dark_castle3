@@ -8298,3 +8298,16 @@ End Date:
 ############################
 ### CLEESH VERSION 3.8.1 / DARK CASTLE VERSION 3.2.0 END ###
 ############################
+
+
+*** what's next? [INTERIM UPDATES ON MASTER - BUILD 14] ***
+- DONE: move to-do to done
+- DONE: update game version
+- DONE: update cleesh version
+- DONE: test version updates
+- DONE: quick fix - correct double buffer on 'eat cheese'
+- DONE: review backlog and choose next goal
+- DONE: decide on next target => mvps / done / cancel
+- DONE: creat branch
+- DONE: more frequent merges!!
+

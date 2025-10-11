@@ -142,7 +142,7 @@ def app_main(user_input, game_name, root_path_str):
 				is_interp_cmd = False
 				gs.io.buffer(except_err_str)
 
-		# custom handling for multiples action ('tak all' or 'drop all')
+		# custom handling for multiples action ('take all' or 'drop all')
 		if user_input.lower().strip() in ['drop all']:
 			is_multiples_action = True
 			multiples_action_type = 'drop'

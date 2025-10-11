@@ -62,18 +62,30 @@ To Do List - Dark Castle v3
 - TBD: get test player feedback
 - TBD: expand adventure!
 
+*** major updates in separate git merges ***
+- INPROC: mvps
+- TBD: automated / unit testing
+- TBD: implement full set of cardinal directions + u & d (?)
+- TBD: food
+- TBD: webify
+- TBD: drink
+- TBD: live updates with git
+- TBD: sleep
+- TBD: db back end
+- TBD: day / night
+- TBD: liquids
+- TBD: transparnecy
+- TBD: fire / heat
+- TBD: turn lantern into actual light (?)
+	- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
+	- IDEA: lean in on TADS approach
+- TBD: major interpreter update!
+	- TBD: introduce verbose and brief commands
+	- TBD: address 'Do What I Mean' in interp() now?
+- TBD: extend castle
 
+*** major updates in separate git merges ***
 
-*** what's next? [INTERIM UPDATES ON MASTER - BUILD 14] ***
-- DONE: move do-do to done
-- DONE: update game version
-- DONE: update cleesh version
-- DONE: test version updates
-- DONE: quick fix - correct double buffer on 'eat cheese'
-- DONE: review backlog and choose next goal
-- DONE: decide on next target => mvps / done / cancel
-- TBD: creat branch
-- TBD: more frequent merges!!
 
 
 ############################
@@ -153,8 +165,9 @@ To Do List - Dark Castle v3
 		- DONE: test
 		- DONE: comment out gs.map.get_obj_from_name()
 	- DONE: clean up gs.score(), gs.map(), creature()
-- TBD: tighten up / modularize app_main()
-
+- DONE: tighten up / modularize app_main()
+	- DONE: review of app main... complicated but well documented
+	- DONE: test 'z' case=> still works
 
 *** done ***
 - DONE: sort out how to deal with 'hand' vs. 'inventory' (just eliminate hand entirely?)
@@ -179,35 +192,19 @@ To Do List - Dark Castle v3
 	- TBD: confirm origin is cleaned up
 	- TBD: post-branch-delete run test
 
-
 ############################
 ### CLEESH VERSION 3.8.2 / DARK CASTLE VERSION 3.3.0 END ###
 ############################
 
 
-*** major updates in separate git merges ***
-- INPROC: mvps
-- TBD: unit tests
-- TBD: implement full set of cardinal directions + u & d (?)
-- TBD: food
-- TBD: webify
-- TBD: drink
-- TBD: live updates with git
-- TBD: sleep
-- TBD: db back end
-- TBD: day / night
-- TBD: liquids
-- TBD: transparnecy
-- TBD: fire / heat
-- TBD: turn lantern into actual light (?)
-	- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
-	- IDEA: lean in on TADS approach
-- TBD: major interpreter update!
-	- TBD: introduce verbose and brief commands
-	- TBD: address 'Do What I Mean' in interp() now?
-- TBD: extend castle
+*** what's next? [INTERIM UPDATES ON MASTER - BUILD 15] ***
+- TBD: move to-do to done
+- TBD: update game version
+- TBD: update cleesh version
+- TBD: test version updates
 
-*** major updates in separate git merges ***
+
+
 
 
 *********************
