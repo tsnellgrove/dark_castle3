@@ -179,6 +179,12 @@ To Do List - Dark Castle v3
 - CANCEL: should complex obj (stone_coffer) > feature_lst if minor; with only key obj called out??
 	- FINDING: no, can't access Interactive class from feature_lst
 
+*** close-out pre-merge ***
+- TBD: move to-do to done
+- TBD: update game version
+- TBD: update cleesh version
+- TBD: test version updates
+
 *** git merge ***
 - TBD: git branch merge with master
 	- TBD: 'git checkout master' to switch focus to master
@@ -195,15 +201,6 @@ To Do List - Dark Castle v3
 ############################
 ### CLEESH VERSION 3.8.2 / DARK CASTLE VERSION 3.3.0 END ###
 ############################
-
-
-*** what's next? [INTERIM UPDATES ON MASTER - BUILD 15] ***
-- TBD: move to-do to done
-- TBD: update game version
-- TBD: update cleesh version
-- TBD: test version updates
-
-
 
 
 
