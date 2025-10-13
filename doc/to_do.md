@@ -87,13 +87,6 @@ To Do List - Dark Castle v3
 *** major updates in separate git merges ***
 
 
-*** what's next? [INTERIM UPDATES ON MASTER - BUILD 15] ***
-- DONE: update done merge to-dos
-- TBD: create template for next branch project
-- TBD: decide on next branch project
-- TBD: prep for next branch project
-- TBD: update cleesh build
-
 ############################
 ### CLEESH VERSION 3.8.3 / DARK CASTLE VERSION 3.4.0 START ###
 ############################
