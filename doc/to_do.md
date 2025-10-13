@@ -50,7 +50,7 @@ To Do List - Dark Castle v3
 
 
 # *** BIG PICTURE ***
-- DONE: machinces / classes / error subsystem
+- DONE: machincs / classes / error subsystem
 - DONE: story updates
 - TBD: interpreter updates
 - TBD: test harness
@@ -63,9 +63,12 @@ To Do List - Dark Castle v3
 - TBD: expand adventure!
 
 *** major updates in separate git merges ***
-- INPROC: mvps
+- DONE: mvps
+- INPROC: implement full set of cardinal directions + u & d
 - TBD: automated / unit testing
-- TBD: implement full set of cardinal directions + u & d (?)
+- TBD: major interpreter update!
+	- TBD: introduce verbose and brief commands
+	- TBD: address 'Do What I Mean' in interp() now?
 - TBD: food
 - TBD: webify
 - TBD: drink
@@ -79,15 +82,62 @@ To Do List - Dark Castle v3
 - TBD: turn lantern into actual light (?)
 	- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
 	- IDEA: lean in on TADS approach
-- TBD: major interpreter update!
-	- TBD: introduce verbose and brief commands
-	- TBD: address 'Do What I Mean' in interp() now?
 - TBD: extend castle
 
 *** major updates in separate git merges ***
 
 
+*** what's next? [INTERIM UPDATES ON MASTER - BUILD 15] ***
+- DONE: update done merge to-dos
+- TBD: create template for next branch project
+- TBD: decide on next branch project
+- TBD: prep for next branch project
+- TBD: update cleesh build
 
+############################
+### CLEESH VERSION 3.8.3 / DARK CASTLE VERSION 3.4.0 START ###
+############################
+
+- TBD: create new <FEATURE_NAME>_feature git branch
+	- TBD: 'git branch' to confirm *master
+	- TBD: 'git branch <FEATURE_NAME>' to create new branch
+	- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+	- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
+	- TBD: 'git branch' to confirm new branch is now in focus
+	- TBD: Publish Branch via VS Code button
+	- TBD: confirm new branch on GitHub
+	- TBD: update doc TBDs to DONEs
+	- TBD: <CMD><OPT>S (to save all files)
+	- TBD: 'git add .' to add files to be committed
+	- TBD: 'git commit -m "doc updates"
+	- TBD: 'git push" to push updates to origin (GitHub)
+	- TBD: confirm new branch on GitHub is now ahead of master
+
+- TBD: implemenet full set of cardinal directions
+	- TBD: implement ne, nw, se, and sw
+		- TBD: 
+		- TBD: set untrodden path to sw
+		- TBD: test
+	- TBD: implement up, down
+		-TBD:
+
+
+- TBD: git branch merge with master
+	- TBD: 'git checkout master' to switch focus to master
+	- TBD: 'git branch: to confirm focus
+	- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+	- TBD: 'git push' to push merge to origin (GitHub)
+	- TBD: confirm that origin is updated
+	- TBD: confirm that code is updated and still runs
+	- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+	- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+	- TBD: confirm origin is cleaned up
+	- TBD: post-branch-delete run test
+
+
+############################
+### CLEESH VERSION 3.8.3 / DARK CASTLE VERSION 3.4.0 END ###
+############################
 
 
 *********************
