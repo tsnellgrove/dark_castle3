@@ -113,7 +113,12 @@ To Do List - Dark Castle v3
 		- TBD: set untrodden path to sw
 		- TBD: test
 	- TBD: implement up, down
-		-TBD:
+		- TBD:
+		- TBD: create test_tree
+		- TBD: define special room with no floor for up_tree (dropped items => Entrance)
+		- TBD: define room attrib that interacts with jump()
+			- TBD: burt => Entrance + default to death ?
+		- TBD: test
 
 - TBD: git branch merge with master
 	- TBD: 'git checkout master' to switch focus to master
