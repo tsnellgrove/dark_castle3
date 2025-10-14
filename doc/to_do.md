@@ -91,6 +91,7 @@ To Do List - Dark Castle v3
 ### CLEESH VERSION 3.8.3 / DARK CASTLE VERSION 3.4.0 START ###
 ############################
 
+- DONE: choose branch name => card_dir
 - TBD: create new <FEATURE_NAME>_feature git branch
 	- TBD: 'git branch' to confirm *master
 	- TBD: 'git branch <FEATURE_NAME>' to create new branch
@@ -113,7 +114,6 @@ To Do List - Dark Castle v3
 		- TBD: test
 	- TBD: implement up, down
 		-TBD:
-
 
 - TBD: git branch merge with master
 	- TBD: 'git checkout master' to switch focus to master
