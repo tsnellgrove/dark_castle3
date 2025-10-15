@@ -32,7 +32,8 @@ engine_static_dict = {
 
 	'one_word_convert_lst' : ['inventory', 'look', 'stand', 'jump'],
 
-	'one_word_travel_lst' : ['north', 'south', 'east', 'west'],
+#	'one_word_travel_lst' : ['north', 'south', 'east', 'west'],
+    'one_word_travel_lst' : ['north', 'south', 'east', 'west', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down'],
 
 	'assumed_noun_2word_lst' : ['exit', 'drop', 'stow', 'eat', 'wear'],
 
@@ -54,6 +55,12 @@ engine_static_dict = {
 		's' : 'south',
 		'e' : 'east',
 		'w' : 'west',
+        'ne' : 'northeast',
+		'nw' : 'northwest',
+		'se' : 'southeast',
+		'sw' : 'southwest',
+		'u' : 'up',
+		'd' : 'down',
 		'i' : 'inventory',
 		'l' : 'look',
 		'get' : 'take',

@@ -574,7 +574,8 @@ class Error(Identity):
 	# *** go_case error ***
 	def go_err(self, dir, gs):
 		creature = gs.core.hero
-		if dir not in ['north', 'south', 'east', 'west']:
+#		if dir not in ['north', 'south', 'east', 'west']:
+		if dir not in gs.io.get_lst('one_word_travel_lst','eng'):
 			err_txt = (f"'{dir}' is not a valid direction that you can go in.")
 			return True, False, err_txt
 		if creature.is_contained(gs):

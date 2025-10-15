@@ -498,7 +498,8 @@ map = Map(
 			},
 			{
 				'room_x' : entrance, 
-				'dir_x' : 'south', 
+#				'dir_x' : 'south', 
+				'dir_x' : 'southwest', 
 				'door' : untrodden_path, 
 				'dir_y' : None, 
 				'room_y' : 'unreachable'

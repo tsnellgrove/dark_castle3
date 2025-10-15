@@ -116,7 +116,8 @@ def interpreter(user_input, master_obj_lst):
 	# convert one-word commands that are implicit two-word commands 
 	full_one_word_lst = gs.io.get_lst('one_word_convert_lst','eng') + gs.io.get_lst('one_word_travel_lst','eng')
 	if len(user_input_lst) == 1 and word1 in full_one_word_lst:
-		if word1 in ['north', 'south', 'east', 'west']:
+#		if word1 in ['north', 'south', 'east', 'west']:
+		if word1 in gs.io.get_lst('one_word_travel_lst','eng'):
 			user_input_lst.append(word1)
 			user_input_lst[0] = 'go'
 		if word1 == 'inventory':

@@ -107,18 +107,26 @@ To Do List - Dark Castle v3
 	- DONE: 'git push" to push updates to origin (GitHub)
 	- DONE: confirm new branch on GitHub is now ahead of master
 
-- TBD: implemenet full set of cardinal directions
-	- TBD: implement ne, nw, se, and sw
-		- TBD: 
-		- TBD: set untrodden path to sw
-		- TBD: test
-	- TBD: implement up, down
-		- TBD:
+- INPROC: implemenet full set of cardinal directions
+	- INPROC: implement ne, nw, se, sw, u, & d:
+		- DONE: expand 'one_word_travel_lst' in engine_static_dict in static_gbl()
+		- DONE: expand 'abbreviations_dict' in engine_static_dict in static_gbl()
+		- DONE: set untrodden path to sw in dark_castle game_update()
+		- DONE: test 'help travel' => good
+		- DONE: update go_err() in error_class() to use 'one_word_travel_lst'
+		- DONE: update interp() to use 'one_word_travel_lst'
+		- TBD: update entrance_south warning => sw
+		- TBD: test sw warning
+		- TBD: temp test ne gate	
+	- TBD: for up, down only
+		- TBD: zork: test u/d in front of house; test jump from in_tree
+		- TBD: update u / d errors
 		- TBD: create test_tree
 		- TBD: define special room with no floor for up_tree (dropped items => Entrance)
 		- TBD: define room attrib that interacts with jump()
 			- TBD: burt => Entrance + default to death ?
 		- TBD: test
+	- TBD: clean up static_gbl(), game_update(), error_class(), interp()
 
 - TBD: git branch merge with master
 	- TBD: 'git checkout master' to switch focus to master
