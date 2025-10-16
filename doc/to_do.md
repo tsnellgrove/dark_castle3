@@ -108,19 +108,25 @@ To Do List - Dark Castle v3
 	- DONE: confirm new branch on GitHub is now ahead of master
 
 - INPROC: implemenet full set of cardinal directions
-	- INPROC: implement ne, nw, se, sw, u, & d:
+	- DONE: implement ne, nw, se, sw, u, & d:
 		- DONE: expand 'one_word_travel_lst' in engine_static_dict in static_gbl()
 		- DONE: expand 'abbreviations_dict' in engine_static_dict in static_gbl()
 		- DONE: set untrodden path to sw in dark_castle game_update()
 		- DONE: test 'help travel' => good
 		- DONE: update go_err() in error_class() to use 'one_word_travel_lst'
 		- DONE: update interp() to use 'one_word_travel_lst'
-		- TBD: update entrance_south warning => sw
-		- TBD: test sw warning
-		- TBD: temp test ne gate	
-	- TBD: for up, down only
-		- TBD: zork: test u/d in front of house; test jump from in_tree
+		- DONE: update entrance_south warning => sw
+		- DONE: test sw warning
+		- DONE: temp test ne gate	
+	- INPROC: for up, down only
+		- DONE: zork: test u/d in front of house
+			- FINDING: "You can't go that way."
+		- DONE: test jump from in_tree
+			- FINDING: land on ground, "In a feat of unaccustomed daring, you manage to land on your feet without killing yourself."
+			- IDEA: maybe notion of survivable jump from one 'level' up
+		- TBD: consider implementing room, outdoor_room, and floorless_room (like tads)
 		- TBD: update u / d errors
+		- TBD: different errors for different terrain? (e.g. dungeon vs. outdoors)
 		- TBD: create test_tree
 		- TBD: define special room with no floor for up_tree (dropped items => Entrance)
 		- TBD: define room attrib that interacts with jump()

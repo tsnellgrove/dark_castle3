@@ -152,7 +152,7 @@ hedgehog_eats_timer = Timer('hedgehog_eats_timer',
 # *** warnings ***
 entrance_south_warn = Warning('entrance_south_warn', 
 		'pre_act_cmd', 0, 'entrance_temp', True, 
-		[['go', 'south']], 0, is_valid_reqd=False)
+		[['go', 'southwest']], 0, is_valid_reqd=False)
 
 attack_hedgehog_warning = Warning('attack_hedgehog_warning', 
 		'pre_act_cmd', 0, 'royal_hedgehog_temp', True, 
