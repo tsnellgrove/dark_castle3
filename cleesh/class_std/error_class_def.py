@@ -583,7 +583,10 @@ class Error(Identity):
 			return True, False, err_txt
 		if not gs.map.chk_valid_dir(self, dir):
 			# attemptable error: player can attempt to go in any direction
-			err_txt = gs.io.get_str(f"dir_err_{random.randint(0, 4)}", 'experience')
+			if dir in ['up', 'down']:
+				err_txt = "You can't go that way."
+			else:
+				err_txt = gs.io.get_str(f"dir_err_{random.randint(0, 4)}", 'experience')
 			return True, True, err_txt
 		door = gs.map.get_door(self, dir)
 		if not isinstance(door, str) and door.is_openable() and door.is_open == False:
