@@ -124,9 +124,29 @@ To Do List - Dark Castle v3
 		- DONE: test jump from in_tree
 			- FINDING: land on ground, "In a feat of unaccustomed daring, you manage to land on your feet without killing yourself."
 			- IDEA: maybe notion of survivable jump from one 'level' up
+		- DONE: update u / d errors
+			- DONE: u;;date err_go() to provide consistent u / d errors
+			- DONE: restart mac to solve integrated terminal error (mac terminal working; not VSC)
+				- FINDING: can run from mac terminal
+				- FINDING: run "python3 web_main.py" and git from cleesh
+			- DONE: test
+		- TBD: decide: multi-room types or just one???
 		- TBD: consider implementing room, outdoor_room, and floorless_room (like tads)
-		- TBD: update u / d errors
-		- TBD: different errors for different terrain? (e.g. dungeon vs. outdoors)
+			- CANCLE: implement at 'type' attrib in room() ; type == 'std', 'floorless', 'outdoor'
+			- IDEA: implement as 2 room() attribs: is_outdoor, is_floorless
+			- TBD: is_outdoor, is_floorless, drop_rm, is_jump_fatal (None) > Room attribs
+				- TBD: add in room_class()
+				- TBD: update in cup_of_tea game_update() file
+				- TBD: test
+				- TBD: update in dark_castle game_update() file
+				- TBD: test
+		- TBD: re-tune errors / effects based on new attribs
+			- TBD: is_outdoors => wrong-way error = "You can't go that way."
+			- TBD: u / d errors for is_outdoor == False => try to climb wall / bonk head on floor
+			- TBD: is_floorless => wrong-way = "You can't go that way."
+			- TBD: update drop method: if is_floorless , obj => to drop_rm
+			- TBD: update jump method: if is_floorless, move hero to drop_rm => is_jump_fatal
+				- IDEA: land on feet vs. this was not a safe place to jump
 		- TBD: create test_tree
 		- TBD: define special room with no floor for up_tree (dropped items => Entrance)
 		- TBD: define room attrib that interacts with jump()
