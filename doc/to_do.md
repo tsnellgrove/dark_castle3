@@ -130,6 +130,13 @@ To Do List - Dark Castle v3
 				- FINDING: can run from mac terminal
 				- FINDING: run "python3 web_main.py" and git from cleesh
 			- DONE: test
+		- DONE: still working through terminal errors :-(
+			- FINDING: appears to be a PTY resource limit
+			- DONE: closed all but 1 VS Code tab
+			- DONE: temp raised max from 511 using: sudo sysctl -w kern.tty.ptmx_max=768
+			- FINDING: can now run integrated console from VS Code
+			- FINDING: per Tobi, terminal session persist across VS Code restarts - delete many
+			- IDEA: i expect this will solve the issue
 		- TBD: decide: multi-room types or just one???
 		- TBD: consider implementing room, outdoor_room, and floorless_room (like tads)
 			- CANCLE: implement at 'type' attrib in room() ; type == 'std', 'floorless', 'outdoor'
