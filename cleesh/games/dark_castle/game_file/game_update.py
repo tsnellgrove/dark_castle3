@@ -439,14 +439,16 @@ entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None,
 		[dark_castle, moat, drawbridge, rusty_keyhole],
 		[burt, postbox, big_rock], 
 		[entrance_moat_mach, entrance_south_warn], 
-		[postbox_init_desc, big_rock_init_desc]
+		[postbox_init_desc, big_rock_init_desc],
+		True
 	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, 
 		[old_furniture, cobwebs, musty_smell, arrow_slits],
 		[shiny_sword, royal_hedgehog, wooden_shelf], 
 		[], 
-		[shiny_sword_init_desc]
+		[shiny_sword_init_desc],
+		False
 	) 
 
 # main_hall = Room('main_hall', 'Main Hall', "hall", 'main_hall', None, # future room
@@ -459,15 +461,17 @@ gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None,
 antechamber = Room('antechamber', 'Antechamber', 'antechamber', 'antechamber', None,
 		[alcove], 
 		[guard_goblin], 
-		[dispense_panel_mach], 
-		[]
+		[dispense_panel_mach],
+		[],
+		False
 	)
 
 throne_room = Room('throne_room', 'Throne Room', 'throne_room', 'throne_room', None, 
 		[family_tree, ruined_windows, silver_keyhole, stained_glass],
 		[throne, elegant_pedestal, stone_coffer], 
 		[broach_dispenser_mach, take_box_warning, take_glass_warning],
-		[elegant_pedestal_init_desc, stone_coffer_init_desc]
+		[elegant_pedestal_init_desc, stone_coffer_init_desc],
+		False
 	)
 
 

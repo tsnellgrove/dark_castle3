@@ -10,13 +10,15 @@ from cleesh.class_std.base_class_def import ViewOnly
 
 ### classes
 class Room(ViewOnly):
-	def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst, init_desc_lst):
+#	def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst, init_desc_lst):
+	def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst, init_desc_lst, is_outdoor):
 		super().__init__(name, full_name, root_name, descript_key, writing)
 		self._feature_lst = feature_lst # list of descriptive obj in the room (can be examined but not interacted with)
 		self._floor_lst = floor_lst # list of obj on the floor of the room that the player can interact with
 		self._invis_lst = invis_lst # list of invisible obj in room
 		self._init_desc_lst = init_desc_lst # list of InitDesc objects that provide the initial description of obj in the room
-		""" Rooms are where everything happens in Dark Castle.
+		self._is_outdoor = is_outdoor # whether the room is outdoors
+		""" Rooms are where everything happens in Cleesh.
 		"""
 
 	# *** getters & setters ***
@@ -35,6 +37,10 @@ class Room(ViewOnly):
 	@property
 	def init_desc_lst(self):
 		return self._init_desc_lst
+
+	@property
+	def is_outdoor(self):
+		return self._is_outdoor
 
 	# *** attrib methods ***
 	def floor_lst_append(self, item):

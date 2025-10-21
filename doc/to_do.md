@@ -137,19 +137,26 @@ To Do List - Dark Castle v3
 			- FINDING: can now run integrated console from VS Code
 			- FINDING: per Tobi, terminal session persist across VS Code restarts - delete many
 			- IDEA: i expect this will solve the issue
-		- TBD: decide: multi-room types or just one???
-		- TBD: consider implementing room, outdoor_room, and floorless_room (like tads)
+		- DONE: decide: multi-room types or just one???
+			DECISION: floorless = FloorlessRoom sub-class, outdoor = attrib of Room
+		- DONE: consider implementing room, outdoor_room, and floorless_room (like tads)
 			- CANCLE: implement at 'type' attrib in room() ; type == 'std', 'floorless', 'outdoor'
-			- IDEA: implement as 2 room() attribs: is_outdoor, is_floorless
-			- TBD: is_outdoor, is_floorless, drop_rm, is_jump_fatal (None) > Room attribs
-				- TBD: add in room_class()
-				- TBD: update in cup_of_tea game_update() file
-				- TBD: test
-				- TBD: update in dark_castle game_update() file
-				- TBD: test
-		- TBD: re-tune errors / effects based on new attribs
+			- IDEA: implement as 1 room() attribs: is_outdoor and FloorlessRoom sub-class
+		- DONE: implement is_outdoor attrib
+			- DONE: is_outdoor => Room attribs
+			- DONE: add setter in room_class()
+			- DONE: update in cup_of_tea game_update() file
+			- DONE: test
+			- DONE: update in dark_castle game_update() file
+			- DONE: test
+		- TBD: update wrong-way errors based on is_outdoors
 			- TBD: is_outdoors => wrong-way error = "You can't go that way."
 			- TBD: u / d errors for is_outdoor == False => try to climb wall / bonk head on floor
+			- TBD: test
+		- TBD: drop_rm, is_jump_fatal (None) > FloorlessRoom attribs
+			- TBD: create subclass
+			- TBD: create is_floorless identity method
+		- TBD: re-tune errors / effects based on new attribs
 			- TBD: is_floorless => wrong-way = "You can't go that way."
 			- TBD: update drop method: if is_floorless , obj => to drop_rm
 			- TBD: update jump method: if is_floorless, move hero to drop_rm => is_jump_fatal
@@ -159,7 +166,7 @@ To Do List - Dark Castle v3
 		- TBD: define room attrib that interacts with jump()
 			- TBD: burt => Entrance + default to death ?
 		- TBD: test
-	- TBD: clean up static_gbl(), game_update(), error_class(), interp()
+	- TBD: clean up static_gbl(), game_update(), error_class(), interp(), room()
 
 - TBD: git branch merge with master
 	- TBD: 'git checkout master' to switch focus to master
