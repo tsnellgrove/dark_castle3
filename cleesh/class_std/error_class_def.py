@@ -583,8 +583,12 @@ class Error(Identity):
 			return True, False, err_txt
 		if not gs.map.chk_valid_dir(self, dir):
 			# attemptable error: player can attempt to go in any direction
-			if dir in ['up', 'down']:
+			if gs.map.get_obj_room(gs.core.hero, gs).is_outdoor:
 				err_txt = "You can't go that way."
+			elif dir in ['up']:
+				err_txt = "You attempt to climb the nearest wall without success."
+			elif dir in ['down']:
+				err_txt = "You bonk your head on the floor attempting this feat."
 			else:
 				err_txt = gs.io.get_str(f"dir_err_{random.randint(0, 4)}", 'experience')
 			return True, True, err_txt

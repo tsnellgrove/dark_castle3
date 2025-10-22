@@ -111,7 +111,7 @@ pub = Room('pub', 'Pub', "pub", 'pub', None, [],
 		[cecily, dingy_shelf, tea_cup, comfy_chair], [tea_drunk_mach], [], False)
 
 unreachable_1 = Room('unreachable_1', 'Unreachable', 'unreachable_1', 'unreachable_1', None, [], 
-		[], [], [])
+		[], [], [], False)
 
 
 # *** gs class modules ***

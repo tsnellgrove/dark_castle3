@@ -149,23 +149,26 @@ To Do List - Dark Castle v3
 			- DONE: test
 			- DONE: update in dark_castle game_update() file
 			- DONE: test
-		- TBD: update wrong-way errors based on is_outdoors
-			- TBD: is_outdoors => wrong-way error = "You can't go that way."
-			- TBD: u / d errors for is_outdoor == False => try to climb wall / bonk head on floor
-			- TBD: test
+		- DONE: update wrong-way errors based on is_outdoors
+			- DONE: is_outdoors => wrong-way error = "You can't go that way."
+			- DONE: u / d errors for is_outdoor == False => try to climb wall / bonk head on floor
+			- DONE: test
 		- TBD: drop_rm, is_jump_fatal (None) > FloorlessRoom attribs
 			- TBD: create subclass
+			- TBD: add drop_rm and is_drop_fatal attribs
+			- TBD: create setters and getters for drop_rm and is_drop_fatal
 			- TBD: create is_floorless identity method
 		- TBD: re-tune errors / effects based on new attribs
 			- TBD: is_floorless => wrong-way = "You can't go that way."
 			- TBD: update drop method: if is_floorless , obj => to drop_rm
-			- TBD: update jump method: if is_floorless, move hero to drop_rm => is_jump_fatal
+			- TBD: update jump method: if is_floorless, move hero to drop_rm => is_drop_fatal
 				- IDEA: land on feet vs. this was not a safe place to jump
 		- TBD: create test_tree
-		- TBD: define special room with no floor for up_tree (dropped items => Entrance)
-		- TBD: define room attrib that interacts with jump()
-			- TBD: burt => Entrance + default to death ?
-		- TBD: test
+			- TBD: u / d
+			- TBD: test wrong directions 
+			- TBD: test drop
+			- TBD: test jump
+		- TBD: consider perminent tree at Entrance (silver butter knife ???)
 	- TBD: clean up static_gbl(), game_update(), error_class(), interp(), room()
 
 - TBD: git branch merge with master
