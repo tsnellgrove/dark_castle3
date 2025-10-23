@@ -301,5 +301,31 @@ class InitDesc(Invisible):
 		return self._init_desc_key
 
 
+class FloorlessRoom(Room):
+#	def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst, init_desc_lst):
+	def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst, init_desc_lst, is_outdoor, drop_rm, is_jump_fatal):
+		super().__init__(name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst, init_desc_lst, is_outdoor)
+#		self._feature_lst = feature_lst # list of descriptive obj in the room (can be examined but not interacted with)
+#		self._floor_lst = floor_lst # list of obj on the floor of the room that the player can interact with
+#		self._invis_lst = invis_lst # list of invisible obj in room
+#		self._init_desc_lst = init_desc_lst # list of InitDesc objects that provide the initial description of obj in the room
+#		self._is_outdoor = is_outdoor # whether the room is outdoors
+		self._drop_rm = drop_rm # room to which dropped items go
+		self._is_jump_fatal = is_jump_fatal # whether jumping from the room is fatal
+		""" Floorless Rooms are typically vertical locations, like up a tree.
+		"""
 
+	# *** getters & setters ***
+	@property
+	def drop_rm(self):
+		return self._drop_rm
+	
+	@property
+	def is_jump_fatal(self):
+		return self._is_jump_fatal
+	
+	# *** identity method ***
+	def is_floorless_room(self):
+		return True
+	
 

@@ -82,6 +82,9 @@ class Identity(Invisible):
 	def is_room(self):
 		return False
 
+	def is_floorless_room(self):
+		return False
+
 	def is_creature(self):
 		return False
 

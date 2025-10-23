@@ -153,13 +153,14 @@ To Do List - Dark Castle v3
 			- DONE: is_outdoors => wrong-way error = "You can't go that way."
 			- DONE: u / d errors for is_outdoor == False => try to climb wall / bonk head on floor
 			- DONE: test
-		- TBD: drop_rm, is_jump_fatal (None) > FloorlessRoom attribs
-			- TBD: create subclass
-			- TBD: add drop_rm and is_drop_fatal attribs
-			- TBD: create setters and getters for drop_rm and is_drop_fatal
-			- TBD: create is_floorless identity method
-		- TBD: re-tune errors / effects based on new attribs
-			- TBD: is_floorless => wrong-way = "You can't go that way."
+		- DONE: drop_rm, is_jump_fatal (None) > FloorlessRoom attribs
+			- DONE: create subclass FloorlessRoom
+			- DONE: add drop_rm and is_drop_fatal attribs
+			- DONE: create setters and getters for drop_rm and is_drop_fatal
+			- DONE: create is_floorless identity method
+			- DONE: add is_floorless_room() => False identity method to identity_class
+		- INPROC: re-tune errors / effects based on new attribs
+			- DONE: is_floorless => wrong-way = "You can't go that way."
 			- TBD: update drop method: if is_floorless , obj => to drop_rm
 			- TBD: update jump method: if is_floorless, move hero to drop_rm => is_drop_fatal
 				- IDEA: land on feet vs. this was not a safe place to jump

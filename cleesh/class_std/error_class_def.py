@@ -585,6 +585,8 @@ class Error(Identity):
 			# attemptable error: player can attempt to go in any direction
 			if gs.map.get_obj_room(gs.core.hero, gs).is_outdoor:
 				err_txt = "You can't go that way."
+			elif gs.map.get_obj_room(gs.core.hero, gs).is_floorless_room():
+				err_txt = "You can't go that way."
 			elif dir in ['up']:
 				err_txt = "You attempt to climb the nearest wall without success."
 			elif dir in ['down']:
