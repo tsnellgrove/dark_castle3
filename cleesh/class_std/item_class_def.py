@@ -74,11 +74,18 @@ class Item(ViewOnly):
 
 		creature.hand_lst_remove(self)
 		if gs.io.multi_count > 0:
-			gs.io.buffer(f"{self.full_name}: Dropped")
+#			gs.io.buffer(f"{self.full_name}: Dropped")
+			drop_txt = f"{self.full_name}: Dropped"
+		elif gs.map.hero_rm.is_floorless_room():
+			drop_txt = f"The {self.full_name} falls to the ground."
 		else:
-			gs.io.buffer("Dropped")
+#			gs.io.buffer("Dropped")
+			drop_txt = "Dropped"
+		gs.io.buffer(drop_txt)
 		if creature.is_contained(gs):
 			creature.get_contained_by(gs).contain_lst_append(self, gs)
+		elif gs.map.hero_rm.is_floorless_room():
+			gs.map.hero_rm.drop_rm.floor_lst_append(self)
 		else:
 			gs.map.hero_rm.floor_lst_append(self)		
 		return 

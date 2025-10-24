@@ -159,17 +159,20 @@ To Do List - Dark Castle v3
 			- DONE: create setters and getters for drop_rm and is_drop_fatal
 			- DONE: create is_floorless identity method
 			- DONE: add is_floorless_room() => False identity method to identity_class
-		- INPROC: re-tune errors / effects based on new attribs
+		- DONE: re-tune errors / effects based on new attribs
 			- DONE: is_floorless => wrong-way = "You can't go that way."
-			- TBD: update drop method: if is_floorless , obj => to drop_rm
-			- TBD: update jump method: if is_floorless, move hero to drop_rm => is_drop_fatal
-				- IDEA: land on feet vs. this was not a safe place to jump
-		- TBD: create test_tree
-			- TBD: u / d
+			- DONE: in error class, update gs.map.get_obj_room(gs.core.hero, gs) to gs.map.hero_rm
+		- INPROC: drop
+			- DONE: update drop method: if is_floorless() , obj => to drop_rm 
+			- TBD: create test tree / up_tree room
+			- TBD: test u / d
 			- TBD: test wrong directions 
-			- TBD: test drop
+			- TBD: test drop (reg, mulit, floorless)
+		- TBD: update jump method: if is_floorless(), move hero to drop_rm => is_drop_fatal
+			- IDEA: land on feet vs. this was not a safe place to jump
 			- TBD: test jump
-		- TBD: consider perminent tree at Entrance (silver butter knife ???)
+		- TBD: consider perminent tree at Entrance (red ruby ???)
+		- TBD: how to enable 'climb tree'
 	- TBD: clean up static_gbl(), game_update(), error_class(), interp(), room()
 
 - TBD: git branch merge with master
