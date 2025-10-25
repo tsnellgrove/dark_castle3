@@ -197,7 +197,8 @@ game_static_dict = {
 	'jump_back' : "startled and compelled to leap back in surprise.",
 
 	### initial descriptions ###
-    'postbox_init_desc' : "Behind you, just beyond the drawbridge, is an extremely old and rusty postbox.",
+#    'postbox_init_desc' : "Behind you, just beyond the drawbridge, is an extremely old and rusty postbox.",
+    'postbox_init_desc' : "Behind you, just beyond the drawbridge, is an extremely old and rusty postbox besides which stands a large tree with some low branches.",
     'big_rock_init_desc' : "Across the way from the postbox is a big rock covered in moss and lichen.",
     'shiny_sword_init_desc' : "Upon the wall hangs a Shiny Sword of great antinquity.",
 	'elegant_pedestal_init_desc' : "To the right of the throne is an elegant pedestal that holds what appears to be a delicate crystal box.",
@@ -209,6 +210,8 @@ game_static_dict = {
 #	'entrance' : "You stand upon the ancient drawbridge of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate. Behind you, just beyond the drawbridge, is an extremely old and rusty postbox.",
 
 #	'entrance' : "You are atop the Drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south, the way back home. To the east and west of your precarious perch on the Drawbridge - and about three feet below you - is the Moat.",
+
+	'up_tree' : "You are perched in a large tree about ten feet above the ground. The nearest branch above you is above your reach. From your vantage point, Dark Castle looms as darkly as ever and the moat looks even more vile and unappealing than it does from the drawbridge. Still, the air is crisp and the tree is grand. Being up here reminds you of a tree house that you and Cecily made together when you were younger. You can't help wondering what she's up to right now.",
 
 	'gatehouse' : "You are in the Gatehouse. This sparse but serviceable room guards the entrance to the main castle. Once upon a time it no-doubt bristled with alert guards bearing gleaming arms. Today, it is filled with old furniture, cobwebs, and a musty smell. Dim light filters in from the arrow slits facing the moat while the shadows at the north end of the room hint at the darkness of the main castle beyond.",
 	

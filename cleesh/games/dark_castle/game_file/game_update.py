@@ -12,7 +12,7 @@ sys.path.append(root_path_str)
 import pickle
 from cleesh.class_std.invisible_class_def import Invisible
 from cleesh.class_std.base_class_def import Writing, ViewOnly
-from cleesh.class_std.room_class_def import Room, InitDesc
+from cleesh.class_std.room_class_def import Room, InitDesc, FloorlessRoom
 from cleesh.class_std.item_class_def import Item, Food, Liquid, Garment, Weapon
 from cleesh.class_std.interactive_class_def import DoorSimple, DoorLockable
 from cleesh.class_std.interactive_class_def import ContainerFixedSimple, ContainerFixedLidded, ContainerFixedLockable, Seat
@@ -443,6 +443,16 @@ entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None,
 		True
 	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
+
+up_tree = FloorlessRoom('up_tree', 'Up Tree', "up_tree", 'up_tree', None, 
+		[dark_castle, moat, drawbridge],
+		[], 
+		[], 
+		[],
+		True, entrance, False # is_outdoor, drop_rm, is_jump_fatal
+	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
+
+
 gatehouse = Room('gatehouse', 'Gatehouse', 'gatehouse', 'gatehouse', None, 
 		[old_furniture, cobwebs, musty_smell, arrow_slits],
 		[shiny_sword, royal_hedgehog, wooden_shelf], 
@@ -499,6 +509,13 @@ map = Map(
 				'door' : front_gate, 
 				'dir_y' : 'south', 
 				'room_y' : gatehouse
+			},
+			{
+				'room_x' : entrance, 
+				'dir_x' : 'up', 
+				'door' : 'climb', 
+				'dir_y' : 'down', 
+				'room_y' : up_tree
 			},
 			{
 				'room_x' : entrance, 
@@ -654,7 +671,7 @@ master_obj_lst = [
 		insignia, baked_biscuit, drawbridge, rusty_keyhole, royal_cypher, postbox, ancient_certificate, 
 		bold_script, big_rock, zorkmid, untrodden_path, gatehouse, old_furniture, cobwebs, musty_smell, 
 		arrow_slits, foreboding_archway, lit_archway, elegant_pedestal, ruined_windows, silver_keyhole,
-		stained_glass,
+		stained_glass, up_tree,
 
 		# test objects
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 

@@ -162,18 +162,32 @@ To Do List - Dark Castle v3
 		- DONE: re-tune errors / effects based on new attribs
 			- DONE: is_floorless => wrong-way = "You can't go that way."
 			- DONE: in error class, update gs.map.get_obj_room(gs.core.hero, gs) to gs.map.hero_rm
-		- INPROC: drop
+		- DONE: update drop
 			- DONE: update drop method: if is_floorless() , obj => to drop_rm 
-			- TBD: create test tree / up_tree room
-			- TBD: test u / d
-			- TBD: test wrong directions 
-			- TBD: test drop (reg, mulit, floorless)
+		- INPROC: test up / down
+			- DONE: update init_desc for postbox to include tree
+			- DONE: create  up_tree room
+			- DONE: add up_tree to map
+			- DONE: create room description for up_tree
+			- DONE: add dark_castle, moat, and drawbridge to up_tree.feature_lst
+			- DONE: convert up_tree from Room to FloorlessRoom
+			- DONE: test u / d
+			- DONE: test wrong directions 
+			- DONE: test drop (reg, mulit, floorless)
+			- TBD: create tree ViewOnly obj => feature_lst in entrance and up_tree
+				- IDEA: entrance_tree and in_tree obj w/ different descriptions
+				- IDEA: move Cecily reference to in_tree description: "Being up here..."
+				- TBD: 
+			- TBD: sort out direction UI; for u/d use "leading" or "leads" rather than "to the"
+			- TBD: update moat and drawbridge descriptions to match up_tree view??
+			- TBD: decide if I enable description of "on the ground below you" (see Frotz)			
+			- TBD: create hollow as ViewOnly container
+			- TBD: populate hollow with rubby
 		- TBD: update jump method: if is_floorless(), move hero to drop_rm => is_drop_fatal
 			- IDEA: land on feet vs. this was not a safe place to jump
 			- TBD: test jump
-		- TBD: consider perminent tree at Entrance (red ruby ???)
-		- TBD: how to enable 'climb tree'
-	- TBD: clean up static_gbl(), game_update(), error_class(), interp(), room()
+		- TBD: how to enable 'climb tree' => ClimbableMixIn ???
+	- TBD: clean up static_gbl(), game_update(), error_class(), interp(), room(), game_static
 
 - TBD: git branch merge with master
 	- TBD: 'git checkout master' to switch focus to master
