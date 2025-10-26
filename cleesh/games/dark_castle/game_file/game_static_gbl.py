@@ -118,6 +118,8 @@ game_static_dict = {
 	'ruined_windows' : "On the east and west walls there is a row of floor-to-ceiling windows. The window frames themselves are mostly empty of glass and are now completely choked with a thick growth of thorny vines. The beautiful stained glass that once filled the frames is still strewn about the floor of the room. Nana never spoke about the catastrophe that sundered Bright Castle and rendered it into Dark Castle, but it must have been dramatic!",
 	'silver_keyhole' : "The silver keyhold glitters brilliantly in the otherwise dark and brooding throne room. So much so that it reminds you of the polished luster of the shiny sword.",
 	'stained_glass' : "The shattered stained glass is strewn about the floor of the room. Looking at it more closely, you see that in some cases the edges of the glass appear to be badly melted. Whatever dark forces brought about the fall of Bright Castle must have horrifying to behold!",
+	'entrance_tree' : "A large oak tree with low-hanging branches stands just beyond the rusty postbox. Its gnarled trunk and sprawling limbs give it a majestic appearance, despite the dark and gloomy surroundings of Dark Castle. The tree seems to offer a small refuge from the foreboding atmosphere of the castle entrance.",
+	'uptree_tree' : "The oak tree's thick trunk and wide branches (one of which you are currently sitting on) create a natural canopy, providing a small oasis of greenery within the dark and eerie confines of Dark Castle. Being up here reminds you of a tree house that you and Cecily made together when you were younger. You can't help wondering what she's up to right now.",
 
 	### item objects ###
 	'rusty_key' : "An old rusty key... the one you swore to the whole pub (and miss Chrissy Brewer!) that you'd use to pillage the Dark Castle... What could you possibly do with it?",
@@ -211,7 +213,7 @@ game_static_dict = {
 
 #	'entrance' : "You are atop the Drawbridge before the daunting entrance of Dark Castle. To the north is the Front Gate. To the south, the way back home. To the east and west of your precarious perch on the Drawbridge - and about three feet below you - is the Moat.",
 
-	'up_tree' : "You are perched in a large tree about ten feet above the ground. The nearest branch above you is above your reach. From your vantage point, Dark Castle looms as darkly as ever and the moat looks even more vile and unappealing than it does from the drawbridge. Still, the air is crisp and the tree is grand. Being up here reminds you of a tree house that you and Cecily made together when you were younger. You can't help wondering what she's up to right now.",
+	'up_tree' : "You are perched in a large tree about ten feet above the ground. The nearest branch above you is above your reach. From your vantage point, Dark Castle looms as darkly as ever and the moat looks even more vile and unappealing than it does from the drawbridge. Still, the tree's wide branches are grand and calming.",
 
 	'gatehouse' : "You are in the Gatehouse. This sparse but serviceable room guards the entrance to the main castle. Once upon a time it no-doubt bristled with alert guards bearing gleaming arms. Today, it is filled with old furniture, cobwebs, and a musty smell. Dim light filters in from the arrow slits facing the moat while the shadows at the north end of the room hint at the darkness of the main castle beyond.",
 	

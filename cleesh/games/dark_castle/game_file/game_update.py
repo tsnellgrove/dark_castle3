@@ -78,6 +78,8 @@ lit_archway = ViewOnly('lit_archway', 'Lit Archway', 'archway', 'lit_archway', N
 ruined_windows = ViewOnly('ruined_windows', 'Ruined Windows', 'windows', 'ruined_windows', None)
 silver_keyhole = ViewOnly('silver_keyhole', 'Silver Keyhole', 'keyhole', 'silver_keyhole', None)
 stained_glass = ViewOnly('stained_glass', 'Stained Glass', 'glass', 'stained_glass', None)
+entrance_tree = ViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None)
+uptree_tree = ViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None)
 
 # Item
 rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
@@ -436,7 +438,7 @@ stone_coffer_init_desc = InitDesc('stone_coffer_init_desc', stone_coffer, False,
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
-		[dark_castle, moat, drawbridge, rusty_keyhole],
+		[dark_castle, moat, drawbridge, rusty_keyhole, entrance_tree],
 		[burt, postbox, big_rock], 
 		[entrance_moat_mach, entrance_south_warn], 
 		[postbox_init_desc, big_rock_init_desc],
@@ -445,7 +447,7 @@ entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None,
 
 
 up_tree = FloorlessRoom('up_tree', 'Up Tree', "up_tree", 'up_tree', None, 
-		[dark_castle, moat, drawbridge],
+		[dark_castle, moat, drawbridge, uptree_tree],
 		[], 
 		[], 
 		[],
@@ -671,7 +673,7 @@ master_obj_lst = [
 		insignia, baked_biscuit, drawbridge, rusty_keyhole, royal_cypher, postbox, ancient_certificate, 
 		bold_script, big_rock, zorkmid, untrodden_path, gatehouse, old_furniture, cobwebs, musty_smell, 
 		arrow_slits, foreboding_archway, lit_archway, elegant_pedestal, ruined_windows, silver_keyhole,
-		stained_glass, up_tree,
+		stained_glass, up_tree, uptree_tree, entrance_tree,
 
 		# test objects
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 

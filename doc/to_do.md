@@ -174,12 +174,13 @@ To Do List - Dark Castle v3
 			- DONE: test u / d
 			- DONE: test wrong directions 
 			- DONE: test drop (reg, mulit, floorless)
-			- TBD: create tree ViewOnly obj => feature_lst in entrance and up_tree
-				- IDEA: entrance_tree and in_tree obj w/ different descriptions
-				- IDEA: move Cecily reference to in_tree description: "Being up here..."
-				- TBD: 
+			- DONE: create tree ViewOnly obj => feature_lst in entrance and up_tree
+				- DONE: entrance_tree and uptree_tree obj w/ different descriptions
+				- DONE: move Cecily reference to in_tree description: "Being up here..."
+				- DONE: add tree descirptions to feature_lst of each room 
+			- TBD: create uptree_ moat and drawbridge descriptions to match up_tree view??
+				- IDEA: presence of active crocs clearer from up high (bite marks and water motion)
 			- TBD: sort out direction UI; for u/d use "leading" or "leads" rather than "to the"
-			- TBD: update moat and drawbridge descriptions to match up_tree view??
 			- TBD: decide if I enable description of "on the ground below you" (see Frotz)			
 			- TBD: create hollow as ViewOnly container
 			- TBD: populate hollow with rubby
