@@ -178,8 +178,8 @@ To Do List - Dark Castle v3
 				- DONE: entrance_tree and uptree_tree obj w/ different descriptions
 				- DONE: move Cecily reference to in_tree description: "Being up here..."
 				- DONE: add tree descirptions to feature_lst of each room 
-			- TBD: create uptree_ moat and drawbridge descriptions to match up_tree view??
-				- IDEA: presence of active crocs clearer from up high (bite marks and water motion)
+			- DONE: create uptree_ moat and drawbridge descriptions to match up_tree view??
+				- DONE: presence of active crocs clearer from up high (bite marks and water motion)
 			- TBD: sort out direction UI; for u/d use "leading" or "leads" rather than "to the"
 			- TBD: decide if I enable description of "on the ground below you" (see Frotz)			
 			- TBD: create hollow as ViewOnly container
@@ -188,6 +188,7 @@ To Do List - Dark Castle v3
 			- IDEA: land on feet vs. this was not a safe place to jump
 			- TBD: test jump
 		- TBD: how to enable 'climb tree' => ClimbableMixIn ???
+		- TBD: review full entrance / tree UI and tune for best flow
 	- TBD: clean up static_gbl(), game_update(), error_class(), interp(), room(), game_static
 
 - TBD: git branch merge with master

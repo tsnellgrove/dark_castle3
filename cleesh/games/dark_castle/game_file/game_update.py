@@ -52,7 +52,7 @@ bold_script = Writing('bold_script', 'Bold Script', 'script', 'bold_script')
 
 # ViewOnly
 dark_castle = ViewOnly('dark_castle', "Dark Castle", "castle", 'dark_castle', None)
-moat = ViewOnly('moat', 'Moat', 'moat', 'moat', None)
+entrance_moat = ViewOnly('entrance_moat', 'Moat', 'moat', 'entrance_moat', None)
 backpack = ViewOnly('backpack', "Backpack", "backpack", 'backpack', None)
 # burt = ViewOnly('burt', 'Burt', "burt", 'burt', None)
 fist = ViewOnly('fist', 'Fist', "fist", 'fist', None)
@@ -66,7 +66,7 @@ family_tree = ViewOnly('family_tree', 'Family Tree', 'tree', 'family_tree', None
 dead_goblin = ViewOnly('dead_goblin', 'Dead Goblin', 'goblin', 'dead_goblin', None)
 officiousness = ViewOnly('officiousness', 'Officiousness', 'officiousness', 'officiousness', None)
 loyalty = ViewOnly('loyalty', 'Loyalty', 'loyalty', 'loyalty', None)
-drawbridge = ViewOnly('drawbridge', 'Drawbridge', 'drawbridge', 'drawbridge', None)
+entrance_drawbridge = ViewOnly('entrance_drawbridge', 'Drawbridge', 'drawbridge', 'entrance_drawbridge', None)
 rusty_keyhole = ViewOnly('rusty_keyhole', 'Rusty Keyhole', 'keyhole', 'rusty_keyhole', None)
 untrodden_path = ViewOnly('untrodden_path', 'Untrodden Path', 'path', 'untrodden_path', None)
 old_furniture = ViewOnly('old_furniture', 'Old Furniture', 'furniture', 'old_furniture', None)
@@ -80,6 +80,8 @@ silver_keyhole = ViewOnly('silver_keyhole', 'Silver Keyhole', 'keyhole', 'silver
 stained_glass = ViewOnly('stained_glass', 'Stained Glass', 'glass', 'stained_glass', None)
 entrance_tree = ViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None)
 uptree_tree = ViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None)
+uptree_moat = ViewOnly('uptree_moat', 'Moat', 'moat', 'uptree_moat', None)
+uptree_drawbridge = ViewOnly('uptree_drawbridge', 'Drawbridge', 'drawbridge', 'uptree_drawbridge', None)
 
 # Item
 rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
@@ -438,7 +440,7 @@ stone_coffer_init_desc = InitDesc('stone_coffer_init_desc', stone_coffer, False,
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
-		[dark_castle, moat, drawbridge, rusty_keyhole, entrance_tree],
+		[dark_castle, entrance_moat, entrance_drawbridge, rusty_keyhole, entrance_tree],
 		[burt, postbox, big_rock], 
 		[entrance_moat_mach, entrance_south_warn], 
 		[postbox_init_desc, big_rock_init_desc],
@@ -447,7 +449,7 @@ entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None,
 
 
 up_tree = FloorlessRoom('up_tree', 'Up Tree', "up_tree", 'up_tree', None, 
-		[dark_castle, moat, drawbridge, uptree_tree],
+		[dark_castle, uptree_moat, uptree_drawbridge, uptree_tree],
 		[], 
 		[], 
 		[],
@@ -664,16 +666,16 @@ crystal_box.contain_lst = [kinging_scroll]
 ### invisible objects need not be listed ###
 master_obj_lst = [
 		gs, rusty_lettering, elven_runes, messy_handwriting, small_printing, illuminated_letters, calligraphy, 
-		dark_castle, moat, backpack, burt, fist, conscience, alcove, stone_coffer, 
+		dark_castle, entrance_moat, backpack, burt, fist, conscience, alcove, stone_coffer, 
 		family_tree, dead_goblin, rusty_key, shiny_sword, torn_note, grimy_axe, silver_key, kinging_scroll, 
 		cheese_wedge, well_water, royal_crown, hedgehog_broach, crystal_box, front_gate, iron_portcullis, 
 		control_panel, throne, left_lever, middle_lever, right_lever, red_button, royal_hedgehog, guard_goblin, 
 		entrance, antechamber, throne_room, loyalty, officiousness, gold_capitals, red_bandana, 
 		big_medal, burt, brass_lantern, fierce_teeth, chewed_fingernails, wooden_shelf, earthen_jug, paper_bag, 
-		insignia, baked_biscuit, drawbridge, rusty_keyhole, royal_cypher, postbox, ancient_certificate, 
+		insignia, baked_biscuit, entrance_drawbridge, rusty_keyhole, royal_cypher, postbox, ancient_certificate, 
 		bold_script, big_rock, zorkmid, untrodden_path, gatehouse, old_furniture, cobwebs, musty_smell, 
 		arrow_slits, foreboding_archway, lit_archway, elegant_pedestal, ruined_windows, silver_keyhole,
-		stained_glass, up_tree, uptree_tree, entrance_tree,
+		stained_glass, up_tree, uptree_tree, entrance_tree,uptree_moat, uptree_drawbridge,
 
 		# test objects
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 
