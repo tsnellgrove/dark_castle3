@@ -166,7 +166,8 @@ class Room(ViewOnly):
 		return False
 
 	def has_contain(self, gs):
-		return len(self.floor_lst) > 1
+#		return len(self.floor_lst) > 1
+		return True
 
 	def disp_cond(self, gs):
 		""" Displays object-specific conditions. Used in examine().

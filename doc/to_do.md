@@ -180,7 +180,8 @@ To Do List - Dark Castle v3
 				- DONE: add tree descirptions to feature_lst of each room 
 			- DONE: create uptree_ moat and drawbridge descriptions to match up_tree view??
 				- DONE: presence of active crocs clearer from up high (bite marks and water motion)
-			- TBD: sort out direction UI; for u/d use "leading" or "leads" rather than "to the"
+			- DONE: sort out direction UI; for u/d use "leading" or "leads" rather than "to the"
+			- DONE: sort out lack of passage str in FloorlessRoom (update has_contain() method)
 			- TBD: decide if I enable description of "on the ground below you" (see Frotz)			
 			- TBD: create hollow as ViewOnly container
 			- TBD: populate hollow with rubby
@@ -189,7 +190,7 @@ To Do List - Dark Castle v3
 			- TBD: test jump
 		- TBD: how to enable 'climb tree' => ClimbableMixIn ???
 		- TBD: review full entrance / tree UI and tune for best flow
-	- TBD: clean up static_gbl(), game_update(), error_class(), interp(), room(), game_static
+	- TBD: clean up static_gbl(), game_update(), error_class(), interp(), room(), game_static, map()
 
 - TBD: git branch merge with master
 	- TBD: 'git checkout master' to switch focus to master
