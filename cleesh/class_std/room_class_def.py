@@ -241,6 +241,13 @@ class Room(ViewOnly):
 			room_item_str = self.get_disp_str(rm_item_lst, gs) # use new universal method to get disp_str
 			gs.io.buff_no_cr(f"The following items are here: {room_item_str}. ")
 
+		# below items
+		if self.is_floorless_room() and self.get_below_lst(gs):
+			gs.io.buff_cr()
+			gs.io.buff_cr()
+			below_str = self.get_below_str(gs)
+			gs.io.buff_no_cr(f"On the ground below you can see: {below_str}. ")
+
 		# creatures
 		for creature in rm_creature_lst:
 			gs.io.buff_cr()
@@ -329,4 +336,19 @@ class FloorlessRoom(Room):
 	def is_floorless_room(self):
 		return True
 	
-
+	# *** floorlessroom-specific scope methods ***
+	def get_below_lst(self, gs):
+		""" Returns the list of objects on the ground below the floorless room.
+		"""
+		below_lst = self.drop_rm.floor_lst.copy()
+		return below_lst
+	
+	def get_below_str(self, gs):
+		""" Returns a description string of the objects on the ground below the floorless room.
+		"""
+		below_lst = self.get_below_lst(gs)
+		if not below_lst:
+			return "nothing of interest"
+		else:
+			below_str = self.get_disp_str(below_lst, gs)
+			return below_str
