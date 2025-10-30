@@ -154,6 +154,16 @@ class Room(ViewOnly):
 				take_all_lst.append(obj)
 		return take_all_lst
 
+	def chk_has_init_desc(self, obj):
+		""" Evaluates whether the passed object is an InitDesc object.
+		"""
+		if not self.init_desc_lst:
+			return False
+		for init_desc in self.init_desc_lst:
+			if init_desc.linked_item == obj:
+				return True
+		return False
+
 
 	# *** universal display methods ***
 	def get_title_str(self, gs):
@@ -340,7 +350,12 @@ class FloorlessRoom(Room):
 	def get_below_lst(self, gs):
 		""" Returns the list of objects on the ground below the floorless room.
 		"""
-		below_lst = self.drop_rm.floor_lst.copy()
+#		below_lst = self.drop_rm.floor_lst.copy()
+		below_lst = []
+		for obj in self.drop_rm.floor_lst:
+			if self.drop_rm.chk_has_init_desc(obj):
+				continue
+			below_lst.append(obj)
 		return below_lst
 	
 	def get_below_str(self, gs):

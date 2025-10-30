@@ -191,7 +191,7 @@ To Do List - Dark Castle v3
 				- IDEA: I want to be able to move a trampoline under the drop spot
 					- IDEA: to enable this, make init_desc obj not below by default
 					- IDEA: but enable them to be added to get_below_lst()
-				- TBD: update get_below_lst() to exclude items with init_desc by default
+				- DONE: update get_below_lst() to exclude items with init_desc by default
 				- TBD: create custom_below_lst as attrib of floorlessroom()
 				- TBD: create getters and setters for custom_below_lst
 				- TBD: update get_below_lst() to incorporate custom_below_lst
