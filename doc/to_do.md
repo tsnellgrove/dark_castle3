@@ -182,21 +182,21 @@ To Do List - Dark Castle v3
 				- DONE: presence of active crocs clearer from up high (bite marks and water motion)
 			- DONE: sort out direction UI; for u/d use "leading" or "leads" rather than "to the"
 			- DONE: sort out lack of passage str in FloorlessRoom (update has_contain() method)
-			- INPROC: enable description of "on the ground below you" (see Frotz)			
+			- DONE: enable description of "on the ground below you" (see Frotz)			
 				- DECISION: yes, let's do this
-				- TBD: create FloorlessRoom method get_below_lst()
-				- TBD: create FloorlessRoom method get_below_str()
-				- TBD: update disp_contain() in room(): "On the ground below you can see"
-				- TBD: test
+				- DONE: create FloorlessRoom method get_below_lst()
+				- DONE: create FloorlessRoom method get_below_str()
+				- DONE: update disp_contain() in room(): "On the ground below you can see"
+				- DONE: test
 				- IDEA: I want to be able to move a trampoline under the drop spot
 					- IDEA: to enable this, make init_desc obj not below by default
 					- IDEA: but enable them to be added to get_below_lst()
 				- DONE: update get_below_lst() to exclude items with init_desc by default
-				- TBD: create custom_below_lst as attrib of floorlessroom()
-				- TBD: create getters and setters for custom_below_lst
-				- TBD: update get_below_lst() to incorporate custom_below_lst
-				- TBD: for in_tree.custom_below_lst add [postbox]
-				- TBD: test (shoudl see floor_lst + postbox but NOT big_rock)
+				- DONE: create custom_below_lst as attrib of floorlessroom()
+				- DONE: create getters and setters for custom_below_lst
+				- DONE: for in_tree.custom_below_lst add [postbox]
+				- DONE: update get_below_lst() to incorporate custom_below_lst
+				- DONE: test (shoudl see floor_lst + postbox but NOT big_rock)
 			- TBD: create hollow as ViewOnly container
 			- TBD: populate hollow with rubby
 		- TBD: update jump method: if is_floorless(), move hero to drop_rm => is_drop_fatal

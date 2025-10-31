@@ -453,7 +453,8 @@ up_tree = FloorlessRoom('up_tree', 'Up Tree', "up_tree", 'up_tree', None,
 		[], 
 		[], 
 		[],
-		True, entrance, False # is_outdoor, drop_rm, is_jump_fatal
+		True, entrance, False, # is_outdoor, drop_rm, is_jump_fatal
+		[postbox]
 	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst
 
 
