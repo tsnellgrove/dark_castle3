@@ -197,8 +197,12 @@ To Do List - Dark Castle v3
 				- DONE: for in_tree.custom_below_lst add [postbox]
 				- DONE: update get_below_lst() to incorporate custom_below_lst
 				- DONE: test (shoudl see floor_lst + postbox but NOT big_rock)
-			- TBD: create hollow as ViewOnly container
-			- TBD: populate hollow with rubby
+			- INPROC: tree_hollow
+				- DONE: create hollow as ViewOnly container
+				- DONE: tree_hollow description
+				- DONE: add to up_tree floor_lst
+				- TBD: populate hollow with rubby (create, descript, add)
+				- TBD: init_desc for tree_hollow
 		- TBD: update jump method: if is_floorless(), move hero to drop_rm => is_drop_fatal
 			- IDEA: land on feet vs. this was not a safe place to jump
 			- TBD: test jump

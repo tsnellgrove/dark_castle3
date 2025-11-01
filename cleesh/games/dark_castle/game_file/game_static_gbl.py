@@ -122,6 +122,7 @@ game_static_dict = {
 	'stained_glass' : "The shattered stained glass is strewn about the floor of the room. Looking at it more closely, you see that in some cases the edges of the glass appear to be badly melted. Whatever dark forces brought about the fall of Bright Castle must have horrifying to behold!",
 	'entrance_tree' : "A large oak tree with low-hanging branches stands just beyond the rusty postbox. Its gnarled trunk and sprawling limbs give it a majestic appearance, despite the dark and gloomy surroundings of Dark Castle. The tree seems to offer a small refuge from the foreboding atmosphere of the castle entrance.",
 	'uptree_tree' : "The oak tree's thick trunk and wide branches (one of which you are currently sitting on) create a natural canopy, providing a small oasis of greenery within the dark and eerie confines of Dark Castle. Being up here reminds you of a tree house that you and Cecily made together when you were younger. You can't help wondering what she's up to right now.",
+	'tree_hollow' : "The hollow in the tree trunk is just big enough to hold a small object. It looks like it might once have held the winter nut store of an enterprising squirell but, if so, the nuts have all been consumed.",
 
 	### item objects ###
 	'rusty_key' : "An old rusty key... the one you swore to the whole pub (and miss Chrissy Brewer!) that you'd use to pillage the Dark Castle... What could you possibly do with it?",
