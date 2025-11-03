@@ -164,7 +164,7 @@ To Do List - Dark Castle v3
 			- DONE: in error class, update gs.map.get_obj_room(gs.core.hero, gs) to gs.map.hero_rm
 		- DONE: update drop
 			- DONE: update drop method: if is_floorless() , obj => to drop_rm 
-		- INPROC: test up / down
+		- DONE: test up / down
 			- DONE: update init_desc for postbox to include tree
 			- DONE: create  up_tree room
 			- DONE: add up_tree to map
@@ -197,12 +197,12 @@ To Do List - Dark Castle v3
 				- DONE: for in_tree.custom_below_lst add [postbox]
 				- DONE: update get_below_lst() to incorporate custom_below_lst
 				- DONE: test (shoudl see floor_lst + postbox but NOT big_rock)
-			- INPROC: tree_hollow
+			- DONE: tree_hollow
 				- DONE: create hollow as ViewOnly container
 				- DONE: tree_hollow description
 				- DONE: add to up_tree floor_lst
 				- DONE: populate hollow with rubby (create, descript, add)
-				- TBD: init_desc for tree_hollow
+				- DONE: init_desc for tree_hollow
 		- TBD: update jump method: if is_floorless(), move hero to drop_rm => is_drop_fatal
 			- IDEA: land on feet vs. this was not a safe place to jump
 			- TBD: test jump

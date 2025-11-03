@@ -439,6 +439,7 @@ shiny_sword_init_desc = InitDesc('shiny_sword_init_desc', shiny_sword, False, 's
 big_rock_init_desc = InitDesc('big_rock_init_desc', big_rock, False, 'big_rock_init_desc')
 elegant_pedestal_init_desc = InitDesc('elegant_pedestal_init_desc', elegant_pedestal, True, 'elegant_pedestal_init_desc')
 stone_coffer_init_desc = InitDesc('stone_coffer_init_desc', stone_coffer, False, 'stone_coffer_init_desc')
+tree_hollow_init_desc = InitDesc('tree_hollow_init_desc', tree_hollow, False, 'tree_hollow_init_desc')
 
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
@@ -454,7 +455,7 @@ up_tree = FloorlessRoom('up_tree', 'Up Tree', "up_tree", 'up_tree', None,
 		[dark_castle, uptree_moat, uptree_drawbridge, uptree_tree],
 		[tree_hollow], 
 		[], 
-		[],
+		[tree_hollow_init_desc],
 		True, entrance, False, # is_outdoor, drop_rm, is_jump_fatal
 		[postbox]
 	) # note: for timer testing, big_bomb was in entrance.floor_lst and blue_button was in entrance.feature_lst

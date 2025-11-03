@@ -136,7 +136,7 @@ game_static_dict = {
 	'big_rock'	: "This is, indeed, a big rock. It looks like you might just barely be able to lift it.",
 #	'zorkmid' : "A Zorkmid is a small, round coin with a hole in the middle. It is made of a shiny metal and has a picture of a hedgehog on one side and the words 'Zorkmid' on the other. You have no idea how much it's worth but it looks like it might be worth something.",
 	'zorkmid' : "TREASURE! well, not much of it - but it's a start. On the front of the coin is the portrait of an incredibly flat-headed man with the words WURB FLATHEAD embossed beneath it. On the obverse, is the date (882 GUE) and the words 'IN FROBS WE TRUST'.",
-	'red_ruby' : "A glittering red ruby, about the size of a walnut. This is a real treasure! For a moment you imagine the smile of delight from miss Chrissy Brewer as you present it to her.",
+	'red_ruby' : "A glittering red ruby, about the size of a walnut. This is a real treasure! For a moment you imagine the smile of delight from miss Chrissy Brewer as you triumphantly present it to her.",
 
 	### food objects ###
 	'cheese_wedge' : "A small wedge of cheese you absconded with from the larder. It's very small - so small that a lone mouse could probably make off with the whole thing - but but it was recommended by your friend Cecily from the pub - so you suspect it's quite delicious.",
@@ -209,6 +209,7 @@ game_static_dict = {
     'shiny_sword_init_desc' : "Upon the wall hangs a Shiny Sword of great antinquity.",
 	'elegant_pedestal_init_desc' : "To the right of the throne is an elegant pedestal that holds what appears to be a delicate crystal box.",
 	'stone_coffer_init_desc' : "To the left of the throne is a giant stone coffer.",
+    'tree_hollow_init_desc' : "Just above you - where the next branch should be - is a tree hollow. By standing on your tippy-toes on your current branch, you could just reach it.",
     
 	### room objects ###
 	'entrance' : "You stand upon the ancient drawbridge at the entrance of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.",
