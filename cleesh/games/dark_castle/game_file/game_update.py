@@ -89,6 +89,7 @@ torn_note = Item('torn_note', 'Torn Note', 'note', 'torn_note', messy_handwritin
 silver_key = Item('silver_key', 'Silver Key', 'key', 'silver_key', None, 1)
 ancient_certificate = Item('ancient_certificate', 'Ancient Certificate', 'certificate', 'ancient_certificate', bold_script, 1)
 zorkmid = Item('zorkmid', 'Zorkmid', 'coin', 'zorkmid', None, 0.5)
+red_ruby = Item('red_ruby', 'Red Ruby', 'ruby', 'red_ruby', None, 0.5)
 
 # Food
 cheese_wedge = Food('cheese_wedge', 'Cheese Wedge', 'cheese', 'cheese_wedge', None, 1)
@@ -116,7 +117,7 @@ crystal_box = ContainerPortableLockable('crystal_box', 'Crystal Box', 'box', 'cr
 stone_coffer = ContainerFixedSimple('stone_coffer', 'Stone Coffer', 'coffer', 'stone_coffer', None, [], 100, 999, 'in')
 postbox = ContainerFixedLidded('postbox', 'Postbox', 'postbox', 'postbox', royal_cypher, [ancient_certificate], 999, 5, 'in', False)
 elegant_pedestal = ContainerFixedSimple('elegant_pedestal', 'Elegant Pedestal', 'pedestal', 'elegant_pedestal', None, [crystal_box], 999, 1, 'on')
-tree_hollow = ContainerFixedSimple('tree_hollow', 'Tree Hollow', 'hollow', 'tree_hollow', None, [], 999, 1, 'in')
+tree_hollow = ContainerFixedSimple('tree_hollow', 'Tree Hollow', 'hollow', 'tree_hollow', None, [red_ruby], 999, 1, 'in')
 
 # Door
 front_gate = DoorLockable('front_gate', 'Front Gate', "gate", 'front_gate', rusty_lettering, False, False, rusty_key)
@@ -677,7 +678,8 @@ master_obj_lst = [
 		insignia, baked_biscuit, entrance_drawbridge, rusty_keyhole, royal_cypher, postbox, ancient_certificate, 
 		bold_script, big_rock, zorkmid, untrodden_path, gatehouse, old_furniture, cobwebs, musty_smell, 
 		arrow_slits, foreboding_archway, lit_archway, elegant_pedestal, ruined_windows, silver_keyhole,
-		stained_glass, up_tree, uptree_tree, entrance_tree,uptree_moat, uptree_drawbridge,tree_hollow,
+		stained_glass, up_tree, uptree_tree, entrance_tree,uptree_moat, uptree_drawbridge, tree_hollow,
+		red_ruby, 
 
 		# test objects
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 

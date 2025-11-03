@@ -201,7 +201,7 @@ To Do List - Dark Castle v3
 				- DONE: create hollow as ViewOnly container
 				- DONE: tree_hollow description
 				- DONE: add to up_tree floor_lst
-				- TBD: populate hollow with rubby (create, descript, add)
+				- DONE: populate hollow with rubby (create, descript, add)
 				- TBD: init_desc for tree_hollow
 		- TBD: update jump method: if is_floorless(), move hero to drop_rm => is_drop_fatal
 			- IDEA: land on feet vs. this was not a safe place to jump
