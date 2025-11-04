@@ -660,11 +660,30 @@ class Creature(ViewOnly):
 		if room != gs.map.hero_rm:
 			return 
 		# if hero is jumping, display silly message
-		if self == gs.core.hero:
-			gs.io.buffer("Wheeeeeee!!! (do you do this often?)")
+#		if self == gs.core.hero:
+#			gs.io.buffer("Wheeeeeee!!! (do you do this often?)")
 		# if other creature is jumping, display different silly message
-		else:
+#		else:
+#			gs.io.buffer(f"For reasons of its own, the {self.full_name} jumps up and down.")
+
+		# if other creature is jumping, display different silly message
+		if self != gs.core.hero:
 			gs.io.buffer(f"For reasons of its own, the {self.full_name} jumps up and down.")
+		# if hero is jumping in regular room, display silly message
+		elif not room.is_floorless_room():
+			gs.io.buffer("Wheeeeeee!!! (do you do this often?)")
+		# if hero is jumping in floorless room and jump is not fatal, move to drop_rm
+		elif not room.is_jump_fatal:
+			gs.io.buffer("in a feat of unaccustomed agility, you manage to land on your feet without killing yourself.")
+			next_room = room.drop_rm
+			gs.map.hero_rm = next_room
+			next_room.floor_lst_append(gs.core.hero)
+			room.floor_lst_remove(gs.core.hero)			
+			next_room.examine(gs)
+
+
+
+
 		return
 
 	### debug methods ###

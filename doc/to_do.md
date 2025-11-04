@@ -203,12 +203,15 @@ To Do List - Dark Castle v3
 				- DONE: add to up_tree floor_lst
 				- DONE: populate hollow with rubby (create, descript, add)
 				- DONE: init_desc for tree_hollow
-		- TBD: update jump method: if is_floorless(), move hero to drop_rm => is_drop_fatal
+		- INPROC: update jump method: if is_floorless(), move hero to drop_rm => is_drop_fatal
 			- IDEA: land on feet vs. this was not a safe place to jump
+			- DONE: non-fatal case
+			- DONE: test jump
+			- TBD: fatal case
 			- TBD: test jump
 		- TBD: how to enable 'climb tree' => ClimbableMixIn ???
 		- TBD: review full entrance / tree UI and tune for best flow
-	- TBD: clean up static_gbl(), game_update(), error_class(), interp(), room(), game_static, map()
+	- TBD: clean static_gbl(), game_update(), error(), interp(), room(), game_static, map, creature()
 
 - TBD: git branch merge with master
 	- TBD: 'git checkout master' to switch focus to master
