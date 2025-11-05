@@ -680,10 +680,11 @@ class Creature(ViewOnly):
 			next_room.floor_lst_append(gs.core.hero)
 			room.floor_lst_remove(gs.core.hero)			
 			next_room.examine(gs)
-
-
-
-
+		# if hero is jumping in floorless room and jump is fatal, end game
+		else:
+			gs.io.buffer("This was not a safe place to jump.")
+			gs.end.game_ending = 'died.'
+			gs.end.is_end = True
 		return
 
 	### debug methods ###
