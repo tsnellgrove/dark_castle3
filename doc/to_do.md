@@ -203,13 +203,26 @@ To Do List - Dark Castle v3
 				- DONE: add to up_tree floor_lst
 				- DONE: populate hollow with rubby (create, descript, add)
 				- DONE: init_desc for tree_hollow
-		- INPROC: update jump method: if is_floorless(), move hero to drop_rm => is_drop_fatal
+		- DONE: update jump method: if is_floorless(), move hero to drop_rm => is_drop_fatal
 			- IDEA: land on feet vs. this was not a safe place to jump
 			- DONE: non-fatal case
 			- DONE: test jump
-			- TBD: fatal case
-			- TBD: test jump
-		- TBD: how to enable 'climb tree' => ClimbableMixIn ???
+			- DONE: fatal case
+			- DONE: test jump
+		- TBD: enable 'climb tree' => ClimbableMixIn
+			- TBD: create ClimbableMixIn class
+				- TBD: key attribs = bottom_rm, top_rm, is_enabled, prep ['up', 'down']
+				- TBD: identity method = is_climbable() // also need identity_class method => False
+				- TBD: key methods = climb() - similar to put()
+				- TBD: create climb_err() in error_class()
+					- TBD: key cases = is_climbable == False, up when up, down when down
+				- TBD: in interp(), insert prep to go to  opp rm if is_climbable()
+			- TBD: create ViewOnlyClimbable() class based on ViewOnly + ClimbableMixIn
+				- TBD: ensure right order of classes to apply is_climbable == True
+			- TBD: create climbable_tree obj in entrance and up_tree
+				- TBD: bottom_rm= entrance, top_rm= up_tree, is_enabled = True, prep = ['up', 'down']
+			- TBD: test
+				- TBD: non-viewonly, non-climbable viewonly, climbable wrong way, tree
 		- TBD: review full entrance / tree UI and tune for best flow
 	- TBD: clean static_gbl(), game_update(), error(), interp(), room(), game_static, map, creature()
 
