@@ -210,6 +210,7 @@ To Do List - Dark Castle v3
 			- DONE: fatal case
 			- DONE: test jump
 		- TBD: enable 'climb tree' => ClimbableMixIn
+			- TBD: re-think ClimbableMixIn to meet one-way needs (e.g. slide or can't climb down)
 			- TBD: create ClimbableMixIn class
 				- TBD: key attribs = bottom_rm, top_rm, is_enabled, prep ['up', 'down']
 				- TBD: identity method = is_climbable() // also need identity_class method => False

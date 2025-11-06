@@ -209,7 +209,7 @@ game_static_dict = {
     'shiny_sword_init_desc' : "Upon the wall hangs a Shiny Sword of great antinquity.",
 	'elegant_pedestal_init_desc' : "To the right of the throne is an elegant pedestal that holds what appears to be a delicate crystal box.",
 	'stone_coffer_init_desc' : "To the left of the throne is a giant stone coffer.",
-    'tree_hollow_init_desc' : "Just above you - where the next branch should be - is a tree hollow. By standing on your tippy-toes on your current branch, you could just reach it.",
+    'tree_hollow_init_desc' : "Just above you - where the next branch should be - is a tree hollow. By standing on your tippy-toes on your current branch, you could just peek into it.",
     
 	### room objects ###
 	'entrance' : "You stand upon the ancient drawbridge at the entrance of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.",
