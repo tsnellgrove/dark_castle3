@@ -58,6 +58,9 @@ class Identity(Invisible):
 	def is_viewonly(self):
 		return False
 
+	def	is_climbable(self):
+		return False
+
 	def is_item(self):
 		return False
 

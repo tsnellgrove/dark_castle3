@@ -209,15 +209,16 @@ To Do List - Dark Castle v3
 			- DONE: test jump
 			- DONE: fatal case
 			- DONE: test jump
-		- TBD: enable 'climb tree' => ClimbableMixIn
-			- TBD: re-think ClimbableMixIn to meet one-way needs (e.g. slide or can't climb down)
-			- TBD: create ClimbableMixIn class
-				- TBD: key attribs = bottom_rm, top_rm, is_enabled, prep ['up', 'down']
-				- TBD: identity method = is_climbable() // also need identity_class method => False
+		- INPROC: enable 'climb tree' => ClimbableMixIn
+			- DONE: re-think ClimbableMixIn to meet one-way needs (e.g. slide or can't climb down)
+			- INPROC: create ClimbableMixIn class
+				- DONE: key attribs = bottom_rm, top_rm, is_enabled, prep, allowed_dir ['up', 'down']
+				- DONE: identity method = is_climbable() // also need identity_class method => False
 				- TBD: key methods = climb() - similar to put()
 				- TBD: create climb_err() in error_class()
 					- TBD: key cases = is_climbable == False, up when up, down when down
-				- TBD: in interp(), insert prep to go to  opp rm if is_climbable()
+					- TBD: attempting dir not in allowed_dir
+				- TBD: in interp(), check prep; insert prep to go to opp rm if is_climbable()
 			- TBD: create ViewOnlyClimbable() class based on ViewOnly + ClimbableMixIn
 				- TBD: ensure right order of classes to apply is_climbable == True
 			- TBD: create climbable_tree obj in entrance and up_tree

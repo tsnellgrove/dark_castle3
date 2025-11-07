@@ -214,3 +214,47 @@ class ViewOnly(Writing):
 			gs.io.buffer(f"The {self.full_name} is in the inventory of the {inv_creature.full_name}.")
 		return
 
+class ClimbableMixIn(object):
+	def __init__(self, bottom_rm, top_rm, is_enabled=True, allowed_dir=['up', 'down'], prep=['up', 'down']):
+		self._bottom_rm = bottom_rm # the room below the object
+		self._top_rm = top_rm # the room above the object
+		self._is_enabled = is_enabled # True if the object is currently enabled for climbing
+		self._allowed_dir = allowed_dir # list of directions that can be climbed on the object
+		self._prep = prep # list of prepositions associated with climbing the object
+		""" The ClimbablehMixIn can be combined with other classes (most typically ViewOnly) to produce objects that can be climbed up or down.
+		"""
+
+	# *** getters & setters ***
+	@property
+	def bottom_rm(self):
+		return self._bottom_rm
+	
+	@property
+	def top_rm(self):
+		return self._top_rm
+	
+	@property
+	def is_enabled(self):
+		return self._is_enabled
+
+	@is_enabled.setter
+	def is_enabled(self, new_state):
+		self._is_enabled = new_state
+
+	@property
+	def allowed_dir(self):
+		return self._allowed_dir
+
+	@allowed_dir.setter
+	def allowed_dir(self, new_state):
+		self._allowed_dir = new_state
+
+	@property
+	def prep(self):
+		return self._prep
+	
+
+	# *** class identity methods ***
+	def	is_climbable(self):
+		return True
+
