@@ -654,7 +654,7 @@ class Creature(ViewOnly):
 		if mode is None:
 			mode = 'std'
 
-		room = gs.map.get_obj_room(self, gs)		
+		room = gs.map.get_obj_room(self, gs)
 
 		# if hero_creature not in current room, exit with no display
 		if room != gs.map.hero_rm:

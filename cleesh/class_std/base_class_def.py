@@ -258,3 +258,25 @@ class ClimbableMixIn(object):
 	def	is_climbable(self):
 		return True
 
+
+	# *** verb methods ***
+	def climb(self, dir, gs, mode=None):
+		""" Enables a creature to climb a climbable object.
+		"""
+		if mode is None:
+			mode = 'std'
+		creature = gs.core.hero
+		
+		room = gs.map.get_obj_room(creature, gs)
+		if dir == 'up:':
+			next_room = self.top_rm
+		else:
+			next_room = self.bottom_rm
+
+		gs.map.hero_rm = next_room
+		next_room.floor_lst_append(gs.core.hero)
+		room.floor_lst_remove(gs.core.hero)	
+		gs.io.buffer("After some hearty clambering...")
+		gs.io.buff_cr()
+		next_room.examine(gs)
+		return
