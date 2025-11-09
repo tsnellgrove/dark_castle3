@@ -267,16 +267,18 @@ class ClimbableMixIn(object):
 			mode = 'std'
 		creature = gs.core.hero
 		
-		room = gs.map.get_obj_room(creature, gs)
-		if dir == 'up:':
-			next_room = self.top_rm
+		if self != gs.core.hero:
+			gs.io.buffer(f"The {creature.full_name} clambers {self.dir} the {self.full_name} and out of sight.")
 		else:
-			next_room = self.bottom_rm
-
-		gs.map.hero_rm = next_room
-		next_room.floor_lst_append(gs.core.hero)
-		room.floor_lst_remove(gs.core.hero)	
-		gs.io.buffer("After some hearty clambering...")
-		gs.io.buff_cr()
-		next_room.examine(gs)
+			room = gs.map.get_obj_room(creature, gs)
+			if dir == 'up:':
+				next_room = self.top_rm
+			else:
+				next_room = self.bottom_rm
+			gs.map.hero_rm = next_room
+			next_room.floor_lst_append(gs.core.hero)
+			room.floor_lst_remove(gs.core.hero)	
+			gs.io.buffer("After some hearty clambering...")
+			gs.io.buff_cr()
+			next_room.examine(gs)
 		return

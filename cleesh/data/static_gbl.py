@@ -41,10 +41,10 @@ engine_static_dict = {
 
 	'known_verb_lst' : ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 		'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
-		'unlock', 'wear', 'enter', 'exit', 'stand', 'stow', 'jump'
+		'unlock', 'wear', 'enter', 'exit', 'stand', 'stow', 'jump', 'climb'
 	],
 
-	'prep_verb_lst' : ['put', 'show', 'give', 'attack', 'lock', 'unlock', 'drink'],
+	'prep_verb_lst' : ['put', 'show', 'give', 'attack', 'lock', 'unlock', 'drink', 'climb'],
     
 	'var_outcome_verb_lst' : ['give', 'attack'], # for reference; not actually used in score.disp_score()
 

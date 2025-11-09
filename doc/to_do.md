@@ -214,14 +214,21 @@ To Do List - Dark Castle v3
 			- DONE: create ClimbableMixIn class
 				- DONE: key attribs = bottom_rm, top_rm, is_enabled, prep, allowed_dir ['up', 'down']
 				- DONE: identity method = is_climbable() // also need identity_class method => False
-			- INPROC: new 'climb' command
+			- DONE: new 'climb' command
 				- DONE: initial verb method = climb() - similar to put()
-				- TBD: create viewonly.climb() w/ other creature option
-			- TBD: interp
-				- TBD: in staic_gbl(), add 'jump' to 'one_word_convert_lst'
-				- TBD: in staic_gbl(), add 'jump' to 'known_verbs_lst'
-				- TBD: in interp() create routine for 'jump'
-				- TBD: in interp(), check prep; insert prep to go to opp rm if is_climbable()
+				- DONE: create viewonly.climb() w/ other creature option
+			- DONE: interp
+				- DONE: in staic_gbl(), add 'climb' to 'one_word_convert_lst'
+				- DONE: in staic_gbl(), add 'climb' to 'known_verbs_lst'
+				- DONE: in interp() create routine for 'climb'
+				- DONE: in interp(), check prep; insert prep to go to opp rm if is_climbable()
+				- IDEA: probably going to have errors due to 3-word prep line
+			- TBD: create ViewOnlyClimbable() class based on ViewOnly + ClimbableMixIn
+				- TBD: ensure right order of classes to apply is_climbable == True
+			- TBD: create climbable_tree obj in entrance and up_tree
+				- TBD: bottom_rm= entrance, top_rm= up_tree, is_enabled = True, prep = ['up', 'down']
+			- TBD: test
+				- TBD: test success case
 			- TBD: create climb_err() in error_class()
 				- TBD: create jump_err() method in error_class()
 				- TBD: key cases = is_climbable == False, up when up, down when down
@@ -234,8 +241,7 @@ To Do List - Dark Castle v3
 			- TBD: create climbable_tree obj in entrance and up_tree
 				- TBD: bottom_rm= entrance, top_rm= up_tree, is_enabled = True, prep = ['up', 'down']
 			- TBD: test
-				- TBD: test in game (including while seated)
-				- TBD: non-viewonly, non-climbable viewonly, climbable wrong way, tree
+				- TBD: non-viewonly, non-climbable viewonly, climbable wrong way, tree, seated
 		- TBD: review full entrance / tree UI and tune for best flow
 	- TBD: clean static_gbl(), game_update(), error(), interp(), room(), game_static, map, creature()
 

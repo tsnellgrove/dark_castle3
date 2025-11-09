@@ -168,6 +168,23 @@ def interpreter(user_input, master_obj_lst):
 				prep = 'on'
 			else:
 				prep = 'in or on'
+		elif word1 in ['climb']:
+			word2_txt = user_input_lst[1]
+			if 'up' in user_input_lst:
+				prep = 'up'
+			elif 'down' in user_input_lst:
+				prep = 'down'
+			elif len(user_input_lst) == 2 and gs.core.is_key_in_sto_dict(word2_txt) and gs.core.get_str_to_obj_dict(word2_txt).is_climbable():
+				room = gs.map.hero_rm
+				word2_obj = gs.core.get_str_to_obj_dict(word2_txt)
+				if room == word2_obj.bottom_rm:
+					prep = 'up'
+				elif room == word2_obj.top_rm:
+					prep = 'down'
+				user_input_lst.insert(1, prep)
+				gs.io.buffer(f"(you clamber {prep})")
+			else:
+				prep = 'up or down'
 		elif word1 in ['show', 'give']:
 			prep = 'to'
 		elif word1 in ['lock', 'unlock']:
@@ -201,7 +218,8 @@ def interpreter(user_input, master_obj_lst):
 		if prep not in user_input_lst:
 			error_msg = f"I don't see the word '{prep}' in that sentence."
 			return 'error', [error_msg]
-		if len(user_input_lst) < 4:
+#		if len(user_input_lst) < 4:
+		if (word1 in ['climb'] and len(user_input_lst) < 3) or len(user_input_lst) < 4:
 			error_msg = "That sentence doesn't appear to be complete"
 			return 'error', [error_msg]
 		else:
