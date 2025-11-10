@@ -223,6 +223,8 @@ To Do List - Dark Castle v3
 				- DONE: in interp() create routine for 'climb'
 				- DONE: in interp(), check prep; insert prep to go to opp rm if is_climbable()
 				- IDEA: probably going to have errors due to 3-word prep line
+			- TBD: update validate() for climb()
+			- TBD: update cmd_exe() for climb()
 			- TBD: create ViewOnlyClimbable() class based on ViewOnly + ClimbableMixIn
 				- TBD: ensure right order of classes to apply is_climbable == True
 			- TBD: create climbable_tree obj in entrance and up_tree
