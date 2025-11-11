@@ -153,22 +153,9 @@ def interpreter(user_input, master_obj_lst):
 	if word1 not in full_verbs_lst:
 		return 'error', ["Please start your sentence with a known verb!"]
 
-	# handle prep verb commands (special cases first else general case)
-	if word1 == 'help':
-		word2 = user_input_lst[1]
-		return 'help', [word2]
-	elif word1 == 'go':
-		word2 = user_input_lst[1]
-		return 'go', [gs.map.hero_rm, word1, word2]
-	elif word1 in gs.io.get_lst('prep_verb_lst','eng'):
-		if word1 in ['put']:
-			if 'in' in user_input_lst:
-				prep = 'in'
-			elif 'on' in user_input_lst:
-				prep = 'on'
-			else:
-				prep = 'in or on'
-		elif word1 in ['climb']:
+	# handle prep_no_do verb commands (special cases first else general case)
+	if word1 in gs.io.get_lst('prep_no_do_verb_lst','eng'):
+		if word1 in ['climb']:
 			word2_txt = user_input_lst[1]
 			if 'up' in user_input_lst:
 				prep = 'up'
@@ -185,6 +172,36 @@ def interpreter(user_input, master_obj_lst):
 				gs.io.buffer(f"(you clamber {prep})")
 			else:
 				prep = 'up or down'
+		if prep not in user_input_lst:
+			error_msg = f"I don't see the word '{prep}' in that sentence."
+			return 'error', [error_msg]
+		if len(user_input_lst) < 3:
+#		if (word1 in ['climb'] and len(user_input_lst) < 3) or len(user_input_lst) < 4:
+			error_msg = "That sentence doesn't appear to be complete"
+			return 'error', [error_msg]
+		else:
+			in_position = user_input_lst.index(prep)
+			v_n_lst = list(islice(user_input_lst, in_position))
+			noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst)
+			if noun_error_state:
+				return 'error', [noun_error_msg]
+			return 'prep', [word1, prep, noun_obj]
+
+	# handle prep verb commands (special cases first else general case)
+	if word1 == 'help':
+		word2 = user_input_lst[1]
+		return 'help', [word2]
+	elif word1 == 'go':
+		word2 = user_input_lst[1]
+		return 'go', [gs.map.hero_rm, word1, word2]
+	elif word1 in gs.io.get_lst('prep_verb_lst','eng'):
+		if word1 in ['put']:
+			if 'in' in user_input_lst:
+				prep = 'in'
+			elif 'on' in user_input_lst:
+				prep = 'on'
+			else:
+				prep = 'in or on'
 		elif word1 in ['show', 'give']:
 			prep = 'to'
 		elif word1 in ['lock', 'unlock']:
@@ -218,8 +235,8 @@ def interpreter(user_input, master_obj_lst):
 		if prep not in user_input_lst:
 			error_msg = f"I don't see the word '{prep}' in that sentence."
 			return 'error', [error_msg]
-#		if len(user_input_lst) < 4:
-		if (word1 in ['climb'] and len(user_input_lst) < 3) or len(user_input_lst) < 4:
+		if len(user_input_lst) < 4:
+#		if (word1 in ['climb'] and len(user_input_lst) < 3) or len(user_input_lst) < 4:
 			error_msg = "That sentence doesn't appear to be complete"
 			return 'error', [error_msg]
 		else:

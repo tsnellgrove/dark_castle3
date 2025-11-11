@@ -11,7 +11,7 @@ sys.path.append(root_path_str)
 
 import pickle
 from cleesh.class_std.invisible_class_def import Invisible
-from cleesh.class_std.base_class_def import Writing, ViewOnly
+from cleesh.class_std.base_class_def import Writing, ViewOnly, ClimbableViewOnly
 from cleesh.class_std.room_class_def import Room, InitDesc, FloorlessRoom
 from cleesh.class_std.item_class_def import Item, Food, Liquid, Garment, Weapon
 from cleesh.class_std.interactive_class_def import DoorSimple, DoorLockable
@@ -78,8 +78,10 @@ lit_archway = ViewOnly('lit_archway', 'Lit Archway', 'archway', 'lit_archway', N
 ruined_windows = ViewOnly('ruined_windows', 'Ruined Windows', 'windows', 'ruined_windows', None)
 silver_keyhole = ViewOnly('silver_keyhole', 'Silver Keyhole', 'keyhole', 'silver_keyhole', None)
 stained_glass = ViewOnly('stained_glass', 'Stained Glass', 'glass', 'stained_glass', None)
-entrance_tree = ViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None)
-uptree_tree = ViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None)
+# entrance_tree = ViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None)
+entrance_tree = ClimbableViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None, 'entrance_temp', 'uptree_temp', 'up', 'up')
+#uptree_tree = ViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None)
+uptree_tree = ClimbableViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None, 'entrance_temp', 'uptree_temp', 'down', 'down')
 uptree_moat = ViewOnly('uptree_moat', 'Moat', 'moat', 'uptree_moat', None)
 uptree_drawbridge = ViewOnly('uptree_drawbridge', 'Drawbridge', 'drawbridge', 'uptree_drawbridge', None)
 
@@ -624,6 +626,10 @@ big_rock_take_result1.room_obj = entrance
 sword_in_hand_cond.creature_obj = burt
 sword_in_hand_cond.item_obj = shiny_sword
 moat_get_crown_result2.tgt_creature = burt
+entrance_tree.bottom_rm = entrance
+entrance_tree.top_rm = up_tree
+uptree_tree.bottom_rm = entrance
+uptree_tree.top_rm = up_tree
 
 entrance_moat_mach.alert_anchor = entrance
 broach_dispenser_mach.alert_anchor = throne_room

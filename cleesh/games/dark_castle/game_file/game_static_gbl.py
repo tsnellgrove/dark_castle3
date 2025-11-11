@@ -49,6 +49,7 @@ game_static_dict = {
 	},
 
 	'score_dict' : {
+        'climb' : {('entrance_tree', 'up') : 5},
         'take' : {
 #            	('rusty_key', None) : 5,
         		('shiny_sword', None) : 10,

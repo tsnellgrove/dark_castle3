@@ -29,6 +29,11 @@ def validate(gs, case, word_lst):
 				cmd_err, is_att, err_txt = getattr(word2_obj, word1 + '_err')(gs)
 				if (cmd_err and not is_att and err_txt != ""):
 					gs.io.buffer(err_txt)
+			elif case == 'prep_no_do':
+				word1, prep, noun_obj = word_lst
+				cmd_err, is_att, err_txt = getattr(noun_obj, word1 + '_err')(prep, gs)
+				if (cmd_err and not is_att and err_txt != ""):
+					gs.io.buffer(err_txt)
 			elif case == 'prep':
 				dirobj_obj, word1, noun_obj = word_lst
 				cmd_err, is_att, err_txt = getattr(dirobj_obj, word1 + '_err')(noun_obj, gs)

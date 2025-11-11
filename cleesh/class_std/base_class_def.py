@@ -215,7 +215,7 @@ class ViewOnly(Writing):
 		return
 
 class ClimbableMixIn(object):
-	def __init__(self, bottom_rm, top_rm, is_enabled=True, allowed_dir=['up', 'down'], prep=['up', 'down']):
+	def __init__(self, bottom_rm, top_rm, allowed_dir, prep, is_enabled=True):
 		self._bottom_rm = bottom_rm # the room below the object
 		self._top_rm = top_rm # the room above the object
 		self._is_enabled = is_enabled # True if the object is currently enabled for climbing
@@ -229,10 +229,18 @@ class ClimbableMixIn(object):
 	def bottom_rm(self):
 		return self._bottom_rm
 	
+	@bottom_rm.setter
+	def bottom_rm(self, new_room):
+		self._bottom_rm = new_room
+
 	@property
 	def top_rm(self):
 		return self._top_rm
-	
+
+	@top_rm.setter
+	def top_rm(self, new_room):
+		self._top_rm = new_room
+
 	@property
 	def is_enabled(self):
 		return self._is_enabled
@@ -282,3 +290,10 @@ class ClimbableMixIn(object):
 			gs.io.buff_cr()
 			next_room.examine(gs)
 		return
+	
+class ClimbableViewOnly(ClimbableMixIn, ViewOnly):
+	def __init__(self, name, full_name, root_name, descript_key, writing, bottom_rm, top_rm, allowed_dir, prep, is_enabled=True):
+		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
+		ClimbableMixIn.__init__(self, bottom_rm, top_rm, allowed_dir, prep, is_enabled=True)
+		""" A ViewOnly object that is climbable.
+		"""

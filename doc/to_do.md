@@ -223,12 +223,31 @@ To Do List - Dark Castle v3
 				- DONE: in interp() create routine for 'climb'
 				- DONE: in interp(), check prep; insert prep to go to opp rm if is_climbable()
 				- IDEA: probably going to have errors due to 3-word prep line
-			- TBD: update validate() for climb()
-			- TBD: update cmd_exe() for climb()
-			- TBD: create ViewOnlyClimbable() class based on ViewOnly + ClimbableMixIn
-				- TBD: ensure right order of classes to apply is_climbable == True
-			- TBD: create climbable_tree obj in entrance and up_tree
-				- TBD: bottom_rm= entrance, top_rm= up_tree, is_enabled = True, prep = ['up', 'down']
+				- DONE: create dedicated 'prep_no_do' case for climb()
+			- DONE: update validate() for climb()
+				- DONE: add 'prep_no_do' case handling
+			- DONE: create initial climb_err() routine in dedicated prep_no_do section of error()
+			- DONE: update cmd_exe() for climb()
+			- DONE: update score for climb() to test
+			- DONE: create ViewOnlyClimbable() class based on ViewOnly + ClimbableMixIn
+				- DONE: ensure right order of classes to apply is_climbable == True
+			- DONE: create climbable_tree obj in entrance and up_tree
+				- DONE: bottom_rm= entrance, top_rm= up_tree, is_enabled = True, prep = ['up', 'down']
+			- TBD: re-factor
+				- IDEA: wrong approach - instead of duplicating up / down map, reference map
+				- IDEA: in interp, test if obj is_climbable
+					- IDEA: if not climbable, simple error: "The {obj.full_name} is not climbable"
+					- IDEA: if climbable but no dir, assume default_dir
+					- IDEA: if dir in err_dir, buffer err_key (if exist)
+					- IDEA; if dir in travel_dir, buffer travel_key (if exist)
+					- IDEA: user_input => 'go {dir}'
+				- IDEA: ClimbableMixIn is much simpler now:
+					- IDEA: attribs = default_dir, err_dir, err_key, travel_dir, travel_key
+					- TBD: comment out interp(), validate(), cmd_exe(), static_gbl(), error()
+					- TBD: in eng.static_gbl(), prep_no_do => prep_convert
+					- TBD: update ClimbableMixIn attribs in base()
+					- TBD: update interp() with climb test / buffering via prep_convert case
+					- TBD: update game_update() ClimbableMixIn instantiations (comment out temps)
 			- TBD: test
 				- TBD: test success case
 			- TBD: create climb_err() in error_class()
@@ -244,8 +263,11 @@ To Do List - Dark Castle v3
 				- TBD: bottom_rm= entrance, top_rm= up_tree, is_enabled = True, prep = ['up', 'down']
 			- TBD: test
 				- TBD: non-viewonly, non-climbable viewonly, climbable wrong way, tree, seated
+				- TBD: test entrance_tree climb up
 		- TBD: review full entrance / tree UI and tune for best flow
-	- TBD: clean static_gbl(), game_update(), error(), interp(), room(), game_static, map, creature()
+	- TBD: clean-up 
+		- TBD: static_gbl(), game_update(), error(), interp(), room(), game_static, map, creature()
+		- TBD: remove scroe from 'climb up entrance_tree'
 
 - TBD: git branch merge with master
 	- TBD: 'git checkout master' to switch focus to master
