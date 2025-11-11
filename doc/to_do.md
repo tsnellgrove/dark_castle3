@@ -242,7 +242,8 @@ To Do List - Dark Castle v3
 					- IDEA; if dir in travel_dir, buffer travel_key (if exist)
 					- IDEA: user_input => 'go {dir}'
 				- IDEA: ClimbableMixIn is much simpler now:
-					- IDEA: attribs = default_dir, err_dir, err_key, travel_dir, travel_key
+					- IDEA: attribs = default_dir, err_dir, travel_dir
+					- IDEA: err_key and travel_key are auto (f"{obj.full_name}_travel_{dir}")
 					- TBD: comment out interp(), validate(), cmd_exe(), static_gbl(), error()
 					- TBD: in eng.static_gbl(), prep_no_do => prep_convert
 					- TBD: update ClimbableMixIn attribs in base()
