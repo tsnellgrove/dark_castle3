@@ -244,8 +244,14 @@ To Do List - Dark Castle v3
 				- IDEA: ClimbableMixIn is much simpler now:
 					- IDEA: attribs = default_dir, err_dir, travel_dir
 					- IDEA: err_key and travel_key are auto (f"{obj.full_name}_travel_{dir}")
-					- TBD: comment out interp(), validate(), cmd_exe(), static_gbl(), error()
-					- TBD: in eng.static_gbl(), prep_no_do => prep_convert
+					- DONE: comment out: 
+						- DONE: interp()
+						- DONE: validate()
+						- DONE: cmd_exe()
+						- DONE: static_gbl()
+						- DONE: error()
+					- DONE: in eng.static_gbl(), prep_no_do => interactive_convert
+					- DONE: test
 					- TBD: update ClimbableMixIn attribs in base()
 					- TBD: update interp() with climb test / buffering via prep_convert case
 					- TBD: update game_update() ClimbableMixIn instantiations (comment out temps)
@@ -267,7 +273,8 @@ To Do List - Dark Castle v3
 				- TBD: test entrance_tree climb up
 		- TBD: review full entrance / tree UI and tune for best flow
 	- TBD: clean-up 
-		- TBD: static_gbl(), game_update(), error(), interp(), room(), game_static, map, creature()
+		- TBD: game_update(), room(), game_static, map, creature()
+		- TBD: 2x static_gbl(), cmd_exe(), validate(), error(), interp()
 		- TBD: remove scroe from 'climb up entrance_tree'
 
 - TBD: git branch merge with master
