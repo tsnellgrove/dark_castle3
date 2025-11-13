@@ -253,7 +253,7 @@ To Do List - Dark Castle v3
 					- DONE: in eng.static_gbl(), prep_no_do => interactive_convert
 					- DONE: test
 					- DONE: re-enable prep_no_do_verb_lst in eng.gbl_static
-					- INPROC: re-do interp
+					- INPROC: re-do interp (remove prep and use noun handling function)
 
 					- TBD: update ClimbableMixIn attribs in base()
 					- TBD: update climb() to provide buffer and then add go() cmd to cmd queue (??)
