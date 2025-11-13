@@ -44,9 +44,9 @@ engine_static_dict = {
 		'unlock', 'wear', 'enter', 'exit', 'stand', 'stow', 'jump', 'climb'
 	],
 
-#	'prep_no_do_verb_lst' : ['climb'],
+	'prep_no_do_verb_lst' : ['climb'],
 
-	'interactive_convert' : ['climb'],
+#	'interactive_convert' : ['climb'],
 
 	'prep_verb_lst' : ['put', 'show', 'give', 'attack', 'lock', 'unlock', 'drink'],
     

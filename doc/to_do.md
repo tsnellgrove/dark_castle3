@@ -252,7 +252,11 @@ To Do List - Dark Castle v3
 						- DONE: error()
 					- DONE: in eng.static_gbl(), prep_no_do => interactive_convert
 					- DONE: test
+					- DONE: re-enable prep_no_do_verb_lst in eng.gbl_static
+					- INPROC: re-do interp
+
 					- TBD: update ClimbableMixIn attribs in base()
+					- TBD: update climb() to provide buffer and then add go() cmd to cmd queue (??)
 					- TBD: update interp() with climb test / buffering via prep_convert case
 					- TBD: update game_update() ClimbableMixIn instantiations (comment out temps)
 			- TBD: test

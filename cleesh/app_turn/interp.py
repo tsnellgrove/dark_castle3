@@ -153,9 +153,28 @@ def interpreter(user_input, master_obj_lst):
 	if word1 not in full_verbs_lst:
 		return 'error', ["Please start your sentence with a known verb!"]
 
-#	# handle prep_no_do verb commands (special cases first else general case)
-#	if word1 in gs.io.get_lst('prep_no_do_verb_lst','eng'):
-#		if word1 in ['climb']:
+	# handle prep_no_do verb commands (special cases first else general case)
+	if word1 in gs.io.get_lst('prep_no_do_verb_lst','eng'):
+		if word1 in ['climb']:
+			if user_input_lst[1] in ['up', 'down']:
+				prep = user_input_lst[1]
+			elif len(user_input_lst) == 2 and gs.core.is_key_in_sto_dict(user_input_lst[1]) and gs.core.get_str_to_obj_dict(user_input_lst[1]).is_climbable():
+				word2_obj = gs.core.get_str_to_obj_dict(user_input_lst[1])
+				prep = word2_obj.default_dir
+
+##			elif len(user_input_lst) == 2 and gs.core.is_key_in_sto_dict(user_input_lst[1]) and gs.core.get_str_to_obj_dict(user_input_lst[1]).is_climbable():
+##				room = gs.map.hero_rm
+##				word2_obj = gs.core.get_str_to_obj_dict(user_input_lst[1])
+##				if room == word2_obj.bottom_rm:
+##					prep = 'up'
+##				elif room == word2_obj.top_rm:
+##					prep = 'down'
+##				user_input_lst.insert(1, prep)
+##				gs.io.buffer(f"(you clamber {prep})")
+##			else:
+##				prep = 'up or down'
+
+
 #			word2_txt = user_input_lst[1]
 #			if 'up' in user_input_lst:
 #				prep = 'up'
