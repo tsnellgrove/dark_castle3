@@ -158,9 +158,17 @@ def interpreter(user_input, master_obj_lst):
 		if word1 in ['climb']:
 			if user_input_lst[1] in ['up', 'down']:
 				prep = user_input_lst[1]
-			elif len(user_input_lst) == 2 and gs.core.is_key_in_sto_dict(user_input_lst[1]) and gs.core.get_str_to_obj_dict(user_input_lst[1]).is_climbable():
-				word2_obj = gs.core.get_str_to_obj_dict(user_input_lst[1])
-				prep = word2_obj.default_dir
+				user_input_lst.remove(prep)
+			else:
+				return 'error', ["Which way do you want to climb, up or down?"]
+			error_state, error_msg, word2_obj = noun_handling(master_obj_lst, user_input_lst)
+			if error_state:
+				return 'error', [error_msg]
+			return 'prep_no_do', [word1, prep, word2_obj]
+
+###			elif len(user_input_lst) == 2 and gs.core.is_key_in_sto_dict(user_input_lst[1]) and gs.core.get_str_to_obj_dict(user_input_lst[1]).is_climbable():
+###				word2_obj = gs.core.get_str_to_obj_dict(user_input_lst[1])
+###				prep = word2_obj.default_dir
 
 ##			elif len(user_input_lst) == 2 and gs.core.is_key_in_sto_dict(user_input_lst[1]) and gs.core.get_str_to_obj_dict(user_input_lst[1]).is_climbable():
 ##				room = gs.map.hero_rm

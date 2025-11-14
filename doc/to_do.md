@@ -241,7 +241,7 @@ To Do List - Dark Castle v3
 					- IDEA: if dir in err_dir, buffer err_key (if exist)
 					- IDEA; if dir in travel_dir, buffer travel_key (if exist)
 					- IDEA: user_input => 'go {dir}'
-				- IDEA: ClimbableMixIn is much simpler now:
+				- IDEA: ClimbableMixIn is simpler now:
 					- IDEA: attribs = default_dir, err_dir, travel_dir
 					- IDEA: err_key and travel_key are auto (f"{obj.full_name}_travel_{dir}")
 					- DONE: comment out: 
@@ -252,29 +252,28 @@ To Do List - Dark Castle v3
 						- DONE: error()
 					- DONE: in eng.static_gbl(), prep_no_do => interactive_convert
 					- DONE: test
+				- IDEA: still need to interp cmd and error space is too big for interp() func
 					- DONE: re-enable prep_no_do_verb_lst in eng.gbl_static
-					- INPROC: re-do interp (remove prep and use noun handling function)
-
+					- DONE: re-do interp (remove prep and use noun handling function)
+					- DONE: re-do validate
 					- TBD: update ClimbableMixIn attribs in base()
+					- INPROC: re-do climb_err()
 					- TBD: update climb() to provide buffer and then add go() cmd to cmd queue (??)
-					- TBD: update interp() with climb test / buffering via prep_convert case
-					- TBD: update game_update() ClimbableMixIn instantiations (comment out temps)
+					- TBD: update ViewOnlyClimbable() class based on ViewOnly + ClimbableMixIn
+					- TBD: update game_update() ViewOnlyClimbable instantiations (comment out temps)
 			- TBD: test
 				- TBD: test success case
-			- TBD: create climb_err() in error_class()
-				- TBD: create jump_err() method in error_class()
 				- TBD: key cases = is_climbable == False, up when up, down when down
 				- TBD: attempting dir not in allowed_dir
+				- TBD: non-viewonly, non-climbable viewonly, climbable wrong way, tree, seated
+				- TBD: test entrance_tree climb up
+			- TBD: implement climb down from up_tree
+				- TBD: instantiate uptree_tree as ClimbableViewOnly
+				- TBD: test
+			- TBD: consider how interp could intuit direction of climb (based on map?)
 			- TBD: help()
 				- TBD: update help() to include 'climb'
 				- TBD: test help()
-			- TBD: create ViewOnlyClimbable() class based on ViewOnly + ClimbableMixIn
-				- TBD: ensure right order of classes to apply is_climbable == True
-			- TBD: create climbable_tree obj in entrance and up_tree
-				- TBD: bottom_rm= entrance, top_rm= up_tree, is_enabled = True, prep = ['up', 'down']
-			- TBD: test
-				- TBD: non-viewonly, non-climbable viewonly, climbable wrong way, tree, seated
-				- TBD: test entrance_tree climb up
 		- TBD: review full entrance / tree UI and tune for best flow
 	- TBD: clean-up 
 		- TBD: game_update(), room(), game_static, map, creature()

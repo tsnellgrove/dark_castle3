@@ -365,14 +365,15 @@ class Error(Identity):
 		return False, False, ""
 
 	# *** prep_no_do errors ***
-#	def climb_err(self, dir, gs):
-#		creature = gs.core.hero
-#		if self.err_std(creature, gs):
-#			return True, False, ""
-#		if not self.is_climbable():
-#			# attemptable error: many non-climbable obj might appear climbable
-#			err_txt = (f"You can't climb the {self.full_name}.")
-#			return True, True, err_txt
+	def climb_err(self, dir, gs):
+		creature = gs.core.hero
+		if self.err_std(creature, gs):
+			return True, False, ""
+		if not self.is_climbable():
+			# attemptable error: many non-climbable obj might appear climbable
+			err_txt = (f"You can't climb the {self.full_name}.")
+			return True, True, err_txt
+
 #		if dir not in self.allowed_dir:
 #			# attemptable error: on-way climbable obj might appear climbable both ways
 #			err_txt = (f"You can't climb {dir} on the {self.full_name}.")
