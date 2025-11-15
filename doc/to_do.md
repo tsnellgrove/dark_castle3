@@ -232,12 +232,12 @@ To Do List - Dark Castle v3
 			- DONE: create ViewOnlyClimbable() class based on ViewOnly + ClimbableMixIn
 				- DONE: ensure right order of classes to apply is_climbable == True
 			- DONE: create climbable_tree obj in entrance and up_tree
-				- DONE: bottom_rm= entrance, top_rm= up_tree, is_enabled = True, prep = ['up', 'down']
+				- DONE: bottom_rm= entrance, top_rm=up_tree, is_enabled = True, prep = ['up', 'down']
 			- TBD: re-factor
 				- IDEA: wrong approach - instead of duplicating up / down map, reference map
 				- IDEA: in interp, test if obj is_climbable
 					- IDEA: if not climbable, simple error: "The {obj.full_name} is not climbable"
-					- IDEA: if climbable but no dir, assume default_dir
+					- CANCEL: if climbable but no dir, assume default_dir
 					- IDEA: if dir in err_dir, buffer err_key (if exist)
 					- IDEA; if dir in travel_dir, buffer travel_key (if exist)
 					- IDEA: user_input => 'go {dir}'
@@ -256,11 +256,12 @@ To Do List - Dark Castle v3
 					- DONE: re-enable prep_no_do_verb_lst in eng.gbl_static
 					- DONE: re-do interp (remove prep and use noun handling function)
 					- DONE: re-do validate
-					- TBD: update ClimbableMixIn attribs in base()
-					- INPROC: re-do climb_err()
+					- DONE: update ClimbableMixIn attribs in base()
+					- DONE: re-do climb_err()
 					- TBD: update climb() to provide buffer and then add go() cmd to cmd queue (??)
 					- TBD: update ViewOnlyClimbable() class based on ViewOnly + ClimbableMixIn
 					- TBD: update game_update() ViewOnlyClimbable instantiations (comment out temps)
+					- TBD: create err_dir and travel_dir
 			- TBD: test
 				- TBD: test success case
 				- TBD: key cases = is_climbable == False, up when up, down when down
@@ -276,9 +277,9 @@ To Do List - Dark Castle v3
 				- TBD: test help()
 		- TBD: review full entrance / tree UI and tune for best flow
 	- TBD: clean-up 
-		- TBD: game_update(), room(), game_static, map, creature()
+		- TBD: game_update(), room(), game_update(), map(), creature(), base()
 		- TBD: 2x static_gbl(), cmd_exe(), validate(), error(), interp()
-		- TBD: remove scroe from 'climb up entrance_tree'
+		- TBD: remove score from 'climb up entrance_tree'
 
 - TBD: git branch merge with master
 	- TBD: 'git checkout master' to switch focus to master

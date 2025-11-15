@@ -373,6 +373,13 @@ class Error(Identity):
 			# attemptable error: many non-climbable obj might appear climbable
 			err_txt = (f"You can't climb the {self.full_name}.")
 			return True, True, err_txt
+		if dir == self.err_dir:
+			# attemptable error: on-way climbable obj might appear climbable both ways
+			try:
+				err_txt = gs.io.get_str_nr(f"{self.full_name}_climb_err_{dir}")
+			except:
+				err_txt = (f"You can't climb {dir} on the {self.full_name}.")
+			return True, True, err_txt
 
 #		if dir not in self.allowed_dir:
 #			# attemptable error: on-way climbable obj might appear climbable both ways
