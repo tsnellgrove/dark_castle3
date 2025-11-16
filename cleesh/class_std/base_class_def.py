@@ -304,8 +304,11 @@ class ClimbableMixIn(object):
 			next_rm.floor_lst_append(creature)
 			room.floor_lst_remove(creature)	
 		else:
+#			print(f"dir = {dir}, descript_dir = {self.descript_dir}, err_dir = {self.err_dir}")
+#			print(f"key = {self.name}_climb_{dir}")
+#			print(f"manual_ value = {gs.io.get_str_nr('entrance_tree_climb_up')}")
 			if dir == self.descript_dir:
-				gs.io.buff_s(f"{self.full_name}_climb_{dir}")
+				gs.io.buff_s(f"{self.name}_climb_{dir}")
 		return
 
 #		else:

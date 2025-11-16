@@ -22,7 +22,7 @@ def validate(gs, case, word_lst):
 		return False, False, ""
 
 	# *** command errors ***
-	if case in ['2word', 'prep', 'go']:
+	if case in ['2word', 'prep_no_do', 'prep', 'go']:
 		try:
 			if case == '2word':
 				word2_obj, word1 = word_lst

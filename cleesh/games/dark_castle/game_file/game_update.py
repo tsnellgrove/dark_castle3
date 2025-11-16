@@ -79,9 +79,11 @@ ruined_windows = ViewOnly('ruined_windows', 'Ruined Windows', 'windows', 'ruined
 silver_keyhole = ViewOnly('silver_keyhole', 'Silver Keyhole', 'keyhole', 'silver_keyhole', None)
 stained_glass = ViewOnly('stained_glass', 'Stained Glass', 'glass', 'stained_glass', None)
 # entrance_tree = ViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None)
-entrance_tree = ClimbableViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None, 'entrance_temp', 'uptree_temp', 'up', 'up')
+## entrance_tree = ClimbableViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None, 'entrance_temp', 'uptree_temp', 'up', 'up')
+entrance_tree = ClimbableViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None, 'up', None)
 #uptree_tree = ViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None)
-uptree_tree = ClimbableViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None, 'entrance_temp', 'uptree_temp', 'down', 'down')
+## uptree_tree = ClimbableViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None, 'entrance_temp', 'uptree_temp', 'down', 'down')
+uptree_tree = ClimbableViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None, None, 'up')
 uptree_moat = ViewOnly('uptree_moat', 'Moat', 'moat', 'uptree_moat', None)
 uptree_drawbridge = ViewOnly('uptree_drawbridge', 'Drawbridge', 'drawbridge', 'uptree_drawbridge', None)
 
@@ -626,10 +628,10 @@ big_rock_take_result1.room_obj = entrance
 sword_in_hand_cond.creature_obj = burt
 sword_in_hand_cond.item_obj = shiny_sword
 moat_get_crown_result2.tgt_creature = burt
-entrance_tree.bottom_rm = entrance
-entrance_tree.top_rm = up_tree
-uptree_tree.bottom_rm = entrance
-uptree_tree.top_rm = up_tree
+# entrance_tree.bottom_rm = entrance
+# entrance_tree.top_rm = up_tree
+# uptree_tree.bottom_rm = entrance
+# uptree_tree.top_rm = up_tree
 
 entrance_moat_mach.alert_anchor = entrance
 broach_dispenser_mach.alert_anchor = throne_room
@@ -685,7 +687,7 @@ master_obj_lst = [
 		insignia, baked_biscuit, entrance_drawbridge, rusty_keyhole, royal_cypher, postbox, ancient_certificate, 
 		bold_script, big_rock, zorkmid, untrodden_path, gatehouse, old_furniture, cobwebs, musty_smell, 
 		arrow_slits, foreboding_archway, lit_archway, elegant_pedestal, ruined_windows, silver_keyhole,
-		stained_glass, up_tree, uptree_tree, entrance_tree,uptree_moat, uptree_drawbridge, tree_hollow,
+		stained_glass, up_tree, uptree_tree, entrance_tree, uptree_moat, uptree_drawbridge, tree_hollow,
 		red_ruby, 
 
 		# test objects

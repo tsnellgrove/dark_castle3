@@ -360,6 +360,9 @@ game_static_dict = {
     'shiny_sword_1' : "Your sword is glowing with a faint blue glow.",
     'shiny_sword_2' : "Your sword is glowing very brightly.",
 
+	### climb descriptions ###
+    'entrance_tree_climb_up' : "With a jump to the first branch you clamber up the trail-side tree.",
+    'uptree_tree_climb_err_up' : "The next branch above you is too high for you to reach. You can't climb any higher.",
 
 	#### TEST OBJ ####
 

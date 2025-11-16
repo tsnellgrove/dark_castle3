@@ -252,25 +252,26 @@ To Do List - Dark Castle v3
 						- DONE: error()
 					- DONE: in eng.static_gbl(), prep_no_do => interactive_convert
 					- DONE: test
-				- INPROC: still need to interp cmd and error space is too big for interp() func
+				- DONE: still need to interp cmd and error space is too big for interp() func
 					- DONE: re-enable prep_no_do_verb_lst in eng.gbl_static
 					- DONE: re-do interp (remove prep and use noun handling function)
 					- DONE: re-do validate
+					- DONE: re-do cmd_exe
 					- DONE: update ClimbableMixIn attribs in base()
 					- DONE: update ViewOnlyClimbable() class based on ViewOnly + ClimbableMixIn
 					- DONE: re-do climb_err()
 					- DONE: update app_main() to add 'go {dir}' to cmd_queue on valid climb cmd
 					- DONE: update climb() to buffer descript_key if dir == descript_dir
-					- TBD: update game_update() ViewOnlyClimbable instantiations (comment out temps)
-						- TBD: instantiate entrance_tree with descript_dir = 'up'
-						- TBD: instantiate uptree_tree with err_dir = 'up'
-						- TBD: create err_dir and descript_dir in dark_castle static_gbl()
-			- TBD: test
-				- TBD: test success case
-				- TBD: key cases = is_climbable == False, up when up, down when down
-				- TBD: attempting dir not in allowed_dir
-				- TBD: non-viewonly, non-climbable viewonly, climbable wrong way, tree, seated
-				- TBD: test entrance_tree climb up
+					- DONE: update game_update() ViewOnlyClimbable instantiations (comment out temps)
+						- DONE: instantiate entrance_tree with descript_dir = 'up'
+						- DONE: instantiate uptree_tree with err_dir = 'up'
+						- DONE: create err_dir and descript_dir in dark_castle static_gbl()
+				- INPROC: test
+					- DONE: test success case
+					- DONE: key cases = is_climbable == False, up when up, down when down
+					- TBD: attempting dir not in [up, down]
+					- TBD: non-viewonly, seated
+					- TBD: test turn count to climb up & down tree
 			- TBD: consider how interp could intuit direction of climb (based on map?)
 			- TBD: help()
 				- TBD: update help() to include 'climb'
