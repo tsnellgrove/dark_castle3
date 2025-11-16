@@ -106,6 +106,7 @@ def app_main(user_input, game_name, root_path_str):
 		is_att = False
 		has_except = False
 		is_multiples_action = False
+		skip_inc = False # for climb command
 
 		# mutually exclusive special command cases
 		if user_input.lower().strip() in ['quit', 'q']:
@@ -171,14 +172,17 @@ def app_main(user_input, game_name, root_path_str):
 				start_in_hand = gs.core.hero.get_hand_item()
 			case, word_lst = interpreter(user_input, master_obj_lst)
 			is_valid, is_att, err_txt = validate(gs, case, word_lst)
+			if is_valid and case == 'prep_no_do' and word_lst[0] == 'climb':
+				prep = word_lst[1]
+				cmd_queue.insert(1, f"go {prep}")
+				skip_inc = True # to offset move_inc() below
 	
-
 		# if command is not valid, clear cmd_queue
 		if not is_valid:
 			cmd_queue = []
 
 		# if command is valid or is_wait, increment move
-		if is_valid or is_att or is_wait:
+		if (is_valid or is_att or is_wait) and (not skip_inc):
 			gs.core.move_inc()
 
 		# for valid interp commands, process in-turn game response

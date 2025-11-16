@@ -233,17 +233,17 @@ To Do List - Dark Castle v3
 				- DONE: ensure right order of classes to apply is_climbable == True
 			- DONE: create climbable_tree obj in entrance and up_tree
 				- DONE: bottom_rm= entrance, top_rm=up_tree, is_enabled = True, prep = ['up', 'down']
-			- TBD: re-factor
+			- INPROC: re-factor
 				- IDEA: wrong approach - instead of duplicating up / down map, reference map
 				- IDEA: in interp, test if obj is_climbable
 					- IDEA: if not climbable, simple error: "The {obj.full_name} is not climbable"
 					- CANCEL: if climbable but no dir, assume default_dir
 					- IDEA: if dir in err_dir, buffer err_key (if exist)
-					- IDEA; if dir in travel_dir, buffer travel_key (if exist)
+					- IDEA; if dir in descript_dir, buffer descript_key (if exist)
 					- IDEA: user_input => 'go {dir}'
-				- IDEA: ClimbableMixIn is simpler now:
-					- IDEA: attribs = default_dir, err_dir, travel_dir
-					- IDEA: err_key and travel_key are auto (f"{obj.full_name}_travel_{dir}")
+				- DONE: ClimbableMixIn is simpler now:
+					- IDEA: attribs = default_dir, err_dir, descript_dir
+					- IDEA: err_key and descript_key are auto (f"{obj.full_name}_climb_{dir}")
 					- DONE: comment out: 
 						- DONE: interp()
 						- DONE: validate()
@@ -252,25 +252,25 @@ To Do List - Dark Castle v3
 						- DONE: error()
 					- DONE: in eng.static_gbl(), prep_no_do => interactive_convert
 					- DONE: test
-				- IDEA: still need to interp cmd and error space is too big for interp() func
+				- INPROC: still need to interp cmd and error space is too big for interp() func
 					- DONE: re-enable prep_no_do_verb_lst in eng.gbl_static
 					- DONE: re-do interp (remove prep and use noun handling function)
 					- DONE: re-do validate
 					- DONE: update ClimbableMixIn attribs in base()
+					- DONE: update ViewOnlyClimbable() class based on ViewOnly + ClimbableMixIn
 					- DONE: re-do climb_err()
-					- TBD: update climb() to provide buffer and then add go() cmd to cmd queue (??)
-					- TBD: update ViewOnlyClimbable() class based on ViewOnly + ClimbableMixIn
+					- DONE: update app_main() to add 'go {dir}' to cmd_queue on valid climb cmd
+					- DONE: update climb() to buffer descript_key if dir == descript_dir
 					- TBD: update game_update() ViewOnlyClimbable instantiations (comment out temps)
-					- TBD: create err_dir and travel_dir
+						- TBD: instantiate entrance_tree with descript_dir = 'up'
+						- TBD: instantiate uptree_tree with err_dir = 'up'
+						- TBD: create err_dir and descript_dir in dark_castle static_gbl()
 			- TBD: test
 				- TBD: test success case
 				- TBD: key cases = is_climbable == False, up when up, down when down
 				- TBD: attempting dir not in allowed_dir
 				- TBD: non-viewonly, non-climbable viewonly, climbable wrong way, tree, seated
 				- TBD: test entrance_tree climb up
-			- TBD: implement climb down from up_tree
-				- TBD: instantiate uptree_tree as ClimbableViewOnly
-				- TBD: test
 			- TBD: consider how interp could intuit direction of climb (based on map?)
 			- TBD: help()
 				- TBD: update help() to include 'climb'
