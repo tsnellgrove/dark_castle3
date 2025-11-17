@@ -156,9 +156,19 @@ def interpreter(user_input, master_obj_lst):
 	# handle prep_no_do verb commands (special cases first else general case)
 	if word1 in gs.io.get_lst('prep_no_do_verb_lst','eng'):
 		if word1 in ['climb']:
+			room = gs.map.hero_rm
 			if user_input_lst[1] in ['up', 'down']:
 				prep = user_input_lst[1]
 				user_input_lst.remove(prep)
+			elif user_input_lst[1] in ['north', 'south', 'east', 'west', 'northwest', 'northeast', 'southwest', 'southeast']:
+				error_msg = f"You can only climb 'up' or 'down'."
+				return 'error', [error_msg]
+			elif gs.map.chk_valid_dir(room, 'up') and not gs.map.chk_valid_dir(room, 'down'):
+				prep = 'up'
+				gs.io.buffer(f"(choosing the 'up' direction in which to climb)")
+			elif gs.map.chk_valid_dir(room, 'down') and not gs.map.chk_valid_dir(room, 'up'):
+				prep = 'down'
+				gs.io.buffer(f"(choosing the 'down' direction in which to climb)")
 			else:
 				return 'error', ["Which way do you want to climb, up or down?"]
 			error_state, error_msg, word2_obj = noun_handling(master_obj_lst, user_input_lst)

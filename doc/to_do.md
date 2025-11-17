@@ -266,13 +266,17 @@ To Do List - Dark Castle v3
 						- DONE: instantiate entrance_tree with descript_dir = 'up'
 						- DONE: instantiate uptree_tree with err_dir = 'up'
 						- DONE: create err_dir and descript_dir in dark_castle static_gbl()
-				- INPROC: test
+				- DONE: consider how interp could intuit direction of climb (based on map?)
+					- DONE: gs.map.chk_valid_dir(room, dir); if 'up' valid & 'down' not valid => 'up'
+					- DONE: gs.map.chk_valid_dir(room, dir); if 'down' valid & not 'up' => 'down'
+				- INPROC: test 
 					- DONE: test success case
 					- DONE: key cases = is_climbable == False, up when up, down when down
-					- TBD: attempting dir not in [up, down]
-					- TBD: non-viewonly, seated
+					- DONE: test auto-insert climb for 'climb tree' and 'climb moat'
+					- DONE: attempting dir not in [up, down]
+					- DONE: non-viewonly (big_rock)
+					- TBD: test climb when seated
 					- TBD: test turn count to climb up & down tree
-			- TBD: consider how interp could intuit direction of climb (based on map?)
 			- TBD: help()
 				- TBD: update help() to include 'climb'
 				- TBD: test help()
