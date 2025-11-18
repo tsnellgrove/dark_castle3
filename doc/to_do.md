@@ -269,17 +269,18 @@ To Do List - Dark Castle v3
 				- DONE: consider how interp could intuit direction of climb (based on map?)
 					- DONE: gs.map.chk_valid_dir(room, dir); if 'up' valid & 'down' not valid => 'up'
 					- DONE: gs.map.chk_valid_dir(room, dir); if 'down' valid & not 'up' => 'down'
+				- CANCEL: expand tree to 2 levels to test u or d room and fatal jump from lvl 2 ?
 				- INPROC: test 
 					- DONE: test success case
 					- DONE: key cases = is_climbable == False, up when up, down when down
 					- DONE: test auto-insert climb for 'climb tree' and 'climb moat'
 					- DONE: attempting dir not in [up, down]
 					- DONE: non-viewonly (big_rock)
-					- TBD: test climb when seated
-					- TBD: test turn count to climb up & down tree
-			- TBD: help()
-				- TBD: update help() to include 'climb'
-				- TBD: test help()
+					- DONE: test climb when seated
+					- DONE: test turn count to climb up & down tree
+			- DONE: help()
+				- DONE: update help() to include 'climb'
+				- DONE: test help()
 		- TBD: review full entrance / tree UI and tune for best flow
 	- TBD: clean-up 
 		- TBD: game_update(), room(), game_update(), map(), creature(), base()

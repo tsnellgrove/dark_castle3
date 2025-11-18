@@ -34,7 +34,7 @@ def cmd_execute(gs, case, word_lst):
 					pre_out = pre_out + key + " = " + abbrev_dict[key] + ", "
 				output = pre_out[:-2]
 			elif option == 'travel':
-				output = (gs.io.get_str_nr(f"help_{option}") + ', '.join(gs.io.get_lst('one_word_travel_lst','eng')))
+				output = (gs.io.get_str_nr(f"help_{option}") + ', '.join(gs.io.get_lst('one_word_travel_lst','eng')) + " (e.g. 'go north'). You can also 'climb' up or down a climbable object (e.g. 'climb up tree').")
 			elif option == 'debug':
 				if not gs.core.is_debug:
 					output = gs.io.get_str_nr('help_debug_error')
