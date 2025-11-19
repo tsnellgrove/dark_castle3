@@ -118,7 +118,7 @@ To Do List - Dark Castle v3
 		- DONE: update entrance_south warning => sw
 		- DONE: test sw warning
 		- DONE: temp test ne gate	
-	- INPROC: for up, down only
+	- DONE: for up, down only
 		- DONE: zork: test u/d in front of house
 			- FINDING: "You can't go that way."
 		- DONE: test jump from in_tree
@@ -209,7 +209,7 @@ To Do List - Dark Castle v3
 			- DONE: test jump
 			- DONE: fatal case
 			- DONE: test jump
-		- INPROC: enable 'climb tree' => ClimbableMixIn
+		- DONE: enable 'climb tree' => ClimbableMixIn
 			- DONE: re-think ClimbableMixIn to meet one-way needs (e.g. slide or can't climb down)
 			- DONE: create ClimbableMixIn class
 				- DONE: key attribs = bottom_rm, top_rm, is_enabled, prep, allowed_dir ['up', 'down']
@@ -233,7 +233,7 @@ To Do List - Dark Castle v3
 				- DONE: ensure right order of classes to apply is_climbable == True
 			- DONE: create climbable_tree obj in entrance and up_tree
 				- DONE: bottom_rm= entrance, top_rm=up_tree, is_enabled = True, prep = ['up', 'down']
-			- INPROC: re-factor
+			- DONE: re-factor
 				- IDEA: wrong approach - instead of duplicating up / down map, reference map
 				- IDEA: in interp, test if obj is_climbable
 					- IDEA: if not climbable, simple error: "The {obj.full_name} is not climbable"
@@ -281,7 +281,10 @@ To Do List - Dark Castle v3
 			- DONE: help()
 				- DONE: update help() to include 'climb'
 				- DONE: test help()
-		- TBD: review full entrance / tree UI and tune for best flow
+		- DONE: review full entrance / tree UI and tune for best flow
+			- DONE: investigate error on actions on obj you can see from up_tree
+			- FINDING: zork just throws a 'can't see' err for anything below you
+			- DECISION: if zork can give an inscrutiable error then so can I! time to move on
 	- TBD: clean-up 
 		- TBD: game_update(), room(), game_update(), map(), creature(), base()
 		- TBD: 2x static_gbl(), cmd_exe(), validate(), error(), interp()
@@ -309,6 +312,10 @@ To Do List - Dark Castle v3
 *** SOMEDAY MAYBE ***
 *********************
 
+
+*** tactical bug backlog ***
+- TBD: provide better error on attempt to interact with an item you can see on ground when in tree
+	- INFO: issue is that 'x' shows drop_rm contents but no other cmd is aware of obj outside room
 
 *** structural ***
 - TBD: maybe call disp_weapon from within cmd_exe() instead of in app_main() due to score??
