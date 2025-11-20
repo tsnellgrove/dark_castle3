@@ -116,7 +116,6 @@ def interpreter(user_input, master_obj_lst):
 	# convert one-word commands that are implicit two-word commands 
 	full_one_word_lst = gs.io.get_lst('one_word_convert_lst','eng') + gs.io.get_lst('one_word_travel_lst','eng')
 	if len(user_input_lst) == 1 and word1 in full_one_word_lst:
-#		if word1 in ['north', 'south', 'east', 'west']:
 		if word1 in gs.io.get_lst('one_word_travel_lst','eng'):
 			user_input_lst.append(word1)
 			user_input_lst[0] = 'go'
@@ -176,53 +175,6 @@ def interpreter(user_input, master_obj_lst):
 				return 'error', [error_msg]
 			return 'prep_no_do', [word1, prep, word2_obj]
 
-###			elif len(user_input_lst) == 2 and gs.core.is_key_in_sto_dict(user_input_lst[1]) and gs.core.get_str_to_obj_dict(user_input_lst[1]).is_climbable():
-###				word2_obj = gs.core.get_str_to_obj_dict(user_input_lst[1])
-###				prep = word2_obj.default_dir
-
-##			elif len(user_input_lst) == 2 and gs.core.is_key_in_sto_dict(user_input_lst[1]) and gs.core.get_str_to_obj_dict(user_input_lst[1]).is_climbable():
-##				room = gs.map.hero_rm
-##				word2_obj = gs.core.get_str_to_obj_dict(user_input_lst[1])
-##				if room == word2_obj.bottom_rm:
-##					prep = 'up'
-##				elif room == word2_obj.top_rm:
-##					prep = 'down'
-##				user_input_lst.insert(1, prep)
-##				gs.io.buffer(f"(you clamber {prep})")
-##			else:
-##				prep = 'up or down'
-
-
-#			word2_txt = user_input_lst[1]
-#			if 'up' in user_input_lst:
-#				prep = 'up'
-#			elif 'down' in user_input_lst:
-#				prep = 'down'
-#			elif len(user_input_lst) == 2 and gs.core.is_key_in_sto_dict(word2_txt) and gs.core.get_str_to_obj_dict(word2_txt).is_climbable():
-#				room = gs.map.hero_rm
-#				word2_obj = gs.core.get_str_to_obj_dict(word2_txt)
-#				if room == word2_obj.bottom_rm:
-#					prep = 'up'
-#				elif room == word2_obj.top_rm:
-#					prep = 'down'
-#				user_input_lst.insert(1, prep)
-#				gs.io.buffer(f"(you clamber {prep})")
-#			else:
-#				prep = 'up or down'
-#		if prep not in user_input_lst:
-#			error_msg = f"I don't see the word '{prep}' in that sentence."
-#			return 'error', [error_msg]
-#		if len(user_input_lst) < 3:
-#			error_msg = "That sentence doesn't appear to be complete"
-#			return 'error', [error_msg]
-#		else:
-#			in_position = user_input_lst.index(prep)
-#			v_n_lst = list(islice(user_input_lst, in_position))
-#			noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst)
-#			if noun_error_state:
-#				return 'error', [noun_error_msg]
-#			return 'prep', [word1, prep, noun_obj]
-
 	# handle prep verb commands (special cases first else general case)
 	if word1 == 'help':
 		word2 = user_input_lst[1]
@@ -272,7 +224,6 @@ def interpreter(user_input, master_obj_lst):
 			error_msg = f"I don't see the word '{prep}' in that sentence."
 			return 'error', [error_msg]
 		if len(user_input_lst) < 4:
-#		if (word1 in ['climb'] and len(user_input_lst) < 3) or len(user_input_lst) < 4:
 			error_msg = "That sentence doesn't appear to be complete"
 			return 'error', [error_msg]
 		else:

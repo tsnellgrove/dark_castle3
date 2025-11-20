@@ -215,15 +215,9 @@ class ViewOnly(Writing):
 		return
 
 class ClimbableMixIn(object):
-#	def __init__(self, bottom_rm, top_rm, allowed_dir, prep, is_enabled=True):
 	def __init__(self, descript_dir, err_dir):
 		self._descript_dir = descript_dir # obj can be climbed in this direction; produces message when climbed
 		self._err_dir = err_dir # obj cannot be climbed in this direction; produces message when climb is attempted
-#		self._bottom_rm = bottom_rm # the room below the object
-#		self._top_rm = top_rm # the room above the object
-#		self._is_enabled = is_enabled # True if the object is currently enabled for climbing
-#		self._allowed_dir = allowed_dir # list of directions that can be climbed on the object
-#		self._prep = prep # list of prepositions associated with climbing the object
 		""" The ClimbablehMixIn can be combined with other classes (most typically ViewOnly) to produce objects that can be climbed up or down.
 		"""
 
@@ -243,42 +237,6 @@ class ClimbableMixIn(object):
 	@err_dir.setter
 	def err_dir(self, new_dir):
 		self._err_dir = new_dir
-
-	# @property
-	# def bottom_rm(self):
-	#	return self._bottom_rm
-	
-	# @bottom_rm.setter
-	# def bottom_rm(self, new_room):
-	#	self._bottom_rm = new_room
-
-	# @property
-	# def top_rm(self):
-	#	return self._top_rm
-
-	# @top_rm.setter
-	# def top_rm(self, new_room):
-	#	self._top_rm = new_room
-
-	# @property
-	# def is_enabled(self):
-	#	return self._is_enabled
-
-	# @is_enabled.setter
-	# def is_enabled(self, new_state):
-	#	self._is_enabled = new_state
-
-	# @property
-	# def allowed_dir(self):
-	#	return self._allowed_dir
-
-	# @allowed_dir.setter
-	# def allowed_dir(self, new_state):
-	#	self._allowed_dir = new_state
-
-	# @property
-	# def prep(self):
-	#	return self._prep
 	
 
 	# *** class identity methods ***
@@ -294,7 +252,6 @@ class ClimbableMixIn(object):
 			mode = 'std'
 		if creature is None:
 			creature = gs.core.hero
-#		creature = gs.core.hero
 		
 		if creature != gs.core.hero:
 			room = gs.map.get_obj_room(creature, gs)
@@ -304,32 +261,14 @@ class ClimbableMixIn(object):
 			next_rm.floor_lst_append(creature)
 			room.floor_lst_remove(creature)	
 		else:
-#			print(f"dir = {dir}, descript_dir = {self.descript_dir}, err_dir = {self.err_dir}")
-#			print(f"key = {self.name}_climb_{dir}")
-#			print(f"manual_ value = {gs.io.get_str_nr('entrance_tree_climb_up')}")
 			if dir == self.descript_dir:
 				gs.io.buff_s(f"{self.name}_climb_{dir}")
 		return
 
-#		else:
-#			room = gs.map.get_obj_room(creature, gs)
-#			if dir == 'up:':
-#				next_room = self.top_rm
-#			else:
-#				next_room = self.bottom_rm
-#			gs.map.hero_rm = next_room
-#			next_room.floor_lst_append(gs.core.hero)
-#			room.floor_lst_remove(gs.core.hero)	
-#			gs.io.buffer("After some hearty clambering...")
-#			gs.io.buff_cr()
-#			next_room.examine(gs)
-#		return
 	
 class ClimbableViewOnly(ClimbableMixIn, ViewOnly):
-#	def __init__(self, name, full_name, root_name, descript_key, writing, bottom_rm, top_rm, allowed_dir, prep, is_enabled=True):
 	def __init__(self, name, full_name, root_name, descript_key, writing, descript_dir, err_dir):
 		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
-#		ClimbableMixIn.__init__(self, bottom_rm, top_rm, allowed_dir, prep, is_enabled=True)
 		ClimbableMixIn.__init__(self, descript_dir, err_dir)
 		""" A ViewOnly object that is climbable.
 		"""

@@ -659,13 +659,6 @@ class Creature(ViewOnly):
 		# if hero_creature not in current room, exit with no display
 		if room != gs.map.hero_rm:
 			return 
-		# if hero is jumping, display silly message
-#		if self == gs.core.hero:
-#			gs.io.buffer("Wheeeeeee!!! (do you do this often?)")
-		# if other creature is jumping, display different silly message
-#		else:
-#			gs.io.buffer(f"For reasons of its own, the {self.full_name} jumps up and down.")
-
 		# if other creature is jumping, display different silly message
 		if self != gs.core.hero:
 			gs.io.buffer(f"For reasons of its own, the {self.full_name} jumps up and down.")

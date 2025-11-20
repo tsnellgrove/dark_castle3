@@ -171,8 +171,6 @@ class Map(Invisible):
 						prep_clause = "to the"
 					else:
 						prep_clause = "leading"
-#					room_door_str += f"{article} {passage_str} to the {room_pair[room_lst[1]]}"
-#					room_door_str += f"{article} {passage_str} {prep_clause} {room_pair[room_lst[1]]}"
 					room_door_str += f"{article} {passage_str} {prep_clause} {direction}"
 					clause_count +=1
 					if clause_count == room_count:

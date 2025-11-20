@@ -10,7 +10,6 @@ from cleesh.class_std.base_class_def import ViewOnly
 
 ### classes
 class Room(ViewOnly):
-#	def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst, init_desc_lst):
 	def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst, init_desc_lst, is_outdoor):
 		super().__init__(name, full_name, root_name, descript_key, writing)
 		self._feature_lst = feature_lst # list of descriptive obj in the room (can be examined but not interacted with)
@@ -176,7 +175,6 @@ class Room(ViewOnly):
 		return False
 
 	def has_contain(self, gs):
-#		return len(self.floor_lst) > 1
 		return True
 
 	def disp_cond(self, gs):
@@ -320,14 +318,8 @@ class InitDesc(Invisible):
 
 
 class FloorlessRoom(Room):
-#	def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst, init_desc_lst):
 	def __init__(self, name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst, init_desc_lst, is_outdoor, drop_rm, is_jump_fatal, cust_below_lst):
 		super().__init__(name, full_name, root_name, descript_key, writing, feature_lst, floor_lst, invis_lst, init_desc_lst, is_outdoor)
-#		self._feature_lst = feature_lst # list of descriptive obj in the room (can be examined but not interacted with)
-#		self._floor_lst = floor_lst # list of obj on the floor of the room that the player can interact with
-#		self._invis_lst = invis_lst # list of invisible obj in room
-#		self._init_desc_lst = init_desc_lst # list of InitDesc objects that provide the initial description of obj in the room
-#		self._is_outdoor = is_outdoor # whether the room is outdoors
 		self._drop_rm = drop_rm # room to which dropped items go
 		self._is_jump_fatal = is_jump_fatal # whether jumping from the room is fatal
 		self._cust_below_lst = cust_below_lst # custom list of objects below the room (overrides default init_desc exclusion)
@@ -364,7 +356,6 @@ class FloorlessRoom(Room):
 	def get_below_lst(self, gs):
 		""" Returns the list of objects on the ground below the floorless room.
 		"""
-#		below_lst = self.drop_rm.floor_lst.copy()
 		below_lst = []
 		for obj in self.drop_rm.floor_lst:
 			if self.drop_rm.chk_has_init_desc(obj):

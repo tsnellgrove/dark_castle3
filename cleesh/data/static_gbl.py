@@ -32,7 +32,6 @@ engine_static_dict = {
 
 	'one_word_convert_lst' : ['inventory', 'look', 'stand', 'jump'],
 
-#	'one_word_travel_lst' : ['north', 'south', 'east', 'west'],
     'one_word_travel_lst' : ['north', 'south', 'east', 'west', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down'],
 
 	'assumed_noun_2word_lst' : ['exit', 'drop', 'stow', 'eat', 'wear'],
@@ -45,8 +44,6 @@ engine_static_dict = {
 	],
 
 	'prep_no_do_verb_lst' : ['climb'],
-
-#	'interactive_convert' : ['climb'],
 
 	'prep_verb_lst' : ['put', 'show', 'give', 'attack', 'lock', 'unlock', 'drink'],
     
@@ -106,7 +103,6 @@ engine_static_dict = {
 	'help_debug_error' : "The first rule of debug mode is that we don't talk about debug mode.",
 	'help_debug' : "There are currently 3 main features to debug mode: 1) Python errors are shown rather than muted, 2) A module prefix is provided for game errors, and 3) The following debug verbs are usable: ",
     'help_save' : "Type 'save' to save your game. Type 'restore' to restore from save. There is only one save slot. New saves over-write old saves. Restoring over-writes current game state.",
-#    'help_travel' : "In general, the following cardinal directions are available for travel: ",
     'help_travel' : "You can 'go' in the following cardinal directions: ",
     'help_multiples' : "The 'take' or 'drop' commands can be used with multiple items by specifying 'all'. For example: 'take all' or 'drop all'. You can also exclude one item by using the 'except' clause. For example: 'take all except rusty key'.",
     'help_command-queue' : "In cases where you already know your next several commands, you can enter them on one line, separated by commas. For example: 'go north, open door, take sword'. The game will process each command in order.",

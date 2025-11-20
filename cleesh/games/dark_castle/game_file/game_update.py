@@ -174,7 +174,6 @@ eat_biscuits_warning = Warning('eat_biscuits_warning',
 
 take_box_warning = Warning('take_box_warning',
 		'pre_act_cmd', 0, crystal_box, True, 
-#		[['take', 'crystal_box'], ['take', 'box']], 0)
 		[['take', 'crystal_box']], 0)
 
 take_glass_warning = Warning('take_glass_warning',
@@ -332,8 +331,6 @@ goblin_attack_mach = InvisTrigMach('goblin_attack_mach', None,
 entrance_moat_mach = InvisTrigMach('entrance_moat_mach', False, 
 		'pre_act_cmd', 'entrance_temp', True,
 		[['go', 'east'], ['go', 'west'], ['jump', 'burt']],
-#		[no_weap_in_hand_cond, crown_not_dispensed_cond, crown_dispensed_cond],
-#		[die_in_moat_result, moat_get_crown_result, moat_croc_scared_result]
 		[no_weap_in_hand_cond, [crown_not_dispensed_cond, sword_in_hand_cond], crown_not_dispensed_cond, crown_dispensed_cond],
 		[die_in_moat_result, moat_get_crown_result2, moat_get_crown_result, moat_croc_scared_result],
 		is_valid_reqd=False
@@ -531,7 +528,6 @@ map = Map(
 			},
 			{
 				'room_x' : entrance, 
-#				'dir_x' : 'south', 
 				'dir_x' : 'southwest', 
 				'door' : untrodden_path, 
 				'dir_y' : None, 
@@ -628,10 +624,6 @@ big_rock_take_result1.room_obj = entrance
 sword_in_hand_cond.creature_obj = burt
 sword_in_hand_cond.item_obj = shiny_sword
 moat_get_crown_result2.tgt_creature = burt
-# entrance_tree.bottom_rm = entrance
-# entrance_tree.top_rm = up_tree
-# uptree_tree.bottom_rm = entrance
-# uptree_tree.top_rm = up_tree
 
 entrance_moat_mach.alert_anchor = entrance
 broach_dispenser_mach.alert_anchor = throne_room

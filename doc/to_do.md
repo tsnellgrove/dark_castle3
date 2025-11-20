@@ -285,10 +285,13 @@ To Do List - Dark Castle v3
 			- DONE: investigate error on actions on obj you can see from up_tree
 			- FINDING: zork just throws a 'can't see' err for anything below you
 			- DECISION: if zork can give an inscrutiable error then so can I! time to move on
-	- TBD: clean-up 
-		- TBD: game_update(), room(), game_update(), map(), creature(), base()
-		- TBD: 2x static_gbl(), cmd_exe(), validate(), error(), interp()
-		- TBD: remove score from 'climb up entrance_tree'
+	- DONE: clean-up 
+		- DONE: game_update(), room(), map(), creature(), base()
+		- DONE: 2x static_gbl(), error(), interp()
+	- DONE
+		- test score on climb
+		- test cup_of_tea
+
 
 - TBD: git branch merge with master
 	- TBD: 'git checkout master' to switch focus to master
