@@ -293,22 +293,27 @@ To Do List - Dark Castle v3
 		- DONE: test cup_of_tea
 
 
-- TBD: git branch merge with master
-	- TBD: 'git checkout master' to switch focus to master
-	- TBD: 'git branch: to confirm focus
-	- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
-	- TBD: 'git push' to push merge to origin (GitHub)
-	- TBD: confirm that origin is updated
-	- TBD: confirm that code is updated and still runs
-	- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
-	- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
-	- TBD: confirm origin is cleaned up
-	- TBD: post-branch-delete run test
+- DONE: git branch merge with master
+	- DONE: 'git checkout master' to switch focus to master
+	- DONE: 'git branch: to confirm focus
+	- DONE: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+	- DONE: 'git push' to push merge to origin (GitHub)
+	- DONE: confirm that origin is updated
+	- DONE: confirm that code is updated and still runs
+	- DONE: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+	- DONE: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+	- DONE: confirm origin is cleaned up
+	- DONE: post-branch-delete run test
 
 
 ############################
 ### CLEESH VERSION 3.8.3 / DARK CASTLE VERSION 3.4.0 END ###
 ############################
+
+- TBD: interim updates
+	- TBD: update version numbers
+	- TBD: move to_do to done
+	- TBD: plan next branch
 
 
 *********************
