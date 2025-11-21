@@ -288,9 +288,9 @@ To Do List - Dark Castle v3
 	- DONE: clean-up 
 		- DONE: game_update(), room(), map(), creature(), base()
 		- DONE: 2x static_gbl(), error(), interp()
-	- DONE
-		- test score on climb
-		- test cup_of_tea
+	- DONE:
+		- DONE: test score on climb
+		- DONE: test cup_of_tea
 
 
 - TBD: git branch merge with master
