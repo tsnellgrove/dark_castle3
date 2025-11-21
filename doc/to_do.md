@@ -107,7 +107,7 @@ To Do List - Dark Castle v3
 	- DONE: 'git push" to push updates to origin (GitHub)
 	- DONE: confirm new branch on GitHub is now ahead of master
 
-- INPROC: implemenet full set of cardinal directions
+- DONE: implemenet full set of cardinal directions
 	- DONE: implement ne, nw, se, sw, u, & d:
 		- DONE: expand 'one_word_travel_lst' in engine_static_dict in static_gbl()
 		- DONE: expand 'abbreviations_dict' in engine_static_dict in static_gbl()
