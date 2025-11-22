@@ -8435,3 +8435,234 @@ End Date:
 - DONE: update cleesh build
 
 
+############################
+### START CLEESH VERSION 3.9.0 / DARK CASTLE VERSION 3.4.0 ###
+############################
+
+- DONE: choose branch name => card_dir
+- DONE: create new <FEATURE_NAME>_feature git branch
+	- DONE: 'git branch' to confirm *master
+	- DONE: 'git branch <FEATURE_NAME>' to create new branch
+	- DONE: 'git branch' to confirm new branch exists but that master is still checked out
+	- DONE: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
+	- DONE: 'git branch' to confirm new branch is now in focus
+	- DONE: Publish Branch via VS Code button
+	- DONE: confirm new branch on GitHub
+	- DONE: update doc TBDs to DONEs
+	- DONE: <CMD><OPT>S (to save all files)
+	- DONE: 'git add .' to add files to be committed
+	- DONE: 'git commit -m "doc updates"
+	- DONE: 'git push" to push updates to origin (GitHub)
+	- DONE: confirm new branch on GitHub is now ahead of master
+
+
+- DONE: implemenet full set of cardinal directions
+	- DONE: implement ne, nw, se, sw, u, & d:
+		- DONE: expand 'one_word_travel_lst' in engine_static_dict in static_gbl()
+		- DONE: expand 'abbreviations_dict' in engine_static_dict in static_gbl()
+		- DONE: set untrodden path to sw in dark_castle game_update()
+		- DONE: test 'help travel' => good
+		- DONE: update go_err() in error_class() to use 'one_word_travel_lst'
+		- DONE: update interp() to use 'one_word_travel_lst'
+		- DONE: update entrance_south warning => sw
+		- DONE: test sw warning
+		- DONE: temp test ne gate	
+	- DONE: for up, down only
+		- DONE: zork: test u/d in front of house
+			- FINDING: "You can't go that way."
+		- DONE: test jump from in_tree
+			- FINDING: land on ground, "In a feat of unaccustomed daring, you manage to land on your feet without killing yourself."
+			- IDEA: maybe notion of survivable jump from one 'level' up
+		- DONE: update u / d errors
+			- DONE: u;;date err_go() to provide consistent u / d errors
+			- DONE: restart mac to solve integrated terminal error (mac terminal working; not VSC)
+				- FINDING: can run from mac terminal
+				- FINDING: run "python3 web_main.py" and git from cleesh
+			- DONE: test
+		- DONE: still working through terminal errors :-(
+			- FINDING: appears to be a PTY resource limit
+			- DONE: closed all but 1 VS Code tab
+			- DONE: temp raised max from 511 using: sudo sysctl -w kern.tty.ptmx_max=768
+			- FINDING: can now run integrated console from VS Code
+			- FINDING: per Tobi, terminal session persist across VS Code restarts - delete many
+			- IDEA: i expect this will solve the issue
+		- DONE: decide: multi-room types or just one???
+			DECISION: floorless = FloorlessRoom sub-class, outdoor = attrib of Room
+		- DONE: consider implementing room, outdoor_room, and floorless_room (like tads)
+			- CANCLE: implement at 'type' attrib in room() ; type == 'std', 'floorless', 'outdoor'
+			- IDEA: implement as 1 room() attribs: is_outdoor and FloorlessRoom sub-class
+		- DONE: implement is_outdoor attrib
+			- DONE: is_outdoor => Room attribs
+			- DONE: add setter in room_class()
+			- DONE: update in cup_of_tea game_update() file
+			- DONE: test
+			- DONE: update in dark_castle game_update() file
+			- DONE: test
+		- DONE: update wrong-way errors based on is_outdoors
+			- DONE: is_outdoors => wrong-way error = "You can't go that way."
+			- DONE: u / d errors for is_outdoor == False => try to climb wall / bonk head on floor
+			- DONE: test
+		- DONE: drop_rm, is_jump_fatal (None) > FloorlessRoom attribs
+			- DONE: create subclass FloorlessRoom
+			- DONE: add drop_rm and is_drop_fatal attribs
+			- DONE: create setters and getters for drop_rm and is_drop_fatal
+			- DONE: create is_floorless identity method
+			- DONE: add is_floorless_room() => False identity method to identity_class
+		- DONE: re-tune errors / effects based on new attribs
+			- DONE: is_floorless => wrong-way = "You can't go that way."
+			- DONE: in error class, update gs.map.get_obj_room(gs.core.hero, gs) to gs.map.hero_rm
+		- DONE: update drop
+			- DONE: update drop method: if is_floorless() , obj => to drop_rm 
+		- DONE: test up / down
+			- DONE: update init_desc for postbox to include tree
+			- DONE: create  up_tree room
+			- DONE: add up_tree to map
+			- DONE: create room description for up_tree
+			- DONE: add dark_castle, moat, and drawbridge to up_tree.feature_lst
+			- DONE: convert up_tree from Room to FloorlessRoom
+			- DONE: test u / d
+			- DONE: test wrong directions 
+			- DONE: test drop (reg, mulit, floorless)
+			- DONE: create tree ViewOnly obj => feature_lst in entrance and up_tree
+				- DONE: entrance_tree and uptree_tree obj w/ different descriptions
+				- DONE: move Cecily reference to in_tree description: "Being up here..."
+				- DONE: add tree descirptions to feature_lst of each room 
+			- DONE: create uptree_ moat and drawbridge descriptions to match up_tree view??
+				- DONE: presence of active crocs clearer from up high (bite marks and water motion)
+			- DONE: sort out direction UI; for u/d use "leading" or "leads" rather than "to the"
+			- DONE: sort out lack of passage str in FloorlessRoom (update has_contain() method)
+			- DONE: enable description of "on the ground below you" (see Frotz)			
+				- DECISION: yes, let's do this
+				- DONE: create FloorlessRoom method get_below_lst()
+				- DONE: create FloorlessRoom method get_below_str()
+				- DONE: update disp_contain() in room(): "On the ground below you can see"
+				- DONE: test
+				- IDEA: I want to be able to move a trampoline under the drop spot
+					- IDEA: to enable this, make init_desc obj not below by default
+					- IDEA: but enable them to be added to get_below_lst()
+				- DONE: update get_below_lst() to exclude items with init_desc by default
+				- DONE: create custom_below_lst as attrib of floorlessroom()
+				- DONE: create getters and setters for custom_below_lst
+				- DONE: for in_tree.custom_below_lst add [postbox]
+				- DONE: update get_below_lst() to incorporate custom_below_lst
+				- DONE: test (shoudl see floor_lst + postbox but NOT big_rock)
+			- DONE: tree_hollow
+				- DONE: create hollow as ViewOnly container
+				- DONE: tree_hollow description
+				- DONE: add to up_tree floor_lst
+				- DONE: populate hollow with rubby (create, descript, add)
+				- DONE: init_desc for tree_hollow
+		- DONE: update jump method: if is_floorless(), move hero to drop_rm => is_drop_fatal
+			- IDEA: land on feet vs. this was not a safe place to jump
+			- DONE: non-fatal case
+			- DONE: test jump
+			- DONE: fatal case
+			- DONE: test jump
+		- DONE: enable 'climb tree' => ClimbableMixIn
+			- DONE: re-think ClimbableMixIn to meet one-way needs (e.g. slide or can't climb down)
+			- DONE: create ClimbableMixIn class
+				- DONE: key attribs = bottom_rm, top_rm, is_enabled, prep, allowed_dir ['up', 'down']
+				- DONE: identity method = is_climbable() // also need identity_class method => False
+			- DONE: new 'climb' command
+				- DONE: initial verb method = climb() - similar to put()
+				- DONE: create viewonly.climb() w/ other creature option
+			- DONE: interp
+				- DONE: in staic_gbl(), add 'climb' to 'one_word_convert_lst'
+				- DONE: in staic_gbl(), add 'climb' to 'known_verbs_lst'
+				- DONE: in interp() create routine for 'climb'
+				- DONE: in interp(), check prep; insert prep to go to opp rm if is_climbable()
+				- IDEA: probably going to have errors due to 3-word prep line
+				- DONE: create dedicated 'prep_no_do' case for climb()
+			- DONE: update validate() for climb()
+				- DONE: add 'prep_no_do' case handling
+			- DONE: create initial climb_err() routine in dedicated prep_no_do section of error()
+			- DONE: update cmd_exe() for climb()
+			- DONE: update score for climb() to test
+			- DONE: create ViewOnlyClimbable() class based on ViewOnly + ClimbableMixIn
+				- DONE: ensure right order of classes to apply is_climbable == True
+			- DONE: create climbable_tree obj in entrance and up_tree
+				- DONE: bottom_rm= entrance, top_rm=up_tree, is_enabled = True, prep = ['up', 'down']
+			- DONE: re-factor
+				- IDEA: wrong approach - instead of duplicating up / down map, reference map
+				- IDEA: in interp, test if obj is_climbable
+					- IDEA: if not climbable, simple error: "The {obj.full_name} is not climbable"
+					- CANCEL: if climbable but no dir, assume default_dir
+					- IDEA: if dir in err_dir, buffer err_key (if exist)
+					- IDEA; if dir in descript_dir, buffer descript_key (if exist)
+					- IDEA: user_input => 'go {dir}'
+				- DONE: ClimbableMixIn is simpler now:
+					- IDEA: attribs = default_dir, err_dir, descript_dir
+					- IDEA: err_key and descript_key are auto (f"{obj.full_name}_climb_{dir}")
+					- DONE: comment out: 
+						- DONE: interp()
+						- DONE: validate()
+						- DONE: cmd_exe()
+						- DONE: static_gbl()
+						- DONE: error()
+					- DONE: in eng.static_gbl(), prep_no_do => interactive_convert
+					- DONE: test
+				- DONE: still need to interp cmd and error space is too big for interp() func
+					- DONE: re-enable prep_no_do_verb_lst in eng.gbl_static
+					- DONE: re-do interp (remove prep and use noun handling function)
+					- DONE: re-do validate
+					- DONE: re-do cmd_exe
+					- DONE: update ClimbableMixIn attribs in base()
+					- DONE: update ViewOnlyClimbable() class based on ViewOnly + ClimbableMixIn
+					- DONE: re-do climb_err()
+					- DONE: update app_main() to add 'go {dir}' to cmd_queue on valid climb cmd
+					- DONE: update climb() to buffer descript_key if dir == descript_dir
+					- DONE: update game_update() ViewOnlyClimbable instantiations (comment out temps)
+						- DONE: instantiate entrance_tree with descript_dir = 'up'
+						- DONE: instantiate uptree_tree with err_dir = 'up'
+						- DONE: create err_dir and descript_dir in dark_castle static_gbl()
+				- DONE: consider how interp could intuit direction of climb (based on map?)
+					- DONE: gs.map.chk_valid_dir(room, dir); if 'up' valid & 'down' not valid => 'up'
+					- DONE: gs.map.chk_valid_dir(room, dir); if 'down' valid & not 'up' => 'down'
+				- CANCEL: expand tree to 2 levels to test u or d room and fatal jump from lvl 2 ?
+				- INPROC: test 
+					- DONE: test success case
+					- DONE: key cases = is_climbable == False, up when up, down when down
+					- DONE: test auto-insert climb for 'climb tree' and 'climb moat'
+					- DONE: attempting dir not in [up, down]
+					- DONE: non-viewonly (big_rock)
+					- DONE: test climb when seated
+					- DONE: test turn count to climb up & down tree
+			- DONE: help()
+				- DONE: update help() to include 'climb'
+				- DONE: test help()
+		- DONE: review full entrance / tree UI and tune for best flow
+			- DONE: investigate error on actions on obj you can see from up_tree
+			- FINDING: zork just throws a 'can't see' err for anything below you
+			- DECISION: if zork can give an inscrutiable error then so can I! time to move on
+	- DONE: clean-up 
+		- DONE: game_update(), room(), map(), creature(), base()
+		- DONE: 2x static_gbl(), error(), interp()
+	- DONE:
+		- DONE: test score on climb
+		- DONE: test cup_of_tea
+
+
+- DONE: git branch merge with master
+	- DONE: 'git checkout master' to switch focus to master
+	- DONE: 'git branch: to confirm focus
+	- DONE: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+	- DONE: 'git push' to push merge to origin (GitHub)
+	- DONE: confirm that origin is updated
+	- DONE: confirm that code is updated and still runs
+	- DONE: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+	- DONE: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+	- DONE: confirm origin is cleaned up
+	- DONE: post-branch-delete run test
+
+
+- DONE: interim updates post-merge
+	- DONE: update version numbers
+	- DONE: plan next branch
+	- DONE: move to_do to done
+
+
+############################
+### CLEESH VERSION 3.9.0 / DARK CASTLE VERSION 3.4.0 END ###
+############################
+
+

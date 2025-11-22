@@ -15,7 +15,7 @@ engine_static_dict = {
 	### universal constants ###
     'engine_name' : "Cleesh",
 
-	'engine_version' : '3.8.2 build 0015 [10/13/2025])', # api.features.bug-fix (internal); was '3.8.0 build 0013 [12/11/2024])'
+	'engine_version' : '3.9.0 build 0016 [11/22/2025])', # api.features.bug-fix (internal); # Started Oct 12, 2025 - Completed Nov 22, 2025
 
 	### Menu Constants ###
 	'game_lst' : ['cup_of_tea', 'dark_castle'],

@@ -24,7 +24,7 @@ game_static_dict = {
 	'game_descript' : "A classic Zork-like adventure of bravery and baking!",
 
 	### universal constants ###
-	'game_version' : '3.3.0', # was 3.10 on Dec 10, 2024; 3.3.0 upgrade complete Oct 12, 2025
+	'game_version' : '3.4.0', # api.features.bug-fix (internal); Started Oct 12, 2025 - Completed Nov 22, 2025
 
 	### bodies of liquid the player cannot drink from ###
 	'reservoir_lst' : ['moat'],
