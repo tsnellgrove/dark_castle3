@@ -91,21 +91,21 @@ To Do List - Dark Castle v3
 ### START CLEESH VERSION 3.9.2 / DARK CASTLE VERSION 3.4.0 ###
 ############################
 
-- TBD: choose branch name => unit_test
-- TBD: create new <FEATURE_NAME>_feature git branch
-	- TBD: 'git branch' to confirm *master
-	- TBD: 'git branch <FEATURE_NAME>' to create new branch
-	- TBD: 'git branch' to confirm new branch exists but that master is still checked out
-	- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
-	- TBD: 'git branch' to confirm new branch is now in focus
-	- TBD: Publish Branch via VS Code button
-	- TBD: confirm new branch on GitHub
-	- TBD: update doc TBDs to DONEs
-	- TBD: <CMD><OPT>S (to save all files)
-	- TBD: 'git add .' to add files to be committed
-	- TBD: 'git commit -m "doc updates"
-	- TBD: 'git push" to push updates to origin (GitHub)
-	- TBD: confirm new branch on GitHub is now ahead of master
+- DONE: choose branch name => unit_test
+- DONE: create new <FEATURE_NAME>_feature git branch
+	- DONE: 'git branch' to confirm *master
+	- DONE: 'git branch <FEATURE_NAME>' to create new branch
+	- DONE: 'git branch' to confirm new branch exists but that master is still checked out
+	- DONE: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
+	- DONE: 'git branch' to confirm new branch is now in focus
+	- DONE: Publish Branch via VS Code button
+	- DONE: confirm new branch on GitHub
+	- DONE: update doc TBDs to DONEs
+	- DONE: <CMD><OPT>S (to save all files)
+	- DONE: 'git add .' to add files to be committed
+	- DONE: 'git commit -m "doc updates"
+	- DONE: 'git push" to push updates to origin (GitHub)
+	- DONE: confirm new branch on GitHub is now ahead of master
 
 - TBD: start automated / unit testing
 	- TBD: ask q how to get started with unit testing
