@@ -699,6 +699,15 @@ word_lst assignment:
 	- Curse
 	- Sing
 
+- IDEA: prep_no_do (prep no direct-object verbs):
+	- DOC: format = '<verb> <prep> <noun>' (e.g. 'climb up tree')
+	- FINDING: climb requires a method be cause not every ViewOnly obj can be climbed
+	- FINDING: this is true even when the climb direction is available in io.map()
+	- IDEA: this is not true for 'sit in chair' (i.e. any chair should support sitting)
+	- IDEA: but it's worth noting that the sentence structure is the same
+	- IDEA: ideally, ['sit in', 'sit on'] would just become abreviations for 'enter'
+	- IDEA: but if this is not possible, a sit() method could be created similar to climb()
+
 - TBD: special case of guessing what player means if they don't specify
 	- TBD: how shoudld this work? Should they need to be aware of what's in their hand?
 	- TBD: default to key-like obj for lock / unlock activity?
