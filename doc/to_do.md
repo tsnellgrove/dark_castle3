@@ -107,8 +107,13 @@ To Do List - Dark Castle v3
 	- DONE: 'git push" to push updates to origin (GitHub)
 	- DONE: confirm new branch on GitHub is now ahead of master
 
-- TBD: start automated / unit testing
-	- TBD: ask q how to get started with unit testing
+- INPROC: start automated / unit testing
+	- DONE: ask q how to get started with unit testing
+	- DONE: q created test directory and initial tests
+		- FINDING: to run tests: python3 -m unittest tests.test_item_class -v
+		- DONE: read through test_item_class.py and understand the tests that q created
+		- TBD: create my onwn test for base.ViewOnly()
+		- TBD: get advice from q on how to test read() method
 
 
 - IDEA: unit testing ideas
