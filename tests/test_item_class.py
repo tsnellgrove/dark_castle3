@@ -11,7 +11,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from cleesh.class_std.item_class_def import Item, Food, Liquid, Garment, Weapon
-from cleesh.class_std.base_class_def import Writing
+from cleesh.class_std.base_class_def import Writing, ViewOnly
 
 
 class TestItem(unittest.TestCase):
@@ -126,6 +126,37 @@ class TestWeapon(unittest.TestCase):
         self.assertTrue(self.test_weapon.is_item())
         self.assertTrue(self.test_weapon.is_weapon())
         self.assertFalse(self.test_weapon.is_garment())
+
+class TestViewOnly(unittest.TestCase):
+    """Test cases for the ViewOnly class"""
+
+    def setUp(self):
+        """Set up test fixtures"""
+        self.test_viewonly = ViewOnly('large_stone', 'Large Stone', 'stone', 'large_stone_desc', None)
+        self.test_writing = Writing('test_writing', 'Test Writing', 'writing', 'test_writing_desc')
+        self.viewonly_with_writing = ViewOnly('graffitied_stone', 'Graffitied Stone', 'stone', 'graffitied_stone_desc', self.test_writing)
+
+    def test_viewonly_creation(self):
+        """Test that ViewOnly objects are created with correct attributes"""
+        self.assertEqual(self.test_viewonly.name, 'large_stone')
+        self.assertEqual(self.test_viewonly.full_name, 'Large Stone')
+        self.assertEqual(self.test_viewonly.root_name, 'stone')
+        self.assertEqual(self.test_viewonly.descript_key, 'large_stone_desc')
+        self.assertEqual(self.test_viewonly.writing, None)
+    
+    def test_viewonly_with_writing(self):
+        """Test ViewOnly with writing attribute"""
+        self.assertEqual(self.viewonly_with_writing.writing, self.test_writing)
+        self.assertTrue(self.viewonly_with_writing.has_writing())
+
+    def test_identity_methods(self):
+        """Test that ViewOnly identity methods return correct values"""
+        self.assertTrue(self.test_viewonly.is_viewonly())
+        self.assertFalse(self.test_viewonly.is_item())
+        self.assertFalse(self.test_viewonly.is_liquid())
+        self.assertFalse(self.test_viewonly.is_food())
+        self.assertFalse(self.test_viewonly.is_garment())
+        self.assertFalse(self.test_viewonly.is_weapon())
 
 
 if __name__ == '__main__':

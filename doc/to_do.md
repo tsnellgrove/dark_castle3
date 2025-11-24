@@ -112,7 +112,8 @@ To Do List - Dark Castle v3
 	- DONE: q created test directory and initial tests
 		- FINDING: to run tests: python3 -m unittest tests.test_item_class -v
 		- DONE: read through test_item_class.py and understand the tests that q created
-		- TBD: create my onwn test for base.ViewOnly()
+		- DONE: create my onwn test for base.ViewOnly()
+		- DONE: run test
 		- TBD: get advice from q on how to test read() method
 
 
