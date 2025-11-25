@@ -114,7 +114,12 @@ To Do List - Dark Castle v3
 		- DONE: read through test_item_class.py and understand the tests that q created
 		- DONE: create my onwn test for base.ViewOnly()
 		- DONE: run test
-		- TBD: get advice from q on how to test read() method
+		- DONE: get advice from q on how to test read() method
+		- DONE: iterate initial read() test till successful (lot of help from q!)
+		- TBD: review test in detail to understand it
+
+		- TBD: next method unit test
+		- TBD: learn about integration testing
 
 
 - IDEA: unit testing ideas
