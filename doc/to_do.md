@@ -117,8 +117,10 @@ To Do List - Dark Castle v3
 		- DONE: get advice from q on how to test read() method
 		- DONE: iterate initial read() test till successful (lot of help from q!)
 		- DONE: review test in detail to understand it
-		- TBD: unit / integration test for examine()
-
+		- DONE: unit / integration test for examine()
+		- TBD: review test in detail to understand it
+		
+		- TBD: define goals for branch - what does done look like? how to achieve pragmatic value?
 		- TBD: next method unit test
 		- TBD: learn about integration testing
 
