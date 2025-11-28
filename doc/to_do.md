@@ -124,6 +124,12 @@ To Do List - Dark Castle v3
 		- DONE: work with q on initial acceptance testing
 		- VISION: want to be able to build up a collection of modular acceptance tests over time
 
+		- TBD: create debug deterministic mode
+			- TBD: add attrib to core
+			- TBD: add determ_mode() method in gs.core to set / reset mode
+			- TBD: global search for use of rand
+			- TBD: update start_me_up code to check determ_mode attrib and set to 7 if True
+			- TBD: set i to use some sort of mod 10 math to get desc on 1 - 5
 		- TBD: make acceptance test more rigorous? why not full output of all commands?
 		- FINDING: scenarios are already modular - want to build on this
 		- TBD: how to control scenario order of opperations?
