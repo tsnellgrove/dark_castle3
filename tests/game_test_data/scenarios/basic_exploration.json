@@ -1,0 +1,26 @@
+{
+  "name": "Basic Exploration Test",
+  "description": "Test basic game exploration and commands",
+  "commands": [
+    "look",
+    "inventory", 
+    "examine me",
+    "up",
+    "look",
+    "down",
+    "examine postbox",
+    "examine tree"
+  ],
+  "expected_outputs": [
+    "entrance",
+    "tree",
+    "postbox",
+    "you"
+  ],
+  "should_not_contain": [
+    "error",
+    "crash",
+    "exception"
+  ],
+  "should_end": false
+}

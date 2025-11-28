@@ -1,0 +1,23 @@
+{
+  "name": "get_ruby",
+  "description": "Tests climbing up tree, getting ruby, and jumping down",
+  "commands": [
+    "l",
+    "x tree",
+    "climb tree",
+    "x hollow",
+    "get ruby",
+    "climb up tree",
+    "jump"
+  ],
+  "expected_outputs": [
+    "Up Tree",
+    "Entrance"
+  ],
+  "should_not_contain": [
+    "error",
+    "crash",
+    "traceback"
+  ],
+  "should_end": false
+}

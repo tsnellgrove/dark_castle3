@@ -1,0 +1,20 @@
+{
+  "name": "Inventory Management Test", 
+  "description": "Test inventory commands and item interactions",
+  "commands": [
+    "inventory",
+    "i",
+    "look",
+    "examine postbox",
+    "open postbox"
+  ],
+  "expected_outputs": [
+    "possess",
+    "postbox"
+  ],
+  "should_not_contain": [
+    "crash",
+    "traceback"
+  ],
+  "should_end": false
+}

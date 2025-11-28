@@ -118,11 +118,17 @@ To Do List - Dark Castle v3
 		- DONE: iterate initial read() test till successful (lot of help from q!)
 		- DONE: review test in detail to understand it
 		- DONE: unit / integration test for examine()
-		- TBD: review test in detail to understand it
-		
-		- TBD: define goals for branch - what does done look like? how to achieve pragmatic value?
-		- TBD: next method unit test
-		- TBD: learn about integration testing
+		- CANCEL: review test in detail to understand it
+		- DONE: define goals for branch - what does done look like? how to achieve pragmatic value?
+			- DECISION: want to create an end-to-end test that can catch complex issues
+		- DONE: work with q on initial acceptance testing
+		- VISION: want to be able to build up a collection of modular acceptance tests over time
+
+		- TBD: make acceptance test more rigorous? why not full output of all commands?
+		- FINDING: scenarios are already modular - want to build on this
+		- TBD: how to control scenario order of opperations?
+		- TBD: how to deal with random value generated at game run (e.g. portcullis code)
+		- TBD: come up with CI/CD solution to run tests as part of commit
 
 
 - IDEA: unit testing ideas
