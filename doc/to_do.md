@@ -123,13 +123,21 @@ To Do List - Dark Castle v3
 			- DECISION: want to create an end-to-end test that can catch complex issues
 		- DONE: work with q on initial acceptance testing
 		- VISION: want to be able to build up a collection of modular acceptance tests over time
-
-		- TBD: create debug deterministic mode
+		- INPROC: create debug deterministic mode
+			- DONE: global search for use of rand
+				- FINDING: random errors in gs.io.buff_debug()
+				- FINDING: random hero description on inventory in base.examine()
+				- FINDING: random weapon_verb in creature.attack()
+				- FINDING: random wrong direction error in error.go_err()
+				- FINDING: random elements in game_start_up()
 			- TBD: add attrib to core
-			- TBD: add determ_mode() method in gs.core to set / reset mode
-			- TBD: global search for use of rand
-			- TBD: update start_me_up code to check determ_mode attrib and set to 7 if True
-			- TBD: set i to use some sort of mod 10 math to get desc on 1 - 5
+			- TBD: elim import random in invisible() class
+			- TBD: create determ_mode() method in gs.core to set / reset mode
+			- TBD: create game_rand() method to return randint determ resutl based on determ_mode
+				- IDEA: game_rand() takes base and max as arguments
+				- IDEA: determ result to be based on turn number (e.g. turn mod max)
+			- TBD: update all rand calls to use game_rand()
+			- TBD: test
 		- TBD: make acceptance test more rigorous? why not full output of all commands?
 		- FINDING: scenarios are already modular - want to build on this
 		- TBD: how to control scenario order of opperations?
