@@ -150,6 +150,7 @@ To Do List - Dark Castle v3
 				- TBD: create get_rand() method in gs.core to return current mode
 				- TBD: create cleesh_rand() method to return result based on rand_mode
 					- IDEA: random = default, locked for modular testing, turn-based for ident games
+					- IDEA: suggestion from JE = can pass, min, max, & opt locked value (def = min)
 				- TBD: update game menu to implement '#R' (default), '#T", and '#L' modes
 				- TBD: update game_start_up() ; gate = 5 if get_rand() == 'locked' or 'turn-based'
 				- TBD: update all rand calls to use cleesh_rand()
