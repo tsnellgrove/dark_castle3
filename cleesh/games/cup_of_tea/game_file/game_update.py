@@ -124,7 +124,8 @@ core = Core(
         False, # is_debug
 		{}, # str_to_obj_dict
 		False, # has_session_vars
-		[] # univ_invis_lst
+		[], # univ_invis_lst
+		'random' # rand_mode
 		)
 
 map = Map(

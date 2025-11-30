@@ -3,12 +3,14 @@
 # module description: class deffinition module for core sub-class
 
 ### import ###
+import random
 from cleesh.class_std.invisible_class_def import Invisible
 
 
 ### classes ###
 class Core(Invisible):
-    def __init__(self, name, hero, hero_descript_pct, move_count, is_debug, str_to_obj_dict, has_session_vars, univ_invis_lst):
+    def __init__(self, name, hero, hero_descript_pct, move_count, is_debug, str_to_obj_dict, has_session_vars, univ_invis_lst, rand_mode):
+#    def __init__(self, name, hero, hero_descript_pct, move_count, is_debug, str_to_obj_dict, has_session_vars, univ_invis_lst):
         super().__init__(name)
         self._hero = hero # the Creature class object that is the hero of the game
         self._hero_descript_pct = hero_descript_pct # the percent of occassions a description is showin on inventory and examine
@@ -17,6 +19,7 @@ class Core(Invisible):
         self._str_to_obj_dict = str_to_obj_dict # dict that enables look-up of game obj via name str keys
         self._has_session_vars = has_session_vars # bool indicating whether session vars needed at start_up
         self._univ_invis_lst = univ_invis_lst # list of invisible obj always in scope; used for machines
+        self._rand_mode = rand_mode # the randomization mode for the game
         """ Core class inherits from Invisible. It holds a small number of essential attributes. 
         """
 
@@ -58,6 +61,14 @@ class Core(Invisible):
     @property
     def univ_invis_lst(self):
         return self._univ_invis_lst
+
+    @property
+    def rand_mode(self):
+        return self._rand_mode
+    
+    @rand_mode.setter
+    def rand_mode(self, new_val):
+        self._rand_mode = new_val
 
 	### methods ###
     def move_inc(self):

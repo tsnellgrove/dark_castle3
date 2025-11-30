@@ -505,7 +505,8 @@ core = Core(
         False, # is_debug
 		{}, # str_to_obj_dict
 		True, # has_session_vars
-		[eat_biscuits_warning, hedgehog_eats_timer, hedgehog_done_eating_mach] # univ_invis_lst
+		[eat_biscuits_warning, hedgehog_eats_timer, hedgehog_done_eating_mach], # univ_invis_lst
+		'random' # rand_mode
 		)
 
 map = Map(

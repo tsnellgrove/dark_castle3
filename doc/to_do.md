@@ -123,21 +123,39 @@ To Do List - Dark Castle v3
 			- DECISION: want to create an end-to-end test that can catch complex issues
 		- DONE: work with q on initial acceptance testing
 		- VISION: want to be able to build up a collection of modular acceptance tests over time
-		- INPROC: create debug deterministic mode
+		- INPROC: create rand_mode
 			- DONE: global search for use of rand
 				- FINDING: random errors in gs.io.buff_debug()
 				- FINDING: random hero description on inventory in base.examine()
 				- FINDING: random weapon_verb in creature.attack()
 				- FINDING: random wrong direction error in error.go_err()
 				- FINDING: random elements in game_start_up()
-			- TBD: add attrib to core
-			- TBD: elim import random in invisible() class
-			- TBD: create determ_mode() method in gs.core to set / reset mode
-			- TBD: create game_rand() method to return randint determ resutl based on determ_mode
-				- IDEA: game_rand() takes base and max as arguments
-				- IDEA: determ result to be based on turn number (e.g. turn mod max)
-			- TBD: update all rand calls to use game_rand()
-			- TBD: test
+			- REQ: list of requirements
+				- REQ: need a way to set rand_mode at start-up
+					- IDEA: game # = '#R', can also choose '#L' for 'locked', '#T' for 'turn-based'
+				- REQ: game should be able to check state of rand_mode w/ get_rand()
+					- IDEA: allows game to set some locked values (e.g. gate_L => 5)
+				- REQ: replace rantint(low, high) with cleesh_rand(low, high)
+					- IDEA: cleesh_rand() returns low if rand_mode == 'locked'
+					- IDEA: cleesh_rand() returns turns mod max if rand_mode = 'turn-based'
+				- REQ: player can see rand_mode with 'settings' command (in app_main() )
+				- REQ: in debug, admin can set rand_mode() ; (also directions to set start mode)
+			- INPROC: implement rand_mode
+				- DONE: add rand_mode attrib to core
+					- DONE: add attrib & getter & setter
+					- DONE: update both game_update() and re-run
+					- DONE: import random in core() class
+					- DONE: elim import random in invisible() class
+					- DONE: test
+				- TBD: create get_rand() method in gs.core to return current mode
+				- TBD: create cleesh_rand() method to return result based on rand_mode
+					- IDEA: random = default, locked for modular testing, turn-based for ident games
+				- TBD: update game menu to implement '#R' (default), '#T", and '#L' modes
+				- TBD: update game_start_up() ; gate = 5 if get_rand() == 'locked' or 'turn-based'
+				- TBD: update all rand calls to use cleesh_rand()
+				- TBD: create debug rand_mode cmd
+				- TBD: test
+				- TBD: clean-up core, 
 		- TBD: make acceptance test more rigorous? why not full output of all commands?
 		- FINDING: scenarios are already modular - want to build on this
 		- TBD: how to control scenario order of opperations?

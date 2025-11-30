@@ -593,7 +593,6 @@ class Error(Identity):
 	# *** go_case error ***
 	def go_err(self, dir, gs):
 		creature = gs.core.hero
-#		if dir not in ['north', 'south', 'east', 'west']:
 		if dir not in gs.io.get_lst('one_word_travel_lst','eng'):
 			err_txt = (f"'{dir}' is not a valid direction that you can go in.")
 			return True, False, err_txt
@@ -602,10 +601,8 @@ class Error(Identity):
 			return True, False, err_txt
 		if not gs.map.chk_valid_dir(self, dir):
 			# attemptable error: player can attempt to go in any direction
-#			if gs.map.get_obj_room(gs.core.hero, gs).is_outdoor:
 			if gs.map.hero_rm.is_outdoor:
 				err_txt = "You can't go that way."
-#			elif gs.map.get_obj_room(gs.core.hero, gs).is_floorless_room():
 			elif gs.map.hero_rm.is_floorless_room():
 				err_txt = "You can't go that way."
 			elif dir in ['up']:

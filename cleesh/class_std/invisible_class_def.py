@@ -2,9 +2,6 @@
 # author: Tom Snellgrove
 # module description: Invisible class deffinition module
 
-### import
-import random
-
 
 ### classes
 class Invisible(object):
