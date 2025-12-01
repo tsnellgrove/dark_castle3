@@ -70,9 +70,14 @@ class Core(Invisible):
     def rand_mode(self, new_val):
         self._rand_mode = new_val
 
-	### methods ###
+	### simple methods ###
     def move_inc(self):
         self.move_count += 1
 
     def is_key_in_sto_dict(self, key):
         return key in self._str_to_obj_dict
+
+    def get_rand_mode(self):
+        return self.rand_mode
+    
+    

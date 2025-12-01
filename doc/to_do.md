@@ -147,7 +147,7 @@ To Do List - Dark Castle v3
 					- DONE: import random in core() class
 					- DONE: elim import random in invisible() class
 					- DONE: test
-				- TBD: create get_rand() method in gs.core to return current mode
+				- DONE: create get_rand_mode() method in gs.core to return current mode
 				- TBD: create cleesh_rand() method to return result based on rand_mode
 					- IDEA: random = default, locked for modular testing, turn-based for ident games
 					- IDEA: suggestion from JE = can pass, min, max, & opt locked value (def = min)
