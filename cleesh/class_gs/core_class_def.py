@@ -80,4 +80,15 @@ class Core(Invisible):
     def get_rand_mode(self):
         return self.rand_mode
     
+    ### core methods ###
+    def cleesh_rand(self, min_val, max_val, def_val=None):
+        """ Returns a random integer between min_val and max_val, inclusive
+        """
+        if def_val is None:
+            def_val = min_val
+
+        if self.rand_mode in ['locked']:
+            return def_val
+        else:
+            return random.randint(min_val, max_val)
     
