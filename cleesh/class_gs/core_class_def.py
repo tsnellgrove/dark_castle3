@@ -91,4 +91,5 @@ class Core(Invisible):
             return def_val
         else:
             return random.randint(min_val, max_val)
+ 
     

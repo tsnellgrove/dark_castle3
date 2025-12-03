@@ -150,15 +150,21 @@ To Do List - Dark Castle v3
 				- DONE: create get_rand_mode() method in gs.core to return current mode
 				- DONE: create simple cleesh_rand() method to return result based on rand_mode
 					- IDEA: random = default, locked for modular testing, turn-based for ident games
-					- IDEA: suggestion from JE = can pass, min, max, & opt locked value (def = min)
-				- TBD: add 'turn-based' mode to cleesh_random
-				- TBD: update all rand calls to use cleesh_rand()
+					- DONE: suggestion from JE = can pass, min, max, & opt locked value (def = min)
+				- INPROC: update all rand calls to use cleesh_rand()
+					- DONE: random errors in gs.io.buff_debug()
+					- DONE: random hero description on inventory in base.examine()
+					- DONE: initial test
+					- TBD: random weapon_verb in creature.attack()
+					- TBD: random wrong direction error in error.go_err()
+					- TBD: random elements in game_start_up()
 				- TBD: test
 				- TBD: update game menu to implement '#R' (default), '#T", and '#L' modes
 				- TBD: update game_start_up() ; gate = 5 if get_rand() == 'locked' or 'turn-based'
 				- TBD: create debug rand_mode cmd
 				- TBD: test
-				- TBD: clean-up core, 
+				- TBD: add 'turn-based' mode to cleesh_random ??
+				- TBD: clean-up core, all 5 calls, 
 		- TBD: make acceptance test more rigorous? why not full output of all commands?
 		- FINDING: scenarios are already modular - want to build on this
 		- TBD: how to control scenario order of opperations?

@@ -176,7 +176,8 @@ class ViewOnly(Writing):
 			hero_descript_count = len(gs.io.get_dict('hero_descript_dict'))
 			rand_max = ((1/gs.core.hero_descript_pct) * hero_descript_count) - 1
 			try:
-				gs.io.buffer(gs.io.get_dict_val('hero_descript_dict', random.randint(0, rand_max)))
+#				gs.io.buffer(gs.io.get_dict_val('hero_descript_dict', random.randint(0, rand_max)))
+				gs.io.buffer(gs.io.get_dict_val('hero_descript_dict', gs.core.cleesh_rand(0, rand_max)))
 			except:
 				gs.io.buffer("You currently possess the following items:")
 		else:

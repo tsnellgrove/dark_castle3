@@ -225,4 +225,5 @@ class IO(Invisible):
 		if gs.core.is_debug:
 			self.buffer(debug_str)
 		else:
-			self.buffer(gs.core.hero.full_name + engine_static_dict['misc_err_' + str(random.randint(0, 4))])
+#			self.buffer(gs.core.hero.full_name + engine_static_dict['misc_err_' + str(random.randint(0, 4))])
+			self.buffer(gs.core.hero.full_name + engine_static_dict['misc_err_' + str(gs.core.cleesh_rand(0, 4))])
