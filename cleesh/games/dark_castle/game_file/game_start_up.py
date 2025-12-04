@@ -7,7 +7,8 @@ import random
 
 ### main routine
 def game_session_vars(gs):
-	portcullis_code = random.randint(0, 7)
+#	portcullis_code = random.randint(0, 7)
+	portcullis_code = gs.core.cleesh_rand(0, 7, 5)
 	port_code_txt = f"'..ode is {str(portcullis_code)}. Don't tell anyo..'"
 	gs.io.set_dyn_dict('messy_handwriting', port_code_txt)
 	gs.core.get_str_to_obj_dict('control_panel').mach_state = portcullis_code

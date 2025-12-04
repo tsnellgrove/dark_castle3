@@ -610,7 +610,8 @@ class Error(Identity):
 			elif dir in ['down']:
 				err_txt = "You bonk your head on the floor attempting this feat."
 			else:
-				err_txt = gs.io.get_str(f"dir_err_{random.randint(0, 4)}", 'experience')
+#				err_txt = gs.io.get_str(f"dir_err_{random.randint(0, 4)}", 'experience')
+				err_txt = gs.io.get_str(f"dir_err_{gs.core.cleesh_rand(0, 4)}", 'experience')
 			return True, True, err_txt
 		door = gs.map.get_door(self, dir)
 		if not isinstance(door, str) and door.is_openable() and door.is_open == False:
