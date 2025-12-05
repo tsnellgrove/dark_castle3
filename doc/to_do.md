@@ -158,11 +158,17 @@ To Do List - Dark Castle v3
 					- DONE: random weapon_verb in creature.attack()
 					- DONE: random wrong direction error in error.go_err()
 					- DONE: random elements in game_start_up()
-				- INPROC: test
+				- DONE: test
 					- DONE: attack description and portcullis code do varry
-					- TBD: why aren't direction errors (nw, ne) random in Entrance?
-				- TBD: update game menu to implement '#R' (default), '#T", and '#L' modes
-				- TBD: update game_start_up() ; gate = 5 if get_rand() == 'locked' or 'turn-based'
+					- DONE: why aren't direction errors (nw, ne) random in Entrance?
+					- FINDING: no random errors for outdoor rooms; works in gatehouse
+				- INPROC: update game menu to implement '#R' (default) and '#L' modes
+					- DONE: in web_main, set rand_mode = 'random'
+					- DONE: in web_main, after print_game_menu, check for 'L' postfix
+					- DONE: if 'L' postfix, set rand_mode = 'locked'
+					- TBD: pass rand_mode to start_me_up
+					- TBD: in start_me_up, if rand_mode = 'locked', update gs.core.rand_mode
+				- CANCEL: update game_start_up() ; gate = 5 if get_rand() == 'locked' or 'turn-based'
 				- TBD: create debug rand_mode cmd
 				- TBD: test
 				- TBD: add 'turn-based' mode to cleesh_random ??

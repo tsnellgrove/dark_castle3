@@ -27,6 +27,7 @@ def confirm_choice(user_input, warn_str):
 # initialize menu variables
 user_choice = ""
 user_num = 0
+rand_mode = 'random'
 
 # game print game menu and get user choice
 while True:
@@ -34,6 +35,9 @@ while True:
 	user_choice = input("Type the number of the game you want to play or type 'Q' to quit: ")
 	if user_choice.strip() in ['q', 'Q']:
 		break
+	if len(user_choice) == 2 and user_choice[1] in ['L','l']:
+		user_choice = user_choice[0]
+		rand_mode = 'locked'
 	try:
 		user_num = int(user_choice)
 	except:
