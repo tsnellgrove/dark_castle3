@@ -162,17 +162,22 @@ To Do List - Dark Castle v3
 					- DONE: attack description and portcullis code do varry
 					- DONE: why aren't direction errors (nw, ne) random in Entrance?
 					- FINDING: no random errors for outdoor rooms; works in gatehouse
-				- INPROC: update game menu to implement '#R' (default) and '#L' modes
+				- DONE: update game menu to implement '#R' (default) and '#L' modes
 					- DONE: in web_main, set rand_mode = 'random'
 					- DONE: in web_main, after print_game_menu, check for 'L' postfix
 					- DONE: if 'L' postfix, set rand_mode = 'locked'
-					- TBD: pass rand_mode to start_me_up
-					- TBD: in start_me_up, if rand_mode = 'locked', update gs.core.rand_mode
+					- DONE: pass rand_mode to start_me_up
+					- DONE: in start_me_up, if rand_mode = 'locked', update gs.core.rand_mode
+					- DONE: test
+						- DONE: test game in std mode
+							- DONE: fix 'read scroll' and 'read letters' not earning (15) pts
+							- DONE: q added a suppress_display mode to disp_score
+						- DONE: test 'locked' mode
 				- CANCEL: update game_start_up() ; gate = 5 if get_rand() == 'locked' or 'turn-based'
-				- TBD: create debug rand_mode cmd
+				- TBD: create debug rand_mode cmd (include in help display)
 				- TBD: test
 				- TBD: add 'turn-based' mode to cleesh_random ??
-				- TBD: clean-up core, all 5 calls, 
+				- TBD: clean-up core, all 5 calls, start_up(), web_main()
 				- TBD: elim unused random imports
 		- TBD: make acceptance test more rigorous? why not full output of all commands?
 		- FINDING: scenarios are already modular - want to build on this

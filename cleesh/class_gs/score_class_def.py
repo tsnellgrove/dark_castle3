@@ -40,7 +40,7 @@ class Score(Invisible):
         output2 = (" out of " + str(gs.io.get_str_nr('max_score')))
         gs.io.buffer(output1 + output2)
 
-    def disp_score(self, verb_str, noun_str, dirobj_str, gs):
+    def disp_score(self, verb_str, noun_str, dirobj_str, gs, suppress_display=False):
         if verb_str not in gs.io.get_dict('score_dict'):
             return
         # determine whether dirobj_key is standard or wildcard
@@ -62,5 +62,6 @@ class Score(Invisible):
         # score condition is valid
         self.score += gs.io.get_ddict_val('score_dict', verb_str, subj_key)
         self.pts_earned_lst.append((verb_str, noun_str, dirobj_key))
-        self.print_score(gs)
+        if not suppress_display:
+            self.print_score(gs)
         return    

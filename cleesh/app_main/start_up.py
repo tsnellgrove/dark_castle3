@@ -8,12 +8,15 @@ from importlib import import_module
 
 
 ### main routine
-def start_me_up(game_name, root_path_str):
+# def start_me_up(game_name, root_path_str):
+def start_me_up(game_name, root_path_str, rand_mode):
 	# object list loaded from game_pkl
 	pkl_str = f"{root_path_str}/cleesh/games/{game_name}/game_file/game_pkl"
 	with open(pkl_str, 'rb') as f:
 		master_obj_lst = pickle.load(f)
 	gs = master_obj_lst[0]
+	if rand_mode == 'locked':
+		gs.core.rand_mode = 'locked'
 
 	# assign str_to_obj_dict
 	for obj in master_obj_lst:
