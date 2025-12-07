@@ -174,7 +174,19 @@ To Do List - Dark Castle v3
 							- DONE: q added a suppress_display mode to disp_score
 						- DONE: test 'locked' mode
 				- CANCEL: update game_start_up() ; gate = 5 if get_rand() == 'locked' or 'turn-based'
-				- TBD: create debug rand_mode cmd (include in help display)
+				- INPROC: create debug rand_mode cmd (include in help display)
+					- CANCEL: create rand_mode() cmd in Invisible
+					- DONE: in staic_gbl(), add 'rand_mode' to 'debug_verb_lst'
+					- DONE: DO NOT in staic_gbl(), add 'rand_mode' to 'known_verbs_lst'
+					- DONE: in static_gbl(), add 'rand_mode' to 'one_word_secret_lst'
+					- FINDING: tru1word cmds do not currently get validated in validate()
+					- DECISION: create 1word validation or else validate debug in cmd_exe() ?
+					- TBD: create radn_mode_err() method in error_class() ???
+					- TBD: in cmd_exe() create routine for 'rand_mode'
+					- TBD: should also explain rand_mode options and how to enter locked mode
+					- TBD: test in game
+					- TBD: test help debug
+					- TBD: document this process in stds.md
 				- TBD: test
 				- TBD: add 'turn-based' mode to cleesh_random ??
 				- TBD: clean-up core, all 5 calls, start_up(), web_main()

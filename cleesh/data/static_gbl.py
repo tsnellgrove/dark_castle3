@@ -26,7 +26,7 @@ engine_static_dict = {
 
 	'pre_interp_word_lst' : ['quit', 'wait', 'again', 'restart', 'save', 'restore'],
     
-	'one_word_secret_lst' : ['debug_xyzzy'], # was 'debug_poke53281,0' before the cmd queue was implemented
+	'one_word_secret_lst' : ['debug_xyzzy', 'rand_mode'], # was 'debug_poke53281,0' before the cmd queue was implemented
 
     'one_word_only_lst' : ['credits', 'score', 'version'],
 
@@ -49,7 +49,7 @@ engine_static_dict = {
     
 	'var_outcome_verb_lst' : ['give', 'attack'], # for reference; not actually used in score.disp_score()
 
-	'debug_verb_lst' : ['get_weight', 'capacity', 'where_is'],
+	'debug_verb_lst' : ['get_weight', 'capacity', 'where_is', 'rand_mmod'],
 
 	'abbreviations_dict' : {
 		'n' : 'north',
