@@ -180,14 +180,14 @@ To Do List - Dark Castle v3
 					- DONE: DO NOT in staic_gbl(), add 'rand_mode' to 'known_verbs_lst'
 					- DONE: in static_gbl(), add 'rand_mode' to 'one_word_secret_lst'
 					- FINDING: tru1word cmds do not currently get validated in validate()
-					- DECISION: create 1word validation or else validate debug in cmd_exe() ?
-					- TBD: create radn_mode_err() method in error_class() ???
-					- TBD: in cmd_exe() create routine for 'rand_mode'
-					- TBD: should also explain rand_mode options and how to enter locked mode
-					- TBD: test in game
-					- TBD: test help debug
+					- CHOICE: create 1word validation or else validate debug in cmd_exe() ?
+					- DECISION: debug validation in cmd_exe(); keep tru1word pass-thru on validate()
+					- CANCEL: create radn_mode_err() method in error_class() ???
+					- DONE: in cmd_exe() create routine for 'rand_mode'
+					- DONE: should also explain rand_mode options and how to enter locked mode
+					- DONE: test in game
+					- DONE: test help debug
 					- TBD: document this process in stds.md
-				- TBD: test
 				- TBD: add 'turn-based' mode to cleesh_random ??
 				- TBD: clean-up core, all 5 calls, start_up(), web_main()
 				- TBD: elim unused random imports

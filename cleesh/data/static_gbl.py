@@ -49,7 +49,7 @@ engine_static_dict = {
     
 	'var_outcome_verb_lst' : ['give', 'attack'], # for reference; not actually used in score.disp_score()
 
-	'debug_verb_lst' : ['get_weight', 'capacity', 'where_is', 'rand_mmod'],
+	'debug_verb_lst' : ['get_weight', 'capacity', 'where_is', 'rand_mode'],
 
 	'abbreviations_dict' : {
 		'n' : 'north',

@@ -60,6 +60,13 @@ def cmd_execute(gs, case, word_lst):
 				gs.core.is_debug = not gs.core.is_debug
 				gs.io.buffer(f"Debug Mode is now set to {str(gs.core.is_debug)}.")
 				return
+			if word1 == 'rand_mode':
+				if not gs.core.is_debug:
+					gs.io.buffer("Please start your sentence with a known verb!")
+				else:
+					gs.io.buffer("The current random mode is: " + str(gs.core.rand_mode))
+					gs.io.buffer("The default random mode is 'random'. In 'locked' mode, all random events / responses are fixed. This is useful for testing and debugging. To enter 'locked' mode, start the game with an 'L' or 'l' after the game number at the game menu.")
+				return
 			gs.io.buff_dbg("[CMD] tru_1word case not found", gs)
 			return
 		if case == 'go':
