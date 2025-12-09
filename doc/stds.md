@@ -151,3 +151,17 @@ Links:
 	- DONE: create jump_err() method in error_class()
 	- DONE: test in game (including while seated)
 	- DONE: test 'help one-word-commands'
+
+
+- DONE: create debug rand_mode cmd (include in help display)
+	- DONE: in staic_gbl(), add 'rand_mode' to 'debug_verb_lst'
+	- DONE: DO NOT in staic_gbl(), add 'rand_mode' to 'known_verbs_lst'
+	- DONE: in static_gbl(), add 'rand_mode' to 'one_word_secret_lst'
+	- FINDING: tru1word cmds do not currently get validated in validate()
+	- CHOICE: create 1word validation or else validate debug in cmd_exe() ?
+	- DECISION: debug validation in cmd_exe(); keep tru1word pass-thru on validate()
+	- DONE: in cmd_exe() create routine for 'rand_mode'
+		- DONE: rand_mode cmd will show current mode ('random' or 'locked')
+		- DONE: should also explain rand_mode options and how to enter locked mode
+	- DONE: test in game
+	- DONE: test help debug

@@ -3,7 +3,6 @@
 # module description: class deffinition module for io
 
 ### import ###
-import random
 from importlib import import_module
 from cleesh.data.static_gbl import engine_static_dict
 from cleesh.class_std.invisible_class_def import Invisible
@@ -225,5 +224,4 @@ class IO(Invisible):
 		if gs.core.is_debug:
 			self.buffer(debug_str)
 		else:
-#			self.buffer(gs.core.hero.full_name + engine_static_dict['misc_err_' + str(random.randint(0, 4))])
 			self.buffer(gs.core.hero.full_name + engine_static_dict['misc_err_' + str(gs.core.cleesh_rand(0, 4))])

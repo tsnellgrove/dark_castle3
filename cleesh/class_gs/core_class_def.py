@@ -10,7 +10,6 @@ from cleesh.class_std.invisible_class_def import Invisible
 ### classes ###
 class Core(Invisible):
     def __init__(self, name, hero, hero_descript_pct, move_count, is_debug, str_to_obj_dict, has_session_vars, univ_invis_lst, rand_mode):
-#    def __init__(self, name, hero, hero_descript_pct, move_count, is_debug, str_to_obj_dict, has_session_vars, univ_invis_lst):
         super().__init__(name)
         self._hero = hero # the Creature class object that is the hero of the game
         self._hero_descript_pct = hero_descript_pct # the percent of occassions a description is showin on inventory and examine

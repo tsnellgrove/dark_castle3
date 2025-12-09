@@ -8,7 +8,6 @@ from importlib import import_module
 
 
 ### main routine
-# def start_me_up(game_name, root_path_str):
 def start_me_up(game_name, root_path_str, rand_mode):
 	# object list loaded from game_pkl
 	pkl_str = f"{root_path_str}/cleesh/games/{game_name}/game_file/game_pkl"

@@ -3,7 +3,6 @@
 # module description: class deffinition module for Creatures
 
 ### import
-import random
 from cleesh.class_std.base_class_def import ViewOnly
 
 
@@ -610,7 +609,6 @@ class Creature(ViewOnly):
 		if (win_obj in src_creature.feature_lst) or (win_obj in tgt_creature.feature_lst):
 			resolution_strt_str = ""
 		elif win_obj.is_weapon():
-#			weapon_verb, weapon_adj = win_obj.desc_lst[random.randint(0, len(win_obj.desc_lst) - 1)]
 			weapon_verb, weapon_adj = win_obj.desc_lst[gs.core.cleesh_rand(0, len(win_obj.desc_lst) - 1)]
 			resolution_strt_str = f"The {win_obj.full_name} {weapon_verb} through the air with a {weapon_adj}. "
 		else:

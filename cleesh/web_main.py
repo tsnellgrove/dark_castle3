@@ -55,7 +55,6 @@ while True:
 		while not is_end:
 			if is_start:
 				user_input = ""
-#				user_output = start_me_up(game_name, root_path_str)
 				user_output = start_me_up(game_name, root_path_str, rand_mode)
 				is_start = False
 				call_app_main = False

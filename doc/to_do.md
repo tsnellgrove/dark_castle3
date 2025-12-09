@@ -140,7 +140,7 @@ To Do List - Dark Castle v3
 					- IDEA: cleesh_rand() returns turns mod max if rand_mode = 'turn-based'
 				- REQ: player can see rand_mode with 'settings' command (in app_main() )
 				- REQ: in debug, admin can set rand_mode() ; (also directions to set start mode)
-			- INPROC: implement rand_mode
+			- DONE: implement rand_mode
 				- DONE: add rand_mode attrib to core
 					- DONE: add attrib & getter & setter
 					- DONE: update both game_update() and re-run
@@ -174,7 +174,7 @@ To Do List - Dark Castle v3
 							- DONE: q added a suppress_display mode to disp_score
 						- DONE: test 'locked' mode
 				- CANCEL: update game_start_up() ; gate = 5 if get_rand() == 'locked' or 'turn-based'
-				- INPROC: create debug rand_mode cmd (include in help display)
+				- DONE: create debug rand_mode cmd (include in help display)
 					- CANCEL: create rand_mode() cmd in Invisible
 					- DONE: in staic_gbl(), add 'rand_mode' to 'debug_verb_lst'
 					- DONE: DO NOT in staic_gbl(), add 'rand_mode' to 'known_verbs_lst'
@@ -184,13 +184,14 @@ To Do List - Dark Castle v3
 					- DECISION: debug validation in cmd_exe(); keep tru1word pass-thru on validate()
 					- CANCEL: create radn_mode_err() method in error_class() ???
 					- DONE: in cmd_exe() create routine for 'rand_mode'
-					- DONE: should also explain rand_mode options and how to enter locked mode
+						- DONE: rand_mode cmd will show current mode ('random' or 'locked')
+						- DONE: should also explain rand_mode options and how to enter locked mode
 					- DONE: test in game
 					- DONE: test help debug
-					- TBD: document this process in stds.md
-				- TBD: add 'turn-based' mode to cleesh_random ??
-				- TBD: clean-up core, all 5 calls, start_up(), web_main()
-				- TBD: elim unused random imports
+					- DONE: document this process in stds.md
+				- CANCEL: add 'turn-based' mode to cleesh_random ??
+				- DONE: clean-up core, all 5 calls, start_up(), web_main()
+				- DONE: elim unused random imports
 		- TBD: make acceptance test more rigorous? why not full output of all commands?
 		- FINDING: scenarios are already modular - want to build on this
 		- TBD: how to control scenario order of opperations?
