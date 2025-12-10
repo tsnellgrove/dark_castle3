@@ -19,17 +19,19 @@ from cleesh.app_main.start_up import start_me_up
 class ScenarioRecorder:
     """Records gameplay sessions for creating test scenarios"""
     
-    def __init__(self, game_name="dark_castle"):
+    def __init__(self, game_name="dark_castle", locked_mode=False):
         self.game_name = game_name
         self.root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.recording = []
         self.is_recording = False
+        self.locked_mode = locked_mode
         
     def start_recording(self, scenario_name=None):
         """Start recording a new scenario"""
         if scenario_name is None:
             timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-            scenario_name = f"recorded_scenario_{timestamp}"
+            mode_suffix = "_locked" if self.locked_mode else ""
+            scenario_name = f"recorded_scenario_{timestamp}{mode_suffix}"
         
         self.scenario_name = scenario_name
         self.recording = []
@@ -38,9 +40,11 @@ class ScenarioRecorder:
         # Start fresh game
         print("🎬 Starting scenario recording...")
         print(f"📝 Scenario name: {scenario_name}")
+        print(f"🎯 Mode: {'Locked (deterministic)' if self.locked_mode else 'Random'}")
         print("🎮 Starting fresh game...")
         
-        startup_output = start_me_up(self.game_name, self.root_path)
+        rand_mode = 'locked' if self.locked_mode else 'random'
+        startup_output = start_me_up(self.game_name, self.root_path, rand_mode)
         print(startup_output)
         
         print("\n" + "="*60)
@@ -102,11 +106,18 @@ class ScenarioRecorder:
             "name": self.scenario_name,
             "description": description,
             "commands": [entry["command"] for entry in self.recording],
-            "recorded_outputs": [entry["output"] for entry in self.recording],
-            "expected_outputs": [],
+            "mode": "locked" if self.locked_mode else "random",
             "should_not_contain": ["error", "crash", "traceback"],
             "should_end": any(entry["is_end"] for entry in self.recording)
         }
+        
+        if self.locked_mode:
+            # For locked mode, store exact outputs for rigorous comparison
+            scenario_data["expected_full_outputs"] = [entry["output"] for entry in self.recording]
+        else:
+            # For random mode, use flexible phrase matching
+            scenario_data["recorded_outputs"] = [entry["output"] for entry in self.recording]
+            scenario_data["expected_outputs"] = []
         
         # Save scenario file
         scenario_dir = os.path.join(os.path.dirname(__file__), "game_test_data", "scenarios")
@@ -138,10 +149,14 @@ class ScenarioRecorder:
 
 def interactive_recorder():
     """Interactive recording session"""
-    recorder = ScenarioRecorder()
-    
     print("🎬 Dark Castle Scenario Recorder")
     print("=" * 40)
+    
+    # Choose mode
+    mode_choice = input("Record in locked mode for rigorous testing? (y/N): ").strip().lower()
+    locked_mode = mode_choice in ['y', 'yes']
+    
+    recorder = ScenarioRecorder(locked_mode=locked_mode)
     
     scenario_name = input("Enter scenario name (or press Enter for auto-generated): ").strip()
     if not scenario_name:

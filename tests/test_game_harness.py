@@ -33,7 +33,7 @@ class GameTestHarness(unittest.TestCase):
         self.backup_game_state()
         
         # Start fresh game
-        start_me_up(self.game_name, self.root_path)
+        start_me_up(self.game_name, self.root_path, 'random')
     
     def tearDown(self):
         """Clean up after test"""
@@ -251,12 +251,18 @@ class TestFromScenarioFiles(GameTestHarness):
         """Run a single scenario file"""
         scenario = load_test_scenario(scenario_path)
         
-        print(f"\n🎮 Running scenario: {scenario['name']}")
+        mode = scenario.get('mode', 'random')
+        print(f"\n🎮 Running scenario: {scenario['name']} ({mode} mode)")
         print(f"   Commands: {len(scenario['commands'])}")
-        print(f"   Expected outputs: {len(scenario.get('expected_outputs', []))}")
         
-        # Start fresh for each scenario
-        start_me_up(self.game_name, self.root_path)
+        if mode == 'locked':
+            print(f"   Full output validation: {len(scenario.get('expected_full_outputs', []))} outputs")
+        else:
+            print(f"   Expected outputs: {len(scenario.get('expected_outputs', []))}")
+        
+        # Start fresh for each scenario with appropriate mode
+        rand_mode = 'locked' if mode == 'locked' else 'random'
+        start_me_up(self.game_name, self.root_path, rand_mode)
         
         results = self.run_command_sequence(scenario["commands"])
         
@@ -266,6 +272,35 @@ class TestFromScenarioFiles(GameTestHarness):
         self.assertEqual(final_is_end, expected_end, 
                         f"Game end state mismatch in {scenario['name']}")
         
+        # Perform validation based on mode
+        if mode == 'locked':
+            self._validate_locked_mode(scenario, results)
+        else:
+            self._validate_random_mode(scenario, results)
+        
+        print(f"   ✅ Scenario '{scenario['name']}' passed")
+    
+    def _validate_locked_mode(self, scenario, results):
+        """Rigorous validation for locked mode scenarios"""
+        expected_outputs = scenario.get('expected_full_outputs', [])
+        
+        # Exact output comparison
+        self.assertEqual(len(results), len(expected_outputs),
+                        f"Command count mismatch in {scenario['name']}")
+        
+        for i, (command, actual_output, is_end) in enumerate(results):
+            expected_output = expected_outputs[i]
+            self.assertEqual(actual_output, expected_output,
+                           f"Output mismatch in {scenario['name']} at command {i+1} ('{command}')")
+        
+        # Check unwanted outputs
+        all_output = " ".join([result[1] for result in results])
+        for unwanted in scenario.get("should_not_contain", []):
+            self.assert_output_not_contains(all_output, unwanted,
+                                          f"Found unwanted text in {scenario['name']}: {unwanted}")
+    
+    def _validate_random_mode(self, scenario, results):
+        """Flexible validation for random mode scenarios"""
         # Combine all outputs for checking
         all_output = " ".join([result[1] for result in results])
         
@@ -278,8 +313,6 @@ class TestFromScenarioFiles(GameTestHarness):
         for unwanted in scenario.get("should_not_contain", []):
             self.assert_output_not_contains(all_output, unwanted,
                                           f"Found unwanted text in {scenario['name']}: {unwanted}")
-        
-        print(f"   ✅ Scenario '{scenario['name']}' passed")
 
 
 if __name__ == '__main__':

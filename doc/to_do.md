@@ -192,10 +192,12 @@ To Do List - Dark Castle v3
 				- CANCEL: add 'turn-based' mode to cleesh_random ??
 				- DONE: clean-up core, all 5 calls, start_up(), web_main()
 				- DONE: elim unused random imports
-		- TBD: make acceptance test more rigorous? why not full output of all commands?
+		- DONE: make acceptance test more rigorous? why not full output of all commands? (w/ q)
+		- DOC: to run workflow menu: ./scenario_workflow.sh1
 		- FINDING: scenarios are already modular - want to build on this
-		- TBD: how to control scenario order of opperations?
-		- TBD: how to deal with random value generated at game run (e.g. portcullis code)
+		- DONE: q has provided a 'delete scenario' menu option
+		- TBD: create an initial set of scenarios for Entrance
+		- TBD: how to control scenario order of opperations over time?
 		- TBD: come up with CI/CD solution to run tests as part of commit
 
 
