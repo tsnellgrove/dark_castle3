@@ -193,10 +193,12 @@ To Do List - Dark Castle v3
 				- DONE: clean-up core, all 5 calls, start_up(), web_main()
 				- DONE: elim unused random imports
 		- DONE: make acceptance test more rigorous? why not full output of all commands? (w/ q)
-		- DOC: to run workflow menu: ./scenario_workflow.sh1
+		- DOC: to run workflow menu: ./scenario_workflow.sh
 		- FINDING: scenarios are already modular - want to build on this
 		- DONE: q has provided a 'delete scenario' menu option
+		- DONE: enble scenario renaming and ordering (with q)
 		- TBD: create an initial set of scenarios for Entrance
+		- TBD: ask q about saving test tool capabilities
 		- TBD: how to control scenario order of opperations over time?
 		- TBD: come up with CI/CD solution to run tests as part of commit
 

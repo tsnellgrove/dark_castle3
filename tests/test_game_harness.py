@@ -231,7 +231,8 @@ class TestFromScenarioFiles(GameTestHarness):
         if not os.path.exists(scenario_dir):
             self.skipTest("No scenario files found")
         
-        scenario_files = [f for f in os.listdir(scenario_dir) if f.endswith('.json')]
+        # Get ordered list of scenario files
+        scenario_files = self._get_ordered_scenario_files()
         
         if not scenario_files:
             self.skipTest("No scenario files found")
@@ -246,6 +247,41 @@ class TestFromScenarioFiles(GameTestHarness):
         for scenario_file in scenario_files:
             with self.subTest(scenario=scenario_file):
                 self.run_scenario_file(os.path.join(scenario_dir, scenario_file))
+    
+    def _get_ordered_scenario_files(self):
+        """Get scenario files in the specified order"""
+        scenario_dir = os.path.join(self.test_data_dir, "scenarios")
+        order_file = os.path.join(self.test_data_dir, "test_order.json")
+        
+        # Get all available scenario files
+        all_files = [f for f in os.listdir(scenario_dir) if f.endswith('.json')]
+        
+        # Load order configuration if it exists
+        if os.path.exists(order_file):
+            try:
+                with open(order_file, 'r') as f:
+                    order_config = json.load(f)
+                
+                ordered_files = []
+                specified_order = order_config.get('order', [])
+                
+                # Add files in specified order
+                for filename in specified_order:
+                    if filename in all_files:
+                        ordered_files.append(filename)
+                
+                # Add any remaining files not in the order
+                for filename in sorted(all_files):
+                    if filename not in ordered_files:
+                        ordered_files.append(filename)
+                
+                return ordered_files
+                
+            except Exception:
+                pass  # Fall back to alphabetical order
+        
+        # Default to alphabetical order
+        return sorted(all_files)
     
     def run_scenario_file(self, scenario_path):
         """Run a single scenario file"""

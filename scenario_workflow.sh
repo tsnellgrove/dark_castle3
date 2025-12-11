@@ -11,11 +11,13 @@ echo "3. Create predefined locked scenarios"
 echo "4. Convert recorded scenarios"
 echo "5. List all scenarios"
 echo "6. Delete a scenario"
-echo "7. Run all tests"
-echo "8. Exit"
+echo "7. Rename a scenario"
+echo "8. Reorder test scenarios"
+echo "9. Run all tests"
+echo "10. Exit"
 echo ""
 
-read -p "Enter choice (1-8): " choice
+read -p "Enter choice (1-10): " choice
 
 case $choice in
     1)
@@ -51,10 +53,20 @@ case $choice in
         ;;
     7)
         echo ""
+        echo "✏️  Renaming scenario..."
+        python3 tests/rename_scenario.py
+        ;;
+    8)
+        echo ""
+        echo "🔢 Reordering test scenarios..."
+        python3 tests/order_scenarios.py
+        ;;
+    9)
+        echo ""
         echo "🧪 Running all tests..."
         python3 tests/run_game_tests.py
         ;;
-    8)
+    10)
         echo "👋 Goodbye!"
         exit 0
         ;;

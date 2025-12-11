@@ -1,5 +1,5 @@
 {
-  "name": "test_scenario",
+  "name": "001_test_scenario",
   "description": "very basic test scenario",
   "commands": [
     "look",

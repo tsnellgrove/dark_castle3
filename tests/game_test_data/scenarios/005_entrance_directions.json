@@ -1,0 +1,33 @@
+{
+  "name": "005_entrance_directions",
+  "description": "attempt all directions from entranct at start of game",
+  "commands": [
+    "n",
+    "ne",
+    "se",
+    "s",
+    "sw",
+    "nw",
+    "u",
+    "d",
+    "w"
+  ],
+  "mode": "locked",
+  "should_not_contain": [
+    "error",
+    "crash",
+    "traceback"
+  ],
+  "should_end": true,
+  "expected_full_outputs": [
+    "\nThe Front Gate is closed.\n",
+    "\nYou can't go that way.\n",
+    "\nYou can't go that way.\n",
+    "\nYou can't go that way.\n",
+    "\nDon't be ridiculous Burt. You just swore to the whole pub (and to miss Chrissy Brewer too!) that you'd march into Dark Castle, grab the gold, and buy everyone drinks with it. That's why they gave you the rusty key. You can't turn back now!\n",
+    "\nYou can't go that way.\n",
+    "\n*** Up Tree ***\n\nYou are perched in a large tree about ten feet above the ground. The nearest branch above you is above your reach. From your vantage point, Dark Castle looms as darkly as ever and the moat looks even more vile and unappealing than it does from the drawbridge. Still, the tree's wide branches are grand and calming.\n\nJust above you - where the next branch should be - is a tree hollow. By standing on your tippy-toes on your current branch, you could just peek into it. \n\nThere is a climb leading down.\n\nOn the ground below you can see: a Postbox. \n",
+    "\n*** Entrance ***\n\nYou stand upon the ancient drawbridge at the entrance of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.\n\nBehind you, just beyond the drawbridge, is an extremely old and rusty postbox besides which stands a large tree with some low branches. Across the way from the postbox is a big rock covered in moss and lichen. \n\nThere is a Front Gate to the north, a climb leading up, an Untrodden Path to the southwest, a leap down to the moat to the east, and a leap down to the moat to the west.\n",
+    "\nWith confidence and vigor you pitch off the side of the drawbridge and into the Moat. Who knew it would be full of crocodiles?\n\nYou have died.\n\nYour adventure ended after 9 moves.\n\nYour score is now 0 out of 75\n\nYour title is: Burt the Baker\n"
+  ]
+}
