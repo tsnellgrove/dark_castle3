@@ -1,0 +1,33 @@
+{
+  "name": "010_entrance_take_drop_stowe_all_except",
+  "description": "test out take, drop, stow, all, and except",
+  "commands": [
+    "get key",
+    "stowe key",
+    "stow key",
+    "get all",
+    "drop all",
+    "get rock",
+    "get all",
+    "drop rock",
+    "get all except rock"
+  ],
+  "mode": "locked",
+  "should_not_contain": [
+    "error",
+    "crash",
+    "traceback"
+  ],
+  "should_end": false,
+  "expected_full_outputs": [
+    "\nTaken\n",
+    "\nPlease start your sentence with a known verb!\n",
+    "\nStowed\n",
+    "\nYou don't have enough capacity to take the Big Rock along with everything else you are carrying.\n",
+    "\nCheese Wedge: Dropped\n\nPaper Bag: Dropped\n\nEarthen Jug: Dropped\n\nRusty Key: Dropped\n",
+    "\nTaken\n\nYour load is getting heavy.\n\nLow and behold, when you lift the big rock a gleaming brass zorkmid is revealed! It must have been buried there for ages.\n",
+    "\nYou don't have enough capacity to take the Cheese Wedge along with everything else you are carrying.\n",
+    "\nBig Rock: Dropped\n",
+    "\nCheese Wedge: Taken\n\nPaper Bag: Taken\n\nEarthen Jug: Taken\n\nRusty Key: Taken\n\nZorkmid: Taken\n"
+  ]
+}

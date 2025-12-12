@@ -1,0 +1,33 @@
+{
+  "name": "012_entrance_postbox",
+  "description": "explore postbox and certificate in entrance",
+  "commands": [
+    "l",
+    "x postbox",
+    "x cypher",
+    "open postbox",
+    "x certificate",
+    "read script",
+    "get certificate",
+    "put certificate in postbox",
+    "close postbox"
+  ],
+  "mode": "locked",
+  "should_not_contain": [
+    "error",
+    "crash",
+    "traceback"
+  ],
+  "should_end": false,
+  "expected_full_outputs": [
+    "\n*** Entrance ***\n\nYou stand upon the ancient drawbridge at the entrance of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.\n\nBehind you, just beyond the drawbridge, is an extremely old and rusty postbox besides which stands a large tree with some low branches. Across the way from the postbox is a big rock covered in moss and lichen. \n\nThere is a Front Gate to the north, a climb leading up, an Untrodden Path to the southwest, a leap down to the moat to the east, and a leap down to the moat to the west.\n",
+    "\nThe postbox was presumably once bright red and shiny but now it is covered in rust and grime. You notice that the once-sturdy lock keeping it secure appears to have recently surendered to the forces of time and decay. The postbox is now ajar.\n\nThe Postbox is closed. On the Postbox you see: Royal Cypher. \n",
+    "\n'WR'\n",
+    "\nOpenned. The Postbox contains: an Ancient Certificate. \n",
+    "\nThe ancient certificate is brown and crinkly with age. Most of the document is comprised of a large, ornate seal and a boldly penned declaration... however you also notice quite a bit of very small print near the bottom of the page...\n\nOn the Ancient Certificate you see: Bold Script. \n",
+    "\nThe document boldly proclaims: 'On this day, the 22nd of September, 952 GUE, the mighty fortress of Bright Castle and all it's environs are formally decared to be free of the prenicious and dastardly presence of any and all Grues per the standard measures and specifications of the ISO 27017 certification!' (but in small text beneath this it continues: '...except that it be noted that, as per standard procedures, this inquiry excludes and does not extend to closets, cupboards, regions under stairs, basement rooms, tower chambers, dank dungeons, unlit hallways, or dark and shadowy facilities of any kind. If you come across any Grues in these areas, it's on you and we don't want to hear about it as we would never even think of venturing into such environs in the first place!')\n",
+    "\nTaken\n",
+    "\nDone\n",
+    "\nClosed\n"
+  ]
+}
