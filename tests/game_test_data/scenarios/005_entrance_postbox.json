@@ -1,5 +1,5 @@
 {
-  "name": "012_entrance_postbox",
+  "name": "005_entrance_postbox",
   "description": "explore postbox and certificate in entrance",
   "commands": [
     "l",

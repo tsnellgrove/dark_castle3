@@ -198,8 +198,11 @@ To Do List - Dark Castle v3
 		- DONE: q has provided a 'delete scenario' menu option
 		- DONE: enble scenario renaming and ordering (with q)
 		- INPROC: create an initial set of scenarios for Entrance
-			- TBD: 007_entrance_examine test
-			- TBD: 015_entrance_climb_tree
+			- DONE: rest of entrance testing
+			- TBD: 010_intree_tests
+			- TBD: 020_gatehouse_tests
+			- TBD: 030_antichamber_tests
+			- TBD: 040_throne_room_tests
 		- TBD: ask q about saving test tool capabilities
 		- TBD: how to control scenario order of opperations over time?
 		- TBD: come up with CI/CD solution to run tests as part of commit

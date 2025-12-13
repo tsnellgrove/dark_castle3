@@ -1,5 +1,5 @@
 {
-  "name": "010_entrance_take_drop_stowe_all_except",
+  "name": "004_entrance_take_drop_stowe_all_except",
   "description": "test out take, drop, stow, all, and except",
   "commands": [
     "get key",

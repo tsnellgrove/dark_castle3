@@ -1,5 +1,5 @@
 {
-  "name": "005_entrance_directions",
+  "name": "002_entrance_directions",
   "description": "attempt all directions from entranct at start of game",
   "commands": [
     "n",

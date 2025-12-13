@@ -1,0 +1,39 @@
+{
+  "name": "006_climb_tree",
+  "description": "test the climb commnad",
+  "commands": [
+    "l",
+    "climb tree",
+    "climb tree",
+    "climb moat",
+    "climb down castle",
+    "climb down tree",
+    "climb tree",
+    "climb up tree",
+    "d",
+    "climb rock",
+    "climb cheese",
+    "climb postbox"
+  ],
+  "mode": "locked",
+  "should_not_contain": [
+    "error",
+    "crash",
+    "traceback"
+  ],
+  "should_end": false,
+  "expected_full_outputs": [
+    "\n*** Entrance ***\n\nYou stand upon the ancient drawbridge at the entrance of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.\n\nBehind you, just beyond the drawbridge, is an extremely old and rusty postbox besides which stands a large tree with some low branches. Across the way from the postbox is a big rock covered in moss and lichen. \n\nThere is a Front Gate to the north, a climb leading up, an Untrodden Path to the southwest, a leap down to the moat to the east, and a leap down to the moat to the west.\n",
+    "\n(choosing the 'up' direction in which to climb)\n\nWith a jump to the first branch you clamber up the trail-side tree.\n\n*** Up Tree ***\n\nYou are perched in a large tree about ten feet above the ground. The nearest branch above you is above your reach. From your vantage point, Dark Castle looms as darkly as ever and the moat looks even more vile and unappealing than it does from the drawbridge. Still, the tree's wide branches are grand and calming.\n\nJust above you - where the next branch should be - is a tree hollow. By standing on your tippy-toes on your current branch, you could just peek into it. \n\nThere is a climb leading down.\n\nOn the ground below you can see: a Postbox. \n",
+    "\n(choosing the 'down' direction in which to climb)\n\n*** Entrance ***\n\nYou stand upon the ancient drawbridge at the entrance of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.\n\nBehind you, just beyond the drawbridge, is an extremely old and rusty postbox besides which stands a large tree with some low branches. Across the way from the postbox is a big rock covered in moss and lichen. \n\nThere is a Front Gate to the north, a climb leading up, an Untrodden Path to the southwest, a leap down to the moat to the east, and a leap down to the moat to the west.\n",
+    "\n(choosing the 'up' direction in which to climb)\n\nYou can't climb the Moat.\n",
+    "\nYou can't climb the Dark Castle.\n",
+    "\nYou can't go that way.\n",
+    "\n(choosing the 'up' direction in which to climb)\n\nWith a jump to the first branch you clamber up the trail-side tree.\n\n*** Up Tree ***\n\nYou are perched in a large tree about ten feet above the ground. The nearest branch above you is above your reach. From your vantage point, Dark Castle looms as darkly as ever and the moat looks even more vile and unappealing than it does from the drawbridge. Still, the tree's wide branches are grand and calming.\n\nJust above you - where the next branch should be - is a tree hollow. By standing on your tippy-toes on your current branch, you could just peek into it. \n\nThere is a climb leading down.\n\nOn the ground below you can see: a Postbox. \n",
+    "\nThe next branch above you is too high for you to reach. You can't climb any higher.\n",
+    "\n*** Entrance ***\n\nYou stand upon the ancient drawbridge at the entrance of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.\n\nBehind you, just beyond the drawbridge, is an extremely old and rusty postbox besides which stands a large tree with some low branches. Across the way from the postbox is a big rock covered in moss and lichen. \n\nThere is a Front Gate to the north, a climb leading up, an Untrodden Path to the southwest, a leap down to the moat to the east, and a leap down to the moat to the west.\n",
+    "\n(choosing the 'up' direction in which to climb)\n\nYou can't climb the Big Rock.\n",
+    "\n(choosing the 'up' direction in which to climb)\n\nYou can't climb the Cheese Wedge.\n",
+    "\n(choosing the 'up' direction in which to climb)\n\nYou can't climb the Postbox.\n"
+  ]
+}
