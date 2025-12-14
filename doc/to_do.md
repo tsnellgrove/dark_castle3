@@ -199,9 +199,15 @@ To Do List - Dark Castle v3
 		- DONE: enble scenario renaming and ordering (with q)
 		- INPROC: create an initial set of scenarios for Entrance
 			- DONE: rest of entrance testing
-			- TBD: 010_intree_tests
+			- DONE: test eat & drink in entrance
+			- DONE: 010_intree_tests
 			- TBD: 020_gatehouse_tests
+				- TBD: examine and go
+				- TBD: get and put
+				- TBD: show, give, attack
+			- TBD: 00x: entrance e or w with sword
 			- TBD: 030_antichamber_tests
+			- TBD: 00x: entrance e or w with axe
 			- TBD: 040_throne_room_tests
 		- TBD: ask q about saving test tool capabilities
 		- TBD: how to control scenario order of opperations over time?
