@@ -299,6 +299,7 @@ To Do List - Dark Castle v3
 	- IDEA: is "still being writtin" according to the dragon librarian
 	- IDEA: After winning the game, Burt can come back, find it unlocked, and read it
 	- IDEA: (it's the back story for DC I; replaces magic scroll concept)
+- IDEA: how to get another ruby: put another nut in hollow and come back 3 turns later (squirrel)
 
 *** extend adventure / puzzle ideas ***
 - muster room / main_hall antechamber is north of Gatehouse
