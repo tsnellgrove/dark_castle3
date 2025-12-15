@@ -201,9 +201,10 @@ To Do List - Dark Castle v3
 			- DONE: rest of entrance testing
 			- DONE: test eat & drink in entrance
 			- DONE: 010_intree_tests
-			- TBD: 020_gatehouse_tests
-				- TBD: examine and go
-				- TBD: get and put
+			- DONE: 009: unlock door
+			- INPROC: 020_gatehouse_tests
+				- DONE: examine and go
+				- TBD: get and put and jump
 				- TBD: show, give, attack
 			- TBD: 00x: entrance e or w with sword
 			- TBD: 030_antichamber_tests
