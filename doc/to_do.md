@@ -204,8 +204,9 @@ To Do List - Dark Castle v3
 			- DONE: 009: unlock door
 			- INPROC: 020_gatehouse_tests
 				- DONE: examine and go
-				- TBD: get and put and jump
-				- TBD: show, give, attack
+				- DONE: get and put
+				- DONE: jump, show, give, attack
+				- TBD: give biscuit no sword
 			- TBD: 00x: entrance e or w with sword
 			- TBD: 030_antichamber_tests
 			- TBD: 00x: entrance e or w with axe
