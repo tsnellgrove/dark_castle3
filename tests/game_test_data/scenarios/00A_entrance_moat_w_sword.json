@@ -1,0 +1,53 @@
+{
+  "name": "00A_entrance_moat_w_sword",
+  "description": "entrance e or w with sword; x and wear crown",
+  "commands": [
+    "unlock gate with key",
+    "open gate",
+    "n",
+    "open bag",
+    "give biscuit to hedgehog",
+    "get sword",
+    "n",
+    "s",
+    "s",
+    "w",
+    "x crown",
+    "wear crown",
+    "wear crown",
+    "stow crown",
+    "get sword",
+    "e",
+    "i",
+    "stow sword",
+    "e"
+  ],
+  "mode": "locked",
+  "should_not_contain": [
+    "error",
+    "crash",
+    "traceback"
+  ],
+  "should_end": true,
+  "expected_full_outputs": [
+    "\nUnlocked\n",
+    "\nOpenned. \n\nYour score is now 10 out of 75\n",
+    "\n*** Gatehouse ***\n\nYou are in the Gatehouse. This sparse but serviceable room guards the entrance to the main castle. Once upon a time it no-doubt bristled with alert guards bearing gleaming arms. Today, it is filled with old furniture, cobwebs, and a musty smell. Dim light filters in from the arrow slits facing the moat while the shadows at the north end of the room hint at the darkness of the main castle beyond.\n\nUpon the wall hangs a Shiny Sword of great antinquity. \n\nThere is a Front Gate to the south and a Foreboding Archway to the north.\n\nThere is a Wooden Shelf here. The Wooden Shelf is empty. \n\nThe Royal Hedgehog is here. The Royal Hedgehog is wearing: a Red Bandana.\n",
+    "\nOpenned. The Paper Bag contains: a Baked Biscuit. \n",
+    "\nWith a yelp of grateful delight the starving hedgehog leaps upon the Baked Biscuit and begins to devour them.\n\nThe Royal Hedgehog is ravenously devouring the Stale Biscuits and is taking no notice of you at all.\n",
+    "\nTaken\n\nYour score is now 20 out of 75\n\nWith the Shiny Sword in hand you are now armed and dangerous!\n\nThe Royal Hedgehog has eaten through half the Stale Biscuits but is still giving them all of its attention.\n\nYour sword is glowing with a faint blue glow.\n",
+    "\n*** Antechamber ***\n\nYou are in a what feels more like a wide, tall-ceilinged corridor than a room. Apparently this is the room-before-the-room, the pre-room before the really, really grand room that comes after it. If so, the next room must be quite something because, back in it's day, this spot was clearly impressive. Alas, like all of the castle, it has fallen on dark times and now feels more sinister than grand. The east and west walls are bare stone with exits to the north and south. \n\nNear the north exit, on the west wall, there is a small alcove. It appears to have some kind of apparatus in it but you can't see it very well due to the dim light and the Guard Goblin standing in front of it, glowering at you. The whole north end of the room is cloaked in shadows that make you uneasy.\n\nThere is a Lit Archway to the south and an Iron Portcullis to the north.\n\nThe Guard Goblin is here. The Guard Goblin is holding a Grimy Axe. The Guard Goblin is wearing: a Big Medal.\n\nYour sword has begun to glow very brightly\n",
+    "\n*** Gatehouse ***\n\nYou are in the Gatehouse. This sparse but serviceable room guards the entrance to the main castle. Once upon a time it no-doubt bristled with alert guards bearing gleaming arms. Today, it is filled with old furniture, cobwebs, and a musty smell. Dim light filters in from the arrow slits facing the moat while the shadows at the north end of the room hint at the darkness of the main castle beyond.\n\nThere is a Front Gate to the south and a Foreboding Archway to the north.\n\nThere is a Wooden Shelf here. The Wooden Shelf is empty. \n\nThe Royal Hedgehog is here. The Royal Hedgehog is wearing: a Red Bandana.\n\nThe Royal Hedgehog has finished the Stale Biscuits and is vigilantly looking around.\n\nYour sword is glowing with a faint blue glow.\n\nThe Royal Hedgehog now looks considerably more bright-eyed and bushy-tailed.\n",
+    "\n*** Entrance ***\n\nYou stand upon the ancient drawbridge at the entrance of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.\n\nBehind you, just beyond the drawbridge, is an extremely old and rusty postbox besides which stands a large tree with some low branches. Across the way from the postbox is a big rock covered in moss and lichen. \n\nThere is a Front Gate to the north, a climb leading up, an Untrodden Path to the southwest, a leap down to the moat to the east, and a leap down to the moat to the west.\n\nYour sword is no longer glowing.\n",
+    "\nWith courage and boldness to spare you leap from the drawbridge into the murky waters of the Moat. A less resolute adventurer might have turned tail at the sight of the oncoming giant crocodile but not you Burt. Treading water with your feet you take a two-handed grip on the shiny sword (now blazing so brightly it appears engulfed in blue flame) and get ready to face your destiny. Just before reaching you the primitive reptile realizes that you are armed and ready to fight (crocs are famously near-sighted). In surprise and fear it belches up the contents of it's stomach - including the Royal Crown - and flees in fear. With a deft athleticism unlike anything you've ever displayed before today you stow the shiny sword, snag the Royal Crown before it sinks, and in one smooth motion adroitly hoist yourself back onto the drawbridge one handed. The lads at the pub would fall over at the sight of your skill and courage! (though mind you, they fall over on a regular basis as it is)\n\nWith the Shiny Sword no longer in hand, you are a bit more approachable.\n",
+    "\nGiant rubies: check. Dozens of glittering jewels: check. Gleaming gold and precious metals: check. Yep, this is a *seriously royal* crown you've got here Burt!\n",
+    "\nWorn.\n\nYou now feel more regal.\n\nYour score is now 30 out of 75\n",
+    "\nYou're already wearing the Royal Crown!\n",
+    "\n(Removing the Royal Crown first)\n\nYou suddenly feel a bit less kingly.\n\nStowed\n",
+    "\nTaken\n\nWith the Shiny Sword in hand you are now armed and dangerous!\n",
+    "\nWith courage and boldness to spare you leap from the drawbridge into the murky waters of the Moat. Apparently the last time you did this you terrified the local wildlife so much that they are still in hiding. After treading water for a few minutes you clamber back onto the drawbridge.\n",
+    "\nYou cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching, farting, and cussing I don't know how you'd ever manage to fend off the ladies!\n\nIn your off hand you hold a Brass Lantern.\n\nYou are holding a Shiny Sword. \n\nIn your backpack you have: a Cheese Wedge, a Paper Bag (empty), an Earthen Jug (containing a Well Water), a Rusty Key, and a Royal Crown. \n",
+    "\nStowed\n\nWith the Shiny Sword no longer in hand, you are a bit more approachable.\n",
+    "\nWith confidence and vigor you pitch off the side of the drawbridge and into the Moat. Who knew it would be full of crocodiles?\n\nYou have died.\n\nYour adventure ended after 18 moves.\n\nYour score is now 30 out of 75\n\nYour title is: Burt the Brawny\n"
+  ]
+}

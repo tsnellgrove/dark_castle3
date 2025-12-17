@@ -202,14 +202,19 @@ To Do List - Dark Castle v3
 			- DONE: test eat & drink in entrance
 			- DONE: 010_intree_tests
 			- DONE: 009: unlock door
-			- INPROC: 020_gatehouse_tests
+			- DONE: 020_gatehouse_tests
 				- DONE: examine and go
 				- DONE: get and put
 				- DONE: jump, show, give, attack
-				- TBD: give biscuit no sword
-			- TBD: 00x: entrance e or w with sword
+				- DONE: give biscuit no sword
+			- DONE: 00A: entrance e or w with sword
+			- TBD: 02x_gatehouse_get_bandana
 			- TBD: 030_antichamber_tests
-			- TBD: 00x: entrance e or w with axe
+				- TBD: examine and go
+				- TBD: get and put
+				- TBD: jump, show, give, attack
+				- TBD: give biscuit no sword
+			- TBD: 00B: entrance e or w with axe
 			- TBD: 040_throne_room_tests
 		- TBD: ask q about saving test tool capabilities
 		- TBD: how to control scenario order of opperations over time?
