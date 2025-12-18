@@ -208,9 +208,10 @@ To Do List - Dark Castle v3
 				- DONE: jump, show, give, attack
 				- DONE: give biscuit no sword
 			- DONE: 00A: entrance e or w with sword
-			- TBD: 02x_gatehouse_get_bandana
-			- TBD: 030_antichamber_tests
-				- TBD: examine and go
+			- DONE: 024_gatehouse_get_bandana
+			- INPROC: 030_antichamber_tests
+				- DONE: examine and go
+				- TBD: examine officiousness
 				- TBD: get and put
 				- TBD: jump, show, give, attack
 				- TBD: give biscuit no sword

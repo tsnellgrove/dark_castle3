@@ -1,0 +1,37 @@
+{
+  "name": "030_antechamber_x_go",
+  "description": "antechambre - go and examine",
+  "commands": [
+    "unlock gate with key",
+    "open gate",
+    "n",
+    "n",
+    "e",
+    "w",
+    "x archway",
+    "x goblin",
+    "x medal",
+    "read capitals",
+    "x axe"
+  ],
+  "mode": "locked",
+  "should_not_contain": [
+    "error",
+    "crash",
+    "traceback"
+  ],
+  "should_end": true,
+  "expected_full_outputs": [
+    "\nUnlocked\n",
+    "\nOpenned. \n\nYour score is now 10 out of 75\n",
+    "\n*** Gatehouse ***\n\nYou are in the Gatehouse. This sparse but serviceable room guards the entrance to the main castle. Once upon a time it no-doubt bristled with alert guards bearing gleaming arms. Today, it is filled with old furniture, cobwebs, and a musty smell. Dim light filters in from the arrow slits facing the moat while the shadows at the north end of the room hint at the darkness of the main castle beyond.\n\nUpon the wall hangs a Shiny Sword of great antinquity. \n\nThere is a Front Gate to the south and a Foreboding Archway to the north.\n\nThere is a Wooden Shelf here. The Wooden Shelf is empty. \n\nThe Royal Hedgehog is here. The Royal Hedgehog is wearing: a Red Bandana.\n",
+    "\n*** Antechamber ***\n\nYou are in a what feels more like a wide, tall-ceilinged corridor than a room. Apparently this is the room-before-the-room, the pre-room before the really, really grand room that comes after it. If so, the next room must be quite something because, back in it's day, this spot was clearly impressive. Alas, like all of the castle, it has fallen on dark times and now feels more sinister than grand. The east and west walls are bare stone with exits to the north and south. \n\nNear the north exit, on the west wall, there is a small alcove. It appears to have some kind of apparatus in it but you can't see it very well due to the dim light and the Guard Goblin standing in front of it, glowering at you. The whole north end of the room is cloaked in shadows that make you uneasy.\n\nThere is a Lit Archway to the south and an Iron Portcullis to the north.\n\nThe Guard Goblin is here. The Guard Goblin is holding a Grimy Axe. The Guard Goblin is wearing: a Big Medal.\n",
+    "\nOuch! Stop walking into walls!\n",
+    "\nOuch! Stop walking into walls!\n",
+    "\nThe lit archway leads away from the unnatural gloom of Dark Castle and back towards the wholesome light of the outside world.\n",
+    "\nThe Guard Goblin peers at you with malace from the north end of the room. It stands in the Alcove guarding a mysterious aperatus of some sort. It wears a crisply ironed uniform and gives off an air of hauty, even vicious, Officiousness. The Guard Goblin is armed and dangerous and clearly takes its guard duties very seriously. It would not be wise to approach the Iron Portcullis or the Alcove (or the Guard Goblin!) un-armed.\n\nThe Guard Goblin is holding a Grimy Axe. The Guard Goblin is wearing: a Big Medal.\n",
+    "\nThis is the biggest, most-highly-polished medal you have ever seen.\n\nOn the Big Medal you see: Gold Capitals. \n",
+    "\n'GUARD GOBLIN OF THE FORTNIGHT: FOR MERITORIOUS MEMORANDUMS AND THE VIOLENT SUPPRESSION OF MINOR INFRACTIONS'\n",
+    "\nIt seems that by entering the north side of the room you have violated a minor castle ordinance. The Guard Goblin is incensed and will not tolerate this flagrant defiance of orthodoxy!\n\nThe Guard Goblin attacks with the Grimy Axe and you attempt to parry with the Rusty Key!\n\nThe Grimy Axe arcs through the air with a lightening-fast stroke. You are slain by the blazing-fast strike! \n\nYou have died.\n\nYour adventure ended after 11 moves.\n\nYour score is now 10 out of 75\n\nYour title is: Burt the Beginner\n"
+  ]
+}
