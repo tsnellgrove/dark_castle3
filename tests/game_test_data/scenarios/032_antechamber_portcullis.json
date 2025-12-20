@@ -1,0 +1,51 @@
+{
+  "name": "032_antechamber_portcullis",
+  "description": "antechamber open portcullis",
+  "commands": [
+    "unlock gate with key",
+    "open gate",
+    "n",
+    "open bag",
+    "give biscuit to hedgehog",
+    "get sword",
+    "n",
+    "attack goblin",
+    "read note",
+    "push button",
+    "pull right lever",
+    "push button",
+    "pull left button",
+    "pull left lever",
+    "push button",
+    "x portcullis",
+    "x alcove",
+    "x officiousness"
+  ],
+  "mode": "locked",
+  "should_not_contain": [
+    "error",
+    "crash",
+    "traceback"
+  ],
+  "should_end": false,
+  "expected_full_outputs": [
+    "\nUnlocked\n",
+    "\nOpenned. \n\nYour score is now 10 out of 75\n",
+    "\n*** Gatehouse ***\n\nYou are in the Gatehouse. This sparse but serviceable room guards the entrance to the main castle. Once upon a time it no-doubt bristled with alert guards bearing gleaming arms. Today, it is filled with old furniture, cobwebs, and a musty smell. Dim light filters in from the arrow slits facing the moat while the shadows at the north end of the room hint at the darkness of the main castle beyond.\n\nUpon the wall hangs a Shiny Sword of great antinquity. \n\nThere is a Front Gate to the south and a Foreboding Archway to the north.\n\nThere is a Wooden Shelf here. The Wooden Shelf is empty. \n\nThe Royal Hedgehog is here. The Royal Hedgehog is wearing: a Red Bandana.\n",
+    "\nOpenned. The Paper Bag contains: a Baked Biscuit. \n",
+    "\nWith a yelp of grateful delight the starving hedgehog leaps upon the Baked Biscuit and begins to devour them.\n\nThe Royal Hedgehog is ravenously devouring the Stale Biscuits and is taking no notice of you at all.\n",
+    "\nTaken\n\nYour score is now 20 out of 75\n\nWith the Shiny Sword in hand you are now armed and dangerous!\n\nThe Royal Hedgehog has eaten through half the Stale Biscuits but is still giving them all of its attention.\n\nYour sword is glowing with a faint blue glow.\n",
+    "\n*** Antechamber ***\n\nYou are in a what feels more like a wide, tall-ceilinged corridor than a room. Apparently this is the room-before-the-room, the pre-room before the really, really grand room that comes after it. If so, the next room must be quite something because, back in it's day, this spot was clearly impressive. Alas, like all of the castle, it has fallen on dark times and now feels more sinister than grand. The east and west walls are bare stone with exits to the north and south. \n\nNear the north exit, on the west wall, there is a small alcove. It appears to have some kind of apparatus in it but you can't see it very well due to the dim light and the Guard Goblin standing in front of it, glowering at you. The whole north end of the room is cloaked in shadows that make you uneasy.\n\nThere is a Lit Archway to the south and an Iron Portcullis to the north.\n\nThe Guard Goblin is here. The Guard Goblin is holding a Grimy Axe. The Guard Goblin is wearing: a Big Medal.\n\nYour sword has begun to glow very brightly\n",
+    "\n(with the Shiny Sword)\n\nYou attack with the Shiny Sword and the Guard Goblin attempts to parry with the Grimy Axe!\n\nThe Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. You know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle.\n\nThe Shiny Sword swings through the air with a blazing-fast assault. The Guard Goblin is slain by the blazing-fast strike! \n\nYour score is now 25 out of 75\n\nYour sword is no longer glowing.\n",
+    "\nOn the Torn Note, written in Messy Handwriting, you read: '..ode is 5. Don't tell anyo..'.\n",
+    "\nPushed.\n\nYou press the button and hear a whirring of gears but nothing happens.\n",
+    "\nPulled. The Right Lever is now up.\n",
+    "\nPushed.\n\nYou press the button and hear a whirring of gears but nothing happens.\n",
+    "\nI don't see a Left_button here.\n",
+    "\nPulled. The Left Lever is now up.\n",
+    "\nPushed.\n\nYou hear a loud clank, a whirring of gears, and the Iron Portcullis suddenly opens.\n\nYour score is now 35 out of 75\n",
+    "\nBeyond the iron portcullis you can dimly make out the next room.\n\nThe Iron Portcullis is open. \n",
+    "\nA small indentation in the west wall near the iron portcullis. It is just deep enough to hold a guard goblin and a mysterious apparatus.\n",
+    "\nYou can't see a Officiousness here.\n"
+  ]
+}
