@@ -217,6 +217,8 @@ To Do List - Dark Castle v3
 			- DONE: 025_ give sword to hedgehog
 			- INPROC: 040_throne_room_tests
 				- DONE: 040_throne_room_x_go
+				- TBD: fix take_glass_warning in throne_room
+				- TBD: fix 040 scenario
 				- TBD: 041_throne_room_throne_and_broach
 				- TBD: 042_throne_room_scroll
 				- TBD: 042_throne_room_scroll_no_hedgehog
