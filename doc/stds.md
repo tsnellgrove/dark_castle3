@@ -142,6 +142,9 @@ Links:
 - very useful 'how to copy files in python' link: https://stackoverflow.com/questions/123198/how-to-copy-files
 
 
+Cmd to run test menu script: ./scenario_workflow.sh
+
+
 *** 9/27/2025 - how to add a command ***
 - DONE: implement standard response for creature.jump() (hero & other)
 	- DONE: create creature.jump() [w/ hero and other creature option]

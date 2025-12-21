@@ -209,17 +209,23 @@ To Do List - Dark Castle v3
 				- DONE: give biscuit no sword
 			- DONE: 00A: entrance e or w with sword
 			- DONE: 024_gatehouse_get_bandana
-			- INPROC: 030_antichamber_tests
+			- DONE: 030_antichamber_tests
 				- DONE: examine and go
-				- TBD: examine officiousness
-				- TBD: get and put
-				- TBD: jump, show, give, attack
-				- TBD: give biscuit no sword
-			- TBD: 00B: entrance e or w with axe
-			- TBD: 040_throne_room_tests
+				- DONE: w/ sword x, get, go, show, give, attack
+				- DONE: examine solve portcullis
+			- DONE: 00B_ entrance e or w with axe
+			- DONE: 025_ give sword to hedgehog
+			- INPROC: 040_throne_room_tests
+				- DONE: 040_throne_room_x_go
+				- TBD: 041_throne_room_throne_and_broach
+				- TBD: 042_throne_room_scroll
+				- TBD: 042_throne_room_scroll_no_hedgehog
 		- TBD: ask q about saving test tool capabilities
-		- TBD: how to control scenario order of opperations over time?
+		- TBD: ask q about enabling game choice within test harness
+		- CANCEL: how to control scenario order of opperations over time?
 		- TBD: come up with CI/CD solution to run tests as part of commit
+		- TBD: introduce verbosity mode: verbose, superbrief, brief (list of rooms visited)
+		- TBD: by default, start test harness in superbrief mode
 
 
 - IDEA: unit testing ideas
