@@ -178,7 +178,7 @@ take_box_warning = Warning('take_box_warning',
 
 take_glass_warning = Warning('take_glass_warning',
 		'pre_act_cmd', 0, stained_glass, True, 
-		[['take', 'stained_glass']], 0)
+		[['take', 'stained_glass']], 0, is_valid_reqd=False)
 
 # *** conditions ***
 # *** note: obj.open (if locked) and room.go (w/ closed door in way) must be tested for success ***

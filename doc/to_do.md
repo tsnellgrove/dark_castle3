@@ -215,10 +215,15 @@ To Do List - Dark Castle v3
 				- DONE: examine solve portcullis
 			- DONE: 00B_ entrance e or w with axe
 			- DONE: 025_ give sword to hedgehog
-			- INPROC: 040_throne_room_tests
+			- DONE: initial 040_throne_room_tests
 				- DONE: 040_throne_room_x_go
-				- TBD: fix take_glass_warning in throne_room
-				- TBD: fix 040 scenario
+				- DONE: fix take_glass_warning in throne_room
+				- DONE: fix 040 scenario
+			- TBD: verbosity modes
+				- TBD: introduce verbosity mode: verbose, superbrief, brief (list of rooms visited)
+				- TBD: work with q to create new scenario type / recorder / tester w/ superbrief
+				- NOTE: old tests need to continue to use verbose mode during testing
+			- TBD: finish throne_room scenarios
 				- TBD: 041_throne_room_throne_and_broach
 				- TBD: 042_throne_room_scroll
 				- TBD: 042_throne_room_scroll_no_hedgehog
@@ -226,8 +231,6 @@ To Do List - Dark Castle v3
 		- TBD: ask q about enabling game choice within test harness
 		- CANCEL: how to control scenario order of opperations over time?
 		- TBD: come up with CI/CD solution to run tests as part of commit
-		- TBD: introduce verbosity mode: verbose, superbrief, brief (list of rooms visited)
-		- TBD: by default, start test harness in superbrief mode
 
 
 - IDEA: unit testing ideas
