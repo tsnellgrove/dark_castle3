@@ -220,9 +220,27 @@ To Do List - Dark Castle v3
 				- DONE: fix take_glass_warning in throne_room
 				- DONE: fix 040 scenario
 			- TBD: verbosity modes
-				- TBD: introduce verbosity mode: verbose, superbrief, brief (list of rooms visited)
-				- TBD: work with q to create new scenario type / recorder / tester w/ superbrief
-				- NOTE: old tests need to continue to use verbose mode during testing
+				- IDEA: introduce verbosity mode: verbose, superbrief, brief (list of rooms visited)
+				- IDEA: need this anyhow - but superbrief is especially helpful for surgical testing
+				- TBD: store vbosity_mode and rm_visited_lst
+					- TBD: add vbosity_mode as an attribute of gs.core
+					- TBD: in game_update (both games), set vbosity_mode = 'verbose'
+					- TBD: add rm_visited_lst to gs.core (at start == ['entrance'])
+					- TBD: update go() to update gs.core.rm_visited_lst
+					- TBD: test via print statement
+				- TBD: set vbosity_mode
+					- TBD: add 'verbose', 'brief', and 'superbrief' to known_verbs_lst & tru1word
+					- TBD: in cmd_exe(), set gs.ocre.vbosity_mode w/ zork-like responses
+				- TBD: update examine()
+					- TBD: if vbosity='verbose' or (vbosity='brief' and rm not in rv_lst) => desc
+					- TBD: test
+				- TBD: create help topic for 'verbosity'
+					- TBD: create help topic and text
+					- TBD: test
+			- TBD: incorporate vbosity_mode into test harness
+				- IDEA: work with q to create new scenario type / recorder / tester w/ superbrief
+				- IDEA: old tests need to continue to use verbose mode during testing
+				- TBD: propose idea to q of a new recorder / tester option
 			- TBD: finish throne_room scenarios
 				- TBD: 041_throne_room_throne_and_broach
 				- TBD: 042_throne_room_scroll
