@@ -219,18 +219,20 @@ To Do List - Dark Castle v3
 				- DONE: 040_throne_room_x_go
 				- DONE: fix take_glass_warning in throne_room
 				- DONE: fix 040 scenario
-			- TBD: verbosity modes
+			- INPROC: verbosity modes
 				- IDEA: introduce verbosity mode: verbose, superbrief, brief (list of rooms visited)
 				- IDEA: need this anyhow - but superbrief is especially helpful for surgical testing
-				- TBD: store vbosity_mode and rm_visited_lst
-					- TBD: add vbosity_mode as an attribute of gs.core
-					- TBD: in game_update (both games), set vbosity_mode = 'verbose'
-					- TBD: add rm_visited_lst to gs.core (at start == ['entrance'])
-					- TBD: update go() to update gs.core.rm_visited_lst
-					- TBD: test via print statement
+				- INPROC: store vbosity_mode and rm_visited_lst
+					- DONE: add vbosity_mode as an attribute of gs.io
+					- DONE: in game_update (both games), set vbosity_mode = 'verbose'
+					- DONE: add rm_visit_lst attrib to gs.io
+					- DONE: in game_update (both games), set to 1st room (e.g. ['entrance'])
+					- TBD: update go() to update gs.io.rm_visit_lst
+					- TBD: test via print()
 				- TBD: set vbosity_mode
 					- TBD: add 'verbose', 'brief', and 'superbrief' to known_verbs_lst & tru1word
 					- TBD: in cmd_exe(), set gs.ocre.vbosity_mode w/ zork-like responses
+					- TBD: test via print()
 				- TBD: update examine()
 					- TBD: if vbosity='verbose' or (vbosity='brief' and rm not in rv_lst) => desc
 					- TBD: test

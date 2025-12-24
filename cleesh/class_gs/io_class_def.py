@@ -17,13 +17,14 @@ def get_game_dict(game_name):
 
 ### classes ###
 class IO(Invisible):
-	def __init__(self, name, dyn_dict, buff_str, last_input_str, game_name, multi_count):
+	def __init__(self, name, dyn_dict, buff_str, last_input_str, game_name, multi_count, vbosity_mode):
 		super().__init__(name)
 		self._dyn_dict = dyn_dict # dict of non-static values that persist during game
 		self._buff_str = buff_str # holds buffered output
 		self._last_input_str = last_input_str # holds previous turn's input
 		self._game_name = game_name # name of the current game (also the path to the game)
 		self._multi_count = multi_count # tracks the number of times a multiples action will run
+		self._vbosity_mode = vbosity_mode # verbosity mode for output
 		""" IO class inherits from Invisible. It abstracts all of the string calls to the games 
 		various dictionaries (dynamic, engine, and game) and provides a raft of buffer funcions
 		for game output. 
@@ -70,6 +71,15 @@ class IO(Invisible):
 	def multi_count(self, new_val):
 		self._multi_count = new_val
 
+	@property
+	def vbosity_mode(self):
+		return self._vbosity_mode
+
+	@vbosity_mode.setter
+	def vbosity_mode(self, new_val):
+		self._vbosity_mode = new_val
+
+	
 	### check dict methods ###
 	def chk_str_exist(self, key):
 		if key not in self.dyn_dict and key not in engine_static_dict and key not in get_game_dict(self.game_name):

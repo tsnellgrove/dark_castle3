@@ -133,7 +133,8 @@ map = Map(
 		pub, # hero_rm
 		[
 			{'room_x' : pub, 'dir_x' : 'south', 'door' : creaky_door, 'dir_y' : None, 'room_y' : unreachable_1},
-		] # map_lst
+		], # map_lst
+		['pub'] # rm_visit_lst
 		)
 
 io = IO(
@@ -142,7 +143,8 @@ io = IO(
 		"", # buff_str
 		"", # last_input_str
 		'cup_of_tea', # game_name
-		0 # multi_count
+		0, # multi_count
+		'verbose' # vbosity_mode
 		)
 
 score = Score(

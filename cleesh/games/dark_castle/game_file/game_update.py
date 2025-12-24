@@ -562,7 +562,8 @@ map = Map(
 				'dir_y' : 'south', 
 				'room_y' : throne_room
 			}
-		] # map_lst
+		], # map_lst
+		['entrance'] # rm_visit_lst
 	)
 
 io = IO(
@@ -571,7 +572,8 @@ io = IO(
 		"", # buff_str
 		"", # last_input_str
 		'dark_castle', # game_name
-		0 # multi_count
+		0, # multi_count
+		'verbose' # vbosity_mode
 		)
 
 score = Score(

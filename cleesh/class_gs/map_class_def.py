@@ -13,10 +13,11 @@ room_key_lst = [['room_x', 'dir_x', 'room_y'], ['room_y', 'dir_y', 'room_x']] # 
 
 ### classes ###
 class Map(Invisible):
-	def __init__(self, name, hero_rm, map_lst):
+	def __init__(self, name, hero_rm, map_lst, rm_visit_lst):
 		super().__init__(name)
 		self._hero_rm = hero_rm # the current location of the player's character (previously searched for)
 		self._map_lst = map_lst # list of room_pair dicts
+		self._rm_visit_lst = rm_visit_lst # list of rooms visited
 		""" Map class inherits from Invisible and is responsible for all game interactions that span 
 		multiple rooms. It provides the hero_rm and map_lst attribs. 
 		
@@ -48,6 +49,16 @@ class Map(Invisible):
 	@property
 	def map_lst(self):
 		return self._map_lst
+
+	@property
+	def rm_visit_lst(self):
+		return self._rm_visit_lst
+
+
+	# *** attrib methods ***
+	def rv_lst_append(self, rm_name):
+		self.rm_visit_lst.append(rm_name)
+
 
 	# *** complex obj methods ***
 	def get_room_lst(self):
