@@ -278,6 +278,9 @@ class Room(ViewOnly):
 		next_room.floor_lst_append(creature)
 		self.floor_lst_remove(creature)
 
+		if next_room.name not in gs.map.rm_visit_lst:
+			gs.map.rm_visit_lst.append(next_room.name)
+
 		if creature == gs.core.hero:
 			next_room.examine(gs)
 			return 

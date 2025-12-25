@@ -222,13 +222,13 @@ To Do List - Dark Castle v3
 			- INPROC: verbosity modes
 				- IDEA: introduce verbosity mode: verbose, superbrief, brief (list of rooms visited)
 				- IDEA: need this anyhow - but superbrief is especially helpful for surgical testing
-				- INPROC: store vbosity_mode and rm_visited_lst
+				- DONE: store vbosity_mode and rm_visited_lst
 					- DONE: add vbosity_mode as an attribute of gs.io
 					- DONE: in game_update (both games), set vbosity_mode = 'verbose'
 					- DONE: add rm_visit_lst attrib to gs.io
 					- DONE: in game_update (both games), set to 1st room (e.g. ['entrance'])
-					- TBD: update go() to update gs.io.rm_visit_lst
-					- TBD: test via print()
+					- DONE: update go() to update gs.io.rm_visit_lst
+					- DONE: test via print()
 				- TBD: set vbosity_mode
 					- TBD: add 'verbose', 'brief', and 'superbrief' to known_verbs_lst & tru1word
 					- TBD: in cmd_exe(), set gs.ocre.vbosity_mode w/ zork-like responses
@@ -239,6 +239,7 @@ To Do List - Dark Castle v3
 				- TBD: create help topic for 'verbosity'
 					- TBD: create help topic and text
 					- TBD: test
+				- TBD: clean-up debug print in app_main()
 			- TBD: incorporate vbosity_mode into test harness
 				- IDEA: work with q to create new scenario type / recorder / tester w/ superbrief
 				- IDEA: old tests need to continue to use verbose mode during testing
