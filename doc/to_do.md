@@ -229,17 +229,22 @@ To Do List - Dark Castle v3
 					- DONE: in game_update (both games), set to 1st room (e.g. ['entrance'])
 					- DONE: update go() to update gs.io.rm_visit_lst
 					- DONE: test via print()
-				- TBD: set vbosity_mode
-					- TBD: add 'verbose', 'brief', and 'superbrief' to known_verbs_lst & tru1word
-					- TBD: in cmd_exe(), set gs.ocre.vbosity_mode w/ zork-like responses
-					- TBD: test via print()
-				- TBD: update examine()
-					- TBD: if vbosity='verbose' or (vbosity='brief' and rm not in rv_lst) => desc
+				- DONE: set vbosity_mode
+					- DONE: add 'verbose', 'brief', and 'superbrief' to one_word_only_lst
+					- DONE: in cmd_exe(), set gs.map.vbosity_mode w/ zork-like responses
+					- DONE: test via print()
+				- INPROC: update examine()
+					- DONE: if is_room() & (v_m='verbose' or (v_m='brief' & rm not in rv_lst))=> desc
+					- DONE: test
+					- FINDING: examine() is used by 'look' so now 'look' can't show descript
+					- TBD: create supress_desc attrib for examine() w/ default value = False
+					- TBD: on go() pass supress_desc using vbosity_mode logic
 					- TBD: test
+					- TBD: decide whether to suppress elements of disp_contain() too??
 				- TBD: create help topic for 'verbosity'
 					- TBD: create help topic and text
 					- TBD: test
-				- TBD: clean-up debug print in app_main()
+				- TBD: clean-up debug print in app_main(), base() examine()
 			- TBD: incorporate vbosity_mode into test harness
 				- IDEA: work with q to create new scenario type / recorder / tester w/ superbrief
 				- IDEA: old tests need to continue to use verbose mode during testing

@@ -179,7 +179,12 @@ class ViewOnly(Writing):
 			except:
 				gs.io.buffer("You currently possess the following items:")
 		else:
-			gs.io.buff_d(self.descript_key, self.full_name)
+			if (not self.is_room()) or (gs.io.vbosity_mode == 'verbose') or (gs.io.vbosity_mode == 'brief' and self.name not in gs.map.rm_visit_lst):
+#			if self.is_room() and ((gs.io.vbosity_mode == 'superbrief') or (gs.io.vbosity_mode == 'brief' and self.name in gs.map.rm_visit_lst)):
+#				pass
+#			else:
+				gs.io.buff_d(self.descript_key, self.full_name)
+#			gs.io.buff_d(self.descript_key, self.full_name)
 		if self.has_writing() or self.has_cond(gs) or self.has_contain(gs):
 			gs.io.buff_cr()
 			self.disp_cond(gs)

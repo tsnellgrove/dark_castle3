@@ -56,6 +56,18 @@ def cmd_execute(gs, case, word_lst):
 			if word1 == 'credits':
 				gs.io.buff_e('credits')
 				return
+			if word1 == 'verbose':
+				gs.io.vbosity_mode = 'verbose'
+				gs.io.buffer("Maximum verbosity.")
+				return
+			if word1 == 'brief':
+				gs.io.vbosity_mode = 'brief'
+				gs.io.buffer("Brief descriptions.")
+				return
+			if word1 == 'superbrief':
+				gs.io.vbosity_mode = 'superbrief'
+				gs.io.buffer("Superbrief descriptions.")
+				return
 			if word1 == 'debug_xyzzy':
 				gs.core.is_debug = not gs.core.is_debug
 				gs.io.buffer(f"Debug Mode is now set to {str(gs.core.is_debug)}.")
