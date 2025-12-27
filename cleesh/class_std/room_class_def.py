@@ -282,7 +282,11 @@ class Room(ViewOnly):
 			gs.map.rm_visit_lst.append(next_room.name)
 
 		if creature == gs.core.hero:
-			next_room.examine(gs)
+			if ((gs.io.vbosity_mode == 'superbrief') or 
+	   				(gs.io.vbosity_mode == 'brief' and self.name in gs.map.rm_visit_lst)):
+				next_room.examine(gs, is_desc_suppr=True)
+			else:
+				next_room.examine(gs)
 			return 
 		if self == gs.map.hero_rm:
 			gs.io.buffer(f"The {creature.full_name} goes {dir}")

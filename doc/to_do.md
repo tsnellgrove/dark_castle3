@@ -237,10 +237,16 @@ To Do List - Dark Castle v3
 					- DONE: if is_room() & (v_m='verbose' or (v_m='brief' & rm not in rv_lst))=> desc
 					- DONE: test
 					- FINDING: examine() is used by 'look' so now 'look' can't show descript
-					- TBD: create supress_desc attrib for examine() w/ default value = False
-					- TBD: on go() pass supress_desc using vbosity_mode logic
-					- TBD: test
-					- TBD: decide whether to suppress elements of disp_contain() too??
+					- DONE: create is_desc_suppr attrib for examine() w/ default value = False
+					- DONE: on go() pass is_desc_suppr using vbosity_mode logic
+					- DONE: test
+					- DONE: decide whether to suppress elements of disp_contain() too??
+					- DECISION: suppress all except items and creatures
+					- CANCEL: pass is_desc_suppr to room.disp_cont()
+					- CANCEL: re-org disp_cont() to exclude all elements except items & creatures
+					- IDEA: instead of messing w/ disp_cont(), create brief_disp_cont()
+					- TBD: in room(), create brief_disp_cont()
+					- TBD: in base examine(), if is_desc_suppr => brief_disp_cont(), else=> disp_cont
 				- TBD: create help topic for 'verbosity'
 					- TBD: create help topic and text
 					- TBD: test
