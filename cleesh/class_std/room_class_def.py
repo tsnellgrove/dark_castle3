@@ -264,6 +264,37 @@ class Room(ViewOnly):
 			creature.disp_contain(gs)
 		return
 
+	def disp_contain_brief(self, gs):
+		""" Displays a brief description of the visible items held by the obj. 
+		Used in examine() when vbosity_mode is 'brief' or 'superbrief'.
+		"""
+
+		### organize floor_lst by type
+		rm_item_lst = []
+		rm_creature_lst = []
+		for obj in self.floor_lst:
+			if obj == gs.core.hero:
+				pass
+			elif obj.is_item():
+				rm_item_lst.append(obj)
+			elif obj.is_creature():
+				rm_creature_lst.append(obj)
+
+		# items
+		if rm_item_lst:
+			room_item_str = self.get_disp_str(rm_item_lst, gs) # use new universal method to get disp_str
+			gs.io.buff_no_cr(f"The following items are here: {room_item_str}. ")
+
+		# creatures
+		for creature in rm_creature_lst:
+			if rm_item_lst:
+				gs.io.buff_cr()
+				gs.io.buff_cr()
+			gs.io.buff_no_cr(f"The {creature.full_name} is here. ")
+			creature.disp_contain(gs)
+		return
+
+
 	# *** verb methods ***
 	def go(self, dir, gs, creature=None, mode=None):
 		""" Moves a Creature from one room to another
@@ -278,15 +309,14 @@ class Room(ViewOnly):
 		next_room.floor_lst_append(creature)
 		self.floor_lst_remove(creature)
 
-		if next_room.name not in gs.map.rm_visit_lst:
-			gs.map.rm_visit_lst.append(next_room.name)
-
 		if creature == gs.core.hero:
 			if ((gs.io.vbosity_mode == 'superbrief') or 
-	   				(gs.io.vbosity_mode == 'brief' and self.name in gs.map.rm_visit_lst)):
+	   				(gs.io.vbosity_mode == 'brief' and next_room.name in gs.map.rm_visit_lst)):
 				next_room.examine(gs, is_desc_suppr=True)
 			else:
 				next_room.examine(gs)
+			if next_room.name not in gs.map.rm_visit_lst:
+				gs.map.rm_visit_lst.append(next_room.name)			
 			return 
 		if self == gs.map.hero_rm:
 			gs.io.buffer(f"The {creature.full_name} goes {dir}")

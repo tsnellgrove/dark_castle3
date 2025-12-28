@@ -191,7 +191,10 @@ class ViewOnly(Writing):
 			gs.io.buff_cr()
 			self.disp_cond(gs)
 			self.disp_writing(gs)
-			self.disp_contain(gs)
+			if not is_desc_suppr:
+				self.disp_contain(gs)
+			else:
+				self.disp_contain_brief(gs)
 			gs.io.buff_cr()
 		if self.get_title_str(gs) is not None and creature.is_contained(gs) and creature.get_contained_by(gs).in_reach_lst:
 			creature.disp_in_reach(gs)

@@ -244,12 +244,18 @@ To Do List - Dark Castle v3
 					- DECISION: suppress all except items and creatures
 					- CANCEL: pass is_desc_suppr to room.disp_cont()
 					- CANCEL: re-org disp_cont() to exclude all elements except items & creatures
-					- IDEA: instead of messing w/ disp_cont(), create brief_disp_cont()
-					- TBD: in room(), create brief_disp_cont()
-					- TBD: in base examine(), if is_desc_suppr => brief_disp_cont(), else=> disp_cont
+					- IDEA: instead of messing w/ disp_cont(), create disp_cont_brief()
+					- DONE: in room(), create disp_cont_brief()
+					- DONE: in examine(), if is_desc_suppr => disp_cont_brief(), else=> disp_cont
+					- DONE: test and tune UI
+					- FINDINGS: blank lines in empty room, brief not working
+					- DONE: fix brief
+					- TBD: remove blank lines for empty room
+						- IDEA: create io command to trim buffer ??
 				- TBD: create help topic for 'verbosity'
 					- TBD: create help topic and text
 					- TBD: test
+				- TBD: test vbosity_mode with cup_of_tea
 				- TBD: clean-up debug print in app_main(), base() examine()
 			- TBD: incorporate vbosity_mode into test harness
 				- IDEA: work with q to create new scenario type / recorder / tester w/ superbrief
