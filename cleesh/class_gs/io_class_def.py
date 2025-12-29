@@ -194,6 +194,13 @@ class IO(Invisible):
 		self.buff_str = out_buff_new
 		return
 
+	def buff_rem_cr(self):
+		"""Removes trailing carriage return from buff_str. Use with caution!
+		"""
+		if self.buff_str.endswith("\n"):
+			self.buff_str = self.buff_str[:-1]
+		return
+
 	def buff_d(self, key, ref):
 		"""Buffer Description. Buffers the description (usually of an object) associated with the key attribute. The ref attribute is used to create a default description if none has been defined in engine_static_dict.
 		"""

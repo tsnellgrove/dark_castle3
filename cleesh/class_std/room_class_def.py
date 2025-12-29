@@ -266,7 +266,7 @@ class Room(ViewOnly):
 
 	def disp_contain_brief(self, gs):
 		""" Displays a brief description of the visible items held by the obj. 
-		Used in examine() when vbosity_mode is 'brief' or 'superbrief'.
+		Used for room description when vbosity_mode is 'brief' or 'superbrief'.
 		"""
 
 		### organize floor_lst by type
@@ -292,6 +292,11 @@ class Room(ViewOnly):
 				gs.io.buff_cr()
 			gs.io.buff_no_cr(f"The {creature.full_name} is here. ")
 			creature.disp_contain(gs)
+
+		# clean up extra carriage returns from title if no items or creatures
+		if not (rm_item_lst or rm_creature_lst):
+			gs.io.buff_rem_cr()
+			gs.io.buff_rem_cr()
 		return
 
 

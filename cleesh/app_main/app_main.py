@@ -184,8 +184,6 @@ def app_main(user_input, game_name, root_path_str):
 		# if command is valid or is_wait, increment move
 		if (is_valid or is_att or is_wait) and (not skip_inc):
 			gs.core.move_inc()
-			print(f"rm_visit_lst: {gs.map.rm_visit_lst}") # debug
-			print(f"vbosity_mode: {gs.io.vbosity_mode}") # debug
 
 		# for valid interp commands, process in-turn game response
 		if is_valid or is_att:

@@ -219,7 +219,7 @@ To Do List - Dark Castle v3
 				- DONE: 040_throne_room_x_go
 				- DONE: fix take_glass_warning in throne_room
 				- DONE: fix 040 scenario
-			- INPROC: verbosity modes
+			- DONE: verbosity modes
 				- IDEA: introduce verbosity mode: verbose, superbrief, brief (list of rooms visited)
 				- IDEA: need this anyhow - but superbrief is especially helpful for surgical testing
 				- DONE: store vbosity_mode and rm_visited_lst
@@ -233,7 +233,7 @@ To Do List - Dark Castle v3
 					- DONE: add 'verbose', 'brief', and 'superbrief' to one_word_only_lst
 					- DONE: in cmd_exe(), set gs.map.vbosity_mode w/ zork-like responses
 					- DONE: test via print()
-				- INPROC: update examine()
+				- DONE: update examine()
 					- DONE: if is_room() & (v_m='verbose' or (v_m='brief' & rm not in rv_lst))=> desc
 					- DONE: test
 					- FINDING: examine() is used by 'look' so now 'look' can't show descript
@@ -250,14 +250,18 @@ To Do List - Dark Castle v3
 					- DONE: test and tune UI
 					- FINDINGS: blank lines in empty room, brief not working
 					- DONE: fix brief
-					- TBD: remove blank lines for empty room
+					- DONE: remove blank lines for empty room
 						- IDEA: create io command to trim buffer ??
-				- TBD: create help topic for 'verbosity'
-					- TBD: create help topic and text
-					- TBD: test
-				- TBD: test vbosity_mode with cup_of_tea
-				- TBD: clean-up debug print in app_main(), base() examine()
+						- DONE: create buff_rem_cr() in gs.io
+						- DONE: call buff_rem_cr() in room disp_cont_brief() for empty room
+				- DONE: create help topic for 'verbosity'
+					- DONE: create help topic and text
+					- DONE: test
+				- DONE: test vbosity_mode with cup_of_tea
+				- DONE: clean-up debug print in app_main(), base() examine()
+				- DONE: re-do help test scenario
 			- TBD: incorporate vbosity_mode into test harness
+				- TBD: 00C_entrance_help_options
 				- IDEA: work with q to create new scenario type / recorder / tester w/ superbrief
 				- IDEA: old tests need to continue to use verbose mode during testing
 				- TBD: propose idea to q of a new recorder / tester option
