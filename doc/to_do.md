@@ -260,8 +260,8 @@ To Do List - Dark Castle v3
 				- DONE: test vbosity_mode with cup_of_tea
 				- DONE: clean-up debug print in app_main(), base() examine()
 				- DONE: re-do help test scenario
-			- TBD: incorporate vbosity_mode into test harness
-				- TBD: 00C_entrance_help_options
+			- INPROC: incorporate vbosity_mode into test harness
+				- DONE: 00C_entrance_help_options
 				- IDEA: work with q to create new scenario type / recorder / tester w/ superbrief
 				- IDEA: old tests need to continue to use verbose mode during testing
 				- TBD: propose idea to q of a new recorder / tester option
