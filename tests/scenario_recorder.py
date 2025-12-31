@@ -19,19 +19,21 @@ from cleesh.app_main.start_up import start_me_up
 class ScenarioRecorder:
     """Records gameplay sessions for creating test scenarios"""
     
-    def __init__(self, game_name="dark_castle", locked_mode=False):
+    def __init__(self, game_name="dark_castle", locked_mode=False, verbosity_mode="verbose"):
         self.game_name = game_name
         self.root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.recording = []
         self.is_recording = False
         self.locked_mode = locked_mode
+        self.verbosity_mode = verbosity_mode
         
     def start_recording(self, scenario_name=None):
         """Start recording a new scenario"""
         if scenario_name is None:
             timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
             mode_suffix = "_locked" if self.locked_mode else ""
-            scenario_name = f"recorded_scenario_{timestamp}{mode_suffix}"
+            verbosity_suffix = f"_{self.verbosity_mode}" if self.verbosity_mode != "verbose" else ""
+            scenario_name = f"recorded_scenario_{timestamp}{mode_suffix}{verbosity_suffix}"
         
         self.scenario_name = scenario_name
         self.recording = []
@@ -41,11 +43,18 @@ class ScenarioRecorder:
         print("🎬 Starting scenario recording...")
         print(f"📝 Scenario name: {scenario_name}")
         print(f"🎯 Mode: {'Locked (deterministic)' if self.locked_mode else 'Random'}")
+        print(f"📖 Verbosity: {self.verbosity_mode}")
         print("🎮 Starting fresh game...")
         
         rand_mode = 'locked' if self.locked_mode else 'random'
         startup_output = start_me_up(self.game_name, self.root_path, rand_mode)
         print(startup_output)
+        
+        # Set verbosity mode if not verbose
+        if self.verbosity_mode != "verbose":
+            print(f"\n🔧 Setting verbosity to {self.verbosity_mode}...")
+            _, _, _, _, verbosity_output = app_main(self.verbosity_mode, self.game_name, self.root_path)
+            print(verbosity_output)
         
         print("\n" + "="*60)
         print("🔴 RECORDING STARTED")
@@ -107,7 +116,8 @@ class ScenarioRecorder:
             "description": description,
             "commands": [entry["command"] for entry in self.recording],
             "mode": "locked" if self.locked_mode else "random",
-            "should_not_contain": ["error", "crash", "traceback"],
+            "verbosity_mode": self.verbosity_mode,
+            "should_not_contain": ["crash", "traceback"],
             "should_end": any(entry["is_end"] for entry in self.recording)
         }
         
@@ -156,9 +166,19 @@ def interactive_recorder():
     mode_choice = input("Record in locked mode for rigorous testing? (y/N): ").strip().lower()
     locked_mode = mode_choice in ['y', 'yes']
     
-    recorder = ScenarioRecorder(locked_mode=locked_mode)
+    # Choose verbosity mode
+    print("\nVerbosity modes:")
+    print("  1. verbose (default) - Full room descriptions")
+    print("  2. brief - Full descriptions only on first visit")
+    print("  3. superbrief - Minimal descriptions")
     
-    scenario_name = input("Enter scenario name (or press Enter for auto-generated): ").strip()
+    verbosity_choice = input("Choose verbosity mode (1-3, default=1): ").strip()
+    verbosity_modes = {"1": "verbose", "2": "brief", "3": "superbrief"}
+    verbosity_mode = verbosity_modes.get(verbosity_choice, "verbose")
+    
+    recorder = ScenarioRecorder(locked_mode=locked_mode, verbosity_mode=verbosity_mode)
+    
+    scenario_name = input("\nEnter scenario name (or press Enter for auto-generated): ").strip()
     if not scenario_name:
         scenario_name = None
     

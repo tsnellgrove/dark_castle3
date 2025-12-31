@@ -274,7 +274,7 @@ class Creature(ViewOnly):
 		if self.chk_in_bkpk(item):
 			self.bkpk_lst_remove(item)
 			return 
-		if self.chk_in_worn(item):
+		if self.chk_is_worn(item):
 			self.worn_lst_remove(item)
 			return 
 		raise ValueError(f"Can't remove item {item} from creature {self.name}")

@@ -260,15 +260,21 @@ To Do List - Dark Castle v3
 				- DONE: test vbosity_mode with cup_of_tea
 				- DONE: clean-up debug print in app_main(), base() examine()
 				- DONE: re-do help test scenario
-			- INPROC: incorporate vbosity_mode into test harness
+			- DONE: incorporate vbosity_mode into test harness
 				- DONE: 00C_entrance_help_options
 				- IDEA: work with q to create new scenario type / recorder / tester w/ superbrief
 				- IDEA: old tests need to continue to use verbose mode during testing
-				- TBD: propose idea to q of a new recorder / tester option
-			- TBD: finish throne_room scenarios
-				- TBD: 041_throne_room_throne_and_broach
-				- TBD: 042_throne_room_scroll
-				- TBD: 042_throne_room_scroll_no_hedgehog
+				- DONE: propose idea to q of a new recorder / tester option
+				- FEEDBACK: q likes the idea for surgical testing
+				- DONE: q creates Recorder and Harness enhancements
+				- DONE: create test run = 041_throne_room_superbrief
+			- INPROC: finish throne_room scenarios
+				- DONE: 042_throne_room_throne_and_broach
+				- DONE: solve error on get (worn) broach
+				- DONE: fix scenrio text
+				- DONE: re-run test 042 (get broach removed)
+				- TBD: 043_throne_room_scroll (add 'get broach')
+				- TBD: 044_throne_room_scroll_no_hedgehog
 		- TBD: ask q about saving test tool capabilities
 		- TBD: ask q about enabling game choice within test harness
 		- CANCEL: how to control scenario order of opperations over time?

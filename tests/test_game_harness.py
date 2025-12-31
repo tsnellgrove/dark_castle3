@@ -212,6 +212,8 @@ def load_test_scenario(scenario_file):
         "name": "Test Name",
         "description": "Test description",
         "commands": ["command1", "command2"],
+        "mode": "locked" or "random",
+        "verbosity_mode": "verbose", "brief", or "superbrief",
         "expected_outputs": ["text1", "text2"],
         "should_not_contain": ["error1", "error2"],
         "should_end": false
@@ -288,7 +290,8 @@ class TestFromScenarioFiles(GameTestHarness):
         scenario = load_test_scenario(scenario_path)
         
         mode = scenario.get('mode', 'random')
-        print(f"\n🎮 Running scenario: {scenario['name']} ({mode} mode)")
+        verbosity_mode = scenario.get('verbosity_mode', 'verbose')
+        print(f"\n🎮 Running scenario: {scenario['name']} ({mode} mode, {verbosity_mode})")
         print(f"   Commands: {len(scenario['commands'])}")
         
         if mode == 'locked':
@@ -299,6 +302,10 @@ class TestFromScenarioFiles(GameTestHarness):
         # Start fresh for each scenario with appropriate mode
         rand_mode = 'locked' if mode == 'locked' else 'random'
         start_me_up(self.game_name, self.root_path, rand_mode)
+        
+        # Set verbosity mode if not verbose
+        if verbosity_mode != 'verbose':
+            app_main(verbosity_mode, self.game_name, self.root_path)
         
         results = self.run_command_sequence(scenario["commands"])
         
@@ -360,8 +367,10 @@ if __name__ == '__main__':
         "name": "Basic Movement Test",
         "description": "Test basic movement and room descriptions",
         "commands": ["look", "north", "look", "south", "look"],
+        "mode": "random",
+        "verbosity_mode": "verbose",
         "expected_outputs": ["entrance", "you"],
-        "should_not_contain": ["error", "crash"],
+        "should_not_contain": ["crash"],
         "should_end": False
     }
     

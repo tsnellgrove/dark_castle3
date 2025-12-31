@@ -1,0 +1,45 @@
+{
+  "name": "041_throne_room_superbrief",
+  "description": "test superbrief mode in throne room",
+  "commands": [
+    "u",
+    "d",
+    "unlock gate with key",
+    "open gate",
+    "n",
+    "open bag",
+    "give biscuit to hedgehog",
+    "get sword",
+    "n",
+    "attack goblin",
+    "pull left lever",
+    "pull right lever",
+    "push button",
+    "n",
+    "l"
+  ],
+  "mode": "locked",
+  "verbosity_mode": "superbrief",
+  "should_not_contain": [
+    "crash",
+    "traceback"
+  ],
+  "should_end": false,
+  "expected_full_outputs": [
+    "\n*** Up Tree ***\n",
+    "\n*** Entrance ***\n\nThe following items are here: a Big Rock. \n",
+    "\nUnlocked\n",
+    "\nOpenned. \n\nYour score is now 10 out of 75\n",
+    "\n*** Gatehouse ***\n\nThe following items are here: a Shiny Sword. \n\nThe Royal Hedgehog is here. The Royal Hedgehog is wearing: a Red Bandana.\n",
+    "\nOpenned. The Paper Bag contains: a Baked Biscuit. \n",
+    "\nWith a yelp of grateful delight the starving hedgehog leaps upon the Baked Biscuit and begins to devour them.\n\nThe Royal Hedgehog is ravenously devouring the Stale Biscuits and is taking no notice of you at all.\n",
+    "\nTaken\n\nYour score is now 20 out of 75\n\nWith the Shiny Sword in hand you are now armed and dangerous!\n\nThe Royal Hedgehog has eaten through half the Stale Biscuits but is still giving them all of its attention.\n\nYour sword is glowing with a faint blue glow.\n",
+    "\n*** Antechamber ***\n\nThe Guard Goblin is here. The Guard Goblin is holding a Grimy Axe. The Guard Goblin is wearing: a Big Medal.\n\nYour sword has begun to glow very brightly\n",
+    "\n(with the Shiny Sword)\n\nYou attack with the Shiny Sword and the Guard Goblin attempts to parry with the Grimy Axe!\n\nThe Shiny Sword surges with power and lethal heft in your hand. A preternatural calm comes over you. You were born for this moment. Your raucous pub crawling days were a mere temporary distraction. You know in your bones that this primal showdown was meant to be and that, with the Shiny Sword at your command, you were meant to win it. Resolute, and with a confidence you have never even imagined having up until this very moment, you stride forward to meet your foe in battle.\n\nThe Shiny Sword swings through the air with a blazing-fast assault. The Guard Goblin is slain by the blazing-fast strike! \n\nYour score is now 25 out of 75\n\nYour sword is no longer glowing.\n",
+    "\nPulled. The Left Lever is now up.\n",
+    "\nPulled. The Right Lever is now up.\n",
+    "\nPushed.\n\nYou hear a loud clank, a whirring of gears, and the Iron Portcullis suddenly opens.\n\nYour score is now 35 out of 75\n",
+    "\n*** Throne Room ***\n",
+    "\n*** Throne Room ***\n\nThe room you're currently in is vast - almost cavernous. At the far end sits what must have once been a grand and glorious throne.  On either wall there are tall ruined windows - now shattered and completely choked with thorned vines - but you you remember hearing stories from your great grandmother, Nana, of the beautiful, glowing stained glass that once filled them. And above the room's entrance hangs a vast (though quite dusty) family tree.\n\nTo the right of the throne is an elegant pedestal that holds what appears to be a delicate crystal box. To the left of the throne is a giant stone coffer. \n\nThere is an Iron Portcullis to the south.\n\nThere is a Throne here. The Throne is empty. \n\nThere is an Elegant Pedestal here. The Elegant Pedestal contains: a Crystal Box. \n"
+  ]
+}
