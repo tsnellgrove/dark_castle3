@@ -1,0 +1,26 @@
+{
+  "name": "00D_entrance_first_dc_specific_test",
+  "description": "simple test of new game-specific scenario engine",
+  "game_name": "dark_castle",
+  "commands": [
+    "l",
+    "climb",
+    "climb tree",
+    "jump",
+    "jump"
+  ],
+  "mode": "locked",
+  "verbosity_mode": "superbrief",
+  "should_not_contain": [
+    "crash",
+    "traceback"
+  ],
+  "should_end": true,
+  "expected_full_outputs": [
+    "\n*** Entrance ***\n\nYou stand upon the ancient drawbridge at the entrance of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.\n\nBehind you, just beyond the drawbridge, is an extremely old and rusty postbox besides which stands a large tree with some low branches. Across the way from the postbox is a big rock covered in moss and lichen. \n\nThere is a Front Gate to the north, a climb leading up, an Untrodden Path to the southwest, a leap down to the moat to the east, and a leap down to the moat to the west.\n",
+    "\nclimb what?\n",
+    "\n(choosing the 'up' direction in which to climb)\n\nWith a jump to the first branch you clamber up the trail-side tree.\n\n*** Up Tree ***\n",
+    "\nin a feat of unaccustomed agility, you manage to land on your feet without killing yourself.\n\n*** Entrance ***\n\nYou stand upon the ancient drawbridge at the entrance of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.\n\nBehind you, just beyond the drawbridge, is an extremely old and rusty postbox besides which stands a large tree with some low branches. Across the way from the postbox is a big rock covered in moss and lichen. \n\nThere is a Front Gate to the north, a climb leading up, an Untrodden Path to the southwest, a leap down to the moat to the east, and a leap down to the moat to the west.\n",
+    "\nWith confidence and vigor you pitch off the side of the drawbridge and into the Moat. Who knew it would be full of crocodiles?\n\nYou have died.\n\nYour adventure ended after 5 moves.\n\nYour score is now 0 out of 75\n\nYour title is: Burt the Baker\n"
+  ]
+}

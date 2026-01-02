@@ -139,5 +139,6 @@
     "\nAvailable verbs include: attack, climb, close, drink, drop, eat, enter, examine, exit, give, go, help, jump, lock, open, pull, push, put, read, show, stand, stow, take, unlock, wear\n",
     "\nYou don't possess the Tree.\n",
     "\nWith a keen eye for high fashion, you boldly attempt to accoutre yourself in the Paper Bag... it doesn't really work out... but nothing is harmed... except maybe your ego...\n"
-  ]
+  ],
+  "game_name": "dark_castle"
 }

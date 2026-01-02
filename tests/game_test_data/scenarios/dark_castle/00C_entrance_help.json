@@ -56,5 +56,6 @@
     "\nAvailable verbs include: attack, climb, close, drink, drop, eat, enter, examine, exit, give, go, help, jump, lock, open, pull, push, put, read, show, stand, stow, take, unlock, wear\n",
     "\nDebug Mode is now set to True.\n",
     "\nThere are currently 3 main features to debug mode: 1) Python errors are shown rather than muted, 2) A module prefix is provided for game errors, and 3) The following debug verbs are usable: get_weight, capacity, where_is, rand_mode\n"
-  ]
+  ],
+  "game_name": "dark_castle"
 }

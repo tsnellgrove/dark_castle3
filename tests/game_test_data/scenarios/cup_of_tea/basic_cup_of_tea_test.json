@@ -1,0 +1,19 @@
+{
+  "name": "basic_cup_of_tea_test",
+  "description": "Basic test for cup of tea game",
+  "game_name": "cup_of_tea",
+  "commands": [
+    "look",
+    "inventory"
+  ],
+  "mode": "random",
+  "verbosity_mode": "verbose",
+  "expected_outputs": [
+    "you"
+  ],
+  "should_not_contain": [
+    "crash",
+    "traceback"
+  ],
+  "should_end": false
+}

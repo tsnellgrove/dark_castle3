@@ -114,6 +114,7 @@ class ScenarioRecorder:
         scenario_data = {
             "name": self.scenario_name,
             "description": description,
+            "game_name": self.game_name,
             "commands": [entry["command"] for entry in self.recording],
             "mode": "locked" if self.locked_mode else "random",
             "verbosity_mode": self.verbosity_mode,
@@ -130,7 +131,7 @@ class ScenarioRecorder:
             scenario_data["expected_outputs"] = []
         
         # Save scenario file
-        scenario_dir = os.path.join(os.path.dirname(__file__), "game_test_data", "scenarios")
+        scenario_dir = os.path.join(os.path.dirname(__file__), "game_test_data", "scenarios", self.game_name)
         os.makedirs(scenario_dir, exist_ok=True)
         
         scenario_file = os.path.join(scenario_dir, f"{self.scenario_name}.json")
@@ -159,11 +160,20 @@ class ScenarioRecorder:
 
 def interactive_recorder():
     """Interactive recording session"""
-    print("🎬 Dark Castle Scenario Recorder")
+    print("🎬 Cleesh Game Engine Scenario Recorder")
     print("=" * 40)
     
+    # Choose game
+    print("\nAvailable games:")
+    print("  1. dark_castle - A classic Zork-like adventure")
+    print("  2. cup_of_tea - Simple test game")
+    
+    game_choice = input("Choose game (1-2, default=1): ").strip()
+    games = {"1": "dark_castle", "2": "cup_of_tea"}
+    game_name = games.get(game_choice, "dark_castle")
+    
     # Choose mode
-    mode_choice = input("Record in locked mode for rigorous testing? (y/N): ").strip().lower()
+    mode_choice = input("\nRecord in locked mode for rigorous testing? (y/N): ").strip().lower()
     locked_mode = mode_choice in ['y', 'yes']
     
     # Choose verbosity mode
@@ -176,7 +186,7 @@ def interactive_recorder():
     verbosity_modes = {"1": "verbose", "2": "brief", "3": "superbrief"}
     verbosity_mode = verbosity_modes.get(verbosity_choice, "verbose")
     
-    recorder = ScenarioRecorder(locked_mode=locked_mode, verbosity_mode=verbosity_mode)
+    recorder = ScenarioRecorder(game_name=game_name, locked_mode=locked_mode, verbosity_mode=verbosity_mode)
     
     scenario_name = input("\nEnter scenario name (or press Enter for auto-generated): ").strip()
     if not scenario_name:

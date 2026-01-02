@@ -107,7 +107,7 @@ To Do List - Dark Castle v3
 	- DONE: 'git push" to push updates to origin (GitHub)
 	- DONE: confirm new branch on GitHub is now ahead of master
 
-- INPROC: start automated / unit testing
+- DONE: start automated / unit testing
 	- DONE: ask q how to get started with unit testing
 	- DONE: q created test directory and initial tests
 		- FINDING: to run tests: python3 -m unittest tests.test_item_class -v
@@ -123,7 +123,7 @@ To Do List - Dark Castle v3
 			- DECISION: want to create an end-to-end test that can catch complex issues
 		- DONE: work with q on initial acceptance testing
 		- VISION: want to be able to build up a collection of modular acceptance tests over time
-		- INPROC: create rand_mode
+		- DONE: create rand_mode
 			- DONE: global search for use of rand
 				- FINDING: random errors in gs.io.buff_debug()
 				- FINDING: random hero description on inventory in base.examine()
@@ -197,7 +197,7 @@ To Do List - Dark Castle v3
 		- FINDING: scenarios are already modular - want to build on this
 		- DONE: q has provided a 'delete scenario' menu option
 		- DONE: enble scenario renaming and ordering (with q)
-		- INPROC: create an initial set of scenarios for Entrance
+		- DONE: create an initial set of scenarios for Entrance
 			- DONE: rest of entrance testing
 			- DONE: test eat & drink in entrance
 			- DONE: 010_intree_tests
@@ -268,18 +268,17 @@ To Do List - Dark Castle v3
 				- FEEDBACK: q likes the idea for surgical testing
 				- DONE: q creates Recorder and Harness enhancements
 				- DONE: create test run = 041_throne_room_superbrief
-			- INPROC: finish throne_room scenarios
+			- DONE: finish throne_room scenarios
 				- DONE: 042_throne_room_throne_and_broach
 				- DONE: solve error on get (worn) broach
 				- DONE: fix scenrio text
 				- DONE: re-run test 042 (get broach removed)
-				- TBD: 043_throne_room_scroll (add 'get broach')
-				- TBD: 044_throne_room_scroll_no_hedgehog
-		- TBD: ask q about saving test tool capabilities
-		- TBD: ask q about enabling game choice within test harness
+				- DONE: 043_throne_room_scroll (add 'get broach' while worn)
+				- DONE: 044_throne_room_scroll_no_hedgehog
+		- N/A: ask q about saving test tool capabilities
+		- DONE: ask q about enabling game choice within test harness
 		- CANCEL: how to control scenario order of opperations over time?
-		- TBD: come up with CI/CD solution to run tests as part of commit
-
+		- N/A: come up with CI/CD solution to run tests as part of commit
 
 - IDEA: unit testing ideas
 	- IDEA: build a framework based on mock GameState class

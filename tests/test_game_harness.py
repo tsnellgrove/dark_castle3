@@ -22,7 +22,8 @@ class GameTestHarness(unittest.TestCase):
     
     def setUp(self):
         """Set up test environment"""
-        self.game_name = "dark_castle"
+        # Default to dark_castle, but can be overridden
+        self.game_name = getattr(self, '_game_name', "dark_castle")
         self.root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.test_data_dir = os.path.join(os.path.dirname(__file__), "game_test_data")
         
@@ -60,21 +61,25 @@ class GameTestHarness(unittest.TestCase):
                 shutil.rmtree(working_dir)
             shutil.copytree(backup_dir, working_dir)
     
-    def run_command_sequence(self, commands):
+    def run_command_sequence(self, commands, game_name=None):
         """
         Run a sequence of commands and return all outputs
         
         Args:
             commands: List of command strings
+            game_name: Name of the game to run (defaults to self.game_name)
             
         Returns:
             List of (command, output, is_end) tuples
         """
+        if game_name is None:
+            game_name = self.game_name
+            
         results = []
         
         for command in commands:
             is_start, is_end, game_ending, is_bkstry, output = app_main(
-                command, self.game_name, self.root_path
+                command, game_name, self.root_path
             )
             
             results.append((command, output, is_end))
@@ -228,18 +233,51 @@ class TestFromScenarioFiles(GameTestHarness):
     
     def test_scenario_files(self):
         """Run all scenario files in test_data directory"""
-        scenario_dir = os.path.join(self.test_data_dir, "scenarios")
+        # Check if we should filter by game
+        game_filter = os.environ.get('TEST_GAME_FILTER')
         
-        if not os.path.exists(scenario_dir):
+        # Test all games that have scenario directories
+        games_tested = []
+        base_scenario_dir = os.path.join(self.test_data_dir, "scenarios")
+        
+        if not os.path.exists(base_scenario_dir):
             self.skipTest("No scenario files found")
         
-        # Get ordered list of scenario files
-        scenario_files = self._get_ordered_scenario_files()
+        # Find all game directories
+        game_dirs = [d for d in os.listdir(base_scenario_dir) 
+                    if os.path.isdir(os.path.join(base_scenario_dir, d))]
+        
+        # Apply game filter if specified
+        if game_filter:
+            game_dirs = [g for g in game_dirs if g == game_filter]
+            if not game_dirs:
+                self.skipTest(f"No scenarios found for game: {game_filter}")
+        
+        if not game_dirs:
+            self.skipTest("No game scenario directories found")
+        
+        print(f"\n🎮 Testing scenarios for {len(game_dirs)} games:")
+        
+        for game_name in sorted(game_dirs):
+            with self.subTest(game=game_name):
+                self._test_game_scenarios(game_name)
+                games_tested.append(game_name)
+        
+        print(f"\n✅ Successfully tested {len(games_tested)} games: {', '.join(games_tested)}")
+    
+    def _test_game_scenarios(self, game_name):
+        """Test all scenarios for a specific game"""
+        self._game_name = game_name  # Set game for this test
+        scenario_dir = os.path.join(self.test_data_dir, "scenarios", game_name)
+        
+        # Get ordered list of scenario files for this game
+        scenario_files = self._get_ordered_scenario_files(game_name)
         
         if not scenario_files:
-            self.skipTest("No scenario files found")
+            print(f"  ⚠️  No scenarios found for {game_name}")
+            return
         
-        print(f"\n📋 Testing {len(scenario_files)} scenarios:")
+        print(f"\n📚 Testing {len(scenario_files)} scenarios for {game_name}:")
         for scenario_file in scenario_files:
             scenario_path = os.path.join(scenario_dir, scenario_file)
             with open(scenario_path, 'r') as f:
@@ -247,13 +285,16 @@ class TestFromScenarioFiles(GameTestHarness):
             print(f"  • {scenario['name']} ({scenario_file})")
         
         for scenario_file in scenario_files:
-            with self.subTest(scenario=scenario_file):
+            with self.subTest(scenario=scenario_file, game=game_name):
                 self.run_scenario_file(os.path.join(scenario_dir, scenario_file))
     
-    def _get_ordered_scenario_files(self):
-        """Get scenario files in the specified order"""
-        scenario_dir = os.path.join(self.test_data_dir, "scenarios")
-        order_file = os.path.join(self.test_data_dir, "test_order.json")
+    def _get_ordered_scenario_files(self, game_name):
+        """Get scenario files in the specified order for a specific game"""
+        scenario_dir = os.path.join(self.test_data_dir, "scenarios", game_name)
+        order_file = os.path.join(self.test_data_dir, f"test_order_{game_name}.json")
+        
+        if not os.path.exists(scenario_dir):
+            return []
         
         # Get all available scenario files
         all_files = [f for f in os.listdir(scenario_dir) if f.endswith('.json')]
@@ -289,9 +330,11 @@ class TestFromScenarioFiles(GameTestHarness):
         """Run a single scenario file"""
         scenario = load_test_scenario(scenario_path)
         
+        # Use game_name from scenario if available, otherwise use test harness default
+        game_name = scenario.get('game_name', self.game_name)
         mode = scenario.get('mode', 'random')
         verbosity_mode = scenario.get('verbosity_mode', 'verbose')
-        print(f"\n🎮 Running scenario: {scenario['name']} ({mode} mode, {verbosity_mode})")
+        print(f"\n🎮 Running scenario: {scenario['name']} ({game_name}, {mode} mode, {verbosity_mode})")
         print(f"   Commands: {len(scenario['commands'])}")
         
         if mode == 'locked':
@@ -301,13 +344,13 @@ class TestFromScenarioFiles(GameTestHarness):
         
         # Start fresh for each scenario with appropriate mode
         rand_mode = 'locked' if mode == 'locked' else 'random'
-        start_me_up(self.game_name, self.root_path, rand_mode)
+        start_me_up(game_name, self.root_path, rand_mode)
         
         # Set verbosity mode if not verbose
         if verbosity_mode != 'verbose':
-            app_main(verbosity_mode, self.game_name, self.root_path)
+            app_main(verbosity_mode, game_name, self.root_path)
         
-        results = self.run_command_sequence(scenario["commands"])
+        results = self.run_command_sequence(scenario["commands"], game_name)
         
         # Check if game should have ended
         final_is_end = results[-1][2] if results else False
@@ -359,22 +402,24 @@ class TestFromScenarioFiles(GameTestHarness):
 
 
 if __name__ == '__main__':
-    # Create sample scenario file
-    test_data_dir = os.path.join(os.path.dirname(__file__), "game_test_data", "scenarios")
-    os.makedirs(test_data_dir, exist_ok=True)
-    
-    sample_scenario = {
-        "name": "Basic Movement Test",
-        "description": "Test basic movement and room descriptions",
-        "commands": ["look", "north", "look", "south", "look"],
-        "mode": "random",
-        "verbosity_mode": "verbose",
-        "expected_outputs": ["entrance", "you"],
-        "should_not_contain": ["crash"],
-        "should_end": False
-    }
-    
-    with open(os.path.join(test_data_dir, "basic_movement.json"), 'w') as f:
-        json.dump(sample_scenario, f, indent=2)
+    # Create sample scenario files for both games
+    for game_name in ["dark_castle", "cup_of_tea"]:
+        test_data_dir = os.path.join(os.path.dirname(__file__), "game_test_data", "scenarios", game_name)
+        os.makedirs(test_data_dir, exist_ok=True)
+        
+        sample_scenario = {
+            "name": f"Basic {game_name.replace('_', ' ').title()} Test",
+            "description": f"Test basic functionality for {game_name}",
+            "game_name": game_name,
+            "commands": ["look", "inventory"],
+            "mode": "random",
+            "verbosity_mode": "verbose",
+            "expected_outputs": ["you"],
+            "should_not_contain": ["crash"],
+            "should_end": False
+        }
+        
+        with open(os.path.join(test_data_dir, f"basic_{game_name}.json"), 'w') as f:
+            json.dump(sample_scenario, f, indent=2)
     
     unittest.main()
