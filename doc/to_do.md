@@ -52,8 +52,8 @@ To Do List - Dark Castle v3
 # *** BIG PICTURE ***
 - DONE: machincs / classes / error subsystem
 - DONE: story updates
+- DONE: test harness
 - TBD: interpreter updates
-- TBD: test harness
 - TBD: db back end (sqlalchemy)
 - TBD: web site
 - TBD: ECS (UI & App tasks w/ DynamoDB back end)
@@ -65,245 +65,40 @@ To Do List - Dark Castle v3
 *** major updates in separate git merges ***
 - DONE: mvps
 - DONE: implement full set of cardinal directions + u & d
-- INPROC: automated / unit testing
+- DONE: automated / unit & acceptance testing
+	- DONE: introduce rand_mode
+	- DONE: introduce verbose and brief commands
+- TBD: new AWS account
+- TBD: webify
+- TBD: live updates with git
 - TBD: major interpreter update!
-	- TBD: introduce verbose and brief commands
 	- TBD: address 'Do What I Mean' in interp() now?
 - TBD: food
-- TBD: webify
 - TBD: drink
-- TBD: live updates with git
 - TBD: sleep
-- TBD: db back end
 - TBD: day / night
-- TBD: liquids
-- TBD: transparnecy
-- TBD: fire / heat
 - TBD: turn lantern into actual light (?)
 	- IDEA: once an item, perhaps Landtern should be found on shelf (it's from Willy after all)
 	- IDEA: lean in on TADS approach
-- TBD: extend castle
+- TBD: expand castle
+- TBD: db back end
+- TBD: liquids
+- TBD: transparnecy
+- TBD: fire / heat
+
 
 *** major updates in separate git merges ***
 
 
 ############################
-### START CLEESH VERSION 3.9.2 / DARK CASTLE VERSION 3.4.0 ###
+### START CLEESH VERSION 3.9.3 / DARK CASTLE VERSION 3.4.2 ###
 ############################
 
-- DONE: choose branch name => unit_test
-- DONE: create new <FEATURE_NAME>_feature git branch
-	- DONE: 'git branch' to confirm *master
-	- DONE: 'git branch <FEATURE_NAME>' to create new branch
-	- DONE: 'git branch' to confirm new branch exists but that master is still checked out
-	- DONE: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
-	- DONE: 'git branch' to confirm new branch is now in focus
-	- DONE: Publish Branch via VS Code button
-	- DONE: confirm new branch on GitHub
-	- DONE: update doc TBDs to DONEs
-	- DONE: <CMD><OPT>S (to save all files)
-	- DONE: 'git add .' to add files to be committed
-	- DONE: 'git commit -m "doc updates"
-	- DONE: 'git push" to push updates to origin (GitHub)
-	- DONE: confirm new branch on GitHub is now ahead of master
 
-- DONE: start automated / unit testing
-	- DONE: ask q how to get started with unit testing
-	- DONE: q created test directory and initial tests
-		- FINDING: to run tests: python3 -m unittest tests.test_item_class -v
-		- DONE: read through test_item_class.py and understand the tests that q created
-		- DONE: create my onwn test for base.ViewOnly()
-		- DONE: run test
-		- DONE: get advice from q on how to test read() method
-		- DONE: iterate initial read() test till successful (lot of help from q!)
-		- DONE: review test in detail to understand it
-		- DONE: unit / integration test for examine()
-		- CANCEL: review test in detail to understand it
-		- DONE: define goals for branch - what does done look like? how to achieve pragmatic value?
-			- DECISION: want to create an end-to-end test that can catch complex issues
-		- DONE: work with q on initial acceptance testing
-		- VISION: want to be able to build up a collection of modular acceptance tests over time
-		- DONE: create rand_mode
-			- DONE: global search for use of rand
-				- FINDING: random errors in gs.io.buff_debug()
-				- FINDING: random hero description on inventory in base.examine()
-				- FINDING: random weapon_verb in creature.attack()
-				- FINDING: random wrong direction error in error.go_err()
-				- FINDING: random elements in game_start_up()
-			- REQ: list of requirements
-				- REQ: need a way to set rand_mode at start-up
-					- IDEA: game # = '#R', can also choose '#L' for 'locked', '#T' for 'turn-based'
-				- REQ: game should be able to check state of rand_mode w/ get_rand()
-					- IDEA: allows game to set some locked values (e.g. gate_L => 5)
-				- REQ: replace rantint(low, high) with cleesh_rand(low, high)
-					- IDEA: cleesh_rand() returns low if rand_mode == 'locked'
-					- IDEA: cleesh_rand() returns turns mod max if rand_mode = 'turn-based'
-				- REQ: player can see rand_mode with 'settings' command (in app_main() )
-				- REQ: in debug, admin can set rand_mode() ; (also directions to set start mode)
-			- DONE: implement rand_mode
-				- DONE: add rand_mode attrib to core
-					- DONE: add attrib & getter & setter
-					- DONE: update both game_update() and re-run
-					- DONE: import random in core() class
-					- DONE: elim import random in invisible() class
-					- DONE: test
-				- DONE: create get_rand_mode() method in gs.core to return current mode
-				- DONE: create simple cleesh_rand() method to return result based on rand_mode
-					- IDEA: random = default, locked for modular testing, turn-based for ident games
-					- DONE: suggestion from JE = can pass, min, max, & opt locked value (def = min)
-				- DONE: update all rand calls to use cleesh_rand()
-					- DONE: random errors in gs.io.buff_debug()
-					- DONE: random hero description on inventory in base.examine()
-					- DONE: initial test
-					- DONE: random weapon_verb in creature.attack()
-					- DONE: random wrong direction error in error.go_err()
-					- DONE: random elements in game_start_up()
-				- DONE: test
-					- DONE: attack description and portcullis code do varry
-					- DONE: why aren't direction errors (nw, ne) random in Entrance?
-					- FINDING: no random errors for outdoor rooms; works in gatehouse
-				- DONE: update game menu to implement '#R' (default) and '#L' modes
-					- DONE: in web_main, set rand_mode = 'random'
-					- DONE: in web_main, after print_game_menu, check for 'L' postfix
-					- DONE: if 'L' postfix, set rand_mode = 'locked'
-					- DONE: pass rand_mode to start_me_up
-					- DONE: in start_me_up, if rand_mode = 'locked', update gs.core.rand_mode
-					- DONE: test
-						- DONE: test game in std mode
-							- DONE: fix 'read scroll' and 'read letters' not earning (15) pts
-							- DONE: q added a suppress_display mode to disp_score
-						- DONE: test 'locked' mode
-				- CANCEL: update game_start_up() ; gate = 5 if get_rand() == 'locked' or 'turn-based'
-				- DONE: create debug rand_mode cmd (include in help display)
-					- CANCEL: create rand_mode() cmd in Invisible
-					- DONE: in staic_gbl(), add 'rand_mode' to 'debug_verb_lst'
-					- DONE: DO NOT in staic_gbl(), add 'rand_mode' to 'known_verbs_lst'
-					- DONE: in static_gbl(), add 'rand_mode' to 'one_word_secret_lst'
-					- FINDING: tru1word cmds do not currently get validated in validate()
-					- CHOICE: create 1word validation or else validate debug in cmd_exe() ?
-					- DECISION: debug validation in cmd_exe(); keep tru1word pass-thru on validate()
-					- CANCEL: create radn_mode_err() method in error_class() ???
-					- DONE: in cmd_exe() create routine for 'rand_mode'
-						- DONE: rand_mode cmd will show current mode ('random' or 'locked')
-						- DONE: should also explain rand_mode options and how to enter locked mode
-					- DONE: test in game
-					- DONE: test help debug
-					- DONE: document this process in stds.md
-				- CANCEL: add 'turn-based' mode to cleesh_random ??
-				- DONE: clean-up core, all 5 calls, start_up(), web_main()
-				- DONE: elim unused random imports
-		- DONE: make acceptance test more rigorous? why not full output of all commands? (w/ q)
-		- DOC: to run workflow menu: ./scenario_workflow.sh
-		- FINDING: scenarios are already modular - want to build on this
-		- DONE: q has provided a 'delete scenario' menu option
-		- DONE: enble scenario renaming and ordering (with q)
-		- DONE: create an initial set of scenarios for Entrance
-			- DONE: rest of entrance testing
-			- DONE: test eat & drink in entrance
-			- DONE: 010_intree_tests
-			- DONE: 009: unlock door
-			- DONE: 020_gatehouse_tests
-				- DONE: examine and go
-				- DONE: get and put
-				- DONE: jump, show, give, attack
-				- DONE: give biscuit no sword
-			- DONE: 00A: entrance e or w with sword
-			- DONE: 024_gatehouse_get_bandana
-			- DONE: 030_antichamber_tests
-				- DONE: examine and go
-				- DONE: w/ sword x, get, go, show, give, attack
-				- DONE: examine solve portcullis
-			- DONE: 00B_ entrance e or w with axe
-			- DONE: 025_ give sword to hedgehog
-			- DONE: initial 040_throne_room_tests
-				- DONE: 040_throne_room_x_go
-				- DONE: fix take_glass_warning in throne_room
-				- DONE: fix 040 scenario
-			- DONE: verbosity modes
-				- IDEA: introduce verbosity mode: verbose, superbrief, brief (list of rooms visited)
-				- IDEA: need this anyhow - but superbrief is especially helpful for surgical testing
-				- DONE: store vbosity_mode and rm_visited_lst
-					- DONE: add vbosity_mode as an attribute of gs.io
-					- DONE: in game_update (both games), set vbosity_mode = 'verbose'
-					- DONE: add rm_visit_lst attrib to gs.io
-					- DONE: in game_update (both games), set to 1st room (e.g. ['entrance'])
-					- DONE: update go() to update gs.io.rm_visit_lst
-					- DONE: test via print()
-				- DONE: set vbosity_mode
-					- DONE: add 'verbose', 'brief', and 'superbrief' to one_word_only_lst
-					- DONE: in cmd_exe(), set gs.map.vbosity_mode w/ zork-like responses
-					- DONE: test via print()
-				- DONE: update examine()
-					- DONE: if is_room() & (v_m='verbose' or (v_m='brief' & rm not in rv_lst))=> desc
-					- DONE: test
-					- FINDING: examine() is used by 'look' so now 'look' can't show descript
-					- DONE: create is_desc_suppr attrib for examine() w/ default value = False
-					- DONE: on go() pass is_desc_suppr using vbosity_mode logic
-					- DONE: test
-					- DONE: decide whether to suppress elements of disp_contain() too??
-					- DECISION: suppress all except items and creatures
-					- CANCEL: pass is_desc_suppr to room.disp_cont()
-					- CANCEL: re-org disp_cont() to exclude all elements except items & creatures
-					- IDEA: instead of messing w/ disp_cont(), create disp_cont_brief()
-					- DONE: in room(), create disp_cont_brief()
-					- DONE: in examine(), if is_desc_suppr => disp_cont_brief(), else=> disp_cont
-					- DONE: test and tune UI
-					- FINDINGS: blank lines in empty room, brief not working
-					- DONE: fix brief
-					- DONE: remove blank lines for empty room
-						- IDEA: create io command to trim buffer ??
-						- DONE: create buff_rem_cr() in gs.io
-						- DONE: call buff_rem_cr() in room disp_cont_brief() for empty room
-				- DONE: create help topic for 'verbosity'
-					- DONE: create help topic and text
-					- DONE: test
-				- DONE: test vbosity_mode with cup_of_tea
-				- DONE: clean-up debug print in app_main(), base() examine()
-				- DONE: re-do help test scenario
-			- DONE: incorporate vbosity_mode into test harness
-				- DONE: 00C_entrance_help_options
-				- IDEA: work with q to create new scenario type / recorder / tester w/ superbrief
-				- IDEA: old tests need to continue to use verbose mode during testing
-				- DONE: propose idea to q of a new recorder / tester option
-				- FEEDBACK: q likes the idea for surgical testing
-				- DONE: q creates Recorder and Harness enhancements
-				- DONE: create test run = 041_throne_room_superbrief
-			- DONE: finish throne_room scenarios
-				- DONE: 042_throne_room_throne_and_broach
-				- DONE: solve error on get (worn) broach
-				- DONE: fix scenrio text
-				- DONE: re-run test 042 (get broach removed)
-				- DONE: 043_throne_room_scroll (add 'get broach' while worn)
-				- DONE: 044_throne_room_scroll_no_hedgehog
-		- N/A: ask q about saving test tool capabilities
-		- DONE: ask q about enabling game choice within test harness
-		- CANCEL: how to control scenario order of opperations over time?
-		- N/A: come up with CI/CD solution to run tests as part of commit
 
-- IDEA: unit testing ideas
-	- IDEA: build a framework based on mock GameState class
-	- IDEA: get serious about creating a "test harness" that can run automated test cases
-	- IDEA: enable mode to write all input and last 80 char of output to CSV file
-	- IDEA: enable passing file of commands and comparing with file of outputs ("get key")
-	- IDEA: Stack Overflow: "how to implement command line switches to my script"
-	- IDEA: in test mode, manually set random switch to value = 7
-	- IDEA: eventually need to be able to run a suite of tests built up over time
-	- IDEA: Unit Testing (link: https://youtu.be/6tNS--WetLI ) ???
-
-- TBD: git branch merge with master
-	- TBD: 'git checkout master' to switch focus to master
-	- TBD: 'git branch: to confirm focus
-	- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
-	- TBD: 'git push' to push merge to origin (GitHub)
-	- TBD: confirm that origin is updated
-	- TBD: confirm that code is updated and still runs
-	- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
-	- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
-	- TBD: confirm origin is cleaned up
-	- TBD: post-branch-delete run test
 
 ############################
-### END CLEESH VERSION 3.9.2 / DARK CASTLE VERSION 3.4.0 ###
+### END CLEESH VERSION 3.9.3 / DARK CASTLE VERSION 3.4.2 ###
 ############################
 
 
