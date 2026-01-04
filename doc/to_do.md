@@ -68,12 +68,11 @@ To Do List - Dark Castle v3
 - DONE: automated / unit & acceptance testing
 	- DONE: introduce rand_mode
 	- DONE: introduce verbose and brief commands
-- TBD: new AWS account
-- TBD: webify
-- TBD: live updates with git
 - TBD: major interpreter update!
 	- TBD: address 'Do What I Mean' in interp() now?
-- TBD: food
+- TBD: new AWS account
+- TBD: webify
+- TBD: live updates with git- TBD: food
 - TBD: drink
 - TBD: sleep
 - TBD: day / night
@@ -83,7 +82,7 @@ To Do List - Dark Castle v3
 - TBD: expand castle
 - TBD: db back end
 - TBD: liquids
-- TBD: transparnecy
+- TBD: transparency
 - TBD: fire / heat
 
 
@@ -93,6 +92,203 @@ To Do List - Dark Castle v3
 ############################
 ### START CLEESH VERSION 3.9.3 / DARK CASTLE VERSION 3.4.2 ###
 ############################
+
+- INPROC: interpreter update
+	- INPROC: pre-branch work
+		- INPROC: gather and organize interp notes
+
+
+*** Structured Interpreter Notes ***
+
+- IDEA: next interp() goals:
+	- TBD: create a version just for interp() updates and gather all interp updates there!!
+	- IDEA: noun synonyms (different than abreviations)
+	- IDEA: global verb synonyms
+	- IDEA: simple prep verbs ('sit_in')
+	- DONE: basic interp features: 'take all', 'again', 'wait'
+	- DONE??: address 'I can't see a x_y' error
+	- DONE??: introduce a vs. an
+
+
+Research:
+- TBD: read for DCv3 parser ideas: https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
+
+
+Synonyms:
+- TBD: need to enable a rich set of game-specific synonyms!
+	- TBD: make 'apparatus' a synonym for control_panel
+	- TBD: add '* apparatus' as trigger to goblin_attack_mach
+- TBD: interpreter idea => permitted verbs & synonyms by class (e.g. 'doff' for Garment)
+
+
+Preposition Handling:
+- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
+	- IDEA: could have a prep attribute for each prep verb
+	- IDEA: in interp(), have a list of all possible preps and use list to break sentence
+- TBD: gracefully deal with unneeded preposition usage (e.g. "push on button")
+
+
+Curse Words:
+- TBD: implement curse warning / ending at Interpreter() level
+
+
+Tactical Fixes for Existing Code / Features:
+- word_lst assignment:
+	- prep case word_lst => trig_vals_lst is erratic
+		- (see interp() ln 201, validate() ln 32, & mach_class() ln 72)
+- DONE??: need a better way to error on 'x'_'y' != obj.name
+	- IDEA: maybe if '_' in noun, buff: "I don't see that"
+- DONE??: consider introducing str_to_obj_dict in Core
+	- IDEA: (enable ease of entrance.examine(gs) in startup() )
+- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
+	IDEA: swap to meth_noun_str and attrib_noun_str ??
+
+
+Plurals:
+- TBD: solve articles for innate plurals (e.g Water, Tea => "qty of water" ???)
+	- TBD: requires noun-adj strings longer than 2
+
+
+Do What the Player Means:
+- TBD: special case of guessing what player means if they don't specify in full
+	- TBD: how should this work? Should they need to be aware of what's in their hand?
+	- TBD: default to key-like obj for lock / unlock activity?
+	- TBD: review inform flags used for (Get What I Mean)
+	- TBD: how to implement?
+	- TBD: should be based on class => create Key class, is_key() method
+- TBD: updates on this theme
+	- TBD: now that hand is de-emphasized, need a better system for guessing what obj player means
+	- TBD: should be mostly based on class
+
+
+Sentence Structure:
+- IDEA: prep_no_do (prep no direct-object verbs):
+	- DOC: format = '<verb> <prep> <noun>' (e.g. 'climb up tree')
+	- FINDING: climb requires a method because not every ViewOnly obj can be climbed
+	- FINDING: this is true even when the climb direction is available in io.map()
+	- IDEA: this is not true for 'sit in chair' (i.e. any chair should support sitting)
+	- IDEA: but it's worth noting that the sentence structure is the same
+	- IDEA: ideally, ['sit in', 'sit on'] would just become abreviations for 'enter'
+	- IDEA: but if this is not possible, a sit() method could be created similar to climb()
+
+
+Conversational verbs:
+- IDEA: 'talk to creature' format:
+	- IDEA: 'Ask X about Y'
+	- IDEA: 'Tell X about Y'
+	- IDEA: Say 'Z'
+
+
+Commands to Support Someday:
+- if you meet a person:
+	- Talk to <name>
+	- Tell <name> about <X>
+	- Give <thing> to <name>
+	- Show <thing> to <name>
+- If you find a thing:
+	- Turn <X>
+	- Feel <X>
+	- Fill <X>
+	- Smell <X>
+	- Listen to <X>
+	- Break <X>
+	- Burn <X>
+	- Look under <X>
+	- Climb <X>
+	- Wave <X>
+	- Take <X> off
+	- Turn <X> on
+	- Dig in <X>
+	- Enter <X>
+	- Search <X>
+- Also
+	- Listen
+	- Sleep
+	- Wake up
+	- Undo
+	- Jump
+	- Pray
+	- Curse
+	- Sing
+
+
+
+*** Raw Interpreter Notes ***
+
+- TBD: text UI updates:
+	- TBD: sort out 'can't drop fist or brass_lantern issue
+	- TBD: change backpack and worn lists to include 'a' and 'an'
+		- IDEA: convert plurals to singulars for this???
+		- IDEA: (given that there is water in the game maybe all singlulars is impossible?)
+		- IDEA: maybe a txt_handling() module with a disp_lst() func that takes care of 1) "x", "x & y", "x, y, & z"; 2) 'a' or 'an'; 3) plurals
+	- TBD: sort out approach to plurals
+		- 1) perhaps this becomes a ViewOnly attribute??? (don't like this - way too many un-used cases of attribute)
+		- 2) possibly ItemPlural class inherits from Item and has method is_plural() which returns True ??
+		- 3) could just have a plural_tuning_lst in the txt_handling() module that checks for known plurals as a one-off?
+			- `Note: the problem with defining plurals in classes is, what if I want to establish plurals for a non-obj (e.g. a path)
+		- Maybe apply 'xxy' prefix on text list if plural??
+	- TBD: drop node 3 (portable_containers in containers) disp?
+		- TBD: can burt know about node 3 items he hasn't 'seen' in this game?
+		- TBD: play through Zork kitchen to test out
+
+- TBD: exit() should apply to chairs and doors => move to Perch / Nook class
+- TBD: should have 'go in gate' and 'enter gate' as synonyms for 'go north' from entrance? (doors & rooms ??)
+
+- Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
+	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
+	- e.g. article_plural(obj) => 'a Grimy Axe' or 'Water' or 'an Apple'
+	- maybe plural_dict is a local dict in the Gramarian class?
+	- Or maybe a better class name is just Display (???)
+	- Division of labor: player text => commands == Interp; obj => player response == Output
+	- could put some recurring dispaly routines here (obj_lst => str_lst and such) ??
+	- Display could also hold buffer commands???
+	- Another possible class name == Output ???
+	- Leaning towards Output... this helps distinguish from all the verb-linked Disp methods
+
+- IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
+	- verb synonuyms linked to class / class method?
+	- perhaps additional, optional cusotm verb synonyms as an obj attribute?
+- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
+	- TBD: also want to enable 'go in' and 'go out' of chair
+
+- TBD: interpreter - should all nouns be singular? Can 'a' vs. 'an' be fixed?
+
+- Interp deep dive including better solution to prep checking ('put in' vs. 'put on')
+
+interpreter ideas:
+- can I store variables in static_dict strings? (in f-string format)
+- can I return method errors based on verb method (e.g. "Burt, what kind of person would try to attack a Throne?")
+- should synonyms be an obj attribute??
+- more abreviations: 'g' = 'again', 'z' = 'wait'
+- fix progromatic usage of "a" vs "an" (e.g. "There is a Iron Portcullis to the north")
+
+- DONE: unlock => 'unlock with' prep  command
+- DONE: default prep behavior = try command with obj in hand
+- New interp() Ideas:
+	- interp() refacto shoud be based on objects (contents of rooom)
+	- each obj should have noun syns (in place of root_word)
+	- if user input has multiple obj, determine noun vs. dir_obj from prep usage (i.e. to vs with)
+	- have global verb syns and class-based verb syns (start with global; much easier!)
+		- e.g. 'get' is gbl verb syn for take() but 'sit on' is a Seat class verb syn for enter()
+	- based on verb, validate prep usage
+	- Order of Op: 1) obj noun syns, 2) gbl verb syns
+
+*-- INTERPRETER ENHANCEMENT --*
+- TBD: sort out synonyms like 'stand' and 'sit' and 'lie'
+- Interpreter enhancements:
+	- noun synonyms (list in place of base_name)
+	- verb synonyms (attribute of Class? Should verbs associated with obj???)
+	- enable "take all", "drop all"
+	- randomize frequent responses (e.g. "in your spell book you see...")
+- re-institue remove() verb for Garment; 'take' as synonym
+	- worn obj take() => "You're already wearing it"
+	- obj on floor remove() => "Taken" (i.e. is synonym)
+- assume that item in hand will be used for activity (e.g. attack)
+- move() command ?
+- enable 'take all'
+- create 'jump' command with same response as Zork ('Whee!' I think?)
+- randomize description of Burt shown during 'inventory'
+- convert words like 'look' to 2word in interp(), rather than cmd(), if possible
 
 
 
@@ -620,173 +816,9 @@ TBD: Enable Verb Methods for Machines
 - DONE: make goblin hand contents examinable (e.g. Grimy Axe)
 
 
-*** Roll up sleaves and fix Interpreter ***
 
-word_lst assignment:
-- prep case word_lst => trig_vals_lst is erratic. see interp() ln 201, validate() ln 32, & mach_class() ln 72
 
-*** Commands List ***
-- if you meet a person:
-	- Talk to <name>
-	- Tell <name> about <X>
-	- Give <thing> to <name>
-	- Show <thing> to <name>
-
-- If you find a thing:
-	- Turn <X>
-	- Feel <X>
-	- Fill <X>
-	- Smell <X>
-	- Listen to <X>
-	- Break <X>
-	- Burn <X>
-	- Look under <X>
-	- Climb <X>
-	- Wave <X>
-	- Take <X> off
-	- Turn <X> on
-	- Dig in <X>
-	- Enter <X>
-	- Search <X>
-
-- Also
-	- Listen
-	- Sleep
-	- Wake up
-	- Undo
-	- Jump
-	- Pray
-	- Curse
-	- Sing
-
-- IDEA: prep_no_do (prep no direct-object verbs):
-	- DOC: format = '<verb> <prep> <noun>' (e.g. 'climb up tree')
-	- FINDING: climb requires a method be cause not every ViewOnly obj can be climbed
-	- FINDING: this is true even when the climb direction is available in io.map()
-	- IDEA: this is not true for 'sit in chair' (i.e. any chair should support sitting)
-	- IDEA: but it's worth noting that the sentence structure is the same
-	- IDEA: ideally, ['sit in', 'sit on'] would just become abreviations for 'enter'
-	- IDEA: but if this is not possible, a sit() method could be created similar to climb()
-
-- TBD: special case of guessing what player means if they don't specify
-	- TBD: how shoudld this work? Should they need to be aware of what's in their hand?
-	- TBD: default to key-like obj for lock / unlock activity?
-	- TBD: review inform flags used for (Get What I Mean)
-	- TBD: how to implement?
-	- TBD: should be based on class => create Key class, is_key() method
-- TBD: updates on this theme
-	- TBD: now that hand is de-emphasized, need a better system for guessing what obj player means
-	- TBD: should be mostly based on class
-- TBD: solve articles for innate plurals (e.g Water, Tea => "qty of water" ???)
-	- TBD: requires noun-adj strings longer than 2
-
-- TBD: need to enable a rich set of game-specific synonyms!
-	- TBD: make 'apparatus' a synonym for control_panel
-	- TBD: add '* apparatus' as trigger to goblin_attack_mach
-
-- TBD: need a better way to error on 'x'_'y' != obj.name ; maybe if '_' in noun, buff: "I don't see that"
-
-- TBD: gracefully deal with unneeded preposition usage (e.g. "push on button")
-
-- TBD: implement curse warning / ending at Interpreter() level
-
-- TBD: read for DCv3 parser ideas: https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
-
-- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
-	IDEA: swap to meth_noun_str and attrib_noun_str ??
-
-- TBD: consider introducing str_to_obj_dict in Core (enable ease of entrance.examine(gs) in startup() )
-- TBD: interpreter idea => permitted verbs & synonymbs by class (e.g. 'doff' for Garment)
-
-- IDEA: in interp(), what about making prep check similar to put() for all prep verbs
-	- IDEA: could have a prep attribute for each prep verb
-	- IDEA: in interp(), have a list of all possible preps and use list to break sentence
-
-- IDEA: next interp() goals:
-	- IDEA: noun synonyms (different than abreviations)
-	- IDEA: global verb synonyms
-	- IDEA: simple prep verbs ('sit_in')
-	- IDEA: basic interp features: 'take all', 'again', 'wait'
-	- IDEA: address 'I can't see a x_y' error
-- IDEA: introduce a vs. an
-
-- TBD: text UI updates:
-	- TBD: sort out 'can't drop fist or brass_lantern issue
-	- TBD: change backpack and worn lists to include 'a' and 'an'
-		- IDEA: convert plurals to singulars for this???
-		- IDEA: (given that there is water in the game maybe all singlulars is impossible?)
-		- IDEA: maybe a txt_handling() module with a disp_lst() func that takes care of 1) "x", "x & y", "x, y, & z"; 2) 'a' or 'an'; 3) plurals
-	- TBD: sort out approach to plurals
-		- 1) perhaps this becomes a ViewOnly attribute??? (don't like this - way too many un-used cases of attribute)
-		- 2) possibly ItemPlural class inherits from Item and has method is_plural() which returns True ??
-		- 3) could just have a plural_tuning_lst in the txt_handling() module that checks for known plurals as a one-off?
-			- `Note: the problem with defining plurals in classes is, what if I want to establish plurals for a non-obj (e.g. a path)
-		- Maybe apply 'xxy' prefix on text list if plural??
-	- TBD: drop node 3 (portable_containers in containers) disp?
-		- TBD: can burt know about node 3 items he hasn't 'seen' in this game?
-		- TBD: play through Zork kitchen to test out
-
-- TBD: exit() should apply to chairs and doors => move to Perch / Nook class
-- TBD: should have 'go in gate' and 'enter gate' as synonyms for 'go north' from entrance? (doors & rooms ??)
-
-- Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
-	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
-	- e.g. article_plural(obj) => 'a Grimy Axe' or 'Water' or 'an Apple'
-	- maybe plural_dict is a local dict in the Gramarian class?
-	- Or maybe a better class name is just Display (???)
-	- Division of labor: player text => commands == Interp; obj => player response == Output
-	- could put some recurring dispaly routines here (obj_lst => str_lst and such) ??
-	- Display could also hold buffer commands???
-	- Another possible class name == Output ???
-	- Leaning towards Output... this helps distinguish from all the verb-linked Disp methods
-
-- TBD: create a version just for interp() updates and gather all interp updates there!!
-- IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
-	- verb synonuyms linked to class / class method?
-	- perhaps additional, optional cusotm verb synonyms as an obj attribute?
-- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
-	- TBD: also want to enable 'go in' and 'go out' of chair
-
-- TBD: interpreter - should all nouns be singular? Can 'a' vs. 'an' be fixed?
-
-- Interp deep dive including better solution to prep checking ('put in' vs. 'put on')
-
-interpreter ideas:
-- can I store variables in static_dict strings? (in f-string format)
-- can I return method errors based on verb method (e.g. "Burt, what kind of person would try to attack a Throne?")
-- should synonyms be an obj attribute??
-- more abreviations: 'g' = 'again', 'z' = 'wait'
-- fix progromatic usage of "a" vs "an" (e.g. "There is a Iron Portcullis to the north")
-
-- DONE: unlock => 'unlock with' prep  command
-- DONE: default prep behavior = try command with obj in hand
-- New interp() Ideas:
-	- interp() refacto shoud be based on objects (contents of rooom)
-	- each obj should have noun syns (in place of root_word)
-	- if user input has multiple obj, determine noun vs. dir_obj from prep usage (i.e. to vs with)
-	- have global verb syns and class-based verb syns (start with global; much easier!)
-		- e.g. 'get' is gbl verb syn for take() but 'sit on' is a Seat class verb syn for enter()
-	- based on verb, validate prep usage
-	- Order of Op: 1) obj noun syns, 2) gbl verb syns
-
-*-- INTERPRETER ENHANCEMENT --*
-- TBD: sort out synonyms like 'stand' and 'sit' and 'lie'
-- Interpreter enhancements:
-	- noun synonyms (list in place of base_name)
-	- verb synonyms (attribute of Class? Should verbs associated with obj???)
-	- enable "take all", "drop all"
-	- randomize frequent responses (e.g. "in your spell book you see...")
-- re-institue remove() verb for Garment; 'take' as synonym
-	- worn obj take() => "You're already wearing it"
-	- obj on floor remove() => "Taken" (i.e. is synonym)
-- assume that item in hand will be used for activity (e.g. attack)
-- move() command ?
-- enable 'take all'
-- create 'jump' command with same response as Zork ('Whee!' I think?)
-- randomize description of Burt shown during 'inventory'
-- convert words like 'look' to 2word in interp(), rather than cmd(), if possible
-
-*-- ARCHITECTURE --*
+*** ARCHITECTURE ***
 - What would a decoupled, micro=services based DC look like? What are the consumers / providers?
 
 
@@ -932,12 +964,6 @@ Food:
 - TBD: an hour glass machine (changes time as turns pass; has flip() verb) 
 - Window: would be need to have a Window class that allows burt to see what he can't take
 
-
-*** conversational verbs ***
-- IDEA: 'talk to creature' format:
-	- IDEA: 'Ask X about Y'
-	- IDEA: 'Tell X about Y'
-	- IDEA: Say 'Z'
 
 
 *** Implement Symetric Verbs ***
