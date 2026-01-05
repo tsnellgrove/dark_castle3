@@ -101,13 +101,21 @@ To Do List - Dark Castle v3
 *** Structured Interpreter Notes ***
 
 - IDEA: next interp() goals:
-	- TBD: create a version just for interp() updates and gather all interp updates there!!
+	- INPROC: create a version just for interp() updates and gather all interp updates there!!
+	- DONE?: introduce a vs. an
+	- DONE?: address 'I can't see a x_y' error
 	- IDEA: noun synonyms (different than abreviations)
 	- IDEA: global verb synonyms
 	- IDEA: simple prep verbs ('sit_in')
 	- DONE: basic interp features: 'take all', 'again', 'wait'
-	- DONE??: address 'I can't see a x_y' error
-	- DONE??: introduce a vs. an
+
+
+Articles and Lists: [DONE]
+- DONE: change backpack and worn lists to include 'a' and 'an'
+- IDEA: maybe a txt_handling() module with a disp_lst() func that takes care of 
+	- DONE: "x", "x & y", "x, y, & z"; 
+	- DONE: 'a' or 'an'; 
+- DONE: Can 'a' vs. 'an' be fixed?
 
 
 Research:
@@ -119,6 +127,23 @@ Synonyms:
 	- TBD: make 'apparatus' a synonym for control_panel
 	- TBD: add '* apparatus' as trigger to goblin_attack_mach
 - TBD: interpreter idea => permitted verbs & synonyms by class (e.g. 'doff' for Garment)
+- TBD: exit() should apply to chairs and doors => move to Perch / Nook class
+- TBD: should have 'go in gate' and 'enter gate' as synonyms for 'go north' from entrance?
+	- IDEA: standard feature of doors & rooms ??
+- IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
+	- verb synonuyms linked to class / class method?
+	- perhaps additional, optional cusotm verb synonyms as an obj attribute?
+- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
+	- TBD: also want to enable 'go in' and 'go out' of chair
+- TBD: sort out synonyms like 'stand' and 'sit' and 'lie'
+- Interpreter enhancements:
+	- noun synonyms (list in place of base_name)
+	- verb synonyms (attribute of Class? Should verbs associated with obj???)
+	- enable "take all", "drop all"
+	- randomize frequent responses (e.g. "in your spell book you see...")
+- re-institue remove() verb for Garment; 'take' as synonym
+	- worn obj take() => "You're already wearing it"
+	- obj on floor remove() => "Taken" (i.e. is synonym)
 
 
 Preposition Handling:
@@ -126,6 +151,7 @@ Preposition Handling:
 	- IDEA: could have a prep attribute for each prep verb
 	- IDEA: in interp(), have a list of all possible preps and use list to break sentence
 - TBD: gracefully deal with unneeded preposition usage (e.g. "push on button")
+- Interp deep dive including better solution to prep checking ('put in' vs. 'put on')
 
 
 Curse Words:
@@ -142,11 +168,36 @@ Tactical Fixes for Existing Code / Features:
 	- IDEA: (enable ease of entrance.examine(gs) in startup() )
 - TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
 	IDEA: swap to meth_noun_str and attrib_noun_str ??
+- TBD: sort out 'can't drop fist or brass_lantern issue
+- TBD: drop node 3 (portable_containers in containers) disp???
+	- TBD: can burt know about node 3 items he hasn't 'seen' in this game?
+	- TBD: play through Zork kitchen to test out
 
 
 Plurals:
+- TBD: interpreter - should all nouns be singular? 
 - TBD: solve articles for innate plurals (e.g Water, Tea => "qty of water" ???)
 	- TBD: requires noun-adj strings longer than 2
+- IDEA: convert plurals to singulars for this???
+- IDEA: (given that there is water in the game maybe all singlulars is impossible?)
+- TBD: sort out approach to plurals
+	- 1) perhaps this becomes a ViewOnly attribute??? (don't like this - way too many un-used cases of attribute)
+	- 2) possibly ItemPlural class inherits from Item and has method is_plural() which returns True ??
+	- 3) could just have a plural_tuning_lst in the txt_handling() module that checks for known plurals as a one-off?
+		- Note: the problem with defining plurals in classes is, what if I want to establish plurals for a non-obj (e.g. a path)
+	- Maybe apply 'xxy' prefix on text list if plural??
+
+
+- Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
+	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
+	- e.g. article_plural(obj) => 'a Grimy Axe' or 'Water' or 'an Apple'
+	- maybe plural_dict is a local dict in the Gramarian class?
+	- Or maybe a better class name is just Display (???)
+	- Division of labor: player text => commands == Interp; obj => player response == Output
+	- could put some recurring dispaly routines here (obj_lst => str_lst and such) ??
+	- Display could also hold buffer commands???
+	- Another possible class name == Output ???
+	- Leaning towards Output... this helps distinguish from all the verb-linked Disp methods
 
 
 Do What the Player Means:
@@ -215,45 +266,7 @@ Commands to Support Someday:
 
 *** Raw Interpreter Notes ***
 
-- TBD: text UI updates:
-	- TBD: sort out 'can't drop fist or brass_lantern issue
-	- TBD: change backpack and worn lists to include 'a' and 'an'
-		- IDEA: convert plurals to singulars for this???
-		- IDEA: (given that there is water in the game maybe all singlulars is impossible?)
-		- IDEA: maybe a txt_handling() module with a disp_lst() func that takes care of 1) "x", "x & y", "x, y, & z"; 2) 'a' or 'an'; 3) plurals
-	- TBD: sort out approach to plurals
-		- 1) perhaps this becomes a ViewOnly attribute??? (don't like this - way too many un-used cases of attribute)
-		- 2) possibly ItemPlural class inherits from Item and has method is_plural() which returns True ??
-		- 3) could just have a plural_tuning_lst in the txt_handling() module that checks for known plurals as a one-off?
-			- `Note: the problem with defining plurals in classes is, what if I want to establish plurals for a non-obj (e.g. a path)
-		- Maybe apply 'xxy' prefix on text list if plural??
-	- TBD: drop node 3 (portable_containers in containers) disp?
-		- TBD: can burt know about node 3 items he hasn't 'seen' in this game?
-		- TBD: play through Zork kitchen to test out
 
-- TBD: exit() should apply to chairs and doors => move to Perch / Nook class
-- TBD: should have 'go in gate' and 'enter gate' as synonyms for 'go north' from entrance? (doors & rooms ??)
-
-- Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
-	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
-	- e.g. article_plural(obj) => 'a Grimy Axe' or 'Water' or 'an Apple'
-	- maybe plural_dict is a local dict in the Gramarian class?
-	- Or maybe a better class name is just Display (???)
-	- Division of labor: player text => commands == Interp; obj => player response == Output
-	- could put some recurring dispaly routines here (obj_lst => str_lst and such) ??
-	- Display could also hold buffer commands???
-	- Another possible class name == Output ???
-	- Leaning towards Output... this helps distinguish from all the verb-linked Disp methods
-
-- IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
-	- verb synonuyms linked to class / class method?
-	- perhaps additional, optional cusotm verb synonyms as an obj attribute?
-- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
-	- TBD: also want to enable 'go in' and 'go out' of chair
-
-- TBD: interpreter - should all nouns be singular? Can 'a' vs. 'an' be fixed?
-
-- Interp deep dive including better solution to prep checking ('put in' vs. 'put on')
 
 interpreter ideas:
 - can I store variables in static_dict strings? (in f-string format)
@@ -274,15 +287,7 @@ interpreter ideas:
 	- Order of Op: 1) obj noun syns, 2) gbl verb syns
 
 *-- INTERPRETER ENHANCEMENT --*
-- TBD: sort out synonyms like 'stand' and 'sit' and 'lie'
-- Interpreter enhancements:
-	- noun synonyms (list in place of base_name)
-	- verb synonyms (attribute of Class? Should verbs associated with obj???)
-	- enable "take all", "drop all"
-	- randomize frequent responses (e.g. "in your spell book you see...")
-- re-institue remove() verb for Garment; 'take' as synonym
-	- worn obj take() => "You're already wearing it"
-	- obj on floor remove() => "Taken" (i.e. is synonym)
+
 - assume that item in hand will be used for activity (e.g. attack)
 - move() command ?
 - enable 'take all'
