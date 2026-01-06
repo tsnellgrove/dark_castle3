@@ -110,12 +110,17 @@ To Do List - Dark Castle v3
 	- DONE: basic interp features: 'take all', 'again', 'wait'
 
 
-Articles and Lists: [DONE]
+Articles, Lists, & Abreviations: [DONE?]
+- TBD?: fix progromatic usage of "a" vs "an" (e.g. "There is a Iron Portcullis to the north")
 - DONE: change backpack and worn lists to include 'a' and 'an'
 - IDEA: maybe a txt_handling() module with a disp_lst() func that takes care of 
 	- DONE: "x", "x & y", "x, y, & z"; 
 	- DONE: 'a' or 'an'; 
 - DONE: Can 'a' vs. 'an' be fixed?
+- DONE: more abreviations: 'g' = 'again', 'z' = 'wait'
+- DONE: enable 'take all'
+- DONE: create 'jump' command with same response as Zork ('Whee!' I think?)
+- DONE: randomize description of Burt shown during 'inventory'
 
 
 Research:
@@ -123,6 +128,7 @@ Research:
 
 
 Synonyms:
+- TBD: should synonyms be an obj attribute??
 - TBD: need to enable a rich set of game-specific synonyms!
 	- TBD: make 'apparatus' a synonym for control_panel
 	- TBD: add '* apparatus' as trigger to goblin_attack_mach
@@ -144,9 +150,19 @@ Synonyms:
 - re-institue remove() verb for Garment; 'take' as synonym
 	- worn obj take() => "You're already wearing it"
 	- obj on floor remove() => "Taken" (i.e. is synonym)
+- New interp() Ideas:
+	- interp() refacto shoud be based on objects (contents of rooom)
+	- each obj should have noun syns (in place of root_word)
+	- if user input has multiple obj, determine noun vs. dir_obj from prep usage (i.e. to vs with)
+	- have global verb syns and class-based verb syns (start with global; much easier!)
+		- e.g. 'get' is gbl verb syn for take() but 'sit on' is a Seat class verb syn for enter()
+	- based on verb, validate prep usage
+	- Order of Op: 1) obj noun syns, 2) gbl verb syns
 
 
 Preposition Handling:
+- DONE: unlock => 'unlock with' prep  command
+- DONE: default prep behavior = try command with obj in hand
 - IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 	- IDEA: could have a prep attribute for each prep verb
 	- IDEA: in interp(), have a list of all possible preps and use list to break sentence
@@ -172,6 +188,10 @@ Tactical Fixes for Existing Code / Features:
 - TBD: drop node 3 (portable_containers in containers) disp???
 	- TBD: can burt know about node 3 items he hasn't 'seen' in this game?
 	- TBD: play through Zork kitchen to test out
+- TBD?: can I store variables in static_dict strings? (in f-string format)
+- TBD?: can I return method errors based on verb method
+	- EXAMPLE: (e.g. "Burt, what kind of person would try to attack a Throne?")
+- TBD: convert words like 'look' to 2word in interp(), rather than cmd(), if possible
 
 
 Plurals:
@@ -210,6 +230,7 @@ Do What the Player Means:
 - TBD: updates on this theme
 	- TBD: now that hand is de-emphasized, need a better system for guessing what obj player means
 	- TBD: should be mostly based on class
+- TBD: assume that item in hand will be used for activity (e.g. attack)
 
 
 Sentence Structure:
@@ -221,6 +242,10 @@ Sentence Structure:
 	- IDEA: but it's worth noting that the sentence structure is the same
 	- IDEA: ideally, ['sit in', 'sit on'] would just become abreviations for 'enter'
 	- IDEA: but if this is not possible, a sit() method could be created similar to climb()
+
+
+New Commands:
+- move() command ?
 
 
 Conversational verbs:
@@ -265,35 +290,6 @@ Commands to Support Someday:
 
 
 *** Raw Interpreter Notes ***
-
-
-
-interpreter ideas:
-- can I store variables in static_dict strings? (in f-string format)
-- can I return method errors based on verb method (e.g. "Burt, what kind of person would try to attack a Throne?")
-- should synonyms be an obj attribute??
-- more abreviations: 'g' = 'again', 'z' = 'wait'
-- fix progromatic usage of "a" vs "an" (e.g. "There is a Iron Portcullis to the north")
-
-- DONE: unlock => 'unlock with' prep  command
-- DONE: default prep behavior = try command with obj in hand
-- New interp() Ideas:
-	- interp() refacto shoud be based on objects (contents of rooom)
-	- each obj should have noun syns (in place of root_word)
-	- if user input has multiple obj, determine noun vs. dir_obj from prep usage (i.e. to vs with)
-	- have global verb syns and class-based verb syns (start with global; much easier!)
-		- e.g. 'get' is gbl verb syn for take() but 'sit on' is a Seat class verb syn for enter()
-	- based on verb, validate prep usage
-	- Order of Op: 1) obj noun syns, 2) gbl verb syns
-
-*-- INTERPRETER ENHANCEMENT --*
-
-- assume that item in hand will be used for activity (e.g. attack)
-- move() command ?
-- enable 'take all'
-- create 'jump' command with same response as Zork ('Whee!' I think?)
-- randomize description of Burt shown during 'inventory'
-- convert words like 'look' to 2word in interp(), rather than cmd(), if possible
 
 
 
