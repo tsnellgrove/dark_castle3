@@ -100,17 +100,18 @@ To Do List - Dark Castle v3
 
 *** Structured Interpreter Notes ***
 
-- IDEA: next interp() goals:
-	- INPROC: create a version just for interp() updates and gather all interp updates there!!
-	- DONE?: introduce a vs. an
-	- DONE?: address 'I can't see a x_y' error
+- INPROC: next interp() goals:
+	- DONE: create a version just for interp() updates and gather all interp updates there!!
+	- INPROC: full review of to-do list
+	- TBD: org to-do list
+	- TBD: deep dive review of Believed to be Done items
 	- IDEA: noun synonyms (different than abreviations)
 	- IDEA: global verb synonyms
 	- IDEA: simple prep verbs ('sit_in')
 	- DONE: basic interp features: 'take all', 'again', 'wait'
 
 
-Articles, Lists, & Abreviations: [DONE?]
+Believed to be Done:
 - TBD?: fix progromatic usage of "a" vs "an" (e.g. "There is a Iron Portcullis to the north")
 - DONE: change backpack and worn lists to include 'a' and 'an'
 - IDEA: maybe a txt_handling() module with a disp_lst() func that takes care of 
@@ -119,8 +120,16 @@ Articles, Lists, & Abreviations: [DONE?]
 - DONE: Can 'a' vs. 'an' be fixed?
 - DONE: more abreviations: 'g' = 'again', 'z' = 'wait'
 - DONE: enable 'take all'
+	- DONE: enable "take all", "drop all"
 - DONE: create 'jump' command with same response as Zork ('Whee!' I think?)
 - DONE: randomize description of Burt shown during 'inventory'
+	- DONE: randomize frequent responses (e.g. "in your spell book you see...")
+- DONE?: address 'I can't see a x_y' error
+	- IDEA: need a better way to error on 'x'_'y' != obj.name
+	- IDEA: maybe if '_' in noun, buff: "I don't see that"
+- DONE?: consider introducing str_to_obj_dict in Core
+	- IDEA: (enable ease of entrance.examine(gs) in startup() )
+
 
 
 Research:
@@ -128,7 +137,7 @@ Research:
 
 
 Synonyms:
-- TBD: should synonyms be an obj attribute??
+- TBD: should synonyms be an obj attribute?? => noun synonyms
 - TBD: need to enable a rich set of game-specific synonyms!
 	- TBD: make 'apparatus' a synonym for control_panel
 	- TBD: add '* apparatus' as trigger to goblin_attack_mach
@@ -145,8 +154,6 @@ Synonyms:
 - Interpreter enhancements:
 	- noun synonyms (list in place of base_name)
 	- verb synonyms (attribute of Class? Should verbs associated with obj???)
-	- enable "take all", "drop all"
-	- randomize frequent responses (e.g. "in your spell book you see...")
 - re-institue remove() verb for Garment; 'take' as synonym
 	- worn obj take() => "You're already wearing it"
 	- obj on floor remove() => "Taken" (i.e. is synonym)
@@ -157,12 +164,12 @@ Synonyms:
 	- have global verb syns and class-based verb syns (start with global; much easier!)
 		- e.g. 'get' is gbl verb syn for take() but 'sit on' is a Seat class verb syn for enter()
 	- based on verb, validate prep usage
-	- Order of Op: 1) obj noun syns, 2) gbl verb syns
+	- Order of Op: 1) obj noun syns, 2) gbl verb syns, 3) class verb syns
 
 
 Preposition Handling:
 - DONE: unlock => 'unlock with' prep  command
-- DONE: default prep behavior = try command with obj in hand
+- TBD: default prep behavior = try command with obj in hand
 - IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 	- IDEA: could have a prep attribute for each prep verb
 	- IDEA: in interp(), have a list of all possible preps and use list to break sentence
@@ -175,13 +182,9 @@ Curse Words:
 
 
 Tactical Fixes for Existing Code / Features:
-- word_lst assignment:
+- TBD: word_lst assignment:
 	- prep case word_lst => trig_vals_lst is erratic
 		- (see interp() ln 201, validate() ln 32, & mach_class() ln 72)
-- DONE??: need a better way to error on 'x'_'y' != obj.name
-	- IDEA: maybe if '_' in noun, buff: "I don't see that"
-- DONE??: consider introducing str_to_obj_dict in Core
-	- IDEA: (enable ease of entrance.examine(gs) in startup() )
 - TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
 	IDEA: swap to meth_noun_str and attrib_noun_str ??
 - TBD: sort out 'can't drop fist or brass_lantern issue
@@ -244,7 +247,7 @@ Sentence Structure:
 	- IDEA: but if this is not possible, a sit() method could be created similar to climb()
 
 
-New Commands:
+Create New Commands:
 - move() command ?
 
 
@@ -286,11 +289,6 @@ Commands to Support Someday:
 	- Pray
 	- Curse
 	- Sing
-
-
-
-*** Raw Interpreter Notes ***
-
 
 
 
