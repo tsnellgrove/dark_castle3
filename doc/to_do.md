@@ -102,13 +102,23 @@ To Do List - Dark Castle v3
 
 - INPROC: next interp() goals:
 	- DONE: create a version just for interp() updates and gather all interp updates there!!
-	- INPROC: full review of to-do list
-	- TBD: org to-do list
-	- TBD: deep dive review of Believed to be Done items
-	- IDEA: noun synonyms (different than abreviations)
-	- IDEA: global verb synonyms
-	- IDEA: simple prep verbs ('sit_in')
-	- DONE: basic interp features: 'take all', 'again', 'wait'
+	- DONE: full review of to-do list
+	- INPROC: org to-do list
+		- TBD: read research
+		- TBD: deep dive review of Believed to be Done items
+		- TBD: synonyms
+			- IDEA: noun synonyms (different than abreviations)
+			- IDEA: global verb synonyms
+		- TBD: prepositions
+			- IDEA: simple prep verbs ('sit_in')
+		- TBD: plurals
+		- TBD: prepositions
+		- TBD: pronouns
+
+
+
+Research:
+- TBD: read for DCv3 parser ideas: https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
 
 
 Believed to be Done:
@@ -118,8 +128,9 @@ Believed to be Done:
 	- DONE: "x", "x & y", "x, y, & z"; 
 	- DONE: 'a' or 'an'; 
 - DONE: Can 'a' vs. 'an' be fixed?
-- DONE: more abreviations: 'g' = 'again', 'z' = 'wait'
-- DONE: enable 'take all'
+- DONE: basic interp features: 'take all', 'again', 'wait'
+	- DONE: more abreviations: 'g' = 'again', 'z' = 'wait'
+	- DONE: enable 'take all'
 	- DONE: enable "take all", "drop all"
 - DONE: create 'jump' command with same response as Zork ('Whee!' I think?)
 - DONE: randomize description of Burt shown during 'inventory'
@@ -129,11 +140,6 @@ Believed to be Done:
 	- IDEA: maybe if '_' in noun, buff: "I don't see that"
 - DONE?: consider introducing str_to_obj_dict in Core
 	- IDEA: (enable ease of entrance.examine(gs) in startup() )
-
-
-
-Research:
-- TBD: read for DCv3 parser ideas: https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
 
 
 Synonyms:
@@ -177,6 +183,34 @@ Preposition Handling:
 - Interp deep dive including better solution to prep checking ('put in' vs. 'put on')
 
 
+Plurals:
+- TBD: interpreter - should all nouns be singular? 
+- TBD: solve articles for innate plurals (e.g Water, Tea => "qty of water" ???)
+	- TBD: requires noun-adj strings longer than 2
+- IDEA: convert plurals to singulars for this???
+- IDEA: (given that there is water in the game maybe all singlulars is impossible?)
+- TBD: sort out approach to plurals
+	- 1) perhaps this becomes a ViewOnly attribute??? (don't like this - way too many un-used cases of attribute)
+	- 2) possibly ItemPlural class inherits from Item and has method is_plural() which returns True ??
+	- 3) could just have a plural_tuning_lst in the txt_handling() module that checks for known plurals as a one-off?
+		- Note: the problem with defining plurals in classes is, what if I want to establish plurals for a non-obj (e.g. a path)
+	- Maybe apply 'xxy' prefix on text list if plural??
+
+
+Pronouns:
+	- Do I need a gs.Gramarian class to deal w/ recurring display issues around pronouns and plurals?
+	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
+	- e.g. article_plural(obj) => 'a Grimy Axe' or 'Water' or 'an Apple'
+	- maybe plural_dict is a local dict in the Gramarian class?
+	- Or maybe a better class name is just Display (???)
+	- Division of labor: player text => commands == Interp; obj => player response == Output
+	- could put some recurring dispaly routines here (obj_lst => str_lst and such) ??
+	- Display could also hold buffer commands???
+	- Another possible class name == Output ???
+	- Leaning towards Output... this helps distinguish from all the verb-linked Disp methods
+
+
+
 Curse Words:
 - TBD: implement curse warning / ending at Interpreter() level
 
@@ -197,30 +231,7 @@ Tactical Fixes for Existing Code / Features:
 - TBD: convert words like 'look' to 2word in interp(), rather than cmd(), if possible
 
 
-Plurals:
-- TBD: interpreter - should all nouns be singular? 
-- TBD: solve articles for innate plurals (e.g Water, Tea => "qty of water" ???)
-	- TBD: requires noun-adj strings longer than 2
-- IDEA: convert plurals to singulars for this???
-- IDEA: (given that there is water in the game maybe all singlulars is impossible?)
-- TBD: sort out approach to plurals
-	- 1) perhaps this becomes a ViewOnly attribute??? (don't like this - way too many un-used cases of attribute)
-	- 2) possibly ItemPlural class inherits from Item and has method is_plural() which returns True ??
-	- 3) could just have a plural_tuning_lst in the txt_handling() module that checks for known plurals as a one-off?
-		- Note: the problem with defining plurals in classes is, what if I want to establish plurals for a non-obj (e.g. a path)
-	- Maybe apply 'xxy' prefix on text list if plural??
 
-
-- Do I need a gs.Gramarian class to deal with recurring display issues around pronouns and plurals?
-	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
-	- e.g. article_plural(obj) => 'a Grimy Axe' or 'Water' or 'an Apple'
-	- maybe plural_dict is a local dict in the Gramarian class?
-	- Or maybe a better class name is just Display (???)
-	- Division of labor: player text => commands == Interp; obj => player response == Output
-	- could put some recurring dispaly routines here (obj_lst => str_lst and such) ??
-	- Display could also hold buffer commands???
-	- Another possible class name == Output ???
-	- Leaning towards Output... this helps distinguish from all the verb-linked Disp methods
 
 
 Do What the Player Means:
