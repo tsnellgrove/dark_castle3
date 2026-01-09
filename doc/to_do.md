@@ -103,7 +103,7 @@ To Do List - Dark Castle v3
 - INPROC: next interp() goals:
 	- DONE: create a version just for interp() updates and gather all interp updates there!!
 	- DONE: full review of to-do list
-	- INPROC: org to-do list
+	- DONE: org to-do list
 		- TBD: read research
 		- TBD: deep dive review of Believed to be Done items
 		- TBD: synonyms
@@ -112,8 +112,13 @@ To Do List - Dark Castle v3
 		- TBD: prepositions
 			- IDEA: simple prep verbs ('sit_in')
 		- TBD: plurals
-		- TBD: prepositions
 		- TBD: pronouns
+		- TBD: do what the player means
+		- TBD: sentence structure
+		- TBD: curse words
+		- TBD: tactical fixes
+		- TBD: new commands
+		
 
 
 
@@ -210,30 +215,6 @@ Pronouns:
 	- Leaning towards Output... this helps distinguish from all the verb-linked Disp methods
 
 
-
-Curse Words:
-- TBD: implement curse warning / ending at Interpreter() level
-
-
-Tactical Fixes for Existing Code / Features:
-- TBD: word_lst assignment:
-	- prep case word_lst => trig_vals_lst is erratic
-		- (see interp() ln 201, validate() ln 32, & mach_class() ln 72)
-- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
-	IDEA: swap to meth_noun_str and attrib_noun_str ??
-- TBD: sort out 'can't drop fist or brass_lantern issue
-- TBD: drop node 3 (portable_containers in containers) disp???
-	- TBD: can burt know about node 3 items he hasn't 'seen' in this game?
-	- TBD: play through Zork kitchen to test out
-- TBD?: can I store variables in static_dict strings? (in f-string format)
-- TBD?: can I return method errors based on verb method
-	- EXAMPLE: (e.g. "Burt, what kind of person would try to attack a Throne?")
-- TBD: convert words like 'look' to 2word in interp(), rather than cmd(), if possible
-
-
-
-
-
 Do What the Player Means:
 - TBD: special case of guessing what player means if they don't specify in full
 	- TBD: how should this work? Should they need to be aware of what's in their hand?
@@ -258,23 +239,37 @@ Sentence Structure:
 	- IDEA: but if this is not possible, a sit() method could be created similar to climb()
 
 
+Curse Words:
+- TBD: implement curse warning / ending at Interpreter() level
+
+
+Tactical Fixes for Existing Code / Features:
+- TBD: word_lst assignment:
+	- prep case word_lst => trig_vals_lst is erratic
+		- (see interp() ln 201, validate() ln 32, & mach_class() ln 72)
+- TBD: fix interp() prep_verb noun vs. dirobj nomenclature once and for all!
+	IDEA: swap to meth_noun_str and attrib_noun_str ??
+- TBD: sort out 'can't drop fist or brass_lantern issue
+- TBD: drop node 3 (portable_containers in containers) disp???
+	- TBD: can burt know about node 3 items he hasn't 'seen' in this game?
+	- TBD: play through Zork kitchen to test out
+- TBD?: can I store variables in static_dict strings? (in f-string format)
+- TBD?: can I return method errors based on verb method
+	- EXAMPLE: (e.g. "Burt, what kind of person would try to attack a Throne?")
+- TBD: convert words like 'look' to 2word in interp(), rather than cmd(), if possible
+
+
 Create New Commands:
 - move() command ?
-
-
-Conversational verbs:
-- IDEA: 'talk to creature' format:
-	- IDEA: 'Ask X about Y'
-	- IDEA: 'Tell X about Y'
-	- IDEA: Say 'Z'
-
-
 Commands to Support Someday:
-- if you meet a person:
+- if you meet a creature:
 	- Talk to <name>
 	- Tell <name> about <X>
-	- Give <thing> to <name>
+	- Ask <name> about <X>
+	- Say <X>
 	- Show <thing> to <name>
+	- Give <thing> to <name>
+	- Attack <name> with <obj>
 - If you find a thing:
 	- Turn <X>
 	- Feel <X>
