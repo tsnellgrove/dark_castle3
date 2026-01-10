@@ -123,7 +123,21 @@ To Do List - Dark Castle v3
 
 
 Research:
-- TBD: read for DCv3 parser ideas: https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
+- DONE: read => https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
+- TBD: consider idea of separate obj, ind-obj, and verb error routines
+- TBD: learn about zork verb synonyms
+	- TBD: compile full list of zork verb synonyms and customize for DC
+- TBD: think about how to implement noun-synonyms
+- TBD: consider how to embrace zork syntaxes
+- TBD: review TADS interpreter design notes
+	- TBD: https://tads.org/t3doc/doc/sysman/interp.htm
+	- TBD: https://tads.org/t3doc/doc/sysman/verbs.htm
+	- TBD: https://tads.org/t3doc/doc/sysman/nouns.htm
+	- TBD: https://tads.org/t3doc/doc/sysman/sentence.htm
+	- TBD: https://tads.org/t3doc/doc/sysman/preps.htm
+	- TBD: https://tads.org/t3doc/doc/sysman/synonyms.htm
+	- TBD: https://tads.org/t3doc/doc/sysman/pronouns.htm
+	- TBD: https://tads.org/t3doc/doc/sysman/plurals.htm
 
 
 Believed to be Done:
@@ -286,6 +300,9 @@ Commands to Support Someday:
 	- Dig in <X>
 	- Enter <X>
 	- Search <X>
+	- Move <X> {Push synonym?}
+- Easter Eggs:
+	- xyzzy => "A hollow voice says 'Fool!'."
 - Also
 	- Listen
 	- Sleep
