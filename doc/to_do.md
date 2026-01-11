@@ -124,58 +124,79 @@ To Do List - Dark Castle v3
 
 Research:
 - DONE: read => https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
+- DECISION: my goal will be Zork 285 (each word = 1 part of speech) with PREP option
+	- IMPLICATION: unlike ZIL, I will not recognize multiple parts of speech per word
+- TBD: document good information sources found so far
+- TBD: re-assign remaining research under branch activity
 - TBD: consider idea of separate obj, ind-obj, and verb error routines
 - TBD: learn about zork verb synonyms
 	- TBD: compile full list of zork verb synonyms and customize for DC
 - TBD: think about how to implement noun-synonyms
 - TBD: consider how to embrace zork syntaxes
-- TBD: review TADS interpreter design notes
-	- TBD: https://tads.org/t3doc/doc/sysman/interp.htm
-	- TBD: https://tads.org/t3doc/doc/sysman/verbs.htm
-	- TBD: https://tads.org/t3doc/doc/sysman/nouns.htm
-	- TBD: https://tads.org/t3doc/doc/sysman/sentence.htm
-	- TBD: https://tads.org/t3doc/doc/sysman/preps.htm
-	- TBD: https://tads.org/t3doc/doc/sysman/synonyms.htm
-	- TBD: https://tads.org/t3doc/doc/sysman/pronouns.htm
-	- TBD: https://tads.org/t3doc/doc/sysman/plurals.htm
 
 
-Believed to be Done:
-- TBD?: fix progromatic usage of "a" vs "an" (e.g. "There is a Iron Portcullis to the north")
-- DONE: change backpack and worn lists to include 'a' and 'an'
-- IDEA: maybe a txt_handling() module with a disp_lst() func that takes care of 
-	- DONE: "x", "x & y", "x, y, & z"; 
-	- DONE: 'a' or 'an'; 
-- DONE: Can 'a' vs. 'an' be fixed?
-- DONE: basic interp features: 'take all', 'again', 'wait'
-	- DONE: more abreviations: 'g' = 'again', 'z' = 'wait'
-	- DONE: enable 'take all'
-	- DONE: enable "take all", "drop all"
-- DONE: create 'jump' command with same response as Zork ('Whee!' I think?)
-- DONE: randomize description of Burt shown during 'inventory'
-	- DONE: randomize frequent responses (e.g. "in your spell book you see...")
-- DONE?: address 'I can't see a x_y' error
-	- IDEA: need a better way to error on 'x'_'y' != obj.name
-	- IDEA: maybe if '_' in noun, buff: "I don't see that"
-- DONE?: consider introducing str_to_obj_dict in Core
-	- IDEA: (enable ease of entrance.examine(gs) in startup() )
+Get Started!
+- TBD: create new interp_feature git branch
+	- TBD: 'git branch' to confirm *master
+	- TBD: 'git branch <FEATURE_NAME>' to create new branch
+	- TBD: 'git branch' to confirm new branch exists but that master is still checked out
+	- TBD: 'git checkout <FEATURE_NAME>' to switch focus to branching_test branch
+	- TBD: 'git branch' to confirm new branch is now in focus
+	- TBD: Publish Branch via VS Code button
+	- TBD: confirm new branch on GitHub
+	- TBD: update doc TBDs to DONEs
+	- TBD: <CMD><OPT>S (to save all files)
+	- TBD: 'git add .' to add files to be committed
+	- TBD: 'git commit -m "doc updates"
+	- TBD: 'git push" to push updates to origin (GitHub)
+	- TBD: confirm new branch on GitHub is now ahead of master
+
+
+Synonyms & Syntax
+- TBD: pursue formal LEX (str => lst)=> EPARSE (syn, OIA, & syntax) -> execution (do it) plan
+- TBD: start with LEX function
+- TBD: sort out noun synonyms (with local awareness and game assignmet)
+- TBD: next, sort out verb synonyms (including multi-word synonyms and class-based synonyms)
+	- TBD: envision how synonyms should link with class
+- TBD: implment syntax concept using preps
+- TBD: return to research to consider error tree based on OIA or just A
 
 
 Synonyms:
-- TBD: should synonyms be an obj attribute?? => noun synonyms
-- TBD: need to enable a rich set of game-specific synonyms!
-	- TBD: make 'apparatus' a synonym for control_panel
-	- TBD: add '* apparatus' as trigger to goblin_attack_mach
-- TBD: interpreter idea => permitted verbs & synonyms by class (e.g. 'doff' for Garment)
-- TBD: exit() should apply to chairs and doors => move to Perch / Nook class
-- TBD: should have 'go in gate' and 'enter gate' as synonyms for 'go north' from entrance?
-	- IDEA: standard feature of doors & rooms ??
-- IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
-	- verb synonuyms linked to class / class method?
-	- perhaps additional, optional cusotm verb synonyms as an obj attribute?
-- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
-	- TBD: also want to enable 'go in' and 'go out' of chair
-- TBD: sort out synonyms like 'stand' and 'sit' and 'lie'
+- TBD: noun synonyms
+	- TBD: should synonyms be an obj attribute?? => noun synonyms
+	- TBD: need to enable a rich set of game-specific synonyms!
+		- TBD: make 'apparatus' a synonym for control_panel
+		- TBD: add '* apparatus' as trigger to goblin_attack_mach
+	- interp() refacto shoud be based on objects (contents of rooom)
+	- each obj should have noun syns (in place of root_word)
+
+
+- TBD: verb synonyms
+	- TBD: sort out class-based verb synonyms idea
+			- have global verb syns and class-based verb syns (start with global; much easier!)
+			- e.g. 'get' is gbl verb syn for take() but 'sit on' is a Seat class verb syn for enter()
+			- based on verb, validate prep usage
+			- Order of Op: 1) obj noun syns, 2) gbl verb syns, 3) class verb syns
+	- TBD: interpreter idea => permitted verbs & synonyms by class (e.g. 'doff' for Garment)
+		- e.g. = 'take' if class == garment (??)
+	- TBD: exit() should apply to chairs and doors => move to Perch / Nook class
+	- TBD: should have 'go in gate' and 'enter gate' as synonyms for 'go north' from entrance?
+		- IDEA: standard feature of doors & rooms ??
+	- IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
+		- verb synonuyms linked to class / class method?
+		- perhaps additional, optional cusotm verb synonyms as an obj attribute?
+	- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
+		- TBD: also want to enable 'go in' and 'go out' of chair
+	- TBD: sort out synonyms like 'stand' and 'sit' and 'lie'
+
+
+- TBD: prep & syntax
+	- if user input has multiple obj, determine noun vs. dir_obj from prep usage (i.e. to vs with)
+
+
+
+
 - Interpreter enhancements:
 	- noun synonyms (list in place of base_name)
 	- verb synonyms (attribute of Class? Should verbs associated with obj???)
@@ -183,13 +204,7 @@ Synonyms:
 	- worn obj take() => "You're already wearing it"
 	- obj on floor remove() => "Taken" (i.e. is synonym)
 - New interp() Ideas:
-	- interp() refacto shoud be based on objects (contents of rooom)
-	- each obj should have noun syns (in place of root_word)
-	- if user input has multiple obj, determine noun vs. dir_obj from prep usage (i.e. to vs with)
-	- have global verb syns and class-based verb syns (start with global; much easier!)
-		- e.g. 'get' is gbl verb syn for take() but 'sit on' is a Seat class verb syn for enter()
-	- based on verb, validate prep usage
-	- Order of Op: 1) obj noun syns, 2) gbl verb syns, 3) class verb syns
+
 
 
 Preposition Handling:
@@ -200,6 +215,17 @@ Preposition Handling:
 	- IDEA: in interp(), have a list of all possible preps and use list to break sentence
 - TBD: gracefully deal with unneeded preposition usage (e.g. "push on button")
 - Interp deep dive including better solution to prep checking ('put in' vs. 'put on')
+
+
+Sentence Structure:
+- IDEA: prep_no_do (prep no direct-object verbs):
+	- DOC: format = '<verb> <prep> <noun>' (e.g. 'climb up tree')
+	- FINDING: climb requires a method because not every ViewOnly obj can be climbed
+	- FINDING: this is true even when the climb direction is available in io.map()
+	- IDEA: this is not true for 'sit in chair' (i.e. any chair should support sitting)
+	- IDEA: but it's worth noting that the sentence structure is the same
+	- IDEA: ideally, ['sit in', 'sit on'] would just become abreviations for 'enter'
+	- IDEA: but if this is not possible, a sit() method could be created similar to climb()
 
 
 Plurals:
@@ -242,19 +268,29 @@ Do What the Player Means:
 - TBD: assume that item in hand will be used for activity (e.g. attack)
 
 
-Sentence Structure:
-- IDEA: prep_no_do (prep no direct-object verbs):
-	- DOC: format = '<verb> <prep> <noun>' (e.g. 'climb up tree')
-	- FINDING: climb requires a method because not every ViewOnly obj can be climbed
-	- FINDING: this is true even when the climb direction is available in io.map()
-	- IDEA: this is not true for 'sit in chair' (i.e. any chair should support sitting)
-	- IDEA: but it's worth noting that the sentence structure is the same
-	- IDEA: ideally, ['sit in', 'sit on'] would just become abreviations for 'enter'
-	- IDEA: but if this is not possible, a sit() method could be created similar to climb()
-
-
 Curse Words:
 - TBD: implement curse warning / ending at Interpreter() level
+
+
+Believed to be Done:
+- TBD?: fix progromatic usage of "a" vs "an" (e.g. "There is a Iron Portcullis to the north")
+- DONE: change backpack and worn lists to include 'a' and 'an'
+- IDEA: maybe a txt_handling() module with a disp_lst() func that takes care of 
+	- DONE: "x", "x & y", "x, y, & z"; 
+	- DONE: 'a' or 'an'; 
+- DONE: Can 'a' vs. 'an' be fixed?
+- DONE: basic interp features: 'take all', 'again', 'wait'
+	- DONE: more abreviations: 'g' = 'again', 'z' = 'wait'
+	- DONE: enable 'take all'
+	- DONE: enable "take all", "drop all"
+- DONE: create 'jump' command with same response as Zork ('Whee!' I think?)
+- DONE: randomize description of Burt shown during 'inventory'
+	- DONE: randomize frequent responses (e.g. "in your spell book you see...")
+- DONE?: address 'I can't see a x_y' error
+	- IDEA: need a better way to error on 'x'_'y' != obj.name
+	- IDEA: maybe if '_' in noun, buff: "I don't see that"
+- DONE?: consider introducing str_to_obj_dict in Core
+	- IDEA: (enable ease of entrance.examine(gs) in startup() )
 
 
 Tactical Fixes for Existing Code / Features:
@@ -312,6 +348,20 @@ Commands to Support Someday:
 	- Pray
 	- Curse
 	- Sing
+
+
+- TBD: git branch merge with master
+	- TBD: 'git checkout master' to switch focus to master
+	- TBD: 'git branch: to confirm focus
+	- TBD: 'git merge <FEATURE_NAME> -m "branch <FEATURE_NAME> merge"'
+	- TBD: 'git push' to push merge to origin (GitHub)
+	- TBD: confirm that origin is updated
+	- TBD: confirm that code is updated and still runs
+	- TBD: 'git branch -d <FEATURE_NAME>' to clean-up local branch
+	- TBD: 'git push origin --delete <FEATURE_NAME>' to clean up origin
+	- TBD: confirm origin is cleaned up
+	- TBD: post-branch-delete run test
+
 
 
 
