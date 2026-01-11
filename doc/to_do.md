@@ -126,6 +126,7 @@ Research:
 - DONE: read => https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
 - DECISION: my goal will be Zork 285 (each word = 1 part of speech) with PREP option
 	- IMPLICATION: unlike ZIL, I will not recognize multiple parts of speech per word
+- TBD: read 2 newest sources
 - TBD: document good information sources found so far
 - TBD: re-assign remaining research under branch activity
 - TBD: consider idea of separate obj, ind-obj, and verb error routines
@@ -154,12 +155,12 @@ Get Started!
 
 Synonyms & Syntax
 - TBD: pursue formal LEX (str => lst)=> EPARSE (syn, OIA, & syntax) -> execution (do it) plan
-- TBD: start with LEX function
-- TBD: sort out noun synonyms (with local awareness and game assignmet)
-- TBD: next, sort out verb synonyms (including multi-word synonyms and class-based synonyms)
-	- TBD: envision how synonyms should link with class
-- TBD: implment syntax concept using preps
-- TBD: return to research to consider error tree based on OIA or just A
+	- TBD: start with LEX function
+	- TBD: sort out noun synonyms (with local awareness and game assignmet)
+	- TBD: next, sort out verb synonyms (including multi-word synonyms and class-based synonyms)
+		- TBD: envision how synonyms should link with class
+	- TBD: implment syntax concept using preps
+	- TBD: return to research to consider error tree based on OIA or just A
 
 
 Synonyms:
@@ -173,6 +174,15 @@ Synonyms:
 
 
 - TBD: verb synonyms
+	- TBD: create Zork and DC verb / class / synonym list
+		- TBD: understand which zork verbs will be relevant to dc
+		- IDEA: verb list org
+			- IDEA: master verb list is in cleesh static_gbl
+			- IDEA: universal synonym list lives in verb method as attrib
+			- IDEA: can exapnd verb synonyms in noun classes
+				- EXAMPLE: for garment class; universal synonym for wear() = 'put on', don
+				- EXAMPLE: class-specific synonym for take() = remove, doff
+	
 	- TBD: sort out class-based verb synonyms idea
 			- have global verb syns and class-based verb syns (start with global; much easier!)
 			- e.g. 'get' is gbl verb syn for take() but 'sit on' is a Seat class verb syn for enter()
@@ -189,7 +199,6 @@ Synonyms:
 	- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
 		- TBD: also want to enable 'go in' and 'go out' of chair
 	- TBD: sort out synonyms like 'stand' and 'sit' and 'lie'
-
 
 - TBD: prep & syntax
 	- if user input has multiple obj, determine noun vs. dir_obj from prep usage (i.e. to vs with)
