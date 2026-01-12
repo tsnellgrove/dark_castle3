@@ -126,7 +126,9 @@ Research:
 - DONE: read => https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
 - DECISION: my goal will be Zork 285 (each word = 1 part of speech) with PREP option
 	- IMPLICATION: unlike ZIL, I will not recognize multiple parts of speech per word
-- TBD: read 2 newest sources
+- DONE: read z-machine history
+- TBD: read ZIL article
+- TBD: read i-fiction ZIL write-up
 - TBD: document good information sources found so far
 - TBD: re-assign remaining research under branch activity
 - TBD: consider idea of separate obj, ind-obj, and verb error routines
