@@ -127,7 +127,7 @@ Research:
 - DECISION: my goal will be Zork 285 (each word = 1 part of speech) with PREP option
 	- IMPLICATION: unlike ZIL, I will not recognize multiple parts of speech per word
 - DONE: read z-machine history
-- INPROC: read ZIL article
+- DONE: read ZIL article
 - TBD: read i-fiction ZIL write-up
 - TBD: document good information sources found so far
 - TBD: re-assign remaining research under branch activity
@@ -171,6 +171,7 @@ Synonyms:
 	- TBD: need to enable a rich set of game-specific synonyms!
 		- TBD: make 'apparatus' a synonym for control_panel
 		- TBD: add '* apparatus' as trigger to goblin_attack_mach
+	- note zil approach of separate adjectives & synonyms (can have multiple adj)
 	- interp() refacto shoud be based on objects (contents of rooom)
 	- each obj should have noun syns (in place of root_word)
 
