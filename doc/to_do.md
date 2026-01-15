@@ -128,7 +128,7 @@ Research:
 	- IMPLICATION: unlike ZIL, I will not recognize multiple parts of speech per word
 - DONE: read z-machine history
 - DONE: read ZIL article
-- TBD: read i-fiction ZIL write-up
+- INPROC: read i-fiction ZIL write-up
 - TBD: document good information sources found so far
 - TBD: re-assign remaining research under branch activity
 - TBD: consider idea of separate obj, ind-obj, and verb error routines
