@@ -166,6 +166,10 @@ Synonyms & Syntax
 
 
 Synonyms:
+- TBD: parts of speech
+	- IDEA: zork treats directions as their own part of speech - should i do the same?
+	- IDEA: in zork, the mapping for in, out, enter, and exit are set in room...
+	- IDEA: if not set in room, i'll need some way to interpret them, with "()"s
 - TBD: noun synonyms
 	- TBD: should synonyms be an obj attribute?? => noun synonyms
 	- TBD: need to enable a rich set of game-specific synonyms!
