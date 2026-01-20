@@ -129,6 +129,7 @@ Research:
 - DONE: read z-machine history
 - DONE: read ZIL article
 - INPROC: read i-fiction ZIL write-up
+- INPROC: create zork 285 word list
 - TBD: document good information sources found so far
 - TBD: re-assign remaining research under branch activity
 - TBD: consider idea of separate obj, ind-obj, and verb error routines
