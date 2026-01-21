@@ -127,9 +127,10 @@ Research:
 - DECISION: my goal will be Zork 285 (each word = 1 part of speech) with PREP option
 	- IMPLICATION: unlike ZIL, I will not recognize multiple parts of speech per word
 - DONE: read z-machine history
-- DONE: read ZIL article
-- INPROC: read i-fiction ZIL write-up
-- INPROC: create zork 285 word list
+- DONE: read ZIL article: https://intfiction.org/t/recreating-zork-285-in-zil/53841/2
+- DONE: read i-fiction ZIL write-up
+- DONE: create zork 285 word list
+- TBD: sort and understand word list
 - TBD: document good information sources found so far
 - TBD: re-assign remaining research under branch activity
 - TBD: consider idea of separate obj, ind-obj, and verb error routines
