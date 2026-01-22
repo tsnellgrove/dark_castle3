@@ -129,8 +129,11 @@ Research:
 - DONE: read z-machine history
 - DONE: read ZIL article: https://intfiction.org/t/recreating-zork-285-in-zil/53841/2
 - DONE: read i-fiction ZIL write-up
-- DONE: create zork 285 word list
-- TBD: sort and understand word list
+- INPROC: create zork 285 word list
+	- DONE: review buzz and directions
+	- TBD: review verbs
+	- TBD: document dark_castle words
+	- TBD: compare lists and consider changes
 - TBD: document good information sources found so far
 - TBD: re-assign remaining research under branch activity
 - TBD: consider idea of separate obj, ind-obj, and verb error routines
