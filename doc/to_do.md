@@ -131,7 +131,7 @@ Research:
 - DONE: read i-fiction ZIL write-up
 - INPROC: create zork 285 word list
 	- DONE: review buzz and directions
-	- TBD: review verbs
+	- INPROC: review verbs
 	- TBD: document dark_castle words
 	- TBD: compare lists and consider changes
 - TBD: document good information sources found so far
