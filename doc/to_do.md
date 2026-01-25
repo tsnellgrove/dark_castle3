@@ -132,6 +132,9 @@ Research:
 - INPROC: create zork 285 word list
 	- DONE: review buzz and directions
 	- DONE: review verbs
+	- DONE: establish my synonyms for congruent verbs
+	- TBD: create interp branch
+	- TBD: add synonyms for congruent verbs
 	- TBD: document dark_castle words
 	- TBD: compare lists and consider changes
 - TBD: document good information sources found so far
