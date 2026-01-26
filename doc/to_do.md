@@ -133,10 +133,14 @@ Research:
 	- DONE: review buzz and directions
 	- DONE: review verbs
 	- DONE: establish my synonyms for congruent verbs
-	- TBD: create interp branch
-	- TBD: add synonyms for congruent verbs
 	- TBD: document dark_castle words
 	- TBD: compare lists and consider changes
+	- TBD: read inner workers review of ZIL interpreter
+	- TBD: create interp branch
+	- TBD: add synonyms for congruent verbs
+	- TBD: create enter cmd for doors / portals?
+	- TBD: exapnd on use of "look at / in / on", "go in / on", etc.
+	- TBD: separate rooutine for help? remove from known_verb_lst ?
 - TBD: document good information sources found so far
 - TBD: re-assign remaining research under branch activity
 - TBD: consider idea of separate obj, ind-obj, and verb error routines
@@ -178,7 +182,9 @@ Synonyms:
 	- IDEA: zork treats directions as their own part of speech - should i do the same?
 	- IDEA: in zork, the mapping for in, out, enter, and exit are set in room...
 	- IDEA: if not set in room, i'll need some way to interpret them, with "()"s
+
 - TBD: noun synonyms
+	- TBD: error and synonmy option for nouns?
 	- TBD: should synonyms be an obj attribute?? => noun synonyms
 	- TBD: need to enable a rich set of game-specific synonyms!
 		- TBD: make 'apparatus' a synonym for control_panel
@@ -186,7 +192,6 @@ Synonyms:
 	- note zil approach of separate adjectives & synonyms (can have multiple adj)
 	- interp() refacto shoud be based on objects (contents of rooom)
 	- each obj should have noun syns (in place of root_word)
-
 
 - TBD: verb synonyms
 	- TBD: create Zork and DC verb / class / synonym list
@@ -318,6 +323,7 @@ Believed to be Done:
 
 
 Tactical Fixes for Existing Code / Features:
+- TBD: remove rand_mode from one_word_secret_lst ?
 - TBD: word_lst assignment:
 	- prep case word_lst => trig_vals_lst is erratic
 		- (see interp() ln 201, validate() ln 32, & mach_class() ln 72)
