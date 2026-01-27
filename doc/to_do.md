@@ -133,11 +133,13 @@ Research:
 	- DONE: review buzz and directions
 	- DONE: review verbs
 	- DONE: establish my synonyms for congruent verbs
-	- TBD: document dark_castle words
-	- TBD: compare lists and consider changes
+	- DONE: document dark_castle words
+	- DONE: compare lists and consider changes
+	- TBD: plan new words and word updates: congruent, update, new
 	- TBD: read inner workers review of ZIL interpreter
 	- TBD: create interp branch
 	- TBD: add synonyms for congruent verbs
+	- TBD: create test scenario for synonyms
 	- TBD: create enter cmd for doors / portals?
 	- TBD: exapnd on use of "look at / in / on", "go in / on", etc.
 	- TBD: separate rooutine for help? remove from known_verb_lst ?
