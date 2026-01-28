@@ -129,21 +129,25 @@ Research:
 - DONE: read z-machine history
 - DONE: read ZIL article: https://intfiction.org/t/recreating-zork-285-in-zil/53841/2
 - DONE: read i-fiction ZIL write-up
-- INPROC: create zork 285 word list
+- INPROC: work on zork 285 word list
 	- DONE: review buzz and directions
 	- DONE: review verbs
 	- DONE: establish my synonyms for congruent verbs
 	- DONE: document dark_castle words
 	- DONE: compare lists and consider changes
-	- TBD: plan new words and word updates: congruent, update, new
+	- DONE: plan universal verb synonym updates
 	- TBD: read inner workers review of ZIL interpreter
-	- TBD: create interp branch
+	- TBD: document good information sources found so far
+- TBD: create interp branch
 	- TBD: add synonyms for congruent verbs
 	- TBD: create test scenario for synonyms
+	- TBD: plan new words and word updates: congruent, update, new
+	- TBD: solve class-specific synonyms (e.g. 'doff' for garment)
+		- TBD: in static_gbl: cond_verb_syn_lst
+		- TBD: chk_class_syn() method in ViewOnly
 	- TBD: create enter cmd for doors / portals?
 	- TBD: exapnd on use of "look at / in / on", "go in / on", etc.
 	- TBD: separate rooutine for help? remove from known_verb_lst ?
-- TBD: document good information sources found so far
 - TBD: re-assign remaining research under branch activity
 - TBD: consider idea of separate obj, ind-obj, and verb error routines
 - TBD: learn about zork verb synonyms
