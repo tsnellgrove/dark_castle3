@@ -121,7 +121,6 @@ To Do List - Dark Castle v3
 		
 
 
-
 Research:
 - DONE: read => https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
 - DECISION: my goal will be Zork 285 (each word = 1 part of speech) with PREP option
@@ -136,16 +135,17 @@ Research:
 	- DONE: document dark_castle words
 	- DONE: compare lists and consider changes
 	- DONE: plan universal verb synonym updates
-	- TBD: read inner workers review of ZIL interpreter
+	- INPROC: read inner workers review of ZIL interpreter
+	- TBD: plan new words and word updates: congruent, update, new
 	- TBD: document good information sources found so far
 - TBD: create interp branch
 	- TBD: add synonyms for congruent verbs
 	- TBD: create test scenario for synonyms
-	- TBD: plan new words and word updates: congruent, update, new
 	- TBD: solve class-specific synonyms (e.g. 'doff' for garment)
 		- TBD: in static_gbl: cond_verb_syn_lst
 		- TBD: chk_class_syn() method in ViewOnly
 	- TBD: create enter cmd for doors / portals?
+	- TBD: set 'exit' / 'out' for rooms with only 1 door?
 	- TBD: exapnd on use of "look at / in / on", "go in / on", etc.
 	- TBD: separate rooutine for help? remove from known_verb_lst ?
 - TBD: re-assign remaining research under branch activity
