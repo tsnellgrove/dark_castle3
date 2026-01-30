@@ -136,7 +136,9 @@ Research:
 	- DONE: compare lists and consider changes
 	- DONE: plan universal verb synonym updates
 	- INPROC: read inner workers review of ZIL interpreter
+	- TBD: document attributes & policies
 	- TBD: plan new words and word updates: congruent, update, new
+	- TBD: plan over-arching order: where do syntaxes fit? differentiate verbs & actions?
 	- TBD: document good information sources found so far
 - TBD: create interp branch
 	- TBD: add synonyms for congruent verbs
