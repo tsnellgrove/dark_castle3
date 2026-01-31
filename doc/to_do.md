@@ -120,6 +120,13 @@ To Do List - Dark Castle v3
 		- TBD: new commands
 		
 
+- INPROC: big picture goals
+	- IDEA: research zil code in order to understand how more advanced parsers work
+	- IDEA: align zil approach with cleesh's object class-based system
+	- IDEA: explicitly exclude low-value options that I don't want to create
+		- EXAMPLES: most multiples, orphanned commands
+	- IDEA: aim for easy game coding - most of the work should be done by cleesh!
+
 
 Research:
 - DONE: read => https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
@@ -136,6 +143,7 @@ Research:
 	- DONE: compare lists and consider changes
 	- DONE: plan universal verb synonym updates
 	- INPROC: read inner workers review of ZIL interpreter
+	- TBD: will cleesh support multiple do & io?: "IGNITE CANDLE AND PAPER WITH TORCH AND FIRE"
 	- TBD: document attributes & policies
 	- TBD: plan new words and word updates: congruent, update, new
 	- TBD: plan over-arching order: where do syntaxes fit? differentiate verbs & actions?
