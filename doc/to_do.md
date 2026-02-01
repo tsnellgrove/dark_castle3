@@ -123,9 +123,27 @@ To Do List - Dark Castle v3
 - INPROC: big picture goals
 	- IDEA: research zil code in order to understand how more advanced parsers work
 	- IDEA: align zil approach with cleesh's object class-based system
-	- IDEA: explicitly exclude low-value options that I don't want to create
-		- EXAMPLES: most multiples, orphanned commands
+	- IDEA: explicitly exclude low-value options that I don't want to create yet
+		- EX: most multiples (inclulding use of "and")
+		- EX: orphanned ambiguous command completion
+		- EX: "then" and "." as command queue indicators
+		- EX: ask <actor> for / about <topic>, tell / say to <actor> <cmd>, '<actor>, <cmd>' ?
+		- EX: titles and numbers
+		- EX: adverbs (CAREFULLY, QUIETLY, SLOWLY, QUICKLY, and BRIEFLY)
+		- EX: OOPS, UNDO, advanced AGAIN
+		- EX: words as multiple parts of speech (.e.g 'back' as prep and adj)?
+		- EX: execute code from do-noun & io-noun response loop?
+	- TBD: propose big picture loop:
+		- 1. elim buzz words
+		- 2. convert noun & verb synonyms (including class-specific verb synonyms)
+		- 3. identify  verb, do-noun, prep, and io-noun
+		- 4. use syntax with verb, do-noun, io-noun, and prep to identify action
+		- 5. response loop:
+			- 5a. check id-noun for do-noun / action specific errors
+			- 5b. check do-noun for io-noun / action specific errors
+			- 5c. execute action (passing in do-noun & io-noun)
 	- IDEA: aim for easy game coding - most of the work should be done by cleesh!
+		- IDEA: "good tools make easy things easy and hard things possible"
 
 
 Research:
@@ -135,19 +153,18 @@ Research:
 - DONE: read z-machine history
 - DONE: read ZIL article: https://intfiction.org/t/recreating-zork-285-in-zil/53841/2
 - DONE: read i-fiction ZIL write-up
-- INPROC: work on zork 285 word list
+- DONE: work on zork 285 word list
 	- DONE: review buzz and directions
 	- DONE: review verbs
 	- DONE: establish my synonyms for congruent verbs
 	- DONE: document dark_castle words
 	- DONE: compare lists and consider changes
 	- DONE: plan universal verb synonym updates
-	- INPROC: read inner workers review of ZIL interpreter
-	- TBD: will cleesh support multiple do & io?: "IGNITE CANDLE AND PAPER WITH TORCH AND FIRE"
+- INPROC: read inner workers review of ZIL interpreter
+- TBD: plan future usage
 	- TBD: document attributes & policies
-	- TBD: plan new words and word updates: congruent, update, new
-	- TBD: plan over-arching order: where do syntaxes fit? differentiate verbs & actions?
-	- TBD: document good information sources found so far
+	- TBD: plan new words and word updates: congruent, update, new from zork 285 / zork-1 r88
+- TBD: document good information sources found so far
 - TBD: create interp branch
 	- TBD: add synonyms for congruent verbs
 	- TBD: create test scenario for synonyms
@@ -158,6 +175,8 @@ Research:
 	- TBD: set 'exit' / 'out' for rooms with only 1 door?
 	- TBD: exapnd on use of "look at / in / on", "go in / on", etc.
 	- TBD: separate rooutine for help? remove from known_verb_lst ?
+- TBD: useful rules from zil: only 1 verb, 2 nouns max, identify  verb, dir-o, & ind-o clauses
+- TBD: useful zil rules: skip "of" and word before (e.g. "one of", "piece of")
 - TBD: re-assign remaining research under branch activity
 - TBD: consider idea of separate obj, ind-obj, and verb error routines
 - TBD: learn about zork verb synonyms
