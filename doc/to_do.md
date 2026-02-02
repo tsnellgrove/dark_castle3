@@ -133,11 +133,14 @@ To Do List - Dark Castle v3
 		- EX: OOPS, UNDO, advanced AGAIN
 		- EX: words as multiple parts of speech (.e.g 'back' as prep and adj)?
 		- EX: execute code from do-noun & io-noun response loop?
-	- TBD: propose big picture loop:
+	- INPROC: propose big picture loop:
 		- 1. elim buzz words
 		- 2. convert noun & verb synonyms (including class-specific verb synonyms)
 		- 3. identify  verb, do-noun, prep, and io-noun
+			- 3a. error if verb or do-noun or io-noun is not known
 		- 4. use syntax with verb, do-noun, io-noun, and prep to identify action
+			- 4a. apply Get What I Mean (GWIM) if the io-noun is missing
+			- 4b. error if GWIM retruns 0 or > 1
 		- 5. response loop:
 			- 5a. check id-noun for do-noun / action specific errors
 			- 5b. check do-noun for io-noun / action specific errors
