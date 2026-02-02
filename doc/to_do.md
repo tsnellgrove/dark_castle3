@@ -178,6 +178,8 @@ Research:
 	- TBD: set 'exit' / 'out' for rooms with only 1 door?
 	- TBD: exapnd on use of "look at / in / on", "go in / on", etc.
 	- TBD: separate rooutine for help? remove from known_verb_lst ?
+	- TBD: document specific enhancement goals for this branch
+	- TBD: document big picture process to be implemented
 - TBD: useful rules from zil: only 1 verb, 2 nouns max, identify  verb, dir-o, & ind-o clauses
 - TBD: useful zil rules: skip "of" and word before (e.g. "one of", "piece of")
 - TBD: re-assign remaining research under branch activity
