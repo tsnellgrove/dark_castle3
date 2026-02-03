@@ -123,21 +123,32 @@ To Do List - Dark Castle v3
 - INPROC: big picture goals
 	- IDEA: research zil code in order to understand how more advanced parsers work
 	- IDEA: align zil approach with cleesh's object class-based system
-	- IDEA: explicitly exclude low-value options that I don't want to create yet
+	- INPROC: explicitly exclude low-value options that I don't want to create yet
 		- EX: most multiples (inclulding use of "and")
 		- EX: orphanned ambiguous command completion
 		- EX: "then" and "." as command queue indicators
 		- EX: ask <actor> for / about <topic>, tell / say to <actor> <cmd>, '<actor>, <cmd>' ?
-		- EX: titles and numbers
+		- EX: titles (with periods after them) [e.g. mr. , dr. , etc.]
+		- EX: numbers (e.g. GET ONE FRUIT)
+		- EX: extended ALL and EXCEPT / BUT
 		- EX: adverbs (CAREFULLY, QUIETLY, SLOWLY, QUICKLY, and BRIEFLY)
 		- EX: OOPS, UNDO, advanced AGAIN
 		- EX: words as multiple parts of speech (.e.g 'back' as prep and adj)?
 		- EX: execute code from do-noun & io-noun response loop?
 	- INPROC: propose big picture loop:
 		- 1. elim buzz words
-		- 2. convert noun & verb synonyms (including class-specific verb synonyms)
-		- 3. identify  verb, do-noun, prep, and io-noun
-			- 3a. error if verb or do-noun or io-noun is not known
+		- 2. convert verb synonyms (including class-specific verb synonyms)
+		- 3. identify  verb, do-noun clause, prep, and io-noun clauses
+			- 3a. error if verb or not known
+			- 3b. create scope_lst
+			- 3c. in scope_lst, for do-noun clause
+				- 3c1. validate noun (error if not found)
+				- 3c2. validate adj (error if not found)
+				- 3c3. identify do-noun (convert if noun is syn)
+			- 3d. in scope_lst, if id-noun clause exists
+				- 3d1. validate noun (error if not found)
+				- 3d2. validate adj (error if not foun)
+				- 3d3. identify id-noun (convert if noun is syn)
 		- 4. use syntax with verb, do-noun, io-noun, and prep to identify action
 			- 4a. apply Get What I Mean (GWIM) if the io-noun is missing
 			- 4b. error if GWIM retruns 0 or > 1
