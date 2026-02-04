@@ -136,19 +136,28 @@ To Do List - Dark Castle v3
 		- EX: words as multiple parts of speech (.e.g 'back' as prep and adj)?
 		- EX: execute code from do-noun & io-noun response loop?
 	- INPROC: propose big picture loop:
+		- 0. copy user_input_str => cmd_str
+			- 0a. cmd_str => clear white space and convert to lower
+			- 0b. cmd_str => cmd_str_lst
 		- 1. elim buzz words
 		- 2. convert verb synonyms (including class-specific verb synonyms)
+		- 2/5. address non-verb-noun cmds (non-interp, tru1word, convert_1word, help, go [?])
 		- 3. identify  verb, do-noun clause, prep, and io-noun clauses
 			- 3a. error if verb or not known
-			- 3b. create scope_lst
+			- 3b. create scope_lst and noun_syn_lst
+				- 3b1. convert cmd_str_lst to root nouns using noun_syn_lst
 			- 3c. in scope_lst, for do-noun clause
-				- 3c1. validate noun (error if not found)
-				- 3c2. validate adj (error if not found)
-				- 3c3. identify do-noun (convert if noun is syn)
+				- 3c1. find noun in scope_lst
+				- 3c2. validate adj (error if not found?) and removed
+				- 3c3. identify do-noun
 			- 3d. in scope_lst, if id-noun clause exists
-				- 3d1. validate noun (error if not found)
-				- 3d2. validate adj (error if not foun)
-				- 3d3. identify id-noun (convert if noun is syn)
+				- 3d1. find noun in scope_lst
+				- 3d2. validate adj (error if not found?) and remove
+				- 3d3. identify id-noun
+			- 3e. identify each non-buzz prep
+			- 3f. apply basic cmd rules:
+				- 3f1. verb count = 1
+				- 3f1. noun count in [1, 2]
 		- 4. use syntax with verb, do-noun, io-noun, and prep to identify action
 			- 4a. apply Get What I Mean (GWIM) if the io-noun is missing
 			- 4b. error if GWIM retruns 0 or > 1
