@@ -167,7 +167,11 @@ To Do List - Dark Castle v3
 			- 5c. execute action (passing in do-noun & io-noun)
 	- IDEA: aim for easy game coding - most of the work should be done by cleesh!
 		- IDEA: "good tools make easy things easy and hard things possible"
-
+- INPROC:
+	- DECISION: does updated interpreter require updated perform flow?
+	- FINDING: dc today = pre_action, cmd_exe, post_action, auto_action
+	- FINDING: infocom = player, player_rm, verb_pre_act, id_act (include id cont), do_act, verb_act
+	- TBD: decide whether / how to update perform loop
 
 Research:
 - DONE: read => https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
