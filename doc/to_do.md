@@ -140,9 +140,9 @@ To Do List - Dark Castle v3
 			- 0a. cmd_str => clear white space and convert to lower
 			- 0b. cmd_str => cmd_str_lst
 		- 1. elim buzz words
-		- 2. convert verb synonyms (including class-specific verb synonyms)
+		- 2. convert verb synonyms
 		- 2/5. address non-verb-noun cmds (non-interp, tru1word, convert_1word, help, go [?])
-		- 3. identify  verb, do-noun clause, prep, and io-noun clauses
+		- 3. identify  verb, do-noun clause, prep, and id-noun clauses
 			- 3a. error if verb or not known
 			- 3b. create scope_lst and noun_syn_lst
 				- 3b1. convert cmd_str_lst to root nouns using noun_syn_lst
@@ -155,16 +155,32 @@ To Do List - Dark Castle v3
 				- 3d2. validate adj (error if not found?) and remove
 				- 3d3. identify id-noun
 			- 3e. identify each non-buzz prep
-			- 3f. apply basic cmd rules:
+			- 3f. if verb is on class_spec_vrb_lst, check if do-noun supports it
+				- 3f1. if yes, proceed; else, std err
+			- 3g. apply basic cmd rules:
 				- 3f1. verb count = 1
 				- 3f1. noun count in [1, 2]
-		- 4. use syntax with verb, do-noun, io-noun, and prep to identify action
-			- 4a. apply Get What I Mean (GWIM) if the io-noun is missing
+		- 4. use syntax with verb, do-noun, id-noun, and prep to identify action
+			- 4a. apply Get What I Mean (GWIM) if the id-noun is missing
 			- 4b. error if GWIM retruns 0 or > 1
 		- 5. response loop:
 			- 5a. check id-noun for do-noun / action specific errors
-			- 5b. check do-noun for io-noun / action specific errors
-			- 5c. execute action (passing in do-noun & io-noun)
+			- 5b. check do-noun for id-noun / action specific errors
+			- 5c. execute action (passing in do-noun & id-noun)
+	- INPROC: machine encapsulation
+		- IDEA: achieve greater standardization by encapsulating all modular machines in obj
+		- IDEA: this way, obj themselves are never actually obj
+		- IDEA: greater standardization and fewer classes
+		- TBD: review existing obj-machs
+		- TBD: make decision
+	- INPROC: updates for Invisible class
+		- IDEA: attrib == suptd_vrb_lst
+		- IDEA: method == chk_class_spec_vrb()
+	- INPROC: new attribs needed for obj:
+		- IDEA: syn_lst
+		- IDEA: adj_lst
+		- IDEA: err_dict [method required to read dict w/ wildcards / class {e.g. is_weapon}]
+		- IDEA: enable run of machs based on io-noun, do-noun, and action (???)
 	- IDEA: aim for easy game coding - most of the work should be done by cleesh!
 		- IDEA: "good tools make easy things easy and hard things possible"
 - INPROC:
@@ -1086,6 +1102,11 @@ TBD: Enable Verb Methods for Machines
 			- Breathing limits will apply
 			- This will mostly be independent of Liquids... 
 				- but anything with a 'ruin' liquid_result == 'ruin' should be destroyed by swimming
+
+
+*** Introduce Interupts ***
+- triggered by time value
+- commands run independently of player choices (e.g. day turns to night, moon comes out, etc.)
 
 
 *** Get food / hunger and beverages / thirst working ***
