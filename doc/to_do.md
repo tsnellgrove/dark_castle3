@@ -104,8 +104,8 @@ To Do List - Dark Castle v3
 	- DONE: create a version just for interp() updates and gather all interp updates there!!
 	- DONE: full review of to-do list
 	- DONE: org to-do list
-		- TBD: read research
-		- TBD: deep dive review of Believed to be Done items
+		- DONE: read research
+		- DONE: deep dive review of Believed to be Done items
 		- TBD: synonyms
 			- IDEA: noun synonyms (different than abreviations)
 			- IDEA: global verb synonyms
@@ -120,10 +120,27 @@ To Do List - Dark Castle v3
 		- TBD: new commands
 		
 
-- INPROC: big picture goals
-	- IDEA: research zil code in order to understand how more advanced parsers work
-	- IDEA: align zil approach with cleesh's object class-based system
-	- INPROC: explicitly exclude low-value options that I don't want to create yet
+- INPROC: big picture goals / scope
+	- DONE: research zil code in order to understand how more advanced parsers work
+	- DONE: articulate big picture goals
+		- IDEA: enable greate flexibility of words and sentence structure
+		- IDEA: align zil approach with cleesh's object class-based system
+		- IDEA: aim for easy game coding - most of the work should be done by cleesh!
+			- IDEA: "good tools make easy things easy and hard things possible"
+	- INPROC: articulate specific features
+		- IDEA: differentiate between verbs and actions
+		- IDEA: embrace the zil notion of syntax to enable natural sentence structure
+		- IDEA: enable multiple adjectives per noun
+		- IDEA: enable synonyms for nouns and verbs
+		- IDEA: enable class-specific verbs (e.g. 'doff')
+		- IDEA: enable errors and mach run perform at do-noun and id-noun level (??)
+		- IDEA: consistent way to deal with pronuns
+		- IDEA: consistent way to deal with plurals
+		- IDEA: enhanced get-what-i-mean
+		- IDEA: deal with curse words
+		- IDEA some tactical fixes
+		- IDEA: a few new cmds
+	- DONE: document zil capabilities that are out of scope to this cleesh update
 		- EX: most multiples (inclulding use of "and")
 		- EX: orphanned ambiguous command completion
 		- EX: "then" and "." as command queue indicators
@@ -135,7 +152,8 @@ To Do List - Dark Castle v3
 		- EX: OOPS, UNDO, advanced AGAIN
 		- EX: words as multiple parts of speech (.e.g 'back' as prep and adj)?
 		- EX: execute code from do-noun & io-noun response loop?
-	- INPROC: propose big picture loop:
+		- EX: 'part-of' concept
+	- DONE: propose updated parser loop:
 		- 0. copy user_input_str => cmd_str
 			- 0a. cmd_str => clear white space and convert to lower
 			- 0b. cmd_str => cmd_str_lst
@@ -171,7 +189,8 @@ To Do List - Dark Castle v3
 		- IDEA: achieve greater standardization by encapsulating all modular machines in obj
 		- IDEA: this way, obj themselves are never actually obj
 		- IDEA: greater standardization and fewer classes
-		- TBD: review existing obj-machs
+		- DONE: review existing machs nouns: big_rock, kinging_scroll, shiny_sword
+		- DONE: review existing switch nouns: throne
 		- TBD: make decision
 	- INPROC: updates for Invisible class
 		- IDEA: attrib == suptd_vrb_lst
@@ -181,13 +200,19 @@ To Do List - Dark Castle v3
 		- IDEA: adj_lst
 		- IDEA: err_dict [method required to read dict w/ wildcards / class {e.g. is_weapon}]
 		- IDEA: enable run of machs based on io-noun, do-noun, and action (???)
-	- IDEA: aim for easy game coding - most of the work should be done by cleesh!
-		- IDEA: "good tools make easy things easy and hard things possible"
 - INPROC:
 	- DECISION: does updated interpreter require updated perform flow?
 	- FINDING: dc today = pre_action, cmd_exe, post_action, auto_action
 	- FINDING: infocom = player, player_rm, verb_pre_act, id_act (include id cont), do_act, verb_act
 	- TBD: decide whether / how to update perform loop
+- INPROC:
+	- DECISION: do i want to incorporate any of these zil ideas?
+		- TBD: look-inside action that only shows contents?
+		- TBD: use of vehicles?
+		- TBD: us of universal obj predicates (chk routines); e.g. chk_lit() ?
+		- TBD: goto rountine (enable teleportation to another room)
+		- TBD: ability to light things on fire
+
 
 Research:
 - DONE: read => https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
@@ -203,10 +228,12 @@ Research:
 	- DONE: document dark_castle words
 	- DONE: compare lists and consider changes
 	- DONE: plan universal verb synonym updates
-- INPROC: read inner workers review of ZIL interpreter
+- DONE: read inner workers review of ZIL interpreter
+- TBD: re-read my initial ideas so I can mentally map them to zil approach
 - TBD: plan future usage
 	- TBD: document attributes & policies
 	- TBD: plan new words and word updates: congruent, update, new from zork 285 / zork-1 r88
+- TBD: document project scope
 - TBD: document good information sources found so far
 - TBD: create interp branch
 	- TBD: add synonyms for congruent verbs
