@@ -133,9 +133,10 @@ To Do List - Dark Castle v3
 		- IDEA: enable multiple adjectives per noun
 		- IDEA: enable synonyms for nouns and verbs
 		- IDEA: enable class-specific verbs (e.g. 'doff')
+		- IDEA: enable noun-specific cmd_str_lst replacement: "enter castle" => "go n"
 		- IDEA: enable errors and mach run perform at do-noun and id-noun level (??)
 		- IDEA: consistent way to deal with pronuns
-		- IDEA: consistent way to deal with plurals
+		- IDEA: consistent way to deal with plurals (use 'qty of' for water, tea, & glass)
 		- IDEA: enhanced get-what-i-mean
 		- IDEA: deal with curse words
 		- IDEA some tactical fixes
@@ -229,12 +230,16 @@ Research:
 	- DONE: compare lists and consider changes
 	- DONE: plan universal verb synonym updates
 - DONE: read inner workers review of ZIL interpreter
-- TBD: re-read my initial ideas so I can mentally map them to zil approach
+- DONE: re-read my initial ideas so I can mentally map them to zil approach
 - TBD: plan future usage
 	- TBD: document attributes & policies
 	- TBD: plan new words and word updates: congruent, update, new from zork 285 / zork-1 r88
-- TBD: document project scope
+		- TBD: zill list
+		- TBD: my own list (below)
+- INPROC: document project scope
+- TBD: reorg branch doc 
 - TBD: document good information sources found so far
+
 - TBD: create interp branch
 	- TBD: add synonyms for congruent verbs
 	- TBD: create test scenario for synonyms
@@ -325,12 +330,11 @@ Synonyms:
 		- perhaps additional, optional cusotm verb synonyms as an obj attribute?
 	- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
 		- TBD: also want to enable 'go in' and 'go out' of chair
+		- TBD: no - this will be solved via syntax
 	- TBD: sort out synonyms like 'stand' and 'sit' and 'lie'
 
 - TBD: prep & syntax
 	- if user input has multiple obj, determine noun vs. dir_obj from prep usage (i.e. to vs with)
-
-
 
 
 - Interpreter enhancements:
@@ -342,15 +346,16 @@ Synonyms:
 - New interp() Ideas:
 
 
-
 Preposition Handling:
 - DONE: unlock => 'unlock with' prep  command
 - TBD: default prep behavior = try command with obj in hand
 - IDEA: in interp(), what about making prep check similar to put() for all prep verbs
 	- IDEA: could have a prep attribute for each prep verb
 	- IDEA: in interp(), have a list of all possible preps and use list to break sentence
-- TBD: gracefully deal with unneeded preposition usage (e.g. "push on button")
+- DONE: gracefully deal with uneeded preposition usage (e.g. "push on button")
+	- DONE: syntax will solve this
 - Interp deep dive including better solution to prep checking ('put in' vs. 'put on')
+	- DONE: syntax will solve this
 
 
 Sentence Structure:
@@ -362,15 +367,17 @@ Sentence Structure:
 	- IDEA: but it's worth noting that the sentence structure is the same
 	- IDEA: ideally, ['sit in', 'sit on'] would just become abreviations for 'enter'
 	- IDEA: but if this is not possible, a sit() method could be created similar to climb()
+	- DONE: syntax will solve this
 
 
 Plurals:
 - TBD: interpreter - should all nouns be singular? 
 - TBD: solve articles for innate plurals (e.g Water, Tea => "qty of water" ???)
 	- TBD: requires noun-adj strings longer than 2
+	- PLAN: use 'qt of' / 'collection of' / 'the junk mail' for all plurals
 - IDEA: convert plurals to singulars for this???
-- IDEA: (given that there is water in the game maybe all singlulars is impossible?)
-- TBD: sort out approach to plurals
+- CANCEL: (given that there is water in the game maybe all singlulars is impossible?)
+- CANCEL: sort out approach to plurals
 	- 1) perhaps this becomes a ViewOnly attribute??? (don't like this - way too many un-used cases of attribute)
 	- 2) possibly ItemPlural class inherits from Item and has method is_plural() which returns True ??
 	- 3) could just have a plural_tuning_lst in the txt_handling() module that checks for known plurals as a one-off?
