@@ -231,8 +231,9 @@ Research:
 	- DONE: plan universal verb synonym updates
 - DONE: read inner workers review of ZIL interpreter
 - DONE: re-read my initial ideas so I can mentally map them to zil approach
-- TBD: plan future usage
-	- TBD: document attributes & policies
+- INPROC: plan future usage
+	- INPROC: document attributes
+	- TBD: document policies
 	- TBD: plan new words and word updates: congruent, update, new from zork 285 / zork-1 r88
 		- TBD: zill list
 		- TBD: my own list (below)
