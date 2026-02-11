@@ -186,6 +186,14 @@ To Do List - Dark Castle v3
 			- 5a. check id-noun for do-noun / action specific errors
 			- 5b. check do-noun for id-noun / action specific errors
 			- 5c. execute action (passing in do-noun & id-noun)
+	- INPROC: list of zil attrib abilities to bring to dc
+		- IDEA: differentiate between container & surface class (contbit vs. surfacebit)
+		- IDEA: attrib to not displa desc (ndescbit) because it will be described by room
+		- IDEA: has the obj been touched / room been entered? (touchbit)
+		- IDEA: don't use articles w/ obj description attrib (narticlebit)
+		- IDEA: obj is plural and desc treat it as such (pluralbit)
+		- IDEA: an ad-hoc way to make a given object the default noun in a cmd (kludegegit)
+		- IDEA: obj is a body part [e.g. fist] (partbit)
 	- INPROC: machine encapsulation
 		- IDEA: achieve greater standardization by encapsulating all modular machines in obj
 		- IDEA: this way, obj themselves are never actually obj
@@ -232,11 +240,15 @@ Research:
 - DONE: read inner workers review of ZIL interpreter
 - DONE: re-read my initial ideas so I can mentally map them to zil approach
 - INPROC: plan future usage
-	- INPROC: attributes
-		- DONE: doc zill attributes
+	- DONE: obj attributes
+		- DONE: doc zil attributes
 		- DONE: doc dc implementation of zil attribs
-		- TBD: doc zill attribs to be part of interp branch scope
-	- TBD: document policies
+		- DONE: doc zil attribs to be part of interp branch scope
+	- INPROC: obj properties
+		- DONE: read obj properties
+		- TBD: document zil obj properties
+		- TBD: doc dc implementation of zil properties
+		- TBD: doc zil property abilities to implement in dc this branch
 	- TBD: plan new words and word updates: congruent, update, new from zork 285 / zork-1 r88
 		- TBD: zill list
 		- TBD: my own list (below)
