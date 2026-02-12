@@ -246,7 +246,7 @@ Research:
 		- DONE: doc zil attribs to be part of interp branch scope
 	- INPROC: obj properties
 		- DONE: read obj properties
-		- TBD: document zil obj properties
+		- DONE: document zil obj properties
 		- TBD: doc dc implementation of zil properties
 		- TBD: doc zil property abilities to implement in dc this branch
 	- TBD: plan new words and word updates: congruent, update, new from zork 285 / zork-1 r88
