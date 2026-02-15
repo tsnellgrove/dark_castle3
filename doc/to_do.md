@@ -194,6 +194,12 @@ To Do List - Dark Castle v3
 		- IDEA: obj is plural and desc treat it as such (pluralbit)
 		- IDEA: an ad-hoc way to make a given object the default noun in a cmd (kludegegit)
 		- IDEA: obj is a body part [e.g. fist] (partbit)
+	- INPROC: list of zil properties to bring to dc
+		- IDEA: IN / OUT (aka enter / exit); for rooms w/ 1 exit and viewonly (e.g. "castle")
+		- IDEA: SYNONYM => syn_lst attrib
+		- IDEA: ADJECTIVE => adj_lst attrib
+		- IDEA: ACTION => how to trigger from noun? mach_lst ? Also maybe err_lst ?
+		- IDEA: GENERIC => way to make noun the default do_noun ? What if more than 1?
 	- INPROC: machine encapsulation
 		- IDEA: achieve greater standardization by encapsulating all modular machines in obj
 		- IDEA: this way, obj themselves are never actually obj
