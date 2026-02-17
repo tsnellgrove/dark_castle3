@@ -255,9 +255,10 @@ Research:
 		- DONE: document zil obj properties
 		- DONE: doc dc implementation of zil properties
 		- DONE: doc zil property abilities to implement in dc this branch
-	- TBD: plan new words and word updates: congruent, update, new from zork 285 / zork-1 r88
-		- TBD: zill list
+	- INPROC: plan new words and word updates: congruent, update, new from zork 285 / zork-1 r88
+		- DONE: review zil new words and choose branch scope
 		- TBD: my own list (below)
+		- TBD: doc word updates (new or change) for this branch in to-do
 - INPROC: document project scope
 - TBD: reorg branch doc 
 - TBD: document good information sources found so far
