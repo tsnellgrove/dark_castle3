@@ -200,6 +200,14 @@ To Do List - Dark Castle v3
 		- IDEA: ADJECTIVE => adj_lst attrib
 		- IDEA: ACTION => how to trigger from noun? mach_lst ? Also maybe err_lst ?
 		- IDEA: GENERIC => way to make noun the default do_noun ? What if more than 1?
+	- INPROC: list of words to add this branch
+		- IDEA: prep = to, at, on, in
+		- IDEA: this
+		- IDEA: walk in, look at, look in
+		- IDEA: enter / in (doors, viewonly, rooms)
+		- IDEA: exit / out (doors, viewonly, rooms)
+		- IDEA: xyzzy
+		- IDEA: curse
 	- INPROC: machine encapsulation
 		- IDEA: achieve greater standardization by encapsulating all modular machines in obj
 		- IDEA: this way, obj themselves are never actually obj
@@ -245,7 +253,7 @@ Research:
 	- DONE: plan universal verb synonym updates
 - DONE: read inner workers review of ZIL interpreter
 - DONE: re-read my initial ideas so I can mentally map them to zil approach
-- INPROC: plan future usage
+- DONE: plan future usage
 	- DONE: obj attributes
 		- DONE: doc zil attributes
 		- DONE: doc dc implementation of zil attribs
@@ -255,10 +263,10 @@ Research:
 		- DONE: document zil obj properties
 		- DONE: doc dc implementation of zil properties
 		- DONE: doc zil property abilities to implement in dc this branch
-	- INPROC: plan new words and word updates: congruent, update, new from zork 285 / zork-1 r88
+	- DONE: plan new words and word updates: congruent, update, new from zork 285 / zork-1 r88
 		- DONE: review zil new words and choose branch scope
 		- DONE: my own list (below)
-		- TBD: doc word updates (new or change) for this branch in to-do
+		- DONE: doc word updates (new or change) for this branch in to-do
 - INPROC: document project scope
 - TBD: reorg branch doc 
 - TBD: document good information sources found so far
