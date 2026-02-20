@@ -267,9 +267,19 @@ Research:
 		- DONE: review zil new words and choose branch scope
 		- DONE: my own list (below)
 		- DONE: doc word updates (new or change) for this branch in to-do
-- INPROC: document project scope
+- INPROC: document good information sources found so far
+	- zork history: https://medium.com/@r.ajdnik/zork-the-great-underground-empire-cda94623861c
+	- (*) zork: inner workings: https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
+	- cmd list: https://zork.fandom.com/wiki/Command_List#:~:text=Command%20List%20%7C%20Zork%20Wiki%20%7C%20Fandom,(item)%20at%20(location)
+	- game control cmds: http://tigerteched.pbworks.com/w/page/30980745/Zork#
+	- (*) zork 285: https://intfiction.org/t/recreating-zork-285-in-zil/53841
+	- studies in zil pt1: https://the-rosebush.com/2024/08/studies-of-zil-part-1/#sdfootnote4sym
+	- (*) studies in zil pt2: https://the-rosebush.com/2025/07/studies-of-zil-part-2-how-does-zil-work-anyway/#170f5270-9bcd-4e56-be5a-869c2029cfc5-link
+	- (*) internal secrets (web): https://ifsecrets.blogspot.com/2019/02/introduction.html
+	- (*) internal secrets (pdf): https://eblong.com/infocom/other/Internal_Secrets_Ko_2019.pdf#
+	
+
 - TBD: reorg branch doc 
-- TBD: document good information sources found so far
 
 - TBD: create interp branch
 	- TBD: add synonyms for congruent verbs
