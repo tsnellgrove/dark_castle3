@@ -267,7 +267,7 @@ Research:
 		- DONE: review zil new words and choose branch scope
 		- DONE: my own list (below)
 		- DONE: doc word updates (new or change) for this branch in to-do
-- INPROC: document good information sources found so far
+- DONE: document good information sources found so far
 	- zork history: https://medium.com/@r.ajdnik/zork-the-great-underground-empire-cda94623861c
 	- (*) zork: inner workings: https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
 	- cmd list: https://zork.fandom.com/wiki/Command_List#:~:text=Command%20List%20%7C%20Zork%20Wiki%20%7C%20Fandom,(item)%20at%20(location)
@@ -277,8 +277,16 @@ Research:
 	- (*) studies in zil pt2: https://the-rosebush.com/2025/07/studies-of-zil-part-2-how-does-zil-work-anyway/#170f5270-9bcd-4e56-be5a-869c2029cfc5-link
 	- (*) internal secrets (web): https://ifsecrets.blogspot.com/2019/02/introduction.html
 	- (*) internal secrets (pdf): https://eblong.com/infocom/other/Internal_Secrets_Ko_2019.pdf#
-	
-
+	- (*) zork inform 7 port: https://i7-dungeon.sourceforge.net/source_0.html
+	- (*) google gemini search: "complete zork zil syntax table"
+	- (*) google gemini search: "how did prepositions work in infocom games?"
+	- google gemini search: "what was Zork 1-R88"
+	- (*) github - historicalsouce: https://github.com/historicalsource/zork1/blob/master/gsyntax.zil
+	- (*) github - jeffnyman: https://github.com/jeffnyman/zork1/blob/main/syntax.zil
+	- (*) github - heasm66 1: https://github.com/jeffnyman/zork1/blob/main/syntax.zil
+	- github - heasm66 2: https://github.com/heasm66/mdlzork/blob/master/zork_285/doc/zork285_06.md
+	- github - heasm66 3: https://github.com/heasm66/mdlzork/blob/master/zork_285/defs.zil
+	- github - heasm66 4: https://github.com/heasm66/mdlzork/tree/master/zork_285/doc
 - TBD: reorg branch doc 
 
 - TBD: create interp branch
