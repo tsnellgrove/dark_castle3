@@ -100,34 +100,88 @@ To Do List - Dark Castle v3
 
 *** Structured Interpreter Notes ***
 
-- INPROC: next interp() goals:
+- INPROC: initial branch goals:
 	- DONE: create a version just for interp() updates and gather all interp updates there!!
 	- DONE: full review of to-do list
 	- DONE: org to-do list
-		- DONE: read research
-		- DONE: deep dive review of Believed to be Done items
-		- TBD: synonyms
-			- IDEA: noun synonyms (different than abreviations)
-			- IDEA: global verb synonyms
-		- TBD: prepositions
-			- IDEA: simple prep verbs ('sit_in')
-		- TBD: plurals
-		- TBD: pronouns
-		- TBD: do what the player means
-		- TBD: sentence structure
-		- TBD: curse words
-		- TBD: tactical fixes
-		- TBD: new commands
-		
+	- DONE: read research
+	- DONE: re-org research
+	- TBD: get started!
+	- IDEA: global verb synonyms
+	- IDEA: noun synonyms (different than abreviations)
+	- TBD: prepositions
+		- IDEA: simple prep verbs ('sit_in')
+	- TBD: plurals
+	- TBD: pronouns
+	- TBD: do what the player means
+	- TBD: sentence structure
+	- TBD: curse words
+	- TBD: tactical fixes
+	- TBD: new commands
+	- TBD: deep dive review of Believed to be Done items
 
-- INPROC: big picture goals / scope
+
+- DONE: branch research:
+	- DONE: read => https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
+	- DECISION: my goal will be Zork 285 (each word = 1 part of speech) with PREP option
+		- IMPLICATION: unlike ZIL, I will not recognize multiple parts of speech per word
+	- DONE: read z-machine history
+	- DONE: read ZIL article: https://intfiction.org/t/recreating-zork-285-in-zil/53841/2
+	- DONE: read i-fiction ZIL write-up
+	- DONE: work on zork 285 word list
+		- DONE: review buzz and directions
+		- DONE: review verbs
+		- DONE: establish my synonyms for congruent verbs
+		- DONE: document dark_castle words
+		- DONE: compare lists and consider changes
+		- DONE: plan universal verb synonym updates
+	- DONE: read inner workers review of ZIL interpreter
+	- DONE: re-read my initial ideas so I can mentally map them to zil approach
+	- DONE: plan future usage
+		- DONE: obj attributes
+			- DONE: doc zil attributes
+			- DONE: doc dc implementation of zil attribs
+			- DONE: doc zil attribs to be part of interp branch scope
+		- DONE: obj properties
+			- DONE: read obj properties
+			- DONE: document zil obj properties
+			- DONE: doc dc implementation of zil properties
+			- DONE: doc zil property abilities to implement in dc this branch
+		- DONE: plan new words and word updates: congruent, update, new from zork 285 / zork-1 r88
+			- DONE: review zil new words and choose branch scope
+			- DONE: my own list (below)
+			- DONE: doc word updates (new or change) for this branch in to-do
+	- DONE: document good information sources found so far
+		- zork history: https://medium.com/@r.ajdnik/zork-the-great-underground-empire-cda94623861c
+		- (*) zork: inner workings: https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
+		- cmd list: https://zork.fandom.com/wiki/Command_List#:~:text=Command%20List%20%7C%20Zork%20Wiki%20%7C%20Fandom,(item)%20at%20(location)
+		- game control cmds: http://tigerteched.pbworks.com/w/page/30980745/Zork#
+		- (*) zork 285: https://intfiction.org/t/recreating-zork-285-in-zil/53841
+		- studies in zil pt1: https://the-rosebush.com/2024/08/studies-of-zil-part-1/#sdfootnote4sym
+		- (*) studies in zil pt2: https://the-rosebush.com/2025/07/studies-of-zil-part-2-how-does-zil-work-anyway/#170f5270-9bcd-4e56-be5a-869c2029cfc5-link
+		- (*) internal secrets (web): https://ifsecrets.blogspot.com/2019/02/introduction.html
+		- (*) internal secrets (pdf): https://eblong.com/infocom/other/Internal_Secrets_Ko_2019.pdf#
+		- (*) zork inform 7 port: https://i7-dungeon.sourceforge.net/source_0.html
+		- (*) google gemini search: "complete zork zil syntax table"
+		- (*) google gemini search: "how did prepositions work in infocom games?"
+		- google gemini search: "what was Zork 1-R88"
+		- (*) github - historicalsouce: https://github.com/historicalsource/zork1/blob/master/gsyntax.zil
+		- (*) github - jeffnyman: https://github.com/jeffnyman/zork1/blob/main/syntax.zil
+		- (*) github - heasm66 1: https://github.com/jeffnyman/zork1/blob/main/syntax.zil
+		- github - heasm66 2: https://github.com/heasm66/mdlzork/blob/master/zork_285/doc/zork285_06.md
+		- github - heasm66 3: https://github.com/heasm66/mdlzork/blob/master/zork_285/defs.zil
+		- github - heasm66 4: https://github.com/heasm66/mdlzork/tree/master/zork_285/doc
+	- DONE: post-research - reorg branch doc 
+
+
+- DONE: big picture goals / scope
 	- DONE: research zil code in order to understand how more advanced parsers work
 	- DONE: articulate big picture goals
-		- IDEA: enable greate flexibility of words and sentence structure
+		- IDEA: enable greater flexibility of words and sentence structure
 		- IDEA: align zil approach with cleesh's object class-based system
 		- IDEA: aim for easy game coding - most of the work should be done by cleesh!
 			- IDEA: "good tools make easy things easy and hard things possible"
-	- INPROC: articulate specific features
+	- DONE: articulate specific branch features
 		- IDEA: differentiate between verbs and actions
 		- IDEA: embrace the zil notion of syntax to enable natural sentence structure
 		- IDEA: enable multiple adjectives per noun
@@ -141,7 +195,7 @@ To Do List - Dark Castle v3
 		- IDEA: deal with curse words
 		- IDEA some tactical fixes
 		- IDEA: a few new cmds
-	- DONE: document zil capabilities that are out of scope to this cleesh update
+	- DONE: document zil capabilities that are out of scope to this cleesh branch
 		- EX: most multiples (inclulding use of "and")
 		- EX: orphanned ambiguous command completion
 		- EX: "then" and "." as command queue indicators
@@ -154,164 +208,44 @@ To Do List - Dark Castle v3
 		- EX: words as multiple parts of speech (.e.g 'back' as prep and adj)?
 		- EX: execute code from do-noun & io-noun response loop?
 		- EX: 'part-of' concept
-	- DONE: propose updated parser loop:
+	- DONE: propose updated parser process:
 		- 0. copy user_input_str => cmd_str
 			- 0a. cmd_str => clear white space and convert to lower
 			- 0b. cmd_str => cmd_str_lst
 		- 1. elim buzz words
 		- 2. convert verb synonyms
-		- 2/5. address non-verb-noun cmds (non-interp, tru1word, convert_1word, help, go [?])
-		- 3. identify  verb, do-noun clause, prep, and id-noun clauses
-			- 3a. error if verb or not known
-			- 3b. create scope_lst and noun_syn_lst
+		- 3. address non-verb-noun cmds (non-interp, tru1word, convert_1word, help, go [?])
+		- 4. identify  verb, do-noun clause, prep, and id-noun clauses
+			- 4a. error if verb or not known
+			- 4b. create scope_lst and noun_syn_lst
 				- 3b1. convert cmd_str_lst to root nouns using noun_syn_lst
-			- 3c. in scope_lst, for do-noun clause
+			- 4c. in scope_lst, for do-noun clause
 				- 3c1. find noun in scope_lst
 				- 3c2. validate adj (error if not found?) and removed
 				- 3c3. identify do-noun
-			- 3d. in scope_lst, if id-noun clause exists
+			- 4d. in scope_lst, if id-noun clause exists
 				- 3d1. find noun in scope_lst
 				- 3d2. validate adj (error if not found?) and remove
 				- 3d3. identify id-noun
-			- 3e. identify each non-buzz prep
-			- 3f. if verb is on class_spec_vrb_lst, check if do-noun supports it
+			- 4e. identify each non-buzz prep
+			- 4f. if verb is on class_spec_vrb_lst, check if do-noun supports it
 				- 3f1. if yes, proceed; else, std err
-			- 3g. apply basic cmd rules:
+			- 4g. apply basic cmd rules:
 				- 3f1. verb count = 1
 				- 3f1. noun count in [1, 2]
-		- 4. use syntax with verb, do-noun, id-noun, and prep to identify action
-			- 4a. apply Get What I Mean (GWIM) if the id-noun is missing
-			- 4b. error if GWIM retruns 0 or > 1
-		- 5. response loop:
-			- 5a. check id-noun for do-noun / action specific errors
-			- 5b. check do-noun for id-noun / action specific errors
-			- 5c. execute action (passing in do-noun & id-noun)
-	- INPROC: list of zil attrib abilities to bring to dc
-		- IDEA: differentiate between container & surface class (contbit vs. surfacebit)
-		- IDEA: attrib to not displa desc (ndescbit) because it will be described by room
-		- IDEA: has the obj been touched / room been entered? (touchbit)
-		- IDEA: don't use articles w/ obj description attrib (narticlebit)
-		- IDEA: obj is plural and desc treat it as such (pluralbit)
-		- IDEA: an ad-hoc way to make a given object the default noun in a cmd (kludegegit)
-		- IDEA: obj is a body part [e.g. fist] (partbit)
-	- INPROC: list of zil properties to bring to dc
-		- IDEA: IN / OUT (aka enter / exit); for rooms w/ 1 exit and viewonly (e.g. "castle")
-		- IDEA: SYNONYM => syn_lst attrib
-		- IDEA: ADJECTIVE => adj_lst attrib
-		- IDEA: ACTION => how to trigger from noun? mach_lst ? Also maybe err_lst ?
-		- IDEA: GENERIC => way to make noun the default do_noun ? What if more than 1?
-	- INPROC: list of words to add this branch
-		- IDEA: prep = to, at, on, in
-		- IDEA: this
-		- IDEA: walk in, look at, look in
-		- IDEA: enter / in (doors, viewonly, rooms)
-		- IDEA: exit / out (doors, viewonly, rooms)
-		- IDEA: xyzzy
-		- IDEA: curse
-	- INPROC: machine encapsulation
-		- IDEA: achieve greater standardization by encapsulating all modular machines in obj
-		- IDEA: this way, obj themselves are never actually obj
-		- IDEA: greater standardization and fewer classes
-		- DONE: review existing machs nouns: big_rock, kinging_scroll, shiny_sword
-		- DONE: review existing switch nouns: throne
-		- TBD: make decision
-	- INPROC: updates for Invisible class
-		- IDEA: attrib == suptd_vrb_lst
-		- IDEA: method == chk_class_spec_vrb()
-	- INPROC: new attribs needed for obj:
-		- IDEA: syn_lst
-		- IDEA: adj_lst
-		- IDEA: err_dict [method required to read dict w/ wildcards / class {e.g. is_weapon}]
-		- IDEA: enable run of machs based on io-noun, do-noun, and action (???)
-- INPROC:
-	- DECISION: does updated interpreter require updated perform flow?
-	- FINDING: dc today = pre_action, cmd_exe, post_action, auto_action
-	- FINDING: infocom = player, player_rm, verb_pre_act, id_act (include id cont), do_act, verb_act
-	- TBD: decide whether / how to update perform loop
-- INPROC:
-	- DECISION: do i want to incorporate any of these zil ideas?
-		- TBD: look-inside action that only shows contents?
-		- TBD: use of vehicles?
-		- TBD: us of universal obj predicates (chk routines); e.g. chk_lit() ?
-		- TBD: goto rountine (enable teleportation to another room)
-		- TBD: ability to light things on fire
+		- 5. use syntax with verb, do-noun, id-noun, and prep to identify action
+			- 5a. apply Get What I Mean (GWIM) if the id-noun is missing
+			- 5b. error if GWIM retruns 0 or > 1
+		- 6. response loop:
+			- 6a. check id-noun for do-noun / action specific errors
+			- 6b. check do-noun for id-noun / action specific errors
+			- 6c. execute action (passing in do-noun & id-noun)
+		- 7. introduce new words
+		- 8. add new in-scope zil capabilities
 
 
-Research:
-- DONE: read => https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
-- DECISION: my goal will be Zork 285 (each word = 1 part of speech) with PREP option
-	- IMPLICATION: unlike ZIL, I will not recognize multiple parts of speech per word
-- DONE: read z-machine history
-- DONE: read ZIL article: https://intfiction.org/t/recreating-zork-285-in-zil/53841/2
-- DONE: read i-fiction ZIL write-up
-- DONE: work on zork 285 word list
-	- DONE: review buzz and directions
-	- DONE: review verbs
-	- DONE: establish my synonyms for congruent verbs
-	- DONE: document dark_castle words
-	- DONE: compare lists and consider changes
-	- DONE: plan universal verb synonym updates
-- DONE: read inner workers review of ZIL interpreter
-- DONE: re-read my initial ideas so I can mentally map them to zil approach
-- DONE: plan future usage
-	- DONE: obj attributes
-		- DONE: doc zil attributes
-		- DONE: doc dc implementation of zil attribs
-		- DONE: doc zil attribs to be part of interp branch scope
-	- DONE: obj properties
-		- DONE: read obj properties
-		- DONE: document zil obj properties
-		- DONE: doc dc implementation of zil properties
-		- DONE: doc zil property abilities to implement in dc this branch
-	- DONE: plan new words and word updates: congruent, update, new from zork 285 / zork-1 r88
-		- DONE: review zil new words and choose branch scope
-		- DONE: my own list (below)
-		- DONE: doc word updates (new or change) for this branch in to-do
-- DONE: document good information sources found so far
-	- zork history: https://medium.com/@r.ajdnik/zork-the-great-underground-empire-cda94623861c
-	- (*) zork: inner workings: https://medium.com/swlh/zork-the-great-inner-workings-b68012952bdc
-	- cmd list: https://zork.fandom.com/wiki/Command_List#:~:text=Command%20List%20%7C%20Zork%20Wiki%20%7C%20Fandom,(item)%20at%20(location)
-	- game control cmds: http://tigerteched.pbworks.com/w/page/30980745/Zork#
-	- (*) zork 285: https://intfiction.org/t/recreating-zork-285-in-zil/53841
-	- studies in zil pt1: https://the-rosebush.com/2024/08/studies-of-zil-part-1/#sdfootnote4sym
-	- (*) studies in zil pt2: https://the-rosebush.com/2025/07/studies-of-zil-part-2-how-does-zil-work-anyway/#170f5270-9bcd-4e56-be5a-869c2029cfc5-link
-	- (*) internal secrets (web): https://ifsecrets.blogspot.com/2019/02/introduction.html
-	- (*) internal secrets (pdf): https://eblong.com/infocom/other/Internal_Secrets_Ko_2019.pdf#
-	- (*) zork inform 7 port: https://i7-dungeon.sourceforge.net/source_0.html
-	- (*) google gemini search: "complete zork zil syntax table"
-	- (*) google gemini search: "how did prepositions work in infocom games?"
-	- google gemini search: "what was Zork 1-R88"
-	- (*) github - historicalsouce: https://github.com/historicalsource/zork1/blob/master/gsyntax.zil
-	- (*) github - jeffnyman: https://github.com/jeffnyman/zork1/blob/main/syntax.zil
-	- (*) github - heasm66 1: https://github.com/jeffnyman/zork1/blob/main/syntax.zil
-	- github - heasm66 2: https://github.com/heasm66/mdlzork/blob/master/zork_285/doc/zork285_06.md
-	- github - heasm66 3: https://github.com/heasm66/mdlzork/blob/master/zork_285/defs.zil
-	- github - heasm66 4: https://github.com/heasm66/mdlzork/tree/master/zork_285/doc
-- TBD: reorg branch doc 
+*** GET STARTED: STRUCTURED TO-DOS ***
 
-- TBD: create interp branch
-	- TBD: add synonyms for congruent verbs
-	- TBD: create test scenario for synonyms
-	- TBD: solve class-specific synonyms (e.g. 'doff' for garment)
-		- TBD: in static_gbl: cond_verb_syn_lst
-		- TBD: chk_class_syn() method in ViewOnly
-	- TBD: create enter cmd for doors / portals?
-	- TBD: set 'exit' / 'out' for rooms with only 1 door?
-	- TBD: exapnd on use of "look at / in / on", "go in / on", etc.
-	- TBD: separate rooutine for help? remove from known_verb_lst ?
-	- TBD: document specific enhancement goals for this branch
-	- TBD: document big picture process to be implemented
-- TBD: useful rules from zil: only 1 verb, 2 nouns max, identify  verb, dir-o, & ind-o clauses
-- TBD: useful zil rules: skip "of" and word before (e.g. "one of", "piece of")
-- TBD: re-assign remaining research under branch activity
-- TBD: consider idea of separate obj, ind-obj, and verb error routines
-- TBD: learn about zork verb synonyms
-	- TBD: compile full list of zork verb synonyms and customize for DC
-- TBD: think about how to implement noun-synonyms
-- TBD: consider how to embrace zork syntaxes
-
-
-Get Started!
 - TBD: create new interp_feature git branch
 	- TBD: 'git branch' to confirm *master
 	- TBD: 'git branch <FEATURE_NAME>' to create new branch
@@ -327,34 +261,26 @@ Get Started!
 	- TBD: 'git push" to push updates to origin (GitHub)
 	- TBD: confirm new branch on GitHub is now ahead of master
 
+- 0) copy user_input_str => cmd_str [TBD]
+	- 0a. cmd_str => clear white space and convert to lower
+	- 0b. cmd_str => cmd_str_lst
 
-Synonyms & Syntax
-- TBD: pursue formal LEX (str => lst)=> EPARSE (syn, OIA, & syntax) -> execution (do it) plan
-	- TBD: start with LEX function
-	- TBD: sort out noun synonyms (with local awareness and game assignmet)
+- 1) elim buzz words [TBD]
+
+- 2) convert verb synonyms [TBD]
+	- TBD: add synonyms for congruent verbs
+	- TBD: create test scenario for synonyms
+	- TBD: solve class-specific synonyms (e.g. 'doff' for garment)
+		- TBD: in static_gbl: cond_verb_syn_lst
+		- TBD: chk_class_syn() method in ViewOnly
+		- IDEA: updates for Invisible class
+			- IDEA: attrib == suptd_vrb_lst
+			- IDEA: method == chk_class_spec_vrb()
+	- TBD: pursue formal LEX (str => lst)=> EPARSE (syn, OIA, & syntax) -> execution (do it) plan
+		- TBD: start with LEX function
 	- TBD: next, sort out verb synonyms (including multi-word synonyms and class-based synonyms)
 		- TBD: envision how synonyms should link with class
-	- TBD: implment syntax concept using preps
-	- TBD: return to research to consider error tree based on OIA or just A
 
-
-Synonyms:
-- TBD: parts of speech
-	- IDEA: zork treats directions as their own part of speech - should i do the same?
-	- IDEA: in zork, the mapping for in, out, enter, and exit are set in room...
-	- IDEA: if not set in room, i'll need some way to interpret them, with "()"s
-
-- TBD: noun synonyms
-	- TBD: error and synonmy option for nouns?
-	- TBD: should synonyms be an obj attribute?? => noun synonyms
-	- TBD: need to enable a rich set of game-specific synonyms!
-		- TBD: make 'apparatus' a synonym for control_panel
-		- TBD: add '* apparatus' as trigger to goblin_attack_mach
-	- note zil approach of separate adjectives & synonyms (can have multiple adj)
-	- interp() refacto shoud be based on objects (contents of rooom)
-	- each obj should have noun syns (in place of root_word)
-
-- TBD: verb synonyms
 	- TBD: create Zork and DC verb / class / synonym list
 		- TBD: understand which zork verbs will be relevant to dc
 		- IDEA: verb list org
@@ -382,18 +308,127 @@ Synonyms:
 		- TBD: no - this will be solved via syntax
 	- TBD: sort out synonyms like 'stand' and 'sit' and 'lie'
 
-- TBD: prep & syntax
-	- if user input has multiple obj, determine noun vs. dir_obj from prep usage (i.e. to vs with)
-
-
-- Interpreter enhancements:
-	- noun synonyms (list in place of base_name)
 	- verb synonyms (attribute of Class? Should verbs associated with obj???)
-- re-institue remove() verb for Garment; 'take' as synonym
-	- worn obj take() => "You're already wearing it"
-	- obj on floor remove() => "Taken" (i.e. is synonym)
-- New interp() Ideas:
+	- re-institue remove() verb for Garment; 'take' as synonym
+		- worn obj take() => "You're already wearing it"
+		- obj on floor remove() => "Taken" (i.e. is synonym)
 
+
+- 4. identify  verb, do-noun clause, prep, and id-noun clauses [TBD]
+	- 4a. error if verb or not known
+	- 4b. create scope_lst and noun_syn_lst
+		- 3b1. convert cmd_str_lst to root nouns using noun_syn_lst
+	- 4c. in scope_lst, for do-noun clause
+		- 3c1. find noun in scope_lst
+		- 3c2. validate adj (error if not found?) and removed
+		- 3c3. identify do-noun
+	- 4d. in scope_lst, if id-noun clause exists
+		- 3d1. find noun in scope_lst
+		- 3d2. validate adj (error if not found?) and remove
+		- 3d3. identify id-noun
+	- 4e. identify each non-buzz prep
+	- 4f. if verb is on class_spec_vrb_lst, check if do-noun supports it
+		- 3f1. if yes, proceed; else, std err
+	- 4g. apply basic cmd rules:
+		- 3f1. verb count = 1
+		- 3f1. noun count in [1, 2]
+	- TBD: useful rules from zil: only 1 verb, 2 nouns max, identify  verb, dir-o, & ind-o clauses
+	- TBD: useful zil rules: skip "of" and word before (e.g. "one of", "piece of")
+
+- 5. use syntax with verb, do-noun, id-noun, and prep to identify action
+	- 5a. apply Get What I Mean (GWIM) if the id-noun is missing
+	- 5b. error if GWIM retruns 0 or > 1
+
+
+- 6. response loop:
+	- 6a. check id-noun for do-noun / action specific errors
+	- 6b. check do-noun for id-noun / action specific errors
+	- 6c. execute action (passing in do-noun & id-noun)
+
+
+- 7. introduce new words
+	- INPROC: list of words to add this branch
+		- IDEA: prep = to, at, on, in
+		- IDEA: this
+		- IDEA: walk in, look at, look in
+		- IDEA: enter / in (doors, viewonly, rooms)
+		- IDEA: exit / out (doors, viewonly, rooms)
+		- IDEA: xyzzy
+		- IDEA: curse
+	- TBD: Curse Words
+		- TBD: implement curse warning / ending at Interpreter() level
+
+
+		- 8. add new in-scope zil capabilities
+
+
+*** RAW TO-DOS ***
+
+- INPROC: additional list of zil attrib abilities to bring to dc
+	- IDEA: differentiate between container & surface class (contbit vs. surfacebit)
+	- IDEA: attrib to not display desc (ndescbit) because it will be described by room
+	- IDEA: has the obj been touched / room been entered? (touchbit)
+	- IDEA: don't use articles w/ obj description attrib (narticlebit)
+	- IDEA: obj is plural and desc treat it as such (pluralbit)
+	- IDEA: an ad-hoc way to make a given object the default noun in a cmd (kludegegit)
+	- IDEA: obj is a body part [e.g. fist] (partbit)
+
+- INPROC: list of zil properties to bring to dc
+	- IDEA: IN / OUT (aka enter / exit); for rooms w/ 1 exit and viewonly (e.g. "castle")
+	- IDEA: SYNONYM => syn_lst attrib
+	- IDEA: ADJECTIVE => adj_lst attrib
+	- IDEA: ACTION => how to trigger from noun? mach_lst ? Also maybe err_lst ?
+	- IDEA: GENERIC => way to make noun the default do_noun ? What if more than 1?
+
+- INPROC: machine encapsulation
+	- IDEA: achieve greater standardization by encapsulating all modular machines in obj
+	- IDEA: this way, obj themselves are never actually obj
+	- IDEA: greater standardization and fewer classes
+	- DONE: review existing machs nouns: big_rock, kinging_scroll, shiny_sword
+	- DONE: review existing switch nouns: throne
+	- TBD: make decision
+
+- INPROC: new attribs needed for obj:
+	- IDEA: syn_lst
+	- IDEA: adj_lst
+	- IDEA: err_dict [method required to read dict w/ wildcards / class {e.g. is_weapon}]
+	- IDEA: enable run of machs based on io-noun, do-noun, and action (???)
+
+- INPROC:
+	- DECISION: does updated interpreter require updated perform flow?
+	- FINDING: dc today = pre_action, cmd_exe, post_action, auto_action
+	- FINDING: infocom = player, player_rm, verb_pre_act, id_act (include id cont), do_act, verb_act
+	- TBD: decide whether / how to update perform loop
+	- TBD: consider idea of separate obj, ind-obj, and verb error routines
+
+- INPROC:
+	- DECISION: do i want to incorporate any of these zil ideas?
+		- TBD: look-inside action that only shows contents?
+		- TBD: use of vehicles?
+		- TBD: us of universal obj predicates (chk routines); e.g. chk_lit() ?
+		- TBD: goto rountine (enable teleportation to another room)
+		- TBD: ability to light things on fire
+
+- INPROC: additional ideas
+	- TBD: create enter cmd for doors / portals?
+	- TBD: set 'exit' / 'out' for rooms with only 1 door?
+	- TBD: exapnd on use of "look at / in / on", "go in / on", etc.
+	- TBD: separate rooutine for help? remove from known_verb_lst ?
+	- IDEA: zork treats directions as their own part of speech - should i do the same?
+	- IDEA: in zork, the mapping for in, out, enter, and exit are set in room...
+	- IDEA: if not set in room, i'll need some way to interpret them, with "()"s
+
+- TBD: noun synonyms
+	- TBD: sort out noun synonyms (with local awareness and game assignmet)
+	- TBD: error and synonmy option for nouns?
+	- TBD: should synonyms be an obj attribute?? => noun synonyms
+	- TBD: need to enable a rich set of game-specific synonyms!
+		- TBD: make 'apparatus' a synonym for control_panel
+		- TBD: add '* apparatus' as trigger to goblin_attack_mach
+	- note zil approach of separate adjectives & synonyms (can have multiple adj)
+	- interp() refacto shoud be based on objects (contents of rooom)
+	- each obj should have noun syns (in place of root_word)
+	- noun synonyms (list in place of base_name)
 
 Preposition Handling:
 - DONE: unlock => 'unlock with' prep  command
@@ -406,8 +441,9 @@ Preposition Handling:
 - Interp deep dive including better solution to prep checking ('put in' vs. 'put on')
 	- DONE: syntax will solve this
 
-
 Sentence Structure:
+- TBD: implment syntax concept using preps
+- if user input has multiple obj, determine noun vs. dir_obj from prep usage (i.e. to vs with)
 - IDEA: prep_no_do (prep no direct-object verbs):
 	- DOC: format = '<verb> <prep> <noun>' (e.g. 'climb up tree')
 	- FINDING: climb requires a method because not every ViewOnly obj can be climbed
@@ -417,7 +453,6 @@ Sentence Structure:
 	- IDEA: ideally, ['sit in', 'sit on'] would just become abreviations for 'enter'
 	- IDEA: but if this is not possible, a sit() method could be created similar to climb()
 	- DONE: syntax will solve this
-
 
 Plurals:
 - TBD: interpreter - should all nouns be singular? 
@@ -433,7 +468,6 @@ Plurals:
 		- Note: the problem with defining plurals in classes is, what if I want to establish plurals for a non-obj (e.g. a path)
 	- Maybe apply 'xxy' prefix on text list if plural??
 
-
 Pronouns:
 	- Do I need a gs.Gramarian class to deal w/ recurring display issues around pronouns and plurals?
 	- e.g. pronoun_tobe(creature) => 'You are' or 'The <creature.full_name> is'
@@ -446,7 +480,6 @@ Pronouns:
 	- Another possible class name == Output ???
 	- Leaning towards Output... this helps distinguish from all the verb-linked Disp methods
 
-
 Do What the Player Means:
 - TBD: special case of guessing what player means if they don't specify in full
 	- TBD: how should this work? Should they need to be aware of what's in their hand?
@@ -458,11 +491,6 @@ Do What the Player Means:
 	- TBD: now that hand is de-emphasized, need a better system for guessing what obj player means
 	- TBD: should be mostly based on class
 - TBD: assume that item in hand will be used for activity (e.g. attack)
-
-
-Curse Words:
-- TBD: implement curse warning / ending at Interpreter() level
-
 
 Believed to be Done:
 - TBD?: fix progromatic usage of "a" vs "an" (e.g. "There is a Iron Portcullis to the north")
@@ -484,7 +512,6 @@ Believed to be Done:
 - DONE?: consider introducing str_to_obj_dict in Core
 	- IDEA: (enable ease of entrance.examine(gs) in startup() )
 
-
 Tactical Fixes for Existing Code / Features:
 - TBD: remove rand_mode from one_word_secret_lst ?
 - TBD: word_lst assignment:
@@ -500,7 +527,6 @@ Tactical Fixes for Existing Code / Features:
 - TBD?: can I return method errors based on verb method
 	- EXAMPLE: (e.g. "Burt, what kind of person would try to attack a Throne?")
 - TBD: convert words like 'look' to 2word in interp(), rather than cmd(), if possible
-
 
 - TBD: git branch merge with master
 	- TBD: 'git checkout master' to switch focus to master
