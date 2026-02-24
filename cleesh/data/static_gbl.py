@@ -64,12 +64,15 @@ engine_static_dict = {
 		'd' : 'down',
 		'i' : 'inventory',
 		'l' : 'look',
-		'get' : 'take',
 		'x' : 'examine',
 		'h' : 'help',
 		'g' : 'again',
 		'z' : 'wait',
         'q' : 'quit'
+	},
+
+	'verb_syn_dict' : {
+        'get' : 'take'
 	},
 
 

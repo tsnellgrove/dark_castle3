@@ -24,19 +24,20 @@ def root_word_count(gs, word2_txt):
 
 ### input_cleanup - convert user_input str to lst, lower, convert abbreviations, remove articles
 def input_cleanup(gs, user_input):
-	# first, convert user input string into word list
+	# first, convert to lower case and strip leading/trailing whitespace
+	user_input = user_input.lower().strip()	
+	# second, convert user input string into word list
 	lst = []
 	lst.append(user_input)
 	user_input_lst = lst[0].split()
-	# next, convert all words to lower case and substitute abbreviations
-	n = 0 
-	for word in user_input_lst:
-		word = word.lower()
-		abbrev_dict = gs.io.get_dict('abbreviations_dict','eng')
+	# third, substitute abbreviationss and verb_syn
+	abbrev_dict = gs.io.get_dict('abbreviations_dict','eng')
+	verb_syn_dict = gs.io.get_dict('verb_syn_dict','eng')
+	for index, word in enumerate(user_input_lst):
 		if word in abbrev_dict:
-			word = abbrev_dict[word]
-		user_input_lst[n] = word
-		n += 1
+			user_input_lst[index] = abbrev_dict[word]
+		elif word in verb_syn_dict:
+			user_input_lst[index] = verb_syn_dict[word]
 	# finally, strip out articles
 	for article in gs.io.get_lst('articles_lst','eng'):
 		user_input_lst = [word for word in user_input_lst if word != article]

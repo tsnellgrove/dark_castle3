@@ -261,15 +261,18 @@ To Do List - Dark Castle v3
 	- DONE: 'git push" to push updates to origin (GitHub)
 	- DONE: confirm new branch on GitHub is now ahead of master
 
-- 0) copy user_input_str => cmd_str [TBD]
+- 0) copy user_input_str => cmd_str [CANCEL] => refactor existing
 	- 0a. cmd_str => clear white space and convert to lower
 	- 0b. cmd_str => cmd_str_lst
 
-- 1) elim buzz words [TBD]
+- 1) elim buzz words [CANCLE] => refactor existing
 
-- 2) convert verb synonyms [TBD]
-	- TBD: add synonyms for congruent verbs
-	- TBD: create test scenario for synonyms
+- 2) convert verb synonyms [INPROC]
+	- TBD: add univeral verb synonyms
+	- TBD: create test scenario for standard verb synonyms
+	- TBD: review / org remaining verb syn to-dos
+
+
 	- TBD: solve class-specific synonyms (e.g. 'doff' for garment)
 		- TBD: in static_gbl: cond_verb_syn_lst
 		- TBD: chk_class_syn() method in ViewOnly
