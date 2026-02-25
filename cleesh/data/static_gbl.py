@@ -68,11 +68,48 @@ engine_static_dict = {
 		'h' : 'help',
 		'g' : 'again',
 		'z' : 'wait',
-        'q' : 'quit'
+        'q' : 'quit',
+        'h' : 'help' # new
 	},
 
 	'verb_syn_dict' : {
-        'get' : 'take'
+        'break' : 'attack', # new
+        'poke' : 'attack', # new
+        'damage' : 'attack', # new
+        'jab' : 'attack', # new
+        'clobber' : 'attack', # new
+        'kick' : 'attack', # new
+        'hit' : 'attack', # new
+        'kill' : 'attack', # new
+        'scale' : 'climb', # new
+        'imbibe' : 'drink', # new
+        'swig' : 'drink', # new
+        'quaff' : 'drink', # new
+        'sip' : 'drink', # new
+        'release' : 'drop', # new
+        'devour' : 'eat', # new
+        'ingest' : 'eat', # new
+        'munch' : 'eat', # new
+        'describe' : 'examine', # new
+        'inspect' : 'examine', # new
+        'search' : 'examine', # new
+        'hand' : 'give', # new
+        'donate' : 'give', # new
+        'walk' : 'go', # new
+        'run' : 'go', # new
+        'info' : 'help', # new
+        'list' : 'inventory', # new
+        'vault' : 'jump', # new
+        'leap' : 'jump', # new
+        'press' : 'push', # new
+        'shove' : 'push', # new
+        'place' : 'put', # new
+        'skim' : 'read', # new
+        'scan' : 'read', # new
+		'get' : 'take',
+        'carry' : 'take', # new
+        'hold' : 'take', # new
+        'don' : 'wear', # new 
 	},
 
 

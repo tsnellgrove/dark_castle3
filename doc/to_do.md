@@ -268,7 +268,7 @@ To Do List - Dark Castle v3
 - 1) elim buzz words [CANCLE] => refactor existing
 
 - 2) convert verb synonyms [INPROC]
-	- TBD: add univeral verb synonyms
+	- DONE: add univeral verb synonyms
 	- TBD: create test scenario for standard verb synonyms
 	- TBD: review / org remaining verb syn to-dos
 
