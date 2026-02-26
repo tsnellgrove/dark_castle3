@@ -269,7 +269,9 @@ To Do List - Dark Castle v3
 
 - 2) convert verb synonyms [INPROC]
 	- DONE: add univeral verb synonyms
-	- TBD: create test scenario for standard verb synonyms
+	- DONE: create test scenario for standard verb synonyms
+	- TBD: work with q to fix scenario rename feature (option 7)
+	- TBD rename newest dc scenario to '00E_entrance_verb_syn_test'
 	- TBD: review / org remaining verb syn to-dos
 
 

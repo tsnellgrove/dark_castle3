@@ -69,7 +69,6 @@ engine_static_dict = {
 		'g' : 'again',
 		'z' : 'wait',
         'q' : 'quit',
-        'h' : 'help' # new
 	},
 
 	'verb_syn_dict' : {
