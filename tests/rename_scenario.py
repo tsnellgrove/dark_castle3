@@ -10,39 +10,50 @@ import shutil
 
 def list_scenarios():
     """List all available scenarios for renaming"""
-    scenario_dir = os.path.join(os.path.dirname(__file__), "game_test_data", "scenarios")
+    base_scenario_dir = os.path.join(os.path.dirname(__file__), "game_test_data", "scenarios")
     
-    if not os.path.exists(scenario_dir):
+    if not os.path.exists(base_scenario_dir):
         print("❌ No scenarios directory found")
         return []
     
-    scenario_files = [f for f in os.listdir(scenario_dir) if f.endswith('.json')]
+    # Find all game directories
+    game_dirs = [d for d in os.listdir(base_scenario_dir) 
+                if os.path.isdir(os.path.join(base_scenario_dir, d))]
     
-    if not scenario_files:
-        print("📋 No scenario files found")
+    if not game_dirs:
+        print("📋 No game directories found")
         return []
     
     scenarios = []
-    print(f"📋 Found {len(scenario_files)} scenarios:")
+    total_count = 0
     
-    for i, scenario_file in enumerate(sorted(scenario_files), 1):
-        scenario_path = os.path.join(scenario_dir, scenario_file)
+    for game_name in sorted(game_dirs):
+        game_scenario_dir = os.path.join(base_scenario_dir, game_name)
+        scenario_files = [f for f in os.listdir(game_scenario_dir) if f.endswith('.json')]
         
-        try:
-            with open(scenario_path, 'r') as f:
-                scenario = json.load(f)
+        if scenario_files:
+            print(f"\n🎮 {game_name.replace('_', ' ').title()}:")
             
-            name = scenario.get('name', 'Unnamed')
-            mode = scenario.get('mode', 'random')
-            commands = len(scenario.get('commands', []))
-            
-            print(f"  {i}. {name} ({scenario_file}) - {mode} mode, {commands} commands")
-            scenarios.append((scenario_file, scenario_path, name, scenario))
-            
-        except Exception as e:
-            print(f"  {i}. {scenario_file} - Error loading: {e}")
-            scenarios.append((scenario_file, os.path.join(scenario_dir, scenario_file), scenario_file, None))
+            for scenario_file in sorted(scenario_files):
+                scenario_path = os.path.join(game_scenario_dir, scenario_file)
+                total_count += 1
+                
+                try:
+                    with open(scenario_path, 'r') as f:
+                        scenario = json.load(f)
+                    
+                    name = scenario.get('name', 'Unnamed')
+                    mode = scenario.get('mode', 'random')
+                    commands = len(scenario.get('commands', []))
+                    
+                    print(f"  {total_count}. {name} ({scenario_file}) - {mode} mode, {commands} commands")
+                    scenarios.append((scenario_file, scenario_path, name, scenario, game_name))
+                    
+                except Exception as e:
+                    print(f"  {total_count}. {scenario_file} - Error loading: {e}")
+                    scenarios.append((scenario_file, scenario_path, scenario_file, None, game_name))
     
+    print(f"\n📋 Total: {total_count} scenarios")
     return scenarios
 
 
@@ -67,7 +78,7 @@ def rename_scenario():
         
         index = int(choice) - 1
         if 0 <= index < len(scenarios):
-            scenario_file, scenario_path, current_name, scenario_data = scenarios[index]
+            scenario_file, scenario_path, current_name, scenario_data, game_name = scenarios[index]
             
             if scenario_data is None:
                 print("❌ Cannot rename corrupted scenario file")

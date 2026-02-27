@@ -208,6 +208,13 @@ To Do List - Dark Castle v3
 		- EX: words as multiple parts of speech (.e.g 'back' as prep and adj)?
 		- EX: execute code from do-noun & io-noun response loop?
 		- EX: 'part-of' concept
+	- DONE: basic zork approach:
+		- 1. READ → raw text input
+		- 2. LEX → split into dictionary words
+		- 3. PARSE → match grammar pattern
+		- 4. Action routine executes
+		- 5. EPARSE if grammar match fails
+		- IDEA: pursue formal LEX (str => lst)=> PARSE (syn, OIA, & syntax) => execution (do it) plan
 	- DONE: propose updated parser process:
 		- 0. copy user_input_str => cmd_str
 			- 0a. cmd_str => clear white space and convert to lower
@@ -216,23 +223,22 @@ To Do List - Dark Castle v3
 		- 2. convert verb synonyms
 		- 3. address non-verb-noun cmds (non-interp, tru1word, convert_1word, help, go [?])
 		- 4. identify  verb, do-noun clause, prep, and id-noun clauses
-			- 4a. error if verb or not known
+			- 4a. error if no verb or verb not known or verb count > 1
 			- 4b. create scope_lst and noun_syn_lst
 				- 3b1. convert cmd_str_lst to root nouns using noun_syn_lst
 			- 4c. in scope_lst, for do-noun clause
 				- 3c1. find noun in scope_lst
 				- 3c2. validate adj (error if not found?) and removed
 				- 3c3. identify do-noun
+				- 3c4. if no noun or > 1 noun => err
 			- 4d. in scope_lst, if id-noun clause exists
 				- 3d1. find noun in scope_lst
 				- 3d2. validate adj (error if not found?) and remove
 				- 3d3. identify id-noun
+				- 3d4. if no noun or > 1 noun => err
 			- 4e. identify each non-buzz prep
 			- 4f. if verb is on class_spec_vrb_lst, check if do-noun supports it
 				- 3f1. if yes, proceed; else, std err
-			- 4g. apply basic cmd rules:
-				- 3f1. verb count = 1
-				- 3f1. noun count in [1, 2]
 		- 5. use syntax with verb, do-noun, id-noun, and prep to identify action
 			- 5a. apply Get What I Mean (GWIM) if the id-noun is missing
 			- 5b. error if GWIM retruns 0 or > 1
@@ -270,30 +276,37 @@ To Do List - Dark Castle v3
 - 2) convert verb synonyms [INPROC]
 	- DONE: add univeral verb synonyms
 	- DONE: create test scenario for standard verb synonyms
-	- TBD: work with q to fix scenario rename feature (option 7)
-	- TBD rename newest dc scenario to '00E_entrance_verb_syn_test'
-	- TBD: review / org remaining verb syn to-dos
+	- DONE: work with q to fix scenario rename feature (option 7)
+	- DONE: rename newest dc scenario to '00E_entrance_verb_syn_test'
+	- INPROC: review / org remaining verb syn to-dos
+
+	- IDEA: converting verbs to actions:
+		- IDEA: many verbs have universal synonyms that can be immediatel converted in LEX:
+			- EXAMPLE: 'don' => wear()
+		- IDEA: there are also class-specific verbs that must check the noun in PARSE:
+			- EXAMPLE: 'remove', 'doff' => take()
+		- IDEA: then there is idiomatic prepositional usage captured in SYNTAX:
+			- EXAMPLE: 'put on' => wear()
 
 
-	- TBD: solve class-specific synonyms (e.g. 'doff' for garment)
+	- DONE: plan for class-specific verb synonyms 
+		- IDEA: examples = 'doff' for garment, jab, hack, slash for weapon
 		- TBD: in static_gbl: cond_verb_syn_lst
 		- TBD: chk_class_syn() method in ViewOnly
 		- IDEA: updates for Invisible class
 			- IDEA: attrib == suptd_vrb_lst
 			- IDEA: method == chk_class_spec_vrb()
-	- TBD: pursue formal LEX (str => lst)=> EPARSE (syn, OIA, & syntax) -> execution (do it) plan
-		- TBD: start with LEX function
-	- TBD: next, sort out verb synonyms (including multi-word synonyms and class-based synonyms)
-		- TBD: envision how synonyms should link with class
-
+		- IDEA: the challenge here is that we need to ask the noun about the verb
+		- IDEA: PARSE is supposed to identify the verb and noun(s)
+		- IDEA: SYNTAX is supposed to convert the verb, noun(s), and prep(s) in an action
+		- IDEA: so between LEX and SYNTAX i need a routine to check class-specific verb synonyms
+		- IDEA: see 4f
 	- TBD: create Zork and DC verb / class / synonym list
 		- TBD: understand which zork verbs will be relevant to dc
 		- IDEA: verb list org
 			- IDEA: master verb list is in cleesh static_gbl
-			- IDEA: universal synonym list lives in verb method as attrib
-			- IDEA: can exapnd verb synonyms in noun classes
-				- EXAMPLE: for garment class; universal synonym for wear() = 'put on', don
-				- EXAMPLE: class-specific synonym for take() = remove, doff
+			- IDEA: class_spec_syn_lst lives in verb method as attrib
+
 	
 	- TBD: sort out class-based verb synonyms idea
 			- have global verb syns and class-based verb syns (start with global; much easier!)
@@ -319,26 +332,24 @@ To Do List - Dark Castle v3
 		- obj on floor remove() => "Taken" (i.e. is synonym)
 
 
-- 4. identify  verb, do-noun clause, prep, and id-noun clauses [TBD]
-	- 4a. error if verb or not known
+- 4. identify  verb, do-noun clause, prep, and id-noun clauses
+	- 4a. error if no verb or verb not known or verb count > 1
 	- 4b. create scope_lst and noun_syn_lst
 		- 3b1. convert cmd_str_lst to root nouns using noun_syn_lst
 	- 4c. in scope_lst, for do-noun clause
 		- 3c1. find noun in scope_lst
 		- 3c2. validate adj (error if not found?) and removed
 		- 3c3. identify do-noun
+		- 3c4. if no noun or > 1 noun => err
 	- 4d. in scope_lst, if id-noun clause exists
 		- 3d1. find noun in scope_lst
 		- 3d2. validate adj (error if not found?) and remove
 		- 3d3. identify id-noun
+		- 3d4. if no noun or > 1 noun => err
 	- 4e. identify each non-buzz prep
 	- 4f. if verb is on class_spec_vrb_lst, check if do-noun supports it
 		- 3f1. if yes, proceed; else, std err
-	- 4g. apply basic cmd rules:
-		- 3f1. verb count = 1
-		- 3f1. noun count in [1, 2]
-	- TBD: useful rules from zil: only 1 verb, 2 nouns max, identify  verb, dir-o, & ind-o clauses
-	- TBD: useful zil rules: skip "of" and word before (e.g. "one of", "piece of")
+
 
 - 5. use syntax with verb, do-noun, id-noun, and prep to identify action
 	- 5a. apply Get What I Mean (GWIM) if the id-noun is missing
@@ -349,6 +360,10 @@ To Do List - Dark Castle v3
 	- 6a. check id-noun for do-noun / action specific errors
 	- 6b. check do-noun for id-noun / action specific errors
 	- 6c. execute action (passing in do-noun & id-noun)
+
+
+- 6.5. optimize
+	- 6.5a. skip "of" and word before (e.g. "one of", "piece of")
 
 
 - 7. introduce new words
