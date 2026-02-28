@@ -290,7 +290,9 @@ To Do List - Dark Castle v3
 
 
 	- DONE: plan for class-specific verb synonyms 
-		- IDEA: examples = 'doff' for garment, jab, hack, slash for weapon
+		- IDEA: examples:
+			'doff' => (garment class) => take
+			'jab', 'hack', 'slash' => (weapon class) => attack
 		- TBD: in static_gbl: cond_verb_syn_lst
 		- TBD: chk_class_syn() method in ViewOnly
 		- IDEA: updates for Invisible class
@@ -307,28 +309,32 @@ To Do List - Dark Castle v3
 			- IDEA: master verb list is in cleesh static_gbl
 			- IDEA: class_spec_syn_lst lives in verb method as attrib
 
-	
-	- TBD: sort out class-based verb synonyms idea
-			- have global verb syns and class-based verb syns (start with global; much easier!)
-			- e.g. 'get' is gbl verb syn for take() but 'sit on' is a Seat class verb syn for enter()
-			- based on verb, validate prep usage
-			- Order of Op: 1) obj noun syns, 2) gbl verb syns, 3) class verb syns
-	- TBD: interpreter idea => permitted verbs & synonyms by class (e.g. 'doff' for Garment)
-		- e.g. = 'take' if class == garment (??)
+	- TBD: also need a plan for syntax_verbs:
+		- EXAMPLE: 'sit on' / 'sit in' => (syntax checks for seat class) => enter
+		- IDEA: in this case, we don't want to replace 'sit' with 'enter' at the start
+		- IDEA: instead, we convert to enter via SYNTAX routine
+		- IDEA: so 'sit chair', 'sit in chair', 'sit on chair' all => enter chair
+		- IDEA: but 'sit to chair' and 'sit with chair' => error
+		- IDEA: 'sit' only = 'enter' when accompanied by prep = 'in' or 'on'
+
+	- TBD: decide about verb synonyms for specific obj??
+		- IDEA: seems like over-kill at this time. Can't think of a good example to drive it
+
+
+
 	- TBD: exit() should apply to chairs and doors => move to Perch / Nook class
 	- TBD: should have 'go in gate' and 'enter gate' as synonyms for 'go north' from entrance?
 		- IDEA: standard feature of doors & rooms ??
 	- IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
-		- verb synonuyms linked to class / class method?
+		- verb synonnyms linked to class / class method?
 		- perhaps additional, optional cusotm verb synonyms as an obj attribute?
 	- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
 		- TBD: also want to enable 'go in' and 'go out' of chair
 		- TBD: no - this will be solved via syntax
 	- TBD: sort out synonyms like 'stand' and 'sit' and 'lie'
 
-	- verb synonyms (attribute of Class? Should verbs associated with obj???)
 	- re-institue remove() verb for Garment; 'take' as synonym
-		- worn obj take() => "You're already wearing it"
+		- worn obj take() => "You're already wearing it" (no, take should always be 'into hand')
 		- obj on floor remove() => "Taken" (i.e. is synonym)
 
 
