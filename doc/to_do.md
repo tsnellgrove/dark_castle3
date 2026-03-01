@@ -278,16 +278,21 @@ To Do List - Dark Castle v3
 	- DONE: create test scenario for standard verb synonyms
 	- DONE: work with q to fix scenario rename feature (option 7)
 	- DONE: rename newest dc scenario to '00E_entrance_verb_syn_test'
-	- INPROC: review / org remaining verb syn to-dos
+	- DONE: review / org remaining verb syn to-dos
+	- TBD: move remaining verb syn ideas to appropriate section of plan
+	- TBD: remove 'kick' from verb_syn_lst (due to 'kick with fist')
+	- TBD: fix scenario test / remove 'kick' from it
+
 
 	- IDEA: converting verbs to actions:
 		- IDEA: many verbs have universal synonyms that can be immediatel converted in LEX:
 			- EXAMPLE: 'don' => wear()
 		- IDEA: there are also class-specific verbs that must check the noun in PARSE:
 			- EXAMPLE: 'remove', 'doff' => take()
+		- IDEA: there are obj-specific verbs that are checked during DO/IO/A execution:
+			- EXAMPLE: 'enter castle' => execution swap 'go north' (executed via verb 'go')
 		- IDEA: then there is idiomatic prepositional usage captured in SYNTAX:
 			- EXAMPLE: 'put on' => wear()
-
 
 	- DONE: plan for class-specific verb synonyms 
 		- IDEA: examples:
@@ -318,22 +323,17 @@ To Do List - Dark Castle v3
 		- IDEA: 'sit' only = 'enter' when accompanied by prep = 'in' or 'on'
 
 	- TBD: decide about verb synonyms for specific obj??
-		- IDEA: seems like over-kill at this time. Can't think of a good example to drive it
+		- EXAMPLE: 'enter' / 'go in' on 'castle' => action = "go north"
+		- EXAMPLE: 'exit' / 'out' on 'gatehouse' ('exit' w/out noun => room) => action = "go sounth"
+		- EXAMPLE: 'enter' / 'go in' on 'moat' => action = "go east / go west"
+		- EXAMPLE: 'enter' / 'go in' on 'path' => action = "go southwest"
 
+	- TBD: expand verb method assignment for classes
+		- EXAMPLE: add 'enter' as method for door class
+		- EXAMPLE: add 'enter' and 'exit' as methods for room (?)
+		- EXAMPLE: have a '2 state' switch that can change via 'move', 'push', or 'pull' => chair
 
-
-	- TBD: exit() should apply to chairs and doors => move to Perch / Nook class
-	- TBD: should have 'go in gate' and 'enter gate' as synonyms for 'go north' from entrance?
-		- IDEA: standard feature of doors & rooms ??
-	- IDEA: verb synonyms per obj with 'move' as a broadly used and variable synonym??
-		- verb synonnyms linked to class / class method?
-		- perhaps additional, optional cusotm verb synonyms as an obj attribute?
-	- TBD: implement global verb synonyms for 'sit in' or 'sit on' == enter()
-		- TBD: also want to enable 'go in' and 'go out' of chair
-		- TBD: no - this will be solved via syntax
-	- TBD: sort out synonyms like 'stand' and 'sit' and 'lie'
-
-	- re-institue remove() verb for Garment; 'take' as synonym
+	- TBD: re-institue remove() verb for Garment; 'take' as synonym (???)
 		- worn obj take() => "You're already wearing it" (no, take should always be 'into hand')
 		- obj on floor remove() => "Taken" (i.e. is synonym)
 
