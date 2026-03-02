@@ -279,67 +279,26 @@ To Do List - Dark Castle v3
 	- DONE: work with q to fix scenario rename feature (option 7)
 	- DONE: rename newest dc scenario to '00E_entrance_verb_syn_test'
 	- DONE: review / org remaining verb syn to-dos
-	- TBD: move remaining verb syn ideas to appropriate section of plan
+	- DONE: move remaining verb syn ideas to appropriate section of plan
+		- IDEA: converting verbs to actions:
+			- IDEA: many verbs have universal synonyms that can be immediatel converted in LEX:
+				- EXAMPLE: 'don' => wear()
+			- IDEA: there are also class-specific verbs that must check the noun in PARSE:
+				- EXAMPLE: 'remove', 'doff' => take()
+			- IDEA: then there is idiomatic prepositional usage captured in SYNTAX:
+				- EXAMPLE: 'put on' => wear()
+			- IDEA: there are obj-specific verbs that are checked during DO/IO/A execution:
+				- EXAMPLE: 'enter castle' => execution swap 'go north' (executed via verb 'go')
 	- TBD: remove 'kick' from verb_syn_lst (due to 'kick with fist')
 	- TBD: fix scenario test / remove 'kick' from it
 
-
-	- IDEA: converting verbs to actions:
-		- IDEA: many verbs have universal synonyms that can be immediatel converted in LEX:
-			- EXAMPLE: 'don' => wear()
-		- IDEA: there are also class-specific verbs that must check the noun in PARSE:
-			- EXAMPLE: 'remove', 'doff' => take()
-		- IDEA: there are obj-specific verbs that are checked during DO/IO/A execution:
-			- EXAMPLE: 'enter castle' => execution swap 'go north' (executed via verb 'go')
-		- IDEA: then there is idiomatic prepositional usage captured in SYNTAX:
-			- EXAMPLE: 'put on' => wear()
-
-	- DONE: plan for class-specific verb synonyms 
-		- IDEA: examples:
-			'doff' => (garment class) => take
-			'jab', 'hack', 'slash' => (weapon class) => attack
-		- TBD: in static_gbl: cond_verb_syn_lst
-		- TBD: chk_class_syn() method in ViewOnly
-		- IDEA: updates for Invisible class
-			- IDEA: attrib == suptd_vrb_lst
-			- IDEA: method == chk_class_spec_vrb()
-		- IDEA: the challenge here is that we need to ask the noun about the verb
-		- IDEA: PARSE is supposed to identify the verb and noun(s)
-		- IDEA: SYNTAX is supposed to convert the verb, noun(s), and prep(s) in an action
-		- IDEA: so between LEX and SYNTAX i need a routine to check class-specific verb synonyms
-		- IDEA: see 4f
-	- TBD: create Zork and DC verb / class / synonym list
-		- TBD: understand which zork verbs will be relevant to dc
-		- IDEA: verb list org
-			- IDEA: master verb list is in cleesh static_gbl
-			- IDEA: class_spec_syn_lst lives in verb method as attrib
-
-	- TBD: also need a plan for syntax_verbs:
-		- EXAMPLE: 'sit on' / 'sit in' => (syntax checks for seat class) => enter
-		- IDEA: in this case, we don't want to replace 'sit' with 'enter' at the start
-		- IDEA: instead, we convert to enter via SYNTAX routine
-		- IDEA: so 'sit chair', 'sit in chair', 'sit on chair' all => enter chair
-		- IDEA: but 'sit to chair' and 'sit with chair' => error
-		- IDEA: 'sit' only = 'enter' when accompanied by prep = 'in' or 'on'
-
-	- TBD: decide about verb synonyms for specific obj??
-		- EXAMPLE: 'enter' / 'go in' on 'castle' => action = "go north"
-		- EXAMPLE: 'exit' / 'out' on 'gatehouse' ('exit' w/out noun => room) => action = "go sounth"
-		- EXAMPLE: 'enter' / 'go in' on 'moat' => action = "go east / go west"
-		- EXAMPLE: 'enter' / 'go in' on 'path' => action = "go southwest"
-
-	- TBD: expand verb method assignment for classes
-		- EXAMPLE: add 'enter' as method for door class
-		- EXAMPLE: add 'enter' and 'exit' as methods for room (?)
-		- EXAMPLE: have a '2 state' switch that can change via 'move', 'push', or 'pull' => chair
-
-	- TBD: re-institue remove() verb for Garment; 'take' as synonym (???)
-		- worn obj take() => "You're already wearing it" (no, take should always be 'into hand')
-		- obj on floor remove() => "Taken" (i.e. is synonym)
-
-
 - 4. identify  verb, do-noun clause, prep, and id-noun clauses
 	- 4a. error if no verb or verb not known or verb count > 1
+	- 4.a.1 update noun attributes
+		- resarch and finalize eliminating obj-as-mach approach
+		- add list attribs for syn_lst, adj_lst, invis_lst
+			- how to introduce optional attribs?
+			- discuss plan w/ Q
 	- 4b. create scope_lst and noun_syn_lst
 		- 3b1. convert cmd_str_lst to root nouns using noun_syn_lst
 	- 4c. in scope_lst, for do-noun clause
@@ -356,16 +315,50 @@ To Do List - Dark Castle v3
 	- 4f. if verb is on class_spec_vrb_lst, check if do-noun supports it
 		- 3f1. if yes, proceed; else, std err
 
+		- DONE: plan for class-specific verb synonyms 
+			- IDEA: examples:
+				'doff' => (garment class) => take
+				'jab', 'hack', 'slash' => (weapon class) => attack
+			- TBD: in static_gbl: cond_verb_syn_lst
+			- TBD: chk_class_syn() method in ViewOnly
+			- IDEA: updates for Invisible class
+				- IDEA: attrib == suptd_vrb_lst
+				- IDEA: method == chk_class_spec_vrb()
+			- IDEA: the challenge here is that we need to ask the noun about the verb
+			- IDEA: PARSE is supposed to identify the verb and noun(s)
+			- IDEA: SYNTAX is supposed to convert the verb, noun(s), and prep(s) in an action
+			- IDEA: so between PARSE and SYNTAX i need a routine to check class-specific verb synonyms
+			- IDEA: see 4f
+		- TBD: create Zork and DC verb / class / synonym list
+			- TBD: understand which zork verbs will be relevant to dc
+			- IDEA: verb list org
+				- IDEA: master verb list is in cleesh static_gbl
+				- IDEA: class_spec_syn_lst lives in verb method as attrib
+
 
 - 5. use syntax with verb, do-noun, id-noun, and prep to identify action
 	- 5a. apply Get What I Mean (GWIM) if the id-noun is missing
 	- 5b. error if GWIM retruns 0 or > 1
 
+	- TBD: also need a plan for syntax_verbs:
+		- EXAMPLE: 'sit on' / 'sit in' => (syntax checks for seat class) => enter
+		- IDEA: in this case, we don't want to replace 'sit' with 'enter' at the start
+		- IDEA: instead, we convert to enter via SYNTAX routine
+		- IDEA: so 'sit chair', 'sit in chair', 'sit on chair' all => enter chair
+		- IDEA: but 'sit to chair' and 'sit with chair' => error
+		- IDEA: 'sit' only = 'enter' when accompanied by prep = 'in' or 'on'
 
-- 6. response loop:
+
+- 6. execution loop:
 	- 6a. check id-noun for do-noun / action specific errors
 	- 6b. check do-noun for id-noun / action specific errors
 	- 6c. execute action (passing in do-noun & id-noun)
+
+	- TBD: decide about verb synonyms for specific obj??
+		- EXAMPLE: 'enter' / 'go in' on 'castle' => action = "go north"
+		- EXAMPLE: 'exit' / 'out' on 'gatehouse' ('exit' w/out noun => room) => action = "go sounth"
+		- EXAMPLE: 'enter' / 'go in' on 'moat' => action = "go east / go west"
+		- EXAMPLE: 'enter' / 'go in' on 'path' => action = "go southwest"
 
 
 - 6.5. optimize
@@ -384,8 +377,16 @@ To Do List - Dark Castle v3
 	- TBD: Curse Words
 		- TBD: implement curse warning / ending at Interpreter() level
 
+	- TBD: expand verb method assignment for classes
+		- EXAMPLE: add 'enter' as method for door class
+		- EXAMPLE: add 'enter' and 'exit' as methods for room (?)
+		- EXAMPLE: have a '2 state' switch that can change via 'move', 'push', or 'pull' => chair
+	- TBD: re-institue remove() verb for Garment; 'take' as synonym (???)
+		- worn obj take() => "You're already wearing it" (no, take should always be 'into hand')
+		- obj on floor remove() => "Taken" (i.e. is synonym)
 
-		- 8. add new in-scope zil capabilities
+
+- 8. add new in-scope zil capabilities
 
 
 *** RAW TO-DOS ***
