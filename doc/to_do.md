@@ -273,7 +273,7 @@ To Do List - Dark Castle v3
 
 - 1) elim buzz words [CANCLE] => refactor existing
 
-- 2) convert verb synonyms [INPROC]
+- 2) convert verb synonyms [DONE]
 	- DONE: add univeral verb synonyms
 	- DONE: create test scenario for standard verb synonyms
 	- DONE: work with q to fix scenario rename feature (option 7)
@@ -289,8 +289,8 @@ To Do List - Dark Castle v3
 				- EXAMPLE: 'put on' => wear()
 			- IDEA: there are obj-specific verbs that are checked during DO/IO/A execution:
 				- EXAMPLE: 'enter castle' => execution swap 'go north' (executed via verb 'go')
-	- TBD: remove 'kick' from verb_syn_lst (due to 'kick with fist')
-	- TBD: fix scenario test / remove 'kick' from it
+	- DONE: remove 'kick' from verb_syn_lst (due to 'kick with fist')
+	- DONE: fix scenario test / remove 'kick' from it
 
 - 4. identify  verb, do-noun clause, prep, and id-noun clauses
 	- 4a. error if no verb or verb not known or verb count > 1

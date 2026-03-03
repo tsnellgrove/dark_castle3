@@ -72,43 +72,43 @@ engine_static_dict = {
 	},
 
 	'verb_syn_dict' : {
-        'break' : 'attack', # new
-        'poke' : 'attack', # new
-        'damage' : 'attack', # new
-        'jab' : 'attack', # new
-        'clobber' : 'attack', # new
-        'kick' : 'attack', # new
-        'hit' : 'attack', # new
-        'kill' : 'attack', # new
-        'scale' : 'climb', # new
-        'imbibe' : 'drink', # new
-        'swig' : 'drink', # new
-        'quaff' : 'drink', # new
-        'sip' : 'drink', # new
-        'release' : 'drop', # new
-        'devour' : 'eat', # new
-        'ingest' : 'eat', # new
-        'munch' : 'eat', # new
-        'describe' : 'examine', # new
-        'inspect' : 'examine', # new
-        'search' : 'examine', # new
-        'hand' : 'give', # new
-        'donate' : 'give', # new
-        'walk' : 'go', # new
-        'run' : 'go', # new
-        'info' : 'help', # new
-        'list' : 'inventory', # new
-        'vault' : 'jump', # new
-        'leap' : 'jump', # new
-        'press' : 'push', # new
-        'shove' : 'push', # new
-        'place' : 'put', # new
-        'skim' : 'read', # new
-        'scan' : 'read', # new
+        'break' : 'attack',
+        'poke' : 'attack',
+        'damage' : 'attack',
+        'jab' : 'attack',
+        'clobber' : 'attack',
+#        'kick' : 'attack', # elim because of 'kick with fist' response
+        'hit' : 'attack',
+        'kill' : 'attack',
+        'scale' : 'climb',
+        'imbibe' : 'drink',
+        'swig' : 'drink',
+        'quaff' : 'drink',
+        'sip' : 'drink',
+        'release' : 'drop',
+        'devour' : 'eat',
+        'ingest' : 'eat',
+        'munch' : 'eat',
+        'describe' : 'examine',
+        'inspect' : 'examine',
+        'search' : 'examine',
+        'hand' : 'give',
+        'donate' : 'give',
+        'walk' : 'go',
+        'run' : 'go',
+        'info' : 'help',
+        'list' : 'inventory',
+        'vault' : 'jump',
+        'leap' : 'jump',
+        'press' : 'push',
+        'shove' : 'push',
+        'place' : 'put',
+        'skim' : 'read',
+        'scan' : 'read',
 		'get' : 'take',
-        'carry' : 'take', # new
-        'hold' : 'take', # new
-        'don' : 'wear', # new 
+        'carry' : 'take',
+        'hold' : 'take',
+        'don' : 'wear',
 	},
 
 

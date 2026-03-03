@@ -10,7 +10,6 @@
     "damage postbox",
     "jab postbox",
     "clobber postbox",
-    "kick postbox",
     "hit postbox",
     "kill postbox",
     "scale postbox",
@@ -70,7 +69,6 @@
   "expected_full_outputs": [
     "\nHelp syntax = 'help <option>'. Help options = 'basics', 'abbreviations', 'adjectives', 'articles', 'attack', 'creatures', 'command-queue', 'debug', 'inventory', 'multiples', 'one-word-commands', 'prepositions', 'read', 'save', 'travel', 'verbosity', or 'verbs'.\n",
     "\n*** Entrance ***\n\nYou stand upon the ancient drawbridge at the entrance of Dark Castle. The murky waters of the moat swirl beneath your feet and, before you, barring your way, is the ominous front gate.\n\nBehind you, just beyond the drawbridge, is an extremely old and rusty postbox besides which stands a large tree with some low branches. Across the way from the postbox is a big rock covered in moss and lichen. \n\nThere is a Front Gate to the north, a climb leading up, an Untrodden Path to the southwest, a leap down to the moat to the east, and a leap down to the moat to the west.\n",
-    "\n(with your Fist)\n\nWhat kind of deranged person attacks a Postbox with a Fist?!?\n",
     "\n(with your Fist)\n\nWhat kind of deranged person attacks a Postbox with a Fist?!?\n",
     "\n(with your Fist)\n\nWhat kind of deranged person attacks a Postbox with a Fist?!?\n",
     "\n(with your Fist)\n\nWhat kind of deranged person attacks a Postbox with a Fist?!?\n",
