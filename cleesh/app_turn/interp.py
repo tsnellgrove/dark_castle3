@@ -122,7 +122,8 @@ def interpreter(user_input, master_obj_lst):
 			user_input_lst[0] = 'go'
 		if word1 == 'inventory':
 			user_input_lst[0] = 'examine'
-			user_input_lst.append(gs.core.hero.name)
+#			user_input_lst.append(gs.core.hero.name)
+			user_input_lst.append(creature.name)
 		if word1 == 'look':
 			user_input_lst[0] = 'examine'
 			user_input_lst.append(gs.map.hero_rm.name)

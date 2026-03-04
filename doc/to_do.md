@@ -292,8 +292,19 @@ To Do List - Dark Castle v3
 	- DONE: remove 'kick' from verb_syn_lst (due to 'kick with fist')
 	- DONE: fix scenario test / remove 'kick' from it
 
-- 4. identify  verb, do-noun clause, prep, and id-noun clauses
-	- 4a. error if no verb or verb not known or verb count > 1
+- 4. identify  verb, do-noun clause, prep, and id-noun clauses [INPROC]
+	-4 aa. deal with special case of zero or one-word commands: [DONE]
+		-4.aa.1 if len(user_input_lst) == 0 ==> return err
+		-4.aa.2 if len(user_input_lst) == 1:
+			- if help or tru_1word => return word1 & type
+			- if word1 in one_word_only_lst and len(user_input_lst) > 1 ==> return err
+			- if word1 in travel_lst or conver_lst => convert to multi-word
+			- if word1 in assumed_noun_lst => convert to multi-word
+		-4.aa.3 if word1 in full_verb_lst and len(user_input_lst) == 1 ==> return err
+		-4.aa.4 if word1 not in full_verb_lst and len(user_input_lst) == 1 ==> return err
+
+
+	- 4a. error if no verb or verb not known or verb count > 1 [TBD]
 	- 4.a.1 update noun attributes
 		- resarch and finalize eliminating obj-as-mach approach
 		- add list attribs for syn_lst, adj_lst, invis_lst
