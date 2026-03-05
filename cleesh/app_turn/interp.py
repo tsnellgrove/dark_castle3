@@ -101,6 +101,9 @@ def interpreter(user_input, master_obj_lst):
 	# len(user_input_lst) is not < 1 so user_input_lst must have at least one word in it
 	word1 = user_input_lst[0]
 
+
+	# *** special case of one-word commands ***
+
 	# handle true one-word commands
 	if len(user_input_lst) == 1 and word1 == 'help':
 		return 'help', [word1]
@@ -122,7 +125,6 @@ def interpreter(user_input, master_obj_lst):
 			user_input_lst[0] = 'go'
 		if word1 == 'inventory':
 			user_input_lst[0] = 'examine'
-#			user_input_lst.append(gs.core.hero.name)
 			user_input_lst.append(creature.name)
 		if word1 == 'look':
 			user_input_lst[0] = 'examine'
@@ -142,17 +144,32 @@ def interpreter(user_input, master_obj_lst):
 			user_input_lst.append(creature.get_hand_item().name)
 			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
 
-	# if not a known true or convertable one-word command, must be an error
+	# if input is one word long, and not a true or convertable one-word cmd, must be error
 	if len(user_input_lst) == 1:
 		if word1 in full_verbs_lst:
-			error_msg = word1 + " what?"
+			error_msg = word1.capitalize() + " what?"
 		else:
 			error_msg = "What??"
 		return 'error', [error_msg]
 
+
+	# *** multi-word commands ***
+
+	# check for basic verb errors: no verbs or more than one verb
+	verb_count = 0
+	for word in user_input_lst:
+		if word in full_verbs_lst:
+			verb_count += 1
+	if verb_count == 0:
+		return 'error', ['I don\'t see a verb in that sentence!']
+	elif verb_count > 1:
+		return 'error', ['I see more than one verb in that sentence!']
+		
 	# all commands longer than one word should start with a verb
 	if word1 not in full_verbs_lst:
 		return 'error', ["Please start your sentence with a known verb!"]
+
+
 
 	# handle prep_no_do verb commands (special cases first else general case)
 	if word1 in gs.io.get_lst('prep_no_do_verb_lst','eng'):
