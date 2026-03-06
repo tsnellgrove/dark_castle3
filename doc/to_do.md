@@ -302,10 +302,10 @@ To Do List - Dark Castle v3
 			- if word1 in assumed_noun_lst => convert to multi-word
 		- 4.aa.3 if word1 in full_verb_lst and len(user_input_lst) == 1 ==> return err
 		- 4.aa.4 if word1 not in full_verb_lst and len(user_input_lst) == 1 ==> return err
-	- 4a. error if no verb or verb not known or verb count > 1 [INPROC]
+	- 4a. error if no verb or verb not known or verb count > 1 [DONE]
 		- 4a.1 update errors [DONE]
 		- 4a.2 run sceario tests [DONE]
-		- 4a.3 fix scenario tests [TBD]
+		- 4a.3 fix scenario tests [DONE]
 
 	- 4.a.1 update noun attributes [TBD]
 		- resarch and finalize eliminating obj-as-mach approach

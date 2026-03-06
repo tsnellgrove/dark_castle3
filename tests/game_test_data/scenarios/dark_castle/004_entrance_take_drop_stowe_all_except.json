@@ -21,7 +21,7 @@
   "should_end": false,
   "expected_full_outputs": [
     "\nTaken\n",
-    "\nPlease start your sentence with a known verb!\n",
+    "\nI don't see a verb in that sentence!\n",
     "\nStowed\n",
     "\nYou don't have enough capacity to take the Big Rock along with everything else you are carrying.\n",
     "\nCheese Wedge: Dropped\n\nPaper Bag: Dropped\n\nEarthen Jug: Dropped\n\nRusty Key: Dropped\n",

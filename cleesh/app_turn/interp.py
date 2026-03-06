@@ -162,7 +162,7 @@ def interpreter(user_input, master_obj_lst):
 			verb_count += 1
 	if verb_count == 0:
 		return 'error', ['I don\'t see a verb in that sentence!']
-	elif verb_count > 1:
+	elif (verb_count > 1) and (word1 != 'help'): # e.g. 'help attack' is valid
 		return 'error', ['I see more than one verb in that sentence!']
 		
 	# all commands longer than one word should start with a verb
