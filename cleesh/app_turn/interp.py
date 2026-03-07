@@ -117,7 +117,7 @@ def interpreter(user_input, master_obj_lst):
 	if word1 in one_word_max_lst and len(user_input_lst) > 1:
 		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
 
-	# convert one-word commands that are implicit two-word commands 
+	# convert one-word commands that are implicit two-word commands [SYNTAX]
 	full_one_word_lst = gs.io.get_lst('one_word_convert_lst','eng') + gs.io.get_lst('one_word_travel_lst','eng')
 	if len(user_input_lst) == 1 and word1 in full_one_word_lst:
 		if word1 in gs.io.get_lst('one_word_travel_lst','eng'):
@@ -169,9 +169,7 @@ def interpreter(user_input, master_obj_lst):
 	if word1 not in full_verbs_lst:
 		return 'error', ["Please start your sentence with a known verb!"]
 
-
-
-	# handle prep_no_do verb commands (special cases first else general case)
+	# handle prep_no_do verb commands (special cases first else general case) [SYNTAX]
 	if word1 in gs.io.get_lst('prep_no_do_verb_lst','eng'):
 		if word1 in ['climb']:
 			room = gs.map.hero_rm
@@ -195,6 +193,7 @@ def interpreter(user_input, master_obj_lst):
 			return 'prep_no_do', [word1, prep, word2_obj]
 
 	# handle prep verb commands (special cases first else general case)
+	# [SYNTAX start here]
 	if word1 == 'help':
 		word2 = user_input_lst[1]
 		return 'help', [word2]
@@ -245,6 +244,7 @@ def interpreter(user_input, master_obj_lst):
 		if len(user_input_lst) < 4:
 			error_msg = "That sentence doesn't appear to be complete"
 			return 'error', [error_msg]
+		# [SYNTAX end here]
 		else:
 			in_position = user_input_lst.index(prep)
 			v_n_lst = list(islice(user_input_lst, in_position))
