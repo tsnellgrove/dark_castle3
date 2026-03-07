@@ -308,9 +308,10 @@ To Do List - Dark Castle v3
 		- 4a.3 fix scenario tests [DONE]
 	- 4.a.0 review and refactor interp() [INPROC]
 		- 4.a.0.i review base interp() code [DONE]
-		- 4.a.0.ii extract hand management to an external hand_manage() function [TBD]
-		- 4.a.0.iii extract prep_verb hand mgmt to hand_manage() [TBD]
-		- 4.a.0.iv deep review of noun_handling() [TBD]
+		- 4.a.0.ii create main interp() routine that calls others (e.g. clean-up and 1-word) [TBD]
+		- 4.a.0.iii extract hand management to an external hand_manage() function [TBD]
+		- 4.a.0.iv extract prep_verb hand mgmt to hand_manage() [TBD]
+		- 4.a.0.v deep review of noun_handling() [TBD]
 
 
 
