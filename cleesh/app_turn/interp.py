@@ -7,22 +7,7 @@
 from itertools import islice
 
 
-### root_word_count - determines if user command contains root words
-def root_word_count(gs, word2_txt):
-	scope_lst = gs.map.hero_rm.get_vis_contain_lst(gs)
-	root_count = 0
-	obj_name = ""
-	for obj in scope_lst:
-		if obj.root_name == word2_txt:
-			root_count += 1
-			obj_name = obj.name
-		if obj.has_writing():
-			if obj.writing.root_name == word2_txt:
-				root_count += 1
-				obj_name = obj.writing.name
-	return root_count, obj_name
-
-### input_cleanup - convert user_input str to lst, lower, convert abbreviations, remove articles
+### input_cleanup - user_input str to lst, lower, convert abbrev & verb_syn, remove articles / buzz
 def input_cleanup(gs, user_input):
 	# first, convert to lower case and strip leading/trailing whitespace
 	user_input = user_input.lower().strip()	
@@ -38,10 +23,27 @@ def input_cleanup(gs, user_input):
 			user_input_lst[index] = abbrev_dict[word]
 		elif word in verb_syn_dict:
 			user_input_lst[index] = verb_syn_dict[word]
-	# finally, strip out articles
+	# finally, strip out articles / buzz words
 	for article in gs.io.get_lst('articles_lst','eng'):
 		user_input_lst = [word for word in user_input_lst if word != article]
 	return user_input_lst
+
+
+### root_word_count - determines if user command contains root words
+def root_word_count(gs, word2_txt):
+	scope_lst = gs.map.hero_rm.get_vis_contain_lst(gs)
+	root_count = 0
+	obj_name = ""
+	for obj in scope_lst:
+		if obj.root_name == word2_txt:
+			root_count += 1
+			obj_name = obj.name
+		if obj.has_writing():
+			if obj.writing.root_name == word2_txt:
+				root_count += 1
+				obj_name = obj.writing.name
+	return root_count, obj_name
+
 
 ### handle nouns and adjectives
 def noun_handling(master_obj_lst, user_input_lst):
@@ -86,38 +88,40 @@ def noun_handling(master_obj_lst, user_input_lst):
 				word2_obj = gs.core.get_str_to_obj_dict(obj_name)
 	return error_state, error_msg, word2_obj
 
+
 ### interpreter - determine user intent
 def interpreter(user_input, master_obj_lst):
+	# *** user_input clean-up and global variable initialization ***
 	gs = master_obj_lst[0]
-	creature = gs.core.hero
 	user_input_lst = input_cleanup(gs, user_input)
-	full_verbs_lst = gs.io.get_lst('known_verb_lst','eng') + gs.io.get_lst('debug_verb_lst','eng')
-	tru_1word_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
-
-	# error if no input or the only input is articles 
-	if len(user_input_lst) < 1:
-		return 'error', ["I have no idea what you're talking about!"]
-
-	# len(user_input_lst) is not < 1 so user_input_lst must have at least one word in it
-	word1 = user_input_lst[0]
-
+	if len(user_input_lst) < 1: # error if no input or the only input is articles 
+		return 'error', ["I have no idea what you're talking about!"] 	
+	word1 = user_input_lst[0] # if len(user_input_lst) > 0, then word1 is defined
 
 	# *** special case of one-word commands ***
-
-	# handle true one-word commands
-	if len(user_input_lst) == 1 and word1 == 'help':
+	if len(user_input_lst) == 1 and word1 == 'help': # [SYNTAX]
 		return 'help', [word1]
+	
+	tru_1word_lst = (
+			gs.io.get_lst('one_word_only_lst','eng') + 
+			gs.io.get_lst('one_word_secret_lst','eng')
+			)
 	if len(user_input_lst) == 1 and word1 in tru_1word_lst:
 		return 'tru_1word', [word1]
-	one_word_max_lst = (gs.io.get_lst('one_word_only_lst','eng') + 
-						 gs.io.get_lst('pre_interp_word_lst','eng') + 
-						 gs.io.get_lst('one_word_convert_lst','eng') + 
-						 gs.io.get_lst('one_word_secret_lst','eng') 
-						)
+	
+	one_word_max_lst = (
+			gs.io.get_lst('one_word_only_lst','eng') + 
+			gs.io.get_lst('pre_interp_word_lst','eng') + 
+			gs.io.get_lst('one_word_secret_lst','eng') 
+			)
 	if word1 in one_word_max_lst and len(user_input_lst) > 1:
 		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
 
+
 	# convert one-word commands that are implicit two-word commands [SYNTAX]
+	if word1 in gs.io.get_lst('one_word_convert_lst','eng') and len(user_input_lst) > 1:
+		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
+	creature = gs.core.hero
 	full_one_word_lst = gs.io.get_lst('one_word_convert_lst','eng') + gs.io.get_lst('one_word_travel_lst','eng')
 	if len(user_input_lst) == 1 and word1 in full_one_word_lst:
 		if word1 in gs.io.get_lst('one_word_travel_lst','eng'):
@@ -135,7 +139,7 @@ def interpreter(user_input, master_obj_lst):
 			user_input_lst.append(creature.name)
 		word1 = user_input_lst[0]
 
-	# convert one-word commands that are assumed-noun two-word commands
+	# convert one-word commands that are assumed-noun two-word commands [SYNTAX]
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst','eng'):
 		if word1 in ['exit']:
 			if creature.is_contained(gs):
@@ -144,7 +148,9 @@ def interpreter(user_input, master_obj_lst):
 			user_input_lst.append(creature.get_hand_item().name)
 			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
 
+
 	# if input is one word long, and not a true or convertable one-word cmd, must be error
+	full_verbs_lst = gs.io.get_lst('known_verb_lst','eng') + gs.io.get_lst('debug_verb_lst','eng')
 	if len(user_input_lst) == 1:
 		if word1 in full_verbs_lst:
 			error_msg = word1.capitalize() + " what?"

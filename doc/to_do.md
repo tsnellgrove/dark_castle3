@@ -292,14 +292,14 @@ To Do List - Dark Castle v3
 	- DONE: remove 'kick' from verb_syn_lst (due to 'kick with fist')
 	- DONE: fix scenario test / remove 'kick' from it
 
-- 4. identify  verb, do-noun clause, prep, and id-noun clauses [INPROC]
+- 4. identify  verb, do-noun clause, prep, and id-noun clauses - refactor [INPROC]
 	- 4 aa. deal with special case of zero or one-word commands: [DONE]
-		- 4.aa.1 if len(user_input_lst) == 0 ==> return err
-		- 4.aa.2 if len(user_input_lst) == 1:
-			- if help or tru_1word => return word1 & type
-			- if word1 in one_word_only_lst and len(user_input_lst) > 1 ==> return err
-			- if word1 in travel_lst or conver_lst => convert to multi-word
-			- if word1 in assumed_noun_lst => convert to multi-word
+		- 4.aa.1 if len(user_input_lst) == 0 ==> return err [DONE]
+		- 4.aa.2 if len(user_input_lst) == 1: [INPROC]
+			- if help or tru_1word => return word1 & type [DONE]
+			- if word1 in one_word_only_lst and len(user_input_lst) > 1 ==> return err [DONE]
+			- if word1 in travel_lst or conver_lst => convert to multi-word [TBD]
+			- if word1 in assumed_noun_lst => convert to multi-word [TBD]
 		- 4.aa.3 if word1 in full_verb_lst and len(user_input_lst) == 1 ==> return err
 		- 4.aa.4 if word1 not in full_verb_lst and len(user_input_lst) == 1 ==> return err
 	- 4a. error if no verb or verb not known or verb count > 1 [DONE]
@@ -308,7 +308,7 @@ To Do List - Dark Castle v3
 		- 4a.3 fix scenario tests [DONE]
 	- 4.a.0 review and refactor interp() [INPROC]
 		- 4.a.0.i review base interp() code [DONE]
-		- 4.a.0.ii create main interp() routine that calls others (e.g. clean-up and 1-word) [TBD]
+		- 4.a.0.ii create main interp() routine that calls others (e.g. clean-up and 1-word) [INPROC]
 		- 4.a.0.iii extract hand management to an external hand_manage() function [TBD]
 		- 4.a.0.iv extract prep_verb hand mgmt to hand_manage() [TBD]
 		- 4.a.0.v deep review of noun_handling() [TBD]
@@ -382,8 +382,9 @@ To Do List - Dark Castle v3
 		- EXAMPLE: 'enter' / 'go in' on 'path' => action = "go southwest"
 
 
-- 6.5. optimize
+- 6.5. optimize:
 	- 6.5a. skip "of" and word before (e.g. "one of", "piece of")
+	- 6.5b. sort out rand_mode on one_word_secret_lst and alos debug_verb_lst
 
 
 - 7. introduce new words
