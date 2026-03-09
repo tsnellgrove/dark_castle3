@@ -298,8 +298,14 @@ To Do List - Dark Castle v3
 		- 4.aa.2 if len(user_input_lst) == 1: [INPROC]
 			- if help or tru_1word => return word1 & type [DONE]
 			- if word1 in one_word_only_lst and len(user_input_lst) > 1 ==> return err [DONE]
-			- if word1 in travel_lst or conver_lst => convert to multi-word [TBD]
-			- if word1 in assumed_noun_lst => convert to multi-word [TBD]
+			- create proto_syntax routine and call from interp() [TBD]
+				- create function [TBD]
+				- if word1 in travel_lst or conver_lst => convert to multi-word [TBD]
+				- if word1 in assumed_noun_lst => convert to multi-word [TBD]
+			- capture input_verb variable [TBD]
+				- IDEA: generate input_syntax_lst and compare to syntax_lst to determine input_action
+				- EXAMPLE: input_verb = 'look' => input_syntax_lst = [look, at, do_noun]
+				- EXAMPLE: [look, at, do_noun] => {[look, at, do_noun] : [examine, input_do]}
 		- 4.aa.3 if word1 in full_verb_lst and len(user_input_lst) == 1 ==> return err
 		- 4.aa.4 if word1 not in full_verb_lst and len(user_input_lst) == 1 ==> return err
 	- 4a. error if no verb or verb not known or verb count > 1 [DONE]

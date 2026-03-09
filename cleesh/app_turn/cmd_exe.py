@@ -11,7 +11,6 @@ def cmd_execute(gs, case, word_lst):
 	try:
 		if case == 'help':
 			option = word_lst[0]
-#			if option == 'help':
 			if option == 'menu':
 				output = gs.io.get_str_nr('help')
 			elif option in ['basics', 'adjectives', 'prepositions', 'read', 'attack', 'creatures', 'save', 'multiples', 'command-queue', 'inventory', 'verbosity']:

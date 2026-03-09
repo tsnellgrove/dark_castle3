@@ -91,6 +91,7 @@ def noun_handling(master_obj_lst, user_input_lst):
 
 ### interpreter - determine user intent
 def interpreter(user_input, master_obj_lst):
+
 	# *** user_input clean-up and global variable initialization ***
 	gs = master_obj_lst[0]
 	user_input_lst = input_cleanup(gs, user_input)
@@ -98,18 +99,15 @@ def interpreter(user_input, master_obj_lst):
 		return 'error', ["I have no idea what you're talking about!"] 	
 	word1 = user_input_lst[0] # if len(user_input_lst) > 0, then word1 is defined
 
-	# *** special case of one-word commands ***
+	# *** special case of help commands ***
 	if word1 == 'help':
 		if len(user_input_lst) == 1:
 			option = 'menu'
 		else:
 			option = user_input_lst[1]
 		return 'help', [option]
-			
-#	if len(user_input_lst) == 1 and word1 == 'help': # [SYNTAX]
-#		return 'help', [word1]
 	
-	
+	# *** special case of one-word commands ***
 	tru_1word_lst = (
 			gs.io.get_lst('one_word_only_lst','eng') + 
 			gs.io.get_lst('one_word_secret_lst','eng')
@@ -124,6 +122,7 @@ def interpreter(user_input, master_obj_lst):
 			)
 	if word1 in one_word_max_lst and len(user_input_lst) > 1:
 		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
+
 
 
 	# convert one-word commands that are implicit two-word commands [SYNTAX]
@@ -209,9 +208,6 @@ def interpreter(user_input, master_obj_lst):
 	# handle prep verb commands (special cases first else general case)
 	# [SYNTAX start here]
 
-#	if word1 == 'help':
-#		word2 = user_input_lst[1]
-#		return 'help', [word2]
 	elif word1 == 'go':
 		word2 = user_input_lst[1]
 		return 'go', [gs.map.hero_rm, word1, word2]
