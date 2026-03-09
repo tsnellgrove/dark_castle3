@@ -99,8 +99,16 @@ def interpreter(user_input, master_obj_lst):
 	word1 = user_input_lst[0] # if len(user_input_lst) > 0, then word1 is defined
 
 	# *** special case of one-word commands ***
-	if len(user_input_lst) == 1 and word1 == 'help': # [SYNTAX]
-		return 'help', [word1]
+	if word1 == 'help':
+		if len(user_input_lst) == 1:
+			option = 'menu'
+		else:
+			option = user_input_lst[1]
+		return 'help', [option]
+			
+#	if len(user_input_lst) == 1 and word1 == 'help': # [SYNTAX]
+#		return 'help', [word1]
+	
 	
 	tru_1word_lst = (
 			gs.io.get_lst('one_word_only_lst','eng') + 
@@ -200,9 +208,10 @@ def interpreter(user_input, master_obj_lst):
 
 	# handle prep verb commands (special cases first else general case)
 	# [SYNTAX start here]
-	if word1 == 'help':
-		word2 = user_input_lst[1]
-		return 'help', [word2]
+
+#	if word1 == 'help':
+#		word2 = user_input_lst[1]
+#		return 'help', [word2]
 	elif word1 == 'go':
 		word2 = user_input_lst[1]
 		return 'go', [gs.map.hero_rm, word1, word2]
