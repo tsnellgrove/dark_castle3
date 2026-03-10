@@ -108,19 +108,28 @@ def interpreter(user_input, master_obj_lst):
 		return 'help', [option]
 	
 	# *** special case of one-word commands ***
-	tru_1word_lst = (
+#	tru_1word_lst = (
+#			gs.io.get_lst('one_word_only_lst','eng') + 
+#			gs.io.get_lst('one_word_secret_lst','eng')
+#			)
+#	if len(user_input_lst) == 1 and word1 in tru_1word_lst:
+	if len(user_input_lst) == 1 and word1 in (
 			gs.io.get_lst('one_word_only_lst','eng') + 
 			gs.io.get_lst('one_word_secret_lst','eng')
-			)
-	if len(user_input_lst) == 1 and word1 in tru_1word_lst:
+			):
 		return 'tru_1word', [word1]
 	
-	one_word_max_lst = (
+#	one_word_max_lst = (
+#			gs.io.get_lst('one_word_only_lst','eng') + 
+#			gs.io.get_lst('pre_interp_word_lst','eng') + 
+#			gs.io.get_lst('one_word_secret_lst','eng') 
+#			)
+#	if word1 in one_word_max_lst and len(user_input_lst) > 1:
+	if len(user_input_lst) > 1 and word1 in (
 			gs.io.get_lst('one_word_only_lst','eng') + 
 			gs.io.get_lst('pre_interp_word_lst','eng') + 
 			gs.io.get_lst('one_word_secret_lst','eng') 
-			)
-	if word1 in one_word_max_lst and len(user_input_lst) > 1:
+			):
 		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
 
 
