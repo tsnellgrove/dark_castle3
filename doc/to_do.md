@@ -302,6 +302,7 @@ To Do List - Dark Castle v3
 				- create function [TBD]
 				- if word1 in travel_lst or conver_lst => convert to multi-word [TBD]
 				- if word1 in assumed_noun_lst => convert to multi-word [TBD]
+				- ensure reserved words (e.g. hero_rm, hero_name, hero_dir) aren't in input [TBD]
 			- capture input_verb variable [TBD]
 				- IDEA: generate input_syntax_lst and compare to syntax_lst to determine input_action
 				- EXAMPLE: input_verb = 'look' => input_syntax_lst = [look, at, do_noun]
