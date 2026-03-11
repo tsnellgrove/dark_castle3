@@ -29,6 +29,32 @@ def input_cleanup(gs, user_input):
 	return user_input_lst
 
 
+### syntax - convert user_input_lst into a case and action_lst
+def syntax(user_input_tpl, input_dir, gs):
+
+	syntax_dict = {
+		('inventory',) : {
+			'case' : '2word',
+			'base_action_lst' : ['examine', 'hero_name']
+		}
+	}
+	base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
+	action_lst = base_action_lst.copy()
+#	print(f"base_action_lst: {base_action_lst}")
+	for index, word in enumerate(base_action_lst):
+		if word == 'hero_name':
+			action_lst[index] = gs.core.hero # obj
+#	print(f"action_lst: {action_lst}")
+	if syntax_dict[user_input_tpl]['case'] == '2word':
+		cmd_lst = [action_lst[1], action_lst[0]]
+	else:
+		cmd_lst = action_lst
+#	print(f"cmd_lst: {cmd_lst}")
+	return syntax_dict[user_input_tpl]['case'], cmd_lst
+
+	# don't like all the cmd_lst alternations - update cmd_exe w/ new 2word option to fix
+
+
 ### root_word_count - determines if user command contains root words
 def root_word_count(gs, word2_txt):
 	scope_lst = gs.map.hero_rm.get_vis_contain_lst(gs)
@@ -114,18 +140,25 @@ def interpreter(user_input, master_obj_lst):
 			):
 		return 'tru_1word', [word1]
 	
+#	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst','eng'):
+	if len(user_input_lst) == 1 and word1 in ['inventory']:
+		case, cmd_lst = syntax(tuple(user_input_lst), None, gs)
+		return case, cmd_lst
+
 	if len(user_input_lst) > 1 and word1 in (
 			gs.io.get_lst('one_word_only_lst','eng') + 
 			gs.io.get_lst('pre_interp_word_lst','eng') + 
-			gs.io.get_lst('one_word_secret_lst','eng') 
+			gs.io.get_lst('one_word_secret_lst','eng') +
+			gs.io.get_lst('one_word_convert_lst','eng') # added
 			):
 		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
 
 
 
 	# convert one-word commands that are implicit two-word commands [SYNTAX]
-	if word1 in gs.io.get_lst('one_word_convert_lst','eng') and len(user_input_lst) > 1:
-		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
+
+#	if word1 in gs.io.get_lst('one_word_convert_lst','eng') and len(user_input_lst) > 1:
+#		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
 	creature = gs.core.hero
 	full_one_word_lst = gs.io.get_lst('one_word_convert_lst','eng') + gs.io.get_lst('one_word_travel_lst','eng')
 	if len(user_input_lst) == 1 and word1 in full_one_word_lst:
