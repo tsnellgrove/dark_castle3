@@ -50,8 +50,8 @@ def syntax(user_input_tpl, input_dir, gs):
 			'base_action_lst' : ['jump', 'hero_obj']
 		},
 		('hero_dir',) : {
-			'case' : 'action_go',
-			"base_action_lst" : ['go', 'hero_dir','hero_rm_obj']
+			'case' : 'action_dir',
+			"base_action_lst" : ['go', 'hero_dir', 'hero_rm_obj']
 		}
 
 	}
@@ -61,8 +61,10 @@ def syntax(user_input_tpl, input_dir, gs):
 	for index, word in enumerate(base_action_lst):
 		if word == 'hero_obj':
 			action_lst[index] = gs.core.hero # convert class noun to object
-		elif word == 'hero_rm_obj':
+		if word == 'hero_rm_obj':
 			action_lst[index] = gs.map.hero_rm # convert class noun to object
+		if word == 'hero_dir':
+			action_lst[index] = input_dir # convert class noun to user input direction
 ##	print(f"action_lst: {action_lst}")
 	return syntax_dict[user_input_tpl]['case'], action_lst
 
