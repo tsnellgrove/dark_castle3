@@ -308,7 +308,10 @@ To Do List - Dark Castle v3
 					- clean-up comments [DONE]
 					- rest of convert_lst [DONE]
 					- clean up comments in interp() [DONE]
-				- if word1 in travel_lst => syntax routine [TBD]
+				- if word1 in travel_lst => syntax routine [INPROC]
+					- add hero_dir to syntax_dict [DONE]
+					- add hero_dir post_processing to syntax() [TBD]
+					
 
 				
 				- ensure reserved words (hero_rm_obj, hero_obj, hero_dir) aren't in input [TBD]

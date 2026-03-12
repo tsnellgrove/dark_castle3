@@ -48,7 +48,12 @@ def syntax(user_input_tpl, input_dir, gs):
 		('jump',) : {
 			'case' : 'action_2word',
 			'base_action_lst' : ['jump', 'hero_obj']
+		},
+		('hero_dir',) : {
+			'case' : 'action_go',
+			"base_action_lst" : ['go', 'hero_dir','hero_rm_obj']
 		}
+
 	}
 	base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
 	action_lst = base_action_lst.copy()
