@@ -28,8 +28,15 @@ def validate(gs, case, word_lst):
 				action_str, do_noun_obj = word_lst
 				cmd_err, is_att, err_txt = getattr(do_noun_obj, action_str + '_err')(gs)
 				if (cmd_err and not is_att and err_txt != ""):
-					gs.io.buffer(err_txt)			
-			if case == '2word':
+					gs.io.buffer(err_txt)
+			elif case == 'action_dir':
+#				room_obj, word1, word2 = word_lst
+				action_str, direction, do_noun_obj = word_lst
+#				cmd_err, is_att, err_txt = getattr(room_obj, word1 + '_err')(word2, gs)
+				cmd_err, is_att, err_txt = getattr(do_noun_obj, action_str + '_err')(direction, gs)
+				if (cmd_err and not is_att):
+					gs.io.buffer(err_txt)	
+			elif case == '2word':
 				word2_obj, word1 = word_lst
 				cmd_err, is_att, err_txt = getattr(word2_obj, word1 + '_err')(gs)
 				if (cmd_err and not is_att and err_txt != ""):

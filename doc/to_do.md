@@ -311,9 +311,13 @@ To Do List - Dark Castle v3
 				- if word1 in travel_lst => syntax routine [INPROC]
 					- add hero_dir to syntax_dict [DONE]
 					- add hero_dir post_processing to syntax() [DONE]
-					- add 'action_dir' case to validate() [TBD]
+					- add 'action_dir' case to validate() [DONE]
 					- add 'action_dir' case to cmd_exe() [TBD]
 					- add 'action_dir' case to trig_check() in mach_class() [TBD]
+					- add travel_lst call [TBD]
+					- test new case [TBD]
+					- clean up comments in case calls [TBD]
+					- clean up comments in interp() [TBD]
 
 
 				
