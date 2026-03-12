@@ -36,6 +36,18 @@ def syntax(user_input_tpl, input_dir, gs):
 		('inventory',) : {
 			'case' : 'action_2word',
 			'base_action_lst' : ['examine', 'hero_obj']
+		},
+		('look',) : {
+			'case' : 'action_2word',
+			'base_action_lst' : ['examine', 'hero_rm_obj']
+		},
+		('stand',) : {
+			'case' : 'action_2word',
+			'base_action_lst' : ['stand', 'hero_obj']
+		},
+		('jump',) : {
+			'case' : 'action_2word',
+			'base_action_lst' : ['jump', 'hero_obj']
 		}
 	}
 	base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
@@ -44,6 +56,8 @@ def syntax(user_input_tpl, input_dir, gs):
 	for index, word in enumerate(base_action_lst):
 		if word == 'hero_obj':
 			action_lst[index] = gs.core.hero # convert class noun to object
+		elif word == 'hero_rm_obj':
+			action_lst[index] = gs.map.hero_rm # convert class noun to object
 ##	print(f"action_lst: {action_lst}")
 	return syntax_dict[user_input_tpl]['case'], action_lst
 
@@ -133,8 +147,8 @@ def interpreter(user_input, master_obj_lst):
 			):
 		return 'tru_1word', [word1]
 	
-#	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst','eng'):
-	if len(user_input_lst) == 1 and word1 in ['inventory']:
+	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst','eng'):
+#	if len(user_input_lst) == 1 and word1 in ['inventory', 'look', 'stand', 'jump']:
 		case, cmd_lst = syntax(tuple(user_input_lst), None, gs)
 		return case, cmd_lst
 
@@ -152,25 +166,26 @@ def interpreter(user_input, master_obj_lst):
 
 #	if word1 in gs.io.get_lst('one_word_convert_lst','eng') and len(user_input_lst) > 1:
 #		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
-	creature = gs.core.hero
-	full_one_word_lst = gs.io.get_lst('one_word_convert_lst','eng') + gs.io.get_lst('one_word_travel_lst','eng')
-	if len(user_input_lst) == 1 and word1 in full_one_word_lst:
+#	full_one_word_lst = gs.io.get_lst('one_word_convert_lst','eng') + gs.io.get_lst('one_word_travel_lst','eng')
+#	if len(user_input_lst) == 1 and word1 in full_one_word_lst:
+	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_travel_lst','eng'):
 		if word1 in gs.io.get_lst('one_word_travel_lst','eng'):
 			user_input_lst.append(word1)
 			user_input_lst[0] = 'go'
 #		if word1 == 'inventory':
 #			user_input_lst[0] = 'examine'
 #			user_input_lst.append(creature.name)
-		if word1 == 'look':
-			user_input_lst[0] = 'examine'
-			user_input_lst.append(gs.map.hero_rm.name)
-		if word1 == 'stand':
-			user_input_lst.append(creature.name)
-		if word1 == 'jump':
-			user_input_lst.append(creature.name)
+#		if word1 == 'look':
+#			user_input_lst[0] = 'examine'
+#			user_input_lst.append(gs.map.hero_rm.name)
+#		if word1 == 'stand':
+#			user_input_lst.append(creature.name)
+#		if word1 == 'jump':
+#			user_input_lst.append(creature.name)
 		word1 = user_input_lst[0]
 
 	# convert one-word commands that are assumed-noun two-word commands [SYNTAX]
+	creature = gs.core.hero
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst','eng'):
 		if word1 in ['exit']:
 			if creature.is_contained(gs):
