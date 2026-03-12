@@ -155,8 +155,12 @@ def interpreter(user_input, master_obj_lst):
 		return 'tru_1word', [word1]
 	
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst','eng'):
-		case, cmd_lst = syntax(tuple(user_input_lst), None, gs)
-		return case, cmd_lst
+		case, action_lst = syntax(tuple(user_input_lst), None, gs)
+		return case, action_lst
+
+	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_travel_lst','eng'):
+		case, action_lst = syntax(('hero_dir',), word1, gs)
+		return case, action_lst
 
 	if len(user_input_lst) > 1 and word1 in (
 			gs.io.get_lst('one_word_only_lst','eng') + 
@@ -169,11 +173,11 @@ def interpreter(user_input, master_obj_lst):
 
 
 	# convert one-word commands that are implicit two-word commands [SYNTAX]
-	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_travel_lst','eng'):
-		if word1 in gs.io.get_lst('one_word_travel_lst','eng'):
-			user_input_lst.append(word1)
-			user_input_lst[0] = 'go'
-		word1 = user_input_lst[0]
+#	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_travel_lst','eng'):
+#		if word1 in gs.io.get_lst('one_word_travel_lst','eng'):
+#			user_input_lst.append(word1)
+#			user_input_lst[0] = 'go'
+#		word1 = user_input_lst[0]
 
 
 	# convert one-word commands that are assumed-noun two-word commands [SYNTAX]
