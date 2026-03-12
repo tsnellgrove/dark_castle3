@@ -31,9 +31,9 @@ def validate(gs, case, word_lst):
 					gs.io.buffer(err_txt)
 			elif case == 'action_dir':
 #				room_obj, word1, word2 = word_lst
-				action_str, direction, do_noun_obj = word_lst
+				action_str, dir_str, do_noun_obj = word_lst
 #				cmd_err, is_att, err_txt = getattr(room_obj, word1 + '_err')(word2, gs)
-				cmd_err, is_att, err_txt = getattr(do_noun_obj, action_str + '_err')(direction, gs)
+				cmd_err, is_att, err_txt = getattr(do_noun_obj, action_str + '_err')(dir_str, gs)
 				if (cmd_err and not is_att):
 					gs.io.buffer(err_txt)	
 			elif case == '2word':
