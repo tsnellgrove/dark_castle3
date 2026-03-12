@@ -34,25 +34,18 @@ def syntax(user_input_tpl, input_dir, gs):
 
 	syntax_dict = {
 		('inventory',) : {
-			'case' : '2word',
-			'base_action_lst' : ['examine', 'hero_name']
+			'case' : 'action_2word',
+			'base_action_lst' : ['examine', 'hero_obj']
 		}
 	}
 	base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
 	action_lst = base_action_lst.copy()
-#	print(f"base_action_lst: {base_action_lst}")
+##	print(f"base_action_lst: {base_action_lst}")
 	for index, word in enumerate(base_action_lst):
-		if word == 'hero_name':
-			action_lst[index] = gs.core.hero # obj
-#	print(f"action_lst: {action_lst}")
-	if syntax_dict[user_input_tpl]['case'] == '2word':
-		cmd_lst = [action_lst[1], action_lst[0]]
-	else:
-		cmd_lst = action_lst
-#	print(f"cmd_lst: {cmd_lst}")
-	return syntax_dict[user_input_tpl]['case'], cmd_lst
-
-	# don't like all the cmd_lst alternations - update cmd_exe w/ new 2word option to fix
+		if word == 'hero_obj':
+			action_lst[index] = gs.core.hero # convert class noun to object
+##	print(f"action_lst: {action_lst}")
+	return syntax_dict[user_input_tpl]['case'], action_lst
 
 
 ### root_word_count - determines if user command contains root words
@@ -165,9 +158,9 @@ def interpreter(user_input, master_obj_lst):
 		if word1 in gs.io.get_lst('one_word_travel_lst','eng'):
 			user_input_lst.append(word1)
 			user_input_lst[0] = 'go'
-		if word1 == 'inventory':
-			user_input_lst[0] = 'examine'
-			user_input_lst.append(creature.name)
+#		if word1 == 'inventory':
+#			user_input_lst[0] = 'examine'
+#			user_input_lst.append(creature.name)
 		if word1 == 'look':
 			user_input_lst[0] = 'examine'
 			user_input_lst.append(gs.map.hero_rm.name)

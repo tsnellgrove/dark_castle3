@@ -22,8 +22,13 @@ def validate(gs, case, word_lst):
 		return False, False, ""
 
 	# *** command errors ***
-	if case in ['2word', 'prep_no_do', 'prep', 'go']:
+	if case in ['2word', 'prep_no_do', 'prep', 'go', 'action_2word']:
 		try:
+			if case == 'action_2word':
+				action_str, do_noun_obj = word_lst
+				cmd_err, is_att, err_txt = getattr(do_noun_obj, action_str + '_err')(gs)
+				if (cmd_err and not is_att and err_txt != ""):
+					gs.io.buffer(err_txt)			
 			if case == '2word':
 				word2_obj, word1 = word_lst
 				cmd_err, is_att, err_txt = getattr(word2_obj, word1 + '_err')(gs)

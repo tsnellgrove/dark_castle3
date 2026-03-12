@@ -85,6 +85,9 @@ class TrigMixIn(object):
 		trig_wc_lst = ['not_valid'] # wildcards are only supported for nouns
 		if case == 'go':
 			trig_key_lst = [word_lst[1], word_lst[2]]
+		elif case == 'action_2word':
+			trig_key_lst = [word_lst[0], word_lst[1].name]
+			trig_wc_lst = [word_lst[0], '*']
 		elif case == '2word':
 			trig_key_lst = [word_lst[1], word_lst[0].name]
 			trig_wc_lst = [word_lst[1], '*']
