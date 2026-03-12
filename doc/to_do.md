@@ -313,7 +313,7 @@ To Do List - Dark Castle v3
 					- add hero_dir post_processing to syntax() [DONE]
 					- add 'action_dir' case to validate() [DONE]
 					- add 'action_dir' case to cmd_exe() [DONE]
-					- add 'action_dir' case to trig_check() in mach_class() [TBD]
+					- add 'action_dir' case to trig_check() in mach_class() [DONE]
 					- add travel_lst call [TBD]
 					- test new case [TBD]
 					- clean up comments in case calls [TBD]
