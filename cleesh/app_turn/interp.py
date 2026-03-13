@@ -171,15 +171,6 @@ def interpreter(user_input, master_obj_lst):
 		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
 
 
-
-	# convert one-word commands that are implicit two-word commands [SYNTAX]
-#	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_travel_lst','eng'):
-#		if word1 in gs.io.get_lst('one_word_travel_lst','eng'):
-#			user_input_lst.append(word1)
-#			user_input_lst[0] = 'go'
-#		word1 = user_input_lst[0]
-
-
 	# convert one-word commands that are assumed-noun two-word commands [SYNTAX]
 	creature = gs.core.hero
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst','eng'):

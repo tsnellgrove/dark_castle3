@@ -308,7 +308,7 @@ To Do List - Dark Castle v3
 					- clean-up comments [DONE]
 					- rest of convert_lst [DONE]
 					- clean up comments in interp() [DONE]
-				- if word1 in travel_lst => syntax routine [INPROC]
+				- if word1 in travel_lst => syntax routine [DONE]
 					- add hero_dir to syntax_dict [DONE]
 					- add hero_dir post_processing to syntax() [DONE]
 					- add 'action_dir' case and * case check * to validate() [DONE]
@@ -318,12 +318,11 @@ To Do List - Dark Castle v3
 					- initial testing => err [DONE]
 					- fix getting misc_err_0 instead of dir_err_0 [DONE]
 					- test new case [DONE]
-					- clean up comments in case calls [TBD]
-					- clean up comments in interp() [TBD]
-
+					- clean up comments in case calls [DONE]
+					- clean up comments in interp() [DONE]
+				- ensure reserved words (hero_rm_obj, hero_obj, hero_dir) aren't in input [TBD]
 
 				
-				- ensure reserved words (hero_rm_obj, hero_obj, hero_dir) aren't in input [TBD]
 				- if word1 in assumed_noun_lst => how to handle assumed do_noun?? [TBD]
 			- capture input_verb variable [TBD]
 				- IDEA: generate input_syntax_lst and compare to syntax_lst to determine input_action

@@ -95,11 +95,8 @@ def cmd_execute(gs, case, word_lst):
 			return
 		if case == 'action_dir':
 			action_str, dir_str, do_noun_obj = word_lst
-#			room_obj, word1, word2 = word_lst
-#			getattr(room_obj, word1)(word2, gs)
 			getattr(do_noun_obj, action_str)(dir_str, gs)
 			if not gs.end.is_end: # check to avoid double score display on end
-#				gs.score.disp_score(word1, gs.map.hero_rm.name, None, gs)
 				gs.score.disp_score(action_str, do_noun_obj.name, dir_str, gs)
 			return
 		if case == '2word':

@@ -89,7 +89,6 @@ class TrigMixIn(object):
 			trig_key_lst = [word_lst[0], word_lst[1].name]
 			trig_wc_lst = [word_lst[0], '*']
 		if case == 'action_dir':
-#			trig_key_lst = [word_lst[1], word_lst[2]]
 			trig_key_lst = [word_lst[0], word_lst[1]]
 		elif case == '2word':
 			trig_key_lst = [word_lst[1], word_lst[0].name]
