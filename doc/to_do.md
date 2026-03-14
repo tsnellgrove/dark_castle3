@@ -320,10 +320,12 @@ To Do List - Dark Castle v3
 					- test new case [DONE]
 					- clean up comments in case calls [DONE]
 					- clean up comments in interp() [DONE]
-				- ensure reserved words (hero_rm_obj, hero_obj, hero_dir) aren't in input [TBD]
-
-				
+				- ensure reserved words (hero_rm_obj, hero_obj, hero_dir) aren't in input [DONE]
 				- if word1 in assumed_noun_lst => how to handle assumed do_noun?? [TBD]
+				- review consolidating user_input_lst clean-up into function [TBD]
+
+
+
 			- capture input_verb variable [TBD]
 				- IDEA: generate input_syntax_lst and compare to syntax_lst to determine input_action
 				- EXAMPLE: input_verb = 'look' => input_syntax_lst = [look, at, do_noun]
@@ -340,7 +342,8 @@ To Do List - Dark Castle v3
 		- 4.a.0.iii extract hand management to an external hand_manage() function [TBD]
 		- 4.a.0.iv extract prep_verb hand mgmt to hand_manage() [TBD]
 		- 4.a.0.v deep review of noun_handling() [TBD]
-
+	- TBD: create new scenario test
+		- TBD: test for reserved syntax words
 
 
 	- 4.a.1 update noun attributes [TBD]

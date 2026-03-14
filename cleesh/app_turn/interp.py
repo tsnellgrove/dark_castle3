@@ -69,6 +69,19 @@ def syntax(user_input_tpl, input_dir, gs):
 	return syntax_dict[user_input_tpl]['case'], action_lst
 
 
+def assumed_noun_assignment(user_input_lst, gs):
+	creature = gs.core.hero
+	word1 = user_input_lst[0]
+	if len(user_input_lst) == 1:
+		if word1 in ['exit']:
+			if creature.is_contained(gs):
+				user_input_lst.append(creature.get_contained_by(gs).name)
+		elif not creature.hand_is_empty():
+			user_input_lst.append(creature.get_hand_item().name)
+			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
+	return user_input_lst
+
+
 ### root_word_count - determines if user command contains root words
 def root_word_count(gs, word2_txt):
 	scope_lst = gs.map.hero_rm.get_vis_contain_lst(gs)
@@ -132,11 +145,17 @@ def noun_handling(master_obj_lst, user_input_lst):
 ### interpreter - determine user intent
 def interpreter(user_input, master_obj_lst):
 
-	# *** user_input clean-up and global variable initialization ***
+	# *** user_input list conversion and clean-up ***
 	gs = master_obj_lst[0]
 	user_input_lst = input_cleanup(gs, user_input)
+
+	# *** basic error checking and word1 assignment ***
 	if len(user_input_lst) < 1: # error if no input or the only input is articles 
-		return 'error', ["I have no idea what you're talking about!"] 	
+		return 'error', ["I have no idea what you're talking about!"]
+	for word in user_input_lst:
+		if word in ['hero_obj', 'hero_rm_obj', 'hero_dir']: # reserved syntax words
+##			return 'error', [f"'{word.capitalize()}' is not a word I know."]
+			return 'error', [f"What??"]
 	word1 = user_input_lst[0] # if len(user_input_lst) > 0, then word1 is defined
 
 	# *** special case of help commands ***
@@ -170,16 +189,21 @@ def interpreter(user_input, master_obj_lst):
 			):
 		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
 
+	# for two word commands for which only the verb is given, if the noun is assumable, assign it
+	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst','eng'):
+		user_input_lst = assumed_noun_assignment(user_input_lst, gs)
+		word1 = user_input_lst[0]
+
 
 	# convert one-word commands that are assumed-noun two-word commands [SYNTAX]
-	creature = gs.core.hero
-	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst','eng'):
-		if word1 in ['exit']:
-			if creature.is_contained(gs):
-				user_input_lst.append(creature.get_contained_by(gs).name)
-		elif not creature.hand_is_empty():
-			user_input_lst.append(creature.get_hand_item().name)
-			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
+#	creature = gs.core.hero
+#	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst','eng'):
+#		if word1 in ['exit']:
+#			if creature.is_contained(gs):
+#				user_input_lst.append(creature.get_contained_by(gs).name)
+#		elif not creature.hand_is_empty():
+#			user_input_lst.append(creature.get_hand_item().name)
+#			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
 
 
 	# if input is one word long, and not a true or convertable one-word cmd, must be error
@@ -320,6 +344,7 @@ def interpreter(user_input, master_obj_lst):
 		if error_state:
 			return 'error', [error_msg]
 		else:
+			creature = gs.core.hero
 			if word1 in ['drop', 'wear', 'eat'] and not creature.chk_in_hand(word2_obj) and gs.core.hero.chk_in_bkpk(word2_obj):
 				gs.core.hero.put_in_hand(word2_obj, gs)
 				gs.core.hero.bkpk_lst_remove(word2_obj)
