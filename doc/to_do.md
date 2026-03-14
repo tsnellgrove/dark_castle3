@@ -298,8 +298,11 @@ To Do List - Dark Castle v3
 		- 4.aa.2 if len(user_input_lst) == 1: [INPROC]
 			- if help or tru_1word => return word1 & type [DONE]
 			- if word1 in one_word_only_lst and len(user_input_lst) > 1 ==> return err [DONE]
-			- create syntax routine and call from interp() [INPROC]
+			- create syntax routine and call from interp() [DONE]
 				- create function [DONE]
+					- IDEA: generate input_syntax_lst and compare to syntax_lst to determ input_action
+					- EXAMPLE: input_verb = 'look' => input_syntax_lst = [look, at, do_noun]
+					- EXAMPLE: [look, at, do_noun] => {[look, at, do_noun] : [examine, input_do]}
 				- if word1 in convert_lst => convert to multi-word [DONE]
 					- create new validate routine for case == 'action_2word' [DONE]
 					- create new cmd_exe() routine for case == 'action_2word' [DONE]
@@ -321,21 +324,21 @@ To Do List - Dark Castle v3
 					- clean up comments in case calls [DONE]
 					- clean up comments in interp() [DONE]
 				- ensure reserved words (hero_rm_obj, hero_obj, hero_dir) aren't in input [DONE]
-				- if word1 in assumed_noun_lst => how to handle assumed do_noun?? [TBD]
-				- review consolidating user_input_lst clean-up into function [TBD]
-
-
-
-			- capture input_verb variable [TBD]
-				- IDEA: generate input_syntax_lst and compare to syntax_lst to determine input_action
-				- EXAMPLE: input_verb = 'look' => input_syntax_lst = [look, at, do_noun]
-				- EXAMPLE: [look, at, do_noun] => {[look, at, do_noun] : [examine, input_do]}
+				- if word1 in assumed_noun_lst => how to handle assumed do_noun?? [DONE]
+				- refactor interp() code for readability [DONE]
+	- 4__ error cases [DONE]
 		- 4.aa.3 if word1 in full_verb_lst and len(user_input_lst) == 1 ==> return err
 		- 4.aa.4 if word1 not in full_verb_lst and len(user_input_lst) == 1 ==> return err
 	- 4a. error if no verb or verb not known or verb count > 1 [DONE]
 		- 4a.1 update errors [DONE]
 		- 4a.2 run sceario tests [DONE]
 		- 4a.3 fix scenario tests [DONE]
+	- TBD: 2word 'go' case => syntax / action_dir case
+	- TBD: sort out 'climb' / prep_no_do verb case => syntax / action_dir (fix in app_main() too)
+
+
+
+
 	- 4.a.0 review and refactor interp() [INPROC]
 		- 4.a.0.i review base interp() code [DONE]
 		- 4.a.0.ii create main interp() routine that calls others (e.g. clean-up and 1-word) [INPROC]

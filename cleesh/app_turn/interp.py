@@ -76,6 +76,7 @@ def assumed_noun_assignment(user_input_lst, gs):
 		if word1 in ['exit']:
 			if creature.is_contained(gs):
 				user_input_lst.append(creature.get_contained_by(gs).name)
+				gs.io.buffer(f"(from the {creature.get_contained_by(gs).full_name})")
 		elif not creature.hand_is_empty():
 			user_input_lst.append(creature.get_hand_item().name)
 			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
@@ -145,18 +146,18 @@ def noun_handling(master_obj_lst, user_input_lst):
 ### interpreter - determine user intent
 def interpreter(user_input, master_obj_lst):
 
-	# *** user_input list conversion and clean-up ***
+	# *** user_input list conversion and global variable assignment ***
 	gs = master_obj_lst[0]
 	user_input_lst = input_cleanup(gs, user_input)
+	if len(user_input_lst) > 0:
+		word1 = user_input_lst[0]
 
-	# *** basic error checking and word1 assignment ***
+	# *** basic error checking ***
 	if len(user_input_lst) < 1: # error if no input or the only input is articles 
 		return 'error', ["I have no idea what you're talking about!"]
 	for word in user_input_lst:
 		if word in ['hero_obj', 'hero_rm_obj', 'hero_dir']: # reserved syntax words
-##			return 'error', [f"'{word.capitalize()}' is not a word I know."]
 			return 'error', [f"What??"]
-	word1 = user_input_lst[0] # if len(user_input_lst) > 0, then word1 is defined
 
 	# *** special case of help commands ***
 	if word1 == 'help':
@@ -166,21 +167,25 @@ def interpreter(user_input, master_obj_lst):
 			option = user_input_lst[1]
 		return 'help', [option]
 	
-	# *** special case of one-word commands ***
+	# *** process actual one-word commands ***
 	if len(user_input_lst) == 1 and word1 in (
 			gs.io.get_lst('one_word_only_lst','eng') + 
 			gs.io.get_lst('one_word_secret_lst','eng')
 			):
-		return 'tru_1word', [word1]
-	
+		return 'tru_1word', [word1]	
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst','eng'):
 		case, action_lst = syntax(tuple(user_input_lst), None, gs)
 		return case, action_lst
-
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_travel_lst','eng'):
 		case, action_lst = syntax(('hero_dir',), word1, gs)
 		return case, action_lst
 
+	# for two-word commands where only the verb is given, if the noun is assumable, assign it
+	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst','eng'):
+		user_input_lst = assumed_noun_assignment(user_input_lst, gs)
+		word1 = user_input_lst[0]
+
+	# final error case: one-word commands where user_input_lst is longer than one word
 	if len(user_input_lst) > 1 and word1 in (
 			gs.io.get_lst('one_word_only_lst','eng') + 
 			gs.io.get_lst('pre_interp_word_lst','eng') + 
@@ -189,25 +194,14 @@ def interpreter(user_input, master_obj_lst):
 			):
 		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
 
-	# for two word commands for which only the verb is given, if the noun is assumable, assign it
-	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst','eng'):
-		user_input_lst = assumed_noun_assignment(user_input_lst, gs)
-		word1 = user_input_lst[0]
+
+	# *** multi-word commands: at this point, all valid one-word commands have been processed ***
 
 
-	# convert one-word commands that are assumed-noun two-word commands [SYNTAX]
-#	creature = gs.core.hero
-#	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst','eng'):
-#		if word1 in ['exit']:
-#			if creature.is_contained(gs):
-#				user_input_lst.append(creature.get_contained_by(gs).name)
-#		elif not creature.hand_is_empty():
-#			user_input_lst.append(creature.get_hand_item().name)
-#			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
-
-
-	# if input is one word long, and not a true or convertable one-word cmd, must be error
+	# variable assignment
 	full_verbs_lst = gs.io.get_lst('known_verb_lst','eng') + gs.io.get_lst('debug_verb_lst','eng')
+
+	# error case 1: len(user_input_lst) == 1 but word1 is not known or is a known non-one-word verb
 	if len(user_input_lst) == 1:
 		if word1 in full_verbs_lst:
 			error_msg = word1.capitalize() + " what?"
@@ -215,10 +209,7 @@ def interpreter(user_input, master_obj_lst):
 			error_msg = "What??"
 		return 'error', [error_msg]
 
-
-	# *** multi-word commands ***
-
-	# check for basic verb errors: no verbs or more than one verb
+	# error case 2: no verbs or more than one verb
 	verb_count = 0
 	for word in user_input_lst:
 		if word in full_verbs_lst:
@@ -228,9 +219,11 @@ def interpreter(user_input, master_obj_lst):
 	elif (verb_count > 1) and (word1 != 'help'): # e.g. 'help attack' is valid
 		return 'error', ['I see more than one verb in that sentence!']
 		
-	# all commands longer than one word should start with a verb
+	# error case 3: all commands longer than one word should start with a verb
 	if word1 not in full_verbs_lst:
 		return 'error', ["Please start your sentence with a known verb!"]
+
+
 
 	# handle prep_no_do verb commands (special cases first else general case) [SYNTAX]
 	if word1 in gs.io.get_lst('prep_no_do_verb_lst','eng'):
@@ -254,6 +247,7 @@ def interpreter(user_input, master_obj_lst):
 			if error_state:
 				return 'error', [error_msg]
 			return 'prep_no_do', [word1, prep, word2_obj]
+
 
 	# handle prep verb commands (special cases first else general case)
 	# [SYNTAX start here]
