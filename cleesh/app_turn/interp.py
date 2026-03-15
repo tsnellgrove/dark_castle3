@@ -10,11 +10,13 @@ from itertools import islice
 ### input_cleanup - user_input str to lst, lower, convert abbrev & verb_syn, remove articles / buzz
 def input_cleanup(gs, user_input):
 	# first, convert to lower case and strip leading/trailing whitespace
-	user_input = user_input.lower().strip()	
+	user_input = user_input.lower().strip()
+
 	# second, convert user input string into word list
 	lst = []
 	lst.append(user_input)
 	user_input_lst = lst[0].split()
+
 	# third, substitute abbreviationss and verb_syn
 	abbrev_dict = gs.io.get_dict('abbreviations_dict','eng')
 	verb_syn_dict = gs.io.get_dict('verb_syn_dict','eng')
@@ -23,6 +25,7 @@ def input_cleanup(gs, user_input):
 			user_input_lst[index] = abbrev_dict[word]
 		elif word in verb_syn_dict:
 			user_input_lst[index] = verb_syn_dict[word]
+
 	# finally, strip out articles / buzz words
 	for article in gs.io.get_lst('articles_lst','eng'):
 		user_input_lst = [word for word in user_input_lst if word != article]
@@ -52,7 +55,11 @@ def syntax(user_input_tpl, input_dir, gs):
 		('hero_dir',) : {
 			'case' : 'action_dir',
 			"base_action_lst" : ['go', 'hero_dir', 'hero_rm_obj']
-		}
+		},
+		('go', 'hero_dir') : {
+			'case' : 'action_dir',
+			'base_action_lst' : ['go', 'hero_dir', 'hero_rm_obj']
+		},
 
 	}
 	base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
@@ -195,8 +202,7 @@ def interpreter(user_input, master_obj_lst):
 		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
 
 
-	# *** multi-word commands: at this point, all valid one-word commands have been processed ***
-
+	# *** multi-word commands - all valid one-word commands have been processed ***
 
 	# variable assignment
 	full_verbs_lst = gs.io.get_lst('known_verb_lst','eng') + gs.io.get_lst('debug_verb_lst','eng')
@@ -222,6 +228,14 @@ def interpreter(user_input, master_obj_lst):
 	# error case 3: all commands longer than one word should start with a verb
 	if word1 not in full_verbs_lst:
 		return 'error', ["Please start your sentence with a known verb!"]
+
+	# handle go commands
+	if word1 == 'go':
+		if len(user_input_lst) > 2:
+			return 'error', [f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"]
+		else:
+			case, action_lst = syntax(('go', 'hero_dir'), user_input_lst[1], gs)
+			return case, action_lst
 
 
 
@@ -252,9 +266,9 @@ def interpreter(user_input, master_obj_lst):
 	# handle prep verb commands (special cases first else general case)
 	# [SYNTAX start here]
 
-	elif word1 == 'go':
-		word2 = user_input_lst[1]
-		return 'go', [gs.map.hero_rm, word1, word2]
+#	elif word1 == 'go':
+#		word2 = user_input_lst[1]
+#		return 'go', [gs.map.hero_rm, word1, word2]
 	elif word1 in gs.io.get_lst('prep_verb_lst','eng'):
 		if word1 in ['put']:
 			if 'in' in user_input_lst:
