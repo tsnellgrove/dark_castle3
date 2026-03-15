@@ -60,10 +60,6 @@ def syntax(user_input_tpl, input_dir, verb_action, do_noun, gs):
 			'case' : 'action_dir',
 			'base_action_lst' : ['go', 'hero_dir', 'hero_rm_obj']
 		},
-#		('exit',) : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['exit', 'do_noun_str']
-#		},
 		('input_verb', 'input_do_noun') : {
 			'case' : 'action_2word',
 			'base_action_lst' : ['verb_str', 'do_noun_str']
@@ -85,20 +81,6 @@ def syntax(user_input_tpl, input_dir, verb_action, do_noun, gs):
 			action_lst[index] = gs.core.get_str_to_obj_dict(do_noun) # convert to obj
 ##	print(f"action_lst: {action_lst}")
 	return syntax_dict[user_input_tpl]['case'], action_lst
-
-
-# def assumed_noun_assignment(user_input_lst, gs):
-#	creature = gs.core.hero
-#	word1 = user_input_lst[0]
-#	if len(user_input_lst) == 1:
-#		if word1 in ['exit']:
-#			if creature.is_contained(gs):
-#				user_input_lst.append(creature.get_contained_by(gs).name)
-#				gs.io.buffer(f"(from the {creature.get_contained_by(gs).full_name})")
-#		elif not creature.hand_is_empty():
-#			user_input_lst.append(creature.get_hand_item().name)
-#			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
-#	return user_input_lst
 
 
 ### root_word_count - determines if user command contains root words
@@ -203,21 +185,17 @@ def interpreter(user_input, master_obj_lst):
 		creature = gs.core.hero
 		if word1 in ['exit'] and creature.is_contained(gs):
 			case, action_lst = syntax(('input_verb', 'input_do_noun'), None, word1, creature.get_contained_by(gs).name, gs)
-#			case, action_lst = syntax(tuple(user_input_lst), None, None, creature.get_contained_by(gs).name, gs)
-#			user_input_lst.append(creature.get_contained_by(gs).name)
 			gs.io.buffer(f"(from the {creature.get_contained_by(gs).full_name})")
 		elif word1 not in ['exit'] and not creature.hand_is_empty():
 			case, action_lst = syntax(('input_verb', 'input_do_noun'), None, word1, creature.get_hand_item().name, gs)
 			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
 		else:
-			case = 'error'
+			case = 'error' # review
 			action_lst = [f"{word1.capitalize()} what?"]
-#		user_input_lst = assumed_noun_assignment(user_input_lst, gs)
-#		word1 = user_input_lst[0]
 		return case, action_lst
 
 
-	# final error case: one-word commands where user_input_lst is longer than one word
+	# error case: one-word commands where user_input_lst is longer than one word
 	if len(user_input_lst) > 1 and word1 in (
 			gs.io.get_lst('one_word_only_lst','eng') + 
 			gs.io.get_lst('pre_interp_word_lst','eng') + 
@@ -227,7 +205,6 @@ def interpreter(user_input, master_obj_lst):
 		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
 
 
-	# *** multi-word commands - all valid one-word commands have been processed ***
 
 	# variable assignment
 	full_verbs_lst = gs.io.get_lst('known_verb_lst','eng') + gs.io.get_lst('debug_verb_lst','eng')
@@ -239,6 +216,8 @@ def interpreter(user_input, master_obj_lst):
 		else:
 			error_msg = "What??"
 		return 'error', [error_msg]
+
+	# *** multi-word commands - all valid one-word commands have been processed / dealt with ***
 
 	# error case 2: no verbs or more than one verb
 	verb_count = 0
