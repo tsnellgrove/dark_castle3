@@ -333,7 +333,7 @@ To Do List - Dark Castle v3
 		- 4a.1 update errors [DONE]
 		- 4a.2 run sceario tests [DONE]
 		- 4a.3 fix scenario tests [DONE]
-	- TBD: 2word 'go' case => syntax / action_dir case
+	- DONE: 2word 'go' case => syntax / action_dir case
 	- TBD: sort out 'climb' / prep_no_do verb case => syntax / action_dir (fix in app_main() too)
 
 

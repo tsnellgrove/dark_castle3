@@ -266,9 +266,6 @@ def interpreter(user_input, master_obj_lst):
 	# handle prep verb commands (special cases first else general case)
 	# [SYNTAX start here]
 
-#	elif word1 == 'go':
-#		word2 = user_input_lst[1]
-#		return 'go', [gs.map.hero_rm, word1, word2]
 	elif word1 in gs.io.get_lst('prep_verb_lst','eng'):
 		if word1 in ['put']:
 			if 'in' in user_input_lst:
