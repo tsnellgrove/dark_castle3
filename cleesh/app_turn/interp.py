@@ -33,7 +33,7 @@ def input_cleanup(gs, user_input):
 
 
 ### syntax - convert user_input_lst into a case and action_lst
-def syntax(user_input_tpl, input_dir, gs):
+def syntax(user_input_tpl, input_dir, verb_action, do_noun, gs):
 
 	syntax_dict = {
 		('inventory',) : {
@@ -60,7 +60,14 @@ def syntax(user_input_tpl, input_dir, gs):
 			'case' : 'action_dir',
 			'base_action_lst' : ['go', 'hero_dir', 'hero_rm_obj']
 		},
-
+#		('exit',) : {
+#			'case' : 'action_2word',
+#			'base_action_lst' : ['exit', 'do_noun_str']
+#		},
+		('input_verb', 'input_do_noun') : {
+			'case' : 'action_2word',
+			'base_action_lst' : ['verb_str', 'do_noun_str']
+		}
 	}
 	base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
 	action_lst = base_action_lst.copy()
@@ -71,23 +78,27 @@ def syntax(user_input_tpl, input_dir, gs):
 		if word == 'hero_rm_obj':
 			action_lst[index] = gs.map.hero_rm # convert class noun to object
 		if word == 'hero_dir':
-			action_lst[index] = input_dir # convert class noun to user input direction
+			action_lst[index] = input_dir # string
+		if word == 'verb_str':
+			action_lst[index] = verb_action # string
+		if word == 'do_noun_str':
+			action_lst[index] = gs.core.get_str_to_obj_dict(do_noun) # convert to obj
 ##	print(f"action_lst: {action_lst}")
 	return syntax_dict[user_input_tpl]['case'], action_lst
 
 
-def assumed_noun_assignment(user_input_lst, gs):
-	creature = gs.core.hero
-	word1 = user_input_lst[0]
-	if len(user_input_lst) == 1:
-		if word1 in ['exit']:
-			if creature.is_contained(gs):
-				user_input_lst.append(creature.get_contained_by(gs).name)
-				gs.io.buffer(f"(from the {creature.get_contained_by(gs).full_name})")
-		elif not creature.hand_is_empty():
-			user_input_lst.append(creature.get_hand_item().name)
-			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
-	return user_input_lst
+# def assumed_noun_assignment(user_input_lst, gs):
+#	creature = gs.core.hero
+#	word1 = user_input_lst[0]
+#	if len(user_input_lst) == 1:
+#		if word1 in ['exit']:
+#			if creature.is_contained(gs):
+#				user_input_lst.append(creature.get_contained_by(gs).name)
+#				gs.io.buffer(f"(from the {creature.get_contained_by(gs).full_name})")
+#		elif not creature.hand_is_empty():
+#			user_input_lst.append(creature.get_hand_item().name)
+#			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
+#	return user_input_lst
 
 
 ### root_word_count - determines if user command contains root words
@@ -181,16 +192,30 @@ def interpreter(user_input, master_obj_lst):
 			):
 		return 'tru_1word', [word1]	
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst','eng'):
-		case, action_lst = syntax(tuple(user_input_lst), None, gs)
+		case, action_lst = syntax(tuple(user_input_lst), None, None, None, gs)
 		return case, action_lst
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_travel_lst','eng'):
-		case, action_lst = syntax(('hero_dir',), word1, gs)
+		case, action_lst = syntax(('hero_dir',), word1, None, None, gs) 
 		return case, action_lst
 
 	# for two-word commands where only the verb is given, if the noun is assumable, assign it
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst','eng'):
-		user_input_lst = assumed_noun_assignment(user_input_lst, gs)
-		word1 = user_input_lst[0]
+		creature = gs.core.hero
+		if word1 in ['exit'] and creature.is_contained(gs):
+			case, action_lst = syntax(('input_verb', 'input_do_noun'), None, word1, creature.get_contained_by(gs).name, gs)
+#			case, action_lst = syntax(tuple(user_input_lst), None, None, creature.get_contained_by(gs).name, gs)
+#			user_input_lst.append(creature.get_contained_by(gs).name)
+			gs.io.buffer(f"(from the {creature.get_contained_by(gs).full_name})")
+		elif word1 not in ['exit'] and not creature.hand_is_empty():
+			case, action_lst = syntax(('input_verb', 'input_do_noun'), None, word1, creature.get_hand_item().name, gs)
+			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
+		else:
+			case = 'error'
+			action_lst = [f"{word1.capitalize()} what?"]
+#		user_input_lst = assumed_noun_assignment(user_input_lst, gs)
+#		word1 = user_input_lst[0]
+		return case, action_lst
+
 
 	# final error case: one-word commands where user_input_lst is longer than one word
 	if len(user_input_lst) > 1 and word1 in (
@@ -234,7 +259,7 @@ def interpreter(user_input, master_obj_lst):
 		if len(user_input_lst) > 2:
 			return 'error', [f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"]
 		else:
-			case, action_lst = syntax(('go', 'hero_dir'), user_input_lst[1], gs)
+			case, action_lst = syntax(('go', 'hero_dir'), user_input_lst[1], None, None, gs)
 			return case, action_lst
 
 

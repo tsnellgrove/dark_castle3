@@ -334,6 +334,15 @@ To Do List - Dark Castle v3
 		- 4a.2 run sceario tests [DONE]
 		- 4a.3 fix scenario tests [DONE]
 	- DONE: 2word 'go' case => syntax / action_dir case
+	- TBD: refactor syntax
+		- DONE: pass do_noun_str to syntax()
+		- DONE: test
+		- DONE: migrate assumed to syntax
+		- DONE: auto test & fix
+		- DONE: manual test & fix
+		- TBD: clean-up comments
+		- TBD: refactor assumed section (consolideate exit?, leave error till later?)
+
 	- TBD: sort out 'climb' / prep_no_do verb case => syntax / action_dir (fix in app_main() too)
 
 
