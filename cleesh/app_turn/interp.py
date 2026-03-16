@@ -149,8 +149,6 @@ def interpreter(user_input, master_obj_lst):
 	# *** user_input to cleaned-up user_input_lst conversion ***
 	gs = master_obj_lst[0]
 	user_input_lst = input_cleanup(gs, user_input)
-#	if len(user_input_lst) > 0:
-#		word1 = user_input_lst[0]
 
 	# *** initial error checking ***
 	if len(user_input_lst) < 1: # error if no input or the only input is articles 
@@ -186,21 +184,6 @@ def interpreter(user_input, master_obj_lst):
 		return case, action_lst
 
 	# for two-word commands where only the verb is given, if the noun is assumable, assign it
-#	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('assumed_noun_2word_lst','eng'):
-#		creature = gs.core.hero
-#		if word1 in ['exit'] and creature.is_contained(gs):
-#			case, action_lst = syntax(('input_verb', 'input_do_noun'), None, word1, creature.get_contained_by(gs).name, gs)
-#			gs.io.buffer(f"(from the {creature.get_contained_by(gs).full_name})")
-#		elif word1 not in ['exit'] and not creature.hand_is_empty():
-#			case, action_lst = syntax(('input_verb', 'input_do_noun'), None, word1, creature.get_hand_item().name, gs)
-#			gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
-#		else:
-#			case = 'error' # review
-#			action_lst = [f"{word1.capitalize()} what?"]
-#		return case, action_lst
-
-	# for two-word commands where only the verb is given, if the noun is assumable, assign it
-#	creature = gs.core.hero
 	if len(user_input_lst) == 1 and word1 in ['exit'] and creature.is_contained(gs):
 		case, action_lst = syntax(('input_verb', 'input_do_noun'), None, word1, creature.get_contained_by(gs).name, gs)
 		gs.io.buffer(f"(from the {creature.get_contained_by(gs).full_name})")
@@ -218,9 +201,6 @@ def interpreter(user_input, master_obj_lst):
 			gs.io.get_lst('one_word_convert_lst','eng') # added
 			):
 		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
-
-	# variable assignment
-#	full_verbs_lst = gs.io.get_lst('known_verb_lst','eng') + gs.io.get_lst('debug_verb_lst','eng')
 
 	# exit error case 2: len(user_input_lst) == 1 but word1 is not known or is a known non-one-word verb
 	if len(user_input_lst) == 1:
