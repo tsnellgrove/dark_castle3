@@ -345,11 +345,15 @@ To Do List - Dark Castle v3
 	- INPROC: sort out 'climb':
 		- IDEA: prep_no_do verb case => syntax action_dir
 		- DONE: review climb case in detail (including app_main() )
-		- TBD: move non-up-down err to climb_err()
+		- DONE: move non-up-down err to climb_err()
+			- DONE: test
+			- DONE: fix
 		- TBD: move assumed_dir case to central assumed handling
 		- TBD: update case => action_dir
 		- TBD: move 'go <dir>' to a call from climb() [may require app_main calls rework]
+		- TBD: syntax call
 		- TBD: comment out prep_no_do case in validate(), cmd_exe(), and trig_chk()
+		- TBD: synergize 'go' and 'climb' commandsd
 	- TBD: sort out 2word
 		- IDEA: above go / climb special cases
 
