@@ -63,6 +63,10 @@ def syntax(user_input_tpl, input_dir, verb_action, do_noun, gs):
 		('input_verb', 'input_do_noun') : {
 			'case' : 'action_2word',
 			'base_action_lst' : ['verb_str', 'do_noun_str']
+		},
+		('climb', 'hero_dir', 'input_do_noun') : {
+			'case' : 'action_dir',
+			'base_action_lst' : ['climb', 'hero_dir', 'do_noun_str']
 		}
 	}
 	base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
@@ -251,23 +255,27 @@ def interpreter(user_input, master_obj_lst):
 			room = gs.map.hero_rm
 			if user_input_lst[1] in gs.io.get_lst('one_word_travel_lst','eng'):
 #			if user_input_lst[1] in ['up', 'down']:
-				prep = user_input_lst[1]
-				user_input_lst.remove(prep)
+				direction = user_input_lst[1]
+				user_input_lst.remove(direction)
 #			elif user_input_lst[1] in ['north', 'south', 'east', 'west', 'northwest', 'northeast', 'southwest', 'southeast']:
 #				error_msg = f"You can only climb 'up' or 'down'."
 #				return 'error', [error_msg]
 			elif gs.map.chk_valid_dir(room, 'up') and not gs.map.chk_valid_dir(room, 'down'):
-				prep = 'up'
+				direction = 'up'
 				gs.io.buffer(f"(choosing the 'up' direction in which to climb)")
 			elif gs.map.chk_valid_dir(room, 'down') and not gs.map.chk_valid_dir(room, 'up'):
-				prep = 'down'
+				direction = 'down'
 				gs.io.buffer(f"(choosing the 'down' direction in which to climb)")
 			else:
 				return 'error', ["Which way do you want to climb, up or down?"]
-			error_state, error_msg, word2_obj = noun_handling(master_obj_lst, user_input_lst)
+#			error_state, error_msg, word2_obj = noun_handling(master_obj_lst, user_input_lst)
+			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst)
 			if error_state:
 				return 'error', [error_msg]
-			return 'prep_no_do', [word1, prep, word2_obj]
+			case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), direction, word1, do_noun_obj.name, gs)
+#			return 'prep_no_do', [word1, direction, word2_obj]
+##			return 'prep_no_do', [word1, direction, do_noun_obj]
+			return case, action_lst
 
 
 	# handle prep verb commands (special cases first else general case)

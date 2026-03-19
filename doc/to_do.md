@@ -348,12 +348,12 @@ To Do List - Dark Castle v3
 		- DONE: move non-up-down err to climb_err()
 			- DONE: test
 			- DONE: fix
-		- TBD: move assumed_dir case to central assumed handling
-		- TBD: update case => action_dir
+		- DONE: syntax call
+		- DONE: update case => action_dir
 		- TBD: move 'go <dir>' to a call from climb() [may require app_main calls rework]
-		- TBD: syntax call
+		- TBD: move assumed_dir case to central assumed handling
 		- TBD: comment out prep_no_do case in validate(), cmd_exe(), and trig_chk()
-		- TBD: synergize 'go' and 'climb' commandsd
+		- TBD: synergize 'go' and 'climb' commands
 	- TBD: sort out 2word
 		- IDEA: above go / climb special cases
 

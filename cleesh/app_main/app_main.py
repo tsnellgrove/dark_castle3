@@ -172,7 +172,7 @@ def app_main(user_input, game_name, root_path_str):
 				start_in_hand = gs.core.hero.get_hand_item()
 			case, word_lst = interpreter(user_input, master_obj_lst)
 			is_valid, is_att, err_txt = validate(gs, case, word_lst)
-			if is_valid and case == 'prep_no_do' and word_lst[0] == 'climb':
+			if is_valid and (case == 'prep_no_do' or case == 'action_dir') and word_lst[0] == 'climb':
 				prep = word_lst[1]
 				cmd_queue.insert(1, f"go {prep}")
 				skip_inc = True # to offset move_inc() below
