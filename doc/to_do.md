@@ -350,7 +350,12 @@ To Do List - Dark Castle v3
 			- DONE: fix
 		- DONE: syntax call
 		- DONE: update case => action_dir
-		- TBD: move 'go <dir>' to a call from climb() [may require app_main calls rework]
+		- INPROC: move 'go <dir>' to a call from climb() [may require app_main calls rework]
+			- DONE: update naming: prep => direction, word1 == 'climb' => world1 != 'go'
+			- TBD: move app_main() routine to just after cmd_exe() call
+			- TBD: may need to convert skip_inc => decr_inc
+			- TBD: create cmd_queue and decr_inc as gs.io attribs
+			- TBD: migrate cmd_queue add and decr_inc set to climb()
 		- TBD: move assumed_dir case to central assumed handling
 		- TBD: comment out prep_no_do case in validate(), cmd_exe(), and trig_chk()
 		- TBD: synergize 'go' and 'climb' commands
@@ -617,6 +622,7 @@ Believed to be Done:
 	- IDEA: (enable ease of entrance.examine(gs) in startup() )
 
 Tactical Fixes for Existing Code / Features:
+- TBD: get multiples code out of app_main() [see climb() coding]
 - TBD: remove rand_mode from one_word_secret_lst ?
 - TBD: word_lst assignment:
 	- prep case word_lst => trig_vals_lst is erratic
