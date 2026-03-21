@@ -354,13 +354,18 @@ To Do List - Dark Castle v3
 			- DONE: update naming: prep => direction, word1 == 'climb' => world1 != 'go'
 			- DONE: move app_main() 'climb' routine
 				- DONE: move app_main() 'climb' routine to just after cmd_exe() call
-				- DONE: may need to convert skip_inc => decr_inc
-				- TBD: clean up comments
-			- TBD: create cmd_queue and decr_inc as gs.io attribs
-			- TBD: migrate cmd_queue add and decr_inc set to climb()
+				- DONE: may need to convert skip_inc => decr_inc()
+				- DONE: create gs.core.decr_inc()
+				- DONE: clean up comments
+			- TBD: change ('climb', 'do_noun') syntax call to match user_input_lst
+			- TBD: migrate app_main() 'climb' routine to climb()
+				- TBD: create cmd_queue gs.io attrib
+				- TBD: in app_main(), replace all cmd_queue calls w/ gs.io.cmd_queue
+				- TBD: migrate cmd_queue add and decr_inc set to climb()
 		- TBD: move assumed_dir case to central assumed handling
 		- TBD: comment out prep_no_do case in validate(), cmd_exe(), and trig_chk()
 		- TBD: synergize 'go' and 'climb' commands
+	- TBD: consolidate case = 'error' and [err_txt] into syntax
 	- TBD: sort out 2word
 		- IDEA: above go / climb special cases
 
