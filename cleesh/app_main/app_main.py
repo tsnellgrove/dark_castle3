@@ -106,7 +106,7 @@ def app_main(user_input, game_name, root_path_str):
 		is_att = False
 		has_except = False
 		is_multiples_action = False
-		skip_inc = False # for climb command
+#		skip_inc = False # for climb command
 
 		# mutually exclusive special command cases
 		if user_input.lower().strip() in ['quit', 'q']:
@@ -172,18 +172,19 @@ def app_main(user_input, game_name, root_path_str):
 				start_in_hand = gs.core.hero.get_hand_item()
 			case, word_lst = interpreter(user_input, master_obj_lst)
 			is_valid, is_att, err_txt = validate(gs, case, word_lst)
-			if is_valid and (case == 'prep_no_do' or case == 'action_dir') and word_lst[0] != 'go':
+##			if is_valid and (case == 'prep_no_do' or case == 'action_dir') and word_lst[0] != 'go':
 #			if is_valid and (case == 'prep_no_do' or case == 'action_dir') and word_lst[0] == 'climb':
-				direction = word_lst[1]
-				cmd_queue.insert(1, f"go {direction}")
-				skip_inc = True # to offset move_inc() below
+##				direction = word_lst[1]
+##				cmd_queue.insert(1, f"go {direction}")
+##				skip_inc = True # to offset move_inc() below
 	
 		# if command is not valid, clear cmd_queue
 		if not is_valid:
 			cmd_queue = []
 
 		# if command is valid or is_wait, increment move
-		if (is_valid or is_att or is_wait) and (not skip_inc):
+#		if (is_valid or is_att or is_wait) and (not skip_inc):
+		if (is_valid or is_att or is_wait):
 			gs.core.move_inc()
 
 		# for valid interp commands, process in-turn game response
@@ -196,6 +197,14 @@ def app_main(user_input, game_name, root_path_str):
 				gs.io.buffer(err_txt)
 			if (is_valid and not cmd_override):
 				cmd_execute(gs, case, word_lst)
+
+				if is_valid and (case == 'prep_no_do' or case == 'action_dir') and word_lst[0] != 'go':
+#			if is_valid and (case == 'prep_no_do' or case == 'action_dir') and word_lst[0] == 'climb':
+					direction = word_lst[1]
+					cmd_queue.insert(1, f"go {direction}")
+#					skip_inc = True # to offset move_inc() below
+					gs.core.move_decr()
+
 			weapon_disp(gs, start_in_hand)
 			post_action(gs, case, word_lst, is_valid) # excluding poat_act() from cmd "if" allows creatures to opperate machs
 

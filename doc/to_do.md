@@ -352,8 +352,10 @@ To Do List - Dark Castle v3
 		- DONE: update case => action_dir
 		- INPROC: move 'go <dir>' to a call from climb() [may require app_main calls rework]
 			- DONE: update naming: prep => direction, word1 == 'climb' => world1 != 'go'
-			- TBD: move app_main() routine to just after cmd_exe() call
-			- TBD: may need to convert skip_inc => decr_inc
+			- DONE: move app_main() 'climb' routine
+				- DONE: move app_main() 'climb' routine to just after cmd_exe() call
+				- DONE: may need to convert skip_inc => decr_inc
+				- TBD: clean up comments
 			- TBD: create cmd_queue and decr_inc as gs.io attribs
 			- TBD: migrate cmd_queue add and decr_inc set to climb()
 		- TBD: move assumed_dir case to central assumed handling

@@ -73,6 +73,9 @@ class Core(Invisible):
     def move_inc(self):
         self.move_count += 1
 
+    def move_decr(self):
+        self.move_count -= 1
+
     def is_key_in_sto_dict(self, key):
         return key in self._str_to_obj_dict
 
