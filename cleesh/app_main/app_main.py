@@ -86,22 +86,17 @@ def app_main(user_input, game_name, root_path_str):
 		master_obj_lst = pickle.load(f)
 	gs = master_obj_lst[0]
 	gs.io.reset_buff()
-#	cmd_queue = []
 	gs.io.reset_cmd_queue()
 
 	# load cmd queue
 	if ',' in user_input:
-#		cmd_queue = user_input.split(',')
 		gs.io.cmd_queue = user_input.split(',')
 	else:
-#		cmd_queue = [user_input]
 		gs.io.append_cmd_queue(user_input)
 
 	# process each command in the queue
-#	while cmd_queue:
 	while gs.io.cmd_queue:
 		user_input = gs.io.pop_cmd_queue()
-#		user_input = cmd_queue.pop(0)
 
 		# local var declarations
 		is_start = False
@@ -117,13 +112,11 @@ def app_main(user_input, game_name, root_path_str):
 			gs.end.game_ending = 'quit.'
 			gs.end.is_end = True
 			is_interp_cmd = False
-#			cmd_queue = []
 			gs.io.reset_cmd_queue()
 		elif user_input.lower().strip() == 'restart':
 			gs.end.game_ending = 'restarted.'
 			is_start = True
 			is_interp_cmd = False
-#			cmd_queue = []
 			gs.io.reset_cmd_queue()
 		elif user_input.lower().strip() in ['again', 'g']:
 			user_input = gs.io.last_input_str
@@ -145,7 +138,6 @@ def app_main(user_input, game_name, root_path_str):
 		if has_except:
 			user_input, except_element, is_except_err, except_err_str = except_mini_interpreter(gs, user_input, inventory_lst)
 			if is_except_err:
-#				cmd_queue = []
 				gs.io.reset_cmd_queue()
 				is_interp_cmd = False
 				gs.io.buffer(except_err_str)
@@ -165,13 +157,9 @@ def app_main(user_input, game_name, root_path_str):
 			if is_multiples_err:
 				gs.io.buffer(multiples_err_str)
 				is_interp_cmd = False
-#				cmd_queue = []
 				gs.io.reset_cmd_queue()
 			else:
-#				cmd_queue = multiples_lst + cmd_queue
-##				gs.io.prepend_cmd_queue(multiples_lst)
 				gs.io.cmd_queue = multiples_lst + gs.io.cmd_queue
-#				user_input = cmd_queue.pop(0)
 				user_input = gs.io.pop_cmd_queue()
 				gs.io.multi_count = len(multiples_lst)
 
@@ -186,7 +174,6 @@ def app_main(user_input, game_name, root_path_str):
 	
 		# if command is not valid, clear cmd_queue
 		if not is_valid:
-#			cmd_queue = []
 			gs.io.reset_cmd_queue()
 
 		# if command is valid or is_wait, increment move
@@ -198,7 +185,6 @@ def app_main(user_input, game_name, root_path_str):
 			cmd_override = pre_action(gs, case, word_lst, is_valid)
 
 			if cmd_override:
-#				cmd_queue = []
 				gs.io.reset_cmd_queue()
 			if not cmd_override and is_att:
 				gs.io.buffer(err_txt)
@@ -206,7 +192,6 @@ def app_main(user_input, game_name, root_path_str):
 				cmd_execute(gs, case, word_lst)
 				if is_valid and (case == 'prep_no_do' or case == 'action_dir') and word_lst[0] != 'go':
 					direction = word_lst[1]
-#					cmd_queue.insert(1, f"go {direction}")
 					gs.io.insert_cmd_queue(f"go {direction}", 1)
 					gs.core.move_decr()
 			weapon_disp(gs, start_in_hand)

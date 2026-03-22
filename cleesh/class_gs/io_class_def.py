@@ -18,7 +18,6 @@ def get_game_dict(game_name):
 ### classes ###
 class IO(Invisible):
 	def __init__(self, name, dyn_dict, buff_str, last_input_str, game_name, multi_count, vbosity_mode, cmd_queue):
-#	def __init__(self, name, dyn_dict, buff_str, last_input_str, game_name, multi_count, vbosity_mode):
 		super().__init__(name)
 		self._dyn_dict = dyn_dict # dict of non-static values that persist during game
 		self._buff_str = buff_str # holds buffered output
@@ -111,10 +110,6 @@ class IO(Invisible):
 
 	def append_cmd_queue(self, cmd):
 		self.cmd_queue.append(cmd)
-		return
-	
-	def prepend_cmd_queue(self, cmd):
-		self.cmd_queue.insert(0, cmd)
 		return
 	
 	def pop_cmd_queue(self):

@@ -360,6 +360,7 @@ To Do List - Dark Castle v3
 			- INPROC: migrate app_main() 'climb' routine to climb()
 				- DONE: create cmd_queue gs.io attrib
 				- DONE: in app_main(), replace all cmd_queue calls w/ gs.io.cmd_queue
+				- DONE: elim gs.io.prepen_cmd_queue() and clean up comments
 				- TBD: migrate cmd_queue add and decr_inc set to climb()
 		- TBD: move assumed_dir case to central assumed handling
 			- IDEA: similar to 1-word assumed verbs
@@ -367,6 +368,8 @@ To Do List - Dark Castle v3
 		- TBD: comment out prep_no_do case in validate(), cmd_exe(), and trig_chk()
 		- TBD: synergize 'go' and 'climb' commands
 	- TBD: consolidate case = 'error' and [err_txt] into syntax
+	- TBD: clean-up weapon_disp in app_main() module => weapon() class
+	- TBD: clean-up multipls functions in app_main() module
 	- TBD: sort out 2word
 		- IDEA: above go / climb special cases
 
