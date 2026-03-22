@@ -573,7 +573,8 @@ io = IO(
 		"", # last_input_str
 		'dark_castle', # game_name
 		0, # multi_count
-		'verbose' # vbosity_mode
+		'verbose', # vbosity_mode
+		[] # cmd_queue
 		)
 
 score = Score(

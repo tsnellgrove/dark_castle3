@@ -17,7 +17,8 @@ def get_game_dict(game_name):
 
 ### classes ###
 class IO(Invisible):
-	def __init__(self, name, dyn_dict, buff_str, last_input_str, game_name, multi_count, vbosity_mode):
+	def __init__(self, name, dyn_dict, buff_str, last_input_str, game_name, multi_count, vbosity_mode, cmd_queue):
+#	def __init__(self, name, dyn_dict, buff_str, last_input_str, game_name, multi_count, vbosity_mode):
 		super().__init__(name)
 		self._dyn_dict = dyn_dict # dict of non-static values that persist during game
 		self._buff_str = buff_str # holds buffered output
@@ -25,6 +26,7 @@ class IO(Invisible):
 		self._game_name = game_name # name of the current game (also the path to the game)
 		self._multi_count = multi_count # tracks the number of times a multiples action will run
 		self._vbosity_mode = vbosity_mode # verbosity mode for output
+		self._cmd_queue = cmd_queue # queue of commands for auto-actions to execute
 		""" IO class inherits from Invisible. It abstracts all of the string calls to the games 
 		various dictionaries (dynamic, engine, and game) and provides a raft of buffer funcions
 		for game output. 
@@ -79,7 +81,14 @@ class IO(Invisible):
 	def vbosity_mode(self, new_val):
 		self._vbosity_mode = new_val
 
+	@property
+	def cmd_queue(self):
+		return self._cmd_queue
 	
+	@cmd_queue.setter
+	def cmd_queue(self, new_val):
+		self._cmd_queue = new_val
+
 	### check dict methods ###
 	def chk_str_exist(self, key):
 		if key not in self.dyn_dict and key not in engine_static_dict and key not in get_game_dict(self.game_name):
@@ -95,6 +104,27 @@ class IO(Invisible):
 	def set_dyn_dict(self, key, val):
 		self.dyn_dict[key] = val # adds key value pair if it does not exist
 		return 
+
+	def reset_cmd_queue(self):
+		self.cmd_queue = []
+		return
+
+	def append_cmd_queue(self, cmd):
+		self.cmd_queue.append(cmd)
+		return
+	
+	def prepend_cmd_queue(self, cmd):
+		self.cmd_queue.insert(0, cmd)
+		return
+	
+	def pop_cmd_queue(self):
+		if len(self.cmd_queue) == 0:
+			raise IndexError("cmd_queue is empty")
+		return self.cmd_queue.pop(0)
+	
+	def insert_cmd_queue(self, cmd, index):
+		self.cmd_queue.insert(index, cmd)
+		return
 
 	def get_str(self, key, ref):
 		"""Provides a string (usually a description) from dyn_dict, game_static_dict, and engine_static_dict. Includes failover to ref-based description.

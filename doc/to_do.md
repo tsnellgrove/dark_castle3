@@ -356,13 +356,14 @@ To Do List - Dark Castle v3
 				- DONE: move app_main() 'climb' routine to just after cmd_exe() call
 				- DONE: may need to convert skip_inc => decr_inc()
 				- DONE: create gs.core.decr_inc()
-				- DONE: clean up comments
-			- TBD: change ('climb', 'do_noun') syntax call to match user_input_lst
-			- TBD: migrate app_main() 'climb' routine to climb()
-				- TBD: create cmd_queue gs.io attrib
-				- TBD: in app_main(), replace all cmd_queue calls w/ gs.io.cmd_queue
+				- DONE: clean up comments			
+			- INPROC: migrate app_main() 'climb' routine to climb()
+				- DONE: create cmd_queue gs.io attrib
+				- DONE: in app_main(), replace all cmd_queue calls w/ gs.io.cmd_queue
 				- TBD: migrate cmd_queue add and decr_inc set to climb()
 		- TBD: move assumed_dir case to central assumed handling
+			- IDEA: similar to 1-word assumed verbs
+			- TBD: in interp() change ('climb', 'do_noun') syntax call to match user_input_lst
 		- TBD: comment out prep_no_do case in validate(), cmd_exe(), and trig_chk()
 		- TBD: synergize 'go' and 'climb' commands
 	- TBD: consolidate case = 'error' and [err_txt] into syntax
