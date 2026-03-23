@@ -362,6 +362,7 @@ To Do List - Dark Castle v3
 				- DONE: in app_main(), replace all cmd_queue calls w/ gs.io.cmd_queue
 				- DONE: elim gs.io.prepen_cmd_queue() and clean up comments
 				- TBD: migrate cmd_queue add and decr_inc set to climb()
+				- TBD: clean-up comments
 		- TBD: move assumed_dir case to central assumed handling
 			- IDEA: similar to 1-word assumed verbs
 			- TBD: in interp() change ('climb', 'do_noun') syntax call to match user_input_lst

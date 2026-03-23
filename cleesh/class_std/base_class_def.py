@@ -266,6 +266,8 @@ class ClimbableMixIn(object):
 		else:
 			if dir == self.descript_dir:
 				gs.io.buff_s(f"{self.name}_climb_{dir}")
+			gs.io.insert_cmd_queue(f"go {dir}", 0)
+			gs.core.move_decr()
 		return
 
 	

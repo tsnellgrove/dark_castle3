@@ -183,17 +183,18 @@ def app_main(user_input, game_name, root_path_str):
 		# for valid interp commands, process in-turn game response
 		if is_valid or is_att:
 			cmd_override = pre_action(gs, case, word_lst, is_valid)
-
 			if cmd_override:
 				gs.io.reset_cmd_queue()
 			if not cmd_override and is_att:
 				gs.io.buffer(err_txt)
 			if (is_valid and not cmd_override):
+#				print(gs.io.cmd_queue)
 				cmd_execute(gs, case, word_lst)
-				if is_valid and (case == 'prep_no_do' or case == 'action_dir') and word_lst[0] != 'go':
-					direction = word_lst[1]
-					gs.io.insert_cmd_queue(f"go {direction}", 1)
-					gs.core.move_decr()
+#				if is_valid and (case == 'prep_no_do' or case == 'action_dir') and word_lst[0] != 'go':
+#					direction = word_lst[1]
+#					gs.io.insert_cmd_queue(f"go {direction}", 1)
+#					gs.core.move_decr()
+#				print(gs.io.cmd_queue)
 			weapon_disp(gs, start_in_hand)
 			post_action(gs, case, word_lst, is_valid) # excluding poat_act() from cmd "if" allows creatures to opperate machs
 
