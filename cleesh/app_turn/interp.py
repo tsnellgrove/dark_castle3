@@ -67,11 +67,16 @@ def syntax(user_input_tpl, input_dir, verb_action, do_noun, gs):
 		('climb', 'hero_dir', 'input_do_noun') : {
 			'case' : 'action_dir',
 			'base_action_lst' : ['climb', 'hero_dir', 'do_noun_str']
+		},
+		('climb', 'input_do_noun') : {
+			'case' : 'action_dir',
+			'base_action_lst' : ['climb', 'up_or_down_dir', 'do_noun_str']
 		}
 	}
 	base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
 	action_lst = base_action_lst.copy()
 ##	print(f"base_action_lst: {base_action_lst}")
+	case = syntax_dict[user_input_tpl]['case']
 	for index, word in enumerate(base_action_lst):
 		if word == 'hero_obj':
 			action_lst[index] = gs.core.hero # convert class noun to object
@@ -83,8 +88,20 @@ def syntax(user_input_tpl, input_dir, verb_action, do_noun, gs):
 			action_lst[index] = verb_action # string
 		if word == 'do_noun_str':
 			action_lst[index] = gs.core.get_str_to_obj_dict(do_noun) # convert to obj
+		if word == 'up_or_down_dir': # direction not given but can be inferred
+			if gs.map.chk_valid_dir(gs.map.hero_rm, 'up') and not gs.map.chk_valid_dir(gs.map.hero_rm, 'down'):
+				action_lst[index] = 'up'
+				gs.io.buffer(f"(choosing the 'up' direction in which to climb)")
+			elif gs.map.chk_valid_dir(gs.map.hero_rm, 'down') and not gs.map.chk_valid_dir(gs.map.hero_rm, 'up'):
+				action_lst[index] = 'down'
+				gs.io.buffer(f"(choosing the 'down' direction in which to climb)")
+			else:
+				case = 'error'
+				action_lst = ["Which way do you want to climb, up or down?"]
+				break
 ##	print(f"action_lst: {action_lst}")
-	return syntax_dict[user_input_tpl]['case'], action_lst
+#	return syntax_dict[user_input_tpl]['case'], action_lst
+	return case, action_lst
 
 
 ### root_word_count - determines if user command contains root words
@@ -253,23 +270,28 @@ def interpreter(user_input, master_obj_lst):
 	if word1 in gs.io.get_lst('prep_no_do_verb_lst','eng'):
 		if word1 in ['climb']:
 			room = gs.map.hero_rm
+			direction = None
 			if user_input_lst[1] in gs.io.get_lst('one_word_travel_lst','eng'):
 				direction = user_input_lst[1]
 				user_input_lst.remove(direction)
 				
-			elif gs.map.chk_valid_dir(room, 'up') and not gs.map.chk_valid_dir(room, 'down'):
-				direction = 'up'
-				gs.io.buffer(f"(choosing the 'up' direction in which to climb)")
-			elif gs.map.chk_valid_dir(room, 'down') and not gs.map.chk_valid_dir(room, 'up'):
-				direction = 'down'
-				gs.io.buffer(f"(choosing the 'down' direction in which to climb)")
-			else:
-				return 'error', ["Which way do you want to climb, up or down?"]
+#			elif gs.map.chk_valid_dir(room, 'up') and not gs.map.chk_valid_dir(room, 'down'):
+#				direction = 'up'
+#				gs.io.buffer(f"(choosing the 'up' direction in which to climb)")
+#			elif gs.map.chk_valid_dir(room, 'down') and not gs.map.chk_valid_dir(room, 'up'):
+#				direction = 'down'
+#				gs.io.buffer(f"(choosing the 'down' direction in which to climb)")
+#			else:
+#				return 'error', ["Which way do you want to climb, up or down?"]
 			
 			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst)
 			if error_state:
 				return 'error', [error_msg]
-			case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), direction, word1, do_noun_obj.name, gs)
+#			case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), direction, word1, do_noun_obj.name, gs)
+			if direction:
+				case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), direction, word1, do_noun_obj.name, gs)
+			else:
+				case, action_lst = syntax((word1, 'input_do_noun'), None, word1, do_noun_obj.name, gs)
 			return case, action_lst
 
 

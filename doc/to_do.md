@@ -367,7 +367,10 @@ To Do List - Dark Castle v3
 			- IDEA: similar to 1-word assumed verbs
 			- IDEA: migrate ungiven direction choice to syntax - or that does that just distrib code?
 			- IDEA: ask Q what she thinks
-			- TBD: in interp() change ('climb', 'do_noun') syntax call to match user_input_lst
+			- DONE: in interp() change ('climb', 'do_noun') syntax call to match user_input_lst
+			- TBD: review
+			- TBD: clean-up
+			- TBD: decide if "climb down" should be supported
 		- TBD: comment out prep_no_do case in validate(), cmd_exe(), and trig_chk()
 		- TBD: synergize 'go' and 'climb' commands
 	- TBD: consolidate case = 'error' and [err_txt] into syntax
