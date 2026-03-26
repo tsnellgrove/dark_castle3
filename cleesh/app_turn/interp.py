@@ -175,7 +175,7 @@ def interpreter(user_input, master_obj_lst):
 	if len(user_input_lst) < 1: # error if no input or the only input is articles 
 		return 'error', ["I have no idea what you're talking about!"]
 	for word in user_input_lst:
-		if word in ['hero_obj', 'hero_rm_obj', 'hero_dir', 'verb_str', 'do_noun_str']: # reserved syntax
+		if word in ['hero_obj', 'hero_rm_obj', 'hero_dir', 'verb_str', 'do_noun_str', 'up_or_down_dir']: # reserved syntax
 			return 'error', [f"What??"]
 
 	# *** global variable assignment ***
@@ -250,7 +250,7 @@ def interpreter(user_input, master_obj_lst):
 	if word1 not in full_verbs_lst:
 		return 'error', ["Please start your sentence with a known verb!"]
 
-	# initial error case 3: action_dir command with no do_noun
+	# initial error case 3: action_dir command with no do_noun (e.g. 'climb up' w/ no do_noun)
 	if (
 			len(user_input_lst) == 2 and 
 			word1 in gs.io.get_lst('prep_no_do_verb_lst','eng') and 
@@ -274,20 +274,9 @@ def interpreter(user_input, master_obj_lst):
 			if user_input_lst[1] in gs.io.get_lst('one_word_travel_lst','eng'):
 				direction = user_input_lst[1]
 				user_input_lst.remove(direction)
-				
-#			elif gs.map.chk_valid_dir(room, 'up') and not gs.map.chk_valid_dir(room, 'down'):
-#				direction = 'up'
-#				gs.io.buffer(f"(choosing the 'up' direction in which to climb)")
-#			elif gs.map.chk_valid_dir(room, 'down') and not gs.map.chk_valid_dir(room, 'up'):
-#				direction = 'down'
-#				gs.io.buffer(f"(choosing the 'down' direction in which to climb)")
-#			else:
-#				return 'error', ["Which way do you want to climb, up or down?"]
-			
 			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst)
 			if error_state:
 				return 'error', [error_msg]
-#			case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), direction, word1, do_noun_obj.name, gs)
 			if direction:
 				case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), direction, word1, do_noun_obj.name, gs)
 			else:

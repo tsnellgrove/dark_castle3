@@ -350,7 +350,7 @@ To Do List - Dark Castle v3
 			- DONE: fix
 		- DONE: syntax call
 		- DONE: update case => action_dir
-		- INPROC: move 'go <dir>' to a call from climb() [may require app_main calls rework]
+		- DONE: move 'go <dir>' to a call from climb() [may require app_main calls rework]
 			- DONE: update naming: prep => direction, word1 == 'climb' => world1 != 'go'
 			- DONE: move app_main() 'climb' routine
 				- DONE: move app_main() 'climb' routine to just after cmd_exe() call
@@ -363,16 +363,17 @@ To Do List - Dark Castle v3
 				- DONE: elim gs.io.prepen_cmd_queue() and clean up comments
 				- DONE: migrate cmd_queue add and decr_inc set to climb()
 				- DONE: clean-up comments
-		- TBD: move assumed_dir case to central assumed handling
+		- DONE: move assumed_dir case to central assumed handling
 			- IDEA: similar to 1-word assumed verbs
 			- IDEA: migrate ungiven direction choice to syntax - or that does that just distrib code?
 			- IDEA: ask Q what she thinks
 			- DONE: in interp() change ('climb', 'do_noun') syntax call to match user_input_lst
-			- TBD: review
-			- TBD: clean-up
-			- TBD: decide if "climb down" should be supported
+			- DONE: review
+			- DONE: clean-up
+			- DONE: decide if "climb down" should be supported => not now
 		- TBD: comment out prep_no_do case in validate(), cmd_exe(), and trig_chk()
 		- TBD: synergize 'go' and 'climb' commands
+		- TBD: support 'climb up' and 'climb down' w/ no do_noun (i.e. search for climbable obj)
 	- TBD: consolidate case = 'error' and [err_txt] into syntax
 	- TBD: clean-up weapon_disp in app_main() module => weapon() class
 	- TBD: clean-up multipls functions in app_main() module
