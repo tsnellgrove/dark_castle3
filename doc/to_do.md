@@ -371,7 +371,12 @@ To Do List - Dark Castle v3
 			- DONE: review
 			- DONE: clean-up
 			- DONE: decide if "climb down" should be supported => not now
-		- TBD: comment out prep_no_do case in validate(), cmd_exe(), and trig_chk()
+		- INPROC: elim legacy cases
+			- DONE: comment out prep_no_do case in validate(), cmd_exe(), and trig_chk()
+			- DONE: understand case == 'action_dir' in trig_check()
+			- DONE: comment out go case in validate(), cmd_exe(), and trig_chk()
+			- DONE: test
+			- TBD: clean up comments in validate(), cmd_exe(), and trig_chk()
 		- TBD: synergize 'go' and 'climb' commands
 		- TBD: support 'climb up' and 'climb down' w/ no do_noun (i.e. search for climbable obj)
 	- TBD: consolidate case = 'error' and [err_txt] into syntax
