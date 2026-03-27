@@ -81,12 +81,6 @@ def cmd_execute(gs, case, word_lst):
 				return
 			gs.io.buff_dbg("[CMD] tru_1word case not found", gs)
 			return
-#		if case == 'go':
-#			room_obj, word1, word2 = word_lst
-#			getattr(room_obj, word1)(word2, gs)
-#			if not gs.end.is_end: # check to avoid double score display on end
-#				gs.score.disp_score(word1, gs.map.hero_rm.name, None, gs)
-#			return
 		if case == 'action_2word':
 			action_str, do_noun_obj = word_lst
 			getattr(do_noun_obj, action_str)(gs)
@@ -105,12 +99,6 @@ def cmd_execute(gs, case, word_lst):
 			if not gs.end.is_end: # check to avoid double score display on end
 				gs.score.disp_score(word1, word2_obj.name, None, gs)
 			return
-#		if case == 'prep_no_do':
-#			word1, prep, noun_obj = word_lst
-#			getattr(noun_obj, word1)(prep, gs)
-#			if not gs.end.is_end: # check to avoid double score display on end
-#				gs.score.disp_score(word1, noun_obj.name, prep, gs)
-#			return
 		if case == 'prep':
 			dirobj_obj, word1, noun_obj = word_lst
 			getattr(dirobj_obj, word1)(noun_obj, gs)

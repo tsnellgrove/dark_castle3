@@ -371,13 +371,26 @@ To Do List - Dark Castle v3
 			- DONE: review
 			- DONE: clean-up
 			- DONE: decide if "climb down" should be supported => not now
-		- INPROC: elim legacy cases
+		- DONE: elim legacy cases
 			- DONE: comment out prep_no_do case in validate(), cmd_exe(), and trig_chk()
 			- DONE: understand case == 'action_dir' in trig_check()
 			- DONE: comment out go case in validate(), cmd_exe(), and trig_chk()
 			- DONE: test
-			- TBD: clean up comments in validate(), cmd_exe(), and trig_chk()
+			- DONE: clean up comments in validate(), cmd_exe(), and trig_chk()
 		- TBD: synergize 'go' and 'climb' commands
+		- TBD: review and implement over-arching interp() org
+			- TBD: review by hand
+			- TBD: discuss with Q
+			- IDEA:
+				- process / clean (txt)
+				- identify verb, dir (txt)
+				- identify do_noun, id_noun, & preps (txt / rm)
+					- dis-ambugate nouns (rm)
+				- call syntax: verb => action (txt)
+					- fill in infferable terms (rm)
+				- hand-manip (rm)
+				- run action => err or execution (rm)
+
 		- TBD: support 'climb up' and 'climb down' w/ no do_noun (i.e. search for climbable obj)
 	- TBD: consolidate case = 'error' and [err_txt] into syntax
 	- TBD: clean-up weapon_disp in app_main() module => weapon() class

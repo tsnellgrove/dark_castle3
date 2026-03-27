@@ -23,7 +23,6 @@ def validate(gs, case, word_lst):
 
 	# *** command errors ***
 	if case in ['2word', 'prep', 'action_2word', 'action_dir']:
-#	if case in ['2word', 'prep_no_do', 'prep', 'go', 'action_2word', 'action_dir']:
 		try:
 			if case == 'action_2word':
 				action_str, do_noun_obj = word_lst
@@ -40,21 +39,11 @@ def validate(gs, case, word_lst):
 				cmd_err, is_att, err_txt = getattr(word2_obj, word1 + '_err')(gs)
 				if (cmd_err and not is_att and err_txt != ""):
 					gs.io.buffer(err_txt)
-#			elif case == 'prep_no_do':
-#				word1, prep, noun_obj = word_lst
-#				cmd_err, is_att, err_txt = getattr(noun_obj, word1 + '_err')(prep, gs)
-#				if (cmd_err and not is_att and err_txt != ""):
-#					gs.io.buffer(err_txt)
 			elif case == 'prep':
 				dirobj_obj, word1, noun_obj = word_lst
 				cmd_err, is_att, err_txt = getattr(dirobj_obj, word1 + '_err')(noun_obj, gs)
 				if (cmd_err and not is_att and err_txt != ""):
 					gs.io.buffer(err_txt)
-#			elif case == 'go':
-#				room_obj, word1, word2 = word_lst
-#				cmd_err, is_att, err_txt = getattr(room_obj, word1 + '_err')(word2, gs)
-#				if (cmd_err and not is_att):
-#					gs.io.buffer(err_txt)
 			if cmd_err and gs.core.is_debug:
 				gs.io.buff_no_cr(" [ERROR error postfix]")
 		except:
