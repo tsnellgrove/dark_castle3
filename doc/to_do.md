@@ -377,7 +377,13 @@ To Do List - Dark Castle v3
 			- DONE: comment out go case in validate(), cmd_exe(), and trig_chk()
 			- DONE: test
 			- DONE: clean up comments in validate(), cmd_exe(), and trig_chk()
-		- TBD: synergize 'go' and 'climb' commands
+		- INPROC: synergize 'go' and 'climb' commands
+			- DONE: document 'go' and 'climb' interp() flow
+			- TBD: 'climb' <dir> => syntax => 'climb' <dir> <rm>
+			- TBD <rm> specific error in climb_err()
+			- IDEA: enables local rm override for Tree
+			- TBD: re-eval 'go' / 'climb' synergy
+		- TBD: fix 'action_dir' case in trig_chk() => [verb, dir, do_noun]
 		- TBD: review and implement over-arching interp() org
 			- TBD: review by hand
 			- TBD: discuss with Q
