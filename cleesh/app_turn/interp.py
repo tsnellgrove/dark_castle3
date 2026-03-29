@@ -204,7 +204,7 @@ def interpreter(user_input, master_obj_lst):
 		case, action_lst = syntax(('hero_dir',), word1, None, None, gs) 
 		return case, action_lst
 
-	# for two-word commands where only the verb is given, if the noun is assumable, assign it
+	# for two-word commands where only the verb is given, if the noun is inferable, assign it
 	if len(user_input_lst) == 1 and word1 in ['exit'] and creature.is_contained(gs):
 		case, action_lst = syntax(('input_verb', 'input_do_noun'), None, word1, creature.get_contained_by(gs).name, gs)
 		gs.io.buffer(f"(from the {creature.get_contained_by(gs).full_name})")

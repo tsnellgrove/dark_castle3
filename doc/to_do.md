@@ -377,8 +377,25 @@ To Do List - Dark Castle v3
 			- DONE: comment out go case in validate(), cmd_exe(), and trig_chk()
 			- DONE: test
 			- DONE: clean up comments in validate(), cmd_exe(), and trig_chk()
-		- INPROC: synergize 'go' and 'climb' commands
+		- DONE: planning
 			- DONE: document 'go' and 'climb' interp() flow
+			- DONE: big picture flow changes
+			- IDEA: big picture target flow
+				- pre-process (str => lst, clean-up, universal synonym substitution)
+				- elim universal errors (too long, no verb, no verb, > 1 verb)
+				- meta_cmds special cases ('help' & 'tru_1word')
+				- 1-word special cases (convert, dir, and infer)
+				- action_dir universal case
+					- identify verb, do_noun, id_noun, & preps => syntax
+					- syntax: txt_lst => action_lst (elim too long cases here)
+					- process action_lst => validate / cmd_exe pipeline
+		- TBD: big picture updates
+			- TBD: move too-long error to top (exception for help)
+			- TBD: 'tru_1word' => 'meta_cmds'
+			- TBD: create separate full_verb_lst vs. full_action_lst
+			- TBD: combine 1-word convert, dir, infer, & 1-word err into 1 syntax call
+			- TBD: create unified action_dir syntax call
+		- TBD: synergize 'go' and 'climb' commands
 			- TBD: 'climb' <dir> => syntax => 'climb' <dir> <rm>
 			- TBD <rm> specific error in climb_err()
 			- IDEA: enables local rm override for Tree
