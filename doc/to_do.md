@@ -381,8 +381,8 @@ To Do List - Dark Castle v3
 			- DONE: document 'go' and 'climb' interp() flow
 			- DONE: big picture flow changes
 			- IDEA: big picture target flow
-				- pre-process (str => lst, clean-up, universal synonym substitution)
-				- elim universal errors (too long, no verb, no verb, > 1 verb)
+				- pre-process (str => lst, clean-up, universal synonym substitution) [DONE]
+				- elim universal errors (too long, no verb, no verb, > 1 verb) [DONE]
 				- meta_cmds special cases ('help' & 'tru_1word')
 				- 1-word special cases (convert, dir, and infer)
 				- action_dir universal case
@@ -390,10 +390,16 @@ To Do List - Dark Castle v3
 					- syntax: txt_lst => action_lst (elim too long cases here)
 					- process action_lst => validate / cmd_exe pipeline
 		- TBD: big picture updates
-			- TBD: move too-long error to top (exception for help)
-			- TBD: 'tru_1word' => 'meta_cmds'
+			- DONE: move too-long error to top (exception for help)
+			- TBD: 'tru_1word' + 'help => 'meta_cmds'
+				- TBD: add error for user_input_lst[0] == 'help' and len(user_input_lst) > 2
+				- TBD: combine 'help' and 'tru_1word' cases under 'meta_cmds' case in cmd_exe()
+				- TBD: combine calls for meta_cmds (elim len(user_input_lst) == 1 constraint)
+				- TBD: test
+				- TBD: clean-up comments
 			- TBD: create separate full_verb_lst vs. full_action_lst
 			- TBD: combine 1-word convert, dir, infer, & 1-word err into 1 syntax call
+				- TBD: add 'dir' cmd to 'too long' err ?
 			- TBD: create unified action_dir syntax call
 		- TBD: synergize 'go' and 'climb' commands
 			- TBD: 'climb' <dir> => syntax => 'climb' <dir> <rm>
