@@ -391,10 +391,11 @@ To Do List - Dark Castle v3
 					- process action_lst => validate / cmd_exe pipeline
 		- TBD: big picture updates
 			- DONE: move too-long error to top (exception for help)
-			- TBD: 'tru_1word' + 'help => 'meta_cmds'
-				- TBD: add error for user_input_lst[0] == 'help' and len(user_input_lst) > 2
-				- TBD: combine 'help' and 'tru_1word' cases under 'meta_cmds' case in cmd_exe()
-				- TBD: combine calls for meta_cmds (elim len(user_input_lst) == 1 constraint)
+			- INPROC: 'tru_1word' + 'help => 'meta_cmds'
+				- DONE: add error for user_input_lst[0] == 'help' and len(user_input_lst) > 2
+				- DONE: combine 'help' and 'tru_1word' cases under 'meta_cmds' case in interp()
+				- TBD: combine syntax call for meta_cmds (elim len constraints)
+				- TBD: updeate cmd_exe() to parse meta_cmd_lst options
 				- TBD: test
 				- TBD: clean-up comments
 			- TBD: create separate full_verb_lst vs. full_action_lst

@@ -187,16 +187,21 @@ def interpreter(user_input, master_obj_lst):
 			gs.io.get_lst('one_word_convert_lst','eng') # added
 			):
 		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
+	if len(user_input_lst) > 2 and user_input_lst[0] in ['help']:
+		return 'error', [f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"]
 
 	# *** global variable assignment ***
 	word1 = user_input_lst[0]
 	creature = gs.core.hero
+	meta_cmd_lst = ['help'] + gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
 	full_verbs_lst = gs.io.get_lst('known_verb_lst','eng') + gs.io.get_lst('debug_verb_lst','eng')
 
 	# *** special case of help commands ***
 	if word1 == 'help':
 		if len(user_input_lst) == 1:
 			option = 'menu'
+		elif len(user_input_lst) > 2:
+			return 'error', [f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"]
 		else:
 			option = user_input_lst[1]
 		return 'help', [option]
