@@ -394,10 +394,13 @@ To Do List - Dark Castle v3
 			- INPROC: 'tru_1word' + 'help => 'meta_cmds'
 				- DONE: add error for user_input_lst[0] == 'help' and len(user_input_lst) > 2
 				- DONE: combine 'help' and 'tru_1word' cases under 'meta_cmds' case in interp()
-				- TBD: combine syntax call for meta_cmds (elim len constraints)
+				- INPROC: combine syntax call for meta_cmds (elim len constraints)
+					- DONE: updat syntax call
+					- TBD: troubleshoot
 				- TBD: updeate cmd_exe() to parse meta_cmd_lst options
 				- TBD: test
 				- TBD: clean-up comments
+			- TBD: syntax [input_dir, verb, do_noun] => [verb, do_noun, input_dir]
 			- TBD: create separate full_verb_lst vs. full_action_lst
 			- TBD: combine 1-word convert, dir, infer, & 1-word err into 1 syntax call
 				- TBD: add 'dir' cmd to 'too long' err ?

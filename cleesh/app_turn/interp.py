@@ -71,6 +71,14 @@ def syntax(user_input_tpl, input_dir, verb_action, do_noun, gs):
 		('climb', 'input_do_noun') : {
 			'case' : 'action_dir',
 			'base_action_lst' : ['climb', 'up_or_down_dir', 'do_noun_str']
+		},
+		('meta_cmd',) : {
+			'case' : 'true_1word',
+			'base_action_lst' : ['verb_str']
+		},
+		('help',) : {
+			'case' : 'help',
+			'base_action_lst' : ['verb_str', 'hero_dir']
 		}
 	}
 	base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
@@ -196,22 +204,39 @@ def interpreter(user_input, master_obj_lst):
 	meta_cmd_lst = ['help'] + gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
 	full_verbs_lst = gs.io.get_lst('known_verb_lst','eng') + gs.io.get_lst('debug_verb_lst','eng')
 
-	# *** special case of help commands ***
-	if word1 == 'help':
-		if len(user_input_lst) == 1:
-			option = 'menu'
-		elif len(user_input_lst) > 2:
-			return 'error', [f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"]
+	# *** meta commands ***
+	if word1 in meta_cmd_lst:
+		if word1 in ['help']:
+			if len(user_input_lst) == 1:
+				option = 'menu'
+			else:
+				option = user_input_lst[1]
+			case, action_lst = syntax(('help',), option, word1, None, gs)
 		else:
-			option = user_input_lst[1]
-		return 'help', [option]
+			case, action_lst = syntax(('meta_cmd',), None, word1, None, gs)
+		return case, action_lst
+	
+
+
+
+	# *** special case of help commands ***
+#	if word1 == 'help':
+#		if len(user_input_lst) == 1:
+#			option = 'menu'
+#		elif len(user_input_lst) > 2:
+#			return 'error', [f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"]
+#		else:
+#			option = user_input_lst[1]
+#		return 'help', [option]
 	
 	# *** process actual one-word commands ***
-	if len(user_input_lst) == 1 and word1 in (
-			gs.io.get_lst('one_word_only_lst','eng') + 
-			gs.io.get_lst('one_word_secret_lst','eng')
-			):
-		return 'tru_1word', [word1]	
+#	if len(user_input_lst) == 1 and word1 in (
+#			gs.io.get_lst('one_word_only_lst','eng') + 
+#			gs.io.get_lst('one_word_secret_lst','eng')
+#			):
+#		return 'tru_1word', [word1]	
+
+
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst','eng'):
 		case, action_lst = syntax(tuple(user_input_lst), None, None, None, gs)
 		return case, action_lst
