@@ -389,19 +389,19 @@ To Do List - Dark Castle v3
 					- identify verb, do_noun, id_noun, & preps => syntax
 					- syntax: txt_lst => action_lst (elim too long cases here)
 					- process action_lst => validate / cmd_exe pipeline
-		- TBD: big picture updates
+		- INPROC: big picture updates
 			- DONE: move too-long error to top (exception for help)
-			- INPROC: 'tru_1word' + 'help => 'meta_cmds'
+			- DONE: 'tru_1word' + 'help => 'meta_cmds'
 				- DONE: add error for user_input_lst[0] == 'help' and len(user_input_lst) > 2
 				- DONE: combine 'help' and 'tru_1word' cases under 'meta_cmds' case in interp()
-				- INPROC: combine syntax call for meta_cmds (elim len constraints)
+				- DONE: combine syntax call for meta_cmds (elim len constraints)
 					- DONE: updat syntax call
-					- TBD: troubleshoot
-				- TBD: updeate cmd_exe() to parse meta_cmd_lst options
-				- TBD: test
-				- TBD: clean-up comments
-			- TBD: syntax [input_dir, verb, do_noun] => [verb, do_noun, input_dir]
-			- TBD: create separate full_verb_lst vs. full_action_lst
+					- DONE: troubleshoot
+					- DONE: clean-up comments
+			- TBD: tactical tuning
+				- TBD: separate 'help' from meta_cmd_lst
+				- TBD: syntax [input_dir, verb, do_noun] => [verb, do_noun, input_dir]
+				- TBD: create separate full_verb_lst vs. full_action_lst
 			- TBD: combine 1-word convert, dir, infer, & 1-word err into 1 syntax call
 				- TBD: add 'dir' cmd to 'too long' err ?
 			- TBD: create unified action_dir syntax call
@@ -411,6 +411,10 @@ To Do List - Dark Castle v3
 			- IDEA: enables local rm override for Tree
 			- TBD: re-eval 'go' / 'climb' synergy
 		- TBD: fix 'action_dir' case in trig_chk() => [verb, dir, do_noun]
+		- TBD: refactor cmd_exe() help & meta
+			- TBD: create help() method where 'help' is verb and 'option' is prep
+			- TBD: create meta() method where cmd = verb
+			- TBD: updeate cmd_exe() to parse meta_cmd_lst options
 		- TBD: review and implement over-arching interp() org
 			- TBD: review by hand
 			- TBD: discuss with Q

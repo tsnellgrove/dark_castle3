@@ -73,7 +73,7 @@ def syntax(user_input_tpl, input_dir, verb_action, do_noun, gs):
 			'base_action_lst' : ['climb', 'up_or_down_dir', 'do_noun_str']
 		},
 		('meta_cmd',) : {
-			'case' : 'true_1word',
+			'case' : 'tru_1word',
 			'base_action_lst' : ['verb_str']
 		},
 		('help',) : {
@@ -217,24 +217,6 @@ def interpreter(user_input, master_obj_lst):
 		return case, action_lst
 	
 
-
-
-	# *** special case of help commands ***
-#	if word1 == 'help':
-#		if len(user_input_lst) == 1:
-#			option = 'menu'
-#		elif len(user_input_lst) > 2:
-#			return 'error', [f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"]
-#		else:
-#			option = user_input_lst[1]
-#		return 'help', [option]
-	
-	# *** process actual one-word commands ***
-#	if len(user_input_lst) == 1 and word1 in (
-#			gs.io.get_lst('one_word_only_lst','eng') + 
-#			gs.io.get_lst('one_word_secret_lst','eng')
-#			):
-#		return 'tru_1word', [word1]	
 
 
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst','eng'):
