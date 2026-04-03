@@ -201,7 +201,6 @@ def interpreter(user_input, master_obj_lst):
 	# *** global variable assignment ***
 	word1 = user_input_lst[0]
 	creature = gs.core.hero
-#	meta_cmd_lst = ['help'] + gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
 	meta_cmd_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
 	full_verbs_lst = gs.io.get_lst('known_verb_lst','eng') + gs.io.get_lst('debug_verb_lst','eng')
 
@@ -218,6 +217,8 @@ def interpreter(user_input, master_obj_lst):
 	if word1 in meta_cmd_lst:
 		case, action_lst = syntax(('meta_cmd',), None, word1, None, gs)
 		return case, action_lst
+
+
 
 	# *** convert commands ***
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst','eng'):
@@ -239,14 +240,8 @@ def interpreter(user_input, master_obj_lst):
 		gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
 		return case, action_lst
 	
-#	# exit error case 1: one-word commands where user_input_lst is longer than one word
-#	if len(user_input_lst) > 1 and word1 in (
-#			gs.io.get_lst('one_word_only_lst','eng') + 
-#			gs.io.get_lst('pre_interp_word_lst','eng') + 
-#			gs.io.get_lst('one_word_secret_lst','eng') +
-#			gs.io.get_lst('one_word_convert_lst','eng') # added
-#			):
-#		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
+
+
 
 	# exit error case 2: len(user_input_lst) == 1 but word1 is not known or is a known non-one-word verb
 	if len(user_input_lst) == 1:
