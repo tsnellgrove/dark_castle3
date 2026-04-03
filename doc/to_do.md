@@ -398,8 +398,8 @@ To Do List - Dark Castle v3
 					- DONE: updat syntax call
 					- DONE: troubleshoot
 					- DONE: clean-up comments
-			- TBD: tactical tuning
-				- TBD: separate 'help' from meta_cmd_lst
+			- INPROC: tactical tuning
+				- DONE: separate 'help' from meta_cmd_lst
 				- TBD: syntax [input_dir, verb, do_noun] => [verb, do_noun, input_dir]
 				- TBD: create separate full_verb_lst vs. full_action_lst
 			- TBD: combine 1-word convert, dir, infer, & 1-word err into 1 syntax call
