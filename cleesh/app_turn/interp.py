@@ -195,7 +195,7 @@ def interpreter(user_input, master_obj_lst):
 			gs.io.get_lst('one_word_convert_lst','eng') # added
 			):
 		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
-	if len(user_input_lst) > 2 and user_input_lst[0] in ['help']:
+	if len(user_input_lst) > 2 and user_input_lst[0] in ['help', 'go']:
 		return 'error', [f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"]
 
 	# *** global variable assignment ***
@@ -203,32 +203,26 @@ def interpreter(user_input, master_obj_lst):
 	creature = gs.core.hero
 	meta_cmd_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
 	full_verbs_lst = gs.io.get_lst('known_verb_lst','eng') + gs.io.get_lst('debug_verb_lst','eng')
+	case = None
+	action_lst = None
 
-	# *** help commands ***
-	if word1 in ['help']:
+	# *** one-word and meta commands ***
+	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_travel_lst','eng'):
+		case, action_lst = syntax(('hero_dir',), word1, None, None, gs) 
+	elif word1 in gs.io.get_lst('one_word_convert_lst','eng'): # e.g. inventory, look, stand, jump
+		case, action_lst = syntax(tuple(user_input_lst), None, None, None, gs)
+	elif word1 in meta_cmd_lst: # e.g. credits, score, version, verbose, brief, superbrief
+		case, action_lst = syntax(('meta_cmd',), None, word1, None, gs)
+	elif word1 in ['help']:
 		if len(user_input_lst) == 1:
 			option = 'menu'
 		else:
 			option = user_input_lst[1]
 		case, action_lst = syntax(('help',), option, word1, None, gs)
-		return case, action_lst
-	
-	# *** meta commands ***
-	if word1 in meta_cmd_lst:
-		case, action_lst = syntax(('meta_cmd',), None, word1, None, gs)
+	if case is not None:
 		return case, action_lst
 
 
-
-	# *** convert commands ***
-	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_convert_lst','eng'):
-		case, action_lst = syntax(tuple(user_input_lst), None, None, None, gs)
-		return case, action_lst
-
-	# *** travel commands ***
-	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_travel_lst','eng'):
-		case, action_lst = syntax(('hero_dir',), word1, None, None, gs) 
-		return case, action_lst
 
 	# for two-word commands where only the verb is given, if the noun is inferable, assign it
 	if len(user_input_lst) == 1 and word1 in ['exit'] and creature.is_contained(gs):
@@ -280,11 +274,11 @@ def interpreter(user_input, master_obj_lst):
 
 	# handle go commands
 	if word1 == 'go':
-		if len(user_input_lst) > 2:
-			return 'error', [f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"]
-		else:
-			case, action_lst = syntax(('go', 'hero_dir'), user_input_lst[1], None, None, gs)
-			return case, action_lst
+#		if len(user_input_lst) > 2:
+#			return 'error', [f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"]
+#		else:
+		case, action_lst = syntax(('go', 'hero_dir'), user_input_lst[1], None, None, gs)
+		return case, action_lst
 
 	# handle prep_no_do verb commands (special cases first else general case) [SYNTAX]
 	if word1 in gs.io.get_lst('prep_no_do_verb_lst','eng'):
