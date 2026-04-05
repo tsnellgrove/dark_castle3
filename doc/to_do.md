@@ -401,7 +401,8 @@ To Do List - Dark Castle v3
 			- INPROC: tactical tuning
 				- DONE: separate 'help' from meta_cmd_lst
 				- DONE: clean up convert & travel; use elif; unify return call (if case is not None)
-				- TBD: syntax [input_dir, verb, do_noun] => [verb, do_noun, input_dir]
+				- DONE: syntx [input_dir, verb, do_noun] > [input_verb, do_noun, prep_dir_opt, id_noun]
+				- TBD: clean-up comments
 				- TBD: create separate full_verb_lst vs. full_action_lst
 			- TBD: combine 1-word convert, dir, infer, & 1-word err into 1 syntax call
 				- TBD: add 'dir' cmd to 'too long' err ?

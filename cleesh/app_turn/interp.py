@@ -32,8 +32,12 @@ def input_cleanup(gs, user_input):
 	return user_input_lst
 
 
+# # [verb, do_noun, prep_dir_opt, id_noun]
+
+
 ### syntax - convert user_input_lst into a case and action_lst
-def syntax(user_input_tpl, input_dir, verb_action, do_noun, gs):
+def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
+# def syntax(user_input_tpl, input_dir, verb_action, do_noun, gs):
 
 	syntax_dict = {
 		('inventory',) : {
@@ -91,9 +95,11 @@ def syntax(user_input_tpl, input_dir, verb_action, do_noun, gs):
 		if word == 'hero_rm_obj':
 			action_lst[index] = gs.map.hero_rm # convert class noun to object
 		if word == 'hero_dir':
-			action_lst[index] = input_dir # string
+			action_lst[index] = prep_dir_opt # string
+#			action_lst[index] = input_dir # string
 		if word == 'verb_str':
-			action_lst[index] = verb_action # string
+			action_lst[index] = input_verb # string
+#			action_lst[index] = verb_action # string
 		if word == 'do_noun_str':
 			action_lst[index] = gs.core.get_str_to_obj_dict(do_noun) # convert to obj
 		if word == 'up_or_down_dir': # direction not given but can be inferred
@@ -208,33 +214,37 @@ def interpreter(user_input, master_obj_lst):
 
 	# *** one-word and meta commands ***
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_travel_lst','eng'):
-		case, action_lst = syntax(('hero_dir',), word1, None, None, gs) 
+#		case, action_lst = syntax(('hero_dir',), word1, None, None, gs) 
+		case, action_lst = syntax(('hero_dir',), None, None, word1, None, gs)
 	elif word1 in gs.io.get_lst('one_word_convert_lst','eng'): # e.g. inventory, look, stand, jump
-		case, action_lst = syntax(tuple(user_input_lst), None, None, None, gs)
+#		case, action_lst = syntax(tuple(user_input_lst), None, None, None, gs)
+		case, action_lst = syntax(tuple(user_input_lst), word1, None, None, None, gs)
 	elif word1 in meta_cmd_lst: # e.g. credits, score, version, verbose, brief, superbrief
-		case, action_lst = syntax(('meta_cmd',), None, word1, None, gs)
+#		case, action_lst = syntax(('meta_cmd',), None, word1, None, gs)
+		case, action_lst = syntax(('meta_cmd',), word1, None, None, None, gs)
 	elif word1 in ['help']:
 		if len(user_input_lst) == 1:
 			option = 'menu'
 		else:
 			option = user_input_lst[1]
-		case, action_lst = syntax(('help',), option, word1, None, gs)
+#		case, action_lst = syntax(('help',), option, word1, None, gs)
+		case, action_lst = syntax(('help',), word1, None, option, None, gs)
 	if case is not None:
 		return case, action_lst
 
 
-
 	# for two-word commands where only the verb is given, if the noun is inferable, assign it
 	if len(user_input_lst) == 1 and word1 in ['exit'] and creature.is_contained(gs):
-		case, action_lst = syntax(('input_verb', 'input_do_noun'), None, word1, creature.get_contained_by(gs).name, gs)
+#		case, action_lst = syntax(('input_verb', 'input_do_noun'), None, word1, creature.get_contained_by(gs).name, gs)
+		case, action_lst = syntax(('input_verb', 'input_do_noun'), word1, creature.get_contained_by(gs).name, None, None, gs)
 		gs.io.buffer(f"(from the {creature.get_contained_by(gs).full_name})")
 		return case, action_lst
 	if len(user_input_lst) == 1 and word1 in ['drop', 'stow', 'eat', 'wear'] and not creature.hand_is_empty():
-		case, action_lst = syntax(('input_verb', 'input_do_noun'), None, word1, creature.get_hand_item().name, gs)
+#		case, action_lst = syntax(('input_verb', 'input_do_noun'), None, word1, creature.get_hand_item().name, gs)
+		case, action_lst = syntax(('input_verb', 'input_do_noun'), word1, creature.get_hand_item().name, None, None, gs)
 		gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
 		return case, action_lst
 	
-
 
 
 	# exit error case 2: len(user_input_lst) == 1 but word1 is not known or is a known non-one-word verb
@@ -277,7 +287,8 @@ def interpreter(user_input, master_obj_lst):
 #		if len(user_input_lst) > 2:
 #			return 'error', [f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"]
 #		else:
-		case, action_lst = syntax(('go', 'hero_dir'), user_input_lst[1], None, None, gs)
+#		case, action_lst = syntax(('go', 'hero_dir'), user_input_lst[1], None, None, gs)
+		case, action_lst = syntax(('go', 'hero_dir'), word1, None, user_input_lst[1], None, gs)
 		return case, action_lst
 
 	# handle prep_no_do verb commands (special cases first else general case) [SYNTAX]
@@ -292,10 +303,15 @@ def interpreter(user_input, master_obj_lst):
 			if error_state:
 				return 'error', [error_msg]
 			if direction:
-				case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), direction, word1, do_noun_obj.name, gs)
+#				case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), direction, word1, do_noun_obj.name, gs)
+				case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), word1, do_noun_obj.name, direction, None, gs)
 			else:
-				case, action_lst = syntax((word1, 'input_do_noun'), None, word1, do_noun_obj.name, gs)
+#				case, action_lst = syntax((word1, 'input_do_noun'), None, word1, do_noun_obj.name, gs)
+				case, action_lst = syntax((word1, 'input_do_noun'), word1, do_noun_obj.name, None, None, gs)
 			return case, action_lst
+
+
+
 
 
 	# handle prep verb commands (special cases first else general case)
