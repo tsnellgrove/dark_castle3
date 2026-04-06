@@ -398,21 +398,23 @@ To Do List - Dark Castle v3
 					- DONE: updat syntax call
 					- DONE: troubleshoot
 					- DONE: clean-up comments
-			- INPROC: tactical tuning
+			- DONE: tactical tuning
 				- DONE: separate 'help' from meta_cmd_lst
 				- DONE: clean up convert & travel; use elif; unify return call (if case is not None)
 				- DONE: syntx [input_dir, verb, do_noun] > [input_verb, do_noun, prep_dir_opt, id_noun]
 				- DONE: clean-up comments
-				- TBD: create separate full_verb_lst vs. full_action_lst
+				- DONE: add 'dir' cmd to 'too long' err ?
 			- TBD: combine 1-word convert, dir, infer, & 1-word err into 1 syntax call
-				- TBD: add 'dir' cmd to 'too long' err ?
-			- TBD: create unified action_dir syntax call
 		- TBD: synergize 'go' and 'climb' commands
+			- IDEA: create unified action_dir syntax call
 			- TBD: 'climb' <dir> => syntax => 'climb' <dir> <rm>
 			- TBD <rm> specific error in climb_err()
 			- IDEA: enables local rm override for Tree
 			- TBD: re-eval 'go' / 'climb' synergy
 		- TBD: fix 'action_dir' case in trig_chk() => [verb, dir, do_noun]
+		- TBD: verb vs. action
+			- TBD: introduce a new non-action verb ("sit")
+			- TBD: create separate full_verb_lst vs. full_action_lst
 		- TBD: refactor cmd_exe() help & meta
 			- TBD: create help() method where 'help' is verb and 'option' is prep
 			- TBD: create meta() method where cmd = verb

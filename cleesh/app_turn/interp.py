@@ -191,9 +191,10 @@ def interpreter(user_input, master_obj_lst):
 			gs.io.get_lst('pre_interp_word_lst','eng') + 
 			gs.io.get_lst('one_word_only_lst','eng') + 
 			gs.io.get_lst('one_word_secret_lst','eng') +
-			gs.io.get_lst('one_word_convert_lst','eng') # added
+			gs.io.get_lst('one_word_convert_lst','eng') + # added
+			gs.io.get_lst('one_word_travel_lst','eng') # added
 			):
-		return 'error', [f"There are too many words in that sentence. '{word1}' is a one word command!"]
+		return 'error', [f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"]
 	if len(user_input_lst) > 2 and user_input_lst[0] in ['help', 'go']:
 		return 'error', [f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"]
 
