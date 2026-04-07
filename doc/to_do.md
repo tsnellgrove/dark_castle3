@@ -404,7 +404,7 @@ To Do List - Dark Castle v3
 				- DONE: syntx [input_dir, verb, do_noun] > [input_verb, do_noun, prep_dir_opt, id_noun]
 				- DONE: clean-up comments
 				- DONE: add 'dir' cmd to 'too long' err ?
-			- TBD: combine 1-word convert, dir, infer, & 1-word err into 1 syntax call
+			- INPROC: combine 1-word convert, dir, infer, & 1-word err into 1 syntax call
 		- TBD: synergize 'go' and 'climb' commands
 			- IDEA: create unified action_dir syntax call
 			- TBD: 'climb' <dir> => syntax => 'climb' <dir> <rm>

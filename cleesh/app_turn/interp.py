@@ -60,10 +60,10 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'case' : 'action_dir',
 			'base_action_lst' : ['go', 'hero_dir', 'hero_rm_obj']
 		},
-		('input_verb', 'input_do_noun') : {
-			'case' : 'action_2word',
-			'base_action_lst' : ['verb_str', 'do_noun_str']
-		},
+##		('input_verb', 'input_do_noun') : {
+##			'case' : 'action_2word',
+##			'base_action_lst' : ['verb_str', 'do_noun_str']
+##		},
 		('climb', 'hero_dir', 'input_do_noun') : {
 			'case' : 'action_dir',
 			'base_action_lst' : ['climb', 'hero_dir', 'do_noun_str']
@@ -79,6 +79,10 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('help',) : {
 			'case' : 'help',
 			'base_action_lst' : ['verb_str', 'hero_dir']
+		},
+		('infer_verb',) : {
+			'case' : 'action_2word',
+			'base_action_lst' : ['infer_do_noun']
 		}
 	}
 	base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
@@ -106,6 +110,19 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			else:
 				case = 'error'
 				action_lst = ["Which way do you want to climb, up or down?"]
+				break
+		if word == 'infer_do_noun':
+			if input_verb in ['exit'] and gs.core.hero.is_contained(gs):
+				gs.io.buffer(f"(from the {gs.core.hero.get_contained_by(gs).full_name})")
+				action_lst = [input_verb, gs.core.hero.get_contained_by(gs)]
+				break
+			elif input_verb in ['drop', 'stow', 'eat', 'wear'] and not gs.core.hero.hand_is_empty():
+				gs.io.buffer(f"(the {gs.core.hero.get_hand_item().full_name})")
+				action_lst = [input_verb, gs.core.hero.get_hand_item()]
+				break
+			else:
+				case = 'error'
+				action_lst = [f"{input_verb.capitalize()} what?"]
 				break
 ##	print(f"action_lst: {action_lst}")
 	return case, action_lst
@@ -219,29 +236,44 @@ def interpreter(user_input, master_obj_lst):
 		else:
 			option = user_input_lst[1]
 		case, action_lst = syntax(('help',), word1, None, option, None, gs)
+
+
+#	elif len(user_input_lst) == 1 and word1 in full_verbs_lst:
+	elif len(user_input_lst) == 1:
+			if word1 in full_verbs_lst:
+				case, action_lst = syntax(('infer_verb',), word1, None, None, None, gs)
+			else:
+				case = 'error'
+				action_lst = ["What??"]
+#		return case, action_lst
+
+
 	if case is not None:
 		return case, action_lst
 
 
+#	if len(user_input_lst) == 1:
+#		return 'error', ["What??"]
+
 	# for two-word commands where only the verb is given, if the noun is inferable, assign it
-	if len(user_input_lst) == 1 and word1 in ['exit'] and creature.is_contained(gs):
-		case, action_lst = syntax(('input_verb', 'input_do_noun'), word1, creature.get_contained_by(gs).name, None, None, gs)
-		gs.io.buffer(f"(from the {creature.get_contained_by(gs).full_name})")
-		return case, action_lst
-	if len(user_input_lst) == 1 and word1 in ['drop', 'stow', 'eat', 'wear'] and not creature.hand_is_empty():
-		case, action_lst = syntax(('input_verb', 'input_do_noun'), word1, creature.get_hand_item().name, None, None, gs)
-		gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
-		return case, action_lst
+#	if len(user_input_lst) == 1 and word1 in ['exit'] and creature.is_contained(gs):
+#		case, action_lst = syntax(('input_verb', 'input_do_noun'), word1, creature.get_contained_by(gs).name, None, None, gs)
+#		gs.io.buffer(f"(from the {creature.get_contained_by(gs).full_name})")
+#		return case, action_lst
+#	if len(user_input_lst) == 1 and word1 in ['drop', 'stow', 'eat', 'wear'] and not creature.hand_is_empty():
+#		case, action_lst = syntax(('input_verb', 'input_do_noun'), word1, creature.get_hand_item().name, None, None, gs)
+#		gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
+#		return case, action_lst
 	
 
 
 	# exit error case 2: len(user_input_lst) == 1 but word1 is not known or is a known non-one-word verb
-	if len(user_input_lst) == 1:
-		if word1 in full_verbs_lst:
-			error_msg = word1.capitalize() + " what?"
-		else:
-			error_msg = "What??"
-		return 'error', [error_msg]
+#	if len(user_input_lst) == 1:
+#		if word1 in full_verbs_lst:
+#			error_msg = word1.capitalize() + " what?"
+#		else:
+#			error_msg = "What??"
+#		return 'error', [error_msg]
 
 	# *** end of one-word command processing ***
 
