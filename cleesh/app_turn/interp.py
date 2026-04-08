@@ -76,7 +76,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'case' : 'tru_1word',
 			'base_action_lst' : ['verb_str']
 		},
-		('help',) : {
+		('help', 'option') : {
 			'case' : 'help',
 			'base_action_lst' : ['verb_str', 'hero_dir']
 		},
@@ -235,46 +235,16 @@ def interpreter(user_input, master_obj_lst):
 			option = 'menu'
 		else:
 			option = user_input_lst[1]
-		case, action_lst = syntax(('help',), word1, None, option, None, gs)
-
-
-#	elif len(user_input_lst) == 1 and word1 in full_verbs_lst:
+		case, action_lst = syntax(('help', 'option'), word1, None, option, None, gs)
 	elif len(user_input_lst) == 1:
 			if word1 in full_verbs_lst:
 				case, action_lst = syntax(('infer_verb',), word1, None, None, None, gs)
 			else:
 				case = 'error'
 				action_lst = ["What??"]
-#		return case, action_lst
-
 
 	if case is not None:
 		return case, action_lst
-
-
-#	if len(user_input_lst) == 1:
-#		return 'error', ["What??"]
-
-	# for two-word commands where only the verb is given, if the noun is inferable, assign it
-#	if len(user_input_lst) == 1 and word1 in ['exit'] and creature.is_contained(gs):
-#		case, action_lst = syntax(('input_verb', 'input_do_noun'), word1, creature.get_contained_by(gs).name, None, None, gs)
-#		gs.io.buffer(f"(from the {creature.get_contained_by(gs).full_name})")
-#		return case, action_lst
-#	if len(user_input_lst) == 1 and word1 in ['drop', 'stow', 'eat', 'wear'] and not creature.hand_is_empty():
-#		case, action_lst = syntax(('input_verb', 'input_do_noun'), word1, creature.get_hand_item().name, None, None, gs)
-#		gs.io.buffer(f"(the {creature.get_hand_item().full_name})")
-#		return case, action_lst
-	
-
-
-	# exit error case 2: len(user_input_lst) == 1 but word1 is not known or is a known non-one-word verb
-#	if len(user_input_lst) == 1:
-#		if word1 in full_verbs_lst:
-#			error_msg = word1.capitalize() + " what?"
-#		else:
-#			error_msg = "What??"
-#		return 'error', [error_msg]
-
 	# *** end of one-word command processing ***
 
 

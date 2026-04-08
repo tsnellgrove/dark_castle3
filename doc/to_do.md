@@ -389,7 +389,7 @@ To Do List - Dark Castle v3
 					- identify verb, do_noun, id_noun, & preps => syntax
 					- syntax: txt_lst => action_lst (elim too long cases here)
 					- process action_lst => validate / cmd_exe pipeline
-		- INPROC: big picture updates
+		- DONE: big picture updates
 			- DONE: move too-long error to top (exception for help)
 			- DONE: 'tru_1word' + 'help => 'meta_cmds'
 				- DONE: add error for user_input_lst[0] == 'help' and len(user_input_lst) > 2
@@ -404,7 +404,7 @@ To Do List - Dark Castle v3
 				- DONE: syntx [input_dir, verb, do_noun] > [input_verb, do_noun, prep_dir_opt, id_noun]
 				- DONE: clean-up comments
 				- DONE: add 'dir' cmd to 'too long' err ?
-			- INPROC: combine 1-word convert, dir, infer, & 1-word err into 1 syntax call
+			- DONE: combine 1-word convert, dir, infer, & 1-word err into 1 syntax call block
 		- TBD: synergize 'go' and 'climb' commands
 			- IDEA: create unified action_dir syntax call
 			- TBD: 'climb' <dir> => syntax => 'climb' <dir> <rm>
