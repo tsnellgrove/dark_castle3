@@ -405,7 +405,8 @@ To Do List - Dark Castle v3
 				- DONE: clean-up comments
 				- DONE: add 'dir' cmd to 'too long' err ?
 			- DONE: combine 1-word convert, dir, infer, & 1-word err into 1 syntax call block
-		- TBD: synergize 'go' and 'climb' commands
+		- INPROC: synergize 'go' and 'climb' commands
+			- DONE: tighten up initial error cases
 			- IDEA: create unified action_dir syntax call
 			- TBD: 'climb' <dir> => syntax => 'climb' <dir> <rm>
 			- TBD <rm> specific error in climb_err()

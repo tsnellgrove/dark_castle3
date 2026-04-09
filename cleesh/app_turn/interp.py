@@ -250,19 +250,17 @@ def interpreter(user_input, master_obj_lst):
 
 	# *** start of multi-word command processing ***
 
-	# initial error case 1: no verbs or more than one verb
+	# initial multi-word error cases
 	verb_count = 0
-	for word in user_input_lst:
-		if word in full_verbs_lst:
-			verb_count += 1
+	verb_count = sum(1 for word in user_input_lst if word in full_verbs_lst)
 	if verb_count == 0:
 		return 'error', ['I don\'t see a verb in that sentence!']
-	elif (verb_count > 1) and (word1 != 'help'): # e.g. 'help attack' is valid
+	elif (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
 		return 'error', ['I see more than one verb in that sentence!']
-		
-	# initial error case 2: all commands longer than one word should start with a verb
 	if word1 not in full_verbs_lst:
 		return 'error', ["Please start your sentence with a known verb!"]
+
+
 
 	# initial error case 3: action_dir command with no do_noun (e.g. 'climb up' w/ no do_noun)
 	if (
