@@ -260,38 +260,27 @@ def interpreter(user_input, master_obj_lst):
 	if word1 not in full_verbs_lst:
 		return 'error', ["Please start your sentence with a known verb!"]
 
-	# handle go commands
-	if word1 == 'go':
+	# handle go commands - special case beacause no do_noun
+	if word1 in ['go']:
 		case, action_lst = syntax(('go', 'hero_dir'), word1, None, user_input_lst[1], None, gs)
 		return case, action_lst
 
-	# initial error case 3: action_dir command with no do_noun (e.g. 'climb up' w/ no do_noun)
-#	if (
-#			len(user_input_lst) == 2 and 
-#			word1 in ['climb'] and 
-#			user_input_lst[1] in gs.io.get_lst('one_word_travel_lst','eng')
-#			):
-#		return 'error', [f"What do you want to {word1}?"]
-
-	# handle prep_no_do verb commands (special cases first else general case) [SYNTAX]
-	if word1 in gs.io.get_lst('prep_no_do_verb_lst','eng'):
-		if word1 in ['climb']:
-			direction = None
-			if user_input_lst[1] in gs.io.get_lst('one_word_travel_lst','eng'):
-				direction = user_input_lst[1]
-				user_input_lst.remove(direction)
-			if len(user_input_lst) == 1:
-				return 'error', [f"What do you want to {word1}?"] # direction provided but no do_noun given
-			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst)
-			if error_state:
-				return 'error', [error_msg]
-			if direction:
-				case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), word1, do_noun_obj.name, direction, None, gs)
-			else:
-				case, action_lst = syntax((word1, 'input_do_noun'), word1, do_noun_obj.name, None, None, gs)
-			return case, action_lst
-
-
+	# handle climb commands - special case because may include direction
+	if word1 in ['climb']:
+		direction = None
+		if user_input_lst[1] in gs.io.get_lst('one_word_travel_lst','eng'):
+			direction = user_input_lst[1]
+			user_input_lst.remove(direction)
+		if len(user_input_lst) == 1:
+			return 'error', [f"What do you want to {word1}?"] # direction provided but no do_noun given
+		error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst)
+		if error_state:
+			return 'error', [error_msg]
+		if direction:
+			case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), word1, do_noun_obj.name, direction, None, gs)
+		else:
+			case, action_lst = syntax((word1, 'input_do_noun'), word1, do_noun_obj.name, None, None, gs)
+		return case, action_lst
 
 
 
