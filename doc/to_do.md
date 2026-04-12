@@ -405,15 +405,11 @@ To Do List - Dark Castle v3
 				- DONE: clean-up comments
 				- DONE: add 'dir' cmd to 'too long' err ?
 			- DONE: combine 1-word convert, dir, infer, & 1-word err into 1 syntax call block
-		- INPROC: synergize 'go' and 'climb' commands
+		- DONE: synergize 'go' and 'climb' commands
 			- DONE: tighten up initial error cases
 			- DONE: simplify 'climb' syntax call - pt1
-			- IDEA: create unified action_dir syntax call
-			- TBD: 'climb' <dir> => syntax => 'climb' <dir> <rm>
-			- TBD <rm> specific error in climb_err()
-			- IDEA: enables local rm override for Tree
-			- TBD: re-eval 'go' / 'climb' synergy
 		- TBD: fix 'action_dir' case in trig_chk() => [verb, dir, do_noun]
+		- TBD: review 2word_verb case and syntax call
 		- TBD: verb vs. action
 			- TBD: introduce a new non-action verb ("sit")
 			- TBD: create separate full_verb_lst vs. full_action_lst
@@ -474,6 +470,13 @@ To Do List - Dark Castle v3
 	- 4e. identify each non-buzz prep
 	- 4f. if verb is on class_spec_vrb_lst, check if do-noun supports it
 		- 3f1. if yes, proceed; else, std err
+
+	- TBD: post noun-sorted-out verb updates:
+		- TBD: climb & go:
+			- IDEA: create unified action_dir syntax call
+			- TBD: 'climb' <dir> => syntax => 'climb' <dir> <rm>
+			- TBD <rm> specific error in climb_err()
+			- IDEA: enables local rm override for Tree
 
 		- DONE: plan for class-specific verb synonyms 
 			- IDEA: examples:
