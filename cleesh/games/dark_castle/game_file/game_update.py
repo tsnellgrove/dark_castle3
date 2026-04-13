@@ -162,7 +162,8 @@ hedgehog_eats_timer = Timer('hedgehog_eats_timer',
 # *** warnings ***
 entrance_south_warn = Warning('entrance_south_warn', 
 		'pre_act_cmd', 0, 'entrance_temp', True, 
-		[['go', 'southwest']], 0, is_valid_reqd=False)
+#		[['go', 'southwest']], 0, is_valid_reqd=False)
+		[['go', 'southwest', 'entrance']], 0, is_valid_reqd=False)
 
 attack_hedgehog_warning = Warning('attack_hedgehog_warning', 
 		'pre_act_cmd', 0, 'royal_hedgehog_temp', True, 
@@ -321,7 +322,8 @@ hedgehog_distracted_mach = InvisTrigMach('hedgehog_distracted_mach', None,
 goblin_attack_mach = InvisTrigMach('goblin_attack_mach', None, 
 		'pre_act_cmd', 'guard_goblin_temp', True,
 		[['examine', 'iron_portcullis'], ['examine', 'alcove'], ['examine', 'grimy_axe'], 
-   		['take', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north'],
+#   		['take', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north'],
+		['take', 'grimy_axe'], ['open', 'iron_portcullis'], ['go', 'north', 'antechamber'],
 		['unlock', '*', 'iron_portcullis']], 
 		[true_cond], 
 		[goblin_attacks_result],
@@ -330,7 +332,8 @@ goblin_attack_mach = InvisTrigMach('goblin_attack_mach', None,
 
 entrance_moat_mach = InvisTrigMach('entrance_moat_mach', False, 
 		'pre_act_cmd', 'entrance_temp', True,
-		[['go', 'east'], ['go', 'west'], ['jump', 'burt']],
+#		[['go', 'east'], ['go', 'west'], ['jump', 'burt']],
+		[['go', 'east', 'entrance'], ['go', 'west', 'entrance'], ['jump', 'burt']],
 		[no_weap_in_hand_cond, [crown_not_dispensed_cond, sword_in_hand_cond], crown_not_dispensed_cond, crown_dispensed_cond],
 		[die_in_moat_result, moat_get_crown_result2, moat_get_crown_result, moat_croc_scared_result],
 		is_valid_reqd=False

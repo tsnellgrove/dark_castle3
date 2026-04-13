@@ -408,7 +408,7 @@ To Do List - Dark Castle v3
 		- DONE: synergize 'go' and 'climb' commands
 			- DONE: tighten up initial error cases
 			- DONE: simplify 'climb' syntax call - pt1
-		- TBD: fix 'action_dir' case in trig_chk() => [verb, dir, do_noun]
+		- DONE: fix 'action_dir' case in trig_chk() => [verb, dir, do_noun]
 		- TBD: review 2word_verb case and syntax call
 		- TBD: verb vs. action
 			- TBD: introduce a new non-action verb ("sit")
