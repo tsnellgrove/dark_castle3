@@ -60,10 +60,10 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'case' : 'action_dir',
 			'base_action_lst' : ['go', 'hero_dir', 'hero_rm_obj']
 		},
-##		('input_verb', 'input_do_noun') : {
-##			'case' : 'action_2word',
-##			'base_action_lst' : ['verb_str', 'do_noun_str']
-##		},
+		('input_verb', 'input_do_noun') : {
+			'case' : 'action_2word',
+			'base_action_lst' : ['verb_str', 'do_noun_str']
+		},
 		('climb', 'hero_dir', 'input_do_noun') : {
 			'case' : 'action_dir',
 			'base_action_lst' : ['climb', 'hero_dir', 'do_noun_str']
@@ -379,4 +379,6 @@ def interpreter(user_input, master_obj_lst):
 				gs.core.hero.worn_lst_remove(word2_obj)
 				gs.io.buffer(f"(Removing the {word2_obj.full_name} first)")
 				gs.io.buff_s(f"{gs.core.hero.name}_remove_{word2_obj.descript_key}")
-			return '2word', [word2_obj, word1]
+#			return '2word', [word2_obj, word1]
+			case, action_lst = syntax(('input_verb', 'input_do_noun'), word1, word2_obj.name, None, None, gs)
+			return case, action_lst
