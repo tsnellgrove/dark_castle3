@@ -93,12 +93,6 @@ def cmd_execute(gs, case, word_lst):
 			if not gs.end.is_end: # check to avoid double score display on end
 				gs.score.disp_score(action_str, do_noun_obj.name, dir_str, gs)
 			return
-		if case == '2word':
-			word2_obj, word1 = word_lst
-			getattr(word2_obj, word1)(gs)
-			if not gs.end.is_end: # check to avoid double score display on end
-				gs.score.disp_score(word1, word2_obj.name, None, gs)
-			return
 		if case == 'prep':
 			dirobj_obj, word1, noun_obj = word_lst
 			getattr(dirobj_obj, word1)(noun_obj, gs)

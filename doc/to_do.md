@@ -409,10 +409,12 @@ To Do List - Dark Castle v3
 			- DONE: tighten up initial error cases
 			- DONE: simplify 'climb' syntax call - pt1
 		- DONE: fix 'action_dir' case in trig_chk() => [verb, dir, do_noun]
-		- INPROC: review 2word_verb case and syntax call
+		- DONE: review 2word_verb case and syntax call
 			- DONE: convert 2word case to 2word_action
-			- TBD: elim 2word case
-			- TBD: clean up comments in interp() and game_update()
+			- DONE: elim 2word case
+			- DONE: elim '2word' in interp(), validate(), cmd_exe(), & trig_chk()
+			- DONE: test
+			- DONE: clean-up comments
 		- TBD: verb vs. action
 			- TBD: introduce a new non-action verb ("sit")
 			- TBD: create separate full_verb_lst vs. full_action_lst

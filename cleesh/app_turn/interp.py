@@ -379,6 +379,5 @@ def interpreter(user_input, master_obj_lst):
 				gs.core.hero.worn_lst_remove(word2_obj)
 				gs.io.buffer(f"(Removing the {word2_obj.full_name} first)")
 				gs.io.buff_s(f"{gs.core.hero.name}_remove_{word2_obj.descript_key}")
-#			return '2word', [word2_obj, word1]
 			case, action_lst = syntax(('input_verb', 'input_do_noun'), word1, word2_obj.name, None, None, gs)
 			return case, action_lst
