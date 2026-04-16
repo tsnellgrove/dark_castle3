@@ -43,6 +43,8 @@ engine_static_dict = {
 		'unlock', 'wear', 'enter', 'exit', 'stand', 'stow', 'jump', 'climb'
 	],
 
+	'non-action_verb_list' : ['sit'],
+
 	'prep_no_do_verb_lst' : ['climb'],
 
 	'prep_verb_lst' : ['put', 'show', 'give', 'attack', 'lock', 'unlock', 'drink'],

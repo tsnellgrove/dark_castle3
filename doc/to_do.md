@@ -415,8 +415,10 @@ To Do List - Dark Castle v3
 			- DONE: elim '2word' in interp(), validate(), cmd_exe(), & trig_chk()
 			- DONE: test
 			- DONE: clean-up comments
-		- TBD: verb vs. action
-			- TBD: introduce a new non-action verb ("sit")
+		- DONE: verb vs. action
+			- DONE: introduce a new non_action_verb_lst ("sit")
+			- TBD: implement "sit in chair", "sit on chair"
+			- TBD: implement "sit"
 			- TBD: create separate full_verb_lst vs. full_action_lst
 		- TBD: refactor cmd_exe() help & meta
 			- TBD: create help() method where 'help' is verb and 'option' is prep
