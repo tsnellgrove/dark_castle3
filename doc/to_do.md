@@ -417,9 +417,17 @@ To Do List - Dark Castle v3
 			- DONE: clean-up comments
 		- DONE: verb vs. action
 			- DONE: introduce a new non_action_verb_lst ("sit")
-			- TBD: implement "sit in chair", "sit on chair"
+			- DONE: implement "sit in chair", "sit on chair"
+			- TBD: more sit testing
+			- TBD: address "Can't use 'Enter'" error
+			- TBD: think about "Sit what" and "Climb what" err => "Where"
+			- TBD: update existing test scenarios
+			- TBD: create new sit test scenario
+			- TBD: review / refactor noun_handling()
 			- TBD: implement "sit"
-			- TBD: create separate full_verb_lst vs. full_action_lst
+			- TBD: remove test chair
+			- TBD: implememnt "climb tree"
+		- TBD: create separate full_verb_lst vs. full_action_lst
 		- TBD: refactor cmd_exe() help & meta
 			- TBD: create help() method where 'help' is verb and 'option' is prep
 			- TBD: create meta() method where cmd = verb

@@ -83,6 +83,10 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('infer_verb',) : {
 			'case' : 'action_2word',
 			'base_action_lst' : ['infer_do_noun']
+		},
+		('sit', 'in_on', 'input_do_noun') : {
+			'case' : 'action_2word',
+			'base_action_lst' : ['enter', 'do_noun_str']
 		}
 	}
 	base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
@@ -219,7 +223,11 @@ def interpreter(user_input, master_obj_lst):
 	word1 = user_input_lst[0]
 	creature = gs.core.hero
 	meta_cmd_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
-	full_verbs_lst = gs.io.get_lst('known_verb_lst','eng') + gs.io.get_lst('debug_verb_lst','eng')
+	full_verbs_lst = (
+			gs.io.get_lst('known_verb_lst','eng') + 
+			gs.io.get_lst('debug_verb_lst','eng') +
+			gs.io.get_lst('non-action_verb_list','eng')
+			)
 	case = None
 	action_lst = None
 
@@ -282,7 +290,17 @@ def interpreter(user_input, master_obj_lst):
 			case, action_lst = syntax((word1, 'input_do_noun'), word1, do_noun_obj.name, None, None, gs)
 		return case, action_lst
 
-
+	if word1 in ['sit']:
+			if user_input_lst[1] in ['in', 'on'] and len(user_input_lst) > 2:
+				prep = user_input_lst[1]
+				user_input_lst.remove(prep)
+				error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst)
+				if error_state:
+					return 'error', [error_msg]
+				case, action_lst = syntax(('sit', 'in_on', 'input_do_noun'), word1, do_noun_obj.name, prep, None, gs)
+				return case, action_lst
+			else:
+				return 'error', [f"Where or how do you want to {word1}?"]
 
 	# handle prep verb commands (special cases first else general case)
 	# [SYNTAX start here]
