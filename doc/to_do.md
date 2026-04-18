@@ -415,18 +415,19 @@ To Do List - Dark Castle v3
 			- DONE: elim '2word' in interp(), validate(), cmd_exe(), & trig_chk()
 			- DONE: test
 			- DONE: clean-up comments
-		- DONE: verb vs. action
+		- INPROC: verb vs. action
 			- DONE: introduce a new non_action_verb_lst ("sit")
 			- DONE: implement "sit in chair", "sit on chair"
-			- TBD: more sit testing
-			- TBD: address "Can't use 'Enter'" error
-			- TBD: think about "Sit what" and "Climb what" err => "Where"
-			- TBD: update existing test scenarios
-			- TBD: create new sit test scenario
+			- DONE: more sit testing
+			- DONE: address "Can't use 'Enter'" error
+			- DONE: "Sit what" err => "Sit where"
 			- TBD: review / refactor noun_handling()
-			- TBD: implement "sit"
+			- TBD: implement "sit" w/ do_noun infer (and response if > 1 possible seat)
 			- TBD: remove test chair
-			- TBD: implememnt "climb tree"
+			- TBD: update existing test scenarios as needed if no longer pass
+			- TBD: create new sit test scenario for sit in / on
+			- TBD: implememnt "climb up" / "climb down"
+			- TBD: implement "climb" ??
 		- TBD: create separate full_verb_lst vs. full_action_lst
 		- TBD: refactor cmd_exe() help & meta
 			- TBD: create help() method where 'help' is verb and 'option' is prep

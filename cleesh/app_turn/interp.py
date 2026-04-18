@@ -124,6 +124,10 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 				gs.io.buffer(f"(the {gs.core.hero.get_hand_item().full_name})")
 				action_lst = [input_verb, gs.core.hero.get_hand_item()]
 				break
+			elif input_verb in ['sit']:
+				case = 'error'
+				action_lst = [f"{input_verb.capitalize()} where?"]
+				break				
 			else:
 				case = 'error'
 				action_lst = [f"{input_verb.capitalize()} what?"]
