@@ -137,7 +137,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 
 ### root_word_count - determines if user command contains root words
-def root_word_count(gs, word2_txt):
+def root_word_count(gs, word2_txt): # simplify by sending everything after verb to this function and then determining if it's a root word, obj_name, or error
 	scope_lst = gs.map.hero_rm.get_vis_contain_lst(gs)
 	root_count = 0
 	obj_name = ""
@@ -174,16 +174,16 @@ def noun_handling(master_obj_lst, user_input_lst):
 		return error_state, error_msg, word2_obj
 
 	# check to see if word2 is a known obj_name
-	word2_txt_known = False
+	word2_txt_known = False # switch to "try... except"
 	if gs.core.is_key_in_sto_dict(word2_txt):
 		word2_txt_known = True
 		word2_obj = gs.core.get_str_to_obj_dict(word2_txt)
 
 	# check to see if the word2 is a root_name; convert to obj_name if valid
-	if not word2_txt_known:
+	if not word2_txt_known: # simplify
 		root_count, obj_name = root_word_count(gs, word2_txt)
 		if root_count < 1:
-			error_msg = "I don't see a " + word2_txt.capitalize() + " here."
+			error_msg = "I don't see a " + word2_txt.capitalize() + " here." # use f-string and include user_input_lst[1] instead of word2_txt to preserve adjectives in error message (?)
 			error_state = True
 			return error_state, error_msg, word2_obj
 		elif root_count > 1:
