@@ -356,8 +356,8 @@ def interpreter(user_input, master_obj_lst):
 		# [SYNTAX end here]
 		else:
 			in_position = user_input_lst.index(prep)
-			v_n_lst = list(islice(user_input_lst, in_position))
-			p_p_lst = list(islice(user_input_lst, in_position, None))
+			v_n_lst = list(islice(user_input_lst, in_position)) # simplify to slice() ; elim verb
+			p_p_lst = list(islice(user_input_lst, in_position, None)) # simplify to slice() ; elim prep
 			noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst)
 			dir_obj_error_state, dir_obj_error_msg, dirobj_obj = noun_handling(master_obj_lst, p_p_lst)
 			if noun_error_state:

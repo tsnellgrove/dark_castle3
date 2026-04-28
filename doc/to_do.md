@@ -423,7 +423,8 @@ To Do List - Dark Castle v3
 			- DONE: "Sit what" err => "Sit where"
 			- INPROC: review / refactor noun_handling()
 				- DONE: review noun_handling() for 2word case
-				- TBD: review noun_handling() for prep case
+				- DONE: review noun_handling() for prep case
+				- TBD: refactor noun_handling()
 			- TBD: implement "sit" w/ do_noun infer (and response if > 1 possible seat)
 			- TBD: remove test chair
 			- TBD: update existing test scenarios as needed if no longer pass
