@@ -424,7 +424,9 @@ To Do List - Dark Castle v3
 			- INPROC: review / refactor noun_handling()
 				- DONE: review noun_handling() for 2word case
 				- DONE: review noun_handling() for prep case
-				- TBD: refactor noun_handling()
+				- DONE: update existing test scenarios as needed if no longer pass
+				- INPROC: refactor noun_handling()
+				- TBD: clean up comments
 			- TBD: implement "sit" w/ do_noun infer (and response if > 1 possible seat)
 			- TBD: remove test chair
 			- TBD: update existing test scenarios as needed if no longer pass

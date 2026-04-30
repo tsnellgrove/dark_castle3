@@ -448,7 +448,8 @@ tree_hollow_init_desc = InitDesc('tree_hollow_init_desc', tree_hollow, False, 't
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
 		[dark_castle, entrance_moat, entrance_drawbridge, rusty_keyhole, entrance_tree],
-		[burt, postbox, big_rock, test_chair], 
+##		[burt, postbox, big_rock, test_chair], # for testing, fails commit test
+		[burt, postbox, big_rock], # for commit
 		[entrance_moat_mach, entrance_south_warn], 
 		[postbox_init_desc, big_rock_init_desc],
 		True

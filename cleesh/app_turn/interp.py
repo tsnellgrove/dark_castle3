@@ -174,10 +174,15 @@ def noun_handling(master_obj_lst, user_input_lst):
 		return error_state, error_msg, word2_obj
 
 	# check to see if word2 is a known obj_name
-	word2_txt_known = False # switch to "try... except"
-	if gs.core.is_key_in_sto_dict(word2_txt):
-		word2_txt_known = True
+#	word2_txt_known = False # switch to "try... except"
+#	if gs.core.is_key_in_sto_dict(word2_txt):
+#		word2_txt_known = True
+#		word2_obj = gs.core.get_str_to_obj_dict(word2_txt)
+	try:
 		word2_obj = gs.core.get_str_to_obj_dict(word2_txt)
+		word2_txt_known = True
+	except:
+		word2_txt_known = False
 
 	# check to see if the word2 is a root_name; convert to obj_name if valid
 	if not word2_txt_known: # simplify
@@ -285,7 +290,7 @@ def interpreter(user_input, master_obj_lst):
 			user_input_lst.remove(direction)
 		if len(user_input_lst) == 1:
 			return 'error', [f"What do you want to {word1}?"] # direction provided but no do_noun given
-		error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst)
+		error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst) # pass without verb
 		if error_state:
 			return 'error', [error_msg]
 		if direction:
@@ -298,7 +303,7 @@ def interpreter(user_input, master_obj_lst):
 			if user_input_lst[1] in ['in', 'on'] and len(user_input_lst) > 2:
 				prep = user_input_lst[1]
 				user_input_lst.remove(prep)
-				error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst)
+				error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst) # pass without verb and prep
 				if error_state:
 					return 'error', [error_msg]
 				case, action_lst = syntax(('sit', 'in_on', 'input_do_noun'), word1, do_noun_obj.name, prep, None, gs)
@@ -358,8 +363,8 @@ def interpreter(user_input, master_obj_lst):
 			in_position = user_input_lst.index(prep)
 			v_n_lst = list(islice(user_input_lst, in_position)) # simplify to slice() ; elim verb
 			p_p_lst = list(islice(user_input_lst, in_position, None)) # simplify to slice() ; elim prep
-			noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst)
-			dir_obj_error_state, dir_obj_error_msg, dirobj_obj = noun_handling(master_obj_lst, p_p_lst)
+			noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst) # pass without verb
+			dir_obj_error_state, dir_obj_error_msg, dirobj_obj = noun_handling(master_obj_lst, p_p_lst) # pass without prep
 			if noun_error_state:
 				return 'error', [noun_error_msg]
 			elif dir_obj_error_state:
@@ -388,7 +393,7 @@ def interpreter(user_input, master_obj_lst):
 					gs.io.buff_s(f"{gs.core.hero.name}_remove_{noun_obj.descript_key}")
 				return 'prep', [dirobj_obj, word1, noun_obj]
 	else: # '2word' case
-		error_state, error_msg, word2_obj = noun_handling(master_obj_lst, user_input_lst)
+		error_state, error_msg, word2_obj = noun_handling(master_obj_lst, user_input_lst) # pass without verb
 		if error_state:
 			return 'error', [error_msg]
 		else:
