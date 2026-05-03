@@ -168,23 +168,16 @@ def noun_handling(master_obj_lst, user_input_lst):
 	if len(user_input_lst) > 2:
 		return True, f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!", None
 
-	# check to see if word2 is a known obj_name
-	try:
+	try: # check to see if word2 is a known obj_name
 		word2_obj = gs.core.get_str_to_obj_dict(word2_txt)
-		word2_txt_known = True # elim - call root_word_count on except
-	except:
-		word2_txt_known = False # elim - call root_word_count on except
-
-	# check to see if the word2 is a root_name; convert to obj_name if valid
-	if not word2_txt_known: # elim => link directly to except
-		root_count, obj_name = root_word_count(gs, word2_txt) # embed function
+	except: # check to see if the word2 is a root_name; convert to obj_name if valid
+		root_count, obj_name = root_word_count(gs, word2_txt)
 		if root_count < 1:
 			return True, f"I don't see a {word2_txt.capitalize()} here.", None
 		elif root_count > 1:
 			return True, f"I see more than one {word2_txt.capitalize()}. Please use the full name.", None
 		else:
-			if gs.core.is_key_in_sto_dict(obj_name): # elim 
-				word2_obj = gs.core.get_str_to_obj_dict(obj_name)
+			word2_obj = gs.core.get_str_to_obj_dict(obj_name)
 	return False, "", word2_obj
 
 
