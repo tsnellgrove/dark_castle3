@@ -429,7 +429,9 @@ To Do List - Dark Castle v3
 				- DONE: clean up comments
 				- DONE: review cleaned-up noun_handling()
 				- DONE: re-refactor noun_handling()
-				- TBD: embed root_word_count() in noun_handling() [no need for function]
+				- DONE: embed root_word_count() in noun_handling() [no need for function]
+				- DONE: refactor root_word_count section
+				- TBD: clean-up
 				- TBD: in interp() islice => slice
 			- TBD: implement "sit" w/ do_noun infer (and response if > 1 possible seat)
 			- TBD: remove test chair

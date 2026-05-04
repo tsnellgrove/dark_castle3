@@ -137,19 +137,19 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 
 ### root_word_count - determines if user command contains root words
-def root_word_count(gs, word2_txt): # simplify by sending everything after verb to this function and then determining if it's a root word, obj_name, or error
-	scope_lst = gs.map.hero_rm.get_vis_contain_lst(gs)
-	root_count = 0
-	obj_name = ""
-	for obj in scope_lst:
-		if obj.root_name == word2_txt:
-			root_count += 1
-			obj_name = obj.name
-		if obj.has_writing():
-			if obj.writing.root_name == word2_txt:
-				root_count += 1
-				obj_name = obj.writing.name
-	return root_count, obj_name
+# def root_word_count(gs, word2_txt): # simplify by sending everything after verb to this function and then determining if it's a root word, obj_name, or error
+#	scope_lst = gs.map.hero_rm.get_vis_contain_lst(gs)
+#	root_count = 0
+#	obj_name = ""
+#	for obj in scope_lst:
+#		if obj.root_name == word2_txt:
+#			root_count += 1
+#			obj_name = obj.name
+#		if obj.has_writing():
+#			if obj.writing.root_name == word2_txt:
+#				root_count += 1
+#				obj_name = obj.writing.name
+#	return root_count, obj_name
 
 
 ### handle nouns and adjectives
@@ -171,13 +171,26 @@ def noun_handling(master_obj_lst, user_input_lst):
 	try: # check to see if word2 is a known obj_name
 		word2_obj = gs.core.get_str_to_obj_dict(word2_txt)
 	except: # check to see if the word2 is a root_name; convert to obj_name if valid
-		root_count, obj_name = root_word_count(gs, word2_txt)
+#		root_count, obj_name = root_word_count(gs, word2_txt)
+		scope_lst = gs.map.hero_rm.get_vis_contain_lst(gs)
+		root_count = 0
+#		obj_name = ""
+		for obj in scope_lst:
+			if obj.root_name == word2_txt:
+				root_count += 1
+#				obj_name = obj.name
+				word2_obj = obj
+			if obj.has_writing():
+				if obj.writing.root_name == word2_txt:
+					root_count += 1
+#					obj_name = obj.writing.name
+					word2_obj = obj.writing
 		if root_count < 1:
 			return True, f"I don't see a {word2_txt.capitalize()} here.", None
 		elif root_count > 1:
 			return True, f"I see more than one {word2_txt.capitalize()}. Please use the full name.", None
-		else:
-			word2_obj = gs.core.get_str_to_obj_dict(obj_name)
+#		else:
+#			word2_obj = gs.core.get_str_to_obj_dict(obj_name)
 	return False, "", word2_obj
 
 
