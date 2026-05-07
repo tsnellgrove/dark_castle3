@@ -421,7 +421,7 @@ To Do List - Dark Castle v3
 			- DONE: more sit testing
 			- DONE: address "Can't use 'Enter'" error
 			- DONE: "Sit what" err => "Sit where"
-			- INPROC: review / refactor noun_handling()
+			- DONE: review / refactor noun_handling()
 				- DONE: review noun_handling() for 2word case
 				- DONE: review noun_handling() for prep case
 				- DONE: update existing test scenarios as needed if no longer pass
@@ -433,9 +433,9 @@ To Do List - Dark Castle v3
 				- DONE: refactor root_word_count section
 				- DONE: clean-up
 				- DONE: in interp() islice => slice
-				- TBD: clean up comments (including import)
-				- TBD: simplify noun clause sent to noun_handling() ??? => keep for now ?
+				- DONE: clean up comments (including import)
 			- TBD: implement "sit" w/ do_noun infer (and response if > 1 possible seat)
+			- TBD: simplify noun clause sent to noun_handling() ??? => keep for now ?
 			- TBD: remove test chair
 			- TBD: update existing test scenarios as needed if no longer pass
 			- TBD: create new sit test scenario for sit in / on
