@@ -434,7 +434,9 @@ To Do List - Dark Castle v3
 				- DONE: clean-up
 				- DONE: in interp() islice => slice
 				- DONE: clean up comments (including import)
-			- TBD: implement "sit" w/ do_noun infer (and response if > 1 possible seat)
+			- TBD: implement "sit" and "climb" w/ do_noun infer
+				- IDEA: if != 1: "What do you want to sit on / climb?"
+				- IDEA: if 1: "(the <do_noun>)"
 			- TBD: simplify noun clause sent to noun_handling() ??? => keep for now ?
 			- TBD: remove test chair
 			- TBD: update existing test scenarios as needed if no longer pass
