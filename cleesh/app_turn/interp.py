@@ -124,8 +124,14 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 				action_lst = [input_verb, gs.core.hero.get_hand_item()]
 				break
 			elif input_verb in ['sit']:
-				case = 'error'
-				action_lst = [f"{input_verb.capitalize()} where?"]
+				exactly_one_seat, seat_obj = infer_seat(gs)
+				if exactly_one_seat:
+					gs.io.buffer(f"(on the {seat_obj.full_name})")
+					action_lst = ['enter', seat_obj]
+					break
+				else:
+					case = 'error'
+					action_lst = [f"{input_verb.capitalize()} where?"]
 				break				
 			else:
 				case = 'error'
@@ -133,6 +139,18 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 				break
 ##	print(f"action_lst: {action_lst}")
 	return case, action_lst
+
+
+### helper function for sit command - infer that if there is only one seat in the room, that's where the player wants to sit
+def infer_seat(gs):
+	scope_lst = gs.map.hero_rm.get_vis_contain_lst(gs)
+	seat_count = 0
+	seat_obj = None
+	for obj in scope_lst:
+		if obj.is_seat():
+			seat_count += 1
+			seat_obj = obj
+	return seat_count == 1, seat_obj
 
 
 ### handle nouns and adjectives

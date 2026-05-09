@@ -437,12 +437,16 @@ To Do List - Dark Castle v3
 			- TBD: implement "sit" and "climb" w/ do_noun infer
 				- IDEA: if != 1: "What do you want to sit on / climb?"
 				- IDEA: if 1: "(the <do_noun>)"
+				- DONE: infer sit
+				- TBD: infer climb
+				- TBD: implememnt "climb up" / "climb down"
+				- TBD: implement "climb" ??
+			- TBD: generalize 'sit' and 'climb'
 			- TBD: simplify noun clause sent to noun_handling() ??? => keep for now ?
 			- TBD: remove test chair
 			- TBD: update existing test scenarios as needed if no longer pass
-			- TBD: create new sit test scenario for sit in / on
-			- TBD: implememnt "climb up" / "climb down"
-			- TBD: implement "climb" ??
+			- TBD: create new sit & climb test scenarios for sit in / on
+
 		- TBD: create separate full_verb_lst vs. full_action_lst
 		- TBD: refactor cmd_exe() help & meta
 			- TBD: create help() method where 'help' is verb and 'option' is prep
