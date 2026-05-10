@@ -439,8 +439,12 @@ To Do List - Dark Castle v3
 				- IDEA: if 1: "(the <do_noun>)"
 				- DONE: infer sit
 				- TBD: infer climb
-				- TBD: implememnt "climb up" / "climb down"
-				- TBD: implement "climb" ??
+					- IDEA: use similar function to infer_seat() to infer_climable()
+					- IDEA: then within interp, can infer direction
+					- IDEA: from within interp, can also call infer_climbable() for "climb_<dir> case
+					- DONE: write climbable_infer() function
+					- DONE: call climbable_infer() from syntax()
+					- TBD: need to fix error from return without update of user_input_lst; obj => txt
 			- TBD: generalize 'sit' and 'climb'
 			- TBD: simplify noun clause sent to noun_handling() ??? => keep for now ?
 			- TBD: remove test chair
