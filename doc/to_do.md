@@ -444,7 +444,13 @@ To Do List - Dark Castle v3
 					- IDEA: from within interp, can also call infer_climbable() for "climb_<dir> case
 					- DONE: write climbable_infer() function
 					- DONE: call climbable_infer() from syntax()
-					- TBD: need to fix error from return without update of user_input_lst; obj => txt
+					- DONE: need to fix error from return without update of user_input_lst; obj => txt
+					- TBD: create test_stepladder
+					- TBD: add test_stepladder to Entrance and validte "climb" response
+					- TBD: fix scenario failure
+					- TBD: find a more graceful / general way to deal w/ noun infer needing more proc
+					- TBD: call infer_climbable() from interp() to deal w/ "climb up" / "climb down"
+					- TBD: check scenarios
 			- TBD: generalize 'sit' and 'climb'
 			- TBD: simplify noun clause sent to noun_handling() ??? => keep for now ?
 			- TBD: remove test chair

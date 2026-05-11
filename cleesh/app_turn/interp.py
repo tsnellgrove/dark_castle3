@@ -137,7 +137,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 				exactly_one_climbable, climbable_obj = infer_climbable(gs)
 				if exactly_one_climbable:
 					gs.io.buffer(f"(the {climbable_obj.full_name})")
-					action_lst = [input_verb, climbable_obj]
+#					action_lst = [input_verb, climbable_obj]
+					action_lst = [input_verb, climbable_obj.name]
 					case = None
 					break
 				else:
@@ -274,8 +275,8 @@ def interpreter(user_input, master_obj_lst):
 	if case is not None:
 		return case, action_lst
 ## without the code below, user_input_lst is not updated with the infer noun from climb
-##	elif case is None and action_lst is not None:
-##		user_input_lst = action_lst
+	elif case is None and action_lst is not None:
+		user_input_lst = action_lst
 	# *** end of one-word command processing ***
 
 
