@@ -149,6 +149,7 @@ test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 9
 trademark = Writing('trademark', 'Trademark', 'trademark', 'trademark')
 stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 3)
 random_mcguffin_init_desc = InitDesc('random_mcguffin_init_desc', random_mcguffin, False, 'random_mcguffin_init_desc')
+test_ladder = ClimbableViewOnly('test_ladder', 'Test Ladder', 'ladder', 'test_ladder', None, None, None)
 
 
 # test obj - currently in use
@@ -448,7 +449,7 @@ tree_hollow_init_desc = InitDesc('tree_hollow_init_desc', tree_hollow, False, 't
 # *** Rooms ***
 entrance = Room('entrance', 'Entrance', "entrance", 'entrance', None, 
 		[dark_castle, entrance_moat, entrance_drawbridge, rusty_keyhole, entrance_tree],
-##		[burt, postbox, big_rock, test_chair], # for testing, fails commit test
+##		[burt, postbox, big_rock, test_chair, test_ladder], # for testing, fails commit test
 		[burt, postbox, big_rock], # for commit
 		[entrance_moat_mach, entrance_south_warn], 
 		[postbox_init_desc, big_rock_init_desc],
@@ -692,7 +693,7 @@ master_obj_lst = [
 
 		# test objects
 		dwarven_runes, trademark, brass_key, bubbly_potion, random_mcguffin, stale_biscuits, baseball_cap, 
-		test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, 
+		test_chair, screen_door, cardboard_box, small_barrel, red_shoebox, black_suitcase, test_ladder,
 		
 		# future objects
 		faded_tapestries, # main_hall, 
