@@ -169,22 +169,24 @@ def run_all_tests(selected_game=None):
     if result.failures:
         print("\n❌ FAILURES:")
         for test, traceback in result.failures:
-            # Extract scenario name if it's a scenario test
             if 'scenario=' in str(test):
                 scenario_match = str(test).split('scenario=')[1].split(')')[0].strip("'\"")
-                print(f"- Scenario '{scenario_match}': {traceback.split('AssertionError:')[-1].strip()}")
+                print(f"- Scenario '{scenario_match}':")
+                print(traceback)
             else:
-                print(f"- {test}: {traceback.split('AssertionError:')[-1].strip()}")
+                print(f"- {test}:")
+                print(traceback)
     
     if result.errors:
         print("\n⚠️ ERRORS:")
         for test, traceback in result.errors:
             if 'scenario=' in str(test):
                 scenario_match = str(test).split('scenario=')[1].split(')')[0].strip("'\"")
-                print(f"- Scenario '{scenario_match}': {traceback.split('Exception:')[-1].strip()}")
+                print(f"- Scenario '{scenario_match}':")
+                print(traceback)
             else:
-                print(f"- {test}: {traceback.split('Exception:')[-1].strip()}")
-    
+                print(f"- {test}:")
+                print(traceback)
     success = len(result.failures) == 0 and len(result.errors) == 0
     
     # Count scenario tests

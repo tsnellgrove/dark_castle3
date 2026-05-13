@@ -447,10 +447,11 @@ To Do List - Dark Castle v3
 					- DONE: need to fix error from return without update of user_input_lst; obj => txt
 					- DONE: create test_stepladder
 					- DONE: add test_stepladder to Entrance and validte "climb" response
-					- TBD: fix scenario failure
+					- DONE: fix scenario failure
 					- TBD: find a more graceful / general way to deal w/ noun infer needing more proc
 					- TBD: call infer_climbable() from interp() to deal w/ "climb up" / "climb down"
 					- TBD: check scenarios
+					- TBD: review interp() and elim comments
 			- TBD: generalize 'sit' and 'climb'
 			- TBD: simplify noun clause sent to noun_handling() ??? => keep for now ?
 			- TBD: remove test chair
