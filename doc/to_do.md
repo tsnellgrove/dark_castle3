@@ -448,11 +448,11 @@ To Do List - Dark Castle v3
 					- DONE: create test_stepladder
 					- DONE: add test_stepladder to Entrance and validte "climb" response
 					- DONE: fix scenario failure
-					- TBD: find a more graceful / general way to deal w/ noun infer needing more proc
+					- DONE: review interp() and elim comments
+					- DONE: investigate better way to deal w/ noun infer of non-2word
 					- TBD: call infer_climbable() from interp() to deal w/ "climb up" / "climb down"
 					- TBD: check scenarios
-					- TBD: review interp() and elim comments
-			- TBD: generalize 'sit' and 'climb'
+					- TBD: generalize 'sit' and 'climb'
 			- TBD: simplify noun clause sent to noun_handling() ??? => keep for now ?
 			- TBD: remove test chair
 			- TBD: update existing test scenarios as needed if no longer pass
