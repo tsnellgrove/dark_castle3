@@ -302,7 +302,13 @@ def interpreter(user_input, master_obj_lst):
 			direction = user_input_lst[1]
 			user_input_lst.remove(direction)
 		if len(user_input_lst) == 1:
-			return 'error', [f"What do you want to {word1}?"] # direction provided but no do_noun given
+			exactly_one_climbable, climbable_obj = infer_climbable(gs)
+			if exactly_one_climbable:
+				gs.io.buffer(f"(the {climbable_obj.full_name})")
+				case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), word1, climbable_obj.name, direction, None, gs)
+				return case, action_lst
+			else:
+				return 'error', [f"What do you want to {word1}?"] # direction provided but no do_noun given
 		error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst) # pass without verb
 		if error_state:
 			return 'error', [error_msg]
