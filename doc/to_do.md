@@ -451,7 +451,7 @@ To Do List - Dark Castle v3
 					- DONE: review interp() and elim comments
 					- DONE: investigate better way to deal w/ noun infer of non-2word
 					- DONE: call infer_climbable() from interp() to deal w/ "climb up" / "climb down"
-					- TBD: check scenarios
+					- DONE: check scenarios
 					- TBD: generalize 'sit' and 'climb'
 			- TBD: simplify noun clause sent to noun_handling() ??? => keep for now ?
 			- TBD: remove test chair
