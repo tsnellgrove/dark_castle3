@@ -302,8 +302,10 @@ def interpreter(user_input, master_obj_lst):
 			direction = user_input_lst[1]
 			user_input_lst.remove(direction)
 		if len(user_input_lst) == 1:
-			exactly_one_climbable, climbable_obj = infer_climbable(gs)
-			if exactly_one_climbable:
+#			exactly_one_climbable, climbable_obj = infer_climbable(gs)
+#			if exactly_one_climbable:
+			climbable_count, climbable_obj = infer_climbable(gs)
+			if climbable_count == 1:
 				gs.io.buffer(f"(the {climbable_obj.full_name})")
 				case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), word1, climbable_obj.name, direction, None, gs)
 				return case, action_lst
@@ -318,17 +320,33 @@ def interpreter(user_input, master_obj_lst):
 			case, action_lst = syntax((word1, 'input_do_noun'), word1, do_noun_obj.name, None, None, gs)
 		return case, action_lst
 
+	# handle sit commands - special case because includes prep
 	if word1 in ['sit']:
-			if user_input_lst[1] in ['in', 'on'] and len(user_input_lst) > 2:
-				prep = user_input_lst[1]
-				user_input_lst.remove(prep)
-				error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst) # pass without verb and prep
-				if error_state:
-					return 'error', [error_msg]
-				case, action_lst = syntax(('sit', 'in_on', 'input_do_noun'), word1, do_noun_obj.name, prep, None, gs)
+		prep = None
+		if user_input_lst[1] in ['in', 'on', 'down']:
+			prep = user_input_lst[1]
+			user_input_lst.remove(prep)
+		if len(user_input_lst) == 1:
+			seat_count, seat_obj = infer_seat(gs)
+			if seat_count == 1:
+				gs.io.buffer(f"(the {seat_obj.full_name})")
+				case, action_lst = syntax(('sit', 'in_on', 'input_do_noun'), word1, seat_obj.name, 'on', None, gs)
 				return case, action_lst
 			else:
-				return 'error', [f"Where or how do you want to {word1}?"]
+				return 'error', [f"Where do you want to {word1}?"]
+#		if user_input_lst[1] in ['in', 'on'] and len(user_input_lst) > 2:
+#			prep = user_input_lst[1]
+#			user_input_lst.remove(prep)
+		error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst) # pass without verb and prep
+		if error_state:
+			return 'error', [error_msg]
+		if prep:
+			case, action_lst = syntax(('sit', 'in_on', 'input_do_noun'), word1, do_noun_obj.name, prep, None, gs)
+		else:
+			case, action_lst = syntax(('sit', 'in_on', 'input_do_noun'), word1, do_noun_obj.name, 'in', None, gs)
+		return case, action_lst
+#		else:
+#			return 'error', [f"Where or how do you want to {word1}?"]
 
 	# handle prep verb commands (special cases first else general case)
 	# [SYNTAX start here]

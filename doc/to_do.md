@@ -452,7 +452,14 @@ To Do List - Dark Castle v3
 					- DONE: investigate better way to deal w/ noun infer of non-2word
 					- DONE: call infer_climbable() from interp() to deal w/ "climb up" / "climb down"
 					- DONE: check scenarios
-					- TBD: generalize 'sit' and 'climb'
+					- INPROC: generalize 'sit' and 'climb'
+						- DONE: refactor sit() to match climb()
+						- TBD: solve 'sit down in/on chair' => syntax
+						- TBD: run scenario test
+						- TBD: develop rigorous test
+						- TBD: run rigorous test for all cases
+						- TBD: clean up comments
+						- TBD: conosolidate sit() and climb()
 			- TBD: simplify noun clause sent to noun_handling() ??? => keep for now ?
 			- TBD: remove test chair
 			- TBD: update existing test scenarios as needed if no longer pass
