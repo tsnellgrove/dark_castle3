@@ -454,7 +454,7 @@ To Do List - Dark Castle v3
 					- DONE: check scenarios
 					- INPROC: generalize 'sit' and 'climb'
 						- DONE: refactor sit() to match climb()
-						- TBD: solve 'sit down in/on chair' => syntax
+						- INPROC: solve 'sit down in/on chair' => syntax
 						- TBD: run scenario test
 						- TBD: develop rigorous test
 						- TBD: run rigorous test for all cases

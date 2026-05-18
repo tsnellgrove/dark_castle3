@@ -83,12 +83,31 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'case' : 'action_2word',
 			'base_action_lst' : ['infer_do_noun']
 		},
-		('sit', 'in_on', 'input_do_noun') : {
+		('sit', 'in', 'input_do_noun') : {
 			'case' : 'action_2word',
 			'base_action_lst' : ['enter', 'do_noun_str']
+		},
+		('sit', 'on', 'input_do_noun') : {
+			'case' : 'action_2word',
+			'base_action_lst' : ['enter', 'do_noun_str']
+		},
+		('sit', 'down', 'in', 'input_do_noun') : {
+			'case' : 'action_2word',
+			'base_action_lst' : ['enter', 'do_noun_str']
+		},
+		('sit', 'down', 'on', 'input_do_noun') : {
+			'case' : 'action_2word',
+			'base_action_lst' : ['enter', 'do_noun_str']
+		},
+		('sit', 'down') : {
+			'case' : 'action_2word',
+			'base_action_lst' : ['infer_do_noun']
 		}
 	}
-	base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
+	try:
+		base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
+	except:
+		return 'error', ["What??"]
 	action_lst = base_action_lst.copy()
 ##	print(f"base_action_lst: {base_action_lst}")
 	case = syntax_dict[user_input_tpl]['case']
@@ -327,8 +346,10 @@ def interpreter(user_input, master_obj_lst):
 			prep = user_input_lst[1]
 			user_input_lst.remove(prep)
 		if len(user_input_lst) == 1:
-			seat_count, seat_obj = infer_seat(gs)
-			if seat_count == 1:
+#			seat_count, seat_obj = infer_seat(gs)
+			exactly_one, seat_obj = infer_seat(gs)
+#			if seat_count == 1:
+			if exactly_one:
 				gs.io.buffer(f"(the {seat_obj.full_name})")
 				case, action_lst = syntax(('sit', 'in_on', 'input_do_noun'), word1, seat_obj.name, 'on', None, gs)
 				return case, action_lst
