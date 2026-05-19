@@ -455,7 +455,12 @@ To Do List - Dark Castle v3
 					- INPROC: generalize 'sit' and 'climb'
 						- DONE: refactor sit() to match climb()
 						- INPROC: solve 'sit down in/on chair' => syntax
-						- TBD: run scenario test
+							- DONE: create specific 'sit' entries for syntax()
+							- TBD: create prep list
+							- TBD: create noun_clause w/ no preps and send to noun_handling
+							- TBD: call syntax with resulting user_input => verb - preps - noun
+							- TBD: manual test
+							- TBD: scenario test
 						- TBD: develop rigorous test
 						- TBD: run rigorous test for all cases
 						- TBD: clean up comments
