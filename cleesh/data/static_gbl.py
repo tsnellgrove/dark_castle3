@@ -24,6 +24,8 @@ engine_static_dict = {
 
 	'articles_lst' : ['a', 'an', 'the'],
 
+	'prep_lst' : ['at','in','on','to','from','with','by','for','of','about','under','over','between','behind','before','after','through','around','into', 'down'],
+
 	'pre_interp_word_lst' : ['quit', 'wait', 'again', 'restart', 'save', 'restore'],
     
 	'one_word_secret_lst' : ['debug_xyzzy', 'rand_mode'], # was 'debug_poke53281,0' before the cmd queue was implemented

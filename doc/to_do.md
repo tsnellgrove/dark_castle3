@@ -453,16 +453,34 @@ To Do List - Dark Castle v3
 					- DONE: call infer_climbable() from interp() to deal w/ "climb up" / "climb down"
 					- DONE: check scenarios
 					- INPROC: generalize 'sit' and 'climb'
-						- DONE: refactor sit() to match climb()
+						- INPROC: refactor sit() 
+							- DONE: update to match climb()
+							- DONE: elim ladder and test_chair; run scenario test
+							- DONE: return to test state
+							- DONE: develop rigorous 'sit' test:
+								'sit' => infer_seat()
+								'sit in' => infer_seat()
+								'sit on' => infer_seat()
+								'sit into' => infer_seat()
+								'sit down' => infer_seat()
+								'sit <x>'
+								'sit in <x>'
+								'sit on <x>'
+								'sit into <x>'
+								'sit down <x>'
+								'sit down in <x>'
+								'sit down on <x>'
+								'sit down into <x>'
+							- TBD: run rigorous test for all cases
+							- TBD: clean up comments
+							- TBD: update to pass scenario test
 						- INPROC: solve 'sit down in/on chair' => syntax
 							- DONE: create specific 'sit' entries for syntax()
-							- TBD: create prep list
+							- DONE: create prep list
 							- TBD: create noun_clause w/ no preps and send to noun_handling
 							- TBD: call syntax with resulting user_input => verb - preps - noun
 							- TBD: manual test
 							- TBD: scenario test
-						- TBD: develop rigorous test
-						- TBD: run rigorous test for all cases
 						- TBD: clean up comments
 						- TBD: conosolidate sit() and climb()
 			- TBD: simplify noun clause sent to noun_handling() ??? => keep for now ?
