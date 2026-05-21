@@ -475,7 +475,7 @@ To Do List - Dark Castle v3
 								'sit' with 1 chairs: WORKS!!!
 								'sit' with 2 chairs: TBD
 							- DONE: run rigorous test for all cases
-							- TBD: clean up comments
+							- DONE: clean up comments
 							- TBD: update infer_seat() and call to handle count = 0 diff from = 2 ??
 							- TBD: update to pass scenario test
 						- INPROC: solve 'sit down in/on chair' => syntax
