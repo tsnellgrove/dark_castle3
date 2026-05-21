@@ -458,25 +458,30 @@ To Do List - Dark Castle v3
 							- DONE: elim ladder and test_chair; run scenario test
 							- DONE: return to test state
 							- DONE: develop rigorous 'sit' test:
-								'sit' => infer_seat()
-								'sit in' => infer_seat()
-								'sit on' => infer_seat()
-								'sit into' => infer_seat()
-								'sit down' => infer_seat()
-								'sit <x>'
-								'sit in <x>'
-								'sit on <x>'
-								'sit into <x>'
-								'sit down <x>'
-								'sit down in <x>'
-								'sit down on <x>'
-								'sit down into <x>'
-							- TBD: run rigorous test for all cases
+								'sit' => infer_seat() | now: {WORKS!!!}
+								'sit in' => infer_seat() | now: {"What?"}
+								'sit on' => infer_seat() | now: {"What?"}
+								'sit into' => infer_seat() | now: {I don't see a Into here."}
+								'sit down' => infer_seat() | now: {"What?"}
+								'sit <x>' | now: {WORKS!!!}
+								'sit in <x>' | now: {WORKS!!!}
+								'sit on <x>' | now: {WORKS!!!}
+								'sit into <x>' | now: {I don't see a Into here."}
+								'sit down <x>' {"What?"}
+								'sit down in <x>' | now: {I don't see a In_chair here."}
+								'sit down on <x>' | now: {I don't see a On_chair here."}
+								'sit down into <x>' | now: {I don't see a Into_chair here."}
+								'sit' with 0 chairs: TBD
+								'sit' with 1 chairs: WORKS!!!
+								'sit' with 2 chairs: TBD
+							- DONE: run rigorous test for all cases
 							- TBD: clean up comments
+							- TBD: update infer_seat() and call to handle count = 0 diff from = 2 ??
 							- TBD: update to pass scenario test
 						- INPROC: solve 'sit down in/on chair' => syntax
 							- DONE: create specific 'sit' entries for syntax()
 							- DONE: create prep list
+							- TBD: call new prep_lst from multi-word 'sit' case in interp()
 							- TBD: create noun_clause w/ no preps and send to noun_handling
 							- TBD: call syntax with resulting user_input => verb - preps - noun
 							- TBD: manual test
