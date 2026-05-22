@@ -339,6 +339,7 @@ def interpreter(user_input, master_obj_lst):
 
 	# handle sit commands - special case because includes prep
 	if word1 in ['sit']:
+		verb = word1 # new
 		prep = None
 		if user_input_lst[1] in ['in', 'on', 'down']:
 			prep = user_input_lst[1]

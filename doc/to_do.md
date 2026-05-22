@@ -471,13 +471,13 @@ To Do List - Dark Castle v3
 								'sit down in <x>' | now: {I don't see a In_chair here."}
 								'sit down on <x>' | now: {I don't see a On_chair here."}
 								'sit down into <x>' | now: {I don't see a Into_chair here."}
-								'sit' with 0 chairs: TBD
-								'sit' with 1 chairs: WORKS!!!
-								'sit' with 2 chairs: TBD
+								'sit' with 0 chairs | now: "Sit where?"
+								'sit' with 1 chairs | now: WORKS!!!
+								'sit' with 2 chairs | now: "Sit where?"
 							- DONE: run rigorous test for all cases
 							- DONE: clean up comments
-							- TBD: update infer_seat() and call to handle count = 0 diff from = 2 ??
-							- TBD: update to pass scenario test
+							- CANCEL: update infer_seat() and call to handle count = 0 diff from = 2 ??
+							- DONE: update to pass scenario test
 						- INPROC: solve 'sit down in/on chair' => syntax
 							- DONE: create specific 'sit' entries for syntax()
 							- DONE: create prep list
