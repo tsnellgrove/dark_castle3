@@ -481,9 +481,12 @@ To Do List - Dark Castle v3
 						- INPROC: solve 'sit down in/on chair' => syntax
 							- DONE: create specific 'sit' entries for syntax()
 							- DONE: create prep list
-							- TBD: call new prep_lst from multi-word 'sit' case in interp()
+							- DONE: call new prep_lst from multi-word 'sit' case in interp()
+							- TBD: add dir_cmd_lst ???
+							- TBD: handle verb cases
 							- TBD: create noun_clause w/ no preps and send to noun_handling
-							- TBD: call syntax with resulting user_input => verb - preps - noun
+							- TBD: create user_cmd_lst_fini
+							- TBD: call syntax with user_cmd_lst_fini
 							- TBD: manual test
 							- TBD: scenario test
 						- TBD: clean up comments

@@ -339,9 +339,34 @@ def interpreter(user_input, master_obj_lst):
 
 	# handle sit commands - special case because includes prep
 	if word1 in ['sit']:
-		verb = word1 # new
 		prep = None
-		if user_input_lst[1] in ['in', 'on', 'down']:
+		verb_cmd_lst = [] # new
+		prep_cmd_lst = [] # new
+		do_noun_cmd_lst = [] # new
+		verb_index = None # new
+		do_prep_index = None # new
+		do_noun_index = None # new
+		verb_count = 0 # new
+		do_prep_count = 0 # new
+		do_noun_count = 0 # new
+#		if user_input_lst[1] in ['in', 'on', 'down']:
+		for index, word in enumerate(user_input_lst): # new
+			if word in gs.io.get_lst('known_verb_lst','eng'):
+				verb_cmd_lst.append(word)
+				verb_index = index
+				verb_count += 1
+			elif word in gs.io.get_lst('prep_lst','eng'):
+				prep_cmd_lst.append(word)
+				do_prep_index = index
+				do_prep_count += 1
+			else:
+				do_noun_cmd_lst.append(word)
+				do_noun_index = index
+				do_noun_count += 1
+			user_cmd_lst_raw = verb_cmd_lst + prep_cmd_lst + do_noun_cmd_lst
+
+
+
 			prep = user_input_lst[1]
 			user_input_lst.remove(prep)
 		if len(user_input_lst) == 1:
