@@ -339,31 +339,56 @@ def interpreter(user_input, master_obj_lst):
 
 	# handle sit commands - special case because includes prep
 	if word1 in ['sit']:
-		prep = None
+		prep = None # LEGACY
 		verb_cmd_lst = [] # new
-		prep_cmd_lst = [] # new
+		dir_cmd_lst = [] # new
+		do_prep_cmd_lst = [] # new
 		do_noun_cmd_lst = [] # new
+		id_prep_cmd_lst = [] # new
+		id_noun_cmd_lst = [] # new
 		verb_index = None # new
+		dir_index = None # new
 		do_prep_index = None # new
 		do_noun_index = None # new
+		id_prep_index = None # new
+		id_noun_index = None # new
 		verb_count = 0 # new
+		dir_count = 0 # new
 		do_prep_count = 0 # new
 		do_noun_count = 0 # new
+		id_prep_count = 0 # new
+		id_noun_count = 0 # new
 #		if user_input_lst[1] in ['in', 'on', 'down']:
 		for index, word in enumerate(user_input_lst): # new
 			if word in gs.io.get_lst('known_verb_lst','eng'):
 				verb_cmd_lst.append(word)
 				verb_index = index
 				verb_count += 1
-			elif word in gs.io.get_lst('prep_lst','eng'):
-				prep_cmd_lst.append(word)
+			elif word in gs.io.get_lst('one_word_travel_lst','eng') and do_prep_count == 0: # only count as direction if no prep has been identified yet
+				dir_cmd_lst.append(word)
+				dir_index = index
+				dir_count += 1
+			elif word in gs.io.get_lst('prep_lst','eng') and do_noun_count == 0: # only count as do_prep if no do_noun has been identified yet
+				do_prep_cmd_lst.append(word)
 				do_prep_index = index
 				do_prep_count += 1
-			else:
+			elif id_prep_count == 0: # only count as do_noun if no id_prep has been identified yet
 				do_noun_cmd_lst.append(word)
 				do_noun_index = index
 				do_noun_count += 1
-			user_cmd_lst_raw = verb_cmd_lst + prep_cmd_lst + do_noun_cmd_lst
+			elif word in gs.io.get_lst('prep_lst','eng') and do_noun_count > 0: # only count as id_prep if do_noun has already been identified
+				id_prep_cmd_lst.append(word)
+				id_prep_index = index
+				id_prep_count += 1
+			elif id_prep_count > 0: # only count as id_noun if id_prep has already been identified
+				id_noun_cmd_lst.append(word)
+				id_noun_index = index
+				id_noun_count += 1
+			# verb error cases
+			# if do_noun_count > 0, call noun_handling for do_noun
+			# if do_noun_cont == 0, infer
+			# call syntax w/ tuple
+			user_cmd_lst_raw = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst # new
 
 
 

@@ -482,15 +482,20 @@ To Do List - Dark Castle v3
 							- DONE: create specific 'sit' entries for syntax()
 							- DONE: create prep list
 							- DONE: call new prep_lst from multi-word 'sit' case in interp()
-							- TBD: add dir_cmd_lst ???
+							- DONE: add dir_cmd_lst
 							- TBD: handle verb cases
-							- TBD: create noun_clause w/ no preps and send to noun_handling
+							- TBD: create do_noun_clause w/ no preps and send to noun_handling
+							- TBD: create id_noun_clause w/ no preps and send to noun_handling
+							- TBD: create infer call for no do_noun
+							- TBD: standardize 1-word case of 'sit'
 							- TBD: create user_cmd_lst_fini
 							- TBD: call syntax with user_cmd_lst_fini
 							- TBD: manual test
 							- TBD: scenario test
+						- TBD: generalize 'sit' and 'climb' cases
+						- TBD: generalize 2word cases (attempt to elim case var itself)
+						- TBD: generalize id_noun cases
 						- TBD: clean up comments
-						- TBD: conosolidate sit() and climb()
 			- TBD: simplify noun clause sent to noun_handling() ??? => keep for now ?
 			- TBD: remove test chair
 			- TBD: update existing test scenarios as needed if no longer pass
