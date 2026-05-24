@@ -339,6 +339,8 @@ def interpreter(user_input, master_obj_lst):
 
 	# handle sit commands - special case because includes prep
 	if word1 in ['sit']:
+		if word1 not in full_verbs_lst:
+			return 'error', ["Please start your sentence with a known verb!"]
 		prep = None # LEGACY
 		verb_cmd_lst = [] # new
 		dir_cmd_lst = [] # new
@@ -358,9 +360,9 @@ def interpreter(user_input, master_obj_lst):
 		do_noun_count = 0 # new
 		id_prep_count = 0 # new
 		id_noun_count = 0 # new
-#		if user_input_lst[1] in ['in', 'on', 'down']:
 		for index, word in enumerate(user_input_lst): # new
-			if word in gs.io.get_lst('known_verb_lst','eng'):
+#			if word in gs.io.get_lst('known_verb_lst','eng'):
+			if word in full_verbs_lst:
 				verb_cmd_lst.append(word)
 				verb_index = index
 				verb_count += 1
@@ -384,14 +386,17 @@ def interpreter(user_input, master_obj_lst):
 				id_noun_cmd_lst.append(word)
 				id_noun_index = index
 				id_noun_count += 1
-			# verb error cases
-			# if do_noun_count > 0, call noun_handling for do_noun
-			# if do_noun_cont == 0, infer
-			# call syntax w/ tuple
-			user_cmd_lst_raw = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst # new
+		if verb_count == 0:
+			return 'error', ['I don\'t see a verb in that sentence!']
+		elif (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
+			return 'error', ['I see more than one verb in that sentence!']
+		# if do_noun_count > 0, call noun_handling for do_noun
+		# if do_noun_cont == 0, infer
+		# call syntax w/ tuple
+		user_cmd_lst_raw = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst # new
 
 
-
+		if user_input_lst[1] in ['in', 'on', 'down']:
 			prep = user_input_lst[1]
 			user_input_lst.remove(prep)
 		if len(user_input_lst) == 1:

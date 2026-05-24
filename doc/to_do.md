@@ -483,7 +483,7 @@ To Do List - Dark Castle v3
 							- DONE: create prep list
 							- DONE: call new prep_lst from multi-word 'sit' case in interp()
 							- DONE: add dir_cmd_lst
-							- TBD: handle verb cases
+							- DONE: handle verb cases
 							- TBD: create do_noun_clause w/ no preps and send to noun_handling
 							- TBD: create id_noun_clause w/ no preps and send to noun_handling
 							- TBD: create infer call for no do_noun
