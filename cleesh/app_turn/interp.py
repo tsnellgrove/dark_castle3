@@ -390,10 +390,37 @@ def interpreter(user_input, master_obj_lst):
 			return 'error', ['I don\'t see a verb in that sentence!']
 		elif (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
 			return 'error', ['I see more than one verb in that sentence!']
-		# if do_noun_count > 0, call noun_handling for do_noun
-		# if do_noun_cont == 0, infer
-		# call syntax w/ tuple
+		if do_noun_count > 0:
+			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
+			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
+			if error_state:
+				return 'error', [error_msg]
+			else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
+				do_noun_cmd_lst = [do_noun_obj.name]
+		else:
+			exactly_one, seat_obj = infer_seat(gs)
+			if exactly_one:
+				gs.io.buffer(f"(the {seat_obj.full_name})")
+				do_noun_cmd_lst = [seat_obj.name]
+			else:
+				return 'error', [f"Where do you want to {word1}?"]
+		if id_noun_count > 0:
+			id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
+			error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
+			if error_state:
+				return 'error', [error_msg]
+			else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
+				id_noun_cmd_lst = [id_noun_obj.name]
+				id_noun_syn_lst = ['input_id_noun']
+		else:
+			id_noun_obj = None
+			id_noun_syn_lst = []
 		user_cmd_lst_raw = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst # new
+		print(f"user_cmd_lst_raw: {user_cmd_lst_raw}")
+		user_syn_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + ['input_do_noun'] + id_prep_cmd_lst + id_noun_syn_lst # new
+		print(f"user_syn_lst: {user_syn_lst}")
+		case, action_lst = syntax(tuple(user_syn_lst), word1, do_noun_obj.name, prep, None, gs)
+		return case, action_lst
 
 
 		if user_input_lst[1] in ['in', 'on', 'down']:
