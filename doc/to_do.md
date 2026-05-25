@@ -452,53 +452,74 @@ To Do List - Dark Castle v3
 					- DONE: investigate better way to deal w/ noun infer of non-2word
 					- DONE: call infer_climbable() from interp() to deal w/ "climb up" / "climb down"
 					- DONE: check scenarios
-					- INPROC: generalize 'sit' and 'climb'
-						- INPROC: refactor sit() 
-							- DONE: update to match climb()
-							- DONE: elim ladder and test_chair; run scenario test
-							- DONE: return to test state
-							- DONE: develop rigorous 'sit' test:
-								'sit' => infer_seat() | now: {WORKS!!!}
-								'sit in' => infer_seat() | now: {"What?"}
-								'sit on' => infer_seat() | now: {"What?"}
-								'sit into' => infer_seat() | now: {I don't see a Into here."}
-								'sit down' => infer_seat() | now: {"What?"}
-								'sit <x>' | now: {WORKS!!!}
-								'sit in <x>' | now: {WORKS!!!}
-								'sit on <x>' | now: {WORKS!!!}
-								'sit into <x>' | now: {I don't see a Into here."}
-								'sit down <x>' {"What?"}
-								'sit down in <x>' | now: {I don't see a In_chair here."}
-								'sit down on <x>' | now: {I don't see a On_chair here."}
-								'sit down into <x>' | now: {I don't see a Into_chair here."}
-								'sit' with 0 chairs | now: "Sit where?"
-								'sit' with 1 chairs | now: WORKS!!!
-								'sit' with 2 chairs | now: "Sit where?"
-							- DONE: run rigorous test for all cases
-							- DONE: clean up comments
-							- CANCEL: update infer_seat() and call to handle count = 0 diff from = 2 ??
-							- DONE: update to pass scenario test
-						- INPROC: solve 'sit down in/on chair' => syntax
-							- DONE: create specific 'sit' entries for syntax()
-							- DONE: create prep list
-							- DONE: call new prep_lst from multi-word 'sit' case in interp()
-							- DONE: add dir_cmd_lst
-							- DONE: handle verb cases
-							- DONE: create do_noun_clause w/ no preps and send to noun_handling
-							- DONE: create id_noun_clause w/ no preps and send to noun_handling
-							- DONE: create infer call for no do_noun
-							- DONE: standardize 1-word case of 'sit'
-							- DONE: call syntax
-							- TBD: update syntax map to address all test cases
-							- TBD: test
-							- TBD: update syntax case to new 'universal' format 
-							- TBD: manual test
-							- TBD: scenario test
-							- TBD: elim 'sit' fix from 1-word
-						- TBD: generalize 'sit' and 'climb' cases
-						- TBD: generalize 2word cases (attempt to elim case var itself)
-						- TBD: generalize id_noun cases
-						- TBD: clean up comments
+				- DONE: refactor sit() 
+					- DONE: update to match climb()
+					- DONE: elim ladder and test_chair; run scenario test
+					- DONE: return to test state
+					- DONE: develop rigorous 'sit' test:
+					- DONE: infer tests, 1 seat:
+						'sit' => infer_seat() | now: {WORKS!!!}
+						'sit in' => infer_seat() | now: {WORKS!!!}
+						'sit on' => infer_seat() | now: {WORKS!!!}
+						'sit into' => infer_seat() | now: {WORKS!!!}
+						'sit down' => infer_seat() | now: {WORKS!!!}
+						'sit down in' => infer_seat() | now: {WORKS!!!}
+						'sit down on' => infer_seat() | now: {WORKS!!!}
+						'sit down into <x>' | now: {WORKS!!!}
+					- DONE: seat_obj given:
+						'sit <x>' | now: {WORKS!!!}
+						'sit in <x>' | now: {WORKS!!!}
+						'sit on <x>' | now: {WORKS!!!}
+						'sit into <x>' | now: {WORKS!!!}
+						'sit down <x>' | now: {WORKS!!!}
+						'sit down in <x>' | now: {WORKS!!!}
+						'sit down on <x>' | now: {WORKS!!!}
+						'sit down into <x>' | now: {What??"}
+					- DONE: infer tests, 0 seats:
+						'sit' => infer_seat() | now: "Sit where?"
+						'sit in' => infer_seat() | now: "Where do you want to sit?"
+						'sit on' => infer_seat() | now: "Where do you want to sit?"
+						'sit into' => infer_seat() | now: "Where do you want to sit?"
+						'sit down' => infer_seat() | now: "Where do you want to sit?"
+						'sit down in' => infer_seat() | now: "Where do you want to sit?"
+						'sit down on' => infer_seat() | now: "Where do you want to sit?"
+						'sit down into <x>' | now: "Where do you want to sit?"
+					- DONE: infer tests, 2 seats:
+						'sit' => infer_seat() | now: "Sit where?"
+						'sit in' => infer_seat() | now: "Where do you want to sit?"
+						'sit on' => infer_seat() | now: "Where do you want to sit?"
+						'sit into' => infer_seat() | now: "Where do you want to sit?"
+						'sit down' => infer_seat() | now: "Where do you want to sit?"
+						'sit down in' => infer_seat() | now: "Where do you want to sit?"
+						'sit down on' => infer_seat() | now: "Where do you want to sit?"
+						'sit down into <x>' | now: "Where do you want to sit?"
+					- DONE: run rigorous test for all cases
+					- DONE: clean up comments
+					- CANCEL: update infer_seat() and call to handle count = 0 diff from = 2 ??
+					- DONE: update to pass scenario test
+				- INPROC: solve 'sit down in/on chair' => syntax
+					- DONE: create specific 'sit' entries for syntax()
+					- DONE: create prep list
+					- DONE: call new prep_lst from multi-word 'sit' case in interp()
+					- DONE: add dir_cmd_lst
+					- DONE: handle verb cases
+					- DONE: create do_noun_clause w/ no preps and send to noun_handling
+					- DONE: create id_noun_clause w/ no preps and send to noun_handling
+					- DONE: create infer call for no do_noun
+					- DONE: standardize 1-word case of 'sit'
+					- DONE: call syntax
+					- DONE: update syntax map to address all test cases
+					- DONE: test
+					- TBD: elim 'sit' fix from 1-word
+					- TBD: test and update test results
+					- TBD: update syntax case to new 'universal' format
+					- TBD: refactor sit() case
+					- TBD: clean up comments
+					- TBD: create sit scenario test							
+				- TBD: generalize 'sit' and 'climb' cases
+				- TBD: generalize 2word cases (attempt to elim case var itself)
+				- TBD: generalize id_noun cases
+				- TBD: clean up comments
 			- TBD: simplify noun clause sent to noun_handling() ??? => keep for now ?
 			- TBD: remove test chair
 			- TBD: update existing test scenarios as needed if no longer pass

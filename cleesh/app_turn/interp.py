@@ -83,11 +83,23 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'case' : 'action_2word',
 			'base_action_lst' : ['infer_do_noun']
 		},
+		('sit', 'input_do_noun') : {
+			'case' : 'action_2word',
+			'base_action_lst' : ['enter', 'do_noun_str']
+		},
 		('sit', 'in', 'input_do_noun') : {
 			'case' : 'action_2word',
 			'base_action_lst' : ['enter', 'do_noun_str']
 		},
 		('sit', 'on', 'input_do_noun') : {
+			'case' : 'action_2word',
+			'base_action_lst' : ['enter', 'do_noun_str']
+		},
+		('sit', 'into', 'input_do_noun') : {
+			'case' : 'action_2word',
+			'base_action_lst' : ['enter', 'do_noun_str']
+		},
+		('sit', 'down', 'input_do_noun') : {
 			'case' : 'action_2word',
 			'base_action_lst' : ['enter', 'do_noun_str']
 		},
@@ -99,10 +111,14 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'case' : 'action_2word',
 			'base_action_lst' : ['enter', 'do_noun_str']
 		},
-		('sit', 'down') : {
+		('sit', 'down', 'into', 'input_do_noun') : {
 			'case' : 'action_2word',
-			'base_action_lst' : ['infer_do_noun']
-		}
+			'base_action_lst' : ['enter', 'do_noun_str']
+		},
+#		('sit', 'down') : {
+#			'case' : 'action_2word',
+#			'base_action_lst' : ['infer_do_noun']
+#		}
 	}
 	try:
 		base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
@@ -402,6 +418,7 @@ def interpreter(user_input, master_obj_lst):
 			if exactly_one:
 				gs.io.buffer(f"(the {seat_obj.full_name})")
 				do_noun_cmd_lst = [seat_obj.name]
+				do_noun_obj = seat_obj
 			else:
 				return 'error', [f"Where do you want to {word1}?"]
 		if id_noun_count > 0:
