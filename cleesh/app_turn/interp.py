@@ -299,6 +299,7 @@ def interpreter(user_input, master_obj_lst):
 		else:
 			option = user_input_lst[1]
 		case, action_lst = syntax(('help', 'option'), word1, None, option, None, gs)
+#	elif word1 in ['sit']:
 	elif len(user_input_lst) == 1:
 			if word1 in full_verbs_lst:
 				case, action_lst = syntax(('infer_verb',), word1, None, None, None, gs)
@@ -308,7 +309,7 @@ def interpreter(user_input, master_obj_lst):
 
 	if case is not None:
 		return case, action_lst
-	elif case is None and action_lst is not None: # infer noun case for non-2wrod commands - e.g. climb
+	elif case is None and action_lst is not None: # infer noun case for non-2word commands - e.g. climb
 		user_input_lst = action_lst
 	# *** end of one-word command processing ***
 
