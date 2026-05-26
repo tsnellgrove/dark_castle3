@@ -465,7 +465,7 @@ To Do List - Dark Castle v3
 						'sit down' => infer_seat() | now: {WORKS!!!}
 						'sit down in' => infer_seat() | now: {WORKS!!!}
 						'sit down on' => infer_seat() | now: {WORKS!!!}
-						'sit down into <x>' | now: {WORKS!!!}
+						'sit down into' | now: {WORKS!!!}
 					- DONE: seat_obj given:
 						'sit <x>' | now: {WORKS!!!}
 						'sit in <x>' | now: {WORKS!!!}
@@ -476,7 +476,7 @@ To Do List - Dark Castle v3
 						'sit down on <x>' | now: {WORKS!!!}
 						'sit down into <x>' | now: {What??"}
 					- DONE: infer tests, 0 seats:
-						'sit' => infer_seat() | now: "Sit where?"
+						'sit' => infer_seat() | now: "Where do you want to sit?"
 						'sit in' => infer_seat() | now: "Where do you want to sit?"
 						'sit on' => infer_seat() | now: "Where do you want to sit?"
 						'sit into' => infer_seat() | now: "Where do you want to sit?"
@@ -485,14 +485,14 @@ To Do List - Dark Castle v3
 						'sit down on' => infer_seat() | now: "Where do you want to sit?"
 						'sit down into <x>' | now: "Where do you want to sit?"
 					- DONE: infer tests, 2 seats:
-						'sit' => infer_seat() | now: "Sit where?"
+						'sit' => infer_seat() | now: "Where do you want to sit?"
 						'sit in' => infer_seat() | now: "Where do you want to sit?"
 						'sit on' => infer_seat() | now: "Where do you want to sit?"
 						'sit into' => infer_seat() | now: "Where do you want to sit?"
 						'sit down' => infer_seat() | now: "Where do you want to sit?"
 						'sit down in' => infer_seat() | now: "Where do you want to sit?"
 						'sit down on' => infer_seat() | now: "Where do you want to sit?"
-						'sit down into <x>' | now: "Where do you want to sit?"
+						'sit down into' | now: "Where do you want to sit?"
 					- DONE: run rigorous test for all cases
 					- DONE: clean up comments
 					- CANCEL: update infer_seat() and call to handle count = 0 diff from = 2 ??
@@ -510,11 +510,10 @@ To Do List - Dark Castle v3
 					- DONE: call syntax
 					- DONE: update syntax map to address all test cases
 					- DONE: test
-					- TBD: elim 'sit' fix from 1-word
-					- TBD: test and update test results
-					- TBD: update syntax case to new 'universal' format
+					- DONE: elim 'sit' fix from 1-word
+					- DONE: test and update test results
 					- TBD: refactor sit() case
-					- TBD: clean up comments
+					- TBD: update syntax case to new 'universal' format
 					- TBD: create sit scenario test							
 				- TBD: generalize 'sit' and 'climb' cases
 				- TBD: generalize 2word cases (attempt to elim case var itself)
