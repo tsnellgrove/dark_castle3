@@ -523,6 +523,22 @@ To Do List - Dark Castle v3
 			- TBD: remove test chair
 			- TBD: update existing test scenarios as needed if no longer pass
 			- TBD: create new sit & climb test scenarios for sit in / on
+		- TBD: conditional synonyms / class-specific syns
+			- IDEA: some syns should only be true under certain circumstances
+				- EXAMPLE: 'enter' == 'sit' if do_noun is_seat
+				- EXAMPLE: 'take' = 'doff' if do_noun is_garment
+			- TBD: decide which class cond_syn() should live in (Identity ?)
+			- TBD: post-interp() but pre-err, introduce a call to cond_syn()
+			- TBD: cond_syn() takes action_lst evaluates, and replaces verb if appropriate
+				- IDEA: need to re-do class verbs to be most specific (e.g. 'doff' and 'sit')
+				- IDEA: then equate general verbs with specific in cond_syn()
+				- IDEA: benefit is that err never runs for general verb if swapped to specfic
+			- TBD: doff
+				- TBD: create doff() method
+				- TBD: create take => doff if do_noun is_garment entry in cond_syn()
+			- TBD: sit
+				- TBD: create sit() method
+				- TBD: create enter => sit if do_noun is_seat entry in cond_syn()
 
 		- TBD: create separate full_verb_lst vs. full_action_lst
 		- TBD: refactor cmd_exe() help & meta
