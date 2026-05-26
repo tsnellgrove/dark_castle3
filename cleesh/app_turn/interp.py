@@ -114,11 +114,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('sit', 'down', 'into', 'input_do_noun') : {
 			'case' : 'action_2word',
 			'base_action_lst' : ['enter', 'do_noun_str']
-		},
-#		('sit', 'down') : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['infer_do_noun']
-#		}
+		}
 	}
 	try:
 		base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
@@ -158,16 +154,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 				gs.io.buffer(f"(the {gs.core.hero.get_hand_item().full_name})")
 				action_lst = [input_verb, gs.core.hero.get_hand_item()]
 				break
-#			elif input_verb in ['sit']:
-#				exactly_one_seat, seat_obj = infer_seat(gs)
-#				if exactly_one_seat:
-#					gs.io.buffer(f"(on the {seat_obj.full_name})")
-#					action_lst = ['enter', seat_obj]
-#					break
-#				else:
-#					case = 'error'
-#					action_lst = [f"{input_verb.capitalize()} where?"]
-#				break
 			elif input_verb in ['climb']:
 				exactly_one_climbable, climbable_obj = infer_climbable(gs)
 				if exactly_one_climbable:
@@ -325,7 +311,6 @@ def interpreter(user_input, master_obj_lst):
 		id_prep_count = 0 # new
 		id_noun_count = 0 # new
 		for index, word in enumerate(user_input_lst): # new
-#			if word in gs.io.get_lst('known_verb_lst','eng'):
 			if word in full_verbs_lst:
 				verb_cmd_lst.append(word)
 				verb_index = index
@@ -442,112 +427,6 @@ def interpreter(user_input, master_obj_lst):
 			case, action_lst = syntax((word1, 'input_do_noun'), word1, do_noun_obj.name, None, None, gs)
 		return case, action_lst
 
-	# handle sit commands - special case because includes prep
-#	if word1 in ['sit']:
-		if word1 not in full_verbs_lst:
-			return 'error', ["Please start your sentence with a known verb!"]
-		prep = None # LEGACY
-		verb_cmd_lst = [] # new
-		dir_cmd_lst = [] # new
-		do_prep_cmd_lst = [] # new
-		do_noun_cmd_lst = [] # new
-		id_prep_cmd_lst = [] # new
-		id_noun_cmd_lst = [] # new
-		verb_index = None # new
-		dir_index = None # new
-		do_prep_index = None # new
-		do_noun_index = None # new
-		id_prep_index = None # new
-		id_noun_index = None # new
-		verb_count = 0 # new
-		dir_count = 0 # new
-		do_prep_count = 0 # new
-		do_noun_count = 0 # new
-		id_prep_count = 0 # new
-		id_noun_count = 0 # new
-		for index, word in enumerate(user_input_lst): # new
-#			if word in gs.io.get_lst('known_verb_lst','eng'):
-			if word in full_verbs_lst:
-				verb_cmd_lst.append(word)
-				verb_index = index
-				verb_count += 1
-			elif word in gs.io.get_lst('one_word_travel_lst','eng') and do_prep_count == 0: # only count as direction if no prep has been identified yet
-				dir_cmd_lst.append(word)
-				dir_index = index
-				dir_count += 1
-			elif word in gs.io.get_lst('prep_lst','eng') and do_noun_count == 0: # only count as do_prep if no do_noun has been identified yet
-				do_prep_cmd_lst.append(word)
-				do_prep_index = index
-				do_prep_count += 1
-			elif id_prep_count == 0: # only count as do_noun if no id_prep has been identified yet
-				do_noun_cmd_lst.append(word)
-				do_noun_index = index
-				do_noun_count += 1
-			elif word in gs.io.get_lst('prep_lst','eng') and do_noun_count > 0: # only count as id_prep if do_noun has already been identified
-				id_prep_cmd_lst.append(word)
-				id_prep_index = index
-				id_prep_count += 1
-			elif id_prep_count > 0: # only count as id_noun if id_prep has already been identified
-				id_noun_cmd_lst.append(word)
-				id_noun_index = index
-				id_noun_count += 1
-		if verb_count == 0:
-			return 'error', ['I don\'t see a verb in that sentence!']
-		elif (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
-			return 'error', ['I see more than one verb in that sentence!']
-		if do_noun_count > 0:
-			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
-			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
-			if error_state:
-				return 'error', [error_msg]
-			else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
-				do_noun_cmd_lst = [do_noun_obj.name]
-		else:
-			exactly_one, seat_obj = infer_seat(gs)
-			if exactly_one:
-				gs.io.buffer(f"(the {seat_obj.full_name})")
-				do_noun_cmd_lst = [seat_obj.name]
-				do_noun_obj = seat_obj
-			else:
-				return 'error', [f"Where do you want to {word1}?"]
-		if id_noun_count > 0:
-			id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
-			error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
-			if error_state:
-				return 'error', [error_msg]
-			else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
-				id_noun_cmd_lst = [id_noun_obj.name]
-				id_noun_syn_lst = ['input_id_noun']
-		else:
-			id_noun_obj = None
-			id_noun_syn_lst = []
-		user_cmd_lst_raw = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst # new
-		print(f"user_cmd_lst_raw: {user_cmd_lst_raw}")
-		user_syn_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + ['input_do_noun'] + id_prep_cmd_lst + id_noun_syn_lst # new
-		print(f"user_syn_lst: {user_syn_lst}")
-		case, action_lst = syntax(tuple(user_syn_lst), word1, do_noun_obj.name, prep, None, gs)
-		return case, action_lst
-
-
-		if user_input_lst[1] in ['in', 'on', 'down']:
-			prep = user_input_lst[1]
-			user_input_lst.remove(prep)
-		if len(user_input_lst) == 1:
-			exactly_one, seat_obj = infer_seat(gs)
-			if exactly_one:
-				gs.io.buffer(f"(the {seat_obj.full_name})")
-				case, action_lst = syntax(('sit', 'in_on', 'input_do_noun'), word1, seat_obj.name, 'on', None, gs)
-				return case, action_lst
-			else:
-				return 'error', [f"Where do you want to {word1}?"]
-		error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst) # pass without verb and prep
-		if error_state:
-			return 'error', [error_msg]
-		if prep:
-			case, action_lst = syntax(('sit', prep, 'input_do_noun'), word1, do_noun_obj.name, prep, None, gs)
-		else:
-			case, action_lst = syntax(('sit', 'in', 'input_do_noun'), word1, do_noun_obj.name, 'in', None, gs)
-		return case, action_lst
 
 	# handle prep verb commands (special cases first else general case)
 	# [SYNTAX start here]

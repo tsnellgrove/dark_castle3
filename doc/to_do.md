@@ -512,17 +512,20 @@ To Do List - Dark Castle v3
 					- DONE: test
 					- DONE: elim 'sit' fix from 1-word
 					- DONE: test and update test results
-					- TBD: refactor sit() case
+					- DONE: refactor sit() case
 					- TBD: update syntax case to new 'universal' format
+					- TBD: make sit the native seat() method w/ 'enter' as universal synonym
+					- TBD: update sit_err()
 					- TBD: create sit scenario test							
-				- TBD: generalize 'sit' and 'climb' cases
-				- TBD: generalize 2word cases (attempt to elim case var itself)
-				- TBD: generalize id_noun cases
+				- TBD: generalize 2word cases => sit case
+				- TBD: generalize 'climb' => sit case
+				- TBD: generalize id_noun case => sit case
+				- TBD: global refactor
 				- TBD: clean up comments
-			- TBD: simplify noun clause sent to noun_handling() ??? => keep for now ?
 			- TBD: remove test chair
 			- TBD: update existing test scenarios as needed if no longer pass
 			- TBD: create new sit & climb test scenarios for sit in / on
+		- TBD: review / unify all interp() update notes
 		- TBD: conditional synonyms / class-specific syns
 			- IDEA: some syns should only be true under certain circumstances
 				- EXAMPLE: 'enter' == 'sit' if do_noun is_seat
@@ -539,6 +542,11 @@ To Do List - Dark Castle v3
 			- TBD: sit
 				- TBD: create sit() method
 				- TBD: create enter => sit if do_noun is_seat entry in cond_syn()
+		- TBD: nouns
+			- TBD: simplify noun clause sent to noun_handling()
+			- TBD: enable multiple adjectives
+			- TBD: improve noun_handling errors
+
 
 		- TBD: create separate full_verb_lst vs. full_action_lst
 		- TBD: refactor cmd_exe() help & meta
