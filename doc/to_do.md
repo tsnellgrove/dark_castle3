@@ -513,6 +513,7 @@ To Do List - Dark Castle v3
 					- DONE: elim 'sit' fix from 1-word
 					- DONE: test and update test results
 					- DONE: refactor sit() case
+					- TBD: abstract infer_do_noun() into separate function
 					- TBD: update syntax case to new 'universal' format
 					- TBD: make sit the native seat() method w/ 'enter' as universal synonym
 					- TBD: update sit_err()
