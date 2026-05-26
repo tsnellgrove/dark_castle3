@@ -179,7 +179,6 @@ def infer_do_noun(gs, verb_str):
 	do_noun_count = 0
 	do_noun_obj = None
 	if verb_str == 'sit':
-#		infer_txt = f"(in the {do_noun_obj.full_name})"
 		err_txt = "Where do you want to sit?"
 		for obj in scope_lst:
 			if obj.is_seat():
@@ -189,17 +188,6 @@ def infer_do_noun(gs, verb_str):
 	if do_noun_count == 1:
 		gs.io.buffer(infer_txt)
 	return do_noun_count == 1, do_noun_obj, err_txt
-
-### helper function for sit command - infer that if there is only one seat in the room, that's where the player wants to sit
-def infer_seat(gs):
-	scope_lst = gs.map.hero_rm.get_vis_contain_lst(gs)
-	seat_count = 0
-	seat_obj = None
-	for obj in scope_lst:
-		if obj.is_seat():
-			seat_count += 1
-			seat_obj = obj
-	return seat_count == 1, seat_obj
 
 
 ### helper function for climb command - infer that if there is only one climbable surface in the room, that's what the player wants to climb
@@ -364,16 +352,11 @@ def interpreter(user_input, master_obj_lst):
 			else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
 				do_noun_cmd_lst = [do_noun_obj.name]
 		else:
-#			exactly_one, seat_obj = infer_seat(gs)
 			exactly_one, do_noun_obj, err_txt = infer_do_noun(gs, word1)
 			if exactly_one:
-#				gs.io.buffer(f"(the {seat_obj.full_name})")
-#				do_noun_cmd_lst = [seat_obj.name]
 				do_noun_cmd_lst = [do_noun_obj.name]
-#				do_noun_obj = seat_obj
 				do_noun_obj = do_noun_obj
 			else:
-#				return 'error', [f"Where do you want to {word1}?"]
 				return 'error', [err_txt]
 		if id_noun_count > 0:
 			id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
