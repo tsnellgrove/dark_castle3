@@ -516,15 +516,17 @@ To Do List - Dark Castle v3
 					- TBD: update syntax case to new 'universal' format
 					- TBD: make sit the native seat() method w/ 'enter' as universal synonym
 					- TBD: update sit_err()
+					- TBD: check existing scenario tests
 					- TBD: create sit scenario test							
 				- TBD: generalize 2word cases => sit case
 				- TBD: generalize 'climb' => sit case
+				- TBD: create new 'climb' test scenarios (infer dir)
+				- TBD: generalize 'go' => sit case
+				- TBD: create new 'go' test scenarios (infer dir)
 				- TBD: generalize id_noun case => sit case
 				- TBD: global refactor
 				- TBD: clean up comments
-			- TBD: remove test chair
 			- TBD: update existing test scenarios as needed if no longer pass
-			- TBD: create new sit & climb test scenarios for sit in / on
 		- TBD: review / unify all interp() update notes
 		- TBD: conditional synonyms / class-specific syns
 			- IDEA: some syns should only be true under certain circumstances
