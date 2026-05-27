@@ -93,41 +93,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('sit', 'down', 'on', 'input_do_noun') : ['enter', 'do_noun_str'],
 		('sit', 'down', 'into', 'input_do_noun') : ['enter', 'do_noun_str'],
 
-#		('sit', 'input_do_noun') : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['enter', 'do_noun_str']
-#		},
-#		('sit', 'in', 'input_do_noun') : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['enter', 'do_noun_str']
-#		},
-#		('sit', 'on', 'input_do_noun') : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['enter', 'do_noun_str']
-#		},
-#		('sit', 'into', 'input_do_noun') : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['enter', 'do_noun_str']
-#		},
-#		('sit', 'down', 'input_do_noun') : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['enter', 'do_noun_str']
-#		},
-#		('sit', 'down', 'in', 'input_do_noun') : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['enter', 'do_noun_str']
-#		},
-#		('sit', 'down', 'on', 'input_do_noun') : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['enter', 'do_noun_str']
-#		},
-#		('sit', 'down', 'into', 'input_do_noun') : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['enter', 'do_noun_str']
-#		}
 	}
 	try:
-#		base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
 		base_action_lst = syntax_dict[user_input_tpl]
 	except:
 		return 'error', ["What??"]
@@ -138,7 +105,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		case = syntax_dict[user_input_tpl]['case']
 	action_lst = base_action_lst.copy()
 ##	print(f"base_action_lst: {base_action_lst}")
-#	case = syntax_dict[user_input_tpl]['case']
 	for index, word in enumerate(base_action_lst):
 		if word == 'hero_obj':
 			action_lst[index] = gs.core.hero # convert class noun to object

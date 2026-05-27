@@ -112,6 +112,7 @@ engine_static_dict = {
 		'get' : 'take',
         'carry' : 'take',
         'hold' : 'take',
+        'remove' : 'take',
         'don' : 'wear',
 	},
 

@@ -516,6 +516,7 @@ To Do List - Dark Castle v3
 					- DONE: abstract infer_do_noun() into separate function
 					- DONE: clean up comments
 					- DONE: update syntax case to new 'universal' format; set for uni if no case
+					- DONE: clean up comments
 					- TBD: make sit the native seat() method w/ 'enter' as universal synonym
 					- TBD: clean up comments
 					- TBD: update sit_err()
