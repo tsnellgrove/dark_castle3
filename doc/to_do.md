@@ -517,6 +517,7 @@ To Do List - Dark Castle v3
 					- DONE: clean up comments
 					- DONE: update syntax case to new 'universal' format; set for uni if no case
 					- TBD: make sit the native seat() method w/ 'enter' as universal synonym
+					- TBD: clean up comments
 					- TBD: update sit_err()
 					- TBD: check existing scenario tests
 					- TBD: create sit scenario test							
