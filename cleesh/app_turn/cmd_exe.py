@@ -81,6 +81,13 @@ def cmd_execute(gs, case, word_lst):
 				return
 			gs.io.buff_dbg("[CMD] tru_1word case not found", gs)
 			return
+		if case == 'universal':
+			if len(word_lst) == 2:
+				action_str, do_noun_obj = word_lst
+				getattr(do_noun_obj, action_str)(gs)
+				if not gs.end.is_end: # check to avoid double score display on end
+					gs.score.disp_score(action_str, do_noun_obj.name, None, gs)
+			return
 		if case == 'action_2word':
 			action_str, do_noun_obj = word_lst
 			getattr(do_noun_obj, action_str)(gs)
