@@ -548,6 +548,11 @@ To Do List - Dark Castle v3
 			- TBD: sit
 				- TBD: create sit() method
 				- TBD: create enter => sit if do_noun is_seat entry in cond_syn()
+			- TBD: stand
+				- TBD: create exit => stand if do_noun is_contained
+			- TBD: enter & exit
+				- TBD: create room or door specific method for enter
+				- TBD: create room or door specific method for exit
 		- TBD: nouns
 			- TBD: simplify noun clause sent to noun_handling()
 			- TBD: enable multiple adjectives
