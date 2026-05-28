@@ -526,7 +526,8 @@ To Do List - Dark Castle v3
 						- DONE: manual test
 						- DONE: scenario test
 						- DONE: fix scenario test if needed
-					- TBD: create new sit scenario test							
+					- TBD: create new sit scenario test
+				- TBD: generalize one_word_convert_lst => sit case					
 				- TBD: generalize 2word cases => sit case
 				- TBD: generalize 'climb' => sit case
 				- TBD: create new 'climb' test scenarios (infer dir)
