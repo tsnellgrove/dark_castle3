@@ -397,7 +397,8 @@ class Seat(ContainerFixedSimple):
 		return obj.is_seat()
 
 	# *** verb methods ***
-	def enter(self, gs, mode=None, creature=None):
+	def sit(self, gs, mode=None, creature=None):
+#	def enter(self, gs, mode=None, creature=None):
 		""" Sits a creature in a Seat
 		"""
 		if mode is None: # destermine default attributes

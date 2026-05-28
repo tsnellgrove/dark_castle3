@@ -517,11 +517,16 @@ To Do List - Dark Castle v3
 					- DONE: clean up comments
 					- DONE: update syntax case to new 'universal' format; set for uni if no case
 					- DONE: clean up comments
-					- TBD: make sit the native seat() method w/ 'enter' as universal synonym
-					- TBD: clean up comments
-					- TBD: update sit_err()
-					- TBD: check existing scenario tests
-					- TBD: create sit scenario test							
+					- DONE: make sit the native seat() method w/ 'enter' as universal synonym
+						- DONE: create sit_err() method in err()
+						- DONE: create sit() method in seat()
+						- DONE: update syntax in interp()
+						- DONE: make 'enter' a universal synonym for 'sit'
+						- DONE: make 'exit' a universal synonym for 'stand'
+						- DONE: manual test
+						- DONE: scenario test
+						- DONE: fix scenario test if needed
+					- TBD: create new sit scenario test							
 				- TBD: generalize 2word cases => sit case
 				- TBD: generalize 'climb' => sit case
 				- TBD: create new 'climb' test scenarios (infer dir)
@@ -546,11 +551,13 @@ To Do List - Dark Castle v3
 				- TBD: create doff() method
 				- TBD: create take => doff if do_noun is_garment entry in cond_syn()
 			- TBD: sit
-				- TBD: create sit() method
 				- TBD: create enter => sit if do_noun is_seat entry in cond_syn()
 			- TBD: stand
 				- TBD: create exit => stand if do_noun is_contained
 			- TBD: enter & exit
+				- TBD: clean up existing code:
+					- TBD: enter_err() and exit_err() in err()
+					- TBD: enter() and exit() in seat()
 				- TBD: create room or door specific method for enter
 				- TBD: create room or door specific method for exit
 		- TBD: nouns

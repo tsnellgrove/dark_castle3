@@ -109,6 +109,8 @@ engine_static_dict = {
         'place' : 'put',
         'skim' : 'read',
         'scan' : 'read',
+        'enter' : 'sit', # to be a conditional synonym in the future; for now, it's a universal synonym
+        'exit' : 'stand', # to be a conditional synonym in the future; for now, it's a universal synonym
 		'get' : 'take',
         'carry' : 'take',
         'hold' : 'take',

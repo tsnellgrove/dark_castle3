@@ -290,6 +290,25 @@ class Error(Identity):
 			return True, False, err_txt
 		return False, False, ""
 
+	def sit_err(self, gs):
+		creature = gs.core.hero
+		if self.err_std(creature, gs):
+			return True, False, ""
+		if self.is_item():
+			err_txt = (f"Despite twisting yourself into a pretzel you still can't manage to enter the {self.full_name}.")
+			return True, False, err_txt
+		if not self.is_seat():
+			# attemptable error: there are many common uses of 'enter' that won't work in DC (e.g. "enter castle")
+#			err_txt = (f"You can't use the 'enter' command on the {self.full_name}.")
+#			err_txt = (f"You can't use that command on the {self.full_name}.")
+			err_txt = (f"Despite a mighty effort, you can find no way to sit comfortably on the {self.full_name}.")
+			return True, True, err_txt
+		if self.is_seat() and len(self.contain_lst) >= self.max_obj:
+			# NOT attemptable error: the capacity of the seat should be visually obvious
+			err_txt = (f"There's no room on the {self.full_name} to sit.")
+			return True, False, err_txt
+		return False, False, ""
+
 	def enter_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):

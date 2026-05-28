@@ -84,14 +84,14 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'base_action_lst' : ['infer_do_noun']
 		},
 
-		('sit', 'input_do_noun') : ['enter', 'do_noun_str'],
-		('sit', 'in', 'input_do_noun') : ['enter', 'do_noun_str'],
-		('sit', 'on', 'input_do_noun') : ['enter', 'do_noun_str'],
-		('sit', 'into', 'input_do_noun') : ['enter', 'do_noun_str'],
-		('sit', 'down', 'input_do_noun') : ['enter', 'do_noun_str'],
-		('sit', 'down', 'in', 'input_do_noun') : ['enter', 'do_noun_str'],
-		('sit', 'down', 'on', 'input_do_noun') : ['enter', 'do_noun_str'],
-		('sit', 'down', 'into', 'input_do_noun') : ['enter', 'do_noun_str'],
+		('sit', 'input_do_noun') : ['sit', 'do_noun_str'],
+		('sit', 'in', 'input_do_noun') : ['sit', 'do_noun_str'],
+		('sit', 'on', 'input_do_noun') : ['sit', 'do_noun_str'],
+		('sit', 'into', 'input_do_noun') : ['sit', 'do_noun_str'],
+		('sit', 'down', 'input_do_noun') : ['sit', 'do_noun_str'],
+		('sit', 'down', 'in', 'input_do_noun') : ['sit', 'do_noun_str'],
+		('sit', 'down', 'on', 'input_do_noun') : ['sit', 'do_noun_str'],
+		('sit', 'down', 'into', 'input_do_noun') : ['sit', 'do_noun_str'],
 
 	}
 	try:
