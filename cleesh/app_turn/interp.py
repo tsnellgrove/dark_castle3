@@ -85,7 +85,10 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		},
 
 #		('inventory',) : ['examine', 'hero_obj'],
+		('examine', 'input_do_noun') : ['examine', 'do_noun_str'],
 		('inventory', 'input_do_noun') : ['examine', 'do_noun_str'],
+		('look', 'input_do_noun') : ['examine', 'do_noun_str'],
+		('look', 'at', 'input_do_noun') : ['examine', 'do_noun_str'],
 
 #		('jump',) : ['jump', 'hero_obj'],
 #		('jump', 'up') : ['jump', 'hero_obj'],
@@ -97,9 +100,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 #		('look',) : ['examine', 'hero_rm_obj'],
 #		('look', 'at') : ['examine', 'hero_rm_obj'],
-
-		('look', 'input_do_noun') : ['examine', 'do_noun_str'],
-		('look', 'at', 'input_do_noun') : ['examine', 'do_noun_str'],
 
 		('sit', 'input_do_noun') : ['sit', 'do_noun_str'],
 		('sit', 'in', 'input_do_noun') : ['sit', 'do_noun_str'],
@@ -182,7 +182,7 @@ def infer_do_noun(gs, verb_str):
 	scope_lst = gs.map.hero_rm.get_vis_contain_lst(gs)
 	do_noun_count = 0
 	do_noun_obj = None
-	err_txt = "Default infer_do_noun error message"
+	err_txt = f"What do you want to {verb_str}?"
 	infer_txt = None
 	if verb_str == 'sit':
 		err_txt = "Where do you want to sit?"
@@ -191,10 +191,13 @@ def infer_do_noun(gs, verb_str):
 				do_noun_count += 1
 				do_noun_obj = obj
 				infer_txt = f"(in the {do_noun_obj.full_name})"
-	if verb_str == 'stand':
+	if verb_str == 'jump':
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero
-	if verb_str == 'jump':
+	if verb_str == 'look':
+		do_noun_count = 1
+		do_noun_obj = gs.map.hero_rm
+	if verb_str == 'stand':
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero
 	if do_noun_count == 1 and infer_txt is not None:
@@ -307,7 +310,7 @@ def interpreter(user_input, master_obj_lst):
 
 
 	# handle sit commands - special case because includes prep
-	elif word1 in ['sit', 'stand', 'jump'] + ['inventory', 'look']: # updated
+	elif word1 in ['sit', 'stand', 'jump'] + ['examine','inventory', 'look']: # updated
 		if word1 not in full_verbs_lst + ['inventory', 'look', 'stand', 'jump']: # updated
 			return 'error', ["Please start your sentence with a known verb!"]
 		prep = None # LEGACY
@@ -361,9 +364,9 @@ def interpreter(user_input, master_obj_lst):
 			return 'error', ['I see more than one verb in that sentence!']
 		if word1 in ['stand', 'jump'] and do_noun_count > 0:
 			return 'error', [f"{word1.capitalize()} is a one-word command. I can't be used with a noun!"]
-		elif word1 in ['look']: # new
-			do_noun_obj = gs.map.hero_rm
-			do_noun_cmd_lst = [do_noun_obj.name]
+#		elif word1 in ['look']: # new
+#			do_noun_obj = gs.map.hero_rm
+#			do_noun_cmd_lst = [do_noun_obj.name]
 #		elif word1 in ['inventory', 'stand', 'jump']: # new
 		elif word1 in ['inventory']: # new
 			do_noun_obj = gs.core.hero

@@ -532,9 +532,13 @@ To Do List - Dark Castle v3
 					- DONE: 'jump' and 'stand' => one-word cmds with 'no noun' err if do_noun_count > 0
 					- DONE: 'jump' and 'stand' => infer_do_noun => hero
 					- DONE: syntax support for 'jump up', 'jump down', 'stand up'
-					- TBD: add 'examine' to intake list
-					- TBD: 'look' => 2-word cmd; 'look <X>' => 'examine <X>; infer_do_noun => room
-					- TBD: syntax support for 'look at', 'look in'
+					- DONE: add 'examine' to intake list
+					- DONE: 'look' => 2-word cmd; 'look <X>' => 'examine <X>; infer_do_noun => room
+					- DONE: syntax support for 'look at'
+					- IDEA: investigate 'inventory' as specific to recepticals
+					- IDEA: err on non-receptical / closed
+					- IDEA: or maybe for now, inventory =syn=> x; future = cond syn => x ??
+					- TBD: syntax support for 'look in' and also 'list' (via universal syn)
 					- TBD: 'inventory' => 2-word cmd; 'i <X>' => 'examine <X>; infer_do_noun => hero
 					- TBD: clean up comments!
 					- TBD: refactor as needed
