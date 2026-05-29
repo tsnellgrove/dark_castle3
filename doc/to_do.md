@@ -538,6 +538,7 @@ To Do List - Dark Castle v3
 					- TBD: clean up comments!
 					- TBD: refactor as needed
 					- TBD: update static lists to contain convert verbs
+					- TBD: perhaps create new static lists for action_verb_lst and non_action_verb_lst
 					- TBD: test for scenario errors
 					- TBD: new scenario for former convert verbs
 				- TBD: generalize 2word cases => sit case
