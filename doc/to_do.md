@@ -434,7 +434,7 @@ To Do List - Dark Castle v3
 				- DONE: clean-up
 				- DONE: in interp() islice => slice
 				- DONE: clean up comments (including import)
-			- TBD: implement "sit" and "climb" w/ do_noun infer
+			- INPROC: implement "sit" and "climb" w/ do_noun infer
 				- IDEA: if != 1: "What do you want to sit on / climb?"
 				- IDEA: if 1: "(the <do_noun>)"
 				- DONE: infer sit
@@ -497,7 +497,7 @@ To Do List - Dark Castle v3
 					- DONE: clean up comments
 					- CANCEL: update infer_seat() and call to handle count = 0 diff from = 2 ??
 					- DONE: update to pass scenario test
-				- INPROC: solve 'sit down in/on chair' => syntax
+				- DONE: solve 'sit down in/on chair' => syntax
 					- DONE: create specific 'sit' entries for syntax()
 					- DONE: create prep list
 					- DONE: call new prep_lst from multi-word 'sit' case in interp()
@@ -526,7 +526,7 @@ To Do List - Dark Castle v3
 						- DONE: manual test
 						- DONE: scenario test
 						- DONE: fix scenario test if needed
-					- TBD: create new sit scenario test
+					- DONE: create new sit scenario test
 				- TBD: generalize one_word_convert_lst => sit case					
 				- TBD: generalize 2word cases => sit case
 				- TBD: generalize 'climb' => sit case

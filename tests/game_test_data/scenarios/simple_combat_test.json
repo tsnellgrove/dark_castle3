@@ -1,0 +1,23 @@
+{
+  "name": "Simple Combat Test",
+  "description": "Test basic combat with the guard goblin",
+  "commands": [
+    "north",
+    "take sword",
+    "north",
+    "attack goblin with sword"
+  ],
+  "mode": "locked",
+  "expected_full_outputs": [
+    "\nThe Front Gate is closed.\n",
+    "\nI don't see a Sword here.\n",
+    "\nThe Front Gate is closed.\n",
+    "\nI don't see a Goblin here.\n"
+  ],
+  "should_not_contain": [
+    "error",
+    "crash",
+    "traceback"
+  ],
+  "should_end": false
+}

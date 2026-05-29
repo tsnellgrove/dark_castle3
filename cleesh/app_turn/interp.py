@@ -352,9 +352,9 @@ def interpreter(user_input, master_obj_lst):
 			id_noun_obj = None
 			id_noun_syn_lst = []
 		user_cmd_lst_raw = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst # new
-		print(f"user_cmd_lst_raw: {user_cmd_lst_raw}")
+##		print(f"user_cmd_lst_raw: {user_cmd_lst_raw}")
 		user_syn_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + ['input_do_noun'] + id_prep_cmd_lst + id_noun_syn_lst # new
-		print(f"user_syn_lst: {user_syn_lst}")
+##		print(f"user_syn_lst: {user_syn_lst}")
 		case, action_lst = syntax(tuple(user_syn_lst), word1, do_noun_obj.name, prep, None, gs)
 		return case, action_lst
 
