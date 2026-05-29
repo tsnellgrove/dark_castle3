@@ -527,7 +527,11 @@ To Do List - Dark Castle v3
 						- DONE: scenario test
 						- DONE: fix scenario test if needed
 					- DONE: create new sit scenario test
-				- TBD: generalize one_word_convert_lst => sit case					
+				- INPROC: generalize one_word_convert_lst => sit case
+					- DONE: first pass update
+					- TBD: address extra words ('inventory postbox', 'jump in moat', 'stand tree')
+					- TBD: address valid look => examine ('look at tree')
+					- TBD: clean up comments!
 				- TBD: generalize 2word cases => sit case
 				- TBD: generalize 'climb' => sit case
 				- TBD: create new 'climb' test scenarios (infer dir)
@@ -535,6 +539,7 @@ To Do List - Dark Castle v3
 				- TBD: create new 'go' test scenarios (infer dir)
 				- TBD: generalize id_noun case => sit case
 				- TBD: global refactor
+				- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
 				- TBD: clean up comments
 			- TBD: update existing test scenarios as needed if no longer pass
 		- TBD: review / unify all interp() update notes
