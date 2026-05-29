@@ -528,10 +528,18 @@ To Do List - Dark Castle v3
 						- DONE: fix scenario test if needed
 					- DONE: create new sit scenario test
 				- INPROC: generalize one_word_convert_lst => sit case
-					- DONE: first pass update
-					- TBD: address extra words ('inventory postbox', 'jump in moat', 'stand tree')
-					- TBD: address valid look => examine ('look at tree')
+					- DONE: first pass update (messy!)
+					- TBD: 'jump' and 'stand' => one-word cmds with error if do_noun_count > 0
+					- TBD: 'jump' and 'stand' => infer_do_noun => hero
+					- TBD: syntax support for 'jump up', 'jump down', 'stand up' 
+					- TBD: 'look' => 2-word cmd; 'look <X>' => 'examine <X>; infer_do_noun => room
+					- TBD: syntax support for 'look at', 'look in'
+					- TBD: 'inventory' => 2-word cmd; 'i <X>' => 'examine <X>; infer_do_noun => hero
 					- TBD: clean up comments!
+					- TBD: refactor as needed
+					- TBD: update static lists to contain convert verbs
+					- TBD: test for scenario errors
+					- TBD: new scenario for former convert verbs
 				- TBD: generalize 2word cases => sit case
 				- TBD: generalize 'climb' => sit case
 				- TBD: create new 'climb' test scenarios (infer dir)
