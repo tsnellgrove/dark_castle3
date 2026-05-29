@@ -529,9 +529,10 @@ To Do List - Dark Castle v3
 					- DONE: create new sit scenario test
 				- INPROC: generalize one_word_convert_lst => sit case
 					- DONE: first pass update (messy!)
-					- TBD: 'jump' and 'stand' => one-word cmds with 'no noun' err if do_noun_count > 0
-					- TBD: 'jump' and 'stand' => infer_do_noun => hero
-					- TBD: syntax support for 'jump up', 'jump down', 'stand up' 
+					- DONE: 'jump' and 'stand' => one-word cmds with 'no noun' err if do_noun_count > 0
+					- DONE: 'jump' and 'stand' => infer_do_noun => hero
+					- DONE: syntax support for 'jump up', 'jump down', 'stand up'
+					- TBD: add 'examine' to intake list
 					- TBD: 'look' => 2-word cmd; 'look <X>' => 'examine <X>; infer_do_noun => room
 					- TBD: syntax support for 'look at', 'look in'
 					- TBD: 'inventory' => 2-word cmd; 'i <X>' => 'examine <X>; infer_do_noun => hero

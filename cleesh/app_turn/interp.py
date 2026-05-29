@@ -183,6 +183,7 @@ def infer_do_noun(gs, verb_str):
 	do_noun_count = 0
 	do_noun_obj = None
 	err_txt = "Default infer_do_noun error message"
+	infer_txt = None
 	if verb_str == 'sit':
 		err_txt = "Where do you want to sit?"
 		for obj in scope_lst:
@@ -190,7 +191,13 @@ def infer_do_noun(gs, verb_str):
 				do_noun_count += 1
 				do_noun_obj = obj
 				infer_txt = f"(in the {do_noun_obj.full_name})"
-	if do_noun_count == 1:
+	if verb_str == 'stand':
+		do_noun_count = 1
+		do_noun_obj = gs.core.hero
+	if verb_str == 'jump':
+		do_noun_count = 1
+		do_noun_obj = gs.core.hero
+	if do_noun_count == 1 and infer_txt is not None:
 		gs.io.buffer(infer_txt)
 	return do_noun_count == 1, do_noun_obj, err_txt
 
@@ -278,7 +285,8 @@ def interpreter(user_input, master_obj_lst):
 	full_verbs_lst = (
 			gs.io.get_lst('known_verb_lst','eng') + 
 			gs.io.get_lst('debug_verb_lst','eng') +
-			gs.io.get_lst('non-action_verb_list','eng')
+			gs.io.get_lst('non-action_verb_list','eng') +
+			gs.io.get_lst('one_word_convert_lst','eng') # new
 			)
 	case = None
 	action_lst = None
@@ -299,7 +307,7 @@ def interpreter(user_input, master_obj_lst):
 
 
 	# handle sit commands - special case because includes prep
-	elif word1 in ['sit', 'inventory', 'look', 'stand', 'jump']: # updated
+	elif word1 in ['sit', 'stand', 'jump'] + ['inventory', 'look']: # updated
 		if word1 not in full_verbs_lst + ['inventory', 'look', 'stand', 'jump']: # updated
 			return 'error', ["Please start your sentence with a known verb!"]
 		prep = None # LEGACY
@@ -322,7 +330,8 @@ def interpreter(user_input, master_obj_lst):
 		id_prep_count = 0 # new
 		id_noun_count = 0 # new
 		for index, word in enumerate(user_input_lst): # new
-			if word in full_verbs_lst + ['inventory', 'look', 'stand', 'jump']: # updated
+#			if word in full_verbs_lst + ['inventory', 'look', 'stand', 'jump']: # updated
+			if word in full_verbs_lst: # updated
 				verb_cmd_lst.append(word)
 				verb_index = index
 				verb_count += 1
@@ -350,10 +359,13 @@ def interpreter(user_input, master_obj_lst):
 			return 'error', ['I don\'t see a verb in that sentence!']
 		elif (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
 			return 'error', ['I see more than one verb in that sentence!']
-		if word1 in ['look']: # new
+		if word1 in ['stand', 'jump'] and do_noun_count > 0:
+			return 'error', [f"{word1.capitalize()} is a one-word command. I can't be used with a noun!"]
+		elif word1 in ['look']: # new
 			do_noun_obj = gs.map.hero_rm
 			do_noun_cmd_lst = [do_noun_obj.name]
-		elif word1 in ['inventory', 'stand', 'jump']: # new
+#		elif word1 in ['inventory', 'stand', 'jump']: # new
+		elif word1 in ['inventory']: # new
 			do_noun_obj = gs.core.hero
 			do_noun_cmd_lst = [do_noun_obj.name]
 		elif do_noun_count > 0:
