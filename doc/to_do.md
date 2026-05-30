@@ -542,7 +542,7 @@ To Do List - Dark Castle v3
 						- IDEA: no, would need to repeat all associated prep entries
 					- DONE: test for scenario errors
 			- INPROC: handle synonyms
-				- INPROC: embed symetric syns in syntax (lik zork does)
+				- DONE: embed symetric syns in syntax (lik zork does)
 					- DONE: define action, non_action, verb_syn in interp()
 					- DONE: verb_lst = action + non_action + verb_syn
 					- DONE: ('leap', 'verb_syn') : 'jump'
@@ -556,7 +556,7 @@ To Do List - Dark Castle v3
 					- IDEA: some syns should only be true under certain circumstances
 						- EXAMPLE: 'enter' == 'sit' if do_noun is_seat
 						- EXAMPLE: 'take' = 'doff' if do_noun is_garment
-					- TBD: cond_syn() takes action_lst evaluates, and replaces verb if appropriate
+					- IDEA: cond_syn() takes action_lst evaluates, and replaces verb if appropriate
 						- IDEA: need to re-do class verbs to be most specific (e.g. 'doff' and 'sit')
 						- IDEA: then equate general verbs with specific in cond_syn()
 						- IDEA: benefit is that err never runs for general verb if swapped to specfic
@@ -580,6 +580,7 @@ To Do List - Dark Castle v3
 					- TBD: create exit => stand if do_noun is_contained
 			- TBD: extend new interp() structure
 				- TBD: generalize 2word cases => sit case
+					- TBD: need routine for hand mgmt
 				- TBD: generalize 'climb' => sit case
 				- TBD: create new 'climb' test scenarios (infer dir)
 				- TBD: generalize 'go' => sit case
