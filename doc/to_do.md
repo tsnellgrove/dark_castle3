@@ -561,9 +561,14 @@ To Do List - Dark Castle v3
 						- IDEA: need to re-do class verbs to be most specific (e.g. 'doff' and 'sit')
 						- IDEA: then equate general verbs with specific in cond_syn()
 						- IDEA: benefit is that err never runs for general verb if swapped to specfic
-					- TBD: inventory
-						- TBD: inventory => examine if do_noun is_receptacle and not closed
-						- TBD: interp() syntax 'look at' => inventory
+					- TBD: create asym_syn(action_lst, gs) function
+						- TBD: returns case, action_lst
+						- TBD: options are 1) no change, 2) 'error', ["err_txt"], 3) new_case, new_al
+					- TBD: inventory case
+						- TBD: if not do_noun.is_receptacle(): error = "nothing to look within"
+						- TBD: elif not do_noun.is_closed(): error = "{do_noun.f_n} is closed"
+						- TBD: else: action_lst[0] = 'examine'
+						- TBD: interp() syntax 'look at', 'inventory' => inventory
 						- TBD: universal syn 'ist' => inventory
 					- TBD: sit
 						- TBD: create enter => sit if do_noun is_seat entry in cond_syn()
