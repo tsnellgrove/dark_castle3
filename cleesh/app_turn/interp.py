@@ -77,6 +77,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('jump', 'input_do_noun') : ['jump', 'do_noun_str'],
 		('jump', 'up', 'input_do_noun') : ['jump', 'do_noun_str'],
 		('jump', 'down', 'input_do_noun') : ['jump', 'do_noun_str'],
+		('leap', 'verb_syn') : ['jump'],
 
 		('sit', 'input_do_noun') : ['sit', 'do_noun_str'],
 		('sit', 'in', 'input_do_noun') : ['sit', 'do_noun_str'],
@@ -156,6 +157,7 @@ def infer_do_noun(gs, verb_str):
 	do_noun_obj = None
 	err_txt = f"What do you want to {verb_str}?"
 	infer_txt = None
+
 	if verb_str == 'sit':
 		err_txt = "Where do you want to sit?"
 		for obj in scope_lst:
@@ -163,18 +165,19 @@ def infer_do_noun(gs, verb_str):
 				do_noun_count += 1
 				do_noun_obj = obj
 				infer_txt = f"(in the {do_noun_obj.full_name})"
-	if verb_str == 'jump':
+#	if verb_str == 'jump':
+	if verb_str in ['jump', 'inventory', 'stand']:
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero
-	if verb_str == 'inventory':
-		do_noun_count = 1
-		do_noun_obj = gs.core.hero
+#	if verb_str == 'inventory':
+#		do_noun_count = 1
+#		do_noun_obj = gs.core.hero
 	if verb_str == 'look':
 		do_noun_count = 1
 		do_noun_obj = gs.map.hero_rm
-	if verb_str == 'stand':
-		do_noun_count = 1
-		do_noun_obj = gs.core.hero
+#	if verb_str == 'stand':
+#		do_noun_count = 1
+#		do_noun_obj = gs.core.hero
 	if do_noun_count == 1 and infer_txt is not None:
 		gs.io.buffer(infer_txt)
 	return do_noun_count == 1, do_noun_obj, err_txt
@@ -241,7 +244,7 @@ def interpreter(user_input, master_obj_lst):
 		return 'error', ["I have no idea what you're talking about!"]
 	# errro if user input contains reserved syntax words
 	for word in user_input_lst:
-		if word in ['hero_rm_obj', 'hero_dir', 'verb_str', 'do_noun_str', 'up_or_down_dir']: # reserved syntax
+		if word in ['verb_syn', 'hero_rm_obj', 'hero_dir', 'verb_str', 'do_noun_str', 'up_or_down_dir']: # reserved syntax
 			return 'error', [f"What??"]
 	# one-word commands where user_input_lst is longer than one word
 	if len(user_input_lst) > 1 and user_input_lst[0] in (
@@ -257,11 +260,16 @@ def interpreter(user_input, master_obj_lst):
 	# *** global variable assignment ***
 	word1 = user_input_lst[0]
 	creature = gs.core.hero
+	action_verb_lst = ['examine', 'jump', 'sit', 'stand']
+	non_action_verb_lst = ['inventory', 'look']
+	syn_verb_lst = ['leap']
+	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst
+
 	meta_cmd_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
 	full_verbs_lst = (
 			gs.io.get_lst('known_verb_lst','eng') + 
 			gs.io.get_lst('debug_verb_lst','eng') +
-			gs.io.get_lst('non-action_verb_lst','eng') +
+			gs.io.get_lst('non_action_verb_lst','eng') +
 			gs.io.get_lst('one_word_convert_lst','eng') # new
 			)
 	case = None
@@ -281,8 +289,8 @@ def interpreter(user_input, master_obj_lst):
 
 
 	# handle sit commands - special case because includes prep
-	elif word1 in gs.io.get_lst('action_verb_lst','eng') + gs.io.get_lst('non-action_verb_lst','eng'):
-		if word1 not in gs.io.get_lst('action_verb_lst','eng') + gs.io.get_lst('non-action_verb_lst','eng'):
+	elif word1 in verb_lst:
+		if word1 not in verb_lst:
 			return 'error', ["Please start your sentence with a known verb!"]
 		prep = None # LEGACY
 		verb_cmd_lst = [] # new
@@ -304,7 +312,7 @@ def interpreter(user_input, master_obj_lst):
 		id_prep_count = 0 # new
 		id_noun_count = 0 # new
 		for index, word in enumerate(user_input_lst):
-			if word in gs.io.get_lst('action_verb_lst','eng') + gs.io.get_lst('non-action_verb_lst','eng'):
+			if word in verb_lst:
 				verb_cmd_lst.append(word)
 				verb_index = index
 				verb_count += 1
@@ -332,6 +340,23 @@ def interpreter(user_input, master_obj_lst):
 			return 'error', ['I don\'t see a verb in that sentence!']
 		elif (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
 			return 'error', ['I see more than one verb in that sentence!']
+		
+		t_mode = False # test mode - print command lists at each stage of processing
+
+		user_cmd_lst_pre_syn = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+		if t_mode:
+			print(f"user_cmd_lst_pre_syn: {user_cmd_lst_pre_syn}")
+
+		# apply symetric synonym verb substitution before do_noun inference: 'leap' => 'jump'
+		_unused, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
+		if tmp_lst != ['What??']:
+			verb_cmd_lst = tmp_lst
+			word1 = verb_cmd_lst[0]
+
+		user_cmd_lst_syn = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst # new
+		if t_mode:
+			print(f"user_cmd_lst_syn: {user_cmd_lst_syn}")
+
 		if word1 in ['stand', 'jump'] and do_noun_count > 0:
 			return 'error', [f"{word1.capitalize()} is a one-word command!"]
 		elif do_noun_count > 0:
@@ -359,11 +384,16 @@ def interpreter(user_input, master_obj_lst):
 		else:
 			id_noun_obj = None
 			id_noun_syn_lst = []
-		user_cmd_lst_raw = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst # new
-##		print(f"user_cmd_lst_raw: {user_cmd_lst_raw}")
-		user_syn_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + ['input_do_noun'] + id_prep_cmd_lst + id_noun_syn_lst # new
-##		print(f"user_syn_lst: {user_syn_lst}")
-		case, action_lst = syntax(tuple(user_syn_lst), word1, do_noun_obj.name, prep, None, gs)
+
+		user_cmd_lst_post_infer = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+		if t_mode:
+			print(f"user_cmd_lst_post_infer: {user_cmd_lst_post_infer}")
+
+		user_syntax_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + ['input_do_noun'] + id_prep_cmd_lst + id_noun_syn_lst
+		if t_mode:
+			print(f"user_syntax_lst: {user_syntax_lst}")
+
+		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_obj.name, prep, None, gs)
 		return case, action_lst
 
 

@@ -434,7 +434,7 @@ To Do List - Dark Castle v3
 				- DONE: clean-up
 				- DONE: in interp() islice => slice
 				- DONE: clean up comments (including import)
-			- INPROC: implement "sit" and "climb" w/ do_noun infer
+			- DONE: implement "sit" and "climb" w/ do_noun infer
 				- IDEA: if != 1: "What do you want to sit on / climb?"
 				- IDEA: if 1: "(the <do_noun>)"
 				- DONE: infer sit
@@ -538,11 +538,47 @@ To Do List - Dark Castle v3
 					- DONE: 'inventory' => 2-word cmd; 'i <X>' => 'examine <X>; infer_do_noun => hero
 					- DONE: clean up comments!
 					- DONE: create new static lists for action_verb_lst and non_action_verb_lst
-					- CANCEL: migrate global syn to syntax for clarity / flexibility
+					- CANCEL: migrate global syn directly to syntax for clarity / flexibility
 						- IDEA: no, would need to repeat all associated prep entries
 					- DONE: test for scenario errors
-				- TBD: think about ways to embed global syns in syntax (lik zork does)
-					- IDEA: ('leap', 'synonym_verb') : 'jump'
+			- INPROC: handle synonyms
+				- INPROC: embed symetric syns in syntax (lik zork does)
+					- DONE: define action, non_action, verb_syn in interp()
+					- DONE: verb_lst = action + non_action + verb_syn
+					- DONE: ('leap', 'verb_syn') : 'jump'
+					- DONE: add 'verb_syn' to forbiden word lst
+					- DONE: check for syn; if exist, replace verb_lst
+					- DONE: add print() line to show before / after verb_syn replacement
+					- DONE: comment out 'leap' in global
+					- DONE: test
+					- TBD: update symetric syns for remaining active verbs
+				- TBD: create cond_syn() routine to inspect action_lst after syntax call
+					- IDEA: some syns should only be true under certain circumstances
+						- EXAMPLE: 'enter' == 'sit' if do_noun is_seat
+						- EXAMPLE: 'take' = 'doff' if do_noun is_garment
+					- TBD: cond_syn() takes action_lst evaluates, and replaces verb if appropriate
+						- IDEA: need to re-do class verbs to be most specific (e.g. 'doff' and 'sit')
+						- IDEA: then equate general verbs with specific in cond_syn()
+						- IDEA: benefit is that err never runs for general verb if swapped to specfic
+					- TBD: inventory
+						- TBD: inventory => examine if do_noun is_receptacle and not closed
+						- TBD: interp() syntax 'look at' => inventory
+						- TBD: universal syn 'ist' => inventory
+					- TBD: sit
+						- TBD: create enter => sit if do_noun is_seat entry in cond_syn()
+					- TBD: stand
+						- TBD create exit => stand if do_noun is_seat entry in cond_syn()
+					- TBD: doff
+						- TBD: create doff() method
+						- TBD: create take => doff if do_noun is_garment entry in cond_syn()
+				- TBD: enter & exit
+					- TBD: clean up existing code:
+						- TBD: enter_err() and exit_err() in err()
+						- TBD: enter() and exit() in seat()
+					- TBD: create room or door specific method for enter
+					- TBD: create room or door specific method for exit
+					- TBD: create exit => stand if do_noun is_contained
+			- TBD: extend new interp() structure
 				- TBD: generalize 2word cases => sit case
 				- TBD: generalize 'climb' => sit case
 				- TBD: create new 'climb' test scenarios (infer dir)
@@ -556,33 +592,17 @@ To Do List - Dark Castle v3
 				- TBD: clean up comments
 			- TBD: update existing test scenarios as needed if no longer pass
 		- TBD: review / unify all interp() update notes
-		- TBD: conditional synonyms / class-specific syns
-			- IDEA: some syns should only be true under certain circumstances
-				- EXAMPLE: 'enter' == 'sit' if do_noun is_seat
-				- EXAMPLE: 'take' = 'doff' if do_noun is_garment
-			- TBD: decide which class cond_syn() should live in (Identity ?)
-			- TBD: post-interp() but pre-err, introduce a call to cond_syn()
-			- TBD: cond_syn() takes action_lst evaluates, and replaces verb if appropriate
-				- IDEA: need to re-do class verbs to be most specific (e.g. 'doff' and 'sit')
-				- IDEA: then equate general verbs with specific in cond_syn()
-				- IDEA: benefit is that err never runs for general verb if swapped to specfic
-			- TBD: inventory
-				- TBD: inventory => examine if do_noun is_receptacle and not closed
-				- TBD: interp() syntax 'look at' => inventory
-				- TBD: universal syn 'ist' => inventory
-			- TBD: doff
-				- TBD: create doff() method
-				- TBD: create take => doff if do_noun is_garment entry in cond_syn()
-			- TBD: sit
-				- TBD: create enter => sit if do_noun is_seat entry in cond_syn()
-			- TBD: stand
-				- TBD: create exit => stand if do_noun is_contained
-			- TBD: enter & exit
-				- TBD: clean up existing code:
-					- TBD: enter_err() and exit_err() in err()
-					- TBD: enter() and exit() in seat()
-				- TBD: create room or door specific method for enter
-				- TBD: create room or door specific method for exit
+		- TBD: document new interp() approach
+			- TBD: credit zork and bolggers
+			- IDEA: 3 things I learned from zork: 
+				1) verbs vs. actions
+				2) syntax: blunt but effective - language is idiomatic; lack of gen prep rules
+				3) actions on nouns
+			- IDEA: trends i didn't follow:
+				1) class system vs. flat w/ attribute bits
+				2) retained preps
+
+
 		- TBD: nouns
 			- TBD: simplify noun clause sent to noun_handling()
 			- TBD: enable multiple adjectives

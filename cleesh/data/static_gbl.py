@@ -47,7 +47,7 @@ engine_static_dict = {
 
 	'action_verb_lst' : ['examine', 'jump', 'sit', 'stand'],
 
-	'non-action_verb_lst' : ['inventory', 'look'],
+	'non_action_verb_lst' : ['inventory', 'look'],
 
 	'prep_no_do_verb_lst' : ['climb'],
 
@@ -105,7 +105,7 @@ engine_static_dict = {
         'info' : 'help',
         'list' : 'inventory',
         'vault' : 'jump',
-        'leap' : 'jump',
+#        'leap' : 'jump', # moved to syntax
         'press' : 'push',
         'shove' : 'push',
         'place' : 'put',
