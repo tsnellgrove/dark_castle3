@@ -534,12 +534,8 @@ To Do List - Dark Castle v3
 					- DONE: syntax support for 'jump up', 'jump down', 'stand up'
 					- DONE: add 'examine' to intake list
 					- DONE: 'look' => 2-word cmd; 'look <X>' => 'examine <X>; infer_do_noun => room
-					- DONE: syntax support for 'look at'
-					- IDEA: investigate 'inventory' as specific to recepticals
-					- IDEA: err on non-receptical / closed
-					- IDEA: or maybe for now, inventory =syn=> x; future = cond syn => x ??
-					- TBD: syntax support for 'look in' and also 'list' (via universal syn)
-					- TBD: 'inventory' => 2-word cmd; 'i <X>' => 'examine <X>; infer_do_noun => hero
+					- DONE: syntax support for 'look at', 'look in'
+					- DONE: 'inventory' => 2-word cmd; 'i <X>' => 'examine <X>; infer_do_noun => hero
 					- TBD: clean up comments!
 					- TBD: refactor as needed
 					- TBD: update static lists to contain convert verbs
@@ -568,6 +564,10 @@ To Do List - Dark Castle v3
 				- IDEA: need to re-do class verbs to be most specific (e.g. 'doff' and 'sit')
 				- IDEA: then equate general verbs with specific in cond_syn()
 				- IDEA: benefit is that err never runs for general verb if swapped to specfic
+			- TBD: inventory
+				- TBD: inventory => examine if do_noun is_receptacle and not closed
+				- TBD: interp() syntax 'look at' => inventory
+				- TBD: universal syn 'ist' => inventory
 			- TBD: doff
 				- TBD: create doff() method
 				- TBD: create take => doff if do_noun is_garment entry in cond_syn()

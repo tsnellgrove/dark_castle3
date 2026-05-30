@@ -89,6 +89,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('inventory', 'input_do_noun') : ['examine', 'do_noun_str'],
 		('look', 'input_do_noun') : ['examine', 'do_noun_str'],
 		('look', 'at', 'input_do_noun') : ['examine', 'do_noun_str'],
+		('look', 'in', 'input_do_noun') : ['examine', 'do_noun_str'],
 
 #		('jump',) : ['jump', 'hero_obj'],
 #		('jump', 'up') : ['jump', 'hero_obj'],
@@ -192,6 +193,9 @@ def infer_do_noun(gs, verb_str):
 				do_noun_obj = obj
 				infer_txt = f"(in the {do_noun_obj.full_name})"
 	if verb_str == 'jump':
+		do_noun_count = 1
+		do_noun_obj = gs.core.hero
+	if verb_str == 'inventory':
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero
 	if verb_str == 'look':
@@ -310,7 +314,7 @@ def interpreter(user_input, master_obj_lst):
 
 
 	# handle sit commands - special case because includes prep
-	elif word1 in ['sit', 'stand', 'jump'] + ['examine','inventory', 'look']: # updated
+	elif word1 in ['examine', 'jump', 'sit', 'stand'] + ['inventory', 'look']: # updated
 		if word1 not in full_verbs_lst + ['inventory', 'look', 'stand', 'jump']: # updated
 			return 'error', ["Please start your sentence with a known verb!"]
 		prep = None # LEGACY
@@ -363,14 +367,14 @@ def interpreter(user_input, master_obj_lst):
 		elif (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
 			return 'error', ['I see more than one verb in that sentence!']
 		if word1 in ['stand', 'jump'] and do_noun_count > 0:
-			return 'error', [f"{word1.capitalize()} is a one-word command. I can't be used with a noun!"]
+			return 'error', [f"{word1.capitalize()} is a one-word command!"]
 #		elif word1 in ['look']: # new
 #			do_noun_obj = gs.map.hero_rm
 #			do_noun_cmd_lst = [do_noun_obj.name]
-#		elif word1 in ['inventory', 'stand', 'jump']: # new
-		elif word1 in ['inventory']: # new
-			do_noun_obj = gs.core.hero
-			do_noun_cmd_lst = [do_noun_obj.name]
+##		elif word1 in ['inventory', 'stand', 'jump']: # new
+#		elif word1 in ['inventory']: # new
+#			do_noun_obj = gs.core.hero
+#			do_noun_cmd_lst = [do_noun_obj.name]
 		elif do_noun_count > 0:
 			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
@@ -397,9 +401,9 @@ def interpreter(user_input, master_obj_lst):
 			id_noun_obj = None
 			id_noun_syn_lst = []
 		user_cmd_lst_raw = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst # new
-		print(f"user_cmd_lst_raw: {user_cmd_lst_raw}")
+##		print(f"user_cmd_lst_raw: {user_cmd_lst_raw}")
 		user_syn_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + ['input_do_noun'] + id_prep_cmd_lst + id_noun_syn_lst # new
-		print(f"user_syn_lst: {user_syn_lst}")
+##		print(f"user_syn_lst: {user_syn_lst}")
 		case, action_lst = syntax(tuple(user_syn_lst), word1, do_noun_obj.name, prep, None, gs)
 		return case, action_lst
 
