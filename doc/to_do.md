@@ -551,7 +551,7 @@ To Do List - Dark Castle v3
 					- DONE: add print() line to show before / after verb_syn replacement
 					- DONE: comment out 'leap' in global
 					- DONE: test
-					- TBD: update symetric syns for remaining active verbs
+					- DONE: symetric syns for remain active verbs (not including 'enter' / 'exit')
 				- TBD: create cond_syn() routine to inspect action_lst after syntax call
 					- IDEA: some syns should only be true under certain circumstances
 						- EXAMPLE: 'enter' == 'sit' if do_noun is_seat
@@ -592,6 +592,7 @@ To Do List - Dark Castle v3
 				- TBD: clean up comments
 			- TBD: update existing test scenarios as needed if no longer pass
 		- TBD: review / unify all interp() update notes
+		- TBD: update help() cmd to give a limited list of verbs ?
 		- TBD: document new interp() approach
 			- TBD: credit zork and bolggers
 			- IDEA: 3 things I learned from zork: 

@@ -73,11 +73,15 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('look', 'input_do_noun') : ['examine', 'do_noun_str'],
 		('look', 'at', 'input_do_noun') : ['examine', 'do_noun_str'],
 		('look', 'in', 'input_do_noun') : ['examine', 'do_noun_str'],
+		('describe', 'verb_syn') : ['examine'],
+		('inspect', 'verb_syn') : ['examine'],
+		('search', 'verb_syn') : ['examine'],
 
 		('jump', 'input_do_noun') : ['jump', 'do_noun_str'],
 		('jump', 'up', 'input_do_noun') : ['jump', 'do_noun_str'],
 		('jump', 'down', 'input_do_noun') : ['jump', 'do_noun_str'],
 		('leap', 'verb_syn') : ['jump'],
+		('vault', 'verb_syn') : ['jump'],
 
 		('sit', 'input_do_noun') : ['sit', 'do_noun_str'],
 		('sit', 'in', 'input_do_noun') : ['sit', 'do_noun_str'],
@@ -260,9 +264,11 @@ def interpreter(user_input, master_obj_lst):
 	# *** global variable assignment ***
 	word1 = user_input_lst[0]
 	creature = gs.core.hero
-	action_verb_lst = ['examine', 'jump', 'sit', 'stand']
-	non_action_verb_lst = ['inventory', 'look']
-	syn_verb_lst = ['leap']
+	tst_mode = False # test mode - print command lists at each stage of processing
+
+	action_verb_lst = ['examine', 'jump', 'sit', 'stand'] # verbs for which methods exist
+	non_action_verb_lst = ['inventory', 'look'] # non-action verbs subsituted in syntax or cond_syn()
+	syn_verb_lst = ['describe', 'inspect', 'leap', 'search', 'vault'] # symetric verb synonyms; substituted pre do_noun infer
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst
 
 	meta_cmd_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
@@ -341,10 +347,8 @@ def interpreter(user_input, master_obj_lst):
 		elif (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
 			return 'error', ['I see more than one verb in that sentence!']
 		
-		t_mode = False # test mode - print command lists at each stage of processing
-
 		user_cmd_lst_pre_syn = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
-		if t_mode:
+		if tst_mode:
 			print(f"user_cmd_lst_pre_syn: {user_cmd_lst_pre_syn}")
 
 		# apply symetric synonym verb substitution before do_noun inference: 'leap' => 'jump'
@@ -354,7 +358,7 @@ def interpreter(user_input, master_obj_lst):
 			word1 = verb_cmd_lst[0]
 
 		user_cmd_lst_syn = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst # new
-		if t_mode:
+		if tst_mode:
 			print(f"user_cmd_lst_syn: {user_cmd_lst_syn}")
 
 		if word1 in ['stand', 'jump'] and do_noun_count > 0:
@@ -386,14 +390,18 @@ def interpreter(user_input, master_obj_lst):
 			id_noun_syn_lst = []
 
 		user_cmd_lst_post_infer = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
-		if t_mode:
+		if tst_mode:
 			print(f"user_cmd_lst_post_infer: {user_cmd_lst_post_infer}")
 
 		user_syntax_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + ['input_do_noun'] + id_prep_cmd_lst + id_noun_syn_lst
-		if t_mode:
+		if tst_mode:
 			print(f"user_syntax_lst: {user_syntax_lst}")
 
 		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_obj.name, prep, None, gs)
+
+		if tst_mode:
+			print(f"action_lst: {action_lst}")
+
 		return case, action_lst
 
 

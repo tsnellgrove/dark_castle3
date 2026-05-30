@@ -95,16 +95,16 @@ engine_static_dict = {
         'devour' : 'eat',
         'ingest' : 'eat',
         'munch' : 'eat',
-        'describe' : 'examine',
-        'inspect' : 'examine',
-        'search' : 'examine',
+#        'describe' : 'examine', # moved to syntax
+#        'inspect' : 'examine', # moved to syntax
+#        'search' : 'examine', # moved to syntax
         'hand' : 'give',
         'donate' : 'give',
         'walk' : 'go',
         'run' : 'go',
         'info' : 'help',
         'list' : 'inventory',
-        'vault' : 'jump',
+#        'vault' : 'jump', # moved to syntax
 #        'leap' : 'jump', # moved to syntax
         'press' : 'push',
         'shove' : 'push',
