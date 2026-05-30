@@ -527,7 +527,7 @@ To Do List - Dark Castle v3
 						- DONE: scenario test
 						- DONE: fix scenario test if needed
 					- DONE: create new sit scenario test
-				- INPROC: generalize one_word_convert_lst => sit case
+				- DONE: generalize one_word_convert_lst => sit case
 					- DONE: first pass update (messy!)
 					- DONE: 'jump' and 'stand' => one-word cmds with 'no noun' err if do_noun_count > 0
 					- DONE: 'jump' and 'stand' => infer_do_noun => hero
@@ -536,19 +536,21 @@ To Do List - Dark Castle v3
 					- DONE: 'look' => 2-word cmd; 'look <X>' => 'examine <X>; infer_do_noun => room
 					- DONE: syntax support for 'look at', 'look in'
 					- DONE: 'inventory' => 2-word cmd; 'i <X>' => 'examine <X>; infer_do_noun => hero
-					- TBD: clean up comments!
-					- TBD: refactor as needed
-					- TBD: update static lists to contain convert verbs
-					- TBD: perhaps create new static lists for action_verb_lst and non_action_verb_lst
-					- TBD: perhaps migrate global syn to syntax syn for clarity / flexibility ?
-					- TBD: test for scenario errors
-					- TBD: new scenario for former convert verbs
+					- DONE: clean up comments!
+					- DONE: create new static lists for action_verb_lst and non_action_verb_lst
+					- CANCEL: migrate global syn to syntax for clarity / flexibility
+						- IDEA: no, would need to repeat all associated prep entries
+					- DONE: test for scenario errors
+				- TBD: think about ways to embed global syns in syntax (lik zork does)
+					- IDEA: ('leap', 'synonym_verb') : 'jump'
 				- TBD: generalize 2word cases => sit case
 				- TBD: generalize 'climb' => sit case
 				- TBD: create new 'climb' test scenarios (infer dir)
 				- TBD: generalize 'go' => sit case
 				- TBD: create new 'go' test scenarios (infer dir)
 				- TBD: generalize id_noun case => sit case
+				- TBD: generalize travel case? (infer verb?)
+				- TBD: elim 'one_word_convert_lst' in static_gbl
 				- TBD: global refactor
 				- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
 				- TBD: clean up comments

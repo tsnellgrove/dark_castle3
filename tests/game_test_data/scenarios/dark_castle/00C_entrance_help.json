@@ -53,7 +53,7 @@
     "\nHelp syntax = 'help <option>'. Help options = 'basics', 'abbreviations', 'adjectives', 'articles', 'attack', 'creatures', 'command-queue', 'debug', 'inventory', 'multiples', 'one-word-commands', 'prepositions', 'read', 'save', 'travel', 'verbosity', or 'verbs'.\n",
     "\nYou can 'go' in the following cardinal directions: north, south, east, west, northeast, northwest, southeast, southwest, up, down (e.g. 'go north'). You can also 'climb' up or down a climbable object (e.g. 'climb up tree').\n",
     "\nThere are three verbosity modes: 'verbose', 'brief', and 'superbrief'. In 'verbose' mode, you receive full descriptions of rooms and objects each time you enter a room. In 'brief' mode, you receive full descriptions only the first time you enter a room. In 'superbrief' mode, you never receive full descriptions of rooms unless you explicity issue a 'look' command. You can switch verbosity modes at any time by typing 'verbose', 'brief', or 'superbrief'. The default mode at the start of the game is 'verbose'.\n",
-    "\nAvailable verbs include: attack, climb, close, drink, drop, eat, enter, examine, exit, give, go, help, jump, lock, open, pull, push, put, read, show, stand, stow, take, unlock, wear\n",
+    "\nAvailable verbs include: attack, climb, close, drink, drop, eat, enter, examine, exit, give, go, help, jump, lock, open, pull, push, put, read, show, sit, stand, stow, take, unlock, wear\n",
     "\nDebug Mode is now set to True.\n",
     "\nThere are currently 3 main features to debug mode: 1) Python errors are shown rather than muted, 2) A module prefix is provided for game errors, and 3) The following debug verbs are usable: get_weight, capacity, where_is, rand_mode\n"
   ],

@@ -35,22 +35,6 @@ def input_cleanup(gs, user_input):
 def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 	syntax_dict = {
-#		('inventory',) : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['examine', 'hero_obj']
-#		},
-#		('look',) : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['examine', 'hero_rm_obj']
-#		},
-#		('stand',) : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['stand', 'hero_obj']
-#		},
-#		('jump',) : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['jump', 'hero_obj']
-#		},
 		('hero_dir',) : {
 			'case' : 'action_dir',
 			"base_action_lst" : ['go', 'hero_dir', 'hero_rm_obj']
@@ -84,23 +68,15 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'base_action_lst' : ['infer_do_noun']
 		},
 
-#		('inventory',) : ['examine', 'hero_obj'],
 		('examine', 'input_do_noun') : ['examine', 'do_noun_str'],
 		('inventory', 'input_do_noun') : ['examine', 'do_noun_str'],
 		('look', 'input_do_noun') : ['examine', 'do_noun_str'],
 		('look', 'at', 'input_do_noun') : ['examine', 'do_noun_str'],
 		('look', 'in', 'input_do_noun') : ['examine', 'do_noun_str'],
 
-#		('jump',) : ['jump', 'hero_obj'],
-#		('jump', 'up') : ['jump', 'hero_obj'],
-#		('jump', 'down') : ['jump', 'hero_obj'],
-
 		('jump', 'input_do_noun') : ['jump', 'do_noun_str'],
 		('jump', 'up', 'input_do_noun') : ['jump', 'do_noun_str'],
 		('jump', 'down', 'input_do_noun') : ['jump', 'do_noun_str'],
-
-#		('look',) : ['examine', 'hero_rm_obj'],
-#		('look', 'at') : ['examine', 'hero_rm_obj'],
 
 		('sit', 'input_do_noun') : ['sit', 'do_noun_str'],
 		('sit', 'in', 'input_do_noun') : ['sit', 'do_noun_str'],
@@ -110,9 +86,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('sit', 'down', 'in', 'input_do_noun') : ['sit', 'do_noun_str'],
 		('sit', 'down', 'on', 'input_do_noun') : ['sit', 'do_noun_str'],
 		('sit', 'down', 'into', 'input_do_noun') : ['sit', 'do_noun_str'],
-
-#		('stand',) : ['stand', 'hero_obj'],
-#		('stand', 'up') : ['stand', 'hero_obj'],
 
 		('stand', 'input_do_noun') : ['stand', 'do_noun_str'],
 		('stand', 'up', 'input_do_noun') : ['stand', 'do_noun_str'],
@@ -129,8 +102,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 	action_lst = base_action_lst.copy()
 ##	print(f"base_action_lst: {base_action_lst}")
 	for index, word in enumerate(base_action_lst):
-#		if word == 'hero_obj':
-#			action_lst[index] = gs.core.hero # convert class noun to object
 		if word == 'hero_rm_obj':
 			action_lst[index] = gs.map.hero_rm # convert class noun to object
 		if word == 'hero_dir':
@@ -270,7 +241,6 @@ def interpreter(user_input, master_obj_lst):
 		return 'error', ["I have no idea what you're talking about!"]
 	# errro if user input contains reserved syntax words
 	for word in user_input_lst:
-#		if word in ['hero_obj', 'hero_rm_obj', 'hero_dir', 'verb_str', 'do_noun_str', 'up_or_down_dir']: # reserved syntax
 		if word in ['hero_rm_obj', 'hero_dir', 'verb_str', 'do_noun_str', 'up_or_down_dir']: # reserved syntax
 			return 'error', [f"What??"]
 	# one-word commands where user_input_lst is longer than one word
@@ -278,7 +248,6 @@ def interpreter(user_input, master_obj_lst):
 			gs.io.get_lst('pre_interp_word_lst','eng') + 
 			gs.io.get_lst('one_word_only_lst','eng') + 
 			gs.io.get_lst('one_word_secret_lst','eng') +
-#			gs.io.get_lst('one_word_convert_lst','eng') + # added | new comment
 			gs.io.get_lst('one_word_travel_lst','eng') # added
 			):
 		return 'error', [f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"]
@@ -292,7 +261,7 @@ def interpreter(user_input, master_obj_lst):
 	full_verbs_lst = (
 			gs.io.get_lst('known_verb_lst','eng') + 
 			gs.io.get_lst('debug_verb_lst','eng') +
-			gs.io.get_lst('non-action_verb_list','eng') +
+			gs.io.get_lst('non-action_verb_lst','eng') +
 			gs.io.get_lst('one_word_convert_lst','eng') # new
 			)
 	case = None
@@ -301,8 +270,6 @@ def interpreter(user_input, master_obj_lst):
 	# *** one-word and meta commands ***
 	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_travel_lst','eng'):
 		case, action_lst = syntax(('hero_dir',), None, None, word1, None, gs)
-#	elif word1 in gs.io.get_lst('one_word_convert_lst','eng'): # e.g. inventory, look, stand, jump # new
-#		case, action_lst = syntax(tuple(user_input_lst), word1, None, None, None, gs) # new
 	elif word1 in meta_cmd_lst: # e.g. credits, score, version, verbose, brief, superbrief
 		case, action_lst = syntax(('meta_cmd',), word1, None, None, None, gs)
 	elif word1 in ['help']:
@@ -314,8 +281,8 @@ def interpreter(user_input, master_obj_lst):
 
 
 	# handle sit commands - special case because includes prep
-	elif word1 in ['examine', 'jump', 'sit', 'stand'] + ['inventory', 'look']: # updated
-		if word1 not in full_verbs_lst + ['inventory', 'look', 'stand', 'jump']: # updated
+	elif word1 in gs.io.get_lst('action_verb_lst','eng') + gs.io.get_lst('non-action_verb_lst','eng'):
+		if word1 not in gs.io.get_lst('action_verb_lst','eng') + gs.io.get_lst('non-action_verb_lst','eng'):
 			return 'error', ["Please start your sentence with a known verb!"]
 		prep = None # LEGACY
 		verb_cmd_lst = [] # new
@@ -336,9 +303,8 @@ def interpreter(user_input, master_obj_lst):
 		do_noun_count = 0 # new
 		id_prep_count = 0 # new
 		id_noun_count = 0 # new
-		for index, word in enumerate(user_input_lst): # new
-#			if word in full_verbs_lst + ['inventory', 'look', 'stand', 'jump']: # updated
-			if word in full_verbs_lst: # updated
+		for index, word in enumerate(user_input_lst):
+			if word in gs.io.get_lst('action_verb_lst','eng') + gs.io.get_lst('non-action_verb_lst','eng'):
 				verb_cmd_lst.append(word)
 				verb_index = index
 				verb_count += 1
@@ -368,13 +334,6 @@ def interpreter(user_input, master_obj_lst):
 			return 'error', ['I see more than one verb in that sentence!']
 		if word1 in ['stand', 'jump'] and do_noun_count > 0:
 			return 'error', [f"{word1.capitalize()} is a one-word command!"]
-#		elif word1 in ['look']: # new
-#			do_noun_obj = gs.map.hero_rm
-#			do_noun_cmd_lst = [do_noun_obj.name]
-##		elif word1 in ['inventory', 'stand', 'jump']: # new
-#		elif word1 in ['inventory']: # new
-#			do_noun_obj = gs.core.hero
-#			do_noun_cmd_lst = [do_noun_obj.name]
 		elif do_noun_count > 0:
 			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep

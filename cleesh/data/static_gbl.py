@@ -42,10 +42,12 @@ engine_static_dict = {
 
 	'known_verb_lst' : ['attack', 'close', 'drink', 'drop', 'eat', 'examine', 'open',
 		'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
-		'unlock', 'wear', 'enter', 'exit', 'stand', 'stow', 'jump', 'climb'
+		'unlock', 'wear', 'enter', 'exit', 'sit', 'stand', 'stow', 'jump', 'climb'
 	],
 
-	'non-action_verb_list' : ['sit'],
+	'action_verb_lst' : ['examine', 'jump', 'sit', 'stand'],
+
+	'non-action_verb_lst' : ['inventory', 'look'],
 
 	'prep_no_do_verb_lst' : ['climb'],
 
