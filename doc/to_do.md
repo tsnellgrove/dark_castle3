@@ -552,6 +552,7 @@ To Do List - Dark Castle v3
 					- DONE: comment out 'leap' in global
 					- DONE: test
 					- DONE: symetric syns for remain active verbs (not including 'enter' / 'exit')
+					- DONE: symetric synonym syntax call check => case != 'error' (not err msg)
 				- TBD: create cond_syn() routine to inspect action_lst after syntax call
 					- IDEA: some syns should only be true under certain circumstances
 						- EXAMPLE: 'enter' == 'sit' if do_noun is_seat

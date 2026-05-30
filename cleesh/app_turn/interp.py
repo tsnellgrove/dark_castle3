@@ -264,7 +264,7 @@ def interpreter(user_input, master_obj_lst):
 	# *** global variable assignment ***
 	word1 = user_input_lst[0]
 	creature = gs.core.hero
-	tst_mode = False # test mode - print command lists at each stage of processing
+	tst_mode = True # test mode - print command lists at each stage of processing
 
 	action_verb_lst = ['examine', 'jump', 'sit', 'stand'] # verbs for which methods exist
 	non_action_verb_lst = ['inventory', 'look'] # non-action verbs subsituted in syntax or cond_syn()
@@ -352,8 +352,10 @@ def interpreter(user_input, master_obj_lst):
 			print(f"user_cmd_lst_pre_syn: {user_cmd_lst_pre_syn}")
 
 		# apply symetric synonym verb substitution before do_noun inference: 'leap' => 'jump'
-		_unused, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
-		if tmp_lst != ['What??']:
+		err_chk, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
+#		_unused, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
+#		if tmp_lst != ['What??']:
+		if err_chk != 'error':
 			verb_cmd_lst = tmp_lst
 			word1 = verb_cmd_lst[0]
 
