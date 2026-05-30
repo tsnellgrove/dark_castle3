@@ -353,8 +353,6 @@ def interpreter(user_input, master_obj_lst):
 
 		# apply symetric synonym verb substitution before do_noun inference: 'leap' => 'jump'
 		err_chk, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
-#		_unused, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
-#		if tmp_lst != ['What??']:
 		if err_chk != 'error':
 			verb_cmd_lst = tmp_lst
 			word1 = verb_cmd_lst[0]
