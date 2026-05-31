@@ -81,6 +81,9 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('search', 'verb_syn') : ['examine'],
 		('list', 'verb_syn') : ['inventory'],
 
+		('exit', 'input_do_noun') : ['exit', 'do_noun_str'],
+#		('out', 'verb_syn') : ['enter'],
+
 		('jump', 'input_do_noun') : ['jump', 'do_noun_str'],
 		('jump', 'up', 'input_do_noun') : ['jump', 'do_noun_str'],
 		('jump', 'down', 'input_do_noun') : ['jump', 'do_noun_str'],
@@ -163,6 +166,8 @@ def asym_syn(action_lst, gs):
 	case = 'universal'
 	if verb_str in ['enter'] and do_noun_obj.is_seat():
 		action_lst[0] = 'sit'
+	if verb_str in ['exit'] and gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
+		action_lst = ['stand', gs.core.hero]
 	return case, action_lst
 
 
@@ -181,19 +186,12 @@ def infer_do_noun(gs, verb_str):
 				do_noun_count += 1
 				do_noun_obj = obj
 				infer_txt = f"(in the {do_noun_obj.full_name})"
-#	if verb_str == 'jump':
 	if verb_str in ['jump', 'inventory', 'stand']:
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero
-#	if verb_str == 'inventory':
-#		do_noun_count = 1
-#		do_noun_obj = gs.core.hero
 	if verb_str == 'look':
 		do_noun_count = 1
 		do_noun_obj = gs.map.hero_rm
-#	if verb_str == 'stand':
-#		do_noun_count = 1
-#		do_noun_obj = gs.core.hero
 	if do_noun_count == 1 and infer_txt is not None:
 		gs.io.buffer(infer_txt)
 	return do_noun_count == 1, do_noun_obj, err_txt
@@ -278,7 +276,7 @@ def interpreter(user_input, master_obj_lst):
 	creature = gs.core.hero
 	tst_mode = True # test mode - print command lists at each stage of processing
 
-	action_verb_lst = ['enter', 'examine', 'jump', 'sit', 'stand'] # verbs for which methods exist
+	action_verb_lst = ['enter', 'examine', 'exit','jump', 'sit', 'stand'] # verbs have a method and / or err routine
 	non_action_verb_lst = ['inventory', 'look'] # non-action verbs subsituted in syntax or cond_syn()
 	syn_verb_lst = ['describe', 'inspect', 'leap', 'list','search', 'vault'] # symetric verb synonyms; substituted pre do_noun infer
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst

@@ -580,9 +580,13 @@ To Do List - Dark Castle v3
 						- DONE: test
 					- INPROC: asymetric syn - 'exit'
 						- DONE: disable global syn for exit => stand
-						- TBD: add 'exit to action_verb list
-						- TBD: update exit_err() in error()
-						- TBD: in asym_syn(), if 'exit' and do_noun_obj.is_seat() => stand
+						- DONE: add 'exit to action_verb list
+						- DONE: update exit_err() in error()
+						- DONE: add syntax entry for 'exit' (see legacy code)
+						- DONE: in asym_syn(), if 'exit' and do_noun_obj.is_seat() => stand
+						- DONE: test
+						- TBD: add infer do_noun entry for 'exit'
+						- TBD: scenario test
 					- TBD: re-test scenarios
 			- TBD: extend new interp() structure
 				- TBD: generalize 2word cases => sit case
