@@ -83,7 +83,7 @@ engine_static_dict = {
         'damage' : 'attack',
         'jab' : 'attack',
         'clobber' : 'attack',
-#        'kick' : 'attack', # elim because of 'kick with fist' response
+#       'kick' : 'attack', # elim because of 'kick with fist' response
         'hit' : 'attack',
         'kill' : 'attack',
         'scale' : 'climb',
@@ -100,14 +100,14 @@ engine_static_dict = {
         'walk' : 'go',
         'run' : 'go',
         'info' : 'help',
-        'list' : 'inventory',
+#        'list' : 'inventory', # add as symetric verb syn
         'press' : 'push',
         'shove' : 'push',
         'place' : 'put',
         'skim' : 'read',
         'scan' : 'read',
-        'enter' : 'sit', # to be a conditional synonym in the future; for now, it's a universal synonym
-        'exit' : 'stand', # to be a conditional synonym in the future; for now, it's a universal synonym
+#       'enter' : 'sit', # to be a conditional synonym in the future; for now, it's a universal synonym
+#       'exit' : 'stand', # to be a conditional synonym in the future; for now, it's a universal synonym
 		'get' : 'take',
         'carry' : 'take',
         'hold' : 'take',

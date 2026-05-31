@@ -67,6 +67,9 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'case' : 'action_2word',
 			'base_action_lst' : ['infer_do_noun']
 		},
+		
+		('enter', 'input_do_noun') : ['enter', 'do_noun_str'],
+#		('in', 'verb_syn') : ['enter'],
 
 		('examine', 'input_do_noun') : ['examine', 'do_noun_str'],
 		('inventory', 'input_do_noun') : ['examine', 'do_noun_str'],
@@ -76,6 +79,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('describe', 'verb_syn') : ['examine'],
 		('inspect', 'verb_syn') : ['examine'],
 		('search', 'verb_syn') : ['examine'],
+		('list', 'verb_syn') : ['inventory'],
 
 		('jump', 'input_do_noun') : ['jump', 'do_noun_str'],
 		('jump', 'up', 'input_do_noun') : ['jump', 'do_noun_str'],
@@ -151,6 +155,14 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 				action_lst = [f"{input_verb.capitalize()} what?"]
 				break
 ##	print(f"action_lst: {action_lst}")
+	return case, action_lst
+
+def asym_syn(action_lst, gs):
+	verb_str= action_lst[0]
+	do_noun_obj = action_lst[1]
+	case = 'universal'
+	if verb_str in ['enter'] and do_noun_obj.is_seat():
+		action_lst[0] = 'sit'
 	return case, action_lst
 
 
@@ -266,9 +278,9 @@ def interpreter(user_input, master_obj_lst):
 	creature = gs.core.hero
 	tst_mode = True # test mode - print command lists at each stage of processing
 
-	action_verb_lst = ['examine', 'jump', 'sit', 'stand'] # verbs for which methods exist
+	action_verb_lst = ['enter', 'examine', 'jump', 'sit', 'stand'] # verbs for which methods exist
 	non_action_verb_lst = ['inventory', 'look'] # non-action verbs subsituted in syntax or cond_syn()
-	syn_verb_lst = ['describe', 'inspect', 'leap', 'search', 'vault'] # symetric verb synonyms; substituted pre do_noun infer
+	syn_verb_lst = ['describe', 'inspect', 'leap', 'list','search', 'vault'] # symetric verb synonyms; substituted pre do_noun infer
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst
 
 	meta_cmd_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
@@ -361,7 +373,7 @@ def interpreter(user_input, master_obj_lst):
 		if tst_mode:
 			print(f"user_cmd_lst_syn: {user_cmd_lst_syn}")
 
-		if word1 in ['stand', 'jump'] and do_noun_count > 0:
+		if word1 in ['stand', 'jump', 'inventory'] and do_noun_count > 0:
 			return 'error', [f"{word1.capitalize()} is a one-word command!"]
 		elif do_noun_count > 0:
 			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
@@ -400,7 +412,12 @@ def interpreter(user_input, master_obj_lst):
 		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_obj.name, prep, None, gs)
 
 		if tst_mode:
-			print(f"action_lst: {action_lst}")
+			print(f"pre-asym-syn action_lst: {action_lst}")
+
+		case, action_lst = asym_syn(action_lst, gs)
+
+		if tst_mode:
+			print(f"post-asym-syn action_lst: {action_lst}")
 
 		return case, action_lst
 

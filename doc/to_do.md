@@ -553,7 +553,16 @@ To Do List - Dark Castle v3
 					- DONE: test
 					- DONE: symetric syns for remain active verbs (not including 'enter' / 'exit')
 					- DONE: symetric synonym syntax call check => case != 'error' (not err msg)
-				- TBD: create cond_syn() routine to inspect action_lst after syntax call
+					- DONE: sort out 'inventory'
+						- DONE: 'inventory' => one_word cmd
+						- DONE: 'list' = sym syn of 'inventory'
+				- INPROC: create cond_syn() routine to inspect action_lst after syntax call
+					- CANCEL: inventory case (too complicated - see above)
+						- CANCEL: if not do_noun.is_receptacle(): error = "nothing to look within"
+						- CANCEL: elif not do_noun.is_closed(): error = "{do_noun.f_n} is closed"
+						- CANCEL: else: action_lst[0] = 'examine'
+						- CANCEL: interp() syntax 'look at', 'inventory' => inventory
+						- CANCEL: universal syn 'ist' => inventory
 					- IDEA: some syns should only be true under certain circumstances
 						- EXAMPLE: 'enter' == 'sit' if do_noun is_seat
 						- EXAMPLE: 'take' = 'doff' if do_noun is_garment
@@ -561,36 +570,39 @@ To Do List - Dark Castle v3
 						- IDEA: need to re-do class verbs to be most specific (e.g. 'doff' and 'sit')
 						- IDEA: then equate general verbs with specific in cond_syn()
 						- IDEA: benefit is that err never runs for general verb if swapped to specfic
-					- TBD: create asym_syn(action_lst, gs) function
-						- TBD: returns case, action_lst
-						- TBD: options are 1) no change, 2) 'error', ["err_txt"], 3) new_case, new_al
-					- TBD: inventory case
-						- TBD: if not do_noun.is_receptacle(): error = "nothing to look within"
-						- TBD: elif not do_noun.is_closed(): error = "{do_noun.f_n} is closed"
-						- TBD: else: action_lst[0] = 'examine'
-						- TBD: interp() syntax 'look at', 'inventory' => inventory
-						- TBD: universal syn 'ist' => inventory
-					- TBD: sit
-						- TBD: create enter => sit if do_noun is_seat entry in cond_syn()
-					- TBD: stand
-						- TBD create exit => stand if do_noun is_seat entry in cond_syn()
-					- TBD: doff
-						- TBD: create doff() method
-						- TBD: create take => doff if do_noun is_garment entry in cond_syn()
-				- TBD: enter & exit
-					- TBD: clean up existing code:
-						- TBD: enter_err() and exit_err() in err()
-						- TBD: enter() and exit() in seat()
-					- TBD: create room or door specific method for enter
-					- TBD: create room or door specific method for exit
-					- TBD: create exit => stand if do_noun is_contained
+					- DONE: asymetric synonyms - 'enter'
+						- DONE: update enter_err() in error()
+						- DONE: create asym_syn(action_lst, gs) function in interp()
+						- DONE: returns case, action_lst
+						- IDEA: options are 1) no change, 2) 'error', ["err_txt"], 3) new_case, new_al
+						- DONE: disable global syn for enter => sit
+						- DONE: add 'enter' to action_verb lst
+						- DONE: test
+					- INPROC: asymetric syn - 'exit'
+						- DONE: disable global syn for exit => stand
+						- TBD: add 'exit to action_verb list
+						- TBD: update exit_err() in error()
+						- TBD: in asym_syn(), if 'exit' and do_noun_obj.is_seat() => stand
+					- TBD: re-test scenarios
 			- TBD: extend new interp() structure
 				- TBD: generalize 2word cases => sit case
 					- TBD: need routine for hand mgmt
-				- TBD: generalize 'climb' => sit case
-				- TBD: create new 'climb' test scenarios (infer dir)
+					- TBD: doff
+						- TBD: create doff() method
+						- TBD: create take => doff if do_noun is_garment entry in cond_syn()
 				- TBD: generalize 'go' => sit case
 				- TBD: create new 'go' test scenarios (infer dir)
+				- TBD: generalize 'climb' => sit case
+				- TBD: create new 'climb' test scenarios (infer dir)
+					- TBD: enter & exit
+						- TBD: clean up existing code:
+							- TBD: enter_err() and exit_err() in err()
+							- TBD: enter() and exit() in seat()
+						- TBD: symetric syn 'in' => 'enter' ; 'in' as verb & prep ? infer 'go' ?
+						- TBD: smilar issue for symetric syn 'out' => 'exit'
+						- TBD: create room or door specific method for enter
+						- TBD: create room or door specific method for exit
+						- TBD: create exit => stand if do_noun is_contained
 				- TBD: generalize id_noun case => sit case
 				- TBD: generalize travel case? (infer verb?)
 				- TBD: elim 'one_word_convert_lst' in static_gbl
@@ -598,6 +610,7 @@ To Do List - Dark Castle v3
 				- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
 				- TBD: clean up comments
 			- TBD: update existing test scenarios as needed if no longer pass
+		- TBD: create word-only test game for vocab test scenarios ??
 		- TBD: review / unify all interp() update notes
 		- TBD: update help() cmd to give a limited list of verbs ?
 		- TBD: document new interp() approach
