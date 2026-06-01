@@ -556,7 +556,7 @@ To Do List - Dark Castle v3
 				- DONE: sort out 'inventory'
 					- DONE: 'inventory' => one_word cmd
 					- DONE: 'list' = sym syn of 'inventory'
-			- INPROC: create cond_syn() routine to inspect action_lst after syntax call
+			- DONE: create cond_syn() routine to inspect action_lst after syntax call
 				- CANCEL: inventory case (too complicated - see above)
 					- CANCEL: if not do_noun.is_receptacle(): error = "nothing to look within"
 					- CANCEL: elif not do_noun.is_closed(): error = "{do_noun.f_n} is closed"
@@ -578,7 +578,7 @@ To Do List - Dark Castle v3
 					- DONE: disable global syn for enter => sit
 					- DONE: add 'enter' to action_verb lst
 					- DONE: test
-				- INPROC: asymetric syn - 'exit'
+				- DONE: asymetric syn - 'exit'
 					- DONE: update exit_err() in error()
 					- DONE: disable global syn for exit => stand
 					- DONE: add 'exit' to action_verb list
@@ -587,12 +587,28 @@ To Do List - Dark Castle v3
 					- DONE: add syntax entry for 'exit' (see legacy code)
 					- DONE: in asym_syn(), if 'exit' and do_noun_obj.is_seat() => stand
 					- DONE: manual test
-					- TBD: scenario test
+					- DONE: scenario test
 		- TBD: extend new interp() structure
 			- TBD: generalize 2word cases => sit case
 				- TBD: need routine for hand mgmt
+					- IDEA: should be independent fom interp() due to do_noun_exe() and id_noun_exe()
+					- IDEA: should be post x_err() and pre_action() because changes game world
+					- TBD: create hand_mgmt(case, word_lst, gs) function in hand_manage() module
+					- TBD: add same cmds in interp()
+					- TBD: call from app_main() just before cmd_exe()
+				- TBD: wear
+					- TBD: disable global syn for don => wear
+					- TBD: add wear to action_verb list
+					- TBD: add 'don' as symetric syns to syntax
+					- TBD: add infer do_noun entry for 'wear' (if in_hand)
+					- TBD: add syntax entry for 'wear'
+					- TBD: in asym_syn(), add conditional syn if exist (gen purpose)
+					- TBD: manual test
+					- TBD: scenario test
 				- TBD: doff
 					- TBD: create doff() method
+					- TBD: remove garment refs from take()
+					- TBD: Introduce doff as cmd (see 'wear' abnve)
 					- TBD: in asym_syn() 'take' => 'doff' if do_noun is_garment
 			- TBD: generalize 'go':
 				- TBD: if only dir, infer_verb = 'go'

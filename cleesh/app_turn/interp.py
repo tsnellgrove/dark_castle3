@@ -134,10 +134,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 				action_lst = ["Which way do you want to climb, up or down?"]
 				break
 		if word == 'infer_do_noun':
-#			if input_verb in ['exit'] and gs.core.hero.is_contained(gs):
-#				gs.io.buffer(f"(from the {gs.core.hero.get_contained_by(gs).full_name})")
-#				action_lst = [input_verb, gs.core.hero.get_contained_by(gs)]
-#				break
 			if input_verb in ['drop', 'stow', 'eat', 'wear'] and not gs.core.hero.hand_is_empty():
 				gs.io.buffer(f"(the {gs.core.hero.get_hand_item().full_name})")
 				action_lst = [input_verb, gs.core.hero.get_hand_item()]
@@ -279,7 +275,7 @@ def interpreter(user_input, master_obj_lst):
 	# *** global variable assignment ***
 	word1 = user_input_lst[0]
 	creature = gs.core.hero
-	tst_mode = True # test mode - print command lists at each stage of processing
+	tst_mode = False # test mode - print command lists at each stage of processing
 
 	action_verb_lst = ['enter', 'examine', 'exit','jump', 'sit', 'stand'] # verbs have a method and / or err routine
 	non_action_verb_lst = ['inventory', 'look'] # non-action verbs subsituted in syntax or cond_syn()
