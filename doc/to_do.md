@@ -342,7 +342,7 @@ To Do List - Dark Castle v3
 		- DONE: manual test & fix
 		- DONE: clean-up comments
 		- DONE: refactor assumed section (consolideate exit?, leave error till later?)
-	- INPROC: sort out 'climb':
+	- DONE: sort out 'climb':
 		- IDEA: prep_no_do verb case => syntax action_dir
 		- DONE: review climb case in detail (including app_main() )
 		- DONE: move non-up-down err to climb_err()
@@ -389,243 +389,244 @@ To Do List - Dark Castle v3
 					- identify verb, do_noun, id_noun, & preps => syntax
 					- syntax: txt_lst => action_lst (elim too long cases here)
 					- process action_lst => validate / cmd_exe pipeline
-		- DONE: big picture updates
-			- DONE: move too-long error to top (exception for help)
-			- DONE: 'tru_1word' + 'help => 'meta_cmds'
-				- DONE: add error for user_input_lst[0] == 'help' and len(user_input_lst) > 2
-				- DONE: combine 'help' and 'tru_1word' cases under 'meta_cmds' case in interp()
-				- DONE: combine syntax call for meta_cmds (elim len constraints)
-					- DONE: updat syntax call
-					- DONE: troubleshoot
-					- DONE: clean-up comments
-			- DONE: tactical tuning
-				- DONE: separate 'help' from meta_cmd_lst
-				- DONE: clean up convert & travel; use elif; unify return call (if case is not None)
-				- DONE: syntx [input_dir, verb, do_noun] > [input_verb, do_noun, prep_dir_opt, id_noun]
+	- DONE: big picture updates
+		- DONE: move too-long error to top (exception for help)
+		- DONE: 'tru_1word' + 'help => 'meta_cmds'
+			- DONE: add error for user_input_lst[0] == 'help' and len(user_input_lst) > 2
+			- DONE: combine 'help' and 'tru_1word' cases under 'meta_cmds' case in interp()
+			- DONE: combine syntax call for meta_cmds (elim len constraints)
+				- DONE: updat syntax call
+				- DONE: troubleshoot
 				- DONE: clean-up comments
-				- DONE: add 'dir' cmd to 'too long' err ?
-			- DONE: combine 1-word convert, dir, infer, & 1-word err into 1 syntax call block
-		- DONE: synergize 'go' and 'climb' commands
-			- DONE: tighten up initial error cases
-			- DONE: simplify 'climb' syntax call - pt1
-		- DONE: fix 'action_dir' case in trig_chk() => [verb, dir, do_noun]
-		- DONE: review 2word_verb case and syntax call
-			- DONE: convert 2word case to 2word_action
-			- DONE: elim 2word case
-			- DONE: elim '2word' in interp(), validate(), cmd_exe(), & trig_chk()
-			- DONE: test
+		- DONE: tactical tuning
+			- DONE: separate 'help' from meta_cmd_lst
+			- DONE: clean up convert & travel; use elif; unify return call (if case is not None)
+			- DONE: syntx [input_dir, verb, do_noun] > [input_verb, do_noun, prep_dir_opt, id_noun]
 			- DONE: clean-up comments
-		- INPROC: verb vs. action
-			- DONE: introduce a new non_action_verb_lst ("sit")
-			- DONE: implement "sit in chair", "sit on chair"
-			- DONE: more sit testing
-			- DONE: address "Can't use 'Enter'" error
-			- DONE: "Sit what" err => "Sit where"
-			- DONE: review / refactor noun_handling()
-				- DONE: review noun_handling() for 2word case
-				- DONE: review noun_handling() for prep case
-				- DONE: update existing test scenarios as needed if no longer pass
-				- DONE: refactor noun_handling()
+			- DONE: add 'dir' cmd to 'too long' err ?
+		- DONE: combine 1-word convert, dir, infer, & 1-word err into 1 syntax call block
+	- DONE: synergize 'go' and 'climb' commands
+		- DONE: tighten up initial error cases
+		- DONE: simplify 'climb' syntax call - pt1
+	- DONE: fix 'action_dir' case in trig_chk() => [verb, dir, do_noun]
+	- DONE: review 2word_verb case and syntax call
+		- DONE: convert 2word case to 2word_action
+		- DONE: elim 2word case
+		- DONE: elim '2word' in interp(), validate(), cmd_exe(), & trig_chk()
+		- DONE: test
+		- DONE: clean-up comments
+	- DONE: verb vs. action
+		- DONE: introduce a new non_action_verb_lst ("sit")
+		- DONE: implement "sit in chair", "sit on chair"
+		- DONE: more sit testing
+		- DONE: address "Can't use 'Enter'" error
+		- DONE: "Sit what" err => "Sit where"
+		- DONE: review / refactor noun_handling()
+			- DONE: review noun_handling() for 2word case
+			- DONE: review noun_handling() for prep case
+			- DONE: update existing test scenarios as needed if no longer pass
+			- DONE: refactor noun_handling()
+			- DONE: clean up comments
+			- DONE: review cleaned-up noun_handling()
+			- DONE: re-refactor noun_handling()
+			- DONE: embed root_word_count() in noun_handling() [no need for function]
+			- DONE: refactor root_word_count section
+			- DONE: clean-up
+			- DONE: in interp() islice => slice
+			- DONE: clean up comments (including import)
+		- DONE: implement "sit" and "climb" w/ do_noun infer
+			- IDEA: if != 1: "What do you want to sit on / climb?"
+			- IDEA: if 1: "(the <do_noun>)"
+			- DONE: infer sit
+			- TBD: infer climb
+				- IDEA: use similar function to infer_seat() to infer_climable()
+				- IDEA: then within interp, can infer direction
+				- IDEA: from within interp, can also call infer_climbable() for "climb_<dir> case
+				- DONE: write climbable_infer() function
+				- DONE: call climbable_infer() from syntax()
+				- DONE: need to fix error from return without update of user_input_lst; obj => txt
+				- DONE: create test_stepladder
+				- DONE: add test_stepladder to Entrance and validte "climb" response
+				- DONE: fix scenario failure
+				- DONE: review interp() and elim comments
+				- DONE: investigate better way to deal w/ noun infer of non-2word
+				- DONE: call infer_climbable() from interp() to deal w/ "climb up" / "climb down"
+				- DONE: check scenarios
+			- DONE: refactor sit() 
+				- DONE: update to match climb()
+				- DONE: elim ladder and test_chair; run scenario test
+				- DONE: return to test state
+				- DONE: develop rigorous 'sit' test:
+				- DONE: infer tests, 1 seat:
+					'sit' => infer_seat() | now: {WORKS!!!}
+					'sit in' => infer_seat() | now: {WORKS!!!}
+					'sit on' => infer_seat() | now: {WORKS!!!}
+					'sit into' => infer_seat() | now: {WORKS!!!}
+					'sit down' => infer_seat() | now: {WORKS!!!}
+					'sit down in' => infer_seat() | now: {WORKS!!!}
+					'sit down on' => infer_seat() | now: {WORKS!!!}
+					'sit down into' | now: {WORKS!!!}
+				- DONE: seat_obj given:
+					'sit <x>' | now: {WORKS!!!}
+					'sit in <x>' | now: {WORKS!!!}
+					'sit on <x>' | now: {WORKS!!!}
+					'sit into <x>' | now: {WORKS!!!}
+					'sit down <x>' | now: {WORKS!!!}
+					'sit down in <x>' | now: {WORKS!!!}
+					'sit down on <x>' | now: {WORKS!!!}
+					'sit down into <x>' | now: {What??"}
+				- DONE: infer tests, 0 seats:
+					'sit' => infer_seat() | now: "Where do you want to sit?"
+					'sit in' => infer_seat() | now: "Where do you want to sit?"
+					'sit on' => infer_seat() | now: "Where do you want to sit?"
+					'sit into' => infer_seat() | now: "Where do you want to sit?"
+					'sit down' => infer_seat() | now: "Where do you want to sit?"
+					'sit down in' => infer_seat() | now: "Where do you want to sit?"
+					'sit down on' => infer_seat() | now: "Where do you want to sit?"
+					'sit down into <x>' | now: "Where do you want to sit?"
+				- DONE: infer tests, 2 seats:
+					'sit' => infer_seat() | now: "Where do you want to sit?"
+					'sit in' => infer_seat() | now: "Where do you want to sit?"
+					'sit on' => infer_seat() | now: "Where do you want to sit?"
+					'sit into' => infer_seat() | now: "Where do you want to sit?"
+					'sit down' => infer_seat() | now: "Where do you want to sit?"
+					'sit down in' => infer_seat() | now: "Where do you want to sit?"
+					'sit down on' => infer_seat() | now: "Where do you want to sit?"
+					'sit down into' | now: "Where do you want to sit?"
+				- DONE: run rigorous test for all cases
 				- DONE: clean up comments
-				- DONE: review cleaned-up noun_handling()
-				- DONE: re-refactor noun_handling()
-				- DONE: embed root_word_count() in noun_handling() [no need for function]
-				- DONE: refactor root_word_count section
-				- DONE: clean-up
-				- DONE: in interp() islice => slice
-				- DONE: clean up comments (including import)
-			- DONE: implement "sit" and "climb" w/ do_noun infer
-				- IDEA: if != 1: "What do you want to sit on / climb?"
-				- IDEA: if 1: "(the <do_noun>)"
-				- DONE: infer sit
-				- TBD: infer climb
-					- IDEA: use similar function to infer_seat() to infer_climable()
-					- IDEA: then within interp, can infer direction
-					- IDEA: from within interp, can also call infer_climbable() for "climb_<dir> case
-					- DONE: write climbable_infer() function
-					- DONE: call climbable_infer() from syntax()
-					- DONE: need to fix error from return without update of user_input_lst; obj => txt
-					- DONE: create test_stepladder
-					- DONE: add test_stepladder to Entrance and validte "climb" response
-					- DONE: fix scenario failure
-					- DONE: review interp() and elim comments
-					- DONE: investigate better way to deal w/ noun infer of non-2word
-					- DONE: call infer_climbable() from interp() to deal w/ "climb up" / "climb down"
-					- DONE: check scenarios
-				- DONE: refactor sit() 
-					- DONE: update to match climb()
-					- DONE: elim ladder and test_chair; run scenario test
-					- DONE: return to test state
-					- DONE: develop rigorous 'sit' test:
-					- DONE: infer tests, 1 seat:
-						'sit' => infer_seat() | now: {WORKS!!!}
-						'sit in' => infer_seat() | now: {WORKS!!!}
-						'sit on' => infer_seat() | now: {WORKS!!!}
-						'sit into' => infer_seat() | now: {WORKS!!!}
-						'sit down' => infer_seat() | now: {WORKS!!!}
-						'sit down in' => infer_seat() | now: {WORKS!!!}
-						'sit down on' => infer_seat() | now: {WORKS!!!}
-						'sit down into' | now: {WORKS!!!}
-					- DONE: seat_obj given:
-						'sit <x>' | now: {WORKS!!!}
-						'sit in <x>' | now: {WORKS!!!}
-						'sit on <x>' | now: {WORKS!!!}
-						'sit into <x>' | now: {WORKS!!!}
-						'sit down <x>' | now: {WORKS!!!}
-						'sit down in <x>' | now: {WORKS!!!}
-						'sit down on <x>' | now: {WORKS!!!}
-						'sit down into <x>' | now: {What??"}
-					- DONE: infer tests, 0 seats:
-						'sit' => infer_seat() | now: "Where do you want to sit?"
-						'sit in' => infer_seat() | now: "Where do you want to sit?"
-						'sit on' => infer_seat() | now: "Where do you want to sit?"
-						'sit into' => infer_seat() | now: "Where do you want to sit?"
-						'sit down' => infer_seat() | now: "Where do you want to sit?"
-						'sit down in' => infer_seat() | now: "Where do you want to sit?"
-						'sit down on' => infer_seat() | now: "Where do you want to sit?"
-						'sit down into <x>' | now: "Where do you want to sit?"
-					- DONE: infer tests, 2 seats:
-						'sit' => infer_seat() | now: "Where do you want to sit?"
-						'sit in' => infer_seat() | now: "Where do you want to sit?"
-						'sit on' => infer_seat() | now: "Where do you want to sit?"
-						'sit into' => infer_seat() | now: "Where do you want to sit?"
-						'sit down' => infer_seat() | now: "Where do you want to sit?"
-						'sit down in' => infer_seat() | now: "Where do you want to sit?"
-						'sit down on' => infer_seat() | now: "Where do you want to sit?"
-						'sit down into' | now: "Where do you want to sit?"
-					- DONE: run rigorous test for all cases
-					- DONE: clean up comments
-					- CANCEL: update infer_seat() and call to handle count = 0 diff from = 2 ??
-					- DONE: update to pass scenario test
-				- DONE: solve 'sit down in/on chair' => syntax
-					- DONE: create specific 'sit' entries for syntax()
-					- DONE: create prep list
-					- DONE: call new prep_lst from multi-word 'sit' case in interp()
-					- DONE: add dir_cmd_lst
-					- DONE: handle verb cases
-					- DONE: create do_noun_clause w/ no preps and send to noun_handling
-					- DONE: create id_noun_clause w/ no preps and send to noun_handling
-					- DONE: create infer call for no do_noun
-					- DONE: standardize 1-word case of 'sit'
-					- DONE: call syntax
-					- DONE: update syntax map to address all test cases
+				- CANCEL: update infer_seat() and call to handle count = 0 diff from = 2 ??
+				- DONE: update to pass scenario test
+			- DONE: solve 'sit down in/on chair' => syntax
+				- DONE: create specific 'sit' entries for syntax()
+				- DONE: create prep list
+				- DONE: call new prep_lst from multi-word 'sit' case in interp()
+				- DONE: add dir_cmd_lst
+				- DONE: handle verb cases
+				- DONE: create do_noun_clause w/ no preps and send to noun_handling
+				- DONE: create id_noun_clause w/ no preps and send to noun_handling
+				- DONE: create infer call for no do_noun
+				- DONE: standardize 1-word case of 'sit'
+				- DONE: call syntax
+				- DONE: update syntax map to address all test cases
+				- DONE: test
+				- DONE: elim 'sit' fix from 1-word
+				- DONE: test and update test results
+				- DONE: refactor sit() case
+				- DONE: abstract infer_do_noun() into separate function
+				- DONE: clean up comments
+				- DONE: update syntax case to new 'universal' format; set for uni if no case
+				- DONE: clean up comments
+				- DONE: make sit the native seat() method w/ 'enter' as universal synonym
+					- DONE: create sit_err() method in err()
+					- DONE: create sit() method in seat()
+					- DONE: update syntax in interp()
+					- DONE: make 'enter' a universal synonym for 'sit'
+					- DONE: make 'exit' a universal synonym for 'stand'
+					- DONE: manual test
+					- DONE: scenario test
+					- DONE: fix scenario test if needed
+				- DONE: create new sit scenario test
+			- DONE: generalize one_word_convert_lst => sit case
+				- DONE: first pass update (messy!)
+				- DONE: 'jump' and 'stand' => one-word cmds with 'no noun' err if do_noun_count > 0
+				- DONE: 'jump' and 'stand' => infer_do_noun => hero
+				- DONE: syntax support for 'jump up', 'jump down', 'stand up'
+				- DONE: add 'examine' to intake list
+				- DONE: 'look' => 2-word cmd; 'look <X>' => 'examine <X>; infer_do_noun => room
+				- DONE: syntax support for 'look at', 'look in'
+				- DONE: 'inventory' => 2-word cmd; 'i <X>' => 'examine <X>; infer_do_noun => hero
+				- DONE: clean up comments!
+				- DONE: create new static lists for action_verb_lst and non_action_verb_lst
+				- CANCEL: migrate global syn directly to syntax for clarity / flexibility
+					- IDEA: no, would need to repeat all associated prep entries
+				- DONE: test for scenario errors
+		- INPROC: handle synonyms
+			- DONE: embed symetric syns in syntax (lik zork does)
+				- DONE: define action, non_action, verb_syn in interp()
+				- DONE: verb_lst = action + non_action + verb_syn
+				- DONE: ('leap', 'verb_syn') : 'jump'
+				- DONE: add 'verb_syn' to forbiden word lst
+				- DONE: check for syn; if exist, replace verb_lst
+				- DONE: add print() line to show before / after verb_syn replacement
+				- DONE: comment out 'leap' in global
+				- DONE: test
+				- DONE: symetric syns for remain active verbs (not including 'enter' / 'exit')
+				- DONE: symetric synonym syntax call check => case != 'error' (not err msg)
+				- DONE: sort out 'inventory'
+					- DONE: 'inventory' => one_word cmd
+					- DONE: 'list' = sym syn of 'inventory'
+			- INPROC: create cond_syn() routine to inspect action_lst after syntax call
+				- CANCEL: inventory case (too complicated - see above)
+					- CANCEL: if not do_noun.is_receptacle(): error = "nothing to look within"
+					- CANCEL: elif not do_noun.is_closed(): error = "{do_noun.f_n} is closed"
+					- CANCEL: else: action_lst[0] = 'examine'
+					- CANCEL: interp() syntax 'look at', 'inventory' => inventory
+					- CANCEL: universal syn 'ist' => inventory
+				- IDEA: some syns should only be true under certain circumstances
+					- EXAMPLE: 'enter' == 'sit' if do_noun is_seat
+					- EXAMPLE: 'take' = 'doff' if do_noun is_garment
+				- IDEA: cond_syn() takes action_lst evaluates, and replaces verb if appropriate
+					- IDEA: need to re-do class verbs to be most specific (e.g. 'doff' and 'sit')
+					- IDEA: then equate general verbs with specific in cond_syn()
+					- IDEA: benefit is that err never runs for general verb if swapped to specfic
+				- DONE: asymetric synonyms - 'enter'
+					- DONE: update enter_err() in error()
+					- DONE: create asym_syn(action_lst, gs) function in interp()
+					- DONE: returns case, action_lst
+					- IDEA: options are 1) no change, 2) 'error', ["err_txt"], 3) new_case, new_al
+					- DONE: disable global syn for enter => sit
+					- DONE: add 'enter' to action_verb lst
 					- DONE: test
-					- DONE: elim 'sit' fix from 1-word
-					- DONE: test and update test results
-					- DONE: refactor sit() case
-					- DONE: abstract infer_do_noun() into separate function
-					- DONE: clean up comments
-					- DONE: update syntax case to new 'universal' format; set for uni if no case
-					- DONE: clean up comments
-					- DONE: make sit the native seat() method w/ 'enter' as universal synonym
-						- DONE: create sit_err() method in err()
-						- DONE: create sit() method in seat()
-						- DONE: update syntax in interp()
-						- DONE: make 'enter' a universal synonym for 'sit'
-						- DONE: make 'exit' a universal synonym for 'stand'
-						- DONE: manual test
-						- DONE: scenario test
-						- DONE: fix scenario test if needed
-					- DONE: create new sit scenario test
-				- DONE: generalize one_word_convert_lst => sit case
-					- DONE: first pass update (messy!)
-					- DONE: 'jump' and 'stand' => one-word cmds with 'no noun' err if do_noun_count > 0
-					- DONE: 'jump' and 'stand' => infer_do_noun => hero
-					- DONE: syntax support for 'jump up', 'jump down', 'stand up'
-					- DONE: add 'examine' to intake list
-					- DONE: 'look' => 2-word cmd; 'look <X>' => 'examine <X>; infer_do_noun => room
-					- DONE: syntax support for 'look at', 'look in'
-					- DONE: 'inventory' => 2-word cmd; 'i <X>' => 'examine <X>; infer_do_noun => hero
-					- DONE: clean up comments!
-					- DONE: create new static lists for action_verb_lst and non_action_verb_lst
-					- CANCEL: migrate global syn directly to syntax for clarity / flexibility
-						- IDEA: no, would need to repeat all associated prep entries
-					- DONE: test for scenario errors
-			- INPROC: handle synonyms
-				- DONE: embed symetric syns in syntax (lik zork does)
-					- DONE: define action, non_action, verb_syn in interp()
-					- DONE: verb_lst = action + non_action + verb_syn
-					- DONE: ('leap', 'verb_syn') : 'jump'
-					- DONE: add 'verb_syn' to forbiden word lst
-					- DONE: check for syn; if exist, replace verb_lst
-					- DONE: add print() line to show before / after verb_syn replacement
-					- DONE: comment out 'leap' in global
-					- DONE: test
-					- DONE: symetric syns for remain active verbs (not including 'enter' / 'exit')
-					- DONE: symetric synonym syntax call check => case != 'error' (not err msg)
-					- DONE: sort out 'inventory'
-						- DONE: 'inventory' => one_word cmd
-						- DONE: 'list' = sym syn of 'inventory'
-				- INPROC: create cond_syn() routine to inspect action_lst after syntax call
-					- CANCEL: inventory case (too complicated - see above)
-						- CANCEL: if not do_noun.is_receptacle(): error = "nothing to look within"
-						- CANCEL: elif not do_noun.is_closed(): error = "{do_noun.f_n} is closed"
-						- CANCEL: else: action_lst[0] = 'examine'
-						- CANCEL: interp() syntax 'look at', 'inventory' => inventory
-						- CANCEL: universal syn 'ist' => inventory
-					- IDEA: some syns should only be true under certain circumstances
-						- EXAMPLE: 'enter' == 'sit' if do_noun is_seat
-						- EXAMPLE: 'take' = 'doff' if do_noun is_garment
-					- IDEA: cond_syn() takes action_lst evaluates, and replaces verb if appropriate
-						- IDEA: need to re-do class verbs to be most specific (e.g. 'doff' and 'sit')
-						- IDEA: then equate general verbs with specific in cond_syn()
-						- IDEA: benefit is that err never runs for general verb if swapped to specfic
-					- DONE: asymetric synonyms - 'enter'
-						- DONE: update enter_err() in error()
-						- DONE: create asym_syn(action_lst, gs) function in interp()
-						- DONE: returns case, action_lst
-						- IDEA: options are 1) no change, 2) 'error', ["err_txt"], 3) new_case, new_al
-						- DONE: disable global syn for enter => sit
-						- DONE: add 'enter' to action_verb lst
-						- DONE: test
-					- INPROC: asymetric syn - 'exit'
-						- DONE: disable global syn for exit => stand
-						- DONE: add 'exit to action_verb list
-						- DONE: update exit_err() in error()
-						- DONE: add syntax entry for 'exit' (see legacy code)
-						- DONE: in asym_syn(), if 'exit' and do_noun_obj.is_seat() => stand
-						- DONE: test
-						- TBD: add infer do_noun entry for 'exit'
-						- TBD: scenario test
-					- TBD: re-test scenarios
-			- TBD: extend new interp() structure
-				- TBD: generalize 2word cases => sit case
-					- TBD: need routine for hand mgmt
-					- TBD: doff
-						- TBD: create doff() method
-						- TBD: create take => doff if do_noun is_garment entry in cond_syn()
-				- TBD: generalize 'go' => sit case
-				- TBD: create new 'go' test scenarios (infer dir)
-				- TBD: generalize 'climb' => sit case
-				- TBD: create new 'climb' test scenarios (infer dir)
-					- TBD: enter & exit
-						- TBD: clean up existing code:
-							- TBD: enter_err() and exit_err() in err()
-							- TBD: enter() and exit() in seat()
-						- TBD: symetric syn 'in' => 'enter' ; 'in' as verb & prep ? infer 'go' ?
-						- TBD: smilar issue for symetric syn 'out' => 'exit'
-						- TBD: create room or door specific method for enter
-						- TBD: create room or door specific method for exit
-						- TBD: create exit => stand if do_noun is_contained
-				- TBD: generalize id_noun case => sit case
-				- TBD: generalize travel case? (infer verb?)
-				- TBD: elim 'one_word_convert_lst' in static_gbl
-				- TBD: global refactor
-				- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
-				- TBD: clean up comments
-			- TBD: update existing test scenarios as needed if no longer pass
-		- TBD: create word-only test game for vocab test scenarios ??
-		- TBD: review / unify all interp() update notes
-		- TBD: update help() cmd to give a limited list of verbs ?
-		- TBD: document new interp() approach
-			- TBD: credit zork and bolggers
-			- IDEA: 3 things I learned from zork: 
-				1) verbs vs. actions
-				2) syntax: blunt but effective - language is idiomatic; lack of gen prep rules
-				3) actions on nouns
-			- IDEA: trends i didn't follow:
-				1) class system vs. flat w/ attribute bits
-				2) retained preps
+				- INPROC: asymetric syn - 'exit'
+					- DONE: update exit_err() in error()
+					- DONE: disable global syn for exit => stand
+					- DONE: add 'exit' to action_verb list
+					- DONE: if exist, add symetric syns to syntax (gen purpose)
+					- DONE: add infer do_noun entry for 'exit'
+					- DONE: add syntax entry for 'exit' (see legacy code)
+					- DONE: in asym_syn(), if 'exit' and do_noun_obj.is_seat() => stand
+					- DONE: manual test
+					- TBD: scenario test
+		- TBD: extend new interp() structure
+			- TBD: generalize 2word cases => sit case
+				- TBD: need routine for hand mgmt
+				- TBD: doff
+					- TBD: create doff() method
+					- TBD: in asym_syn() 'take' => 'doff' if do_noun is_garment
+			- TBD: generalize 'go':
+				- TBD: if only dir, infer_verb = 'go'
+				- TBD: if verb in ['go'] => infer dir
+			- TBD: generalize 'climb':
+				- TBD: if verb in ['go', 'climb'] => infer dir
+				- TBD: enter & exit
+					- TBD: clean up existing code:
+						- TBD: enter_err() and exit_err() in err()
+						- TBD: enter() and exit() in seat()
+					- TBD: symetric syn 'in' => 'enter' ; 'in' as verb & prep ? infer 'go' ?
+					- TBD: smilar issue for symetric syn 'out' => 'exit'
+					- TBD: create room or door specific method for enter
+					- TBD: create room or door specific method for exit
+					- TBD: create exit => stand if do_noun is_contained
+			- TBD: generalize id_noun case => sit case
+			- TBD: generalize travel case? (infer verb?)
+			- TBD: elim 'one_word_convert_lst' in static_gbl
+			- TBD: global refactor
+			- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
+			- TBD: clean up comments
+		- TBD: update existing test scenarios as needed if no longer pass
+	- TBD: create word-only test game for vocab test scenarios ??
+	- TBD: review / unify all interp() update notes
+	- TBD: update help() cmd to give a limited list of verbs ?
+	- TBD: document new interp() approach
+		- TBD: credit zork and bolggers
+		- IDEA: 3 things I learned from zork: 
+			1) verbs vs. actions
+			2) syntax: blunt but effective - language is idiomatic; lack of gen prep rules
+			3) actions on nouns
+		- IDEA: trends i didn't follow:
+			1) class system vs. flat w/ attribute bits
+			2) retained preps
 
 
 		- TBD: nouns

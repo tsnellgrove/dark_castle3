@@ -134,11 +134,11 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 				action_lst = ["Which way do you want to climb, up or down?"]
 				break
 		if word == 'infer_do_noun':
-			if input_verb in ['exit'] and gs.core.hero.is_contained(gs):
-				gs.io.buffer(f"(from the {gs.core.hero.get_contained_by(gs).full_name})")
-				action_lst = [input_verb, gs.core.hero.get_contained_by(gs)]
-				break
-			elif input_verb in ['drop', 'stow', 'eat', 'wear'] and not gs.core.hero.hand_is_empty():
+#			if input_verb in ['exit'] and gs.core.hero.is_contained(gs):
+#				gs.io.buffer(f"(from the {gs.core.hero.get_contained_by(gs).full_name})")
+#				action_lst = [input_verb, gs.core.hero.get_contained_by(gs)]
+#				break
+			if input_verb in ['drop', 'stow', 'eat', 'wear'] and not gs.core.hero.hand_is_empty():
 				gs.io.buffer(f"(the {gs.core.hero.get_hand_item().full_name})")
 				action_lst = [input_verb, gs.core.hero.get_hand_item()]
 				break
@@ -192,6 +192,11 @@ def infer_do_noun(gs, verb_str):
 	if verb_str == 'look':
 		do_noun_count = 1
 		do_noun_obj = gs.map.hero_rm
+	if verb_str == 'exit' and gs.core.hero.is_contained(gs):
+		do_noun_count = 1
+		do_noun_obj = gs.core.hero.get_contained_by(gs)
+		infer_txt = f"(from the {do_noun_obj.full_name})"
+
 	if do_noun_count == 1 and infer_txt is not None:
 		gs.io.buffer(infer_txt)
 	return do_noun_count == 1, do_noun_obj, err_txt
