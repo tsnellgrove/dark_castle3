@@ -588,14 +588,15 @@ To Do List - Dark Castle v3
 					- DONE: in asym_syn(), if 'exit' and do_noun_obj.is_seat() => stand
 					- DONE: manual test
 					- DONE: scenario test
-		- TBD: extend new interp() structure
-			- TBD: generalize 2word cases => sit case
-				- TBD: need routine for hand mgmt
+		- INPROC: extend new interp() structure
+			- INPROC: generalize 2word cases => sit case
+				- DONE: need routine for hand mgmt
 					- IDEA: should be independent fom interp() due to do_noun_exe() and id_noun_exe()
 					- IDEA: should be post x_err() and pre_action() because changes game world
-					- TBD: create hand_mgmt(case, word_lst, gs) function in hand_manage() module
-					- TBD: add same cmds in interp()
-					- TBD: call from app_main() just before cmd_exe()
+					- DONE: create hand_mgmt(case, word_lst, gs) function in hand_mgmt module
+					- DONE: add same cmds in interp() (with only 'wear' enabled)
+					- DONE: in app_main(), import hand_mgmt() from hand_mgmt
+					- DONE: call from app_main() just before cmd_exe()
 				- TBD: wear
 					- TBD: disable global syn for don => wear
 					- TBD: add wear to action_verb list
@@ -603,7 +604,7 @@ To Do List - Dark Castle v3
 					- TBD: add infer do_noun entry for 'wear' (if in_hand)
 					- TBD: add syntax entry for 'wear'
 					- TBD: in asym_syn(), add conditional syn if exist (gen purpose)
-					- TBD: manual test
+					- TBD: manual test (including hand_mgmt() of garment in bkpk)
 					- TBD: scenario test
 				- TBD: doff
 					- TBD: create doff() method
@@ -625,6 +626,9 @@ To Do List - Dark Castle v3
 					- TBD: create room or door specific method for exit
 					- TBD: create exit => stand if do_noun is_contained
 			- TBD: generalize id_noun case => sit case
+				- TBD: 'put on' as syntax syn for 'wear'
+				- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
+					- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
 			- TBD: generalize travel case? (infer verb?)
 			- TBD: elim 'one_word_convert_lst' in static_gbl
 			- TBD: global refactor

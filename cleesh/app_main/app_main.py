@@ -11,6 +11,7 @@ from cleesh.app_turn.pre_action import pre_action
 from cleesh.app_turn.cmd_exe import cmd_execute
 from cleesh.app_turn.post_action import post_action
 from cleesh.app_turn.auto_action import auto_action
+from cleesh.app_turn.hand_manage import hand_mgmt
 
 
 ### loacl functions
@@ -188,6 +189,7 @@ def app_main(user_input, game_name, root_path_str):
 			if not cmd_override and is_att:
 				gs.io.buffer(err_txt)
 			if (is_valid and not cmd_override):
+				case, word_lst = hand_mgmt(case, word_lst, gs) # new
 				cmd_execute(gs, case, word_lst)
 			weapon_disp(gs, start_in_hand)
 			post_action(gs, case, word_lst, is_valid) # excluding poat_act() from cmd "if" allows creatures to opperate machs
