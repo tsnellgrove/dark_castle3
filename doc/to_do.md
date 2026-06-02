@@ -597,7 +597,8 @@ To Do List - Dark Castle v3
 					- DONE: add same cmds in interp() (with only 'wear' enabled)
 					- DONE: in app_main(), import hand_mgmt() from hand_mgmt
 					- DONE: call from app_main() just before cmd_exe()
-				- TBD: wear
+				- INPROC: wear
+					- DONE: update hand_mgmt() for 'wear'
 					- TBD: disable global syn for don => wear
 					- TBD: add wear to action_verb list
 					- TBD: add 'don' as symetric syns to syntax
@@ -609,7 +610,8 @@ To Do List - Dark Castle v3
 				- TBD: doff
 					- TBD: create doff() method
 					- TBD: remove garment refs from take()
-					- TBD: Introduce doff as cmd (see 'wear' abnve)
+					- TBD: Introduce doff as cmd (see 'wear' template above)
+				- TBD: additional 2-word cases
 					- TBD: in asym_syn() 'take' => 'doff' if do_noun is_garment
 			- TBD: generalize 'go':
 				- TBD: if only dir, infer_verb = 'go'
