@@ -597,16 +597,17 @@ To Do List - Dark Castle v3
 					- DONE: add same cmds in interp() (with only 'wear' enabled)
 					- DONE: in app_main(), import hand_mgmt() from hand_mgmt
 					- DONE: call from app_main() just before cmd_exe()
-				- INPROC: wear
+				- DONE: wear
 					- DONE: update hand_mgmt() for 'wear'
-					- TBD: disable global syn for don => wear
-					- TBD: add wear to action_verb list
-					- TBD: add 'don' as symetric syns to syntax
-					- TBD: add infer do_noun entry for 'wear' (if in_hand)
-					- TBD: add syntax entry for 'wear'
-					- TBD: in asym_syn(), add conditional syn if exist (gen purpose)
-					- TBD: manual test (including hand_mgmt() of garment in bkpk)
-					- TBD: scenario test
+					- DONE: disable global syn for don => wear
+					- DONE: add wear to interp() action_verb list
+					- DONE: add base ('wear', 'do_noun') entry to syntax
+					- DONE: add symetric syn 'don' to syntax (also add 'don' to interp() syn_verb_lst)
+					- DONE: add infer do_noun entry for 'wear' (if in_hand)
+					- DONE: in asym_syn(), add conditional syn if exist (gen purpose)
+					- DONE: manual test (including hand_mgmt() of garment in bkpk)
+					- DONE: scenario test
+					- DONE: clean up comments in static_gbl
 				- TBD: doff
 					- TBD: create doff() method
 					- TBD: remove garment refs from take()
@@ -633,6 +634,7 @@ To Do List - Dark Castle v3
 					- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
 			- TBD: generalize travel case? (infer verb?)
 			- TBD: elim 'one_word_convert_lst' in static_gbl
+			- TBD: consider including bkpk in infer_do_noun() scope (e.g. if crown in bkpk, wear it)
 			- TBD: global refactor
 			- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
 			- TBD: clean up comments
