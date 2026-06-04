@@ -68,41 +68,41 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'base_action_lst' : ['infer_do_noun']
 		},
 		
-		('enter', 'input_do_noun') : ['enter', 'do_noun_str'],
+		('enter', 'input_do_noun') : ['enter', 'do_noun_str', 'verb_do'],
 #		('in', 'verb_syn') : ['enter'],
 
-		('examine', 'input_do_noun') : ['examine', 'do_noun_str'],
-		('inventory', 'input_do_noun') : ['examine', 'do_noun_str'],
-		('look', 'input_do_noun') : ['examine', 'do_noun_str'],
-		('look', 'at', 'input_do_noun') : ['examine', 'do_noun_str'],
-		('look', 'in', 'input_do_noun') : ['examine', 'do_noun_str'],
+		('examine', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
+		('inventory', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
+		('look', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
+		('look', 'at', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
+		('look', 'in', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
 		('describe', 'verb_syn') : ['examine'],
 		('inspect', 'verb_syn') : ['examine'],
 		('search', 'verb_syn') : ['examine'],
 		('list', 'verb_syn') : ['inventory'],
 
-		('exit', 'input_do_noun') : ['exit', 'do_noun_str'],
+		('exit', 'input_do_noun') : ['exit', 'do_noun_str', 'verb_do'],
 #		('out', 'verb_syn') : ['enter'],
 
-		('jump', 'input_do_noun') : ['jump', 'do_noun_str'],
-		('jump', 'up', 'input_do_noun') : ['jump', 'do_noun_str'],
-		('jump', 'down', 'input_do_noun') : ['jump', 'do_noun_str'],
+		('jump', 'input_do_noun') : ['jump', 'do_noun_str', 'verb_do'],
+		('jump', 'up', 'input_do_noun') : ['jump', 'do_noun_str', 'verb_do'],
+		('jump', 'down', 'input_do_noun') : ['jump', 'do_noun_str', 'verb_do'],
 		('leap', 'verb_syn') : ['jump'],
 		('vault', 'verb_syn') : ['jump'],
 
-		('sit', 'input_do_noun') : ['sit', 'do_noun_str'],
-		('sit', 'in', 'input_do_noun') : ['sit', 'do_noun_str'],
-		('sit', 'on', 'input_do_noun') : ['sit', 'do_noun_str'],
-		('sit', 'into', 'input_do_noun') : ['sit', 'do_noun_str'],
-		('sit', 'down', 'input_do_noun') : ['sit', 'do_noun_str'],
-		('sit', 'down', 'in', 'input_do_noun') : ['sit', 'do_noun_str'],
-		('sit', 'down', 'on', 'input_do_noun') : ['sit', 'do_noun_str'],
-		('sit', 'down', 'into', 'input_do_noun') : ['sit', 'do_noun_str'],
+		('sit', 'input_do_noun') : ['sit', 'do_noun_str', 'verb_do'],
+		('sit', 'in', 'input_do_noun') : ['sit', 'do_noun_str', 'verb_do'],
+		('sit', 'on', 'input_do_noun') : ['sit', 'do_noun_str', 'verb_do'],
+		('sit', 'into', 'input_do_noun') : ['sit', 'do_noun_str', 'verb_do'],
+		('sit', 'down', 'input_do_noun') : ['sit', 'do_noun_str', 'verb_do'],
+		('sit', 'down', 'in', 'input_do_noun') : ['sit', 'do_noun_str', 'verb_do'],
+		('sit', 'down', 'on', 'input_do_noun') : ['sit', 'do_noun_str', 'verb_do'],
+		('sit', 'down', 'into', 'input_do_noun') : ['sit', 'do_noun_str', 'verb_do'],
 
-		('stand', 'input_do_noun') : ['stand', 'do_noun_str'],
-		('stand', 'up', 'input_do_noun') : ['stand', 'do_noun_str'],
+		('stand', 'input_do_noun') : ['stand', 'do_noun_str', 'verb_do'],
+		('stand', 'up', 'input_do_noun') : ['stand', 'do_noun_str', 'verb_do'],
 
-		('wear', 'input_do_noun') : ['wear', 'do_noun_str'],
+		('wear', 'input_do_noun') : ['wear', 'do_noun_str', 'verb_do'],
 		('don', 'verb_syn') : ['wear'],
 	}
 	try:
@@ -166,7 +166,7 @@ def asym_syn(action_lst, gs):
 	if verb_str in ['enter'] and do_noun_obj.is_seat():
 		action_lst[0] = 'sit'
 	if verb_str in ['exit'] and gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
-		action_lst = ['stand', gs.core.hero]
+		action_lst = ['stand', gs.core.hero, 'verb_do']
 	return case, action_lst
 
 

@@ -608,6 +608,20 @@ To Do List - Dark Castle v3
 					- DONE: manual test (including hand_mgmt() of garment in bkpk)
 					- DONE: scenario test
 					- DONE: clean up comments in static_gbl
+				INPROC: reformat action_lst
+					- IDEA: action_lst = [verb_str, do_noun_obj, prep_str, id_noun_obj, type]
+					- IDEA: prep_str can be dir, do_prep, or id_prep
+					- IDEA: type = 'verb_do', 'verb_do_prep', 'verb_do_id', 'verb_do_prep_id', 'error'
+					- IDEA: check for prep errors in x_err() by passing prep_str to method
+						- EXAMPLE: 'put sword in table' => 'can't put anything inside the table'
+						- EXAMPLE: 'stand on basket' => 'The basket has no surface to stand on'
+					- IDEA: some methods will need to be updated to pass prep_str
+					- DONE: update existing action_lst w/ type
+					- DONE: review aync_syn() routine => fix 'exit'
+					- DONE: auto test
+					- TBD: manual test
+					- TBD: clean up comments in validate(), cmd_exe(), and trig_chk()
+				- TBD: in interp(), linke tst_mode to debug mode
 				- TBD: doff
 					- TBD: create doff() method
 					- TBD: remove garment refs from take()
@@ -632,6 +646,7 @@ To Do List - Dark Castle v3
 				- TBD: 'put on' as syntax syn for 'wear'
 				- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
 					- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
+				- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
 			- TBD: generalize travel case? (infer verb?)
 			- TBD: elim 'one_word_convert_lst' in static_gbl
 			- TBD: consider including bkpk in infer_do_noun() scope (e.g. if crown in bkpk, wear it)

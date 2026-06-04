@@ -25,8 +25,9 @@ def validate(gs, case, word_lst):
 	if case in ['prep', 'action_2word', 'action_dir', 'universal']:
 		try:
 			if case == 'universal':
-				if len(word_lst) == 2:
-					action_str, do_noun_obj = word_lst
+#				if len(word_lst) == 2:
+				if word_lst[-1] in ['verb_do']:
+					action_str, do_noun_obj, *_ = word_lst
 					cmd_err, is_att, err_txt = getattr(do_noun_obj, action_str + '_err')(gs)
 					if (cmd_err and not is_att and err_txt != ""):
 						gs.io.buffer(err_txt)
