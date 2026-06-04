@@ -608,7 +608,7 @@ To Do List - Dark Castle v3
 					- DONE: manual test (including hand_mgmt() of garment in bkpk)
 					- DONE: scenario test
 					- DONE: clean up comments in static_gbl
-				INPROC: reformat action_lst
+				DONE: reformat action_lst
 					- IDEA: action_lst = [verb_str, do_noun_obj, prep_str, id_noun_obj, type]
 					- IDEA: prep_str can be dir, do_prep, or id_prep
 					- IDEA: type = 'verb_do', 'verb_do_prep', 'verb_do_id', 'verb_do_prep_id', 'error'
@@ -619,8 +619,8 @@ To Do List - Dark Castle v3
 					- DONE: update existing action_lst w/ type
 					- DONE: review aync_syn() routine => fix 'exit'
 					- DONE: auto test
-					- TBD: manual test
-					- TBD: clean up comments in validate(), cmd_exe(), and trig_chk()
+					- DONE: manual test
+					- DONE: clean up comments in validate(), cmd_exe(), and trig_chk()
 				- TBD: in interp(), linke tst_mode to debug mode
 				- TBD: doff
 					- TBD: create doff() method

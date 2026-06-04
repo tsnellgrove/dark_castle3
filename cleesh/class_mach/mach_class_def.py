@@ -85,7 +85,6 @@ class TrigMixIn(object):
 		trig_wc_lst = ['not_valid'] # wildcards are only supported for nouns
 		if case == 'universal':
 			if word_lst[-1] in ['verb_do']:
-#			if len(word_lst) == 2:
 				trig_key_lst = [word_lst[0], word_lst[1].name]
 				trig_wc_lst = [word_lst[0], '*']
 		if case == 'action_2word':
