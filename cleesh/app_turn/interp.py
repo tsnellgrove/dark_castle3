@@ -106,6 +106,12 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 		('wear', 'input_do_noun') : ['wear', 'do_noun_str', 'verb_do'],
 		('don', 'verb_syn') : ['wear'],
+
+		('take', 'input_do_noun') : ['take', 'do_noun_str', 'verb_do'],
+		('get', 'verb_syn') : ['take'],
+		('remove', 'verb_syn') : ['take'],
+		('hold', 'verb_syn') : ['take'],
+		('carry', 'verb_syn') : ['take'],
 	}
 	try:
 		base_action_lst = syntax_dict[user_input_tpl]
@@ -169,6 +175,8 @@ def asym_syn(action_lst, gs):
 		action_lst[0] = 'sit'
 	if verb_str in ['exit'] and gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
 		action_lst = ['stand', gs.core.hero, 'verb_do']
+	if verb_str in ['take'] and do_noun_obj in gs.core.hero.worn_lst:
+		action_lst = ['doff', do_noun_obj, 'verb_do']
 	return case, action_lst
 
 
@@ -190,7 +198,7 @@ def infer_do_noun(gs, verb_str):
 			if obj.is_seat():
 				do_noun_count += 1
 				do_noun_obj = obj
-				infer_txt = f"(in the {do_noun_obj.full_name})"
+				infer_txt = f"(in the {do_noun_obj.full_name})"		
 	if verb_str in ['jump', 'inventory', 'stand']:
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero
@@ -290,9 +298,16 @@ def interpreter(user_input, master_obj_lst):
 	creature = gs.core.hero
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
-	action_verb_lst = ['doff', 'enter', 'examine', 'exit','jump', 'sit', 'stand', 'wear'] # verbs have a method and / or err routine
-	non_action_verb_lst = ['inventory', 'look'] # non-action verbs subsituted in syntax or cond_syn()
-	syn_verb_lst = ['describe', 'don', 'inspect', 'leap', 'list','search', 'vault'] # symetric verb synonyms; substituted pre do_noun infer
+	action_verb_lst = [
+			'doff', 'enter', 'examine', 'exit','jump', 'sit', 'stand', 'take', 'wear'
+			] # action_verbs have a method and / or err routine
+	non_action_verb_lst = [
+			'inventory', 'look'
+			] # non-action verbs are subsituted in syntax or asym_syn()
+	syn_verb_lst = [
+			'carry', 'describe', 'don', 'get', 'hold', 'inspect', 'leap', 'list', 'remove', 
+			'search', 'vault'
+			] # symetric syn_verbs are substituted pre do_noun infer
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst
 
 	meta_cmd_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')

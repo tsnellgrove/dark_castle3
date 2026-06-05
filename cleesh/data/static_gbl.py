@@ -105,10 +105,6 @@ engine_static_dict = {
         'place' : 'put',
         'skim' : 'read',
         'scan' : 'read',
-		'get' : 'take',
-        'carry' : 'take',
-        'hold' : 'take',
-        'remove' : 'take',
 	},
 
 

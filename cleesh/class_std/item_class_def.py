@@ -53,9 +53,6 @@ class Item(ViewOnly):
 			gs.io.buffer(f"{self.full_name}: Taken")
 		else:
 			gs.io.buffer("Taken")
-#		if creature.chk_is_worn(self):
-#			gs.io.buffer(f"You are no longer wearing the {self.full_name}.")
-#			gs.io.buff_s(f"{creature.name}_remove_{self.descript_key}")
 		if not creature.chk_item_in_inv(self, gs) and (creature.weight + self.weight + 5) > creature.max_weight:
 			gs.io.buffer(f"Your load is getting heavy.")
 		
