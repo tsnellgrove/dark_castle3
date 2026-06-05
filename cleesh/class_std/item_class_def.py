@@ -53,9 +53,9 @@ class Item(ViewOnly):
 			gs.io.buffer(f"{self.full_name}: Taken")
 		else:
 			gs.io.buffer("Taken")
-		if creature.chk_is_worn(self):
-			gs.io.buffer(f"You are no longer wearing the {self.full_name}.")
-			gs.io.buff_s(f"{creature.name}_remove_{self.descript_key}")
+#		if creature.chk_is_worn(self):
+#			gs.io.buffer(f"You are no longer wearing the {self.full_name}.")
+#			gs.io.buff_s(f"{creature.name}_remove_{self.descript_key}")
 		if not creature.chk_item_in_inv(self, gs) and (creature.weight + self.weight + 5) > creature.max_weight:
 			gs.io.buffer(f"Your load is getting heavy.")
 		
@@ -189,6 +189,26 @@ class Garment(Item):
 		gs.io.buffer("Worn.")
 		gs.io.buff_s(f"{creature.name}_wear_{self.descript_key}")
 		return 
+
+	def doff(self, gs, mode=None):
+		""" Removes a garment that is being worn and places it into Burt's hand
+		"""
+		if mode is None:
+			mode = 'std'
+		creature = gs.core.hero
+		
+#		if gs.io.multi_count > 0:
+#			gs.io.buffer(f"{self.full_name}: Taken")
+#		else:
+#			gs.io.buffer("Taken")
+#		if creature.chk_is_worn(self):
+		gs.io.buffer(f"You are no longer wearing the {self.full_name}.")
+		gs.io.buff_s(f"{creature.name}_remove_{self.descript_key}")
+#		if not creature.chk_item_in_inv(self, gs) and (creature.weight + self.weight + 5) > creature.max_weight:
+#			gs.io.buffer(f"Your load is getting heavy.")
+		
+		gs.map.hero_rm.remove_item(self, gs)
+		creature.put_in_hand(self, gs)
 
 
 class Weapon(Item):

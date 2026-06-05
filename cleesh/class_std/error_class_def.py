@@ -211,6 +211,39 @@ class Error(Identity):
 			return True, True, err_txt
 		return False, False, ""
 
+
+	def doff_err(self, gs):
+		creature = gs.core.hero
+		if self.err_std(creature, gs):
+			return True, False, ""
+#		if self.is_liquid():
+#			err_txt = ("You can't 'take' a liquid but you can 'drink' a liquid or you can 'take' a container that holds a liquid.")
+#			return True, False, err_txt
+		if not self.is_item():
+			err_txt = ("The mind boggles...")
+			return True, False, err_txt
+		if creature.chk_in_hand(self):
+			err_txt = (f"You're already holding the {self.full_name}!")
+			return True, False, err_txt
+		if not creature.chk_is_worn(self):
+			err_txt = (f"You're not wearing the {self.full_name}!")
+			return True, False, err_txt
+#		if not self.is_item():
+#			# attemptable error: a non-item might look takeable - is reasonable to attempt - player gets info
+#			err_txt = (f"Just how do you intend to pick up a {self.full_name}?")
+#			return True, True, err_txt
+#		if not creature.chk_item_in_inv(self, gs) and (creature.weight + self.weight) > creature.max_weight:
+#			# attemptable error: player only learns obj is too heavy by trying to lift it
+#			err_txt = (f"You don't have enough capacity to take the {self.full_name} along with everything else you are carrying.")
+#			return True, True, err_txt
+#		for obj in gs.map.hero_rm.floor_lst:
+#			if obj.is_creature() and obj is not gs.core.hero and self in obj.get_vis_contain_lst(gs):
+#				# attemptable error: player can try to take another creature's possessions
+#				err_txt = (f"You can't take the {self.full_name}. It belongs to the {obj.full_name}!")
+#				return True, True, err_txt
+		return False, False, ""
+
+
 	def open_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
@@ -299,8 +332,6 @@ class Error(Identity):
 			return True, False, err_txt
 		if not self.is_seat():
 			# attemptable error: there are many common uses of 'enter' that won't work in DC (e.g. "enter castle")
-#			err_txt = (f"You can't use the 'enter' command on the {self.full_name}.")
-#			err_txt = (f"You can't use that command on the {self.full_name}.")
 			err_txt = (f"Despite a mighty effort, you can find no way to sit comfortably on the {self.full_name}.")
 			return True, True, err_txt
 		if self.is_seat() and len(self.contain_lst) >= self.max_obj:
