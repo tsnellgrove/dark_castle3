@@ -282,7 +282,7 @@ def interpreter(user_input, master_obj_lst):
 	# *** global variable assignment ***
 	word1 = user_input_lst[0]
 	creature = gs.core.hero
-	tst_mode = True # test mode - print command lists at each stage of processing
+	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = ['enter', 'examine', 'exit','jump', 'sit', 'stand', 'wear'] # verbs have a method and / or err routine
 	non_action_verb_lst = ['inventory', 'look'] # non-action verbs subsituted in syntax or cond_syn()

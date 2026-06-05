@@ -621,7 +621,7 @@ To Do List - Dark Castle v3
 					- DONE: auto test
 					- DONE: manual test
 					- DONE: clean up comments in validate(), cmd_exe(), and trig_chk()
-				- TBD: in interp(), linke tst_mode to debug mode
+				- DONE: in interp(), linke tst_mode to debug mode
 				- TBD: doff
 					- TBD: create doff() method
 					- TBD: remove garment refs from take()
