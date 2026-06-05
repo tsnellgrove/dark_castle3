@@ -653,7 +653,32 @@ To Do List - Dark Castle v3
 					- DONE: scenario test (doff)
 					- DONE: fix scenario ('Taken') 
 					- DONE: clean up comments in static_gbl, item.take()
-				- TBD: additional 2-word cases ('drop', 'eat', 'stow', 'open', 'close', 'read', 'pull', 'push')
+				- TBD: 'drop'
+					- TBD: update hand_mgmt() as needed for new_verb
+					- TBD: disable global syn for new_verb
+					- TBD: add new_verb to interp() action_verb list
+					- TBD: add base ('new_verb', 'do_noun') entries to syntax
+					- TBD: add new_verb symetric syns to syn_verb_lst
+					- TBD: add new_verb symetric syns to syntax
+					- TBD: add infer do_noun entry for new_verb as needed
+					- TBD: in asym_syn(), add conditional syn as needed
+					- TBD: manual test (including symetric syn, infer, asym syn, and hand_mgmt)
+					- TBD: scenario test
+					- TBD: fix scenario as needed
+					- TBD: clean up comments in static_gbl, item.take()
+				- TBD: additional 2-word cases ('eat', 'stow', 'open', 'close', 'read', 'pull', 'push')
+					- TBD: update hand_mgmt() as needed for new_verb
+					- TBD: disable global syn for new_verb
+					- TBD: add new_verb to interp() action_verb list
+					- TBD: add base ('new_verb', 'do_noun') entries to syntax
+					- TBD: add new_verb symetric syns to syn_verb_lst
+					- TBD: add new_verb symetric syns to syntax
+					- TBD: add infer do_noun entry for new_verb as needed
+					- TBD: in asym_syn(), add conditional syn as needed
+					- TBD: manual test (including symetric syn, infer, asym syn, and hand_mgmt)
+					- TBD: scenario test
+					- TBD: fix scenario as needed
+					- TBD: clean up comments in static_gbl, item.take()
 			- TBD: generalize 'go':
 				- TBD: if only dir, infer_verb = 'go'
 				- TBD: if verb in ['go'] => infer dir
