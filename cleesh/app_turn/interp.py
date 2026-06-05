@@ -68,6 +68,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'base_action_lst' : ['infer_do_noun']
 		},
 		
+		('doff', 'input_do_noun') : ['doff', 'do_noun_str', 'verb_do'],
+
 		('enter', 'input_do_noun') : ['enter', 'do_noun_str', 'verb_do'],
 #		('in', 'verb_syn') : ['enter'],
 
@@ -178,6 +180,10 @@ def infer_do_noun(gs, verb_str):
 	err_txt = f"What do you want to {verb_str}?"
 	infer_txt = None
 
+	if verb_str in ['doff'] and len(gs.core.hero.worn_lst) == 1:
+		do_noun_count = 1
+		do_noun_obj = gs.core.hero.worn_lst[0]
+		infer_txt = f"(the {do_noun_obj.full_name})"
 	if verb_str == 'sit':
 		err_txt = "Where do you want to sit?"
 		for obj in scope_lst:
@@ -284,7 +290,7 @@ def interpreter(user_input, master_obj_lst):
 	creature = gs.core.hero
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
-	action_verb_lst = ['enter', 'examine', 'exit','jump', 'sit', 'stand', 'wear'] # verbs have a method and / or err routine
+	action_verb_lst = ['doff', 'enter', 'examine', 'exit','jump', 'sit', 'stand', 'wear'] # verbs have a method and / or err routine
 	non_action_verb_lst = ['inventory', 'look'] # non-action verbs subsituted in syntax or cond_syn()
 	syn_verb_lst = ['describe', 'don', 'inspect', 'leap', 'list','search', 'vault'] # symetric verb synonyms; substituted pre do_noun infer
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst

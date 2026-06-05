@@ -622,23 +622,22 @@ To Do List - Dark Castle v3
 					- DONE: manual test
 					- DONE: clean up comments in validate(), cmd_exe(), and trig_chk()
 				- DONE: in interp(), linke tst_mode to debug mode
-				- INPROC: doff
+				- DONE: doff
 					- DONE: create doff()
 						- DONE: create doff() method
 						- DONE: create doff_err() method
 						- DONE: remove garment refs from take()
-					- TBD: Introduce doff as cmd (see 'wear' template above)
-						- TBD: update hand_mgmt() as needed for new_verb
-						- TBD: disable global syn for new_verb
-						- TBD: add new_verb to interp() action_verb list
-						- TBD: add base ('new_verb', 'do_noun') entries to syntax
-						- TBD: add new_verb symetric syns to syntax and syn_verb_lst
-						- TBD: add infer do_noun entry for new_verb as needed
-						- TBD: in asym_syn(), add conditional syn as needed
-						- TBD: manual test (including symetric syn, infer, asym syn, and hand_mgmt)
-						- TBD: scenario test
-						- TBD: fix scenarios
-						- TBD: clean up item.doff(), item.take(), error.doff_err(), static_gbl
+					- DONE: Introduce doff as cmd (see 'wear' template above)
+						- DONE: update hand_mgmt() as needed for new_verb
+						- DONE: disable global syn for new_verb
+						- DONE: add new_verb to interp() action_verb list
+						- DONE: add base ('new_verb', 'do_noun') entries to syntax
+						- DONE: add new_verb symetric syns to syntax and syn_verb_lst
+						- DONE: add infer do_noun entry for new_verb as needed
+						- DONE: in asym_syn(), add conditional syn as needed
+						- DONE: manual test (including symetric syn, infer, asym syn, and hand_mgmt)
+						- DONE: scenario test
+						- DONE: clean up item.doff(), error.doff_err(), static_gbl
 				- TBD: 'take'
 					- TBD: update hand_mgmt() as needed for new_verb
 					- TBD: disable global syn for new_verb
@@ -650,8 +649,9 @@ To Do List - Dark Castle v3
 					- TBD: in asym_syn(), add conditional syn as needed
 						- TBD: if verb_str = 'take' and do_noun is_garment: asym syn of 'doff' 
 					- TBD: manual test (including symetric syn, infer, asym syn, and hand_mgmt)
-					- TBD: scenario test
-					- TBD: clean up comments in static_gbl	
+					- TBD: scenario test (doff)
+					- TBD: fix scenario ('Taken') 
+					- TBD: clean up comments in static_gbl, item.take()
 				- TBD: additional 2-word cases
 			- TBD: generalize 'go':
 				- TBD: if only dir, infer_verb = 'go'

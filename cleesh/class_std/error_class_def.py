@@ -216,9 +216,6 @@ class Error(Identity):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True, False, ""
-#		if self.is_liquid():
-#			err_txt = ("You can't 'take' a liquid but you can 'drink' a liquid or you can 'take' a container that holds a liquid.")
-#			return True, False, err_txt
 		if not self.is_item():
 			err_txt = ("The mind boggles...")
 			return True, False, err_txt
@@ -228,19 +225,6 @@ class Error(Identity):
 		if not creature.chk_is_worn(self):
 			err_txt = (f"You're not wearing the {self.full_name}!")
 			return True, False, err_txt
-#		if not self.is_item():
-#			# attemptable error: a non-item might look takeable - is reasonable to attempt - player gets info
-#			err_txt = (f"Just how do you intend to pick up a {self.full_name}?")
-#			return True, True, err_txt
-#		if not creature.chk_item_in_inv(self, gs) and (creature.weight + self.weight) > creature.max_weight:
-#			# attemptable error: player only learns obj is too heavy by trying to lift it
-#			err_txt = (f"You don't have enough capacity to take the {self.full_name} along with everything else you are carrying.")
-#			return True, True, err_txt
-#		for obj in gs.map.hero_rm.floor_lst:
-#			if obj.is_creature() and obj is not gs.core.hero and self in obj.get_vis_contain_lst(gs):
-#				# attemptable error: player can try to take another creature's possessions
-#				err_txt = (f"You can't take the {self.full_name}. It belongs to the {obj.full_name}!")
-#				return True, True, err_txt
 		return False, False, ""
 
 

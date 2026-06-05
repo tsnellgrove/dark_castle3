@@ -74,12 +74,10 @@ class Item(ViewOnly):
 
 		creature.hand_lst_remove(self)
 		if gs.io.multi_count > 0:
-#			gs.io.buffer(f"{self.full_name}: Dropped")
 			drop_txt = f"{self.full_name}: Dropped"
 		elif gs.map.hero_rm.is_floorless_room():
 			drop_txt = f"The {self.full_name} falls to the ground."
 		else:
-#			gs.io.buffer("Dropped")
 			drop_txt = "Dropped"
 		gs.io.buffer(drop_txt)
 		if creature.is_contained(gs):
@@ -197,15 +195,8 @@ class Garment(Item):
 			mode = 'std'
 		creature = gs.core.hero
 		
-#		if gs.io.multi_count > 0:
-#			gs.io.buffer(f"{self.full_name}: Taken")
-#		else:
-#			gs.io.buffer("Taken")
-#		if creature.chk_is_worn(self):
 		gs.io.buffer(f"You are no longer wearing the {self.full_name}.")
 		gs.io.buff_s(f"{creature.name}_remove_{self.descript_key}")
-#		if not creature.chk_item_in_inv(self, gs) and (creature.weight + self.weight + 5) > creature.max_weight:
-#			gs.io.buffer(f"Your load is getting heavy.")
 		
 		gs.map.hero_rm.remove_item(self, gs)
 		creature.put_in_hand(self, gs)
