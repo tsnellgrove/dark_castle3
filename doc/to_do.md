@@ -652,7 +652,7 @@ To Do List - Dark Castle v3
 					- TBD: scenario test (doff)
 					- TBD: fix scenario ('Taken') 
 					- TBD: clean up comments in static_gbl, item.take()
-				- TBD: additional 2-word cases
+				- TBD: additional 2-word cases ('drop', 'eat', 'stow', 'open', 'close', 'read', 'pull', 'push')
 			- TBD: generalize 'go':
 				- TBD: if only dir, infer_verb = 'go'
 				- TBD: if verb in ['go'] => infer dir
