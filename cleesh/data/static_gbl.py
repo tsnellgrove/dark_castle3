@@ -91,7 +91,6 @@ engine_static_dict = {
         'swig' : 'drink',
         'quaff' : 'drink',
         'sip' : 'drink',
-        'release' : 'drop',
         'devour' : 'eat',
         'ingest' : 'eat',
         'munch' : 'eat',

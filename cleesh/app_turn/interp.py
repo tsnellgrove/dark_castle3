@@ -70,6 +70,9 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		
 		('doff', 'input_do_noun') : ['doff', 'do_noun_str', 'verb_do'],
 
+		('drop', 'input_do_noun') : ['drop', 'do_noun_str', 'verb_do'],
+		('release', 'verb_syn') : ['drop'],
+
 		('enter', 'input_do_noun') : ['enter', 'do_noun_str', 'verb_do'],
 #		('in', 'verb_syn') : ['enter'],
 
@@ -299,14 +302,14 @@ def interpreter(user_input, master_obj_lst):
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = [
-			'doff', 'enter', 'examine', 'exit','jump', 'sit', 'stand', 'take', 'wear'
+			'doff', 'drop', 'enter', 'examine', 'exit','jump', 'sit', 'stand', 'take', 'wear'
 			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
 			'inventory', 'look'
 			] # non-action verbs are subsituted in syntax or asym_syn()
 	syn_verb_lst = [
-			'carry', 'describe', 'don', 'get', 'hold', 'inspect', 'leap', 'list', 'remove', 
-			'search', 'vault'
+			'carry', 'describe', 'don', 'get', 'hold', 'inspect', 'leap', 'list', 'release',  
+			'remove', 'search', 'vault'
 			] # symetric syn_verbs are substituted pre do_noun infer
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst
 

@@ -653,19 +653,20 @@ To Do List - Dark Castle v3
 					- DONE: scenario test (doff)
 					- DONE: fix scenario ('Taken') 
 					- DONE: clean up comments in static_gbl, item.take()
-				- TBD: 'drop'
-					- TBD: update hand_mgmt() as needed for new_verb
-					- TBD: disable global syn for new_verb
-					- TBD: add new_verb to interp() action_verb list
-					- TBD: add base ('new_verb', 'do_noun') entries to syntax
-					- TBD: add new_verb symetric syns to syn_verb_lst
-					- TBD: add new_verb symetric syns to syntax
-					- TBD: add infer do_noun entry for new_verb as needed
-					- TBD: in asym_syn(), add conditional syn as needed
-					- TBD: manual test (including symetric syn, infer, asym syn, and hand_mgmt)
-					- TBD: scenario test
-					- TBD: fix scenario as needed
-					- TBD: clean up comments in static_gbl, item.take()
+				- DONE: 'drop'
+					- DONE: update hand_mgmt() as needed for new_verb
+					- DONE: disable global syn for new_verb ('release')
+					- DONE: add new_verb to interp() action_verb list
+					- DONE: add base ('new_verb', 'do_noun') entries to syntax
+					- DONE: add new_verb symetric syns to syn_verb_lst
+					- DONE: add new_verb symetric syns to syntax
+					- DONE: add infer do_noun entry for new_verb as needed
+					- NA: in asym_syn(), add conditional syn as needed
+					- DONE: manual test (including symetric syn, infer, asym syn, and hand_mgmt)
+					- DONE: had to move hand_mgmt() to before validate() in app_main()
+					- DONE: scenario test
+					- NA: fix scenario as needed
+					- DONE: clean up comments in static_gbl, hang_mgmt(), app_main()
 				- TBD: additional 2-word cases ('eat', 'stow', 'open', 'close', 'read', 'pull', 'push')
 					- TBD: update hand_mgmt() as needed for new_verb
 					- TBD: disable global syn for new_verb
@@ -703,6 +704,7 @@ To Do List - Dark Castle v3
 			- TBD: consider including bkpk in infer_do_noun() scope (e.g. if crown in bkpk, wear it)
 			- TBD: global refactor
 			- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
+			- TBD: re-do multiples w/ positional approach; support 'and', ',', and multiple except
 			- TBD: clean up comments
 		- TBD: update existing test scenarios as needed if no longer pass
 	- TBD: create word-only test game for vocab test scenarios ??

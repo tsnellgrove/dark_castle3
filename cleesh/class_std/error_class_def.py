@@ -156,7 +156,8 @@ class Error(Identity):
 		if self == creature.feature_lst[0]:
 			err_txt = (f"You can't drop your {creature.feature_lst[0].full_name} - you're quite attached to it.")
 			return True, False, err_txt
-		if self not in creature.hand_lst and self not in creature.bkpk_lst: # enable drop from pack
+#		if self not in creature.hand_lst and self not in creature.bkpk_lst: # enable drop from pack
+		if self not in creature.hand_lst:
 			err_txt = (f"You don't possess the {self.full_name}.")
 			return True, False, err_txt
 		if creature.is_contained(gs) and not creature.get_contained_by(gs).chk_has_capacity():
