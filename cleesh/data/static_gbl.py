@@ -91,9 +91,9 @@ engine_static_dict = {
         'swig' : 'drink',
         'quaff' : 'drink',
         'sip' : 'drink',
-        'devour' : 'eat',
-        'ingest' : 'eat',
-        'munch' : 'eat',
+#        'devour' : 'eat',
+#        'ingest' : 'eat',
+#        'munch' : 'eat',
         'hand' : 'give',
         'donate' : 'give',
         'walk' : 'go',
@@ -105,6 +105,7 @@ engine_static_dict = {
         'skim' : 'read',
         'scan' : 'read',
 	},
+
 
 
 	#### ONE WORD & ERRORS ####

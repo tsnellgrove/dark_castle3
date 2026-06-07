@@ -73,6 +73,13 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('drop', 'input_do_noun') : ['drop', 'do_noun_str', 'verb_do'],
 		('release', 'verb_syn') : ['drop'],
 
+		('eat', 'input_do_noun') : ['eat', 'do_noun_str', 'verb_do'],
+		('consume', 'verb_syn') : ['eat'],
+		('devour', 'verb_syn') : ['eat'],
+		('gobble', 'verb_syn') : ['eat'],
+		('ingest', 'verb_syn') : ['eat'],
+		('munch', 'verb_syn') : ['eat'],
+
 		('enter', 'input_do_noun') : ['enter', 'do_noun_str', 'verb_do'],
 #		('in', 'verb_syn') : ['enter'],
 
@@ -303,14 +310,14 @@ def interpreter(user_input, master_obj_lst):
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = [
-			'doff', 'drop', 'enter', 'examine', 'exit','jump', 'sit', 'stand', 'take', 'wear'
+			'doff', 'drop', 'eat', 'enter', 'examine', 'exit','jump', 'sit', 'stand', 'take', 'wear'
 			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
 			'inventory', 'look'
 			] # non-action verbs are subsituted in syntax or asym_syn()
 	syn_verb_lst = [
-			'carry', 'describe', 'don', 'get', 'hold', 'inspect', 'leap', 'list', 'release',  
-			'remove', 'search', 'vault'
+			'carry', 'consume', 'describe', 'devour', 'don', 'get', 'gobble', 'hold', 'ingest', 
+			'inspect', 'leap', 'list', 'munch', 'release', 'remove', 'search', 'vault'
 			] # symetric syn_verbs are substituted pre do_noun infer
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst
 

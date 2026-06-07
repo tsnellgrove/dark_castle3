@@ -688,20 +688,20 @@ To Do List - Dark Castle v3
 						- DONE: manual test
 						- DONE: scenario test
 						- DONE: clean-up comments in drop_err(), hand_mgmt(), app_main()
-				- TBD: 'eat'
-					- TBD: update hand_mgmt() as needed for new_verb
-					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
-					- TBD: disable global syn for new_verb
-					- TBD: add new_verb to interp() action_verb list
-					- TBD: add base ('new_verb', 'do_noun') entries to syntax
-					- TBD: add new_verb symetric syns to syn_verb_lst
-					- TBD: add new_verb symetric syns to syntax
-					- TBD: add infer do_noun entry for new_verb as needed
-					- TBD: in asym_syn(), add conditional syn as needed
-					- TBD: manual test (including symetric syn, infer, asym syn, and hand_mgmt)
-					- TBD: scenario test
-					- TBD: fix scenario as needed
-					- TBD: clean up comments in static_gbl
+				- INPROC: 'eat'
+					- DONE: update hand_mgmt() as needed for new_verb
+					- DONE: update *_err() to pass validate if hand_mgmt() will fix when called
+					- DONE: disable global syn for new_verb
+					- DONE: add new_verb to interp() action_verb list
+					- DONE: add base ('new_verb', 'do_noun') entries to syntax
+					- DONE: add new_verb symetric syns to syn_verb_lst
+					- DONE: add new_verb symetric syns to syntax
+					- DONE: add infer do_noun entry for new_verb as needed
+					- NA: in asym_syn(), add conditional syn as needed
+					- DONE: manual test (including symetric syn, infer, asym syn, and hand_mgmt)
+					- DONE: scenario test
+					- INPROC: fix scenario as needed
+					- TBD: clean up comments in static_gbl, eat_err() ['wear', 'drop', 'eat']
 				- TBD: additional 2-word cases ('stow', 'open', 'close', 'read', 'pull', 'push')
 					- TBD: update hand_mgmt() as needed for new_verb
 					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called

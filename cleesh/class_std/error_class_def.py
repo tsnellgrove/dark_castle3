@@ -156,7 +156,8 @@ class Error(Identity):
 		if self == creature.feature_lst[0]:
 			err_txt = (f"You can't drop your {creature.feature_lst[0].full_name} - you're quite attached to it.")
 			return True, False, err_txt
-		if self not in (creature.hand_lst + creature.bkpk_lst + creature.worn_lst):
+		if self not in (creature.hand_lst) and not creature.chk_in_bkpk(self) and not creature.chk_is_worn(self):
+#		if self not in (creature.hand_lst + creature.bkpk_lst + creature.worn_lst):
 			err_txt = (f"You don't possess the {self.full_name}.")
 			return True, False, err_txt
 		if creature.is_contained(gs) and not creature.get_contained_by(gs).chk_has_capacity():
@@ -182,7 +183,7 @@ class Error(Identity):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
 			return True, False, ""
-		if self not in creature.hand_lst and self not in creature.bkpk_lst:
+		if self not in (creature.hand_lst) and not creature.chk_in_bkpk(self) and not creature.chk_is_worn(self):
 			err_txt = (f"You don't possess the {self.full_name}.")
 			return True, False, err_txt
 
@@ -199,7 +200,8 @@ class Error(Identity):
 		if self in creature.worn_lst:
 			err_txt = (f"You're already wearing the {self.full_name}!")
 			return True, False, err_txt
-		if self not in (creature.hand_lst + creature.bkpk_lst):
+#		if self not in (creature.hand_lst + creature.bkpk_lst):
+		if self not in (creature.hand_lst) and not creature.chk_in_bkpk(self):
 			err_txt = (f"You don't possess the {self.full_name}.")
 			return True, False, err_txt
 		if creature.chk_type_worn(self):
