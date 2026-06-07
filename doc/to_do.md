@@ -667,8 +667,30 @@ To Do List - Dark Castle v3
 					- DONE: scenario test
 					- NA: fix scenario as needed
 					- DONE: clean up comments in static_gbl, hang_mgmt(), app_main()
+				- DONE: long-term fix for hand_mgmt() kludge
+					- IDEA: hand_mgmt() innate problem: world state changes but cmd_exe() might not run
+						- EXAMPLE: 'eat biscuit' moves biscuit from bkpk to hand even if eat_err()
+					- IDEA: this was true when hand-state was baked into interp() as well
+					- IDEA: problem exists even if we didn't run actions from do & id nouns
+					- IDEA: 1 solution is sit down and bake hand mgmt features into verb() & verb_err()
+						- IDEA: actually - there will be a lot of these - maybe create auto routines?
+					- CANCEL: rigorous ealiminat-hand_mgmt() approach would require:
+						- CANCEL: update wear() & wear_err() for garment in bkpk
+						- CANCEL: update drop() & drop_err() for item in bkpk or garment worn
+						- CANCEL: update eat() & eat_err() for food in bkpk or food worn
+						- CANCEL: update stow() & stow_err() for garment worn
+						- CANCEL: will also need to do for all prep_verbs... hm...
+					- IDEA: alt, just update verb_err() and move hand_mgmt() back to cmd_exe()
+						- DONE: decide approach: update verb_err() & move hand_mgmt() back to cmd_exe()
+						- DONE: adjust wear_err() for bkpk (was already in place!)
+						- DONE: adjust drop_err() for bkpk or worn
+						- DONE: move hand_mgmt() back to just before cmd_exe()
+						- DONE: manual test
+						- DONE: scenario test
+						- DONE: clean-up comments in drop_err(), hand_mgmt(), app_main()
 				- TBD: 'eat'
 					- TBD: update hand_mgmt() as needed for new_verb
+					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
 					- TBD: disable global syn for new_verb
 					- TBD: add new_verb to interp() action_verb list
 					- TBD: add base ('new_verb', 'do_noun') entries to syntax
@@ -682,6 +704,7 @@ To Do List - Dark Castle v3
 					- TBD: clean up comments in static_gbl
 				- TBD: additional 2-word cases ('stow', 'open', 'close', 'read', 'pull', 'push')
 					- TBD: update hand_mgmt() as needed for new_verb
+					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
 					- TBD: disable global syn for new_verb
 					- TBD: add new_verb to interp() action_verb list
 					- TBD: add base ('new_verb', 'do_noun') entries to syntax
@@ -693,21 +716,9 @@ To Do List - Dark Castle v3
 					- TBD: scenario test
 					- TBD: fix scenario as needed
 					- TBD: clean up comments in static_gbl
-			- TBD: long-term fix for hand_mgmt() kludge
-				- IDEA: hand_mgmt() innate problem: world state changes but cmd_exe() might not run
-					- EXAMPLE: 'eat biscuit' moves biscuit from bkpk to hand even if eat_err() is True
-				- IDEA: this was true when hand-state was baked into interp() as well - still true now
-				- IDEA: problem exists even if we didn't run actions from do & id nouns
-				- IDEA: solution is to sit down and bake hand mgmt features into verb() & verb_err()
-				- IDEA: actually - there will be a lot of these - maybe create auto routines?
-				- IDEA: alternatively, just update verb_err() and keep hand_mgmt() to run w/ action?
-				- TBD: decide on approach
-				- TBD: rigorous ealiminat-hand_mgmt() approach would require:
-					- TBD: update wear() & wear_err() for garment in bkpk
-					- TBD: update drop() & drop_err() for item in bkpk or garment worn
-					- TBD: update eat() & eat_err() for food in bkpk or food worn
-					- TBD: update stow() & stow_err() for garment worn
-					- TBD: will also need to do for all prep_verbs... hm...
+
+
+
 			- TBD: generalize 'go':
 				- TBD: if only dir, infer_verb = 'go'
 				- TBD: if verb in ['go'] => infer dir

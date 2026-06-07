@@ -22,4 +22,4 @@ def hand_mgmt(case, word_lst, gs):
         gs.core.hero.worn_lst_remove(do_noun_obj)
         gs.io.buffer(f"(Removing the {do_noun_obj.full_name} first)")
         gs.io.buff_s(f"{gs.core.hero.name}_remove_{do_noun_obj.descript_key}")
-    return case, word_lst
+    return
