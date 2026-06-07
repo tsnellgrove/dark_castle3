@@ -119,7 +119,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 	try:
 		base_action_lst = syntax_dict[user_input_tpl]
 	except:
-		return 'error', ["What??"]
+#		return 'error', ["What??"]
+		return 'error', ["I don't understand that command!"]
 	if isinstance(base_action_lst, list):
 		case = 'universal'
 	else:
@@ -384,9 +385,9 @@ def interpreter(user_input, master_obj_lst):
 				id_noun_cmd_lst.append(word)
 				id_noun_index = index
 				id_noun_count += 1
-		if verb_count == 0:
-			return 'error', ['I don\'t see a verb in that sentence!']
-		elif (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
+#		if verb_count == 0:
+#			return 'error', ['I don\'t see a verb in that sentence!']
+		if (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
 			return 'error', ['I see more than one verb in that sentence!']
 		
 		user_cmd_lst_pre_syn = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
@@ -440,6 +441,8 @@ def interpreter(user_input, master_obj_lst):
 			print(f"user_syntax_lst: {user_syntax_lst}")
 
 		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_obj.name, prep, None, gs)
+		if case == 'error':
+			return case, action_lst
 
 		if tst_mode:
 			print(f"pre-asym-syn action_lst: {action_lst}")
