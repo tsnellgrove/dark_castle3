@@ -744,6 +744,25 @@ To Do List - Dark Castle v3
 					- TBD: scenario test
 					- TBD: fix scenario as needed
 					- TBD: clean up comments in static_gbl
+			- TBD: create language test game for language
+				- TBD: create spiral rooms w/ diagonal paths
+				- TBD: create colored doors
+				- TBD: populate with test view-only obj, seats (first 4 of 9 rooms only)
+				- TBD: populate with test items, food, garments, writing, buttons, levers
+				- TBD: scenario test for all 2word verbs:
+				- TBD: verbs, hand_mgmt, symetric syn, infer, asymetric syn
+					- TBD: take()
+					- TBD: drop()
+					- TBD: stow()
+					- TBD: wear()
+					- TBD: doff()
+					- TBD: eat()
+					- TBD: read()
+					- TBD: sit()
+					- TBD: open()
+					- TBD: close()
+					- TBD: push()
+					- TBD: pull()
 			- TBD: generalize 'go':
 				- TBD: if only dir, infer_verb = 'go'
 				- TBD: if verb in ['go'] => infer dir
