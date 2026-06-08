@@ -174,8 +174,9 @@ class Error(Identity):
 		if self in creature.bkpk_lst:
 			err_txt = (f"The {self.full_name} is already in your backpack!")
 			return True, False, err_txt
-		if self.err_not_in_hand(creature, gs):
-			return True, False, ""
+		if self not in (creature.hand_lst) and not creature.chk_is_worn(self):
+			err_txt = (f"You don't possess the {self.full_name}.")
+			return True, False, err_txt
 		return False, False, ""
 
 	def eat_err(self, gs):

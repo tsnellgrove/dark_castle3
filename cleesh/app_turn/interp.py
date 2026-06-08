@@ -114,14 +114,18 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('stand', 'input_do_noun') : ['stand', 'do_noun_str', 'verb_do'],
 		('stand', 'up', 'input_do_noun') : ['stand', 'do_noun_str', 'verb_do'],
 
-		('wear', 'input_do_noun') : ['wear', 'do_noun_str', 'verb_do'],
-		('don', 'verb_syn') : ['wear'],
+		('stow', 'input_do_noun') : ['stow', 'do_noun_str', 'verb_do'],
+		('pack', 'verb_syn') : ['stow'],
+		('stash', 'verb_syn') : ['stow'],
 
 		('take', 'input_do_noun') : ['take', 'do_noun_str', 'verb_do'],
 		('get', 'verb_syn') : ['take'],
 		('remove', 'verb_syn') : ['take'],
 		('hold', 'verb_syn') : ['take'],
 		('carry', 'verb_syn') : ['take'],
+
+		('wear', 'input_do_noun') : ['wear', 'do_noun_str', 'verb_do'],
+		('don', 'verb_syn') : ['wear'],
 	}
 	try:
 		base_action_lst = syntax_dict[user_input_tpl]
@@ -187,7 +191,8 @@ def asym_syn(action_lst, gs):
 	if verb_str in ['exit'] and gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
 		action_lst = ['stand', gs.core.hero, 'verb_do']
 	if verb_str in ['take'] and do_noun_obj in gs.core.hero.worn_lst:
-		action_lst = ['doff', do_noun_obj, 'verb_do']
+#		action_lst = ['doff', do_noun_obj, 'verb_do']
+		action_lst[0] = 'doff'
 	return case, action_lst
 
 
@@ -310,14 +315,15 @@ def interpreter(user_input, master_obj_lst):
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = [
-			'doff', 'drop', 'eat', 'enter', 'examine', 'exit','jump', 'sit', 'stand', 'take', 'wear'
+			'doff', 'drop', 'eat', 'enter', 'examine', 'exit','jump', 'sit', 'stand', 'stow', 
+			'take', 'wear'
 			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
 			'inventory', 'look'
 			] # non-action verbs are subsituted in syntax or asym_syn()
 	syn_verb_lst = [
 			'carry', 'consume', 'describe', 'devour', 'don', 'get', 'gobble', 'hold', 'ingest', 
-			'inspect', 'leap', 'list', 'munch', 'release', 'remove', 'search', 'vault'
+			'inspect', 'leap', 'list', 'munch', 'pack', 'release', 'remove', 'search', 'stash', 'vault'
 			] # symetric syn_verbs are substituted pre do_noun infer
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst
 
