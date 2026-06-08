@@ -102,6 +102,11 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('leap', 'verb_syn') : ['jump'],
 		('vault', 'verb_syn') : ['jump'],
 
+		('read', 'input_do_noun') : ['read', 'do_noun_str', 'verb_do'],
+		('scan', 'verb_syn') : ['read'],
+		('skim', 'verb_syn') : ['read'],
+		('peruse', 'verb_syn') : ['read'],
+
 		('sit', 'input_do_noun') : ['sit', 'do_noun_str', 'verb_do'],
 		('sit', 'in', 'input_do_noun') : ['sit', 'do_noun_str', 'verb_do'],
 		('sit', 'on', 'input_do_noun') : ['sit', 'do_noun_str', 'verb_do'],
@@ -193,6 +198,8 @@ def asym_syn(action_lst, gs):
 	if verb_str in ['take'] and do_noun_obj in gs.core.hero.worn_lst:
 #		action_lst = ['doff', do_noun_obj, 'verb_do']
 		action_lst[0] = 'doff'
+	if verb_str in ['examine'] and do_noun_obj.is_writing():
+		action_lst[0] = 'read'
 	return case, action_lst
 
 
@@ -315,7 +322,7 @@ def interpreter(user_input, master_obj_lst):
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = [
-			'doff', 'drop', 'eat', 'enter', 'examine', 'exit','jump', 'sit', 'stand', 'stow', 
+			'doff', 'drop', 'eat', 'enter', 'examine', 'exit','jump', 'read', 'sit', 'stand', 'stow', 
 			'take', 'wear'
 			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
@@ -323,7 +330,8 @@ def interpreter(user_input, master_obj_lst):
 			] # non-action verbs are subsituted in syntax or asym_syn()
 	syn_verb_lst = [
 			'carry', 'consume', 'describe', 'devour', 'don', 'get', 'gobble', 'hold', 'ingest', 
-			'inspect', 'leap', 'list', 'munch', 'pack', 'release', 'remove', 'search', 'stash', 'vault'
+			'inspect', 'leap', 'list', 'munch', 'pack', 'peruse', 'release', 'remove', 
+			'scan', 'skim', 'search', 'stash', 'vault'
 			] # symetric syn_verbs are substituted pre do_noun infer
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst
 

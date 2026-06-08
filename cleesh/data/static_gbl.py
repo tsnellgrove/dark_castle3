@@ -99,8 +99,6 @@ engine_static_dict = {
         'press' : 'push',
         'shove' : 'push',
         'place' : 'put',
-        'skim' : 'read',
-        'scan' : 'read',
 	},
 
 

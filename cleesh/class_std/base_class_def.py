@@ -56,16 +56,6 @@ class Writing(Error):
 			gs.io.buffer(f"On the {self.full_name}, written in {self.writing.full_name}, you read: {gs.io.get_str(self.writing.name, self.writing.full_name)}.")
 			return
 
-	def examine(self, gs, mode=None):
-		""" Writing-specific Examine.
-		"""
-		if mode is None:
-			mode = 'std'
-		creature = gs.core.hero
-
-		gs.io.buff_d(self.descript_key, self.full_name)
-		return
-
 
 class ViewOnly(Writing):
 	def __init__(self, name, full_name, root_name, descript_key, writing):
