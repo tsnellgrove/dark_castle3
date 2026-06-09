@@ -747,7 +747,24 @@ To Do List - Dark Castle v3
 					- NA: fix scenario as needed
 					- NA: clean up comments in static_gbl
 				- DONE: go back and add ZIL sym_syn and prep variants to migrated verbs
-				- TBD: 'close'
+				- DONE: 'close'
+					- DONE: check ZIL list for sym_syn and prep variants
+					- NA: update hand_mgmt() as needed for new_verb
+					- NA: update *_err() to pass validate if hand_mgmt() will fix when called
+					- NA: disable global syn for new_verb
+					- DONE: add new_verb to interp() action_verb list
+					- DONE: add base ('new_verb', 'do_noun') entries to syntax
+					- DONE: add prep variants for new_verb to syntax
+					- DONE: add new_verb symetric syns to syn_verb_lst ('shut')
+					- DONE: add new_verb symetric syns to syntax ('shut')
+					- NA: add infer do_noun entry for new_verb as needed
+					- NA: in asym_syn(), add conditional syn as needed
+					- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+						-DONE: test 'close bag' while in bkpk
+					- DONE: scenario test
+					- NA: fix scenario as needed
+					- NA: clean up comments in static_gbl
+				- TBD: 'pull'
 					- TBD: check ZIL list for sym_syn and prep variants
 					- TBD: update hand_mgmt() as needed for new_verb
 					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
@@ -763,7 +780,7 @@ To Do List - Dark Castle v3
 					- TBD: scenario test
 					- TBD: fix scenario as needed
 					- TBD: clean up comments in static_gbl
-				- TBD: additional 2-word cases ('pull', 'push')
+				- TBD: 'push'
 					- TBD: check ZIL list for sym_syn and prep variants
 					- TBD: update hand_mgmt() as needed for new_verb
 					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
@@ -801,6 +818,22 @@ To Do List - Dark Castle v3
 			- TBD: generalize 'go':
 				- TBD: if only dir, infer_verb = 'go'
 				- TBD: if verb in ['go'] => infer dir
+			- TBD: 'go'
+				- TBD: check ZIL list for sym_syn and prep variants
+				- TBD: update hand_mgmt() as needed for new_verb
+				- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
+				- TBD: disable global syn for new_verb
+				- TBD: add new_verb to interp() action_verb list
+				- TBD: add base ('new_verb', 'do_noun') entries to syntax
+				- TBD: add prep variants for new_verb to syntax
+				- TBD: add new_verb symetric syns to syn_verb_lst
+				- TBD: add new_verb symetric syns to syntax
+				- TBD: add infer do_noun entry for new_verb as needed
+				- TBD: in asym_syn(), add conditional syn as needed
+				- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+				- TBD: scenario test
+				- TBD: fix scenario as needed
+				- TBD: clean up comments in static_gbl
 			- TBD: generalize 'climb':
 				- TBD: if verb in ['go', 'climb'] => infer dir
 				- TBD: enter & exit
@@ -812,6 +845,22 @@ To Do List - Dark Castle v3
 					- TBD: create room or door specific method for enter
 					- TBD: create room or door specific method for exit
 					- TBD: create exit => stand if do_noun is_contained
+			- TBD: 'climb'
+				- TBD: check ZIL list for sym_syn and prep variants
+				- TBD: update hand_mgmt() as needed for new_verb
+				- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
+				- TBD: disable global syn for new_verb
+				- TBD: add new_verb to interp() action_verb list
+				- TBD: add base ('new_verb', 'do_noun') entries to syntax
+				- TBD: add prep variants for new_verb to syntax
+				- TBD: add new_verb symetric syns to syn_verb_lst
+				- TBD: add new_verb symetric syns to syntax
+				- TBD: add infer do_noun entry for new_verb as needed
+				- TBD: in asym_syn(), add conditional syn as needed
+				- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+				- TBD: scenario test
+				- TBD: fix scenario as needed
+				- TBD: clean up comments in static_gbl
 			- TBD: generalize id_noun case => sit case
 				- TBD: 'put on' as syntax syn for 'wear'
 				- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
