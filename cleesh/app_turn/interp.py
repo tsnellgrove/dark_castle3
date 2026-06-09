@@ -102,7 +102,11 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('leap', 'verb_syn') : ['jump'],
 		('vault', 'verb_syn') : ['jump'],
 
+		('open', 'input_do_noun') : ['open', 'do_noun_str', 'verb_do'],
+		('open', 'up', 'input_do_noun') : ['open', 'do_noun_str', 'verb_do'],
+
 		('read', 'input_do_noun') : ['read', 'do_noun_str', 'verb_do'],
+		('read', 'from', 'input_do_noun') : ['read', 'do_noun_str', 'verb_do'],
 		('scan', 'verb_syn') : ['read'],
 		('skim', 'verb_syn') : ['read'],
 		('peruse', 'verb_syn') : ['read'],
@@ -322,8 +326,8 @@ def interpreter(user_input, master_obj_lst):
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = [
-			'doff', 'drop', 'eat', 'enter', 'examine', 'exit','jump', 'read', 'sit', 'stand', 'stow', 
-			'take', 'wear'
+			'doff', 'drop', 'eat', 'enter', 'examine', 'exit','jump', 'open', 'read', 
+			'sit', 'stand', 'stow', 'take', 'wear'
 			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
 			'inventory', 'look'
