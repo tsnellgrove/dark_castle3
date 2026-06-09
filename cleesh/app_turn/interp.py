@@ -74,11 +74,13 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('release', 'verb_syn') : ['drop'],
 
 		('eat', 'input_do_noun') : ['eat', 'do_noun_str', 'verb_do'],
+		('bite', 'verb_syn') : ['eat'],
 		('consume', 'verb_syn') : ['eat'],
 		('devour', 'verb_syn') : ['eat'],
 		('gobble', 'verb_syn') : ['eat'],
 		('ingest', 'verb_syn') : ['eat'],
 		('munch', 'verb_syn') : ['eat'],
+		('taste', 'verb_syn') : ['eat'],
 
 		('enter', 'input_do_noun') : ['enter', 'do_noun_str', 'verb_do'],
 #		('in', 'verb_syn') : ['enter'],
@@ -129,6 +131,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 		('take', 'input_do_noun') : ['take', 'do_noun_str', 'verb_do'],
 		('get', 'verb_syn') : ['take'],
+		('grab', 'verb_syn') : ['take'],
 		('remove', 'verb_syn') : ['take'],
 		('hold', 'verb_syn') : ['take'],
 		('carry', 'verb_syn') : ['take'],
@@ -333,9 +336,9 @@ def interpreter(user_input, master_obj_lst):
 			'inventory', 'look'
 			] # non-action verbs are subsituted in syntax or asym_syn()
 	syn_verb_lst = [
-			'carry', 'consume', 'describe', 'devour', 'don', 'get', 'gobble', 'hold', 'ingest', 
-			'inspect', 'leap', 'list', 'munch', 'pack', 'peruse', 'release', 'remove', 
-			'scan', 'skim', 'search', 'stash', 'vault'
+			'bite', 'carry', 'consume', 'describe', 'devour', 'don', 'get', 'gobble', 'grab', 'hold', 
+			'ingest', 'inspect', 'leap', 'list', 'munch', 'pack', 'peruse', 'release', 'remove', 
+			'scan', 'skim', 'search', 'stash', 'taste', 'vault'
 			] # symetric syn_verbs are substituted pre do_noun infer
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst
 
