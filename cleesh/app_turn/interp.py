@@ -111,6 +111,13 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('open', 'input_do_noun') : ['open', 'do_noun_str', 'verb_do'],
 		('open', 'up', 'input_do_noun') : ['open', 'do_noun_str', 'verb_do'],
 
+		('pull', 'input_do_noun') : ['pull', 'do_noun_str', 'verb_do'],
+		('pull', 'on', 'input_do_noun') : ['pull', 'do_noun_str', 'verb_do'],
+		('pull', 'up', 'input_do_noun') : ['pull', 'do_noun_str', 'verb_do'],
+		('pull', 'down', 'input_do_noun') : ['pull', 'do_noun_str', 'verb_do'],
+		('tug', 'verb_syn') : ['pull'],
+		('yank', 'verb_syn') : ['pull'],
+
 		('push', 'input_do_noun') : ['push', 'do_noun_str', 'verb_do'],
 		('push', 'on', 'input_do_noun') : ['push', 'do_noun_str', 'verb_do'],
 		('press', 'verb_syn') : ['push'],
@@ -338,7 +345,7 @@ def interpreter(user_input, master_obj_lst):
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = [
-			'close', 'doff', 'drop', 'eat', 'enter', 'examine', 'exit','jump', 'open', 'push', 
+			'close', 'doff', 'drop', 'eat', 'enter', 'examine', 'exit','jump', 'open', 'push', 'pull',
 			'read', 'sit', 'stand', 'stow', 'take', 'wear'
 			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
@@ -347,7 +354,8 @@ def interpreter(user_input, master_obj_lst):
 	syn_verb_lst = [
 			'bite', 'carry', 'consume', 'describe', 'devour', 'don', 'get', 'gobble', 'grab', 'hold', 
 			'ingest', 'inspect', 'leap', 'list', 'munch', 'pack', 'peruse', 'press', 'release', 
-			'remove', 'scan', 'shut', 'skim', 'search', 'shove', 'stash', 'taste', 'vault'
+			'remove', 'scan', 'shut', 'skim', 'search', 'shove', 'stash', 'taste', 'tug', 
+			'vault', 'yank'
 			] # symetric syn_verbs are substituted pre do_noun infer
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst
 
