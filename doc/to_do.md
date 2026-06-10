@@ -797,14 +797,21 @@ To Do List - Dark Castle v3
 					- NA: fix scenario as needed
 					- NA: clean up comments in static_gbl
 			- TBD: asym_syn for 'push' and 'pull'
-				- TBD: add is_pushable() and is_pullable() identities?
+				- TBD: add is_pushable() and is_pullable() identity_class()
+				- TBD: assign is_pushable() and is_pullable to switch classes
+				- TBD: create *_err() method for non_action_verbs (move, slide, roll) like 'enter'
+					- if is_item: 'Moving the do_noun reveales nothing'
+					- if not (is_pushable or is_pullable): 'You can't move the do_noun'
 				- TBD: add 'move', 'roll', 'roll up', and 'slide' to non_action_verb_lst
+				- TBD: add 'move', 'roll', 'roll up', and 'slide' to syntax
 				- TBD: add 'move', 'roll', 'roll up', and 'slide' as asym_syn => 'push' or 'pull'
 					- TBD: if is_pushable => push
 					- TBD: if is_pullable => pull
 					- TBD: if do_noun is_pushable & is_pullable > 'err', "How exact want to move?"
-				- TBD: create *_err() method for each non_action_verb similar to 'enter'
+				- TBD: manual test
+				- TBD: scenario test
 			- TBD: make a spreadsheet of all 2word verbs (columns include has *_err, has method)
+			- TBD: document 'someday maybe' verbs (e.g. 'slide under') in spreadsheet
 		- TBD: direction verbs
 			- TBD: generalize 'go':
 				- TBD: if only dir, infer_verb = 'go'
