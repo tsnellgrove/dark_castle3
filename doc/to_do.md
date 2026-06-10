@@ -541,7 +541,7 @@ To Do List - Dark Castle v3
 				- CANCEL: migrate global syn directly to syntax for clarity / flexibility
 					- IDEA: no, would need to repeat all associated prep entries
 				- DONE: test for scenario errors
-		- INPROC: handle synonyms
+		- DONE: handle synonyms
 			- DONE: embed symetric syns in syntax (lik zork does)
 				- DONE: define action, non_action, verb_syn in interp()
 				- DONE: verb_lst = action + non_action + verb_syn
@@ -764,22 +764,22 @@ To Do List - Dark Castle v3
 					- DONE: scenario test
 					- NA: fix scenario as needed
 					- NA: clean up comments in static_gbl
-				- TBD: 'pull'
-					- TBD: check ZIL list for sym_syn and prep variants
-					- TBD: update hand_mgmt() as needed for new_verb
-					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
-					- TBD: disable global syn for new_verb
-					- TBD: add new_verb to interp() action_verb list
-					- TBD: add base ('new_verb', 'do_noun') entries to syntax
-					- TBD: add prep variants for new_verb to syntax
-					- TBD: add new_verb symetric syns to syn_verb_lst
-					- TBD: add new_verb symetric syns to syntax
-					- TBD: add infer do_noun entry for new_verb as needed
-					- TBD: in asym_syn(), add conditional syn as needed
-					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
-					- TBD: scenario test
-					- TBD: fix scenario as needed
-					- TBD: clean up comments in static_gbl
+				- DONE: 'pull'
+					- DONE: check ZIL list for sym_syn and prep variants
+					- NA: update hand_mgmt() as needed for new_verb
+					- NA: update *_err() to pass validate if hand_mgmt() will fix when called
+					- DONE: disable global syn for new_verb
+					- DONE: add new_verb to interp() action_verb list
+					- DONE: add base ('new_verb', 'do_noun') entries to syntax
+					- DONE: add prep variants for new_verb to syntax
+					- DONE: add new_verb symetric syns to syn_verb_lst
+					- DONE: add new_verb symetric syns to syntax
+					- NA: add infer do_noun entry for new_verb as needed
+					- NA: in asym_syn(), add conditional syn as needed
+					- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+					- DONE: scenario test
+					- NA: fix scenario as needed
+					- DONE: clean up comments in static_gbl
 				- TBD: 'push'
 					- TBD: check ZIL list for sym_syn and prep variants
 					- TBD: update hand_mgmt() as needed for new_verb
@@ -796,29 +796,16 @@ To Do List - Dark Castle v3
 					- TBD: scenario test
 					- TBD: fix scenario as needed
 					- TBD: clean up comments in static_gbl
-			- TBD: create language test game for language (or plan now, avoid more nouns till later?)
-				- TBD: create spiral rooms w/ diagonal paths
-				- TBD: create colored doors
-				- TBD: populate with test view-only obj, seats (first 4 of 9 rooms only)
-				- TBD: populate with test items, food, garments, writing, buttons, levers
-				- TBD: scenario test for all 2word verbs:
-				- TBD: verbs, hand_mgmt, symetric syn, infer, asymetric syn
-					- Room 1: (list obj)
-						- TBD: take()
-						- TBD: drop()
-						- TBD: stow()
-						- TBD: wear()
-						- TBD: doff()
-						- TBD: eat()
-						- TBD: read()
-						- TBD: push()
-						- TBD: pull()
-					- Room 2: (list obj)
-						- TBD: sit()
-						- TBD: open()
-						- TBD: close()
-					- Room 3: (2 chairs?)
-						- TBD: sit()
+			- TBD: asym_syn for 'push' and 'pull'
+				- TBD: add is_pushable() and is_pullable() identities?
+				- TBD: add 'move', 'roll', 'roll up', and 'slide' to non_action_verb_lst
+				- TBD: add 'move', 'roll', 'roll up', and 'slide' as asym_syn => 'push' or 'pull'
+					- TBD: if is_pushable => push
+					- TBD: if is_pullable => pull
+					- TBD: if do_noun is_pushable & is_pullable > 'err', "How exact want to move?"
+				- TBD: create *_err() method for each non_action_verb similar to 'enter'
+			- TBD: make a spreadsheet of all 2word verbs (columns include has *_err, has method)
+		- TBD: direction verbs
 			- TBD: generalize 'go':
 				- TBD: if only dir, infer_verb = 'go'
 				- TBD: if verb in ['go'] => infer dir
@@ -865,22 +852,53 @@ To Do List - Dark Castle v3
 				- TBD: scenario test
 				- TBD: fix scenario as needed
 				- TBD: clean up comments in static_gbl
-			- TBD: generalize id_noun case => sit case
-				- TBD: 'put on' as syntax syn for 'wear'
-				- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
-					- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
-				- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
-			- TBD: generalize travel case? (infer verb?)
-			- TBD: elim 'one_word_convert_lst' in static_gbl
+			- TBD: update verb spreadsheet
+		- TBD: generalize id_noun case => sit case
+			- TBD: 'put on' as syntax syn for 'wear'
+			- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
+				- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
+			- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
+			- TBD: update verb spreadsheet
+		- TBD: generalize travel case? (infer verb?)
+			- TBD: update verb spreadsheet
+		- TBD: elim 'one_word_convert_lst' in static_gbl
+			- TBD: update verb spreadsheet
+		- TBD: generalize meta cmds
+			- TBD: update verb spreadsheet
+		- TBD: generalize help
+			- TBD: update verb spreadsheet
+		- TBD: additional updates
+			- TBD: update help() cmd to give a limited list of verbs ?
 			- TBD: consider including bkpk in infer_do_noun() scope (e.g. if crown in bkpk, wear it)
 			- TBD: global refactor
 			- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
-			- TBD: re-do multiples w/ positional approach; support 'and', ',', and multiple except
 			- TBD: clean up comments
 		- TBD: update existing test scenarios as needed if no longer pass
-	- TBD: create word-only test game for vocab test scenarios ??
+		- TBD: create language test game for language (or plan now, avoid more nouns till later?)
+			- TBD: create spiral rooms w/ diagonal paths
+			- TBD: create colored doors
+			- TBD: populate with test view-only obj, seats (first 4 of 9 rooms only)
+			- TBD: populate with test items, food, garments, writing, buttons, levers
+			- TBD: scenario test for all 2word verbs:
+		- TBD: re-do multiples w/ positional approach; support 'and', ',', and multiple except
+		- TBD: verbs, hand_mgmt, symetric syn, infer, asymetric syn
+			- Room 1: (list obj)
+				- TBD: take()
+				- TBD: drop()
+				- TBD: stow()
+				- TBD: wear()
+				- TBD: doff()
+				- TBD: eat()
+				- TBD: read()
+				- TBD: push()
+				- TBD: pull()
+			- Room 2: (1 chair)
+				- TBD: sit()
+				- TBD: open()
+				- TBD: close()
+			- Room 3: (2 chairs?)
+				- TBD: sit()
 	- TBD: review / unify all interp() update notes
-	- TBD: update help() cmd to give a limited list of verbs ?
 	- TBD: document new interp() approach
 		- TBD: credit zork and bolggers
 		- IDEA: 3 things I learned from zork: 

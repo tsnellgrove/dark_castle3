@@ -96,8 +96,6 @@ engine_static_dict = {
         'walk' : 'go',
         'run' : 'go',
         'info' : 'help',
-        'press' : 'push',
-        'shove' : 'push',
         'place' : 'put',
 	},
 
