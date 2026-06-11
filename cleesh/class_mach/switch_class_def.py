@@ -49,6 +49,9 @@ class ButtonSwitchMixIn(SwitchMixIn):
 	# *** class identity methods ***
 	def is_buttonswitch(self):
 		return True
+	
+	def is_pushable(self):
+		return True
 
 	# *** verb methods ***
 	def push(self, gs, mode=None):
@@ -78,6 +81,9 @@ class SpringSliderSwitchMixIn(ButtonSwitchMixIn):
 
 	# *** class identity methods ***
 	def is_springsliderswitch(self):
+		return True
+	
+	def is_pullable(self):
 		return True
 
 	# *** verb methods ***
@@ -112,6 +118,9 @@ class LeverSwitchMixIn(SwitchMixIn):
 
 	# *** class identity methods ***
 	def is_leverswitch(self):
+		return True
+
+	def is_pullable(self):
 		return True
 
 	# *** display methods ***

@@ -343,6 +343,20 @@ class Error(Identity):
 #			return True, False, err_txt
 		return False, False, ""
 
+	def move_err(self, gs):
+		creature = gs.core.hero
+		if self.err_std(creature, gs):
+			return True, False, ""
+		if self.is_item():
+			# attemptable error: moving an item might appear plausible / useful
+			err_txt = (f"Moving the {self.full_name} reveales nothing.")
+			return True, True, err_txt
+		if not (self.is_pullable() or self.is_pushable()):
+			# attemptable error: an immovable obj might appear movable
+			err_txt = (f"You can't move the {self.full_name}.")
+			return True, True, err_txt
+		return False, False, ""
+
 	def exit_err(self, gs):
 		creature = gs.core.hero
 		if self.err_not_vis(creature, gs):

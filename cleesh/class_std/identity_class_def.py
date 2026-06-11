@@ -103,6 +103,12 @@ class Identity(Invisible):
 	def is_leverswitch(self):
 		return False
 
+	def is_pushable(self):
+		return False
+
+	def is_pullable(self):
+		return False
+
 	def has_cond(self):
 		return False
 

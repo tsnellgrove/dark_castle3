@@ -796,20 +796,22 @@ To Do List - Dark Castle v3
 					- DONE: scenario test
 					- NA: fix scenario as needed
 					- NA: clean up comments in static_gbl
-			- TBD: asym_syn for 'push' and 'pull'
-				- TBD: add is_pushable() and is_pullable() identity_class()
-				- TBD: assign is_pushable() and is_pullable to switch classes
-				- TBD: create *_err() method for non_action_verbs (move, slide, roll) like 'enter'
-					- if is_item: 'Moving the do_noun reveales nothing'
-					- if not (is_pushable or is_pullable): 'You can't move the do_noun'
-				- TBD: add 'move', 'roll', 'roll up', and 'slide' to non_action_verb_lst
-				- TBD: add 'move', 'roll', 'roll up', and 'slide' to syntax
-				- TBD: add 'move', 'roll', 'roll up', and 'slide' as asym_syn => 'push' or 'pull'
-					- TBD: if is_pushable => push
-					- TBD: if is_pullable => pull
-					- TBD: if do_noun is_pushable & is_pullable > 'err', "How exact want to move?"
-				- TBD: manual test
-				- TBD: scenario test
+			- DONE: asym_syn for 'push' and 'pull'
+				- DONE: add is_pushable() and is_pullable() identity_class()
+				- DONE: assign is_pushable() and is_pullable to switch classes
+				- DONE: create move_err() method like enter_err()
+					- DONE: if is_item: 'Moving the do_noun reveales nothing'
+					- DONE: if not (is_pushable or is_pullable): 'You can't move the do_noun'
+				- DONE: add 'move' to non_action_verb_lst
+				- DONE: add 'roll' and 'slide' as sym_syn_verbs
+				- DONE: add 'move' to syntax
+				- DONE: add 'roll' and 'slide' to syntax
+				- DONE: add 'move' as asym_syn => 'push' or 'pull'
+					- DONE: if is_pushable => push
+					- DONE: if is_pullable => pull
+					- DONE: if do_noun is_pushable & is_pullable > 'err', "How exact want to move?"
+				- DONE: manual test
+				- DONE: scenario test
 			- TBD: make a spreadsheet of all 2word verbs (columns include has *_err, has method)
 			- TBD: document 'someday maybe' verbs (e.g. 'slide under') in spreadsheet
 		- TBD: direction verbs

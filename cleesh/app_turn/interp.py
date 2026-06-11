@@ -108,6 +108,10 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('leap', 'verb_syn') : ['jump'],
 		('vault', 'verb_syn') : ['jump'],
 
+		('move', 'input_do_noun') : ['move', 'do_noun_str', 'verb_do'],
+		('slide', 'verb_syn') : ['move'],
+		('roll', 'verb_syn') : ['move'],
+
 		('open', 'input_do_noun') : ['open', 'do_noun_str', 'verb_do'],
 		('open', 'up', 'input_do_noun') : ['open', 'do_noun_str', 'verb_do'],
 
@@ -223,6 +227,14 @@ def asym_syn(action_lst, gs):
 		action_lst[0] = 'doff'
 	if verb_str in ['examine'] and do_noun_obj.is_writing():
 		action_lst[0] = 'read'
+	if verb_str in ['move']:
+		if do_noun_obj.is_pushable() and not do_noun_obj.is_pullable():
+			action_lst[0] = 'push'
+		elif do_noun_obj.is_pullable() and not do_noun_obj.is_pushable():
+			action_lst[0] = 'pull'
+		elif do_noun_obj.is_pushable() and do_noun_obj.is_pullable():
+			case = 'error'
+			action_lst = [f"Are you trying to push the {do_noun_obj.full_name} or pull it?"]
 	return case, action_lst
 
 
@@ -345,8 +357,8 @@ def interpreter(user_input, master_obj_lst):
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = [
-			'close', 'doff', 'drop', 'eat', 'enter', 'examine', 'exit','jump', 'open', 'push', 'pull',
-			'read', 'sit', 'stand', 'stow', 'take', 'wear'
+			'close', 'doff', 'drop', 'eat', 'enter', 'examine', 'exit','jump', 'open', 'move', 
+			'push', 'pull', 'read', 'sit', 'stand', 'stow', 'take', 'wear'
 			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
 			'inventory', 'look'
@@ -354,8 +366,8 @@ def interpreter(user_input, master_obj_lst):
 	syn_verb_lst = [
 			'bite', 'carry', 'consume', 'describe', 'devour', 'don', 'get', 'gobble', 'grab', 'hold', 
 			'ingest', 'inspect', 'leap', 'list', 'munch', 'pack', 'peruse', 'press', 'release', 
-			'remove', 'scan', 'shut', 'skim', 'search', 'shove', 'stash', 'taste', 'tug', 
-			'vault', 'yank'
+			'remove', 'roll', 'scan', 'shut', 'skim', 'search', 'shove', 'slide', 'stash', 
+			'taste', 'tug', 'vault', 'yank'
 			] # symetric syn_verbs are substituted pre do_noun infer
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst
 
