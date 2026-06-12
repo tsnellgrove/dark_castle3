@@ -461,8 +461,10 @@ def interpreter(user_input, master_obj_lst):
 		if tst_mode:
 			print(f"user_cmd_lst_syn: {user_cmd_lst_syn}")
 
-		if word1 in ['stand', 'jump', 'inventory'] and do_noun_count > 0:
-			return 'error', [f"{word1.capitalize()} is a one-word command!"]
+		if word1 in ['stand', 'jump', 'inventory'] and do_noun_count > 0: # can't base on len(user_cmd_lst_pre_syn) due to desire to support 'stand up'
+#		if word1 in ['stand', 'jump', 'inventory'] and len(user_cmd_lst_pre_syn) > 1:
+#			return 'error', [f"{word1.capitalize()} is a one-word command!"]
+			return 'error', [f"{user_input_lst[0].capitalize()} is a one-word command!"]
 		elif do_noun_count > 0:
 			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep

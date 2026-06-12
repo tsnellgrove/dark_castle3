@@ -812,7 +812,7 @@ To Do List - Dark Castle v3
 					- DONE: if do_noun is_pushable & is_pullable > 'err', "How exact want to move?"
 				- DONE: manual test
 				- DONE: scenario test
-			- TBD: solve 'list x' => 'inv is 1-word cmd' w/ user_input_lst[0] in err
+			- DONE: solve 'list x' => 'inv is 1-word cmd' w/ user_input_lst[0] in err
 			- TBD: clean-up legacy 2-word code
 				- TBD: comment out code
 				- TBD: scenario test
