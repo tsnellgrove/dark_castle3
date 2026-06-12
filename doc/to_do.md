@@ -812,7 +812,11 @@ To Do List - Dark Castle v3
 					- DONE: if do_noun is_pushable & is_pullable > 'err', "How exact want to move?"
 				- DONE: manual test
 				- DONE: scenario test
-			- TBD: make a spreadsheet of all 2word verbs (columns include has *_err, has method)
+			- TBD: clean-up legacy 2-word code
+				- TBD: comment out code
+				- TBD: scenario test
+				- TBD: clean-up code
+			- INPROC: make a spreadsheet of all 2word verbs (columns include has *_err, has method)
 			- TBD: document 'someday maybe' verbs (e.g. 'slide under') in spreadsheet
 		- TBD: direction verbs
 			- TBD: generalize 'go':
