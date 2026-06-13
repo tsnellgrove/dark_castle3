@@ -813,11 +813,21 @@ To Do List - Dark Castle v3
 				- DONE: manual test
 				- DONE: scenario test
 			- DONE: solve 'list x' => 'inv is 1-word cmd' w/ user_input_lst[0] in err
-			- INPROC: clean-up legacy 2-word code
+			- DONE: clean-up legacy 2-word code
 				- DONE: comment out code in interp()
 				- DONE: comment out code in validate(), cmd_exe(), and trig_chk()
 				- DONE: scenario test
-				- TBD: clean-up code in interp(), validate(), cmd_exe(), and trig_chk()
+				- DONE: clean-up code in interp(), validate(), cmd_exe(), and trig_chk()
+			- DONE: fix 2-word debug cmds
+				- IDEA: i've removed 2word_action but I never migrated get_weight, capacity, where_is
+				- TBD: create debug_cmd_lst = ['get_weight', 'capacity', 'where_is']
+				- DONE: add debug_cmd_lst to verbs_lst
+				- DONE: add get_weight, capacity, where_is to syntax (bottom)
+				- DONE: add early err check if verb_cmd_lst[0] in debug_cmd_lst and not is_debug
+				- DONE: manual test
+				- DONE: scenario test
+				- DONE: comment out last '2word_case'
+				- DONE: comment out verb_infer syntax entry
 			- INPROC: make a spreadsheet of all 2word verbs (columns include has *_err, has method)
 				- TBD: add hand_mgmt() column
 				- TBD: complete table

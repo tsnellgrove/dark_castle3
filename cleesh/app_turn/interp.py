@@ -43,10 +43,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'case' : 'action_dir',
 			'base_action_lst' : ['go', 'hero_dir', 'hero_rm_obj']
 		},
-#		('input_verb', 'input_do_noun') : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['verb_str', 'do_noun_str']
-#		},
 		('climb', 'hero_dir', 'input_do_noun') : {
 			'case' : 'action_dir',
 			'base_action_lst' : ['climb', 'hero_dir', 'do_noun_str']
@@ -63,10 +59,10 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'case' : 'help',
 			'base_action_lst' : ['verb_str', 'hero_dir']
 		},
-		('infer_verb',) : {
-			'case' : 'action_2word',
-			'base_action_lst' : ['infer_do_noun']
-		},
+#		('infer_verb',) : {
+#			'case' : 'action_2word',
+#			'base_action_lst' : ['infer_do_noun']
+#		},
 		
 		('close', 'input_do_noun') : ['close', 'do_noun_str', 'verb_do'],
 		('close', 'up', 'input_do_noun') : ['close', 'do_noun_str', 'verb_do'],
@@ -158,11 +154,15 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 		('wear', 'input_do_noun') : ['wear', 'do_noun_str', 'verb_do'],
 		('don', 'verb_syn') : ['wear'],
+
+		# debug cmds
+		('get_weight', 'input_do_noun') : ['get_weight', 'do_noun_str', 'verb_do'],
+		('capacity', 'input_do_noun') : ['capacity', 'do_noun_str', 'verb_do'],
+		('where_is', 'input_do_noun') : ['where_is', 'do_noun_str', 'verb_do'],
 	}
 	try:
 		base_action_lst = syntax_dict[user_input_tpl]
 	except:
-#		return 'error', ["What??"]
 		return 'error', ["I don't understand that command!"]
 	if isinstance(base_action_lst, list):
 		case = 'universal'
@@ -170,7 +170,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
 		case = syntax_dict[user_input_tpl]['case']
 	action_lst = base_action_lst.copy()
-##	print(f"base_action_lst: {base_action_lst}")
 	for index, word in enumerate(base_action_lst):
 		if word == 'hero_rm_obj':
 			action_lst[index] = gs.map.hero_rm # convert class noun to object
@@ -192,10 +191,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 				action_lst = ["Which way do you want to climb, up or down?"]
 				break
 		if word == 'infer_do_noun':
-#			if input_verb in ['drop', 'stow', 'eat'] and not gs.core.hero.hand_is_empty(): # 'wear' migrated
-#				gs.io.buffer(f"(the {gs.core.hero.get_hand_item().full_name})")
-#				action_lst = [input_verb, gs.core.hero.get_hand_item()]
-#				break
 			if input_verb in ['climb']:
 				exactly_one_climbable, climbable_obj = infer_climbable(gs)
 				if exactly_one_climbable:
@@ -211,7 +206,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 				case = 'error'
 				action_lst = [f"{input_verb.capitalize()} what?"]
 				break
-#	print(f"action_lst: {action_lst}")
 	return case, action_lst
 
 def asym_syn(action_lst, gs):
@@ -223,7 +217,6 @@ def asym_syn(action_lst, gs):
 	if verb_str in ['exit'] and gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
 		action_lst = ['stand', gs.core.hero, 'verb_do']
 	if verb_str in ['take'] and do_noun_obj in gs.core.hero.worn_lst:
-#		action_lst = ['doff', do_noun_obj, 'verb_do']
 		action_lst[0] = 'doff'
 	if verb_str in ['examine'] and do_noun_obj.is_writing():
 		action_lst[0] = 'read'
@@ -369,7 +362,8 @@ def interpreter(user_input, master_obj_lst):
 			'remove', 'roll', 'scan', 'shut', 'skim', 'search', 'shove', 'slide', 'stash', 
 			'taste', 'tug', 'vault', 'yank'
 			] # symetric syn_verbs are substituted pre do_noun infer
-	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst
+	debug_cmd_lst = ['get_weight', 'capacity', 'where_is']
+	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst + debug_cmd_lst
 
 	meta_cmd_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
 	full_verbs_lst = (
@@ -442,8 +436,11 @@ def interpreter(user_input, master_obj_lst):
 				id_noun_cmd_lst.append(word)
 				id_noun_index = index
 				id_noun_count += 1
-#		if verb_count == 0:
-#			return 'error', ['I don\'t see a verb in that sentence!']
+		
+##		if verb_count == 0:
+##			return 'error', ['I don\'t see a verb in that sentence!']
+		if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
+			return 'error', ["Please start your sentence with a known verb!"]
 		if (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
 			return 'error', ['I see more than one verb in that sentence!']
 		
@@ -514,7 +511,8 @@ def interpreter(user_input, master_obj_lst):
 
 	elif len(user_input_lst) == 1:
 			if word1 in full_verbs_lst:
-				case, action_lst = syntax(('infer_verb',), word1, None, None, None, gs)
+				pass # let it through to syntax for verb-only command processing
+#				case, action_lst = syntax(('infer_verb',), word1, None, None, None, gs)
 			else:
 				case = 'error'
 				action_lst = ["What??"]
@@ -648,19 +646,3 @@ def interpreter(user_input, master_obj_lst):
 					gs.io.buffer(f"(Removing the {noun_obj.full_name} first)")
 					gs.io.buff_s(f"{gs.core.hero.name}_remove_{noun_obj.descript_key}")
 				return 'prep', [dirobj_obj, word1, noun_obj]
-#	else: # '2word' case
-#		error_state, error_msg, word2_obj = noun_handling(master_obj_lst, user_input_lst) # pass without verb
-#		if error_state:
-#			return 'error', [error_msg]
-#		else:
-#			creature = gs.core.hero
-#			if word1 in ['drop', 'wear', 'eat'] and not creature.chk_in_hand(word2_obj) and gs.core.hero.chk_in_bkpk(word2_obj):
-#				gs.core.hero.put_in_hand(word2_obj, gs)
-#				gs.core.hero.bkpk_lst_remove(word2_obj)
-#			if word1 in ['drop', 'stow', 'eat'] and not creature.chk_in_hand(word2_obj) and gs.core.hero.chk_is_worn(word2_obj):
-#				gs.core.hero.put_in_hand(word2_obj, gs)
-#				gs.core.hero.worn_lst_remove(word2_obj)
-#				gs.io.buffer(f"(Removing the {word2_obj.full_name} first)")
-#				gs.io.buff_s(f"{gs.core.hero.name}_remove_{word2_obj.descript_key}")
-#			case, action_lst = syntax(('input_verb', 'input_do_noun'), word1, word2_obj.name, None, None, gs)
-#			return case, action_lst
