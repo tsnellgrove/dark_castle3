@@ -813,11 +813,14 @@ To Do List - Dark Castle v3
 				- DONE: manual test
 				- DONE: scenario test
 			- DONE: solve 'list x' => 'inv is 1-word cmd' w/ user_input_lst[0] in err
-			- TBD: clean-up legacy 2-word code
-				- TBD: comment out code
-				- TBD: scenario test
-				- TBD: clean-up code
+			- INPROC: clean-up legacy 2-word code
+				- DONE: comment out code in interp()
+				- DONE: comment out code in validate(), cmd_exe(), and trig_chk()
+				- DONE: scenario test
+				- TBD: clean-up code in interp(), validate(), cmd_exe(), and trig_chk()
 			- INPROC: make a spreadsheet of all 2word verbs (columns include has *_err, has method)
+				- TBD: add hand_mgmt() column
+				- TBD: complete table
 			- TBD: document 'someday maybe' verbs (e.g. 'slide under') in spreadsheet
 		- TBD: direction verbs
 			- TBD: generalize 'go':

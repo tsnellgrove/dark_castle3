@@ -43,10 +43,10 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'case' : 'action_dir',
 			'base_action_lst' : ['go', 'hero_dir', 'hero_rm_obj']
 		},
-		('input_verb', 'input_do_noun') : {
-			'case' : 'action_2word',
-			'base_action_lst' : ['verb_str', 'do_noun_str']
-		},
+#		('input_verb', 'input_do_noun') : {
+#			'case' : 'action_2word',
+#			'base_action_lst' : ['verb_str', 'do_noun_str']
+#		},
 		('climb', 'hero_dir', 'input_do_noun') : {
 			'case' : 'action_dir',
 			'base_action_lst' : ['climb', 'hero_dir', 'do_noun_str']
@@ -87,7 +87,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('taste', 'verb_syn') : ['eat'],
 
 		('enter', 'input_do_noun') : ['enter', 'do_noun_str', 'verb_do'],
-#		('in', 'verb_syn') : ['enter'],
+##		('in', 'verb_syn') : ['enter'],
 
 		('examine', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
 		('inventory', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
@@ -100,7 +100,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('list', 'verb_syn') : ['inventory'],
 
 		('exit', 'input_do_noun') : ['exit', 'do_noun_str', 'verb_do'],
-#		('out', 'verb_syn') : ['enter'],
+##		('out', 'verb_syn') : ['enter'],
 
 		('jump', 'input_do_noun') : ['jump', 'do_noun_str', 'verb_do'],
 		('jump', 'up', 'input_do_noun') : ['jump', 'do_noun_str', 'verb_do'],
@@ -192,11 +192,11 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 				action_lst = ["Which way do you want to climb, up or down?"]
 				break
 		if word == 'infer_do_noun':
-			if input_verb in ['drop', 'stow', 'eat'] and not gs.core.hero.hand_is_empty(): # 'wear' migrated
-				gs.io.buffer(f"(the {gs.core.hero.get_hand_item().full_name})")
-				action_lst = [input_verb, gs.core.hero.get_hand_item()]
-				break
-			elif input_verb in ['climb']:
+#			if input_verb in ['drop', 'stow', 'eat'] and not gs.core.hero.hand_is_empty(): # 'wear' migrated
+#				gs.io.buffer(f"(the {gs.core.hero.get_hand_item().full_name})")
+#				action_lst = [input_verb, gs.core.hero.get_hand_item()]
+#				break
+			if input_verb in ['climb']:
 				exactly_one_climbable, climbable_obj = infer_climbable(gs)
 				if exactly_one_climbable:
 					gs.io.buffer(f"(the {climbable_obj.full_name})")
@@ -211,7 +211,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 				case = 'error'
 				action_lst = [f"{input_verb.capitalize()} what?"]
 				break
-##	print(f"action_lst: {action_lst}")
+#	print(f"action_lst: {action_lst}")
 	return case, action_lst
 
 def asym_syn(action_lst, gs):
@@ -462,8 +462,6 @@ def interpreter(user_input, master_obj_lst):
 			print(f"user_cmd_lst_syn: {user_cmd_lst_syn}")
 
 		if word1 in ['stand', 'jump', 'inventory'] and do_noun_count > 0: # can't base on len(user_cmd_lst_pre_syn) due to desire to support 'stand up'
-#		if word1 in ['stand', 'jump', 'inventory'] and len(user_cmd_lst_pre_syn) > 1:
-#			return 'error', [f"{word1.capitalize()} is a one-word command!"]
 			return 'error', [f"{user_input_lst[0].capitalize()} is a one-word command!"]
 		elif do_noun_count > 0:
 			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
@@ -650,19 +648,19 @@ def interpreter(user_input, master_obj_lst):
 					gs.io.buffer(f"(Removing the {noun_obj.full_name} first)")
 					gs.io.buff_s(f"{gs.core.hero.name}_remove_{noun_obj.descript_key}")
 				return 'prep', [dirobj_obj, word1, noun_obj]
-	else: # '2word' case
-		error_state, error_msg, word2_obj = noun_handling(master_obj_lst, user_input_lst) # pass without verb
-		if error_state:
-			return 'error', [error_msg]
-		else:
-			creature = gs.core.hero
-			if word1 in ['drop', 'wear', 'eat'] and not creature.chk_in_hand(word2_obj) and gs.core.hero.chk_in_bkpk(word2_obj):
-				gs.core.hero.put_in_hand(word2_obj, gs)
-				gs.core.hero.bkpk_lst_remove(word2_obj)
-			if word1 in ['drop', 'stow', 'eat'] and not creature.chk_in_hand(word2_obj) and gs.core.hero.chk_is_worn(word2_obj):
-				gs.core.hero.put_in_hand(word2_obj, gs)
-				gs.core.hero.worn_lst_remove(word2_obj)
-				gs.io.buffer(f"(Removing the {word2_obj.full_name} first)")
-				gs.io.buff_s(f"{gs.core.hero.name}_remove_{word2_obj.descript_key}")
-			case, action_lst = syntax(('input_verb', 'input_do_noun'), word1, word2_obj.name, None, None, gs)
-			return case, action_lst
+#	else: # '2word' case
+#		error_state, error_msg, word2_obj = noun_handling(master_obj_lst, user_input_lst) # pass without verb
+#		if error_state:
+#			return 'error', [error_msg]
+#		else:
+#			creature = gs.core.hero
+#			if word1 in ['drop', 'wear', 'eat'] and not creature.chk_in_hand(word2_obj) and gs.core.hero.chk_in_bkpk(word2_obj):
+#				gs.core.hero.put_in_hand(word2_obj, gs)
+#				gs.core.hero.bkpk_lst_remove(word2_obj)
+#			if word1 in ['drop', 'stow', 'eat'] and not creature.chk_in_hand(word2_obj) and gs.core.hero.chk_is_worn(word2_obj):
+#				gs.core.hero.put_in_hand(word2_obj, gs)
+#				gs.core.hero.worn_lst_remove(word2_obj)
+#				gs.io.buffer(f"(Removing the {word2_obj.full_name} first)")
+#				gs.io.buff_s(f"{gs.core.hero.name}_remove_{word2_obj.descript_key}")
+#			case, action_lst = syntax(('input_verb', 'input_do_noun'), word1, word2_obj.name, None, None, gs)
+#			return case, action_lst
