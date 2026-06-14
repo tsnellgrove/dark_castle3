@@ -829,9 +829,11 @@ To Do List - Dark Castle v3
 				- DONE: comment out last '2word_case'
 				- DONE: comment out verb_infer syntax entry
 			- INPROC: make a spreadsheet of all 2word verbs (columns include has *_err, has method)
-				- TBD: add hand_mgmt() column
-				- TBD: complete table
-			- TBD: document 'someday maybe' verbs (e.g. 'slide under') in spreadsheet
+				- DONE: add hand_mgmt() column
+				- INPROC: 
+					- DONE: start table
+					- DONE: complete up to 'open'
+					- TBD: complete table
 		- TBD: direction verbs
 			- TBD: generalize 'go':
 				- TBD: if only dir, infer_verb = 'go'
@@ -900,6 +902,7 @@ To Do List - Dark Castle v3
 			- TBD: global refactor
 			- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
 			- TBD: clean up comments
+		- TBD: document 'someday maybe' verbs (e.g. 'slide under') in spreadsheet
 		- TBD: update existing test scenarios as needed if no longer pass
 		- TBD: create language test game for language (or plan now, avoid more nouns till later?)
 			- TBD: create spiral rooms w/ diagonal paths
