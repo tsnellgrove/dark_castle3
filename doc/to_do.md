@@ -833,6 +833,7 @@ To Do List - Dark Castle v3
 				- INPROC: 
 					- DONE: start table
 					- DONE: complete up to 'open'
+					- DONE: pull and push
 					- TBD: complete table
 		- TBD: direction verbs
 			- TBD: generalize 'go':
