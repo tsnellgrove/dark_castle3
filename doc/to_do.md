@@ -835,6 +835,7 @@ To Do List - Dark Castle v3
 					- DONE: complete up to 'open'
 					- DONE: pull and push
 					- DONE: read
+					- DONE: sit
 					- TBD: complete table
 		- TBD: direction verbs
 			- TBD: generalize 'go':
