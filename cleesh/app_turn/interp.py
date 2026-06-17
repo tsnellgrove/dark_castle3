@@ -464,7 +464,8 @@ def interpreter(user_input, master_obj_lst):
 		if tst_mode:
 			print(f"user_cmd_lst_syn: {user_cmd_lst_syn}")
 
-		if word1 in ['stand', 'jump', 'inventory'] and do_noun_count > 0: # can't base on len(user_cmd_lst_pre_syn) due to desire to support 'stand up'
+#		if word1 in ['stand', 'jump', 'inventory'] and do_noun_count > 0: # can't base on len(user_cmd_lst_pre_syn) due to desire to support 'stand up'
+		if word1 in ['stand', 'jump'] and do_noun_count > 0: # can't base on len(user_cmd_lst_pre_syn) due to desire to support 'stand up'
 			return 'error', [f"{user_input_lst[0].capitalize()} is a one-word command!"]
 		elif do_noun_count > 0:
 			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
@@ -476,8 +477,13 @@ def interpreter(user_input, master_obj_lst):
 				return 'error', [error_msg]
 			else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
 				do_noun_cmd_lst = [do_noun_obj.name]
-#		else:
-		elif word1 not in ['inventory']: # 'inventory' do via syntax
+		elif word1 in ['inventory']:
+			do_noun_cmd_lst = []
+			do_noun_obj = None
+			syntax_do_lst = []
+			do_noun_str = None
+		else:
+#		elif word1 not in ['inventory']: # 'inventory' do via syntax
 			exactly_one, do_noun_obj, err_txt = infer_do_noun(gs, word1)
 			if exactly_one:
 				do_noun_cmd_lst = [do_noun_obj.name]
@@ -486,11 +492,11 @@ def interpreter(user_input, master_obj_lst):
 				do_noun_str = do_noun_obj.name # new - for syntax call
 			else:
 				return 'error', [err_txt]
-		else: # FOR 'inventory' => move to top w/ explicit call out
-			do_noun_cmd_lst = []
-			do_noun_obj = None
-			syntax_do_lst = []
-			do_noun_str = None
+#		else: # FOR 'inventory' => move to top w/ explicit call out
+#			do_noun_cmd_lst = []
+#			do_noun_obj = None
+#			syntax_do_lst = []
+#			do_noun_str = None
 		if id_noun_count > 0:
 			id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 			error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
