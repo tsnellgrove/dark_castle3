@@ -820,7 +820,7 @@ To Do List - Dark Castle v3
 				- DONE: clean-up code in interp(), validate(), cmd_exe(), and trig_chk()
 			- DONE: fix 2-word debug cmds
 				- IDEA: i've removed 2word_action but I never migrated get_weight, capacity, where_is
-				- TBD: create debug_cmd_lst = ['get_weight', 'capacity', 'where_is']
+				- DONE: create debug_cmd_lst = ['get_weight', 'capacity', 'where_is']
 				- DONE: add debug_cmd_lst to verbs_lst
 				- DONE: add get_weight, capacity, where_is to syntax (bottom)
 				- DONE: add early err check if verb_cmd_lst[0] in debug_cmd_lst and not is_debug
@@ -828,6 +828,16 @@ To Do List - Dark Castle v3
 				- DONE: scenario test
 				- DONE: comment out last '2word_case'
 				- DONE: comment out verb_infer syntax entry
+			- INPROC: implement supplied do vs. infferred do vs. * syntax do *
+				- DONE: 'inventory'
+				- DONE: manual test
+				- DONE: scenario test
+				- IDEA: it works but it's a mess! refactor and see if I still want this
+				- TBD: refactor do_noun collection to call out 'inventory' case at top; clean up vars
+				- TBD: 'jump'
+				- TBD: 'stand'
+				- TBD: comment out one_word_only err
+				- TBD: update verb spreadsheet => one_word only => syntax do
 			- INPROC: make a spreadsheet of all 2word verbs (columns include has *_err, has method)
 				- DONE: add hand_mgmt() column
 				- INPROC: 

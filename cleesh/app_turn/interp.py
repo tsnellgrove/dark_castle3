@@ -86,7 +86,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 ##		('in', 'verb_syn') : ['enter'],
 
 		('examine', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
-		('inventory', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
+#		('inventory', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
+		('inventory',) : ['examine', 'hero_obj', 'verb_do'],
 		('look', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
 		('look', 'at', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
 		('look', 'in', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
@@ -171,6 +172,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		case = syntax_dict[user_input_tpl]['case']
 	action_lst = base_action_lst.copy()
 	for index, word in enumerate(base_action_lst):
+		if word == 'hero_obj':
+			action_lst[index] = gs.core.hero # convert class noun to object
 		if word == 'hero_rm_obj':
 			action_lst[index] = gs.map.hero_rm # convert class noun to object
 		if word == 'hero_dir':
@@ -250,7 +253,8 @@ def infer_do_noun(gs, verb_str):
 				do_noun_count += 1
 				do_noun_obj = obj
 				infer_txt = f"(in the {do_noun_obj.full_name})"		
-	if verb_str in ['jump', 'inventory', 'stand']:
+#	if verb_str in ['jump', 'inventory', 'stand']:
+	if verb_str in ['jump', 'stand']: # 'inventory' via syntax
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero
 	if verb_str == 'look':
@@ -393,6 +397,8 @@ def interpreter(user_input, master_obj_lst):
 		if word1 not in verb_lst:
 			return 'error', ["Please start your sentence with a known verb!"]
 		prep = None # LEGACY
+		syntax_do_lst = ['input_do_noun'] # NEW NEW
+		do_noun_str = None # NEW NEW
 		verb_cmd_lst = [] # new
 		dir_cmd_lst = [] # new
 		do_prep_cmd_lst = [] # new
@@ -463,17 +469,28 @@ def interpreter(user_input, master_obj_lst):
 		elif do_noun_count > 0:
 			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
+			if not error_state: # new - for syntax call
+				do_noun_str = do_noun_obj.name # new - for syntax call
+			syntax_do_lst = ['input_do_noun'] # new - for syntax call
 			if error_state:
 				return 'error', [error_msg]
 			else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
 				do_noun_cmd_lst = [do_noun_obj.name]
-		else:
+#		else:
+		elif word1 not in ['inventory']: # 'inventory' do via syntax
 			exactly_one, do_noun_obj, err_txt = infer_do_noun(gs, word1)
 			if exactly_one:
 				do_noun_cmd_lst = [do_noun_obj.name]
 				do_noun_obj = do_noun_obj
+				syntax_do_lst = ['input_do_noun'] # new - for syntax call
+				do_noun_str = do_noun_obj.name # new - for syntax call
 			else:
 				return 'error', [err_txt]
+		else: # FOR 'inventory' => move to top w/ explicit call out
+			do_noun_cmd_lst = []
+			do_noun_obj = None
+			syntax_do_lst = []
+			do_noun_str = None
 		if id_noun_count > 0:
 			id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 			error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
@@ -490,11 +507,13 @@ def interpreter(user_input, master_obj_lst):
 		if tst_mode:
 			print(f"user_cmd_lst_post_infer: {user_cmd_lst_post_infer}")
 
-		user_syntax_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + ['input_do_noun'] + id_prep_cmd_lst + id_noun_syn_lst
+#		user_syntax_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + ['input_do_noun'] + id_prep_cmd_lst + id_noun_syn_lst
+		user_syntax_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
 		if tst_mode:
 			print(f"user_syntax_lst: {user_syntax_lst}")
 
-		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_obj.name, prep, None, gs)
+#		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_obj.name, prep, None, gs)
+		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, None, gs)
 		if case == 'error':
 			return case, action_lst
 
