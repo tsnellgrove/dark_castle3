@@ -59,10 +59,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'case' : 'help',
 			'base_action_lst' : ['verb_str', 'hero_dir']
 		},
-#		('infer_verb',) : {
-#			'case' : 'action_2word',
-#			'base_action_lst' : ['infer_do_noun']
-#		},
 		
 		('close', 'input_do_noun') : ['close', 'do_noun_str', 'verb_do'],
 		('close', 'up', 'input_do_noun') : ['close', 'do_noun_str', 'verb_do'],
@@ -86,7 +82,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 ##		('in', 'verb_syn') : ['enter'],
 
 		('examine', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
-#		('inventory', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
 		('inventory',) : ['examine', 'hero_obj', 'verb_do'],
 		('look', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
 		('look', 'at', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
@@ -99,9 +94,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('exit', 'input_do_noun') : ['exit', 'do_noun_str', 'verb_do'],
 ##		('out', 'verb_syn') : ['enter'],
 
-#		('jump', 'input_do_noun') : ['jump', 'do_noun_str', 'verb_do'],
-#		('jump', 'up', 'input_do_noun') : ['jump', 'do_noun_str', 'verb_do'],
-#		('jump', 'down', 'input_do_noun') : ['jump', 'do_noun_str', 'verb_do'],
 		('jump',) : ['jump', 'hero_obj', 'verb_do'],
 		('jump', 'up') : ['jump', 'hero_obj', 'verb_do'],
 		('jump', 'down') : ['jump', 'hero_obj', 'verb_do'],
@@ -142,8 +134,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('sit', 'down', 'on', 'input_do_noun') : ['sit', 'do_noun_str', 'verb_do'],
 		('sit', 'down', 'into', 'input_do_noun') : ['sit', 'do_noun_str', 'verb_do'],
 
-#		('stand', 'input_do_noun') : ['stand', 'do_noun_str', 'verb_do'],
-#		('stand', 'up', 'input_do_noun') : ['stand', 'do_noun_str', 'verb_do'],
 		('stand',) : ['stand', 'hero_obj', 'verb_do'],
 		('stand', 'up') : ['stand', 'hero_obj', 'verb_do'],
 
@@ -257,11 +247,7 @@ def infer_do_noun(gs, verb_str):
 			if obj.is_seat():
 				do_noun_count += 1
 				do_noun_obj = obj
-				infer_txt = f"(in the {do_noun_obj.full_name})"		
-#	if verb_str in ['jump', 'inventory', 'stand']:
-#	if verb_str in ['jump', 'stand']: # 'inventory' via syntax
-#		do_noun_count = 1
-#		do_noun_obj = gs.core.hero
+				infer_txt = f"(in the {do_noun_obj.full_name})"	
 	if verb_str == 'look':
 		do_noun_count = 1
 		do_noun_obj = gs.map.hero_rm
@@ -402,8 +388,8 @@ def interpreter(user_input, master_obj_lst):
 		if word1 not in verb_lst:
 			return 'error', ["Please start your sentence with a known verb!"]
 		prep = None # LEGACY
-		syntax_do_lst = ['input_do_noun'] # NEW NEW
-		do_noun_str = None # NEW NEW
+#		syntax_do_lst = ['input_do_noun'] # NEW NEW
+#		do_noun_str = None # NEW NEW
 		verb_cmd_lst = [] # new
 		dir_cmd_lst = [] # new
 		do_prep_cmd_lst = [] # new
@@ -469,20 +455,20 @@ def interpreter(user_input, master_obj_lst):
 		if tst_mode:
 			print(f"user_cmd_lst_syn: {user_cmd_lst_syn}")
 
-#		if word1 in ['stand', 'jump'] and do_noun_count > 0: # can't base on len(user_cmd_lst_pre_syn) due to desire to support 'stand up'
-#			return 'error', [f"{user_input_lst[0].capitalize()} is a one-word command!"]
 		if do_noun_count > 0:
 			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
-			if not error_state: # new - for syntax call
-				do_noun_str = do_noun_obj.name # new - for syntax call
-			syntax_do_lst = ['input_do_noun'] # new - for syntax call
+#			if not error_state: # new - for syntax call
+#				do_noun_str = do_noun_obj.name # new - for syntax call
+#			syntax_do_lst = ['input_do_noun'] # new - for syntax call
 			if error_state:
 				return 'error', [error_msg]
 			else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
 				do_noun_cmd_lst = [do_noun_obj.name]
+				do_noun_str = do_noun_obj.name # new - for syntax call
+				syntax_do_lst = ['input_do_noun'] # new - for syntax call
 		elif word1 in ['inventory', 'stand', 'jump']:
-			do_noun_cmd_lst = []
+#			do_noun_cmd_lst = []
 			do_noun_obj = None
 			syntax_do_lst = []
 			do_noun_str = None
@@ -490,7 +476,7 @@ def interpreter(user_input, master_obj_lst):
 			exactly_one, do_noun_obj, err_txt = infer_do_noun(gs, word1)
 			if exactly_one:
 				do_noun_cmd_lst = [do_noun_obj.name]
-				do_noun_obj = do_noun_obj
+#				do_noun_obj = do_noun_obj
 				syntax_do_lst = ['input_do_noun'] # new - for syntax call
 				do_noun_str = do_noun_obj.name # new - for syntax call
 			else:
@@ -512,12 +498,12 @@ def interpreter(user_input, master_obj_lst):
 		if tst_mode:
 			print(f"user_cmd_lst_post_infer: {user_cmd_lst_post_infer}")
 
-#		user_syntax_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + ['input_do_noun'] + id_prep_cmd_lst + id_noun_syn_lst
+##		user_syntax_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + ['input_do_noun'] + id_prep_cmd_lst + id_noun_syn_lst
 		user_syntax_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
 		if tst_mode:
 			print(f"user_syntax_lst: {user_syntax_lst}")
 
-#		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_obj.name, prep, None, gs)
+##		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_obj.name, prep, None, gs)
 		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, None, gs)
 		if case == 'error':
 			return case, action_lst
