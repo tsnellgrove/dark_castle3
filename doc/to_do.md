@@ -833,6 +833,7 @@ To Do List - Dark Castle v3
 				- DONE: manual test
 				- DONE: scenario test
 				- IDEA: it works but it's a mess! refactor and see if I still want this
+				- IDEA: what if I elim the no-do_noun-inferred-err and just err in syntax if do req?
 				- TBD: refactor do_noun collection to call out 'inventory' case at top; clean up vars
 				- TBD: 'jump'
 				- TBD: 'stand'
