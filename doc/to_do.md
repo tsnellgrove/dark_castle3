@@ -829,6 +829,7 @@ To Do List - Dark Castle v3
 				- DONE: comment out last '2word_case'
 				- DONE: comment out verb_infer syntax entry
 			- INPROC: implement supplied do vs. infferred do vs. * syntax do *
+				- IDEA: as much as possible, syntax() should represent what interp thinks user meant
 				- DONE: 'inventory'
 				- DONE: manual test
 				- DONE: scenario test
@@ -846,8 +847,10 @@ To Do List - Dark Castle v3
 				- DONE: commit
 				- DONE: clean up comments and re-commit
 				- DONE: review var assignment - comment unneeded
-				- TBD: clean up comments
+				- DONE: clean up comments
 				- IDEA: what if I elim the no-do_noun-inferred-err and just err in syntax if do req?
+					- IDEA: leaning against this because it's helpful to signal "examine what?"
+					- TBD: final decision
 				- TBD: update verb spreadsheet => one_word only => syntax do
 			- INPROC: make a spreadsheet of all 2word verbs (columns include has *_err, has method)
 				- DONE: add hand_mgmt() column

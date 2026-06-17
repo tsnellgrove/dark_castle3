@@ -388,8 +388,6 @@ def interpreter(user_input, master_obj_lst):
 		if word1 not in verb_lst:
 			return 'error', ["Please start your sentence with a known verb!"]
 		prep = None # LEGACY
-#		syntax_do_lst = ['input_do_noun'] # NEW NEW
-#		do_noun_str = None # NEW NEW
 		verb_cmd_lst = [] # new
 		dir_cmd_lst = [] # new
 		do_prep_cmd_lst = [] # new
@@ -458,9 +456,6 @@ def interpreter(user_input, master_obj_lst):
 		if do_noun_count > 0:
 			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
-#			if not error_state: # new - for syntax call
-#				do_noun_str = do_noun_obj.name # new - for syntax call
-#			syntax_do_lst = ['input_do_noun'] # new - for syntax call
 			if error_state:
 				return 'error', [error_msg]
 			else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
@@ -468,7 +463,6 @@ def interpreter(user_input, master_obj_lst):
 				do_noun_str = do_noun_obj.name # new - for syntax call
 				syntax_do_lst = ['input_do_noun'] # new - for syntax call
 		elif word1 in ['inventory', 'stand', 'jump']:
-#			do_noun_cmd_lst = []
 			do_noun_obj = None
 			syntax_do_lst = []
 			do_noun_str = None
@@ -476,7 +470,6 @@ def interpreter(user_input, master_obj_lst):
 			exactly_one, do_noun_obj, err_txt = infer_do_noun(gs, word1)
 			if exactly_one:
 				do_noun_cmd_lst = [do_noun_obj.name]
-#				do_noun_obj = do_noun_obj
 				syntax_do_lst = ['input_do_noun'] # new - for syntax call
 				do_noun_str = do_noun_obj.name # new - for syntax call
 			else:
