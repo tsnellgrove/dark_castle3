@@ -835,13 +835,18 @@ To Do List - Dark Castle v3
 				- DONE: it works but it's a mess! refactor and see if I still want this
 				- DONE: manual test
 				- DONE scenario test
+				- DONE: commit
+				- DONE: clean up comments and re-commit
+				- DONE: refactor do_noun collection to call out 'inventory' case at top; clean up vars
+				- DONE: 'jump'
+				- DONE: 'stand'
+				- DONE: comment out one_word_only err
+				- DONE: manual test
+				- DONE: scenario test
 				- TBD: commit
 				- TBD: clean up comments and re-commit
+				- TBD: review var assignment
 				- IDEA: what if I elim the no-do_noun-inferred-err and just err in syntax if do req?
-				- TBD: refactor do_noun collection to call out 'inventory' case at top; clean up vars
-				- TBD: 'jump'
-				- TBD: 'stand'
-				- TBD: comment out one_word_only err
 				- TBD: update verb spreadsheet => one_word only => syntax do
 			- INPROC: make a spreadsheet of all 2word verbs (columns include has *_err, has method)
 				- DONE: add hand_mgmt() column
