@@ -94,6 +94,21 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('exit', 'input_do_noun') : ['exit', 'do_noun_str', 'verb_do'],
 ##		('out', 'verb_syn') : ['enter'],
 
+		('go', 'east') : ['go', 'hero_rm_obj', 'east', 'verb_do_prep'],
+		('go', 'west') : ['go', 'hero_rm_obj', 'west', 'verb_do_prep'],
+		('go', 'north') : ['go', 'hero_rm_obj', 'north', 'verb_do_prep'],
+		('go', 'south') : ['go', 'hero_rm_obj', 'south', 'verb_do_prep'],
+		('go', 'northeast') : ['go', 'hero_rm_obj', 'northeast', 'verb_do_prep'],
+		('go', 'northwest') : ['go', 'hero_rm_obj', 'northwest', 'verb_do_prep'],
+		('go', 'southeast') : ['go', 'hero_rm_obj', 'southeast', 'verb_do_prep'],
+		('go', 'southwest') : ['go', 'hero_rm_obj', 'southwest', 'verb_do_prep'],
+		('go', 'up') : ['go', 'hero_rm_obj', 'up', 'verb_do_prep'],
+		('go', 'down') : ['go', 'hero_rm_obj', 'down', 'verb_do_prep'],
+		('proceed', 'verb_syn') : ['go'],
+		('run', 'verb_syn') : ['go'],
+		('step', 'verb_syn') : ['go'],
+		('walk', 'verb_syn') : ['go'],
+
 		('jump',) : ['jump', 'hero_obj', 'verb_do'],
 		('jump', 'up') : ['jump', 'hero_obj', 'verb_do'],
 		('jump', 'down') : ['jump', 'hero_obj', 'verb_do'],
@@ -345,17 +360,17 @@ def interpreter(user_input, master_obj_lst):
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = [
-			'close', 'doff', 'drop', 'eat', 'enter', 'examine', 'exit','jump', 'open', 'move', 
-			'push', 'pull', 'read', 'sit', 'stand', 'stow', 'take', 'wear'
+			'close', 'doff', 'drop', 'eat', 'enter', 'examine', 'exit', 'go', 'jump', 
+			'open', 'move', 'push', 'pull', 'read', 'sit', 'stand', 'stow', 'take', 'wear'
 			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
 			'inventory', 'look'
 			] # non-action verbs are subsituted in syntax or asym_syn()
 	syn_verb_lst = [
 			'bite', 'carry', 'consume', 'describe', 'devour', 'don', 'get', 'gobble', 'grab', 'hold', 
-			'ingest', 'inspect', 'leap', 'list', 'munch', 'pack', 'peruse', 'press', 'release', 
-			'remove', 'roll', 'scan', 'shut', 'skim', 'search', 'shove', 'slide', 'stash', 
-			'taste', 'tug', 'vault', 'yank'
+			'ingest', 'inspect', 'leap', 'list', 'munch', 'pack', 'peruse', 'press', 'proceed', 
+			'release', 'remove', 'roll', 'run', 'scan', 'shut', 'skim', 'search', 'shove', 'slide', 
+			'stash', 'step', 'taste', 'tug', 'vault', 'walk', 'yank'
 			] # symetric syn_verbs are substituted pre do_noun infer
 	debug_cmd_lst = ['get_weight', 'capacity', 'where_is']
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst + debug_cmd_lst
@@ -462,7 +477,7 @@ def interpreter(user_input, master_obj_lst):
 				do_noun_cmd_lst = [do_noun_obj.name]
 				do_noun_str = do_noun_obj.name # new - for syntax call
 				syntax_do_lst = ['input_do_noun'] # new - for syntax call
-		elif word1 in ['inventory', 'stand', 'jump']:
+		elif word1 in ['go', 'inventory', 'stand', 'jump']:
 			do_noun_obj = None
 			syntax_do_lst = []
 			do_noun_str = None

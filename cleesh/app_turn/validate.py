@@ -30,6 +30,12 @@ def validate(gs, case, word_lst):
 					cmd_err, is_att, err_txt = getattr(do_noun_obj, action_str + '_err')(gs)
 					if (cmd_err and not is_att and err_txt != ""):
 						gs.io.buffer(err_txt)
+				elif word_lst[-1] in ['verb_do_prep']:
+#					action_str, dir_str, do_noun_obj = word_lst
+					action_str, do_noun_obj, prep_str, *_  = word_lst
+					cmd_err, is_att, err_txt = getattr(do_noun_obj, action_str + '_err')(prep_str, gs)
+					if (cmd_err and not is_att):
+						gs.io.buffer(err_txt)
 			elif case == 'action_dir':
 				action_str, dir_str, do_noun_obj = word_lst
 				cmd_err, is_att, err_txt = getattr(do_noun_obj, action_str + '_err')(dir_str, gs)

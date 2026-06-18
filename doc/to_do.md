@@ -861,28 +861,36 @@ To Do List - Dark Castle v3
 					- DONE: sit
 					- DONE: stand
 					- DONE: complete table
-		- TBD: direction verbs
-			- TBD: generalize 'go':
-				- TBD: if only dir, infer_verb = 'go'
-				- TBD: if verb in ['go'] => infer dir
-			- TBD: 'go'
-				- TBD: check ZIL list for sym_syn and prep variants
-				- TBD: update hand_mgmt() as needed for new_verb
-				- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
-				- TBD: disable global syn for new_verb
-				- TBD: add new_verb to interp() action_verb list
-				- TBD: add base ('new_verb', 'do_noun') entries to syntax
-				- TBD: add prep variants for new_verb to syntax
-				- TBD: add new_verb symetric syns to syn_verb_lst
-				- TBD: add new_verb symetric syns to syntax
-				- TBD: add infer do_noun entry for new_verb as needed
-				- TBD: in asym_syn(), add conditional syn as needed
-				- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
-				- TBD: scenario test
-				- TBD: fix scenario as needed
-				- TBD: clean up comments in static_gbl
-			- TBD: generalize 'climb':
-				- TBD: if verb in ['go', 'climb'] => infer dir
+		- INPROC: direction verbs
+			- INPROC: generalize 'go':
+				- DONE: base version
+					- DONE: check ZIL list for sym_syn and prep variants: go, walk, run, proceed, step
+					- NA: update hand_mgmt() as needed for new_verb
+					- NA: update *_err() to pass validate if hand_mgmt() will fix when called
+					- DONE: disable global syn for new_verb
+					- DONE: add new_verb to interp() action_verb list
+					- DONE: add base ('new_verb', 'do_noun') entries to syntax
+					- DONE: add prep variants for new_verb to syntax
+					- DONE: add new_verb symetric syns to syn_verb_lst
+					- DONE: add new_verb symetric syns to syntax
+					- NA: add infer do_noun entry for new_verb as needed
+					- NA: in asym_syn(), add conditional syn as needed
+				- DONE: create new verb_do_prep case
+					- DONE: update validate()
+					- DONE: update cmd_exe()
+					- DONE: update trig_chk()
+				- INPROC: testing
+					- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+					- INPROC: scenario test
+					- TBD: fix scenario as needed
+					- TBD: clean up comments in static_gbl, interp(), validate(), cmd_exe(), trig_chk()
+				- TBD: verb infer
+					- TBD: if only dir, infer_verb = 'go'
+					- TBD: if verb in ['go'] => infer dir
+				- TBD: in / out
+					- TBD: decide on synonym status with enter / exit (see below)
+					- TBD: implement 'go in <door>'
+					- TBD: implement 'go out <room>'
 				- TBD: enter & exit
 					- TBD: clean up existing code:
 						- TBD: enter_err() and exit_err() in err()
@@ -892,6 +900,8 @@ To Do List - Dark Castle v3
 					- TBD: create room or door specific method for enter
 					- TBD: create room or door specific method for exit
 					- TBD: create exit => stand if do_noun is_contained
+			- TBD: generalize 'climb':
+				- TBD: if verb in ['go', 'climb'] => infer dir
 			- TBD: 'climb'
 				- TBD: check ZIL list for sym_syn and prep variants
 				- TBD: update hand_mgmt() as needed for new_verb
