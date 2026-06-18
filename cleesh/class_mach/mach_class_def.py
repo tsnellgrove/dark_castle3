@@ -88,9 +88,6 @@ class TrigMixIn(object):
 				trig_key_lst = [word_lst[0], word_lst[1].name]
 				trig_wc_lst = [word_lst[0], '*']
 			elif word_lst[-1] in ['verb_do_prep']:
-#				trig_key_lst = [word_lst[0], word_lst[1], word_lst[2].name]
-#				trig_key_lst = [word_lst[0], word_lst[2].name], word_lst[1] # wrong
-#				trig_key_lst = [word_lst[0], word_lst[1].name, word_lst[2]] # wrong?
 				trig_key_lst = [word_lst[0], word_lst[2], word_lst[1].name]
 		if case == 'action_dir':
 			trig_key_lst = [word_lst[0], word_lst[1], word_lst[2].name]

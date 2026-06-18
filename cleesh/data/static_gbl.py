@@ -93,8 +93,6 @@ engine_static_dict = {
         'sip' : 'drink',
         'hand' : 'give',
         'donate' : 'give',
-#        'walk' : 'go',
-#        'run' : 'go',
         'info' : 'help',
         'place' : 'put',
 	},

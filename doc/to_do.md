@@ -879,11 +879,11 @@ To Do List - Dark Castle v3
 					- DONE: update validate()
 					- DONE: update cmd_exe()
 					- DONE: update trig_chk()
-				- INPROC: testing
+				- DONE: testing
 					- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
 					- DONE: scenario test
 					- DONE: fix scenario as needed
-					- TBD: clean up comments in static_gbl, interp(), validate(), cmd_exe(), trig_chk()
+					- DONE: clean comments in static_gbl, interp(), validate(), cmd_exe(), trig_chk()
 				- TBD: verb infer
 					- TBD: if only dir, infer_verb = 'go'
 					- TBD: if verb in ['go'] => infer dir
