@@ -884,9 +884,18 @@ To Do List - Dark Castle v3
 					- DONE: scenario test
 					- DONE: fix scenario as needed
 					- DONE: clean comments in static_gbl, interp(), validate(), cmd_exe(), trig_chk()
-				- TBD: verb infer
-					- TBD: if only dir, infer_verb = 'go'
-					- TBD: if verb in ['go'] => infer dir
+				- DONE: verb infer
+					- DONE: create infer_verb()
+					- DONE: call infer_verb()
+					- DONE: define dir_lst and enable new interp if word1 in verb_lst + dir_lst
+					- DONE: disable legacy interpreter
+					- DONE: add 'go' as non-do cmd
+					- DONE: manual test
+					- DONE: scenario test
+					- DONE: comment out old 'go' code including legacy syntax code
+					- DONE: comment out old go_err() for non-dir preps
+					- TBD: clean up interp() & go_err()
+					- CANCEL: if verb in ['go'] => infer dir ???
 				- TBD: in / out
 					- TBD: decide on synonym status with enter / exit (see below)
 					- TBD: implement 'go in <door>'
