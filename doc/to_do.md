@@ -589,7 +589,7 @@ To Do List - Dark Castle v3
 					- DONE: manual test
 					- DONE: scenario test
 		- INPROC: extend new interp() structure
-			- INPROC: generalize 2word cases => sit case
+			- DONE: generalize 2word cases => sit case
 				- DONE: need routine for hand mgmt
 					- IDEA: should be independent fom interp() due to do_noun_exe() and id_noun_exe()
 					- IDEA: should be post x_err() and pre_action() because changes game world
@@ -828,7 +828,7 @@ To Do List - Dark Castle v3
 				- DONE: scenario test
 				- DONE: comment out last '2word_case'
 				- DONE: comment out verb_infer syntax entry
-			- INPROC: implement supplied do vs. infferred do vs. * syntax do *
+			- DONE: implement supplied do vs. infferred do vs. * syntax do *
 				- IDEA: as much as possible, syntax() should represent what interp thinks user meant
 				- DONE: 'inventory'
 				- DONE: manual test
@@ -850,18 +850,17 @@ To Do List - Dark Castle v3
 				- DONE: clean up comments
 				- IDEA: what if I elim the no-do_noun-inferred-err and just err in syntax if do req?
 					- IDEA: leaning against this because it's helpful to signal "examine what?"
-					- TBD: final decision
-				- TBD: update verb spreadsheet => one_word only => syntax do
-			- INPROC: make a spreadsheet of all 2word verbs (columns include has *_err, has method)
+					- DONE: final decision => keep no-input-do verbs separate to enable "X what?"
+				- DONE: update verb spreadsheet => one_word only => syntax do
+			- DONE: make a spreadsheet of all 2word verbs (columns include has *_err, has method)
 				- DONE: add hand_mgmt() column
-				- INPROC: 
 					- DONE: start table
 					- DONE: complete up to 'open'
 					- DONE: pull and push
 					- DONE: read
 					- DONE: sit
 					- DONE: stand
-					- TBD: complete table
+					- DONE: complete table
 		- TBD: direction verbs
 			- TBD: generalize 'go':
 				- TBD: if only dir, infer_verb = 'go'
