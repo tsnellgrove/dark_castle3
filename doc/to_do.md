@@ -881,8 +881,8 @@ To Do List - Dark Castle v3
 					- DONE: update trig_chk()
 				- INPROC: testing
 					- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
-					- INPROC: scenario test
-					- TBD: fix scenario as needed
+					- DONE: scenario test
+					- DONE: fix scenario as needed
 					- TBD: clean up comments in static_gbl, interp(), validate(), cmd_exe(), trig_chk()
 				- TBD: verb infer
 					- TBD: if only dir, infer_verb = 'go'
