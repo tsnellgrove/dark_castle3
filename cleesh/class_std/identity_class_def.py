@@ -58,10 +58,10 @@ class Identity(Invisible):
 	def is_viewonly(self):
 		return False
 
-	def is_door(self):
+	def	is_climbable(self):
 		return False
 
-	def	is_climbable(self):
+	def	is_pathway(self):
 		return False
 
 	def is_item(self):
@@ -80,6 +80,9 @@ class Identity(Invisible):
 		return False
 	
 	def is_lockable(self):
+		return False
+
+	def is_door(self):
 		return False
 
 	def	is_container(self):

@@ -11,7 +11,7 @@ sys.path.append(root_path_str)
 
 import pickle
 from cleesh.class_std.invisible_class_def import Invisible
-from cleesh.class_std.base_class_def import Writing, ViewOnly, ClimbableViewOnly
+from cleesh.class_std.base_class_def import Writing, ViewOnly, ClimbableViewOnly, Pathway
 from cleesh.class_std.room_class_def import Room, InitDesc, FloorlessRoom
 from cleesh.class_std.item_class_def import Item, Food, Liquid, Garment, Weapon
 from cleesh.class_std.interactive_class_def import DoorSimple, DoorLockable
@@ -68,24 +68,32 @@ officiousness = ViewOnly('officiousness', 'Officiousness', 'officiousness', 'off
 loyalty = ViewOnly('loyalty', 'Loyalty', 'loyalty', 'loyalty', None)
 entrance_drawbridge = ViewOnly('entrance_drawbridge', 'Drawbridge', 'drawbridge', 'entrance_drawbridge', None)
 rusty_keyhole = ViewOnly('rusty_keyhole', 'Rusty Keyhole', 'keyhole', 'rusty_keyhole', None)
-untrodden_path = ViewOnly('untrodden_path', 'Untrodden Path', 'path', 'untrodden_path', None)
 old_furniture = ViewOnly('old_furniture', 'Old Furniture', 'furniture', 'old_furniture', None)
 cobwebs = ViewOnly('cobwebs', 'Cobwebs', 'cobwebs', 'cobwebs', None)
 musty_smell = ViewOnly('musty_smell', 'Musty Smell', 'smell', 'musty_smell', None)
 arrow_slits = ViewOnly('arrow_slits', 'Arrow Slits', 'slits', 'arrow_slits', None)
-foreboding_archway = ViewOnly('foreboding_archway', 'Foreboding Archway', 'archway', 'foreboding_archway', None)
-lit_archway = ViewOnly('lit_archway', 'Lit Archway', 'archway', 'lit_archway', None)
 ruined_windows = ViewOnly('ruined_windows', 'Ruined Windows', 'windows', 'ruined_windows', None)
 silver_keyhole = ViewOnly('silver_keyhole', 'Silver Keyhole', 'keyhole', 'silver_keyhole', None)
 stained_glass = ViewOnly('stained_glass', 'Stained Glass', 'glass', 'stained_glass', None)
 # entrance_tree = ViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None)
-## entrance_tree = ClimbableViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None, 'entrance_temp', 'uptree_temp', 'up', 'up')
-entrance_tree = ClimbableViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None, 'up', None)
 #uptree_tree = ViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None)
-## uptree_tree = ClimbableViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None, 'entrance_temp', 'uptree_temp', 'down', 'down')
-uptree_tree = ClimbableViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None, None, 'up')
 uptree_moat = ViewOnly('uptree_moat', 'Moat', 'moat', 'uptree_moat', None)
 uptree_drawbridge = ViewOnly('uptree_drawbridge', 'Drawbridge', 'drawbridge', 'uptree_drawbridge', None)
+
+# ClimbableViewOnly
+entrance_tree = ClimbableViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None, 'up', None)
+uptree_tree = ClimbableViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None, None, 'up')
+## entrance_tree = ClimbableViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None, 'entrance_temp', 'uptree_temp', 'up', 'up')
+## uptree_tree = ClimbableViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None, 'entrance_temp', 'uptree_temp', 'down', 'down')
+
+# Pathway
+## untrodden_path = ViewOnly('untrodden_path', 'Untrodden Path', 'path', 'untrodden_path', None)
+## foreboding_archway = ViewOnly('foreboding_archway', 'Foreboding Archway', 'archway', 'foreboding_archway', None)
+## lit_archway = ViewOnly('lit_archway', 'Lit Archway', 'archway', 'lit_archway', None)
+untrodden_path = Pathway('untrodden_path', 'Untrodden Path', 'path', 'untrodden_path', None)
+foreboding_archway = Pathway('foreboding_archway', 'Foreboding Archway', 'archway', 'foreboding_archway', None)
+lit_archway = Pathway('lit_archway', 'Lit Archway', 'archway', 'lit_archway', None)
+
 
 # Item
 rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)

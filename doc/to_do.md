@@ -908,15 +908,19 @@ To Do List - Dark Castle v3
 						- DONE: manual test
 						- DONE: scenario test
 						- DONE: clean up comments in interp()
-					- TBD: enable enter for paths?
-						- TBD: decide if this is desired
-						- TBD: create Path() class with is_path() identity
-						- TBD: change path_obj classes to Path()
-						- TBD: update 'enter' condition in asym_syn to include paths
-						- TBD: manual test (will also test map door dict case)
-						- TBD: scenario test
-					- TBD: infer door if only 1 door in room
+					- DONE: enable enter for paths?
+						- DONE: decide if this is desired => yes
+						- DONE: create Pathway() class with is_pathway() identity
+						- DONE: in dc game_update() import Pathway from base_class()
+						- DONE: change pathway_obj classes to Pathway()
+						- DONE: update 'enter' condition in asym_syn to include paths
+						- DONE: manual test (will also test map door dict case)
+							- DONE: fix crash on 'enter portcullis' from throne_room (wrong hero_rm?)
+						- DONE: scenario test
+					- TBD: infer door if no seat and only 1 door/pathway in room
 						- IDEA: bias towards in-room = infer Seat 1st
+						- TBD: infer sit if exactly_one seat in room
+						- TBD: if no seat, infer door/pathway if exactly one in room
 					- TBD: update verb table with 'enter'
 					- TBD: 'in' / 'go in'
 						- TBD: convert 'in' => 'enter' => full action_verb

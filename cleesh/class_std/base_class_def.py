@@ -267,3 +267,11 @@ class ClimbableViewOnly(ClimbableMixIn, ViewOnly):
 		ClimbableMixIn.__init__(self, descript_dir, err_dir)
 		""" A ViewOnly object that is climbable.
 		"""
+
+class Pathway(ViewOnly):
+	def __init__(self, name, full_name, root_name, descript_key, writing):
+		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
+		""" A ViewOnly object that is a pathway.
+		"""
+	def	is_pathway(self):
+		return True

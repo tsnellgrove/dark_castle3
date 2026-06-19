@@ -148,7 +148,7 @@ class Map(Invisible):
 		"""
 		for room_pair in self.map_lst:
 			if isinstance(room_pair['door'], dict):
-				if room_pair['door'][room] == door:
+				if room in room_pair['door'] and room_pair['door'][room] == door:
 					if room_pair['room_x'] == room:
 						return room_pair['dir_x']
 					elif room_pair['room_y'] == room:

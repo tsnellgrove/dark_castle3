@@ -220,7 +220,10 @@ def asym_syn(action_lst, gs):
 	if verb_str in ['enter']:
 		if do_noun_obj.is_seat():
 			action_lst[0] = 'sit'
-		elif do_noun_obj.is_door() and gs.map.hero_rm.chk_is_vis(do_noun_obj, gs):
+		elif (
+				(do_noun_obj.is_door() or do_noun_obj.is_pathway()) 
+				and gs.map.hero_rm.chk_is_vis(do_noun_obj, gs)
+			):
 			dir_str = gs.map.get_door_dir(gs.map.hero_rm, do_noun_obj, gs)
 			action_lst = ['go', gs.map.hero_rm, dir_str, 'verb_do_prep']
 	if verb_str in ['exit'] and gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
