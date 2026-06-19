@@ -894,12 +894,9 @@ To Do List - Dark Castle v3
 					- DONE: scenario test
 					- DONE: comment out old 'go' code including legacy syntax code
 					- DONE: comment out old go_err() for non-dir preps
-					- TBD: clean up interp() & go_err()
+					- DONE: clean up interp() & go_err()
+					- DONE: comment out action_dir case
 					- CANCEL: if verb in ['go'] => infer dir ???
-				- TBD: in / out
-					- TBD: decide on synonym status with enter / exit (see below)
-					- TBD: implement 'go in <door>'
-					- TBD: implement 'go out <room>'
 				- TBD: enter & exit
 					- TBD: clean up existing code:
 						- TBD: enter_err() and exit_err() in err()
@@ -909,6 +906,10 @@ To Do List - Dark Castle v3
 					- TBD: create room or door specific method for enter
 					- TBD: create room or door specific method for exit
 					- TBD: create exit => stand if do_noun is_contained
+				- TBD: in / out
+					- TBD: decide on synonym status with enter / exit (see below)
+					- TBD: implement 'go in <door>'
+					- TBD: implement 'go out <room>'
 			- TBD: generalize 'climb':
 				- TBD: if verb in ['go', 'climb'] => infer dir
 			- TBD: 'climb'
@@ -927,7 +928,8 @@ To Do List - Dark Castle v3
 				- TBD: scenario test
 				- TBD: fix scenario as needed
 				- TBD: clean up comments in static_gbl
-			- TBD: update verb spreadsheet
+				- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
+			- TBD: update verb spreadsheet w/ go, climb, enter, exit, in, out
 		- TBD: generalize id_noun case => sit case
 			- TBD: 'put on' as syntax syn for 'wear'
 			- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')

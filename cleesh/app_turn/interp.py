@@ -35,14 +35,6 @@ def input_cleanup(gs, user_input):
 def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 	syntax_dict = {
-#		('hero_dir',) : {
-#			'case' : 'action_dir',
-#			"base_action_lst" : ['go', 'hero_dir', 'hero_rm_obj']
-#		},
-#		('go', 'hero_dir') : {
-#			'case' : 'action_dir',
-#			'base_action_lst' : ['go', 'hero_dir', 'hero_rm_obj']
-#		},
 		('climb', 'hero_dir', 'input_do_noun') : {
 			'case' : 'action_dir',
 			'base_action_lst' : ['climb', 'hero_dir', 'do_noun_str']
@@ -395,8 +387,6 @@ def interpreter(user_input, master_obj_lst):
 	action_lst = None
 
 	# *** one-word and meta commands ***
-#	if len(user_input_lst) == 1 and word1 in gs.io.get_lst('one_word_travel_lst','eng'):
-#		case, action_lst = syntax(('hero_dir',), None, None, word1, None, gs)
 	if word1 in meta_cmd_lst: # e.g. credits, score, version, verbose, brief, superbrief
 		case, action_lst = syntax(('meta_cmd',), word1, None, None, None, gs)
 	elif word1 in ['help']:
@@ -409,8 +399,6 @@ def interpreter(user_input, master_obj_lst):
 
 	# handle sit commands - special case because includes prep
 	elif word1 in (verb_lst + dir_lst):
-#		if word1 not in verb_lst:
-#			return 'error', ["Please start your sentence with a known verb!"]
 		prep = None # LEGACY
 		verb_cmd_lst = [] # new
 		dir_cmd_lst = [] # new
@@ -463,7 +451,6 @@ def interpreter(user_input, master_obj_lst):
 				verb_cmd_lst.append(verb_str)
 			else:
 				return 'error', ["Please start your sentence with a known verb!"]
-##			return 'error', ['I don\'t see a verb in that sentence!']
 		if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
 			return 'error', ["Please start your sentence with a known verb!"]
 		if (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
@@ -492,7 +479,6 @@ def interpreter(user_input, master_obj_lst):
 				do_noun_cmd_lst = [do_noun_obj.name]
 				do_noun_str = do_noun_obj.name # new - for syntax call
 				syntax_do_lst = ['input_do_noun'] # new - for syntax call
-#		elif word1 in ['go', 'inventory', 'stand', 'jump']:
 		elif user_cmd_lst_syn[0] in ['go', 'inventory', 'stand', 'jump']:
 			do_noun_obj = None
 			syntax_do_lst = []
@@ -522,12 +508,10 @@ def interpreter(user_input, master_obj_lst):
 		if tst_mode:
 			print(f"user_cmd_lst_post_infer: {user_cmd_lst_post_infer}")
 
-##		user_syntax_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + ['input_do_noun'] + id_prep_cmd_lst + id_noun_syn_lst
 		user_syntax_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
 		if tst_mode:
 			print(f"user_syntax_lst: {user_syntax_lst}")
 
-##		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_obj.name, prep, None, gs)
 		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, None, gs)
 		if case == 'error':
 			return case, action_lst
@@ -569,11 +553,6 @@ def interpreter(user_input, master_obj_lst):
 		return 'error', ['I see more than one verb in that sentence!']
 	if word1 not in full_verbs_lst:
 		return 'error', ["Please start your sentence with a known verb!"]
-
-	# handle go commands - special case beacause no do_noun
-#	if word1 in ['go']:
-#		case, action_lst = syntax(('go', 'hero_dir'), word1, None, user_input_lst[1], None, gs)
-#		return case, action_lst
 
 	# handle climb commands - special case because may include direction
 	if word1 in ['climb']:
