@@ -897,6 +897,12 @@ To Do List - Dark Castle v3
 					- DONE: clean up interp() & go_err()
 					- DONE: comment out action_dir case
 					- CANCEL: if verb in ['go'] => infer dir ???
+				- TBD: enter
+					- TBD: asym syn for 'enter door'
+						- TBD: create get_door_dir() in map
+						- TBD: 
+					- TBD: infer door if only 1 door in room
+					- TBD: 'in' / 'go in' / 'go into' => enter
 				- TBD: enter & exit
 					- TBD: clean up existing code:
 						- TBD: enter_err() and exit_err() in err()
