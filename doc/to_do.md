@@ -898,6 +898,8 @@ To Do List - Dark Castle v3
 					- DONE: comment out action_dir case
 					- DONE: update verb table with 'go'
 					- CANCEL: if verb in ['go'] => infer dir ???
+					- DONE: generalize travel case? (infer verb?)
+						- DONE: update verb spreadsheet
 				- INPROC: enter
 					- DONE: asym syn for 'enter door'
 						- DONE: create get_door_dir() in map
@@ -911,23 +913,30 @@ To Do List - Dark Castle v3
 						- TBD: create Path() class with is_path() identity
 						- TBD: change path_obj classes to Path()
 						- TBD: update 'enter' condition in asym_syn to include paths
+						- TBD: manual test (will also test map door dict case)
+						- TBD: scenario test
 					- TBD: infer door if only 1 door in room
+						- IDEA: bias towards in-room = infer Seat 1st
 					- TBD: update verb table with 'enter'
-					- TBD: 'in' / 'go in' / 'go into' => enter
+					- TBD: 'in' / 'go in'
+						- TBD: convert 'in' => 'enter' => full action_verb
+							- TBD: 'in' => 'go in' via verb_infer()
+							- TBD: 'go in' => 'go in seat / door' via do_infer()
+							- TBD: 'go in do_noun' => 'enter do_noun' via syntax()
+							- TBD: 'enter do_noun' => sit / 'go dir' via asym_syn
 						- TBD: update verb table with 'in'
-				- TBD: enter & exit
 					- TBD: clean up existing code:
-						- TBD: enter_err() and exit_err() in err()
-						- TBD: enter() and exit() in seat()
-					- TBD: symetric syn 'in' => 'enter' ; 'in' as verb & prep ? infer 'go' ?
-					- TBD: smilar issue for symetric syn 'out' => 'exit'
-					- TBD: create room or door specific method for enter
-					- TBD: create room or door specific method for exit
-					- TBD: create exit => stand if do_noun is_contained
-				- TBD: in / out
-					- TBD: decide on synonym status with enter / exit (see below)
-					- TBD: implement 'go in <door>'
-					- TBD: implement 'go out <room>'
+						- TBD: enter_err() in err()
+						- TBD: enter() in seat()
+				- TBD: exit
+					- TBD: asym syn for 'exit room'
+					- TBD: infer room if no do_nuon, no seat
+					- TBD: update verb table with 'exit'
+					- TBD: 'out' / 'go out' => enter via verb_infer(), do_infer(), & syntax() ??
+						- TBD: update verb table with 'out'
+					- TBD: clean up existing code:
+						- TBD: exit_err() in err()
+						- TBD: exit() in seat()
 			- TBD: generalize 'climb':
 				- TBD: if verb in ['go', 'climb'] => infer dir
 			- TBD: 'climb'
@@ -949,19 +958,19 @@ To Do List - Dark Castle v3
 				- TBD: clean up comments in static_gbl
 				- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
 			- TBD: update verb spreadsheet w/ go, climb, enter, exit, in, out
-		- TBD: generalize id_noun case => sit case
-			- TBD: 'put on' as syntax syn for 'wear'
-			- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
-				- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
-			- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
-			- TBD: update verb spreadsheet
-		- TBD: generalize travel case? (infer verb?)
-			- TBD: update verb spreadsheet
+		- TBD: reconsider 'jump' => associate with Room class instead of Creature class??
+			- IDEA: custom outcome of 'jump' will most likely depend on room (e.g. 'jump' => moat)
 		- TBD: elim 'one_word_convert_lst' in static_gbl
 			- TBD: update verb spreadsheet
 		- TBD: generalize meta cmds
 			- TBD: update verb spreadsheet
 		- TBD: generalize help
+			- TBD: update verb spreadsheet
+		- TBD: generalize id_noun case => sit case
+			- TBD: 'put on' as syntax syn for 'wear'
+			- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
+				- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
+			- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
 			- TBD: update verb spreadsheet
 		- TBD: additional updates
 			- TBD: update help() cmd to give a limited list of verbs ?
