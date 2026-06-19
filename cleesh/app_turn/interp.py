@@ -217,8 +217,6 @@ def asym_syn(action_lst, gs):
 	verb_str= action_lst[0]
 	do_noun_obj = action_lst[1]
 	case = 'universal'
-#	if verb_str in ['enter'] and do_noun_obj.is_seat():
-#		action_lst[0] = 'sit'
 	if verb_str in ['enter']:
 		if do_noun_obj.is_seat():
 			action_lst[0] = 'sit'

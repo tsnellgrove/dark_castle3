@@ -899,13 +899,13 @@ To Do List - Dark Castle v3
 					- DONE: update verb table with 'go'
 					- CANCEL: if verb in ['go'] => infer dir ???
 				- INPROC: enter
-					- INPROC: asym syn for 'enter door'
+					- DONE: asym syn for 'enter door'
 						- DONE: create get_door_dir() in map
 						- DONE: create is_door() identity and assign to door classes
 						- DONE: in asym_syn(), if is_door and in_room, call get_door_dir => go dir rm
 						- DONE: manual test
 						- DONE: scenario test
-						- TBD: clean up comments in interp()
+						- DONE: clean up comments in interp()
 					- TBD: enable enter for paths?
 						- TBD: decide if this is desired
 						- TBD: create Path() class with is_path() identity
