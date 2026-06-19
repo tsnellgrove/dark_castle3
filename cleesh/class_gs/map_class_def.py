@@ -143,6 +143,24 @@ class Map(Invisible):
 					passage_lst.append(passage_var)
 		return passage_lst
 	
+	def get_door_dir(self, room, door, gs):
+		""" Returns the direction to a given door from a given room.
+		"""
+		for room_pair in self.map_lst:
+			if isinstance(room_pair['door'], dict):
+				if room_pair['door'][room] == door:
+					if room_pair['room_x'] == room:
+						return room_pair['dir_x']
+					elif room_pair['room_y'] == room:
+						return room_pair['dir_y']
+			else:
+				if room_pair['door'] == door:
+					if room_pair['room_x'] == room:
+						return room_pair['dir_x']
+					elif room_pair['room_y'] == room:
+						return room_pair['dir_y']
+		raise ValueError(f"There is no direction associated with {door} from room {room}. This must not be a valid route.")
+
 	def get_neighbor_count(self, room):
 		""" Provide a count of rooms that are connected neighbors of a given room
 		"""

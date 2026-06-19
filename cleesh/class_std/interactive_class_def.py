@@ -321,6 +321,8 @@ class DoorSimple(OpenableMixIn, ViewOnly):
 		OpenableMixIn.__init__(self, is_open)
 		""" A simple door with no lock.
 		"""
+	def is_door(self):
+		return True
 
 class DoorLockable(LockableMixIn, DoorSimple):
 	def __init__(self, name, full_name, root_name, descript_key, writing, is_open, is_unlocked, key):
@@ -328,6 +330,8 @@ class DoorLockable(LockableMixIn, DoorSimple):
 		LockableMixIn.__init__(self, is_unlocked, key)
 		""" A door that can be locked or unlocked.
 		"""
+	def is_door(self):
+		return True
 
 class ContainerFixedSimple(ContainsMixIn, ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing, contain_lst, max_weight, max_obj, prep):

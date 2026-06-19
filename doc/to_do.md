@@ -896,13 +896,25 @@ To Do List - Dark Castle v3
 					- DONE: comment out old go_err() for non-dir preps
 					- DONE: clean up interp() & go_err()
 					- DONE: comment out action_dir case
+					- DONE: update verb table with 'go'
 					- CANCEL: if verb in ['go'] => infer dir ???
-				- TBD: enter
-					- TBD: asym syn for 'enter door'
-						- TBD: create get_door_dir() in map
-						- TBD: 
+				- INPROC: enter
+					- INPROC: asym syn for 'enter door'
+						- DONE: create get_door_dir() in map
+						- DONE: create is_door() identity and assign to door classes
+						- DONE: in asym_syn(), if is_door and in_room, call get_door_dir => go dir rm
+						- DONE: manual test
+						- DONE: scenario test
+						- TBD: clean up comments in interp()
+					- TBD: enable enter for paths?
+						- TBD: decide if this is desired
+						- TBD: create Path() class with is_path() identity
+						- TBD: change path_obj classes to Path()
+						- TBD: update 'enter' condition in asym_syn to include paths
 					- TBD: infer door if only 1 door in room
+					- TBD: update verb table with 'enter'
 					- TBD: 'in' / 'go in' / 'go into' => enter
+						- TBD: update verb table with 'in'
 				- TBD: enter & exit
 					- TBD: clean up existing code:
 						- TBD: enter_err() and exit_err() in err()
@@ -919,6 +931,7 @@ To Do List - Dark Castle v3
 			- TBD: generalize 'climb':
 				- TBD: if verb in ['go', 'climb'] => infer dir
 			- TBD: 'climb'
+				- IDEA: should climb => go in asym_syn ???
 				- TBD: check ZIL list for sym_syn and prep variants
 				- TBD: update hand_mgmt() as needed for new_verb
 				- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
