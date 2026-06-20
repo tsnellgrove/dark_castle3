@@ -263,21 +263,46 @@ def infer_do_noun(gs, verb_str):
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero.worn_lst[0]
 		infer_txt = f"(the {do_noun_obj.full_name})"
-	if verb_str == 'sit':
+	elif verb_str == 'enter':
+		seat_count = 0
+		door_count = 0
+		pathway_count = 0
+		for obj in gs.map.hero_rm.get_vis_contain_lst(gs):
+			if obj.is_seat():
+				seat_count += 1
+				seat_obj = obj
+			if obj.is_door():
+				door_count += 1
+				door_obj = obj
+			if obj.is_pathway():
+				pathway_count += 1
+				pathway_obj = obj
+		if seat_count == 1:
+			do_noun_count = 1
+			do_noun_obj = seat_obj
+		elif door_count == 1:
+			do_noun_count = 1
+			do_noun_obj = door_obj
+		elif pathway_count == 1:
+			do_noun_count = 1
+			do_noun_obj = pathway_obj
+		if do_noun_count == 1:
+			infer_txt = f"(the {do_noun_obj.full_name})"			
+	elif verb_str == 'sit':
 		err_txt = "Where do you want to sit?"
 		for obj in scope_lst:
 			if obj.is_seat():
 				do_noun_count += 1
 				do_noun_obj = obj
 				infer_txt = f"(in the {do_noun_obj.full_name})"	
-	if verb_str == 'look':
+	elif verb_str == 'look':
 		do_noun_count = 1
 		do_noun_obj = gs.map.hero_rm
-	if verb_str in ['drop', 'stow', 'eat', 'wear'] and not gs.core.hero.hand_is_empty():
+	elif verb_str in ['drop', 'stow', 'eat', 'wear'] and not gs.core.hero.hand_is_empty():
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero.get_hand_item()
 		infer_txt = f"(the {gs.core.hero.get_hand_item().full_name})"
-	if verb_str == 'exit' and gs.core.hero.is_contained(gs):
+	elif verb_str == 'exit' and gs.core.hero.is_contained(gs):
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero.get_contained_by(gs)
 		infer_txt = f"(from the {do_noun_obj.full_name})"

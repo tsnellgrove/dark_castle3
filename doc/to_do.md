@@ -917,21 +917,33 @@ To Do List - Dark Castle v3
 						- DONE: manual test (will also test map door dict case)
 							- DONE: fix crash on 'enter portcullis' from throne_room (wrong hero_rm?)
 						- DONE: scenario test
-					- TBD: infer door if no seat and only 1 door/pathway in room
-						- IDEA: bias towards in-room = infer Seat 1st
-						- TBD: infer sit if exactly_one seat in room
-						- TBD: if no seat, infer door/pathway if exactly one in room
-					- TBD: update verb table with 'enter'
+					- DONE: infer seat / door if no seat and only 1 door/pathway in room
+						- DONE: create infer_do() routine for 'enter'
+						- IDEA: prefer doors over pathways
+						- IDEA: prefer seat_obj over door_obj if 1 of each available
+						- IDEA: always assume in-room before out of room
+						- DONE: manual test
+						- DONE: scenario test
+						- NA: clean up comments in interp()
+					- DONE: update verb table with 'enter'
 					- TBD: 'in' / 'go in'
 						- TBD: convert 'in' => 'enter' => full action_verb
 							- TBD: 'in' => 'go in' via verb_infer()
-							- TBD: 'go in' => 'go in seat / door' via do_infer()
-							- TBD: 'go in do_noun' => 'enter do_noun' via syntax()
-							- TBD: 'enter do_noun' => sit / 'go dir' via asym_syn
+						- TBD: create prep_phrase_convert()
+							- TBD: after prep, before do, if prep > 0:
+								- TBD: similar to sym_syn() but includes verb & preps
+								- TBD: 'go in' => 'enter'
+							- CANCEL: 'go in' => 'go in seat / door' via do_infer()
+							- CANCEL: 'go in do_noun' => 'enter do_noun' via syntax()
+							- IDEA: 'enter do_noun' => sit / 'go dir' via asym_syn
 						- TBD: update verb table with 'in'
 					- TBD: clean up existing code:
 						- TBD: enter_err() in err()
 						- TBD: enter() in seat()
+					- TBD: 'get in' => 'enter'
+						- TBD: 'get' to non_action verb
+						- TBD: in syntax: 'get' => 'take'
+						- TBD: 'get in' => 'enter' via prep_phrase_convert()
 				- TBD: exit
 					- TBD: asym syn for 'exit room'
 					- TBD: infer room if no do_nuon, no seat
