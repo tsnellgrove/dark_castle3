@@ -71,6 +71,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('taste', 'verb_syn') : ['eat'],
 
 		('enter', 'input_do_noun') : ['enter', 'do_noun_str', 'verb_do'],
+		('go', 'in', 'prep_phrase_convert') : ['enter'],
 ##		('in', 'verb_syn') : ['enter'],
 
 		('examine', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
@@ -246,7 +247,7 @@ def asym_syn(action_lst, gs):
 def infer_verb(prep_str, gs):
 	verb_inferred = False
 	verb_str = ''
-	if prep_str in ['east', 'west', 'north', 'south', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down']:
+	if prep_str in ['east', 'west', 'north', 'south', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down', 'in']:
 		verb_inferred = True
 		verb_str = 'go'
 	return verb_inferred, verb_str
@@ -383,7 +384,8 @@ def interpreter(user_input, master_obj_lst):
 			gs.io.get_lst('one_word_travel_lst','eng') # added
 			):
 		return 'error', [f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"]
-	if len(user_input_lst) > 2 and user_input_lst[0] in ['help', 'go']:
+#	if len(user_input_lst) > 2 and user_input_lst[0] in ['help', 'go']:
+	if len(user_input_lst) > 2 and user_input_lst[0] in ['help']:
 		return 'error', [f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"]
 
 	# *** global variable assignment ***
@@ -430,7 +432,7 @@ def interpreter(user_input, master_obj_lst):
 
 
 	# handle sit commands - special case because includes prep
-	elif word1 in (verb_lst + dir_lst):
+	elif word1 in (verb_lst + dir_lst + ['in']):
 		prep = None # LEGACY
 		verb_cmd_lst = [] # new
 		dir_cmd_lst = [] # new
@@ -497,6 +499,13 @@ def interpreter(user_input, master_obj_lst):
 		if err_chk != 'error':
 			verb_cmd_lst = tmp_lst
 			word1 = verb_cmd_lst[0]
+
+		if do_prep_count > 0:
+			err_chk, tmp_lst = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, None, gs)
+			if err_chk != 'error':
+				verb_cmd_lst = tmp_lst
+				do_prep_cmd_lst = []
+				word1 = verb_cmd_lst[0]
 
 		user_cmd_lst_syn = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst # new
 		if tst_mode:

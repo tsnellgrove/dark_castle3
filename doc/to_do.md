@@ -926,20 +926,23 @@ To Do List - Dark Castle v3
 						- DONE: scenario test
 						- NA: clean up comments in interp()
 					- DONE: update verb table with 'enter'
-					- TBD: 'in' / 'go in'
-						- TBD: 'in' => 'go in' via verb_infer()
-						- TBD: create prep_phrase_convert()
-							- TBD: after prep, before do, if prep > 0:
-								- TBD: similar to sym_syn() but includes verb & preps
-								- TBD: 'go in' => 'enter'
+					- DONE: 'in' / 'go in'
+						- DONE: 'in' => 'go in' via verb_infer()
+						- DONE: create prep_phrase_convert()
+							- DONE: after prep, before do, if prep > 0:
+								- DONE: similar to sym_syn() but includes verb & preps
+								- DONE: 'go in' => 'enter'
 							- CANCEL: 'go in' => 'go in seat / door' via do_infer()
 							- CANCEL: 'go in do_noun' => 'enter do_noun' via syntax()
 							- IDEA: 'enter do_noun' => sit / 'go dir' via asym_syn
-						- TBD: update verb table with 'in'
+						- DONE: test manually
+						- DONE: test scenario
+						- DONE update verb table with 'in' & prep_phrase_convert
 					- TBD: 'get in' => 'enter'
 						- TBD: 'get' to non_action verb
 						- TBD: in syntax: 'get' => 'take'
-						- TBD: 'get in' => 'enter' via prep_phrase_convert()
+						- TBD: 'get in' => 'enter' via prep_phrase_convert
+					- TBD: in interp() word analysis - consider combining dir & prep
 					- TBD: clean up existing code:
 						- TBD: enter_err() in err()
 						- TBD: enter() in seat()
