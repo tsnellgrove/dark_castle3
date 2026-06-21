@@ -927,8 +927,7 @@ To Do List - Dark Castle v3
 						- NA: clean up comments in interp()
 					- DONE: update verb table with 'enter'
 					- TBD: 'in' / 'go in'
-						- TBD: convert 'in' => 'enter' => full action_verb
-							- TBD: 'in' => 'go in' via verb_infer()
+						- TBD: 'in' => 'go in' via verb_infer()
 						- TBD: create prep_phrase_convert()
 							- TBD: after prep, before do, if prep > 0:
 								- TBD: similar to sym_syn() but includes verb & preps
@@ -937,13 +936,13 @@ To Do List - Dark Castle v3
 							- CANCEL: 'go in do_noun' => 'enter do_noun' via syntax()
 							- IDEA: 'enter do_noun' => sit / 'go dir' via asym_syn
 						- TBD: update verb table with 'in'
-					- TBD: clean up existing code:
-						- TBD: enter_err() in err()
-						- TBD: enter() in seat()
 					- TBD: 'get in' => 'enter'
 						- TBD: 'get' to non_action verb
 						- TBD: in syntax: 'get' => 'take'
 						- TBD: 'get in' => 'enter' via prep_phrase_convert()
+					- TBD: clean up existing code:
+						- TBD: enter_err() in err()
+						- TBD: enter() in seat()
 				- TBD: exit
 					- TBD: asym syn for 'exit room'
 					- TBD: infer room if no do_nuon, no seat
