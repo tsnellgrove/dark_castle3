@@ -951,7 +951,6 @@ To Do List - Dark Castle v3
 							- DONE: scenario test
 							- DONE: update verb table
 							- DONE: clean up interp()
-					- TBD: in interp() word analysis - consider combining dir & prep
 					- TBD: clean up existing code:
 						- TBD: enter_err() in err()
 						- TBD: enter() in seat()
@@ -964,34 +963,37 @@ To Do List - Dark Castle v3
 					- TBD: clean up existing code:
 						- TBD: exit_err() in err()
 						- TBD: exit() in seat()
+			- TBD: in interp() word analysis - consider combining dir & prep
+			- TBD: reconsider 'jump' => associate with Room class instead of Creature class??
+				- IDEA: custom outcome of 'jump' will most likely depend on room (e.g. 'jump' => moat)
 			- TBD: generalize 'climb':
-				- TBD: if verb in ['go', 'climb'] => infer dir
-			- TBD: 'climb'
 				- IDEA: should climb => go in asym_syn ???
-				- TBD: check ZIL list for sym_syn and prep variants
-				- TBD: update hand_mgmt() as needed for new_verb
-				- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
-				- TBD: disable global syn for new_verb
-				- TBD: add new_verb to interp() action_verb list
-				- TBD: add base ('new_verb', 'do_noun') entries to syntax
-				- TBD: add prep variants for new_verb to syntax
-				- TBD: add new_verb symetric syns to syn_verb_lst
-				- TBD: add new_verb symetric syns to syntax
-				- TBD: add infer do_noun entry for new_verb as needed
-				- TBD: in asym_syn(), add conditional syn as needed
-				- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
-				- TBD: scenario test
-				- TBD: fix scenario as needed
-				- TBD: clean up comments in static_gbl
-				- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
-			- TBD: update verb spreadsheet w/ go, climb, enter, exit, in, out
-		- TBD: reconsider 'jump' => associate with Room class instead of Creature class??
-			- IDEA: custom outcome of 'jump' will most likely depend on room (e.g. 'jump' => moat)
+				- TBD: if verb in ['go', 'climb'] => infer dir
+				- TBD: 'climb'
+					- TBD: check ZIL list for sym_syn and prep variants
+					- TBD: update hand_mgmt() as needed for new_verb
+					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
+					- TBD: disable global syn for new_verb
+					- TBD: add new_verb to interp() action_verb list
+					- TBD: add base ('new_verb', 'do_noun') entries to syntax
+					- TBD: add prep variants for new_verb to syntax
+					- TBD: add new_verb symetric syns to syn_verb_lst
+					- TBD: add new_verb symetric syns to syntax
+					- TBD: add infer do_noun entry for new_verb as needed
+					- TBD: in asym_syn(), add conditional syn as needed
+					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+					- TBD: scenario test
+					- TBD: fix scenario as needed
+					- TBD: clean up comments in static_gbl
+					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
+				- TBD: update verb spreadsheet w/ climb
 		- TBD: elim 'one_word_convert_lst' in static_gbl
 			- TBD: update verb spreadsheet
 		- TBD: generalize meta cmds
 			- TBD: update verb spreadsheet
 		- TBD: generalize help
+			- TBD: update verb spreadsheet
+		- TBD: one-word debug commands
 			- TBD: update verb spreadsheet
 		- TBD: generalize id_noun case => sit case
 			- TBD: 'put on' as syntax syn for 'wear'
