@@ -72,7 +72,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 		('enter', 'input_do_noun') : ['enter', 'do_noun_str', 'verb_do'],
 		('go', 'in', 'prep_phrase_convert') : ['enter'],
-##		('in', 'verb_syn') : ['enter'],
+		('get', 'in', 'prep_phrase_convert') : ['enter'],
 
 		('examine', 'input_do_noun') : ['examine', 'do_noun_str', 'verb_do'],
 		('inventory',) : ['examine', 'hero_obj', 'verb_do'],
@@ -151,7 +151,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 		('take', 'input_do_noun') : ['take', 'do_noun_str', 'verb_do'],
 		('get', 'input_do_noun') : ['take', 'do_noun_str', 'verb_do'],
-#		('get', 'verb_syn') : ['take'],
 		('grab', 'verb_syn') : ['take'],
 		('remove', 'verb_syn') : ['take'],
 		('hold', 'verb_syn') : ['take'],
