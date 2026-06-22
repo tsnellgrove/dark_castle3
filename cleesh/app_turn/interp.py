@@ -150,7 +150,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('stash', 'verb_syn') : ['stow'],
 
 		('take', 'input_do_noun') : ['take', 'do_noun_str', 'verb_do'],
-		('get', 'verb_syn') : ['take'],
+		('get', 'input_do_noun') : ['take', 'do_noun_str', 'verb_do'],
+#		('get', 'verb_syn') : ['take'],
 		('grab', 'verb_syn') : ['take'],
 		('remove', 'verb_syn') : ['take'],
 		('hold', 'verb_syn') : ['take'],
@@ -398,10 +399,10 @@ def interpreter(user_input, master_obj_lst):
 			'open', 'move', 'push', 'pull', 'read', 'sit', 'stand', 'stow', 'take', 'wear'
 			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
-			'inventory', 'look'
+			'get', 'inventory', 'look'
 			] # non-action verbs are subsituted in syntax or asym_syn()
 	syn_verb_lst = [
-			'bite', 'carry', 'consume', 'describe', 'devour', 'don', 'get', 'gobble', 'grab', 'hold', 
+			'bite', 'carry', 'consume', 'describe', 'devour', 'don', 'gobble', 'grab', 'hold', 
 			'ingest', 'inspect', 'leap', 'list', 'munch', 'pack', 'peruse', 'press', 'proceed', 
 			'release', 'remove', 'roll', 'run', 'scan', 'shut', 'skim', 'search', 'shove', 'slide', 
 			'stash', 'step', 'taste', 'tug', 'vault', 'walk', 'yank'

@@ -938,10 +938,16 @@ To Do List - Dark Castle v3
 						- DONE: test manually
 						- DONE: test scenario
 						- DONE update verb table with 'in' & prep_phrase_convert
-					- TBD: 'get in' => 'enter'
-						- TBD: 'get' to non_action verb
-						- TBD: in syntax: 'get' => 'take'
+					- INPROC: 'get in' => 'enter'
+						- DONE: 'get do_noun' => 'take do_noun'
+							- DONE: 'get' to non_action verb
+							- DONE: in syntax: 'get' => 'take'
+							- DONE: manual test
+							- DONE: scenario test
+							- DONE: update verb table
 						- TBD: 'get in' => 'enter' via prep_phrase_convert
+							- TBD:
+							- TBD: clean up interp()
 					- TBD: in interp() word analysis - consider combining dir & prep
 					- TBD: clean up existing code:
 						- TBD: enter_err() in err()
