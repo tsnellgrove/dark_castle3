@@ -954,17 +954,19 @@ To Do List - Dark Castle v3
 					- DONE: clean up existing code:
 						- DONE: enter_err() in err()
 						- DONE: enter() in seat()
-				- TBD: exit
-					- TBD: 'get out' => 'exit'
-						- TBD: add syntax entry
-						- TBD: test manual
-						- TBD: test scenario
-						- TBD: update verb table
-					- TBD: asym syn for 'exit room'
+				- INPROC: exit
+					- TBD: create depart() as method of room
+						- IDEA: if only one exit, depart via that exit
+					- INPROC: asym_syn 'exit room' => 'depart room'
 					- TBD: infer room if no do_nuon, no seat
 					- TBD: update verb table with 'exit'
 					- TBD: 'out' / 'go out' => enter via verb_infer(), do_infer(), & syntax() ??
 						- TBD: update verb table with 'out'
+					- INPROC: 'get out' => 'exit'
+						- DONE: add syntax entry
+						- TBD: test manual
+						- TBD: test scenario
+						- TBD: update verb table
 					- TBD: clean up existing code:
 						- TBD: exit_err() in err()
 						- TBD: exit() in seat()

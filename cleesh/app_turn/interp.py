@@ -85,6 +85,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('list', 'verb_syn') : ['inventory'],
 
 		('exit', 'input_do_noun') : ['exit', 'do_noun_str', 'verb_do'],
+		('get', 'out', 'prep_phrase_convert') : ['exit'],
 ##		('out', 'verb_syn') : ['enter'],
 
 		('go', 'east') : ['go', 'hero_rm_obj', 'east', 'verb_do_prep'],
@@ -227,8 +228,14 @@ def asym_syn(action_lst, gs):
 			):
 			dir_str = gs.map.get_door_dir(gs.map.hero_rm, do_noun_obj, gs)
 			action_lst = ['go', gs.map.hero_rm, dir_str, 'verb_do_prep']
-	if verb_str in ['exit'] and gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
-		action_lst = ['stand', gs.core.hero, 'verb_do']
+#	if verb_str in ['exit'] and gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
+#		action_lst = ['stand', gs.core.hero, 'verb_do']
+
+	if verb_str in ['exit']:
+		if gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
+			action_lst = ['stand', gs.core.hero, 'verb_do']
+		elif do_noun_obj.is_room():
+			pass
 	if verb_str in ['take'] and do_noun_obj in gs.core.hero.worn_lst:
 		action_lst[0] = 'doff'
 	if verb_str in ['examine'] and do_noun_obj.is_writing():
