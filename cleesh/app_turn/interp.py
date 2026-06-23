@@ -86,6 +86,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 		('exit', 'input_do_noun') : ['exit', 'do_noun_str', 'verb_do'],
 		('get', 'out', 'prep_phrase_convert') : ['exit'],
+		('depart', 'verb_syn') : ['exit'],
 ##		('out', 'verb_syn') : ['enter'],
 
 		('go', 'east') : ['go', 'hero_rm_obj', 'east', 'verb_do_prep'],
@@ -408,7 +409,7 @@ def interpreter(user_input, master_obj_lst):
 			'get', 'inventory', 'look'
 			] # non-action verbs are subsituted in syntax or asym_syn()
 	syn_verb_lst = [
-			'bite', 'carry', 'consume', 'describe', 'devour', 'don', 'gobble', 'grab', 'hold', 
+			'bite', 'carry', 'consume', 'depart', 'describe', 'devour', 'don', 'gobble', 'grab', 'hold', 
 			'ingest', 'inspect', 'leap', 'list', 'munch', 'pack', 'peruse', 'press', 'proceed', 
 			'release', 'remove', 'roll', 'run', 'scan', 'shut', 'skim', 'search', 'shove', 'slide', 
 			'stash', 'step', 'taste', 'tug', 'vault', 'walk', 'yank'

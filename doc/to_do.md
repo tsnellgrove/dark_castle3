@@ -955,8 +955,13 @@ To Do List - Dark Castle v3
 						- DONE: enter_err() in err()
 						- DONE: enter() in seat()
 				- INPROC: exit
-					- TBD: create depart() as method of room
+					- DONE: create depart() as method of room?
 						- IDEA: if only one exit, depart via that exit
+						- IDEA: what would a depart action do other really do other than call go()?
+						- IDEA: if nothing, then keep logic in asym_syn
+						- DONE: make depart a sym_syn of exit()
+						- DONE: manual test
+						- DONE: scenario test
 					- INPROC: asym_syn 'exit room' => 'depart room'
 					- TBD: infer room if no do_nuon, no seat
 					- TBD: update verb table with 'exit'
