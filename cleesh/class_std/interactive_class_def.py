@@ -402,7 +402,6 @@ class Seat(ContainerFixedSimple):
 
 	# *** verb methods ***
 	def sit(self, gs, mode=None, creature=None):
-#	def enter(self, gs, mode=None, creature=None):
 		""" Sits a creature in a Seat
 		"""
 		if mode is None: # destermine default attributes
@@ -426,7 +425,7 @@ class Seat(ContainerFixedSimple):
 			gs.io.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
 		return
 
-	def exit(self, gs, mode=None, creature=None):
+#	def exit(self, gs, mode=None, creature=None):
 		""" Enables a creature to exit a Seat
 		"""
 		if mode is None: # destermine default attributes

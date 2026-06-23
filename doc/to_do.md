@@ -900,7 +900,7 @@ To Do List - Dark Castle v3
 					- CANCEL: if verb in ['go'] => infer dir ???
 					- DONE: generalize travel case? (infer verb?)
 						- DONE: update verb spreadsheet
-				- INPROC: enter
+				- DONE: enter
 					- DONE: asym syn for 'enter door'
 						- DONE: create get_door_dir() in map
 						- DONE: create is_door() identity and assign to door classes
@@ -951,10 +951,15 @@ To Do List - Dark Castle v3
 							- DONE: scenario test
 							- DONE: update verb table
 							- DONE: clean up interp()
-					- TBD: clean up existing code:
-						- TBD: enter_err() in err()
-						- TBD: enter() in seat()
+					- DONE: clean up existing code:
+						- DONE: enter_err() in err()
+						- DONE: enter() in seat()
 				- TBD: exit
+					- TBD: 'get out' => 'exit'
+						- TBD: add syntax entry
+						- TBD: test manual
+						- TBD: test scenario
+						- TBD: update verb table
 					- TBD: asym syn for 'exit room'
 					- TBD: infer room if no do_nuon, no seat
 					- TBD: update verb table with 'exit'
