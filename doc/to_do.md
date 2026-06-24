@@ -962,22 +962,22 @@ To Do List - Dark Castle v3
 						- DONE: make depart a sym_syn of exit()
 						- DONE: manual test
 						- DONE: scenario test
+						- DONE: update verb table w/ 'depart'			
 					- DONE: in map, create is_only_1_exit, dir_str = gs.map.only_exit_dir(room, gs)
 					- DONE: asym_syn 'exit room' (w/ only 1 exit) => 'go towards exit'
 						- DONE: update asym_syn w/ call to map.only_exit_dir()
 						- DONE manual test for 'exit room'
 						- DONE: scenario test
-					- TBD: infer room if no do_nuon
-						- TBD: if contained => seat, else hero_rm
-						- TBD: manual test
-						- TBD: scenario test
-						- TBD: update verb table with 'exit'
+					- DONE: infer room if no do_nuon
+						- DONE: if contained => seat, else hero_rm
+						- DONE: manual test
+						- DONE: scenario test
+						- DONE: update verb table with 'exit'
 					- INPROC: 'get out' => 'exit'
 						- DONE: add syntax entry
 						- TBD: test manual
 						- TBD: test scenario
 						- TBD: update verb table w/ 'get out'	
-						- TBD: update verb table w/ 'depart'			
 					- TBD: 'out' / 'go out'
 						- TBD: 'out' => 'go out' via verb_infer()
 						- TBD: 'go out' => 'enter' via prep_phrase_convert syntax lookup

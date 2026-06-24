@@ -282,6 +282,10 @@ def infer_do_noun(gs, verb_str):
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero.worn_lst[0]
 		infer_txt = f"(the {do_noun_obj.full_name})"
+	elif verb_str in ['drop', 'eat', 'stow', 'wear'] and not gs.core.hero.hand_is_empty():
+		do_noun_count = 1
+		do_noun_obj = gs.core.hero.get_hand_item()
+		infer_txt = f"(the {gs.core.hero.get_hand_item().full_name})"
 	elif verb_str == 'enter':
 		seat_count = 0
 		door_count = 0
@@ -314,17 +318,19 @@ def infer_do_noun(gs, verb_str):
 				do_noun_count += 1
 				do_noun_obj = obj
 				infer_txt = f"(in the {do_noun_obj.full_name})"	
+#	elif verb_str == 'exit' and gs.core.hero.is_contained(gs):
+	elif verb_str == 'exit':
+		if gs.core.hero.is_contained(gs):
+			do_noun_count = 1
+			do_noun_obj = gs.core.hero.get_contained_by(gs)
+			infer_txt = f"(from the {do_noun_obj.full_name})"
+		else:
+			do_noun_count = 1
+			do_noun_obj = gs.map.hero_rm
+			infer_txt = f"(the {gs.map.hero_rm.full_name})"
 	elif verb_str == 'look':
 		do_noun_count = 1
 		do_noun_obj = gs.map.hero_rm
-	elif verb_str in ['drop', 'stow', 'eat', 'wear'] and not gs.core.hero.hand_is_empty():
-		do_noun_count = 1
-		do_noun_obj = gs.core.hero.get_hand_item()
-		infer_txt = f"(the {gs.core.hero.get_hand_item().full_name})"
-	elif verb_str == 'exit' and gs.core.hero.is_contained(gs):
-		do_noun_count = 1
-		do_noun_obj = gs.core.hero.get_contained_by(gs)
-		infer_txt = f"(from the {do_noun_obj.full_name})"
 
 	if do_noun_count == 1 and infer_txt is not None:
 		gs.io.buffer(infer_txt)
