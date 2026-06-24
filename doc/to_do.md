@@ -962,17 +962,27 @@ To Do List - Dark Castle v3
 						- DONE: make depart a sym_syn of exit()
 						- DONE: manual test
 						- DONE: scenario test
-					- TBD: in map, create is_only_1_exit, dir_str = gs.map.only_exit_dir(room, gs)
-					- INPROC: asym_syn 'exit room' => 'depart room'
-					- TBD: infer room if no do_nuon, no seat
-					- TBD: update verb table with 'exit'
-					- TBD: 'out' / 'go out' => enter via verb_infer(), do_infer(), & syntax() ??
-						- TBD: update verb table with 'out'
+					- DONE: in map, create is_only_1_exit, dir_str = gs.map.only_exit_dir(room, gs)
+					- DONE: asym_syn 'exit room' (w/ only 1 exit) => 'go towards exit'
+						- DONE: update asym_syn w/ call to map.only_exit_dir()
+						- DONE manual test for 'exit room'
+						- DONE: scenario test
+					- TBD: infer room if no do_nuon
+						- TBD: if contained => seat, else hero_rm
+						- TBD: manual test
+						- TBD: scenario test
+						- TBD: update verb table with 'exit'
 					- INPROC: 'get out' => 'exit'
 						- DONE: add syntax entry
 						- TBD: test manual
 						- TBD: test scenario
-						- TBD: update verb table
+						- TBD: update verb table w/ 'get out'				
+					- TBD: 'out' / 'go out'
+						- TBD: 'out' => 'go out' via verb_infer()
+						- TBD: 'go out' => 'enter' via prep_phrase_convert syntax lookup
+						- TBD: test manual
+						- TBD: test scenario
+						- TBD: update verb table with 'out', 'go out'
 					- TBD: clean up existing code:
 						- TBD: exit_err() in err()
 						- TBD: exit() in seat()

@@ -126,7 +126,6 @@ class Map(Invisible):
 						return creature_obj.is_creature(), creature_obj
 		return False, None	
 
-
 	def	get_door_lst(self, room):
 		""" Returns a list of door / passage obj adjoining a given room
 		"""
@@ -160,6 +159,20 @@ class Map(Invisible):
 					elif room_pair['room_y'] == room:
 						return room_pair['dir_y']
 		raise ValueError(f"There is no direction associated with {door} from room {room}. This must not be a valid route.")
+
+	def only_exit_dir(self, room, gs):
+		""" Determine if a room has only one exit and, if so, what direction that exit is.
+		"""
+		is_only_1_exit = False
+		dir_str = None
+		if self.get_neighbor_count(room) == 1:
+			is_only_1_exit = True
+			for room_pair in self.map_lst:
+				for room_lst in room_key_lst:
+					if room_pair[room_lst[0]] == room:
+						dir_str = room_pair[room_lst[1]]
+						break
+		return is_only_1_exit, dir_str
 
 	def get_neighbor_count(self, room):
 		""" Provide a count of rooms that are connected neighbors of a given room
