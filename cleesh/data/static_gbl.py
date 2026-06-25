@@ -24,7 +24,7 @@ engine_static_dict = {
 
 	'articles_lst' : ['a', 'an', 'the'],
 
-	'prep_lst' : ['at','in','on','to','from','with','by','for','of','about','under','over','between','behind','before','after','through','around','into', 'above', 'atop', 'down'],
+	'prep_lst' : ['at', 'in', 'out', 'on','to','from','with','by','for','of','about','under','over','between','behind','before','after','through','around','into', 'above', 'atop', 'down'],
 
 	'pre_interp_word_lst' : ['quit', 'wait', 'again', 'restart', 'save', 'restore'],
     

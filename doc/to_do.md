@@ -973,11 +973,11 @@ To Do List - Dark Castle v3
 						- DONE: manual test
 						- DONE: scenario test
 						- DONE: update verb table with 'exit'
-					- INPROC: 'get out' => 'exit'
+					- DONE: 'get out' => 'exit'
 						- DONE: add syntax entry
-						- TBD: test manual
-						- TBD: test scenario
-						- TBD: update verb table w/ 'get out'	
+						- DONE: test manual
+						- DONE: test scenario
+						- DONE: update verb table w/ 'get out'	
 					- TBD: 'out' / 'go out'
 						- TBD: 'out' => 'go out' via verb_infer()
 						- TBD: 'go out' => 'enter' via prep_phrase_convert syntax lookup
