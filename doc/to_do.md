@@ -978,12 +978,16 @@ To Do List - Dark Castle v3
 						- DONE: test manual
 						- DONE: test scenario
 						- DONE: update verb table w/ 'get out'	
-					- TBD: 'out' / 'go out'
+					- DONE: 'go out' => 'enter'
+						- DONE: 'go out' => 'enter' via prep_phrase_convert syntax lookup
+						- DONE: test manual
+						- DONE: test scenario
+						- DONE: update verb table with 'go out'
+					- TBD: 'out' => 'go out'
 						- TBD: 'out' => 'go out' via verb_infer()
-						- TBD: 'go out' => 'enter' via prep_phrase_convert syntax lookup
 						- TBD: test manual
 						- TBD: test scenario
-						- TBD: update verb table with 'out', 'go out'
+						- TBD: update verb table with 'out'
 					- TBD: clean up existing code:
 						- TBD: exit_err() in err()
 						- TBD: exit() in seat()

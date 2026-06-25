@@ -85,9 +85,9 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('list', 'verb_syn') : ['inventory'],
 
 		('exit', 'input_do_noun') : ['exit', 'do_noun_str', 'verb_do'],
+		('go', 'out', 'prep_phrase_convert') : ['exit'],
 		('get', 'out', 'prep_phrase_convert') : ['exit'],
 		('depart', 'verb_syn') : ['exit'],
-##		('out', 'verb_syn') : ['enter'],
 
 		('go', 'east') : ['go', 'hero_rm_obj', 'east', 'verb_do_prep'],
 		('go', 'west') : ['go', 'hero_rm_obj', 'west', 'verb_do_prep'],
