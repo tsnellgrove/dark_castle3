@@ -265,7 +265,7 @@ def asym_syn(action_lst, gs):
 def infer_verb(prep_str, gs):
 	verb_inferred = False
 	verb_str = ''
-	if prep_str in ['east', 'west', 'north', 'south', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down', 'in']:
+	if prep_str in ['east', 'west', 'north', 'south', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down', 'in', 'out']:
 		verb_inferred = True
 		verb_str = 'go'
 	return verb_inferred, verb_str
@@ -456,7 +456,7 @@ def interpreter(user_input, master_obj_lst):
 
 
 	# handle sit commands - special case because includes prep
-	elif word1 in (verb_lst + dir_lst + ['in']):
+	elif word1 in (verb_lst + dir_lst + ['in', 'out']):
 		prep = None # LEGACY
 		verb_cmd_lst = [] # new
 		dir_cmd_lst = [] # new

@@ -983,15 +983,15 @@ To Do List - Dark Castle v3
 						- DONE: test manual
 						- DONE: test scenario
 						- DONE: update verb table with 'go out'
-					- TBD: 'out' => 'go out'
-						- TBD: 'out' => 'go out' via verb_infer()
-						- TBD: test manual
-						- TBD: test scenario
-						- TBD: update verb table with 'out'
+					- DONE: 'out' => 'go out'
+						- DONE: 'out' => 'go out' via verb_infer()
+						- DONE: test manual
+						- DONE: test scenario
+						- DONE: update verb table with 'out'
 					- TBD: clean up existing code:
 						- TBD: exit_err() in err()
 						- TBD: exit() in seat()
-			- TBD: in interp() word analysis - consider combining dir & prep
+			- TBD: in interp() sentence deconstruct - consider combining dir & prep
 			- TBD: reconsider 'jump' => associate with Room class instead of Creature class??
 				- IDEA: custom outcome of 'jump' will most likely depend on room (e.g. 'jump' => moat)
 			- TBD: generalize 'climb':
