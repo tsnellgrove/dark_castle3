@@ -425,26 +425,4 @@ class Seat(ContainerFixedSimple):
 			gs.io.buffer(f"The {creature.full_name} is now seated in the {self.full_name}.")
 		return
 
-#	def exit(self, gs, mode=None, creature=None):
-		""" Enables a creature to exit a Seat
-		"""
-		if mode is None: # destermine default attributes
-			mode = 'std'
-		if creature is None:
-			creature = gs.core.hero
-
-		room = gs.map.get_obj_room(creature, gs)
-		room.floor_lst_append(creature)
-		self.contain_lst_remove(creature, gs)
-
-		if room != gs.map.hero_rm: # if hero_creature not in current room, exit with no display
-			return 
-		
-		if creature == gs.core.hero:
-			gs.io.buffer(f"You are now standing in the {room.full_name}.")
-			gs.io.buff_s(f"{creature.name}_exit_{self.name}")
-		else:
-			gs.io.buffer(f"The {creature.full_name} is now standing in the {room.full_name}.")
-		return
-
 

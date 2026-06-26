@@ -290,6 +290,9 @@ game_static_dict = {
 	### enter descriptions ###
 	'burt_enter_throne_pre_broach' : "Sitting in the throne, it feels slightly out of kilter - as if it's been pushed or pulled out of alignment by something...",
 
+	### exit descriptions ###
+    
+
 	### wear descriptions ###
 	'burt_wear_royal_crown' : "You now feel more regal.",
 	'burt_wear_hedgehog_broach' : "There's no sign of magical properties but you're confident that Nana would be glad to see the Hedgehog Broach being worn in the castle again after all these years. You pause and wonder if there are any lessons you can still learn from Nana's last words to you...",
@@ -356,6 +359,7 @@ game_static_dict = {
 
 	### test descriptions ###
 	'burt_enter_test_chair' : "The chair feels cozy and nice.",
+    'burt_exit_test_chair' : "Well done Burt! That was a fine stand!",
     'not_attackable_burt_royal_hedgehog' : "You can't attack the royal hedgehog",
 
 	# items #

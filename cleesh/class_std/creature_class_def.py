@@ -632,6 +632,7 @@ class Creature(ViewOnly):
 		if mode is None:
 			mode = 'std'
 
+		contained_by = self.get_contained_by(gs)
 		room = gs.map.get_obj_room(self, gs)		
 		room.remove_item(self, gs)
 		room.floor_lst_append(self)
@@ -642,8 +643,9 @@ class Creature(ViewOnly):
 		
 		if self == gs.core.hero:
 			gs.io.buffer(f"You are now standing in the {room.full_name}.")
+			gs.io.buff_s(f"{self.name}_exit_{contained_by.name}")
 		else:
-			gs.io.buffer(f"The {self.full_name} is now standing.")
+			gs.io.buffer(f"The {self.full_name} is now standing in the {room.full_name}.")
 		return
 
 

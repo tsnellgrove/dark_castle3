@@ -862,7 +862,7 @@ To Do List - Dark Castle v3
 					- DONE: stand
 					- DONE: complete table
 		- INPROC: direction verbs
-			- INPROC: generalize 'go':
+			- DONE: generalize 'go':
 				- DONE: base version
 					- DONE: check ZIL list for sym_syn and prep variants: go, walk, run, proceed, step
 					- NA: update hand_mgmt() as needed for new_verb
@@ -954,7 +954,7 @@ To Do List - Dark Castle v3
 					- DONE: clean up existing code:
 						- DONE: enter_err() in err()
 						- DONE: enter() in seat()
-				- INPROC: exit
+				- DONE: exit
 					- DONE: create depart() as method of room?
 						- IDEA: if only one exit, depart via that exit
 						- IDEA: what would a depart action do other really do other than call go()?
@@ -988,12 +988,14 @@ To Do List - Dark Castle v3
 						- DONE: test manual
 						- DONE: test scenario
 						- DONE: update verb table with 'out'
-					- TBD: clean up existing code:
-						- TBD: exit_err() in err()
-						- TBD: exit() in seat()
-			- TBD: in interp() sentence deconstruct - consider combining dir & prep
-			- TBD: reconsider 'jump' => associate with Room class instead of Creature class??
-				- IDEA: custom outcome of 'jump' will most likely depend on room (e.g. 'jump' => moat)
+					- DONE: clean up existing code:
+						- CANCEL: exit_err() in err()
+						- DONE: exit() in seat()
+			- TBD: interp() structure review
+				- TBD: in interp() sentence analysis - consider combining dir & prep
+				- TBD: convert format from verb_do_prep => verb_prep_do (matches real usage)
+				- TBD: consider allowing do w/ 'go' => 'go n from entrance'
+				- TBD: consider not passing verb or prep to syntax as independent attribs
 			- TBD: generalize 'climb':
 				- IDEA: should climb => go in asym_syn ???
 				- TBD: if verb in ['go', 'climb'] => infer dir
@@ -1015,6 +1017,9 @@ To Do List - Dark Castle v3
 					- TBD: clean up comments in static_gbl
 					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
 				- TBD: update verb spreadsheet w/ climb
+		- TBD: interim interp() review
+			- TBD: reconsider 'jump' => associate with Room class instead of Creature class??
+				- IDEA: custom outcome of 'jump' will most likely depend on room (e.g. 'jump' => moat)
 		- TBD: elim 'one_word_convert_lst' in static_gbl
 			- TBD: update verb spreadsheet
 		- TBD: generalize meta cmds
