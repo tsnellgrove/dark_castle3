@@ -992,6 +992,7 @@ To Do List - Dark Castle v3
 						- CANCEL: exit_err() in err()
 						- DONE: exit() in seat()
 			- TBD: interp() structure review
+				- TBD: convert do_enter_seat key to do_sit_seat key
 				- TBD: convert do_exit_container key to do_stand_container key
 				- TBD: in interp() sentence analysis - consider combining dir & prep
 				- TBD: convert format from verb_do_prep => verb_prep_do (matches real usage)
