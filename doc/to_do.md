@@ -994,7 +994,13 @@ To Do List - Dark Castle v3
 			- INPROC: interp() structure review
 				- DONE: convert do_enter_seat key to do_sit_seat key
 				- DONE: convert do_exit_container key to do_stand_container key
-				- TBD: in interp() sentence analysis - consider combining dir & prep
+				- INPROC: in interp() sentence analysis - consider combining dir & prep
+					- DONE: review, comment, and refactor core infer proc loop
+					- TBD: consolidate dir & do_prep
+					- TBD: test
+					- TBD: can I assemble the user cmd just once?
+					- TBD: test
+					- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
 				- TBD: convert format from verb_do_prep => verb_prep_do (matches real usage)
 				- TBD: consider allowing do w/ 'go' => 'go n from entrance'
 				- TBD: consider not passing verb or prep to syntax as independent attribs

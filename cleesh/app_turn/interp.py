@@ -436,6 +436,7 @@ def interpreter(user_input, master_obj_lst):
 	case = None
 	action_lst = None
 
+
 	# *** one-word and meta commands ***
 	if word1 in meta_cmd_lst: # e.g. credits, score, version, verbose, brief, superbrief
 		case, action_lst = syntax(('meta_cmd',), word1, None, None, None, gs)
@@ -447,7 +448,7 @@ def interpreter(user_input, master_obj_lst):
 		case, action_lst = syntax(('help', 'option'), word1, None, option, None, gs)
 
 
-	# handle sit commands - special case because includes prep
+	# *** new interp routine ***
 	elif word1 in (verb_lst + dir_lst + ['in', 'out']):
 		prep = None # LEGACY
 		verb_cmd_lst = [] # new
@@ -494,6 +495,15 @@ def interpreter(user_input, master_obj_lst):
 				id_noun_index = index
 				id_noun_count += 1
 		
+		# assemble user command pre-verb processing and print if in test mode
+#		user_cmd_lst_pre_verb_proc = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+		cmd_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+		if tst_mode:
+#			print(f"user_cmd_lst_pre_verb_proc: {user_cmd_lst_pre_verb_proc}")
+			print(f"user_cmd_lst_pre_verb_proc: {cmd_lst}")
+
+		# *** verb command ***
+		# if no verb, attempt to infer verb; return error if no verb is inferred
 		if verb_count == 0:
 			verb_inferred, verb_str = infer_verb(word1, gs)
 			if verb_inferred:
@@ -501,45 +511,59 @@ def interpreter(user_input, master_obj_lst):
 				verb_cmd_lst.append(verb_str)
 			else:
 				return 'error', ["Please start your sentence with a known verb!"]
+		# if verb is debug verb but not in debug mode, return error
 		if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
 			return 'error', ["Please start your sentence with a known verb!"]
+		# if verb count > 1, return error
 		if (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
 			return 'error', ['I see more than one verb in that sentence!']
-		
-		user_cmd_lst_pre_syn = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
-		if tst_mode:
-			print(f"user_cmd_lst_pre_syn: {user_cmd_lst_pre_syn}")
-
-		# apply symetric synonym verb substitution before do_noun inference: 'leap' => 'jump'
+		# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
 		err_chk, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
 		if err_chk != 'error':
 			verb_cmd_lst = tmp_lst
 			word1 = verb_cmd_lst[0]
+#		# assemble user command post-verb processing and print if in test mode
+#		user_cmd_lst_post_verb_proc = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+		# print cmd_lst if in test mode
+		if tst_mode:
+#			print(f"user_cmd_lst_post_verb_proc: {user_cmd_lst_post_verb_proc}")
+			print(f"user_cmd_lst_post_verb_proc: {cmd_lst}")
 
+		# *** do_prep ***
+		# check to see if there are prep_phrase substitutions
 		if do_prep_count > 0:
 			err_chk, tmp_lst = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, None, gs)
 			if err_chk != 'error':
 				verb_cmd_lst = tmp_lst
 				do_prep_cmd_lst = []
 				word1 = verb_cmd_lst[0]
-
-		user_cmd_lst_syn = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst # new
+#		# assemble user command post-do_prep processing and print if in test mode
+#		user_cmd_lst_post_do_prep = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst # new
+		# print cmd_lst if in test mode
 		if tst_mode:
-			print(f"user_cmd_lst_syn: {user_cmd_lst_syn}")
+#			print(f"user_cmd_lst_post_do_prep: {user_cmd_lst_post_do_prep}")
+			print(f"user_cmd_lst_post_do_prep: {cmd_lst}")
 
+		# *** do_noun ***
+		# do_noun string(s) exist - convert to do_noun_obj w/ noun_handling(); if error, return error
 		if do_noun_count > 0:
 			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
+			# if noun_handling() error_state = True, return error
 			if error_state:
 				return 'error', [error_msg]
-			else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
+			# if no noun_handling() error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
+			else:
 				do_noun_cmd_lst = [do_noun_obj.name]
 				do_noun_str = do_noun_obj.name # new - for syntax call
 				syntax_do_lst = ['input_do_noun'] # new - for syntax call
-		elif user_cmd_lst_syn[0] in ['go', 'inventory', 'stand', 'jump']:
+		# handle commands for which no do_noun is expected
+#		elif user_cmd_lst_post_do_prep[0] in ['go', 'inventory', 'stand', 'jump']:
+		elif verb_cmd_lst[0] in ['go', 'inventory', 'stand', 'jump']:
 			do_noun_obj = None
 			syntax_do_lst = []
 			do_noun_str = None
+		# if do_noun string does not exist, attempt to infer; return error if not possible
 		else:
 			exactly_one, do_noun_obj, err_txt = infer_do_noun(gs, word1)
 			if exactly_one:
@@ -548,7 +572,14 @@ def interpreter(user_input, master_obj_lst):
 				do_noun_str = do_noun_obj.name # new - for syntax call
 			else:
 				return 'error', [err_txt]
+#		# assemble user command post-do_noun processing and print if in test mode
+#		user_cmd_lst_post_do_noun_proc = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+		# print cmd_lst if in test mode
+		if tst_mode:
+#			print(f"user_cmd_lst_post_do_noun_proc: {user_cmd_lst_post_do_noun_proc}")
+			print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
 
+		# *** id_noun ***
 		if id_noun_count > 0:
 			id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 			error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
@@ -561,29 +592,30 @@ def interpreter(user_input, master_obj_lst):
 			id_noun_obj = None
 			id_noun_syn_lst = []
 
-		user_cmd_lst_post_infer = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
-		if tst_mode:
-			print(f"user_cmd_lst_post_infer: {user_cmd_lst_post_infer}")
-
+		# *** syntax call ***
+		# assemble syntax call and print if in test mode (note do_noun and id_noun substitution)
 		user_syntax_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
 		if tst_mode:
 			print(f"user_syntax_lst: {user_syntax_lst}")
-
+		# call syntax(); return error if case = 'error'
 		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, None, gs)
 		if case == 'error':
 			return case, action_lst
-
+		# if test mode, print syntax action_lst
 		if tst_mode:
 			print(f"pre-asym-syn action_lst: {action_lst}")
 
+		# *** aysm_syn ***
+		# check for conditional asymetric verb synonym
 		case, action_lst = asym_syn(action_lst, gs)
-
+		# if test mode, print post-asym-syn action_lst
 		if tst_mode:
 			print(f"post-asym-syn action_lst: {action_lst}")
 
 		return case, action_lst
 
 
+	# *** legacy interp ***
 	elif len(user_input_lst) == 1:
 			if word1 in full_verbs_lst:
 				pass # let it through to syntax for verb-only command processing
