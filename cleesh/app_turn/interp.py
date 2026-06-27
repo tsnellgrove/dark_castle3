@@ -459,19 +459,16 @@ def interpreter(user_input, master_obj_lst):
 	elif word1 in (verb_lst + dir_lst + ['in', 'out']):
 		prep = None # LEGACY
 		verb_cmd_lst = [] # new
-#		dir_cmd_lst = [] # new
 		do_prep_cmd_lst = [] # new
 		do_noun_cmd_lst = [] # new
 		id_prep_cmd_lst = [] # new
 		id_noun_cmd_lst = [] # new
 		verb_index = None # new
-#		dir_index = None # new
 		do_prep_index = None # new
 		do_noun_index = None # new
 		id_prep_index = None # new
 		id_noun_index = None # new
 		verb_count = 0 # new
-#		dir_count = 0 # new
 		do_prep_count = 0 # new
 		do_noun_count = 0 # new
 		id_prep_count = 0 # new
@@ -481,12 +478,7 @@ def interpreter(user_input, master_obj_lst):
 				verb_cmd_lst.append(word)
 				verb_index = index
 				verb_count += 1
-#			elif word in gs.io.get_lst('one_word_travel_lst','eng') and do_prep_count == 0: # only count as direction if no prep has been identified yet
-#				dir_cmd_lst.append(word)
-#				dir_index = index
-#				dir_count += 1
 			elif word in (dir_lst + prep_lst) and do_noun_count == 0: # only count as do_prep if no do_noun has been identified yet
-#			elif word in gs.io.get_lst('prep_lst','eng') and do_noun_count == 0: # only count as do_prep if no do_noun has been identified yet
 				do_prep_cmd_lst.append(word)
 				do_prep_index = index
 				do_prep_count += 1
@@ -503,14 +495,13 @@ def interpreter(user_input, master_obj_lst):
 				id_noun_index = index
 				id_noun_count += 1
 		
-		# assemble user command pre-verb processing and print if in test mode
-#		cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
-#		cmd_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+		# *** unprocessed cmd lst ***
+		# print cmd_lst if in test mode
 		if tst_mode:
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_pre_verb_proc: {cmd_lst}")
 
-		# *** verb command ***
+		# *** verb proc ***
 		# if no verb, attempt to infer verb; return error if no verb is inferred
 		if verb_count == 0:
 			verb_inferred, verb_str = infer_verb(word1, gs)
@@ -535,7 +526,7 @@ def interpreter(user_input, master_obj_lst):
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_post_verb_proc: {cmd_lst}")
 
-		# *** do_prep ***
+		# *** do_prep proc ***
 		# check to see if there are prep_phrase substitutions
 		if do_prep_count > 0:
 			err_chk, tmp_lst = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, None, gs)
@@ -548,7 +539,7 @@ def interpreter(user_input, master_obj_lst):
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_post_do_prep_proc: {cmd_lst}")
 
-		# *** do_noun ***
+		# *** do_noun proc ***
 		# do_noun string(s) exist - convert to do_noun_obj w/ noun_handling(); if error, return error
 		if do_noun_count > 0:
 			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
@@ -580,7 +571,7 @@ def interpreter(user_input, master_obj_lst):
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
 
-		# *** id_noun ***
+		# *** id_noun proc ***
 		if id_noun_count > 0:
 			id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 			error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
@@ -596,7 +587,6 @@ def interpreter(user_input, master_obj_lst):
 		# *** syntax call ***
 		# assemble syntax call and print if in test mode (note do_noun and id_noun substitution)
 		user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
-#		user_syntax_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
 		if tst_mode:
 			print(f"user_syntax_lst: {user_syntax_lst}")
 		# call syntax(); return error if case = 'error'

@@ -995,14 +995,17 @@ To Do List - Dark Castle v3
 				- DONE: convert do_enter_seat key to do_sit_seat key
 				- DONE: convert do_exit_container key to do_stand_container key
 				- DONE: consolidate user_cmd assembly
-				- INPROC: in interp() sentence analysis - consider combining dir & prep
+				- DONE: in interp() sentence analysis - consider combining dir & prep
 					- DONE: review, comment, and refactor core infer proc loop
 					- DONE: consolidate dir & do_prep
 					- DONE: manual test
 					- DONE: scenario test
+					- DONE: clean up comments
 				- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
+				- TBD: in doc section, call out interp asym: more permissive >> less permissive
 				- TBD: convert format from verb_do_prep => verb_prep_do (matches real usage)
 				- TBD: consider allowing do w/ 'go' => 'go n from entrance'
+				- TBD: allow prep phrase 'jump in' => 'enter' ???
 				- TBD: consider not passing verb or prep to syntax as independent attribs
 			- TBD: generalize 'climb':
 				- IDEA: should climb => go in asym_syn ???
