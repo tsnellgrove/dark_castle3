@@ -229,13 +229,9 @@ def asym_syn(action_lst, gs):
 			):
 			dir_str = gs.map.get_door_dir(gs.map.hero_rm, do_noun_obj, gs)
 			action_lst = ['go', gs.map.hero_rm, dir_str, 'verb_do_prep']
-#	if verb_str in ['exit'] and gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
-#		action_lst = ['stand', gs.core.hero, 'verb_do']
-
 	if verb_str in ['exit']:
 		if gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
 			action_lst = ['stand', gs.core.hero, 'verb_do']
-#		elif do_noun_obj.is_room() and gs.map.get_neighbor_count(do_noun_obj) ==1:
 		elif do_noun_obj == gs.map.hero_rm:
 			is_only_1_exit, dir_str = gs.map.only_exit_dir(do_noun_obj, gs)
 			if is_only_1_exit:
@@ -243,10 +239,6 @@ def asym_syn(action_lst, gs):
 			else:
 				case = 'error'
 				action_lst = [f"Which way do you want to go?"]
-
-#			door = None # temp value; need to repalce with is_only_1_exit, dir_str = gs.map.only_exit_dir(room, gs)
-#			dir_str = gs.map.get_door_dir(gs.map.hero_rm, do_noun_obj, gs)
-#			action_lst = ['go', gs.map.hero_rm, dir_str, 'verb_do_prep']
 	if verb_str in ['take'] and do_noun_obj in gs.core.hero.worn_lst:
 		action_lst[0] = 'doff'
 	if verb_str in ['examine'] and do_noun_obj.is_writing():

@@ -643,7 +643,7 @@ class Creature(ViewOnly):
 		
 		if self == gs.core.hero:
 			gs.io.buffer(f"You are now standing in the {room.full_name}.")
-			gs.io.buff_s(f"{self.name}_exit_{contained_by.name}")
+			gs.io.buff_s(f"{self.name}_stand_{contained_by.name}")
 		else:
 			gs.io.buffer(f"The {self.full_name} is now standing in the {room.full_name}.")
 		return

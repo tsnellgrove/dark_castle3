@@ -288,7 +288,7 @@ game_static_dict = {
 	#### AUTO-DISP ####
 
 	### enter descriptions ###
-	'burt_enter_throne_pre_broach' : "Sitting in the throne, it feels slightly out of kilter - as if it's been pushed or pulled out of alignment by something...",
+	'burt_sit_throne_pre_broach' : "Sitting in the throne, it feels slightly out of kilter - as if it's been pushed or pulled out of alignment by something...",
 
 	### exit descriptions ###
     
@@ -358,8 +358,8 @@ game_static_dict = {
 
 
 	### test descriptions ###
-	'burt_enter_test_chair' : "The chair feels cozy and nice.",
-    'burt_exit_test_chair' : "Well done Burt! That was a fine stand!",
+	'burt_sit_test_chair' : "The chair feels cozy and nice.",
+    'burt_stand_test_chair' : "Well done Burt! That was a fine stand!",
     'not_attackable_burt_royal_hedgehog' : "You can't attack the royal hedgehog",
 
 	# items #
