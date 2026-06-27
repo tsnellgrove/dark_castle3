@@ -424,7 +424,14 @@ def interpreter(user_input, master_obj_lst):
 			] # symetric syn_verbs are substituted pre do_noun infer
 	debug_cmd_lst = ['get_weight', 'capacity', 'where_is']
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst + debug_cmd_lst
-	dir_lst = ['east', 'west', 'north', 'south', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down']
+	dir_lst = [
+			'east', 'west', 'north', 'south', 'northeast', 'northwest', 'southeast', 'southwest', 
+			'up', 'down'
+			]
+	prep_lst = [
+			'at', 'in', 'out', 'on','to','from','with','by','for','of','about','under','over',
+			'between','behind','before','after','through','around','into', 'above', 'atop', 'down'
+			]
 
 	meta_cmd_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
 	full_verbs_lst = (
@@ -452,19 +459,19 @@ def interpreter(user_input, master_obj_lst):
 	elif word1 in (verb_lst + dir_lst + ['in', 'out']):
 		prep = None # LEGACY
 		verb_cmd_lst = [] # new
-		dir_cmd_lst = [] # new
+#		dir_cmd_lst = [] # new
 		do_prep_cmd_lst = [] # new
 		do_noun_cmd_lst = [] # new
 		id_prep_cmd_lst = [] # new
 		id_noun_cmd_lst = [] # new
 		verb_index = None # new
-		dir_index = None # new
+#		dir_index = None # new
 		do_prep_index = None # new
 		do_noun_index = None # new
 		id_prep_index = None # new
 		id_noun_index = None # new
 		verb_count = 0 # new
-		dir_count = 0 # new
+#		dir_count = 0 # new
 		do_prep_count = 0 # new
 		do_noun_count = 0 # new
 		id_prep_count = 0 # new
@@ -474,11 +481,12 @@ def interpreter(user_input, master_obj_lst):
 				verb_cmd_lst.append(word)
 				verb_index = index
 				verb_count += 1
-			elif word in gs.io.get_lst('one_word_travel_lst','eng') and do_prep_count == 0: # only count as direction if no prep has been identified yet
-				dir_cmd_lst.append(word)
-				dir_index = index
-				dir_count += 1
-			elif word in gs.io.get_lst('prep_lst','eng') and do_noun_count == 0: # only count as do_prep if no do_noun has been identified yet
+#			elif word in gs.io.get_lst('one_word_travel_lst','eng') and do_prep_count == 0: # only count as direction if no prep has been identified yet
+#				dir_cmd_lst.append(word)
+#				dir_index = index
+#				dir_count += 1
+			elif word in (dir_lst + prep_lst) and do_noun_count == 0: # only count as do_prep if no do_noun has been identified yet
+#			elif word in gs.io.get_lst('prep_lst','eng') and do_noun_count == 0: # only count as do_prep if no do_noun has been identified yet
 				do_prep_cmd_lst.append(word)
 				do_prep_index = index
 				do_prep_count += 1
@@ -496,8 +504,10 @@ def interpreter(user_input, master_obj_lst):
 				id_noun_count += 1
 		
 		# assemble user command pre-verb processing and print if in test mode
-		cmd_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+#		cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+#		cmd_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 		if tst_mode:
+			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_pre_verb_proc: {cmd_lst}")
 
 		# *** verb command ***
@@ -522,6 +532,7 @@ def interpreter(user_input, master_obj_lst):
 			word1 = verb_cmd_lst[0]
 		# print cmd_lst if in test mode
 		if tst_mode:
+			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_post_verb_proc: {cmd_lst}")
 
 		# *** do_prep ***
@@ -534,7 +545,8 @@ def interpreter(user_input, master_obj_lst):
 				word1 = verb_cmd_lst[0]
 		# print cmd_lst if in test mode
 		if tst_mode:
-			print(f"user_cmd_lst_post_do_prep: {cmd_lst}")
+			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+			print(f"user_cmd_lst_post_do_prep_proc: {cmd_lst}")
 
 		# *** do_noun ***
 		# do_noun string(s) exist - convert to do_noun_obj w/ noun_handling(); if error, return error
@@ -565,6 +577,7 @@ def interpreter(user_input, master_obj_lst):
 				return 'error', [err_txt]
 		# print cmd_lst if in test mode
 		if tst_mode:
+			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
 
 		# *** id_noun ***
@@ -582,7 +595,8 @@ def interpreter(user_input, master_obj_lst):
 
 		# *** syntax call ***
 		# assemble syntax call and print if in test mode (note do_noun and id_noun substitution)
-		user_syntax_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
+		user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
+#		user_syntax_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
 		if tst_mode:
 			print(f"user_syntax_lst: {user_syntax_lst}")
 		# call syntax(); return error if case = 'error'
