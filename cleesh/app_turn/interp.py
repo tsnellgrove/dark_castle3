@@ -496,10 +496,8 @@ def interpreter(user_input, master_obj_lst):
 				id_noun_count += 1
 		
 		# assemble user command pre-verb processing and print if in test mode
-#		user_cmd_lst_pre_verb_proc = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 		cmd_lst = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 		if tst_mode:
-#			print(f"user_cmd_lst_pre_verb_proc: {user_cmd_lst_pre_verb_proc}")
 			print(f"user_cmd_lst_pre_verb_proc: {cmd_lst}")
 
 		# *** verb command ***
@@ -522,11 +520,8 @@ def interpreter(user_input, master_obj_lst):
 		if err_chk != 'error':
 			verb_cmd_lst = tmp_lst
 			word1 = verb_cmd_lst[0]
-#		# assemble user command post-verb processing and print if in test mode
-#		user_cmd_lst_post_verb_proc = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 		# print cmd_lst if in test mode
 		if tst_mode:
-#			print(f"user_cmd_lst_post_verb_proc: {user_cmd_lst_post_verb_proc}")
 			print(f"user_cmd_lst_post_verb_proc: {cmd_lst}")
 
 		# *** do_prep ***
@@ -537,11 +532,8 @@ def interpreter(user_input, master_obj_lst):
 				verb_cmd_lst = tmp_lst
 				do_prep_cmd_lst = []
 				word1 = verb_cmd_lst[0]
-#		# assemble user command post-do_prep processing and print if in test mode
-#		user_cmd_lst_post_do_prep = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst # new
 		# print cmd_lst if in test mode
 		if tst_mode:
-#			print(f"user_cmd_lst_post_do_prep: {user_cmd_lst_post_do_prep}")
 			print(f"user_cmd_lst_post_do_prep: {cmd_lst}")
 
 		# *** do_noun ***
@@ -558,7 +550,6 @@ def interpreter(user_input, master_obj_lst):
 				do_noun_str = do_noun_obj.name # new - for syntax call
 				syntax_do_lst = ['input_do_noun'] # new - for syntax call
 		# handle commands for which no do_noun is expected
-#		elif user_cmd_lst_post_do_prep[0] in ['go', 'inventory', 'stand', 'jump']:
 		elif verb_cmd_lst[0] in ['go', 'inventory', 'stand', 'jump']:
 			do_noun_obj = None
 			syntax_do_lst = []
@@ -572,11 +563,8 @@ def interpreter(user_input, master_obj_lst):
 				do_noun_str = do_noun_obj.name # new - for syntax call
 			else:
 				return 'error', [err_txt]
-#		# assemble user command post-do_noun processing and print if in test mode
-#		user_cmd_lst_post_do_noun_proc = verb_cmd_lst + dir_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 		# print cmd_lst if in test mode
 		if tst_mode:
-#			print(f"user_cmd_lst_post_do_noun_proc: {user_cmd_lst_post_do_noun_proc}")
 			print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
 
 		# *** id_noun ***
