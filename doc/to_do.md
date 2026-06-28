@@ -1004,8 +1004,12 @@ To Do List - Dark Castle v3
 				- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
 				- TBD: in doc section, call out interp asym: more permissive >> less permissive
 				- TBD: convert format from verb_do_prep => verb_prep_do (matches real usage)
-				- TBD: consider allowing do w/ 'go' => 'go n from entrance'
-				- TBD: allow prep phrase 'jump in' => 'enter' ???
+				- TBD: consider allowing do w/ 'go' => 'go n from entrance' (infer do vs. syntax)
+				- TBD: jump
+					- TBD: reconsider 'jump' => associate with Room class instead of Creature class??
+					- IDEA: custom outcome of 'jump' will freq depend on rm (e.g. 'jump' => moat)
+					- TBD: allow prep phrase 'jump in moat' => 'enter moat' ???
+					- TBD: 'jump' => 'jump <room>'
 				- TBD: consider not passing verb or prep to syntax as independent attribs
 			- TBD: generalize 'climb':
 				- IDEA: should climb => go in asym_syn ???
@@ -1028,9 +1032,6 @@ To Do List - Dark Castle v3
 					- TBD: clean up comments in static_gbl
 					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
 				- TBD: update verb spreadsheet w/ climb
-		- TBD: interim interp() review
-			- TBD: reconsider 'jump' => associate with Room class instead of Creature class??
-				- IDEA: custom outcome of 'jump' will most likely depend on room (e.g. 'jump' => moat)
 		- TBD: elim 'one_word_convert_lst' in static_gbl
 			- TBD: update verb spreadsheet
 		- TBD: generalize meta cmds
