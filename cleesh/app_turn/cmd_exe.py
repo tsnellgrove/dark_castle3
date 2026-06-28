@@ -87,8 +87,10 @@ def cmd_execute(gs, case, word_lst):
 				getattr(do_noun_obj, action_str)(gs)
 				if not gs.end.is_end: # check to avoid double score display on end
 					gs.score.disp_score(action_str, do_noun_obj.name, None, gs)
-			elif word_lst[-1] in ['verb_do_prep']:
-				action_str, do_noun_obj, prep_str, *_ = word_lst
+#			elif word_lst[-1] in ['verb_do_prep']:
+			elif word_lst[-1] in ['verb_prep_do']:
+#				action_str, do_noun_obj, prep_str, *_ = word_lst
+				action_str, prep_str, do_noun_obj, *_ = word_lst
 				getattr(do_noun_obj, action_str)(prep_str, gs)
 				if not gs.end.is_end: # check to avoid double score display on end
 					gs.score.disp_score(action_str, do_noun_obj.name, prep_str, gs)
