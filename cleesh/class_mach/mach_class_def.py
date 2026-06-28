@@ -87,10 +87,8 @@ class TrigMixIn(object):
 			if word_lst[-1] in ['verb_do']:
 				trig_key_lst = [word_lst[0], word_lst[1].name]
 				trig_wc_lst = [word_lst[0], '*']
-#			elif word_lst[-1] in ['verb_do_prep']:
 			elif word_lst[-1] in ['verb_prep_do']:
 				action_str, prep_str, do_noun_obj,  *_  = word_lst
-#				trig_key_lst = [word_lst[0], word_lst[2], word_lst[1].name]
 				trig_key_lst = [action_str, prep_str, do_noun_obj.name]
 		if case == 'action_dir':
 			trig_key_lst = [word_lst[0], word_lst[1], word_lst[2].name]

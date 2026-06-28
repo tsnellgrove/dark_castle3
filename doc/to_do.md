@@ -1004,6 +1004,7 @@ To Do List - Dark Castle v3
 				- DONE: convert format from verb_do_prep => verb_prep_do (matches real usage)
 				- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
 				- TBD: in doc section, call out interp asym: more permissive >> less permissive
+				- TBD: add 'wield' == take if do.is_weapon()
 				- TBD: consider allowing do w/ 'go' => 'go n from entrance' (infer do vs. syntax)
 				- TBD: jump
 					- TBD: reconsider 'jump' => associate with Room class instead of Creature class??

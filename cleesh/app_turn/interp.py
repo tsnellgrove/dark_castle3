@@ -89,25 +89,15 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('get', 'out', 'prep_phrase_convert') : ['exit'],
 		('depart', 'verb_syn') : ['exit'],
 
-#		('go', 'east') : ['go', 'hero_rm_obj', 'east', 'verb_do_prep'],
 		('go', 'east') : ['go', 'east', 'hero_rm_obj', 'verb_prep_do'],
-#		('go', 'west') : ['go', 'hero_rm_obj', 'west', 'verb_do_prep'],
 		('go', 'west') : ['go', 'west', 'hero_rm_obj', 'verb_prep_do'],
-#		('go', 'north') : ['go', 'hero_rm_obj', 'north', 'verb_do_prep'],
 		('go', 'north') : ['go', 'north', 'hero_rm_obj', 'verb_prep_do'],
-#		('go', 'south') : ['go', 'hero_rm_obj', 'south', 'verb_do_prep'],
 		('go', 'south') : ['go', 'south', 'hero_rm_obj', 'verb_prep_do'],
-#		('go', 'northeast') : ['go', 'hero_rm_obj', 'northeast', 'verb_do_prep'],
 		('go', 'northeast') : ['go', 'northeast', 'hero_rm_obj', 'verb_prep_do'],
-#		('go', 'northwest') : ['go', 'hero_rm_obj', 'northwest', 'verb_do_prep'],
 		('go', 'northwest') : ['go', 'northwest', 'hero_rm_obj', 'verb_prep_do'],
-#		('go', 'southeast') : ['go', 'hero_rm_obj', 'southeast', 'verb_do_prep'],
 		('go', 'southeast') : ['go', 'southeast', 'hero_rm_obj', 'verb_prep_do'],
-#		('go', 'southwest') : ['go', 'hero_rm_obj', 'southwest', 'verb_do_prep'],
 		('go', 'southwest') : ['go', 'southwest', 'hero_rm_obj', 'verb_prep_do'],
-#		('go', 'up') : ['go', 'hero_rm_obj', 'up', 'verb_do_prep'],
 		('go', 'up') : ['go', 'up', 'hero_rm_obj', 'verb_prep_do'],
-#		('go', 'down') : ['go', 'hero_rm_obj', 'down', 'verb_do_prep'],
 		('go', 'down') : ['go', 'down', 'hero_rm_obj', 'verb_prep_do'],
 		('proceed', 'verb_syn') : ['go'],
 		('run', 'verb_syn') : ['go'],
@@ -238,7 +228,6 @@ def asym_syn(action_lst, gs):
 				and gs.map.hero_rm.chk_is_vis(do_noun_obj, gs)
 			):
 			dir_str = gs.map.get_door_dir(gs.map.hero_rm, do_noun_obj, gs)
-#			action_lst = ['go', gs.map.hero_rm, dir_str, 'verb_do_prep']
 			action_lst = ['go', dir_str, gs.map.hero_rm, 'verb_prep_do']
 	if verb_str in ['exit']:
 		if gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
@@ -246,7 +235,6 @@ def asym_syn(action_lst, gs):
 		elif do_noun_obj == gs.map.hero_rm:
 			is_only_1_exit, dir_str = gs.map.only_exit_dir(do_noun_obj, gs)
 			if is_only_1_exit:
-#				action_lst = ['go', do_noun_obj, dir_str, 'verb_do_prep']
 				action_lst = ['go', dir_str, do_noun_obj, 'verb_prep_do']
 			else:
 				case = 'error'
