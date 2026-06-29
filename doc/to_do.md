@@ -1002,6 +1002,16 @@ To Do List - Dark Castle v3
 					- DONE: scenario test
 					- DONE: clean up comments
 				- DONE: convert format from verb_do_prep => verb_prep_do (matches real usage)
+			- INPROC: claude ideas
+				- DONE: consistent use of prep_lst
+				- DONE: create intransitive_verb_lst
+				- DONE: function to perform bool-based cmd analysis
+				- DONE: scenario test
+				- DONE: manual test
+				- TBD: clean-up comments
+				- TBD: transfer to Claude clone
+				- TBD: get additional Claude thoughts - especially on climb()
+			- TBD: misc ideas
 				- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
 				- TBD: in doc section, call out interp asym: more permissive >> less permissive
 				- TBD: add 'wield' == take if do.is_weapon()
