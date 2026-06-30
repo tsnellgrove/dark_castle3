@@ -1011,20 +1011,9 @@ To Do List - Dark Castle v3
 				- DONE: clean-up comments
 				- DONE: transfer to Claude clone
 				- DONE: get additional Claude thoughts - especially on climb()
-			- TBD: misc ideas
-				- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
-				- TBD: in doc section, call out interp asym: more permissive >> less permissive
-				- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
-				- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
-				- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
-				- TBD: consider allowing do w/ 'go' => 'go n from entrance' (infer do vs. syntax)
-				- TBD: jump
-					- TBD: reconsider 'jump' => associate with Room class instead of Creature class??
-					- IDEA: custom outcome of 'jump' will freq depend on rm (e.g. 'jump' => moat)
-					- TBD: allow prep phrase 'jump in moat' => 'enter moat' ???
-					- TBD: 'jump' => 'jump <room>'
-				- TBD: consider not passing verb or prep to syntax as independent attribs
 			- TBD: generalize 'climb':
+				- IDEA: simplify climbable atribs: auto gen success & fail climb messages?
+					- IDEA: or maybe fail is just baked into obj?
 				- IDEA: keep climb() as action to enable message (??)
 				- IDEA: via asym_syn, 'go up <rm_obj>' => 'climb <obj>' if climbable obj exists
 				- IDEA: should climb => go in asym_syn ???
@@ -1047,6 +1036,19 @@ To Do List - Dark Castle v3
 					- TBD: clean up comments in static_gbl
 					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
 				- TBD: update verb spreadsheet w/ climb
+		- TBD: misc ideas
+			- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
+			- TBD: in doc section, call out interp asym: more permissive >> less permissive
+			- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
+			- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
+			- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
+			- TBD: consider allowing do w/ 'go' => 'go n from entrance' (infer do vs. syntax)
+			- TBD: jump
+				- TBD: reconsider 'jump' => associate with Room class instead of Creature class??
+				- IDEA: custom outcome of 'jump' will freq depend on rm (e.g. 'jump' => moat)
+				- TBD: allow prep phrase 'jump in moat' => 'enter moat' ???
+				- TBD: 'jump' => 'jump <room>'
+			- TBD: consider not passing verb or prep to syntax as independent attribs
 		- TBD: elim 'one_word_convert_lst' in static_gbl
 			- TBD: update verb spreadsheet
 		- TBD: generalize meta cmds
