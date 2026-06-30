@@ -991,7 +991,7 @@ To Do List - Dark Castle v3
 					- DONE: clean up existing code:
 						- CANCEL: exit_err() in err()
 						- DONE: exit() in seat()
-			- INPROC: interp() structure review
+			- DONE: interp() structure review
 				- DONE: convert do_enter_seat key to do_sit_seat key
 				- DONE: convert do_exit_container key to do_stand_container key
 				- DONE: consolidate user_cmd assembly
@@ -1002,15 +1002,15 @@ To Do List - Dark Castle v3
 					- DONE: scenario test
 					- DONE: clean up comments
 				- DONE: convert format from verb_do_prep => verb_prep_do (matches real usage)
-			- INPROC: claude ideas
+			- DONE: claude ideas
 				- DONE: consistent use of prep_lst
 				- DONE: create intransitive_verb_lst
 				- DONE: function to perform bool-based cmd analysis
 				- DONE: scenario test
 				- DONE: manual test
 				- DONE: clean-up comments
-				- TBD: transfer to Claude clone
-				- TBD: get additional Claude thoughts - especially on climb()
+				- DONE: transfer to Claude clone
+				- DONE: get additional Claude thoughts - especially on climb()
 			- TBD: misc ideas
 				- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
 				- TBD: in doc section, call out interp asym: more permissive >> less permissive
@@ -1023,6 +1023,8 @@ To Do List - Dark Castle v3
 					- TBD: 'jump' => 'jump <room>'
 				- TBD: consider not passing verb or prep to syntax as independent attribs
 			- TBD: generalize 'climb':
+				- IDEA: keep climb() as action to enable message (??)
+				- IDEA: via asym_syn, 'go up <rm_obj>' => 'climb <obj>' if climbable obj eixsts
 				- IDEA: should climb => go in asym_syn ???
 				- TBD: if verb in ['go', 'climb'] => infer dir
 				- TBD: 'climb'

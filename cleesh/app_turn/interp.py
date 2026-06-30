@@ -514,7 +514,6 @@ def interpreter(user_input, master_obj_lst):
 		if len(verb_cmd_lst) == 0:
 			verb_inferred, verb_str = infer_verb(word1, gs)
 			if verb_inferred:
-				verb_count = 1
 				verb_cmd_lst.append(verb_str)
 			else:
 				return 'error', ["Please start your sentence with a known verb!"]
