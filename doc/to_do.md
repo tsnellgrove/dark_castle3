@@ -1036,6 +1036,8 @@ To Do List - Dark Castle v3
 						- NOTE: add 'climb' to action verb
 						- NOTE: comment out legacy interp climb code
 						- NOTE: make asym_syn for 'go up' => 'climb up obj' if exactly 1 climbable obj
+					- DONE:
+						- NOTE: in validate(), cmd_exe(), and trig_chk(), elim case = action_dir
 				- DONE: climb ideas
 					- IDEA: reference Claude updates for 'climb' in do_infer()
 					- IDEA: simplify climbable atribs: auto gen success & fail climb messages?
