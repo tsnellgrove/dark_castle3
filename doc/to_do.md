@@ -1008,7 +1008,7 @@ To Do List - Dark Castle v3
 				- DONE: function to perform bool-based cmd analysis
 				- DONE: scenario test
 				- DONE: manual test
-				- TBD: clean-up comments
+				- DONE: clean-up comments
 				- TBD: transfer to Claude clone
 				- TBD: get additional Claude thoughts - especially on climb()
 			- TBD: misc ideas

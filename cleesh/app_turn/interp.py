@@ -479,7 +479,7 @@ def interpreter(user_input, master_obj_lst):
 			)
 	case = None
 	action_lst = None
-
+	prep = None # LEGACY
 
 	# *** one-word and meta commands ***
 	if word1 in meta_cmd_lst: # e.g. credits, score, version, verbose, brief, superbrief
@@ -502,45 +502,6 @@ def interpreter(user_input, master_obj_lst):
 			id_prep_cmd_lst, 
 			id_noun_cmd_lst
 		) = parser(user_input_lst, verb_lst, dir_lst, prep_lst)
-
-		prep = None # LEGACY
-#		verb_cmd_lst = [] # new
-#		do_prep_cmd_lst = [] # new
-#		do_noun_cmd_lst = [] # new
-#		id_prep_cmd_lst = [] # new
-#		id_noun_cmd_lst = [] # new
-#		verb_index = None # new
-#		do_prep_index = None # new
-#		do_noun_index = None # new
-#		id_prep_index = None # new
-#		id_noun_index = None # new
-#		verb_count = 0 # new
-#		do_prep_count = 0 # new
-#		do_noun_count = 0 # new
-#		id_prep_count = 0 # new
-#		id_noun_count = 0 # new
-#		for index, word in enumerate(user_input_lst):
-#			if word in verb_lst:
-#				verb_cmd_lst.append(word)
-#				verb_index = index
-#				verb_count += 1
-#			elif word in (dir_lst + prep_lst) and do_noun_count == 0: # only count as do_prep if no do_noun has been identified yet
-#				do_prep_cmd_lst.append(word)
-#				do_prep_index = index
-#				do_prep_count += 1
-#			elif id_prep_count == 0: # only count as do_noun if no id_prep has been identified yet
-#				do_noun_cmd_lst.append(word)
-#				do_noun_index = index
-#				do_noun_count += 1
-	#		elif word in gs.io.get_lst('prep_lst','eng') and do_noun_count > 0: # only count as id_prep if do_noun has already been identified
-#			elif word in prep_lst and do_noun_count > 0: # only count as id_prep if do_noun has already been identified
-#				id_prep_cmd_lst.append(word)
-#				id_prep_index = index
-#				id_prep_count += 1
-#			elif id_prep_count > 0: # only count as id_noun if id_prep has already been identified
-#				id_noun_cmd_lst.append(word)
-#				id_noun_index = index
-#				id_noun_count += 1
 		
 		# *** unprocessed cmd lst ***
 		# print cmd_lst if in test mode
@@ -550,7 +511,6 @@ def interpreter(user_input, master_obj_lst):
 
 		# *** verb proc ***
 		# if no verb, attempt to infer verb; return error if no verb is inferred
-#		if verb_count == 0:
 		if len(verb_cmd_lst) == 0:
 			verb_inferred, verb_str = infer_verb(word1, gs)
 			if verb_inferred:
@@ -562,7 +522,6 @@ def interpreter(user_input, master_obj_lst):
 		if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
 			return 'error', ["Please start your sentence with a known verb!"]
 		# if verb count > 1, return error
-#		if (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
 		if len(verb_cmd_lst) > 1: # e.g. 'help attack' already dealt with in one-word command processing
 			return 'error', ['I see more than one verb in that sentence!']
 		# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
@@ -577,7 +536,6 @@ def interpreter(user_input, master_obj_lst):
 
 		# *** do_prep proc ***
 		# check to see if there are prep_phrase substitutions
-#		if do_prep_count > 0:
 		if len(do_prep_cmd_lst) > 0:
 			err_chk, tmp_lst = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, None, gs)
 			if err_chk != 'error':
@@ -590,8 +548,7 @@ def interpreter(user_input, master_obj_lst):
 			print(f"user_cmd_lst_post_do_prep_proc: {cmd_lst}")
 
 		# *** do_noun proc ***
-		# do_noun string(s) exist - convert to do_noun_obj w/ noun_handling(); if error, return error
-#		if do_noun_count > 0:
+		# if do_noun string(s) exist - convert to do_noun_obj w/ noun_handling(); if error, return error
 		if len(do_noun_cmd_lst) > 0:
 			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
@@ -604,7 +561,6 @@ def interpreter(user_input, master_obj_lst):
 				do_noun_str = do_noun_obj.name # new - for syntax call
 				syntax_do_lst = ['input_do_noun'] # new - for syntax call
 		# handle commands for which no do_noun is expected
-#		elif verb_cmd_lst[0] in ['go', 'inventory', 'stand', 'jump']:
 		elif verb_cmd_lst[0] in intransitive_verb_lst:
 			do_noun_obj = None
 			syntax_do_lst = []
@@ -624,7 +580,6 @@ def interpreter(user_input, master_obj_lst):
 			print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
 
 		# *** id_noun proc ***
-#		if id_noun_count > 0:
 		if len(id_noun_cmd_lst) > 0:
 			id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 			error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
