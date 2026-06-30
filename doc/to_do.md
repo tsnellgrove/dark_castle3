@@ -1014,7 +1014,9 @@ To Do List - Dark Castle v3
 			- TBD: misc ideas
 				- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
 				- TBD: in doc section, call out interp asym: more permissive >> less permissive
-				- TBD: add 'wield' == take if do.is_weapon()
+				- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
+				- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
+				- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
 				- TBD: consider allowing do w/ 'go' => 'go n from entrance' (infer do vs. syntax)
 				- TBD: jump
 					- TBD: reconsider 'jump' => associate with Room class instead of Creature class??
@@ -1024,7 +1026,7 @@ To Do List - Dark Castle v3
 				- TBD: consider not passing verb or prep to syntax as independent attribs
 			- TBD: generalize 'climb':
 				- IDEA: keep climb() as action to enable message (??)
-				- IDEA: via asym_syn, 'go up <rm_obj>' => 'climb <obj>' if climbable obj eixsts
+				- IDEA: via asym_syn, 'go up <rm_obj>' => 'climb <obj>' if climbable obj exists
 				- IDEA: should climb => go in asym_syn ???
 				- TBD: if verb in ['go', 'climb'] => infer dir
 				- TBD: 'climb'
