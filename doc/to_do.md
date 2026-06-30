@@ -1013,16 +1013,37 @@ To Do List - Dark Castle v3
 				- DONE: get additional Claude thoughts - especially on climb()
 			- TBD: generalize 'climb':
 				- TBD: discovery
-					- TBD: review climb_err() - capture notes and output examples
-					- TBD: review climb() - capture notes and output examples
-					- TBD: review climb_infer() - capture notes and output examples
-				- IDEA: reference Claude updates for 'climb' in do_infer()
-				- IDEA: simplify climbable atribs: auto gen success & fail climb messages?
-					- IDEA: or maybe fail is just baked into obj?
-				- IDEA: keep climb() as action to enable message (??)
-				- IDEA: via asym_syn, 'go up <rm_obj>' => 'climb <obj>' if climbable obj exists
-				- IDEA: should climb => go in asym_syn ???
-				- TBD: if verb in ['go', 'climb'] => infer dir
+					- DONE: in error():
+						- DONE: review climb_err() - capture notes and output examples
+							- NOTE: replace self.err_dir w/ if creature_climb_dir_do_err in, buff_s()
+					- DONE: in base():
+						- DONE: review climb() - capture notes and output examples
+							- NOTE: buff_s(self.discript_dir) => buff_s(creature_climb_dir_do_success)
+						- DONE: review ClimbableMixIn:
+							- NOTE: elim attribs
+						- DONE: review ClimbableViewOnly
+							- NOTE: elim attribs
+					- DONE: in game_update()		
+						- DONE: review 2x tree
+							NOTE: elim descript attribs
+					- DONE: in interp()
+						- NOTE: update syntax
+						- NOTE: update infer_do and migrate climb_infer
+						- NOTE: comment out climb_infer
+						- NOTE: create infer_prep() and migrate up_or_down code
+						- NOTE: call infer_prep() from interp() post infer_do()
+						- NOTE: comment out syntax up_or_down and hero_dir
+						- NOTE: add 'climb' to action verb
+						- NOTE: comment out legacy interp climb code
+						- NOTE: make asym_syn for 'go up' => 'climb up obj' if exactly 1 climbable obj
+				- DONE: climb ideas
+					- IDEA: reference Claude updates for 'climb' in do_infer()
+					- IDEA: simplify climbable atribs: auto gen success & fail climb messages?
+						- IDEA: or maybe fail is just baked into obj?
+					- IDEA: keep climb() as action to enable message (??)
+					- CANCEL: via asym_syn, 'go up <rm_obj>' => 'climb <obj>' if climbable obj exists
+					- CANCEL: should climb => go in asym_syn ???
+					- IDEA: if verb in ['go', 'climb'] => infer dir
 				- TBD: 'climb'
 					- TBD: check ZIL list for sym_syn and prep variants
 					- TBD: update hand_mgmt() as needed for new_verb
@@ -1044,6 +1065,7 @@ To Do List - Dark Castle v3
 		- TBD: misc ideas
 			- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
 			- TBD: in doc section, call out interp asym: more permissive >> less permissive
+			- TBD: doc idea of replacing climb_err txt with climb obj action error
 			- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
 			- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
 			- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
