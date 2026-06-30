@@ -1012,6 +1012,11 @@ To Do List - Dark Castle v3
 				- DONE: transfer to Claude clone
 				- DONE: get additional Claude thoughts - especially on climb()
 			- TBD: generalize 'climb':
+				- TBD: discovery
+					- TBD: review climb_err() - capture notes and output examples
+					- TBD: review climb() - capture notes and output examples
+					- TBD: review climb_infer() - capture notes and output examples
+				- IDEA: reference Claude updates for 'climb' in do_infer()
 				- IDEA: simplify climbable atribs: auto gen success & fail climb messages?
 					- IDEA: or maybe fail is just baked into obj?
 				- IDEA: keep climb() as action to enable message (??)
