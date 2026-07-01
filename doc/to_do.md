@@ -1045,21 +1045,23 @@ To Do List - Dark Castle v3
 						- NOTE: comment out legacy interp climb code
 						- NOTE: make asym_syn for 'go up' => 'climb up obj' if exactly 1 climbable obj
 						- NOTE: in validate(), cmd_exe(), and trig_chk(), elim case = action_dir
-				- TBD: pre-climb claude code to-do:
-					- TBD: ask why claude made changes with no planning
-					- TBD: back out existing changes
-					- TBD: switch to sonnet 5 high effort
-					- TBD: ask about planning mode
-					- TBD: propose changes and ask for feedback
-						- TBD: what do my proposed changes tell you about my coding approach?
-						- TBD: what am i missing here?
-						- TBD: what would an expert do?
+				- INPROC: pre-climb claude code to-do:
+					- DONE: ask why claude made changes with no planning
+					- DONE: back out existing changes
+					- DONE: switch to sonnet 5 high effort
+					- DONE: ask about planning mode
+					- DONE: propose changes and ask for feedback
+						- DONE: what do my proposed changes tell you about my coding approach?
+						- DONE: what am i missing here?
+						- DONE: what would an expert do?
+					- TBD: detailed implementation plan with claude
 				- TBD: 'climb'
 					- TBD: simplify climb() command:
 						- TBD: in base()
 							- TBD: ClimbableMixIn => remove attribs
 							- TBD: ClimbableViewOnly => remove attribs
-							- TBD: buff_s(self.discript_dir) => buff_s(creature_climb_dir_do_success)
+							- TBD: climb(): buff_s(self.de_dir) > buff_s(creature_climb_dir_do_success)
+							- TBD: climb(): valid_dir_chk() pre buff custom or default success message
 						- TBD: in game_static_gbl():
 							- TBD: update both tree climb descript keys
 								- TBD: creature_climb_dir_do_err
@@ -1131,6 +1133,8 @@ To Do List - Dark Castle v3
 			- TBD: is there an interactive fiction MCP (what would that mean?)
 			- TBD: ask about skill creator, skills calling skills (what skills would help me)
 		- TBD: misc ideas
+			- TBD: fix climb() => go() kludge
+				- TBD: call room-transition routine (extracting room_class_def.py:304-328)
 			- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
 			- TBD: in doc section, call out interp asym: more permissive >> less permissive
 			- TBD: doc idea of replacing climb_err txt with climb obj action error
