@@ -1012,6 +1012,14 @@ To Do List - Dark Castle v3
 				- DONE: transfer to Claude clone
 				- DONE: get additional Claude thoughts - especially on climb()
 			- TBD: generalize 'climb':
+				- DONE: climb ideas
+					- IDEA: reference Claude updates for 'climb' in do_infer()
+					- IDEA: simplify climbable atribs: auto gen success & fail climb messages?
+						- IDEA: or maybe fail is just baked into obj?
+					- IDEA: keep climb() as action to enable message (??)
+					- CANCEL: via asym_syn, 'go up <rm_obj>' => 'climb <obj>' if climbable obj exists
+					- CANCEL: should climb => go in asym_syn ???
+					- IDEA: if verb in ['go', 'climb'] => infer dir
 				- TBD: discovery
 					- DONE: in error():
 						- DONE: review climb_err() - capture notes and output examples
@@ -1036,17 +1044,108 @@ To Do List - Dark Castle v3
 						- NOTE: add 'climb' to action verb
 						- NOTE: comment out legacy interp climb code
 						- NOTE: make asym_syn for 'go up' => 'climb up obj' if exactly 1 climbable obj
-					- DONE:
 						- NOTE: in validate(), cmd_exe(), and trig_chk(), elim case = action_dir
-				- DONE: climb ideas
-					- IDEA: reference Claude updates for 'climb' in do_infer()
-					- IDEA: simplify climbable atribs: auto gen success & fail climb messages?
-						- IDEA: or maybe fail is just baked into obj?
-					- IDEA: keep climb() as action to enable message (??)
-					- CANCEL: via asym_syn, 'go up <rm_obj>' => 'climb <obj>' if climbable obj exists
-					- CANCEL: should climb => go in asym_syn ???
-					- IDEA: if verb in ['go', 'climb'] => infer dir
+				- TBD: pre-climb claude code to-do:
+					- TBD: ask why claude made changes with no planning
+					- TBD: back out existing changes
+					- TBD: switch to sonnet 5 high effort
+					- TBD: ask about planning mode
+					- TBD: propose changes and ask for feedback
+						- TBD: what do my proposed changes tell you about my coding approach?
+						- TBD: what am i missing here?
+						- TBD: what would an expert do?
 				- TBD: 'climb'
+					- TBD: simplify climb() command:
+						- TBD: in base()
+							- TBD: ClimbableMixIn => remove attribs
+							- TBD: ClimbableViewOnly => remove attribs
+							- TBD: buff_s(self.discript_dir) => buff_s(creature_climb_dir_do_success)
+						- TBD: in game_static_gbl():
+							- TBD: update both tree climb descript keys
+								- TBD: creature_climb_dir_do_err
+								- TBD: creature_climb_dir_do_success
+						- TBD: in game_update():
+							- TBD: update both tree obj => elim attribs
+						- TBD: in error():
+							- TBD: replace self.err_dir w/ if creature_climb_dir_do_err in, buff_s()
+						- TBD: test
+							- TBD: manual test
+							- TBD: scenario test
+							- TBD: clean up comments
+					- TBD: update basic climb parsing in interpreter()
+						- TBD: sym_syn
+							- TBD: check ZIL list & google for sym_syn and prep variants
+							- TBD: disable global syn for new_verb
+						- TBD: hand_mgmt
+							- TBD: update hand_mgmt() as needed for new_verb
+							- TBD: update *_err() to pass validate if hand_mgmt() will fix on call
+						- TBD: add to new interp() processing:
+							- TBD: add new_verb to interp() action_verb list
+							- TBD: add new_verb symetric syns to syn_verb_lst
+							- TBD: comment out legacy interp climb code
+						- TBD: syntax:
+							- TBD: add base ('new_verb', 'do_prep_noun') entries to syntax
+							- TBD: add prep variants for new_verb to syntax
+							- TBD: add new_verb symetric syns to syntax
+							- TBD: comment out old syntax entries
+							- TBD: comment out syntax up_or_down and hero_dir
+						- TBD: testing
+							- TBD: manual testing
+					- TBD: advanced climb() features in interpreter():
+						- TBD: infer_do:
+							- TBD: add infer do_noun entry for new_verb as needed
+							- TBD: migrate stand-alone climb_infer and comment out
+							- TBD: comment out infer_do_noun in sytax (??)
+						- TBD: infer_prep:
+							- TBD: create infer_prep() and migrate up_or_down code
+							- TBD: call infer_prep() from interp() post infer_do()
+							- TBD: comment out syntax up_or_down and hero_dir	
+						- TBD: in asym_syn(), add conditional syn as needed
+							- TBD: 'go up' => 'climb up obj' if exactly 1 climbable obj
+					- TBD: testing
+						- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+						- TBD: scenario test
+						- TBD: fix scenario as needed
+					- TBD: case clean-up
+						- TBD: in validate() => elim action_dir case
+						- TBD: in cmd_exe() => elim action_dir case
+						- TBD: in trig_chk() => elim action_dir case
+					- TBD: close out
+						- TBD: manual test
+						- TBD: scenario test
+						- TBD: clean up all comments
+						- TBD: update verb table
+		- TBD: claud code to try:
+			- TBD: sonnet 5 high effort
+			- TBD: ask about planning mode
+			- TBD: propose changes and ask for feedback
+				- TBD: what am i missing here?
+				- TBD: what would an expert do?
+			- TBD: ask how and why claude made choices
+			- TBD: ask cladue to coach me on how we can work together better
+			- TBD: claude commands to ask about and try:
+				- TBD: /plan mode
+				- TBD: /init
+				- TBD: /context
+				- TBD: /clear and /compact (avoid context rot at ~50k tokens)
+			- TBD: is there an interactive fiction MCP (what would that mean?)
+			- TBD: ask about skill creator, skills calling skills (what skills would help me)
+		- TBD: misc ideas
+			- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
+			- TBD: in doc section, call out interp asym: more permissive >> less permissive
+			- TBD: doc idea of replacing climb_err txt with climb obj action error
+			- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
+			- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
+			- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
+			- TBD: consider allowing do w/ 'go' => 'go n from entrance' (infer do vs. syntax)
+			- TBD: jump
+				- TBD: reconsider 'jump' => associate with Room class instead of Creature class??
+				- IDEA: custom outcome of 'jump' will freq depend on rm (e.g. 'jump' => moat)
+				- TBD: allow prep phrase 'jump in moat' => 'enter moat' ???
+				- TBD: 'jump' => 'jump <room>'
+			- TBD: consider not passing verb or prep to syntax as independent attribs
+		- TBD: elim 'one_word_convert_lst' in static_gbl
+				- TBD: <word_x>
 					- TBD: check ZIL list for sym_syn and prep variants
 					- TBD: update hand_mgmt() as needed for new_verb
 					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
@@ -1063,22 +1162,6 @@ To Do List - Dark Castle v3
 					- TBD: fix scenario as needed
 					- TBD: clean up comments in static_gbl
 					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
-				- TBD: update verb spreadsheet w/ climb
-		- TBD: misc ideas
-			- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
-			- TBD: in doc section, call out interp asym: more permissive >> less permissive
-			- TBD: doc idea of replacing climb_err txt with climb obj action error
-			- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
-			- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
-			- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
-			- TBD: consider allowing do w/ 'go' => 'go n from entrance' (infer do vs. syntax)
-			- TBD: jump
-				- TBD: reconsider 'jump' => associate with Room class instead of Creature class??
-				- IDEA: custom outcome of 'jump' will freq depend on rm (e.g. 'jump' => moat)
-				- TBD: allow prep phrase 'jump in moat' => 'enter moat' ???
-				- TBD: 'jump' => 'jump <room>'
-			- TBD: consider not passing verb or prep to syntax as independent attribs
-		- TBD: elim 'one_word_convert_lst' in static_gbl
 			- TBD: update verb spreadsheet
 		- TBD: generalize meta cmds
 			- TBD: update verb spreadsheet
