@@ -209,29 +209,8 @@ class ViewOnly(Writing):
 
 class ClimbableMixIn(object):
 	def __init__(self):
-#	def __init__(self, descript_dir, err_dir):
-#		self._descript_dir = descript_dir # obj can be climbed in this direction; produces message when climbed
-#		self._err_dir = err_dir # obj cannot be climbed in this direction; produces message when climb is attempted
 		""" The ClimbablehMixIn can be combined with other classes (most typically ViewOnly) to produce objects that can be climbed up or down.
 		"""
-
-	# *** getters & setters ***
-#	@property
-#	def descript_dir(self):
-#		return self._descript_dir
-	
-#	@descript_dir.setter
-#	def descript_dir(self, new_dir):
-#		self._descript_dir = new_dir
-
-#	@property
-#	def err_dir(self):
-#		return self._err_dir
-	
-#	@err_dir.setter
-#	def err_dir(self, new_dir):
-#		self._err_dir = new_dir
-	
 
 	# *** class identity methods ***
 	def	is_climbable(self):
@@ -239,28 +218,6 @@ class ClimbableMixIn(object):
 
 
 	# *** verb methods ***
-#	def climb(self, dir, gs, creature=None, mode=None):
-#		""" Enables a creature to climb a climbable object.
-#		"""
-#		if mode is None:
-#			mode = 'std'
-#		if creature is None:
-#			creature = gs.core.hero
-		
-#		if creature != gs.core.hero:
-#			room = gs.map.get_obj_room(creature, gs)
-#			if gs.map.hero_rm == room:
-#				gs.io.buffer(f"The {creature.full_name} goes {self.dir} the {self.full_name} and out of sight.")
-#			next_rm = gs.map.get_next_room(room, dir)
-#			next_rm.floor_lst_append(creature)
-#			room.floor_lst_remove(creature)	
-#		else:
-#			if dir == self.descript_dir:
-#				gs.io.buff_s(f"{self.name}_climb_{dir}")
-#			gs.io.insert_cmd_queue(f"go {dir}", 0)
-#			gs.core.move_decr()
-#		return
-
 	def climb(self, dir, gs, creature=None, mode=None):
 		""" Enables a creature to climb a climbable object.
 		"""
@@ -286,13 +243,10 @@ class ClimbableMixIn(object):
 			gs.core.move_decr()
 		return
 
-
 	
 class ClimbableViewOnly(ClimbableMixIn, ViewOnly):
 	def __init__(self, name, full_name, root_name, descript_key, writing):
-#	def __init__(self, name, full_name, root_name, descript_key, writing, descript_dir, err_dir):
 		ViewOnly.__init__(self, name, full_name, root_name, descript_key, writing)
-#		ClimbableMixIn.__init__(self, descript_dir, err_dir)
 		ClimbableMixIn.__init__(self)
 		""" A ViewOnly object that is climbable.
 		"""

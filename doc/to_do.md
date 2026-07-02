@@ -1056,7 +1056,7 @@ To Do List - Dark Castle v3
 						- DONE: what would an expert do?
 					- DONE: initial implementation plan with claude
 				- INPROC: 'climb'
-					- INPROC: simplify climb() command:
+					- DONE: simplify climb() command:
 						- CLAUDE: in base()
 							- DONE: ClimbableMixIn => remove attribs
 							- DONE: ClimbableViewOnly => remove attribs
@@ -1070,11 +1070,16 @@ To Do List - Dark Castle v3
 							- DONE: update both tree obj => elim attribs
 						- CLAUDE: in error():
 							- DONE: replace self.err_dir w/ if creature_climb_dir_do_err in, buff_s()
-						- INPROC: test
+						- DONE: test
 							- DONE: manual test
 							- DONE: scenario test
 							- DONE: fix scenario test
-							- TBD: clean comments: game_update, game_static_gbl, climb_err(), climb()
+							- DONE: clean comments: game_update, game_static_gbl, climb_err(), climb()
+					- TBD: planning with Claude
+						- TBD: direct Claude to prod repo
+						- TBD: request comment out approach
+						- TBD: discuss syntax sym_syn and elim of hero_dir
+						- TBD: refine phase 2 plan
 					- TBD: update basic climb parsing in interpreter()
 						- TBD: sym_syn
 							- TBD: check ZIL list & google for sym_syn and prep variants

@@ -75,27 +75,17 @@ arrow_slits = ViewOnly('arrow_slits', 'Arrow Slits', 'slits', 'arrow_slits', Non
 ruined_windows = ViewOnly('ruined_windows', 'Ruined Windows', 'windows', 'ruined_windows', None)
 silver_keyhole = ViewOnly('silver_keyhole', 'Silver Keyhole', 'keyhole', 'silver_keyhole', None)
 stained_glass = ViewOnly('stained_glass', 'Stained Glass', 'glass', 'stained_glass', None)
-# entrance_tree = ViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None)
-#uptree_tree = ViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None)
 uptree_moat = ViewOnly('uptree_moat', 'Moat', 'moat', 'uptree_moat', None)
 uptree_drawbridge = ViewOnly('uptree_drawbridge', 'Drawbridge', 'drawbridge', 'uptree_drawbridge', None)
 
 # ClimbableViewOnly
 entrance_tree = ClimbableViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None)
 uptree_tree = ClimbableViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None)
-# entrance_tree = ClimbableViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None, 'up', None)
-# uptree_tree = ClimbableViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None, None, 'up')
-## entrance_tree = ClimbableViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None, 'entrance_temp', 'uptree_temp', 'up', 'up')
-## uptree_tree = ClimbableViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None, 'entrance_temp', 'uptree_temp', 'down', 'down')
 
 # Pathway
-## untrodden_path = ViewOnly('untrodden_path', 'Untrodden Path', 'path', 'untrodden_path', None)
-## foreboding_archway = ViewOnly('foreboding_archway', 'Foreboding Archway', 'archway', 'foreboding_archway', None)
-## lit_archway = ViewOnly('lit_archway', 'Lit Archway', 'archway', 'lit_archway', None)
 untrodden_path = Pathway('untrodden_path', 'Untrodden Path', 'path', 'untrodden_path', None)
 foreboding_archway = Pathway('foreboding_archway', 'Foreboding Archway', 'archway', 'foreboding_archway', None)
 lit_archway = Pathway('lit_archway', 'Lit Archway', 'archway', 'lit_archway', None)
-
 
 # Item
 rusty_key = Item('rusty_key', 'Rusty Key', "key", 'rusty_key', None, 1)
@@ -159,7 +149,6 @@ test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 9
 trademark = Writing('trademark', 'Trademark', 'trademark', 'trademark')
 stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 3)
 random_mcguffin_init_desc = InitDesc('random_mcguffin_init_desc', random_mcguffin, False, 'random_mcguffin_init_desc')
-# test_ladder = ClimbableViewOnly('test_ladder', 'Test Ladder', 'ladder', 'test_ladder', None, None, None)
 test_ladder = ClimbableViewOnly('test_ladder', 'Test Ladder', 'ladder', 'test_ladder', None)
 
 

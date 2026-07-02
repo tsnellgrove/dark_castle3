@@ -409,28 +409,31 @@ class Error(Identity):
 		return False, False, ""
 
 
-	# *** prep_no_do errors ***
-#	def climb_err(self, dir, gs):
-#		creature = gs.core.hero
-#		if self.err_std(creature, gs):
-#			return True, False, ""
-#		if not self.is_climbable():
-#			# attemptable error: many non-climbable obj might appear climbable
-#			err_txt = (f"You can't climb the {self.full_name}.")
-#			return True, True, err_txt
-#		if dir in ['north', 'south', 'east', 'west', 'northwest', 'northeast', 'southwest', 'southeast']:
-#			# attemptable error: player can attempt to climb in any direction
-#			err_txt = (f"You can only climb 'up' or 'down'.")
-#			return True, True, err_txt
-#		if dir == self.err_dir:
-#			# attemptable error: on-way climbable obj might appear climbable both ways
-#			try:
-#				err_txt = gs.io.get_str_nr(f"{self.name}_climb_err_{dir}")
-#			except:
-#				err_txt = (f"You can't climb {dir} on the {self.full_name}.")
-#			return True, True, err_txt
-#		return False, False, ""
-
+	# *** verb_prep_do errors ***
+	def go_err(self, dir, gs):
+		creature = gs.core.hero
+		if creature.is_contained(gs):
+			err_txt = (f"You'll have to exit the {creature.get_contained_by(gs).full_name} to attempt that.")
+			return True, False, err_txt
+		if not gs.map.chk_valid_dir(self, dir):
+			# attemptable error: player can attempt to go in any direction
+			if gs.map.hero_rm.is_outdoor:
+				err_txt = "You can't go that way."
+			elif gs.map.hero_rm.is_floorless_room():
+				err_txt = "You can't go that way."
+			elif dir in ['up']:
+				err_txt = "You attempt to climb the nearest wall without success."
+			elif dir in ['down']:
+				err_txt = "You bonk your head on the floor attempting this feat."
+			else:
+				err_txt = gs.io.get_str(f"dir_err_{gs.core.cleesh_rand(0, 4)}", 'experience')
+			return True, True, err_txt
+		door = gs.map.get_door(self, dir)
+		if not isinstance(door, str) and door.is_openable() and door.is_open == False:
+			err_txt = (f"The {door.full_name} is closed.")
+			return True, True, err_txt
+		return False, False, ""
+	
 	def climb_err(self, dir, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
@@ -451,6 +454,7 @@ class Error(Identity):
 				err_txt = (f"You can't climb {dir} the {self.full_name}.")
 			return True, True, err_txt
 		return False, False, ""
+
 
 	# *** prep errors ***
 	def drink_err(self, obj, gs):
@@ -657,29 +661,4 @@ class Error(Identity):
 			return True, False, err_txt
 		return False, False, ""
 
-
-	# *** go_case error ***
-	def go_err(self, dir, gs):
-		creature = gs.core.hero
-		if creature.is_contained(gs):
-			err_txt = (f"You'll have to exit the {creature.get_contained_by(gs).full_name} to attempt that.")
-			return True, False, err_txt
-		if not gs.map.chk_valid_dir(self, dir):
-			# attemptable error: player can attempt to go in any direction
-			if gs.map.hero_rm.is_outdoor:
-				err_txt = "You can't go that way."
-			elif gs.map.hero_rm.is_floorless_room():
-				err_txt = "You can't go that way."
-			elif dir in ['up']:
-				err_txt = "You attempt to climb the nearest wall without success."
-			elif dir in ['down']:
-				err_txt = "You bonk your head on the floor attempting this feat."
-			else:
-				err_txt = gs.io.get_str(f"dir_err_{gs.core.cleesh_rand(0, 4)}", 'experience')
-			return True, True, err_txt
-		door = gs.map.get_door(self, dir)
-		if not isinstance(door, str) and door.is_openable() and door.is_open == False:
-			err_txt = (f"The {door.full_name} is closed.")
-			return True, True, err_txt
-		return False, False, ""
 

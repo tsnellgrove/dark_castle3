@@ -344,8 +344,6 @@ game_static_dict = {
     'shiny_sword_2' : "Your sword is glowing very brightly.",
 
 	### climb descriptions ###
-#    'entrance_tree_climb_up' : "With a jump to the first branch you clamber up the trail-side tree.",
-#   'uptree_tree_climb_err_up' : "The next branch above you is too high for you to reach. You can't climb any higher.",
     'burt_climb_up_entrance_tree_success' : "With a jump to the first branch you clamber up the trail-side tree.",
     'burt_climb_up_uptree_tree_err' : "The next branch above you is too high for you to reach. You can't climb any higher.",
 
