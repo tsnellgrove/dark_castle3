@@ -1072,8 +1072,8 @@ To Do List - Dark Castle v3
 							- DONE: replace self.err_dir w/ if creature_climb_dir_do_err in, buff_s()
 						- INPROC: test
 							- DONE: manual test
-							- INPROC: scenario test
-							- TBD: fix scenario test
+							- DONE: scenario test
+							- DONE: fix scenario test
 							- TBD: clean comments: game_update, game_static_gbl, climb_err(), climb()
 					- TBD: update basic climb parsing in interpreter()
 						- TBD: sym_syn
