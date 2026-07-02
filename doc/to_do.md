@@ -1054,7 +1054,7 @@ To Do List - Dark Castle v3
 						- DONE: what do my proposed changes tell you about my coding approach?
 						- DONE: what am i missing here?
 						- DONE: what would an expert do?
-					- TBD: detailed implementation plan with claude
+					- INPROC: detailed implementation plan with claude
 				- TBD: 'climb'
 					- TBD: simplify climb() command:
 						- TBD: in base()
