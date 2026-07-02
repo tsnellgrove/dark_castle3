@@ -410,6 +410,27 @@ class Error(Identity):
 
 
 	# *** prep_no_do errors ***
+#	def climb_err(self, dir, gs):
+#		creature = gs.core.hero
+#		if self.err_std(creature, gs):
+#			return True, False, ""
+#		if not self.is_climbable():
+#			# attemptable error: many non-climbable obj might appear climbable
+#			err_txt = (f"You can't climb the {self.full_name}.")
+#			return True, True, err_txt
+#		if dir in ['north', 'south', 'east', 'west', 'northwest', 'northeast', 'southwest', 'southeast']:
+#			# attemptable error: player can attempt to climb in any direction
+#			err_txt = (f"You can only climb 'up' or 'down'.")
+#			return True, True, err_txt
+#		if dir == self.err_dir:
+#			# attemptable error: on-way climbable obj might appear climbable both ways
+#			try:
+#				err_txt = gs.io.get_str_nr(f"{self.name}_climb_err_{dir}")
+#			except:
+#				err_txt = (f"You can't climb {dir} on the {self.full_name}.")
+#			return True, True, err_txt
+#		return False, False, ""
+
 	def climb_err(self, dir, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
@@ -422,15 +443,14 @@ class Error(Identity):
 			# attemptable error: player can attempt to climb in any direction
 			err_txt = (f"You can only climb 'up' or 'down'.")
 			return True, True, err_txt
-		if dir == self.err_dir:
-			# attemptable error: on-way climbable obj might appear climbable both ways
+		if not gs.map.chk_valid_dir(gs.map.hero_rm, dir):
+			# attemptable error: player can attempt to climb the wrong up / down direction
 			try:
-				err_txt = gs.io.get_str_nr(f"{self.name}_climb_err_{dir}")
+				err_txt = gs.io.get_str_nr(f"{creature.name}_climb_{dir}_{self.name}_err")
 			except:
-				err_txt = (f"You can't climb {dir} on the {self.full_name}.")
+				err_txt = (f"You can't climb {dir} the {self.full_name}.")
 			return True, True, err_txt
 		return False, False, ""
-
 
 	# *** prep errors ***
 	def drink_err(self, obj, gs):

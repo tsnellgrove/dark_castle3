@@ -1045,7 +1045,7 @@ To Do List - Dark Castle v3
 						- NOTE: comment out legacy interp climb code
 						- NOTE: make asym_syn for 'go up' => 'climb up obj' if exactly 1 climbable obj
 						- NOTE: in validate(), cmd_exe(), and trig_chk(), elim case = action_dir
-				- INPROC: pre-climb claude code to-do:
+				- DONE: pre-climb claude code to-do:
 					- DONE: ask why claude made changes with no planning
 					- DONE: back out existing changes
 					- DONE: switch to sonnet 5 high effort
@@ -1054,26 +1054,27 @@ To Do List - Dark Castle v3
 						- DONE: what do my proposed changes tell you about my coding approach?
 						- DONE: what am i missing here?
 						- DONE: what would an expert do?
-					- INPROC: detailed implementation plan with claude
-				- TBD: 'climb'
-					- TBD: simplify climb() command:
-						- TBD: in base()
-							- TBD: ClimbableMixIn => remove attribs
-							- TBD: ClimbableViewOnly => remove attribs
-							- TBD: climb(): buff_s(self.de_dir) > buff_s(creature_climb_dir_do_success)
-							- TBD: climb(): valid_dir_chk() pre buff custom or default success message
-						- TBD: in game_static_gbl():
-							- TBD: update both tree climb descript keys
-								- TBD: creature_climb_dir_do_err
-								- TBD: creature_climb_dir_do_success
-						- TBD: in game_update():
-							- TBD: update both tree obj => elim attribs
-						- TBD: in error():
-							- TBD: replace self.err_dir w/ if creature_climb_dir_do_err in, buff_s()
-						- TBD: test
-							- TBD: manual test
-							- TBD: scenario test
-							- TBD: clean up comments
+					- DONE: initial implementation plan with claude
+				- INPROC: 'climb'
+					- INPROC: simplify climb() command:
+						- CLAUDE: in base()
+							- DONE: ClimbableMixIn => remove attribs
+							- DONE: ClimbableViewOnly => remove attribs
+							- DONE: climb():buff_s(self.de_dir) > buff_s(creature_climb_dir_do_success)
+							- DONE: climb(): valid_dir_chk() pre buff custom or default success message
+						- CLAUDE: in game_static_gbl():
+							- DONE: update both tree climb descript keys
+								- DONE: creature_climb_dir_do_err
+								- DONE: creature_climb_dir_do_success
+						- CLAUDE: in game_update():
+							- DONE: update both tree obj => elim attribs
+						- CLAUDE: in error():
+							- DONE: replace self.err_dir w/ if creature_climb_dir_do_err in, buff_s()
+						- INPROC: test
+							- DONE: manual test
+							- INPROC: scenario test
+							- TBD: fix scenario test
+							- TBD: clean comments: game_update, game_static_gbl, climb_err(), climb()
 					- TBD: update basic climb parsing in interpreter()
 						- TBD: sym_syn
 							- TBD: check ZIL list & google for sym_syn and prep variants

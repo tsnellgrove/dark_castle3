@@ -81,8 +81,10 @@ uptree_moat = ViewOnly('uptree_moat', 'Moat', 'moat', 'uptree_moat', None)
 uptree_drawbridge = ViewOnly('uptree_drawbridge', 'Drawbridge', 'drawbridge', 'uptree_drawbridge', None)
 
 # ClimbableViewOnly
-entrance_tree = ClimbableViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None, 'up', None)
-uptree_tree = ClimbableViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None, None, 'up')
+entrance_tree = ClimbableViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None)
+uptree_tree = ClimbableViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None)
+# entrance_tree = ClimbableViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None, 'up', None)
+# uptree_tree = ClimbableViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None, None, 'up')
 ## entrance_tree = ClimbableViewOnly('entrance_tree', 'Tree', 'tree', 'entrance_tree', None, 'entrance_temp', 'uptree_temp', 'up', 'up')
 ## uptree_tree = ClimbableViewOnly('uptree_tree', 'Tree', 'tree', 'uptree_tree', None, 'entrance_temp', 'uptree_temp', 'down', 'down')
 
@@ -157,7 +159,8 @@ test_chair = Seat('test_chair', 'Test Chair', 'chair', 'test_chair', None, [], 9
 trademark = Writing('trademark', 'Trademark', 'trademark', 'trademark')
 stale_biscuits = Food('stale_biscuits', 'Stale Biscuits', 'biscuits', 'stale_biscuits', trademark, 3)
 random_mcguffin_init_desc = InitDesc('random_mcguffin_init_desc', random_mcguffin, False, 'random_mcguffin_init_desc')
-test_ladder = ClimbableViewOnly('test_ladder', 'Test Ladder', 'ladder', 'test_ladder', None, None, None)
+# test_ladder = ClimbableViewOnly('test_ladder', 'Test Ladder', 'ladder', 'test_ladder', None, None, None)
+test_ladder = ClimbableViewOnly('test_ladder', 'Test Ladder', 'ladder', 'test_ladder', None)
 
 
 # test obj - currently in use
