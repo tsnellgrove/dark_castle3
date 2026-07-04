@@ -1075,11 +1075,11 @@ To Do List - Dark Castle v3
 							- DONE: scenario test
 							- DONE: fix scenario test
 							- DONE: clean comments: game_update, game_static_gbl, climb_err(), climb()
-					- TBD: planning with Claude
-						- TBD: direct Claude to prod repo
-						- TBD: request comment out approach
+					- INPROC: planning with Claude
+						- DONE: direct Claude to prod repo
 						- TBD: discuss syntax sym_syn and elim of hero_dir
 						- TBD: refine phase 2 plan
+						- TBD: discuss how commits work
 					- TBD: update basic climb parsing in interpreter()
 						- TBD: sym_syn
 							- TBD: check ZIL list & google for sym_syn and prep variants
@@ -1123,8 +1123,9 @@ To Do List - Dark Castle v3
 						- TBD: scenario test
 						- TBD: clean up all comments
 						- TBD: update verb table
-		- TBD: claud code to try:
-			- TBD: sonnet 5 high effort
+		- INPROC: claud code to try:
+			- DONE: sonnet 5 high effort
+			- TBD: try Fable 5
 			- TBD: ask about planning mode
 			- TBD: propose changes and ask for feedback
 				- TBD: what am i missing here?
