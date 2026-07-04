@@ -1077,16 +1077,16 @@ To Do List - Dark Castle v3
 							- DONE: clean comments: game_update, game_static_gbl, climb_err(), climb()
 					- INPROC: planning with Claude
 						- DONE: direct Claude to prod repo
-						- TBD: discuss syntax sym_syn and elim of hero_dir
-						- TBD: refine phase 2 plan
+						- DONE: discuss syntax sym_syn and elim of hero_dir
+						- DONE: refine phase 2 plan
 						- TBD: discuss how commits work
 					- TBD: update basic climb parsing in interpreter()
-						- TBD: sym_syn
-							- TBD: check ZIL list & google for sym_syn and prep variants
+						- INPROC: sym_syn
+							- DONE: check ZIL list & google for sym_syn and prep variants
 							- TBD: disable global syn for new_verb
-						- TBD: hand_mgmt
-							- TBD: update hand_mgmt() as needed for new_verb
-							- TBD: update *_err() to pass validate if hand_mgmt() will fix on call
+						- NA: hand_mgmt
+							- NA: update hand_mgmt() as needed for new_verb
+							- NA: update *_err() to pass validate if hand_mgmt() will fix on call
 						- TBD: add to new interp() processing:
 							- TBD: add new_verb to interp() action_verb list
 							- TBD: add new_verb symetric syns to syn_verb_lst

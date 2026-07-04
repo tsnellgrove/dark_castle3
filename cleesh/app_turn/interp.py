@@ -35,14 +35,11 @@ def input_cleanup(gs, user_input):
 def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 	syntax_dict = {
-		('climb', 'hero_dir', 'input_do_noun') : {
-			'case' : 'action_dir',
-			'base_action_lst' : ['climb', 'hero_dir', 'do_noun_str']
-		},
-		('climb', 'input_do_noun') : {
-			'case' : 'action_dir',
-			'base_action_lst' : ['climb', 'up_or_down_dir', 'do_noun_str']
-		},
+		('climb', 'up', 'input_do_noun') : ['climb', 'up', 'do_noun_str', 'verb_prep_do'],
+		('climb', 'down', 'input_do_noun') : ['climb', 'down', 'do_noun_str', 'verb_prep_do'],
+		# ('climb', 'input_do_noun') : ['climb', 'up_or_down_dir', 'do_noun_str', 'verb_prep_do'], # deferred to Phase 3b infer_prep()
+		('scale', 'verb_syn') : ['climb'],
+
 		('meta_cmd',) : {
 			'case' : 'tru_1word',
 			'base_action_lst' : ['verb_str']
@@ -198,22 +195,23 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 				case = 'error'
 				action_lst = ["Which way do you want to climb, up or down?"]
 				break
-		if word == 'infer_do_noun':
-			if input_verb in ['climb']:
-				exactly_one_climbable, climbable_obj = infer_climbable(gs)
-				if exactly_one_climbable:
-					gs.io.buffer(f"(the {climbable_obj.full_name})")
-					action_lst = [input_verb, climbable_obj.name]
-					case = None
-					break
-				else:
-					case = 'error'
-					action_lst = [f"{input_verb.capitalize()} what?"]
-				break			
-			else:
-				case = 'error'
-				action_lst = [f"{input_verb.capitalize()} what?"]
-				break
+		# dead - no syntax_dict entry uses this literal token anymore; kept commented for reference until Phase 5 close-out
+		# if word == 'infer_do_noun':
+		# 	if input_verb in ['climb']:
+		# 		exactly_one_climbable, climbable_obj = infer_climbable(gs)
+		# 		if exactly_one_climbable:
+		# 			gs.io.buffer(f"(the {climbable_obj.full_name})")
+		# 			action_lst = [input_verb, climbable_obj.name]
+		# 			case = None
+		# 			break
+		# 		else:
+		# 			case = 'error'
+		# 			action_lst = [f"{input_verb.capitalize()} what?"]
+		# 		break
+		# 	else:
+		# 		case = 'error'
+		# 		action_lst = [f"{input_verb.capitalize()} what?"]
+		# 		break
 	return case, action_lst
 
 def asym_syn(action_lst, gs):
@@ -446,7 +444,7 @@ def interpreter(user_input, master_obj_lst):
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = [
-			'close', 'doff', 'drop', 'eat', 'enter', 'examine', 'exit', 'go', 'jump', 
+			'climb', 'close', 'doff', 'drop', 'eat', 'enter', 'examine', 'exit', 'go', 'jump',
 			'open', 'move', 'push', 'pull', 'read', 'sit', 'stand', 'stow', 'take', 'wear'
 			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
@@ -454,8 +452,8 @@ def interpreter(user_input, master_obj_lst):
 			] # non-action verbs are subsituted in syntax or asym_syn()
 	syn_verb_lst = [
 			'bite', 'carry', 'consume', 'depart', 'describe', 'devour', 'don', 'gobble', 'grab', 'hold', 
-			'ingest', 'inspect', 'leap', 'list', 'munch', 'pack', 'peruse', 'press', 'proceed', 
-			'release', 'remove', 'roll', 'run', 'scan', 'shut', 'skim', 'search', 'shove', 'slide', 
+			'ingest', 'inspect', 'leap', 'list', 'munch', 'pack', 'peruse', 'press', 'proceed',
+			'release', 'remove', 'roll', 'run', 'scale', 'scan', 'shut', 'skim', 'search', 'shove', 'slide',
 			'stash', 'step', 'taste', 'tug', 'vault', 'walk', 'yank'
 			] # symetric syn_verbs are substituted pre do_noun infer
 	debug_cmd_lst = ['get_weight', 'capacity', 'where_is']
@@ -642,34 +640,35 @@ def interpreter(user_input, master_obj_lst):
 	if word1 not in full_verbs_lst:
 		return 'error', ["Please start your sentence with a known verb!"]
 
-	# handle climb commands - special case because may include direction
-	if word1 in ['climb']:
-		direction = None
-		if user_input_lst[1] in gs.io.get_lst('one_word_travel_lst','eng'):
-			direction = user_input_lst[1]
-			user_input_lst.remove(direction)
-		if len(user_input_lst) == 1:
-			exactly_one, climbable_obj = infer_climbable(gs)
-			if exactly_one:
-				gs.io.buffer(f"(the {climbable_obj.full_name})")
-				case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), word1, climbable_obj.name, direction, None, gs)
-				return case, action_lst
-			else:
-				return 'error', [f"What do you want to {word1}?"] # direction provided but no do_noun given
-		error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst) # pass without verb
-		if error_state:
-			return 'error', [error_msg]
-		if direction:
-			case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), word1, do_noun_obj.name, direction, None, gs)
-		else:
-			case, action_lst = syntax((word1, 'input_do_noun'), word1, do_noun_obj.name, None, None, gs)
-		return case, action_lst
+	# legacy climb handling - superseded by the new interp() pipeline (climb is now in action_verb_lst,
+	# so it's always intercepted above and never reaches here). Kept commented for reference until Phase 5 close-out.
+	# if word1 in ['climb']:
+	# 	direction = None
+	# 	if user_input_lst[1] in gs.io.get_lst('one_word_travel_lst','eng'):
+	# 		direction = user_input_lst[1]
+	# 		user_input_lst.remove(direction)
+	# 	if len(user_input_lst) == 1:
+	# 		exactly_one, climbable_obj = infer_climbable(gs)
+	# 		if exactly_one:
+	# 			gs.io.buffer(f"(the {climbable_obj.full_name})")
+	# 			case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), word1, climbable_obj.name, direction, None, gs)
+	# 			return case, action_lst
+	# 		else:
+	# 			return 'error', [f"What do you want to {word1}?"] # direction provided but no do_noun given
+	# 	error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst) # pass without verb
+	# 	if error_state:
+	# 		return 'error', [error_msg]
+	# 	if direction:
+	# 		case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), word1, do_noun_obj.name, direction, None, gs)
+	# 	else:
+	# 		case, action_lst = syntax((word1, 'input_do_noun'), word1, do_noun_obj.name, None, None, gs)
+	# 	return case, action_lst
 
 
 	# handle prep verb commands (special cases first else general case)
 	# [SYNTAX start here]
 
-	elif word1 in gs.io.get_lst('prep_verb_lst','eng'):
+	if word1 in gs.io.get_lst('prep_verb_lst','eng'):
 		if word1 in ['put']:
 			if 'in' in user_input_lst:
 				prep = 'in'

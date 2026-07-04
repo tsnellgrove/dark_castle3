@@ -86,7 +86,6 @@ engine_static_dict = {
 #       'kick' : 'attack', # elim because of 'kick with fist' response
         'hit' : 'attack',
         'kill' : 'attack',
-        'scale' : 'climb',
         'imbibe' : 'drink',
         'swig' : 'drink',
         'quaff' : 'drink',
