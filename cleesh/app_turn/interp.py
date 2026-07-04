@@ -35,11 +35,6 @@ def input_cleanup(gs, user_input):
 def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 	syntax_dict = {
-		('climb', 'up', 'input_do_noun') : ['climb', 'up', 'do_noun_str', 'verb_prep_do'],
-		('climb', 'down', 'input_do_noun') : ['climb', 'down', 'do_noun_str', 'verb_prep_do'],
-		# ('climb', 'input_do_noun') : ['climb', 'up_or_down_dir', 'do_noun_str', 'verb_prep_do'], # deferred to Phase 3b infer_prep()
-		('scale', 'verb_syn') : ['climb'],
-
 		('meta_cmd',) : {
 			'case' : 'tru_1word',
 			'base_action_lst' : ['verb_str']
@@ -48,7 +43,12 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'case' : 'help',
 			'base_action_lst' : ['verb_str', 'hero_dir']
 		},
-		
+
+		('climb', 'up', 'input_do_noun') : ['climb', 'up', 'do_noun_str', 'verb_prep_do'],
+		('climb', 'down', 'input_do_noun') : ['climb', 'down', 'do_noun_str', 'verb_prep_do'],
+#		('climb', 'input_do_noun') : ['climb', 'up_or_down_dir', 'do_noun_str', 'verb_prep_do'], # deferred to Phase 3b infer_prep()
+		('scale', 'verb_syn') : ['climb'],
+
 		('close', 'input_do_noun') : ['close', 'do_noun_str', 'verb_do'],
 		('close', 'up', 'input_do_noun') : ['close', 'do_noun_str', 'verb_do'],
 		('shut', 'verb_syn') : ['close'],
@@ -184,17 +184,17 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			action_lst[index] = input_verb # string
 		if word == 'do_noun_str':
 			action_lst[index] = gs.core.get_str_to_obj_dict(do_noun) # convert to obj
-		if word == 'up_or_down_dir': # direction not given but can be inferred
-			if gs.map.chk_valid_dir(gs.map.hero_rm, 'up') and not gs.map.chk_valid_dir(gs.map.hero_rm, 'down'):
-				action_lst[index] = 'up'
-				gs.io.buffer(f"(choosing the 'up' direction in which to climb)")
-			elif gs.map.chk_valid_dir(gs.map.hero_rm, 'down') and not gs.map.chk_valid_dir(gs.map.hero_rm, 'up'):
-				action_lst[index] = 'down'
-				gs.io.buffer(f"(choosing the 'down' direction in which to climb)")
-			else:
-				case = 'error'
-				action_lst = ["Which way do you want to climb, up or down?"]
-				break
+#		if word == 'up_or_down_dir': # direction not given but can be inferred
+#			if gs.map.chk_valid_dir(gs.map.hero_rm, 'up') and not gs.map.chk_valid_dir(gs.map.hero_rm, 'down'):
+#				action_lst[index] = 'up'
+#				gs.io.buffer(f"(choosing the 'up' direction in which to climb)")
+#			elif gs.map.chk_valid_dir(gs.map.hero_rm, 'down') and not gs.map.chk_valid_dir(gs.map.hero_rm, 'up'):
+#				action_lst[index] = 'down'
+#				gs.io.buffer(f"(choosing the 'down' direction in which to climb)")
+#			else:
+#				case = 'error'
+#				action_lst = ["Which way do you want to climb, up or down?"]
+#				break
 		# dead - no syntax_dict entry uses this literal token anymore; kept commented for reference until Phase 5 close-out
 		# if word == 'infer_do_noun':
 		# 	if input_verb in ['climb']:
@@ -424,7 +424,8 @@ def interpreter(user_input, master_obj_lst):
 		return 'error', ["I have no idea what you're talking about!"]
 	# errro if user input contains reserved syntax words
 	for word in user_input_lst:
-		if word in ['verb_syn', 'hero_rm_obj', 'hero_dir', 'verb_str', 'do_noun_str', 'up_or_down_dir']: # reserved syntax
+#		if word in ['verb_syn', 'hero_rm_obj', 'hero_dir', 'verb_str', 'do_noun_str', 'up_or_down_dir']: # reserved syntax
+		if word in ['verb_syn', 'hero_rm_obj', 'hero_dir', 'verb_str', 'do_noun_str']: # reserved syntax
 			return 'error', [f"What??"]
 	# one-word commands where user_input_lst is longer than one word
 	if len(user_input_lst) > 1 and user_input_lst[0] in (

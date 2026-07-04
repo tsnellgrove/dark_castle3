@@ -1075,30 +1075,31 @@ To Do List - Dark Castle v3
 							- DONE: scenario test
 							- DONE: fix scenario test
 							- DONE: clean comments: game_update, game_static_gbl, climb_err(), climb()
-					- INPROC: planning with Claude
+					- DONE: planning with Claude
 						- DONE: direct Claude to prod repo
 						- DONE: discuss syntax sym_syn and elim of hero_dir
 						- DONE: refine phase 2 plan
-						- TBD: discuss how commits work
-					- TBD: update basic climb parsing in interpreter()
-						- INPROC: sym_syn
+						- DONE: discuss how commits work
+					- CLAUDE: update basic climb parsing in interpreter()
+						- DONE: sym_syn
 							- DONE: check ZIL list & google for sym_syn and prep variants
-							- TBD: disable global syn for new_verb
+							- DONE: disable global syn for new_verb
 						- NA: hand_mgmt
 							- NA: update hand_mgmt() as needed for new_verb
 							- NA: update *_err() to pass validate if hand_mgmt() will fix on call
-						- TBD: add to new interp() processing:
-							- TBD: add new_verb to interp() action_verb list
-							- TBD: add new_verb symetric syns to syn_verb_lst
-							- TBD: comment out legacy interp climb code
-						- TBD: syntax:
-							- TBD: add base ('new_verb', 'do_prep_noun') entries to syntax
-							- TBD: add prep variants for new_verb to syntax
-							- TBD: add new_verb symetric syns to syntax
-							- TBD: comment out old syntax entries
-							- TBD: comment out syntax up_or_down and hero_dir
-						- TBD: testing
-							- TBD: manual testing
+						- CLAUDE: add to new interp() processing:
+							- DONE: add new_verb to interp() action_verb list
+							- DONE: add new_verb symetric syns to syn_verb_lst
+							- DONE: comment out legacy interp climb code
+						- CLAUDE: syntax:
+							- DONE: add base ('new_verb', 'do_prep_noun') entries to syntax
+							- DONE: add prep variants for new_verb to syntax
+							- DONE: add new_verb symetric syns to syntax
+							- DONE: comment out old syntax entries
+							- TOM: comment out syntax up_or_down
+						- CLAUDE: testing
+							- DONE: manual testing
+							- DONE: scenario testion
 					- TBD: advanced climb() features in interpreter():
 						- TBD: infer_do:
 							- TBD: add infer do_noun entry for new_verb as needed
