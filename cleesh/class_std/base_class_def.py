@@ -239,8 +239,7 @@ class ClimbableMixIn(object):
 					gs.io.buff_f(f"{creature.name}_climb_{dir}_{self.name}_success")
 				except:
 					gs.io.buffer(f"You climb {dir} the {self.full_name}.")
-			gs.io.insert_cmd_queue(f"go {dir}", 0)
-			gs.core.move_decr()
+			gs.io.insert_cmd_queue(f"go {dir}", 0, gs)
 		return
 
 	

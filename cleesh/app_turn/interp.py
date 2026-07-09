@@ -218,6 +218,18 @@ def asym_syn(action_lst, gs):
 	verb_str= action_lst[0]
 	do_noun_obj = action_lst[1]
 	case = 'universal'
+	# consume repeat_str immediately - guards exactly the one command that was just auto-queued via insert_cmd_queue(), preventing infinite re-rewriting (e.g. climb() queuing "go up", which would otherwise get rewritten right back into 'climb' below)
+	repeat_str = gs.io.repeat_str
+	gs.io.repeat_str = None
+	if verb_str in ['go'] and action_lst[1] in ['up', 'down'] and repeat_str != verb_str:
+		dir_str = action_lst[1]
+		# suppress_buffer=True: don't reveal the inferred climbable object until we've decided the rewrite is worth doing
+		exactly_one_climbable, climbable_obj, _ = infer_do_noun(gs, 'climb', suppress_buffer=True)
+		if exactly_one_climbable:
+			has_custom_err = gs.io.chk_str_exist(f"{gs.core.hero.name}_climb_{dir_str}_{climbable_obj.name}_err")
+			if gs.map.chk_valid_dir(gs.map.hero_rm, dir_str) or has_custom_err:
+				gs.io.buffer(f"(the {climbable_obj.full_name})")
+				action_lst = ['climb', dir_str, climbable_obj, 'verb_prep_do']
 	if verb_str in ['enter']:
 		if do_noun_obj.is_seat():
 			action_lst[0] = 'sit'
@@ -261,7 +273,7 @@ def infer_verb(prep_str, gs):
 	return verb_inferred, verb_str
 
 ### unified infer do_noun function for all verbs ###
-def infer_do_noun(gs, verb_str):
+def infer_do_noun(gs, verb_str, suppress_buffer=False):
 	scope_lst = gs.map.hero_rm.get_vis_contain_lst(gs)
 	do_noun_count = 0
 	do_noun_obj = None
@@ -318,25 +330,41 @@ def infer_do_noun(gs, verb_str):
 			do_noun_count = 1
 			do_noun_obj = gs.map.hero_rm
 			infer_txt = f"(the {gs.map.hero_rm.full_name})"
+	elif verb_str == 'climb':
+		for obj in scope_lst:
+			if obj.is_climbable():
+				do_noun_count += 1
+				do_noun_obj = obj
+		if do_noun_count == 1:
+			infer_txt = f"(the {do_noun_obj.full_name})"
 	elif verb_str == 'look':
 		do_noun_count = 1
 		do_noun_obj = gs.map.hero_rm
 
-	if do_noun_count == 1 and infer_txt is not None:
+	if do_noun_count == 1 and infer_txt is not None and not suppress_buffer:
 		gs.io.buffer(infer_txt)
 	return do_noun_count == 1, do_noun_obj, err_txt
 
 
-### helper function for climb command - infer that if there is only one climbable surface in the room, that's what the player wants to climb
-def infer_climbable(gs):
-	scope_lst = gs.map.hero_rm.get_vis_contain_lst(gs)
-	climbable_count = 0
-	climbable_obj = None
-	for obj in scope_lst:
-		if obj.is_climbable():
-			climbable_count += 1
-			climbable_obj = obj
-	return climbable_count == 1, climbable_obj
+### unified infer prep function for verbs that require a prep/direction (currently only climb) ###
+def infer_prep(gs, verb_str):
+	prep_inferred = False
+	prep_str = None
+	err_txt = ""
+
+	if verb_str == 'climb':
+		if gs.map.chk_valid_dir(gs.map.hero_rm, 'up') and not gs.map.chk_valid_dir(gs.map.hero_rm, 'down'):
+			prep_inferred = True
+			prep_str = 'up'
+			gs.io.buffer(f"(choosing the 'up' direction in which to climb)")
+		elif gs.map.chk_valid_dir(gs.map.hero_rm, 'down') and not gs.map.chk_valid_dir(gs.map.hero_rm, 'up'):
+			prep_inferred = True
+			prep_str = 'down'
+			gs.io.buffer(f"(choosing the 'down' direction in which to climb)")
+		else:
+			err_txt = f"Which way do you want to {verb_str}, up or down?"
+
+	return prep_inferred, prep_str, err_txt
 
 
 ### handle nouns and adjectives
@@ -468,6 +496,7 @@ def interpreter(user_input, master_obj_lst):
 			'between','behind','before','after','through','around','into', 'above', 'atop', 'down'
 			]
 	intransitive_verb_lst = ['go', 'inventory', 'stand', 'jump']
+	verb_requires_prep_lst = ['climb']
 
 	meta_cmd_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
 	full_verbs_lst = (
@@ -570,6 +599,16 @@ def interpreter(user_input, master_obj_lst):
 				do_noun_cmd_lst = [do_noun_obj.name]
 				syntax_do_lst = ['input_do_noun'] # new - for syntax call
 				do_noun_str = do_noun_obj.name # new - for syntax call
+			else:
+				return 'error', [err_txt]
+		# if no do_prep given and verb requires one, attempt to infer; return error if ambiguous
+		# placed after do_noun proc (not alongside the prep_phrase_convert check above) so that when both
+		# the noun and the direction are inferred, the noun's inference hint reads first - "(the Tree)"
+		# before "(choosing the 'up' direction...)" - matching natural reading order
+		if len(do_prep_cmd_lst) == 0 and verb_cmd_lst[0] in verb_requires_prep_lst:
+			prep_inferred, prep_str, err_txt = infer_prep(gs, verb_cmd_lst[0])
+			if prep_inferred:
+				do_prep_cmd_lst = [prep_str]
 			else:
 				return 'error', [err_txt]
 		# print cmd_lst if in test mode

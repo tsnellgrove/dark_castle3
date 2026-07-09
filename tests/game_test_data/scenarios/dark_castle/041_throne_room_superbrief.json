@@ -26,8 +26,8 @@
   ],
   "should_end": false,
   "expected_full_outputs": [
-    "\n*** Up Tree ***\n",
-    "\n*** Entrance ***\n\nThe following items are here: a Big Rock. \n",
+    "\n(the Tree)\n\nWith a jump to the first branch you clamber up the trail-side tree.\n\n*** Up Tree ***\n",
+    "\n(the Tree)\n\nYou climb down the Tree.\n\n*** Entrance ***\n\nThe following items are here: a Big Rock. \n",
     "\nUnlocked\n",
     "\nOpenned. \n\nYour score is now 10 out of 75\n",
     "\n*** Gatehouse ***\n\nThe following items are here: a Shiny Sword. \n\nThe Royal Hedgehog is here. The Royal Hedgehog is wearing: a Red Bandana.\n",

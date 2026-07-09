@@ -26,6 +26,7 @@ class IO(Invisible):
 		self._multi_count = multi_count # tracks the number of times a multiples action will run
 		self._vbosity_mode = vbosity_mode # verbosity mode for output
 		self._cmd_queue = cmd_queue # queue of commands for auto-actions to execute
+		self._repeat_str = None # holds the verb of a command just auto-inserted via insert_cmd_queue(); consumed (reset to None) by asym_syn() on the very next call, so it guards exactly one command
 		""" IO class inherits from Invisible. It abstracts all of the string calls to the games 
 		various dictionaries (dynamic, engine, and game) and provides a raft of buffer funcions
 		for game output. 
@@ -88,6 +89,14 @@ class IO(Invisible):
 	def cmd_queue(self, new_val):
 		self._cmd_queue = new_val
 
+	@property
+	def repeat_str(self):
+		return self._repeat_str
+
+	@repeat_str.setter
+	def repeat_str(self, new_val):
+		self._repeat_str = new_val
+
 	### check dict methods ###
 	def chk_str_exist(self, key):
 		if key not in self.dyn_dict and key not in engine_static_dict and key not in get_game_dict(self.game_name):
@@ -117,8 +126,10 @@ class IO(Invisible):
 			raise IndexError("cmd_queue is empty")
 		return self.cmd_queue.pop(0)
 	
-	def insert_cmd_queue(self, cmd, index):
+	def insert_cmd_queue(self, cmd, index, gs):
+		self.repeat_str = cmd.split()[0] if cmd.split() else None
 		self.cmd_queue.insert(index, cmd)
+		gs.core.move_decr() # compensates for the extra move_inc() the inserted command will trigger when popped and processed as its own turn
 		return
 
 	def get_str(self, key, ref):

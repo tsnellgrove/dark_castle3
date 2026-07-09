@@ -1100,21 +1100,26 @@ To Do List - Dark Castle v3
 						- CLAUDE: testing
 							- DONE: manual testing
 							- DONE: scenario testion
-					- TBD: advanced climb() features in interpreter():
-						- TBD: infer_do:
-							- TBD: add infer do_noun entry for new_verb as needed
-							- TBD: migrate stand-alone climb_infer and comment out
-							- TBD: comment out infer_do_noun in sytax (??)
-						- TBD: infer_prep:
-							- TBD: create infer_prep() and migrate up_or_down code
-							- TBD: call infer_prep() from interp() post infer_do()
-							- TBD: comment out syntax up_or_down and hero_dir	
-						- TBD: in asym_syn(), add conditional syn as needed
-							- TBD: 'go up' => 'climb up obj' if exactly 1 climbable obj
-					- TBD: testing
-						- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
-						- TBD: scenario test
-						- TBD: fix scenario as needed
+					- DONE: advanced climb() features in interpreter():
+						- CLAUDE: infer_do:
+							- DONE: add infer do_noun entry for new_verb as needed
+							- DONE: migrate stand-alone climb_infer and comment out
+							- DONE: comment out infer_do_noun in sytax (??)
+						- CLAUDE: infer_prep:
+							- DONE: create infer_prep() and migrate up_or_down code
+							- DONE: call infer_prep() from interp() post infer_do()
+							- DONE: comment out syntax up_or_down and hero_dir	
+						- CLAUDE: in asym_syn(), add conditional syn as needed
+							- DONE: 'go up' => 'climb up obj' if exactly 1 climbable obj
+							- DONE: create gs.io.repeat_str flag to avoid 'go' infinite loop
+						- CLAUDE: finalize with Claude:
+							- DONE: move move_decr() from climb() to insert_cmd_queue() ?
+							- DONE: in infer_prep(), update default err_txt & move 'which way' to else
+							- DONE: final review of ui - am I infering too much; 'climb down tree' case
+					- DONE: testing
+						- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+						- DONE: scenario test
+						- NA: fix scenario as needed
 					- TBD: case clean-up
 						- TBD: in validate() => elim action_dir case
 						- TBD: in cmd_exe() => elim action_dir case
