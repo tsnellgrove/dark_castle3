@@ -442,11 +442,6 @@ class Error(Identity):
 			# attemptable error: many non-climbable obj might appear climbable
 			err_txt = (f"You can't climb the {self.full_name}.")
 			return True, True, err_txt
-		# dead once syntax_dict only accepts literal 'up'/'down' for climb (Phase 2) - dir can never be a cardinal direction here anymore. Remove entirely in Phase 5.
-		# if dir in ['north', 'south', 'east', 'west', 'northwest', 'northeast', 'southwest', 'southeast']:
-		# 	# attemptable error: player can attempt to climb in any direction
-		# 	err_txt = (f"You can only climb 'up' or 'down'.")
-		# 	return True, True, err_txt
 		if not gs.map.chk_valid_dir(gs.map.hero_rm, dir):
 			# attemptable error: player can attempt to climb the wrong up / down direction
 			try:

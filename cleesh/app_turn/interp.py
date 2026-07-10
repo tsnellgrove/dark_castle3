@@ -46,7 +46,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 		('climb', 'up', 'input_do_noun') : ['climb', 'up', 'do_noun_str', 'verb_prep_do'],
 		('climb', 'down', 'input_do_noun') : ['climb', 'down', 'do_noun_str', 'verb_prep_do'],
-#		('climb', 'input_do_noun') : ['climb', 'up_or_down_dir', 'do_noun_str', 'verb_prep_do'], # deferred to Phase 3b infer_prep()
 		('scale', 'verb_syn') : ['climb'],
 
 		('close', 'input_do_noun') : ['close', 'do_noun_str', 'verb_do'],
@@ -184,34 +183,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			action_lst[index] = input_verb # string
 		if word == 'do_noun_str':
 			action_lst[index] = gs.core.get_str_to_obj_dict(do_noun) # convert to obj
-#		if word == 'up_or_down_dir': # direction not given but can be inferred
-#			if gs.map.chk_valid_dir(gs.map.hero_rm, 'up') and not gs.map.chk_valid_dir(gs.map.hero_rm, 'down'):
-#				action_lst[index] = 'up'
-#				gs.io.buffer(f"(choosing the 'up' direction in which to climb)")
-#			elif gs.map.chk_valid_dir(gs.map.hero_rm, 'down') and not gs.map.chk_valid_dir(gs.map.hero_rm, 'up'):
-#				action_lst[index] = 'down'
-#				gs.io.buffer(f"(choosing the 'down' direction in which to climb)")
-#			else:
-#				case = 'error'
-#				action_lst = ["Which way do you want to climb, up or down?"]
-#				break
-		# dead - no syntax_dict entry uses this literal token anymore; kept commented for reference until Phase 5 close-out
-		# if word == 'infer_do_noun':
-		# 	if input_verb in ['climb']:
-		# 		exactly_one_climbable, climbable_obj = infer_climbable(gs)
-		# 		if exactly_one_climbable:
-		# 			gs.io.buffer(f"(the {climbable_obj.full_name})")
-		# 			action_lst = [input_verb, climbable_obj.name]
-		# 			case = None
-		# 			break
-		# 		else:
-		# 			case = 'error'
-		# 			action_lst = [f"{input_verb.capitalize()} what?"]
-		# 		break
-		# 	else:
-		# 		case = 'error'
-		# 		action_lst = [f"{input_verb.capitalize()} what?"]
-		# 		break
 	return case, action_lst
 
 def asym_syn(action_lst, gs):
@@ -320,7 +291,6 @@ def infer_do_noun(gs, verb_str, suppress_buffer=False):
 				do_noun_count += 1
 				do_noun_obj = obj
 				infer_txt = f"(in the {do_noun_obj.full_name})"	
-#	elif verb_str == 'exit' and gs.core.hero.is_contained(gs):
 	elif verb_str == 'exit':
 		if gs.core.hero.is_contained(gs):
 			do_noun_count = 1
@@ -450,9 +420,8 @@ def interpreter(user_input, master_obj_lst):
 	# error if no input or the only input is articles 
 	if len(user_input_lst) < 1: 
 		return 'error', ["I have no idea what you're talking about!"]
-	# errro if user input contains reserved syntax words
+	# error if user input contains reserved syntax words
 	for word in user_input_lst:
-#		if word in ['verb_syn', 'hero_rm_obj', 'hero_dir', 'verb_str', 'do_noun_str', 'up_or_down_dir']: # reserved syntax
 		if word in ['verb_syn', 'hero_rm_obj', 'hero_dir', 'verb_str', 'do_noun_str']: # reserved syntax
 			return 'error', [f"What??"]
 	# one-word commands where user_input_lst is longer than one word
@@ -463,7 +432,6 @@ def interpreter(user_input, master_obj_lst):
 			gs.io.get_lst('one_word_travel_lst','eng') # added
 			):
 		return 'error', [f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"]
-#	if len(user_input_lst) > 2 and user_input_lst[0] in ['help', 'go']:
 	if len(user_input_lst) > 2 and user_input_lst[0] in ['help']:
 		return 'error', [f"Can you state that more simply? {gs.core.hero.full_name} is a person of few words!"]
 
@@ -679,31 +647,6 @@ def interpreter(user_input, master_obj_lst):
 		return 'error', ['I see more than one verb in that sentence!']
 	if word1 not in full_verbs_lst:
 		return 'error', ["Please start your sentence with a known verb!"]
-
-	# legacy climb handling - superseded by the new interp() pipeline (climb is now in action_verb_lst,
-	# so it's always intercepted above and never reaches here). Kept commented for reference until Phase 5 close-out.
-	# if word1 in ['climb']:
-	# 	direction = None
-	# 	if user_input_lst[1] in gs.io.get_lst('one_word_travel_lst','eng'):
-	# 		direction = user_input_lst[1]
-	# 		user_input_lst.remove(direction)
-	# 	if len(user_input_lst) == 1:
-	# 		exactly_one, climbable_obj = infer_climbable(gs)
-	# 		if exactly_one:
-	# 			gs.io.buffer(f"(the {climbable_obj.full_name})")
-	# 			case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), word1, climbable_obj.name, direction, None, gs)
-	# 			return case, action_lst
-	# 		else:
-	# 			return 'error', [f"What do you want to {word1}?"] # direction provided but no do_noun given
-	# 	error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, user_input_lst) # pass without verb
-	# 	if error_state:
-	# 		return 'error', [error_msg]
-	# 	if direction:
-	# 		case, action_lst = syntax((word1, 'hero_dir', 'input_do_noun'), word1, do_noun_obj.name, direction, None, gs)
-	# 	else:
-	# 		case, action_lst = syntax((word1, 'input_do_noun'), word1, do_noun_obj.name, None, None, gs)
-	# 	return case, action_lst
-
 
 	# handle prep verb commands (special cases first else general case)
 	# [SYNTAX start here]

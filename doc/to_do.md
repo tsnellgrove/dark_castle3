@@ -1120,10 +1120,10 @@ To Do List - Dark Castle v3
 						- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
 						- DONE: scenario test
 						- NA: fix scenario as needed
-					- TBD: case clean-up
-						- TBD: in validate() => elim action_dir case
-						- TBD: in cmd_exe() => elim action_dir case
-						- TBD: in trig_chk() => elim action_dir case
+					- CLAUDE: case clean-up
+						- DONE: in validate() => elim action_dir case
+						- DONE: in cmd_exe() => elim action_dir case
+						- DONE: in trig_chk() => elim action_dir case
 					- TBD: close out
 						- TBD: manual test
 						- TBD: scenario test
@@ -1145,9 +1145,10 @@ To Do List - Dark Castle v3
 				- TBD: /clear and /compact (avoid context rot at ~50k tokens)
 			- TBD: is there an interactive fiction MCP (what would that mean?)
 			- TBD: ask about skill creator, skills calling skills (what skills would help me)
-		- TBD: misc ideas
-			- TBD: fix climb() => go() kludge
-				- TBD: call room-transition routine (extracting room_class_def.py:304-328)
+		- INPROC: misc ideas
+			- CANCEL: fix climb() => go() kludge
+				- CANCEL: call room-transition routine (extracting room_class_def.py:304-328)
+				- IDEA: need to re-process in case there is a trap door
 			- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
 			- TBD: in doc section, call out interp asym: more permissive >> less permissive
 			- TBD: doc idea of replacing climb_err txt with climb obj action error

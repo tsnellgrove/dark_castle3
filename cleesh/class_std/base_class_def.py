@@ -229,7 +229,7 @@ class ClimbableMixIn(object):
 		if creature != gs.core.hero:
 			room = gs.map.get_obj_room(creature, gs)
 			if gs.map.hero_rm == room:
-				gs.io.buffer(f"The {creature.full_name} goes {self.dir} the {self.full_name} and out of sight.")
+				gs.io.buffer(f"The {creature.full_name} goes {dir} the {self.full_name} and out of sight.")
 			next_rm = gs.map.get_next_room(room, dir)
 			next_rm.floor_lst_append(creature)
 			room.floor_lst_remove(creature)

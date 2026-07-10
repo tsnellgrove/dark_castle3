@@ -22,7 +22,7 @@ def validate(gs, case, word_lst):
 		return False, False, ""
 
 	# *** command errors ***
-	if case in ['prep', 'action_dir', 'universal']:
+	if case in ['prep', 'universal']:
 		try:
 			if case == 'universal':
 				if word_lst[-1] in ['verb_do']:
@@ -35,11 +35,6 @@ def validate(gs, case, word_lst):
 					cmd_err, is_att, err_txt = getattr(do_noun_obj, action_str + '_err')(prep_str, gs)
 					if (cmd_err and not is_att):
 						gs.io.buffer(err_txt)
-			elif case == 'action_dir':
-				action_str, dir_str, do_noun_obj = word_lst
-				cmd_err, is_att, err_txt = getattr(do_noun_obj, action_str + '_err')(dir_str, gs)
-				if (cmd_err and not is_att):
-					gs.io.buffer(err_txt)
 			elif case == 'prep':
 				dirobj_obj, word1, noun_obj = word_lst
 				cmd_err, is_att, err_txt = getattr(dirobj_obj, word1 + '_err')(noun_obj, gs)
