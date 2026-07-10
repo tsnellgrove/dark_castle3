@@ -1131,6 +1131,10 @@ To Do List - Dark Castle v3
 					- TBD:
 						- TBD: fix cup_of_tea error
 						- TBD: update verb table
+		- TBD: future claude collaboration ideas
+			- TBD: full language scenario suite
+			- TBD: web site
+			- TBD:  database
 		- INPROC: claude code to try:
 			- DONE: sonnet 5 high effort
 			- TBD: try Fable 5 pre july 12
