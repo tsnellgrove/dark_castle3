@@ -1011,7 +1011,7 @@ To Do List - Dark Castle v3
 				- DONE: clean-up comments
 				- DONE: transfer to Claude clone
 				- DONE: get additional Claude thoughts - especially on climb()
-			- TBD: generalize 'climb':
+			- DONE: generalize 'climb':
 				- DONE: climb ideas
 					- IDEA: reference Claude updates for 'climb' in do_infer()
 					- IDEA: simplify climbable atribs: auto gen success & fail climb messages?
@@ -1020,7 +1020,7 @@ To Do List - Dark Castle v3
 					- CANCEL: via asym_syn, 'go up <rm_obj>' => 'climb <obj>' if climbable obj exists
 					- CANCEL: should climb => go in asym_syn ???
 					- IDEA: if verb in ['go', 'climb'] => infer dir
-				- TBD: discovery
+				- DONE: discovery
 					- DONE: in error():
 						- DONE: review climb_err() - capture notes and output examples
 							- NOTE: replace self.err_dir w/ if creature_climb_dir_do_err in, buff_s()
@@ -1055,7 +1055,7 @@ To Do List - Dark Castle v3
 						- DONE: what am i missing here?
 						- DONE: what would an expert do?
 					- DONE: initial implementation plan with claude
-				- INPROC: 'climb'
+				- DONE: 'climb'
 					- DONE: simplify climb() command:
 						- CLAUDE: in base()
 							- DONE: ClimbableMixIn => remove attribs
@@ -1116,7 +1116,7 @@ To Do List - Dark Castle v3
 							- DONE: move move_decr() from climb() to insert_cmd_queue() ?
 							- DONE: in infer_prep(), update default err_txt & move 'which way' to else
 							- DONE: final review of ui - am I infering too much; 'climb down tree' case
-					- DONE: testing
+					- CLAUDE: testing
 						- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
 						- DONE: scenario test
 						- NA: fix scenario as needed
@@ -1124,14 +1124,16 @@ To Do List - Dark Castle v3
 						- DONE: in validate() => elim action_dir case
 						- DONE: in cmd_exe() => elim action_dir case
 						- DONE: in trig_chk() => elim action_dir case
-					- TBD: close out
-						- TBD: manual test
-						- TBD: scenario test
-						- TBD: clean up all comments
+					- CLAUDE: close out
+						- DONE: clean up all comments
+						- DONE: manual test
+						- DONE: scenario test
+					- TBD:
+						- TBD: fix cup_of_tea error
 						- TBD: update verb table
-		- INPROC: claud code to try:
+		- INPROC: claude code to try:
 			- DONE: sonnet 5 high effort
-			- TBD: try Fable 5
+			- TBD: try Fable 5 pre july 12
 			- TBD: ask about planning mode
 			- TBD: propose changes and ask for feedback
 				- TBD: what am i missing here?
