@@ -1128,9 +1128,13 @@ To Do List - Dark Castle v3
 						- DONE: clean up all comments
 						- DONE: manual test
 						- DONE: scenario test
-					- TBD:
-						- TBD: fix cup_of_tea error
-						- TBD: update verb table
+					- DONE:
+						- CLAUDE: fix cup_of_tea error
+						- TOM: update verb table
+		- TBD: fable strategic thinking session
+			- TBD: share links with fable for Infocom and modern IF
+			- TBD: ask fable to review my code
+			- TBD: ask for +/- on my class-based, obj-oriented code and advice on key updates to make
 		- TBD: future claude collaboration ideas
 			- TBD: full language scenario suite
 			- TBD: web site
