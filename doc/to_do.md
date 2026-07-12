@@ -1131,17 +1131,34 @@ To Do List - Dark Castle v3
 					- DONE:
 						- CLAUDE: fix cup_of_tea error
 						- TOM: update verb table
-		- TBD: fable strategic thinking session
-			- TBD: share links with fable for Infocom and modern IF
-			- TBD: ask fable to review my code
-			- TBD: ask for +/- on my class-based, obj-oriented code and advice on key updates to make
+		- TOM: fable strategic thinking session
+			- DONE: share links with fable for Infocom and modern IF
+			- DONE: ask fable to review my code
+			- DONE: ask for +/- on my class-based, obj-oriented code and advice on key updates to make
+		TBD: post fable immediate updates
+			- TBD: refactor go()
+				- IDEA: treat go() as special because
+					- IDEA: only verb to be inferable
+					- IDEA: will never have user-provided do, id, or prep
+					- IDEA: never searches local room for scope
+					- IDEA: is used frequently => address first
+				- DECISION: keep dir as prep; continue to use verb_prep_do for go()
+				- TBD: separate go and infer_verb and deal with before main processing
+				- TBD: skip rest of do_noun, prep, and id_noun processing
+				- TBD: but make sure to still run asym_syn() due to climb()
+				- TBD: test manually
+				- TBD: test scenarios
+			- TBD: understand and implement keyword usage for the action_list
+			- TBD: review notes and continue on with ideas and one_word_convert => new interp()
 		- TBD: future claude collaboration ideas
 			- TBD: full language scenario suite
 			- TBD: web site
-			- TBD:  database
+			- TBD: database
+		- TBD: fable feedback
+			- TBD: after every major batch of work, review the 7/11/2026 feedback from fable
 		- INPROC: claude code to try:
 			- DONE: sonnet 5 high effort
-			- TBD: try Fable 5 pre july 12
+			- DONE: try Fable 5 pre july 12
 			- TBD: ask about planning mode
 			- TBD: propose changes and ask for feedback
 				- TBD: what am i missing here?
