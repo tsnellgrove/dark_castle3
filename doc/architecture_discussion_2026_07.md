@@ -1035,3 +1035,102 @@ Good luck with the interpreter overhaul — and when you're ready to sketch the 
 ---
 
 *End of transcript.*
+
+One last question I'd meant to ask earlier - what's the argument for making 'go' it's own special type of command and treating dir as independent from prep? I know Infocom did so but I've never seen a strong rational?
+
+
+Fair to press on this — I asserted "keep `go` special" earlier without really arguing it, and "because Infocom did" is not an argument. Here's the actual case, and it turns out your own code has already made half of it.
+
+## The deep reason: `go` is the one verb with no parsed noun
+
+Every other verb in your engine follows one pipeline: tokenize, find the verb, **resolve the noun string to a game object by searching room scope** (`get_vis_contain_lst` → `noun_handling`), validate, dispatch on that object. The operand is always something the player named and the scope-resolver found.
+
+`go` does none of that. Look at what your own syntax entry produces:
+
+```python
+('go', 'east') : ['go', 'east', 'hero_rm_obj', 'verb_prep_do']
+```
+
+The operand is `hero_rm` — the *current room*, pulled from game state, never parsed from the input. And "east" isn't resolved against anything in scope; it's a lookup key into `map_lst`. So `go` differs from every other verb on three independent axes at once:
+
+1. **Different value space.** Its argument is a closed, engine-fixed set of ~12 edge labels, not the open set of world objects.
+2. **Different resolver.** It's answered by the Map's graph lookup, not the scope search. There's no object to disambiguate, no adjective, no "which key did you mean."
+3. **Different operand source.** Its primary operand (the room) comes from state, not from the sentence.
+
+That's the honest rationale. It's not that directions *couldn't* be modeled as objects — some engines make "north" a global pseudo-object — it's that doing so buys nothing. You'd have to inject all 12 directions into every room's scope, the noun-resolver would "succeed" on "north," and then `go` would *still* have to consult the map to see if the edge exists. You'd have added a resolution step that answers a question nobody asked. The map check is the real work, and only `go` (and `climb`) do it.
+
+## Your `map_lst` is the evidence
+
+The most developed part of your data model already treats directions as the native vocabulary of the topology:
+
+```python
+{'room_x': entrance, 'dir_x': 'north', 'door': front_gate, 'dir_y': 'south', 'room_y': gatehouse}
+```
+
+`dir_x`/`dir_y` are the bidirectional edge labels; the door rides on the edge; your two-faced doors are even keyed by direction-of-approach (`{gatehouse: foreboding_archway, antechamber: lit_archway}`). Prepositions appear *nowhere* in the map — they have no role in topology, because they relate two nouns, and the map relates two rooms. Directions and prepositions live in different subsystems entirely. Keeping them distinct in the Command record just mirrors a separation your world model already commits to.
+
+## Why `dir` should be its own field, not the `prep` slot
+
+Here's the part where your code is inconsistent, and noticing it settles the question. You already treat direction as a first-class slot — for `climb`:
+
+```python
+('climb', 'hero_dir', 'input_do_noun') : {'case': 'action_dir', ...}   # dir_str is its own slot
+```
+
+But you cram direction into the *preposition* slot for `go`, by reusing the `verb_prep_do` shape — so `cmd_exe` runs `hero_rm.go('east', gs)` with "east" arriving through `prep_str`. Two verbs that both take a direction, carried in two different fields. A dedicated `.dir` field regularizes them: `go` and `climb` become the same shape, and `room.go(dir)`'s contract stops lying (its parameter is a direction, so it should come from a field named for directions).
+
+The clinching reason is the **overlap set**. Look at your own token lists — `down` is in *both* `prep_lst` and `dir_lst`; `in` and `out` bridge both worlds (`go in` → `enter`). The same token means different things depending on axis:
+
+- `go down` — direction (map edge)
+- `sit down` — particle (adverb)
+- `put the key down` — particle again
+
+If `dir` and `prep` were one field, you could not record *which reading won*, and you'd be forced to re-derive it downstream by membership-testing the value — the exact anti-pattern we spent this whole conversation killing (parallel lists, positional shapes). Separate fields mean the type distinction is resolved once, at parse time, by context (`down` after `go` is a dir; after `sit` it's a particle), and then it's structural. Nobody re-guesses it. And your machine triggers read honestly: `{'verb': 'go', 'dir': 'east'}` instead of `{'verb': 'go', 'prep': 'east'}`, which asserts something false about "east."
+
+## The honest boundary
+
+The one scenario where this collapses: a game with no compass, where you travel only by `enter the archway` / `climb the tree` — pure object-based movement. There, `go` folds into `enter`, directions disappear, and a `.dir` field would be dead weight. Your `Pathway`/`enter` handling is already halfway to that model, so it's not hypothetical. But dark_castle is decisively a compass game — ten-direction map, bare-direction commands, direction-keyed doors — so for your engine, `dir` earns its own field and `go` earns its own dispatch path.
+
+Net: of all the "keep it separate" calls we've discussed, this is the smaller one — `go` is nearly the only verb that populates `.dir` — but it's still correct, for a concrete reason beyond symmetry: the `in`/`out`/`up`/`down` tokens genuinely mean two things, and only a distinct field lets you commit to which.
+
+
+
+Please check the go() / dir is special claim vs. dark_castle3
+
+
+dark_castle3 has moved since the copy I read — and in a way that directly affects one of my sub-claims. Let me pull the actual token lists, the map, and the new `go`/`climb` rewrite logic.
+
+Verified against `dark_castle3` (`interp_feature`). The core claim holds and actually picked up new supporting evidence — but one specific sub-point I made is now **wrong**, and it changes the recommendation. Let me be precise about both.
+
+## What confirms — the "go is special" thesis
+
+All three structural differences are intact on the live repo:
+
+- **Operand comes from state, not the sentence.** `('go', 'east') : ['go', 'east', 'hero_rm_obj', 'verb_prep_do']` (interp.py:88) dispatches `hero_rm.go('east', gs)`, and `def go(self, dir, gs, creature=None, mode=None)` lives on `Room` at [room_class_def.py:304](cleesh/class_std/room_class_def.py:304). The operand is always the current room; the direction is the argument.
+- **Closed value space.** `dir_lst` is the same 10 compass/vertical labels (interp.py:458).
+- **Map-graph resolver, not scope.** `map_lst` still keys edges by `dir_x`/`dir_y`, with doors and pseudo-doors (`'climb'`, `'leap down to the moat'`) riding on those edges and the two-faced `{gatehouse: foreboding_archway, antechamber: lit_archway}`. Prepositions appear nowhere in the map.
+
+And two things I *didn't* have from the copy make the "keep it special" conclusion stronger:
+
+1. The interpreter now does a **`go up`/`go down` → `climb` rewrite** (interp.py:195–203) when there's exactly one climbable, and it needs an explicit infinite-loop guard because `climb()` queues `"go up"` right back — the comment spells it out: *"preventing infinite re-rewriting (e.g. climb() queuing 'go up', which would otherwise get rewritten right back into 'climb')."* Plus `enter`/`exit` rewrite *into* `go dir` via `get_door_dir` / `only_exit_dir` (interp.py:204–219). That entanglement of direction, topology, and object-scope living in the parser is exactly the "one honest special case" I argued you should let `go` be, rather than forcing it into the generic table.
+2. The engine now explicitly names the category: `intransitive_verb_lst = ['go', ...]` and `verb_requires_prep_lst = ['climb']` (interp.py:466–467).
+
+The **overlap-set** argument also verifies exactly: `'down'` is in *both* `dir_lst` and `prep_lst` (interp.py:458 and 462), and `'in'`/`'out'` bridge into travel via `enter`/`exit`. So "the same token means different things on different axes" is real in the current code.
+
+## What I got wrong — retract this one
+
+I claimed: *"you already treat dir as a first-class slot for `climb` (the `action_dir` case) but overload it into `prep` for `go` — so a `.dir` field just regularizes an existing inconsistency."*
+
+That was true in the copy. **It's false in `dark_castle3`.** The `action_dir` case is gone — `cmd_exe.py` has no such branch anymore — and `climb` now uses `verb_prep_do` just like `go`: `('climb', 'up', 'input_do_noun') : ['climb', 'up', 'do_noun_str', 'verb_prep_do']` (interp.py:47), dispatching `climbable.climb('up', gs)`. So both of your direction-taking verbs now carry the direction in the **prep slot** (index 1 of the action list). You didn't leave an inconsistency — you *consolidated*, in the opposite direction from what I assumed: dir-rides-in-prep-slot, uniformly.
+
+## How that changes the `dir`-as-field recommendation
+
+The conceptual point (dir ≠ prep) is untouched, but the *framing* flips, and I owe you the honest version:
+
+Promoting `dir` to its own Command field is no longer "clean up a leftover inconsistency" — it's a deliberate move **away from** a consolidation you just made. That has a real cost you'd be paying voluntarily, and given you just unified `go` and `climb` onto the shared slot, you may reasonably prefer to keep it.
+
+So the decision comes down to one durable argument, with the crutch removed: the **overlap set**. Because `'up'`/`'down'` genuinely mean two different things — a compass edge vs. a climb target — and your interpreter *already computes which one* at parse time (that's what the `go up/down → climb` rewrite is), the question is only whether to *record* that resolved distinction in a field named for it. If the resolved direction rides in a field literally called `prep`, then `Room.go()` receives a parameter named for the wrong concept, and a machine trigger reads `{'verb': 'go', 'prep': 'up'}` — which asserts "up" is a preposition, which it isn't. A `.dir` field just names the answer you already have.
+
+But the counter-argument is now stronger than I let on: with both direction-verbs sharing `verb_prep_do` and dispatching cleanly as `receiver.verb(scalar, gs)`, your `prep` slot is effectively functioning as a generic "second scalar argument," and a `dir` field only two verbs ever populate buys naming-honesty at the price of a near-empty column. That's a legitimate "not worth it" position.
+
+Net: I'd still keep **`go` itself special** on its resolution/dispatch path — that half is confirmed and load-bearing. Whether **`dir` gets its own Command field** is a genuine coin-flip I earlier presented as settled, and it isn't; the honest tiebreaker is just "do you want `room.go()`'s parameter and your machine triggers to name directions truthfully, or is one more field not worth it for two verbs." Your call, and either is defensible now that the `action_dir` evidence I leaned on is gone.
