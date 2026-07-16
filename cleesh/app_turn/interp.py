@@ -506,44 +506,19 @@ def interpreter(user_input, master_obj_lst):
 		id_noun_obj = None
 		id_noun_syn_lst = []
 
-
-
 		# *** unprocessed cmd lst ***
-		# print cmd_lst if in test mode
 		if tst_mode:
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_pre_verb_proc: {cmd_lst}")
 
-		# *** go special case ***
-#		is_go = False
+		# *** verb proc ***
 		# if no verb, check to see if first word is a direction; if so, infer 'go' verb; else return error
 		if len(verb_cmd_lst) == 0:
-#			if word1 in ['east', 'west', 'north', 'south', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down', 'in', 'out']:
 			if word1 in dir_lst + ['in', 'out']:
 				verb_str = 'go'
 				verb_cmd_lst.append(verb_str)
 			else:
 				return 'error', ["Please start your sentence with a known verb!"]
-
-#		# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
-#		err_chk, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
-#		if err_chk != 'error':
-#			verb_cmd_lst = tmp_lst
-#			word1 = verb_cmd_lst[0]
-		
-#		# if 'go' verb, check for direction; err if no dir else jump to syntax
-#		if verb_cmd_lst[0] == 'go':
-#			if len(do_prep_cmd_lst) == 0:
-#				return 'error', ["Which direction do you want to go?"]
-#			else:
-#				is_go = True
-#				syntax_do_lst = []
-#				id_noun_syn_lst = []
-#				do_noun_str = None
-
-#		if not is_go:
-
-		# *** regular verb proc ***
 		# if verb is debug verb but not in debug mode, return error
 		if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
 			return 'error', ["Please start your sentence with a known verb!"]
@@ -555,8 +530,6 @@ def interpreter(user_input, master_obj_lst):
 		if err_chk != 'error':
 			verb_cmd_lst = tmp_lst
 			word1 = verb_cmd_lst[0]
-
-		# print cmd_lst if in test mode
 		if tst_mode:
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_post_verb_proc: {cmd_lst}")
@@ -569,21 +542,11 @@ def interpreter(user_input, master_obj_lst):
 				verb_cmd_lst = tmp_lst
 				do_prep_cmd_lst = []
 				word1 = verb_cmd_lst[0]
-		# print cmd_lst if in test mode
 		if tst_mode:
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_post_do_prep_proc: {cmd_lst}")
 
-
-###		if verb_cmd_lst[0] in intransitive_verb_lst:
-##			do_noun_obj = None
-#			syntax_do_lst = []
-#			do_noun_str = None
-##			id_noun_obj = None
-#			id_noun_syn_lst = []
-###			is_intransitive = True
-
-#		if not is_intransitive:
+		# *** skip do_noun proc and id_noun proc if verb is intransitive (e.g. 'go', 'inventory', 'stand', 'jump') ***
 		if verb_cmd_lst[0] not in intransitive_verb_lst:
 
 			# *** do_noun proc ***
@@ -599,13 +562,7 @@ def interpreter(user_input, master_obj_lst):
 					do_noun_cmd_lst = [do_noun_obj.name]
 					do_noun_str = do_noun_obj.name # new - for syntax call
 					syntax_do_lst = ['input_do_noun'] # new - for syntax call
-#			# handle commands for which no do_noun is expected
-#			elif verb_cmd_lst[0] in intransitive_verb_lst:
-#				do_noun_obj = None
-#				syntax_do_lst = []
-#				do_noun_str = None
-			# if do_noun string does not exist, attempt to infer; return error if not possible
-			else:
+			else: # if do_noun string does not exist, attempt to infer; return error if not possible
 				exactly_one, do_noun_obj, err_txt = infer_do_noun(gs, word1)
 				if exactly_one:
 					do_noun_cmd_lst = [do_noun_obj.name]
@@ -623,7 +580,6 @@ def interpreter(user_input, master_obj_lst):
 					do_prep_cmd_lst = [prep_str]
 				else:
 					return 'error', [err_txt]
-			# print cmd_lst if in test mode
 			if tst_mode:
 				cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 				print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
@@ -641,23 +597,20 @@ def interpreter(user_input, master_obj_lst):
 				id_noun_obj = None
 				id_noun_syn_lst = []
 
-		# *** syntax call ***
-		# assemble syntax call and print if in test mode (note do_noun and id_noun substitution)
+		# *** syntax call - used by all verbs ***
+		# (note do_noun and id_noun substitution)
 		user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
 		if tst_mode:
 			print(f"user_syntax_lst: {user_syntax_lst}")
-		# call syntax(); return error if case = 'error'
 		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, None, gs)
 		if case == 'error':
 			return case, action_lst
-		# if test mode, print syntax action_lst
 		if tst_mode:
 			print(f"pre-asym-syn action_lst: {action_lst}")
 
-		# *** aysm_syn ***
+		# *** aysm_syn - used by all verbs ***
 		# check for conditional asymetric verb synonym
 		case, action_lst = asym_syn(action_lst, gs)
-		# if test mode, print post-asym-syn action_lst
 		if tst_mode:
 			print(f"post-asym-syn action_lst: {action_lst}")
 

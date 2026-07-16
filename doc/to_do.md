@@ -1160,7 +1160,8 @@ To Do List - Dark Castle v3
 					- DONE: declare do_noun_str and id_noun_str at top
 				- DONE: test manually
 				- DONE: test scenarios
-				- TBD: clean up infer_verb
+				- DONE: clean up interpreter()
+				- TBD: clean up infer_verb()
 				- TBD: commit
 				- TBD: in verb table, infer_verb column to notes column
 			- TBD: understand and implement keyword usage for the action_list
