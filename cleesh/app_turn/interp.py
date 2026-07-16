@@ -235,13 +235,13 @@ def asym_syn(action_lst, gs):
 	return case, action_lst
 
 ### unified infer verb function for all verbs ###
-def infer_verb(prep_str, gs):
-	verb_inferred = False
-	verb_str = ''
-	if prep_str in ['east', 'west', 'north', 'south', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down', 'in', 'out']:
-		verb_inferred = True
-		verb_str = 'go'
-	return verb_inferred, verb_str
+# def infer_verb(prep_str, gs):
+#	verb_inferred = False
+#	verb_str = ''
+#	if prep_str in ['east', 'west', 'north', 'south', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down', 'in', 'out']:
+#		verb_inferred = True
+#		verb_str = 'go'
+#	return verb_inferred, verb_str
 
 ### unified infer do_noun function for all verbs ###
 def infer_do_noun(gs, verb_str, suppress_buffer=False):
@@ -422,7 +422,7 @@ def interpreter(user_input, master_obj_lst):
 		return 'error', ["I have no idea what you're talking about!"]
 	# error if user input contains reserved syntax words
 	for word in user_input_lst:
-		if word in ['verb_syn', 'hero_rm_obj', 'hero_dir', 'verb_str', 'do_noun_str']: # reserved syntax
+		if word in ['verb_syn', 'hero_rm_obj', 'hero_dir', 'verb_str', 'do_noun_str', 'verb_syn', 'prep_phrase_convert']: # reserved syntax
 			return 'error', [f"What??"]
 	# one-word commands where user_input_lst is longer than one word
 	if len(user_input_lst) > 1 and user_input_lst[0] in (
@@ -491,6 +491,7 @@ def interpreter(user_input, master_obj_lst):
 	# *** new interp routine ***
 	elif word1 in (verb_lst + dir_lst + ['in', 'out']):
 
+		# *** local variable assignment ***
 		(
 			verb_cmd_lst, 
    			do_prep_cmd_lst, 
@@ -498,32 +499,63 @@ def interpreter(user_input, master_obj_lst):
 			id_prep_cmd_lst, 
 			id_noun_cmd_lst
 		) = parser(user_input_lst, verb_lst, dir_lst, prep_lst)
-		
+
+		do_noun_obj = None
+		syntax_do_lst = []
+		do_noun_str = None
+		id_noun_obj = None
+		id_noun_syn_lst = []
+
+
+
 		# *** unprocessed cmd lst ***
 		# print cmd_lst if in test mode
 		if tst_mode:
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_pre_verb_proc: {cmd_lst}")
 
-		# *** verb proc ***
-		# if no verb, attempt to infer verb; return error if no verb is inferred
+		# *** go special case ***
+#		is_go = False
+		# if no verb, check to see if first word is a direction; if so, infer 'go' verb; else return error
 		if len(verb_cmd_lst) == 0:
-			verb_inferred, verb_str = infer_verb(word1, gs)
-			if verb_inferred:
+#			if word1 in ['east', 'west', 'north', 'south', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down', 'in', 'out']:
+			if word1 in dir_lst + ['in', 'out']:
+				verb_str = 'go'
 				verb_cmd_lst.append(verb_str)
 			else:
 				return 'error', ["Please start your sentence with a known verb!"]
+
+#		# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
+#		err_chk, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
+#		if err_chk != 'error':
+#			verb_cmd_lst = tmp_lst
+#			word1 = verb_cmd_lst[0]
+		
+#		# if 'go' verb, check for direction; err if no dir else jump to syntax
+#		if verb_cmd_lst[0] == 'go':
+#			if len(do_prep_cmd_lst) == 0:
+#				return 'error', ["Which direction do you want to go?"]
+#			else:
+#				is_go = True
+#				syntax_do_lst = []
+#				id_noun_syn_lst = []
+#				do_noun_str = None
+
+#		if not is_go:
+
+		# *** regular verb proc ***
 		# if verb is debug verb but not in debug mode, return error
 		if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
 			return 'error', ["Please start your sentence with a known verb!"]
 		# if verb count > 1, return error
 		if len(verb_cmd_lst) > 1: # e.g. 'help attack' already dealt with in one-word command processing
-			return 'error', ['I see more than one verb in that sentence!']
+			return 'error', ['I see more than one verb in that sentence!']			
 		# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
 		err_chk, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
 		if err_chk != 'error':
 			verb_cmd_lst = tmp_lst
 			word1 = verb_cmd_lst[0]
+
 		# print cmd_lst if in test mode
 		if tst_mode:
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
@@ -542,60 +574,72 @@ def interpreter(user_input, master_obj_lst):
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_post_do_prep_proc: {cmd_lst}")
 
-		# *** do_noun proc ***
-		# if do_noun string(s) exist - convert to do_noun_obj w/ noun_handling(); if error, return error
-		if len(do_noun_cmd_lst) > 0:
-			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
-			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
-			# if noun_handling() error_state = True, return error
-			if error_state:
-				return 'error', [error_msg]
-			# if no noun_handling() error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
-			else:
-				do_noun_cmd_lst = [do_noun_obj.name]
-				do_noun_str = do_noun_obj.name # new - for syntax call
-				syntax_do_lst = ['input_do_noun'] # new - for syntax call
-		# handle commands for which no do_noun is expected
-		elif verb_cmd_lst[0] in intransitive_verb_lst:
-			do_noun_obj = None
-			syntax_do_lst = []
-			do_noun_str = None
-		# if do_noun string does not exist, attempt to infer; return error if not possible
-		else:
-			exactly_one, do_noun_obj, err_txt = infer_do_noun(gs, word1)
-			if exactly_one:
-				do_noun_cmd_lst = [do_noun_obj.name]
-				syntax_do_lst = ['input_do_noun'] # new - for syntax call
-				do_noun_str = do_noun_obj.name # new - for syntax call
-			else:
-				return 'error', [err_txt]
-		# if no do_prep given and verb requires one, attempt to infer; return error if ambiguous
-		# placed after do_noun proc (not alongside the prep_phrase_convert check above) so that when both
-		# the noun and the direction are inferred, the noun's inference hint reads first - "(the Tree)"
-		# before "(choosing the 'up' direction...)" - matching natural reading order
-		if len(do_prep_cmd_lst) == 0 and verb_cmd_lst[0] in verb_requires_prep_lst:
-			prep_inferred, prep_str, err_txt = infer_prep(gs, verb_cmd_lst[0])
-			if prep_inferred:
-				do_prep_cmd_lst = [prep_str]
-			else:
-				return 'error', [err_txt]
-		# print cmd_lst if in test mode
-		if tst_mode:
-			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
-			print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
 
-		# *** id_noun proc ***
-		if len(id_noun_cmd_lst) > 0:
-			id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
-			error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
-			if error_state:
-				return 'error', [error_msg]
-			else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
-				id_noun_cmd_lst = [id_noun_obj.name]
-				id_noun_syn_lst = ['input_id_noun']
-		else:
-			id_noun_obj = None
-			id_noun_syn_lst = []
+###		if verb_cmd_lst[0] in intransitive_verb_lst:
+##			do_noun_obj = None
+#			syntax_do_lst = []
+#			do_noun_str = None
+##			id_noun_obj = None
+#			id_noun_syn_lst = []
+###			is_intransitive = True
+
+#		if not is_intransitive:
+		if verb_cmd_lst[0] not in intransitive_verb_lst:
+
+			# *** do_noun proc ***
+			# if do_noun string(s) exist - convert to do_noun_obj w/ noun_handling(); if error, return error
+			if len(do_noun_cmd_lst) > 0:
+				do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
+				error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
+				# if noun_handling() error_state = True, return error
+				if error_state:
+					return 'error', [error_msg]
+				# if no noun_handling() error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
+				else:
+					do_noun_cmd_lst = [do_noun_obj.name]
+					do_noun_str = do_noun_obj.name # new - for syntax call
+					syntax_do_lst = ['input_do_noun'] # new - for syntax call
+#			# handle commands for which no do_noun is expected
+#			elif verb_cmd_lst[0] in intransitive_verb_lst:
+#				do_noun_obj = None
+#				syntax_do_lst = []
+#				do_noun_str = None
+			# if do_noun string does not exist, attempt to infer; return error if not possible
+			else:
+				exactly_one, do_noun_obj, err_txt = infer_do_noun(gs, word1)
+				if exactly_one:
+					do_noun_cmd_lst = [do_noun_obj.name]
+					syntax_do_lst = ['input_do_noun'] # new - for syntax call
+					do_noun_str = do_noun_obj.name # new - for syntax call
+				else:
+					return 'error', [err_txt]
+			# if no do_prep given and verb requires one, attempt to infer; return error if ambiguous
+			# placed after do_noun proc (not alongside the prep_phrase_convert check above) so that when both
+			# the noun and the direction are inferred, the noun's inference hint reads first - "(the Tree)"
+			# before "(choosing the 'up' direction...)" - matching natural reading order
+			if len(do_prep_cmd_lst) == 0 and verb_cmd_lst[0] in verb_requires_prep_lst:
+				prep_inferred, prep_str, err_txt = infer_prep(gs, verb_cmd_lst[0])
+				if prep_inferred:
+					do_prep_cmd_lst = [prep_str]
+				else:
+					return 'error', [err_txt]
+			# print cmd_lst if in test mode
+			if tst_mode:
+				cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+				print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
+
+			# *** id_noun proc ***
+			if len(id_noun_cmd_lst) > 0:
+				id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
+				error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
+				if error_state:
+					return 'error', [error_msg]
+				else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
+					id_noun_cmd_lst = [id_noun_obj.name]
+					id_noun_syn_lst = ['input_id_noun']
+			else:
+				id_noun_obj = None
+				id_noun_syn_lst = []
 
 		# *** syntax call ***
 		# assemble syntax call and print if in test mode (note do_noun and id_noun substitution)

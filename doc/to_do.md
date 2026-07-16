@@ -1143,11 +1143,26 @@ To Do List - Dark Castle v3
 					- IDEA: never searches local room for scope
 					- IDEA: is used frequently => address first
 				- DECISION: keep dir as prep; continue to use verb_prep_do for go()
-				- TBD: separate go and infer_verb and deal with before main processing
-				- TBD: skip rest of do_noun, prep, and id_noun processing
-				- TBD: but make sure to still run asym_syn() due to climb()
-				- TBD: test manually
-				- TBD: test scenarios
+				- DONE: separate go and infer_verb and deal with before main processing
+				- DONE: skip rest of do_noun, prep, and id_noun processing
+				- DONE: but make sure to still run asym_syn() due to climb()
+				- INPROC: fix issues:
+					- DONE: move verb_syn call above is_go = True
+					- DONE: fix climb() cmd
+					- DONE: clean up comments
+					- FINDING: need 'prep_phrase_convert' for go()
+					- FINDING: go() and other intransitive verbs share most of the same issues
+				- DONE: revised strategy
+					- DONE: accept verb_infer as in-line special exception
+					- DONE: back out special go() case
+					- DONE: skip do_noun and id_noun for all instransitive verbs
+					- CANCEL: maybe dedicated syntax call ??? (and asym ???)
+					- DONE: declare do_noun_str and id_noun_str at top
+				- DONE: test manually
+				- DONE: test scenarios
+				- TBD: clean up infer_verb
+				- TBD: commit
+				- TBD: in verb table, infer_verb column to notes column
 			- TBD: understand and implement keyword usage for the action_list
 			- TBD: review notes and continue on with ideas and one_word_convert => new interp()
 		- TBD: future claude collaboration ideas
