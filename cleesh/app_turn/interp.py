@@ -234,15 +234,6 @@ def asym_syn(action_lst, gs):
 			action_lst = [f"Are you trying to push the {do_noun_obj.full_name} or pull it?"]
 	return case, action_lst
 
-### unified infer verb function for all verbs ###
-# def infer_verb(prep_str, gs):
-#	verb_inferred = False
-#	verb_str = ''
-#	if prep_str in ['east', 'west', 'north', 'south', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down', 'in', 'out']:
-#		verb_inferred = True
-#		verb_str = 'go'
-#	return verb_inferred, verb_str
-
 ### unified infer do_noun function for all verbs ###
 def infer_do_noun(gs, verb_str, suppress_buffer=False):
 	scope_lst = gs.map.hero_rm.get_vis_contain_lst(gs)

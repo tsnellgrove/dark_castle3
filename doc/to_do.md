@@ -1161,9 +1161,11 @@ To Do List - Dark Castle v3
 				- DONE: test manually
 				- DONE: test scenarios
 				- DONE: clean up interpreter()
-				- TBD: clean up infer_verb()
+				- DONE: clean up infer_verb()
+				- DONE: review updates with Opus
 				- TBD: commit
-				- TBD: in verb table, infer_verb column to notes column
+				- TBD: in verb table, move infer_verb column to notes column
+				- TBD: in verb table, add column for intransitive_verb_lst
 			- TBD: understand and implement keyword usage for the action_list
 			- TBD: review notes and continue on with ideas and one_word_convert => new interp()
 		- TBD: future claude collaboration ideas
