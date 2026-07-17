@@ -1135,8 +1135,8 @@ To Do List - Dark Castle v3
 			- DONE: share links with fable for Infocom and modern IF
 			- DONE: ask fable to review my code
 			- DONE: ask for +/- on my class-based, obj-oriented code and advice on key updates to make
-		TBD: post fable immediate updates
-			- TBD: refactor go()
+		- INPROC: post fable immediate updates
+			- DONE: refactor go()
 				- IDEA: treat go() as special because
 					- IDEA: only verb to be inferable
 					- IDEA: will never have user-provided do, id, or prep
@@ -1146,7 +1146,7 @@ To Do List - Dark Castle v3
 				- DONE: separate go and infer_verb and deal with before main processing
 				- DONE: skip rest of do_noun, prep, and id_noun processing
 				- DONE: but make sure to still run asym_syn() due to climb()
-				- INPROC: fix issues:
+				- DONE: fix issues:
 					- DONE: move verb_syn call above is_go = True
 					- DONE: fix climb() cmd
 					- DONE: clean up comments
@@ -1163,9 +1163,9 @@ To Do List - Dark Castle v3
 				- DONE: clean up interpreter()
 				- DONE: clean up infer_verb()
 				- DONE: review updates with Opus
-				- TBD: commit
-				- TBD: in verb table, move infer_verb column to notes column
-				- TBD: in verb table, add column for intransitive_verb_lst
+				- DONE: commit
+				- DONE: in verb table, move infer_verb column to notes column
+				- DONE: in verb table, add column for intransitive_verb_lst
 			- TBD: understand and implement keyword usage for the action_list
 			- TBD: review notes and continue on with ideas and one_word_convert => new interp()
 		- TBD: future claude collaboration ideas
