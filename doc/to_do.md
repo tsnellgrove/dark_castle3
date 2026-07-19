@@ -1166,7 +1166,10 @@ To Do List - Dark Castle v3
 				- DONE: commit
 				- DONE: in verb table, move infer_verb column to notes column
 				- DONE: in verb table, add column for intransitive_verb_lst
-			- TBD: understand and implement keyword usage for the action_list
+			- INPROC: understand and implement keyword usage for the action_list
+				- DONE: understand where class Command() lives and how assigned in Syntax
+				- TBD: understand temp adaptor phase A - including dispatch table
+				- TBD: understand phase B
 			- TBD: review notes and continue on with ideas and one_word_convert => new interp()
 		- TBD: future claude collaboration ideas
 			- TBD: full language scenario suite
