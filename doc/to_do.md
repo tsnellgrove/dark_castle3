@@ -1168,8 +1168,11 @@ To Do List - Dark Castle v3
 				- DONE: in verb table, add column for intransitive_verb_lst
 			- INPROC: understand and implement keyword usage for the action_list
 				- DONE: understand where class Command() lives and how assigned in Syntax
-				- TBD: understand temp adaptor phase A - including dispatch table
-				- TBD: understand phase B
+				- DONE: understand temp adaptor phase A - including dispatch table
+				- DONE: understand phase B
+				- DONE: ask about meta cmds, help, and error messages
+				- INPROC: decide on order of operations
+					- TBD: doc order of operations
 			- TBD: review notes and continue on with ideas and one_word_convert => new interp()
 		- TBD: future claude collaboration ideas
 			- TBD: full language scenario suite
