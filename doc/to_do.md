@@ -1116,6 +1116,10 @@ To Do List - Dark Castle v3
 							- DONE: move move_decr() from climb() to insert_cmd_queue() ?
 							- DONE: in infer_prep(), update default err_txt & move 'which way' to else
 							- DONE: final review of ui - am I infering too much; 'climb down tree' case
+						- CANCEL: fix climb() => go() kludge
+							- CANCEL: call room-transition routine (room_class_def.py:304-328)
+							- IDEA: need to re-process in case there is a trap door
+						- CANCEL: allow do w/ 'go' => 'go n from entrance' (infer do vs. syntax)
 					- CLAUDE: testing
 						- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
 						- DONE: scenario test
@@ -1166,54 +1170,41 @@ To Do List - Dark Castle v3
 				- DONE: commit
 				- DONE: in verb table, move infer_verb column to notes column
 				- DONE: in verb table, add column for intransitive_verb_lst
-			- INPROC: understand and implement keyword usage for the action_list
+			- DONE: understand and implement keyword usage for the action_list
 				- DONE: understand where class Command() lives and how assigned in Syntax
 				- DONE: understand temp adaptor phase A - including dispatch table
 				- DONE: understand phase B
 				- DONE: ask about meta cmds, help, and error messages
-				- INPROC: decide on order of operations
-					- TBD: doc order of operations
-			- TBD: review notes and continue on with ideas and one_word_convert => new interp()
+				- DONE: decide on order of operations
+		- TBD: order of operations
+			- TBD: review notes finalize verb_do and verb_prep_do
+				- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
+				- TBD: in doc section, call out interp asym: more permissive >> less permissive
+				- TBD: doc idea of replacing climb_err txt with climb obj action error
+				- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
+				- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
+				- TBD: sort out weapon state buffers in hand_manage()
+				- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
+				- TBD: jump
+					- TBD: 'jump' => associate with Room class instead of Creature class??
+					- IDEA: custom 'jump' result will freq depend on rm (e.g. 'jump' => moat)
+					- TBD: allow prep phrase 'jump in moat' => 'enter moat' ???
+					- TBD: 'jump' => 'jump <room>'
+				- TBD: consider not passing verb or prep to syntax as independent attribs
+			- TBD: method-ize meta commands and call them via shapes
+				- TBD: exclude from validate(), chk_trig(), score()
+			- TBD: methodize help and call via shapes
+				- TBD: exclude from validate(), chk_trig(), score()
+			- TBD: return parse_err and eliminate 'error' case
+			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
+				- TBD: address hand mgmt in hand_manage()
+			- TBD: phase a (see Claude)
+			- TBD: phase b (see Claude)
 		- TBD: future claude collaboration ideas
 			- TBD: full language scenario suite
 			- TBD: web site
 			- TBD: database
-		- TBD: fable feedback
-			- TBD: after every major batch of work, review the 7/11/2026 feedback from fable
-		- INPROC: claude code to try:
-			- DONE: sonnet 5 high effort
-			- DONE: try Fable 5 pre july 12
-			- TBD: ask about planning mode
-			- TBD: propose changes and ask for feedback
-				- TBD: what am i missing here?
-				- TBD: what would an expert do?
-			- TBD: ask how and why claude made choices
-			- TBD: ask cladue to coach me on how we can work together better
-			- TBD: claude commands to ask about and try:
-				- TBD: /plan mode
-				- TBD: /init
-				- TBD: /context
-				- TBD: /clear and /compact (avoid context rot at ~50k tokens)
-			- TBD: is there an interactive fiction MCP (what would that mean?)
-			- TBD: ask about skill creator, skills calling skills (what skills would help me)
-		- INPROC: misc ideas
-			- CANCEL: fix climb() => go() kludge
-				- CANCEL: call room-transition routine (extracting room_class_def.py:304-328)
-				- IDEA: need to re-process in case there is a trap door
-			- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
-			- TBD: in doc section, call out interp asym: more permissive >> less permissive
-			- TBD: doc idea of replacing climb_err txt with climb obj action error
-			- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
-			- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
-			- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
-			- TBD: consider allowing do w/ 'go' => 'go n from entrance' (infer do vs. syntax)
-			- TBD: jump
-				- TBD: reconsider 'jump' => associate with Room class instead of Creature class??
-				- IDEA: custom outcome of 'jump' will freq depend on rm (e.g. 'jump' => moat)
-				- TBD: allow prep phrase 'jump in moat' => 'enter moat' ???
-				- TBD: 'jump' => 'jump <room>'
-			- TBD: consider not passing verb or prep to syntax as independent attribs
-		- TBD: elim 'one_word_convert_lst' in static_gbl
+		- TBD: elim meta_cmd_lst / 'one_word_convert_lst' in static_gbl
 				- TBD: <word_x>
 					- TBD: check ZIL list for sym_syn and prep variants
 					- TBD: update hand_mgmt() as needed for new_verb

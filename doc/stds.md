@@ -145,6 +145,25 @@ Links:
 Cmd to run test menu script: ./scenario_workflow.sh
 
 
+- INPROC: claude code to try:
+	- DONE: sonnet 5 high effort
+	- DONE: try Fable 5 pre july 19
+	- TBD: after every major batch of work, review the 7/11/2026 feedback from fable
+	- TBD: ask about planning mode
+	- TBD: propose changes and ask for feedback
+		- TBD: what am i missing here?
+		- TBD: what would an expert do?
+	- TBD: ask how and why claude made choices
+	- TBD: ask cladue to coach me on how we can work together better
+	- TBD: claude commands to ask about and try:
+		- TBD: /plan mode
+		- TBD: /init
+		- TBD: /context
+		- TBD: /clear and /compact (avoid context rot at ~50k tokens)
+	- TBD: is there an interactive fiction MCP (what would that mean?)
+	- TBD: ask about skill creator, skills calling skills (what skills would help me)
+
+
 *** 9/27/2025 - how to add a command ***
 - DONE: implement standard response for creature.jump() (hero & other)
 	- DONE: create creature.jump() [w/ hero and other creature option]
