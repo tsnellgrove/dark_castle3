@@ -1176,15 +1176,8 @@ To Do List - Dark Castle v3
 				- DONE: understand phase B
 				- DONE: ask about meta cmds, help, and error messages
 				- DONE: decide on order of operations
-		- TBD: order of operations
-			- TBD: review notes finalize verb_do and verb_prep_do
-				- TBD: doc in noun section: fix 'blank' first attrib in noun_handling() call
-				- TBD: in doc section, call out interp asym: more permissive >> less permissive
-				- TBD: doc idea of replacing climb_err txt with climb obj action error
-				- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
-				- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
-				- TBD: sort out weapon state buffers in hand_manage()
-				- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
+		- INPROC: finish verbs
+			- INPROC: review notes finalize verb_do and verb_prep_do
 				- TBD: jump
 					- TBD: 'jump' => associate with Room class instead of Creature class??
 					- IDEA: custom 'jump' result will freq depend on rm (e.g. 'jump' => moat)
@@ -1198,6 +1191,17 @@ To Do List - Dark Castle v3
 			- TBD: return parse_err and eliminate 'error' case
 			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
 				- TBD: address hand mgmt in hand_manage()
+				- TBD: fix 'blank' first attrib in noun_handling() call
+				- TBD: 'put on' as syntax syn for 'wear'
+				- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
+				- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
+				- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
+				- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
+				- TBD: sort out weapon state buffers in hand_manage()
+				- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
+				- TBD: standardize weapon draw on attack
+			- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
+			- TBD: update verb spreadsheet
 			- TBD: phase a (see Claude)
 			- TBD: phase b (see Claude)
 		- TBD: future claude collaboration ideas
@@ -1223,20 +1227,11 @@ To Do List - Dark Castle v3
 					- TBD: clean up comments in static_gbl
 					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
 			- TBD: update verb spreadsheet
-		- TBD: generalize meta cmds
-			- TBD: update verb spreadsheet
-		- TBD: generalize help
-			- TBD: update verb spreadsheet
 		- TBD: one-word debug commands
 			- TBD: update verb spreadsheet
-		- TBD: generalize id_noun case => sit case
-			- TBD: 'put on' as syntax syn for 'wear'
-			- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
-				- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
-			- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
-			- TBD: update verb spreadsheet
-		- TBD: additional updates
+		- TBD: additional updates post migration
 			- TBD: update help() cmd to give a limited list of verbs ?
+			- TBD: in doc section, call out interp asym: more permissive >> less permissive
 			- TBD: consider including bkpk in infer_do_noun() scope (e.g. if crown in bkpk, wear it)
 			- TBD: global refactor
 			- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
@@ -1284,6 +1279,7 @@ To Do List - Dark Castle v3
 			- TBD: enable multiple adjectives
 			- TBD: improve noun_handling errors
 			- TBD: check for action (err or cond_syn or mach) in do & id pre verb action
+			- TBD: doc idea of replacing climb_err txt with climb obj action error
 
 
 		- TBD: create separate full_verb_lst vs. full_action_lst
