@@ -1191,9 +1191,9 @@ To Do List - Dark Castle v3
 						- DONE: update verb table
 					- CANCEL: allow prep phrase 'jump in moat' => 'enter moat' ???
 					- CANCEL: 'jump' => 'jump <room>'
-			- TBD: method-ize meta commands and call them via shapes
+			- TBD: method-ize meta commands and call them via shapes (meta, meta_arg)
 				- TBD: exclude from validate(), chk_trig(), score()
-			- TBD: methodize help and call via shapes
+			- TBD: methodize help and call via shapes (meta_arg)
 				- TBD: exclude from validate(), chk_trig(), score()
 			- TBD: return parse_err and eliminate 'error' case
 			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
