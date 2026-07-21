@@ -1177,13 +1177,20 @@ To Do List - Dark Castle v3
 				- DONE: ask about meta cmds, help, and error messages
 				- DONE: decide on order of operations
 		- INPROC: finish verbs
-			- INPROC: review notes finalize verb_do and verb_prep_do
-				- TBD: jump
-					- TBD: 'jump' => associate with Room class instead of Creature class??
+			- DONE: review notes finalize verb_do and verb_prep_do
+				- DONE: jump
 					- IDEA: custom 'jump' result will freq depend on rm (e.g. 'jump' => moat)
-					- TBD: allow prep phrase 'jump in moat' => 'enter moat' ???
-					- TBD: 'jump' => 'jump <room>'
-				- TBD: consider not passing verb or prep to syntax as independent attribs
+					- DONE: 'jump' => associate with Room class instead of Creature class??
+						- DONE: add jump() method to Room()
+						- DONE: comment out jump() for Creature()
+						- DONE: update syntax to convert jump do to 'hero_rm'
+						- DONE: update entrance jump mach trigger
+						- DONE: manual test
+						- DONE: scenario test
+						- DONE: clean up comments in creature(), room(), and syntax()
+						- DONE: update verb table
+					- CANCEL: allow prep phrase 'jump in moat' => 'enter moat' ???
+					- CANCEL: 'jump' => 'jump <room>'
 			- TBD: method-ize meta commands and call them via shapes
 				- TBD: exclude from validate(), chk_trig(), score()
 			- TBD: methodize help and call via shapes
@@ -1195,11 +1202,13 @@ To Do List - Dark Castle v3
 				- TBD: 'put on' as syntax syn for 'wear'
 				- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
 				- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
-				- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
-				- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
-				- TBD: sort out weapon state buffers in hand_manage()
-				- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
-				- TBD: standardize weapon draw on attack
+				- TBD: consider not passing verb or prep to syntax as independent attribs
+				- TBD: weapon updates
+					- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
+					- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
+					- TBD: sort out weapon state buffers in hand_manage()
+					- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
+					- TBD: standardize weapon draw on attack
 			- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
 			- TBD: update verb spreadsheet
 			- TBD: phase a (see Claude)

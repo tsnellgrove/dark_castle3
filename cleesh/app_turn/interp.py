@@ -100,9 +100,10 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('step', 'verb_syn') : ['go'],
 		('walk', 'verb_syn') : ['go'],
 
-		('jump',) : ['jump', 'hero_obj', 'verb_do'],
-		('jump', 'up') : ['jump', 'hero_obj', 'verb_do'],
-		('jump', 'down') : ['jump', 'hero_obj', 'verb_do'],
+		('jump',) : ['jump', 'hero_rm_obj', 'verb_do'],
+		('jump', 'up') : ['jump', 'hero_rm_obj', 'verb_do'],
+		('jump', 'down') : ['jump', 'hero_rm_obj', 'verb_do'],
+
 		('leap', 'verb_syn') : ['jump'],
 		('vault', 'verb_syn') : ['jump'],
 

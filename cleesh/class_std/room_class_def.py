@@ -327,6 +327,39 @@ class Room(ViewOnly):
 			gs.io.buffer(f"The {creature.full_name} goes {dir}")
 		return 
 
+	def jump(self, gs, creature=None, mode=None):
+			""" Enables a Creature to jump (similar to Zork)
+			"""
+			if mode is None:
+				mode = 'std'
+			if creature is None:
+				creature = gs.core.hero
+
+			# if hero_creature not in current room, exit with no display
+			if self != gs.map.hero_rm:
+				return 
+			# if other creature is jumping, display different silly message
+			if creature != gs.core.hero:
+				gs.io.buffer(f"For reasons of its own, the {creature.full_name} jumps up and down.")
+			# if hero is jumping in regular room, display silly message
+			elif not self.is_floorless_room():
+				gs.io.buffer("Wheeeeeee!!! (do you do this often?)")
+			# if hero is jumping in floorless room and jump is not fatal, move to drop_rm
+			elif not self.is_jump_fatal:
+				gs.io.buffer("in a feat of unaccustomed agility, you manage to land on your feet without killing yourself.")
+				next_room = self.drop_rm
+				gs.map.hero_rm = next_room
+				next_room.floor_lst_append(gs.core.hero)
+				self.floor_lst_remove(gs.core.hero)			
+				next_room.examine(gs)
+			# if hero is jumping in floorless room and jump is fatal, end game
+			else:
+				gs.io.buffer("This was not a safe place to jump.")
+				gs.end.game_ending = 'died.'
+				gs.end.is_end = True
+			return
+
+
 
 class InitDesc(Invisible):
 	def __init__(self, name, linked_item, highlight, init_desc_key):

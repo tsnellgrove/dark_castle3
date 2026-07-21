@@ -649,38 +649,6 @@ class Creature(ViewOnly):
 		return
 
 
-	def jump(self, gs, mode=None):
-		""" Enables a Creature to jump (similar to Zork)
-		"""
-		if mode is None:
-			mode = 'std'
-
-		room = gs.map.get_obj_room(self, gs)
-
-		# if hero_creature not in current room, exit with no display
-		if room != gs.map.hero_rm:
-			return 
-		# if other creature is jumping, display different silly message
-		if self != gs.core.hero:
-			gs.io.buffer(f"For reasons of its own, the {self.full_name} jumps up and down.")
-		# if hero is jumping in regular room, display silly message
-		elif not room.is_floorless_room():
-			gs.io.buffer("Wheeeeeee!!! (do you do this often?)")
-		# if hero is jumping in floorless room and jump is not fatal, move to drop_rm
-		elif not room.is_jump_fatal:
-			gs.io.buffer("in a feat of unaccustomed agility, you manage to land on your feet without killing yourself.")
-			next_room = room.drop_rm
-			gs.map.hero_rm = next_room
-			next_room.floor_lst_append(gs.core.hero)
-			room.floor_lst_remove(gs.core.hero)			
-			next_room.examine(gs)
-		# if hero is jumping in floorless room and jump is fatal, end game
-		else:
-			gs.io.buffer("This was not a safe place to jump.")
-			gs.end.game_ending = 'died.'
-			gs.end.is_end = True
-		return
-
 	### debug methods ###
 	def get_weight(self, gs, mode=None):
 		""" Reports the weight of an Item. Only usable in debug mode.
