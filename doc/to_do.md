@@ -1216,6 +1216,7 @@ To Do List - Dark Castle v3
 					- INPROC: add meta cmd to new syntax call
 					- INPROC: test manual
 					- INPROC: test scenario
+					- INPROC: update verb table
 				- TBD: clean-up
 					- TBD: comment out legacy meta_cmd_lst syntax call in interp()
 					- TBD: comment out legacy meta_cmd syntax in interp()
