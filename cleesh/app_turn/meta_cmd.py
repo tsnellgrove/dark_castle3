@@ -13,5 +13,8 @@ def meta_cmd_exe(word_lst, gs):
         if meta_cmd == 'score':
             gs.score.print_score(gs)
             return
+        if meta_cmd == 'version':
+            gs.io.disp_version(gs)
+        return
     except Exception as e:
         gs.io.buff_dbg("[CMD] " + traceback.format_exc(), gs)

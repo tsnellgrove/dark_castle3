@@ -204,6 +204,16 @@ class IO(Invisible):
 			except:
 				return engine_static_dict[lst_name]
 
+
+	### disp methods ###
+	def disp_version(self, gs):
+		"""Displays the game and engine version information.
+		"""
+		gs.io.buffer(f"{self.get_str_nr('game_full_name')} version = {self.get_str_nr('game_version')}")
+		gs.io.buffer(f"{self.get_str_nr('engine_name', 'eng')} version = {self.get_str_nr('engine_version', 'eng')}")
+		return
+
+
 	### buffer methods ###
 	def get_buff(self):
 		return self.buff_str

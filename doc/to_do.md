@@ -1203,7 +1203,7 @@ To Do List - Dark Castle v3
 					- DONE: update intransitive_verb_lst
 				- INRPOC: create methods for each meta cmd:
 					- DONE: score
-					- TBD: version
+					- DONE: version
 					- TBD: credits
 					- TBD: verbose
 					- TBD: brief
@@ -1216,6 +1216,7 @@ To Do List - Dark Castle v3
 					- INPROC: add meta cmd to new syntax call
 					- INPROC: test manual
 					- INPROC: test scenario
+					- INPROC: comment out cmd_exe() code
 					- INPROC: update verb table
 				- TBD: clean-up
 					- TBD: comment out legacy meta_cmd_lst syntax call in interp()

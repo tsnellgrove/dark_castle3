@@ -45,6 +45,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		},
 
 		('score',) : ['score', 'meta'],
+		('version',) : ['version', 'meta'],
 
 		('climb', 'up', 'input_do_noun') : ['climb', 'up', 'do_noun_str', 'verb_prep_do'],
 		('climb', 'down', 'input_do_noun') : ['climb', 'down', 'do_noun_str', 'verb_prep_do'],
@@ -462,7 +463,9 @@ def interpreter(user_input, master_obj_lst):
 
 	meta_cmd_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
 	meta_cmd_lst.remove('score')
-	new_meta_cmd_lst = ['score']
+	meta_cmd_lst.remove('version')
+	new_meta_cmd_lst = ['score', 'version']
+	
 	full_verbs_lst = (
 			gs.io.get_lst('known_verb_lst','eng') + 
 			gs.io.get_lst('debug_verb_lst','eng') +

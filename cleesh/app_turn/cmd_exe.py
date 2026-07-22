@@ -47,13 +47,13 @@ def cmd_execute(gs, case, word_lst):
 			return
 		if  case == 'tru_1word':
 			word1 = word_lst[0]
-			if word1 == 'score':
-				gs.score.print_score(gs)
-				return
-			if word1 == 'version':
-				gs.io.buffer(f"{gs.io.get_str_nr('game_full_name')} version = {gs.io.get_str_nr('game_version')}")
-				gs.io.buffer(f"{gs.io.get_str_nr('engine_name', 'eng')} version = {gs.io.get_str_nr('engine_version', 'eng')}")
-				return
+#			if word1 == 'score':
+#				gs.score.print_score(gs)
+#				return
+#			if word1 == 'version':
+#				gs.io.buffer(f"{gs.io.get_str_nr('game_full_name')} version = {gs.io.get_str_nr('game_version')}")
+#				gs.io.buffer(f"{gs.io.get_str_nr('engine_name', 'eng')} version = {gs.io.get_str_nr('engine_version', 'eng')}")
+#				return
 			if word1 == 'credits':
 				gs.io.buff_e('credits')
 				return
