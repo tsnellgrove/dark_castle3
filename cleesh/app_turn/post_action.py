@@ -5,6 +5,8 @@
 
 # def post_action(gs, case, word_lst):
 def post_action(gs, case, word_lst, is_valid):
+	if case == 'universal' and word_lst[-1] in ['meta']:
+		return
 	mach_obj_lst = gs.map.hero_rm.get_mach_lst(gs)
 	for obj in mach_obj_lst:
 		if (obj.trigger_type == 'post_act_switch' and obj.is_enabled 

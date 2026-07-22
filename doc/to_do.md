@@ -1191,8 +1191,38 @@ To Do List - Dark Castle v3
 						- DONE: update verb table
 					- CANCEL: allow prep phrase 'jump in moat' => 'enter moat' ???
 					- CANCEL: 'jump' => 'jump <room>'
-			- TBD: method-ize meta commands and call them via shapes (meta, meta_arg)
-				- TBD: exclude from validate(), chk_trig(), score()
+			- INPROC: method-ize meta commands and call them via shapes (meta, meta_arg)
+				- DONE: one-time updates
+					- DONE: create meta_cmd() module in app_turn
+					- DONE: exclude case = 'universal', shape = 'meta' from validate()
+					- DONE: exclude case = 'universal', shape = 'meta' from pre_action()
+					- DONE: update cmd_exe to run meta_cmd(meta_cmd) (no disp_score())
+					- DONE: update trig_chk to exclude meta shape
+					- DONE: exclude case = 'universal', shape = 'meta' from post_action()
+					- DONE: update verb_list
+					- DONE: update intransitive_verb_lst
+				- INRPOC: create methods for each meta cmd:
+					- DONE: score
+					- TBD: version
+					- TBD: credits
+					- TBD: verbose
+					- TBD: brief
+					- TBD: superbrief
+					- TBD: rand_mode
+					- TBD: debug
+				- INPROC: meta cmd updates
+					- INPROC: exclude meta cmd from legacy meta_cmd_lst
+					- INPROC: add meta cmd to new_meta_cmd_lst
+					- INPROC: add meta cmd to new syntax call
+					- INPROC: test manual
+					- INPROC: test scenario
+				- TBD: clean-up
+					- TBD: comment out legacy meta_cmd_lst syntax call in interp()
+					- TBD: comment out legacy meta_cmd syntax in interp()
+					- TBD: comment out tru_1word case in cmd_exe()
+					- TBD: manual test
+					- TBD: scenario test
+					- TBD: delete comments
 			- TBD: methodize help and call via shapes (meta_arg)
 				- TBD: exclude from validate(), chk_trig(), score()
 			- TBD: return parse_err and eliminate 'error' case
@@ -1210,6 +1240,9 @@ To Do List - Dark Castle v3
 					- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
 					- TBD: standardize weapon draw on attack
 			- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
+			- TBD: refactor / clean-up
+				- TBD: eliminate case
+				- TBD: pull all 'meta' and 'meta_term' exclusions into app_main()
 			- TBD: update verb spreadsheet
 			- TBD: phase a (see Claude)
 			- TBD: phase b (see Claude)

@@ -81,6 +81,8 @@ class TrigMixIn(object):
 	def trig_check(self, gs, case, word_lst, is_valid):
 		if self.is_valid_reqd and not is_valid:
 			return False
+		if case == 'universal' and word_lst[-1] in ['meta']:
+			return False
 		trig_key_lst = ['not_valid']
 		trig_wc_lst = ['not_valid'] # wildcards are only supported for nouns
 		if case == 'universal':

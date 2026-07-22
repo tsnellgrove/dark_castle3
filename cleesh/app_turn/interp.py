@@ -44,6 +44,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'base_action_lst' : ['verb_str', 'hero_dir']
 		},
 
+		('score',) : ['score', 'meta'],
+
 		('climb', 'up', 'input_do_noun') : ['climb', 'up', 'do_noun_str', 'verb_prep_do'],
 		('climb', 'down', 'input_do_noun') : ['climb', 'down', 'do_noun_str', 'verb_prep_do'],
 		('scale', 'verb_syn') : ['climb'],
@@ -446,7 +448,7 @@ def interpreter(user_input, master_obj_lst):
 			'stash', 'step', 'taste', 'tug', 'vault', 'walk', 'yank'
 			] # symetric syn_verbs are substituted pre do_noun infer
 	debug_cmd_lst = ['get_weight', 'capacity', 'where_is']
-	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst + debug_cmd_lst
+#	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst + debug_cmd_lst
 	dir_lst = [
 			'east', 'west', 'north', 'south', 'northeast', 'northwest', 'southeast', 'southwest', 
 			'up', 'down'
@@ -455,16 +457,20 @@ def interpreter(user_input, master_obj_lst):
 			'at', 'in', 'out', 'on','to','from','with','by','for','of','about','under','over',
 			'between','behind','before','after','through','around','into', 'above', 'atop', 'down'
 			]
-	intransitive_verb_lst = ['go', 'inventory', 'stand', 'jump']
+#	intransitive_verb_lst = ['go', 'inventory', 'stand', 'jump']
 	verb_requires_prep_lst = ['climb']
 
 	meta_cmd_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
+	meta_cmd_lst.remove('score')
+	new_meta_cmd_lst = ['score']
 	full_verbs_lst = (
 			gs.io.get_lst('known_verb_lst','eng') + 
 			gs.io.get_lst('debug_verb_lst','eng') +
 			gs.io.get_lst('non_action_verb_lst','eng') +
 			gs.io.get_lst('one_word_convert_lst','eng') # new
 			)
+	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst + debug_cmd_lst + new_meta_cmd_lst
+	intransitive_verb_lst = ['go', 'inventory', 'stand', 'jump'] + new_meta_cmd_lst
 	case = None
 	action_lst = None
 	prep = None # LEGACY
@@ -481,7 +487,7 @@ def interpreter(user_input, master_obj_lst):
 
 
 	# *** new interp routine ***
-	elif word1 in (verb_lst + dir_lst + ['in', 'out']):
+	elif word1 in (verb_lst + dir_lst + ['in', 'out']) + new_meta_cmd_lst: 
 
 		# *** local variable assignment ***
 		(
