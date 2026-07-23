@@ -75,7 +75,7 @@ Versioning:
 	- prefixes:
 		- 'is'/'are'/'has'/'can' for no var is passed but a bool is returned; e.g. 'obj.is_item()'
 		- 'chk' for a method where you will send an obj and get back a bool
-		- 'get' for a method that will return a 'usuable' obj var
+		- 'get' for a method that will return a 'usuable' obj var or attrib value
 		- 'disp' if a method's main purpose is to buffer content
 		- 'err' if method's main purpose is to test for an error, throw an error message, & return bool
 		- 'set' if a method's purpose is to set an attribute
