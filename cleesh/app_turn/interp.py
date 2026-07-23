@@ -44,6 +44,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'base_action_lst' : ['verb_str', 'hero_dir']
 		},
 
+		('credits',) : ['credits', 'meta'],
 		('score',) : ['score', 'meta'],
 		('version',) : ['version', 'meta'],
 
@@ -464,7 +465,8 @@ def interpreter(user_input, master_obj_lst):
 	meta_cmd_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
 	meta_cmd_lst.remove('score')
 	meta_cmd_lst.remove('version')
-	new_meta_cmd_lst = ['score', 'version']
+	meta_cmd_lst.remove('credits')
+	new_meta_cmd_lst = ['score', 'version', 'credits']
 	
 	full_verbs_lst = (
 			gs.io.get_lst('known_verb_lst','eng') + 

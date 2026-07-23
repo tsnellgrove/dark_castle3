@@ -15,6 +15,9 @@ def meta_cmd_exe(word_lst, gs):
             return
         if meta_cmd == 'version':
             gs.io.disp_version(gs)
-        return
-    except Exception as e:
+            return
+        if meta_cmd == 'credits':
+            gs.io.buff_e('credits')
+            return
+    except Exception:
         gs.io.buff_dbg("[CMD] " + traceback.format_exc(), gs)

@@ -54,9 +54,9 @@ def cmd_execute(gs, case, word_lst):
 #				gs.io.buffer(f"{gs.io.get_str_nr('game_full_name')} version = {gs.io.get_str_nr('game_version')}")
 #				gs.io.buffer(f"{gs.io.get_str_nr('engine_name', 'eng')} version = {gs.io.get_str_nr('engine_version', 'eng')}")
 #				return
-			if word1 == 'credits':
-				gs.io.buff_e('credits')
-				return
+#			if word1 == 'credits':
+#				gs.io.buff_e('credits')
+#				return
 			if word1 == 'verbose':
 				gs.io.vbosity_mode = 'verbose'
 				gs.io.buffer("Maximum verbosity.")

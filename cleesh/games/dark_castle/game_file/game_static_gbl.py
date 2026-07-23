@@ -76,7 +76,7 @@ game_static_dict = {
 
 	### one-word commands - non-objeects ###
 	'introduction' : "Greetings brave adventurer!\n\nYou are Burt-the-Baker, the only adventurer brave - or foolish - enough to enter the Dark Castle in search of treasure.\n\nType 'help' for help.",
-	'credits' : "The Dark Castle game was written and programmed by Tom. Thanks to Toby, Joshua, JoyEllen, Milo, Gideon, Franco, Karl, Andy, Ken and Alec for advice and playtesting!!",
+	'credits' : "The Dark Castle game was written and programmed by Tom. Thanks to Tobi, Catherine, JoyEllen, Milo, Gideon, Franco, Karl, Andy, Ken and Alec for advice and playtesting!!",
 
 
 	#### VISIBLE OBJ ####

@@ -1204,13 +1204,14 @@ To Do List - Dark Castle v3
 				- INRPOC: create methods for each meta cmd:
 					- DONE: score
 					- DONE: version
-					- TBD: credits
-					- TBD: verbose
+					- DONE: credits
+					- TBD: verbose (gs.core.set_verbosity(mode, gs) )
 					- TBD: brief
 					- TBD: superbrief
 					- TBD: rand_mode
 					- TBD: debug
 				- INPROC: meta cmd updates
+					- INPROC: add new cmd to meta_cmd()
 					- INPROC: exclude meta cmd from legacy meta_cmd_lst
 					- INPROC: add meta cmd to new_meta_cmd_lst
 					- INPROC: add meta cmd to new syntax call

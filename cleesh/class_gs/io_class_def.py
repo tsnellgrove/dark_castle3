@@ -213,6 +213,12 @@ class IO(Invisible):
 		gs.io.buffer(f"{self.get_str_nr('engine_name', 'eng')} version = {self.get_str_nr('engine_version', 'eng')}")
 		return
 
+	def disp_credits(self, gs):
+		"""Displays the game credits.
+		"""
+		self.buff_e('credits')
+		return
+
 
 	### buffer methods ###
 	def get_buff(self):
