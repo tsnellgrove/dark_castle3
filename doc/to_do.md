@@ -1205,9 +1205,9 @@ To Do List - Dark Castle v3
 					- DONE: score
 					- DONE: version
 					- DONE: credits
-					- TBD: verbose (gs.core.set_verbosity(mode, gs) )
-					- TBD: brief
-					- TBD: superbrief
+					- DONE: verbose (gs.core.set_verbosity_mode(self, mode, gs) )
+					- DONE: brief
+					- DONE: superbrief
 					- TBD: rand_mode
 					- TBD: debug
 				- INPROC: meta cmd updates

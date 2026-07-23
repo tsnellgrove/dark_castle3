@@ -44,8 +44,11 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'base_action_lst' : ['verb_str', 'hero_dir']
 		},
 
+		('brief',) : ['brief', 'meta'],
 		('credits',) : ['credits', 'meta'],
 		('score',) : ['score', 'meta'],
+		('superbrief',) : ['superbrief', 'meta'],
+		('verbose',) : ['verbose', 'meta'],
 		('version',) : ['version', 'meta'],
 
 		('climb', 'up', 'input_do_noun') : ['climb', 'up', 'do_noun_str', 'verb_prep_do'],
@@ -466,7 +469,10 @@ def interpreter(user_input, master_obj_lst):
 	meta_cmd_lst.remove('score')
 	meta_cmd_lst.remove('version')
 	meta_cmd_lst.remove('credits')
-	new_meta_cmd_lst = ['score', 'version', 'credits']
+	meta_cmd_lst.remove('brief')
+	meta_cmd_lst.remove('superbrief')
+	meta_cmd_lst.remove('verbose')
+	new_meta_cmd_lst = ['brief', 'credits', 'score', 'superbrief', 'verbose', 'version']
 	
 	full_verbs_lst = (
 			gs.io.get_lst('known_verb_lst','eng') + 

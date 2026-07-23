@@ -77,7 +77,8 @@ Versioning:
 		- 'chk' for a method where you will send an obj and get back a bool
 		- 'get' for a method that will return a 'usuable' obj var
 		- 'disp' if a method's main purpose is to buffer content
-		- 'err' if method's main purpose is to test for an error, throw an error message, and return bool
+		- 'err' if method's main purpose is to test for an error, throw an error message, & return bool
+		- 'set' if a method's purpose is to set an attribute
 	- postfixes:
 		- 'err' if method's main purpose is to test for an error, throw an error message, and return bool
 

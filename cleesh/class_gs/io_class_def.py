@@ -220,6 +220,27 @@ class IO(Invisible):
 		return
 
 
+	### disp methods ###
+	def set_verbosity_mode(self, mode, gs):
+		"""Sets the verbosity mode for output.
+		"""
+		if mode == 'verbose':
+			self.vbosity_mode = mode
+			self.buffer("Maximum verbosity.")
+			return
+		elif mode == 'brief':
+			self.vbosity_mode = mode
+			self.buffer("Brief descriptions.")
+			return
+		elif mode == 'superbrief':
+			self.vbosity_mode = mode
+			self.buffer("Superbrief descriptions.")
+			return
+		else:
+			self.buffer("Invalid verbosity mode. Valid modes are: verbose, brief, superbrief.")
+			return
+
+
 	### buffer methods ###
 	def get_buff(self):
 		return self.buff_str
