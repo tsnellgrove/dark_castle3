@@ -94,4 +94,12 @@ class Core(Invisible):
         else:
             return random.randint(min_val, max_val)
  
-    
+    def disp_rand_mode(self, gs):
+        """ Displays the current randomization mode
+        """
+        if not self.is_debug:
+            gs.io.buffer("Please start your sentence with a known verb!")
+        else:
+            gs.io.buffer("The current random mode is: " + str(gs.core.rand_mode))
+            gs.io.buffer("The default random mode is 'random'. In 'locked' mode, all random events / responses are fixed. This is useful for testing and debugging. To enter 'locked' mode, start the game with an 'L' or 'l' after the game number at the game menu.")
+        return

@@ -1208,7 +1208,7 @@ To Do List - Dark Castle v3
 					- DONE: verbose (gs.core.set_verbosity_mode(self, mode, gs) )
 					- DONE: brief
 					- DONE: superbrief
-					- TBD: rand_mode (gs.core.disp_rand_mode)
+					- DONE: rand_mode (gs.core.disp_rand_mode)
 					- TBD: debug
 				- INPROC: meta cmd updates
 					- INPROC: add new cmd to meta_cmd()
@@ -1219,6 +1219,10 @@ To Do List - Dark Castle v3
 					- INPROC: test scenario
 					- INPROC: comment out cmd_exe() code
 					- INPROC: update verb table
+				- INPROC: debug one-time
+					- TBD: update meta_cmd_exe() to take arg attrib
+					- TBD: update meta_cmd_exe() calls to pass arg
+				- TBD: update app_main() to not move_incr() on meta cmds
 				- TBD: clean-up
 					- TBD: comment out legacy meta_cmd_lst syntax call in interp()
 					- TBD: comment out legacy meta_cmd syntax in interp()

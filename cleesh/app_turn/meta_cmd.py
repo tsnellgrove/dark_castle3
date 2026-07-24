@@ -28,5 +28,8 @@ def meta_cmd_exe(word_lst, gs):
         if meta_cmd == 'superbrief':
             gs.io.set_verbosity_mode('superbrief', gs)
             return
+        if meta_cmd == 'rand_mode':
+            gs.core.disp_rand_mode(gs)
+            return
     except Exception:
         gs.io.buff_dbg("[CMD] " + traceback.format_exc(), gs)

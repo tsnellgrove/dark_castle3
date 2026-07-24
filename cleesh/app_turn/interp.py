@@ -47,6 +47,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 		('brief',) : ['brief', 'meta'],
 		('credits',) : ['credits', 'meta'],
 		('score',) : ['score', 'meta'],
+		('rand_mode',) : ['rand_mode', 'meta'],
 		('superbrief',) : ['superbrief', 'meta'],
 		('verbose',) : ['verbose', 'meta'],
 		('version',) : ['version', 'meta'],
@@ -472,7 +473,8 @@ def interpreter(user_input, master_obj_lst):
 	meta_cmd_lst.remove('brief')
 	meta_cmd_lst.remove('superbrief')
 	meta_cmd_lst.remove('verbose')
-	new_meta_cmd_lst = ['brief', 'credits', 'score', 'superbrief', 'verbose', 'version']
+	meta_cmd_lst.remove('rand_mode')
+	new_meta_cmd_lst = ['brief', 'credits', 'rand_mode', 'score', 'superbrief', 'verbose', 'version']
 	
 	full_verbs_lst = (
 			gs.io.get_lst('known_verb_lst','eng') + 
