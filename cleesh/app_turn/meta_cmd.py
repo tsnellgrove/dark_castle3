@@ -8,7 +8,7 @@ import traceback
 
 ### execute commands based on case ###
 def meta_cmd_exe(word_lst, gs):
-    meta_cmd, *_ = word_lst
+    meta_cmd, arg, *_ = word_lst
     try:
         if meta_cmd == 'score':
             gs.score.print_score(gs)
@@ -31,5 +31,7 @@ def meta_cmd_exe(word_lst, gs):
         if meta_cmd == 'rand_mode':
             gs.core.disp_rand_mode(gs)
             return
+        if meta_cmd == 'debug':
+            gs.core.set_debug_mode(arg, gs)
     except Exception:
         gs.io.buff_dbg("[CMD] " + traceback.format_exc(), gs)

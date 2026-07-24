@@ -44,13 +44,14 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			'base_action_lst' : ['verb_str', 'hero_dir']
 		},
 
-		('brief',) : ['brief', 'meta'],
-		('credits',) : ['credits', 'meta'],
-		('score',) : ['score', 'meta'],
-		('rand_mode',) : ['rand_mode', 'meta'],
-		('superbrief',) : ['superbrief', 'meta'],
-		('verbose',) : ['verbose', 'meta'],
-		('version',) : ['version', 'meta'],
+		('brief',) : ['brief', None, 'meta'],
+		('credits',) : ['credits', None, 'meta'],
+		('debug', 'xyzzy') : ['debug', 'xyzzy', 'meta'],
+		('score',) : ['score', None, 'meta'],
+		('rand_mode',) : ['rand_mode', None, 'meta'],
+		('superbrief',) : ['superbrief', None, 'meta'],
+		('verbose',) : ['verbose', None, 'meta'],
+		('version',) : ['version', None, 'meta'],
 
 		('climb', 'up', 'input_do_noun') : ['climb', 'up', 'do_noun_str', 'verb_prep_do'],
 		('climb', 'down', 'input_do_noun') : ['climb', 'down', 'do_noun_str', 'verb_prep_do'],
@@ -428,7 +429,7 @@ def interpreter(user_input, master_obj_lst):
 	if len(user_input_lst) > 1 and user_input_lst[0] in (
 			gs.io.get_lst('pre_interp_word_lst','eng') + 
 			gs.io.get_lst('one_word_only_lst','eng') + 
-			gs.io.get_lst('one_word_secret_lst','eng') +
+#			gs.io.get_lst('one_word_secret_lst','eng') +
 			gs.io.get_lst('one_word_travel_lst','eng') # added
 			):
 		return 'error', [f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"]
@@ -459,10 +460,11 @@ def interpreter(user_input, master_obj_lst):
 			'east', 'west', 'north', 'south', 'northeast', 'northwest', 'southeast', 'southwest', 
 			'up', 'down'
 			]
+	debug_pwd_lst = [gs.io.get_str_nr('debug_pwd', 'eng')]
 	prep_lst = [
 			'at', 'in', 'out', 'on','to','from','with','by','for','of','about','under','over',
 			'between','behind','before','after','through','around','into', 'above', 'atop', 'down'
-			]
+			] + debug_pwd_lst
 #	intransitive_verb_lst = ['go', 'inventory', 'stand', 'jump']
 	verb_requires_prep_lst = ['climb']
 
@@ -474,7 +476,8 @@ def interpreter(user_input, master_obj_lst):
 	meta_cmd_lst.remove('superbrief')
 	meta_cmd_lst.remove('verbose')
 	meta_cmd_lst.remove('rand_mode')
-	new_meta_cmd_lst = ['brief', 'credits', 'rand_mode', 'score', 'superbrief', 'verbose', 'version']
+	meta_cmd_lst.remove('debug')
+	new_meta_cmd_lst = ['brief', 'credits', 'debug', 'rand_mode', 'score', 'superbrief', 'verbose', 'version']
 	
 	full_verbs_lst = (
 			gs.io.get_lst('known_verb_lst','eng') + 

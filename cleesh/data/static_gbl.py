@@ -17,6 +17,8 @@ engine_static_dict = {
 
 	'engine_version' : '3.9.2 build 0016 [1/3/2026])', # api.features.bug-fix (internal); # Started Nov 23, 2025 - Completed Jan 3, 2026
 
+	'debug_pwd' : 'xyzzy', # password to toggle debug mode
+
 	### Menu Constants ###
 	'game_lst' : ['cup_of_tea', 'dark_castle'],
 
@@ -28,7 +30,9 @@ engine_static_dict = {
 
 	'pre_interp_word_lst' : ['quit', 'wait', 'again', 'restart', 'save', 'restore'],
     
-	'one_word_secret_lst' : ['debug_xyzzy', 'rand_mode'], # was 'debug_poke53281,0' before the cmd queue was implemented
+#	'one_word_secret_lst' : ['debug_xyzzy', 'rand_mode'], # was 'debug_poke53281,0' before the cmd queue was implemented
+
+	'one_word_secret_lst' : ['debug', 'rand_mode'], # was 'debug_poke53281,0' before the cmd queue was implemented
 
     'one_word_only_lst' : ['credits', 'score', 'version', 'verbose', 'brief', 'superbrief'],
 

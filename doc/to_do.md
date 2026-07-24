@@ -1201,7 +1201,13 @@ To Do List - Dark Castle v3
 					- DONE: exclude case = 'universal', shape = 'meta' from post_action()
 					- DONE: update verb_list
 					- DONE: update intransitive_verb_lst
-				- INRPOC: create methods for each meta cmd:
+				- DONE: debug one-time
+					- IDEA: debug should really be a 2-word command
+					- DONE: update meta_cmd_exe() to take arg attrib
+					- DONE: update syntax tuples to pass arg
+					- DONE: manual test
+					- DONE: scenario test
+				- DONE: create methods for each meta cmd:
 					- DONE: score
 					- DONE: version
 					- DONE: credits
@@ -1209,20 +1215,21 @@ To Do List - Dark Castle v3
 					- DONE: brief
 					- DONE: superbrief
 					- DONE: rand_mode (gs.core.disp_rand_mode)
-					- TBD: debug
+					- DONE: debug
 				- INPROC: meta cmd updates
-					- INPROC: add new cmd to meta_cmd()
-					- INPROC: exclude meta cmd from legacy meta_cmd_lst
-					- INPROC: add meta cmd to new_meta_cmd_lst
-					- INPROC: add meta cmd to new syntax call
-					- INPROC: test manual
+					- DONE: add new cmd to meta_cmd()
+					- DONE: exclude meta cmd from legacy meta_cmd_lst
+					- DONE: add meta cmd to new_meta_cmd_lst
+					- DONE: add meta cmd to new syntax call
+					- DONE: test manual
 					- INPROC: test scenario
+						- TBD: fix scenario errors
+					- TBD: remove debug from secret_one_word_lst
+					- TBD: fix post removal of debug from list
+					- TBD: fix removal of secret_one_word_lst from one_word_only error
 					- INPROC: comment out cmd_exe() code
 					- INPROC: update verb table
-				- INPROC: debug one-time
-					- TBD: update meta_cmd_exe() to take arg attrib
-					- TBD: update meta_cmd_exe() calls to pass arg
-				- TBD: update app_main() to not move_incr() on meta cmds
+					- TBD: update app_main() to not move_incr() on meta cmds
 				- TBD: clean-up
 					- TBD: comment out legacy meta_cmd_lst syntax call in interp()
 					- TBD: comment out legacy meta_cmd syntax in interp()

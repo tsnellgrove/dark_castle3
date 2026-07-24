@@ -103,3 +103,14 @@ class Core(Invisible):
             gs.io.buffer("The current random mode is: " + str(gs.core.rand_mode))
             gs.io.buffer("The default random mode is 'random'. In 'locked' mode, all random events / responses are fixed. This is useful for testing and debugging. To enter 'locked' mode, start the game with an 'L' or 'l' after the game number at the game menu.")
         return
+
+    def set_debug_mode(self, pwd, gs):
+        """ Toggles debug mode if the correct password is provided
+        """
+#        if pwd != 'xyzzy':
+        if pwd != gs.io.get_str_nr('debug_pwd', 'eng'):
+            gs.io.buffer("Please start your sentence with a known verb!")
+        else:
+            self.is_debug = not self.is_debug
+            gs.io.buffer(f"Debug Mode is now set to {str(self.is_debug)}.")
+        return
