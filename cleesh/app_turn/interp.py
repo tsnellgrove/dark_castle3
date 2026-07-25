@@ -32,7 +32,8 @@ def input_cleanup(gs, user_input):
 
 
 ### syntax - convert user_input_lst into a case and action_lst
-def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
+def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
+#def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 	syntax_dict = {
 		('meta_cmd',) : {
@@ -46,7 +47,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 		('brief',) : ['brief', None, 'meta'],
 		('credits',) : ['credits', None, 'meta'],
-		('debug', 'xyzzy') : ['debug', 'xyzzy', 'meta'],
+#		('debug', 'xyzzy') : ['debug', 'xyzzy', 'meta'],
+		('debug', 'meta_arg') : ['debug', 'input_meta_arg', 'meta'],
 		('score',) : ['score', None, 'meta'],
 		('rand_mode',) : ['rand_mode', None, 'meta'],
 		('superbrief',) : ['superbrief', None, 'meta'],
@@ -187,8 +189,11 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 			action_lst[index] = gs.core.hero # convert class noun to object
 		if word == 'hero_rm_obj':
 			action_lst[index] = gs.map.hero_rm # convert class noun to object
+		if word == 'input_meta_arg':
+			action_lst[index] = prep_str # string
 		if word == 'hero_dir':
-			action_lst[index] = prep_dir_opt # string
+#			action_lst[index] = prep_dir_opt # string
+			action_lst[index] = prep_str # string
 		if word == 'verb_str':
 			action_lst[index] = input_verb # string
 		if word == 'do_noun_str':
@@ -374,7 +379,8 @@ def noun_handling(master_obj_lst, user_input_lst):
 	return False, "", word2_obj
 
 
-def parser(user_input_lst, verb_lst, dir_lst, prep_lst):
+# def parser(user_input_lst, verb_lst, dir_lst, prep_lst):
+def parser(user_input_lst, verb_lst, dir_lst, prep_lst, meta_arg_lst):
     """Categorize each word into one of five slots: verb, do_prep, do_noun, id_prep, id_noun.
     
     Slot assignment is sequential — a word's role depends on what slots are already filled:
@@ -396,6 +402,10 @@ def parser(user_input_lst, verb_lst, dir_lst, prep_lst):
     for word in user_input_lst:
         if word in verb_lst:
             parser_verb_lst.append(word)
+
+        elif len(parser_verb_lst) > 0 and parser_verb_lst[0] in meta_arg_lst:
+            parser_do_prep_lst.append(word)
+
         elif word in (dir_lst + prep_lst) and not do_noun_seen:
             parser_do_prep_lst.append(word)
         elif not id_prep_seen: # don't need: 'word not in (dir_lst + prep_lst) and '
@@ -429,7 +439,7 @@ def interpreter(user_input, master_obj_lst):
 	if len(user_input_lst) > 1 and user_input_lst[0] in (
 			gs.io.get_lst('pre_interp_word_lst','eng') + 
 			gs.io.get_lst('one_word_only_lst','eng') + 
-#			gs.io.get_lst('one_word_secret_lst','eng') +
+			gs.io.get_lst('one_word_secret_lst','eng') +
 			gs.io.get_lst('one_word_travel_lst','eng') # added
 			):
 		return 'error', [f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"]
@@ -440,6 +450,7 @@ def interpreter(user_input, master_obj_lst):
 	word1 = user_input_lst[0]
 	creature = gs.core.hero
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
+#	tst_mode = True # force test mode when troubleshooting debug command
 
 	action_verb_lst = [
 			'climb', 'close', 'doff', 'drop', 'eat', 'enter', 'examine', 'exit', 'go', 'jump',
@@ -461,6 +472,7 @@ def interpreter(user_input, master_obj_lst):
 			'up', 'down'
 			]
 	debug_pwd_lst = [gs.io.get_str_nr('debug_pwd', 'eng')]
+	meta_arg_lst = ['debug']
 	prep_lst = [
 			'at', 'in', 'out', 'on','to','from','with','by','for','of','about','under','over',
 			'between','behind','before','after','through','around','into', 'above', 'atop', 'down'
@@ -476,7 +488,7 @@ def interpreter(user_input, master_obj_lst):
 	meta_cmd_lst.remove('superbrief')
 	meta_cmd_lst.remove('verbose')
 	meta_cmd_lst.remove('rand_mode')
-	meta_cmd_lst.remove('debug')
+#	meta_cmd_lst.remove('debug')
 	new_meta_cmd_lst = ['brief', 'credits', 'debug', 'rand_mode', 'score', 'superbrief', 'verbose', 'version']
 	
 	full_verbs_lst = (
@@ -512,7 +524,7 @@ def interpreter(user_input, master_obj_lst):
 			do_noun_cmd_lst, 
 			id_prep_cmd_lst, 
 			id_noun_cmd_lst
-		) = parser(user_input_lst, verb_lst, dir_lst, prep_lst)
+		) = parser(user_input_lst, verb_lst, dir_lst, prep_lst, meta_arg_lst)
 
 		do_noun_obj = None
 		syntax_do_lst = []
@@ -613,6 +625,12 @@ def interpreter(user_input, master_obj_lst):
 
 		# *** syntax call - used by all verbs ***
 		# (note do_noun and id_noun substitution)
+		if verb_cmd_lst[0] in meta_arg_lst:
+			if len(do_prep_cmd_lst) > 0:
+				prep = do_prep_cmd_lst[0]
+			else:
+				prep = 'blank'
+			do_prep_cmd_lst = ['meta_arg']
 		user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
 		if tst_mode:
 			print(f"user_syntax_lst: {user_syntax_lst}")

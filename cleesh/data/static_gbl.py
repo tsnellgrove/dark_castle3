@@ -32,7 +32,9 @@ engine_static_dict = {
     
 #	'one_word_secret_lst' : ['debug_xyzzy', 'rand_mode'], # was 'debug_poke53281,0' before the cmd queue was implemented
 
-	'one_word_secret_lst' : ['debug', 'rand_mode'], # was 'debug_poke53281,0' before the cmd queue was implemented
+#	'one_word_secret_lst' : ['debug', 'rand_mode'], # was 'debug_poke53281,0' before the cmd queue was implemented
+
+	'one_word_secret_lst' : ['rand_mode'], # was 'debug_poke53281,0' before the cmd queue was implemented
 
     'one_word_only_lst' : ['credits', 'score', 'version', 'verbose', 'brief', 'superbrief'],
 

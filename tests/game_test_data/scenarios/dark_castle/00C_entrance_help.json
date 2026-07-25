@@ -23,7 +23,7 @@
     "help travel",
     "help verbosity",
     "help verbs",
-    "debug_xyzzy",
+    "debug xyzzy",
     "help debug"
   ],
   "mode": "locked",
