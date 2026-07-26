@@ -240,6 +240,43 @@ class IO(Invisible):
 			self.buffer("Invalid verbosity mode. Valid modes are: verbose, brief, superbrief.")
 			return
 
+	def disp_help(self, option, gs):
+		"""Displays the help information for the provided option.
+		"""
+		if option == 'menu':
+			output = self.get_str_nr('help')
+		elif option in ['basics', 'adjectives', 'prepositions', 'read', 'attack', 'creatures', 'save', 'multiples', 'command-queue', 'inventory', 'verbosity']:
+			key_str = "help_" + option
+			output = self.get_str_nr(key_str)
+		elif option == 'verbs':
+			output = "Available verbs include: " + ', '.join(sorted(self.get_lst('known_verb_lst','eng')))
+		elif option == 'one-word-commands':
+			display_one_word_lst = (self.get_lst('one_word_only_lst','eng') + 
+						self.get_lst('pre_interp_word_lst','eng') + 
+						self.get_lst('one_word_convert_lst','eng') + 
+						self.get_lst('one_or_two_word_lst','eng') 
+					)
+			output = ("Available one word commands include: " + ', '.join(sorted(display_one_word_lst)))
+		elif option == 'articles':
+			output = ("The following articles are supported but not required: " + ', '.join(self.get_lst('articles_lst','eng')))
+		elif  option == 'abbreviations':
+			pre_out = "Available abbreviations include: "
+			abbrev_dict = self.get_dict('abbreviations_dict','eng')
+			for key in abbrev_dict:
+				pre_out = pre_out + key + " = " + abbrev_dict[key] + ", "
+			output = pre_out[:-2]
+		elif option == 'travel':
+			output = (self.get_str_nr(f"help_{option}") + ', '.join(self.get_lst('one_word_travel_lst','eng')) + " (e.g. 'go north'). You can also 'climb' up or down a climbable object (e.g. 'climb up tree').")
+		elif option == 'debug':
+			if not gs.core.is_debug:
+				output = self.get_str_nr('help_debug_error')
+			else:
+				output = self.get_str_nr('help_debug') + ', '.join(self.get_lst('debug_verb_lst','eng'))
+		else:
+			output = self.get_str_nr('help')
+		self.buffer(output)
+		return
+
 
 	### buffer methods ###
 	def get_buff(self):

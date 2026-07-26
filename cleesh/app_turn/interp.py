@@ -33,7 +33,6 @@ def input_cleanup(gs, user_input):
 
 ### syntax - convert user_input_lst into a case and action_lst
 def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
-#def syntax(user_input_tpl, input_verb, do_noun, prep_dir_opt, id_noun, gs):
 
 	syntax_dict = {
 		('meta_cmd',) : {
@@ -47,7 +46,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 
 		('brief',) : ['brief', None, 'meta'],
 		('credits',) : ['credits', None, 'meta'],
-#		('debug', 'xyzzy') : ['debug', 'xyzzy', 'meta'],
 		('debug', 'meta_arg') : ['debug', 'input_meta_arg', 'meta'],
 		('score',) : ['score', None, 'meta'],
 		('rand_mode',) : ['rand_mode', None, 'meta'],
@@ -192,7 +190,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 		if word == 'input_meta_arg':
 			action_lst[index] = prep_str # string
 		if word == 'hero_dir':
-#			action_lst[index] = prep_dir_opt # string
 			action_lst[index] = prep_str # string
 		if word == 'verb_str':
 			action_lst[index] = input_verb # string
@@ -450,7 +447,6 @@ def interpreter(user_input, master_obj_lst):
 	word1 = user_input_lst[0]
 	creature = gs.core.hero
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
-#	tst_mode = True # force test mode when troubleshooting debug command
 
 	action_verb_lst = [
 			'climb', 'close', 'doff', 'drop', 'eat', 'enter', 'examine', 'exit', 'go', 'jump',
@@ -466,7 +462,6 @@ def interpreter(user_input, master_obj_lst):
 			'stash', 'step', 'taste', 'tug', 'vault', 'walk', 'yank'
 			] # symetric syn_verbs are substituted pre do_noun infer
 	debug_cmd_lst = ['get_weight', 'capacity', 'where_is']
-#	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst + debug_cmd_lst
 	dir_lst = [
 			'east', 'west', 'north', 'south', 'northeast', 'northwest', 'southeast', 'southwest', 
 			'up', 'down'
@@ -477,7 +472,6 @@ def interpreter(user_input, master_obj_lst):
 			'at', 'in', 'out', 'on','to','from','with','by','for','of','about','under','over',
 			'between','behind','before','after','through','around','into', 'above', 'atop', 'down'
 			] + debug_pwd_lst
-#	intransitive_verb_lst = ['go', 'inventory', 'stand', 'jump']
 	verb_requires_prep_lst = ['climb']
 
 	meta_cmd_lst = gs.io.get_lst('one_word_only_lst','eng') + gs.io.get_lst('one_word_secret_lst','eng')
@@ -488,7 +482,6 @@ def interpreter(user_input, master_obj_lst):
 	meta_cmd_lst.remove('superbrief')
 	meta_cmd_lst.remove('verbose')
 	meta_cmd_lst.remove('rand_mode')
-#	meta_cmd_lst.remove('debug')
 	new_meta_cmd_lst = ['brief', 'credits', 'debug', 'rand_mode', 'score', 'superbrief', 'verbose', 'version']
 	
 	full_verbs_lst = (

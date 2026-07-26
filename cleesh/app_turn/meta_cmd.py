@@ -12,26 +12,21 @@ def meta_cmd_exe(word_lst, gs):
     try:
         if meta_cmd == 'score':
             gs.score.print_score(gs)
-            return
-        if meta_cmd == 'version':
+        elif meta_cmd == 'version':
             gs.io.disp_version(gs)
-            return
-        if meta_cmd == 'credits':
+        elif meta_cmd == 'credits':
             gs.io.buff_e('credits')
-            return
-        if meta_cmd == 'verbose':
+        elif meta_cmd == 'verbose':
             gs.io.set_verbosity_mode('verbose', gs)
-            return
-        if meta_cmd == 'brief':
+        elif meta_cmd == 'brief':
             gs.io.set_verbosity_mode('brief', gs)
-            return
-        if meta_cmd == 'superbrief':
+        elif meta_cmd == 'superbrief':
             gs.io.set_verbosity_mode('superbrief', gs)
-            return
-        if meta_cmd == 'rand_mode':
+        elif meta_cmd == 'rand_mode':
             gs.core.disp_rand_mode(gs)
-            return
-        if meta_cmd == 'debug':
+        elif meta_cmd == 'debug':
             gs.core.set_debug_mode(arg, gs)
+        gs.core.move_decr()
+        return
     except Exception:
         gs.io.buff_dbg("[CMD] " + traceback.format_exc(), gs)

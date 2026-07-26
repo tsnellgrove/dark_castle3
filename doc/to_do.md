@@ -1216,7 +1216,7 @@ To Do List - Dark Castle v3
 					- DONE: superbrief
 					- DONE: rand_mode (gs.core.disp_rand_mode)
 					- DONE: debug
-				- INPROC: meta cmd updates
+				- DONE: meta cmd updates
 					- DONE: add new cmd to meta_cmd()
 					- DONE: exclude meta cmd from legacy meta_cmd_lst
 					- DONE: add meta cmd to new_meta_cmd_lst
@@ -1231,26 +1231,29 @@ To Do List - Dark Castle v3
 					- DONE: remove debug from secret_one_word_lst
 					- DONE: fix post removal of debug from list
 					- DONE: fix removal of secret_one_word_lst from one_word_only error
-					- TBD: update verb table
-					- TBD: update app_main() to not move_incr() on meta cmds
-					- TBD: clean up comments in interp(), static_gbl()
+					- DONE: update verb table
+					- DONE: update meta_cmd_exe() to move_decr() on meta cmds
+					- DONE: clean up comments in interp(), static_gbl()
 				- TBD: clean-up
 					- TBD: comment out legacy meta_cmd_lst syntax call in interp()
 					- TBD: comment out legacy meta_cmd syntax in interp()
 					- TBD: comment out tru_1word case in cmd_exe()
 					- TBD: manual test
 					- TBD: scenario test
+					- TBD: delete comments in interp() and cmd_exe()
+				- INPROC: help case
+					- DONE: methodize help in gs.io
+					- TBD: add 'help' to meta_arg_lst
+					- TBD: add new cmd to meta_cmd()
+					- TBD: confirm exclude from validate(), chk_trig(), score()
+					- TBD: update help args to change 'attack' to 'combat'
+					- TBD: comment help routine out of cmd_exe()
+					- TBD: comment out help in syntax
+					- TBD: comment out pre_new_interp help syntax calls
+					- TBD: scenario test
 					- TBD: delete comments
-			- TBD: help case
-				- TBD: methodize help and call via shapes (meta, add 'help' to meta_arg_lst)
-				- TBD: confirm exclude from validate(), chk_trig(), score()
-				- TBD: update help args to change 'attack' to 'combat'
-				- TBD: comment help routine out of cmd_exe()
-				- TBD: comment out help in syntax
-				- TBD: comment out pre_new_interp help syntax calls
-				- TBD: scenario test
-				- TBD: delete comments
-				- TBD: clean up comments in interp() and cmd_exe()
+					- TBD: clean up comments in interp() and cmd_exe()
+			- TBD: investigate moving meta cmds to app_main() loop (i.e. out of interp() )
 			- TBD: return parse_err and eliminate 'error' case
 			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
 				- TBD: address hand mgmt in hand_manage()
