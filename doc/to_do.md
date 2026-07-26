@@ -1243,17 +1243,24 @@ To Do List - Dark Castle v3
 					- DONE: delete comments in interp() and cmd_exe()
 				- INPROC: help case
 					- DONE: methodize help in gs.io
-					- TBD: add 'help' to meta_arg_lst
-					- TBD: add new cmd to meta_cmd()
-					- TBD: confirm exclude from validate(), chk_trig(), score()
-					- TBD: update help args to change 'attack' to 'combat'
+					- DONE: add new cmd to meta_cmd()
+					- DONE: comment out legacy help syntax call
+					- DONE: comment out legacy help syntax
+					- DONE: add meta cmd to new_meta_cmd_lst
+					- DONE: add meta cmd to new syntax call
+					- DONE: add 'help' to meta_arg_lst
+					- NA: confirm exclude from validate(), chk_trig(), score()
+					- DONE: manual test
+					- DONE: scenario test
+					- CANCEL: update help args to change 'attack' to 'combat'
 					- TBD: comment help routine out of cmd_exe()
-					- TBD: comment out help in syntax
-					- TBD: comment out pre_new_interp help syntax calls
+					- TBD: manual test
 					- TBD: scenario test
-					- TBD: delete comments
 					- TBD: clean up comments in interp() and cmd_exe()
 			- TBD: investigate moving meta cmds to app_main() loop (i.e. out of interp() )
+				- TBD: discovery
+				- TBD: refactor
+				- TBD: elim special cases for 'meta' and 'help' in interp() and parser()
 			- TBD: return parse_err and eliminate 'error' case
 			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
 				- TBD: address hand mgmt in hand_manage()

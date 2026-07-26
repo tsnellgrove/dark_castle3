@@ -26,6 +26,8 @@ def meta_cmd_exe(word_lst, gs):
             gs.core.disp_rand_mode(gs)
         elif meta_cmd == 'debug':
             gs.core.set_debug_mode(arg, gs)
+        elif meta_cmd == 'help':
+            gs.io.disp_help(arg, gs)
         gs.core.move_decr()
         return
     except Exception:

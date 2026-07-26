@@ -35,14 +35,15 @@ def input_cleanup(gs, user_input):
 def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 
 	syntax_dict = {
-		('help', 'option') : {
-			'case' : 'help',
-			'base_action_lst' : ['verb_str', 'hero_dir']
-		},
+#		('help', 'option') : {
+#			'case' : 'help',
+#			'base_action_lst' : ['verb_str', 'hero_dir']
+#		},
 
 		('brief',) : ['brief', None, 'meta'],
 		('credits',) : ['credits', None, 'meta'],
 		('debug', 'meta_arg') : ['debug', 'input_meta_arg', 'meta'],
+		('help', 'meta_arg') : ['help', 'input_meta_arg', 'meta'],
 		('score',) : ['score', None, 'meta'],
 		('rand_mode',) : ['rand_mode', None, 'meta'],
 		('superbrief',) : ['superbrief', None, 'meta'],
@@ -393,7 +394,8 @@ def parser(user_input_lst, verb_lst, dir_lst, prep_lst, meta_arg_lst):
     id_prep_seen = False
 
     for word in user_input_lst:
-        if word in verb_lst:
+        if (word in verb_lst and len(parser_verb_lst) == 0) or (word in verb_lst and parser_verb_lst[0] != 'help'):
+#		if word in verb_lst:
             parser_verb_lst.append(word)
 
         elif len(parser_verb_lst) > 0 and parser_verb_lst[0] in meta_arg_lst:
@@ -463,7 +465,7 @@ def interpreter(user_input, master_obj_lst):
 			'up', 'down'
 			]
 	debug_pwd_lst = [gs.io.get_str_nr('debug_pwd', 'eng')]
-	meta_arg_lst = ['debug']
+	meta_arg_lst = ['debug', 'help']
 	prep_lst = [
 			'at', 'in', 'out', 'on','to','from','with','by','for','of','about','under','over',
 			'between','behind','before','after','through','around','into', 'above', 'atop', 'down'
@@ -478,7 +480,7 @@ def interpreter(user_input, master_obj_lst):
 	meta_cmd_lst.remove('superbrief')
 	meta_cmd_lst.remove('verbose')
 	meta_cmd_lst.remove('rand_mode')
-	new_meta_cmd_lst = ['brief', 'credits', 'debug', 'rand_mode', 'score', 'superbrief', 'verbose', 'version']
+	new_meta_cmd_lst = ['brief', 'credits', 'debug', 'help','rand_mode', 'score', 'superbrief', 'verbose', 'version']
 	
 	full_verbs_lst = (
 			gs.io.get_lst('known_verb_lst','eng') + 
@@ -493,16 +495,17 @@ def interpreter(user_input, master_obj_lst):
 	prep = None # LEGACY
 
 	# *** one-word and meta commands ***
-	if word1 in ['help']:
-		if len(user_input_lst) == 1:
-			option = 'menu'
-		else:
-			option = user_input_lst[1]
-		case, action_lst = syntax(('help', 'option'), word1, None, option, None, gs)
+#	if word1 in ['help']:
+#		if len(user_input_lst) == 1:
+#			option = 'menu'
+#		else:
+#			option = user_input_lst[1]
+#		case, action_lst = syntax(('help', 'option'), word1, None, option, None, gs)
 
 
 	# *** new interp routine ***
-	elif word1 in (verb_lst + dir_lst + ['in', 'out']) + new_meta_cmd_lst: 
+	if word1 in (verb_lst + dir_lst + ['in', 'out']) + new_meta_cmd_lst: 
+#	elif word1 in (verb_lst + dir_lst + ['in', 'out']) + new_meta_cmd_lst: 
 
 		# *** local variable assignment ***
 		(
@@ -536,7 +539,7 @@ def interpreter(user_input, master_obj_lst):
 		if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
 			return 'error', ["Please start your sentence with a known verb!"]
 		# if verb count > 1, return error
-		if len(verb_cmd_lst) > 1: # e.g. 'help attack' already dealt with in one-word command processing
+		if len(verb_cmd_lst) > 1 and word1 != 'help': # e.g. 'help attack' already dealt with in one-word command processing
 			return 'error', ['I see more than one verb in that sentence!']			
 		# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
 		err_chk, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
@@ -616,7 +619,7 @@ def interpreter(user_input, master_obj_lst):
 			if len(do_prep_cmd_lst) > 0:
 				prep = do_prep_cmd_lst[0]
 			else:
-				prep = 'blank'
+				prep = 'menu'
 			do_prep_cmd_lst = ['meta_arg']
 		user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
 		if tst_mode:
