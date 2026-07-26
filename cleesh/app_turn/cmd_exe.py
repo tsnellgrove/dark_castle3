@@ -45,43 +45,6 @@ def cmd_execute(gs, case, word_lst):
 				output = gs.io.get_str_nr('help')
 			gs.io.buffer(output)
 			return
-#		if  case == 'tru_1word':
-#			word1 = word_lst[0]
-#			if word1 == 'score':
-#				gs.score.print_score(gs)
-#				return
-#			if word1 == 'version':
-#				gs.io.buffer(f"{gs.io.get_str_nr('game_full_name')} version = {gs.io.get_str_nr('game_version')}")
-#				gs.io.buffer(f"{gs.io.get_str_nr('engine_name', 'eng')} version = {gs.io.get_str_nr('engine_version', 'eng')}")
-#				return
-#			if word1 == 'credits':
-#				gs.io.buff_e('credits')
-#				return
-#			if word1 == 'verbose':
-#				gs.io.vbosity_mode = 'verbose'
-#				gs.io.buffer("Maximum verbosity.")
-#				return
-#			if word1 == 'brief':
-#				gs.io.vbosity_mode = 'brief'
-#				gs.io.buffer("Brief descriptions.")
-#				return
-#			if word1 == 'superbrief':
-#				gs.io.vbosity_mode = 'superbrief'
-#				gs.io.buffer("Superbrief descriptions.")
-#				return
-#			if word1 == 'debug_xyzzy':
-#				gs.core.is_debug = not gs.core.is_debug
-#				gs.io.buffer(f"Debug Mode is now set to {str(gs.core.is_debug)}.")
-#				return
-#			if word1 == 'rand_mode':
-#				if not gs.core.is_debug:
-#					gs.io.buffer("Please start your sentence with a known verb!")
-#				else:
-#					gs.io.buffer("The current random mode is: " + str(gs.core.rand_mode))
-#					gs.io.buffer("The default random mode is 'random'. In 'locked' mode, all random events / responses are fixed. This is useful for testing and debugging. To enter 'locked' mode, start the game with an 'L' or 'l' after the game number at the game menu.")
-#				return
-#			gs.io.buff_dbg("[CMD] tru_1word case not found", gs)
-#			return
 		if case == 'universal':
 			if word_lst[-1] in ['meta']:
 				meta_cmd_exe(word_lst, gs)

@@ -35,10 +35,6 @@ def input_cleanup(gs, user_input):
 def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 
 	syntax_dict = {
-		('meta_cmd',) : {
-			'case' : 'tru_1word',
-			'base_action_lst' : ['verb_str']
-		},
 		('help', 'option') : {
 			'case' : 'help',
 			'base_action_lst' : ['verb_str', 'hero_dir']
@@ -497,9 +493,7 @@ def interpreter(user_input, master_obj_lst):
 	prep = None # LEGACY
 
 	# *** one-word and meta commands ***
-	if word1 in meta_cmd_lst: # e.g. credits, score, version, verbose, brief, superbrief
-		case, action_lst = syntax(('meta_cmd',), word1, None, None, None, gs)
-	elif word1 in ['help']:
+	if word1 in ['help']:
 		if len(user_input_lst) == 1:
 			option = 'menu'
 		else:

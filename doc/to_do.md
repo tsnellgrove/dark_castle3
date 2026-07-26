@@ -1234,13 +1234,13 @@ To Do List - Dark Castle v3
 					- DONE: update verb table
 					- DONE: update meta_cmd_exe() to move_decr() on meta cmds
 					- DONE: clean up comments in interp(), static_gbl()
-				- TBD: clean-up
-					- TBD: comment out legacy meta_cmd_lst syntax call in interp()
-					- TBD: comment out legacy meta_cmd syntax in interp()
-					- TBD: comment out tru_1word case in cmd_exe()
-					- TBD: manual test
-					- TBD: scenario test
-					- TBD: delete comments in interp() and cmd_exe()
+				- DONE: clean-up
+					- DONE: comment out legacy meta_cmd_lst syntax call in interp()
+					- DONE: comment out legacy meta_cmd syntax in interp()
+					- DONE: comment out tru_1word case in cmd_exe()
+					- DONE: manual test
+					- DONE: scenario test
+					- DONE: delete comments in interp() and cmd_exe()
 				- INPROC: help case
 					- DONE: methodize help in gs.io
 					- TBD: add 'help' to meta_arg_lst
