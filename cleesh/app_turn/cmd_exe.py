@@ -10,41 +10,6 @@ from cleesh.app_turn.meta_cmd import meta_cmd_exe
 ### execute commands based on case ###
 def cmd_execute(gs, case, word_lst):
 	try:
-		if case == 'help':
-			option = word_lst[1]
-			if option == 'menu':
-				output = gs.io.get_str_nr('help')
-			elif option in ['basics', 'adjectives', 'prepositions', 'read', 'attack', 'creatures', 'save', 'multiples', 'command-queue', 'inventory', 'verbosity']:
-				key_str = "help_" + option
-				output = gs.io.get_str_nr(key_str)
-			elif option == 'verbs':
-				output = "Available verbs include: " + ', '.join(sorted(gs.io.get_lst('known_verb_lst','eng')))
-			elif option == 'one-word-commands':
-				display_one_word_lst = (gs.io.get_lst('one_word_only_lst','eng') + 
-						 gs.io.get_lst('pre_interp_word_lst','eng') + 
-						 gs.io.get_lst('one_word_convert_lst','eng') + 
-						 gs.io.get_lst('one_or_two_word_lst','eng') 
-						)
-				output = ("Available one word commands include: " + ', '.join(sorted(display_one_word_lst)))
-			elif option == 'articles':
-				output = ("The following articles are supported but not required: " + ', '.join(gs.io.get_lst('articles_lst','eng')))
-			elif  option == 'abbreviations':
-				pre_out = "Available abbreviations include: "
-				abbrev_dict = gs.io.get_dict('abbreviations_dict','eng')
-				for key in abbrev_dict:
-					pre_out = pre_out + key + " = " + abbrev_dict[key] + ", "
-				output = pre_out[:-2]
-			elif option == 'travel':
-				output = (gs.io.get_str_nr(f"help_{option}") + ', '.join(gs.io.get_lst('one_word_travel_lst','eng')) + " (e.g. 'go north'). You can also 'climb' up or down a climbable object (e.g. 'climb up tree').")
-			elif option == 'debug':
-				if not gs.core.is_debug:
-					output = gs.io.get_str_nr('help_debug_error')
-				else:
-					output = gs.io.get_str_nr('help_debug') + ', '.join(gs.io.get_lst('debug_verb_lst','eng'))
-			else:
-				output = gs.io.get_str_nr('help')
-			gs.io.buffer(output)
-			return
 		if case == 'universal':
 			if word_lst[-1] in ['meta']:
 				meta_cmd_exe(word_lst, gs)

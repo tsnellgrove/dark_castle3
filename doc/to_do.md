@@ -1241,7 +1241,7 @@ To Do List - Dark Castle v3
 					- DONE: manual test
 					- DONE: scenario test
 					- DONE: delete comments in interp() and cmd_exe()
-				- INPROC: help case
+				- DONE: help case
 					- DONE: methodize help in gs.io
 					- DONE: add new cmd to meta_cmd()
 					- DONE: comment out legacy help syntax call
@@ -1253,10 +1253,10 @@ To Do List - Dark Castle v3
 					- DONE: manual test
 					- DONE: scenario test
 					- CANCEL: update help args to change 'attack' to 'combat'
-					- TBD: comment help routine out of cmd_exe()
-					- TBD: manual test
-					- TBD: scenario test
-					- TBD: clean up comments in interp() and cmd_exe()
+					- DONE: comment help routine out of cmd_exe()
+					- DONE: manual test
+					- DONE: scenario test
+					- DONE: clean up comments in interp() and cmd_exe()
 			- TBD: investigate moving meta cmds to app_main() loop (i.e. out of interp() )
 				- TBD: discovery
 				- TBD: refactor

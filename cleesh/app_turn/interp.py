@@ -35,11 +35,6 @@ def input_cleanup(gs, user_input):
 def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 
 	syntax_dict = {
-#		('help', 'option') : {
-#			'case' : 'help',
-#			'base_action_lst' : ['verb_str', 'hero_dir']
-#		},
-
 		('brief',) : ['brief', None, 'meta'],
 		('credits',) : ['credits', None, 'meta'],
 		('debug', 'meta_arg') : ['debug', 'input_meta_arg', 'meta'],
@@ -394,11 +389,10 @@ def parser(user_input_lst, verb_lst, dir_lst, prep_lst, meta_arg_lst):
     id_prep_seen = False
 
     for word in user_input_lst:
-        if (word in verb_lst and len(parser_verb_lst) == 0) or (word in verb_lst and parser_verb_lst[0] != 'help'):
-#		if word in verb_lst:
+        if (word in verb_lst and len(parser_verb_lst) == 0) or (word in verb_lst and parser_verb_lst[0] != 'help'): # meta exception
             parser_verb_lst.append(word)
 
-        elif len(parser_verb_lst) > 0 and parser_verb_lst[0] in meta_arg_lst:
+        elif len(parser_verb_lst) > 0 and parser_verb_lst[0] in meta_arg_lst: # meta exception
             parser_do_prep_lst.append(word)
 
         elif word in (dir_lst + prep_lst) and not do_noun_seen:
@@ -494,18 +488,9 @@ def interpreter(user_input, master_obj_lst):
 	action_lst = None
 	prep = None # LEGACY
 
-	# *** one-word and meta commands ***
-#	if word1 in ['help']:
-#		if len(user_input_lst) == 1:
-#			option = 'menu'
-#		else:
-#			option = user_input_lst[1]
-#		case, action_lst = syntax(('help', 'option'), word1, None, option, None, gs)
-
 
 	# *** new interp routine ***
-	if word1 in (verb_lst + dir_lst + ['in', 'out']) + new_meta_cmd_lst: 
-#	elif word1 in (verb_lst + dir_lst + ['in', 'out']) + new_meta_cmd_lst: 
+	if word1 in (verb_lst + dir_lst + ['in', 'out']) + new_meta_cmd_lst: # meta exception
 
 		# *** local variable assignment ***
 		(
@@ -615,7 +600,7 @@ def interpreter(user_input, master_obj_lst):
 
 		# *** syntax call - used by all verbs ***
 		# (note do_noun and id_noun substitution)
-		if verb_cmd_lst[0] in meta_arg_lst:
+		if verb_cmd_lst[0] in meta_arg_lst: # meta exception
 			if len(do_prep_cmd_lst) > 0:
 				prep = do_prep_cmd_lst[0]
 			else:
