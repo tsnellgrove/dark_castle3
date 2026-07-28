@@ -1257,10 +1257,28 @@ To Do List - Dark Castle v3
 					- DONE: manual test
 					- DONE: scenario test
 					- DONE: clean up comments in interp() and cmd_exe()
-			- TBD: investigate moving meta cmds to app_main() loop (i.e. out of interp() )
-				- TBD: discovery
+			- INPROC: investigate moving meta cmds to app_main() loop (i.e. out of interp() )
+				- DONE: discovery
+					- IDEA: move "wait" to interp cmd (method of Room)
+					- IDEA: move meta cmds to where "wait" is (post "again")
+					- IDEA: will need some extra code for meta cmds w/ args (e.g. "debug" & "help")
+						- IDEA: pattern == trigger on first word and assume arg = 'menu' if not given
+					- IDEA: key decider 1: does time pass during cmd (meta = no, "wait" = yes)
+					- IDEA: key decider 2: could the game world impact player during this turn
+						- IDEA: meta cmds = no, "wait" = yes (could be attacked, could be falling, etc)
 				- TBD: refactor
-				- TBD: elim special cases for 'meta' and 'help' in interp() and parser()
+					- TBD: move 1-word meta cmds to app_main()
+					- TBD: move meta cmds w/ args to app_main()
+					- TBD: update 'pre_interp_word_lst'
+					- TBD: move "wait" to Room method / interp()
+					- TBD: update verb table (including quit, restart, again, wait, save, restore)
+				- TBD: clean-up
+					- TBD: elim special cases for 'meta' and 'help' in interp() and parser()
+					- TBD: elim meta_lst in interp()
+					- TBD: elim is_wait in app_main()
+					- TBD: process meta cmds as external function
+					- TBD: elim meta_cmd()
+					- TBD: deep dive in interp() and clean-up
 			- TBD: return parse_err and eliminate 'error' case
 			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
 				- TBD: address hand mgmt in hand_manage()
