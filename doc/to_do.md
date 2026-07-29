@@ -1266,8 +1266,11 @@ To Do List - Dark Castle v3
 					- IDEA: key decider 1: does time pass during cmd (meta = no, "wait" = yes)
 					- IDEA: key decider 2: could the game world impact player during this turn
 						- IDEA: meta cmds = no, "wait" = yes (could be attacked, could be falling, etc)
-				- TBD: refactor
-					- TBD: move 1-word meta cmds to app_main()
+				- INPROC: refactor
+					- INPROC: move 1-word meta cmds to app_main()
+						- DONE: add meta_cmd_exe() as external function to app_main()
+						- TBD: make input_cleanup() a stand-alone module
+						- TBD: call input_cleanup() from app_main().meta_cmd_exe()
 					- TBD: move meta cmds w/ args to app_main()
 					- TBD: update 'pre_interp_word_lst'
 					- TBD: move "wait" to Room method / interp()

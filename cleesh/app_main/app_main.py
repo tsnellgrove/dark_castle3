@@ -4,6 +4,7 @@
 
 
 ### import statements
+import traceback
 import pickle
 from cleesh.app_turn.interp import interpreter
 from cleesh.app_turn.validate import validate
@@ -77,6 +78,32 @@ def weapon_disp(gs, start_in_hand):
 	if (end_in_hand is not None) and (end_in_hand.is_weapon()):
 		gs.io.buffer(f"With the {end_in_hand.full_name} in hand you are now armed and dangerous!")
 	return
+
+def meta_cmd_exe(word_lst, gs):
+    meta_cmd, arg, *_ = word_lst
+    try:
+        if meta_cmd == 'score':
+            gs.score.print_score(gs)
+        elif meta_cmd == 'version':
+            gs.io.disp_version(gs)
+        elif meta_cmd == 'credits':
+            gs.io.buff_e('credits')
+        elif meta_cmd == 'verbose':
+            gs.io.set_verbosity_mode('verbose', gs)
+        elif meta_cmd == 'brief':
+            gs.io.set_verbosity_mode('brief', gs)
+        elif meta_cmd == 'superbrief':
+            gs.io.set_verbosity_mode('superbrief', gs)
+        elif meta_cmd == 'rand_mode':
+            gs.core.disp_rand_mode(gs)
+        elif meta_cmd == 'debug':
+            gs.core.set_debug_mode(arg, gs)
+        elif meta_cmd == 'help':
+            gs.io.disp_help(arg, gs)
+        gs.core.move_decr()
+        return
+    except Exception:
+        gs.io.buff_dbg("[APP_MAIN-META] " + traceback.format_exc(), gs)
 
 
 ### loads game obj, calls other modules, and saves game obj ###
