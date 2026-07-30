@@ -354,7 +354,7 @@ def parser(user_input_lst, verb_lst, dir_lst, prep_lst, meta_arg_lst):
 	- do_noun: any word after do_prep (or immediately after verb), until an id_prep appears
 	- id_prep: prep after a do_noun has been identified
 	- id_noun: any non-prep word after id_prep
-    """
+	"""
 	parser_verb_lst = []
 	parser_do_prep_lst = []
 	parser_do_noun_lst = []

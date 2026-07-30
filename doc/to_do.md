@@ -1269,20 +1269,33 @@ To Do List - Dark Castle v3
 				- INPROC: refactor
 					- INPROC: move 1-word meta cmds to app_main()
 						- DONE: add meta_cmd_exe() as external function to app_main()
-						- INPROC: make input_cleanup() a stand-alone module
+						- DONE: make input_cleanup() a stand-alone module
 							- DONE: create new module
 							- DONE: import new module
 							- NA: call new input_cleanup() module from interp
 							- DONE: comment out old input_cleanup() func in interp()
 							- DONE: manual test
 							- DONE: scenario test
-							- TBD: clean up comments in interp()
-						- TBD: call input_cleanup() from app_main().meta_cmd_exe()
+							- DONE: clean up comments in interp()
+						- INPROC: use inpute_cleanup() in app_main()
+							- DONE: import inpute_cleanup() in app_main()
+							- DONE: call input_cleanup() from app_main()
+							- DONE: update existing pre_interp cmd clean-up
+							- DONE: manual test
+							- DONE: sceanraio test
+							- TBD: meta_cmd func
+								- TBD: discovery of additional return values needed
+								- TBD: call meta_cmd func in app_main()
+								- TBD: in meta_cmd(), be sure to populate last cmd cache for 'g'
+								- TBD: 'again' error for no last cmd (if 'g' before any other action)
+								- TBD: 'again' error for 'g' after 'z'
+							- TBD: use input_cleanup() for save and restore in web_main()
 					- TBD: move meta cmds w/ args to app_main()
 					- TBD: update 'pre_interp_word_lst'
 					- TBD: move "wait" to Room method / interp()
 					- TBD: update verb table (including quit, restart, again, wait, save, restore)
 				- TBD: clean-up
+					- TBD: clean-up comments in app_main() and web_main()
 					- TBD: elim special cases for 'meta' and 'help' in interp() and parser()
 					- TBD: elim meta_lst in interp()
 					- TBD: elim is_wait in app_main()

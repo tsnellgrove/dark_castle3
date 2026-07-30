@@ -13,6 +13,7 @@ from cleesh.app_turn.cmd_exe import cmd_execute
 from cleesh.app_turn.post_action import post_action
 from cleesh.app_turn.auto_action import auto_action
 from cleesh.app_turn.hand_manage import hand_mgmt
+from cleesh.app_turn.input_cleanup import input_cleanup
 
 
 ### loacl functions
@@ -136,21 +137,30 @@ def app_main(user_input, game_name, root_path_str):
 		is_multiples_action = False
 
 		# mutually exclusive special command cases
-		if user_input.lower().strip() in ['quit', 'q']:
+		user_input_lst = input_cleanup(gs, user_input)
+		if len(user_input_lst) == 0:
+			word1 = ""
+		else:
+			word1 = user_input_lst[0]
+#		if user_input.lower().strip() in ['quit', 'q']:
+		if word1 in ['quit', 'q']:
 			gs.end.game_ending = 'quit.'
 			gs.end.is_end = True
 			is_interp_cmd = False
 			gs.io.reset_cmd_queue()
-		elif user_input.lower().strip() == 'restart':
+#		elif user_input.lower().strip() == 'restart':
+		elif word1 == 'restart':
 			gs.end.game_ending = 'restarted.'
 			is_start = True
 			is_interp_cmd = False
 			gs.io.reset_cmd_queue()
-		elif user_input.lower().strip() in ['again', 'g']:
+#		elif user_input.lower().strip() in ['again', 'g']:
+		elif word1 in ['again', 'g']:
 			user_input = gs.io.last_input_str
 
 		# post-'again', special command cases (must be independent 'if' in case of 'again')
-		if user_input.lower().strip() in ['wait', 'z']:
+#		if user_input.lower().strip() in ['wait', 'z']:
+		if word1 in ['wait', 'z']:
 			is_wait = True
 			gs.io.buffer("Waiting...")
 			is_interp_cmd = False
