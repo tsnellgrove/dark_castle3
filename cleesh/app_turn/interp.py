@@ -4,31 +4,7 @@
 
 
 ### import statements
-
-
-### input_cleanup - user_input str to lst, lower, convert abbrev & verb_syn, remove articles / buzz
-def input_cleanup(gs, user_input):
-	# first, convert to lower case and strip leading/trailing whitespace
-	user_input = user_input.lower().strip()
-
-	# second, convert user input string into word list
-	lst = []
-	lst.append(user_input)
-	user_input_lst = lst[0].split()
-
-	# third, substitute abbreviationss and verb_syn
-	abbrev_dict = gs.io.get_dict('abbreviations_dict','eng')
-	verb_syn_dict = gs.io.get_dict('verb_syn_dict','eng')
-	for index, word in enumerate(user_input_lst):
-		if word in abbrev_dict:
-			user_input_lst[index] = abbrev_dict[word]
-		elif word in verb_syn_dict:
-			user_input_lst[index] = verb_syn_dict[word]
-
-	# finally, strip out articles / buzz words
-	for article in gs.io.get_lst('articles_lst','eng'):
-		user_input_lst = [word for word in user_input_lst if word != article]
-	return user_input_lst
+from cleesh.app_turn.input_cleanup import input_cleanup
 
 
 ### syntax - convert user_input_lst into a case and action_lst
@@ -370,43 +346,43 @@ def noun_handling(master_obj_lst, user_input_lst):
 
 # def parser(user_input_lst, verb_lst, dir_lst, prep_lst):
 def parser(user_input_lst, verb_lst, dir_lst, prep_lst, meta_arg_lst):
-    """Categorize each word into one of five slots: verb, do_prep, do_noun, id_prep, id_noun.
-    
-    Slot assignment is sequential — a word's role depends on what slots are already filled:
-      - verb:    recognized verb
-      - do_prep: direction or prep, but only before any do_noun appears
-      - do_noun: any word after do_prep (or immediately after verb), until an id_prep appears
-      - id_prep: prep after a do_noun has been identified
-      - id_noun: any non-prep word after id_prep
+	"""Categorize each word into one of five slots: verb, do_prep, do_noun, id_prep, id_noun.
+
+	Slot assignment is sequential — a word's role depends on what slots are already filled:
+	- verb:    recognized verb
+	- do_prep: direction or prep, but only before any do_noun appears
+	- do_noun: any word after do_prep (or immediately after verb), until an id_prep appears
+	- id_prep: prep after a do_noun has been identified
+	- id_noun: any non-prep word after id_prep
     """
-    parser_verb_lst = []
-    parser_do_prep_lst = []
-    parser_do_noun_lst = []
-    parser_id_prep_lst = []
-    parser_id_noun_lst = []
+	parser_verb_lst = []
+	parser_do_prep_lst = []
+	parser_do_noun_lst = []
+	parser_id_prep_lst = []
+	parser_id_noun_lst = []
 
-    do_noun_seen = False
-    id_prep_seen = False
+	do_noun_seen = False
+	id_prep_seen = False
 
-    for word in user_input_lst:
-        if (word in verb_lst and len(parser_verb_lst) == 0) or (word in verb_lst and parser_verb_lst[0] != 'help'): # meta exception
-            parser_verb_lst.append(word)
+	for word in user_input_lst:
+		if (word in verb_lst and len(parser_verb_lst) == 0) or (word in verb_lst and parser_verb_lst[0] != 'help'): # meta exception
+			parser_verb_lst.append(word)
 
-        elif len(parser_verb_lst) > 0 and parser_verb_lst[0] in meta_arg_lst: # meta exception
-            parser_do_prep_lst.append(word)
+		elif len(parser_verb_lst) > 0 and parser_verb_lst[0] in meta_arg_lst: # meta exception
+			parser_do_prep_lst.append(word)
 
-        elif word in (dir_lst + prep_lst) and not do_noun_seen:
-            parser_do_prep_lst.append(word)
-        elif not id_prep_seen: # don't need: 'word not in (dir_lst + prep_lst) and '
-            parser_do_noun_lst.append(word)
-            do_noun_seen = True
-        elif word in prep_lst and do_noun_seen:
-            parser_id_prep_lst.append(word)
-            id_prep_seen = True
-        elif id_prep_seen: # don't need: 'word not in prep_lst and '
-            parser_id_noun_lst.append(word)
+		elif word in (dir_lst + prep_lst) and not do_noun_seen:
+			parser_do_prep_lst.append(word)
+		elif not id_prep_seen: # don't need: 'word not in (dir_lst + prep_lst) and '
+			parser_do_noun_lst.append(word)
+			do_noun_seen = True
+		elif word in prep_lst and do_noun_seen:
+			parser_id_prep_lst.append(word)
+			id_prep_seen = True
+		elif id_prep_seen: # don't need: 'word not in prep_lst and '
+			parser_id_noun_lst.append(word)
 
-    return parser_verb_lst, parser_do_prep_lst, parser_do_noun_lst, parser_id_prep_lst, parser_id_noun_lst
+	return parser_verb_lst, parser_do_prep_lst, parser_do_noun_lst, parser_id_prep_lst, parser_id_noun_lst
 
 
 ### interpreter - determine user intent

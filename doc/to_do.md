@@ -1269,7 +1269,14 @@ To Do List - Dark Castle v3
 				- INPROC: refactor
 					- INPROC: move 1-word meta cmds to app_main()
 						- DONE: add meta_cmd_exe() as external function to app_main()
-						- TBD: make input_cleanup() a stand-alone module
+						- INPROC: make input_cleanup() a stand-alone module
+							- DONE: create new module
+							- DONE: import new module
+							- NA: call new input_cleanup() module from interp
+							- DONE: comment out old input_cleanup() func in interp()
+							- DONE: manual test
+							- DONE: scenario test
+							- TBD: clean up comments in interp()
 						- TBD: call input_cleanup() from app_main().meta_cmd_exe()
 					- TBD: move meta cmds w/ args to app_main()
 					- TBD: update 'pre_interp_word_lst'
