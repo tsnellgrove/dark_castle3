@@ -81,30 +81,32 @@ def weapon_disp(gs, start_in_hand):
 	return
 
 def meta_cmd_exe(word_lst, gs):
-    meta_cmd, arg, *_ = word_lst
-    try:
-        if meta_cmd == 'score':
-            gs.score.print_score(gs)
-        elif meta_cmd == 'version':
-            gs.io.disp_version(gs)
-        elif meta_cmd == 'credits':
-            gs.io.buff_e('credits')
-        elif meta_cmd == 'verbose':
-            gs.io.set_verbosity_mode('verbose', gs)
-        elif meta_cmd == 'brief':
-            gs.io.set_verbosity_mode('brief', gs)
-        elif meta_cmd == 'superbrief':
-            gs.io.set_verbosity_mode('superbrief', gs)
-        elif meta_cmd == 'rand_mode':
-            gs.core.disp_rand_mode(gs)
-        elif meta_cmd == 'debug':
-            gs.core.set_debug_mode(arg, gs)
-        elif meta_cmd == 'help':
-            gs.io.disp_help(arg, gs)
-        gs.core.move_decr()
-        return
-    except Exception:
-        gs.io.buff_dbg("[APP_MAIN-META] " + traceback.format_exc(), gs)
+	if len(word_lst) == 1:
+		word_lst.append('menu')
+	meta_cmd, arg, *_ = word_lst
+	try:
+		if meta_cmd == 'score':
+			gs.score.print_score(gs)
+		elif meta_cmd == 'version':
+			gs.io.disp_version(gs)
+		elif meta_cmd == 'credits':
+			gs.io.buff_e('credits')
+		elif meta_cmd == 'verbose':
+			gs.io.set_verbosity_mode('verbose', gs)
+		elif meta_cmd == 'brief':
+			gs.io.set_verbosity_mode('brief', gs)
+		elif meta_cmd == 'superbrief':
+			gs.io.set_verbosity_mode('superbrief', gs)
+		elif meta_cmd == 'rand_mode':
+			gs.core.disp_rand_mode(gs)
+		elif meta_cmd == 'debug':
+			gs.core.set_debug_mode(arg, gs)
+		elif meta_cmd == 'help':
+			gs.io.disp_help(arg, gs)
+		gs.core.move_decr()
+		return
+	except Exception:
+		gs.io.buff_dbg("[APP_MAIN-META] " + traceback.format_exc(), gs)
 
 
 ### loads game obj, calls other modules, and saves game obj ###
@@ -163,6 +165,9 @@ def app_main(user_input, game_name, root_path_str):
 		if word1 in ['wait', 'z']:
 			is_wait = True
 			gs.io.buffer("Waiting...")
+			is_interp_cmd = False
+		elif word1 in ['score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 'rand_mode', 'debug', 'help']:
+			meta_cmd_exe(user_input_lst, gs)
 			is_interp_cmd = False
 
 		# custom handling for 'x all except'

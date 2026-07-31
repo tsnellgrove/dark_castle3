@@ -1283,9 +1283,13 @@ To Do List - Dark Castle v3
 							- DONE: update existing pre_interp cmd clean-up
 							- DONE: manual test
 							- DONE: sceanraio test
-							- TBD: meta_cmd func
-								- TBD: discovery of additional return values needed
-								- TBD: call meta_cmd func in app_main()
+							- INPROC: meta_cmd func
+								- DONE: discovery of additional return values needed
+								- DONE: call meta_cmd func in app_main()
+								- DONE: comment out meta_cmd_exe() module
+								- DONE: manual test
+								- INPROC: scenario test
+									- TBD: review and fix turn counts
 								- TBD: in meta_cmd(), be sure to populate last cmd cache for 'g'
 								- TBD: 'again' error for no last cmd (if 'g' before any other action)
 								- TBD: 'again' error for 'g' after 'z'
@@ -1296,6 +1300,8 @@ To Do List - Dark Castle v3
 					- TBD: update verb table (including quit, restart, again, wait, save, restore)
 				- TBD: clean-up
 					- TBD: clean-up comments in app_main() and web_main()
+					- TBD: delete meta_cmd() module
+					- TBD: clean-up comments in cmd_exe()
 					- TBD: elim special cases for 'meta' and 'help' in interp() and parser()
 					- TBD: elim meta_lst in interp()
 					- TBD: elim is_wait in app_main()
