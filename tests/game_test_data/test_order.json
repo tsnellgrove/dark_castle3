@@ -1,0 +1,9 @@
+{
+  "order": [
+    "basic_entrance_exploration.json",
+    "gate_opening_sequence.json",
+    "simple_combat_test.json",
+    "sword_acquisition.json",
+    "tree_climbing_sequence.json"
+  ]
+}

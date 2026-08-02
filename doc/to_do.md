@@ -1267,7 +1267,7 @@ To Do List - Dark Castle v3
 					- IDEA: key decider 2: could the game world impact player during this turn
 						- IDEA: meta cmds = no, "wait" = yes (could be attacked, could be falling, etc)
 				- INPROC: refactor
-					- INPROC: move 1-word meta cmds to app_main()
+					- DONE: move 1-word meta cmds to app_main()
 						- DONE: add meta_cmd_exe() as external function to app_main()
 						- DONE: make input_cleanup() a stand-alone module
 							- DONE: create new module
@@ -1288,15 +1288,22 @@ To Do List - Dark Castle v3
 								- DONE: call meta_cmd func in app_main()
 								- DONE: comment out meta_cmd_exe() module
 								- DONE: manual test
-								- INPROC: scenario test
-									- TBD: review and fix turn counts
-								- TBD: in meta_cmd(), be sure to populate last cmd cache for 'g'
-								- TBD: 'again' error for no last cmd (if 'g' before any other action)
-								- TBD: 'again' error for 'g' after 'z'
-							- TBD: use input_cleanup() for save and restore in web_main()
-					- TBD: move meta cmds w/ args to app_main()
+								- DONE: scenario test
+									- DONE: review and fix turn counts (turn counts down)
+								- DONE: in meta_cmd(), be sure to populate last cmd cache for 'g'
+								- DONE: 'again' error for no last cmd (if 'g' before any other action)
+								- DONE: 'again' error for 'g' after 'z'
+								- DONE: refactor 'again' to top of meta cmds to avoid re-clean-up
+								- DONE: move no-input-err to app_main() "I beg your pardon?"
+									- DONE: comment out no-input-err in interp()
+								- DONE: app_main() is_meta_cmd flag; avoid clear queue on not is_valid
+								- TBD: move 'quit' and 'restart' to meta_cmd_exe() func
+								- TBD: move "wait" to Room method / interp(); Room method
+								- TBD: manual test
+								- TBD: scenario test
+								- TBD: clean up comments in app_main() and interp()
+					- TBD: use input_cleanup() for save and restore in web_main()
 					- TBD: update 'pre_interp_word_lst'
-					- TBD: move "wait" to Room method / interp()
 					- TBD: update verb table (including quit, restart, again, wait, save, restore)
 				- TBD: clean-up
 					- TBD: clean-up comments in app_main() and web_main()

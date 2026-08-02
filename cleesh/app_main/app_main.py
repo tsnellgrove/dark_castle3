@@ -16,7 +16,7 @@ from cleesh.app_turn.hand_manage import hand_mgmt
 from cleesh.app_turn.input_cleanup import input_cleanup
 
 
-### loacl functions
+### local functions
 def except_mini_interpreter(gs, user_input, inventory_lst):
 	""" mini-interpreter for 'except' command in multiples actions """
 	gs.io.last_input_str = user_input # assign 'again' value
@@ -133,17 +133,28 @@ def app_main(user_input, game_name, root_path_str):
 		is_start = False
 		is_wait = False
 		is_interp_cmd = True
+		is_meta_cmd = False
 		is_valid = False
 		is_att = False
 		has_except = False
 		is_multiples_action = False
+		word1 = ""
 
-		# mutually exclusive special command cases
+		# mutually exclusive meta command cases
+		if user_input.lower().strip() in ['again', 'g']:
+			if len(gs.io.last_input_str) == 0:
+				user_input = "look"
+			else:
+				user_input = gs.io.last_input_str
+
 		user_input_lst = input_cleanup(gs, user_input)
 		if len(user_input_lst) == 0:
-			word1 = ""
+#			word1 = ""
+			gs.io.buffer("I beg your pardon?")
+			is_interp_cmd = False
 		else:
 			word1 = user_input_lst[0]
+
 #		if user_input.lower().strip() in ['quit', 'q']:
 		if word1 in ['quit', 'q']:
 			gs.end.game_ending = 'quit.'
@@ -157,8 +168,16 @@ def app_main(user_input, game_name, root_path_str):
 			is_interp_cmd = False
 			gs.io.reset_cmd_queue()
 #		elif user_input.lower().strip() in ['again', 'g']:
-		elif word1 in ['again', 'g']:
-			user_input = gs.io.last_input_str
+#		elif word1 in ['again', 'g']:
+#			if len(gs.io.last_input_str) == 0:
+#				user_input = "look"
+#			else:
+#				user_input = gs.io.last_input_str
+#			user_input_lst = input_cleanup(gs, user_input) # new
+#			if len(user_input_lst) == 0: # new
+#				word1 = "" # new
+#			else: # new
+#				word1 = user_input_lst[0] # new
 
 		# post-'again', special command cases (must be independent 'if' in case of 'again')
 #		if user_input.lower().strip() in ['wait', 'z']:
@@ -169,6 +188,7 @@ def app_main(user_input, game_name, root_path_str):
 		elif word1 in ['score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 'rand_mode', 'debug', 'help']:
 			meta_cmd_exe(user_input_lst, gs)
 			is_interp_cmd = False
+			is_meta_cmd = True
 
 		# custom handling for 'x all except'
 		if user_input.lower().strip().startswith('drop all except'):
@@ -216,7 +236,7 @@ def app_main(user_input, game_name, root_path_str):
 			is_valid, is_att, err_txt = validate(gs, case, word_lst)
 	
 		# if command is not valid, clear cmd_queue
-		if not is_valid:
+		if not is_valid and not is_meta_cmd and not is_wait:
 			gs.io.reset_cmd_queue()
 
 		# if command is valid or is_wait, increment move

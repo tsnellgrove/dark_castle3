@@ -393,9 +393,9 @@ def interpreter(user_input, master_obj_lst):
 	user_input_lst = input_cleanup(gs, user_input)
 
 	# *** initial error checking ***
-	# error if no input or the only input is articles 
-	if len(user_input_lst) < 1: 
-		return 'error', ["I have no idea what you're talking about!"]
+#	# error if no input or the only input is articles 
+#	if len(user_input_lst) < 1: 
+#		return 'error', ["I have no idea what you're talking about!"]
 	# error if user input contains reserved syntax words
 	for word in user_input_lst:
 		if word in ['verb_syn', 'hero_rm_obj', 'hero_dir', 'verb_str', 'do_noun_str', 'verb_syn', 'prep_phrase_convert']: # reserved syntax
