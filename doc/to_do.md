@@ -1297,8 +1297,9 @@ To Do List - Dark Castle v3
 								- DONE: move no-input-err to app_main() "I beg your pardon?"
 									- DONE: comment out no-input-err in interp()
 								- DONE: app_main() is_meta_cmd flag; avoid clear queue on not is_valid
-								- TBD: move 'quit' and 'restart' to meta_cmd_exe() func
+								- DONE: move 'quit' and 'restart' to meta_cmd_exe() func
 								- TBD: move "wait" to Room method / interp(); Room method
+								- TBD: first cmd "leap" => die in zero moves; fix this
 								- TBD: manual test
 								- TBD: scenario test
 								- TBD: clean up comments in app_main() and interp()

@@ -85,7 +85,18 @@ def meta_cmd_exe(word_lst, gs):
 		word_lst.append('menu')
 	meta_cmd, arg, *_ = word_lst
 	try:
-		if meta_cmd == 'score':
+		if meta_cmd in ['quit', 'q']:
+			gs.end.game_ending = 'quit.'
+			gs.end.is_end = True
+#			is_interp_cmd = False
+			gs.io.reset_cmd_queue()
+		elif meta_cmd == 'restart':
+			gs.end.game_ending = 'restarted.'
+#			is_start = True
+#			is_interp_cmd = False
+			gs.io.reset_cmd_queue()
+		elif meta_cmd == 'score':
+#		if meta_cmd == 'score':
 			gs.score.print_score(gs)
 		elif meta_cmd == 'version':
 			gs.io.disp_version(gs)
@@ -156,17 +167,17 @@ def app_main(user_input, game_name, root_path_str):
 			word1 = user_input_lst[0]
 
 #		if user_input.lower().strip() in ['quit', 'q']:
-		if word1 in ['quit', 'q']:
-			gs.end.game_ending = 'quit.'
-			gs.end.is_end = True
-			is_interp_cmd = False
-			gs.io.reset_cmd_queue()
+#		if word1 in ['quit', 'q']:
+#			gs.end.game_ending = 'quit.'
+#			gs.end.is_end = True
+#			is_interp_cmd = False
+#			gs.io.reset_cmd_queue()
 #		elif user_input.lower().strip() == 'restart':
-		elif word1 == 'restart':
-			gs.end.game_ending = 'restarted.'
-			is_start = True
-			is_interp_cmd = False
-			gs.io.reset_cmd_queue()
+#		elif word1 == 'restart':
+#			gs.end.game_ending = 'restarted.'
+#			is_start = True
+#			is_interp_cmd = False
+#			gs.io.reset_cmd_queue()
 #		elif user_input.lower().strip() in ['again', 'g']:
 #		elif word1 in ['again', 'g']:
 #			if len(gs.io.last_input_str) == 0:
@@ -185,8 +196,13 @@ def app_main(user_input, game_name, root_path_str):
 			is_wait = True
 			gs.io.buffer("Waiting...")
 			is_interp_cmd = False
-		elif word1 in ['score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 'rand_mode', 'debug', 'help']:
+		elif word1 in [
+				'quit', 'q', 'restart','score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 
+				'rand_mode', 'debug', 'help'
+				]:
 			meta_cmd_exe(user_input_lst, gs)
+			if word1 == 'restart':
+				is_start = True
 			is_interp_cmd = False
 			is_meta_cmd = True
 
