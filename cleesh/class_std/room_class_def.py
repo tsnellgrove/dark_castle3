@@ -359,6 +359,24 @@ class Room(ViewOnly):
 				gs.end.is_end = True
 			return
 
+	def wait(self, gs, creature=None, mode=None):
+		""" Enables a Creature to wait and do nothing for a turn
+		"""
+		if mode is None:
+			mode = 'std'
+		if creature is None:
+			creature = gs.core.hero
+
+		# if hero_creature not in current room, exit with no display
+		if self != gs.map.hero_rm:
+			return 
+		# if other creature is waiting, display different silly message
+		if creature != gs.core.hero:
+			gs.io.buffer(f"For reasons of its own, the {creature.full_name} waits patiently.")
+		# if hero is waiting in regular room, display silly message
+		else:
+			gs.io.buffer("Waiting...")
+		return
 
 
 class InitDesc(Invisible):

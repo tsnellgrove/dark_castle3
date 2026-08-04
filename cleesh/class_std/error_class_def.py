@@ -308,6 +308,9 @@ class Error(Identity):
 			return True, False, err_txt
 		return False, False, ""
 
+	def wait_err(self, gs):
+		return False, False, ""
+
 	def sit_err(self, gs):
 		creature = gs.core.hero
 		if self.err_std(creature, gs):
