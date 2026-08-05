@@ -132,6 +132,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 		('hold', 'verb_syn') : ['take'],
 		('carry', 'verb_syn') : ['take'],
 
+		('wait',) : ['wait', 'hero_rm_obj', 'verb_do'],
+
 		('wear', 'input_do_noun') : ['wear', 'do_noun_str', 'verb_do'],
 		('don', 'verb_syn') : ['wear'],
 
@@ -418,7 +420,7 @@ def interpreter(user_input, master_obj_lst):
 
 	action_verb_lst = [
 			'climb', 'close', 'doff', 'drop', 'eat', 'enter', 'examine', 'exit', 'go', 'jump',
-			'open', 'move', 'push', 'pull', 'read', 'sit', 'stand', 'stow', 'take', 'wear'
+			'open', 'move', 'push', 'pull', 'read', 'sit', 'stand', 'stow', 'take', 'wait', 'wear'
 			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
 			'get', 'inventory', 'look'
@@ -459,7 +461,7 @@ def interpreter(user_input, master_obj_lst):
 			gs.io.get_lst('one_word_convert_lst','eng') # new
 			)
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst + debug_cmd_lst + new_meta_cmd_lst
-	intransitive_verb_lst = ['go', 'inventory', 'stand', 'jump'] + new_meta_cmd_lst
+	intransitive_verb_lst = ['go', 'inventory', 'stand', 'jump', 'wait'] + new_meta_cmd_lst
 	case = None
 	action_lst = None
 	prep = None # LEGACY

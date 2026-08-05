@@ -192,11 +192,11 @@ def app_main(user_input, game_name, root_path_str):
 
 		# post-'again', special command cases (must be independent 'if' in case of 'again')
 #		if user_input.lower().strip() in ['wait', 'z']:
-		if word1 in ['wait', 'z']:
-			is_wait = True
-			gs.io.buffer("Waiting...")
-			is_interp_cmd = False
-		elif word1 in [
+#		if word1 in ['wait', 'z']:
+#			is_wait = True
+#			gs.io.buffer("Waiting...")
+#			is_interp_cmd = False
+		if word1 in [
 				'quit', 'q', 'restart','score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 
 				'rand_mode', 'debug', 'help'
 				]:

@@ -1277,8 +1277,8 @@ To Do List - Dark Castle v3
 							- DONE: manual test
 							- DONE: scenario test
 							- DONE: clean up comments in interp()
-						- INPROC: use inpute_cleanup() in app_main()
-							- DONE: import inpute_cleanup() in app_main()
+						- INPROC: use input_cleanup() in app_main()
+							- DONE: import input_cleanup() in app_main()
 							- DONE: call input_cleanup() from app_main()
 							- DONE: update existing pre_interp cmd clean-up
 							- DONE: manual test
@@ -1298,7 +1298,7 @@ To Do List - Dark Castle v3
 									- DONE: comment out no-input-err in interp()
 								- DONE: app_main() is_meta_cmd flag; avoid clear queue on not is_valid
 								- DONE: move 'quit' and 'restart' to meta_cmd_exe() func
-								- INPROC: move "wait" to Room method / interp(); Room method
+								- DONE: move "wait" to Room method / interp(); Room method
 									- DONE: create Room method
 									- DONE: create error method
 									- DONE: check abbreviations list 
@@ -1306,35 +1306,35 @@ To Do List - Dark Castle v3
 									- NA: update hand_mgmt() as needed for new_verb
 									- NA: update *_err() to pass val if hand_mgmt() will fix called
 									- NA: disable global syn for new_verb
-									- TBD: add new_verb to interp() action_verb list
-									- TBD: add base ('new_verb', 'do_noun') entries to syntax
+									- DONE: add new_verb to interp() action_verb list
+									- DONE: add base ('new_verb', 'do_noun') entries to syntax
 									- NA: add prep variants for new_verb to syntax
 									- NA: add new_verb symetric syns to syn_verb_lst
 									- NA: add new_verb symetric syns to syntax
-									- TBD: add to intransigent_verbs_lst
+									- DONE: add to intransigent_verbs_lst
 									- NA: add infer do_noun entry for new_verb as needed
 									- NA: in asym_syn(), add conditional syn as needed
-									- TBD: comment out 'wait' in app_main()
-									- TBD: manual test (including sym_syn, prep, infer, asym syn)
-									- TBD: scenario test
+									- DONE: comment out 'wait' in app_main()
+									- DONE: manual test (including sym_syn, prep, infer, asym syn)
+									- DONE: scenario test
 								- TBD: first cmd "leap" => die in zero moves; fix this
 								- TBD: manual test
 								- TBD: scenario test
 								- TBD: clean up comments in app_main() and interp()
-						- TBD: use input_cleanup() for save and restore in web_main()
-						- TBD: update 'pre_interp_word_lst'
-						- TBD: update verb table (including quit, restart, again, wait, save, restore)
-						- TBD: plan for verb method mode ('std' vs. 'silent'?)
-				- TBD: clean-up
-					- TBD: clean-up comments in app_main() and web_main()
-					- TBD: delete meta_cmd() module
-					- TBD: clean-up comments in cmd_exe()
-					- TBD: elim special cases for 'meta' and 'help' in interp() and parser()
-					- TBD: elim meta_lst in interp()
-					- TBD: elim is_wait in app_main()
-					- TBD: process meta cmds as external function
-					- TBD: elim meta_cmd()
-					- TBD: deep dive in interp() and clean-up
+							- TBD: use input_cleanup() for save and restore in web_main()
+							- TBD: update 'pre_interp_word_lst'
+							- TBD: update verb table (including quit, restart, again, wait, save, restore)
+							- TBD: plan for verb method mode ('std' vs. 'silent'?)
+					- TBD: clean-up
+						- TBD: clean-up comments in app_main() and web_main()
+						- TBD: delete meta_cmd() module
+						- TBD: clean-up comments in cmd_exe()
+						- TBD: elim special cases for 'meta' and 'help' in interp() and parser()
+						- TBD: elim meta_lst in interp()
+						- TBD: elim is_wait in app_main()
+						- TBD: process meta cmds as external function
+						- TBD: elim meta_cmd()
+						- TBD: deep dive in interp() and clean-up
 			- TBD: return parse_err and eliminate 'error' case
 			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
 				- TBD: address hand mgmt in hand_manage()
