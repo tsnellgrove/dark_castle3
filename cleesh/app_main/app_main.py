@@ -114,7 +114,7 @@ def meta_cmd_exe(word_lst, gs):
 			gs.core.set_debug_mode(arg, gs)
 		elif meta_cmd == 'help':
 			gs.io.disp_help(arg, gs)
-		gs.core.move_decr()
+#		gs.core.move_decr()
 		return
 	except Exception:
 		gs.io.buff_dbg("[APP_MAIN-META] " + traceback.format_exc(), gs)

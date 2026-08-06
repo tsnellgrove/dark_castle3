@@ -1317,7 +1317,9 @@ To Do List - Dark Castle v3
 									- DONE: comment out 'wait' in app_main()
 									- DONE: manual test (including sym_syn, prep, infer, asym syn)
 									- DONE: scenario test
-								- TBD: first cmd "leap" => die in zero moves; fix this
+								- DONE: fix "q" => die in -1 moves
+									- DONE: removed move_decr() from meta_cmd_exe() func
+									- DONE: fixed scenario tests that had been incorrectly altered
 								- TBD: manual test
 								- TBD: scenario test
 								- TBD: clean up comments in app_main() and interp()
