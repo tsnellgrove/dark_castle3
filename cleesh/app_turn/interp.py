@@ -159,8 +159,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 			action_lst[index] = gs.map.hero_rm # convert class noun to object
 		if word == 'input_meta_arg':
 			action_lst[index] = prep_str # string
-		if word == 'hero_dir':
-			action_lst[index] = prep_str # string
+#		if word == 'hero_dir':
+#			action_lst[index] = prep_str # string
 		if word == 'verb_str':
 			action_lst[index] = input_verb # string
 		if word == 'do_noun_str':
@@ -395,12 +395,9 @@ def interpreter(user_input, master_obj_lst):
 	user_input_lst = input_cleanup(gs, user_input)
 
 	# *** initial error checking ***
-#	# error if no input or the only input is articles 
-#	if len(user_input_lst) < 1: 
-#		return 'error', ["I have no idea what you're talking about!"]
 	# error if user input contains reserved syntax words
 	for word in user_input_lst:
-		if word in ['verb_syn', 'hero_rm_obj', 'hero_dir', 'verb_str', 'do_noun_str', 'verb_syn', 'prep_phrase_convert']: # reserved syntax
+		if word in ['verb_syn', 'hero_rm_obj', 'verb_str', 'do_noun_str', 'prep_phrase_convert']: # reserved syntax
 			return 'error', [f"What??"]
 	# one-word commands where user_input_lst is longer than one word
 	if len(user_input_lst) > 1 and user_input_lst[0] in (

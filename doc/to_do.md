@@ -1283,7 +1283,7 @@ To Do List - Dark Castle v3
 							- DONE: update existing pre_interp cmd clean-up
 							- DONE: manual test
 							- DONE: sceanraio test
-							- INPROC: meta_cmd func
+							- DONE: meta_cmd func
 								- DONE: discovery of additional return values needed
 								- DONE: call meta_cmd func in app_main()
 								- DONE: comment out meta_cmd_exe() module
@@ -1320,13 +1320,14 @@ To Do List - Dark Castle v3
 								- DONE: fix "q" => die in -1 moves
 									- DONE: removed move_decr() from meta_cmd_exe() func
 									- DONE: fixed scenario tests that had been incorrectly altered
-								- TBD: manual test
-								- TBD: scenario test
-								- TBD: clean up comments in app_main() and interp()
+								- DONE: manual test
+								- DONE: scenario test
+								- DONE: clean up comments in app_main() and interp()
 							- TBD: use input_cleanup() for save and restore in web_main()
 							- TBD: update 'pre_interp_word_lst'
-							- TBD: update verb table (including quit, restart, again, wait, save, restore)
+							- TBD: update verb table (quit, restart, again, wait, save, restore)
 							- TBD: plan for verb method mode ('std' vs. 'silent'?)
+							- TBD: sword glowing when not in hand - error or ok?
 					- TBD: clean-up
 						- TBD: clean-up comments in app_main() and web_main()
 						- TBD: delete meta_cmd() module
@@ -1334,8 +1335,7 @@ To Do List - Dark Castle v3
 						- TBD: elim special cases for 'meta' and 'help' in interp() and parser()
 						- TBD: elim meta_lst in interp()
 						- TBD: elim is_wait in app_main()
-						- TBD: process meta cmds as external function
-						- TBD: elim meta_cmd()
+						- DONE: process meta cmds as external function
 						- TBD: deep dive in interp() and clean-up
 			- TBD: return parse_err and eliminate 'error' case
 			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes

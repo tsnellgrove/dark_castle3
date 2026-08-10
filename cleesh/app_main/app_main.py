@@ -88,15 +88,11 @@ def meta_cmd_exe(word_lst, gs):
 		if meta_cmd in ['quit', 'q']:
 			gs.end.game_ending = 'quit.'
 			gs.end.is_end = True
-#			is_interp_cmd = False
 			gs.io.reset_cmd_queue()
 		elif meta_cmd == 'restart':
 			gs.end.game_ending = 'restarted.'
-#			is_start = True
-#			is_interp_cmd = False
 			gs.io.reset_cmd_queue()
 		elif meta_cmd == 'score':
-#		if meta_cmd == 'score':
 			gs.score.print_score(gs)
 		elif meta_cmd == 'version':
 			gs.io.disp_version(gs)
@@ -114,7 +110,6 @@ def meta_cmd_exe(word_lst, gs):
 			gs.core.set_debug_mode(arg, gs)
 		elif meta_cmd == 'help':
 			gs.io.disp_help(arg, gs)
-#		gs.core.move_decr()
 		return
 	except Exception:
 		gs.io.buff_dbg("[APP_MAIN-META] " + traceback.format_exc(), gs)
@@ -160,42 +155,11 @@ def app_main(user_input, game_name, root_path_str):
 
 		user_input_lst = input_cleanup(gs, user_input)
 		if len(user_input_lst) == 0:
-#			word1 = ""
 			gs.io.buffer("I beg your pardon?")
 			is_interp_cmd = False
 		else:
 			word1 = user_input_lst[0]
 
-#		if user_input.lower().strip() in ['quit', 'q']:
-#		if word1 in ['quit', 'q']:
-#			gs.end.game_ending = 'quit.'
-#			gs.end.is_end = True
-#			is_interp_cmd = False
-#			gs.io.reset_cmd_queue()
-#		elif user_input.lower().strip() == 'restart':
-#		elif word1 == 'restart':
-#			gs.end.game_ending = 'restarted.'
-#			is_start = True
-#			is_interp_cmd = False
-#			gs.io.reset_cmd_queue()
-#		elif user_input.lower().strip() in ['again', 'g']:
-#		elif word1 in ['again', 'g']:
-#			if len(gs.io.last_input_str) == 0:
-#				user_input = "look"
-#			else:
-#				user_input = gs.io.last_input_str
-#			user_input_lst = input_cleanup(gs, user_input) # new
-#			if len(user_input_lst) == 0: # new
-#				word1 = "" # new
-#			else: # new
-#				word1 = user_input_lst[0] # new
-
-		# post-'again', special command cases (must be independent 'if' in case of 'again')
-#		if user_input.lower().strip() in ['wait', 'z']:
-#		if word1 in ['wait', 'z']:
-#			is_wait = True
-#			gs.io.buffer("Waiting...")
-#			is_interp_cmd = False
 		if word1 in [
 				'quit', 'q', 'restart','score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 
 				'rand_mode', 'debug', 'help'
