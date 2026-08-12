@@ -1326,8 +1326,13 @@ To Do List - Dark Castle v3
 							- INPROC: use input_cleanup() for save and restore in web_main()
 								- FINDING: quit & restart tested first in web_main()
 								- FINDING: save & restore only live in web_main()
-								- IDEA: intereactive testing only possible in web_main() ?
-								- TBD: consider option to interactively check in app_main()
+								- IDEA: intereactive testing only possible in web_main()
+								- TBD: move interactive check message into confirm_choice()
+								- TBD: move save cmd to app_main() meta_cmd()
+								- TBD: move restore cmd to app_main() meta_cmd()
+								- TBD: generalize confirm_choice() in web_main()
+								- TBD: manual test
+								- TBD: scenario test
 							- TBD: update 'pre_interp_word_lst'
 							- TBD: update verb table (quit, restart, again, wait, save, restore)
 							- TBD: plan for verb method mode ('std' vs. 'silent'?)
