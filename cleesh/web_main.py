@@ -16,9 +16,18 @@ from cleesh.app_main.file_io import save_game, restore_game, print_game
 
 #local functions
 def confirm_choice(user_input, warn_str):
+# def confirm_choice(user_input, warn_str):
 	is_confirm = True
+	warn_str_dict = {
+		'quit': "Are you sure you want to leave?",
+		'restart': "Are you sure you want to restart?",
+		'save': "Save overwrites old save. Confirm?",
+		'restore': "Restore overwrites current game. Confirm?",
+		'read backstory': "Do you read it?"
+	}
 	user_output = ""
-	confirm_input = input("\n" + warn_str + ' (Y / N): ')
+	confirm_input = input("\n" + warn_str_dict[user_input.lower()] + ' (Y / N): ')
+#	confirm_input = input("\n" + warn_str + ' (Y / N): ')
 	if confirm_input.lower() not in ['y', 'yes']:
 		user_output = f"\n{user_input.capitalize()} aborted.\n"
 		is_confirm = False
