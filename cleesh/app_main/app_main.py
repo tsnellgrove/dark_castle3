@@ -14,6 +14,7 @@ from cleesh.app_turn.post_action import post_action
 from cleesh.app_turn.auto_action import auto_action
 from cleesh.app_turn.hand_manage import hand_mgmt
 from cleesh.app_turn.input_cleanup import input_cleanup
+from cleesh.app_main.file_io import save_game, restore_game
 
 
 ### local functions
@@ -80,7 +81,8 @@ def weapon_disp(gs, start_in_hand):
 		gs.io.buffer(f"With the {end_in_hand.full_name} in hand you are now armed and dangerous!")
 	return
 
-def meta_cmd_exe(word_lst, gs):
+def meta_cmd_exe(word_lst, game_name, root_path_str, gs):
+#def meta_cmd_exe(word_lst, gs):
 	if len(word_lst) == 1:
 		word_lst.append('menu')
 	meta_cmd, arg, *_ = word_lst
@@ -110,6 +112,8 @@ def meta_cmd_exe(word_lst, gs):
 			gs.core.set_debug_mode(arg, gs)
 		elif meta_cmd == 'help':
 			gs.io.disp_help(arg, gs)
+		elif meta_cmd == 'save':
+			save_game(game_name, root_path_str, gs)
 		return
 	except Exception:
 		gs.io.buff_dbg("[APP_MAIN-META] " + traceback.format_exc(), gs)
@@ -162,9 +166,10 @@ def app_main(user_input, game_name, root_path_str):
 
 		if word1 in [
 				'quit', 'q', 'restart','score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 
-				'rand_mode', 'debug', 'help'
+				'rand_mode', 'debug', 'help', 'save'
 				]:
-			meta_cmd_exe(user_input_lst, gs)
+#			meta_cmd_exe(user_input_lst, gs)
+			meta_cmd_exe(user_input_lst, game_name, root_path_str, gs)
 			if word1 == 'restart':
 				is_start = True
 			is_interp_cmd = False
