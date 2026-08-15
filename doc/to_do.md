@@ -1329,7 +1329,7 @@ To Do List - Dark Castle v3
 								- IDEA: intereactive testing only possible in web_main()
 								- DONE: move interactive check message into confirm_choice()
 								- DONE: move save cmd to app_main() meta_cmd()
-								- TBD: move restore cmd to app_main() meta_cmd()
+								- DONE: move restore cmd to app_main() meta_cmd()
 								- TBD: generalize confirm_choice() in web_main()
 								- TBD: refactor and clean-up web_main()
 								- TBD: manual test

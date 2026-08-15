@@ -114,6 +114,8 @@ def meta_cmd_exe(word_lst, game_name, root_path_str, gs):
 			gs.io.disp_help(arg, gs)
 		elif meta_cmd == 'save':
 			save_game(game_name, root_path_str, gs)
+		elif meta_cmd == 'restore':
+			restore_game(game_name, root_path_str, gs)
 		return
 	except Exception:
 		gs.io.buff_dbg("[APP_MAIN-META] " + traceback.format_exc(), gs)
@@ -166,7 +168,7 @@ def app_main(user_input, game_name, root_path_str):
 
 		if word1 in [
 				'quit', 'q', 'restart','score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 
-				'rand_mode', 'debug', 'help', 'save'
+				'rand_mode', 'debug', 'help', 'save', 'restore'
 				]:
 #			meta_cmd_exe(user_input_lst, gs)
 			meta_cmd_exe(user_input_lst, game_name, root_path_str, gs)
@@ -258,7 +260,9 @@ def app_main(user_input, game_name, root_path_str):
 		if gs.io.multi_count > 0:
 			gs.io.multi_count -= 1
 
+	# if a restore cmd was called, don't dump the current obj to pkl
+	if word1 not in ['restore']:
+		with open(pkl_str, 'wb') as f:
+			pickle.dump(master_obj_lst, f)
 	# close out turn with return
-	with open(pkl_str, 'wb') as f:
-		pickle.dump(master_obj_lst, f)
 	return is_start, gs.end.is_end, gs.end.game_ending, gs.end.is_bkstry, gs.io.get_buff()

@@ -86,9 +86,11 @@ while True:
 					call_app_main = False
 			if user_input.lower() in ['restore']:
 				user_output, is_confirm = confirm_choice(user_input, 'Restore overwrites current game. Confirm?')
-				if is_confirm:
-					user_output = restore_game(game_name, root_path_str)
-				call_app_main = False
+#				if is_confirm:
+#					user_output = restore_game(game_name, root_path_str)
+#				call_app_main = False
+				if not is_confirm:
+					call_app_main = False
 			if call_app_main:
 				is_start, is_end, game_ending, is_bkstry, user_output = app_main(user_input, game_name, root_path_str)
 			print(user_output)
