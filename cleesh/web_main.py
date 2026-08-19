@@ -19,6 +19,7 @@ def confirm_choice(user_input, warn_str):
 # def confirm_choice(user_input, warn_str):
 	is_confirm = True
 	warn_str_dict = {
+		'q': "Are you sure you want to leave?",
 		'quit': "Are you sure you want to leave?",
 		'restart': "Are you sure you want to restart?",
 		'save': "Save overwrites old save. Confirm?",
@@ -70,27 +71,28 @@ while True:
 			else:
 				user_input = input('Type your command: ')
 				call_app_main = True
-			if user_input.lower() in ['q', 'quit', 'restart']:
+##			if user_input.lower() in ['q', 'quit', 'restart']:
+			if user_input.lower() in ['q', 'quit', 'restart', 'save', 'restore']:
 			# for 'q' / 'restart', after confirm_choice(), still need to pass to app_main to get score
-				if user_input.lower() == 'q':
-					user_input = 'quit'
+##				if user_input.lower() == 'q':
+##					user_input = 'quit'
 				user_output, is_confirm = confirm_choice(user_input, 'Are you sure you want to leave?')
 				if not is_confirm:
 					call_app_main = False
-			if user_input.lower() in ['save']:
-				user_output, is_confirm = confirm_choice(user_input, 'Save overwrites old save. Confirm?')
+##			if user_input.lower() in ['save']:
+##				user_output, is_confirm = confirm_choice(user_input, 'Save overwrites old save. Confirm?')
 #				if is_confirm:
 #					user_output = save_game(game_name, root_path_str)
 #				call_app_main = False
-				if not is_confirm:
-					call_app_main = False
-			if user_input.lower() in ['restore']:
-				user_output, is_confirm = confirm_choice(user_input, 'Restore overwrites current game. Confirm?')
+##				if not is_confirm:
+##					call_app_main = False
+##			if user_input.lower() in ['restore']:
+##				user_output, is_confirm = confirm_choice(user_input, 'Restore overwrites current game. Confirm?')
 #				if is_confirm:
 #					user_output = restore_game(game_name, root_path_str)
 #				call_app_main = False
-				if not is_confirm:
-					call_app_main = False
+##				if not is_confirm:
+##					call_app_main = False
 			if call_app_main:
 				is_start, is_end, game_ending, is_bkstry, user_output = app_main(user_input, game_name, root_path_str)
 			print(user_output)

@@ -1330,8 +1330,12 @@ To Do List - Dark Castle v3
 								- DONE: move interactive check message into confirm_choice()
 								- DONE: move save cmd to app_main() meta_cmd()
 								- DONE: move restore cmd to app_main() meta_cmd()
-								- TBD: generalize confirm_choice() in web_main()
-								- TBD: refactor and clean-up web_main()
+								- DECISION: for now, skip on trying to fix is_bkstory
+								- DONE: generalize confirm_choice() in web_main()
+								- DONE: manual test
+								- TBD: clean-up web_main() comments
+								- TBD: refactor is_confirm()
+								- TBD: tighten up input pre-processing (strip; lower once at start)
 								- TBD: manual test
 								- TBD: scenario test
 								- TBD: clean up comments in web_main(), app_main(), file_io()
@@ -1401,6 +1405,10 @@ To Do List - Dark Castle v3
 			- TBD: global refactor
 			- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
 			- TBD: clean up comments
+		- TBD: sort out long-term approach to is_bkstory
+			- TBD: for app_main(), in place of returning is_bkstory, return user_confirm
+			- TBD: in web_main(), if user_confirm, send back unique special user_response 
+			- TBD: in app_main() meta_cmd() func, catch & process unique user_response
 		- TBD: document 'someday maybe' verbs (e.g. 'slide under') in spreadsheet
 		- TBD: update existing test scenarios as needed if no longer pass
 		- TBD: create language test game for language (or plan now, avoid more nouns till later?)
