@@ -15,8 +15,7 @@ from cleesh.app_main.game_menu import print_game_menu
 from cleesh.app_main.file_io import save_game, restore_game, print_game
 
 #local functions
-def confirm_choice(user_input, warn_str):
-# def confirm_choice(user_input, warn_str):
+def confirm_choice(user_input):
 	is_confirm = True
 	warn_str_dict = {
 		'q': "Are you sure you want to leave?",
@@ -28,7 +27,6 @@ def confirm_choice(user_input, warn_str):
 	}
 	user_output = ""
 	confirm_input = input("\n" + warn_str_dict[user_input.lower()] + ' (Y / N): ')
-#	confirm_input = input("\n" + warn_str + ' (Y / N): ')
 	if confirm_input.lower() not in ['y', 'yes']:
 		user_output = f"\n{user_input.capitalize()} aborted.\n"
 		is_confirm = False
@@ -71,28 +69,11 @@ while True:
 			else:
 				user_input = input('Type your command: ')
 				call_app_main = True
-##			if user_input.lower() in ['q', 'quit', 'restart']:
-			if user_input.lower() in ['q', 'quit', 'restart', 'save', 'restore']:
-			# for 'q' / 'restart', after confirm_choice(), still need to pass to app_main to get score
-##				if user_input.lower() == 'q':
-##					user_input = 'quit'
-				user_output, is_confirm = confirm_choice(user_input, 'Are you sure you want to leave?')
-				if not is_confirm:
-					call_app_main = False
-##			if user_input.lower() in ['save']:
-##				user_output, is_confirm = confirm_choice(user_input, 'Save overwrites old save. Confirm?')
-#				if is_confirm:
-#					user_output = save_game(game_name, root_path_str)
-#				call_app_main = False
-##				if not is_confirm:
-##					call_app_main = False
-##			if user_input.lower() in ['restore']:
-##				user_output, is_confirm = confirm_choice(user_input, 'Restore overwrites current game. Confirm?')
-#				if is_confirm:
-#					user_output = restore_game(game_name, root_path_str)
-#				call_app_main = False
-##				if not is_confirm:
-##					call_app_main = False
+			if user_input.lower() in ['q', 'quit', 'restart', 'save', 'restore']: # cmds exe in app_main()
+				user_output, is_confirm = confirm_choice(user_input)
+				call_app_main = is_confirm
+#				if not is_confirm:
+#					call_app_main = False
 			if call_app_main:
 				is_start, is_end, game_ending, is_bkstry, user_output = app_main(user_input, game_name, root_path_str)
 			print(user_output)
@@ -100,7 +81,8 @@ while True:
 				any_key = input("Press Enter to continue: ")
 		if game_ending == 'won!' and is_bkstry:
 			print_game(game_name, 'read_bkstry_str')
-			user_output, is_confirm = confirm_choice('read backstory', 'Do you read it?')
+			user_output, is_confirm = confirm_choice('read backstory')
+#			user_output, is_confirm = confirm_choice('read backstory', 'Do you read it?')
 			if is_confirm:
 				print_game(game_name, 'backstory')
 		print()

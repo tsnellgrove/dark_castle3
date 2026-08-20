@@ -1333,14 +1333,15 @@ To Do List - Dark Castle v3
 								- DECISION: for now, skip on trying to fix is_bkstory
 								- DONE: generalize confirm_choice() in web_main()
 								- DONE: manual test
-								- TBD: clean-up web_main() comments
-								- TBD: refactor is_confirm()
-								- TBD: tighten up input pre-processing (strip; lower once at start)
+								- DONE: clean-up web_main() comments
+								- DONE: refactor is_confirm()
+								- TBD: manual test; full game test w/ and w/out backstory
+								- TBD: tighten input pre-proce (strip; lower once); align w/ interp()
 								- TBD: manual test
 								- TBD: scenario test
 								- TBD: clean up comments in web_main(), app_main(), file_io()
+								- TBD: update verb table (quit, restart, again, wait, save, restore)
 							- TBD: update 'pre_interp_word_lst'
-							- TBD: update verb table (quit, restart, again, wait, save, restore)
 							- TBD: plan for verb method mode ('std' vs. 'silent'?)
 							- TBD: sword glowing when not in hand - error or ok?
 					- TBD: clean-up
