@@ -72,8 +72,6 @@ while True:
 			if user_input.lower() in ['q', 'quit', 'restart', 'save', 'restore']: # cmds exe in app_main()
 				user_output, is_confirm = confirm_choice(user_input)
 				call_app_main = is_confirm
-#				if not is_confirm:
-#					call_app_main = False
 			if call_app_main:
 				is_start, is_end, game_ending, is_bkstry, user_output = app_main(user_input, game_name, root_path_str)
 			print(user_output)
@@ -82,7 +80,6 @@ while True:
 		if game_ending == 'won!' and is_bkstry:
 			print_game(game_name, 'read_bkstry_str')
 			user_output, is_confirm = confirm_choice('read backstory')
-#			user_output, is_confirm = confirm_choice('read backstory', 'Do you read it?')
 			if is_confirm:
 				print_game(game_name, 'backstory')
 		print()
