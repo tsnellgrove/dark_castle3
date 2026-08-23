@@ -1338,15 +1338,15 @@ To Do List - Dark Castle v3
 								- DONE: manual test; full game test w/ and w/out backstory
 								- INPROC: tighten input pre-proce (strip; lower); align w/ interp()
 									- DONE: review app_main() and interp() pre_proc: input_cleanup()
-									- TBD: generalize input_cleanuup() to be able to not need gs
-									- TBD: call input_cleanup() from web_main() ???
+									- DONE: generalize input_cleanuup() to be able to not need gs
+									- CANCEL: call input_cleanup() from web_main() ???
 									- TBD: Or maybe create new get_word1() cmd in input_cleanup() mod?
 									- TBD: call get_word1() from app_main() and web_main()
 									- TBD: elim separate mention of 'q' in web_main()
 									- TBD: in web_main(), pass word1 to confirm_choice()
 								- TBD: manual test
 								- TBD: scenario test
-								- TBD: clean up comments in web_main(), app_main(), file_io()
+								- TBD: clean up web_main(), app_main(), file_io(), input_cleanup()
 								- TBD: update verb table (quit, restart, again, wait, save, restore)
 							- TBD: update 'pre_interp_word_lst'
 					- TBD: clean-up

@@ -392,7 +392,8 @@ def interpreter(user_input, master_obj_lst):
 
 	# *** user_input to cleaned-up user_input_lst conversion ***
 	gs = master_obj_lst[0]
-	user_input_lst = input_cleanup(gs, user_input)
+#	user_input_lst = input_cleanup(gs, user_input)
+	user_input_lst = input_cleanup(user_input)
 
 	# *** initial error checking ***
 	# error if user input contains reserved syntax words

@@ -159,7 +159,8 @@ def app_main(user_input, game_name, root_path_str):
 			else:
 				user_input = gs.io.last_input_str
 
-		user_input_lst = input_cleanup(gs, user_input)
+#		user_input_lst = input_cleanup(gs, user_input)
+		user_input_lst = input_cleanup(user_input)
 		if len(user_input_lst) == 0:
 			gs.io.buffer("I beg your pardon?")
 			is_interp_cmd = False
