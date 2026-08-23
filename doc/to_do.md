@@ -1340,10 +1340,13 @@ To Do List - Dark Castle v3
 									- DONE: review app_main() and interp() pre_proc: input_cleanup()
 									- DONE: generalize input_cleanuup() to be able to not need gs
 									- CANCEL: call input_cleanup() from web_main() ???
-									- TBD: Or maybe create new get_word1() cmd in input_cleanup() mod?
-									- TBD: call get_word1() from app_main() and web_main()
-									- TBD: elim separate mention of 'q' in web_main()
-									- TBD: in web_main(), pass word1 to confirm_choice()
+									- DONE: create new get_word1() cmd in input_cleanup() mod?
+									- DONE: call get_word1() from web_main()
+									- DONE: elim separate mention of 'q' in web_main()
+									- DONE: in web_main(), pass word1 to confirm_choice()
+									- DONE: manual test
+									- TBD: clean up comments in web_main()
+									- TBD: call get_word1() from app_main()
 								- TBD: manual test
 								- TBD: scenario test
 								- TBD: clean up web_main(), app_main(), file_io(), input_cleanup()
@@ -1361,6 +1364,7 @@ To Do List - Dark Castle v3
 			- TBD: return parse_err and eliminate 'error' case
 			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
 				- TBD: address hand mgmt in hand_manage()
+				- TBD: update input_cleanup()
 				- TBD: fix 'blank' first attrib in noun_handling() call
 				- TBD: 'put on' as syntax syn for 'wear'
 				- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')

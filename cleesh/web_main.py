@@ -13,9 +13,11 @@ from cleesh.app_main.app_main import app_main
 from cleesh.app_main.start_up import start_me_up
 from cleesh.app_main.game_menu import print_game_menu
 from cleesh.app_main.file_io import save_game, restore_game, print_game
+from cleesh.app_turn.input_cleanup import get_word1
 
 #local functions
-def confirm_choice(user_input):
+def confirm_choice(word1):
+# def confirm_choice(user_input):
 	is_confirm = True
 	warn_str_dict = {
 		'q': "Are you sure you want to leave?",
@@ -26,9 +28,12 @@ def confirm_choice(user_input):
 		'read backstory': "Do you read it?"
 	}
 	user_output = ""
-	confirm_input = input("\n" + warn_str_dict[user_input.lower()] + ' (Y / N): ')
+#	confirm_input = input("\n" + warn_str_dict[user_input.lower()] + ' (Y / N): ')
+#	confirm_input = input("\n" + warn_str_dict[word1] + ' (Y / N): ')
+	confirm_input = input(f"\n{warn_str_dict[word1]} (Y / N): ")
 	if confirm_input.lower() not in ['y', 'yes']:
-		user_output = f"\n{user_input.capitalize()} aborted.\n"
+#		user_output = f"\n{user_input.capitalize()} aborted.\n"
+		user_output = f"\n{word1.capitalize()} aborted.\n"
 		is_confirm = False
 	return user_output, is_confirm
 
@@ -58,24 +63,32 @@ while True:
 		game_ending = ""
 		is_start = True
 		call_app_main = True
+		word1 = ""
 
 		# game routine
 		while not is_end:
 			if is_start:
 				user_input = ""
+				word1 = ""
 				user_output = start_me_up(game_name, root_path_str, rand_mode)
 				is_start = False
 				call_app_main = False
 			else:
 				user_input = input('Type your command: ')
 				call_app_main = True
-			if user_input.lower() in ['q', 'quit', 'restart', 'save', 'restore']: # cmds exe in app_main()
-				user_output, is_confirm = confirm_choice(user_input)
-				call_app_main = is_confirm
+				word1 = get_word1(user_input)
+			
+#			if user_input.lower() in ['q', 'quit', 'restart', 'save', 'restore']: # cmds exe in app_main()
+#			if word1 in ['q', 'quit', 'restart', 'save', 'restore']: # cmds exe in app_main()
+				if word1 in ['quit', 'restart', 'save', 'restore']: # cmds exe in app_main()
+					user_output, is_confirm = confirm_choice(word1)
+		#			user_output, is_confirm = confirm_choice(user_input)
+					call_app_main = is_confirm
 			if call_app_main:
 				is_start, is_end, game_ending, is_bkstry, user_output = app_main(user_input, game_name, root_path_str)
 			print(user_output)
-			if user_input.lower() == 'restart'and is_confirm:
+#			if user_input.lower() == 'restart'and is_confirm:
+			if word1 == 'restart' and is_confirm:
 				any_key = input("Press Enter to continue: ")
 		if game_ending == 'won!' and is_bkstry:
 			print_game(game_name, 'read_bkstry_str')

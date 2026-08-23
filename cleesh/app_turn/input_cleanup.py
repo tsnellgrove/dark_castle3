@@ -36,3 +36,10 @@ def input_cleanup(user_input):
 	for article in article_lst:
 		user_input_lst = [word for word in user_input_lst if word != article]
 	return user_input_lst
+
+def get_word1(user_input_lst):
+	user_input_lst = input_cleanup(user_input_lst)
+	if len(user_input_lst) > 0:
+		return user_input_lst[0]
+	else:
+		return None
