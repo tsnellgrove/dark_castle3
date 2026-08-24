@@ -17,7 +17,6 @@ from cleesh.app_turn.input_cleanup import get_word1
 
 #local functions
 def confirm_choice(word1):
-# def confirm_choice(user_input):
 	is_confirm = True
 	warn_str_dict = {
 		'q': "Are you sure you want to leave?",
@@ -28,11 +27,8 @@ def confirm_choice(word1):
 		'read backstory': "Do you read it?"
 	}
 	user_output = ""
-#	confirm_input = input("\n" + warn_str_dict[user_input.lower()] + ' (Y / N): ')
-#	confirm_input = input("\n" + warn_str_dict[word1] + ' (Y / N): ')
 	confirm_input = input(f"\n{warn_str_dict[word1]} (Y / N): ")
 	if confirm_input.lower() not in ['y', 'yes']:
-#		user_output = f"\n{user_input.capitalize()} aborted.\n"
 		user_output = f"\n{word1.capitalize()} aborted.\n"
 		is_confirm = False
 	return user_output, is_confirm
@@ -42,7 +38,7 @@ user_choice = ""
 user_num = 0
 rand_mode = 'random'
 
-# game print game menu and get user choice
+# game - print game menu and get user choice
 while True:
 	max_num, game_lst = print_game_menu()
 	user_choice = input("Type the number of the game you want to play or type 'Q' to quit: ")
@@ -69,25 +65,20 @@ while True:
 		while not is_end:
 			if is_start:
 				user_input = ""
+				call_app_main = False
 				word1 = ""
 				user_output = start_me_up(game_name, root_path_str, rand_mode)
 				is_start = False
-				call_app_main = False
 			else:
 				user_input = input('Type your command: ')
 				call_app_main = True
 				word1 = get_word1(user_input)
-			
-#			if user_input.lower() in ['q', 'quit', 'restart', 'save', 'restore']: # cmds exe in app_main()
-#			if word1 in ['q', 'quit', 'restart', 'save', 'restore']: # cmds exe in app_main()
 				if word1 in ['quit', 'restart', 'save', 'restore']: # cmds exe in app_main()
 					user_output, is_confirm = confirm_choice(word1)
-		#			user_output, is_confirm = confirm_choice(user_input)
 					call_app_main = is_confirm
 			if call_app_main:
 				is_start, is_end, game_ending, is_bkstry, user_output = app_main(user_input, game_name, root_path_str)
 			print(user_output)
-#			if user_input.lower() == 'restart'and is_confirm:
 			if word1 == 'restart' and is_confirm:
 				any_key = input("Press Enter to continue: ")
 		if game_ending == 'won!' and is_bkstry:

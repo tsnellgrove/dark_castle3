@@ -1345,7 +1345,8 @@ To Do List - Dark Castle v3
 									- DONE: elim separate mention of 'q' in web_main()
 									- DONE: in web_main(), pass word1 to confirm_choice()
 									- DONE: manual test
-									- TBD: clean up comments in web_main()
+									- DONE: clean up comments in web_main()
+									- TBD: investigate - do I need to pass is_start from app_main() ?
 									- TBD: call get_word1() from app_main()
 								- TBD: manual test
 								- TBD: scenario test
