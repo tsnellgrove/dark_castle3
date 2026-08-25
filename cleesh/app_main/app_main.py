@@ -142,7 +142,7 @@ def app_main(user_input, game_name, root_path_str):
 		user_input = gs.io.pop_cmd_queue()
 
 		# local var declarations
-		is_start = False
+#		is_start = False
 		is_wait = False
 		is_interp_cmd = True
 		is_meta_cmd = False
@@ -173,8 +173,8 @@ def app_main(user_input, game_name, root_path_str):
 				]:
 #			meta_cmd_exe(user_input_lst, gs)
 			meta_cmd_exe(user_input_lst, game_name, root_path_str, gs)
-			if word1 == 'restart':
-				is_start = True
+#			if word1 == 'restart':
+#				is_start = True
 			is_interp_cmd = False
 			is_meta_cmd = True
 
@@ -247,11 +247,13 @@ def app_main(user_input, game_name, root_path_str):
 		# post-cmd-response output
 		# action order = 1) cmd input, 2) Game response to cmd, 3) Game end / restart OR Game independent actions
 		# action order 1), 3), 2) is confusing because the cause and effect link between 1) & 2) is broken
-		if gs.end.is_end or is_start: 
+		if gs.end.is_end or word1 == 'restart':
+#		if gs.end.is_end or is_start:
 			gs.end.disp_end(gs)
 		elif is_wait or is_valid or is_att: # elif to avoid case of auto_act() run after ending from cmd
 			auto_action(gs)
-		if is_start:
+#		if is_start:
+		if word1 == 'restart':
 			gs.io.buffer("Restarting...") # appears post 'you have restarted' end text and pre 'welcome' text
 
 		# save state and last inupt (for 'again' case)
@@ -266,4 +268,6 @@ def app_main(user_input, game_name, root_path_str):
 		with open(pkl_str, 'wb') as f:
 			pickle.dump(master_obj_lst, f)
 	# close out turn with return
-	return is_start, gs.end.is_end, gs.end.game_ending, gs.end.is_bkstry, gs.io.get_buff()
+	return gs.end.is_end, gs.end.game_ending, gs.end.is_bkstry, gs.io.get_buff()
+#	return None, gs.end.is_end, gs.end.game_ending, gs.end.is_bkstry, gs.io.get_buff()
+#	return is_start, gs.end.is_end, gs.end.game_ending, gs.end.is_bkstry, gs.io.get_buff()

@@ -77,10 +77,12 @@ while True:
 					user_output, is_confirm = confirm_choice(word1)
 					call_app_main = is_confirm
 			if call_app_main:
-				is_start, is_end, game_ending, is_bkstry, user_output = app_main(user_input, game_name, root_path_str)
+#				is_start, is_end, game_ending, is_bkstry, user_output = app_main(user_input, game_name, root_path_str)
+				is_end, game_ending, is_bkstry, user_output = app_main(user_input, game_name, root_path_str)
 			print(user_output)
 			if word1 == 'restart' and is_confirm:
 				any_key = input("Press Enter to continue: ")
+				is_start = True # new
 		if game_ending == 'won!' and is_bkstry:
 			print_game(game_name, 'read_bkstry_str')
 			user_output, is_confirm = confirm_choice('read backstory')

@@ -1346,7 +1346,9 @@ To Do List - Dark Castle v3
 									- DONE: in web_main(), pass word1 to confirm_choice()
 									- DONE: manual test
 									- DONE: clean up comments in web_main()
-									- TBD: investigate - do I need to pass is_start from app_main() ?
+									- DONE: investigate: do I need to return is_start from app_main()?
+									- DONE: eliminate is_start from app_main() return
+									- TBD: clean up comments in web_main() and app_main()
 									- TBD: call get_word1() from app_main()
 								- TBD: manual test
 								- TBD: scenario test
