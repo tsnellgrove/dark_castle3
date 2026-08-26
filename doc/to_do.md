@@ -1348,7 +1348,7 @@ To Do List - Dark Castle v3
 									- DONE: clean up comments in web_main()
 									- DONE: investigate: do I need to return is_start from app_main()?
 									- DONE: eliminate is_start from app_main() return
-									- TBD: clean up comments in web_main() and app_main()
+									- DONE: clean up comments in web_main() and app_main()
 									- TBD: call get_word1() from app_main()
 								- TBD: manual test
 								- TBD: scenario test
@@ -1425,6 +1425,15 @@ To Do List - Dark Castle v3
 			- TBD: for app_main(), in place of returning is_bkstory, return user_confirm
 			- TBD: in web_main(), if user_confirm, send back unique special user_response 
 			- TBD: in app_main() meta_cmd() func, catch & process unique user_response
+			- IDEA: confirm_queue just for confirm cmds
+				- IDEA: in app_main(): 
+					- if word1 == 'save': need_conf = True, user_output = "save?", add 'save' to confirm_queue, return need_conf, user_output
+					- if word1 == 'user_confirm_true': user_input = pop(confirm_queue)
+				- IDEA: in web_main():
+					- if need_conf: get_confirm(user_output)
+					- if is_conf: user_input = 'user_confirm_true' {disallow cmd in interp()}
+				- IDEA: for situational confirm calls (e.g. backstory)
+					- IDEA: have a finite number of buff_if_user_conf_01 slots for querry & response
 		- TBD: document 'someday maybe' verbs (e.g. 'slide under') in spreadsheet
 		- TBD: update existing test scenarios as needed if no longer pass
 		- TBD: create language test game for language (or plan now, avoid more nouns till later?)

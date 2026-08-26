@@ -82,7 +82,6 @@ def weapon_disp(gs, start_in_hand):
 	return
 
 def meta_cmd_exe(word_lst, game_name, root_path_str, gs):
-#def meta_cmd_exe(word_lst, gs):
 	if len(word_lst) == 1:
 		word_lst.append('menu')
 	meta_cmd, arg, *_ = word_lst
@@ -142,7 +141,6 @@ def app_main(user_input, game_name, root_path_str):
 		user_input = gs.io.pop_cmd_queue()
 
 		# local var declarations
-#		is_start = False
 		is_wait = False
 		is_interp_cmd = True
 		is_meta_cmd = False
@@ -159,7 +157,6 @@ def app_main(user_input, game_name, root_path_str):
 			else:
 				user_input = gs.io.last_input_str
 
-#		user_input_lst = input_cleanup(gs, user_input)
 		user_input_lst = input_cleanup(user_input)
 		if len(user_input_lst) == 0:
 			gs.io.buffer("I beg your pardon?")
@@ -171,10 +168,7 @@ def app_main(user_input, game_name, root_path_str):
 				'quit', 'q', 'restart','score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 
 				'rand_mode', 'debug', 'help', 'save', 'restore'
 				]:
-#			meta_cmd_exe(user_input_lst, gs)
 			meta_cmd_exe(user_input_lst, game_name, root_path_str, gs)
-#			if word1 == 'restart':
-#				is_start = True
 			is_interp_cmd = False
 			is_meta_cmd = True
 
@@ -248,11 +242,9 @@ def app_main(user_input, game_name, root_path_str):
 		# action order = 1) cmd input, 2) Game response to cmd, 3) Game end / restart OR Game independent actions
 		# action order 1), 3), 2) is confusing because the cause and effect link between 1) & 2) is broken
 		if gs.end.is_end or word1 == 'restart':
-#		if gs.end.is_end or is_start:
 			gs.end.disp_end(gs)
 		elif is_wait or is_valid or is_att: # elif to avoid case of auto_act() run after ending from cmd
 			auto_action(gs)
-#		if is_start:
 		if word1 == 'restart':
 			gs.io.buffer("Restarting...") # appears post 'you have restarted' end text and pre 'welcome' text
 
@@ -269,5 +261,3 @@ def app_main(user_input, game_name, root_path_str):
 			pickle.dump(master_obj_lst, f)
 	# close out turn with return
 	return gs.end.is_end, gs.end.game_ending, gs.end.is_bkstry, gs.io.get_buff()
-#	return None, gs.end.is_end, gs.end.game_ending, gs.end.is_bkstry, gs.io.get_buff()
-#	return is_start, gs.end.is_end, gs.end.game_ending, gs.end.is_bkstry, gs.io.get_buff()

@@ -77,7 +77,6 @@ while True:
 					user_output, is_confirm = confirm_choice(word1)
 					call_app_main = is_confirm
 			if call_app_main:
-#				is_start, is_end, game_ending, is_bkstry, user_output = app_main(user_input, game_name, root_path_str)
 				is_end, game_ending, is_bkstry, user_output = app_main(user_input, game_name, root_path_str)
 			print(user_output)
 			if word1 == 'restart' and is_confirm:

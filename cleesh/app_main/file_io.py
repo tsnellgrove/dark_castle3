@@ -11,28 +11,21 @@ from importlib import import_module
 
 ### main routine
 def save_game(game_name, root_path_str, gs):
-# def save_game(game_name, root_path_str):
     src = f"{root_path_str}/cleesh/games/{game_name}/working/active_pkl"
     dst = f"{root_path_str}/cleesh/games/{game_name}/saves/save_pkl"
     shutil.copyfile(src, dst)
     gs.io.buffer("Game saved.")
-#    user_output = "\nGame saved.\n"
-#    return user_output
     return
 
 def restore_game(game_name, root_path_str, gs):
-# def restore_game(game_name, root_path_str):
     src = f"{root_path_str}/cleesh/games/{game_name}/saves/save_pkl"
     my_file = Path(src)
     if my_file.is_file():
         dst = f"{root_path_str}/cleesh/games/{game_name}/working/active_pkl"
         shutil.copyfile(src, dst)
         gs.io.buffer("Game restored.")
-#        user_output = "\nGame restored.\n"
     else:
-#        user_output = "\nThere is no saved game to restore.\n"
         gs.io.buffer("There is no saved game to restore.")
-#    return user_output
     return
 
 def print_game(game_name, str_key):
