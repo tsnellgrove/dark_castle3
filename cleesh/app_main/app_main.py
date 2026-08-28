@@ -14,6 +14,7 @@ from cleesh.app_turn.post_action import post_action
 from cleesh.app_turn.auto_action import auto_action
 from cleesh.app_turn.hand_manage import hand_mgmt
 from cleesh.app_turn.input_cleanup import input_cleanup
+from cleesh.app_turn.input_cleanup import get_word1
 from cleesh.app_main.file_io import save_game, restore_game
 
 
@@ -82,6 +83,7 @@ def weapon_disp(gs, start_in_hand):
 	return
 
 def meta_cmd_exe(word_lst, game_name, root_path_str, gs):
+# def meta_cmd_exe(word1, game_name, root_path_str, gs):
 	if len(word_lst) == 1:
 		word_lst.append('menu')
 	meta_cmd, arg, *_ = word_lst
@@ -148,26 +150,43 @@ def app_main(user_input, game_name, root_path_str):
 		is_att = False
 		has_except = False
 		is_multiples_action = False
-		word1 = ""
+#		word1 = ""
+		word1 = get_word1(user_input)
 
 		# mutually exclusive meta command cases
-		if user_input.lower().strip() in ['again', 'g']:
-			if len(gs.io.last_input_str) == 0:
-				user_input = "look"
-			else:
-				user_input = gs.io.last_input_str
+#		if user_input.lower().strip() in ['again', 'g']:
+		if word1 in ['again']:
+#			if len(gs.io.last_input_str) == 0:
+#				user_input = "look"
+#			else:
+			user_input = gs.io.last_input_str
+			word1 = get_word1(user_input)
 
-		user_input_lst = input_cleanup(user_input)
-		if len(user_input_lst) == 0:
+#		user_input_lst = input_cleanup(user_input)
+#		if len(user_input_lst) == 0:
+		if word1 is None:
 			gs.io.buffer("I beg your pardon?")
 			is_interp_cmd = False
-		else:
-			word1 = user_input_lst[0]
+#		else:
+#			word1 = user_input_lst[0]
 
-		if word1 in [
-				'quit', 'q', 'restart','score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 
-				'rand_mode', 'debug', 'help', 'save', 'restore'
+#		if word1 in [
+		# one word meta commands
+		elif word1 in [
+#				'quit', 'q', 'restart','score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 
+				'quit', 'restart','score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 
+#				'rand_mode', 'debug', 'help', 'save', 'restore'
+				'rand_mode', 'save', 'restore'
 				]:
+#			user_input_lst = input_cleanup(user_input) # new
+#			meta_cmd_exe(user_input_lst, game_name, root_path_str, gs)
+			meta_cmd_exe([word1], game_name, root_path_str, gs)
+#			meta_cmd_exe(word1, game_name, root_path_str, gs)
+			is_interp_cmd = False
+			is_meta_cmd = True
+		# two word meta commands
+		elif word1 in ['debug', 'help']:
+			user_input_lst = input_cleanup(user_input)
 			meta_cmd_exe(user_input_lst, game_name, root_path_str, gs)
 			is_interp_cmd = False
 			is_meta_cmd = True

@@ -1349,7 +1349,14 @@ To Do List - Dark Castle v3
 									- DONE: investigate: do I need to return is_start from app_main()?
 									- DONE: eliminate is_start from app_main() return
 									- DONE: clean up comments in web_main() and app_main()
-									- TBD: call get_word1() from app_main()
+									- INPROC: call get_word1() from app_main()
+										- FINDING: actually, I need word2 for 2 cmds...
+										- DECIDE: back out change or new get_2word_lst func ?
+										- IDEA: separate call for input_lst just for help, debug
+										- DONE: implement new approach
+										- DONE: manual test
+										- DONE: update again after no answer to "pardon"
+										- TBD: clean up comments
 								- TBD: manual test
 								- TBD: scenario test
 								- TBD: clean up web_main(), app_main(), file_io(), input_cleanup()
