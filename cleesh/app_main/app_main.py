@@ -83,12 +83,11 @@ def weapon_disp(gs, start_in_hand):
 	return
 
 def meta_cmd_exe(word_lst, game_name, root_path_str, gs):
-# def meta_cmd_exe(word1, game_name, root_path_str, gs):
 	if len(word_lst) == 1:
 		word_lst.append('menu')
 	meta_cmd, arg, *_ = word_lst
 	try:
-		if meta_cmd in ['quit', 'q']:
+		if meta_cmd in ['quit']:
 			gs.end.game_ending = 'quit.'
 			gs.end.is_end = True
 			gs.io.reset_cmd_queue()
@@ -150,38 +149,23 @@ def app_main(user_input, game_name, root_path_str):
 		is_att = False
 		has_except = False
 		is_multiples_action = False
-#		word1 = ""
 		word1 = get_word1(user_input)
 
-		# mutually exclusive meta command cases
-#		if user_input.lower().strip() in ['again', 'g']:
+		# if command is 'again', get last input
 		if word1 in ['again']:
-#			if len(gs.io.last_input_str) == 0:
-#				user_input = "look"
-#			else:
 			user_input = gs.io.last_input_str
 			word1 = get_word1(user_input)
 
-#		user_input_lst = input_cleanup(user_input)
-#		if len(user_input_lst) == 0:
+		# no command entered
 		if word1 is None:
 			gs.io.buffer("I beg your pardon?")
 			is_interp_cmd = False
-#		else:
-#			word1 = user_input_lst[0]
-
-#		if word1 in [
 		# one word meta commands
 		elif word1 in [
-#				'quit', 'q', 'restart','score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 
 				'quit', 'restart','score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 
-#				'rand_mode', 'debug', 'help', 'save', 'restore'
 				'rand_mode', 'save', 'restore'
 				]:
-#			user_input_lst = input_cleanup(user_input) # new
-#			meta_cmd_exe(user_input_lst, game_name, root_path_str, gs)
 			meta_cmd_exe([word1], game_name, root_path_str, gs)
-#			meta_cmd_exe(word1, game_name, root_path_str, gs)
 			is_interp_cmd = False
 			is_meta_cmd = True
 		# two word meta commands

@@ -1277,7 +1277,7 @@ To Do List - Dark Castle v3
 							- DONE: manual test
 							- DONE: scenario test
 							- DONE: clean up comments in interp()
-						- INPROC: use input_cleanup() in app_main()
+						- DONE: use input_cleanup() in app_main()
 							- DONE: import input_cleanup() in app_main()
 							- DONE: call input_cleanup() from app_main()
 							- DONE: update existing pre_interp cmd clean-up
@@ -1323,7 +1323,7 @@ To Do List - Dark Castle v3
 								- DONE: manual test
 								- DONE: scenario test
 								- DONE: clean up comments in app_main() and interp()
-							- INPROC: use input_cleanup() for save and restore in web_main()
+							- DONE: use input_cleanup() for save and restore in web_main()
 								- FINDING: quit & restart tested first in web_main()
 								- FINDING: save & restore only live in web_main()
 								- IDEA: intereactive testing only possible in web_main()
@@ -1336,7 +1336,7 @@ To Do List - Dark Castle v3
 								- DONE: clean-up web_main() comments
 								- DONE: refactor is_confirm()
 								- DONE: manual test; full game test w/ and w/out backstory
-								- INPROC: tighten input pre-proce (strip; lower); align w/ interp()
+								- DONE: tighten input pre-proce (strip; lower); align w/ interp()
 									- DONE: review app_main() and interp() pre_proc: input_cleanup()
 									- DONE: generalize input_cleanuup() to be able to not need gs
 									- CANCEL: call input_cleanup() from web_main() ???
@@ -1349,21 +1349,20 @@ To Do List - Dark Castle v3
 									- DONE: investigate: do I need to return is_start from app_main()?
 									- DONE: eliminate is_start from app_main() return
 									- DONE: clean up comments in web_main() and app_main()
-									- INPROC: call get_word1() from app_main()
+									- DONE: call get_word1() from app_main()
 										- FINDING: actually, I need word2 for 2 cmds...
 										- DECIDE: back out change or new get_2word_lst func ?
 										- IDEA: separate call for input_lst just for help, debug
 										- DONE: implement new approach
 										- DONE: manual test
 										- DONE: update again after no answer to "pardon"
-										- TBD: clean up comments
-								- TBD: manual test
-								- TBD: scenario test
-								- TBD: clean up web_main(), app_main(), file_io(), input_cleanup()
-								- TBD: update verb table (quit, restart, again, wait, save, restore)
-							- TBD: update 'pre_interp_word_lst'
-					- TBD: clean-up
-						- TBD: clean-up comments in app_main() and web_main()
+										- DONE: clean up comments in app_main()
+								- DONE: manual test
+								- DONE: scenario test
+								- DONE: clean up web_main(), app_main(), file_io(), input_cleanup()
+								- DONE: update verb table (quit, restart, again, wait, save, restore)
+					- INPROC: clean-up
+						- DONE: clean-up comments in app_main() and web_main()
 						- TBD: delete meta_cmd() module
 						- TBD: clean-up comments in cmd_exe()
 						- TBD: elim special cases for 'meta' and 'help' in interp() and parser()
@@ -1419,6 +1418,8 @@ To Do List - Dark Castle v3
 		- TBD: one-word debug commands
 			- TBD: update verb spreadsheet
 		- TBD: additional updates post migration
+			- TBD: update 'pre_interp_word_lst' ('wait' is now interp() cmd; add in others)
+			- TBD: no longer need to check for pre_interp_word_lst in interp()
 			- TBD: update help() cmd to give a limited list of verbs ?
 			- TBD: in doc section, call out interp asym: more permissive >> less permissive
 			- TBD: consider including bkpk in infer_do_noun() scope (e.g. if crown in bkpk, wear it)
@@ -1428,6 +1429,8 @@ To Do List - Dark Castle v3
 		- TBD: plan for verb method mode ('std' vs. 'silent'?)
 		- TBD: sword glowing when not in hand - error or ok?
 		- TBD: find a way to avoid calling input_cleanup() 3x [web_main(), app_main(), interp()]
+		- TBD: full refactor of app_main() to simplify multiples
+		- TBD: full refactor of app_main() to simplify passing of game_name & root_path_str
 		- TBD: sort out long-term approach to is_bkstory
 			- TBD: for app_main(), in place of returning is_bkstory, return user_confirm
 			- TBD: in web_main(), if user_confirm, send back unique special user_response 

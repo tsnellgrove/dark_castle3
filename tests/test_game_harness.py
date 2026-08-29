@@ -78,7 +78,8 @@ class GameTestHarness(unittest.TestCase):
         results = []
         
         for command in commands:
-            is_start, is_end, game_ending, is_bkstry, output = app_main(
+#            is_start, is_end, game_ending, is_bkstry, output = app_main(
+            is_end, game_ending, is_bkstry, output = app_main(
                 command, game_name, self.root_path
             )
             
