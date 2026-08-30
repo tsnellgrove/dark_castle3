@@ -1363,10 +1363,18 @@ To Do List - Dark Castle v3
 								- DONE: update verb table (quit, restart, again, wait, save, restore)
 					- INPROC: clean-up
 						- DONE: clean-up comments in app_main() and web_main()
-						- TBD: delete meta_cmd() module
-						- TBD: clean-up comments in cmd_exe()
-						- TBD: elim special cases for 'meta' and 'help' in interp() and parser()
-						- TBD: elim meta_lst in interp()
+						- DONE: delete meta_cmd() module
+						- DONE: clean-up comments in cmd_exe()
+						- INPROC: elim special cases for 'meta' and 'help' in interp() and parser()
+							- DONE: elim meta_arg_lst refs
+							- DONE: elim meta_cmd_lst refs
+							- DONE: elim new_meta_cmd_lst refs
+							- DONE: elim help cmd refs
+							- DONE: elim meta syntax refs
+							- DONE: elim input_meta_arg refs
+							- DONE: manual test
+							- DONE: scenario test
+							- TBD: clean up comments
 						- TBD: elim is_wait in app_main()
 						- DONE: process meta cmds as external function
 						- TBD: deep dive in interp() and clean-up
@@ -1431,6 +1439,7 @@ To Do List - Dark Castle v3
 		- TBD: find a way to avoid calling input_cleanup() 3x [web_main(), app_main(), interp()]
 		- TBD: full refactor of app_main() to simplify multiples
 		- TBD: full refactor of app_main() to simplify passing of game_name & root_path_str
+		- TBD: fix leap from tree does not respect 'brief' mode
 		- TBD: sort out long-term approach to is_bkstory
 			- TBD: for app_main(), in place of returning is_bkstory, return user_confirm
 			- TBD: in web_main(), if user_confirm, send back unique special user_response 

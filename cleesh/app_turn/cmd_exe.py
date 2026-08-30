@@ -5,15 +5,11 @@
 
 ### import statements ###
 import traceback
-# from cleesh.app_turn.meta_cmd import meta_cmd_exe
 
 ### execute commands based on case ###
 def cmd_execute(gs, case, word_lst):
 	try:
 		if case == 'universal':
-#			if word_lst[-1] in ['meta']:
-#				meta_cmd_exe(word_lst, gs)
-#			elif word_lst[-1] in ['verb_do']:
 			if word_lst[-1] in ['verb_do']:
 				action_str, do_noun_obj, *_ = word_lst
 				getattr(do_noun_obj, action_str)(gs)
