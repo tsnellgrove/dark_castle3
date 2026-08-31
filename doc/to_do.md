@@ -1365,7 +1365,7 @@ To Do List - Dark Castle v3
 						- DONE: clean-up comments in app_main() and web_main()
 						- DONE: delete meta_cmd() module
 						- DONE: clean-up comments in cmd_exe()
-						- INPROC: elim special cases for 'meta' and 'help' in interp() and parser()
+						- DONE: elim special cases for 'meta' and 'help' in interp() and parser()
 							- DONE: elim meta_arg_lst refs
 							- DONE: elim meta_cmd_lst refs
 							- DONE: elim new_meta_cmd_lst refs
@@ -1374,7 +1374,7 @@ To Do List - Dark Castle v3
 							- DONE: elim input_meta_arg refs
 							- DONE: manual test
 							- DONE: scenario test
-							- TBD: clean up comments
+							- DONE: clean up comments
 						- TBD: elim is_wait in app_main()
 						- DONE: process meta cmds as external function
 						- TBD: deep dive in interp() and clean-up
