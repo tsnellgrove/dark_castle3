@@ -142,7 +142,6 @@ def app_main(user_input, game_name, root_path_str):
 		user_input = gs.io.pop_cmd_queue()
 
 		# local var declarations
-#		is_wait = False
 		is_interp_cmd = True
 		is_meta_cmd = False
 		is_valid = False
@@ -220,13 +219,11 @@ def app_main(user_input, game_name, root_path_str):
 			case, word_lst = interpreter(user_input, master_obj_lst)
 			is_valid, is_att, err_txt = validate(gs, case, word_lst)
 	
-		# if command is not valid, clear cmd_queue
+		# if command is not valid and not meta, clear cmd_queue
 		if not is_valid and not is_meta_cmd:
-#		if not is_valid and not is_meta_cmd and not is_wait:
 			gs.io.reset_cmd_queue()
 
-		# if command is valid, increment move
-#		if (is_valid or is_att or is_wait):
+		# if command is valid or attemptable, increment move
 		if (is_valid or is_att):
 			gs.core.move_inc()
 
@@ -249,7 +246,6 @@ def app_main(user_input, game_name, root_path_str):
 		if gs.end.is_end or word1 == 'restart':
 			gs.end.disp_end(gs)
 		elif is_valid or is_att: # elif to avoid case of auto_act() run after ending from cmd
-#		elif is_wait or is_valid or is_att: # elif to avoid case of auto_act() run after ending from cmd
 			auto_action(gs)
 		if word1 == 'restart':
 			gs.io.buffer("Restarting...") # appears post 'you have restarted' end text and pre 'welcome' text

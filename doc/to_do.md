@@ -1191,7 +1191,7 @@ To Do List - Dark Castle v3
 						- DONE: update verb table
 					- CANCEL: allow prep phrase 'jump in moat' => 'enter moat' ???
 					- CANCEL: 'jump' => 'jump <room>'
-			- INPROC: method-ize meta commands and call them via shapes (meta, meta_arg)
+			- DONE: method-ize meta commands and call them via shapes (meta, meta_arg)
 				- DONE: one-time updates
 					- DONE: create meta_cmd() module in app_turn
 					- DONE: exclude case = 'universal', shape = 'meta' from validate()
@@ -1257,7 +1257,7 @@ To Do List - Dark Castle v3
 					- DONE: manual test
 					- DONE: scenario test
 					- DONE: clean up comments in interp() and cmd_exe()
-			- INPROC: investigate moving meta cmds to app_main() loop (i.e. out of interp() )
+			- DONE: investigate moving meta cmds to app_main() loop (i.e. out of interp() )
 				- DONE: discovery
 					- IDEA: move "wait" to interp cmd (method of Room)
 					- IDEA: move meta cmds to where "wait" is (post "again")
@@ -1266,7 +1266,7 @@ To Do List - Dark Castle v3
 					- IDEA: key decider 1: does time pass during cmd (meta = no, "wait" = yes)
 					- IDEA: key decider 2: could the game world impact player during this turn
 						- IDEA: meta cmds = no, "wait" = yes (could be attacked, could be falling, etc)
-				- INPROC: refactor
+				- DONE: refactor
 					- DONE: move 1-word meta cmds to app_main()
 						- DONE: add meta_cmd_exe() as external function to app_main()
 						- DONE: make input_cleanup() a stand-alone module
@@ -1361,7 +1361,7 @@ To Do List - Dark Castle v3
 								- DONE: scenario test
 								- DONE: clean up web_main(), app_main(), file_io(), input_cleanup()
 								- DONE: update verb table (quit, restart, again, wait, save, restore)
-					- INPROC: clean-up
+					- DONE: clean-up
 						- DONE: clean-up comments in app_main() and web_main()
 						- DONE: delete meta_cmd() module
 						- DONE: clean-up comments in cmd_exe()
@@ -1375,12 +1375,11 @@ To Do List - Dark Castle v3
 							- DONE: manual test
 							- DONE: scenario test
 							- DONE: clean up comments
-						- INPROC: elim is_wait in app_main()
+						- DONE: elim is_wait in app_main()
 							- DONE: comment out instances
 							- DONE: scenario test
-							- TBD: clean up comments
+							- DONE: clean up comments
 						- DONE: process meta cmds as external function
-						- TBD: deep dive in interp() and clean-up
 			- TBD: return parse_err and eliminate 'error' case
 			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
 				- TBD: address hand mgmt in hand_manage()
@@ -1390,12 +1389,14 @@ To Do List - Dark Castle v3
 				- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
 				- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
 				- TBD: consider not passing verb or prep to syntax as independent attribs
-				- TBD: weapon updates
-					- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
-					- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
-					- TBD: sort out weapon state buffers in hand_manage()
-					- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
-					- TBD: standardize weapon draw on attack
+		- TBD: post-migrate prep case
+			- TBD: review notes below and organize by priority
+			- TBD: weapon updates
+				- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
+				- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
+				- TBD: sort out weapon state buffers in hand_manage()
+				- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
+				- TBD: standardize weapon draw on attack
 			- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
 			- TBD: refactor / clean-up
 				- TBD: eliminate case
@@ -1428,6 +1429,7 @@ To Do List - Dark Castle v3
 			- TBD: update verb spreadsheet
 		- TBD: one-word debug commands
 			- TBD: update verb spreadsheet
+		- TBD: deep dive in interp() and clean-up
 		- TBD: additional updates post migration
 			- TBD: update 'pre_interp_word_lst' ('wait' is now interp() cmd; add in others)
 			- TBD: no longer need to check for pre_interp_word_lst in interp()
