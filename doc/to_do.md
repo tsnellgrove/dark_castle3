@@ -1375,7 +1375,10 @@ To Do List - Dark Castle v3
 							- DONE: manual test
 							- DONE: scenario test
 							- DONE: clean up comments
-						- TBD: elim is_wait in app_main()
+						- INPROC: elim is_wait in app_main()
+							- DONE: comment out instances
+							- DONE: scenario test
+							- TBD: clean up comments
 						- DONE: process meta cmds as external function
 						- TBD: deep dive in interp() and clean-up
 			- TBD: return parse_err and eliminate 'error' case
