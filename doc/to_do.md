@@ -1380,7 +1380,17 @@ To Do List - Dark Castle v3
 							- DONE: scenario test
 							- DONE: clean up comments
 						- DONE: process meta cmds as external function
-			- TBD: return parse_err and eliminate 'error' case
+			- INPROC: return parse_err and eliminate 'error' case
+				- DONE: review Opus notes and interp(), app_main, and validate()
+				- IDEA: update interp() to return case, cmd, interp_err
+				- IDEA: if interp err, cmd = None, interp_err = "err_txt"; app_main() buffs err
+				- IDEA: if no interp err, cmd = cmd, interp_err = None, app_main() => validate()
+				- TBD: update interp() return and app_main() recieve for 3rd term
+				- TBD: update app_main() to buff err_txt and set values on err (no validate() )
+				- TBD: update 1x interp() err return
+				- TBD: manual test
+				- TBD: update all interp returns
+				- TBD: scenario test
 			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
 				- TBD: address hand mgmt in hand_manage()
 				- TBD: update input_cleanup()
@@ -1389,6 +1399,7 @@ To Do List - Dark Castle v3
 				- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
 				- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
 				- TBD: consider not passing verb or prep to syntax as independent attribs
+			- TBD: eliminate case
 		- TBD: post-migrate prep case
 			- TBD: review notes below and organize by priority
 			- TBD: weapon updates
@@ -1398,8 +1409,7 @@ To Do List - Dark Castle v3
 				- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
 				- TBD: standardize weapon draw on attack
 			- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
-			- TBD: refactor / clean-up
-				- TBD: eliminate case
+			- TBD: refactor / clean-up				
 				- TBD: pull all 'meta' and 'meta_term' exclusions into app_main()
 			- TBD: update verb spreadsheet
 			- TBD: phase a (see Claude)
