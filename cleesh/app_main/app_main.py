@@ -148,6 +148,7 @@ def app_main(user_input, game_name, root_path_str):
 		is_att = False
 		has_except = False
 		is_multiples_action = False
+		err_txt = ""
 		word1 = get_word1(user_input)
 
 		# if command is 'again', get last input
@@ -216,8 +217,18 @@ def app_main(user_input, game_name, root_path_str):
 				start_in_hand = None
 			else:
 				start_in_hand = gs.core.hero.get_hand_item()
-			case, word_lst = interpreter(user_input, master_obj_lst)
-			is_valid, is_att, err_txt = validate(gs, case, word_lst)
+#			case, word_lst = interpreter(user_input, master_obj_lst)
+			case, word_lst, interp_err = interpreter(user_input, master_obj_lst)
+			if word_lst is None:
+				if gs.core.is_debug:
+					gs.io.buffer(f"[INTERP error] {interp_err}")
+				else:
+					gs.io.buffer(f"{interp_err}")
+				is_valid = False
+				is_att = False
+#				err_txt = ""
+			else:
+				is_valid, is_att, err_txt = validate(gs, case, word_lst)
 	
 		# if command is not valid and not meta, clear cmd_queue
 		if not is_valid and not is_meta_cmd:

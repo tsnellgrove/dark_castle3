@@ -376,12 +376,13 @@ def interpreter(user_input, master_obj_lst):
 	# *** user_input to cleaned-up user_input_lst conversion ***
 	gs = master_obj_lst[0]
 	user_input_lst = input_cleanup(user_input)
+	interp_err = None
 
 	# *** initial error checking ***
 	# error if user input contains reserved syntax words
 	for word in user_input_lst:
 		if word in ['verb_syn', 'hero_rm_obj', 'verb_str', 'do_noun_str', 'prep_phrase_convert']: # reserved syntax
-			return 'error', [f"What??"]
+			return 'error', [f"What??"], interp_err
 	# one-word commands where user_input_lst is longer than one word
 	if len(user_input_lst) > 1 and user_input_lst[0] in (
 			gs.io.get_lst('pre_interp_word_lst','eng') + 
@@ -389,7 +390,7 @@ def interpreter(user_input, master_obj_lst):
 			gs.io.get_lst('one_word_secret_lst','eng') +
 			gs.io.get_lst('one_word_travel_lst','eng') # added
 			):
-		return 'error', [f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"]
+		return 'error', [f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"], interp_err
 
 	# *** global variable assignment ***
 	word1 = user_input_lst[0]
@@ -465,13 +466,13 @@ def interpreter(user_input, master_obj_lst):
 				verb_str = 'go'
 				verb_cmd_lst.append(verb_str)
 			else:
-				return 'error', ["Please start your sentence with a known verb!"]
+				return 'error', ["Please start your sentence with a known verb!"], interp_err
 		# if verb is debug verb but not in debug mode, return error
 		if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
-			return 'error', ["Please start your sentence with a known verb!"]
+			return 'error', ["Please start your sentence with a known verb!"], interp_err
 		# if verb count > 1, return error
 		if len(verb_cmd_lst) > 1:
-			return 'error', ['I see more than one verb in that sentence!']			
+			return 'error', ['I see more than one verb in that sentence!'], interp_err	
 		# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
 		err_chk, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
 		if err_chk != 'error':
@@ -503,7 +504,7 @@ def interpreter(user_input, master_obj_lst):
 				error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
 				# if noun_handling() error_state = True, return error
 				if error_state:
-					return 'error', [error_msg]
+					return 'error', [error_msg], interp_err
 				# if no noun_handling() error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
 				else:
 					do_noun_cmd_lst = [do_noun_obj.name]
@@ -516,7 +517,7 @@ def interpreter(user_input, master_obj_lst):
 					syntax_do_lst = ['input_do_noun'] # new - for syntax call
 					do_noun_str = do_noun_obj.name # new - for syntax call
 				else:
-					return 'error', [err_txt]
+					return 'error', [err_txt], interp_err
 			# if no do_prep given and verb requires one, attempt to infer; return error if ambiguous
 			# placed after do_noun proc (not alongside the prep_phrase_convert check above) so that when both
 			# the noun and the direction are inferred, the noun's inference hint reads first - "(the Tree)"
@@ -526,7 +527,7 @@ def interpreter(user_input, master_obj_lst):
 				if prep_inferred:
 					do_prep_cmd_lst = [prep_str]
 				else:
-					return 'error', [err_txt]
+					return 'error', [err_txt], interp_err
 			if tst_mode:
 				cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 				print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
@@ -536,7 +537,7 @@ def interpreter(user_input, master_obj_lst):
 				id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 				error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
 				if error_state:
-					return 'error', [error_msg]
+					return 'error', [error_msg], interp_err
 				else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
 					id_noun_cmd_lst = [id_noun_obj.name]
 					id_noun_syn_lst = ['input_id_noun']
@@ -551,7 +552,7 @@ def interpreter(user_input, master_obj_lst):
 			print(f"user_syntax_lst: {user_syntax_lst}")
 		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, None, gs)
 		if case == 'error':
-			return case, action_lst
+			return case, action_lst, interp_err
 		if tst_mode:
 			print(f"pre-asym-syn action_lst: {action_lst}")
 
@@ -561,7 +562,7 @@ def interpreter(user_input, master_obj_lst):
 		if tst_mode:
 			print(f"post-asym-syn action_lst: {action_lst}")
 
-		return case, action_lst
+		return case, action_lst, interp_err
 
 
 	# *** legacy interp ***
@@ -574,7 +575,7 @@ def interpreter(user_input, master_obj_lst):
 				action_lst = ["What??"]
 
 	if case is not None:
-		return case, action_lst
+		return case, action_lst, interp_err
 	elif case is None and action_lst is not None: # infer noun case for non-2word commands - e.g. climb
 		user_input_lst = action_lst
 	# *** end of one-word command processing ***
@@ -586,12 +587,12 @@ def interpreter(user_input, master_obj_lst):
 	verb_count = 0
 	verb_count = sum(1 for word in user_input_lst if word in full_verbs_lst)
 	if verb_count == 0:
-		return 'error', ['I don\'t see a verb in that sentence!']
+		return 'error', ['I don\'t see a verb in that sentence!'], interp_err
 #	elif (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
 	elif (verb_count > 1):
-		return 'error', ['I see more than one verb in that sentence!']
+		return 'error', ['I see more than one verb in that sentence!'], interp_err
 	if word1 not in full_verbs_lst:
-		return 'error', ["Please start your sentence with a known verb!"]
+		return 'error', ["Please start your sentence with a known verb!"], interp_err
 
 	# handle prep verb commands (special cases first else general case)
 	# [SYNTAX start here]
@@ -636,10 +637,10 @@ def interpreter(user_input, master_obj_lst):
 			prep = 'from'
 		if prep not in user_input_lst:
 			error_msg = f"I don't see the word '{prep}' in that sentence."
-			return 'error', [error_msg]
+			return 'error', [error_msg], interp_err
 		if len(user_input_lst) < 4:
 			error_msg = "That sentence doesn't appear to be complete"
-			return 'error', [error_msg]
+			return 'error', [error_msg], interp_err
 		# [SYNTAX end here]
 		else:
 			in_position = user_input_lst.index(prep)
@@ -648,12 +649,12 @@ def interpreter(user_input, master_obj_lst):
 			noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst) # pass without verb
 			dir_obj_error_state, dir_obj_error_msg, dirobj_obj = noun_handling(master_obj_lst, p_p_lst) # pass without prep
 			if noun_error_state:
-				return 'error', [noun_error_msg]
+				return 'error', [noun_error_msg], interp_err
 			elif dir_obj_error_state:
-				return 'error', [dir_obj_error_msg]
+				return 'error', [dir_obj_error_msg], interp_err
 			if dirobj_obj.is_container() and word1 == 'put' and prep != dirobj_obj.prep:
 				error_msg = f"I don't see the word '{dirobj_obj.prep}' in that sentence."
-				return 'error', [error_msg]
+				return 'error', [error_msg], interp_err
 			elif word1 in ['attack', 'lock', 'unlock', 'drink']:
 				if not gs.core.hero.chk_in_hand(dirobj_obj) and gs.core.hero.chk_in_bkpk(dirobj_obj):
 					gs.core.hero.put_in_hand(dirobj_obj, gs)
@@ -663,7 +664,7 @@ def interpreter(user_input, master_obj_lst):
 					gs.core.hero.worn_lst_remove(dirobj_obj)
 					gs.io.buffer(f"(Removing the {dirobj_obj.full_name} first)")
 					gs.io.buff_s(f"{gs.core.hero.name}_remove_{dirobj_obj.descript_key}")
-				return 'prep', [noun_obj, word1, dirobj_obj]
+				return 'prep', [noun_obj, word1, dirobj_obj], interp_err
 			else:
 				if not gs.core.hero.chk_in_hand(noun_obj) and gs.core.hero.chk_in_bkpk(noun_obj):
 					gs.core.hero.put_in_hand(noun_obj, gs)
@@ -673,4 +674,4 @@ def interpreter(user_input, master_obj_lst):
 					gs.core.hero.worn_lst_remove(noun_obj)
 					gs.io.buffer(f"(Removing the {noun_obj.full_name} first)")
 					gs.io.buff_s(f"{gs.core.hero.name}_remove_{noun_obj.descript_key}")
-				return 'prep', [dirobj_obj, word1, noun_obj]
+				return 'prep', [dirobj_obj, word1, noun_obj], interp_err
