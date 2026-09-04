@@ -382,7 +382,8 @@ def interpreter(user_input, master_obj_lst):
 	# error if user input contains reserved syntax words
 	for word in user_input_lst:
 		if word in ['verb_syn', 'hero_rm_obj', 'verb_str', 'do_noun_str', 'prep_phrase_convert']: # reserved syntax
-			return 'error', [f"What??"], interp_err
+#			return 'error', [f"What??"], interp_err
+			return 'error', None, "What??"
 	# one-word commands where user_input_lst is longer than one word
 	if len(user_input_lst) > 1 and user_input_lst[0] in (
 			gs.io.get_lst('pre_interp_word_lst','eng') + 
@@ -390,7 +391,7 @@ def interpreter(user_input, master_obj_lst):
 			gs.io.get_lst('one_word_secret_lst','eng') +
 			gs.io.get_lst('one_word_travel_lst','eng') # added
 			):
-		return 'error', [f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"], interp_err
+		return 'error', None, f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"
 
 	# *** global variable assignment ***
 	word1 = user_input_lst[0]
@@ -466,13 +467,15 @@ def interpreter(user_input, master_obj_lst):
 				verb_str = 'go'
 				verb_cmd_lst.append(verb_str)
 			else:
-				return 'error', ["Please start your sentence with a known verb!"], interp_err
+				return 'error', None, "Please start your sentence with a known verb!" # won't fire until interp migration complete
 		# if verb is debug verb but not in debug mode, return error
 		if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
-			return 'error', ["Please start your sentence with a known verb!"], interp_err
+#			return 'error', ["Please start your sentence with a known verb!"], interp_err
+			return 'error', None, "Please start your sentence with a known verb!"
 		# if verb count > 1, return error
 		if len(verb_cmd_lst) > 1:
-			return 'error', ['I see more than one verb in that sentence!'], interp_err	
+#			return 'error', ['I see more than one verb in that sentence!'], interp_err
+			return 'error', None, "I see more than one verb in that sentence!" # can't actually get this error to fire
 		# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
 		err_chk, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
 		if err_chk != 'error':

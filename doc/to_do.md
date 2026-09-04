@@ -1387,11 +1387,12 @@ To Do List - Dark Castle v3
 				- IDEA: if no interp err, cmd = cmd, interp_err = None, app_main() => validate()
 				- DONE: update interp() return and app_main() recieve for 3rd term
 				- DONE: update app_main() to buff err_txt and set values on err (no validate() )
-				- TBD: update 1x interp() err return
-				- TBD: manual test
-				- TBD: update all interp returns
+				- DONE: update 2x interp() err return
+				- DONE: manual test (w/ and w/out debug)
+				- DONE: update interp returns w/ manual testing up to return 24
+				- TBD: update remaining interp returns w/ manual testing
 				- TBD: scenario test
-				- TBD: elim interp err buff from validate()
+				- TBD: elim 'error' case and interp err buff from validate()
 				- TBD: in app_main(), word_lst => cmd_lst
 				- TBD: clean up comments in app_main() and interp()
 			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
