@@ -1391,13 +1391,15 @@ To Do List - Dark Castle v3
 				- DONE: manual test (w/ and w/out debug)
 				- DONE: update interp returns w/ manual testing up to return 24
 				- DONE: update interp returns w/ manual testing up to return 33
-				- TBD: update remaining interp returns w/ manual testing
+				- DONE: update remaining interp returns (limited manual testing)
+				- DONE: scenario test
 				- TBD: refactor syntax(); pass err bool and elim old 2x-dict call
 				- TBD: refactor asym_syn(); pass err bool instead of case
 				- TBD: scenario test
+				- TBD: update 'error' case cond in validate() => scenario test gens no error cases
 				- TBD: elim 'error' case and interp err buff from validate()
 				- TBD: in app_main(), word_lst => cmd_lst
-				- TBD: clean up comments in app_main() and interp()
+				- TBD: clean up comments in app_main() and interp() (except legacy section)
 			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
 				- TBD: address hand mgmt in hand_manage()
 				- TBD: update input_cleanup()

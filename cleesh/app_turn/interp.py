@@ -559,13 +559,16 @@ def interpreter(user_input, master_obj_lst):
 			print(f"user_syntax_lst: {user_syntax_lst}")
 		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, None, gs)
 		if case == 'error':
-			return case, action_lst, interp_err
+#			return case, action_lst, interp_err
+			return 'error', None, f"{action_lst[0]}"
 		if tst_mode:
 			print(f"pre-asym-syn action_lst: {action_lst}")
 
 		# *** aysm_syn - used by all verbs ***
 		# check for conditional asymetric verb synonym
 		case, action_lst = asym_syn(action_lst, gs)
+		if case == 'error':
+			return 'error', None, f"{action_lst[0]}"
 		if tst_mode:
 			print(f"post-asym-syn action_lst: {action_lst}")
 
@@ -578,8 +581,9 @@ def interpreter(user_input, master_obj_lst):
 				pass # let it through to syntax for verb-only command processing
 #				case, action_lst = syntax(('infer_verb',), word1, None, None, None, gs)
 			else:
-				case = 'error'
-				action_lst = ["What??"]
+##				case = 'error'
+##				action_lst = ["What??"]
+				return 'error', None, "What??"
 
 	if case is not None:
 		return case, action_lst, interp_err
@@ -594,12 +598,15 @@ def interpreter(user_input, master_obj_lst):
 	verb_count = 0
 	verb_count = sum(1 for word in user_input_lst if word in full_verbs_lst)
 	if verb_count == 0:
-		return 'error', ['I don\'t see a verb in that sentence!'], interp_err
+#		return 'error', ['I don\'t see a verb in that sentence!'], interp_err
+		return 'error', None, "I don't see a verb in that sentence!"
 #	elif (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
 	elif (verb_count > 1):
-		return 'error', ['I see more than one verb in that sentence!'], interp_err
+#		return 'error', ['I see more than one verb in that sentence!'], interp_err
+		return 'error', None, "I see more than one verb in that sentence!"
 	if word1 not in full_verbs_lst:
-		return 'error', ["Please start your sentence with a known verb!"], interp_err
+#		return 'error', ["Please start your sentence with a known verb!"], interp_err
+		return 'error', None, "Please start your sentence with a known verb!"
 
 	# handle prep verb commands (special cases first else general case)
 	# [SYNTAX start here]
@@ -643,11 +650,13 @@ def interpreter(user_input, master_obj_lst):
 				gs.io.buffer(f"(from the {creature.get_hand_item().full_name})")
 			prep = 'from'
 		if prep not in user_input_lst:
-			error_msg = f"I don't see the word '{prep}' in that sentence."
-			return 'error', [error_msg], interp_err
+#			error_msg = f"I don't see the word '{prep}' in that sentence."
+#			return 'error', [error_msg], interp_err
+			return 'error', None, f"I don't see the word '{prep}' in that sentence."
 		if len(user_input_lst) < 4:
-			error_msg = "That sentence doesn't appear to be complete"
-			return 'error', [error_msg], interp_err
+#			error_msg = "That sentence doesn't appear to be complete"
+#			return 'error', [error_msg], interp_err
+			return 'error', None, "That sentence doesn't appear to be complete"
 		# [SYNTAX end here]
 		else:
 			in_position = user_input_lst.index(prep)
@@ -656,12 +665,15 @@ def interpreter(user_input, master_obj_lst):
 			noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst) # pass without verb
 			dir_obj_error_state, dir_obj_error_msg, dirobj_obj = noun_handling(master_obj_lst, p_p_lst) # pass without prep
 			if noun_error_state:
-				return 'error', [noun_error_msg], interp_err
+#				return 'error', [noun_error_msg], interp_err
+				return 'error', None, noun_error_msg
 			elif dir_obj_error_state:
-				return 'error', [dir_obj_error_msg], interp_err
+#				return 'error', [dir_obj_error_msg], interp_err
+				return 'error', None, dir_obj_error_msg
 			if dirobj_obj.is_container() and word1 == 'put' and prep != dirobj_obj.prep:
-				error_msg = f"I don't see the word '{dirobj_obj.prep}' in that sentence."
-				return 'error', [error_msg], interp_err
+#				error_msg = f"I don't see the word '{dirobj_obj.prep}' in that sentence."
+#				return 'error', [error_msg], interp_err
+				return 'error', None, f"I don't see the word '{dirobj_obj.prep}' in that sentence."
 			elif word1 in ['attack', 'lock', 'unlock', 'drink']:
 				if not gs.core.hero.chk_in_hand(dirobj_obj) and gs.core.hero.chk_in_bkpk(dirobj_obj):
 					gs.core.hero.put_in_hand(dirobj_obj, gs)
