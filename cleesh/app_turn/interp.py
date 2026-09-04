@@ -507,7 +507,8 @@ def interpreter(user_input, master_obj_lst):
 				error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
 				# if noun_handling() error_state = True, return error
 				if error_state:
-					return 'error', [error_msg], interp_err
+#					return 'error', [error_msg], interp_err
+					return 'error', None, f"{error_msg}"
 				# if no noun_handling() error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
 				else:
 					do_noun_cmd_lst = [do_noun_obj.name]
@@ -520,7 +521,8 @@ def interpreter(user_input, master_obj_lst):
 					syntax_do_lst = ['input_do_noun'] # new - for syntax call
 					do_noun_str = do_noun_obj.name # new - for syntax call
 				else:
-					return 'error', [err_txt], interp_err
+#					return 'error', [err_txt], interp_err
+					return 'error', None, f"{err_txt}"
 			# if no do_prep given and verb requires one, attempt to infer; return error if ambiguous
 			# placed after do_noun proc (not alongside the prep_phrase_convert check above) so that when both
 			# the noun and the direction are inferred, the noun's inference hint reads first - "(the Tree)"
@@ -530,7 +532,8 @@ def interpreter(user_input, master_obj_lst):
 				if prep_inferred:
 					do_prep_cmd_lst = [prep_str]
 				else:
-					return 'error', [err_txt], interp_err
+#					return 'error', [err_txt], interp_err
+					return 'error', None, f"{err_txt}" # was unable to fully test
 			if tst_mode:
 				cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 				print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
@@ -540,7 +543,8 @@ def interpreter(user_input, master_obj_lst):
 				id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 				error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
 				if error_state:
-					return 'error', [error_msg], interp_err
+#					return 'error', [error_msg], interp_err
+					return 'error', None, f"{error_msg}" # unable to test until prep verbs migrated
 				else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
 					id_noun_cmd_lst = [id_noun_obj.name]
 					id_noun_syn_lst = ['input_id_noun']

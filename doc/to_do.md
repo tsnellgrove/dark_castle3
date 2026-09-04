@@ -1390,6 +1390,8 @@ To Do List - Dark Castle v3
 				- DONE: update 2x interp() err return
 				- DONE: manual test (w/ and w/out debug)
 				- DONE: update interp returns w/ manual testing up to return 24
+				- DONE: update interp returns w/ manual testing up to return 33
+				- TBD: refactor syntax(); pass err bool and elim old 2x-dict call
 				- TBD: update remaining interp returns w/ manual testing
 				- TBD: scenario test
 				- TBD: elim 'error' case and interp err buff from validate()
@@ -1406,6 +1408,7 @@ To Do List - Dark Castle v3
 			- TBD: eliminate case
 		- TBD: post-migrate prep case
 			- TBD: review notes below and organize by priority
+			- TBD: need to fix 'again' to work properly with self-queuing cmds like "climb"
 			- TBD: weapon updates
 				- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
 				- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
