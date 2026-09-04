@@ -1391,8 +1391,9 @@ To Do List - Dark Castle v3
 				- DONE: manual test (w/ and w/out debug)
 				- DONE: update interp returns w/ manual testing up to return 24
 				- DONE: update interp returns w/ manual testing up to return 33
-				- TBD: refactor syntax(); pass err bool and elim old 2x-dict call
 				- TBD: update remaining interp returns w/ manual testing
+				- TBD: refactor syntax(); pass err bool and elim old 2x-dict call
+				- TBD: refactor asym_syn(); pass err bool instead of case
 				- TBD: scenario test
 				- TBD: elim 'error' case and interp err buff from validate()
 				- TBD: in app_main(), word_lst => cmd_lst
