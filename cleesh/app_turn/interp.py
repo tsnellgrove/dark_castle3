@@ -136,11 +136,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 		base_action_lst = syntax_dict[user_input_tpl]
 	except:
 		return None, "I don't understand that command!"
-#	if isinstance(base_action_lst, list):
-#		case = 'universal'
-#	else:
-#		base_action_lst = syntax_dict[user_input_tpl]['base_action_lst']
-#		case = syntax_dict[user_input_tpl]['case']
 	action_lst = base_action_lst.copy()
 	for index, word in enumerate(base_action_lst):
 		if word == 'hero_obj':

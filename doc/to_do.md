@@ -1380,7 +1380,7 @@ To Do List - Dark Castle v3
 							- DONE: scenario test
 							- DONE: clean up comments
 						- DONE: process meta cmds as external function
-			- INPROC: return parse_err and eliminate 'error' case
+			- DONE: return parse_err and eliminate 'error' case
 				- DONE: review Opus notes and interp(), app_main, and validate()
 				- IDEA: update interp() to return case, cmd, interp_err
 				- IDEA: if interp err, cmd = None, interp_err = "err_txt"; app_main() buffs err
@@ -1401,8 +1401,9 @@ To Do List - Dark Castle v3
 				- DONE: cleanup comments in app_main(), validate(), & interp() (except legacy section)
 				- DONE: in app_main(), word_lst => cmd_lst
 				- DONE: in syntax(), elim old 2x-dict call
-				- TBD: clean up comments in app_main() & interp() (except legacy section)
+				- DONE: clean up comments in app_main() & interp() (except legacy section)
 			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
+				- TBD: code review deep dive
 				- TBD: address hand mgmt in hand_manage()
 				- TBD: update input_cleanup()
 				- TBD: fix 'blank' first attrib in noun_handling() call
