@@ -1398,7 +1398,7 @@ To Do List - Dark Castle v3
 				- DONE: scenario test
 				- DONE: update 'error' case cond in validate() => scenario test gens no error cases
 				- DONE: elim 'error' case and interp err buff from validate()
-				- TBD: clean up comments in app_main(), validate(), & interp() (except legacy section)
+				- DONE: cleanup comments in app_main(), validate(), & interp() (except legacy section)
 				- TBD: in app_main(), word_lst => cmd_lst
 				- TBD: in syntax(), elim old 2x-dict call
 				- TBD: clean up comments in app_main() & interp() (except legacy section)

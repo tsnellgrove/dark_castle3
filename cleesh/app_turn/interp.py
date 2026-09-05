@@ -135,7 +135,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 	try:
 		base_action_lst = syntax_dict[user_input_tpl]
 	except:
-#		return 'error', ["I don't understand that command!"]
 		return None, "I don't understand that command!"
 	if isinstance(base_action_lst, list):
 		case = 'universal'
@@ -152,14 +151,12 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 			action_lst[index] = input_verb # string
 		if word == 'do_noun_str':
 			action_lst[index] = gs.core.get_str_to_obj_dict(do_noun) # convert to obj
-#	return case, action_lst
 	return action_lst, None
 
 def asym_syn(action_lst, gs):
 	verb_str= action_lst[0]
 	do_noun_obj = action_lst[1]
-#	case = 'universal'
-	interp_err = None # new
+	interp_err = None
 	# consume repeat_str immediately - guards exactly the one command that was just auto-queued via insert_cmd_queue(), preventing infinite re-rewriting (e.g. climb() queuing "go up", which would otherwise get rewritten right back into 'climb' below)
 	repeat_str = gs.io.repeat_str
 	gs.io.repeat_str = None
@@ -189,8 +186,7 @@ def asym_syn(action_lst, gs):
 			if is_only_1_exit:
 				action_lst = ['go', dir_str, do_noun_obj, 'verb_prep_do']
 			else:
-#				case = 'error'
-#				action_lst = [f"Which way do you want to go?"]
+				action_lst = None
 				interp_err = "Which way do you want to go?"
 	if verb_str in ['take'] and do_noun_obj in gs.core.hero.worn_lst:
 		action_lst[0] = 'doff'
@@ -202,10 +198,8 @@ def asym_syn(action_lst, gs):
 		elif do_noun_obj.is_pullable() and not do_noun_obj.is_pushable():
 			action_lst[0] = 'pull'
 		elif do_noun_obj.is_pushable() and do_noun_obj.is_pullable():
-#			case = 'error'
-#			action_lst = [f"Are you trying to push the {do_noun_obj.full_name} or pull it?"]
+			action_lst = None
 			interp_err = f"Are you trying to push the {do_noun_obj.full_name} or pull it?"
-#	return case, action_lst
 	return action_lst, interp_err
 
 ### unified infer do_noun function for all verbs ###
@@ -387,8 +381,7 @@ def interpreter(user_input, master_obj_lst):
 	# *** initial error checking ***
 	# error if user input contains reserved syntax words
 	for word in user_input_lst:
-		if word in ['verb_syn', 'hero_rm_obj', 'verb_str', 'do_noun_str', 'prep_phrase_convert']: # reserved syntax
-#			return 'error', [f"What??"], interp_err
+		if word in ['verb_syn', 'hero_obj', 'hero_rm_obj', 'verb_str', 'do_noun_str', 'prep_phrase_convert']: # reserved syntax
 			return 'error', None, "What??"
 	# one-word commands where user_input_lst is longer than one word
 	if len(user_input_lst) > 1 and user_input_lst[0] in (
@@ -423,7 +416,6 @@ def interpreter(user_input, master_obj_lst):
 			'up', 'down'
 			]
 	debug_pwd_lst = [gs.io.get_str_nr('debug_pwd', 'eng')]
-#	meta_arg_lst = ['debug', 'help']
 	prep_lst = [
 			'at', 'in', 'out', 'on','to','from','with','by','for','of','about','under','over',
 			'between','behind','before','after','through','around','into', 'above', 'atop', 'down'
@@ -476,24 +468,15 @@ def interpreter(user_input, master_obj_lst):
 				return 'error', None, "Please start your sentence with a known verb!" # won't fire until interp migration complete
 		# if verb is debug verb but not in debug mode, return error
 		if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
-#			return 'error', ["Please start your sentence with a known verb!"], interp_err
 			return 'error', None, "Please start your sentence with a known verb!"
 		# if verb count > 1, return error
 		if len(verb_cmd_lst) > 1:
-#			return 'error', ['I see more than one verb in that sentence!'], interp_err
 			return 'error', None, "I see more than one verb in that sentence!" # can't actually get this error to fire
 		# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
 		tmp_lst, interp_err = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
-#		err_chk, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
-#		if err_chk != 'error':
-##		if interp_err:
-##			print(f"interp.py: verb_proc: syntax error: {interp_err}")
-##			return 'error', None, interp_err
-##		else:
 		if not interp_err:
 			verb_cmd_lst = tmp_lst
 			word1 = verb_cmd_lst[0]
-##			case = 'universal'
 		if tst_mode:
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_post_verb_proc: {cmd_lst}")
@@ -501,18 +484,11 @@ def interpreter(user_input, master_obj_lst):
 		# *** do_prep proc ***
 		# check to see if there are prep_phrase substitutions
 		if len(do_prep_cmd_lst) > 0:
-#			err_chk, tmp_lst = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, None, gs)
 			tmp_lst, interp_err = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, None, gs)
-##			if interp_err:
-##				print(f"interp.py: do_prep_proc: syntax error: {interp_err}")
-##				return 'error', None, interp_err
-#			if err_chk != 'error':
-##			else:
 			if not interp_err:
 				verb_cmd_lst = tmp_lst
 				do_prep_cmd_lst = []
 				word1 = verb_cmd_lst[0]
-##				case = 'universal'
 		if tst_mode:
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_post_do_prep_proc: {cmd_lst}")
@@ -527,7 +503,6 @@ def interpreter(user_input, master_obj_lst):
 				error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
 				# if noun_handling() error_state = True, return error
 				if error_state:
-#					return 'error', [error_msg], interp_err
 					return 'error', None, f"{error_msg}"
 				# if no noun_handling() error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
 				else:
@@ -541,7 +516,6 @@ def interpreter(user_input, master_obj_lst):
 					syntax_do_lst = ['input_do_noun'] # new - for syntax call
 					do_noun_str = do_noun_obj.name # new - for syntax call
 				else:
-#					return 'error', [err_txt], interp_err
 					return 'error', None, f"{err_txt}"
 			# if no do_prep given and verb requires one, attempt to infer; return error if ambiguous
 			# placed after do_noun proc (not alongside the prep_phrase_convert check above) so that when both
@@ -552,7 +526,6 @@ def interpreter(user_input, master_obj_lst):
 				if prep_inferred:
 					do_prep_cmd_lst = [prep_str]
 				else:
-#					return 'error', [err_txt], interp_err
 					return 'error', None, f"{err_txt}" # was unable to fully test
 			if tst_mode:
 				cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
@@ -563,7 +536,6 @@ def interpreter(user_input, master_obj_lst):
 				id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 				error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
 				if error_state:
-#					return 'error', [error_msg], interp_err
 					return 'error', None, f"{error_msg}" # unable to test until prep verbs migrated
 				else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
 					id_noun_cmd_lst = [id_noun_obj.name]
@@ -577,13 +549,8 @@ def interpreter(user_input, master_obj_lst):
 		user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
 		if tst_mode:
 			print(f"user_syntax_lst: {user_syntax_lst}")
-#		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, None, gs)
 		action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, None, gs)
-#		if case == 'error':
 		if interp_err:
-##			print(f"interp.py: syntax error: {interp_err}")
-#			return case, action_lst, interp_err
-#			return 'error', None, f"{action_lst[0]}"
 			return 'error', None, interp_err
 		else:
 			case = 'universal' # new
@@ -592,11 +559,8 @@ def interpreter(user_input, master_obj_lst):
 
 		# *** aysm_syn - used by all verbs ***
 		# check for conditional asymetric verb synonym
-#		case, action_lst = asym_syn(action_lst, gs)
 		action_lst, interp_err = asym_syn(action_lst, gs)
-#		if case == 'error':
 		if interp_err:
-#			return 'error', None, f"{action_lst[0]}"
 			return 'error', None, interp_err
 		if tst_mode:
 			print(f"post-asym-syn action_lst: {action_lst}")

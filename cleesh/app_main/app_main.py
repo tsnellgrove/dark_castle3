@@ -217,7 +217,6 @@ def app_main(user_input, game_name, root_path_str):
 				start_in_hand = None
 			else:
 				start_in_hand = gs.core.hero.get_hand_item()
-#			case, word_lst = interpreter(user_input, master_obj_lst)
 			case, word_lst, interp_err = interpreter(user_input, master_obj_lst)
 			if word_lst is None:
 				if gs.core.is_debug:
@@ -226,7 +225,6 @@ def app_main(user_input, game_name, root_path_str):
 					gs.io.buffer(f"{interp_err}")
 				is_valid = False
 				is_att = False
-#				err_txt = ""
 			else:
 				is_valid, is_att, err_txt = validate(gs, case, word_lst)
 	

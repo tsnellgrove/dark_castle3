@@ -12,15 +12,6 @@ def validate(gs, case, word_lst):
 	is_att = False
 	err_txt= ""
 
-	# *** interpreter errors ***
-#	if case == 'error':
-#		print("THIS SHOUD NOT HAPPEN") # warning message for debugging
-#		output = word_lst[0]
-#		if gs.core.is_debug:
-#			gs.io.buffer(f"[INTERP error] {output}")
-#		else:
-#			gs.io.buffer(f"{output}")
-#		return False, False, ""
 
 	# *** command errors ***
 	if case in ['prep', 'universal']:
