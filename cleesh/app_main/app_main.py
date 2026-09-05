@@ -217,8 +217,10 @@ def app_main(user_input, game_name, root_path_str):
 				start_in_hand = None
 			else:
 				start_in_hand = gs.core.hero.get_hand_item()
-			case, word_lst, interp_err = interpreter(user_input, master_obj_lst)
-			if word_lst is None:
+#			case, word_lst, interp_err = interpreter(user_input, master_obj_lst)
+			case, cmd_lst, interp_err = interpreter(user_input, master_obj_lst)
+#			if word_lst is None:
+			if cmd_lst is None:
 				if gs.core.is_debug:
 					gs.io.buffer(f"[INTERP error] {interp_err}")
 				else:
@@ -226,7 +228,8 @@ def app_main(user_input, game_name, root_path_str):
 				is_valid = False
 				is_att = False
 			else:
-				is_valid, is_att, err_txt = validate(gs, case, word_lst)
+#				is_valid, is_att, err_txt = validate(gs, case, word_lst)
+				is_valid, is_att, err_txt = validate(gs, case, cmd_lst)
 	
 		# if command is not valid and not meta, clear cmd_queue
 		if not is_valid and not is_meta_cmd:
@@ -238,16 +241,20 @@ def app_main(user_input, game_name, root_path_str):
 
 		# for valid interp commands, process in-turn game response
 		if is_valid or is_att:
-			cmd_override = pre_action(gs, case, word_lst, is_valid)
+#			cmd_override = pre_action(gs, case, word_lst, is_valid)
+			cmd_override = pre_action(gs, case, cmd_lst, is_valid)
 			if cmd_override:
 				gs.io.reset_cmd_queue()
 			if not cmd_override and is_att:
 				gs.io.buffer(err_txt)
 			if (is_valid and not cmd_override):
-				hand_mgmt(case, word_lst, gs)
-				cmd_execute(gs, case, word_lst)
+#				hand_mgmt(case, word_lst, gs)
+				hand_mgmt(case, cmd_lst, gs)
+#				cmd_execute(gs, case, word_lst)
+				cmd_execute(gs, case, cmd_lst)
 			weapon_disp(gs, start_in_hand)
-			post_action(gs, case, word_lst, is_valid) # excluding poat_act() from cmd "if" allows creatures to opperate machs
+#			post_action(gs, case, word_lst, is_valid) # excluding poat_act() from cmd "if" allows creatures to opperate machs
+			post_action(gs, case, cmd_lst, is_valid) # excluding poat_act() from cmd "if" allows creatures to opperate machs
 
 		# post-cmd-response output
 		# action order = 1) cmd input, 2) Game response to cmd, 3) Game end / restart OR Game independent actions
