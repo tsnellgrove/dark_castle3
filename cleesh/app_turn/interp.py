@@ -135,7 +135,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 	try:
 		base_action_lst = syntax_dict[user_input_tpl]
 	except:
-		return 'error', ["I don't understand that command!"]
+#		return 'error', ["I don't understand that command!"]
+		return None, "I don't understand that command!"
 	if isinstance(base_action_lst, list):
 		case = 'universal'
 	else:
@@ -151,7 +152,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 			action_lst[index] = input_verb # string
 		if word == 'do_noun_str':
 			action_lst[index] = gs.core.get_str_to_obj_dict(do_noun) # convert to obj
-	return case, action_lst
+#	return case, action_lst
+	return action_lst, None
 
 def asym_syn(action_lst, gs):
 	verb_str= action_lst[0]
@@ -477,10 +479,17 @@ def interpreter(user_input, master_obj_lst):
 #			return 'error', ['I see more than one verb in that sentence!'], interp_err
 			return 'error', None, "I see more than one verb in that sentence!" # can't actually get this error to fire
 		# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
-		err_chk, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
-		if err_chk != 'error':
+		tmp_lst, interp_err = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
+#		err_chk, tmp_lst = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
+#		if err_chk != 'error':
+##		if interp_err:
+##			print(f"interp.py: verb_proc: syntax error: {interp_err}")
+##			return 'error', None, interp_err
+##		else:
+		if not interp_err:
 			verb_cmd_lst = tmp_lst
 			word1 = verb_cmd_lst[0]
+##			case = 'universal'
 		if tst_mode:
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_post_verb_proc: {cmd_lst}")
@@ -488,11 +497,18 @@ def interpreter(user_input, master_obj_lst):
 		# *** do_prep proc ***
 		# check to see if there are prep_phrase substitutions
 		if len(do_prep_cmd_lst) > 0:
-			err_chk, tmp_lst = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, None, gs)
-			if err_chk != 'error':
+#			err_chk, tmp_lst = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, None, gs)
+			tmp_lst, interp_err = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, None, gs)
+##			if interp_err:
+##				print(f"interp.py: do_prep_proc: syntax error: {interp_err}")
+##				return 'error', None, interp_err
+#			if err_chk != 'error':
+##			else:
+			if not interp_err:
 				verb_cmd_lst = tmp_lst
 				do_prep_cmd_lst = []
 				word1 = verb_cmd_lst[0]
+##				case = 'universal'
 		if tst_mode:
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_post_do_prep_proc: {cmd_lst}")
@@ -557,10 +573,16 @@ def interpreter(user_input, master_obj_lst):
 		user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
 		if tst_mode:
 			print(f"user_syntax_lst: {user_syntax_lst}")
-		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, None, gs)
-		if case == 'error':
+#		case, action_lst = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, None, gs)
+		action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, None, gs)
+#		if case == 'error':
+		if interp_err:
+##			print(f"interp.py: syntax error: {interp_err}")
 #			return case, action_lst, interp_err
-			return 'error', None, f"{action_lst[0]}"
+#			return 'error', None, f"{action_lst[0]}"
+			return 'error', None, interp_err
+		else:
+			case = 'universal'
 		if tst_mode:
 			print(f"pre-asym-syn action_lst: {action_lst}")
 
