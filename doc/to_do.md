@@ -1394,13 +1394,14 @@ To Do List - Dark Castle v3
 				- DONE: update remaining interp returns (limited manual testing)
 				- DONE: scenario test
 				- DONE: refactor syntax(); pass interp_err instead of case
-				- TBD: refactor asym_syn(); pass interp_err instead of case
-				- TBD: scenario test
-				- TBD: update 'error' case cond in validate() => scenario test gens no error cases
-				- TBD: elim 'error' case and interp err buff from validate()
+				- DONE: refactor asym_syn(); pass interp_err instead of case
+				- DONE: scenario test
+				- DONE: update 'error' case cond in validate() => scenario test gens no error cases
+				- DONE: elim 'error' case and interp err buff from validate()
+				- TBD: clean up comments in app_main(), validate(), & interp() (except legacy section)
 				- TBD: in app_main(), word_lst => cmd_lst
 				- TBD: in syntax(), elim old 2x-dict call
-				- TBD: clean up comments in app_main() and interp() (except legacy section)
+				- TBD: clean up comments in app_main() & interp() (except legacy section)
 			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
 				- TBD: address hand mgmt in hand_manage()
 				- TBD: update input_cleanup()

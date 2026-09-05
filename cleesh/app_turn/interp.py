@@ -158,7 +158,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 def asym_syn(action_lst, gs):
 	verb_str= action_lst[0]
 	do_noun_obj = action_lst[1]
-	case = 'universal'
+#	case = 'universal'
+	interp_err = None # new
 	# consume repeat_str immediately - guards exactly the one command that was just auto-queued via insert_cmd_queue(), preventing infinite re-rewriting (e.g. climb() queuing "go up", which would otherwise get rewritten right back into 'climb' below)
 	repeat_str = gs.io.repeat_str
 	gs.io.repeat_str = None
@@ -188,8 +189,9 @@ def asym_syn(action_lst, gs):
 			if is_only_1_exit:
 				action_lst = ['go', dir_str, do_noun_obj, 'verb_prep_do']
 			else:
-				case = 'error'
-				action_lst = [f"Which way do you want to go?"]
+#				case = 'error'
+#				action_lst = [f"Which way do you want to go?"]
+				interp_err = "Which way do you want to go?"
 	if verb_str in ['take'] and do_noun_obj in gs.core.hero.worn_lst:
 		action_lst[0] = 'doff'
 	if verb_str in ['examine'] and do_noun_obj.is_writing():
@@ -200,9 +202,11 @@ def asym_syn(action_lst, gs):
 		elif do_noun_obj.is_pullable() and not do_noun_obj.is_pushable():
 			action_lst[0] = 'pull'
 		elif do_noun_obj.is_pushable() and do_noun_obj.is_pullable():
-			case = 'error'
-			action_lst = [f"Are you trying to push the {do_noun_obj.full_name} or pull it?"]
-	return case, action_lst
+#			case = 'error'
+#			action_lst = [f"Are you trying to push the {do_noun_obj.full_name} or pull it?"]
+			interp_err = f"Are you trying to push the {do_noun_obj.full_name} or pull it?"
+#	return case, action_lst
+	return action_lst, interp_err
 
 ### unified infer do_noun function for all verbs ###
 def infer_do_noun(gs, verb_str, suppress_buffer=False):
@@ -582,15 +586,18 @@ def interpreter(user_input, master_obj_lst):
 #			return 'error', None, f"{action_lst[0]}"
 			return 'error', None, interp_err
 		else:
-			case = 'universal'
+			case = 'universal' # new
 		if tst_mode:
 			print(f"pre-asym-syn action_lst: {action_lst}")
 
 		# *** aysm_syn - used by all verbs ***
 		# check for conditional asymetric verb synonym
-		case, action_lst = asym_syn(action_lst, gs)
-		if case == 'error':
-			return 'error', None, f"{action_lst[0]}"
+#		case, action_lst = asym_syn(action_lst, gs)
+		action_lst, interp_err = asym_syn(action_lst, gs)
+#		if case == 'error':
+		if interp_err:
+#			return 'error', None, f"{action_lst[0]}"
+			return 'error', None, interp_err
 		if tst_mode:
 			print(f"post-asym-syn action_lst: {action_lst}")
 
