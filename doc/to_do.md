@@ -1398,12 +1398,36 @@ To Do List - Dark Castle v3
 				- DONE: in app_main(), word_lst => cmd_lst
 				- DONE: in syntax(), elim old 2x-dict call
 				- DONE: clean up comments in app_main() & interp() (except legacy section)
-			- TBD: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
-				- TBD: code review deep dive
+			- INPROC: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
+				- DONE: code review deep dive
+				- INPROC: put
+					- DONE: check ZIL list for sym_syn and prep variants
+						- FINDING: place, stuff, insert, hide
+					- DONE: update hand_mgmt() as needed for new_verb
+					- DONE: update *_err() to pass validate if hand_mgmt() will fix when called
+					- DONE: disable global syn for new_verb
+						- FINDING: 'place'
+					- DONE: add new_verb to interp() action_verb list
+					- DONE: add base ('new_verb', 'do_noun') entries to syntax
+					- DONE: add prep variants for new_verb to syntax
+					- DONE: add new_verb symetric syns to syn_verb_lst
+					- DONE: add new_verb symetric syns to syntax
+					- DONE: add infer do_noun entry for new_verb as needed
+					- TBD: create action_dir case in validate(), cmd_exe(), and trig_chk()
+					- TBD: in asym_syn(), add conditional syn as needed
+						- TBD: 'put on' as syntax syn for 'wear'
+						- TBD: 'put down' as syntax syn for 'drop'
+					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+					- TBD: scenario test
+					- TBD: fix scenario as needed
+					- TBD: clean up comments in static_gbl(), prep_err(), hand_mng(), interp()
+					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
+					- TBD: update verb table
+			- TBD: additional prep to-dos
 				- TBD: address hand mgmt in hand_manage()
 				- TBD: update input_cleanup()
+				- TBD: generalize "don't possess" error
 				- TBD: fix 'blank' first attrib in noun_handling() call
-				- TBD: 'put on' as syntax syn for 'wear'
 				- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
 					- IDEA: check for prep errors in x_err() by passing prep_str to method
 						- EXAMPLE: 'put sword in table' => 'can't put anything inside the table'
@@ -1449,6 +1473,7 @@ To Do List - Dark Castle v3
 					- TBD: fix scenario as needed
 					- TBD: clean up comments in static_gbl
 					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
+					- TBD: update verb table
 			- TBD: update verb spreadsheet
 		- TBD: one-word debug commands
 			- TBD: update verb spreadsheet

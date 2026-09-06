@@ -581,8 +581,11 @@ class Error(Identity):
 		if self == obj:
 			err_txt = (f"With all your might you attempt to bend the laws of time, space, and topology to your will... and in response you hear the ancient background radiation of the big bang itself respond: 'Nope, not gonna happen.'")
 			return True, False, err_txt
-		if obj.err_not_in_hand(creature, gs):
-			return True, False, ""
+		if obj not in (creature.hand_lst) and not creature.chk_in_bkpk(obj) and not creature.chk_is_worn(obj):
+			err_txt = (f"You don't possess the {obj.full_name}.")
+			return True, False, err_txt
+#		if obj.err_not_in_hand(creature, gs):
+#			return True, False, ""
 		if self.is_openable() and self.is_open == False:
 			err_txt = (f"The {self.full_name} is closed.")
 			return True, False, err_txt

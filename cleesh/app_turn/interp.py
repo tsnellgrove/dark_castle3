@@ -93,6 +93,13 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 		('press', 'verb_syn') : ['push'],
 		('shove', 'verb_syn') : ['push'],
 
+		('put', 'input_do_noun', 'in', 'input_id_noun') : ['put', 'do_noun_str', 'in', 'id_noun_str', 'verb_do_prep_id'],
+		('put', 'input_do_noun', 'on', 'input_id_noun') : ['put', 'do_noun_str', 'on', 'id_noun_str', 'verb_do_prep_id'],
+		('place', 'verb_syn') : ['put'],
+		('stuff', 'verb_syn') : ['put'],
+		('insert', 'verb_syn') : ['put'],
+		('hide', 'verb_syn') : ['put'],
+
 		('read', 'input_do_noun') : ['read', 'do_noun_str', 'verb_do'],
 		('read', 'from', 'input_do_noun') : ['read', 'do_noun_str', 'verb_do'],
 		('scan', 'verb_syn') : ['read'],
@@ -209,7 +216,8 @@ def infer_do_noun(gs, verb_str, suppress_buffer=False):
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero.worn_lst[0]
 		infer_txt = f"(the {do_noun_obj.full_name})"
-	elif verb_str in ['drop', 'eat', 'stow', 'wear'] and not gs.core.hero.hand_is_empty():
+#	elif verb_str in ['drop', 'eat', 'stow', 'wear'] and not gs.core.hero.hand_is_empty():
+	elif verb_str in ['drop', 'eat', 'stow', 'wear', 'put'] and not gs.core.hero.hand_is_empty():
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero.get_hand_item()
 		infer_txt = f"(the {gs.core.hero.get_hand_item().full_name})"
@@ -394,16 +402,17 @@ def interpreter(user_input, master_obj_lst):
 
 	action_verb_lst = [
 			'climb', 'close', 'doff', 'drop', 'eat', 'enter', 'examine', 'exit', 'go', 'jump',
-			'open', 'move', 'push', 'pull', 'read', 'sit', 'stand', 'stow', 'take', 'wait', 'wear'
+			'open', 'move', 'push', 'pull', 'put', 'read', 'sit', 'stand', 'stow', 'take',
+			'wait', 'wear'
 			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
 			'get', 'inventory', 'look'
 			] # non-action verbs are subsituted in syntax or asym_syn()
 	syn_verb_lst = [
-			'bite', 'carry', 'consume', 'depart', 'describe', 'devour', 'don', 'gobble', 'grab', 'hold', 
-			'ingest', 'inspect', 'leap', 'list', 'munch', 'pack', 'peruse', 'press', 'proceed',
+			'bite', 'carry', 'consume', 'depart', 'describe', 'devour', 'don', 'gobble', 'grab', 'hide', 'hold', 
+			'ingest', 'insert', 'inspect', 'leap', 'list', 'munch', 'pack', 'peruse', 'place', 'press', 'proceed',
 			'release', 'remove', 'roll', 'run', 'scale', 'scan', 'shut', 'skim', 'search', 'shove', 'slide',
-			'stash', 'step', 'taste', 'tug', 'vault', 'walk', 'yank'
+			'stash', 'step', 'stuff', 'taste', 'tug', 'vault', 'walk', 'yank'
 			] # symetric syn_verbs are substituted pre do_noun infer
 	debug_cmd_lst = ['get_weight', 'capacity', 'where_is']
 	dir_lst = [

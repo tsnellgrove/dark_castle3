@@ -85,7 +85,7 @@ engine_static_dict = {
         'damage' : 'attack',
         'jab' : 'attack',
         'clobber' : 'attack',
-#       'kick' : 'attack', # elim because of 'kick with fist' response
+##       'kick' : 'attack', # elim because of 'kick with fist' response
         'hit' : 'attack',
         'kill' : 'attack',
         'imbibe' : 'drink',
@@ -95,7 +95,7 @@ engine_static_dict = {
         'hand' : 'give',
         'donate' : 'give',
         'info' : 'help',
-        'place' : 'put',
+#        'place' : 'put',
 	},
 
 
