@@ -1413,10 +1413,14 @@ To Do List - Dark Castle v3
 					- DONE: add new_verb symetric syns to syn_verb_lst
 					- DONE: add new_verb symetric syns to syntax
 					- DONE: add infer do_noun entry for new_verb as needed
-					- TBD: create action_dir case in validate(), cmd_exe(), and trig_chk()
+					- INPROC: get interp working
+						- DONE: fix do_noun_cmd parse
+						- TBD: fix id_noun_cmd parse
+						- TBD: create action_dir case in validate(), cmd_exe(), and trig_chk()
 					- TBD: in asym_syn(), add conditional syn as needed
-						- TBD: 'put on' as syntax syn for 'wear'
-						- TBD: 'put down' as syntax syn for 'drop'
+						- TBD: 'put on <garment>' as syntax syn for 'wear'
+						- TBD: 'put down <do_noun>' as syntax syn for 'drop'
+						- TBD: 'take off <garment>'
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
 					- TBD: scenario test
 					- TBD: fix scenario as needed

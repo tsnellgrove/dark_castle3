@@ -361,7 +361,8 @@ def parser(user_input_lst, verb_lst, dir_lst, prep_lst):
 			parser_verb_lst.append(word)
 		elif word in (dir_lst + prep_lst) and not do_noun_seen:
 			parser_do_prep_lst.append(word)
-		elif not id_prep_seen: # don't need: 'word not in (dir_lst + prep_lst) and '
+#		elif not id_prep_seen: # don't need: 'word not in (dir_lst + prep_lst) and '
+		elif word not in (dir_lst + prep_lst) and not id_prep_seen:
 			parser_do_noun_lst.append(word)
 			do_noun_seen = True
 		elif word in prep_lst and do_noun_seen:
@@ -504,6 +505,7 @@ def interpreter(user_input, master_obj_lst):
 			# if do_noun string(s) exist - convert to do_noun_obj w/ noun_handling(); if error, return error
 			if len(do_noun_cmd_lst) > 0:
 				do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
+#				print(f"do_noun_cmd_lst: {do_noun_cmd_lst}")
 				error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
 				# if noun_handling() error_state = True, return error
 				if error_state:
