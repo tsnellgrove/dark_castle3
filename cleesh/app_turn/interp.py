@@ -153,6 +153,10 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 			action_lst[index] = input_verb # string
 		if word == 'do_noun_str':
 			action_lst[index] = gs.core.get_str_to_obj_dict(do_noun) # convert to obj
+		if word == 'id_noun_str':
+			print(f"id_noun: {id_noun}")
+			action_lst[index] = gs.core.get_str_to_obj_dict(id_noun) # convert to obj
+
 	return action_lst, None
 
 def asym_syn(action_lst, gs):
@@ -385,7 +389,7 @@ def interpreter(user_input, master_obj_lst):
 	# *** initial error checking ***
 	# error if user input contains reserved syntax words
 	for word in user_input_lst:
-		if word in ['verb_syn', 'hero_obj', 'hero_rm_obj', 'verb_str', 'do_noun_str', 'prep_phrase_convert']: # reserved syntax
+		if word in ['verb_syn', 'hero_obj', 'hero_rm_obj', 'verb_str', 'do_noun_str', 'id_noun_str', 'prep_phrase_convert']: # reserved syntax
 			return 'error', None, "What??"
 	# one-word commands where user_input_lst is longer than one word
 	if len(user_input_lst) > 1 and user_input_lst[0] in (
@@ -452,10 +456,11 @@ def interpreter(user_input, master_obj_lst):
 			id_noun_cmd_lst
 		) = parser(user_input_lst, verb_lst, dir_lst, prep_lst)
 
-		do_noun_obj = None
 		syntax_do_lst = []
+		do_noun_obj = None
 		do_noun_str = None
 		id_noun_obj = None
+		id_noun_str = None
 		id_noun_syn_lst = []
 
 		# *** unprocessed cmd lst ***
@@ -540,14 +545,17 @@ def interpreter(user_input, master_obj_lst):
 			# *** id_noun proc ***
 			if len(id_noun_cmd_lst) > 0:
 				id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
+				print(f"id_noun_cmd_lst: {id_noun_cmd_lst}")
 				error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
 				if error_state:
 					return 'error', None, f"{error_msg}" # unable to test until prep verbs migrated
 				else: # if no error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
 					id_noun_cmd_lst = [id_noun_obj.name]
+					id_noun_str = id_noun_obj.name # new - for syntax call
 					id_noun_syn_lst = ['input_id_noun']
 			else:
 				id_noun_obj = None
+				id_noun_str = None
 				id_noun_syn_lst = []
 
 		# *** syntax call - used by all verbs ***
@@ -555,7 +563,8 @@ def interpreter(user_input, master_obj_lst):
 		user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
 		if tst_mode:
 			print(f"user_syntax_lst: {user_syntax_lst}")
-		action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, None, gs)
+#		action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, None, gs)
+		action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, id_noun_str, gs)
 		if interp_err:
 			return 'error', None, interp_err
 		else:
