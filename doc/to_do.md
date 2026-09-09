@@ -1416,7 +1416,9 @@ To Do List - Dark Castle v3
 					- INPROC: get interp working
 						- DONE: fix do_noun_cmd parse
 						- DONE: fix id_noun_cmd parse
-						- TBD: create 'verb_do_prep_id' case in validate(), cmd_exe(), and trig_chk()
+						- DONE: create 'verb_do_prep_id' case in validate()
+						- TBD: create 'verb_do_prep_id' case in cmd_exe()
+						- TBD: create 'verb_do_prep_id' case in trig_chk()
 					- TBD: in asym_syn(), add conditional syn as needed
 						- TBD: 'put on <garment>' as syntax syn for 'wear'
 						- TBD: 'put down <do_noun>' as syntax syn for 'drop'
