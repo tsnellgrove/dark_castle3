@@ -1417,8 +1417,15 @@ To Do List - Dark Castle v3
 						- DONE: fix do_noun_cmd parse
 						- DONE: fix id_noun_cmd parse
 						- DONE: create 'verb_do_prep_id' case in validate()
-						- TBD: create 'verb_do_prep_id' case in cmd_exe()
-						- TBD: create 'verb_do_prep_id' case in trig_chk()
+						- DONE: create 'verb_do_prep_id' case in cmd_exe()
+						- INPROC: create 'verb_do_prep_id' case in trig_chk()
+							- DONE: initial conditional (wrong word_lst call)
+							- TBD: fix word_lst unpack for all 'universal' cases
+							- TBD: create correct call for 'put'
+							- TBD: consider customiozing word_lst[-1] case descriptor for id vd. do
+					- TBD: manual test (focus on hand mgmt)
+					- TBD: scenario test
+					- TBD: clean-up comments in validate(), cmd_exe(), and trig_chk()
 					- TBD: in asym_syn(), add conditional syn as needed
 						- TBD: 'put on <garment>' as syntax syn for 'wear'
 						- TBD: 'put down <do_noun>' as syntax syn for 'drop'

@@ -92,6 +92,12 @@ class TrigMixIn(object):
 			elif word_lst[-1] in ['verb_prep_do']:
 				action_str, prep_str, do_noun_obj,  *_  = word_lst
 				trig_key_lst = [action_str, prep_str, do_noun_obj.name]
+
+			elif word_lst[-1] in ['verb_do_prep_id']:
+				action_str, do_noun_obj, prep_str, id_noun_obj,  *_  = word_lst
+				trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name] # wrong
+				trig_wc_lst = [word_lst[1], '*', word_lst[0].name] # wrong
+
 		if case == 'prep':
 			trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
 			trig_wc_lst = [word_lst[1], '*', word_lst[0].name]
