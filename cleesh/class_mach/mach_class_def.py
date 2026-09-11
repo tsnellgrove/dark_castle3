@@ -87,16 +87,24 @@ class TrigMixIn(object):
 		trig_wc_lst = ['not_valid'] # wildcards are only supported for nouns
 		if case == 'universal':
 			if word_lst[-1] in ['verb_do']:
-				trig_key_lst = [word_lst[0], word_lst[1].name]
-				trig_wc_lst = [word_lst[0], '*']
+				action_str, do_noun_obj, *_ = word_lst
+#				trig_key_lst = [word_lst[0], word_lst[1].name]
+				trig_key_lst = [action_str, do_noun_obj.name]
+#				trig_wc_lst = [word_lst[0], '*']
+				trig_wc_lst = [action_str, '*']
 			elif word_lst[-1] in ['verb_prep_do']:
 				action_str, prep_str, do_noun_obj,  *_  = word_lst
 				trig_key_lst = [action_str, prep_str, do_noun_obj.name]
 
+#			word_lst = [dirobj_obj, word1, noun_obj]
+
 			elif word_lst[-1] in ['verb_do_prep_id']:
 				action_str, do_noun_obj, prep_str, id_noun_obj,  *_  = word_lst
-				trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name] # wrong
-				trig_wc_lst = [word_lst[1], '*', word_lst[0].name] # wrong
+				if action_str in ['put']:
+#					trig_key_lst = [	word_lst[1], word_lst[2].name, word_lst[0].name] # wrong
+					trig_key_lst = [action_str, do_noun_obj.name, id_noun_obj.name]
+#					trig_wc_lst = [word_lst[1], '*', word_lst[0].name] # wrong
+					trig_wc_lst = [action_str, '*', id_noun_obj.name]
 
 		if case == 'prep':
 			trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]

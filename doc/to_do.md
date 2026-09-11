@@ -1413,18 +1413,19 @@ To Do List - Dark Castle v3
 					- DONE: add new_verb symetric syns to syn_verb_lst
 					- DONE: add new_verb symetric syns to syntax
 					- DONE: add infer do_noun entry for new_verb as needed
-					- INPROC: get interp working
+					- DONE: get interp working
 						- DONE: fix do_noun_cmd parse
 						- DONE: fix id_noun_cmd parse
 						- DONE: create 'verb_do_prep_id' case in validate()
 						- DONE: create 'verb_do_prep_id' case in cmd_exe()
-						- INPROC: create 'verb_do_prep_id' case in trig_chk()
+						- DONE: create 'verb_do_prep_id' case in trig_chk()
 							- DONE: initial conditional (wrong word_lst call)
-							- TBD: fix word_lst unpack for all 'universal' cases
-							- TBD: create correct call for 'put'
-							- TBD: consider customiozing word_lst[-1] case descriptor for id vd. do
+							- DONE: fix word_lst unpack for all 'universal' cases
+							- DONE: create correct call for 'put'
+							- DONE: conditional for action_str in ['put']
+					- DONE: scenario test
+					- DONE: fix scenario as needed
 					- TBD: manual test (focus on hand mgmt)
-					- TBD: scenario test
 					- TBD: clean-up comments in validate(), cmd_exe(), and trig_chk()
 					- TBD: in asym_syn(), add conditional syn as needed
 						- TBD: 'put on <garment>' as syntax syn for 'wear'
@@ -1475,6 +1476,7 @@ To Do List - Dark Castle v3
 					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
 					- TBD: disable global syn for new_verb
 					- TBD: add new_verb to interp() action_verb list
+					- TBD: add new_verb in validate(), cmd_exe(), and trig_chk()
 					- TBD: add base ('new_verb', 'do_noun') entries to syntax
 					- TBD: add prep variants for new_verb to syntax
 					- TBD: add new_verb symetric syns to syn_verb_lst
