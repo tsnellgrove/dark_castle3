@@ -1425,18 +1425,18 @@ To Do List - Dark Castle v3
 							- DONE: conditional for action_str in ['put']
 					- DONE: scenario test
 					- DONE: fix scenario as needed
-					- TBD: manual test (focus on hand mgmt)
-					- TBD: clean-up comments in validate(), cmd_exe(), and trig_chk()
-					- TBD: in asym_syn(), add conditional syn as needed
+					- DONE: clean-up interp(), validate(), cmd_exe(), and trig_chk()
+					- TBD: w/ prep_phrease, convert 'take off' => 'take' (handle via asym_syn)
+						- TBD: test w/ garment to convert 'take off' => 'take' => 'doff'
+					- TBD: in prep_phrase_convert(), convert phrases:
 						- TBD: 'put on <garment>' as syntax syn for 'wear'
 						- TBD: 'put down <do_noun>' as syntax syn for 'drop'
-						- TBD: 'take off <garment>'
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
 					- TBD: scenario test
 					- TBD: fix scenario as needed
 					- TBD: clean up comments in static_gbl(), prep_err(), hand_mng(), interp()
 					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
-					- TBD: update verb table
+					- TBD: update verb table (verb, syns, prep_phrase)
 			- TBD: additional prep to-dos
 				- TBD: address hand mgmt in hand_manage()
 				- TBD: update input_cleanup()

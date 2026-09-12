@@ -26,14 +26,8 @@ def cmd_execute(gs, case, word_lst):
 
 				if action_str in ['put']:
 					getattr(id_noun_obj, action_str)(do_noun_obj, gs)
-#					getattr(do_noun_obj, action_str)(prep_str, gs)
 					if not gs.end.is_end: # check to avoid double score display on end
 						gs.score.disp_score(action_str, do_noun_obj.name, prep_str, gs)
-
-#					cmd_err, is_att, err_txt = getattr(id_noun_obj, action_str + '_err')(do_noun_obj, gs)
-#					if (cmd_err and not is_att):
-#						gs.io.buffer(err_txt)
-
 			return
 		if case == 'prep':
 			dirobj_obj, word1, noun_obj = word_lst

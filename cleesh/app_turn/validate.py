@@ -17,9 +17,6 @@ def validate(gs, case, word_lst):
 	if case in ['prep', 'universal']:
 		try:
 			if case == 'universal':
-#				if word_lst[-1] in ['meta']:
-#					return True, None, ""
-#				elif word_lst[-1] in ['verb_do']:
 				if word_lst[-1] in ['verb_do']:
 					action_str, do_noun_obj, *_ = word_lst
 					cmd_err, is_att, err_txt = getattr(do_noun_obj, action_str + '_err')(gs)

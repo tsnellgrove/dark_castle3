@@ -220,7 +220,6 @@ def infer_do_noun(gs, verb_str, suppress_buffer=False):
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero.worn_lst[0]
 		infer_txt = f"(the {do_noun_obj.full_name})"
-#	elif verb_str in ['drop', 'eat', 'stow', 'wear'] and not gs.core.hero.hand_is_empty():
 	elif verb_str in ['drop', 'eat', 'stow', 'wear', 'put'] and not gs.core.hero.hand_is_empty():
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero.get_hand_item()
@@ -365,7 +364,6 @@ def parser(user_input_lst, verb_lst, dir_lst, prep_lst):
 			parser_verb_lst.append(word)
 		elif word in (dir_lst + prep_lst) and not do_noun_seen:
 			parser_do_prep_lst.append(word)
-#		elif not id_prep_seen: # don't need: 'word not in (dir_lst + prep_lst) and '
 		elif word not in (dir_lst + prep_lst) and not id_prep_seen:
 			parser_do_noun_lst.append(word)
 			do_noun_seen = True
@@ -510,7 +508,6 @@ def interpreter(user_input, master_obj_lst):
 			# if do_noun string(s) exist - convert to do_noun_obj w/ noun_handling(); if error, return error
 			if len(do_noun_cmd_lst) > 0:
 				do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
-#				print(f"do_noun_cmd_lst: {do_noun_cmd_lst}")
 				error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
 				# if noun_handling() error_state = True, return error
 				if error_state:
@@ -545,7 +542,6 @@ def interpreter(user_input, master_obj_lst):
 			# *** id_noun proc ***
 			if len(id_noun_cmd_lst) > 0:
 				id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
-				print(f"id_noun_cmd_lst: {id_noun_cmd_lst}")
 				error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
 				if error_state:
 					return 'error', None, f"{error_msg}" # unable to test until prep verbs migrated
@@ -563,7 +559,6 @@ def interpreter(user_input, master_obj_lst):
 		user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
 		if tst_mode:
 			print(f"user_syntax_lst: {user_syntax_lst}")
-#		action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, None, gs)
 		action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, id_noun_str, gs)
 		if interp_err:
 			return 'error', None, interp_err
