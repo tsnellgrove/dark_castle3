@@ -1426,14 +1426,23 @@ To Do List - Dark Castle v3
 					- DONE: scenario test
 					- DONE: fix scenario as needed
 					- DONE: clean-up interp(), validate(), cmd_exe(), and trig_chk()
-					- TBD: w/ prep_phrease, convert 'take off' => 'take' (handle via asym_syn)
-						- TBD: test w/ garment to convert 'take off' => 'take' => 'doff'
+					- DONE: 'take off' => as prep syntax for 'take'
+						- DONE: w/ prep 'take off' => 'take' (handle doff via asym_syn)
+						- DONE: add 'off' to prep_lst
+						- DONE: test w/ garment to convert 'take off' => 'take' => 'doff'
+						- FINDING: 'take off' usable w anything 'on' (e.g. milk cap), not just garment
+						- DECISION: don't make 'take off' prep_phrase_convert for 'doff'
+					- TBD: add 'put' ('in' & 'on' + sym_syn) to verb table
 					- TBD: in prep_phrase_convert(), convert phrases:
 						- TBD: 'put on <garment>' as syntax syn for 'wear'
 						- TBD: 'put down <do_noun>' as syntax syn for 'drop'
+						- TBD: update verb table
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
 					- TBD: scenario test
 					- TBD: fix scenario as needed
+				- TBD: <next verb => same type as 'put' => 'show', 'give'>
+				- TBD: <next verb => alt type from 'put' => 'attack', 'lock', 'unlock', 'drink'>
+				- TBD: final clean-up
 					- TBD: clean up comments in static_gbl(), prep_err(), hand_mng(), interp()
 					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
 					- TBD: update verb table (verb, syns, prep_phrase)

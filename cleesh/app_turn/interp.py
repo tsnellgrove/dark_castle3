@@ -123,6 +123,7 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 		('stash', 'verb_syn') : ['stow'],
 
 		('take', 'input_do_noun') : ['take', 'do_noun_str', 'verb_do'],
+		('take', 'off', 'input_do_noun') : ['take', 'do_noun_str', 'verb_do'],
 		('get', 'input_do_noun') : ['take', 'do_noun_str', 'verb_do'],
 		('grab', 'verb_syn') : ['take'],
 		('remove', 'verb_syn') : ['take'],
@@ -154,9 +155,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 		if word == 'do_noun_str':
 			action_lst[index] = gs.core.get_str_to_obj_dict(do_noun) # convert to obj
 		if word == 'id_noun_str':
-			print(f"id_noun: {id_noun}")
+#			print(f"id_noun: {id_noun}")
 			action_lst[index] = gs.core.get_str_to_obj_dict(id_noun) # convert to obj
-
 	return action_lst, None
 
 def asym_syn(action_lst, gs):
@@ -424,7 +424,7 @@ def interpreter(user_input, master_obj_lst):
 			]
 	debug_pwd_lst = [gs.io.get_str_nr('debug_pwd', 'eng')]
 	prep_lst = [
-			'at', 'in', 'out', 'on','to','from','with','by','for','of','about','under','over',
+			'at', 'in', 'out', 'on', 'off', 'to', 'from', 'with','by','for','of','about','under','over',
 			'between','behind','before','after','through','around','into', 'above', 'atop', 'down'
 			] + debug_pwd_lst
 	verb_requires_prep_lst = ['climb']
