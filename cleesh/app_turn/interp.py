@@ -95,6 +95,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 
 		('put', 'input_do_noun', 'in', 'input_id_noun') : ['put', 'do_noun_str', 'in', 'id_noun_str', 'verb_do_prep_id'],
 		('put', 'input_do_noun', 'on', 'input_id_noun') : ['put', 'do_noun_str', 'on', 'id_noun_str', 'verb_do_prep_id'],
+		('put', 'on', 'prep_phrase_convert') : ['wear'],
+		('put', 'down', 'prep_phrase_convert') : ['drop'],
 		('place', 'verb_syn') : ['put'],
 		('stuff', 'verb_syn') : ['put'],
 		('insert', 'verb_syn') : ['put'],
