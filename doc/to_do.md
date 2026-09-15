@@ -1433,12 +1433,12 @@ To Do List - Dark Castle v3
 						- FINDING: 'take off' usable w anything 'on' (e.g. milk cap), not just garment
 						- DECISION: don't make 'take off' prep_phrase_convert for 'doff'
 					- DONE: add 'put' ('in' & 'on' + sym_syn) to verb table
-					- INPROC: in prep_phrase_convert(), convert phrases:
+					- DONE: in prep_phrase_convert(), convert phrases:
 						- DONE: 'put on <garment>' as syntax syn for 'wear'
 						- DONE: 'put down <do_noun>' as syntax syn for 'drop'
 						- DONE: manual tests
 						- DONE: scenario test
-						- TBD: update verb table
+						- DONE: update verb table
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
 					- TBD: scenario test
 					- TBD: fix scenario as needed
