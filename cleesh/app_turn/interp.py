@@ -157,7 +157,6 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 		if word == 'do_noun_str':
 			action_lst[index] = gs.core.get_str_to_obj_dict(do_noun) # convert to obj
 		if word == 'id_noun_str':
-#			print(f"id_noun: {id_noun}")
 			action_lst[index] = gs.core.get_str_to_obj_dict(id_noun) # convert to obj
 	return action_lst, None
 

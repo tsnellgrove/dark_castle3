@@ -1400,7 +1400,7 @@ To Do List - Dark Castle v3
 				- DONE: clean up comments in app_main() & interp() (except legacy section)
 			- INPROC: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
 				- DONE: code review deep dive
-				- INPROC: put
+				- DONE: put
 					- DONE: check ZIL list for sym_syn and prep variants
 						- FINDING: place, stuff, insert, hide
 					- DONE: update hand_mgmt() as needed for new_verb
@@ -1439,10 +1439,29 @@ To Do List - Dark Castle v3
 						- DONE: manual tests
 						- DONE: scenario test
 						- DONE: update verb table
+					- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+					- DONE: scenario test
+					- NA: fix scenario as needed
+				- INPROC: 'show' (same type as 'put')
+					- DONE: check ZIL list for sym_syn and prep variants => DISPLAY, PRESENT
+					- TBD: update hand_mgmt() as needed for new_verb
+					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
+					- TBD: disable global syn for new_verb
+					- TBD: add new_verb to interp() action_verb list
+					- TBD: add new_verb in validate(), cmd_exe(), and trig_chk()
+					- TBD: add base ('new_verb', 'do_noun') entries to syntax
+					- TBD: add prep variants for new_verb to syntax
+					- TBD: add new_verb symetric syns to syn_verb_lst
+					- TBD: add new_verb symetric syns to syntax
+					- TBD: add infer do_noun entry for new_verb as needed
+					- TBD: in asym_syn(), add conditional syn as needed
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
 					- TBD: scenario test
 					- TBD: fix scenario as needed
-				- TBD: <next verb => same type as 'put' => 'show', 'give'>
+					- TBD: clean up comments in static_gbl
+					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
+					- TBD: update verb table
+				- TBD: <next verb => same type as 'put' => 'give'>
 				- TBD: <next verb => alt type from 'put' => 'attack', 'lock', 'unlock', 'drink'>
 				- TBD: final clean-up
 					- TBD: clean up comments in static_gbl(), prep_err(), hand_mng(), interp()
@@ -1458,6 +1477,8 @@ To Do List - Dark Castle v3
 						- EXAMPLE: 'put sword in table' => 'can't put anything inside the table'
 						- EXAMPLE: 'stand on basket' => 'The basket has no surface to stand on'
 					- IDEA: some methods will need to be updated to pass prep_str
+					- NOTE: most sym_syns work much better with 'in' (hide, insert, stuff)
+						- IDEA: document this to be addressed in next interp() version?
 				- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
 				- TBD: consider not passing verb or prep to syntax as independent attribs
 			- TBD: eliminate case
