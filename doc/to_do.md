@@ -1444,9 +1444,9 @@ To Do List - Dark Castle v3
 					- NA: fix scenario as needed
 				- INPROC: 'show' (same type as 'put')
 					- DONE: check ZIL list for sym_syn and prep variants => DISPLAY, PRESENT
-					- TBD: update hand_mgmt() as needed for new_verb
-					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
-					- TBD: disable global syn for new_verb
+					- NA: disable global syn for new_verb
+					- DONE: update hand_mgmt() as needed for new_verb
+					- DONE: update *_err() to pass validate if hand_mgmt() will fix when called
 					- TBD: add new_verb to interp() action_verb list
 					- TBD: add new_verb in validate(), cmd_exe(), and trig_chk()
 					- TBD: add base ('new_verb', 'do_noun') entries to syntax
@@ -1480,6 +1480,7 @@ To Do List - Dark Castle v3
 					- NOTE: most sym_syns work much better with 'in' (hide, insert, stuff)
 						- IDEA: document this to be addressed in next interp() version?
 				- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
+				- TBD: hedgehog should have better reaction to crown
 				- TBD: consider not passing verb or prep to syntax as independent attribs
 			- TBD: eliminate case
 		- TBD: post-migrate prep case
@@ -1504,9 +1505,9 @@ To Do List - Dark Castle v3
 		- TBD: elim meta_cmd_lst / 'one_word_convert_lst' in static_gbl
 				- TBD: <word_x>
 					- TBD: check ZIL list for sym_syn and prep variants
+					- TBD: disable global syn for new_verb
 					- TBD: update hand_mgmt() as needed for new_verb
 					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
-					- TBD: disable global syn for new_verb
 					- TBD: add new_verb to interp() action_verb list
 					- TBD: add new_verb in validate(), cmd_exe(), and trig_chk()
 					- TBD: add base ('new_verb', 'do_noun') entries to syntax

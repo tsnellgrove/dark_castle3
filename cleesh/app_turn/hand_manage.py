@@ -11,12 +11,12 @@
 def hand_mgmt(case, word_lst, gs):
     verb_str = word_lst[0]
 #    if verb_str in ['wear', 'drop', 'eat'] and not gs.core.hero.chk_in_hand(word_lst[1]) and gs.core.hero.chk_in_bkpk(word_lst[1]):
-    if verb_str in ['wear', 'drop', 'eat', 'put'] and not gs.core.hero.chk_in_hand(word_lst[1]) and gs.core.hero.chk_in_bkpk(word_lst[1]):
+    if verb_str in ['wear', 'drop', 'eat', 'put', 'show'] and not gs.core.hero.chk_in_hand(word_lst[1]) and gs.core.hero.chk_in_bkpk(word_lst[1]):
         do_noun_obj = word_lst[1]
         gs.core.hero.put_in_hand(do_noun_obj, gs)
         gs.core.hero.bkpk_lst_remove(do_noun_obj)
 #    if verb_str in ['drop', 'eat', 'stow'] and not gs.core.hero.chk_in_hand(word_lst[1]) and gs.core.hero.chk_is_worn(word_lst[1]):
-    if verb_str in ['drop', 'eat', 'stow', 'put'] and not gs.core.hero.chk_in_hand(word_lst[1]) and gs.core.hero.chk_is_worn(word_lst[1]):
+    if verb_str in ['drop', 'eat', 'stow', 'put', 'show'] and not gs.core.hero.chk_in_hand(word_lst[1]) and gs.core.hero.chk_is_worn(word_lst[1]):
         do_noun_obj = word_lst[1]
         gs.core.hero.put_in_hand(do_noun_obj, gs)
         gs.core.hero.worn_lst_remove(do_noun_obj)

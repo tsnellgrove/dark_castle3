@@ -610,8 +610,11 @@ class Error(Identity):
 			# attemptable error: is certainly possible to attempt (e.g. 'show tablet to statue')
 			err_txt = (f"Exactly how would you expect the {self.full_name} to respond to the {obj.full_name}?")
 			return True, True, err_txt
-		if obj.err_not_in_hand(creature, gs):
-			return True, False, ""
+		if obj not in (creature.hand_lst) and not creature.chk_in_bkpk(obj) and not creature.chk_is_worn(obj):
+			err_txt = (f"You don't possess the {obj.full_name}.")
+			return True, False, err_txt
+#		if obj.err_not_in_hand(creature, gs):
+#			return True, False, ""
 		return False, False, ""
 
 	def give_err(self, obj, gs):
