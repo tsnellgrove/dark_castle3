@@ -24,7 +24,7 @@ def cmd_execute(gs, case, word_lst):
 			elif word_lst[-1] in ['verb_do_prep_id']:
 				action_str, do_noun_obj, prep_str, id_noun_obj,  *_  = word_lst
 
-				if action_str in ['put']:
+				if action_str in ['put', 'show']:
 					getattr(id_noun_obj, action_str)(do_noun_obj, gs)
 					if not gs.end.is_end: # check to avoid double score display on end
 						gs.score.disp_score(action_str, do_noun_obj.name, prep_str, gs)

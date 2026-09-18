@@ -1447,15 +1447,18 @@ To Do List - Dark Castle v3
 					- NA: disable global syn for new_verb
 					- DONE: update hand_mgmt() as needed for new_verb
 					- DONE: update *_err() to pass validate if hand_mgmt() will fix when called
-					- TBD: add new_verb to interp() action_verb list
-					- TBD: add new_verb in validate(), cmd_exe(), and trig_chk()
-					- TBD: add base ('new_verb', 'do_noun') entries to syntax
-					- TBD: add prep variants for new_verb to syntax
-					- TBD: add new_verb symetric syns to syn_verb_lst
-					- TBD: add new_verb symetric syns to syntax
-					- TBD: add infer do_noun entry for new_verb as needed
-					- TBD: in asym_syn(), add conditional syn as needed
-					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+					- DONE: add new_verb to interp() action_verb list
+					- DONE: add new_verb in validate(), cmd_exe(), and trig_chk()
+					- DONE: add base ('new_verb', 'do_noun') entries to syntax
+					- NA: add prep variants for new_verb to syntax
+					- DONE: add new_verb symetric syns to syn_verb_lst
+					- DONE: add new_verb symetric syns to syntax
+					- DONE: add infer do_noun entry for new_verb as needed
+					- NA: in asym_syn(), add conditional syn as needed
+					- INPROC: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+						- DONE: 'show' works
+						- DONE: sym_syns work
+						- TBD: infer_do_noun not working for 'show' or 'put'
 					- TBD: scenario test
 					- TBD: fix scenario as needed
 					- TBD: clean up comments in static_gbl
