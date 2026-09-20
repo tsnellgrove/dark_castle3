@@ -1455,16 +1455,17 @@ To Do List - Dark Castle v3
 					- DONE: add new_verb symetric syns to syntax
 					- DONE: add infer do_noun entry for new_verb as needed
 					- NA: in asym_syn(), add conditional syn as needed
-					- INPROC: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+					- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
 						- DONE: 'show' works
 						- DONE: sym_syns work
-						- TBD: infer_do_noun not working for 'show' or 'put'
-					- TBD: scenario test
-					- TBD: fix scenario as needed
-					- TBD: clean up comments in static_gbl
-					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
+						- FINDING: no support for infer_do_noun for existing put-type cmds
+						- CANCEL: infer_do_noun not working for 'show' or 'put'
+						- DECISION: no do_noun infer for "put-type" prep commands
+					- DONE: scenario test
+					- NA: fix scenario as needed
+					- DONE: clean up comments in static_gbl
 					- TBD: update verb table
-				- TBD: <next verb => same type as 'put' => 'give'>
+				- TBD: 'give' (same type as 'put')
 				- TBD: <next verb => alt type from 'put' => 'attack', 'lock', 'unlock', 'drink'>
 				- TBD: final clean-up
 					- TBD: clean up comments in static_gbl(), prep_err(), hand_mng(), interp()
@@ -1523,7 +1524,6 @@ To Do List - Dark Castle v3
 					- TBD: scenario test
 					- TBD: fix scenario as needed
 					- TBD: clean up comments in static_gbl
-					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
 					- TBD: update verb table
 			- TBD: update verb spreadsheet
 		- TBD: one-word debug commands

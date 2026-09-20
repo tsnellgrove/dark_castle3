@@ -95,7 +95,6 @@ engine_static_dict = {
         'hand' : 'give',
         'donate' : 'give',
         'info' : 'help',
-#        'place' : 'put',
 	},
 
 

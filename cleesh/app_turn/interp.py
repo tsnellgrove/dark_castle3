@@ -225,7 +225,7 @@ def infer_do_noun(gs, verb_str, suppress_buffer=False):
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero.worn_lst[0]
 		infer_txt = f"(the {do_noun_obj.full_name})"
-	elif verb_str in ['drop', 'eat', 'stow', 'wear', 'put', 'show'] and not gs.core.hero.hand_is_empty():
+	elif verb_str in ['drop', 'eat', 'stow', 'wear'] and not gs.core.hero.hand_is_empty():
 		do_noun_count = 1
 		do_noun_obj = gs.core.hero.get_hand_item()
 		infer_txt = f"(the {gs.core.hero.get_hand_item().full_name})"
