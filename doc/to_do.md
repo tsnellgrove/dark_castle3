@@ -1442,7 +1442,7 @@ To Do List - Dark Castle v3
 					- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
 					- DONE: scenario test
 					- NA: fix scenario as needed
-				- INPROC: 'show' (same type as 'put')
+				- DONE: 'show' (same type as 'put')
 					- DONE: check ZIL list for sym_syn and prep variants => DISPLAY, PRESENT
 					- NA: disable global syn for new_verb
 					- DONE: update hand_mgmt() as needed for new_verb
@@ -1464,8 +1464,26 @@ To Do List - Dark Castle v3
 					- DONE: scenario test
 					- NA: fix scenario as needed
 					- DONE: clean up comments in static_gbl
-					- TBD: update verb table
-				- TBD: 'give' (same type as 'put')
+					- DONE: update verb table
+				- INPROC: 'give' (same type as 'put')
+					- DONE: check ZIL list for sym_syn and prep variants =>
+						- FINDING: donate, offer, feed, hand (noun vs. verb issue??)
+					- TBD: disable global syn for new_verb
+					- TBD: update hand_mgmt() as needed for new_verb
+					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
+					- TBD: add new_verb to interp() action_verb list
+					- TBD: add new_verb in validate(), cmd_exe(), and trig_chk()
+					- TBD: add base ('new_verb', 'do_noun') entries to syntax
+					- TBD: add prep variants for new_verb to syntax
+					- TBD: add new_verb symetric syns to syn_verb_lst
+					- TBD: add new_verb symetric syns to syntax
+					- TBD: add infer do_noun entry for new_verb as needed
+					- TBD: in asym_syn(), add conditional syn as needed
+					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+					- TBD: scenario test
+					- TBD: fix scenario as needed
+					- TBD: clean up comments in static_gbl
+					- TBD: update verb table					
 				- TBD: <next verb => alt type from 'put' => 'attack', 'lock', 'unlock', 'drink'>
 				- TBD: final clean-up
 					- TBD: clean up comments in static_gbl(), prep_err(), hand_mng(), interp()
