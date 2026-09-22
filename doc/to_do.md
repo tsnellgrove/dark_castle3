@@ -1468,9 +1468,12 @@ To Do List - Dark Castle v3
 				- INPROC: 'give' (same type as 'put')
 					- DONE: check ZIL list for sym_syn and prep variants =>
 						- FINDING: donate, offer, feed, hand (noun vs. verb issue??)
-					- TBD: disable global syn for new_verb
-					- TBD: update hand_mgmt() as needed for new_verb
-					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
+					- DONE: disable global syn for new_verb (donate, hand)
+					- DONE: update hand_mgmt() as needed for new_verb
+					- DONE: update *_err() to pass validate if hand_mgmt() will fix when called
+					- DONE: scenario test
+					- DONE: fix scenario as needed
+						- FINDING: 00E failed - because global syns removed? Leave as is & test at end
 					- TBD: add new_verb to interp() action_verb list
 					- TBD: add new_verb in validate(), cmd_exe(), and trig_chk()
 					- TBD: add base ('new_verb', 'do_noun') entries to syntax
@@ -1482,8 +1485,11 @@ To Do List - Dark Castle v3
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
 					- TBD: scenario test
 					- TBD: fix scenario as needed
-					- TBD: clean up comments in static_gbl
-					- TBD: update verb table					
+					- TBD: clean up comments in static_gbl(), error()
+					- TBD: update verb table
+				- TBD: create verbing_lst and parser() logic
+					- IDEA: hand, present, vault
+					- TBD: 
 				- TBD: <next verb => alt type from 'put' => 'attack', 'lock', 'unlock', 'drink'>
 				- TBD: final clean-up
 					- TBD: clean up comments in static_gbl(), prep_err(), hand_mng(), interp()
@@ -1530,6 +1536,8 @@ To Do List - Dark Castle v3
 					- TBD: disable global syn for new_verb
 					- TBD: update hand_mgmt() as needed for new_verb
 					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
+					- TBD: scenario test
+					- TBD: fix scenario as needed
 					- TBD: add new_verb to interp() action_verb list
 					- TBD: add new_verb in validate(), cmd_exe(), and trig_chk()
 					- TBD: add base ('new_verb', 'do_noun') entries to syntax
@@ -1541,7 +1549,7 @@ To Do List - Dark Castle v3
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
 					- TBD: scenario test
 					- TBD: fix scenario as needed
-					- TBD: clean up comments in static_gbl
+					- TBD: clean up comments in static_gbl(), error()
 					- TBD: update verb table
 			- TBD: update verb spreadsheet
 		- TBD: one-word debug commands

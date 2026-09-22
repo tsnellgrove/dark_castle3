@@ -92,8 +92,8 @@ engine_static_dict = {
         'swig' : 'drink',
         'quaff' : 'drink',
         'sip' : 'drink',
-        'hand' : 'give',
-        'donate' : 'give',
+#        'hand' : 'give',
+#        'donate' : 'give',
         'info' : 'help',
 	},
 
