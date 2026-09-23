@@ -1477,12 +1477,13 @@ To Do List - Dark Castle v3
 					- DONE: add new_verb to interp() action_verb list
 					- DONE: add new_verb in validate(), cmd_exe(), and trig_chk()
 					- DONE: add base ('new_verb', 'do_noun') entries to syntax
-					- TBD: add prep variants for new_verb to syntax
-					- TBD: add new_verb symetric syns to syn_verb_lst
-					- TBD: add new_verb symetric syns to syntax
-					- TBD: add infer do_noun entry for new_verb as needed
-					- TBD: in asym_syn(), add conditional syn as needed
-					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+					- NA: add prep variants for new_verb to syntax
+					- DONE: add new_verb symetric syns to syn_verb_lst
+					- DONE: add new_verb symetric syns to syntax
+					- NA: add infer do_noun entry for new_verb as needed
+					- NA: add conditional syn in asym_syn()  as needed
+					- NA: add prep_phrase_convert() as needed
+					- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
 					- TBD: scenario test
 					- TBD: fix scenario as needed
 					- TBD: clean up comments in static_gbl(), error()
@@ -1545,7 +1546,8 @@ To Do List - Dark Castle v3
 					- TBD: add new_verb symetric syns to syn_verb_lst
 					- TBD: add new_verb symetric syns to syntax
 					- TBD: add infer do_noun entry for new_verb as needed
-					- TBD: in asym_syn(), add conditional syn as needed
+					- TBD: add conditional syn in asym_syn()  as needed
+					- TBD: add prep_phrase_convert() as needed
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
 					- TBD: scenario test
 					- TBD: fix scenario as needed

@@ -48,6 +48,10 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 		('list', 'verb_syn') : ['inventory'],
 
 		('give', 'input_do_noun', 'to', 'input_id_noun') : ['give', 'do_noun_str', 'to', 'id_noun_str', 'verb_do_prep_id'],
+		('donate', 'verb_syn') : ['give'],
+		('feed', 'verb_syn') : ['give'],
+		('hand', 'verb_syn') : ['give'],
+		('offer', 'verb_syn') : ['give'],
 
 		('exit', 'input_do_noun') : ['exit', 'do_noun_str', 'verb_do'],
 		('go', 'out', 'prep_phrase_convert') : ['exit'],
@@ -420,9 +424,9 @@ def interpreter(user_input, master_obj_lst):
 			] # non-action verbs are subsituted in syntax or asym_syn()
 	syn_verb_lst = [
 			'bite', 'carry', 'consume', 
-			'depart', 'describe', 'devour', 'display', 'don', 
-			'gobble', 'grab', 'hide', 'hold', 'ingest', 'insert', 'inspect', 
-			'leap', 'list', 'munch', 
+			'depart', 'describe', 'devour', 'display', 'don', 'donate', 'feed', 
+			'gobble', 'grab', 'hand', 'hide', 'hold', 'ingest', 'insert', 'inspect', 
+			'leap', 'list', 'munch', 'offer', 
 			'pack', 'peruse', 'place', 'present', 'press', 'proceed', 
 			'release', 'remove', 'roll', 'run', 
 			'scale', 'scan', 'shut', 'skim', 'search', 'shove', 'slide', 'stash', 'step', 'stuff', 
