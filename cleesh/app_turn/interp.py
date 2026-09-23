@@ -47,6 +47,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 		('search', 'verb_syn') : ['examine'],
 		('list', 'verb_syn') : ['inventory'],
 
+		('give', 'input_do_noun', 'to', 'input_id_noun') : ['give', 'do_noun_str', 'to', 'id_noun_str', 'verb_do_prep_id'],
+
 		('exit', 'input_do_noun') : ['exit', 'do_noun_str', 'verb_do'],
 		('go', 'out', 'prep_phrase_convert') : ['exit'],
 		('get', 'out', 'prep_phrase_convert') : ['exit'],
@@ -409,7 +411,7 @@ def interpreter(user_input, master_obj_lst):
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = [
-			'climb', 'close', 'doff', 'drop', 'eat', 'enter', 'examine', 'exit', 'go', 'jump',
+			'climb', 'close', 'doff', 'drop', 'eat', 'enter', 'examine', 'exit', 'give', 'go', 'jump',
 			'open', 'move', 'push', 'pull', 'put', 'read', 'sit', 'show', 'stand', 'stow', 'take',
 			'wait', 'wear'
 			] # action_verbs have a method and / or err routine

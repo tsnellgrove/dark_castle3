@@ -95,7 +95,7 @@ class TrigMixIn(object):
 				trig_key_lst = [action_str, prep_str, do_noun_obj.name]
 			elif word_lst[-1] in ['verb_do_prep_id']:
 				action_str, do_noun_obj, prep_str, id_noun_obj,  *_  = word_lst
-				if action_str in ['put', 'show']:
+				if action_str in ['put', 'show', 'give']:
 					trig_key_lst = [action_str, do_noun_obj.name, id_noun_obj.name]
 					trig_wc_lst = [action_str, '*', id_noun_obj.name]
 

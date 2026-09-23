@@ -1474,9 +1474,9 @@ To Do List - Dark Castle v3
 					- DONE: scenario test
 					- DONE: fix scenario as needed
 						- FINDING: 00E failed - because global syns removed? Leave as is & test at end
-					- TBD: add new_verb to interp() action_verb list
-					- TBD: add new_verb in validate(), cmd_exe(), and trig_chk()
-					- TBD: add base ('new_verb', 'do_noun') entries to syntax
+					- DONE: add new_verb to interp() action_verb list
+					- DONE: add new_verb in validate(), cmd_exe(), and trig_chk()
+					- DONE: add base ('new_verb', 'do_noun') entries to syntax
 					- TBD: add prep variants for new_verb to syntax
 					- TBD: add new_verb symetric syns to syn_verb_lst
 					- TBD: add new_verb symetric syns to syntax

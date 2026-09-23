@@ -30,7 +30,7 @@ def validate(gs, case, word_lst):
 				elif word_lst[-1] in ['verb_do_prep_id']:
 					action_str, do_noun_obj, prep_str, id_noun_obj,  *_  = word_lst
 
-					if action_str in ['put', 'show']:
+					if action_str in ['put', 'show', 'give']:
 						cmd_err, is_att, err_txt = getattr(id_noun_obj, action_str + '_err')(do_noun_obj, gs)
 						if (cmd_err and not is_att):
 							gs.io.buffer(err_txt)
