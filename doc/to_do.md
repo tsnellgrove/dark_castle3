@@ -1484,7 +1484,10 @@ To Do List - Dark Castle v3
 					- NA: add conditional syn in asym_syn()  as needed
 					- NA: add prep_phrase_convert() as needed
 					- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
-					- TBD: scenario test
+					- INPROC: scenario test
+						- FINDING: 3 failed tests
+						- FINDING: no score update between get silver key and more approachable
+						- TBD: investigate lack of score update
 					- TBD: fix scenario as needed
 					- TBD: clean up comments in static_gbl(), error()
 					- TBD: update verb table
