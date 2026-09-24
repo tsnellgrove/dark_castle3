@@ -41,11 +41,13 @@ class Score(Invisible):
         gs.io.buffer(output1 + output2)
 
     def disp_score(self, verb_str, noun_str, dirobj_str, gs, suppress_display=False):
+#        print(f"[SCORE] verb: {verb_str}, noun: {noun_str}, dirobj: {dirobj_str}") # debug
         if verb_str not in gs.io.get_dict('score_dict'):
             return
         # determine whether dirobj_key is standard or wildcard
         dirobj_key = dirobj_str
         subj_key = (noun_str, dirobj_key)
+ #       print(f"[SCORE] subj_key: {subj_key}") # debug
         if subj_key not in gs.io.get_dict_val('score_dict', verb_str):
             dirobj_key = '*'
             subj_key = (noun_str, dirobj_key)
@@ -57,7 +59,8 @@ class Score(Invisible):
         # variable outcome verb special cases
         if verb_str == 'attack' and gs.map.chk_obj_exist(gs.core.get_str_to_obj_dict(noun_str), gs):
             return
-        if verb_str == 'give' and not gs.core.get_str_to_obj_dict(noun_str).chk_contain_item(gs.core.get_str_to_obj_dict(dirobj_str)):
+#        if verb_str == 'give' and not gs.core.get_str_to_obj_dict(noun_str).chk_contain_item(gs.core.get_str_to_obj_dict(dirobj_str)):
+        if verb_str == 'give' and not gs.core.get_str_to_obj_dict(dirobj_str).chk_contain_item(gs.core.get_str_to_obj_dict(noun_str)):
             return
         # score condition is valid
         self.score += gs.io.get_ddict_val('score_dict', verb_str, subj_key)

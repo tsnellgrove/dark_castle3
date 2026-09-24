@@ -1487,9 +1487,9 @@ To Do List - Dark Castle v3
 					- INPROC: scenario test
 						- FINDING: 3 failed tests
 						- FINDING: no score update between get silver key and more approachable
-						- TBD: investigate lack of score update
+						- DONE: investigate lack of score update
 					- TBD: fix scenario as needed
-					- TBD: clean up comments in static_gbl(), error()
+					- TBD: clean up comments in static_gbl(), error(), cmd_exe(), score_class_def()
 					- TBD: update verb table
 				- TBD: create verbing_lst and parser() logic
 					- IDEA: hand, present, vault

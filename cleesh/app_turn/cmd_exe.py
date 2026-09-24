@@ -27,7 +27,8 @@ def cmd_execute(gs, case, word_lst):
 				if action_str in ['put', 'show', 'give']:
 					getattr(id_noun_obj, action_str)(do_noun_obj, gs)
 					if not gs.end.is_end: # check to avoid double score display on end
-						gs.score.disp_score(action_str, do_noun_obj.name, prep_str, gs)
+#						gs.score.disp_score(action_str, do_noun_obj.name, prep_str, gs)
+						gs.score.disp_score(action_str, do_noun_obj.name, id_noun_obj.name, gs)
 			return
 		if case == 'prep':
 			dirobj_obj, word1, noun_obj = word_lst
