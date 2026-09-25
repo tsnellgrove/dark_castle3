@@ -59,7 +59,6 @@ class Score(Invisible):
         # variable outcome verb special cases
         if verb_str == 'attack' and gs.map.chk_obj_exist(gs.core.get_str_to_obj_dict(noun_str), gs):
             return
-#        if verb_str == 'give' and not gs.core.get_str_to_obj_dict(noun_str).chk_contain_item(gs.core.get_str_to_obj_dict(dirobj_str)):
         if verb_str == 'give' and not gs.core.get_str_to_obj_dict(dirobj_str).chk_contain_item(gs.core.get_str_to_obj_dict(noun_str)):
             return
         # score condition is valid
