@@ -352,6 +352,7 @@ def noun_handling(master_obj_lst, user_input_lst):
 # def parser(user_input_lst, verb_lst, dir_lst, prep_lst):
 # def parser(user_input_lst, verb_lst, dir_lst, prep_lst, meta_arg_lst):
 def parser(user_input_lst, verb_lst, dir_lst, prep_lst):
+## def parser(user_input_lst, verb_lst, dir_lst, prep_lst, verbing_lst):
 	"""Categorize each word into one of five slots: verb, do_prep, do_noun, id_prep, id_noun.
 
 	Slot assignment is sequential — a word's role depends on what slots are already filled:
@@ -452,6 +453,7 @@ def interpreter(user_input, master_obj_lst):
 			)
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst + debug_cmd_lst
 	intransitive_verb_lst = ['go', 'inventory', 'stand', 'jump', 'wait']
+##	verbing_lst = ['hand', 'present', 'vault'] # verbs that can be used as nouns (e.g. "the vault is locked")
 	case = None
 	action_lst = None
 	prep = None # LEGACY
@@ -467,6 +469,7 @@ def interpreter(user_input, master_obj_lst):
 			do_noun_cmd_lst, 
 			id_prep_cmd_lst, 
 			id_noun_cmd_lst
+##		) = parser(user_input_lst, verb_lst, dir_lst, prep_lst, verbing_lst)
 		) = parser(user_input_lst, verb_lst, dir_lst, prep_lst)
 
 		syntax_do_lst = []
@@ -492,9 +495,9 @@ def interpreter(user_input, master_obj_lst):
 		# if verb is debug verb but not in debug mode, return error
 		if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
 			return 'error', None, "Please start your sentence with a known verb!"
-		# if verb count > 1, return error
-		if len(verb_cmd_lst) > 1:
-			return 'error', None, "I see more than one verb in that sentence!" # can't actually get this error to fire
+##		# if verb count > 1, return error
+##		if len(verb_cmd_lst) > 1:
+##			return 'error', None, "I see more than one verb in that sentence!" # can't actually get this error to fire
 		# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
 		tmp_lst, interp_err = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
 		if not interp_err:

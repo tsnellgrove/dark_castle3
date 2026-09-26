@@ -1491,10 +1491,17 @@ To Do List - Dark Castle v3
 					- NA: fix scenario as needed
 					- DONE: clean up comments in static_gbl(), error(), cmd_exe(), score_class_def()
 					- DONE: update verb table
-				- TBD: create verbing_lst and parser() logic
+				- DONE: create verbing_lst and parser() logic
 					- IDEA: hand, present, vault can all be verbs or nouns
-					- IDEA: if verb_lst and word in verbing_lst: do_noun = word
-					- TBD: 
+					- IDEA: if len(verb_lst) > 0 and word in verbing_lst: do_noun = word
+					- CANCEL: create verbing_lst
+					- CANCEL: pass verbing_lst to parser()
+					- FINDING: discovered that parser() only accepts 1st verb into verb_lst
+					- IDEA: this is an elegant solution and eliminates need for verbing_lst
+					- FINDING: this also means there is no need to check for len(verb_lst) > 1
+					- DONE: comment out multiple verbs error
+					- DONE: comment as "##" and leave in place for now in case I change my mind
+					- DONE: scenario test
 				- TBD: 'unlock' (do_noun holds method - e.g. unlock, lock, drink, attack)
 					- TBD: update prep verb type where do_noun holds method
 						- TBD: updeate validate()
