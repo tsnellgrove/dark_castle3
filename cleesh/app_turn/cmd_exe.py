@@ -28,6 +28,12 @@ def cmd_execute(gs, case, word_lst):
 					getattr(id_noun_obj, action_str)(do_noun_obj, gs)
 					if not gs.end.is_end: # check to avoid double score display on end
 						gs.score.disp_score(action_str, do_noun_obj.name, id_noun_obj.name, gs)
+
+				if action_str in ['unlock', 'lock', 'drink', 'attack']:
+					getattr(do_noun_obj, action_str)(id_noun_obj, gs)
+					if not gs.end.is_end: # check to avoid double score display on end
+						gs.score.disp_score(action_str, do_noun_obj.name, id_noun_obj.name, gs)
+
 			return
 		if case == 'prep':
 			dirobj_obj, word1, noun_obj = word_lst

@@ -1502,13 +1502,14 @@ To Do List - Dark Castle v3
 					- DONE: comment out multiple verbs error
 					- DONE: comment as "##" and leave in place for now in case I change my mind
 					- DONE: scenario test
-				- TBD: 'unlock' (do_noun holds method - e.g. unlock, lock, drink, attack)
-					- TBD: update prep verb type where do_noun holds method
-						- TBD: updeate validate()
-						- TBD: update cmd_exe()
-						- TBD: update trig_chk()
-					- TBD: check ZIL list for sym_syn and prep variants
-					- TBD: disable global syn for new_verb
+				- INPROC: 'unlock' (do_noun holds method - e.g. unlock, lock, drink, attack)
+					- DONE: update prep verb type where do_noun holds method
+						- DONE: updeate validate()
+						- DONE: update cmd_exe()
+						- DONE: update trig_chk()
+					- DONE: check ZIL list for sym_syn and prep variants
+						- FINDING: NONE
+					- NA: disable global syn for new_verb
 					- TBD: update hand_mgmt() as needed for new_verb
 					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
 					- TBD: scenario test

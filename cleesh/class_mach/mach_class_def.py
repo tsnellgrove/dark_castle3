@@ -99,6 +99,10 @@ class TrigMixIn(object):
 					trig_key_lst = [action_str, do_noun_obj.name, id_noun_obj.name]
 					trig_wc_lst = [action_str, '*', id_noun_obj.name]
 
+				if action_str in ['unlock', 'lock', 'drink', 'attack']:
+					trig_key_lst = [action_str, do_noun_obj.name, id_noun_obj.name]
+					trig_wc_lst = [action_str, do_noun_obj.name, '*']
+
 		if case == 'prep':
 			trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
 			trig_wc_lst = [word_lst[1], '*', word_lst[0].name]
