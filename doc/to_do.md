@@ -1510,7 +1510,7 @@ To Do List - Dark Castle v3
 					- DONE: check ZIL list for sym_syn and prep variants
 						- FINDING: NONE
 					- NA: disable global syn for new_verb
-					- TBD: update hand_mgmt() as needed for new_verb
+					- DONE: update hand_mgmt() as needed for new_verb
 					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
 					- TBD: scenario test
 					- TBD: fix scenario as needed
@@ -1523,13 +1523,14 @@ To Do List - Dark Castle v3
 					- TBD: add infer do_noun entry for new_verb as needed
 					- TBD: add conditional syn in asym_syn()  as needed
 					- TBD: add prep_phrase_convert() as needed
-					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
 					- TBD: scenario test
 					- TBD: fix scenario as needed
 					- TBD: test score path w/ dummy score
-					- TBD: clean up comments in static_gbl(), error(), score_class_def()
+					- TBD: clean up comments in static_gbl(), error(), score_class_def, hnd_mg
 					- TBD: update verb table
 				- TBD: <next verb => (do_noun holds method - e.g. unlock, lock, drink, attack)
+				- TBD: re-factor hand_mgmt()
 				- TBD: final clean-up
 					- TBD: clean up comments in static_gbl(), prep_err(), hand_mng(), interp()
 					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
