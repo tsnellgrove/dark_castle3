@@ -1511,18 +1511,20 @@ To Do List - Dark Castle v3
 						- FINDING: NONE
 					- NA: disable global syn for new_verb
 					- DONE: update hand_mgmt() as needed for new_verb
-					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
-					- TBD: scenario test
-					- TBD: fix scenario as needed
-					- TBD: add new_verb to interp() action_verb list
-					- TBD: add new_verb in validate(), cmd_exe(), and trig_chk()
-					- TBD: add base ('new_verb', 'do_noun') entries to syntax
-					- TBD: add prep variants for new_verb to syntax
-					- TBD: add new_verb symetric syns to syn_verb_lst
-					- TBD: add new_verb symetric syns to syntax
-					- TBD: add infer do_noun entry for new_verb as needed
-					- TBD: add conditional syn in asym_syn()  as needed
-					- TBD: add prep_phrase_convert() as needed
+					- DONE: update *_err() to pass validate if hand_mgmt() will fix when called
+					- DONE: scenario test
+					- DONE: fix scenario as needed
+					- DONE: add new_verb to interp() action_verb list
+					- DONE: add base ('new_verb', 'do_noun') entries to syntax
+					- NA: add prep variants for new_verb to syntax
+					- NA: add new_verb symetric syns to syn_verb_lst
+					- NA: add new_verb symetric syns to syntax
+					- DONE: manual test
+					- TBD: add infer id_prep entry for new_verb as needed
+					- TBD: update interp() id_noun logic to infer
+					- TBD: add infer id_noun entry for new_verb as needed
+					- NA: add conditional syn in asym_syn()  as needed
+					- NA: add prep_phrase_convert() as needed
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
 					- TBD: scenario test
 					- TBD: fix scenario as needed
@@ -1579,15 +1581,16 @@ To Do List - Dark Castle v3
 					- TBD: scenario test
 					- TBD: fix scenario as needed
 					- TBD: add new_verb to interp() action_verb list
-					- TBD: add new_verb in validate(), cmd_exe(), and trig_chk()
 					- TBD: add base ('new_verb', 'do_noun') entries to syntax
 					- TBD: add prep variants for new_verb to syntax
 					- TBD: add new_verb symetric syns to syn_verb_lst
 					- TBD: add new_verb symetric syns to syntax
-					- TBD: add infer do_noun entry for new_verb as needed
+					- TBD: manual test
+					- TBD: add infer id_prep entry for new_verb as needed
+					- TBD: add infer id_noun entry for new_verb as needed
 					- TBD: add conditional syn in asym_syn()  as needed
 					- TBD: add prep_phrase_convert() as needed
-					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mgmt)
+					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
 					- TBD: scenario test
 					- TBD: fix scenario as needed
 					- TBD: clean up comments in static_gbl(), error(), score_class_def()

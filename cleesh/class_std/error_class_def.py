@@ -547,8 +547,11 @@ class Error(Identity):
 		if not key_obj.is_item():
 			err_txt = (f"And just how do you intend to unlock a {self.full_name} with a {key_obj.full_name}??")
 			return True, False, err_txt
-		if key_obj.err_not_in_hand(creature, gs):
-			return True, False, ""
+		if key_obj not in (creature.hand_lst) and not creature.chk_in_bkpk(key_obj) and not creature.chk_is_worn(key_obj):
+			err_txt = (f"You don't possess the {key_obj.full_name}.")
+			return True, False, err_txt
+#		if key_obj.err_not_in_hand(creature, gs):
+#			return True, False, ""
 		if self.key is None:
 			# attemptable error: player can only learn there is no lock by trying
 			err_txt = (f"You don't see a keyhole in the {self.full_name}.")

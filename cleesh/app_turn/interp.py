@@ -142,6 +142,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 		('hold', 'verb_syn') : ['take'],
 		('carry', 'verb_syn') : ['take'],
 
+		('unlock', 'input_do_noun', 'with', 'input_id_noun') : ['unlock', 'do_noun_str', 'with', 'id_noun_str', 'verb_do_prep_id'],
+
 		('wait',) : ['wait', 'hero_rm_obj', 'verb_do'],
 
 		('wear', 'input_do_noun') : ['wear', 'do_noun_str', 'verb_do'],
@@ -416,9 +418,10 @@ def interpreter(user_input, master_obj_lst):
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = [
-			'climb', 'close', 'doff', 'drop', 'eat', 'enter', 'examine', 'exit', 'give', 'go', 'jump',
-			'open', 'move', 'push', 'pull', 'put', 'read', 'sit', 'show', 'stand', 'stow', 'take',
-			'wait', 'wear'
+			'climb', 'close', 'doff', 'drop', 
+			'eat', 'enter', 'examine', 'exit', 'give', 'go', 
+			'jump', 'open', 'move', 'push', 'pull', 'put', 'read', 
+			'sit', 'show', 'stand', 'stow', 'take', 'unlock', 'wait', 'wear'
 			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
 			'get', 'inventory', 'look'
