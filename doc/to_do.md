@@ -1520,6 +1520,8 @@ To Do List - Dark Castle v3
 					- NA: add new_verb symetric syns to syn_verb_lst
 					- NA: add new_verb symetric syns to syntax
 					- DONE: manual test
+					- TBD: create id_prep_infer() function
+					- TBD: call id_prep_infer() from interp() before id_noun_infer()
 					- TBD: add infer id_prep entry for new_verb as needed
 					- TBD: update interp() id_noun logic to infer
 					- TBD: add infer id_noun entry for new_verb as needed

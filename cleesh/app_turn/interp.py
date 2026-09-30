@@ -546,7 +546,8 @@ def interpreter(user_input, master_obj_lst):
 					do_noun_str = do_noun_obj.name # new - for syntax call
 				else:
 					return 'error', None, f"{err_txt}"
-			# if no do_prep given and verb requires one, attempt to infer; return error if ambiguous
+			
+			# if do_prep not given and verb requires one, attempt to infer; return error if ambiguous
 			# placed after do_noun proc (not alongside the prep_phrase_convert check above) so that when both
 			# the noun and the direction are inferred, the noun's inference hint reads first - "(the Tree)"
 			# before "(choosing the 'up' direction...)" - matching natural reading order
