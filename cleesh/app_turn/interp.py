@@ -294,7 +294,7 @@ def infer_do_noun(gs, verb_str, suppress_buffer=False):
 	return do_noun_count == 1, do_noun_obj, err_txt
 
 
-### unified infer prep function for verbs that require a prep/direction (currently only climb) ###
+### unified infer prep function for verbs that require a d0_prep/direction (currently only climb) ###
 def infer_prep(gs, verb_str):
 	prep_inferred = False
 	prep_str = None
@@ -313,6 +313,19 @@ def infer_prep(gs, verb_str):
 			err_txt = f"Which way do you want to {verb_str}, up or down?"
 
 	return prep_inferred, prep_str, err_txt
+
+
+### unified infer prep function for verbs that require a d0_prep/direction (currently only climb) ###
+# def infer_id_prep(gs, verb_str):
+#	prep_inferred = False
+#	prep_str = None
+#	err_txt = ""
+
+#	if verb_str in ['unlock']:
+#			prep_inferred = True
+#			prep_str = 'with'
+
+#	return prep_inferred, prep_str, err_txt
 
 
 ### handle nouns and adjectives
