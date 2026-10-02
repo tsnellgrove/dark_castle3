@@ -294,6 +294,27 @@ def infer_do_noun(gs, verb_str, suppress_buffer=False):
 	return do_noun_count == 1, do_noun_obj, err_txt
 
 
+def infer_do_noun(verb_str, gs):
+	if verb_str in ['drink']:
+		id_prep_str = 'from'
+	else:
+		id_prep_str = 'with'
+	id_noun_obj = None
+	err_txt = f"What do you want to {verb_str} {id_prep_str}?"
+	infer_txt = None
+	is_infer = False
+
+	if verb_str in ['unlock', 'lock', 'attack'] and not gs.core.hero.hand_is_empty():
+		id_noun_obj = gs.core.hero.get_hand_item()
+		infer_txt = f"({id_prep_str} the {gs.core.hero.get_hand_item().full_name})"
+		is_infer = True
+
+	if is_infer:
+		gs.io.buffer(infer_txt)
+
+	return is_infer, id_noun_obj, id_prep_str, err_txt
+
+
 ### unified infer prep function for verbs that require a d0_prep/direction (currently only climb) ###
 def infer_prep(gs, verb_str):
 	prep_inferred = False
