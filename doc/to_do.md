@@ -1524,7 +1524,7 @@ To Do List - Dark Castle v3
 						- DECISION: infer_id() should provide both id_noun and id_prep at once
 					- CANCEL: call id_prep_infer() from interp() before id_noun_infer()
 					- CANCEL: add infer id_prep entry for new_verb as needed
-					- TBD: create infer_id_phrase() to jointly infer id_prep and id_noun
+					- DONE: create infer_id_phrase() to jointly infer id_prep and id_noun
 					- TBD: call infer_id_phrase() if no id_prep and no id_noun
 					- TBD: add infer id_noun entry for new_verb as needed
 					- NA: add conditional syn in asym_syn()  as needed
@@ -1608,13 +1608,15 @@ To Do List - Dark Castle v3
 			- TBD: no longer need to check for pre_interp_word_lst in interp()
 			- TBD: update help() cmd to give a limited list of verbs ?
 			- TBD: in doc section, call out interp asym: more permissive >> less permissive
-			- TBD: consider including bkpk in infer_do_noun() scope (e.g. if crown in bkpk, wear it)
+			- TBD: include bkpk in infer_do_noun() scope? (e.g. if crown in bkpk, wear it)
+			- TBD: reconsider do_noun_infer() for prep cases
+			- TBD: consider allowing 'it' pronoun; remove early like articles
 			- TBD: global refactor
 			- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
 			- TBD: clean up comments
 		- TBD: plan for verb method mode ('std' vs. 'silent'?)
 		- TBD: sword glowing when not in hand - error or ok?
-		- TBD: find a way to avoid calling input_cleanup() 3x [web_main(), app_main(), interp()]
+		- TBD: avoid calling input_cleanup() 3x [web_main(), app_main(), interp()]
 		- TBD: full refactor of app_main() to simplify multiples
 		- TBD: full refactor of app_main() to simplify passing of game_name & root_path_str
 		- TBD: fix leap from tree does not respect 'brief' mode
