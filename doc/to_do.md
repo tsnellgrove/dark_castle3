@@ -1525,13 +1525,13 @@ To Do List - Dark Castle v3
 					- CANCEL: call id_prep_infer() from interp() before id_noun_infer()
 					- CANCEL: add infer id_prep entry for new_verb as needed
 					- DONE: create infer_id_phrase() to jointly infer id_prep and id_noun
-					- TBD: call infer_id_phrase() if no id_prep and no id_noun
-					- TBD: add infer id_noun entry for new_verb as needed
+					- DONE: call infer_id_phrase() if no id_prep and no id_noun
+					- DONE: add infer_id_phrase entry for new_verb as needed
 					- NA: add conditional syn in asym_syn()  as needed
 					- NA: add prep_phrase_convert() as needed
-					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
-					- TBD: scenario test
-					- TBD: fix scenario as needed
+					- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
+					- DONE: scenario test
+					- DONE: fix scenario as needed
 					- TBD: test score path w/ dummy score
 					- TBD: clean up comments in static_gbl(), error(), score_class_def, hnd_mg
 					- TBD: update verb table
@@ -1590,8 +1590,7 @@ To Do List - Dark Castle v3
 					- TBD: add new_verb symetric syns to syn_verb_lst
 					- TBD: add new_verb symetric syns to syntax
 					- TBD: manual test
-					- TBD: add infer id_prep entry for new_verb as needed
-					- TBD: add infer id_noun entry for new_verb as needed
+					- TBD: add infer_id_phrase entry for new_verb as needed
 					- TBD: add conditional syn in asym_syn()  as needed
 					- TBD: add prep_phrase_convert() as needed
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
