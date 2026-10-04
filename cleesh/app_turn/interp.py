@@ -336,19 +336,6 @@ def infer_prep(gs, verb_str):
 	return prep_inferred, prep_str, err_txt
 
 
-### unified infer prep function for verbs that require a d0_prep/direction (currently only climb) ###
-# def infer_id_prep(gs, verb_str):
-#	prep_inferred = False
-#	prep_str = None
-#	err_txt = ""
-
-#	if verb_str in ['unlock']:
-#			prep_inferred = True
-#			prep_str = 'with'
-
-#	return prep_inferred, prep_str, err_txt
-
-
 ### handle nouns and adjectives
 def noun_handling(master_obj_lst, user_input_lst):
 	gs = master_obj_lst[0]
@@ -515,7 +502,6 @@ def interpreter(user_input, master_obj_lst):
 		do_noun_str = None
 		id_noun_obj = None
 		id_noun_str = None
-#		id_noun_syn_lst = []
 		syntax_id_lst = []
 
 		# *** unprocessed cmd lst ***
@@ -598,7 +584,6 @@ def interpreter(user_input, master_obj_lst):
 				print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
 
 			# *** id_noun proc ***
-#			if len(id_noun_cmd_lst) > 0:
 			if id_noun_cmd_lst:
 				id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 				error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
@@ -607,15 +592,12 @@ def interpreter(user_input, master_obj_lst):
 				else: # if no error, assign id_noun_obj.name to id_noun_cmd_lst for syntax call
 					id_noun_cmd_lst = [id_noun_obj.name]
 					id_noun_str = id_noun_obj.name # new - for syntax call
-#					id_noun_syn_lst = ['input_id_noun']
 					syntax_id_lst = ['input_id_noun']
 			elif verb_cmd_lst[0] in prep_verb_do_meth_lst and not id_noun_cmd_lst and not id_prep_cmd_lst: # if no id_prep or id_noun given, attempt to infer; return error if ambiguous
 				is_infer, id_noun_obj, id_prep_str, err_txt = infer_id_phrase(verb_cmd_lst[0], do_noun_obj, gs)
 				if is_infer:
 					id_noun_str = id_noun_obj.name
 					id_noun_cmd_lst = [id_noun_obj.name]
-#					id_noun_syn_lst = []
-#					syntax_id_lst = [id_noun_obj.name]
 					syntax_id_lst = ['input_id_noun']
 					id_prep_cmd_lst = [id_prep_str]
 				else:
@@ -627,7 +609,6 @@ def interpreter(user_input, master_obj_lst):
 		# *** syntax call - used by all verbs ***
 		# (note do_noun and id_noun substitution)
 		user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + syntax_id_lst
-#		user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + id_noun_syn_lst
 		if tst_mode:
 			print(f"user_syntax_lst: {user_syntax_lst}")
 		action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, id_noun_str, gs)

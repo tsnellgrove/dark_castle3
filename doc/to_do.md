@@ -1502,7 +1502,7 @@ To Do List - Dark Castle v3
 					- DONE: comment out multiple verbs error
 					- DONE: comment as "##" and leave in place for now in case I change my mind
 					- DONE: scenario test
-				- INPROC: 'unlock' (do_noun holds method - e.g. unlock, lock, drink, attack)
+				- DONE: 'unlock' (do_noun holds method - e.g. unlock, lock, drink, attack)
 					- DONE: update prep verb type where do_noun holds method
 						- DONE: updeate validate()
 						- DONE: update cmd_exe()
@@ -1532,10 +1532,31 @@ To Do List - Dark Castle v3
 					- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
 					- DONE: scenario test
 					- DONE: fix scenario as needed
-					- TBD: test score path w/ dummy score
-					- TBD: clean up comments in static_gbl(), error(), score_class_def, hnd_mg
-					- TBD: update verb table
-				- TBD: <next verb => (do_noun holds method - e.g. unlock, lock, drink, attack)
+					- DONE: test score path w/ dummy score
+					- DONE: clean up comments in static_gbl(), error(), score_class_def, hnd_mg
+					- DONE: update verb table
+				- TBD: 'lock' (do_noun holds method - e.g. unlock, lock, attack, drink)
+					- TBD: check ZIL list for sym_syn and prep variants
+					- TBD: disable global syn for new_verb
+					- TBD: update hand_mgmt() as needed for new_verb
+					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
+					- TBD: scenario test
+					- TBD: fix scenario as needed
+					- TBD: add new_verb to interp() action_verb list
+					- TBD: add base ('new_verb', 'do_noun') entries to syntax
+					- TBD: add prep variants for new_verb to syntax
+					- TBD: add new_verb symetric syns to syn_verb_lst
+					- TBD: add new_verb symetric syns to syntax
+					- TBD: manual test
+					- TBD: add infer_id_phrase entry for new_verb as needed
+					- TBD: add conditional syn in asym_syn()  as needed
+					- TBD: add prep_phrase_convert() as needed
+					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
+					- TBD: scenario test
+					- TBD: fix scenario as needed
+					- TBD: clean up comments in static_gbl(), error(), score_class_def()
+					- TBD: update verb table				
+				- TBD: <next verb => (do_noun holds method - e.g. unlock, lock, attack, drink)
 				- TBD: re-factor hand_mgmt()
 				- TBD: final clean-up
 					- TBD: clean up comments in static_gbl(), prep_err(), hand_mng(), interp()
