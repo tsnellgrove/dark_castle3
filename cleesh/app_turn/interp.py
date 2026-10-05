@@ -80,6 +80,8 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 		('leap', 'verb_syn') : ['jump'],
 		('vault', 'verb_syn') : ['jump'],
 
+		('lock', 'input_do_noun', 'with', 'input_id_noun') : ['lock', 'do_noun_str', 'with', 'id_noun_str', 'verb_do_prep_id'],
+
 		('move', 'input_do_noun') : ['move', 'do_noun_str', 'verb_do'],
 		('slide', 'verb_syn') : ['move'],
 		('roll', 'verb_syn') : ['move'],
@@ -441,7 +443,7 @@ def interpreter(user_input, master_obj_lst):
 	action_verb_lst = [
 			'climb', 'close', 'doff', 'drop', 
 			'eat', 'enter', 'examine', 'exit', 'give', 'go', 
-			'jump', 'open', 'move', 'push', 'pull', 'put', 'read', 
+			'jump', 'lock', 'move', 'open', 'push', 'pull', 'put', 'read', 
 			'sit', 'show', 'stand', 'stow', 'take', 'unlock', 'wait', 'wear'
 			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
