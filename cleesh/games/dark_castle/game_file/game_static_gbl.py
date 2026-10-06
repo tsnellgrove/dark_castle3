@@ -59,6 +59,7 @@ game_static_dict = {
         'wear' : {('royal_crown', None) : 10},
 #        'give' : {('royal_hedgehog', 'shiny_sword') : 5},
 #		'unlock' : {('front_gate', 'rusty_key') : 50},
+#		'lock' : {('front_gate', 'rusty_key') : 50},
         'give' : {('shiny_sword', 'royal_hedgehog') : 5},
         'attack' : {
             	('guard_goblin', 'shiny_sword') : 5,

@@ -1553,8 +1553,9 @@ To Do List - Dark Castle v3
 					- NA: add conditional syn in asym_syn()  as needed
 					- NA: add prep_phrase_convert() as needed
 					- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
-					- TBD: scenario test
-					- TBD: fix scenario as needed
+					- DONE: scenario test
+					- DONE: fix scenario as needed
+					- DONE: test score path w/ dummy score
 					- TBD: clean up comments in static_gbl(), error(), score_class_def()
 					- TBD: update verb table				
 				- TBD: <next verb => (do_noun holds method - e.g. unlock, lock, attack, drink)
