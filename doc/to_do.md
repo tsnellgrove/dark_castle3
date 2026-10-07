@@ -1535,7 +1535,7 @@ To Do List - Dark Castle v3
 					- DONE: test score path w/ dummy score
 					- DONE: clean up comments in static_gbl(), error(), score_class_def, hnd_mg
 					- DONE: update verb table
-				- INPROC: 'lock' (do_noun holds method - e.g. unlock, lock, attack, drink)
+				- DONE: 'lock' (do_noun holds method - e.g. unlock, lock, attack, drink)
 					- DONE: check ZIL list for sym_syn and prep variants
 						- FINDING: None
 					- NA: disable global syn for new_verb
@@ -1556,9 +1556,30 @@ To Do List - Dark Castle v3
 					- DONE: scenario test
 					- DONE: fix scenario as needed
 					- DONE: test score path w/ dummy score
+					- DONE: clean up comments in static_gbl(), error(), score_class_def()
+					- DONE: update verb table
+				- TBD: 'attack' (do_noun holds method - e.g. unlock, lock, attack, drink)
+					- TBD: check ZIL list for sym_syn and prep variants
+					- TBD: disable global syn for new_verb
+					- TBD: update hand_mgmt() as needed for new_verb
+					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
+					- TBD: scenario test
+					- TBD: fix scenario as needed
+					- TBD: add new_verb to interp() action_verb list
+					- TBD: add base ('new_verb', 'do_noun') entries to syntax
+					- TBD: add prep variants for new_verb to syntax
+					- TBD: add new_verb symetric syns to syn_verb_lst
+					- TBD: add new_verb symetric syns to syntax
+					- TBD: manual test
+					- TBD: add infer_id_phrase entry for new_verb as needed
+					- TBD: add conditional syn in asym_syn()  as needed
+					- TBD: add prep_phrase_convert() as needed
+					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
+					- TBD: scenario test
+					- TBD: fix scenario as needed
 					- TBD: clean up comments in static_gbl(), error(), score_class_def()
-					- TBD: update verb table				
-				- TBD: <next verb => (do_noun holds method - e.g. unlock, lock, attack, drink)
+					- TBD: update verb table
+				- TBD: 'drink' (do_noun holds method - e.g. unlock, lock, attack, drink)
 				- TBD: re-factor hand_mgmt()
 				- TBD: final clean-up
 					- TBD: clean up comments in static_gbl(), prep_err(), hand_mng(), interp()
