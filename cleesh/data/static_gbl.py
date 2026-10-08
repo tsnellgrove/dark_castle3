@@ -80,14 +80,14 @@ engine_static_dict = {
 	},
 
 	'verb_syn_dict' : {
-        'break' : 'attack',
-        'poke' : 'attack',
-        'damage' : 'attack',
-        'jab' : 'attack',
-        'clobber' : 'attack',
+#        'break' : 'attack',
+#        'poke' : 'attack',
+#        'damage' : 'attack',
+#        'jab' : 'attack',
+#        'clobber' : 'attack',
 ##       'kick' : 'attack', # elim because of 'kick with fist' response
-        'hit' : 'attack',
-        'kill' : 'attack',
+#        'hit' : 'attack',
+#        'kill' : 'attack',
         'imbibe' : 'drink',
         'swig' : 'drink',
         'quaff' : 'drink',

@@ -1558,11 +1558,13 @@ To Do List - Dark Castle v3
 					- DONE: test score path w/ dummy score
 					- DONE: clean up comments in static_gbl(), error(), score_class_def()
 					- DONE: update verb table
-				- TBD: 'attack' (do_noun holds method - e.g. unlock, lock, attack, drink)
-					- TBD: check ZIL list for sym_syn and prep variants
-					- TBD: disable global syn for new_verb
-					- TBD: update hand_mgmt() as needed for new_verb
-					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
+				- INPROC: 'attack' (do_noun holds method - e.g. unlock, lock, attack, drink)
+					- DONE: check ZIL list for sym_syn and prep variants
+						- FINDING: FIGHT, HURT, INJURE, HIT, KILL, MURDER, SLAY, DISPATCH
+					- DONE: disable global syn for new_verb
+						- FINDING: 'break', 'poke', 'damage', 'jab', 'clobber', 'hit', 'kill'
+					- DONE: update hand_mgmt() as needed for new_verb
+					- DONE: update *_err() to pass validate if hand_mgmt() will fix when called
 					- TBD: scenario test
 					- TBD: fix scenario as needed
 					- TBD: add new_verb to interp() action_verb list
@@ -1589,6 +1591,8 @@ To Do List - Dark Castle v3
 				- TBD: address hand mgmt in hand_manage()
 				- TBD: update input_cleanup()
 				- TBD: generalize "don't possess" error
+				- TBD: fix don't possess vs. burts_fist errors [use in feature_lst ??]
+				- TBD: fix opening table - last "+" char is wrapping
 				- TBD: fix 'blank' first attrib in noun_handling() call
 				- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
 					- IDEA: check for prep errors in x_err() by passing prep_str to method

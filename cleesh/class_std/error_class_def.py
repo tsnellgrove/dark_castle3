@@ -664,8 +664,11 @@ class Error(Identity):
 			except:
 				err_txt = ("You consider attacking but then think better of it. There must be another path to victory.")
 			return True, True, err_txt
-		if (not src_obj in src_creature.feature_lst) and (not src_creature.chk_in_hand(src_obj)):
-			err_txt = (f"You are not holding the {src_obj.full_name} in your hand.")
+#		if (not src_obj in src_creature.feature_lst) and (not src_creature.chk_in_hand(src_obj)):
+#			err_txt = (f"You are not holding the {src_obj.full_name} in your hand.")
+#			return True, False, err_txt
+		if (not src_obj in src_creature.feature_lst) and (not src_creature.chk_in_hand(src_obj)) and (not src_creature.chk_in_bkpk(src_obj)) and (not src_creature.chk_is_worn(src_obj)):
+			err_txt = (f"You don't possess the {src_obj.full_name}.")
 			return True, False, err_txt
 		if (src_obj in src_creature.feature_lst) and (not src_creature.hand_is_empty()):
 			err_txt = (f"You can't attack with your {src_obj.full_name} while you're holding the {src_creature.get_hand_item().full_name}.")
