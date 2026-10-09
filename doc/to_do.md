@@ -1565,11 +1565,15 @@ To Do List - Dark Castle v3
 						- FINDING: 'break', 'poke', 'damage', 'jab', 'clobber', 'hit', 'kill'
 					- DONE: update hand_mgmt() as needed for new_verb
 					- DONE: update *_err() to pass validate if hand_mgmt() will fix when called
-					- TBD: scenario test
-					- TBD: fix scenario as needed
-					- TBD: add new_verb to interp() action_verb list
-					- TBD: add base ('new_verb', 'do_noun') entries to syntax
-					- TBD: add prep variants for new_verb to syntax
+					- DONE: scenario test
+						- FINDING: only error is on sym_syns
+					- NA: fix scenario as needed
+					- DONE: add new_verb to interp() action_verb list
+					- DONE: add base ('new_verb', 'do_noun') entries to syntax
+					- NA: add prep variants for new_verb to syntax
+					- INPROC: manual test
+						- FINDING: attack_hedgehog_warning not working
+						- TBD: fix hedgehog_warning
 					- TBD: add new_verb symetric syns to syn_verb_lst
 					- TBD: add new_verb symetric syns to syntax
 					- TBD: manual test
@@ -1588,6 +1592,7 @@ To Do List - Dark Castle v3
 					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
 					- TBD: update verb table (verb, syns, prep_phrase)
 			- TBD: additional prep to-dos
+				- TBD: maybe add prep-verb method ower distinction to 'case' term?
 				- TBD: address hand mgmt in hand_manage()
 				- TBD: update input_cleanup()
 				- TBD: generalize "don't possess" error

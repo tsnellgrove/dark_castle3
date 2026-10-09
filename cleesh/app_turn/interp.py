@@ -11,6 +11,8 @@ from cleesh.app_turn.input_cleanup import input_cleanup
 def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 
 	syntax_dict = {
+		('attack', 'input_do_noun', 'with', 'input_id_noun') : ['attack', 'do_noun_str', 'with', 'id_noun_str', 'verb_do_prep_id'],
+
 		('climb', 'up', 'input_do_noun') : ['climb', 'up', 'do_noun_str', 'verb_prep_do'],
 		('climb', 'down', 'input_do_noun') : ['climb', 'down', 'do_noun_str', 'verb_prep_do'],
 		('scale', 'verb_syn') : ['climb'],
@@ -441,7 +443,7 @@ def interpreter(user_input, master_obj_lst):
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = [
-			'climb', 'close', 'doff', 'drop', 
+			'attack', 'climb', 'close', 'doff', 'drop', 
 			'eat', 'enter', 'examine', 'exit', 'give', 'go', 
 			'jump', 'lock', 'move', 'open', 'push', 'pull', 'put', 'read', 
 			'sit', 'show', 'stand', 'stow', 'take', 'unlock', 'wait', 'wear'
