@@ -1573,7 +1573,8 @@ To Do List - Dark Castle v3
 					- NA: add prep variants for new_verb to syntax
 					- INPROC: manual test
 						- FINDING: attack_hedgehog_warning not working
-						- TBD: fix hedgehog_warning
+						- DONE: fix hedgehog_warning
+						- TBD: fix unable to "attack hedgehog" with empty hands (id_phrase)
 					- TBD: add new_verb symetric syns to syn_verb_lst
 					- TBD: add new_verb symetric syns to syntax
 					- TBD: manual test

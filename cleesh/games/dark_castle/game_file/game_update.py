@@ -168,7 +168,8 @@ entrance_south_warn = Warning('entrance_south_warn',
 
 attack_hedgehog_warning = Warning('attack_hedgehog_warning', 
 		'pre_act_cmd', 0, 'royal_hedgehog_temp', True, 
-		[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3)
+#		[['attack', 'shiny_sword', 'royal_hedgehog'], ['attack', 'grimy_axe', 'royal_hedgehog']], 3)
+		[['attack', 'royal_hedgehog', 'shiny_sword'], ['attack', 'royal_hedgehog', 'grimy_axe']], 3)
 
 eat_biscuits_warning = Warning('eat_biscuits_warning',
 		'pre_act_cmd', 0, baked_biscuit, True, 
