@@ -1574,7 +1574,8 @@ To Do List - Dark Castle v3
 					- INPROC: manual test
 						- FINDING: attack_hedgehog_warning not working
 						- DONE: fix hedgehog_warning
-						- TBD: fix unable to "attack hedgehog" with empty hands (id_phrase)
+						- FINDING: unable to "attack hedgehog" with empty hands (id_phrase)
+						- TBD: migrate legacy id_noun_infer to id_phrase_infer()
 					- TBD: add new_verb symetric syns to syn_verb_lst
 					- TBD: add new_verb symetric syns to syntax
 					- TBD: manual test
