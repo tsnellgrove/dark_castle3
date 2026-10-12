@@ -313,49 +313,19 @@ def infer_id_phrase(verb_str, do_noun_obj,gs):
 		id_noun_obj = creature.get_hand_item()
 		infer_txt = f"({id_prep_str} the {creature.get_hand_item().full_name})"
 		is_infer = True
-#	elif verb_str in ['attack'] and not gs.core.hero.hand_is_empty():
 	elif verb_str in ['attack']:
 		if (not creature.in_hand_is_weapon()) and (creature.has_weapon(gs)):
-#				drawn_weapon = creature.get_weapon(gs)
 				id_noun_obj = creature.get_weapon(gs)
 				creature.remove_item(id_noun_obj, gs)
-#				creature.remove_item(drawn_weapon, gs)
 				creature.put_in_hand(id_noun_obj, gs)
-#				creature.put_in_hand(drawn_weapon, gs)
-#				user_input_lst.extend(['with', drawn_weapon.name])
-#				gs.io.buffer(f"(Sensing imminent combat, you draw the {drawn_weapon.full_name})")
-#				infer_txt= f"(Sensing imminent combat, you draw the {drawn_weapon.full_name})"
 				infer_txt= f"(Sensing imminent combat, you draw the {id_noun_obj.full_name})"
 		elif not creature.hand_is_empty():
 			id_noun_obj = creature.get_hand_item()
 			infer_txt = f"({id_prep_str} the {creature.get_hand_item().full_name})"
 		else:
-#			user_input_lst.extend(['with',creature.feature_lst[0].name])
-#			gs.io.buffer(f"(with your {creature.feature_lst[0].full_name})")
 			id_noun_obj = creature.feature_lst[0]
 			infer_txt = f"({id_prep_str} your {id_noun_obj.full_name})"
 		is_infer = True
-
-
-#		elif word1 in ['attack']:
-#			creature = gs.core.hero
-#			prep = 'with'
-#			if ((len(user_input_lst) < 4) and ('with' not in user_input) 
-#	   				and (not creature.in_hand_is_weapon()) and (creature.has_weapon(gs))):
-#				drawn_weapon = creature.get_weapon(gs)
-#				creature.remove_item(drawn_weapon, gs)
-#				creature.put_in_hand(drawn_weapon, gs)
-#				user_input_lst.extend(['with', drawn_weapon.name])
-#				gs.io.buffer(f"(Sensing imminent combat, you draw the {drawn_weapon.full_name})")			
-#			elif len(user_input_lst) < 4 and 'with' not in user_input and not creature.hand_is_empty():
-#				user_input_lst.extend(['with',creature.get_hand_item().name])
-#				gs.io.buffer(f"(with the {creature.get_hand_item().full_name})")
-#			elif len(user_input_lst) == 2 and 'with' not in user_input and creature.hand_is_empty():
-#				user_input_lst.extend(['with',creature.feature_lst[0].name])
-#				gs.io.buffer(f"(with your {creature.feature_lst[0].full_name})")
-
-
-
 	if is_infer:
 		gs.io.buffer(infer_txt)
 
