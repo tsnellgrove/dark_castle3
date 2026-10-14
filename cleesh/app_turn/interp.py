@@ -12,6 +12,13 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 
 	syntax_dict = {
 		('attack', 'input_do_noun', 'with', 'input_id_noun') : ['attack', 'do_noun_str', 'with', 'id_noun_str', 'verb_do_prep_id'],
+		('clobber', 'verb_syn') : ['attack'],
+		('fight', 'verb_syn') : ['attack'],
+		('hit', 'verb_syn') : ['attack'],
+		('jab', 'verb_syn') : ['attack'],
+		('kill', 'verb_syn') : ['attack'],
+		('murder', 'verb_syn') : ['attack'],
+		('slay', 'verb_syn') : ['attack'],
 
 		('climb', 'up', 'input_do_noun') : ['climb', 'up', 'do_noun_str', 'verb_prep_do'],
 		('climb', 'down', 'input_do_noun') : ['climb', 'down', 'do_noun_str', 'verb_prep_do'],
@@ -465,13 +472,13 @@ def interpreter(user_input, master_obj_lst):
 			'get', 'inventory', 'look'
 			] # non-action verbs are subsituted in syntax or asym_syn()
 	syn_verb_lst = [
-			'bite', 'carry', 'consume', 
-			'depart', 'describe', 'devour', 'display', 'don', 'donate', 'feed', 
-			'gobble', 'grab', 'hand', 'hide', 'hold', 'ingest', 'insert', 'inspect', 
-			'leap', 'list', 'munch', 'offer', 
+			'bite', 'carry', 'clobber', 'consume', 
+			'depart', 'describe', 'devour', 'display', 'don', 'donate', 'feed', 'fight',
+			'gobble', 'grab', 'hand', 'hide', 'hit', 'hold', 'ingest', 'insert', 'inspect', 'jab',
+			'kill', 'leap', 'list', 'munch', 'murder','offer', 
 			'pack', 'peruse', 'place', 'present', 'press', 'proceed', 
 			'release', 'remove', 'roll', 'run', 
-			'scale', 'scan', 'shut', 'skim', 'search', 'shove', 'slide', 'stash', 'step', 'stuff', 
+			'scale', 'scan', 'search', 'shut', 'shove', 'skim', 'slay', 'slide', 'stash', 'step', 'stuff', 
 			'taste', 'tug', 'vault', 'walk', 'yank'
 			] # symetric syn_verbs are substituted pre do_noun infer
 	debug_cmd_lst = ['get_weight', 'capacity', 'where_is']

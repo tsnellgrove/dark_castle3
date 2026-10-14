@@ -1577,8 +1577,8 @@ To Do List - Dark Castle v3
 						- FINDING: unable to "attack hedgehog" with empty hands (id_phrase)
 						- DONE: migrate legacy id_noun_infer to id_phrase_infer()
 					- DONE: sym_syn master list: clobber, fight, hit, jab, kill, murder, slay
-					- TBD: add new_verb symetric syns to syn_verb_lst
-					- TBD: add new_verb symetric syns to syntax
+					- DONE: add new_verb symetric syns to syn_verb_lst
+					- DONE: add new_verb symetric syns to syntax
 					- TBD: manual test
 					- TBD: scenario test
 					- TBD: fix scenario as needed
