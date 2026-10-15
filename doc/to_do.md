@@ -1579,7 +1579,7 @@ To Do List - Dark Castle v3
 					- DONE: sym_syn master list: clobber, fight, hit, jab, kill, murder, slay
 					- DONE: add new_verb symetric syns to syn_verb_lst
 					- DONE: add new_verb symetric syns to syntax
-					- TBD: manual test
+					- DONE: manual test
 					- TBD: scenario test
 					- TBD: fix scenario as needed
 					- TBD: add infer_id_phrase entry for new_verb as needed
