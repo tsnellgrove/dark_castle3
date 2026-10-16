@@ -5,9 +5,9 @@
   "commands": [
     "h",
     "l",
-    "break postbox",
-    "poke postbox",
-    "damage postbox",
+    "fight postbox",
+    "murder postbox",
+    "slay postbox",
     "jab postbox",
     "clobber postbox",
     "hit postbox",

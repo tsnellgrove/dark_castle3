@@ -1552,7 +1552,7 @@ To Do List - Dark Castle v3
 					- DONE: add infer_id_phrase entry for new_verb as needed
 					- NA: add conditional syn in asym_syn()  as needed
 					- NA: add prep_phrase_convert() as needed
-					- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
+					- DONE: manual test (including sym_syn, prep, infer, asym syn, hand_mg)
 					- DONE: scenario test
 					- DONE: fix scenario as needed
 					- DONE: test score path w/ dummy score
@@ -1580,15 +1580,17 @@ To Do List - Dark Castle v3
 					- DONE: add new_verb symetric syns to syn_verb_lst
 					- DONE: add new_verb symetric syns to syntax
 					- DONE: manual test
-					- TBD: scenario test
-					- TBD: fix scenario as needed
-					- TBD: add infer_id_phrase entry for new_verb as needed
-					- TBD: add conditional syn in asym_syn()  as needed
-					- TBD: add prep_phrase_convert() as needed
-					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
-					- TBD: scenario test
-					- TBD: fix scenario as needed
-					- TBD: clean up comments in static_gbl(), error(), score_class_def()
+					- DONE: scenario test
+					- DONE: fix scenario as needed
+					- DONE: add infer_id_phrase() entry for new_verb as needed
+					- NA: add conditional syn in asym_syn()  as needed
+					- NA: add prep_phrase_convert() as needed
+					- DONE: manual test (including sym_syn, prep, infer, asym syn, hand_mg)
+					- DONE: scenario test
+					- NA: fix scenario as needed
+					- DONE: clean up comments in static_gbl(), error()
+					- TBD: test score path w/ dummy score
+					- TBD: clean up comments in score_class_def()
 					- TBD: update verb table
 				- TBD: 'drink' (do_noun holds method - e.g. unlock, lock, attack, drink)
 				- TBD: re-factor hand_mgmt()
@@ -1651,6 +1653,7 @@ To Do List - Dark Castle v3
 					- TBD: add infer_id_phrase entry for new_verb as needed
 					- TBD: add conditional syn in asym_syn()  as needed
 					- TBD: add prep_phrase_convert() as needed
+					- TBD: test score path w/ dummy score
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
 					- TBD: scenario test
 					- TBD: fix scenario as needed
