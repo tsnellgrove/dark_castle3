@@ -81,10 +81,10 @@ engine_static_dict = {
 
 	'verb_syn_dict' : {
 ##       'kick' : 'attack', # elim because of 'kick with fist' response
-        'imbibe' : 'drink',
-        'swig' : 'drink',
-        'quaff' : 'drink',
-        'sip' : 'drink',
+#        'imbibe' : 'drink',
+#        'swig' : 'drink',
+#        'quaff' : 'drink',
+#        'sip' : 'drink',
         'info' : 'help',
 	},
 

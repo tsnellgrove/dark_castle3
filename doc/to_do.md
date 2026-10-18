@@ -1592,21 +1592,30 @@ To Do List - Dark Castle v3
 					- NA: test score path w/ dummy score
 					- NA: clean up comments in score_class_def()
 					- DONE: update verb table
-				- TBD: 'drink' (do_noun holds method - e.g. unlock, lock, attack, drink)
-					- TBD: check ZIL list for sym_syn and prep variants
-					- TBD: disable global syn for new_verb
-					- TBD: update hand_mgmt() as needed for new_verb
-					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
-					- TBD: scenario test
-					- TBD: fix scenario as needed
-					- TBD: add new_verb to interp() action_verb list
-					- TBD: add base ('new_verb', 'do_noun') entries to syntax
-					- TBD: add prep variants for new_verb to syntax
-					- TBD: add new_verb symetric syns to syn_verb_lst
-					- TBD: add new_verb symetric syns to syntax
-					- TBD: manual test
+				- INPROC: 'drink' (do_noun holds method - e.g. unlock, lock, attack, drink)
+					- DONE: check ZIL list for sym_syn and prep variants
+						- FINDING: IMBIBE, SWALLOW
+					- DONE: disable global syn for new_verb
+						- FINDING: imbibe, swig, quaff, sip
+					- DONE: sym_syn_lst = imbibe, quaff, sip, swig
+					- DONE: add new_verb to interp() action_verb list
+					- DONE: add base ('new_verb', 'do_noun') entries to syntax
+					- NA: add prep variants for new_verb to syntax
+					- DONE: manual test
+					- DONE: update hand_mgmt() as needed for new_verb
+					- DONE: update *_err() to pass validate if hand_mgmt() will fix when called
+					- DONE: manual test
+					- DONE: add new_verb symetric syns to syn_verb_lst
+					- DONE: add new_verb symetric syns to syntax
+					- DONE: manual test
+					- DONE: scenario test
+						- FINDING: 3x errors: 'I don't see the word 'from' in that sentence.'
 					- TBD: add infer_id_phrase entry for new_verb as needed
+					- TBD: manual test
+					- TBD: scenario test
+					- TBD: fix scenario tests as needed
 					- TBD: add conditional syn in asym_syn()  as needed
+						- IDEA: 'swallow' as eat or drink?
 					- TBD: add prep_phrase_convert() as needed
 					- TBD: test score path w/ dummy score
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)

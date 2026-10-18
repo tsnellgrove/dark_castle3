@@ -30,6 +30,12 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 
 		('doff', 'input_do_noun') : ['doff', 'do_noun_str', 'verb_do'],
 
+		('drink', 'input_do_noun', 'from', 'input_id_noun') : ['drink', 'do_noun_str', 'from', 'id_noun_str', 'verb_do_prep_id'],
+		('imbibe', 'verb_syn') : ['drink'],
+		('quaff', 'verb_syn') : ['drink'],
+		('sip', 'verb_syn') : ['drink'],
+		('swig', 'verb_syn') : ['drink'],
+
 		('drop', 'input_do_noun') : ['drop', 'do_noun_str', 'verb_do'],
 		('release', 'verb_syn') : ['drop'],
 
@@ -463,7 +469,7 @@ def interpreter(user_input, master_obj_lst):
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = [
-			'attack', 'climb', 'close', 'doff', 'drop', 
+			'attack', 'climb', 'close', 'doff', 'drink', 'drop', 
 			'eat', 'enter', 'examine', 'exit', 'give', 'go', 
 			'jump', 'lock', 'move', 'open', 'push', 'pull', 'put', 'read', 
 			'sit', 'show', 'stand', 'stow', 'take', 'unlock', 'wait', 'wear'
@@ -474,11 +480,13 @@ def interpreter(user_input, master_obj_lst):
 	syn_verb_lst = [
 			'bite', 'carry', 'clobber', 'consume', 
 			'depart', 'describe', 'devour', 'display', 'don', 'donate', 'feed', 'fight',
-			'gobble', 'grab', 'hand', 'hide', 'hit', 'hold', 'ingest', 'insert', 'inspect', 'jab',
-			'kill', 'leap', 'list', 'munch', 'murder','offer', 
+			'gobble', 'grab', 'hand', 'hide', 'hit', 'hold', 
+			'ingest', 'insert', 'inspect', 'imbibe', 'jab', 'kill',
+			'leap', 'list', 'munch', 'murder','offer', 
 			'pack', 'peruse', 'place', 'present', 'press', 'proceed', 
-			'release', 'remove', 'roll', 'run', 
-			'scale', 'scan', 'search', 'shut', 'shove', 'skim', 'slay', 'slide', 'stash', 'step', 'stuff', 
+			'quaff', 'release', 'remove', 'roll', 'run', 
+			'scale', 'scan', 'search', 'shut', 'shove', 'sip', 'skim', 'slay', 'slide', 
+			'stash', 'step', 'stuff', 'swig',
 			'taste', 'tug', 'vault', 'walk', 'yank'
 			] # symetric syn_verbs are substituted pre do_noun infer
 	debug_cmd_lst = ['get_weight', 'capacity', 'where_is']

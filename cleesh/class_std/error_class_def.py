@@ -471,8 +471,11 @@ class Error(Identity):
 		if not obj.is_container():
 			err_txt = (f"How could you possibly drink {self.full_name} from a {obj.full_name}?")
 			return True, False, err_txt
-		if creature.hand_is_empty() or creature.get_hand_item() != obj:
-			err_txt = (f"You need to be holding the {obj.full_name} to drink from it.")
+#		if creature.hand_is_empty() or creature.get_hand_item() != obj:
+#			err_txt = (f"You need to be holding the {obj.full_name} to drink from it.")
+#			return True, False, err_txt
+		if obj not in (creature.hand_lst) and not creature.chk_in_bkpk(obj) and not creature.chk_is_worn(obj):
+			err_txt = (f"You don't possess the {obj.full_name}.")
 			return True, False, err_txt
 		if self not in obj.contain_lst:
 			err_txt = (f"The {obj.full_name} doesn't contain {self.full_name}.")
