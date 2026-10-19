@@ -311,7 +311,7 @@ def infer_do_noun(gs, verb_str, suppress_buffer=False):
 	return do_noun_count == 1, do_noun_obj, err_txt
 
 
-def infer_id_phrase(verb_str, do_noun_obj,gs):
+def infer_id_phrase(verb_str, do_noun_obj, gs):
 	if verb_str in ['drink']:
 		id_prep_str = 'from'
 	else:
@@ -339,6 +339,8 @@ def infer_id_phrase(verb_str, do_noun_obj,gs):
 			id_noun_obj = creature.feature_lst[0]
 			infer_txt = f"({id_prep_str} your {id_noun_obj.full_name})"
 		is_infer = True
+	elif verb_str in ['drink']:
+		pass
 	if is_infer:
 		gs.io.buffer(infer_txt)
 
@@ -469,6 +471,7 @@ def interpreter(user_input, master_obj_lst):
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = [
+#			'attack', 'climb', 'close', 'doff', 'drop', 
 			'attack', 'climb', 'close', 'doff', 'drink', 'drop', 
 			'eat', 'enter', 'examine', 'exit', 'give', 'go', 
 			'jump', 'lock', 'move', 'open', 'push', 'pull', 'put', 'read', 

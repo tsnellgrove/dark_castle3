@@ -1611,6 +1611,9 @@ To Do List - Dark Castle v3
 					- DONE: scenario test
 						- FINDING: 3x errors: 'I don't see the word 'from' in that sentence.'
 					- TBD: add infer_id_phrase entry for new_verb as needed
+						- IDEA: if jug of water in hand, drink from jug
+						- IDEA: elif jug of water in inventory, drink from jug of water
+						- IDEA: else error message: "What do you want to drink water from?"
 					- TBD: manual test
 					- TBD: scenario test
 					- TBD: fix scenario tests as needed
@@ -1621,6 +1624,7 @@ To Do List - Dark Castle v3
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
 					- TBD: scenario test
 					- TBD: fix scenario as needed
+					- TBD: fix resevoir_lst and drink_err() to enable 'drink from moat' error
 					- TBD: clean up comments in static_gbl(), error(), score_class_def()
 					- TBD: update verb table
 				- TBD: re-factor hand_mgmt()
