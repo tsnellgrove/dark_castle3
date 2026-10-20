@@ -340,7 +340,10 @@ def infer_id_phrase(verb_str, do_noun_obj, gs):
 			infer_txt = f"({id_prep_str} your {id_noun_obj.full_name})"
 		is_infer = True
 	elif verb_str in ['drink']:
-		pass
+		if not creature.hand_is_empty() and creature.get_hand_item().is_container() and do_noun_obj in creature.get_hand_item().contain_lst:
+			id_noun_obj = creature.get_hand_item()
+			infer_txt = f"({id_prep_str} the {creature.get_hand_item().full_name})"
+			is_infer = True
 	if is_infer:
 		gs.io.buffer(infer_txt)
 

@@ -1610,10 +1610,10 @@ To Do List - Dark Castle v3
 					- DONE: manual test
 					- DONE: scenario test
 						- FINDING: 3x errors: 'I don't see the word 'from' in that sentence.'
-					- TBD: add infer_id_phrase entry for new_verb as needed
-						- IDEA: if jug of water in hand, drink from jug
-						- IDEA: elif jug of water in inventory, drink from jug of water
-						- IDEA: else error message: "What do you want to drink water from?"
+					- INPROC: add infer_id_phrase entry for new_verb as needed
+						- DONE: if jug of water in hand, drink from jug
+						- TBD: elif jug of water in inventory, drink from jug of water
+						- TBD: else error message: "What do you want to drink water from?"
 					- TBD: manual test
 					- TBD: scenario test
 					- TBD: fix scenario tests as needed
