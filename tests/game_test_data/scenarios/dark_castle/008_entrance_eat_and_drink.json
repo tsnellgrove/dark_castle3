@@ -4,7 +4,6 @@
   "commands": [
     "i",
     "eat cheese",
-    "drink water",
     "drink water from jug",
     "i",
     "open bag",
@@ -32,7 +31,6 @@
   "expected_full_outputs": [
     "\nYou cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching, farting, and cussing I don't know how you'd ever manage to fend off the ladies!\n\nIn your off hand you hold a Brass Lantern.\n\nIn your backpack you have: a Rusty Key, a Cheese Wedge, a Paper Bag, and an Earthen Jug (containing a Well Water). \n",
     "\nEaten.\n\nThe Cheese Wedge tastes delicious!\n",
-    "\nI don't see the word 'from' in that sentence.\n",
     "\nDrunk.\n\nThat was refreshing!\n",
     "\nYou cast an apraising inner eye and take stock: Manly rough-and-tumble good looks - check, Affable demeanor paired with self-depreciating humor - check!, A lifetime of finely-honed baking skills - check!! Yep - that's you Burt - A fine specimen of a man. If not for the belching, farting, and cussing I don't know how you'd ever manage to fend off the ladies!\n\nIn your off hand you hold a Brass Lantern.\n\nYou are holding a Earthen Jug. The Earthen Jug is empty. \n\nIn your backpack you have: a Rusty Key and a Paper Bag. \n",
     "\nOpenned. The Paper Bag contains: a Baked Biscuit. \n",
@@ -45,7 +43,7 @@
     "\nWhat kind of desperate individual tries to eat a Rusty Key? If you keep this up you're going to give Adventurers a bad name!\n",
     "\nYou don't possess the Big Rock.\n",
     "\nYou don't possess the Moat.\n",
-    "\nI don't see the word 'from' in that sentence.\n",
+    "\nWhat do you want to drink the Moat from?\n",
     "\nI don't see a Ruby here.\n",
     "\nWhat kind of desperate individual tries to eat a Earthen Jug? If you keep this up you're going to give Adventurers a bad name!\n",
     "\nYour attempts to quaff the Moat do not meet with success.\n"

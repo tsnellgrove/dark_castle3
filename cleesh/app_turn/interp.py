@@ -344,6 +344,13 @@ def infer_id_phrase(verb_str, do_noun_obj, gs):
 			id_noun_obj = creature.get_hand_item()
 			infer_txt = f"({id_prep_str} the {creature.get_hand_item().full_name})"
 			is_infer = True
+		else:
+			for obj in creature.get_top_lvl_inv_lst(gs):
+				if obj.is_container() and do_noun_obj in obj.contain_lst:
+					id_noun_obj = obj
+					infer_txt = f"({id_prep_str} the {id_noun_obj.full_name})"
+					is_infer = True
+					break
 	if is_infer:
 		gs.io.buffer(infer_txt)
 
