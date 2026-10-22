@@ -92,7 +92,7 @@ tea_drunk_win_result = EndResult('tea_drunk_win_result', False, None, False, 'wo
 
 tea_drunk_mach = InvisTrigMach('tea_drunk_mach', None, 
 				'post_act_cmd', 'pub_temp', True, 
-				[['drink', 'tea_cup', 'tea']],  
+				[['drink', 'tea', 'tea_cup']],  
 				[true_cond], 
 				[tea_drunk_win_result],
 				) # mach_state = None

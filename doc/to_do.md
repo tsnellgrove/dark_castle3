@@ -1616,17 +1616,17 @@ To Do List - Dark Castle v3
 						- DONE: else error message: "What do you want to drink water from?"
 					- DONE: manual test
 					- DONE: scenario test
-					- INPROC: fix scenario tests as needed (Cup of Tea)
+					- DONE: fix scenario tests as needed (Cup of Tea => fig win trig_chk())
 					- TBD: add conditional syn in asym_syn() as needed
 						- IDEA: 'swallow' as eat or drink?
-					- TBD: add prep_phrase_convert() as needed
+					- TBD: fix resevoir_lst and drink_err() to enable 'drink from moat' error
+					- NA: add prep_phrase_convert() as needed
 					- TBD: test score path w/ dummy score
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
 					- TBD: scenario test
 					- TBD: fix scenario as needed
-					- TBD: fix resevoir_lst and drink_err() to enable 'drink from moat' error
 					- TBD: clean up comments in static_gbl(), error(), score_class_def()
-					- TBD: update verb table
+					- TBD: update verb table (including 'swallow')
 				- TBD: re-factor hand_mgmt()
 				- TBD: final clean-up
 					- TBD: clean up comments in static_gbl(), prep_err(), hand_mng(), interp()
