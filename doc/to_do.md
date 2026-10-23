@@ -1617,9 +1617,16 @@ To Do List - Dark Castle v3
 					- DONE: manual test
 					- DONE: scenario test
 					- DONE: fix scenario tests as needed (Cup of Tea => fig win trig_chk())
-					- TBD: add conditional syn in asym_syn() as needed
+					- INPROC: add conditional syn in asym_syn() as needed
 						- IDEA: 'swallow' as eat or drink?
+						- TBD: testing moving asym_syn proce before id_noun proc
+						- TBD: in asym_syn() swallow => eat or drink based on do_noun
+						- TBD: add 'swallow' as action_verb
+						- TBD: create swallow_err() for non-food / drink
+						- TBD: manual test
+						- TBD: scenario test
 					- TBD: fix resevoir_lst and drink_err() to enable 'drink from moat' error
+					- TBD: enable do_infer() ? e.g. 'drink from jug' => 'drink water from jug'
 					- NA: add prep_phrase_convert() as needed
 					- TBD: test score path w/ dummy score
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
@@ -1633,6 +1640,7 @@ To Do List - Dark Castle v3
 					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
 					- TBD: update verb table (verb, syns, prep_phrase)
 			- TBD: additional prep to-dos
+				- TBD: in move_err(), change obj is item error to "take" - or else asym_syn => take
 				- TBD: maybe add prep-verb method ower distinction to 'case' term?
 				- TBD: address hand mgmt in hand_manage()
 				- TBD: update input_cleanup()
