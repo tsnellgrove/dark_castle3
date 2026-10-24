@@ -189,15 +189,19 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 			action_lst[index] = gs.core.get_str_to_obj_dict(id_noun) # convert to obj
 	return action_lst, None
 
-def asym_syn(action_lst, gs):
-	verb_str= action_lst[0]
-	do_noun_obj = action_lst[1]
+# def asym_syn(action_lst, gs):
+def asym_syn(verb_str, do_prep_str, do_noun_obj, gs):
+#	verb_str= action_lst[0]
+#	do_noun_obj = action_lst[1]
+	action_lst = [verb_str, do_prep_str, do_noun_obj]
 	interp_err = None
 	# consume repeat_str immediately - guards exactly the one command that was just auto-queued via insert_cmd_queue(), preventing infinite re-rewriting (e.g. climb() queuing "go up", which would otherwise get rewritten right back into 'climb' below)
 	repeat_str = gs.io.repeat_str
 	gs.io.repeat_str = None
-	if verb_str in ['go'] and action_lst[1] in ['up', 'down'] and repeat_str != verb_str:
-		dir_str = action_lst[1]
+#	if verb_str in ['go'] and action_lst[1] in ['up', 'down'] and repeat_str != verb_str:
+	if verb_str in ['go'] and do_prep_str in ['up', 'down'] and repeat_str != verb_str:
+		dir_str = do_prep_str
+#		dir_str = action_lst[1]
 		# suppress_buffer=True: don't reveal the inferred climbable object until we've decided the rewrite is worth doing
 		exactly_one_climbable, climbable_obj, _ = infer_do_noun(gs, 'climb', suppress_buffer=True)
 		if exactly_one_climbable:
@@ -628,6 +632,17 @@ def interpreter(user_input, master_obj_lst):
 				cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 				print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
 
+			# *** aysm_syn - used by all verbs ***
+			# check for conditional asymetric verb synonym
+##			cmd_lst, interp_err = asym_syn(cmd_lst, gs)
+			cmd_lst, interp_err = asym_syn(verb_cmd_lst[0], do_prep_cmd_lst[0], do_noun_obj, gs)
+#			action_lst, interp_err = asym_syn(action_lst, gs)
+			if interp_err:
+				return 'error', None, interp_err
+			if tst_mode:
+#				print(f"post-asym-syn action_lst: {action_lst}")
+				print(f"post-asym-syn action_lst: {cmd_lst}")
+
 			# *** id_noun proc ***
 			if id_noun_cmd_lst:
 				id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
@@ -666,11 +681,11 @@ def interpreter(user_input, master_obj_lst):
 
 		# *** aysm_syn - used by all verbs ***
 		# check for conditional asymetric verb synonym
-		action_lst, interp_err = asym_syn(action_lst, gs)
-		if interp_err:
-			return 'error', None, interp_err
-		if tst_mode:
-			print(f"post-asym-syn action_lst: {action_lst}")
+#		action_lst, interp_err = asym_syn(action_lst, gs)
+#		if interp_err:
+#			return 'error', None, interp_err
+#		if tst_mode:
+#			print(f"post-asym-syn action_lst: {action_lst}")
 
 		return case, action_lst, interp_err
 

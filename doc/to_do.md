@@ -1620,6 +1620,16 @@ To Do List - Dark Castle v3
 					- INPROC: add conditional syn in asym_syn() as needed
 						- IDEA: 'swallow' as eat or drink?
 						- TBD: testing moving asym_syn proce before id_noun proc
+							- IDEA: should be addressed before id_phrase
+							- IDEA: syntax() should be the very last call
+							- DONE: moved code block
+							- DONE: updated asym_syn() inputs
+							- TBD: decode returned action_lst in call block into verb, prep, noun
+							- TBD: test manually for each asym_syn() case
+							- TBD: test for all scenarios
+							- TBD: update asym_syn returns and returns in calling block
+							- TBD: final scenario tests
+							- TBD: evaluate if any changes needed in syntax
 						- TBD: in asym_syn() swallow => eat or drink based on do_noun
 						- TBD: add 'swallow' as action_verb
 						- TBD: create swallow_err() for non-food / drink
