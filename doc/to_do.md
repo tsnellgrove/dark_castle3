@@ -1624,6 +1624,8 @@ To Do List - Dark Castle v3
 							- IDEA: syntax() should be the very last call
 							- DONE: moved code block
 							- DONE: updated asym_syn() inputs
+							- DONE: fix errors do to len(do_prep_lst) == 0
+							- TBD: figure out asym_syn() for intransitive verb case
 							- TBD: decode returned action_lst in call block into verb, prep, noun
 							- TBD: test manually for each asym_syn() case
 							- TBD: test for all scenarios

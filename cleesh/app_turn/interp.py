@@ -190,10 +190,17 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 	return action_lst, None
 
 # def asym_syn(action_lst, gs):
-def asym_syn(verb_str, do_prep_str, do_noun_obj, gs):
+def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 #	verb_str= action_lst[0]
+	verb_str = verb_cmd_lst[0]
+	if do_prep_lst:
+		do_prep_str = do_prep_lst[0]
+	else:
+		do_prep_str = None
+	print(f"asym_syn() verb_str: {verb_str}, do_prep_str: {do_prep_str}, do_noun_obj: {do_noun_obj}")
 #	do_noun_obj = action_lst[1]
-	action_lst = [verb_str, do_prep_str, do_noun_obj]
+##	action_lst = [verb_str, do_prep_str, do_noun_obj] # new
+	action_lst = None
 	interp_err = None
 	# consume repeat_str immediately - guards exactly the one command that was just auto-queued via insert_cmd_queue(), preventing infinite re-rewriting (e.g. climb() queuing "go up", which would otherwise get rewritten right back into 'climb' below)
 	repeat_str = gs.io.repeat_str
@@ -240,6 +247,7 @@ def asym_syn(verb_str, do_prep_str, do_noun_obj, gs):
 		elif do_noun_obj.is_pushable() and do_noun_obj.is_pullable():
 			action_lst = None
 			interp_err = f"Are you trying to push the {do_noun_obj.full_name} or pull it?"
+	print(f"asym_syn() verb_str: {action_lst}")
 	return action_lst, interp_err
 
 ### unified infer do_noun function for all verbs ###
@@ -635,8 +643,15 @@ def interpreter(user_input, master_obj_lst):
 			# *** aysm_syn - used by all verbs ***
 			# check for conditional asymetric verb synonym
 ##			cmd_lst, interp_err = asym_syn(cmd_lst, gs)
-			cmd_lst, interp_err = asym_syn(verb_cmd_lst[0], do_prep_cmd_lst[0], do_noun_obj, gs)
+			cmd_lst, interp_err = asym_syn(verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, gs)
 #			action_lst, interp_err = asym_syn(action_lst, gs)
+			if cmd_lst is not None: # new
+				verb_cmd_lst = cmd_lst[0]
+				do_noun_obj = cmd_lst[-2]
+				if len(cmd_lst) == 4:
+					do_prep_cmd_lst = [cmd_lst[1]]
+				else:
+					do_prep_cmd_lst = []
 			if interp_err:
 				return 'error', None, interp_err
 			if tst_mode:
