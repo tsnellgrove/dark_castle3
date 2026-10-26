@@ -1626,6 +1626,7 @@ To Do List - Dark Castle v3
 							- DONE: updated asym_syn() inputs
 							- DONE: fix errors do to len(do_prep_lst) == 0
 							- TBD: figure out asym_syn() for intransitive verb case
+							- TBD: add 'verb_str not in intransitive_verb_lst' to do, prep_inf, & id
 							- TBD: decode returned action_lst in call block into verb, prep, noun
 							- TBD: test manually for each asym_syn() case
 							- TBD: test for all scenarios
