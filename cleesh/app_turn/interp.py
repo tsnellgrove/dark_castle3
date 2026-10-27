@@ -601,11 +601,12 @@ def interpreter(user_input, master_obj_lst):
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_post_do_prep_proc: {cmd_lst}")
 
-		# *** skip do_noun proc and id_noun proc if verb is intransitive (e.g. 'go', 'inventory', 'stand', 'jump') ***
+		# *** skip do_noun proc if verb is intransitive (e.g. 'go', 'inventory', 'stand', 'jump') ***
 		if verb_cmd_lst[0] not in intransitive_verb_lst:
 
 			# *** do_noun proc ***
 			# if do_noun string(s) exist - convert to do_noun_obj w/ noun_handling(); if error, return error
+#			if len(do_noun_cmd_lst) > 0 and verb_cmd_lst[0] not in intransitive_verb_lst:
 			if len(do_noun_cmd_lst) > 0:
 				do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 				error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
@@ -618,6 +619,7 @@ def interpreter(user_input, master_obj_lst):
 					do_noun_str = do_noun_obj.name # new - for syntax call
 					syntax_do_lst = ['input_do_noun'] # new - for syntax call
 			else: # if do_noun string does not exist, attempt to infer; return error if not possible
+#			elif verb_cmd_lst[0] not in intransitive_verb_lst:
 				exactly_one, do_noun_obj, err_txt = infer_do_noun(gs, word1)
 				if exactly_one:
 					do_noun_cmd_lst = [do_noun_obj.name]
@@ -630,6 +632,7 @@ def interpreter(user_input, master_obj_lst):
 			# placed after do_noun proc (not alongside the prep_phrase_convert check above) so that when both
 			# the noun and the direction are inferred, the noun's inference hint reads first - "(the Tree)"
 			# before "(choosing the 'up' direction...)" - matching natural reading order
+#			if len(do_prep_cmd_lst) == 0 and verb_cmd_lst[0] in verb_requires_prep_lst and verb_cmd_lst[0] not in intransitive_verb_lst:
 			if len(do_prep_cmd_lst) == 0 and verb_cmd_lst[0] in verb_requires_prep_lst:
 				prep_inferred, prep_str, err_txt = infer_prep(gs, verb_cmd_lst[0])
 				if prep_inferred:
@@ -640,23 +643,26 @@ def interpreter(user_input, master_obj_lst):
 				cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 				print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
 
-			# *** aysm_syn - used by all verbs ***
-			# check for conditional asymetric verb synonym
+		# *** aysm_syn - used by all verbs ***
+		# check for conditional asymetric verb synonym
 ##			cmd_lst, interp_err = asym_syn(cmd_lst, gs)
-			cmd_lst, interp_err = asym_syn(verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, gs)
+		cmd_lst, interp_err = asym_syn(verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, gs)
 #			action_lst, interp_err = asym_syn(action_lst, gs)
-			if cmd_lst is not None: # new
-				verb_cmd_lst = cmd_lst[0]
-				do_noun_obj = cmd_lst[-2]
-				if len(cmd_lst) == 4:
-					do_prep_cmd_lst = [cmd_lst[1]]
-				else:
-					do_prep_cmd_lst = []
-			if interp_err:
-				return 'error', None, interp_err
-			if tst_mode:
+		if cmd_lst is not None: # new
+			verb_cmd_lst = [cmd_lst[0]]
+			do_noun_obj = cmd_lst[-2]
+			if len(cmd_lst) == 4:
+				do_prep_cmd_lst = [cmd_lst[1]]
+			else:
+				do_prep_cmd_lst = []
+		if interp_err:
+			return 'error', None, interp_err
+		if tst_mode:
 #				print(f"post-asym-syn action_lst: {action_lst}")
-				print(f"post-asym-syn action_lst: {cmd_lst}")
+			print(f"post-asym-syn action_lst: {cmd_lst}")
+
+		# *** skip id_phrase proc if verb is intransitive (e.g. 'go', 'inventory', 'stand', 'jump') ***
+		if verb_cmd_lst[0] not in intransitive_verb_lst:
 
 			# *** id_noun proc ***
 			if id_noun_cmd_lst:
