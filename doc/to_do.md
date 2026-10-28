@@ -1628,8 +1628,12 @@ To Do List - Dark Castle v3
 							- DONE: figure out asym_syn() for intransitive verb case
 							- DONE: 'verb_str not in intransitive_verb_lst' to do, prep_inf, & id
 							- DONE: decode returned action_lst in call block into verb, prep, noun
-							- INPROC: test manually for each asym_syn() case (action_lst[-1] issue)
+							- INPROC: test manually for each asym_syn() case
+								- DONE: (action_lst[-1] issue)
+								- DONE: 'go up / down'
+								- TBD: 
 							- TBD: test for all scenarios
+							- TBD: elimin 'verb_prep_do' returns from asym_syn & pop from call block
 							- TBD: update asym_syn returns and returns in calling block
 							- TBD: final scenario tests
 							- TBD: evaluate if any changes needed in syntax

@@ -651,10 +651,14 @@ def interpreter(user_input, master_obj_lst):
 		if cmd_lst is not None: # new
 			verb_cmd_lst = [cmd_lst[0]]
 			do_noun_obj = cmd_lst[-2]
+			do_noun_str = do_noun_obj.name
+			do_noun_cmd_lst = [do_noun_str]
+			syntax_do_lst = ['input_do_noun']
 			if len(cmd_lst) == 4:
 				do_prep_cmd_lst = [cmd_lst[1]]
 			else:
 				do_prep_cmd_lst = []
+			cmd_lst.pop() # remove 'verb_prep_do' string
 		if interp_err:
 			return 'error', None, interp_err
 		if tst_mode:
@@ -698,7 +702,8 @@ def interpreter(user_input, master_obj_lst):
 		else:
 			case = 'universal' # new
 		if tst_mode:
-			print(f"pre-asym-syn action_lst: {action_lst}")
+#			print(f"pre-asym-syn action_lst: {action_lst}")
+			print(f"post_syntax action_lst: {action_lst}")
 
 		# *** aysm_syn - used by all verbs ***
 		# check for conditional asymetric verb synonym
