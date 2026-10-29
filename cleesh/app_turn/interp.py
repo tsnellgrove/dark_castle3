@@ -218,7 +218,8 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 				action_lst = ['climb', dir_str, climbable_obj, 'verb_prep_do']
 	if verb_str in ['enter']:
 		if do_noun_obj.is_seat():
-			action_lst[0] = 'sit'
+#			action_lst[0] = 'sit'
+			action_lst = ['sit', do_noun_obj, 'verb_do']
 		elif (
 				(do_noun_obj.is_door() or do_noun_obj.is_pathway()) 
 				and gs.map.hero_rm.chk_is_vis(do_noun_obj, gs)
