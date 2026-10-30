@@ -225,7 +225,8 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 				and gs.map.hero_rm.chk_is_vis(do_noun_obj, gs)
 			):
 			dir_str = gs.map.get_door_dir(gs.map.hero_rm, do_noun_obj, gs)
-			action_lst = ['go', dir_str, gs.map.hero_rm, 'verb_prep_do']
+#			action_lst = ['go', dir_str, gs.map.hero_rm, 'verb_prep_do']
+			action_lst = ['go', dir_str, 'verb_prep_do']
 	if verb_str in ['exit']:
 		if gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
 			action_lst = ['stand', gs.core.hero, 'verb_do']
@@ -651,11 +652,18 @@ def interpreter(user_input, master_obj_lst):
 #			action_lst, interp_err = asym_syn(action_lst, gs)
 		if cmd_lst is not None: # new
 			verb_cmd_lst = [cmd_lst[0]]
-			do_noun_obj = cmd_lst[-2]
-			do_noun_str = do_noun_obj.name
-			do_noun_cmd_lst = [do_noun_str]
-			syntax_do_lst = ['input_do_noun']
-			if len(cmd_lst) == 4:
+			if verb_cmd_lst[0] not in intransitive_verb_lst:
+				do_noun_obj = cmd_lst[-2]
+				do_noun_str = do_noun_obj.name
+				do_noun_cmd_lst = [do_noun_str]
+				syntax_do_lst = ['input_do_noun']
+			else:
+				do_noun_obj = None
+				do_noun_str = None
+				do_noun_cmd_lst = []
+				syntax_do_lst = []
+#			syntax_do_lst = ['input_do_noun']
+			if len(cmd_lst) == 4 or verb_cmd_lst[0] in ['go']:
 				do_prep_cmd_lst = [cmd_lst[1]]
 			else:
 				do_prep_cmd_lst = []
