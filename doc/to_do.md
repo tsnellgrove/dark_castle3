@@ -1634,7 +1634,11 @@ To Do List - Dark Castle v3
 								- DONE: 'enter seat'
 								- DONE: 'enter door'
 								- DONE: 'enter path'
-								- TBD: 'exit'
+								- DONE: 'exit seat'
+								- DONE: 'exit room'
+								- TBD: 'take garment'
+								- TBD: 'examine writing'
+								- TBD: 'move'
 							- TBD: fix up w/ step ladder in room
 							- TBD: test for all scenarios
 							- TBD: elimin 'verb_prep_do' returns from asym_syn & pop from call block
@@ -1647,6 +1651,7 @@ To Do List - Dark Castle v3
 						- TBD: manual test
 						- TBD: scenario test
 					- TBD: fix resevoir_lst and drink_err() to enable 'drink from moat' error
+					- TBD: fix debug err on look from seated in test chair
 					- TBD: enable do_infer() ? e.g. 'drink from jug' => 'drink water from jug'
 					- NA: add prep_phrase_convert() as needed
 					- TBD: test score path w/ dummy score
