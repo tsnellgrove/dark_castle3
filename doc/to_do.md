@@ -1636,7 +1636,7 @@ To Do List - Dark Castle v3
 								- DONE: 'enter path'
 								- DONE: 'exit seat'
 								- DONE: 'exit room'
-								- TBD: 'take garment'
+								- DONE: 'take / get garment'
 								- TBD: 'examine writing'
 								- TBD: 'move'
 							- TBD: fix up w/ step ladder in room

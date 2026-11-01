@@ -237,8 +237,9 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 			else:
 				action_lst = None
 				interp_err = "Which way do you want to go?"
-	if verb_str in ['take'] and do_noun_obj in gs.core.hero.worn_lst:
-		action_lst[0] = 'doff'
+	if verb_str in ['take', 'get'] and do_noun_obj in gs.core.hero.worn_lst:
+#		action_lst[0] = 'doff'
+		action_lst = ['doff', do_noun_obj, 'verb_do']
 	if verb_str in ['examine'] and do_noun_obj.is_writing():
 		action_lst[0] = 'read'
 	if verb_str in ['move']:
