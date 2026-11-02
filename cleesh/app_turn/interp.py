@@ -197,7 +197,7 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 		do_prep_str = do_prep_lst[0]
 	else:
 		do_prep_str = None
-	print(f"asym_syn() verb_str: {verb_str}, do_prep_str: {do_prep_str}, do_noun_obj: {do_noun_obj}")
+#	print(f"asym_syn() verb_str: {verb_str}, do_prep_str: {do_prep_str}, do_noun_obj: {do_noun_obj}")
 #	do_noun_obj = action_lst[1]
 ##	action_lst = [verb_str, do_prep_str, do_noun_obj] # new
 	action_lst = None
@@ -241,7 +241,8 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 #		action_lst[0] = 'doff'
 		action_lst = ['doff', do_noun_obj, 'verb_do']
 	if verb_str in ['examine'] and do_noun_obj.is_writing():
-		action_lst[0] = 'read'
+#		action_lst[0] = 'read'
+		action_lst = ['read', do_noun_obj, 'verb_do']
 	if verb_str in ['move']:
 		if do_noun_obj.is_pushable() and not do_noun_obj.is_pullable():
 			action_lst[0] = 'push'
@@ -250,7 +251,7 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 		elif do_noun_obj.is_pushable() and do_noun_obj.is_pullable():
 			action_lst = None
 			interp_err = f"Are you trying to push the {do_noun_obj.full_name} or pull it?"
-	print(f"asym_syn() verb_str: {action_lst}")
+#	print(f"asym_syn() verb_str: {action_lst}")
 	return action_lst, interp_err
 
 ### unified infer do_noun function for all verbs ###
