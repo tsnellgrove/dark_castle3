@@ -1638,8 +1638,9 @@ To Do List - Dark Castle v3
 								- DONE: 'exit room'
 								- DONE: 'take / get garment'
 								- DONE: 'examine writing'
-								- TBD: 'move'
-							- TBD: fix up w/ step ladder in room
+								- INPROC: 'move'
+									- DONE: fix 'push' and 'pull'
+									- TBD: if do is item, 'take'
 							- TBD: test for all scenarios
 							- TBD: elimin 'verb_prep_do' returns from asym_syn & pop from call block
 							- TBD: update asym_syn returns and returns in calling block
@@ -1650,8 +1651,10 @@ To Do List - Dark Castle v3
 						- TBD: create swallow_err() for non-food / drink
 						- TBD: manual test
 						- TBD: scenario test
-					- TBD: fix resevoir_lst and drink_err() to enable 'drink from moat' error
-					- TBD: fix debug err on look from seated in test chair
+					- TBD: fix found bugs
+						- TBD: fix up w/ step ladder in room
+						- TBD: fix resevoir_lst and drink_err() to enable 'drink from moat' error
+						- TBD: fix debug err on look from seated in test chair
 					- TBD: enable do_infer() ? e.g. 'drink from jug' => 'drink water from jug'
 					- NA: add prep_phrase_convert() as needed
 					- TBD: test score path w/ dummy score
@@ -1666,7 +1669,6 @@ To Do List - Dark Castle v3
 					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
 					- TBD: update verb table (verb, syns, prep_phrase)
 			- TBD: additional prep to-dos
-				- TBD: in move_err(), change obj is item error to "take" - or else asym_syn => take
 				- TBD: maybe add prep-verb method ower distinction to 'case' term?
 				- TBD: address hand mgmt in hand_manage()
 				- TBD: update input_cleanup()
