@@ -244,7 +244,10 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 #		action_lst[0] = 'read'
 		action_lst = ['read', do_noun_obj, 'verb_do']
 	if verb_str in ['move']:
-		if do_noun_obj.is_pushable() and not do_noun_obj.is_pullable():
+		if do_noun_obj.is_item():
+			action_lst = ['take', do_noun_obj, 'verb_do']
+#		if do_noun_obj.is_pushable() and not do_noun_obj.is_pullable():
+		elif do_noun_obj.is_pushable() and not do_noun_obj.is_pullable():
 #			action_lst[0] = 'push'
 			action_lst = ['push', do_noun_obj, 'verb_do']
 		elif do_noun_obj.is_pullable() and not do_noun_obj.is_pushable():

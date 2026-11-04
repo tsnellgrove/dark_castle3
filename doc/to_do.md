@@ -1619,7 +1619,7 @@ To Do List - Dark Castle v3
 					- DONE: fix scenario tests as needed (Cup of Tea => fig win trig_chk())
 					- INPROC: add conditional syn in asym_syn() as needed
 						- IDEA: 'swallow' as eat or drink?
-						- TBD: testing moving asym_syn proce before id_noun proc
+						- DONE: testing moving asym_syn proce before id_noun proc
 							- IDEA: should be addressed before id_phrase
 							- IDEA: syntax() should be the very last call
 							- DONE: moved code block
@@ -1628,7 +1628,7 @@ To Do List - Dark Castle v3
 							- DONE: figure out asym_syn() for intransitive verb case
 							- DONE: 'verb_str not in intransitive_verb_lst' to do, prep_inf, & id
 							- DONE: decode returned action_lst in call block into verb, prep, noun
-							- INPROC: test manually for each asym_syn() case
+							- DONE: test manually for each asym_syn() case
 								- DONE: (action_lst[-1] issue)
 								- DONE: 'go up / down'
 								- DONE: 'enter seat'
@@ -1638,17 +1638,19 @@ To Do List - Dark Castle v3
 								- DONE: 'exit room'
 								- DONE: 'take / get garment'
 								- DONE: 'examine writing'
-								- INPROC: 'move'
+								- DONE: 'move'
 									- DONE: fix 'push' and 'pull'
-									- TBD: if do is item, 'take'
-							- TBD: test for all scenarios
+									- DONE: if do is item, 'take'
+							- DONE: test for all scenarios
+						- TBD: refactor asym_syn()
 							- TBD: elimin 'verb_prep_do' returns from asym_syn & pop from call block
 							- TBD: update asym_syn returns and returns in calling block
 							- TBD: final scenario tests
 							- TBD: evaluate if any changes needed in syntax
-						- TBD: in asym_syn() swallow => eat or drink based on do_noun
-						- TBD: add 'swallow' as action_verb
-						- TBD: create swallow_err() for non-food / drink
+						- TBD: 'swallow'
+							- TBD: in asym_syn() swallow => eat or drink based on do_noun
+							- TBD: add 'swallow' as action_verb
+							- TBD: create swallow_err() for non-food / drink
 						- TBD: manual test
 						- TBD: scenario test
 					- TBD: fix found bugs
