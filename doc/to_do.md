@@ -1642,9 +1642,14 @@ To Do List - Dark Castle v3
 									- DONE: fix 'push' and 'pull'
 									- DONE: if do is item, 'take'
 							- DONE: test for all scenarios
-						- TBD: refactor asym_syn()
-							- TBD: elimin 'verb_prep_do' returns from asym_syn & pop from call block
+						- INPROC: refactor asym_syn()
+							- DONE: assign verb_str & do_prep_str in asym_syn()
+							- TBD: investigate whether to return lst or str to interp()
+								- IDEA: 'go' case (no do_noun_obj) tilts towards lst return
+							- TBD: update to lst assignment in asym_syn() if appropriate
 							- TBD: update asym_syn returns and returns in calling block
+							- TBD: elim action_lst returns from asym_syn & pop from call block
+							- TBD: clean up comments
 							- TBD: final scenario tests
 							- TBD: evaluate if any changes needed in syntax
 						- TBD: 'swallow'

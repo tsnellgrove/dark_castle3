@@ -216,10 +216,14 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 			if gs.map.chk_valid_dir(gs.map.hero_rm, dir_str) or has_custom_err:
 				gs.io.buffer(f"(the {climbable_obj.full_name})")
 				action_lst = ['climb', dir_str, climbable_obj, 'verb_prep_do']
+				verb_str = 'climb'
+				do_prep_str = dir_str
+				do_noun_obj = climbable_obj
 	if verb_str in ['enter']:
 		if do_noun_obj.is_seat():
 #			action_lst[0] = 'sit'
 			action_lst = ['sit', do_noun_obj, 'verb_do']
+			verb_str = 'sit'
 		elif (
 				(do_noun_obj.is_door() or do_noun_obj.is_pathway()) 
 				and gs.map.hero_rm.chk_is_vis(do_noun_obj, gs)
@@ -227,6 +231,9 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 			dir_str = gs.map.get_door_dir(gs.map.hero_rm, do_noun_obj, gs)
 #			action_lst = ['go', dir_str, gs.map.hero_rm, 'verb_prep_do']
 			action_lst = ['go', dir_str, 'verb_prep_do']
+			verb_str = 'go'
+			do_prep_str = dir_str
+			do_noun_obj = None
 	if verb_str in ['exit']:
 		if gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
 			action_lst = ['stand', gs.core.hero, 'verb_do']
@@ -234,25 +241,33 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 			is_only_1_exit, dir_str = gs.map.only_exit_dir(do_noun_obj, gs)
 			if is_only_1_exit:
 				action_lst = ['go', dir_str, do_noun_obj, 'verb_prep_do']
+				verb_str = 'go'
+				do_prep_str = dir_str
+				do_noun_obj = None
 			else:
 				action_lst = None
 				interp_err = "Which way do you want to go?"
 	if verb_str in ['take', 'get'] and do_noun_obj in gs.core.hero.worn_lst:
 #		action_lst[0] = 'doff'
 		action_lst = ['doff', do_noun_obj, 'verb_do']
+		verb_str = 'doff'
 	if verb_str in ['examine'] and do_noun_obj.is_writing():
 #		action_lst[0] = 'read'
 		action_lst = ['read', do_noun_obj, 'verb_do']
+		verb_str = 'read'
 	if verb_str in ['move']:
 		if do_noun_obj.is_item():
 			action_lst = ['take', do_noun_obj, 'verb_do']
+			verb_str = 'take'
 #		if do_noun_obj.is_pushable() and not do_noun_obj.is_pullable():
 		elif do_noun_obj.is_pushable() and not do_noun_obj.is_pullable():
 #			action_lst[0] = 'push'
 			action_lst = ['push', do_noun_obj, 'verb_do']
+			verb_str = 'push'
 		elif do_noun_obj.is_pullable() and not do_noun_obj.is_pushable():
 #			action_lst[0] = 'pull'
 			action_lst = ['pull', do_noun_obj, 'verb_do']
+			verb_str = 'pull'
 		elif do_noun_obj.is_pushable() and do_noun_obj.is_pullable():
 			action_lst = None
 			interp_err = f"Are you trying to push the {do_noun_obj.full_name} or pull it?"
