@@ -672,7 +672,10 @@ def interpreter(user_input, master_obj_lst):
 ##			cmd_lst, interp_err = asym_syn(cmd_lst, gs)
 		cmd_lst, interp_err = asym_syn(verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, gs)
 #			action_lst, interp_err = asym_syn(action_lst, gs)
+		if interp_err:
+			return 'error', None, interp_err
 		if cmd_lst is not None: # new
+#		if interp_err is None: # fails to address 'no change' case
 			verb_cmd_lst = [cmd_lst[0]]
 			if verb_cmd_lst[0] not in intransitive_verb_lst:
 				do_noun_obj = cmd_lst[-2]
@@ -690,8 +693,8 @@ def interpreter(user_input, master_obj_lst):
 			else:
 				do_prep_cmd_lst = []
 			cmd_lst.pop() # remove 'verb_prep_do' string
-		if interp_err:
-			return 'error', None, interp_err
+#		if interp_err:
+#			return 'error', None, interp_err
 		if tst_mode:
 #				print(f"post-asym-syn action_lst: {action_lst}")
 			print(f"post-asym-syn action_lst: {cmd_lst}")
