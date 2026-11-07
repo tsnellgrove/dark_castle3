@@ -218,6 +218,7 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 				action_lst = ['climb', dir_str, climbable_obj, 'verb_prep_do']
 				verb_str = 'climb'
 				do_prep_str = dir_str
+				do_prep_lst = [dir_str]
 				do_noun_obj = climbable_obj
 	if verb_str in ['enter']:
 		if do_noun_obj.is_seat():
@@ -233,16 +234,20 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 			action_lst = ['go', dir_str, 'verb_prep_do']
 			verb_str = 'go'
 			do_prep_str = dir_str
+			do_prep_lst = [dir_str]
 			do_noun_obj = None
 	if verb_str in ['exit']:
 		if gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
 			action_lst = ['stand', gs.core.hero, 'verb_do']
+			verb_str = 'stand'
+			do_noun_obj = gs.core.hero
 		elif do_noun_obj == gs.map.hero_rm:
 			is_only_1_exit, dir_str = gs.map.only_exit_dir(do_noun_obj, gs)
 			if is_only_1_exit:
 				action_lst = ['go', dir_str, do_noun_obj, 'verb_prep_do']
 				verb_str = 'go'
 				do_prep_str = dir_str
+				do_prep_lst = [dir_str]
 				do_noun_obj = None
 			else:
 				action_lst = None
@@ -272,7 +277,8 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 			action_lst = None
 			interp_err = f"Are you trying to push the {do_noun_obj.full_name} or pull it?"
 #	print(f"asym_syn() verb_str: {action_lst}")
-	return action_lst, interp_err
+###	return action_lst, [verb_str], do_prep_lst, do_noun_obj, interp_err
+	return [verb_str], do_prep_lst, do_noun_obj, interp_err
 
 ### unified infer do_noun function for all verbs ###
 def infer_do_noun(gs, verb_str, suppress_buffer=False):
@@ -670,34 +676,45 @@ def interpreter(user_input, master_obj_lst):
 		# *** aysm_syn - used by all verbs ***
 		# check for conditional asymetric verb synonym
 ##			cmd_lst, interp_err = asym_syn(cmd_lst, gs)
-		cmd_lst, interp_err = asym_syn(verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, gs)
+###		cmd_lst, v_lst, p_lst, do_obj, interp_err = asym_syn(verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, gs)
+		v_lst, p_lst, do_obj, interp_err = asym_syn(verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, gs)
 #			action_lst, interp_err = asym_syn(action_lst, gs)
 		if interp_err:
 			return 'error', None, interp_err
-		if cmd_lst is not None: # new
+###		if cmd_lst is not None: # new
 #		if interp_err is None: # fails to address 'no change' case
-			verb_cmd_lst = [cmd_lst[0]]
-			if verb_cmd_lst[0] not in intransitive_verb_lst:
-				do_noun_obj = cmd_lst[-2]
-				do_noun_str = do_noun_obj.name
-				do_noun_cmd_lst = [do_noun_str]
-				syntax_do_lst = ['input_do_noun']
-			else:
-				do_noun_obj = None
-				do_noun_str = None
-				do_noun_cmd_lst = []
-				syntax_do_lst = []
+#			verb_cmd_lst = [cmd_lst[0]]
+
+		verb_cmd_lst = v_lst
+		do_prep_cmd_lst = p_lst
+		if verb_cmd_lst[0] not in intransitive_verb_lst:
+#				do_noun_obj = cmd_lst[-2]
+			do_noun_obj = do_obj
+			do_noun_str = do_noun_obj.name
+			do_noun_cmd_lst = [do_noun_str]
+			syntax_do_lst = ['input_do_noun']
+		else:
+			do_noun_obj = None
+			do_noun_str = None
+			do_noun_cmd_lst = []
+			syntax_do_lst = []
+
 #			syntax_do_lst = ['input_do_noun']
-			if len(cmd_lst) == 4 or verb_cmd_lst[0] in ['go']:
-				do_prep_cmd_lst = [cmd_lst[1]]
-			else:
-				do_prep_cmd_lst = []
-			cmd_lst.pop() # remove 'verb_prep_do' string
+#			if len(cmd_lst) == 4 or verb_cmd_lst[0] in ['go']:
+###			do_prep_cmd_lst = p_lst
+##			if verb_cmd_lst[0] in ['go', 'climb']:
+#				do_prep_cmd_lst = [cmd_lst[1]]
+##				do_prep_cmd_lst = p_lst
+##			else:
+##				do_prep_cmd_lst = []
+#			cmd_lst.pop() # remove 'verb_prep_do' string
 #		if interp_err:
 #			return 'error', None, interp_err
+
 		if tst_mode:
 #				print(f"post-asym-syn action_lst: {action_lst}")
-			print(f"post-asym-syn action_lst: {cmd_lst}")
+#			print(f"post-asym-syn action_lst: {cmd_lst}")
+			print(f"post-asym-syn action_lst: {verb_cmd_lst + do_prep_cmd_lst + [do_noun_obj]}")
 
 		# *** skip id_phrase proc if verb is intransitive (e.g. 'go', 'inventory', 'stand', 'jump') ***
 		if verb_cmd_lst[0] not in intransitive_verb_lst:

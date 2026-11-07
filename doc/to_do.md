@@ -1644,12 +1644,14 @@ To Do List - Dark Castle v3
 							- DONE: test for all scenarios
 						- INPROC: refactor asym_syn()
 							- DONE: assign verb_str & do_prep_str in asym_syn()
-							- INPROC: investigate whether to return lst or str to interp()
+							- DONE: investigate whether to return lst or str to interp()
 								- IDEA: 'go' case (no do_noun_obj) tilts towards lst return
-							- TBD: update to lst assignment in asym_syn() if appropriate
-							- TBD: update asym_syn returns and returns in calling block
-							- TBD: elim action_lst returns from asym_syn & pop from call block
+							- DONE: update to lst assignment in asym_syn() if appropriate
+							- DONE: update asym_syn returns and returns in calling block
+							- DONE: elim action_lst returns from asym_syn & pop from call block
 							- TBD: clean up comments
+							- TBD: 2nd refactor pass
+							- TBD: extract do_noun assignments?? or leave for full refactor?
 							- TBD: final scenario tests
 							- TBD: evaluate if any changes needed in syntax
 						- TBD: 'swallow'
