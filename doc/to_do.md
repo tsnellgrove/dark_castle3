@@ -1649,9 +1649,10 @@ To Do List - Dark Castle v3
 							- DONE: update to lst assignment in asym_syn() if appropriate
 							- DONE: update asym_syn returns and returns in calling block
 							- DONE: elim action_lst returns from asym_syn & pop from call block
-							- TBD: clean up comments
+							- DONE: clean up comments
+							- TBD: elim intransitive_verb_lst test
 							- TBD: 2nd refactor pass
-							- TBD: extract do_noun assignments?? or leave for full refactor?
+							- TBD: extract noun list assignments (do, asym, & id)??
 							- TBD: final scenario tests
 							- TBD: evaluate if any changes needed in syntax
 						- TBD: 'swallow'

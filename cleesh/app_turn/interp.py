@@ -189,91 +189,66 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 			action_lst[index] = gs.core.get_str_to_obj_dict(id_noun) # convert to obj
 	return action_lst, None
 
-# def asym_syn(action_lst, gs):
 def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 	verb_str = verb_cmd_lst[0]
 	if do_prep_lst:
 		do_prep_str = do_prep_lst[0]
 	else:
 		do_prep_str = None
-#	action_lst = None
 	interp_err = None
 	# consume repeat_str immediately - guards exactly the one command that was just auto-queued via insert_cmd_queue(), preventing infinite re-rewriting (e.g. climb() queuing "go up", which would otherwise get rewritten right back into 'climb' below)
 	repeat_str = gs.io.repeat_str
 	gs.io.repeat_str = None
-#	if verb_str in ['go'] and action_lst[1] in ['up', 'down'] and repeat_str != verb_str:
 	if verb_str in ['go'] and do_prep_str in ['up', 'down'] and repeat_str != verb_str:
 		dir_str = do_prep_str
-#		dir_str = action_lst[1]
 		# suppress_buffer=True: don't reveal the inferred climbable object until we've decided the rewrite is worth doing
 		exactly_one_climbable, climbable_obj, _ = infer_do_noun(gs, 'climb', suppress_buffer=True)
 		if exactly_one_climbable:
 			has_custom_err = gs.io.chk_str_exist(f"{gs.core.hero.name}_climb_{dir_str}_{climbable_obj.name}_err")
 			if gs.map.chk_valid_dir(gs.map.hero_rm, dir_str) or has_custom_err:
 				gs.io.buffer(f"(the {climbable_obj.full_name})")
-#				action_lst = ['climb', dir_str, climbable_obj, 'verb_prep_do']
 				verb_str = 'climb'
 				do_prep_str = dir_str
 				do_prep_lst = [dir_str]
 				do_noun_obj = climbable_obj
 	if verb_str in ['enter']:
 		if do_noun_obj.is_seat():
-#			action_lst[0] = 'sit'
-#			action_lst = ['sit', do_noun_obj, 'verb_do']
 			verb_str = 'sit'
 		elif (
 				(do_noun_obj.is_door() or do_noun_obj.is_pathway()) 
 				and gs.map.hero_rm.chk_is_vis(do_noun_obj, gs)
 			):
 			dir_str = gs.map.get_door_dir(gs.map.hero_rm, do_noun_obj, gs)
-#			action_lst = ['go', dir_str, gs.map.hero_rm, 'verb_prep_do']
-#			action_lst = ['go', dir_str, 'verb_prep_do']
 			verb_str = 'go'
 			do_prep_str = dir_str
 			do_prep_lst = [dir_str]
 			do_noun_obj = None
 	if verb_str in ['exit']:
 		if gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
-#			action_lst = ['stand', gs.core.hero, 'verb_do']
 			verb_str = 'stand'
 			do_noun_obj = gs.core.hero
 		elif do_noun_obj == gs.map.hero_rm:
 			is_only_1_exit, dir_str = gs.map.only_exit_dir(do_noun_obj, gs)
 			if is_only_1_exit:
-#				action_lst = ['go', dir_str, do_noun_obj, 'verb_prep_do']
 				verb_str = 'go'
 				do_prep_str = dir_str
 				do_prep_lst = [dir_str]
 				do_noun_obj = None
 			else:
-#				action_lst = None
 				interp_err = "Which way do you want to go?"
 	if verb_str in ['take', 'get'] and do_noun_obj in gs.core.hero.worn_lst:
-#		action_lst[0] = 'doff'
-#		action_lst = ['doff', do_noun_obj, 'verb_do']
 		verb_str = 'doff'
 	if verb_str in ['examine'] and do_noun_obj.is_writing():
-#		action_lst[0] = 'read'
-#		action_lst = ['read', do_noun_obj, 'verb_do']
 		verb_str = 'read'
 	if verb_str in ['move']:
 		if do_noun_obj.is_item():
-#			action_lst = ['take', do_noun_obj, 'verb_do']
 			verb_str = 'take'
-#		if do_noun_obj.is_pushable() and not do_noun_obj.is_pullable():
 		elif do_noun_obj.is_pushable() and not do_noun_obj.is_pullable():
-#			action_lst[0] = 'push'
-#			action_lst = ['push', do_noun_obj, 'verb_do']
 			verb_str = 'push'
 		elif do_noun_obj.is_pullable() and not do_noun_obj.is_pushable():
-#			action_lst[0] = 'pull'
-#			action_lst = ['pull', do_noun_obj, 'verb_do']
 			verb_str = 'pull'
 		elif do_noun_obj.is_pushable() and do_noun_obj.is_pullable():
-#			action_lst = None
 			interp_err = f"Are you trying to push the {do_noun_obj.full_name} or pull it?"
-#	print(f"asym_syn() verb_str: {action_lst}")
-###	return action_lst, [verb_str], do_prep_lst, do_noun_obj, interp_err
 	return [verb_str], do_prep_lst, do_noun_obj, interp_err
 
 ### unified infer do_noun function for all verbs ###
@@ -672,11 +647,8 @@ def interpreter(user_input, master_obj_lst):
 		# *** aysm_syn - used by all verbs ***
 		# check for conditional asymetric verb synonym
 		verb_cmd_lst, do_prep_cmd_lst, do_obj, interp_err = asym_syn(verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, gs)
-#		v_lst, p_lst, do_obj, interp_err = asym_syn(verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, gs)
 		if interp_err:
 			return 'error', None, interp_err
-#		verb_cmd_lst = v_lst
-#		do_prep_cmd_lst = p_lst
 		if verb_cmd_lst[0] not in intransitive_verb_lst:
 			do_noun_obj = do_obj
 			do_noun_str = do_noun_obj.name
