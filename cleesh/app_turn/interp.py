@@ -208,7 +208,6 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 			if gs.map.chk_valid_dir(gs.map.hero_rm, dir_str) or has_custom_err:
 				gs.io.buffer(f"(the {climbable_obj.full_name})")
 				verb_str = 'climb'
-#				do_prep_str = dir_str
 				do_prep_lst = [dir_str]
 				do_noun_obj = climbable_obj
 	if verb_str in ['enter']:
@@ -220,19 +219,16 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 			):
 			dir_str = gs.map.get_door_dir(gs.map.hero_rm, do_noun_obj, gs)
 			verb_str = 'go'
-#			do_prep_str = dir_str
 			do_prep_lst = [dir_str]
 			do_noun_obj = None
 	if verb_str in ['exit']:
 		if gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
 			verb_str = 'stand'
-#			do_noun_obj = gs.core.hero
 			do_noun_obj = None
 		elif do_noun_obj == gs.map.hero_rm:
 			is_only_1_exit, dir_str = gs.map.only_exit_dir(do_noun_obj, gs)
 			if is_only_1_exit:
 				verb_str = 'go'
-#				do_prep_str = dir_str
 				do_prep_lst = [dir_str]
 				do_noun_obj = None
 			else:
@@ -648,17 +644,13 @@ def interpreter(user_input, master_obj_lst):
 		# *** aysm_syn - used by all verbs ***
 		# check for conditional asymetric verb synonym
 		verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, interp_err = asym_syn(verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, gs)
-#		verb_cmd_lst, do_prep_cmd_lst, do_obj, interp_err = asym_syn(verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, gs)
 		if interp_err:
 			return 'error', None, interp_err
-#		if verb_cmd_lst[0] not in intransitive_verb_lst:
 		if do_noun_obj is not None:
-#			do_noun_obj = do_obj
 			do_noun_str = do_noun_obj.name
 			do_noun_cmd_lst = [do_noun_str]
 			syntax_do_lst = ['input_do_noun']
 		else:
-#			do_noun_obj = None
 			do_noun_str = None
 			do_noun_cmd_lst = []
 			syntax_do_lst = []
