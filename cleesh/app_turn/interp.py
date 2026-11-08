@@ -491,7 +491,6 @@ def interpreter(user_input, master_obj_lst):
 	tst_mode = gs.core.is_debug # test mode is linked to debug mode
 
 	action_verb_lst = [
-#			'attack', 'climb', 'close', 'doff', 'drop', 
 			'attack', 'climb', 'close', 'doff', 'drink', 'drop', 
 			'eat', 'enter', 'examine', 'exit', 'give', 'go', 
 			'jump', 'lock', 'move', 'open', 'push', 'pull', 'put', 'read', 
@@ -552,12 +551,8 @@ def interpreter(user_input, master_obj_lst):
 ##		) = parser(user_input_lst, verb_lst, dir_lst, prep_lst, verbing_lst)
 		) = parser(user_input_lst, verb_lst, dir_lst, prep_lst)
 
-		syntax_do_lst = []
 		do_noun_obj = None
-		do_noun_str = None
 		id_noun_obj = None
-		id_noun_str = None
-		syntax_id_lst = []
 
 		# *** unprocessed cmd lst ***
 		if tst_mode:
@@ -604,7 +599,6 @@ def interpreter(user_input, master_obj_lst):
 
 			# *** do_noun proc ***
 			# if do_noun string(s) exist - convert to do_noun_obj w/ noun_handling(); if error, return error
-#			if len(do_noun_cmd_lst) > 0 and verb_cmd_lst[0] not in intransitive_verb_lst:
 			if len(do_noun_cmd_lst) > 0:
 				do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 				error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
@@ -614,15 +608,10 @@ def interpreter(user_input, master_obj_lst):
 				# if no noun_handling() error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
 				else:
 					do_noun_cmd_lst = [do_noun_obj.name]
-					do_noun_str = do_noun_obj.name # new - for syntax call
-					syntax_do_lst = ['input_do_noun'] # new - for syntax call
 			else: # if do_noun string does not exist, attempt to infer; return error if not possible
-#			elif verb_cmd_lst[0] not in intransitive_verb_lst:
 				exactly_one, do_noun_obj, err_txt = infer_do_noun(gs, word1)
 				if exactly_one:
 					do_noun_cmd_lst = [do_noun_obj.name]
-					syntax_do_lst = ['input_do_noun'] # new - for syntax call
-					do_noun_str = do_noun_obj.name # new - for syntax call
 				else:
 					return 'error', None, f"{err_txt}"
 			
@@ -630,7 +619,6 @@ def interpreter(user_input, master_obj_lst):
 			# placed after do_noun proc (not alongside the prep_phrase_convert check above) so that when both
 			# the noun and the direction are inferred, the noun's inference hint reads first - "(the Tree)"
 			# before "(choosing the 'up' direction...)" - matching natural reading order
-#			if len(do_prep_cmd_lst) == 0 and verb_cmd_lst[0] in verb_requires_prep_lst and verb_cmd_lst[0] not in intransitive_verb_lst:
 			if len(do_prep_cmd_lst) == 0 and verb_cmd_lst[0] in verb_requires_prep_lst:
 				prep_inferred, prep_str, err_txt = infer_prep(gs, verb_cmd_lst[0])
 				if prep_inferred:
@@ -647,15 +635,12 @@ def interpreter(user_input, master_obj_lst):
 		if interp_err:
 			return 'error', None, interp_err
 		if do_noun_obj is not None:
-			do_noun_str = do_noun_obj.name
-			do_noun_cmd_lst = [do_noun_str]
-			syntax_do_lst = ['input_do_noun']
+			do_noun_cmd_lst = [do_noun_obj.name]
 		else:
-			do_noun_str = None
 			do_noun_cmd_lst = []
-			syntax_do_lst = []
 		if tst_mode:
-			print(f"post-asym-syn action_lst: {verb_cmd_lst + do_prep_cmd_lst + [do_noun_obj]}")
+			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+			print(f"post-asym-syn action_lst: {cmd_lst}")
 
 		# *** skip id_phrase proc if verb is intransitive (e.g. 'go', 'inventory', 'stand', 'jump') ***
 		if verb_cmd_lst[0] not in intransitive_verb_lst:
@@ -668,14 +653,10 @@ def interpreter(user_input, master_obj_lst):
 					return 'error', None, f"{error_msg}" # unable to test until prep verbs migrated
 				else: # if no error, assign id_noun_obj.name to id_noun_cmd_lst for syntax call
 					id_noun_cmd_lst = [id_noun_obj.name]
-					id_noun_str = id_noun_obj.name # new - for syntax call
-					syntax_id_lst = ['input_id_noun']
 			elif verb_cmd_lst[0] in prep_verb_do_meth_lst and not id_noun_cmd_lst and not id_prep_cmd_lst: # if no id_prep or id_noun given, attempt to infer; return error if ambiguous
 				is_infer, id_noun_obj, id_prep_str, err_txt = infer_id_phrase(verb_cmd_lst[0], do_noun_obj, gs)
 				if is_infer:
-					id_noun_str = id_noun_obj.name
 					id_noun_cmd_lst = [id_noun_obj.name]
-					syntax_id_lst = ['input_id_noun']
 					id_prep_cmd_lst = [id_prep_str]
 				else:
 					return 'error', None, f"{err_txt}"
@@ -685,6 +666,18 @@ def interpreter(user_input, master_obj_lst):
 
 		# *** syntax call - used by all verbs ***
 		# (note do_noun and id_noun substitution)
+		if do_noun_obj is not None:
+			syntax_do_lst = ['input_do_noun']
+			do_noun_str = do_noun_obj.name
+		else:
+			syntax_do_lst = []
+			do_noun_str = None
+		if id_noun_obj is not None:
+			syntax_id_lst = ['input_id_noun']
+			id_noun_str = id_noun_obj.name
+		else:
+			syntax_id_lst = []
+			id_noun_str = None
 		user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + syntax_id_lst
 		if tst_mode:
 			print(f"user_syntax_lst: {user_syntax_lst}")
