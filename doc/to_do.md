@@ -1650,7 +1650,8 @@ To Do List - Dark Castle v3
 							- DONE: update asym_syn returns and returns in calling block
 							- DONE: elim action_lst returns from asym_syn & pop from call block
 							- DONE: clean up comments
-							- TBD: elim intransitive_verb_lst test
+							- DONE: elim intransitive_verb_lst test
+							- TBD: clean up comments
 							- TBD: 2nd refactor pass
 							- TBD: extract noun list assignments (do, asym, & id)??
 							- TBD: final scenario tests
