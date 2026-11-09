@@ -570,9 +570,7 @@ def interpreter(user_input, master_obj_lst):
 		# if verb is debug verb but not in debug mode, return error
 		if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
 			return 'error', None, "Please start your sentence with a known verb!"
-##		# if verb count > 1, return error
-##		if len(verb_cmd_lst) > 1:
-##			return 'error', None, "I see more than one verb in that sentence!" # can't actually get this error to fire
+
 		# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
 		tmp_lst, interp_err = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
 		if not interp_err:

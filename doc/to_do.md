@@ -1655,7 +1655,7 @@ To Do List - Dark Castle v3
 							- INPROC: 2nd refactor pass
 								- DONE: refactor syntax_do_lst,syntax_id_lst,do_noun_str,id_noun_str
 								- DONE: clean up comments
-								- TBD: 
+								- TBD: elim use of word1 post sym_syn()
 							- TBD: extract noun list assignments (do, asym, & id)??
 							- TBD: final scenario tests
 							- TBD: evaluate if any changes needed in syntax
