@@ -1652,14 +1652,13 @@ To Do List - Dark Castle v3
 							- DONE: clean up comments
 							- DONE: elim intransitive_verb_lst test
 							- DONE: clean up comments
-							- INPROC: 2nd refactor pass
+							- DONE: 2nd refactor pass
 								- DONE: refactor syntax_do_lst,syntax_id_lst,do_noun_str,id_noun_str
 								- DONE: clean up comments
 								- DONE: elim legacy code
-								- TBD: elim comments
-								- TBD: elim use of word1 post sym_syn()
-							- TBD: extract noun list assignments (do, asym, & id)??
-							- TBD: final scenario tests
+								- DONE: elim new code wrapper
+								- DONE: elim comments
+							- DONE: final scenario tests
 							- TBD: evaluate if any changes needed in syntax
 						- TBD: 'swallow'
 							- TBD: in asym_syn() swallow => eat or drink based on do_noun
@@ -1667,10 +1666,6 @@ To Do List - Dark Castle v3
 							- TBD: create swallow_err() for non-food / drink
 						- TBD: manual test
 						- TBD: scenario test
-					- TBD: fix found bugs
-						- TBD: fix up w/ step ladder in room
-						- TBD: fix resevoir_lst and drink_err() to enable 'drink from moat' error
-						- TBD: fix debug err on look from seated in test chair
 					- TBD: enable do_infer() ? e.g. 'drink from jug' => 'drink water from jug'
 					- NA: add prep_phrase_convert() as needed
 					- TBD: test score path w/ dummy score
@@ -1679,6 +1674,14 @@ To Do List - Dark Castle v3
 					- TBD: fix scenario as needed
 					- TBD: clean up comments in static_gbl(), error(), score_class_def()
 					- TBD: update verb table (including 'swallow')
+				- TBD: pause and review remaining refactor and bug fix goals
+				- TBD: fix found bugs
+					- TBD: fix up w/ step ladder in room
+					- TBD: fix resevoir_lst and drink_err() to enable 'drink from moat' error
+					- TBD: fix debug err on look from seated in test chair
+				- TBD: elim use of word1 post sym_syn()
+				- TBD: elim use of prep var
+				- TBD: extract noun list assignments (do, asym, & id)??
 				- TBD: re-factor hand_mgmt()
 				- TBD: final clean-up
 					- TBD: clean up comments in static_gbl(), prep_err(), hand_mng(), interp()

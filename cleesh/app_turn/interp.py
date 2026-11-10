@@ -537,10 +537,6 @@ def interpreter(user_input, master_obj_lst):
 	action_lst = None
 	prep = None # LEGACY
 
-
-#	# *** new interp routine ***
-#	if word1 in (verb_lst + dir_lst + ['in', 'out']):
-
 	# *** local variable assignment ***
 	(
 		verb_cmd_lst, 
@@ -688,6 +684,3 @@ def interpreter(user_input, master_obj_lst):
 		print(f"post_syntax action_lst: {action_lst}")
 
 	return case, action_lst, interp_err
-
-#	else:
-#		return 'error', None, "I don't see a verb in that sentence!"
