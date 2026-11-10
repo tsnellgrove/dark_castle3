@@ -538,287 +538,156 @@ def interpreter(user_input, master_obj_lst):
 	prep = None # LEGACY
 
 
-	# *** new interp routine ***
-	if word1 in (verb_lst + dir_lst + ['in', 'out']):
+#	# *** new interp routine ***
+#	if word1 in (verb_lst + dir_lst + ['in', 'out']):
 
-		# *** local variable assignment ***
-		(
-			verb_cmd_lst, 
-   			do_prep_cmd_lst, 
-			do_noun_cmd_lst, 
-			id_prep_cmd_lst, 
-			id_noun_cmd_lst
+	# *** local variable assignment ***
+	(
+		verb_cmd_lst, 
+		do_prep_cmd_lst, 
+		do_noun_cmd_lst, 
+		id_prep_cmd_lst, 
+		id_noun_cmd_lst
 ##		) = parser(user_input_lst, verb_lst, dir_lst, prep_lst, verbing_lst)
-		) = parser(user_input_lst, verb_lst, dir_lst, prep_lst)
+	) = parser(user_input_lst, verb_lst, dir_lst, prep_lst)
 
-		do_noun_obj = None
-		id_noun_obj = None
+	do_noun_obj = None
+	id_noun_obj = None
 
-		# *** unprocessed cmd lst ***
-		if tst_mode:
-			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
-			print(f"user_cmd_lst_pre_verb_proc: {cmd_lst}")
+	# *** unprocessed cmd lst ***
+	if tst_mode:
+		cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+		print(f"user_cmd_lst_pre_verb_proc: {cmd_lst}")
 
-		# *** verb proc ***
-		# if no verb, check to see if first word is a direction; if so, infer 'go' verb; else return error
-		if len(verb_cmd_lst) == 0:
-			if word1 in dir_lst + ['in', 'out']:
-				verb_str = 'go'
-				verb_cmd_lst.append(verb_str)
-			else:
-				return 'error', None, "Please start your sentence with a known verb!" # won't fire until interp migration complete
-		# if verb is debug verb but not in debug mode, return error
-		if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
-			return 'error', None, "Please start your sentence with a known verb!"
-
-		# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
-		tmp_lst, interp_err = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
-		if not interp_err:
-			verb_cmd_lst = tmp_lst
-			word1 = verb_cmd_lst[0]
-		if tst_mode:
-			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
-			print(f"user_cmd_lst_post_verb_proc: {cmd_lst}")
-
-		# *** do_prep proc ***
-		# check to see if there are prep_phrase substitutions
-		if len(do_prep_cmd_lst) > 0:
-			tmp_lst, interp_err = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, None, gs)
-			if not interp_err:
-				verb_cmd_lst = tmp_lst
-				do_prep_cmd_lst = []
-				word1 = verb_cmd_lst[0]
-		if tst_mode:
-			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
-			print(f"user_cmd_lst_post_do_prep_proc: {cmd_lst}")
-
-		# *** skip do_noun proc if verb is intransitive (e.g. 'go', 'inventory', 'stand', 'jump') ***
-		if verb_cmd_lst[0] not in intransitive_verb_lst:
-
-			# *** do_noun proc ***
-			# if do_noun string(s) exist - convert to do_noun_obj w/ noun_handling(); if error, return error
-			if len(do_noun_cmd_lst) > 0:
-				do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
-				error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
-				# if noun_handling() error_state = True, return error
-				if error_state:
-					return 'error', None, f"{error_msg}"
-				# if no noun_handling() error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
-				else:
-					do_noun_cmd_lst = [do_noun_obj.name]
-			else: # if do_noun string does not exist, attempt to infer; return error if not possible
-				exactly_one, do_noun_obj, err_txt = infer_do_noun(gs, word1)
-				if exactly_one:
-					do_noun_cmd_lst = [do_noun_obj.name]
-				else:
-					return 'error', None, f"{err_txt}"
-			
-			# if do_prep not given and verb requires one, attempt to infer; return error if ambiguous
-			# placed after do_noun proc (not alongside the prep_phrase_convert check above) so that when both
-			# the noun and the direction are inferred, the noun's inference hint reads first - "(the Tree)"
-			# before "(choosing the 'up' direction...)" - matching natural reading order
-			if len(do_prep_cmd_lst) == 0 and verb_cmd_lst[0] in verb_requires_prep_lst:
-				prep_inferred, prep_str, err_txt = infer_prep(gs, verb_cmd_lst[0])
-				if prep_inferred:
-					do_prep_cmd_lst = [prep_str]
-				else:
-					return 'error', None, f"{err_txt}" # was unable to fully test
-			if tst_mode:
-				cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
-				print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
-
-		# *** aysm_syn - used by all verbs ***
-		# check for conditional asymetric verb synonym
-		verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, interp_err = asym_syn(verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, gs)
-		if interp_err:
-			return 'error', None, interp_err
-		if do_noun_obj is not None:
-			do_noun_cmd_lst = [do_noun_obj.name]
+	# *** verb proc ***
+	# if no verb, check to see if first word is a direction; if so, infer 'go' verb; else return error
+	if len(verb_cmd_lst) == 0:
+		if word1 in dir_lst + ['in', 'out']:
+			verb_str = 'go'
+			verb_cmd_lst.append(verb_str)
 		else:
-			do_noun_cmd_lst = []
-		if tst_mode:
-			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
-			print(f"post-asym-syn action_lst: {cmd_lst}")
-
-		# *** skip id_phrase proc if verb is intransitive (e.g. 'go', 'inventory', 'stand', 'jump') ***
-		if verb_cmd_lst[0] not in intransitive_verb_lst:
-
-			# *** id_noun proc ***
-			if id_noun_cmd_lst:
-				id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
-				error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
-				if error_state:
-					return 'error', None, f"{error_msg}" # unable to test until prep verbs migrated
-				else: # if no error, assign id_noun_obj.name to id_noun_cmd_lst for syntax call
-					id_noun_cmd_lst = [id_noun_obj.name]
-			elif verb_cmd_lst[0] in prep_verb_do_meth_lst and not id_noun_cmd_lst and not id_prep_cmd_lst: # if no id_prep or id_noun given, attempt to infer; return error if ambiguous
-				is_infer, id_noun_obj, id_prep_str, err_txt = infer_id_phrase(verb_cmd_lst[0], do_noun_obj, gs)
-				if is_infer:
-					id_noun_cmd_lst = [id_noun_obj.name]
-					id_prep_cmd_lst = [id_prep_str]
-				else:
-					return 'error', None, f"{err_txt}"
-			if tst_mode:
-				cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
-				print(f"user_cmd_lst_post_id_phrase_proc: {cmd_lst}")
-
-		# *** syntax call - used by all verbs ***
-		# (note do_noun and id_noun substitution)
-		if do_noun_obj is not None:
-			syntax_do_lst = ['input_do_noun']
-			do_noun_str = do_noun_obj.name
-		else:
-			syntax_do_lst = []
-			do_noun_str = None
-		if id_noun_obj is not None:
-			syntax_id_lst = ['input_id_noun']
-			id_noun_str = id_noun_obj.name
-		else:
-			syntax_id_lst = []
-			id_noun_str = None
-		user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + syntax_id_lst
-		if tst_mode:
-			print(f"user_syntax_lst: {user_syntax_lst}")
-		action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, id_noun_str, gs)
-		if interp_err:
-			return 'error', None, interp_err
-		else:
-			case = 'universal' # new
-		if tst_mode:
-#			print(f"pre-asym-syn action_lst: {action_lst}")
-			print(f"post_syntax action_lst: {action_lst}")
-
-		# *** aysm_syn - used by all verbs ***
-		# check for conditional asymetric verb synonym
-#		action_lst, interp_err = asym_syn(action_lst, gs)
-#		if interp_err:
-#			return 'error', None, interp_err
-#		if tst_mode:
-#			print(f"post-asym-syn action_lst: {action_lst}")
-
-		return case, action_lst, interp_err
-
-	else:
-		return 'error', None, "I don't see a verb in that sentence!"
-
-"""
-	# *** legacy interp ***
-	elif len(user_input_lst) == 1:
-			if word1 in full_verbs_lst:
-				pass # let it through to syntax for verb-only command processing
-#				case, action_lst = syntax(('infer_verb',), word1, None, None, None, gs)
-			else:
-##				case = 'error'
-##				action_lst = ["What??"]
-				return 'error', None, "What??"
-
-	if case is not None:
-		return case, action_lst, interp_err
-	elif case is None and action_lst is not None: # infer noun case for non-2word commands - e.g. climb
-		user_input_lst = action_lst
-	# *** end of one-word command processing ***
-
-
-	# *** start of multi-word command processing ***
-
-	# initial multi-word error cases
-	verb_count = 0
-	verb_count = sum(1 for word in user_input_lst if word in full_verbs_lst)
-	if verb_count == 0:
-#		return 'error', ['I don\'t see a verb in that sentence!'], interp_err
-		return 'error', None, "I don't see a verb in that sentence!"
-#	elif (verb_count > 1): # e.g. 'help attack' already dealt with in one-word command processing
-	elif (verb_count > 1):
-#		return 'error', ['I see more than one verb in that sentence!'], interp_err
-		return 'error', None, "I see more than one verb in that sentence!"
-	if word1 not in full_verbs_lst:
-#		return 'error', ["Please start your sentence with a known verb!"], interp_err
+			return 'error', None, "Please start your sentence with a known verb!" # won't fire until interp migration complete
+	# if verb is debug verb but not in debug mode, return error
+	if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
 		return 'error', None, "Please start your sentence with a known verb!"
 
-	# handle prep verb commands (special cases first else general case)
-	# [SYNTAX start here]
+	# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
+	tmp_lst, interp_err = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
+	if not interp_err:
+		verb_cmd_lst = tmp_lst
+		word1 = verb_cmd_lst[0]
+	if tst_mode:
+		cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+		print(f"user_cmd_lst_post_verb_proc: {cmd_lst}")
 
-	if word1 in gs.io.get_lst('prep_verb_lst','eng'):
-		if word1 in ['put']:
-			if 'in' in user_input_lst:
-				prep = 'in'
-			elif 'on' in user_input_lst:
-				prep = 'on'
+	# *** do_prep proc ***
+	# check to see if there are prep_phrase substitutions
+	if len(do_prep_cmd_lst) > 0:
+		tmp_lst, interp_err = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, None, gs)
+		if not interp_err:
+			verb_cmd_lst = tmp_lst
+			do_prep_cmd_lst = []
+			word1 = verb_cmd_lst[0]
+	if tst_mode:
+		cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+		print(f"user_cmd_lst_post_do_prep_proc: {cmd_lst}")
+
+	# *** skip do_noun proc if verb is intransitive (e.g. 'go', 'inventory', 'stand', 'jump') ***
+	if verb_cmd_lst[0] not in intransitive_verb_lst:
+
+		# *** do_noun proc ***
+		# if do_noun string(s) exist - convert to do_noun_obj w/ noun_handling(); if error, return error
+		if len(do_noun_cmd_lst) > 0:
+			do_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
+			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
+			# if noun_handling() error_state = True, return error
+			if error_state:
+				return 'error', None, f"{error_msg}"
+			# if no noun_handling() error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
 			else:
-				prep = 'in or on'
-		elif word1 in ['show', 'give']:
-			prep = 'to'
-		elif word1 in ['lock', 'unlock']:
-			creature = gs.core.hero
-			prep = 'with'
-			if len(user_input_lst) < 4 and 'with' not in user_input and not creature.hand_is_empty():
-				user_input_lst.extend(['with',creature.get_hand_item().name])
-				gs.io.buffer(f"(with the {creature.get_hand_item().full_name})")
-		elif word1 in ['attack']:
-			creature = gs.core.hero
-			prep = 'with'
-			if ((len(user_input_lst) < 4) and ('with' not in user_input) 
-	   				and (not creature.in_hand_is_weapon()) and (creature.has_weapon(gs))):
-				drawn_weapon = creature.get_weapon(gs)
-				creature.remove_item(drawn_weapon, gs)
-				creature.put_in_hand(drawn_weapon, gs)
-				user_input_lst.extend(['with', drawn_weapon.name])
-				gs.io.buffer(f"(Sensing imminent combat, you draw the {drawn_weapon.full_name})")			
-			elif len(user_input_lst) < 4 and 'with' not in user_input and not creature.hand_is_empty():
-				user_input_lst.extend(['with',creature.get_hand_item().name])
-				gs.io.buffer(f"(with the {creature.get_hand_item().full_name})")
-			elif len(user_input_lst) == 2 and 'with' not in user_input and creature.hand_is_empty():
-				user_input_lst.extend(['with',creature.feature_lst[0].name])
-				gs.io.buffer(f"(with your {creature.feature_lst[0].full_name})")
-		elif word1 in ['drink']:
-			creature = gs.core.hero
-			if len(user_input_lst) < 4 and 'from' not in user_input and not creature.hand_is_empty():
-				user_input_lst.extend(['from',creature.get_hand_item().name])
-				gs.io.buffer(f"(from the {creature.get_hand_item().full_name})")
-			prep = 'from'
-		if prep not in user_input_lst:
-#			error_msg = f"I don't see the word '{prep}' in that sentence."
-#			return 'error', [error_msg], interp_err
-			return 'error', None, f"I don't see the word '{prep}' in that sentence."
-		if len(user_input_lst) < 4:
-#			error_msg = "That sentence doesn't appear to be complete"
-#			return 'error', [error_msg], interp_err
-			return 'error', None, "That sentence doesn't appear to be complete"
-		# [SYNTAX end here]
-		else:
-			in_position = user_input_lst.index(prep)
-			v_n_lst = user_input_lst[:in_position] # elim verb ?
-			p_p_lst = user_input_lst[in_position:] # elim prep ?
-			noun_error_state, noun_error_msg, noun_obj = noun_handling(master_obj_lst, v_n_lst) # pass without verb
-			dir_obj_error_state, dir_obj_error_msg, dirobj_obj = noun_handling(master_obj_lst, p_p_lst) # pass without prep
-			if noun_error_state:
-#				return 'error', [noun_error_msg], interp_err
-				return 'error', None, noun_error_msg
-			elif dir_obj_error_state:
-#				return 'error', [dir_obj_error_msg], interp_err
-				return 'error', None, dir_obj_error_msg
-			if dirobj_obj.is_container() and word1 == 'put' and prep != dirobj_obj.prep:
-#				error_msg = f"I don't see the word '{dirobj_obj.prep}' in that sentence."
-#				return 'error', [error_msg], interp_err
-				return 'error', None, f"I don't see the word '{dirobj_obj.prep}' in that sentence."
-			elif word1 in ['attack', 'lock', 'unlock', 'drink']:
-				if not gs.core.hero.chk_in_hand(dirobj_obj) and gs.core.hero.chk_in_bkpk(dirobj_obj):
-					gs.core.hero.put_in_hand(dirobj_obj, gs)
-					gs.core.hero.bkpk_lst_remove(dirobj_obj)
-				if not gs.core.hero.chk_in_hand(dirobj_obj) and gs.core.hero.chk_is_worn(dirobj_obj):
-					gs.core.hero.put_in_hand(dirobj_obj, gs)
-					gs.core.hero.worn_lst_remove(dirobj_obj)
-					gs.io.buffer(f"(Removing the {dirobj_obj.full_name} first)")
-					gs.io.buff_s(f"{gs.core.hero.name}_remove_{dirobj_obj.descript_key}")
-				return 'prep', [noun_obj, word1, dirobj_obj], interp_err
+				do_noun_cmd_lst = [do_noun_obj.name]
+		else: # if do_noun string does not exist, attempt to infer; return error if not possible
+			exactly_one, do_noun_obj, err_txt = infer_do_noun(gs, word1)
+			if exactly_one:
+				do_noun_cmd_lst = [do_noun_obj.name]
 			else:
-				if not gs.core.hero.chk_in_hand(noun_obj) and gs.core.hero.chk_in_bkpk(noun_obj):
-					gs.core.hero.put_in_hand(noun_obj, gs)
-					gs.core.hero.bkpk_lst_remove(noun_obj)
-				if not gs.core.hero.chk_in_hand(noun_obj) and gs.core.hero.chk_is_worn(noun_obj):
-					gs.core.hero.put_in_hand(noun_obj, gs)
-					gs.core.hero.worn_lst_remove(noun_obj)
-					gs.io.buffer(f"(Removing the {noun_obj.full_name} first)")
-					gs.io.buff_s(f"{gs.core.hero.name}_remove_{noun_obj.descript_key}")
-				return 'prep', [dirobj_obj, word1, noun_obj], interp_err
-"""
+				return 'error', None, f"{err_txt}"
+		
+		# if do_prep not given and verb requires one, attempt to infer; return error if ambiguous
+		# placed after do_noun proc (not alongside the prep_phrase_convert check above) so that when both
+		# the noun and the direction are inferred, the noun's inference hint reads first - "(the Tree)"
+		# before "(choosing the 'up' direction...)" - matching natural reading order
+		if len(do_prep_cmd_lst) == 0 and verb_cmd_lst[0] in verb_requires_prep_lst:
+			prep_inferred, prep_str, err_txt = infer_prep(gs, verb_cmd_lst[0])
+			if prep_inferred:
+				do_prep_cmd_lst = [prep_str]
+			else:
+				return 'error', None, f"{err_txt}" # was unable to fully test
+		if tst_mode:
+			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+			print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
+
+	# *** aysm_syn - used by all verbs ***
+	# check for conditional asymetric verb synonym
+	verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, interp_err = asym_syn(verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, gs)
+	if interp_err:
+		return 'error', None, interp_err
+	if do_noun_obj is not None:
+		do_noun_cmd_lst = [do_noun_obj.name]
+	else:
+		do_noun_cmd_lst = []
+	if tst_mode:
+		cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+		print(f"post-asym-syn action_lst: {cmd_lst}")
+
+	# *** skip id_phrase proc if verb is intransitive (e.g. 'go', 'inventory', 'stand', 'jump') ***
+	if verb_cmd_lst[0] not in intransitive_verb_lst:
+
+		# *** id_noun proc ***
+		if id_noun_cmd_lst:
+			id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
+			error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
+			if error_state:
+				return 'error', None, f"{error_msg}" # unable to test until prep verbs migrated
+			else: # if no error, assign id_noun_obj.name to id_noun_cmd_lst for syntax call
+				id_noun_cmd_lst = [id_noun_obj.name]
+		elif verb_cmd_lst[0] in prep_verb_do_meth_lst and not id_noun_cmd_lst and not id_prep_cmd_lst: # if no id_prep or id_noun given, attempt to infer; return error if ambiguous
+			is_infer, id_noun_obj, id_prep_str, err_txt = infer_id_phrase(verb_cmd_lst[0], do_noun_obj, gs)
+			if is_infer:
+				id_noun_cmd_lst = [id_noun_obj.name]
+				id_prep_cmd_lst = [id_prep_str]
+			else:
+				return 'error', None, f"{err_txt}"
+		if tst_mode:
+			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
+			print(f"user_cmd_lst_post_id_phrase_proc: {cmd_lst}")
+
+	# *** syntax call - used by all verbs ***
+	# (note do_noun and id_noun substitution)
+	if do_noun_obj is not None:
+		syntax_do_lst = ['input_do_noun']
+		do_noun_str = do_noun_obj.name
+	else:
+		syntax_do_lst = []
+		do_noun_str = None
+	if id_noun_obj is not None:
+		syntax_id_lst = ['input_id_noun']
+		id_noun_str = id_noun_obj.name
+	else:
+		syntax_id_lst = []
+		id_noun_str = None
+	user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + syntax_id_lst
+	if tst_mode:
+		print(f"user_syntax_lst: {user_syntax_lst}")
+	action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, id_noun_str, gs)
+	if interp_err:
+		return 'error', None, interp_err
+	else:
+		case = 'universal' # new
+	if tst_mode:
+		print(f"post_syntax action_lst: {action_lst}")
+
+	return case, action_lst, interp_err
+
+#	else:
+#		return 'error', None, "I don't see a verb in that sentence!"
