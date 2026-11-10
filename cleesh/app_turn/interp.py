@@ -698,7 +698,10 @@ def interpreter(user_input, master_obj_lst):
 
 		return case, action_lst, interp_err
 
+	else:
+		return 'error', None, "I don't see a verb in that sentence!"
 
+"""
 	# *** legacy interp ***
 	elif len(user_input_lst) == 1:
 			if word1 in full_verbs_lst:
@@ -818,3 +821,4 @@ def interpreter(user_input, master_obj_lst):
 					gs.io.buffer(f"(Removing the {noun_obj.full_name} first)")
 					gs.io.buff_s(f"{gs.core.hero.name}_remove_{noun_obj.descript_key}")
 				return 'prep', [dirobj_obj, word1, noun_obj], interp_err
+"""
