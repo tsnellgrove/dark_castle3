@@ -1642,7 +1642,7 @@ To Do List - Dark Castle v3
 									- DONE: fix 'push' and 'pull'
 									- DONE: if do is item, 'take'
 							- DONE: test for all scenarios
-						- INPROC: refactor asym_syn()
+						- DONE: refactor asym_syn()
 							- DONE: assign verb_str & do_prep_str in asym_syn()
 							- DONE: investigate whether to return lst or str to interp()
 								- IDEA: 'go' case (no do_noun_obj) tilts towards lst return
@@ -1659,14 +1659,15 @@ To Do List - Dark Castle v3
 								- DONE: elim new code wrapper
 								- DONE: elim comments
 							- DONE: final scenario tests
-							- TBD: evaluate if any changes needed in syntax
+							- DONE: evaluate if any changes needed in syntax
 						- TBD: 'swallow'
 							- TBD: in asym_syn() swallow => eat or drink based on do_noun
-							- TBD: add 'swallow' as action_verb
-							- TBD: create swallow_err() for non-food / drink
+								- IDEA: similar to 'move' except all but liquid => 'eat'
+							- TBD: add 'swallow' to non_action_verb_lst
+							- CANCEL: add 'swallow' to syntax
+							- CANCEL: create swallow_err() for non-food / drink
 						- TBD: manual test
 						- TBD: scenario test
-					- TBD: enable do_infer() ? e.g. 'drink from jug' => 'drink water from jug'
 					- NA: add prep_phrase_convert() as needed
 					- TBD: test score path w/ dummy score
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
@@ -1675,6 +1676,14 @@ To Do List - Dark Castle v3
 					- TBD: clean up comments in static_gbl(), error(), score_class_def()
 					- TBD: update verb table (including 'swallow')
 				- TBD: pause and review remaining refactor and bug fix goals
+				- TBD: advanced gramar cases:
+					- TBD: infer do_nount when given id_noun
+						- EXAMPLE: 'drink from jug' => 'drink water from jug'
+						- EXAMPLE: 'attack with sword' => 'attack goblin with sword'
+						- FINDING: 'from' & 'with' mistaken for do_prep
+						- FINDING: 'jug' & 'sword' mistaken for do_noun
+						- IDEA: some preps always = id_prep? (e.g. 'from' and 'with')
+						- TBD: ?
 				- TBD: fix found bugs
 					- TBD: fix up w/ step ladder in room
 					- TBD: fix resevoir_lst and drink_err() to enable 'drink from moat' error

@@ -70,7 +70,9 @@ def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 
 		('exit', 'input_do_noun') : ['exit', 'do_noun_str', 'verb_do'],
 		('go', 'out', 'prep_phrase_convert') : ['exit'],
+		('go', 'out', 'of', 'prep_phrase_convert') : ['exit'],
 		('get', 'out', 'prep_phrase_convert') : ['exit'],
+		('get', 'out', 'of', 'prep_phrase_convert') : ['exit'],
 		('depart', 'verb_syn') : ['exit'],
 
 		('go', 'east') : ['go', 'east', 'hero_rm_obj', 'verb_prep_do'],
