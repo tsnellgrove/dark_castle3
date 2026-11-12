@@ -201,6 +201,7 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 	# consume repeat_str immediately - guards exactly the one command that was just auto-queued via insert_cmd_queue(), preventing infinite re-rewriting (e.g. climb() queuing "go up", which would otherwise get rewritten right back into 'climb' below)
 	repeat_str = gs.io.repeat_str
 	gs.io.repeat_str = None
+
 	if verb_str in ['go'] and do_prep_str in ['up', 'down'] and repeat_str != verb_str:
 		dir_str = do_prep_str
 		# suppress_buffer=True: don't reveal the inferred climbable object until we've decided the rewrite is worth doing
@@ -212,7 +213,7 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 				verb_str = 'climb'
 				do_prep_lst = [dir_str]
 				do_noun_obj = climbable_obj
-	if verb_str in ['enter']:
+	elif verb_str in ['enter']:
 		if do_noun_obj.is_seat():
 			verb_str = 'sit'
 		elif (
@@ -223,7 +224,7 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 			verb_str = 'go'
 			do_prep_lst = [dir_str]
 			do_noun_obj = None
-	if verb_str in ['exit']:
+	elif verb_str in ['exit']:
 		if gs.core.hero.is_contained(gs) and do_noun_obj == gs.core.hero.get_contained_by(gs):
 			verb_str = 'stand'
 			do_noun_obj = None
@@ -235,11 +236,11 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 				do_noun_obj = None
 			else:
 				interp_err = "Which way do you want to go?"
-	if verb_str in ['take', 'get'] and do_noun_obj in gs.core.hero.worn_lst:
+	elif verb_str in ['take', 'get'] and do_noun_obj in gs.core.hero.worn_lst:
 		verb_str = 'doff'
-	if verb_str in ['examine'] and do_noun_obj.is_writing():
+	elif verb_str in ['examine'] and do_noun_obj.is_writing():
 		verb_str = 'read'
-	if verb_str in ['move']:
+	elif verb_str in ['move']:
 		if do_noun_obj.is_item():
 			verb_str = 'take'
 		elif do_noun_obj.is_pushable() and not do_noun_obj.is_pullable():
@@ -248,6 +249,11 @@ def asym_syn(verb_cmd_lst, do_prep_lst, do_noun_obj, gs):
 			verb_str = 'pull'
 		elif do_noun_obj.is_pushable() and do_noun_obj.is_pullable():
 			interp_err = f"Are you trying to push the {do_noun_obj.full_name} or pull it?"
+	elif verb_str in ['swallow']:
+		if do_noun_obj.is_liquid():
+			verb_str = 'drink'
+		else:
+			verb_str = 'eat'
 	return [verb_str], do_prep_lst, do_noun_obj, interp_err
 
 ### unified infer do_noun function for all verbs ###
@@ -499,7 +505,7 @@ def interpreter(user_input, master_obj_lst):
 			'sit', 'show', 'stand', 'stow', 'take', 'unlock', 'wait', 'wear'
 			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
-			'get', 'inventory', 'look'
+			'get', 'inventory', 'look', 'swallow'
 			] # non-action verbs are subsituted in syntax or asym_syn()
 	syn_verb_lst = [
 			'bite', 'carry', 'clobber', 'consume', 

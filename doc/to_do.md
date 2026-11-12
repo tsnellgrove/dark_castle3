@@ -1660,14 +1660,15 @@ To Do List - Dark Castle v3
 								- DONE: elim comments
 							- DONE: final scenario tests
 							- DONE: evaluate if any changes needed in syntax
-						- TBD: 'swallow'
-							- TBD: in asym_syn() swallow => eat or drink based on do_noun
+						- DONE: 'swallow'
+							- DONE: add 'swallow' to non_action_verb_lst
+							- DONE: in asym_syn() swallow => eat or drink based on do_noun
 								- IDEA: similar to 'move' except all but liquid => 'eat'
-							- TBD: add 'swallow' to non_action_verb_lst
 							- CANCEL: add 'swallow' to syntax
 							- CANCEL: create swallow_err() for non-food / drink
-						- TBD: manual test
-						- TBD: scenario test
+							- DONE: update asym_syn() to all elif
+							- DONE: manual test							
+							- DONE: scenario test
 					- NA: add prep_phrase_convert() as needed
 					- TBD: test score path w/ dummy score
 					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
