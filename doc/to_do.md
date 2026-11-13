@@ -1135,7 +1135,7 @@ To Do List - Dark Castle v3
 			- DONE: share links with fable for Infocom and modern IF
 			- DONE: ask fable to review my code
 			- DONE: ask for +/- on my class-based, obj-oriented code and advice on key updates to make
-		- INPROC: post fable immediate updates
+		- DONE: post fable immediate updates
 			- DONE: refactor go()
 				- IDEA: treat go() as special because
 					- IDEA: only verb to be inferable
@@ -1398,7 +1398,7 @@ To Do List - Dark Castle v3
 				- DONE: in app_main(), word_lst => cmd_lst
 				- DONE: in syntax(), elim old 2x-dict call
 				- DONE: clean up comments in app_main() & interp() (except legacy section)
-			- INPROC: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
+			- DONE: convert prep case to verb_do_prep_id and verb_id_prep_do shapes
 				- DONE: code review deep dive
 				- DONE: 'put' (id_noun holds method - e.g. put, show, give)
 					- DONE: check ZIL list for sym_syn and prep variants
@@ -1592,7 +1592,7 @@ To Do List - Dark Castle v3
 					- NA: test score path w/ dummy score
 					- NA: clean up comments in score_class_def()
 					- DONE: update verb table
-				- INPROC: 'drink' (do_noun holds method - e.g. unlock, lock, attack, drink)
+				- DONE: 'drink' (do_noun holds method - e.g. unlock, lock, attack, drink)
 					- DONE: check ZIL list for sym_syn and prep variants
 						- FINDING: IMBIBE, SWALLOW
 					- DONE: disable global syn for new_verb
@@ -1670,13 +1670,25 @@ To Do List - Dark Castle v3
 							- DONE: manual test							
 							- DONE: scenario test
 					- NA: add prep_phrase_convert() as needed
-					- TBD: test score path w/ dummy score
-					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
-					- TBD: scenario test
-					- TBD: fix scenario as needed
-					- TBD: clean up comments in static_gbl(), error(), score_class_def()
-					- TBD: update verb table (including 'swallow')
-				- TBD: pause and review remaining refactor and bug fix goals
+					- DONE: test score path w/ dummy score
+					- DONE: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
+					- DONE: scenario test
+					- NA: fix scenario as needed
+					- NA: clean up comments in static_gbl(), error(), score_class_def()
+					- DONE: update verb table (including 'swallow')
+
+			- TBD: review remaining interp verb refactor, bug fix, and feature goals
+				- TBD: refactor
+				- TBD: bug fix
+				- TBD: verb features
+		- TBD: non-verb feature goals
+			- TBD: interp nouns
+			- TBD: language test scenarios
+
+
+
+
+
 				- TBD: advanced gramar cases:
 					- TBD: infer do_nount when given id_noun
 						- EXAMPLE: 'drink from jug' => 'drink water from jug'
