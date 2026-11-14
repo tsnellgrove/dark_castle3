@@ -1679,17 +1679,33 @@ To Do List - Dark Castle v3
 
 			- TBD: review remaining interp verb refactor, bug fix, and feature goals
 				- TBD: refactor
+					- TBD: eliminate case
+						- TBD: elim 'prep' case in validate(), exe_cmd(), trig_chk()
+						- TBD: elim 'univeral' case in validate(), exe_cmd(), trig_chk()
+					- TBD: elim use of word1 post sym_syn()
+					- TBD: consider not passing verb or prep to syntax as independent attribs
+						- TBD: elim use of prep var
+					- TBD: fix 'blank' first attrib in noun_handling() call
+					- TBD: extract noun list assignments (do, asym, & id)??
+					- TBD: re-factor hand_mgmt()
+					- TBD: full review of lst vs. str
+					- TBD: full review of returns
+					- TBD: full review of interim values
+					- TBD: update input_cleanup()
+					- TBD: generalize "don't possess" error
+					- TBD: pull all 'meta' and 'meta_term' exclusions into app_main()
+
+
 				- TBD: bug fix
+					- TBD: fix up w/ step ladder in room
+					- TBD: fix resevoir_lst and drink_err() to enable 'drink from moat' error
+					- TBD: fix debug err on look from seated in test chair
+					- TBD: need to fix 'again' to work properly with self-queuing cmds like "climb"
+					- TBD: fix don't possess vs. burts_fist errors [use in feature_lst ??]
+					- TBD: hedgehog should have better reaction to crown
+
+
 				- TBD: verb features
-		- TBD: non-verb feature goals
-			- TBD: interp nouns
-			- TBD: language test scenarios
-
-
-
-
-
-				- TBD: advanced gramar cases:
 					- TBD: infer do_nount when given id_noun
 						- EXAMPLE: 'drink from jug' => 'drink water from jug'
 						- EXAMPLE: 'attack with sword' => 'attack goblin with sword'
@@ -1697,56 +1713,44 @@ To Do List - Dark Castle v3
 						- FINDING: 'jug' & 'sword' mistaken for do_noun
 						- IDEA: some preps always = id_prep? (e.g. 'from' and 'with')
 						- TBD: ?
-				- TBD: fix found bugs
-					- TBD: fix up w/ step ladder in room
-					- TBD: fix resevoir_lst and drink_err() to enable 'drink from moat' error
-					- TBD: fix debug err on look from seated in test chair
-				- TBD: elim use of word1 post sym_syn()
-				- TBD: elim use of prep var
-				- TBD: extract noun list assignments (do, asym, & id)??
-				- TBD: re-factor hand_mgmt()
-				- TBD: final clean-up
-					- TBD: clean up comments in static_gbl(), prep_err(), hand_mng(), interp()
-					- TBD: clean up action_dir case in validate(), cmd_exe(), and trig_chk()
-					- TBD: update verb table (verb, syns, prep_phrase)
-			- TBD: additional prep to-dos
-				- TBD: maybe add prep-verb method ower distinction to 'case' term?
-				- TBD: address hand mgmt in hand_manage()
-				- TBD: update input_cleanup()
-				- TBD: generalize "don't possess" error
-				- TBD: fix don't possess vs. burts_fist errors [use in feature_lst ??]
-				- TBD: fix opening table - last "+" char is wrapping
-				- TBD: fix 'blank' first attrib in noun_handling() call
-				- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
-					- IDEA: check for prep errors in x_err() by passing prep_str to method
-						- EXAMPLE: 'put sword in table' => 'can't put anything inside the table'
-						- EXAMPLE: 'stand on basket' => 'The basket has no surface to stand on'
-					- IDEA: some methods will need to be updated to pass prep_str
-					- NOTE: most sym_syns work much better with 'in' (hide, insert, stuff)
-						- IDEA: document this to be addressed in next interp() version?
-				- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
-				- TBD: hedgehog should have better reaction to crown
-				- TBD: consider not passing verb or prep to syntax as independent attribs
-			- TBD: eliminate case
-		- TBD: post-migrate prep case
-			- TBD: review notes below and organize by priority
-			- TBD: need to fix 'again' to work properly with self-queuing cmds like "climb"
-			- TBD: weapon updates
-				- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
-				- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
-				- TBD: sort out weapon state buffers in hand_manage()
-				- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
-				- TBD: standardize weapon draw on attack
-			- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
-			- TBD: refactor / clean-up				
-				- TBD: pull all 'meta' and 'meta_term' exclusions into app_main()
-			- TBD: update verb spreadsheet
+					- TBD: weapon updates
+						- TBD: add 'wield' for weapon class; take() => wield() if obj.is_weapon()
+						- TBD: add 'sheathe' for weapon class; stow() => sheathe if obj.is_weapon()
+						- TBD: sort out weapon state buffers in hand_manage()
+						- TBD: elim / integrate app_main() weapon tracking via wield & hand_mgmt
+						- TBD: standardize weapon draw on attack
+					- TBD: need to signal diff between surface and cont ('put on' vs. 'put in')
+						- IDEA: check for prep errors in x_err() by passing prep_str to method
+							- EXAMPLE: 'put sword in table' => 'can't put anything inside the table'
+							- EXAMPLE: 'stand on basket' => 'The basket has no surface to stand on'
+						- IDEA: some methods will need to be updated to pass prep_str
+						- NOTE: most sym_syns work much better with 'in' (hide, insert, stuff)
+							- IDEA: document this to be addressed in next interp() version?
+					- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
+
+
+		- TBD: non-verb feature goals
+			- TBD: interp nouns
+			- TBD: full language scenario suite / testing (via Claude)
 			- TBD: phase a (see Claude)
 			- TBD: phase b (see Claude)
+
+		- TBD: trunk
+
+		- TBD: figure out?
+			- TBD: maybe add prep-verb method owner distinction to 'case' term?
+			- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
+
 		- TBD: future claude collaboration ideas
-			- TBD: full language scenario suite
 			- TBD: web site
 			- TBD: database
+
+
+
+				
+
+				
+			
 		- TBD: elim meta_cmd_lst / 'one_word_convert_lst' in static_gbl
 				- TBD: <word_x>
 					- TBD: check ZIL list for sym_syn and prep variants
