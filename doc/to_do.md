@@ -1677,11 +1677,13 @@ To Do List - Dark Castle v3
 					- NA: clean up comments in static_gbl(), error(), score_class_def()
 					- DONE: update verb table (including 'swallow')
 
+
 			- TBD: review remaining interp verb refactor, bug fix, and feature goals
 				- TBD: refactor
 					- TBD: eliminate case
 						- TBD: elim 'prep' case in validate(), exe_cmd(), trig_chk()
 						- TBD: elim 'univeral' case in validate(), exe_cmd(), trig_chk()
+					- TBD: elim meta_cmd_lst / 'one_word_convert_lst' in static_gbl
 					- TBD: elim use of word1 post sym_syn()
 					- TBD: consider not passing verb or prep to syntax as independent attribs
 						- TBD: elim use of prep var
@@ -1694,6 +1696,12 @@ To Do List - Dark Castle v3
 					- TBD: update input_cleanup()
 					- TBD: generalize "don't possess" error
 					- TBD: pull all 'meta' and 'meta_term' exclusions into app_main()
+					- TBD: one-word debug commands
+					- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
+					- TBD: update 'pre_interp_word_lst' ('wait' is now interp() cmd; add in others)
+					- TBD: no longer need to check for pre_interp_word_lst in interp()
+					- TBD: include bkpk in infer_do_noun() scope? (e.g. if crown in bkpk, wear it)
+					- TBD: avoid calling input_cleanup() 3x [web_main(), app_main(), interp()]
 
 
 				- TBD: bug fix
@@ -1703,10 +1711,15 @@ To Do List - Dark Castle v3
 					- TBD: need to fix 'again' to work properly with self-queuing cmds like "climb"
 					- TBD: fix don't possess vs. burts_fist errors [use in feature_lst ??]
 					- TBD: hedgehog should have better reaction to crown
+					- TBD: sword glowing when not in hand - error or ok?
+					- TBD: fix leap from tree does not respect 'brief' mode
 
 
 				- TBD: verb features
-					- TBD: infer do_nount when given id_noun
+					- TBD: document 'someday maybe' verbs (e.g. 'slide under') in spreadsheet
+					- TBD: update help() cmd to give a limited list of verbs ?
+					- TBD: reconsider do_noun_infer() for prep cases
+					- TBD: infer do_noun when given id_noun
 						- EXAMPLE: 'drink from jug' => 'drink water from jug'
 						- EXAMPLE: 'attack with sword' => 'attack goblin with sword'
 						- FINDING: 'from' & 'with' mistaken for do_prep
@@ -1727,23 +1740,83 @@ To Do List - Dark Castle v3
 						- NOTE: most sym_syns work much better with 'in' (hide, insert, stuff)
 							- IDEA: document this to be addressed in next interp() version?
 					- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
+					- TBD: consider allowing 'it' pronoun; remove early like articles
 
 
 		- TBD: non-verb feature goals
 			- TBD: interp nouns
+			- TBD: full refactor of app_main() to simplify multiples
+					- TBD: positional approach; support 'and', ',', and multiple except
+			- TBD: full refactor of app_main() to simplify passing of game_name & root_path_str
+			- TBD: sort out long-term approach to is_bkstory
+				- TBD: for app_main(), in place of returning is_bkstory, return user_confirm
+				- TBD: in web_main(), if user_confirm, send back unique special user_response 
+				- TBD: in app_main() meta_cmd() func, catch & process unique user_response
+				- IDEA: confirm_queue just for confirm cmds
+					- IDEA: in app_main(): 
+						- if word1 == 'save': need_conf = True, user_output = "save?", add 'save' to confirm_queue, return need_conf, user_output
+						- if word1 == 'user_confirm_true': user_input = pop(confirm_queue)
+					- IDEA: in web_main():
+						- if need_conf: get_confirm(user_output)
+						- if is_conf: user_input = 'user_confirm_true' {disallow cmd in interp()}
+					- IDEA: for situational confirm calls (e.g. backstory)
+						- IDEA: have a finite number of buff_if_user_conf_01 slots for qry & response
 			- TBD: full language scenario suite / testing (via Claude)
+				- TBD: create test game for language (or plan now, avoid more nouns till later?)
+					- TBD: create spiral rooms w/ diagonal paths
+					- TBD: create colored doors
+					- TBD: populate with test view-only obj, seats (first 4 of 9 rooms only)
+					- TBD: populate with test items, food, garments, writing, buttons, levers
+					- TBD: scenario test for all 2word verbs:
+				- TBD: verbs, hand_mgmt, symetric syn, infer, asymetric syn
+					- Room 1: (list obj)
+						- TBD: take()
+						- TBD: drop()
+						- TBD: stow()
+						- TBD: wear()
+						- TBD: doff()
+						- TBD: eat()
+						- TBD: read()
+						- TBD: push()
+						- TBD: pull()
+					- Room 2: (1 chair)
+						- TBD: sit()
+						- TBD: open()
+						- TBD: close()
+					- Room 3: (2 chairs?)
+						- TBD: sit()
 			- TBD: phase a (see Claude)
 			- TBD: phase b (see Claude)
 
+
+		- TBD: doc
+			- TBD: document new interp() approach
+				- TBD: credit zork and bolggers
+				- IDEA: 3 things I learned from zork: 
+					1) verbs vs. actions
+					2) syntax: blunt but effective - language is idiomatic; lack of gen prep rules
+					3) actions on nouns
+				- IDEA: trends i didn't follow:
+					1) class system vs. flat w/ attribute bits
+					2) retained preps (matches later infocom approach)
+			- TBD: in doc section, call out interp asym: more permissive >> less permissive
+
+
 		- TBD: trunk
+
 
 		- TBD: figure out?
 			- TBD: maybe add prep-verb method owner distinction to 'case' term?
 			- IDEA: 4th 'prep_in' term added to action_lst to be checked in syntax??
 
+
 		- TBD: future claude collaboration ideas
 			- TBD: web site
 			- TBD: database
+
+
+		- TBD: future non-interp goals
+			- TBD: plan for verb method mode ('std' vs. 'silent'?)
 
 
 
@@ -1751,99 +1824,7 @@ To Do List - Dark Castle v3
 
 				
 			
-		- TBD: elim meta_cmd_lst / 'one_word_convert_lst' in static_gbl
-				- TBD: <word_x>
-					- TBD: check ZIL list for sym_syn and prep variants
-					- TBD: disable global syn for new_verb
-					- TBD: update hand_mgmt() as needed for new_verb
-					- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
-					- TBD: scenario test
-					- TBD: fix scenario as needed
-					- TBD: add new_verb to interp() action_verb list
-					- TBD: add base ('new_verb', 'do_noun') entries to syntax
-					- TBD: add prep variants for new_verb to syntax
-					- TBD: add new_verb symetric syns to syn_verb_lst
-					- TBD: add new_verb symetric syns to syntax
-					- TBD: manual test
-					- TBD: add infer_id_phrase entry for new_verb as needed
-					- TBD: add conditional syn in asym_syn()  as needed
-					- TBD: add prep_phrase_convert() as needed
-					- TBD: test score path w/ dummy score
-					- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
-					- TBD: scenario test
-					- TBD: fix scenario as needed
-					- TBD: clean up comments in static_gbl(), error(), score_class_def()
-					- TBD: update verb table
-			- TBD: update verb spreadsheet
-		- TBD: one-word debug commands
-			- TBD: update verb spreadsheet
-		- TBD: deep dive in interp() and clean-up
-		- TBD: additional updates post migration
-			- TBD: update 'pre_interp_word_lst' ('wait' is now interp() cmd; add in others)
-			- TBD: no longer need to check for pre_interp_word_lst in interp()
-			- TBD: update help() cmd to give a limited list of verbs ?
-			- TBD: in doc section, call out interp asym: more permissive >> less permissive
-			- TBD: include bkpk in infer_do_noun() scope? (e.g. if crown in bkpk, wear it)
-			- TBD: reconsider do_noun_infer() for prep cases
-			- TBD: consider allowing 'it' pronoun; remove early like articles
-			- TBD: global refactor
-			- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
-			- TBD: clean up comments
-		- TBD: plan for verb method mode ('std' vs. 'silent'?)
-		- TBD: sword glowing when not in hand - error or ok?
-		- TBD: avoid calling input_cleanup() 3x [web_main(), app_main(), interp()]
-		- TBD: full refactor of app_main() to simplify multiples
-		- TBD: full refactor of app_main() to simplify passing of game_name & root_path_str
-		- TBD: fix leap from tree does not respect 'brief' mode
-		- TBD: sort out long-term approach to is_bkstory
-			- TBD: for app_main(), in place of returning is_bkstory, return user_confirm
-			- TBD: in web_main(), if user_confirm, send back unique special user_response 
-			- TBD: in app_main() meta_cmd() func, catch & process unique user_response
-			- IDEA: confirm_queue just for confirm cmds
-				- IDEA: in app_main(): 
-					- if word1 == 'save': need_conf = True, user_output = "save?", add 'save' to confirm_queue, return need_conf, user_output
-					- if word1 == 'user_confirm_true': user_input = pop(confirm_queue)
-				- IDEA: in web_main():
-					- if need_conf: get_confirm(user_output)
-					- if is_conf: user_input = 'user_confirm_true' {disallow cmd in interp()}
-				- IDEA: for situational confirm calls (e.g. backstory)
-					- IDEA: have a finite number of buff_if_user_conf_01 slots for querry & response
-		- TBD: document 'someday maybe' verbs (e.g. 'slide under') in spreadsheet
-		- TBD: update existing test scenarios as needed if no longer pass
-		- TBD: create language test game for language (or plan now, avoid more nouns till later?)
-			- TBD: create spiral rooms w/ diagonal paths
-			- TBD: create colored doors
-			- TBD: populate with test view-only obj, seats (first 4 of 9 rooms only)
-			- TBD: populate with test items, food, garments, writing, buttons, levers
-			- TBD: scenario test for all 2word verbs:
-		- TBD: re-do multiples w/ positional approach; support 'and', ',', and multiple except
-		- TBD: verbs, hand_mgmt, symetric syn, infer, asymetric syn
-			- Room 1: (list obj)
-				- TBD: take()
-				- TBD: drop()
-				- TBD: stow()
-				- TBD: wear()
-				- TBD: doff()
-				- TBD: eat()
-				- TBD: read()
-				- TBD: push()
-				- TBD: pull()
-			- Room 2: (1 chair)
-				- TBD: sit()
-				- TBD: open()
-				- TBD: close()
-			- Room 3: (2 chairs?)
-				- TBD: sit()
-	- TBD: review / unify all interp() update notes
-	- TBD: document new interp() approach
-		- TBD: credit zork and bolggers
-		- IDEA: 3 things I learned from zork: 
-			1) verbs vs. actions
-			2) syntax: blunt but effective - language is idiomatic; lack of gen prep rules
-			3) actions on nouns
-		- IDEA: trends i didn't follow:
-			1) class system vs. flat w/ attribute bits
-			2) retained preps
+
 
 
 		- TBD: nouns

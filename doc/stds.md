@@ -188,3 +188,28 @@ Cmd to run test menu script: ./scenario_workflow.sh
 		- DONE: should also explain rand_mode options and how to enter locked mode
 	- DONE: test in game
 	- DONE: test help debug
+
+*** 11/15/2026 - how to add a new verb ***
+
+- TBD: <new_verb_x>
+	- TBD: check ZIL list for sym_syn and prep variants
+	- TBD: disable global syn for new_verb
+	- TBD: update hand_mgmt() as needed for new_verb
+	- TBD: update *_err() to pass validate if hand_mgmt() will fix when called
+	- TBD: scenario test
+	- TBD: fix scenario as needed
+	- TBD: add new_verb to interp() action_verb list
+	- TBD: add base ('new_verb', 'do_noun') entries to syntax
+	- TBD: add prep variants for new_verb to syntax
+	- TBD: add new_verb symetric syns to syn_verb_lst
+	- TBD: add new_verb symetric syns to syntax
+	- TBD: manual test
+	- TBD: add conditional syn in asym_syn() as needed
+	- TBD: add infer_id_phrase entry for new_verb as needed
+	- TBD: add prep_phrase_convert() as needed
+	- TBD: test score path w/ dummy score
+	- TBD: manual test (including sym_syn, prep, infer, asym syn, and hand_mg)
+	- TBD: scenario test
+	- TBD: fix scenario as needed
+	- TBD: clean up comments in static_gbl(), error(), score_class_def()
+	- TBD: update verb table
