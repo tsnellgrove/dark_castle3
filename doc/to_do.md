@@ -1679,6 +1679,27 @@ To Do List - Dark Castle v3
 
 
 			- TBD: review remaining interp verb refactor, bug fix, and feature goals
+				- TBD: confirm done
+					- TBD: refactor cmd_exe() help & meta
+						- TBD: create help() method where 'help' is verb and 'option' is prep
+						- TBD: create meta() method where cmd = verb
+						- TBD: updeate cmd_exe() to parse meta_cmd_lst options
+					- TBD: review and implement over-arching interp() org
+						- TBD: review by hand
+						- TBD: discuss with Q
+						- IDEA:
+							- process / clean (txt)
+							- identify verb, dir (txt)
+							- identify do_noun, id_noun, & preps (txt / rm)
+								- dis-ambugate nouns (rm)
+							- call syntax: verb => action (txt)
+								- fill in infferable terms (rm)
+							- hand-manip (rm)
+							- run action => err or execution (rm)
+					- TBD: support 'climb up' and 'climb down' w/ no do_noun
+						- IDEA: search for climbable obj
+
+
 				- TBD: refactor
 					- TBD: eliminate case
 						- TBD: elim 'prep' case in validate(), exe_cmd(), trig_chk()
@@ -1687,6 +1708,7 @@ To Do List - Dark Castle v3
 					- TBD: elim use of word1 post sym_syn()
 					- TBD: consider not passing verb or prep to syntax as independent attribs
 						- TBD: elim use of prep var
+					- TBD: create separate full_verb_lst vs. full_action_lst
 					- TBD: fix 'blank' first attrib in noun_handling() call
 					- TBD: extract noun list assignments (do, asym, & id)??
 					- TBD: re-factor hand_mgmt()
@@ -1744,7 +1766,13 @@ To Do List - Dark Castle v3
 
 
 		- TBD: non-verb feature goals
-			- TBD: interp nouns
+			- TBD: nouns
+				- TBD: update all nouns to hold - not be - machs
+				- TBD: simplify noun clause sent to noun_handling()
+				- TBD: enable multiple adjectives
+				- TBD: improve noun_handling errors
+				- TBD: check for action (err or cond_syn or mach) in do & id pre verb action
+				- TBD: doc idea of replacing climb_err txt with climb obj action error
 			- TBD: full refactor of app_main() to simplify multiples
 					- TBD: positional approach; support 'and', ',', and multiple except
 			- TBD: full refactor of app_main() to simplify passing of game_name & root_path_str
@@ -1827,33 +1855,9 @@ To Do List - Dark Castle v3
 
 
 
-		- TBD: nouns
-			- TBD: simplify noun clause sent to noun_handling()
-			- TBD: enable multiple adjectives
-			- TBD: improve noun_handling errors
-			- TBD: check for action (err or cond_syn or mach) in do & id pre verb action
-			- TBD: doc idea of replacing climb_err txt with climb obj action error
 
 
-		- TBD: create separate full_verb_lst vs. full_action_lst
-		- TBD: refactor cmd_exe() help & meta
-			- TBD: create help() method where 'help' is verb and 'option' is prep
-			- TBD: create meta() method where cmd = verb
-			- TBD: updeate cmd_exe() to parse meta_cmd_lst options
-		- TBD: review and implement over-arching interp() org
-			- TBD: review by hand
-			- TBD: discuss with Q
-			- IDEA:
-				- process / clean (txt)
-				- identify verb, dir (txt)
-				- identify do_noun, id_noun, & preps (txt / rm)
-					- dis-ambugate nouns (rm)
-				- call syntax: verb => action (txt)
-					- fill in infferable terms (rm)
-				- hand-manip (rm)
-				- run action => err or execution (rm)
 
-		- TBD: support 'climb up' and 'climb down' w/ no do_noun (i.e. search for climbable obj)
 	- TBD: consolidate case = 'error' and [err_txt] into syntax
 	- TBD: clean-up weapon_disp in app_main() module => weapon() class
 	- TBD: clean-up multipls functions in app_main() module
