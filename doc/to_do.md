@@ -1679,7 +1679,9 @@ To Do List - Dark Castle v3
 
 
 			- TBD: review remaining interp verb refactor, bug fix, and feature goals
+
 				- TBD: confirm done
+					- TBD: consolidate case = 'error' and [err_txt] into syntax
 					- TBD: refactor cmd_exe() help & meta
 						- TBD: create help() method where 'help' is verb and 'option' is prep
 						- TBD: create meta() method where cmd = verb
@@ -1698,6 +1700,22 @@ To Do List - Dark Castle v3
 							- run action => err or execution (rm)
 					- TBD: support 'climb up' and 'climb down' w/ no do_noun
 						- IDEA: search for climbable obj
+					- TBD: climb & go:
+						- IDEA: create unified action_dir syntax call
+						- TBD: 'climb' <dir> => syntax => 'climb' <dir> <rm>
+						- TBD <rm> specific error in climb_err()
+						- IDEA: enables local rm override for Tree
+					- TBD: sort out 2word
+						- IDEA: above go / climb special cases
+					- 4.a.0 review and refactor interp() [INPROC]
+						- 4.a.0.i review base interp() code [DONE]
+						- 4.a.0.ii create main interp() routine that calls others (e.g. clean-up and 1-word) [INPROC]
+						- 4.a.0.iii extract hand management to an external hand_manage() function [TBD]
+						- 4.a.0.iv extract prep_verb hand mgmt to hand_manage() [TBD]
+						- 4.a.0.v deep review of noun_handling() [TBD]
+						- TBD: create new scenario test
+
+
 
 
 				- TBD: refactor
@@ -1735,6 +1753,7 @@ To Do List - Dark Castle v3
 					- TBD: hedgehog should have better reaction to crown
 					- TBD: sword glowing when not in hand - error or ok?
 					- TBD: fix leap from tree does not respect 'brief' mode
+					- TBD: test for reserved syntax words
 
 
 				- TBD: verb features
@@ -1773,8 +1792,31 @@ To Do List - Dark Castle v3
 				- TBD: improve noun_handling errors
 				- TBD: check for action (err or cond_syn or mach) in do & id pre verb action
 				- TBD: doc idea of replacing climb_err txt with climb obj action error
+				- TBD: original noun plan
+					- 4.a.1 update noun attributes [TBD]
+						- resarch and finalize eliminating obj-as-mach approach
+						- add list attribs for syn_lst, adj_lst, invis_lst
+							- how to introduce optional attribs?
+							- discuss plan w/ Q
+					- 4b. create scope_lst and noun_syn_lst
+						- 3b1. convert cmd_str_lst to root nouns using noun_syn_lst
+					- 4c. in scope_lst, for do-noun clause
+						- 3c1. find noun in scope_lst
+						- 3c2. validate adj (error if not found?) and removed
+						- 3c3. identify do-noun
+						- 3c4. if no noun or > 1 noun => err
+					- 4d. in scope_lst, if id-noun clause exists
+						- 3d1. find noun in scope_lst
+						- 3d2. validate adj (error if not found?) and remove
+						- 3d3. identify id-noun
+						- 3d4. if no noun or > 1 noun => err
+					- 4e. identify each non-buzz prep
+					- 4f. if verb is on class_spec_vrb_lst, check if do-noun supports it
+						- 3f1. if yes, proceed; else, std err
+			- TBD: clean-up weapon_disp in app_main() module => weapon() class
 			- TBD: full refactor of app_main() to simplify multiples
 					- TBD: positional approach; support 'and', ',', and multiple except
+					- TBD: clean-up multipls functions in app_main() module
 			- TBD: full refactor of app_main() to simplify passing of game_name & root_path_str
 			- TBD: sort out long-term approach to is_bkstory
 				- TBD: for app_main(), in place of returning is_bkstory, return user_confirm
@@ -1850,60 +1892,13 @@ To Do List - Dark Castle v3
 
 				
 
-				
-			
 
 
 
 
-
-
-	- TBD: consolidate case = 'error' and [err_txt] into syntax
-	- TBD: clean-up weapon_disp in app_main() module => weapon() class
-	- TBD: clean-up multipls functions in app_main() module
-	- TBD: sort out 2word
-		- IDEA: above go / climb special cases
-
-
-
-
-	- 4.a.0 review and refactor interp() [INPROC]
-		- 4.a.0.i review base interp() code [DONE]
-		- 4.a.0.ii create main interp() routine that calls others (e.g. clean-up and 1-word) [INPROC]
-		- 4.a.0.iii extract hand management to an external hand_manage() function [TBD]
-		- 4.a.0.iv extract prep_verb hand mgmt to hand_manage() [TBD]
-		- 4.a.0.v deep review of noun_handling() [TBD]
-	- TBD: create new scenario test
-		- TBD: test for reserved syntax words
-
-
-	- 4.a.1 update noun attributes [TBD]
-		- resarch and finalize eliminating obj-as-mach approach
-		- add list attribs for syn_lst, adj_lst, invis_lst
-			- how to introduce optional attribs?
-			- discuss plan w/ Q
-	- 4b. create scope_lst and noun_syn_lst
-		- 3b1. convert cmd_str_lst to root nouns using noun_syn_lst
-	- 4c. in scope_lst, for do-noun clause
-		- 3c1. find noun in scope_lst
-		- 3c2. validate adj (error if not found?) and removed
-		- 3c3. identify do-noun
-		- 3c4. if no noun or > 1 noun => err
-	- 4d. in scope_lst, if id-noun clause exists
-		- 3d1. find noun in scope_lst
-		- 3d2. validate adj (error if not found?) and remove
-		- 3d3. identify id-noun
-		- 3d4. if no noun or > 1 noun => err
-	- 4e. identify each non-buzz prep
-	- 4f. if verb is on class_spec_vrb_lst, check if do-noun supports it
-		- 3f1. if yes, proceed; else, std err
 
 	- TBD: post noun-sorted-out verb updates:
-		- TBD: climb & go:
-			- IDEA: create unified action_dir syntax call
-			- TBD: 'climb' <dir> => syntax => 'climb' <dir> <rm>
-			- TBD <rm> specific error in climb_err()
-			- IDEA: enables local rm override for Tree
+
 
 		- DONE: plan for class-specific verb synonyms 
 			- IDEA: examples:
