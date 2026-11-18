@@ -1714,7 +1714,26 @@ To Do List - Dark Castle v3
 						- 4.a.0.iv extract prep_verb hand mgmt to hand_manage() [TBD]
 						- 4.a.0.v deep review of noun_handling() [TBD]
 						- TBD: create new scenario test
-
+					- TBD: post noun-sorted-out verb updates:
+						- DONE: plan for class-specific verb synonyms 
+							- IDEA: examples:
+								'doff' => (garment class) => take
+								'jab', 'hack', 'slash' => (weapon class) => attack
+							- TBD: in static_gbl: cond_verb_syn_lst
+							- TBD: chk_class_syn() method in ViewOnly
+							- IDEA: updates for Invisible class
+								- IDEA: attrib == suptd_vrb_lst
+								- IDEA: method == chk_class_spec_vrb()
+							- IDEA: the challenge here is that we need to ask the noun about the verb
+							- IDEA: PARSE is supposed to identify the verb and noun(s)
+							- IDEA: SYNTAX is supposed to convert the verb, noun(s), and prep(s) in an action
+							- IDEA: so between PARSE and SYNTAX i need a routine to check class-specific verb synonyms
+							- IDEA: see 4f
+						- TBD: create Zork and DC verb / class / synonym list
+							- TBD: understand which zork verbs will be relevant to dc
+							- IDEA: verb list org
+								- IDEA: master verb list is in cleesh static_gbl (captured)
+								- IDEA: class_spec_syn_lst lives in verb method as attrib (capped)
 
 
 
@@ -1782,7 +1801,10 @@ To Do List - Dark Castle v3
 							- IDEA: document this to be addressed in next interp() version?
 					- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
 					- TBD: consider allowing 'it' pronoun; remove early like articles
-
+				- IDEA: verb list org
+					- IDEA: master verb list is in cleesh static_gbl / stand-alone engine file
+					- IDEA: can asym_syns be extracted from code into data?
+					- IDEA: how can new verbs be added per game in a modular fashion?
 
 		- TBD: non-verb feature goals
 			- TBD: nouns
@@ -1897,28 +1919,7 @@ To Do List - Dark Castle v3
 
 
 
-	- TBD: post noun-sorted-out verb updates:
 
-
-		- DONE: plan for class-specific verb synonyms 
-			- IDEA: examples:
-				'doff' => (garment class) => take
-				'jab', 'hack', 'slash' => (weapon class) => attack
-			- TBD: in static_gbl: cond_verb_syn_lst
-			- TBD: chk_class_syn() method in ViewOnly
-			- IDEA: updates for Invisible class
-				- IDEA: attrib == suptd_vrb_lst
-				- IDEA: method == chk_class_spec_vrb()
-			- IDEA: the challenge here is that we need to ask the noun about the verb
-			- IDEA: PARSE is supposed to identify the verb and noun(s)
-			- IDEA: SYNTAX is supposed to convert the verb, noun(s), and prep(s) in an action
-			- IDEA: so between PARSE and SYNTAX i need a routine to check class-specific verb synonyms
-			- IDEA: see 4f
-		- TBD: create Zork and DC verb / class / synonym list
-			- TBD: understand which zork verbs will be relevant to dc
-			- IDEA: verb list org
-				- IDEA: master verb list is in cleesh static_gbl
-				- IDEA: class_spec_syn_lst lives in verb method as attrib
 
 
 - 5. use syntax with verb, do-noun, id-noun, and prep to identify action
