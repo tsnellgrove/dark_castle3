@@ -1681,6 +1681,12 @@ To Do List - Dark Castle v3
 			- TBD: review remaining interp verb refactor, bug fix, and feature goals
 
 				- TBD: confirm done
+					- TBD: decide about verb synonyms for specific obj??
+						- EXAMPLE: 'enter' / 'go in' on 'castle' => action = "go north"
+						- EXAMPLE: 'exit' / 'out' on 'gatehouse' 
+							- IDEA: ('exit' w/out noun => room) => action = "go sounth"
+						- EXAMPLE: 'enter' / 'go in' on 'moat' => action = "go east / go west"
+						- EXAMPLE: 'enter' / 'go in' on 'path' => action = "go southwest"
 					- TBD: consolidate case = 'error' and [err_txt] into syntax
 					- TBD: refactor cmd_exe() help & meta
 						- TBD: create help() method where 'help' is verb and 'option' is prep
@@ -1734,7 +1740,13 @@ To Do List - Dark Castle v3
 							- IDEA: verb list org
 								- IDEA: master verb list is in cleesh static_gbl (captured)
 								- IDEA: class_spec_syn_lst lives in verb method as attrib (capped)
-
+					- TBD: also need a plan for syntax_verbs:
+						- EXAMPLE: 'sit on' / 'sit in' => (syntax checks for seat class) => enter
+						- IDEA: in this case, we don't want to replace 'sit' with 'enter' at the start
+						- IDEA: instead, we convert to enter via SYNTAX routine
+						- IDEA: so 'sit chair', 'sit in chair', 'sit on chair' all => enter chair
+						- IDEA: but 'sit to chair' and 'sit with chair' => error
+						- IDEA: 'sit' only = 'enter' when accompanied by prep = 'in' or 'on'
 
 
 				- TBD: refactor
@@ -1805,6 +1817,11 @@ To Do List - Dark Castle v3
 					- IDEA: master verb list is in cleesh static_gbl / stand-alone engine file
 					- IDEA: can asym_syns be extracted from code into data?
 					- IDEA: how can new verbs be added per game in a modular fashion?
+					- IDEA: can I embed asym_syns with verb methods to make verbs more modular?
+				- 5. use syntax with verb, do-noun, id-noun, and prep to identify action
+					- 5a. apply Get What I Mean (GWIM) if the id-noun is missing
+					- 5b. error if GWIM retruns 0 or > 1
+
 
 		- TBD: non-verb feature goals
 			- TBD: nouns
@@ -1840,6 +1857,10 @@ To Do List - Dark Castle v3
 					- TBD: positional approach; support 'and', ',', and multiple except
 					- TBD: clean-up multipls functions in app_main() module
 			- TBD: full refactor of app_main() to simplify passing of game_name & root_path_str
+			- IMPORTANT: execution loop:
+				- 6a. check id-noun for do-noun / action specific errors
+				- 6b. check do-noun for id-noun / action specific errors
+				- 6c. execute action (passing in do-noun & id-noun)
 			- TBD: sort out long-term approach to is_bkstory
 				- TBD: for app_main(), in place of returning is_bkstory, return user_confirm
 				- TBD: in web_main(), if user_confirm, send back unique special user_response 
@@ -1919,32 +1940,6 @@ To Do List - Dark Castle v3
 
 
 
-
-
-
-- 5. use syntax with verb, do-noun, id-noun, and prep to identify action
-	- 5a. apply Get What I Mean (GWIM) if the id-noun is missing
-	- 5b. error if GWIM retruns 0 or > 1
-
-	- TBD: also need a plan for syntax_verbs:
-		- EXAMPLE: 'sit on' / 'sit in' => (syntax checks for seat class) => enter
-		- IDEA: in this case, we don't want to replace 'sit' with 'enter' at the start
-		- IDEA: instead, we convert to enter via SYNTAX routine
-		- IDEA: so 'sit chair', 'sit in chair', 'sit on chair' all => enter chair
-		- IDEA: but 'sit to chair' and 'sit with chair' => error
-		- IDEA: 'sit' only = 'enter' when accompanied by prep = 'in' or 'on'
-
-
-- 6. execution loop:
-	- 6a. check id-noun for do-noun / action specific errors
-	- 6b. check do-noun for id-noun / action specific errors
-	- 6c. execute action (passing in do-noun & id-noun)
-
-	- TBD: decide about verb synonyms for specific obj??
-		- EXAMPLE: 'enter' / 'go in' on 'castle' => action = "go north"
-		- EXAMPLE: 'exit' / 'out' on 'gatehouse' ('exit' w/out noun => room) => action = "go sounth"
-		- EXAMPLE: 'enter' / 'go in' on 'moat' => action = "go east / go west"
-		- EXAMPLE: 'enter' / 'go in' on 'path' => action = "go southwest"
 
 
 - 6.5. optimize:
