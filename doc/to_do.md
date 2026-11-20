@@ -1813,14 +1813,21 @@ To Do List - Dark Castle v3
 							- IDEA: document this to be addressed in next interp() version?
 					- TBD: create stool() obj == seat() ('sit in/on') + platform()  ('stand on')
 					- TBD: consider allowing 'it' pronoun; remove early like articles
-				- IDEA: verb list org
-					- IDEA: master verb list is in cleesh static_gbl / stand-alone engine file
-					- IDEA: can asym_syns be extracted from code into data?
-					- IDEA: how can new verbs be added per game in a modular fashion?
-					- IDEA: can I embed asym_syns with verb methods to make verbs more modular?
-				- 5. use syntax with verb, do-noun, id-noun, and prep to identify action
-					- 5a. apply Get What I Mean (GWIM) if the id-noun is missing
-					- 5b. error if GWIM retruns 0 or > 1
+					- IDEA: verb list org
+						- IDEA: master verb list is in cleesh static_gbl / stand-alone engine file
+						- IDEA: can asym_syns be extracted from code into data?
+						- IDEA: how can new verbs be added per game in a modular fashion?
+						- IDEA: can I embed asym_syns with verb methods to make verbs more modular?
+					- 5. use syntax with verb, do-noun, id-noun, and prep to identify action
+						- 5a. apply Get What I Mean (GWIM) if the id-noun is missing
+						- 5b. error if GWIM retruns 0 or > 1
+					- 6.5. optimize:
+						- 6.5a. skip "of" and word before (e.g. "one of", "piece of")
+						- 6.5b. sort out rand_mode on one_word_secret_lst and alos debug_verb_lst
+					- TBD: Curse Words
+						- TBD: implement curse warning / ending at Interpreter() level
+
+
 
 
 		- TBD: non-verb feature goals
@@ -1942,9 +1949,6 @@ To Do List - Dark Castle v3
 
 
 
-- 6.5. optimize:
-	- 6.5a. skip "of" and word before (e.g. "one of", "piece of")
-	- 6.5b. sort out rand_mode on one_word_secret_lst and alos debug_verb_lst
 
 
 - 7. introduce new words
@@ -1956,8 +1960,6 @@ To Do List - Dark Castle v3
 		- IDEA: exit / out (doors, viewonly, rooms)
 		- IDEA: xyzzy
 		- IDEA: curse
-	- TBD: Curse Words
-		- TBD: implement curse warning / ending at Interpreter() level
 
 	- TBD: expand verb method assignment for classes
 		- EXAMPLE: add 'enter' as method for door class
