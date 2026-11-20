@@ -1747,6 +1747,23 @@ To Do List - Dark Castle v3
 						- IDEA: so 'sit chair', 'sit in chair', 'sit on chair' all => enter chair
 						- IDEA: but 'sit to chair' and 'sit with chair' => error
 						- IDEA: 'sit' only = 'enter' when accompanied by prep = 'in' or 'on'
+					- 7. introduce new words
+						- INPROC: list of words to add this branch
+							- IDEA: prep = to, at, on, in
+							- IDEA: this
+							- IDEA: walk in, look at, look in
+							- IDEA: enter / in (doors, viewonly, rooms)
+							- IDEA: exit / out (doors, viewonly, rooms)
+							- IDEA: xyzzy
+					- TBD: expand verb method assignment for classes
+						- EXAMPLE: add 'enter' as method for door class
+						- EXAMPLE: add 'enter' and 'exit' as methods for room (?)
+						- EXAMPLE: have a '2 state' switch
+							- IDEA: can change via 'move', 'push', or 'pull' => chair
+					- TBD: re-institue remove() verb for Garment; 'take' as synonym (???)
+						- worn obj take() => "You're already wearing it" 
+						- IDEA: no, take should always be 'into hand'
+						- obj on floor remove() => "Taken" (i.e. is synonym)
 
 
 				- TBD: refactor
@@ -1868,6 +1885,7 @@ To Do List - Dark Castle v3
 				- 6a. check id-noun for do-noun / action specific errors
 				- 6b. check do-noun for id-noun / action specific errors
 				- 6c. execute action (passing in do-noun & id-noun)
+			- 8. add new in-scope zil capabilities
 			- TBD: sort out long-term approach to is_bkstory
 				- TBD: for app_main(), in place of returning is_bkstory, return user_confirm
 				- TBD: in web_main(), if user_confirm, send back unique special user_response 
@@ -1951,26 +1969,9 @@ To Do List - Dark Castle v3
 
 
 
-- 7. introduce new words
-	- INPROC: list of words to add this branch
-		- IDEA: prep = to, at, on, in
-		- IDEA: this
-		- IDEA: walk in, look at, look in
-		- IDEA: enter / in (doors, viewonly, rooms)
-		- IDEA: exit / out (doors, viewonly, rooms)
-		- IDEA: xyzzy
-		- IDEA: curse
-
-	- TBD: expand verb method assignment for classes
-		- EXAMPLE: add 'enter' as method for door class
-		- EXAMPLE: add 'enter' and 'exit' as methods for room (?)
-		- EXAMPLE: have a '2 state' switch that can change via 'move', 'push', or 'pull' => chair
-	- TBD: re-institue remove() verb for Garment; 'take' as synonym (???)
-		- worn obj take() => "You're already wearing it" (no, take should always be 'into hand')
-		- obj on floor remove() => "Taken" (i.e. is synonym)
 
 
-- 8. add new in-scope zil capabilities
+
 
 
 *** RAW TO-DOS ***
