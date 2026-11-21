@@ -20,27 +20,23 @@ def cmd_execute(gs, case, word_lst):
 				getattr(do_noun_obj, action_str)(prep_str, gs)
 				if not gs.end.is_end: # check to avoid double score display on end
 					gs.score.disp_score(action_str, do_noun_obj.name, prep_str, gs)
-
 			elif word_lst[-1] in ['verb_do_prep_id']:
 				action_str, do_noun_obj, prep_str, id_noun_obj,  *_  = word_lst
-
 				if action_str in ['put', 'show', 'give']:
 					getattr(id_noun_obj, action_str)(do_noun_obj, gs)
 					if not gs.end.is_end: # check to avoid double score display on end
 						gs.score.disp_score(action_str, do_noun_obj.name, id_noun_obj.name, gs)
-
 				if action_str in ['unlock', 'lock', 'drink', 'attack']:
 					getattr(do_noun_obj, action_str)(id_noun_obj, gs)
 					if not gs.end.is_end: # check to avoid double score display on end
 						gs.score.disp_score(action_str, do_noun_obj.name, id_noun_obj.name, gs)
-
 			return
-		if case == 'prep':
-			dirobj_obj, word1, noun_obj = word_lst
-			getattr(dirobj_obj, word1)(noun_obj, gs)
-			if not gs.end.is_end: # check to avoid double score display on end
-				gs.score.disp_score(word1, dirobj_obj.name, noun_obj.name, gs)
-			return
+#		if case == 'prep':
+#			dirobj_obj, word1, noun_obj = word_lst
+#			getattr(dirobj_obj, word1)(noun_obj, gs)
+#			if not gs.end.is_end: # check to avoid double score display on end
+#				gs.score.disp_score(word1, dirobj_obj.name, noun_obj.name, gs)
+#			return
 		gs.io.buff_dbg("[CMD] command case error", gs)
 		return
 	except:

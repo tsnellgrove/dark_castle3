@@ -1676,7 +1676,46 @@ To Do List - Dark Castle v3
 					- NA: fix scenario as needed
 					- NA: clean up comments in static_gbl(), error(), score_class_def()
 					- DONE: update verb table (including 'swallow')
-
+			- INPROC: refactor
+				- INPROC: eliminate case
+					- DONE: elim 'prep' consume case in validate(), exe_cmd(), trig_chk()
+					- DONE: elim 'error' consume case in validate(), exe_cmd(), trig_chk()
+					- INPROC: elim 'univeral' case
+						- DONE: pre_act()
+						- DONE: post_act()
+						- TBD: validate() - check non-'universal' case first
+						- TBD: exe_cmd()
+						- TBD: trig_chk()						
+					- TBD: elim 'trigger' in trig_chk()
+					- TBD: elim 'timer' in trig_chk()
+						- TBD: clean up comments in validate(), exe_cmd(), trig_chk()
+					- TBD: stop pass/get case: 
+						- TBD: hand_mgmt()
+						- TBD: pre_act()
+						- TBD: post_act()
+						- TBD: validate ()
+						- TBD: exe_cmd()
+						- TBD: trig_chk()
+				- TBD: consider not passing verb or prep to syntax as independent attribs
+					- TBD: elim use of prep var
+				- TBD: elim meta_cmd_lst / 'one_word_convert_lst' in static_gbl
+				- TBD: elim use of word1 post sym_syn()
+				- TBD: create separate full_verb_lst vs. full_action_lst
+				- TBD: fix 'blank' first attrib in noun_handling() call
+				- TBD: extract noun list assignments (do, asym, & id)??
+				- TBD: re-factor hand_mgmt()
+				- TBD: full review of lst vs. str
+				- TBD: full review of returns
+				- TBD: full review of interim values
+				- TBD: update input_cleanup()
+				- TBD: generalize "don't possess" error
+				- TBD: pull all 'meta' and 'meta_term' exclusions into app_main()
+				- TBD: one-word debug commands
+				- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
+				- TBD: update 'pre_interp_word_lst' ('wait' is now interp() cmd; add in others)
+				- TBD: no longer need to check for pre_interp_word_lst in interp()
+				- TBD: include bkpk in infer_do_noun() scope? (e.g. if crown in bkpk, wear it)
+				- TBD: avoid calling input_cleanup() 3x [web_main(), app_main(), interp()]
 
 			- TBD: review remaining interp verb refactor, bug fix, and feature goals
 
@@ -1764,33 +1803,6 @@ To Do List - Dark Castle v3
 						- worn obj take() => "You're already wearing it" 
 						- IDEA: no, take should always be 'into hand'
 						- obj on floor remove() => "Taken" (i.e. is synonym)
-
-
-				- TBD: refactor
-					- TBD: eliminate case
-						- TBD: elim 'prep' case in validate(), exe_cmd(), trig_chk()
-						- TBD: elim 'univeral' case in validate(), exe_cmd(), trig_chk()
-					- TBD: elim meta_cmd_lst / 'one_word_convert_lst' in static_gbl
-					- TBD: elim use of word1 post sym_syn()
-					- TBD: consider not passing verb or prep to syntax as independent attribs
-						- TBD: elim use of prep var
-					- TBD: create separate full_verb_lst vs. full_action_lst
-					- TBD: fix 'blank' first attrib in noun_handling() call
-					- TBD: extract noun list assignments (do, asym, & id)??
-					- TBD: re-factor hand_mgmt()
-					- TBD: full review of lst vs. str
-					- TBD: full review of returns
-					- TBD: full review of interim values
-					- TBD: update input_cleanup()
-					- TBD: generalize "don't possess" error
-					- TBD: pull all 'meta' and 'meta_term' exclusions into app_main()
-					- TBD: one-word debug commands
-					- TBD: simplify do_noun_obj vs. do_noun_str being converted back and forth
-					- TBD: update 'pre_interp_word_lst' ('wait' is now interp() cmd; add in others)
-					- TBD: no longer need to check for pre_interp_word_lst in interp()
-					- TBD: include bkpk in infer_do_noun() scope? (e.g. if crown in bkpk, wear it)
-					- TBD: avoid calling input_cleanup() 3x [web_main(), app_main(), interp()]
-
 
 				- TBD: bug fix
 					- TBD: fix up w/ step ladder in room

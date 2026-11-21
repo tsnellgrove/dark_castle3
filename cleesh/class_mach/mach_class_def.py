@@ -103,9 +103,9 @@ class TrigMixIn(object):
 					trig_key_lst = [action_str, do_noun_obj.name, id_noun_obj.name]
 					trig_wc_lst = [action_str, do_noun_obj.name, '*']
 
-		if case == 'prep':
-			trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
-			trig_wc_lst = [word_lst[1], '*', word_lst[0].name]
+#		if case == 'prep':
+#			trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
+#			trig_wc_lst = [word_lst[1], '*', word_lst[0].name]
 		elif case in['tru_1word', 'timer', 'switch']:
 			trig_key_lst = word_lst
 		return (trig_key_lst in self.trig_vals_lst) or (trig_wc_lst in self.trig_vals_lst)

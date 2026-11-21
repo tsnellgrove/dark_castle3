@@ -14,8 +14,10 @@ def validate(gs, case, word_lst):
 
 
 	# *** command errors ***
-	if case in ['prep', 'universal']:
+##	if case in ['prep', 'universal']:
+	if case in ['universal']:
 		try:
+###	try:
 			if case == 'universal':
 				if word_lst[-1] in ['verb_do']:
 					action_str, do_noun_obj, *_ = word_lst
@@ -33,19 +35,18 @@ def validate(gs, case, word_lst):
 						cmd_err, is_att, err_txt = getattr(id_noun_obj, action_str + '_err')(do_noun_obj, gs)
 						if (cmd_err and not is_att):
 							gs.io.buffer(err_txt)
-
 					if action_str in ['unlock', 'lock', 'drink', 'attack']:
 						cmd_err, is_att, err_txt = getattr(do_noun_obj, action_str + '_err')(id_noun_obj, gs)
 						if (cmd_err and not is_att):
 							gs.io.buffer(err_txt)
 
-			elif case == 'prep':
-				dirobj_obj, word1, noun_obj = word_lst
-				cmd_err, is_att, err_txt = getattr(dirobj_obj, word1 + '_err')(noun_obj, gs)
-				if (cmd_err and not is_att and err_txt != ""):
-					gs.io.buffer(err_txt)
-			if cmd_err and gs.core.is_debug:
-				gs.io.buff_no_cr(" [ERROR error postfix]")
+#			elif case == 'prep':
+#				dirobj_obj, word1, noun_obj = word_lst
+#				cmd_err, is_att, err_txt = getattr(dirobj_obj, word1 + '_err')(noun_obj, gs)
+#				if (cmd_err and not is_att and err_txt != ""):
+#					gs.io.buffer(err_txt)
+#			if cmd_err and gs.core.is_debug:
+#				gs.io.buff_no_cr(" [ERROR error postfix]")
 		except:
 			cmd_err = True
 			debug_str = f" [VALIDATE error] {traceback.format_exc()}\nDid you possibly forget to add the noun obj to the pickle in game_update() ?"
