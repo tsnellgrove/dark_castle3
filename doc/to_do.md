@@ -1680,15 +1680,16 @@ To Do List - Dark Castle v3
 				- INPROC: eliminate case
 					- DONE: elim 'prep' consume case in validate(), exe_cmd(), trig_chk()
 					- DONE: elim 'error' consume case in validate(), exe_cmd(), trig_chk()
-					- INPROC: elim 'univeral' case
+					- DONE: elim 'univeral' case
 						- DONE: pre_act()
 						- DONE: post_act()
-						- TBD: validate() - check non-'universal' case first
-						- TBD: exe_cmd()
-						- TBD: trig_chk()						
-					- TBD: elim 'trigger' in trig_chk()
-					- TBD: elim 'timer' in trig_chk()
-						- TBD: clean up comments in validate(), exe_cmd(), trig_chk()
+						- DONE: validate() - check non-'universal' case first
+						- DONE: exe_cmd()
+					- TBD: in trig_chk()				
+						- TBD: elim 'trigger'
+						- TBD: elim 'timer'
+						- TBD: elim 'universal'
+					- TBD: clean up comments in validate(), exe_cmd(), trig_chk()
 					- TBD: stop pass/get case: 
 						- TBD: hand_mgmt()
 						- TBD: pre_act()
