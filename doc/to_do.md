@@ -1685,8 +1685,9 @@ To Do List - Dark Castle v3
 						- DONE: post_act()
 						- DONE: validate() - check non-'universal' case first
 						- DONE: exe_cmd()
-					- TBD: in trig_chk()				
-						- TBD: elim 'trigger'
+					- INPROC: in trig_chk()		
+						- DONE: elim 'tru_1word'		
+						- TBD: elim 'switch'
 						- TBD: elim 'timer'
 						- TBD: elim 'universal'
 					- TBD: clean up comments in validate(), exe_cmd(), trig_chk()
