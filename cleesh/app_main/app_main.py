@@ -244,7 +244,6 @@ def app_main(user_input, game_name, root_path_str):
 			if not cmd_override and is_att:
 				gs.io.buffer(err_txt)
 			if (is_valid and not cmd_override):
-#				hand_mgmt(case, cmd_lst, gs)
 				hand_mgmt(cmd_lst, gs)
 				cmd_execute(gs, case, cmd_lst)
 			weapon_disp(gs, start_in_hand)

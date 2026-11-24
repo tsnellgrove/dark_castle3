@@ -1692,12 +1692,12 @@ To Do List - Dark Castle v3
 						- DONE: elim 'universal'
 					- DONE: clean up comments: validate(), exe_cmd(), trig_chk(), post_act(), auto_act()
 					- INPROC: stop pass/get case: 
-						- INPROC: hand_mgmt() / app_main() call
-						- TBD: pre_act()
-						- TBD: post_act()
-						- TBD: validate ()
-						- TBD: exe_cmd()
-						- TBD: trig_chk()
+						- DONE: hand_mgmt() / app_main() call
+						- TBD: pre_act() / app_main() call
+						- TBD: post_act() / app_main() call
+						- TBD: validate () / app_main() call
+						- TBD: exe_cmd() / app_main() call
+						- TBD: trig_chk() / ??? call
 						- TBD: interp() returns
 						- TBD: any remaining app_main() calls
 				- TBD: consider not passing verb or prep to syntax as independent attribs
