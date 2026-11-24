@@ -15,6 +15,8 @@ def auto_action(gs):
 ##			print(f'Auto action executed: {obj.name}') # for testing / debug
 	for obj in mach_obj_lst:
 		if (obj.trigger_type == 'auto_act_timer' and obj.is_enabled 
-				and obj.trig_check(gs, 'timer', obj.trig_switch.is_dinging(), True)):
+#				and obj.trig_check(gs, 'timer', obj.trig_switch.is_dinging(), True)):
+#				and obj.trig_check(gs, 'universal', obj.trig_switch.is_dinging(), True)):
+				and obj.trig_check(gs, 'universal', [obj.trig_switch.is_dinging(), 'timer'], True)):
 			_unused1, _unused2 = obj.run_mach(gs, True) # is_valid independent / assumed True for auto_act
 	return
