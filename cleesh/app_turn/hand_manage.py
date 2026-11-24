@@ -8,7 +8,8 @@
 
 ### main routines ###
 
-def hand_mgmt(case, word_lst, gs):
+def hand_mgmt(word_lst, gs):
+# def hand_mgmt(case, word_lst, gs):
     verb_str = word_lst[0]
     if verb_str in ['wear', 'stow','drop', 'eat', 'put', 'show', 'give'] and not gs.core.hero.chk_in_hand(word_lst[1]):
         do_noun_obj = word_lst[1]

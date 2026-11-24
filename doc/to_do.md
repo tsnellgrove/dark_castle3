@@ -1691,8 +1691,8 @@ To Do List - Dark Castle v3
 						- DONE: elim 'timer'
 						- DONE: elim 'universal'
 					- DONE: clean up comments: validate(), exe_cmd(), trig_chk(), post_act(), auto_act()
-					- TBD: stop pass/get case: 
-						- TBD: hand_mgmt()
+					- INPROC: stop pass/get case: 
+						- INPROC: hand_mgmt() / app_main() call
 						- TBD: pre_act()
 						- TBD: post_act()
 						- TBD: validate ()
