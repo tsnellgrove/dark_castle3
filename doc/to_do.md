@@ -1690,7 +1690,7 @@ To Do List - Dark Castle v3
 						- DONE: elim 'switch'
 						- DONE: elim 'timer'
 						- DONE: elim 'universal'
-					- TBD: clean up comments in validate(), exe_cmd(), trig_chk()
+					- DONE: clean up comments: validate(), exe_cmd(), trig_chk(), post_act(), auto_act()
 					- TBD: stop pass/get case: 
 						- TBD: hand_mgmt()
 						- TBD: pre_act()
@@ -1698,6 +1698,8 @@ To Do List - Dark Castle v3
 						- TBD: validate ()
 						- TBD: exe_cmd()
 						- TBD: trig_chk()
+						- TBD: interp() returns
+						- TBD: any remaining app_main() calls
 				- TBD: consider not passing verb or prep to syntax as independent attribs
 					- TBD: elim use of prep var
 				- TBD: elim meta_cmd_lst / 'one_word_convert_lst' in static_gbl

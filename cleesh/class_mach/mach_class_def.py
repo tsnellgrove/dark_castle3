@@ -79,14 +79,12 @@ class TrigMixIn(object):
 
 	# complex methods
 	def trig_check(self, gs, case, word_lst, is_valid):
-		if self.is_valid_reqd and not is_valid:
+		if (self.is_valid_reqd and not is_valid) or (word_lst[-1] in ['meta']):
 			return False
-#		if case == 'universal' and word_lst[-1] in ['meta']:
-		if word_lst[-1] in ['meta']:
-			return False
+
 		trig_key_lst = ['not_valid']
 		trig_wc_lst = ['not_valid'] # wildcards are only supported for nouns
-#		if case == 'universal':
+
 		if word_lst[-1] in ['verb_do']:
 			action_str, do_noun_obj, *_ = word_lst
 			trig_key_lst = [action_str, do_noun_obj.name]
@@ -105,13 +103,6 @@ class TrigMixIn(object):
 		elif word_lst[-1] in ['timer', 'switch']:
 			trig_key_lst = word_lst[0]
 
-#		if case == 'prep':
-#			trig_key_lst = [word_lst[1], word_lst[2].name, word_lst[0].name]
-#			trig_wc_lst = [word_lst[1], '*', word_lst[0].name]
-
-##		elif case in['tru_1word', 'timer', 'switch']:
-#		elif case in['timer', 'switch']:
-#			trig_key_lst = word_lst
 		return (trig_key_lst in self.trig_vals_lst) or (trig_wc_lst in self.trig_vals_lst)
 
 

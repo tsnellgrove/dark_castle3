@@ -9,7 +9,6 @@ import traceback
 ### execute commands based on case ###
 def cmd_execute(gs, case, word_lst):
 	try:
-#		if case == 'universal':
 		if word_lst[-1] in ['verb_do']:
 			action_str, do_noun_obj, *_ = word_lst
 			getattr(do_noun_obj, action_str)(gs)
@@ -31,15 +30,6 @@ def cmd_execute(gs, case, word_lst):
 				if not gs.end.is_end: # check to avoid double score display on end
 					gs.score.disp_score(action_str, do_noun_obj.name, id_noun_obj.name, gs)
 		return
-#		if case == 'prep':
-#			dirobj_obj, word1, noun_obj = word_lst
-#			getattr(dirobj_obj, word1)(noun_obj, gs)
-#			if not gs.end.is_end: # check to avoid double score display on end
-#				gs.score.disp_score(word1, dirobj_obj.name, noun_obj.name, gs)
-#			return
-
-#		gs.io.buff_dbg("[CMD] command case error", gs)
-#		return
 	except:
 		gs.io.buff_dbg("[CMD] " + traceback.format_exc(), gs)
 	return
