@@ -1702,8 +1702,9 @@ To Do List - Dark Castle v3
 						- DONE: interp() returns
 						- DONE: clean up comments in app_main() and interp()
 						- DONE: any remaining app_main() calls
-				- TBD: consider not passing verb or prep to syntax as independent attribs
-					- TBD: elim use of prep var
+				- INPROC: consider not passing verb or prep to syntax as independent attribs
+					- DONE: elim use / pass of prep var from interp() to syntax()
+					- TBD: clean up comments
 				- TBD: elim meta_cmd_lst / 'one_word_convert_lst' in static_gbl
 				- TBD: elim use of word1 post sym_syn()
 				- TBD: create separate full_verb_lst vs. full_action_lst

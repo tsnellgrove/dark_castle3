@@ -8,7 +8,8 @@ from cleesh.app_turn.input_cleanup import input_cleanup
 
 
 ### syntax - convert user_input_lst into an action_lst or interp_err
-def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
+def syntax(user_input_tpl, input_verb, do_noun, id_noun, gs):
+# def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 
 	syntax_dict = {
 		('attack', 'input_do_noun', 'with', 'input_id_noun') : ['attack', 'do_noun_str', 'with', 'id_noun_str', 'verb_do_prep_id'],
@@ -542,7 +543,7 @@ def interpreter(user_input, master_obj_lst):
 	prep_verb_do_meth_lst = ['unlock', 'lock', 'attack', 'drink']
 ##	verbing_lst = ['hand', 'present', 'vault'] # verbs that can be used as nouns (e.g. "the vault is locked")
 	action_lst = None
-	prep = None # LEGACY
+#	prep = None # LEGACY
 
 	# *** local variable assignment ***
 	(
@@ -575,7 +576,8 @@ def interpreter(user_input, master_obj_lst):
 		return None, "Please start your sentence with a known verb!"
 
 	# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
-	tmp_lst, interp_err = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
+	tmp_lst, interp_err = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, gs)
+#	tmp_lst, interp_err = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
 	if not interp_err:
 		verb_cmd_lst = tmp_lst
 		word1 = verb_cmd_lst[0]
@@ -586,7 +588,8 @@ def interpreter(user_input, master_obj_lst):
 	# *** do_prep proc ***
 	# check to see if there are prep_phrase substitutions
 	if len(do_prep_cmd_lst) > 0:
-		tmp_lst, interp_err = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, None, gs)
+#		tmp_lst, interp_err = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, None, gs)
+		tmp_lst, interp_err = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, gs)
 		if not interp_err:
 			verb_cmd_lst = tmp_lst
 			do_prep_cmd_lst = []
@@ -682,7 +685,9 @@ def interpreter(user_input, master_obj_lst):
 	user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + syntax_id_lst
 	if tst_mode:
 		print(f"user_syntax_lst: {user_syntax_lst}")
-	action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, id_noun_str, gs)
+	action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, id_noun_str, gs)
+#	action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, None, id_noun_str, gs)
+#	action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, id_noun_str, gs)
 	if interp_err:
 		return None, interp_err
 	if tst_mode:
