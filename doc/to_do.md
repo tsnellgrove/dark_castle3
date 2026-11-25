@@ -1705,12 +1705,14 @@ To Do List - Dark Castle v3
 				- DONE: consider not passing verb or prep to syntax as independent attribs
 					- DONE: elim use / pass of prep var from interp() to syntax()
 					- DONE: clean up comments
+				- DONE: elim use of word1 post sym_syn()
+					- DONE: word1 => verb_str
+				- TBD: review pass of verb_cmd_lst[0] => verb_str ??
+				- TBD: re-factor hand_mgmt()
 				- TBD: elim meta_cmd_lst / 'one_word_convert_lst' in static_gbl
-				- TBD: elim use of word1 post sym_syn()
 				- TBD: create separate full_verb_lst vs. full_action_lst
 				- TBD: fix 'blank' first attrib in noun_handling() call
 				- TBD: extract noun list assignments (do, asym, & id)??
-				- TBD: re-factor hand_mgmt()
 				- TBD: full review of lst vs. str
 				- TBD: full review of returns
 				- TBD: full review of interim values

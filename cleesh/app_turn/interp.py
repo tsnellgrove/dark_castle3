@@ -567,6 +567,8 @@ def interpreter(user_input, master_obj_lst):
 			verb_cmd_lst.append(verb_str)
 		else:
 			return None, "Please start your sentence with a known verb!" # won't fire until interp migration complete
+	else:
+		verb_str = verb_cmd_lst[0]
 	# if verb is debug verb but not in debug mode, return error
 	if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
 		return None, "Please start your sentence with a known verb!"
@@ -575,7 +577,7 @@ def interpreter(user_input, master_obj_lst):
 	tmp_lst, interp_err = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, gs)
 	if not interp_err:
 		verb_cmd_lst = tmp_lst
-		word1 = verb_cmd_lst[0]
+		verb_str = verb_cmd_lst[0]
 	if tst_mode:
 		cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 		print(f"user_cmd_lst_post_verb_proc: {cmd_lst}")
@@ -587,7 +589,7 @@ def interpreter(user_input, master_obj_lst):
 		if not interp_err:
 			verb_cmd_lst = tmp_lst
 			do_prep_cmd_lst = []
-			word1 = verb_cmd_lst[0]
+			verb_str = verb_cmd_lst[0]
 	if tst_mode:
 		cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 		print(f"user_cmd_lst_post_do_prep_proc: {cmd_lst}")
@@ -607,7 +609,7 @@ def interpreter(user_input, master_obj_lst):
 			else:
 				do_noun_cmd_lst = [do_noun_obj.name]
 		else: # if do_noun string does not exist, attempt to infer; return error if not possible
-			exactly_one, do_noun_obj, err_txt = infer_do_noun(gs, word1)
+			exactly_one, do_noun_obj, err_txt = infer_do_noun(gs, verb_str)
 			if exactly_one:
 				do_noun_cmd_lst = [do_noun_obj.name]
 			else:
@@ -679,7 +681,7 @@ def interpreter(user_input, master_obj_lst):
 	user_syntax_lst = verb_cmd_lst + do_prep_cmd_lst + syntax_do_lst + id_prep_cmd_lst + syntax_id_lst
 	if tst_mode:
 		print(f"user_syntax_lst: {user_syntax_lst}")
-	action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, id_noun_str, gs)
+	action_lst, interp_err = syntax(tuple(user_syntax_lst), verb_str, do_noun_str, id_noun_str, gs)
 	if interp_err:
 		return None, interp_err
 	if tst_mode:
