@@ -1691,7 +1691,7 @@ To Do List - Dark Castle v3
 						- DONE: elim 'timer'
 						- DONE: elim 'universal'
 					- DONE: clean up comments: validate(), exe_cmd(), trig_chk(), post_act(), auto_act()
-					- INPROC: stop pass/get case: 
+					- DONE: stop pass/get case: 
 						- DONE: hand_mgmt() / app_main() call
 						- DONE: validate () / app_main() call
 						- DONE: exe_cmd() / app_main() call
@@ -1700,8 +1700,8 @@ To Do List - Dark Castle v3
 						- DONE: post_act() / app_main() call
 						- DONE: clean up comments: pre_act(), post_act(), app_main()
 						- DONE: interp() returns
-						- TBD: clean up comments in app_main() and interp()
-						- TBD: any remaining app_main() calls
+						- DONE: clean up comments in app_main() and interp()
+						- DONE: any remaining app_main() calls
 				- TBD: consider not passing verb or prep to syntax as independent attribs
 					- TBD: elim use of prep var
 				- TBD: elim meta_cmd_lst / 'one_word_convert_lst' in static_gbl
