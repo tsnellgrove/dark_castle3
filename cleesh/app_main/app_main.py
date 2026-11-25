@@ -245,7 +245,7 @@ def app_main(user_input, game_name, root_path_str):
 				gs.io.buffer(err_txt)
 			if (is_valid and not cmd_override):
 				hand_mgmt(cmd_lst, gs)
-				cmd_execute(gs, case, cmd_lst)
+				cmd_execute(gs, cmd_lst)
 			weapon_disp(gs, start_in_hand)
 			post_action(gs, case, cmd_lst, is_valid) # excluding poat_act() from cmd "if" allows creatures to opperate machs
 

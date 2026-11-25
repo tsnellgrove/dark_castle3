@@ -1694,8 +1694,8 @@ To Do List - Dark Castle v3
 					- INPROC: stop pass/get case: 
 						- DONE: hand_mgmt() / app_main() call
 						- DONE: validate () / app_main() call
-						- TBD: exe_cmd() / app_main() call
-						- TBD: trig_chk() / ??? call
+						- DONE: exe_cmd() / app_main() call
+						- DONE: trig_chk() / calls from pre_act(), post_act(), auto_act()
 						- TBD: pre_act() / app_main() call
 						- TBD: post_act() / app_main() call
 						- TBD: interp() returns

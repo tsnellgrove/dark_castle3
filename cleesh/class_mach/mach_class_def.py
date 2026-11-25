@@ -78,7 +78,7 @@ class TrigMixIn(object):
 		return self._trig_vals_lst
 
 	# complex methods
-	def trig_check(self, gs, case, word_lst, is_valid):
+	def trig_check(self, gs, word_lst, is_valid):
 		if (self.is_valid_reqd and not is_valid) or (word_lst[-1] in ['meta']):
 			return False
 

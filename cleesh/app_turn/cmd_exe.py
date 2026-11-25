@@ -7,7 +7,7 @@
 import traceback
 
 ### execute commands based on case ###
-def cmd_execute(gs, case, word_lst):
+def cmd_execute(gs, word_lst):
 	try:
 		if word_lst[-1] in ['verb_do']:
 			action_str, do_noun_obj, *_ = word_lst
