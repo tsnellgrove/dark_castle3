@@ -5,7 +5,7 @@
 
 ### import statements ###
 
-def pre_action(gs, case, word_lst, is_valid):
+def pre_action(gs, word_lst, is_valid):
 	if word_lst[-1] in ['meta']:
 		return False
 	cmd_override = False

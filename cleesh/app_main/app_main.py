@@ -238,7 +238,7 @@ def app_main(user_input, game_name, root_path_str):
 
 		# for valid interp commands, process in-turn game response
 		if is_valid or is_att:
-			cmd_override = pre_action(gs, case, cmd_lst, is_valid)
+			cmd_override = pre_action(gs, cmd_lst, is_valid)
 			if cmd_override:
 				gs.io.reset_cmd_queue()
 			if not cmd_override and is_att:
@@ -247,7 +247,7 @@ def app_main(user_input, game_name, root_path_str):
 				hand_mgmt(cmd_lst, gs)
 				cmd_execute(gs, cmd_lst)
 			weapon_disp(gs, start_in_hand)
-			post_action(gs, case, cmd_lst, is_valid) # excluding poat_act() from cmd "if" allows creatures to opperate machs
+			post_action(gs, cmd_lst, is_valid) # excluding poat_act() from cmd "if" allows creatures to opperate machs
 
 		# post-cmd-response output
 		# action order = 1) cmd input, 2) Game response to cmd, 3) Game end / restart OR Game independent actions

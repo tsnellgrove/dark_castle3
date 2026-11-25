@@ -3,8 +3,7 @@
 # module description: identifies and executes pre-action commands
 
 
-# def post_action(gs, case, word_lst):
-def post_action(gs, case, word_lst, is_valid):
+def post_action(gs, word_lst, is_valid):
 	if word_lst[-1] in ['meta']:
 		return
 	mach_obj_lst = gs.map.hero_rm.get_mach_lst(gs)

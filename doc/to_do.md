@@ -1696,8 +1696,9 @@ To Do List - Dark Castle v3
 						- DONE: validate () / app_main() call
 						- DONE: exe_cmd() / app_main() call
 						- DONE: trig_chk() / calls from pre_act(), post_act(), auto_act()
-						- TBD: pre_act() / app_main() call
-						- TBD: post_act() / app_main() call
+						- DONE: pre_act() / app_main() call
+						- DONE: post_act() / app_main() call
+						- DONE: clean up comments: pre_act(), post_act(), app_main()
 						- TBD: interp() returns
 						- TBD: any remaining app_main() calls
 				- TBD: consider not passing verb or prep to syntax as independent attribs
