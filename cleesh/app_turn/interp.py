@@ -483,7 +483,8 @@ def interpreter(user_input, master_obj_lst):
 	# error if user input contains reserved syntax words
 	for word in user_input_lst:
 		if word in ['verb_syn', 'hero_obj', 'hero_rm_obj', 'verb_str', 'do_noun_str', 'id_noun_str', 'prep_phrase_convert']: # reserved syntax
-			return 'error', None, "What??"
+#			return 'error', None, "What??"
+			return None, "What??"
 	# one-word commands where user_input_lst is longer than one word
 	if len(user_input_lst) > 1 and user_input_lst[0] in (
 			gs.io.get_lst('pre_interp_word_lst','eng') + 
@@ -491,7 +492,8 @@ def interpreter(user_input, master_obj_lst):
 			gs.io.get_lst('one_word_secret_lst','eng') +
 			gs.io.get_lst('one_word_travel_lst','eng') # added
 			):
-		return 'error', None, f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"
+		return None, f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"
+#		return 'error', None, f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"
 
 	# *** global variable assignment ***
 	word1 = user_input_lst[0]
@@ -570,10 +572,12 @@ def interpreter(user_input, master_obj_lst):
 			verb_str = 'go'
 			verb_cmd_lst.append(verb_str)
 		else:
-			return 'error', None, "Please start your sentence with a known verb!" # won't fire until interp migration complete
+#			return 'error', None, "Please start your sentence with a known verb!" # won't fire until interp migration complete
+			return None, "Please start your sentence with a known verb!" # won't fire until interp migration complete
 	# if verb is debug verb but not in debug mode, return error
 	if verb_cmd_lst[0] in debug_cmd_lst and not gs.core.is_debug:
-		return 'error', None, "Please start your sentence with a known verb!"
+		return None, "Please start your sentence with a known verb!"
+#		return 'error', None, "Please start your sentence with a known verb!"
 
 	# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
 	tmp_lst, interp_err = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
@@ -606,7 +610,8 @@ def interpreter(user_input, master_obj_lst):
 			error_state, error_msg, do_noun_obj = noun_handling(master_obj_lst, do_noun_cmd_lst) # in future, pass without verb and prep
 			# if noun_handling() error_state = True, return error
 			if error_state:
-				return 'error', None, f"{error_msg}"
+#				return 'error', None, f"{error_msg}"
+				return None, f"{error_msg}"
 			# if no noun_handling() error, assign do_noun_obj.name to do_noun_cmd_lst for syntax call
 			else:
 				do_noun_cmd_lst = [do_noun_obj.name]
@@ -615,7 +620,8 @@ def interpreter(user_input, master_obj_lst):
 			if exactly_one:
 				do_noun_cmd_lst = [do_noun_obj.name]
 			else:
-				return 'error', None, f"{err_txt}"
+				return None, f"{err_txt}"
+#				return 'error', None, f"{err_txt}"
 		
 		# if do_prep not given and verb requires one, attempt to infer; return error if ambiguous
 		# placed after do_noun proc (not alongside the prep_phrase_convert check above) so that when both
@@ -626,7 +632,8 @@ def interpreter(user_input, master_obj_lst):
 			if prep_inferred:
 				do_prep_cmd_lst = [prep_str]
 			else:
-				return 'error', None, f"{err_txt}" # was unable to fully test
+				return None, f"{err_txt}" # was unable to fully test
+#				return 'error', None, f"{err_txt}" # was unable to fully test
 		if tst_mode:
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_post_do_noun_proc: {cmd_lst}")
@@ -635,7 +642,8 @@ def interpreter(user_input, master_obj_lst):
 	# check for conditional asymetric verb synonym
 	verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, interp_err = asym_syn(verb_cmd_lst, do_prep_cmd_lst, do_noun_obj, gs)
 	if interp_err:
-		return 'error', None, interp_err
+		return None, interp_err
+#		return 'error', None, interp_err
 	if do_noun_obj is not None:
 		do_noun_cmd_lst = [do_noun_obj.name]
 	else:
@@ -652,7 +660,8 @@ def interpreter(user_input, master_obj_lst):
 			id_noun_cmd_lst.insert(0, 'blank') # temporary placeholder for verb in noun_handling call
 			error_state, error_msg, id_noun_obj = noun_handling(master_obj_lst, id_noun_cmd_lst) # in future, pass without verb and prep
 			if error_state:
-				return 'error', None, f"{error_msg}" # unable to test until prep verbs migrated
+				return None, f"{error_msg}" # unable to test until prep verbs migrated
+#				return 'error', None, f"{error_msg}" # unable to test until prep verbs migrated
 			else: # if no error, assign id_noun_obj.name to id_noun_cmd_lst for syntax call
 				id_noun_cmd_lst = [id_noun_obj.name]
 		elif verb_cmd_lst[0] in prep_verb_do_meth_lst and not id_noun_cmd_lst and not id_prep_cmd_lst: # if no id_prep or id_noun given, attempt to infer; return error if ambiguous
@@ -661,7 +670,8 @@ def interpreter(user_input, master_obj_lst):
 				id_noun_cmd_lst = [id_noun_obj.name]
 				id_prep_cmd_lst = [id_prep_str]
 			else:
-				return 'error', None, f"{err_txt}"
+				return None, f"{err_txt}"
+#				return 'error', None, f"{err_txt}"
 		if tst_mode:
 			cmd_lst = verb_cmd_lst + do_prep_cmd_lst + do_noun_cmd_lst + id_prep_cmd_lst + id_noun_cmd_lst
 			print(f"user_cmd_lst_post_id_phrase_proc: {cmd_lst}")
@@ -685,10 +695,12 @@ def interpreter(user_input, master_obj_lst):
 		print(f"user_syntax_lst: {user_syntax_lst}")
 	action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, id_noun_str, gs)
 	if interp_err:
-		return 'error', None, interp_err
+		return None, interp_err
+#		return 'error', None, interp_err
 	else:
 		case = 'universal' # new
 	if tst_mode:
 		print(f"post_syntax action_lst: {action_lst}")
 
-	return case, action_lst, interp_err
+#	return case, action_lst, interp_err
+	return action_lst, interp_err

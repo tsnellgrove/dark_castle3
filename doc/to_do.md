@@ -1699,7 +1699,8 @@ To Do List - Dark Castle v3
 						- DONE: pre_act() / app_main() call
 						- DONE: post_act() / app_main() call
 						- DONE: clean up comments: pre_act(), post_act(), app_main()
-						- TBD: interp() returns
+						- DONE: interp() returns
+						- TBD: clean up comments in app_main() and interp()
 						- TBD: any remaining app_main() calls
 				- TBD: consider not passing verb or prep to syntax as independent attribs
 					- TBD: elim use of prep var
