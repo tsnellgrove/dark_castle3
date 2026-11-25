@@ -226,7 +226,8 @@ def app_main(user_input, game_name, root_path_str):
 				is_valid = False
 				is_att = False
 			else:
-				is_valid, is_att, err_txt = validate(gs, case, cmd_lst)
+				is_valid, is_att, err_txt = validate(gs, cmd_lst)
+#				is_valid, is_att, err_txt = validate(gs, case, cmd_lst)
 	
 		# if command is not valid and not meta, clear cmd_queue
 		if not is_valid and not is_meta_cmd:
