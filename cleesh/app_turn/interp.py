@@ -9,7 +9,6 @@ from cleesh.app_turn.input_cleanup import input_cleanup
 
 ### syntax - convert user_input_lst into an action_lst or interp_err
 def syntax(user_input_tpl, input_verb, do_noun, id_noun, gs):
-# def syntax(user_input_tpl, input_verb, do_noun, prep_str, id_noun, gs):
 
 	syntax_dict = {
 		('attack', 'input_do_noun', 'with', 'input_id_noun') : ['attack', 'do_noun_str', 'with', 'id_noun_str', 'verb_do_prep_id'],
@@ -433,8 +432,6 @@ def noun_handling(master_obj_lst, user_input_lst):
 	return False, "", word2_obj
 
 
-# def parser(user_input_lst, verb_lst, dir_lst, prep_lst):
-# def parser(user_input_lst, verb_lst, dir_lst, prep_lst, meta_arg_lst):
 def parser(user_input_lst, verb_lst, dir_lst, prep_lst):
 ## def parser(user_input_lst, verb_lst, dir_lst, prep_lst, verbing_lst):
 	"""Categorize each word into one of five slots: verb, do_prep, do_noun, id_prep, id_noun.
@@ -543,7 +540,6 @@ def interpreter(user_input, master_obj_lst):
 	prep_verb_do_meth_lst = ['unlock', 'lock', 'attack', 'drink']
 ##	verbing_lst = ['hand', 'present', 'vault'] # verbs that can be used as nouns (e.g. "the vault is locked")
 	action_lst = None
-#	prep = None # LEGACY
 
 	# *** local variable assignment ***
 	(
@@ -577,7 +573,6 @@ def interpreter(user_input, master_obj_lst):
 
 	# apply symetric synonym verb substitution: (e.g. 'leap' => 'jump')
 	tmp_lst, interp_err = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, gs)
-#	tmp_lst, interp_err = syntax((verb_cmd_lst[0], 'verb_syn'), None, None, None, None, gs)
 	if not interp_err:
 		verb_cmd_lst = tmp_lst
 		word1 = verb_cmd_lst[0]
@@ -588,7 +583,6 @@ def interpreter(user_input, master_obj_lst):
 	# *** do_prep proc ***
 	# check to see if there are prep_phrase substitutions
 	if len(do_prep_cmd_lst) > 0:
-#		tmp_lst, interp_err = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, None, gs)
 		tmp_lst, interp_err = syntax(tuple(verb_cmd_lst + do_prep_cmd_lst + ['prep_phrase_convert']), None, None, None, gs)
 		if not interp_err:
 			verb_cmd_lst = tmp_lst
@@ -686,8 +680,6 @@ def interpreter(user_input, master_obj_lst):
 	if tst_mode:
 		print(f"user_syntax_lst: {user_syntax_lst}")
 	action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, id_noun_str, gs)
-#	action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, None, id_noun_str, gs)
-#	action_lst, interp_err = syntax(tuple(user_syntax_lst), word1, do_noun_str, prep, id_noun_str, gs)
 	if interp_err:
 		return None, interp_err
 	if tst_mode:
