@@ -1693,7 +1693,7 @@ To Do List - Dark Castle v3
 					- DONE: clean up comments: validate(), exe_cmd(), trig_chk(), post_act(), auto_act()
 					- INPROC: stop pass/get case: 
 						- DONE: hand_mgmt() / app_main() call
-						- INPROC: validate () / app_main() call
+						- DONE: validate () / app_main() call
 						- TBD: exe_cmd() / app_main() call
 						- TBD: trig_chk() / ??? call
 						- TBD: pre_act() / app_main() call

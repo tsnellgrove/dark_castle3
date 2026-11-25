@@ -6,7 +6,6 @@
 ### import statements ###
 import traceback
 
-#def validate(gs, case, word_lst):
 def validate(gs, word_lst):
 	"""Validates user_input.
 	"""
