@@ -496,7 +496,7 @@ def interpreter(user_input, master_obj_lst):
 		return None, f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"
 
 	# *** list definitions ***
-	action_verb_lst = gs.io.get_lst('action_verb_lst','eng') # action_verbs have a method and / or err routine
+	action_verb_lst = gs.io.get_lst('action_verb_lst','eng') # have a method and / or err routine
 #	print(f"action_verb_lst: {action_verb_lst}")
 #	action_verb_lst = [
 #			'attack', 'climb', 'close', 'doff', 'drink', 'drop', 
@@ -504,22 +504,26 @@ def interpreter(user_input, master_obj_lst):
 #			'jump', 'lock', 'move', 'open', 'push', 'pull', 'put', 'read', 
 #			'sit', 'show', 'stand', 'stow', 'take', 'unlock', 'wait', 'wear'
 #			] # action_verbs have a method and / or err routine
-	non_action_verb_lst = [
-			'get', 'inventory', 'look', 'swallow'
-			] # non-action verbs are subsituted in syntax or asym_syn()
-	syn_verb_lst = [
-			'bite', 'carry', 'clobber', 'consume', 
-			'depart', 'describe', 'devour', 'display', 'don', 'donate', 'feed', 'fight',
-			'gobble', 'grab', 'hand', 'hide', 'hit', 'hold', 
-			'ingest', 'insert', 'inspect', 'imbibe', 'jab', 'kill',
-			'leap', 'list', 'munch', 'murder','offer', 
-			'pack', 'peruse', 'place', 'present', 'press', 'proceed', 
-			'quaff', 'release', 'remove', 'roll', 'run', 
-			'scale', 'scan', 'search', 'shut', 'shove', 'sip', 'skim', 'slay', 'slide', 
-			'stash', 'step', 'stuff', 'swig',
-			'taste', 'tug', 'vault', 'walk', 'yank'
-			] # symetric syn_verbs are substituted pre do_noun infer
-	debug_cmd_lst = ['get_weight', 'capacity', 'where_is']
+	non_action_verb_lst = gs.io.get_lst('non_action_verb_lst','eng') # subsituted in syntax or asym_syn()
+#	non_action_verb_lst = [
+#			'get', 'inventory', 'look', 'swallow'
+#			] # non-action verbs are subsituted in syntax or asym_syn()
+	syn_verb_lst = gs.io.get_lst('syn_verb_lst', 'eng') # are substituted pre do_noun infer
+#	syn_verb_lst = [
+#			'bite', 'carry', 'clobber', 'consume', 
+#			'depart', 'describe', 'devour', 'display', 'don', 'donate', 'feed', 'fight',
+#			'gobble', 'grab', 'hand', 'hide', 'hit', 'hold', 
+#			'ingest', 'insert', 'inspect', 'imbibe', 'jab', 'kill',
+#			'leap', 'list', 'munch', 'murder','offer', 
+#			'pack', 'peruse', 'place', 'present', 'press', 'proceed', 
+#			'quaff', 'release', 'remove', 'roll', 'run', 
+#			'scale', 'scan', 'search', 'shut', 'shove', 'sip', 'skim', 'slay', 'slide', 
+#			'stash', 'step', 'stuff', 'swig',
+#			'taste', 'tug', 'vault', 'walk', 'yank'
+#			] # symetric syn_verbs are substituted pre do_noun infer
+	debug_cmd_lst = ['get_weight', 'capacity', 'where_is'] # what about rand_mode ?
+	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst + debug_cmd_lst
+
 	dir_lst = [
 			'east', 'west', 'north', 'south', 'northeast', 'northwest', 'southeast', 'southwest', 
 			'up', 'down'
@@ -531,7 +535,6 @@ def interpreter(user_input, master_obj_lst):
 			] + debug_pwd_lst
 	verb_requires_prep_lst = ['climb']
 	
-	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst + debug_cmd_lst
 	intransitive_verb_lst = ['go', 'inventory', 'stand', 'jump', 'wait']
 	prep_verb_do_meth_lst = ['unlock', 'lock', 'attack', 'drink']
 

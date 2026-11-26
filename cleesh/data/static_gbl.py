@@ -31,6 +31,22 @@ engine_static_dict = {
 			'sit', 'show', 'stand', 'stow', 'take', 'unlock', 'wait', 'wear'
 			], # action_verbs have a method and / or err routine
 
+	'non_action_verb_lst' : [
+			'get', 'inventory', 'look', 'swallow'
+			], # non-action verbs are subsituted in syntax or asym_syn()
+
+	'syn_verb_lst' : [
+			'bite', 'carry', 'clobber', 'consume', 
+			'depart', 'describe', 'devour', 'display', 'don', 'donate', 'feed', 'fight',
+			'gobble', 'grab', 'hand', 'hide', 'hit', 'hold', 
+			'ingest', 'insert', 'inspect', 'imbibe', 'jab', 'kill',
+			'leap', 'list', 'munch', 'murder','offer', 
+			'pack', 'peruse', 'place', 'present', 'press', 'proceed', 
+			'quaff', 'release', 'remove', 'roll', 'run', 
+			'scale', 'scan', 'search', 'shut', 'shove', 'sip', 'skim', 'slay', 'slide', 
+			'stash', 'step', 'stuff', 'swig',
+			'taste', 'tug', 'vault', 'walk', 'yank'
+			], # symetric syn_verbs are substituted pre do_noun infer
 
 	### interp lists ###
 
@@ -59,7 +75,7 @@ engine_static_dict = {
 
 #	'action_verb_lst' : ['examine', 'jump', 'sit', 'stand'],
 
-	'non_action_verb_lst' : ['inventory', 'look'],
+#	'non_action_verb_lst' : ['inventory', 'look'],
 
 	'prep_no_do_verb_lst' : ['climb'],
 
