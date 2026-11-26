@@ -496,12 +496,14 @@ def interpreter(user_input, master_obj_lst):
 		return None, f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"
 
 	# *** list definitions ***
-	action_verb_lst = [
-			'attack', 'climb', 'close', 'doff', 'drink', 'drop', 
-			'eat', 'enter', 'examine', 'exit', 'give', 'go', 
-			'jump', 'lock', 'move', 'open', 'push', 'pull', 'put', 'read', 
-			'sit', 'show', 'stand', 'stow', 'take', 'unlock', 'wait', 'wear'
-			] # action_verbs have a method and / or err routine
+	action_verb_lst = gs.io.get_lst('action_verb_lst','eng') # action_verbs have a method and / or err routine
+#	print(f"action_verb_lst: {action_verb_lst}")
+#	action_verb_lst = [
+#			'attack', 'climb', 'close', 'doff', 'drink', 'drop', 
+#			'eat', 'enter', 'examine', 'exit', 'give', 'go', 
+#			'jump', 'lock', 'move', 'open', 'push', 'pull', 'put', 'read', 
+#			'sit', 'show', 'stand', 'stow', 'take', 'unlock', 'wait', 'wear'
+#			] # action_verbs have a method and / or err routine
 	non_action_verb_lst = [
 			'get', 'inventory', 'look', 'swallow'
 			] # non-action verbs are subsituted in syntax or asym_syn()

@@ -1709,8 +1709,10 @@ To Do List - Dark Castle v3
 					- DONE: word1 => verb_str
 				- INPROC: clean up initialization
 					- DONE: comment out / re-arange unused
-					- TBD: clean up comments
-					- TBD: externalize word lists and call
+					- DONE: clean up comments
+					- INPROC: externalize word lists and call
+					- TBD: elim unused external ists
+					- TBD: re-order / optimize interp() intialization
 				- TBD: review pass of verb_cmd_lst[0] => verb_str ??
 				- TBD: re-factor hand_mgmt()
 				- TBD: elim meta_cmd_lst / 'one_word_convert_lst' in static_gbl

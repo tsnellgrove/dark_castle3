@@ -22,6 +22,16 @@ engine_static_dict = {
 	### Menu Constants ###
 	'game_lst' : ['cup_of_tea', 'dark_castle'],
 
+	### new interp lists ###
+
+	'action_verb_lst' : [
+			'attack', 'climb', 'close', 'doff', 'drink', 'drop', 
+			'eat', 'enter', 'examine', 'exit', 'give', 'go', 
+			'jump', 'lock', 'move', 'open', 'push', 'pull', 'put', 'read', 
+			'sit', 'show', 'stand', 'stow', 'take', 'unlock', 'wait', 'wear'
+			], # action_verbs have a method and / or err routine
+
+
 	### interp lists ###
 
 	'articles_lst' : ['a', 'an', 'the'],
@@ -47,7 +57,7 @@ engine_static_dict = {
 		'unlock', 'wear', 'enter', 'exit', 'sit', 'stand', 'stow', 'jump', 'climb'
 	],
 
-	'action_verb_lst' : ['examine', 'jump', 'sit', 'stand'],
+#	'action_verb_lst' : ['examine', 'jump', 'sit', 'stand'],
 
 	'non_action_verb_lst' : ['inventory', 'look'],
 
