@@ -433,7 +433,6 @@ def noun_handling(master_obj_lst, user_input_lst):
 
 
 def parser(user_input_lst, verb_lst, dir_lst, prep_lst):
-## def parser(user_input_lst, verb_lst, dir_lst, prep_lst, verbing_lst):
 	"""Categorize each word into one of five slots: verb, do_prep, do_noun, id_prep, id_noun.
 
 	Slot assignment is sequential — a word's role depends on what slots are already filled:
@@ -496,11 +495,6 @@ def interpreter(user_input, master_obj_lst):
 			):
 		return None, f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"
 
-#	# *** global variable assignment ***
-#	word1 = user_input_lst[0]
-#	creature = gs.core.hero
-#	tst_mode = gs.core.is_debug # test mode is linked to debug mode
-
 	# *** list definitions ***
 	action_verb_lst = [
 			'attack', 'climb', 'close', 'doff', 'drink', 'drop', 
@@ -535,17 +529,9 @@ def interpreter(user_input, master_obj_lst):
 			] + debug_pwd_lst
 	verb_requires_prep_lst = ['climb']
 	
-#	full_verbs_lst = (
-#			gs.io.get_lst('known_verb_lst','eng') + 
-#			gs.io.get_lst('debug_verb_lst','eng') +
-#			gs.io.get_lst('non_action_verb_lst','eng') +
-#			gs.io.get_lst('one_word_convert_lst','eng') # new
-#			)
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst + debug_cmd_lst
 	intransitive_verb_lst = ['go', 'inventory', 'stand', 'jump', 'wait']
 	prep_verb_do_meth_lst = ['unlock', 'lock', 'attack', 'drink']
-##	verbing_lst = ['hand', 'present', 'vault'] # verbs that can be used as nouns (e.g. "the vault is locked")
-#	action_lst = None
 
 	# *** parse input ***
 	(
@@ -554,11 +540,8 @@ def interpreter(user_input, master_obj_lst):
 		do_noun_cmd_lst, 
 		id_prep_cmd_lst, 
 		id_noun_cmd_lst
-##		) = parser(user_input_lst, verb_lst, dir_lst, prep_lst, verbing_lst)
 	) = parser(user_input_lst, verb_lst, dir_lst, prep_lst)
 
-#	do_noun_obj = None
-#	id_noun_obj = None
 
 #	# *** unprocessed cmd lst ***
 	if tst_mode:
