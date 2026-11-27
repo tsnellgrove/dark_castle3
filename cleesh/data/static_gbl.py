@@ -59,7 +59,11 @@ engine_static_dict = {
 
 	'debug_disp_lst' : ['get_weight', 'capacity', 'where_is', 'rand_mode'], # used for help; 'rand_mode' = meta_cmd
 
-
+	'dir_lst' : [
+			'north', 'south', 'east', 'west',  
+            'northeast', 'northwest', 'southeast', 'southwest', 
+			'up', 'down'
+			],
 
 	### interp lists ###
 
@@ -75,7 +79,7 @@ engine_static_dict = {
 
 	'one_word_convert_lst' : ['inventory', 'look', 'stand', 'jump'],
 
-    'one_word_travel_lst' : ['north', 'south', 'east', 'west', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down'],
+#    'one_word_travel_lst' : ['north', 'south', 'east', 'west', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down'],
 
 	'assumed_noun_2word_lst' : ['exit', 'drop', 'stow', 'eat', 'wear'],
 

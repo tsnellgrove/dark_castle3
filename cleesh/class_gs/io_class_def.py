@@ -266,7 +266,7 @@ class IO(Invisible):
 				pre_out = pre_out + key + " = " + abbrev_dict[key] + ", "
 			output = pre_out[:-2]
 		elif option == 'travel':
-			output = (self.get_str_nr(f"help_{option}") + ', '.join(self.get_lst('one_word_travel_lst','eng')) + " (e.g. 'go north'). You can also 'climb' up or down a climbable object (e.g. 'climb up tree').")
+			output = (self.get_str_nr(f"help_{option}") + ', '.join(self.get_lst('dir_lst','eng')) + " (e.g. 'go north'). You can also 'climb' up or down a climbable object (e.g. 'climb up tree').")
 		elif option == 'debug':
 			if not gs.core.is_debug:
 				output = self.get_str_nr('help_debug_error')
