@@ -17,12 +17,19 @@ engine_static_dict = {
 
 	'engine_version' : '3.9.2 build 0016 [1/3/2026])', # api.features.bug-fix (internal); # Started Nov 23, 2025 - Completed Jan 3, 2026
 
-	'debug_pwd' : 'xyzzy', # password to toggle debug mode
+	'debug_pwd' : 'xyzzy', # password to toggle debug mode; previously 'debug_poke53281,0'
 
 	### Menu Constants ###
 	'game_lst' : ['cup_of_tea', 'dark_castle'],
 
 	### new interp lists ###
+    
+	'meta_one_cmd_lst' : [
+			'quit', 'restart','score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 
+			'rand_mode', 'save', 'restore'
+			], # meta commands have no method, do not interact with gam, and are handled in app_main.py
+
+	'meta_two_cmd_lst' : ['debug', 'help'], # meta comamands with an argument
 
 	'action_verb_lst' : [
 			'attack', 'climb', 'close', 'doff', 'drink', 'drop', 
@@ -47,6 +54,12 @@ engine_static_dict = {
 			'stash', 'step', 'stuff', 'swig',
 			'taste', 'tug', 'vault', 'walk', 'yank'
 			], # symetric syn_verbs are substituted pre do_noun infer
+
+	'debug_cmd_lst' : ['get_weight', 'capacity', 'where_is'], # full cmds only usable in debug mode
+
+	'debug_disp_lst' : ['get_weight', 'capacity', 'where_is', 'rand_mode'], # used for help; 'rand_mode' = meta_cmd
+
+
 
 	### interp lists ###
 
@@ -83,7 +96,7 @@ engine_static_dict = {
     
 	'var_outcome_verb_lst' : ['give', 'attack'], # for reference; not actually used in score.disp_score()
 
-	'debug_verb_lst' : ['get_weight', 'capacity', 'where_is', 'rand_mode'],
+#	'debug_verb_lst' : ['get_weight', 'capacity', 'where_is', 'rand_mode'],
 
 	'abbreviations_dict' : {
 		'n' : 'north',

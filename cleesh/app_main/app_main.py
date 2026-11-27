@@ -161,15 +161,17 @@ def app_main(user_input, game_name, root_path_str):
 			gs.io.buffer("I beg your pardon?")
 			is_interp_cmd = False
 		# one word meta commands
-		elif word1 in [
-				'quit', 'restart','score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 
-				'rand_mode', 'save', 'restore'
-				]:
+		elif word1 in gs.io.get_lst('meta_one_cmd_lst', 'eng'): # no method, do not interact with gam, and are handled in app_main.py
+#		elif word1 in [
+#				'quit', 'restart','score', 'version', 'credits', 'verbose', 'brief', 'superbrief', 
+#				'rand_mode', 'save', 'restore'
+#				]:
 			meta_cmd_exe([word1], game_name, root_path_str, gs)
 			is_interp_cmd = False
 			is_meta_cmd = True
 		# two word meta commands
-		elif word1 in ['debug', 'help']:
+#		elif word1 in ['debug', 'help']:
+		elif word1 in gs.io.get_lst('meta_two_cmd_lst', 'eng'): # meta cmds with an argument
 			user_input_lst = input_cleanup(user_input)
 			meta_cmd_exe(user_input_lst, game_name, root_path_str, gs)
 			is_interp_cmd = False

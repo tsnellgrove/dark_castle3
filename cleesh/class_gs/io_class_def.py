@@ -271,7 +271,7 @@ class IO(Invisible):
 			if not gs.core.is_debug:
 				output = self.get_str_nr('help_debug_error')
 			else:
-				output = self.get_str_nr('help_debug') + ', '.join(self.get_lst('debug_verb_lst','eng'))
+				output = self.get_str_nr('help_debug') + ', '.join(self.get_lst('debug_disp_lst','eng'))
 		else:
 			output = self.get_str_nr('help')
 		self.buffer(output)

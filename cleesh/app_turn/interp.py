@@ -487,13 +487,15 @@ def interpreter(user_input, master_obj_lst):
 		if word in ['verb_syn', 'hero_obj', 'hero_rm_obj', 'verb_str', 'do_noun_str', 'id_noun_str', 'prep_phrase_convert']: # reserved syntax
 			return None, "What??"
 	# one-word commands where user_input_lst is longer than one word
-	if len(user_input_lst) > 1 and user_input_lst[0] in (
-			gs.io.get_lst('pre_interp_word_lst','eng') + 
-			gs.io.get_lst('one_word_only_lst','eng') + 
-			gs.io.get_lst('one_word_secret_lst','eng') +
+#	if len(user_input_lst) > 1 and user_input_lst[0] in (
+	if len(user_input_lst) > 1 and word1 in (
+#			gs.io.get_lst('pre_interp_word_lst','eng') + 
+#			gs.io.get_lst('one_word_only_lst','eng') + 
+#			gs.io.get_lst('one_word_secret_lst','eng') +
 			gs.io.get_lst('one_word_travel_lst','eng') # added
 			):
-		return None, f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"
+#		return None, f"There are too many words in that sentence. '{user_input_lst[0].capitalize()}' is a one word command!"
+		return None, f"There are too many words in that sentence. '{word1.capitalize()}' is a one word command!"
 
 	# *** list definitions ***
 	action_verb_lst = gs.io.get_lst('action_verb_lst','eng') # have a method and / or err routine
@@ -521,7 +523,8 @@ def interpreter(user_input, master_obj_lst):
 #			'stash', 'step', 'stuff', 'swig',
 #			'taste', 'tug', 'vault', 'walk', 'yank'
 #			] # symetric syn_verbs are substituted pre do_noun infer
-	debug_cmd_lst = ['get_weight', 'capacity', 'where_is'] # what about rand_mode ?
+	debug_cmd_lst = gs.io.get_lst('debug_cmd_lst', 'eng') # full cmds only usable in debug mode
+#	debug_cmd_lst = ['get_weight', 'capacity', 'where_is'] # what about rand_mode ?
 	verb_lst = action_verb_lst + non_action_verb_lst + syn_verb_lst + debug_cmd_lst
 
 	dir_lst = [
@@ -533,7 +536,7 @@ def interpreter(user_input, master_obj_lst):
 			'at', 'in', 'out', 'on', 'off', 'to', 'from', 'with','by','for','of','about','under','over',
 			'between','behind','before','after','through','around','into', 'above', 'atop', 'down'
 			] + debug_pwd_lst
-	verb_requires_prep_lst = ['climb']
+	verb_requires_prep_lst = ['climb'] # why not 'go'
 	
 	intransitive_verb_lst = ['go', 'inventory', 'stand', 'jump', 'wait']
 	prep_verb_do_meth_lst = ['unlock', 'lock', 'attack', 'drink']

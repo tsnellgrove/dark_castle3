@@ -1710,8 +1710,11 @@ To Do List - Dark Castle v3
 				- INPROC: clean up initialization
 					- DONE: comment out / re-arange unused
 					- DONE: clean up comments
+					- DONE: centralize meta cmds
+					- DONE: sort out debug_cmd_lst
 					- INPROC: externalize word lists and call
 					- TBD: elim unused external ists
+					- TBD: elim indepedent 'start with a known verb!' errs
 					- TBD: re-order / optimize interp() intialization
 				- TBD: review pass of verb_cmd_lst[0] => verb_str ??
 				- TBD: re-factor hand_mgmt()
