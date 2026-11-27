@@ -65,23 +65,16 @@ engine_static_dict = {
 			'up', 'down'
 			],
 
+
 	### interp lists ###
 
 	'articles_lst' : ['a', 'an', 'the'],
 
-	'prep_lst' : ['at', 'in', 'out', 'on','to','from','with','by','for','of','about','under','over','between','behind','before','after','through','around','into', 'above', 'atop', 'down'],
-
 	'pre_interp_word_lst' : ['quit', 'wait', 'again', 'restart', 'save', 'restore'],
-    
-	'one_word_secret_lst' : ['rand_mode'], # was 'debug_poke53281,0' before the cmd queue was implemented
 
     'one_word_only_lst' : ['credits', 'score', 'version', 'verbose', 'brief', 'superbrief'],
 
 	'one_word_convert_lst' : ['inventory', 'look', 'stand', 'jump'],
-
-#    'one_word_travel_lst' : ['north', 'south', 'east', 'west', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down'],
-
-	'assumed_noun_2word_lst' : ['exit', 'drop', 'stow', 'eat', 'wear'],
 
 	'one_or_two_word_lst' : ['help'], 
 
@@ -89,18 +82,8 @@ engine_static_dict = {
 		'give', 'go', 'help', 'lock', 'pull','push', 'put', 'read', 'show', 'take',
 		'unlock', 'wear', 'enter', 'exit', 'sit', 'stand', 'stow', 'jump', 'climb'
 	],
-
-#	'action_verb_lst' : ['examine', 'jump', 'sit', 'stand'],
-
-#	'non_action_verb_lst' : ['inventory', 'look'],
-
-	'prep_no_do_verb_lst' : ['climb'],
-
-	'prep_verb_lst' : ['put', 'show', 'give', 'attack', 'lock', 'unlock', 'drink'],
     
 	'var_outcome_verb_lst' : ['give', 'attack'], # for reference; not actually used in score.disp_score()
-
-#	'debug_verb_lst' : ['get_weight', 'capacity', 'where_is', 'rand_mode'],
 
 	'abbreviations_dict' : {
 		'n' : 'north',
